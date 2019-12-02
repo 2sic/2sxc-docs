@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SexyContentWebPage (Razor Templates) | 2sxc and EAV 10 </title>
+    <title>Razor Templates - RazorComponent | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SexyContentWebPage (Razor Templates) | 2sxc and EAV 10 ">
+    <meta name="title" content="Razor Templates - RazorComponent | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -196,33 +196,31 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="HowTo.Razor.Templates">
-<h1 id="sexycontentwebpage-razor-templates">SexyContentWebPage (Razor Templates)</h1>
+<h1 id="razor-templates---razorcomponent">Razor Templates - RazorComponent</h1>
 
-<h2 id="what-are-razor-templates">What are Razor Templates</h2>
-<p>Razor Templates are files beginning with an underscore <code>_</code> and ending with <code>.cshtml</code>. They contain both normal HTML intermixed with Razor placeholders like <code>@Content.FirstName</code> or longer code blocks usually marked with <code>@{ ...}</code>.</p>
-<p>All razor Templates derive from the SexyContentWebPage, so the following variables and objects are available for you to work with.</p>
+<p>Razor Templates contain both normal HTML intermixed with Razor placeholders like <code>@Content.FirstName</code> or longer code blocks usually marked with <code>@{ ...}</code>.</p>
+<p>All razor Templates derive from the RazorComponent, so the following variables and objects are available for you to work with.</p>
+<div class="TIP"><h5>Tip</h5><p>Read about <a class="xref" href="../../specs/cms/templates-razor.html">Razor Templates</a> in the specs</p>
+</div>
 <h2 id="example">Example</h2>
 <p>Visit the <a class="xref" href="https://2sxc.org/en/apps">App Catalog</a> where almost all apps use Razor. There you can find hundreds of examples. </p>
 <h2 id="objects-added-by-2sxc-in-razor-templates">Objects Added by 2sxc in Razor Templates</h2>
 <ol>
 <li><a class="xref" href="../dynamic-code/object-app.html">App</a> - the current App and all it&#39;s data</li>
 <li>Content (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>) - primary and often the only content-item in the <a class="xref" href="../dynamic-code/object-data.html">Data</a> for this template</li>
+<li>Content.Presentation (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>)</li>
 <li><a class="xref" href="../dynamic-code/object-data.html">Data</a> (IDataSource)- this object gives you all the data which was meant to be used by this Templates</li>
 <li><a class="xref" href="../dynamic-code/object-dnn.html">Dnn</a> - the common Dnn object providing page, module, user information</li>
 <li><a class="xref" href="edit.html">Edit</a> - helper providing you with various edit-functionality like <code>Toolbar(...)</code></li>
+<li>Header (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>) - the header data if the template expects to be a list</li>
+<li>Header.Presentation (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>)</li>
 <li><a class="xref" href="../dynamic-code/object-link.html">Link</a> - helper to generate links, according to the DNN-environment configuration</li>
-<li><del>List</del> - old, use <code>Data[&quot;Default&quot;]</code> instead for more consistant programming style</li>
-<li>ListContent (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>) - the header data if the template expects to be a list</li>
-<li><del>ListPresentation</del> - old - use <code>ListContent.Presentation</code> instead for more consistant programming style</li>
-<li>Permissions - ???</li>
-<li><del>Presentation</del> - old - use <code>Content.Presentation</code> instead for more consistant programming style</li>
 </ol>
 <h2 id="helper-commands-provided-by-2sxc">Helper Commands provided by 2sxc</h2>
 <ul>
 <li>AsAdam()</li>
 <li>AsDynamic(...) - takes just about anything (an iEntity, a list of iEntities, a dynamic, ...) and casts it to a <a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a></li>
 <li>AsEntity(...) - takes just about anything (iEntity, DynamicEntity, list of that) and casts it to an <a class="xref" href="../dynamic-code/entity.html">iEntity</a></li>
-<li><del>CreateSource(...)</del> (IDataSource) - old, better to use the <code>CreateSource&lt;T&gt;(...)</code> syntax</li>
 <li>CreateInstance(...) - to create an object of a parsed CSHTML file, for example to then access methods of that code</li>
 <li>CreateSource&lt;T>(...) (IDataSource) - more modern, generic, type-proof syntax for create-source</li>
 </ul>

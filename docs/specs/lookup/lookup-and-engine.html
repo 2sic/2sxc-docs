@@ -267,6 +267,9 @@
                               </ul>  </li>
                         </ul>  </li>
                     <li class="">
+                      <a href="../adam/_adam.html" title="ADAM - Automatic Digital Asset Management" class="">ADAM - Automatic Digital Asset Management</a>
+                    </li>
+                    <li class="">
                       <span class="expand-stub"></span>
                       <a href="../cms/edit.html" title="CMS Edit Content" class="">CMS Edit Content</a>
                         
@@ -521,15 +524,15 @@
 
 <p>Many things in the EAV and 2sxc require it to look up parameters. 
 For example, when a Query is created, it may need to know the current PortalId or the current time, to properly filter/sort something. </p>
-<p>This is achieved through 2 special object types, the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> and <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a>, both in the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a> namespace. </p>
+<p>This is achieved through 2 special object types, the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUp and <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUpEngine, both in the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a> namespace. </p>
 <h2 id="lookup-objects">LookUp Objects</h2>
 <p><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">LookUp objects</a> have a <code>Name</code> similar to a namespace or a scope. For example, when a Module is being rendered, there are LookUp objects with names like <code>QueryString</code>, <code>Module</code>, <code>Portal</code> etc. </p>
 <p>They also have a list of properties they can look up, like <code>Id</code>, <code>PortalId</code> or parameters from the url. </p>
 <p>The lookup object is then responsible to retrieve these if requested. Everything is lazy, so these objects are only accessed if the parameter is actually needed. </p>
-<p>All LookUp objects implement the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> interface and should inherit the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpBase.html">LookUpBase</a> object. </p>
+<p>All LookUp objects implement the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUp interface and should inherit the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpBase object. </p>
 <h2 id="lookupengine">LookUpEngine</h2>
 <p>LookUp Engines will collect a set of LookUp objects and use these to resolve strings like <code>Module:ModuleId</code>. For this, they will check which LookUp has the right name (in this case <code>Module</code>) and will ask it if it can provide the value (in this case the <code>ModuleId</code>). </p>
-<p>LookUp Engines all implement the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a> interface and should inherit the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpEngine.html">LookUpEngine</a> object. </p>
+<p>LookUp Engines all implement the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUpEngine interface and should inherit the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpEngine object. </p>
 <div class="NOTE"><h5>Note</h5><p>Usually LookUp Engines will receive a long list (Dictionary) of things to look up, and resolve these in one quick call. This is because often they are attached to a DataSource which requires many configuration values - so they will prepare the list of parameters, pass it to the LookUpEngine and then work with the results as needed.</p>
 </div>
 <div class="TIP"><h5>Tip</h5><p>LookUp Engines can also perform default-fallbacks - so if a LookUp source can&#39;t provide the answer needed, the engine may use a static value instead: 
@@ -537,14 +540,14 @@ For example, when a Query is created, it may need to know the current PortalId o
 </div>
 <div class="TIP"><h5>Tip</h5><p>LookUp Engines can also perform lookup-fallbacks if the source can&#39;t provide an answer. In this case it may ask another LookUp if it has the answer. This happens when the Token looks like this:<br><code>[QueryString:PageSize||[App:Settings:PageSize]]</code></p>
 </div>
-<p>LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.IGetEngine.html">IGetEngine</a>.</p>
+<p>LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.IGetEngine.</p>
 <h2 id="examples-of-lookup-objects">Examples of LookUp Objects</h2>
 <p>Just to give you an idea of the power of LookUp objects, here are some in use:</p>
 <ol>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInEntity.html">LookUpInEntity</a> - this resolves entity values. </li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInNameValueCollection.html">LookUpInNameValueCollection</a> - this resolves from name/value lists like <code>Dictionary</code> or <code>Request.QueryString</code> objects</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInMetadata.html">LookUpInMetadata</a> - will get values from Metadata of something</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInLookUps.html">LookUpInLookUps</a> - will look up values in various attached LookUp objects</li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpInEntity - this resolves entity values. </li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpInNameValueCollection - this resolves from name/value lists like <code>Dictionary</code> or <code>Request.QueryString</code> objects</li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpInMetadata - will get values from Metadata of something</li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.LookUpInLookUps - will look up values in various attached LookUp objects</li>
 <li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess.html">LookUpInDnnPropertyAccess</a> - will look up stuff in DNN specific PropertyAccess objects, which are similar to LookUp objects</li>
 <li><a class="xref" href="../../api/dot-net/ToSic.Sxc.LookUp.LookUpInDynamicEntity.html">LookUpInDynamicEntity</a> - will look up things in a IDynamicEntity and also provide more information like Count, IsFirst, etc. for the Token Engine</li>
 </ol>
