@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data Type: Hyperlink | 2sxc and EAV 10 </title>
+    <title>Token Templates | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data Type: Hyperlink | 2sxc and EAV 10 ">
+    <meta name="title" content="Token Templates | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -147,8 +147,8 @@
                                 <li class="">
                                   <a href="../data-types/entity.html" title="Entity" class="">Entity</a>
                                 </li>
-                                <li class="active">
-                                  <a href="../data-types/hyperlink.html" title="Hyperlink" class="active">Hyperlink</a>
+                                <li class="">
+                                  <a href="../data-types/hyperlink.html" title="Hyperlink" class="">Hyperlink</a>
                                 </li>
                                 <li class="">
                                   <a href="../data-types/number.html" title="Number" class="">Number</a>
@@ -295,8 +295,8 @@
                           <li class="">
                             <a href="../cms/templates-razor.html" title="Razor Templates" class="">Razor Templates</a>
                           </li>
-                          <li class="">
-                            <a href="../cms/templates-token.html" title="Token Templates" class="">Token Templates</a>
+                          <li class="active">
+                            <a href="../cms/templates-token.html" title="Token Templates" class="active">Token Templates</a>
                           </li>
                           <li class="">
                             <a href="../app/app-folder-structure.html" title="App Folder Structure" class="">App Folder Structure</a>
@@ -516,52 +516,729 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.Data.Values.Hyperlink">
-<h1 id="data-type-hyperlink">Data Type: Hyperlink</h1>
+            <article class="content wrap" id="_content" data-uid="Specs.Cms.Templates.Token">
+<h1 id="token-templates">Token Templates</h1>
 
-<p>Hyperlink data is a basic <a class="xref" href="_overview.html">data type</a> and is actually a string, but on reading it&#39;s automatically converts to an output-friendly format. It&#39;s used for normal links, page or file/image references as well as for complete sets of files (like image galleries). </p>
-<h2 id="storage-in-the-sql-database-in-the-eav-model">Storage in the SQL Database in the EAV-Model</h2>
-<p>This is simply stored as a string in the DB, in the original format like <code>page:22</code>.</p>
-<h2 id="storage-in-the-sql-database-in-the-json-model">Storage in the SQL Database in the JSON-Model</h2>
-<p>This is simply stored as a JSON string in the original format like <code>page:22</code>.</p>
-<h2 id="automatic-conversions">Automatic Conversions</h2>
-<p>The hyperlink data internally can contain values like:</p>
+<p>Token Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App.</p>
+<div class="NOTE"><h5>Note</h5><p>The <a class="xref" href="views.html">View</a> determines which template file is being loaded. </p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>Token templates are by far not as powerful as <a class="xref" href="templates-razor.html">Razor Templates</a>. We always recommend Razor. </p>
+</div>
+<h2 id="how-it-works">How it Works</h2>
+<p>Token templates use a Token Engine to generate Html. The convention uses placeholders like <code>[Scope:Property]</code> to put data into the Html. </p>
+<p>The template files usually reside inside app root folder or sub folder. These end with <code>.html</code>. 
+Placeholders and code usually is marked with <code>[...]</code> like <code>[Content:Name]</code>.</p>
+<h2 id="technical-conventions">Technical Conventions</h2>
+<p>Internally the Token-Engine uses <a class="xref" href="../lookup/lookup-and-engine.html">LookUp Objects</a> to find what can be shown. </p>
+<p>Your most common sources will be </p>
+<ul>
+<li><code>App</code> - the current App, which can give you folders (to link JS files)</li>
+<li><code>App:Settings</code> - app settings</li>
+<li><code>App.Resources</code> - app resources, for multi-language labels etc.</li>
+<li><code>Content</code> - the current content</li>
+<li><code>Content:Presentation</code> - presentation settings of the current content, if configured</li>
+<li><code>Tab</code> - the current DNN page</li>
+<li><code>Module</code> - the current DNN module</li>
+<li><code>Portal</code> - the current DNN portal</li>
+<li><code>DateTime</code></li>
+<li><code>QueryString</code></li>
+<li><code>User</code></li>
+<li><code>Profile</code></li>
+<li><code>Server</code></li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>You can find a complete list of tokens and possible properties here further below.</p>
+</div>
+<p>There is also a repeater feature to go through many content-items, using <code>&lt;repeat&gt;</code>. Read more about it in the <a href="https://2sxc.org/en/learn/token-templates-and-views">Token Basics</a></p>
+<h2 id="content-and-header-tokens">Content and Header Tokens</h2>
+<ul>
+<li>Use <code>[Content:PropertyName]</code> like <code>[Content:FirstName]</code></li>
+<li>Use <code>[Content:Presentation:PropertyName]</code> like <code>[Content:Presentation:UseLightbox]</code></li>
+<li>Use <code>[ListContent:PropertyName]</code> like <code>[ListContent:Title]</code><br><em>note: this is inconsistent with the latest Razor recommendations to use the <code>Header</code> object</em></li>
+<li>Use <code>[ListContent:Presentation:PropertyName]</code> like <code>[ListContent:Presentation:UseLightbox]</code><br><em>note: this is inconsistent with the latest Razor recommendations to use the <code>Header.Presentation</code> object</em></li>
+</ul>
+<h2 id="2sxc-app-tokens">2sxc App Tokens</h2>
+<p>The following tokens are related to App-Information and Resources. DNN/DotNetNuke does have these, you can only access them when in a 2sxc-App. </p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&#91;App:Path]</td>
+            <td></td>
+            <td>/App-Demos/2sxc/Tutorial Tokens</td>
+        </tr>
+        <tr>
+            <td>&#91;App:PhysicalPath]</td>
+            <td></td>
+            <td>\nasw2\P\2sxc 2019b\Web\App-Demos\2sxc\Tutorial Tokens</td>
+        </tr>
+<!-- Internal note: these properties are not surfaced in the tokens ATM
+    {"DisplayName", String.IsNullOrEmpty(appName) ? eavAppName : appName },
+    {"Folder", String.IsNullOrEmpty(appName) ? eavAppName : RemoveIllegalCharsFromPath(appName) },
+    {"AllowTokenTemplates", "False"},
+    {"AllowRazorTemplates", "False"},
+    {"Version", "00.00.01"},
+    {"OriginalId", ""}
+-->
+</tbody></table>
+
+
+<h3 id="app-settings">App Settings</h3>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;App:Settings:&lt;Property&gt;]</td>
+            <td>App Settings which the App-designer defined.</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;App:Settings:UseLightbox]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>true</td>
+        </tr><br></table>
+
+<h3 id="app-resources">App Resources</h3>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;App:Resources:&lt;Property&gt;]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;App:Resources:GreetingText]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>Hello there Token-Learner</td>
+        </tr>
+    
+</table>
+
+<h2 id="dnn-portal-tokens">DNN Portal Tokens</h2>
+<p>The following tokens are common DNN/DotNetNuke tokens which should work everywhere tokens are in use. Some very common extensions are in the other view Extended Tokens.</p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;Portal:Currency]</td>
+        <td>Currency String</td>
+        <td>USD</td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:Description]</td>
+        <td>Portal Description</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:Email]</td>
+        <td>Portal Admin Email</td>
+        <td>the.admin@2sxc.org</td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:FooterText]</td>
+        <td>Portal Copyright Text</td>
+        <td>Copyright 2019 by DotNetNuke Corporation</td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:HomeDirectory]</td>
+        <td>Portal Path (relative) of Home Directory</td>
+        <td>/App-Demos/</td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:LogoFile]</td>
+        <td>Portal Path to Logo File</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:PortalName]</td>
+        <td>Portal Name</td>
+        <td>DNN / DotNetNuke App Demos</td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:PortalAlias]</td>
+        <td>Portal URL</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Portal:TimeZoneOffset]</td>
+        <td>Difference in Minutes between Portal Default Time and UTC</td>
+        <td></td>
+    </tr>
+</table>
+
+<h2 id="dnn-user-tokens">DNN User Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;User:DisplayName]</td>
+        <td>User’s Display Name</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;User:Email]</td>
+        <td>User’s Email Address</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;User:FirstName]</td>
+        <td>User’s First Name</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;User:FullName]</td>
+        <td>(deprecated)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;User:LastName]</td>
+        <td>User’s Last Name</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;User:Username]</td>
+        <td>User’s Login User Name</td>
+        <td></td>
+    </tr>
+</table>
+
+<h2 id="dnn-membership-tokens">DNN Membership Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;Membership:Approved]</td>
+        <td>Is User Approved?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Membership:CreatedOnDate] </td>
+        <td>User Signup Date</td>
+        <td> </td>
+    </tr>
+    <tr>
+        <td>&#91;Membership:IsOnline]</td>
+        <td>Is User Currently Online?</td>
+        <td></td>
+    </tr>
+</table>
+
+<h2 id="dnn-user-profile-tokens">DNN User Profile Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;Profile:&lt;property&gt;]</td>
+        <td>Use any default or custom Profile Property as listed <br>in Profile Property Definition section of Manage User Accounts. <br>Use non-localized Property Name only.</td>
+        <td>-</td>
+    </tr>
+</table>
+
+<h2 id="dnn-tab-page-tokens">DNN Tab (Page) Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;Tab:Description]</td>
+        <td>Page Description Text for Search Engine</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:EndDate]</td>
+        <td>Page Display Until Date</td>
+        <td>****<strong><em></em></strong></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:FullUrl]</td>
+        <td>Page Full URL</td>
+        <td><a href="https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens">https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens</a></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:IconFile]</td>
+        <td>Page Relative Path to Icon File</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:KeyWords]</td>
+        <td>Page Keywords for Search Engine</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:PageHeadText]</td>
+        <td>Page Header Text</td>
+        <td>*<strong><em></em></strong></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:StartDate]</td>
+        <td>Page Display from Date</td>
+        <td>****</td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:TabName]</td>
+        <td>Page Name</td>
+        <td>Tutorial - Tokens</td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:TabPath]</td>
+        <td>Page Relative Path</td>
+        <td>//Apps//Tutorial-Tokens</td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:Title]</td>
+        <td>Page Title (Window Title)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Tab:URL]</td>
+        <td>Page URL</td>
+        <td></td>
+    </tr>
+</table>
+
+<h2 id="dnn-module-tokens">DNN Module Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;Module:Description]</td>
+        <td>Module Definition Description</td>
+        <td>2sxc App is an extension that allows to install and use a 2sxc app.</td>
+    </tr>
+    <tr>
+        <td>&#91;Module:EndDate]</td>
+        <td>Module Display Until Date</td>
+        <td>****<strong><em></em></strong></td>
+    </tr>
+    <tr>
+        <td>&#91;Module:Footer]</td>
+        <td>Module Footer Text</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Module:FriendlyName]</td>
+        <td>Module Definition Name</td>
+        <td> App</td>
+    </tr>
+    <tr>
+        <td>&#91;Module:Header]</td>
+        <td>Module Header Text</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Module:HelpURL]</td>
+        <td>Module Help URL</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Module:IconFile]</td>
+        <td>Module Path to Icon File</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>&#91;Module:ModuleTitle]</td>
+        <td>Module Title</td>
+        <td>App</td>
+    </tr>
+    <tr>
+        <td>&#91;Module:PaneName]</td>
+        <td>Module Name of Pane (where the module resides)</td>
+        <td>ContentPane</td>
+    </tr>
+    <tr>
+        <td>&#91;Module:StartDate]</td>
+        <td>Module Display from Date</td>
+        <td>****</td>
+    </tr>
+</table>
+
+<h2 id="dnn-datetime--ticks-tokens">DNN DateTime / Ticks Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tr>
+        <td>&#91;DateTime:Now]</td>
+        <td>Current Date and Time</td>
+        <td>12/2/2019 3:05 AM</td>
+    </tr>
+    <tr>
+        <td>&#91;Ticks:Now]</td>
+        <td>CPU Tick Count for Current Second</td>
+        <td>637108851369920459</td>
+    </tr>
+    <tr>
+        <td>&#91;Ticks:Today]</td>
+        <td>CPU Tick Count since Midnight</td>
+        <td>637108416000000000</td>
+    </tr>
+    <tr>
+        <td>&#91;Ticks:TicksPerDay] </td>
+        <td>CPU Ticks per Day (for calculations)</td>
+        <td>864000000000 </td>
+    </tr>
+</table>
+
+<p>Note that according to the DNN-Source-Code there are a total of 11 sources (status 2015-05-05). The ones not mentioned here are: </p>
 <ol>
-<li><code>http://whatever/whatever</code> - will not be converted</li>
-<li><code>/some-relative-url</code> - will not be converted</li>
-<li><code>page:42</code> - will usually be converted to the real url of the page in DNN</li>
-<li><code>page:42?something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>page:42#something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>file:2750</code> - will usually be converted to the real url of the file in DNN</li>
-<li><code>file:2750?w=200</code> - this will also be converted, but keeping the parameters (like for thumbnails)</li>
-<li><code>file:2750#page=2</code> - this will also be converted, but keeping the parameters (like for pdf-page-links)</li>
+    <li>Date (missing above)</li>
+    <li>Culture (missing)       </li>
+    <li>Host (missing)          </li>
 </ol>
-<p>In 99% of all use cases, you want to generate html with a real link, which is why the content-objects in Razor will deliver an <code>http:...</code> instead of <code>file:27</code>. Some demo-code: </p>
-<pre><code class="lang-razor">  // assume that Content is a dynamic entity
-  // assume that Image actually contains &quot;file:274&quot;
-  &lt;img src=&quot;@Content.Image&quot;&gt;
 
-  // the result is now
-  &lt;img src=&quot;/portals/0/adam/20603963uaothutaoer/daniel.jpg&quot;&gt;
-</code></pre><h2 id="accessing-the-real-inner-value">Accessing the Real Inner Value</h2>
-<p>In rare cases you may want the originl <code>page:22</code> instead of the converted value. To do this, use <code>AsEntity(yourObject)</code> and then use the EAV API on <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> to read the underlying original value.</p>
-<h2 id="special-hyperlink-libraries">Special: Hyperlink Libraries</h2>
-<p>A special use case is Libraries - where a hyperlink-field doesn&#39;t actually contain anything, but is a placeholder for ADAM assets. 
-In such a scenario, you will use <code>AsAdam(...)</code> in your code to get the folders/files in the ADAM repository.</p>
-<h2 id="null-value-possible">Null Value Possible</h2>
-<p>In some cases you may add a field to a type which already has Entities created previously. In this case the old data doesn&#39;t have a value for the field. 
-If this happens, the field will return <code>null</code>, so you may need to catch this special exception in your code. </p>
-<blockquote><p>A common shorthand to work with this is either the <code>??</code> operator or using <a href="https://razor-blade.net/api/ToSic.Razor.Blade.Text.html">RazorBlade</a> with <code>Text.Has(...)</code> or <code>Text.First(...)</code>.</p>
-</blockquote>
+## QueryString Tokens
+
+<h2>Extended Standard Tokens</h2>
+<p>The following tokens are still very &quot;normal&quot; but not part of the common DNN tokens. They work in 2sxc - but not in many DNN-Tools</p>
+
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&#91;QueryString:&lt;Url-Param-Name&gt;]</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;QueryString:TabId]</td>
+            <td>String - this demo shows the TabId <br>which is in the QueryString because of the internal URL-Rewrite. </td>
+            <td>730</td>
+        </tr>
+        <tr>
+            <td>&#91;QueryString:Category]</td>
+            <td>String - click <a href="?Category=Design">here</a> to see effect</td>
+            <td></td>
+        </tr>
+</tbody></table>
+
+<h2 id="form-tokens">Form Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;Form:&lt;Form-Param-Name&gt;]</td>
+            <td>Form post values. Usually not needed, but if you do need it, it&#39;s here.</td>
+            <td>-</td>
+        </tr>
+</table>
+
+<h2 id="server-tokens">Server Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;Server:&lt;Server-Property&gt;]</td>
+            <td>Many Server-Properties</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;Server:PATH_INFO]</td>
+            <td>Example of a property</td>
+            <td>/Default.aspx</td>
+        </tr><br></table>
+
+<h3 id="all-server-variables">All Server variables</h3>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token/Variable</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+<tr>
+<th style="width:20%">Variable</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>[Server:ALL_HTTP]</td>
+<td> Returns all HTTP headers sent by the client. Always prefixed
+      with HTTP_ and capitalized</td>
+</tr>
+<tr>
+<td>[Server:ALL_RAW]</td>
+<td> Returns all headers in raw form</td>
+</tr>
+<tr>
+<td>[Server:APPL_MD_PATH]</td>
+<td> Returns the meta base path for the application for the ISAPI
+  DLL</td>
+</tr>
+<tr>
+<td>[Server:APPL_PHYSICAL_PATH]</td>
+<td> Returns the physical path corresponding to the meta
+      base path</td>
+</tr>
+<tr>
+<td>[Server:AUTH_PASSWORD]</td>
+<td>Returns the value entered in the client&#39;s authentication dialog</td>
+</tr>
+<tr>
+<td>[Server:AUTH_TYPE]</td>
+<td> The authentication method that the server uses to validate users</td>
+</tr>
+<tr>
+<td>[Server:AUTH_USER]</td>
+<td>Returns the raw authenticated user name</td>
+</tr>
+<tr>
+<td>[Server:CERT_COOKIE]</td>
+<td>Returns the unique ID for client certificate as a string</td>
+</tr>
+<tr>
+<td>[Server:CERT_FLAGS]</td>
+<td> bit0 is set to 1 if the client certificate is present and bit1 is set to 1 if the cCertification authority of the client certificate is
+  not valid</td>
+</tr>
+<tr>
+<td>[Server:CERT_ISSUER]</td>
+<td>Returns the issuer field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_KEYSIZE]</td>
+<td>Returns the number of bits in Secure Sockets Layer connection key
+  size</td>
+</tr>
+<tr>
+<td>[Server:CERT_SECRETKEYSIZE]</td>
+<td>Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERIALNUMBER]</td>
+<td>Returns the serial number field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERVER_ISSUER]</td>
+<td>Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERVER_SUBJECT]</td>
+<td>Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SUBJECT]</td>
+<td>Returns the subject field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CONTENT_LENGTH]</td>
+<td>Returns the length of the content as sent by the client</td>
+</tr>
+<tr>
+<td>[Server:CONTENT_TYPE]</td>
+<td>Returns the data type of the content</td>
+</tr>
+<tr>
+<td>[Server:GATEWAY_INTERFACE]</td>
+<td>Returns the revision of the CGI specification used by the
+  server</td>
+</tr>
+<tr>
+<td>[Server:HTTP_&lt;<i>HeaderName</i>&gt;]</td>
+<td>Returns the value stored in the header <i> HeaderName</i></td>
+</tr>
+<tr>
+<td>[Server:HTTP_ACCEPT]</td>
+<td> Returns the value of the Accept header</td>
+</tr>
+<tr>
+<td>[Server:HTTP_ACCEPT_LANGUAGE]</td>
+<td> Returns a string describing the language to use for displaying
+  content</td>
+</tr>
+<tr>
+<td>[Server:HTTP_COOKIE]</td>
+<td> Returns the cookie string included with the request</td>
+</tr>
+<tr>
+<td>[Server:HTTP_REFERER]</td>
+<td> Returns a string containing the URL of the page that referred 
+the request to the current page using an &lt;a&gt; tag. If the page is redirected, 
+HTTP_REFERER is empty</td>
+</tr>
+<tr>
+<td>[Server:HTTP_USER_AGENT]</td>
+<td> Returns a string describing the browser that sent the request</td>
+</tr>
+<tr>
+<td>[Server:HTTPS]</td>
+<td> Returns ON if the request came in through secure channel or OFF if the request
+  came in through a non-secure channel</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_KEYSIZE]</td>
+<td> Returns the number of bits in Secure Sockets Layer connection key
+  size</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SECRETKEYSIZE]</td>
+<td> Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SERVER_ISSUER]</td>
+<td> Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SERVER_SUBJECT]</td>
+<td> Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:INSTANCE_ID]</td>
+<td> The ID for the IIS instance in text format</td>
+</tr>
+<tr>
+<td>[Server:INSTANCE_META_PATH]</td>
+<td> The meta base path for the instance of IIS that responds to the
+  request</td>
+</tr>
+<tr>
+<td>[Server:LOCAL_ADDR]</td>
+<td> Returns the server address on which the request came in</td>
+</tr>
+<tr>
+<td>[Server:LOGON_USER]</td>
+<td>Returns the Windows account that the user is logged into</td>
+</tr>
+<tr>
+<td>[Server:PATH_INFO]</td>
+<td>Returns extra path information as given by the client</td>
+</tr>
+<tr>
+<td>[Server:PATH_TRANSLATED]</td>
+<td> A translated version of PATH_INFO that takes the path and performs any necessary virtual-to-physical
+  mapping</td>
+</tr>
+<tr>
+<td>[Server:QUERY_STRING]</td>
+<td>Returns the query information stored in the string following the question mark (?) in the HTTP
+  request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_ADDR]</td>
+<td> Returns the IP address of the remote host making the request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_HOST]</td>
+<td> Returns the name of the host making the request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_USER]</td>
+<td> Returns an unmapped user-name string sent in by the user</td>
+</tr>
+<tr>
+<td>[Server:REQUEST_METHOD]</td>
+<td> Returns the method used to make the request</td>
+</tr>
+<tr>
+<td>[Server:SCRIPT_NAME]</td>
+<td> Returns a virtual path to the script being executed</td>
+</tr>
+<tr>
+<td>[Server:SERVER_NAME]</td>
+<td> Returns the server&#39;s host name, DNS alias, or IP address as it would appear in self-referencing
+  URLs</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PORT]</td>
+<td> Returns the port number to which the request was sent</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PORT_SECURE]</td>
+<td> Returns a string that contains 0 or 1. If the request is being handled on the secure port,
+  it will be 1. Otherwise, it will be 0</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PROTOCOL]</td>
+<td> Returns the name and revision of the request information
+  protocol</td>
+</tr>
+<tr>
+<td>[Server:SERVER_SOFTWARE]</td>
+<td> Returns the name and version of the server software that answers the request and runs the
+  gateway</td>
+</tr>
+<tr>
+<td>[Server:URL]</td>
+<td> Returns the base portion of the URL</td>
+</tr>
+</table>
+
+
+
+
 <h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="../input-types/ui-field-hyperlink.html">Field Input-Type hyperlink / files</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade120/page">RazorBlade Text.Has(...) Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade130/page">RazorBlade Text.First(...) Tutorial</a></li>
+<li><a class="xref" href="views.html">Views</a></li>
+<li><a class="xref" href="templates.html">Templates</a></li>
+<li><a class="xref" href="templates-razor.html">Razor Templates</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorial</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in EAV 1.0 2sxc 1.0</li>
+<li>Introduced in 2sxc 1.0</li>
 </ol>
 </article>
           </div>
@@ -571,7 +1248,7 @@ If this happens, the field will return <code>null</code>, so you may need to cat
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/docs-wiki/ToSIC_SexyContent/Docs-Generator/specs/data-types/hyperlink.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/docs-wiki/ToSIC_SexyContent/Docs-Generator/specs/cms/templates-token.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data Type: Hyperlink | 2sxc and EAV 10 </title>
+    <title>Template Files | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data Type: Hyperlink | 2sxc and EAV 10 ">
+    <meta name="title" content="Template Files | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -147,8 +147,8 @@
                                 <li class="">
                                   <a href="../data-types/entity.html" title="Entity" class="">Entity</a>
                                 </li>
-                                <li class="active">
-                                  <a href="../data-types/hyperlink.html" title="Hyperlink" class="active">Hyperlink</a>
+                                <li class="">
+                                  <a href="../data-types/hyperlink.html" title="Hyperlink" class="">Hyperlink</a>
                                 </li>
                                 <li class="">
                                   <a href="../data-types/number.html" title="Number" class="">Number</a>
@@ -289,8 +289,8 @@
                           <li class="">
                             <a href="../cms/views.html" title="Views and Templates" class="">Views and Templates</a>
                           </li>
-                          <li class="">
-                            <a href="../cms/templates.html" title="Template Files" class="">Template Files</a>
+                          <li class="active">
+                            <a href="../cms/templates.html" title="Template Files" class="active">Template Files</a>
                           </li>
                           <li class="">
                             <a href="../cms/templates-razor.html" title="Razor Templates" class="">Razor Templates</a>
@@ -516,52 +516,43 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.Data.Values.Hyperlink">
-<h1 id="data-type-hyperlink">Data Type: Hyperlink</h1>
+            <article class="content wrap" id="_content" data-uid="Specs.Cms.Templates">
+<h1 id="template-files">Template Files</h1>
 
-<p>Hyperlink data is a basic <a class="xref" href="_overview.html">data type</a> and is actually a string, but on reading it&#39;s automatically converts to an output-friendly format. It&#39;s used for normal links, page or file/image references as well as for complete sets of files (like image galleries). </p>
-<h2 id="storage-in-the-sql-database-in-the-eav-model">Storage in the SQL Database in the EAV-Model</h2>
-<p>This is simply stored as a string in the DB, in the original format like <code>page:22</code>.</p>
-<h2 id="storage-in-the-sql-database-in-the-json-model">Storage in the SQL Database in the JSON-Model</h2>
-<p>This is simply stored as a JSON string in the original format like <code>page:22</code>.</p>
-<h2 id="automatic-conversions">Automatic Conversions</h2>
-<p>The hyperlink data internally can contain values like:</p>
+<p>Template files will generate HTML - often based on the data a editor entered, and/or which was provided from the App.</p>
+<div class="NOTE"><h5>Note</h5><p>As of now there are two types of template files: Token and Razor. The system is built in a way, that other templating engines could also be implemented at any time. </p>
+</div>
+<h2 id="how-it-works">How it Works</h2>
+<p>Each <a class="xref" href="views.html">View</a> has a configuration referencing a template file. 2sxc will then decide what type it is, and run the appropriate engine. </p>
+<p>The template files usually reside inside app root folder or sub folder. As of now, there are two types:</p>
+<ul>
+<li><strong>Razor / MVC</strong> - These always begin with an <code>_</code> and end with <code>.cshtml</code>. Placeholders and code usually is marked with <code>@</code> like <code>@Content.Name</code></li>
+<li><strong>Tokens</strong> - these always end with <code>.html</code>. Placeholders usually look like <code>[Content.Name]</code>. Tokens cannot have any server-side code aside from the basic placeholders. </li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>If your view just hosts a JavaScript SPA, it will also be one of these types of files.</p>
+</div>
+<h2 id="re-using-templates">Re-Using Templates</h2>
+<div class="NOTE"><h5>Note</h5><p><strong>Re-Using in many Views</strong><br>Sometimes you&#39;ll want to use the same template file in multiple Views. This can just be configured at the <a class="xref" href="views.html">View</a> level</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p><strong>Re-Using Templates Across Portals</strong><br>Instead of placing the template in the App-folder of the current portal, 
+you can also place it in a global App-folder in the <code>_default</code> portal of DNN. 
+This is great if you have the same app in many portals, and want to centralize the template.</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p><a class="xref" href="templates-razor.html">Razor Templates</a> also support re-using template parts or any C# code. 
+You can also pass parameters to these parts, which allows you to share template-code across templates. </p>
+</div>
+<h2 id="future-features--wishes">Future Features &amp; Wishes</h2>
 <ol>
-<li><code>http://whatever/whatever</code> - will not be converted</li>
-<li><code>/some-relative-url</code> - will not be converted</li>
-<li><code>page:42</code> - will usually be converted to the real url of the page in DNN</li>
-<li><code>page:42?something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>page:42#something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>file:2750</code> - will usually be converted to the real url of the file in DNN</li>
-<li><code>file:2750?w=200</code> - this will also be converted, but keeping the parameters (like for thumbnails)</li>
-<li><code>file:2750#page=2</code> - this will also be converted, but keeping the parameters (like for pdf-page-links)</li>
+<li>Out-of the box support for <a class="xref" href="polymorph.html">polymorphism</a></li>
 </ol>
-<p>In 99% of all use cases, you want to generate html with a real link, which is why the content-objects in Razor will deliver an <code>http:...</code> instead of <code>file:27</code>. Some demo-code: </p>
-<pre><code class="lang-razor">  // assume that Content is a dynamic entity
-  // assume that Image actually contains &quot;file:274&quot;
-  &lt;img src=&quot;@Content.Image&quot;&gt;
-
-  // the result is now
-  &lt;img src=&quot;/portals/0/adam/20603963uaothutaoer/daniel.jpg&quot;&gt;
-</code></pre><h2 id="accessing-the-real-inner-value">Accessing the Real Inner Value</h2>
-<p>In rare cases you may want the originl <code>page:22</code> instead of the converted value. To do this, use <code>AsEntity(yourObject)</code> and then use the EAV API on <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> to read the underlying original value.</p>
-<h2 id="special-hyperlink-libraries">Special: Hyperlink Libraries</h2>
-<p>A special use case is Libraries - where a hyperlink-field doesn&#39;t actually contain anything, but is a placeholder for ADAM assets. 
-In such a scenario, you will use <code>AsAdam(...)</code> in your code to get the folders/files in the ADAM repository.</p>
-<h2 id="null-value-possible">Null Value Possible</h2>
-<p>In some cases you may add a field to a type which already has Entities created previously. In this case the old data doesn&#39;t have a value for the field. 
-If this happens, the field will return <code>null</code>, so you may need to catch this special exception in your code. </p>
-<blockquote><p>A common shorthand to work with this is either the <code>??</code> operator or using <a href="https://razor-blade.net/api/ToSic.Razor.Blade.Text.html">RazorBlade</a> with <code>Text.Has(...)</code> or <code>Text.First(...)</code>.</p>
-</blockquote>
 <h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="../input-types/ui-field-hyperlink.html">Field Input-Type hyperlink / files</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade120/page">RazorBlade Text.Has(...) Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade130/page">RazorBlade Text.First(...) Tutorial</a></li>
+<li><a class="xref" href="views.html">Views</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorial</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in EAV 1.0 2sxc 1.0</li>
+<li>Introduced in 2sxc 1.0</li>
 </ol>
 </article>
           </div>
@@ -571,7 +562,7 @@ If this happens, the field will return <code>null</code>, so you may need to cat
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/docs-wiki/ToSIC_SexyContent/Docs-Generator/specs/data-types/hyperlink.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/docs-wiki/ToSIC_SexyContent/Docs-Generator/specs/cms/templates.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
