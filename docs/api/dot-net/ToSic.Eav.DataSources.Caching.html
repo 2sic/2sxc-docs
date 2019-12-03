@@ -379,7 +379,16 @@
                             <a href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html" title="ICanPurgeListCache" class="">ICanPurgeListCache</a>
                           </li>
                           <li class="">
+                            <a href="ToSic.Eav.DataSources.Caching.IListCache.html" title="IListCache" class="">IListCache</a>
+                          </li>
+                          <li class="">
                             <a href="ToSic.Eav.DataSources.Caching.IRootCache.html" title="IRootCache" class="">IRootCache</a>
+                          </li>
+                          <li class="">
+                            <a href="ToSic.Eav.DataSources.Caching.ListCache.html" title="ListCache" class="">ListCache</a>
+                          </li>
+                          <li class="">
+                            <a href="ToSic.Eav.DataSources.Caching.ListCacheItem.html" title="ListCacheItem" class="">ListCacheItem</a>
                           </li>
                           <li class="">
                             <a href="ToSic.Eav.DataSources.Caching.RootCacheBase.html" title="RootCacheBase" class="">RootCacheBase</a>
@@ -750,6 +759,12 @@ It&apos;s Used to optimize queries, so that heavier calculations don&apos;t need
 Internally it asks all up-stream DataSources what factors would determine their caching.
 So if part of the supplying DataSources would have a changed parameter (like a different filter), it will still run the full query and cache the results again. </p>
 </section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.Caching.ListCache.html">ListCache</a></h4>
+      <section><p>Responsible for caching lists / streams. Usually used in queries or sources which have an intensive loading or querying time.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.Caching.ListCacheItem.html">ListCacheItem</a></h4>
+      <section><p>Cache Item in the List-Cache. </p>
+</section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.Caching.RootCacheBase.html">RootCacheBase</a></h4>
       <section><p>The Root Cache is the main cache for App States. It&apos;s implemented as a DataSource so that other DataSources can easily attach to it. <br>
 This is just the abstract base implementation.
@@ -764,6 +779,9 @@ The real cache must implement this and also provide platform specific adjustment
       <section><p>Marks objects which can purge it&apos;s own cache, and also force upstream caches to be purged. <br>
 This helps in scenarios where the code knows that the cache should be cleaned, but needs to rely on the whole tree to be cleaned.
 Without this, a cache would be cleared but the next-upstream would still be cached, so the next access would still return the same results. </p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.Caching.IListCache.html">IListCache</a></h4>
+      <section><p>Marks objects that can cache lists based on certain rules - including retention time and if up-stream changes should refresh the cache. </p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.Caching.IRootCache.html">IRootCache</a></h4>
       <section><p>Caching interface for Root Eav Cache. </p>
