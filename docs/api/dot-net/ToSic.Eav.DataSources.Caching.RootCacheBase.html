@@ -256,7 +256,8 @@ The real cache must implement this and also provide platform specific adjustment
   </span>
   <a id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheFullKey_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheFullKey*"></a>
   <h4 id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheFullKey" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheFullKey">CacheFullKey</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Combination of the current key and all keys of upstream cached items, to create a long unique key for this context.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -273,7 +274,8 @@ The real cache must implement this and also provide platform specific adjustment
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Full key containing own partial key and upstream keys.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -288,7 +290,8 @@ The real cache must implement this and also provide platform specific adjustment
   </span>
   <a id="ToSic_Eav_DataSources_Caching_RootCacheBase_CachePartialKey_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CachePartialKey*"></a>
   <h4 id="ToSic_Eav_DataSources_Caching_RootCacheBase_CachePartialKey" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CachePartialKey">CachePartialKey</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Unique key-id for this specific situation - could be the same for all instances, or could vary by some parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -305,7 +308,8 @@ The real cache must implement this and also provide platform specific adjustment
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>A string which is specific to this cache-item.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -320,7 +324,9 @@ The real cache must implement this and also provide platform specific adjustment
   </span>
   <a id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheTimestamp_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheTimestamp*"></a>
   <h4 id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheTimestamp" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheTimestamp">CacheTimestamp</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>System time-stamp of when the data in this cached thing was initialized or updated.
+Depending on the implementation, this may go up-stream and return an up-stream value. </p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -337,7 +343,8 @@ The real cache must implement this and also provide platform specific adjustment
     <tbody>
       <tr>
         <td><span class="xref">System.Int64</span></td>
-        <td></td>
+        <td><p>A timestamp as a long number</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -352,7 +359,8 @@ The real cache must implement this and also provide platform specific adjustment
   </span>
   <a id="ToSic_Eav_DataSources_Caching_RootCacheBase_Lists_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.Lists*"></a>
   <h4 id="ToSic_Eav_DataSources_Caching_RootCacheBase_Lists" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.Lists">Lists</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Advanced caching of lists which have queried some of the data in this cache, and want to retain the results of the query till the root changes. </p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -384,7 +392,9 @@ The real cache must implement this and also provide platform specific adjustment
   </span>
   <a id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheChanged_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheChanged*"></a>
   <h4 id="ToSic_Eav_DataSources_Caching_RootCacheBase_CacheChanged_System_Int64_" data-uid="ToSic.Eav.DataSources.Caching.RootCacheBase.CacheChanged(System.Int64)">CacheChanged(Int64)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Detect if the cache has old data, by comparing it to a timestamp which may be newer. <br>
+This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -403,7 +413,8 @@ The real cache must implement this and also provide platform specific adjustment
       <tr>
         <td><span class="xref">System.Int64</span></td>
         <td><span class="parametername">newCacheTimeStamp</span></td>
-        <td></td>
+        <td><p>New time stamp to compare with</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -418,7 +429,8 @@ The real cache must implement this and also provide platform specific adjustment
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the timestamps differ, false if it&apos;s the same</p>
+</td>
       </tr>
     </tbody>
   </table>
