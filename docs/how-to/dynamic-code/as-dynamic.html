@@ -100,6 +100,23 @@
 <h1 id="asdynamic---magic-objects">AsDynamic(...) - Magic Objects</h1>
 
 <p>To make a complex system like the EAV work, the real objects like the <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> must very very smart and complicated. This would not be fun to use in razor, where you would prefer a simple <code>@Something.Property</code> syntax. This is where <code>AsDynamic(...)</code> comes in. </p>
+<h2 id="how-to-use">How to Use</h2>
+<p>If you have an <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> 
+or you&#39;re not sure if it&#39;s either an IEntity or a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>, 
+just pass it through <code>AsDynamic(...)</code> and the result will be a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>. 
+You can then access the properties with the simple <code>thing.Property</code> syntax.</p>
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponent
+@{
+    var unknown = App.Data[&quot;Default&quot;].List.First(); // this will be an IEntity
+    var myThing = AsDynamic(unknown);
+}
+&lt;div&gt;@myThing.FirstName&lt;/div&gt;
+</code></pre><div class="NOTE"><h5>Note</h5><p>Results of AsDynamic are dynamically typed, so you can write <code>.Anything</code> behind it. 
+But the data coming out of it is strongly typed, so <code>Content.Birthday</code> is a real date object.</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p><a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> objects also have some additional properties like 
+<code>EntityId</code> or <code>Parents(...)</code>. Check out the API docs.</p>
+</div>
 <h2 id="how-it-works">How it works</h2>
 <p>AsDynamic has many signatures accepting a variety of input values. It then returns an <code>dynamic</code> object which is either a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>. These are the things AsDynamic can process:</p>
 <ul>
