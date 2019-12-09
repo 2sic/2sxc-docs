@@ -103,7 +103,7 @@
   
   <h1 id="ToSic_Eav_DataSources_Query" data-uid="ToSic.Eav.DataSources.Query" class="text-break">Class Query
   </h1>
-  <div class="markdown level0 summary"><p>Provides a data-source to a query, but won&apos;t assemble the query unless accessed. </p>
+  <div class="markdown level0 summary"><p>Provides a data-source to a query, but won&apos;t assemble/compile the query unless accessed (lazy). </p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -116,6 +116,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.Queries.IQuery.html">IQuery</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IInAppAndZone.html">IInAppAndZone</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IInZone.html">IInZone</a></div>
@@ -124,7 +126,6 @@
     <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
     <div><a class="xref" href="ToSic.Eav.Caching.ICacheKey.html">ICacheKey</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -199,20 +200,52 @@
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
   <h5 id="ToSic_Eav_DataSources_Query_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class Query : DataSourceBase, IHasLog, IDataSource, IInAppAndZone, IInZone, IInApp, ICacheExpiring, ITimestamped, ICacheKey, ICanPurgeListCache, IDataTarget</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class Query : DataSourceBase, IHasLog, IDataTarget, IQuery, IDataSource, IInAppAndZone, IInZone, IInApp, ICacheExpiring, ITimestamped, ICacheKey, ICanPurgeListCache</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_Query_Definition.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.Query.Definition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L21">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_Query_Definition_" data-uid="ToSic.Eav.DataSources.Query.Definition*"></a>
+  <h4 id="ToSic_Eav_DataSources_Query_Definition" data-uid="ToSic.Eav.DataSources.Query.Definition">Definition</h4>
+  <div class="markdown level1 summary"><p>The underlying definition for the current query so you can check what&apos;s inside.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QueryDefinition Definition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_Query_Out.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.Query.Out%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L29">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L31">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_Query_Out_" data-uid="ToSic.Eav.DataSources.Query.Out*"></a>
   <h4 id="ToSic_Eav_DataSources_Query_Out" data-uid="ToSic.Eav.DataSources.Query.Out">Out</h4>
-  <div class="markdown level1 summary"><p>Standard out - ensures that the Out is not compiled until accessed, and then auto-assembles the query</p>
+  <div class="markdown level1 summary"><p>Standard out. Note that the Out is not prepared until accessed the first time,
+when it will auto-assembles the query</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -236,9 +269,57 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Out">DataSourceBase.Out</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_Query_Param_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.Query.Param(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L69">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_Query_Param_" data-uid="ToSic.Eav.DataSources.Query.Param*"></a>
+  <h4 id="ToSic_Eav_DataSources_Query_Param_System_String_System_String_" data-uid="ToSic.Eav.DataSources.Query.Param(System.String,System.String)">Param(String, String)</h4>
+  <div class="markdown level1 summary"><p>Add/Set a parameter for the query, which will be used by the [Params:Xxx] tokens.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Param(string key, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key - the part used in [Params:key]</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value it will resolve to. Can also be another token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.Queries.IQuery.html">IQuery</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
@@ -264,9 +345,6 @@
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a>
   </div>
-  <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
-  </div>
 </article>
           </div>
           
@@ -278,7 +356,7 @@
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_Query.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.Query%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Query.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
