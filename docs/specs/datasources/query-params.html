@@ -13,9 +13,9 @@
   
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Query Basics | 2sxc and EAV 10 </title>
+    <title>Query Parameters / Tokens | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Query Basics | 2sxc and EAV 10 ">
+    <meta name="title" content="Query Parameters / Tokens | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -96,55 +96,79 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.DataSources.Query">
-<h1 id="query-basics">Query Basics</h1>
+            <article class="content wrap" id="_content" data-uid="Specs.DataSources.QueryParams">
+<h1 id="query-parameters--tokens">Query Parameters / Tokens</h1>
 
-<p>Queries are special Data-Sources which internally chain various other Data-Sources to query the underlying data. They can be built in two ways:</p>
+<p>Queries can be parameterized with token placeholders like <code>[QueryString:Id]</code>, <code>[App:Settings:PageSize]</code> or <code>[Params:Sort]</code> <em>(new in v10.22)</em>. </p>
+<p>To understand these placeholder tokens, best read up on <a class="xref" href="configuration.html">DataSource Concept: Configuration Injection using Tokens</a> and <a class="xref" href="../lookup/placeholder-tokens.html">Placeholder Tokens</a>. 
+There you&#39;ll read about how tokens work, where they come from, how to use default/fallback values and more. </p>
+<p>This page explains how Queries have four special types of parameters, namely these:</p>
 <ol>
-<li>Directly in your code</li>
-<li>Built from a configuration which is itself stored as a set of entities</li>
+<li>Special LookUp: <code>[Params:...]</code> (new in v10.22)</li>
+<li>Special LookUp: <code>[In:...]</code></li>
+<li>Option to override the values during testing with <code>TestParameters</code></li>
 </ol>
-<p>Such queries are then used to give data to a view, to a JavaScript SPA (throug a simple REST API) or to your code, which can then perform other operations with the data. </p>
-<h2 id="how-to-use">How to use</h2>
-<ol>
-<li>Usually you&#39;ll configure queries in the VisualQuery Designer in the App settings. Here&#39;s a <a href="https://2sxc.org/en/learn/visual-query-designer">Getting Started with Visual Query</a>. </li>
-<li>There are a lot of <a href="https://2sxc.org/en/blog/tag/visual-query-designer">Blogs about Visual Query Designer</a> that will help you start.</li>
-</ol>
-<p>Then you will usually configure a view to use this.</p>
-<h2 id="using-queries-in-your-code">Using Queries in your Code</h2>
+<h2 id="params-lookup-new-in-1022"><code>Params</code> LookUp (new in 10.22)</h2>
+<p>The query now has a special LookUp for the source <code>Params</code>. This should help you make nicer, more flexible queries and also allow you to set these query parameters from C# code. </p>
+<div class="TIP"><h5>Tip</h5><p>You can set these params in the Query configuration dialog
+TODO: PIC</p>
+</div>
+<div class="NOTE"><h5>Note</h5><p>Your queries can also use params that you didn&#39;t configure - but they will return nothing unless you would set them in your C# code before you run the query.</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>We recommend to always use the Params for everything as it&#39;s simpler to see all the parameters your query depends on.<br>So if you have a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a> expecting a value from the url, we recommend that you<br>Create a param <code>FilterLastName=[QueryString:LastName]</code><br>In your data-source configuration, use <code>[Params:FilterLastName]</code></p>
+</div>
+<h2 id="in-lookup"><code>In</code> LookUp</h2>
+<p>Data Sources in a query can also retrieve values from another data-source which is a source. Use the <code>[In:source-name:attribute-name]</code> syntax. 
+So if you have a Value DataSource which has the <code>Default</code>-in with the data to filter, and a <code>Module</code>-in comes from the Module Settings, 
+you would write <code>[In:Module:Category]</code> to filter by the the category as selected in the module settings. </p>
+<h2 id="testing-your-query-with-test-parameters">Testing your Query with Test Parameters</h2>
+<p>The <a class="xref" href="visual-query.html">VisualQuery Designer</a> also allows you to set test-values for testing the query. The test-values should define all the full tokens to replace. Example:</p>
+<pre><code>[QueryString:Id]=27
+[QueryString:SortOrder]=Desc
+[Params:FilterLastName]=Mettler
+[Params:FilterNameSort]=[QueryString:SortOrder||Asc]
+</code></pre><div class="TIP"><h5>Tip</h5><p>As you can see in the example, even test params can contain more tokens if you need them. 
+In the above example, <code>Params:FilterNameSort</code> would resolve to <code>Desc</code> 
+because it will first check the <code>QueryString:SortOrder</code> which also has a test-value of <code>Desc</code>.</p>
+</div>
+<h2 id="setting-query-parameters-in-your-code">Setting Query Parameters in your Code</h2>
 <p>In a Razor or WebApi file, you can always write something like this</p>
+<pre><code class="lang-c#">var allPosts = App.Query[&quot;AllBlogPosts&quot;];
+allPosts.Param(&quot;Category&quot;, &quot;Web&quot;);
+var posts = allPosts[&quot;Default&quot;];
+
+var dynPosts = AsList(posts);
+</code></pre><div class="WARNING"><h5>Warning</h5><p>Query objects are single use - which is an internal optimization for reliable, rapid access. 
+So if you retrieve various streams, the query still only executes once.<br>But if you set a parameter after running the query, you will get an error, unless you call <code>Reset()</code> first. 
+See the next example:</p>
+</div>
 <pre><code class="lang-c#">var query = App.Query[&quot;AllBlogPosts&quot;];
-var posts = query[&quot;Default&quot;];
+query.Param(&quot;Category&quot;, &quot;Web&quot;);
+var webPosts = AsList(query);
 
-// you could now work with the data, or you could cast all results into dynamic objects, like...
-var categories = AsList(query[&quot;Categories&quot;]);
+// this would result in an error
+// allPosts.Param(&quot;Category&quot;, &quot;IT&quot;);
 
-// if all you need is the &quot;Default&quot; stream as dynamic, you can write
-var posts = AsList(query);
-</code></pre><p>Now you can loop through the data as you would otherwise, for example: </p>
-<pre><code class="lang-c#">&lt;ol&gt;
-    @foreach(var person in AsList(query[&quot;Persons&quot;]))
-    {
-        &lt;li&gt;@person.FullName&lt;/li&gt;
-    }
-&lt;/ol&gt;
-</code></pre><h2 id="technical-implementation">Technical Implementation</h2>
-<p>The data which defines a query is stored as IEntity data. </p>
+// this works
+query.Reset();
+query.Param(&quot;Category&quot;, &quot;IT&quot;);
+var itPosts = AsList(query);
+</code></pre><h2 id="read-also">Read also</h2>
 <ul>
-<li>So there is a header IEntity which is read through an <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a>.</li>
-<li>It contains the name, and a bunch of metadata IEntity items which are read as <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryPartDefinition.html">QueryPartDefinition</a>. </li>
-<li>It also contains a list of <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.Connection.html">Connections</a> which define how the DataSources pass data from one source to another.</li>
-<li>There are also test-parameters on such a query, which are only used for testing in the <a class="xref" href="visual-query.html">VisualQuery Designer</a></li>
+<li><a class="xref" href="visual-query.html">VisualQuery Designer</a></li>
+<li>APIs<ul>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.Query.html">Query</a></li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a></li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryPartDefinition.html">QueryPartDefinition</a></li>
 </ul>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="query-params.html">Query Parameters / Tokens</a></li>
+</li>
 <li><a href="https://2sxc.org/en/blog/tag/visual-query-designer">Blog Posts about Visual Query Designer</a></li>
-<li><a class="xref" href="datasource.html">DataSources</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 07.00</li>
+<li>In added in 2sxc 07.00</li>
+<li>Params added in 2sxc 10.22</li>
 </ol>
 </article>
           </div>
@@ -154,7 +178,7 @@ var posts = AsList(query);
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/specs/datasources/query.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/specs/datasources/query-params.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
