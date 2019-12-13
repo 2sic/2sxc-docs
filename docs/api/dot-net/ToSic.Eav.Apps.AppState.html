@@ -113,11 +113,14 @@ It also manages and caches relationships between entities of the same app.</p>
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="ToSic.Eav.Logging.HasLog.html">HasLog</a></div>
-    <div class="level2"><span class="xref">AppState</span></div>
+    <div class="level2"><a class="xref" href="ToSic.Eav.Apps.AppBase.html">AppBase</a></div>
+    <div class="level3"><span class="xref">AppState</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
+    <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
+    <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
     <div><a class="xref" href="ToSic.Eav.Data.IEntitiesSource.html">IEntitiesSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Metadata.IHasMetadataSource.html">IHasMetadataSource</a></div>
@@ -127,6 +130,12 @@ It also manages and caches relationships between entities of the same app.</p>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="ToSic.Eav.Apps.AppBase.html#ToSic_Eav_Apps_AppBase_ZoneId">AppBase.ZoneId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.Apps.AppBase.html#ToSic_Eav_Apps_AppBase_AppId">AppBase.AppId</a>
+    </div>
     <div>
       <a class="xref" href="ToSic.Eav.Logging.HasLog.html#ToSic_Eav_Logging_HasLog_Log">HasLog.Log</a>
     </div>
@@ -138,7 +147,7 @@ It also manages and caches relationships between entities of the same app.</p>
   <h6><strong>Assembly</strong>: ToSic.Eav.Core.dll</h6>
   <h5 id="ToSic_Eav_Apps_AppState_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppState : HasLog, IHasLog, IAppIdentityLight, IEntitiesSource, IHasMetadataSource, IMetadataSource, ICacheExpiring, ITimestamped</code></pre>
+    <pre><code class="lang-csharp hljs">public class AppState : AppBase, IHasLog, IAppIdentity, IZoneIdentity, IAppIdentityLight, IEntitiesSource, IHasMetadataSource, IMetadataSource, ICacheExpiring, ITimestamped</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -147,7 +156,7 @@ It also manages and caches relationships between entities of the same app.</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_DynamicUpdatesCount.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.DynamicUpdatesCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L73">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L70">View Source</a>
   </span>
   <h4 id="ToSic_Eav_Apps_AppState_DynamicUpdatesCount" data-uid="ToSic.Eav.Apps.AppState.DynamicUpdatesCount">DynamicUpdatesCount</h4>
   <div class="markdown level1 summary"><p>Show how many times the app has been Dynamically updated - in case we run into cache rebuild problems.</p>
@@ -177,7 +186,7 @@ It also manages and caches relationships between entities of the same app.</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_FirstLoadCompleted.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.FirstLoadCompleted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L68">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L65">View Source</a>
   </span>
   <h4 id="ToSic_Eav_Apps_AppState_FirstLoadCompleted" data-uid="ToSic.Eav.Apps.AppState.FirstLoadCompleted">FirstLoadCompleted</h4>
   <div class="markdown level1 summary"><p>Shows that the initial load has completed</p>
@@ -207,7 +216,7 @@ It also manages and caches relationships between entities of the same app.</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_Loading.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.Loading%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L63">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L60">View Source</a>
   </span>
   <h4 id="ToSic_Eav_Apps_AppState_Loading" data-uid="ToSic.Eav.Apps.AppState.Loading">Loading</h4>
   <div class="markdown level1 summary"><p>Shows that the app is loading / building up the data.</p>
@@ -234,38 +243,6 @@ It also manages and caches relationships between entities of the same app.</p>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_AppId.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.AppId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L25">View Source</a>
-  </span>
-  <a id="ToSic_Eav_Apps_AppState_AppId_" data-uid="ToSic.Eav.Apps.AppState.AppId*"></a>
-  <h4 id="ToSic_Eav_Apps_AppState_AppId" data-uid="ToSic.Eav.Apps.AppState.AppId">AppId</h4>
-  <div class="markdown level1 summary"><p>The app id as used internally</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int AppId { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>The App ID this thing belongs to</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_CacheTimestamp.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.CacheTimestamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -365,7 +342,7 @@ Depending on the implementation, this may go up-stream and return an up-stream v
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_List.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.List%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L30">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L27">View Source</a>
   </span>
   <a id="ToSic_Eav_Apps_AppState_List_" data-uid="ToSic.Eav.Apps.AppState.List*"></a>
   <h4 id="ToSic_Eav_Apps_AppState_List" data-uid="ToSic.Eav.Apps.AppState.List">List</h4>
@@ -396,7 +373,7 @@ Depending on the implementation, this may go up-stream and return an up-stream v
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_Relationships.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.Relationships%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L58">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState.cs/#L55">View Source</a>
   </span>
   <a id="ToSic_Eav_Apps_AppState_Relationships_" data-uid="ToSic.Eav.Apps.AppState.Relationships*"></a>
   <h4 id="ToSic_Eav_Apps_AppState_Relationships" data-uid="ToSic.Eav.Apps.AppState.Relationships">Relationships</h4>
@@ -683,6 +660,12 @@ This is implemented in each object, because sometimes it compares its own timest
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a>
