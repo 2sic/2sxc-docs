@@ -109,7 +109,48 @@ Usually it will then find a reference to a ContentBlock, from which it determine
 It could also find that the template specifies a query, in which case it would retrieve that. <br>
 <em>Was previously called ModuleDataSource</em></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><h1 id="data-source-cmsblockdatasource--module-instance-datasource">Data Source: CmsBlockDataSource / Module-Instance DataSource</h1>
+<p>The <strong>Module-Instance DataSource</strong> <a class="xref" href="../../specs/datasources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../specs/datasources/list-all.html">Standard 2sxc/DNN Data Sources</a>. It is the default data source as it directly delivers module-instance data and is used for all scenarios which don&#39;t explicitly have a query, and it can also be used as part of a query.  </p>
+<h2 id="how-to-use-with-the-visual-query">How to use with the Visual Query</h2>
+<p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> it is already in the default / initial query: </p>
+<p><img src="/assets/data-sources/module-basic.png" width="100%"></p>
+<p>The above example shows:</p>
+<ol>
+<li>all data start in the cache <em>ICache</em></li>
+<li>it is then by default passed through the <a class="xref" href="ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter</a></li>
+<li>then it enters this Instance/Module, which gets the current ModuleInstance and passes on the data which has been assigned to it</li>
+</ol>
+<h2 id="using-moduleinstance-data-for-configuration">Using Module/Instance Data For Configuration</h2>
+<p>Things get really exciting when you use values which the user edited in the module as a setting in your query. Here&#39;s an example: </p>
+<p><img src="/assets/data-sources/module-providing-settings-to-sort.png" width="100%"></p>
+<p>As you can see, the <em>Default</em> out of the <strong>ModuleDataSource</strong> is passed into the <a class="xref" href="ToSic.Eav.DataSources.ValueSort.html">ValueSort</a> data source with the stream-name <em>Settings</em> and is then used in a token to configure behaviour of the sort. </p>
+<h2 id="manually-assigning-a-module-instance-id-2sxc-99">Manually Assigning a Module Instance ID (2sxc 9.9)</h2>
+<p>In 2sxc 9.9 we added the configuration dialog, so you can specify what module the data should come from. This allows you to have configuration-modules or primary-data-modules, which are re-used in queries:</p>
+<p><img src="/assets/data-sources/module-instance-configured.png" width="100%"></p>
+<h2 id="programming-with-the-moduledatasource-datasource">Programming With The ModuleDataSource DataSource</h2>
+<blockquote><p>We recommend to use the Visual Query where possible, 
+as it&#39;s easier to understand and is identical for C# and JavaScript. 
+It&#39;s also better because it separates data-retrieval from visualization.</p>
+</blockquote>
+<p>The only property you need to set is <code>InstanceId</code> (2sxc 9.9+) if you want to provide a different module-id. </p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li>datasource / data stream</li>
+<li><a class="xref" href="../../specs/datasources/list-all.html">List of all EAV Data Sources</a></li>
+<li>query / visual query</li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some examples in this demo App</p>
+<ul>
+<li><a href="https://github.com/2sic/app-demo-visual-query/releases/latest">Demo App with examples for most DataSources</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in EAV 4.x, 2sxc ?</li>
+<li>Added ability to configure in in the visual-query (2sxc 9.9)</li>
+</ol>
+<h2 id="api-documentation">API Documentation</h2>
+</div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
@@ -207,7 +248,7 @@ public sealed class CmsBlock : DataSourceBase, IDataSource, IAppIdentity, IZoneI
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_CmsBlock__ctor.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.CmsBlock.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L115">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L116">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_CmsBlock__ctor_" data-uid="ToSic.Sxc.DataSources.CmsBlock.#ctor*"></a>
   <h4 id="ToSic_Sxc_DataSources_CmsBlock__ctor" data-uid="ToSic.Sxc.DataSources.CmsBlock.#ctor">CmsBlock()</h4>
@@ -224,7 +265,7 @@ public sealed class CmsBlock : DataSourceBase, IDataSource, IAppIdentity, IZoneI
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_CmsBlock_InstanceId.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.CmsBlock.InstanceId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L53">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L54">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_CmsBlock_InstanceId_" data-uid="ToSic.Sxc.DataSources.CmsBlock.InstanceId*"></a>
   <h4 id="ToSic_Sxc_DataSources_CmsBlock_InstanceId" data-uid="ToSic.Sxc.DataSources.CmsBlock.InstanceId">InstanceId</h4>
@@ -256,7 +297,7 @@ It&apos;s named Instance-Id to be more neutral as we&apos;re opening it to other
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_CmsBlock_LogId.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.CmsBlock.LogId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L39">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L40">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_CmsBlock_LogId_" data-uid="ToSic.Sxc.DataSources.CmsBlock.LogId*"></a>
   <h4 id="ToSic_Sxc_DataSources_CmsBlock_LogId" data-uid="ToSic.Sxc.DataSources.CmsBlock.LogId">LogId</h4>
@@ -288,7 +329,7 @@ It&apos;s named Instance-Id to be more neutral as we&apos;re opening it to other
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_CmsBlock_OverrideView.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.CmsBlock.OverrideView%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L265">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L266">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_CmsBlock_OverrideView_" data-uid="ToSic.Sxc.DataSources.CmsBlock.OverrideView*"></a>
   <h4 id="ToSic_Sxc_DataSources_CmsBlock_OverrideView" data-uid="ToSic.Sxc.DataSources.CmsBlock.OverrideView">OverrideView</h4>
@@ -354,10 +395,10 @@ For example, when previewing a different template. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_CmsBlock.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.CmsBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Sxc/DataSources/CmsBlock.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/DataSources/CmsBlock.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

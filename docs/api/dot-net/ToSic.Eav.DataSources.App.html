@@ -106,7 +106,59 @@
   <div class="markdown level0 summary"><p>All the data inside an App. <br>
 For example, it has a variable amount of Out-streams, one for each content-type in the app.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><p>The <strong>App</strong> <a class="xref" href="../../specs/datasources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../specs/datasources/list-all.html">Standard EAV Data Sources</a>. It provides all items of the current App or of another App if needed. </p>
+<h2 id="how-to-use-with-the-visual-query">How to use with the Visual Query</h2>
+<p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> you can just drag it into your query. Now you can create out-connections with the names of the types you need - which looks like this:</p>
+<p><img src="/assets/data-sources/app-out-2-in-0.png" width="100%"></p>
+<p> There are three common use cases: </p>
+<h3 id="1-using-app-with-the-current-app">1. Using App With The Current App</h3>
+<p>You can either just use it without any <em>In</em> stream, then it will just deliver the published items. This is because without an <em>In</em>, the <strong>App</strong> will automatically build an In providing published only. </p>
+<p>If you do provide any kind of in, it will use that as the source. So if you provide a Publishing-Source on the in, which will cause the <strong>App DataSource</strong> to differ the result based on the user who is looking at it. So editors would see unpublished as well: </p>
+<p><img src="/assets/data-sources/app-compare-no-in-with-publishing-filter.png" width="100%"></p>
+<h3 id="2-using-app-with-other-app">2. Using App with Other App</h3>
+<p>The App-DataSource can also be configured to deliver data from <em>another</em> app. For this, to configure and set the ZoneId and AppId:</p>
+<p><img src="/assets/data-sources/app-from-other-app.png" width="100%"></p>
+<p>You can also deliver data from different Apps by using multiple App sources: </p>
+<p><img src="/assets/data-sources/app-multiple-apps.png" width="100%"></p>
+<h2 id="programming-with-the-app-datasource">Programming With The App DataSource</h2>
+<blockquote><p>We recommend to use the Visual Query where possible, 
+as it&#39;s easier to understand and is identical for C# and JavaScript. 
+It&#39;s also better because it separates data-retrieval from visualization.</p>
+</blockquote>
+<p>Important: to access data of the current App, please use the <code>App.Data</code> as it&#39;s a pre-build object with the same streams. For example, use <code>App.Data[&quot;BlogPost&quot;]</code> to get all the BlogPost items. </p>
+<p>An example code </p>
+<pre><code class="lang-razor">@{
+  var blog = CreateSource&lt;ToSic.Eav.DataSources.App&gt;();
+  blog.ZoneSwitch = 2; // go to Zone 2
+  blog.AppSwitch = 403; // go to App 403
+}
+@foreach(var post in AsDynamic(blog[&quot;BlogPost&quot;]))
+{
+  &lt;div&gt;@post.EntityTitle&lt;/div&gt;
+}
+</code></pre><p>The previous example creates an App source to the zone 2, app 403 and retrieves all items of type  <code>BolgPost</code> to show in a loop. </p>
+<h3 id="important-when-coding">Important When Coding</h3>
+<p>Note that data sources only retrieve data once, and then ignore any further configuration. So you must set Zone/App before accessing the data. </p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li>datasource / data stream</li>
+<li><a class="xref" href="../../specs/datasources/list-all.html">List of all EAV Data Sources</a></li>
+<li>query / visual query</li>
+</ul>
+<ul>
+<li><a class="xref" href="../../how-to/dynamic-code/object-app.html">Razor examples using App.Data</a></li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some examples in this demo App</p>
+<ul>
+<li><a href="https://github.com/2sic/app-demo-visual-query/releases/latest">Demo App with examples for most DataSources</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in EAV 3.x, in ca. 2sxc 6.x</li>
+</ol>
+<h2 id="api-documentation">API Documentation</h2>
+</div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
@@ -369,7 +421,7 @@ Note that this can only be done before ever accessing the app - once the object 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_App.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.App%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Eav/DataSources/app.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
                     <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App.cs/#L15" class="contribution-link">View Source</a>

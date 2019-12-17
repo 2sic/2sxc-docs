@@ -119,7 +119,7 @@ Important for dynamic code files like Razor or WebApi. Note that there are many 
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IDynamicCode_App.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IDynamicCode.App%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Sxc/Web/IDynamicCode.App.md/#L2">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/Web/IDynamicCode.cs/#L40">View Source</a>
@@ -128,7 +128,11 @@ Important for dynamic code files like Razor or WebApi. Note that there are many 
   <h4 id="ToSic_Sxc_Web_IDynamicCode_App" data-uid="ToSic.Sxc.Web.IDynamicCode.App">App</h4>
   <div class="markdown level1 summary"><p>A fully prepared <a class="xref" href="ToSic.Sxc.Apps.IApp.html">IApp</a> object letting you access all the data and queries in the current app. </p>
 </div>
-  <div class="markdown level1 conceptual"></div>
+  <div class="markdown level1 conceptual"><p>You&#39;ll usually want to access the data, like <code>App.Data[&quot;Categories&quot;]</code> or the queries <code>App.Query[&quot;AllPosts&quot;]</code>.  </p>
+<pre><code class="lang-cs">foreach(var cat in AsDynamic(App.Data[&quot;Categories&quot;])) {
+    @cat.Name
+}
+</code></pre></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IApp App { get; }</code></pre>
@@ -186,7 +190,7 @@ To tell if it&apos;s the demo/default item, use <a class="xref" href="ToSic.Sxc.
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IDynamicCode_Data.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IDynamicCode.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Sxc/Web/IDynamicCode.Data.md/#L2">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/ToSic.Sxc/Web/IDynamicCode.cs/#L47">View Source</a>
@@ -195,7 +199,11 @@ To tell if it&apos;s the demo/default item, use <a class="xref" href="ToSic.Sxc.
   <h4 id="ToSic_Sxc_Web_IDynamicCode_Data" data-uid="ToSic.Sxc.Web.IDynamicCode.Data">Data</h4>
   <div class="markdown level1 summary"><p>The data prepared for the current Code. Usually user data which was manually added to the instance, but can also be a query.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
+  <div class="markdown level1 conceptual"><p>You&#39;ll usually want to access the &quot;Default&quot; stream like <code>Data[&quot;Default&quot;]</code>.  </p>
+<pre><code class="lang-cs">foreach(var person in AsDynamic(Data[&quot;Default&quot;])) {
+    @person.Name
+}
+</code></pre></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IBlockDataSource Data { get; }</code></pre>
