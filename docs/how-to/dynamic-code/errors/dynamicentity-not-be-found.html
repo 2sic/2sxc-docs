@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+  <!-- End Google Tag Manager -->
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Error: The type or namespace name 'DynamicEntity' could not be found | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Error: The type or namespace name 'DynamicEntity' could not be found | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../../../images/logos/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logos/2sxc-10-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="HowTo.DynamicCode.Errors.DynamicEntityNotFound">
+<h1 id="error-the-type-or-namespace-name-dynamicentity-could-not-be-found">Error: The type or namespace name &#39;DynamicEntity&#39; could not be found</h1>
+
+<p>If you see an error like this: </p>
+<pre><code>Error: System.Web.HttpCompileException (0x80004005): ...: error CS0246: The type or namespace name &#39;DynamicEntity&#39; could not be found (are you missing a using directive or an assembly reference?) 
+</code></pre><p>It usually means that you have code using DynamicEntity which had to be moved to another namespace for consistency. We&#39;re sorry about the breaking change. </p>
+<p>From what we see it mainly affects the very old FAQ app which had some very old coding style in it for LINQ. In this case it was not possible to clean 2sxc and still ensure that this works, because of type-casting restrictions in C# related to <a href="https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance">covariance and contravariance</a>. </p>
+<h2 id="background-dynamicentity-was-moved">Background: DynamicEntity was moved</h2>
+<p>To create the public documentation we had to make sure our API was consistent, and IEntity was one of the exceptions. Before 2sxc 10.20 it was in the namespace <code>ToSic.SexyContent</code>. We standardized it now to <code>ToSic.Sxc.Data</code> so the full name is <code>ToSic.Sxc.Data.DynamicEntity</code>. </p>
+<h2 id="quick-fix-change-the-namespace">Quick Fix: Change the namespace</h2>
+<p>Your code probably has a <code>@using ToSic.SexyContent</code>. You should change this to </p>
+<pre><code>@using ToSic.Sxc.Data;
+</code></pre><p>And everything should work. But please also check the good fix below:</p>
+<h2 id="good-fix-change-to-dynamic">Good Fix: Change to <code>&lt;dynamic&gt;</code></h2>
+<p>Razor code shouldn&#39;t actually need to know the type of this <code>dynamic</code> entity. So it&#39;s better to replace occurances of DynamicEntity with the appropriate <code>dynamic</code>. For example, replace <code>List&lt;DynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code> (note that <code>List&lt;dynamic&gt;</code> won&#39;t work because of covariance restrictions).</p>
+<p>In the example of the FAQ app, it&#39;s recommended you change line 23</p>
+<pre><code>&lt;li class=&quot;sc-element faq-set&quot; data-tags=&quot;@String.Join(&quot;,&quot;, ((List&lt;DynamicEntity&gt;)q.Categories).Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
+</code></pre><p>to</p>
+<pre><code>&lt;li class=&quot;sc-element faq-set&quot; 
+  data-tags=&quot;@String.Join(&quot;,&quot;, 
+    (q.Categories as IEnumerable&lt;dynamic&gt;)
+      .Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
+</code></pre><p>To better understand this, best consult the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/linq/home">LINQ Tutorials</a></p>
+<h2 id="full-error-example">Full Error Example</h2>
+<p>A full error can look like this:</p>
+<pre><code>Error: System.Web.HttpCompileException (0x80004005): ...\Portals\...\2sxc\FAQ with Categories\_All questions (sorted) of a selected category.cshtml(23): error CS0246: The type or namespace name &#39;DynamicEntity&#39; could not be found (are you missing a using directive or an assembly reference?) at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 107 at ToSic.Sxc.Engines.RazorEngine.InitWebpage() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 128 at ToSic.Sxc.Engines.RazorEngine.Init() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 43 at ToSic.Sxc.Engines.EngineBase.Init(ICmsBlock cmsBlock, Purpose purpose, ILog parentLog) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Engines\EngineBase.cs:line 76 at ToSic.Sxc.Blocks.CmsBlock.GetRenderingEngine(Purpose renderingPurpose) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 122 at ToSic.Sxc.Blocks.CmsBlock.Render() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 56
+</code></pre><p>Here&#39;s a print-screen:</p>
+<p><img src="/assets/how-to/dynamic-code/errors/dynamicentity-not-found.jpg" width="100%"></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/how-to/dynamic-code/errors/dynamicentity-not-be-found.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
