@@ -103,7 +103,10 @@
 <p>You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page. </p>
 <h2 id="how-to-use">How to use</h2>
 <p>In your razor page (.cshtml file) you can add a script block implementing this, as follows:</p>
-<pre><code class="lang-c#">@functions
+<pre><code class="lang-c#">@using ToSic.Eav.Run;
+@using ToSic.Sxc.Dnn.Run;
+@using ToSic.Sxc.Search;
+@functions
 {
     // this method is optional - your code wouldn&#39;t need it, but it&#39;s in here to show how it would work together
     // the CustomizeData would be called first, and potentially modify what is in the Data-object
@@ -118,11 +121,12 @@
     /// &lt;param name=&quot;searchInfos&quot;&gt;&lt;/param&gt;
     /// &lt;param name=&quot;moduleInfo&quot;&gt;&lt;/param&gt;
     /// &lt;param name=&quot;startDate&quot;&gt;&lt;/param&gt;
-    public override void CustomizeSearch(Dictionary&lt;string, List&lt;ToSic.SexyContent.Search.ISearchInfo&gt;&gt; searchInfos, DotNetNuke.Entities.Modules.ModuleInfo moduleInfo, DateTime startDate)
+    public override void CustomizeSearch(Dictionary&lt;string, List&lt;ISearchItem&gt;&gt; searchInfos, IContainer moduleInfo, DateTime beginDate)
     {
         foreach (var si in searchInfos[&quot;Default&quot;])
         {
-            si.QueryString = &quot;mid=&quot;+ moduleInfo.ModuleID + &quot;&amp;feature=&quot; + si.Entity.EntityId;
+            // tell the search system what url it should use in the result
+            si.QueryString = &quot;mid=&quot;+ (moduleInfo as DnnContainer).Id + &quot;&amp;feature=&quot; + si.Entity.EntityId;
         }
     }
 }
@@ -135,7 +139,7 @@
 <li>Note that during the search index, no Request-variables exist.</li>
 <li>So your method will cause an error if it does something like var x = Request[&quot;Category&quot;].</li>
 <li>In case of an error, the index will still continue to work, but your changes to the data will fail</li>
-<li>To help you with this, a new property called InstancePurpose was added. It tells you if this view/template was created for displaying or for indexing.</li>
+<li>To help you with this, a new property called Purpose was added. It tells you if this view/template was created for displaying or for indexing.</li>
 </ol>
 </li>
 <li>2sxc will then use the data and create SearchItems, ready to index.<ol>
@@ -153,7 +157,7 @@
 </ol>
 <h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="purpose.html">InstancePurpose</a> - which tells you why the current code is running so you could change the data added</li>
+<li><a class="xref" href="purpose.html">Purpose</a> - which tells you why the current code is running so you could change the data added</li>
 <li><a class="xref" href="customizedata.html">CustomizeData</a></li>
 </ul>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
