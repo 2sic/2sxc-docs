@@ -96,79 +96,30 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.WebApis">
+            <article class="content wrap" id="_content" data-uid="HowTo.WebApi.Intro">
 <h1 id="http-webapi-and-rest-api">Http WebAPI and REST API</h1>
 
-<p><em>note that this documentation is for 2sxc 8.10+. Previous versions aready support most of these features with a different URL which still works, but those URLs are deprecated for the future.</em></p>
-<p>The WebApi is a set of http APIs which let you access content-items, lists of items, queries or even custom c# APIs. You can find some jQuery examples on the <a class="xref" href="../../specs/js/2sxc.html">$2sxc-WebApi page</a>.</p>
-<p>For example, assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/content/BlogPost</code></p>
-<p>...then your JS would receive a JSON with all BlogPost items. More examples:</p>
+<p>The WebApi is a set of http APIs which let you access content-items, lists of items, queries or even custom C# APIs. </p>
+<div class="TIP"><h5>Tip</h5><p>Before you start, make sure you are familiar with the <a class="xref" href="../../specs/web-api/intro.html">Specs</a> and the <a class="xref" href="../../specs/web-api/url-schema.html">URL Schema</a>.</p>
+</div>
+<h2 id="get-started">Get Started</h2>
+<p>Your 1-2-3 steps for using data endpoints are:</p>
 <ol>
-<li>Reading this: <code>[root-path]/app/auto/content/BlogPost/1050</code><br>...would give you exactly one BlogPost item (with the id 1050).</li>
-<li>Doing an http POST to this <code>[root-path]/app/auto/content/BlogPost/1050</code><br>... with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code><br>...would let you update the item 1050.</li>
-<li>This kind of a call <code>[root-path]/app/auto/query/BlogPostsByAuthor?Author=Daniel%20Mettler</code><br>...would run the pre-defined query and return the Blog Posts of this author</li>
-</ol>
-<h2 id="understanding-urls-for-in-context-vs-external-use">Understanding URLs for In-Context vs. External Use</h2>
-<p>In most cases your JS will be part of your App, so it will be running inside a 2sxc-template. In this case, you can rely on auto-detection of the app, like</p>
-<p><code>.../app/auto/content/...</code></p>
-<p>There are also cases where you want to access the app REST or WebApi from outside of the app itself. This can be from the skin (for example, to highlight all words to which your glossary-app has definitions), from another app, or from another website. In this case, auto-app detection won&#39;t work, so you&#39;ll have to specify the app-name (folder-name) in the request-path, like this:</p>
-<p><code>.../app/Glossary/content/...</code></p>
-<p>This applies to all endpoints like <code>content</code>, <code>query</code>, <code>api</code>.</p>
-<h2 id="available-endpoints-in-2sxc-810">Available Endpoints in 2sxc 8.10+</h2>
-<h3 id="query">Query</h3>
-<p>The Query endpoint can be accessed on</p>
-<ul>
-<li><code>.../app/auto/query/[your-query-name]</code> when you&#39;re accessing a query of the current App (from a dnn-page with this module), as then 2sxc uses auto-detect</li>
-<li><code>.../app/[app-folder]/query/[your-query-name]</code> using this endpoint from external (other module, other page, other website) as then auto-detect can&#39;t work. </li>
-</ul>
-<p>Note that Query endpoints only support the http-verb GET.</p>
-<h3 id="c-webapi-endpoints">C# WebAPI Endpoints</h3>
-<p><a class="xref" href="dotnet-webapi.html">C# / .net WebApis</a> are custom WebAPIs of an app. You can find a good example on the <a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a>. Calling these is as follows:</p>
-<ul>
-<li><code>.../app/auto/api/[YourName]</code> when accessing a WebApi of the current app (from a dnn-page with this module), as then 2sxc uses auto-detect</li>
-<li><code>.../app/[app-folder]/api/[YourName]</code> when using this endpoint from external, as auto-detect can&#39;t work then.</li>
-</ul>
-<h4 id="new-in-935-polymorphism--multi-edition-controllers">New in 9.35: Polymorphism / Multi-Edition Controllers</h4>
-<p>In 2sxc 9.35 we&#39;re introducing an experimental feature to publish the <strong>same</strong> api controller in multiple editions, to enable open-heart-surgery. It&#39;s called <a class="xref" href="../../specs/cms/polymorph.html">Polymorph</a>, and if you use it to place controllers in a <code>subfolder/api</code> you&#39;ll access it as follows:</p>
-<ul>
-<li><code>.../app/auto/[edition]/api/[YourName]</code> when accessing from a 2sxc-module directly with auto-detect</li>
-<li><code>.../app/[app-folder]/[edition]/api/[YourName]</code> when auto-detect can&#39;t work (external access).</li>
-</ul>
-<p>Read more about <a class="xref" href="../../specs/cms/polymorph.html">Polymorph</a> and <a class="xref" href="dotnet-webapi.html">C# WebApi</a>.</p>
-<h4 id="webapi-security--permissions">WebAPI Security / Permissions</h4>
-<p>Your C# code determines what security is applied, and what http verbs are supported.</p>
-<h3 id="content-items-services">Content Items Services</h3>
-<p>The content-items services support all common REST verbs</p>
-<ul>
-<li><code>.../app/auto/content/[YourContentType]</code> - GET (retrieve list)</li>
-<li><code>.../app/auto/content/[your-content-type]/[item-id]</code> - GET (get one), POST (create/update), DELETE (delete)</li>
-<li><code>.../app/auto/content/[your-content-type]/[item-guid]</code> - GET (get one), POST (create/update), DELETE (delete)</li>
-</ul>
-<p>Note that when using this endpoint from external, you&#39;ll have to replace <code>auto</code> with the app name as it is used in the folder of the app (not the nice, translatable/visible app-name).</p>
-<h4 id="content-security--permissions">Content Security / Permissions</h4>
-<p>Security / Permissions are configured at the content-type level, in the App-Management UI.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>todo</p>
-<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<ol>
-<li>Basically every call to these paths will simply return what you expect, or perform what you want</li>
-<li>Note that for most actions some security rules will apply, for example:<ol>
-<li>reading data requires read-permissions on that content-type</li>
-<li>writing data requires write-permissions or a content-type or on a specific item (owner-permissions)</li>
-<li>querying a query requires read-permissions on that query</li>
-<li>querying a web-api requires the web-api to have its own permission check</li>
+<li>Decide which endpoint you need</li>
+<li>Create / Publish the endpoint<ol>
+<li>For standard endpoints, set the permissions as you need them</li>
+<li>For custom endpoints, write the C# code</li>
 </ol>
 </li>
-<li>In DNN 9, the root-path for api changed!<ol>
-<li>DNN 7 &amp; 8: <code>[portal-root with language]/desktopmodules/2sxc/api/...</code></li>
-<li>DNN 9: <code>[portal-root with language]/api/2sxc/...</code></li>
-<li>This is handled automatically if you are using $2sxc or 2sxc4ng - but you need to be aware of this if you&#39;re using your own JS or accessing from external</li>
+<li>Write the code to read the data (typically in JavaScript)</li>
 </ol>
-</li>
-</ol>
-<h2 id="read-also">Read also</h2>
+<h2 id="decide-which-endpoint-you-need">Decide which Endpoint you need</h2>
+<iframe src="https://azing.org/2sxc/r/zhLnCg3e?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+
+<h2 id="continue-with-how-to">Continue with How To</h2>
 <ul>
+<li><a class="xref" href="content.html">Data CRUD API</a></li>
 <li><a class="xref" href="dotnet-webapi.html">DotNet WebApi</a></li>
 <li><a class="xref" href="../../specs/cms/polymorph.html">Concepts: Polymorphisms</a></li>
 </ul>

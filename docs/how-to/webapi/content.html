@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Razor: Rendering Content-Blocks | 2sxc and EAV 10 </title>
+    <title>Content / Entity API in 2sxc | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Razor: Rendering Content-Blocks | 2sxc and EAV 10 ">
+    <meta name="title" content="Content / Entity API in 2sxc | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -96,47 +96,38 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.Razor.Blocks">
-<h1 id="razor-rendering-content-blocks">Razor: Rendering Content-Blocks</h1>
+            <article class="content wrap" id="_content" data-uid="HowTo.WebApi.Content">
+<h1 id="content--entity-api-in-2sxc">Content / Entity API in 2sxc</h1>
 
-<p>When using <a class="xref" href="../../specs/cms/inner-content.html">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here&#39;s how to do it in Razor. </p>
-<h2 id="how-to-use">How to use</h2>
-<p>There are two common use cases</p>
+<p>The <code>content</code> API endpoint allows your JavaScript code or external code to do basic CRUD operations like</p>
 <ol>
-<li>Virtual Panes at item level - in this case, the item has it&#39;s own pane for placing apps and content-blocks</li>
-<li>Very Rich Text - where you add content-blocks and apps in the WYSIWYG</li>
+<li>Read a list of all items/entities</li>
+<li>Read a single item/entity</li>
+<li>Create an item/entity</li>
+<li>Update an item/entity</li>
+<li>Delete an item/entity</li>
 </ol>
-<h2 id="item-level-virtual-panes">Item-Level Virtual Panes</h2>
-<p>Here&#39;s a quick example which renders an area with all content-blocks: </p>
-<pre><code class="lang-razor">@ToSic.Sxc.Block.Render.All(Content, field: &quot;InnerContent&quot;)
-</code></pre><p>This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area. </p>
-<p>Here&#39;s a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes: </p>
-<pre><code class="lang-html">&lt;div class=&quot;some-class sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
-    @foreach(var cb in @post.DesignedContent) {
-        @cb.Render();
-    }
-&lt;/div&gt;
-</code></pre><p>If you care about doing it manually, read more about the <a class="xref" href="edit.html">Edit object</a>.</p>
-<h2 id="very-rich-text--inner-content">Very Rich Text / Inner-Content</h2>
-<p>Here&#39;s an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps. </p>
-<pre><code class="lang-razor">@ToSic.Sxc.Blocks.Render.All(post, field: &quot;WysiwygContent&quot;, merge: post.Body)
-</code></pre><p>There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
-<p>Here is a <a href="http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc">blog tutorial on implementing Very Rich Text</a>.</p>
-<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<p>The Edit-Object is of type <a class="xref" href="../../api/dot-net/ToSic.Sxc.Web.IInPageEditingSystem.html">IInPageEditingSystem</a>.</p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li>Read more on [Razor Edit.ContextAttributes](xref:Razor.ContextAttributes]</li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">Blog App</a></li>
-</ul>
+<div class="TIP"><h5>Tip</h5><p>Before you start, make sure you are familiar with the <a class="xref" href="../../specs/web-api/intro.html">Specs</a> and the <a class="xref" href="../../specs/web-api/url-schema.html">URL Schema</a>.</p>
+</div>
+<div class="WARNING"><h5>Warning</h5><p>You are usually developing as a super-user, in which case these endpoints automatically work. If you want normal users to do certain things like create items, you need to <a href="https://azing.org/2sxc/r/k0YbVYXO">configure the permissions</a>.</p>
+</div>
+<h2 id="read-content-itemsentities">Read Content-Items/Entities</h2>
+<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
+<p><code>[root-path]/app/auto/content/BlogPost</code></p>
+<p>...then your JS would receive a JSON with all BlogPost items. </p>
+<p>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</p>
+<h2 id="create-content-itemsentities">Create Content-Items/Entities</h2>
+<p>Doing an http POST to this <code>[root-path]/app/auto/content/BlogPost</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you create the item. You will get a return message containing ID, GUID etc. of the new item. </p>
+<p>If your POST package also contains an <code>EntityGuid</code> then this will be used as the GUID for the new item. </p>
+<h2 id="update-content-itemsentities">Update Content-Items/Entities</h2>
+<p>Doing an http POST to this <code>[root-path]/app/auto/content/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</p>
+<h2 id="delete-content-itemsentities">Delete Content-Items/Entities</h2>
+<p>Doing an http DELETE to this <code>[root-path]/app/auto/content/BlogPost/1050</code> would delete the item 1050.</p>
+<h2 id="javascript-helpers">JavaScript Helpers</h2>
+<p>The <a class="xref" href="../../specs/js/2sxc.html">$2sxc</a> and the <a class="xref" href="../../specs/js/sxc.html">sxc Controller</a> make it really easy to use this. Best to get familiar with them. </p>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 8.4</li>
-<li>Clean API and merge capabilitien in 8.9</li>
+<li>Introduced in 2sxc ca. 5.x</li>
 </ol>
 </article>
           </div>
@@ -146,7 +137,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/how-to/razor/blocks.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/how-to/webapi/content.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
