@@ -122,16 +122,14 @@ using System.Web.Http;
 
 public class DemoController : ToSic.Sxc.Dnn.ApiController
 {
-      [HttpGet]
-      [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
-      [ValidateAntiForgeryToken]
-      public object Get()
-      {
-            return new
-            {
-                  Data = Sxc.Serializer.Prepare(App.Data[&quot;MyData&quot;].List)
-            };
-      }
+  [HttpGet]
+  [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
+  [ValidateAntiForgeryToken]
+  public object Get()
+  {
+    return new ToSic.Sxc.Conversion.DataToDictionary(Edit.Enabled)
+      .Convert(App.Data[&quot;MyData&quot;]);
+  }
 }
 </code></pre><p>The custom controller <strong>DemoController</strong> must have the same name as the file and extends the <strong>ApiController</strong> controller. It has a method returning all items of the <strong>MyData</strong> data type. The method is decorated with several attributes:</p>
 <ul>
