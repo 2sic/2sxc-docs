@@ -13,9 +13,11 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SaveInAdam command in ApiController | 2sxc and EAV 10 </title>
+    <title>Namespace ToSic.Sxc.Conversion
+   | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SaveInAdam command in ApiController | 2sxc and EAV 10 ">
+    <meta name="title" content="Namespace ToSic.Sxc.Conversion
+   | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -24,7 +26,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -96,57 +98,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.WebApi.SaveInAdam">
-<h1 id="saveinadam-command-in-apicontroller">SaveInAdam command in ApiController</h1>
-
-<p>The <code>SaveInAdam</code> command helps your WebApi to upload files so they are in an ADAM container of an item.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>Here&#39;s a simple example, taken from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a></p>
-<pre><code class="lang-c#">SaveInAdam(stream: dataStream,
-    fileName: fileNameInForm,
-    contentType: &quot;Advertisement&quot;,
-    guid: guid,
-    field: &quot;Images&quot;);
-</code></pre><p>Here&#39;s what the parameters are:</p>
-<ol>
-<li><code>stream</code> contains a stream of bytes with the file</li>
-<li><code>fileName</code> contain the file name</li>
-<li><code>contentType</code> is the content-type of the entity we&#39;re saving to</li>
-<li><code>guid</code> is the entity-guid which receives this item</li>
-<li><code>field</code> is the field we&#39;re saving to</li>
-</ol>
-<h2 id="example">Example</h2>
-<p>The following example is also from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a> and assumes that the html form encoded the data in JavaScript for sending to the WebApi:</p>
-<pre><code class="lang-c#">// Save files to Adam
-var files = ((Newtonsoft.Json.Linq.JArray)contactFormRequest[&quot;Files&quot;])
-    .ToObject&lt;IEnumerable&lt;Dictionary&lt;string, string&gt;&gt;&gt;();
-foreach(var file in files)
-{
-    var data = Convert.FromBase64String((file[&quot;Encoded&quot;]).Split(&#39;,&#39;)[1]);
-    SaveInAdam(stream: new MemoryStream(data),
-        fileName: file[&quot;Name&quot;],
-        contentType: type.Name,
-        guid: guid,
-        field: file[&quot;Field&quot;]);
-}
-</code></pre><h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<ul>
-<li>all parameters (<code>stream</code>, <code>fileName</code>, ...) must be named by <a class="xref" href="../dynamic-code/use-named-parameters.html">convention</a></li>
-<li>the uploaded files are placed in the container of the field...</li>
-<li>...and not added as a link to the file, so you will usually use library fields</li>
-<li>the field must be a field of type hyperlink, library or wysiwyg, other fields cannot receive files</li>
-</ul>
-<h2 id="read-also-demo-app-and-further-links">Read also, Demo App and further links</h2>
-<p>You should find some code examples in these apps</p>
-<ul>
-<li><a class="xref" href="(xref:App.Mobius)">Mobius Forms v2 in App Catalog</a></li>
-<li><a href="https://github.com/2sic/app-mobius-forms">Mobius Forms v2 on Github</a></li>
-<li><a href="https://2sxc.org/en/blog/post/recipe-form-files-saveinadam-in-your-custom-webapi">Blog Recipe for uploading into ADAM in your WebAPI</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 9.30</li>
-</ol>
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Conversion">
+  
+  <h1 id="ToSic_Sxc_Conversion" data-uid="ToSic.Sxc.Conversion" class="text-break">Namespace ToSic.Sxc.Conversion
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="ToSic.Sxc.Conversion.DataToDictionary.html">DataToDictionary</a></h4>
+      <section><p>Convert various types of entities (standalone, dynamic, in streams, etc.) to Dictionaries <br>
+Mainly used for serialization scenarios, like in WebApis</p>
+</section>
 </article>
           </div>
           
@@ -154,9 +118,6 @@ foreach(var file in files)
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/how-to/webapi/dotnet-webapi-saveinadam.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
