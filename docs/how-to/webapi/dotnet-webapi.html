@@ -111,7 +111,7 @@ access url: <code>[api-root]/app/auto/[edition]/api/[Your]</code></li>
 </ul>
 <p>Read more about urls in the <a class="xref" href="webapis.html">WebApi</a> docs.</p>
 <h2 id="how-to-use">How to use</h2>
-<p>A file named <strong>DemoController.cs</strong> could look like the following:</p>
+<p>A file named <strong>BooksController.cs</strong> could look like the following:</p>
 <pre><code class="lang-c#">using DotNetNuke.Security;
 using DotNetNuke.Web.Api;
 using System;
@@ -120,29 +120,46 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 
-public class DemoController : ToSic.Sxc.Dnn.ApiController
+public class BooksController : ToSic.Sxc.Dnn.ApiController
 {
   [HttpGet]
   [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
   [ValidateAntiForgeryToken]
-  public object Get()
+  public object Persons()
   {
     return new ToSic.Sxc.Conversion.DataToDictionary(Edit.Enabled)
-      .Convert(App.Data[&quot;MyData&quot;]);
+      .Convert(App.Data[&quot;Persons&quot;]);
   }
 }
-</code></pre><p>The custom controller <strong>DemoController</strong> must have the same name as the file and extends the <strong>ApiController</strong> controller. It has a method returning all items of the <strong>MyData</strong> data type. The method is decorated with several attributes:</p>
+</code></pre><p>The custom controller <strong>BooksController</strong> must have the same name as the file and extends the <strong>ApiController</strong> controller. It has a method returning all items of the <strong>Persons</strong> data type. The method is decorated with several attributes:</p>
 <ul>
 <li>[HttGet] defines that the method must be invoked with HTTP GET</li>
 <li>[DnnModuleAuthorize(AccessLevel = ...)] defines the permission an invoker must have</li>
 <li>[ValidateAntiForgeryToken] ensures that a security token from the cookies is validated before the mehod is invoked
 You can implement any other methods.</li>
 </ul>
-<p>The custom controller can be called with JavaScript and the 2sxc4ng API like this:</p>
-<pre><code class="lang-JavaScript">return $http.get(&quot;app-api/Demo/Get&quot;).then(function (result) {
-      return results.data.Data;
-});
-</code></pre><p>The 2sxc4ng API ensures that the GET request is send to the correct url /DesktopModules/2sxc/API/app-api/Demo/Get. You can also read more about the jQuery <a class="xref" href="../../specs/js/sxc.html">sxc Controller</a> to use 2sxc-WebApis from jQuery pages.</p>
+<p>The custom controller can be called with JavaScript like this:</p>
+<pre><code class="lang-html">&lt;!-- this ensures the $2sxc scripts are loaded --&gt;
+@Edit.Enable(js: true)
+
+&lt;!-- the button which loads everything --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; onclick=&quot;getPersons(this)&quot;&gt;
+  Get Persons Custom
+&lt;/button&gt; 
+&lt;script&gt;
+  // this script does the API call and then shows the result
+  function getPersons(moduleContext) {
+    $2sxc(moduleContext)
+      .webApi.get(&#39;app/auto/api/books/persons&#39;)
+      .then(function (results) {
+        alert(&#39;Found &#39; + results.length + &#39; persons. \n&#39;
+          + &#39;The first one is &quot;&#39; + results[0].FirstName + &#39; &#39; + results[0].LastName + &#39;&quot;\n\n&#39;
+          + &#39;The raw JSON: \n&#39; + JSON.stringify(results)
+        );
+      });
+  }
+&lt;/script&gt;
+</code></pre><p>The $2sxc API ensures that the GET request is send to the correct url /DesktopModules/2sxc/API/app-api/Demo/Get. You can also read more about the <a class="xref" href="../../specs/js/sxc.html">sxc Controller</a>.</p>
 <h2 id="special-object--commands-in-apicontroller">Special Object / Commands in ApiController</h2>
 <p>The <code>ApiController</code> provides various command / helpers to get you productiv. Most are the same as in a normal Razor view, but some are additional. Here are the main ones:</p>
 <ol>
