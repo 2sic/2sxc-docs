@@ -211,6 +211,25 @@ so don&#39;t read/rely on that JSON, use the $2sxc to access any information. </
 </ul>
 <p>TODO: document the properties, mention that they won&#39;t be stable in future versions</p>
 <p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">$2sxc API</a></em></p>
+<h2 id="background-how-2sxc-works">Background: How $2sxc works</h2>
+<p>This is just some info for you to better understand what happens behind the scenes:</p>
+<h3 id="how-module-level-information-is-found">How Module-Level Information is found</h3>
+<ol>
+<li>When you use <code>$2sxc(moduleId)</code> it scans the DOM for the <code>&lt;div&gt;</code> tag that contains the module with that ID</li>
+<li>When you use <code>$2sxc(htmlNode)</code> it starts from that node and scans all parents till it finds the <code>&lt;div&gt;</code> which is the module wrapper</li>
+<li>Once it finds that, it knows what module it&#39;s for and configures itself</li>
+</ol>
+<h3 id="how-page-and-portal-information-is-found">How Page and Portal Information is Found</h3>
+<p>This is for information the $2sxc needs for WebApi calls. <em>This here applies to 2sxc 10.25+</em></p>
+<ol>
+<li>It first checks the html-head section for a <code>meta</code> tag with the name <code>_jsApi</code>. If this exists, it contains a JSON with everything it needs.</li>
+<li>If that doesn&#39;t exist it will retry 3x times (in case the head wasn&#39;t ready yet) and otherwise falls back to the old mechanism.</li>
+<li>The old mechanism is to ask DNN and the <em>ServicesFramework</em> for this information. This is always available when you&#39;re logged on as an editor, but it&#39;s only on the page for anonymous users IF<ol>
+<li>...you are either using the old mechanisms</li>
+<li>...or your Razor code asked for with <code>@Edit.Enable(js:true)</code></li>
+</ol>
+</li>
+</ol>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>
