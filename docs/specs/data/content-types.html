@@ -112,9 +112,11 @@ or WebApi - for that, you want to read <a class="xref" href="../../how-to/dynami
 <br></p>
 <h2 id="how-it-works">How it Works</h2>
 <p>Each <a class="xref" href="entities.html">Entity</a> has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the <strong>Content-Type</strong>, so each Entity is like a record of that type. The Content-Type will define what fields exist, what is required and what order the fields will appear in when editing the item. </p>
+<h4 id="identity-of-a-content-type-name-and-staticname">Identity of a Content Type: Name and StaticName</h4>
+<p>Each content-type has a <em>Name</em>, which is nice for a human to read, use and program with. There is a second identifier called <em>StaticName</em> which is usually a GUID, but in rare cases it&#39;s a string like <code>App-Settings</code>. This identifier is used internally - for example when a View references a Content-Type.</p>
 <h4 id="storage">Storage</h4>
 <p>Most Content-Types are stored in the database, including all the Content-Types in your App. 
-Special global Content-Types are stored in the file system. They are called <a class="xref" href="file-provided-content-types.html">File-Based Content-Types</a></p>
+Special global Content-Types are stored in the file system. These are called <a class="xref" href="file-provided-content-types.html">File-Based Content-Types</a></p>
 <h4 id="metadata-of-content-types-and-attributes">Metadata of Content-Types and Attributes</h4>
 <p>Both the Content-Type and Attributes can have <em>Metadata</em> providing more information about them. </p>
 <h4 id="field-types">Field Types</h4>
@@ -123,6 +125,12 @@ Special global Content-Types are stored in the file system. They are called <a c
 <p>Fields can also be of type <a class="xref" href="../data-types/entity.html">Entity</a> in which case they point to other items. This would then establish a <a class="xref" href="relationships.html">Relationship</a></p>
 <h4 id="input-forms-and-fields-like-wysiwyg">Input Forms and Fields (like WYSIWYG)</h4>
 <p>The input mask is automatically generated from the <a class="xref" href="content-types.html">Content-Type</a>. Based on the specifications, it will generate the correct <a class="xref" href="../input-types/index.html">Input-Field</a> like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. </p>
+<h4 id="scopes">Scopes</h4>
+<p>Content-Types have a <em>Scope</em>. This is like a category for the Content-Type. Normally you only see the Content-Types and Entities of the default Scope. The other Scopes have internal and system Content-Types like <code>@String</code>. </p>
+<ul>
+<li><a href="https://azing.org/2sxc/r/LqblhYXD">Here&#39;s the full list of current Scopes</a></li>
+<li>Here are instructions how to <a href="https://azing.org/2sxc/r/MEa0dtBw">switch Scopes</a> to manage data of other Scopes</li>
+</ul>
 <h2 id="apis">APIs</h2>
 <ul>
 <li>@<a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> Namespace has almost everything you see here</li>
