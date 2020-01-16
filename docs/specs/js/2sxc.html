@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JS: The $2sxc Manager | 2sxc and EAV 10 </title>
+    <title>JS: The $2sxc Root Object | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JS: The $2sxc Manager | 2sxc and EAV 10 ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="title" content="JS: The $2sxc Root Object | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -97,10 +97,13 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Specs.Js.$2sxc">
-<h1 id="js-the-2sxc-manager">JS: The $2sxc Manager</h1>
+<h1 id="js-the-2sxc-root-object">JS: The $2sxc Root Object</h1>
 
 <p>The $2sxc-object is the core JavaScript object helping you to access data of your view or WebAPIs of your 2sxc-App.</p>
-<p>You need this in advanced use cases. <em>otherwise you don&#39;t need this</em>. Such advanced cases are:</p>
+<div class="NOTE"><h5>Note</h5><p>2sxc uses these objects internally for building the edit experience. You only need this if you wish to do 
+custom JavaScript stuff in 2sxc, like retrieve data from a WebApi.</p>
+</div>
+<p>Advanced cases where <em>you</em> need $2sxc:</p>
 <ol>
 <li>When you want to use view-data as an asyc-JS call</li>
 <li>if you wish to work with WebAPI REST calls</li>
@@ -114,8 +117,7 @@
 <li><em>work with the API</em> of the sxc-controller</li>
 </ol>
 <p>Here&#39;s a simple example of a template-file:</p>
-<pre><code class="lang-HTML">&lt;script type=&quot;text/javascript&quot; src=&quot;/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js&quot; 
-    data-enableoptimizations=&quot;true&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-HTML">@Edit.Enable(js: true)
 &lt;script&gt;
     $(function () {
         var modId = 17;
@@ -125,7 +127,7 @@
 &lt;/script&gt;
 </code></pre><p>The code above shows</p>
 <ol>
-<li>how to include the api-file in the best way, <a class="xref" href="../../how-to/output/assets.html">minified and optimized</a> (so it will be picked up by the client-dependency framework)</li>
+<li>how to include the api-file in the best way using <code>@Edit.Enable(js: true)</code></li>
 <li>how the sxc-object is resolved</li>
 <li>how to ask if we&#39;re in edit-mode</li>
 </ol>
