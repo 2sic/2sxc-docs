@@ -140,10 +140,9 @@
 <li><strong>IsPublished</strong> <em>bool</em> - true/false if this item is currently published</li>
 <li><strong><em>AnyProperty</em></strong> <em>dynamic, but actually bool | string | decimal | datetime | List<dynamicentity></dynamicentity></em> any normal property of the content-item can be accessd directly. It&#39;s correctly .net typed (string, etc.)</li>
 </ol>
-<p>The following Methods exist on all dynamic entities</p>
-<ol>
-<li><strong>Render()</strong> - will render HTML for the current item, if there is a configuration for this. Almost always returns a simple HTML-comment, unless used as inner-content (added in 2sxc 8.3)</li>
-</ol>
+<div class="TIP"><h5>Tip</h5><p>In 2sxc 10.27 any property that returns a <code>List&lt;DynamicEntity&gt;</code> now returns a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.DynamicEntityWithList.html">DynamicEntityWithList</a>. 
+This means that if you expect the list to just return one item, you can directly access its properties like this:<br><code>Content.Author.FirstName</code>.<br>To otherwise enumerate the items, we recommend <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_AsList_System_Object_">AsList(Object)</a> so <code>AsList(Content.Tags)</code></p>
+</div>
 <h2 id="working-with-unpublisheddraft-items">Working with unpublished/draft items</h2>
 <p>TODO: write something about how-to-check if published/unpublished, navigating it, etc. - or link to such a page</p>
 <h2 id="appendix">Appendix</h2>
@@ -167,6 +166,7 @@
 <li>Get added in 2sxc 9.42 and added to interface IDynamicEntity in 10.07</li>
 <li>Parents introduced in 2sxc 9.42, and added to interface IDynamicEntity in 10.07</li>
 <li>IsDemoItem property added in 2sxc 10.06</li>
+<li>Changed dynamic access to a property to return a DynamicEntity which is enumerable in 10.27</li>
 </ol>
 </article>
           </div>
