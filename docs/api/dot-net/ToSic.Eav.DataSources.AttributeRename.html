@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class StreamPick
+    <title>Class AttributeRename
    | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class StreamPick
+    <meta name="title" content="Class AttributeRename
    | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -98,26 +98,26 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataSources.StreamPick">
+            <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataSources.AttributeRename">
   
   
-  <h1 id="ToSic_Eav_DataSources_StreamPick" data-uid="ToSic.Eav.DataSources.StreamPick" class="text-break">Class StreamPick
+  <h1 id="ToSic_Eav_DataSources_AttributeRename" data-uid="ToSic.Eav.DataSources.AttributeRename" class="text-break">Class AttributeRename
   </h1>
-  <div class="markdown level0 summary"><p>A DataSource that returns a stream by the provided name.
-Usually this will be configured through [Params:SomeName]</p>
+  <div class="markdown level0 summary"><p>DataSource to only pass through configured AttributeNames - other attributes/properties are removed from the entities.</p>
 </div>
-  <div class="markdown level0 conceptual"><p>The <strong>StreamPick</strong> <a class="xref" href="../../specs/datasources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../specs/datasources/list-all.html">Standard EAV Data Sources</a>. It will pick a stream from In and pass that on to Out.  </p>
+  <div class="markdown level0 conceptual"><p>TODO: update the standard list with attribute rename and the StreamSwitch one I made last week</p>
+<p>The <strong>AttributeRename</strong> <a class="xref" href="../../specs/datasources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../specs/datasources/list-all.html">Standard EAV Data Sources</a>. It renames attributes from items so that the result has more appropriate field/property names. Optionally it will also remove all fields which have not been renamed, in case you only want the smaller, renamed items. </p>
 <h2 id="how-to-use-with-the-visual-query">How to use with the Visual Query</h2>
-<p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> you can just drag it into your query. This is what it usually looks like:</p>
-<p><img src="/assets/data-sources/stream-pick-datasource-in-news-app.png" width="100%"></p>
+<p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> you can just drag it into your query. Now you can configure what properties you want and not. </p>
+<p><img src="/assets/data-sources/attribute-rename-example.png" width="100%"></p>
 <p>In this screenshot you can see:</p>
 <ol>
-<li>The DataSource which we are configuring</li>
-<li>The stream called <code>True</code></li>
-<li>The stream called <code>False</code></li>
-<li>The configuration which will resolve a token to <code>True</code> or <code>False</code> and thereby pick the stream</li>
+<li>The DataSource which we&#39;re configuring</li>
+<li>The field map renaming fields</li>
+<li>Toggle to keep attributes which were not renamed - default is <code>True</code></li>
+<li>The optional type name which you can give the modified entities - default is blank, resulting in the original type being used</li>
 </ol>
-<h2 id="programming-with-the-streampick-datasource">Programming With The StreamPick DataSource</h2>
+<h2 id="programming-with-the-attributerename-datasource">Programming With The AttributeRename DataSource</h2>
 <blockquote><p>We recommend to use the Visual Query where possible, 
 as it&#39;s easier to understand and is identical for C# and JavaScript. 
 It&#39;s also better because it separates data-retrieval from visualization.</p>
@@ -135,7 +135,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in EAV / 2sxc 10.26</li>
+<li>Introduced in EAV / 2sxc 10.27</li>
 </ol>
 <h2 id="api-documentation">API Documentation</h2>
 </div>
@@ -144,7 +144,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="ToSic.Eav.Logging.HasLog.html">HasLog</a></div>
     <div class="level2"><a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html">DataSourceBase</a></div>
-    <div class="level3"><span class="xref">StreamPick</span></div>
+    <div class="level3"><span class="xref">AttributeRename</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -224,32 +224,33 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
-  <h5 id="ToSic_Eav_DataSources_StreamPick_syntax">Syntax</h5>
+  <h5 id="ToSic_Eav_DataSources_AttributeRename_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(GlobalName = &quot;ToSic.Eav.DataSources.StreamPick, ToSic.Eav.DataSources&quot;, Type = DataSourceType.Logic, ExpectsDataOfType = &quot;67b19864-df6d-400b-9f37-f41f1dd69c4a&quot;, DynamicOut = false, HelpLink = &quot;https://r.2sxc.org/DsStreamPick&quot;)]
-public sealed class StreamPick : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheExpiring, ITimestamped, ICacheKey, ICanPurgeListCache, IHasLog, IDataTarget</code></pre>
+[VisualQuery(GlobalName = &quot;ToSic.Eav.DataSources.AttributeRename, ToSic.Eav.DataSources&quot;, Type = DataSourceType.Modify, DynamicOut = false, NiceName = &quot;Attribute-Rename / Property-Rename&quot;, ExpectsDataOfType = &quot;c5918cb8-d35a-48c7-9380-a437edde66d2&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeRename&quot;)]
+public class AttributeRename : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheExpiring, ITimestamped, ICacheKey, ICanPurgeListCache, IHasLog, IDataTarget</code></pre>
   </div>
-  <h5 id="ToSic_Eav_DataSources_StreamPick_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Introduced in 10.26</p>
+  <h5 id="ToSic_Eav_DataSources_AttributeRename_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Uses Configuration &quot;AttributeNames&quot;</p>
 </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_StreamPick_StreamName.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.StreamPick.StreamName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeRename_AttributeMap.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeRename.AttributeMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Streams/StreamPick.cs/#L36">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeRename.cs/#L40">View Source</a>
   </span>
-  <a id="ToSic_Eav_DataSources_StreamPick_StreamName_" data-uid="ToSic.Eav.DataSources.StreamPick.StreamName*"></a>
-  <h4 id="ToSic_Eav_DataSources_StreamPick_StreamName" data-uid="ToSic.Eav.DataSources.StreamPick.StreamName">StreamName</h4>
-  <div class="markdown level1 summary"><p>The stream name to lookup.</p>
+  <a id="ToSic_Eav_DataSources_AttributeRename_AttributeMap_" data-uid="ToSic.Eav.DataSources.AttributeRename.AttributeMap*"></a>
+  <h4 id="ToSic_Eav_DataSources_AttributeRename_AttributeMap" data-uid="ToSic.Eav.DataSources.AttributeRename.AttributeMap">AttributeMap</h4>
+  <div class="markdown level1 summary"><p>A string containing one or more attribute maps.
+The syntax is &quot;NewName=OldName&quot; - one mapping per line</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StreamName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string AttributeMap { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -268,19 +269,19 @@ public sealed class StreamPick : DataSourceBase, IDataSource, IAppIdentity, IZon
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_StreamPick_UseParentStreams.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.StreamPick.UseParentStreams%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeRename_KeepOtherAttributes.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeRename.KeepOtherAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Streams/StreamPick.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeRename.cs/#L49">View Source</a>
   </span>
-  <a id="ToSic_Eav_DataSources_StreamPick_UseParentStreams_" data-uid="ToSic.Eav.DataSources.StreamPick.UseParentStreams*"></a>
-  <h4 id="ToSic_Eav_DataSources_StreamPick_UseParentStreams" data-uid="ToSic.Eav.DataSources.StreamPick.UseParentStreams">UseParentStreams</h4>
-  <div class="markdown level1 summary"><p>The attribute whose value will be sorted by.</p>
+  <a id="ToSic_Eav_DataSources_AttributeRename_KeepOtherAttributes_" data-uid="ToSic.Eav.DataSources.AttributeRename.KeepOtherAttributes*"></a>
+  <h4 id="ToSic_Eav_DataSources_AttributeRename_KeepOtherAttributes" data-uid="ToSic.Eav.DataSources.AttributeRename.KeepOtherAttributes">KeepOtherAttributes</h4>
+  <div class="markdown level1 summary"><p>True/false if attributes not renamed should be preserved.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool UseParentStreams { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool KeepOtherAttributes { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -297,10 +298,38 @@ public sealed class StreamPick : DataSourceBase, IDataSource, IAppIdentity, IZon
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Eav_DataSources_StreamPick_UseParentStreams_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This feature has not been fully implemented yet. The idea would be that it could access an &quot;App&quot; or similar and dynamically access streams from there
-This may also have a security risk, so don&apos;t finish till this is clarified</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeRename_TypeName.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeRename.TypeName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeRename.cs/#L59">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_AttributeRename_TypeName_" data-uid="ToSic.Eav.DataSources.AttributeRename.TypeName*"></a>
+  <h4 id="ToSic_Eav_DataSources_AttributeRename_TypeName" data-uid="ToSic.Eav.DataSources.AttributeRename.TypeName">TypeName</h4>
+  <div class="markdown level1 summary"><p>A string containing one or more attribute maps.
+The syntax is &quot;NewName=OldName&quot; - one mapping per line</p>
 </div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TypeName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
@@ -340,10 +369,10 @@ This may also have a security risk, so don&apos;t finish till this is clarified<
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Eav/DataSources/StreamPick.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/namespaces/ToSic.Eav/DataSources/AttributeRename.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Streams/StreamPick.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeRename.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
