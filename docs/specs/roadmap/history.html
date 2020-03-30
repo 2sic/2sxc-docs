@@ -283,15 +283,34 @@
 <li>Changed List-Caching behaviour to create more reliable cache-keys for complex queries (previously it only went through <code>Default</code> streams to generate the cache-key)</li>
 </ul>
 <h3 id="version-1027">Version 10.27</h3>
+<h4 id="possibly-breaking-changes">Possibly breaking changes</h4>
+<ol>
+<li>Because the dynamic entity list now has a type which is dynamic, it cannot be cast to <code>List&lt;dynamic&gt;</code> any more. <code>IList&lt;dynamic&gt;</code> works, but in case you have any code casting it to <code>List&lt;dynamic&gt;</code> you&#39;ll need to change that to either <code>IList&lt;dynamic&gt;</code> or <code>IEnumerable&lt;dynamic&gt;</code>.</li>
+</ol>
+<h4 id="new-features--major-improvements">New Features / Major Improvements</h4>
 <ul>
 <li>Changed DynamicEntity so that accessing a property which contains many other entities it will return a <code>DynamicEntityWithList</code>. This allows Razor files to access the properties like <code>.EntityId</code> or <code>.FirstName</code> of the main entity in a sub-list easily without requiring <code>AsList(...)</code> <a href="https://github.com/2sic/2sxc/issues/1993">#1993</a></li>
 <li>Updated Quick-Dialog to use Angular 9, Ivy and the latest Dnn-Sxc-Angular <a href="https://github.com/2sic/2sxc/issues/1992">#1992</a></li>
-<li>Performance-Enhance App DataSource to delay building objects until needed <a href="https://github.com/2sic/2sxc/issues/1991">#1991</a></li>
+<li>New DataSource <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.AttributeRename.html">AttributeRename</a> <a href="https://github.com/2sic/2sxc/issues/2004">#2004</a></li>
+<li>Completely refactored internal list management API <a href="(https://github.com/2sic/2sxc/issues/1995)">#1995</a></li>
+<li>Complete refactoring of the inpage code to make it typesafe (no more <code>any</code> types)</li>
+<li>Created brand-new, <a class="xref" href="../../how-to/customize-edit-ux/toolbars.html">simpler way to create custom Toolbars</a> and <a class="xref" href="../cms/toolbars/toolbar-builder.html">specs</a></li>
+<li>Introduces <a class="xref" href="../../how-to/debug/index.html">JS/API 2sxc-Insights</a> for debugging In-Page code</li>
 </ul>
-<p>Bugfixes</p>
+<h4 id="enhancements">Enhancements</h4>
+<ul>
+<li>Performance-Enhance App DataSource to delay building objects until needed <a href="https://github.com/2sic/2sxc/issues/1991">#1991</a></li>
+<li>Performance-Enhance internal Token Lookup <a href="https://github.com/2sic/2sxc/issues/1998">#1998</a></li>
+<li>Enhanced DNN Search Index logging <a href="https://github.com/2sic/2sxc/issues/1997">#1997</a></li>
+<li>Corrected help-links on all data sources <a href="https://github.com/2sic/2sxc/issues/1994">#1994</a></li>
+</ul>
+<h4 id="bugfixes">Bugfixes</h4>
 <ul>
 <li>Cache-All-Streams only used the Default-Streams for Cache-Key identification <a href="https://github.com/2sic/2sxc/issues/1988">#1988</a></li>
 <li>QueryRun DataSource doesn&#39;t show statitics on all streams <a href="https://github.com/2sic/2sxc/issues/1989">#1989</a></li>
+<li>Modified date and Owner information were missing on json stored entities <a href="https://github.com/2sic/2sxc/issues/2005">#2005</a> / <a href="https://github.com/2sic/2sxc/issues/2006">#2006</a></li>
+<li>Fixed bug in JS API for non-2sxc endpoint resolution <a href="https://github.com/2sic/2sxc/issues/2000">#2000</a></li>
+<li>Queries didn&#39;t resolve DNN tokens when accessed in the Search Index <a href="https://github.com/2sic/2sxc/issues/1999">#1999</a></li>
 </ul>
 </article>
           </div>

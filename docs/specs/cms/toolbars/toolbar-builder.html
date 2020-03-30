@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Toolbars - the Easy new Toolbar Building System | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Toolbars - the Easy new Toolbar Building System | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../images/logos/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logos/2sxc-10-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Specs.Cms.Toolbars.Build">
+<h1 id="custom-toolbars---the-easy-new-toolbar-building-system">Custom Toolbars - the Easy new Toolbar Building System</h1>
+
+<p>2sxc 10.27+ offers a new way to build and create toolbars. Instead of the difficult to use object-structure it has a much simpler commands syntax. These are specs for the command syntax. </p>
+<div class="TIP"><h5>Tip</h5><p>Read how to use in the <a class="xref" href="../../../how-to/customize-edit-ux/toolbars.html">How-To Customize Toolbars</a> section.</p>
+</div>
+<h2 id="overview">Overview</h2>
+<p>The new toolbar builder works in this way:</p>
+<ol>
+<li>First, take a toolbar template - typically <code>default</code> or <code>empty</code></li>
+<li>Then make changes like adding or removing buttons</li>
+<li>Optionally override certain defaults</li>
+<li>Render the toolbar with optional overrides</li>
+</ol>
+<p>These instructions are a simple list of strings. For example:</p>
+<ul>
+<li><code>toolbar=empty</code> tells the system to load the empty template</li>
+<li><code>new?contentType=Person</code> will add a button <em>new</em> for the type <em>Person</em></li>
+<li><code>edit?entityId=5593</code> will add an <em>edit</em> button for the item <em>5593</em></li>
+</ul>
+<p>These instructions are provided as a JSON array of strings - like this:</p>
+<pre><code class="lang-json">[&quot;toolbar=empty&quot;, &quot;new?contentType=Person&quot;, &quot;edit?entityId=5593&quot;]
+</code></pre><h2 id="examples-of-build-instructions">Examples of Build-Instructions</h2>
+<p>Every build instruction consists looks as follows: </p>
+<ul>
+<li><code>&quot;&quot;</code> - an empty string is valid but not very useful</li>
+<li><code>&quot;/this is just a comment&quot;</code> - a comment if you need to document something inline</li>
+<li><code>&quot;new&quot;</code> or <code>&quot;+new&quot;</code> - add a new-button</li>
+<li><code>&quot;-edit&quot;</code> - remove a button - like when slimming down a default toolbar</li>
+<li><code>&quot;%delete&amp;show=true&quot;</code> - a button modifier - to change a default (the delete button is always hidden by default)</li>
+<li><code>&quot;group=my-group&quot;</code> or <code>&quot;+group=my-group&quot;</code> add a button-group</li>
+<li><code>&quot;+group=my-group&amp;pos=2&quot;</code> add a button group at index 2 (so in the 3rd-position, 0-based)</li>
+<li><code>&quot;new-quote=new?contentType=Quote&quot;</code> - an identifier followed by a button name - when having multiple <em>new</em> buttons</li>
+<li><code>&quot;%more&amp;color=red&quot;</code> - a modifier which changes the color of the icon</li>
+</ul>
+<h2 id="general-syntax-of-a-build-instruction">General Syntax of a Build-Instruction</h2>
+<p>The general syntax is as follows</p>
+<ul>
+<li>(build-instruction)(&amp;build-params <em>optional</em>)(?call-params <em>optional</em>)</li>
+</ul>
+<h2 id="build-instructions">Build Instructions</h2>
+<p>A build instruction consist of 1-3 parts</p>
+<ul>
+<li>an optional prefix like <ul>
+<li><code>+</code> to add a button or group (this is the default if no prefix is given)</li>
+<li><code>%</code> to modify a default thing - like change a the color of the new-button</li>
+<li><code>-</code> to remove a button or group from the list</li>
+<li><code>$</code> for system/global things (this is the default if the command is <code>toolbar</code>, <code>params</code> or <code>settings</code>)</li>
+<li><code>/</code> a comment - like <code>&quot;/here comes a special add-button&quot;</code></li>
+</ul>
+</li>
+<li>a command and optional addition like<ul>
+<li><code>toolbar</code> - for setting the default toolbar template<ul>
+<li><code>toolbar=default</code> will load the default toolbar with all standard buttons</li>
+<li><code>toolbar=empty</code> will load an empty toolbar without any buttons</li>
+</ul>
+</li>
+<li><code>settings</code> - for configuring the toolbar settings - see below</li>
+<li><code>params</code> - for parameters which are used in all buttons - see below</li>
+<li><code>group</code> - to add a group of buttons<ul>
+<li><code>group=my-group-name</code> gives the group a name, for placing buttons in it</li>
+<li>`-group=</li>
+</ul>
+</li>
+<li><code>add</code>, <code>edit</code> etc. - all known <a class="xref" href="../../js/commands.html">commands of buttons</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="build-parameters-">Build Parameters (<code>&amp;...</code>)</h2>
+<p>If you have a build-instruction and need to add some parameters you must separate them with an <code>&amp;</code> and add the parameters in url-style, like <code>&amp;color=red</code>. </p>
+<h3 id="build-parameters-for-toolbar-toolbar">Build Parameters for Toolbar (<code>toolbar</code>)</h3>
+<p>The toolbar currently doesn&#39;t have any additional parameters.</p>
+<h3 id="build-parameters-for-settings-settings">Build Parameters for Settings (<code>settings</code>)</h3>
+<p>Settings affect how the toolbar is shown. These are the known settings:</p>
+<ul>
+<li><code>&amp;color=...</code> - specify a different button - see <a href="#colors">color</a></li>
+<li><code>&amp;hover=left</code> or <code>=right</code> or <code>=none</code> - default is <code>right</code></li>
+<li><code>&amp;class=my-class</code> to add one or more classes to the toolbar</li>
+</ul>
+<h3 id="build-parameters-for-params-params">Build Parameters for Params (<code>params</code>)</h3>
+<p>Params don&#39;t have any additional settings - they only have parameters (after the <code>?</code>). See below. </p>
+<h3 id="build-parameters-for-groups-group">Build Parameters for Groups (<code>group</code>)</h3>
+<p>Groups currently don&#39;t have additional parameters.</p>
+<h3 id="build-parameters-for-buttons">Build Parameters for Buttons</h3>
+<p>Buttons can have the following parameters:</p>
+<ul>
+<li><code>&amp;icon=icon-class-name</code> allows you to set an alternate icon</li>
+<li><code>&amp;color=...</code> gives the button another - see <a href="#colors">color</a></li>
+<li><code>&amp;show=true</code> or <code>&amp;show=false</code> - force show/hide a button<br>Most common use case is to force-show or hide an existing button. For example, if you think it&#39;s ok to show the delete button, just use <code>delete&amp;show=true</code></li>
+<li><code>&amp;class=your-class</code> add one or more classes to the button to affect styling</li>
+<li><code>&amp;title=some-text</code> - mouseover message</li>
+</ul>
+<h2 id="call-parameters-">Call Parameters (<code>?</code>)</h2>
+<p>Most instructions can have additional call-parameters - separated by a <code>?...</code>. For example, this would create an additional <code>+</code> button to create a new contact:</p>
+<p><code>add-contact=add?contentType=Contact</code></p>
+<h3 id="call-parameters-for-toolbars--settings">Call Parameters for Toolbars &amp; Settings</h3>
+<p>The <code>toolbar</code> and <code>settings</code> don&#39;t have any additional parameters.</p>
+<h3 id="call-parameters-for-params">Call Parameters for Params</h3>
+<p>Params at the global level will be used by all buttons. The most common params are</p>
+<ul>
+<li><code>entityId=some-number</code> - mainly used for edit, delete etc.</li>
+<li><code>entityGuid=guid-guid-guid</code> - mainly used for delete</li>
+<li><code>contentType=ContentTypeName</code> - mainly used for adding new items</li>
+<li><code>title=some-text</code> - mainly used to show a title when asking to delete something</li>
+<li><code>isPublished=true|false</code></li>
+<li><code>prefill=field1=val1;field2=val2</code> etc.</li>
+</ul>
+<p>for list management</p>
+<ul>
+<li><code>useModuleList=true|false</code></li>
+<li><code>sortOrder=#</code></li>
+</ul>
+<h2 id="special-notes">Special Notes</h2>
+<h3 id="colors">Colors</h3>
+<p>Both <code>settings</code> and <code>buttons</code> can have an <code>&amp;color=...</code> parameter. The <code>...</code> can be just one color or two, like <code>&amp;color=red,green</code> or <code>&amp;color=brown</code>. </p>
+<p>When specifying colors you can either use standard names like <code>red</code> or HEX-codes like <code>FF0000</code>. You cannot use the <code>#</code> hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes. </p>
+<p>Note that you can also use semi-transparent hex-codes, like <code>FF000088</code>. </p>
+<h3 id="groups">Groups</h3>
+<p>The following button groups exist by default. You can target them to add your buttons, or remove them using <code>-group=name</code>:</p>
+<ul>
+<li><code>default</code> - the main initial buttons like edit, add etc.</li>
+<li><code>list</code> - anthing having to do with the current list - move-up/down etc.</li>
+<li><code>edit-advanced</code> - advanced, not-recommended buttons like <code>delete</code></li>
+<li><code>view</code> - anything related to the view - edit template etc.</li>
+<li><code>app</code> - app related buttons</li>
+</ul>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li>TODO:</li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li>TODO:</li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Added to 2sxc 10.27 in March 2020</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/ToSIC_SexyContent/Docs-Generator/specs/cms/toolbars/toolbar-builder.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

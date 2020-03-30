@@ -99,7 +99,7 @@
             <article class="content wrap" id="_content" data-uid="HowTo.Razor.Edit.Toolbar">
 <h1 id="edittagtoolbar-and-edittoolbar-methods-in-razor--net">@Edit.TagToolbar and @Edit.Toolbar Methods in Razor / .net</h1>
 
-<p>2sxc has a cool in-page toolbar system - here you&#39;ll find a <a class="xref" href="../../specs/cms/inpage-toolbars.html">conceptual overview around the toolbar</a>. These toolbars are usually hover-buttons like this:</p>
+<p>2sxc has a cool in-page toolbar system - here you&#39;ll find a <a class="xref" href="../../specs/cms/toolbars/inpage-toolbars.html">conceptual overview around the toolbar</a>. These toolbars are usually hover-buttons like this:</p>
 <p><img src="/assets/concepts/inpage-toolbar/example-hover-toolbar.png" alt="hover inline toolbar example"></p>
 <p>Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the <code>@Edit.TagToolbar(...)</code> and <code>@Edit.Toolbar(...)</code> are your tools of choice for adding toolbars from Razor.</p>
 <h2 id="how-to-use">How to use</h2>
@@ -109,6 +109,10 @@
 &lt;/h1&gt;
 </code></pre><p>This example will output the item title in an <code>h1</code> tag and add a hidden, appear-on-mouse-over toolbar with editing-buttons for the item named <code>Content</code>.</p>
 <p>Let&#39;s assume you&#39;re building the details-page of a news-app and you only want the edit/remove buttons, to improve the UI for your use case. Additionally, you want the mouse-hover to react on the whole article, not just oven the title. Here&#39;s how:</p>
+<div class="WARNING"><h5>Warning</h5><p>2sxc 10.27 introduces a new, simpler API to customize the toolbar.
+So the instructions below are technically correct, but not recommended any more.
+Check out the <a class="xref" href="../customize-edit-ux/toolbars.html">much simpler toolbar customizations</a></p>
+</div>
 <pre><code class="lang-razor">@* this will show an &quot;edit and remove&quot; button for the current item *@
 &lt;div @Edit.TagToolbar(Content, actions: &quot;edit,remove&quot;)&gt;
   &lt;h1&gt;
