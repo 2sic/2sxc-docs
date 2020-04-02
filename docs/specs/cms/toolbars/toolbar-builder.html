@@ -201,13 +201,40 @@
 <li><code>contentType=ContentTypeName</code> - mainly used for adding new items</li>
 <li><code>title=some-text</code> - mainly used to show a title when asking to delete something</li>
 <li><code>isPublished=true|false</code></li>
-<li><code>prefill=field1=val1;field2=val2</code> etc.</li>
+<li><code>prefill:Field1=val1&amp;prefill:Field2=val2</code> etc.</li>
+<li><code>metadata=someKey</code> or <code>metadata=targetType,keyType,key</code></li>
 </ul>
 <p>for list management</p>
 <ul>
 <li><code>useModuleList=true|false</code></li>
 <li><code>sortOrder=#</code></li>
 </ul>
+<h3 id="using-prefill-parameters">Using Prefill Parameters</h3>
+<p>Prefill parameteres are mainly used for creating new items like</p>
+<p><code>add?contentType=Book&amp;prefill:Title=This is nice title</code></p>
+<p>The syntax is a bit special because you may need to add multiple prefill parameters, like:</p>
+<p><code>add?contentType=Book&amp;prefill:Title=Please enter name&amp;prefil:Author=unknown</code></p>
+<p>Since many things can go wrong with prefills, this is what you need to know</p>
+<ol>
+<li>All prefill parameters start with <code>prefill:</code> followed by the field name. The field name is case sensitive, so you&#39;ll probably have to write <code>Title</code> instead of <code>title</code>.</li>
+<li>You can use multiple prefills, like <code>...&amp;prefill:Title=Hello&amp;Intro=welcome!</code></li>
+<li>When using special characters which cause trouble in urls, make sure they are uriEncoded. If you do the prefill using the razor tag <code>@Edit.Toolbar(...)</code> or <code>@Edit.TagToolbar(...)</code> this happens automatically, but if you use JavaScript to prepare it, you should use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a> to prepare the <em>value</em> (not the prefix <code>prefill:...</code>)</li>
+</ol>
+<p>Special considerations for each type of field</p>
+<ol>
+<li>for text fields just write the text as is like <code>prefill:Title=Todays News</code> - remember to encode if you expect special characters. When you encode things, you can also prefill html.</li>
+<li>for number fields just use <code>prefill:Priority=47</code></li>
+<li>for boolean switch fields just use <code>prefill:UseLightbox=true</code></li>
+<li>for dates we suggest to use the same ISO format <code>prefill:PublicationDate=2020-04-01</code> as this will always be recognized correctly. If you use another format like <code>4/1/2020</code> you risk that the UI will auto-detect the date based on the user and maybe pick the wrong number as the month. </li>
+<li>for dates with time you should really use ISO with <code>Zulu</code> time code like <code>prefill:ShowFrom=2020-04-01T10:30Z</code>. The <code>Z</code> at the end means that it won&#39;t adjust for time zones - otherwise the UI may show a different time. </li>
+<li>for related entities (like prefilling a category) use the target Guid, like <code>prefill:Category=b7c1c2e1-4896-4999-a0bc-87ddf3ce31cb</code>. As of now, you must always use the Guid, IDs are not supported because as the app is exported and re-imported, the IDs will change. </li>
+<li>to assign multiple entities (like for category fields with multiple categories), separate them with commas, like <code>prefill:Category=b7c1c2e1-4896-4999-a0bc-87ddf3ce31cb,91753b4d-4932-4b22-af1c-f6ac2b76c67a</code></li>
+</ol>
+<h3 id="using-metadata-parameters">Using Metadata Parameters</h3>
+<p>The metadata parameters are for creating new metadata or editing existing data. There is a short and a long syntax:</p>
+<p><code>metadata=key</code> - for example, <code>metadata=file:930</code> - this will create metadata for a CMS-object with the ID <code>file:930</code>. </p>
+<p><code>metadata=targetType,keyType,key</code> like <code>metadata=10,string,file:930</code> which has the same effect as the previous example. </p>
+<p>To use metadata, read more about metadata (TODO).</p>
 <h2 id="special-notes">Special Notes</h2>
 <h3 id="colors">Colors</h3>
 <p>Both <code>settings</code> and <code>buttons</code> can have an <code>&amp;color=...</code> parameter. The <code>...</code> can be just one color or two, like <code>&amp;color=red,green</code> or <code>&amp;color=brown</code>. </p>
@@ -233,7 +260,8 @@
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Added to 2sxc 10.27 in March 2020</li>
+<li>Added to 2sxc 10.27 .01 in March 2020</li>
+<li>Prefill support added in 10.27 .02 in April 2020</li>
 </ol>
 </article>
           </div>

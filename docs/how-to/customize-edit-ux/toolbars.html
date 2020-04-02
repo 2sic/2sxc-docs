@@ -131,12 +131,12 @@ We assume that 99% of all toolbars will be initiated from razor, so that&#39;s w
 <p>Let&#39;s add an extra <em>new</em> button to create an item of the content-type <em>Category</em>. </p>
 <div class="NOTE"><h5>Note</h5><p>This code will make the button appear, but on click you may see an error, because you probably don&#39;t have a ContentType <em>Category</em> in your app. </p>
 </div>
-<pre><code class="lang-html">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;new?contentType=Category&quot;)&gt;
+<pre><code class="lang-html">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;+new?contentType=Category&quot;)&gt;
   ...
 &lt;/div&gt;
 </code></pre><p>You should now have an extra + button like this: </p>
 <p><img src="/assets/how-to/customize-edit-ux/toolbars/step-1-with-plus-button.png" width="100%"></p>
-<p>Let&#39;s emphasize it, because for whatever reason it&#39;s a super important button: </p>
+<p>Let&#39;s emphasize it, because for whatever reason it&#39;s a super important button. We&#39;ll also drop the leading <code>+</code> since it&#39;s optional and defaulted to: </p>
 <pre><code class="lang-html">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;new&amp;color=red?contentType=Category&quot;)&gt;
   ...
 &lt;/div&gt;
@@ -155,6 +155,8 @@ So <code>new</code> ≠ &#39;new button&#39; but &#39;button to add a new entity
 &lt;/div&gt;
 </code></pre><p>You should now see this: </p>
 <p><img src="/assets/how-to/customize-edit-ux/toolbars/step-1-with-plus-button-red-and-teal.png" width="100%"></p>
+<div class="TIP"><h5>Tip</h5><p>When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">specs</a>. </p>
+</div>
 <h3 id="removing-buttons-with--">Removing Buttons with <code>-</code></h3>
 <p>Now maybe you don&#39;t like to allow your editors to change the view - so let&#39;s do the same but remove the view-switch button as well using the remove <code>-</code> prefix:</p>
 <pre><code class="lang-html">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
