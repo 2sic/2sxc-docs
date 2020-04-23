@@ -149,7 +149,44 @@ This is common when designers like to modify the html but don&#39;t like all tha
 <div class="TIP"><h5>Tip</h5><p><em>Why would you do this?</em><br>These methods could always be created in the Template file, but it just doesn&#39;t feel right.
 A typical <code>CustomizeSearch</code> is very technical and feels scary to people who just want to change the look and feel. </p>
 </div>
-<h2 id="reuse-a-partial-view-with-rendertemplate">Reuse a Partial View with RenderTemplate()</h2>
+<h2 id="passing-around-anonymous-objects">Passing Around Anonymous Objects</h2>
+<p>One of the advanced things you may want to do is have helper functions looking up multiple things, and returning a complex object like this example in the code-behind:</p>
+<pre><code class="lang-cs">@inherits ToSic.Sxc.Dnn.RazorComponentCode
+
+@functions {
+  public dynamic Hello() {
+    return new { Title = &quot;title&quot;, Message = &quot;msg&quot;};
+  }
+}
+</code></pre><p>Which is used like this</p>
+<pre><code class="lang-html">@inherits ToSic.Sxc.Dnn.RazorComponent
+
+&lt;h1&gt;Demo Code Use&lt;/h1&gt;
+
+&lt;div @Edit.TagToolbar(Content)&gt;
+  @{
+    var hello = Code.Hello();
+  }
+    Something in it: @hello.Title &lt;br&gt;
+&lt;/div&gt;
+</code></pre><p>This works and is no big deal, but there are known cases where this breaks, usually with a message like somehing not found on <code>object</code>. The reason is bugs in the .net caching of compiled code, specifically if methods exists in various places with the same name. You can resolve this in 3 ways</p>
+<ol>
+<li>Restart iis (uncool)</li>
+<li>Rename the method (recommended)</li>
+<li>Return a typed object instead of untyped. In the above example, change to this:</li>
+</ol>
+<pre><code class="lang-cs">@inherits ToSic.Sxc.Dnn.RazorComponentCode
+
+@functions {
+  public class TitleAndMessage {
+    public string Title;
+    public string Message;
+  }
+  public dynamic Hello() {
+    return new TitleAndMessage { Title = &quot;title&quot;, Message = &quot;msg&quot;};
+  }
+}
+</code></pre><h2 id="reuse-a-partial-view-with-rendertemplate">Reuse a Partial View with RenderTemplate()</h2>
 <p><code>RenderTemplate(...)</code> is a standard asp.net function to render another razor file where you need it. You usually use it to make small component razor files which might just show a button or something, and then call that file. </p>
 <ul>
 <li>You can find some examples in the <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse110/page">tutorials</a></li>
