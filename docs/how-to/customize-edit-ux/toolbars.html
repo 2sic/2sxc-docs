@@ -215,7 +215,11 @@ The reason it&#39;s hidden is because in most content-editing scenarios the edit
 <p><img src="/assets/how-to/customize-edit-ux/toolbars/step-2-custom-group2.png" width="100%"></p>
 <div class="NOTE"><h5>Note</h5><p>We had to give our new group a name - in this case <code>add-buttons</code> and told the new buttons that they should go inside that group. </p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>A new group can also go after the <code>default</code> group of buttons. If you add a <code>&amp;pos=1</code> or another number the group will be placed later on in the sequence. </p>
+<div class="TIP"><h5>Tip</h5><p>A new group can also go after the <code>default</code> group of buttons. If you add a <code>&amp;pos=1</code> or another number the group will be placed later on in the sequence. 
+You can also use <code>&amp;pos=-0</code> or <code>&amp;pos=-1</code> or similar to place it counting from the end of the list.</p>
+</div>
+<div class="WARNING"><h5>Warning</h5><p>When using position like <code>pos=#</code> you may have unexpected results, because the button is added to the list <em>before</em> some buttons decide to hide themselves. 
+So you may think you&#39;re adding it to <code>pos=1</code> but if the edit button (which would be at position 0) shouldn&#39;t be shown, your button will still appear to be the first one.</p>
 </div>
 <p>There is also a hidden group called <code>edit-advanced</code> - you can find the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">list of groups</a> here. As of now, it only contains the <code>delete</code> button which is hidden by default. </p>
 <h2 id="attaching-custom-javascript-code-to-a-button">Attaching Custom JavaScript Code to a Button</h2>
