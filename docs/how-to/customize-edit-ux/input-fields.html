@@ -101,7 +101,7 @@
 
 <p>Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever. </p>
 <div class="TIP"><h5>Tip</h5><ol>
-<li>2sxc 11 finally allows you to do this using simple <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">WebComponents</a>  </li>
+<li>2sxc 11 finally allows you to do this using simple <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">WebComponents</a></li>
 <li>Registering these happens by placing them in a specific folder  </li>
 <li>You can also make them configurable by placing a content-type json in another folder  </li>
 </ol>
@@ -137,6 +137,13 @@ That is not discussed here. </p>
 
 <div class="NOTE"><h5>Note</h5><p>Once you have that setup, the input field is automatically detected and a user can choose it as a field type in the configuration. </p>
 </div>
+<h2 id="some-background-on-webcomponents">Some Background on WebComponents</h2>
+<ol>
+<li>The WebComponent has a simple lifecycle - from when it&#39;s created to when it receives data and can push changes back to the form.</li>
+<li>The form itself is reactive. This means that your field will receive messages when the value changes or when other values change (in case you want to use other field values in your input).</li>
+<li>The API to communicate with the form has a few complexities you need to know. This is because the form is very dynamic - so the user could switch languages, and your input field needs to react to this.</li>
+</ol>
+<p>So let&#39;s get started 🚀!</p>
 <h2 id="getting-the-html-into-the-custom-input">Getting the HTML into the Custom Input</h2>
 <p>WebControls are developed using pure JavaScript, but a control is automatically a rich DOM object. So your <code>this</code> object can do all kinds of DOM manipulations, but in most cases you&#39;ll just do something like this:</p>
 <pre><code class="lang-js">this.innerHTML = &#39;Hello &lt;em&gt;world&lt;/em&gt;!&#39;;
@@ -188,14 +195,14 @@ That is not discussed here. </p>
 <ul>
 <li>The WYSIWYG field is based on <a href="https://www.tiny.cloud/">TinyMCE</a> - so to make configuration changes, you&#39;ll need to understand that API pretty well.</li>
 <li>To change it, you need to create a wrapper component which contains the standard 2sxc-wysiwyg and give it different configurations.</li>
-<li>To do this, there are a few callbacks we created so you can override most of the defaults</li>
+<li>To do this, we are calling various methods on a <code>reconfigure</code> object of your wrapper - so you can override most of the defaults</li>
 <li>This API is WIP (work-in-progress) so we make have to make some minor breaking changes in 2020. This shouldn&#39;t stop you, but just be aware of this. </li>
 </ul>
-<p>TODO: </p>
+<p>TODO: This is still WIP, should get done within a few days...</p>
 <h2 id="read-more">Read More</h2>
 <p>Basically you have what it takes. To go further: </p>
 <ul>
-<li>review the <a href="TODO">specs</a></li>
+<li>review the specs WIP</li>
 </ul>
 </article>
           </div>
