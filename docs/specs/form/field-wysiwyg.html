@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Customizing the WYSIWYG Field in 2sxc 11 - WIP | 2sxc and EAV 10 </title>
+    <title>Customizing the WYSIWYG Field in 2sxc 11 | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Customizing the WYSIWYG Field in 2sxc 11 - WIP | 2sxc and EAV 10 ">
+    <meta name="title" content="Customizing the WYSIWYG Field in 2sxc 11 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/favicon.ico">
@@ -97,45 +97,77 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Specs.Form.Field.Wysiwyg">
-<h1 id="customizing-the-wysiwyg-field-in-2sxc-11---wip">Customizing the WYSIWYG Field in 2sxc 11 - WIP</h1>
+<h1 id="customizing-the-wysiwyg-field-in-2sxc-11">Customizing the WYSIWYG Field in 2sxc 11</h1>
 
 <div class="TIP"><h5>Tip</h5><p>These are the technical specs for reference. Make sure you first read the <a class="xref" href="../../how-to/customize-edit-ux/index.html">how to</a> before you start. </p>
 </div>
 <p>Since WYSIWYG is so complex, with image-handling, special paste etc. we believe most developers are better of using the existing system, and just reconfiguring it. That&#39;s what we&#39;ll explain here. </p>
 <h2 id="make-sure-tinymce-is-loaded">Make sure TinyMCE is loaded</h2>
-<p>TODO:</p>
+<p>We must first load the standard WYSIWYG control before we start, otherwise you&#39;ll run into timing issues. The best way to do this can be seen in the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui241/page">tutorial</a>, but this is what you need:</p>
+<pre><code class="lang-ts">  const builtInWysiwyg = &#39;[System:Path]/system/field-string-wysiwyg/index.js&#39;;
+
+  /** Our WebComponent which is a custom, lightweight wysiwyg editor */
+  class StringWysiwygCustom extends HTMLElement {
+
+    /* connectedCallback() is the standard callback  when the component has been attached */
+    connectedCallback() {
+      // We need to ensure that the standard WYSIWYG is also loaded
+      this.connector.loadScript(&#39;tinymce&#39;, builtInWysiwyg, (x) =&gt; { this.initWysiwygCallback() })
+    }
+
+    initWysiwygCallback() {
+      // ...
+    }
+  }
+</code></pre><p>This way the form will load the built-in WYSIWYG control and trigger your callback, OR if it has already been loaded, immediately trigger your callback. </p>
 <h2 id="configure-the-tinymce-wysiwyg-web-control">Configure the TinyMCE WYSIWYG Web Control</h2>
 <p>The control has these public properties:</p>
 <ol>
 <li><code>mode</code> - values can be <code>edit</code> and <code>preview</code>, default is <code>preview</code></li>
-<li><code>connector</code> - the object that every form control needs.<br>You must connect this to the child for it to work
-TODO: <code>bridge</code> ?</li>
+<li><code>connector</code> - the object that every form control needs. You must connect this</li>
 <li><code>reconfigure</code> a special object that can change the configuration at various points</li>
 </ol>
 <p>Code Sample:</p>
-<pre><code class="lang-js">class StringWysiwygCustom extends HTMLElement {
-  /* Constructor for WebComponents - the first line must always be super() */
-  constructor() {
-    super();
+<pre><code class="lang-js">  const tagName = &#39;field-string-wysiwyg-micro&#39;;
+  const builtInWysiwyg = &#39;[System:Path]/system/field-string-wysiwyg/index.js&#39;;
+
+  /** Our WebComponent which is a custom, lightweight wysiwyg editor */
+  class StringWysiwygCustom extends HTMLElement {
+
+    /* connectedCallback() is the standard callback  when the component has been attached */
+    connectedCallback() {
+      // We need to ensure that the standard WYSIWYG is also loaded
+      this.connector.loadScript(&#39;tinymce&#39;, builtInWysiwyg, (x) =&gt; { this.initWysiwygCallback() })
+    }
+
+    initWysiwygCallback() {
+      // 1. Create a built-in field-string-wysiwyg control
+      const wysiwyg = document.createElement(&#39;field-string-wysiwyg&#39;);
+      // 2. tell it if it should start in preview or edit
+      wysiwyg.mode = &#39;edit&#39;; // can be &#39;preview&#39; or &#39;edit&#39;
+      // 3. attach connector
+      wysiwyg.connector = this.connector;
+      // 4. also attach reconfigure object which can change the TinyMCE as it&#39;s initialized
+      wysiwyg.reconfigure = new WysiwygReconfigurator();
+      // 5. Append it to the DOM. Do this last, as it will trigger connectedCallback() in the wysiwyg
+      this.appendChild(wysiwyg);
+    }
   }
 
-  /* connectedCallback() is the standard callback  when the component has been attached */
-  connectedCallback() {
-    // 1. Create a built-in field-string-wysiwyg control
-    const wysiwyg = document.createElement(&#39;field-string-wysiwyg&#39;);
-    // 2. tell it if it should start in preview or edit
-    wysiwyg.mode = &#39;edit&#39;; // can also be &#39;preview&#39;
-    // 3. attach connector
-    wysiwyg.connector = this.connector;
-    // 4. also attach reconfigure object which can change the TinyMCE as it&#39;s initialized
-    wysiwyg.reconfigure = new WysiwygReconfigurator();
-    console.log(&#39;wysiwyg reconfigure&#39;, wysiwyg.configure);
-    // 5. Append it to the DOM. Do this last, as it will trigger connectedCallback() in the wysiwyg
-    this.appendChild(wysiwyg);
+  /** The object which helps reconfigure what the editor will do */
+  class WysiwygReconfigurator {
+    configureOptions(options) {
+      options.toolbar = &quot;undo redo | bold italic&quot;
+      return options;
+    }
   }
-}
-</code></pre><h2 id="connector-object">Connector Object</h2>
-<p>For this, please consult TODO:</p>
+
+  // Register this web component - if it hasn&#39;t been registered yet
+  if (!customElements.get(tagName)) customElements.define(tagName, StringWysiwygCustom);
+</code></pre><h2 id="connector-object"><code>connector</code> Object</h2>
+<ul>
+<li>for the <code>connector</code> object please consult <a class="xref" href="js-connector.html">connector API</a></li>
+</ul>
 <h2 id="understanding-tinymce-and-life-cycle">Understanding TinyMCE and Life-Cycle</h2>
 <p>TincMCE has a huge set of options, so let&#39;s just get a quick idea of how things work inside it</p>
 <ol>
@@ -197,7 +229,11 @@ TODO: <code>bridge</code> ?</li>
 <li>It will also ask for <code>reconfigure.disableAdam</code> and if not true, will attach ADAM functionality</li>
 </ol>
 <h2 id="how-to-modify-the-behavior">How to Modify the Behavior</h2>
-<p>TODO:</p>
+<p>Best check out these tutorials</p>
+<ul>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui241/page">Basic tutorial, just providing 4 standard buttons</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui242/page">Advanced tutorial adding a custom button</a></li>
+</ul>
 <h2 id="history">History</h2>
 <ol>
 <li>New system in 2sxc 11 using WebComponents (previously this was not possible)</li>
