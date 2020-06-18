@@ -105,7 +105,12 @@
 <h3 id="portal-to-zoneid-mapping">Portal to ZoneId Mapping</h3>
 <p>The EAV has a virtual container called a <strong>Zone</strong> which is similar to a Portal in DNN. The IDs will not match though, so each Portal has a setting called <code>ToSIC_SexyContent_ZoneID</code> which contains the ZoneId for that portal. </p>
 <p>When 2sxc is used the first time on a portal, it will detect a missing ZoneId, which triggers zone creation and sets this value. </p>
-<h3 id="module-to-contentblock-mapping">Module to ContentBlock Mapping</h3>
+<h3 id="module-installation-to-app-installation-mapping">Module-Installation to App-Installation Mapping</h3>
+<p>A DNN Module installation corresponds to an App installation. Internally there is no mapping, as it is not necessary. </p>
+<p>There is an important difference though: in DNN, each installed Module is installed at the <em>System level</em>, so installed Modules are available on all Portals. On the other hand, Apps are installed at the <em>Zone (Portal) level</em>, so each app is only available on that portal. Customizations to the app also only affect that portal, and each Portal could have the same App installed in different versions. </p>
+<div class="NOTE"><h5>Note</h5><p>Technically there are a few ways to share Apps, their data, templates etc. across Portals, but these are fairly advanced scenarios. </p>
+</div>
+<h3 id="module-on-page-to-contentblock-mapping">Module-On-Page to ContentBlock Mapping</h3>
 <p>In DNN each modules has <em>Module Settings</em> to store configuration. 2sxc stores these two pieces of information in the Module Settings:</p>
 <ol>
 <li>App ID - what app is being shown here</li>
