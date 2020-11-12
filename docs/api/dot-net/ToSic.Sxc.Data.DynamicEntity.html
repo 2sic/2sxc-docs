@@ -133,10 +133,261 @@ public class DynamicEntity : DynamicObject, IDynamicMetaObjectProvider, IDynamic
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyBooleanProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyBooleanProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L12">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyBooleanProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyBooleanProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyBooleanProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyBooleanProperty">AnyBooleanProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.IsFemale</code> or whatever other property your item has.
+If it&apos;s a true/false, it will just magically work and return a <code>bool</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double AnyBooleanProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyChildrenProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyChildrenProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L18">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyChildrenProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyChildrenProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyChildrenProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyChildrenProperty">AnyChildrenProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Tags</code> or whatever other property your item has.
+If it&apos;s contains relationships, it will just magically work and return a list of further <code>DynamicEntity</code> objects.
+If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;DynamicEntity&gt; AnyChildrenProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Sxc.Data.DynamicEntity.html">DynamicEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_DynamicEntity_AnyChildrenProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Very often you&apos;ll want to use LINQ to further sort or query these items.
+But the Razor compiler cannot know that it got a list, so using <code>.Any()</code> or similar fails.
+To fix this, put an <code>AsList</code> around it - a bit like <code>AsList(myThing.Tags)</code>.
+Sometimes you&apos;ll also need to help a bit more with <code>AsList(myThings.Tags as object)</code>.
+Now you can do things like <code>var tags = AsList(myThings.Tags as object); if (myTags.Any()) {...}</code>
+Read more about this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/linq/home">Dnn LINQ Tutorials</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyDateTimeProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyDateTimeProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L15">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyDateTimeProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyDateTimeProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyDateTimeProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyDateTimeProperty">AnyDateTimeProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Birthday</code> or whatever other property your item has.
+If it&apos;s a date/time, it will just magically work and return a <code>DateTime</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime AnyDateTimeProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyJsonProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyJsonProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L21">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyJsonProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyJsonProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyJsonProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyJsonProperty">AnyJsonProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Gps</code> or whatever other property your item has.
+If the field contains JSON, it will just magically work and return a <code>string</code>.
+If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;DynamicEntity&gt; AnyJsonProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Sxc.Data.DynamicEntity.html">DynamicEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_DynamicEntity_AnyJsonProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Very often you&apos;ll want to use the Json as a dynamic object again.
+Just pass the result through <code>AsDynamic</code> and it will work.
+Example: <code>var gps = AsDynamic(myThing.Gps); var lat = gps.Lat;</code>
+Read more about this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/json/home">Dnn JSON Tutorials</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyLinkOrFileProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyLinkOrFileProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L24">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyLinkOrFileProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyLinkOrFileProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyLinkOrFileProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyLinkOrFileProperty">AnyLinkOrFileProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Image</code> or whatever other property your item has.
+If it&apos;s a link, it will just magically work and return a <code>string</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AnyLinkOrFileProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_DynamicEntity_AnyLinkOrFileProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that many internal references in the CMS use <code>file:2742</code> or similar. This will automatically be resolved to the real
+link which your output needs. </p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyNumberProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyNumberProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L27">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyNumberProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyNumberProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyNumberProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyNumberProperty">AnyNumberProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Length</code> or whatever other property your item has.
+If it&apos;s a number, it will just magically work and return a <code>double</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double AnyNumberProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_AnyStringProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.AnyStringProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Anything.cs/#L30">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_AnyStringProperty_" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyStringProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_AnyStringProperty" data-uid="ToSic.Sxc.Data.DynamicEntity.AnyStringProperty">AnyStringProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.FirstName</code> or whatever other property your item has.
+If it&apos;s a string, it will just magically work. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AnyStringProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_EntityGuid.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.EntityGuid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L152">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L172">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_EntityGuid_" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityGuid*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_EntityGuid" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityGuid">EntityGuid</h4>
@@ -158,8 +409,7 @@ public class DynamicEntity : DynamicObject, IDynamicMetaObjectProvider, IDynamic
     <tbody>
       <tr>
         <td><span class="xref">System.Guid</span></td>
-        <td><p>The same Guid as you would get from .Entity.EntityGuid</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -171,7 +421,7 @@ public class DynamicEntity : DynamicObject, IDynamicMetaObjectProvider, IDynamic
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_EntityId.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.EntityId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L148">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L169">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_EntityId_" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityId*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_EntityId" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityId">EntityId</h4>
@@ -194,8 +444,7 @@ Use it for edit-functionality or just to have a unique number for this item.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><p>The same Id as you would get from .Entity.EntityId</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -207,7 +456,7 @@ Use it for edit-functionality or just to have a unique number for this item.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_EntityTitle.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.EntityTitle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L156">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L175">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_EntityTitle_" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityTitle*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_EntityTitle" data-uid="ToSic.Sxc.Data.DynamicEntity.EntityTitle">EntityTitle</h4>
@@ -229,25 +478,24 @@ Use it for edit-functionality or just to have a unique number for this item.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Object</span></td>
-        <td><p>The title of the underlying entity. In rare cases it can be null.</p>
+        <td><p>The title of the underlying entity.
+In rare cases where no title-field is known, it can be null.
+It can also be null if there is no underlying entity. </p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Data_DynamicEntity_EntityTitle_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If the entity doesn&apos;t exist, it will return null</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_IsDemoItem.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.IsDemoItem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L169">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L184">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_IsDemoItem_" data-uid="ToSic.Sxc.Data.DynamicEntity.IsDemoItem*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_IsDemoItem" data-uid="ToSic.Sxc.Data.DynamicEntity.IsDemoItem">IsDemoItem</h4>
-  <div class="markdown level1 summary"><p>Tell the system that it&apos;s a demo item, not one added by the user
-2019-09-18 trying to mark demo-items for better detection in output #1792</p>
+  <div class="markdown level1 summary"><p>Many templates show demo data. If the template code must know if it&apos;s the demo item or
+real data, use IsDemoItem.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -265,7 +513,51 @@ Use it for edit-functionality or just to have a unique number for this item.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if this is the item configured in the view-settings, false if not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_DynamicEntity_IsDemoItem_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>New in 10.07</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Presentation.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Presentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L159">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_DynamicEntity_Presentation_" data-uid="ToSic.Sxc.Data.DynamicEntity.Presentation*"></a>
+  <h4 id="ToSic_Sxc_Data_DynamicEntity_Presentation" data-uid="ToSic.Sxc.Data.DynamicEntity.Presentation">Presentation</h4>
+  <div class="markdown level1 summary"><p>Contains presentation settings for an item - if they exist.
+This is a functionality of the CMS, where an instance of an item can be configured to show in a specific way.
+Normally it&apos;s used when something like an address has various show-settings (like how the map should visualize this address).
+The presentation-info is therefor not-null IF <br></p>
+<ul>
+<li>the content <em>belongs</em> to this module instance <br></li>
+<li>the view-configuration of this module is configured to have presentation items <br></li>
+<li>there is either a default presentation configured in the view, or the user has manually edited the presentation settings</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public dynamic Presentation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>An <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> with the presentation item (or the demo-presentation), otherwise null.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -276,7 +568,7 @@ Use it for edit-functionality or just to have a unique number for this item.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Children_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Children(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L190">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L205">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_Children_" data-uid="ToSic.Sxc.Data.DynamicEntity.Children*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_Children_System_String_System_String_" data-uid="ToSic.Sxc.Data.DynamicEntity.Children(System.String,System.String)">Children(String, String)</h4>
@@ -336,153 +628,10 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info. </p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Equals_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L24">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_Equals_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_Equals_System_Object_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Equals_ToSic_Eav_Data_IEntityWrapper_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Equals(ToSic.Eav.Data.IEntityWrapper)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L21">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_Equals_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_Equals_ToSic_Eav_Data_IEntityWrapper_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals(ToSic.Eav.Data.IEntityWrapper)">Equals(IEntityWrapper)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(IEntityWrapper other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IEntityWrapper.html">IEntityWrapper</a></td>
-        <td><span class="parametername">other</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Equals_ToSic_Sxc_Data_IDynamicEntity_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Equals(ToSic.Sxc.Data.IDynamicEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L34">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_Equals_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_Equals_ToSic_Sxc_Data_IDynamicEntity_" data-uid="ToSic.Sxc.Data.DynamicEntity.Equals(ToSic.Sxc.Data.IDynamicEntity)">Equals(IDynamicEntity)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(IDynamicEntity dynObj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a></td>
-        <td><span class="parametername">dynObj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Get_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Get(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L132">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L156">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_Get_" data-uid="ToSic.Sxc.Data.DynamicEntity.Get*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_Get_System_String_" data-uid="ToSic.Sxc.Data.DynamicEntity.Get(System.String)">Get(String)</h4>
@@ -532,7 +681,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info. </p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_GetDraft.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.GetDraft%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L159">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L178">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_GetDraft_" data-uid="ToSic.Sxc.Data.DynamicEntity.GetDraft*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_GetDraft" data-uid="ToSic.Sxc.Data.DynamicEntity.GetDraft">GetDraft()</h4>
@@ -561,44 +710,10 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info. </p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_GetHashCode.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L31">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_GetHashCode_" data-uid="ToSic.Sxc.Data.DynamicEntity.GetHashCode*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_GetHashCode" data-uid="ToSic.Sxc.Data.DynamicEntity.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"><p>This is used by various equality comparison. 
-Since we define two DynamicEntities to be equal when they host the same entity, this uses the Entity.HashCode</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Object.GetHashCode()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_GetPublished.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.GetPublished%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L162">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L181">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_GetPublished_" data-uid="ToSic.Sxc.Data.DynamicEntity.GetPublished*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_GetPublished" data-uid="ToSic.Sxc.Data.DynamicEntity.GetPublished">GetPublished()</h4>
@@ -630,7 +745,7 @@ Since we define two DynamicEntities to be equal when they host the same entity, 
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_Parents_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.Parents(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L183">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L198">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_DynamicEntity_Parents_" data-uid="ToSic.Sxc.Data.DynamicEntity.Parents*"></a>
   <h4 id="ToSic_Sxc_Data_DynamicEntity_Parents_System_String_System_String_" data-uid="ToSic.Sxc.Data.DynamicEntity.Parents(System.String,System.String)">Parents(String, String)</h4>
@@ -687,250 +802,6 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info. </p>
   <h5 id="ToSic_Sxc_Data_DynamicEntity_Parents_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>New in 9.42 - note also that the parameter-order is reversed to the Children()</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_SetEntity_ToSic_Eav_Data_IEntity_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.SetEntity(ToSic.Eav.Data.IEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L78">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_SetEntity_" data-uid="ToSic.Sxc.Data.DynamicEntity.SetEntity*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_SetEntity_ToSic_Eav_Data_IEntity_" data-uid="ToSic.Sxc.Data.DynamicEntity.SetEntity(ToSic.Eav.Data.IEntity)">SetEntity(IEntity)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void SetEntity(IEntity entity)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></td>
-        <td><span class="parametername">entity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_TryGetMember_System_Dynamic_GetMemberBinder_System_Object__.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.TryGetMember(System.Dynamic.GetMemberBinder%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L85">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_TryGetMember_" data-uid="ToSic.Sxc.Data.DynamicEntity.TryGetMember*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_TryGetMember_System_Dynamic_GetMemberBinder_System_Object__" data-uid="ToSic.Sxc.Data.DynamicEntity.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">TryGetMember(GetMemberBinder, out Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetMember(GetMemberBinder binder, out object result)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Dynamic.GetMemberBinder</span></td>
-        <td><span class="parametername">binder</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">result</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.Dynamic.DynamicObject.TryGetMember(System.Dynamic.GetMemberBinder, System.Object)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_TryGetMember_System_String_System_Object__.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.TryGetMember(System.String%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity.cs/#L88">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_TryGetMember_" data-uid="ToSic.Sxc.Data.DynamicEntity.TryGetMember*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_TryGetMember_System_String_System_Object__" data-uid="ToSic.Sxc.Data.DynamicEntity.TryGetMember(System.String,System.Object@)">TryGetMember(String, out Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryGetMember(string memberName, out object result)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">memberName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">result</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="operators">Operators
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_op_Equality_ToSic_Sxc_Data_DynamicEntity_ToSic_Eav_Data_IEntityWrapper_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.op_Equality(ToSic.Sxc.Data.DynamicEntity%2CToSic.Eav.Data.IEntityWrapper)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L17">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_op_Equality_" data-uid="ToSic.Sxc.Data.DynamicEntity.op_Equality*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_op_Equality_ToSic_Sxc_Data_DynamicEntity_ToSic_Eav_Data_IEntityWrapper_" data-uid="ToSic.Sxc.Data.DynamicEntity.op_Equality(ToSic.Sxc.Data.DynamicEntity,ToSic.Eav.Data.IEntityWrapper)">Equality(DynamicEntity, IEntityWrapper)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(DynamicEntity d1, IEntityWrapper d2)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Data.DynamicEntity.html">DynamicEntity</a></td>
-        <td><span class="parametername">d1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IEntityWrapper.html">IEntityWrapper</a></td>
-        <td><span class="parametername">d2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_DynamicEntity_op_Inequality_ToSic_Sxc_Data_DynamicEntity_ToSic_Eav_Data_IEntityWrapper_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.DynamicEntity.op_Inequality(ToSic.Sxc.Data.DynamicEntity%2CToSic.Eav.Data.IEntityWrapper)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicEntity_Equality.cs/#L19">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Data_DynamicEntity_op_Inequality_" data-uid="ToSic.Sxc.Data.DynamicEntity.op_Inequality*"></a>
-  <h4 id="ToSic_Sxc_Data_DynamicEntity_op_Inequality_ToSic_Sxc_Data_DynamicEntity_ToSic_Eav_Data_IEntityWrapper_" data-uid="ToSic.Sxc.Data.DynamicEntity.op_Inequality(ToSic.Sxc.Data.DynamicEntity,ToSic.Eav.Data.IEntityWrapper)">Inequality(DynamicEntity, IEntityWrapper)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(DynamicEntity d1, IEntityWrapper d2)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Data.DynamicEntity.html">DynamicEntity</a></td>
-        <td><span class="parametername">d1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IEntityWrapper.html">IEntityWrapper</a></td>
-        <td><span class="parametername">d2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.Dynamic.IDynamicMetaObjectProvider</span>

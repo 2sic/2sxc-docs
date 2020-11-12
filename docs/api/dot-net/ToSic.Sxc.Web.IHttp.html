@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IEngine
+    <title>Interface IHttp
    | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IEngine
+    <meta name="title" content="Interface IHttp
    | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -98,42 +98,39 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Engines.IEngine">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Web.IHttp">
   
   
-  <h1 id="ToSic_Sxc_Engines_IEngine" data-uid="ToSic.Sxc.Engines.IEngine" class="text-break">Interface IEngine
+  <h1 id="ToSic_Sxc_Web_IHttp" data-uid="ToSic.Sxc.Web.IHttp" class="text-break">Interface IHttp
   </h1>
-  <div class="markdown level0 summary"><p>The sub-system in charge of taking</p>
-<ul>
-<li>a configuration for an instance (aka Module)</li>
-<li>a template
-and using all that to produce an html-string for the browser. </li>
-</ul>
+  <div class="markdown level0 summary"><p>Goal is that anything on this will be able to provide HttpContext operations as needed
+To abstract .net451 and .net core</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Engines.html">ToSic.Sxc.Engines</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Web.html">ToSic.Sxc.Web</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
-  <h5 id="ToSic_Sxc_Engines_IEngine_syntax">Syntax</h5>
+  <h5 id="ToSic_Sxc_Web_IHttp_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;this is just fyi&quot;)]
-public interface IEngine</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
+public interface IHttp</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Engines_IEngine_Assets.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Engines.IEngine.Assets%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IHttp_Current.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IHttp.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Engines/IEngine.cs/#L64">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/IHttp.cs/#L23">View Source</a>
   </span>
-  <a id="ToSic_Sxc_Engines_IEngine_Assets_" data-uid="ToSic.Sxc.Engines.IEngine.Assets*"></a>
-  <h4 id="ToSic_Sxc_Engines_IEngine_Assets" data-uid="ToSic.Sxc.Engines.IEngine.Assets">Assets</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="ToSic_Sxc_Web_IHttp_Current_" data-uid="ToSic.Sxc.Web.IHttp.Current*"></a>
+  <h4 id="ToSic_Sxc_Web_IHttp_Current" data-uid="ToSic.Sxc.Web.IHttp.Current">Current</h4>
+  <div class="markdown level1 summary"><p>The standardized HttpContext. It&apos;s type changes depending on the framework it&apos;s running in</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">List&lt;ClientAssetInfo&gt; Assets { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">HttpContext Current { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -145,7 +142,69 @@ public interface IEngine</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">ToSic.Sxc.Web.ClientAssetInfo</span>&gt;</td>
+        <td><span class="xref">System.Web.HttpContext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IHttp_QueryStringParams.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IHttp.QueryStringParams%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/IHttp.cs/#L33">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Web_IHttp_QueryStringParams_" data-uid="ToSic.Sxc.Web.IHttp.QueryStringParams*"></a>
+  <h4 id="ToSic_Sxc_Web_IHttp_QueryStringParams" data-uid="ToSic.Sxc.Web.IHttp.QueryStringParams">QueryStringParams</h4>
+  <div class="markdown level1 summary"><p>The standardized QueryString parameters so it works on all platforms</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">NameValueCollection QueryStringParams { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IHttp_Request.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IHttp.Request%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/IHttp.cs/#L28">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Web_IHttp_Request_" data-uid="ToSic.Sxc.Web.IHttp.Request*"></a>
+  <h4 id="ToSic_Sxc_Web_IHttp_Request" data-uid="ToSic.Sxc.Web.IHttp.Request">Request</h4>
+  <div class="markdown level1 summary"><p>The standardized&quot; HttpRequest object. It&apos;s type changes depending on the framework it&apos;s running in. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HttpRequest Request { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Web.HttpRequest</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -154,85 +213,20 @@ public interface IEngine</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Engines_IEngine_CustomizeData.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Engines.IEngine.CustomizeData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IHttp_QueryStringKeyValuePairs.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IHttp.QueryStringKeyValuePairs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Engines/IEngine.cs/#L44">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/IHttp.cs/#L40">View Source</a>
   </span>
-  <a id="ToSic_Sxc_Engines_IEngine_CustomizeData_" data-uid="ToSic.Sxc.Engines.IEngine.CustomizeData*"></a>
-  <h4 id="ToSic_Sxc_Engines_IEngine_CustomizeData" data-uid="ToSic.Sxc.Engines.IEngine.CustomizeData">CustomizeData()</h4>
-  <div class="markdown level1 summary"><p>Mechanism which allows the view to change data it will show in a stream-based way.
-This helps to ensure that other parts like JSON-Streams or Search have the same information
-as the view itself. </p>
+  <a id="ToSic_Sxc_Web_IHttp_QueryStringKeyValuePairs_" data-uid="ToSic.Sxc.Web.IHttp.QueryStringKeyValuePairs*"></a>
+  <h4 id="ToSic_Sxc_Web_IHttp_QueryStringKeyValuePairs" data-uid="ToSic.Sxc.Web.IHttp.QueryStringKeyValuePairs">QueryStringKeyValuePairs()</h4>
+  <div class="markdown level1 summary"><p>QueryString params as KeyValue Pairs.
+We don&apos;t use a dictionary, because sometimes the same key can occur twice.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void CustomizeData()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Engines_IEngine_Init_ToSic_Sxc_Blocks_IBlock_ToSic_Sxc_Blocks_Purpose_ToSic_Eav_Logging_ILog_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Engines.IEngine.Init(ToSic.Sxc.Blocks.IBlock%2CToSic.Sxc.Blocks.Purpose%2CToSic.Eav.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Engines/IEngine.cs/#L29">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Engines_IEngine_Init_" data-uid="ToSic.Sxc.Engines.IEngine.Init*"></a>
-  <h4 id="ToSic_Sxc_Engines_IEngine_Init_ToSic_Sxc_Blocks_IBlock_ToSic_Sxc_Blocks_Purpose_ToSic_Eav_Logging_ILog_" data-uid="ToSic.Sxc.Engines.IEngine.Init(ToSic.Sxc.Blocks.IBlock,ToSic.Sxc.Blocks.Purpose,ToSic.Eav.Logging.ILog)">Init(IBlock, Purpose, ILog)</h4>
-  <div class="markdown level1 summary"><p>Initialize the Engine (pass everything needed for Render to it).<br>
-This is not in the constructor, because IEngines usually get constructed with DI,
-so the constructor is off-limits. </p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Init(IBlock block, Purpose purpose, ILog parentLog)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Blocks.IBlock.html">IBlock</a></td>
-        <td><span class="parametername">block</span></td>
-        <td><p>block within the cms</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Blocks.Purpose.html">Purpose</a></td>
-        <td><span class="parametername">purpose</span></td>
-        <td><p>Purpose of the engine (show in web, search-index, etc.). The custom code may adapt its behavior depending on the purpose</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Logging.ILog.html">ILog</a></td>
-        <td><span class="parametername">parentLog</span></td>
-        <td><p>Log to chain with</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Engines_IEngine_Render.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Engines.IEngine.Render%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Engines/IEngine.cs/#L35">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Engines_IEngine_Render_" data-uid="ToSic.Sxc.Engines.IEngine.Render*"></a>
-  <h4 id="ToSic_Sxc_Engines_IEngine_Render" data-uid="ToSic.Sxc.Engines.IEngine.Render">Render()</h4>
-  <div class="markdown level1 summary"><p>Renders a template, returning a string with the rendered template.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Render()</code></pre>
+    <pre><code class="lang-csharp hljs">List&lt;KeyValuePair&lt;string, string&gt;&gt; QueryStringKeyValuePairs()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -244,9 +238,8 @@ so the constructor is off-limits. </p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The string - usually HTML - which the engine created. </p>
-</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Collections.Generic.KeyValuePair</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -258,10 +251,10 @@ so the constructor is off-limits. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Engines_IEngine.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Engines.IEngine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_IHttp.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.IHttp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Engines/IEngine.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/IHttp.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
