@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>2sxc Web API Documentation | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="2sxc Web API Documentation | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../images/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WebApi.Index">
+<h1 id="2sxc-web-api-documentation">2sxc Web API Documentation</h1>
+
+<p>2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP <code>GET</code> to an endpoint like <code>app/News/content/NewsItems/</code> and get a list of news items. </p>
+<p>You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need. </p>
+<p><img src="assets/web-api-overview.svg" width="100%"></p>
+<h2 id="simple-example">Simple Example</h2>
+<p>Here&#39;s an example JavaScript which would run in a 2sxc News-App on a DNN page:</p>
+<pre><code class="lang-javascript">// Get news as a promise
+var allNewsPromise = sxc.webApi.get(&#39;app/auto/content/News/&#39;);
+
+// now log to console
+allNewsPromise.then(data =&gt; console.log(data));
+</code></pre><p>This example has some magic happening in the background. Specifically 3 important things happen on the <strong>client</strong> before sending:</p>
+<ol>
+<li>The real URL which is requested is a bit longer, but the <code>webApi</code> takes care of that.</li>
+<li>The server needs to know what App and Module the script is calling from. This <em>Context</em> information is also added by the <code>webApi</code>.</li>
+<li>To add security, a crypto-token is added which will prove that the JavaScript requesting this is running on the page. This is also added by <code>webApi</code>.</li>
+</ol>
+<p>When the <strong>server</strong> receives the request, it too does important stuff.</p>
+<ol>
+<li>First it will use the URL and <em>Context</em> information to figure out what <em>Site</em>, <em>Language</em> and <em>App</em> should be accessed.</li>
+<li>The server will do some security checks to see if this request should be answered.</li>
+<li>Then it returns the data in a simple <strong>JSON</strong> format</li>
+</ol>
+<h2 id="get-started-step-1-decide-which-endpoint-you-need">Get Started Step 1: Decide which Endpoint you need</h2>
+<p>This checklist should help you decide:</p>
+<iframe src="https://azing.org/2sxc/r/zhLnCg3e?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+
+<h2 id="getting-started">Getting Started</h2>
+<p>Your 1-2-3 steps for using data endpoints are:</p>
+<ol>
+<li>Decide which endpoint you need</li>
+<li>Create / Publish the endpoint<ol>
+<li>For standard endpoints, set the permissions as you need them</li>
+<li>For custom endpoints, write the C# code</li>
+</ol>
+</li>
+<li>Write the code to read the data (typically in JavaScript)</li>
+</ol>
+<h2 id="todo-draft">TODO: draft</h2>
+<ol>
+<li>Move specs/web-api index to here</li>
+<li>fix all links</li>
+<li>Move 2sxc-wiki</li>
+<li><p>fix all links</p>
+</li>
+<li><p>overview how it&#39;s used - 2sxc backend, various users - and in-2sxc help</p>
+</li>
+<li><p>create page for Query Read</p>
+</li>
+<li><p>Create page for consuming Custom WebApis</p>
+</li>
+<li><p>Create page for creating custom WebApis</p>
+</li>
+<li>Create page about context &amp; headers</li>
+<li>Create page about security</li>
+<li><p>Create page about JS API to use this?</p>
+</li>
+<li><p>create page about AsDynamic, AsList, AsEntity?</p>
+</li>
+</ol>
+<h2 id="conventions-used">Conventions Used</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> means that there is a url convention to access data like <code>.../blogposts/25</code></li>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> also specifies that an <em>HTTP GET</em> is for reading, <em>HTTP POST</em> is for writing, etc.</li>
+<li>All the APIs use <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for sending/receiving data. <a href="https://azing.org/2sxc/r/2zBGrCAd">This is the default schema</a>.</li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
+</ul>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="content-rest-web-api.html">Data CRUD API</a></li>
+<li><a class="xref" href="custom-web-api.html">DotNet WebApi</a></li>
+<li><a class="xref" href="../specs/cms/polymorph.html">Concepts: Polymorphisms</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced Content-REST API in 2sxc 5.x</li>
+<li>Query added in 2sxc 8.10</li>
+<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Docs/web-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

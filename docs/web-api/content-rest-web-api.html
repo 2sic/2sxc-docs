@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>2sxc Content REST and CRUD Web API | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="2sxc Content REST and CRUD Web API | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../images/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WebApi.Content">
+<h1 id="2sxc-content-rest-and-crud-web-api">2sxc Content REST and CRUD Web API</h1>
+
+<p>2sxc provides a full set of REST endpoints for CRUD (Create, Read, Update, Delete) operations like:</p>
+<ol>
+<li>Read a list of all items/entities</li>
+<li>Read a single item/entity</li>
+<li>Create an item/entity</li>
+<li>Update an item/entity</li>
+<li>Delete an item/entity</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p><img src="assets/admin-ui-data-rest-menu.jpg" width="40%" align="right">
+Starting in 2sxc 11.10+ the admin-UI has <a class="xref" href="help-admin-ui-content-rest.html">built-in help</a> to get started. These UIs also show sample code and everything.
+So you probably don&#39;t need to read the stuff here and just go ahead with that. </p>
+</div>
+<h2 id="how-to-read-content-itemsentities">How to Read Content-Items/Entities</h2>
+<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
+<p><code>[root-path]/app/auto/content/BlogPost</code></p>
+<p>...then your JS would receive a JSON with all BlogPost items. </p>
+<p>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</p>
+<div class="TIP"><h5>Tip</h5><p>To figure out the exact path and the <code>[root-path]</code> part, 
+best read about it in the <a class="xref" href="help-admin-ui-content-rest.html">admin-ui</a>
+or work your way into the <a class="xref" href="specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
+</div>
+<h2 id="how-to-create-content-itemsentities">How to Create Content-Items/Entities</h2>
+<p>Doing an http POST to this <code>[root-path]/app/auto/content/BlogPost</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you create the item. You will get a return message containing ID, GUID etc. of the new item. </p>
+<p>If your POST package also contains an <code>EntityGuid</code> then this will be used as the GUID for the new item. </p>
+<h2 id="how-to-update-content-itemsentities">How to Update Content-Items/Entities</h2>
+<p>Doing an http POST to this <code>[root-path]/app/auto/content/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</p>
+<h2 id="how-to-delete-content-itemsentities">How to Delete Content-Items/Entities</h2>
+<p>Doing an http DELETE to this <code>[root-path]/app/auto/content/BlogPost/1050</code> would delete the item 1050.</p>
+<h2 id="javascript-helpers">JavaScript Helpers</h2>
+<p>The <a class="xref" href="../specs/js/2sxc.html">$2sxc</a> and the <a class="xref" href="../specs/js/sxc.html">sxc Controller</a> make it really easy to use this. Best to get familiar with them. </p>
+<h2 id="about-security--permissions">About Security / Permissions</h2>
+<div class="WARNING"><h5>Warning</h5><p>You are usually developing as a super-user, in which case these endpoints automatically work. If you want normal users to do certain things like create items, you need to <a href="https://azing.org/2sxc/r/k0YbVYXO">configure the permissions</a>.</p>
+</div>
+<p>To use these endpoints for normal users, you would need to enable the permissions and then you can access them using the REST URLs. Use this Checklist to get started. </p>
+<iframe src="https://azing.org/2sxc/r/34pAzAF2?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="index.html">General WebApi Specs</a></li>
+<li><a class="xref" href="specs/url-schema.html">URL Schema</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced Content-REST API in 2sxc 5.x</li>
+<li>Added <a class="xref" href="help-admin-ui-content-rest.html">in-admin help</a> to access it in 11.10</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Docs/web-api/content-rest-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

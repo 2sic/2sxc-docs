@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>URLs for WebAPI and REST APIs | 2sxc and EAV 10 </title>
+    <title>This page has moved | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="URLs for WebAPI and REST APIs | 2sxc and EAV 10 ">
+    <meta name="title" content="This page has moved | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -62,6 +62,9 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
@@ -97,112 +100,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Specs.WebApi.UrlSchema">
-<h1 id="urls-for-webapi-and-rest-apis">URLs for WebAPI and REST APIs</h1>
+<h1 id="this-page-has-moved">This page has moved</h1>
 
-<p>One of the most confusing aspects when using the REST API or custom WebApis is finding the right URL to talk to the API. Read this to help you understand what&#39;s going on and get started quickly. </p>
-<div class="TIP"><h5>Tip</h5><p>When you&#39;re using JavaScript and the <a class="xref" href="../js/2sxc.html">$2sxc controller</a>, everything happens automatically.
-In that you don&#39;t need to understand the details of the URL, but this should help you in 
-other scenarios.</p>
-</div>
-<h2 id="basic-url-schema">Basic URL Schema</h2>
-<p>Every 2sxc REST URL is built with the following parts:</p>
-<p><code>[root]/app/[app-identity]/[part]/[specifics]</code></p>
-<ol>
-<li>The <code>root</code> is determined by DNN and changes a bit by DNN version, portal, and language configuration. <a href="#root">more</a></li>
-<li>The <code>app-identity</code> says what app we&#39;re addressing. It&#39;s often <code>auto</code> for auto-detection, but when auto-detection isn&#39;t available, it&#39;s the app-folder name. <a href="#app-identity">more</a></li>
-<li>the <code>part</code> determines if we&#39;re accessing <a href="#part-content">content</a>, <a href="#part-query">query</a> or <a href="#part-api">api</a> of the app.</li>
-<li>The <code>specifics</code> is a path part describing what exactly what we&#39;re accessing and varies depending on the API.</li>
-</ol>
-<h2 id="root">Root</h2>
-<h3 id="the-root-in-dnn-9">The Root in DNN 9+</h3>
-<p>In DNN 9 the root was shortened to: <code>[portal-root-with-language]/api/2sxc/...</code></p>
-<div class="NOTE"><h5>Note</h5><p>The old root from DNN 7 and 8 still work in DNN 9 for compatibility. </p>
-</div>
-<h3 id="the-root-in-dnn-7-and-8">The Root in DNN 7 and 8</h3>
-<p>DNN 7 &amp; 8: <code>[portal-root-with-language]/desktopmodules/2sxc/api/...</code></p>
-<div class="WARNING"><h5>Warning</h5><p>An easy thing to overlook is that in DNN 7 and 8 it was <code>2sxc/api</code> but in DNN 9 it&#39;s <code>api/2sxc</code></p>
-</div>
-<h2 id="app-identity">App-Identity</h2>
-<p>The App-identity can be either the word <code>auto</code> to use auto-detection, or the app-folder-name if you can&#39;t use auto-detection. </p>
-<div class="TIP"><h5>Tip</h5><p>Whenever you&#39;re working in DNN and accessing the endpoint from a module that contains the same App, then you should use auto-detection. </p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>Auto-Detection relies on DNN mechanisms which send TabId and ModuleId in HTTP-headers. 
-2sxc uses these headers to figure out what App you&#39;re using. If something fails in auto-detection, you&#39;re probably not using the normal DNN conventions for making REST calls.</p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>When calling an endpoint from another website or a mobile App, you cannot use <code>auto</code> but must specify the app-folder name.</p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>If you&#39;re <em>not</em> using auto-detection, then the root path must be absolutely correct. Here&#39;s why: If you have multiple portals then each portal could have other apps, or sometimes even the same app (like a Blog app). In this case, the root-path says what portal is being used, which in turn is important to get the correct app.</p>
-</div>
-<h3 id="app-identity-examples">App-Identity Examples</h3>
-<p>To access an API (in this example the <code>content</code>) from JS code in the same app you can rely on auto-detection of the app, like this: </p>
-<p><code>.../app/auto/content/...</code></p>
-<p>To access the same Glossary-App from elsewhere, like from the skin (for example, to highlight all words to which your glossary-app has definitions), from another app, or from another website, you would specify the folder name as auto-detection won&#39;t work. Like this:</p>
-<p><code>.../app/Glossary/content/...</code></p>
-<p>This applies to all endpoints like <code>content</code>, <code>query</code>, <code>api</code>.</p>
-<h2 id="part-content">Part Content</h2>
-<p>If your part is <code>content</code> then you&#39;re using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after <code>content/</code>:</p>
-<ul>
-<li><code>.../content/[YourContentType]</code> <ul>
-<li>HTTP GET will retrieve all items of this type</li>
-</ul>
-</li>
-<li><code>.../content/[your-content-type]/[item-id]</code> where <code>item-id</code> is the number or the GUID<ul>
-<li>HTTP GET will get one item</li>
-<li>HTTP POST is used to create an item or update it</li>
-<li>HTTP DELETE will delete the item</li>
-</ul>
-</li>
-</ul>
-<div class="WARNING"><h5>Warning</h5><p>This requires that permissions are configured to allow it. 
-The permissions are very powerful so make sure you understand them. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>You can also configure permissions in ways that allow users to only create draft items
-(which would then require an admin to publish it)</p>
-</div>
-<h3 id="content-example">Content Example</h3>
-<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/content/BlogPost</code></p>
-<p>...then your JS would receive a JSON with all BlogPost items. More examples:</p>
-<ol>
-<li>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</li>
-<li>HTTP POST to <code>[root-path]/app/auto/content/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</li>
-</ol>
-<h2 id="part-query">Part Query</h2>
-<p>The Query endpoint can be accessed on <code>.../query/[your-query-name]</code>. Note that Query endpoints only support the HTTP-verb GET, since it&#39;s read-only. </p>
-<div class="WARNING"><h5>Warning</h5><p>This requires that permissions are configured to allow it. 
-The permissions are very powerful so make sure you understand them. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>Make sure you give your queries simple names without spaces if you intend to use them in REST calls.</p>
-</div>
-<h3 id="query-example">Query Example</h3>
-<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/query/BlogPostsByAuthor?Author=Daniel%20Mettler</code>  </p>
-<p>This would run the pre-defined query and return the Blog Posts of the author <em>Daniel Mettler</em>.</p>
-<h2 id="part-api">Part Api</h2>
-<p>Custom WebAPI use one of these schemas</p>
-<ol>
-<li><code>.../api/[controller-name]/[action-or-more-params]</code></li>
-<li><code>.../[edition]/api/[controller-name]/[action-or-more-params]</code></li>
-</ol>
-<p>Your C# code determines what HTTP-verbs will work (GET, POST, etc.). Your code is also responsible for determining what permissions are used, like Anonymous etc.</p>
-<p>The <code>[edition]</code> is relevant if you&#39;re using <a class="xref" href="../cms/polymorph.html">Polymorphism</a>. So if you don&#39;t specify an edition, the controller is expected to be in the <code>[AppFolder]\api</code> but if you do use polymorphism the controller must be in <code>[AppFolder]\[edition]\api</code>. </p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../how-to/webapi/dotnet-webapi.html">DotNet WebApi</a></li>
-<li><a class="xref" href="../cms/polymorph.html">Concepts: Polymorphisms</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
-<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc ca. 5.x</li>
-<li>Query added in 2sxc 8.10</li>
-<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
-</ol>
+<p>Visit the new location here: <a class="xref" href="../../web-api/specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
 </article>
           </div>
           
