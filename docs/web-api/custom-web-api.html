@@ -102,15 +102,25 @@
             <article class="content wrap" id="_content" data-uid="WebApi.Custom">
 <h1 id="2sxc-custom-c-web-apis">2sxc Custom C# Web APIs</h1>
 
-<p>You can easily create custom C# WebAPIs, and then access them through the URL. What these endpoints do is completely up to you.</p>
+<p>You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.</p>
 <div class="TIP"><h5>Tip</h5><p><strong>Discover this Feature</strong><br>Before you spend too much time reading docs, best discover this live. 
 You can find a real-life example in our <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor-Tutorials</a>. </p>
 </div>
+<h2 id="how-to-access-the-endpoints-with-javascript">How to Access the Endpoints with JavaScript</h2>
+<p>You can find a good example on <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">live tutorials</a> or in the <a class="xref" href="(xref:App.Mobius)">Mobius Forms App</a>. Calling these is as follows:</p>
+<ul>
+<li><code>.../app/auto/api/[YourName]</code> when accessing a WebApi of the current app (from a dnn-page with this module), as then 2sxc uses auto-detect</li>
+<li><code>.../app/[app-folder]/api/[YourName]</code> when using this endpoint from external, as auto-detect can&#39;t work then.</li>
+</ul>
+<p>Most WebApi Actions will require additional parameters. Just add them as url-parameters like <code>?param1=This&amp;param2=That</code></p>
 <h2 id="where-to-store-the-api-files">Where to Store the API Files</h2>
 <p>All your WebAPIs are C# files saved in the special folder called <code>api</code>. The folder must be in root of your 2sxc app, and the files have to end with <code>...Controller.cs</code> (this is a convention in ASP.net).</p>
-<p><em>New in 2sxc 9.35+</em>: you can now also create <code>api</code> folders as <em>subfolders</em> to run the api in multiple editions. This is an experimental <a class="xref" href="../specs/cms/polymorph.html">polymorph feature</a> which is still being worked out, but in general you can use the old and the new way:</p>
 <ul>
 <li>classic (single edition)<br><code>[app-folder]/api/YourController.cs</code><br>accessed url: <code>[api-root]/app/auto/api/[Your]</code></li>
+</ul>
+<p><em>New in 2sxc 9.35+</em>: you can now also create <code>api</code> folders as <em>subfolders</em> to run the api in multiple editions. This is the <a class="xref" href="../specs/cms/polymorph.html">polymorph feature</a>. 
+It let&#39;s you have the <strong>same</strong> api-controller in multiple editions, where the end-user is using <code>live</code> and you&#39;re doing open-heart-surgery in the background on a new edition like <code>staging</code>. </p>
+<ul>
 <li>multiple editions:<br><code>[app-folder]/[edition]/api/YourController.cs</code>
 access url: <code>[api-root]/app/auto/[edition]/api/[Your]</code></li>
 </ul>
@@ -150,6 +160,8 @@ public class BooksController : ToSic.Sxc.Dnn.ApiController
 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; onclick=&quot;getPersons(this)&quot;&gt;
   Get Persons Custom
 &lt;/button&gt; 
+
+
 &lt;script&gt;
   // this script does the API call and then shows the result
   function getPersons(moduleContext) {
@@ -175,6 +187,13 @@ public class BooksController : ToSic.Sxc.Dnn.ApiController
 <li><a class="xref" href="../how-to/dynamic-code/object-data.html">Data</a></li>
 <li><a class="xref" href="custom-web-api-dotnet-saveinadam.html">SaveInAdam(...)</a> <em>new in 9.30</em></li>
 </ol>
+<h2 id="security">Security</h2>
+<p>Your C# code determines what security is applied, and what http verbs are supported. For now, read up on DNN WebApi controllers to figure how to best do this. In most cases you&#39;ll add attributes like</p>
+<ul>
+<li><code>[AllowAnonymous]</code></li>
+<li><code>[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]</code></li>
+<li><code>[ValidateAntiForgeryToken]</code> - this forces the API to only work when called from JavaScript on the same site (no external use)</li>
+</ul>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>Instead of <strong>App.Data[&quot;MyData&quot;]</strong> you can fetch data from another data source provided by 2sxc (for exmple from the <strong>App.Query[&quot;MyQueryData&quot;]</strong>)</li>
@@ -199,7 +218,7 @@ public class BooksController : ToSic.Sxc.Dnn.ApiController
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Docs/web-api/custom-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/src/web-api/custom-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -115,7 +115,7 @@ Starting in 2sxc 11.10+ the admin-UI has <a class="xref" href="help-admin-ui-con
 So you probably don&#39;t need to read the stuff here and just go ahead with that. </p>
 </div>
 <h2 id="how-to-read-content-itemsentities">How to Read Content-Items/Entities</h2>
-<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
+<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
 <p><code>[root-path]/app/auto/content/BlogPost</code></p>
 <p>...then your JS would receive a JSON with all BlogPost items. </p>
 <p>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</p>
@@ -135,7 +135,12 @@ or work your way into the <a class="xref" href="specs/url-schema.html">URLs for 
 <h2 id="about-security--permissions">About Security / Permissions</h2>
 <div class="WARNING"><h5>Warning</h5><p>You are usually developing as a super-user, in which case these endpoints automatically work. If you want normal users to do certain things like create items, you need to <a href="https://azing.org/2sxc/r/k0YbVYXO">configure the permissions</a>.</p>
 </div>
-<p>To use these endpoints for normal users, you would need to enable the permissions and then you can access them using the REST URLs. Use this Checklist to get started. </p>
+<p>To use these endpoints for normal users, you would need to enable the permissions and then you can access them using the REST URLs. </p>
+<ol>
+<li>reading data requires read-permissions on that content-type</li>
+<li>writing data requires write-permissions or a content-type or on a specific item (owner-permissions)</li>
+</ol>
+<p>Use this Checklist to get started:</p>
 <iframe src="https://azing.org/2sxc/r/34pAzAF2?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
 
@@ -157,7 +162,7 @@ or work your way into the <a class="xref" href="specs/url-schema.html">URLs for 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Docs/web-api/content-rest-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/src/web-api/content-rest-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
