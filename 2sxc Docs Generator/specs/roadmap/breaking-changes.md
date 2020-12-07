@@ -7,6 +7,24 @@ uid: Specs.Roadmap.BreakingChanges
 We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API. 
 We're documenting it here to ensure you know what happened, in case you still run into this.
 
+## Version 11
+
+There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers. 
+
+#### Version 11.07 - Drop the old edit UI
+
+1. In 11.07 the old edit UI was removed, so customizations for that UI would not be in effect any more. 
+
+#### Version 11.10 - Mainly Dependency Injection
+
+1. In v11.10 we used much more dependency injection than ever before and stopped using static values which were still in the API in many places. Because of this, certain helper objects to create entities or lookup values were changed and their constructors were changed. We invested a lot of time to try to ensure that old APIs still work, but in case you're hit by one of these, make sure you check the DI and switch to resolving the objects using DI. 
+
+#### Version 11.11 - Language Detection
+
+1. Previously the language detection used the Thread culture. Turns out this wasn't reliable because DNN does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change. 
+1. Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you. 
+1. We changed all tokens to always resolve boolean values to `true`/`false` (previously they would have been changed to the current language, like `wahr` for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output. 
+
 ## Version 10
 
 > Version 10 has a lot of small breaking changes because 
@@ -137,3 +155,4 @@ More internal changes which shouldn't affect anybody, but make the API ready for
 
 1. Breaking change on inconsistent naming `ToSic.Eav.IEntity` instead of `ToSic.Eav.Interfaces.IEntity`.  
 	see full [blog post](https://2sxc.org/en/blog/post/fixing-the-breaking-change-on-tosic-eav-ientity-in-2sxc-9-3)
+

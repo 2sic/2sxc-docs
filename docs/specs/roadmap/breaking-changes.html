@@ -104,6 +104,22 @@
 
 <p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
 We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h2 id="version-11">Version 11</h2>
+<p>There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn&#39;t affect normal developers. </p>
+<h4 id="version-1107---drop-the-old-edit-ui">Version 11.07 - Drop the old edit UI</h4>
+<ol>
+<li>In 11.07 the old edit UI was removed, so customizations for that UI would not be in effect any more. </li>
+</ol>
+<h4 id="version-1110---mainly-dependency-injection">Version 11.10 - Mainly Dependency Injection</h4>
+<ol>
+<li>In v11.10 we used much more dependency injection than ever before and stopped using static values which were still in the API in many places. Because of this, certain helper objects to create entities or lookup values were changed and their constructors were changed. We invested a lot of time to try to ensure that old APIs still work, but in case you&#39;re hit by one of these, make sure you check the DI and switch to resolving the objects using DI. </li>
+</ol>
+<h4 id="version-1111---language-detection">Version 11.11 - Language Detection</h4>
+<ol>
+<li>Previously the language detection used the Thread culture. Turns out this wasn&#39;t reliable because DNN does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change. </li>
+<li>Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you. </li>
+<li>We changed all tokens to always resolve boolean values to <code>true</code>/<code>false</code> (previously they would have been changed to the current language, like <code>wahr</code> for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output. </li>
+</ol>
 <h2 id="version-10">Version 10</h2>
 <blockquote><p>Version 10 has a lot of small breaking changes because 
 we restructured the internal API so it&#39;s consistent when we publish it. 
