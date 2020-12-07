@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Eav.Run
+    <title>Interface ILookUpEngineResolver
    | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Eav.Run
+    <meta name="title" content="Interface ILookUpEngineResolver
    | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -101,23 +101,82 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Run">
+            <article class="content wrap" id="_content" data-uid="ToSic.Eav.LookUp.ILookUpEngineResolver">
   
-  <h1 id="ToSic_Eav_Run" data-uid="ToSic.Eav.Run" class="text-break">Namespace ToSic.Eav.Run
+  
+  <h1 id="ToSic_Eav_LookUp_ILookUpEngineResolver" data-uid="ToSic.Eav.LookUp.ILookUpEngineResolver" class="text-break">Interface ILookUpEngineResolver
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"><p>Run is all about Runtime / Execution of the EAV. It contains things that describe the environment it&#39;s running in and has base material for specific implementations. </p>
-<p>For example, the <code>ITenant</code> and <code>ITenant&lt;T&gt;</code> are inherited by the <code>DnnTenant</code>. </p>
+  <div class="markdown level0 summary"><p>An object implementing this interface can provide an engine for the current context. <br>
+It&apos;s important so that code can easily ask for the current engine, but that the
+real implementation is dependency-injected later on, as each environment (DNN, Nop, etc.)
+can provide different initial engines. <br>
+Read more about this in <a class="xref" href="../../specs/lookup/lookup-and-engine.html">LookUp &amp; LookUpEngine</a></p>
 </div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="interfaces">Interfaces
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="ToSic.Eav.Logging.IHasLog.html#ToSic_Eav_Logging_IHasLog_Log">IHasLog.Log</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Eav.Core.dll</h6>
+  <h5 id="ToSic_Eav_LookUp_ILookUpEngineResolver_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
+public interface ILookUpEngineResolver : IHasLog&lt;ILookUpEngineResolver&gt;, IHasLog</code></pre>
+  </div>
+  <h3 id="methods">Methods
   </h3>
-      <h4><a class="xref" href="ToSic.Eav.Run.ICompatibilityLevel.html">ICompatibilityLevel</a></h4>
-      <section><p>Carries information about what compatibility level to use. Important for components that have an older and newer API.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Run.IFingerprint.html">IFingerprint</a></h4>
-      <section><p>Defines all classes which can provide fingerprints - to delegate fingerprint-creation to the environment. </p>
-</section>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_LookUp_ILookUpEngineResolver_GetLookUpEngine_System_Int32_.md&amp;value=---%0Auid%3A%20ToSic.Eav.LookUp.ILookUpEngineResolver.GetLookUpEngine(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/ILookUpEngineResolver.cs/#L21">View Source</a>
+  </span>
+  <a id="ToSic_Eav_LookUp_ILookUpEngineResolver_GetLookUpEngine_" data-uid="ToSic.Eav.LookUp.ILookUpEngineResolver.GetLookUpEngine*"></a>
+  <h4 id="ToSic_Eav_LookUp_ILookUpEngineResolver_GetLookUpEngine_System_Int32_" data-uid="ToSic.Eav.LookUp.ILookUpEngineResolver.GetLookUpEngine(System.Int32)">GetLookUpEngine(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the engine for the current execution instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILookUpEngine GetLookUpEngine(int instanceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">instanceId</span></td>
+        <td><p>The instance ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -126,7 +185,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/namespaces/ToSic.Eav/Run/_Eav.Run.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_LookUp_ILookUpEngineResolver.md&amp;value=---%0Auid%3A%20ToSic.Eav.LookUp.ILookUpEngineResolver%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/ILookUpEngineResolver.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
