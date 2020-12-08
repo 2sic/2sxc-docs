@@ -25,6 +25,11 @@ There were small breaking changes in 11.00 to 11.11 but they were internal so sh
 1. Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you. 
 1. We changed all tokens to always resolve boolean values to `true`/`false` (previously they would have been changed to the current language, like `wahr` for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output. 
 
+#### Version 11.11 - DataSources: DataSourceConfiguration
+
+Note that we also improved the `DataSourceConfiguration` to an interface `IDataSourceConfiguration` and documented this. 
+As a side effect the API stays the same, but you will have to recompile your data sources for them to work again - sorry.
+
 ## Version 10
 
 > Version 10 has a lot of small breaking changes because 
