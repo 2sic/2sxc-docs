@@ -30,6 +30,12 @@ There were small breaking changes in 11.00 to 11.11 but they were internal so sh
 Note that we also improved the `DataSourceConfiguration` to an interface `IDataSourceConfiguration` and documented this. 
 As a side effect the API stays the same, but you will have to recompile your data sources for them to work again - sorry.
 
+#### Version 11.11.03 - IEntity Values
+
+1. `IEntity` had a command called `Value(fieldName)` which was probably never used. The idea used to be that it does language lookup internally, but we refactored this out since it could never be fully reliable because the full language list wasn't known to the `IEntity`. So we re-purposed the method (assuming it's not used) to just lookup the first occurance of the value. This way it`s useful for configurations and similar which are not multi-language. 
+1. `IEntity` also had a `Value(fieldname, lookup)` method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.
+1. `IEntity` had a command called `PrimaryValue(fieldName)` which was probably never ever used, so we're deprecating it. Use `Value(fieldName)` instead.
+
 ## Version 10
 
 > Version 10 has a lot of small breaking changes because 

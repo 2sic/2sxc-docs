@@ -123,6 +123,12 @@ We&#39;re documenting it here to ensure you know what happened, in case you stil
 <h4 id="version-1111---datasources-datasourceconfiguration">Version 11.11 - DataSources: DataSourceConfiguration</h4>
 <p>Note that we also improved the <code>DataSourceConfiguration</code> to an interface <code>IDataSourceConfiguration</code> and documented this. 
 As a side effect the API stays the same, but you will have to recompile your data sources for them to work again - sorry.</p>
+<h4 id="version-111103---ientity-values">Version 11.11.03 - IEntity Values</h4>
+<ol>
+<li><code>IEntity</code> had a command called <code>Value(fieldName)</code> which was probably never used. The idea used to be that it does language lookup internally, but we refactored this out since it could never be fully reliable because the full language list wasn&#39;t known to the <code>IEntity</code>. So we re-purposed the method (assuming it&#39;s not used) to just lookup the first occurance of the value. This way it`s useful for configurations and similar which are not multi-language. </li>
+<li><code>IEntity</code> also had a <code>Value(fieldname, lookup)</code> method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.</li>
+<li><code>IEntity</code> had a command called <code>PrimaryValue(fieldName)</code> which was probably never ever used, so we&#39;re deprecating it. Use <code>Value(fieldName)</code> instead.</li>
+</ol>
 <h2 id="version-10">Version 10</h2>
 <blockquote><p>Version 10 has a lot of small breaking changes because 
 we restructured the internal API so it&#39;s consistent when we publish it. 
