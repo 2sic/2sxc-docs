@@ -36,6 +36,10 @@ As a side effect the API stays the same, but you will have to recompile your dat
 1. `IEntity` also had a `Value(fieldname, lookup)` method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.
 1. `IEntity` had a command called `PrimaryValue(fieldName)` which was probably never ever used, so we're deprecating it. Use `Value(fieldName)` instead.
 
+#### Version 11.11.03 - Other
+
+1. UI Toolbar dropped the button and command for `item-history`, as the history is now part of the edit dialog
+
 ## Version 10
 
 > Version 10 has a lot of small breaking changes because 
