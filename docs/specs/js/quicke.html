@@ -126,16 +126,34 @@ This page explains the In-Browser things you must know, incl. JSON configuration
 <h2 id="the-configuration-object-structure">The Configuration Object Structure</h2>
 <pre><code class="lang-JavaScript">config = {
   enable: true, // default
+  buttons: {
+    addApp: true,
+    addContent: true,
+    select: true,
+    paste: true,
+    delete: true,
+    move: true,
+  },
   modules: {
    enable: null // auto-detect, can also be true/false
+   buttons: {
+     // same structure as above, if not set, defaults to the main settings
+   },
   },
   innerBlocks: {
    enable: null // auto-detect, can also be true/false
+   buttons: {
+     // same structure as above, if not set, defaults to the main settings
+   },
   }
 }
 </code></pre><h2 id="a-quick-razor-example">A Quick Razor Example</h2>
 <p>If you want to add this attribute only when the user is editing the page, the best way to do it is like this:</p>
 <pre><code class="lang-razor">&lt;div @Edit.Attribute(&quot;quick-edit-config&quot;, new { modules = new {  enable = true }})&gt;
+  ...
+&lt;/div&gt;
+</code></pre><p>or this</p>
+<pre><code class="lang-razor">&lt;div @Edit.Attribute(&quot;quick-edit-config&quot;, new { buttons = new { select = false},  modules = new {  enable = true, buttons = new { addApp = false }}})&gt;
   ...
 &lt;/div&gt;
 </code></pre><h2 id="read-also">Read also</h2>

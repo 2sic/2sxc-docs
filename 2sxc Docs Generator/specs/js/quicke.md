@@ -33,11 +33,25 @@ As explained above, quickE changes it's behavior by default if it finds inner-co
 ```JavaScript
 config = {
   enable: true, // default
+  buttons: {
+    addApp: true,
+    addContent: true,
+    select: true,
+    paste: true,
+    delete: true,
+    move: true,
+  },
   modules: {
    enable: null // auto-detect, can also be true/false
+   buttons: {
+     // same structure as above, if not set, defaults to the main settings
+   },
   },
   innerBlocks: {
    enable: null // auto-detect, can also be true/false
+   buttons: {
+     // same structure as above, if not set, defaults to the main settings
+   },
   }
 }
 ```
@@ -46,6 +60,14 @@ config = {
 If you want to add this attribute only when the user is editing the page, the best way to do it is like this:
 ```razor
 <div @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
+  ...
+</div>
+```
+
+or this
+
+```razor
+<div @Edit.Attribute("quick-edit-config", new { buttons = new { select = false},  modules = new {  enable = true, buttons = new { addApp = false }}})>
   ...
 </div>
 ```
@@ -60,4 +82,5 @@ You should find some code examples in this demo App
 
 ## History
 1. Introduced in 2sxc v08.04
-2. Enhanced / made configurable in 2sxc 08.06.01
+1. Enhanced / made configurable in 2sxc 08.06.01
+1. Added ability to specify each button in 2sxc 11.11.03
