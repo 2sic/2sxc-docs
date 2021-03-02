@@ -1,5 +1,5 @@
 ---
-uid: CsCode.Razor
+uid: CsApi.Razor.Index
 ---
 
 # Razor (WIP)
