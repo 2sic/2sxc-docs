@@ -121,28 +121,58 @@
 You&#39;ll find the correct base classes in the documentations for Razor and Web API.</p>
 </div>
 <h2 id="getting-started-with-dynamic-data--dynamic-entities">Getting Started with Dynamic Data / Dynamic Entities</h2>
-<p>TODO</p>
-<h2 id="instance-specific-data-objects-in-dynamic-code">Instance Specific Data Objects in Dynamic Code</h2>
-<p>One of the key features in web content management is that editors add content to a specific page. 2sxc keeps track of where things are added. It then prepares this data before your code runs to make it super-easy for you to access these items. </p>
+<p>When working with 2sxc data, there are two core data objects you for everything:</p>
 <ol>
-<li>Content </li>
-<li>Content.Presentation</li>
-<li><a class="xref" href="object-data.html">Data</a></li>
-<li>Header</li>
-<li>Header.Presentation</li>
+<li><a class="xref" href="dynamic-entity.html">Dynamic Entities</a><br> These are simple, <em>dynamic</em> objects that allow you to write template with any property you believe the data should have, like <code>@person.FirstName</code> etc. They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background. </li>
+<li><a class="xref" href="entity.html">Entities</a><br> These are strongly typed objects for complex work, but getting values is much more difficult. You usually don&#39;t need this, but it&#39;s important that you know this exists. </li>
+</ol>
+<p>Each type can be converted to the other type using helpers like <code>AsDynamic(...)</code> and <code>AsEntity(...)</code>. Youll see a lot of this in Razor templates. The full list of conversion commands is listed below. </p>
+<h2 id="instance-specific-data-objects-in-dynamic-code">Instance Specific Data Objects in Dynamic Code</h2>
+<div class="NOTE"><h5>Note</h5><p>Instance specific data <em>belongs</em> to the module-instance on the page, either because it was manually added or because the module-instance uses a Query which is specific to this module. </p>
+</div>
+<p>When a 2sxc module is added to a page the editor decides what should be shown. Based on configurations 2sxc will then ensure that the right data is provided to the template to match expectations. There are two scenarios:</p>
+<ol>
+<li>In the <strong>Content Mode</strong> the editor will add/edit content in the module, and this content is then linked to this module instance.<br>2sxc keeps track of where things are added. It then prepares this data before your code runs to make it super-easy for you to access these items. </li>
+<li>In the <strong>Data Mode</strong> the template has been configured to use a query. This query can be parameterized by the module instance (similar to the <em>Content Mode</em>) but the data prepared for the template is retrieved from a query. </li>
+</ol>
+<p>In both of these cases, the following objects are then pre-populated with the correct data, making it easy to use in a template or Web API:</p>
+<ol>
+<li><a class="xref" href="object-data.html">Data</a> (IDataSource)<br> This object gives you all the data which was meant to be used by this Templates</li>
+<li><code>Content</code> (a <a class="xref" href="entity.html">DynamicEntity</a>)<br> The primary and often the only content-item in the <a class="xref" href="object-data.html">Data</a> for this template. </li>
+<li><code>Content.Presentation</code> (a <a class="xref" href="entity.html">DynamicEntity</a>)<br> Can contain additional presentation settings for this content, like how to format it. </li>
+<li><code>Header</code> (a <a class="xref" href="entity.html">DynamicEntity</a>)<br> The header data if the template expects to be a list and also needs a title or intro.</li>
+<li><code>Header.Presentation</code> (a <a class="xref" href="entity.html">DynamicEntity</a>)<br> Can contain additional presentation settings for the header, like how to format it. </li>
 </ol>
 <h2 id="general-app-data-objects">General App Data Objects</h2>
 <ol>
-<li><a class="xref" href="object-app.html">App</a></li>
-<li>App.Data</li>
-<li>App.Query</li>
+<li><a class="xref" href="object-app.html">App</a><br> The current App with <code>Settings</code>, <code>Resources</code>, <code>Path</code> information and more.</li>
+<li><a class="xref" href="object-app.html#using-app-data-appdata">App.Data</a><br> All the data of the current app for immediate use, fully cached in memory of the web server.</li>
+<li><a class="xref" href="object-app.html##using-app-queries-appquery">App.Query</a><br> Queries which were created using <strong>Visual Query</strong> and can be run to access prepared data.</li>
 </ol>
 <h2 id="general-objects">General Objects</h2>
 <ol>
-<li><a class="xref" href="object-dnn.html">Dnn</a></li>
-<li><a class="xref" href="../razor/edit.html">Edit</a></li>
-<li><a class="xref" href="object-link.html">Link</a></li>
+<li><a class="xref" href="object-dnn.html">Dnn</a><br> The common Dnn object providing page, module, user information</li>
+<li><a class="xref" href="../razor/edit.html">Edit</a><br> Helper providing you with various edit-functionality like <code>Toolbar(...)</code></li>
+<li><a class="xref" href="object-link.html">Link</a><br> Helper to generate links, according to the DNN-environment configuration</li>
 </ol>
+<h2 id="conversion-commands">Conversion Commands</h2>
+<ol>
+<li>AsAdam(...)</li>
+<li>AsDynamic(...) - takes just about anything (an iEntity, a list of iEntities, a dynamic, ...) and casts it to a <a class="xref" href="entity.html">DynamicEntity</a></li>
+<li>AsEntity(...) - takes just about anything (iEntity, DynamicEntity, list of that) and casts it to an <a class="xref" href="entity.html">iEntity</a></li>
+</ol>
+<h2 id="helper-commands-provided-by-2sxc">Helper Commands provided by 2sxc</h2>
+<ul>
+<li>CreateInstance(...) - to create an object of a parsed CSHTML file, for example to then access methods of that code</li>
+<li>CreateSource&lt;T>(...) (IDataSource) - more modern, generic, type-proof syntax for create-source</li>
+</ul>
+<h2 id="other-helpers">Other Helpers</h2>
+<p>TODO</p>
+<ul>
+<li>CreateInstance</li>
+<li>Html.Raw</li>
+<li>etc.</li>
+</ul>
 </article>
           </div>
           

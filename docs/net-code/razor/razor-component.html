@@ -119,36 +119,22 @@
 </div>
 <h2 id="example">Example</h2>
 <p>Visit the <a class="xref" href="https://2sxc.org/en/apps">App Catalog</a> where almost all apps use Razor. There you can find hundreds of examples. </p>
-<h2 id="objects-added-by-2sxc-in-razor-components--templates">Objects Added by 2sxc in Razor Components / Templates</h2>
+<h2 id="apis-in-razor-components--templates">APIs in Razor Components / Templates</h2>
+<p>Razor templates / components have all the objects and APIs of <a class="xref" href="../dynamic-code/index.html">Dynamic Code</a></p>
+<p>In addition there are a few more commands which you will usually use, most of which are standard Razor APIs</p>
 <ol>
-<li><a class="xref" href="../dynamic-code/object-app.html">App</a> - the current App and all it&#39;s data</li>
-<li>Content (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>) - primary and often the only content-item in the <a class="xref" href="../dynamic-code/object-data.html">Data</a> for this template</li>
-<li>Content.Presentation (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>)</li>
-<li><a class="xref" href="../dynamic-code/object-data.html">Data</a> (IDataSource)- this object gives you all the data which was meant to be used by this Templates</li>
-<li><a class="xref" href="../dynamic-code/object-dnn.html">Dnn</a> - the common Dnn object providing page, module, user information</li>
-<li><a class="xref" href="edit.html">Edit</a> - helper providing you with various edit-functionality like <code>Toolbar(...)</code></li>
-<li>Header (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>) - the header data if the template expects to be a list</li>
-<li>Header.Presentation (<a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a>)</li>
-<li><a class="xref" href="../dynamic-code/object-link.html">Link</a> - helper to generate links, according to the DNN-environment configuration</li>
+<li><code>Code</code><br> Code Behind files - google examples for now, not fully documented (TODO)</li>
+<li><code>Html.Raw(string)</code><br> Standard Razor API to output the HTML in a string instead of showing tags in the visible page</li>
+<li><code>RenderPage(path, data)</code><br> Standard Razor API - google it if you need it</li>
+<li><code>RenderTemplate(...)</code><br> Standard Razor API - google it if you need it</li>
 </ol>
-<h2 id="helper-commands-provided-by-2sxc">Helper Commands provided by 2sxc</h2>
-<ul>
-<li>AsAdam()</li>
-<li>AsDynamic(...) - takes just about anything (an iEntity, a list of iEntities, a dynamic, ...) and casts it to a <a class="xref" href="../dynamic-code/entity.html">DynamicEntity</a></li>
-<li>AsEntity(...) - takes just about anything (iEntity, DynamicEntity, list of that) and casts it to an <a class="xref" href="../dynamic-code/entity.html">iEntity</a></li>
-<li>CreateInstance(...) - to create an object of a parsed CSHTML file, for example to then access methods of that code</li>
-<li>CreateSource&lt;T>(...) (IDataSource) - more modern, generic, type-proof syntax for create-source</li>
-</ul>
 <h2 id="customizing-data--search">Customizing Data &amp; Search</h2>
+<p>Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It&#39;s not documented well, but you can check examples in the Blog App.</p>
 <ul>
 <li><code>Overrideable</code> <a class="xref" href="customizedata.html">CustomizeData</a> - is like a &quot;before-data-is-used&quot; of the page, used to change what data is delivered to the page - or to the search.<br>Note that this is an older feature and many things this does can also be done using the visual query designer. But sometimes you will need code, and this is the place to do it.</li>
 <li><code>Overridable</code> <a class="xref" href="customizesearch.html">CustomizeSearch</a></li>
 <li><code>string</code> <a class="xref" href="purpose.html">Purpose</a> - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt</li>
 </ul>
-<h2 id="migrating-from-the-old-razor-before-1020-to-the-new-razorcomponent">Migrating from the old Razor (before 10.20) to the new RazorComponent</h2>
-<p>The RazorComponent was created in v10.20 to provide a newer, cleaner API. To not break existing code, old templates still work, but you must migrate a template to RazorComponent if you wish to use the new features. Here what you need to do:</p>
-<p><iframe src="https://azing.org/2sxc/r/9g6xRMrD?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<script src="https://cdn.azing.org/e/1/embed.js"></script></p>
 </article>
           </div>
           

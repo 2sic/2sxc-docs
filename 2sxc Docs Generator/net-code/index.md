@@ -39,9 +39,9 @@ The code first creates a `div` tag which would show a hover-toolbar (to admins o
 
 This documentation contains the following sections
 
-1. [Dynamic Code](xref:NetCode.DynCode.Index) which explains the shared API (objects, commands) available on all Dynamic Code parts, whether Razor, WebApi or other.
-1. [Razor](xref:NetCode.Razor.Index) which explains the APIs special to Razor templates
-1. [Web API](xref:WebApi.Custom) explains everything you need to know to create/customize Web API Controllers
+1. [Dynamic Code](xref:NetCode.DynCode.Index): the shared API on all Dynamic Code - Razor, WebApi or other.
+1. [Razor](xref:NetCode.Razor.Index): the APIs special to Razor templates
+1. [Web API](xref:WebApi.Custom): everything you need to know to create/customize Web API Controllers
 1. [External API](xref:HowTo.External) guides you to access 2sxc-instances on the server from WebForms or other MVC components
 
 
@@ -49,18 +49,12 @@ This documentation contains the following sections
 
 ---
 
-This is the C# .net API Documentations, usually meant for Razor-Templates, custom Web-APIs or when accessing 2sxc-instances from external code.
-
-[!include["Tip Inherits"](razor/shared-tip-inherits.md)]
-
 ## Working with C# Razor Templates
 1. [C# API in a normal Razor Template](xref:HowTo.Razor.Templates)
 1. [LINQ Data Handling examples](xref:Specs.DataSources.Linq) on working with relationships, filtering etc.
 
 ## Important APIs when Working with Content-Items/Data
 
-1. [Dynamic Entities](xref:HowTo.DynamicCode.DynamicEntity) (DynamicEntity / AsDynamic)
-1. [IEntity](xref:HowTo.DynamicCode.Entity) - the complex data object for advanced use cases
 1. [DataSource](xref:Specs.DataSources.DataSource) and [DataStream](xref:ToSic.Eav.DataSources.IDataStream), the core concept for data read/processing/delivery
     1. [List of all DataSource Objects](xref:Specs.DataSources.ListAll)
     2. [Querying Data and Data Sources with code and LINQ](xref:Specs.DataSources.Linq)
@@ -68,7 +62,6 @@ This is the C# .net API Documentations, usually meant for Razor-Templates, custo
 
 ## Advanced APIs
 
-1. [WebService API](xref:WebApi.Custom) to create your own web services in your apps
 1. [Content-Blocks API](xref:HowTo.Razor.Blocks) to render inner-content (see also the [concept](xref:Specs.Cms.InnerContent))
 
 
