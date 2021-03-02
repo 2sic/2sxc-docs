@@ -153,96 +153,10 @@ There are no deny-permissions.</p>
 <div class="WARNING"><h5>Warning</h5><p>Some permissions like <em>If the user has View permissions, allow Read</em> require a <a class="xref" href="webapi-context.html">Module Context</a> since that&#39;s required to detect if the condition <em>View Permissions</em> is met. </p>
 </div>
 <h2 id="custom-webapi-permissions">Custom WebAPI Permissions</h2>
-<p>Custom WebAPI Security is configured using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/">Attributes</a>.</p>
-<p>These attributes can be placed on the <em>class</em> (in which case they apply to all actions/methods of that class) or on a specific <em>method</em> (in which case it only applies to that method).</p>
-<p>This example will NOT respond to <em>Anonymous</em> requests from outside:</p>
-<pre><code class="lang-c#">using System.Web.Http;
-
-public class BasicController : ToSic.Sxc.Dnn.ApiController
-{
-  [HttpGet]
-  public string Hello()
-  {
-    return &quot;Hello from the basic controller in /api&quot;;
-  }
-}
-</code></pre><p>This example from the <a href="https://2sxc.org/dnn-tutorials/en/razor/webapi110/page">dnn web api tutorials</a> will:</p>
-<pre><code class="lang-c#">using System.Web.Http;
-
-[AllowAnonymous]            // define that all commands can be accessed without a login
-public class BasicController : ToSic.Sxc.Dnn.ApiController
-{
-  [HttpGet]
-  public string Hello()
-  {
-    return &quot;Hello from the basic controller in /api&quot;;
-  }
-}
-</code></pre><p>And this example as well:</p>
-<pre><code class="lang-c#">using System.Web.Http;
-
-public class BasicController : ToSic.Sxc.Dnn.ApiController
-{
-  [HttpGet]
-  [AllowAnonymous]          // only his command can be accessed without a login
-  public string Hello()
-  {
-    return &quot;Hello from the basic controller in /api&quot;;
-  }
-}
-</code></pre><h3 id="common-security-attributes-for-custom-webapi-controllers">Common Security Attributes for Custom WebAPI Controllers</h3>
-<p>The exact set of attributes varies a bit on DNN and Oqtane, but we&#39;re working on a unified set. 
-As of now, these attributes are common in DNN:</p>
-<ol>
-<li><code>[AllowAnonymous]</code> - apply to class or method<br> This allows non-identified users to use this endpoint.<br> requires <code>using System.Web.Http;</code></li>
-<li><code>[SupportedModules(&quot;2sxc,2sxc-app&quot;)]</code> - apply to class or method<br> This says to only respond to requests if they originate from a <code>2sxc</code> module or a <code>2sxc-app</code> Module. Note that this will only work if the <a class="xref" href="webapi-context.html">Module Context</a> is known.<br> requires <code>using DotNetNuke.Web.Api;</code></li>
-<li><code>[ValidateAntiForgeryToken]</code> - apply to class or module<br> Verifies that the <code>RequestVerificationToken</code> in the header is valid. 
- These requests will be blocked if the Anti-Forgery-Token is missing, invalid or is meant for another user.<br> <em>Note: this means such requests can only be called from a JS on a DNN page</em><br> requires <code>DotNetNuke.Web.Api;</code></li>
-<li><code>[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]</code> - apply to class or method<br> requires <code>using DotNetNuke.Web.Api;</code></li>
-</ol>
-<h3 id="common-other-attributes-httpget-httppost-httpdelete">Common Other Attributes (HttpGet, HttpPost, HttpDelete)</h3>
-<p>These attributes <code>[HttpGet]</code>, <code>[HttpPost]</code> and <code>[HttpDelete]</code> are not really security attributes, but because they often lead to problems we figured we should mention them. Adding these to your method means that your method will listen to the <strong>Verbs</strong> mentioned, and only to these verbs. So a method like this:</p>
-<pre><code class="lang-c#">using System.Web.Http;
-
-public class BasicController : ToSic.Sxc.Dnn.ApiController
-{
-  [HttpGet]
-  [HttpDelete]
-  public string Hello()
-  {
-    return &quot;Hello from the basic controller in /api&quot;;
-  }
-}
-</code></pre><p>...will only respond to <code>GET</code> and <code>DELETE</code> requests, but not to <code>POST</code>. </p>
-<h3 id="using-multiple-attributes">Using Multiple Attributes</h3>
-<p>You can use many attributes on the same class or method like this: </p>
-<pre><code class="lang-c#">  [HttpGet]
-  [ValidateAntiForgeryToken]
-  [SupportedModules(&quot;2sxc,2sxc-app&quot;)]
-  [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]
-  {
-    return &quot;Hello from the basic controller in /api&quot;;
-  }
-</code></pre><p>In most cases it will do exactly what you expect - and each condition must be met for the command to process. </p>
-<h2 id="common-mistakes">Common Mistakes</h2>
-<h3 id="combining-httpget-with-validateantiforgerytoken">Combining HttpGet with ValidateAntiForgeryToken</h3>
-<div class="WARNING"><h5>Warning</h5><p>Combining <code>[HttpGet]</code> and <code>[ValidateAntiForgeryToken]</code> will fail, as GET requests cannot add custom headers. </p>
-</div>
-<h3 id="deny-access-at-class-level-and-allowing-at-method-level">Deny Access at Class level and Allowing at Method Level</h3>
-<div class="WARNING"><h5>Warning</h5><p>Class level attributes are handled first, and if these result in denying the request
-then method-level attributes won&#39;t be checked. </p>
-</div>
-<h3 id="using-context-requiring-attributes-for-external-access">Using Context-Requiring-Attributes for External Access</h3>
-<div class="WARNING"><h5>Warning</h5><p>Certain tags like <code>[DnnModuleAuthorize(...)]</code> or <code>[SupportedModules(...)]</code> require a <a class="xref" href="webapi-context.html">context</a>. 
-If you plan to use the API from outside of the site (like from a mobile app) then those requests will not have the context, and fail. </p>
-</div>
-<h3 id="using-validateantiforgerytoken-for-external-access">Using ValidateAntiForgeryToken for External Access</h3>
-<div class="WARNING"><h5>Warning</h5><p>Classes/methods decorated with <code>[ValidateAntiForgeryToken]</code> will require the token, which is only available for calls made by JavaScript on the page itself. 
-If you plan to use the API from outside of the site (like from a mobile app) then those requests will fail. </p>
-</div>
+<p>This is documented separately in <a class="xref" href="../custom/custom-web-api-security.html">Security &amp; Permissions in Custom WebAPIs</a></p>
 <h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="../custom-web-api.html">DotNet WebApi</a></li>
+<li><a class="xref" href="../custom/custom-web-api.html">DotNet WebApi</a></li>
 <li><a class="xref" href="webapi-context.html">Context for 2sxc WebAPI and REST APIs</a> - every request has a context, it&#39;s best you read up on that</li>
 <li><a class="xref" href="../../specs/cms/polymorph.html">Concepts: Polymorphisms</a></li>
 </ul>

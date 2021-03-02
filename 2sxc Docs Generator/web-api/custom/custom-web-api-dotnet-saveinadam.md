@@ -2,9 +2,11 @@
 uid: WebApi.Custom.DotNet.SaveInAdam
 ---
 
-# SaveInAdam command in ApiController
+# SaveInAdam(...) Command in ApiController
 
-The `SaveInAdam` command helps your WebApi to upload files so they are in an ADAM container of an item.
+The `SaveInAdam` command helps your WebApi to upload files so they are in an ADAM container of an item. 
+
+The API is documented [here](xref:ToSic.Sxc.Dnn.ApiController.SaveInAdam*) and on this page we'll explain how to use it.
 
 ## How to use
 Here's a simple example, taken from [mobius forms](https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs)

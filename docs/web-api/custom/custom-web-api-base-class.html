@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | 2sxc and EAV 10 </title>
+    <title>Custom C# Web API Base Classes | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | 2sxc and EAV 10 ">
+    <meta name="title" content="Custom C# Web API Base Classes | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -105,9 +105,62 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.WebApi.Intro">
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.BaseClass">
+<h1 id="custom-c-web-api-base-classes">Custom C# Web API Base Classes</h1>
 
-<p>This page has moved to <a class="xref" href="../../web-api/index.html">2sxc Web API</a></p>
+<p>Any WebAPI controller in ASP.net inherits from a base class. This is a typical code you may see as an example:</p>
+<pre><code class="lang-c#">using System.Web.Http;
+
+[AllowAnonymous]
+public class BasicController : ToSic.Sxc.Dnn.ApiController // &lt;-- This is the Base Class
+{
+  [HttpGet]
+  public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+}
+</code></pre><p>In these docs we want to explain what the base class is for, and what you should use. </p>
+<h2 id="why-inherit-from-a-base-class">Why Inherit from a Base Class</h2>
+<p>A WebAPI controller does a lot of magic in the background so your code can stay small and simple. </p>
+<p>In classic ASP.net you would inherit from a class called <code>ApiController</code> (namespace <code>System.Web.Http</code>) and in classic Dnn you inherit from a base class <code>DnnApiController</code> (namespace <code>DotNetNuke.Web.Api</code>) which also inherits the standard <code>ApiController</code>. </p>
+<div class="TIP"><h5>Tip</h5><p>Each additional layer adds functionality which will be available to your code. </p>
+</div>
+<p>For example if you inherit from <code>ApiController</code> you can use objects such as <code>Request</code> and <code>User</code> in your code, and if you inherit from <code>DnnApiController</code> your code can also use <code>PortalSettings</code> or <code>ModuleInfo</code>. </p>
+<h2 id="recommended-base-class-in-2sxc-10">Recommended Base Class in 2sxc 10+</h2>
+<p>You can use any base class available in 2sxc, including the previously mentioned <code>System.Web.Http.ApiController</code> and <code>DotNetNuke.Web.Api.DnnApiController</code> and others. But by inheriting from <code>ToSic.Sxc.Dnn.ApiController</code> your code will have access to many more objects like these:</p>
+<ul>
+<li>App</li>
+<li>Data</li>
+<li>Content</li>
+<li>CmsContext</li>
+</ul>
+<p>You also get many helper commands like these</p>
+<ul>
+<li>AsDynamic(...)</li>
+<li>AsEntity(...)</li>
+<li><a class="xref" href="custom-web-api-dotnet-saveinadam.html">SaveInAdam(...)</a></li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>As of 2sxc 10 we always recommend that your APIs inherit from <code>ToSic.Sxc.Dnn.ApiController</code></p>
+</div>
+<h2 id="the-past-avoid-using-sxcapicontroller">The Past: Avoid using SxcApiController</h2>
+<p>In previous versions of 2sxc the recommended base class was <code>ToSic.SexyContent.WebApi.SxcApiController</code>. For compatibility reasons this still works, but we strongly urge you to switch over to the new <code>ToSic.Sxc.Dnn.ApiController</code> as the old base class may become deprecated. </p>
+<div class="CAUTION"><h5>Caution</h5><p>We strongly recommend that you switch over to the new base class <code>ToSic.Sxc.Dnn.ApiController</code>.<br>But be aware that some of the APIs have changed a bit, so switching will take a few minutes. You will probably see compile errors which tell you what to fix. </p>
+</div>
+<h2 id="the-future-a-hybrid-base-class">The Future: A Hybrid Base Class</h2>
+<p>As of March 2021 we&#39;re working on bringing 2sxc to [](xref:Platform Oqtane). Since Oqtane doesn&#39;t have Dnn objects like <code>PortalSettings</code> we must develop a new base class which will have an identical API across all platforms. This is still work in progress. </p>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API Tutorials</a></li>
+<li><a class="xref" href="../index.html">WebApi</a></li>
+<li><a class="xref" href="../../specs/cms/polymorph.html">Concepts: Polymorphisms</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 06.05</li>
+<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+<li>The <code>ToSic.Sxc.Dnn.ApiController</code> was introduced in 2sxc 10.25</li>
+</ol>
 </article>
           </div>
           
@@ -116,7 +169,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/web-api/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/custom-web-api-base-class.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

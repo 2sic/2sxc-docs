@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | 2sxc and EAV 10 </title>
+    <title>Custom C# Web API File Structure | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | 2sxc and EAV 10 ">
+    <meta name="title" content="Custom C# Web API File Structure | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -105,9 +105,47 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.WebApi.Intro">
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.Files">
+<h1 id="custom-c-web-api-file-structure">Custom C# Web API File Structure</h1>
 
-<p>This page has moved to <a class="xref" href="../../web-api/index.html">2sxc Web API</a></p>
+<h2 id="default-setup-without-editions">Default Setup without Editions</h2>
+<p>All your WebAPIs are C# files saved in the special folder called <code>api</code>. The folder must be in root of your 2sxc app, and the files have to end with <code>...Controller.cs</code> (this is a convention in ASP.net).</p>
+<ul>
+<li>File: <code>[app-folder]/api/[Your]Controller.cs</code></li>
+<li>Url: <code>[api-root]/app/auto/api/[Your]</code></li>
+</ul>
+<p><strong>Example</strong></p>
+<ul>
+<li>File: <code>/Portals/0/2sxc/DemoApp/api/PersonController.cs</code></li>
+<li>Url: <code>GET</code>: <code>/api/2sxc/auto/app/auto/api/Person/List</code></li>
+</ul>
+<p>Read more about url schema in the <a class="xref" href="../specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
+<h2 id="advanced-setup-with-editions">Advanced Setup with Editions</h2>
+<div class="TIP"><h5>Tip</h5><p>New in 2sxc 9.35+<em>: you can now also create <code>api</code> folders as _subfolders</em> to run the api in multiple editions. 
+This is the <a class="xref" href="../../specs/cms/polymorph.html">polymorph feature</a>. 
+It let&#39;s you have the <strong>same</strong> api-controller in multiple editions, where the end-user is using <code>live</code> and you&#39;re doing open-heart-surgery in the background on a new edition like <code>staging</code>. </p>
+</div>
+<ul>
+<li>File: <code>[app-folder]/[edition]/api/YourController.cs</code></li>
+<li>Url: <code>[api-root]/app/auto/[edition]/api/[Your]</code></li>
+</ul>
+<p><strong>Example</strong></p>
+<ul>
+<li>File: <code>/Portals/0/2sxc/DemoApp/staging/api/PersonController.cs</code></li>
+<li>Url: <code>GET</code>: <code>/api/2sxc/auto/app/auto/staging/api/Person/List</code></li>
+</ul>
+<p>Read more about url schema in the <a class="xref" href="../specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API Tutorials</a></li>
+<li><a class="xref" href="../index.html">WebApi</a></li>
+<li><a class="xref" href="../../specs/cms/polymorph.html">Concepts: Polymorphisms</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 06.05</li>
+<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+</ol>
 </article>
           </div>
           
@@ -116,7 +154,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/web-api/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/custom-web-api-files.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

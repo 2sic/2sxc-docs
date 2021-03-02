@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | 2sxc and EAV 10 </title>
+    <title>SaveInAdam(...) Command in ApiController | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | 2sxc and EAV 10 ">
+    <meta name="title" content="SaveInAdam(...) Command in ApiController | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -105,9 +105,62 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.WebApi.Intro">
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.DotNet.SaveInAdam">
+<h1 id="saveinadam-command-in-apicontroller">SaveInAdam(...) Command in ApiController</h1>
 
-<p>This page has moved to <a class="xref" href="../../web-api/index.html">2sxc Web API</a></p>
+<p>The <code>SaveInAdam</code> command helps your WebApi to upload files so they are in an ADAM container of an item. </p>
+<p>The API is documented <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html#ToSic_Sxc_Dnn_ApiController_SaveInAdam_">here</a> and on this page we&#39;ll explain how to use it.</p>
+<h2 id="how-to-use">How to use</h2>
+<p>Here&#39;s a simple example, taken from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a></p>
+<pre><code class="lang-c#">SaveInAdam(stream: dataStream,
+    fileName: fileNameInForm,
+    contentType: &quot;Advertisement&quot;,
+    guid: guid,
+    field: &quot;Images&quot;);
+</code></pre><p>Here&#39;s what the parameters are:</p>
+<ol>
+<li><code>stream</code> contains a stream of bytes with the file</li>
+<li><code>fileName</code> contain the file name</li>
+<li><code>contentType</code> is the content-type of the entity we&#39;re saving to</li>
+<li><code>guid</code> is the entity-guid which receives this item</li>
+<li><code>field</code> is the field we&#39;re saving to</li>
+</ol>
+<h2 id="example">Example</h2>
+<p>The following example is also from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a> and assumes that the html form encoded the data in JavaScript for sending to the WebApi:</p>
+<pre><code class="lang-c#">// Save files to Adam
+var files = ((Newtonsoft.Json.Linq.JArray)contactFormRequest[&quot;Files&quot;])
+    .ToObject&lt;IEnumerable&lt;Dictionary&lt;string, string&gt;&gt;&gt;();
+foreach(var file in files)
+{
+    var data = Convert.FromBase64String((file[&quot;Encoded&quot;]).Split(&#39;,&#39;)[1]);
+    SaveInAdam(stream: new MemoryStream(data),
+        fileName: file[&quot;Name&quot;],
+        contentType: type.Name,
+        guid: guid,
+        field: file[&quot;Field&quot;]);
+}
+</code></pre><h2 id="notes-and-clarifications">Notes and Clarifications</h2>
+<ul>
+<li>all parameters (<code>stream</code>, <code>fileName</code>, ...) must be named by <a class="xref" href="../../how-to/dynamic-code/use-named-parameters.html">convention</a></li>
+<li>the uploaded files are placed in the container of the field...</li>
+<li>...and not added as a link to the file, so you will usually use library fields</li>
+<li>the field must be a field of type hyperlink, library or wysiwyg, other fields cannot receive files</li>
+</ul>
+<h2 id="difference-in-field-library-and-field-link-default">Difference in Field-Library and Field-Link-Default</h2>
+<p>Note that the form has two different ways the field can behave. In <a class="xref" href="../../specs/input-types/ui-field-hyperlink-library.html">hyperlink-Library</a> mode nothing is really stored in the field name, the UI will simply load all the files in a folder that belong to that field. <code>SaveInAdam</code> will simply add files to this folder, so the most common way to use it is that the entity will have a link-library field to browse one or more files uploaded. </p>
+<p>If you really only want 1 file to be uploaded, and want to put it into the field as if it&#39;s linked directly, then choose a <a class="xref" href="../../specs/input-types/ui-field-hyperlink-default.html">hyperlink-default</a> field. <code>SaveInAdam</code> will give you a IFile object which has an <code>Id</code>. Use that to create a <code>file:72</code> kind of link and add it to data you just created. </p>
+<h2 id="read-also-demo-app-and-further-links">Read also, Demo App and further links</h2>
+<p>You should find some code examples in these apps</p>
+<ul>
+<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html#ToSic_Sxc_Dnn_ApiController_SaveInAdam_">C# API Documentation of SaveInAdam</a></li>
+<li><a class="xref" href="(xref:App.Mobius)">Mobius Forms v2 in App Catalog</a></li>
+<li><a href="https://github.com/2sic/app-mobius-forms">Mobius Forms v2 on Github</a></li>
+<li><a href="https://2sxc.org/en/blog/post/recipe-form-files-saveinadam-in-your-custom-webapi">Blog Recipe for uploading into ADAM in your WebAPI</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 9.30</li>
+</ol>
 </article>
           </div>
           
@@ -116,7 +169,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/web-api/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/custom-web-api-dotnet-saveinadam.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

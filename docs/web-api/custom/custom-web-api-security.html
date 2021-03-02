@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Security &amp; Permissions in Custom WebAPIs | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Security &amp; Permissions in Custom WebAPIs | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!--
+      2dm 2021-03-02 Enable lightboxes on all images using
+      https://github.com/roel4ez/docfx-lightbox-plugin
+    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.Security">
+<h1 id="security--permissions-in-custom-webapis">Security &amp; Permissions in Custom WebAPIs</h1>
+
+<div class="IMPORTANT"><h5>Important</h5><p>This page explains how security is configured in custom WebAPI controllers.<br>But there is much more to security, so please read <a class="xref" href="../specs/webapi-security.html">Security for 2sxc WebAPI and REST APIs</a> as well.</p>
+</div>
+<p>Custom WebAPI Security is configured using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/">Attributes</a>.</p>
+<p>These attributes can be placed on the <em>class</em> (in which case they apply to all actions/methods of that class) or on a specific <em>method</em> (in which case it only applies to that method).</p>
+<p>This example will NOT respond to <em>Anonymous</em> requests from outside:</p>
+<pre><code class="lang-c#">using System.Web.Http;
+
+public class BasicController : ToSic.Sxc.Dnn.ApiController
+{
+  [HttpGet]
+  public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+}
+</code></pre><p>This example from the <a href="https://2sxc.org/dnn-tutorials/en/razor/webapi110/page">dnn web api tutorials</a> will:</p>
+<pre><code class="lang-c#">using System.Web.Http;
+
+[AllowAnonymous]            // define that all commands can be accessed without a login
+public class BasicController : ToSic.Sxc.Dnn.ApiController
+{
+  [HttpGet]
+  public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+}
+</code></pre><p>And this example as well:</p>
+<pre><code class="lang-c#">using System.Web.Http;
+
+public class BasicController : ToSic.Sxc.Dnn.ApiController
+{
+  [HttpGet]
+  [AllowAnonymous]          // only his command can be accessed without a login
+  public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+}
+</code></pre><h3 id="common-security-attributes-for-custom-webapi-controllers">Common Security Attributes for Custom WebAPI Controllers</h3>
+<p>The exact set of attributes varies a bit on DNN and Oqtane, but we&#39;re working on a unified set. 
+As of now, these attributes are common in DNN. You can apply all to both classes and methods:</p>
+<ol>
+<li><code>[AllowAnonymous]</code><br> This allows non-identified users to use this endpoint.<br> requires <code>using System.Web.Http;</code></li>
+<li><code>[SupportedModules(&quot;2sxc,2sxc-app&quot;)]</code><br> This says to only respond to requests if they originate from a <code>2sxc</code> module or a <code>2sxc-app</code> Module.<br> <em>Note that this will only work if the <a class="xref" href="../specs/webapi-context.html">Module Context</a> is known.</em><br> requires <code>using DotNetNuke.Web.Api;</code></li>
+<li><code>[ValidateAntiForgeryToken]</code><br> Verifies that the <code>RequestVerificationToken</code> in the header is valid. 
+ These requests will be blocked if the Anti-Forgery-Token is missing, invalid or is meant for another user.<br> <em>Note: this means such requests can only be called from a JS on a DNN page</em><br> requires <code>DotNetNuke.Web.Api;</code></li>
+<li><code>[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]</code><br> In place of the <code>SecurityAccessLevel.Admin</code> you can also use <code>SecurityAccessLevel.Anonymous</code> or <a href="https://dnndocs.com/api/DotNetNuke.Security.SecurityAccessLevel.html#DotNetNuke_Security_SecurityAccessLevel">other values</a>.<br> <em>Note that this will only work if the <a class="xref" href="../specs/webapi-context.html">Module Context</a> is known.</em><br> requires <code>using DotNetNuke.Web.Api;</code></li>
+</ol>
+<h3 id="common-other-attributes-httpget-httppost-httpdelete">Common Other Attributes (HttpGet, HttpPost, HttpDelete)</h3>
+<p>These attributes <code>[HttpGet]</code>, <code>[HttpPost]</code> and <code>[HttpDelete]</code> are not really security attributes, but because they often lead to problems we figured we should mention them. Adding these to your method means that your method will listen to the <strong>Verbs</strong> mentioned, and only to these verbs. So a method like this:</p>
+<pre><code class="lang-c#">using System.Web.Http;
+
+public class BasicController : ToSic.Sxc.Dnn.ApiController
+{
+  [HttpGet]
+  [HttpDelete]
+  public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+}
+</code></pre><p>...will only respond to <code>GET</code> and <code>DELETE</code> requests, but not to <code>POST</code>. </p>
+<h3 id="using-multiple-attributes">Using Multiple Attributes</h3>
+<p>You can use many attributes on the same class or method like this: </p>
+<pre><code class="lang-c#">  [HttpGet]
+  [ValidateAntiForgeryToken]
+  [SupportedModules(&quot;2sxc,2sxc-app&quot;)]
+  [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+</code></pre><p>In most cases it will do exactly what you expect - and each condition must be met for the command to process. </p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<h3 id="combining-httpget-with-validateantiforgerytoken">Combining HttpGet with ValidateAntiForgeryToken</h3>
+<div class="WARNING"><h5>Warning</h5><p>Combining <code>[HttpGet]</code> and <code>[ValidateAntiForgeryToken]</code> will fail, as GET requests cannot add custom headers. </p>
+</div>
+<h3 id="deny-access-at-class-level-and-allowing-at-method-level">Deny Access at Class level and Allowing at Method Level</h3>
+<div class="WARNING"><h5>Warning</h5><p>Class level attributes are handled first, and if these result in denying the request
+then method-level attributes won&#39;t be checked. </p>
+</div>
+<h3 id="using-context-requiring-attributes-for-external-access">Using Context-Requiring-Attributes for External Access</h3>
+<div class="WARNING"><h5>Warning</h5><p>Certain tags like <code>[DnnModuleAuthorize(...)]</code> or <code>[SupportedModules(...)]</code> require a <a class="xref" href="../specs/webapi-context.html">context</a>. 
+If you plan to use the API from outside of the site (like from a mobile app) then those requests will not have the context, and fail. </p>
+</div>
+<h3 id="using-validateantiforgerytoken-for-external-access">Using ValidateAntiForgeryToken for External Access</h3>
+<div class="WARNING"><h5>Warning</h5><p>Classes/methods decorated with <code>[ValidateAntiForgeryToken]</code> will require the token, which is only available for calls made by JavaScript on the page itself. 
+If you plan to use the API from outside of the site (like from a mobile app) then those requests will fail. </p>
+</div>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="custom-web-api.html">DotNet WebApi</a></li>
+<li><a class="xref" href="../specs/webapi-security.html">Security for 2sxc WebAPI and REST APIs</a> - understanding Security for all Web API calls</li>
+<li><a class="xref" href="../specs/webapi-context.html">Context for 2sxc WebAPI and REST APIs</a> - every request has a context, it&#39;s best you read up on that</li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
+<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
+<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>These security features have been part of DNN since ca. DNN 6.0</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/custom-web-api-security.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/plugin-featherlight.js"></script>
+  </body>
+</html>

@@ -23,23 +23,6 @@ Most WebApi Actions will require additional parameters. Just add them as url-par
 
 
 
-## Where to Store the API Files
-All your WebAPIs are C# files saved in the special folder called `api`. The folder must be in root of your 2sxc app, and the files have to end with `...Controller.cs` (this is a convention in ASP.net).
-
-* classic (single edition)  
-  `[app-folder]/api/YourController.cs`  
-  accessed url: `[api-root]/app/auto/api/[Your]`
-
-_New in 2sxc 9.35+_: you can now also create `api` folders as _subfolders_ to run the api in multiple editions. This is the [polymorph feature](xref:Specs.Cms.Polymorphism). 
-It let's you have the **same** api-controller in multiple editions, where the end-user is using `live` and you're doing open-heart-surgery in the background on a new edition like `staging`. 
-
-* multiple editions:  
-  `[app-folder]/[edition]/api/YourController.cs`
-  access url: `[api-root]/app/auto/[edition]/api/[Your]`
-
-Read more about urls in the [WebApi](xref:WebApi.Index) docs.
-
-
 ## Basic Example
 
 A file in your app in the `api` folder called `BooksController.cs` could look like the following:
@@ -101,28 +84,28 @@ The custom controller can be called with JavaScript like this:
 The $2sxc API ensures that the GET request is send to the correct url `/DesktopModules/2sxc/API/app/auto/api/Books/Persons`. You can also read more about the [sxc Controller](xref:Specs.Js.Sxc).
 
 
+## The Awesomeness of these API Controllers
 
+First and foremost, these API controllers let you run your code as you wish. But there's a lot more that make this the ideal choice for your code:
 
-## Special Object / Commands in ApiController
+### Fast Development without ever Restarting
 
-The `ApiController` provides various command / helpers to get you productiv. Most are the same as in a normal Razor view, but some are additional. Here are the main ones:
+1. 2sxc Web API Controllers are stored in your app as pure source code, and you can edit them at runtime. 
+1. They will be compiled on the fly and don't require DNN to restart. 
+1. The built in source-code editor in 2sxc lets you make simple changes through your browser.
+1. And if you want more power then just open it in Visual Studio or Visual Studio Code.
 
-1. AsDynamic(...)
-1. AsList(...)
-1. AsEntity(...)
-1. [Dnn](xref:HowTo.DynamicCode.Dnn)
-1. [App](xref:HowTo.DynamicCode.App) with `App.Data`, `App.Query` etc.
-1. [Data](xref:HowTo.DynamicCode.Data)
-1. [SaveInAdam(...)](xref:WebApi.Custom.DotNet.SaveInAdam) _new in 9.30_
+### Simple Distribution and Tweaking
 
+2sxc Apps can easily be exported and imported to other solutions. 
+What's also typical is that new copies of the App may need some modifications to better suit the new needs. 
+Since the C# files are included as source you can easily adapt the controllers to your needs. 
 
-## Security
+### All 2sxc Objects Initialized
 
-Your C# code determines what security is applied, and what http verbs are supported. For now, read up on DNN WebApi controllers to figure how to best do this. In most cases you'll add attributes like
+Much of the productivity with 2sxc comes with the fact that so much is already done. 
+When you create custom 2sxc Web APIs you automatically get everything like `App` and `Data` objects prepared for the context your code is running in. 
 
-* `[AllowAnonymous]`
-* `[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]`
-* `[ValidateAntiForgeryToken]` - this forces the API to only work when called from JavaScript on the same site (no external use)
 
 
 ## Notes

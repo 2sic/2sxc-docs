@@ -2,7 +2,7 @@
 uid: WebApi.Index
 ---
 
-# 2sxc Web API Documentation
+# 2sxc Web API
 
 2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP `GET` to an endpoint like `app/News/content/NewsItems/` and get a list of news items. 
 
