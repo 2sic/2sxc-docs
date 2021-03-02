@@ -6,6 +6,7 @@
 This is the documentation for EAV and 2sxc APIs. It's fairly advanced, so if you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
 ## 2sxc - The CMS / CMF of DNN (DotNetNuke)
+
 2sxc is a CMS-Plugin for [DNN/DotNetNuke](http://www.dnnsoftware.com/). It makes content editing easier than Wordpress. It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. And a very cool EAV data-management system. And an online REST JSON database. And a lot more.
 
 2sxc is basically used to provide web-site-builder functionality to DNN, both in a simple **Content** mode (where users just add images, designed text/image blocks, links etc.) or in **App** mode, where user add standalone functional apps like blogs, galleries and more. Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
@@ -14,6 +15,7 @@ This is the documentation for EAV and 2sxc APIs. It's fairly advanced, so if you
 [!include["Where to Start"](shared/where-to-start.md)]
 
 ## Overview and Links to Other Documentations
+
 2sxc is very flexible and can be used for almost any kind of content-management needs or app development needs. Because of this, different documentations help you work with different things. Here's the overview:
 
 1. [2sxc.org](https://2sxc.org)
