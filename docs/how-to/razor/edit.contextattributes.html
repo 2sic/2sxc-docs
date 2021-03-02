@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -108,45 +108,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.Razor.ContextAttributes">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="contextattributes-in-razor-output">ContextAttributes in Razor-Output</h1>
 
-<p>Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts.</p>
-<p>These scripts need to know what <em>Context</em> they are in, meaning which DNN-Module, which 2sxc-App, which Zone, permissions etc. </p>
-<p>By default, this context is already provided by the environment, but sometimes a <em>new context</em> must provide overrides. This is rare, but important, for example using <a class="xref" href="../../specs/cms/inner-content.html">Inner Content (Content Within Other Content)</a>. </p>
-<p>So the <code>ContextAttributes</code> will provide this information in some hidden html.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>The <code>Edit.ContextAttributes(...)</code> is always used inside an HTML-tag and will add some attributes with JSON. Any buttons or actions inside that tag will then find this information, and assume that it is has precendence over the global information.</p>
-<h2 id="what-do-you-need-to-do">What do You need to do?</h2>
-<p>By default, this context is already provided by the 2sxc-environment, but sometimes a <em>new context</em> must provide overrides. For example using <a class="xref" href="../../specs/cms/inner-content.html">Inner Content (Content Within Other Content)</a>. </p>
-<p>For this you need the <code>Edit.ContextAttributes</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Web.IInPageEditingSystem.html#ToSic_Sxc_Web_IInPageEditingSystem_ContextAttributes_">docs here</a>.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>This example shows the title and will add the standard editing-buttons for the <code>Content</code> item.</p>
-<p>Here&#39;s an <a class="xref" href="../../specs/cms/inner-content.html">Inner Content (Content Within Other Content)</a> example:</p>
-<pre><code class="lang-html">&lt;div class=&quot;app-blog-text sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
-    @foreach(var cb in @post.DesignedContent) {
-        @cb.Render();
-    }
-&lt;/div&gt;
-</code></pre><p>In this example, the Edit.ContextAttributes will add some attributes with JSON, which will help the toolbars <em>inside</em> that loop to correctly edit those items, and not the main item around it.</p>
-<h2 id="how-it-works-1">How it works</h2>
-<p>The <code>Edit.ContextAttributes(...)</code> is always used inside an HTML-tag and will add some attributes with JSON. Any buttons or actions inside that tag will then find this information, and assume that it is has precendence over the global information.</p>
-<h2 id="using-contextattributes">Using ContextAttributes</h2>
-<p>These context-attributes enhance an HTML-tag, so that buttons inside that tag can be in a different context than the original context. </p>
-<p>Here&#39;s a common example: imagine you have a 2sxc-instance (a module showing 2sxc-data) and all the buttons there know the App-ID, the Zone, the Content-Type etc. Inside this module, you can have multiple items but they all still work well in the original context (all items are in the same app, so an edit-dialog will also know the AppId). </p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../specs/cms/inner-content.html">Inner Content (Content Within Other Content)</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.4</li>
-</ol>
+<p>This document has been moved to <a class="xref" href="../../net-code/razor/edit.contextattributes.html">ContextAttributes in Razor-Output</a></p>
 </article>
           </div>
           

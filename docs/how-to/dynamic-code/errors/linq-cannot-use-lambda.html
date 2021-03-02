@@ -68,7 +68,7 @@
                           <a href="../../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../../web-api/index.html" title="Web API">Web API</a>
@@ -108,35 +108,11 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.DynamicCode.Errors.LinqLambda">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="error-cannot-use-a-lambda-expression">Error Cannot use a lambda expression</h1>
 
-<p>If you see an error like this: </p>
-<pre><code>Cannot use a lambda expression as an argument to a dynamically dispatched operation without first casting it to a delegate or expression tree type at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in
-</code></pre><p>It usually means that you tried to write LINQ code like a <code>.First(...)</code> or <code>.Select(...)</code> on an object, and the compiler can&#39;t be sure that you tried to write LINQ.</p>
-<h2 id="background-dynamic-code-and-extension-methods">Background: Dynamic Code and Extension Methods</h2>
-<p>Razor is dynamically compiled code, and many objects like <code>Content</code> are typed as <code>dynamic</code>. Because of this, the compiler can&#39;t be sure what&#39;s in a <code>dynamic</code> object, and also not what is in a <code>Content.Tags</code> - since this too is regarded as <code>dynamic</code>. </p>
-<p>This is why you can&#39;t just write <code>Content.Tags.First()</code>, because <code>.First()</code> is an extension method which the compiler must find first - but it can&#39;t do that, since it doesn&#39;t know that <code>Content.Tags</code> are of the type <code>IEnumerable&lt;...&gt;</code>. </p>
-<h2 id="solution-1---use-aslist">Solution #1 - use AsList(...)</h2>
-<p>2sxc 10.20 introduces <code>AsList(...)</code> which the compiler knows is an IEnumerable. Unfortunately if the the compiler isn&#39;t sure about <code>Content.Tags</code>, then it&#39;s also not sure about <code>AsList(Content.Tags)</code>. This is a minor inconvenience, since <code>AsList(...)</code> would figure things out, but Razor wants to be sure. So to use <code>AsList()</code> for solving this problem, you&#39;ll need to write <code>AsList(Content.Tags as object)</code>. That solves it. </p>
-<h2 id="solution-2---cast-as-ienumerabledynamic">Solution #2 - cast as <code>IEnumerable&lt;dynamic&gt;</code></h2>
-<p>If you already know it&#39;s a list, you can also cast it as an <code>IEnumerable&lt;dynamic&gt;</code>. Since <code>IEnumerable&lt;T&gt;</code> is in the namespace <code>System.Collections.Generic</code> you have 3 options: </p>
-<h4 id="cast-with-full-namespace">Cast with full Namespace</h4>
-<p>This is what the compiler actually understands - but it&#39;s a bit long and hard to read:</p>
-<pre><code class="lang-c#">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
-    .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre><h4 id="cast-with-using-and-ienumerabledynamic">Cast with <code>@using</code> and <code>IEnumerable&lt;dynamic&gt;</code></h4>
-<p>This is the same thing, just nicer to read:</p>
-<pre><code class="lang-c#">@using System.Collections.Generic;
-
-var authors = (book.Authors as IEnumerable&lt;dynamic&gt;)
-    .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre><h4 id="cast-with-using-dynlist--">Cast with <code>@using Dynlist = ...</code></h4>
-<p>This is the same thing, but the nicest, easiest to read method:</p>
-<pre><code class="lang-c#">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
-var authors = (book.Authors as Dynlist)
-    .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre></article>
+<p>This document has been moved to <a class="xref" href="../../../net-code/errors/linq-cannot-use-lambda.html">Error Cannot use a lambda expression</a></p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

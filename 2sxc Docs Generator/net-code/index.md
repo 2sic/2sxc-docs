@@ -1,5 +1,5 @@
 ---
-uid: CsApi.Index
+uid: NetCode.Index
 ---
 
 # C#, Razor & Dynamic Code (WIP)
@@ -39,8 +39,8 @@ The code first creates a `div` tag which would show a hover-toolbar (to admins o
 
 This documentation contains the following sections
 
-1. [Dynamic Code](xref:CsApi.DynCode.Index) which explains the shared API (objects, commands) available on all Dynamic Code parts, whether Razor, WebApi or other.
-1. [Razor](xref:CsApi.Razor.Index) which explains the APIs special to Razor templates
+1. [Dynamic Code](xref:NetCode.DynCode.Index) which explains the shared API (objects, commands) available on all Dynamic Code parts, whether Razor, WebApi or other.
+1. [Razor](xref:NetCode.Razor.Index) which explains the APIs special to Razor templates
 1. [Web API](xref:WebApi.Custom) explains everything you need to know to create/customize Web API Controllers
 1. [External API](xref:HowTo.External) guides you to access 2sxc-instances on the server from WebForms or other MVC components
 

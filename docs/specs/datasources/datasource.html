@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -127,7 +127,7 @@ There are many data-sources, and most of them will... </p>
 <li>and then the result can be used in a Template or streamed as JSON to a JavaScript SPA.</li>
 </ol>
 <h2 id="understanding-data-flow-between-datasource-objects">Understanding Data-Flow between DataSource Objects</h2>
-<p>Each DataSource has a list of out-streams available on the <code>.Out[&quot;StreamName&quot;]</code> property, but usually access directly just with the <code>DataSourceName[&quot;StreamName&quot;]</code>. This is what also happens when you use the <a class="xref" href="../../how-to/dynamic-code/object-data.html">Data</a> object and write <code>foreach(var item in Data[&quot;Default&quot;])</code>. </p>
+<p>Each DataSource has a list of out-streams available on the <code>.Out[&quot;StreamName&quot;]</code> property, but usually access directly just with the <code>DataSourceName[&quot;StreamName&quot;]</code>. This is what also happens when you use the <a class="xref" href="../../net-code/dynamic-code/object-data.html">Data</a> object and write <code>foreach(var item in Data[&quot;Default&quot;])</code>. </p>
 <p>Aside from consuming data in your your template, most data-sources will simply offer the Out-Stream to other DataSources for further processing. Technically it&#39;s mapped like this:</p>
 <ul>
 <li><code>Cache.Out[&quot;Default&quot;]</code> &gt; <code>ContentTypeFilter.In[&quot;Default&quot;]</code></li>
@@ -146,17 +146,17 @@ There are many data-sources, and most of them will... </p>
 <h2 id="common-use-cases-of-datasource-in-c-code">Common Use Cases of DataSource in C# Code</h2>
 <p>You will usually use DataSource objects in these common cases:</p>
 <ol>
-<li>when templating in Razor, the <a class="xref" href="../../how-to/dynamic-code/object-data.html">Data</a> object is a DataSource, usually having a <code>Default</code> stream (<code>Data[&quot;Default&quot;]</code>) and sometimes further streams like <code>Data[&quot;ListContent&quot;]</code> or <code>Data[&quot;Categories&quot;]</code> etc.</li>
-<li>when templating, the <a class="xref" href="../../how-to/dynamic-code/object-app.html">App.Data</a> is also a DataSource providing a stream for each content-type in this app, like <code>App.Data[&quot;BlogPost&quot;]</code> or <code>App.Data[&quot;Tag&quot;]</code></li>
+<li>when templating in Razor, the <a class="xref" href="../../net-code/dynamic-code/object-data.html">Data</a> object is a DataSource, usually having a <code>Default</code> stream (<code>Data[&quot;Default&quot;]</code>) and sometimes further streams like <code>Data[&quot;ListContent&quot;]</code> or <code>Data[&quot;Categories&quot;]</code> etc.</li>
+<li>when templating, the <a class="xref" href="../../net-code/dynamic-code/object-app.html">App.Data</a> is also a DataSource providing a stream for each content-type in this app, like <code>App.Data[&quot;BlogPost&quot;]</code> or <code>App.Data[&quot;Tag&quot;]</code></li>
 <li>every query is technically a DataSource, and in the query you define which DataStreams it has - if ever you use it in code, you&#39;ll see that <code>App.Query[&quot;SortedTags&quot;]</code> would be a DataSource and typically the <code>Default</code> stream would contain all these tags.</li>
 <li>a query is always a chain of DataSource doing one operation and passing it on to the next DataSource. </li>
 </ol>
 <h2 id="how-to-use">How to use</h2>
 <p>In your Razor-templates you&#39;ll usually work with these three sources:</p>
 <ol>
-<li><a class="xref" href="../../how-to/dynamic-code/object-data.html">Data</a></li>
-<li><a class="xref" href="../../how-to/dynamic-code/object-app.html">App.Data</a></li>
-<li><a class="xref" href="../../how-to/dynamic-code/object-app.html">App.Query[...]</a></li>
+<li><a class="xref" href="../../net-code/dynamic-code/object-data.html">Data</a></li>
+<li><a class="xref" href="../../net-code/dynamic-code/object-app.html">App.Data</a></li>
+<li><a class="xref" href="../../net-code/dynamic-code/object-app.html">App.Query[...]</a></li>
 </ol>
 <p>Please read more about these in links. </p>
 <h2 id="creating-datasource-objects-in-crazor-code">Creating DataSource Objects in C#/Razor Code</h2>

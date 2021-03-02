@@ -49,7 +49,7 @@ Just to give you an idea of the power of LookUp objects, here are some in use:
 1. [](xref:ToSic.Eav.LookUp).LookUpInMetadata - will get values from Metadata of something
 1. [](xref:ToSic.Eav.LookUp).LookUpInLookUps - will look up values in various attached LookUp objects
 1. [](xref:ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess) - will look up stuff in DNN specific PropertyAccess objects, which are similar to LookUp objects
-1. [](xref:ToSic.Sxc.LookUp.LookUpInDynamicEntity) - will look up things in a IDynamicEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
+1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
 
 
 ## Also Read

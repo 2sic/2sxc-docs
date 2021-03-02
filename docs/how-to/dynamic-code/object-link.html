@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -108,49 +108,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.DynamicCode.Link">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="link--link-object-in-razor--net">Link / @Link Object in Razor / .net</h1>
 
-<p>Basically you can always link around to other pages, websites or views using normal <code>&lt;a href=&quot;...&quot;&gt;text&lt;/a&gt;</code> html. And often you just want to add some parameters to the current Url like <code>?id=27</code> - but the behavior of this can be very different depending on the DNN settings. The <code>Link</code> object helps you handle this. </p>
-<p><em>Note:</em> DNN often has a problem with links, because depending on what page you are on, the behaviour is a bit different. This is especially important on the home page. Use <code>@Link.To(...)</code> to make sure everything works no matter what. </p>
-<h2 id="how-to-use">How to use</h2>
-<p>Here&#39;s a quick example of using the <code>Link</code> object in a Razor template: </p>
-<pre><code class="lang-html">&lt;a href=&quot;@Link.To(parameters: &quot;id=&quot; + item.EntityId)&quot;&gt;
-    @item.Title 
-&lt;/a&gt;
-</code></pre><p>This example creates a link to the current page, adding <em>either</em> <code>?id=27</code> <em>or</em> <code>/id/27</code>, depending on the DNN configuration. </p>
-<h2 id="how-it-works">How it works</h2>
-<p>The <code>Link</code>-object is always available in all Razor-templates. Internally it uses the DNN API to get the correct url. </p>
-<h2 id="using-linkto">Using @Link.To()</h2>
-<p>Example:</p>
-<pre><code class="lang-Razor">@Link.To(parameters: &quot;id=17&quot;)
-@Link.To(parameters: &quot;id=403&amp;category=all&quot;)
-</code></pre><h2 id="using-linkbase-for-javascript-spa-modules">Using @Link.Base() for JavaScript SPA modules</h2>
-<p>This is new in 2sxc v9.5.1. It ensures that the url can be used for SPAs, as some pages will otherwise provide a wrong link (like home) which then breaks the SPA.</p>
-<pre><code class="lang-html">&lt;base href=&quot;@Link.Base()&quot;&gt;
-</code></pre><h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<p>The Link-Object is of type <a class="xref" href="../../api/dot-net/ToSic.Sxc.Web.ILinkHelper.html">ILinkHelper</a>.</p>
-<h3 id="enforced-parameter-naming">Enforced Parameter Naming</h3>
-<p>To promote long term API stability, we require all parameters to be <a class="xref" href="use-named-parameters.html">named</a> when used. This allows us to add further parameters later on, and the calls will still work.</p>
-<pre><code class="lang-html">&lt;!-- this will work --&gt;
-@Link.To(parameters: &quot;id=17&quot;)
-@Link.To(parameters: &quot;id=403&amp;category=all&quot;)
-
-&lt;!-- new in 2sxc 9.5.1 --&gt;
-@Link.To(pageId: 40, parameters: &quot;id=403&amp;category=all&quot;)
-
-&lt;!-- this won&#39;t work --&gt;
-@Link.To(&quot;id=17&quot;)
-</code></pre><h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.4</li>
-<li>Enhanced in 2sxc 9.5.1 with Base() and with parameter pageId on Link.To</li>
-</ol>
+<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/object-link.html">Link /  Object in Razor / .net</a></p>
 </article>
           </div>
           

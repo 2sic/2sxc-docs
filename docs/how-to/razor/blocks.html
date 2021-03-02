@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -108,48 +108,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.Razor.Blocks">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="razor-rendering-content-blocks">Razor: Rendering Content-Blocks</h1>
 
-<p>When using <a class="xref" href="../../specs/cms/inner-content.html">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here&#39;s how to do it in Razor. </p>
-<h2 id="how-to-use">How to use</h2>
-<p>There are two common use cases</p>
-<ol>
-<li>Virtual Panes at item level - in this case, the item has it&#39;s own pane for placing apps and content-blocks</li>
-<li>Very Rich Text - where you add content-blocks and apps in the WYSIWYG</li>
-</ol>
-<h2 id="item-level-virtual-panes">Item-Level Virtual Panes</h2>
-<p>Here&#39;s a quick example which renders an area with all content-blocks: </p>
-<pre><code class="lang-razor">@ToSic.Sxc.Block.Render.All(Content, field: &quot;InnerContent&quot;)
-</code></pre><p>This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area. </p>
-<p>Here&#39;s a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes: </p>
-<pre><code class="lang-html">&lt;div class=&quot;some-class sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
-    @foreach(var cb in @post.DesignedContent) {
-        @cb.Render();
-    }
-&lt;/div&gt;
-</code></pre><p>If you care about doing it manually, read more about the <a class="xref" href="edit.html">Edit object</a>.</p>
-<h2 id="very-rich-text--inner-content">Very Rich Text / Inner-Content</h2>
-<p>Here&#39;s an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps. </p>
-<pre><code class="lang-razor">@ToSic.Sxc.Blocks.Render.All(post, field: &quot;WysiwygContent&quot;, merge: post.Body)
-</code></pre><p>There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
-<p>Here is a <a href="http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc">blog tutorial on implementing Very Rich Text</a>.</p>
-<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<p>The Edit-Object is of type <a class="xref" href="../../api/dot-net/ToSic.Sxc.Web.IInPageEditingSystem.html">IInPageEditingSystem</a>.</p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li>Read more on [Razor Edit.ContextAttributes](xref:Razor.ContextAttributes]</li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.4</li>
-<li>Clean API and merge capabilitien in 8.9</li>
-</ol>
+<p>This document has been moved to <a class="xref" href="../../net-code/razor/blocks.html">Razor: Rendering Content-Blocks</a></p>
 </article>
           </div>
           

@@ -1,5 +1,5 @@
 ---
-uid: CsApi.DynCode.Index
+uid: NetCode.DynCode.Index
 ---
 
 # Dynamic Code API

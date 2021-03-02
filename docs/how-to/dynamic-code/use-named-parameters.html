@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -108,29 +108,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.DynamicCode.NamedParameters">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="convention-named-parameters">Convention: Named Parameters</h1>
 
-<p>When working with the C# / Razor API, most commands require named parameters. This means that a command like this is valid</p>
-<pre><code class="lang-c#">&lt;div @Edit.TagToolbar(actions: &quot;new&quot;, contentType: &quot;BlogPost&quot;)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>...and this is not</p>
-<pre><code class="lang-c#">&lt;div @Edit.TagToolbar(&quot;new&quot;, &quot;BlogPost&quot;)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><h2 id="reason-behind-named-parameters">Reason Behind Named Parameters</h2>
-<p>We often have APIs which start simple - like <code>@Edit.TagToolbar()</code> and continue to receive new features. At first, the parameter order will make sense - for that simple use case. But as the API grows, the parameter-order will become strange, simply because we would have to order them in the sequence they were added (to keep compatibility) and not in the order that makes sense.</p>
-<p>By using named parameters, we&#39;re making sure that the parameter order never matters and the API stays stable/compatible for the future.</p>
-<h2 id="not-all-parameters-require-names">Not all Parameters Require Names</h2>
-<p>Because of historic reasons and because some APIs simply have a very obvious first or second parameter, it may be that the first 1-2 parameters are not named. An example is <code>@Edit.TagToolbar(Content)</code> which assumes that the first parameter without name is the item (entity) for which this toolbar is meant.</p>
-<h2 id="how-its-implemented">How It&#39;s Implemented</h2>
-<p>Internally the real signature of the command uses a parameter which has a fairly random value. The call then checks if the value of that parameter is this random value, and if not, shows an error. This is to protect you from accidentally using the command without naming the parameters.</p>
-<p><em>Note: you could of course work around this, by providing that random value and trick the call to accept unnamed parameters. Don&#39;t do this - as we will no guarantee that the API signature (parameter order) will stay the same.</em></p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced ca. in 2sxc 6</li>
-</ol>
+<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/use-named-parameters.html">Convention: Named Parameters</a></p>
 </article>
           </div>
           

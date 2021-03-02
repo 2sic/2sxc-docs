@@ -68,7 +68,7 @@
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../cs-api/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
@@ -108,63 +108,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.DynamicCode.Entity">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="ientity--entity-content-item">IEntity / Entity Content-Item</h1>
 
-<p>All content-items in the <strong>EAV</strong> database of 2sxc are internally handled as <code>Entity</code> objects with the interface <code>IEntity</code>. When using content-items in Razor-Templates and WebAPIs you usually don&#39;t care about this, as you will use it as a [IDynamicEntity][Dynamic Entity].</p>
-<p>But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it&#39;s null, or an empty string. In this case you&#39;ll need to look at the internals, the <code>IEntity</code>.</p>
-<h2 id="difference-ientity-and-idynamicentity">Difference IEntity and IDynamicEntity</h2>
-<p>Just a short piece of code, so you can see why you usually <em>don&#39;t want to use the IEntity</em> and will prefer the <em>IDynamicEntity</em> instead.</p>
-<pre><code class="lang-cs">// the common way, using the content-item as a DynamicEntity
-var titleSimple = Content.Title; 
-
-// a bit harder, what actually happens internally
-var languagePreference = [&quot;de&quot;, &quot;en&quot;];
-var autoResolveLinks = true;
-var titleMedium = AsEntity(Content).GetBestValue(&quot;Title&quot;, languagePreference, autoResolveLinks);
-
-// hard-core, the internals
-IEntity entity = AsEntity(Content);
-Dictionary&lt;string, IAttribute&gt; attribs = entity.Attributes;
-IAttribute titleMultiLanguage = attribs[&quot;Title&quot;];
-string attType = titleMultiLanguage.Type;
-IEnumerable&lt;IValue&gt; titleVals = titleMultiLanguage.Values;
-IValue firstTitle = titleVals.First();
-string firstString = firstTitle.ToString();
-IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
-//etc.
-</code></pre><p>As you can see, the internals provide a lot of information about the underlying data - things you usually don&#39;t care about, but in rare cases may be important.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>Note that this is a very advanced topic, and you&#39;ll need Visual Studio Intellisense to get this done reasonably. Since you&#39;ll figure it out fairly quickly, we won&#39;t document it in detail here. </p>
-<p>What you need to know is:</p>
-<pre><code class="lang-c#">// assume that you have a DynamicEntity like Content
-var entity = AsEntity(Content);
-
-// assume that you have a DataStream with Entities...
-@foreach(var postEntity in Data[&quot;Default&quot;])
-{
-    var postDyn = AsDynamic(postEntity);
-    // postEntity is a IEntity
-    // postDyn is a DynamicEntity
-}
-
-// but this is easier - convert the whole list
-@foreach(var post in AsDynamic(Data[&quot;Default&quot;]))
-{
-    var postEnt = AsEntity(post);
-    // do something with the @post here, it&#39;s a DynamicEntity
-    // ...or with postEnt, it&#39;s an IEntity
-}
-</code></pre><h2 id="read-also">Read also</h2>
-<ul>
-<li>To dive deeper, you must check the <a class="xref" href="https://github.com/2sic/eav-server/tree/master/ToSic.Eav.Core">EAV Server Code</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 01.00</li>
-<li>Multi-Language since 2sxc 02.00</li>
-<li>Added <code>Value</code> and <code>Value&lt;T&gt;</code> as well as <code>Parents()</code> and <code>Children(...)</code> in 09.42. Note that Value does not do the same thing as GetBestValue.</li>
-</ol>
+<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/entity.html">IEntity / Entity Content-Item</a></p>
 </article>
           </div>
           
