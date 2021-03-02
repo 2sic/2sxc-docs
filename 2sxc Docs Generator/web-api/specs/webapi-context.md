@@ -80,6 +80,7 @@ The most common way to use another language is to use the appropriate url which 
 > Setting the `?language=xxx` parameter in DNN has a suprising performance penalty of ca. 200-300ms.
 > So if you can, prefer to just use the correct initial path. 
 
+
 ---
 
 ## 3. Page and Module Context (optional)
@@ -102,7 +103,7 @@ The standard implementation is that API-Calls include special HTTP headers with 
 
 1. The primary use for the **Page/Module Context** is figuring out what **App** Context to use. So if the Module 2472 on Page 51 on Portal 7 is a _Blog App_ then, then the **App** Context will be this Blog App.
 1. The second use is providing data for this **Module Instance**. So if a module has content or data assigned to it (like a _Category List_ showing 3 selected Categories), then this data will be available automatically. 
-1. The third importan use is for permission detection: if the current user has certain permissions on this page/module, then these permissions also apply to the current API request. If the Page/Module context is missing, then only default permissions  apply. 
+1. The third important use is for permission detection: if the current user has certain permissions on this page/module, then these permissions also apply to the current API request. If the Page/Module context is missing, then only default permissions  apply. 
 1. The final and obvious use is that certain backend APIs will know these values, so that objects like `CmsContext.Page.Id` have these values for the scripts to use. See also [](xref:ToSic.Sxc.Context.ICmsContext)
 
 ### Providing an Own Value or Overriding the Default Page/Module
