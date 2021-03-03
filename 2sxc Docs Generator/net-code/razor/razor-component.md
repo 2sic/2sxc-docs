@@ -10,7 +10,7 @@ All razor Templates derive from the RazorComponent, so the following variables a
 > [!TIP]
 > Read about Razor Components/Templas in the [Specs](xref:Specs.Cms.Templates.Razor) or the [API docs](xref:ToSic.Sxc.Dnn.RazorComponent).
 
-[!include["Tip Inherits"](shared-tip-inherits.md)]
+[!include["Tip Inherits"](_include-tip-inherits.md)]
 
 ## Example
 Visit the [App Catalog](xref:AppsCatalog) where almost all apps use Razor. There you can find hundreds of examples. 

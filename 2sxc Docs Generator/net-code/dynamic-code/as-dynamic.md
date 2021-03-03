@@ -39,7 +39,7 @@ AsDynamic has many signatures accepting a variety of input values. It then retur
 * a `string` containing JSON - will return a dynamic object [](xref:ToSic.Sxc.Data.DynamicJacket)   
   _added in 2sxc 10.20.06_
 
-[!include["Tip Inherits"](../razor/shared-tip-inherits.md)]
+[!include["Tip Inherits"](../razor/_include-tip-inherits.md)]
 
 ## Reversing AsDynamic with AsEntity
 

@@ -11,4 +11,4 @@ We're trying to consolidate all information around Dynamic Code here
 
 
 
-[!include["Tip Inherits"](shared-tip-inherits.md)]
+[!include["Tip Inherits"](_include-tip-inherits.md)]

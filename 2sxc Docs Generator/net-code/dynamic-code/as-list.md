@@ -16,7 +16,7 @@ AsList has various signatures accepting a variety of input values. It then retur
 * a [](xref:ToSic.Eav.DataSources.IDataSource) - will return a List/IEnumerable of [](xref:ToSic.Sxc.Data.IDynamicEntity) of the `"Default"` stream 
 * a 
 
-[!include["Tip Inherits"](../razor/shared-tip-inherits.md)]
+[!include["Tip Inherits"](../razor/_include-tip-inherits.md)]
 
 
 ## History
