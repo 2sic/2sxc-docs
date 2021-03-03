@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>C#, Razor &amp; Dynamic Code (WIP) | 2sxc and EAV 10 </title>
+    <title>C#, Razor &amp; Dynamic Code | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="C#, Razor &amp; Dynamic Code (WIP) | 2sxc and EAV 10 ">
+    <meta name="title" content="C#, Razor &amp; Dynamic Code | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../images/logos/v11/favicon.ico">
@@ -109,24 +109,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.Index">
-<h1 id="c-razor--dynamic-code-wip">C#, Razor &amp; Dynamic Code (WIP)</h1>
+<h1 id="c-razor--dynamic-code">C#, Razor &amp; Dynamic Code</h1>
 
 <p>When people implement solutions using 2sxc, most of their server-side code will be written in C# to create <code>.cs</code> or <code>.cshtml</code> files in the App folder:</p>
 <ol>
-<li>Custom Razor templates (<code>_*.cshtml</code> files)</li>
-<li>Shared Razor snippets (<code>_*.cshtml</code> files)</li>
-<li>Razor Code-Behind files (<code>_*.code.cshtml</code> files)</li>
+<li>Razor components, shared Razor and Razor Code-Behind (<code>_*.cshtml</code> &amp; <code>_*.code.cshtml</code>)</li>
 <li>Custom WebApi controllers (<code>*Controller.cs</code> files in the <code>api</code> folder)</li>
-<li>Helper code (<code>*.cs</code> files in any folder)</li>
+<li>Shared code (<code>*.cs</code> files in any folder)</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>All of these files are in your App folder as <strong>Dynamic Code</strong>, which has three core features:</p>
+<div class="TIP"><h5>Tip</h5><p>These files are in your App folder as <strong>Dynamic Code</strong> and have three core features:</p>
 <ol>
-<li>The code remains as source code in the app-folder, ready to be changed at any time</li>
-<li>Changes are immediately live without restarting or recompiling the system</li>
-<li>Cool APIs 😎 help this code work with dynamic data (Entities) having dynamic properties</li>
+<li>The source code can be changed at any time</li>
+<li>Changes are immediately live without restarting the CMS</li>
+<li>Cool APIs 😎 help you work with dynamic data (Entities) </li>
 </ol>
 </div>
-<p>In addition to the dynamic code above you can also access 2sxc in other places - like in WebControls of the DNN theme. You don&#39;t get all the simple APIs but this too can be super useful. It&#39;s covered in <a class="xref" href="../how-to/external/dotnet-external-use.html">External Code</a>.</p>
 <h2 id="quick-example">Quick Example</h2>
 <p>The variable <code>person</code> in the following Razor template is a <strong>Dynamic Entity</strong> - meaning that it can have different properties depending on the configuration. In this case it seems to have <code>FirstName</code>, <code>LastName</code> and <code>Gender</code>. </p>
 <pre><code class="lang-html">&lt;div @Edit.Toolbar(person)&gt;
@@ -139,21 +136,16 @@ It&#39;s also very easy to customize if you need a different output - since it&#
 <h2 id="whats-where">What&#39;s Where</h2>
 <p>This documentation contains the following sections</p>
 <ol>
-<li><a class="xref" href="dynamic-code/index.html">Dynamic Code</a>: the shared API on all Dynamic Code - Razor, WebApi or other.</li>
-<li><a class="xref" href="razor/index.html">Razor</a>: the APIs special to Razor templates</li>
-<li><a class="xref" href="../web-api/custom/custom-web-api.html">Web API</a>: everything you need to know to create/customize Web API Controllers</li>
-<li><a class="xref" href="../how-to/external/dotnet-external-use.html">External API</a> guides you to access 2sxc-instances on the server from WebForms or other MVC components</li>
+<li><a class="xref" href="dynamic-code/index.html">Dynamic Code</a><br> The shared API on all Dynamic Code - Razor, WebApi or other.</li>
+<li><a class="xref" href="razor/index.html">Razor</a><br> The APIs special to Razor templates</li>
+<li><a class="xref" href="../web-api/custom/custom-web-api.html">Web API</a><br> Everything you need to know to create/customize Web API Controllers</li>
+<li><a class="xref" href="../how-to/external/dotnet-external-use.html">External API</a><br> Guides you to access 2sxc-instances on the server from the Theme, WebForms or other MVC components</li>
 </ol>
 <hr>
-<h2 id="working-with-c-razor-templates">Working with C# Razor Templates</h2>
-<ol>
-<li><a class="xref" href="../specs/datasources/linq-datasource.html">LINQ Data Handling examples</a> on working with relationships, filtering etc.</li>
-</ol>
 <h2 id="important-apis-when-working-with-content-itemsdata">Important APIs when Working with Content-Items/Data</h2>
 <ol>
 <li><a class="xref" href="../specs/datasources/datasource.html">DataSource</a> and <a class="xref" href="../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">DataStream</a>, the core concept for data read/processing/delivery<ol>
 <li><a class="xref" href="../specs/datasources/list-all.html">List of all DataSource Objects</a></li>
-<li><a class="xref" href="../specs/datasources/linq-datasource.html">Querying Data and Data Sources with code and LINQ</a></li>
 <li><a href="http://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query">how to create custom data sources</a></li>
 </ol>
 </li>

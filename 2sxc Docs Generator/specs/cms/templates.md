@@ -33,7 +33,7 @@ The template files usually reside inside app root folder or sub folder. As of no
 > This is great if you have the same app in many portals, and want to centralize the template.
 
 > [!TIP]
-> [Razor Templates](xref:Specs.Cms.Templates.Razor) also support re-using template parts or any C# code. 
+> [Razor Templates](xref:NetCode.Razor.Index) also support re-using template parts or any C# code. 
 > You can also pass parameters to these parts, which allows you to share template-code across templates. 
 
 ## Future Features & Wishes

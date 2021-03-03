@@ -1,3 +1,3 @@
 # IEntity / Entity Content-Item
 
-This document has been moved to @NetCode.DynamicCode.Entity
+This document has been moved to @NetCode.DynamicData.Index

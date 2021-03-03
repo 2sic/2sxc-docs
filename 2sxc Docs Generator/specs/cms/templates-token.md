@@ -9,7 +9,7 @@ Token Templates will generate HTML - often based on the data a editor entered, a
 > The [View](xref:Specs.Cms.Views) determines which template file is being loaded. 
 
 > [!TIP]
-> Token templates are by far not as powerful as [Razor Templates](xref:Specs.Cms.Templates.Razor). We always recommend Razor. 
+> Token templates are by far not as powerful as [Razor Templates](xref:NetCode.Razor.Index). We always recommend Razor. 
 
 ## How it Works
 
@@ -747,7 +747,7 @@ HTTP_REFERER is empty</td>
 
 * [Views](xref:Specs.Cms.Views)
 * [Templates](xref:Specs.Cms.Templates)
-* [Razor Templates](xref:Specs.Cms.Templates.Razor)
+* [Razor Templates](xref:NetCode.Razor.Index)
 * [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
 
 ## History

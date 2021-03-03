@@ -1,5 +1,5 @@
 ---
-uid: NetCode.DynamicCode.DynamicEntity
+uid: NetCode.DynamicData.DynamicEntity
 ---
 # How to Use a Dynamic Entity
 
@@ -28,7 +28,7 @@ Here's a code example in a C# Razor template:
 -->
 <h1>@Content.Title</h1>
 <div>@Content.Description</div>
-<div>Author: @Content.Author[0].FullName</div>
+<div>Author: @Content.Author.FullName</div>
 ```
 So basically all properties of this book can be shown using `[Object].[PropertyName]` - for example `Content.ReleaseDate`.
 
