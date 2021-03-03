@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>RazorComponent aka Razor Templates | 2sxc and EAV 10 </title>
+    <title>RazorComponent API | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="RazorComponent aka Razor Templates | 2sxc and EAV 10 ">
+    <meta name="title" content="RazorComponent API | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -109,24 +109,22 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.Razor.Component">
-<h1 id="razorcomponent-aka-razor-templates">RazorComponent aka Razor Templates</h1>
+<h1 id="razorcomponent-api">RazorComponent API</h1>
 
-<p>Razor Components contain both normal HTML intermixed with Razor placeholders like <code>@Content.FirstName</code> or longer code blocks usually marked with <code>@{ ...}</code>.</p>
-<p>All razor Templates derive from the RazorComponent, so the following variables and objects are available for you to work with.</p>
-<div class="TIP"><h5>Tip</h5><p>Read about Razor Components/Templas in the <a class="xref" href="../../specs/cms/templates-razor.html">Specs</a> or the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.RazorComponent.html">API docs</a>.</p>
+<p>As of 2sxc 10.20, all Razor templates should start with a line like<br><code>@inherits ToSic.Sxc.Dnn.RazorComponent</code> 
+to make sure that it has all the new features. </p>
+<div class="WARNING"><h5>Warning</h5><p>If you don&#39;t specify this first line, your code will inherit from a different class,
+so many features won&#39;t work as documented. </p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>To use the latest features of 2sxc 10.20+, make sure your razor file begins with the line<br><code>@inherits ToSic.Sxc.Dnn.RazorComponent</code><br>Otherwise your Razor templates is based on the default, older component code. </p>
-</div>
-<h2 id="example">Example</h2>
-<p>Visit the <a class="xref" href="https://2sxc.org/en/apps">App Catalog</a> where almost all apps use Razor. There you can find hundreds of examples. </p>
 <h2 id="apis-in-razor-components--templates">APIs in Razor Components / Templates</h2>
 <p>Razor templates / components have all the objects and APIs of <a class="xref" href="../dynamic-code/index.html">Dynamic Code</a></p>
+<p>TODO: list all the APIs here</p>
+<p>TODO: also list additional commands like @helper</p>
 <p>In addition there are a few more commands which you will usually use, most of which are standard Razor APIs</p>
 <ol>
 <li><code>Code</code><br> Code Behind files - google examples for now, not fully documented (TODO)</li>
 <li><code>Html.Raw(string)</code><br> Standard Razor API to output the HTML in a string instead of showing tags in the visible page</li>
-<li><code>RenderPage(path, data)</code><br> Standard Razor API - google it if you need it</li>
-<li><code>RenderTemplate(...)</code><br> Standard Razor API - google it if you need it</li>
+<li><code>RenderTemplate(path, data)</code><br> Standard Razor API - google it if you need it</li>
 </ol>
 <h2 id="customizing-data--search">Customizing Data &amp; Search</h2>
 <p>Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It&#39;s not documented well, but you can check examples in the Blog App.</p>

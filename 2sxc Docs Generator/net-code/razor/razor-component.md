@@ -1,24 +1,24 @@
 ---
 uid: NetCode.Razor.Component
 ---
-# RazorComponent aka Razor Templates
+# RazorComponent API
 
-Razor Components contain both normal HTML intermixed with Razor placeholders like `@Content.FirstName` or longer code blocks usually marked with `@{ ...}`.
+As of 2sxc 10.20, all Razor templates should start with a line like  
+`@inherits ToSic.Sxc.Dnn.RazorComponent` 
+to make sure that it has all the new features. 
 
-All razor Templates derive from the RazorComponent, so the following variables and objects are available for you to work with.
-
-> [!TIP]
-> Read about Razor Components/Templas in the [Specs](xref:Specs.Cms.Templates.Razor) or the [API docs](xref:ToSic.Sxc.Dnn.RazorComponent).
-
-[!include["Tip Inherits"](_include-tip-inherits.md)]
-
-## Example
-Visit the [App Catalog](xref:AppsCatalog) where almost all apps use Razor. There you can find hundreds of examples. 
-
+> [!WARNING]
+> If you don't specify this first line, your code will inherit from a different class,
+> so many features won't work as documented. 
 
 ## APIs in Razor Components / Templates
 
 Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynamicCode.Index)
+
+TODO: list all the APIs here
+
+TODO: also list additional commands like @helper
+
 
 In addition there are a few more commands which you will usually use, most of which are standard Razor APIs
 
@@ -26,9 +26,7 @@ In addition there are a few more commands which you will usually use, most of wh
     Code Behind files - google examples for now, not fully documented (TODO)
 1. `Html.Raw(string)`  
     Standard Razor API to output the HTML in a string instead of showing tags in the visible page
-1. `RenderPage(path, data)`  
-    Standard Razor API - google it if you need it
-1. `RenderTemplate(...)`  
+1. `RenderTemplate(path, data)`  
     Standard Razor API - google it if you need it
 
 
