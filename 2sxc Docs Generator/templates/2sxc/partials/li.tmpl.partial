@@ -3,15 +3,15 @@
 <ul class="nav level{{level}}">
   {{#items}}
     {{^dropdown}}
-      <li>
+      <li class="{{#active}}active{{/active}}">
         {{^leaf}}
           <span class="expand-stub"></span>
         {{/leaf}}
         {{#topicHref}}
-          <a href="{{topicHref}}" class="priority-{{priority}}" name="{{tocHref}}" title="{{fullName}}">{{name}}</a>
+          <a href="{{topicHref}}" class="priority-{{priority}}{{#active}} active{{/active}}" name="{{tocHref}}" title="{{fullName}}">{{name}}</a>
         {{/topicHref}}
         {{^topicHref}}
-          <a>{{{name}}}</a>
+          <a class="{{#active}}active{{/active}}">{{{name}}}</a>
         {{/topicHref}}
         {{^leaf}}
           {{>partials/li}}

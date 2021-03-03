@@ -4,7 +4,7 @@ uid: NetCode.Index
 
 # C#, Razor & Dynamic Code (WIP)
 
-When people implement solutions using 2sxc, most of their server-side code will be written in C# to create one of the following:
+When people implement solutions using 2sxc, most of their server-side code will be written in C# to create `.cs` or `.cshtml` files in the App folder:
 
 1. Custom Razor templates (`_*.cshtml` files)
 1. Shared Razor snippets (`_*.cshtml` files)
@@ -18,6 +18,8 @@ When people implement solutions using 2sxc, most of their server-side code will 
 > 1. The code remains as source code in the app-folder, ready to be changed at any time
 > 1. Changes are immediately live without restarting or recompiling the system
 > 1. Cool APIs 😎 help this code work with dynamic data (Entities) having dynamic properties
+
+In addition to the dynamic code above you can also access 2sxc in other places - like in WebControls of the DNN theme. You don't get all the simple APIs but this too can be super useful. It's covered in [External Code](xref:HowTo.External).
 
 ## Quick Example
 
@@ -50,7 +52,6 @@ This documentation contains the following sections
 ---
 
 ## Working with C# Razor Templates
-1. [C# API in a normal Razor Template](xref:HowTo.Razor.Templates)
 1. [LINQ Data Handling examples](xref:Specs.DataSources.Linq) on working with relationships, filtering etc.
 
 ## Important APIs when Working with Content-Items/Data
