@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Entity
+uid: NetCode.DynamicCode.Entity
 ---
 # IEntity / Entity Content-Item
 

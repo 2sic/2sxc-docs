@@ -1,3 +1,3 @@
 # @Edit.Enable Method in C# Razor
 
-This document has been moved to @HowTo.Razor.Edit.Enable
+This document has been moved to @NetCode.Razor.Edit.Enable

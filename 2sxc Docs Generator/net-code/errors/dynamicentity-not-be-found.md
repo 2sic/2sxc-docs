@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Errors.DynamicEntityNotFound
+uid: NetCode.Errors.DynamicEntityNotFound
 ---
 
 # Error: The type or namespace name 'DynamicEntity' could not be found 

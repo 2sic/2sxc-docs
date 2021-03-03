@@ -20,7 +20,7 @@ So DataSources can be joined together into a [Query](xref:Specs.DataSources.Quer
 6. and then the result can be used in a Template or streamed as JSON to a JavaScript SPA.
 
 ## Understanding Data-Flow between DataSource Objects
-Each DataSource has a list of out-streams available on the `.Out["StreamName"]` property, but usually access directly just with the `DataSourceName["StreamName"]`. This is what also happens when you use the [Data](xref:HowTo.DynamicCode.Data) object and write `foreach(var item in Data["Default"])`. 
+Each DataSource has a list of out-streams available on the `.Out["StreamName"]` property, but usually access directly just with the `DataSourceName["StreamName"]`. This is what also happens when you use the [Data](xref:NetCode.DynamicCode.Data) object and write `foreach(var item in Data["Default"])`. 
 
 Aside from consuming data in your your template, most data-sources will simply offer the Out-Stream to other DataSources for further processing. Technically it's mapped like this:
 
@@ -43,17 +43,17 @@ The configuration uses a sophisticated token system to provide all necessary inf
 
 You will usually use DataSource objects in these common cases:
 
-1. when templating in Razor, the [Data](xref:HowTo.DynamicCode.Data) object is a DataSource, usually having a `Default` stream (`Data["Default"]`) and sometimes further streams like `Data["ListContent"]` or `Data["Categories"]` etc.
-1. when templating, the [App.Data](xref:HowTo.DynamicCode.App) is also a DataSource providing a stream for each content-type in this app, like `App.Data["BlogPost"]` or `App.Data["Tag"]`
+1. when templating in Razor, the [Data](xref:NetCode.DynamicCode.Data) object is a DataSource, usually having a `Default` stream (`Data["Default"]`) and sometimes further streams like `Data["ListContent"]` or `Data["Categories"]` etc.
+1. when templating, the [App.Data](xref:NetCode.DynamicCode.App) is also a DataSource providing a stream for each content-type in this app, like `App.Data["BlogPost"]` or `App.Data["Tag"]`
 1. every query is technically a DataSource, and in the query you define which DataStreams it has - if ever you use it in code, you'll see that `App.Query["SortedTags"]` would be a DataSource and typically the `Default` stream would contain all these tags.
 1. a query is always a chain of DataSource doing one operation and passing it on to the next DataSource. 
 
 ## How to use
 
 In your Razor-templates you'll usually work with these three sources:
-1. [Data](xref:HowTo.DynamicCode.Data)
-1. [App.Data](xref:HowTo.DynamicCode.App)
-1. [App.Query[...]](xref:HowTo.DynamicCode.App)
+1. [Data](xref:NetCode.DynamicCode.Data)
+1. [App.Data](xref:NetCode.DynamicCode.App)
+1. [App.Query[...]](xref:NetCode.DynamicCode.App)
 
 Please read more about these in links. 
 

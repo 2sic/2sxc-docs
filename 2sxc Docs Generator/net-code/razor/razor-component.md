@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.Templates
+uid: NetCode.Razor.Component
 ---
 # RazorComponent aka Razor Templates
 
@@ -18,7 +18,7 @@ Visit the [App Catalog](xref:AppsCatalog) where almost all apps use Razor. There
 
 ## APIs in Razor Components / Templates
 
-Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynCode.Index)
+Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynamicCode.Index)
 
 In addition there are a few more commands which you will usually use, most of which are standard Razor APIs
 
@@ -36,8 +36,8 @@ In addition there are a few more commands which you will usually use, most of wh
 
 Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It's not documented well, but you can check examples in the Blog App.
 
-* `Overrideable` [CustomizeData](xref:HowTo.Razor.CustomizeData) - is like a "before-data-is-used" of the page, used to change what data is delivered to the page - or to the search.  
+* `Overrideable` [CustomizeData](xref:NetCode.Razor.CustomizeData) - is like a "before-data-is-used" of the page, used to change what data is delivered to the page - or to the search.  
   Note that this is an older feature and many things this does can also be done using the visual query designer. But sometimes you will need code, and this is the place to do it.
-* `Overridable` [CustomizeSearch](xref:HowTo.Razor.CustomizeSearch)
-* `string` [Purpose](xref:HowTo.Razor.Purpose) - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt
+* `Overridable` [CustomizeSearch](xref:NetCode.Razor.CustomizeSearch)
+* `string` [Purpose](xref:NetCode.Razor.Purpose) - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt
 

@@ -85,7 +85,7 @@ You should now have a _red_ + button like this:
 
 ### Adding more Buttons
 
-Now we want to add another button - maybe to add a _Tag_. The `toolbar` attribute on the [Edit.TagToolbar](xref:HowTo.Razor.Edit.Toolbar) can take various kinds of objects, but for the new simple API it only accepts `string` objects or `string[]` arrays. So to make multiple changes to the toolbar, we'll have to give it a `string[]` array like this (note that we can use line-breaks, to make the code easier to read):
+Now we want to add another button - maybe to add a _Tag_. The `toolbar` attribute on the [Edit.TagToolbar](xref:NetCode.Razor.Edit.Toolbar) can take various kinds of objects, but for the new simple API it only accepts `string` objects or `string[]` arrays. So to make multiple changes to the toolbar, we'll have to give it a `string[]` array like this (note that we can use line-breaks, to make the code easier to read):
 
 ```html
 <div @Edit.TagToolbar(Content, toolbar: new [] { 

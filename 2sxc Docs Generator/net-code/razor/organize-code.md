@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.OrganizeCode
+uid: NetCode.Razor.OrganizeCode
 ---
 # How To Organize your Code in Razor
 

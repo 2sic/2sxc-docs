@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Errors.LinqLambda
+uid: NetCode.Errors.LinqLambda
 ---
 
 # Error Cannot use a lambda expression 

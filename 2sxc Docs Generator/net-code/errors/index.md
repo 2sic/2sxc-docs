@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Errors.Intro
+uid: NetCode.Errors.Intro
 ---
 
 # Solving typical Errors in Dynamic Code

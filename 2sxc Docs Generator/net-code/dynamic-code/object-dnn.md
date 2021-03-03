@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Dnn
+uid: NetCode.DynamicCode.Dnn
 ---
 # Link / @Dnn Object in Razor / .net
 

@@ -1,3 +1,3 @@
 # AsDynamic(...) - Magic Objects
 
-This document has been moved to @HowTo.DynamicCode.AsDynamic
+This document has been moved to @NetCode.DynamicCode.AsDynamic

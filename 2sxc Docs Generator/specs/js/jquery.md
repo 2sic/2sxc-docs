@@ -33,11 +33,11 @@ In case your code is running on a page without jQuery but you need it, your code
 * Up until 2sxc 10.24, every 2sxc module automatically loaded jQuery because 2sxc used the ServicesFramework of DNN
 * Starting from 2sxc 10.25 
   * old templates auto-load jQuery for backward compatibility. This includes token-templates and Razor templates which don't have an `@inherits` statement at the beginning. 
-  * Anything new done using the [RazorComponent](xref:HowTo.Razor.Templates) will not do that unless your template code requests it.
+  * Anything new done using the [RazorComponent](xref:NetCode.Razor.Component) will not do that unless your template code requests it.
 
 In 2sxc 10.25 and newer, all core features of 2sxc _don't_ need jQuery. So anonyomus browsing of your site won't require jQuery at all, even if you're doing API calls or using the [$2sxc javascript API](xref:Specs.Js.$2sxc). 
 
-But what you do need (if you're using the new [RazorComponent](xref:HowTo.Razor.Templates)) is to tell 2sxc that you plan to use JavaScript and APIs, so that 2sxc can add the stuff to the page to make the magic happen. This is done with this line in your razor code:
+But what you do need (if you're using the new [RazorComponent](xref:NetCode.Razor.Component)) is to tell 2sxc that you plan to use JavaScript and APIs, so that 2sxc can add the stuff to the page to make the magic happen. This is done with this line in your razor code:
 
 ```
 @Edit.Enable(js:true)

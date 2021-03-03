@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.AsDynamic
+uid: NetCode.DynamicCode.AsDynamic
 ---
 # AsDynamic(...) - Magic Objects
 
@@ -49,7 +49,7 @@ There are rare cases where you have a [](xref:ToSic.Sxc.Data.IDynamicEntity) and
 
 > [!WARNING]
 > In previous versions of 2sxc you'll find AsDynamic(...) also used to convert lists (IEnumerable or DataStreams) into lists. 
-> This caused a lot of issues with dynamic code compilation, so in 2sxc 10.20 we introduced [AsList(...)](xref:HowTo.DynamicCode.AsList) for that use case. So if you find that kind of code, it works because...
+> This caused a lot of issues with dynamic code compilation, so in 2sxc 10.20 we introduced [AsList(...)](xref:NetCode.DynamicCode.AsList) for that use case. So if you find that kind of code, it works because...
 > * without `@inherits ToSic.Sxc.Dnn.RazorComponent` in the header, the old calls still work
 > * with `@inherits ToSic.Sxc.Dnn.RazorComponent` in the header, you must use `AsList(...)`
 

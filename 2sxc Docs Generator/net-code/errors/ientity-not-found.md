@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Errors.IEntityNotFound
+uid: NetCode.Errors.IEntityNotFound
 ---
 
 # Error IEntity does not exist in the Namespace 

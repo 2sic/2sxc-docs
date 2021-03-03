@@ -1,3 +1,3 @@
 # @Data in Razor Template
 
-This document has been moved to @HowTo.DynamicCode.Data
+This document has been moved to @NetCode.DynamicCode.Data

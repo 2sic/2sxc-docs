@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.Edit.Toolbar
+uid: NetCode.Razor.Edit.Toolbar
 ---
 
 # @Edit.TagToolbar and @Edit.Toolbar Methods in Razor / .net
@@ -52,7 +52,7 @@ As you can see, the `actions: "new"` tells the toolbar to only show this one but
 
 
 ## How it works
-This command is part of the [Edit](xref:HowTo.Razor.Edit) object and used in Razor templates. It provides a simple API to generate in-page buttons if the current user is an editor.
+This command is part of the [Edit](xref:NetCode.Razor.Edit) object and used in Razor templates. It provides a simple API to generate in-page buttons if the current user is an editor.
 
 It also checks if edit should be enabled (based on security specs) and will then generate some HTML/JavaScript at that location. 
 

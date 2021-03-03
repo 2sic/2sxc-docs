@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.ContextAttributes
+uid: NetCode.Razor.ContextAttributes
 ---
 
 # ContextAttributes in Razor-Output

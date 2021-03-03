@@ -1,3 +1,3 @@
 # Link / @Link Object in Razor / .net
 
-This document has been moved to @HowTo.DynamicCode.Link
+This document has been moved to @NetCode.DynamicCode.Link

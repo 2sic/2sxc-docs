@@ -1,12 +1,12 @@
 ---
-uid: HowTo.DynamicCode.DynamicEntity
+uid: NetCode.DynamicCode.DynamicEntity
 ---
 # How to Use a Dynamic Entity
 
 Whenever you create a content-type - like _Person_ - and want to work with the data in your C# Razor templates, you'll be working with a _Dynamic Entity_. 
 
 > [!TIP]
-> Also read about [](xref:HowTo.DynamicCode.AsDynamic)
+> Also read about @NetCode.DynamicCode.AsDynamic
 
 ## Code example using a Dynamic Entity
 

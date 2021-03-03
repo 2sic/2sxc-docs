@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.Edit
+uid: NetCode.Razor.Edit
 ---
 # Edit / @Edit Object in Razor / .net
 
@@ -39,14 +39,14 @@ A short summary of what's inside
 #### Check or Enable Editing Mode
 
 * `Edit.Enable(...)`  
-allows you to enable editing functionality even if it's not available by user permissions, see [more](xref:HowTo.Razor.Edit.Enable)
+allows you to enable editing functionality even if it's not available by user permissions, see [more](xref:NetCode.Razor.Edit.Enable)
 
 * `Edit.Enabled` (boolean)  
 Tells you if it's edit-mode or not, allowing your code to output other things if edit is enabled.
 
 #### Work with Toolbars
 
-Creates a Toolbar, see [Razor Edit Toolbar](xref:HowTo.Razor.Edit.Toolbar).
+Creates a Toolbar, see [Razor Edit Toolbar](xref:NetCode.Razor.Edit.Toolbar).
 
 * `Edit.TagToolbar(...)` attribute (_2sxc 9.40+_, recommended)
 it is used inside a tag like  
@@ -78,7 +78,7 @@ You should find some code examples in this demo App
 ## History
 
 1. Introduced in 2sxc 8.04
-2. Enhanced with [Enable(...)](xref:HowTo.Razor.Edit.Enable) method in 9.30
-3. Enhanced with [TagToolbar(...)](xref:HowTo.Razor.Edit.Toolbar) in 9.40
+2. Enhanced with [Enable(...)](xref:NetCode.Razor.Edit.Enable) method in 9.30
+3. Enhanced with [TagToolbar(...)](xref:NetCode.Razor.Edit.Toolbar) in 9.40
 
 

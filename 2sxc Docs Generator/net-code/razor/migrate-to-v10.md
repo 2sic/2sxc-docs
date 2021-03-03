@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.MigrateToV10
+uid: NetCode.Razor.MigrateToV10
 ---
 # Migrating from the old Razor (before 10.20) to the new RazorComponent
 

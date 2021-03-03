@@ -29,14 +29,14 @@ to make sure that it has all the new features.
 > But they inherit from a different class, so certain features won't work exactly as documented. 
 
 > [!TIP]
-> Check out the [How-To Razor](xref:HowTo.Razor.Templates) section
+> Check out the [How-To Razor](xref:NetCode.Razor.Component) section
 
 > [!TIP]
 > You can see the full API available to to your code out-of-the box in the [RazorComponent API](xref:ToSic.Sxc.Dnn.RazorComponent)
 
 ## Razor Code-Behind
 
-If your Razor file is getting kind of large because of C# functions, best place it in a [Razor Code-Behind](xref:Specs.Cms.Templates.RazorCodeBehind). Here's the [How To](xref:HowTo.Razor.OrganizeCode)
+If your Razor file is getting kind of large because of C# functions, best place it in a [Razor Code-Behind](xref:Specs.Cms.Templates.RazorCodeBehind). Here's the [How To](xref:NetCode.Razor.OrganizeCode)
 
 ## Reusing Html-Helpers in Razor 
 

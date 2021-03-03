@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.Shared.Inherits
+uid: NetCode.Razor.Shared.Inherits
 ---
 
 > [!TIP]

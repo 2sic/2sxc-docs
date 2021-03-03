@@ -1,5 +1,5 @@
 ---
-uid: HowTo.DynamicCode.Data
+uid: NetCode.DynamicCode.Data
 ---
 # @Data in Razor Template
 ## What is _Data_
@@ -14,7 +14,7 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 
 1. There are also cases, where a template needs both queried data (like _all categories_) as well as content-items added manually. There are multiple easy ways of doing this **todo - document later**
 
-1. Note: if you want _all data_ of a type, like "Get me all Tag-items in the system" you need to use [App-Data](xref:HowTo.DynamicCode.App).
+1. Note: if you want _all data_ of a type, like "Get me all Tag-items in the system" you need to use [App-Data](xref:NetCode.DynamicCode.App).
 
 
 ## Most common way to use the Data object
@@ -31,7 +31,7 @@ In all Razor-templates and also the web-api files, the `Data` object is already 
 
 * the foreach will loop through all items of the data in the _Stream_ **Default** - read more about streams below
 * the var post is the inner variable containing the current item
-* the AsDynamic will ensure that the items we're working with are easy to code with, because they are [Dynamic Entities](xref:HowTo.DynamicCode.DynamicEntity)
+* the AsDynamic will ensure that the items we're working with are easy to code with, because they are [Dynamic Entities](xref:NetCode.DynamicCode.DynamicEntity)
 
 
 ## The Streams in a Data Object
@@ -66,7 +66,7 @@ Afterwards, other mechanisms can override / change this.
     if one or many are delivered, then the selection will be based on what the editor added to the module instance.
     1. Visual Query - if the template has a query attached, this query will deliver the data
 2. Modifications to the source for the template
-    1. The event [CustomizeData](xref:HowTo.Razor.CustomizeData) can optionally completely reconfigure what Data contains in your code.
+    1. The event [CustomizeData](xref:NetCode.Razor.CustomizeData) can optionally completely reconfigure what Data contains in your code.
 
 
 ## Data Object API

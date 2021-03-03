@@ -21,7 +21,7 @@ To ensure that client-side commands like _edit_ can work (this includes all tool
 
 ## How the Edit-Context is Added
 
-By default, it is automatically added if the system detects that the current user has edit-permissions. In 2sxc 9.30 a feature was added to add the context in code, using the [Edit.Enable(...)](xref:HowTo.Razor.Edit.Enable) command.
+By default, it is automatically added if the system detects that the current user has edit-permissions. In 2sxc 9.30 a feature was added to add the context in code, using the [Edit.Enable(...)](xref:NetCode.Razor.Edit.Enable) command.
 
 ## Inner-Context for Inner Content
 

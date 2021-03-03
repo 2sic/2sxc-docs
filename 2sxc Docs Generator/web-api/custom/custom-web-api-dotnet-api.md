@@ -14,9 +14,9 @@ The `ApiController` provides various command / helpers to get you productiv. Mos
 1. AsDynamic(...)
 1. AsList(...)
 1. AsEntity(...)
-1. [Dnn](xref:HowTo.DynamicCode.Dnn)
-1. [App](xref:HowTo.DynamicCode.App) with `App.Data`, `App.Query` etc.
-1. [Data](xref:HowTo.DynamicCode.Data)
+1. [Dnn](xref:NetCode.DynamicCode.Dnn)
+1. [App](xref:NetCode.DynamicCode.App) with `App.Data`, `App.Query` etc.
+1. [Data](xref:NetCode.DynamicCode.Data)
 1. [SaveInAdam(...)](xref:WebApi.Custom.DotNet.SaveInAdam) _new in 9.30_
 
 

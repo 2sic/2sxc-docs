@@ -1,5 +1,5 @@
 ---
-uid: HowTo.Razor.Blocks
+uid: NetCode.Razor.Blocks
 ---
 
 # Razor: Rendering Content-Blocks
@@ -30,7 +30,7 @@ Here's a more manual example of doing the same thing, but done manually to demon
     }
 </div>
 ```
-If you care about doing it manually, read more about the [Edit object](xref:HowTo.Razor.Edit).
+If you care about doing it manually, read more about the [Edit object](xref:NetCode.Razor.Edit).
 
 ## Very Rich Text / Inner-Content
 
