@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>RazorComponent API | 2sxc and EAV 10 </title>
+    <title>AsEntity(...) - Get the Underlying Data | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="RazorComponent API | 2sxc and EAV 10 ">
+    <meta name="title" content="AsEntity(...) - Get the Underlying Data | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -108,31 +108,30 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Razor.Component">
-<h1 id="razorcomponent-api">RazorComponent API</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.AsEntity">
+<h1 id="asentity---get-the-underlying-data">AsEntity(...) - Get the Underlying Data</h1>
 
-<p>As of 2sxc 10.20, all Razor templates should start with a line like<br><code>@inherits ToSic.Sxc.Dnn.RazorComponent</code> 
-to make sure that it has all the new features. </p>
-<div class="WARNING"><h5>Warning</h5><p>If you don&#39;t specify this first line, your code will inherit from a different class,
-so many features won&#39;t work as documented. </p>
+<p>In most Razor and WebAPIs you will prefer to use Dynamic Entities allowing you to easily write code like <code>@Content.FirstName</code>. 
+But in rare cases where you have a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> and want to access the real underlying <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> in it&#39;s full complexity. 
+This is where <code>AsEntity(...)</code> is used. </p>
+<div class="TIP"><h5>Tip</h5><p><code>AsEntity(...)</code> reverses what <a class="xref" href="as-dynamic.html">AsDynamic(...)</a> does. </p>
 </div>
-<h2 id="apis-in-razor-components--templates">APIs in Razor Components / Templates</h2>
-<p>Razor templates / components have all the objects and APIs of <a class="xref" href="../dynamic-code/index.html">Dynamic Code</a></p>
-<p>TODO: list all the APIs here</p>
-<p>TODO: also list additional commands like @helper</p>
-<p>In addition there are a few additional objects &amp; commands which you will usually use, most of which are standard Razor APIs</p>
+<p>If you have an object or you&#39;re not sure if it&#39;s either an <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a>  or a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>, just pass it to <code>AsEntity(...)</code> and it will detect either one. </p>
+<h2 id="example-type-information">Example: Type Information</h2>
+<p>The Dynamic Entity has a property <code>EntityType</code> but this will only return a name like <code>Person</code>. If you need the full <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html">Content-Type definition</a>, this is what you would do:</p>
+<pre><code class="lang-cs">// assume that person is a Dynamic Entity
+var personTypeName = person.EntityType; // string
+var personType = AsEntity(person).Type; // Will return the IContentType
+</code></pre><h2 id="example-language-information">Example: Language Information</h2>
+<p>If you want to really check in the code, what languages have been translated. This is very sophisticated, but this is kind of how you would do it: </p>
+<pre><code class="lang-cs">
+var personEntity = AsEntity(person);
+var attrName = personEntity[&quot;Name&quot;]; // this will return an IAttribute&lt;string&gt; object
+</code></pre><h2 id="history">History</h2>
 <ol>
-<li><code>Code</code><br> The object from the Code-Behind - see <a class="xref" href="code-behind.html">Razor Templates - Code-Behind</a></li>
-<li><code>Html.Raw(string)</code><br> Standard Razor API to output the HTML in a string instead of showing tags in the visible page</li>
-<li><code>RenderTemplate(path, data)</code><br> Standard Razor API - google it if you need it</li>
+<li>Introduced ca. in 2sxc 1</li>
+<li>Modified/added signatures in 2sxc 7</li>
 </ol>
-<h2 id="customizing-data--search">Customizing Data &amp; Search</h2>
-<p>Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It&#39;s not documented well, but you can check examples in the Blog App.</p>
-<ul>
-<li><code>Overrideable</code> <a class="xref" href="customizedata.html">CustomizeData</a> - is like a &quot;before-data-is-used&quot; of the page, used to change what data is delivered to the page - or to the search.<br>Note that this is an older feature and many things this does can also be done using the visual query designer. But sometimes you will need code, and this is the place to do it.</li>
-<li><code>Overridable</code> <a class="xref" href="customizesearch.html">CustomizeSearch</a></li>
-<li><code>string</code> <a class="xref" href="purpose.html">Purpose</a> - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt</li>
-</ul>
 </article>
           </div>
           
@@ -141,7 +140,7 @@ so many features won&#39;t work as documented. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/razor/razor-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/as-entity.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

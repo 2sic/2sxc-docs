@@ -25,7 +25,7 @@ In addition to the dynamic code above you can also access 2sxc in other places -
 
 The variable `person` in the following Razor template is a **Dynamic Entity** - meaning that it can have different properties depending on the configuration. In this case it seems to have `FirstName`, `LastName` and `Gender`. 
 
-```razor
+```html
 <div @Edit.Toolbar(person)>
   @person.FirstName @person.LastName - @Text.First(person.Gender, "unknown")
 </div>

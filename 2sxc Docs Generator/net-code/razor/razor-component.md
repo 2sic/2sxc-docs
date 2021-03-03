@@ -20,10 +20,10 @@ TODO: list all the APIs here
 TODO: also list additional commands like @helper
 
 
-In addition there are a few more commands which you will usually use, most of which are standard Razor APIs
+In addition there are a few additional objects & commands which you will usually use, most of which are standard Razor APIs
 
 1. `Code`  
-    Code Behind files - google examples for now, not fully documented (TODO)
+    The object from the Code-Behind - see @NetCode.Razor.CodeBehind
 1. `Html.Raw(string)`  
     Standard Razor API to output the HTML in a string instead of showing tags in the visible page
 1. `RenderTemplate(path, data)`  

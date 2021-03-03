@@ -43,7 +43,7 @@ AsDynamic has many signatures accepting a variety of input values. It then retur
 
 ## Reversing AsDynamic with AsEntity
 
-There are rare cases where you have a [](xref:ToSic.Sxc.Data.IDynamicEntity) and want to access the real underlying [](xref:ToSic.Eav.Data.IEntity). For example if you want to really check in the code, what languages have been translated. This is very sophisticated, but you can always call `AsEntity(...)` with any [](xref:ToSic.Sxc.Data.IDynamicEntity) to get a pure [](xref:ToSic.Eav.Data.IEntity) object. 
+Check out these docs: @NetCode.DynamicCode.AsEntity
 
 ## Obsolete use of AsDynamic() for Lists
 

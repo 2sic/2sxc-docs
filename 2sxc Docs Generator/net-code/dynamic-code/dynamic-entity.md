@@ -50,6 +50,8 @@ Read the API docs in the [](xref:ToSic.Sxc.Data.IDynamicEntity).
 
 Additional properties that work (they are dynamic, so don't appear in the code)
 
+1. **EntityId** _int_
+1. **EntityGuid** _Guid_
 1. **EntityType** _string_ - the type name like _Person_
 1. **IsPublished** _bool_ - true/false if this item is currently published
 1. **_AnyProperty_** _dynamic, but actually bool | string | decimal | datetime | List<DynamicEntity>_ any normal property of the content-item can be accessd directly. It's correctly .net typed (string, etc.)
