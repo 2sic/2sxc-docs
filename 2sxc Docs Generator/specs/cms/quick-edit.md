@@ -5,7 +5,7 @@ uid: Specs.Cms.QuickE
 
 QuickE (pronounced _quick-e_) is the quick-edit feature inside 2sxc to quickly add / move modules and inner content blocks. It supports touch and usually is used with a mouseover.
 
-![Example showing quickE](/assets/concepts/inpage-toolbar/example-quicke.png)
+![Example showing quickE](./assets/example-quicke.png)
 
 In the current version, it allows you to do the following in normal view-mode:
 

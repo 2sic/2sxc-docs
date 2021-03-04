@@ -3,7 +3,7 @@ uid: Specs.Cms.Polymorphism
 ---
 # Polymorphism aka Open-Heart-Surgery
 
-<img src="/assets/concepts/polymorph-logo-wide.svg" width="100%">
+<img src="../../assets/logos/polymorph/polymorph-logo-wide.svg" width="100%">
 
 > [!TIP]
 > The key concept behind **Polymorphism** is having the same template and code in various editions (morphs) which are automatically used based on certain rules. 
@@ -25,7 +25,7 @@ In marketing, we want to test various design with different audiences and measur
 
 Let's compare the perfect multi-edition (polymorph) setup to the classic solution:
 
-<img src="/assets/concepts/app-polymorph-classic-vs.png" width="100%">
+<img src="./assets/app-polymorph-classic-vs.png" width="100%">
 
 ## Progress
 

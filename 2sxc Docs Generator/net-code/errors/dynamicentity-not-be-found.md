@@ -60,4 +60,4 @@ Error: System.Web.HttpCompileException (0x80004005): ...\Portals\...\2sxc\FAQ wi
 
 Here's a print-screen:
 
-<img src="/assets/how-to/dynamic-code/errors/dynamicentity-not-found.jpg" width="100%" />
+<img src="./assets/dynamicentity-not-found.jpg" width="100%" />

@@ -22,7 +22,7 @@ Data is just numbers - sometimes assembled together to form text, images or what
 
 Content items wouldn't do much - they must be shown to the user in the intended layout. The configuration of such a _show these things using this template_ is handled in a **ContentBlock**. The data model for these _Content Blocks_ looks like this:
 
-<img src="/images/content/content-block.png" width="100%">
+<img src="./assets/content-block.png" width="100%">
 
 So each _Content Block_ has:
 
@@ -56,7 +56,7 @@ When you see 2sxc data in DNN, that's because a module was added to the page poi
 
 _Content Blocks_ are usually added to pages as [DNN Modules](xref:Specs.Content.DnnIntegration). But there is another way: as **Inner Content**. What this means is that a **Content Item** like a Blog-Post says "Show this other content-block right...here". To help 2sxc keep track of what is used where, this relationship is stored as a **Content Block Reference**. 
 
-<img src="/images/content/content-block-reference.png" width="100%">
+<img src="./assets/content-block-reference.png" width="100%">
 
 
 
@@ -67,7 +67,7 @@ This also means that exporting/importing an app will result in the same stuff ar
 
 The following diagram shows how Content can come from multiple apps
 
-<img src="/images/content/content-block-reference-other-app.png" width="100%">
+<img src="./assets/content-block-reference-other-app.png" width="100%">
 
 > [!IMPORTANT]
 > So if you're using _Inner Content_ and referencing content from another _App_, this 

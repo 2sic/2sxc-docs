@@ -6,7 +6,7 @@ uid: Specs.Content.DnnIntegration
 
 The vision of 2sxc is to be cross-platform, so we hope one day it will also run on NopCommerce and other systems. This is how it's integrated into DNN. 
 
-<img src="/images/content/content-in-dnn.png" width="100%">
+<img src="./assets/content-in-dnn.png" width="100%">
 
 
 
@@ -46,7 +46,7 @@ This is the most common setup - and used in the **Content** module as well as in
 
 Here is how it's mapped:
 
-<img src="/assets/concepts/how-modules-relate-to-content-groups.png" width="100%">
+<img src="./assets/how-modules-relate-to-content-groups.png" width="100%">
 
 
 
@@ -54,7 +54,7 @@ Here is how it's mapped:
 
 Note: you shoudn't usually do this - but sometimes you have to. Check out this short explanation:
 
-<img src="/assets/concepts/administrating-content-group-in-an-app.jpg" width="100%">
+<img src="./assets/administrating-content-group-in-an-app.jpg" width="100%">
 
 > [!NOTE]
 > This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.
