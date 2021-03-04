@@ -7,7 +7,7 @@ The **StreamFallback** [DataSource](xref:Specs.DataSources.DataSource) is part o
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/stream-fallback-4-stream-example.png" width="100%">
+<img src="./assets/stream-fallback-4-stream-example.png" width="100%">
 
 The above example shows a query from the [blog app](https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke):
 

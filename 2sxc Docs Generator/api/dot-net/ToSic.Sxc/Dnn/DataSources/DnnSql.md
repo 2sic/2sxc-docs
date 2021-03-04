@@ -7,7 +7,7 @@ The **DnnSql** [DataSource](xref:Specs.DataSources.DataSource) is part of the [S
 
 This is what it looks like:
 
-<img src="/assets/data-sources/dnnsqldatasource-basic.png" width="100%">
+<img src="./assets/dnnsqldatasource-basic.png" width="100%">
 
 ## How to use 
 Internally the DnnSqlDataSource is exactly the same as the [Sql DataSource](xref:ToSic.Eav.DataSources.Sql) just with fewer options, because you cannot choose most of the settings. Please consult the [Sql DataSource documentation](xref:ToSic.Eav.DataSources.Sql) to see how you can use it. 

@@ -7,7 +7,7 @@ The **Paging** [DataSource](xref:Specs.DataSources.DataSource) is part of the [S
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/paging-basic.png" width="100%">
+<img src="./assets/paging-basic.png" width="100%">
 
 The above example shows:
 
@@ -17,11 +17,11 @@ The above example shows:
 ## Using Url Parameters for Paging
 This example shows how you can use the Url Parameter to page through the results:
 
-<img src="/assets/data-sources/paging-page-from-url.png" width="100%">
+<img src="./assets/paging-page-from-url.png" width="100%">
 
 ...you could also set the page size from other tokens like url or app-configuration, like this:
 
-<img src="/assets/data-sources/paging-page-size-app-settings.png" width="100%">
+<img src="./assets/paging-page-size-app-settings.png" width="100%">
 
 ## Programming With The Paging DataSource
 [!include["simpler-with-vqd"](shared-use-vqd.md)]

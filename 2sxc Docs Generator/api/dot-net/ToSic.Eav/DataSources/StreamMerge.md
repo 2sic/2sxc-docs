@@ -7,14 +7,14 @@ The **StreamMerge** [DataSource](xref:Specs.DataSources.DataSource) is part of t
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/stream-merge-basic.png" width="100%">
+<img src="./assets/stream-merge-basic.png" width="100%">
 
 The above example shows two filters finding items and delivering them on the same stream. 
 
 ## Example Using ItemFilterDuplicates
 A common scenario will also combine this using the [ItemFilterDuplicates](xref:ToSic.Eav.DataSources.ItemFilterDuplicates), in case various in-streams deliver the same item:
 
-<img src="/assets/data-sources/stream-merge-with-item-filter-duplicates.png" width="100%">
+<img src="./assets/stream-merge-with-item-filter-duplicates.png" width="100%">
 
 
 ## No Settings

@@ -7,7 +7,7 @@ The **PublishingFilter** [DataSource](xref:Specs.DataSources.DataSource) is part
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Here's a picture showing app data with or without publishing filter:  
 
-<img src="/assets/data-sources/app-compare-no-in-with-publishing-filter.png" width="100%">
+<img src="./assets/app-compare-no-in-with-publishing-filter.png" width="100%">
 
 ## Configuring the PublishingFilter DataSource
 The PublishingFilter has no configuration. 

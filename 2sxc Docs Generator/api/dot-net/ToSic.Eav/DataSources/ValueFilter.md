@@ -7,21 +7,21 @@ The **ValueFilter** [DataSource](xref:Specs.DataSources.DataSource) is part of t
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/value-filter-basic.png" width="100%">
+<img src="./assets/value-filter-basic.png" width="100%">
 
 The above example shows that 2 of the 5 items fulfilled the filters requirements. 
 
 ## Using Url Parameter for Filtering
 You can also filter using values from the URL, like this:
 
-<img src="/assets/data-sources/value-filter-value-from-url.png" width="100%">
+<img src="./assets/value-filter-value-from-url.png" width="100%">
 
 ## Using Multiple URL Parameters
 ...and of course you can also use url parameters to specify field-names _and_ value:
-<img src="/assets/data-sources/value-filter-field-value-from-url.png" width="100%">
+<img src="./assets/value-filter-field-value-from-url.png" width="100%">
 
 ... or field, value and operator:
-<img src="/assets/data-sources/value-filter-field-value-operator-from-url.png" width="100%">
+<img src="./assets/value-filter-field-value-operator-from-url.png" width="100%">
 
 ## Comparison Operators
 There are many operators possible - see the in-UI help bubble for that.
@@ -29,11 +29,11 @@ There are many operators possible - see the in-UI help bubble for that.
 ## Using Fallback Streams
 The filter will return the items which match the requirement, but sometimes none will match. This is common when you have a parameter from the Url, which may not match anything. In the simple version this looks like this:
 
-<img src="/assets/data-sources/value-filter-fallback.png" width="100%">
+<img src="./assets/value-filter-fallback.png" width="100%">
 
 ...this previous example used a filter criteria which didn't match any items, so it resulted in delivering all. This is very useful when you want to cascade optional filters, like this:
 
-<img src="/assets/data-sources/value-filter-chained.png" width="100%">
+<img src="./assets/value-filter-chained.png" width="100%">
 
 ...this example shows two filters - the first didn't match anything (it was blank), so it delivered all items, the second one then worked, and reduced the remaining items to 2. 
 

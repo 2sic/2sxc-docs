@@ -7,7 +7,7 @@ The **Shuffle** [DataSource](xref:Specs.DataSources.DataSource) is part of the [
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/shuffle-3.png" width="100%">
+<img src="./assets/shuffle-3.png" width="100%">
 
 The above example shows:
 

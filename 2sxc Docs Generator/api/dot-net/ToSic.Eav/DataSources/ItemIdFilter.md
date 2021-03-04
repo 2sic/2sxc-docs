@@ -9,15 +9,15 @@ _Warning: You should always use it in combination with a [Content-Type filter](x
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="/assets/data-sources/item-id-basic.png" width="100%">
+<img src="./assets/item-id-basic.png" width="100%">
 
 You can also use multiple values:
 
-<img src="/assets/data-sources/item-id-multiple.png" width="100%">
+<img src="./assets/item-id-multiple.png" width="100%">
 
 Or URL-parameters:
 
-<img src="/assets/data-sources/item-id-url.png" width="100%">
+<img src="./assets/item-id-url.png" width="100%">
 
 
 ## Programming With The ItemIdFilter DataSource

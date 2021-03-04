@@ -7,7 +7,7 @@ The **App** [DataSource](xref:Specs.DataSources.DataSource) is part of the [Stan
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Now you can create out-connections with the names of the types you need - which looks like this:
 
-<img src="/assets/data-sources/app-out-2-in-0.png" width="100%">
+<img src="./assets/app-out-2-in-0.png" width="100%">
 
  There are three common use cases: 
 
@@ -16,16 +16,16 @@ You can either just use it without any _In_ stream, then it will just deliver th
 
 If you do provide any kind of in, it will use that as the source. So if you provide a Publishing-Source on the in, which will cause the **App DataSource** to differ the result based on the user who is looking at it. So editors would see unpublished as well: 
 
-<img src="/assets/data-sources/app-compare-no-in-with-publishing-filter.png" width="100%">
+<img src="./assets/app-compare-no-in-with-publishing-filter.png" width="100%">
 
 ### 2. Using App with Other App
 The App-DataSource can also be configured to deliver data from _another_ app. For this, to configure and set the ZoneId and AppId:
 
-<img src="/assets/data-sources/app-from-other-app.png" width="100%">
+<img src="./assets/app-from-other-app.png" width="100%">
 
 You can also deliver data from different Apps by using multiple App sources: 
 
-<img src="/assets/data-sources/app-multiple-apps.png" width="100%">
+<img src="./assets/app-multiple-apps.png" width="100%">
 
 ## Programming With The App DataSource
 

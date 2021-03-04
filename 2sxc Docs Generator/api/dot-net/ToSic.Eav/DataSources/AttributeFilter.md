@@ -7,7 +7,7 @@ The **AttributeFilter** [DataSource](xref:Specs.DataSources.DataSource) is part 
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver `Name` and `Country`:
 
-<img src="/assets/data-sources/attribute-filter-basic.png" width="100%">
+<img src="./assets/attribute-filter-basic.png" width="100%">
 
 This is what you get on the default-case (unfiltered):
 

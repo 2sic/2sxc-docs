@@ -9,7 +9,7 @@ The **Module-Instance DataSource** [DataSource](xref:Specs.DataSources.DataSourc
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) it is already in the default / initial query: 
 
-<img src="/assets/data-sources/module-basic.png" width="100%">
+<img src="./assets/module-basic.png" width="100%">
 
 The above example shows:
 
@@ -21,7 +21,7 @@ The above example shows:
 ## Using Module/Instance Data For Configuration
 Things get really exciting when you use values which the user edited in the module as a setting in your query. Here's an example: 
 
-<img src="/assets/data-sources/module-providing-settings-to-sort.png" width="100%">
+<img src="./assets/module-providing-settings-to-sort.png" width="100%">
 
 As you can see, the _Default_ out of the **ModuleDataSource** is passed into the [ValueSort](xref:ToSic.Eav.DataSources.ValueSort) data source with the stream-name _Settings_ and is then used in a token to configure behaviour of the sort. 
 
@@ -29,7 +29,7 @@ As you can see, the _Default_ out of the **ModuleDataSource** is passed into the
 ## Manually Assigning a Module Instance ID (2sxc 9.9)
 In 2sxc 9.9 we added the configuration dialog, so you can specify what module the data should come from. This allows you to have configuration-modules or primary-data-modules, which are re-used in queries:
 
-<img src="/assets/data-sources/module-instance-configured.png" width="100%">
+<img src="./assets/module-instance-configured.png" width="100%">
 
 
 
