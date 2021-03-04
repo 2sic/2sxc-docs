@@ -14,7 +14,7 @@ Every _thing_, _record_ or _object_ in 2sxc is called an **Entity**. So if you h
 Entities are structured as follows:  
  
 <br>
-<img src="/assets/specs/data/entity.png" width="100%">
+<img src="./assets/entity.png" width="100%">
 <br>
 
 ## EAV+D = Entity-Attribute-Value + Dimension

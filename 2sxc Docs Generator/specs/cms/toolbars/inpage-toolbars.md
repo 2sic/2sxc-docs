@@ -5,7 +5,7 @@ uid: Specs.Cms.Toolbars
 
 2sxc provides super-fast in-page buttons and toolbars for the content-editor to manage and edit everything. The system is very advanced, so what at first may seem trivial can become very complex as you go deeper into customizing it. This is why we are providing an overview.
 
-![hover inline toolbar example](/assets/concepts/inpage-toolbar/example-hover-toolbar.png)
+![hover inline toolbar example](./assets/example-hover-toolbar.png)
 
 
 ## Best Practice: Hover vs. Inline Toolbars

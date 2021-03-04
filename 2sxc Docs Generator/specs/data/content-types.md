@@ -14,7 +14,7 @@ Every _thing_, _record_ or _object_ in 2sxc has a definition of fields it can ha
 Content-Types are structured as follows:  
  
 <br>
-<img src="/assets/specs/data/contenttype.png" width="100%">
+<img src="./assets/contenttype.png" width="100%">
 <br>
 
 ## How it Works

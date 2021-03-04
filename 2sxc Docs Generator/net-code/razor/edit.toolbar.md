@@ -5,7 +5,7 @@ uid: NetCode.Razor.Edit.Toolbar
 # @Edit.TagToolbar and @Edit.Toolbar Methods in Razor / .net
 2sxc has a cool in-page toolbar system - here you'll find a [conceptual overview around the toolbar](xref:Specs.Cms.Toolbars). These toolbars are usually hover-buttons like this:
 
-![hover inline toolbar example](/assets/concepts/inpage-toolbar/example-hover-toolbar.png)
+![hover inline toolbar example](./assets/example-hover-toolbar.png)
 
 Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the `@Edit.TagToolbar(...)` and `@Edit.Toolbar(...)` are your tools of choice for adding toolbars from Razor.
 
