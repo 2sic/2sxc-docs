@@ -5,6 +5,8 @@ uid: NetCode.DynamicCode.AsDynamic
 
 To make a complex system like the EAV work, the real objects like the [](xref:ToSic.Eav.Data.IEntity) must very very smart and complicated. This would not be fun to use in razor, where you would prefer a simple `@Something.Property` syntax. This is where `AsDynamic(...)` comes in. 
 
+⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.Object)).
+
 ## How to Use
 
 If you have an [](xref:ToSic.Eav.Data.IEntity) 

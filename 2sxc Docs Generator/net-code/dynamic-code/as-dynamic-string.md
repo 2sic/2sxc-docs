@@ -7,6 +7,8 @@ uid: NetCode.DynamicCode.AsDynamicString
 
 The most common use is in GPS fields, where the data is stored as `{"Lat": 0.0, "Long": 0.0}`. But you can use it for so much more. 
 
+⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.String,System.String)).
+
 ## Example
 
 ```c#

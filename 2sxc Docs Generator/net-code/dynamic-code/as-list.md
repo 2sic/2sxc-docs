@@ -5,6 +5,8 @@ uid: NetCode.DynamicCode.AsList
 
 In razor you prefer a simple `@Something.Property` syntax. If you only have one item, you'll use [](xref:NetCode.DynamicCode.AsDynamic). When you need a list to go through, you use `AsList(...)`. 
 
+⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsList*).
+
 ## How it works
 
 AsList has various signatures accepting a variety of input values. It then returns an `IEnumerable<dynamic>` object which is a `List` of [](xref:ToSic.Sxc.Data.IDynamicEntity) objects. These are the things AsList can process:
