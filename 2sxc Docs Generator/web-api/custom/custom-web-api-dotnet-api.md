@@ -6,32 +6,28 @@ uid: WebApi.Custom.DotNet.Api
 
 The following gives you an overview to the APIs you get when you inherit from `ToSic.Sxc.Dnn.ApiController`.
 
+## APIs in Razor Components / Templates
+
+> [!TIP]
+> Most of these APIs can be seen live in action with source code in the [](xref:Tut.Razor.Home)
+
+### Standard Dynamic Code API
+
+Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynamicCode.Index)
+
+### Common Standard ASP.net Controller APIs and Keywords
+
+1. `Request`  
+    Standard object in ASP.net giving you http-request information. 
 
 ## Special Object / Commands in ApiController
 
-The `ApiController` provides various command / helpers to get you productiv. Most are the same as in a normal Razor view, but some are additional. Here are the main ones:
+The `ApiController` provides additional commands productive:
 
-1. AsDynamic(...)
-1. AsList(...)
-1. AsEntity(...)
-1. [Dnn](xref:NetCode.DynamicCode.Dnn)
-1. [App](xref:NetCode.DynamicCode.App) with `App.Data`, `App.Query` etc.
-1. [Data](xref:NetCode.DynamicCode.Data)
 1. [SaveInAdam(...)](xref:WebApi.Custom.DotNet.SaveInAdam) _new in 9.30_
-
-
-
-## Objects
-
-TODO
-
-
-## Methods
-
-Todo
-
 
 
 ## History
 
-1. The `ToSic.Sxc.Dnn.ApiController` was introduced in 2sxc 10.25
+1. A first base controller (not recommended any more) was added v6.05
+1. The `ToSic.Sxc.Dnn.ApiController` was introduced in 2sxc v10.25
