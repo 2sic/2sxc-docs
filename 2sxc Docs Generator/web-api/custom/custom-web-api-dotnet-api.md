@@ -9,11 +9,13 @@ The following gives you an overview to the APIs you get when you inherit from `T
 ## APIs in Razor Components / Templates
 
 > [!TIP]
-> Most of these APIs can be seen live in action with source code in the [](xref:Tut.Razor.Home)
+> Most of these APIs can be seen live in action with source code in the [](xref:Tut.WebApi)
 
 ### Standard Dynamic Code API
 
 Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynamicCode.Index)
+
+The .net Code Docs for [](xref:ToSic.Sxc.Dnn.ApiController).
 
 ### Common Standard ASP.net Controller APIs and Keywords
 
