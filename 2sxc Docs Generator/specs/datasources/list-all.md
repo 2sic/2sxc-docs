@@ -15,7 +15,7 @@ If on the other hand you want to program with these [DataSource](xref:Specs.Data
 
 An example code 
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<EntityTypeFilter>();
 allAuthors.TypeName = "Author";

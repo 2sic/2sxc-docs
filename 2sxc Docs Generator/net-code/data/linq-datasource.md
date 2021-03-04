@@ -48,7 +48,7 @@ var containsChuckNorris = items.Any(p => p.Name == "Chuck Norris");
 
 Here's another Any - to see if a relationship contains something. It's a bit more complex, because Razor needs to know what it's working with:
 
-```c#
+```cs
 // filter - keep only those that have this Category
 // note that the compare must run on the EntityId because of object wrapping/unwrapping
     postsToShow = postsToShow

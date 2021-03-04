@@ -7,7 +7,7 @@ To help the Visual Query Designer properly guide the user, there is a C# _Attrib
 
 ## How to use VisualQuery
 Here's a simple example of the [FormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list): 
-```c#
+```cs
 [VisualQuery(
     GlobalName = "0a0924a5-ca2f-4db5-8fc7-1a21fdbb2fbb",
     NiceName = "Dnn FormAndList",

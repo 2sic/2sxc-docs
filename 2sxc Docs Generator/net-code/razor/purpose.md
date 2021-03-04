@@ -14,7 +14,7 @@ Note that it's of the type `Purposes` which is an enum containing
 * IndexingForSearch,
 * PublishData
 
-```c#
+```cs
 @using ToSic.Sxc.Blocks;
 @if(Purpose == Purposes.IndexingForSearch){
     // code which should only run when indexing
@@ -26,7 +26,7 @@ Note that it's of the type `Purposes` which is an enum containing
 
 Sometimes you also have code which requires a user to be visiting a page - like a permission check. Since the indexer doesn't have an HTTP session or a user, this will fail. So you could do something like:
 
-```c#
+```cs
 @using ToSic.Sxc.Blocks;
 @if(Purpose != Purposes.IndexingForSearch){
     // code which should only run when really viewing 

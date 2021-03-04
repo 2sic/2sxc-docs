@@ -6,7 +6,7 @@ uid: WebApi.Custom.BaseClass
 
 Any WebAPI controller in ASP.net inherits from a base class. This is a typical code you may see as an example:
 
-```c#
+```cs
 using System.Web.Http;
 
 [AllowAnonymous]

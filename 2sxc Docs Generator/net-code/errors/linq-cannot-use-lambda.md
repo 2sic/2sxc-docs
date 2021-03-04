@@ -30,7 +30,7 @@ If you already know it's a list, you can also cast it as an `IEnumerable<dynamic
 
 This is what the compiler actually understands - but it's a bit long and hard to read:
 
-```c#
+```cs
 var authors = (book.Authors as System.Collections.Generic.IEnumerable<dynamic>)
     .Select(a => a.FirstName + " " + a.LastName);
 ```
@@ -39,7 +39,7 @@ var authors = (book.Authors as System.Collections.Generic.IEnumerable<dynamic>)
 
 This is the same thing, just nicer to read:
 
-```c#
+```cs
 @using System.Collections.Generic;
 
 var authors = (book.Authors as IEnumerable<dynamic>)
@@ -50,7 +50,7 @@ var authors = (book.Authors as IEnumerable<dynamic>)
 
 This is the same thing, but the nicest, easiest to read method:
 
-```c#
+```cs
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 var authors = (book.Authors as Dynlist)
     .Select(a => a.FirstName + " " + a.LastName);

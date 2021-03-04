@@ -12,7 +12,7 @@ It can be overriden to change/configure what data is delivered to the template o
 ## How to use
 In your razor page (.cshtml file) you can add a script block implementing this, as follows:
 
-```c#
+```cs
 @functions{
 
 // Prepare the data - get all categories through the pipeline

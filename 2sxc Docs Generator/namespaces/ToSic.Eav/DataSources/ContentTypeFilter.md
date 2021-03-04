@@ -22,7 +22,7 @@ The above example shows:
 ## Programming With The ContentTypeFilter DataSource
 [!include["simpler-with-vqd"](shared-use-vqd.md)]
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<EntityTypeFilter>();
 allAuthors.TypeName = "Author";

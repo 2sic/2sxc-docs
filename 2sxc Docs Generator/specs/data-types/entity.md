@@ -20,7 +20,7 @@ The entity-type has these specials it's good to know about
 ### Special #1: It's always a List
 Since it could contain 1 or many items (and the configuration can change whenever you want), reading it always means reading a list. So you'll always use something like this (C#):
 
-```c#
+```cs
 // full name of author
 var fn = Book.Author[0].FullName; 
 

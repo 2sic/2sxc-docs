@@ -11,7 +11,7 @@ The API is documented [here](xref:ToSic.Sxc.Dnn.ApiController.SaveInAdam*) and o
 ## How to use
 Here's a simple example, taken from [mobius forms](https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs)
 
-```c#
+```cs
 SaveInAdam(stream: dataStream,
     fileName: fileNameInForm,
     contentType: "Advertisement",
@@ -31,7 +31,7 @@ Here's what the parameters are:
 
 The following example is also from [mobius forms](https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs) and assumes that the html form encoded the data in JavaScript for sending to the WebApi:
 
-```c#
+```cs
 // Save files to Adam
 var files = ((Newtonsoft.Json.Linq.JArray)contactFormRequest["Files"])
     .ToObject<IEnumerable<Dictionary<string, string>>>();

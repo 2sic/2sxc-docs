@@ -116,7 +116,7 @@
 <p>Custom WebAPI Security is configured using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/">Attributes</a>.</p>
 <p>These attributes can be placed on the <em>class</em> (in which case they apply to all actions/methods of that class) or on a specific <em>method</em> (in which case it only applies to that method).</p>
 <p>This example will NOT respond to <em>Anonymous</em> requests from outside:</p>
-<pre><code class="lang-c#">using System.Web.Http;
+<pre><code class="lang-cs">using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
 {
@@ -127,7 +127,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
   }
 }
 </code></pre><p>This example from the <a href="https://2sxc.org/dnn-tutorials/en/razor/webapi110/page">dnn web api tutorials</a> will:</p>
-<pre><code class="lang-c#">using System.Web.Http;
+<pre><code class="lang-cs">using System.Web.Http;
 
 [AllowAnonymous]            // define that all commands can be accessed without a login
 public class BasicController : ToSic.Sxc.Dnn.ApiController
@@ -139,7 +139,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
   }
 }
 </code></pre><p>And this example as well:</p>
-<pre><code class="lang-c#">using System.Web.Http;
+<pre><code class="lang-cs">using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
 {
@@ -162,7 +162,7 @@ As of now, these attributes are common in DNN. You can apply all to both classes
 </ol>
 <h3 id="common-other-attributes-httpget-httppost-httpdelete">Common Other Attributes (HttpGet, HttpPost, HttpDelete)</h3>
 <p>These attributes <code>[HttpGet]</code>, <code>[HttpPost]</code> and <code>[HttpDelete]</code> are not really security attributes, but because they often lead to problems we figured we should mention them. Adding these to your method means that your method will listen to the <strong>Verbs</strong> mentioned, and only to these verbs. So a method like this:</p>
-<pre><code class="lang-c#">using System.Web.Http;
+<pre><code class="lang-cs">using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
 {
@@ -176,7 +176,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 </code></pre><p>...will only respond to <code>GET</code> and <code>DELETE</code> requests, but not to <code>POST</code>. </p>
 <h3 id="using-multiple-attributes">Using Multiple Attributes</h3>
 <p>You can use many attributes on the same class or method like this: </p>
-<pre><code class="lang-c#">  [HttpGet]
+<pre><code class="lang-cs">  [HttpGet]
   [ValidateAntiForgeryToken]
   [SupportedModules(&quot;2sxc,2sxc-app&quot;)]
   [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]

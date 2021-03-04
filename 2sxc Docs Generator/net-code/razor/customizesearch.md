@@ -12,7 +12,7 @@ You can override this event to change how data is presented to the search, for e
 ## How to use
 In your razor page (.cshtml file) you can add a script block implementing this, as follows:
 
-```c#
+```cs
 @using ToSic.Eav.Run;
 @using ToSic.Sxc.Dnn.Run;
 @using ToSic.Sxc.Search;

@@ -27,7 +27,7 @@ This is just a bit of code so you can see how to convert back and forth. You usu
 
 Note that this is a very advanced topic, and you'll need Visual Studio Intellisense to get this done reasonably. Since you'll figure it out fairly quickly, we won't document it in detail here. 
 
-```c#
+```cs
 // assume that you have a DynamicEntity like Content
 var entity = AsEntity(Content);
 

@@ -9,7 +9,7 @@ uid: Specs.Features.Api
 
 This example is taken from [Mobius Forms](xref:App.Mobius) and the code can be found in the [Mobius Github Repo](https://github.com/2sic/app-mobius-forms/blob/master/_Shared-Feature-UploadInAdam.cshtml).
 
-```c#
+```cs
 @using ToSic.Eav.Configuration
 @{
     // show warning if the save-attachments in web api isn't activated

@@ -15,7 +15,7 @@ These attributes can be placed on the *class* (in which case they apply to all a
 
 This example will NOT respond to _Anonymous_ requests from outside:
 
-```c#
+```cs
 using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
@@ -30,7 +30,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 
 This example from the [dnn web api tutorials](https://2sxc.org/dnn-tutorials/en/razor/webapi110/page) will:
 
-```c#
+```cs
 using System.Web.Http;
 
 [AllowAnonymous]			// define that all commands can be accessed without a login
@@ -46,7 +46,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 
 And this example as well:
 
-```c#
+```cs
 using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
@@ -87,7 +87,7 @@ As of now, these attributes are common in DNN. You can apply all to both classes
 
 These attributes `[HttpGet]`, `[HttpPost]` and `[HttpDelete]` are not really security attributes, but because they often lead to problems we figured we should mention them. Adding these to your method means that your method will listen to the **Verbs** mentioned, and only to these verbs. So a method like this:
 
-```c#
+```cs
 using System.Web.Http;
 
 public class BasicController : ToSic.Sxc.Dnn.ApiController
@@ -106,7 +106,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 
 You can use many attributes on the same class or method like this: 
 
-```c#
+```cs
   [HttpGet]
   [ValidateAntiForgeryToken]
   [SupportedModules("2sxc,2sxc-app")]

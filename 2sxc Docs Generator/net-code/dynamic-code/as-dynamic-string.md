@@ -11,7 +11,7 @@ The most common use is in GPS fields, where the data is stored as `{"Lat": 0.0, 
 
 ## Example
 
-```c#
+```cs
 // assume Address is a Dynamic Entity with a Gps property
 
 var coords = AsDynamic(Address.Gps);

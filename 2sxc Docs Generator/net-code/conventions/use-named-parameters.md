@@ -5,7 +5,7 @@ uid: NetCode.Conventions.NamedParameters
 
 When working with the C# / Razor API, most commands require named parameters. This means that a command like this is valid
 
-```c#
+```cs
 <div @Edit.TagToolbar(actions: "new", contentType: "BlogPost")>
   ...
 </div>
@@ -13,7 +13,7 @@ When working with the C# / Razor API, most commands require named parameters. Th
 
 ...and this is not
 
-```c#
+```cs
 <div @Edit.TagToolbar("new", "BlogPost")>
   ...
 </div>

@@ -28,7 +28,7 @@ For sorting direction you can use either words or numbers
 ## Programming With The ValueSort DataSource
 [!include["simpler-with-vqd"](shared-use-vqd.md)]
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<EntityTypeFilter>();
 allAuthors.TypeName = "Author";

@@ -60,7 +60,7 @@ Please read more about these in links.
 ## Creating DataSource Objects in C#/Razor Code
 Sometimes you want to have full control over what a DataSource does or what parameters it's using. This is easy: 
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<ToSic.Eav.DataSources.EntityTypeFilter>();
 allAuthors.TypeName = "Authors";
@@ -74,7 +74,7 @@ What the visual-designer does is configure how DataSources are attached, mapping
 
 You can also do this in code, but it's fairly advanced. You would usually want to do this, if you want to use a filter or something, but need to provide parameters which aren't available in the Visual Query Designer. Here's a simple example:
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<EntityTypeFilter>();
 allAuthors.TypeName = "Author";

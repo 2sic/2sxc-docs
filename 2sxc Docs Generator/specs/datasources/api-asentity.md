@@ -8,7 +8,7 @@ Many data sources generate new content items - either because they deliver some 
 ## How to use AsEntity
 Here's a simple example of the tutorial [DateTime DataSource](https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/): 
 
-```c#
+```cs
 // create demo 1 entity with values related to today
 // first place all values in a dictionary 
 // then convert into an Entity
@@ -39,14 +39,14 @@ The simplest way is to just use `AsEntity(someDictionary)`, more advanced uses a
 
 The most common use case will be
 
-```c#
+```cs
 IEntity AsEntity(Dictionary<string, object> values);
 ```
 
 The full versions with all optional parameters as of 2sxc 9.13 is:
 
 
-```c#
+```cs
 // single item
 IEntity AsEntity(
     Dictionary<string, object> values,

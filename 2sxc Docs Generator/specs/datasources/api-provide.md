@@ -13,7 +13,7 @@ In general, you need to
 
 Here's a simple example of the constructor of the [DnnFormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list), which provides the default stream: 
 
-```c#
+```cs
 public DnnFormAndList()
 {
     // Specify what out-streams this data-source provides. Usually just one, called "Default"
@@ -36,7 +36,7 @@ This example ensures that the `.Out["Default"]` as well as the `.List` (which is
 ## Providing multiple streams
 In case you want to offer multiple streams (like one containing products, the other categories), the common pattern is:
 
-```c#
+```cs
 public SomeConstructor()
 {
     Provide(GetProducts);

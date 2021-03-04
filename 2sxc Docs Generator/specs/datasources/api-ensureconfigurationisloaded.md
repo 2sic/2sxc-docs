@@ -8,7 +8,7 @@ If a [DataSource](xref:Specs.DataSources.DataSource) is [configurable](xref:Spec
 ## How to use EnsureConfigurationIsLoaded
 Here's a simple example of the [PublishingFilter DataSources](https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/PublishingFilter.cs): 
 
-```c#
+```cs
 // get the correct stream, depending on ShowDrafts
 private IEnumerable<IEntity> GetList()
 {

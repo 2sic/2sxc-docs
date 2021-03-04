@@ -125,7 +125,7 @@
 <p>Then you will usually configure a view to use this.</p>
 <h2 id="using-queries-in-your-code">Using Queries in your Code</h2>
 <p>In a Razor or WebApi file, you can always write something like this</p>
-<pre><code class="lang-c#">var query = App.Query[&quot;AllBlogPosts&quot;];
+<pre><code class="lang-cs">var query = App.Query[&quot;AllBlogPosts&quot;];
 var posts = query[&quot;Default&quot;];
 
 // you could now work with the data, or you could cast all results into dynamic objects, like...
@@ -134,7 +134,7 @@ var categories = AsList(query[&quot;Categories&quot;]);
 // if all you need is the &quot;Default&quot; stream as dynamic, you can write
 var posts = AsList(query);
 </code></pre><p>Now you can loop through the data as you would otherwise, for example: </p>
-<pre><code class="lang-c#">&lt;ol&gt;
+<pre><code class="lang-cs">&lt;ol&gt;
     @foreach(var person in AsList(query[&quot;Persons&quot;]))
     {
         &lt;li&gt;@person.FullName&lt;/li&gt;

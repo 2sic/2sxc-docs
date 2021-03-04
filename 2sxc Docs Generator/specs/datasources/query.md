@@ -22,7 +22,7 @@ Then you will usually configure a view to use this.
 
 In a Razor or WebApi file, you can always write something like this
 
-```c#
+```cs
 var query = App.Query["AllBlogPosts"];
 var posts = query["Default"];
 
@@ -35,7 +35,7 @@ var posts = AsList(query);
 
 Now you can loop through the data as you would otherwise, for example: 
 
-```c#
+```cs
 <ol>
     @foreach(var person in AsList(query["Persons"]))
     {

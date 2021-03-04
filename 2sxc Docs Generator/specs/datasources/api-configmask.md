@@ -8,7 +8,7 @@ DataSources often need settings which come from the App or from a settings dialo
 ## How to use ConfigMask
 Here's a simple example of the constructor of the [DnnFormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list), which expects 3 settings: 
 
-```c#
+```cs
 public DnnFormAndList()
 {
     // Specify what out-streams this data-source provides. Usually just one, called "Default"

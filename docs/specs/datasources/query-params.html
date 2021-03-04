@@ -145,7 +145,7 @@ because it will first check the <code>QueryString:SortOrder</code> which also ha
 </div>
 <h2 id="setting-query-parameters-in-your-code">Setting Query Parameters in your Code</h2>
 <p>In a Razor or WebApi file, you can always write something like this</p>
-<pre><code class="lang-c#">var allPosts = App.Query[&quot;AllBlogPosts&quot;];
+<pre><code class="lang-cs">var allPosts = App.Query[&quot;AllBlogPosts&quot;];
 allPosts.Params(&quot;Category&quot;, &quot;Web&quot;);
 var posts = allPosts[&quot;Default&quot;];
 
@@ -154,7 +154,7 @@ var dynPosts = AsList(posts);
 So if you retrieve various streams, the query still only executes once.<br>But if you set a parameter after running the query, you will get an error, unless you call <code>Reset()</code> first. 
 See the next example:</p>
 </div>
-<pre><code class="lang-c#">var query = App.Query[&quot;AllBlogPosts&quot;];
+<pre><code class="lang-cs">var query = App.Query[&quot;AllBlogPosts&quot;];
 query.Params(&quot;Category&quot;, &quot;Web&quot;);
 var webPosts = AsList(query);
 

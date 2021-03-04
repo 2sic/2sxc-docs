@@ -123,17 +123,17 @@
 <p>If you already know it&#39;s a list, you can also cast it as an <code>IEnumerable&lt;dynamic&gt;</code>. Since <code>IEnumerable&lt;T&gt;</code> is in the namespace <code>System.Collections.Generic</code> you have 3 options: </p>
 <h4 id="cast-with-full-namespace">Cast with full Namespace</h4>
 <p>This is what the compiler actually understands - but it&#39;s a bit long and hard to read:</p>
-<pre><code class="lang-c#">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
+<pre><code class="lang-cs">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre><h4 id="cast-with-using-and-ienumerabledynamic">Cast with <code>@using</code> and <code>IEnumerable&lt;dynamic&gt;</code></h4>
 <p>This is the same thing, just nicer to read:</p>
-<pre><code class="lang-c#">@using System.Collections.Generic;
+<pre><code class="lang-cs">@using System.Collections.Generic;
 
 var authors = (book.Authors as IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre><h4 id="cast-with-using-dynlist--">Cast with <code>@using Dynlist = ...</code></h4>
 <p>This is the same thing, but the nicest, easiest to read method:</p>
-<pre><code class="lang-c#">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
+<pre><code class="lang-cs">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 var authors = (book.Authors as Dynlist)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre></article>

@@ -41,7 +41,7 @@ The filter will return the items which match the requirement, but sometimes none
 ## Programming With The ValueFilter DataSource
 [!include["simpler-with-vqd"](shared-use-vqd.md)]
 
-```c#
+```cs
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource<EntityTypeFilter>();
 allAuthors.TypeName = "Author";

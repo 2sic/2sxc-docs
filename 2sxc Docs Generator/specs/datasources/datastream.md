@@ -13,7 +13,7 @@ DataStreams are objects which behave like a table, delivering a bunch of content
 
 The most commen uses will loop through all items in such a stream and show them. Here's an example: 
 
-```c#
+```cs
 <ol>
     @foreach(var person in Data["Default"])
     {
@@ -25,7 +25,7 @@ The `@foreach` will go through all the items. Each item is of the type [IEntity]
 
 In most cases we will need the loop-item a lot, and would preferr to not write `AsDynamic` every time. Because of this, we usually write the `AsDynamic` in the Loop, like this:
 
-```c#
+```cs
 <ol>
     @foreach(var person in AsDynamic(Data["Default"]))
     {

@@ -43,7 +43,7 @@ Multi-line code with syntax highlighting needs you to specifiy the language c#:
 var x = 17; // a comment  
 \`\`\`  
 resulting in  
-```c#
+```cs
 var x = 17; // a comment
 ```  
 

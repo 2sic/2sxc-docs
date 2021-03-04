@@ -58,7 +58,7 @@ The [VisualQuery Designer](xref:Specs.DataSources.VisualQuery) also allows you t
 
 In a Razor or WebApi file, you can always write something like this
 
-```c#
+```cs
 var allPosts = App.Query["AllBlogPosts"];
 allPosts.Params("Category", "Web");
 var posts = allPosts["Default"];
@@ -72,7 +72,7 @@ var dynPosts = AsList(posts);
 > But if you set a parameter after running the query, you will get an error, unless you call `Reset()` first. 
 > See the next example:
 
-```c#
+```cs
 var query = App.Query["AllBlogPosts"];
 query.Params("Category", "Web");
 var webPosts = AsList(query);

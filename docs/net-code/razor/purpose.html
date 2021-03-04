@@ -121,13 +121,13 @@
 <li>IndexingForSearch,</li>
 <li>PublishData</li>
 </ul>
-<pre><code class="lang-c#">@using ToSic.Sxc.Blocks;
+<pre><code class="lang-cs">@using ToSic.Sxc.Blocks;
 @if(Purpose == Purposes.IndexingForSearch){
     // code which should only run when indexing
 }
 </code></pre><h2 id="not-run-code-which-cant-run-while-indexing">Not run code, which can&#39;t run while indexing</h2>
 <p>Sometimes you also have code which requires a user to be visiting a page - like a permission check. Since the indexer doesn&#39;t have an HTTP session or a user, this will fail. So you could do something like:</p>
-<pre><code class="lang-c#">@using ToSic.Sxc.Blocks;
+<pre><code class="lang-cs">@using ToSic.Sxc.Blocks;
 @if(Purpose != Purposes.IndexingForSearch){
     // code which should only run when really viewing 
     // like something if(userIsLoggedIn) { ... }

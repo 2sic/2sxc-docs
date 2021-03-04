@@ -11,7 +11,7 @@ Here's an example of a complete data-source, which just delivers 1 item with the
 
 Introtext - then code:
 
-```c#
+```cs
 using System;
 using System.Collections.Generic;
 using ToSic.Eav.DataSources;

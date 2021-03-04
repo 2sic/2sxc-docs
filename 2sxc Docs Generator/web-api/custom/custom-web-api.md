@@ -27,7 +27,7 @@ Most WebApi Actions will require additional parameters. Just add them as url-par
 
 A file in your app in the `api` folder called `BooksController.cs` could look like the following:
 
-```c#
+```cs
 using DotNetNuke.Security;
 using DotNetNuke.Web.Api;
 using System;

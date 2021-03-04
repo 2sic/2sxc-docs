@@ -8,7 +8,7 @@ Sometimes you want to leverage 2sxc to create a solution, provide data input etc
 ## Simple Example
 Imagine this was your C# code in your WebForms Code-Behind:
 
-```c#
+```cs
 // the app id
 var appId = 42;
  
