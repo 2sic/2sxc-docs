@@ -64,10 +64,10 @@
                       <li>
                           <a href="../../specs/index.html" title="Specs">Specs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
@@ -108,10 +108,39 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="NetCode.External.Index">
 <h1 id="use-2sxc-instances-or-app-data-from-external-c-code">Use 2sxc Instances or App-Data from External C# Code</h1>
 
-<p>Moved to <a class="xref" href="../../net-code/external/dotnet-external-use.html">Use 2sxc Instances or App-Data from External C# Code</a></p>
+<p>Sometimes you want to leverage 2sxc to create a solution, provide data input etc. but want to output or re-use the data in your own Module, Skin, Script or something else. This is easy to do.</p>
+<h2 id="simple-example">Simple Example</h2>
+<p>Imagine this was your C# code in your WebForms Code-Behind:</p>
+<pre><code class="lang-c#">// the app id
+var appId = 42;
+
+// create a simple app object to then access data
+var appSimple = ToSic.Sxc.Dnn.Factory.App(appId);
+
+// example getting all data of content type Tag
+var tags = appSimple.Data[&quot;Tag&quot;];
+
+// example accessing a query
+var tagsSorted = appSimple.Query[&quot;Tags sorted&quot;];
+
+// Creating an entity
+var vals = new Dictionary&lt;string, object&gt;();
+vals.Add(&quot;Tag&quot;, &quot;test-tag&quot;);
+vals.Add(&quot;Label&quot;, &quot;Test Tag&quot;);
+
+App.Data.Create(&quot;Tag&quot;, vals);
+</code></pre><h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.Factory.html">DNN Factory API</a></li>
+<li>To dive deeper, you must check the <a href="http://2sxc.org/en/blog/post/using-app-data-outside-of-2sxc-in-razor-custom-webapi-skin-or-another-module-300">blog post</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 08.03</li>
+</ol>
 </article>
           </div>
           
@@ -120,7 +149,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/how-to/external/dotnet-external-use.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/external/dotnet-external-use.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
