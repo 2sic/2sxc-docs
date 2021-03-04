@@ -1,8 +1,8 @@
 ---
-uid: NetCode.DynamicCode.CmsObject
+uid: NetCode.DynamicCode.CmsContext
 ---
 
-# CmsContext _WIP in 11.11_
+# CmsContext in Dynamic Code _WIP in 11.11_
 
 As we're getting ready for Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously won't exist on Oqtane. 
 

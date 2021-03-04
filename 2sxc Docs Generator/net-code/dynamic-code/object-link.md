@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Link
 ---
 
-# Link / @Link Object in Razor / .net
+# Link / @Link Object in Dynamic Code
 
 Basically you can always link around to other pages, websites or views using normal `<a href="...">text</a>` html. And often you just want to add some parameters to the current Url like `?id=27` - but the behavior of this can be very different depending on the DNN settings. The `Link` object helps you handle this. 
 
@@ -45,7 +45,7 @@ The Link-Object is of type [](xref:ToSic.Sxc.Web.ILinkHelper).
 
 ### Enforced Parameter Naming
 
-To promote long term API stability, we require all parameters to be [named](xref:NetCode.DynamicCode.NamedParameters) when used. This allows us to add further parameters later on, and the calls will still work.
+To promote long term API stability, we require all parameters to be [named](xref:NetCode.Conventions.NamedParameters) when used. This allows us to add further parameters later on, and the calls will still work.
 
 ```html
 <!-- this will work -->

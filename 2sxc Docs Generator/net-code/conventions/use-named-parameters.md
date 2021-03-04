@@ -1,5 +1,5 @@
 ---
-uid: NetCode.DynamicCode.NamedParameters
+uid: NetCode.Conventions.NamedParameters
 ---
 # Convention: Named Parameters
 

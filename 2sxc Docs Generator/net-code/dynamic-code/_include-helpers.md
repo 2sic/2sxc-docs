@@ -1,4 +1,5 @@
-1. CmsContext
+1. [CmsContext](xref:NetCode.DynamicCode.CmsContext)  
+    Information about the system, page, module etc.
 1. [Dnn](xref:NetCode.DynamicCode.Dnn)  
     The common Dnn object providing page, module, user information
 1. [Edit](xref:NetCode.Razor.Edit)  

@@ -1,7 +1,7 @@
 ---
 uid: NetCode.DynamicCode.Data
 ---
-# @Data in Razor Template
+# Data / @Data in Dynamic Code
 ## What is _Data_
 
 A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (Razor, Token or a web service) together with some content-items which should be used in this case. These content-items are provided to the code in an object called `Data`.
@@ -22,7 +22,7 @@ In all Razor-templates and also the web-api files, the `Data` object is already 
 
 ```cs
 <div class="app-blog">
-    @foreach(var post in AsDynamic(Data["Default"]))
+    @foreach(var post in AsDynamic(Data))
     {
         // do something with the @post here
     }

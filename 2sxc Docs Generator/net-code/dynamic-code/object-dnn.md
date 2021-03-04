@@ -1,7 +1,7 @@
 ---
 uid: NetCode.DynamicCode.Dnn
 ---
-# Link / @Dnn Object in Razor / .net
+# Dnn / @Dnn Object in Dynamic Code
 
 The `Dnn` is a helper object which contains properties to access information about the current tab, portal, user, module etc.
 

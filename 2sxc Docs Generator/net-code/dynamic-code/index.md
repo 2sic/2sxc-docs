@@ -43,13 +43,6 @@ Learn more about this in [](xref:NetCode.DynamicData.Index)
 [!include["Conversions"](../dynamic-code/_include-commands.md)]
 
 
-## Other Helpers
-
-TODO
-
-* Html.Raw
-* etc.
-
 ## Important Notes
 
 > [!IMPORTANT]

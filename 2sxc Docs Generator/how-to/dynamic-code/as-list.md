@@ -1,3 +1,3 @@
 # AsList(...) - Magic Lists
 
-This document has been moved to NetCo[](xref:NetCode.DynamicCode.AsList)
+This document has been moved to [](xref:NetCode.DynamicCode.AsList)

@@ -13,29 +13,41 @@ to make sure that it has all the new features.
 
 ## APIs in Razor Components / Templates
 
+> [!TIP]
+> Most of these APIs can be seen live in action with source code in the [](xref:Tut.Razor.Home)
+
+### Standard Dynamic Code API
+
 Razor templates / components have all the objects and APIs of [Dynamic Code](xref:NetCode.DynamicCode.Index)
 
-TODO: list all the APIs here
 
-TODO: also list additional commands like @helper
-
+### Additional Razor Component APIs
 
 In addition there are a few additional objects & commands which you will usually use, most of which are standard Razor APIs
 
-1. `Code`  
-    The object from the Code-Behind - see [](xref:NetCode.Razor.CodeBehind)
+1. [Edit](xref:NetCode.Razor.Edit)  
+    Helper providing you with various edit-functionality like `@Edit.TagToolbar(...)`
+1. [Code](xref:NetCode.Razor.CodeBehind)  
+    The object from the Code-Behind
+
+### Common Standard Razor APIs and Keywords
+
 1. `Html.Raw(string)`  
     Standard Razor API to output the HTML in a string instead of showing tags in the visible page
-1. `RenderTemplate(path, data)`  
-    Standard Razor API - google it if you need it
+1. `RenderPage(path, data)`  
+    Standard Razor API - google it if you need it or read about [splitting code in Razor](xref:NetCode.Razor.OrganizeCode)
 
+The following keywords are normal in any Razor system, but it's good if you know them. Google them to learn more. 
+
+* `@functions`
+* `@helpers`
 
 ## Customizing Data & Search
 
-Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It's not documented well, but you can check examples in the Blog App.
+Templates can tell the platform how search results should be treated. This is important for list-details scenarios. It's not documented well, but you can check examples in the Blog App. It needs these evens / properties:
 
-* `Overrideable` [CustomizeData](xref:NetCode.Razor.CustomizeData) - is like a "before-data-is-used" of the page, used to change what data is delivered to the page - or to the search.  
+* [CustomizeData](xref:NetCode.Razor.CustomizeData) - is like a "before-data-is-used" of the page, used to change what data is delivered to the page - or to the search.  
   Note that this is an older feature and many things this does can also be done using the visual query designer. But sometimes you will need code, and this is the place to do it.
-* `Overridable` [CustomizeSearch](xref:NetCode.Razor.CustomizeSearch)
-* `string` [Purpose](xref:NetCode.Razor.Purpose) - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt
+* [CustomizeSearch](xref:NetCode.Razor.CustomizeSearch)
+* [Purpose](xref:NetCode.Razor.Purpose) - tells you if the code is running to render into html, or for another reason like populating the search index - so your code can adapt
 

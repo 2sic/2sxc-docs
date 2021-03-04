@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Link /  Object in Razor / .net | 2sxc and EAV 10 </title>
+    <title>Convention: Named Parameters | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Link /  Object in Razor / .net | 2sxc and EAV 10 ">
+    <meta name="title" content="Convention: Named Parameters | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -64,10 +64,10 @@
                       <li>
                           <a href="../../specs/index.html" title="Specs">Specs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
@@ -108,10 +108,29 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="link--link-object-in-razor--net">Link / @Link Object in Razor / .net</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Conventions.NamedParameters">
+<h1 id="convention-named-parameters">Convention: Named Parameters</h1>
 
-<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/object-link.html">Link /  Object in Dynamic Code</a></p>
+<p>When working with the C# / Razor API, most commands require named parameters. This means that a command like this is valid</p>
+<pre><code class="lang-c#">&lt;div @Edit.TagToolbar(actions: &quot;new&quot;, contentType: &quot;BlogPost&quot;)&gt;
+  ...
+&lt;/div&gt;
+</code></pre><p>...and this is not</p>
+<pre><code class="lang-c#">&lt;div @Edit.TagToolbar(&quot;new&quot;, &quot;BlogPost&quot;)&gt;
+  ...
+&lt;/div&gt;
+</code></pre><h2 id="reason-behind-named-parameters">Reason Behind Named Parameters</h2>
+<p>We often have APIs which start simple - like <code>@Edit.TagToolbar()</code> and continue to receive new features. At first, the parameter order will make sense - for that simple use case. But as the API grows, the parameter-order will become strange, simply because we would have to order them in the sequence they were added (to keep compatibility) and not in the order that makes sense.</p>
+<p>By using named parameters, we&#39;re making sure that the parameter order never matters and the API stays stable/compatible for the future.</p>
+<h2 id="not-all-parameters-require-names">Not all Parameters Require Names</h2>
+<p>Because of historic reasons and because some APIs simply have a very obvious first or second parameter, it may be that the first 1-2 parameters are not named. An example is <code>@Edit.TagToolbar(Content)</code> which assumes that the first parameter without name is the item (entity) for which this toolbar is meant.</p>
+<h2 id="how-its-implemented">How It&#39;s Implemented</h2>
+<p>Internally the real signature of the command uses a parameter which has a fairly random value. The call then checks if the value of that parameter is this random value, and if not, shows an error. This is to protect you from accidentally using the command without naming the parameters.</p>
+<p><em>Note: you could of course work around this, by providing that random value and trick the call to accept unnamed parameters. Don&#39;t do this - as we will no guarantee that the API signature (parameter order) will stay the same.</em></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced ca. in 2sxc 6</li>
+</ol>
 </article>
           </div>
           
@@ -120,7 +139,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/how-to/dynamic-code/object-link.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/conventions/use-named-parameters.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

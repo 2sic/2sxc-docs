@@ -1,3 +1,3 @@
 # Link / @Dnn Object in Razor / .net
 
-This document has been moved to NetCo[](xref:NetCode.DynamicCode.Dnn)
+This document has been moved to [](xref:NetCode.DynamicCode.Dnn)

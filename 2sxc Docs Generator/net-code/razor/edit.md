@@ -3,8 +3,7 @@ uid: NetCode.Razor.Edit
 ---
 # Edit / @Edit Object in Razor / .net
 
-
-Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the `Edit` object provides the Razor-Template an intelligent, fast way to generate what's necessary.
+The entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the `Edit` object provides the Razor-Template an intelligent, fast way to generate what's necessary.
 
 ## How to use
 
@@ -31,7 +30,9 @@ Here's an [](xref:Specs.Cms.InnerContent) example:
 
 In this example, the `Edit.ContextAttributes` will add some attributes with JSON, which will help the toolbars _inside_ that loop to correctly edit those items, and not the main item around it.
 
+
 ## What's In the Edit Object
+
 The `Edit`-object is always available in all Razor-templates. Read the API: [](xref:ToSic.Sxc.Web.IInPageEditingSystem).
 
 A short summary of what's inside
