@@ -11,6 +11,8 @@ uid: NetCode.Koi.Index
 > [!TIP]
 > 2sxc 11 introduced [Polymorphism](xref:Specs.Cms.Polymorphism) which lets you place different _editions_ of a Razor file in folders matching various CSS frameworks. This is easiest way to leverage Koi, and your code doesn't even need to know about it. 
 
+[!include["Koi Tutorials"](../../shared/tutorials/koi.md)]
+
 ## Example
 
 The following example will automatically include Bootstrap4 from a CDN if the theme doesn't already include it.

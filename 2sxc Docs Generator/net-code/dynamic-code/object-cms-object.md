@@ -13,6 +13,10 @@ So we're creating this new standardized object to ask for these things.
 ⚡ The [official API docs](xref:ToSic.Sxc.Context.ICmsContext) of the `ICmsContext` object
 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## Demo App and further links
 
 You should find some code examples in this demo App

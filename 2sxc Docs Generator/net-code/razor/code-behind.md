@@ -10,6 +10,10 @@ uid: NetCode.Razor.CodeBehind
 
 You can also see a [live demo in the DNN Tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse410/page). 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How Code Behind Works
 
 Just create another file with the identical name as your main Razor file, but with `.code.cshtml` as the extension. So you'll then have something like:

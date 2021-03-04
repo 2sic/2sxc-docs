@@ -11,6 +11,10 @@ to make sure that it has all the new features.
 > If you don't specify this first line, your code will inherit from a different class,
 > so many features won't work as documented. 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## APIs in Razor Components / Templates
 
 > [!TIP]

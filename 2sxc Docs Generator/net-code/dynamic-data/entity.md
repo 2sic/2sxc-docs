@@ -45,6 +45,8 @@ For Razor and WebAPI these are edge cases, but they are real:
 
 ## Read also
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 In case you feel like you really need to know more about the real Entity objects, check out these things:
 
 1. [IEntity](xref:ToSic.Eav.Data.IEntity) API

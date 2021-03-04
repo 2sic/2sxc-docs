@@ -5,6 +5,10 @@ uid: NetCode.DynamicCode.App
 
 The `App` object gives you full access to everything you need to know about the current App, including Path-info, access to all Data this App has, access to Settings and language Resources and more.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 Here's are two simple examples taken from the [Blog App](xref:App.Blog):

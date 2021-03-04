@@ -10,6 +10,8 @@ The following APIs are available on all 2sxc **Dynamic Code** - so you can use t
 1. Web API Controllers
 1. Helper Code files
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 
 ## Instance Data in Dynamic Code
 

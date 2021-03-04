@@ -18,6 +18,10 @@ Basically all you need for `AsAdam(...)` is
 
 As a result you'll get an [](xref:ToSic.Sxc.Adam.IFolder) object with which you can get all files in the folder or subfolders. 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## Example
 
 This example is taken from the [Fancybox Gallery App](xref:App.FancyBoxGallery)

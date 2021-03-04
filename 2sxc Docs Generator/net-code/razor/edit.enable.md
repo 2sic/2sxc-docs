@@ -7,6 +7,10 @@ Editing or adding data to a 2sxc app requires the UI to have some JS, CSS and co
 
 If you want to enable this for more restricted users - for example when you want to use the 2sxc-form to let users add data - this must be enabled. That's what `Edit.Enable(...)` is for.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 This example shows how you enable the UI using Razor, which will allow public users to create data:

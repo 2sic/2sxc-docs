@@ -17,6 +17,9 @@ These common (extension) methods can be used on lists from 2sxc data streams (th
 
 For a full list of all `System.Linq` methods, check out the [methods of IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=netframework-4.7.2#methods)
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## Using Statements
 
 As explained in the [guide](xref:Specs.DataSources.LinqGuide) we recommend the following using statements in Razor:

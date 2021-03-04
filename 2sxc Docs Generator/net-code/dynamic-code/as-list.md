@@ -7,6 +7,10 @@ In razor you prefer a simple `@Something.Property` syntax. If you only have one 
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsList*).
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How it works
 
 AsList has various signatures accepting a variety of input values. It then returns an `IEnumerable<dynamic>` object which is a `List` of [](xref:ToSic.Sxc.Data.IDynamicEntity) objects. These are the things AsList can process:

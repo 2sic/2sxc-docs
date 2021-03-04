@@ -65,12 +65,15 @@ Additional properties that work (they are dynamic, so don't appear in the code)
 ## Working with unpublished/draft items
 TODO: write something about how-to-check if published/unpublished, navigating it, etc. - or link to such a page
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 ## Appendix
 
 The following properties/methods exist, but shouldn't be used. They are documented here so that you know that they are not meant for public use:
 
 1. Created - the created date
-2. Author - the person who created this item
+1. Modified - the modified date
 3. Owner - the current owner of the item, usually the author
 1. Metadadata - currently use `AsEntity(theObject).Metadata`
 4. Permissions - permissions of the current item (if any are defined)

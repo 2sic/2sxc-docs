@@ -28,7 +28,8 @@ The template files usually reside inside App root folder or sub folder. These al
 
 ## Get Started with Razor Templates
 
-1. Discover the @Tut.Razor.Home to get an idea of how things work
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 1. Install some Apps from the [App Catalog](xref:AppsCatalog) - almost all apps use Razor
 1. Learn the APIs using 
     1. The @Tut.Razor.Home 

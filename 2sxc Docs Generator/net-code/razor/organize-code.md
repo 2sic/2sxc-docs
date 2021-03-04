@@ -12,6 +12,8 @@ In simple scenarios you have some Razor files containing a bit of HTML and some 
 1. You can split a Razor file into a Template and Code-Behind
 
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 
 ## Reuse Snippets with @helper in Razor 
 

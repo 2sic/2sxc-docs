@@ -8,6 +8,10 @@ Basically you can always link around to other pages, websites or views using nor
 
 _Note:_ DNN often has a problem with links, because depending on what page you are on, the behaviour is a bit different. This is especially important on the home page. Use `@Link.To(...)` to make sure everything works no matter what. 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 Here's a quick example of using the `Link` object in a Razor template: 

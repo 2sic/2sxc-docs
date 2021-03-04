@@ -45,3 +45,5 @@ In both of these cases, the following objects are then pre-populated with the co
 ## Conversion Commands
 
 [!include["Conversions"](../dynamic-code/_include-conversions.md)]
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]

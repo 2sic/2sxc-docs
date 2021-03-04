@@ -8,7 +8,11 @@ If you have external code you want to import you can use **CreateInstance**.
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.ICreateInstance.CreateInstance*).
 
-Example
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
+## Example
 
 ```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent

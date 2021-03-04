@@ -1,10 +1,15 @@
 ---
 uid: NetCode.Razor.Purpose
 ---
-# Property _Purpose_ / _InstancePurpose_ on a Razor page
+# Property _Purpose_ on a Razor page
 To let your code know, if it's running to produce HTML or if it's running to fill the search-index.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
+
 in most cases you'll use this within the [CustomizeData](xref:NetCode.Razor.CustomizeData) event, in case you want to provide different data to the template than to the search. 
 
 In most cases you'll also want to override [CustomizeSearch](xref:NetCode.Razor.CustomizeSearch).  

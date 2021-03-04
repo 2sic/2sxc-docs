@@ -10,6 +10,10 @@ Use `GetService<T>()` to get this service.
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*).
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## Also Read
 
 * TODO: These docs are incomplete, as the feature is still new.

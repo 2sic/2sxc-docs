@@ -12,6 +12,10 @@ It contains the content-item assigned to this template. If the View is a list, t
 
 Since it's a Dynamic Entity it carries all values as properties, like `Content.Link` etc. 
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## Example Razor Code
 
 ```razor

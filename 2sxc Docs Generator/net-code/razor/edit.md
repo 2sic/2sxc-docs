@@ -5,6 +5,10 @@ uid: NetCode.Razor.Edit
 
 The entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the `Edit` object provides the Razor-Template an intelligent, fast way to generate what's necessary.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 Here's a quick example of using the `Edit` object in a Razor template:

@@ -8,7 +8,11 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*).
 
-**Simple Example**
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
+## Simple Example
 
 ```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
@@ -22,7 +26,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 }
 ```
 
-**Example Chaining DataSources**
+## Example Chaining DataSources
 
 ```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
@@ -59,7 +63,7 @@ We suggest you check out some apps - almost all use this.
 
 ## Also Read
 
-* TODO
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
 
 ## History
 

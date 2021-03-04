@@ -11,6 +11,8 @@ You probably want to check out one of the following:
 
 ## Tutorials
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
 1. @Tut.Linq.Home on 2sxc.org
 
 ## 2sxc LINQ Docs

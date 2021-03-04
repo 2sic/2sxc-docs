@@ -12,10 +12,15 @@ By default, this context is already provided by the environment, but sometimes a
 
 So the `ContextAttributes` will provide this information in some hidden html.
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How it works
+
 The `Edit.ContextAttributes(...)` is always used inside an HTML-tag and will add some attributes with JSON. Any buttons or actions inside that tag will then find this information, and assume that it is has precendence over the global information.
 
 ## What do You need to do?
+
 By default, this context is already provided by the 2sxc-environment, but sometimes a _new context_ must provide overrides. For example using [](xref:Specs.Cms.InnerContent). 
 
 For this you need the `Edit.ContextAttributes` - see [docs here](xref:ToSic.Sxc.Web.IInPageEditingSystem.ContextAttributes*).

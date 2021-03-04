@@ -6,7 +6,11 @@ uid: NetCode.Razor.Blocks
 
 When using [Inner Content](xref:Specs.Cms.InnerContent) the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor. 
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
+
 There are two common use cases
 
 1. Virtual Panes at item level - in this case, the item has it's own pane for placing apps and content-blocks

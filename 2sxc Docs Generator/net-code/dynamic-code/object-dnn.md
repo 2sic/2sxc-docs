@@ -6,6 +6,9 @@ uid: NetCode.DynamicCode.Dnn
 The `Dnn` is a helper object which contains properties to access information about the current tab, portal, user, module etc.
 
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 Here's a quick example of using the `Dnn` object in a Razor template: 

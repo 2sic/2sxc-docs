@@ -51,6 +51,9 @@ var entity = AsEntity(Content);
 
 ## Read also
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 * [](xref:NetCode.DynamicData.DynamicEntity)
 * [](xref:NetCode.DynamicData.Entity)
 

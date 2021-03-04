@@ -7,6 +7,9 @@ In many cases you will want to sort, filter or group some data, or quickly check
 
 For a more API-oriented documentation, see [DotNet Query LINQ](xref:Specs.DataSources.Linq). We also recommend to play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## LINQ Basics
 
 The way LINQ works is that the namespace `System.Linq` contains a bunch of [extension methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) like `.Count()`, `.Where(...)` and more. So to use LINQ you need to add a `@using` statement to razor or just `using` in a WebApi class. Here's a simple razor example:

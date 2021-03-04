@@ -7,6 +7,10 @@ To make a complex system like the EAV work, the real objects like the [](xref:To
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.Object)).
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to Use
 
 If you have an [](xref:ToSic.Eav.Data.IEntity) 

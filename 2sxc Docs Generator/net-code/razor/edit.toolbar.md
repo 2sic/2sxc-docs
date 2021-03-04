@@ -9,6 +9,10 @@ uid: NetCode.Razor.Edit.Toolbar
 
 Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts. Writing this JS would be complicated to say the least, so the `@Edit.TagToolbar(...)` and `@Edit.Toolbar(...)` are your tools of choice for adding toolbars from Razor.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
 
 Here's a quick example of using the `Edit` object in a Razor template:

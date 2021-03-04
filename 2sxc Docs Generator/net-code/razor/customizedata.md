@@ -9,7 +9,12 @@ It can be overriden to change/configure what data is delivered to the template o
 > [!TIP]
 > 2sxc 11 introduces Code-Behind. You can now place the `CustomizeData()` method in the [code-behind](xref:NetCode.Razor.OrganizeCode) file.
 
+
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
 ## How to use
+
 In your razor page (.cshtml file) you can add a script block implementing this, as follows:
 
 ```cs

@@ -15,6 +15,10 @@ This is where `AsEntity(...)` is used.
 If you have an object or you're not sure if it's either an [](xref:ToSic.Eav.Data.IEntity)  or a [](xref:ToSic.Sxc.Data.IDynamicEntity), just pass it to `AsEntity(...)` and it will detect either one. 
 
 
+[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+
+
+
 ## Example: Type Information
 
 The Dynamic Entity has a property `EntityType` but this will only return a name like `Person`. If you need the full [Content-Type definition](xref:ToSic.Eav.Data.IContentType), this is what you would do:
