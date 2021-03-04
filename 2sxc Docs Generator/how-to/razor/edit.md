@@ -1,3 +1,3 @@
 # Edit / @Edit Object in Razor / .net
 
-This document has been moved to @NetCode.Razor.Edit
+This document has been moved to NetCo[](xref:NetCode.Razor.Edit)

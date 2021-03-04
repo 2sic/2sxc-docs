@@ -1,3 +1,3 @@
 # IEntity / Entity Content-Item
 
-This document has been moved to @NetCode.DynamicData.Index
+This document has been moved to NetCo[](xref:NetCode.DynamicData.Index)

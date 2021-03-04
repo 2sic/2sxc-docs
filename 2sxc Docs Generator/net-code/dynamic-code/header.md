@@ -26,7 +26,7 @@ Depending on the view configuration the **Header** can carry additional presenta
 
 ```html
 <h2 class="@Header.Presentation.Highlight">
-  @HeaderTitle
+  @Header.Title
 </h2>
 ```
 

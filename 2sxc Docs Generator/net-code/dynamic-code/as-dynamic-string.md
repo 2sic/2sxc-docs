@@ -18,7 +18,7 @@ var long = coord.Long;
 
 ```
 
-Read more: Check out the API Docs of @ToSic.Sxc.Code.IDynamicCode
+Read more: Check out the API Docs of [](xref:ToSic.Sxc.Code.IDynamicCode)
 
 
 ## History

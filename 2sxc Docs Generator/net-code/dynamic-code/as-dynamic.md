@@ -43,7 +43,7 @@ AsDynamic has many signatures accepting a variety of input values. It then retur
 
 ## Reversing AsDynamic with AsEntity
 
-Check out these docs: @NetCode.DynamicCode.AsEntity
+Check out these docs: [](xref:NetCode.DynamicCode.AsEntity)
 
 ## Obsolete use of AsDynamic() for Lists
 

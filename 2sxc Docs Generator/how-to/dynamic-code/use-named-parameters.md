@@ -1,3 +1,3 @@
 # Convention: Named Parameters
 
-This document has been moved to @NetCode.DynamicCode.NamedParameters
+This document has been moved to NetCo[](xref:NetCode.DynamicCode.NamedParameters)
