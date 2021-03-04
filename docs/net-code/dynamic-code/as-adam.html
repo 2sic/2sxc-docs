@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ADAM - Automatic Digital Asset Management | 2sxc and EAV 10 </title>
+    <title>AsAdam(...) Command | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ADAM - Automatic Digital Asset Management | 2sxc and EAV 10 ">
+    <meta name="title" content="AsAdam(...) Command | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -61,13 +61,13 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li class="active">
+                      <li>
                           <a href="../../specs/index.html" title="Specs">Specs</a>
                       </li>
                       <li>
                           <a href="../../how-to/index.html" title="How To">How To</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../net-code/index.html" title="C# &amp; Razor API">C# &amp; Razor API</a>
                       </li>
                       <li>
@@ -108,30 +108,54 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.Adam.Intro">
-<h1 id="adam---automatic-digital-asset-management">ADAM - Automatic Digital Asset Management</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.AsAdam">
+<h1 id="asadam-command">AsAdam(...) Command</h1>
 
-<p>In a CMS environment, images and PDFs usually belong to a content-item. The user shouldn&#39;t have to worry about saving it in the right place. 
-Ideally it&#39;s only used there, and when the content becomes obsolete, so do the assets that belong to it. </p>
-<div class="TIP"><h5>Tip</h5><p>This is what ADAM is all about. It allows editors to just add images and files. ADAM will take these and magically store it somewhere so the user doesn&#39;t have to worry about folders and naming. </p>
+<div class="NOTE"><h5>Note</h5><p>ADAM is the Automatic Digital Asset Manager. It manages files (Assets) for content in 2sxc. </p>
+<p>The files are managed so that they really belong to the item they are used in.<br><a class="xref" href="../../specs/adam/index.html">Read more about ADAM</a></p>
 </div>
-<div class="WARNING"><h5>Warning</h5><p>Since ADAM does everything behind the scenes, it&#39;s recommended that users don&#39;t try to link to files of another content-item, because that would defeat the purpose. 
-It would also not allow any clean-up in future, because you wouldn&#39;t know if the asset was re-used. </p>
-</div>
-<h2 id="how-adam-works">How ADAM works</h2>
-<p>Internally ADAM creates a folder for each Entity (Content-Item) using the GUID of that item. 
-It also creates a sub-folder for each field, so that a <code>logo.png</code> used in the Logo-field is separate from a <code>my-case-study.pdf</code> used in the CaseStudy-field. </p>
-<p>The final folder structure looks like this</p>
-<p><code>[portal-root]/adam/[app-folder-name]/[compact-entity-guid]/field/</code></p>
-<h2 id="how-to-use">How to Use</h2>
-<p>ADAM is a standard part of 2sxc, it&#39;s automatically in use everywhere. Any link/file or wysiwyg field support drag-and-drop and will automatically store the file in the right place. </p>
-<h2 id="security-concerns">Security Concerns</h2>
-<p>ADAM uses the DNN file-numbering system by default, and keeps a reference to <code>file:27</code> in the field linking such a file. In rare situations you may have many untrusted editors, where you want to prevent them asking the API for <code>file:1</code>, <code>file:2</code>, <code>file:3</code> etc. There is an advanced switch to only allow resolving the file number if it&#39;s really part of the current item. Contact 2sxc for support on this. </p>
+<p>When a content-item has a <code>Library</code> field (see <a class="xref" href="../../specs/input-types/ui-field-hyperlink-library.html">Field Input-Type hyperlink-library</a>) your code needs to get a list of all the files and folders of that field. For example to show galleries. </p>
+<p>This is where <code>AsAdam(...)</code> comes in. All RazorComponents and ApiControllers have this command. Here&#39;s the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_AsAdam_">official API docs</a>.</p>
+<p>Basically all you need for <code>AsAdam(...)</code> is</p>
+<ol>
+<li>The Content Item (Entity or DynamicEntity)</li>
+<li>The field name of which you want the Adam objects</li>
+</ol>
+<p>As a result you&#39;ll get an <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a> object with which you can get all files in the folder or subfolders. </p>
+<h2 id="example">Example</h2>
+<p>This example is taken from the <a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></p>
+<pre><code class="lang-html">@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
+
+&lt;div class=&quot;ga-wrapper&quot;&gt;
+  &lt;div class=&quot;ga-albums row&quot;&gt;
+    @foreach (var album in AsList(Data)) {
+      var images = AsAdam(album, &quot;Images&quot;).Files as Dynlist;
+      var albumThumbUrl = Text.Has(album.AlbumThumbnail)
+        ? album.AlbumThumbnail
+        : images.First().Url;
+
+      &lt;div class=&quot;ga-album col-12 col-sm-6 col-md-6 col-lg-4&quot; @Edit.TagToolbar(album)&gt;
+        &lt;a href=&#39;@Tags.SafeUrl(Link.To(parameters: &quot;mid/&quot; + Dnn.Module.ModuleID + &quot;&amp;album=&quot; + album.Path))&#39;&gt;
+          &lt;div class=&quot;ga-img&quot;&gt;
+            &lt;div class=&quot;overlay&quot;&gt;
+              &lt;div class=&quot;ga-album-title&quot;&gt;&lt;h5 class=&quot;ga-title&quot;&gt;@album.Title&lt;/h5&gt;&lt;/div&gt;
+              &lt;div class=&quot;ga-files-count&quot;&gt;&lt;span class=&quot;badge badge-pill badge-dark float-right&quot;&gt;@images.Count()&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;img class=&quot;img-fluid&quot; src=&#39;@Tags.SafeUrl(albumThumbUrl + &quot;?w=720&amp;h=500&amp;mode=crop&amp;scale=both&amp;quality=80&quot;)&#39; alt=&quot;@album.Title&quot; /&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    }
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>We suggest you check out some apps which use ADAM to see how they work. </p>
 <h2 id="also-read">Also Read</h2>
 <ul>
-<li><a class="xref" href="../../net-code/dynamic-code/as-adam.html">AsAdam(...) Command</a></li>
+<li><a class="xref" href="../../specs/adam/index.html">ADAM - Automatic Digital Asset Management</a></li>
 <li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.html">ToSic.Sxc.Adam</a></li>
-<li>To access ADAM files/links in a RazorTemplate, check out <code>AsAdam(...)</code> in the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.RazorComponent.html">RazorComponent</a> and <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a></li>
+<li>check out <code>AsAdam(...)</code> in the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.RazorComponent.html">RazorComponent</a> and <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
@@ -146,7 +170,7 @@ It also creates a sub-folder for each field, so that a <code>logo.png</code> use
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/adam/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/as-adam.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

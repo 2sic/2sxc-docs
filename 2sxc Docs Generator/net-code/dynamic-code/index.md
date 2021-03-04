@@ -11,14 +11,14 @@ The following APIs are available on all 2sxc **Dynamic Code** - so you can use t
 1. Helper Code files
 
 
-## Instance Specific Data in Dynamic Code
+## Instance Data in Dynamic Code
 
 > [!NOTE]
 > Instance specific data _belongs_ to the module-instance on the page, either because it was manually added or because the module-instance uses a Query which is specific to this module. 
 
 Learn more about this in [](xref:NetCode.DynamicData.Index)
 
-[!include["List of Data Context Objects"](../dynamic-code/_include-context-data-objects.md)]
+[!include["List of Data Context Objects"](../dynamic-code/_include-instance-data.md)]
 
 
 ## App and App-Data Objects

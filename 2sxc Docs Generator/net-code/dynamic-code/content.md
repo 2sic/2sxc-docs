@@ -8,6 +8,8 @@ The **Content** is a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) in
 
 It contains the content-item assigned to this template. If the View is a list, then **Content** contains the first item in the list. Note that if the View is configured to be a list, then it may also have a [Header](xref:NetCode.DynamicCode.Header).
 
+This is where `AsAdam(...)` comes in. All RazorComponents and ApiControllers have this command. Here's the [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.Content*).
+
 Since it's a Dynamic Entity it carries all values as properties, like `Content.Link` etc. 
 
 ## Example Razor Code

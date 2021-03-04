@@ -38,7 +38,7 @@ When a 2sxc module is added to a page the editor decides what should be shown. B
 
 In both of these cases, the following objects are then pre-populated with the correct data, making it easy to use in a template or Web API:
 
-[!include["List of Data Context Objects"](../dynamic-code/_include-context-data-objects.md)]
+[!include["List of Data Context Objects"](../dynamic-code/_include-instance-data.md)]
 
 
 
