@@ -37,7 +37,7 @@ You can customize just about everything:
 
 Usually your code will look a bit like this:
 
-```html
+```razor
 <div @Edit.TagToolbar(Content)>
   ...
 </div>
@@ -54,7 +54,7 @@ Let's add an extra _new_ button to create an item of the content-type _Category_
 > [!NOTE]
 > This code will make the button appear, but on click you may see an error, because you probably don't have a ContentType _Category_ in your app. 
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: "+new?contentType=Category")>
   ...
 </div>
@@ -68,7 +68,7 @@ You should now have an extra + button like this:
 
 Let's emphasize it, because for whatever reason it's a super important button. We'll also drop the leading `+` since it's optional and defaulted to: 
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: "new&color=red?contentType=Category")>
   ...
 </div>
@@ -87,7 +87,7 @@ You should now have a _red_ + button like this:
 
 Now we want to add another button - maybe to add a _Tag_. The `toolbar` attribute on the [Edit.TagToolbar](xref:NetCode.Razor.Edit.Toolbar) can take various kinds of objects, but for the new simple API it only accepts `string` objects or `string[]` arrays. So to make multiple changes to the toolbar, we'll have to give it a `string[]` array like this (note that we can use line-breaks, to make the code easier to read):
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
   "new&color=red?contentType=Category", 
   "new&color=teal?contentType=Tag" 
@@ -107,7 +107,7 @@ You should now see this:
 
 Now maybe you don't like to allow your editors to change the view - so let's do the same but remove the view-switch button as well using the remove `-` prefix:
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
   "-layout",
   "new&color=red?contentType=Category", 
@@ -125,7 +125,7 @@ So you can add / remove any button you want. You can find a [full list of button
 
 But what if we want to modify an existing button? Let's change the icon and both colors of the `layout` (view) button using the modify `%` prefix:
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
   "%layout&icon=icon-sxc-replace&color=white,maroon",
   "new&color=red?contentType=Category", 
@@ -142,7 +142,7 @@ As you can see, we just used `%` to modify a button, set the `icon` and 2 colors
 
 But maybe we would prefer to have a toolbar with only the two _add_ buttons, and nothing else. By default, the toolbar uses a template called `default` which contains all these buttons. But you can always start with an `empty` template. You'll find the full list of templates [here](xref:Specs.Cms.Toolbars.Build).
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
   "toolbar=empty",
   "new&color=red?contentType=Category", 
@@ -165,7 +165,7 @@ But maybe we would prefer to have a toolbar with only the two _add_ buttons, and
 
 But let's say you created a **News App** and want to allow the editor to also delete the news-items. Here's how:
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: "%delete&show=true")>
   ...
 </div>
@@ -182,7 +182,7 @@ The `delete` button is in the third group of buttons, so you'll have to hit the 
 
 Let's assume you understand the principle of adding, removing and changing buttons. Let's add a custom button group with only the buttons you want - followed by the normal ellipsis-button with the standard functionality: 
 
-```html
+```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
     "group=add-buttons",
     "new&color=red&group=add-buttons?contentType=Category", 
@@ -216,7 +216,7 @@ There is also a hidden group called `edit-advanced` - you can find the [list of 
 
 Now you may want to call your own code when you create a button. This is very advanced stuff, but here's how:
 
-```html
+```razor
 <div class="demobox" @Edit.TagToolbar(Content, 
   toolbar: "custom&title=Message?call=myMessage&id=17")
 >

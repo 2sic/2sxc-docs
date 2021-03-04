@@ -56,7 +56,7 @@ The custom controller **BooksController** must have the same name as the file an
 
 The custom controller can be called with JavaScript like this:
 
-```html
+```razor
 <!-- this ensures the $2sxc scripts are loaded -->
 @Edit.Enable(js: true)
 

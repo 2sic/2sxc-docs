@@ -14,7 +14,7 @@ Since it's a Dynamic Entity it carries all values as properties, like `Content.L
 
 ## Example Razor Code
 
-```html
+```razor
 <div>
   @Content.Name
 </div>
@@ -24,7 +24,7 @@ Since it's a Dynamic Entity it carries all values as properties, like `Content.L
 
 Depending on the view configuration the **Content** can carry additional presentation information, for example how to format the title etc. This is available on `Content.Presentation`. The **Presentation** object is also a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity). 
 
-```html
+```razor
 <div class="@Content.Presentation.Highlight">
   @Content.Name
 </div>

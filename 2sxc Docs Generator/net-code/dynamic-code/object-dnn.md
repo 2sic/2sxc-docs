@@ -10,7 +10,7 @@ The `Dnn` is a helper object which contains properties to access information abo
 
 Here's a quick example of using the `Dnn` object in a Razor template: 
 
-```html
+```razor
 <!-- show the current users nice name -->
 @Dnn.User.DisplayName
 ```

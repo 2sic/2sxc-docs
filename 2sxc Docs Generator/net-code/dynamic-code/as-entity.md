@@ -31,7 +31,6 @@ var personType = AsEntity(person).Type; // Will return the IContentType
 If you want to really check in the code, what languages have been translated. This is very sophisticated, but this is kind of how you would do it: 
 
 ```cs
-
 var personEntity = AsEntity(person);
 var attrName = personEntity["Name"]; // this will return an IAttribute<string> object
 ```

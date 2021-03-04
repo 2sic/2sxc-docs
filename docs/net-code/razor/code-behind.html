@@ -29,11 +29,11 @@
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
-    <!--
-      2dm 2021-03-02 Enable lightboxes on all images using
-      https://github.com/roel4ez/docfx-lightbox-plugin
-    -->
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -122,7 +122,7 @@
 <li><code>_My Message.code.cshtml</code> (the new code )<br>  The <em>code</em> file looks just like a normal razor file.<br>  Must inherit from <code>ToSic.Sxc.Dnn.RazorComponentCode</code>. </li>
 </ul>
 <p>Here&#39;s an example of such a <code>_My Message.code.cshtml</code>: </p>
-<pre><code class="lang-cs">@inherits ToSic.Sxc.Dnn.RazorComponentCode
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {
   public string Hello() {
@@ -138,7 +138,7 @@
   &lt;div&gt;App Name is: @App.Name&lt;/div&gt;
 }
 </code></pre><p>This is automatically compiled for you and provided to the <code>_My Message.cshtml</code> on the object <code>Code</code> so you can write this code: </p>
-<pre><code class="lang-html">@inherits ToSic.Sxc.Dnn.RazorComponent
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponent
 
 &lt;h1&gt;Demo Code Use&lt;/h1&gt;
 
@@ -163,7 +163,7 @@ This is common when designers like to modify the html but don&#39;t like all tha
 </div>
 <h2 id="important-passing-around-anonymous-objects">Important: Passing Around Anonymous Objects</h2>
 <p>One of the advanced things you may want to do is have helper functions looking up multiple things, and returning a complex object like this example in the code-behind:</p>
-<pre><code class="lang-cs">@inherits ToSic.Sxc.Dnn.RazorComponentCode
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {
   public dynamic Hello() {
@@ -171,7 +171,7 @@ This is common when designers like to modify the html but don&#39;t like all tha
   }
 }
 </code></pre><p>Which is used like this</p>
-<pre><code class="lang-html">@inherits ToSic.Sxc.Dnn.RazorComponent
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponent
 
 &lt;h1&gt;Demo Code Use&lt;/h1&gt;
 
@@ -187,7 +187,7 @@ This is common when designers like to modify the html but don&#39;t like all tha
 <li>Rename the method (ok, bun not sexy)</li>
 <li>Return a typed object instead of untyped (recommended).<br> In the above example, change to this:</li>
 </ol>
-<pre><code class="lang-cs">@inherits ToSic.Sxc.Dnn.RazorComponentCode
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {
   public class TitleAndMessage {
@@ -237,6 +237,15 @@ This is common when designers like to modify the html but don&#39;t like all tha
     </div>
     
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

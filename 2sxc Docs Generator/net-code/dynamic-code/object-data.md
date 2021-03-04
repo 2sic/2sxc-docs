@@ -20,7 +20,7 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 ## Most common way to use the Data object
 In all Razor-templates and also the web-api files, the `Data` object is already created and ready to access. Here's a code example:
 
-```cs
+```razor
 <div class="app-blog">
     @foreach(var post in AsDynamic(Data))
     {

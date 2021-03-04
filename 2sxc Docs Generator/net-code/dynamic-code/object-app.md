@@ -9,7 +9,7 @@ The `App` object gives you full access to everything you need to know about the 
 
 Here's are two simple examples taken from the [Blog App](xref:App.Blog):
 
-```html
+```razor
 <link rel="stylesheet" href="@App.Path/assets/style.css"  data-enableoptimizations="true"/>
 <script type="text/javascript" src="@App.Path/assets/scripts.js" data-enableoptimizations="true"></script>
 @foreach(var tag in AsDynamic(App.Data["Tag"])) {
@@ -49,7 +49,7 @@ The App object gives you immediate acccess to all data in the app, through the `
 ### Get All Data Items of a Content Type
 `App.Data["ContentTypeName"]` will give you a [stream](xref:ToSic.Eav.DataSources.IDataStream) of all entities of that type. In most cases you'll use an `AsDynamic(...)` to use it efficiently in loops etc. because most of the razor templating will prefer a [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) to a pure IEntity-object. Here's an example:
 
-```cs
+```razor
 @foreach(var post in AsDynamic(App.Data["BlogPost"]))
 {
     @RenderPage("_list-item.cshtml", new { Post = post })
@@ -72,7 +72,7 @@ You can read more about this in the [App Data API Feature](xref:Feat.AppDataApi)
 ## Using App Queries (App.Query)
 The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here's how:
 
-```html
+```razor
 @foreach(var tag in AsDynamic(App.Query["SortedTags"]["Default"])) {
     <li class='@("app-blog-tag" + tag.ManualWeight)'><a href='@Link.To("tag= " tag.Tag)' title="@tag.Name">@tag.Name</a></li>
 }
@@ -96,8 +96,7 @@ In the App dialogs you can manage `Settings` and `Resources`. Basically both are
 
 You would normally use it like this:
 
-```html
-
+```razor
 <h1 class='@App.Settings.HeadingsDecorators'>
     @Content.Title
 </h1>

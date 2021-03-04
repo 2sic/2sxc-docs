@@ -12,7 +12,7 @@ _Note:_ DNN often has a problem with links, because depending on what page you a
 
 Here's a quick example of using the `Link` object in a Razor template: 
 
-```html
+```razor
 <a href="@Link.To(parameters: "id=" + item.EntityId)">
     @item.Title 
 </a>
@@ -35,7 +35,7 @@ Example:
 ## Using @Link.Base() for JavaScript SPA modules
 This is new in 2sxc v9.5.1. It ensures that the url can be used for SPAs, as some pages will otherwise provide a wrong link (like home) which then breaks the SPA.
 
-```html
+```razor
 <base href="@Link.Base()">
 ```
 
@@ -47,7 +47,7 @@ The Link-Object is of type [](xref:ToSic.Sxc.Web.ILinkHelper).
 
 To promote long term API stability, we require all parameters to be [named](xref:NetCode.Conventions.NamedParameters) when used. This allows us to add further parameters later on, and the calls will still work.
 
-```html
+```razor
 <!-- this will work -->
 @Link.To(parameters: "id=17")
 @Link.To(parameters: "id=403&category=all")

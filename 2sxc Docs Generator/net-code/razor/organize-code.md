@@ -34,7 +34,7 @@ When you have a **lot of components** it may be easier to create a library of `@
 
 To use it, you need something like:
 
-```cs
+```razor
 @{
   var helper = CreateInstance("_Helper.cshtml");
 }
@@ -57,7 +57,7 @@ You can create a `.cs` class file and share this across razor files AND WebAPI f
 
 To use it, you need something like:
 
-```cs
+```razor
 @{
   var helper = CreateInstance("_Helper.cs");
 }

@@ -16,7 +16,7 @@ Since it's a Dynamic Entity it carries all values as properties, like `Header.Li
 
 ## Example Razor Code
 
-```html
+```razor
 <h2>
   @Header.Title
 </h2>
@@ -26,7 +26,7 @@ Since it's a Dynamic Entity it carries all values as properties, like `Header.Li
 
 Depending on the view configuration the **Header** can carry additional presentation information, for example how to format the title etc. This is available on `Header.Presentation`. The **Presentation** object is also a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity). 
 
-```html
+```razor
 <h2 class="@Header.Presentation.Highlight">
   @Header.Title
 </h2>

@@ -27,7 +27,7 @@ This example shows the title and will add the standard editing-buttons for the `
 
 Here's an [](xref:Specs.Cms.InnerContent) example:
 
-```html
+```razor
 <div class="app-blog-text sc-content-block-list" @Edit.ContextAttributes(post, field: "DesignedContent")>
     @foreach(var cb in @post.DesignedContent) {
         @cb.Render();

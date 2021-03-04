@@ -29,11 +29,11 @@
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
-    <!--
-      2dm 2021-03-02 Enable lightboxes on all images using
-      https://github.com/roel4ez/docfx-lightbox-plugin
-    -->
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -114,7 +114,7 @@
 <p>The <code>App</code> object gives you full access to everything you need to know about the current App, including Path-info, access to all Data this App has, access to Settings and language Resources and more.</p>
 <h2 id="how-to-use">How to use</h2>
 <p>Here&#39;s are two simple examples taken from the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a>:</p>
-<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  data-enableoptimizations=&quot;true&quot;/&gt;
+<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  data-enableoptimizations=&quot;true&quot;/&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; data-enableoptimizations=&quot;true&quot;&gt;&lt;/script&gt;
 @foreach(var tag in AsDynamic(App.Data[&quot;Tag&quot;])) {
     &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;&lt;a href=&quot;@App.Settings.DetailsPage/tag/@tag.Tag&quot; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;&lt;/li&gt;
@@ -144,7 +144,7 @@
 <p>The App object gives you immediate acccess to all data in the app, through the <code>Data</code> property. Basically you can use it as follows:</p>
 <h3 id="get-all-data-items-of-a-content-type">Get All Data Items of a Content Type</h3>
 <p><code>App.Data[&quot;ContentTypeName&quot;]</code> will give you a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">stream</a> of all entities of that type. In most cases you&#39;ll use an <code>AsDynamic(...)</code> to use it efficiently in loops etc. because most of the razor templating will prefer a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a> to a pure IEntity-object. Here&#39;s an example:</p>
-<pre><code class="lang-cs">@foreach(var post in AsDynamic(App.Data[&quot;BlogPost&quot;]))
+<pre><code class="lang-razor">@foreach(var post in AsDynamic(App.Data[&quot;BlogPost&quot;]))
 {
     @RenderPage(&quot;_list-item.cshtml&quot;, new { Post = post })
 }
@@ -159,7 +159,7 @@
 <p>You can read more about this in the <a class="xref" href="https://2sxc.org/en/Docs-Manuals/Feature/feature/3360">App Data API Feature</a></p>
 <h2 id="using-app-queries-appquery">Using App Queries (App.Query)</h2>
 <p>The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here&#39;s how:</p>
-<pre><code class="lang-html">@foreach(var tag in AsDynamic(App.Query[&quot;SortedTags&quot;][&quot;Default&quot;])) {
+<pre><code class="lang-razor">@foreach(var tag in AsDynamic(App.Query[&quot;SortedTags&quot;][&quot;Default&quot;])) {
     &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;&lt;a href=&#39;@Link.To(&quot;tag= &quot; tag.Tag)&#39; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;&lt;/li&gt;
 }
 </code></pre><p>Technically the <code>App.Query</code> is a <code>IDictionary&lt;string, IDataSource&gt;</code>, meaning that it&#39;s a dictionary using string identifiers (names), returning an <a class="xref" href="../../specs/datasources/datasource.html"><code>IDataSource</code></a> object. </p>
@@ -174,8 +174,7 @@
 <li>You should put settings like &quot;what page is xxx on&quot; or &quot;the primary color is #53aaff&quot; into <code>Settings</code></li>
 </ul>
 <p>You would normally use it like this:</p>
-<pre><code class="lang-html">
-&lt;h1 class=&#39;@App.Settings.HeadingsDecorators&#39;&gt;
+<pre><code class="lang-razor">&lt;h1 class=&#39;@App.Settings.HeadingsDecorators&#39;&gt;
     @Content.Title
 &lt;/h1&gt;
 &lt;div&gt;
@@ -240,6 +239,15 @@
     </div>
     
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

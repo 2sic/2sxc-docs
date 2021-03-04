@@ -19,7 +19,7 @@ Before you start, ensure you have the necessary JS scripts loaded:
 
 Simple example:
 
-```html
+```razor
 @* enable the editing *@
 @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
 

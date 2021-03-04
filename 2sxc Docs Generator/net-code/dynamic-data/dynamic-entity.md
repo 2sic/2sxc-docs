@@ -19,7 +19,7 @@ We'll assume we have a _Content Type_ called *Book* with the following propertie
 
 Here's a code example in a C# Razor template:
 
-```html
+```razor
 <!--
   The default variable for the current item is Content, 
   we'll just use another name for this sample

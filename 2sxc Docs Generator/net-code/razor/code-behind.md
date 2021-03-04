@@ -23,7 +23,7 @@ Just create another file with the identical name as your main Razor file, but wi
 Here's an example of such a `_My Message.code.cshtml`: 
 
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {
@@ -44,7 +44,7 @@ Here's an example of such a `_My Message.code.cshtml`:
 This is automatically compiled for you and provided to the `_My Message.cshtml` on the object `Code` so you can write this code: 
 
 
-```html
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 
 <h1>Demo Code Use</h1>
@@ -86,7 +86,7 @@ The code-behind also has same methods/events which are automatically called. The
 
 One of the advanced things you may want to do is have helper functions looking up multiple things, and returning a complex object like this example in the code-behind:
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {
@@ -98,7 +98,7 @@ One of the advanced things you may want to do is have helper functions looking u
 
 Which is used like this
 
-```html
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 
 <h1>Demo Code Use</h1>
@@ -118,7 +118,7 @@ This works and is no big deal, but there are known cases where this breaks, usua
 1. Return a typed object instead of untyped (recommended).  
     In the above example, change to this:
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponentCode
 
 @functions {

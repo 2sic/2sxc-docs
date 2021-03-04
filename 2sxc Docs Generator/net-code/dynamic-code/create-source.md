@@ -10,7 +10,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 
 **Simple Example**
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @{
   // A source which can filter by Content-Type (EntityType)
@@ -24,7 +24,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 
 **Example Chaining DataSources**
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @{
   // A source which can filter by Content-Type (EntityType)

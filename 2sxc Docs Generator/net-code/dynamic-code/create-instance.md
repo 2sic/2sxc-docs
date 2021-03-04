@@ -10,7 +10,7 @@ If you have external code you want to import you can use **CreateInstance**.
 
 Example
 
-```cs
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @{
   var helper = CreateInstance("_helpers.cshtml");

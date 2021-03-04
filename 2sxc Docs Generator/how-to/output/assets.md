@@ -26,7 +26,7 @@ Here's a trivial example for optimizing a CSS with default settings:
 
 Here's a more typical example, showing an optimization for a style & js which are inside the app-folder. This example uses Razor, so we use `@App.Path` to ensure it's picking up the right folder (use `[App:Path]` in token-templates):
 
-```html
+```razor
 <link rel="stylesheet" href="@App.Path/assets/style.css"
     data-enableoptimizations="150" />
 <link rel="stylesheet" href="@App.Path/assets/lazy.css"

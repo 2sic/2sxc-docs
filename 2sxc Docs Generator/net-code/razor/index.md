@@ -6,7 +6,7 @@ uid: NetCode.Razor.Index
 
 Razor Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App. Here's an example:
 
-```html
+```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent
 <ul>
   @foreach(var person in AsList(App.Data["Persons"])) {

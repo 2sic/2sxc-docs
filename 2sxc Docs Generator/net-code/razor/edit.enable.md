@@ -11,7 +11,7 @@ If you want to enable this for more restricted users - for example when you want
 
 This example shows how you enable the UI using Razor, which will allow public users to create data:
 
-```html
+```razor
 <div>
     @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
 </div>
