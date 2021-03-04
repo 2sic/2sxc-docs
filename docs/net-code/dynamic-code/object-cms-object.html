@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dynamic Code API | 2sxc and EAV 10 </title>
+    <title>CmsContext WIP in 11.11 | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Dynamic Code API | 2sxc and EAV 10 ">
+    <meta name="title" content="CmsContext WIP in 11.11 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../images/logos/v11/favicon.ico">
@@ -108,63 +108,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Index">
-<h1 id="dynamic-code-api">Dynamic Code API</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.CmsObject">
+<h1 id="cmscontext-wip-in-1111">CmsContext <em>WIP in 11.11</em></h1>
 
-<p>The following APIs are available on all 2sxc <strong>Dynamic Code</strong> - so you can use this in:</p>
-<ol>
-<li>Razor (including Code-Behind)</li>
-<li>Web API Controllers</li>
-<li>Helper Code files</li>
-</ol>
-<h2 id="instance-data-in-dynamic-code">Instance Data in Dynamic Code</h2>
-<div class="NOTE"><h5>Note</h5><p>Instance specific data <em>belongs</em> to the module-instance on the page, either because it was manually added or because the module-instance uses a Query which is specific to this module. </p>
-</div>
-<p>Learn more about this in <a class="xref" href="../dynamic-data/index.html">Dynamic Data</a></p>
-<ol>
-<li><a class="xref" href="object-data.html">Data</a> (IDataSource)<br> This object gives you all the data which was meant to be used by this Templates</li>
-<li><a class="xref" href="content.html">Content</a> (a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a>)<br> The primary and often the only content-item in the <a class="xref" href="object-data.html">Data</a> for this template. </li>
-<li><a class="xref" href="content.html">Content.Presentation</a> (a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a>)<br> Can contain additional presentation settings for this content, like how to format it. </li>
-<li><a class="xref" href="header.html">Header</a> (a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a>)<br> The header data if the template expects to be a list and also needs a title or intro.</li>
-<li><a class="xref" href="content.html">Header.Presentation</a> (a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a>)<br> Can contain additional presentation settings for the header, like how to format it. </li>
-</ol>
-<h2 id="app-and-app-data-objects">App and App-Data Objects</h2>
-<ol>
-<li><a class="xref" href="object-app.html">App</a><br> The current App with <code>Settings</code>, <code>Resources</code>, <code>Path</code> information and more.</li>
-<li><a class="xref" href="object-app.html#using-app-data-appdata">App.Data</a><br> All the data of the current app for immediate use, fully cached in memory of the web server.</li>
-<li><a class="xref" href="object-app.html##using-app-queries-appquery">App.Query</a><br> Queries which were created using <strong>Visual Query</strong> and can be run to access prepared data.</li>
-</ol>
-<h2 id="general-objects">General Objects</h2>
-<ol>
-<li>CmsContext</li>
-<li><a class="xref" href="object-dnn.html">Dnn</a><br> The common Dnn object providing page, module, user information</li>
-<li><a class="xref" href="../razor/edit.html">Edit</a><br> Helper providing you with various edit-functionality like <code>Toolbar(...)</code></li>
-<li><a class="xref" href="object-link.html">Link</a><br> Helper to generate links, according to the DNN-environment configuration</li>
-</ol>
-<h2 id="conversion-commands">Conversion Commands</h2>
-<ol>
-<li><a class="xref" href="as-adam.html">AsAdam(...)</a><br> Gives you the ADAM parts (files, images, folders) of a field.</li>
-<li><a class="xref" href="as-dynamic.html">AsDynamic(...)</a> - takes just about anything (an iEntity, a list of iEntities, a dynamic, ...) and casts it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a></li>
-<li><a class="xref" href="as-dynamic-string.html">AsDynamic(jsonString)</a></li>
-<li><a class="xref" href="as-entity.html">AsEntity(...)</a> - takes just about anything (iEntity, DynamicEntity, list of that) and casts it to an <a class="xref" href="../dynamic-data/entity.html">iEntity</a></li>
-</ol>
-<h2 id="helper-commands-provided-by-2sxc">Helper Commands provided by 2sxc</h2>
+<p>As we&#39;re getting ready for Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the <code>Dnn</code> object which obviously won&#39;t exist on Oqtane. </p>
+<p>So we&#39;re creating this new standardized object to ask for these things. </p>
+<p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_CmsContext">official API docs</a> of the Object on the Dynamic Code</p>
+<p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsContext.html">official API docs</a> of the <code>ICmsContext</code> object</p>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
 <ul>
-<li><a class="xref" href="create-instance.html">CreateInstance(...)</a><br>  To create an object of a parsed CSHTML file, for example to then access methods of that code</li>
-<li>[CreateSource&lt;T>()(xref:NetCode.DynamicCode.CreateSource)<br>  Get a DataSource object of type <code>T</code> (like filters, sorting, etc.)</li>
-<li><a class="xref" href="get-service.html">GetService&lt;T>()</a>
-  Get a Service to help you (using Dependency Injection)</li>
+<li>No demo apps exist yet</li>
 </ul>
-<h2 id="other-helpers">Other Helpers</h2>
-<p>TODO</p>
-<ul>
-<li>Html.Raw</li>
-<li>etc.</li>
-</ul>
-<h2 id="important-notes">Important Notes</h2>
-<div class="IMPORTANT"><h5>Important</h5><p>Your code must inherit the correct base class to get this API.
-You&#39;ll find the correct base classes in the documentations for Razor and Web API.</p>
-</div>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 11.11</li>
+</ol>
 </article>
           </div>
           
@@ -173,7 +132,7 @@ You&#39;ll find the correct base classes in the documentations for Razor and Web
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/object-cms-object.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

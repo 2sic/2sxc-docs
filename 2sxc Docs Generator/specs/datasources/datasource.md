@@ -111,6 +111,8 @@ Maybe you want to create an XML DataSource or a DNN-Users DataSource. This is ea
 ## Read also
 
 * about [Data Streams](xref:ToSic.Eav.DataSources.IDataStream)
+* [Dynamic Code CreateSource(...)](xref:NetCode.DynamicCode.CreateSource)
+* [.net API](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*)
 * [Demo-App showing some coding of DataSources][app-ds-code]
 * [Blog about creating your own data-source](xref:Blog.CustomDataSource)
 
