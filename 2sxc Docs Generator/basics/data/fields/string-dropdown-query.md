@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String-Dropdown-Query
 ---
 # Field Input-Type **string-dropdown-query**
 
-Use this field type for configuring a dropdown UI elements, storing [string/text data](xref:Specs.Data.Values.String). It's an extension of the [string field type](xref:Specs.Data.Inputs.String).
+Use this field type for configuring a dropdown UI elements, storing [string/text data](xref:Basics.Data.Fields.String). It's an extension of the [string field type](xref:Basics.Data.Fields.String).
 
 The special thing about this is that the items shown for selecting are retrieved from Query and not pre-defined as part of the the field definition. This allows you to look up any kind of data and offer it for selection. 
 

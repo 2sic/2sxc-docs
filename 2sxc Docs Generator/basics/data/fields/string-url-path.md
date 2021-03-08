@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.String-Url-Path
 # Field Input-Type **string-url-path**
 
 Use this field type to manage url-paths which you'll usually use to identify an
-item. For example, if you have a blog and each post has a url with the name, this is the field that you need to match the url to the item. It stores a [string/text data](xref:Specs.Data.Values.String). It's an extension of the basic [string field type](xref:Specs.Data.Inputs.String).
+item. For example, if you have a blog and each post has a url with the name, this is the field that you need to match the url to the item. It stores a [string/text data](xref:Basics.Data.Fields.String). It's an extension of the basic [string field type](xref:Basics.Data.Fields.String).
 
 ## Features 
 

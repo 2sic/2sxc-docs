@@ -90,7 +90,7 @@ This is simply stored as a JSON string in the original format like `page:22`.
 
 ## Read also
 
-* [](xref:Specs.Data.Inputs.Hyperlink)
+* [](xref:Basics.Data.Fields.Hyperlink)
 * [](xref:Tut.RazorBlade.Text.Has)
 * [](xref:Tut.RazorBlade.Text.First)
 

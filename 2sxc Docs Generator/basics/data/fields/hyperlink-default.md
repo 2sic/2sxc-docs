@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.Hyperlink-Default
 ---
 # Field Input-Type **hyperlink-default**
 
-Use this field type for configuring normal links, page or file/image references, storing [Hyperlink](xref:Specs.Data.Values.Hyperlink). It's an extension of the [hyperlink field type](xref:Specs.Data.Inputs.Hyperlink).
+Use this field type for configuring normal links, page or file/image references, storing [Hyperlink](xref:Basics.Data.Fields.Hyperlink). It's an extension of the [hyperlink field type](xref:Basics.Data.Fields.Hyperlink).
 
 ## Features 
 
@@ -19,7 +19,7 @@ No relevant settings to be configured.
 
 ## History
 
-1.  Introduced in EAV 1.0 / 2sxc 1.0, originally as part of the [hyperlink field type](xref:Specs.Data.Inputs.Hyperlink)
+1.  Introduced in EAV 1.0 / 2sxc 1.0, originally as part of the [hyperlink field type](xref:Basics.Data.Fields.Hyperlink)
 2.	Changed in EAV 3.0 / 2sxc 6.0 (it used to have many configuration fields for all kinds of uses, which were then moved to sub-types)
 
 

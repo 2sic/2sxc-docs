@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.Boolean-Default
 ---
 # Field Input-Type **boolean-default**
 
-Use this field type for configuring simple true/false UI elements, storing [boolean/boolean data](xref:Specs.Data.Values.Boolean). It's an extension of the basic [boolean field type](xref:Specs.Data.Inputs.Boolean).
+Use this field type for configuring simple true/false UI elements, storing [boolean/boolean data](xref:Basics.Data.Fields.Boolean). It's an extension of the basic [boolean field type](xref:Basics.Data.Fields.Boolean).
 
 ## Features 
 

@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.DateTime-Default
 ---
 # Field Input-Type **datetime-default**
 
-Use this field type for configuring dates and/or time values, storing [date/datetime data](xref:Specs.Data.Values.DateTime). It's an extension of the basic [datetime field type](xref:Specs.Data.Inputs.DateTime).
+Use this field type for configuring dates and/or time values, storing [date/datetime data](xref:Basics.Data.Fields.DateTime). It's an extension of the basic [datetime field type](xref:Basics.Data.Fields.DateTime).
 
 ## Features 
 

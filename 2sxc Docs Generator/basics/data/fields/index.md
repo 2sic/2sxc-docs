@@ -14,18 +14,18 @@ The EAV (Entity-Attribute-Value) system and 2sxc is all about data. The data in 
 
 These are the core **Field-Types**. Each may have one or more **Input-Types**.
 
-1. [Boolean](xref:Specs.Data.Values.Boolean) - basic true/false or yes/no values
-1. [Custom](xref:Specs.Data.Values.Custom) - a JSON data type for GPS and other JSON data
-1. [DateTime](xref:Specs.Data.Values.DateTime) - for dates and times
-1. [Empty](xref:Specs.Data.Values.Empty) - a UI-only field for things like grouping fields together under a title
-1. [Entity](xref:Specs.Data.Values.Entity) - an item-picker field to choose existing items, for relationships between items - like a book to the author or a blog-post to tags
-1. [Hyperlink](xref:Specs.Data.Values.Hyperlink) - a special string with helper objects which resolve "file:72" to the real link
-1. [Number](xref:Specs.Data.Values.Number) - for any kind of number like 1, 2, 3 or with decimals
-1. [String](xref:Specs.Data.Values.String) - for string types or when you other options don't fit
+1. [Boolean](xref:Basics.Data.Fields.Boolean) - basic true/false or yes/no values
+1. [Custom](xref:Basics.Data.Fields.Custom) - a JSON data type for GPS and other JSON data
+1. [DateTime](xref:Basics.Data.Fields.DateTime) - for dates and times
+1. [Empty](xref:Basics.Data.Fields.Empty) - a UI-only field for things like grouping fields together under a title
+1. [Entity](xref:Basics.Data.Fields.Entity) - an item-picker field to choose existing items, for relationships between items - like a book to the author or a blog-post to tags
+1. [Hyperlink](xref:Basics.Data.Fields.Hyperlink) - a special string with helper objects which resolve "file:72" to the real link
+1. [Number](xref:Basics.Data.Fields.Number) - for any kind of number like 1, 2, 3 or with decimals
+1. [String](xref:Basics.Data.Fields.String) - for string types or when you other options don't fit
 
 ## General Settings for all Fields
 
-[@All](xref:Specs.Data.Inputs.All) is not a field-type, but contains core information about a field like name, help-text and more. Every field has these configurations. 
+[@All](xref:Basics.Data.Fields.GeneralSettings) is not a field-type, but contains core information about a field like name, help-text and more. Every field has these configurations. 
 
 
 ## History

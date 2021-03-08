@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String-Default
 ---
 # Field Input-Type **string-default**
 
-Use this field type for configuring simple text UI elements, storing [string/text data](xref:Specs.Data.Values.String). It's an extension of the basic [string field type](xref:Specs.Data.Inputs.String).
+Use this field type for configuring simple text UI elements, storing [string/text data](xref:Basics.Data.Fields.String). It's an extension of the basic [string field type](xref:Basics.Data.Fields.String).
 
 ## Features 
 
@@ -20,5 +20,5 @@ This shows the configuration dialog:
 
 ## History
 
-1. Introduced in EAV 1.0 2sxc 1.0, originally as part of the [string field type](xref:Specs.Data.Inputs.String)
+1. Introduced in EAV 1.0 2sxc 1.0, originally as part of the [string field type](xref:Basics.Data.Fields.String)
 2. Changed in 2sxc 6.0 - Moved to it's own sub-type

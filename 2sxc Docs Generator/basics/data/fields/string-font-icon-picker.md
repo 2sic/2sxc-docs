@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String-Font-Icon-Picker
 ---
 # Field Input-Type **string-font-icon-picker**
 
-Use this field type to create input-fields which let the user pick an icon. It stores a [string/text data](xref:Specs.Data.Values.String). It's an extension of the basic [string field type](xref:Specs.Data.Inputs.String).
+Use this field type to create input-fields which let the user pick an icon. It stores a [string/text data](xref:Basics.Data.Fields.String). It's an extension of the basic [string field type](xref:Basics.Data.Fields.String).
 
 ## Features 
 

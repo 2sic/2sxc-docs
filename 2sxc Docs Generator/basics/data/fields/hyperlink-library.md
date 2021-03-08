@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.Hyperlink-Library
 ---
 # Field Input-Type **hyperlink-library**
 
-Use this field type for complete sets of files (like image galleries), storing [Hyperlink](xref:Specs.Data.Values.Hyperlink). It's an extension of the [hyperlink field type](xref:Specs.Data.Inputs.Hyperlink).
+Use this field type for complete sets of files (like image galleries), storing [Hyperlink](xref:Basics.Data.Fields.Hyperlink). It's an extension of the [hyperlink field type](xref:Basics.Data.Fields.Hyperlink).
 
 ## Configuring an Hyperlink-Library
 
@@ -17,6 +17,6 @@ This shows the configuration dialog:
 
 ## History
 
-1.  Introduced in EAV 1.0 / 2sxc 1.0, originally as part of the [hyperlink field type](xref:Specs.Data.Inputs.Hyperlink)
+1.  Introduced in EAV 1.0 / 2sxc 1.0, originally as part of the [hyperlink field type](xref:Basics.Data.Fields.Hyperlink)
 2.	Changed in EAV 3.0 / 2sxc 6.0 (it used to have many configuration fields for all kinds of uses, which were then moved to sub-types)
 

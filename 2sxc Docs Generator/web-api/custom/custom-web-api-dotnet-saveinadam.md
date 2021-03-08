@@ -58,9 +58,9 @@ foreach(var file in files)
 
 ## Difference in Field-Library and Field-Link-Default
 
-Note that the form has two different ways the field can behave. In [hyperlink-Library](xref:Specs.Data.Inputs.Hyperlink-Library) mode nothing is really stored in the field name, the UI will simply load all the files in a folder that belong to that field. `SaveInAdam` will simply add files to this folder, so the most common way to use it is that the entity will have a link-library field to browse one or more files uploaded. 
+Note that the form has two different ways the field can behave. In [hyperlink-Library](xref:Basics.Data.Fields.Hyperlink-Library) mode nothing is really stored in the field name, the UI will simply load all the files in a folder that belong to that field. `SaveInAdam` will simply add files to this folder, so the most common way to use it is that the entity will have a link-library field to browse one or more files uploaded. 
 
-If you really only want 1 file to be uploaded, and want to put it into the field as if it's linked directly, then choose a [hyperlink-default](xref:Specs.Data.Inputs.Hyperlink-Default) field. `SaveInAdam` will give you a IFile object which has an `Id`. Use that to create a `file:72` kind of link and add it to data you just created. 
+If you really only want 1 file to be uploaded, and want to put it into the field as if it's linked directly, then choose a [hyperlink-default](xref:Basics.Data.Fields.Hyperlink-Default) field. `SaveInAdam` will give you a IFile object which has an `Id`. Use that to create a `file:72` kind of link and add it to data you just created. 
 
 ## Read also, Demo App and further links
 

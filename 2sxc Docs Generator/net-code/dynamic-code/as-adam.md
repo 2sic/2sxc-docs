@@ -6,7 +6,7 @@ uid: NetCode.DynamicCode.AsAdam
 
 [!include["ADAM Summary"](../../specs/adam/_include-what-is-adam.md)]
 
-When a content-item has a `Library` field (see [](xref:Specs.Data.Inputs.Hyperlink-Library)) your code needs to get a list of all the files and folders of that field. For example to show galleries. 
+When a content-item has a `Library` field (see [](xref:Basics.Data.Fields.Hyperlink-Library)) your code needs to get a list of all the files and folders of that field. For example to show galleries. 
 This is where `AsAdam(...)` comes in. It gives you the ADAM parts of this field.
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsAdam*).

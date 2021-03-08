@@ -42,7 +42,7 @@ Each field can also be multilanguage, so there are actually many `Descriptions` 
 Entities are much more than just records, as they can have [relationships](xref:Specs.Data.Relationships).
 
 #### Input Forms and Fields (like WYSIWYG)
-The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentType.Index). Based on the specifications, it will generate the correct [Input-Field](xref:Specs.Data.Inputs.Overview) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
+The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentType.Index). Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
 
 
 ## APIs
@@ -67,7 +67,7 @@ The input mask is automatically generated from the [Content-Type](xref:Basics.Da
 
 ## Future Features & Wishes
 
-1. Dynamic Attributes using JSON data or similar - see [](xref:Specs.Data.Values.Custom)
+1. Dynamic Attributes using JSON data or similar - see [](xref:Basics.Data.Fields.Custom)
 
 ## History
 

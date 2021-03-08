@@ -1,6 +1,3 @@
----
-uid: Specs.Data.Inputs.String-Wysiwyg
----
 # Field Input-Type **string-wysiwyg**
 
 

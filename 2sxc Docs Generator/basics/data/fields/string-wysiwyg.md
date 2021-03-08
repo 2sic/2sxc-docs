@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String-Wysiwyg
 ---
 # Field Input-Type **string-wysiwyg**
 
-Use this field type for configuring simple text UI elements, storing [string/text data](xref:Specs.Data.Values.String). It's an extension of the basic [string field type](xref:Specs.Data.Inputs.String).
+Use this field type for configuring simple text UI elements, storing [string/text data](xref:Basics.Data.Fields.String). It's an extension of the basic [string field type](xref:Basics.Data.Fields.String).
 
 ## Features 
 
@@ -18,7 +18,7 @@ _TODO_
 * **TODO** is for todo
 
 ## History
-1. Introduced in EAV 1.0 2sxc 1.0, originally as part of the [string field type](xref:Specs.Data.Inputs.String)
+1. Introduced in EAV 1.0 2sxc 1.0, originally as part of the [string field type](xref:Basics.Data.Fields.String)
 1. Changed in 2sxc 6.0 - Moved to it's own sub-type
 1. Changed to be full-screen dialog editing only in 10.00
 1. Added option to switch between full-screen or directly in the form in 10.09

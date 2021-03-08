@@ -1,5 +1,5 @@
 ---
-uid: Specs.Data.Fields.All
+uid: Basics.Data.Fields.GeneralSettings
 ---
 
 # General Field Settings (Input-Type @All)

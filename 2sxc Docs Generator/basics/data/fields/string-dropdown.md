@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String-Dropdown
 ---
 # Field Input-Type **string-dropdown**
 
-Use this field type for configuring simple dropdown UI elements, storing [string/text data](xref:Specs.Data.Values.String). It's an extension of the [string field type](xref:Specs.Data.Inputs.String).
+Use this field type for configuring simple dropdown UI elements, storing [string/text data](xref:Basics.Data.Fields.String). It's an extension of the [string field type](xref:Basics.Data.Fields.String).
 
 ## Features 
 
@@ -32,6 +32,6 @@ If the user then clicks on the I-bar icon, the input will change to text so you 
 
 
 ## History
-1. Introduced in EAV 2.0 2sxc 2.0, originally as part of the [string field type](xref:Specs.Data.Inputs.String)
+1. Introduced in EAV 2.0 2sxc 2.0, originally as part of the [string field type](xref:Basics.Data.Fields.String)
 2. Changed in 2sxc 6.0 - Moved to it's own sub-type
 3. Enhanced in 2sxc 9.10 - definition moved to json-based and added feature for enabling manual text entry

@@ -80,7 +80,7 @@ Mostly smaller bugfixes
 * [x] Enhance other data sources with features which so far were not available in the visual designer
 
 ### Version 9.10 - Combobox and more DataSources (WIP)
-* [x] Combobox input type allowing a [dropdown with values](xref:Specs.Data.Inputs.String-Dropdown), but also allowing manual typing (to select pre-defined values, but also use Tokens)
+* [x] Combobox input type allowing a [dropdown with values](xref:Basics.Data.Fields.String-Dropdown), but also allowing manual typing (to select pre-defined values, but also use Tokens)
 * [x] [StreamMerge DataSource](xref:ToSic.Eav.DataSources.StreamMerge)
 * [x] [ItemFilterDuplicates DataSource](xref:ToSic.Eav.DataSources.ItemFilterDuplicates)
 * [x] feature to export Json ContentTypes

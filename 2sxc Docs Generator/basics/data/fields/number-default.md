@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.Number-Default
 ---
 # Field Input-Type **number-default**
 
-Use this field type for configuring simple number UI elements, storing [number](xref:Specs.Data.Values.Number). It's an extension of the basic [number field type](xref:Specs.Data.Inputs.Number).
+Use this field type for configuring simple number UI elements, storing [number](xref:Basics.Data.Fields.Number). It's an extension of the basic [number field type](xref:Basics.Data.Fields.Number).
 
 ## Features 
 

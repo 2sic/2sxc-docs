@@ -1,6 +1,5 @@
----
-uid: Specs.Data.Inputs.Number-Default
----
+
+
 
 # Field Input-Type **number-default**
 
