@@ -117,50 +117,7 @@
             <article class="content wrap" id="_content" data-uid="Specs.Data.Values.Hyperlink">
 <h1 id="data-type-hyperlink">Data Type: Hyperlink</h1>
 
-<p>Hyperlink data is a basic <a class="xref" href="index.html">data type</a> and is actually a string, but on reading it&#39;s automatically converts to an output-friendly format. It&#39;s used for normal links, page or file/image references as well as for complete sets of files (like image galleries). </p>
-<h2 id="storage-in-the-sql-database-in-the-eav-model">Storage in the SQL Database in the EAV-Model</h2>
-<p>This is simply stored as a string in the DB, in the original format like <code>page:22</code>.</p>
-<h2 id="storage-in-the-sql-database-in-the-json-model">Storage in the SQL Database in the JSON-Model</h2>
-<p>This is simply stored as a JSON string in the original format like <code>page:22</code>.</p>
-<h2 id="automatic-conversions">Automatic Conversions</h2>
-<p>The hyperlink data internally can contain values like:</p>
-<ol>
-<li><code>http://whatever/whatever</code> - will not be converted</li>
-<li><code>/some-relative-url</code> - will not be converted</li>
-<li><code>page:42</code> - will usually be converted to the real url of the page in DNN</li>
-<li><code>page:42?something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>page:42#something=value</code> - this will also be converted, but keeping the parameters</li>
-<li><code>file:2750</code> - will usually be converted to the real url of the file in DNN</li>
-<li><code>file:2750?w=200</code> - this will also be converted, but keeping the parameters (like for thumbnails)</li>
-<li><code>file:2750#page=2</code> - this will also be converted, but keeping the parameters (like for pdf-page-links)</li>
-</ol>
-<p>In 99% of all use cases, you want to generate html with a real link, which is why the content-objects in Razor will deliver an <code>http:...</code> instead of <code>file:27</code>. Some demo-code: </p>
-<pre><code class="lang-razor">  // assume that Content is a dynamic entity
-  // assume that Image actually contains &quot;file:274&quot;
-  &lt;img src=&quot;@Content.Image&quot;&gt;
-
-  // the result is now
-  &lt;img src=&quot;/portals/0/adam/20603963uaothutaoer/daniel.jpg&quot;&gt;
-</code></pre><h2 id="accessing-the-real-inner-value">Accessing the Real Inner Value</h2>
-<p>In rare cases you may want the originl <code>page:22</code> instead of the converted value. To do this, use <code>AsEntity(yourObject)</code> and then use the EAV API on <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> to read the underlying original value.</p>
-<h2 id="special-hyperlink-libraries">Special: Hyperlink Libraries</h2>
-<p>A special use case is Libraries - where a hyperlink-field doesn&#39;t actually contain anything, but is a placeholder for ADAM assets. 
-In such a scenario, you will use <code>AsAdam(...)</code> in your code to get the folders/files in the ADAM repository.</p>
-<h2 id="null-value-possible">Null Value Possible</h2>
-<p>In some cases you may add a field to a type which already has Entities created previously. In this case the old data doesn&#39;t have a value for the field. 
-If this happens, the field will return <code>null</code>, so you may need to catch this special exception in your code. </p>
-<blockquote><p>A common shorthand to work with this is either the <code>??</code> operator or using <a href="https://razor-blade.net/api/ToSic.Razor.Blade.Text.html">RazorBlade</a> with <code>Text.Has(...)</code> or <code>Text.First(...)</code>.</p>
-</blockquote>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../input-types/ui-field-hyperlink.html">Field Input-Type hyperlink / files</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade120/page">RazorBlade Text.Has(...) Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/blade130/page">RazorBlade Text.First(...) Tutorial</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV 1.0 2sxc 1.0</li>
-</ol>
+<p>Moved to <a class="xref" href="../../basics/data/fields/hyperlink.html">Field Data Type: Hyperlink</a></p>
 </article>
           </div>
           

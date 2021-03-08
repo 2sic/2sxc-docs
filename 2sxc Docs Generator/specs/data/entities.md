@@ -25,7 +25,7 @@ Entities are structured as follows:
 
 ## How it Works
 
-Each _Entity_ has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the [Content-Type](xref:Basics.Data.ContentType), so each Entity is like a record of that type. 
+Each _Entity_ has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the [Content-Type](xref:Basics.Data.ContentType.Index), so each Entity is like a record of that type. 
 
 This basic principle is used everywhere in 2sxc. For example, all these things are Entities:
 
@@ -42,7 +42,7 @@ Each field can also be multilanguage, so there are actually many `Descriptions` 
 Entities are much more than just records, as they can have [relationships](xref:Specs.Data.Relationships).
 
 #### Input Forms and Fields (like WYSIWYG)
-The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentType). Based on the specifications, it will generate the correct [Input-Field](xref:Specs.Data.Inputs.Overview) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
+The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentType.Index). Based on the specifications, it will generate the correct [Input-Field](xref:Specs.Data.Inputs.Overview) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
 
 
 ## APIs

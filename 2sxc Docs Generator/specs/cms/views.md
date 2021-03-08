@@ -7,7 +7,7 @@ Views are what the user will see - and contains things like Html, CSS, Javascrip
 
 ## How it Works
 
-Views configure what [templates](xref:Specs.Cms.Templates) are combined with what [Content-Type](xref:Basics.Data.ContentType) to then produce an output. 
+Views configure what [templates](xref:Specs.Cms.Templates) are combined with what [Content-Type](xref:Basics.Data.ContentType.Index) to then produce an output. 
 
 > [!TIP]
 > Views can also specify more Content-Types for using in the Header or Presentation. In addition, they could also say that the data comes from a Query instead of from user/editor input. 

@@ -4,7 +4,7 @@ uid: Basics.Data.ContentType.Shared
 
 # App Shared "Ghost" Content-Types (⚠)
 
-[!include["Data"](_shared-content-types.md)]
+[!include["Data"](../_shared-content-types.md)]
 
 This explains **App Shared Content-Types** which used to be called **Ghost Content-Type**. For an overview check out [](xref:Basics.Data.Index).
 
@@ -16,7 +16,7 @@ This explains **App Shared Content-Types** which used to be called **Ghost Conte
 
 ## What is an App Shared Content-Type?
 
-**App Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType) which are defined in one App and re-used in specifi other Apps. 
+**App Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in one App and re-used in specifi other Apps. 
 
 You rarely want to use this. 
 

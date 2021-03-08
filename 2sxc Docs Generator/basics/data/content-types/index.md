@@ -1,9 +1,9 @@
 ---
-uid: Basics.Data.ContentType
+uid: Basics.Data.ContentType.Index
 ---
 # Content-Type (Schema/Object-Type)
 
-[!include["Data"](_shared-content-types.md)]
+[!include["Data"](../_shared-content-types.md)]
 
 This explains **Content-Types**. For an overview check out [](xref:Basics.Data.Index).
 
@@ -16,7 +16,7 @@ The Content-Type will define what fields exist, what is required and what order 
 > 
 > Other systems may call this _Schema_, _Object-Type_, _Object-Structure_ or _Table Definition_
 
-[!include["Before you Start"](../../shared/before-you-start-idynamicentity.md)]
+[!include["Before you Start"](../../../shared/before-you-start-idynamicentity.md)]
 
 ## What's Defined in a Content-Type?
 
@@ -95,20 +95,17 @@ Special global Content-Types are stored in the file system. These are called [](
 Both the Content-Type and Attributes can have _Metadata_ providing more information about them. 
 
 #### Field Types
-Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Specs.Data.Values.Overview).
+Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Basics.Data.Fields.Index).
 
 #### Relationships
 Fields can also be of type [Entity](xref:Specs.Data.Values.Entity) in which case they point to other items. This would then establish a [Relationship](xref:Specs.Data.Relationships)
 
 #### Input Forms and Fields (like WYSIWYG)
-The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentType). Based on the specifications, it will generate the correct [Input-Field](xref:Specs.Data.Inputs.Overview) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
+The input mask is automatically generated from the **Content-Type**. Based on the specifications, it will generate the correct [Input-Field](xref:Specs.Data.Inputs.Overview) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
 
 #### Scopes
 
-Content-Types have a _Scope_. This is like a category for the Content-Type. Normally you only see the Content-Types and Entities of the default Scope. The other Scopes have internal and system Content-Types like `@String`. 
-
-* [Here's the full list of current Scopes](https://azing.org/2sxc/r/LqblhYXD)
-* Here are instructions how to [switch Scopes](https://azing.org/2sxc/r/MEa0dtBw) to manage data of other Scopes
+Content-Types have a _Scope_. Read about it [](xref:Basics.Data.Scope)
 
 ## APIs
 

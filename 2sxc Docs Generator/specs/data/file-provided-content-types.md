@@ -4,7 +4,7 @@ uid: Specs.Data.FileBasedContentTypes
 
 # File-Based Content-Types 
 
-Usually [Content-Types](xref:Basics.Data.ContentType) are stored in the database. For a special use case, content-type definitions can also stored in a json-file. This will primarily be used in providing future _shared_ content types which are used across all portals and apps. Examples of such types are:
+Usually [Content-Types](xref:Basics.Data.ContentType.Index) are stored in the database. For a special use case, content-type definitions can also stored in a json-file. This will primarily be used in providing future _shared_ content types which are used across all portals and apps. Examples of such types are:
 
 1. configurations of data-sources (like the SqlDataSource in 2sxc 9.8) 
 2. any kind of input-configuration types (like string-dropdown, etc. starting in 2sxc 9.10)

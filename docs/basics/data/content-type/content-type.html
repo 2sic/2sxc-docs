@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Content-Type (Schema/Object-Type) | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Content-Type (Schema/Object-Type) | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li class="active">
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Basics.Data.ContentType">
+<h1 id="content-type-schemaobject-type">Content-Type (Schema/Object-Type)</h1>
+
+<div class="overlay-container">
+  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 24%"></div>
+  <img src="../assets/app-data.png" class="full-width">
+</div>
+<p>This explains <strong>Content-Types</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<h2 id="what-is-a-content-type">What is a Content-Type?</h2>
+<p>Every <a class="xref" href="../../../specs/data/entities.html">Entity</a> (<em>thing</em>, <em>record</em> or <em>object</em>) in 2sxc has a definition of fields it can have. So a <code>Book</code> may have fields like Name, Author, Title etc. 
+The Content-Type will define what fields exist, what is required and what order the fields will appear in when editing the item. </p>
+<blockquote><p>This definition of the <em>Type</em> is called a <strong>Content-Type</strong> and it contains specs as to the exact fields are used and what their field-types are.</p>
+<p>Other systems may call this <em>Schema</em>, <em>Object-Type</em>, <em>Object-Structure</em> or <em>Table Definition</em></p>
+</blockquote>
+<div class="TIP"><h5>Tip</h5><p>Before you start: Remember that you usually don&#39;t need this if you are creating Razor templates 
+or WebApi - for that, you want to read <a class="xref" href="../../../net-code/dynamic-data/dynamic-entity.html">How to Use a Dynamic Entity</a>.</p>
+</div>
+<h2 id="whats-defined-in-a-content-type">What&#39;s Defined in a Content-Type?</h2>
+<p><strong>Content-Types</strong> are a configuration which contains:</p>
+<ol>
+<li>The list of fields the Content-Type has with the technical name, like <code>ProfilePhoto</code></li>
+<li>Edit-UI information for the edit form<ol>
+<li>The order of the fields should be shown in when editing</li>
+<li>A user friendly name like <code>Profile Photo</code> and editing help texts like <code>This should only contain head &amp; shoulders</code></li>
+<li>The <strong>Input-Type</strong> which the UI should show, like <code>Hyperlink</code> (which means that it&#39;s a link or file)</li>
+<li><strong>Input-Type</strong> configuration, for example <code>AllowUpload</code> etc.</li>
+</ol>
+</li>
+<li>Optionally some of the Edit-UI information in more languages like <code>Profilbild</code> in German</li>
+<li>Optionally permission information like <em>May be used in Mobile Apps for read-only</em></li>
+</ol>
+<h2 id="nice-to-know-edit-content-types">Nice to Know: Edit Content-Types</h2>
+<ol>
+<li>Content-Types are configured in the App-Management UIs</li>
+<li>You can create new Content-Types at any time</li>
+<li>You can rename a Content-Type at any time<ol>
+<li>If you change the display-name (like <code>Blog Post</code> to <code>Blog Entry</code>) then your code doesn&#39;t need changes.</li>
+<li>If you change the technical name (<code>BlogPost</code> to <code>BlogEntry</code>) then your code needs to be updated</li>
+</ol>
+</li>
+<li>You can delete Content-Types at any time<br> When you delete a Content-Type, all Entities/Items of that type are deleted</li>
+<li>Content-Types have additional descriptions and help-texts which are shown in the Edit-UI</li>
+<li>Content-Types can also have an icon, but that&#39;s only used in <a href="xref:todo">Content Mode</a></li>
+</ol>
+<h2 id="nice-to-know-edit-fields-of-a-content-type">Nice to Know: Edit Fields of a Content-Type</h2>
+<ol>
+<li>You can always create new fields on a Content-Type<br> When you add new fields, then existing data will have that field, but no values on these fields</li>
+<li>You can always delete existing fields on a Content-Type<br> When you remove fields, existing data will lose those values</li>
+<li>You can always rename fields of a Content-Type<ol>
+<li>When you change the display name of a field (like <code>Persons Photo</code> to <code>Profile Picture</code>) the technical field name doesn&#39;t change, so your code doesn&#39;t need modification.</li>
+<li>If you change the technical field name (like <code>ProfilePic</code> to <code>ProfilePhoto</code>) the code must be updated</li>
+</ol>
+</li>
+</ol>
+<h2 id="nice-to-know-export--import-content-type-definition">Nice to Know: Export / Import Content-Type Definition</h2>
+<ol>
+<li>You can export a Content-Type into a JSON format</li>
+<li>You can import the Content-Type into another App using upload or drag-n-drop</li>
+</ol>
+<div class="IMPORTANT"><h5>Important</h5><p>Exporting the <em>Content Type Definition</em> exports the schema / fields of that type. </p>
+<p>Exporting all the <em>Items of a Content-Type</em> is a table-export of all the data. </p>
+</div>
+<hr>
+<h2 id="content-type---technical-stuff">Content-Type - Technical Stuff</h2>
+<div class="WARNING"><h5>Warning</h5><p>What follows is very technical. For most use cases you don&#39;t need to know this stuff. </p>
+</div>
+<h3 id="content-type-schema-and-field-definitions">Content-Type Schema and Field-Definitions</h3>
+<p>Content-Types are internally structured as follows (in C# / .net):  </p>
+<p><br>
+<img src="assets/content-type-internal-structure.png" width="100%">
+<br></p>
+<h4 id="identity-of-a-content-type-name-and-staticname">Identity of a Content Type: Name and StaticName</h4>
+<p>Each content-type has a <em>Name</em>, which is nice for a human to read, use and program with. There is a second identifier called <em>StaticName</em> which is usually a GUID, but in rare cases it&#39;s a string like <code>App-Settings</code>. This identifier is used internally - for example when a View references a Content-Type.</p>
+<h4 id="storage">Storage</h4>
+<p>Most Content-Types are stored in the database, including all the Content-Types in your App. 
+Special global Content-Types are stored in the file system. These are called <a class="xref" href="../../../specs/data/file-provided-content-types.html">File-Based Content-Types</a></p>
+<h4 id="metadata-of-content-types-and-attributes">Metadata of Content-Types and Attributes</h4>
+<p>Both the Content-Type and Attributes can have <em>Metadata</em> providing more information about them. </p>
+<h4 id="field-types">Field Types</h4>
+<p>Each field will be of a simple type like <em>text/string</em>, <em>number</em>, <em>boolean (yes/no)</em> or other. You can find the list of <a class="xref" href="../../../specs/data-types/index.html">types here</a>.</p>
+<h4 id="relationships">Relationships</h4>
+<p>Fields can also be of type <a class="xref" href="../../../specs/data-types/entity.html">Entity</a> in which case they point to other items. This would then establish a <a class="xref" href="../../../specs/data/relationships.html">Relationship</a></p>
+<h4 id="input-forms-and-fields-like-wysiwyg">Input Forms and Fields (like WYSIWYG)</h4>
+<p>The input mask is automatically generated from the <a class="xref" href="content-type.html">Content-Type</a>. Based on the specifications, it will generate the correct <a class="xref" href="../../../specs/input-types/index.html">Input-Field</a> like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. </p>
+<h4 id="scopes">Scopes</h4>
+<p>Content-Types have a <em>Scope</em>. Read about it <a class="xref" href="content-type-scopes.html">Content-Type Scopes</a></p>
+<h2 id="apis">APIs</h2>
+<ul>
+<li>@<a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> Namespace has almost everything you see here</li>
+<li>@<a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IContentType.html">IContentType</a> defines what fields exist, it&#39;s the ContentType / Schema</li>
+<li>@<a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IContentTypeAttribute.html">IContentTypeAttribute</a>, <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypeAttribute.html">ContentTypeAttribute</a><br>  contains the definition of an attribute</li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypeMetadata.html">ContentTypeMetadata</a>, <a href="xref:ToSic.Eav.Metadata.MetadataOf`1"></a><br>  contains information about the content-type (like nicer descriptions).
+  This is also used for the Attribute-Metadata</li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 1.0</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/content-type/content-type.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/plugin-featherlight.js"></script>
+  </body>
+</html>

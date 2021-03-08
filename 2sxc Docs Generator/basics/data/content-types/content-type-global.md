@@ -4,7 +4,7 @@ uid: Basics.Data.ContentType.GlobalShared
 
 # Global Shared Content-Types (⚠)
 
-[!include["Data"](_shared-content-types.md)]
+[!include["Data"](../_shared-content-types.md)]
 
 This explains **Global Shared Content-Types**. For an overview check out [](xref:Basics.Data.Index).
 
@@ -16,7 +16,7 @@ This explains **Global Shared Content-Types**. For an overview check out [](xref
 
 ## What is a Global Shared Content-Type?
 
-**Global Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType) which are defined in a central location and available in all Apps of your system. 
+**Global Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in a central location and available in all Apps of your system. 
 
 For most _Content Management_ scenarios you don't want to use this. 
 
