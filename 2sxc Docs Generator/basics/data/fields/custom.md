@@ -8,13 +8,15 @@ uid: Basics.Data.Fields.Custom
 
 This explains **Custom Fields**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
 
 Custom data is a basic [data type](xref:Basics.Data.Fields.Index). It's used to store JSON for special use cases. 
 
 
 ## Sub-Types
 
-* `custom-gps`
+* [custom-gps](xref:Basics.Data.Fields.Custom-Gps)
 * `custom-json`
 
 ## Recommendation

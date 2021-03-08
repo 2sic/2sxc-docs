@@ -2,11 +2,13 @@
 uid: Specs.Data.Fields.All
 ---
 
-# General Field Configuration (Input-Type @All)
+# General Field Settings (Input-Type @All)
 
 [!include["Data"](../_shared-content-types.md)]
 
 This explains **General Field Settings**. For an overview check out [](xref:Basics.Data.Index).
+
+---
 
 Every field has some general settings which apply to all fields. It's the information every field has to describe it's label, help-text etc. 
 

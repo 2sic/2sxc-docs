@@ -8,6 +8,9 @@ uid: Basics.Data.Fields.Entity
 
 This explains **Entity Fields**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
+
 **Entity** or **Item** data is a basic [data type](xref:Basics.Data.Fields.Index) and is used to mark item-relationships, like books-to-authors or blog-to-tags. 
 
 ## Features 

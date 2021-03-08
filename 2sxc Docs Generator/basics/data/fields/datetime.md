@@ -8,6 +8,8 @@ uid: Basics.Data.Fields.DateTime
 
 This explains **DateTime Fields**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
 
 DateTime data is a basic [data type](xref:Basics.Data.Fields.Index) and is used for dates and/or time values.  
 

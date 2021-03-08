@@ -9,6 +9,7 @@ This explains **String Fields**. For an overview check out [](xref:Basics.Data.I
 
 ---
 
+
 String data is a basic [data type](xref:Basics.Data.Fields.Index) and is very commonly used in many fields. It's used for any basic kind of text, be it a character, a single-line text or wysiwyg-content. 
 
 ## Features 

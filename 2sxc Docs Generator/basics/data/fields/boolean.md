@@ -8,6 +8,9 @@ uid: Basics.Data.Fields.Boolean
 
 This explains **Boolean Fields**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
+
 ## The Boolean Data Type
 
 Boolean data is a basic [data type](xref:Basics.Data.Fields.Index) and is for `yes`/`no`, `true`/`false`, `1`/`0` values. 

@@ -8,6 +8,8 @@ uid: Basics.Data.Fields.Empty
 
 This explains **Empty Fields**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
 
 Empty data is a basic [data type](xref:Basics.Data.Fields.Index) and is for adding things to the UI (input form) which doesn't actually save any data. A common use is group-headers which contain a text, but don't result in data being stored.  
 

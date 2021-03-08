@@ -1,13 +1,18 @@
 ---
 uid: Basics.Data.Fields.Index
 ---
-# Field / Value Data Types
+# Field Types
 
+[!include["Data"](../_shared-content-types.md)]
+
+This explains **Hyperlink Fields**. For an overview check out [](xref:Basics.Data.Index).
+
+---
 
 
 The EAV (Entity-Attribute-Value) system and 2sxc is all about data. The data in the Attributes (aka Fields, Properties) are have a _Type_ This **Value-Type** or **Data-Type** describes how data is stored (persisted) in various formats (SQL, JSON, XML) and how it's used in code (C#, JavaScript, Tokens, Angular, ...). 
 
-## Data Types in EAV/2sxc 10
+These are the core **Field-Types**. Each may have one or more **Input-Types**.
 
 1. [Boolean](xref:Specs.Data.Values.Boolean) - basic true/false or yes/no values
 1. [Custom](xref:Specs.Data.Values.Custom) - a JSON data type for GPS and other JSON data
