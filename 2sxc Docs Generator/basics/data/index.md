@@ -30,10 +30,98 @@ This kind of data is usually used to:
 
 This kind of data can be used in many ways - so let's look at how it's processed on the server:
 
-[!include["App browser js"](../../shared/app/app-server-data.md)]
+[!include["App server"](../../shared/app/app-server-data.md)]
 
 > [!TIP]
 > The Edit UIs are automatically generated based on the Content-Type Schema which says what fields each kind of data has. 
+
+Let's look at each piece in detail.
+
+## Content-types
+
+[!include["Data"](_shared-content-types.md)]
+
+**Content-types** are the _Schema_. The are the rules which say that a `Person` has a `FirstName`, `Photo` and `Birthday` etc.
+
+> [!TIP]
+> An App usually has a lot of Content-Types.
+
+**Content-Types** are a configuration which contains:
+
+1. The list of fields the Content-Type has with the technical name, like `ProfilePhoto`
+1. Edit-UI information for the edit form
+    1. The order of the fields should be shown in when editing
+    1. A user friendly name like `Profile Photo` and editing help texts like `This should only contain head & shoulders`
+    1. The **Input-Type** which the UI should show, like `Hyperlink` (which means that it's a link or file)
+    1. **Input-Type** configuration, for example `AllowUpload` etc.
+1. Optionally some of the Edit-UI information in more languages like `Profilbild` in German
+1. Optionally permission information like _May be used in Mobile Apps for read-only_
+
+
+
+## Global / Shared Types
+
+[!include["Data"](_shared-global-types.md)]
+
+Usually a **Content-Type** is part of the App and only available inside that App. In rare cases you may have many sites (Portals) or many Apps which need the same **Content-Type**. In this case it's smarter to store this in a shared location. **Global-Types** are Content-Types which are stored in a system folder so they can be used in all Apps of an installation.
+
+## Entities / Content-Items
+
+[!include["Data"](_shared-entities.md)]
+
+**Entities** are **Dynamic Data Items**. They always belong to a **Content-Type** and have all the fields specified in that _Content-Type_. This makes them very dynamic. 
+
+* A `Person` has different fields than a `BlogPost`
+* All the **Values** in an **Entity** can also be multi-language by default
+
+You may want to learn more about:
+
+1. TODO
+1. Permissions
+1. Owner
+1. Languages
+
+
+## Assets (Images / Documents)
+
+[!include["Data"](_shared-assets.md)]
+
+Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_. 
+
+* **Private Assets**  
+    By default, assets uploaded in the UI belong to the **Entity** and to the **Field** they were added to. So the photo `daniel.jpg` belongs to the _Field_ `ProfilePhoto` of the _Entity_ `Person` #5020. 
+* **Shared Assets**  
+    _If_ the editor expects to re-use an asset elsewhere and _if_ the _Content-Type_ configuration allows this, then the asset can also be stored in a shared location. 
+
+## ADAM - the Automatic Digital Asset Manager
+
+[!include["Data"](_shared-adam.md)]
+
+**ADAM** is a subsystem of 2sxc. It's responsible for managing the files and storing them in a way that assigns _Private Assets_ to the _Entities_ and _Fields_ they belong to. 
+
+
+## External Data
+
+[!include["Data"](_shared-external.md)]
+
+External Data can come from anywhere. Here are some common scenarios:
+
+1. `SQL` data coming from the DNN database or from another DB
+1. `CSV` data from a file which an editor updates from time to time
+1. `SharePoint` document lists or tables
+1. `JSON` data from another REST WebService
+
+External Data is retrieved using one of the following methods:
+
+1. a **Visual Query** which was configured to get / filter / sort this data
+1. C# code creating **DataSource** objects to retrieve this data
+1. C# code using standard .net APIs to get / use this data
+
+Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and SPAs. 
+
+
+
+---
 
 
 You may want to learn more about:
