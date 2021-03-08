@@ -98,7 +98,7 @@ Both the Content-Type and Attributes can have _Metadata_ providing more informat
 Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Basics.Data.Fields.Index).
 
 #### Relationships
-Fields can also be of type [Entity](xref:Basics.Data.Fields.Entity) in which case they point to other items. This would then establish a [Relationship](xref:Specs.Data.Relationships)
+Fields can also be of type [Entity](xref:Basics.Data.Fields.Entity) in which case they point to other items. This would then establish a [Relationship](xref:Basics.Data.Relationships.Index)
 
 #### Input Forms and Fields (like WYSIWYG)
 The input mask is automatically generated from the **Content-Type**. Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 

@@ -117,56 +117,7 @@
             <article class="content wrap" id="_content" data-uid="Specs.Data.Entities">
 <h1 id="entities-data-records-items">Entities (Data, Records, Items)</h1>
 
-<p>Every <em>thing</em>, <em>record</em> or <em>object</em> in 2sxc is called an <strong>Entity</strong>. So if you have a list of <code>Book</code> objects, then each <code>Book</code> is an entity. </p>
-<blockquote><p>Many other systems use the term <em>Record</em>, <em>Content Item</em>, <em>Item</em> or <em>Object</em>. </p>
-</blockquote>
-<div class="TIP"><h5>Tip</h5><p>Before you start: Remember that you usually don&#39;t need this if you are creating Razor templates 
-or WebApi - for that, you want to read <a class="xref" href="../../net-code/dynamic-data/dynamic-entity.html">How to Use a Dynamic Entity</a>.</p>
-</div>
-<h2 id="entity---the-data--content-items">Entity - The Data / Content Items</h2>
-<p>Entities are structured as follows:  </p>
-<p><br>
-<img src="assets/entity.png" width="100%">
-<br></p>
-<h2 id="eavd--entity-attribute-value--dimension">EAV+D = Entity-Attribute-Value + Dimension</h2>
-<blockquote><p>EAV stands for <strong>Entity</strong>, <strong>Attribute</strong>, <strong>Value</strong>
-The D stands for <strong>Dimension</strong>, it says what Dimension (Language) a <em>Value</em> is for</p>
-</blockquote>
-<h2 id="how-it-works">How it Works</h2>
-<p>Each <em>Entity</em> has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the <a class="xref" href="../../basics/data/content-types/index.html">Content-Type</a>, so each Entity is like a record of that type. </p>
-<p>This basic principle is used everywhere in 2sxc. For example, all these things are Entities:</p>
-<ul>
-<li><em>Simple Content</em> items in the <em>Content-App</em> are entities containing a title, body and image</li>
-<li><a class="xref" href="../cms/views.html">View</a> configurations are entities containing name, thumbnail, template-name etc.</li>
-<li><em>Blog</em> posts in the <a href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">Blog App</a> are entities containing around 20 fields</li>
-<li><em>Tag</em> items in the <a href="https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke">Blog App</a> are also entities</li>
-<li>Anything you define in your apps will result in entities</li>
-</ul>
-<h4 id="multilanguage-data">Multilanguage Data</h4>
-<p>Each field can also be multilanguage, so there are actually many <code>Descriptions</code> in a multi-language product Entity. </p>
-<h4 id="relationships">Relationships</h4>
-<p>Entities are much more than just records, as they can have <a class="xref" href="relationships.html">relationships</a>.</p>
-<h4 id="input-forms-and-fields-like-wysiwyg">Input Forms and Fields (like WYSIWYG)</h4>
-<p>The input mask is automatically generated from the <a class="xref" href="../../basics/data/content-types/index.html">Content-Type</a>. Based on the specifications, it will generate the correct <a class="xref" href="../../basics/data/fields/index.html">Input-Field</a> like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. </p>
-<h2 id="apis">APIs</h2>
-<ul>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> Namespace has almost everything you see here</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> describes the main unit, the Entity</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html">IContentType</a> defines what fields exist, it&#39;s the ContentType / Schema</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IAttributeBase.html">IAttributeBase</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IAttribute.html">IAttribute</a>,<br>  <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IAttribute-1.html">IAttribute&lt;T&gt;</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.Attribute-1.html">Attribute&lt;T&gt;</a><br>  determine the internal model how an attribute is built</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IValue.html">IValue</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IValue-1.html">IValue&lt;T&gt;</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.Value-1.html">Value&lt;T&gt;</a><br>  determines how values in an attribute are stored, because an attribute like <code>Description</code><br>  can have many values in different languages</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.ILanguage.html">ILanguage</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IDimension.html">IDimension</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.Language.html">Language</a><br>  languages and dimensions determine how the values are used in each language</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Metadata.ITarget.html">ITarget</a>, <a class="xref" href="../../api/dot-net/ToSic.Eav.Metadata.Target.html">Target</a><br>  this determines if the Entity is by itself, or if it&#39;s enriching something else -<br>  in which case this Entity is Metadata. </li>
-<li><a href="xref:ToSic.Eav.Metadata.MetadataOf`1"></a><br>  sometimes an Entity may itself have more metadata, which would then be stored here.</li>
-</ul>
-<h2 id="future-features--wishes">Future Features &amp; Wishes</h2>
-<ol>
-<li>Dynamic Attributes using JSON data or similar - see <a class="xref" href="../../basics/data/fields/custom.html">Field Data Type: Custom</a></li>
-</ol>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 1.0</li>
-</ol>
+<p>Moved to <a class="xref" href="../../basics/data/entities/index.html">Entities (Data, Records, Items)</a></p>
 </article>
           </div>
           

@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Metadata - WIP | 2sxc and EAV 10 </title>
+    <title>Entity Relationships | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Metadata - WIP | 2sxc and EAV 10 ">
+    <meta name="title" content="Entity Relationships | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -49,8 +49,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -61,26 +61,26 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
-                      </li>
                       <li class="active">
-                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../how-to/index.html" title="How To">How To</a>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../how-to/index.html" title="How To">How To</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,10 +114,40 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="metadata---wip">Metadata - WIP</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Data.Relationships.Index">
+<h1 id="entity-relationships">Entity Relationships</h1>
 
-<p>moved to <a class="xref" href="../../basics/data/metadata/index.html">Metadata - WIP (not well documented)</a></p>
+<div class="overlay-container">
+  <div class="overlay-box" style="left: 28.5%; top: 7%; height: 45%; width: 47.5%"></div>
+  <img src="../assets/app-data.png" class="full-width">
+</div>
+<p>This explains <strong>Entity Relationships</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<hr>
+<p>Data can be related to other data, like when a <code>Book</code> belongs to a <code>Category</code> and also has an <code>Author</code>. Since all data-items are called <code>Entities</code> we call this <em>Entity Relationships</em>. </p>
+<p>Additionally, there are also Entities which explicitly enhance/describes another <em>thing</em>, but that thing can be anything. That kind of relationship is called <em>Metadata</em>.</p>
+<h2 id="how-it-works">How it Works</h2>
+<p>Each <em>Entity</em> has many fields, some containing text, numbers etc. but some can also point to another item. These kinds of fields are called <em>Entity Fields</em>. When configured correctly, an entity-field shows a dropdown of items. So in the case of a book, the <code>Author</code> field may show a dropdown of <code>Person</code> items.</p>
+<p>There are different types of relationships: </p>
+<ul>
+<li><strong>1:n</strong> means that one thing can refer to many other things - like a book which points to many categories</li>
+<li><strong>n:1</strong> means that many things can refer to one thing - like many books pointing to the same author</li>
+<li><strong>n:n</strong> means that many things can refer to many things - like many blog-posts pointing to many tags (the blog can refer to many tags, and each tag may be pointed to by many blogs)</li>
+<li><strong>1:1</strong> relationships are when one thing refers to one other thing, and neither are re-used again. This is not often used in CMSs.</li>
+</ul>
+<h2 id="metadata-relationships">Metadata Relationships</h2>
+<p>This is a very different concept, where an Entity enriches something else. Read more about it in <a class="xref" href="../metadata/index.html">metadata</a>.</p>
+<h2 id="advanced-topics">Advanced Topics</h2>
+<ul>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/linq/home">Razor LINQ tutorial showing how to navigate between relationships</a></li>
+</ul>
+<h2 id="apis">APIs</h2>
+<ul>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.RelationshipFilter.html">RelationshipFilter Data Source to find items related to another item</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 2.0</li>
+</ol>
 </article>
           </div>
           
@@ -126,7 +156,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/data/metadata.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/relationships/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -152,19 +182,19 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/plugin-featherlight.js"></script>
+    <script type="text/javascript" src="../../../styles/plugin-featherlight.js"></script>
   </body>
 </html>
