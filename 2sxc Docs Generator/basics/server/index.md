@@ -11,9 +11,7 @@ You should get an idea of how the system works and all the things you can custom
   <img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
 </div>
 
-This is what web-systems do from a bird's-eyes perspective. On the top you see what happens in the browser (the purple boxes). It's documented in [](xref:Basics.Browser.Index).
-
-The bottom shows what happens on the server:
+This is what web-systems do from a bird's-eyes perspective. The purple boxes show [what happens in the browser](xref:Basics.Browser.Index). They gray boxes show what happens on the server:
 
 1. **Awesomeize** - this is where you tell the system how the output should look, what image sizes you want, how the HTML should be built etc. 
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
@@ -21,17 +19,18 @@ The bottom shows what happens on the server:
 1. **Your Data** is the original material - probably created by an editor using the CMS UI or in advanced cases it's data coming from SQL, CSV or elsewhere. This data could also be combined from multiple sources.  
     _By default this just magically works, you don't have to do anything!_
 
-## Deeper Dive into the Server (Data, Prepare, Awesomeize)
+## Awesomize / Customise
 
-<img src="../../shared/app/assets/app-server.png" class="full-width">
 
-## Understanding Data
+[!include["App browser js"](../../shared/app/app-server-awesomeize.md)]
 
-This is where **Data** comes in:
+You may want to learn more about:
 
-[!include["App browser js"](../../shared/app/app-server-data.md)]
-
-Data has it's own chapter in the docs [](xref:Basics.Data.Index)
+1. Asset optimization
+1. Image Resizing
+1. Creating App Templates using Razor
+1. Creating custom WebApi Controllers
+1. Using the Headless REST API
 
 
 ## Preparing Data
@@ -59,4 +58,11 @@ You may want to learn more about:
     1. Creating Custom DataSource
 
 
----
+## Understanding Data
+
+This is where **Data** comes in:
+
+[!include["App browser js"](../../shared/app/app-server-data.md)]
+
+Data has it's own chapter in the docs [](xref:Basics.Data.Index)
+
