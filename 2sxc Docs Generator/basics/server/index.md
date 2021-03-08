@@ -19,14 +19,14 @@ This is what web-systems do from a bird's-eyes perspective. The purple boxes sho
 1. **Your Data** is the original material - probably created by an editor using the CMS UI or in advanced cases it's data coming from SQL, CSV or elsewhere. This data could also be combined from multiple sources.  
     _By default this just magically works, you don't have to do anything!_
 
-## Awesomize / Customise
+## Awesomeize / Customise
 
 
 [!include["App browser js"](../../shared/app/app-server-awesomeize.md)]
 
 You may want to learn more about:
 
-1. Asset optimization
+1. [Bundling / Optimizing Assets](xref:HowTo.Output.Assets)
 1. Image Resizing
 1. Creating App Templates using Razor
 1. Creating custom WebApi Controllers

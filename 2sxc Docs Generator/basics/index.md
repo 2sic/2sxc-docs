@@ -4,26 +4,27 @@ uid: Basics.Index
 
 # 2sxc Basics Overview
 
-In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
-
+In 2sxc most things _just magically work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. 
 
 
 
 ## How Systems and Users Interact
 
+This is what web-systems do from a bird's-eye perspective. 
+
 <img src="./assets/show-interact-edit.png" align="right" class="float-right" width="300px">
 
-This is what web-systems do from a bird's-eye perspective. On the top you see what happens in the browser:
+On the top you see what happens in the [browser](xref:Basics.Browser.Index):
 
-1. **Show** content / output Output using HTML.
-1. **Interact**ive Content or SPAs where the UI is smart and works with data. 
-1. **Edit**ing content and data works by default, and you can do a lot more. 
+1. **Show** content / output using HTML
+1. **Interact**ive Content or SPAs where the UI is smart and works with data
+1. **Edit**ing content and data works by default, and you can do a lot more 
 
-The bottom shows what happens on the server:
+The bottom shows what happens on the [server](xref:Basics.Server.Index):
 
 1. **Awesomeize**: this is where you template the data and add logic.  
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
-1. **Your Data** is the original material - created by an editor in the CMS or it's data coming from SQL, CSV or elsewhere. 
+1. **[Your Data](xref:Basics.Data.Index)** is the original material - created by an editor in the CMS or it's data coming from SQL, CSV or elsewhere. 
 
 ## How to Learn the Basics
 

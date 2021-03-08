@@ -25,7 +25,7 @@ This document will go into more detail what happens at that level. To understand
 
 <img src="../../shared/app/assets/app-browser.png" class="full-width">
 
-Note that everything green in the image can be customized.
+Everything that's green in the image can be customized.
 
 ## Standard CSS and JS Libraries and Frameworks
 
