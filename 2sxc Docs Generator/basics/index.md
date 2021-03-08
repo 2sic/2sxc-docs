@@ -21,7 +21,7 @@ This is what web-systems do from a bird's-eye perspective. On the top you see wh
 
 The bottom shows what happens on the server:
 
-1. **Awesomize**: this is where you template the data and add logic.  
+1. **Awesomeize**: this is where you template the data and add logic.  
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
 1. **Your Data** is the original material - created by an editor in the CMS or it's data coming from SQL, CSV or elsewhere. 
 

@@ -15,11 +15,11 @@ This is what web-systems do from a bird's-eyes perspective. On the top you see w
 
 The bottom shows what happens on the server:
 
-1. **Your Data** is the original material - probably created by an editor using the CMS UI or in advanced cases it's data coming from SQL, CSV or elsewhere. This data could also be combined from multiple sources.  
-    _By default this just magically works, you don't have to do anything!_
+1. **Awesomeize** - this is where you tell the system how the output should look, what image sizes you want, how the HTML should be built etc. 
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
     _By default this happens automatically, you don't have to do anything! But you can customize it anyhow you want._
-1. **Awesomize** - this is where you tell the system how the output should look, what image sizes you want, how the HTML should be built etc. 
+1. **Your Data** is the original material - probably created by an editor using the CMS UI or in advanced cases it's data coming from SQL, CSV or elsewhere. This data could also be combined from multiple sources.  
+    _By default this just magically works, you don't have to do anything!_
 
 ## Deeper Dive into the Server (Data, Prepare, Awesomeize)
 
@@ -27,9 +27,11 @@ The bottom shows what happens on the server:
 
 ## Understanding Data
 
-TODO: explain, then link to data
+This is where **Data** comes in:
 
 [!include["App browser js"](../../shared/app/app-server-data.md)]
+
+Data has it's own chapter in the docs [](xref:Basics.Data.Index)
 
 
 ## Preparing Data
