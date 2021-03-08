@@ -4,12 +4,16 @@ uid: Basics.Browser.Index
 
 # What Happens in the Browser...
 
-
 In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
 
-<img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
 
-This is what web-systems do at the top-level. On the top you see what happens in the browser (the purple boxes).
+<div class="overlay-container" style="float: right; width: 300px">
+  <div class="overlay-box" style="left: 0%; top: 0%; height: 37%; width: 100%"></div>
+  <img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
+</div>
+
+
+This is what web-systems do from a bird's-eyes perspective. On the top you see what happens in the browser (the purple boxes).
 
 1. **Show**: Output using HTML and a little CSS + JS. This is the simplest way to work with 2sxc.
 1. **Interact**: Content or SPAs where the UI does some hard work like reorganizing data and getting data from JSON endpoints. This requires additional skills.
@@ -65,6 +69,7 @@ You may want to learn more about
     1. using inline JSON
     1. using HTML attributes
     1. using REST APIs to get data / content-items
+    1. the JSON format of data in the APIs
 
 ## Create Awesome SPAs (Single-Page-Applications)
 
