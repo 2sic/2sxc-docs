@@ -1,13 +1,9 @@
 ---
 uid: NetCode.Debug.Index
 ---
-# Debugging 2sxc
+# 2sxc Insights for Debugging Server-Code
 
-This should give you some minimal guidance into debugging 2sxc. 
-
-## Debug Server Side Code
-
-For this you have the following tools at your disposal:
+This should give you some minimal guidance into debugging 2sxc. You have the following tools at your disposal:
 
 1. **2sxc Insights** is a real-time log of what's happening on each request. You can access it through the admin-toolbar (rotate the more-button till you see a speedometer and click on it). This is the most powerful and in-depth system which also gives you insights when no errors are thrown, but you expect different results. 
 1. **DNN Event Log** are a standard part of DNN and give you error details when things break. 

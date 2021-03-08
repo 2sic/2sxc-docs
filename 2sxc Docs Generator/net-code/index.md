@@ -57,13 +57,9 @@ This documentation contains the following sections
 
 ## Important APIs when Working with Content-Items/Data
 
+TODO: this must be moved elsewhere
+
 1. [DataSource](xref:Specs.DataSources.DataSource) and [DataStream](xref:ToSic.Eav.DataSources.IDataStream), the core concept for data read/processing/delivery
     1. [List of all DataSource Objects](xref:Specs.DataSources.ListAll)
     3. [how to create custom data sources](http://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query)
-
-## Advanced APIs
-
-1. [Content-Blocks API](xref:NetCode.Razor.Blocks) to render inner-content (see also the [concept](xref:Specs.Cms.InnerContent))
-
-
 

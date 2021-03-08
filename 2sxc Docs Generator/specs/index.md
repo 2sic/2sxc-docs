@@ -6,4 +6,3 @@ uid: Specs.Home
 In the **Specifications** you'll find things like list of data-types, data-sources etc. 
 
 They enhance the API and help you understand things better.
-
