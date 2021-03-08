@@ -60,8 +60,6 @@ You may want to learn more about:
 
 ## Understanding Data
 
-This is where **Data** comes in:
-
 [!include["App browser js"](../../shared/app/app-server-data.md)]
 
 Data has it's own chapter in the docs [](xref:Basics.Data.Index)

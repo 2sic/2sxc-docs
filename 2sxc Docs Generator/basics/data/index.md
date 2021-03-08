@@ -46,17 +46,7 @@ Let's look at each piece in detail.
 > [!TIP]
 > An App usually has a lot of Content-Types.
 
-**Content-Types** are a configuration which contains:
-
-1. The list of fields the Content-Type has with the technical name, like `ProfilePhoto`
-1. Edit-UI information for the edit form
-    1. The order of the fields should be shown in when editing
-    1. A user friendly name like `Profile Photo` and editing help texts like `This should only contain head & shoulders`
-    1. The **Input-Type** which the UI should show, like `Hyperlink` (which means that it's a link or file)
-    1. **Input-Type** configuration, for example `AllowUpload` etc.
-1. Optionally some of the Edit-UI information in more languages like `Profilbild` in German
-1. Optionally permission information like _May be used in Mobile Apps for read-only_
-
+Read more about [](xref:Basics.Data.ContentType)
 
 
 ## Global / Shared Types

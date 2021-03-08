@@ -16,13 +16,13 @@ The EAV is multi-tenant, and each tenant is called a **Zone**. This corresponds 
 
 ## Apps and Data in Apps
 
-Every App contains [Content-Types](xref:Specs.Data.ContentTypes) and [Entities](xref:Specs.Data.Entities) - like this:  
+Every App contains [Content-Types](xref:Basics.Data.ContentType) and [Entities](xref:Specs.Data.Entities) - like this:  
 
 <br>
 <img src="./assets/app-content-type-entity.png" width="100%">
 <br><br>
 
 * **Content Types** are the schema, they define what fields an entity has.  
-	read more about it in [](xref:Specs.Data.ContentTypes)
+	read more about it in [](xref:Basics.Data.ContentType)
 * **Entities** are the data-items, they contain the content.  
 	read more about it in [](xref:Specs.Data.Entities)
