@@ -77,29 +77,15 @@ The Content-Type will define what fields exist, what is required and what order 
 
 ---
 
-## Content-Type - Technical Stuff
-
-> [!WARNING]
-> What follows is very technical. For most use cases you don't need to know this stuff. 
-
-### Content-Type Schema and Field-Definitions
-
-Content-Types are internally structured as follows (in C# / .net):  
- 
-<br>
-<img src="./assets/content-type-internal-structure.png" width="100%">
-<br>
+## Content-Type - More Information
 
 #### Identity of a Content Type: Name and StaticName
 
 Each content-type has a _Name_, which is nice for a human to read, use and program with. There is a second identifier called _StaticName_ which is usually a GUID, but in rare cases it's a string like `App-Settings`. This identifier is used internally - for example when a View references a Content-Type.
 
 #### Storage
-Most Content-Types are stored in the database, including all the Content-Types in your App. 
-Special global Content-Types are stored in the file system. These are called [](xref:Basics.Data.ContentType.FileStorage)
-
-#### Metadata of Content-Types and Attributes
-Both the Content-Type and Attributes can have _Metadata_ providing more information about them. 
+Most Content-Types in your App are stored in the [SQL database](xref:Basics.Data.ContentType.SqlStorage).
+System and global Content-Types are stored in the file system. These are called [](xref:Basics.Data.ContentType.FileStorage)
 
 #### Field Types
 Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Basics.Data.Fields.Index).

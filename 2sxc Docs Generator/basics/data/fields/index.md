@@ -1,11 +1,11 @@
 ---
 uid: Basics.Data.Fields.Index
 ---
-# Field Types
+# Content-Type Fields
 
 [!include["Data"](../_shared-content-types.md)]
 
-This explains **Hyperlink Fields**. For an overview check out [](xref:Basics.Data.Index).
+This explains **Content-Type Fields**. For an overview check out [](xref:Basics.Data.Index).
 
 ---
 

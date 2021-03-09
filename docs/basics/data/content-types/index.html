@@ -184,21 +184,12 @@ or WebApi - for that, you want to read <a class="xref" href="../../../net-code/d
 <p>Exporting all the <em>Items of a Content-Type</em> is a table-export of all the data. </p>
 </div>
 <hr>
-<h2 id="content-type---technical-stuff">Content-Type - Technical Stuff</h2>
-<div class="WARNING"><h5>Warning</h5><p>What follows is very technical. For most use cases you don&#39;t need to know this stuff. </p>
-</div>
-<h3 id="content-type-schema-and-field-definitions">Content-Type Schema and Field-Definitions</h3>
-<p>Content-Types are internally structured as follows (in C# / .net):  </p>
-<p><br>
-<img src="assets/content-type-internal-structure.png" width="100%">
-<br></p>
+<h2 id="content-type---more-information">Content-Type - More Information</h2>
 <h4 id="identity-of-a-content-type-name-and-staticname">Identity of a Content Type: Name and StaticName</h4>
 <p>Each content-type has a <em>Name</em>, which is nice for a human to read, use and program with. There is a second identifier called <em>StaticName</em> which is usually a GUID, but in rare cases it&#39;s a string like <code>App-Settings</code>. This identifier is used internally - for example when a View references a Content-Type.</p>
 <h4 id="storage">Storage</h4>
-<p>Most Content-Types are stored in the database, including all the Content-Types in your App. 
-Special global Content-Types are stored in the file system. These are called <a class="xref" href="specs/file-storage.html">File-Stored Content-Types</a></p>
-<h4 id="metadata-of-content-types-and-attributes">Metadata of Content-Types and Attributes</h4>
-<p>Both the Content-Type and Attributes can have <em>Metadata</em> providing more information about them. </p>
+<p>Most Content-Types in your App are stored in the <a class="xref" href="specs/sql-storage.html">SQL database</a>.
+System and global Content-Types are stored in the file system. These are called <a class="xref" href="specs/file-storage.html">File-Stored Content-Types</a></p>
 <h4 id="field-types">Field Types</h4>
 <p>Each field will be of a simple type like <em>text/string</em>, <em>number</em>, <em>boolean (yes/no)</em> or other. You can find the list of <a class="xref" href="../fields/index.html">types here</a>.</p>
 <h4 id="relationships">Relationships</h4>
