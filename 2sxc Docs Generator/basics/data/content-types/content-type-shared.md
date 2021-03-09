@@ -4,9 +4,11 @@ uid: Basics.Data.ContentType.Shared
 
 # App Shared "Ghost" Content-Types (⚠)
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](../_shared-content-types-app.md)]
 
 This explains **App Shared Content-Types** which used to be called **Ghost Content-Type**. For an overview check out [](xref:Basics.Data.Index).
+
+---
 
 > [!WARNING]
 > This is a very advanced topic which less than 1% of all developers use. 
@@ -16,7 +18,12 @@ This explains **App Shared Content-Types** which used to be called **Ghost Conte
 
 ## What is an App Shared Content-Type?
 
-**App Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in one App and re-used in specifi other Apps. 
+**App Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in one App and re-used in specific other Apps. 
+
+* They can only be used inside the App which are configured to _share_ the definition
+* The App data is in the export/import, but _not_ the **Content-Type Definition**
+* If you import an App with such data, the App containing the definition must be imported first.
+* These Content-Types are stored in the [SQL database](xref:Basics.Data.ContentType.SqlStorage)
 
 You rarely want to use this. 
 
@@ -27,7 +34,7 @@ You rarely want to use this.
 
 ## Why does this Feature exist?
 
-The feature was originally introduced in 2sxc 1.0 because at that time we didn't have [Global Shared Content-Types](xref:Basics.Data.ContentType.GlobalShared)
+The feature was originally introduced in 2sxc 1.0 because at that time we didn't have [Global Shared Content-Types](xref:Basics.Data.ContentType.Global)
 
 It has since been used in various complex sites. An example is a installation which has many Sites, each having the same **News App**. In such scenarios it's hard to keep changes synchronized, so it's usually implemented as follows:
 

@@ -1,12 +1,14 @@
 ---
-uid: Basics.Data.ContentType.GlobalShared
+uid: Basics.Data.ContentType.Global
 ---
 
-# Global Shared Content-Types (⚠)
+# Global Content-Types (⚠)
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](../_shared-content-types-global.md)]
 
-This explains **Global Shared Content-Types**. For an overview check out [](xref:Basics.Data.Index).
+This explains **Global Content-Types**. For an overview check out [](xref:Basics.Data.Index).
+
+---
 
 > [!WARNING]
 > This is a very advanced topic which less than 1% of all developers use. 
@@ -14,11 +16,17 @@ This explains **Global Shared Content-Types**. For an overview check out [](xref
 > You almost certainly will _not_ need this. So if you start playing around with this, 
 > make sure that you really need this. 
 
-## What is a Global Shared Content-Type?
+## What is a Global Content-Type?
 
-**Global Shared Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in a central location and available in all Apps of your system. 
+**Global Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in a central location and available in all Apps of your system. 
 
-For most _Content Management_ scenarios you don't want to use this. 
+* These are custom Content-Types which are treated like System Content-Types. 
+* They can be used inside _every single App_
+* The App data is in the export/import, but _not_ the **Content-Type Definition**. 
+* If you import an App with such data, the **Global Type** must be configured first.
+* These Content-Types are stored in the [file system](xref:Basics.Data.ContentType.FileStorage)
+
+For most scenarios you don't want to use this. 
 
 ## How it works
 
@@ -27,7 +35,7 @@ For most _Content Management_ scenarios you don't want to use this.
 
 ## Why does this Feature exist?
 
-2sxc uses this concept for all the internal Content-Types. So any time you edit Field-settings or Visual-Query configurations, they use Global Shared Content-Types. 
+2sxc uses this concept for all the internal Content-Types. So any time you edit Field-settings or Visual-Query configurations, they use Global Content-Types. 
 
 We also have some really sophisticated solutions which use this feature. 
 
@@ -43,13 +51,13 @@ We also have some really sophisticated solutions which use this feature.
 
 ## Important Warnings
 
-Since the data for the **Global Shared Content-Types** is stored as **JSON Entities** there are a few drawbacks you should be aware of:
+Since the data for the **Global Content-Types** is stored as **JSON Entities** there are a few drawbacks you should be aware of:
 
-1. If you plan on using the raw SQL data (not recommended anyhow) then the JSON format used in Global Shared Content-Types adds quite a lot of complexity. 
-1. If you ever rename fields in the Global Shared Content-Type, the stored data will not follow the rename. From the systems perspective it has lost the old field and gotten a new one. 
+1. If you plan on using the raw SQL data (not recommended anyhow) then the JSON format used in Global Content-Types adds quite a lot of complexity. 
+1. If you ever rename fields in the Global Content-Type, the stored data will not follow the rename. From the systems perspective it has lost the old field and gotten a new one. 
 
 
-## Create a Global Shared Content-Type
+## Create a Global Content-Type
 
 Assume you really want to do this, here's how:
 
@@ -62,14 +70,14 @@ Assume you really want to do this, here's how:
 
 You should now have this Content-Type show up in every App. 
 
-## Update a Global Shared Content-Type
+## Update a Global Content-Type
 
 1. Make the updates in the original system
 1. Re-export the JSON
 1. Overwrite the original file
 1. Restart your system
 
-## Delete a Global Shared Content-Type
+## Delete a Global Content-Type
 
 1. Remove the JSON file
 1. Restart the system
@@ -77,7 +85,7 @@ You should now have this Content-Type show up in every App.
 
 ## Best Practices
 
-From our experience the main use case for Global Shared Content-Types is very technical, so the content-editor usually doesn't need to see this. So we strongly recommend placing it in an own **Scope**.
+From our experience the main use case for Global Content-Types is very technical, so the content-editor usually doesn't need to see this. So we strongly recommend placing it in an own **Scope**.
 
 
 ## History

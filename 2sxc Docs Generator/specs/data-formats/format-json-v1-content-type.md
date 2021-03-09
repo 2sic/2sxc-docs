@@ -3,7 +3,7 @@ uid: Specs.Data.Formats.JsonV1-ContentType
 ---
 # JSON Content-Type V1
 
-JSON based content-types are type-definitions which are stored as JSON. As of now we're using it to provide system-level types to the application (see [Concepts - file provided content-types](xref:Specs.Data.FileBasedContentTypes)) and for various automated testing. 
+JSON based content-types are type-definitions which are stored as JSON. As of now we're using it to provide system-level types to the application (see [Concepts - file provided content-types](xref:Basics.Data.ContentType.FileStorage)) and for various automated testing. 
 
 ## Description
 
@@ -194,7 +194,7 @@ Because JSON is itself a very loose data-format, and certain types like dates ar
 ## Read also
 
 * [](xref:Specs.Data.Formats.JsonV1)
-* [](xref:Specs.Data.FileBasedContentTypes)
+* [](xref:Basics.Data.ContentType.FileStorage)
 * [Blog post about json content-type definitions](https://2sxc.org/en/blog/post/deep-dive-json-content-type-definitions)
 
 

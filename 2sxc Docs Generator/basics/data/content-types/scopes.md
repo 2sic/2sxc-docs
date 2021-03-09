@@ -8,6 +8,8 @@ uid: Basics.Data.Scope
 
 This explains **Content-Type Scopes**. For an overview check out [](xref:Basics.Data.Index).
 
+---
+
 ## What is a Content-Type Scope?
 
 Content-Types have a _Scope_. This is like a category for the Content-Type. 
@@ -21,7 +23,7 @@ The other Scopes have internal and system Content-Types like `@String`.
 
 ## Nice to Know about Scopes
 
-You can easily create your own scope at any time. This is usually used for [](xref:Basics.Data.ContentType.GlobalShared) or if your App is getting really complex and has so many Content-Types that it confuses the Admin. 
+You can easily create your own scope at any time. This is usually used for [](xref:Basics.Data.ContentType.Global) or if your App is getting really complex and has so many Content-Types that it confuses the Admin. 
 
 ## History
 
