@@ -23,40 +23,23 @@ On the top you see what happens in the [browser](xref:Basics.Browser.Index):
 
 The bottom shows what happens on the [server](xref:Basics.Server.Index):
 
-1. **Awesomeize**: this is where you template the data and add logic.  
+1. **Awesomeize** is where you template the data and add logic.  
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
 1. **[Your Data](xref:Basics.Data.Index)** is the original material - created by an editor in the CMS or it's data coming from SQL, CSV or elsewhere. 
 
 ## How to Learn the Basics
 
-To learn the basics it's probably best to:
-
-1. First discover [Tutorials](xref:Tut.Razor.Home) and [many example Apps](xref:AppsCatalog)
-1. Then learn about [Data](xref:Basics.Data.Index)
-1. Then learn about [](xref:Basics.Server.Index)
-1. And finally learn about [](xref:Basics.Browser.Index)
-
+To learn the basics it's probably best tof first discover [Tutorials](xref:Tut.Razor.Home) and [many example Apps](xref:AppsCatalog)
 
 ## The Stack in Detail
 
-<img src="./stack/assets/stack-detailed.png" class="full-width">
+<div class="context-box1" width="100%">
+  [!include[](./stack/_shared-all.md)]
+</div>
 
-_Click on the image to zoom to learn more_
 
-or visit [](xref:Basics.Browser.Index) 
+Learn more about...
 
-## Deep Dive into the Client (Show, Interact, Edit)
-
-[!include["App browser"](../shared/app/app-browser-raw.md)]
-
-## Deep Dive into the Server (Data, Prepare, Awesomeize)
-
-Here's a diagram of what an App can have, and which parts you control:
-
-[!include["App diagram"](../shared/app/app-server-raw.md)]
-
-## Deep Dive into Data (Content, Data, Lists, Assets, Images)
-
-[!include["App browser js"](../shared/app/app-server-data.md)]
-
-_Click on the image to zoom or visit [](xref:Basics.Data.Index) to learn more_
+* [](xref:Basics.Browser.Index) 
+* [](xref:Basics.Server.Index)
+* [](xref:Basics.Data.Index)
