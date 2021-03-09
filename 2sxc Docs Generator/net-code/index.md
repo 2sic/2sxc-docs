@@ -4,19 +4,24 @@ uid: NetCode.Index
 
 # C#, Razor & Dynamic Code
 
-[!include["App stack awesomize"](../basics/stack/_shared-awesomeize.md)]
+When you implement solutions using 2sxc, most of your server-side code will be written in C#.
 
-When you implement solutions using 2sxc, most of your server-side code will be written in C# to create `.cs` or `.cshtml` files in the App folder:
+[!include["App server code"](../shared/app/app-server-code.md)]
 
-1. Razor components, shared Razor and Razor Code-Behind (`_*.cshtml` & `_*.code.cshtml`)
-1. Custom WebApi controllers (`*Controller.cs` files in the `api` folder)
+## C# Files in 2sxc Apps
+
+You will create many dynamic `.cs` or `.cshtml` files in the App folder:
+
+1. [Razor components](xref:NetCode.Razor.Index), shared Razor and Razor Code-Behind (`_*.cshtml` & `_*.code.cshtml`)
+1. [WebApi Controllers](xref:WebApi.Custom.Index) (`*Controller.cs` files in the `api` folder)
 1. Shared code (`*.cs` files in any folder)
 
-These files are in your App folder as **Dynamic Code** and have three core features:
- 
-1. The source code can be changed at any time
-1. Changes are immediately live without restarting the CMS
-1. Cool APIs 😎 help you work with dynamic data (Entities) 
+> [!TIP]
+> These files are in your App folder as **Dynamic Code** and have three core features:
+> 
+> 1. The source code can be changed at any time
+> 1. Changes are immediately live without restarting the CMS
+> 1. Cool APIs 😎 help you work with dynamic data (Entities) 
 
 
 ## Quick Example

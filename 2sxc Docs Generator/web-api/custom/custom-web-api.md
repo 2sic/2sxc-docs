@@ -4,9 +4,9 @@ uid: WebApi.Custom.Index
 
 # 2sxc Custom C# Web APIs
 
-[!include["App stack web-api"](../../basics/stack/_shared-web-api.md)]
-
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
+
+[!include[" Stack "](../../shared/app/app-server-web-api-custom.md)]
 
 ## Access Endpoints with JavaScript
 

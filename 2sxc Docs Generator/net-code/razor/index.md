@@ -4,7 +4,11 @@ uid: NetCode.Razor.Index
 
 # Razor Components / Templates
 
-Razor Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App. Here's an example:
+Razor Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App. 
+
+[!include["App server razor"](../../shared/app/app-server-razor.md)]
+
+Here's an example:
 
 ```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent

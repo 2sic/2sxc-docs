@@ -36,6 +36,15 @@ To learn the basics it's probably best to:
 1. Then learn about [](xref:Basics.Server.Index)
 1. And finally learn about [](xref:Basics.Browser.Index)
 
+
+## The Stack in Detail
+
+<img src="./stack/assets/stack-detailed.png" class="full-width">
+
+_Click on the image to zoom to learn more_
+
+or visit [](xref:Basics.Browser.Index) 
+
 ## Deep Dive into the Client (Show, Interact, Edit)
 
 [!include["App browser"](../shared/app/app-browser-raw.md)]

@@ -4,10 +4,14 @@ uid: NetCode.DynamicCode.Index
 
 # Dynamic Code API
 
-The following APIs are available on all 2sxc **Dynamic Code** - so you can use this in:
+Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a lot of helpers to work with [Dynamic Data](xref:NetCode.DynamicData.Index).
 
-1. Razor (including Code-Behind)
-1. Web API Controllers
+[!include["App server code"](../../shared/app/app-server-code.md)]
+
+The following APIs are available on all 2sxc **Dynamic Code**. You can use this in:
+
+1. [Razor](xref:NetCode.Razor.Index) (including Code-Behind)
+1. [WebAPI Controllers](xref:WebApi.Custom.Index)
 1. Helper Code files
 
 [!include["Razor Tutorials"](../../shared/tutorials/razor.md)]

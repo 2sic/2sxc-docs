@@ -8,6 +8,8 @@ uid: NetCode.DynamicData.Index
 Once you've gotten the basics to work, it's important that you understand what's really happening in the background. 
 This section should give you that overview. 
 
+[!include["App server code"](../../shared/app/app-server-code.md)]
+
 ## DynamicEntities vs. Entities
 
 When working with 2sxc data, there are two core data objects you for everything:
