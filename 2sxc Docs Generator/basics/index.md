@@ -8,11 +8,12 @@ In 2sxc most things _just magically work_. These docs give you a deep understand
 
 
 
-## How Systems and Users Interact
+## The Stack: How Systems and Users Interact
 
 This is what web-systems do from a bird's-eye perspective. 
 
-<img src="./assets/show-interact-edit.png" align="right" class="float-right" width="300px">
+[!include["App stack"](./stack/_shared-raw.md)]
+
 
 On the top you see what happens in the [browser](xref:Basics.Browser.Index):
 

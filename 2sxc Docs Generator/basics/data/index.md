@@ -4,11 +4,7 @@ uid: Basics.Data.Index
 
 # Understanding Data...
 
-
-<div class="overlay-container" style="float: right; width: 300px">
-  <div class="overlay-box" style="left: 0%; top: 82%; height: 18%; width: 100%"></div>
-  <img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
-</div>
+[!include["App stack data"](../stack/_shared-data.md)]
 
 Data in 2sxc covers various aspects: 
 

@@ -7,10 +7,7 @@ uid: Basics.Browser.Index
 In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
 
 
-<div class="overlay-container" style="float: right; width: 300px">
-  <div class="overlay-box" style="left: 0%; top: 0%; height: 37%; width: 100%"></div>
-  <img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
-</div>
+[!include["App stack browser"](../stack/_shared-browser.md)]
 
 
 This is what web-systems do from a bird's-eyes perspective. On the top you see what happens in the browser (the purple boxes).

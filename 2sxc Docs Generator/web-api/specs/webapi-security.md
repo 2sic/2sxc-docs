@@ -77,7 +77,7 @@ This is documented separately in [](xref:WebApi.Custom.Security)
 
 ## Read also
 
-- [DotNet WebApi](xref:WebApi.Custom)
+- [DotNet WebApi](xref:WebApi.Custom.Index)
 - [](xref:WebApi.Specs.Context) - every request has a context, it's best you read up on that
 - [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
 

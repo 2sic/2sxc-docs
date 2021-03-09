@@ -2,6 +2,8 @@
 uid: WebApi.Index
 ---
 
+[!include["App stack web-api"](../basics/stack/_shared-web-api.md)]
+
 # 2sxc Web API
 
 2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP `GET` to an endpoint like `app/News/content/NewsItems/` and get a list of news items. 
@@ -72,7 +74,7 @@ You should find some code examples in this demo App
 ## Recommended Reading
 
 * [Data CRUD API](xref:WebApi.Content)
-* [DotNet WebApi](xref:WebApi.Custom)
+* [DotNet WebApi](xref:WebApi.Custom.Index)
 * [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
 
 ## History

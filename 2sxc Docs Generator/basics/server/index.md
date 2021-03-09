@@ -6,10 +6,7 @@ uid: Basics.Server.Index
 
 You should get an idea of how the system works and all the things you can customize. This overview lets you see the essential parts of any **App** including the main **Content**. 
 
-<div class="overlay-container" style="float: right; width: 300px">
-  <div class="overlay-box" style="left: 0%; top: 54%; height: 30%; width: 100%"></div>
-  <img src="../assets/show-interact-edit.png" align="right" class="float-right" width="300px">
-</div>
+[!include["App stack awesomize-prepare"](../stack/_shared-server-ap.md)]
 
 This is what web-systems do from a bird's-eyes perspective. The purple boxes show [what happens in the browser](xref:Basics.Browser.Index). They gray boxes show what happens on the server:
 
@@ -28,8 +25,8 @@ You may want to learn more about:
 
 1. [Bundling / Optimizing Assets](xref:HowTo.Output.Assets)
 1. Image Resizing
-1. Creating App Templates using Razor
-1. Creating custom WebApi Controllers
+1. [Create App Templates using Razor](xref:NetCode.Index)
+1. [Create custom WebApi Controllers](xref:WebApi.Custom.Index)
 1. Using the Headless REST API
 
 
@@ -37,14 +34,14 @@ You may want to learn more about:
 
 Something must determine what data should be shown or worked on, which is what happens in the **Prepare** step. 
 
-[!include["App browser js"](../../shared/app/app-server-prepare.md)]
+[!include["App server prepare"](../../shared/app/app-server-prepare.md)]
 
 
 There are a few standard use cases:
 
 1. When working with basic content, the editor has added content to a specific module, so the **Prepare** step will retrieve this data and give it to the template. 
-1. If a template is configured to use a [Query](xref:todo) then 2sxc will prepare the query and give that to the template to work with. 
-1. The template / WebAPI can also always access all the data in the App using [App.Data](xref:todo)
+1. If a template is configured to use a [Query](xref:Specs.DataSources.Intro) then 2sxc will prepare the query and give that to the template to work with. 
+1. The template / WebAPI can also always access all the data in the App using [App.Data](xref:NetCode.DynamicCode.App)
 1. If you need the data in JavaScript then the headless APIs provide access to both the items, lists and queries of the app.
 
 You may want to learn more about:

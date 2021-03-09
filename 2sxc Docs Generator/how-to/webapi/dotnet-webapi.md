@@ -2,4 +2,4 @@
 uid: HowTo.WebApi
 ---
 
-This page has moved to [](xref:WebApi.Custom)
+This page has moved to [](xref:WebApi.Custom.Index)

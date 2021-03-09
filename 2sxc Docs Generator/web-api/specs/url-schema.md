@@ -167,7 +167,7 @@ The `[edition]` is relevant if you're using [Polymorphism](xref:Specs.Cms.Polymo
 
 ## Read also
 
-- [DotNet WebApi](xref:WebApi.Custom)
+- [DotNet WebApi](xref:WebApi.Custom.Index)
 - [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
 
 ## Demo App and further links

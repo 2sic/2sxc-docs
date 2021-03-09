@@ -1,18 +1,14 @@
 ---
-uid: WebApi.Custom
+uid: WebApi.Custom.Index
 ---
 
 # 2sxc Custom C# Web APIs
 
+[!include["App stack web-api"](../../basics/stack/_shared-web-api.md)]
+
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
 
-> [!TIP]
-> **Discover this Feature**  
-> Before you spend too much time reading docs, best discover this live. 
-> You can find a real-life example in our [Razor-Tutorials](xref:Tut.WebApi). 
-
-
-## How to Access the Endpoints with JavaScript
+## Access Endpoints with JavaScript
 
 You can find a good example on [live tutorials](xref:Tut.WebApi) or in the [Mobius Forms App](xref:App.Mobius). Calling these is as follows:
 
@@ -21,6 +17,8 @@ You can find a good example on [live tutorials](xref:Tut.WebApi) or in the [Mobi
 
 Most WebApi Actions will require additional parameters. Just add them as url-parameters like `?param1=This&param2=That`
 
+
+[!include["WebApi Tutorials"](../../shared/tutorials/web-api.md)]
 
 
 ## Basic Example

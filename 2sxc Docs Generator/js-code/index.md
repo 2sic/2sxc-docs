@@ -8,6 +8,7 @@ _We're reorganizing our JS API Docs - they will be moved to here. This is still 
 
 # JavaScript and TypeScript Code
 
+[!include["App stack browser"](../basics/stack/_shared-browser.md)]
 
 Many people implement JavaScript or TypeScript solutions using 2sxc, as it's ideal both for simple scripts like galleries as well as for bundling and distributing complex Angular or React SPAs.
 

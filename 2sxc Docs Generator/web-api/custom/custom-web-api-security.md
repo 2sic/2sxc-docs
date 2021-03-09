@@ -146,7 +146,7 @@ In most cases it will do exactly what you expect - and each condition must be me
 
 ## Read also
 
-- [DotNet WebApi](xref:WebApi.Custom)
+- [DotNet WebApi](xref:WebApi.Custom.Index)
 - [](xref:WebApi.Specs.Security) - understanding Security for all Web API calls
 - [](xref:WebApi.Specs.Context) - every request has a context, it's best you read up on that
 
