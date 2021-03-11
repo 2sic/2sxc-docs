@@ -68,7 +68,7 @@ A build instruction consist of 1-3 parts
   * `group` - to add a group of buttons
     * `group=my-group-name` gives the group a name, for placing buttons in it
     * `-group=
-  * `add`, `edit` etc. - all known [commands of buttons](xref:Specs.Js.Commands)
+  * `add`, `edit` etc. - all known [commands of buttons](xref:JsCode.Commands.Index)
 
 
 
@@ -226,7 +226,7 @@ The following button groups exist by default. You can target them to add your bu
 
 ## Read also
 
-* check out the list of [commands/buttons](xref:Specs.Js.Commands)
+* check out the list of [commands/buttons](xref:JsCode.Commands.Index)
 
 
 ## Demo App and further links

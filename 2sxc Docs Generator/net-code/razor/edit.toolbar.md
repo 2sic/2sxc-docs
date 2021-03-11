@@ -78,7 +78,7 @@ _Note:_ at the moment, the buttons are grouped into bundles like
 4. app buttons
 
 
-The actions can be a combination of known button-names. Here's the current [JavaScript catalog of commands](xref:Specs.Js.Commands): 
+The actions can be a combination of known button-names. Here's the current [JavaScript catalog of commands](xref:JsCode.Commands.Index): 
 
 The following commands all require `target` to be set, or they only make sense in a List-setup - see also [content and not as data](xref:Blog.DataVsContent). 
 
@@ -93,9 +93,9 @@ The following commands all require `target` to be set, or they only make sense i
 1. `replace` will open a dialog to swap the current item in the 
 [content list](xref:Blog.DataVsContent)
 
-_Note: the command `metadata` - is a bit special, not supported in the `actions` parameter - use the complex  `toolbar:` instead and read the instructions for the [JS Commands](xref:Specs.Js.Commands)._
+_Note: the command `metadata` - is a bit special, not supported in the `actions` parameter - use the complex  `toolbar:` instead and read the instructions for the [JS Commands](xref:JsCode.Commands.Index)._
 
-For many more commands you should check the [JS Commands](xref:Specs.Js.Commands)), which covers many more like `app-import`, `layout`, `develop`, `contenttype`, `contentitems`, `app`, `zone`, `more` etc.  
+For many more commands you should check the [JS Commands](xref:JsCode.Commands.Index)), which covers many more like `app-import`, `layout`, `develop`, `contenttype`, `contentitems`, `app`, `zone`, `more` etc.  
 
 ## More About the Prefill
 Basically this is a .net object which will be serialized to JSON and used to prefill a new item. Usually you'll just create a new, anonymous object like `new { Title = "xyz", Date = ... }`.

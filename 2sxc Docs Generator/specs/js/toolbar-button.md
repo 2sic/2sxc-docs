@@ -146,7 +146,7 @@ Note that retrieving defaults requires the button to know which command it's for
 
 ## The Button Properties 
 
-1. object `command` the internal command which will be called, should contain both the name and the parameters like `{ action: "new", contentType: "BlogPost"}` see also [commands](xref:Specs.Js.Commands)
+1. object `command` the internal command which will be called, should contain both the name and the parameters like `{ action: "new", contentType: "BlogPost"}` see also [commands](xref:JsCode.Commands.Index)
 1. string `icon` a css class giving the button the icon. It can be one of the icons 2sxc provides, or it can be your own - just be sure to include a CSS & font which resolves the icon
 1. string `title` a text which is shown on mouse-over. Note that 2sxc will try to run it through the translator, so you can also use placeholders like `Toolbar.Metadata`
 1. string `classes` comma separated list of class-names like `makeRed,glowHover`

@@ -81,7 +81,7 @@ You should now have a _red_ + button like this:
 > [!IMPORTANT]
 > The term `new` in this example means we want a button of _type_ `new` which will open the dialog to create new entities.  
 > We could also write `app&color=red` which would add a button to manage the app. 
-> So `new` ≠ 'new button' but 'button to add a new entity'. The full list of button names can be found in the [CMS Commands list](xref:Specs.Js.Commands).
+> So `new` ≠ 'new button' but 'button to add a new entity'. The full list of button names can be found in the [CMS Commands list](xref:JsCode.Commands.Index).
 
 ### Adding more Buttons
 
@@ -119,7 +119,7 @@ Now maybe you don't like to allow your editors to change the view - so let's do 
 
 <img src="./assets/step-1-without-view.png" width="100%">
 
-So you can add / remove any button you want. You can find a [full list of button names (command names)](xref:Specs.Js.Commands).
+So you can add / remove any button you want. You can find a [full list of button names (command names)](xref:JsCode.Commands.Index).
 
 ### Modifying Existing Buttons with `%`
 
@@ -253,4 +253,4 @@ If you really want to do deep debugging, you should use the `$2sxc.insights()` c
 Basically you have what it takes. To go further: 
 
 * review the [specs](xref:Specs.Cms.Toolbars.Build).
-* check out the list of [commands/buttons](xref:Specs.Js.Commands)
+* check out the list of [commands/buttons](xref:JsCode.Commands.Index)

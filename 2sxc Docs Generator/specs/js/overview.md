@@ -15,10 +15,10 @@ You can create awesome solutions, customizing the edit-experience and working wi
 
 ## Toolbars, Buttons and Commands
 1. In-page edit toolbars for [html](xref:Specs.Js.Toolbar.Intro) or [javascript](xref:Specs.Js.Toolbar.Js) with [settings](xref:Specs.Js.Toolbar.Settings)
-1. internals of a [command (with full list)](xref:Specs.Js.Commands), of [buttons](xref:Specs.Js.Toolbar.Buttons) and creating [custom buttons](xref:Specs.Js.Commands.Code)
+1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:Specs.Js.Toolbar.Buttons) and creating [custom buttons](xref:JsCode.Commands.Code)
 
 ## The quickE (Quick Edit) experience
-1. customizing the [quickE (quick edit) experience](xref:Specs.Js.QuickE)
+1. customizing the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)
 
 ## Using 2sxc with Popular JS Libraries (TODO)
 1. [Angular / dnn-sxc-angular](xref:JsCode.Angular.Index)

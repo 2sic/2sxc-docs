@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Moved to  | 2sxc and EAV 10 </title>
+    <title>Html &amp; Js: Buttons with Custom Code in a Toolbar | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Moved to  | 2sxc and EAV 10 ">
+    <meta name="title" content="Html &amp; Js: Buttons with Custom Code in a Toolbar | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -67,7 +67,7 @@
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../specs/index.html" title="Specs">Specs</a>
                       </li>
                       <li>
@@ -76,7 +76,7 @@
                       <li>
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
@@ -117,9 +117,85 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="moved-to-xrefjscodecommandscode">Moved to <a class="xref" href="../../js-code/commands/custom-code.html">Html &amp; Js: Buttons with Custom Code in a Toolbar</a></h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.Commands.Code">
+<h1 id="html--js-buttons-with-custom-code-in-a-toolbar">Html &amp; Js: Buttons with Custom Code in a Toolbar</h1>
 
+<p>In some cases you want to add buttons to a toolbar, which run custom JavaScript code. </p>
+<h2 id="how-to-use">How to use</h2>
+<p>Here&#39;s a basic example showing a 2sxc-toolbar with a custom code:</p>
+<pre><code class="lang-html">&lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;{
+    &quot;groups&quot;: [{ 
+        &quot;buttons&quot;: [{ 
+            &quot;command&quot;: { 
+                &quot;action&quot;: &quot;custom&quot;, 
+                &quot;customCode&quot;: &quot;alert(\&quot;custom button!\&quot;)&quot;
+            }
+        }]
+    }]
+}&#39;&gt;&lt;/ul&gt;
+</code></pre><p>This shows 2sxc-toolbar with 1 button, calling the <a class="xref" href="index.html">command</a> <strong>custom</strong> and giving it the code <strong>customCode</strong> which will be executed. </p>
+<p>Here&#39;s a more extensive example:</p>
+<pre><code class="lang-html">&lt;div class=&quot;sc-element&quot;&gt;
+    custom js action
+    &lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;{&quot;groups&quot;: [
+        { &quot;buttons&quot;: [
+            { 
+                &quot;command&quot;: { 
+                    &quot;action&quot;: &quot;custom&quot;, 
+                    &quot;customCode&quot;: &quot;alert(\&quot;custom button!\&quot;)&quot;
+                },
+                &quot;icon&quot;: &quot;icon-sxc-code&quot;, 
+                &quot;title&quot;: &quot;my custom code&quot;
+            },{
+                &quot;command&quot;: {
+                    &quot;action&quot;: &quot;custom&quot;, 
+                    &quot;customCode&quot;: &quot;someCustomAction(settings, event, sxc);&quot;
+                }, 
+                &quot;icon&quot;: &quot;icon-sxc-code&quot;, 
+                &quot;title&quot;: &quot;my custom code&quot;
+            },
+            &quot;layout&quot;, 
+            &quot;more&quot;
+        ]}, {
+            &quot;buttons&quot;: &quot;layout,more&quot;
+        }
+    ], &quot;debug&quot;: true}&#39;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    function someCustomAction(settings, event, sxc) {
+        console.log(&quot;found these settings: &quot;, settings); 
+        console.log(&quot;for this click event: &quot;, event); 
+        console.log(&quot;in the context of this sxc: &quot;, sxc);
+        alert(&quot;check js console output&quot;);
+    }
+&lt;/script&gt;
+</code></pre><p>The above example also provides a custom icon, a title and a second button which also knows about the <strong>event</strong> (the click), the <strong>settings</strong> (like the entityId) and the <strong>sxc</strong> (the controller).</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Internally, the <strong>command</strong> custom is meant to simply execute the code which is in the attribute <code>customCode</code>. That&#39;s all it does. </p>
+<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
+<h3 id="json-encode-if-using-data-toolbar-attribute">JSON Encode if using data-toolbar attribute</h3>
+<p>If you&#39;re adding this in the HTML, then everything must be correctly JSON encoded (which isn&#39;t exactly fun). So if you plan to do that, we recommend to put most of the JS in an external file and just put the call to it in the button itself. </p>
+<h3 id="more-specs-on-click">More Specs On Click</h3>
+<p>The second example shows 3 additional variables which are available inside the click event. They are</p>
+<ul>
+<li>settings - these are the parameters passed in, like entityId</li>
+<li>event - this is the JS event like click</li>
+<li>sxc - this is the current sxc-controller - you can also access sxc.manage if you need it</li>
+</ul>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="index.html">commands</a> </li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/tutorial-for-the-javascript-apis-and-custom-toolbars">JS Manage / Toolbar API Tutorial App</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc v08.06</li>
+</ol>
 </article>
           </div>
           
@@ -128,7 +204,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/js/command-custom-code.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/commands/custom-code.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

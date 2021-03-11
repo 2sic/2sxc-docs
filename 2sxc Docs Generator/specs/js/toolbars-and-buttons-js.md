@@ -34,7 +34,7 @@ The rest of the magic lies in the configuration objects which you pass into thes
 
 The following terms help you understand what we're doing:
 
-1. 2sxc has many [commands](xref:Specs.Js.Commands) like `new`, `edit` etc. which you can **run** with parameters like:  
+1. 2sxc has many [commands](xref:JsCode.Commands.Index) like `new`, `edit` etc. which you can **run** with parameters like:  
 `command = { action: 'new', contentType: 'BlogPost'};`
 3. a **button** will run such a command when clicked, but for it to work, the button must have the command ready, including the necessary parameters. In JavaScript a button is defined like:   
 `btn = { command: { action: "...", ...}, icon: "...", ... };`  
@@ -91,8 +91,8 @@ In most cases you just care about the shorthand. But in advanced cases where you
 ## Buttons and Commands
 
 1. [Buttons are explained in more details here](xref:Specs.Js.Toolbar.Buttons)
-1. [Commands which run when a button is pressed are here](xref:Specs.Js.Commands)
-1. [Custom commands which run your JS are here](xref:Specs.Js.Commands.Code)
+1. [Commands which run when a button is pressed are here](xref:JsCode.Commands.Index)
+1. [Custom commands which run your JS are here](xref:JsCode.Commands.Code)
 
 ## Button group
 
@@ -170,7 +170,7 @@ var tb2 = {
 You can customize _hover behavior_, _show behavior_ and more. Read about it in the [toolbar settings](xref:Specs.Js.Toolbar.Settings).
 
 ## Custom Buttons with Custom Commands
-You can easily create custom buttons with custom icons, parameters and even custom scripts. It's not well documented yet, but it's best to just look through the tutorial app below. It's also explained more in the [Html Custom Code](xref:Specs.Js.Commands.Code) 
+You can easily create custom buttons with custom icons, parameters and even custom scripts. It's not well documented yet, but it's best to just look through the tutorial app below. It's also explained more in the [Html Custom Code](xref:JsCode.Commands.Code) 
 
 
 ## Demo App and further links

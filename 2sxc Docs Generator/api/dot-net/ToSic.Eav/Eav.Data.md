@@ -11,7 +11,7 @@ To better understand this stuff, best read about the [](xref:Specs.Data.Intro).
 <div style="display: inline-block;">
 	[<img src="../../../specs/data/assets/entity.png" width="48%" align="left">](xref:Specs.Data.Intro)
 
-	[<img src="../../../specs/data/assets/contenttype.png" width="48%" align="right">](xref:Specs.Data.Intro)
+	[<img src="../../../basics/data/content-types/specs/assets/content-type-internal-structure.png" width="48%" align="right">](xref:Specs.Data.Intro)
 </div>
 
 <br>
