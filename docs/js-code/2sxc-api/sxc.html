@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JQuery in DNN and 2sxc | 2sxc and EAV 10 </title>
+    <title>The Module-Instance Sxc Controller | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JQuery in DNN and 2sxc | 2sxc and EAV 10 ">
+    <meta name="title" content="The Module-Instance Sxc Controller | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -117,45 +117,78 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.Dnn.JQuery">
-<h1 id="jquery-in-dnn-and-2sxc">JQuery in DNN and 2sxc</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Sxc.Index">
+<h1 id="the-module-instance-sxc-controller">The Module-Instance Sxc Controller</h1>
 
-<p>Often you&#39;ll need and want jQuery, but when you don&#39;t it shouldn&#39;t be loaded for performance reasons. </p>
-<div class="TIP"><h5>Tip</h5><p>Removing jQuery and jQueryUI will boost your mobile PageSpeed like crazy. 
-So only include it on pages where you really need it. </p>
-</div>
-<h2 id="how-dnn-auto-loades-jquery">How DNN Auto-Loades jQuery</h2>
-<p>There is some history to this which we&#39;ll explain briefly. DNN made jQuery a first-class citizen around DNN 4, and since then most of the UI was jQuery based. For a while there even was a standard that buttons etc. should be built and styled with jQuery UI. That is not the case any more. You can now easily run DNN (at least in browsing mode, not editing) without jQuery. </p>
-<p>But because <em>jQuery was always there</em> developers never noticed that they could leave it away, and many parts like Templates would simply rely on them. There were also many things that automatically added jQuery but were never noticed. Here some important examples:</p>
+<p>The module-specific <code>sxc</code>-controller is the core JavaScript object helping you in these advanced cases:  </p>
 <ol>
-<li>2sxc always used the ServicesFramework of DNN which internally auto-added jQuery</li>
-<li>Most DNN websites use popups for login, and just doing this automatically adds jQueryUI and jQuery to the page. You can easily stop this using the recipe <a href="https://azing.org/dnn-community/r/fjgSyTfI">Remove jQueryUI from my page</a></li>
+<li>if you want full control over the edit-experience with custom buttons etc. </li>
+<li>when you want to use view-data as an asyc-JS call</li>
+<li>if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or DNN-WebApi</li>
 </ol>
-<p>In case your code is running on a page without jQuery but you need it, your code should tell DNN that you want jQuery, like this:</p>
-<iframe src="https://azing.org/dnn-community/r/YqJFbNKH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-<div class="WARNING"><h5>Warning</h5><p>Don&#39;t manually add urls to the jQuery files, make sure you use the official API. This should help you prevent loading jQuery multiple times and avoid conflicts between jQuery version.</p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>If you do need a newer version of jQuery, that is possible but needs some tweaking to get them to run side-by-side. It&#39;s done using the <a href="https://api.jquery.com/jQuery.noConflict/">jQuery.noConflict()</a>.</p>
-</div>
-<h2 id="how-2sxc-loads-jquery-in-dnn">How 2sxc loads jQuery in DNN</h2>
+<h2 id="how-to-use">How to use</h2>
+<p>First you must ensure that you have the <a class="xref" href="2sxc.html"><code>$2sxc</code> manager</a> on your page, which will get you a module-specific <code>sxc</code> controller. Read about the <a class="xref" href="2sxc.html">$2sxc manager</a> here. </p>
+<p>Here&#39;s a simple example (assuming you have the $2sxc manager):</p>
+<pre><code class="lang-HTML">&lt;a onclick=&quot;var sxc = $2sxc(this); alert(sxc.isEditMode())&quot;&gt;
+    click me 
+&lt;/a&gt;
+</code></pre><p>The code above shows</p>
+<ol>
+<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> manager, based on the current context <code>this</code></li>
+<li>how to ask if we&#39;re in edit-mode</li>
+</ol>
+<p>Here&#39;s another quick example, calling a C# web-api endpoint: </p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
+sxc.webApi.post(&quot;Form/ProcessForm&quot;)
+    .success(function(result) {
+        // ....
+    });
+</code></pre><h2 id="how-to-get-the-current-contexts-sxc-controller">How to Get the Current Context&#39;s <code>sxc</code> Controller</h2>
+<p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>-controller, as it is unique for each DNN-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the <a class="xref" href="2sxc.html">$2sxc Manager docs</a>.</p>
+<h2 id="the-api-of-an-initialized-module-sxc-controller">The API of an Initialized Module <code>sxc</code> Controller</h2>
 <ul>
-<li>Up until 2sxc 10.24, every 2sxc module automatically loaded jQuery because 2sxc used the ServicesFramework of DNN</li>
-<li>Starting from 2sxc 10.25 <ul>
-<li>old templates auto-load jQuery for backward compatibility. This includes token-templates and Razor templates which don&#39;t have an <code>@inherits</code> statement at the beginning. </li>
-<li>Anything new done using the <a class="xref" href="../../net-code/razor/razor-component.html">RazorComponent</a> will not do that unless your template code requests it.</li>
+<li><code>.data</code> <em>object</em>: todo...</li>
+<li><code>.id</code> <em>int</em>: the id of this sxc-controller, usually the module-id</li>
+<li>~~<code>.cbid</code> <em>int</em>: internal use ~~</li>
+<li><code>.isEditMode()</code> <em>bool</em>: looks up if this module is editable - this can vary on each module</li>
+<li><code>.webApi...</code> <em>object</em>: helpers to call server side WebApis and REST resources</li>
+<li>~~<code>.showDetailedHttpError(...)</code> <em>void</em>: internal use ~~</li>
+<li><a class="xref" href="sxc.manage.html"><code>.manage...</code></a> <em>object</em> - to create your own buttons, toolbars or run CMS commands</li>
 </ul>
-</li>
-</ul>
-<p>In 2sxc 10.25 and newer, all core features of 2sxc <em>don&#39;t</em> need jQuery. So anonyomus browsing of your site won&#39;t require jQuery at all, even if you&#39;re doing API calls or using the <a class="xref" href="../2sxc-api/2sxc.html">$2sxc javascript API</a>. </p>
-<p>But what you do need (if you&#39;re using the new <a class="xref" href="../../net-code/razor/razor-component.html">RazorComponent</a>) is to tell 2sxc that you plan to use JavaScript and APIs, so that 2sxc can add the stuff to the page to make the magic happen. This is done with this line in your razor code:</p>
-<pre><code>@Edit.Enable(js:true)
-</code></pre><p>Because 2sxc doesn&#39;t use jQuery any more for normal stuff, this will have the following effect:</p>
+<h2 id="custom-toolbars-buttons-and-commands">Custom Toolbars, Buttons and Commands</h2>
+<p>Read the <a class="xref" href="sxc.manage.html">manage</a> documentation to discover more about the <code>getToolbar(...)</code>, <code>getButton(...)</code> or <code>run(...)</code> methods which let you customize the toolbars, buttons and use other UI elements like links to run commands like &quot;show layout selector&quot;. </p>
+<h2 id="working-with-the-json-data-of-the-current-module-todo">Working with the JSON Data of the Current Module (TODO)</h2>
 <ol>
-<li>Add a special header to the page containing information needed for API calls</li>
-<li>Load the 2sxc.api.min.js in the correct way</li>
+<li>The data object and how-to use, probably using the example of <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
+<li>Using the load-event, reload, and the &quot;one&quot; event</li>
+<li>The structure of the returned data</li>
 </ol>
-<p><em>It&#39;s important to note that this will not load jQuery.</em></p>
+<p>Short note: The data is loaded using jQuery and when it&#39;s returned and processed, a callback will be executed. This is different from modern promise-implementations but easy to use anyhow. We haven&#39;t changed this, because it&#39;s trivial and we don&#39;t want to break existing code. </p>
+<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">$2sxc API</a></em></p>
+<h2 id="working-with-rest-api-to-readwrite-content-items">Working with REST Api to Read/Write content-items</h2>
+<p>Read about it in the <a class="xref" href="sxc.ewebapi.html">Sxc WebApi</a> page.</p>
+<h2 id="using-app-queries-with-2sxc">Using App-Queries with $2sxc</h2>
+<p>Read about it in the <a class="xref" href="sxc.ewebapi.html">Sxc WebApi</a> page.</p>
+<h2 id="working-with-custom-c-app-webapis">Working with Custom C# App WebAPIs</h2>
+<p>Read about it in the <a class="xref" href="sxc.ewebapi.html">Sxc WebApi</a> page.</p>
+<h2 id="additional-properties-of-a-module-controller">Additional Properties of a Module Controller</h2>
+<p>TODO - must document more about properties like</p>
+<ol>
+<li>isLoaded, lastRefresh, etc.</li>
+<li>that these are all internal-use and not guaranteed to stay stable in future versions</li>
+</ol>
+<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">$2sxc API</a></em></p>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
+<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
+</ul>
+<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 04.00</li>
+</ol>
 </article>
           </div>
           
@@ -164,7 +197,7 @@ So only include it on pages where you really need it. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/dnn/jquery.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/2sxc-api/sxc.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -12,7 +12,7 @@ The `$2sxc.env` object manages environment information for the JavaScript. _It's
 It has the following important methods:
 
 * `page()` which will tell you the page number - often needed in API calls
-* `api()` the root path for api-calls, used in [http](xref:Specs.Js.$2sxc.Http)
+* `api()` the root path for api-calls, used in [http](xref:JsCode.2sxcApi.$2sxc.Http)
 * `rvt()` the request-verification token needed for internal WebAPI calls
 
 Internally this information is automatically retrieved from the html-header. 

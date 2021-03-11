@@ -57,7 +57,7 @@ Doing an http DELETE to this `[root-path]/app/auto/content/BlogPost/1050` would 
 
 ## JavaScript Helpers
 
-The [$2sxc](xref:Specs.Js.$2sxc) and the [sxc Controller](xref:Specs.Js.Sxc) make it really easy to use this. Best to get familiar with them. 
+The [$2sxc](xref:JsCode.2sxcApi.$2sxc) and the [sxc Controller](xref:JsCode.2sxcApi.Sxc.Index) make it really easy to use this. Best to get familiar with them. 
 
 
 ## About Security / Permissions

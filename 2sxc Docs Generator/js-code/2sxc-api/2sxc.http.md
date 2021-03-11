@@ -21,7 +21,7 @@ The environment looks for a special meta-tag called `_jsApi` which contains all 
 This is new in 2sxc 10.25 and was added to avoid using jQuery when not necessary. 
 
 > [!WARNING]
-> Internally all these commands need the [env](xref:Specs.Js.$2sxc.Env) to be ready. 
+> Internally all these commands need the [env](xref:JsCode.2sxcApi.$2sxc.Env) to be ready. 
 > This means that the entire html `<head>` tag was processed by the browser. 
 > A very safe way to do this is to run your code on-document-ready, 
 > or just to ensure that whatever bootstraps your application runs inside the `<body>` tag. 

@@ -82,7 +82,7 @@ The custom controller can be called with JavaScript like this:
 </script>
 ```
 
-The $2sxc API ensures that the GET request is send to the correct url `/DesktopModules/2sxc/API/app/auto/api/Books/Persons`. You can also read more about the [sxc Controller](xref:Specs.Js.Sxc).
+The $2sxc API ensures that the GET request is send to the correct url `/DesktopModules/2sxc/API/app/auto/api/Books/Persons`. You can also read more about the [sxc Controller](xref:JsCode.2sxcApi.Sxc.Index).
 
 
 ## The Awesomeness of these API Controllers

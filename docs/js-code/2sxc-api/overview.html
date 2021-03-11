@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JQuery in DNN and 2sxc | 2sxc and EAV 10 </title>
+    <title>JavaScript / HTML API Documentation for DNN / 2sxc | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JQuery in DNN and 2sxc | 2sxc and EAV 10 ">
+    <meta name="title" content="JavaScript / HTML API Documentation for DNN / 2sxc | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -117,45 +117,33 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.Dnn.JQuery">
-<h1 id="jquery-in-dnn-and-2sxc">JQuery in DNN and 2sxc</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Index">
+<h1 id="javascript--html-api-documentation-for-dnn--2sxc">JavaScript / HTML API Documentation for DNN / 2sxc</h1>
 
-<p>Often you&#39;ll need and want jQuery, but when you don&#39;t it shouldn&#39;t be loaded for performance reasons. </p>
-<div class="TIP"><h5>Tip</h5><p>Removing jQuery and jQueryUI will boost your mobile PageSpeed like crazy. 
-So only include it on pages where you really need it. </p>
-</div>
-<h2 id="how-dnn-auto-loades-jquery">How DNN Auto-Loades jQuery</h2>
-<p>There is some history to this which we&#39;ll explain briefly. DNN made jQuery a first-class citizen around DNN 4, and since then most of the UI was jQuery based. For a while there even was a standard that buttons etc. should be built and styled with jQuery UI. That is not the case any more. You can now easily run DNN (at least in browsing mode, not editing) without jQuery. </p>
-<p>But because <em>jQuery was always there</em> developers never noticed that they could leave it away, and many parts like Templates would simply rely on them. There were also many things that automatically added jQuery but were never noticed. Here some important examples:</p>
+<p>You can create awesome solutions, customizing the edit-experience and working with 2sxc-data in your javascript.</p>
+<h2 id="the-core-javascript-helper-objects">The Core JavaScript Helper Objects</h2>
 <ol>
-<li>2sxc always used the ServicesFramework of DNN which internally auto-added jQuery</li>
-<li>Most DNN websites use popups for login, and just doing this automatically adds jQueryUI and jQuery to the page. You can easily stop this using the recipe <a href="https://azing.org/dnn-community/r/fjgSyTfI">Remove jQueryUI from my page</a></li>
+<li><a class="xref" href="2sxc.html">$2sxc Manager</a> which is the page-scope manager for everything</li>
+<li><a class="xref" href="sxc.html">sxc Controller</a> with is the module-specific controller (TODO ca. 70% documented)</li>
 </ol>
-<p>In case your code is running on a page without jQuery but you need it, your code should tell DNN that you want jQuery, like this:</p>
-<iframe src="https://azing.org/dnn-community/r/YqJFbNKH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-<div class="WARNING"><h5>Warning</h5><p>Don&#39;t manually add urls to the jQuery files, make sure you use the official API. This should help you prevent loading jQuery multiple times and avoid conflicts between jQuery version.</p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>If you do need a newer version of jQuery, that is possible but needs some tweaking to get them to run side-by-side. It&#39;s done using the <a href="https://api.jquery.com/jQuery.noConflict/">jQuery.noConflict()</a>.</p>
-</div>
-<h2 id="how-2sxc-loads-jquery-in-dnn">How 2sxc loads jQuery in DNN</h2>
-<ul>
-<li>Up until 2sxc 10.24, every 2sxc module automatically loaded jQuery because 2sxc used the ServicesFramework of DNN</li>
-<li>Starting from 2sxc 10.25 <ul>
-<li>old templates auto-load jQuery for backward compatibility. This includes token-templates and Razor templates which don&#39;t have an <code>@inherits</code> statement at the beginning. </li>
-<li>Anything new done using the <a class="xref" href="../../net-code/razor/razor-component.html">RazorComponent</a> will not do that unless your template code requests it.</li>
-</ul>
-</li>
-</ul>
-<p>In 2sxc 10.25 and newer, all core features of 2sxc <em>don&#39;t</em> need jQuery. So anonyomus browsing of your site won&#39;t require jQuery at all, even if you&#39;re doing API calls or using the <a class="xref" href="../2sxc-api/2sxc.html">$2sxc javascript API</a>. </p>
-<p>But what you do need (if you&#39;re using the new <a class="xref" href="../../net-code/razor/razor-component.html">RazorComponent</a>) is to tell 2sxc that you plan to use JavaScript and APIs, so that 2sxc can add the stuff to the page to make the magic happen. This is done with this line in your razor code:</p>
-<pre><code>@Edit.Enable(js:true)
-</code></pre><p>Because 2sxc doesn&#39;t use jQuery any more for normal stuff, this will have the following effect:</p>
+<h2 id="the-editing-experience">The Editing Experience</h2>
 <ol>
-<li>Add a special header to the page containing information needed for API calls</li>
-<li>Load the 2sxc.api.min.js in the correct way</li>
+<li><a class="xref" href="../../specs/cms/edit.html">Overview to Editing Content</a> </li>
+<li>Customize the edit experience (buttons, toolbars...) with the <a class="xref" href="sxc.manage.html">manage controller</a></li>
 </ol>
-<p><em>It&#39;s important to note that this will not load jQuery.</em></p>
+<h2 id="toolbars-buttons-and-commands">Toolbars, Buttons and Commands</h2>
+<ol>
+<li>In-page edit toolbars for <a class="xref" href="../toolbars/index.html">html</a> or <a class="xref" href="../toolbars/advanced.html">javascript</a> with <a class="xref" href="../toolbars/settings.html">settings</a></li>
+<li>internals of a <a class="xref" href="../commands/index.html">command (with full list)</a>, of <a class="xref" href="../toolbars/buttons.html">buttons</a> and creating <a class="xref" href="../commands/custom-code.html">custom buttons</a></li>
+</ol>
+<h2 id="the-quicke-quick-edit-experience">The quickE (Quick Edit) experience</h2>
+<ol>
+<li>customizing the <a class="xref" href="../quick-e/quicke.html">quickE (quick edit) experience</a></li>
+</ol>
+<h2 id="using-2sxc-with-popular-js-libraries-todo">Using 2sxc with Popular JS Libraries (TODO)</h2>
+<ol>
+<li><a class="xref" href="../angular/index.html">Angular / dnn-sxc-angular</a></li>
+</ol>
 </article>
           </div>
           
@@ -164,7 +152,7 @@ So only include it on pages where you really need it. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/dnn/jquery.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/2sxc-api/overview.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
