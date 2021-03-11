@@ -144,5 +144,5 @@ To learn more, best look at the tutorials and the API
 
 * [Basic tutorial, just providing 4 standard buttons](https://2sxc.org/dnn-tutorials/en/razor/ui241/page)
 * [Advanced tutorial adding a custom button](https://2sxc.org/dnn-tutorials/en/razor/ui242/page)
-* [WYSIWYG Reconfigure API](xref:Specs.Form.Field.Wysiwyg)
+* [WYSIWYG Reconfigure API](xref:JsCode.CustomFields.Wysiwyg)
 

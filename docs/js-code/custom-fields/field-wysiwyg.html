@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Customizing the WYSIWYG Field in 2sxc 11 | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Customizing the WYSIWYG Field in 2sxc 11 | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="JsCode.CustomFields.Wysiwyg">
+<h1 id="customizing-the-wysiwyg-field-in-2sxc-11">Customizing the WYSIWYG Field in 2sxc 11</h1>
+
+<div class="TIP"><h5>Tip</h5><p>These are the technical specs for reference. Make sure you first read the <a class="xref" href="../../basics/browser/edit-ux/index.html">how to</a> before you start. </p>
+</div>
+<p>Since WYSIWYG is so complex, with image-handling, special paste etc. we believe most developers are better of using the existing system, and just reconfiguring it. That&#39;s what we&#39;ll explain here. </p>
+<h2 id="make-sure-tinymce-is-loaded">Make sure TinyMCE is loaded</h2>
+<p>We must first load the standard WYSIWYG control before we start, otherwise you&#39;ll run into timing issues. The best way to do this can be seen in the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui241/page">tutorial</a>, but this is what you need:</p>
+<pre><code class="lang-ts">  const builtInWysiwyg = &#39;[System:Path]/system/field-string-wysiwyg/index.js&#39;;
+
+  /** Our WebComponent which is a custom, lightweight wysiwyg editor */
+  class StringWysiwygCustom extends HTMLElement {
+
+    /* connectedCallback() is the standard callback  when the component has been attached */
+    connectedCallback() {
+      // We need to ensure that the standard WYSIWYG is also loaded
+      this.connector.loadScript(&#39;tinymce&#39;, builtInWysiwyg, (x) =&gt; { this.initWysiwygCallback() })
+    }
+
+    initWysiwygCallback() {
+      // ...
+    }
+  }
+</code></pre><p>This way the form will load the built-in WYSIWYG control and trigger your callback, OR if it has already been loaded, immediately trigger your callback. </p>
+<h2 id="configure-the-tinymce-wysiwyg-web-control">Configure the TinyMCE WYSIWYG Web Control</h2>
+<p>The control has these public properties:</p>
+<ol>
+<li><code>mode</code> - values can be <code>edit</code> and <code>preview</code>, default is <code>preview</code></li>
+<li><code>connector</code> - the object that every form control needs. You must connect this</li>
+<li><code>reconfigure</code> a special object that can change the configuration at various points</li>
+</ol>
+<p>Code Sample:</p>
+<pre><code class="lang-js">  const tagName = &#39;field-string-wysiwyg-micro&#39;;
+  const builtInWysiwyg = &#39;[System:Path]/system/field-string-wysiwyg/index.js&#39;;
+
+  /** Our WebComponent which is a custom, lightweight wysiwyg editor */
+  class StringWysiwygCustom extends HTMLElement {
+
+    /* connectedCallback() is the standard callback  when the component has been attached */
+    connectedCallback() {
+      // We need to ensure that the standard WYSIWYG is also loaded
+      this.connector.loadScript(&#39;tinymce&#39;, builtInWysiwyg, (x) =&gt; { this.initWysiwygCallback() })
+    }
+
+    initWysiwygCallback() {
+      // 1. Create a built-in field-string-wysiwyg control
+      const wysiwyg = document.createElement(&#39;field-string-wysiwyg&#39;);
+      // 2. tell it if it should start in preview or edit
+      wysiwyg.mode = &#39;edit&#39;; // can be &#39;preview&#39; or &#39;edit&#39;
+      // 3. attach connector
+      wysiwyg.connector = this.connector;
+      // 4. also attach reconfigure object which can change the TinyMCE as it&#39;s initialized
+      wysiwyg.reconfigure = new WysiwygReconfigurator();
+      // 5. Append it to the DOM. Do this last, as it will trigger connectedCallback() in the wysiwyg
+      this.appendChild(wysiwyg);
+    }
+  }
+
+  /** The object which helps reconfigure what the editor will do */
+  class WysiwygReconfigurator {
+    configureOptions(options) {
+      options.toolbar = &quot;undo redo | bold italic&quot;
+      return options;
+    }
+  }
+
+  // Register this web component - if it hasn&#39;t been registered yet
+  if (!customElements.get(tagName)) customElements.define(tagName, StringWysiwygCustom);
+</code></pre><h2 id="connector-object"><code>connector</code> Object</h2>
+<ul>
+<li>for the <code>connector</code> object please consult <a class="xref" href="connector.html">connector API</a></li>
+</ul>
+<h2 id="understanding-tinymce-and-life-cycle">Understanding TinyMCE and Life-Cycle</h2>
+<p>TincMCE has a huge set of options, so let&#39;s just get a quick idea of how things work inside it</p>
+<ol>
+<li>Once loaded, there is a global <code>tinymce</code> object which is like a master-controller for all tinyMCE editors. We call it the <strong>Editor Manager</strong></li>
+<li>Each editor has a personal <code>editor</code> object which has the configuration for just that editor</li>
+</ol>
+<h3 id="what-is-configured-on-tinymce">What is configured on <code>tinymce</code>?</h3>
+<p>The global <code>tinymce</code> controller is responsible for things like</p>
+<ul>
+<li>Translations</li>
+<li><code>options</code>, including<ul>
+<li><code>plugins</code> which are activated</li>
+<li><code>skin</code> and <code>theme</code></li>
+<li><code>custom_elements</code></li>
+<li>...and way more</li>
+</ul>
+</li>
+</ul>
+<h3 id="what-is-configured-on-an-editor">What is configured on an <code>editor</code>?</h3>
+<ul>
+<li>Buttons (for use in Toolbars)</li>
+<li>Toolbars</li>
+<li>ADAM and DNN-Bridge</li>
+</ul>
+<h3 id="initialization-process--life-cycle">Initialization Process / Life-Cycle</h3>
+<p>This is how the control is loaded / built in the 2sxc/EAV form. Note that for each method explained on the <code>reconfigure</code> object, the initializers will do <a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> to check if that method exists and if detected, will run that.</p>
+<h4 id="1-load-phase">#1 Load Phase</h4>
+<ol>
+<li>The <code>field-string-wysiwyg</code> WebControl is created<br>At this time, the <code>mode</code>, <code>connector</code> and <code>reconfigure</code> must already be set by the parent</li>
+<li>It will requests that the from loads all the TinyMCE JavaScripts</li>
+<li>When that has completed, it will fire a callback to start translating / configuring</li>
+</ol>
+<h4 id="2-translation-phase">#2 Translation Phase</h4>
+<p>In this phase, translation maps are built, so buttons can show labels in various languages. This map is global, so try to avoid name clashes. </p>
+<ol>
+<li>First the built-in translations of 2sxc/EAV are added</li>
+<li>Then <code>reconfigure.addTranslations(editorManager, currentLanguage)</code> is called. In this phase you can add your own translations according to tinyMCE standards or modify prebuilt translations. </li>
+</ol>
+<h4 id="3-manager-configuration-phase">#3 Manager Configuration Phase</h4>
+<ol>
+<li>At the beginning <code>reconfigure.managerInit(editorManager)</code> is called so you can pre-initialize something. We don&#39;t really know why you would need this, but we added it just in case. </li>
+<li>Then the default <code>options</code> are generated</li>
+<li>Now <code>reconfigure.optionsInit(options, buttonOptions)</code> is called. Here you can change the objects as you need to add/remove options.<ol>
+<li>the <code>options</code> are the standard tinyMCE options which have been prebuilt</li>
+<li>The <code>buttonOptions</code> are a special object which affects automatic button definitions. This is still WIP</li>
+</ol>
+</li>
+<li>Now the configuration system builds more options based on the environment, features etc. </li>
+<li>Then it calls <code>reconfigure.optionsReady(options)</code> so you could make some final changes.</li>
+<li>Now <code>tinymce</code> (the Editor Manager) receives the options to start. This also includes a callback (provided by our form) which will do editor initialization. </li>
+</ol>
+<h4 id="4-editor-configuration-phase">#4 Editor Configuration Phase</h4>
+<ol>
+<li>When the tinyMCE editor is finally created, a callback or the wysiwyg is triggered. This will attach various events like <code>init</code>, <code>focus</code>, <code>blur</code>, <code>change</code>, <code>undo</code> etc.</li>
+<li>Once attaching these events is done, it calls <code>reconfigure.editorBuilt(editor)</code> so you could make changes. </li>
+<li>When <code>init</code> is triggered, it will first call <code>reconfigure.editorInit(editor)</code> so you can make changes or add buttons using the tinyMCE API. </li>
+<li>It will then run internal code to add all the button definitions like <code>H1</code>, <code>H2</code> etc.</li>
+<li>Then it asks for <code>reconfigure.disablePagePicker</code> and if not <code>true</code>, will attach the DNN page picker</li>
+<li>It will also ask for <code>reconfigure.disableAdam</code> and if not true, will attach ADAM functionality</li>
+</ol>
+<h2 id="how-to-modify-the-behavior">How to Modify the Behavior</h2>
+<p>Best check out these tutorials</p>
+<ul>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui241/page">Basic tutorial, just providing 4 standard buttons</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui242/page">Advanced tutorial adding a custom button</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>New system in 2sxc 11 using WebComponents (previously this was not possible)</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/custom-fields/field-wysiwyg.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

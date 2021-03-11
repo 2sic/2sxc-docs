@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API of Connector Object in Custom Input Fields | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API of Connector Object in Custom Input Fields | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="JsCode.CustomFields.Connector">
+<h1 id="api-of-connector-object-in-custom-input-fields">API of Connector Object in Custom Input Fields</h1>
+
+<p>The <code>connector</code> object provides values to your WebComponent and let&#39;s you communicate with the form. Here&#39;s the API you need:</p>
+<h2 id="background">Background</h2>
+<p>The <code>connector</code> object is attached by the form to your custom WebComponent before the <code>connectedCallback()</code> is triggered. So you can access it using <code>this.connector</code>.</p>
+<h2 id="connector-api"><code>connector</code> API</h2>
+<ul>
+<li><code>data</code> - a <code>ConnectorData&lt;T&gt;</code> object which has various properties you need to read/write values</li>
+<li><code>dialog</code> - a <code>ConnectorDialog&lt;T&gt;</code> object which lets you open/close details-dialogs in your component</li>
+<li><code>field</code> - contains a <code>FieldConfig</code> object telling you about the field, it&#39;s configuration etc.</li>
+<li><code>field$</code> - an observable with the field configuration, will emit a new <code>FieldConfig</code> whenever it changes</li>
+<li><code>loadScript(...)</code> - a helper method to load additional javascript files</li>
+<li><code>_experimental</code> - internal API for things which do not have a stable API yet</li>
+</ul>
+<h2 id="connectordata-object"><code>connector.data</code> Object</h2>
+<p>The data object is of type <code>ConnectorData&lt;T&gt;</code>. It has these members:</p>
+<pre><code class="lang-ts">export interface ConnectorData&lt;T&gt; {
+
+  /** Current value of the field */
+  value: T;
+
+  /**
+   * Client updates value in the host
+   * @param newValue - New value of the field from the client
+   */
+  update(newValue: T): void;
+
+  /**
+   * Client adds callback functions to be executed every time value changes in the host.
+   * So call it to register your function which should run on change.
+   *
+   * Use this if you are not familier with observables.
+   * @param callback - Function to be executed every time value changes in the host
+   */
+  onValueChange(callback: (newValue: T) =&gt; void): void;
+
+  /**
+   * Observable on field value
+   * Use this if you are familiar with observables.
+   */
+  value$: Observable&lt;T&gt;;
+
+  /**
+   * Fired before form is saved.
+   * It tells your control that the form is about to save, and that this is the last moment you can update the value.
+   * Used in case your input doesn&#39;t always push changed values, like in WYSIWYG and other complex input fields which may buffer changes.
+   */
+  forceConnectorSave$: Observable&lt;T&gt;;
+}
+</code></pre><h2 id="connectordialog-object"><code>connector.dialog</code> Object</h2>
+<p>This is the API to open a new dialog or close it again. </p>
+<pre><code class="lang-ts">/**
+ * Responsible for opening/closing dialogs in a control.
+ */
+export interface ConnectorDialog&lt;T&gt; {
+  /**
+   * Opens a dialog and shows a WebComponent inside it.
+   *
+   * @param {string} [componentTag] name of the WebComponent which will be loaded inside the dialog
+   */
+  open(componentTag?: string): void;
+
+  /**
+   * Closes the dialog
+   */
+  close(): void;
+}
+</code></pre><h2 id="connectorfield-fieldconfig-object"><code>connector.field</code> FieldConfig Object</h2>
+<p>This gives you information about the field. For simplity in maintaining the docs, here&#39;s a copy of the type file:</p>
+<pre><code class="lang-ts">export interface FieldConfig {
+
+  /** Static name of the field */
+  name: string;
+
+  /** Ordering index of the field inside the form */
+  index: number;
+
+  /** Field label */
+  label: string; // updated on language change
+
+  /** Field placeholder text */
+  placeholder: string; // never updated atm. Probably will be
+
+  /** Input type of the field. e.g. string-default, string-dropdown, etc. */
+  inputType: string;
+
+  /** Data type of the field. e.g. String, Hyperlink, Entity, etc. */
+  type: string;
+
+  /** Tells whether the field is required */
+  required: boolean; // updated on language change
+
+  /** Tells whether the field is disabled. This is the initial value that was set in settings for this field */
+  disabled: boolean;
+
+  settings: FieldSettings;
+}
+</code></pre><h2 id="connectorfield-and-connectorfield-fieldconfig-object"><code>connector.field</code> and <code>connector.field$</code> FieldConfig Object</h2>
+<p>The <code>connector.field</code> object tells you how the field is configured. Note that if you use this object directly, you won&#39;t be notified of changes. For that you should use the <code>connector.field$</code> stream.</p>
+<pre><code class="lang-ts">export interface FieldConfig {
+
+  /** Static name of the field */
+  name: string;
+
+  /** Ordering index of the field inside the form */
+  index: number;
+
+  /** Field label */
+  label: string; // updated on language change
+
+  /** Field placeholder text */
+  placeholder: string; // never updated atm. Probably will be
+
+  /** Input type of the field. e.g. string-default, string-dropdown, etc. */
+  inputType: string;
+
+  /** Data type of the field. e.g. String, Hyperlink, Entity, etc. */
+  type: string;
+
+  /** Tells whether the field is required */
+  required: boolean; // updated on language change
+
+  /** Tells whether the field is disabled. This is the initial value that was set in settings for this field */
+  disabled: boolean;
+
+  /** 
+   * Settings of the field, as configured in the UI 
+   * This is just a normal dictionary-object with keys having the same names as the fields in the configuration dialog. 
+   * Note that most keys are PascalCase, not camelCase.
+   */
+  settings: FieldSettings;
+}
+</code></pre><h2 id="connectorloadscript-method"><code>connector.loadScript()</code> Method</h2>
+<pre><code class="lang-ts">  /**
+   * Load a script into the browser - but only once. 
+   * Makes sure that script with the same source is loaded only once and executes callback.
+   *
+   * @param {string} globalObject - name on window.xxx which is checked if the js is already loaded
+   * @param {string} src - path to the script
+   * @param {(...args: any[]) =&gt; any} callback - your callback function
+   * @memberof Connector
+   */
+  loadScript(globalObject: string, src: string, callback: (...args: any[]) =&gt; any): void;
+</code></pre><h2 id="read-also">Read Also</h2>
+<ul>
+<li><a class="xref" href="index.html">How To Create Custom Input Fields</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui/home">Tutorials for Custom Input Fields</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 11.02</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/custom-fields/connector.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
