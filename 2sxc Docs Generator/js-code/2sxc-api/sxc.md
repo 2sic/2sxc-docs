@@ -4,6 +4,9 @@ uid: JsCode.2sxcApi.Sxc.Index
 
 # The Module-Instance Sxc Controller
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
+
 The module-specific `sxc`-controller is the core JavaScript object helping you in these advanced cases:  
 
 1. if you want full control over the edit-experience with custom buttons etc. 

@@ -1,9 +1,10 @@
 ---
 uid: JsCode.Commands.Delete
 ---
-# Html & Js: delete Command
+# delete Command
 
-## Purpose / Description
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 This button let's a user really delete a content item (since 2sxc 8.9).
 

@@ -4,6 +4,9 @@ uid: JsCode.Toolbars.Simple
 
 # How To Customize the Toolbars
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-custom { visibility: visible; } </style>
+
 A lot in 2sxc is fully automatic. But sometimes you want to customize how the content editor can work. 
 
 > [!NOTE]

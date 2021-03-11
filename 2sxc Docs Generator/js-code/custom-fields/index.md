@@ -3,6 +3,9 @@ uid: JsCode.CustomFields.Index
 ---
 # How To Create Custom Input Fields (v11.2)
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
+
 Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever. 
 
 > [!TIP]
@@ -32,7 +35,7 @@ You can create any kind of custom input field, as a JavaScript WebComponent.
 1. Talking to any endpoint (weather APIs)
 
 > [!TIP]
-> This overview will get you started, but we've already created demos on the [2sxc Tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home). If you want to know more, you should also read the [specs](xref:Specs.Form.Index)
+> This overview will get you started, but we've already created demos on the [2sxc Tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home). If you want to know more, you should also read the [specs](xref:Basics.Browser.EditUx.Fields)
 
 ## Getting Started with Custom Input Fields
 

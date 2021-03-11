@@ -4,6 +4,9 @@ uid: JsCode.2sxcApi.$2sxc.Cms
 
 # The $2sxc.cms API
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-custom { visibility: visible; } </style>
+
 
 The `$2sxc.cms` object is the core JavaScript API to perform CMS actions such as opening edit-dialogs etc. As of now (2sxc 9.30) it only has 1 command `run(...)` but will be enhanced in the future to do more.
 

@@ -4,6 +4,9 @@ uid: JsCode.2sxcApi.$2sxc
 
 # The $2sxc Root Object
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
+
 The $2sxc-object is the core JavaScript object helping you to access data of your view or WebAPIs of your 2sxc-App.
 
 > [!NOTE]

@@ -4,6 +4,10 @@ uid: JsCode.2sxcApi.$2sxc.Http
 
 # The $2sxc.http API
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
+
+
 The `$2sxc.http` object contains information for doig API calls. _It's new - introduced in 2sxc 10.25_.
 
 > [!NOTE]

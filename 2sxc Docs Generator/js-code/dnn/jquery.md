@@ -3,6 +3,10 @@ uid: JsCode.Dnn.JQuery
 ---
 # JQuery in DNN and 2sxc
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .frameworks-js { visibility: visible; } </style>
+
+
 Often you'll need and want jQuery, but when you don't it shouldn't be loaded for performance reasons. 
 
 > [!TIP]

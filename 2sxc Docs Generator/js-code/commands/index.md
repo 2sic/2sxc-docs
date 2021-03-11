@@ -1,7 +1,10 @@
 ---
 uid: JsCode.Commands.Index
 ---
-# Html & JS: Calling Commands of the CMS
+# CMS Commands in JavaScript
+
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 Whenever you press a button in the edit-ui, a edit-command is handled by the javascript layer. These commands  are things like
 

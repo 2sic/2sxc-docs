@@ -4,6 +4,9 @@ uid: JsCode.Toolbars.Buttons
 
 # Toolbar Button Definitions
 
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .edit-custom { visibility: visible; } </style>
+
 When you create custom buttons in a floating toolbar you can customize everything including the icon and more. This is explained here. 
 
 Buttons are of html, basically a `<a click="...">[some-icon]</a>`. When the button is created, it must already know what it's for, which is why the command must be prepared when the button is created. 
