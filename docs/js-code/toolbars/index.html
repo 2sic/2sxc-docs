@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>In-Page Edit Toolbars and Buttons | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="In-Page Edit Toolbars and Buttons | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="JsCode.Toolbars.Index">
+<h1 id="in-page-edit-toolbars-and-buttons">In-Page Edit Toolbars and Buttons</h1>
+
+<p>When a user is logged on and has edit permissions, he should see buttons to edit his content or perform other actions. This is all done in HTML / JavaScript. By default, the server will render this in places defined by the template using placeholders like <code>@Edit.TagToolbar(Content)</code> and similar.</p>
+<p>Note that usually this HTML is generated by a server-side template, and will usually be wrapped in a if-user-logged-in condition.</p>
+<p>So if you want to do things differently, here&#39;s how - just remember that this is an advanced use case so it&#39;s a bit harder than what you&#39;re used to with 2sxc :).</p>
+<h2 id="how-to-use">How to Use</h2>
+<p>The most common use-case is actually to provide some HTML, which the JavaScript will pick up automatically and convert into a menu. The syntax was revised in 2sxc 9.40+, which is what we show here. The previous syntax is still supported, but not recommended any more:</p>
+<pre><code class="lang-HTML">&lt;!-- this is the default toolbar for first content item assigned to this module --&gt;
+&lt;div sxc-toolbar=&#39;{
+    &quot;toolbar&quot;: {&quot;sortOrder&quot;:0,&quot;useModuleList&quot;:true}
+}&#39;&gt;
+&lt;/div&gt;
+
+
+&lt;!-- this is a toolbar for a content-item with the id 6875 --&gt;
+&lt;div sxc-toolbar=&#39;{
+    &quot;toolbar&quot;: {&quot;entityId&quot;:6875}
+}&#39;&gt;
+&lt;/div&gt;
+
+
+&lt;!-- this could be a custom toolbar for showing a new-button only --&gt;
+&lt;div sxc-toolbar=&#39;{
+    &quot;toolbar&quot;: {&quot;contentType&quot;:&quot;BlogPost&quot;,&quot;action&quot;:&quot;new&quot;}
+}&#39;&gt;
+&lt;/div&gt;
+
+
+&lt;!-- this would have two buttons, each configured in a way --&gt; 
+&lt;div sxc-toolbar=&#39;{
+    &quot;toolbar&quot;: [{
+        &quot;action&quot;:&quot;edit&quot;,
+        &quot;useModuleList&quot;:true,
+        &quot;sortOrder&quot;: 0,
+        &quot;prefill&quot;: { &quot;DocumentedOnPage&quot;: &quot;page:@Dnn.Tab.TabID&quot;, &quot;title&quot;: &quot;@Dnn.Tab.Title&quot; }
+    }, {
+        &quot;action&quot; : &quot;new&quot;,
+        &quot;contentType&quot; : &quot;BlogPost&quot;
+    }]
+}&#39;&gt;
+&lt;/div&gt;
+</code></pre><h2 id="what-was-changedenhanced-in-2sxc-940">What was Changed/Enhanced in 2sxc 9.40</h2>
+<p>There were some things which worked well, but bothered us as perfectionists :). It boils down to how much of the page html must be different just because editing is used. So this is what we wanted to change:</p>
+<ol>
+<li><p>the previous implementation always used a special class <code>sc-element</code> to mark the tag which detects mouse-over. This was necessary, because the tag itself was added in another place in the code. This is not necessary any more, since the <code>sxc-toolbar</code> attribute is now on the tag which does the hover-detect.</p>
+</li>
+<li><p>the previous implementation created a <code>&lt;ul&gt;</code> tag in the source code. Though this was not a big issue, it just didn&#39;t feel right.</p>
+</li>
+<li><p>the previous implementation spread the information for the toolbar on two attributes <code>toolbar</code> and <code>settings</code> - this just wasn&#39;t perfect. Now it&#39;s both in the <code>sxc-toolbar</code> attribute.</p>
+</li>
+</ol>
+<h2 id="how-to-use-before-2sxc-940">How to Use before 2sxc 9.40</h2>
+<pre><code class="lang-HTML">&lt;!-- this is the default toolbar for content assigned to this module --&gt;
+&lt;ul class=&quot;sc-menu&quot; toolbar=&#39;{&quot;sortOrder&quot;:0,&quot;useModuleList&quot;:true,&quot;isPublished&quot;:true}&#39;&gt;&lt;/ul&gt;
+
+&lt;!-- this is a default toolbar for content-items not assigned to this module --&gt;
+&lt;ul class=&quot;sc-menu&quot; toolbar=&#39;{&quot;isPublished&quot;:true,&quot;entityId&quot;:6875}&#39;&gt;&lt;/ul&gt;
+
+&lt;!-- this could be a custom toolbar for showing a new-button only --&gt;
+&lt;ul class=&quot;sc-menu&quot; toolbar=&#39;{&quot;contentType&quot;:&quot;BlogPost&quot;,&quot;action&quot;:&quot;new&quot;}&#39;&gt;&lt;/ul&gt;
+
+&lt;!-- this would have two buttons, each configured in a way --&gt; 
+&lt;ul class=&#39;sc-menu&#39; toolbar=&#39;[{
+    &quot;action&quot;:&quot;edit&quot;, 
+    &quot;useModuleList&quot;:true, 
+    &quot;sortOrder&quot;: 0, 
+    &quot;prefill&quot;: { &quot;DocumentedOnPage&quot;: &quot;page:@Dnn.Tab.TabID&quot;, &quot;title&quot;: &quot;@Dnn.Tab.Title&quot; } 
+}, {
+    &quot;action&quot; : &quot;new&quot;,
+    &quot;contentType&quot; : &quot;BlogPost&quot; 
+}]&#39;&gt;&lt;/ul&gt;
+</code></pre><h2 id="how-it-works">How it Works</h2>
+<p>Internally, a lot will happen to actually turn that into a real, usually floating, toolbar. Basically what happens is</p>
+<ol>
+<li>a script picks up all cases of <code>&lt;* sxc-toolbar=...&gt;</code> and <code>&lt;ul class=&quot;sc-menu ...&quot;&gt;&lt;/ul&gt;</code></li>
+<li>it will then pass it to a toolbar creator which will either create a standard-list of buttons, or a custom one</li>
+<li>the resulting buttons/links will be placed in <code>&lt;li&gt;</code> items and added to the <code>&lt;ul&gt;</code> tag</li>
+</ol>
+<p>But you could also do a whole lot more, including custom buttons and code (since 2sxc 08.06)</p>
+<pre><code class="lang-html">&lt;div sxc-toolbar=&#39;{ &quot;toolbar&quot;: {
+    &quot;groups&quot;: [
+        {
+            &quot;name&quot;: &quot;my default list&quot;,
+            &quot;buttons&quot;: &quot;edit,add,more&quot;
+        },
+        {
+            &quot;name&quot;: &quot;list buttons&quot;,
+            &quot;buttons: &quot;sort,moveup,movedown,more&quot;
+        },
+        {
+            &quot;name&quot;: &quot;really advanced stuff&quot;,
+            &quot;buttons&quot;: [
+                &quot;app&quot;,
+                &quot;zone&quot;,
+                {
+                    &quot;command&quot;:{
+                        &quot;action&quot;: &quot;custom&quot;,
+                        &quot;customCode&quot;: &quot;alert(&amp;apos;hello&amp;apos;)&quot;
+                    }
+                    &quot;icon&quot;: &quot;icon-sxc-bomb&quot;
+                },
+                &quot;more&quot;
+            ]
+        }
+    ],
+    &quot;defaults&quot;: {
+        &quot;entityId&quot;: 740,
+        &quot;contentType&quot;: &quot;BlogPost&quot;
+    }
+}}&#39;&gt;
+...
+&lt;/div&gt;
+</code></pre><p>All the configuration is in the <code>sxc-toolbar</code> attribute, which contains two main nodes:</p>
+<ol>
+<li><code>toolbar</code> - see below</li>
+<li><code>settings</code> - see <a class="xref" href="settings.html">Toolbar Settings</a></li>
+</ol>
+<p>In the old syntax (before 2sxc 9.40, using the <code>&lt;ul&gt;</code> tag, two attributes are handled</p>
+<ol>
+<li><code>toolbar</code> or <code>data-toolbar</code> - see below</li>
+<li><code>settings</code> or <code>data-settings</code> - see <a class="xref" href="settings.html">Toolbar Settings</a></li>
+</ol>
+<h2 id="more-background">More Background</h2>
+<p>The <code>toolbar</code> information is:</p>
+<ol>
+<li><p>an object with some properties (like <code>entityId</code>) and <em>no</em> <code>action</code> verbs --&gt; then it will auto-generate all default buttons<br><code>{ entityId: 17, isPublished: true }</code></p>
+</li>
+<li><p>an object with some properties and 1 or more action verbs --&gt; generate only these buttons<br><code>{ actions: &quot;new,edit&quot;, useModuleList: true, sortOrder: 1 }</code></p>
+</li>
+<li><p>an array with commands (objects with 1 verb) --&gt; generate these Buttons<br><code>[{ action: ...}, { action: ...}]</code></p>
+</li>
+<li><p>on object containing a buton-group like<br><code>{ buttons: [ { command: { action: ...}}, { command: ...}] }</code></p>
+</li>
+<li><p>a group of button-groups<br><code>[ { buttons: ... }, {buttons: ...}]</code></p>
+</li>
+<li><p>a full toolbar configuration<br><code>{ groups: [...], defaults: {...}, params: {...} }</code></p>
+</li>
+</ol>
+<p>For a full scope of what is possible, you should read the <a class="xref" href="advanced.html">js toolbar documentation</a>.</p>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<ul>
+<li><a href="http://2sxc.org/en/apps/app/tutorial-for-the-javascript-apis-and-custom-toolbars">JS Manage / Toolbar API Tutorial App</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc v02.00</li>
+<li>Published API for use in templates in 2sxc v08.06</li>
+<li>Enhanced / Standardized in 2sxc v09.40</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/toolbars/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

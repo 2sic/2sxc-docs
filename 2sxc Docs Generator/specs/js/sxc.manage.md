@@ -3,7 +3,7 @@ uid: Specs.Js.Sxc.Manage
 ---
 # JS: Manage Everything With the `manage` Controller
 
-The `manage` object helps you manage content, allowing you to `run(...)` [commands](xref:JsCode.Commands.Index) or to get [buttons or toolbars](xref:Specs.Js.Toolbar.Intro). 
+The `manage` object helps you manage content, allowing you to `run(...)` [commands](xref:JsCode.Commands.Index) or to get [buttons or toolbars](xref:JsCode.Toolbars.Index). 
 
 ## How to use
 Each content-block (usually a DNN-Module) has it's own 2sxc-controller, which also gives you a prepared manage-object to work with. Here's an example
@@ -48,8 +48,8 @@ Basically the manage-property _only exists_ when the user has edit permissions, 
 We try to keep APIs very light, so all the internal properties/objects are not documented and should not be used. These properties and methods can be treated as stable:
 
 * void `.run(...)` - used to run a [command](xref:JsCode.Commands.Index)
-* string `.getButton(...)` - used to generate HTML for a single button (which when pressed, runs a command) - see [buttons and toolbars](xref:Specs.Js.Toolbar.Intro)
-* string `.getToolbar(...)` - used to generate HTML for a toolbar (with buttons, which run commands) - see [buttons and toolbars](xref:Specs.Js.Toolbar.Intro)
+* string `.getButton(...)` - used to generate HTML for a single button (which when pressed, runs a command) - see [buttons and toolbars](xref:JsCode.Toolbars.Index)
+* string `.getToolbar(...)` - used to generate HTML for a toolbar (with buttons, which run commands) - see [buttons and toolbars](xref:JsCode.Toolbars.Index)
 
 ## Demo App and further links
 You should find some code examples in this demo App

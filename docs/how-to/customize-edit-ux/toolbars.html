@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>How To Customize the Toolbars | 2sxc and EAV 10 </title>
+    <title>Moved to  | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="How To Customize the Toolbars | 2sxc and EAV 10 ">
+    <meta name="title" content="Moved to  | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -117,162 +117,9 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HowTo.Customize.Toolbars">
-<h1 id="how-to-customize-the-toolbars">How To Customize the Toolbars</h1>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="moved-to-xrefjscodetoolbarssimple">Moved to <a class="xref" href="../../js-code/toolbars/simple.html">How To Customize the Toolbars</a></h1>
 
-<p>A lot in 2sxc is fully automatic. But sometimes you want to customize how the content editor can work. </p>
-<div class="NOTE"><h5>Note</h5><p>2sxc 10.27 introduces a much simpler system, which is what is shown here. 
-Previously everything was possible, but quite complicated. 
-So if you find examples out there which look very different - they work as well, but here&#39;s the simple system. </p>
-</div>
-<h2 id="live-examples">Live Examples</h2>
-<p>The <a href="https://2sxc.org/dnn-tutorials/en/razor/ui100/page">DNN Tutorials have a live demo of toolbar customization</a>. Head over there while reading these docs to see all this in action. </p>
-<h2 id="overview---what-you-can-customize">Overview - What You can Customize</h2>
-<p>You can customize just about everything: </p>
-<ol>
-<li>hover-behavior - you may want hover, maybe not, and maybe to the right | left</li>
-<li>colors using color names, hex-codes or CSS classes of the entire toolbar or just of individual buttons</li>
-<li>you can just enhance/change the default toolbar or create a custom one with just your buttons</li>
-<li>you can change the button groups - add, remove etc.</li>
-<li>you can add/remove buttons as you need</li>
-<li>you can create buttons with custom icons </li>
-<li>you can even call custom code from your custom buttons</li>
-</ol>
-<div class="TIP"><h5>Tip</h5><p>This overview will get you started, anything more advanced will need the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">specs</a>.</p>
-</div>
-<div class="IMPORTANT"><h5>Important</h5><p>This will show you how to do things in Razor, but the same principles apply to plain HTML-Toolbars. 
-We assume that 99% of all toolbars will be initiated from razor, so that&#39;s what we&#39;ll be showing here.</p>
-</div>
-<h2 id="getting-started-with-custom-toolbars">Getting Started with Custom Toolbars</h2>
-<p>Usually your code will look a bit like this:</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>This will create a standard hover-toolbar with some buttons and the <em>more</em> ellipsis button. Note that the exact combination of buttons is auto-detected. So you may just have an <em>edit</em> but you may also have an <em>add</em> etc. depending on the template and the data it receives. It looks approx. like this:</p>
-<p><img src="assets/step-1-default-toolbar.png" width="100%"></p>
-<h3 id="add-our-first-button">Add our First Button</h3>
-<p>Let&#39;s add an extra <em>new</em> button to create an item of the content-type <em>Category</em>. </p>
-<div class="NOTE"><h5>Note</h5><p>This code will make the button appear, but on click you may see an error, because you probably don&#39;t have a ContentType <em>Category</em> in your app. </p>
-</div>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;+new?contentType=Category&quot;)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>You should now have an extra + button like this: </p>
-<p><img src="assets/step-1-with-plus-button.png" width="100%"></p>
-<p>Let&#39;s emphasize it, because for whatever reason it&#39;s a super important button. We&#39;ll also drop the leading <code>+</code> since it&#39;s optional and defaulted to: </p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;new&amp;color=red?contentType=Category&quot;)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>You should now have a <em>red</em> + button like this: </p>
-<p><img src="assets/step-1-with-plus-button-red.png" width="100%"></p>
-<div class="IMPORTANT"><h5>Important</h5><p>The term <code>new</code> in this example means we want a button of <em>type</em> <code>new</code> which will open the dialog to create new entities.<br>We could also write <code>app&amp;color=red</code> which would add a button to manage the app. 
-So <code>new</code> ≠ &#39;new button&#39; but &#39;button to add a new entity&#39;. The full list of button names can be found in the <a class="xref" href="../../js-code/commands/index.html">CMS Commands list</a>.</p>
-</div>
-<h3 id="adding-more-buttons">Adding more Buttons</h3>
-<p>Now we want to add another button - maybe to add a <em>Tag</em>. The <code>toolbar</code> attribute on the <a class="xref" href="../../net-code/razor/edit.toolbar.html">Edit.TagToolbar</a> can take various kinds of objects, but for the new simple API it only accepts <code>string</code> objects or <code>string[]</code> arrays. So to make multiple changes to the toolbar, we&#39;ll have to give it a <code>string[]</code> array like this (note that we can use line-breaks, to make the code easier to read):</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
-  &quot;new&amp;color=red?contentType=Category&quot;, 
-  &quot;new&amp;color=teal?contentType=Tag&quot; 
-})&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>You should now see this: </p>
-<p><img src="assets/step-1-with-plus-button-red-and-teal.png" width="100%"></p>
-<div class="TIP"><h5>Tip</h5><p>When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">specs</a>. </p>
-</div>
-<h3 id="removing-buttons-with--">Removing Buttons with <code>-</code></h3>
-<p>Now maybe you don&#39;t like to allow your editors to change the view - so let&#39;s do the same but remove the view-switch button as well using the remove <code>-</code> prefix:</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
-  &quot;-layout&quot;,
-  &quot;new&amp;color=red?contentType=Category&quot;, 
-  &quot;new&amp;color=teal?contentType=Tag&quot; 
-})&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p><img src="assets/step-1-without-view.png" width="100%"></p>
-<p>So you can add / remove any button you want. You can find a <a class="xref" href="../../js-code/commands/index.html">full list of button names (command names)</a>.</p>
-<h3 id="modifying-existing-buttons-with-">Modifying Existing Buttons with <code>%</code></h3>
-<p>But what if we want to modify an existing button? Let&#39;s change the icon and both colors of the <code>layout</code> (view) button using the modify <code>%</code> prefix:</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
-  &quot;%layout&amp;icon=icon-sxc-replace&amp;color=white,maroon&quot;,
-  &quot;new&amp;color=red?contentType=Category&quot;, 
-  &quot;new&amp;color=teal?contentType=Tag&quot; 
-})&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p><img src="assets/step-1-modified-view.png" width="100%"></p>
-<p>As you can see, we just used <code>%</code> to modify a button, set the <code>icon</code> and 2 colors. </p>
-<h3 id="show-only-our-buttons">Show Only Our Buttons</h3>
-<p>But maybe we would prefer to have a toolbar with only the two <em>add</em> buttons, and nothing else. By default, the toolbar uses a template called <code>default</code> which contains all these buttons. But you can always start with an <code>empty</code> template. You&#39;ll find the full list of templates <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">here</a>.</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
-  &quot;toolbar=empty&quot;,
-  &quot;new&amp;color=red?contentType=Category&quot;, 
-  &quot;new&amp;color=teal?contentType=Tag&quot; 
-})&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p><img src="assets/step-1-empty-and-2-plus-buttons.png" width="100%"></p>
-<div class="TIP"><h5>Tip</h5><p>As you can see, the principle is to use a toolbar template and make modifications to it. </p>
-</div>
-<h3 id="showing-the-delete-button">Showing the Delete Button</h3>
-<div class="WARNING"><h5>Warning</h5><p>A special case in modifying buttons is also to force-show the <code>delete</code> button which is hidden by default. 
-The reason it&#39;s hidden is because in most content-editing scenarios the editor should be able to remove content, but not delete it - in case it&#39;s re-used elsewhere. </p>
-</div>
-<p>But let&#39;s say you created a <strong>News App</strong> and want to allow the editor to also delete the news-items. Here&#39;s how:</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: &quot;%delete&amp;show=true&quot;)&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>The <code>delete</code> button is in the third group of buttons, so you&#39;ll have to hit the ellipsis a few times to see it. You&#39;ll then see:</p>
-<p><img src="assets/step-1-show-delete.png" width="100%"></p>
-<h2 id="adding-custom-groups">Adding Custom Groups</h2>
-<p>Let&#39;s assume you understand the principle of adding, removing and changing buttons. Let&#39;s add a custom button group with only the buttons you want - followed by the normal ellipsis-button with the standard functionality: </p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new [] { 
-    &quot;group=add-buttons&quot;,
-    &quot;new&amp;color=red&amp;group=add-buttons?contentType=Category&quot;, 
-    &quot;new&amp;color=teal&amp;group=add-buttons?contentType=Tag&quot; 
-})&gt;
-  ...
-&lt;/div&gt;
-</code></pre><p>You&#39;ll get this result, and hitting the ellipsis will show you the default buttons as you can see in the second image:</p>
-<p><img src="assets/step-2-custom-group.png" width="100%"></p>
-<p><img src="assets/step-2-custom-group2.png" width="100%"></p>
-<div class="NOTE"><h5>Note</h5><p>We had to give our new group a name - in this case <code>add-buttons</code> and told the new buttons that they should go inside that group. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>A new group can also go after the <code>default</code> group of buttons. If you add a <code>&amp;pos=1</code> or another number the group will be placed later on in the sequence. 
-You can also use <code>&amp;pos=-0</code> or <code>&amp;pos=-1</code> or similar to place it counting from the end of the list.</p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>When using position like <code>pos=#</code> you may have unexpected results, because the button is added to the list <em>before</em> some buttons decide to hide themselves. 
-So you may think you&#39;re adding it to <code>pos=1</code> but if the edit button (which would be at position 0) shouldn&#39;t be shown, your button will still appear to be the first one.</p>
-</div>
-<p>There is also a hidden group called <code>edit-advanced</code> - you can find the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">list of groups</a> here. As of now, it only contains the <code>delete</code> button which is hidden by default. </p>
-<h2 id="attaching-custom-javascript-code-to-a-button">Attaching Custom JavaScript Code to a Button</h2>
-<p>Now you may want to call your own code when you create a button. This is very advanced stuff, but here&#39;s how:</p>
-<pre><code class="lang-razor">&lt;div class=&quot;demobox&quot; @Edit.TagToolbar(Content, 
-  toolbar: &quot;custom&amp;title=Message?call=myMessage&amp;id=17&quot;)
-&gt;
-    This demonstrates a custom button with the call-name in the parameters. 
-&lt;/div&gt;
-&lt;script&gt;
-    function myMessage(context, event) {
-        console.log(context, event);
-        alert(&#39;hello from my Message - got this id:&#39; + context.button.command.params.id);
-    }
-&lt;/script&gt;
-</code></pre><p>You&#39;ll then see this toolbar, and on click this message: </p>
-<p><img src="assets/pro-1-custom-js-call.png" width="100%"></p>
-<p><img src="assets/pro-1-custom-js-alert.png" width="100%"></p>
-<p>You&#39;ll notice that we have a <code>?call=functionName</code> and also an <code>id=17</code> just to show how additional information is passed around. Your function also gets an <code>event</code> from the browser, so you can check the <code>event.target</code> and other things to see what was actually clicked. </p>
-<div class="WARNING"><h5>Warning</h5><p>This is very advanced stuff, you may run into difficulties to get this to fly 😉.</p>
-</div>
-<h2 id="debugging-custom-toolbars">Debugging Custom Toolbars</h2>
-<p>In most cases if your problems will be caused by invalid syntax. It&#39;s easy to forget a closing quote <code>&quot;</code> or a comma <code>,</code> to separate values. So always check that first. </p>
-<p>If you really want to do deep debugging, you should use the <code>$2sxc.insights()</code> command in the console to see what whas processed and how. If you add <code>?debug=true</code> to the url of the page, it will also log way more intermediate data for you to review. </p>
-<h2 id="read-more">Read More</h2>
-<p>Basically you have what it takes. To go further: </p>
-<ul>
-<li>review the <a class="xref" href="../../specs/cms/toolbars/toolbar-builder.html">specs</a>.</li>
-<li>check out the list of <a class="xref" href="../../js-code/commands/index.html">commands/buttons</a></li>
-</ul>
 </article>
           </div>
           

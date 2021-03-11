@@ -6,7 +6,7 @@ uid: Specs.Cms.Toolbars.Build
 2sxc 10.27+ offers a new way to build and create toolbars. Instead of the difficult to use object-structure it has a much simpler commands syntax. These are specs for the command syntax. 
 
 > [!TIP]
-> Read how to use in the [How-To Customize Toolbars](xref:HowTo.Customize.Toolbars) section.
+> Read how to use in the [How-To Customize Toolbars](xref:JsCode.Toolbars.Simple) section.
 
 ## Overview
 

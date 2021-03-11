@@ -14,8 +14,8 @@ You can create awesome solutions, customizing the edit-experience and working wi
 1. Customize the edit experience (buttons, toolbars...) with the [manage controller](xref:Specs.Js.Sxc.Manage)
 
 ## Toolbars, Buttons and Commands
-1. In-page edit toolbars for [html](xref:Specs.Js.Toolbar.Intro) or [javascript](xref:Specs.Js.Toolbar.Js) with [settings](xref:Specs.Js.Toolbar.Settings)
-1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:Specs.Js.Toolbar.Buttons) and creating [custom buttons](xref:JsCode.Commands.Code)
+1. In-page edit toolbars for [html](xref:JsCode.Toolbars.Index) or [javascript](xref:JsCode.Toolbars.Advanced) with [settings](xref:JsCode.Toolbars.Settings)
+1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:JsCode.Toolbars.Buttons) and creating [custom buttons](xref:JsCode.Commands.Code)
 
 ## The quickE (Quick Edit) experience
 1. customizing the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)

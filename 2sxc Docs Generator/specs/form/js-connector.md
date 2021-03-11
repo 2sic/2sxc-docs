@@ -176,7 +176,7 @@ export interface FieldConfig {
 
 ## Read Also
 
-* [How To Create Custom Input Fields](xref:HowTo.Customize.InputFields)
+* [How To Create Custom Input Fields](xref:JsCode.CustomFields.Index)
 * [Tutorials for Custom Input Fields](https://2sxc.org/dnn-tutorials/en/razor/ui/home)
 
 

@@ -30,7 +30,7 @@ Let's assume you're building the details-page of a news-app and you only want th
 > [!WARNING]
 > 2sxc 10.27 introduces a new, simpler API to customize the toolbar.
 > So the instructions below are technically correct, but not recommended any more.
-> Check out the [much simpler toolbar customizations](xref:HowTo.Customize.Toolbars)
+> Check out the [much simpler toolbar customizations](xref:JsCode.Toolbars.Simple)
 
 ```razor
 @* this will show an "edit and remove" button for the current item *@
@@ -134,9 +134,9 @@ _Note_: there was an older `@SomeContentItem.Toolbar` syntax and this still work
 
 ## Read also
 
-* [](xref:Specs.Js.Toolbar.Intro)
-* [](xref:Specs.Js.Toolbar.Settings)
-* [](xref:Specs.Js.Toolbar.Buttons)
+* [](xref:JsCode.Toolbars.Index)
+* [](xref:JsCode.Toolbars.Settings)
+* [](xref:JsCode.Toolbars.Buttons)
 
 ## Demo App and further links
 

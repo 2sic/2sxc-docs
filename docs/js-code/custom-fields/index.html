@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How To Create Custom Input Fields (v11.2) | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="How To Create Custom Input Fields (v11.2) | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../how-to/index.html" title="How To">How To</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="JsCode.CustomFields.Index">
+<h1 id="how-to-create-custom-input-fields-v112">How To Create Custom Input Fields (v11.2)</h1>
+
+<p>Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever. </p>
+<div class="TIP"><h5>Tip</h5><ol>
+<li>2sxc 11 finally allows you to do this using simple <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">WebComponents</a></li>
+<li>Registering these happens by placing them in a specific folder  </li>
+<li>You can also make them configurable by placing a content-type json in another folder  </li>
+</ol>
+</div>
+<div class="NOTE"><h5>Note</h5><p>There are more ways to provide and register custom input fields - like when you need them globally across many apps and portals. 
+That is not discussed here. </p>
+</div>
+<h2 id="quick-start-video-and-tutorial">Quick-Start Video and Tutorial</h2>
+<p>If you&#39;re new here, best watch this video:</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/RQgarsil1Bo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>Then check out the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui/home">tutorials</a>.</p>
+<h2 id="what-kind-of-custom-input-field-can-you-create">What kind of Custom Input Field can you Create</h2>
+<p>You can create any kind of custom input field, as a JavaScript WebComponent. </p>
+<ol>
+<li>Look and Feel however you want it</li>
+<li>Any kind of JS code</li>
+<li>Talking to any other system (Google Maps, etc.)</li>
+<li>Talking to any endpoint (weather APIs)</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p>This overview will get you started, but we&#39;ve already created demos on the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui/home">2sxc Tutorials</a>. If you want to know more, you should also read the <a class="xref" href="../../specs/form/index.html">specs</a></p>
+</div>
+<h2 id="getting-started-with-custom-input-fields">Getting Started with Custom Input Fields</h2>
+<p>Basically a custom Input Field is just a <code>index.js</code> in the correct folder. These are the specs:</p>
+<ol>
+<li>An input field as described here is an <strong>App Extension</strong>. <ol>
+<li>All <strong>App Extensions</strong> must each lie in an own folder...</li>
+<li>within a folder called <code>system</code> inside the <em>App folder</em></li>
+</ol>
+</li>
+<li>The folder name for your custom input field must obey certain naming rules so that they are auto-detected. </li>
+<li>The javascript that will be loaded must be called <code>index.js</code></li>
+<li>Your script must register a <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements">custom element</a> - a WebComponent - in the browser</li>
+<li>The name of your custom element is predefined, and must adhere to the naming rules.</li>
+</ol>
+<p>Here&#39;s a checklist to get this setup</p>
+<iframe src="https://azing.org/2sxc/r/n8nJ1dfd?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+<div class="NOTE"><h5>Note</h5><p>Once you have that setup, the input field is automatically detected and a user can choose it as a field type in the configuration. </p>
+</div>
+<h2 id="some-background-on-webcomponents">Some Background on WebComponents</h2>
+<ol>
+<li>The WebComponent has a simple lifecycle - from when it&#39;s created to when it receives data and can push changes back to the form.</li>
+<li>The form itself is reactive. This means that your field will receive messages when the value changes or when other values change (in case you want to use other field values in your input).</li>
+<li>The API to communicate with the form has a few complexities you need to know. This is because the form is very dynamic - so the user could switch languages, and your input field needs to react to this.</li>
+</ol>
+<p>So let&#39;s get started 🚀!</p>
+<h2 id="getting-the-html-into-the-custom-input">Getting the HTML into the Custom Input</h2>
+<p>WebControls are developed using pure JavaScript, but a control is automatically a rich DOM object. So your <code>this</code> object can do all kinds of DOM manipulations, but in most cases you&#39;ll just do something like this:</p>
+<pre><code class="lang-js">this.innerHTML = &#39;Hello &lt;em&gt;world&lt;/em&gt;!&#39;;
+</code></pre><p>Now you have to wait with doing this, till your object has been added to the DOM, so you need to kick this off in the <code>connectedCallback()</code> like this:</p>
+<pre><code class="lang-js">class EmptyHelloWorld extends HTMLElement {
+
+  /* Constructor for WebComponents - the first line must always be super() */
+  constructor() {
+    super();
+  }
+
+  /* connectedCallback() is the standard callback when the component has been attached */
+  connectedCallback() {
+    this.innerHTML = &#39;Hello &lt;em&gt;world&lt;/em&gt;!&#39;;
+  }
+}
+</code></pre><h2 id="reading-and-writing-values">Reading and Writing Values</h2>
+<p>The 2sxc form will initialize your custom element and attach a <code>connector</code> object. This happens automatically, so you will have it once <code>connectedCallback()</code> is fired. This connector is a rich object with lots of stuff, but for your field value you need to know these bits</p>
+<ul>
+<li><code>connector.data.value</code> gets you the current value</li>
+<li><code>connector.data.update(newValue)</code> updates the form with the changed value</li>
+<li><code>connector.data.value$</code> is the observable version of the value - this is great for advanced use cases, but otherwise you can stick to the simple <code>.value</code></li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>Avoid calling <code>update(...)</code> if nothing changed - as it will make the form dirty, so the user will be asked if he wants to save when cancelling the dialog, even though nothing changed. </p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>Check out this <a href="https://2sxc.org/dnn-tutorials/en/razor/ui211/page">tutorial example of Pickr</a> to see all this in action</p>
+</div>
+<h2 id="loading-custom-css-and-js-libraries">Loading Custom CSS and JS Libraries</h2>
+<p>Since this is all standard JavaScript, you can do it anyhow you want. For example, to load some CSS we recommend that you simply add a <code>&lt;link&gt;</code> tag to your html, like this:</p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css&quot;/&gt;
+</code></pre><p>For JavaScript you can do the same, either using a <code>&lt;script&gt;</code> tag or telling the browser to load the JS using DOM commands. We also provide a helper on <code>connector.loadScript(name, url, callback)</code> which does the following:</p>
+<ol>
+<li>Check if the <code>name</code> given in the first parameter exists on the <code>window</code> object (to check if it&#39;s already loaded)</li>
+<li>If not, load the script provided in the <code>url</code></li>
+<li>Watch the window object using polling to see when the item with <code>name</code> is created</li>
+<li>Then trigger your callback function</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p>Check out the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui211/page">tutorial example of Pickr</a> to see all this in action</p>
+</div>
+<h2 id="making-your-fields-configurable">Making your Fields Configurable</h2>
+<p>Now you have a color-picker, but each field may require a different set of preconfigured colors. Or maybe your date picker has could optionally restrict dates to weekdays. In these cases, you need configuration specific for the field. </p>
+<iframe src="https://azing.org/2sxc/r/1_bUtjCH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+<h2 id="create-your-own-wysiwyg-field">Create Your own WYSIWYG Field</h2>
+<p>WYSIWYG fields are very hard to do right. Basically you can simply create your own using the same principles as mentioned above. But we recommend that you use the existing WYSIWYG field provided by 2sxc and just change some of the configurations. </p>
+<div class="TIP"><h5>Tip</h5><p>By just reconfiguring the existing 2sxc WYSIWYG you will benefit from ADAM file-upload and continuous updates to the main component. </p>
+</div>
+<p>Here&#39;s what you need to know</p>
+<ul>
+<li>The WYSIWYG field is based on <a href="https://www.tiny.cloud/">TinyMCE</a> - so to make configuration changes, you&#39;ll need to understand that API pretty well.</li>
+<li>To change it, you need to create a wrapper component which contains the standard 2sxc-wysiwyg and give it different configurations.</li>
+<li>To do this, we are calling various methods on a <code>reconfigure</code> object of your wrapper - so you can override most of the defaults</li>
+</ul>
+<p>To learn more, best look at the tutorials and the API</p>
+<ul>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui241/page">Basic tutorial, just providing 4 standard buttons</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor/ui242/page">Advanced tutorial adding a custom button</a></li>
+<li><a class="xref" href="../../specs/form/field-wysiwyg.html">WYSIWYG Reconfigure API</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/custom-fields/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
