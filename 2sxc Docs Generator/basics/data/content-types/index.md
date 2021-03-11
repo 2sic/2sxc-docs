@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.Index
+uid: Basics.Data.ContentTypes.Index
 ---
 # Content-Type (Schema/Object-Type)
 
@@ -20,10 +20,10 @@ The Content-Type will define what fields exist, what is required and what order 
 
 ## Where are Content-Types
 
-* [App Content-Types](xref:Basics.Data.ContentType.App) - this is the default, these Types are part of an App
-* [App Shared Content-Types](xref:Basics.Data.ContentType.Shared) - for advanced use cases
-* [System Content-Types](xref:Basics.Data.ContentType.System) - included in the default installation
-* [Global Shared Content-Types](xref:Basics.Data.ContentType.Global) - for very advanced use cases
+* [App Content-Types](xref:Basics.Data.ContentTypes.App) - this is the default, these Types are part of an App
+* [App Shared Content-Types](xref:Basics.Data.ContentTypes.Shared) - for advanced use cases
+* [System Content-Types](xref:Basics.Data.ContentTypes.System) - included in the default installation
+* [Global Shared Content-Types](xref:Basics.Data.ContentTypes.Global) - for very advanced use cases
 
 ## What's Defined in a Content-Type?
 
@@ -84,8 +84,8 @@ The Content-Type will define what fields exist, what is required and what order 
 Each content-type has a _Name_, which is nice for a human to read, use and program with. There is a second identifier called _StaticName_ which is usually a GUID, but in rare cases it's a string like `App-Settings`. This identifier is used internally - for example when a View references a Content-Type.
 
 #### Storage
-Most Content-Types in your App are stored in the [SQL database](xref:Basics.Data.ContentType.SqlStorage).
-System and global Content-Types are stored in the file system. These are called [](xref:Basics.Data.ContentType.FileStorage)
+Most Content-Types in your App are stored in the [SQL database](xref:Basics.Data.ContentTypes.SqlStorage).
+System and global Content-Types are stored in the file system. These are called [](xref:Basics.Data.ContentTypes.FileStorage)
 
 #### Field Types
 Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Basics.Data.Fields.Index).

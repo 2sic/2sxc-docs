@@ -40,7 +40,7 @@ Simple example:
 
 ```
 
-1. the first parameter is an HTML tag in the DOM, which is used to look up the context automatically (see [edit-context](xref:Specs.Cms.EditContext))
+1. the first parameter is an HTML tag in the DOM, which is used to look up the context automatically (see [edit-context](xref:Basics.Browser.EditUx.EditContext))
 1. the second parameter is the verb for the [cms-command](xref:JsCode.Commands.Index) to run
 1. the third parameter is additional parameters for that command
 

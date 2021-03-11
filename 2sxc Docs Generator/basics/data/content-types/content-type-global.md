@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.Global
+uid: Basics.Data.ContentTypes.Global
 ---
 
 # Global Content-Types (⚠)
@@ -18,13 +18,13 @@ This explains **Global Content-Types**. For an overview check out [](xref:Basics
 
 ## What is a Global Content-Type?
 
-**Global Content Types** are a [Content Types](xref:Basics.Data.ContentType.Index) which are defined in a central location and available in all Apps of your system. 
+**Global Content Types** are a [Content Types](xref:Basics.Data.ContentTypes.Index) which are defined in a central location and available in all Apps of your system. 
 
 * These are custom Content-Types which are treated like System Content-Types. 
 * They can be used inside _every single App_
 * The App data is in the export/import, but _not_ the **Content-Type Definition**. 
 * If you import an App with such data, the **Global Type** must be configured first.
-* These Content-Types are stored in the [file system](xref:Basics.Data.ContentType.FileStorage)
+* These Content-Types are stored in the [file system](xref:Basics.Data.ContentTypes.FileStorage)
 
 For most scenarios you don't want to use this. 
 
@@ -46,8 +46,8 @@ We also have some really sophisticated solutions which use this feature.
 
 ## Why would you _not_ want to do this?
 
-1. If you only want to share the Content-Type across 2-3 Apps, you should prefer [App Shared Types](xref:Basics.Data.ContentType.Shared) instead
-1. If you have one specific App (like News) which is installed on many Sites you should prefer [App Shared Types](xref:Basics.Data.ContentType.Shared) instead
+1. If you only want to share the Content-Type across 2-3 Apps, you should prefer [App Shared Types](xref:Basics.Data.ContentTypes.Shared) instead
+1. If you have one specific App (like News) which is installed on many Sites you should prefer [App Shared Types](xref:Basics.Data.ContentTypes.Shared) instead
 
 ## Important Warnings
 

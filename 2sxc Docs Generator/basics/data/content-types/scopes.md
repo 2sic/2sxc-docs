@@ -23,7 +23,7 @@ The other Scopes have internal and system Content-Types like `@String`.
 
 ## Nice to Know about Scopes
 
-You can easily create your own scope at any time. This is usually used for [](xref:Basics.Data.ContentType.Global) or if your App is getting really complex and has so many Content-Types that it confuses the Admin. 
+You can easily create your own scope at any time. This is usually used for [](xref:Basics.Data.ContentTypes.Global) or if your App is getting really complex and has so many Content-Types that it confuses the Admin. 
 
 ## History
 

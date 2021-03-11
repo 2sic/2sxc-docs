@@ -49,7 +49,7 @@ Let's look at each piece in detail.
 > [!TIP]
 > An App usually has a lot of Content-Types.
 
-Read more about [](xref:Basics.Data.ContentType.Index)
+Read more about [](xref:Basics.Data.ContentTypes.Index)
 
 
 ## Global / Shared Types

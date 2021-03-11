@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.App
+uid: Basics.Data.ContentTypes.App
 ---
 
 # App Content-Types
@@ -12,11 +12,11 @@ This explains **App Content-Types**, the most common Content-Type. For an overvi
 
 ## What is an App Content-Type?
 
-**App Content-Types** are the default kind of [Content-Types](xref:Basics.Data.ContentType.Index) which are defined in an app.
+**App Content-Types** are the default kind of [Content-Types](xref:Basics.Data.ContentTypes.Index) which are defined in an app.
 
 * They can only be used inside that App
 * They are included upon export/import
-* These Content-Types are stored in the [SQL database](xref:Basics.Data.ContentType.SqlStorage)
+* These Content-Types are stored in the [SQL database](xref:Basics.Data.ContentTypes.SqlStorage)
 
 ## History
 

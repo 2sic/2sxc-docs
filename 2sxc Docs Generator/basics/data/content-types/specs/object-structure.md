@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.ObjectStructure
+uid: Basics.Data.ContentTypes.ObjectStructure
 ---
 
 # Content-Type Object Structure

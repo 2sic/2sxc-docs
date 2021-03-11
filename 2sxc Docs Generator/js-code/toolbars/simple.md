@@ -28,7 +28,7 @@ You can customize just about everything:
 1. you can even call custom code from your custom buttons
 
 > [!TIP]
-> This overview will get you started, anything more advanced will need the [specs](xref:Specs.Cms.Toolbars.Build).
+> This overview will get you started, anything more advanced will need the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
 
 > [!IMPORTANT]
 > This will show you how to do things in Razor, but the same principles apply to plain HTML-Toolbars. 
@@ -102,7 +102,7 @@ You should now see this:
 <img src="./assets/step-1-with-plus-button-red-and-teal.png" width="100%">
 
 > [!TIP]
-> When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the [specs](xref:Specs.Cms.Toolbars.Build). 
+> When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize). 
 
 ### Removing Buttons with `-`
 
@@ -141,7 +141,7 @@ As you can see, we just used `%` to modify a button, set the `icon` and 2 colors
 
 ### Show Only Our Buttons
 
-But maybe we would prefer to have a toolbar with only the two _add_ buttons, and nothing else. By default, the toolbar uses a template called `default` which contains all these buttons. But you can always start with an `empty` template. You'll find the full list of templates [here](xref:Specs.Cms.Toolbars.Build).
+But maybe we would prefer to have a toolbar with only the two _add_ buttons, and nothing else. By default, the toolbar uses a template called `default` which contains all these buttons. But you can always start with an `empty` template. You'll find the full list of templates [here](xref:Basics.Browser.EditUx.Toolbars.Customize).
 
 ```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
@@ -210,7 +210,7 @@ You'll get this result, and hitting the ellipsis will show you the default butto
 > When using position like `pos=#` you may have unexpected results, because the button is added to the list _before_ some buttons decide to hide themselves. 
 > So you may think you're adding it to `pos=1` but if the edit button (which would be at position 0) shouldn't be shown, your button will still appear to be the first one.
 
-There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Specs.Cms.Toolbars.Build) here. As of now, it only contains the `delete` button which is hidden by default. 
+There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Basics.Browser.EditUx.Toolbars.Customize) here. As of now, it only contains the `delete` button which is hidden by default. 
 
 
 ## Attaching Custom JavaScript Code to a Button
@@ -253,5 +253,5 @@ If you really want to do deep debugging, you should use the `$2sxc.insights()` c
 
 Basically you have what it takes. To go further: 
 
-* review the [specs](xref:Specs.Cms.Toolbars.Build).
+* review the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
 * check out the list of [commands/buttons](xref:JsCode.Commands.Index)

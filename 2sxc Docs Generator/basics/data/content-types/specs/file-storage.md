@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.FileStorage
+uid: Basics.Data.ContentTypes.FileStorage
 ---
 
 # File-Stored Content-Types 
@@ -10,9 +10,9 @@ This section explains **File-Stored Content-Types**. For an overview check out [
 
 ---
 
-Usually [Content-Types](xref:Basics.Data.ContentType.Index) are stored in the [database](xref:Basics.Data.ContentType.SqlStorage). 
+Usually [Content-Types](xref:Basics.Data.ContentTypes.Index) are stored in the [database](xref:Basics.Data.ContentTypes.SqlStorage). 
 For a special use case, content-type definitions can also stored in a json-file. 
-This is used for [System Content-Types](xref:Basics.Data.ContentType.System) and [Global Content-Types](xref:Basics.Data.ContentType.Global). 
+This is used for [System Content-Types](xref:Basics.Data.ContentTypes.System) and [Global Content-Types](xref:Basics.Data.ContentTypes.Global). 
 Examples of such types are:
 
 1. configurations of data-sources (like the SqlDataSource in 2sxc 9.8) 
@@ -51,7 +51,7 @@ This should not affect you, as it's not meant to be managed by anybody else than
 
 You will almost never need these, except for 2 important scenarios:
 
-1. Shared Content-Types across _all_ Apps (similar to [Shared Content-Types](xref:Basics.Data.ContentType.Shared))
+1. Shared Content-Types across _all_ Apps (similar to [Shared Content-Types](xref:Basics.Data.ContentTypes.Shared))
 1. When you create a [custom data-source](xref:Specs.DataSources.Custom), and want to distribute the Configuration Content-Type along with your DLL
 
 ## Future Features & Wishes

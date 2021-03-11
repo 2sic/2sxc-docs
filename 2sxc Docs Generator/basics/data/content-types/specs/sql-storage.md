@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.SqlStorage
+uid: Basics.Data.ContentTypes.SqlStorage
 ---
 
 # SQL-Stored Content-Types 
@@ -10,7 +10,7 @@ This section explains **SQL-Stored Content-Types**. For an overview check out []
 
 ---
 
-Usually [Content-Types](xref:Basics.Data.ContentType.Index) are stored in the database as part of the App they were defined in. 
+Usually [Content-Types](xref:Basics.Data.ContentTypes.Index) are stored in the database as part of the App they were defined in. 
 
 This is how they are stored:
 
@@ -21,8 +21,8 @@ This is how they are stored:
 
 ## Nice to Know
 
-1. For advanced scenarios you can also [share Content-Types across Apps](xref:Basics.Data.ContentType.Shared)
-1. In even more advanced scenarios you can use [file based Content-Types](xref:Basics.Data.ContentType.FileStorage)
+1. For advanced scenarios you can also [share Content-Types across Apps](xref:Basics.Data.ContentTypes.Shared)
+1. In even more advanced scenarios you can use [file based Content-Types](xref:Basics.Data.ContentTypes.FileStorage)
 
 ## History
 

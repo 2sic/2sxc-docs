@@ -121,7 +121,7 @@ The edit experience can be customized to a very large extent:
 
 You may want to learn more about:
 
-1. [quickE / quick Edit](xref:Specs.Cms.QuickE) to customize the toolbar which adds / deletes modules
+1. [quickE / quick Edit](xref:Basics.Browser.EditUx.QuickE) to customize the toolbar which adds / deletes modules
 1. Specifying different buttons / commands on a toolbar in Razor
 1. Specifying different buttons / commands on a toolbar in JavaScript
 1. Adding completely custom buttons to the toolbar which will run your own JavaScript

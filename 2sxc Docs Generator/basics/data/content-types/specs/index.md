@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.ContentType.Technical.Index
+uid: Basics.Data.ContentTypes.Technical.Index
 ---
 
 # Content-Type Technical Specs
