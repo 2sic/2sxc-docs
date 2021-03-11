@@ -1,4 +1,4 @@
-  <div class="fancybox-auto" style="width: 100%">
+  <div class="fancybox-auto svg-highlight" style="width: 100%">
     [!include["App server"](_shared-svg-raw.md)]
   </div>
   <div class="overlay-description">

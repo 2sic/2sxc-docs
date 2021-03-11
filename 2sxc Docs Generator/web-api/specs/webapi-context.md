@@ -4,6 +4,14 @@ uid: WebApi.Specs.Context
 
 # Context for 2sxc WebAPI and REST APIs
 
+<div class="float-right context-summary highlight-max" width="400px">
+  [!include[](../../basics/stack/_shared-all.md)]
+  <style>
+    .context-summary .browser-interact,
+    .context-summary .process-apis { visibility: visible; }
+  </style>
+</div>
+
 Whenever the server receives an HTTP request it must determine what it's for to figure out what to do. 
 
 > [!TIP]

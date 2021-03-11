@@ -6,7 +6,14 @@ uid: Basics.Server.Index
 
 You should get an idea of how the system works and all the things you can customize. This overview lets you see the essential parts of any **App** including the main **Content**. 
 
-[!include["App stack awesomize-prepare"](../stack/_shared-server-ap.md)]
+<!-- [!include["App stack awesomize-prepare"](../stack/_shared-server-ap.md)] -->
+
+<div class="float-right context-box-summary highlight-max" width="400px">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-summary .server-all { visibility: visible; } </style>
+</div>
+
+
 
 This is what web-systems do from a bird's-eyes perspective. The purple boxes show [what happens in the browser](xref:Basics.Browser.Index). They gray boxes show what happens on the server:
 
@@ -18,8 +25,11 @@ This is what web-systems do from a bird's-eyes perspective. The purple boxes sho
 
 ## Awesomeize / Customise
 
+<div class="context-box-process" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-process .process-all { visibility: visible; } </style>
+</div>
 
-[!include["App browser js"](../../shared/app/app-server-awesomeize.md)]
 
 You may want to learn more about:
 
@@ -34,7 +44,10 @@ You may want to learn more about:
 
 Something must determine what data should be shown or worked on, which is what happens in the **Prepare** step. 
 
-[!include["App server prepare"](../../shared/app/app-server-prepare.md)]
+<div class="context-box-prepare" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-prepare .prepare-all { visibility: visible; } </style>
+</div>
 
 
 There are a few standard use cases:
@@ -57,7 +70,11 @@ You may want to learn more about:
 
 ## Understanding Data
 
-[!include["App browser js"](../../shared/app/app-server-data.md)]
+<div class="context-box-data" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-data .data-all { visibility: visible; } </style>
+</div>
+
 
 Data has it's own chapter in the docs [](xref:Basics.Data.Index)
 

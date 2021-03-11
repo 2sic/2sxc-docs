@@ -4,9 +4,9 @@ uid: Basics.Data.Index
 
 # Understanding Data...
 
-<div class="float-right context-box1" width="400px">
+<div class="float-right context-data highlight-max" width="400px">
   [!include[](../stack/_shared-all.md)]
-  <style>.context-box1 .highlight1 { x: 19%; y: 82%; width: 64%; height: 18%; }</style>
+  <style>.context-data .data-all { visibility: visible; } </style>
 </div>
 
 
@@ -33,7 +33,7 @@ This kind of data can be used in many ways. Let's start by looking where this fi
 
 <div class="context-box2" width="100%">
   [!include[](../stack/_shared-all.md)]
-  <style>.context-box2 .highlight1 { x: 19%; y: 82%; width: 64%; height: 18%; }</style>
+  <style>.context-box2 .data-data { visibility: visible; } </style>
 </div>
 
 

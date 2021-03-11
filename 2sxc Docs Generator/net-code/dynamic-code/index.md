@@ -6,7 +6,10 @@ uid: NetCode.DynamicCode.Index
 
 Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a lot of helpers to work with [Dynamic Data](xref:NetCode.DynamicData.Index).
 
-[!include["App server code"](../../shared/app/app-server-code.md)]
+<div class="context-box-process" width="100%">
+  [!include[](../../basics/stack/_shared-all.md)]
+  <style>.context-box-process .process-cs { visibility: visible; } </style>
+</div>
 
 The following APIs are available on all 2sxc **Dynamic Code**. You can use this in:
 

@@ -2,7 +2,15 @@
 uid: WebApi.Content
 ---
 
-# 2sxc Content REST and CRUD Web API
+# Content REST and CRUD Web API
+
+<div class="float-right context-summary highlight-max" width="400px">
+  [!include[](../basics/stack/_shared-all.md)]
+  <style>
+    .context-summary .browser-interact,
+    .context-summary .process-headless { visibility: visible; }
+  </style>
+</div>
 
 2sxc provides a full set of REST endpoints for CRUD (Create, Read, Update, Delete) operations like:
 

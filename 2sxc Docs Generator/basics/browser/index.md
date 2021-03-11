@@ -4,11 +4,10 @@ uid: Basics.Browser.Index
 
 # What Happens in the Browser...
 
+[!include[](../stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-all { visibility: visible; } </style>
+
 In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
-
-
-[!include["App stack browser"](../stack/_shared-browser.md)]
-
 
 This is what web-systems do from a bird's-eyes perspective. On the top you see what happens in the browser (the purple boxes).
 
@@ -18,17 +17,18 @@ This is what web-systems do from a bird's-eyes perspective. On the top you see w
 
 This document will go into more detail what happens at that level. To understand the server level go to [](xref:Basics.Index).
 
-## Deeper Dive into the Client (Show, Interact, Edit)
+> [!TIP]
+> Everything that's green in the image can be customized.
 
-<img src="../../shared/app/assets/app-browser.png" class="full-width">
-
-Everything that's green in the image can be customized.
 
 ## Standard CSS and JS Libraries and Frameworks
 
 A key goal of 2sxc is to stay out of the way and let you do things using your favorite CSS and JS Frameworks. So the frameworks-section is simply here for you to see that you can use any standard framework or library you want. 
 
-[!include["App browser frameworks"](../../shared/app/app-browser-frameworks.md)]
+<div class="context-box2" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box2 .frameworks-browser { visibility: visible; } </style>
+</div>
 
 Basically you can simply add these frameworks to your Razor-template files as `<script>` or `<link>` tags, and everything will just work. You may want to learn more about
 
@@ -40,7 +40,11 @@ Basically you can simply add these frameworks to your Razor-template files as `<
 The HTML you need is 100% customizable and comes from the server using your templates. 
 Usually you'll use Razor templates to generate this. 
 
-[!include["App browser html"](../../shared/app/app-browser-html.md)]
+<div class="context-box3" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box3 .show-html { visibility: visible; } </style>
+</div>
+
 
 Since it's just standard HTML there's not much to say about it here. You may want to learn more about:
 
@@ -54,7 +58,10 @@ Since it's just standard HTML there's not much to say about it here. You may wan
 
 JS and CSS files are stored in your app folder and included in your output. 
 
-[!include["App browser js"](../../shared/app/app-browser-js.md)]
+<div class="context-box4" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box4 .show-js { visibility: visible; } </style>
+</div>
 
 You may want to learn more about
 
@@ -72,7 +79,10 @@ You may want to learn more about
 
 2sxc is great and bundling SPA JS Applications built using Angular, React, Vue or whatever. 
 
-[!include["App browser js"](../../shared/app/app-browser-spa.md)]
+<div class="context-box5" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box5 .spa-all { visibility: visible; } </style>
+</div>
 
 You may want to learn more about:
 
@@ -89,18 +99,25 @@ You may want to learn more about:
     1. Customize the toolbar for an item
     1. Intercepting refreshes to reload the data instead of reloading the page after edit
 
+
 ## Automatic In-Page Editing Experience
 
 By default 2sxc creates hover toolbars to add modules and on most items which only a _Content Editor_ can see. These let them edit the content or data. It's made possible thanks to the server helper [@Edit.TagToolbar](xref:NetCode.Razor.Edit.Toolbar) in your templates.
 
-[!include["App browser js"](../../shared/app/app-browser-edit-auto.md)]
+<div class="context-box6" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box6 .edit-auto { visibility: visible; } </style>
+</div>
 
 
 ## Custom In-Page Editing Experience
 
 The edit experience can be customized to a very large extent:
 
-[!include["App browser js"](../../shared/app/app-browser-edit-custom.md)]
+<div class="context-box-edit-js" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-edit-js .edit-custom { visibility: visible; } </style>
+</div>
 
 You may want to learn more about:
 
@@ -111,11 +128,16 @@ You may want to learn more about:
 1. Reconfiguring buttons to show filter data to list of items belonging to the current module
 1. Modify the `new` button to include a prefill for new items
 
+
 ## Edit Form
 
 The edit form is generated automatically from the Content-Type information (Schema) and the template configuration. 
 
-[!include["Edit form"](../../shared/app/app-browser-edit-form.md)]
+<div class="context-box-edit-form" width="100%">
+  [!include[](../stack/_shared-all.md)]
+  <style>.context-box-edit-form .browser-edit-ui { visibility: visible; } </style>
+</div>
+
 
 You may want to learn more about:
 

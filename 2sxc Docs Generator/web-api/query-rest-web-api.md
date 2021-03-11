@@ -2,9 +2,17 @@
 uid: WebApi.Query
 ---
 
-# 2sxc Query REST Web API for Read Operations
+# Query REST Web API
 
-Every Visual Query you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL.
+<div class="float-right context-summary highlight-max" width="400px">
+  [!include[](../basics/stack/_shared-all.md)]
+  <style>
+    .context-summary .browser-interact,
+    .context-summary .process-headless { visibility: visible; }
+  </style>
+</div>
+
+Every Visual Query you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL. Queries are Read APIs.
 
 
 The Query endpoint can be accessed on

@@ -6,7 +6,10 @@ uid: WebApi.Custom.Index
 
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
 
-[!include[" Stack "](../../shared/app/app-server-web-api-custom.md)]
+<div class="context-box-process" width="100%">
+  [!include[](../../basics/stack/_shared-all.md)]
+  <style>.context-box-process .process-web-api { visibility: visible; } </style>
+</div>
 
 ## Access Endpoints with JavaScript
 

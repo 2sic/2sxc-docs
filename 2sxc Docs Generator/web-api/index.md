@@ -2,11 +2,19 @@
 uid: WebApi.Index
 ---
 
-[!include["App stack web-api"](../basics/stack/_shared-web-api.md)]
+<div class="float-right context-summary highlight-max" width="400px">
+  [!include[](../basics/stack/_shared-all.md)]
+  <style>
+    .context-summary .browser-interact,
+    .context-summary .process-apis { visibility: visible; }
+  </style>
+</div>
+
 
 # 2sxc Web API
 
 2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP `GET` to an endpoint like `app/News/content/NewsItems/` and get a list of news items. 
+
 
 You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need. 
 

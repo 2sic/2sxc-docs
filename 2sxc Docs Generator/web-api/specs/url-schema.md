@@ -4,19 +4,17 @@ uid: WebApi.Specs.UrlSchema
 
 # URLs for 2sxc WebAPI and REST APIs
 
-> [!TIP]
-> The exact schema for the url varies depending on the platform you're using. 
-> So DNN 7 is different from DNN 9, and Oqtane is different again.
->
-> Also older versions of 2sxc had URLs which still work today but are not recommended any more, 
-> because they were not well structured. 
-> 
-> In 2sxc 11.10+ we introduced REST-API help dialogs in the Admin-UI, so from now on
-> you 2sxc will tell you what URLs you can use. 
-> 
-> So the information you find here is valid, but you probably don't need it
+<div class="float-right context-summary highlight-max" width="400px">
+  [!include[](../../basics/stack/_shared-all.md)]
+  <style>
+    .context-summary .browser-interact,
+    .context-summary .process-apis { visibility: visible; }
+  </style>
+</div>
 
-## Finding the right URLs in the Admin-Dialogs _(new in v11.10)_
+The **URL Schema** describes how the paths look to access WebAPIs. When using [$2sxc JS](xref:Specs.Js.$2sxc) or other helpers like [dnn-sxc-angular](xref:JsCode.Angular.Index) most if this is automatic. So this information is most usefull if you are doing something very custom or accessing 2sxc APIs from externally (like mobile apps).
+
+## Finding the right URLs in the Admin-Dialogs
 
 > [!TIP]
 > <img src="../assets/admin-ui-data-rest-menu.jpg" width="40%" align="right" >
@@ -26,6 +24,20 @@ uid: WebApi.Specs.UrlSchema
 > [!TIP]
 > In 2sxc 11.10 this dialog was introduced for the **Data** section, and we'll add similar sections for **Query** and **WebApi**. 
 > So the remaining information on this page is really only for those who really want to dive in deep. 
+
+## Note about Platform and Version Differences
+
+The exact schema for the url varies depending on the platform you're using. 
+So DNN 7 is different from DNN 9, and Oqtane is different again.
+
+Also older versions of 2sxc had URLs which still work today but are not recommended any more, 
+because they were not well structured. 
+
+In 2sxc 11.10+ we introduced REST-API help dialogs in the Admin-UI, so from now on
+you 2sxc will tell you what URLs you can use. 
+
+So the information you find here is valid, but you probably don't need it
+
 
 ## URL Schema Specifications (Advanced)
 

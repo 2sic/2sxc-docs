@@ -8,7 +8,10 @@ uid: NetCode.DynamicData.Index
 Once you've gotten the basics to work, it's important that you understand what's really happening in the background. 
 This section should give you that overview. 
 
-[!include["App server code"](../../shared/app/app-server-code.md)]
+<div class="context-box-process" width="100%">
+  [!include[](../../basics/stack/_shared-all.md)]
+  <style>.context-box-process .process-cs { visibility: visible; } </style>
+</div>
 
 ## DynamicEntities vs. Entities
 

@@ -6,7 +6,10 @@ uid: NetCode.Index
 
 When you implement solutions using 2sxc, most of your server-side code will be written in C#.
 
-[!include["App server code"](../shared/app/app-server-code.md)]
+<div class="context-box-process" width="100%">
+  [!include[](../basics/stack/_shared-all.md)]
+  <style>.context-box-process .process-cs { visibility: visible; } </style>
+</div>
 
 ## C# Files in 2sxc Apps
 
