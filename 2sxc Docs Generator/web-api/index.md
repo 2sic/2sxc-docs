@@ -2,13 +2,11 @@
 uid: WebApi.Index
 ---
 
-<div class="float-right context-summary highlight-max" width="400px">
-  [!include[](../basics/stack/_shared-all.md)]
-  <style>
-    .context-summary .browser-interact,
-    .context-summary .process-apis { visibility: visible; }
-  </style>
-</div>
+[!include[](../basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-interact,
+  .context-box-summary .process-apis { visibility: visible; }
+</style>
 
 
 # 2sxc Web API

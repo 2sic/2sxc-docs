@@ -4,13 +4,12 @@ uid: WebApi.Specs.UrlSchema
 
 # URLs for 2sxc WebAPI and REST APIs
 
-<div class="float-right context-summary highlight-max" width="400px">
-  [!include[](../../basics/stack/_shared-all.md)]
-  <style>
-    .context-summary .browser-interact,
-    .context-summary .process-apis { visibility: visible; }
-  </style>
-</div>
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-interact,
+  .context-box-summary .process-apis { visibility: visible; }
+</style>
+
 
 The **URL Schema** describes how the paths look to access WebAPIs. When using [$2sxc JS](xref:Specs.Js.$2sxc) or other helpers like [dnn-sxc-angular](xref:JsCode.Angular.Index) most if this is automatic. So this information is most usefull if you are doing something very custom or accessing 2sxc APIs from externally (like mobile apps).
 

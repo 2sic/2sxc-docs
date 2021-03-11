@@ -4,10 +4,8 @@ uid: Basics.Data.Index
 
 # Understanding Data...
 
-<div class="float-right context-data highlight-max" width="400px">
-  [!include[](../stack/_shared-all.md)]
-  <style>.context-data .data-all { visibility: visible; } </style>
-</div>
+[!include[](../stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-all { visibility: visible; } </style>
 
 
 Data in 2sxc covers various aspects: 

@@ -4,13 +4,12 @@ uid: WebApi.Specs.Security
 
 # Security for 2sxc WebAPI and REST APIs
 
-<div class="float-right context-summary highlight-max" width="400px">
-  [!include[](../../basics/stack/_shared-all.md)]
-  <style>
-    .context-summary .browser-interact,
-    .context-summary .process-apis { visibility: visible; }
-  </style>
-</div>
+[!include[](../../basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-interact,
+  .context-box-summary .process-apis { visibility: visible; }
+</style>
+
 
 All WebAPI calls in Dnn, Oqtane and 2sxc have some security features. 
 In the basic use cases it's straightforward: the current user may do some things, and that should be allowed. 

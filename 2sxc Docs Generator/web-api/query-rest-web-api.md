@@ -4,13 +4,12 @@ uid: WebApi.Query
 
 # Query REST Web API
 
-<div class="float-right context-summary highlight-max" width="400px">
-  [!include[](../basics/stack/_shared-all.md)]
-  <style>
-    .context-summary .browser-interact,
-    .context-summary .process-headless { visibility: visible; }
-  </style>
-</div>
+[!include[](../basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-interact,
+  .context-box-summary .process-headless { visibility: visible; }
+</style>
+
 
 Every Visual Query you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL. Queries are Read APIs.
 
