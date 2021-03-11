@@ -5,7 +5,7 @@ uid: Specs.Form.Field.Wysiwyg
 # Customizing the WYSIWYG Field in 2sxc 11
 
 > [!TIP]
-> These are the technical specs for reference. Make sure you first read the [how to](xref:HowTo.Customize.EditUx) before you start. 
+> These are the technical specs for reference. Make sure you first read the [how to](xref:Basics.Browser.EditUx.Index) before you start. 
 
 Since WYSIWYG is so complex, with image-handling, special paste etc. we believe most developers are better of using the existing system, and just reconfiguring it. That's what we'll explain here. 
 

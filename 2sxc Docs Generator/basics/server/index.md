@@ -29,7 +29,7 @@ This is what web-systems do from a bird's-eyes perspective. The purple boxes sho
 
 You may want to learn more about:
 
-1. [Bundling / Optimizing Assets](xref:HowTo.Output.Assets)
+1. [Bundling / Optimizing Assets](xref:Basics.Server.Assets.Optimization)
 1. Image Resizing
 1. [Create App Templates using Razor](xref:NetCode.Index)
 1. [Create custom WebApi Controllers](xref:WebApi.Custom.Index)

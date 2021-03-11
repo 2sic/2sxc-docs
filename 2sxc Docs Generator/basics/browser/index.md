@@ -32,7 +32,7 @@ A key goal of 2sxc is to stay out of the way and let you do things using your fa
 
 Basically you can simply add these frameworks to your Razor-template files as `<script>` or `<link>` tags, and everything will just work. You may want to learn more about
 
-1. [Bundling / Optimizing assets](xref:HowTo.Output.Assets)
+1. [Bundling / Optimizing assets](xref:Basics.Server.Assets.Optimization)
 1. Using Koi to detect if the Skin/Theme already has some frameworks (like Bootstrap) to not load them
 
 ## Custom App HTML is created by the Server-Templates
@@ -65,7 +65,7 @@ JS and CSS files are stored in your app folder and included in your output.
 
 You may want to learn more about
 
-1. [Bundling / Optimizing assets](xref:HowTo.Output.Assets)
+1. [Bundling / Optimizing assets](xref:Basics.Server.Assets.Optimization)
 1. Using Webpack to prepare / optimize your assets (google it 😉)
 1. Pointing your JS to target the HTML DOM you created in your templates
 1. Creating dynamic JavaScript or Styles based on values in the data
@@ -86,7 +86,7 @@ You may want to learn more about
 
 You may want to learn more about:
 
-1. [Bundling / Optimizing assets](xref:HowTo.Output.Assets)
+1. [Bundling / Optimizing assets](xref:Basics.Server.Assets.Optimization)
 1. Using Webpack to prepare / optimize your assets (google it 😉)
 1. Pointing your JS to target the HTML DOM you created in your templates
 1. Best practices for integrating Angular in DNN

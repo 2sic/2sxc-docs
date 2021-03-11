@@ -15,7 +15,7 @@ This has been completely reworked in 2sxc 11. If you're new here, best watch thi
 
 Then:
 
-* Read the [How-To](xref:HowTo.Customize.EditUx)
+* Read the [How-To](xref:Basics.Browser.EditUx.Index)
 * Check out the [Tutorial Examples](https://2sxc.org/dnn-tutorials/en/razor/ui/home)
 * Read about the [connector Object](xref:Specs.Form.JsConnector)
 * Read about [customizing the WYSIWYG](xref:Specs.Form.Field.Wysiwyg)
