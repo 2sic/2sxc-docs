@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:Basics.Browser.EditUx.Fields)
+# Moved to [](xref:Basics.Browser.EditForm.CustomFields)

@@ -35,7 +35,7 @@ You can create any kind of custom input field, as a JavaScript WebComponent.
 1. Talking to any endpoint (weather APIs)
 
 > [!TIP]
-> This overview will get you started, but we've already created demos on the [2sxc Tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home). If you want to know more, you should also read the [specs](xref:Basics.Browser.EditUx.Fields)
+> This overview will get you started, but we've already created demos on the [2sxc Tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home). If you want to know more, you should also read the [specs](xref:Basics.Browser.EditForm.CustomFields)
 
 ## Getting Started with Custom Input Fields
 

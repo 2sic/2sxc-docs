@@ -1,5 +1,5 @@
 ---
-uid: Basics.Browser.EditUx.Fields
+uid: Basics.Browser.EditForm.CustomFields
 ---
 
 # Customizing the Form - 2sxc v11!
