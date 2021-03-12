@@ -27,7 +27,7 @@ This example shows how the the FormAndList DataSource tells the UI things like:
 
 ## Read also
 
-* [DataSource API](xref:Specs.DataSources.Api) - DataSource API overview
+* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
 
 ## Demo Code and further links
 

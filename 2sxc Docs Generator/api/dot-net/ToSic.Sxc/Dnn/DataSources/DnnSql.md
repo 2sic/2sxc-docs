@@ -3,7 +3,7 @@ uid: ToSic.Sxc.Dnn.DataSources.DnnSql
 ---
 # Data Source: DnnSql
 
-The **DnnSql** [DataSource](xref:Specs.DataSources.DataSource) is part of the [Standard DNN Data Sources](xref:Specs.DataSources.ListAll). It lets you use data from the DNN SQL databases as if they were entities. 
+The **DnnSql** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard DNN Data Sources](xref:Basics.Query.DataSources.Index). It lets you use data from the DNN SQL databases as if they were entities. 
 
 This is what it looks like:
 

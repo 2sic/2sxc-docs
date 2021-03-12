@@ -23,7 +23,7 @@ This allows for a much more robust data model and API which in a CMS environment
 ### Rule #3: Data Always Comes from DataSources
 
 Inside the system everything is loosely coupled (think Depedency Injection). 
-So anything requesting data will always use a [DataSource](xref:Specs.DataSources.Intro) provided by some magic, and then use what was given. 
+So anything requesting data will always use a [DataSource](xref:NetCode.DataSources.Index) provided by some magic, and then use what was given. 
 
 ### Rule #4: Data is Managed and Cached per App
 
@@ -38,11 +38,11 @@ Imagine that your custom Razor template in a DNN module is initialized. Here's w
 
 2sxc starts with the ModuleId as it's inside a DNN Module. It will then create a [Block](xref:ToSic.Sxc.Blocks.IBlock) for this InstanceId (which is the ModuleId).
 
-1. The Block internally will create a [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) [DataSource](xref:Specs.DataSources.Intro), pass in the InstanceId and then wait for data to pour in.
+1. The Block internally will create a [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) [DataSource](xref:NetCode.DataSources.Index), pass in the InstanceId and then wait for data to pour in.
 1. The [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) knows about DNN, and will use the InstanceId to get the ModuleSettings in DNN. This contains only 2 pieces of information: the `AppId` which it is visualizing, and a `ContentBlockId` which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included). 
 1. The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.  
     1. When the configuration is found, the CmsBlock then knows what [View](xref:ToSic.Sxc.Blocks.IView) will be used. 
-    1. The CmsBlock itself is a [DataSource](xref:Specs.DataSources.Intro) and is now configured to deliver the data which the view expects. 
+    1. The CmsBlock itself is a [DataSource](xref:NetCode.DataSources.Index) and is now configured to deliver the data which the view expects. 
 
 > [!NOTE]
 > The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the [AppState](xref:Basics.Server.Caching.AppState.Index) if it hasn't been accessed before.

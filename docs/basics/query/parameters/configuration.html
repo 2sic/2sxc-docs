@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuration Injection using Tokens | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuration Injection using Tokens | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li class="active">
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Basics.Query.Parameters.Configuration">
+<h1 id="configuration-injection-using-tokens">Configuration Injection using Tokens</h1>
+
+<p><a class="xref" href="../../../net-code/data-sources/datasource.html">DataSource</a> objects have an sophisticated system to retrieve settings and configuration using tokens and more. </p>
+<p>A <a class="xref" href="../../../net-code/data-sources/datasource.html">DataSource</a> is usually configurable, meaning that it needs parameters to do it&#39;s job. Some examples:</p>
+<ul>
+<li>a <code>ModuleDataSource</code> needs to know the module ID </li>
+<li>an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.OwnerFilter.html">Owner-Filter DataSource</a> needs to know who the current user is, to find his items</li>
+<li>a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging </a> needs to know what page size it should use and what page it&#39;s on</li>
+<li>A CSV data source needs to know what file it should load</li>
+</ul>
+<p>As you can see, some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn&#39;t defined, use 10&quot;</em>.</p>
+<p>This is what this Token-Configuration-Injection-System is for. </p>
+<h2 id="configuration-basics">Configuration Basics</h2>
+<p>Each configuration of a <a class="xref" href="../../../net-code/data-sources/datasource.html">DataSource</a> is either a fixed string value like <code>17</code> or a token like <code>[Settings:PageNumber]</code>. In most cases it&#39;s a token. This token is parsed <em>before any data is queried</em> to ensure that in the end the <a class="xref" href="../../../net-code/data-sources/datasource.html">DataSource</a> has a useful value before actually performing its task. </p>
+<h2 id="token-basics">Token Basics</h2>
+<p>A token is a piece of text that looks like <code>[Source:Property]</code>. It is good to understand the full <a class="xref" href="tokens.html">token concept, discussed here</a>. You&#39;ll also want to read about fallback and recursion to understand the following content. </p>
+<h2 id="shared-token-suppliers--token-sources">Shared Token-Suppliers / Token-Sources</h2>
+<p>When a DataSource is configured, it has many token-suppliers like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. </p>
+<h2 id="advanced-token-source-for-settings">Advanced Token-Source for Settings</h2>
+<p>The <code>Settings</code> source is a special source which contains all the properties of the settings-item which configures exactly this one data-source. For example the token <code>[Settings:PageNumber]</code> will deliver the number or text in the settings <code>pagenumber</code> field. </p>
+<h2 id="advanced-token-source-for-in">Advanced Token-Source for In</h2>
+<p>DataSources also have a source called <code>In</code> which is different for each DataSource, as each one has its own In-streams. You can use it in tokens like <code>[In:Default:PageSize]</code> where the term after <code>In:</code> is the stream-name to be consulted. </p>
+<h2 id="how-tokens-are-defined-settings-edited-and-resolved">How Tokens are Defined, Settings Edited and Resolved</h2>
+<p>When you&#39;re using the visual query designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
+<ol>
+<li>Each DataSource object has a property called <code>Configuration</code> which is a dictionary containing all configuration properties the data source will care about. For example, the <code>EntityIdFilter</code> has a Configuration with only one property which is called <code>EntityIds</code>. </li>
+<li>The each property is first initialized with a Token-Template. For example, the CsvDataSource has a<br><code>ConfigMask(DelimiterKey, &quot;[Settings:Delimiter||\t]&quot;);</code><br>This says that the delimiter should come from the Settings-Entity field <code>Delimiter</code> and if not provided, fall back to <code>\t</code> (which is a tab character)<br><em>read about <a class="xref" href="../../../net-code/data-sources/custom/configmask.html">ConfigMask here</a></em>  </li>
+<li>For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the CsvDataSource has a string-property <code>Delimiter</code> which internally will get/set the in the Configuration dictionary.  </li>
+<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. <em>read about <a class="xref" href="../../../net-code/data-sources/custom/ensureconfigurationisloaded.html">ensuring configuration is parsed</a> here</em></li>
+</ol>
+<p>So how does each scenario work out?</p>
+<ol>
+<li>If the programmer overwrote the <code>Delimiter</code> property, then internally the <code>Configuration[&quot;Delimiter&quot;]</code> is now not a token any more, but instead just a character like <code>,</code>. So the token-engine won&#39;t change anything. </li>
+<li>If the programmer didn&#39;t do anything but the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">visual query</a> engine gave a settings-entity to the system, then the token is resolved and whatever the user entered is used. </li>
+<li>if the neither the programmer nor the user provided settings, then the token-engine will resolve to the fallback and use the <code>\t</code> as was defined.</li>
+</ol>
+<h2 id="also-read">Also Read</h2>
+<ul>
+<li><a class="xref" href="../../../net-code/data-sources/lookup.html">LookUp &amp; LookUpEngine</a></li>
+<li><a class="xref" href="tokens.html">Tokens Explained</a></li>
+<li><a class="xref" href="../../../net-code/data-sources/custom/api.html">DataSource API</a></li>
+<li><a class="xref" href="../../../net-code/data-sources/custom/ensureconfigurationisloaded.html">DataSource API: EnsureConfigurationIsLoaded</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>General Tokens introduced in 2sxc 1.0</li>
+<li>Most enhancements were in 2sxc 07.00</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/query/parameters/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

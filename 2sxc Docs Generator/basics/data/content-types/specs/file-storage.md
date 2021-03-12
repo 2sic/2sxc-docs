@@ -52,7 +52,7 @@ This should not affect you, as it's not meant to be managed by anybody else than
 You will almost never need these, except for 2 important scenarios:
 
 1. Shared Content-Types across _all_ Apps (similar to [Shared Content-Types](xref:Basics.Data.ContentTypes.Shared))
-1. When you create a [custom data-source](xref:Specs.DataSources.Custom), and want to distribute the Configuration Content-Type along with your DLL
+1. When you create a [custom data-source](xref:NetCode.DataSources.Custom.Index), and want to distribute the Configuration Content-Type along with your DLL
 
 ## Future Features & Wishes
 

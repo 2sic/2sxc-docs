@@ -49,7 +49,7 @@ Something must determine what data should be shown or worked on, which is what h
 There are a few standard use cases:
 
 1. When working with basic content, the editor has added content to a specific module, so the **Prepare** step will retrieve this data and give it to the template. 
-1. If a template is configured to use a [Query](xref:Specs.DataSources.Intro) then 2sxc will prepare the query and give that to the template to work with. 
+1. If a template is configured to use a [Query](xref:NetCode.DataSources.Index) then 2sxc will prepare the query and give that to the template to work with. 
 1. The template / WebAPI can also always access all the data in the App using [App.Data](xref:NetCode.DynamicCode.App)
 1. If you need the data in JavaScript then the headless APIs provide access to both the items, lists and queries of the app.
 

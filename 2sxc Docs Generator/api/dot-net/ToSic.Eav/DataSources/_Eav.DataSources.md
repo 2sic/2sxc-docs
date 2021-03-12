@@ -10,4 +10,4 @@ In most cases there will be a VisualQuery which connects all the parts automatic
 > We've hidden the constructors for all DataSource objects in these docs, because you should usually use the `CreateSource<T>(...)` command on the Razor template or WebApi, which will auto-configure things behind the scenes. 
 
 > [!TIP]
-> Read about [DataSources here](xref:Specs.DataSources.DataSource). It also explains how the configuration system works and how to create custom DataSources to deliver your data to EAV/2sxc.
+> Read about [DataSources here](xref:NetCode.DataSources.DataSource). It also explains how the configuration system works and how to create custom DataSources to deliver your data to EAV/2sxc.

@@ -15,4 +15,4 @@ These would look like `[App:Path]` or `[QueryString:Ui]`.
 The tool which takes a list of these and looks all of them up is the [](xref:ToSic.Eav.LookUp).ILookupEngine. 
 
 > [!TIP]
-> Read more about this in [](xref:Specs.LookUp.Intro)
+> Read more about this in [](xref:NetCode.DataSources.LookUp)

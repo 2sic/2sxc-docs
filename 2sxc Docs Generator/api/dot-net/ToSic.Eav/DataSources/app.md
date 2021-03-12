@@ -2,7 +2,7 @@
 uid: ToSic.Eav.DataSources.App
 ---
 
-The **App** [DataSource](xref:Specs.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Specs.DataSources.ListAll). It provides all items of the current App or of another App if needed. 
+The **App** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It provides all items of the current App or of another App if needed. 
 
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Now you can create out-connections with the names of the types you need - which looks like this:

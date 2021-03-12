@@ -1,6 +1,4 @@
----
-uid: Specs.DataSources.LinqGuide
----
+
 # Guide to Working with LINQ and 2sxc/EAV Data
 
-This has moved to [](xref:NetCode.Data.Linq)
+This has moved to [](xref:NetCode.Data.LinqGuide)

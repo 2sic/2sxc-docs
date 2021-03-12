@@ -129,7 +129,7 @@ This is similar to how <a href="http://reactivex.io/">ReactiveX</a> or <a href="
 This allows for a much more robust data model and API which in a CMS environment is usually 99% read, 1% write. </p>
 <h3 id="rule-3-data-always-comes-from-datasources">Rule #3: Data Always Comes from DataSources</h3>
 <p>Inside the system everything is loosely coupled (think Depedency Injection). 
-So anything requesting data will always use a <a class="xref" href="../../specs/datasources/index.html">DataSource</a> provided by some magic, and then use what was given. </p>
+So anything requesting data will always use a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> provided by some magic, and then use what was given. </p>
 <h3 id="rule-4-data-is-managed-and-cached-per-app">Rule #4: Data is Managed and Cached per App</h3>
 <p>Once data from an App was requested, the entire app is loaded and cached. 
 Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an <a class="xref" href="caching/app-state/app-state.html">AppState</a>.</p>
@@ -138,11 +138,11 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 <h3 id="1-preparation">1. Preparation</h3>
 <p>2sxc starts with the ModuleId as it&#39;s inside a DNN Module. It will then create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IBlock.html">Block</a> for this InstanceId (which is the ModuleId).</p>
 <ol>
-<li>The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> <a class="xref" href="../../specs/datasources/index.html">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
+<li>The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
 <li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> knows about DNN, and will use the InstanceId to get the ModuleSettings in DNN. This contains only 2 pieces of information: the <code>AppId</code> which it is visualizing, and a <code>ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included). </li>
 <li>The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.  <ol>
 <li>When the configuration is found, the CmsBlock then knows what <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IView.html">View</a> will be used. </li>
-<li>The CmsBlock itself is a <a class="xref" href="../../specs/datasources/index.html">DataSource</a> and is now configured to deliver the data which the view expects. </li>
+<li>The CmsBlock itself is a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> and is now configured to deliver the data which the view expects. </li>
 </ol>
 </li>
 </ol>

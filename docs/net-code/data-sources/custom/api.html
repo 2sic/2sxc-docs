@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataSource API | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataSource API | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../specs/index.html" title="Specs">Specs</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Api">
+<h1 id="datasource-api">DataSource API</h1>
+
+<p>DataSources are a magic, generic system which can generate new data-items or filter / modify other data. This section explains how they work and the API you need to create your own. </p>
+<div class="WARNING"><h5>Warning</h5><p>These docs are out of date! The real APIs are a bit different but we haven&#39;t managed to update them yet. 
+If you&#39;re creating your own DataSource, best consult the source code of 2sxc or EAV to get it working</p>
+</div>
+<h2 id="basics">Basics</h2>
+<p>DataSources have a few important concepts you must first understand:</p>
+<ol>
+<li>An item is a data-object of the type <code>IEntity</code> - it can be a person, product, file-informatio etc.</li>
+<li>A list of items is is a <code>List&lt;IEntity&gt;</code> which contains zero, one or many items</li>
+<li>A <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">stream</a> is an object which has list of items, and a name</li>
+<li>A correctly built <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">stream</a> will offer this list, but only build it if it&#39;s actually requested</li>
+<li>Each <a class="xref" href="../datasource.html">DataSource</a> has one or many named <code>Out</code> streams</li>
+<li>Each <a class="xref" href="../datasource.html">DataSource</a> <em>can</em> have one or more named <code>In</code> streams coming from other DataSources</li>
+<li>Each <a class="xref" href="../datasource.html">DataSource</a> has a <code>ConfigurationProvider</code>, which gives the DataSource information about the environment (like Portal or Tab information), App-Settings and more</li>
+<li>Each <a class="xref" href="../datasource.html">DataSource</a> can have custom <strong>Settings</strong>, which the user entered in a dialog. Internally this is also an IEntity object</li>
+<li>DataSources also have cache-identity mechanism, to inform any up-stream cache what parameters actually caused this result, so that the data could be cached if needed</li>
+</ol>
+<h2 id="providing-data">Providing Data</h2>
+<p>To offer data on the <code>Out</code> you will usually use the <code>Provide</code> method. If you&#39;re generating new items, you&#39;ll usually use the <code>AsEntity</code> method. Docs for these: </p>
+<ul>
+<li><a class="xref" href="provide.html">DataSource.Provide</a></li>
+<li><a class="xref" href="asentity.html">DataSource.AsEntity</a></li>
+</ul>
+<h2 id="receiving-data-from-in-for-further-processing">Receiving Data from In for further processing</h2>
+<p>if your DataSource performs filtering or similar actions on existing data, then this data comes in on the <code>In</code> streams. In such scenarios, you would simply iterate over the <code>In[streamname].List</code> and provide the result in your out-stream again. You can find many examples in the EAV DataSources code. </p>
+<h2 id="getting-configuration">Getting Configuration</h2>
+<p>A DataSource gets the configuration from a configuration provider. To better understand this, you should read:</p>
+<ul>
+<li><a class="xref" href="../../../basics/query/parameters/configuration.html">about configuration</a></li>
+<li><a class="xref" href="../../../basics/query/parameters/tokens.html">about tokens</a> </li>
+<li><a class="xref" href="configmask.html">ConfigMask(...)</a>.</li>
+</ul>
+<h2 id="configuring-the-ui">Configuring the UI</h2>
+<p>There is a special attribute called <code>VisualQuery</code> to tell the UI how to show your DataSource and provide help etc. </p>
+<ul>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a>.Query.VisualQueryAttribute</li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 4 or 5</li>
+<li>enhanced / simplified in 2sxc 9.13</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/api.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

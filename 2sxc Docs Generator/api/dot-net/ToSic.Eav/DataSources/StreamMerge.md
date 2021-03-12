@@ -2,7 +2,7 @@
 uid: ToSic.Eav.DataSources.StreamMerge
 ---
 
-The **StreamMerge** [DataSource](xref:Specs.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Specs.DataSources.ListAll). It will create a new stream containing everything which came into this data source.  
+The **StreamMerge** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It will create a new stream containing everything which came into this data source.  
 
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:

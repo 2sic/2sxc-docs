@@ -2,7 +2,7 @@
 uid: ToSic.Eav.DataSources.CacheAllStreams
 ---
 
-The **CacheAllStreams** [DataSource](xref:Specs.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Specs.DataSources.ListAll). It will cache all streams passing through it, based on the parameters which led to the current In-state.  
+The **CacheAllStreams** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It will cache all streams passing through it, based on the parameters which led to the current In-state.  
 
 
 
