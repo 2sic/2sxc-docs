@@ -81,7 +81,7 @@ You should find some code examples in this demo App
 
 * [Data CRUD API](xref:WebApi.Content)
 * [DotNet WebApi](xref:WebApi.Custom.Index)
-* [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
+* [Concepts: Polymorphisms](xref:Basics.App.Polymorphism)
 
 ## History
 

@@ -39,7 +39,7 @@ The template files usually reside inside app root folder or sub folder. As of no
 
 ## Future Features & Wishes
 
-1. Out-of the box support for [](xref:Specs.Cms.Polymorphism)
+1. Out-of the box support for [](xref:Basics.App.Polymorphism)
 
 ## Read also
 

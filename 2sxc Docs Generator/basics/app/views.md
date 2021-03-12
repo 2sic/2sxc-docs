@@ -33,7 +33,7 @@ A view has a lot of configuration options, but they are all explained in the edi
 
 ## Future Features & Wishes
 
-1. Out-of the box support for [polymorphism](xref:Specs.Cms.Polymorphism)
+1. Out-of the box support for [polymorphism](xref:Basics.App.Polymorphism)
 
 ## Read also
 

@@ -172,14 +172,14 @@ Custom WebAPI use one of these schemas
 
 Your C# code determines what HTTP-verbs will work (GET, POST, etc.). Your code is also responsible for determining what permissions are used, like Anonymous etc.
 
-The `[edition]` is relevant if you're using [Polymorphism](xref:Specs.Cms.Polymorphism). So if you don't specify an edition, the controller is expected to be in the `[AppFolder]\api` but if you do use polymorphism the controller must be in `[AppFolder]\[edition]\api`. 
+The `[edition]` is relevant if you're using [Polymorphism](xref:Basics.App.Polymorphism). So if you don't specify an edition, the controller is expected to be in the `[AppFolder]\api` but if you do use polymorphism the controller must be in `[AppFolder]\[edition]\api`. 
 
 
 
 ## Read also
 
 - [DotNet WebApi](xref:WebApi.Custom.Index)
-- [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
+- [Concepts: Polymorphisms](xref:Basics.App.Polymorphism)
 
 ## Demo App and further links
 

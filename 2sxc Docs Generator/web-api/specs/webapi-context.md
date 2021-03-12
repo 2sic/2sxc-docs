@@ -177,7 +177,7 @@ So if you need to execute something in another identity, make sure your system l
 
 This only applies to custom WebAPI controllers. 
 
-Custom WebAPI controllers are usually stored in the folder `[App-Root]/api`. You can also place them in subfolders like `[App-Root]/live/api` in which case `live` would be an edition. This allows you to have multiple editions of the same controller for staging, testing and more. As it's not really context information, it's only mentioned here. To find out more, read about the [URL Schema](xref:WebApi.Specs.UrlSchema) and about [Polymorphisms](xref:Specs.Cms.Polymorphism). 
+Custom WebAPI controllers are usually stored in the folder `[App-Root]/api`. You can also place them in subfolders like `[App-Root]/live/api` in which case `live` would be an edition. This allows you to have multiple editions of the same controller for staging, testing and more. As it's not really context information, it's only mentioned here. To find out more, read about the [URL Schema](xref:WebApi.Specs.UrlSchema) and about [Polymorphisms](xref:Basics.App.Polymorphism). 
 
 ---
 
@@ -189,7 +189,7 @@ Dnn and Oqtane have a security system to ensure that requests are coming from th
 ## Read also
 
 - [URL Schema](xref:WebApi.Specs.UrlSchema)
-- [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
+- [Concepts: Polymorphisms](xref:Basics.App.Polymorphism)
 
 You should find some code examples in this demo App
 

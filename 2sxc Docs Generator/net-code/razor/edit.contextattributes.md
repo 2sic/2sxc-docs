@@ -8,7 +8,7 @@ Technically the entire Edit-UI is JavaScript based, so all the buttons, events e
 
 These scripts need to know what _Context_ they are in, meaning which DNN-Module, which 2sxc-App, which Zone, permissions etc. 
 
-By default, this context is already provided by the environment, but sometimes a _new context_ must provide overrides. This is rare, but important, for example using [](xref:Specs.Cms.InnerContent). 
+By default, this context is already provided by the environment, but sometimes a _new context_ must provide overrides. This is rare, but important, for example using [](xref:Basics.Cms.InnerContent.Index). 
 
 So the `ContextAttributes` will provide this information in some hidden html.
 
@@ -21,7 +21,7 @@ The `Edit.ContextAttributes(...)` is always used inside an HTML-tag and will add
 
 ## What do You need to do?
 
-By default, this context is already provided by the 2sxc-environment, but sometimes a _new context_ must provide overrides. For example using [](xref:Specs.Cms.InnerContent). 
+By default, this context is already provided by the 2sxc-environment, but sometimes a _new context_ must provide overrides. For example using [](xref:Basics.Cms.InnerContent.Index). 
 
 For this you need the `Edit.ContextAttributes` - see [docs here](xref:ToSic.Sxc.Web.IInPageEditingSystem.ContextAttributes*).
 
@@ -30,7 +30,7 @@ For this you need the `Edit.ContextAttributes` - see [docs here](xref:ToSic.Sxc.
 
 This example shows the title and will add the standard editing-buttons for the `Content` item.
 
-Here's an [](xref:Specs.Cms.InnerContent) example:
+Here's an [](xref:Basics.Cms.InnerContent.Index) example:
 
 ```razor
 <div class="app-blog-text sc-content-block-list" @Edit.ContextAttributes(post, field: "DesignedContent")>
@@ -53,7 +53,7 @@ Here's a common example: imagine you have a 2sxc-instance (a module showing 2sxc
 
 ## Read also
 
-* [](xref:Specs.Cms.InnerContent)
+* [](xref:Basics.Cms.InnerContent.Index)
 
 ## Demo App and further links
 

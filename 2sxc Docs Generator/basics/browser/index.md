@@ -51,7 +51,7 @@ Since it's just standard HTML there's not much to say about it here. You may wan
 1. Learn Razor with placeholder to show your data
 1. Automatically resize images to your needs
 1. Create different output based on the CSS Framework of the page
-1. [Use Polymorphism](xref:Specs.Cms.Polymorphism) to stage changes for review while still running the original live edition
+1. [Use Polymorphism](xref:Basics.App.Polymorphism) to stage changes for review while still running the original live edition
 1. SEO Optimize your HTML (google this topic)
 
 ## Custom CSS and JS Assets

@@ -31,7 +31,7 @@ The template files usually reside inside App root folder or sub folder. These al
 > [!NOTE]
 > The [View Configuration](xref:Basics.App.Views) determines which razor file is being loaded. 
 >
-> If you are using [Polymorphism](xref:Specs.Cms.Polymorphism) then you may have multiple razor files with the same name in various folders, and Polymorph will decide which one will be shown.
+> If you are using [Polymorphism](xref:Basics.App.Polymorphism) then you may have multiple razor files with the same name in various folders, and Polymorph will decide which one will be shown.
 
 ## Get Started with Razor Templates
 
@@ -49,7 +49,7 @@ The template files usually reside inside App root folder or sub folder. These al
 
 * [Views](xref:Basics.App.Views)
 * [Templates](xref:Basics.App.Templates)
-* [Token Templates](xref:Basics.App.Templates.Token)
+* [Token Templates](xref:Basics.Server.Render.Tokens.Index)
 * [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
 
 

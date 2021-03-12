@@ -63,7 +63,7 @@ You can also [Customize / Configure QuickE (Quick Edit)](xref:JsCode.QuickE.Inde
 
 ## Customize the Inner-Content Editing Behaviors
 
-TODO: Inner Content - edit/config Documentation WIP - so for now just learn about [Inner Content](xref:Specs.Cms.InnerContent)
+TODO: Inner Content - edit/config Documentation WIP - so for now just learn about [Inner Content](xref:Basics.Cms.InnerContent.Index)
 
 ## Read also
 

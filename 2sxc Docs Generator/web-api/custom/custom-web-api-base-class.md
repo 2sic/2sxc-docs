@@ -70,7 +70,7 @@ As of March 2021 we're working on bringing 2sxc to [](xref:Platform Oqtane). Sin
 
 * [](xref:Tut.WebApi)
 * [WebApi](xref:WebApi.Index)
-* [Concepts: Polymorphisms](xref:Specs.Cms.Polymorphism)
+* [Concepts: Polymorphisms](xref:Basics.App.Polymorphism)
 
 
 
