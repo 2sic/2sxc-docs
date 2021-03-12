@@ -33,3 +33,24 @@ So each _Content Block_ has:
 ## Content Blocks in a CMS like DNN
 
 When you see 2sxc data in DNN, that's because a module was added to the page pointing to a _Content Block_. If you want to know more about that, read [](xref:Basics.Content.ContentBlocks.Dnn).
+
+## Manually Managing this Data
+
+Note: you shoudn't usually do this - but sometimes you have to. Check out this short explanation:
+
+<img src="./assets/administrating-content-group-in-an-app.jpg" width="100%">
+
+> [!NOTE]
+> This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.
+
+
+## FAQ
+
+1. If a page or module is deleted, does it also delete the _Content Block_?  
+No. Note that if a page or module is deleted, it goes into the DNN trash, so it could always be restored again. 
+1. If a page or module is deleted from the trash, does it also delete the _Content Block_?  
+No. DNN does not inform modules about delete actions, so we can't do clean-up.
+1. Are _Content Blocks_ which don't appear on a page orphaned and can I delete them?  
+Maybe. Since they could be used in other apps (see [](xref:Basics.Content.Index)) as _Inner Content_, there is no quick way to tell if it's being used elsewhere.
+1. Can a _Content Block_ be used on multiple modules / pages?  
+Yes. It's not common, but since a module can be shown on multiple pages or even on other portals, it would show the same _Content Block_ there as well. 
