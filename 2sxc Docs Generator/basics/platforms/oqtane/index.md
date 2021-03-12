@@ -1,5 +1,5 @@
 ---
-uid: Platform.Oqtane
+uid: Basics.Platforms.Oqtane.Index
 ---
 
 <img src="./assets/oqtane-logo.png" width="250px" align="right">
