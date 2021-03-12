@@ -1,6 +1,3 @@
----
-uid: Specs.WebApi.UrlSchema
----
 
 # This page has moved
 

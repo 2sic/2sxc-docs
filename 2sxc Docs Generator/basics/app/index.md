@@ -12,6 +12,21 @@ An app is a standalone bundle of data and functionality. It contains the green a
    { visibility: visible; } 
 </style>
 
+> [!Important]
+> An App doesn't need all of the parts above. Apps can be really trivial. 
+> 
+> For example they may only contain 1 simple `Hello World` template and no data at all. And they may also contain 100'000 data items and complex list/details templates.
+
+
+## Apps are Installed per Site
+
+The EAV is multi-site capable and each Site in the platform corresponds to a **Zone** in the EAV. A Site corresponds to a _Portal_ in DNN or a _Site_ in Oqtane. 
+Each Zone contains at least 1 default app called **Content** and additional Apps as configured. 
+
+> [!NOTE]
+> The ZoneId is usually different than the DNN _PortalId_ or the Oqtane _SiteId_, 
+> so [DNN has a PortalSetting to connect this](xref:Specs.Content.DnnIntegration) and Oqtane has a matching Setting.
+
 > [!TIP]
 > Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. 
 
@@ -19,9 +34,7 @@ Everything belonging to the App is stored in two locations
 
 1. The App folder contains all the green parts in the image above, including templates, C# code, JavaScript files etc.
 1. The database contains all the data of the app
-
-> [!Important]
-> An App doesn't need all of the parts above - they can be really trivial. For example they may only contain 1 simple `Hello World` template and no data at all. And they may also contain 100'000 data items and complex list/details templates. 
+ 
 
 ## Types of Apps
 

@@ -38,6 +38,17 @@ This kind of data can be used in many ways. Let's start by looking where this fi
 > [!TIP]
 > The Edit UIs are automatically generated based on the Content-Type Schema which says what fields each kind of data has. 
 
+## App Data Model
+
+Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Entities](xref:Basics.Data.Entities.Index) - like this:  
+
+<br>
+<img src="./assets/app-content-type-entity.png" width="100%">
+<br><br>
+
+* [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has.  
+* [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content.  
+
 Let's look at each piece in detail.
 
 ## Content-types
