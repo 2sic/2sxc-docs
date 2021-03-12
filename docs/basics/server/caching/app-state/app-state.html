@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data Models in the EAV | 2sxc and EAV 10 </title>
+    <title>App State | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data Models in the EAV | 2sxc and EAV 10 ">
+    <meta name="title" content="App State | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,23 +64,23 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
-                      </li>
                       <li class="active">
-                          <a href="../../specs/index.html" title="Specs">Specs</a>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../specs/index.html" title="Specs">Specs</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,26 +114,20 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Specs.Data.Intro">
-<h1 id="data-models-in-the-eav">Data Models in the EAV</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Server.Caching.AppState.Index">
+<h1 id="app-state">App State</h1>
 
+<p>The EAV caches everything in memory, to ensure that everything is super-fast and doesn&#39;t require lazy loading. This is because lazy-loading has a dangerous tendancy to ping-pong a lot of requests if the code isn&#39;t very optimized - and caching everything solves that problem. </p>
 <div class="TIP"><h5>Tip</h5><p>Before you start: Remember that you usually don&#39;t need this if you are creating Razor templates 
-or WebApi - for that, you want to read <a class="xref" href="../../net-code/dynamic-data/dynamic-entity.html">How to Use a Dynamic Entity</a>.</p>
+or WebApi - for that, you want to read <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity.html">How to Use a Dynamic Entity</a>.</p>
 </div>
-<h2 id="zones-tenants">Zones (Tenants)</h2>
-<p>The EAV is multi-tenant, and each tenant is called a <strong>Zone</strong>. This corresponds to a <em>Portal</em> in DNN. Each Zone contains at least 1 default app called <strong>Content</strong> and additional Apps as configured. </p>
-<div class="NOTE"><h5>Note</h5><p>The ZoneId is usually different than the DNN PortalId, 
-so <a class="xref" href="../content/dnn-integration.html">DNN has a PortalSetting for this</a>. </p>
-</div>
-<h2 id="apps-and-data-in-apps">Apps and Data in Apps</h2>
-<p>Every App contains <a class="xref" href="../../basics/data/content-types/index.html">Content-Types</a> and <a class="xref" href="../../basics/data/entities/index.html">Entities</a> - like this:  </p>
-<p><br>
-<img src="../../basics/data/assets/app-content-type-entity.png" width="100%">
-<br><br></p>
-<ul>
-<li><strong>Content Types</strong> are the schema, they define what fields an entity has.<br>  read more about it in <a class="xref" href="../../basics/data/content-types/index.html">Content-Type (Schema/Object-Type)</a></li>
-<li><strong>Entities</strong> are the data-items, they contain the content.<br>  read more about it in <a class="xref" href="../../basics/data/entities/index.html">Entities (Data, Records, Items)</a></li>
-</ul>
+<p>Once an app is accessed by code, a sophisticated internal system loads everything into the app-state which is then cached. Everything then uses this data, and save-operations usually do a partial update of the cache. This is one of the things that makes 2sxc and the EAV so amazingly fast. </p>
+<p>Usually you don&#39;t care much about the app-state, since you simply use the data provided by the current context. If you want to know more, check out the <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.AppState.</p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 5.0</li>
+<li>Partial Updates introduced in 2sxc 9.14</li>
+</ol>
 </article>
           </div>
           
@@ -142,7 +136,7 @@ so <a class="xref" href="../content/dnn-integration.html">DNN has a PortalSettin
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/data/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/server/caching/app-state/app-state.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -168,20 +162,20 @@ so <a class="xref" href="../content/dnn-integration.html">DNN has a PortalSettin
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

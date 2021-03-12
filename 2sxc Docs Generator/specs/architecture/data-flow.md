@@ -28,7 +28,7 @@ So anything requesting data will always use a [DataSource](xref:Specs.DataSource
 ### Rule #4: Data is Managed and Cached per App
 
 Once data from an App was requested, the entire app is loaded and cached. 
-Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an [AppState](xref:Specs.Data.AppState).
+Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an [AppState](xref:Basics.Server.Caching.AppState.Index).
 
 ## Overall Flow When Creating Html
 
@@ -45,7 +45,7 @@ Imagine that your custom Razor template in a DNN module is initialized. Here's w
     1. The CmsBlock itself is a [DataSource](xref:Specs.DataSources.Intro) and is now configured to deliver the data which the view expects. 
 
 > [!NOTE]
-> The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the [AppState](xref:Specs.Data.AppState) if it hasn't been accessed before.
+> The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the [AppState](xref:Basics.Server.Caching.AppState.Index) if it hasn't been accessed before.
 
 > [!NOTE]
 > The CmsBlock will also _not_ load any data yet. It just knows what would be loaded, should it ever be accessed.

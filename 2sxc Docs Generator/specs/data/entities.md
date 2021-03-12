@@ -1,6 +1,4 @@
----
-uid: Specs.Data.Entities
----
+
 # Entities (Data, Records, Items)
 
 

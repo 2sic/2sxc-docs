@@ -9,7 +9,7 @@ This explains **Content-Types**. For an overview check out [](xref:Basics.Data.I
 
 ## What is a Content-Type?
 
-Every [Entity](xref:Specs.Data.Entities) (_thing_, _record_ or _object_) in 2sxc has a definition of fields it can have. So a `Book` may have fields like Name, Author, Title etc. 
+Every [Entity](xref:Basics.Data.Entities.Index) (_thing_, _record_ or _object_) in 2sxc has a definition of fields it can have. So a `Book` may have fields like Name, Author, Title etc. 
 The Content-Type will define what fields exist, what is required and what order the fields will appear in when editing the item. 
 
 > This definition of the _Type_ is called a **Content-Type** and it contains specs as to the exact fields are used and what their field-types are.

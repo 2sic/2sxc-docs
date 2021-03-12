@@ -8,7 +8,7 @@ Data is just numbers - sometimes assembled together to form text, images or what
 
 > [!NOTE]
 > The smallest piece of _Content_ is an **Entity** - similar to the idea of a record, object or item. 
-> You can read more about [Entities here](xref:Specs.Data.Entities).  
+> You can read more about [Entities here](xref:Basics.Data.Entities.Index).  
 >
 > The term _Entity_ comes from the underlying data model EAV (Entity/Attribute/Value). 
 

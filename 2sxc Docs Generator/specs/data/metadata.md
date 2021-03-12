@@ -1,4 +1,2 @@
 
-# Metadata - WIP
-
-moved to [](xref:Basics.Data.Metadata.Index)
+# moved to [](xref:Basics.Data.Metadata.Index)
