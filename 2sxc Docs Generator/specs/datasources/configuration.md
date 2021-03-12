@@ -18,7 +18,7 @@ As you can see, some of this information depends on the current context (ModuleI
 This is what this Token-Configuration-Injection-System is for. 
 
 ## Configuration Basics
-Each configuration of a [DataSource](xref:Specs.DataSources.DataSource) is either a fixed string value like `17` or a token like `[Settings:PageNumber]`. In most cases it's a token. This token is parsed _before any data is queried_ to ensure that in the end the [DataSource](xref:Specs.DataSources.DataSource) has a usefull value before actually performing its task. 
+Each configuration of a [DataSource](xref:Specs.DataSources.DataSource) is either a fixed string value like `17` or a token like `[Settings:PageNumber]`. In most cases it's a token. This token is parsed _before any data is queried_ to ensure that in the end the [DataSource](xref:Specs.DataSources.DataSource) has a useful value before actually performing its task. 
 
 ## Token Basics
 A token is a piece of text that looks like `[Source:Property]`. It is good to understand the full [token concept, discussed here](xref:Specs.LookUp.Tokens). You'll also want to read about fallback and recursion to understand the following content. 

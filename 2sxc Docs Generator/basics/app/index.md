@@ -25,7 +25,7 @@ Each Zone contains at least 1 default app called **Content** and additional Apps
 
 > [!NOTE]
 > The ZoneId is usually different than the DNN _PortalId_ or the Oqtane _SiteId_, 
-> so [DNN has a PortalSetting to connect this](xref:Specs.Content.DnnIntegration) and Oqtane has a matching Setting.
+> so [DNN has a PortalSetting to connect this](xref:Basics.Content.ContentBlocks.Dnn) and Oqtane has a matching Setting.
 
 > [!TIP]
 > Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. 

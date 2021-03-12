@@ -71,8 +71,8 @@ All paramaters are optional, except the values. Here's what each one does:
 
 * `string titleField` is the title field name, so the entity then also knows which one is the title and can support `.EntityTitle` property
 * `string typeName` is a nice name for the type, allowing for type-filtering later in other data sources
-* `int id` gives a number identity, so `.EntityId` is usefull and filtering by EntityId (like when having details-pages needing this id) works
-* `Guid guidId` is a UUID identity, so `.EntityGuid` is usefull
+* `int id` gives a number identity, so `.EntityId` is useful and filtering by EntityId (like when having details-pages needing this id) works
+* `Guid guidId` is a UUID identity, so `.EntityGuid` is useful
 * `DateTime modified` would allow to filter / sort by the `.Modified` property
 * `int appId` could be used to pretend it's part of another app. This only affects the AppId property, and ATM there is no important reason to do this. 
 

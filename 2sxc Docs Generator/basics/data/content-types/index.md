@@ -50,7 +50,7 @@ The Content-Type will define what fields exist, what is required and what order 
 1. You can delete Content-Types at any time  
     When you delete a Content-Type, all Entities/Items of that type are deleted
 1. Content-Types have additional descriptions and help-texts which are shown in the Edit-UI
-1. Content-Types can also have an icon, but that's only used in [Content Mode](xref:Specs.Content.Index)
+1. Content-Types can also have an icon, but that's only used in [Content Mode](xref:Basics.Content.Index)
 
 
 ## Nice to Know: Edit Fields of a Content-Type

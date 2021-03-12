@@ -11,7 +11,7 @@ uid: WebApi.Specs.UrlSchema
 </style>
 
 
-The **URL Schema** describes how the paths look to access WebAPIs. When using [$2sxc JS](xref:JsCode.2sxcApi.$2sxc) or other helpers like [dnn-sxc-angular](xref:JsCode.Angular.Index) most if this is automatic. So this information is most usefull if you are doing something very custom or accessing 2sxc APIs from externally (like mobile apps).
+The **URL Schema** describes how the paths look to access WebAPIs. When using [$2sxc JS](xref:JsCode.2sxcApi.$2sxc) or other helpers like [dnn-sxc-angular](xref:JsCode.Angular.Index) most if this is automatic. So this information is most useful if you are doing something very custom or accessing 2sxc APIs from externally (like mobile apps).
 
 ## Finding the right URLs in the Admin-Dialogs
 
