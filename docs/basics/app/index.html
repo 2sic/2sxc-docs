@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Razor Components / Templates | 2sxc and EAV 10 </title>
+    <title>What is an App | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Razor Components / Templates | 2sxc and EAV 10 ">
+    <meta name="title" content="What is an App | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -64,13 +64,13 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li>
+                      <li class="active">
                           <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
                           <a href="../../specs/index.html" title="Specs">Specs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
@@ -114,14 +114,14 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Razor.Index">
-<h1 id="razor-components--templates">Razor Components / Templates</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.App.Index">
+<h1 id="what-is-an-app">What is an App</h1>
 
-<p>Razor Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App. </p>
-<div class="context-box-process" width="100%">
+<p>An app is a standalone bundle of data and functionality. It contains the green and blue parts of the following diagram + any kind of additional material used to build these parts like  JavaScript frameworks which are bundled in the App:</p>
+<div class=" context-box-full highlight-max" width="100%">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -229,55 +229,81 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
   </div>
-  <style>.context-box-process .process-razor { visibility: visible; } </style>
 </div>
+<style>
+  .context-box-full .todo,
+   { visibility: visible; } 
+</style>
 
-<p>Here&#39;s an example:</p>
-<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponent
-&lt;ul&gt;
-  @foreach(var person in AsList(App.Data[&quot;Persons&quot;])) {
-    &lt;li&gt;@person.Name&lt;/li&gt;
-  }
-&lt;/ul&gt;
-</code></pre><p>Razor Components/Templates are the most powerful templates in 2sxc since you can program anything you want using C#.
-They use the Asp.Net Razor engine and contain normal HTML intermixed with Razor placeholders like <code>@Content.FirstName</code> or longer code blocks usually marked with <code>@{ ...}</code>.</p>
-<p>The template files usually reside inside App root folder or sub folder. These always begin with an <code>_</code> and end with <code>.cshtml</code>. </p>
-<div class="NOTE"><h5>Note</h5><p>The <a class="xref" href="../../basics/app/views.html">View Configuration</a> determines which razor file is being loaded. </p>
-<p>If you are using <a class="xref" href="../../specs/cms/polymorph.html">Polymorphism</a> then you may have multiple razor files with the same name in various folders, and Polymorph will decide which one will be shown.</p>
+<div class="TIP"><h5>Tip</h5><p>Apps are installed <em>per Site</em>. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. </p>
 </div>
-<h2 id="get-started-with-razor-templates">Get Started with Razor Templates</h2>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><ol>
-<li>Install some Apps from the <a class="xref" href="https://2sxc.org/en/apps">App Catalog</a> - almost all apps use Razor</li>
-<li>Learn the APIs using <ol>
-<li>The <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorials</a> </li>
-<li>using these docs</li>
-<li>The technical <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.RazorComponent.html">RazorComponent API</a></li>
-</ol>
-</li>
-<li>We also suggest you look into the <strong>RazorBlade</strong> library which has a lot of neat helpers</li>
-</ol>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../basics/app/views.html">Views</a></li>
-<li><a class="xref" href="../../basics/app/templates.html">Templates</a></li>
-<li><a class="xref" href="../../specs/cms/templates-token.html">Token Templates</a></li>
-<li><a href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorial</a></li>
-</ul>
-<h2 id="tips">Tips</h2>
-<div class="TIP"><h5>Tip</h5><p>To use the latest features of 2sxc 10.20+, make sure your razor file begins with the line<br><code>@inherits ToSic.Sxc.Dnn.RazorComponent</code><br>Otherwise your Razor templates is based on the default, older component code. </p>
-</div>
-<h2 id="history">History</h2>
+<p>Everything belonging to the App is stored in two locations</p>
 <ol>
-<li>Introduced in 2sxc 1.0</li>
+<li>The App folder contains all the green parts in the image above, including templates, C# code, JavaScript files etc.</li>
+<li>The database contains all the data of the app</li>
+</ol>
+<div class="IMPORTANT"><h5>Important</h5><p>An App doesn&#39;t need all of the parts above - they can be really trivial. For example they may only contain 1 simple <code>Hello World</code> template and no data at all. And they may also contain 100&#39;000 data items and complex list/details templates. </p>
+</div>
+<h2 id="types-of-apps">Types of Apps</h2>
+<p>Your App can be anything you want it to be. The following types are more to give you a sense of how Apps can be used, but these types are not clearly defined. An App can also be many of these at the same time. </p>
+<h3 id="data-focused-apps">Data Focused Apps</h3>
+<p>This is the kind of App a <em>developer</em> usually thinks of - with lots of data and various list/details templates. The core idea of these apps is that the data is one or many shared tables and the output will show parts of this data based on rules, filters etc. Examples of such Apps would be:</p>
+<ol>
+<li>News</li>
+<li>Blog</li>
+<li>References</li>
+<li>FAQ</li>
+</ol>
+<h3 id="content-focused-apps">Content Focused Apps</h3>
+<p>This is the kind of App an <em>editor</em> usually thinks of. The core ideas is that the editor adds an App to a page, and adds data to that instance. The data <em>belongs</em> to that instance, so even if it&#39;s technically in a shared table, the user experience makes it feel like each use is autonomous. Examples of such Apps would be:</p>
+<ol>
+<li>Image Sliders</li>
+<li>Galleries</li>
+<li>Accordions</li>
+<li>QR Code</li>
+</ol>
+<h3 id="page-enhancing-apps">Page Enhancing Apps</h3>
+<p>This is an App which does something on every page of the Site. The core idea is that a functionality can be used on every page and the logic and data to ensure this is in the App. This kind of App is usually added to the Skin/Theme of the Site so it&#39;s available on all pages by default. Examples of such Apps would be:</p>
+<ol>
+<li>SEO or Open-Graph Enhancements on each page</li>
+<li>Page protection systems where a part of the page is overlayed until people subscribe</li>
+<li>Adding third-party extensions such as <a class="xref" href="https://2sxc.org/en/apps/app/disqus-app-for-dnn-dotnetnuke">Disqus</a>, <a class="xref" href="https://2sxc.org/en/apps/app/addsearch-app-for-2sxc">AddSearch</a> or Google Search/Analytics to a page</li>
+</ol>
+<h3 id="spa-apps-single-page-applications">SPA Apps (Single Page Applications)</h3>
+<p>This is an App which contains a JavaScript SPA which will then be the entire UI for users. The data is usually accessed using either the Headless API or custom C# WebAPIs which are also part of the App. Examples of such Apps would be:</p>
+<ol>
+<li>Customer management SPA</li>
+<li>A complex search/filter SPA</li>
+</ol>
+<p>You can create such SPAs using any popular JavaScript Framework such as</p>
+<ol>
+<li>Angular</li>
+<li>React</li>
+<li>Vue</li>
+</ol>
+<h3 id="the-content-app"><em>The</em> Content App</h3>
+<p>The Content-App is a special App in each site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page. </p>
+<div class="TIP"><h5>Tip</h5><p>The content App has some special behavior and limitations by design. </p>
+</div>
+<p><strong>Special Behavior of <em>The</em> Content App</strong></p>
+<p>When adding <em>the</em> Content-App to a page, the dialog which appears will ask the editor to choose the <em>Content-Type</em> (like <em>Image</em>) and then how to show it (like <em>Full-Size</em>). This is different from all other Apps where the editor will first choose the App (like <em>Blog</em>), and then the functionality (like <em>Tag-Cloud</em>).</p>
+<p><strong>Special Limitations of <em>The</em> Content App</strong></p>
+<p>Since the Content-App is always there by default and the purpose is to add/edit simple content, it&#39;s limited by design to <em>not</em> have some functionality other Apps have. This is mainly to protect the developer from building solutions with a bad user experience, since anything complex should be self-contained in it&#39;s own App. The limitations are:</p>
+<ol>
+<li>No Visual Query</li>
+<li>Now Custom Web APIs</li>
+</ol>
+<p>Previously <em>the</em> Content App also didn&#39;t have App Settings or App Resources, but that limitation has been removed in 2sxc 11. </p>
+<hr>
+<p>You may want to learn more about</p>
+<ol>
+<li><a class="xref" href="folder-structure.html">The App Folder Structure</a></li>
+<li><p><a class="xref" href="icons.html">App Icons</a></p>
+</li>
+<li><p><a class="xref" href="../server/assets/optimization.html">Bundling / Optimizing assets</a></p>
+</li>
 </ol>
 </article>
           </div>
@@ -287,7 +313,7 @@ They use the Asp.Net Razor engine and contain normal HTML intermixed with Razor 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/razor/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

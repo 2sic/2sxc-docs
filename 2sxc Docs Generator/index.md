@@ -26,7 +26,7 @@ it also include instructions how to export/import data, working with the image r
 1. [Many solutions and recommendations](http://2sxc.org/en/blog) are found in the _Blog_ on 2sxc.org
 1. [Many demo, template and tutorial Apps](http://2sxc.org/en/Apps) are found in the _App Catalog_ on 2sxc.org
 1. [2sxc / EAV Roadmap](xref:Specs.Roadmap.Roadmap)
-1. [App folder structure](xref:Specs.App.Folders) and special files
+1. [App folder structure](xref:Basics.App.FolderStructure) and special files
 1. [Style Guide 2020 (beta)](xref:Specs.StyleGuide2020) best-practices draft
 
 

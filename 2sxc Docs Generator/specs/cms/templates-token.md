@@ -1,12 +1,12 @@
 ---
-uid: Specs.Cms.Templates.Token
+uid: Basics.App.Templates.Token
 ---
 # Token Templates
 
 Token Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App.
 
 > [!NOTE]
-> The [View](xref:Specs.Cms.Views) determines which template file is being loaded. 
+> The [View](xref:Basics.App.Views) determines which template file is being loaded. 
 
 > [!TIP]
 > Token templates are by far not as powerful as [Razor Templates](xref:NetCode.Razor.Index). We always recommend Razor. 
@@ -745,8 +745,8 @@ HTTP_REFERER is empty</td>
 
 ## Read also
 
-* [Views](xref:Specs.Cms.Views)
-* [Templates](xref:Specs.Cms.Templates)
+* [Views](xref:Basics.App.Views)
+* [Templates](xref:Basics.App.Templates)
 * [Razor Templates](xref:NetCode.Razor.Index)
 * [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
 

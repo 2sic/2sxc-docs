@@ -29,7 +29,7 @@ They use the Asp.Net Razor engine and contain normal HTML intermixed with Razor 
 The template files usually reside inside App root folder or sub folder. These always begin with an `_` and end with `.cshtml`. 
 
 > [!NOTE]
-> The [View Configuration](xref:Specs.Cms.Views) determines which razor file is being loaded. 
+> The [View Configuration](xref:Basics.App.Views) determines which razor file is being loaded. 
 >
 > If you are using [Polymorphism](xref:Specs.Cms.Polymorphism) then you may have multiple razor files with the same name in various folders, and Polymorph will decide which one will be shown.
 
@@ -47,9 +47,9 @@ The template files usually reside inside App root folder or sub folder. These al
 
 ## Read also
 
-* [Views](xref:Specs.Cms.Views)
-* [Templates](xref:Specs.Cms.Templates)
-* [Token Templates](xref:Specs.Cms.Templates.Token)
+* [Views](xref:Basics.App.Views)
+* [Templates](xref:Basics.App.Templates)
+* [Token Templates](xref:Basics.App.Templates.Token)
 * [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
 
 
