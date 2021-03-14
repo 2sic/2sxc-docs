@@ -1,21 +1,24 @@
 ---
-uid: Basics.Data.Entities.Index
+uid: Basics.Data.Entities.ObjectStructure
 ---
-# Entities (Data, Records, Items)
+# Entity Object Structure
 
-[!include["Data"](../_shared-entities.md)]
+[!include["Data"](../../_shared-entities.md)]
 
-This explains **Entities** aka **Data Items**. For an overview check out [](xref:Basics.Data.Index).
+This explains the **C# Entity Object Structure**. For an overview check out [](xref:Basics.Data.Index).
 
 ---
 
-Every _thing_, _record_ or _object_ in 2sxc is called an **Entity**. So if you have a list of `Book` objects, then each `Book` is an entity. 
+> [!WARNING]
+> What follows is very technical. For most use cases you don't need to know this stuff. 
 
-> Many other systems use the term _Record_, _Content Item_, _Item_ or _Object_. 
+Entities are structured as follows:  
+ 
+<br>
+<img src="./assets/entity.png" width="100%">
+<br>
 
-[!include["Before you Start"](../../../shared/before-you-start-idynamicentity.md)]
-
-## Data Model: EAV+D = Entity-Attribute-Value + Dimension
+## EAV+D = Entity-Attribute-Value + Dimension
 
 > EAV stands for **Entity**, **Attribute**, **Value**
 > The D stands for **Dimension**, it says what Dimension (Language) a _Value_ is for
