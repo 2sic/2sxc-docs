@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JSON Entity V1 | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="JSON Entity V1 | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li class="active">
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.Entity">
+<h1 id="json-entity-v1">JSON Entity V1</h1>
+
+<p>JSON based entities are items which are stored as JSON. This is used in the history, in dynamic-entities in the DB and more. </p>
+<h2 id="description">Description</h2>
+<ol>
+<li>As of now, it&#39;s using a envolope to package everything and includes a minimal header to ensure we know it&#39;s <a class="xref" href="index.html">V1</a>. </li>
+<li>It then contains a <code>ContentType</code> node containing <ol>
+<li>various identification and description</li>
+<li>content-type metadata (array of entities) </li>
+<li>attributes (array)</li>
+</ol>
+</li>
+<li>the attributes themselves again contain a minimal information + metadata items (entities)</li>
+<li>note that the attribute order is relevant</li>
+</ol>
+<h2 id="example">Example</h2>
+<p>This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):</p>
+<pre><code class="lang-json">{
+    &quot;_&quot;: {
+        &quot;V&quot;: 1
+    },
+    &quot;Entity&quot;: {
+        &quot;Id&quot;: 42900,
+        &quot;Version&quot;: 6,
+        &quot;Guid&quot;: &quot;e8a702d2-eccd-4b0f-83bd-600d8a8449d9&quot;,
+        &quot;Type&quot;: {
+            &quot;Name&quot;: &quot;DataPipeline&quot;,
+            &quot;Id&quot;: &quot;DataPipeline&quot;
+        },
+        &quot;Attributes&quot;: {
+            &quot;String&quot;: {
+                &quot;Description&quot;: {
+                    &quot;*&quot;: &quot;Retrieve full list of all zones&quot;
+                },
+                &quot;Name&quot;: {
+                    &quot;*&quot;: &quot;Zones&quot;
+                },
+                &quot;StreamsOut&quot;: {
+                    &quot;*&quot;: &quot;ListContent,Default&quot;
+                },
+                &quot;StreamWiring&quot;: {
+                    &quot;*&quot;: &quot;3cef3168-5fe8-4417-8ee0-c47642181a1e:Default&gt;Out:Default&quot;
+                },
+                &quot;TestParameters&quot;: {
+                    &quot;*&quot;: &quot;[Module:ModuleID]=6936&quot;
+                }
+            },
+            &quot;Boolean&quot;: {
+                &quot;AllowEdit&quot;: {
+                    &quot;*&quot;: true
+                }
+            }
+        },
+        &quot;Owner&quot;: &quot;dnn:userid=1&quot;,
+        &quot;Metadata&quot;: [
+
+        ]
+    }
+}
+</code></pre><h2 id="format-explained">Format Explained</h2>
+<ul>
+<li>_ (header) mainly storing the version, in case we have to introduce a breaking change - see also <a class="xref" href="index.html">format v1</a></li>
+<li>Entity - this marks an entity - at the moment a json package should only have 1, but later it could contain more<ul>
+<li>Id - the identity as a number</li>
+<li>Guid - the identity as a guid</li>
+<li>Type - type information<ul>
+<li>Name - the type name</li>
+<li>Id - the type identity - usually a guid, but special types can also use a specific string</li>
+</ul>
+</li>
+<li>Attributes - the values of this entity<ul>
+<li>String - all the string values<ul>
+<li>[the field name]<ul>
+<li>[the languages this value applies to]<ul>
+<li>[the value]</li>
+</ul>
+</li>
+<li>[more languages / values]</li>
+</ul>
+</li>
+<li>[more fields / languages / values]</li>
+</ul>
+</li>
+<li>Boolean - all the boolean values</li>
+<li>Number - ...</li>
+<li>[more types]</li>
+</ul>
+</li>
+<li>Owner a special string identifying the owner of this item</li>
+<li>Metadata (optional, array of more entities) - a list of items which further describe this entity<ul>
+<li>[item 1]<ul>
+<li>Id</li>
+<li>Guid</li>
+<li>[more properties]</li>
+</ul>
+</li>
+<li>[next items]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="index.html">JSON Format V1</a></li>
+<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-stored-content-items-entities">Blog post about the entity json format</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Added in 2sxc 9.4</li>
+<li>Extended to support attachments so Views can include templates and icons in 2sxc ca. v11.10</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/entity.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

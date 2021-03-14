@@ -23,7 +23,7 @@ Examples of such types are:
 
 Basically the app-repository is a folder which contains content-type definitions in a _contenttype_ sub folder. 
 
-The format is the [json-format V1](xref:Specs.Data.Formats.JsonV1-ContentType)
+The format is the [json-format V1](xref:Basics.DataFormats.JsonV1.ContentType)
 
 ### Storage of System Content-Types
 

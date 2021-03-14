@@ -27,12 +27,12 @@ it also include instructions how to export/import data, working with the image r
 1. [Many demo, template and tutorial Apps](http://2sxc.org/en/Apps) are found in the _App Catalog_ on 2sxc.org
 1. [2sxc / EAV Roadmap](xref:Internal.Progress.Roadmap)
 1. [App folder structure](xref:Basics.App.FolderStructure) and special files
-1. [Style Guide 2020 (beta)](xref:Specs.StyleGuide2020) best-practices draft
+1. [Style Guide 2020 (beta)](xref:Basics.StyleGuide.2021) best-practices draft
 
 
 ## If you want to know more, then check out...
 
-1. The [Specs](xref:Specs.Home) which tells you about Architecture, Data Models and more
+1. The [Basics](xref:Basics.Index) which tells you about Architecture, Data Models and more
 1. The [C# .net API Docs](/api/dot-net/index.html)
 
 

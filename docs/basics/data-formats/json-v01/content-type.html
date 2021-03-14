@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JSON Content-Type V1 | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="JSON Content-Type V1 | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li class="active">
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.ContentType">
+<h1 id="json-content-type-v1">JSON Content-Type V1</h1>
+
+<p>JSON based content-types are type-definitions which are stored as JSON. As of now we&#39;re using it to provide system-level types to the application (see <a class="xref" href="../../data/content-types/specs/file-storage.html">Concepts - file provided content-types</a>) and for various automated testing. </p>
+<h2 id="description">Description</h2>
+<ol>
+<li>As of now, it&#39;s using a envolope to package everything and includes a minimal header to ensure we know it&#39;s <a class="xref" href="index.html">V1</a>. </li>
+<li>It then contains a <code>ContentType</code> node containing <ol>
+<li>various identification and description</li>
+<li>content-type metadata (array of entities) </li>
+<li>attributes (array)</li>
+</ol>
+</li>
+<li>the attributes themselves again contain a minimal information + metadata items (entities)</li>
+<li>note that the attribute order is relevant</li>
+</ol>
+<h2 id="example">Example</h2>
+<p>This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):</p>
+<pre><code class="lang-json">{
+  &quot;_&quot;: { &quot;V&quot;: 1 },
+  &quot;ContentType&quot;: {
+    &quot;Id&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
+    &quot;Name&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
+    &quot;Scope&quot;: &quot;System&quot;,
+    &quot;Description&quot;: &quot;todo&quot;,
+    &quot;Attributes&quot;: [
+      {
+        &quot;Name&quot;: &quot;Title&quot;,
+        &quot;Type&quot;: &quot;String&quot;,
+        &quot;IsTitle&quot;: true,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 0,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Type&quot;: {
+              &quot;Name&quot;: &quot;@All&quot;,
+              &quot;Id&quot;: &quot;@All&quot;
+            },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DefaultValue&quot;: { &quot;*&quot;: &quot;Sql Query&quot; },
+                &quot;InputType&quot;: { &quot;*&quot;: &quot;string-default&quot; }
+              },
+              &quot;Boolean&quot;: { &quot;VisibleInEditUI&quot;: { &quot;*&quot;: true } }
+            }
+          }
+        ]
+      },
+      {
+        &quot;Name&quot;: &quot;ConnectionGroup&quot;,
+        &quot;Type&quot;: &quot;Empty&quot;,
+        &quot;IsTitle&quot;: false,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 0,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Type&quot;: {
+              &quot;Name&quot;: &quot;@All&quot;,
+              &quot;Id&quot;: &quot;@All&quot;
+            },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DefaultValue&quot;: { &quot;*&quot;: &quot;&quot; },
+                &quot;InputType&quot;: { &quot;*&quot;: &quot;empty-default&quot; }
+              },
+              &quot;Boolean&quot;: { &quot;VisibleInEditUI&quot;: { &quot;*&quot;: true } }
+            }
+          }
+        ]
+      },
+      {
+        &quot;Name&quot;: &quot;ConnectionStringName&quot;,
+        &quot;Type&quot;: &quot;String&quot;,
+        &quot;IsTitle&quot;: false,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 0,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Type&quot;: {
+              &quot;Name&quot;: &quot;@All&quot;,
+              &quot;Id&quot;: &quot;@All&quot;
+            },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DefaultValue&quot;: { &quot;*&quot;: &quot;SiteSqlServer&quot; },
+                &quot;InputType&quot;: { &quot;*&quot;: &quot;string-default&quot; }
+              },
+              &quot;Boolean&quot;: { &quot;VisibleInEditUI&quot;: { &quot;*&quot;: true } }
+            }
+          }
+        ]
+      },
+      ...
+      {
+        &quot;Name&quot;: &quot;SelectCommand&quot;,
+        &quot;Type&quot;: &quot;String&quot;,
+        &quot;IsTitle&quot;: false,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 0,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Type&quot;: {
+              &quot;Name&quot;: &quot;@All&quot;,
+              &quot;Id&quot;: &quot;@All&quot;
+            },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DefaultValue&quot;: { &quot;*&quot;: &quot;/****** Script for SelectTopNRows command from SSMS  ******/\r\nSELECT TOP (1000) PortalId as EntityId, HomeDirectory as EntityTitle\r\n      ,[PortalID]\r\n      ,[ExpiryDate]\r\n      ,[AdministratorRoleId]\r\n      ,[GUID]\r\n      ,[DefaultLanguage]\r\n      ,[HomeDirectory]\r\n      ,[CreatedOnDate]\r\n      ,[PortalGroupID]\r\n  FROM [Portals]\r\n  Where ExpiryDate is null&quot; },
+                &quot;InputType&quot;: { &quot;*&quot;: &quot;string-default&quot; }
+              },
+              &quot;Boolean&quot;: { &quot;VisibleInEditUI&quot;: { &quot;*&quot;: true } }
+            }
+          },
+          {
+            &quot;Id&quot;: 0,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+            &quot;Type&quot;: {
+              &quot;Name&quot;: &quot;@string-default&quot;,
+              &quot;Id&quot;: &quot;@string-default&quot;
+            },
+            &quot;Attributes&quot;: { &quot;Number&quot;: { &quot;RowCount&quot;: { &quot;*&quot;: 10.0 } } }
+          }
+        ]
+      }
+      ...
+    ],
+    &quot;Metadata&quot;: []
+  }
+}
+</code></pre><h2 id="details-about-the-format">Details about the Format</h2>
+<p>The format is currently in version 1, and looks like this:</p>
+<ul>
+<li>_ this is the header - containing the version, in case we introduce breaking changes in the future - see also <a class="xref" href="index.html">format v1</a></li>
+<li>ContentType - this is the content-type<ul>
+<li>Id - internal identifier, also known as the &quot;static name&quot; - often a GUID</li>
+<li>Name - a nicer name, especially when the Id is a GUID</li>
+<li>Scope - a term which groups types together; mainly for hiding types the user should normally not see </li>
+<li>Description - a short description for internal use</li>
+<li>Attributes [array]<ul>
+<li>[item]<ul>
+<li>Name - the field-name</li>
+<li>Type - the primary type, like string, number, etc.</li>
+<li>Description - a short description</li>
+<li>IsTitle - is this the title field (there must always be one title field)</li>
+<li>Metadata [array] of <a class="xref" href="entity.html">content-items</a> with more information about this field</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Metadata [array] of <a class="xref" href="entity.html">content-items</a> with more information about the content-type</li>
+</ul>
+<h2 id="specials-about-the-json-content-types">Specials about the JSON Content-Types</h2>
+<h4 id="id-is-not-always-a-guid">ID is not always a GUID</h4>
+<p>The ID is usually a GUID, but for special system types it is not. This is mostly historic, as all new content-types will have GUIDs, but old types still exist in the system which have a nice name, but that&#39;s not ideal for various use cases. </p>
+<h4 id="scope-is-like-a-virtual-group">Scope is Like a Virtual Group</h4>
+<p>The Scope is a name - usually System or something like that. It&#39;s primarily used to group types together, so that the editor doesn&#39;t have to see the ca. 50 types in the background which make the solution work. </p>
+<h4 id="attributes-have-metadata">Attributes Have Metadata</h4>
+<p>Each attribute - let&#39;s say a field &quot;Color&quot; has more information which is needed for scenarios like the edit-UI. These items are standard <a class="xref" href="entity.html">content-items</a> and also have the very same format as JSON entities - you can read about that in this blog.</p>
+<h4 id="content-types-have-metadata">Content Types Have Metadata</h4>
+<p>Content-types can have a lot of metadata - also mostly for the UI. An example is the help-text which is shown. This too is stored as normal JSON <a class="xref" href="entity.html">content-items</a>.</p>
+<h2 id="limitations">Limitations</h2>
+<p>As of now (2sxc 9.7) the system will pick up the content-types stored there and everything works. BUT there is no built-in mechanism to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
+<p>This should not affect you, as it&#39;s not meant to be managed by anybody else than us as of now. </p>
+<h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
+<h4 id="content-type-attributes-must-preserve-sort-order">Content Type Attributes must preserve Sort Order</h4>
+<p>This is important, as it&#39;s relevant to the UI.</p>
+<h4 id="all-attributes-are-grouped-by-type">All Attributes are Grouped by Type</h4>
+<p>Because JSON is itself a very loose data-format, and certain types like dates are not auto-detectable, we decided to have the type-specification as a first-class citizen in the format. This allows for automatic, reliable type-checking when materializing objects. </p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="index.html">JSON Format V1</a></li>
+<li><a class="xref" href="../../data/content-types/specs/file-storage.html">File-Stored Content-Types</a></li>
+<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-content-type-definitions">Blog post about json content-type definitions</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Added in 2sxc 9.7</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/content-type.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
