@@ -1,2 +1,2 @@
 
-# Moved to [](xref:Basics.Content.ContentBlocks.Dnn)
+# Moved to [](xref:Basics.Cms.ContentBlocks.Dnn)

@@ -34,12 +34,15 @@ This basic principle is used everywhere in 2sxc. For example, all these things a
 * Anything you define in your apps will result in entities
 
 #### Multilanguage Data
-Each field can also be multilanguage, so there are actually many `Descriptions` in a multi-language product Entity. 
+
+Each value can also be [multilanguage](xref:Basics.Data.MultiLanguage.Index), so there are actually many `Descriptions` in a multi-language product Entity. 
 
 #### Relationships
+
 Entities are much more than just records, as they can have [relationships](xref:Basics.Data.Relationships.Index).
 
 #### Input Forms and Fields (like WYSIWYG)
+
 The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentTypes.Index). Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
 
 

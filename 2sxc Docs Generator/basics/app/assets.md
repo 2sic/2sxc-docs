@@ -13,7 +13,7 @@ In the [App Folder](xref:Basics.App.FolderStructure) you can add any files you n
 * JS files
 * Images, Logos
 
-Note that they should not be content-files, but files your App and the templates need to work. 
+Note that they should not be [content-files](xref:Basics.Content.Assets), but files your App and the templates need to work. 
 
 ## Using App Assets in your Template
 
@@ -31,3 +31,4 @@ These files will also be referenced in your template. Since the App may be insta
 * [](xref:Basics.App.FolderStructure)
 * [](xref:Basics.Server.Assets.Optimization)
 * [](xref:Basics.ImageResizer.Index)
+* [](xref:Basics.Content.Assets)

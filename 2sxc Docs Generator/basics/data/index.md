@@ -4,18 +4,18 @@ uid: Basics.Data.Index
 
 # Understanding Data...
 
-[!include[](../stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 
 Data in 2sxc covers various aspects: 
 
 1. **Data** as a developers sees it - as tables of items / Entities
-1. **Content** as an editor sees it - basically bundles of text/image shown on a specific page
-1. **Content Presentation Settings** which configure how the content should be shown for each item
-1. **Settings** at App-Level
-1. **Language Resources** at App-level for multilanguage output
-1. **Assets** (images, documents) belonging to this each data-item / Entity
+1. [Content](xref:Basics.Content.Index) as an editor sees it - basically bundles of text/image shown on a specific page
+1. [Content Presentation Settings](xref:Basics.Content.Presentation) which configure how the content should be shown for each item
+1. [Settings](xref:Basics.App.Settings) at App-Level
+1. [Language Resources](xref:Basics.App.Resources) at App-level for multilanguage output
+1. [Assets](xref:Basics.Content.Assets) (images, documents) belonging to this each data-item / Entity
 
 This kind of data is usually used to:
 

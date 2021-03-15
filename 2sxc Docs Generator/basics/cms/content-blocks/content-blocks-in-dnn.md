@@ -1,5 +1,5 @@
 ---
-uid: Basics.Content.ContentBlocks.Dnn
+uid: Basics.Cms.ContentBlocks.Dnn
 ---
 
 # 2sxc Content in DNN

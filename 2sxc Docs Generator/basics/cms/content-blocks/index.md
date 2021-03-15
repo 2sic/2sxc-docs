@@ -1,5 +1,5 @@
 ---
-uid: Basics.Content.ContentBlocks
+uid: Basics.Cms.ContentBlocks.Index
 ---
 
 # Content Blocks
@@ -32,7 +32,7 @@ So each _Content Block_ has:
 
 ## Content Blocks in a CMS like DNN
 
-When you see 2sxc data in DNN, that's because a module was added to the page pointing to a _Content Block_. If you want to know more about that, read [](xref:Basics.Content.ContentBlocks.Dnn).
+When you see 2sxc data in DNN, that's because a module was added to the page pointing to a _Content Block_. If you want to know more about that, read [](xref:Basics.Cms.ContentBlocks.Dnn).
 
 ## Manually Managing this Data
 

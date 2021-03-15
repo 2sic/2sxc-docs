@@ -2,7 +2,7 @@
 uid: Basics.ImageResizer.Index
 ---
 
-# Image Resizer #todoc
+# Image Resizer
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>  .context-box-summary .image-resizer    { visibility: visible; } </style>
@@ -19,4 +19,4 @@ The docs here are not ready, but you can find [various examples here](https://2s
 
 * [](xref:Basics.App.FolderStructure)
 * [](xref:Basics.App.Assets)
-* Content Assets / Images #todoc
+* [Content Assets / Images](xref:Basics.Content.Assets)

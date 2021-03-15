@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>App Git Integration | 2sxc and EAV 10 </title>
+    <title>Content Blocks | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="App Git Integration | 2sxc and EAV 10 ">
+    <meta name="title" content="Content Blocks | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,34 +111,42 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.App.Git.Index">
-<h1 id="app-git-integration">App Git Integration</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Cms.ContentBlocks.Index">
+<h1 id="content-blocks">Content Blocks</h1>
 
-<p>In 2sxc you can store the current App State to an XML file and restore it. </p>
-<h2 id="why-store-and-restore-the-app-state">Why Store and Restore the App State</h2>
+<p>Content items wouldn&#39;t do much - they must be shown to the user in the intended layout. The configuration of such a <em>show these things using this template</em> is handled in a <strong>ContentBlock</strong>. The data model for these <em>Content Blocks</em> looks like this:</p>
+<p><img src="assets/content-block.png" width="100%"></p>
+<p>So each <em>Content Block</em> has:</p>
 <ol>
-<li>To save to git, and later see how the state got changed</li>
-<li>To save to git, test some changes, and roll back to the previous state</li>
-<li>To push to a remote repo (like Github) and pull again from another installation</li>
+<li>One reference to a View configuration</li>
+<li>Zero, one or many references to content items</li>
+<li>The same amount of Content-Presentation items </li>
+<li>Zero or one references to Header items</li>
+<li>The same amount of Header-Presentation items</li>
 </ol>
-<h2 id="whats-included-and-what-not">What&#39;s Included and What Not</h2>
-<p>If you save an <a class="xref" href="../folder-structure.html">App Folder</a> to git...</p>
-<ul>
-<li>...it contains everything in the App folder and <a class="xref" href="../assets.html">App Assets</a> (unless you explicitly added it to the <code>.gitignore</code> file)</li>
-<li>...it <em>may</em> contain the App State (all the data items including configuration and settings) <em>if</em> you previously exported them (see below)</li>
-<li>...it <em>doesn&#39;t</em> contain the <a class="xref" href="../../content/content-assets.html">Content Assets</a> (images etc.) as that&#39;s in the ADAM folder of the App</li>
-</ul>
-<h2 id="saving--restoring-app-state-data">Saving / Restoring App State (Data)</h2>
-<p>This is where you can find the App State Save/Restore</p>
-<p><img src="assets/app-git-integration.jpg" width="100%"></p>
-<p>On <strong>2</strong> you can save the state (it will be stored in <code>[app-root]/.data/app.xml</code>)</p>
-<p><img src="assets/app-git-save.jpg" width="100%"></p>
-<p>On <strong>3</strong> you can restore the data from this file:</p>
-<p><img src="assets/app-git-restore.jpg" width="100%"></p>
-<h2 id="history">History</h2>
+<div class="TIP"><h5>Tip</h5><p>Content Blocks contain a reference to the <em>View</em> and optionally a bunch of <em>Content Items</em> that will be used/shown in that <em>View</em>. But there are actually 4 possible scenarios deciding what is actually shown:</p>
 <ol>
-<li>Export introduced ca. 2sxc v5</li>
-<li>Re-Import introduced in 2sxc v11.11</li>
+<li>The <em>View</em> can show the content-items provided by the <em>Content Block</em></li>
+<li>The <em>View</em> can be configured to use a <em>Query</em> and show data from that</li>
+<li>The <em>Template</em> code could also get data from the <em>App</em> directly and show that</li>
+<li>Combinations of the three options above are possible</li>
+</ol>
+</div>
+<div class="IMPORTANT"><h5>Important</h5><p>Since the <em>View</em> can also be configured to get data from other sources, it may show items that are not in the list of the <em>Content Block</em>. </p>
+</div>
+<h2 id="content-blocks-in-a-cms-like-dnn">Content Blocks in a CMS like DNN</h2>
+<p>When you see 2sxc data in DNN, that&#39;s because a module was added to the page pointing to a <em>Content Block</em>. If you want to know more about that, read <a class="xref" href="content-blocks-in-dnn.html">2sxc Content in DNN</a>.</p>
+<h2 id="manually-managing-this-data">Manually Managing this Data</h2>
+<p>Note: you shoudn&#39;t usually do this - but sometimes you have to. Check out this short explanation:</p>
+<p><img src="assets/administrating-content-group-in-an-app.jpg" width="100%"></p>
+<div class="NOTE"><h5>Note</h5><p>This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.</p>
+</div>
+<h2 id="faq">FAQ</h2>
+<ol>
+<li>If a page or module is deleted, does it also delete the <em>Content Block</em>?<br>No. Note that if a page or module is deleted, it goes into the DNN trash, so it could always be restored again. </li>
+<li>If a page or module is deleted from the trash, does it also delete the <em>Content Block</em>?<br>No. DNN does not inform modules about delete actions, so we can&#39;t do clean-up.</li>
+<li>Are <em>Content Blocks</em> which don&#39;t appear on a page orphaned and can I delete them?<br>Maybe. Since they could be used in other apps (see <a class="xref" href="../../content/index.html">Content - Data made Useful</a>) as <em>Inner Content</em>, there is no quick way to tell if it&#39;s being used elsewhere.</li>
+<li>Can a <em>Content Block</em> be used on multiple modules / pages?<br>Yes. It&#39;s not common, but since a module can be shown on multiple pages or even on other portals, it would show the same <em>Content Block</em> there as well. </li>
 </ol>
 </article>
           </div>
@@ -148,7 +156,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/git/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/cms/content-blocks/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

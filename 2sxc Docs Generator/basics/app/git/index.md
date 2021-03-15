@@ -18,7 +18,7 @@ If you save an [App Folder](xref:Basics.App.FolderStructure) to git...
 
 * ...it contains everything in the App folder and [App Assets](xref:Basics.App.Assets) (unless you explicitly added it to the `.gitignore` file)
 * ...it _may_ contain the App State (all the data items including configuration and settings) _if_ you previously exported them (see below)
-* ...it _doesn't_ contain the [Content Assets] (images etc.) as that's in the ADAM folder of the App
+* ...it _doesn't_ contain the [Content Assets](xref:Basics.Content.Assets) (images etc.) as that's in the ADAM folder of the App
 
 ## Saving / Restoring App State (Data)
 
