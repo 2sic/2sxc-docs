@@ -29,5 +29,5 @@ These files will also be referenced in your template. Since the App may be insta
 ## Read More
 
 * [](xref:Basics.App.FolderStructure)
-* [](xref:Basics.App.Assets)
+* [](xref:Basics.Server.Assets.Optimization)
 * [](xref:Basics.ImageResizer.Index)

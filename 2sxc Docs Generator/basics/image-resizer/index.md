@@ -9,6 +9,8 @@ uid: Basics.ImageResizer.Index
 
 2sxc has an awesome Image Resizer built in. 
 
+It's really easy to use - just add url parameters to the image. So instead of `img.jpg` add `img.jpg?w=200` to resize it to 200px width. 
+
 The docs here are not ready, but you can find [various examples here](https://2sxc.org/learn-extensions/ImageResizer)
 
 
