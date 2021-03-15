@@ -9,7 +9,7 @@ To better understand this stuff, best read about the [](xref:Basics.Data.Index).
 <br>
 
 <div style="display: inline-block;">
-	[<img src="../../../basics/data/entities/assets/entity.png" width="48%" align="left">](xref:Basics.Data.Index)
+	[<img src="../../../basics/data/entities/specs/assets/entity.png" width="48%" align="left">](xref:Basics.Data.Index)
 
 	[<img src="../../../basics/data/content-types/specs/assets/content-type-internal-structure.png" width="48%" align="right">](xref:Basics.Data.Index)
 </div>
