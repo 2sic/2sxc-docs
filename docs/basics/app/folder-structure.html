@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Folder structure in the Content App folder | 2sxc and EAV 10 </title>
+    <title>App Folder Structure | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Folder structure in the Content App folder | 2sxc and EAV 10 ">
+    <meta name="title" content="App Folder Structure | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -112,30 +112,38 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Basics.App.FolderStructure">
-<h1 id="folder-structure-in-the-content-app-folder">Folder structure in the <em>Content</em> App folder</h1>
+<h1 id="app-folder-structure">App Folder Structure</h1>
 
-<p>The content-app is simpler than all other apps, because it provides less features to stay focused on &quot;normal&quot; content. </p>
-<p>As such, there are no predefined folders. You can create your own to organize your templates as you need, but the structure is completely undefined. </p>
-<h2 id="folder-structure-and-special-files-of-a-2sxc-app">Folder structure and special files of a 2sxc App</h2>
-<p>A 2sxc app can have no folders at all, or hundreds. The following folders and files are special though, so you should know about them when you need them. </p>
-<p>Note that all apps are located in <em>[portal-root]\2sxc\[app-name]</em>.</p>
+<p>Every app has an own folder for its files. Within that folder the App can have zero or hundreds of folders. </p>
+<ul>
+<li>all apps are located in <code>[portal-root]\2sxc\[app-name]</code></li>
+<li>the <em>primary</em> / <em>Content</em> App is located in <code>[portal-root]\2sxc\Content</code></li>
+</ul>
+<p>You can create your own folders to organize your templates as you need as the structure is completely open. </p>
+<h2 id="system-files">System Files</h2>
+<ul>
+<li><strong>app-icon.png</strong> is always used as the <a class="xref" href="icons.html">app-icon</a> if provided</li>
+</ul>
 <h2 id="system-folders">System Folders</h2>
 <ol>
-<li><strong>api</strong> this folder contains c# files for the web services this app has</li>
-<li><strong>node_modules</strong> is the default folders when you use JS-automation while developing; it can be very large. This folder will be ignored when you export an app</li>
-<li><strong>bower_components</strong> contains bower (run-time) dependencies for your JS and can become very large. Normally you will not want this in your app (because it contains a lot of unneeded stuff) so it too will not be exported when you create an app-package. </li>
+<li><code>api</code> this folder contains c# files for the web services this app has. It&#39;s not available on the simpler <strong>Content App</strong>.<br> <em>Note: if you&#39;re using <a class="xref" href="polymorphism.html">Polymorphism</a> then the api folder is usually in a sub-folder, like <code>live\api</code></em></li>
+<li><code>.data\app</code> this folder may contain a snapshot of the app-data and is usefull when git-versioning your app</li>
+<li><code>.data\.[something]</code> is usually used for special data like <a class="xref" href="../browser/edit-form/custom-fields.html">custom input field configuration</a></li>
+<li><code>system</code> this folder would contain <a class="xref" href="../browser/edit-form/custom-fields.html">custom input fields</a></li>
+</ol>
+<h2 id="non-exportable-folders">Non-Exportable Folders</h2>
+<p>The following folders and files are special source-code folders and will not be included in export / import of Apps.</p>
+<ol>
+<li><code>.git</code> is a hidden folder which all github repositories have.</li>
+<li><code>node_modules</code> is the default folders when you use JS-automation while developing; it can be very large. </li>
+<li><code>bower_components</code> contains bower (run-time) dependencies for your JS and can become very large. Normally you will not want this in your app (because it contains a lot of unneeded stuff) so it too will not be exported when you create an app-package. </li>
 </ol>
 <h2 id="recommended-sub-folder-names">Recommended sub folder names</h2>
 <p>The following folders have no technical relevance, but we recommend this naming to improve consistency.</p>
 <ol>
-<li><strong>src</strong> and sub-folders should contain your javascript source files in original (unminified, etc.)</li>
-<li><strong>dist</strong> should contain your processed, minified, uglified and combined JS files</li>
+<li><code>src</code> and sub-folders should contain your javascript source files in original (unminified, etc.)</li>
+<li><code>dist</code> should contain your processed, minified, uglified and combined JS files<br> <em>Note: if you&#39;re using <a class="xref" href="polymorphism.html">Polymorphism</a> then the dist folder is usually in a sub-folder, like <code>live\dist</code></em></li>
 </ol>
-<h2 id="special-files">Special files</h2>
-<ol>
-<li><strong>app-icon.png</strong> this file is an icon for the app - and will soon be displayed in various dialogs. It should be square and at least 250x250, larger is better</li>
-</ol>
-<p>See also <a class="xref" href="icons.html">Icons in Apps</a></p>
 </article>
           </div>
           

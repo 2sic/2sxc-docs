@@ -7,7 +7,7 @@ uid: WebApi.Custom.Index
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
 
 <div class="context-box-process" width="100%">
-  [!include[](../../basics/stack/_shared-all.md)]
+  [!include[](~/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-web-api { visibility: visible; } </style>
 </div>
 
@@ -21,7 +21,7 @@ You can find a good example on [live tutorials](xref:Tut.WebApi) or in the [Mobi
 Most WebApi Actions will require additional parameters. Just add them as url-parameters like `?param1=This&param2=That`
 
 
-[!include["WebApi Tutorials"](../../shared/tutorials/web-api.md)]
+[!include["WebApi Tutorials"](~/shared/tutorials/web-api.md)]
 
 
 ## Basic Example

@@ -11,7 +11,7 @@ uid: Basics.Query.Index
 
 1. You create such queries using a **[Visual Query](xref:Basics.Query.VisualQuery.Index)** designer
 1. Queries can then be assigned to a [View](xref:Basics.App.Views) so the template recieves this as the data to work with
-1. Queries can also be used directly in the [Headless API](xref:Basics.Server.Headless.Index) if you configure the permissions for this
+1. Queries can also be used directly in the [Headless API](xref:WebApi.Headless.Index) if you configure the permissions for this
 1. The Edit-UI can also use queries in dropdown fields (both string and entity)
 1. You can also access queries using [App.Query["QueryName"]](xref:NetCode.DynamicCode.App)
 

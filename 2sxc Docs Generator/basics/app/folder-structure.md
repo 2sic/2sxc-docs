@@ -2,31 +2,38 @@
 uid: Basics.App.FolderStructure
 ---
 
-# Folder structure in the _Content_ App folder
+# App Folder Structure
 
-The content-app is simpler than all other apps, because it provides less features to stay focused on "normal" content. 
+Every app has an own folder for its files. Within that folder the App can have zero or hundreds of folders. 
 
-As such, there are no predefined folders. You can create your own to organize your templates as you need, but the structure is completely undefined. 
+* all apps are located in `[portal-root]\2sxc\[app-name]`
+* the _primary_ / _Content_ App is located in `[portal-root]\2sxc\Content`
 
-## Folder structure and special files of a 2sxc App
-A 2sxc app can have no folders at all, or hundreds. The following folders and files are special though, so you should know about them when you need them. 
+You can create your own folders to organize your templates as you need as the structure is completely open. 
 
-Note that all apps are located in _\[portal-root\]\2sxc\\\[app-name\]_.
+## System Files
+
+* **app-icon.png** is always used as the [app-icon](xref:Basics.App.Icons) if provided
 
 ## System Folders
 
-1. **api** this folder contains c# files for the web services this app has
-2. **node_modules** is the default folders when you use JS-automation while developing; it can be very large. This folder will be ignored when you export an app
-3. **bower_components** contains bower (run-time) dependencies for your JS and can become very large. Normally you will not want this in your app (because it contains a lot of unneeded stuff) so it too will not be exported when you create an app-package. 
+1. `api` this folder contains c# files for the web services this app has. It's not available on the simpler **Content App**.  
+    _Note: if you're using [Polymorphism](xref:Basics.App.Polymorphism) then the api folder is usually in a sub-folder, like `live\api`_
+1. `.data\app` this folder may contain a snapshot of the app-data and is usefull when git-versioning your app
+1. `.data\.[something]` is usually used for special data like [custom input field configuration](xref:Basics.Browser.EditForm.CustomFields)
+1. `system` this folder would contain [custom input fields](xref:Basics.Browser.EditForm.CustomFields)
+
+## Non-Exportable Folders
+
+The following folders and files are special source-code folders and will not be included in export / import of Apps.
+
+1. `.git` is a hidden folder which all github repositories have.
+1. `node_modules` is the default folders when you use JS-automation while developing; it can be very large. 
+1. `bower_components` contains bower (run-time) dependencies for your JS and can become very large. Normally you will not want this in your app (because it contains a lot of unneeded stuff) so it too will not be exported when you create an app-package. 
 
 ## Recommended sub folder names
 
 The following folders have no technical relevance, but we recommend this naming to improve consistency.
-1. **src** and sub-folders should contain your javascript source files in original (unminified, etc.)
-1. **dist** should contain your processed, minified, uglified and combined JS files
-
-## Special files
-
-1. **app-icon.png** this file is an icon for the app - and will soon be displayed in various dialogs. It should be square and at least 250x250, larger is better
-
-See also [](xref:Basics.App.Icons)
+1. `src` and sub-folders should contain your javascript source files in original (unminified, etc.)
+1. `dist` should contain your processed, minified, uglified and combined JS files  
+    _Note: if you're using [Polymorphism](xref:Basics.App.Polymorphism) then the dist folder is usually in a sub-folder, like `live\dist`_

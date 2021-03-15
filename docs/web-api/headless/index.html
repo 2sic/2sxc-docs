@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>URLs for 2sxc WebAPI and REST APIs | 2sxc and EAV 10 </title>
+    <title>Headless WebAPIs in 2sxc | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="URLs for 2sxc WebAPI and REST APIs | 2sxc and EAV 10 ">
+    <meta name="title" content="Headless WebAPIs in 2sxc | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="WebApi.Specs.UrlSchema">
-<h1 id="urls-for-2sxc-webapi-and-rest-apis">URLs for 2sxc WebAPI and REST APIs</h1>
+            <article class="content wrap" id="_content" data-uid="WebApi.Headless.Index">
+<h1 id="headless-webapis-in-2sxc">Headless WebAPIs in 2sxc</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -228,137 +228,33 @@
     you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
 </div><style>
-  .context-box-summary .browser-interact,
-  .context-box-summary .process-apis { visibility: visible; }
+  .context-box-summary .process-headless { visibility: visible; }
 </style>
 
+<p>Using a CMS like 2sxc as <strong>Headless</strong> means that the data can be used elsewhere both for showing and editing as needed. 2sxc provides 3 different WebAPIs for this:</p>
+<ol>
+<li>Built-in <a class="xref" href="../content-rest-web-api.html">Content WebAPIs</a> which are REST endpoints for CRUD (Create, Read, Update, Delete) operations</li>
+<li>Built-in <a class="xref" href="../query-rest-web-api.html">Query WebAPIs</a> which are read-only APIs to query data using Visual Query</li>
+<li><a class="xref" href="../custom/index.html">Custom C# WebAPI controllers</a> which you create to do anything you want</li>
+</ol>
+<p>We always recommend that you first experiment with the tutorials before you do anything else:</p>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
-<p>The <strong>URL Schema</strong> describes how the paths look to access WebAPIs. When using <a class="xref" href="../../js-code/2sxc-api/2sxc.html">$2sxc JS</a> or other helpers like <a class="xref" href="../../js-code/angular/index.html">dnn-sxc-angular</a> most if this is automatic. So this information is most useful if you are doing something very custom or accessing 2sxc APIs from externally (like mobile apps).</p>
-<h2 id="finding-the-right-urls-in-the-admin-dialogs">Finding the right URLs in the Admin-Dialogs</h2>
-<div class="TIP"><h5>Tip</h5><p><img src="../assets/admin-ui-data-rest-menu.jpg" width="40%" align="right">
-Starting in 2sxc 11.10+ the admin-UI has <a class="xref" href="../help-admin-ui-content-rest.html">built-in help</a> to get started. These UIs also show sample code and everything.
-So you probably don&#39;t need to read the stuff here and just go ahead with that. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>In 2sxc 11.10 this dialog was introduced for the <strong>Data</strong> section, and we&#39;ll add similar sections for <strong>Query</strong> and <strong>WebApi</strong>. 
-So the remaining information on this page is really only for those who really want to dive in deep. </p>
-</div>
-<h2 id="note-about-platform-and-version-differences">Note about Platform and Version Differences</h2>
-<p>The exact schema for the url varies depending on the platform you&#39;re using. 
-So DNN 7 is different from DNN 9, and Oqtane is different again.</p>
-<p>Also older versions of 2sxc had URLs which still work today but are not recommended any more, 
-because they were not well structured. </p>
-<p>In 2sxc 11.10+ we introduced REST-API help dialogs in the Admin-UI, so from now on
-you 2sxc will tell you what URLs you can use. </p>
-<p>So the information you find here is valid, but you probably don&#39;t need it</p>
-<h2 id="url-schema-specifications-advanced">URL Schema Specifications (Advanced)</h2>
-<p>One of the most confusing aspects when using the REST API or custom WebApis is finding the right URL to talk to the API. Read this to help you understand what&#39;s going on and get started quickly. </p>
-<p>Every 2sxc REST URL is built with the following parts:</p>
-<p><code>[root]/app/[app-identity]/[app-part]/[specifics]</code></p>
+  <h2> Discover More in the Web API Tutorials </h2>
+
+  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API tutorials</a>. You should really check them out 👍.
+
+</div><h2 id="read-also">Read Also</h2>
 <ol>
-<li>The <code>root</code> is determined by DNN and changes a bit by DNN version, portal, and language configuration. <a href="#part-1-the-root-path">more</a></li>
-<li>The <code>app-identity</code> says what app we&#39;re addressing. It&#39;s often <code>auto</code> for auto-detection, but when auto-detection isn&#39;t available, it&#39;s the app-folder name. <a href="#part-2-the-app-identity">more</a></li>
-<li>the <code>app-part</code> determines if we&#39;re accessing <a href="#part-3a-app-part-content">content</a>, <a href="#part-3b-app-part-query">query</a> or <a href="#part-3c-app-part-custom-c-web-api">api</a> of the app.</li>
-<li>The <code>specifics</code> is a path part describing what exactly what we&#39;re accessing and varies depending on the API.</li>
+<li><a class="xref" href="../index.html">2sxc Web API</a></li>
+<li>Various blogs posted on this topic (just google it)</li>
 </ol>
-<h2 id="part-1-the-root-path">Part 1: The Root Path</h2>
-<h3 id="the-root-in-dnn-9">The Root in DNN 9+</h3>
-<p>In DNN 9 the root was shortened to: <code>[portal-root-with-language]/api/2sxc/...</code></p>
-<div class="NOTE"><h5>Note</h5><p>The old root from DNN 7 and 8 still work in DNN 9 for compatibility. </p>
-</div>
-<h3 id="the-root-in-dnn-7-and-8">The Root in DNN 7 and 8</h3>
-<p>DNN 7 &amp; 8: <code>[portal-root-with-language]/desktopmodules/2sxc/api/...</code></p>
-<div class="WARNING"><h5>Warning</h5><p>An easy thing to overlook is that in DNN 7 and 8 it was <code>2sxc/api</code> but in DNN 9 it&#39;s <code>api/2sxc</code></p>
-</div>
-<h3 id="the-root-in-oqtane">The Root in Oqtane</h3>
-<p>This is still WIP, but most likely it&#39;s <code>[domain]/[site-id-number]/api/2sxc/...</code></p>
-<h2 id="part-2-the-app-identity">Part 2: The App-Identity</h2>
-<h3 id="when-to-use-or-not-use-auto-detection-auto">When to use or not-use Auto-Detection <code>auto</code></h3>
-<p>The App-identity can be either the word <code>auto</code> to use auto-detection, or the app-folder-name if you can&#39;t use auto-detection. </p>
-<div class="TIP"><h5>Tip</h5><p>Whenever you&#39;re working in DNN and accessing the endpoint from a module that contains the same App, then you should use auto-detection. </p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>Auto-Detection relies on DNN mechanisms to detect the <strong>Context</strong> (usually sending the <code>PageId</code> and <code>ModuleId</code> in HTTP-headers). 
-2sxc uses these headers to figure out what App you&#39;re using. If something fails in auto-detection, you&#39;re probably not using the normal DNN conventions for making REST calls.</p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>When calling an endpoint from another website or a mobile App, you cannot use <code>auto</code> but must specify the app-folder name.
-Or you can provide <strong>Context</strong> by adding <code>?PageId=...&amp;ModuleId=...</code> to the url.</p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>If you&#39;re <em>not</em> using auto-detection, then the root path must be absolutely correct. Here&#39;s why: If you have multiple portals then each portal could have other apps, or sometimes even the same app (like a Blog app). In this case, the root-path says what portal is being used, which in turn is important to get the correct app.</p>
-</div>
-<h3 id="app-identity-examples">App-Identity Examples</h3>
-<p>To access an API (in this example the <code>content</code>) from JS code in the same app you can rely on auto-detection of the app, like this: </p>
-<p><code>.../app/auto/content/...</code></p>
-<p>To access the same Glossary-App from elsewhere, like from the skin (for example, to highlight all words to which your glossary-app has definitions), from another app, or from another website, you would specify the folder name as auto-detection won&#39;t work. Like this:</p>
-<p><code>.../app/Glossary/content/...</code></p>
-<p>This applies to all endpoints like <code>content</code>, <code>query</code>, <code>api</code>.</p>
-<h2 id="part-3-app-part-content-query-or-web-api">Part 3: App-Part Content, Query or Web-Api</h2>
-<h3 id="part-3a-app-part-content">Part 3a: App-Part Content</h3>
-<p>If your part is <code>content</code> then you&#39;re using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after <code>content/</code>:</p>
-<ul>
-<li><code>.../content/[YourContentType]</code> <ul>
-<li>HTTP GET will retrieve all items of this type</li>
-</ul>
-</li>
-<li><code>.../content/[your-content-type]/[item-id]</code> where <code>item-id</code> is the number or the GUID<ul>
-<li>HTTP GET will get one item</li>
-<li>HTTP POST is used to create an item or update it</li>
-<li>HTTP DELETE will delete the item</li>
-</ul>
-</li>
-</ul>
-<div class="WARNING"><h5>Warning</h5><p>This requires that permissions are configured to allow it. 
-The permissions are very powerful so make sure you understand them. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>You can also configure permissions in ways that allow users to only create draft items
-(which would then require an admin to publish it)</p>
-</div>
-<h4 id="content-example">Content Example</h4>
-<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/content/BlogPost</code></p>
-<p>...then your JS would receive a JSON with all BlogPost items. More examples:</p>
-<ol>
-<li>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</li>
-<li>HTTP POST to <code>[root-path]/app/auto/content/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</li>
-</ol>
-<h3 id="part-3b-app-part-query">Part 3b: App-Part Query</h3>
-<p>The Query endpoint can be accessed on <code>.../query/[your-query-name]</code>. Note that Query endpoints only support the HTTP-verb GET, since it&#39;s read-only. </p>
-<div class="WARNING"><h5>Warning</h5><p>This requires that permissions are configured to allow it. 
-The permissions are very powerful so make sure you understand them. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>Make sure you give your queries simple names without spaces if you intend to use them in REST calls.</p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>Queries can also expect url-parameters if they are configured to do this. 
-So if you query has an ID-filter which expects a token <code>[QueryString:id]</code> you can also call your query like
-<code>.../app/auto/query/GetWithId?id=27</code></p>
-</div>
-<h4 id="query-example">Query Example</h4>
-<p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/query/BlogPostsByAuthor?Author=Daniel%20Mettler</code>  </p>
-<p>This would run the pre-defined query and return the Blog Posts of the author <em>Daniel Mettler</em>.</p>
-<h3 id="part-3c-app-part-custom-c-web-api">Part 3c: App-Part Custom C# Web Api</h3>
-<p>Custom WebAPI use one of these schemas</p>
-<ol>
-<li><code>.../api/[controller-name]/[action-or-more-params]</code></li>
-<li><code>.../[edition]/api/[controller-name]/[action-or-more-params]</code></li>
-</ol>
-<p>Your C# code determines what HTTP-verbs will work (GET, POST, etc.). Your code is also responsible for determining what permissions are used, like Anonymous etc.</p>
-<p>The <code>[edition]</code> is relevant if you&#39;re using <a class="xref" href="../../basics/app/polymorphism.html">Polymorphism</a>. So if you don&#39;t specify an edition, the controller is expected to be in the <code>[AppFolder]\api</code> but if you do use polymorphism the controller must be in <code>[AppFolder]\[edition]\api</code>. </p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../custom/index.html">DotNet WebApi</a></li>
-<li><a class="xref" href="../../basics/app/polymorphism.html">Concepts: Polymorphisms</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
-<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
-<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
-</ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 5.x</li>
-<li>Query added in 2sxc 8.10</li>
-<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
+<li>Introduced Content-REST API in 2sxc 5.x</li>
+<li>More added in v7.1</li>
+<li>Added <a class="xref" href="../help-admin-ui-content-rest.html">in-admin help</a> to access it in 11.10</li>
 </ol>
 </article>
           </div>
@@ -368,7 +264,7 @@ So if you query has an ID-filter which expects a token <code>[QueryString:id]</c
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/specs/url-schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/headless/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
