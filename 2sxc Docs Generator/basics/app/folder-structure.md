@@ -13,7 +13,7 @@ You can create your own folders to organize your templates as you need as the st
 
 ## System Files
 
-* **app-icon.png** is always used as the [app-icon](xref:Basics.App.Icons) if provided
+* `app-icon.png` is always used as the [app-icon](xref:Basics.App.Icons) if provided
 
 ## System Folders
 

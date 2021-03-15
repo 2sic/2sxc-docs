@@ -6,7 +6,7 @@ uid: Basics.Server.Index
 
 You should get an idea of how the system works and all the things you can customize. This overview lets you see the essential parts of any **App** including the main **Content**. 
 
-[!include[](../stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .server-all { visibility: visible; } </style>
 
 
