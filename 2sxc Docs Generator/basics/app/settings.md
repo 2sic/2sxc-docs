@@ -6,6 +6,21 @@ uid: Basics.App.Settings
 
 Every App has a **Settings** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields. 
 
+## Edit/Configure App Settings
+
+This is where you can find the App Settings
+
+<img src="./assets/app-settings-path.jpg" width="100%" >
+
+On **2** you can configure the fields you need, just like any other Entity:
+
+<img src="./assets/app-settings-fields.jpg" width="100%" >
+
+On **3** you can set the values you need
+
+<img src="./assets/app-settings-edit.jpg" width="100%" >
+
+
 ## Why would you use this?
 
 Imagine a Gallery App where each instance (Module) has settings like animation speed. You would place the default values in the **App Settings** so that by default all instances would behave the same, and you can still change this in one central location. 

@@ -4,6 +4,8 @@ uid: Basics.App.Configuration
 
 # App Configuration
 
+<img src="./assets/app-configuration-path.jpg" class="float-right" width="400px" >
+
 Every App has a **Configuration** Entity which describes things like
 
 1. App Name
@@ -12,6 +14,10 @@ Every App has a **Configuration** Entity which describes things like
 1. Minimum version of DNN needed for the App to work
 1. Minimum version of 2sxc needed for the App to work
 1. etc.
+
+## Edit App Configuration
+
+<img src="./assets/app-configuration.jpg" width="100%">
 
 ## Difference App Configuration / App Settings
 
