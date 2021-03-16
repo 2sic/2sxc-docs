@@ -27,4 +27,4 @@ The [](xref:Basics.App.Settings) can contain any information you configure it to
 
 ## Use in C# Code (Razor / WebAPI)
 
-Most of this information is available on the `App` object, like `App.Path`. Read about the [C# API here](xref:NetCode.DynamicCode.App). 
+Most of this information is available on the `App` object, like `App.Path`. Read about the [C# API here](xref:NetCode.DynamicCode.Objects.App.Index). 

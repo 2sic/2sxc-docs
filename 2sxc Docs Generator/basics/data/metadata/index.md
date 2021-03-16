@@ -36,7 +36,7 @@ Most internal configuration of 2sxc works as Metadata.
 1. **[Content-Types](xref:Basics.Data.ContentTypes.Index)** just have some internal IDs and names.  
     Any additional information like description, icon, help-text etc. is stored as Metadata.
 1. **[App Configuration](xref:Basics.App.Configuration)** is treated as Metadata 
-    and most of the stored values are available on the [App object](xref:NetCode.DynamicCode.App)
+    and most of the stored values are available on the [App object](xref:NetCode.DynamicCode.Objects.App.Index)
 
 
 ## How Apps & Content use Metadata
@@ -63,7 +63,7 @@ Metadata can be created in 3 ways
 
 1. Through the **Edit-UI**: If the toolbar which opens a `new` dialog adds metadata information, then the newly created item will be stored as metadata
 1. In the **REST WebAPI**: the REST calls for creating new data can contain target information
-1. In the [App.Data.Create(...)](xref:NetCode.DynamicCode.App): The `Create(...)` command can include target information 
+1. In the [App.Data.Create(...)](xref:NetCode.DynamicCode.Objects.App.Index): The `Create(...)` command can include target information 
 
 ## Access / Read Metadata
 
@@ -99,12 +99,11 @@ Short explanation for the code
 More explanations 
 
 
-## Read also
+## Read also #todoc
 
-* [InstancePurpose](xref:NetCode.Razor.Purpose) - which tells you why the current code is running so you could change the data added
-* [CustomizeData](xref:NetCode.Razor.CustomizeData)
 
 ## Demo App and further links #todoc
+
 
 ## History
 

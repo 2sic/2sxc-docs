@@ -1,12 +1,12 @@
 ---
-uid: NetCode.DynamicCode.App
+uid: NetCode.DynamicCode.Objects.App.Index
 ---
 # App / @App object Dynamic Code
 
 The `App` object gives you full access to everything you need to know about the current App, including Path-info, access to all Data this App has, access to Settings and language Resources and more.
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How to use
@@ -34,65 +34,37 @@ The app-object uses the `IApp` interface ([see code](xref:ToSic.Sxc.Apps.IApp)) 
 1. `AppId` number, current App id
 2. `AppGuid` guid, internal use global id
 3. `Configuration` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), contains the [configuration content-item](xref:Feat.AppConfig)
-4. `Data` IAppData, to access all App-data (see below)
+4. [Data](xref:NetCode.DynamicCode.Objects.App.Data) IAppData, to access all App-data (see below)
 5. `Folder` string, storage folder name in portal/#/2sxc/...
 6. `Hidden` bool, info if the app cannot be selected in the UIs
 7. `Name` string, the app name
 8. `Path` string, the path as used in URLs in  html
 9. `PhysicalPath` string, the path as used on the server C:\...
-10. `Query["QueryName"]` dictionary of queries (see below) 
+10. [Query["QueryName"]](xref:NetCode.DynamicCode.Objects.App.Query) dictionary of queries (see below) 
 11. `Resources` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), all the multi-language labels etc. (see below)
 12. `Settings` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), all the app-settings (see below)
 13. `ZoneId` number, current Zone ID (similar to PortalId)
 
 
 ## Using App Data (App.Data)
-The App object gives you immediate acccess to all data in the app, through the `Data` property. Basically you can use it as follows:
 
-
-### Get All Data Items of a Content Type
-`App.Data["ContentTypeName"]` will give you a [stream](xref:ToSic.Eav.DataSources.IDataStream) of all entities of that type. In most cases you'll use an `AsDynamic(...)` to use it efficiently in loops etc. because most of the razor templating will prefer a [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) to a pure IEntity-object. Here's an example:
-
-```razor
-@foreach(var post in AsDynamic(App.Data["BlogPost"]))
-{
-    @RenderPage("_list-item.cshtml", new { Post = post })
-}
-```
-
-_note_: this will give you all items, but you'll have to sort it using LINQ or other mechanisms. If you're not familiar with that, you're better of using `App.Query[...]` (see below). 
-
-
-### Edit App Data Content-Items
-In addition to giving access to all entities in this app, you can also create, edit and delete items using the `App.Data` object. The commands provided are:
-
-1. `App.Data.Create(contentTypeName, values, userName)`
-1. `App.Data.Update(entityId, values, userName)`
-1. `App.Data.Delete(entityId, userName)`
-
-You can read more about this in the [App Data API Feature](xref:Feat.AppDataApi)
+Read [](xref:NetCode.DynamicCode.Objects.App.Data)
 
 
 ## Using App Queries (App.Query)
-The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here's how:
 
-```razor
-@foreach(var tag in AsDynamic(App.Query["SortedTags"]["Default"])) {
-    <li class='@("app-blog-tag" + tag.ManualWeight)'><a href='@Link.To("tag= " tag.Tag)' title="@tag.Name">@tag.Name</a></li>
-}
-```
+Read [](xref:NetCode.DynamicCode.Objects.App.Query)
 
-Technically the `App.Query` is a `IDictionary<string, IDataSource>`, meaning that it's a dictionary using string identifiers (names), returning an [`IDataSource`](xref:NetCode.DataSources.DataSource) object. 
-
-It's important to realize that a [DataSource](xref:NetCode.DataSources.DataSource) can deliver multiple [streams of data](xref:ToSic.Eav.DataSources.IDataStream) - a bit like delivering multiple tables. Each stream has a name, and you must specify which stream you want to work with. In the above example, we're using the `Default` stream as defined with `App.Query["SortedTags"]["Default"]`.
 
 ## Note about Unpublished / Draft Content-Items
+
 In case you're not aware of the draft/unpublished features in 2sxc, we want to note that each item can be live/draft, and each item could have a corresponding counterpart. So a draft-item _could_ have a live-item (but doesn't have to), and a live-item _could_ have a draft item.
 
 This is important, because the admin/editor will see all the draft items, while the end-user will only see the live ones. So the exact items shown and the item-count can differ if you are logged in. 
 
 
 ## App Settings and Resources
+
 In the App dialogs you can manage `Settings` and `Resources`. Basically both are a content-item with the fields you specify, the only difference is the _purpose_ they have.
 
 * You should put button-labels, standard-texts, decorative images etc. into `Resources` and these will often change from language to language.

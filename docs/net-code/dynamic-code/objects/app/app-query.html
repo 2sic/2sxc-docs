@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>App /  object in Razor | 2sxc and EAV 10 </title>
+    <title>App.Query /  Object in Dynamic Code | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="App /  object in Razor | 2sxc and EAV 10 ">
+    <meta name="title" content="App.Query /  Object in Dynamic Code | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,7 +67,7 @@
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
@@ -102,12 +102,36 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="app--app-object-in-razor">App / @App object in Razor</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.App.Query">
+<h1 id="appquery--appquery-object-in-dynamic-code">App.Query / @App.Query Object in Dynamic Code</h1>
 
-<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/objects/app/index.html">App /  object Dynamic Code</a></p>
+<p>The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here&#39;s how:</p>
+<pre><code class="lang-razor">@foreach(var tag in AsDynamic(App.Query[&quot;SortedTags&quot;])) {
+  &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;
+    &lt;a href=&#39;@Link.To(&quot;tag= &quot; tag.Tag)&#39; title=&quot;@tag.Name&quot;&gt;
+      @tag.Name
+    &lt;/a&gt;
+  &lt;/li&gt;
+}
+</code></pre><p>Technically the <code>App.Query</code> is a <code>IDictionary&lt;string, IDataSource&gt;</code>, meaning that it&#39;s a dictionary using string identifiers (names), returning an <a class="xref" href="../../../data-sources/datasource.html"><code>IDataSource</code></a> object. </p>
+<p>It&#39;s important to realize that a <a class="xref" href="../../../data-sources/datasource.html">DataSource</a> can deliver multiple <a class="xref" href="../../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">streams of data</a> - a bit like delivering multiple tables. Each stream has a name, and you must specify which stream you want to work with. In the above example, we&#39;re using the <code>Default</code> stream as defined with <code>App.Query[&quot;SortedTags&quot;][&quot;Default&quot;]</code>.</p>
+<h2 id="read-also-todoc">Read also #todoc</h2>
+<h2 id="demo-app-and-further-links-todoc">Demo App and further links #todoc</h2>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 05.05</li>
+<li>Stable since 2sxc 06.00</li>
+<li>Data-API was introduced in 2sxc 06.05</li>
+</ol>
 </article>
           </div>
           
@@ -116,7 +140,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/how-to/dynamic-code/object-app.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/app/app-query.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -142,20 +166,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

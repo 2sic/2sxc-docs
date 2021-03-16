@@ -26,7 +26,7 @@ Many templates may have special labels, intro-texts or buttons which would benef
 
 ## Use in C# Code (Razor / WebAPI)
 
-In code you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.App)
+In code you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
 ## Use in Tokens Templates
 

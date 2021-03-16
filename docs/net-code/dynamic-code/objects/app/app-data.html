@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>App /  object in Razor | 2sxc and EAV 10 </title>
+    <title>App.Data /  Object in Dynamic Code | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="App /  object in Razor | 2sxc and EAV 10 ">
+    <meta name="title" content="App.Data /  Object in Dynamic Code | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,7 +67,7 @@
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
@@ -102,12 +102,43 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="app--app-object-in-razor">App / @App object in Razor</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.App.Data">
+<h1 id="appdata--appdata-object-in-dynamic-code">App.Data / @App.Data Object in Dynamic Code</h1>
 
-<p>This document has been moved to <a class="xref" href="../../net-code/dynamic-code/objects/app/index.html">App /  object Dynamic Code</a></p>
+<p>The <code>App.Data</code> object gives you immediate acccess to all data in the app, through the <code>Data</code> property. Basically you can use it as follows:</p>
+<h2 id="get-all-data-items-of-a-content-type">Get All Data Items of a Content Type</h2>
+<p><code>App.Data[&quot;ContentTypeName&quot;]</code> will give you a <a class="xref" href="../../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">stream</a> of all entities of that type. In most cases you&#39;ll use an <code>AsDynamic(...)</code> to use it efficiently in loops etc. because most of the razor templating will prefer a <a class="xref" href="../../../dynamic-data/dynamic-entity.html">DynamicEntity</a> to a pure IEntity-object. Here&#39;s an example:</p>
+<pre><code class="lang-razor">@foreach(var post in AsDynamic(App.Data[&quot;BlogPost&quot;]))
+{
+    @RenderPage(&quot;_list-item.cshtml&quot;, new { Post = post })
+}
+</code></pre><p><em>note</em>: this will give you all items, but you&#39;ll have to sort it using LINQ or other mechanisms. If you&#39;re not familiar with that, you&#39;re better of using <code>App.Query[...]</code> (see below). </p>
+<h2 id="edit-app-data-content-items">Edit App Data Content-Items</h2>
+<p>In addition to giving access to all entities in this app, you can also create, edit and delete items using the <code>App.Data</code> object. The commands provided are:</p>
+<ol>
+<li><code>App.Data.Create(contentTypeName, values, userName)</code></li>
+<li><code>App.Data.Update(entityId, values, userName)</code></li>
+<li><code>App.Data.Delete(entityId, userName)</code></li>
+</ol>
+<p>You can read more about this in the <a class="xref" href="https://2sxc.org/en/Docs-Manuals/Feature/feature/3360">App Data API Feature</a></p>
+<h2 id="create-metadata-todoc">Create Metadata #todoc</h2>
+<h2 id="read-metadata-todoc">Read Metadata #todoc</h2>
+<h2 id="demo-app-and-further-links-todoc">Demo App and further links #todoc</h2>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 05.05</li>
+<li>Stable since 2sxc 06.00</li>
+<li>Data-API was introduced in 2sxc 06.05</li>
+</ol>
 </article>
           </div>
           
@@ -116,7 +147,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/how-to/dynamic-code/object-app.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/app/app-data.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -142,20 +173,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
