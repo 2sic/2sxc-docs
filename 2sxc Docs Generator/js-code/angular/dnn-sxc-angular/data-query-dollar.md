@@ -2,13 +2,15 @@
 uid: JsCode.Angular.DnnSxcAngular.DataQuery$
 ---
 
-# dnn-sxc-angular Data.query$\<T\>(...)
+# Data.query$\<T\>(...)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 With **dnn-sxc-angular** it's really easy to access Data from the backend. 
-The easiest way to access a [Query](xref:Basics.Query.Index) is to use `data.query$<T>(...)`.
+
+The easiest way to access a [Query](xref:Basics.Query.Index) is to use `data.query$<T>(...)` 
+which gets you a _Stream_ (`$`) of Entities from a [Query](xref:Basics.Query.Index).
 
 Here's what it does:
 

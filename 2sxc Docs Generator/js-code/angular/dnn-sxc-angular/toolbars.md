@@ -1,5 +1,5 @@
 ---
-uid: JsCode.Angular.Toolbars
+uid: JsCode.Angular.DnnSxcAngular.Toolbars
 ---
 
 # Toolbars in Angular (dnn-sxc-angular)

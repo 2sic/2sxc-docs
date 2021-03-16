@@ -2,7 +2,7 @@
 uid: JsCode.Angular.DnnSxcAngular.DataContent
 ---
 
-# dnn-sxc-angular Data.content\<T\>(...)
+# Data.content\<T\>(...)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>

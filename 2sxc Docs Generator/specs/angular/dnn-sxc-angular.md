@@ -2,4 +2,4 @@
 
 # Toolbars in Angular (dnn-sxc-angular)
 
-Moved to [](xref:JsCode.Angular.Toolbars)
+Moved to [](xref:JsCode.Angular.DnnSxcAngular.Toolbars)

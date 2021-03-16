@@ -18,15 +18,15 @@
     <meta name="title" content="Toolbars in Angular (dnn-sxc-angular) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
-                      </li>
-                      <li>
-                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -102,12 +102,42 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="JsCode.Angular.DnnSxcAngular.Toolbars">
 <h1 id="toolbars-in-angular-dnn-sxc-angular">Toolbars in Angular (dnn-sxc-angular)</h1>
 
-<p>Moved to <a class="xref" href="../../js-code/angular/dnn-sxc-angular/toolbars.html">Toolbars in Angular (dnn-sxc-angular)</a></p>
+<!-- BEGIN ERROR INCLUDE: Unable to resolve [!include[](../../basics/stack/_shared-float-summary.md)]
+: Couldn&#39;t find file js-code/basics/stack/_shared-float-summary.md. -->[!include[](../../basics/stack/_shared-float-summary.md)]
+<!--END ERROR INCLUDE --><style>.context-box-summary .spa-all { visibility: visible; } </style>
+
+<p><code>dnn-sxc-angular</code> provides  directives/components which allow to place toolbars in an Angular App. Prerequisite is an Angular App running with <a class="xref" href="https://www.npmjs.com/package/@2sic.com/dnn-sxc-angular">dnn-sxc-angular</a>.</p>
+<p><em>Important: these docs have to be rewritten!</em></p>
+<p>Best refer to the <a class="xref" href="https://www.npmjs.com/package/@2sic.com/dnn-sxc-angular">NPM</a> infos for now.</p>
+<h2 id="how-to-use">How to use</h2>
+<ol>
+<li>In your <code>app.module.ts</code>, add an import to <code>ContentManagerModule</code> from <code>@2sic.com/dnn-sxc-angular</code> and add it to the imports array.</li>
+<li>Place the toolbar directives/components in your templates. There are two different ways to place your toolbars, the tag-toolbar (default) and the inline toolbar, depending on the use case. In most cases, you will want to use the tag-toolbar; the inline toolbar is useful when you want to show the toolbar without the need to hover over the target element.</li>
+</ol>
+<h3 id="tag-toolbar">Tag-Toolbar</h3>
+<p>To use the tag-toolbar, insert the [sxc-toolbar] directive where you want to place the toolbar, e.g.:</p>
+<pre><code class="lang-html">&lt;div *ngIf=&quot;!!reference&quot; [sxc-toolbar]=&#39;{toolbar:{entityId:reference.Id}}&#39;&gt;
+    ...
+&lt;/div&gt;
+</code></pre><p>The object being passed to the attribute can contain a toolbar and a settings property, according to <a href="https://github.com/2sic/2sxc/wiki/html-toolbars-and-buttons">HTML Toolbars and Buttons</a>.</p>
+<h3 id="inline-toolbar">Inline-Toolbar</h3>
+<p>Place the inline toolbar in your template, for example inside of a table cell:</p>
+<pre><code class="lang-html">&lt;td&gt;
+    &lt;sxc-toolbar [config]=&quot;{toolbar:{entityId:reference.Id}}&quot;&gt;&lt;/sxc-toolbar&gt;
+&lt;/td&gt;
+</code></pre><p>The config object passed to the component follows the same rules as the tag-toolbar (<a href="https://github.com/2sic/2sxc/wiki/html-toolbars-and-buttons">https://github.com/2sic/2sxc/wiki/html-toolbars-and-buttons</a>).</p>
 </article>
           </div>
           
@@ -116,7 +146,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/specs/angular/dnn-sxc-angular.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/angular/dnn-sxc-angular/toolbars.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -142,20 +172,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

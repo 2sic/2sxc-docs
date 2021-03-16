@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data.query$&lt;T&gt;(...) | 2sxc and EAV 10 </title>
+    <title>Data.api$&lt;T&gt;(...) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data.query$&lt;T&gt;(...) | 2sxc and EAV 10 ">
+    <meta name="title" content="Data.api$&lt;T&gt;(...) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.Angular.DnnSxcAngular.DataQuery$">
-<h1 id="dataqueryt">Data.query$&lt;T>(...)</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.Angular.DnnSxcAngular.DataApi$">
+<h1 id="dataapit">Data.api$&lt;T>(...)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -229,44 +229,33 @@
   </div>
 </div><style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
-<p>With <strong>dnn-sxc-angular</strong> it&#39;s really easy to access Data from the backend. </p>
-<p>The easiest way to access a <a class="xref" href="../../../basics/query/index.html">Query</a> is to use <code>data.query$&lt;T&gt;(...)</code> 
-which gets you a <em>Stream</em> (<code>$</code>) of Entities from a <a class="xref" href="../../../basics/query/index.html">Query</a>.</p>
+<p>With <strong>dnn-sxc-angular</strong> it&#39;s really easy to access WebAPIs on the backend. </p>
+<p>The easiest way is to use <code>data.api$&lt;T&gt;(...)</code> which gets you a <em>Stream</em> (<code>$</code>) of objects from a <a class="xref" href="../../../web-api/custom/index.html">custom WebAPI</a>.</p>
 <p>Here&#39;s what it does:</p>
 <ul>
-<li><code>data.query$&lt;T&gt;(...)</code> will get you...</li>
+<li><code>data.api$&lt;T&gt;(...)</code> will get you...</li>
 <li>...an observable of <code>T</code> </li>
-<li>you&#39;ll usually use <code>&lt;YourType[]&gt;</code> since you&#39;ll get an array back</li>
-<li>the Query name is specified in the <code>(&#39;BusinessUnitTeam&#39;)</code></li>
+<li>you&#39;ll often use <code>&lt;YourType[]&gt;</code> if you expect an array</li>
+<li>the controller &amp; route <code>(&#39;simple/hello&#39;)</code></li>
 </ul>
 <h2 id="example">Example</h2>
 <p>We&#39;ll explain how to get one or many items based on the <a class="xref" href="../template-app.html">Template App</a>.</p>
-<p>Check out the <code>team.service.ts</code> - you&#39;ll see some code like this:</p>
-<pre><code class="lang-js">@Injectable({
-  providedIn: &#39;any&#39;,
-})
-export class TeamService {
-  /** This will contain the persons returned from the API */
-  team$: Observable&lt;Person[]&gt;;
+<p>Check out the <code>api-demo.component.ts</code> - you&#39;ll see some code like this:</p>
+<pre><code class="lang-js">@Component({ /* ... */ })
+export class ApiDemoComponent {
 
-  constructor(data: Data, context: Context) {
-    this.team$ = data.query$&lt;Person[]&gt;(`BusinessUnitTeam?bu=Web`);
-  }
+  numbers$: Observable&lt;number[]&gt;;
+
+  constructor(data: Data) {
+    // simple version for just a quick call, not re-using the api object
+    this.numbers$ = data.api$&lt;number[]&gt;(&#39;simple/Numbers&#39;);
+   }
 }
-</code></pre><p>The important line is this:</p>
-<pre><code class="lang-javascript">this.team$ = data.query$&lt;Person[]&gt;(`BusinessUnitTeam?bu=Web`);
-</code></pre><p>This will query the <code>BusinessUnitTeam</code> Query on the backend with parameter <code>bu</code> being <code>Web</code> (to only get members of the Web-team).
-Here&#39;s what it does</p>
-<ol>
-<li>We&#39;re using the <code>Data</code> object provided by <a class="xref" href="index.html">dnn-sxc-angular</a></li>
-<li>The <code>query$&lt;T&gt;(...)</code> requests an observable stream of <code>BusinessUnit[]</code> objects</li>
-<li>The term <code>...(&#39;BusinessUnitTeam&#39;)</code> is the name of the query</li>
-<li>The additional parameters like <code>?bu=Web</code> is expected by the query (in this case the query could also accept an empty BU)</li>
-</ol>
-<h2 id="other-overloads">Other overloads</h2>
-<p>The <code>query$&lt;T&gt;(...)</code> has various other overloads to include parameters. You&#39;ll see them in the intellisense in VS Code.</p>
-<h2 id="difference-to-dataqueryt">Difference to Data.query&lt;T>(...)</h2>
-<p>The <code>Data</code> object also has a <code>query&lt;T&gt;(...)</code> without the <code>$</code>. That doesn&#39;t return a stream/observable of data, but instead returns a <code>Query</code> object which can be used for multiple calls. As of now it&#39;s probably not very usefull, so let&#39;s stick to this.</p>
+</code></pre><p>In the above example you&#39;ll see this line: </p>
+<pre><code class="lang-javascript">this.numbers$ = data.api$&lt;number[]&gt;(&#39;simple/Numbers&#39;);
+</code></pre><p>This is a quick call to a backend controller called <code>Simple</code> and the action <code>Numbers</code>. </p>
+<h2 id="difference-to-dataapi">Difference to Data.api(...)</h2>
+<p>The <code>Data</code> object also has a <a class="xref" href="data-api.html"><code>api(...)</code></a> without the <code>$</code>. That doesn&#39;t return a stream/observable of data, but instead returns an <code>Api</code> object which can be used for multiple <code>get&lt;T&gt;(...)</code> calls. </p>
 </article>
           </div>
           
@@ -275,7 +264,7 @@ Here&#39;s what it does</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/angular/dnn-sxc-angular/data-query-dollar.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/angular/dnn-sxc-angular/data-api-dollar.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

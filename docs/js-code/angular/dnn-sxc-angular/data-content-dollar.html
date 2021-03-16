@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>dnn-sxc-angular Data.content$&lt;T&gt;(...) | 2sxc and EAV 10 </title>
+    <title>Data.content$&lt;T&gt;(...) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="dnn-sxc-angular Data.content$&lt;T&gt;(...) | 2sxc and EAV 10 ">
+    <meta name="title" content="Data.content$&lt;T&gt;(...) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -112,7 +112,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="JsCode.Angular.DnnSxcAngular.DataContent$">
-<h1 id="dnn-sxc-angular-datacontentt">dnn-sxc-angular Data.content$&lt;T>(...)</h1>
+<h1 id="datacontentt">Data.content$&lt;T>(...)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -229,7 +229,8 @@
   </div>
 </div><style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
-<p>With <strong>dnn-sxc-angular</strong> it&#39;s really easy to access Data from the backend. The easiest way is to use <code>data.content$&lt;T&gt;(...)</code>.</p>
+<p>With <strong>dnn-sxc-angular</strong> it&#39;s really easy to access Data from the backend. </p>
+<p>The easiest way is to use <code>data.content$&lt;T&gt;(...)</code> which gets you a <em>Stream</em> (<code>$</code>) of Entities of the expected Content-Type.</p>
 <p>Here&#39;s what it does:</p>
 <ul>
 <li><code>data.content$&lt;T&gt;(...)</code> will get you...</li>
@@ -245,16 +246,7 @@
 <h2 id="example">Example</h2>
 <p>We&#39;ll explain how to get one or many items based on the <a class="xref" href="../template-app.html">Template App</a>.</p>
 <p>Check out the <code>business-unit-selector.component.ts</code> - you&#39;ll see some code like this:</p>
-<pre><code class="lang-js">import { Component } from &#39;@angular/core&#39;;
-import { Observable } from &#39;rxjs&#39;;
-import { BusinessUnit } from &#39;./business-unit.model&#39;;
-import { Data } from &#39;@2sic.com/dnn-sxc-angular&#39;;
-
-@Component({
-  selector: &#39;app-business-unit-selector&#39;,
-  templateUrl: &#39;./business-unit-selector.component.html&#39;,
-  styleUrls: [&#39;./business-unit-selector.component.scss&#39;]
-})
+<pre><code class="lang-js">@Component({ /* ... */ })
 export class BusinessUnitSelectorComponent {
 
   /** Stream of business units, provided back the backend */
@@ -265,7 +257,6 @@ export class BusinessUnitSelectorComponent {
     // #ExampleData
     this.businessUnits$ = data.content$&lt;BusinessUnit[]&gt;(&#39;BusinessUnit&#39;);
   }
-
 }
 </code></pre><p>The important line is this:</p>
 <pre><code class="lang-javascript">this.businessUnits$ = data.content$&lt;BusinessUnit[]&gt;(&#39;BusinessUnit&#39;);
