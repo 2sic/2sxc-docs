@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.DataQuery$
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Data.query$\<T\>(...)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.Index
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # NPM Package @2sic/dnn-sxc-angular
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
@@ -20,3 +22,20 @@ The library contains the following bits of magic to get you going:
 1. CMS directives to create [toolbars](xref:JsCode.Angular.DnnSxcAngular.Toolbars) in the Angular App for editing content
 1. [Context information](xref:JsCode.Angular.DnnSxcAngular.Context) about the page/module and current sxc-objects
 
+
+---
+
+## History
+
+1. ca. 2015 first version for Angular 2
+1. ca. 2016 enhanced for Angular 6 and latest 2sxc features
+1. 2019 Enhanced with Hot-Reloading features for Angular 8 and completely reworked how context is detected in DNN
+1. 2020 Improved Hot-Reloading
+1. 2021-02 Added tag-toolbar attribute and created refresh callback so the page doesn't reload (requires 2sxc 11.12)
+1. 2021-02-26 v.11.01 - added new attribute angular-path to use as base for lazy loading
+
+
+## To Do Status 2021-03
+
+1. enhance the content-manager to provide write commands (ATM read-only) - you can still do this, but must use the context.sxc... classic JS API
+1. enhance the content-manager to provide create-metadata commands - you can still do this, but must use the context.sxc... classic JS API

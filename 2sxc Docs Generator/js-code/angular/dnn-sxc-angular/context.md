@@ -2,7 +2,9 @@
 uid: JsCode.Angular.DnnSxcAngular.Context
 ---
 
-# Data.api(...)
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
+# Context (dnn-sxc-angular)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>

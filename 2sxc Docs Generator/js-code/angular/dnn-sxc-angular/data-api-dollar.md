@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.DataApi$
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Data.api$\<T\>(...)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

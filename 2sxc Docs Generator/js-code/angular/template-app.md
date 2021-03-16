@@ -2,6 +2,8 @@
 uid: JsCode.Angular.TemplateApp
 ---
 
+<img src="./assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Angular Template App for Dnn / 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

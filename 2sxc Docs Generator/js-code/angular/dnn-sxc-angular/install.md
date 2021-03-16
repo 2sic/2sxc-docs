@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.Install
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Installing and Bootstrapping dnn-sxc-angular
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

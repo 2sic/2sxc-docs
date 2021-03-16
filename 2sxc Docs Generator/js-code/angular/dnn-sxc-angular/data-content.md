@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.DataContent
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Data.content\<T\>(...)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.HttpInterceptor
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # dnn-sxc-angular HttpInterceptor
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

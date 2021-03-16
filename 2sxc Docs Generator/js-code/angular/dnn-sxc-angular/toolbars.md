@@ -2,6 +2,8 @@
 uid: JsCode.Angular.DnnSxcAngular.Toolbars
 ---
 
+<img src="../assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Toolbars in Angular (dnn-sxc-angular)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

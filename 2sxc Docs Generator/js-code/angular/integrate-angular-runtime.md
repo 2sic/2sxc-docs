@@ -2,6 +2,8 @@
 uid: JsCode.Angular.IntegrateAngularRuntime
 ---
 
+<img src="./assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+
 # Integrate Angular for Runtime in 2sxc / Dnn
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
