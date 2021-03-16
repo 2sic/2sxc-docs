@@ -49,12 +49,9 @@ There is a new parameter merge, where you fill in your WYSIWYG-field that contai
 Here is a [blog tutorial on implementing Very Rich Text](http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc).
 
 
-## Notes and Clarifications
-
-The Edit-Object is of type [](xref:ToSic.Sxc.Web.IInPageEditingSystem).
-
 ## Read also
-* Read more on [Razor Edit.ContextAttributes](xref:Razor.ContextAttributes]
+
+* Read more on [Razor Edit.ContextAttributes](xref:NetCode.Razor.ContextAttributes)
 
 ## Demo App and further links
 
