@@ -12,9 +12,7 @@ In 2sxc/EAV we talk about Metadata being Data which has a **Target** that it app
 
 The 2sxc-EAV system has had extensive **Metadata** functionality built in since v2 but we haven't talked about it much yet.
 
-## Examples
-
-### Example: File Metadata
+## Example: File Metadata
 
 Imagine you have a file system containing images and the file system has standard functionality to store data like `file name`, `path`, `file size` and `created` / `modified`. 
 Sometimes we need more. 
@@ -22,7 +20,7 @@ Let's assume you wanted to show a gallery with images and you want to manage add
 
 In this scenario the File is the **Target** and the additional Tags/Description data is the **Metadata**. 
 
-### Example: User Metadata
+## Example: User Metadata
 
 Let's say you have a system which stores basic user data like `UserId`, `UserName` and `Password` and you want to manage additional information like `Biography`. 
 IF the platform (DNN) already offers features to manage such additional info, it _is not Metadata_. But if the information is added _on top_ like with a third-party system (like 2sxc) then this is Metadata.
@@ -37,11 +35,7 @@ Most internal configuration of 2sxc works as Metadata.
     Any additional information like description, icon, help-text etc. is stored as Metadata.
 1. **[App Configuration](xref:Basics.App.Configuration)** is treated as Metadata 
     and most of the stored values are available on the [App object](xref:NetCode.DynamicCode.Objects.App.Index)
-
-
-## How Apps & Content use Metadata
-
-Various Apps like the [](xref:App.FancyBoxGallery) allow the editor to add more information to uploaded images. 
+1. Various **Apps** like the [](xref:App.FancyBoxGallery) allow the editor to add more information to uploaded images
 
 ## How 2sxc Metadata Works
 
@@ -57,56 +51,20 @@ Noteworthy to know
 1. In the data-lists of the Admin-UI you can see if an item is Metadata - it will have a tag-icon in the ID column
 
 
-## Create Metadata
+## Discover More
 
-Metadata can be created in 3 ways
+1. [](xref:Basics.Data.Metadata.Create) 
+1. [](xref:Basics.Data.Metadata.Read)
+1. [](xref:Basics.Data.Metadata.TargetTypes)
 
-1. Through the **Edit-UI**: If the toolbar which opens a `new` dialog adds metadata information, then the newly created item will be stored as metadata
-1. In the **REST WebAPI**: the REST calls for creating new data can contain target information
-1. In the [App.Data.Create(...)](xref:NetCode.DynamicCode.Objects.App.Index): The `Create(...)` command can include target information 
+## Demo App and further links
 
-## Access / Read Metadata
-
-Many standard 2sxc object have a property **Metadata** to quickly access all Metadata of that object. You can find the docs in [](xref:ToSic.Eav.Metadata.IMetadataOf). This applies to all kinds of objects like
-
-1. Entities
-1. Content-Types
-1. Apps
-1. ADAM files and folders
-
-To read Metadata for non-2sxc objects you must request it from the **App.Data.Metadata** or from the [AppState](xref:ToSic.Eav.Apps.AppState).MetadataSource object. Both are a a [](xref:ToSic.Eav.Metadata.IMetadataSource). Use commands like `GetMetadata<T>(...)` to access the metadata you need. 
+* [](xref:App.FancyBoxGallery)
 
 
-
-
-## Opening the Dialog for Metadata #todoc
-
-
-## How to use #todoc
-
-Introtext - then code:
-
-```cs
-    // Some Code
-
-```
-Short explanation for the code
-
-```javascript
-    // maybe more code
-
-```
-More explanations 
-
-
-## Read also #todoc
-
-
-## Demo App and further links #todoc
-
+---
 
 ## History
 
 1. Introduced in 2sxc v2
-2. 
-
+1. Continuously improved in 2sxc 7, 8, 10 and 11

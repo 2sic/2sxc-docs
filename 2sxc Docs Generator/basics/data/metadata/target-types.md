@@ -30,7 +30,9 @@ The following list are internally reserved Target-Types
 
 You can easily add custom types as you need them in the SQL database yourself. 
 
+---
+
 ## History
 
 1. Introduced in 2sxc v2
-
+1. The 100 top numbers reserved for 2sxc in 2sxc v5

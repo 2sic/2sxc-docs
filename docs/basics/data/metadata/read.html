@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Metadata Target Types | 2sxc and EAV 10 </title>
+    <title>Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Metadata Target Types | 2sxc and EAV 10 ">
+    <meta name="title" content="Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.Metadata.TargetTypes">
-<h1 id="metadata-target-types">Metadata Target Types</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Data.Metadata.Read">
+<h1 id="read--access-metadata---advanced-">Read / Access Metadata - (advanced ⚠)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -229,29 +229,32 @@
   </div>
 </div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<p><strong>Metadata</strong> is Data which describes or adds information <em>to other data</em>. For this to work, Entities which are Metadata store the ID of the <strong>Target</strong>. In addition, they must know what <strong>Target Type</strong> this ID describes, because an ID like 20503 could be in use in many systems. </p>
-<p>The <strong>Target Type</strong> is a simple number and all known Target-Types are stored in the SQL-Database. Any Target-Type number from 1-100 are reserved for 2sxc/EAV predefined types, any number above 100 you can define yourself for your use case. </p>
-<h2 id="reserved--built-in-target-types">Reserved / Built-In Target-Types</h2>
-<p>The following list are internally reserved Target-Types</p>
+<p>There are two ways to read / access Metadata</p>
 <ol>
-<li>Anything with 1 (or 0) is defined as not being Metadata</li>
-<li>Attribute Metadata</li>
-<li>App Metadata</li>
-<li>Entity-Metadata</li>
-<li>Content-Type Metadata</li>
-<li>Zone Metadata</li>
-<li>Reserved</li>
-<li>Reserved</li>
-<li>CMS-Object (like <code>file:72</code> or <code>page:42</code>)</li>
-<li>11-100 are reserved</li>
+<li>On most 2sxc Data-objects there is a property called <code>Metadata</code> which contains everything you need</li>
+<li>To get Metadata for other Data there is a simple API to retrieve it</li>
 </ol>
-<h2 id="custom-target-types">Custom Target Types</h2>
-<p>You can easily add custom types as you need them in the SQL database yourself. </p>
+<h2 id="get-metadata-on-2sxc-data-objects-todoc">Get Metadata on 2sxc Data Objects #todoc</h2>
+<p>Many standard 2sxc object have a property <strong>Metadata</strong> to quickly access all Metadata of that object. You can find the docs in <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataOf.html">IMetadataOf</a>. This applies to all kinds of objects like</p>
+<ol>
+<li>Entities</li>
+<li>Content-Types</li>
+<li>Apps</li>
+<li>ADAM files and folders</li>
+</ol>
+<h2 id="get-metadata-for-adam-files-and-folders-todoc">Get Metadata for ADAM Files and Folders #todoc</h2>
+<p>All <a class="xref" href="../../cms/adam/index.html">ADAM</a> Assets also have the <code>.Metadata</code> property to read the metadata as well as a <code>.HasMetadata</code> to quickly see if Metadata has been set. </p>
+<h2 id="get-metadata-for-data-outside-of-2sxc-todoc">Get Metadata for Data outside of 2sxc #todoc</h2>
+<p>To read Metadata for non-2sxc objects you must request it from the <strong>App.Data.Metadata</strong> or from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Apps.AppState.html">AppState</a>.MetadataSource object. Both are a a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataSource.html">IMetadataSource</a>. Use commands like <code>GetMetadata&lt;T&gt;(...)</code> to access the metadata you need. </p>
+<h2 id="read-also-todoc">Read also #todoc</h2>
+<h2 id="demo-app-and-further-links-todoc">Demo App and further links #todoc</h2>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc v2</li>
-<li>The 100 top numbers reserved for 2sxc in 2sxc v5</li>
 </ol>
 </article>
           </div>
@@ -261,7 +264,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/metadata/target-types.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/metadata/read.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
