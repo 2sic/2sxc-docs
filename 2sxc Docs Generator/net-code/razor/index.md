@@ -7,7 +7,7 @@ uid: NetCode.Razor.Index
 Razor Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App. 
 
 <div class="context-box-process" width="100%">
-  [!include[](../../basics/stack/_shared-all.md)]
+  [!include[](~/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-razor { visibility: visible; } </style>
 </div>
 

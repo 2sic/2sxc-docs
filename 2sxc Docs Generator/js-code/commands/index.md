@@ -3,7 +3,7 @@ uid: JsCode.Commands.Index
 ---
 # CMS Commands in JavaScript
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 Whenever you press a button in the edit-ui, a edit-command is handled by the javascript layer. These commands  are things like
@@ -256,7 +256,9 @@ To understand the internals, check out the [source code](https://github.com/2sic
   <td height="80" class="xl6722490" align="left" width="130" style="height:60.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
-  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none"><a href="https://github.com/2sic/2sxc/wiki/Html-Js-Command-Delete">delete</a></td>
+  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
+  [delete](xref:JsCode.Commands.Delete)
+  </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
@@ -429,7 +431,9 @@ To understand the internals, check out the [source code](https://github.com/2sic
   <td height="60" class="xl6722490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
-  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none"><a href="https://github.com/2sic/2sxc/wiki/Html-Js-Command-Content-Items">contentitems</a></td>
+  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
+  [contentitems](xref:JsCode.Commands.ContentItems)
+  </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
@@ -512,7 +516,9 @@ To understand the internals, check out the [source code](https://github.com/2sic
   <td height="40" class="xl6722490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
-  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none"><a href="https://github.com/2sic/2sxc/wiki/Html-Js-Command-Custom-Code">custom</a></td>
+  Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
+  [custom](xref:JsCode.Commands.Code)
+  </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:

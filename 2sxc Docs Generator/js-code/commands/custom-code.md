@@ -3,7 +3,7 @@ uid: JsCode.Commands.Code
 ---
 # Buttons with Custom Code in a Toolbar
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 In some cases you want to add buttons to a toolbar, which run custom JavaScript code. 

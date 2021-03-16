@@ -11,6 +11,8 @@ uid: JsCode.Angular.DnnSxcAngular.Install
 
 Just run `npm i "@2sic.com/dnn-sxc-angular"`
 
+This will download [](xref:Npm.Dnn-Sxc-Angular) and add it to your `package.json`.
+
 ## Step 2. Add to your Root module
 
 Here's an extract from [Template Angular App](xref:JsCode.Angular.TemplateApp) - in `/ng/src/app/app.module.ts`:
@@ -95,10 +97,3 @@ export class AppComponent extends DnnAppComponent {
 ```
 
 This ensures that `DnnAppComponent` has a chance to initialize the Http-Interceptor and pick up any other configuration the `app-root` tag may have. 
-
-## Next Steps
-
-1. Discover how Data is accessed from the Headless API
-1. Discover how to use Queries
-1. Discover how to use WebAPIs
-1. Discover how to include CMS features like content-editing

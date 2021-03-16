@@ -4,7 +4,7 @@ uid: JsCode.Toolbars.Advanced
 
 # Toolbars and Buttons
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 When a user is logged on and has edit permissions, he should see buttons to edit his content or perform other actions. This is all done in HTML / JavaScript.

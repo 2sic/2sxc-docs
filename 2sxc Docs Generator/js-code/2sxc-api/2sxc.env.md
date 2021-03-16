@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.$2sxc.Env
 
 # The $2sxc.env API
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 The `$2sxc.env` object manages environment information for the JavaScript. _It's new - introduced in 2sxc 10.25_.

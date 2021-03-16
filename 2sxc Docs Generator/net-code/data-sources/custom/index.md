@@ -11,6 +11,7 @@ If you want to create your own DataSource and use it in the VisualQuery designer
 > If you're creating your own DataSource, best consult the source code of 2sxc or EAV to get it working
 
 ## Basic Use Case
+
 Here's an example of a complete data-source, which just delivers 1 item with the current date:
 
 Introtext - then code:
@@ -28,7 +29,7 @@ namespace ToSic.Tutorial.DataSource
     [VisualQuery(
         NiceName = "DateTime-Basic",
         GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e",   // namespace or guid
-        HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources-Custom"
+        HelpLink = "https://some-website.com"
     )]
     public class DateTimeDataSourceBasic: ExternalDataDataSource
     {

@@ -24,10 +24,3 @@ For this to work, the page must have this data available before Angular loads. T
 1. When Angular [bootstraps](xref:JsCode.Angular.DnnSxcAngular.Install) the base class `DnnAppComponent` gets everything from the page when it's constructed. Without this the Http-Interceptor wouldn't have the configuration necessary. 
 
 After this has happened, all calls using the Angular [HttpClient](https://angular.io/guide/http) will automatically behave as expected. 
-
-## Next Steps
-
-1. Discover how Data is accessed from the Headless API
-1. Discover how to use Queries
-1. Discover how to use WebAPIs
-1. Discover how to include CMS features like content-editing

@@ -4,7 +4,7 @@ uid: JsCode.CustomFields.Wysiwyg
 
 # Customizing the WYSIWYG Field in 2sxc 11
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
 
 These are the technical specs for reference. 

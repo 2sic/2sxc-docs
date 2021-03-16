@@ -4,7 +4,7 @@ uid: JsCode.Toolbars.Buttons
 
 # Toolbar Button Definitions
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 When you create custom buttons in a floating toolbar you can customize everything including the icon and more. This is explained here. 

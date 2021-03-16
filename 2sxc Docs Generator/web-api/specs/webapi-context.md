@@ -4,7 +4,7 @@ uid: WebApi.Specs.Context
 
 # Context for 2sxc WebAPI and REST APIs
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-apis { visibility: visible; }

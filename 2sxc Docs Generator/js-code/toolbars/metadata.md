@@ -4,7 +4,7 @@ uid: JsCode.Toolbars.CreateMetadata
 
 # Toolbars which Create Metadata
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 If your toolbar should create [Metadata](xref:Basics.Data.Metadata.Index) when creating new data, it must supply the `for` parameter. 

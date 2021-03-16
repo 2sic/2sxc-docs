@@ -21,7 +21,7 @@ Here's what it does:
 
 ## Example
 
-We'll explain how to get one or many items based on the [Template App](xref:JsCode.Angular.TemplateApp).
+We'll explain how to run a query based on the [Template App](xref:JsCode.Angular.TemplateApp).
 
 Check out the `team.service.ts` - you'll see some code like this:
 

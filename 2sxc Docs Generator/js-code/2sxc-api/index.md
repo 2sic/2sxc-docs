@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Index
 
 # JavaScript / HTML API Documentation for DNN / 2sxc
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc, .context-box-summary .edit-custom { visibility: visible; } </style>
 
 You can create awesome solutions, customizing the edit-experience and working with 2sxc-data in your javascript.

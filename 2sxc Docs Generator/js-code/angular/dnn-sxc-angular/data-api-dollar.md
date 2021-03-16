@@ -20,7 +20,7 @@ Here's what it does:
 
 ## Example
 
-We'll explain how to get one or many items based on the [Template App](xref:JsCode.Angular.TemplateApp).
+We'll explain how to get call the backend based on the [Template App](xref:JsCode.Angular.TemplateApp).
 
 Check out the `api-demo.component.ts` - you'll see some code like this:
 

@@ -4,35 +4,72 @@ uid: JsCode.Angular.DnnSxcAngular.Toolbars
 
 # Toolbars in Angular (dnn-sxc-angular)
 
-[!include[](../../basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .spa-all { visibility: visible; } </style>
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
-`dnn-sxc-angular` provides  directives/components which allow to place toolbars in an Angular App. Prerequisite is an Angular App running with [dnn-sxc-angular](xref:Npm.Dnn-Sxc-Angular).
+`dnn-sxc-angular` provides  directives/components which allow to place toolbars in an Angular App. 
 
-_Important: these docs have to be rewritten!_
-
-Best refer to the [NPM](xref:Npm.Dnn-Sxc-Angular) infos for now.
-
-
+Prerequisite is an Angular App running with [dnn-sxc-angular](xref:JsCode.Angular.DnnSxcAngular.Index).
 
 ## How to use
-1. In your `app.module.ts`, add an import to `ContentManagerModule` from `@2sic.com/dnn-sxc-angular` and add it to the imports array.
-2. Place the toolbar directives/components in your templates. There are two different ways to place your toolbars, the tag-toolbar (default) and the inline toolbar, depending on the use case. In most cases, you will want to use the tag-toolbar; the inline toolbar is useful when you want to show the toolbar without the need to hover over the target element.
 
-### Tag-Toolbar
-To use the tag-toolbar, insert the [sxc-toolbar] directive where you want to place the toolbar, e.g.:
+Place the toolbar directives/components in your templates. There are two different ways to place your toolbars, the tag-toolbar (default) and the inline toolbar, depending on the use case. 
+
+1. In most cases, you will want to use the `[sxc-toolbar]` tag-toolbar directive 
+1. In rare cases you may prefer the inline `<sxc-toolbar>` toolbar is useful when you want to show the toolbar without the need to hover over the target element.
+
+## Example
+
+We'll explain how to use toolbars based on the [Template App](xref:JsCode.Angular.TemplateApp).
+
+Check out the `team.component.html` - you'll see some code like this:
+
 ```html
-<div *ngIf="!!reference" [sxc-toolbar]='{toolbar:{entityId:reference.Id}}'>
-    ...
+<!-- #ExampleContentManagement - this shows how to use the toolbar with just the add-button for a specific type and also do custom view refresh -->
+<div [sxc-toolbar]="toolbarFor()" (refresh)="teamSvc.refresh()">
+  <h2>Team</h2>
+
+  <app-business-unit-selector></app-business-unit-selector>
+
+  <ol>
+    <!-- #ExampleContentManagement - this will create a delete/edit toolbar for this item and will also do custom view refresh-->
+    <li *ngFor="let person of team; trackBy: trackById" [sxc-toolbar]="toolbarFor(person)" (refresh)="teamSvc.refresh()">
+      <app-person [person]="person"></app-person>
+    </li>
+  </ol>
+
+  <hr />
+  <app-team-explained></app-team-explained>
 </div>
 ```
-The object being passed to the attribute can contain a toolbar and a settings property, according to [HTML Toolbars and Buttons](https://github.com/2sic/2sxc/wiki/html-toolbars-and-buttons).
 
-### Inline-Toolbar
-Place the inline toolbar in your template, for example inside of a table cell:
-```html
-<td>
-    <sxc-toolbar [config]="{toolbar:{entityId:reference.Id}}"></sxc-toolbar>
-</td>
+The code of `team.component.ts` is this:
+
+```js
+@Component({ /* stuff */ })
+export class TeamComponent {
+
+  /** The data which is shown in the template */
+  team: Person[] = [];
+
+  constructor(private route: ActivatedRoute, public teamSvc: TeamService, private cdr: ChangeDetectorRef) {
+    this.teamSvc.team$.subscribe((newTeam => { this.team = newTeam; }));
+  }
+
+  /**
+   * Create a toolbar configuration for a person or for new
+   * #ExampleContentManagement
+   */
+  toolbarFor(person?: Person) {
+    const mainConfig = 'toolbar=empty?contentType=Person&entityId=' + (person?.Id ?? '0');
+    return person
+      ? [mainConfig, "edit", "delete&color=gray?entityGuid=" + person.Guid + "&title=" + person.Name]
+      : [mainConfig, 'new']
+  }
+}
 ```
-The config object passed to the component follows the same rules as the tag-toolbar (https://github.com/2sic/2sxc/wiki/html-toolbars-and-buttons).
+
+As you can see, the `[sxc-toolbar]` attribute activates the sxcToolbar directive of `dnn-sxc-angular`. 
+The configuration for the toolbar is provided by the `toolbarFor(...)` call in the controller class and it uses the [simple toolbar configuration system](xref:JsCode.Toolbars.Simple).
+
+That's how easy it is to create CMS toolbars in Angular 😉.
