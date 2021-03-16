@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 </title>
+    <title>Installing and Bootstrapping dnn-sxc-angular | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 ">
+    <meta name="title" content="Installing and Bootstrapping dnn-sxc-angular | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -64,13 +64,13 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li class="active">
+                      <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
                           <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.Metadata.Read">
-<h1 id="read--access-metadata---advanced-">Read / Access Metadata - (advanced ⚠)</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.Angular.DnnSxcAngular.Install">
+<h1 id="installing-and-bootstrapping-dnn-sxc-angular">Installing and Bootstrapping dnn-sxc-angular</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -225,44 +225,92 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .data-all { visibility: visible; } </style>
+</div><style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
-<p>There are two ways to read / access Metadata</p>
+<h2 id="step-1-install-the-package">Step 1. Install the Package</h2>
+<p>Just run <code>npm i &quot;@2sic.com/dnn-sxc-angular&quot;</code></p>
+<h2 id="step-2-add-to-your-root-module">Step 2. Add to your Root module</h2>
+<p>Here&#39;s an extract from <a class="xref" href="../template-app.html">Template Angular App</a> - in <code>/ng/src/app/app.module.ts</code>:</p>
+<pre><code class="lang-js">/*  ---------------------------------------------------------------------------
+    Tutorial
+    ---------------------------------------------------------------------------
+    This main module configuration has two special things it includes
+    - DnnInterceptor: this ensures all http-requests will have the neecessary DNN headers
+    - ContentManagerModule: this enables attributes like sxc-toolbar for editing UIs
+    ---------------------------------------------------------------------------
+*/
+import { BrowserModule } from &quot;@angular/platform-browser&quot;;
+import { NgModule } from &quot;@angular/core&quot;;
+import { HttpClientModule } from &quot;@angular/common/http&quot;;
+import { ContentManagerModule, DnnSxcRootModule } from &quot;@2sic.com/dnn-sxc-angular&quot;;
+import { AppRoutingModule } from &quot;./app-routing.module&quot;;
+import { AppComponent } from &quot;./app.component&quot;;
+import { TitleComponent } from &quot;./layout/title.component&quot;;
+import { NavigationComponent } from &quot;./layout/navigation.component&quot;;
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    TitleComponent,
+    NavigationComponent,
+  ],
+  imports: [
+    BrowserModule,        // this tells Angular to run in a browser
+    AppRoutingModule,     // this contains the application link-structure
+    HttpClientModule,     // this enables web-api calls and should only be included in the App root
+
+    // Impontant: don&#39;t load sub-modules here if you want lazy-loading to work
+    // ExamplesModule,    // not added here, as it should lazy-load
+
+    // 2sxc Module #StepBootstrap
+    DnnSxcRootModule,     // this is important in the app-root, as it ensures that context is shared in sub-modules
+    ContentManagerModule, // this is needed for edit-toolbars to work
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+</code></pre><p>The most important bit is to ensure that</p>
 <ol>
-<li>On most 2sxc Data-objects there is a property called <code>Metadata</code> which contains everything you need</li>
-<li>To get Metadata for other Data there is a simple API to retrieve it</li>
+<li><code>HttpClientModule</code> is imported here</li>
+<li><code>DnnSxcRootModule</code> is imported here</li>
 </ol>
-<h2 id="get-metadata-on-2sxc-data-objects-todoc">Get Metadata on 2sxc Data Objects #todoc</h2>
-<p>Many standard 2sxc object have a property <strong>Metadata</strong> to quickly access all Metadata of that object. You can find the docs in <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataOf.html">IMetadataOf</a>. This applies to all kinds of objects like</p>
+<h2 id="step-3-ensure-correct-bootstrapping">Step 3. Ensure Correct Bootstrapping</h2>
+<p><strong>dnn-sxc-angular</strong> must do some initial work when loading, so the <code>AppComponent</code> must inherit from the <code>DnnAppComponent</code>. Heres&#39; the code from <code>/ng/src/app/app.component.ts</code>:</p>
+<pre><code class="lang-js">/*  ---------------------------------------------------------------------------
+    Tutorial
+    ---------------------------------------------------------------------------
+    This entry component extends the DnnAppComponent
+    By doing this, it will
+    - pick up any configuration attributes on the &lt;app-root&gt; tag
+    - automatically initialize all http adapters to auto-set DNN headers
+    - ensure that hitting an enter-key on an input field doesn&#39;t submit the page, because asp.net would do that
+
+    #StepBootstrap
+    ---------------------------------------------------------------------------
+*/
+
+import { Component, ElementRef } from &#39;@angular/core&#39;;
+import { DnnAppComponent, Context } from &#39;@2sic.com/dnn-sxc-angular&#39;;
+
+@Component({
+  selector: &#39;app-root&#39;,
+  templateUrl: &#39;./app.component.html&#39;
+})
+export class AppComponent extends DnnAppComponent {
+  constructor(el: ElementRef, context: Context) {
+    super(el, context);
+  }
+}
+</code></pre><p>This ensures that <code>DnnAppComponent</code> has a chance to initialize the Http-Interceptor and pick up any other configuration the <code>app-root</code> tag may have. </p>
+<h2 id="next-steps">Next Steps</h2>
 <ol>
-<li>Entities</li>
-<li>Content-Types</li>
-<li>Apps</li>
-<li>ADAM files and folders</li>
-</ol>
-<h2 id="get-metadata-for-adam-files-and-folders-todoc">Get Metadata for ADAM Files and Folders #todoc</h2>
-<p>All <a class="xref" href="../../cms/adam/index.html">ADAM</a> Assets also have the <code>.Metadata</code> property to read the metadata as well as a <code>.HasMetadata</code> to quickly see if Metadata has been set. </p>
-<h2 id="edge-cases-of-the-metadata-property">Edge cases of the <code>.Metadata</code> Property</h2>
-<p>Since <code>.Metadata</code> is often used in dynamic code it&#39;s optimized to just work. This means it has the following effects</p>
-<ol>
-<li>It will always return a valid object, even if there is no metadata attached</li>
-<li>If no metadata exists, the <code>EntityId</code> will always equal zero <code>0</code></li>
-<li>If it has one or more metadata items attached, the <code>EntityId</code> will be that of the first Metadata-Entities found</li>
-</ol>
-<h1 id="todoc---this-should-probably-be-moved-to-the-c-api-infos">todoc - this should probably be moved to the C# API infos</h1>
-<h2 id="get-metadata-for-data-outside-of-2sxc-todoc">Get Metadata for Data outside of 2sxc #todoc</h2>
-<p>To read Metadata for non-2sxc objects you must request it from the <strong>App.Data.Metadata</strong> or from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Apps.AppState.html">AppState</a>.MetadataSource object. Both are a a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataSource.html">IMetadataSource</a>. Use commands like <code>GetMetadata&lt;T&gt;(...)</code> to access the metadata you need. </p>
-<h2 id="read-also-todoc">Read also #todoc</h2>
-<h2 id="demo-app-and-further-links-todoc">Demo App and further links #todoc</h2>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></li>
-</ul>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc v2</li>
+<li>Discover how Data is accessed from the Headless API</li>
+<li>Discover how to use Queries</li>
+<li>Discover how to use WebAPIs</li>
+<li>Discover how to include CMS features like content-editing</li>
 </ol>
 </article>
           </div>
@@ -272,7 +320,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/metadata/read.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/angular/dnn-sxc-angular/install.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

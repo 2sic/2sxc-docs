@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 </title>
+    <title>Integrate Angular for Runtime in 2sxc / Dnn | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Read / Access Metadata - (advanced &#9888;) | 2sxc and EAV 10 ">
+    <meta name="title" content="Integrate Angular for Runtime in 2sxc / Dnn | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,20 +64,20 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
                       <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
-                      </li>
-                      <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
-                      </li>
-                      <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.Metadata.Read">
-<h1 id="read--access-metadata---advanced-">Read / Access Metadata - (advanced ⚠)</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.Angular.IntegrateAngularRuntime">
+<h1 id="integrate-angular-for-runtime-in-2sxc--dnn">Integrate Angular for Runtime in 2sxc / Dnn</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -225,44 +225,49 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .data-all { visibility: visible; } </style>
+</div><style>.context-box-summary .spa-all { visibility: visible; } </style>
 
-<p>There are two ways to read / access Metadata</p>
+<p>This explains how to best integrate Angular in DNN. Note that you can find a working demo of this in the <a class="xref" href="template-app.html">Template Angular App</a>.</p>
+<h2 id="goals-of-the-runtime-integration">Goals of the Runtime Integration</h2>
 <ol>
-<li>On most 2sxc Data-objects there is a property called <code>Metadata</code> which contains everything you need</li>
-<li>To get Metadata for other Data there is a simple API to retrieve it</li>
+<li>The Angular App can be compiled using best-practices incl. partial loading and hashed files</li>
+<li>The Angular solution can be easily distributed to another DNN/2sxc as a 2sxc App package</li>
+<li>We can run multiple editions of the same app, like a <code>live</code> and a <code>staging</code> edition for internal review</li>
+<li>The final page has the <code>app</code> tag and all the script/css resources as the Angular compiler generated them</li>
+<li>Changes to the Angular App are automatically included without manual changes</li>
 </ol>
-<h2 id="get-metadata-on-2sxc-data-objects-todoc">Get Metadata on 2sxc Data Objects #todoc</h2>
-<p>Many standard 2sxc object have a property <strong>Metadata</strong> to quickly access all Metadata of that object. You can find the docs in <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataOf.html">IMetadataOf</a>. This applies to all kinds of objects like</p>
+<h2 id="implementation">Implementation</h2>
+<p>In the Template App the compiled Angular SPA is in <code>[app-root]/live/dist/ng-app/</code>. The way it&#39;s integrated in the template app is that the main file <code>_AngularApp.cshtml</code> has some code like this:</p>
+<pre><code class="lang-razor">@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+@{
+  // ...
+  // Add &lt;base&gt; tag using RazorBlade - Angular needs this so that links changing dialogs (routes) work properly
+  HtmlPage.AddBase((Link.Base()));
+
+  // ...
+
+  // Create helper to integrate angular best-practice
+  var ngHelpers = CreateInstance(&quot;./shared/_Angular.cshtml&quot;);
+
+  // ...
+  @Html.Raw(ngHelpers.ImportAngularHtml(editions.CurrentEdition));
+}
+</code></pre><p>We&#39;ve removed some of the code here for simplicity, but the important parts are</p>
 <ol>
-<li>Entities</li>
-<li>Content-Types</li>
-<li>Apps</li>
-<li>ADAM files and folders</li>
+<li>Add <code>&lt;base&gt;</code> header to the page for Angular Routing to work properly</li>
+<li><code>ImportAngularHtml</code> which will scan the <code>index.html</code> which Angular creates, extract all the important parts and add them to the page</li>
 </ol>
-<h2 id="get-metadata-for-adam-files-and-folders-todoc">Get Metadata for ADAM Files and Folders #todoc</h2>
-<p>All <a class="xref" href="../../cms/adam/index.html">ADAM</a> Assets also have the <code>.Metadata</code> property to read the metadata as well as a <code>.HasMetadata</code> to quickly see if Metadata has been set. </p>
-<h2 id="edge-cases-of-the-metadata-property">Edge cases of the <code>.Metadata</code> Property</h2>
-<p>Since <code>.Metadata</code> is often used in dynamic code it&#39;s optimized to just work. This means it has the following effects</p>
-<ol>
-<li>It will always return a valid object, even if there is no metadata attached</li>
-<li>If no metadata exists, the <code>EntityId</code> will always equal zero <code>0</code></li>
-<li>If it has one or more metadata items attached, the <code>EntityId</code> will be that of the first Metadata-Entities found</li>
-</ol>
-<h1 id="todoc---this-should-probably-be-moved-to-the-c-api-infos">todoc - this should probably be moved to the C# API infos</h1>
-<h2 id="get-metadata-for-data-outside-of-2sxc-todoc">Get Metadata for Data outside of 2sxc #todoc</h2>
-<p>To read Metadata for non-2sxc objects you must request it from the <strong>App.Data.Metadata</strong> or from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Apps.AppState.html">AppState</a>.MetadataSource object. Both are a a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.IMetadataSource.html">IMetadataSource</a>. Use commands like <code>GetMetadata&lt;T&gt;(...)</code> to access the metadata you need. </p>
-<h2 id="read-also-todoc">Read also #todoc</h2>
-<h2 id="demo-app-and-further-links-todoc">Demo App and further links #todoc</h2>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></li>
-</ul>
+<p>Note that there is a bit more magic happening to ensure we can run multiple editions (<code>live</code>, <code>staging</code>, ...). To see the full source code, get the <a class="xref" href="https://2sxc.org/en/apps/app/tutorial-and-template-app-for-angular-11">Angular 11 Template App</a> or browse it here <a class="xref" href="https://github.com/2sic/app-template-angular">Angular 11 Template App Github Repo</a></p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc v2</li>
+<li>First <a href="https://github.com/2sic/app-tutorial-angular4-data">version for Angular 4</a> created in 2017</li>
+<li>Enhanced for <a href="https://github.com/2sic/app-template-angular">Angular 6</a> in 2019</li>
+<li>Enhanced for Angular 8 in 2020</li>
+<li>Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021</li>
 </ol>
 </article>
           </div>
@@ -272,7 +277,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/metadata/read.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/angular/integrate-angular-runtime.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -298,20 +303,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
