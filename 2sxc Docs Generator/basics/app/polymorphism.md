@@ -1,9 +1,10 @@
 ---
 uid: Basics.App.Polymorphism
 ---
-# Polymorphism aka Open-Heart-Surgery
 
 <img src="../../assets/logos/polymorph/polymorph-logo-wide.svg" width="100%">
+
+# Polymorphism aka Open-Heart-Surgery
 
 > [!TIP]
 > The key concept behind **Polymorphism** is having the same template and code in various editions (morphs) which are automatically used based on certain rules. 

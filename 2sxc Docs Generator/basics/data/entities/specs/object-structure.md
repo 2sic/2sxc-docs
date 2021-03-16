@@ -24,28 +24,6 @@ Entities are structured as follows:
 > The D stands for **Dimension**, it says what Dimension (Language) a _Value_ is for
 
 
-## How it Works
-
-Each _Entity_ has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the [Content-Type](xref:Basics.Data.ContentTypes.Index), so each Entity is like a record of that type. 
-
-This basic principle is used everywhere in 2sxc. For example, all these things are Entities:
-
-* _Simple Content_ items in the _Content-App_ are entities containing a title, body and image
-* [View](xref:Basics.App.Views) configurations are entities containing name, thumbnail, template-name etc.
-* _Blog_ posts in the [Blog App](https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke) are entities containing around 20 fields
-* _Tag_ items in the [Blog App](https://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke) are also entities
-* Anything you define in your apps will result in entities
-
-#### Multilanguage Data
-Each field can also be multilanguage, so there are actually many `Descriptions` in a multi-language product Entity. 
-
-#### Relationships
-Entities are much more than just records, as they can have [relationships](xref:Basics.Data.Relationships.Index).
-
-#### Input Forms and Fields (like WYSIWYG)
-The input mask is automatically generated from the [Content-Type](xref:Basics.Data.ContentTypes.Index). Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
-
-
 ## APIs
 
 * [](xref:ToSic.Eav.Data) Namespace has almost everything you see here
@@ -65,10 +43,6 @@ The input mask is automatically generated from the [Content-Type](xref:Basics.Da
 * [](xref:ToSic.Eav.Metadata.MetadataOf`1)  
 	sometimes an Entity may itself have more metadata, which would then be stored here.
 
-
-## Future Features & Wishes
-
-1. Dynamic Attributes using JSON data or similar - see [](xref:Basics.Data.Fields.Custom)
 
 ## History
 

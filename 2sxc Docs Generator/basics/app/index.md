@@ -79,7 +79,7 @@ This is an App which contains a JavaScript SPA which will then be the entire UI 
 
 You can create such SPAs using any popular JavaScript Framework such as
 
-1. Angular
+1. [Angular](xref:JsCode.Angular.Index)
 1. React
 1. Vue
 
@@ -99,8 +99,8 @@ When adding _the_ Content-App to a page, the dialog which appears will ask the e
 
 Since the Content-App is always there by default and the purpose is to add/edit simple content, it's limited by design to _not_ have some functionality other Apps have. This is mainly to protect the developer from building solutions with a bad user experience, since anything complex should be self-contained in it's own App. The limitations are:
 
-1. No Visual Query
-1. Now Custom Web APIs
+1. No [Visual Query](xref:Basics.Query.Index)
+1. Now [Custom Web APIs](xref:WebApi.Custom.Index)
 
 Previously _the_ Content App also didn't have App Settings or App Resources, but that limitation has been removed in 2sxc 11. 
 
@@ -110,7 +110,5 @@ You may want to learn more about
 
 1. [The App Folder Structure](xref:Basics.App.FolderStructure)
 1. [App Icons](xref:Basics.App.Icons)
-
-
 1. [Bundling / Optimizing assets](xref:Basics.Server.Assets.Optimization)
 

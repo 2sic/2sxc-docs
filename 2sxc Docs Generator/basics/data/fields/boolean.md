@@ -50,6 +50,11 @@ This is simply stored as a `true`, `false` or `null` in json.
 > A common shorthand to work with nulls is the `??` operator: `@(Content.IsAdult ?? false)`
 
 
+> Another common use is to check for `true`.
+> So instead of `@if(Content.IsAdult) {...}`
+> Use `if(Content.IsAdult == true) {...}`
+
+
 ## History
 
 1. Introduced in EAV 1.0 2sxc 1.0

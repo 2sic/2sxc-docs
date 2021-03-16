@@ -49,8 +49,6 @@ You may also want to know how [Content Blocks fit into DNN Modules](xref:Basics.
 
 You may want to learn more about:
 
-1. todo
-1. Using Entities as Content or as Data
-1. Assets
-1. ADAM - Automatic Digital Asset Management
+1. [Assets](xref:Basics.Content.Assets)
+1. [ADAM - Automatic Digital Asset Management](xref:Basics.Cms.Adam.Index)
 

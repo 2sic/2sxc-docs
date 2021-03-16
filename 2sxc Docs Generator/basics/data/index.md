@@ -56,18 +56,22 @@ Let's look at each piece in detail.
 [!include["Data"](_shared-content-types.md)]
 
 **Content-types** are the _Schema_. The are the rules which say that a `Person` has a `FirstName`, `Photo` and `Birthday` etc.
+An App usually has a lot of Content-Types.
 
-> [!TIP]
-> An App usually has a lot of Content-Types.
-
-Read more about [](xref:Basics.Data.ContentTypes.Index)
-
+👉 [](xref:Basics.Data.ContentTypes.Index)
+👉 [](xref:Basics.Data.Fields.Index)
 
 ## Global / Shared Types
 
 [!include["Data"](_shared-global-types.md)]
 
-Usually a **Content-Type** is part of the App and only available inside that App. In rare cases you may have many sites (Portals) or many Apps which need the same **Content-Type**. In this case it's smarter to store this in a shared location. **Global-Types** are Content-Types which are stored in a system folder so they can be used in all Apps of an installation.
+Usually a **Content-Type** is part of the App and only available inside that App. In rare cases you may have many sites (Portals) or many Apps which need the same **Content-Type**. In this case it's smarter to store this in a shared location.
+
+👉 [](xref:Basics.Data.ContentTypes.Shared)
+
+ **Global-Types** are Content-Types which are stored in a system folder so they can be used in all Apps of an installation.
+
+ 👉 [](xref:Basics.Data.ContentTypes.Global)
 
 ## Entities / Content-Items
 
@@ -76,14 +80,9 @@ Usually a **Content-Type** is part of the App and only available inside that App
 **Entities** are **Dynamic Data Items**. They always belong to a **Content-Type** and have all the fields specified in that _Content-Type_. This makes them very dynamic. 
 
 * A `Person` has different fields than a `BlogPost`
-* All the **Values** in an **Entity** can also be multi-language by default
+* All the **Values** in an **Entity** can also be [multi-language](xref:Basics.Data.MultiLanguage.Index) by default
 
-You may want to learn more about:
-
-1. TODO
-1. Permissions
-1. Owner
-1. Languages
+👉 [](xref:Basics.Data.Entities.Index)
 
 
 ## Assets (Images / Documents)
@@ -97,11 +96,15 @@ Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_.
 * **Shared Assets**  
     _If_ the editor expects to re-use an asset elsewhere and _if_ the _Content-Type_ configuration allows this, then the asset can also be stored in a shared location. 
 
+👉 [](xref:Basics.Content.Assets)
+
 ## ADAM - the Automatic Digital Asset Manager
 
 [!include["Data"](_shared-adam.md)]
 
 **ADAM** is a subsystem of 2sxc. It's responsible for managing the files and storing them in a way that assigns _Private Assets_ to the _Entities_ and _Fields_ they belong to. 
+
+👉 [](xref:Basics.Cms.Adam.Index)
 
 
 ## External Data
@@ -117,33 +120,19 @@ External Data can come from anywhere. Here are some common scenarios:
 
 External Data is retrieved using one of the following methods:
 
-1. a **Visual Query** which was configured to get / filter / sort this data
-1. C# code creating **DataSource** objects to retrieve this data
+1. a **[Visual Query](xref:Basics.Query.Index)** which was configured to get / filter / sort this data
+1. C# code creating **[DataSource](xref:NetCode.DataSources.Index)** objects to retrieve this data
 1. C# code using standard .net APIs to get / use this data
 
 Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and SPAs. 
 
 
-
----
-
-
-You may want to learn more about:
-
-1. Content-Types
-    1. Content-Types in General
-    1. Field data types
-    1. Input fields
-1. Entities and Dynamic Entities
-1. List of Entities 
-1. Using Entities as Content or as Data
-1. Assets
-1. ADAM - Automatic Digital Asset Management
-
-
 ## More Advanced Topics
 
-1. Visual Query
-1. Data Sources
-1. Headless APIs
-1. Metadata
+1. [Entities and Dynamic Entities](xref:NetCode.DynamicData.Index)
+1. [Using Entities as Content or as Data](xref:Basics.Content.Index)
+1. [Content Lists of Entities](xref:Basics.Content.Lists)
+1. [Visual Query](xref:Basics.Query.Index)
+1. [Data Sources](xref:NetCode.DataSources.Index)
+1. [Headless APIs](xref:WebApi.Headless.Index)
+1. [Metadata](xref:Basics.Data.Metadata.Index)

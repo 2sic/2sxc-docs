@@ -37,10 +37,6 @@ The template files usually reside inside app root folder or sub folder. As of no
 > [Razor Templates](xref:NetCode.Razor.Index) also support re-using template parts or any C# code. 
 > You can also pass parameters to these parts, which allows you to share template-code across templates. 
 
-## Future Features & Wishes
-
-1. Out-of the box support for [](xref:Basics.App.Polymorphism)
-
 ## Read also
 
 * [](xref:Basics.App.Views)
@@ -50,3 +46,4 @@ The template files usually reside inside app root folder or sub folder. As of no
 ## History
 
 1. Introduced in 2sxc 1.0
+1. Automatic View-Polymorphism added in 2sxc 11
