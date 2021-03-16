@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dynamic Code API | 2sxc and EAV 10 </title>
+    <title>Metadata Target Types | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Dynamic Code API | 2sxc and EAV 10 ">
+    <meta name="title" content="Metadata Target Types | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,20 +64,20 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
-                      </li>
                       <li class="active">
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,14 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Index">
-<h1 id="dynamic-code-api">Dynamic Code API</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Data.Metadata.TargetTypes">
+<h1 id="metadata-target-types">Metadata Target Types</h1>
 
-<p>Every C# file in 2sxc is <strong>Dynamic Code</strong> as it&#39;s compiled on-the-fly and has a lot of helpers to work with <a class="xref" href="../dynamic-data/index.html">Dynamic Data</a>.</p>
-<div class="context-box-process" width="100%">
+<div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -226,66 +225,32 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
-  <style>.context-box-process .process-cs { visibility: visible; } </style>
-</div>
+</div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<p>The following APIs are available on all 2sxc <strong>Dynamic Code</strong>. You can use this in:</p>
+<p><strong>Metadata</strong> is Data which describes or adds information <em>to other data</em>. For this to work, Entities which are Metadata store the ID of the <strong>Target</strong>. In addition, they must know what <strong>Target Type</strong> this ID describes, because an ID like 20503 could be in use in many systems. </p>
+<p>The <strong>Target Type</strong> is a simple number and all known Target-Types are stored in the SQL-Database. Any Target-Type number from 1-100 are reserved for 2sxc/EAV predefined types, any number above 100 you can define yourself for your use case. </p>
+<h2 id="reserved--built-in-target-types">Reserved / Built-In Target-Types</h2>
+<p>The following list are internally reserved Target-Types</p>
 <ol>
-<li><a class="xref" href="../razor/index.html">Razor</a> (including Code-Behind)</li>
-<li><a class="xref" href="../../web-api/custom/index.html">WebAPI Controllers</a></li>
-<li>Helper Code files</li>
+<li>Anything with 1 (or 0) is defined as not being Metadata</li>
+<li>Attribute Metadata</li>
+<li>App Metadata</li>
+<li>Entity-Metadata</li>
+<li>Content-Type Metadata</li>
+<li>Zone Metadata</li>
+<li>Reserved</li>
+<li>Reserved</li>
+<li>CMS-Object (like <code>file:72</code> or <code>page:42</code>)</li>
+<li>11-100 are reserved</li>
 </ol>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="instance-data-in-dynamic-code">Instance Data in Dynamic Code</h2>
-<div class="NOTE"><h5>Note</h5><p>Instance specific data <em>belongs</em> to the module-instance on the page, either because it was manually added or because the module-instance uses a Query which is specific to this module. </p>
-</div>
-<p>Learn more about this in <a class="xref" href="../dynamic-data/index.html">Dynamic Data</a></p>
+<h2 id="custom-target-types">Custom Target Types</h2>
+<p>You can easily add custom types as you need them in the SQL database yourself. </p>
+<h2 id="history">History</h2>
 <ol>
-<li><a class="xref" href="object-data.html">Data</a><br> This object gives you all the data which was meant to be used by this Templates</li>
-<li><a class="xref" href="content.html">Content</a><br> The primary and often the only content-item in the <a class="xref" href="object-data.html">Data</a> for this template. </li>
-<li><a class="xref" href="content.html">Content.Presentation</a><br> Can contain additional presentation settings for this content, like how to format it. </li>
-<li><a class="xref" href="header.html">Header</a><br> The header data if the template expects to be a list and also needs a title or intro.</li>
-<li><a class="xref" href="content.html">Header.Presentation</a><br> Can contain additional presentation settings for the header, like how to format it. </li>
+<li>Introduced in 2sxc v2</li>
 </ol>
-<h2 id="app-and-app-data-objects">App and App-Data Objects</h2>
-<ol>
-<li><a class="xref" href="object-app.html">App</a><br> The current App with <code>Settings</code>, <code>Resources</code>, <code>Path</code> information and more.</li>
-<li><a class="xref" href="object-app.html#using-app-data-appdata">App.Data</a><br> All the data of the current app for immediate use, fully cached in memory of the web server.</li>
-<li><a class="xref" href="object-app.html##using-app-queries-appquery">App.Query</a><br> Queries which were created using <strong>Visual Query</strong> and can be run to access prepared data.</li>
-</ol>
-<h2 id="general-objects">General Objects</h2>
-<ol>
-<li><a class="xref" href="object-cms-context.html">CmsContext</a><br> Information about the system, page, module etc.</li>
-<li><a class="xref" href="object-dnn.html">Dnn</a><br> The common Dnn object providing page, module, user information</li>
-<li><a class="xref" href="../razor/edit.html">Edit</a><br> Helper providing you with various edit-functionality like <code>Toolbar(...)</code></li>
-<li><a class="xref" href="object-link.html">Link</a><br> Helper to generate links, according to the DNN-environment configuration</li>
-</ol>
-<h2 id="conversion-commands">Conversion Commands</h2>
-<ol>
-<li><a class="xref" href="as-adam.html">AsAdam(...)</a><br> Gives you the ADAM parts (files, images, folders) of a field.</li>
-<li><a class="xref" href="as-dynamic.html">AsDynamic(...)</a> - takes just about anything (an iEntity, a list of iEntities, a dynamic, ...) and casts it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">DynamicEntity</a></li>
-<li><a class="xref" href="as-dynamic-string.html">AsDynamic(jsonString)</a></li>
-<li><a class="xref" href="as-entity.html">AsEntity(...)</a> - takes just about anything (iEntity, DynamicEntity, list of that) and casts it to an <a class="xref" href="../dynamic-data/entity.html">iEntity</a></li>
-</ol>
-<h2 id="helper-commands-provided-by-2sxc">Helper Commands provided by 2sxc</h2>
-<ul>
-<li><a class="xref" href="create-instance.html">CreateInstance(...)</a><br>  To create an object of a parsed CSHTML file, for example to then access methods of that code</li>
-<li><a class="xref" href="create-source.html">CreateSource&lt;T>()</a><br>  Get a DataSource object of type <code>T</code> (like filters, sorting, etc.)</li>
-<li><a class="xref" href="get-service.html">GetService&lt;T>()</a>
-  Get a Service to help you (using Dependency Injection)</li>
-</ul>
-<h2 id="important-notes">Important Notes</h2>
-<div class="IMPORTANT"><h5>Important</h5><p>Your code must inherit the correct base class to get this API.
-You&#39;ll find the correct base classes in the documentations for Razor and Web API.</p>
-</div>
 </article>
           </div>
           
@@ -294,7 +259,7 @@ You&#39;ll find the correct base classes in the documentations for Razor and Web
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/metadata/target-types.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -320,20 +285,20 @@ You&#39;ll find the correct base classes in the documentations for Razor and Web
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

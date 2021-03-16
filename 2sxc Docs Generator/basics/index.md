@@ -23,8 +23,8 @@ On the top you see what happens in the [browser](xref:Basics.Browser.Index):
 
 The bottom shows what happens on the [server](xref:Basics.Server.Index):
 
-1. **Awesomeize** is where you template the data and add logic.  
-1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
+1. **Awesomeize** is where you template the data and add logic on the [Server](xref:Basics.Server.Index).
+1. **[Prepare](xref:Basics.Query.Index)** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
 1. **[Your Data](xref:Basics.Data.Index)** is the original material - created by an editor in the CMS or it's data coming from SQL, CSV or elsewhere. 
 
 ## How to Learn the Basics
