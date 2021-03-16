@@ -4,7 +4,7 @@ uid: Basics.Browser.Index
 
 # What Happens in the Browser...
 
-[!include[](../stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
 
 In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
