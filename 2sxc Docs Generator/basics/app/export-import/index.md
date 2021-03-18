@@ -21,7 +21,7 @@ Every App and parts of it can be _Exported_ and _Imported_:
 1. Parts of the App Data as XML
 1. [Content-Types](xref:Basics.Data.ContentTypes.Index) as [JSON](xref:Basics.DataFormats.JsonV1.Index)
 1. single [Content-Items / Entities](xref:Basics.Data.Entities.Index) as [JSON](xref:Basics.DataFormats.JsonV1.Index)
-1. Tables of [Content-Items](xref:Basics.Data.Entities.Index) as XML
+1. Tables of [Content-Items](xref:Basics.Data.Entities.Index) as [XML](xref:Basics.DataFormats.Xml.Table.Index)
 1. View Definitions together with the Template as [JSON](xref:Basics.DataFormats.JsonV1.Index)
 1. [Queries](xref:Basics.Query.Index) as [JSON](xref:Basics.DataFormats.JsonV1.Index)
 

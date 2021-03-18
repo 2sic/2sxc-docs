@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>App Export / Import | 2sxc and EAV 10 </title>
+    <title>ZIP App Data Format in 2sxc (technical) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="App Export / Import | 2sxc and EAV 10 ">
+    <meta name="title" content="ZIP App Data Format in 2sxc (technical) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.App.ExportImport.Index">
-<h1 id="app-export--import">App Export / Import</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.Zip.Index">
+<h1 id="zip-app-data-format-in-2sxc-technical">ZIP App Data Format in 2sxc (technical)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -233,29 +233,33 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
-</div><style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style>
+</div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<p>Every App and parts of it can be <em>Exported</em> and <em>Imported</em>:</p>
-<ol>
-<li>Entire App as ZIP</li>
-<li><a class="xref" href="../git/index.html">App Data for git-versioning</a> as XML</li>
-<li>Parts of the App Data as XML</li>
-<li><a class="xref" href="../../data/content-types/index.html">Content-Types</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li>single <a class="xref" href="../../data/entities/index.html">Content-Items / Entities</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li>Tables of <a class="xref" href="../../data/entities/index.html">Content-Items</a> as <a class="xref" href="../../data-formats/xml/table/index.html">XML</a></li>
-<li>View Definitions together with the Template as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li><a class="xref" href="../../query/index.html">Queries</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-</ol>
-<p>You can also create custom exports as CSV etc. using Razor.</p>
-<h2 id="export--import-anything">Export / Import Anything</h2>
-<p>👉 most of this is documented here: <a href="https://2sxc.org/en/learn/import-export">https://2sxc.org/en/learn/import-export</a></p>
+<p>When Apps are exported, they result in a ZIP file which can be easily re-imported. </p>
+<h2 id="info-files-in-the-root-folder">Info-Files in the Root Folder</h2>
+<p>The root folder contains some files which are not important, but they should help in case someone tries to install the App in DNN, because it would then show some messages that it&#39;s not a DNN Package. </p>
+<h2 id="structure-of-the-zip">Structure of the ZIP</h2>
+<ul>
+<li>various info files</li>
+<li><code>Apps</code><ul>
+<li>[AppName] (like Accordion3)<ul>
+<li><code>app.xml</code> - all the data in the App as <a class="xref" href="../xml/app-data/index.html">XML</a></li>
+<li><code>2sexy</code> folder containing all the files in your app</li>
+<li><code>PortalFiles</code> folder (optional)<ul>
+<li><code>adam</code> folder (optional) - would contain all the adam files<ul>
+<li>[AppName] (like Accordion3)</li>
+</ul>
+</li>
+<li>all folders / files in the site root, which were referenced by data</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="multi-app-package-not-supported">Multi-App Package not Supported</h2>
+<p>The file structure would support the ability to bundle many apps into one package, but the export/import system does not support this use case as of now.</p>
 </article>
           </div>
           
@@ -264,7 +268,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/export-import/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/zip/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

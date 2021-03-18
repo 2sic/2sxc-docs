@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>App Export / Import | 2sxc and EAV 10 </title>
+    <title>JSON Data Format used in WebAPI calls (technical) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="App Export / Import | 2sxc and EAV 10 ">
+    <meta name="title" content="JSON Data Format used in WebAPI calls (technical) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.App.ExportImport.Index">
-<h1 id="app-export--import">App Export / Import</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.Json.WebApi.Index">
+<h1 id="json-data-format-used-in-webapi-calls-technical">JSON Data Format used in WebAPI calls (technical)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -231,31 +231,64 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../../index.html">stack</a>
   </div>
-</div><style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style>
+</div><style>.context-box-summary .format-json-headless { visibility: visible; } </style>
 
-<p>Every App and parts of it can be <em>Exported</em> and <em>Imported</em>:</p>
+<p>When reading or writing data to/from the <a class="xref" href="../../../../web-api/headless/index.html">Headless WebAPI</a> the data format used is JSON. Here are the basics:</p>
+<h2 id="read-single-item-is-super-simple-json">Read Single Item is Super-Simple JSON</h2>
+<p>Here&#39;s an example of a <code>BusinessUnit</code> item:</p>
+<pre><code class="lang-json">{
+  &quot;Name&quot;: &quot;Web&quot;,
+  &quot;Description&quot;: &quot;&lt;p&gt;We create websites!&lt;/p&gt;&quot;,
+  &quot;Id&quot;: 19403,
+  &quot;Guid&quot;: &quot;1252c52c-30e4-4c9f-8d45-e094160ca251&quot;,
+  &quot;Title&quot;: &quot;Web&quot;,
+  &quot;Modified&quot;: &quot;2021-02-25T20:32:52.94Z&quot;,
+  &quot;Created&quot;: &quot;2021-02-18T20:47:58.827Z&quot;
+}
+</code></pre><p>Some notes</p>
 <ol>
-<li>Entire App as ZIP</li>
-<li><a class="xref" href="../git/index.html">App Data for git-versioning</a> as XML</li>
-<li>Parts of the App Data as XML</li>
-<li><a class="xref" href="../../data/content-types/index.html">Content-Types</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li>single <a class="xref" href="../../data/entities/index.html">Content-Items / Entities</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li>Tables of <a class="xref" href="../../data/entities/index.html">Content-Items</a> as <a class="xref" href="../../data-formats/xml/table/index.html">XML</a></li>
-<li>View Definitions together with the Template as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
-<li><a class="xref" href="../../query/index.html">Queries</a> as <a class="xref" href="../../data-formats/json-v01/index.html">JSON</a></li>
+<li>All the normal fields are included with their real names, usually Uppercase as that&#39;s how the fields are typically saved</li>
+<li>A few internal fields are also included</li>
+<li>Dates are transferred as strings, using the international ISO format</li>
 </ol>
-<p>You can also create custom exports as CSV etc. using Razor.</p>
-<h2 id="export--import-anything">Export / Import Anything</h2>
-<p>👉 most of this is documented here: <a href="https://2sxc.org/en/learn/import-export">https://2sxc.org/en/learn/import-export</a></p>
+<h2 id="read-lists-arrays-of-items">Read Lists: Arrays of Items</h2>
+<pre><code class="lang-json">[
+  {
+    &quot;Name&quot;: &quot;Web&quot;,
+    &quot;Description&quot;: &quot;&lt;p&gt;We create websites!&lt;/p&gt;&quot;,
+    &quot;Id&quot;: 19403,
+    &quot;Guid&quot;: &quot;1252c52c-30e4-4c9f-8d45-e094160ca251&quot;,
+    &quot;Title&quot;: &quot;Web&quot;,
+    &quot;Modified&quot;: &quot;2021-02-25T20:32:52.94Z&quot;,
+    &quot;Created&quot;: &quot;2021-02-18T20:47:58.827Z&quot;
+  },
+  {
+    &quot;Name&quot;: &quot;Dev&quot;,
+    &quot;Description&quot;: &quot;&lt;p&gt;Our development unit&lt;/p&gt;&quot;,
+    &quot;Id&quot;: 19404,
+    &quot;Guid&quot;: &quot;c89cb53b-0f7b-441a-9e6c-5467dd9322e9&quot;,
+    &quot;Title&quot;: &quot;Dev&quot;,
+    &quot;Modified&quot;: &quot;2021-02-25T18:02:52.327Z&quot;,
+    &quot;Created&quot;: &quot;2021-02-18T20:47:58.827Z&quot;
+  },
+  {
+    &quot;Name&quot;: &quot;Eff&quot;,
+    &quot;Description&quot;: &quot;&lt;p&gt;Everything regarding efficiency - like &lt;a href=\&quot;https://sphosting.ch\&quot; target=\&quot;_blank\&quot; rel=\&quot;noopener\&quot;&gt;SharePoint&lt;/a&gt;, Word &amp;amp; Excel automation, &lt;a href=\&quot;https://azing.org\&quot; target=\&quot;_blank\&quot; rel=\&quot;noopener\&quot;&gt;azing.org&lt;/a&gt;&lt;/p&gt;&quot;,
+    &quot;Id&quot;: 19405,
+    &quot;Guid&quot;: &quot;fa4a1de9-adf5-4e1d-ab70-63281b3e797b&quot;,
+    &quot;Title&quot;: &quot;Eff&quot;,
+    &quot;Modified&quot;: &quot;2021-02-25T18:03:12.84Z&quot;,
+    &quot;Created&quot;: &quot;2021-02-18T20:47:58.827Z&quot;
+  }
+]
+</code></pre><h2 id="write--put-is-the-same-just-sending">Write / PUT is the same, just sending</h2>
+<p>To create data or update it, use the identical format. </p>
+<h2 id="read-multi-language-data">Read Multi-Language Data</h2>
+<p>This is currently WIP</p>
+<h2 id="write-multi-language-data">Write Multi-Language Data</h2>
+<p>This is WIP</p>
 </article>
           </div>
           
@@ -264,7 +297,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/export-import/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json/web-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -290,20 +323,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
