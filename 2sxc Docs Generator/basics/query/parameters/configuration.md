@@ -4,6 +4,9 @@ uid: Basics.Query.Parameters.Configuration
 
 # Configuration Injection using Tokens
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
+
 [DataSource](xref:NetCode.DataSources.DataSource) objects have an sophisticated system to retrieve settings and configuration using tokens and more. 
 
 A [DataSource](xref:NetCode.DataSources.DataSource) is usually configurable, meaning that it needs parameters to do it's job. Some examples:

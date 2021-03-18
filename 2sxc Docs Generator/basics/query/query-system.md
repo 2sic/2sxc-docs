@@ -4,6 +4,9 @@ uid: Basics.Query.SystemQueries
 
 # System Queries
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .query-built-in { visibility: visible; } </style>
+
 This is a very internal spec - don't use it :). 
 
 System Queries are stored as json in `DesktopModules\ToSIC_SexyContent\.data\queries`.

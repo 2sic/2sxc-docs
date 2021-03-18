@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.Index
 ---
 # Content-Type Fields
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Content-Type Fields**. For an overview check out [](xref:Basics.Data.Index).
 

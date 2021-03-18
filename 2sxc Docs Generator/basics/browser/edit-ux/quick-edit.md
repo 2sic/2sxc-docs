@@ -3,6 +3,9 @@ uid: Basics.Browser.EditUx.QuickE
 ---
 # QuickE (Quick Edit)
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-edit { visibility: visible; }</style>
+
 QuickE (pronounced _quick-e_) is the quick-edit feature inside 2sxc to quickly add / move modules and inner content blocks. It supports touch and usually is used with a mouseover.
 
 ![Example showing quickE](./assets/example-quicke.png)

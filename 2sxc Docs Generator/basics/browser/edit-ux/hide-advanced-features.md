@@ -4,6 +4,9 @@ uid: Basics.Browser.EditUx.HideAdvancedFeatures
 
 # Hide Advanced Features From Non-Admins 
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-edit { visibility: visible; }</style>
+
 For many users 2sxc is too powerful, so there are various mechanisms for hiding the complexity from normal editors. 
 
 ## Overview

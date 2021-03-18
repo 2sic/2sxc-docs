@@ -7,7 +7,7 @@ In many cases you will want to sort, filter or group some data, or quickly check
 
 For a more API-oriented documentation, see [DotNet Query LINQ](xref:NetCode.Data.Linq). We also recommend to play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## LINQ Basics

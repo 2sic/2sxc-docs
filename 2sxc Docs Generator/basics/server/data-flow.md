@@ -4,7 +4,12 @@ uid: Basics.Server.DataFlow
 
 # How Data Flows in the Server
 
-2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside. Let's take a look at how data is accessed, cached, queried, maybe cached again, and provided to the output.
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .process-all { visibility: visible; } </style>
+
+
+2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside.
+Let's take a look at how data is accessed, cached, queried, maybe cached again, and provided to the output.
 
 > [!NOTE]
 > All the data handling systems come from the [EAV](xref:ToSic.Eav). This is then enhanced and customized by Sxc and Sxc.Dnn.
@@ -12,6 +17,7 @@ uid: Basics.Server.DataFlow
 ## Core Paradigms
 
 ### Rule #1: Data is Reactive
+
 As you'll soon see, the EAV performs a lot of automatic lookup and caching, but as a first rule, this happens _Reactively_, only when data is actually accessed. 
 This is similar to how [ReactiveX](http://reactivex.io/) or [NgRx](https://ngrx.io/) work, just much simpler. 
 

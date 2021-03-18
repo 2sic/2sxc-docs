@@ -3,7 +3,7 @@ uid: Basics.Data.Fields.String
 ---
 # Field Data Type: String
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **String Fields**. For an overview check out [](xref:Basics.Data.Index).
 

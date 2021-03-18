@@ -4,6 +4,9 @@ uid: Basics.App.Icons
 
 # Icons in Apps
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-assets-app { visibility: visible; }</style>
+
 App icons are convention based, so there is no configuration for it. 
 To give your app an icon, place a file called `app-icon.png` in the root folder of your app. 
 It should be square, and at least 200x200 Pixels, but we recommend it's at least 500x500 pixels. 

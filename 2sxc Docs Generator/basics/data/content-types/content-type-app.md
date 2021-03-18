@@ -4,7 +4,7 @@ uid: Basics.Data.ContentTypes.App
 
 # App Content-Types
 
-[!include["Data"](../_shared-content-types-app.md)]
+[!include["Data"](~/basics/data/_shared-content-types-app.md)]
 
 This explains **App Content-Types**, the most common Content-Type. For an overview check out [](xref:Basics.Data.Index).
 

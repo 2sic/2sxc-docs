@@ -3,7 +3,7 @@ uid: Basics.Browser.EditForm.Index
 ---
 # Edit Content or Data in DNN / 2sxc
 
-[!include[](../../stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .browser-edit-ui { visibility: visible; } </style>
 
 Editing mostly happens in stand-alone dialogs which are JavaScript based (built using Angular). These dialogs are typically dialogs like

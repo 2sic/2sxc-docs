@@ -1,8 +1,8 @@
 ---
-uid: Basics.App.Polymorphism
+uid: Basics.Polymorphism.Index
 ---
 
-<img src="../../assets/logos/polymorph/polymorph-logo-wide.svg" width="100%">
+<img src="~/assets/logos/polymorph/polymorph-logo-wide.svg" width="100%">
 
 # Polymorphism aka Open-Heart-Surgery
 
@@ -12,6 +12,7 @@ uid: Basics.App.Polymorphism
 ## Polymorphism Addresses 3 Problems
 
 ### #1 Workin on Live Sites aka Open-Heart-Surgery
+
 Imagine you have a running system and you want to make some changes on the live installation. During the time you work, you would always risk breaking the site, but we usually don't have the time to create a staging environment. 
 
 ### #2 Creating Templates that work with Multiple CSS-Frameworks

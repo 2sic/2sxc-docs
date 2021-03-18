@@ -3,7 +3,7 @@ uid: Basics.Data.ContentTypes.Index
 ---
 # Content-Type (Schema/Object-Type)
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Content-Types**. For an overview check out [](xref:Basics.Data.Index).
 

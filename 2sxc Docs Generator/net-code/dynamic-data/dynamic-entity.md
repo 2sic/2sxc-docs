@@ -66,7 +66,7 @@ Additional properties that work (they are dynamic, so don't appear in the code)
 TODO: write something about how-to-check if published/unpublished, navigating it, etc. - or link to such a page
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Appendix
 

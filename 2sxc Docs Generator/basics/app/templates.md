@@ -4,6 +4,9 @@ uid: Basics.App.Templates
 
 # Template Files
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .process-razor-app { visibility: visible; }</style>
+
 Template files will generate HTML - often based on the data a editor entered, and/or which was provided from the App.
 
 ## Template File Types

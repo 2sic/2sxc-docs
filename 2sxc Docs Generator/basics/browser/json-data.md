@@ -5,7 +5,11 @@ uid: Basics.Browser.JsonData
 # Json Data in the Browser
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .format-json-headless { visibility: visible; } </style>
+<style>
+  .context-box-summary .format-json-headless, 
+  .context-box-summary .show-js, 
+  .context-box-summary .interact-2sxc { visibility: visible; }
+</style>
 
 Often you'll use JavaScript to work with **JSON** data in your browser. 
 This data can be transferred in three common ways:

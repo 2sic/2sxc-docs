@@ -4,6 +4,9 @@ uid: Basics.Query.Parameters.Tokens
 
 # Tokens Explained
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
+
 Often you need a text-based code which should be replaced at runtime with a real value from elsewhere. In DNN / 2sxc this is called a **token**, and they usually look like `[Source:Property]`. At runtime, this will then show a value like `27`. 
 
 > [!NOTE]

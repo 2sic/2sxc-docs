@@ -130,7 +130,7 @@ In the [module sxc controller](xref:JsCode.2sxcApi.Sxc.Index) you'll read about:
 Each template that needs the $2sxc-file when not logged in must include it, to be sure it's always there when needed. Note that we've included various features to prevent duplicate execution.
 
 1. if the file is included multiple times, it will only execute once
-2. if the file is included [minified](xref:Basics.Server.Assets.Optimization) and unminified, it too will only be executed once
+2. if the file is included [minified](xref:Basics.Server.AssetOptimization.Index) and unminified, it too will only be executed once
 3. if you need to debug the JS for whatever reason with [F12 in the browser](http://2sxc.org/en/blog/post/debugging-javascript-errors-with-a-modern-browser-and-f12-(200)) a sourcemap is included
 4. for more advanced debuging, just include the unminified version
 

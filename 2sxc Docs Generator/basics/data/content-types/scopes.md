@@ -4,7 +4,7 @@ uid: Basics.Data.Scope
 
 # Content-Type Scopes
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Content-Type Scopes**. For an overview check out [](xref:Basics.Data.Index).
 

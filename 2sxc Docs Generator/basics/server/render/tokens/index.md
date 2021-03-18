@@ -3,6 +3,9 @@ uid: Basics.Server.Render.Tokens.Index
 ---
 # Token Templates
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .process-razor { visibility: visible; } </style>
+
 Token Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App.
 
 > [!NOTE]

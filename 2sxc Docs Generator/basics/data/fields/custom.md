@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Custom
 
 # Field Data Type: Custom
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Custom Fields**. For an overview check out [](xref:Basics.Data.Index).
 

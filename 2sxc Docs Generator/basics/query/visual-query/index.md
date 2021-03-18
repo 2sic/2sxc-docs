@@ -4,6 +4,11 @@ uid: Basics.Query.VisualQuery.Index
 
 # VisualQuery
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .adam { visibility: visible; } </style>
+
+2sxc includes a visual designer for creating queries called **VisualQuery**. It's drag-and drop, and each component can be configured to your needs. 
+
 > [!WARNING]
 > Sorry, we don't have enough time to document this yet, please read the blog posts etc. to get familiar with VisualQuery. 
 

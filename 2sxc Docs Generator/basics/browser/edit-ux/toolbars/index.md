@@ -3,7 +3,12 @@ uid: Basics.Browser.EditUx.Toolbars.Index
 ---
 # In-Page Edit-Item Toolbars and Buttons
 
-2sxc provides super-fast in-page buttons and toolbars for the content-editor to manage and edit everything. The system is very advanced, so what at first may seem trivial can become very complex as you go deeper into customizing it. This is why we are providing an overview.
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-edit { visibility: visible; }</style>
+
+2sxc provides super-fast in-page buttons and toolbars for the content-editor to manage and edit everything. 
+
+The system is very advanced, so what at first may seem trivial can become very complex as you go deeper into customizing it. 
 
 ![hover inline toolbar example](./assets/example-hover-toolbar.png)
 

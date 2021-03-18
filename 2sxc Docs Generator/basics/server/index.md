@@ -4,12 +4,11 @@ uid: Basics.Server.Index
 
 # What Happens on the Server...
 
-You should get an idea of how the system works and all the things you can customize. This overview lets you see the essential parts of any **App** including the main **Content**. 
-
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .server-all { visibility: visible; } </style>
 
 
+You should get an idea of how the system works and all the things you can customize. This overview lets you see the essential parts of any **App** including the main **Content**. 
 
 This is what web-systems do from a bird's-eyes perspective. This is what happens on the server:
 
@@ -29,7 +28,7 @@ This is what web-systems do from a bird's-eyes perspective. This is what happens
 
 You may want to learn more about:
 
-1. [Bundling / Optimizing Assets](xref:Basics.Server.Assets.Optimization)
+1. [Bundling / Optimizing Assets](xref:Basics.Server.AssetOptimization.Index)
 1. [Image Resizing](xref:Basics.ImageResizer.Index)
 1. [Create App Templates using Razor](xref:NetCode.Index)
 1. [Create custom WebApi Controllers](xref:WebApi.Custom.Index)

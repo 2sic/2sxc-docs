@@ -3,6 +3,9 @@ uid: Basics.Cms.Features.Index
 ---
 # Features Management
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
+
 To increase the security of 2sxc, many features are [only available if actively enabled](https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30). This [reduced the security surface and hardens the installation](https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30).
 
 A feature is a functionality of 2sxc or EAV, which can be enabled/disabled at system level. Each feature is identified by a GUID, and all features are disabled by default. Some examples of features:

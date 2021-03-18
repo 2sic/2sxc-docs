@@ -15,7 +15,7 @@ This is where `AsEntity(...)` is used.
 If you have an object or you're not sure if it's either an [](xref:ToSic.Eav.Data.IEntity)  or a [](xref:ToSic.Sxc.Data.IDynamicEntity), just pass it to `AsEntity(...)` and it will detect either one. 
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 

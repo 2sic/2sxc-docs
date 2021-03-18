@@ -4,14 +4,14 @@ uid: Basics.App.Views
 
 # Views and Templates
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .process-razor, .context-box-summary .data-configuration { visibility: visible; }</style>
+
 Views are what the user will see - and contains things like Html, CSS, Javascript and data from the content. 
 
 ## How it Works
 
 Views configure what [templates](xref:Basics.App.Templates) are combined with what [Content-Type](xref:Basics.Data.ContentTypes.Index) to then produce an output. 
-
-> [!TIP]
-> Views can also specify more Content-Types for using in the Header or Presentation. In addition, they could also say that the data comes from a Query instead of from user/editor input. 
 
 Read more about [Templates here](xref:Basics.App.Templates)
 
@@ -21,13 +21,17 @@ The template-file is just part of the view. To be used as a view, it must be con
 1. **Data** specs like what type of data is shown, if the data comes from a query etc.
 1. **View Parameters** to automatically show this view based on url-parameters
 
+> [!TIP]
+> Views can also specify more Content-Types for using in the Header or Presentation. In addition, they could also say that the data comes from a Query instead of from user/editor input. 
+
+
 ## View Configuration
 
 A view has a lot of configuration options, but they are all explained in the edit view dialog, so we're not documenting this here. 
 
 ## View Polymorphism
 
-[Polymorphism](xref:Basics.App.Polymorphism) can be activated on views (new in v11). When you do this, you can choose between two modes
+[Polymorphism](xref:Basics.Polymorphism.Index) can be activated on views (new in v11). When you do this, you can choose between two modes
 
 1. Permission based: in this case SuperUsers get the template from the `staging` folder while public users get the template from `live` or the primary one which was configured in the View configuration
 1. CSS framework based: here the view will automatically try to pick the file from the folder matching the CSS framework set by the Theme/Skin

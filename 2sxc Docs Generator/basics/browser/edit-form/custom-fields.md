@@ -4,7 +4,12 @@ uid: Basics.Browser.EditForm.CustomFields
 
 # Customizing the Form - 2sxc v11!
 
-2sxc comes with thousands of features, and the more we add, the more features are requested 😉. So it's important that you can implement many of these things yourself. Here's an overview over what's possible & how, + what's in store. 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style> .context-box-summary .browser-edit-ui { visibility: visible; } </style>
+
+2sxc comes with thousands of features, and the more we add, the more features are requested 😉. 
+So it's important that you can implement many of these things yourself. 
+Here's an overview over what's possible & how, + what's in store. 
 
 
 ## Create Custom Input Fields

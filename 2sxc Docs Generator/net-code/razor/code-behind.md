@@ -11,7 +11,7 @@ uid: NetCode.Razor.CodeBehind
 You can also see a [live demo in the DNN Tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse410/page). 
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How Code Behind Works

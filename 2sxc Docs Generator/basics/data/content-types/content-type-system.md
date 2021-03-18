@@ -4,7 +4,7 @@ uid: Basics.Data.ContentTypes.System
 
 # System Content-Types
 
-[!include["Data"](../_shared-content-types-global.md)]
+[!include["Data"](~/basics/data/_shared-content-types-global.md)]
 
 This explains **System Content-Types**. For an overview check out [](xref:Basics.Data.Index).
 

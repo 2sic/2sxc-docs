@@ -120,7 +120,7 @@ When you create custom 2sxc Web APIs you automatically get everything like `App`
 
 * [](xref:Tut.WebApi)
 * [WebApi](xref:WebApi.Index)
-* [Concepts: Polymorphisms](xref:Basics.App.Polymorphism)
+* [Concepts: Polymorphisms](xref:Basics.Polymorphism.Index)
 
 
 

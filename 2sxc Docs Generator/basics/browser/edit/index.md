@@ -3,7 +3,7 @@ uid: Basics.Browser.Edit.Index
 ---
 # Edit Content or Data in DNN / 2sxc
 
-[!include[](../../stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .browser-edit,
   .context-box-summary .browser-edit-ui { visibility: visible; }

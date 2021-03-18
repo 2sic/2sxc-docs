@@ -17,7 +17,7 @@ The following APIs are available on all 2sxc **Dynamic Code**. You can use this 
 1. [WebAPI Controllers](xref:WebApi.Custom.Index)
 1. Helper Code files
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Instance Data in Dynamic Code

@@ -5,7 +5,7 @@ uid: Basics.Browser.Css
 # CSS in the Browser
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .show-css { visibility: visible; } </style>
+<style>.context-box-summary .show-html { visibility: visible; } </style>
 
 The **Css** which the browser receives can come from multiple sources:
 
@@ -15,7 +15,7 @@ The **Css** which the browser receives can come from multiple sources:
 ## Recommendations
 
 1. In general you should bundle and pre-optimize any CSS / SASS code using automations such as WebPack for best possible performance. 
-1. Use [Asset Optimizations](xref:Basics.Server.Assets.Optimization)
+1. Use [Asset Optimizations](xref:Basics.Server.AssetOptimization.Index)
 1. Where possible, use CDNs for common libraries
 1. Try to use deferred loading for JS and CSS where possible
 1. ...this is especially important if you use external fonts, which tend to drag down your [](xref:Ext.Google.PageSpeed)
@@ -26,7 +26,7 @@ If you create Apps for re-distribution, it may run on sites having different The
 
 If you plan on handling this scenario you have two options
 
-1. [Polymorphism](xref:Basics.App.Polymorphism) where you have multiple templates for each kind of CSS framework
+1. [Polymorphism](xref:Basics.Polymorphism.Index) where you have multiple templates for each kind of CSS framework
 1. Use [Koi](xref:NetCode.Koi.Index) to detect the CSS framework and apply different CSS classes based on the CSS Framework
 
 

@@ -4,7 +4,7 @@ uid: Basics.Data.ContentTypes.Shared
 
 # App Shared "Ghost" Content-Types (⚠)
 
-[!include["Data"](../_shared-content-types-app.md)]
+[!include["Data"](~/basics/data/_shared-content-types-app.md)]
 
 This explains **App Shared Content-Types** which used to be called **Ghost Content-Type**. For an overview check out [](xref:Basics.Data.Index).
 

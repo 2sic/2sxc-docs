@@ -9,9 +9,9 @@ uid: NetCode.Koi.Index
 2sxc includes Koi - a helper library to let components / modules know what CSS framework is used, and use that information to create templates which adjust to that CSS framework. 
 
 > [!TIP]
-> 2sxc 11 introduced [Polymorphism](xref:Basics.App.Polymorphism) which lets you place different _editions_ of a Razor file in folders matching various CSS frameworks. This is easiest way to leverage Koi, and your code doesn't even need to know about it. 
+> 2sxc 11 introduced [Polymorphism](xref:Basics.Polymorphism.Index) which lets you place different _editions_ of a Razor file in folders matching various CSS frameworks. This is easiest way to leverage Koi, and your code doesn't even need to know about it. 
 
-[!include["Koi Tutorials"](../../shared/tutorials/koi.md)]
+[!include["Koi Tutorials"](~/shared/tutorials/koi.md)]
 
 ## Example
 

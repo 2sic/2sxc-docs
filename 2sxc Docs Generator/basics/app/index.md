@@ -110,5 +110,5 @@ You may want to learn more about
 
 1. [The App Folder Structure](xref:Basics.App.FolderStructure)
 1. [App Icons](xref:Basics.App.Icons)
-1. [Bundling / Optimizing assets](xref:Basics.Server.Assets.Optimization)
+1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
 

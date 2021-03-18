@@ -5,7 +5,7 @@ uid: NetCode.Razor.Purpose
 To let your code know, if it's running to produce HTML or if it's running to fill the search-index.
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How to use

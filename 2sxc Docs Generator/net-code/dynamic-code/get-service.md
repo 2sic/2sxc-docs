@@ -11,7 +11,7 @@ Use `GetService<T>()` to get this service.
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*).
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Also Read

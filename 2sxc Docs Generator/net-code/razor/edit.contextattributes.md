@@ -12,7 +12,7 @@ By default, this context is already provided by the environment, but sometimes a
 
 So the `ContextAttributes` will provide this information in some hidden html.
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How it works

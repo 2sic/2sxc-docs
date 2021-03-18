@@ -8,7 +8,7 @@ In razor you prefer a simple `@Something.Property` syntax. If you only have one 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsList*).
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How it works

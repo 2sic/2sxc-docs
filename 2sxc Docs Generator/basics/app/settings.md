@@ -4,6 +4,9 @@ uid: Basics.App.Settings
 
 # App Settings
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
+
 Every App has a **Settings** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields. 
 
 ## Edit/Configure App Settings

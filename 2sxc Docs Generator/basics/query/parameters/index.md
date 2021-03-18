@@ -5,7 +5,7 @@ uid: Basics.Query.Parameters.Index
 # Query Parameters / Tokens
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .query { visibility: visible; } </style>
+<style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
 Queries can be parameterized with token placeholders like `[QueryString:Id]`, `[App:Settings:PageSize]` or `[Params:Sort]` _(new in v10.22)_. 
 

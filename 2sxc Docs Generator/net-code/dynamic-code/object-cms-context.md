@@ -14,7 +14,7 @@ So we're creating this new standardized object to ask for these things.
 
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Demo App and further links

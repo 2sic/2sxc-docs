@@ -9,7 +9,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*).
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Simple Example
@@ -63,7 +63,7 @@ We suggest you check out some apps - almost all use this.
 
 ## Also Read
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## History
 

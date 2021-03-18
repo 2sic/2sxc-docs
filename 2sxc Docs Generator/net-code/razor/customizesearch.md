@@ -11,7 +11,7 @@ You can override this event to change how data is presented to the search, for e
 > [!TIP]
 > 2sxc 11 introduces Code-Behind. You can now place the `CustomizeSearch(...)` method in the [code-behind](xref:NetCode.Razor.OrganizeCode) file.
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How to use

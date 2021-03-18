@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Hyperlink
 
 # Field Data Type: Hyperlink
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Hyperlink Fields**. For an overview check out [](xref:Basics.Data.Index).
 

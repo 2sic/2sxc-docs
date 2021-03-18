@@ -15,7 +15,7 @@ If the View is not a list, the Header will not be available.
 Since it's a Dynamic Entity it carries all values as properties, like `Header.Link` etc. 
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Example Razor Code

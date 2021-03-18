@@ -1,9 +1,12 @@
 ---
-uid: Basics.Server.Assets.Optimization
+uid: Basics.Server.AssetOptimization.Index
 ---
 # Optimizing Template Assets / Client Dependencies (JS & CSS)
 
-This page is about using DNN Client-Resource-Management aka DNN Client-Depedency-Management in 2sxc templates. 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .asset-optimizer { visibility: visible; } </style>
+
+Learn about using the DNN Client-Resource-Management aka DNN Client-Depedency-Management in 2sxc templates. 
 
 Whenever a template needs additional files, specifically
 

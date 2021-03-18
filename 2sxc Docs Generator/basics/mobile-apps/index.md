@@ -5,7 +5,7 @@ uid: Basics.MobileApps.Index
 # Native Mobile Apps & PWAs
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>  .context-box-summary .browser-interact    { visibility: visible; } </style>
+<style>  .context-box-summary .interact-mobile    { visibility: visible; } </style>
 
 2sxc is great both for providing data to **Native Mobile Apps** as well as for creating **PWAs** and **Mobile Web Apps**.
 

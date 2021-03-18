@@ -5,7 +5,7 @@ uid: Basics.Query.Parameters.In
 # `In` LookUp in Query Parameters
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .query { visibility: visible; } </style>
+<style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 Data Sources in a query can retrieve values from another data-source which is a source. Use the `[In:source-name:attribute-name]` syntax. 
 So if you have a Value DataSource which has the `Default`-in with the data to filter, and a `Module`-in comes from the Module Settings, 

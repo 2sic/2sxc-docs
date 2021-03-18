@@ -4,6 +4,9 @@ uid: Basics.Server.Caching.AppState.Index
 
 # App State
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-data { visibility: visible; } </style>
+
 The EAV caches everything in memory, to ensure that everything is super-fast and doesn't require lazy loading. This is because lazy-loading has a dangerous tendancy to ping-pong a lot of requests if the code isn't very optimized - and caching everything solves that problem. 
 
 [!include["Before you Start"](~/shared/before-you-start-idynamicentity.md)]

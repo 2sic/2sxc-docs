@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.GeneralSettings
 
 # General Field Settings (Input-Type @All)
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **General Field Settings**. For an overview check out [](xref:Basics.Data.Index).
 

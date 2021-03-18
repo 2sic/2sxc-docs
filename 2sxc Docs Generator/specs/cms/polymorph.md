@@ -1,4 +1,4 @@
 
 
 
-# Moved to [](xref:Basics.App.Polymorphism)
+# Moved to [](xref:Basics.Polymorphism.Index)

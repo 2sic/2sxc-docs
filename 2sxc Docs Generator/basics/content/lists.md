@@ -5,7 +5,7 @@ uid: Basics.Content.Lists
 # Content Lists
 
 [!include[](../stack/_shared-float-summary.md)]
-<style>.context-box-summary .data-all { visibility: visible; } </style>
+<style>.context-box-summary .data-entities, .context-box-summary .process-razor-app  { visibility: visible; } </style>
 
 Any [View](xref:Basics.App.Views) can be configured to be a **List** of **Content Items**, and if it is a list, it can also have a **Header** Item. 
 

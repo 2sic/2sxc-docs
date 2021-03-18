@@ -4,6 +4,9 @@ uid: Basics.App.Resources
 
 # App Resources
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
+
 Every App has a **Resources** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields. 
 
 ## Edit/Configure App Resources

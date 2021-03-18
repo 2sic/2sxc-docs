@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Boolean
 
 # Field Data Type: Boolean
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Boolean Fields**. For an overview check out [](xref:Basics.Data.Index).
 

@@ -4,9 +4,14 @@ uid: Basics.App.Permissions
 
 # App Permissions
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
+
 Every App has **Permissions** which apply to all data in the App. 
 
 ## Why would you use this?
+
+Sometimes you have an App which needs to grant permissions to a specific user group, like edit permissions to all members of `News Editors`. In such cases you _should_ apply these permissions to the Content-Types, but you can also apply it at App level. 
 
 > [!WARNING]
 > Incorrect permission configuration can leave your App vulnerable to unexpected security risks. 
@@ -15,7 +20,6 @@ Every App has **Permissions** which apply to all data in the App.
 > 
 > You should almost never use these permissions. 
 
-Sometimes you have an App which needs to grant permissions to a specific user group, like edit permissions to all members of `News Editors`. In such cases you _should_ apply these permissions to the Content-Types, but you can also apply it at App level. 
 
 ## Examples
 

@@ -15,7 +15,7 @@ The **JavaScript** which the browser receives can come from multiple sources:
 ## Asset Recommendations
 
 1. In general you should bundle and pre-optimize any JavaScript / Typescript code using automations such as WebPack for best possible performance. 
-1. Use [Asset Optimizations](xref:Basics.Server.Assets.Optimization)
+1. Use [Asset Optimizations](xref:Basics.Server.AssetOptimization.Index)
 1. Where possible, use CDNs for common libraries
 1. Try to use deferred loading for JS and CSS where possible
 

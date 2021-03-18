@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Entity
 
 # Field Data Type: Entity (List of Entity-Items)
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Entity Fields**. For an overview check out [](xref:Basics.Data.Index).
 

@@ -5,7 +5,7 @@ uid: Basics.Query.Parameters.Params
 # `Params` LookUp in Query Parameters
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .query { visibility: visible; } </style>
+<style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 2sxc 10.22 introduced a new parameter source called `Params`. With this you can write things like `[Params:Sort]`. 
 

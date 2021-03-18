@@ -5,7 +5,7 @@ uid: Basics.Content.Presentation
 # Content Presentation Settings
 
 [!include[](../stack/_shared-float-summary.md)]
-<style>.context-box-summary .data-all { visibility: visible; } </style>
+<style>.context-box-summary .data-entities, .context-box-summary .process-razor-app  { visibility: visible; } </style>
 
 When [Data](xref:Basics.Data.Index) is used as [Content](xref:Basics.Content.Index) it can also have **Presentation** settings. 
 

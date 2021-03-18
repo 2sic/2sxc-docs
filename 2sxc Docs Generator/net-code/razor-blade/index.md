@@ -13,7 +13,7 @@ uid: NetCode.RazorBlade.Index
 1. [Tag](https://razor-blade.net/api/ToSic.Razor.Blade.Tag.html) fluent API to create complex HTML using code
 1. [HtmlPage](https://razor-blade.net/api/ToSic.Razor.Blade.HtmlPage.html) helper to change the page title, add meta- and open-graph headers etc.
 
-[!include["RazorBlade Tutorials"](../../shared/tutorials/razor-blade.md)]
+[!include["RazorBlade Tutorials"](~/shared/tutorials/razor-blade.md)]
 
 ## Example
 

@@ -4,6 +4,9 @@ uid: Basics.Cms.Permissions.Index
 
 # Permissions
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
+
 2sxc / EAV permissions help you configure who may edit/create data - optionally with "may only save as draft" (new in 9.30). Note that if something doesn't have custom permissions, you'll still have default permissions that apply (see below):
 
 ## Introduction to Permissions

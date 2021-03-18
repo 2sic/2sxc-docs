@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Number
 
 # Field Data Type: Number
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Number Fields**. For an overview check out [](xref:Basics.Data.Index).
 

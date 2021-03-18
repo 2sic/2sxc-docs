@@ -5,7 +5,7 @@ uid: Basics.App.Assets
 # App Assets
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>  .context-box-summary .data-assets-app    { visibility: visible; } </style>
+<style>.context-box-summary .data-assets-app    { visibility: visible; }</style>
 
 In the [App Folder](xref:Basics.App.FolderStructure) you can add any files you need in your App, like:
 
@@ -29,6 +29,6 @@ These files will also be referenced in your template. Since the App may be insta
 ## Read More
 
 * [](xref:Basics.App.FolderStructure)
-* [](xref:Basics.Server.Assets.Optimization)
+* [](xref:Basics.Server.AssetOptimization.Index)
 * [](xref:Basics.ImageResizer.Index)
 * [](xref:Basics.Content.Assets)

@@ -4,6 +4,9 @@ uid: Basics.Query.DataSources.Index
 
 # All DataSource Objects in 2sxc / EAV
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .query { visibility: visible; } </style>
+
 2sxc provides a large set of [DataSource](xref:NetCode.DataSources.DataSource) objects which either get data from somewhere (SQL, CSV, ...) or modify data on the `In` and passing it to `Out`. This page will give you an overview and link you to further sources if you need to know more. 
 
 ## How to use

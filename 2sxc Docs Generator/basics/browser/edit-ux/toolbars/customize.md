@@ -1,7 +1,13 @@
 ---
 uid: Basics.Browser.EditUx.Toolbars.Customize
 ---
-# Custom Toolbars - the Easy new Toolbar Building System
+# Custom Toolbars
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-edit { visibility: visible; }</style>
+
+The standard toolbars are great for default use cases. 
+But often you want to simplify the edit-UI even more, so that editors will be faster and make fewer mistakes. 
 
 2sxc 10.27+ offers a new way to build and create toolbars. Instead of the difficult to use object-structure it has a much simpler commands syntax. These are specs for the command syntax. 
 
@@ -237,5 +243,6 @@ You should find some code examples in this demo App
 
 ## History
 
+1. Introduced custom Toolbars in 2sxc ca. v5
 1. Added to 2sxc 10.27 .01 in March 2020
 1. Prefill support added in 10.27 .02 in April 2020

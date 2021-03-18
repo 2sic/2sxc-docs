@@ -18,7 +18,7 @@ You can create your own folders to organize your templates as you need as the st
 ## System Folders
 
 1. `api` this folder contains c# files for the web services this app has. It's not available on the simpler **Content App**.  
-    _Note: if you're using [Polymorphism](xref:Basics.App.Polymorphism) then the api folder is usually in a sub-folder, like `live\api`_
+    _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the api folder is usually in a sub-folder, like `live\api`_
 1. `.data\app` this folder may contain a snapshot of the app-data and is usefull when git-versioning your app
 1. `.data\.[something]` is usually used for special data like [custom input field configuration](xref:Basics.Browser.EditForm.CustomFields)
 1. `system` this folder would contain [custom input fields](xref:Basics.Browser.EditForm.CustomFields)
@@ -36,4 +36,4 @@ The following folders and files are special source-code folders and will not be 
 The following folders have no technical relevance, but we recommend this naming to improve consistency.
 1. `src` and sub-folders should contain your javascript source files in original (unminified, etc.)
 1. `dist` should contain your processed, minified, uglified and combined JS files  
-    _Note: if you're using [Polymorphism](xref:Basics.App.Polymorphism) then the dist folder is usually in a sub-folder, like `live\dist`_
+    _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the dist folder is usually in a sub-folder, like `live\dist`_

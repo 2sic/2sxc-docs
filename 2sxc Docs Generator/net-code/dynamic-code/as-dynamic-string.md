@@ -10,7 +10,7 @@ The most common use is in GPS fields, where the data is stored as `{"Lat": 0.0, 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.String,System.String)).
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## Example

@@ -12,7 +12,7 @@ to make sure that it has all the new features.
 > so many features won't work as documented. 
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## APIs in Razor Components / Templates

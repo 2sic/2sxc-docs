@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:Basics.Server.Assets.Optimization)
+# Moved to [](xref:Basics.Server.AssetOptimization.Index)

@@ -4,7 +4,7 @@ uid: Basics.Data.ContentTypes.ObjectStructure
 
 # Content-Type Object Structure
 
-[!include["Data"](../../_shared-content-types-app.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This section explains **Content-Type Object Structure**. For an overview check out [](xref:Basics.Data.Index).
 

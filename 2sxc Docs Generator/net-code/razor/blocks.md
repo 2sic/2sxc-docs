@@ -6,7 +6,7 @@ uid: NetCode.Razor.Blocks
 
 When using [Inner Content](xref:Basics.Cms.InnerContent.Index) the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor. 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
 ## How to use

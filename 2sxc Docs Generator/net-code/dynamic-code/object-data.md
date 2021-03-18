@@ -17,7 +17,7 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 1. Note: if you want _all data_ of a type, like "Get me all Tag-items in the system" you need to use [App-Data](xref:NetCode.DynamicCode.Objects.App.Data).
 
 
-[!include["Razor Tutorials"](../../shared/tutorials/razor.md)]
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Most common way to use the Data object
 In all Razor-templates and also the web-api files, the `Data` object is already created and ready to access. Here's a code example:

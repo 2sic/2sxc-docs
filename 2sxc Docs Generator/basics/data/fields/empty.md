@@ -4,7 +4,7 @@ uid: Basics.Data.Fields.Empty
 
 # Field Data Type: Empty
 
-[!include["Data"](../_shared-content-types.md)]
+[!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Empty Fields**. For an overview check out [](xref:Basics.Data.Index).
 

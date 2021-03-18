@@ -4,6 +4,9 @@ uid: Basics.Cms.Adam.Index
 
 # ADAM - Automatic Digital Asset Management
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .adam { visibility: visible; } </style>
+
 In a CMS environment, images and PDFs usually belong to a content-item. The user shouldn't have to worry about saving it in the right place. 
 Ideally it's only used there, and when the content becomes obsolete, so do the assets that belong to it. 
 

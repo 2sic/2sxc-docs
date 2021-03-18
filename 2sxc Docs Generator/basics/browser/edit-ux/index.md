@@ -3,11 +3,8 @@ uid: Basics.Browser.EditUx.Index
 ---
 # Edit User Experience in the Page
 
-[!include[](../../stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .browser-edit,
-  .context-box-summary .browser-edit-ui { visibility: visible; }
-</style>
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .browser-edit { visibility: visible; }</style>
 
 2sxc has powerfull CMS features, most of them just work by magic. 
 You can also modify the behavior to fit your needs.

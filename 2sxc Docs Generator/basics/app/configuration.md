@@ -4,7 +4,8 @@ uid: Basics.App.Configuration
 
 # App Configuration
 
-<img src="./assets/app-configuration-path.jpg" class="float-right" width="400px" >
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
 Every App has a **Configuration** Entity which describes things like
 
@@ -16,6 +17,12 @@ Every App has a **Configuration** Entity which describes things like
 1. etc.
 
 ## Edit App Configuration
+
+This is where you can find the App Configuration
+
+<img src="./assets/app-configuration-path.jpg" class="float-right" width="400px" >
+
+On **2** you can configure the permissions you need:
 
 <img src="./assets/app-configuration.jpg" width="100%">
 
