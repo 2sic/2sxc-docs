@@ -28,7 +28,14 @@ This is documented in [](xref:Basics.Browser.EditForm.Index)
 The edit UX begins in the page showing the content/data. Things like
 
 * toolbars opening dialogs or performing actions like _publish_, _move up/down_ etc. 
-* quickE (Quick Edit) to add / move / delete modules in the page
+* [quickE (Quick Edit)](xref:Basics.Browser.EditUx.QuickE) to customize the toolbar which adds / deletes modules
 * inner-content editing
 
 
+## Learn More About...
+
+You may want to learn more about:
+
+1. [Customize the Toolbar](xref:Basics.Browser.EditUx.Toolbars.Index) in JavaScript or Razor
+1. Call CMS commands from buttons without using the toolbar
+1. Show certain HTML to editors only

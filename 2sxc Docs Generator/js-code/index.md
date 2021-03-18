@@ -8,7 +8,7 @@ _We're reorganizing our JS API Docs - they will be moved to here. This is still 
 
 # JavaScript and TypeScript Code
 
-[!include[](../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
 
 Many people implement JavaScript or TypeScript solutions using 2sxc, as it's ideal both for simple scripts like galleries as well as for bundling and distributing complex Angular or React SPAs.

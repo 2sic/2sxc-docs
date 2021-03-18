@@ -21,6 +21,8 @@ The configuration of these edit-dialogs happens in the **Content Type** configur
 1. **[Difference between Content and Data](http://2sxc.org/en/blog/post/12-differences-when-templating-data-instead-of-content)** and how it affects the in-page editing features
 
 
-## Create Custom Input Fields (in the Edit Form)
+## Learn More About...
 
 1. [How to create Custom Input Fields](xref:JsCode.CustomFields.Index)
+1. Advanced fields like the [GPS-picker](xref:Basics.Data.Fields.CustomGps)
+1. Configuration like Enable-A-Field, Can-be-Translated, Default-values

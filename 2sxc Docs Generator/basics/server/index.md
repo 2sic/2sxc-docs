@@ -11,7 +11,7 @@ You should get an idea of how the system works and all the things you can custom
 
 
 
-This is what web-systems do from a bird's-eyes perspective. The purple boxes show [what happens in the browser](xref:Basics.Browser.Index). They gray boxes show what happens on the server:
+This is what web-systems do from a bird's-eyes perspective. This is what happens on the server:
 
 1. **Awesomeize** - this is where you tell the system how the output should look, what image sizes you want, how the HTML should be built etc. 
 1. **Prepare** is a layer of data processing where the desired data is selected to be shown, filtered, sorted etc.  
@@ -30,10 +30,10 @@ This is what web-systems do from a bird's-eyes perspective. The purple boxes sho
 You may want to learn more about:
 
 1. [Bundling / Optimizing Assets](xref:Basics.Server.Assets.Optimization)
-1. Image Resizing
+1. [Image Resizing](xref:Basics.ImageResizer.Index)
 1. [Create App Templates using Razor](xref:NetCode.Index)
 1. [Create custom WebApi Controllers](xref:WebApi.Custom.Index)
-1. Using the Headless REST API
+1. [The Headless REST API](xref:WebApi.Headless.Index)
 
 
 ## Preparing Data
@@ -49,19 +49,16 @@ Something must determine what data should be shown or worked on, which is what h
 There are a few standard use cases:
 
 1. When working with basic content, the editor has added content to a specific module, so the **Prepare** step will retrieve this data and give it to the template. 
-1. If a template is configured to use a [Query](xref:NetCode.DataSources.Index) then 2sxc will prepare the query and give that to the template to work with. 
+1. If a template is configured to use a [Query](xref:Basics.Query.Index) then 2sxc will prepare the query and give that to the template to work with. 
 1. The template / WebAPI can also always access all the data in the App using [App.Data](xref:NetCode.DynamicCode.Objects.App.Index)
 1. If you need the data in JavaScript then the headless APIs provide access to both the items, lists and queries of the app.
 
 You may want to learn more about:
 
-1. ?
-1. Create queries using Visual Query
-1. Preparing data in code
-1. Preparing data for the full-text search index of the platform
-1. DataSources
-    1. List of all DataSources and their APIs
-    1. Creating Custom DataSource
+1. [Create queries using Visual Query](xref:Basics.Query.Index)
+1. [Prepare data in code](xref:NetCode.Razor.CustomizeData)
+1. [Prepare data for the full-text search index of the platform](xref:NetCode.Razor.CustomizeSearch)
+1. [DataSources](xref:NetCode.DataSources.Index)
 
 
 ## Understanding Data
@@ -71,6 +68,5 @@ You may want to learn more about:
   <style>.context-box-data .data-all { visibility: visible; } </style>
 </div>
 
-
-Data has it's own chapter in the docs [](xref:Basics.Data.Index)
+👉 Data has it's own chapter in the docs [](xref:Basics.Data.Index)
 

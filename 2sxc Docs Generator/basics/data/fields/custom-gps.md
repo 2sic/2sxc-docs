@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Fields.Custom-Gps
+uid: Basics.Data.Fields.CustomGps
 ---
 # Field Input-Type **custom-gps**
 

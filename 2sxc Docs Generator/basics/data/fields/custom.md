@@ -16,7 +16,7 @@ Custom data is a basic [data type](xref:Basics.Data.Fields.Index). It's used to 
 
 ## Sub-Types
 
-* [custom-gps](xref:Basics.Data.Fields.Custom-Gps)
+* [custom-gps](xref:Basics.Data.Fields.CustomGps)
 * `custom-json`
 
 ## Recommendation

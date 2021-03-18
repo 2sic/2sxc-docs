@@ -4,7 +4,7 @@ uid: WebApi.Content
 
 # Content REST and CRUD Web API
 
-[!include[](../basics/stack/_shared-float-summary.md)]
+[!include[](~/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-headless { visibility: visible; }

@@ -6,8 +6,12 @@ uid: Basics.App.Templates
 
 Template files will generate HTML - often based on the data a editor entered, and/or which was provided from the App.
 
-> [!NOTE]
-> As of now there are two types of template files: Token and Razor. The system is built in a way, that other templating engines could also be implemented at any time. 
+## Template File Types
+
+The system is built in a way, that furhter templating engines could also be implemented at any time. As of now there are two types of template files: 
+
+1. [Token](xref:Basics.Server.Render.Tokens.Index) (simple but limited) 
+1. [Razor](xref:NetCode.Razor.Index) (can do anything you can think of)
 
 ## How it Works
 
