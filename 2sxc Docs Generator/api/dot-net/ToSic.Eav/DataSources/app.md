@@ -53,7 +53,7 @@ The previous example creates an App source to the zone 2, app 403 and retrieves 
 Note that data sources only retrieve data once, and then ignore any further configuration. So you must set Zone/App before accessing the data. 
 
 [!include["Read-Also-Section"](shared-read-also.md)]
-* [Razor examples using App.Data](xref:NetCode.DynamicCode.Objects.App.Index)
+* [Razor examples using App.Data](xref:NetCode.DynamicCode.Objects.App.Data)
 
 [!include["Demo-App-Intro"](shared-demo-app.md)]
 

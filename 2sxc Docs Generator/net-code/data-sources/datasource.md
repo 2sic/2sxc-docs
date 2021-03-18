@@ -44,7 +44,7 @@ The configuration uses a sophisticated token system to provide all necessary inf
 You will usually use DataSource objects in these common cases:
 
 1. when templating in Razor, the [Data](xref:NetCode.DynamicCode.Data) object is a DataSource, usually having a `Default` stream (`Data["Default"]`) and sometimes further streams like `Data["ListContent"]` or `Data["Categories"]` etc.
-1. when templating, the [App.Data](xref:NetCode.DynamicCode.Objects.App.Index) is also a DataSource providing a stream for each content-type in this app, like `App.Data["BlogPost"]` or `App.Data["Tag"]`
+1. when templating, the [App.Data](xref:NetCode.DynamicCode.Objects.App.Data) is also a DataSource providing a stream for each content-type in this app, like `App.Data["BlogPost"]` or `App.Data["Tag"]`
 1. every query is technically a DataSource, and in the query you define which DataStreams it has - if ever you use it in code, you'll see that `App.Query["SortedTags"]` would be a DataSource and typically the `Default` stream would contain all these tags.
 1. a query is always a chain of DataSource doing one operation and passing it on to the next DataSource. 
 
@@ -52,8 +52,8 @@ You will usually use DataSource objects in these common cases:
 
 In your Razor-templates you'll usually work with these three sources:
 1. [Data](xref:NetCode.DynamicCode.Data)
-1. [App.Data](xref:NetCode.DynamicCode.Objects.App.Index)
-1. [App.Query[...]](xref:NetCode.DynamicCode.Objects.App.Index)
+1. [App.Data](xref:NetCode.DynamicCode.Objects.App.Data)
+1. [App.Query[...]](xref:NetCode.DynamicCode.Objects.App.Query)
 
 Please read more about these in links. 
 

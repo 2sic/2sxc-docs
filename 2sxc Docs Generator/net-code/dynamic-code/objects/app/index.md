@@ -1,6 +1,7 @@
 ---
 uid: NetCode.DynamicCode.Objects.App.Index
 ---
+
 # App / @App object Dynamic Code
 
 The `App` object gives you full access to everything you need to know about the current App, including Path-info, access to all Data this App has, access to Settings and language Resources and more.

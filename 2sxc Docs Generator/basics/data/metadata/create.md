@@ -13,7 +13,7 @@ Metadata can be created in 3 ways
 
 1. Through the **Edit-UI**: If the toolbar which opens a `new` dialog adds metadata information, then the newly created item will be stored as metadata
 1. In the **REST WebAPI**: the REST calls for creating new data can contain target information
-1. In the [App.Data.Create(...)](xref:NetCode.DynamicCode.Objects.App.Index): The `Create(...)` command can include target information 
+1. In the [App.Data.Create(...)](xref:NetCode.DynamicCode.Objects.App.Data): The `Create(...)` command can include target information 
 
 
 ## Create when Opening the Edit-Dialog #todoc

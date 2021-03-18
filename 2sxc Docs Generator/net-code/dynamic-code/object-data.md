@@ -14,7 +14,7 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 
 1. There are also cases, where a template needs both queried data (like _all categories_) as well as content-items added manually. There are multiple easy ways of doing this **todo - document later**
 
-1. Note: if you want _all data_ of a type, like "Get me all Tag-items in the system" you need to use [App-Data](xref:NetCode.DynamicCode.Objects.App.Index).
+1. Note: if you want _all data_ of a type, like "Get me all Tag-items in the system" you need to use [App-Data](xref:NetCode.DynamicCode.Objects.App.Data).
 
 
 [!include["Razor Tutorials"](../../shared/tutorials/razor.md)]

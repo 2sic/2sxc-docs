@@ -7,7 +7,7 @@ uid: NetCode.DataSources.DataStream
 DataStreams are objects which behave like a table, delivering a bunch of content-items. Common examples in [Razor-templates](xref:NetCode.Razor.Component) are:
 
 1. the [Data["Default"]](xref:NetCode.DynamicCode.Data) is a data-stream containing all content-items assigned to this template, ready to show
-2. the [App.Data["Tag"]](xref:NetCode.DynamicCode.Objects.App.Index) is a data-stream containing all tag-items in the entire app.
+2. the [App.Data["Tag"]](xref:NetCode.DynamicCode.Objects.App.Data) is a data-stream containing all tag-items in the entire app.
 
 ## How to use
 
