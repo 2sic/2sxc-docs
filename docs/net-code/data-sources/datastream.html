@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataStreams | 2sxc and EAV 10 </title>
+    <title>Data Streams (IDataStream) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataStreams | 2sxc and EAV 10 ">
+    <meta name="title" content="Data Streams (IDataStream) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -112,36 +112,166 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.DataStream">
-<h1 id="datastreams">DataStreams</h1>
+<h1 id="data-streams-idatastream">Data Streams (IDataStream)</h1>
 
-<p>DataStreams are objects which behave like a table, delivering a bunch of content-items. Common examples in <a class="xref" href="../razor/razor-component.html">Razor-templates</a> are:</p>
+<div class="float-right context-box-summary highlight-max" width="400px">
+    <div class="fancybox-auto svg-highlight" style="width: 100%">
+    <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
+  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+
+  <!-- Data Highlights -->
+  <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-all" x="3%" y="82%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-app" x="3%" y="82%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-assets-entities" x="18.5%" y="82%" width="17%" height="10%"></rect>
+
+  <rect class="svg-highlight prepared data-configuration" x="3%" y="93%" width="17%" height="6.5%"></rect>
+
+  <rect class="svg-highlight prepared data-entities" x="34%" y="82%" width="33%" height="10.5%"></rect>
+  <rect class="svg-highlight prepared data-content-types" x="34%" y="89%" width="33%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-app" x="34%" y="89%" width="17.5%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-global" x="50%" y="89%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-external" x="65.5%" y="82%" width="17%" height="10.5%"></rect>
+
+  <!-- ADAM -->
+  <rect class="svg-highlight prepared adam" x="18.5%" y="89%" width="17%" height="8%"></rect>
+
+  <!-- Server -->
+  <rect class="svg-highlight prepared server-all" x="0%" y="41%" width="84%" height="38%"></rect>
+
+
+  <!-- Prepare -->
+  <rect class="svg-highlight prepared prepare-all" x="0%" y="61%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared query" x="44.5%" y="61%" width="34%" height="18%"></rect>
+  <rect class="svg-highlight prepared query-engine" x="44.5%" y="70%" width="34%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-built-in" x="44.5%" y="62.5%" width="18%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-app" x="60.5%" y="62.5%" width="17%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-datasource" x="71%" y="70%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-params" x="65%" y="70%" width="10%" height="7%"></rect>
+
+  <!-- Data Source -->
+  <rect class="svg-highlight prepared datasource" x="86%" y="51%" width="13%" height="16%"></rect>
+  <rect class="svg-highlight prepared datasource-custom" x="87.5%" y="54.5%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared datasource-built-in" x="87.5%" y="59%" width="12%" height="7%"></rect>
+  <rect class="svg-highlight prepared lookup" x="86%" y="66%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared lookup-engine" x="87.5%" y="69%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared lookup-sources" x="87.5%" y="73%" width="12%" height="7%"></rect>
+
+  <!-- Optimzers -->
+  <rect class="svg-highlight prepared asset-optimizer" x="3%" y="49.5%" width="13.5%" height="8%"></rect>
+  <rect class="svg-highlight prepared image-resizer" x="15%" y="30%" width="17%" height="34%"></rect>
+
+  <!-- Process / Awesomize -->
+  <rect class="svg-highlight prepared process-all" x="0%" y="41%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-cs" x="34%" y="41%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-razor" x="34.3%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-razor-app" x="34.3%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-razor-engine" x="34.3%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-apis" x="50%" y="42%" width="34%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api" x="50%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api-app" x="50%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-web-api-engine" x="50%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-libraries" x="47%" y="47%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-headless" x="65.5%" y="49.5%" width="17%" height="7%"></rect>
+
+  <!-- Libraries -->
+  <rect class="svg-highlight prepared libraries" x="86%" y="38%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared libraries-app" x="87.5%" y="41%" width="12%" height="6.5%"></rect>
+  <rect class="svg-highlight prepared libraries-built-in" x="87.5%" y="46%" width="12%" height="6%"></rect>
+
+
+  <!-- data formats -->
+  <rect class="svg-highlight prepared format-json-custom" x="50%" y="32%" width="17%" height="14%"></rect>
+  <rect class="svg-highlight prepared format-json-headless" x="65.5%" y="32%" width="17%" height="21%"></rect>
+  <rect class="svg-highlight prepared format-json-edit" x="74%" y="30%" width="19%" height="23%"></rect>
+
+  <!-- Browser -->
+  <rect class="svg-highlight prepared browser-all" x="0%" y="0%" width="100%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-show" x="0%" y="0%" width="50%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact-edit" x="47%" y="0%" width="37%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"></rect>
+
+  <!-- Frameworks -->
+  <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-js" x="0%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-spa" x="0%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- App show parts -->
+  <rect class="svg-highlight prepared show-html" x="15.8%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-js" x="15.8%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-spa" x="15.8%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- Interact parts -->
+  <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit parts -->
+  <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit UI parts -->
+  <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"></rect>
+  <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"></rect>
+
+  <!-- SPA parts -->
+  <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"></rect>
+  <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"></rect>
+
+
+  <!-- Custom highlight boxes - can be controlled by in-page CSS -->
+  <rect class="svg-highlight highlight1"></rect>
+  <rect class="svg-highlight highlight2"></rect>
+  <rect class="svg-highlight highlight3"></rect>
+  <rect class="svg-highlight highlight4"></rect>
+  <rect class="svg-highlight highlight5"></rect>
+</svg>
+  </div>
+  <div class="overlay-description">
+    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
+  </div>
+</div><style>.context-box-summary .datasource { visibility: visible; } </style>
+
+<p>DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities. 
+Common examples in <a class="xref" href="../razor/razor-component.html">Razor-templates</a> are:</p>
 <ol>
-<li>the <a class="xref" href="../dynamic-code/object-data.html">Data[&quot;Default&quot;]</a> is a data-stream containing all content-items assigned to this template, ready to show</li>
-<li>the <a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data[&quot;Tag&quot;]</a> is a data-stream containing all tag-items in the entire app.</li>
+<li><a class="xref" href="../dynamic-code/object-data.html">Data[&quot;Default&quot;]</a><br> This is a data-stream containing all content-items prepared for the template.</li>
+<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data[&quot;Tag&quot;]</a><br> This would be a data-stream containing all tag-items in the entire app, if the App has <code>Tag</code> items.</li>
 </ol>
+<div class="TIP"><h5>Tip</h5><p>All <a class="xref" href="datasource.html">DataSources</a> have at least one <strong>Out</strong>-stream called <code>Default</code>. But they can have more streams as well. </p>
+<p>Most DataSources also have one or more <strong>In</strong> streams providing data or configuration to that DataSource which will then give a modified list to the <strong>Out</strong>.</p>
+</div>
 <h2 id="how-to-use">How to use</h2>
 <p>The most commen uses will loop through all items in such a stream and show them. Here&#39;s an example: </p>
 <pre><code class="lang-cs">&lt;ol&gt;
-    @foreach(var person in Data[&quot;Default&quot;])
-    {
-        &lt;li&gt;@AsDynamic(person).FullName&lt;/li&gt;
-    }
+  @foreach(var person in Data[&quot;Default&quot;]){
+    &lt;li&gt;@AsDynamic(person).FullName&lt;/li&gt;
+  }
 &lt;/ol&gt;
-</code></pre><p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../dynamic-data/entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <code>AsDynamic</code> and then we can just show the name with <code>.FullName</code>. </p>
-<p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <code>AsDynamic</code> in the Loop, like this:</p>
+</code></pre><p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../dynamic-data/entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>. </p>
+<p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <a class="xref" href="../dynamic-code/as-list.html"><code>AsList</code></a> in the Loop, like this:</p>
 <pre><code class="lang-cs">&lt;ol&gt;
-    @foreach(var person in AsDynamic(Data[&quot;Default&quot;]))
-    {
-        &lt;li&gt;@person.FullName - born @person.Birthday and married to @person.SpouseName&lt;/li&gt;
-    }
+  @foreach(var person in AsDynamic(Data[&quot;Default&quot;])) {
+    &lt;li&gt;@person.FullName - born @person.Birthday and married to @person.SpouseName&lt;/li&gt;
+  }
 &lt;/ol&gt;
-</code></pre><h2 id="advanced-use-cases">Advanced Use Cases</h2>
-<p>There are some advanced use-cases where you need to know more about the <code>IDataStream</code> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it&#39;s best to consult the EAV DataSource code. </p>
+</code></pre><div style="background: #0088F444; overflow: auto">
+  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+
+  <h2> Discover More in the Razor Tutorials </h2>
+
+  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
+
+</div><h2 id="advanced-use-cases">Advanced Use Cases</h2>
+<p>There are some advanced use-cases where you need to know more about the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html"><code>IDataStream</code></a> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it&#39;s best to consult the EAV DataSource code. </p>
 <p>Just a few more details you might care about:</p>
 <ol>
 <li>The stream has a property <code>Source</code> which points to the owning <a class="xref" href="datasource.html">DataSource</a>. </li>
 <li>a stream might be attached to many targets for further processing or for templating, but the stream doesn&#39;t know about this</li>
-<li>you can always enumerate the stream itself using LINQ, like<br> <code>var blues = Data[&quot;Default&quot;].Where(x =&gt; AsDynamic(x).Category == &quot;Blue&quot;))</code> </li>
+<li>you can always looup through items on the stream itself using LINQ, like<br> <code>var blues = Data[&quot;Default&quot;].Where(x =&gt; AsDynamic(x).Category == &quot;Blue&quot;))</code><br> see also <a class="xref" href="../data/index.html">Use LINQ with Dynamic Data in Dynamic Code</a></li>
 </ol>
 <p>of course there&#39;s always quite a bit more to it, like auto-caching, but you usually don&#39;t need to understand all that.  </p>
 <h2 id="read-also">Read also</h2>

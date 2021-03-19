@@ -23,7 +23,7 @@ Placeholders and code usually is marked with `[...]` like `[Content:Name]`.
 
 ## Technical Conventions
 
-Internally the Token-Engine uses [LookUp Objects](xref:NetCode.DataSources.LookUp) to find what can be shown. 
+Internally the Token-Engine uses [LookUp Objects](Basics.LookUp.Index to find what can be shown. 
 
 Your most common sources will be 
 

@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:NetCode.DataSources.LookUp)
+# Moved to [](Basics.LookUp.Index

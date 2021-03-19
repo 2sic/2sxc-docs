@@ -4,7 +4,21 @@ uid: NetCode.DataSources.Custom.Index
 
 # EAV DataSources: Create Your Custom DataSources
 
-If you want to create your own DataSource and use it in the VisualQuery designer, this is for you
+If you want to create your own DataSource and use it in C# or the VisualQuery designer, this is for you.
+
+* [short instruction to get started](xref:NetCode.DataSources.Custom.Index)
+* [here's docs about the relevant API](xref:NetCode.DataSources.Custom.Api)
+* [understanding configuration injection](xref:Basics.LookUp.Index)
+* [](xref:NetCode.DataSources.Custom.Configuration)
+
+## Develop Your Own DataSource
+
+Maybe you want to create an XML DataSource or a DNN-Users DataSource. This is easy to do. 
+
+
+[Best read the blog post about this](xref:Blog.CustomDataSource)
+
+
 
 > [!WARNING]
 > These docs are out of date! The real APIs are a bit different but we haven't managed to update them yet. 

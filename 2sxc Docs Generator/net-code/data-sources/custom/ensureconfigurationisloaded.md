@@ -3,7 +3,7 @@ uid: NetCode.DataSources.Custom.EnsureConfigurationIsLoaded
 ---
 # DataSource API: EnsureConfigurationIsLoaded
 
-If a [DataSource](xref:NetCode.DataSources.DataSource) is [configurable](xref:Basics.Query.Parameters.Configuration), then the code must parse any [configuration tokens](xref:Basics.Query.Parameters.Tokens) before accessing the values. This is done with `EnsureConfigurationIsLoaded()`.
+If a [DataSource](xref:NetCode.DataSources.DataSource) is [configurable](xref:NetCode.DataSources.Custom.Configuration), then the code must parse any [configuration tokens](xref:Basics.LookUp.Tokens) before accessing the values. This is done with `EnsureConfigurationIsLoaded()`.
 
 > [!WARNING]
 > These docs are out of date! The real APIs are a bit different but we haven't managed to update them yet. 

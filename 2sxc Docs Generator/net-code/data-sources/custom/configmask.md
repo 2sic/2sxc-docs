@@ -27,7 +27,7 @@ public DnnFormAndList()
 This example adds 3 configuration masks - let's find out what exactly happens.
 
 ## Tokens for Configuration Injection
-The EAV-System has a sophisticated system to get configuration based on tokens. You can read about  [configuration injection using tokens here](xref:Basics.Query.Parameters.Configuration). 
+The EAV-System has a sophisticated system to get configuration based on tokens. You can read about  [configuration injection using tokens here](xref:Basics.LookUp.Index). 
 
 ## Registering and Resolving these Tokens with ConfigMask
 Internally a lot happens, but you just need to know the ConfigMask command. The syntax is:
@@ -41,7 +41,8 @@ This will do the following
 
 ## Read also
 
-* [Configuration using Tokens](xref:Basics.Query.Parameters.Configuration)
+* [Configuration using Tokens](xref:Basics.LookUp.Index)
+* [](xref:NetCode.DataSources.Custom.Configuration)
 * [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
 
 ## Demo App and further links

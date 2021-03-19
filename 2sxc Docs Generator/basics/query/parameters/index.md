@@ -7,76 +7,54 @@ uid: Basics.Query.Parameters.Index
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
-Queries can be parameterized with token placeholders like `[QueryString:Id]`, `[App:Settings:PageSize]` or `[Params:Sort]` _(new in v10.22)_. 
+Queries can be parameterized with token placeholders like 
 
-To understand these placeholder tokens, best read up on [](xref:Basics.Query.Parameters.Configuration) and [](xref:Basics.Query.Parameters.Tokens). 
+* `[QueryString:Id]`
+* `[App:Settings:PageSize]` 
+* `[Params:Sort]` 
+
+To understand these placeholder tokens, best read up on [](xref:Basics.LookUp.Tokens). 
 There you'll read about how tokens work, where they come from, how to use default/fallback values and more. 
 
-This page explains how Queries have four special types of parameters, namely these:
+## Example
 
-1. Special LookUp: [[Params:...]](xref:Basics.Query.Parameters.Params) (new in v10.22)
-1. Special LookUp: [[In:...]](xref:Basics.Query.Parameters.In)
+In [VisualQuery](xref:Basics.Query.VisualQuery.Index) you would specify a Token like this:
+
+<img src="./assets/paging-page-size-app-settings.png" width="100%">
+
+This tells the Query to
+
+1. Get the Page-Size from the `PageSize` value in the App-Settings
+1. Get the page number from the URL parameter `page`
+
+## Available Tokens
+
+The tokens you can use are basically all the standard [Token Sources](xref:Basics.LookUp.Sources) plus the ones listed here:
+
+Queries have some additional Sources:
+
+1. Special LookUp: [[Params:...]](xref:Basics.LookUp.Params) (new in v10.22)
+1. Special LookUp: [[In:...]](xref:Basics.LookUp.In)
+1. Settings
 1. Option to override the values during testing with `TestParameters`
 
 
-## Testing your Query with Test Parameters 
+## Test your Query with Test Parameters 
 
-The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) also allows you to set test-values for testing the query. The test-values should define all the full tokens to replace. Example:
-
-```
-[QueryString:Id]=27
-[QueryString:SortOrder]=Desc
-[Params:FilterLastName]=Mettler
-[Params:FilterNameSort]=[QueryString:SortOrder||Asc]
-```
-
-> [!TIP]
-> As you can see in the example, even test params can contain more tokens if you need them. 
-> In the above example, `Params:FilterNameSort` would resolve to `Desc` 
-> because it will first check the `QueryString:SortOrder` which also has a test-value of `Desc`.
-
-## Setting Query Parameters in your Code
-
-In a Razor or WebApi file, you can always write something like this
-
-```cs
-var allPosts = App.Query["AllBlogPosts"];
-allPosts.Params("Category", "Web");
-var posts = allPosts["Default"];
-
-var dynPosts = AsList(posts);
-```
-
-> [!WARNING]
-> Query objects are single use - which is an internal optimization for reliable, rapid access. 
-> So if you retrieve various streams, the query still only executes once.  
-> But if you set a parameter after running the query, you will get an error, unless you call `Reset()` first. 
-> See the next example:
-
-```cs
-var query = App.Query["AllBlogPosts"];
-query.Params("Category", "Web");
-var webPosts = AsList(query);
-
-// this would result in an error
-// allPosts.Params("Category", "IT");
-
-// this works
-query.Reset();
-query.Params("Category", "IT");
-var itPosts = AsList(query);
-```
-
+👉 [](xref:Basics.Query.Parameters.TestParameters)
 
 
 ## Read also
 
 * [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
+* [Set Query Parameters in your Code](xref:NetCode.DataSources.Use.QueryParameters)
 * APIs
     * [](xref:ToSic.Eav.DataSources.Queries.Query)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition)
 * [Blog Posts about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
+
+---
 
 ## History
 

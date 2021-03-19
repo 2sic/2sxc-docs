@@ -1,0 +1,82 @@
+---
+uid: Basics.LookUp.Sources
+---
+
+# LookUp Sources
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .lookup-sources { visibility: visible; } </style>
+
+The [LookUp System](xref:Basics.LookUp.Index) will use the [LookUp Engine](xref:Basics.LookUp.Engine) to retrieve values for Queries and more. 
+
+The LookUp engine will parse tokens like `[Module:ModuleId]` and then look for a **LookUp Source** with the matching name, in this case `Module`. 
+
+For this to be possible, the Engine has a list of named sources like 
+
+* `Module`
+* `QueryString`
+* `Params`
+* etc.
+
+On this page we'll explain how these work, and what special sources exist. 
+
+
+## What is a LookUp Source
+
+**LookUp Sources** are [](xref:ToSic.Eav.LookUp.ILookUp) objects and have a `Name` like like `QueryString`, `Module`, `Portal` etc. 
+
+Each one is capable of retrieving values like `Id` or `DefaultPage`.
+
+So the **Engine** will ask the specific source for the expected value and the source will try to find it. 
+If it has an answer, it will return that. 
+If it doesn't find anything it will return null and let the Engine take care of fallback options. 
+
+> [!TIP]
+> Everything is lazy, so these objects are only accessed and populated if the parameter is actually needed. 
+> This results in great performance.
+
+All LookUp objects implement the [](xref:ToSic.Eav.LookUp.ILookUp) interface and inherit the [](xref:ToSic.Eav.LookUp.LookUpBase) object. 
+
+
+## LookUp Sources
+
+These are the sources which are automatically included in 2sxc
+
+1. `QueryString` to look up url parameters
+1. `DateTime` to look up todays date or the now-time
+1. `` #todoc
+
+In Queries we also have the following sources
+
+1. Params
+1. Settings
+
+
+## Internal LookUp Objects (technical ⚠)
+
+Just to give you an idea of the power of LookUp objects, here are some in use:
+
+1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - this resolves entity values. 
+1. [](xref:ToSic.Eav.LookUp.LookUpInNameValueCollection) - this resolves from name/value lists like `Dictionary` or `Request.QueryString` objects
+1. [](xref:ToSic.Eav.LookUp.LookUpInMetadata) - will get values from Metadata of something
+1. [](xref:ToSic.Eav.LookUp.LookUpInLookUps) - will look up values in various attached LookUp objects
+1. [](xref:ToSic.Eav.LookUp.LookUpInDataTarget) - will look up a value from an `In` stream of a DataSource
+1. [](xref:ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess) - will look up stuff in DNN specific PropertyAccess objects, which are similar to LookUp objects
+1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
+
+
+## Also Read #todoc
+
+* [](xref:Basics.LookUp.Index)
+* [](xref:Basics.LookUp.Tokens)
+* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [](xref:ToSic.Eav.LookUp)
+* [](xref:ToSic.Sxc.LookUp)
+* [](xref:ToSic.Sxc.Dnn.LookUp)
+
+
+## History
+
+1. General Tokens introduced in 2sxc 1.0
+1. Most enhancements were in 2sxc 07.00
+

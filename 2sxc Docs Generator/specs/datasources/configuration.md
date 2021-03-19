@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:Basics.Query.Parameters.Configuration)
+# Moved to [](xref:Basics.LookUp.Index)

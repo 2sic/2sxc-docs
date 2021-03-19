@@ -1,5 +1,5 @@
 ---
-uid: Basics.Query.Parameters.In
+uid: Basics.LookUp.In
 ---
 
 # `In` LookUp in Query Parameters

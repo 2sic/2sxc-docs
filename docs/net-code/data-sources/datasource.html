@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSources | 2sxc and EAV 10 </title>
+    <title>Data Sources (IDataSource) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSources | 2sxc and EAV 10 ">
+    <meta name="title" content="Data Sources (IDataSource) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -112,23 +112,159 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.DataSource">
-<h1 id="datasources">DataSources</h1>
+<h1 id="data-sources-idatasource">Data Sources (IDataSource)</h1>
 
-<p>DataSources are <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataSource.html">IDataSource</a> objects which deliver one or many <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">DataStreams</a>, which contain a bunch of content-items. 
-There are many data-sources, and most of them will... </p>
-<ul>
-<li>...either get data from somewhere external like SQL, CSV, REST or the EAV-cache and provide this for further use - then it&#39;s a pure <code>IDataSource</code></li>
-<li>...or receive data from <em>another</em> DataSource, then process/filter this and provide the result for further use, in which case it&#39;s both an <code>IDataSource</code> as well as an <code>IDataTarget</code> </li>
-</ul>
-<p>So DataSources can be joined together into a <a class="xref" href="query/index.html">Query</a> to do amazing things, like</p>
+<div class="float-right context-box-summary highlight-max" width="400px">
+    <div class="fancybox-auto svg-highlight" style="width: 100%">
+    <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
+  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+
+  <!-- Data Highlights -->
+  <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-all" x="3%" y="82%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-app" x="3%" y="82%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-assets-entities" x="18.5%" y="82%" width="17%" height="10%"></rect>
+
+  <rect class="svg-highlight prepared data-configuration" x="3%" y="93%" width="17%" height="6.5%"></rect>
+
+  <rect class="svg-highlight prepared data-entities" x="34%" y="82%" width="33%" height="10.5%"></rect>
+  <rect class="svg-highlight prepared data-content-types" x="34%" y="89%" width="33%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-app" x="34%" y="89%" width="17.5%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-global" x="50%" y="89%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-external" x="65.5%" y="82%" width="17%" height="10.5%"></rect>
+
+  <!-- ADAM -->
+  <rect class="svg-highlight prepared adam" x="18.5%" y="89%" width="17%" height="8%"></rect>
+
+  <!-- Server -->
+  <rect class="svg-highlight prepared server-all" x="0%" y="41%" width="84%" height="38%"></rect>
+
+
+  <!-- Prepare -->
+  <rect class="svg-highlight prepared prepare-all" x="0%" y="61%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared query" x="44.5%" y="61%" width="34%" height="18%"></rect>
+  <rect class="svg-highlight prepared query-engine" x="44.5%" y="70%" width="34%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-built-in" x="44.5%" y="62.5%" width="18%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-app" x="60.5%" y="62.5%" width="17%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-datasource" x="71%" y="70%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-params" x="65%" y="70%" width="10%" height="7%"></rect>
+
+  <!-- Data Source -->
+  <rect class="svg-highlight prepared datasource" x="86%" y="51%" width="13%" height="16%"></rect>
+  <rect class="svg-highlight prepared datasource-custom" x="87.5%" y="54.5%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared datasource-built-in" x="87.5%" y="59%" width="12%" height="7%"></rect>
+  <rect class="svg-highlight prepared lookup" x="86%" y="66%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared lookup-engine" x="87.5%" y="69%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared lookup-sources" x="87.5%" y="73%" width="12%" height="7%"></rect>
+
+  <!-- Optimzers -->
+  <rect class="svg-highlight prepared asset-optimizer" x="3%" y="49.5%" width="13.5%" height="8%"></rect>
+  <rect class="svg-highlight prepared image-resizer" x="15%" y="30%" width="17%" height="34%"></rect>
+
+  <!-- Process / Awesomize -->
+  <rect class="svg-highlight prepared process-all" x="0%" y="41%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-cs" x="34%" y="41%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-razor" x="34.3%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-razor-app" x="34.3%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-razor-engine" x="34.3%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-apis" x="50%" y="42%" width="34%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api" x="50%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api-app" x="50%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-web-api-engine" x="50%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-libraries" x="47%" y="47%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-headless" x="65.5%" y="49.5%" width="17%" height="7%"></rect>
+
+  <!-- Libraries -->
+  <rect class="svg-highlight prepared libraries" x="86%" y="38%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared libraries-app" x="87.5%" y="41%" width="12%" height="6.5%"></rect>
+  <rect class="svg-highlight prepared libraries-built-in" x="87.5%" y="46%" width="12%" height="6%"></rect>
+
+
+  <!-- data formats -->
+  <rect class="svg-highlight prepared format-json-custom" x="50%" y="32%" width="17%" height="14%"></rect>
+  <rect class="svg-highlight prepared format-json-headless" x="65.5%" y="32%" width="17%" height="21%"></rect>
+  <rect class="svg-highlight prepared format-json-edit" x="74%" y="30%" width="19%" height="23%"></rect>
+
+  <!-- Browser -->
+  <rect class="svg-highlight prepared browser-all" x="0%" y="0%" width="100%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-show" x="0%" y="0%" width="50%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact-edit" x="47%" y="0%" width="37%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"></rect>
+
+  <!-- Frameworks -->
+  <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-js" x="0%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-spa" x="0%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- App show parts -->
+  <rect class="svg-highlight prepared show-html" x="15.8%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-js" x="15.8%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-spa" x="15.8%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- Interact parts -->
+  <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit parts -->
+  <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit UI parts -->
+  <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"></rect>
+  <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"></rect>
+
+  <!-- SPA parts -->
+  <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"></rect>
+  <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"></rect>
+
+
+  <!-- Custom highlight boxes - can be controlled by in-page CSS -->
+  <rect class="svg-highlight highlight1"></rect>
+  <rect class="svg-highlight highlight2"></rect>
+  <rect class="svg-highlight highlight3"></rect>
+  <rect class="svg-highlight highlight4"></rect>
+  <rect class="svg-highlight highlight5"></rect>
+</svg>
+  </div>
+  <div class="overlay-description">
+    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
+  </div>
+</div><style>.context-box-summary .datasource, .context-box-summary .query-datasource { visibility: visible; } </style>
+
+<p><strong>Root DataSources</strong> are <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataSource.html">IDataSource</a> objects which deliver one or many <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">DataStreams</a>, which contain a bunch of content-items. </p>
+<h2 id="two-core-types">Two Core Types</h2>
+<h3 id="1-root-datasources">1. Root DataSources</h3>
+<p>This kind of DataSource generates or retrieves data from somewhere external like SQL, CSV, REST or the EAV-cache. This is a Root <code>IDataSource</code>. </p>
+<p>An example is the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.CsvDataSource.html">CsvDataSource</a>. 
+Note that even this DataSource can have use Data on the <code>In</code>-Stream. 
+But in this case the <code>In</code> provides configuration data, not raw data to process. </p>
+<h3 id="2-processing-datasources">2. Processing DataSources</h3>
+<p><strong>Processing DataSources</strong>  receive data from <em>another</em> DataSource, then process/filter this and provide the result for further use, in which case it&#39;s both an <code>IDataSource</code> as well as an <code>IDataTarget</code> </p>
+<p>An example of this is the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html">Shuffle DataSource</a>.
+It receives items on the <code>In[&quot;Default&quot;]</code>, randomly reorganizes them and provides them on the <code>Out[&quot;Default]</code>.</p>
+<h2 id="datasource-out-can-be-another-datasources-in">DataSource <code>Out</code> can be another DataSources <code>In</code></h2>
+<p>Datasources can be <strong>chained</strong> so that processing steps happen in a sequence. Here&#39;s a very simple example:</p>
 <ol>
-<li>a <code>CsvDataSource</code> can read a CSV-file and provide the data as a stream on Entities on <code>csvDs[&quot;Default&quot;]</code>...</li>
-<li>...and pipe the result it to a <code>CacheDataSource</code> which caches the data for x-minutes</li>
-<li>...then pipe it to a <code>ValueFilterDataSource</code>, which only shows the items where the <em>Country</em> matches the Url-parameters <em>country</em></li>
-<li>...then pipe it to a ValueSortDataSource, ordering it by <em>LastName</em> and then <em>FirstName</em></li>
-<li>...then pipe it to <em>another</em> <code>CacheDataSource</code> so that this common filter/sort combination will be kept for 5 minutes</li>
-<li>and then the result can be used in a Template or streamed as JSON to a JavaScript SPA.</li>
+<li>The root DataSource would be the <a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data</a> which has all the data in the App</li>
+<li>It can then be connected to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.EntityTypeFilter.html">EntityTypeFilter DataSource</a> which will limit the data to all <code>BlogPost</code> items</li>
+<li>We can then connect it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html">Shuffle DataSource</a> to keep 3 random posts</li>
 </ol>
+<p>This can be done both in code as well as in a prepared <a class="xref" href="../../basics/query/index.html">Visual Query</a>.</p>
+<h2 id="queries-reusable-datasource-wirings">Queries: Reusable DataSource Wirings</h2>
+<p>As described above, DataSources can be joined together and the configuration can be saved as a <a class="xref" href="query/index.html">Query</a>. 
+Here&#39;s another example:</p>
+<ol>
+<li>a Root <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.CsvDataSource.html"><code>CsvDataSource</code></a> can read a CSV-file and provide the data as a stream on Entities on <code>csvDs[&quot;Default&quot;]</code>...</li>
+<li>...and pipe the result it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Caching.CacheAllStreams.html"><code>CacheAllStreams</code></a> which caches the data for 60 minutes<br> <em>this would ensure that the slow reading process only happens every hour</em></li>
+<li>...then pipe it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html"><code>ValueFilter</code></a>, which only shows the items where the <em>Country</em> matches the Url-parameters <em>country</em></li>
+<li>...then pipe it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueSort.html"><code>ValueSort</code></a>, ordering it by <em>LastName</em> and then <em>FirstName</em></li>
+<li>...then pipe it to <em>another</em> <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Caching.CacheAllStreams.html"><code>CacheAllStreams</code></a> so that this common filter/sort combination will be kept for 5 minutes</li>
+</ol>
+<p>The result can be used in a Template or streamed as JSON to a JavaScript SPA using the <a class="xref" href="../../web-api/headless/index.html">Headless API</a>.</p>
 <h2 id="understanding-data-flow-between-datasource-objects">Understanding Data-Flow between DataSource Objects</h2>
 <p>Each DataSource has a list of out-streams available on the <code>.Out[&quot;StreamName&quot;]</code> property, but usually access directly just with the <code>DataSourceName[&quot;StreamName&quot;]</code>. This is what also happens when you use the <a class="xref" href="../dynamic-code/object-data.html">Data</a> object and write <code>foreach(var item in Data[&quot;Default&quot;])</code>. </p>
 <p>Aside from consuming data in your your template, most data-sources will simply offer the Out-Stream to other DataSources for further processing. Technically it&#39;s mapped like this:</p>
@@ -138,67 +274,12 @@ There are many data-sources, and most of them will... </p>
 <li>... then the <code>ContentTypeFilter.Out[&quot;Default&quot;]</code> has the resulting items, which can again be used as an In on another DataSource, or simply used in your template</li>
 </ul>
 <p>Most DataSources will only have one In-stream and one Out-stream, but this is very variable depending on your need. </p>
-<h2 id="creating-your-own-custom-datasource">Creating your own Custom DataSource</h2>
-<ul>
-<li><a class="xref" href="custom/index.html">short instruction to get started</a></li>
-<li><a class="xref" href="custom/api.html">here&#39;s docs about the relevant API</a></li>
-<li><a class="xref" href="../../basics/query/parameters/configuration.html">understanding configuration injection</a></li>
-</ul>
-<h2 id="understanding-configuration-of-each-datasource-object">Understanding Configuration of Each DataSource Object</h2>
-<p>The configuration uses a sophisticated token system to provide all necessary information. It is explained <a class="xref" href="../../basics/query/parameters/configuration.html">here</a>.</p>
-<h2 id="common-use-cases-of-datasource-in-c-code">Common Use Cases of DataSource in C# Code</h2>
-<p>You will usually use DataSource objects in these common cases:</p>
-<ol>
-<li>when templating in Razor, the <a class="xref" href="../dynamic-code/object-data.html">Data</a> object is a DataSource, usually having a <code>Default</code> stream (<code>Data[&quot;Default&quot;]</code>) and sometimes further streams like <code>Data[&quot;ListContent&quot;]</code> or <code>Data[&quot;Categories&quot;]</code> etc.</li>
-<li>when templating, the <a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data</a> is also a DataSource providing a stream for each content-type in this app, like <code>App.Data[&quot;BlogPost&quot;]</code> or <code>App.Data[&quot;Tag&quot;]</code></li>
-<li>every query is technically a DataSource, and in the query you define which DataStreams it has - if ever you use it in code, you&#39;ll see that <code>App.Query[&quot;SortedTags&quot;]</code> would be a DataSource and typically the <code>Default</code> stream would contain all these tags.</li>
-<li>a query is always a chain of DataSource doing one operation and passing it on to the next DataSource. </li>
-</ol>
 <h2 id="how-to-use">How to use</h2>
-<p>In your Razor-templates you&#39;ll usually work with these three sources:</p>
-<ol>
-<li><a class="xref" href="../dynamic-code/object-data.html">Data</a></li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data</a></li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-query.html">App.Query[...]</a></li>
-</ol>
-<p>Please read more about these in links. </p>
-<h2 id="creating-datasource-objects-in-crazor-code">Creating DataSource Objects in C#/Razor Code</h2>
-<p>Sometimes you want to have full control over what a DataSource does or what parameters it&#39;s using. This is easy: </p>
-<pre><code class="lang-cs">// A source which can filter by Content-Type (EntityType)
-var allAuthors = CreateSource&lt;ToSic.Eav.DataSources.EntityTypeFilter&gt;();
-allAuthors.TypeName = &quot;Authors&quot;;
-
-// access the data and automatically apply the filter/config
-var authors = allAuthors[&quot;Default&quot;]; 
-</code></pre><h2 id="creating-a-query-in-code-by-piping--chaining-data-sources">Creating a Query in Code by Piping / Chaining Data sources</h2>
-<p>What the visual-designer does is configure how DataSources are attached, mapping their in/out streams and adding parameters. </p>
-<p>You can also do this in code, but it&#39;s fairly advanced. You would usually want to do this, if you want to use a filter or something, but need to provide parameters which aren&#39;t available in the Visual Query Designer. Here&#39;s a simple example:</p>
-<pre><code class="lang-cs">// A source which can filter by Content-Type (EntityType)
-var allAuthors = CreateSource&lt;EntityTypeFilter&gt;();
-allAuthors.TypeName = &quot;Author&quot;;
-
-// Sort by FullName
-var sortedAuthors = CreateSource&lt;ValueSort&gt;(allAuthors);
-sortedAuthors.Attributes = &quot;FullName&quot;;
-
-// Sort by Fullname descending
-var sortedAuthorsDesc = CreateSource&lt;ValueSort&gt;(allAuthors);
-sortedAuthorsDesc.Attributes = &quot;FullName&quot;;
-sortedAuthorsDesc.Directions = &quot;desc&quot;;
-
-// Sort by 2 fields
-var sortedAuthorsMult = CreateSource&lt;ValueSort&gt;(allAuthors);
-sortedAuthorsMult.Attributes = &quot;Website,FullName&quot;;
-sortedAuthorsMult.Directions = &quot;asc, desc&quot;;
-
-// sort by internal EntityId
-var sortedAuthorsById = CreateSource&lt;ValueSort&gt;(allAuthors);
-sortedAuthorsById.Attributes = &quot;EntityId&quot;;
-</code></pre><p>Because the first <code>allAuthors</code> didn&#39;t specify an up-stream in the <code>()</code> empty brackes, it automatically gets attached to the App-Cache with all the data of the current app. So <code>var allAuthors = CreateSource&lt;EntityTypeFilter&gt;();</code> will initially have all content-items at it&#39;s disposal. </p>
-<p>The most important thing to notice is that each additional data-source uses the first <code>allAuthors</code> DataSource as the default <strong>upstream</strong> DataSource. So when these sort/filter or do something, they will only receive the data already filtered by the allAuthors.</p>
-<h2 id="developing-your-own-datasource">Developing Your Own DataSource</h2>
-<p>Maybe you want to create an XML DataSource or a DNN-Users DataSource. This is easy to do. </p>
-<p><a class="xref" href="https://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query">Best read the blog post about this</a></p>
+<p> 👉 <a class="xref" href="use/index.html">Use DataSources in your C# Code</a></p>
+<h2 id="create-your-own-custom-datasource">Create your own Custom DataSource</h2>
+<p>👉 <a class="xref" href="custom/index.html">EAV DataSources: Create Your Custom DataSources</a></p>
+<h2 id="configuration-of-each-datasource">Configuration of Each DataSource</h2>
+<p>The configuration uses a sophisticated token system to provide all necessary information. It is explained <a class="xref" href="custom/configuration.html">here</a>.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li>about <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">Data Streams</a></li>

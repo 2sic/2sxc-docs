@@ -36,8 +36,9 @@ if your DataSource performs filtering or similar actions on existing data, then 
 ## Getting Configuration
 A DataSource gets the configuration from a configuration provider. To better understand this, you should read:
 
-* [about configuration](xref:Basics.Query.Parameters.Configuration)
-* [about tokens](xref:Basics.Query.Parameters.Tokens) 
+* [](xref:Basics.LookUp.Index)
+* [about tokens](xref:Basics.LookUp.Tokens) 
+* [](xref:NetCode.DataSources.Custom.Configuration)
 * [ConfigMask(...)](xref:NetCode.DataSources.Custom.ConfigMask).
 
 ## Configuring the UI

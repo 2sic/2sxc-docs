@@ -235,50 +235,37 @@
   </div>
 </div><style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
-<p>Queries can be parameterized with token placeholders like <code>[QueryString:Id]</code>, <code>[App:Settings:PageSize]</code> or <code>[Params:Sort]</code> <em>(new in v10.22)</em>. </p>
-<p>To understand these placeholder tokens, best read up on <a class="xref" href="configuration.html">Configuration Injection using Tokens</a> and <a class="xref" href="tokens.html">Tokens Explained</a>. 
+<p>Queries can be parameterized with token placeholders like </p>
+<ul>
+<li><code>[QueryString:Id]</code></li>
+<li><code>[App:Settings:PageSize]</code> </li>
+<li><code>[Params:Sort]</code> </li>
+</ul>
+<p>To understand these placeholder tokens, best read up on <a class="xref" href="../../look-up/tokens.html">LookUp Tokens Explained</a>. 
 There you&#39;ll read about how tokens work, where they come from, how to use default/fallback values and more. </p>
-<p>This page explains how Queries have four special types of parameters, namely these:</p>
+<h2 id="example">Example</h2>
+<p>In <a class="xref" href="../visual-query/index.html">VisualQuery</a> you would specify a Token like this:</p>
+<p><img src="assets/paging-page-size-app-settings.png" width="100%"></p>
+<p>This tells the Query to</p>
 <ol>
-<li>Special LookUp: <a class="xref" href="lookup-params.html">[Params:...]</a> (new in v10.22)</li>
-<li>Special LookUp: <a class="xref" href="lookup-in.html">[In:...]</a></li>
+<li>Get the Page-Size from the <code>PageSize</code> value in the App-Settings</li>
+<li>Get the page number from the URL parameter <code>page</code></li>
+</ol>
+<h2 id="available-tokens">Available Tokens</h2>
+<p>The tokens you can use are basically all the standard <a class="xref" href="../../look-up/sources.html">Token Sources</a> plus the ones listed here:</p>
+<p>Queries have some additional Sources:</p>
+<ol>
+<li>Special LookUp: <a class="xref" href="../../look-up/lookup-params.html">[Params:...]</a> (new in v10.22)</li>
+<li>Special LookUp: <a class="xref" href="../../look-up/lookup-in.html">[In:...]</a></li>
+<li>Settings</li>
 <li>Option to override the values during testing with <code>TestParameters</code></li>
 </ol>
-<h2 id="testing-your-query-with-test-parameters">Testing your Query with Test Parameters</h2>
-<p>The <a class="xref" href="../visual-query/index.html">VisualQuery Designer</a> also allows you to set test-values for testing the query. The test-values should define all the full tokens to replace. Example:</p>
-<pre><code>[QueryString:Id]=27
-[QueryString:SortOrder]=Desc
-[Params:FilterLastName]=Mettler
-[Params:FilterNameSort]=[QueryString:SortOrder||Asc]
-</code></pre><div class="TIP"><h5>Tip</h5><p>As you can see in the example, even test params can contain more tokens if you need them. 
-In the above example, <code>Params:FilterNameSort</code> would resolve to <code>Desc</code> 
-because it will first check the <code>QueryString:SortOrder</code> which also has a test-value of <code>Desc</code>.</p>
-</div>
-<h2 id="setting-query-parameters-in-your-code">Setting Query Parameters in your Code</h2>
-<p>In a Razor or WebApi file, you can always write something like this</p>
-<pre><code class="lang-cs">var allPosts = App.Query[&quot;AllBlogPosts&quot;];
-allPosts.Params(&quot;Category&quot;, &quot;Web&quot;);
-var posts = allPosts[&quot;Default&quot;];
-
-var dynPosts = AsList(posts);
-</code></pre><div class="WARNING"><h5>Warning</h5><p>Query objects are single use - which is an internal optimization for reliable, rapid access. 
-So if you retrieve various streams, the query still only executes once.<br>But if you set a parameter after running the query, you will get an error, unless you call <code>Reset()</code> first. 
-See the next example:</p>
-</div>
-<pre><code class="lang-cs">var query = App.Query[&quot;AllBlogPosts&quot;];
-query.Params(&quot;Category&quot;, &quot;Web&quot;);
-var webPosts = AsList(query);
-
-// this would result in an error
-// allPosts.Params(&quot;Category&quot;, &quot;IT&quot;);
-
-// this works
-query.Reset();
-query.Params(&quot;Category&quot;, &quot;IT&quot;);
-var itPosts = AsList(query);
-</code></pre><h2 id="read-also">Read also</h2>
+<h2 id="test-your-query-with-test-parameters">Test your Query with Test Parameters</h2>
+<p>👉 <a class="xref" href="test-parameters.html">Query Development - Test Parameters</a></p>
+<h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="../visual-query/index.html">VisualQuery Designer</a></li>
+<li><a class="xref" href="../../../net-code/data-sources/use/query-parameters.html">Set Query Parameters in your Code</a></li>
 <li>APIs<ul>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.Query.html">Query</a></li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a></li>
@@ -287,6 +274,7 @@ var itPosts = AsList(query);
 </li>
 <li><a href="https://2sxc.org/en/blog/tag/visual-query-designer">Blog Posts about Visual Query Designer</a></li>
 </ul>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 07.00</li>

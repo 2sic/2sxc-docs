@@ -1,4 +1,4 @@
 
 
 
-# Moved to [](xref:Basics.Query.Parameters.Tokens)
+# Moved to [](xref:Basics.LookUp.Tokens)
