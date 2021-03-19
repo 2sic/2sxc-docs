@@ -17,9 +17,12 @@ The Json format has a minimal header like this:
 
 which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information. 
 
-In addition to that, the basic package can contain either
-1. a `ContentType` node [see specs](xref:Basics.DataFormats.JsonV1.ContentType)
-1. or an `Entity` node [see specs](xref:Basics.DataFormats.JsonV1.Entity)
+In addition to that, the basic package can contain
+
+1. [`ContentType` node](xref:Basics.DataFormats.JsonV1.ContentType)
+1. an [`Entity` node](xref:Basics.DataFormats.JsonV1.Entity)
+1. a Query - which is actually also an [Entity](xref:Basics.DataFormats.JsonV1.Entity) with lots of [Metadata](xref:Basics.DataFormats.JsonV1.Metadata)
+1. a View - which is an [Entity](xref:Basics.DataFormats.JsonV1.Entity) with [Metadata](xref:Basics.DataFormats.JsonV1.Metadata) and [Assets](xref:Basics.DataFormats.JsonV1.Assets)
 
 This could then look like this: 
 
@@ -38,14 +41,15 @@ This could then look like this:
 
 #### All values have language information
 
-As we're usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. 
+As we're usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See [](xref:Basics.DataFormats.JsonV1.Value)
 
 #### Metadata is a Recursive List of Entities
 
-2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. 
+2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See [](xref:Basics.DataFormats.JsonV1.Metadata)
 
 
 ## Limitations
+
 As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.  
 
 ## Read also

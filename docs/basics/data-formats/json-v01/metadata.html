@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JSON Format V1 | 2sxc and EAV 10 </title>
+    <title>JSON Metadata V1 | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JSON Format V1 | 2sxc and EAV 10 ">
+    <meta name="title" content="JSON Metadata V1 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,49 +111,134 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.Index">
-<h1 id="json-format-v1">JSON Format V1</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.Metadata">
+<h1 id="json-metadata-v1">JSON Metadata V1</h1>
 
-<p>JSON based data storage is used to persist data into a text (JSON) format. In 2sxc 9.4 we introduced it to store entities in the history (for version rollback). Since then it has found many new applications. </p>
-<h2 id="json-package">JSON Package</h2>
-<p>The Json format has a minimal header like this:</p>
-<pre><code class="lang-json">{
-  &quot;_&quot;: { &quot;V&quot;: 1 }
-}
-</code></pre><p>which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information. </p>
-<p>In addition to that, the basic package can contain</p>
+<p>JSON Data can</p>
 <ol>
-<li><a class="xref" href="content-type.html"><code>ContentType</code> node</a></li>
-<li>an <a class="xref" href="entity.html"><code>Entity</code> node</a></li>
-<li>a Query - which is actually also an <a class="xref" href="entity.html">Entity</a> with lots of <a class="xref" href="metadata.html">Metadata</a></li>
-<li>a View - which is an <a class="xref" href="entity.html">Entity</a> with <a class="xref" href="metadata.html">Metadata</a> and <a class="xref" href="assets.html">Assets</a></li>
+<li><strong>be Metadata</strong> for something. The target reference is stored in the <code>For</code> object.</li>
+<li><strong>have Metadata</strong> which is stored in the <code>Metadata</code> object.</li>
 </ol>
-<p>This could then look like this: </p>
+<p>👉 Read more about <a class="xref" href="../../data/metadata/index.html">Metadata</a>.</p>
+<h2 id="for-information">For Information</h2>
+<p>The <code>For</code> is optional and is only specified if this entity is Metadata for something. It gives it the target Reference. </p>
+<p>This is the structure of the <code>For</code> object</p>
+<ul>
+<li><code>For</code> object <em>optional</em>, metadata target reference<ul>
+<li><code>Target</code> - string name describing the target type as the name is specified in the DB. We don&#39;t use the number but the string, in case the number is different on another system</li>
+<li><code>Number</code> - the number key <em>optional, only if the key is a number</em></li>
+<li><code>String</code> - the string key <em>optional, only if the key is a string</em></li>
+<li><code>Guid</code> - the guid key <em>optional, only if the key is a guid</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example of a Field-Metadata</strong></p>
+<pre><code class="lang-json">{
+  &quot;_&quot;: { &quot;V&quot;: 1 },
+  &quot;Entity&quot;: {
+    &quot;Id&quot;: 423,
+    &quot;Version&quot;: 1,
+    &quot;Guid&quot;: &quot;82bdcdc9-ff37-40e5-8a5c-340a7864c325&quot;,
+    &quot;Type&quot;: { &quot;Name&quot;: &quot;@All&quot;, &quot;Id&quot;: &quot;@All&quot; },
+    &quot;Attributes&quot;: {
+      &quot;String&quot;: { &quot;Name&quot;: { &quot;*&quot;: &quot;Street&quot; } },
+      &quot;Entity&quot;: {
+        &quot;Calculations&quot;: { &quot;*&quot;: [] },
+        &quot;Errors&quot;: { &quot;*&quot;: [] },
+        &quot;Warnings&quot;: { &quot;*&quot;: [] }
+      }
+    },
+    &quot;For&quot;: { &quot;Target&quot;: &quot;EAV Field Properties&quot;, &quot;Number&quot;: 244 }
+  }
+}
+</code></pre><h2 id="metadata-items">Metadata Items</h2>
+<p>If something <em>has</em> Metadata, it will be included in the <code>Metadata</code> object. This is an array. The Metadata items are built just like an <a class="xref" href="entity.html">Entity</a> except that it cannot have a <code>For</code> - since the target is already defined. </p>
+<p><strong>Example - Extract of a Content-Type with Fields having Metadata</strong></p>
 <pre><code class="lang-json">{
   &quot;_&quot;: { &quot;V&quot;: 1 },
   &quot;ContentType&quot;: {
-    &quot;Id&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
-    &quot;Name&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
-    ...
+    &quot;Id&quot;: &quot;3de8e971-9e76-4d77-beda-f754e7b056bd&quot;,
+    &quot;Name&quot;: &quot;Content with Preview&quot;,
+    &quot;Scope&quot;: &quot;2SexyContent&quot;,
+    &quot;Description&quot;: &quot;Content with Preview&quot;,
+    &quot;Attributes&quot;: [
+      {
+        &quot;Name&quot;: &quot;Title&quot;,
+        &quot;Type&quot;: &quot;String&quot;,
+        &quot;InputType&quot;: &quot;string-default&quot;,
+        &quot;IsTitle&quot;: true,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 447,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;859745e4-6064-45f1-b96e-35226f6505e9&quot;,
+            &quot;Type&quot;: { &quot;Name&quot;: &quot;@All&quot;, &quot;Id&quot;: &quot;@All&quot; },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: { &quot;Name&quot;: { &quot;*&quot;: &quot;Title&quot; } },
+              &quot;Entity&quot;: {
+                &quot;Calculations&quot;: { &quot;*&quot;: [] },
+                &quot;Errors&quot;: { &quot;*&quot;: [] },
+                &quot;Warnings&quot;: { &quot;*&quot;: [] }
+              }
+            }
+          }
+        ]
+      },
+      {
+        &quot;Name&quot;: &quot;Body&quot;,
+        &quot;Type&quot;: &quot;String&quot;,
+        &quot;InputType&quot;: &quot;string-wysiwyg&quot;,
+        &quot;IsTitle&quot;: false,
+        &quot;Metadata&quot;: [
+          {
+            &quot;Id&quot;: 448,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;f887914e-371b-4c2c-862d-1ad572a9ce5a&quot;,
+            &quot;Type&quot;: { &quot;Name&quot;: &quot;@All&quot;, &quot;Id&quot;: &quot;@All&quot; },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DefaultValue&quot;: { &quot;*&quot;: &quot;&lt;p&gt; &lt;/p&gt;&quot; },
+                &quot;Name&quot;: { &quot;*&quot;: &quot;Body&quot; },
+                &quot;Notes&quot;: { &quot;*&quot;: &quot;&quot; }
+              },
+              &quot;Entity&quot;: {
+                &quot;Calculations&quot;: { &quot;*&quot;: [] },
+                &quot;Errors&quot;: { &quot;*&quot;: [] },
+                &quot;Warnings&quot;: { &quot;*&quot;: [] }
+              },
+              &quot;Boolean&quot;: {
+                &quot;Required&quot;: { &quot;*&quot;: false },
+                &quot;VisibleInEditUI&quot;: { &quot;*&quot;: true }
+              }
+            }
+          },
+          {
+            &quot;Id&quot;: 449,
+            &quot;Version&quot;: 1,
+            &quot;Guid&quot;: &quot;6a01df48-483e-471e-a4a9-3b7c760bbe44&quot;,
+            &quot;Type&quot;: { &quot;Name&quot;: &quot;@String&quot;, &quot;Id&quot;: &quot;@String&quot; },
+            &quot;Attributes&quot;: {
+              &quot;String&quot;: {
+                &quot;DropdownValues&quot;: { &quot;*&quot;: &quot;&quot; },
+                &quot;InputType&quot;: { &quot;*&quot;: &quot;wysiwyg&quot; }
+              },
+              &quot;Number&quot;: { &quot;RowCount&quot;: { &quot;*&quot;: 1.0 } }
+            }
+          }
+        ]
+      },
+    ],
+    &quot;Metadata&quot;: []
   }
 }
-</code></pre><h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
-<h4 id="all-values-have-language-information">All values have language information</h4>
-<p>As we&#39;re usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See <a class="xref" href="value.html">JSON Value (Multilanguage) V1</a></p>
-<h4 id="metadata-is-a-recursive-list-of-entities">Metadata is a Recursive List of Entities</h4>
-<p>2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See <a class="xref" href="metadata.html">JSON Metadata V1</a></p>
-<h2 id="limitations">Limitations</h2>
-<p>As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.  </p>
-<h2 id="read-also">Read also</h2>
+</code></pre><h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="content-type.html">Format: Json V1 Content-types</a></li>
-<li><a class="xref" href="../../data/content-types/specs/file-storage.html">Concepts: file provided content-types</a></li>
+<li><a class="xref" href="index.html">JSON Format V1</a></li>
+<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-stored-content-items-entities">Blog post about the entity json format</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Added in v9.4</li>
-<li>Enhanced with Content-Types in v9.7</li>
-<li>Extended to support attachments so Views can include templates and icons in 2sxc ca. v11.10</li>
+<li>Added in 2sxc 9.4</li>
 </ol>
 </article>
           </div>
@@ -163,7 +248,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/metadata.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

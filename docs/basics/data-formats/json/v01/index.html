@@ -18,15 +18,15 @@
     <meta name="title" content="JSON Format V1 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -121,12 +121,10 @@
   &quot;_&quot;: { &quot;V&quot;: 1 }
 }
 </code></pre><p>which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information. </p>
-<p>In addition to that, the basic package can contain</p>
+<p>In addition to that, the basic package can contain either</p>
 <ol>
-<li><a class="xref" href="content-type.html"><code>ContentType</code> node</a></li>
-<li>an <a class="xref" href="entity.html"><code>Entity</code> node</a></li>
-<li>a Query - which is actually also an <a class="xref" href="entity.html">Entity</a> with lots of <a class="xref" href="metadata.html">Metadata</a></li>
-<li>a View - which is an <a class="xref" href="entity.html">Entity</a> with <a class="xref" href="metadata.html">Metadata</a> and <a class="xref" href="assets.html">Assets</a></li>
+<li>a <code>ContentType</code> node <a class="xref" href="content-type.html">see specs</a></li>
+<li>or an <code>Entity</code> node <a class="xref" href="entity.html">see specs</a></li>
 </ol>
 <p>This could then look like this: </p>
 <pre><code class="lang-json">{
@@ -139,15 +137,15 @@
 }
 </code></pre><h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
 <h4 id="all-values-have-language-information">All values have language information</h4>
-<p>As we&#39;re usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See <a class="xref" href="value.html">JSON Value (Multilanguage) V1</a></p>
+<p>As we&#39;re usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. </p>
 <h4 id="metadata-is-a-recursive-list-of-entities">Metadata is a Recursive List of Entities</h4>
-<p>2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See <a class="xref" href="metadata.html">JSON Metadata V1</a></p>
+<p>2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. </p>
 <h2 id="limitations">Limitations</h2>
 <p>As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.  </p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="content-type.html">Format: Json V1 Content-types</a></li>
-<li><a class="xref" href="../../data/content-types/specs/file-storage.html">Concepts: file provided content-types</a></li>
+<li><a class="xref" href="../../../data/content-types/specs/file-storage.html">Concepts: file provided content-types</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
@@ -163,7 +161,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json/v01/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -189,20 +187,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

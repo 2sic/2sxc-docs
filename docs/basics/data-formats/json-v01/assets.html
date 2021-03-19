@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JSON Format V1 | 2sxc and EAV 10 </title>
+    <title>JSON Assets V1 | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JSON Format V1 | 2sxc and EAV 10 ">
+    <meta name="title" content="JSON Assets V1 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,49 +111,83 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.Index">
-<h1 id="json-format-v1">JSON Format V1</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.Assets">
+<h1 id="json-assets-v1">JSON Assets V1</h1>
 
-<p>JSON based data storage is used to persist data into a text (JSON) format. In 2sxc 9.4 we introduced it to store entities in the history (for version rollback). Since then it has found many new applications. </p>
-<h2 id="json-package">JSON Package</h2>
-<p>The Json format has a minimal header like this:</p>
-<pre><code class="lang-json">{
-  &quot;_&quot;: { &quot;V&quot;: 1 }
-}
-</code></pre><p>which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information. </p>
-<p>In addition to that, the basic package can contain</p>
-<ol>
-<li><a class="xref" href="content-type.html"><code>ContentType</code> node</a></li>
-<li>an <a class="xref" href="entity.html"><code>Entity</code> node</a></li>
-<li>a Query - which is actually also an <a class="xref" href="entity.html">Entity</a> with lots of <a class="xref" href="metadata.html">Metadata</a></li>
-<li>a View - which is an <a class="xref" href="entity.html">Entity</a> with <a class="xref" href="metadata.html">Metadata</a> and <a class="xref" href="assets.html">Assets</a></li>
-</ol>
-<p>This could then look like this: </p>
+<p>JSON Data can include Assets. This is currently only used for export/import of <a class="xref" href="../../app/views.html">Views</a></p>
+<h2 id="assets">Assets</h2>
+<p>The <code>Assets</code> is optional on the <a class="xref" href="entity.html">Entity</a> node. It looks like this:</p>
+<ul>
+<li><code>Assets</code> array, <em>optional</em><ul>
+<li>asset object 1<ul>
+<li><code>Storage</code>: &quot;app&quot;</li>
+<li><code>Name</code>: &quot;some file name&quot;</li>
+<li><code>Folder</code>: &quot;DefaultTemplates&quot; (location in the storage)</li>
+<li><code>File</code>: &quot;string containing the file&quot;</li>
+</ul>
+</li>
+<li>asset object 2<ul>
+<li>...</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note that in a view, typically it will export both the template file and the icon used.</p>
+<h2 id="example-of-an-exported-view-with-template-file">Example of an Exported View with Template file</h2>
 <pre><code class="lang-json">{
   &quot;_&quot;: { &quot;V&quot;: 1 },
-  &quot;ContentType&quot;: {
-    &quot;Id&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
-    &quot;Name&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
-    ...
+  &quot;Entity&quot;: {
+    &quot;Id&quot;: 3770,
+    &quot;Version&quot;: 1,
+    &quot;Guid&quot;: &quot;56104398-8301-4d67-9d14-168639cc7dc8&quot;,
+    &quot;Type&quot;: { &quot;Name&quot;: &quot;2SexyContent-Template&quot;, &quot;Id&quot;: &quot;2SexyContent-Template&quot; },
+    &quot;Attributes&quot;: {
+      &quot;String&quot;: {
+        &quot;ContentTypeStaticName&quot;: {
+          &quot;*&quot;: &quot;e2351b42-87f2-427e-9566-ff271e3e5a9f&quot;
+        },
+        &quot;ListContentTypeStaticName&quot;: { &quot;*&quot;: &quot;&quot; },
+        &quot;ListPresentationTypeStaticName&quot;: { &quot;*&quot;: &quot;&quot; },
+        &quot;Location&quot;: { &quot;*&quot;: &quot;Host File System&quot; },
+        &quot;Name&quot;: { &quot;*&quot;: &quot;Branding&quot; },
+        &quot;Path&quot;: { &quot;*&quot;: &quot;DefaultTemplates\\_Branding.cshtml&quot; },
+        &quot;PresentationTypeStaticName&quot;: { &quot;*&quot;: &quot;&quot; },
+        &quot;StreamsToPublish&quot;: { &quot;*&quot;: &quot;&quot; },
+        &quot;Type&quot;: { &quot;*&quot;: &quot;C# Razor&quot; },
+        &quot;ViewNameInUrl&quot;: { &quot;*&quot;: &quot;&quot; }
+      },
+      &quot;Entity&quot;: {
+        &quot;ContentDemoEntity&quot;: { &quot;*&quot;: [&quot;9d49e41c-1f4f-448d-88c6-df6ab4064d0b&quot;] },
+        &quot;ListContentDemoEntity&quot;: { &quot;*&quot;: [] },
+        &quot;ListPresentationDemoEntity&quot;: { &quot;*&quot;: [] },
+        &quot;Pipeline&quot;: { &quot;*&quot;: [] },
+        &quot;PresentationDemoEntity&quot;: { &quot;*&quot;: [] }
+      },
+      &quot;Boolean&quot;: {
+        &quot;IsHidden&quot;: { &quot;*&quot;: false },
+        &quot;PublishData&quot;: { &quot;*&quot;: false },
+        &quot;UseForList&quot;: { &quot;*&quot;: false }
+      }
+    },
+    &quot;Assets&quot;: [
+      {
+        &quot;Storage&quot;: &quot;app&quot;,
+        &quot;Name&quot;: &quot;_Branding.cshtml&quot;,
+        &quot;Folder&quot;: &quot;DefaultTemplates&quot;,
+        &quot;File&quot;: &quot;&lt;div class=\&quot;sc-element\&quot;&gt;\r\n@Html.Raw(Content.Toolbar)\r\n&lt;div id=\&quot;Branding\&quot;&gt;@Content.Title&lt;/div&gt;\r\n&lt;div id=\&quot;Slogan\&quot;&gt;@Html.Raw(Content.Slogan)&lt;/div&gt;\r\n&lt;/div&gt;&quot;
+      }
+    ]
   }
 }
-</code></pre><h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
-<h4 id="all-values-have-language-information">All values have language information</h4>
-<p>As we&#39;re usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See <a class="xref" href="value.html">JSON Value (Multilanguage) V1</a></p>
-<h4 id="metadata-is-a-recursive-list-of-entities">Metadata is a Recursive List of Entities</h4>
-<p>2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See <a class="xref" href="metadata.html">JSON Metadata V1</a></p>
-<h2 id="limitations">Limitations</h2>
-<p>As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.  </p>
-<h2 id="read-also">Read also</h2>
+</code></pre><h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="content-type.html">Format: Json V1 Content-types</a></li>
-<li><a class="xref" href="../../data/content-types/specs/file-storage.html">Concepts: file provided content-types</a></li>
+<li><a class="xref" href="index.html">JSON Format V1</a></li>
+<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-stored-content-items-entities">Blog post about the entity json format</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Added in v9.4</li>
-<li>Enhanced with Content-Types in v9.7</li>
-<li>Extended to support attachments so Views can include templates and icons in 2sxc ca. v11.10</li>
+<li>Added in 2sxc v11.10</li>
 </ol>
 </article>
           </div>
@@ -163,7 +197,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/assets.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

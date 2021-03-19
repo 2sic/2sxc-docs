@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Scope
+uid: Basics.Data.Scopes
 ---
 
 # Content-Type Scopes

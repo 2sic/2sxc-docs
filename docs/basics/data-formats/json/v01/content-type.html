@@ -18,15 +18,15 @@
     <meta name="title" content="JSON Content-Type V1 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,20 +64,20 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      <li>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,16 +114,17 @@
             <article class="content wrap" id="_content" data-uid="Basics.DataFormats.JsonV1.ContentType">
 <h1 id="json-content-type-v1">JSON Content-Type V1</h1>
 
-<p>JSON based content-types are type-definitions which are stored as JSON. As of now we&#39;re using it to provide system-level types to the application (see <a class="xref" href="../../data/content-types/specs/file-storage.html">Concepts - file provided content-types</a>) and for various automated testing. </p>
+<p>JSON based content-types are type-definitions which are stored as JSON. As of now we&#39;re using it to provide system-level types to the application (see <a class="xref" href="../../../data/content-types/specs/file-storage.html">Concepts - file provided content-types</a>) and for various automated testing. </p>
 <h2 id="description">Description</h2>
 <ol>
 <li>As of now, it&#39;s using a envolope to package everything and includes a minimal header to ensure we know it&#39;s <a class="xref" href="index.html">V1</a>. </li>
 <li>It then contains a <code>ContentType</code> node containing <ol>
 <li>various identification and description</li>
-<li>optional <a class="xref" href="metadata.html">Content-Type Metadata</a></li>
-<li>attributes (array) - often with <a class="xref" href="metadata.html">attribute Metadata</a></li>
+<li>content-type metadata (array of entities) </li>
+<li>attributes (array)</li>
 </ol>
 </li>
+<li>the attributes themselves again contain a minimal information + metadata items (entities)</li>
 <li>note that the attribute order is relevant</li>
 </ol>
 <h2 id="example">Example</h2>
@@ -247,26 +248,26 @@
 </code></pre><h2 id="details-about-the-format">Details about the Format</h2>
 <p>The format is currently in version 1, and looks like this:</p>
 <ul>
-<li><code>_</code> this is the header - containing the version, in case we introduce breaking changes in the future - see also <a class="xref" href="index.html">format v1</a></li>
-<li><code>ContentType</code> - this is the content-type<ul>
-<li><code>Id</code> - internal identifier, also known as the <a class="xref" href="../../data/content-types/names.html">static name</a> - often a GUID</li>
-<li><code>Name</code> - a nicer <a class="xref" href="../../data/content-types/names.html">name</a></li>
-<li><code>Scope</code> - a term which groups types together; mainly for hiding types the user should normally not see </li>
-<li><code>Description</code> - a short description for internal use</li>
-<li><code>Attributes</code> [array]<ul>
+<li>_ this is the header - containing the version, in case we introduce breaking changes in the future - see also <a class="xref" href="index.html">format v1</a></li>
+<li>ContentType - this is the content-type<ul>
+<li>Id - internal identifier, also known as the &quot;static name&quot; - often a GUID</li>
+<li>Name - a nicer name, especially when the Id is a GUID</li>
+<li>Scope - a term which groups types together; mainly for hiding types the user should normally not see </li>
+<li>Description - a short description for internal use</li>
+<li>Attributes [array]<ul>
 <li>[item]<ul>
-<li><code>Name</code> - the field-name</li>
-<li><code>Type</code> - the primary type, like string, number, etc.</li>
-<li><code>Description</code> - a short description</li>
-<li><code>IsTitle</code> - is this the title field (there must always be one title field)</li>
-<li><code>Metadata</code> [array] with more information about this field/attribute - see <a class="xref" href="metadata.html">Metadata</a></li>
+<li>Name - the field-name</li>
+<li>Type - the primary type, like string, number, etc.</li>
+<li>Description - a short description</li>
+<li>IsTitle - is this the title field (there must always be one title field)</li>
+<li>Metadata [array] of <a class="xref" href="entity.html">content-items</a> with more information about this field</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Metadata [array] with more information about the content-type - see <a class="xref" href="metadata.html">Metadata</a></li>
+<li>Metadata [array] of <a class="xref" href="entity.html">content-items</a> with more information about the content-type</li>
 </ul>
 <h2 id="specials-about-the-json-content-types">Specials about the JSON Content-Types</h2>
 <h4 id="id-is-not-always-a-guid">ID is not always a GUID</h4>
@@ -275,7 +276,7 @@ This is mostly historic, as all new content-types will have GUIDs, but old types
 This corresponds to the <code>StaticName</code> in the C# API.</p>
 <h4 id="scope-is-like-a-virtual-group">Scope is Like a Virtual Group</h4>
 <p>The Scope is a name - usually System or something like that. 
-It&#39;s primarily used to group types together, so that the editor doesn&#39;t have to see the ca. 50 types in the background which make the solution work. See <a class="xref" href="../../data/content-types/scopes.html">Content-Type Scopes</a></p>
+It&#39;s primarily used to group types together, so that the editor doesn&#39;t have to see the ca. 50 types in the background which make the solution work. </p>
 <h4 id="content-types-have-metadata">Content Types Have Metadata</h4>
 <p>Content-types can have a lot of metadata - also mostly for the UI. 
 An example is the help-text which is shown. 
@@ -283,15 +284,16 @@ This too is stored as normal JSON. See <a class="xref" href="metadata.html">JSON
 <h4 id="attributes-have-metadata">Attributes Have Metadata</h4>
 <p>Each attribute - let&#39;s say a field &quot;Color&quot; has more information which is needed for scenarios like the edit-UI. 
 These items are standard <a class="xref" href="metadata.html">Metadata</a>.</p>
-<h4 id="content-type-attributes-must-preserve-sort-order">Content Type Attributes must preserve Sort Order</h4>
-<p>This is important, as it&#39;s relevant to the UI.</p>
 <h2 id="limitations">Limitations</h2>
 <p>As of now (2sxc 9.7) the system will pick up the content-types stored there and everything works. BUT there is no built-in mechanism to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
 <p>This should not affect you, as it&#39;s not meant to be managed by anybody else than us as of now. </p>
+<h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
+<h4 id="content-type-attributes-must-preserve-sort-order">Content Type Attributes must preserve Sort Order</h4>
+<p>This is important, as it&#39;s relevant to the UI.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="index.html">JSON Format V1</a></li>
-<li><a class="xref" href="../../data/content-types/specs/file-storage.html">File-Stored Content-Types</a></li>
+<li><a class="xref" href="../../../data/content-types/specs/file-storage.html">File-Stored Content-Types</a></li>
 <li><a href="https://2sxc.org/en/blog/post/deep-dive-json-content-type-definitions">Blog post about json content-type definitions</a></li>
 </ul>
 <h2 id="history">History</h2>
@@ -306,7 +308,7 @@ These items are standard <a class="xref" href="metadata.html">Metadata</a>.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/content-type.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json/v01/content-type.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -332,20 +334,20 @@ These items are standard <a class="xref" href="metadata.html">Metadata</a>.</p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

@@ -18,15 +18,15 @@
     <meta name="title" content="JSON Entity V1 | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,20 +64,20 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      <li>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -118,13 +118,14 @@
 <h2 id="description">Description</h2>
 <ol>
 <li>As of now, it&#39;s using a envolope to package everything and includes a minimal header to ensure we know it&#39;s <a class="xref" href="index.html">V1</a>. </li>
-<li>It then contains an <code>Entity</code> node containing <ol>
+<li>It then contains a <code>ContentType</code> node containing <ol>
 <li>various identification and description</li>
-<li>attributes / properties</li>
-<li>optional <a class="xref" href="metadata.html">Entity Metadata</a></li>
-<li>optional <a class="xref" href="assets.html">Assets</a></li>
+<li>content-type metadata (array of entities) </li>
+<li>attributes (array)</li>
 </ol>
 </li>
+<li>the attributes themselves again contain a minimal information + metadata items (entities)</li>
+<li>note that the attribute order is relevant</li>
 </ol>
 <h2 id="example">Example</h2>
 <p>This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):</p>
@@ -177,8 +178,8 @@
 <li><code>Id</code> - the identity as a number</li>
 <li><code>Guid</code> - the identity guid as a string</li>
 <li><code>Type</code> - type information object<ul>
-<li><code>Name</code> - the type <a class="xref" href="../../data/content-types/names.html">name</a></li>
-<li><code>Id</code> - the type identity (<a class="xref" href="../../data/content-types/names.html">Static Name</a>) as a string. It&#39;s usually a guid, but special types can also use a specific string</li>
+<li><code>Name</code> - the type name</li>
+<li><code>Id</code> - the type identity as a string. It&#39;s usually a guid, but special types can also use a specific string</li>
 </ul>
 </li>
 <li><code>Attributes</code> - the values of this entity<ul>
@@ -236,7 +237,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json-v01/entity.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data-formats/json/v01/entity.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -262,20 +263,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

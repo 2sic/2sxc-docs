@@ -7,13 +7,13 @@ uid: Basics.DataFormats.JsonV1.Entity
 JSON based entities are items which are stored as JSON. This is used in the history, in dynamic-entities in the DB and more. 
 
 ## Description
+
 1. As of now, it's using a envolope to package everything and includes a minimal header to ensure we know it's [V1](xref:Basics.DataFormats.JsonV1.Index). 
-2. It then contains a `ContentType` node containing 
+2. It then contains an `Entity` node containing 
    1. various identification and description
-   1. content-type metadata (array of entities) 
-   1. attributes (array)
-3. the attributes themselves again contain a minimal information + metadata items (entities)
-4. note that the attribute order is relevant
+   1. attributes / properties
+   1. optional [Entity Metadata](xref:Basics.DataFormats.JsonV1.Metadata)
+   1. optional [Assets](xref:Basics.DataFormats.JsonV1.Assets)
 
 ## Example
 This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):
@@ -65,30 +65,45 @@ This example is an extract of the Config Content-Type to manage the SqlDataSourc
 
 ## Format Explained
 
-* _ (header) mainly storing the version, in case we have to introduce a breaking change - see also [format v1](xref:Basics.DataFormats.JsonV1.Index)
-* Entity - this marks an entity - at the moment a json package should only have 1, but later it could contain more
-  * Id - the identity as a number
-  * Guid - the identity as a guid
-  * Type - type information
-    * Name - the type name
-    * Id - the type identity - usually a guid, but special types can also use a specific string
-  * Attributes - the values of this entity
-    * String - all the string values
-      * [the field name]
-        * [the languages this value applies to]
-          * [the value]
-        * [more languages / values]
+* `_` (header) mainly storing the version, in case we have to introduce a breaking change - see also [format v1](xref:Basics.DataFormats.JsonV1.Index)
+* `Entity` - this marks an entity - at the moment a json package should only have 1, but later it could contain more
+  * `Id` - the identity as a number
+  * `Guid` - the identity guid as a string
+  * `Type` - type information object
+    * `Name` - the type [name](xref:Basics.Data.ContentTypes.Names)
+    * `Id` - the type identity ([Static Name](xref:Basics.Data.ContentTypes.Names)) as a string. It's usually a guid, but special types can also use a specific string
+  * `Attributes` - the values of this entity
+    * `String` - all the string values; _optional, only exists if there are string values_
+      * [the field name] - an object containing languages/values, see [JSON Values](xref:Basics.DataFormats.JsonV1.Value)
+        * [language code]: [value]
+        * [language code]: [value]
       * [more fields / languages / values]
-    * Boolean - all the boolean values
-    * Number - ...
+    * `Boolean` - all the boolean values; _optional, only exists if there are boelean values_
+    * `Number` - all numbers; _optional, only exists if there are number values_
     * [more types]
-  * Owner a special string identifying the owner of this item
-  * Metadata (optional, array of more entities) - a list of items which further describe this entity
+  * `Owner` a special string identifying the owner of this item
+  * `Metadata` (optional, array of more entities) - a list of Entities which further describe this Entity - see [](xref:Basics.DataFormats.JsonV1.Metadata)
     * [item 1]
-      * Id
-      * Guid
+      * `Id`
+      * `Guid`
       * [more properties]
     * [next items]
+  * `For` object _optional_, metadata target reference - see [](xref:Basics.DataFormats.JsonV1.Metadata)
+  * `Assets` object _optional_ for including template files in View-exports - see [](xref:Basics.DataFormats.JsonV1.Assets)
+
+
+## All Attributes are Grouped by Type
+
+Because JSON is itself a very loose data-format, and certain types like dates are not auto-detectable, we decided to have the type-specification as a first-class citizen in the format. This allows for automatic, reliable type-checking when materializing objects. 
+
+
+## Values and Languages
+
+👉 [](xref:Basics.DataFormats.JsonV1.Value)
+
+## Metadata
+
+👉 [](xref:Basics.DataFormats.JsonV1.Metadata)
 
 
 ## Read also

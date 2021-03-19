@@ -98,7 +98,7 @@ The input mask is automatically generated from the **Content-Type**. Based on th
 
 #### Scopes
 
-Content-Types have a _Scope_. Read about it [](xref:Basics.Data.Scope)
+Content-Types have a _Scope_. Read about it [](xref:Basics.Data.Scopes)
 
 ## APIs
 
