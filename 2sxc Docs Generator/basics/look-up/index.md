@@ -16,6 +16,7 @@ Many things in the EAV and 2sxc require it to look up parameters. Examples could
 1. An **Id** from the URL Parameters
   to show details about this id
 
+This is done using [Tokens](xref:Basics.LookUp.Tokens) which look like `[QueryString:Id]`. 
 To achieve this 2sxc has three parts:
 
 1. [Tokens](xref:Basics.LookUp.Tokens) which parses the placeholders
@@ -24,8 +25,8 @@ To achieve this 2sxc has three parts:
 
 > [!TIP]
 > The LookUp System is used in [Queries](xref:Basics.Query.Index) and [Token Templates](xref:Basics.Server.Render.Tokens.Index). 
-> 
-> But since Token-Templates are fairly trivial, we recommand that you only use Tokens for Queries and instead create your Templates using [Razor](xref:Basics.Server.Render.Razor.Index).
+> But since Token-Templates are fairly trivial, we recommand that you only use Tokens for Queries 
+> and instead create your Templates using [Razor](xref:Basics.Server.Render.Razor.Index).
 
 ## Example Without LookUp
 
@@ -56,9 +57,9 @@ What happens now is as follows:
 
 ## Discover More
 
-1. The Token Syntax and all the features
+1. The [Token Syntax](xref:Basics.LookUp.Tokens) and all the features
 1. [LookUp Engine](xref:Basics.LookUp.Engine)
-1. LookUp Sources
+1. [LookUp Sources](xref:Basics.LookUp.Sources)
 1. Query LookUps
 1. Token Template LookUps
 

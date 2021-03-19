@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LookUp System | 2sxc and EAV 10 </title>
+    <title>App LookUps | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="LookUp System | 2sxc and EAV 10 ">
+    <meta name="title" content="App LookUps | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.LookUp.Index">
-<h1 id="lookup-system">LookUp System</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.LookUp.App">
+<h1 id="app-lookups"><code>App</code> LookUps</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -233,71 +233,93 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
   </div>
-</div><style>.context-box-summary .lookup { visibility: visible; } </style>
+</div><style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-<p>Many things in the EAV and 2sxc require it to look up parameters. Examples could be:</p>
+<p>The App has three Sources which can be used in LookUps</p>
 <ol>
-<li>The current <strong>Page ID</strong><br>to then find metadata for this page</li>
-<li>The current <strong>Date</strong>
-to filter out news items which should be published in future</li>
-<li>An <strong>Id</strong> from the URL Parameters
-to show details about this id</li>
+<li><code>App</code> - for app properties</li>
+<li><code>App:Settings</code> - for settings of the App</li>
+<li><code>App:Resources</code> - for i18n resources in the App</li>
 </ol>
-<p>This is done using <a class="xref" href="tokens.html">Tokens</a> which look like <code>[QueryString:Id]</code>. 
-To achieve this 2sxc has three parts:</p>
-<ol>
-<li><a class="xref" href="tokens.html">Tokens</a> which parses the placeholders</li>
-<li>The <a class="xref" href="engine.html">LookUpEngine</a> which will get the values...</li>
-<li>...using <a class="xref" href="sources.html">LookUp Sources</a> to really resolve the values.</li>
-</ol>
-<div class="TIP"><h5>Tip</h5><p>The LookUp System is used in <a class="xref" href="../query/index.html">Queries</a> and <a class="xref" href="../server/render/tokens/index.html">Token Templates</a>. 
-But since Token-Templates are fairly trivial, we recommand that you only use Tokens for Queries 
-and instead create your Templates using <a class="xref" href="../server/render/razor/index.html">Razor</a>.</p>
-</div>
-<h2 id="example-without-lookup">Example Without LookUp</h2>
-<p>Imagine a <a class="xref" href="../query/index.html">Query</a> which has an <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.EntityIdFilter.html">EntityId Filter</a> which expects an ID. This could be hardwired like this:</p>
-<p><img src="assets/item-id-basic.png" width="100%"></p>
-<p>What happens now is as follows:</p>
-<ol>
-<li>The EntityId-Filter will pass all the settings to be parsed by the LookUp-Engine</li>
-<li>The LookUp-Engine will detect that it&#39;s a simple value (not a Token) and just return the <code>38654</code></li>
-<li>The EntityId-Filter will then do it&#39;s job and retrieve this item</li>
-</ol>
-<h2 id="example-with-lookup">Example With LookUp</h2>
-<p>But it would make more sense if the ID were to be dynamic, maybe from the URL like this:</p>
-<p><img src="assets/item-id-url.png" width="100%"></p>
-<p>What happens now is as follows:</p>
-<ol>
-<li>The EntityId-Filter will pass all the settings to be parsed by the LookUp-Engine</li>
-<li>The LookUp-Engine will detect the <a class="xref" href="tokens.html">Token</a> and parse it</li>
-<li>Since the first part in the token says <code>QueryString</code> the LookUp-Engine will check if it has a LookUp-Source by that name</li>
-<li>Since it has a LookUp which answers to <code>QueryString</code>, it will ask this source if it can resolve <code>id</code></li>
-<li>Assuming that the page has <code>?id=38654</code> then the LookUp will say <em>yes! it&#39;s <code>38654</code></em></li>
-<li>The EntityId-Filter will then do it&#39;s job and retrieve this item</li>
-</ol>
-<h2 id="discover-more">Discover More</h2>
-<ol>
-<li>The <a class="xref" href="tokens.html">Token Syntax</a> and all the features</li>
-<li><a class="xref" href="engine.html">LookUp Engine</a></li>
-<li><a class="xref" href="sources.html">LookUp Sources</a></li>
-<li>Query LookUps</li>
-<li>Token Template LookUps</li>
-</ol>
-<hr>
-<p>For example, when a Query is created, it may need to know the current PortalId or the current time, to properly filter/sort something. </p>
-<p>This is achieved through 2 special object types, the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUp and <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.ILookUpEngine, both in the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a> namespace. </p>
-<h2 id="also-read-todoc">Also Read #todoc</h2>
-<ul>
-<li><a class="xref" href="tokens.html">LookUp Tokens Explained</a></li>
-<li><a class="xref" href="../../net-code/data-sources/custom/ensureconfigurationisloaded.html">DataSource API: EnsureConfigurationIsLoaded</a></li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a></li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.LookUp.html">ToSic.Sxc.LookUp</a></li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.LookUp.html">ToSic.Sxc.Dnn.LookUp</a></li>
-</ul>
+<h2 id="app-tokens"><code>App</code> Tokens</h2>
+<p>The following tokens are related to App-Information and Resources. DNN/DotNetNuke does have these, you can only access them when in a 2sxc-App. </p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&#91;App:Path]</td>
+            <td></td>
+            <td>/App-Demos/2sxc/Tutorial Tokens</td>
+        </tr>
+        <tr>
+            <td>&#91;App:PhysicalPath]</td>
+            <td></td>
+            <td>\nasw2\P\2sxc 2019b\Web\App-Demos\2sxc\Tutorial Tokens</td>
+        </tr>
+<!-- Internal note: these properties are not surfaced in the tokens ATM
+    {"DisplayName", String.IsNullOrEmpty(appName) ? eavAppName : appName },
+    {"Folder", String.IsNullOrEmpty(appName) ? eavAppName : RemoveIllegalCharsFromPath(appName) },
+    {"AllowTokenTemplates", "False"},
+    {"AllowRazorTemplates", "False"},
+    {"Version", "00.00.01"},
+    {"OriginalId", ""}
+-->
+</tbody></table>
+
+
+<h2 id="appsettings-tokens"><code>App:Settings</code> Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;App:Settings:&lt;Property&gt;]</td>
+            <td>App Settings which the App-designer defined.</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;App:Settings:UseLightbox]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>true</td>
+        </tr><br></table>
+
+<h2 id="appresources-tokens"><code>App:Resources</code> Tokens</h2>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;App:Resources:&lt;Property&gt;]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;App:Resources:GreetingText]</td>
+            <td>All the information (multi-lingual)</td>
+            <td>Hello there Token-Learner</td>
+        </tr>
+    
+</table>
+
+
 <h2 id="history">History</h2>
 <ol>
-<li>General Tokens introduced in 2sxc 1.0</li>
-<li>Most enhancements were in 2sxc 07.00</li>
+<li>Params added in 2sxc ca. v2</li>
+<li>Enhanced with Settings/Resources ca. v4</li>
 </ol>
 </article>
           </div>
@@ -307,7 +329,7 @@ and instead create your Templates using <a class="xref" href="../server/render/r
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/look-up/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/look-up/lookup-app.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
