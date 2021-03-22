@@ -12,6 +12,12 @@ An app is a standalone bundle of data and functionality. It contains the green a
    { visibility: visible; } 
 </style>
 
+Everything belonging to the App is stored in these locations
+
+1. The [App folder](xref:Basics.App.FolderStructure) contains all the green parts in the image above, including templates, C# code, JavaScript files etc.
+1. The database contains all the data of the app
+1. The [ADAM](xref:Basics.Cms.Adam.Index) folder contains the Assets for the App items
+
 > [!Important]
 > An App doesn't need all of the parts above. Apps can be really trivial. 
 > 
@@ -29,11 +35,6 @@ Each Zone contains at least 1 default app called **Content** and additional Apps
 
 > [!TIP]
 > Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. 
-
-Everything belonging to the App is stored in two locations
-
-1. The App folder contains all the green parts in the image above, including templates, C# code, JavaScript files etc.
-1. The database contains all the data of the app
  
 
 ## Types of Apps
@@ -51,10 +52,11 @@ This is the kind of App a _developer_ usually thinks of - with lots of data and 
 1. FAQ
 
 
-### Content Focused Apps
+### Content Focused Apps / Site Builder Apps
 
 This is the kind of App an _editor_ usually thinks of. The core ideas is that the editor adds an App to a page, and adds data to that instance. The data _belongs_ to that instance, so even if it's technically in a shared table, the user experience makes it feel like each use is autonomous. Examples of such Apps would be:
 
+1. [_The_ Content App](xref:Basics.App.ContentApp.Index)
 1. Image Sliders
 1. Galleries
 1. Accordions
@@ -86,23 +88,7 @@ You can create such SPAs using any popular JavaScript Framework such as
 
 ### _The_ Content App
 
-The Content-App is a special App in each site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page. 
-
-> [!TIP]
-> The content App has some special behavior and limitations by design. 
-
-**Special Behavior of _The_ Content App**
-
-When adding _the_ Content-App to a page, the dialog which appears will ask the editor to choose the _Content-Type_ (like _Image_) and then how to show it (like _Full-Size_). This is different from all other Apps where the editor will first choose the App (like _Blog_), and then the functionality (like _Tag-Cloud_).
-
-**Special Limitations of _The_ Content App**
-
-Since the Content-App is always there by default and the purpose is to add/edit simple content, it's limited by design to _not_ have some functionality other Apps have. This is mainly to protect the developer from building solutions with a bad user experience, since anything complex should be self-contained in it's own App. The limitations are:
-
-1. No [Visual Query](xref:Basics.Query.Index)
-1. Now [Custom Web APIs](xref:WebApi.Custom.Index)
-
-Previously _the_ Content App also didn't have App Settings or App Resources, but that limitation has been removed in 2sxc 11. 
+👉 See [](xref:Basics.App.ContentApp.Index)
 
 ---
 

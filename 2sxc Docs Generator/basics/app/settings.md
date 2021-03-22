@@ -60,3 +60,10 @@ Settings are normal Entities, and as such can be multi-language. We strongly rec
 ## Don't Use Settings for Labels
 
 Remember to use [](xref:Basics.App.Resources) for button-labels, titles etc. and not Settings, as this would confuse the users. 
+
+---
+
+## History
+
+1. Introduced in 2sxc 6.0
+1. Extendend [_The_ Content App](xref:Basics.App.ContentApp.Index) to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11

@@ -37,7 +37,7 @@ Note that the `ModuleDataSource` also does some more magic like
 1. Retrieve the Demo-Item as configured in the View, if no data exists (or a public user is looking at the page, and the data is still draft)
 1. Add more information like `IsDemoItem` to each piece of Information
 
-The **Content App** only uses this kind of preparation. Any App you create can use this, but it can also be configured to use custom Queries (see below).
+**[_The_ Content App](xref:Basics.App.ContentApp.Index)** only uses this kind of preparation. Any App you create can use this, but it can also be configured to use custom Queries (see below).
 
 
 ## Query Preparation
