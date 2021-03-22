@@ -10,14 +10,10 @@ uid: Basics.LookUp.Dnn
 DNN has various LookUps built in, which won't be available on Oqtane:
 
 1. `Portal` - Everything about the current Portal
-1. `User` - current user information
-1. `Membership` - ASP.net user information
-1. `Profile` - user profile (values not in the normal User object)
 1. `Tab` - information about the current Page
 1. `Module` - information about the current Module
 
-
-## DNN `Portal` Tokens
+## `Portal` Tokens
 
 The following tokens are common DNN/DotNetNuke tokens which should work everywhere tokens are in use. Some very common extensions are in the other view Extended Tokens.
 
@@ -76,76 +72,6 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
     </tr>
 </table>
 
-## DNN `User` Tokens
-
-<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
-    <thead>
-        <tr>
-            <td>Token</td>
-            <td>Description</td>
-            <td>Result</td>
-        </tr>
-    </thead>
-    <tr>
-        <td>&#91;User:DisplayName]</td>
-        <td>User’s Display Name</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;User:Email]</td>
-        <td>User’s Email Address</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;User:FirstName]</td>
-        <td>User’s First Name</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;User:FullName]</td>
-        <td>(deprecated)</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;User:LastName]</td>
-        <td>User’s Last Name</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;User:Username]</td>
-        <td>User’s Login User Name</td>
-        <td></td>
-    </tr>
-</table>
-
-## DNN `Membership` Tokens
-
-<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
-    <thead>
-        <tr>
-            <td>Token</td>
-            <td>Description</td>
-            <td>Result</td>
-        </tr>
-    </thead>
-    <tr>
-        <td>&#91;Membership:Approved]</td>
-        <td>Is User Approved?</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&#91;Membership:CreatedOnDate] </td>
-        <td>User Signup Date</td>
-        <td> </td>
-    </tr>
-    <tr>
-        <td>&#91;Membership:IsOnline]</td>
-        <td>Is User Currently Online?</td>
-        <td></td>
-    </tr>
-</table>
-
-## DNN User `Profile` Tokens
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
@@ -162,7 +88,7 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
     </tr>
 </table>
 
-## DNN `Tab` (Page) Tokens
+## `Tab` (Page) Tokens
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
@@ -229,7 +155,7 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
     </tr>
 </table>
 
-## DNN `Module` Tokens
+## `Module` Tokens
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
@@ -293,12 +219,12 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
 
 
 
+## Other DNN Token Sources
 
+Note that according to the DNN-Source-Code there are a total of 11 sources (status 2015-05-05). The ones not mentioned here are: 
 
-
-
-
-
+* Culture
+* Host
 
 
 ## History

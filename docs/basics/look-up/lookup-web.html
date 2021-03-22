@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LookUp Sources | 2sxc and EAV 10 </title>
+    <title>Web / Server / HTTP LookUps | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="LookUp Sources | 2sxc and EAV 10 ">
+    <meta name="title" content="Web / Server / HTTP LookUps | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.LookUp.Sources">
-<h1 id="lookup-sources">LookUp Sources</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.LookUp.Web">
+<h1 id="web--server--http-lookups">Web / Server / HTTP LookUps</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,95 +235,312 @@
   </div>
 </div><style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-<p>The <a class="xref" href="index.html">LookUp System</a> will use the <a class="xref" href="engine.html">LookUp Engine</a> to retrieve values for Queries and more. </p>
-<p>The LookUp engine will parse tokens like <code>[Module:ModuleId]</code> and then look for a <strong>LookUp Source</strong> with the matching name, in this case <code>Module</code>. </p>
-<p>For this to be possible, the Engine has a list of named sources like </p>
-<ul>
-<li><code>Module</code></li>
-<li><code>QueryString</code></li>
-<li><code>Params</code></li>
-<li>etc.</li>
-</ul>
-<p>On this page we&#39;ll explain how these work, and what special sources exist. </p>
-<h2 id="lookup-sources-1">LookUp Sources</h2>
-<p>These are the sources which are automatically included in 2sxc</p>
-<ul>
-<li><strong>App Sources</strong><ol>
-<li><a class="xref" href="lookup-app.html">App</a> - the current App, which can give you folders (to link JS files)</li>
-<li><a class="xref" href="lookup-app.html#appsettings-tokens">App:Settings</a> - app settings</li>
-<li><a class="xref" href="lookup-app.html#appresources-tokens">App:Resources</a> - app resources, for multi-language labels etc.</li>
-</ol>
-</li>
-<li><strong>Web Server and System Sources</strong><ol>
-<li><a class="xref" href="lookup-web.html#querystring-tokens">QueryString</a> - url parameters</li>
-<li><a class="xref" href="lookup-web.html#form-tokens">Form</a> - form post parameters</li>
-<li><a class="xref" href="lookup-web.html#server-tokens">Server</a> - HTTP server variables</li>
-<li><a class="xref" href="lookup-datetime.html">DateTime</a> - current date/time information</li>
-</ol>
-</li>
-<li><strong>CMS / DNN Sources</strong><ol>
-<li><a class="xref" href="lookup-dnn.html#portal-tokens">Portal</a> - the current DNN portal</li>
-<li><a class="xref" href="lookup-dnn.html#tab-page-tokens">Tab</a> - the current DNN page</li>
-<li><a class="xref" href="lookup-dnn.html#module-tokens">Module</a> - the current DNN module</li>
-</ol>
-</li>
-<li><strong>User Information Sources</strong><ol>
-<li><a class="xref" href="lookup-user.html#user-tokens">User</a></li>
-<li><a class="xref" href="lookup-user.html#membership-tokens">Membership</a></li>
-<li>User <a class="xref" href="lookup-user.html#user-profile-tokens">Profile</a></li>
-</ol>
-</li>
-</ul>
-<h3 id="token-template-sources">Token Template Sources</h3>
-<p>In <a class="xref" href="../server/render/tokens/index.html">Token Templates</a> we also have 3 special lookups</p>
+<p>There are three Sources for web parameters which can be used in LookUps:</p>
 <ol>
-<li><code>Content</code> - the current content</li>
-<li><code>Content:Presentation</code> - presentation settings of the current content, if configured</li>
-<li><code>ListContent</code> ?</li>
-<li><code>ListContent:Presentation</code></li>
-<li><code>AnyNameYouWant</code> specified in a <code>&lt;repeat&gt;</code> tag</li>
+<li><code>QueryString</code> - for url parameters</li>
+<li><code>Form</code> - for fields in the http-post</li>
+<li><code>Server</code> - for HTTP Server_... variables</li>
 </ol>
-<h3 id="query-sources">Query Sources</h3>
-<p>In <a class="xref" href="../query/index.html">Queries</a> we also have the following sources</p>
-<ol>
-<li><a class="xref" href="lookup-in.html">In</a></li>
-<li><a class="xref" href="lookup-params.html">Params</a></li>
-</ol>
-<h3 id="datasource-settings-source">DataSource Settings Source</h3>
-<p>In <a class="xref" href="../../net-code/data-sources/index.html">DataSources</a> code you will usually only work with <code>Settings</code> which contain all the settings that specific DataSource should work with. The <code>Settings</code> source only exists in your C# code, not in the VisualQuery. </p>
-<ol>
-<li><a class="xref" href="lookup-settings.html">Settings</a></li>
-</ol>
-<h2 id="what-is-a-lookup-source-technical-">What is a LookUp Source (technical ⚠)</h2>
-<p><strong>LookUp Sources</strong> are <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> objects and have a <code>Name</code> like like <code>QueryString</code>, <code>Module</code>, <code>Portal</code> etc. </p>
-<p>Each one is capable of retrieving values like <code>Id</code> or <code>DefaultPage</code>.</p>
-<p>So the <strong>Engine</strong> will ask the specific source for the expected value and the source will try to find it. 
-If it has an answer, it will return that. 
-If it doesn&#39;t find anything it will return null and let the Engine take care of fallback options. </p>
-<div class="TIP"><h5>Tip</h5><p>Everything is lazy, so these objects are only accessed and populated if the parameter is actually needed. 
-This results in great performance.</p>
-</div>
-<p>All LookUp objects implement the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> interface and inherit the <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpBase.html">LookUpBase</a> object. </p>
-<h2 id="internal-lookup-objects-technical-">Internal LookUp Objects (technical ⚠)</h2>
-<p>Just to give you an idea of the power of LookUp objects, here are some in use:</p>
-<ol>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInEntity.html">LookUpInEntity</a> - this resolves entity values. </li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInNameValueCollection.html">LookUpInNameValueCollection</a> - this resolves from name/value lists like <code>Dictionary</code> or <code>Request.QueryString</code> objects</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInMetadata.html">LookUpInMetadata</a> - will get values from Metadata of something</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInLookUps.html">LookUpInLookUps</a> - will look up values in various attached LookUp objects</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInDataTarget.html">LookUpInDataTarget</a> - will look up a value from an <code>In</code> stream of a DataSource</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess.html">LookUpInDnnPropertyAccess</a> - will look up stuff in DNN specific PropertyAccess objects, which are similar to LookUp objects</li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.LookUpInEntity.html">LookUpInEntity</a> - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine</li>
-</ol>
-<hr>
-<h2 id="also-read">Also Read</h2>
-<ul>
-<li><a class="xref" href="index.html">LookUp System</a></li>
-</ul>
+<h2 id="querystring-tokens"><code>QueryString</code> Tokens</h2>
+<p><h2>Extended Standard Tokens</h2>
+<p>The following tokens are still very &quot;normal&quot; but not part of the common DNN tokens. They work in 2sxc - but not in many DNN-Tools</p></p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&#91;QueryString:&lt;Url-Param-Name&gt;]</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;QueryString:TabId]</td>
+            <td>String - this demo shows the TabId <br>which is in the QueryString because of the internal URL-Rewrite. </td>
+            <td>730</td>
+        </tr>
+        <tr>
+            <td>&#91;QueryString:Category]</td>
+            <td>String - click <a href="?Category=Design">here</a> to see effect</td>
+            <td></td>
+        </tr>
+</tbody></table>
+
+
+<h2 id="form-tokens"><code>Form</code> Tokens</h2>
+<p>Form Tokens only exist if the request was a Post.</p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;Form:&lt;Form-Param-Name&gt;]</td>
+            <td>Form post values. Usually not needed, but if you do need it, it&#39;s here.</td>
+            <td>-</td>
+        </tr>
+</table>
+
+<h2 id="server-tokens"><code>Server</code> Tokens</h2>
+<p><strong>Schema</strong></p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Description</td>
+            <td>Result</td>
+        </tr>
+    </thead>
+        <tr>
+            <td>&#91;Server:&lt;Server-Property&gt;]</td>
+            <td>Many Server-Properties</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>&#91;Server:PATH_INFO]</td>
+            <td>Example of a property</td>
+            <td>/Default.aspx</td>
+        </tr><br></table>
+
+
+
+<p><strong>All Server variables</strong></p>
+<table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
+    <thead>
+        <tr>
+            <td>Token/Variable</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+<tr>
+<th style="width:20%">Variable</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>[Server:ALL_HTTP]</td>
+<td> Returns all HTTP headers sent by the client. Always prefixed
+      with HTTP_ and capitalized</td>
+</tr>
+<tr>
+<td>[Server:ALL_RAW]</td>
+<td> Returns all headers in raw form</td>
+</tr>
+<tr>
+<td>[Server:APPL_MD_PATH]</td>
+<td> Returns the meta base path for the application for the ISAPI
+  DLL</td>
+</tr>
+<tr>
+<td>[Server:APPL_PHYSICAL_PATH]</td>
+<td> Returns the physical path corresponding to the meta
+      base path</td>
+</tr>
+<tr>
+<td>[Server:AUTH_PASSWORD]</td>
+<td>Returns the value entered in the client&#39;s authentication dialog</td>
+</tr>
+<tr>
+<td>[Server:AUTH_TYPE]</td>
+<td> The authentication method that the server uses to validate users</td>
+</tr>
+<tr>
+<td>[Server:AUTH_USER]</td>
+<td>Returns the raw authenticated user name</td>
+</tr>
+<tr>
+<td>[Server:CERT_COOKIE]</td>
+<td>Returns the unique ID for client certificate as a string</td>
+</tr>
+<tr>
+<td>[Server:CERT_FLAGS]</td>
+<td> bit0 is set to 1 if the client certificate is present and bit1 is set to 1 if the cCertification authority of the client certificate is
+  not valid</td>
+</tr>
+<tr>
+<td>[Server:CERT_ISSUER]</td>
+<td>Returns the issuer field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_KEYSIZE]</td>
+<td>Returns the number of bits in Secure Sockets Layer connection key
+  size</td>
+</tr>
+<tr>
+<td>[Server:CERT_SECRETKEYSIZE]</td>
+<td>Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERIALNUMBER]</td>
+<td>Returns the serial number field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERVER_ISSUER]</td>
+<td>Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SERVER_SUBJECT]</td>
+<td>Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:CERT_SUBJECT]</td>
+<td>Returns the subject field of the client certificate</td>
+</tr>
+<tr>
+<td>[Server:CONTENT_LENGTH]</td>
+<td>Returns the length of the content as sent by the client</td>
+</tr>
+<tr>
+<td>[Server:CONTENT_TYPE]</td>
+<td>Returns the data type of the content</td>
+</tr>
+<tr>
+<td>[Server:GATEWAY_INTERFACE]</td>
+<td>Returns the revision of the CGI specification used by the
+  server</td>
+</tr>
+<tr>
+<td>[Server:HTTP_&lt;<i>HeaderName</i>&gt;]</td>
+<td>Returns the value stored in the header <i> HeaderName</i></td>
+</tr>
+<tr>
+<td>[Server:HTTP_ACCEPT]</td>
+<td> Returns the value of the Accept header</td>
+</tr>
+<tr>
+<td>[Server:HTTP_ACCEPT_LANGUAGE]</td>
+<td> Returns a string describing the language to use for displaying
+  content</td>
+</tr>
+<tr>
+<td>[Server:HTTP_COOKIE]</td>
+<td> Returns the cookie string included with the request</td>
+</tr>
+<tr>
+<td>[Server:HTTP_REFERER]</td>
+<td> Returns a string containing the URL of the page that referred 
+the request to the current page using an &lt;a&gt; tag. If the page is redirected, 
+HTTP_REFERER is empty</td>
+</tr>
+<tr>
+<td>[Server:HTTP_USER_AGENT]</td>
+<td> Returns a string describing the browser that sent the request</td>
+</tr>
+<tr>
+<td>[Server:HTTPS]</td>
+<td> Returns ON if the request came in through secure channel or OFF if the request
+  came in through a non-secure channel</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_KEYSIZE]</td>
+<td> Returns the number of bits in Secure Sockets Layer connection key
+  size</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SECRETKEYSIZE]</td>
+<td> Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SERVER_ISSUER]</td>
+<td> Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:HTTPS_SERVER_SUBJECT]</td>
+<td> Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>[Server:INSTANCE_ID]</td>
+<td> The ID for the IIS instance in text format</td>
+</tr>
+<tr>
+<td>[Server:INSTANCE_META_PATH]</td>
+<td> The meta base path for the instance of IIS that responds to the
+  request</td>
+</tr>
+<tr>
+<td>[Server:LOCAL_ADDR]</td>
+<td> Returns the server address on which the request came in</td>
+</tr>
+<tr>
+<td>[Server:LOGON_USER]</td>
+<td>Returns the Windows account that the user is logged into</td>
+</tr>
+<tr>
+<td>[Server:PATH_INFO]</td>
+<td>Returns extra path information as given by the client</td>
+</tr>
+<tr>
+<td>[Server:PATH_TRANSLATED]</td>
+<td> A translated version of PATH_INFO that takes the path and performs any necessary virtual-to-physical
+  mapping</td>
+</tr>
+<tr>
+<td>[Server:QUERY_STRING]</td>
+<td>Returns the query information stored in the string following the question mark (?) in the HTTP
+  request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_ADDR]</td>
+<td> Returns the IP address of the remote host making the request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_HOST]</td>
+<td> Returns the name of the host making the request</td>
+</tr>
+<tr>
+<td>[Server:REMOTE_USER]</td>
+<td> Returns an unmapped user-name string sent in by the user</td>
+</tr>
+<tr>
+<td>[Server:REQUEST_METHOD]</td>
+<td> Returns the method used to make the request</td>
+</tr>
+<tr>
+<td>[Server:SCRIPT_NAME]</td>
+<td> Returns a virtual path to the script being executed</td>
+</tr>
+<tr>
+<td>[Server:SERVER_NAME]</td>
+<td> Returns the server&#39;s host name, DNS alias, or IP address as it would appear in self-referencing
+  URLs</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PORT]</td>
+<td> Returns the port number to which the request was sent</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PORT_SECURE]</td>
+<td> Returns a string that contains 0 or 1. If the request is being handled on the secure port,
+  it will be 1. Otherwise, it will be 0</td>
+</tr>
+<tr>
+<td>[Server:SERVER_PROTOCOL]</td>
+<td> Returns the name and revision of the request information
+  protocol</td>
+</tr>
+<tr>
+<td>[Server:SERVER_SOFTWARE]</td>
+<td> Returns the name and version of the server software that answers the request and runs the
+  gateway</td>
+</tr>
+<tr>
+<td>[Server:URL]</td>
+<td> Returns the base portion of the URL</td>
+</tr>
+</table>
+
+
+
 <h2 id="history">History</h2>
 <ol>
-<li>General Tokens introduced in 2sxc 1.0</li>
-<li>Most enhancements were in 2sxc 07.00</li>
+<li>Params added in 2sxc ca. v2</li>
+<li>Enhanced with Settings/Resources ca. v4</li>
 </ol>
 </article>
           </div>
@@ -333,7 +550,7 @@ This results in great performance.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/look-up/sources.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/look-up/lookup-web.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

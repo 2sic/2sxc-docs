@@ -20,8 +20,39 @@ For this to be possible, the Engine has a list of named sources like
 
 On this page we'll explain how these work, and what special sources exist. 
 
+## LookUp Sources
 
-## What is a LookUp Source
+These are the sources which are automatically included in 2sxc
+
+[!include[](~/basics/look-up/_include-common-sources.md)]
+
+### Token Template Sources
+
+In [Token Templates](xref:Basics.Server.Render.Tokens.Index) we also have 3 special lookups
+
+1. `Content` - the current content
+1. `Content:Presentation` - presentation settings of the current content, if configured
+1. `ListContent` ?
+1. `ListContent:Presentation`
+1. `AnyNameYouWant` specified in a `<repeat>` tag
+
+
+### Query Sources
+
+In [Queries](xref:Basics.Query.Index) we also have the following sources
+
+1. [In](xref:Basics.LookUp.In)
+1. [Params](xref:Basics.LookUp.Params)
+
+
+### DataSource Settings Source
+
+In [DataSources](xref:NetCode.DataSources.Index) code you will usually only work with `Settings` which contain all the settings that specific DataSource should work with. The `Settings` source only exists in your C# code, not in the VisualQuery. 
+
+1. [Settings](xref:Basics.LookUp.Settings)
+
+
+## What is a LookUp Source (technical ⚠)
 
 **LookUp Sources** are [](xref:ToSic.Eav.LookUp.ILookUp) objects and have a `Name` like like `QueryString`, `Module`, `Portal` etc. 
 
@@ -37,21 +68,6 @@ If it doesn't find anything it will return null and let the Engine take care of 
 
 All LookUp objects implement the [](xref:ToSic.Eav.LookUp.ILookUp) interface and inherit the [](xref:ToSic.Eav.LookUp.LookUpBase) object. 
 
-
-## LookUp Sources
-
-These are the sources which are automatically included in 2sxc
-
-1. `QueryString` to look up url parameters
-1. `DateTime` to look up todays date or the now-time
-1. `` #todoc
-
-In Queries we also have the following sources
-
-1. Params
-1. Settings
-
-
 ## Internal LookUp Objects (technical ⚠)
 
 Just to give you an idea of the power of LookUp objects, here are some in use:
@@ -64,16 +80,11 @@ Just to give you an idea of the power of LookUp objects, here are some in use:
 1. [](xref:ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess) - will look up stuff in DNN specific PropertyAccess objects, which are similar to LookUp objects
 1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
 
+---
 
-## Also Read #todoc
+## Also Read
 
 * [](xref:Basics.LookUp.Index)
-* [](xref:Basics.LookUp.Tokens)
-* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
-* [](xref:ToSic.Eav.LookUp)
-* [](xref:ToSic.Sxc.LookUp)
-* [](xref:ToSic.Sxc.Dnn.LookUp)
-
 
 ## History
 
