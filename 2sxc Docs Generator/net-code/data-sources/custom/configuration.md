@@ -21,38 +21,38 @@ Most Custom DataSources will want to provide a configuration UI to the editor. T
 
 ## Examples of Configurations Needed
 
-* a [](xref:ToSic.Sxc.DataSources.CmsBlock) needs to know the module ID 
-* an [Owner-Filter DataSource](xref:ToSic.Eav.DataSources.OwnerFilter) needs to know who the current user is, to find his items
 * a [Paging ](xref:ToSic.Eav.DataSources.Paging) needs to know what page size it should use and what page it's on
 * A [CSV Data Source](xref:ToSic.Eav.DataSources.CsvDataSource) needs to know what file it should load
+* a [](xref:ToSic.Sxc.DataSources.CmsBlock) needs to know the module ID 
+* an [Owner-Filter DataSource](xref:ToSic.Eav.DataSources.OwnerFilter) needs to know who the current user is, to find his items
 
-As you can see, some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say _"use the page-size configured in the App-Settings"_ or even more complex _"use from url, but if not specified, try app-settings, and if that isn't defined, use 10"_.
-
-This is what this Token-Configuration-Injection-System is for. 
+Some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say _"use the page-size configured in the App-Settings"_ or even more complex _"use from url, but if not specified, try app-settings, and if that isn't defined, use 10"_.
 
 
 ## How to Build a Configurable DataSource
+
+👉 [](xref:NetCode.DataSources.Custom.ConfigurationData)
 
 👉 [](xref:NetCode.DataSources.Custom.ConfigurableDataSource)
 
 
 ## Configuration Basics
 
-Each configuration of a [DataSource](xref:NetCode.DataSources.DataSource) is either a fixed string value like `17` or a token like `[Settings:PageNumber]`. In most cases it's a [Token](xref:Basics.LookUp.Tokens). This token is parsed _before any data is queried_ to ensure that in the end the [DataSource](xref:NetCode.DataSources.DataSource) has a useful value before actually performing its task. 
+Each configuration value of a [DataSource](xref:NetCode.DataSources.DataSource) must be a value (string, int etc.). 
+But to allow greater flexibility in configuration, it usually starts as a string [Token](xref:Basics.LookUp.Tokens) like `[Settings:PageNumber]`. 
+This token is parsed _before any data is queried_ using [Configuration.Parse()](xref:NetCode.DataSources.Custom.ConfigurationParse) to convert the Token to the expected value type. 
+Best read more about [Tokens](xref:Basics.LookUp.Tokens) and how fallbacks, defaults and recursion work.  
 
-A **Token** is a piece of text that looks like `[Source:Property]`. It is good to understand the full [token concept, discussed here](xref:Basics.LookUp.Tokens). You'll also want to read about fallback and recursion to understand the following content. 
+The Tokens allow quite some fancy features:
 
-## Shared Token-Suppliers / Token-Sources
+1. Your DataSource will use `[Settings:...]` tokens and will automatically get the settings as they were added in the UI
+1. Since tokens also allow for default/fallback values, your code will often have `[Settings:Id||0]`
+1. As tokens are recursive, the admin can specify things like `[QueryString:Id||752]` in the UI and your code (asking for `[Settings:Id]`) will get the ID from the URL or the default `752` as the Admin specified it. 
+1. Thanks to [Token Stacking](xref:Basics.LookUp.Tokens) a lot more is possible 😉
 
-When a DataSource is configured, it has many token-suppliers like `Module`, `QueryString`, `App` etc. These are shared and are identical for all objects. 
+When a DataSource is configured, it has many parameter LookUp Sources like `Module`, `QueryString`, `App` etc. These are shared and are identical for all objects. Read more about the [LookUp Sources](xref:Basics.LookUp.Sources).
 
-## Advanced Token-Source for Settings
-
-The `Settings` source is a special source which contains all the properties of the settings-item which configures exactly this one data-source. For example the token `[Settings:PageNumber]` will deliver the number or text in the settings `pagenumber` field. 
-
-## Advanced Token-Source for In
-
-DataSources also have a source called `In` which is different for each DataSource, as each one has its own In-streams. You can use it in tokens like `[In:Default:PageSize]` where the term after `In:` is the stream-name to be consulted. 
+In your code you will usually not use these sources, but only use the [`Settings` source](xref:Basics.LookUp.Settings). This source only exists in C# and contains all the values the Admin/Editor entered in the [Configuration-UI](xref:NetCode.DataSources.Custom.ConfigurationData). So the token `[Settings:PageNumber]` will deliver the number or text in the input-field `pagenumber`. 
 
 ## How Tokens are Defined, Settings Edited and Resolved
 

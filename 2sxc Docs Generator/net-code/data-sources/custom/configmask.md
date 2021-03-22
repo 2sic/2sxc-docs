@@ -29,10 +29,10 @@ Here's a example of the constructor of our SharePoint 2019 DataSource, which exp
 
 public SharePoint2019()
 {
-  // Specify what out-streams this data-source provides. Usually just one, called "Default"
+  // Specify what out-streams this data-source provides. Usually just one: "Default"
   Provide(GetList);
 
-  // Register the configurations we want as tokens, so that the values will be injected later on
+  // Register the configurations as tokens; values will be injected later on
   ConfigMask(ListNameConfigKey, $"[Settings:ListName]");
   ConfigMask(SiteUrlConfigKey, $"[Settings:SiteUrl]");
   ConfigMask(UserNameConfigKey, $"[Settings:UserName]");

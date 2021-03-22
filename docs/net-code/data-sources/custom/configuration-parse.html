@@ -259,9 +259,9 @@ public bool ShowDrafts
 
 private IImmutableList&lt;IEntity&gt; PublishingFilterList()
 {
-  var before = ShowDrafts;  // here it&#39;s &quot;[Settings:ShowDrafts||false]&quot; which would cause trouble
+  var before = ShowDrafts;  // here it&#39;s &quot;[Settings:ShowDrafts||false]&quot; which would fail
   Configuration.Parse();
-  var after = ShowDrafts;   // here it&#39;s `false` as expected (or `true` if the user is an editor)
+  var after = ShowDrafts;   // here it&#39;s `false` (or `true` if user is editor)
   var outStreamName = ShowDrafts 
     ? Constants.DraftsStreamName 
     : Constants.PublishedStreamName;

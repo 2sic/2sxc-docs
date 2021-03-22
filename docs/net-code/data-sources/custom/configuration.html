@@ -249,24 +249,29 @@
 </ol>
 <h2 id="examples-of-configurations-needed">Examples of Configurations Needed</h2>
 <ul>
-<li>a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> needs to know the module ID </li>
-<li>an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.OwnerFilter.html">Owner-Filter DataSource</a> needs to know who the current user is, to find his items</li>
 <li>a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging </a> needs to know what page size it should use and what page it&#39;s on</li>
 <li>A <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.CsvDataSource.html">CSV Data Source</a> needs to know what file it should load</li>
+<li>a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> needs to know the module ID </li>
+<li>an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.OwnerFilter.html">Owner-Filter DataSource</a> needs to know who the current user is, to find his items</li>
 </ul>
-<p>As you can see, some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn&#39;t defined, use 10&quot;</em>.</p>
-<p>This is what this Token-Configuration-Injection-System is for. </p>
+<p>Some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn&#39;t defined, use 10&quot;</em>.</p>
 <h2 id="how-to-build-a-configurable-datasource">How to Build a Configurable DataSource</h2>
+<p>👉 <a class="xref" href="configuration-data.html">DataSource Configuration Data</a></p>
 <p>👉 <a class="xref" href="configurable-datasource.html">Configurable DataSource</a></p>
 <h2 id="configuration-basics">Configuration Basics</h2>
-<p>Each configuration of a <a class="xref" href="../datasource.html">DataSource</a> is either a fixed string value like <code>17</code> or a token like <code>[Settings:PageNumber]</code>. In most cases it&#39;s a <a class="xref" href="../../../basics/look-up/tokens.html">Token</a>. This token is parsed <em>before any data is queried</em> to ensure that in the end the <a class="xref" href="../datasource.html">DataSource</a> has a useful value before actually performing its task. </p>
-<p>A <strong>Token</strong> is a piece of text that looks like <code>[Source:Property]</code>. It is good to understand the full <a class="xref" href="../../../basics/look-up/tokens.html">token concept, discussed here</a>. You&#39;ll also want to read about fallback and recursion to understand the following content. </p>
-<h2 id="shared-token-suppliers--token-sources">Shared Token-Suppliers / Token-Sources</h2>
-<p>When a DataSource is configured, it has many token-suppliers like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. </p>
-<h2 id="advanced-token-source-for-settings">Advanced Token-Source for Settings</h2>
-<p>The <code>Settings</code> source is a special source which contains all the properties of the settings-item which configures exactly this one data-source. For example the token <code>[Settings:PageNumber]</code> will deliver the number or text in the settings <code>pagenumber</code> field. </p>
-<h2 id="advanced-token-source-for-in">Advanced Token-Source for In</h2>
-<p>DataSources also have a source called <code>In</code> which is different for each DataSource, as each one has its own In-streams. You can use it in tokens like <code>[In:Default:PageSize]</code> where the term after <code>In:</code> is the stream-name to be consulted. </p>
+<p>Each configuration value of a <a class="xref" href="../datasource.html">DataSource</a> must be a value (string, int etc.). 
+But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../basics/look-up/tokens.html">Token</a> like <code>[Settings:PageNumber]</code>. 
+This token is parsed <em>before any data is queried</em> using <a class="xref" href="configuration-parse.html">Configuration.Parse()</a> to convert the Token to the expected value type. 
+Best read more about <a class="xref" href="../../../basics/look-up/tokens.html">Tokens</a> and how fallbacks, defaults and recursion work.  </p>
+<p>The Tokens allow quite some fancy features:</p>
+<ol>
+<li>Your DataSource will use <code>[Settings:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
+<li>Since tokens also allow for default/fallback values, your code will often have <code>[Settings:Id||0]</code></li>
+<li>As tokens are recursive, the admin can specify things like <code>[QueryString:Id||752]</code> in the UI and your code (asking for <code>[Settings:Id]</code>) will get the ID from the URL or the default <code>752</code> as the Admin specified it. </li>
+<li>Thanks to <a class="xref" href="../../../basics/look-up/tokens.html">Token Stacking</a> a lot more is possible 😉</li>
+</ol>
+<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../basics/look-up/sources.html">LookUp Sources</a>.</p>
+<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../basics/look-up/lookup-settings.html"><code>Settings</code> source</a>. This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>. So the token <code>[Settings:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>. </p>
 <h2 id="how-tokens-are-defined-settings-edited-and-resolved">How Tokens are Defined, Settings Edited and Resolved</h2>
 <p>When you&#39;re using the visual query designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
 <ol>

@@ -2,7 +2,7 @@
 uid: NetCode.DataSources.Custom.ConfigurationData
 ---
 
-# DataSource Configuration: Configuration Data
+# DataSource Configuration Data
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>
@@ -34,6 +34,8 @@ You'll need to register the [internal name](xref:Basics.Data.ContentTypes.Names)
 
 Once you've done this, the [Visual Query Designer](xref:Basics.Query.VisualQuery.Index) will know about it and offer your content-type when configuring that part of a Query. 
 
+> [!TIP]
+> The data entered will be made available to your DataSource Configuration as the [Settings](xref:Basics.LookUp.Settings).
 
 ## Advanced Integration: Multi-App Use
 
