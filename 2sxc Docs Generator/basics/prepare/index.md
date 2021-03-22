@@ -7,13 +7,23 @@ uid: Basics.Prepare.Index
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .prepare-all { visibility: visible; } </style>
 
-A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation**. This is fully automated and has 2 common scenarios:
+A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation**. This is fully automated and has three common scenarios:
 
-1. **[Default](#default-preparation)** where content added to a Module by an editor is retrieved and prepared
+1. **[No Prepare](#no-preparation)** where no Data is used or at least no _Instance Data_ 
+1. **[Default](#default-preparation-instance-data)** where content added to a Module by an editor is retrieved and prepared
 1. **[Query](#query-preparation)** where a custom VisualQuery is configured to get the data
 
 
-## Default Preparation
+## No Preparation
+
+Two cases need no preparation at all
+
+1. Templates / code which don't use any data
+1. Templates / code which use only general App data or Queries but not instance data
+
+In these cases the View is configured to not use data and the template or WebApi will either not use data or will only access it through the [App.Data](xref:NetCode.DynamicCode.Objects.App.Data) which has all data at it's disposal. 
+
+## Default Preparation: Instance Data
 
 By default all **Module Instances** can have data which the editor has added manually in the CMS UI. This corresponds to the normal [Content Editing](xref:Basics.Content.Index) scenario. Internally it uses a [Query](xref:Basics.Query.Index) which looks like this:
 

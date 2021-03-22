@@ -114,8 +114,10 @@
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.EntityVsDynamicEntity">
 <h1 id="entity-vs-dynamic-entity-content-items">Entity vs. Dynamic Entity Content-Items</h1>
 
-<h2 id="difference-ientity-and-idynamicentity">Difference IEntity and IDynamicEntity</h2>
-<p>Just a short piece of code, so you can see why you usually <em>don&#39;t want to use the IEntity</em> and will prefer the <em>IDynamicEntity</em> instead.</p>
+<p>When coding with 2sxc data, there are two data object types: <strong>DynamicEntity</strong> and <strong>Entity</strong>:</p>
+<p><a class="xref" href="dynamic-entity.html">Dynamic Entities</a> are simple, <em>dynamic</em> objects that allow you to write template with any property you believe the data should have, like <code>@person.FirstName</code> etc. They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background. </p>
+<p><a class="xref" href="entity.html">Entities</a> are strongly typed objects for complex work, but getting values is much more difficult. You usually don&#39;t need this, but it&#39;s important that you know this exists. </p>
+<p>This piece of code shows why you usually <em>don&#39;t want to use the IEntity</em> and will prefer the <em>IDynamicEntity</em> instead.</p>
 <pre><code class="lang-cs">// The easy way, using the content-item as a DynamicEntity
 var titleSimple = Content.Title; 
 
@@ -124,6 +126,10 @@ var languagePreference = [&quot;de&quot;, &quot;en&quot;];
 var autoResolveLinks = true;
 var titleMedium = AsEntity(Content).GetBestValue(&quot;Title&quot;, languagePreference, autoResolveLinks);
 </code></pre><p>As you can see, the internals provide a lot of information about the underlying data - things you usually don&#39;t care about, but in rare cases may be important.</p>
+<h2 id="conversion">Conversion</h2>
+<p>Each type can be converted to the other type using helpers like <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>, <a class="xref" href="../dynamic-code/as-list.html">AsList(...)</a> and <a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a>. The APIs are explained here <a class="xref" href="../dynamic-code/index.html">Dynamic Code API</a>.</p>
+<div class="TIP"><h5>Tip</h5><p>In most cases you&#39;ll always use <a class="xref" href="dynamic-entity.html">Dynamic Entities</a> and if you&#39;re not sure whan an object is, just run it through <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>.</p>
+</div>
 <h2 id="conversion-examples">Conversion Examples</h2>
 <p>This is just a bit of code so you can see how to convert back and forth. You usually won&#39;t care too much about this and not do this. </p>
 <p>Note that this is a very advanced topic, and you&#39;ll need Visual Studio Intellisense to get this done reasonably. Since you&#39;ll figure it out fairly quickly, we won&#39;t document it in detail here. </p>

@@ -22,10 +22,7 @@ The following APIs are available on all 2sxc **Dynamic Code**. You can use this 
 
 ## Instance Data in Dynamic Code
 
-> [!NOTE]
-> Instance specific data _belongs_ to the module-instance on the page, either because it was manually added or because the module-instance uses a Query which is specific to this module. 
-
-Learn more about this in [](xref:NetCode.DynamicData.Index)
+[!include[""](../dynamic-data/_include-data-origins.md)]
 
 [!include["List of Data Context Objects"](../dynamic-code/_include-instance-data.md)]
 

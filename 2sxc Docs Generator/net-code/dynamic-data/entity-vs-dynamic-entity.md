@@ -4,9 +4,16 @@ uid: NetCode.DynamicData.EntityVsDynamicEntity
 
 # Entity vs. Dynamic Entity Content-Items
 
-## Difference IEntity and IDynamicEntity
 
-Just a short piece of code, so you can see why you usually _don't want to use the IEntity_ and will prefer the _IDynamicEntity_ instead.
+When coding with 2sxc data, there are two data object types: **DynamicEntity** and **Entity**:
+
+[Dynamic Entities](xref:NetCode.DynamicData.DynamicEntity) are simple, _dynamic_ objects that allow you to write template with any property you believe the data should have, like `@person.FirstName` etc. They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background. 
+
+
+[Entities](xref:NetCode.DynamicData.Entity) are strongly typed objects for complex work, but getting values is much more difficult. You usually don't need this, but it's important that you know this exists. 
+
+
+This piece of code shows why you usually _don't want to use the IEntity_ and will prefer the _IDynamicEntity_ instead.
 
 ```cs
 // The easy way, using the content-item as a DynamicEntity
@@ -20,6 +27,14 @@ var titleMedium = AsEntity(Content).GetBestValue("Title", languagePreference, au
 ```
 
 As you can see, the internals provide a lot of information about the underlying data - things you usually don't care about, but in rare cases may be important.
+
+## Conversion 
+
+Each type can be converted to the other type using helpers like [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic), [AsList(...)](xref:NetCode.DynamicCode.AsList) and [AsEntity(...)](xref:NetCode.DynamicCode.AsEntity). The APIs are explained here [](xref:NetCode.DynamicCode.Index).
+
+> [!TIP]
+> In most cases you'll always use [Dynamic Entities](xref:NetCode.DynamicData.DynamicEntity) and if you're not sure whan an object is, just run it through [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic).
+
 
 ## Conversion Examples
 

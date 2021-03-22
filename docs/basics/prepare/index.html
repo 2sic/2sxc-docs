@@ -235,12 +235,20 @@
   </div>
 </div><style>.context-box-summary .prepare-all { visibility: visible; } </style>
 
-<p>A common Step in the <a class="xref" href="../server/data-flow.html">data-flow</a> is the <strong>Data Preparation</strong>. This is fully automated and has 2 common scenarios:</p>
+<p>A common Step in the <a class="xref" href="../server/data-flow.html">data-flow</a> is the <strong>Data Preparation</strong>. This is fully automated and has three common scenarios:</p>
 <ol>
-<li><strong><a href="#default-preparation">Default</a></strong> where content added to a Module by an editor is retrieved and prepared</li>
+<li><strong><a href="#no-preparation">No Prepare</a></strong> where no Data is used or at least no <em>Instance Data</em> </li>
+<li><strong><a href="#default-preparation-instance-data">Default</a></strong> where content added to a Module by an editor is retrieved and prepared</li>
 <li><strong><a href="#query-preparation">Query</a></strong> where a custom VisualQuery is configured to get the data</li>
 </ol>
-<h2 id="default-preparation">Default Preparation</h2>
+<h2 id="no-preparation">No Preparation</h2>
+<p>Two cases need no preparation at all</p>
+<ol>
+<li>Templates / code which don&#39;t use any data</li>
+<li>Templates / code which use only general App data or Queries but not instance data</li>
+</ol>
+<p>In these cases the View is configured to not use data and the template or WebApi will either not use data or will only access it through the <a class="xref" href="../../net-code/dynamic-code/objects/app/app-data.html">App.Data</a> which has all data at it&#39;s disposal. </p>
+<h2 id="default-preparation-instance-data">Default Preparation: Instance Data</h2>
 <p>By default all <strong>Module Instances</strong> can have data which the editor has added manually in the CMS UI. This corresponds to the normal <a class="xref" href="../content/index.html">Content Editing</a> scenario. Internally it uses a <a class="xref" href="../query/index.html">Query</a> which looks like this:</p>
 <p><img src="assets/default-prepare.jpg" width="100%"></p>
 <p>This does the following (starting from the bottom):</p>

@@ -1,7 +1,7 @@
 ---
 uid: NetCode.DynamicCode.AsDynamicString
 ---
-# AsDynamic({ "Some": "Json-String"}) - Magic Objects
+# AsDynamic({ "Some": "Json-String"})
 
 2sxc v10.20 introduced another cool helper. It takes any JSON string and gives you a dynamic object to use in your code. 
 
