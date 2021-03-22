@@ -44,7 +44,7 @@ LookUpEngine objects are provided with DepedencyInjection. The system that gets 
 
 * [](xref:Basics.LookUp.Index)
 * [](xref:Basics.LookUp.Tokens)
-* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 * [](xref:ToSic.Eav.LookUp)
 * [](xref:ToSic.Sxc.LookUp)
 * [](xref:ToSic.Sxc.Dnn.LookUp)

@@ -2,19 +2,19 @@
 uid: NetCode.DataSources.Custom.Provide
 ---
 
-# DataSource API: Provide
+# DataSource API: Provide(...)
 
-DataSources always provide data on an `Out` stream. The `Provide` method makes it very easy to do. 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-> [!WARNING]
-> These docs are out of date! The real APIs are a bit different but we haven't managed to update them yet. 
-> If you're creating your own DataSource, best consult the source code of 2sxc or EAV to get it working
+DataSources always provide data on an [`Out` Stream](xref:NetCode.DataSources.Custom.StreamsOut). The `Provide` method makes it very easy to do. 
 
 ## How to use Provide
-In general, you need to 
-1. have a private method - usually called `GetList()` that would return a _list_ of items, if it is called
-1. use that `GetList()` to build a stream, which has a name - typically _Default_
-1. attach that stream to the `Out` so that it's accessible
+
+In general, you need
+
+1. a method like `GetList()` which returns an `IEnumerable<IEntity>`
+1. attach that stream to the `Out` - usually on a stream called `Default`
 
 Here's a simple example of the constructor of the [DnnFormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list), which provides the default stream: 
 
@@ -26,7 +26,7 @@ public DnnFormAndList()
 
     // ...
 }
-private IEnumerable<Eav.Interfaces.IEntity> GetList() 
+private IEnumerable<IEntity> GetList() 
 {
     // ...
 } 
@@ -56,7 +56,7 @@ public SomeConstructor()
 ## Read also
 
 * [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
-* [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)
 
 ## Demo App and further links
 

@@ -1,53 +1,68 @@
 ---
 uid: NetCode.DataSources.Custom.ConfigMask
 ---
-# DataSource API: ConfigMask
 
-DataSources often need settings which come from the App or from a settings dialog. The ConfigMask builds a configuration token which will be used to get this setting, and also ensures that cachings mechanims vary the cache based on the result of the configuration. 
+# DataSource Configuration: ConfigMask(...)
 
-> [!WARNING]
-> These docs are out of date! The real APIs are a bit different but we haven't managed to update them yet. 
-> If you're creating your own DataSource, best consult the source code of 2sxc or EAV to get it working
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .datasource-custom, 
+  .context-box-summary .query-params,
+  .context-box-summary .data-configuration
+  { visibility: visible; } 
+</style>
+
+DataSources often need settings which come from the App or from a settings dialog. 
+The ConfigMask is part of the [Configuration System](xref:NetCode.DataSources.Custom.Configuration) and initializes a configuration value.
+
+This value will later be used for
+
+1. Parsing [Tokens](xref:Basics.LookUp.Tokens) to find the correct parameter to use
+1. Use as part of the Cache-Key for high-performance caching.   
+  This ensures that DataSources which have different data based on dynamic configuration (like using a URL parameter) will have separate caches for each value used. 
 
 ## How to use ConfigMask
-Here's a simple example of the constructor of the [DnnFormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list), which expects 3 settings: 
+
+Here's a example of the constructor of our SharePoint 2019 DataSource, which expects lots of settings: 
 
 ```cs
-public DnnFormAndList()
-{
-    // Specify what out-streams this data-source provides. Usually just one, called "Default"
-    Provide(GetList);
 
-    // Register the configurations we want as tokens, so that the values will be injected later on
-    ConfigMask("ModuleId", "[Settings:ModuleId||0]");
-    ConfigMask("TitleField", "[Settings:TitleFieldName]");
-    ConfigMask("ContentType", "[Settings:ContentTypeName||FnL]");
+public SharePoint2019()
+{
+  // Specify what out-streams this data-source provides. Usually just one, called "Default"
+  Provide(GetList);
+
+  // Register the configurations we want as tokens, so that the values will be injected later on
+  ConfigMask(ListNameConfigKey, $"[Settings:ListName]");
+  ConfigMask(SiteUrlConfigKey, $"[Settings:SiteUrl]");
+  ConfigMask(UserNameConfigKey, $"[Settings:UserName]");
+  ConfigMask(PasswordConfigKey, $"[Settings:Password]", false);
+  ConfigMask(FieldsConfigKey, $"[Settings:Fields]");
+  ConfigMask(TitleFieldConfigKey, $"[Settings:TitleField||Title]");
+  ConfigMask(ViewConfigKey, $"[Settings:View]");
+  ConfigMask(MaxItemsConfigKey, $"[Settings:MaxItems]");
 }
 ```
-This example adds 3 configuration masks - let's find out what exactly happens.
 
-## Tokens for Configuration Injection
-The EAV-System has a sophisticated system to get configuration based on tokens. You can read about  [configuration injection using tokens here](xref:Basics.LookUp.Index). 
+This example adds 8 configuration masks - let's find out what exactly happens.
 
-## Registering and Resolving these Tokens with ConfigMask
-Internally a lot happens, but you just need to know the ConfigMask command. The syntax is:
+1. Most of them just add a simple `[Settings:SOMEKEY]` so they will just take the value which the developer will configure in the UI
+1. The password has a special parameter `false` to ensure that it won't be used in the cache key (which would show it in certain debug scenarios)
+1. The title field has a fallback - so if it's not supplied, it will use `Title` by default
 
-* `ConfigMask(key, mask)`
 
-This will do the following
-1. Add this mask (using this name) to the configuration list
-1. register this key to be cache-relevant
-
+---
 
 ## Read also
 
 * [Configuration using Tokens](xref:Basics.LookUp.Index)
+* [ConfigMask in the API](xref:ToSic.Eav.DataSources.DataSourceBase.ConfigMask*)
 * [](xref:NetCode.DataSources.Custom.Configuration)
-* [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)
 
 ## Demo App and further links
 
-* [FnL DataSource Demo Code](https://github.com/2sic/dnn-datasource-form-and-list)
+* #todoc
 
 ## History
 

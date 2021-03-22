@@ -1,2 +1,2 @@
 
-# Moved to [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+# Moved to [](xref:NetCode.DataSources.Custom.ConfigurationParse)

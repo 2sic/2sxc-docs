@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Custom DataSource Configuration | 2sxc and EAV 10 </title>
+    <title>DataSource Configuration | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Custom DataSource Configuration | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource Configuration | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -112,7 +112,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Configuration">
-<h1 id="custom-datasource-configuration">Custom DataSource Configuration</h1>
+<h1 id="datasource-configuration">DataSource Configuration</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -233,14 +233,19 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
+</div><style>
+  .context-box-summary .datasource-custom, 
+  .context-box-summary .query-params,
+  .context-box-summary .data-configuration
+  { visibility: visible; } 
+</style>
 
 <p>Most Custom DataSources will want to provide a configuration UI to the editor. This happens through these parts:</p>
 <ol>
-<li>A <strong>Content-Type</strong> which describes what fields can be edited</li>
-<li>A <strong>C# Attribute</strong> on your DataSource which references that Content-Type</li>
-<li>A <strong>Configuration manager</strong> on the DataSource which helps you get the configuration</li>
-<li>A <strong>LookUp Engine</strong> which resolves any Tokens in the configuration</li>
+<li>A <strong><a class="xref" href="configuration-data.html">Content-Type</a></strong> which describes what fields can be edited</li>
+<li>The <strong><a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
+<li>The <strong>Configuration manager</strong> on the DataSource which helps you get the configuration</li>
+<li>The <strong><a class="xref" href="../../../basics/look-up/engine.html">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
 </ol>
 <h2 id="examples-of-configurations-needed">Examples of Configurations Needed</h2>
 <ul>
@@ -251,6 +256,8 @@
 </ul>
 <p>As you can see, some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn&#39;t defined, use 10&quot;</em>.</p>
 <p>This is what this Token-Configuration-Injection-System is for. </p>
+<h2 id="how-to-build-a-configurable-datasource">How to Build a Configurable DataSource</h2>
+<p>👉 <a class="xref" href="configurable-datasource.html">Configurable DataSource</a></p>
 <h2 id="configuration-basics">Configuration Basics</h2>
 <p>Each configuration of a <a class="xref" href="../datasource.html">DataSource</a> is either a fixed string value like <code>17</code> or a token like <code>[Settings:PageNumber]</code>. In most cases it&#39;s a <a class="xref" href="../../../basics/look-up/tokens.html">Token</a>. This token is parsed <em>before any data is queried</em> to ensure that in the end the <a class="xref" href="../datasource.html">DataSource</a> has a useful value before actually performing its task. </p>
 <p>A <strong>Token</strong> is a piece of text that looks like <code>[Source:Property]</code>. It is good to understand the full <a class="xref" href="../../../basics/look-up/tokens.html">token concept, discussed here</a>. You&#39;ll also want to read about fallback and recursion to understand the following content. </p>
@@ -266,7 +273,7 @@
 <li>Each DataSource object has a property called <code>Configuration</code> which is a dictionary containing all configuration properties the data source will care about. For example, the <code>EntityIdFilter</code> has a Configuration with only one property which is called <code>EntityIds</code>. </li>
 <li>The each property is first initialized with a Token-Template. For example, the CsvDataSource has a<br><code>ConfigMask(DelimiterKey, &quot;[Settings:Delimiter||\t]&quot;);</code><br>This says that the delimiter should come from the Settings-Entity field <code>Delimiter</code> and if not provided, fall back to <code>\t</code> (which is a tab character)<br><em>read about <a class="xref" href="configmask.html">ConfigMask here</a></em>  </li>
 <li>For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the CsvDataSource has a string-property <code>Delimiter</code> which internally will get/set the in the Configuration dictionary.  </li>
-<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. <em>read about <a class="xref" href="ensureconfigurationisloaded.html">ensuring configuration is parsed</a> here</em></li>
+<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. <em>read about <a class="xref" href="configuration-parse.html">ensuring configuration is parsed</a> here</em></li>
 </ol>
 <p>So how does each scenario work out?</p>
 <ol>
@@ -279,7 +286,7 @@
 <li><a class="xref" href="../../../basics/look-up/index.html">LookUp System</a></li>
 <li><a class="xref" href="../../../basics/look-up/tokens.html">LookUp Tokens Explained</a></li>
 <li><a class="xref" href="api.html">DataSource API</a></li>
-<li><a class="xref" href="ensureconfigurationisloaded.html">DataSource API: EnsureConfigurationIsLoaded</a></li>
+<li><a class="xref" href="configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></li>
 </ul>
 <h2 id="history">History</h2>

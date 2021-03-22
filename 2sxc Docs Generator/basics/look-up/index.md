@@ -76,7 +76,7 @@ This is achieved through 2 special object types, the [](xref:ToSic.Eav.LookUp).I
 ## Also Read #todoc
 
 * [](xref:Basics.LookUp.Tokens)
-* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 * [](xref:ToSic.Eav.LookUp)
 * [](xref:ToSic.Sxc.LookUp)
 * [](xref:ToSic.Sxc.Dnn.LookUp)

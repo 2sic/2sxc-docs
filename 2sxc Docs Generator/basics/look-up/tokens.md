@@ -68,7 +68,7 @@ Some situations will have token sources beyond the default. For example, when co
 * [](xref:Basics.LookUp.Index)
 * [](xref:ToSic.Eav.DataSources.IDataStream)
 * [](xref:NetCode.DataSources.Custom.Api)
-* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 
 
 ## History

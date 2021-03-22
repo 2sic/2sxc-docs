@@ -2,17 +2,22 @@
 uid: NetCode.DataSources.Custom.Configuration
 ---
 
-# Custom DataSource Configuration
+# DataSource Configuration
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
+<style>
+  .context-box-summary .datasource-custom, 
+  .context-box-summary .query-params,
+  .context-box-summary .data-configuration
+  { visibility: visible; } 
+</style>
 
 Most Custom DataSources will want to provide a configuration UI to the editor. This happens through these parts:
 
-1. A **Content-Type** which describes what fields can be edited
-1. A **C# Attribute** on your DataSource which references that Content-Type
-1. A **Configuration manager** on the DataSource which helps you get the configuration
-1. A **LookUp Engine** which resolves any Tokens in the configuration
+1. A **[Content-Type](xref:NetCode.DataSources.Custom.ConfigurationData)** which describes what fields can be edited
+1. The **[VisualQuery Attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute)** on your DataSource which references that Content-Type
+1. The **Configuration manager** on the DataSource which helps you get the configuration
+1. The **[LookUp Engine](xref:Basics.LookUp.Engine)** which resolves any Tokens in the configuration
 
 ## Examples of Configurations Needed
 
@@ -24,6 +29,12 @@ Most Custom DataSources will want to provide a configuration UI to the editor. T
 As you can see, some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say _"use the page-size configured in the App-Settings"_ or even more complex _"use from url, but if not specified, try app-settings, and if that isn't defined, use 10"_.
 
 This is what this Token-Configuration-Injection-System is for. 
+
+
+## How to Build a Configurable DataSource
+
+👉 [](xref:NetCode.DataSources.Custom.ConfigurableDataSource)
+
 
 ## Configuration Basics
 
@@ -53,7 +64,7 @@ When you're using the visual query designer, the configuration created is saved 
 This says that the delimiter should come from the Settings-Entity field `Delimiter` and if not provided, fall back to `\t` (which is a tab character)  
 _read about [ConfigMask here](xref:NetCode.DataSources.Custom.ConfigMask)_  
 3. For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the CsvDataSource has a string-property `Delimiter` which internally will get/set the in the Configuration dictionary.  
-3. When the DataSource is first _sucked_ from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. _read about [ensuring configuration is parsed](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded) here_
+3. When the DataSource is first _sucked_ from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. _read about [ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse) here_
 
 So how does each scenario work out?
 
@@ -66,7 +77,7 @@ So how does each scenario work out?
 * [](xref:Basics.LookUp.Index)
 * [](xref:Basics.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.Api)
-* [](xref:NetCode.DataSources.Custom.EnsureConfigurationIsLoaded)
+* [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 * [](xref:ToSic.Eav.DataSources.IDataStream)
 
 
