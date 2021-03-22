@@ -46,10 +46,11 @@ Your App can be anything you want it to be. The following types are more to give
 
 This is the kind of App a _developer_ usually thinks of - with lots of data and various list/details templates. The core idea of these apps is that the data is one or many shared tables and the output will show parts of this data based on rules, filters etc. Examples of such Apps would be:
 
-1. News
-1. Blog
+1. [News](xref:App.News)
+1. [Blog](xref:App.Blog)
 1. References
-1. FAQ
+1. [FAQ](xref:App.Faq)
+1. [Custom Forms Apps](xref:App.Mobius)
 
 
 ### Content Focused Apps / Site Builder Apps
@@ -57,16 +58,18 @@ This is the kind of App a _developer_ usually thinks of - with lots of data and 
 This is the kind of App an _editor_ usually thinks of. The core ideas is that the editor adds an App to a page, and adds data to that instance. The data _belongs_ to that instance, so even if it's technically in a shared table, the user experience makes it feel like each use is autonomous. Examples of such Apps would be:
 
 1. [_The_ Content App](xref:Basics.App.ContentApp.Index)
-1. Image Sliders
-1. Galleries
-1. Accordions
-1. QR Code
+1. [Image Sliders / Swipers](xref:App.Swiper)
+1. [Galleries](xref:App.FancyBoxGallery)
+1. [Image Hotspots](xref:App.ImageHotspots)
+1. [Accordions](xref:App.Accordion)
+1. [QR Code](xref:App.Qr)
 
 
 ### Page Enhancing Apps
 
 This is an App which does something on every page of the Site. The core idea is that a functionality can be used on every page and the logic and data to ensure this is in the App. This kind of App is usually added to the Skin/Theme of the Site so it's available on all pages by default. Examples of such Apps would be:
 
+1. [Add Script or CSS Snippets](xref:App.Snippets) to a page
 1. SEO or Open-Graph Enhancements on each page
 1. Page protection systems where a part of the page is overlayed until people subscribe
 1. Adding third-party extensions such as [Disqus](xref:App.Disqus), [AddSearch](xref:App.AddSearch) or Google Search/Analytics to a page
