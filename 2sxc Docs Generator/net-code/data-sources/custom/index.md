@@ -2,50 +2,38 @@
 uid: NetCode.DataSources.Custom.Index
 ---
 
-# EAV DataSources: Create Your Custom DataSources
+# Create Custom DataSources
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+
 
 If you want to create your own DataSource and use it in C# or the VisualQuery designer, this is for you.
 
-* [short instruction to get started](xref:NetCode.DataSources.Custom.Index)
-* [here's docs about the relevant API](xref:NetCode.DataSources.Custom.Api)
-* [understanding configuration injection](xref:Basics.LookUp.Index)
-* [](xref:NetCode.DataSources.Custom.Configuration)
+* [Docs about the API](xref:NetCode.DataSources.Custom.Api)
+* [](xref:NetCode.DataSources.Custom.Configuration) 
+* how [LookUps work](xref:Basics.LookUp.Index)
 
-## Develop Your Own DataSource
-
-Maybe you want to create an XML DataSource or a DNN-Users DataSource. This is easy to do. 
-
-
-[Best read the blog post about this](xref:Blog.CustomDataSource)
-
-
-
-> [!WARNING]
-> These docs are out of date! The real APIs are a bit different but we haven't managed to update them yet. 
-> If you're creating your own DataSource, best consult the source code of 2sxc or EAV to get it working
-
-## Basic Use Case
+## Simple Example
 
 Here's an example of a complete data-source, which just delivers 1 item with the current date:
-
-Introtext - then code:
 
 ```cs
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.VisualQuery;
-using ToSic.Eav.Interfaces;
+using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource
+namespace ToSic.Tutorial.DataSource.Basic
 {
-    // additional info so the visual query can provide the correct buttons and infos
+    // Additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = "DateTime-Basic",
-        GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e",   // namespace or guid
-        HelpLink = "https://some-website.com"
+        NiceName = "Demo DateTime Basic",
+        GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"   // random & unique Guid
     )]
-    public class DateTimeDataSourceBasic: ExternalDataDataSource
+    public class DateTimeDataSourceBasic: ExternalData
     {
         public const string DateFieldName = "Date";
 
@@ -54,66 +42,59 @@ namespace ToSic.Tutorial.DataSource
         /// </summary>
         public DateTimeDataSourceBasic()
         {
-            Provide(GetList); // default out, if accessed, will deliver GetList
+            Provide(GetList); // "Default" out; when accessed, will deliver GetList
         }
 
         /// <summary>
         /// Get-List method, which will load/build the items once requested 
-        /// Note that the setup is lazy-loading,
-        /// ...so this code will not execute unless it's really used
+        /// Note that the setup is lazy-loading so this code will only execute when used
         /// </summary>
-        /// <returns></returns>
-        private IEnumerable<IEntity> GetList()
+        private ImmutableArray<IEntity> GetList()
         {
+            var date = DateTime.Now;
             var values = new Dictionary<string, object>
             {
-                {DateFieldName, DateTime.Now}
+                {DateFieldName, date},
+                {"Weekday", date.DayOfWeek},
+                {"DayOfWeek", (int) date.DayOfWeek}
             };
-            var entity = AsEntity(values);
-            return new List<IEntity> {entity};
+            
+            // Construct the IEntity and return as ImmutableArray
+            var entity = Build.Entity(values, titleField: DateFieldName);
+            return new [] {entity}.ToImmutableArray();
         }
     }
 }
 ```
 
-## How it works
-Basically what you need are
+This code demonstrates:
 
-1. The [](xref:ToSic.Eav.DataSources).Query.VisualQueryAttribute attribute, so that this data-source will be shown in VisualQuery
-1. The **constructor**, which tells the source what Out-streams it has, in this case it's just the Default
-1. A **method** which gets the items, if ever requested
+1. The [VisualQuery](xref:NetCode.DataSources.Custom.VisualQueryAttribute) attribute, so that this data-source will be shown in VisualQuery
+1. The **constructor** `DateTimeDataSourceBasic()`, which tells the source what Out-streams it has using [Provide](xref:NetCode.DataSources.Custom.Provide), in this case it's just the `Default`
+1. A **method** `GetList()` which gets the items if ever requested
+1. The [`Build.Entity(...)`](xref:NetCode.DataSources.Custom.BuildEntity) helper to construct IEntity objects from value-dictionaries
 
-### More on the VisualQuery Attribute
-This source will only become available in the UI for use, if this attribute is given. You can set many things, in this demo we only set:
+## Use in Visual Query Designer
 
-* GlobalName (required) - this is used for lookup/storing a reference to this source), should be unique
-* NiceName (optional) a nice label in the UI
-* HelpLink (optional) a help-link
+This is what the DataSource would appear like in Visual Query
 
-there are more properties, but these are the important ones. See [](xref:ToSic.Eav.DataSources).Query.VisualQueryAttribute
+<img src="./assets/basic-datasource-in-visual-query.png" width="100%">
 
-### More on the Constructor and Provide
-The constructor is in charge of _wiring up_ the data-source. It should not get any data - because the data may not be needed and because configuration isn't loaded yet. 
+...and this is what the test-run would look like
 
-The important command you need to know is **Provide**. This will do a few things
-
-1. Ensure that the `Out` stream offers a stream with a name - if not specified it's going to offer the `Default` stream.
-1. Wire that up to the method (in this case GetList) which will be called if the `Out`-stream is ever requested
-
-### More on the GetList Method and AsEntity
-The first thing you need to know is that it won't be called if nobody requests the `Out` stream. If the the Out is requested, this method must return a list (actually an enumerable) of Entities. The most common way to build entities is to prepare a `Dictionary<string, object>` and convert it to an Entity using `AsEntity`. 
-
-Note that `AsEntity` has many more features, which are not in this demo to keep it simpler. 
-
+<img src="./assets/basic-datasource-run.png" width="100%">
 
 ## Demo App and further links
 
-* [](xref:NetCode.DataSources.Custom.AsEntity)
+* [](xref:NetCode.DataSources.Custom.VisualQueryAttribute)
+* [](xref:NetCode.DataSources.Custom.Provide)
+* [](xref:NetCode.DataSources.Custom.BuildEntity)
 * [Basic DataSources for EAV and 2sxc](https://github.com/2sic/2sxc-eav-tutorial-custom-datasource)
 * [Blog about this feature](https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1)
+* [Blog post about custom DataSources](xref:Blog.CustomDataSource)
 
 ## History
 
 1. Introduced in 2sxc ca. 4 but with a difficult API
 1. API strongly enhanced and simplifield in 2sxc 09.13 
-
+1. Another API rework ca. 2sxc 10.25 (but we're not exactly sure)

@@ -1,2 +1,2 @@
 
-# Moved to [](xref:NetCode.DataSources.Custom.AsEntity)
+# Moved to [](xref:NetCode.DataSources.Custom.BuildEntity)

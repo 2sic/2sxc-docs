@@ -51,7 +51,9 @@ public SomeConstructor()
 }
 ```
 
+## Performance Notes
 
+It's important to know that `Provide` simply prepares the `Out` for use, but will _not_ call the inner function unless this stream is requested. This makes DataSources very performant, as no code is run which isn't needed.
 
 ## Read also
 

@@ -31,7 +31,7 @@ This example is taken from our internally used **SharePoint DataSource**:
 
 To best apply it, you should
 
-1. Check out the [VisualQueryAttribute docs](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute)
+1. Check out the [VisualQueryAttribute API docs](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute)
 1. Look at each property and make sure you understand it
 1. Look at some DataSources and see what they have defined
 

@@ -7,16 +7,25 @@ uid: NetCode.DataSources.Custom.StreamsOut
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-todo #todoc: add pics
+All DataSources must have **Out** Streams.
 
-All DataSources must have **Out** Streams, that's the point of a Data_Source_.
-
-By convention, the default Out is called `Default` and the VisualQuery Designer assumes that it exists by default. 
+By convention, the primary Out is called `Default` and the VisualQuery Designer assumes that it exists by default. 
 
 But there are two important things you can change
 
 1. You can determine one or more predefined Out streams
 1. You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the [App DataSource](xref:ToSic.Eav.DataSources.App)
+
+## Out Streams in VisualQuery
+
+These are predefined `Out` Streams where each DataSource declares what it can offer:
+
+<img src="./assets/out-streams.png" width="100%">
+
+Some Sources can have _Dynamic Out_ where you can create as many Out streams as you want. Usually the name you give each stream will affect what is in it:
+
+<img src="./assets/out-streams-dynamic.png" width="100%">
+
 
 ## Explicitly Naming Out-Streams
 

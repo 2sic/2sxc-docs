@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>EAV DataSources: Create Your Custom DataSources | 2sxc and EAV 10 </title>
+    <title>Create Custom DataSources | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="EAV DataSources: Create Your Custom DataSources | 2sxc and EAV 10 ">
+    <meta name="title" content="Create Custom DataSources | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -112,39 +112,153 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Index">
-<h1 id="eav-datasources-create-your-custom-datasources">EAV DataSources: Create Your Custom DataSources</h1>
+<h1 id="create-custom-datasources">Create Custom DataSources</h1>
+
+<div class="float-right context-box-summary highlight-max" width="400px">
+    <div class="fancybox-auto svg-highlight" style="width: 100%">
+    <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
+  <image href="../../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+
+  <!-- Data Highlights -->
+  <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-all" x="3%" y="82%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-app" x="3%" y="82%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-assets-entities" x="18.5%" y="82%" width="17%" height="10%"></rect>
+
+  <rect class="svg-highlight prepared data-configuration" x="3%" y="93%" width="17%" height="6.5%"></rect>
+
+  <rect class="svg-highlight prepared data-entities" x="34%" y="82%" width="33%" height="10.5%"></rect>
+  <rect class="svg-highlight prepared data-content-types" x="34%" y="89%" width="33%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-app" x="34%" y="89%" width="17.5%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-global" x="50%" y="89%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-external" x="65.5%" y="82%" width="17%" height="10.5%"></rect>
+
+  <!-- ADAM -->
+  <rect class="svg-highlight prepared adam" x="18.5%" y="89%" width="17%" height="8%"></rect>
+
+  <!-- Server -->
+  <rect class="svg-highlight prepared server-all" x="0%" y="41%" width="84%" height="38%"></rect>
+
+
+  <!-- Prepare -->
+  <rect class="svg-highlight prepared prepare-all" x="0%" y="61%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared query" x="44.5%" y="61%" width="34%" height="18%"></rect>
+  <rect class="svg-highlight prepared query-engine" x="44.5%" y="70%" width="34%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-built-in" x="44.5%" y="62.5%" width="18%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-app" x="60.5%" y="62.5%" width="17%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-datasource" x="71%" y="70%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-params" x="65%" y="70%" width="10%" height="7%"></rect>
+
+  <!-- Data Source -->
+  <rect class="svg-highlight prepared datasource" x="86%" y="51%" width="13%" height="16%"></rect>
+  <rect class="svg-highlight prepared datasource-custom" x="87.5%" y="54.5%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared datasource-built-in" x="87.5%" y="59%" width="12%" height="7%"></rect>
+  <rect class="svg-highlight prepared lookup" x="86%" y="66%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared lookup-engine" x="87.5%" y="69%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared lookup-sources" x="87.5%" y="73%" width="12%" height="7%"></rect>
+
+  <!-- Optimzers -->
+  <rect class="svg-highlight prepared asset-optimizer" x="3%" y="49.5%" width="13.5%" height="8%"></rect>
+  <rect class="svg-highlight prepared image-resizer" x="15%" y="30%" width="17%" height="34%"></rect>
+
+  <!-- Process / Awesomize -->
+  <rect class="svg-highlight prepared process-all" x="0%" y="41%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-cs" x="34%" y="41%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-razor" x="34.3%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-razor-app" x="34.3%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-razor-engine" x="34.3%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-apis" x="50%" y="42%" width="34%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api" x="50%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api-app" x="50%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-web-api-engine" x="50%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-libraries" x="47%" y="47%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-headless" x="65.5%" y="49.5%" width="17%" height="7%"></rect>
+
+  <!-- Libraries -->
+  <rect class="svg-highlight prepared libraries" x="86%" y="38%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared libraries-app" x="87.5%" y="41%" width="12%" height="6.5%"></rect>
+  <rect class="svg-highlight prepared libraries-built-in" x="87.5%" y="46%" width="12%" height="6%"></rect>
+
+
+  <!-- data formats -->
+  <rect class="svg-highlight prepared format-json-custom" x="50%" y="32%" width="17%" height="14%"></rect>
+  <rect class="svg-highlight prepared format-json-headless" x="65.5%" y="32%" width="17%" height="21%"></rect>
+  <rect class="svg-highlight prepared format-json-edit" x="74%" y="30%" width="19%" height="23%"></rect>
+
+  <!-- Browser -->
+  <rect class="svg-highlight prepared browser-all" x="0%" y="0%" width="100%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-show" x="0%" y="0%" width="50%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact-edit" x="47%" y="0%" width="37%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"></rect>
+
+  <!-- Frameworks -->
+  <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-js" x="0%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-spa" x="0%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- App show parts -->
+  <rect class="svg-highlight prepared show-html" x="15.8%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-js" x="15.8%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-spa" x="15.8%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- Interact parts -->
+  <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit parts -->
+  <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit UI parts -->
+  <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"></rect>
+  <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"></rect>
+
+  <!-- SPA parts -->
+  <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"></rect>
+  <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"></rect>
+
+
+  <!-- Custom highlight boxes - can be controlled by in-page CSS -->
+  <rect class="svg-highlight highlight1"></rect>
+  <rect class="svg-highlight highlight2"></rect>
+  <rect class="svg-highlight highlight3"></rect>
+  <rect class="svg-highlight highlight4"></rect>
+  <rect class="svg-highlight highlight5"></rect>
+</svg>
+  </div>
+  <div class="overlay-description">
+    you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
+  </div>
+</div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+
 
 <p>If you want to create your own DataSource and use it in C# or the VisualQuery designer, this is for you.</p>
 <ul>
-<li><a class="xref" href="index.html">short instruction to get started</a></li>
-<li><a class="xref" href="api.html">here&#39;s docs about the relevant API</a></li>
-<li><a class="xref" href="../../../basics/look-up/index.html">understanding configuration injection</a></li>
-<li><a class="xref" href="configuration.html">DataSource Configuration</a></li>
+<li><a class="xref" href="api.html">Docs about the API</a></li>
+<li><a class="xref" href="configuration.html">DataSource Configuration</a> </li>
+<li>how <a class="xref" href="../../../basics/look-up/index.html">LookUps work</a></li>
 </ul>
-<h2 id="develop-your-own-datasource">Develop Your Own DataSource</h2>
-<p>Maybe you want to create an XML DataSource or a DNN-Users DataSource. This is easy to do. </p>
-<p><a class="xref" href="https://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query">Best read the blog post about this</a></p>
-<div class="WARNING"><h5>Warning</h5><p>These docs are out of date! The real APIs are a bit different but we haven&#39;t managed to update them yet. 
-If you&#39;re creating your own DataSource, best consult the source code of 2sxc or EAV to get it working</p>
-</div>
-<h2 id="basic-use-case">Basic Use Case</h2>
+<h2 id="simple-example">Simple Example</h2>
 <p>Here&#39;s an example of a complete data-source, which just delivers 1 item with the current date:</p>
-<p>Introtext - then code:</p>
 <pre><code class="lang-cs">using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.VisualQuery;
-using ToSic.Eav.Interfaces;
+using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource
+namespace ToSic.Tutorial.DataSource.Basic
 {
-    // additional info so the visual query can provide the correct buttons and infos
+    // Additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = &quot;DateTime-Basic&quot;,
-        GlobalName = &quot;7aee541c-7188-429f-a4bb-2663a576b19e&quot;,   // namespace or guid
-        HelpLink = &quot;https://some-website.com&quot;
+        NiceName = &quot;Demo DateTime Basic&quot;,
+        GlobalName = &quot;7aee541c-7188-429f-a4bb-2663a576b19e&quot;   // random &amp; unique Guid
     )]
-    public class DateTimeDataSourceBasic: ExternalDataDataSource
+    public class DateTimeDataSourceBasic: ExternalData
     {
         public const string DateFieldName = &quot;Date&quot;;
 
@@ -153,61 +267,55 @@ namespace ToSic.Tutorial.DataSource
         /// &lt;/summary&gt;
         public DateTimeDataSourceBasic()
         {
-            Provide(GetList); // default out, if accessed, will deliver GetList
+            Provide(GetList); // &quot;Default&quot; out; when accessed, will deliver GetList
         }
 
         /// &lt;summary&gt;
         /// Get-List method, which will load/build the items once requested 
-        /// Note that the setup is lazy-loading,
-        /// ...so this code will not execute unless it&#39;s really used
+        /// Note that the setup is lazy-loading so this code will only execute when used
         /// &lt;/summary&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        private IEnumerable&lt;IEntity&gt; GetList()
+        private ImmutableArray&lt;IEntity&gt; GetList()
         {
+            var date = DateTime.Now;
             var values = new Dictionary&lt;string, object&gt;
             {
-                {DateFieldName, DateTime.Now}
+                {DateFieldName, date},
+                {&quot;Weekday&quot;, date.DayOfWeek},
+                {&quot;DayOfWeek&quot;, (int) date.DayOfWeek}
             };
-            var entity = AsEntity(values);
-            return new List&lt;IEntity&gt; {entity};
+
+            // Construct the IEntity and return as ImmutableArray
+            var entity = Build.Entity(values, titleField: DateFieldName);
+            return new [] {entity}.ToImmutableArray();
         }
     }
 }
-</code></pre><h2 id="how-it-works">How it works</h2>
-<p>Basically what you need are</p>
+</code></pre><p>This code demonstrates:</p>
 <ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a>.Query.VisualQueryAttribute attribute, so that this data-source will be shown in VisualQuery</li>
-<li>The <strong>constructor</strong>, which tells the source what Out-streams it has, in this case it&#39;s just the Default</li>
-<li>A <strong>method</strong> which gets the items, if ever requested</li>
+<li>The <a class="xref" href="visual-query-attribute.html">VisualQuery</a> attribute, so that this data-source will be shown in VisualQuery</li>
+<li>The <strong>constructor</strong> <code>DateTimeDataSourceBasic()</code>, which tells the source what Out-streams it has using <a class="xref" href="provide.html">Provide</a>, in this case it&#39;s just the <code>Default</code></li>
+<li>A <strong>method</strong> <code>GetList()</code> which gets the items if ever requested</li>
+<li>The <a class="xref" href="build-entity.html"><code>Build.Entity(...)</code></a> helper to construct IEntity objects from value-dictionaries</li>
 </ol>
-<h3 id="more-on-the-visualquery-attribute">More on the VisualQuery Attribute</h3>
-<p>This source will only become available in the UI for use, if this attribute is given. You can set many things, in this demo we only set:</p>
-<ul>
-<li>GlobalName (required) - this is used for lookup/storing a reference to this source), should be unique</li>
-<li>NiceName (optional) a nice label in the UI</li>
-<li>HelpLink (optional) a help-link</li>
-</ul>
-<p>there are more properties, but these are the important ones. See <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a>.Query.VisualQueryAttribute</p>
-<h3 id="more-on-the-constructor-and-provide">More on the Constructor and Provide</h3>
-<p>The constructor is in charge of <em>wiring up</em> the data-source. It should not get any data - because the data may not be needed and because configuration isn&#39;t loaded yet. </p>
-<p>The important command you need to know is <strong>Provide</strong>. This will do a few things</p>
-<ol>
-<li>Ensure that the <code>Out</code> stream offers a stream with a name - if not specified it&#39;s going to offer the <code>Default</code> stream.</li>
-<li>Wire that up to the method (in this case GetList) which will be called if the <code>Out</code>-stream is ever requested</li>
-</ol>
-<h3 id="more-on-the-getlist-method-and-asentity">More on the GetList Method and AsEntity</h3>
-<p>The first thing you need to know is that it won&#39;t be called if nobody requests the <code>Out</code> stream. If the the Out is requested, this method must return a list (actually an enumerable) of Entities. The most common way to build entities is to prepare a <code>Dictionary&lt;string, object&gt;</code> and convert it to an Entity using <code>AsEntity</code>. </p>
-<p>Note that <code>AsEntity</code> has many more features, which are not in this demo to keep it simpler. </p>
+<h2 id="use-in-visual-query-designer">Use in Visual Query Designer</h2>
+<p>This is what the DataSource would appear like in Visual Query</p>
+<p><img src="assets/basic-datasource-in-visual-query.png" width="100%"></p>
+<p>...and this is what the test-run would look like</p>
+<p><img src="assets/basic-datasource-run.png" width="100%"></p>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <ul>
-<li><a class="xref" href="asentity.html">DataSource API: AsEntity</a></li>
+<li><a class="xref" href="visual-query-attribute.html">DataSource API: VisualQuery Decorator Attribute</a></li>
+<li><a class="xref" href="provide.html">DataSource API: Provide(...)</a></li>
+<li><a class="xref" href="build-entity.html">DataSource API: Build.Entity(...)</a></li>
 <li><a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource">Basic DataSources for EAV and 2sxc</a></li>
 <li><a href="https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1">Blog about this feature</a></li>
+<li><a class="xref" href="https://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query">Blog post about custom DataSources</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc ca. 4 but with a difficult API</li>
 <li>API strongly enhanced and simplifield in 2sxc 09.13 </li>
+<li>Another API rework ca. 2sxc 10.25 (but we&#39;re not exactly sure)</li>
 </ol>
 </article>
           </div>
