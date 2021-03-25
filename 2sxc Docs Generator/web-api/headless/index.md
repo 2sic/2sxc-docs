@@ -19,6 +19,10 @@ We always recommend that you first experiment with the tutorials before you do a
 
 [!include["WebApi Tutorials"](~/shared/tutorials/web-api.md)]
 
+## Fine-Tune Serialization of Headless Data
+
+If you use [Queries](xref:Basics.Query.Index) you can now fine-tune how the data will be serialized. [Read more about this](xref:Basics.Query.Serialization.Index).
+
 ## Read Also
 
 1. [](xref:WebApi.Index)

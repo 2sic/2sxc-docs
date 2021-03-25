@@ -12,8 +12,8 @@ You can now customize a lot how Query data is made available in the Headless API
 You can control things like
 
 1. If Id, Guid and Titles are included
-1. If [Metadata-For](xref:Basics.Data.Metadata.Index) is included
-1. If [Metadata](xref:Basics.Data.Metadata.Index) is included and which identifiers
+1. If [Metadata-For](xref:Basics.Data.Metadata.For) is included
+1. If [Metadata](xref:Basics.Data.Metadata.Of) is included and which identifiers
 1. If [Relationships](xref:Basics.Data.Relationships.Index) are included and which identifiers
 
 This is made possible through the new [SerializationConfiguration](xref:ToSic.Eav.DataSources.SerializationConfiguration) DataSource. Just try it out.
