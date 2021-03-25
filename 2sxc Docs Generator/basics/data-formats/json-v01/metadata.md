@@ -133,6 +133,11 @@ If something _has_ Metadata, it will be included in the `Metadata` object. This 
 }
 ```
 
+## Special note about `Target`
+
+In all long-term uses of Metadata (like for export/import or in item history) the target is a string. 
+In short-term use like simple WebAPI calls the Target can be the number. 
+
 ## Read also
 
 * [](xref:Basics.DataFormats.JsonV1.Index)

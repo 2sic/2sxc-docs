@@ -48,400 +48,308 @@ These are all the data sources which are either provided in the default installa
     <td><strong>Purpose</strong></td>
     <td><strong>Description &amp; Details</strong></td>
   </tr>
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.App">App</a></td>
-    <td>Organize</td>
-    <td>
-      <details>
-        <summary>
-          Provides each content-type on the out-stream (...)
-        </summary>
-        Provides each content-type on the out-stream, so that you can use <code>ds["any-type-name"]</code> as if there was a table for each type.
-      </details>
+    <td>[App](xref:ToSic.Eav.DataSources.App)</td>
+    <td>Get Data</td>
+    <td>Provides each content-type on the out-stream </td>
   </tr>
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.AttributeFilter">AttributeFilter</a></td>
+    <td>[AppRoot](xref:ToSic.Eav.DataSources.AppRoot)</td>
+    <td>Get Data</td>
+    <td>This is the root cache node per App</td>
+  </tr>
+
+  <tr>
+    <td>[AttributeFilter](xref:ToSic.Eav.DataSources.AttributeFilter)</td>
     <td>Modify</td>
-    <td>
-      <details>
-        <summary>
-          Removes properties on the entities (...)
-        </summary>
-          Removes properties on the entities, typically         before you stream it to JSON, so that only the fields you want are
-        transmitted.
-      </details>
+    <td>Removes properties/attributes.</td>
   </tr>
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.AttributeRename">AttributeRename</a></td>
+    <td>[AttributeRename](xref:ToSic.Eav.DataSources.AttributeRename)</td>
     <td>Modify</td>
-    <td>
-      <details>
-        <summary>
-          Renames properties on the entities...
-        </summary>
-          Renames properties on the entities and optionally removes the remaining ones. 
-      </details>
+    <td>Renames properties/attributes.</td>
   </tr>
+
   <tr>
-    <td>BaseCache</td>
-    <td width="84">(internal)</td>
-    <td>
-      <details>
-        <summary>
-          Base class (...)
-        </summary>
-          The
-      base class for all system caches (QuickCache, FarmCache, etc.) <br>
-      </details>
-  </tr>
-  <tr>
-    <td>BaseDataSource</td>
-    <td>(internal)</td>
-    <td>
-      <details>
-        <summary>
-          Base class (...)
-        </summary>
-          This is just a base class. <br>
-      </details>
-  </tr>
-  <tr>
-    <td>CacheAllStreams</td>
+    <td>[CacheAllStreams](xref:ToSic.Eav.DataSources.Caching.CacheAllStreams)</td>
     <td>Caching</td>
-    <td>
-      <details>
-        <summary>
-          Cache all streams passing through (...)
-        </summary>
-        Every stream on this "In" are also available on the "Out" but cached a certain amount of time or till the upstream source is invalidated.
-      </details>
-  </tr>
-  <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.EntityTypeFilter">ContentTypeFilter</a> EntityTypeFilter </td>
-    <td>Filter</td>
-    <td>
-      <details>
-        <summary>
-          Only items of a specific content-type (...)
-        </summary>
-        Returns
-      only items which are of a certain content-type.<br>
-      Note: was previously called EntityTypeFilter.
-      </details>
-  </tr>
-  <tr>
-    <td>[CsvDataSource](xref:ToSic.Eav.DataSources.CsvDataSource)</td>
-    <td>Get Data</td>
-    <td>
-      <details>
-        <summary>
-          Get data from a CSV-file (...)
-        </summary>
-          Lets you read a CSV file and provide the data as
-      Entities for further use.<br>
-      not well documented yet, see <a href="/2sic/eav-server/blob/master/ToSic.Eav.DataSources/CsvDataSource.cs">code here</a>
-      </details>  </tr>
-  <tr>
-    <td>DataTable DataSource</td>
-    <td>Get Data</td>
-    <td>
-      <details>
-        <summary>
-          Base class for coding only (...)
-        </summary>
-          Lets
-      you convert a .net DataTable object into a DataSource. This is great for when
-      you find it easier to generate a DataTable, and this will auto-provide it as
-      a stream.
-      </details>
-  </tr>
-  <tr>
-    <td>Deferred Pipeline Query</td>
-    <td>(internal)</td>
-    <td>
-      <details>
-        <summary>
-          Internal object to optimize performance (...)
-        </summary>
-          This is used internally, because it will
-      auto-generate an entire query-pipeline from configuration and query it, but
-      only if accessed.<br>
-      <code>ToSic.Eav.DataSources.DeferredPipelineQuery</code> <br>
-      <a href="/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DeferredPipelineQuery.cs">Deferred Pipeline Query code</a>
-      </details>
-  </tr>
-  <tr>
-    <td>Dnn FormAndList</td>
-    <td>Get Data</td>
-    <td>
-      <details>
-        <summary>
-          Use old FnL data in 2sxc (...)
-        </summary>
-          Will
-      let you access Form-And-List aka UDT (Universal Data Table) data.<br>
-      <code>ToSic.SexyContent.Environment.Dnn7.<br>
-      DataSources.DnnFormAndList</code> <br>
-      <a href="/2sic/2sxc/blob/master/Environment/Dnn7/DataSources/DnnFormAndList.cs">Dnn FormAndList code</a>
-      </details> 
-  </tr>
-  <tr>
-    <td>DnnSql DataSource</td>
-    <td>Get Data</td>
-    <td>
-      <details>
-        <summary>
-          DNN Sql DataSource (...)
-        </summary>
-          Sql which only uses the DNN DB and nothing else, based on the Sql DataSource
-      </details>
-  </tr>
-  <tr>
-    <td>DnnUserProfile DataSource</td>
-    <td>Get Data</td>
-    <td>
-      <details>
-        <summary>
-          Get DNN Users and profiles (...)
-        </summary>
-          Get DNN users and profiles to create user directories, details-pages etc.<br>
-      <code>ToSic.SexyContent.Environment.Dnn7.<br>
-      not well documented, check out the source <a href="/2sic/2sxc/blob/master/Environment/Dnn7/DataSources/DnnUserProfileDataSource.cs">code here</a><br>
-      DataSources.DnnUserProfileDataSource</code>
-      </details>
-  </tr>
-  <tr>
-    <td>ExternalData DataSource</td>
-    <td>(internal)</td>
-    <td>
-      <details>
-        <summary>
-          Base Class for external data DataSources (...)
-        </summary>
-          This is a base-class for all kinds of external data
-      sources (like Csv…) because it provides more information related to enabling
-      cachning etc.<br>
-      <code>ToSic.Eav.DataSources.ExternalDataDataSource</code> <br>
-      <a href="/2sic/eav-server/blob/master/ToSic.Eav.DataSources/ExternalDataDataSource.cs">ExternalData DataSource code</a>
-      </details>
-  </tr>
-  <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.EntityIdFilter">ItemIdFilter</a> EntityIdFilter</td>
-    <td>Filter</td>
-    <td>
-      <details>
-        <summary>
-          One or more items with an Id (...)
-        </summary>
-          Return only 0, 1 or more items which fit the IDs in
-      the string provided.<br>
-      Previously named EntityIdFilter
-      </details>
-  </tr>
-
-
-  <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.ItemFilterDuplicates">ItemFilterDuplicates</a></td>
-    <td>Logic</td>
-    <td>
-      <details>
-        <summary>
-          Find and remove OR retrieve duplicate items (...)
-        </summary>
-        Use this to remove duplicates or just find them (or both) 
-      </details>
+    <td>Cache all streams passing through</td>
   </tr>
 
   <tr>
-    <td>Module-Instance DataSource</td>
+    <td>[CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock)</td>
     <td>Get Data</td>
     <td>
       <details>
         <summary>
-          Get current modules data (...)
+          Current Module instance data …
         </summary>
           Will get the content-items assigned to a DNN-Module. This is used internally on each view, but can also be used when using module-data to configure a query.
       </details>
   </tr>
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.OwnerFilter">OwnerFilter</a></td>
+    <td>[CsvDataSource](xref:ToSic.Eav.DataSources.CsvDataSource)</td>
+    <td>Get Data</td>
+    <td>Get data from a CSV-file</td>
+  </tr>
+
+
+  <tr>
+    <td>[DataSourceBase](xref:ToSic.Eav.DataSources.DataSourceBase)</td>
+    <td>(base)</td>
+    <td>The base class for all DataSources</td>
+  </tr>
+
+  <tr>
+    <td>[DataTable](xref:ToSic.Eav.DataSources.DataTable)</td>
+    <td>Get Data</td>
+    <td>Base class for coding using .net Tables</td>
+  </tr>
+
+  <tr>
+    <td>[EntityIdFilter](xref:ToSic.Eav.DataSources.EntityIdFilter)</td>
     <td>Filter</td>
-    <td>
-      <details>
-        <summary>
-          Only items which are "owned" by a user (...)
-        </summary>
-          Returns only items which are "owned" =
-      created by a specific person. Great for tools where the users have their own
-      data / registrations which they can still modify.
-      </details>
+    <td>Get one or more items with specific Ids</td>
   </tr>
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.Paging">Paging</a></td>
-    <td>Logic</td>
-    <td>
-      <details>
-        <summary>
-          Page through items (...)
-        </summary>
-          Returns only a specific amount of items after skiping another amount; also provides a stream telling you how many items / pages are in the stream, to let you      assemble a pager UI element
-      </details>
+    <td>[EntityTypeFilter](xref:ToSic.Eav.DataSources.EntityTypeFilter) </td>
+    <td>Filter</td>
+    <td>Get items of a specific content-type</td>
   </tr>
+
+  <tr>
+    <td>[ExternalData](xref:ToSic.Eav.DataSources.ExternalData)</td>
+    <td>(base)</td>
+    <td>Base Class for external data DataSources</td>
+  </tr>
+
+  <tr>
+    <td>[ItemFilterDuplicates](xref:ToSic.Eav.DataSources.ItemFilterDuplicates)</td>
+    <td>Logic</td>
+    <td>Find and remove OR retrieve duplicate items</td>
+  </tr>
+
+  <tr>
+    <td>[OwnerFilter](xref:ToSic.Eav.DataSources.OwnerFilter)</td>
+    <td>Filter</td>
+    <td>Get items created by specific user</td>
+  </tr>
+
+  <tr>
+    <td>[Paging](xref:ToSic.Eav.DataSources.Paging)</td>
+    <td>Logic</td>
+    <td>Page through items</td>
+  </tr>
+
   <tr>
     <td>[PassThrough](xref:ToSic.Eav.DataSources.PassThrough)</td>
     <td>(internal)</td>
-    <td>
-      <details>
-        <summary>
-          Do-Nothing DataSource (...)
-        </summary>
-          This data source doesn't actually do anything - it
-      just lets the data on the in to the out. For (internal) and testing stuff.
-      </details>
+    <td>Do-Nothing DataSource mainly for testing</td>
   </tr>
-  <tr >
-    <td ><a href="xref:ToSic.Eav.DataSources.PublishingFilter">PublishingFilter</a></td>
+
+  <tr>
+    <td>[PublishingFilter](xref:ToSic.Eav.DataSources.PublishingFilter)</td>
     <td>Filter</td>
     <td>
       <details>
         <summary>
-          Filters items the current user shouldn't see (...)
+          Filters items the current user shouldn't see …
         </summary>
-          This is
-      part of the "Unpublished-Data" concept. Since each item could be
-      either published or draft, this helps you show the correct ones for the
-      current user based on his edit-rights. It's automatically in the default
-      pipeline, unless you explicitly don't want it. 
+          This is part of the "Unpublished-Data" concept. 
+          Since each item could be either published or draft, 
+          this helps you show the correct ones for the current user based on his edit-rights. 
+          It's automatically in the default pipeline, unless you explicitly don't want it. 
       </details>
+    </td>
   </tr>
+
   <tr>
-    <td>QuickCache</td>
-    <td >(internal)</td>
-    <td >
-      <details>
-        <summary>
-          Internal cache class (...)
-        </summary>
-          The quick and simple cache used by default
-      internally.<br>
-      <code>ToSic.Eav.DataSources.Caches.QuickCache</code> <br>
-      <a href="/2sic/eav-server/blob/master/ToSic.Eav.DataSources/Caches/QuickCache.cs">QuickCache code</a>
-      </details>
+    <td>[Query](xref:ToSic.Eav.DataSources.Queries.Query)</td>
+    <td>(internal)</td>
+    <td>Internal system to run [Queries](xref:Basics.Query.Index)</td>
   </tr>
+
+  <tr>
+    <td>[QueryRun](xref:ToSic.Eav.DataSources.QueryRun)</td>
+    <td>Sub-Query</td>
+    <td>Run another query and use results</td>
+  </tr>
+
   <tr >
-    <td><a href="xref:ToSic.Eav.DataSources.RelationshipFilter">RelationshipFilter</a></td>
+    <td>[RelationshipFilter](xref:ToSic.Eav.DataSources.RelationshipFilter)</td>
     <td >Filter</td>
-    <td>
-      <details>
-        <summary>
-          Filter items which have a relationship (...)
-        </summary>
-          This helps you find items which are related to another item - like "All Books by Author Daniel Mettler"<br>
-      New in 8.12: In-Stream "Fallback" which is returned if the filter didn't return any hits.
-      </details>  </tr>
+    <td>Filter items with a specific relationship </td>
+  </tr>
+
+
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.Sql">Sql</a></td>
+    <td>[Serialization Configuration](xref:ToSic.Eav.DataSources.SerializationConfiguration)</a></td>
+    <td>special</td>
+    <td>Control created JSON content for security and optimization</td>
+  </tr>
+
+  <tr>
+    <td>[Shuffle](xref:ToSic.Eav.DataSources.Shuffle)</td>
+    <td>Logic</td>
+    <td>Shuffle/randomize item order</td>
+  </tr>
+
+  <tr>
+    <td>[Sql](xref:ToSic.Eav.DataSources.Sql)</td>
     <td>Get Data</td>
     <td>
       <details>
         <summary>
-          Get SQL data as entities (...)
+          Get SQL data as entities …
         </summary>
-          This lets you get data from any SQL data base. It
-      also has powerful script-injection protection, so messy parameters won't hurt
-      it.
-      </details>
-  </tr>
-    <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.Shuffle">Shuffle</a></td>
-    <td>Logic</td>
-    <td>
-      <details>
-        <summary>
-          Shuffle/randomize item order (...)
-        </summary>
-        This source mixes up the order of the items, typically for things like "show 3 random quotes"
-      </details>
-  </tr>
-  <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.StreamFallback">StreamFallback</a></td>
-    <td>Logic</td>
-    <td>
-      <details>
-        <summary>
-          Returns the first in-stream with results (...)
-        </summary>
-        Use this to choose from multiple in-streams which data to show. It will use all the in-streams sorted A-Z, and return the first stream which can deliver data. The remaining streams will not be queried. 
+          This lets you get data from any SQL data base. 
+          It also has powerful script-injection protection, so messy parameters won't hurt it.
       </details>
   </tr>
 
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.StreamMerge">StreamMerge</a></td>
+    <td>[StreamFallback](xref:ToSic.Eav.DataSources.StreamFallback)</td>
     <td>Logic</td>
     <td>
       <details>
         <summary>
-          Merge all in-stream into 1 (...)
+          Returns the first stream having data …
         </summary>
-        Use this to merge multiple in-streams into one output stream. 
+        Use this to choose from multiple in-streams which data to show. 
+        It will use all the in-streams sorted A-Z, and return the first stream which can deliver data. 
+        The remaining streams will not be queried. 
       </details>
   </tr>
 
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.StreamPick">StreamPick</a></td>
+    <td>[StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge)</td>
+    <td>Logic</td>
+    <td>Merge multiple streams into one</td>
+  </tr>
+
+  <tr>
+    <td>[StreamPick](xref:ToSic.Eav.DataSources.StreamPick)</td>
     <td>Logic</td>
     <td>
       <details>
         <summary>
-          Pick a stream (...)
+          Pick a stream by stream-name…
         </summary>
         Use this to pick one of multiple in-streams by name. Often used together with the token [Params:ShowDrafts]
       </details>
   </tr>
 
+  <tr>
+    <td>[ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter)</td>
+    <td>Filter</td>
+    <td>Filters by value</td>
+  </tr>
 
   <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.ValueFilter">ValueFilter</a></td>
-    <td>Filter</td>
-    <td>
-      <details>
-        <summary>
-          Filters by value (...)
-        </summary>
-        Returns all items where a specified property       matches the filter. Very powerfull, with filters like contains, between, etc.<br>
-      New in 8.12: In-Stream "Fallback" which is returned if the filter didn't return any hits. 
-      </details>  </tr>
-  <tr>
-    <td><a href="xref:ToSic.Eav.DataSources.ValueSort">ValueSort</a></td>
+    <td>[ValueSort](xref:ToSic.Eav.DataSources.ValueSort)</td>
     <td>Sort</td>
-    <td>
-      <details>
-        <summary>
-          Sorts all items (...)
-        </summary>
-        Sorts the items in the stream asc/desc based on a property.
-      </details>
+    <td>Sorts all items by values</td>
   </tr>
+
+
+
+</table>
+
+## Dnn DataSources
+
+These are Dnn specific DataSources and won't work on Oqtane.
+
+<table>
   <tr>
-    <td><a href="/2sic/2sxc/blob/master/SexyContent/DataSources/ViewDataSource.cs">ViewDataSource</a></td>
-    <td>(internal)</td>
-    <td>
+    <td><strong>Data Source</strong></td>
+    <td><strong>Purpose</strong></td>
+    <td><strong>Description &amp; Details</strong></td>
+  </tr>
+
+
+
+  <tr>
+    <td>Dnn FormAndList</td>
+    <td>Get Data</td>
+    <td>Get data from the old FnL
       <details>
         <summary>
-          Internal class for view-handling (...)
+          Use old FnL data in 2sxc …
         </summary>
-        This is technically just the target of a
-      pipeline, which is then routed to the Razor/Token View. Basically just does a
-      full pass-through. <br>
-      <code>ToSic.SexyContent.DataSources.ViewDataSource</code>
-      </details>
+          Will let you access Form-And-List aka UDT (Universal Data Table) data. 
+          Note that this DataSource is in external DLLs and has not been maintained, it probably doesn't work any more. 
+      </details> 
+    </td>
   </tr>
+
+  <tr>
+    <td>[DnnSql DataSource](xref:ToSic.Sxc.Dnn.DataSources.DnnSql)</td>
+    <td>Get Data</td>
+    <td>Get data from the Dnn Database</td>
+  </tr>
+
+  <tr>
+    <td>[DnnUserProfile](xref:ToSic.Sxc.Dnn.DataSources.DnnUserProfile)</td>
+    <td>Get Data</td>
+    <td>Get DNN Users and profiles </td>
+  </tr>
+
 </table>
 
 
+## Internal / System DataSources
 
+These data sources are used internally, like for selecting an App in an edit dialog. 
 
+<table>
+  <tr>
+    <td><strong>Data Source</strong></td>
+    <td><strong>Purpose</strong></td>
+    <td><strong>Description &amp; Details</strong></td>
+  </tr>
 
+  <tr>
+    <td>[Apps](xref:ToSic.Eav.DataSources.System.Apps)</td>
+    <td>(system)</td>
+    <td>Get all Apps in a Zone/Site</td>
+  </tr>
+
+  <tr>
+    <td>[Attributes](xref:ToSic.Eav.DataSources.System.Attributes)</td>
+    <td>(system)</td>
+    <td>Get all Attributes of a Content-Type</td>
+  </tr>
+
+  <tr>
+    <td>[Block](xref:ToSic.Sxc.DataSources.Block)</td>
+    <td>(system)</td>
+    <td>Helper to correct data with Templates</td>
+  </tr>
+
+  <tr>
+    <td>[ContentTypes](xref:ToSic.Eav.DataSources.System.ContentTypes)</td>
+    <td>(system)</td>
+    <td>Get all ContentTypes of an App</td>
+  </tr>
+
+  <tr>
+    <td>[QueryInfo](xref:ToSic.Eav.DataSources.System.QueryInfo)</td>
+    <td>(system)</td>
+    <td>Provide debug info when creating Queries</td>
+  </tr>
+
+  <tr>
+    <td>[Zones](xref:ToSic.Eav.DataSources.System.Zones)</td>
+    <td>(system)</td>
+    <td>Get all Zones (Sites) in an installation</td>
+  </tr>
+
+</table>
 
 
 

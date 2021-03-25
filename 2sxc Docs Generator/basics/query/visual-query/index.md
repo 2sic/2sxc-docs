@@ -5,7 +5,7 @@ uid: Basics.Query.VisualQuery.Index
 # VisualQuery
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .adam { visibility: visible; } </style>
+<style>.context-box-summary .query-app { visibility: visible; } </style>
 
 2sxc includes a visual designer for creating queries called **VisualQuery**. It's drag-and drop, and each component can be configured to your needs. 
 
