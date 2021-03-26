@@ -36,6 +36,32 @@ Example:
 
 ```
 
+## Linking to a target element with an assigned `id`
+
+For reference, see [HTML Link Bookmarks](https://www.w3schools.com/html/html_links_bookmarks.asp)
+
+Example:
+
+Let's assume you've build a target like this
+
+```Razor
+    <div id="@("person-" + person.EntityId)">
+        ...
+    </div>
+```
+
+Then to link straight there in the same page
+
+```Razor
+    <a href="@Link.To(parameters: "#person-" + person.EntityId)">
+```
+
+Or on another page
+
+```Razor
+    <a href="@Link.To(pageId: 40, parameters: "#person-" + person.EntityId)">
+```
+
 ## Using @Link.Base() for JavaScript SPA modules
 This is new in 2sxc v9.5.1. It ensures that the url can be used for SPAs, as some pages will otherwise provide a wrong link (like home) which then breaks the SPA.
 
