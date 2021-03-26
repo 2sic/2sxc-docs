@@ -135,6 +135,17 @@
 <p>Example:</p>
 <pre><code class="lang-Razor">@Link.To(parameters: &quot;id=17&quot;)
 @Link.To(parameters: &quot;id=403&amp;category=all&quot;)
+</code></pre><h2 id="linking-to-a-target-element-with-an-assigned-id">Linking to a target element with an assigned <code>id</code></h2>
+<p>For reference, see <a href="https://www.w3schools.com/html/html_links_bookmarks.asp">HTML Link Bookmarks</a></p>
+<p>Example:</p>
+<p>Let&#39;s assume you&#39;ve build a target like this</p>
+<pre><code class="lang-Razor">    &lt;div id=&quot;@(&quot;person-&quot; + person.EntityId)&quot;&gt;
+        ...
+    &lt;/div&gt;
+</code></pre><p>Then to link straight there in the same page</p>
+<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
+</code></pre><p>Or on another page</p>
+<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(pageId: 40, parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
 </code></pre><h2 id="using-linkbase-for-javascript-spa-modules">Using @Link.Base() for JavaScript SPA modules</h2>
 <p>This is new in 2sxc v9.5.1. It ensures that the url can be used for SPAs, as some pages will otherwise provide a wrong link (like home) which then breaks the SPA.</p>
 <pre><code class="lang-razor">&lt;base href=&quot;@Link.Base()&quot;&gt;
