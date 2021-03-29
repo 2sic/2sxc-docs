@@ -6,11 +6,11 @@ uid: WebApi.Help.AdminUiContentRest
 
 In 2sxc 11.10 we added dialogs in the Admin-UI so it's easier to figure out the endpoints. These UIs also show sample code and everything. 
 
-<img src="./assets/admin-ui-data-rest-menu.jpg" width="100%">
+<img src="./assets/admin-ui-data-rest-menu.jpg" width="100%" class="full-width">
 
-<img src="./assets/admin-ui-data-rest-dialog.jpg" width="100%">
+<img src="./assets/admin-ui-data-rest-dialog.jpg" width="100%" class="full-width">
 
-<img src="./assets/admin-ui-data-rest-urls.jpg" width="100%">
+<img src="./assets/admin-ui-data-rest-urls.jpg" width="100%" class="full-width">
 
 > [!TIP]
 > In 2sxc 11.10 this dialog was introduced for the **Data** section, and we'll add similar sections for **Query** and **WebApi**. 

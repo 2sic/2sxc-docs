@@ -17,7 +17,7 @@ item. For example, if you have a blog and each post has a url with the name, thi
 
 This shows the configuration dialog:
 
-<img src="./assets/string-url-path.png" width="100%">
+<img src="./assets/string-url-path.png" width="100%" class="full-width">
 
 * **Auto Generate...** here you can build a template how the url should be auto-generated
 * **Allow Slashes** this let's you choose if slashes are desired in this url-fragment - in most cases you don't want slashes

@@ -10,6 +10,7 @@ This should give you some minimal guidance into debugging 2sxc. You have the fol
 
 Note that our documentation is not complete, but you should read the [Blog Post about 2sxc Insights](https://2sxc.org/en/blog/post/using-2sxc-insights)
 
+👉 Here's [more about 2sxc Insights on the Server](xref:NetCode.Debug.Insights.Index)
 
 ## This may Also be Helpfull
 

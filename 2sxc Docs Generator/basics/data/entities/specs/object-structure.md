@@ -15,7 +15,7 @@ This explains the **C# Entity Object Structure**. For an overview check out [](x
 Entities are structured as follows:  
  
 <br>
-<img src="./assets/entity.png" width="100%">
+<img src="./assets/entity.png" width="100%" class="full-width">
 <br>
 
 ## EAV+D = Entity-Attribute-Value + Dimension

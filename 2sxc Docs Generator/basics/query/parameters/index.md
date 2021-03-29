@@ -20,7 +20,7 @@ There you'll read about how tokens work, where they come from, how to use defaul
 
 In [VisualQuery](xref:Basics.Query.VisualQuery.Index) you would specify a Token like this:
 
-<img src="./assets/paging-page-size-app-settings.png" width="100%">
+<img src="./assets/paging-page-size-app-settings.png" width="100%" class="full-width">
 
 This tells the Query to
 

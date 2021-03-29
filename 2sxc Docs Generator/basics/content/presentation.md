@@ -21,7 +21,7 @@ This is important because the _same piece_ of content (like an Address) may need
 
 Since the **Presentation** is directly connected to the Item it's showing, the Edit-UI will open both items for editing together:
 
-<img src="./assets/presentation-in-same-edit.png" width="100%">
+<img src="./assets/presentation-in-same-edit.png" width="100%" class="full-width">
 
 ## Demo / Defaults Behavior
 
@@ -29,11 +29,11 @@ Very often the **Presentation** contains default settings which are often left u
 
 Here's what Presentation looks like when inheriting defaults:
 
-<img src="./assets/presentation-disabled.png" width="100%">
+<img src="./assets/presentation-disabled.png" width="100%" class="full-width">
 
 This is what Presentation looks like when you set it on the current item:
 
-<img src="./assets/presentation-enabled.png" width="100%">
+<img src="./assets/presentation-enabled.png" width="100%" class="full-width">
 
 
 

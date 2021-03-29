@@ -7,18 +7,18 @@ The **ValueSort** [DataSource](xref:NetCode.DataSources.DataSource) is part of t
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
 
-<img src="./assets/value-sort-standard.png" width="100%">
+<img src="./assets/value-sort-standard.png" width="100%" class="full-width">
 
 The above example shows the same items being sorted in two different ways and delivered to the target. 
 
 ## Example Using Multi-Sort
 You can also sort multiple fields, so "first sort by xyz, then by xyz" and use different sort-orders.:
 
-<img src="./assets/value-sort-multiple.png" width="100%">
+<img src="./assets/value-sort-multiple.png" width="100%" class="full-width">
 
 ## Example Using URL Parameters
 ...and of course you can also use url parameters to specify field-names or sort order:
-<img src="./assets/value-sort-parameterized.png" width="100%">
+<img src="./assets/value-sort-parameterized.png" width="100%" class="full-width">
 
 ## Sorting Direction
 For sorting direction you can use either words or numbers

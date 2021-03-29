@@ -78,11 +78,11 @@ This code demonstrates:
 
 This is what the DataSource would appear like in Visual Query
 
-<img src="./assets/basic-datasource-in-visual-query.png" width="100%">
+<img src="./assets/basic-datasource-in-visual-query.png" width="100%" class="full-width">
 
 ...and this is what the test-run would look like
 
-<img src="./assets/basic-datasource-run.png" width="100%">
+<img src="./assets/basic-datasource-run.png" width="100%" class="full-width">
 
 ## Demo App and further links
 

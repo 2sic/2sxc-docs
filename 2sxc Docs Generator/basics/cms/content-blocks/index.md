@@ -6,7 +6,7 @@ uid: Basics.Cms.ContentBlocks.Index
 
 Content items wouldn't do much - they must be shown to the user in the intended layout. The configuration of such a _show these things using this template_ is handled in a **ContentBlock**. The data model for these _Content Blocks_ looks like this:
 
-<img src="./assets/content-block.png" width="100%">
+<img src="./assets/content-block.png" width="100%" class="full-width">
 
 So each _Content Block_ has:
 
@@ -38,7 +38,7 @@ When you see 2sxc data in DNN, that's because a module was added to the page poi
 
 Note: you shoudn't usually do this - but sometimes you have to. Check out this short explanation:
 
-<img src="./assets/administrating-content-group-in-an-app.jpg" width="100%">
+<img src="./assets/administrating-content-group-in-an-app.jpg" width="100%" class="full-width">
 
 > [!NOTE]
 > This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.

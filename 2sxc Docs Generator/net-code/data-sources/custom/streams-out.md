@@ -20,11 +20,11 @@ But there are two important things you can change
 
 These are predefined `Out` Streams where each DataSource declares what it can offer:
 
-<img src="./assets/out-streams.png" width="100%">
+<img src="./assets/out-streams.png" width="100%" class="full-width">
 
 Some Sources can have _Dynamic Out_ where you can create as many Out streams as you want. Usually the name you give each stream will affect what is in it:
 
-<img src="./assets/out-streams-dynamic.png" width="100%">
+<img src="./assets/out-streams-dynamic.png" width="100%" class="full-width">
 
 
 ## Explicitly Naming Out-Streams

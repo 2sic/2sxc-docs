@@ -15,15 +15,15 @@ When adding _the_ Content-App to a page, the dialog which appears will ask the e
 
 _The_ Content App is quickly added as another module:
 
-<img src="./assets/quick-add-content-app.jpg" width="100%">
+<img src="./assets/quick-add-content-app.jpg" width="100%" class="full-width">
 
 It will _first_ show the [Content Type](xref:Basics.Data.ContentTypes.Index) picker:
 
-<img src="./assets/choose-type.jpg" width="100%">
+<img src="./assets/choose-type.jpg" width="100%" class="full-width">
 
 ...and _then_ the [View](xref:Basics.App.Views) to use for this Content-Type.
 
-<img src="./assets/choose-view.jpg" width="100%">
+<img src="./assets/choose-view.jpg" width="100%" class="full-width">
 
 
 ## Pre-Built Content Templates

@@ -17,7 +17,7 @@ Input field of type "number". Can be used for numbers like:
 
 This shows the configuration dialog:
 
-<img src="./assets/number-default-configuration.png" width="100%">
+<img src="./assets/number-default-configuration.png" width="100%" class="full-width">
 
 * **Number of Decimals** is for setting the number of decimals. If a value is 0 then only integers ergo whole numbers allowed.
 * **Minimum** minimum value (for example, if a number should never be smaller than 1970)

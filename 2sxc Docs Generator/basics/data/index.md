@@ -42,9 +42,8 @@ This kind of data can be used in many ways. Let's start by looking where this fi
 
 Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Entities](xref:Basics.Data.Entities.Index) - like this:  
 
+<img src="./assets/app-content-type-entity.png" width="100%" class="full-width">
 <br>
-<img src="./assets/app-content-type-entity.png" width="100%">
-<br><br>
 
 * [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has.  
 * [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content.  

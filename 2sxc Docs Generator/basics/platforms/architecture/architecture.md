@@ -8,7 +8,7 @@ uid: Basics.Platforms.Architecture.Index
 
 ## Overall Architecture
 
-<img src="./assets/eav-2sxc-dnn.png" width="100%">
+<img src="./assets/eav-2sxc-dnn.png" width="100%" class="full-width">
 
 #### The Storage Systems
 
@@ -38,7 +38,7 @@ and drill down to the other APIs as needed.
 
 ## Architecture of the EAV Layer
 
-<img src="./assets/eav-internals.png" width="100%">
+<img src="./assets/eav-internals.png" width="100%" class="full-width">
 
 Inside the EAV you'll find a whole ecosystem of parts which make the magic happen. 
 

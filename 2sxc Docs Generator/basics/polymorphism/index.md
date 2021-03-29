@@ -27,7 +27,7 @@ In marketing, we want to test various design with different audiences and measur
 
 Let's compare the perfect multi-edition (polymorph) setup to the classic solution:
 
-<img src="./assets/app-polymorph-classic-vs.png" width="100%">
+<img src="./assets/app-polymorph-classic-vs.png" width="100%" class="full-width">
 
 ## Progress
 

@@ -13,15 +13,15 @@ uid: Basics.Cms.Permissions.Index
 
 Permissions are usually a list of zero or more permissions - like this:
 
-<img src="./assets/permissions-list.jpg" width="100%">
+<img src="./assets/permissions-list.jpg" width="100%" class="full-width">
 
 When you edit a permission, it looks like this:
 
-<img src="./assets/permissions-edit.jpg" width="100%">
+<img src="./assets/permissions-edit.jpg" width="100%" class="full-width">
 
 To access the permissions, you'll usually find a person-button in the actions of an item:
 
-<img src="./assets/permissions-access.jpg" width="100%">
+<img src="./assets/permissions-access.jpg" width="100%" class="full-width">
 
 
 ## Permission Overview

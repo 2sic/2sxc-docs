@@ -135,6 +135,7 @@ This is also the object returned as the root in any query.</p>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.IAppRoot.html">IAppRoot</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
@@ -150,6 +151,18 @@ This is also the object returned as the root in any query.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Name">DataSourceBase.Name</a>
     </div>
     <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
+    </div>
+    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheRelevantConfigurations">DataSourceBase.CacheRelevantConfigurations</a>
     </div>
     <div>
@@ -159,13 +172,7 @@ This is also the object returned as the root in any query.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CachePartialKey">DataSourceBase.CachePartialKey</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_In">DataSourceBase.In</a>
@@ -180,19 +187,13 @@ This is also the object returned as the root in any query.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_List">DataSourceBase.List</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(IDataSource)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(String, IDataSource)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_System_String_">DataSourceBase.Attach(String, IDataSource, String)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataStream_">DataSourceBase.Attach(String, IDataStream)</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Logging.HasLog.html#ToSic_Eav_Logging_HasLog_Log">HasLog.Log</a>
@@ -209,7 +210,7 @@ This is also the object returned as the root in any query.</p>
   <h5 id="ToSic_Eav_DataSources_AppRoot_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;this is just fyi&quot;)]
-public class AppRoot : DataSourceBase, IDataTarget, IAppRoot, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog</code></pre>
+public class AppRoot : DataSourceBase, IDataTarget, IAppRoot, IDataSource, IDataPartShared, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -346,6 +347,9 @@ This is implemented in each object, because sometimes it compares its own timest
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a>

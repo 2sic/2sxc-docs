@@ -7,15 +7,15 @@ The **SqlDataSource** [DataSource](xref:NetCode.DataSources.DataSource) is part 
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. The `Default` out will contain the items from the DB:
 
-<img src="./assets/sqldatasource-basic.png" width="100%">
+<img src="./assets/sqldatasource-basic.png" width="100%" class="full-width">
 
 We recommend that you rename it so you know what it's for: 
 
-<img src="./assets/sqldatasource-renamed.png" width="100%">
+<img src="./assets/sqldatasource-renamed.png" width="100%" class="full-width">
 
 You can then configure your connection to the DB and Query as you need it:
 
-<img src="./assets/sqldatasource-config-full.png" width="100%">
+<img src="./assets/sqldatasource-config-full.png" width="100%" class="full-width">
 
 
 
@@ -24,17 +24,17 @@ You can then configure your connection to the DB and Query as you need it:
 ### Title & Notes
 This is just for your notes, to remind you what this is for and to put notes about anything you wanted to remember. 
 
-<img src="./assets/sqldatasource-config-title-notes.png" width="100%">
+<img src="./assets/sqldatasource-config-title-notes.png" width="100%" class="full-width">
 
 ### Connection
 There are two ways to connect to SQL databases: using a **Connection Name** (which points to a detailed connection string in the _web.config_) or using a detailed **Connection String** as you need it. We recommend to use connection names where possible. If you provide both, the connection name will be used:
 
-<img src="./assets/sqldatasource-config-connection.png" width="100%">
+<img src="./assets/sqldatasource-config-connection.png" width="100%" class="full-width">
 
 ### The SQL-Query 
 The **Query** section has quite a lot of options, most of which are not required but are important for this to work: 
 
-<img src="./assets/sqldatasource-config-query.png" width="100%">
+<img src="./assets/sqldatasource-config-query.png" width="100%" class="full-width">
 
 Here's what you need to know
 * Content Type
@@ -58,12 +58,12 @@ This will automatically use the `id` parameter from the URL to filter the result
 ## Using Another Entity As SQL Parameter
 You can of course use the `In` stream to provide entities which configure the SQL. The following example has a content-type `SqlSetting` with only one item (to make the example easier to understand). The [App DataSource](xref:ToSic.Eav.DataSources.App) delivers this in the `AppSetting` stream, which also goes into the Sql as `AppSetting` and is then used as a token in the SQL:
 
-<img src="./assets/sqldatasource-using-entity-as-config.png" width="100%">
+<img src="./assets/sqldatasource-using-entity-as-config.png" width="100%" class="full-width">
 
 ## Using A Value from a Module-Instance as SQL Parameter
 This works like in the App-example: Provide the data from the `ModuleDataSource` as an `In` stream to the SqlDataSource, and use that to filter:
 
-<img src="./assets/sqldatasource-using-instance-as-config.png" width="100%">
+<img src="./assets/sqldatasource-using-instance-as-config.png" width="100%" class="full-width">
 
 ## Programming With The SqlDataSource DataSource
 [!include["simpler-with-vqd"](shared-use-vqd.md)]

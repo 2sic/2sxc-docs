@@ -123,23 +123,23 @@
   <div class="markdown level0 conceptual"><p>The <strong>ValueFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It will filter items based on the values - and if none are found, will optionally return a fallback-list.</p>
 <h2 id="how-to-use-with-the-visual-query">How to use with the Visual Query</h2>
 <p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> you can just drag it into your query. This is what it usually looks like:</p>
-<p><img src="ToSic.Eav/DataSources/assets/value-filter-basic.png" width="100%"></p>
+<p><img src="ToSic.Eav/DataSources/assets/value-filter-basic.png" width="100%" class="full-width"></p>
 <p>The above example shows that 2 of the 5 items fulfilled the filters requirements. </p>
 <h2 id="using-url-parameter-for-filtering">Using Url Parameter for Filtering</h2>
 <p>You can also filter using values from the URL, like this:</p>
-<p><img src="ToSic.Eav/DataSources/assets/value-filter-value-from-url.png" width="100%"></p>
+<p><img src="ToSic.Eav/DataSources/assets/value-filter-value-from-url.png" width="100%" class="full-width"></p>
 <h2 id="using-multiple-url-parameters">Using Multiple URL Parameters</h2>
 <p>...and of course you can also use url parameters to specify field-names <em>and</em> value:
-<img src="ToSic.Eav/DataSources/assets/value-filter-field-value-from-url.png" width="100%"></p>
+<img src="ToSic.Eav/DataSources/assets/value-filter-field-value-from-url.png" width="100%" class="full-width"></p>
 <p>... or field, value and operator:
-<img src="ToSic.Eav/DataSources/assets/value-filter-field-value-operator-from-url.png" width="100%"></p>
+<img src="ToSic.Eav/DataSources/assets/value-filter-field-value-operator-from-url.png" width="100%" class="full-width"></p>
 <h2 id="comparison-operators">Comparison Operators</h2>
 <p>There are many operators possible - see the in-UI help bubble for that.</p>
 <h2 id="using-fallback-streams">Using Fallback Streams</h2>
 <p>The filter will return the items which match the requirement, but sometimes none will match. This is common when you have a parameter from the Url, which may not match anything. In the simple version this looks like this:</p>
-<p><img src="ToSic.Eav/DataSources/assets/value-filter-fallback.png" width="100%"></p>
+<p><img src="ToSic.Eav/DataSources/assets/value-filter-fallback.png" width="100%" class="full-width"></p>
 <p>...this previous example used a filter criteria which didn&#39;t match any items, so it resulted in delivering all. This is very useful when you want to cascade optional filters, like this:</p>
-<p><img src="ToSic.Eav/DataSources/assets/value-filter-chained.png" width="100%"></p>
+<p><img src="ToSic.Eav/DataSources/assets/value-filter-chained.png" width="100%" class="full-width"></p>
 <p>...this example shows two filters - the first didn&#39;t match anything (it was blank), so it delivered all items, the second one then worked, and reduced the remaining items to 2. </p>
 <h2 id="programming-with-the-valuefilter-datasource">Programming With The ValueFilter DataSource</h2>
 <blockquote><p>We recommend to use the Visual Query where possible, 
@@ -191,11 +191,24 @@ someAuthors.Value = &quot;Daniel Mettler&quot;;
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Name">DataSourceBase.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheRelevantConfigurations">DataSourceBase.CacheRelevantConfigurations</a>
@@ -216,13 +229,7 @@ someAuthors.Value = &quot;Daniel Mettler&quot;;
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(Int64)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_In">DataSourceBase.In</a>
@@ -237,19 +244,13 @@ someAuthors.Value = &quot;Daniel Mettler&quot;;
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_List">DataSourceBase.List</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(IDataSource)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(String, IDataSource)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_System_String_">DataSourceBase.Attach(String, IDataSource, String)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataStream_">DataSourceBase.Attach(String, IDataStream)</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Logging.HasLog.html#ToSic_Eav_Logging_HasLog_Log">HasLog.Log</a>
@@ -267,7 +268,7 @@ someAuthors.Value = &quot;Daniel Mettler&quot;;
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
 [VisualQuery(NiceName = &quot;Value Filter&quot;, UiHint = &quot;Keep items which have a property with the expected value&quot;, Icon = &quot;filter_list&quot;, Type = DataSourceType.Filter, GlobalName = &quot;ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources&quot;, In = new string[]{&quot;Default&quot;, &quot;Fallback&quot;}, DynamicOut = false, ExpectsDataOfType = &quot;|Config ToSic.Eav.DataSources.ValueFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsValueFilter&quot;)]
-public sealed class ValueFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget</code></pre>
+public sealed class ValueFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_ValueFilter_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Technically many things could just identify the app they belong to, and let the system look up the zone.
@@ -461,6 +462,9 @@ depending on the original types we&apos;re comparing</p>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
   </div>
 </article>
           </div>

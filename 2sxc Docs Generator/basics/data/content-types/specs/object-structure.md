@@ -17,7 +17,7 @@ This section explains **Content-Type Object Structure**. For an overview check o
 Content-Types are internally structured as follows (in C# / .net):  
  
 <br>
-<img src="./assets/content-type-internal-structure.png" width="100%">
+<img src="./assets/content-type-internal-structure.png" width="100%" class="full-width">
 <br>
 
 ## Metadata of Content-Types and Attributes

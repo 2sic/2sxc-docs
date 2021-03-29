@@ -6,7 +6,7 @@ uid: Basics.Cms.ContentBlocks.Dnn
 
 The vision of 2sxc is to be cross-platform, so we hope one day it will also run on NopCommerce and other systems. This is how it's integrated into DNN. 
 
-<img src="./assets/content-in-dnn.png" width="100%">
+<img src="./assets/content-in-dnn.png" width="100%" class="full-width">
 
 
 
@@ -46,7 +46,7 @@ This is the most common setup - and used in the **Content** module as well as in
 
 Here is how it's mapped:
 
-<img src="./assets/how-modules-relate-to-content-groups.png" width="100%">
+<img src="./assets/how-modules-relate-to-content-groups.png" width="100%" class="full-width">
 
 
 ## Also Read about Content Data Model

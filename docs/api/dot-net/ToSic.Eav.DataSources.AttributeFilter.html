@@ -123,7 +123,7 @@
   <div class="markdown level0 conceptual"><p>The <strong>AttributeFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It removes values from items so that the result is smaller, and doesn&#39;t publish confidential data. It&#39;s primarily used when providing data as JSON, so that not all values are published. </p>
 <h2 id="how-to-use-with-the-visual-query">How to use with the Visual Query</h2>
 <p>When using the <a class="xref" href="ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">Visual Query</a> you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver <code>Name</code> and <code>Country</code>:</p>
-<p><img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%"></p>
+<p><img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%" class="full-width"></p>
 <p>This is what you get on the default-case (unfiltered):</p>
 <pre><code class="lang-json">&quot;Default&quot;: [
     {
@@ -198,11 +198,24 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Name">DataSourceBase.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheRelevantConfigurations">DataSourceBase.CacheRelevantConfigurations</a>
@@ -223,13 +236,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(Int64)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_AppId">DataSourceBase.AppId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ZoneId">DataSourceBase.ZoneId</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Guid">DataSourceBase.Guid</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_In">DataSourceBase.In</a>
@@ -244,19 +251,13 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_List">DataSourceBase.List</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(IDataSource)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_">DataSourceBase.Attach(String, IDataSource)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataSource_System_String_">DataSourceBase.Attach(String, IDataSource, String)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_Attach_System_String_ToSic_Eav_DataSources_IDataStream_">DataSourceBase.Attach(String, IDataStream)</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_">DataSourceBase.PurgeList(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Logging.HasLog.html#ToSic_Eav_Logging_HasLog_Log">HasLog.Log</a>
@@ -274,7 +275,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
 [VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete_sweep&quot;, Type = DataSourceType.Modify, GlobalName = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[]{&quot;Default&quot;}, ExpectsDataOfType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
-public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget</code></pre>
+public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_AttributeFilter_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Technically many things could just identify the app they belong to, and let the system look up the zone.
@@ -434,6 +435,9 @@ But this would be inefficient, so for optimization, many items identify themselv
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
   </div>
 </article>
           </div>

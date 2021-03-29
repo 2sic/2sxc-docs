@@ -11,7 +11,7 @@ The **ContentTypeFilter** [DataSource](xref:NetCode.DataSources.DataSource) is p
 ## How to use with the Visual Query
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. In the settings you'll specify the type-name. The resulting query will usually be a bit like this:
 
-<img src="./assets/content-type-filter-two-examples.png" width="100%">
+<img src="./assets/content-type-filter-two-examples.png" width="100%" class="full-width">
 
 The above example shows:
 

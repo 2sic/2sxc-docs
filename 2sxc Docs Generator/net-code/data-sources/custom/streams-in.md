@@ -13,7 +13,7 @@ In addition to that, many DataSources expect Data which will be processed. For e
 
 To help the UI explicitly show these predefined In-Streams, we must list them in the [VisualQuery decorator attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute) in the `In` property. 
 
-<img src="./assets/in-streams.png" width="100%">
+<img src="./assets/in-streams.png" width="100%" class="full-width">
 
 
 ## Example from the ValueFilter DataSource

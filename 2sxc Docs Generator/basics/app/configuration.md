@@ -24,7 +24,7 @@ This is where you can find the App Configuration
 
 On **2** you can configure the permissions you need:
 
-<img src="./assets/app-configuration.jpg" width="100%">
+<img src="./assets/app-configuration.jpg" width="100%" class="full-width">
 
 ## Difference App Configuration / App Settings
 

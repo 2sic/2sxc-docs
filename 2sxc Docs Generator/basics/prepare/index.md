@@ -27,7 +27,7 @@ In these cases the View is configured to not use data and the template or WebApi
 
 By default all **Module Instances** can have data which the editor has added manually in the CMS UI. This corresponds to the normal [Content Editing](xref:Basics.Content.Index) scenario. Internally it uses a [Query](xref:Basics.Query.Index) which looks like this:
 
-<img src="./assets/default-prepare.jpg" width="100%">
+<img src="./assets/default-prepare.jpg" width="100%" class="full-width">
 
 This does the following (starting from the bottom):
 

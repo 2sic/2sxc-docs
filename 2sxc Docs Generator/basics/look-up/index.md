@@ -32,7 +32,7 @@ To achieve this 2sxc has three parts:
 
 Imagine a [Query](xref:Basics.Query.Index) which has an [EntityId Filter](xref:ToSic.Eav.DataSources.EntityIdFilter) which expects an ID. This could be hardwired like this:
 
-<img src="./assets/item-id-basic.png" width="100%">
+<img src="./assets/item-id-basic.png" width="100%" class="full-width">
 
 What happens now is as follows:
 
@@ -44,7 +44,7 @@ What happens now is as follows:
 
 But it would make more sense if the ID were to be dynamic, maybe from the URL like this:
 
-<img src="./assets/item-id-url.png" width="100%">
+<img src="./assets/item-id-url.png" width="100%" class="full-width">
 
 What happens now is as follows:
 

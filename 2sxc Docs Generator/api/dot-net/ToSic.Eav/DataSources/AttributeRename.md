@@ -10,7 +10,7 @@ The **AttributeRename** [DataSource](xref:NetCode.DataSources.DataSource) is par
 
 When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Now you can configure what properties you want and not. 
 
-<img src="./assets/attribute-rename-example.png" width="100%">
+<img src="./assets/attribute-rename-example.png" width="100%" class="full-width">
 
 In this screenshot you can see:
 

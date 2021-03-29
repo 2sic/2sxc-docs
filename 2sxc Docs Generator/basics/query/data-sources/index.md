@@ -12,7 +12,7 @@ uid: Basics.Query.DataSources.Index
 ## How to use
 Many data-sources are simply used in the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute), and if all you want is visual-query, then this reference will give you an overview regarding what things are possible. It will usually look like this: 
 
-<img src="~/api/dot-net/ToSic.Eav/DataSources/assets/app-out-2-in-0.png" width="100%">
+<img src="~/api/dot-net/ToSic.Eav/DataSources/assets/app-out-2-in-0.png" width="100%" class="full-width">
 
 
 If on the other hand you want to program with these [DataSource](xref:NetCode.DataSources.DataSource) objects, then it will usually look a bit like this: 

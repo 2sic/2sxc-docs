@@ -49,7 +49,7 @@ Usually your code will look a bit like this:
 
 This will create a standard hover-toolbar with some buttons and the _more_ ellipsis button. Note that the exact combination of buttons is auto-detected. So you may just have an _edit_ but you may also have an _add_ etc. depending on the template and the data it receives. It looks approx. like this:
 
-<img src="./assets/step-1-default-toolbar.png" width="100%">
+<img src="./assets/step-1-default-toolbar.png" width="100%" class="full-width">
 
 ### Add our First Button
 
@@ -66,7 +66,7 @@ Let's add an extra _new_ button to create an item of the content-type _Category_
 
 You should now have an extra + button like this: 
 
-<img src="./assets/step-1-with-plus-button.png" width="100%">
+<img src="./assets/step-1-with-plus-button.png" width="100%" class="full-width">
 
 
 
@@ -80,7 +80,7 @@ Let's emphasize it, because for whatever reason it's a super important button. W
 
 You should now have a _red_ + button like this: 
 
-<img src="./assets/step-1-with-plus-button-red.png" width="100%">
+<img src="./assets/step-1-with-plus-button-red.png" width="100%" class="full-width">
 
 > [!IMPORTANT]
 > The term `new` in this example means we want a button of _type_ `new` which will open the dialog to create new entities.  
@@ -102,7 +102,7 @@ Now we want to add another button - maybe to add a _Tag_. The `toolbar` attribut
 
 You should now see this: 
 
-<img src="./assets/step-1-with-plus-button-red-and-teal.png" width="100%">
+<img src="./assets/step-1-with-plus-button-red-and-teal.png" width="100%" class="full-width">
 
 > [!TIP]
 > When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize). 
@@ -121,7 +121,7 @@ Now maybe you don't like to allow your editors to change the view - so let's do 
 </div>
 ```
 
-<img src="./assets/step-1-without-view.png" width="100%">
+<img src="./assets/step-1-without-view.png" width="100%" class="full-width">
 
 So you can add / remove any button you want. You can find a [full list of button names (command names)](xref:JsCode.Commands.Index).
 
@@ -138,7 +138,7 @@ But what if we want to modify an existing button? Let's change the icon and both
   ...
 </div>
 ```
-<img src="./assets/step-1-modified-view.png" width="100%">
+<img src="./assets/step-1-modified-view.png" width="100%" class="full-width">
 
 As you can see, we just used `%` to modify a button, set the `icon` and 2 colors. 
 
@@ -156,7 +156,7 @@ But maybe we would prefer to have a toolbar with only the two _add_ buttons, and
 </div>
 ```
 
-<img src="./assets/step-1-empty-and-2-plus-buttons.png" width="100%">
+<img src="./assets/step-1-empty-and-2-plus-buttons.png" width="100%" class="full-width">
 
 > [!TIP]
 > As you can see, the principle is to use a toolbar template and make modifications to it. 
@@ -177,7 +177,7 @@ But let's say you created a **News App** and want to allow the editor to also de
 
 The `delete` button is in the third group of buttons, so you'll have to hit the ellipsis a few times to see it. You'll then see:
 
-<img src="./assets/step-1-show-delete.png" width="100%">
+<img src="./assets/step-1-show-delete.png" width="100%" class="full-width">
 
 
 
@@ -198,9 +198,9 @@ Let's assume you understand the principle of adding, removing and changing butto
 
 You'll get this result, and hitting the ellipsis will show you the default buttons as you can see in the second image:
 
-<img src="./assets/step-2-custom-group.png" width="100%">
+<img src="./assets/step-2-custom-group.png" width="100%" class="full-width">
 
-<img src="./assets/step-2-custom-group2.png" width="100%">
+<img src="./assets/step-2-custom-group2.png" width="100%" class="full-width">
 
 > [!NOTE]
 > We had to give our new group a name - in this case `add-buttons` and told the new buttons that they should go inside that group. 
@@ -236,9 +236,9 @@ Now you may want to call your own code when you create a button. This is very ad
 
 You'll then see this toolbar, and on click this message: 
 
-<img src="./assets/pro-1-custom-js-call.png" width="100%">
+<img src="./assets/pro-1-custom-js-call.png" width="100%" class="full-width">
 
-<img src="./assets/pro-1-custom-js-alert.png" width="100%">
+<img src="./assets/pro-1-custom-js-alert.png" width="100%" class="full-width">
 
 You'll notice that we have a `?call=functionName` and also an `id=17` just to show how additional information is passed around. Your function also gets an `event` from the browser, so you can check the `event.target` and other things to see what was actually clicked. 
 
