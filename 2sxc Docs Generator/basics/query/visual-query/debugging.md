@@ -7,7 +7,16 @@ uid: Basics.Query.VisualQuery.Debugging
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>
 
-In 2sxc 11.13 we're introducing a new feature called **Non-Breaking Errors**. 
+In 2sxc 11.13 we're introducing two new feature to help you create VisualQueries
+
+1. **Stream Debugging**
+1. **Non-Breaking Errors**
+
+## Stream Debugging
+
+todo: #todoc
+
+## Non-Breaking Errors
 
 Previously if there was an error in a Query, the entire query would fail and you would get a error message which was very difficult to debug. 
 
@@ -20,8 +29,6 @@ If you then click on the ⚠ you'll see the full message like this:
 <img src="./assets/stream-error-details.jpg" width="100%" class="full-width">
 
 ## Security Considerations
-
-Two things we're doing
 
 1. All the error information is also logged into Insights, so super-users can check that for more details.
 1. If the query blows on a normal user, the data will not contain any important information - so no paths, no internal values, etc.
