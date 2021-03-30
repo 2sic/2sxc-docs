@@ -36,3 +36,5 @@ This example shows how the the FormAndList DataSource tells the UI things like:
 ## History
 
 1. Introduced in EAV 4.x, 2sxc 09.13
+
+[!include["Start-APIs"](../shared-api-start.md)]

@@ -1,5 +1,5 @@
 ## Read also
 
-* datasource / data stream
+* [DataSource](xref:NetCode.DataSources.DataSource) / [DataStream](xref:NetCode.DataSources.DataStream)
 * [List of all EAV Data Sources](xref:Basics.Query.DataSources.Index)
-* query / visual query
+* [Query](xref:Basics.Query.Index) / [VisualQuery](xref:Basics.Query.VisualQuery.Index)

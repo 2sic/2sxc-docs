@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: VisualQuery Decorator Attribute | 2sxc and EAV 10 </title>
+    <title>DataSource API: VisualQuery Attribute | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: VisualQuery Decorator Attribute | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource API: VisualQuery Attribute | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -112,7 +112,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.VisualQueryAttribute">
-<h1 id="datasource-api-visualquery-decorator-attribute">DataSource API: VisualQuery Decorator Attribute</h1>
+<h1 id="datasource-api-visualquery-attribute">DataSource API: VisualQuery Attribute</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,13 +235,13 @@
   </div>
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-<p>todo #todoc: add pics</p>
-<p>DataSources themselves are useful in the 2sxc/EAV data processing - but they really become great when used in the VisualQuery Designer #todoc. </p>
-<p>To help the VisualQuery Designer give queues to the developer what can / can&#39;t be done, there is a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">VisualQuery</a> decorator Attribute which gives the class some more information. </p>
+<p>DataSources themselves are useful in the 2sxc/EAV data processing - but they really become great when used in the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> Designer. </p>
+<p>To help the VisualQuery Designer give queues to the developer what can / can&#39;t be done, 
+there is a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.VisualQueryAttribute.html">VisualQuery decorator attribute</a>  which gives the class some more information. </p>
 <h2 id="example">Example</h2>
 <p>This example is taken from our internally used <strong>SharePoint DataSource</strong>:</p>
 <pre><code class="lang-c#">[VisualQuery(
-  GlobalName = &quot;ToSic.Eav.DataSources.SharePoint2016, ToSic.Eav.DataSources.SharePoint&quot;,
+  GlobalName = &quot;fd5288d2-5a13-4f58-90a0-e9d207f00121&quot;,
   NiceName = &quot;SharePoint 2016&quot;,
   PreviousNames = new[] { &quot;1b7cc60d-9fac-4473-a89a-c19017995307&quot; },
   Type = DataSourceType.Source, 
@@ -254,6 +254,41 @@
 <li>Look at each property and make sure you understand it</li>
 <li>Look at some DataSources and see what they have defined</li>
 </ol>
+<h2 id="properties">Properties</h2>
+<h3 id="streams-information">Streams Information</h3>
+<h4 id="dynamicin">DynamicIn</h4>
+<p>Determines if this DataSource expects to have a lot of In-Streams, like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a> DataSource. 
+Default is <code>false</code>. 
+If <code>true</code> the UI will indicate this with a yellow In-marker.</p>
+<h4 id="dynamicout">DynamicOut</h4>
+<p>Determines if this DataSource can have a lot of Out-Streams like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App</a> DataSource. 
+Default is <code>false</code>. 
+If <code>true</code> the UI will indicate this with a yellot Out-marker.</p>
+<h4 id="in">In</h4>
+<p>Array of In-Streams which the UI will show as prepared landing markers to connect streams to.</p>
+<h3 id="name-and-identity">Name and Identity</h3>
+<h4 id="globalname---the-unique-identity">GlobalName - the Unique Identity</h4>
+<p>The global name should be super-unique because it will be stored as the ID in <a class="xref" href="../../../basics/query/index.html">Queries</a>. 
+We recommend you get a <a href="https://www.guidgenerator.com/">new random Guid here</a>.</p>
+<h4 id="nicename">NiceName</h4>
+<p>This will be shown in the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> UI. Make sure it&#39;s reasonable.</p>
+<h4 id="previousnames">PreviousNames</h4>
+<p>This is a for historical reasons. In rare cases we had to rename a DataSource and the old GlobalName values are listed here. Avoid using this. </p>
+<h3 id="ui-enhancements">UI Enhancements</h3>
+<h4 id="icon">Icon</h4>
+<p>An icon name from the <a href="https://fonts.google.com/icons">Material Icons</a>.</p>
+<h4 id="type">Type</h4>
+<p>A value which tells the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> in what group to place this source for the Query developer.
+Must be a valid value from <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.DataSourceType.html">DataSourceType</a>.</p>
+<h4 id="helplink">HelpLink</h4>
+<p>A url to a website containing help to this DataSource.</p>
+<h4 id="uihint">UiHint</h4>
+<p>Additional text to be shown in the UI.</p>
+<h3 id="configuration">Configuration</h3>
+<h4 id="expectsdataoftype">ExpectsDataOfType</h4>
+<p>This is the GUID (aka <a class="xref" href="../../../basics/data/content-types/names.html">StaticName</a>) of the <a class="xref" href="../../../basics/data/content-types/index.html">Content-Type</a> which should be used for configuring the DataSource. 
+The UI will open a edit dialog for this Content-Type when the Query creator hits Settings on this DataSource.</p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced ca. in 2sxc 6</li>

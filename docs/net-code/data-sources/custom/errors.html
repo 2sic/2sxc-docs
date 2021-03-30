@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API | 2sxc and EAV 10 </title>
+    <title>DataSource API: Error Handling &#127381; | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource API: Error Handling &#127381; | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Api">
-<h1 id="datasource-api">DataSource API</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
+<h1 id="datasource-api-error-handling-">DataSource API: Error Handling 🆕</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,50 +235,30 @@
   </div>
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-<p>DataSources are a magic, generic system which can generate new data-items or filter / modify other data. This section explains how they work and the API you need to create your own. </p>
-<h2 id="basics">Basics</h2>
-<p><a class="xref" href="../datasource.html">DataSources</a> have a few important concepts you must first understand:</p>
+<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty. </p>
+<p>Since 2sxc 11.13 we changed the behaviour so that <a class="xref" href="../../../basics/query/visual-query/debugging.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging. </p>
+<h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything...</h2>
+<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see. </p>
+<h2 id="but-you-can-do-better">...but You can do Better</h2>
+<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
 <ol>
-<li><strong>Data going in and out of DataSources</strong><ol>
-<li>Each data-item is an <code>IEntity</code> containing data about a person, product, file-information etc.</li>
-<li>A list of items is is a <code>List&lt;IEntity&gt;</code> which contains zero, one or many items</li>
-<li>A <strong><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">Stream</a></strong> is an object which has list of items and a name</li>
-<li>A correctly built Stream will <strong><a class="xref" href="provide.html">Provide</a></strong> this list, but only run the code if it&#39;s requested</li>
-<li>Each DataSource has one or more named <code>Out</code> streams</li>
-<li>Each DataSource <em>can</em> have one or more named <code>In</code> streams coming from other DataSources</li>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_SetError_">SetError</a> helper to create an ErrorStream which you can return</li>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_">GetRequiredInList</a> helper to get an <code>In</code> stream which must be available</li>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ErrorStream">ErrorStream</a> property to pass errors around from deeper functions</li>
 </ol>
-</li>
-<li><strong>Configuration of a DataSource</strong><ol>
-<li>Each DataSource has a <code>ConfigurationProvider</code>, which gives the DataSource information about the environment (like Portal or Tab information), App-Settings and more</li>
-<li>Each <a class="xref" href="../datasource.html">DataSource</a> can have custom <strong>Settings</strong>, which the user entered in a dialog. Internally this is also an IEntity object</li>
-</ol>
-</li>
-<li><strong>Caching</strong><br>DataSources also have cache-identity mechanism, to inform any up-stream cache what parameters actually caused this result, so that the data could be cached if needed</li>
-</ol>
-<h2 id="providing-data">Providing Data</h2>
-<p>To offer data on the <code>Out</code> you will usually use the <code>Provide</code> method. If you&#39;re generating new items, you&#39;ll usually use the <code>Build.Entity(...)</code> method. Docs for these: </p>
+<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance. </p>
+<h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="provide.html">DataSource API: Provide(...)</a></li>
-<li><a class="xref" href="build-entity.html">DataSource API: Build.Entity(...)</a></li>
-<li><a class="xref" href="streams-out.html">DataSource API: Out Streams</a></li>
-<li><a class="xref" href="streams-in.html">DataSource API: In Streams</a></li>
+<li><a class="xref" href="api.html">DataSource API</a> - DataSource API overview</li>
+<li><a class="xref" href="configuration-parse.html">Ensuring configuration is parsed</a></li>
 </ul>
-<h2 id="receiving-data-from-in-for-further-processing">Receiving Data from In for further processing</h2>
-<p>if your DataSource performs filtering or similar actions on existing data, then this data comes in on the <code>In</code> streams. In such scenarios, you would simply iterate over the <code>In[streamname].List</code> and provide the result in your out-stream again. You can find many examples in the EAV DataSources code. </p>
-<h2 id="get-configuration">Get Configuration</h2>
-<p>A DataSource gets the configuration from a configuration provider. To better understand this, you should read:</p>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <ul>
-<li><a class="xref" href="../../../basics/look-up/index.html">LookUp System</a></li>
-<li><a class="xref" href="../../../basics/look-up/tokens.html">about tokens</a> </li>
-<li><a class="xref" href="configuration.html">DataSource Configuration</a></li>
-<li><a class="xref" href="configmask.html">ConfigMask(...)</a>.</li>
+<li>todo</li>
 </ul>
-<h2 id="configure-the-ui">Configure the UI</h2>
-<p>There is a special attribute called <code>VisualQuery</code> to tell the UI how to show your DataSource and provide help etc. See <a class="xref" href="visual-query-attribute.html">DataSource API: VisualQuery Attribute</a>.</p>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 4 or 5</li>
-<li>enhanced / simplified in 2sxc 9.13</li>
+<li>Introduced in EAV / 2sxc 11.13</li>
 </ol>
 </article>
           </div>
@@ -288,7 +268,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/errors.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
