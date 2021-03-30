@@ -50,16 +50,27 @@ The above example works well if you're fine with installing the JSON Content-Typ
 
 For more advanced redistribution, you'll want to include the JSON file in your Dnn Installation package. But in that case it's not in `.data-custom` so 2sxc/EAV can't pick it up. 
 
-To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of DNN. All you have to do is create a `public` class which inherits `ToSic.Eav.Repositories.RepositoryInfoOfFolder`. On boot all these classes will be found and asked for other folders which have such data. Here's an example:
+To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of DNN. All you have to do is create a `public` class which inherits `ToSic.Eav.Repositories.FolderBasedRepository`. On boot all these classes will be found and asked for other folders which have such data. Here's an example:
 
 ```c#
-public class RegisterContentTypeForConfigUi: RepositoryInfoOfFolder
+using System.Collections.Generic;
+using System.Web;
+using ToSic.Eav.Repositories;
+
+namespace ToSic.Tutorial.DataSource.Basic
 {
-  public override List<string> RootPaths => new List<string>
-  {
-    HttpContext.Current.Server
-      .MapPath("~/desktopmodules/ToSic.Eav.DataSources.SharePoint/.data")
-  };
+    /// <summary>
+    /// This class will be picked up by 2sxc/EAV at boot.
+    /// It will tell it where there are additional Content-Types to load.
+    /// See also https://docs.2sxc.org/basics/data/content-types/range-global.html
+    /// </summary>
+    public class RegisterGlobalContentTypes : FolderBasedRepository
+    {
+        public override List<string> RootPaths => new List<string>
+        {
+            HttpContext.Current.Server.MapPath("~/DesktopModules/ToSic.Eav.DataSources.SharePoint/.data")
+        };
+    }
 }
 ```
 

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Error Handling &#127381; | 2sxc and EAV 10 </title>
+    <title>DataSource API: Filter DataSources | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Error Handling &#127381; | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource API: Filter DataSources | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling-">DataSource API: Error Handling 🆕</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.TypeFilter">
+<h1 id="datasource-api-filter-datasources">DataSource API: Filter DataSources</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,93 +235,16 @@
   </div>
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty. </p>
-<p>Since 2sxc 11.13 we changed the behaviour so that <a class="xref" href="../../../basics/query/visual-query/debugging.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging. </p>
-<h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything...</h2>
-<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see. </p>
-<h2 id="but-you-can-do-better">...but You can do Better</h2>
-<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
-<ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_SetError_">SetError</a> helper to create an ErrorStream which you can return</li>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_">GetRequiredInList</a> helper to get an <code>In</code> stream which must be available</li>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ErrorStream">ErrorStream</a> property to pass errors around from deeper functions</li>
-</ol>
-<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance. </p>
-<h2 id="example-using-seterror-and-errorstream">Example using SetError and ErrorStream</h2>
-<p>The following example is from the <a class="xref" href="https://github.com/2sic/datasource-tutorial-basic">DataSource Tutorial</a>. 
-You&#39;ll see that if we read the <code>Hours</code> property something can go wrong, but this property can&#39;t just return the error object. 
-So it sets in on the DataSource and later on it will be picked up and returned instead of the expected data.</p>
-<pre><code class="lang-c#">public class ConfigurableDateTime: ExternalData
-{
-  // ...
-  private const string HoursKey = &quot;Hours&quot;;
-
-  // ...
-
-  /// &lt;summary&gt;
-  /// A number-demo config. Note that we do error-checking and place the Error with SetError
-  /// &lt;/summary&gt;
-  public int Hours
-  {
-    get
-    {
-      if (decimal.TryParse(Configuration[HoursKey], out var hour))
-      {
-        // check that it&#39;s a valid hour-range
-        if(hour &gt;= 0 &amp;&amp; hour &lt;= 23) return (int)hour;
-
-        // If not, set the error, so that the code can later pick up the error-stream
-        SetError(&quot;Hour value out of range&quot;, $&quot;The hour was &#39;{hour}&#39; which is not valid&quot;);
-        return 0;
-      }
-
-      // Apparently not a decimal, so set the error, so that the code can later pick up the error-stream
-      SetError(&quot;Hour value invalid&quot;, $&quot;Tried to parse the hour, but couldn&#39;t. Value was &#39;{Configuration[HoursKey]}&#39;&quot;);
-      return 0;
-    }
-    set =&gt; Configuration[HoursKey] = value.ToString();
-  }
-
-  /// &lt;summary&gt;
-  /// Constructs a new EntityIdFilter
-  /// &lt;/summary&gt;
-  public ConfigurableDateTime()
-  {
-    Provide(GetEntities);
-    ConfigMask(HoursKey, &quot;[Settings:Hours||17]&quot;); 
-    // ...
-  }
-
-
-  private IImmutableList&lt;IEntity&gt; GetEntities()
-  {
-    // This will resolve the tokens before starting
-    Configuration.Parse();
-
-    // ...
-
-    // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
-    var hours = Hours;
-    if (!ErrorStream.IsDefaultOrEmpty) 
-        return ErrorStream;
-
-    // ...
-
-    return new List&lt;IEntity&gt; { ent }.ToImmutableArray();
-  }
-}
-</code></pre><h2 id="read-also">Read also</h2>
+<p>If your DataSource takes an <code>In</code> stream and limits what is forwarded it&#39;s called a <strong>Filter DataSource</strong>. </p>
+<p>You can find some simple examples in our DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.EntityIdFilter.html">EntityId</a> or <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a>. </p>
+<p>Also make sure you mark your sources in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> as <code>DataSourceType.Filter</code>.</p>
+<h2 id="read-also">Read Also</h2>
 <ul>
-<li><a class="xref" href="api.html">DataSource API</a> - DataSource API overview</li>
-<li><a class="xref" href="configuration-parse.html">Ensuring configuration is parsed</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<ul>
-<li>todo</li>
+<li><a class="xref" href="https://github.com/2sic/datasource-tutorial-basic">Tutorials Basic Custom DataSource</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in EAV / 2sxc 11.13</li>
+<li>Introduced ca. EAV / 2sxc v6</li>
 </ol>
 </article>
           </div>
@@ -331,7 +254,7 @@ So it sets in on the DataSource and later on it will be picked up and returned i
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/errors.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/type-filter.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

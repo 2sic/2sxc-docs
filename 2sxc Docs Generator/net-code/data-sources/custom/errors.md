@@ -25,6 +25,76 @@ Instead of raising the normal exception, your DataSource can also return an `Err
 
 Read the API docs above or check out examples in the 2sxc EAV code base for more guidance. 
 
+
+## Example using SetError and ErrorStream
+
+The following example is from the [DataSource Tutorial](xref:Tutorial.DataSource.Basic.Git). 
+You'll see that if we read the `Hours` property something can go wrong, but this property can't just return the error object. 
+So it sets in on the DataSource and later on it will be picked up and returned instead of the expected data.
+
+```c#
+public class ConfigurableDateTime: ExternalData
+{
+  // ...
+  private const string HoursKey = "Hours";
+
+  // ...
+
+  /// <summary>
+  /// A number-demo config. Note that we do error-checking and place the Error with SetError
+  /// </summary>
+  public int Hours
+  {
+    get
+    {
+      if (decimal.TryParse(Configuration[HoursKey], out var hour))
+      {
+        // check that it's a valid hour-range
+        if(hour >= 0 && hour <= 23) return (int)hour;
+        
+        // If not, set the error, so that the code can later pick up the error-stream
+        SetError("Hour value out of range", $"The hour was '{hour}' which is not valid");
+        return 0;
+      }
+      
+      // Apparently not a decimal, so set the error, so that the code can later pick up the error-stream
+      SetError("Hour value invalid", $"Tried to parse the hour, but couldn't. Value was '{Configuration[HoursKey]}'");
+      return 0;
+    }
+    set => Configuration[HoursKey] = value.ToString();
+  }
+
+  /// <summary>
+  /// Constructs a new EntityIdFilter
+  /// </summary>
+  public ConfigurableDateTime()
+  {
+    Provide(GetEntities);
+    ConfigMask(HoursKey, "[Settings:Hours||17]"); 
+    // ...
+  }
+
+
+  private IImmutableList<IEntity> GetEntities()
+  {
+    // This will resolve the tokens before starting
+    Configuration.Parse();
+
+    // ...
+
+    // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
+    var hours = Hours;
+    if (!ErrorStream.IsDefaultOrEmpty) 
+        return ErrorStream;
+
+    // ...
+
+    return new List<IEntity> { ent }.ToImmutableArray();
+  }
+}
+
+```
+
 ## Read also
 
 * [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview

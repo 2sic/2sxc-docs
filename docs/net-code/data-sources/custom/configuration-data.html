@@ -262,14 +262,25 @@
 <h2 id="redistribution-scenario">Redistribution Scenario</h2>
 <p>The above example works well if you&#39;re fine with installing the JSON Content-Type manually on servers which will use the DataSource. </p>
 <p>For more advanced redistribution, you&#39;ll want to include the JSON file in your Dnn Installation package. But in that case it&#39;s not in <code>.data-custom</code> so 2sxc/EAV can&#39;t pick it up. </p>
-<p>To make sure that it&#39;s still available to all Apps on a server, you&#39;ll need to create a special class to register it on Start of DNN. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.RepositoryInfoOfFolder</code>. On boot all these classes will be found and asked for other folders which have such data. Here&#39;s an example:</p>
-<pre><code class="lang-c#">public class RegisterContentTypeForConfigUi: RepositoryInfoOfFolder
+<p>To make sure that it&#39;s still available to all Apps on a server, you&#39;ll need to create a special class to register it on Start of DNN. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here&#39;s an example:</p>
+<pre><code class="lang-c#">using System.Collections.Generic;
+using System.Web;
+using ToSic.Eav.Repositories;
+
+namespace ToSic.Tutorial.DataSource.Basic
 {
-  public override List&lt;string&gt; RootPaths =&gt; new List&lt;string&gt;
-  {
-    HttpContext.Current.Server
-      .MapPath(&quot;~/desktopmodules/ToSic.Eav.DataSources.SharePoint/.data&quot;)
-  };
+    /// &lt;summary&gt;
+    /// This class will be picked up by 2sxc/EAV at boot.
+    /// It will tell it where there are additional Content-Types to load.
+    /// See also https://docs.2sxc.org/basics/data/content-types/range-global.html
+    /// &lt;/summary&gt;
+    public class RegisterGlobalContentTypes : FolderBasedRepository
+    {
+        public override List&lt;string&gt; RootPaths =&gt; new List&lt;string&gt;
+        {
+            HttpContext.Current.Server.MapPath(&quot;~/DesktopModules/ToSic.Eav.DataSources.SharePoint/.data&quot;)
+        };
+    }
 }
 </code></pre><div class="TIP"><h5>Tip</h5><p>Remember that the folder (in this case <code>.data</code>) is <em>not</em> where the shared Content-Types are stored. They must be placed in a <code>contenttypes</code> subfolder. </p>
 </div>
