@@ -208,6 +208,60 @@ public abstract class DataSourceBase : HasLog, IDataSource, IAppIdentity, IZoneI
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected DataSourceBase()</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSourceBase_ErrorStream.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSourceBase.ErrorStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSourceBase_Exceptions.cs/#L40">View Source</a>
+  </span>
+  <h4 id="ToSic_Eav_DataSources_DataSourceBase_ErrorStream" data-uid="ToSic.Eav.DataSources.DataSourceBase.ErrorStream">ErrorStream</h4>
+  <div class="markdown level1 summary"><p>This variable contains a stream of exceptions to return as a result of the DataSource.
+It is available because often some inner call will have to prepare an error and can&apos;t return the stream.
+So the inner call will set the variable and your primary GetList() can then do a check like this:</p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  var useMultiLanguage = GetMultiLanguageSetting();
+  if (!ErrorStream.IsDefaultOrEmpty) return ErrorStream;
+  var result = ...
+  return result;
+}</code></pre>
+<p>Or if you&apos;re using <a class="xref" href="../../net-code/log/index.html">Call Logging</a> do something like this:</p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  var callLog = Log.Call&lt;IImmutableList&lt;IEntity>>();
+  var useMultiLanguage = GetMultiLanguageSetting();
+  if (!ErrorStream.IsDefaultOrEmpty) return callLog(&quot;error&quot;, ErrorStream);
+  var result = ...
+  return callLog(&quot;ok&quot;, result);
+}</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;The name of this API is not final&quot;)]
+protected ImmutableArray&lt;IEntity&gt; ErrorStream</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Immutable.ImmutableArray</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Eav_DataSources_DataSourceBase_ErrorStream_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Introduced in 2sxc 11.13</p>
+</div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -888,6 +942,152 @@ protected void ConfigMask(string key, string mask, bool cacheRelevant = true)</c
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList(System.Collections.Immutable.IImmutableList%7BToSic.Eav.Data.IEntity%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSourceBase_Exceptions.cs/#L89">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_" data-uid="ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList*"></a>
+  <h4 id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___" data-uid="ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList(System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity}@)">GetRequiredInList(out IImmutableList&lt;IEntity&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get a required Stream from In.
+If it doesn&apos;t exist return false and place the error message in the list for returning to the caller.</p>
+<p>Usage usually like this in your GetList() function:</p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  if (!GetRequiredInList(out var originals)) return originals;
+  var result = ...;
+  return result;
+}</code></pre>
+<p>Or if you&apos;re using <a class="xref" href="../../net-code/log/index.html">Call Logging</a> do something like this:</p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  var callLog = Log.Call&lt;IImmutableList&lt;IEntity>>();
+  if (!GetRequiredInList(out var originals)) return callLog(&quot;error&quot;, originals);
+  var result = ...
+  return callLog(&quot;ok&quot;, result);
+}</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;The name of this API is not final&quot;)]
+protected bool GetRequiredInList(out IImmutableList&lt;IEntity&gt; list)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Immutable.IImmutableList</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The variable which will contain the list or the error-list</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the stream exists and is not null, otherwise false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Introduced in 2sxc 11.13</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_String_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList(System.String%2CSystem.Collections.Immutable.IImmutableList%7BToSic.Eav.Data.IEntity%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSourceBase_Exceptions.cs/#L123">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_" data-uid="ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList*"></a>
+  <h4 id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_String_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___" data-uid="ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList(System.String,System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity}@)">GetRequiredInList(String, out IImmutableList&lt;IEntity&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get a required Stream from In.
+If it doesn&apos;t exist return false and place the error message in the list for returning to the caller.</p>
+<p>Usage usually like this in your GetList() function: </p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  if (!GetRequiredInList(&quot;Fallback&quot;, out var fallback)) return fallback;
+  var result = ...;
+  return result;
+}</code></pre>
+<p>Or if you&apos;re using <a class="xref" href="../../net-code/log/index.html">Call Logging</a> do something like this:</p>
+<pre><code>private IImmutableList&lt;IEntity> GetList()
+{
+  var callLog = Log.Call&lt;IImmutableList&lt;IEntity>>();
+  if (!GetRequiredInList(&quot;Fallback&quot;, out var fallback)) return callLog(&quot;error&quot;, fallback);
+  var result = ...
+  return callLog(&quot;ok&quot;, result);
+}</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;The name of this API is not final&quot;)]
+protected bool GetRequiredInList(string name, out IImmutableList&lt;IEntity&gt; list)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Stream name - optional</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Immutable.IImmutableList</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The variable which will contain the list or the error-list</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the stream exists and is not null, otherwise false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_System_String_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Introduced in 2sxc 11.13</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSourceBase_PurgeList_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSourceBase.PurgeList(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -920,6 +1120,72 @@ protected void ConfigMask(string key, string mask, bool cacheRelevant = true)</c
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSourceBase_SetError_System_String_System_String_System_Exception_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSourceBase.SetError(System.String%2CSystem.String%2CSystem.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSourceBase_Exceptions.cs/#L52">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_DataSourceBase_SetError_" data-uid="ToSic.Eav.DataSources.DataSourceBase.SetError*"></a>
+  <h4 id="ToSic_Eav_DataSources_DataSourceBase_SetError_System_String_System_String_System_Exception_" data-uid="ToSic.Eav.DataSources.DataSourceBase.SetError(System.String,System.String,System.Exception)">SetError(String, String, Exception)</h4>
+  <div class="markdown level1 summary"><p>This will generate an Error Stream and return it as well as place it in the ErrorStream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;The name of this API is not final&quot;)]
+protected ImmutableArray&lt;IEntity&gt; SetError(string title, string message, Exception ex = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>Error title</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Error message</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">ex</span></td>
+        <td><p>.net exception - would be logged if provided</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Immutable.ImmutableArray</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><p>A list containing the error entity</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Eav_DataSources_DataSourceBase_SetError_System_String_System_String_System_Exception__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Introduced in 2sxc 11.13</p>
+</div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
