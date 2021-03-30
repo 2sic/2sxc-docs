@@ -2,19 +2,30 @@
 uid: Basics.Query.VisualQuery.Debugging
 ---
 
-# VisualQuery
+# VisualQuery 3 Debugging
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>
 
-In 2sxc 11.13 we're introducing two new feature to help you create VisualQueries
+In 2sxc 11.13 we're introducing **VisualQuery 3** with two new feature to help you create VisualQueries
 
 1. **Stream Debugging**
 1. **Non-Breaking Errors**
 
 ## Stream Debugging
 
-todo: #todoc
+After running a query and closing the result-preview, you'll see how many items were on each stream. In **VisualQuery 3** you can now click on that stream to see exactly what was contained in the stream itself. 
+
+<img src="./assets/stream-debug-hover.jpg" width="100%" class="full-width">
+
+<img src="./assets/stream-debug-details.jpg" width="100%" class="full-width">
+
+Note that in the image you see
+
+1. The title showing that you're looking at a stream
+1. The items in that stream
+1. An info that VisualQuery only picked the top 25 entries, but that you can re-run it with more results.
+
 
 ## Non-Breaking Errors
 
@@ -28,6 +39,14 @@ If you then click on the ⚠ you'll see the full message like this:
 
 <img src="./assets/stream-error-details.jpg" width="100%" class="full-width">
 
+The button below will bring you to the [2sxc Insights](xref:NetCode.Debug.Insights.Index)...
+
+<img src="./assets/stream-error-insights-list.jpg" width="100%" class="full-width">
+
+...where you can click on a request and search for `Error` or `Exception` to find out more:
+
+<img src="./assets/stream-error-insights-details.jpg" width="100%" class="full-width">
+
 ## Security Considerations
 
 1. All the error information is also logged into Insights, so super-users can check that for more details.
@@ -39,5 +58,5 @@ If you then click on the ⚠ you'll see the full message like this:
 
 ## History
 
-1. Introduced in 2sxc 11.13
+1. Introduced in VisualQuery 3, 2sxc 11.13
 

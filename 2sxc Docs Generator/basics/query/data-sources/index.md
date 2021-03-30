@@ -123,6 +123,12 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
+    <td>[Error](xref:ToSic.Eav.DataSources.Error) </td>
+    <td>(internal)</td>
+    <td>Generate an error for [testing VisualQuery debug](xref:Basics.Query.VisualQuery.Debugging)</td>
+  </tr>
+
+  <tr>
     <td>[ExternalData](xref:ToSic.Eav.DataSources.ExternalData)</td>
     <td>(base)</td>
     <td>Base Class for external data DataSources</td>
