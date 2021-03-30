@@ -15,7 +15,7 @@ Also make sure you mark your sources in the [VisualQuery Attribute](xref:NetCode
 
 ## Read Also
 
-* [](xref:Tutorial.DataSource.Basic.Git)
+* [](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
 
 ## History
 

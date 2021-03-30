@@ -14,7 +14,7 @@ It doesn't do much, but in case future optimizations happen, this will help us d
 
 ## Demo App and further links
 
-* [](xref:Tutorial.DataSource.Basic.Git)
+* [](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
 
 ## History
 

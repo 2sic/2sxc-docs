@@ -15,13 +15,13 @@ Examples would be DataSources which...
 * ...list files in a Folder
 * ...reads image file properties
 
-You can find some simple examples in the [Tutorial](xref:Tutorial.DataSource.Basic.Git).
+You can find some simple examples in the [Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index).
 
 Also make sure you mark your sources in the [VisualQuery Attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute) as `DataSourceType.Source`.
 
 ## Read Also
 
-* [](xref:Tutorial.DataSource.Basic.Git)
+* [](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
 
 ## History
 

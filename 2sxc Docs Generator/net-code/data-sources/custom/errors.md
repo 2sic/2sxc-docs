@@ -28,7 +28,7 @@ Read the API docs above or check out examples in the 2sxc EAV code base for more
 
 ## Example using SetError and ErrorStream
 
-The following example is from the [DataSource Tutorial](xref:Tutorial.DataSource.Basic.Git). 
+The following example is from the [DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index). 
 You'll see that if we read the `Hours` property something can go wrong, but this property can't just return the error object. 
 So it sets in on the DataSource and later on it will be picked up and returned instead of the expected data.
 

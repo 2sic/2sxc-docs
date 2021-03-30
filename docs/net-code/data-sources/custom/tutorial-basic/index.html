@@ -1,0 +1,589 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom DataSources - Basic Tutorial | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom DataSources - Basic Tutorial | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.TutorialBasic.Index">
+<h1 id="custom-datasources---basic-tutorial">Custom DataSources - Basic Tutorial</h1>
+
+<div class="float-right context-box-summary highlight-max" width="400px">
+    <div class="fancybox-auto svg-highlight" style="width: 100%">
+    <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
+  <image href="../../../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+
+  <!-- Data Highlights -->
+  <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-all" x="3%" y="82%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared data-assets-app" x="3%" y="82%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-assets-entities" x="18.5%" y="82%" width="17%" height="10%"></rect>
+
+  <rect class="svg-highlight prepared data-configuration" x="3%" y="93%" width="17%" height="6.5%"></rect>
+
+  <rect class="svg-highlight prepared data-entities" x="34%" y="82%" width="33%" height="10.5%"></rect>
+  <rect class="svg-highlight prepared data-content-types" x="34%" y="89%" width="33%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-app" x="34%" y="89%" width="17.5%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-content-types-global" x="50%" y="89%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared data-external" x="65.5%" y="82%" width="17%" height="10.5%"></rect>
+
+  <!-- ADAM -->
+  <rect class="svg-highlight prepared adam" x="18.5%" y="89%" width="17%" height="8%"></rect>
+
+  <!-- Server -->
+  <rect class="svg-highlight prepared server-all" x="0%" y="41%" width="84%" height="38%"></rect>
+
+
+  <!-- Prepare -->
+  <rect class="svg-highlight prepared prepare-all" x="0%" y="61%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared query" x="44.5%" y="61%" width="34%" height="18%"></rect>
+  <rect class="svg-highlight prepared query-engine" x="44.5%" y="70%" width="34%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-built-in" x="44.5%" y="62.5%" width="18%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-app" x="60.5%" y="62.5%" width="17%" height="11%"></rect>
+  <rect class="svg-highlight prepared query-datasource" x="71%" y="70%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared query-params" x="65%" y="70%" width="10%" height="7%"></rect>
+
+  <!-- Data Source -->
+  <rect class="svg-highlight prepared datasource" x="86%" y="51%" width="13%" height="16%"></rect>
+  <rect class="svg-highlight prepared datasource-custom" x="87.5%" y="54.5%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared datasource-built-in" x="87.5%" y="59%" width="12%" height="7%"></rect>
+  <rect class="svg-highlight prepared lookup" x="86%" y="66%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared lookup-engine" x="87.5%" y="69%" width="12%" height="6%"></rect>
+  <rect class="svg-highlight prepared lookup-sources" x="87.5%" y="73%" width="12%" height="7%"></rect>
+
+  <!-- Optimzers -->
+  <rect class="svg-highlight prepared asset-optimizer" x="3%" y="49.5%" width="13.5%" height="8%"></rect>
+  <rect class="svg-highlight prepared image-resizer" x="15%" y="30%" width="17%" height="34%"></rect>
+
+  <!-- Process / Awesomize -->
+  <rect class="svg-highlight prepared process-all" x="0%" y="41%" width="84%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-cs" x="34%" y="41%" width="33%" height="18%"></rect>
+  <rect class="svg-highlight prepared process-razor" x="34.3%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-razor-app" x="34.3%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-razor-engine" x="34.3%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-apis" x="50%" y="42%" width="34%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api" x="50%" y="42%" width="17%" height="15%"></rect>
+  <rect class="svg-highlight prepared process-web-api-app" x="50%" y="42%" width="17%" height="10%"></rect>
+  <rect class="svg-highlight prepared process-web-api-engine" x="50%" y="50%" width="17%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-libraries" x="47%" y="47%" width="7%" height="7%"></rect>
+  <rect class="svg-highlight prepared process-headless" x="65.5%" y="49.5%" width="17%" height="7%"></rect>
+
+  <!-- Libraries -->
+  <rect class="svg-highlight prepared libraries" x="86%" y="38%" width="13%" height="15%"></rect>
+  <rect class="svg-highlight prepared libraries-app" x="87.5%" y="41%" width="12%" height="6.5%"></rect>
+  <rect class="svg-highlight prepared libraries-built-in" x="87.5%" y="46%" width="12%" height="6%"></rect>
+
+
+  <!-- data formats -->
+  <rect class="svg-highlight prepared format-json-custom" x="50%" y="32%" width="17%" height="14%"></rect>
+  <rect class="svg-highlight prepared format-json-headless" x="65.5%" y="32%" width="17%" height="21%"></rect>
+  <rect class="svg-highlight prepared format-json-edit" x="74%" y="30%" width="19%" height="23%"></rect>
+
+  <!-- Browser -->
+  <rect class="svg-highlight prepared browser-all" x="0%" y="0%" width="100%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-show" x="0%" y="0%" width="50%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact-edit" x="47%" y="0%" width="37%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"></rect>
+
+  <!-- Frameworks -->
+  <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"></rect>
+  <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-js" x="0%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared frameworks-spa" x="0%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- App show parts -->
+  <rect class="svg-highlight prepared show-html" x="15.8%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-js" x="15.8%" y="12%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared show-spa" x="15.8%" y="21%" width="17.5%" height="12%"></rect>
+
+  <!-- Interact parts -->
+  <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit parts -->
+  <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"></rect>
+  <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"></rect>
+
+  <!-- Edit UI parts -->
+  <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"></rect>
+  <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"></rect>
+
+  <!-- SPA parts -->
+  <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"></rect>
+  <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"></rect>
+
+
+  <!-- Custom highlight boxes - can be controlled by in-page CSS -->
+  <rect class="svg-highlight highlight1"></rect>
+  <rect class="svg-highlight highlight2"></rect>
+  <rect class="svg-highlight highlight3"></rect>
+  <rect class="svg-highlight highlight4"></rect>
+  <rect class="svg-highlight highlight5"></rect>
+</svg>
+  </div>
+  <div class="overlay-description">
+    you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html">stack</a>
+  </div>
+</div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+
+<p>We&#39;ve re-created our Tutorial for the Custom DataSources to match features of 2sxc 11.13. It has 3 DataSources:</p>
+<ol>
+<li><strong>Basic</strong> which just provides information about todays Date</li>
+<li><strong>BasicList</strong> which generates similar information for a list of 7 dates</li>
+<li><strong>ConfigurableDateTime</strong> which shows just about everything you will ever need</li>
+</ol>
+<p>Here&#39;s what you should look into:</p>
+<ol>
+<li>The VisualStudio project located here: <a href="https://github.com/2sic/datasource-tutorial-basic">DataSources Github Project</a></li>
+<li>The companion App containing some Demo Queries and the Content-Type</li>
+</ol>
+<h2 id="installing">Installing</h2>
+<p>Just install the ZIP as a DNN package from the <a href="https://github.com/2sic/datasource-tutorial-basic/releases">Git Releases</a>. 
+This will add the DLLs containing the DataSources and the Configuration Content-Type to DNN as a Library.</p>
+<p>Now you can use this DataSource in any 2sxc App. </p>
+<p>You can also install the Demo App which already has some Queries #Todo demonstrating them. </p>
+<h2 id="discover-the-code">Discover the Code</h2>
+<p>Download the <a href="https://github.com/2sic/datasource-tutorial-basic">Git-Repo</a> and look at the Code. Next we&#39;ll explain the highlights: </p>
+<h3 id="level-1-the-most-basic-datasource">Level 1: The most <code>Basic</code> DataSource</h3>
+<p>This is the code for the simplest DataSource:</p>
+<pre><code class="lang-c#">using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
+using ToSic.Eav.DataSources;
+using ToSic.Eav.DataSources.Queries;
+
+namespace ToSic.Tutorial.DataSource.Basic
+{
+  // Additional info so the visual query can provide the correct buttons and infos
+  [VisualQuery(
+    NiceName = &quot;Demo DateTime Basic&quot;,
+    GlobalName = &quot;7aee541c-7188-429f-a4bb-2663a576b19e&quot;   // random &amp; unique Guid
+  )]
+  public class DateTimeDataSourceBasic: ExternalData
+  {
+    public const string DateFieldName = &quot;Date&quot;;
+
+    /// &lt;summary&gt;
+    /// Constructor to tell the system what out-streams we have
+    /// &lt;/summary&gt;
+    public DateTimeDataSourceBasic()
+    {
+      Provide(GetList); // &quot;Default&quot; out; when accessed, will deliver GetList
+    }
+
+    /// &lt;summary&gt;
+    /// Get-List method, which will load/build the items once requested 
+    /// Note that the setup is lazy-loading so this code will only execute when used
+    /// &lt;/summary&gt;
+    private ImmutableArray&lt;IEntity&gt; GetList()
+    {
+      var date = DateTime.Now;
+      var values = new Dictionary&lt;string, object&gt;
+      {
+          {DateFieldName, date},
+          {&quot;Weekday&quot;, date.DayOfWeek},
+          {&quot;DayOfWeek&quot;, (int) date.DayOfWeek}
+      };
+
+      // Construct the IEntity and return as ImmutableArray
+      var entity = Build.Entity(values, titleField: DateFieldName);
+      return new [] {entity}.ToImmutableArray();
+    }
+  }
+}
+</code></pre><p>What this does is...</p>
+<ol>
+<li>Inform <a class="xref" href="../../../../basics/query/visual-query/index.html">VisualQuery</a> that there is a DataSource and registers it with a unique GUID</li>
+<li>The constructor says it <a class="xref" href="../provide.html">provides</a> one <code>Default</code> stream which can be built by <code>GetList()</code></li>
+<li><code>GetList()</code> will simply create a simple entity and return it as a list</li>
+</ol>
+<h3 id="level-2-a-basiclist--datasource">Level 2: A <code>BasicList</code>  DataSource</h3>
+<p>This is the code</p>
+<pre><code class="lang-c#">using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
+using ToSic.Eav.DataSources;
+using ToSic.Eav.DataSources.Queries;
+
+namespace ToSic.Tutorial.DataSource.Basic
+{
+  // additional info so the visual query can provide the correct buttons and infos
+  [VisualQuery(
+    NiceName = &quot;Demo DateTime List&quot;,
+    GlobalName = &quot;10ebb0af-4b4e-44cb-81e3-68c3b0bb388d&quot;   // random &amp; unique Guid
+  )]
+  public class DateTimeDataSourceBasicList: ExternalData
+  {
+    public const string DateFieldName = &quot;Date&quot;;
+    public const string IdField = &quot;Id&quot;;
+    public const int ItemsToGenerate = 7;
+
+    /// &lt;summary&gt;
+    /// Constructor to tell the system what out-streams we have
+    /// &lt;/summary&gt;
+    public DateTimeDataSourceBasicList()
+    {
+      Provide(GetList); // default out, if accessed, will deliver GetList
+    }
+
+    /// &lt;summary&gt;
+    /// Get-List method, which will load/build the items once requested 
+    /// Note that the setup is lazy-loading,
+    /// ...so this code will not execute unless it&#39;s really used
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private ImmutableArray&lt;IEntity&gt; GetList()
+    {
+      var randomNumbers = new List&lt;IEntity&gt;();
+
+      for (var i = 0; i &lt; ItemsToGenerate; i++)
+      {
+        var values = new Dictionary&lt;string, object&gt;
+        {
+          {IdField, i},
+          {DateFieldName, RandomDay()}
+        };
+        var ent = Build.Entity(values, id: i, titleField: DateFieldName);
+        randomNumbers.Add(ent);
+      }
+
+      return randomNumbers.ToImmutableArray();
+    }
+
+    // helper to randomly generate dates
+    private readonly Random _randomizer = new Random();
+    private readonly DateTime _start = new DateTime(1995, 1, 1);
+
+    private DateTime RandomDay()
+    {
+      var range = (DateTime.Today - _start).Days;
+      return _start.AddDays(_randomizer.Next(range));
+    }
+
+  }
+}
+</code></pre><p>This is very similar to the Basic case, just that we&#39;re now creating a list of Entities and returning them.</p>
+<h3 id="level-3-a-configurable-error-aware-data-source-configurabledatetime">Level 3: A Configurable, Error-Aware Data-Source <code>ConfigurableDateTime</code></h3>
+<pre><code class="lang-c#">using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
+using ToSic.Eav.DataSources;
+using ToSic.Eav.DataSources.Queries;
+
+
+// Demo / Training Code to help you create our own DataSource
+// You can find the newest version here: https://github.com/2sic/datasource-tutorial-basic
+// there is also an App showing you how it would be used
+// and how such a data-source is configured. 
+
+namespace ToSic.Tutorial.DataSource.Basic
+{
+  // Note that this attribute is necessary for the DataSource to show up in the 
+  [VisualQuery(
+    GlobalName = &quot;81dd49a7-fa70-4e98-b73d-8299bb3231f0&quot;,
+    Type = DataSourceType.Source,
+    NiceName = &quot;DateTime Configurable&quot;,
+    // Guid of the Content-Type which must be exported with this DataSource
+    // It&#39;s located in .data/contenttypes
+    // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
+    ExpectsDataOfType = &quot;677210a2-cf08-46e5-a6b2-86e56e27be99&quot;,
+    HelpLink = &quot;https://r.2sxc.org/DsCustom&quot;)]
+  public class ConfigurableDateTime : ExternalData
+  {
+    #region Configuration-properties
+    private const string DesiredDateKey = &quot;DesiredDate&quot;;
+    private const string HoursKey = &quot;Hours&quot;;
+
+    /// &lt;summary&gt;
+    /// A piece of demo-configuration. It must always be stored/accessed from the Configuration dictionary
+    /// because everything in the config-dictionary will be token-resolved
+    /// &lt;/summary&gt;
+    public string DesiredDate
+    {
+      get =&gt; Configuration[DesiredDateKey];
+      set =&gt; Configuration[DesiredDateKey] = value;
+    }
+
+    /// &lt;summary&gt;
+    /// A number-demo config. Note that we do error-checking and store it with SetError
+    /// &lt;/summary&gt;
+    public int Hours
+    {
+      get
+      {
+        if (decimal.TryParse(Configuration[HoursKey], out var hour))
+        {
+          // check that it&#39;s a valid hour-range
+          if (hour &gt;= 0 &amp;&amp; hour &lt;= 23) return (int)hour;
+
+          // If not, set the error, so that the code can later pick up the error-stream
+          SetError(&quot;Hour value out of range&quot;, $&quot;The hour was &#39;{hour}&#39; which is not valid&quot;);
+          return 0;
+        }
+
+        // Apparently not a decimal, so set the error, so that the code can later pick up the error-stream
+        SetError(&quot;Hour value invalid&quot;, $&quot;Tried to parse the hour, but couldn&#39;t. Value was &#39;{Configuration[HoursKey]}&#39;&quot;);
+        return 0;
+      }
+      set =&gt; Configuration[HoursKey] = value.ToString();
+    }
+
+    #endregion
+
+    /// &lt;summary&gt;
+    /// Constructs a new EntityIdFilter
+    /// &lt;/summary&gt;
+    public ConfigurableDateTime()
+    {
+      // The out-list contains all out-streams.
+      // For performance reasons we want to make sure that they are NOT created unless accessed
+      // Because of this, we create a data-stream with a deferred call to GetEntities - like this:
+      Provide(GetEntities);
+
+      // Example of pre-configuring a text
+      // This will place the token to be resolved into the variable
+      // The tokens will be resolved before use
+      // The following token means: 
+      // - Try to use the configured value from the setting on this data-source in the visual query
+      // - if there is none, just use the value &quot;Today&quot;
+      ConfigMask(DesiredDateKey, &quot;[Settings:DesiredDate||Today]&quot;);
+
+      // Example of pre-configuring a number value
+      // We can&#39;t just say AnotherDemoConfig = &quot;text&quot; because that would not compile since it expects a number
+      // So we just add the token to be resolved directly to the configuration list
+      ConfigMask(HoursKey, &quot;[Settings:Hours||17]&quot;);
+    }
+
+
+    /// &lt;summary&gt;
+    /// This is the deferred call to retrieve entities
+    /// If you created the source correctly it won&#39;t be called unless accessed
+    /// This is recommended for performance reasons
+    /// We also recommend placing the result in the cache...
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private IImmutableList&lt;IEntity&gt; GetEntities()
+    {
+      // This will resolve the tokens before starting
+      Configuration.Parse();
+
+      // Here&#39;s your real code. 
+      // Typically you will either perform some work with the In-streams
+      // or retrieve data from another source like XML, RSS, SQL, File-storage etc.
+      // Usually you would also need configuration from the UI - but sometimes not, especially if it&#39;s just for a very specific purpose
+      #region Your Custom Business Logic
+
+      try
+      {
+        // Check if we&#39;re trying to inform about today
+        if (DesiredDate != &quot;Today&quot;)
+          return SetError(&quot;Demo Config not Today&quot;, &quot;The Demo Configuration should be &#39;Today&#39; or empty.&quot;);
+
+        // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
+        var hours = Hours;
+        if (!ErrorStream.IsDefaultOrEmpty)
+          return ErrorStream;
+
+        // For this demo we&#39;ll treat the current time as UTC
+        var todayDate = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
+
+        // In this demo we&#39;ll just create 1 entity containing some values related to today
+        var today = new Dictionary&lt;string, object&gt;
+        {
+          {&quot;Title&quot;, &quot;Date Today&quot;},
+          {&quot;Date&quot;, todayDate.AddHours(hours)},
+          {&quot;DayOfWeek&quot;, DateTime.Today.DayOfWeek.ToString()},
+          {&quot;DayOfWeekNumber&quot;, DateTime.Today.DayOfWeek}
+        };
+
+        // ...now convert to an entity with the data prepared before
+        var ent = Build.Entity(today, titleField: &quot;Title&quot;);
+        return new List&lt;IEntity&gt; { ent }.ToImmutableArray();
+      }
+      catch (Exception ex)
+      {
+        // if something happens, let&#39;s return this information as a result
+        return SetError(&quot;Unexpected Error&quot;, &quot;The Configurable DateTime DataSource ran into an exception.&quot;, ex);
+      }
+      #endregion
+
+    }
+  }
+}
+</code></pre><p>This does a LOT more. Here the important bits</p>
+<ol>
+<li>The VisualQuery Attribute has a lot more information</li>
+<li>It has various properties like <code>Hour</code> which will be populated by settings in the Constructor...</li>
+<li>...and they have features to <a class="xref" href="../errors.html">detect errors and report them nicely</a></li>
+<li>The <code>GetEntities()</code> safely checks if the Required <code>In</code> stream really exists - otherwise returns a clean <a class="xref" href="../errors.html">error stream</a></li>
+<li>The configuration is then used in the data returned</li>
+</ol>
+<h2 id="history">History</h2>
+<ol>
+<li>Created 2017 for 2sxc 7</li>
+<li>Completely rebuilt for 2sxc 11.13 and VisualQuery 3</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/tutorial-basic/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
