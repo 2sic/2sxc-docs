@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Content-Type Scopes | 2sxc and EAV 10 </title>
+    <title>App Shared &quot;Ghost&quot; Content-Types (&#9888;) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Content-Type Scopes | 2sxc and EAV 10 ">
+    <meta name="title" content="App Shared &quot;Ghost&quot; Content-Types (&#9888;) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,29 +111,50 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.Scopes">
-<h1 id="content-type-scopes">Content-Type Scopes</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Data.ContentTypes.Shared">
+<h1 id="app-shared-ghost-content-types-">App Shared &quot;Ghost&quot; Content-Types (⚠)</h1>
 
 <div class="overlay-container">
-  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 47.5%"></div>
+  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 24%"></div>
   <img src="../assets/app-data.png" class="full-width">
 </div>
-<p>This explains <strong>Content-Type Scopes</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<p>This explains <strong>App Shared Content-Types</strong> which used to be called <strong>Ghost Content-Type</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
 <hr>
-<h2 id="what-is-a-content-type-scope">What is a Content-Type Scope?</h2>
-<p>Content-Types have a <em>Scope</em>. This is like a category for the Content-Type. </p>
-<blockquote><p>Normally you only see the Content-Types and Entities of the default Scope. </p>
-</blockquote>
-<p>The other Scopes have internal and system Content-Types like <code>@String</code>. </p>
+<div class="WARNING"><h5>Warning</h5><p>This is a very advanced topic which less than 1% of all developers use. </p>
+<p>You almost certainly will <em>not</em> need this. So if you start playing around with this, 
+make sure that you really need this. </p>
+</div>
+<h2 id="what-is-an-app-shared-content-type">What is an App Shared Content-Type?</h2>
+<p><strong>App Shared Content Types</strong> are a <a class="xref" href="index.html">Content Types</a> which are defined in one App and re-used in specific other Apps. </p>
 <ul>
-<li><a href="https://azing.org/2sxc/r/LqblhYXD">Here&#39;s the full list of current Scopes</a></li>
-<li>Here are instructions how to <a href="https://azing.org/2sxc/r/MEa0dtBw">switch Scopes</a> to manage data of other Scopes</li>
+<li>They can only be used inside the App which are configured to <em>share</em> the definition</li>
+<li>The App data is in the export/import, but <em>not</em> the <strong>Content-Type Definition</strong></li>
+<li>If you import an App with such data, the App containing the definition must be imported first.</li>
+<li>These Content-Types are stored in the <a class="xref" href="specs/sql-storage.html">SQL database</a></li>
 </ul>
-<h2 id="nice-to-know-about-scopes">Nice to Know about Scopes</h2>
-<p>You can easily create your own scope at any time. This is usually used for <a class="xref" href="range-global.html">Global Content-Types (⚠)</a> or if your App is getting really complex and has so many Content-Types that it confuses the Admin. </p>
+<p>You rarely want to use this. </p>
+<h2 id="how-it-works">How it works</h2>
+<ul>
+<li>Shared Content-Types are defined in a <strong>Primary</strong> App which manages this type. </li>
+<li>Other <strong>Slave</strong> Apps are configured to also use this Content-Type. They automatically inherit every configuration of the primary App even when the schema changes. </li>
+</ul>
+<h2 id="why-does-this-feature-exist">Why does this Feature exist?</h2>
+<p>The feature was originally introduced in 2sxc 1.0 because at that time we didn&#39;t have <a class="xref" href="range-global.html">Global Shared Content-Types</a></p>
+<p>It has since been used in various complex sites. An example is a installation which has many Sites, each having the same <strong>News App</strong>. In such scenarios it&#39;s hard to keep changes synchronized, so it&#39;s usually implemented as follows:</p>
+<ol>
+<li>A primary App is on a hidden Site which just manages the Content-Types</li>
+<li>A template App is configured to use thes Content-Types. It usually also uses shared Templates etc.</li>
+<li>The template App is then exported and imported in each site where needed. </li>
+</ol>
+<h2 id="why-would-you-want-to-use-this">Why would you want to use this?</h2>
+<ol>
+<li>If you are creating a complex system with many portals and apps which should share the schema</li>
+</ol>
+<h2 id="why-would-you-not-want-to-do-this">Why would you <em>not</em> want to do this?</h2>
+<p>Using Shared Content-Types is fairly technical, so the developer must understand what this is. </p>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 2.0</li>
+<li>Introduced in 2sxc 1.0</li>
 </ol>
 </article>
           </div>
@@ -143,7 +164,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/content-types/scopes.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/data/content-types/range-app-shared.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -2,7 +2,7 @@
 uid: Basics.Data.ContentTypes.System
 ---
 
-# System Content-Types
+# Global System Content-Types
 
 [!include["Data"](~/basics/data/_shared-content-types-global.md)]
 
