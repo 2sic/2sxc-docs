@@ -73,9 +73,9 @@ In your code which will generate the List of results, you must first call one im
 ```c#
 private IImmutableList<IEntity> GetValueFilter()
 {
-  var opBefore = Operator;
+  var opBefore = Operator;  // would return "[Settings:Operator||==]"
   Configuration.Parse();
-  var opAfter = Operator;
+  var opAfter = Operator;   // now returns "=="
   // rest of the code to do what this DataSource must do
 }
 ```

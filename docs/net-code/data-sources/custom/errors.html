@@ -247,7 +247,20 @@
 <li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ErrorStream">ErrorStream</a> property to pass errors around from deeper functions</li>
 </ol>
 <p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance. </p>
-<h2 id="example-using-seterror-and-errorstream">Example using SetError and ErrorStream</h2>
+<h2 id="example-using-getrequiredstream">Example using GetRequiredStream</h2>
+<p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_GetRequiredInList_">GetRequiredStream</a> ensures that we get a stream we really need, or that we&#39;ll get a stream containing a good error message.</p>
+<pre><code class="lang-c#">private IImmutableList&lt;IEntity&gt; GetEntities()
+{
+  // This will resolve the tokens before starting
+  Configuration.Parse();
+
+  if (!GetRequiredInList(out var originals)) return originals;
+
+  var results = ...; 
+
+  return results.ToImmutableArray();
+}
+</code></pre><h2 id="example-using-seterror-and-errorstream">Example using SetError and ErrorStream</h2>
 <p>The following example is from the <a class="xref" href="tutorial-basic/index.html">DataSource Tutorial</a>. 
 You&#39;ll see that if we read the <code>Hours</code> property something can go wrong, but this property can&#39;t just return the error object. 
 So it sets in on the DataSource and later on it will be picked up and returned instead of the expected data.</p>

@@ -64,8 +64,7 @@ All paramaters are optional, except the first one containing the values. Here's 
 
 ## Demo Code and further links
 
-* [demo data source code](https://github.com/2sic/2sxc-eav-tutorial-custom-datasource)
-* [FnL DataSource](https://github.com/2sic/dnn-datasource-form-and-list)
+* [Tutorial DataSource](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
 
 ## History
 

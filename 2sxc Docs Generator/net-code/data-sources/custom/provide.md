@@ -16,20 +16,36 @@ In general, you need
 1. a method like `GetList()` which returns an `IEnumerable<IEntity>`
 1. attach that stream to the `Out` - usually on a stream called `Default`
 
-Here's a simple example of the constructor of the [DnnFormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list), which provides the default stream: 
+Here's a simple example of the constructor of the [Tutorial Basic DataSource](xref:NetCode.DataSources.Custom.TutorialBasic.Basic), which provides the default stream: 
 
 ```cs
-public DnnFormAndList()
+/// <summary>
+/// Constructor to tell the system what out-streams we have
+/// </summary>
+public DateTimeDataSourceBasic()
 {
-    // Specify what out-streams this data-source provides. Usually just one, called "Default"
-    Provide(GetList); // does everything
-
-    // ...
+  Provide(GetList); // "Default" out; when accessed, will deliver GetList
 }
-private IEnumerable<IEntity> GetList() 
+
+/// <summary>
+/// Get-List method, which will load/build the items once requested 
+/// Note that the setup is lazy-loading so this code will only execute when used
+/// </summary>
+private ImmutableArray<IEntity> GetList()
 {
-    // ...
-} 
+  var date = DateTime.Now;
+  var values = new Dictionary<string, object>
+  {
+      {DateFieldName, date},
+      {"Weekday", date.DayOfWeek},
+      {"DayOfWeek", (int) date.DayOfWeek}
+  };
+  
+  // Construct the IEntity and return as ImmutableArray
+  var entity = Build.Entity(values, titleField: DateFieldName);
+  return new [] {entity}.ToImmutableArray();
+}
+
 ```
 This example ensures that the `.Out["Default"]` as well as the `.List` (which is a shorthand for `.Out[Constants.DefaultStreamName].List`) are mounted, ready to deliver.
 

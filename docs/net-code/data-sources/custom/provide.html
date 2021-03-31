@@ -242,18 +242,33 @@
 <li>a method like <code>GetList()</code> which returns an <code>IEnumerable&lt;IEntity&gt;</code></li>
 <li>attach that stream to the <code>Out</code> - usually on a stream called <code>Default</code></li>
 </ol>
-<p>Here&#39;s a simple example of the constructor of the <a href="https://github.com/2sic/dnn-datasource-form-and-list">DnnFormAndList DataSource</a>, which provides the default stream: </p>
-<pre><code class="lang-cs">public DnnFormAndList()
+<p>Here&#39;s a simple example of the constructor of the <a class="xref" href="tutorial-basic/basic.html">Tutorial Basic DataSource</a>, which provides the default stream: </p>
+<pre><code class="lang-cs">/// &lt;summary&gt;
+/// Constructor to tell the system what out-streams we have
+/// &lt;/summary&gt;
+public DateTimeDataSourceBasic()
 {
-    // Specify what out-streams this data-source provides. Usually just one, called &quot;Default&quot;
-    Provide(GetList); // does everything
-
-    // ...
+  Provide(GetList); // &quot;Default&quot; out; when accessed, will deliver GetList
 }
-private IEnumerable&lt;IEntity&gt; GetList() 
+
+/// &lt;summary&gt;
+/// Get-List method, which will load/build the items once requested 
+/// Note that the setup is lazy-loading so this code will only execute when used
+/// &lt;/summary&gt;
+private ImmutableArray&lt;IEntity&gt; GetList()
 {
-    // ...
-} 
+  var date = DateTime.Now;
+  var values = new Dictionary&lt;string, object&gt;
+  {
+      {DateFieldName, date},
+      {&quot;Weekday&quot;, date.DayOfWeek},
+      {&quot;DayOfWeek&quot;, (int) date.DayOfWeek}
+  };
+
+  // Construct the IEntity and return as ImmutableArray
+  var entity = Build.Entity(values, titleField: DateFieldName);
+  return new [] {entity}.ToImmutableArray();
+}
 </code></pre><p>This example ensures that the <code>.Out[&quot;Default&quot;]</code> as well as the <code>.List</code> (which is a shorthand for <code>.Out[Constants.DefaultStreamName].List</code>) are mounted, ready to deliver.</p>
 <h2 id="overloads">Overloads</h2>
 <ul>

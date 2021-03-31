@@ -19,9 +19,10 @@ To help the UI explicitly show these predefined In-Streams, we must list them in
 ## Example from the ValueFilter DataSource
 
 ```c#
-[VisualQuery(GlobalName = "..., ...",
+[VisualQuery(GlobalName = "SOME-IDENTITY",
   Type = DataSourceType.Filter, 
   In = new[] { Constants.DefaultStreamName, Constants.FallbackStreamName },
+  DynamicIn = false,
   DynamicOut = false,
   ExpectsDataOfType = "...",
   HelpLink = "...")]
@@ -31,7 +32,9 @@ To help the UI explicitly show these predefined In-Streams, we must list them in
 
 1. If the `In` is not specified in the VisualQuery Attribute, then the UI will show no special In-markers
 1. By convention, the default In-stream is called `Default`
-
+1. In-Streams have data which can be used, but they are not accessed until you really need them
+1. If your code really needs an In (like you require the `Default` stream) best use [the best-practice for error-handling](xref:NetCode.DataSources.Custom.Errors)
+1. The property `DynamicIn` would mark DataSources which can work with a variable amount of In-Streams, like [StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge)
 
 ## History
 

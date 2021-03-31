@@ -6,15 +6,19 @@ uid: ToSic.Eav.DataSources.Queries.VisualQueryAttribute
 To help the Visual Query Designer properly guide the user, there is a C# _Attribute_ called **VisualQuery** to configure everything. 
 
 ## How to use VisualQuery
-Here's a simple example of the [FormAndList DataSource](https://github.com/2sic/dnn-datasource-form-and-list): 
+Here's a simple example of the [Tutorial DataSource](xref:NetCode.DataSources.Custom.TutorialBasic.Index): 
+
 ```cs
 [VisualQuery(
-    GlobalName = "0a0924a5-ca2f-4db5-8fc7-1a21fdbb2fbb",
-    NiceName = "Dnn FormAndList",
-    Type = DataSourceType.Source, 
-    ExpectsDataOfType = "d98db323-7c33-4f2a-b173-ef91c0875124",
-    HelpLink = "https://github.com/2sic/dnn-datasource-form-and-list/wiki")]  
-
+  GlobalName = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
+  Icon = "event",
+  Type = DataSourceType.Source,
+  NiceName = "DateTime Configurable",
+  // Guid of the Content-Type which must be exported with this DataSource
+  // It's located in .data/contenttypes
+  // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
+  ExpectsDataOfType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
+  HelpLink = "https://r.2sxc.org/DsCustom")]
 ```
 
 This example shows how the the FormAndList DataSource tells the UI things like:
@@ -31,7 +35,7 @@ This example shows how the the FormAndList DataSource tells the UI things like:
 
 ## Demo Code and further links
 
-* [FnL DataSource](https://github.com/2sic/dnn-datasource-form-and-list)
+* [DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
 
 ## History
 

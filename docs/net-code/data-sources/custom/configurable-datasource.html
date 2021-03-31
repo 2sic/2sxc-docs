@@ -286,9 +286,9 @@ Things to note in the example above:</p>
 <p>In your code which will generate the List of results, you must first call one important command:</p>
 <pre><code class="lang-c#">private IImmutableList&lt;IEntity&gt; GetValueFilter()
 {
-  var opBefore = Operator;
+  var opBefore = Operator;  // would return &quot;[Settings:Operator||==]&quot;
   Configuration.Parse();
-  var opAfter = Operator;
+  var opAfter = Operator;   // now returns &quot;==&quot;
   // rest of the code to do what this DataSource must do
 }
 </code></pre><p>This will make sure that all tokens are parsed/converted in the list of values. 

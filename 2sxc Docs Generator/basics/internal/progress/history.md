@@ -282,6 +282,34 @@ Anybody upgrading will still preserve the files that are there.
 If you really need them, download an old release of 2sxc and get them manually. 
 
 
+### Version 11.06 - 11.11 - todo
+
+👉 See the [Project Issues](https://github.com/2sic/2sxc/projects/23)
+
+### Version 11.13
+
+1. VisualQuery 3 with a lot of new features
+  1. Click on a stream [shows what's in that stream](xref:Basics.Query.VisualQuery.Debugging)
+  1. Much [better error handling](xref:Basics.Query.VisualQuery.Debugging) to avoid queries from crashing if a stream has an error
+  1. All internal DataSources were updated to use this new Error-Handling
+  1. Output of Query is now tabbed which is much nicer to use
+  1. Visual-Query only returns top 25 results by default to help with creating queries with large amounts of data
+  1. UI was enhanced to show more user-friendly names/infos
+  1. `DynamicIn` was introduced so DataSources can indicate that they expect a lot of In-streams
+  1. UI enhanced with better/larger buttons/icons
+  1. `In` Streams are now managed better so they can connect before it's known if the source `Out` actually has that stream
+1. New DataSource Error to provoke an error in a Query for testing
+1. New DataSource [SerializationConfiguration](xref:ToSic.Eav.DataSources.SerializationConfiguration) lets you determine how things are serialized
+1. DataSource [AttributeFilter](xref:ToSic.Eav.DataSources.AttributeFilter) enhanced to have keep-all or remove-all and multi-line configuration (easier)
+1. New [DataSource Tutorial with updated sample code](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
+1. Insights-Logging was enhanced to log Exceptions (used in the VisualQuery Error handling)
+
+**Bugfixes**
+
+1. Toolbar had issue when color code was numbers only
+
+
+
 ## Github Release Notes
 
 You can always find the latest and detailed release notes on the [github releases](https://github.com/2sic/2sxc/releases)

@@ -26,6 +26,26 @@ Instead of raising the normal exception, your DataSource can also return an `Err
 Read the API docs above or check out examples in the 2sxc EAV code base for more guidance. 
 
 
+## Example using GetRequiredStream
+
+[GetRequiredStream](xref:ToSic.Eav.DataSources.DataSourceBase.GetRequiredInList*) ensures that we get a stream we really need, or that we'll get a stream containing a good error message.
+
+
+```c#
+private IImmutableList<IEntity> GetEntities()
+{
+  // This will resolve the tokens before starting
+  Configuration.Parse();
+
+  if (!GetRequiredInList(out var originals)) return originals;
+  
+  var results = ...; 
+
+  return results.ToImmutableArray();
+}
+```
+
+
 ## Example using SetError and ErrorStream
 
 The following example is from the [DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index). 
