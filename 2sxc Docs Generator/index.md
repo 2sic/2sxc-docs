@@ -3,7 +3,7 @@
 
 # EAV & 2sxc Docs v11.13.00
 
-This is the documentation for EAV and 2sxc APIs. It's fairly advanced, so if you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
+This is the documentation for EAV and 2sxc APIs. If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
 ## 2sxc - The CMS / CMF of DNN (DotNetNuke)
 
@@ -12,59 +12,55 @@ This is the documentation for EAV and 2sxc APIs. It's fairly advanced, so if you
 2sxc is basically used to provide web-site-builder functionality to DNN, both in a simple **Content** mode (where users just add images, designed text/image blocks, links etc.) or in **App** mode, where user add standalone functional apps like blogs, galleries and more. Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
 
 
-[!include["Where to Start"](shared/where-to-start.md)]
+## Where to Start
 
-## Overview and Links to Other Documentations
+2sxc is an easy to use dynamic content system for .net Platforms like DNN. 
+If you are just getting started, then this is probably not where you should be looking. Focus first on:
 
-2sxc is very flexible and can be used for almost any kind of content-management needs or app development needs. Because of this, different documentations help you work with different things. Here's the overview:
+1. The [Basics](xref:Basics.Index) which tells you about Architecture, Data Models and more
+1. Content on [2sxc.org](https://2sxc.org/) like the [learn section](https://2sxc.org/en/learn)
+1. Apps on [2sxc Catalog](https://2sxc.org/en/apps) which contains many ready-to-use apps like blogs and news, as well as tutorials 
+1. The [DNN Tutorials](https://2sxc.org/dnn-tutorials/en/) on 2sxc.org
 
-1. [2sxc.org](https://2sxc.org)
-1. [Getting started tutorials](http://2sxc.org/en/Learn) are found in the _Learn_ section of [2sxc.org](http://2sxc.org/en/)  
-includes installation, basic instructions, creating your first content-type and similar tutorials &  
-it also include instructions how to export/import data, working with the image resizer and more.
+👉 With this knowledge, you can already create amazing stuff. 
+
+2sxc is very flexible and can be used for almost any kind of content-management needs or app development needs. 
+Because of this, different documentations help you work with different things. 
+Here's the overview:
+
 1. A [list of features](http://2sxc.org/en/docs), concepts and examples can be found in the _Docs_ section of 2sxc.org, including things not specifically code related
 1. [Many solutions and recommendations](http://2sxc.org/en/blog) are found in the _Blog_ on 2sxc.org
 1. [Many demo, template and tutorial Apps](http://2sxc.org/en/Apps) are found in the _App Catalog_ on 2sxc.org
 1. [2sxc / EAV Roadmap](xref:Internal.Progress.Roadmap)
-1. [App folder structure](xref:Basics.App.FolderStructure) and special files
-1. [Style Guide 2020 (beta)](xref:Basics.StyleGuide.2021) best-practices draft
-
-
-## If you want to know more, then check out...
-
-1. The [Basics](xref:Basics.Index) which tells you about Architecture, Data Models and more
-1. The [C# .net API Docs](/api/dot-net/index.html)
-
-
-#### Documentation Version
-
-Generated for EAV/2sxc 11.13.00
 
 
 
-#### Pending Work / Tasks
+
+
+## Pending Documentation Work
 
 Next to document
 
+1. Document VisualQuery better
+1. Document JS APIs better
 1. Finish metadata documentation
+  1. Create in the UI (probably enhance UI first)
+  1. Create in the APIs (simplify APIs first)
+  1. Create good sample of Page-Metadata App
 
 These topics are not or insufficiently documented...
 
-1. URL and REST API for retrieving / changing data (todo)
-1. Enhancing 2sxc with custom extensions
-    1. Custom input field-types
-    2. Custom data-types
-    5. ...
+1. URL and REST API for retrieving / changing data
 1. Future topics, lower priority
-    1. Angular2-9 and 2sxc (todo)
     2. React and 2sxc (todo)
     4. jQuery with 2sxc (todo)
-1. Super Basic stuff
-    1. How razor templates get their data (content, list, app.data, app.query, etc.)
 1. etc.
 
 These topics are already documented elsewhere, but should become part of these docs
 
 1. [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680)
 1. [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737)
-1. [creating custom DataSource objects](https://2sxc.org/en/blog/tag/datasource)
+
+---
+
+Generated for EAV/2sxc 11.13.00
