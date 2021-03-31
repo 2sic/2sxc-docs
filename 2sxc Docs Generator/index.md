@@ -1,9 +1,11 @@
 
-<img src="assets/logos/v11/2sxc500.png" width="250px" align="right">
+<img src="assets/logos/v11/2sxc500.png" width="250px" align="right" class="float-right">
 
-# EAV & 2sxc Docs v11.13.00
+# 2sxc / EAV Docs v11.13.00
 
-This is the documentation for EAV and 2sxc APIs. If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
+This is the documentation for EAV and 2sxc APIs. 
+
+👉 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
 ## 2sxc - The CMS / CMF of DNN (DotNetNuke)
 
