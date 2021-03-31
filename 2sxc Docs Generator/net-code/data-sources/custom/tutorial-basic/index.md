@@ -16,7 +16,7 @@ We've re-created our Tutorial for the Custom DataSources to match features of 2s
 Here's what you should look into:
 
 1. The VisualStudio project located here: [DataSources Github Project](https://github.com/2sic/datasource-tutorial-basic)
-1. The companion App containing some Demo Queries and the Content-Type
+1. The **companion Demo App** ([Git](xref:https://github.com/2sic/app-tutorial-datasource-basic) | [Downloads](xref:https://github.com/2sic/app-tutorial-datasource-basic/releases) | [App-Catalog](xref:https://2sxc.org/en/apps/app/tutorial-use-a-custom-developed-datasource)) containing some Demo Queries and the Content-Type
 
 ## Installing
 
