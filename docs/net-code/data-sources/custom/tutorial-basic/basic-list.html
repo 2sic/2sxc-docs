@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial Custom DataSources - BasicList | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial Custom DataSources - BasicList | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.TutorialBasic.BasicList">
+<h1 id="tutorial-custom-datasources---basiclist">Tutorial Custom DataSources - BasicList</h1>
+
+<p>This explains the <strong>BasicList</strong> DataSource in the <a class="xref" href="index.html">DataSource Tutorial</a>.</p>
+<h2 id="add-to-visualquery">Add to VisualQuery</h2>
+<p>This is what it looks like in <a class="xref" href="../../../../basics/query/visual-query/index.html">VisualQuery</a>:</p>
+<p><img src="assets/query-list-design.jpg" width="100%" class="full-width"></p>
+<p>And this is what you see when you run it:</p>
+<p><img src="assets/query-list-results.jpg" width="100%" class="full-width"></p>
+<h2 id="source-of-the-basiclist-datasource">Source of the <code>BasicList</code> DataSource</h2>
+<p>This is the code for the simplest DataSource:</p>
+<pre><code class="lang-c#">using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav.Data;
+using ToSic.Eav.DataSources;
+using ToSic.Eav.DataSources.Queries;
+
+namespace ToSic.Tutorial.DataSource.Basic
+{
+  // additional info so the visual query can provide the correct buttons and infos
+  [VisualQuery(
+    NiceName = &quot;Demo DateTime List&quot;,
+    Icon = &quot;date_range&quot;,
+    GlobalName = &quot;10ebb0af-4b4e-44cb-81e3-68c3b0bb388d&quot;   // random &amp; unique Guid
+  )]
+  public class DateTimeDataSourceBasicList: ExternalData
+  {
+    public const string DateFieldName = &quot;Date&quot;;
+    public const string IdField = &quot;Id&quot;;
+    public const int ItemsToGenerate = 27;
+
+    /// &lt;summary&gt;
+    /// Constructor to tell the system what out-streams we have
+    /// &lt;/summary&gt;
+    public DateTimeDataSourceBasicList()
+    {
+      Provide(GetList); // default out, if accessed, will deliver GetList
+    }
+
+    /// &lt;summary&gt;
+    /// Get-List method, which will load/build the items once requested 
+    /// Note that the setup is lazy-loading,
+    /// ...so this code will not execute unless it&#39;s really used
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private ImmutableArray&lt;IEntity&gt; GetList()
+    {
+      var randomNumbers = new List&lt;IEntity&gt;();
+
+      for (var i = 0; i &lt; ItemsToGenerate; i++)
+      {
+        var values = new Dictionary&lt;string, object&gt;
+        {
+          {IdField, i},
+          {DateFieldName, RandomDay()}
+        };
+        var ent = Build.Entity(values, id: i, titleField: DateFieldName);
+        randomNumbers.Add(ent);
+      }
+
+      return randomNumbers.ToImmutableArray();
+    }
+
+    // helper to randomly generate dates
+    private readonly Random _randomizer = new Random();
+    private readonly DateTime _start = new DateTime(1995, 1, 1);
+
+    private DateTime RandomDay()
+    {
+      var range = (DateTime.Today - _start).Days;
+      return _start.AddDays(_randomizer.Next(range));
+    }
+
+  }
+}
+</code></pre><p>This is very similar to the <a class="xref" href="basic.html">Basic</a> case, just that we&#39;re now creating a list of Entities and returning them.</p>
+<p>What this does is...</p>
+<ol>
+<li>Inform <a class="xref" href="../../../../basics/query/visual-query/index.html">VisualQuery</a> that there is a DataSource and registers it with a unique GUID</li>
+<li>The constructor says it <a class="xref" href="../provide.html">provides</a> one <code>Default</code> stream which can be built by <code>GetList()</code></li>
+<li><code>GetList()</code> will simply create a simple entity and return it as a list</li>
+</ol>
+<hr>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>Discover the <a class="xref" href="index.html">Basic DataSourceTutorial</a> with more examples</li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Created 2017 for 2sxc 7</li>
+<li>Completely rebuilt for 2sxc 11.13 and VisualQuery 3</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/data-sources/custom/tutorial-basic/basic-list.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
