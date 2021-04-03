@@ -13,7 +13,7 @@ uid: Basics.Query.VisualQuery.StreamsIn
 1. In-Streams which **supply data for processing**
 1. In-Streams which simply **supply configuration**
 
-The counterpart of In-Streams are [Out-Streams](xref:Basics.Query.VisualQuery.StreamsIn).
+The counterpart of In-Streams are [Out-Streams](xref:Basics.Query.VisualQuery.StreamsOut).
 
 This is what In-Streams look like in VisualQuery:
 

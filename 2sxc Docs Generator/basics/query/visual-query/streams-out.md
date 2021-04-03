@@ -13,6 +13,7 @@ By convention, the primary Out is called `Default`.
 
 Such a Stream will contain zero, one or many Entities (items of data) depending on the logic in the DataSource and the data/configuration which was handed in. 
 
+The counterpart of Out-Streams are [In-Streams](xref:Basics.Query.VisualQuery.StreamsIn).
 
 ## Out Streams in VisualQuery
 
