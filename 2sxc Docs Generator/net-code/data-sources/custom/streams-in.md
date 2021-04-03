@@ -11,10 +11,10 @@ All DataSources can have **In** Streams, even Root DataSources. This is because 
 
 In addition to that, many DataSources expect Data which will be processed. For example, the [Shuffle](xref:ToSic.Eav.DataSources.Shuffle) needs one In-Stream containing data to shuffle, while the [ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter) expects two streams: a `Default` to filter on and an optional `Fallback` stream to return in case the filter didn't return anything. 
 
-<img src="~/basics/query/visual-query/assets/in-streams.png" width="100%" class="full-width">
+<img src="~/basics/query/streams/assets/in-streams.png" width="100%" class="full-width">
 
 > [!IMPORTANT]
-> Here we only explain aspects which are relevant to your code. Make sure you are familiar with the [general concept of In-Streams](xref:Basics.Query.VisualQuery.StreamsIn). 
+> Here we only explain aspects which are relevant to your code. Make sure you are familiar with the [general concept of In-Streams](xref:Basics.Query.Streams.In). 
 
 To help the UI explicitly show these predefined In-Streams, we must list them in the [VisualQuery decorator attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute) in the `In` property. 
 

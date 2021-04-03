@@ -22,7 +22,7 @@ you would write `[In:Module:Category]` to filter by the the category as selected
 ## Read also
 
 * [VisualQuery Parameters](xref:Basics.Query.Parameters.Index)
-* [](xref:Basics.Query.VisualQuery.StreamsIn)
+* [](xref:Basics.Query.Streams.In)
 
 ## History
 

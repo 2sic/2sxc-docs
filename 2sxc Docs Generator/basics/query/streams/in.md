@@ -1,5 +1,5 @@
 ---
-uid: Basics.Query.VisualQuery.StreamsIn
+uid: Basics.Query.Streams.In
 ---
 
 # VisualQuery: In Streams
@@ -13,7 +13,7 @@ uid: Basics.Query.VisualQuery.StreamsIn
 1. In-Streams which **supply data for processing**
 1. In-Streams which simply **supply configuration**
 
-The counterpart of In-Streams are [Out-Streams](xref:Basics.Query.VisualQuery.StreamsOut).
+The counterpart of In-Streams are [Out-Streams](xref:Basics.Query.Streams.Out).
 
 This is what In-Streams look like in VisualQuery:
 
@@ -84,7 +84,7 @@ Some streams are optional, some are required. In the example of the **ValueFilte
 
 ## In-Streams Cannot be Re-Used
 
-An [Out-Stream](xref:Basics.Query.VisualQuery.StreamsOut) can be connected to multiple [In-Streams](xref:Basics.Query.VisualQuery.StreamsIn) but the opposite is not possible. 
+An [Out-Stream](xref:Basics.Query.Streams.Out) can be connected to multiple [In-Streams](xref:Basics.Query.Streams.In) but the opposite is not possible. 
 So an In can only have one source, but an Out can give it's data to multiple In sources. 
 
 ## Nice to Know

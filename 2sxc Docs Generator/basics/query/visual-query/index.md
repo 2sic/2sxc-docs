@@ -21,8 +21,8 @@ Then you will usually configure a view to use this.
 
 ## More (WIP)
 
-1. [](xref:Basics.Query.VisualQuery.StreamsIn)
-1. [](xref:Basics.Query.VisualQuery.StreamsOut)
+1. [](xref:Basics.Query.Streams.In)
+1. [](xref:Basics.Query.Streams.Out)
 1. [](xref:Basics.Query.VisualQuery.Debugging)
 
 ## Read also
