@@ -19,6 +19,12 @@ uid: Basics.Query.VisualQuery.Index
 
 Then you will usually configure a view to use this.
 
+## More (WIP)
+
+1. [](xref:Basics.Query.VisualQuery.StreamsIn)
+1. [](xref:Basics.Query.VisualQuery.StreamsOut)
+1. [](xref:Basics.Query.VisualQuery.Debugging)
+
 ## Read also
 
 * [Blog Posts about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer)

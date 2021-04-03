@@ -11,11 +11,18 @@ Data Sources in a query can retrieve values from another data-source which is a 
 So if you have a Value DataSource which has the `Default`-in with the data to filter, and a `Module`-in comes from the Module Settings, 
 you would write `[In:Module:Category]` to filter by the the category as selected in the module settings. 
 
+<!-- #todoc
+
+- add example / image showing this
+
+-->
+
 ---
 
 ## Read also
 
 * [VisualQuery Parameters](xref:Basics.Query.Parameters.Index)
+* [](xref:Basics.Query.VisualQuery.StreamsIn)
 
 ## History
 

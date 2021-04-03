@@ -237,10 +237,12 @@
 
 <p>All DataSources can have <strong>In</strong> Streams, even Root DataSources. This is because an <strong>In</strong> is often used to provide the DataSource with configuration information.</p>
 <p>In addition to that, many DataSources expect Data which will be processed. For example, the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html">Shuffle</a> needs one In-Stream containing data to shuffle, while the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a> expects two streams: a <code>Default</code> to filter on and an optional <code>Fallback</code> stream to return in case the filter didn&#39;t return anything. </p>
+<p><img src="../../../basics/query/visual-query/assets/in-streams.png" width="100%" class="full-width"></p>
+<div class="IMPORTANT"><h5>Important</h5><p>Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/visual-query/streams-in.html">general concept of In-Streams</a>. </p>
+</div>
 <p>To help the UI explicitly show these predefined In-Streams, we must list them in the <a class="xref" href="visual-query-attribute.html">VisualQuery decorator attribute</a> in the <code>In</code> property. </p>
-<p><img src="assets/in-streams.png" width="100%" class="full-width"></p>
 <h2 id="example-from-the-valuefilter-datasource">Example from the ValueFilter DataSource</h2>
-<pre><code class="lang-c#">[VisualQuery(GlobalName = &quot;SOME-IDENTITY&quot;,
+<pre><code class="lang-c#">[VisualQuery(GlobalName = &quot;...&quot;,
   Type = DataSourceType.Filter, 
   In = new[] { Constants.DefaultStreamName, Constants.FallbackStreamName },
   DynamicIn = false,
@@ -251,6 +253,7 @@
 <ol>
 <li>If the <code>In</code> is not specified in the VisualQuery Attribute, then the UI will show no special In-markers</li>
 <li>By convention, the default In-stream is called <code>Default</code></li>
+<li>To mark an In-Stream as required, add a <code>*</code> at the end, like <code>Default*</code> (this is still WIP in 2sxc 11.13)</li>
 <li>In-Streams have data which can be used, but they are not accessed until you really need them</li>
 <li>If your code really needs an In (like you require the <code>Default</code> stream) best use <a class="xref" href="errors.html">the best-practice for error-handling</a></li>
 <li>The property <code>DynamicIn</code> would mark DataSources which can work with a variable amount of In-Streams, like <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a></li>

@@ -16,18 +16,14 @@ But there are two important things you can change
 1. You can determine one or more predefined Out streams
 1. You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the [App DataSource](xref:ToSic.Eav.DataSources.App)
 
-## Out Streams in VisualQuery
-
-These are predefined `Out` Streams where each DataSource declares what it can offer:
-
-<img src="./assets/out-streams.png" width="100%" class="full-width">
-
-Some Sources can have _Dynamic Out_ where you can create as many Out streams as you want. Usually the name you give each stream will affect what is in it:
-
-<img src="./assets/out-streams-dynamic.png" width="100%" class="full-width">
+<img src="~/basics/query/visual-query/assets/out-streams.png" width="100%" class="full-width">
 
 
-## Explicitly Naming Out-Streams
+> [!IMPORTANT]
+> Here we only explain aspects which are relevant to your code. Make sure you are familiar with the [general concept of Out-Streams](xref:Basics.Query.VisualQuery.StreamsOut). 
+
+
+## Pre-Named Out-Streams
 
 For an example, we'll use the [Paging DataSource](xref:ToSic.Eav.DataSources.Paging). It's job is to take a list of items and only forward a chunk on the `Default`, like "Page 3 containing items 61-90". In addition it should also provide information as to what page we're on and how many pages exist. 
 
