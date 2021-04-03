@@ -30,7 +30,7 @@ using ToSic.Eav.DataSources.Queries;
 
 namespace ToSic.Tutorial.DataSource.Basic
 {
-  // Additional info so the visual query can provide the correct buttons and infos
+  // Additional info so the VisualQuery can provide the correct buttons and infos
   [VisualQuery(
     NiceName = "Demo DateTime Basic",
     Icon = "today",
@@ -85,5 +85,5 @@ What this does is...
 ## History
 
 1. Created 2017 for 2sxc 7
-1. Completely rebuilt for 2sxc 11.13 and VisualQuery 3
+1. Completely rebuilt for 2sxc 11.13 and [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3
 

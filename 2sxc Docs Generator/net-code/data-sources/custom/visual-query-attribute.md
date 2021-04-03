@@ -9,7 +9,7 @@ uid: NetCode.DataSources.Custom.VisualQueryAttribute
 
 DataSources themselves are useful in the 2sxc/EAV data processing - but they really become great when used in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer. 
 
-To help the VisualQuery Designer give queues to the developer what can / can't be done, 
+To help the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer give queues to the developer what can / can't be done, 
 there is a [VisualQuery decorator attribute](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute)  which gives the class some more information. 
 
 ## Example

@@ -32,7 +32,7 @@ To help the UI explicitly show these predefined In-Streams, we must list them in
 
 ## Nice to Know
 
-1. If the `In` is not specified in the VisualQuery Attribute, then the UI will show no special In-markers
+1. If the `In` is not specified in the [VisualQuery Attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute), then the UI will show no special In-markers
 1. By convention, the default In-stream is called `Default`
 1. To mark an In-Stream as required, add a `*` at the end, like `Default*` (this is still WIP in 2sxc 11.13)
 1. In-Streams have data which can be used, but they are not accessed until you really need them

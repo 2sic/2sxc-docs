@@ -40,7 +40,7 @@ The data which defines a query is stored as IEntity data.
 ## Read also
 
 * [](xref:Basics.Query.Parameters.Index)
-* [Blog Posts about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
+* [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 * [](xref:NetCode.DataSources.DataSource)
 
 

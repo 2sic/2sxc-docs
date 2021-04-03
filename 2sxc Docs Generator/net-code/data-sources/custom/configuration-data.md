@@ -32,7 +32,7 @@ If you don't plan on distributing your DataSource and only need it in one or two
 
 You'll need to register the [internal name](xref:Basics.Data.ContentTypes.Names) in the [VisualQuery Attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute) of your DataSource so that the UI will show the configuration where it's needed. 
 
-Once you've done this, the [Visual Query Designer](xref:Basics.Query.VisualQuery.Index) will know about it and offer your content-type when configuring that part of a Query. 
+Once you've done this, the [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) will know about it and offer your content-type when configuring that part of a Query. 
 
 > [!TIP]
 > The data entered will be made available to your DataSource Configuration as the [Settings](xref:Basics.LookUp.Settings).

@@ -31,7 +31,7 @@ The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) also allows you 
     * [](xref:ToSic.Eav.DataSources.Queries.Query)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition)
-* [Blog Posts about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
+* [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 
 ---
 

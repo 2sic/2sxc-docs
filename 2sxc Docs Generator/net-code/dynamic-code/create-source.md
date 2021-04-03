@@ -57,7 +57,7 @@ Read more about this in [](xref:NetCode.DataSources.DataSource)
 You can also create and compile your own DataSources, and then deploy the DLL to use in your code. 
 
 > [!TIP]
-> In most cases you will prefer to use [Visual Query](xref:NetCode.DataSources.Query.Index) to work with data, but sometimes this approach is neecssary. 
+> In most cases you will prefer to use [VisualQuery](xref:NetCode.DataSources.Query.Index) to work with data, but sometimes this approach is neecssary. 
 
 We suggest you check out some apps - almost all use this. 
 

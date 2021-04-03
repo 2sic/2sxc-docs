@@ -136,7 +136,7 @@ namespace ToSic.Tutorial.DataSource.Basic
       // This will place the token to be resolved into the variable
       // The tokens will be resolved before use
       // The following token means: 
-      // - Try to use the configured value from the setting on this data-source in the visual query
+      // - Try to use the configured value from the setting on this data-source in the VisualQuery
       // - if there is none, just use the value "Today"
       ConfigMask(DesiredDateKey, "[Settings:DesiredDate||Today]");
 
@@ -206,7 +206,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 
 This does a LOT more. Here the important bits
 
-1. The VisualQuery Attribute has a lot more information
+1. The [VisualQuery](xref:Basics.Query.VisualQuery.Index) Attribute has a lot more information
 1. It has various properties like `Hour` which will be populated by settings in the Constructor...
 1. ...and they have features to [detect errors and report them nicely](xref:NetCode.DataSources.Custom.Errors)
 1. The `GetEntities()` safely checks if the Required `In` stream really exists - otherwise returns a clean [error stream](xref:NetCode.DataSources.Custom.Errors)
@@ -222,5 +222,5 @@ This does a LOT more. Here the important bits
 ## History
 
 1. Created 2017 for 2sxc 7
-1. Completely rebuilt for 2sxc 11.13 and VisualQuery 3
+1. Completely rebuilt for 2sxc 11.13 and [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3
 

@@ -56,7 +56,7 @@ In your code you will usually not use these sources, but only use the [`Settings
 
 ## How Tokens are Defined, Settings Edited and Resolved
 
-When you're using the visual query designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?
+When you're using the [VisualQuery](xref:Basics.Query.VisualQuery.Index) designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?
 
 1. Each DataSource object has a property called `Configuration` which is a dictionary containing all configuration properties the data source will care about. For example, the `EntityIdFilter` has a Configuration with only one property which is called `EntityIds`. 
 2. The each property is first initialized with a Token-Template. For example, the CsvDataSource has a  
@@ -69,7 +69,7 @@ _read about [ConfigMask here](xref:NetCode.DataSources.Custom.ConfigMask)_
 So how does each scenario work out?
 
 1. If the programmer overwrote the `Delimiter` property, then internally the `Configuration["Delimiter"]` is now not a token any more, but instead just a character like `,`. So the token-engine won't change anything. 
-1. If the programmer didn't do anything but the [visual query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) engine gave a settings-entity to the system, then the token is resolved and whatever the user entered is used. 
+1. If the programmer didn't do anything but the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  engine gave a settings-entity to the system, then the token is resolved and whatever the user entered is used. 
 1. if the neither the programmer nor the user provided settings, then the token-engine will resolve to the fallback and use the `\t` as was defined.
 
 ## Also Read

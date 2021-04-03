@@ -68,9 +68,9 @@ var authors = allAuthors["Default"];
 
 ##  Create a Query in Code by Piping / Chaining Data sources
 
-What the VisualQuery designer does is configure how DataSources are attached, mapping their in/out streams and adding parameters. 
+What the [VisualQuery](xref:Basics.Query.VisualQuery.Index) designer does is configure how DataSources are attached, mapping their in/out streams and adding parameters. 
 
-You can also do this in code, but it's fairly advanced. You would usually want to do this, if you want to use a filter or something, but need to provide parameters which aren't available in the Visual Query Designer. Here's a simple example:
+You can also do this in code, but it's fairly advanced. You would usually want to do this, if you want to use a filter or something, but need to provide parameters which aren't available in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer. Here's a simple example:
 
 ```cs
 // A source which can filter by Content-Type (EntityType)

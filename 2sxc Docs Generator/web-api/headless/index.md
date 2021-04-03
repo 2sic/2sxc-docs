@@ -12,7 +12,7 @@ uid: WebApi.Headless.Index
 Using a CMS like 2sxc as **Headless** means that the data can be used elsewhere both for showing and editing as needed. 2sxc provides 3 different WebAPIs for this:
 
 1. Built-in [Content WebAPIs](xref:WebApi.Content) which are REST endpoints for CRUD (Create, Read, Update, Delete) operations
-1. Built-in [Query WebAPIs](xref:WebApi.Query) which are read-only APIs to query data using Visual Query
+1. Built-in [Query WebAPIs](xref:WebApi.Query) which are read-only APIs to query data using VisualQuery
 1. [Custom C# WebAPI controllers](xref:WebApi.Custom.Index) which you create to do anything you want
 
 We always recommend that you first experiment with the tutorials before you do anything else:

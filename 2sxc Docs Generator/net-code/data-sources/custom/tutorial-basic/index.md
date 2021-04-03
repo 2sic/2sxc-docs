@@ -49,5 +49,5 @@ Download the [Git-Repo](https://github.com/2sic/datasource-tutorial-basic) and l
 ## History
 
 1. Created 2017 for 2sxc 7
-1. Completely rebuilt for 2sxc 11.13 and VisualQuery 3
+1. Completely rebuilt for 2sxc 11.13 and [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3
 

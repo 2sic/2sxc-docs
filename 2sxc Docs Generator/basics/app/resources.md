@@ -35,7 +35,7 @@ In code you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.D
 
 Tokens templates are much more limited, but you can access these values using `[App:Resources:...]` - for example `[App:Resources:Introduction]`
 
-## Don't use in Visual Query
+## Don't use in VisualQuery
 
 You _could_ also access these properties in [VisualQuery](xref:Basics.Query.VisualQuery.Index), using tokens like `[App:Resources:Introduction]` - but this is not recommended, as you should _not_ use **Resources** for this. Use [](xref:Basics.App.Settings) instead.
 

@@ -6,9 +6,9 @@ TODO: update the standard list with attribute rename and the StreamSwitch one I 
 
 The **AttributeRename** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It renames attributes from items so that the result has more appropriate field/property names. Optionally it will also remove all fields which have not been renamed, in case you only want the smaller, renamed items. 
 
-## How to use with the Visual Query
+## How to use with the VisualQuery
 
-When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. Now you can configure what properties you want and not. 
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. Now you can configure what properties you want and not. 
 
 <img src="./assets/attribute-rename-example.png" width="100%" class="full-width">
 

@@ -9,7 +9,7 @@ uid: NetCode.DataSources.Custom.StreamsOut
 
 All DataSources must have **Out** Streams.
 
-By convention, the primary Out is called `Default` and the VisualQuery Designer assumes that it exists by default. 
+By convention, the primary Out is called `Default` and the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer assumes that it exists by default. 
 
 But there are two important things you can change
 
@@ -61,6 +61,17 @@ Some DataSources like the [App DataSource](xref:ToSic.Eav.DataSources.App) can h
 ```
 
 The important part here is the `DynamicOut = true`. 
+
+## Strategies for Providing Dynamic Out
+
+Providing dynamic-out in your code can be tricky, and there are 2 strategies you can use:
+
+1. Create all Out-Streams on first Use of `Out`  
+  This would create the Out-Accessors when `Out` is first accessed. You can see examples of this on the [App](xref:ToSic.Eav.DataSources.App) DataSource
+1. Re-Implement the `Out` of the type `IDictionary<string, IDataStream>` to do some kind of Lazy-Loading
+  There is no example to do this, but it could be done. 
+
+Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this. 
 
 ## History
 

@@ -3,7 +3,7 @@ uid: ToSic.Eav.DataSources.Queries.VisualQueryAttribute
 ---
 # DataSource API: VisualQuery Attribute
 
-To help the Visual Query Designer properly guide the user, there is a C# _Attribute_ called **VisualQuery** to configure everything. 
+To help the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer properly guide the user, there is a C# _Attribute_ called **VisualQuery** to configure everything. 
 
 ## How to use VisualQuery
 Here's a simple example of the [Tutorial DataSource](xref:NetCode.DataSources.Custom.TutorialBasic.Index): 

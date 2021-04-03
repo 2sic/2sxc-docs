@@ -2,14 +2,14 @@
 uid: Basics.Query.Index
 ---
 
-# Query and Visual Query
+# Query and VisualQuery
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query { visibility: visible; } </style>
 
 2sxc Templates and Headless APIs can use **Queries** to access data. This is pretty amazing:
 
-1. You create such queries using a **[Visual Query](xref:Basics.Query.VisualQuery.Index)** designer
+1. You create such queries using a **[VisualQuery](xref:Basics.Query.VisualQuery.Index)** designer
 1. Queries can then be assigned to a [View](xref:Basics.App.Views) so the template recieves this as the data to work with
 1. Queries can also be used directly in the [Headless API](xref:WebApi.Headless.Index) if you configure the permissions for this
 1. The Edit-UI can also use queries in dropdown fields (both string and entity)

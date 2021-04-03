@@ -49,7 +49,7 @@ In code you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.Dy
 
 Tokens templates are much more limited, but you can access these values using `[App:Settings:...]` - for example `[App:Settings:AnimationSpeed]`
 
-## Use in Visual Query
+## Use in VisualQuery
 
 You can also access these properties in [VisualQuery](xref:Basics.Query.VisualQuery.Index), also using tokens like `[App:Settings:DefaultCategory]`
 

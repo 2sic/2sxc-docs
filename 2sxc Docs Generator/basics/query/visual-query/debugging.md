@@ -24,7 +24,7 @@ Note that in the image you see
 
 1. The title showing that you're looking at a stream
 1. The items in that stream
-1. An info that VisualQuery only picked the top 25 entries, but that you can re-run it with more results.
+1. An info that [VisualQuery](xref:Basics.Query.VisualQuery.Index) only picked the top 25 entries, but that you can re-run it with more results.
 
 
 ## Non-Breaking Errors
@@ -58,5 +58,5 @@ The button below will bring you to the [2sxc Insights](xref:NetCode.Debug.Insigh
 
 ## History
 
-1. Introduced in VisualQuery 3, 2sxc 11.13
+1. Introduced in [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3, 2sxc 11.13
 

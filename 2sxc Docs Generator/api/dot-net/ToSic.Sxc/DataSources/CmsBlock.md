@@ -6,8 +6,8 @@ uid: ToSic.Sxc.DataSources.CmsBlock
 
 The **Module-Instance DataSource** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard 2sxc/DNN Data Sources](xref:Basics.Query.DataSources.Index). It is the default data source as it directly delivers module-instance data and is used for all scenarios which don't explicitly have a query, and it can also be used as part of a query.  
 
-## How to use with the Visual Query
-When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) it is already in the default / initial query: 
+## How to use with the VisualQuery
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  it is already in the default / initial query: 
 
 <img src="./assets/module-basic.png" width="100%" class="full-width">
 

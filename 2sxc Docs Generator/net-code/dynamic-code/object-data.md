@@ -39,7 +39,7 @@ In all Razor-templates and also the web-api files, the `Data` object is already 
 ## The Streams in a Data Object
 The data object can have multiple _Streams_, each containing a list of items. In most cases you'll just have the _Default_ stream, which you can access using `Data["Default"]`. Read more about streams in the [Stream docs](xref:ToSic.Eav.DataSources.IDataStream)
 
-But you may also have additional streams, depending on what has been configured in the data-preparation stuff (usually a visual query). For example, if you are working on a view showing one product and a menu with all possible categories, then your query may have these streams:
+But you may also have additional streams, depending on what has been configured in the data-preparation stuff (usually a VisualQuery). For example, if you are working on a view showing one product and a menu with all possible categories, then your query may have these streams:
 
 * Book (the current book, this stream has 1 item with the ID matching the ID in the URL)
 * Categories (all categories in the system, sorted A-Z)
@@ -66,7 +66,7 @@ Afterwards, other mechanisms can override / change this.
 1. Initial Sources
     1. Default type/list configuration - this can determine that 0, 1 or many items (of a certain type) are delivered  
     if one or many are delivered, then the selection will be based on what the editor added to the module instance.
-    1. Visual Query - if the template has a query attached, this query will deliver the data
+    1. [VisualQuery](xref:Basics.Query.VisualQuery.Index) - if the template has a query attached, this query will deliver the data
 2. Modifications to the source for the template
     1. The event [CustomizeData](xref:NetCode.Razor.CustomizeData) can optionally completely reconfigure what Data contains in your code.
 

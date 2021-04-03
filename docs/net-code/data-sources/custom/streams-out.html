@@ -236,7 +236,7 @@
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 <p>All DataSources must have <strong>Out</strong> Streams.</p>
-<p>By convention, the primary Out is called <code>Default</code> and the VisualQuery Designer assumes that it exists by default. </p>
+<p>By convention, the primary Out is called <code>Default</code> and the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> Designer assumes that it exists by default. </p>
 <p>But there are two important things you can change</p>
 <ol>
 <li>You can determine one or more predefined Out streams</li>
@@ -271,6 +271,14 @@
   ExpectsDataOfType = &quot;...&quot;,
   HelpLink = &quot;...&quot;)]
 </code></pre><p>The important part here is the <code>DynamicOut = true</code>. </p>
+<h2 id="strategies-for-providing-dynamic-out">Strategies for Providing Dynamic Out</h2>
+<p>Providing dynamic-out in your code can be tricky, and there are 2 strategies you can use:</p>
+<ol>
+<li>Create all Out-Streams on first Use of <code>Out</code><br>This would create the Out-Accessors when <code>Out</code> is first accessed. You can see examples of this on the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App</a> DataSource</li>
+<li>Re-Implement the <code>Out</code> of the type <code>IDictionary&lt;string, IDataStream&gt;</code> to do some kind of Lazy-Loading
+There is no example to do this, but it could be done. </li>
+</ol>
+<p>Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this. </p>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced ca. in 2sxc 6</li>

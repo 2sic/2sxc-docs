@@ -28,7 +28,7 @@ using ToSic.Eav.DataSources.Queries;
 
 namespace ToSic.Tutorial.DataSource.Basic
 {
-    // Additional info so the visual query can provide the correct buttons and infos
+    // Additional info so the VisualQuery can provide the correct buttons and infos
     [VisualQuery(
         NiceName = "Demo DateTime Basic",
         GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"   // random & unique Guid
@@ -74,9 +74,9 @@ This code demonstrates:
 1. A **method** `GetList()` which gets the items if ever requested
 1. The [`Build.Entity(...)`](xref:NetCode.DataSources.Custom.BuildEntity) helper to construct IEntity objects from value-dictionaries
 
-## Use in Visual Query Designer
+## Use in VisualQuery Designer
 
-This is what the DataSource would appear like in Visual Query
+This is what the DataSource would appear like in VisualQuery
 
 <img src="./assets/basic-datasource-in-visual-query.png" width="100%" class="full-width">
 

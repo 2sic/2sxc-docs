@@ -18,6 +18,6 @@ This is very technical information, you usually won't need this.
 1. internal JSON format for 
     1. Entity (export, import, history)
         1. single item
-        1. Visual Query configuration
+        1. [VisualQuery](xref:Basics.Query.VisualQuery.Index) configuration
         1. View Specs (includes the template)
     1. Content Type

@@ -4,8 +4,8 @@ uid: ToSic.Eav.DataSources.Paging
 
 The **Paging** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It will limit the items returned to a _page_ containing just a few items, and will also provide a _paging-information_ so that the UI knows what page it's on and how many pages remain.  
 
-## How to use with the Visual Query
-When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
+## How to use with the VisualQuery
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. This is what it usually looks like:
 
 <img src="./assets/paging-basic.png" width="100%" class="full-width">
 

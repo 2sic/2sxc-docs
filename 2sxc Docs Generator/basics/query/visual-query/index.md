@@ -14,8 +14,8 @@ uid: Basics.Query.VisualQuery.Index
 
 ## How to use
 
-1. Usually you'll configure queries in the VisualQuery Designer in the App settings. Here's a [Getting Started with Visual Query](https://2sxc.org/en/learn/visual-query-designer). 
-1. There are a lot of [Blogs about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer) that will help you start.
+1. Usually you'll configure queries in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer in the App settings. Here's a [Getting Started with VisualQuery](https://2sxc.org/en/learn/visual-query-designer). 
+1. There are a lot of [Blogs about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer) that will help you start.
 
 Then you will usually configure a view to use this.
 
@@ -27,7 +27,7 @@ Then you will usually configure a view to use this.
 
 ## Read also
 
-* [Blog Posts about Visual Query Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
+* [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 * [](xref:NetCode.DataSources.DataSource)
 
 ## History

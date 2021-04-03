@@ -67,15 +67,15 @@ Mostly smaller bugfixes
 * [x] extensive automated testing of these new features
 
 
-### Version 9.8 - the Visual Query Upgrade
-* [x] SqlDataSource in Visual Query Designer
-* [x] Show DataSources which have Fallback-In-Streams in Visual Query Designer
-* [x] UI Updates on Visual Query Designer, to better fit current needs
-* [x] More help documentation for various data sources in Visual Query Designer
-* [x] Shuffle DataSource now configurable in visual query
+### Version 9.8 - the VisualQuery Upgrade
+* [x] SqlDataSource in [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer
+* [x] Show DataSources which have Fallback-In-Streams in [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer
+* [x] UI Updates on [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer, to better fit current needs
+* [x] More help documentation for various data sources in [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer
+* [x] Shuffle DataSource now configurable in VisualQuery
 * [x] Support for Schema-Free Content (dynamic, without existing content-type)
 
-### Version 9.9 - another Visual Query Upgrade
+### Version 9.9 - another VisualQuery Upgrade
 * [x] Enhance relationship filter to enable filtering on other fields of related items
 * [x] Enhance other data sources with features which so far were not available in the visual designer
 
@@ -139,7 +139,7 @@ Didn't have time to document this yet, sorry. If you need to know, best check th
 
 ### Version 10.22
 
-* Query Params added for Visual Query
+* Query Params added for VisualQuery
 * Created QueryRun DataSource
 * Insights now includes the code file and line numbers
 * Insights now also measures time needed to execute some code
@@ -174,8 +174,8 @@ Didn't have time to document this yet, sorry. If you need to know, best check th
 * TinyMCE Updated to 5.1
 * Enhanced `CreateInstance` API to also work when compiling Razor files from a WebApi
 * New DataSource `StreamPick`
-* New automatic Param called `[Params:ShowDrafts]` to be used in VisualQuery - returns `True` or `False`
-* New tokens `[App:AppId]` and `[App:ZoneId]` to use in VisualQuery calles (dropdown from query)
+* New automatic Param called `[Params:ShowDrafts]` to be used in [VisualQuery](xref:Basics.Query.VisualQuery.Index) - returns `True` or `False`
+* New tokens `[App:AppId]` and `[App:ZoneId]` to use in [VisualQuery](xref:Basics.Query.VisualQuery.Index) calles (dropdown from query)
 * Changed List-Caching behaviour to create more reliable cache-keys for complex queries (previously it only went through `Default` streams to generate the cache-key)
 
 ### Version 10.27
@@ -224,7 +224,7 @@ The following changes are all super-low-profile, but we want to document them ju
 
 #### Enhancements
 
-1. Brand new Admin UI based on Angular 9 and Ivy with new Code-Editor, new Visual Query and much more
+1. Brand new Admin UI based on Angular 9 and Ivy with new Code-Editor, new [VisualQuery](xref:Basics.Query.VisualQuery.Index) and much more
 1. Razor CodeBehind
 1. Automatic Polymorphism
 1. Updated Razor Blades to 3.02 with the new `Tags.SafeUrl(...)` command
@@ -288,7 +288,7 @@ If you really need them, download an old release of 2sxc and get them manually.
 
 ### Version 11.13
 
-1. VisualQuery 3 with a lot of new features
+1. [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3 with a lot of new features
   1. Click on a stream [shows what's in that stream](xref:Basics.Query.VisualQuery.Debugging)
   1. Much [better error handling](xref:Basics.Query.VisualQuery.Debugging) to avoid queries from crashing if a stream has an error
   1. All internal DataSources were updated to use this new Error-Handling
@@ -302,7 +302,7 @@ If you really need them, download an old release of 2sxc and get them manually.
 1. New DataSource [SerializationConfiguration](xref:ToSic.Eav.DataSources.SerializationConfiguration) lets you determine how things are serialized
 1. DataSource [AttributeFilter](xref:ToSic.Eav.DataSources.AttributeFilter) enhanced to have keep-all or remove-all and multi-line configuration (easier)
 1. New [DataSource Tutorial with updated sample code](xref:NetCode.DataSources.Custom.TutorialBasic.Index)
-1. Insights-Logging was enhanced to log Exceptions (used in the VisualQuery Error handling)
+1. Insights-Logging was enhanced to log Exceptions (used in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Error handling)
 
 **Bugfixes**
 

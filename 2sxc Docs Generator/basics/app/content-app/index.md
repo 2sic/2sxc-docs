@@ -38,7 +38,7 @@ _The_ Content App can auto-install prepared templates which are specifically des
 
 Since the Content-App is always there by default and the purpose is to add/edit simple content, it's limited by design to _not_ have some functionality other Apps have. This is mainly to protect the developer from building solutions with a bad user experience, since anything complex should be self-contained in it's own App. The limitations are:
 
-1. No [Visual Query](xref:Basics.Query.Index)
+1. No [VisualQuery](xref:Basics.Query.VisualQuery.Index)
 1. Now [Custom Web APIs](xref:WebApi.Custom.Index)
 
 ## Technical Details

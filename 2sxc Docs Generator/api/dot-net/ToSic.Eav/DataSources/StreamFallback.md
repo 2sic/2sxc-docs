@@ -4,8 +4,8 @@ uid: ToSic.Eav.DataSources.StreamFallback
 
 The **StreamFallback** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It will pass on the first stream which has results. The order of evaluation is based on the names of the streams as they enter the StreamFallback. 
 
-## How to use with the Visual Query
-When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
+## How to use with the VisualQuery
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. This is what it usually looks like:
 
 <img src="./assets/stream-fallback-4-stream-example.png" width="100%" class="full-width">
 
@@ -15,7 +15,7 @@ The above example shows a query from the [blog app](https://2sxc.org/en/apps/app
 2. the first stream which would filter by tag, if the URL had a tag in it - as the test-data has no tag, this stream delivers no results
 2. the second stream filters by author - as the url would have an author (specified in the test-values), it does return items
 
-The StreamFallback therefor passes on the items provided by the author-filter. Note that while using the visual query, all other streams are also processed to show what's happening. At runtime it will stop processing other streams once it's found a first match. 
+The StreamFallback therefor passes on the items provided by the author-filter. Note that while using the VisualQuery, all other streams are also processed to show what's happening. At runtime it will stop processing other streams once it's found a first match. 
 
 
 ## Programming With The StreamFallback DataSource

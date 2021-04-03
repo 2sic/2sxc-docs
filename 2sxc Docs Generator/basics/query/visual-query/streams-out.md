@@ -2,7 +2,7 @@
 uid: Basics.Query.VisualQuery.StreamsOut
 ---
 
-# Visual Query: Out Streams
+# VisualQuery: Out Streams
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>

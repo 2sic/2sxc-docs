@@ -121,7 +121,7 @@ In the [module sxc controller](xref:JsCode.2sxcApi.Sxc.Index) you'll read about:
 3. Working with JSON data of the current module
 4. Working with REST / HTTP Async Stuff
 5. Working with WebAPI calls, especially to your backend WebAPI in your api-folder
-6. Calling Queries (from the visual query designer)
+6. Calling Queries (from the [VisualQuery](xref:Basics.Query.VisualQuery.Index) designer)
 
 
 ## Technical Features Explained

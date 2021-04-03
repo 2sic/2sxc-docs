@@ -34,7 +34,7 @@ Datasources can be **chained** so that processing steps happen in a sequence. He
 1. It can then be connected to a [EntityTypeFilter DataSource](xref:ToSic.Eav.DataSources.EntityTypeFilter) which will limit the data to all `BlogPost` items
 1. We can then connect it to a [Shuffle DataSource](xref:ToSic.Eav.DataSources.Shuffle) to keep 3 random posts
 
-This can be done both in code as well as in a prepared [Visual Query](xref:Basics.Query.Index).
+This can be done both in code as well as in a prepared [VisualQuery](xref:Basics.Query.VisualQuery.Index).
 
 ## Queries: Reusable DataSource Wirings
 

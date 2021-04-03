@@ -119,7 +119,7 @@ External Data can come from anywhere. Here are some common scenarios:
 
 External Data is retrieved using one of the following methods:
 
-1. a **[Visual Query](xref:Basics.Query.Index)** which was configured to get / filter / sort this data
+1. a **[VisualQuery](xref:Basics.Query.VisualQuery.Index)** which was configured to get / filter / sort this data
 1. C# code creating **[DataSource](xref:NetCode.DataSources.Index)** objects to retrieve this data
 1. C# code using standard .net APIs to get / use this data
 
@@ -131,7 +131,7 @@ Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and 
 1. [Entities and Dynamic Entities](xref:NetCode.DynamicData.Index)
 1. [Using Entities as Content or as Data](xref:Basics.Content.Index)
 1. [Content Lists of Entities](xref:Basics.Content.Lists)
-1. [Visual Query](xref:Basics.Query.Index)
+1. [VisualQuery](xref:Basics.Query.VisualQuery.Index)
 1. [Data Sources](xref:NetCode.DataSources.Index)
 1. [Headless APIs](xref:WebApi.Headless.Index)
 1. [Metadata](xref:Basics.Data.Metadata.Index)

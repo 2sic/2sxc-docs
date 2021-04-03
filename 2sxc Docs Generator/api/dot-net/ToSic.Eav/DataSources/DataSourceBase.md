@@ -11,6 +11,6 @@ All DataSources should inherit from this.
 [!include["Heading-History"](shared-history.md)]
 
 1. Introduced in EAV 4.x, 2sxc 6
-1. Enhanced with Error methods for VisualQuery 3 in 2sxc 11.13
+1. Enhanced with Error methods for [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3 in 2sxc 11.13
 
 [!include["Start-APIs"](shared-api-start.md)]

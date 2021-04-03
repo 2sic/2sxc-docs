@@ -43,7 +43,7 @@ Here's the overview:
 
 Next to document
 
-1. Document VisualQuery better
+1. Document [VisualQuery](xref:Basics.Query.VisualQuery.Index) better
 1. Document JS APIs better
 1. Finish metadata documentation
   1. Create in the UI (probably enhance UI first)

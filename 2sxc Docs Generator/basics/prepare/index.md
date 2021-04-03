@@ -11,7 +11,7 @@ A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Prep
 
 1. **[No Prepare](#no-preparation)** where no Data is used or at least no _Instance Data_ 
 1. **[Default](#default-preparation-instance-data)** where content added to a Module by an editor is retrieved and prepared
-1. **[Query](#query-preparation)** where a custom VisualQuery is configured to get the data
+1. **[Query](#query-preparation)** where a custom [VisualQuery](xref:Basics.Query.VisualQuery.Index) is configured to get the data
 
 
 ## No Preparation
@@ -71,7 +71,7 @@ Your template / WebAPI can also always access all the data in the App using [App
 
 ## You may Also want to Learn about
 
-1. [Create queries using Visual Query](xref:Basics.Query.Index)
+1. [Create queries using VisualQuery](xref:Basics.Query.Index)
 1. [Prepare data in code](xref:NetCode.Razor.CustomizeData)
 1. [Prepare data for the full-text search index of the platform](xref:NetCode.Razor.CustomizeSearch)
 1. [Headless WebAPI](xref:WebApi.Headless.Index)

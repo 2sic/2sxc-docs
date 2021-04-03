@@ -11,7 +11,7 @@ uid: WebApi.Query
 </style>
 
 
-Every Visual Query you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL. Queries are Read APIs.
+Every [VisualQuery](xref:Basics.Query.VisualQuery.Index) you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL. Queries are Read APIs.
 
 
 The Query endpoint can be accessed on

@@ -6,8 +6,8 @@ The **ItemIdFilter** [DataSource](xref:NetCode.DataSources.DataSource) is part o
 
 _Warning: You should always use it in combination with a [Content-Type filter](xref:ToSic.Eav.DataSources.EntityTypeFilter), as you want to be sure nobody can just crawl any entity you have in your system!_
 
-## How to use with the Visual Query
-When using the [Visual Query](xref:ToSic.Eav.DataSources.Queries.VisualQueryAttribute) you can just drag it into your query. This is what it usually looks like:
+## How to use with the VisualQuery
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. This is what it usually looks like:
 
 <img src="./assets/item-id-basic.png" width="100%" class="full-width">
 
