@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Params LookUp in Query Parameters | 2sxc and EAV 10 </title>
+    <title>Query Parameters / Tokens | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Params LookUp in Query Parameters | 2sxc and EAV 10 ">
+    <meta name="title" content="Query Parameters / Tokens | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.LookUp.Params">
-<h1 id="params-lookup-in-query-parameters"><code>Params</code> LookUp in Query Parameters</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Query.Parameters.Index">
+<h1 id="query-parameters--tokens">Query Parameters / Tokens</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -231,26 +231,54 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
-</div><style>.context-box-summary .lookup-sources { visibility: visible; } </style>
+</div><style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
-<p>2sxc 10.22 introduced a new parameter source called <code>Params</code>. With this you can write things like <code>[Params:Sort]</code>. </p>
-<p>The query now has a special LookUp for the source <code>Params</code>. This should help you make nicer, more flexible queries and also allow you to set these query parameters from C# code. </p>
-<div class="TIP"><h5>Tip</h5><p>You can set these params in the Query configuration dialog
-TODO: PIC</p>
-</div>
-<div class="NOTE"><h5>Note</h5><p>Your queries can also use params that you didn&#39;t configure - but they will return nothing unless you would set them in your C# code before you run the query.</p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>We recommend to always use the Params for everything as it&#39;s simpler to see all the parameters your query depends on.<br>So if you have a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a> expecting a value from the url, we recommend that you<br>Create a param <code>FilterLastName=[QueryString:LastName]</code><br>In your data-source configuration, use <code>[Params:FilterLastName]</code></p>
-</div>
-<hr>
+<p>Queries can be parameterized with token placeholders like </p>
+<ul>
+<li><code>[QueryString:Id]</code></li>
+<li><code>[App:Settings:PageSize]</code> </li>
+<li><code>[Params:Sort]</code> </li>
+</ul>
+<p>To understand these placeholder tokens, best read up on <a class="xref" href="../../look-up/tokens.html">LookUp Tokens Explained</a>. 
+There you&#39;ll read about how tokens work, where they come from, how to use default/fallback values and more. </p>
+<h2 id="example">Example</h2>
+<p>In <a class="xref" href="../visual-query/index.html">VisualQuery</a> you would specify a Token like this:</p>
+<p><img src="assets/paging-page-size-app-settings.png" width="100%" class="full-width"></p>
+<p>This tells the Query to</p>
+<ol>
+<li>Get the Page-Size from the <code>PageSize</code> value in the App-Settings</li>
+<li>Get the page number from the URL parameter <code>page</code></li>
+</ol>
+<h2 id="available-tokens">Available Tokens</h2>
+<p>The tokens you can use are basically all the standard <a class="xref" href="../../look-up/sources.html">Token Sources</a> plus the ones listed here:</p>
+<p>Queries have some additional Sources:</p>
+<ol>
+<li>Special LookUp: <a class="xref" href="../../look-up/lookup-params.html">[Params:...]</a> (new in v10.22)</li>
+<li>Special LookUp: <a class="xref" href="../../look-up/lookup-in.html">[In:...]</a></li>
+<li>Settings</li>
+<li>Option to override the values during testing with <code>TestParameters</code></li>
+</ol>
+<h2 id="test-your-query-with-test-parameters">Test your Query with Test Parameters</h2>
+<p>👉 <a class="xref" href="test-parameters.html">Query Development - Test Parameters</a></p>
 <h2 id="read-also">Read also</h2>
 <ul>
-<li><a class="xref" href="../query/parameters-query/index.html">VisualQuery Parameters</a></li>
+<li><a class="xref" href="../visual-query/index.html">VisualQuery Designer</a></li>
+<li><a class="xref" href="../../../net-code/data-sources/use/query-parameters.html">Set Query Parameters in your Code</a></li>
+<li>APIs<ul>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.Query.html">Query</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryPartDefinition.html">QueryPartDefinition</a></li>
 </ul>
+</li>
+<li><a href="https://2sxc.org/en/blog/tag/visual-query-designer">Blog Posts about VisualQuery Designer</a></li>
+</ul>
+<hr>
 <h2 id="history">History</h2>
 <ol>
+<li>Introduced in 2sxc 07.00</li>
+<li>In added in 2sxc 07.00</li>
 <li>Params added in 2sxc 10.22</li>
 </ol>
 </article>
@@ -261,7 +289,7 @@ TODO: PIC</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/look-up/lookup-params.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/query/parameters-query/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -287,20 +315,20 @@ TODO: PIC</p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

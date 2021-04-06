@@ -121,8 +121,8 @@
 <p>This explains <strong>Entity Relationships</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
 <hr>
 <p>Data can be related to other data, like when a <code>Book</code> belongs to a <code>Category</code> and also has an <code>Author</code>. Since all data-items are called <code>Entities</code> we call this <em>Entity Relationships</em>. </p>
-<p>Additionally, there are also Entities which explicitly enhance/describes another <em>thing</em>, but that thing can be anything. That kind of relationship is called <em>Metadata</em>.</p>
-<h2 id="how-it-works">How it Works</h2>
+<p>Additionally, there are also Entities which explicitly enhance/describes another <em>thing</em>. That kind of relationship is called <em>Metadata</em>.</p>
+<h2 id="how-entity-relationships-work">How Entity-Relationships Work</h2>
 <p>Each <em>Entity</em> has many fields, some containing text, numbers etc. but some can also point to another item. These kinds of fields are called <em>Entity Fields</em>. When configured correctly, an entity-field shows a dropdown of items. So in the case of a book, the <code>Author</code> field may show a dropdown of <code>Person</code> items.</p>
 <p>There are different types of relationships: </p>
 <ul>
@@ -131,6 +131,14 @@
 <li><strong>n:n</strong> means that many things can refer to many things - like many blog-posts pointing to many tags (the blog can refer to many tags, and each tag may be pointed to by many blogs)</li>
 <li><strong>1:1</strong> relationships are when one thing refers to one other thing, and neither are re-used again. This is not often used in CMSs.</li>
 </ul>
+<h2 id="relationships-preserve-item-order">Relationships Preserve Item-Order</h2>
+<p>Since 2sxc/EAV data is often used for Content-Management it&#39;s important to note that:</p>
+<blockquote><p>Relationships preserve the Order of the Related Items.</p>
+</blockquote>
+<p>This means that an editor adding <code>Author</code> relationships to a <code>Book</code> can organize them in an order if he/she wishes to do this. </p>
+<p>The output template can then choose to either output these Authors in the order they were managed, or sort them by Title or other property if that would be more appropriate. </p>
+<h2 id="relationships-are-cross-language">Relationships are Cross-Language</h2>
+<p>Values of Entities are multi-language, but relationships-connections apply to all languages. So the list of Authors is the same for all languages. </p>
 <h2 id="metadata-relationships">Metadata Relationships</h2>
 <p>This is a very different concept, where an Entity enriches something else. Read more about it in <a class="xref" href="../metadata/index.html">metadata</a>.</p>
 <h2 id="advanced-topics">Advanced Topics</h2>

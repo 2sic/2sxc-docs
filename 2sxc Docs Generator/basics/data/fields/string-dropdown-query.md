@@ -7,7 +7,8 @@ Use this field type for configuring a dropdown UI elements, storing [string/text
 
 The special thing about this is that the items shown for selecting are retrieved from Query and not pre-defined as part of the the field definition. This allows you to look up any kind of data and offer it for selection. 
 
-## Features 
+## Features
+
 1. provide values to select from a query
 1. optionally provide query parameters
 1. optionally use tokens in query-parameters, to pass on values from other fields in the form
@@ -18,6 +19,7 @@ The special thing about this is that the items shown for selecting are retrieved
 2. optionally allow users to type in something different, in scenarios where this is important
 
 ## Configuring a String-Dropdown-Query
+
 This shows the configuration dialog:
 
 <img src="./assets/string-dropdown-query.png" width="100%" class="full-width">
@@ -32,7 +34,13 @@ This shows the configuration dialog:
   1. **Multiple Items** enable this if you want to allow multi-select
   1. **Separator** the character which will separate the selected items, like "company1,company2,company3"
 
+
+## Cascading Dropdowns
+
+Dropdown-Fields can be cascaded - so that a selection on one dropdown changes the list of possible items on another dropdown. You'll have to work with the Parameters to get this to fly. S
+
 ## Special Behaviour
+
 1. When the drop-down UI element finds data stored, which doesn't match any of the values it has available, it will leave that data intact unless the users selects something manually
 
 ## History

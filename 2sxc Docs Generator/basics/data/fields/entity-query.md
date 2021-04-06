@@ -30,7 +30,13 @@ This shows the configuration dialog:
 In addition to these settings, you also have the [basic entity settings](xref:Basics.Data.Fields.Entity) which enhance the features you are using here. 
 
 
+## Cascading Dropdowns
+
+Dropdown-Fields can be cascaded - so that a selection on one dropdown changes the list of possible items on another dropdown. You'll have to work with the Parameters to get this to fly. S
+
+
 ## Important Notes
+
 Note that this stores [item-relationships](xref:Basics.Data.Fields.Entity) so you can only use it to select items which exist in the 2sxc/EAV database. You cannot use it to select items provided from non-entity sources, like Sql-data or File-lists. To select such data, you'll need the [String-Dropdown-Query](xref:Basics.Data.Fields.String-Dropdown-Query) instead. 
 
 ## History

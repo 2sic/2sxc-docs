@@ -124,11 +124,11 @@ Usually it will then find a reference to a ContentBlock, from which it determine
 It could also find that the template specifies a query, in which case it would retrieve that. <br>
 <em>Was previously called ModuleDataSource</em></p>
 </div>
-  <div class="markdown level0 conceptual"><h1 id="data-source-cmsblockdatasource--module-instance-datasource">Data Source: CmsBlockDataSource / Module-Instance DataSource</h1>
-<p>The <strong>Module-Instance DataSource</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard 2sxc/DNN Data Sources</a>. It is the default data source as it directly delivers module-instance data and is used for all scenarios which don&#39;t explicitly have a query, and it can also be used as part of a query.  </p>
+  <div class="markdown level0 conceptual"><h1 id="cmsblock-datasource-module-data">CmsBlock DataSource (Module-Data)</h1>
+<p>The <strong>CmsBlock DataSource</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard 2sxc/DNN Data Sources</a>. It is the default data source as it directly delivers module-instance data and is used for all scenarios which don&#39;t explicitly have a query, and it can also be used as part of a query.  </p>
 <h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
 <p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  it is already in the default / initial query: </p>
-<p><img src="ToSic.Sxc/DataSources/assets/module-basic.png" width="100%" class="full-width"></p>
+<p><img src="ToSic.Sxc/DataSources/assets/cms-block-datasource-in-vq.jpg" width="100%" class="full-width"></p>
 <p>The above example shows:</p>
 <ol>
 <li>all data start in the cache <em>ICache</em></li>
@@ -138,11 +138,11 @@ It could also find that the template specifies a query, in which case it would r
 <h2 id="using-moduleinstance-data-for-configuration">Using Module/Instance Data For Configuration</h2>
 <p>Things get really exciting when you use values which the user edited in the module as a setting in your query. Here&#39;s an example: </p>
 <p><img src="ToSic.Sxc/DataSources/assets/module-providing-settings-to-sort.png" width="100%" class="full-width"></p>
-<p>As you can see, the <em>Default</em> out of the <strong>ModuleDataSource</strong> is passed into the <a class="xref" href="ToSic.Eav.DataSources.ValueSort.html">ValueSort</a> data source with the stream-name <em>Settings</em> and is then used in a token to configure behaviour of the sort. </p>
-<h2 id="manually-assigning-a-module-instance-id-2sxc-99">Manually Assigning a Module Instance ID (2sxc 9.9)</h2>
+<p>As you can see, the <em>Default</em> out of the <strong>CmsBlock</strong> is passed into the <a class="xref" href="ToSic.Eav.DataSources.ValueSort.html">ValueSort</a> data source with the stream-name <em>Settings</em> and is then used in a token to configure behaviour of the sort. </p>
+<h2 id="manually-assigning-a-module-id-2sxc-99">Manually Assigning a Module ID (2sxc 9.9)</h2>
 <p>In 2sxc 9.9 we added the configuration dialog, so you can specify what module the data should come from. This allows you to have configuration-modules or primary-data-modules, which are re-used in queries:</p>
 <p><img src="ToSic.Sxc/DataSources/assets/module-instance-configured.png" width="100%" class="full-width"></p>
-<h2 id="programming-with-the-moduledatasource-datasource">Programming With The ModuleDataSource DataSource</h2>
+<h2 id="programming-with-the-cmsblock-datasource">Programming With The CmsBlock DataSource</h2>
 <blockquote><p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible, 
 as it&#39;s easier to understand and is identical for C# and JavaScript. 
 It&#39;s also better because it separates data-retrieval from visualization.</p>
@@ -274,7 +274,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   <h5 id="ToSic_Sxc_DataSources_CmsBlock_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(NiceName = &quot;CMS Block&quot;, UiHint = &quot;Data for this CMS block (instance/module)&quot;, Icon = &quot;recent_actors&quot;, Type = DataSourceType.Source, GlobalName = &quot;ToSic.Sxc.DataSources.CmsBlock, ToSic.Sxc&quot;, ExpectsDataOfType = &quot;7c2b2bc2-68c6-4bc3-ba18-6e6b5176ba02&quot;, In = new string[]{&quot;Default&quot;}, HelpLink = &quot;https://docs.2sxc.org/api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html&quot;, PreviousNames = new string[]{&quot;ToSic.SexyContent.DataSources.ModuleDataSource, ToSic.SexyContent&quot;})]
+[VisualQuery(NiceName = &quot;CMS Block&quot;, UiHint = &quot;Data for this CMS Block (instance/module)&quot;, Icon = &quot;recent_actors&quot;, Type = DataSourceType.Source, GlobalName = &quot;ToSic.Sxc.DataSources.CmsBlock, ToSic.Sxc&quot;, ExpectsDataOfType = &quot;7c2b2bc2-68c6-4bc3-ba18-6e6b5176ba02&quot;, In = new string[]{&quot;Default&quot;}, HelpLink = &quot;https://docs.2sxc.org/api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html&quot;, PreviousNames = new string[]{&quot;ToSic.SexyContent.DataSources.ModuleDataSource, ToSic.SexyContent&quot;})]
 public sealed class CmsBlock : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h3 id="constructors">Constructors
