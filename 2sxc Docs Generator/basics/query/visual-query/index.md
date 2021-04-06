@@ -2,7 +2,7 @@
 uid: Basics.Query.VisualQuery.Index
 ---
 
-# VisualQuery
+# VisualQuery Designer
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>

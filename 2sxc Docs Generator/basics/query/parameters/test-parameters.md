@@ -18,6 +18,12 @@ The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) also allows you 
 [Params:FilterNameSort]=[QueryString:SortOrder||Asc]
 ```
 
+Here's an example:
+
+<img src="../../look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
+
+You will find a full explanation of this here: [](xref:Basics.LookUp.Params).
+
 > [!TIP]
 > As you can see in the example, even test params can contain more tokens if you need them. 
 > In the above example, `Params:FilterNameSort` would resolve to `Desc` 

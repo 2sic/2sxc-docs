@@ -1,11 +1,11 @@
 ---
-uid: Basics.Query.Parameters.Part.Index
+uid: Basics.Query.Parameters.Index
 ---
 
-# DataSource Parameters
+# Parameters for the DataSources and the Query
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
-<style>.context-box-summary .query-app { visibility: visible; } </style>
+<style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
 DataSources are _parts_ of a query, and each performs certain functions. To do this, it needs parameters which it can get from many sources
 
@@ -29,7 +29,15 @@ Almost all configuration values are strings, even if the DataSource expects a nu
 
 <img src="./assets/value-filter-with-token-params.jpg" width="100%" class="full-width">
 
-Read more about [LookUp Tokens here](xref:Basics.LookUp.Index). 
+
+Queries can be parameterized with token placeholders like 
+
+* `[QueryString:Id]`
+* `[App:Settings:PageSize]` 
+* `[Params:Sort]` 
+
+To understand these placeholder tokens, best read up on [](xref:Basics.LookUp.Tokens). 
+There you'll read about how tokens work, where they come from, how to use default/fallback values and more. 
 
 Aside from the normal LookUps like `QueryString`, `User` etc. there are two special LookUps which you should know about: **Params** and **In**.
 
@@ -77,7 +85,22 @@ This shows how the In will look in the `Mod` stream to find the `PortalId`. Read
 * [In LookUp](xref:Basics.LookUp.In)
 * [](xref:ToSic.Sxc.DataSources.CmsBlock)
 
+
+## Test your Query with Test Parameters 
+
+👉 [](xref:Basics.Query.Parameters.TestParameters)
+
 ---
+
+## Read Also
+
+* [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
+* [Set Query Parameters in your Code](xref:NetCode.DataSources.Use.QueryParameters)
+* APIs
+    * [](xref:ToSic.Eav.DataSources.Queries.Query)
+    * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
+    * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition)
+* [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 
 
 ## History

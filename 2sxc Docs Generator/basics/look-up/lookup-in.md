@@ -30,7 +30,7 @@ And another example showing the older UI with the ValueSort DataSource:
 * [VisualQuery Parameters](xref:Basics.Query.Parameters.Index)
 * [](xref:Basics.Query.Streams.In)
 * [](xref:ToSic.Sxc.DataSources.CmsBlock)
-* [](xref:Basics.Query.Parameters.Part.Index)
+* [](xref:Basics.Query.Parameters.Index)
 
 ## History
 
