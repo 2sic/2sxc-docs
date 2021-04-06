@@ -11,9 +11,7 @@ The `Settings` LookUp is special because it's only used in C# on [DataSources](x
 
 The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) can show the user a unique edit-dialog for each data source. The data itself is then stored as an Entity, and when the DataSource is being built in the Query engine, the _Settings_ for that data-source are made available on the `Settings` LookUp. 
 
-#todoc
-
-more examples
+You usually need this in the [ConfigMask](xref:NetCode.DataSources.Custom.ConfigMask).
 
 ---
 

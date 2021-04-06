@@ -125,7 +125,7 @@ These are all the data sources which are either provided in the default installa
   <tr>
     <td>[Error](xref:ToSic.Eav.DataSources.Error) </td>
     <td>(internal)</td>
-    <td>Generate an error for [testing VisualQuery debug](xref:Basics.Query.VisualQuery.Debugging)</td>
+    <td>Generate an error for [testing VisualQuery debug](xref:Basics.Query.Debug.Index)</td>
   </tr>
 
   <tr>

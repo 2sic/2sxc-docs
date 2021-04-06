@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource Parameters from Other DataSources | 2sxc and EAV 10 </title>
+    <title>DataSource Parameters | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource Parameters from Other DataSources | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource Parameters | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -112,7 +112,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Basics.Query.Parameters.Part.Index">
-<h1 id="datasource-parameters-from-other-datasources">DataSource Parameters from Other DataSources</h1>
+<h1 id="datasource-parameters">DataSource Parameters</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -242,12 +242,30 @@
 <li>Various <a class="xref" href="../../look-up/index.html">Look-Up Sources (Tokens)</a></li>
 <li>Other DataSources which give the configuration value on an In-Stream</li>
 </ol>
-<h2 id="configuration-ui-of-earch-part-todoc">Configuration UI of earch Part #todoc</h2>
-<p>todoc</p>
-<h2 id="query-parameters-todoc">Query Parameters #todoc</h2>
-<p>todoc</p>
-<h2 id="lookup-sources-todoc">LookUp Sources #todoc</h2>
-<h2 id="settings-from-another-datasource">Settings from Another DataSource</h2>
+<h2 id="configuration-ui-of-a-part--settings">Configuration UI of a Part = Settings</h2>
+<p>Each <em>part</em> is a DataSource. If it&#39;s configurable you&#39;ll see a button appear when you mouse over it like this:</p>
+<p><img src="assets/edit-settings-button.jpg" width="100%" class="full-width"></p>
+<p>The dialog which appears will be different for each type of DataSource. In the C# code of the DataSource, these parameters are available as <a class="xref" href="../../look-up/lookup-settings.html">Settings</a>.</p>
+<h2 id="configuration-can-be-values-or-tokens">Configuration can be Values or Tokens</h2>
+<p>Almost all configuration values are strings, even if the DataSource expects a number. This allows you to write either <code>27</code> or <code>[QueryString:Id]</code> dependending on your needs. Here&#39;s an example:</p>
+<p><img src="assets/value-filter-with-token-params.jpg" width="100%" class="full-width"></p>
+<p>Read more about <a class="xref" href="../../look-up/index.html">LookUp Tokens here</a>. </p>
+<p>Aside from the normal LookUps like <code>QueryString</code>, <code>User</code> etc. there are two special LookUps which you should know about: <strong>Params</strong> and <strong>In</strong>.</p>
+<h2 id="global-query-parameters-with-params-token">Global Query Parameters with Params-Token</h2>
+<p>Each Query can have a list of Parameters which all parts can access through the <a class="xref" href="../../look-up/lookup-params.html">Params LookUp</a>. This has some great benefits:</p>
+<ol>
+<li>A developer can always see what parameters affect the Query</li>
+<li>If you use the same parameter in various places, you can be sure that it&#39;s always the same value.</li>
+<li>These Parameters can also be set from another query calling it </li>
+</ol>
+<p>This is what it looks like in VisualQuery:</p>
+<p><img src="../../look-up/assets/query-params-for-part.jpg" width="100%" class="full-width"></p>
+<p>You will find a full explanation of this here: <a class="xref" href="../../look-up/lookup-params.html">Params LookUp in Query Parameters</a>.</p>
+<div class="TIP"><h5>Tip</h5><p>You <em>can</em> write the tokens you need like <code>[QueryString:Id]</code> directly into any DataSource configuration. </p>
+<p>But we <em>highly recommend</em> that you create a param for it and use that instead. 
+It just makes it easier for people looking at your query to see what will affect its results. </p>
+</div>
+<h2 id="get-configuration-from-another-datasource">Get Configuration from Another DataSource</h2>
 <p>Often some stored data will be used to change what a DataSource does. Here&#39;s an example which will retrieve a <strong>Category</strong> either pre-defined or from the URL, then use that category to apply a filter:</p>
 <p><img src="assets/query-part-with-in-params.jpg" width="100%" class="full-width"></p>
 <p>Here&#39;s how the settings of that are configured:</p>
@@ -255,27 +273,13 @@
 <p>Read more about the <a class="xref" href="../../look-up/lookup-in.html">In LookUp</a>.</p>
 <h2 id="settings-from-the-current-module-cmsblock">Settings from the Current Module (CmsBlock)</h2>
 <p>Another common use case is when a normal Module-Content provides more settings. This uses the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock DataSource</a>:</p>
-<p><img src="assets/module-providing-settings-to-sort.png" width="100%" class="full-width"></p>
-<p>Read more about <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a></p>
+<p><img src="../../look-up/assets/sql-with-in-param.jpg" width="100%" class="full-width"></p>
+<p>This shows how the In will look in the <code>Mod</code> stream to find the <code>PortalId</code>. Read more about this</p>
+<ul>
+<li><a class="xref" href="../../look-up/lookup-in.html">In LookUp</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a></li>
+</ul>
 <hr>
-<h1 id="todoc">todoc</h1>
-<p>In some cases a DataSource in your Query needs a parameter that depends on other Data in the system. </p>
-<p>Quick Examples</p>
-<ol>
-<li>A DataSource retrieves a Setting</li>
-<li>...and another DataSource uses this Setting to filter something</li>
-</ol>
-<p>This is a very internal spec - don&#39;t use it :). </p>
-<p>System Queries are stored as json in <code>DesktopModules\ToSIC_SexyContent\.data\queries</code>.</p>
-<p>List of queries as of 2sxc 9.x through 10.x</p>
-<ol>
-<li>Eav.Queries.Global.Apps - retrieve all apps</li>
-<li>Eav.Queries.Global.Attributes - retrieve all the attributes of a content-type</li>
-<li>Eav.Queries.Global.ContentTypes - retrieve all content-types</li>
-<li>Eav.Queries.Global.Queries - retrieve all queries</li>
-<li>Eav.Queries.Global.QueryInfo - retrieve all streams and fields of a query</li>
-<li>Eav.Queries.Global.Zones - retrieve all zones</li>
-</ol>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 07.00</li>

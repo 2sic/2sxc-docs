@@ -289,8 +289,8 @@ If you really need them, download an old release of 2sxc and get them manually.
 ### Version 11.13
 
 1. [VisualQuery](xref:Basics.Query.VisualQuery.Index) 3 with a lot of new features
-  1. Click on a stream [shows what's in that stream](xref:Basics.Query.VisualQuery.Debugging)
-  1. Much [better error handling](xref:Basics.Query.VisualQuery.Debugging) to avoid queries from crashing if a stream has an error
+  1. Click on a stream [shows what's in that stream](xref:Basics.Query.Debug.Index)
+  1. Much [better error handling](xref:Basics.Query.Debug.Index) to avoid queries from crashing if a stream has an error
   1. All internal DataSources were updated to use this new Error-Handling
   1. Output of Query is now tabbed which is much nicer to use
   1. Visual-Query only returns top 25 results by default to help with creating queries with large amounts of data

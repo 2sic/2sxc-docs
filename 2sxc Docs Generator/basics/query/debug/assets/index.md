@@ -23,7 +23,7 @@ Then you will usually configure a view to use this.
 
 1. [](xref:Basics.Query.Streams.In)
 1. [](xref:Basics.Query.Streams.Out)
-1. [](xref:Basics.Query.VisualQuery.Debugging)
+1. [](xref:Basics.Query.Debug.Index)
 
 ## Read also
 

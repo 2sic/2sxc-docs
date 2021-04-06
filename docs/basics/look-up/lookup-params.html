@@ -237,9 +237,16 @@
 
 <p>2sxc 10.22 introduced a new parameter source called <code>Params</code>. With this you can write things like <code>[Params:Sort]</code>. </p>
 <p>The query now has a special LookUp for the source <code>Params</code>. This should help you make nicer, more flexible queries and also allow you to set these query parameters from C# code. </p>
-<div class="TIP"><h5>Tip</h5><p>You can set these params in the Query configuration dialog
-TODO: PIC</p>
-</div>
+<h2 id="configure-in-visualquery">Configure in VisualQuery</h2>
+<p>This shows how to use <code>Params</code> in <a class="xref" href="../query/debug/assets/index.html">VisualQuery</a>:</p>
+<p><img src="assets/query-params-for-part.jpg" width="100%" class="full-width"></p>
+<p>Here&#39;s what you see in the image</p>
+<ol>
+<li>An Item ID Filter is being configured and it <em>could</em> directly use <code>[QueryString:Id]</code> but instead it uses the <code>[Params:EntityId]</code></li>
+<li>The <strong>Query Parameters</strong> are configured to resolve <code>EntityId</code> as <code>[QueryString:Id]</code></li>
+<li>For <em>testing purposes</em> the <strong>Test Parameters</strong> have a test-value for this</li>
+</ol>
+<p>When this is run during testing, it will use the test-parameters, and at runtime it will use the <code>?Id=...</code> from the url.</p>
 <div class="NOTE"><h5>Note</h5><p>Your queries can also use params that you didn&#39;t configure - but they will return nothing unless you would set them in your C# code before you run the query.</p>
 </div>
 <div class="TIP"><h5>Tip</h5><p>We recommend to always use the Params for everything as it&#39;s simpler to see all the parameters your query depends on.<br>So if you have a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a> expecting a value from the url, we recommend that you<br>Create a param <code>FilterLastName=[QueryString:LastName]</code><br>In your data-source configuration, use <code>[Params:FilterLastName]</code></p>

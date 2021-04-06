@@ -122,7 +122,7 @@
 </div>
   <div class="markdown level0 conceptual"><p>The <strong>AttributeFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It removes values from items so that the result is smaller, and doesn&#39;t publish confidential data. It&#39;s primarily used when providing data as JSON, so that not all values are published. </p>
 <h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
-<p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver <code>Name</code> and <code>Country</code>:</p>
+<p>When using the  <a class="xref" href="../../basics/query/debug/assets/index.html">VisualQuery</a>  you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver <code>Name</code> and <code>Country</code>:</p>
 <p><img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%" class="full-width"></p>
 <p>This is what you get on the default-case (unfiltered):</p>
 <pre><code class="lang-json">&quot;Default&quot;: [
@@ -158,7 +158,7 @@
 </code></pre><p>As you can see, the secret <code>Notes</code> and the <code>Categories</code> are not in the <em>Cleaned</em> stream any more. 
 There are three common use cases: </p>
 <h2 id="programming-with-the-attribute-filter">Programming With The Attribute Filter</h2>
-<blockquote><p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible, 
+<blockquote><p>We recommend to use the <a class="xref" href="../../basics/query/debug/assets/index.html">VisualQuery</a> where possible, 
 as it&#39;s easier to understand and is identical for C# and JavaScript. 
 It&#39;s also better because it separates data-retrieval from visualization.</p>
 </blockquote>
@@ -166,7 +166,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
 <ul>
 <li><a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> / <a class="xref" href="../../net-code/data-sources/datastream.html">DataStream</a></li>
 <li><a class="xref" href="../../basics/query/data-sources/index.html">List of all EAV Data Sources</a></li>
-<li><a class="xref" href="../../basics/query/index.html">Query</a> / <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a></li>
+<li><a class="xref" href="../../basics/query/index.html">Query</a> / <a class="xref" href="../../basics/query/debug/assets/index.html">VisualQuery</a></li>
 </ul>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some examples in this demo App</p>
@@ -287,7 +287,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   <h5 id="ToSic_Eav_DataSources_AttributeFilter_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete_sweep&quot;, Type = DataSourceType.Modify, GlobalName = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[]{&quot;Default&quot;}, ExpectsDataOfType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
+[VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete_sweep&quot;, Type = DataSourceType.Modify, GlobalName = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[]{&quot;Default*&quot;}, ExpectsDataOfType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
 public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_AttributeFilter_remarks"><strong>Remarks</strong></h5>

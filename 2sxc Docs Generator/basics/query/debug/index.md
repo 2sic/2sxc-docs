@@ -1,8 +1,8 @@
 ---
-uid: Basics.Query.VisualQuery.Debugging
+uid: Basics.Query.Debug.Index
 ---
 
-# VisualQuery 3 Debugging
+# VisualQuery 3: Debugging
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>
