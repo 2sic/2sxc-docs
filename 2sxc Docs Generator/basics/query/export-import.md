@@ -9,6 +9,8 @@ uid: Basics.Query.ExportImport
 
 Queries are can be exported as JSON files and imported anywhere you need them.
 
+The exported JSON contains the entire query definition with all parts, settings, test-values and everything. 
+
 ## Export a Query
 
 Just follow these steps:

@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Query Development - Test Parameters | 2sxc and EAV 10 </title>
+    <title>Export / Import Queries | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Query Development - Test Parameters | 2sxc and EAV 10 ">
+    <meta name="title" content="Export / Import Queries | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Query.Parameters.TestParameters">
-<h1 id="query-development---test-parameters">Query Development - Test Parameters</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Query.QueryInView">
+<h1 id="export--import-queries">Export / Import Queries</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -231,36 +231,19 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
   </div>
-</div><style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
+</div><style>.context-box-summary .query { visibility: visible; } </style>
 
-<p>This is how to test your Query with <strong>Test Parameters</strong>:</p>
-<p>The <a class="xref" href="../debug/assets/index.html">VisualQuery Designer</a> also allows you to set test-values for testing the query. The test-values should define all the full tokens to replace. Example:</p>
-<pre><code>[QueryString:Id]=27
-[QueryString:SortOrder]=Desc
-[Params:FilterLastName]=Mettler
-[Params:FilterNameSort]=[QueryString:SortOrder||Asc]
-</code></pre><div class="TIP"><h5>Tip</h5><p>As you can see in the example, even test params can contain more tokens if you need them. 
-In the above example, <code>Params:FilterNameSort</code> would resolve to <code>Desc</code> 
-because it will first check the <code>QueryString:SortOrder</code> which also has a test-value of <code>Desc</code>.</p>
-</div>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../debug/assets/index.html">VisualQuery Designer</a></li>
-<li>APIs<ul>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.Query.html">Query</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryDefinition.html">QueryDefinition</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Queries.QueryPartDefinition.html">QueryPartDefinition</a></li>
-</ul>
-</li>
-<li><a href="https://2sxc.org/en/blog/tag/visual-query-designer">Blog Posts about VisualQuery Designer</a></li>
-</ul>
+<p>The most common way to use Queries is as a Data provider for a <a class="xref" href="../app/views.html">View</a>. </p>
+<p>In such a case, the View will recieve data as the Query processes it, and can template it as needed. </p>
+<h2 id="configure-in-the-ui">Configure in the UI</h2>
+<p>In a View configuration, this is where you tell it to use a Query to provide data: </p>
+<p><img src="assets/view-configuration-to-use-query.jpg" width="100%" class="full-width"></p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 07.00</li>
-<li><a class="xref" href="../../look-up/lookup-params.html">Query Params</a> added in 2sxc 10.22</li>
+<li>Introduced with Queries ca. 2sxc 6</li>
 </ol>
 </article>
           </div>
@@ -270,7 +253,7 @@ because it will first check the <code>QueryString:SortOrder</code> which also ha
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/query/parameters-query/test-parameters.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/query/query-in-view.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -296,20 +279,20 @@ because it will first check the <code>QueryString:SortOrder</code> which also ha
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
