@@ -11,12 +11,10 @@ uid: Basics.Query.DataSources.SharePoint.Index
 
 > These are third-party DataSources and _not_ part of 2sxc. They require a purchase of this DataSource. 
 
-The Solution contains 4 DataSources
+The Solution contains 2 DataSources
 
 1. SharePointList
 1. SharePointSearch
-1. TreeBuilder
-1. LanguageModeler
 
 ---
 

@@ -113,6 +113,12 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
+    <td>[LanguageModeler](xref:ToSic.Eav.DataSources.LanguageModeler)</td>
+    <td>Modify</td>
+    <td>Restructure imported data to be multi-language _new in v11.20_</td>
+  </tr>
+
+  <tr>
     <td>[OwnerFilter](xref:ToSic.Eav.DataSources.OwnerFilter)</td>
     <td>Filter</td>
     <td>Get items created by specific user</td>
@@ -221,6 +227,13 @@ These are all the data sources which are either provided in the default installa
         Use this to pick one of multiple in-streams by name. Often used together with the token [Params:ShowDrafts]
       </details>
   </tr>
+
+  <tr>
+    <td>[TreeModeler](xref:ToSic.Eav.DataSources.TreeModeler)</td>
+    <td>Modify</td>
+    <td>Restructure imported data to have tree-relationships _new in v11.20_</td>
+  </tr>
+
 
   <tr>
     <td>[ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter)</td>
