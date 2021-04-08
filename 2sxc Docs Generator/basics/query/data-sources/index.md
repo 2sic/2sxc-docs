@@ -9,37 +9,9 @@ uid: Basics.Query.DataSources.Index
 
 2sxc provides a large set of [DataSource](xref:NetCode.DataSources.DataSource) objects which either get data from somewhere (SQL, CSV, ...) or modify data on the `In` and passing it to `Out`. This page will give you an overview and link you to further sources if you need to know more. 
 
-## How to use
-Many data-sources are simply used in the  [VisualQuery](xref:Basics.Query.VisualQuery.Index) , and if all you want is visual-query, then this reference will give you an overview regarding what things are possible. It will usually look like this: 
-
-<img src="~/api/dot-net/ToSic.Eav/DataSources/assets/app-out-2-in-0.png" width="100%" class="full-width">
-
-
-If on the other hand you want to program with these [DataSource](xref:NetCode.DataSources.DataSource) objects, then it will usually look a bit like this: 
-
-An example code 
-
-```cs
-// A source which can filter by Content-Type (EntityType)
-var allAuthors = CreateSource<EntityTypeFilter>();
-allAuthors.TypeName = "Author";
-
-// Sort by FullName
-var sortedAuthors = CreateSource<ValueSort>(allAuthors);
-sortedAuthors.Attributes = "FullName";
-
-```
-
-The previous example creates an initial source `allAuthors` which has all data on the in, then filters to only provide those of type _Author_ to the out. This is then piped to the `sortedAuthors`, which sorts on the _Attributes_ field. 
-
-## Understanding Data-Flow and Configuration
-This is explained in the [DataSource documentation](xref:NetCode.DataSources.DataSource). 
-
 ## All Public DataSources
+
 These are all the data sources which are either provided in the default installation of 2sxc, or which are available for you to install (manually). 
-
-
-
 
 
 <table>
