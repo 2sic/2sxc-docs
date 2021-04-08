@@ -60,7 +60,7 @@ namespace ToSic.Tutorial.DataSource.Basic
             };
             
             // Construct the IEntity and return as ImmutableArray
-            var entity = Build.Entity(values, titleField: DateFieldName);
+            var entity = DataBuilder.Entity(values, titleField: DateFieldName);
             return new [] {entity}.ToImmutableArray();
         }
     }
@@ -72,7 +72,7 @@ This code demonstrates:
 1. The [VisualQuery](xref:NetCode.DataSources.Custom.VisualQueryAttribute) attribute, so that this data-source will be shown in VisualQuery
 1. The **constructor** `DateTimeDataSourceBasic()`, which tells the source what Out-streams it has using [Provide](xref:NetCode.DataSources.Custom.Provide), in this case it's just the `Default`
 1. A **method** `GetList()` which gets the items if ever requested
-1. The [`Build.Entity(...)`](xref:NetCode.DataSources.Custom.BuildEntity) helper to construct IEntity objects from value-dictionaries
+1. The [`DataBuilder.Entity(...)`](xref:NetCode.DataSources.Custom.DataBuilder) helper to construct IEntity objects from value-dictionaries
 
 ## Use in VisualQuery Designer
 
@@ -88,7 +88,7 @@ This is what the DataSource would appear like in VisualQuery
 
 * [](xref:NetCode.DataSources.Custom.VisualQueryAttribute)
 * [](xref:NetCode.DataSources.Custom.Provide)
-* [](xref:NetCode.DataSources.Custom.BuildEntity)
+* [](xref:NetCode.DataSources.Custom.DataBuilder)
 * [Basic DataSources for EAV and 2sxc](https://github.com/2sic/2sxc-eav-tutorial-custom-datasource)
 * [Blog about this feature](https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1)
 * [Blog post about custom DataSources](xref:Blog.CustomDataSource)

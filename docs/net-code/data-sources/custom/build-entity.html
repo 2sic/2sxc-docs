@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Build.Entity(...) | 2sxc and EAV 10 </title>
+    <title>DataSource API: DataBuilder.Entity(...) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Build.Entity(...) | 2sxc and EAV 10 ">
+    <meta name="title" content="DataSource API: DataBuilder.Entity(...) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,12 +111,14 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.BuildEntity">
-<h1 id="datasource-api-buildentity">DataSource API: Build.Entity(...)</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.DataBuilder">
+<h1 id="datasource-api-databuilderentity">DataSource API: DataBuilder.Entity(...)</h1>
 
-<p>Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code>Build.Entity(...)</code> helps. </p>
-<p>Just fyi: Here are the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_">API docs</a> for single or multiple Entities.</p>
-<h2 id="how-to-use-buildentity">How to use Build.Entity(...)</h2>
+<p>Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code>DataBuilder.Entity(...)</code> helps. </p>
+<p>Just fyi: Here are the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entity_">API docs</a>. There is also an <code>Entities</code> for multiple Entities.</p>
+<h2 id="how-the-databuilder-is-added">How the DataBuilder is added</h2>
+<p>The DataBuilder is a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IDataBuilder.html">IDataBuilder</a> which is automatically given as a property <code>DataBuilder</code>. The DataSource-Factory creates it. </p>
+<h2 id="how-to-use-databuilderentity">How to use DataBuilder.Entity(...)</h2>
 <p>Here&#39;s a simple example of the tutorial <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/">DateTime DataSource</a>: </p>
 <pre><code class="lang-cs">const string DateFieldName = &quot;Date&quot;;
 var date = DateTime.Now;
@@ -128,17 +130,17 @@ var values = new Dictionary&lt;string, object&gt;
 };
 
 // Construct the IEntity and return as ImmutableArray
-var entity = Build.Entity(values, titleField: DateFieldName);
+var entity = DataBuilder.Entity(values, titleField: DateFieldName);
 return new [] {entity}.ToImmutableArray();
-</code></pre><p>This example shows how an entity-object is build using <code>Build.Entity(values)</code> on the <code>ToSic.Eav.Data</code> namespace.</p>
-<h2 id="concept-behind-buildentity">Concept Behind Build.Entity(...)</h2>
+</code></pre><p>This example shows how an entity-object is build using <code>DataBuilder.Entity(values)</code> on the <code>ToSic.Eav.Data</code> namespace.</p>
+<h2 id="concept-behind-databuilderentity">Concept Behind DataBuilder.Entity(...)</h2>
 <p>Internally it will generate a simplified <code>IEntity</code> object.
 It&#39;s also missing some advanced features like multi-language and repository identity (which would be important in edit-scenarios). </p>
-<p>The simplest way is to just use <code>Build.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more. </p>
+<p>The simplest way is to just use <code>DataBuilder.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more. </p>
 <h2 id="building-lists-of-entities">Building Lists of Entities</h2>
-<p>You can loop through your data and call <code>Build.Entity(someDictionary)</code> many times. 
-You can also use the overload <code>Build.Entity(IEnumerable&lt;someDictionary&gt;)</code>. Best read the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_">API docs</a>.</p>
-<h2 id="more-parameters-on-buildentity">More Parameters on Build.Entity(...)</h2>
+<p>You can loop through your data and call <code>DataBuilder.Entity(someDictionary)</code> many times. 
+You can also use the overload <code>DataBuilder.Entities(IEnumerable&lt;someDictionary&gt;)</code>. Best read the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entities_">API docs</a>.</p>
+<h2 id="more-parameters-on-databuilderentity">More Parameters on DataBuilder.Entity(...)</h2>
 <p>All paramaters are optional, except the first one containing the values. Here&#39;s what each one does:</p>
 <ul>
 <li><code>string titleField</code> is the title field name, so the entity then also knows which one is the title and can support <code>.EntityTitle</code> property</li>
@@ -152,7 +154,7 @@ You can also use the overload <code>Build.Entity(IEnumerable&lt;someDictionary&g
 <ul>
 <li><a class="xref" href="api.html">DataSource API</a> - DataSource API overview</li>
 <li><a class="xref" href="provide.html">DataSource API: Provide(...)</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_">Entity</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entity_">Entity</a></li>
 </ul>
 <h2 id="demo-code-and-further-links">Demo Code and further links</h2>
 <ul>

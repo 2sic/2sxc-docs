@@ -28,10 +28,10 @@ DataSources are a magic, generic system which can generate new data-items or fil
 
 ## Providing Data
 
-To offer data on the `Out` you will usually use the `Provide` method. If you're generating new items, you'll usually use the `Build.Entity(...)` method. Docs for these: 
+To offer data on the `Out` you will usually use the `Provide` method. If you're generating new items, you'll usually use the `DataBuilder.Entity(...)` method. Docs for these: 
 
 * [](xref:NetCode.DataSources.Custom.Provide)
-* [](xref:NetCode.DataSources.Custom.BuildEntity)
+* [](xref:NetCode.DataSources.Custom.DataBuilder)
 * [](xref:NetCode.DataSources.Custom.StreamsOut)
 * [](xref:NetCode.DataSources.Custom.StreamsIn)
 

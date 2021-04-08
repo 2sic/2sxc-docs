@@ -42,7 +42,7 @@ private ImmutableArray<IEntity> GetList()
   };
   
   // Construct the IEntity and return as ImmutableArray
-  var entity = Build.Entity(values, titleField: DateFieldName);
+  var entity = DataBuilder.Entity(values, titleField: DateFieldName);
   return new [] {entity}.ToImmutableArray();
 }
 

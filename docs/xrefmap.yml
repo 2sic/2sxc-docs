@@ -616,9 +616,6 @@ references:
 - uid: NetCode.DataSources.Custom.Api
   name: DataSource API
   href: net-code/data-sources/custom/api.html
-- uid: NetCode.DataSources.Custom.BuildEntity
-  name: 'DataSource API: Build.Entity(...)'
-  href: net-code/data-sources/custom/build-entity.html
 - uid: NetCode.DataSources.Custom.ConfigMask
   name: 'DataSource Configuration: ConfigMask(...)'
   href: net-code/data-sources/custom/configmask.html
@@ -634,6 +631,9 @@ references:
 - uid: NetCode.DataSources.Custom.ConfigurationParse
   name: 'DataSource Configuration: Configuration.Parse()'
   href: net-code/data-sources/custom/configuration-parse.html
+- uid: NetCode.DataSources.Custom.DataBuilder
+  name: 'DataSource API: DataBuilder.Entity(...)'
+  href: net-code/data-sources/custom/build-entity.html
 - uid: NetCode.DataSources.Custom.Errors
   name: "DataSource API: Error Handling \U0001F195"
   href: net-code/data-sources/custom/errors.html
@@ -3242,43 +3242,6 @@ references:
   isSpec: "True"
   fullName: ToSic.Eav.Data.AttributeBase.Type
   nameWithType: AttributeBase.Type
-- uid: ToSic.Eav.Data.Build
-  name: Build
-  href: api/dot-net/ToSic.Eav.Data.Build.html
-  commentId: T:ToSic.Eav.Data.Build
-  fullName: ToSic.Eav.Data.Build
-  nameWithType: Build
-- uid: ToSic.Eav.Data.Build.DefaultTypeName
-  name: DefaultTypeName
-  href: api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_DefaultTypeName
-  commentId: F:ToSic.Eav.Data.Build.DefaultTypeName
-  fullName: ToSic.Eav.Data.Build.DefaultTypeName
-  nameWithType: Build.DefaultTypeName
-- uid: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Guid},System.Nullable{System.DateTime})
-  name: Entity(Dictionary<String, Object>, String, Int32, Int32, String, String, Nullable<Guid>, Nullable<DateTime>)
-  href: api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_System_Int32_System_Int32_System_String_System_String_System_Nullable_System_Guid__System_Nullable_System_DateTime__
-  commentId: M:ToSic.Eav.Data.Build.Entity(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Guid},System.Nullable{System.DateTime})
-  name.vb: Entity(Dictionary(Of String, Object), String, Int32, Int32, String, String, Nullable(Of Guid), Nullable(Of DateTime))
-  fullName: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, System.Int32, System.Int32, System.String, System.String, System.Nullable<System.Guid>, System.Nullable<System.DateTime>)
-  fullName.vb: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, System.Int32, System.Int32, System.String, System.String, System.Nullable(Of System.Guid), System.Nullable(Of System.DateTime))
-  nameWithType: Build.Entity(Dictionary<String, Object>, String, Int32, Int32, String, String, Nullable<Guid>, Nullable<DateTime>)
-  nameWithType.vb: Build.Entity(Dictionary(Of String, Object), String, Int32, Int32, String, String, Nullable(Of Guid), Nullable(Of DateTime))
-- uid: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.Int32,System.String,System.String)
-  name: Entity(IEnumerable<Dictionary<String, Object>>, String, Int32, String, String)
-  href: api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_System_Int32_System_String_System_String_
-  commentId: M:ToSic.Eav.Data.Build.Entity(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.Int32,System.String,System.String)
-  name.vb: Entity(IEnumerable(Of Dictionary(Of String, Object)), String, Int32, String, String)
-  fullName: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.IEnumerable<System.Collections.Generic.Dictionary<System.String, System.Object>>, System.String, System.Int32, System.String, System.String)
-  fullName.vb: ToSic.Eav.Data.Build.Entity(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.Dictionary(Of System.String, System.Object)), System.String, System.Int32, System.String, System.String)
-  nameWithType: Build.Entity(IEnumerable<Dictionary<String, Object>>, String, Int32, String, String)
-  nameWithType.vb: Build.Entity(IEnumerable(Of Dictionary(Of String, Object)), String, Int32, String, String)
-- uid: ToSic.Eav.Data.Build.Entity*
-  name: Entity
-  href: api/dot-net/ToSic.Eav.Data.Build.html#ToSic_Eav_Data_Build_Entity_
-  commentId: Overload:ToSic.Eav.Data.Build.Entity
-  isSpec: "True"
-  fullName: ToSic.Eav.Data.Build.Entity
-  nameWithType: Build.Entity
 - uid: ToSic.Eav.Data.ContentType
   name: ContentType
   href: api/dot-net/ToSic.Eav.Data.ContentType.html
@@ -4734,6 +4697,63 @@ references:
   isSpec: "True"
   fullName: ToSic.Eav.Data.IContentTypeAttribute.SortOrder
   nameWithType: IContentTypeAttribute.SortOrder
+- uid: ToSic.Eav.Data.IDataBuilder
+  name: IDataBuilder
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html
+  commentId: T:ToSic.Eav.Data.IDataBuilder
+  fullName: ToSic.Eav.Data.IDataBuilder
+  nameWithType: IDataBuilder
+- uid: ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.Int32,System.String,System.String,ToSic.Eav.Data.ContentType)
+  name: Entities(IEnumerable<Dictionary<String, Object>>, String, Int32, String, String, ContentType)
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entities_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_System_Int32_System_String_System_String_ToSic_Eav_Data_ContentType_
+  commentId: M:ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.Int32,System.String,System.String,ToSic.Eav.Data.ContentType)
+  name.vb: Entities(IEnumerable(Of Dictionary(Of String, Object)), String, Int32, String, String, ContentType)
+  fullName: ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable<System.Collections.Generic.Dictionary<System.String, System.Object>>, System.String, System.Int32, System.String, System.String, ToSic.Eav.Data.ContentType)
+  fullName.vb: ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.Dictionary(Of System.String, System.Object)), System.String, System.Int32, System.String, System.String, ToSic.Eav.Data.ContentType)
+  nameWithType: IDataBuilder.Entities(IEnumerable<Dictionary<String, Object>>, String, Int32, String, String, ContentType)
+  nameWithType.vb: IDataBuilder.Entities(IEnumerable(Of Dictionary(Of String, Object)), String, Int32, String, String, ContentType)
+- uid: ToSic.Eav.Data.IDataBuilder.Entities*
+  name: Entities
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entities_
+  commentId: Overload:ToSic.Eav.Data.IDataBuilder.Entities
+  isSpec: "True"
+  fullName: ToSic.Eav.Data.IDataBuilder.Entities
+  nameWithType: IDataBuilder.Entities
+- uid: ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String,ToSic.Eav.Data.ContentType,System.Nullable{System.Guid},System.Nullable{System.DateTime})
+  name: Entity(Dictionary<String, Object>, String, Int32, Int32, String, String, ContentType, Nullable<Guid>, Nullable<DateTime>)
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entity_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_System_Int32_System_Int32_System_String_System_String_ToSic_Eav_Data_ContentType_System_Nullable_System_Guid__System_Nullable_System_DateTime__
+  commentId: M:ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String,ToSic.Eav.Data.ContentType,System.Nullable{System.Guid},System.Nullable{System.DateTime})
+  name.vb: Entity(Dictionary(Of String, Object), String, Int32, Int32, String, String, ContentType, Nullable(Of Guid), Nullable(Of DateTime))
+  fullName: ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, System.Int32, System.Int32, System.String, System.String, ToSic.Eav.Data.ContentType, System.Nullable<System.Guid>, System.Nullable<System.DateTime>)
+  fullName.vb: ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, System.Int32, System.Int32, System.String, System.String, ToSic.Eav.Data.ContentType, System.Nullable(Of System.Guid), System.Nullable(Of System.DateTime))
+  nameWithType: IDataBuilder.Entity(Dictionary<String, Object>, String, Int32, Int32, String, String, ContentType, Nullable<Guid>, Nullable<DateTime>)
+  nameWithType.vb: IDataBuilder.Entity(Dictionary(Of String, Object), String, Int32, Int32, String, String, ContentType, Nullable(Of Guid), Nullable(Of DateTime))
+- uid: ToSic.Eav.Data.IDataBuilder.Entity*
+  name: Entity
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Entity_
+  commentId: Overload:ToSic.Eav.Data.IDataBuilder.Entity
+  isSpec: "True"
+  fullName: ToSic.Eav.Data.IDataBuilder.Entity
+  nameWithType: IDataBuilder.Entity
+- uid: ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog)
+  name: Init(ILog)
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Init_ToSic_Eav_Logging_ILog_
+  commentId: M:ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog)
+  fullName: ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog)
+  nameWithType: IDataBuilder.Init(ILog)
+- uid: ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog,System.String)
+  name: Init(ILog, String)
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Init_ToSic_Eav_Logging_ILog_System_String_
+  commentId: M:ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog,System.String)
+  fullName: ToSic.Eav.Data.IDataBuilder.Init(ToSic.Eav.Logging.ILog, System.String)
+  nameWithType: IDataBuilder.Init(ILog, String)
+- uid: ToSic.Eav.Data.IDataBuilder.Init*
+  name: Init
+  href: api/dot-net/ToSic.Eav.Data.IDataBuilder.html#ToSic_Eav_Data_IDataBuilder_Init_
+  commentId: Overload:ToSic.Eav.Data.IDataBuilder.Init
+  isSpec: "True"
+  fullName: ToSic.Eav.Data.IDataBuilder.Init
+  nameWithType: IDataBuilder.Init
 - uid: ToSic.Eav.Data.IDimension
   name: IDimension
   href: api/dot-net/ToSic.Eav.Data.IDimension.html
@@ -6410,6 +6430,19 @@ references:
   isSpec: "True"
   fullName: ToSic.Eav.DataSources.DataSourceBase.Configuration
   nameWithType: DataSourceBase.Configuration
+- uid: ToSic.Eav.DataSources.DataSourceBase.DataBuilder
+  name: DataBuilder
+  href: api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_DataBuilder
+  commentId: P:ToSic.Eav.DataSources.DataSourceBase.DataBuilder
+  fullName: ToSic.Eav.DataSources.DataSourceBase.DataBuilder
+  nameWithType: DataSourceBase.DataBuilder
+- uid: ToSic.Eav.DataSources.DataSourceBase.DataBuilder*
+  name: DataBuilder
+  href: api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_DataBuilder_
+  commentId: Overload:ToSic.Eav.DataSources.DataSourceBase.DataBuilder
+  isSpec: "True"
+  fullName: ToSic.Eav.DataSources.DataSourceBase.DataBuilder
+  nameWithType: DataSourceBase.DataBuilder
 - uid: ToSic.Eav.DataSources.DataSourceBase.ErrorStream
   name: ErrorStream
   href: api/dot-net/ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ErrorStream
@@ -7241,6 +7274,12 @@ references:
   commentId: F:ToSic.Eav.DataSources.Queries.DataSourceType.Cache
   fullName: ToSic.Eav.DataSources.Queries.DataSourceType.Cache
   nameWithType: DataSourceType.Cache
+- uid: ToSic.Eav.DataSources.Queries.DataSourceType.Debug
+  name: Debug
+  href: api/dot-net/ToSic.Eav.DataSources.Queries.DataSourceType.html#ToSic_Eav_DataSources_Queries_DataSourceType_Debug
+  commentId: F:ToSic.Eav.DataSources.Queries.DataSourceType.Debug
+  fullName: ToSic.Eav.DataSources.Queries.DataSourceType.Debug
+  nameWithType: DataSourceType.Debug
 - uid: ToSic.Eav.DataSources.Queries.DataSourceType.Filter
   name: Filter
   href: api/dot-net/ToSic.Eav.DataSources.Queries.DataSourceType.html#ToSic_Eav_DataSources_Queries_DataSourceType_Filter
@@ -7283,6 +7322,12 @@ references:
   commentId: F:ToSic.Eav.DataSources.Queries.DataSourceType.Source
   fullName: ToSic.Eav.DataSources.Queries.DataSourceType.Source
   nameWithType: DataSourceType.Source
+- uid: ToSic.Eav.DataSources.Queries.DataSourceType.System
+  name: System
+  href: api/dot-net/ToSic.Eav.DataSources.Queries.DataSourceType.html#ToSic_Eav_DataSources_Queries_DataSourceType_System
+  commentId: F:ToSic.Eav.DataSources.Queries.DataSourceType.System
+  fullName: ToSic.Eav.DataSources.Queries.DataSourceType.System
+  nameWithType: DataSourceType.System
 - uid: ToSic.Eav.DataSources.Queries.DataSourceType.Target
   name: Target
   href: api/dot-net/ToSic.Eav.DataSources.Queries.DataSourceType.html#ToSic_Eav_DataSources_Queries_DataSourceType_Target
@@ -12142,6 +12187,19 @@ references:
   isSpec: "True"
   fullName: ToSic.Sxc.Data.DynamicEntityWithList.Item
   nameWithType: DynamicEntityWithList.Item
+- uid: ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder(ToSic.Eav.Data.IEntity,System.String)
+  name: PlaceHolder(IEntity, String)
+  href: api/dot-net/ToSic.Sxc.Data.DynamicEntityWithList.html#ToSic_Sxc_Data_DynamicEntityWithList_PlaceHolder_ToSic_Eav_Data_IEntity_System_String_
+  commentId: M:ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder(ToSic.Eav.Data.IEntity,System.String)
+  fullName: ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder(ToSic.Eav.Data.IEntity, System.String)
+  nameWithType: DynamicEntityWithList.PlaceHolder(IEntity, String)
+- uid: ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder*
+  name: PlaceHolder
+  href: api/dot-net/ToSic.Sxc.Data.DynamicEntityWithList.html#ToSic_Sxc_Data_DynamicEntityWithList_PlaceHolder_
+  commentId: Overload:ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder
+  isSpec: "True"
+  fullName: ToSic.Sxc.Data.DynamicEntityWithList.PlaceHolder
+  nameWithType: DynamicEntityWithList.PlaceHolder
 - uid: ToSic.Sxc.Data.DynamicEntityWithList.Remove(System.Object)
   name: Remove(Object)
   href: api/dot-net/ToSic.Sxc.Data.DynamicEntityWithList.html#ToSic_Sxc_Data_DynamicEntityWithList_Remove_System_Object_
