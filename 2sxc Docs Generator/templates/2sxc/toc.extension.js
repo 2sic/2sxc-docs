@@ -28,6 +28,7 @@ exports.postTransform = function (model) {
 
 const prefix1 = 'ToSic.Sxc';
 const prefix2 = 'ToSic.Eav';
+const prefix3 = 'ToSic.Custom';
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -49,7 +50,11 @@ function isApiToc(model) {
 
 // check if a string is likely a namespace API prefix
 function isNamespace(name) {
-  return name && (name.indexOf(prefix1) === 0 || name.indexOf(prefix2) === 0);
+  return name && (
+    name.indexOf(prefix1) === 0 
+    || name.indexOf(prefix2) === 0
+    || name.indexOf(prefix3) === 0
+  );
 }
 
 // repeat a string X times

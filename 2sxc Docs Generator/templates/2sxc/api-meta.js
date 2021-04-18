@@ -9,6 +9,10 @@ const prioInternal = {
   priority: "internal"
 };
 
+const prioCustom = {
+  priority: "custom"
+};
+
 const prioData = {
   priority: "data"
 };
@@ -21,13 +25,14 @@ const prioAdam = {
 };
 
 exports.data = {
+  "ToSic.Custom": prioCustom,
   "ToSic.Eav": prioInternal,
   "ToSic.Eav.Apps": prioInternal,
   "ToSic.Eav.Apps.Assets": prioInternal,
   "ToSic.Eav.Caching": prioInternal,
   "ToSic.Eav.Configuration": prioInternal,
   "ToSic.Eav.Conversion": prioInternal,
-  //"ToSic.Eav.Data": prioInternal,
+  "ToSic.Eav.Data": prioData,
   "ToSic.Eav.DataSources": prioData,
   "ToSic.Eav.DataSources.Caching": prioInternal,
   "ToSic.Eav.DataSources.Queries": prioData,
