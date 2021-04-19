@@ -6,7 +6,7 @@ uid: WebApi.Custom.DotNet.SaveInAdam
 
 The `SaveInAdam` command helps your WebApi to upload files so they are in an ADAM container of an item. 
 
-The API is documented [here](xref:ToSic.Sxc.Dnn.ApiController.SaveInAdam*) and on this page we'll explain how to use it.
+The API is documented [here](xref:ToSic.Sxc.WebApi.IDynamicWebApi.SaveInAdam*) and on this page we'll explain how to use it.
 
 ## How to use
 Here's a simple example, taken from [mobius forms](https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs)
@@ -66,7 +66,7 @@ If you really only want 1 file to be uploaded, and want to put it into the field
 
 You should find some code examples in these apps
 
-* [C# API Documentation of SaveInAdam](xref:ToSic.Sxc.Dnn.ApiController.SaveInAdam*)
+* [C# API Documentation of SaveInAdam](xref:ToSic.Sxc.WebApi.IDynamicWebApi.SaveInAdam*)
 * [Mobius Forms v2 in App Catalog](xref:App.Mobius)
 * [Mobius Forms v2 on Github](https://github.com/2sic/app-mobius-forms)
 * [Blog Recipe for uploading into ADAM in your WebAPI](https://2sxc.org/en/blog/post/recipe-form-files-saveinadam-in-your-custom-webapi)
