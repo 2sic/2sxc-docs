@@ -1,7 +1,7 @@
 ---
 uid: NetCode.DynamicCode.Dnn
 ---
-# Dnn / @Dnn Object in Dynamic Code
+# Dnn / @Dnn Object in Dynamic Code ⚛ (Dnn only)
 
 The `Dnn` is a helper object which contains properties to access information about the current tab, portal, user, module etc.
 
@@ -194,8 +194,10 @@ The `@Dnn.User` is of the type [UserInfo](https://www.dnndocs.com/api/DotNetNuke
 13.	Dnn.User.Username
 
 
+---
 
 ## History
+
 1. Introduced in 2sxc 1.0
 2. 
 

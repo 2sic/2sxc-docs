@@ -148,7 +148,7 @@
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>not in .net core 5</td>
-<td>create a separate file for each helper and use <code>RenderPage</code></td>
+<td>create a separate file for each helper and use <code>Html.Partial(...)</code></td>
 </tr>
 <tr>
 <td>Razor</td>
@@ -156,7 +156,7 @@
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>DNN only</td>
-<td>Use <code>CmsContext</code>, a bit more limited. For Oqtane features use DependencyInjection.</td>
+<td>Use <code>CmsContext</code>, a bit more limited. For Oqtane features use Dependency Injection.</td>
 </tr>
 <tr>
 <td>Razor</td>
@@ -172,19 +172,67 @@
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
 <td>core functionality</td>
-<td>Unclear if the full functionality will be re-implemented, as it had some design flaws</td>
+<td>New in v12 (Koi 2) Unclear if the full functionality will be re-implemented, as it had some design flaws</td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>RenderPage(...)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>.net 4.5</td>
+<td>Use <code>Html.Partial(...)</code> instead</td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>Html.Partial(...)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>.net core</td>
+<td>Polyfill added to DNN in 2sxc 12</td>
 </tr>
 </tbody>
 </table>
-<h3 id="features-missing-in-oqtane">Features missing in Oqtane</h3>
-<ol>
-<li><code>@helper</code> Razor Syntax is missing in Oqtane because of .net Core 5 which doesn&#39;t support it.<br>Recommendation: </li>
-<li>The object <code>Dnn</code> is missing for obvious reasons. All important properties will be on <code>CmsContext</code> which will work across platforms</li>
-<li>Koi is being implemented to use Dependency-Injection, the old global static variable approach will become obsolete and not work on Oqtane</li>
-</ol>
+<h3 id="sub-view-data">Sub-View Data</h3>
+<table>
+<thead>
+<tr>
+<th>Collection</th>
+<th>Feature</th>
+<th style="text-align:center">Dnn</th>
+<th style="text-align:center">Oqtane</th>
+<th>Compatibility</th>
+<th>Notes / Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Razor</td>
+<td><code>Model</code> object</td>
+<td style="text-align:center">⛔</td>
+<td style="text-align:center">✅</td>
+<td>Part of .net core</td>
+<td>Use <code>DynamicModel</code></td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>PageData</code> object</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>Part of old .net</td>
+<td>Use <code>DynamicModel</code></td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>DynamicModel</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>part of 2sxc</td>
+<td>Works in old &amp; new</td>
+</tr>
+</tbody>
+</table>
 <h3 id="undergoing-research">Undergoing Research</h3>
 <ol>
-<li>Unclear if <code>RenderPage</code> works or should be re-implemented?</li>
 <li>RazorBlade <em>should</em> work but isn&#39;t tested yet</li>
 </ol>
 <h3 id="wip">WIP</h3>

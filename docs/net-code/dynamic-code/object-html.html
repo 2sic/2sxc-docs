@@ -13,11 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IHtmlHelper
-   | 2sxc and EAV 10 </title>
+    <title> Object &#129682; (Razor only) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IHtmlHelper
-   | 2sxc and EAV 10 ">
+    <meta name="title" content=" Object &#129682; (Razor only) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -26,7 +24,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -69,7 +67,7 @@
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
@@ -78,7 +76,7 @@
                       <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
@@ -113,127 +111,66 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper">
-  
-  
-  <h1 id="ToSic_Sxc_Dnn_Web_IHtmlHelper" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper" class="text-break">Interface IHtmlHelper
-  </h1>
-  <div class="markdown level0 summary"><p>Helper to quickly &quot;raw&quot; some html.
-<strong>Important</strong>: When using Oqtane, the Html object has many more features - check the .net documentation. </p>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Html">
+<h1 id="html-object--razor-only">@Html Object 🪒 (Razor only)</h1>
+
+<p>The <code>Html</code> object is a .net helper from the framework. It&#39;s only available in Razor and not in WebApis. </p>
+<div class="IMPORTANT"><h5>Important</h5><p>Dnn and Oqtane have a different version of .net, so they Html object has more or less features depending on what framework you&#39;re using. </p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Dnn.Web.html">ToSic.Sxc.Dnn.Web</a></h6>
-  <h6><strong>Assembly</strong>: ToSic.SexyContent.Razor.dll</h6>
-  <h5 id="ToSic_Sxc_Dnn_Web_IHtmlHelper_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-public interface IHtmlHelper</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/v12/apiSpec/new?filename=ToSic_Sxc_Dnn_Web_IHtmlHelper_Partial_System_String_System_Object___.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.Web.IHtmlHelper.Partial(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/v12/Src/Dnn/ToSic.Sxc.Razor/Dnn/Web/IHtmlHelper.cs/#L27">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Dnn_Web_IHtmlHelper_Partial_" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper.Partial*"></a>
-  <h4 id="ToSic_Sxc_Dnn_Web_IHtmlHelper_Partial_System_String_System_Object___" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper.Partial(System.String,System.Object[])">Partial(String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Experimental support for Html.Partial to mimic API in .net Core 5</p>
+<p>Here we&#39;ll just document the important parts which will work on both Dnn and Oqtane</p>
+<h2 id="htmlrawstring">@Html.Raw(string)</h2>
+<p>This will put the string into the page and <em>not</em> escape the html. Example</p>
+<pre><code class="lang-razor">@{ var demo = &quot;&lt;strong&gt;hello!&lt;/strong&gt;&quot;; }
+&lt;div&gt;
+  @demo
+&lt;/div&gt;
+&lt;div&gt;
+  @Html.Raw(demo)
+&lt;/div&gt;
+</code></pre><p>Will create this:</p>
+<pre><code class="lang-html">&lt;div&gt;
+  &amp;lt;strong&amp;gt;hello!&amp;lt;/strong&amp;gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;strong&gt;hello!&lt;/strong&gt;
+&lt;/div&gt;
+</code></pre><h2 id="htmlpartialpath---v12-only">@Html.Partial(path) - v12 only</h2>
+<p>This will render another razor file in the current location. </p>
+<div class="IMPORTANT"><h5>Important</h5><p><code>@Html.Partial(...)</code> is actually a newer command which would only work in Oqtane, 
+but we added it to the Dnn razor implementation to make portable Razor possible.
+In Dnn it will actually call the old .net function <code>@RenderPage(...)</code>.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;WIP for v12&quot;)]
-IHtmlString Partial(string path, params object[] data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Web.IHtmlString</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/v12/apiSpec/new?filename=ToSic_Sxc_Dnn_Web_IHtmlHelper_Raw_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.Web.IHtmlHelper.Raw(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/v12/Src/Dnn/ToSic.Sxc.Razor/Dnn/Web/IHtmlHelper.cs/#L19">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Dnn_Web_IHtmlHelper_Raw_" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper.Raw*"></a>
-  <h4 id="ToSic_Sxc_Dnn_Web_IHtmlHelper_Raw_System_Object_" data-uid="ToSic.Sxc.Dnn.Web.IHtmlHelper.Raw(System.Object)">Raw(Object)</h4>
-  <div class="markdown level1 summary"><p>Returns a HtmlString which Razor will output as Raw Html.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">HtmlString Raw(object stringHtml)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">stringHtml</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Web.HtmlString</span></td>
-        <td><p>An HtmlString object which will be not be html-encoded when added to a page with @Html.Raw(...)</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+<p>Example - this would be the main file:</p>
+<pre><code class="lang-razor">&lt;h1&gt;Some Title&lt;/h1&gt;
+@Html.Partial(&quot;_intro.cshtml&quot;)
+@Html.Partial(&quot;_intro.cshtml&quot;)
+</code></pre><p>This would be the sub-file <code>_intro.cshtml</code>:</p>
+<pre><code class="lang-razor">&lt;div&gt;Greetings!&lt;/div&gt;
+</code></pre><p>Result:</p>
+<pre><code class="lang-html">&lt;h1&gt;Some Title&lt;/h1&gt;
+&lt;div&gt;Greetings!&lt;/div&gt;
+&lt;div&gt;Greetings!&lt;/div&gt;
+</code></pre><h2 id="htmlpartialpath-data---v12-only">@Html.Partial(path, data) - v12 only</h2>
+<p>This is the same as <code>Html.Partial(path)</code> but allows you to add more data. </p>
+<p>Main file:</p>
+<pre><code class="lang-razor">&lt;h1&gt;Some Title&lt;/h1&gt;
+@{
+  var preparedData = new { Name = &quot;iJungleboy&quot; };
+}
+@Html.Partial(&quot;_intro.cshtml&quot;, preparedData)
+@Html.Partial(&quot;_intro.cshtml&quot;, new { Name = &quot;Daniel&quot; })
+</code></pre><p>This would be the sub-file <code>_intro.cshtml</code>:</p>
+<pre><code class="lang-razor">&lt;div&gt;Greetings @DynamicModel.Name!&lt;/div&gt;
+</code></pre><p>Result:</p>
+<pre><code class="lang-html">&lt;h1&gt;Some Title&lt;/h1&gt;
+&lt;div&gt;Greetings iJungleboy!&lt;/div&gt;
+&lt;div&gt;Greetings Markus!&lt;/div&gt;
+</code></pre><hr>
+<h2 id="history">History</h2>
+<ol>
+<li><code>Html.Raw</code> existed since 2sxc 1.0</li>
+<li><code>Html.Partial</code> was added in 2sxc 12 to ensure identical syntax with Oqtane</li>
+</ol>
 </article>
           </div>
           
@@ -242,10 +179,7 @@ IHtmlString Partial(string path, params object[] data)</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/v12/apiSpec/new?filename=ToSic_Sxc_Dnn_Web_IHtmlHelper.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.Web.IHtmlHelper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/2sic/2sxc/blob/v12/Src/Dnn/ToSic.Sxc.Razor/Dnn/Web/IHtmlHelper.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/object-html.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
