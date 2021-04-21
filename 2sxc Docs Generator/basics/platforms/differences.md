@@ -19,9 +19,7 @@ Last Update: 2021-04-19 20:00
 | ---------- |-------- | :-: | :----: | --- | ---
 | Razor APIs
 | Razor | `@helper` | ✅ | ⛔ | not in .net core 5 | create a separate file for each helper and use `Html.Partial(...)`
-| Razor | `Dnn` object | ✅ | ⛔ | DNN only | Use `CmsContext`, a bit more limited. For Oqtane features use Dependency Injection.
-| Razor | `Koi` static object | ✅ | ⛔ | Not supported | Use Dependency Injection version of Koi 2
-| Razor | `Koi` Service | ✅ | ✅ | core functionality | New in v12 (Koi 2) Unclear if the full functionality will be re-implemented, as it had some design flaws
+| Razor | `Dnn` object | ✅ | ⛔ | DNN only | Use `CmsContext`, a bit more limited. For Oqtane features use Dependency Injection. 
 | Razor | `RenderPage(...)` | ✅ | ⛔ | .net 4.5 | Use `Html.Partial(...)` instead
 | Razor | `Html.Partial(...)` | ✅ | ✅ | .net core | Polyfill added to DNN in 2sxc 12
 
@@ -33,10 +31,22 @@ Last Update: 2021-04-19 20:00
 | Razor | `DynamicModel` | ✅ | ✅ | part of 2sxc | Works in old & new
 
 
-### Undergoing Research
+### RazorBlade Extension
 
-1. RazorBlade _should_ work but isn't tested yet
+| Collection | Feature | Dnn | Oqtane | Compatibility | Notes / Alternatives |
+| ---------- |-------- | :-: | :----: | --- | ---
+| RazorBlade | `Tag` object | ✅ | ✅ | - | 
+| RazorBlade | `Tags` object | ✅ | ✅ | - | 
+| RazorBlade | `Text` object | ✅ | ✅ | - | 
+| RazorBlade | `HtmlPage` object | ✅ | ⛔ | uncertain | evaluating best practices
 
+
+### Koi Extension
+
+| Collection | Feature | Dnn | Oqtane | Compatibility | Notes / Alternatives |
+| ---------- |-------- | :-: | :----: | --- | ---
+| Razor | `Koi` static object | ✅ | ⛔ | Not supported | Use Dependency Injection version of Koi 2
+| Razor | `Koi` Service | ✅ | ✅ | core functionality | New in v12 (Koi 2) Unclear if the full functionality will be re-implemented, as it had some design flaws
 
 ### WIP
 
