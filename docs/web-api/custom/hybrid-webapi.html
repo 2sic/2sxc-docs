@@ -13,11 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Sxc.Code
-   | 2sxc and EAV 10 </title>
+    <title>Custom C# Web API: Hybrid Dnn &amp; Oqtane APIs | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Sxc.Code
-   | 2sxc and EAV 10 ">
+    <meta name="title" content="Custom C# Web API: Hybrid Dnn &amp; Oqtane APIs | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -26,7 +24,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -75,10 +73,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
@@ -113,38 +111,82 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Code">
-  
-  <h1 id="ToSic_Sxc_Code" data-uid="ToSic.Sxc.Code" class="text-break">Namespace ToSic.Sxc.Code
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="ToSic.Sxc.Code.DynamicCode.html">DynamicCode</a></h4>
-      <section><p>This is a base class for dynamic code which is compiled at runtime. <br>
-It delegates all properties like App and methods like AsDynamic() to the parent item which initially caused it to be compiled.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.DynamicCodeRoot.html">DynamicCodeRoot</a></h4>
-      <section><p>Base class for any dynamic code root objects. <br>
-Root objects are the ones compiled by 2sxc - like the RazorComponent or ApiController. <br>
-If you create code for dynamic compilation, you&apos;ll always inherit from ToSic.Sxc.Dnn.DynamicCode.
-Note that other DynamicCode objects like RazorComponent or ApiController reference this object for all the interface methods of <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a>.</p>
-</section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="ToSic.Sxc.Code.ICreateInstance.html">ICreateInstance</a></h4>
-      <section><p>Marks objects - usually DynamicCode - which can create instances of other C# files. <br>
-A special feature is that it must store a reference to the path it&apos;s in (provided by the compiler that created this instance).
-This is important, so that CreateInstance knows what path to start in. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a></h4>
-      <section><p>Dynamic code files like Razor or WebApis.
-Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
-Also provides many Conversions between <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
-Important for dynamic code files like Razor or WebApi. Note that there are many overloads to ensure that AsDynamic and AsEntity &quot;just work&quot; even if you give them the original data. </p>
-</section>
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.Hybrid">
+<h1 id="custom-c-web-api-hybrid-dnn--oqtane-apis">Custom C# Web API: Hybrid Dnn &amp; Oqtane APIs</h1>
+
+<p>Dnn and Oqtane have a few differences because of these important factors:</p>
+<ol>
+<li>Different underlying C# and .net frameworks</li>
+<li>Different platforms</li>
+<li>Different security attributes for each platform</li>
+</ol>
+<div class="IMPORTANT"><h5>Important</h5><p>This is very advanced stuff and only relevant if you want to create Apps which run on <em>both</em> Dnn and Oqtane. </p>
+<p>For most apps this is not important</p>
+</div>
+<h2 id="core-strategies-for-hybrid-webapis">Core Strategies for Hybrid WebAPIs</h2>
+<p>If you follow these three rules you should be good to go:</p>
+<ol>
+<li>Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in DNN will also run in Oqtane)</li>
+<li>Use .net standard 2.0 APIs and avoid using <code>System.Web</code></li>
+<li>Where necessary, use preprocessor directives as explained below</li>
+</ol>
+<h2 id="the-preprocessor-directives">The Preprocessor Directives</h2>
+<p>C# has special <code>#if</code> <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives">preprocessor</a> statements which are evaluated during compilation. 
+Using this you can define which code should be used in Dnn and Oqtane. Here&#39;s an example:</p>
+<pre><code class="lang-c#">// Add namespaces to enable [HttpGet] and [AllowAnonymous]
+// In Oqtane it&#39;s on a different .net namespace than in Dnn
+#if OQTANE
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+#endif
+#if !OQTANE
+using System.Web.Http;      
+#endif
+
+// All commands can be accessed without security checks
+[AllowAnonymous]
+public class HybridController : ToSic.Custom.Api12
+{
+  [HttpGet] public string Hello()
+  {
+    return &quot;Hello from the basic controller in /api&quot;;
+  }
+
+  [HttpGet] public int Square(int number)
+  {
+    return number * number;
+  }
+}
+</code></pre><p>The following keys are set when Api Controllers are compiled:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">True for Dnn</th>
+<th style="text-align:center">True for Oqtane</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OQTANE</code></td>
+<td style="text-align:center">⛔</td>
+<td style="text-align:center">✅</td>
+</tr>
+<tr>
+<td><code>NETCORE</code></td>
+<td style="text-align:center">⛔</td>
+<td style="text-align:center">✅</td>
+</tr>
+</tbody>
+</table>
+<p>Note that you can use <code>#if OQTANE</code> but not <code>#if DNN</code>. This is because of limitations in the dynamic C# compiler of Dnn. </p>
+<p>Note that you can use <code>#if OQTANE ... #endif</code> and <code>#if !OQTANE ... #endif</code> but not <code>#elif</code> because <code>#elif</code> doesn&#39;t work in Dnn. </p>
+<h2 id="different-c-and-net-frameworks">Different C# and .net Frameworks</h2>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 12.00</li>
+</ol>
 </article>
           </div>
           
@@ -152,6 +194,9 @@ Important for dynamic code files like Razor or WebApi. Note that there are many 
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/hybrid-webapi.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
