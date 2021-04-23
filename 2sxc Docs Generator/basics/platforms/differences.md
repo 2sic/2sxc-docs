@@ -24,6 +24,7 @@ Last Update: 2021-04-19 20:00
 | Razor | `Html.Partial(...)` | ✅ | ✅ | .net core | Polyfill added to DNN in 2sxc 12
 
 ### Sub-View Data
+
 | Collection | Feature | Dnn | Oqtane | Compatibility | Notes / Alternatives |
 | ---------- |-------- | :-: | :----: | --- | ---
 | Razor | `Model` object | ⛔ | ✅ | Part of .net core | Use `DynamicModel`
@@ -72,7 +73,7 @@ Last Update: 2021-04-19 20:00
 ## WebAPIs
 
 1. A new base class has been defined but not fully tested
-1. Decorator Attributes must still be defined as they should work across platforms despite differences
+1. Decorator Attributes are figured out and mostly documented
 
 
 ## REST APIs
@@ -91,3 +92,11 @@ Last Update: 2021-04-19 20:00
 ## Image Resizing
 
 1. PoC is ready, ATM only works on ADAM files and not on general Oqtane files
+
+
+
+
+## Minor / Re-Verify at end
+
+1. Automatic view switching
+1. Image Resizer - installation etc.

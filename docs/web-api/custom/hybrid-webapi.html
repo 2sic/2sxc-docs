@@ -133,31 +133,39 @@
 <h2 id="the-preprocessor-directives">The Preprocessor Directives</h2>
 <p>C# has special <code>#if</code> <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives">preprocessor</a> statements which are evaluated during compilation. 
 Using this you can define which code should be used in Dnn and Oqtane. Here&#39;s an example:</p>
-<pre><code class="lang-c#">// Add namespaces to enable [HttpGet] and [AllowAnonymous]
-// In Oqtane it&#39;s on a different .net namespace than in Dnn
+<pre><code class="lang-c#">// Add namespaces to enable security in Oqtane &amp; DNN despite the differences
 #if OQTANE
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-#endif
-#if !OQTANE
-using System.Web.Http;      
+using Microsoft.AspNetCore.Authorization; // .net core [AllowAnonymous] &amp; [Authorize]
+using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] etc.
+using Oqtane.Shared;        // Oqtane role names
+#else
+using System.Web.Http;      // .net 4.5 [AllowAnonymous] / [HttpGet]
+using DotNetNuke.Web.Api;   // [DnnModuleAuthorize]
+using DotNetNuke.Security;  // SecurityAccessLevel.Xyz
 #endif
 
 // All commands can be accessed without security checks
-[AllowAnonymous]
 public class HybridController : ToSic.Custom.Api12
 {
-  [HttpGet] public string Hello()
+  [AllowAnonymous]  // Works in Oqtane and DNN
+  [HttpGet]         // Works in Oqtane and DNN
+  public string Hello()
   {
     return &quot;Hello from the basic controller in /api&quot;;
   }
 
-  [HttpGet] public int Square(int number)
+  #if OQTANE
+  [Authorize(Roles = RoleNames.Everyone)]
+  #else
+  [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
+  #endif
+  [HttpGet]
+  public int Square(int number)
   {
     return number * number;
   }
 }
-</code></pre><p>The following keys are set when Api Controllers are compiled:</p>
+</code></pre><p>The following <em>symbols</em> are set when Api Controllers are compiled:</p>
 <table>
 <thead>
 <tr>
@@ -173,15 +181,188 @@ public class HybridController : ToSic.Custom.Api12
 <td style="text-align:center">✅</td>
 </tr>
 <tr>
-<td><code>NETCORE</code></td>
+<td>&lt;!--</td>
+<td style="text-align:center"><code>NETCORE</code></td>
 <td style="text-align:center">⛔</td>
-<td style="text-align:center">✅</td>
 </tr>
 </tbody>
 </table>
-<p>Note that you can use <code>#if OQTANE</code> but not <code>#if DNN</code>. This is because of limitations in the dynamic C# compiler of Dnn. </p>
-<p>Note that you can use <code>#if OQTANE ... #endif</code> and <code>#if !OQTANE ... #endif</code> but not <code>#elif</code> because <code>#elif</code> doesn&#39;t work in Dnn. </p>
+<p>Use like this:</p>
+<ul>
+<li><code>#if OQTANE ... #endif</code></li>
+<li><code>#if OQTANE ... #else ... #endif</code></li>
+<li><code>#if !OQTANE ... #endif</code></li>
+<li><code>#if !OQTANE ... #else ... #endif</code></li>
+</ul>
+<p>You can&#39;t use <code>#if DNN ... #endif</code> because of limitations in the dynamic C# compiler of Dnn. Just use <code>#if !OQTANE ... #endif</code>. </p>
 <h2 id="different-c-and-net-frameworks">Different C# and .net Frameworks</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Dnn 7</th>
+<th>Dnn 9</th>
+<th>Oqtane</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C# Language</td>
+<td>ca. 7</td>
+<td>ca. 7</td>
+<td>C# 9</td>
+</tr>
+<tr>
+<td>.net Framework</td>
+<td>4.5.1</td>
+<td>4.7.2</td>
+<td>.net core 5</td>
+</tr>
+<tr>
+<td>.net Standard</td>
+<td>1.6</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<p>Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in DNN 4.7.2, so we&#39;ll restrict our work to support <em>.net standard 1.6</em>. This means our examples are more limited than what you will be doing. </p>
+<h2 id="differences-in-the-platforms">Differences in the Platforms</h2>
+<p>If you are creating hybrid controllers, we&#39;ll assume that you usually don&#39;t need to access properties of Dnn or Oqtane. If you do, you&#39;ll have to use the standard mechanisms provided by these. </p>
+<ul>
+<li>In DNN - use global objects like <code>PortalSettings.Current</code></li>
+<li>In Oqtane use Dependency Injection</li>
+<li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if OQTANE ... #endif</code> and <code>#if !OQTANE ... #endif</code> blocks</li>
+</ul>
+<h2 id="security-attribute-differences">Security Attribute Differences</h2>
+<p>All APIs need to have the correct attributes to mark the security requirements. </p>
+<pre><code class="lang-cs">// Oqtane way
+[Authorize(Roles = RoleNames.Admin)]
+
+// Dnn way
+[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]
+</code></pre><p>The Attributes come from these namespaces:</p>
+<ul>
+<li>Dnn: <code>DotNetNuke.Web.Api</code><ul>
+<li><code>[DnnModuleAuthorize]</code> - the most common security attribute</li>
+<li><code>[DnnAuthorize]</code> - for special cases, we&#39;re not sure if it&#39;s ever used</li>
+<li><code>[SupportedModules]</code> - to limit access to an API from specific modules. You probabably won&#39;t ever use this. </li>
+</ul>
+</li>
+<li>Oqtane: <code>Microsoft.AspNetCore.Authorization</code> <ul>
+<li><code>[Authorize]</code> - standard Authorize of .net core</li>
+</ul>
+</li>
+</ul>
+<p>The list of possible values come from these namespaces/enums/constants:</p>
+<ul>
+<li>Dnn: <code>DotNetNuke.Security.SecurityAccessLevel</code></li>
+<li>Oqtane: <code>Oqtane.Shared.RoleNames</code></li>
+</ul>
+<p>Permissions of this using <code>DnnModuleAuthorize</code> or <code>Authorize</code></p>
+<table>
+<thead>
+<tr>
+<th>Target Permission</th>
+<th><code>DnnAuthorize</code></th>
+<th><code>DnnModuleAuthorize</code></th>
+<th>Oqtane <code>Authorize</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Admin</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.Host</code></td>
+<td><code>RoleNames.Host</code></td>
+</tr>
+<tr>
+<td>Site Admin</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.Admin</code></td>
+<td><code>RoleNames.Admin</code></td>
+</tr>
+<tr>
+<td>Registered users</td>
+<td>?</td>
+<td>?</td>
+<td><code>RoleNames.Registered</code></td>
+</tr>
+<tr>
+<td>Anybody</td>
+<td>?</td>
+<td><code>Anonymous</code></td>
+<td><code>RoleNames.Everyone</code></td>
+</tr>
+<tr>
+<td>Module Editor</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.Edit</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Module Viewer</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.View</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Module Permissions Manager</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.ViewPermissions</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Module ControlPanel</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.ControlPanel</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Module SkinObjects ?</td>
+<td>?</td>
+<td><code>SecurityAccessLevel.SkinObject</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validateantiforgerytoken-diferences">ValidateAntiForgeryToken Diferences</h2>
+<p>Comparison</p>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Attribute</th>
+<th>Dnn Namespace</th>
+<th>Oqtane/.net Core Namespace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enforce Anti-Forgery</td>
+<td><code>[ValidateAntiForgeryToken]</code></td>
+<td><code>DotNetNuke.Web.Api</code></td>
+<td><code>Microsoft.AspNetCore.Mvc</code></td>
+</tr>
+<tr>
+<td>Skip Enforcing on a method even if Class enforces it</td>
+<td><code>[IgnoreAntiforgeryToken]</code></td>
+<td>(doesn&#39;t exist)</td>
+<td><code>Microsoft.AspNetCore.Mvc</code></td>
+</tr>
+<tr>
+<td>Auto Enforce on unsafe calls (POST, etc.)</td>
+<td><code>[AutoValidateAntiforgeryToken]</code></td>
+<td>(doesn&#39;t exist)</td>
+<td><code>Microsoft.AspNetCore.Mvc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Sidenote: in the .net core implementation the attributes can also accept an <code>order</code> parameter which defaults to <code>1000</code>. </p>
+<h2 id="http-verbs-like-get-post">HTTP Verbs like GET, POST</h2>
+<p>All APIs need to have attributes like <code>[HttpGet]</code> and <code>[HttpPost]</code>. The main difference you need to be aware of is that they must come from a different namespace. Use the <code>#if ...</code> statements as shown in the example above. </p>
+<h2 id="api-result-json-output">API Result JSON Output</h2>
+<p>todo #todoc</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
