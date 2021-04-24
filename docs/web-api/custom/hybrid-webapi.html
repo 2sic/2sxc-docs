@@ -121,8 +121,10 @@
 <li>Different security attributes for each platform</li>
 </ol>
 <div class="IMPORTANT"><h5>Important</h5><p>This is very advanced stuff and only relevant if you want to create Apps which run on <em>both</em> Dnn and Oqtane. </p>
-<p>For most apps this is not important</p>
+<p>For most of your apps this is not relevant</p>
 </div>
+<h2 id="2sxc-philosophy---stay-out-of-the-way">2sxc Philosophy - Stay out of the Way</h2>
+<p>Our philosophy is to <em>not reinvent the wheel</em> so it&#39;s important that we let you use the .net APIs as they are designed. Se we don&#39;t plan on creating another API which to hide the differences, but let you understand them and easily handle everything as needed. </p>
 <h2 id="core-strategies-for-hybrid-webapis">Core Strategies for Hybrid WebAPIs</h2>
 <p>If you follow these three rules you should be good to go:</p>
 <ol>
@@ -358,12 +360,63 @@ public class HybridController : ToSic.Custom.Api12
 </tr>
 </tbody>
 </table>
-<p>Sidenote: in the .net core implementation the attributes can also accept an <code>order</code> parameter which defaults to <code>1000</code>. </p>
+<p><em>Sidenote: in the .net core implementation the attributes can also accept an <code>order</code> parameter which defaults to <code>1000</code>. We believe you should never change this :) but it does allow for other security configurations than were possible in Dnn.</em></p>
 <h2 id="http-verbs-like-get-post">HTTP Verbs like GET, POST</h2>
 <p>All APIs need to have attributes like <code>[HttpGet]</code> and <code>[HttpPost]</code>. The main difference you need to be aware of is that they must come from a different namespace. Use the <code>#if ...</code> statements as shown in the example above. </p>
 <h2 id="api-result-json-output">API Result JSON Output</h2>
-<p>todo #todoc</p>
-<hr>
+<p>Standard Implementations:</p>
+<ul>
+<li>In DNN WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. </li>
+<li>In Oqtane (.net core 5) the default is more sophisticated. The methods return objects or values. In advanced cases they will return an <code>ActionResult</code> or <code>ContentResult</code>. The default encoding is as follows:<ul>
+<li>Simple values like strings are returned just as-is</li>
+<li>Complex objects are serialized - by default as json</li>
+</ul>
+</li>
+</ul>
+<p>So for anything more complex the behavior is often identical, but for simple values it&#39;s different unless you specify explicitly what you want:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Dnn 2sxc API</th>
+<th>Oqtane Apis</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>27</code></td>
+<td>int</td>
+<td><code>27</code></td>
+<td><code>27</code></td>
+<td>identical</td>
+</tr>
+<tr>
+<td><code>&quot;Hello World&quot;</code></td>
+<td>string</td>
+<td><code>&quot;Hello World&quot;</code></td>
+<td><code>Hello World</code></td>
+<td>Note missing quotes in Oqtane which makes this non-json</td>
+</tr>
+<tr>
+<td><code>[&quot;a&quot;, &quot;b&quot;]</code></td>
+<td>string[]</td>
+<td><code>[&quot;a&quot;, &quot;b&quot;]</code></td>
+<td><code>[&quot;a&quot;, &quot;b&quot;]</code></td>
+<td>identical</td>
+</tr>
+</tbody>
+</table>
+<blockquote><p>The most important difference is that by default, strings are <em>not</em> converted to JSON</p>
+</blockquote>
+<p>If you need to return a simple string and must ensure it&#39;s JSON on both platforms, add this attribute to your class or method:</p>
+<pre><code class="lang-c#">[Produces(&quot;application/json&quot;)]
+</code></pre><p>This is in the namespace <code>using Microsoft.AspNetCore.Mvc</code> which you usually already have. Since DNN won&#39;t know it, you will probably wrap it in an <code>#if OQTANE</code> like this:</p>
+<pre><code class="lang-c#">#if OQTANE
+[Produces(&quot;application/json&quot;)]
+#endif
+</code></pre><hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 12.00</li>

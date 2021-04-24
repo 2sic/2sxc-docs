@@ -13,7 +13,11 @@ Dnn and Oqtane have a few differences because of these important factors:
 > [!IMPORTANT]
 > This is very advanced stuff and only relevant if you want to create Apps which run on _both_ Dnn and Oqtane. 
 >
-> For most apps this is not important
+> For most of your apps this is not relevant
+
+## 2sxc Philosophy - Stay out of the Way
+
+Our philosophy is to _not reinvent the wheel_ so it's important that we let you use the .net APIs as they are designed. Se we don't plan on creating another API which to hide the differences, but let you understand them and easily handle everything as needed. 
 
 ## Core Strategies for Hybrid WebAPIs
 
@@ -159,7 +163,36 @@ All APIs need to have attributes like `[HttpGet]` and `[HttpPost]`. The main dif
 
 ## API Result JSON Output
 
-todo #todoc
+Standard Implementations:
+
+* In DNN WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. 
+* In Oqtane (.net core 5) the default is more sophisticated. The methods return objects or values. In advanced cases they will return an `ActionResult` or `ContentResult`. The default encoding is as follows:
+  * Simple values like strings are returned just as-is
+  * Complex objects are serialized - by default as json
+
+So for anything more complex the behavior is often identical, but for simple values it's different unless you specify explicitly what you want:
+
+| Value | Type | Dnn 2sxc API | Oqtane Apis | Comments
+| --- | --- | --- | --- | ---
+| `27` | int | `27` | `27` | identical
+| `"Hello World"` | string | `"Hello World"` | `Hello World` | Note missing quotes in Oqtane which makes this non-json
+| `["a", "b"]` | string[] | `["a", "b"]` | `["a", "b"]` | identical
+
+> The most important difference is that by default, strings are _not_ converted to JSON
+
+If you need to return a simple string and must ensure it's JSON on both platforms, add this attribute to your class or method:
+
+```c#
+[Produces("application/json")]
+```
+
+This is in the namespace `using Microsoft.AspNetCore.Mvc` which you usually already have. Since DNN won't know it, you will probably wrap it in an `#if OQTANE` like this:
+
+```c#
+#if OQTANE
+[Produces("application/json")]
+#endif
+```
 
 ---
 
