@@ -25,7 +25,7 @@ const prioAdam = {
 };
 
 exports.data = {
-  "ToSic.Custom": prioCustom,
+  "Custom.Hybrid": prioCustom,
   "ToSic.Eav": prioInternal,
   "ToSic.Eav.Apps": prioInternal,
   "ToSic.Eav.Apps.Assets": prioInternal,

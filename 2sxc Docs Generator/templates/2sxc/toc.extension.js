@@ -28,7 +28,7 @@ exports.postTransform = function (model) {
 
 const prefix1 = 'ToSic.Sxc';
 const prefix2 = 'ToSic.Eav';
-const prefix3 = 'ToSic.Custom';
+const prefix3 = 'Custom.Hybrid';
 
 // ----------------------------------------------------------------------------------------------------
 
