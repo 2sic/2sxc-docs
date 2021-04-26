@@ -2,7 +2,7 @@
 uid: NetCode.Razor.CustomizeSearch
 ---
 
-# Event _CustomizeSearch()_ on the Razor Page
+# Event _CustomizeSearch()_ on the Razor Page (Dnn ☢ only)
 
 This event is called by the view-engine _after_ calling [CustomizeData](xref:NetCode.Razor.CustomizeData) and before passing the `Data` object to the DNN Search Indexer. 
 

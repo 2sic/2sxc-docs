@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.Hybrid
+uid: WebApi.Custom.Hybrid.Index
 ---
 
 # Custom C# Web API: Hybrid Dnn & Oqtane APIs
@@ -7,7 +7,7 @@ uid: WebApi.Custom.Hybrid
 Dnn and Oqtane have a few differences because of these important factors:
 
 1. Different underlying C# and .net frameworks
-1. Different platforms
+1. Different platforms (Dnn is different from Oqtane)
 1. Different security attributes for each platform
 
 > [!IMPORTANT]
@@ -23,6 +23,7 @@ Our philosophy is to _not reinvent the wheel_ so it's important that we let you 
 
 If you follow these three rules you should be good to go:
 
+1. Inherit from `Custom.Hybrid.Api12`
 1. Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in DNN will also run in Oqtane)
 1. Use .net standard 2.0 APIs and avoid using `System.Web`
 1. Where necessary, use preprocessor directives as explained below
@@ -69,10 +70,7 @@ public class HybridController : ToSic.Custom.Api12
 
 The following _symbols_ are set when Api Controllers are compiled:
 
-| Key | True for Dnn | True for Oqtane
-| --- | :-: | :-:
-| `OQTANE` | ⛔ | ✅
-<!-- | `NETCORE` | ⛔ | ✅ -->
+[!include[](~/net-code/hybrid/_include-preprocessor-symbols.md)]
 
 Use like this:
 
@@ -144,7 +142,7 @@ Permissions of this using `DnnModuleAuthorize` or `Authorize`
 | Module SkinObjects ? | ? | `SecurityAccessLevel.SkinObject` | -
 
 
-## ValidateAntiForgeryToken Diferences
+## ValidateAntiForgeryToken Differences
 
 Comparison
 

@@ -2,7 +2,7 @@
 uid: NetCode.Razor.CustomizeData
 ---
 
-# Event _CustomizeData()_ on the Razor Page
+# Event _CustomizeData()_ on the Razor Page (Dnn ☢ only)
 This event is called by the view-engine before the rest of the script is parsed - and it's usually empty.
 It can be overriden to change/configure what data is delivered to the template or search-index. 
 
