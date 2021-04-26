@@ -24,7 +24,7 @@ It also creates a sub-folder for each field, so that a `logo.png` used in the Lo
 
 The final folder structure looks like this
 
-`[portal-root]/adam/[app-folder-name]/[compact-entity-guid]/field/`
+`[Content-Root]/adam/[App-Folder-Name]/[Compact-Entity-Guid]/[Field-Name]/`
 
 ## How to Use
 
@@ -40,7 +40,30 @@ ADAM uses the DNN file-numbering system by default, and keeps a reference to `fi
 * [](xref:ToSic.Sxc.Adam)
 * To access ADAM files/links in a RazorTemplate, check out `AsAdam(...)` in the [](xref:ToSic.Sxc.Dnn.RazorComponent) and [](xref:ToSic.Sxc.Dnn.ApiController)
 
+## Platform Differences Dnn ☢ & Oqtane 💧
 
+### ADAM Content-Root Folder
+
+In Dnn ☢ the adam root is:
+
+`[Website-Root]\Portals\[site-id]\adam\`
+
+In Oqtane 💧 the adam root is: 
+
+`[Website-Root]\Content\Tenants\[Tenant-Id]\Sites\[Site-Id]\adam\`
+
+### Adam File URLs
+
+Dnn ☢ urls look like this:
+
+`[Domain]/Portals/[Site-Id]/adam/[App-Folder-Name]/[Short-Guid]/[Field-Name]/[Optional-Subfolders]/FileName.Ext`
+
+Oqtane 💧 urls will probably look like this:
+
+`[Domain]/adam/[App-Folder-Name]/[Short-Guid]/[Field-Name]/[Optional-Subfolders]/FileName.Ext`
+
+
+---
 ## History
 
 1. General Tokens introduced in 2sxc 8.0

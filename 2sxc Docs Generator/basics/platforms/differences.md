@@ -72,9 +72,8 @@ Last Update: 2021-04-19 20:00
 
 ## WebAPIs
 
-1. A new base class has been defined but not fully tested
-1. Decorator Attributes are figured out and mostly documented
-
+1. A new base class has been defined but not fully tested; 
+1. We should probably create a list of viable base classes and explain the differences
 
 ## REST APIs
 

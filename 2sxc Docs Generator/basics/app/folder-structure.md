@@ -37,3 +37,15 @@ The following folders have no technical relevance, but we recommend this naming 
 1. `src` and sub-folders should contain your javascript source files in original (unminified, etc.)
 1. `dist` should contain your processed, minified, uglified and combined JS files  
     _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the dist folder is usually in a sub-folder, like `live\dist`_
+
+## Platform Differences Dnn ☢ & Oqtane 💧
+
+In DNN ☢ the App-folder is located in 
+
+`[Website-Root]\Portals\[site-id]\2sxc\[App-Folder-Name]`
+
+In Oqtane 💧 the App-folder is located in
+
+`[Website-Root]\2sxc\[Site-Id]\[App-Folder-Name]`
+
+This difference is due to architecture and security reasons and may change in future. 

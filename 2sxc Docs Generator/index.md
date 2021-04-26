@@ -1,7 +1,7 @@
 
 <img src="assets/logos/v11/2sxc500.png" width="250px" align="right" class="float-right">
 
-# 2sxc / EAV Docs v11.14.00 - WIP for v11.20 
+# 2sxc / EAV Docs v11.21.00 - WIP for v12
 
 This is the documentation for EAV and 2sxc APIs. 
 
