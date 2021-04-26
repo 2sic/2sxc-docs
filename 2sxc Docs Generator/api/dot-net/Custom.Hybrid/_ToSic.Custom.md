@@ -1,5 +1,5 @@
 ﻿---
-uid: ToSic.Custom
+uid: Custom.Hybrid
 summary: *content
 title: ToSic.Custom Namespace
 ---
