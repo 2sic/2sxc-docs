@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SaveInAdam(...) Command in ApiController | 2sxc and EAV 10 </title>
+    <title>@inherits Base Classes #todoc / WIP | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SaveInAdam(...) Command in ApiController | 2sxc and EAV 10 ">
+    <meta name="title" content="@inherits Base Classes #todoc / WIP | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -67,13 +67,13 @@
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
                           <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
@@ -111,62 +111,95 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="WebApi.Custom.DotNet.SaveInAdam">
-<h1 id="saveinadam-command-in-apicontroller">SaveInAdam(...) Command in ApiController</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Razor.BaseClasses">
+<h1 id="inherits-base-classes-todoc--wip"><code>@inherits</code> Base Classes #todoc / WIP</h1>
 
-<p>The <code>SaveInAdam</code> command helps your WebApi to upload files so they are in an ADAM container of an item. </p>
-<p>The API is documented <a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.IDynamicWebApi.html#ToSic_Sxc_WebApi_IDynamicWebApi_SaveInAdam_">here</a> and on this page we&#39;ll explain how to use it.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>Here&#39;s a simple example, taken from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a></p>
-<pre><code class="lang-cs">SaveInAdam(stream: dataStream,
-    fileName: fileNameInForm,
-    contentType: &quot;Advertisement&quot;,
-    guid: guid,
-    field: &quot;Images&quot;);
-</code></pre><p>Here&#39;s what the parameters are:</p>
+<p>Every Razor template inherits from a base class - and depending on that the features in the template will change. </p>
+<p>These are the base classes you can inherit from as of v12 (we&#39;ll explain ich in more detail below)</p>
 <ol>
-<li><code>stream</code> contains a stream of bytes with the file</li>
-<li><code>fileName</code> contain the file name</li>
-<li><code>contentType</code> is the content-type of the entity we&#39;re saving to</li>
-<li><code>guid</code> is the entity-guid which receives this item</li>
-<li><code>field</code> is the field we&#39;re saving to</li>
+<li><code>Custom.Hybrid.Razor12</code> - new in v12</li>
+<li><code>ToSic.Sxc.Dnn.RazorComponent</code> - new in v12</li>
+<li>The old one #todoc</li>
+<li>Default in Oqtane</li>
+<li></li>
 </ol>
-<h2 id="example">Example</h2>
-<p>The following example is also from <a href="https://github.com/2sic/app-mobius-forms/blob/master/api/FormController.cs">mobius forms</a> and assumes that the html form encoded the data in JavaScript for sending to the WebApi:</p>
-<pre><code class="lang-cs">// Save files to Adam
-var files = ((Newtonsoft.Json.Linq.JArray)contactFormRequest[&quot;Files&quot;])
-    .ToObject&lt;IEnumerable&lt;Dictionary&lt;string, string&gt;&gt;&gt;();
-foreach(var file in files)
-{
-    var data = Convert.FromBase64String((file[&quot;Encoded&quot;]).Split(&#39;,&#39;)[1]);
-    SaveInAdam(stream: new MemoryStream(data),
-        fileName: file[&quot;Name&quot;],
-        contentType: type.Name,
-        guid: guid,
-        field: file[&quot;Field&quot;]);
-}
-</code></pre><h2 id="notes-and-clarifications">Notes and Clarifications</h2>
+<p>Important: If you don&#39;t specify an <code>@inherits</code> in your code, the system will automatically apply a default base class to your code. This is different in Dnn and Oqtane:</p>
+<ol>
+<li>In Dnn the default base class is <code>#todoc</code> as it&#39;s specified in a web.config somewhere.<br>This is the oldest base class and should not be used any more. </li>
+<li>In Oqtane the default base is <code>#todoc</code> which is the default for .net 5</li>
+</ol>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+
+  <h2> Discover More in the Razor Tutorials </h2>
+
+  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
+
+</div><h2 id="details-about-each-base-class">Details about each Base Class</h2>
+<h3 id="customhybridrazor12">Custom.Hybrid.Razor12</h3>
+<p>This is the newest base class and was introduced in 2sxc 12. It contains the features which will work cross-platform on both Dnn and Oqtane. You should use this base class to create solutions / Apps which work on Dnn and Oqtane. </p>
+<h4 id="limitations-of-customhybridrazor12">Limitations of Custom.Hybrid.Razor12</h4>
+<p>Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support. </p>
+<ol>
+<li>The property <code>Dnn</code> doesn&#39;t exist on this base class, as it would lead to code which can&#39;t run cross-platform</li>
+<li>As of now the properties / methods <code>CustomizeData(...)</code>, <code>CustomizeSearch(...)</code> and <code>Purpose</code> do not work, because Oqtane doesn&#39;t have a search indexer. We plan on introducing something like this once Oqtane provides search, but as of now it&#39;s not yet clear how this would work. </li>
+<li>The code-behing <code>Code</code> object doesn&#39;t work, as we probably cannot implement this in .net 5</li>
+<li>The <code>CreateInstance(...)</code> works only on C# files <code>.cs</code> but not with CSHTML files <code>.cshtml</code> as this probably won&#39;t work in .net 5</li>
+<li>Koi works differently than before. Previously you just used a global object <code>Connect.Koi.Koi</code> to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using <code>GetService&lt;Connect.Koi.ICss&gt;()</code>. The old mechanism will still work in Dnn but would not work in Oqtane. </li>
+</ol>
+<h4 id="platform-differences">Platform Differences</h4>
+<p>Internally <code>Custom.Hybrid.Razor12</code> is built on the Razor base classes of the .net frameworks, so in Dnn it builds on <code>#todoc</code> while in Oqtane it builds on <code>#todoc</code>. Because of this, certain features will work in Dnn which don&#39;t work in Oqtane and vice versa. </p>
 <ul>
-<li>all parameters (<code>stream</code>, <code>fileName</code>, ...) must be named by <a class="xref" href="../../net-code/conventions/named-parameters.html">convention</a></li>
-<li>the uploaded files are placed in the container of the field...</li>
-<li>...and not added as a link to the file, so you will usually use library fields</li>
-<li>the field must be a field of type hyperlink, library or wysiwyg, other fields cannot receive files</li>
+<li>If you only want to create Oqtane stuff only, you can just go ahead and use all the new features of the Razor in .net 5</li>
+<li>If you plan on creating real hybrid stuff, you will have to do some testing to ensure you didn&#39;t use features that don&#39;t exist on the other side</li>
+<li>If you need to code something which is different in each platform, use the <code>#if</code> <a class="xref" href="hybrid/index.html">preprocessor statements</a></li>
 </ul>
-<h2 id="difference-in-field-library-and-field-link-default">Difference in Field-Library and Field-Link-Default</h2>
-<p>Note that the form has two different ways the field can behave. In <a class="xref" href="../../basics/data/fields/hyperlink-library.html">hyperlink-Library</a> mode nothing is really stored in the field name, the UI will simply load all the files in a folder that belong to that field. <code>SaveInAdam</code> will simply add files to this folder, so the most common way to use it is that the entity will have a link-library field to browse one or more files uploaded. </p>
-<p>If you really only want 1 file to be uploaded, and want to put it into the field as if it&#39;s linked directly, then choose a <a class="xref" href="../../basics/data/fields/hyperlink-default.html">hyperlink-default</a> field. <code>SaveInAdam</code> will give you a IFile object which has an <code>Id</code>. Use that to create a <code>file:72</code> kind of link and add it to data you just created. </p>
-<h2 id="read-also-demo-app-and-further-links">Read also, Demo App and further links</h2>
-<p>You should find some code examples in these apps</p>
-<ul>
-<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.IDynamicWebApi.html#ToSic_Sxc_WebApi_IDynamicWebApi_SaveInAdam_">C# API Documentation of SaveInAdam</a></li>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/mobius-forms-4-with-mailchimp-recaptcha-polymorph-weback-and-more">Mobius Forms v2 in App Catalog</a></li>
-<li><a href="https://github.com/2sic/app-mobius-forms">Mobius Forms v2 on Github</a></li>
-<li><a href="https://2sxc.org/en/blog/post/recipe-form-files-saveinadam-in-your-custom-webapi">Blog Recipe for uploading into ADAM in your WebAPI</a></li>
-</ul>
+<p>Some core feature differences</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align:center">Dnn</th>
+<th style="text-align:center">Oqtane</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@inherits</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>@helper</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>Doesn&#39;t exist in .net 5</td>
+</tr>
+<tr>
+<td><code>@model</code></td>
+<td style="text-align:center">⛔</td>
+<td style="text-align:center">✅</td>
+<td>Doesn&#39;t exist in old .net</td>
+</tr>
+<tr>
+<td>#todoc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tosicsxcdnnrazorcomponent">ToSic.Sxc.Dnn.RazorComponent</h3>
+<p>todo #todoc</p>
+<h3 id="the-old-one">The old one...</h3>
+<p>todo: #todoc</p>
+<hr>
 <h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 9.30</li>
-</ol>
+<ul>
+<li>2sxc 10.20 - changed to <code>Purpose</code> from <code>InstancePurpose</code> - old code still works</li>
+</ul>
 </article>
           </div>
           
@@ -175,7 +208,7 @@ foreach(var file in files)
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom/custom-web-api-dotnet-saveinadam.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/razor/base-classes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

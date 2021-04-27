@@ -183,19 +183,19 @@ public class HybridController : ToSic.Custom.Api12
 <td><code>NETCOREAPP</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Works in Razor and WebAPIs</td>
+<td>Works in Razor, WebAPIs and code (.cs)</td>
 </tr>
 <tr>
 <td><code>NET5_0</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Works in Razor and WebAPIs</td>
+<td>Works in Razor, WebAPIs and code (.cs)</td>
 </tr>
 <tr>
 <td><code>OQTANE</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Only works in WebAPIs</td>
+<td>Only works in WebAPIs And code (.cs)</td>
 </tr>
 </tbody>
 </table>
@@ -268,8 +268,11 @@ public class HybridController : ToSic.Custom.Api12
 </ul>
 <p>The list of possible values come from these namespaces/enums/constants:</p>
 <ul>
-<li>Dnn: <code>DotNetNuke.Security.SecurityAccessLevel</code></li>
-<li>Oqtane: <code>Oqtane.Shared.RoleNames</code></li>
+<li>Dnn: <code>DotNetNuke.Security.SecurityAccessLevel</code><br>Example: #todoc</li>
+<li>Oqtane Core Roles <code>Oqtane.Shared.RoleNames</code><br>Example: <code>[Authorize(Roles = RoleNames.Host)]</code>
+Multiple: <code>[Authorize(Roles = RoleNames.Host, RoleNames.Admin)]</code></li>
+<li>Oqtane Common Permissions: <code>Oqtane.Shared.PolicyNames</code><br>Example: <code>[Authorize(Policy = PolicyNames.ViewPage)]</code>
+Multiple: <code>[Authorize(Policy = PolicyNames.ViewPage, PolicyNames.ViewFolder)]</code></li>
 </ul>
 <p>Permissions of this using <code>DnnModuleAuthorize</code> or <code>Authorize</code></p>
 <table>
@@ -310,31 +313,31 @@ public class HybridController : ToSic.Custom.Api12
 <td>Module Editor</td>
 <td>?</td>
 <td><code>SecurityAccessLevel.Edit</code></td>
-<td>-</td>
+<td><code>PolicyNames.EditModule</code> <br> <code>PolicyNames.EditPage</code></td>
 </tr>
 <tr>
 <td>Module Viewer</td>
 <td>?</td>
 <td><code>SecurityAccessLevel.View</code></td>
-<td>-</td>
+<td><code>PolicyNames.ViewModule</code> <br> <code>PolicyNames.ViewPage</code></td>
 </tr>
 <tr>
 <td>Module Permissions Manager</td>
 <td>?</td>
 <td><code>SecurityAccessLevel.ViewPermissions</code></td>
-<td>-</td>
+<td><code>RoleNames.Admin</code></td>
 </tr>
 <tr>
 <td>Module ControlPanel</td>
 <td>?</td>
 <td><code>SecurityAccessLevel.ControlPanel</code></td>
-<td>-</td>
+<td><code>RoleNames.Admin</code></td>
 </tr>
 <tr>
 <td>Module SkinObjects ?</td>
 <td>?</td>
 <td><code>SecurityAccessLevel.SkinObject</code></td>
-<td>-</td>
+<td><code>RoleNames.Admin</code></td>
 </tr>
 </tbody>
 </table>

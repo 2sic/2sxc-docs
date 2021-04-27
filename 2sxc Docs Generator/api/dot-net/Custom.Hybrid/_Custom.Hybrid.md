@@ -1,7 +1,7 @@
 ﻿---
 uid: Custom.Hybrid
 summary: *content
-title: ToSic.Custom Namespace
+title: Custom.Hybrid Namespace
 ---
 
 This contains all the base classes for your own solutions, which will work across platforms (DNN, Oqtane, NopCommerce etc.)

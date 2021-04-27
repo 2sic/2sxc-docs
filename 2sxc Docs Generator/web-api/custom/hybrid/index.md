@@ -124,8 +124,14 @@ The Attributes come from these namespaces:
 
 The list of possible values come from these namespaces/enums/constants:
 
-* Dnn: `DotNetNuke.Security.SecurityAccessLevel`
-* Oqtane: `Oqtane.Shared.RoleNames`
+* Dnn: `DotNetNuke.Security.SecurityAccessLevel`  
+  Example: #todoc
+* Oqtane Core Roles `Oqtane.Shared.RoleNames`  
+  Example: `[Authorize(Roles = RoleNames.Host)]`
+  Multiple: `[Authorize(Roles = RoleNames.Host, RoleNames.Admin)]`
+* Oqtane Common Permissions: `Oqtane.Shared.PolicyNames`  
+  Example: `[Authorize(Policy = PolicyNames.ViewPage)]`
+  Multiple: `[Authorize(Policy = PolicyNames.ViewPage, PolicyNames.ViewFolder)]`
 
 Permissions of this using `DnnModuleAuthorize` or `Authorize`
 
@@ -135,11 +141,11 @@ Permissions of this using `DnnModuleAuthorize` or `Authorize`
 | Site Admin | ? | `SecurityAccessLevel.Admin` | `RoleNames.Admin`
 | Registered users | ? | ? | `RoleNames.Registered`
 | Anybody | ? | `Anonymous` | `RoleNames.Everyone`
-| Module Editor | ? | `SecurityAccessLevel.Edit` | -
-| Module Viewer | ? | `SecurityAccessLevel.View` | -
-| Module Permissions Manager | ? | `SecurityAccessLevel.ViewPermissions` | -
-| Module ControlPanel | ? | `SecurityAccessLevel.ControlPanel` | -
-| Module SkinObjects ? | ? | `SecurityAccessLevel.SkinObject` | -
+| Module Editor | ? | `SecurityAccessLevel.Edit` | `PolicyNames.EditModule` <br> `PolicyNames.EditPage`
+| Module Viewer | ? | `SecurityAccessLevel.View` | `PolicyNames.ViewModule` <br> `PolicyNames.ViewPage`
+| Module Permissions Manager | ? | `SecurityAccessLevel.ViewPermissions` | `RoleNames.Admin`
+| Module ControlPanel | ? | `SecurityAccessLevel.ControlPanel` | `RoleNames.Admin`
+| Module SkinObjects ? | ? | `SecurityAccessLevel.SkinObject` | `RoleNames.Admin`
 
 
 ## ValidateAntiForgeryToken Differences

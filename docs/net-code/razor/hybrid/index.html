@@ -181,19 +181,19 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
 <td><code>NETCOREAPP</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Works in Razor and WebAPIs</td>
+<td>Works in Razor, WebAPIs and code (.cs)</td>
 </tr>
 <tr>
 <td><code>NET5_0</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Works in Razor and WebAPIs</td>
+<td>Works in Razor, WebAPIs and code (.cs)</td>
 </tr>
 <tr>
 <td><code>OQTANE</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Only works in WebAPIs</td>
+<td>Only works in WebAPIs And code (.cs)</td>
 </tr>
 </tbody>
 </table>
@@ -242,8 +242,21 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
 <ul>
 <li>In DNN - use global objects like <code>PortalSettings.Current</code></li>
 <li>In Oqtane use Dependency Injection</li>
-<li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if OQTANE ... #endif</code> and <code>#if !OQTANE ... #endif</code> blocks</li>
+<li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if NETCOREAPP ... #endif</code> and <code>#if !NETCOREAPP ... #endif</code> blocks</li>
 </ul>
+<h2 id="limitations-for-using-statements">Limitations for <code>@using</code> Statements</h2>
+<p>The Razor Compiler in Dnn &amp; Oqtane behave a bit differently regarding preprocessor statements. So you cannot use them for <code>@using ...</code> statements. This WILL NOT WORK: </p>
+<pre><code class="lang-razor">@{#if unknown}
+@using DotNetNuke.Framework.JavaScriptLibraries;
+@{#endif}
+</code></pre><p>In Dnn it will work, but in Oqtane / .net 5 it will not result in an error, because the <code>@using</code> statements are handled in a way which doesn&#39;t result in them being skipped. </p>
+<p>If you only need the namespace on a single command, just use the full namespace in your command, like this:</p>
+<pre><code class="lang-c#">if(fancybox || scripts) {
+    #if !NETCOREAPP
+    DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
+    #endif
+}
+</code></pre><p>If you have complex code, a simple trick is to place it in a separate file (so the Razor compiler won&#39;t complain) and then use <code>CreateInstance(...)</code> or <code>Html.Partial(...)</code> to call that if you are in the correct system. </p>
 <hr>
 <h2 id="history">History</h2>
 <ol>

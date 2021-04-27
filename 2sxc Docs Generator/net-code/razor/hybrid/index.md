@@ -110,7 +110,32 @@ If you are creating hybrid controllers, we'll assume that you usually don't need
 
 * In DNN - use global objects like `PortalSettings.Current`
 * In Oqtane use Dependency Injection
-* To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if OQTANE ... #endif` and `#if !OQTANE ... #endif` blocks
+* To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if NETCOREAPP ... #endif` and `#if !NETCOREAPP ... #endif` blocks
+
+
+## Limitations for `@using` Statements
+
+The Razor Compiler in Dnn & Oqtane behave a bit differently regarding preprocessor statements. So you cannot use them for `@using ...` statements. This WILL NOT WORK: 
+
+```razor
+@{#if unknown}
+@using DotNetNuke.Framework.JavaScriptLibraries;
+@{#endif}
+```
+
+In Dnn it will work, but in Oqtane / .net 5 it will not result in an error, because the `@using` statements are handled in a way which doesn't result in them being skipped. 
+
+If you only need the namespace on a single command, just use the full namespace in your command, like this:
+
+```c#
+if(fancybox || scripts) {
+    #if !NETCOREAPP
+    DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
+    #endif
+}
+```
+
+If you have complex code, a simple trick is to place it in a separate file (so the Razor compiler won't complain) and then use `CreateInstance(...)` or `Html.Partial(...)` to call that if you are in the correct system. 
 
 
 ---
