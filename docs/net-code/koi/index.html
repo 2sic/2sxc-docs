@@ -125,7 +125,19 @@
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/koi/home">Koi tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="example">Example</h2>
+</div><h2 id="new-example-will-only-work-in-2sxc-v12">New Example (will only work in 2sxc v12)</h2>
+<p>2sxc v12 includes Koi 2.0 which uses Dependency Injection. Using this it also works in Oqtane. </p>
+<p>The following example will automatically include Bootstrap4 from a CDN if the theme doesn&#39;t already include it.</p>
+<pre><code class="lang-razor">@{
+  var pageCss = GetService&lt;Connect.Koi.ICss&gt;();
+}
+@if(!pageCss.Is(&quot;bs4&quot;)) {
+  &lt;link rel=&quot;stylesheet&quot; 
+    href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css&quot; 
+    integrity=&quot;sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T&quot; 
+    crossorigin=&quot;anonymous&quot;&gt;
+}
+</code></pre><h2 id="old-example-will-only-work-in-dnn-">Old Example (will only work in Dnn ☢)</h2>
 <p>The following example will automatically include Bootstrap4 from a CDN if the theme doesn&#39;t already include it.</p>
 <pre><code class="lang-razor">@using Connect.Koi;
 @if(!Koi.Is(&quot;bs4&quot;)) {

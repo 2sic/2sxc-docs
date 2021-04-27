@@ -13,7 +13,26 @@ uid: NetCode.Koi.Index
 
 [!include["Koi Tutorials"](~/shared/tutorials/koi.md)]
 
-## Example
+## New Example (will only work in 2sxc v12)
+
+2sxc v12 includes Koi 2.0 which uses Dependency Injection. Using this it also works in Oqtane. 
+
+The following example will automatically include Bootstrap4 from a CDN if the theme doesn't already include it.
+
+```razor
+@{
+  var pageCss = GetService<Connect.Koi.ICss>();
+}
+@if(!pageCss.Is("bs4")) {
+  <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+}
+```
+
+
+## Old Example (will only work in Dnn ☢)
 
 The following example will automatically include Bootstrap4 from a CDN if the theme doesn't already include it.
 
@@ -25,7 +44,6 @@ The following example will automatically include Bootstrap4 from a CDN if the th
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
     crossorigin="anonymous">
 }
-
 ```
 
 ## Learn to Leverage RazorBlade
