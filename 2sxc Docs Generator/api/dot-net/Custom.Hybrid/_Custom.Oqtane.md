@@ -16,8 +16,19 @@ All the base classes in this have a version number, so it will become easier to 
 
 This section is still work in progress and should be released in 2sxc 12
 
-## Previous Base Classes
+## Note: Not everything documented
 
-Previously other base classes were recommended. They will continue to work, but we'll only enhance the features on these base classes. To see previous base classes, check out
+Because of technical issues we cannot auto-generate the docs for all the classes here, sorry. 
 
-* #todoc
+### Classes (documented manually)
+
+#### Api12
+
+
+#### Code12
+
+
+#### Razor12
+
+
+#### Razor12<TModel>
