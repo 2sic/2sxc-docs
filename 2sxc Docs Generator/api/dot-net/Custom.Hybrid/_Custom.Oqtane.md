@@ -24,11 +24,16 @@ Because of technical issues we cannot auto-generate the docs for all the classes
 
 #### Api12
 
+The base class for APIs which only need to work in Oqtane. They internally inherit from [Microsoft.AspNetCore.Mvc.Controller](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller) and in addition to all the [DynamicCode](xref:NetCode.DynamicCode.Index) properties also have all the features of that base class. 
 
 #### Code12
 
+The base class for custom code. If you inherit from this class, you'll automatically have all the properties from [DynamicCode](xref:NetCode.DynamicCode.Index).
 
-#### Razor12
+#### [Razor12](xref:Custom.Oqtane.Razor12)
 
+The base class for custom Razor. If you inherit from this class, you'll automatically have all the properties from [DynamicCode](xref:NetCode.DynamicCode.Index).
 
-#### Razor12<TModel>
+#### [Razor12&lt;TModel&gt;](xref:Custom.Oqtane.Razor12`1)
+
+The base class for custom Razor. If you inherit from this class, you'll automatically have all the properties from [DynamicCode](xref:NetCode.DynamicCode.Index).
