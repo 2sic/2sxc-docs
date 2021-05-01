@@ -4,7 +4,9 @@ summary: *content
 title: Custom.Hybrid Namespace
 ---
 
-This contains all the base classes for your own solutions, which will work across platforms (DNN, Oqtane, NopCommerce etc.)
+# Custom.Hybrid Namespace Dnn ☢ & Oqtane 💧
+
+This contains all the base classes for your own solutions, which will work across platforms (DNN ☢, Oqtane 💧, NopCommerce 🔵 etc.)
 
 Basically it's the CMS parts, without being  specific to DNN implementations. 
 

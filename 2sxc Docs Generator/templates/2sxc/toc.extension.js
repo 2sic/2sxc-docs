@@ -28,7 +28,7 @@ exports.postTransform = function (model) {
 
 const prefix1 = 'ToSic.Sxc';
 const prefix2 = 'ToSic.Eav';
-const prefix3 = 'Custom.Hybrid';
+const prefixCustom = 'Custom.';
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ function isNamespace(name) {
   return name && (
     name.indexOf(prefix1) === 0 
     || name.indexOf(prefix2) === 0
-    || name.indexOf(prefix3) === 0
+    || name.indexOf(prefixCustom) === 0
   );
 }
 

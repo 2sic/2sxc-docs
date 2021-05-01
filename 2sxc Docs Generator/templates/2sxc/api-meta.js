@@ -26,6 +26,8 @@ const prioAdam = {
 
 exports.data = {
   "Custom.Hybrid": prioCustom,
+  "Custom.Dnn": prioCustom,
+  "Custom.Oqtane": prioCustom,
   "ToSic.Eav": prioInternal,
   "ToSic.Eav.Apps": prioInternal,
   "ToSic.Eav.Apps.Assets": prioInternal,
