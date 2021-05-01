@@ -15,6 +15,8 @@ DNN has various LookUps built in, which won't be available on Oqtane:
 
 ## `Portal` Tokens
 
+_Note: Dnn ☢ only_
+
 The following tokens are common DNN/DotNetNuke tokens which should work everywhere tokens are in use. Some very common extensions are in the other view Extended Tokens.
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
@@ -88,7 +90,9 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
     </tr>
 </table>
 
-## `Tab` (Page) Tokens
+## `Tab` Tokens
+
+_Note: Dnn ☢ only_
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
@@ -157,6 +161,8 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
 
 ## `Module` Tokens
 
+_Note: Dnn ☢ only_
+
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
         <tr>
@@ -221,7 +227,7 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
 
 ## Other DNN Token Sources
 
-Note that according to the DNN-Source-Code there are a total of 11 sources (status 2015-05-05). The ones not mentioned here are: 
+Note that according to the Dnn source code there are a total of 11 sources per 2015. The ones not mentioned here are: 
 
 * Culture
 * Host

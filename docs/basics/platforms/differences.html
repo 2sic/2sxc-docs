@@ -115,7 +115,7 @@
 <h1 id="platform-differences">Platform Differences</h1>
 
 <p>This is a temporary documentation. We&#39;ll try to collect differences in behavior and APIs of all the supported platforms and how to work around limitations of each. </p>
-<p>Last Update: 2021-04-19 20:00</p>
+<p>Last Update: 2021-04-29</p>
 <h2 id="app--file-management">App / File Management</h2>
 <ol>
 <li>ATM the final location for storing apps hasn&#39;t been decided yet, still WIP</li>
@@ -160,6 +160,14 @@
 </tr>
 <tr>
 <td>Razor</td>
+<td><code>Html.Raw(...)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>all .net</td>
+<td></td>
+</tr>
+<tr>
+<td>Razor</td>
 <td><code>RenderPage(...)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
@@ -173,6 +181,62 @@
 <td style="text-align:center">✅</td>
 <td>.net core</td>
 <td>Polyfill added to DNN in 2sxc 12</td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>Request</code> object</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>.net 4.5</td>
+<td>.net core uses a much longer name <br> <code>ViewContext.HttpContext.Request</code></td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>Request.QueryString</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>.net 4.5</td>
+<td>.net core uses a much longer name <br> <code>ViewContext.HttpContext.Request.Query</code></td>
+</tr>
+<tr>
+<td>Razor</td>
+<td><code>CmsContext.Page.Parameters</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>2sxc 12</td>
+<td>Use this for cross-platform QueryString params</td>
+</tr>
+<tr>
+<td>2sxc API</td>
+<td><code>Link.To(...)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>2sxc 6</td>
+<td>works cross-platform</td>
+</tr>
+<tr>
+<td>Shared Code</td>
+<td><code>CreateInstance(...cs)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td>2sxc 10</td>
+<td>works cross-platform</td>
+</tr>
+<tr>
+<td>Shared Code</td>
+<td><code>CreateInstance(...cshtml)</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>Dnn only</td>
+<td>Doesn&#39;t make sense on .net core, use <code>.cs</code></td>
+</tr>
+<tr>
+<td>Code-Behind</td>
+<td><code>Code.xxx</code></td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">⛔</td>
+<td>2sxc 11</td>
+<td>Doesn&#39;t make sense on .net core, use <code>.cs</code></td>
 </tr>
 </tbody>
 </table>
@@ -194,7 +258,7 @@
 <td><code>Model</code> object</td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Part of .net core</td>
+<td>.net core</td>
 <td>Use <code>DynamicModel</code></td>
 </tr>
 <tr>
@@ -202,7 +266,7 @@
 <td><code>PageData</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
-<td>Part of old .net</td>
+<td>.net 4.5</td>
 <td>Use <code>DynamicModel</code></td>
 </tr>
 <tr>
@@ -210,7 +274,7 @@
 <td><code>DynamicModel</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
-<td>part of 2sxc</td>
+<td>2sxc 12</td>
 <td>Works in old &amp; new</td>
 </tr>
 </tbody>
@@ -258,7 +322,7 @@
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>uncertain</td>
-<td>evaluating best practices</td>
+<td>evaluating recommendation</td>
 </tr>
 </tbody>
 </table>
@@ -285,27 +349,22 @@
 </tr>
 <tr>
 <td>Razor</td>
-<td><code>Koi</code> Service</td>
+<td><code>Koi</code> <code>ICss</code> Service</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
-<td>core functionality</td>
-<td>New in v12 (Koi 2) Unclear if the full functionality will be re-implemented, as it had some design flaws</td>
+<td>v12</td>
+<td>New Koi 2. Unclear if the full functionality will be re-implemented, as it had some design flaws</td>
 </tr>
 </tbody>
 </table>
+<p>Koi supports the CSS Information API, but not yet the class-generating API. We&#39;re not sure if we will implement this. </p>
 <h3 id="wip">WIP</h3>
-<ol>
-<li><code>Link.To(...)</code> isn&#39;t implemented yet, and it could have some issues because Oqtane always has a base-ref html-header tag</li>
-</ol>
+<p>...</p>
 <h3 id="features-implemented--done">Features implemented / done</h3>
 <ol>
 <li>Razor Base class - you should use <code>ToSic.Custom.Razor12</code> as a base class</li>
-<li>Razor Code-Behind - probably done, should verify</li>
 </ol>
 <h3 id="partially-implemented-features">Partially Implemented features</h3>
-<ol>
-<li>Koi supports the CSS Information API, but not yet the class-generating API. We&#39;re not sure if we will implement this. </li>
-</ol>
 <h3 id="not-yet-implemented-features">Not yet Implemented features</h3>
 <ol>
 <li>CustomizeData / CustomizeSearch are not implemented yet, we&#39;re not yet sure how we want to implement this</li>
@@ -313,7 +372,6 @@
 </ol>
 <h2 id="webapis">WebAPIs</h2>
 <ol>
-<li>A new base class has been defined but not fully tested; </li>
 <li>We should probably create a list of viable base classes and explain the differences</li>
 </ol>
 <h2 id="rest-apis">REST APIs</h2>
