@@ -7,7 +7,7 @@ uid: Basics.LookUp.User
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-DNN has various LookUps built in, which won't be available on Oqtane:
+Dnn has various LookUps built in, which won't be available on Oqtane:
 
 1. `User` - current user information
 1. `Membership` - ASP.net user information
@@ -101,9 +101,9 @@ DNN has various LookUps built in, which won't be available on Oqtane:
 </table>
 
 
-## Other DNN Token Sources
+## Other Dnn Token Sources
 
-Note that according to the DNN-Source-Code there are a total of 11 sources (status 2015-05-05). The ones not mentioned here but are relevant to the User are: 
+Note that according to the Dnn-Source-Code there are a total of 11 sources (status 2015-05-05). The ones not mentioned here but are relevant to the User are: 
 
 * Culture
 

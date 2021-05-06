@@ -32,14 +32,14 @@ All Hyperlink-Field Types have the following settings:
   
   1. use the syntax foldername - without "/" in front to specify a subfolder of the portal-root. Examples are "Apps" or "Gallery" or "Employees/Photos"
   2. you can also use subfolders - that would be "Employees/Photos"
-  3. always remember that this folder must already exist, and DNN must know that it is visible (readable) by the editing user. There are cases where the security settings were not set correctly in dnn - then the file picker won't show anything.
+  3. always remember that this folder must already exist, and Dnn must know that it is visible (readable) by the editing user. There are cases where the security settings were not set correctly in dnn - then the file picker won't show anything.
 
 * **Default Dialog** - none, ADAM, page picker, image manager or file manager
 * **Show Page Picker** - show page picker in the drop-down 
 * **Show Image Manager** - show image manager in the drop-down 
 * **Show File Manager** - show file manager in the drop-down 
 * **Show Adam** - show the ADAM (automatic digital asset manager) in the drop-down menu.
-* **Buttons** - will let you specify which buttons are visible directly. The default is "adam,more" but you could also do "adam,page,more" or just "page". File / image are currently not supported, because as of now, DNN doesn't have a good image/file browser so we discourage its use. 
+* **Buttons** - will let you specify which buttons are visible directly. The default is "adam,more" but you could also do "adam,page,more" or just "page". File / image are currently not supported, because as of now, Dnn doesn't have a good image/file browser so we discourage its use. 
 
 
 ## Automatic Conversions of file and page references
@@ -47,10 +47,10 @@ All Hyperlink-Field Types have the following settings:
 The hyperlink data internally can contain values like:
 1. `http://whatever/whatever` - will not be converted
 1. `/some-relative-url` - will not be converted
-1. `page:42` - will usually be converted to the real url of the page in DNN
+1. `page:42` - will usually be converted to the real url of the page in Dnn
 1. `page:42?something=value` - this will also be converted, but keeping the parameters
 1. `page:42#something=value` - this will also be converted, but keeping the parameters
-1. `file:2750` - will usually be converted to the real url of the file in DNN
+1. `file:2750` - will usually be converted to the real url of the file in Dnn
 1. `file:2750?w=200` - this will also be converted, but keeping the parameters (like for thumbnails)
 1. `file:2750#page=2` - this will also be converted, but keeping the parameters (like for pdf-page-links)
 

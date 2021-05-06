@@ -16,7 +16,7 @@ A lot in 2sxc is fully automatic. But sometimes you want to customize how the co
 
 ## Live Examples
 
-The [DNN Tutorials have a live demo of toolbar customization](https://2sxc.org/dnn-tutorials/en/razor/ui100/page). Head over there while reading these docs to see all this in action. 
+The [Dnn Tutorials have a live demo of toolbar customization](https://2sxc.org/dnn-tutorials/en/razor/ui100/page). Head over there while reading these docs to see all this in action. 
 
 ## Overview - What You can Customize
 

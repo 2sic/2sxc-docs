@@ -12,9 +12,9 @@ QuickE (pronounced _quick-e_) is the quick-edit feature inside 2sxc to quickly a
 
 In the current version, it allows you to do the following in normal view-mode:
 
-1. add a content or app module on any position in a DNN panes
-1. move / delete any DNN module using a copy-paste concept
-1. send any DNN module to an empty pane (which couldn't do paste, as the target is invisible)
+1. add a content or app module on any position in a Dnn panes
+1. move / delete any Dnn module using a copy-paste concept
+1. send any Dnn module to an empty pane (which couldn't do paste, as the target is invisible)
 1. add a content or app content-block to any inner-content area
 1. move / delete any content-block inside an inner-content area
 
@@ -30,7 +30,7 @@ We also recommend to include the JS in the skin by default, so that quickE is al
 <Edit:QuickEdit runat="server" />
 ```
 
-The above lines first tell .net that this control QuickEdit exists, and then adds it to the page using the `<Edit:...>` tag. Note that this tag won't create any HTML, it will just tell DNN that it must load the relevant JavaScripts when a user is logged on.
+The above lines first tell .net that this control QuickEdit exists, and then adds it to the page using the `<Edit:...>` tag. Note that this tag won't create any HTML, it will just tell Dnn that it must load the relevant JavaScripts when a user is logged on.
 Once it's included, it will just work automatically.
 
 ## Auto-Disabled Module-Quick-Edit on Details Pages

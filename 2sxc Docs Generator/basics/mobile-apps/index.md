@@ -11,7 +11,7 @@ uid: Basics.MobileApps.Index
 
 ## Native Mobile Apps
 
-If you have a Native Mobile App for Android or iOS and need to get either 2sxc Data or DNN Data to that App, you should check out:
+If you have a Native Mobile App for Android or iOS and need to get either 2sxc Data or Dnn Data to that App, you should check out:
 
 1. [Headless Web APIs](xref:WebApi.Headless.Index)
 1. [Custom WebAPIs](xref:WebApi.Custom.Index)

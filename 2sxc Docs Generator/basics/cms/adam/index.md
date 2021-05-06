@@ -32,7 +32,7 @@ ADAM is a standard part of 2sxc, it's automatically in use everywhere. Any link/
 
 ## Security Concerns
 
-ADAM uses the DNN file-numbering system by default, and keeps a reference to `file:27` in the field linking such a file. In rare situations you may have many untrusted editors, where you want to prevent them asking the API for `file:1`, `file:2`, `file:3` etc. There is an advanced switch to only allow resolving the file number if it's really part of the current item. Contact 2sxc for support on this. 
+ADAM uses the Dnn file-numbering system by default, and keeps a reference to `file:27` in the field linking such a file. In rare situations you may have many untrusted editors, where you want to prevent them asking the API for `file:1`, `file:2`, `file:3` etc. There is an advanced switch to only allow resolving the file number if it's really part of the current item. Contact 2sxc for support on this. 
 
 ## Also Read
 

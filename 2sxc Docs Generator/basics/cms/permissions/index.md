@@ -42,9 +42,9 @@ Permissions consist of the following parts:
 
 For a permission to apply, you must specify for whom this is. To do this, you can choose various requirements:
 
-1. DNN Permissions: in this case, you can specify _if the user has view permissions, this applies_
+1. Dnn Permissions: in this case, you can specify _if the user has view permissions, this applies_
 1. User Identity: in this case you can specifiy a user GUID _new in 9.30, requires the [feature to be enabled](xref:Basics.Cms.Features.Index)_
-1. Group ID(s): if a user is in any of these DNN groups, the rule applies _new in 9.30, requires the [feature to be enabled](xref:Basics.Cms.Features.Index)_
+1. Group ID(s): if a user is in any of these Dnn groups, the rule applies _new in 9.30, requires the [feature to be enabled](xref:Basics.Cms.Features.Index)_
 
 ### Understanding Grants
 

@@ -27,7 +27,7 @@ The **URL Schema** describes how the paths look to access WebAPIs. When using [$
 ## Note about Platform and Version Differences
 
 The exact schema for the url varies depending on the platform you're using. 
-So DNN 7 is different from DNN 9, and Oqtane is different again.
+So Dnn 7 is different from Dnn 9, and Oqtane is different again.
 
 Also older versions of 2sxc had URLs which still work today but are not recommended any more, 
 because they were not well structured. 
@@ -46,7 +46,7 @@ Every 2sxc REST URL is built with the following parts:
 
 `[root]/app/[app-identity]/[app-part]/[specifics]`
 
-1. The `root` is determined by DNN and changes a bit by DNN version, portal, and language configuration. [more](#part-1-the-root-path)
+1. The `root` is determined by Dnn and changes a bit by Dnn version, portal, and language configuration. [more](#part-1-the-root-path)
 1. The `app-identity` says what app we're addressing. It's often `auto` for auto-detection, but when auto-detection isn't available, it's the app-folder name. [more](#part-2-the-app-identity)
 1. the `app-part` determines if we're accessing [content](#part-3a-app-part-content), [query](#part-3b-app-part-query) or [api](#part-3c-app-part-custom-c-web-api) of the app.
 1. The `specifics` is a path part describing what exactly what we're accessing and varies depending on the API.
@@ -54,19 +54,19 @@ Every 2sxc REST URL is built with the following parts:
 
 ## Part 1: The Root Path
 
-### The Root in DNN 9+
+### The Root in Dnn 9+
 
-In DNN 9 the root was shortened to: `[portal-root-with-language]/api/2sxc/...`
+In Dnn 9 the root was shortened to: `[portal-root-with-language]/api/2sxc/...`
 
 > [!NOTE]
-> The old root from DNN 7 and 8 still work in DNN 9 for compatibility. 
+> The old root from Dnn 7 and 8 still work in Dnn 9 for compatibility. 
 
-### The Root in DNN 7 and 8
+### The Root in Dnn 7 and 8
 
-DNN 7 & 8: `[portal-root-with-language]/desktopmodules/2sxc/api/...`
+Dnn 7 & 8: `[portal-root-with-language]/desktopmodules/2sxc/api/...`
 
 > [!WARNING]
-> An easy thing to overlook is that in DNN 7 and 8 it was `2sxc/api` but in DNN 9 it's `api/2sxc`
+> An easy thing to overlook is that in Dnn 7 and 8 it was `2sxc/api` but in Dnn 9 it's `api/2sxc`
 
 ### The Root in Oqtane
 
@@ -79,11 +79,11 @@ This is still WIP, but most likely it's `[domain]/[site-id-number]/api/2sxc/...`
 The App-identity can be either the word `auto` to use auto-detection, or the app-folder-name if you can't use auto-detection. 
 
 > [!TIP]
-> Whenever you're working in DNN and accessing the endpoint from a module that contains the same App, then you should use auto-detection. 
+> Whenever you're working in Dnn and accessing the endpoint from a module that contains the same App, then you should use auto-detection. 
 
 > [!WARNING]
-> Auto-Detection relies on DNN mechanisms to detect the **Context** (usually sending the `PageId` and `ModuleId` in HTTP-headers). 
-> 2sxc uses these headers to figure out what App you're using. If something fails in auto-detection, you're probably not using the normal DNN conventions for making REST calls.
+> Auto-Detection relies on Dnn mechanisms to detect the **Context** (usually sending the `PageId` and `ModuleId` in HTTP-headers). 
+> 2sxc uses these headers to figure out what App you're using. If something fails in auto-detection, you're probably not using the normal Dnn conventions for making REST calls.
 
 > [!WARNING]
 > When calling an endpoint from another website or a mobile App, you cannot use `auto` but must specify the app-folder name.

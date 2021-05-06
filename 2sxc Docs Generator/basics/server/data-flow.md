@@ -38,14 +38,14 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 
 ## Overall Flow When Creating Html
 
-Imagine that your custom Razor template in a DNN module is initialized. Here's what happens:
+Imagine that your custom Razor template in a Dnn module is initialized. Here's what happens:
 
 ### 1. Preparation
 
-2sxc starts with the ModuleId as it's inside a DNN Module. It will then create a [Block](xref:ToSic.Sxc.Blocks.IBlock) for this InstanceId (which is the ModuleId).
+2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a [Block](xref:ToSic.Sxc.Blocks.IBlock) for this InstanceId (which is the ModuleId).
 
 1. The Block internally will create a [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) [DataSource](xref:NetCode.DataSources.Index), pass in the InstanceId and then wait for data to pour in.
-1. The [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) knows about DNN, and will use the InstanceId to get the ModuleSettings in DNN. This contains only 2 pieces of information: the `AppId` which it is visualizing, and a `ContentBlockId` which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included). 
+1. The [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the `AppId` which it is visualizing, and a `ContentBlockId` which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included). 
 1. The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.  
     1. When the configuration is found, the CmsBlock then knows what [View](xref:ToSic.Sxc.Blocks.IView) will be used. 
     1. The CmsBlock itself is a [DataSource](xref:NetCode.DataSources.Index) and is now configured to deliver the data which the view expects. 

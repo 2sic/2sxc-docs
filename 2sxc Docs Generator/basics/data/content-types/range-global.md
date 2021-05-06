@@ -64,7 +64,7 @@ Assume you really want to do this, here's how:
 1. Create the Content-Type in the normal way
 1. Export the Content-Type Definition as JSON
 1. Store it in your global custom folder (you may need to create these folders)
-    1. In DNN: `[system-root]/DesktopModules/ToSIC_SexyContent/.data-custom/contenttypes`
+    1. In Dnn: `[system-root]/DesktopModules/ToSIC_SexyContent/.data-custom/contenttypes`
     1. In Oqtane: TODO
 1. Restart the system
 

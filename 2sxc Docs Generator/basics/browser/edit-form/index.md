@@ -1,7 +1,7 @@
 ---
 uid: Basics.Browser.EditForm.Index
 ---
-# Edit Content or Data in DNN / 2sxc
+# Edit Content or Data in Dnn / 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .browser-edit-ui { visibility: visible; } </style>

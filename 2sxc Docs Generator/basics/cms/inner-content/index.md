@@ -22,8 +22,8 @@ A template can have multiple sets of inner content. For example:
 
 To achieve this flexibility, the _Inner Content_ items are linked not only to a _Content Item_ but to a specific _field_ in that item. So each set of related items is stored in one field, and by using multiple fields you can have multiple sets of items. This allows the template to handle each set separately. 
 
-## Standalone Inner-Content - like a DNN Pane just for this item
-A common use case is to provide the editor with an area into which he/she can add as many content-blocks/apps as they want to. This feels like a DNN-pane - the editor just adds apps as he needs them. 
+## Standalone Inner-Content - like a Dnn Pane just for this item
+A common use case is to provide the editor with an area into which he/she can add as many content-blocks/apps as they want to. This feels like a Dnn-pane - the editor just adds apps as he needs them. 
 
 This mode is common for mashup-apps and is mostly used on sophisticated details-pages with a clear area containing additional functionality. It's also common in
 layout-changing apps like the [accordion app](xref:App.Accordion).

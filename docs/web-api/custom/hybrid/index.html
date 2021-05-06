@@ -129,14 +129,14 @@
 <p>If you follow these three rules you should be good to go:</p>
 <ol>
 <li>Inherit from <code>Custom.Hybrid.Api12</code></li>
-<li>Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in DNN will also run in Oqtane)</li>
+<li>Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in Dnn will also run in Oqtane)</li>
 <li>Use .net standard 2.0 APIs and avoid using <code>System.Web</code></li>
 <li>Where necessary, use preprocessor directives as explained below</li>
 </ol>
 <h2 id="the-preprocessor-directives">The Preprocessor Directives</h2>
 <p>C# has special <code>#if</code> <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives">preprocessor</a> statements which are evaluated during compilation. 
 Using this you can define which code should be used in Dnn and Oqtane. Here&#39;s an example:</p>
-<pre><code class="lang-c#">// Add namespaces to enable security in Oqtane &amp; DNN despite the differences
+<pre><code class="lang-c#">// Add namespaces to enable security in Oqtane &amp; Dnn despite the differences
 #if OQTANE
 using Microsoft.AspNetCore.Authorization; // .net core [AllowAnonymous] &amp; [Authorize]
 using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] etc.
@@ -150,8 +150,8 @@ using DotNetNuke.Security;  // SecurityAccessLevel.Xyz
 // All commands can be accessed without security checks
 public class HybridController : ToSic.Custom.Api12
 {
-  [AllowAnonymous]  // Works in Oqtane and DNN
-  [HttpGet]         // Works in Oqtane and DNN
+  [AllowAnonymous]  // Works in Oqtane and Dnn
+  [HttpGet]         // Works in Oqtane and Dnn
   public string Hello()
   {
     return &quot;Hello from the basic controller in /api&quot;;
@@ -206,7 +206,7 @@ public class HybridController : ToSic.Custom.Api12
 <li><code>#if !OQTANE ... #endif</code></li>
 <li><code>#if !OQTANE ... #else ... #endif</code></li>
 </ul>
-<p>You can&#39;t use <code>#if DNN ... #endif</code> because of limitations in the dynamic C# compiler of Dnn. Just use <code>#if !OQTANE ... #endif</code>. </p>
+<p>You can&#39;t use <code>#if Dnn ... #endif</code> because of limitations in the dynamic C# compiler of Dnn. Just use <code>#if !OQTANE ... #endif</code>. </p>
 <h2 id="different-c-and-net-frameworks">Different C# and .net Frameworks</h2>
 <table>
 <thead>
@@ -238,11 +238,11 @@ public class HybridController : ToSic.Custom.Api12
 </tr>
 </tbody>
 </table>
-<p>Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in DNN 4.7.2, so we&#39;ll restrict our work to support <em>.net standard 1.6</em>. This means our examples are more limited than what you will be doing. </p>
+<p>Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in Dnn 4.7.2, so we&#39;ll restrict our work to support <em>.net standard 1.6</em>. This means our examples are more limited than what you will be doing. </p>
 <h2 id="differences-in-the-platforms">Differences in the Platforms</h2>
 <p>If you are creating hybrid controllers, we&#39;ll assume that you usually don&#39;t need to access properties of Dnn or Oqtane. If you do, you&#39;ll have to use the standard mechanisms provided by these. </p>
 <ul>
-<li>In DNN - use global objects like <code>PortalSettings.Current</code></li>
+<li>In Dnn - use global objects like <code>PortalSettings.Current</code></li>
 <li>In Oqtane use Dependency Injection</li>
 <li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if OQTANE ... #endif</code> and <code>#if !OQTANE ... #endif</code> blocks</li>
 </ul>
@@ -379,7 +379,7 @@ Multiple: <code>[Authorize(Policy = PolicyNames.ViewPage, PolicyNames.ViewFolder
 <h2 id="api-result-json-output">API Result JSON Output</h2>
 <p>Standard Implementations:</p>
 <ul>
-<li>In DNN WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. </li>
+<li>In Dnn WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. </li>
 <li>In Oqtane (.net core 5) the default is more sophisticated. The methods return objects or values. In advanced cases they will return an <code>ActionResult</code> or <code>ContentResult</code>. The default encoding is as follows:<ul>
 <li>Simple values like strings are returned just as-is</li>
 <li>Complex objects are serialized - by default as json</li>
@@ -425,7 +425,7 @@ Multiple: <code>[Authorize(Policy = PolicyNames.ViewPage, PolicyNames.ViewFolder
 </blockquote>
 <p>If you need to return a simple string and must ensure it&#39;s JSON on both platforms, add this attribute to your class or method:</p>
 <pre><code class="lang-c#">[Produces(&quot;application/json&quot;)]
-</code></pre><p>This is in the namespace <code>using Microsoft.AspNetCore.Mvc</code> which you usually already have. Since DNN won&#39;t know it, you will probably wrap it in an <code>#if OQTANE</code> like this:</p>
+</code></pre><p>This is in the namespace <code>using Microsoft.AspNetCore.Mvc</code> which you usually already have. Since Dnn won&#39;t know it, you will probably wrap it in an <code>#if OQTANE</code> like this:</p>
 <pre><code class="lang-c#">#if OQTANE
 [Produces(&quot;application/json&quot;)]
 #endif

@@ -4,7 +4,7 @@ uid: NetCode.Razor.CustomizeSearch
 
 # Event _CustomizeSearch()_ on the Razor Page (Dnn ☢ only)
 
-This event is called by the view-engine _after_ calling [CustomizeData](xref:NetCode.Razor.CustomizeData) and before passing the `Data` object to the DNN Search Indexer. 
+This event is called by the view-engine _after_ calling [CustomizeData](xref:NetCode.Razor.CustomizeData) and before passing the `Data` object to the Dnn Search Indexer. 
 
 You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page. 
 
@@ -65,8 +65,8 @@ In general everything will work automatically. This is what happens:
     1. Multi-Language is handled correctly, so the English index will contain the English content, etc.
 1. 2sxc will then call a CustomizeSearch() event, so your code could provide changes.
     1. A common scenario is to say that each entity (say each question) has a different URL (say a details-page).
-    1. So even though all entities belong to the module (and DNN only knows of this one module), the module can say that each entity has an own details page.
-1. One this is done, the SearchItems are converted to official SearchDocument-objects and handed over to DNN
+    1. So even though all entities belong to the module (and Dnn only knows of this one module), the module can say that each entity has an own details page.
+1. One this is done, the SearchItems are converted to official SearchDocument-objects and handed over to Dnn
 
 
 ## Read also
@@ -82,4 +82,4 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 
 ## History
 1. Introduced in 2sxc 6.2
-2. Added support for newer DNN versions at a later time - not sure when
+2. Added support for newer Dnn versions at a later time - not sure when

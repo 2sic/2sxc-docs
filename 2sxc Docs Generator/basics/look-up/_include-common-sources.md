@@ -10,13 +10,13 @@
   1. [QueryString](xref:Basics.LookUp.Web#querystring-tokens) - url parameters ☢
   1. [Form](xref:Basics.LookUp.Web#form-tokens) - form post parameters ☢
   1. [DateTime](xref:Basics.LookUp.DateTime) - current date/time information ☢💧
-* **CMS / DNN Sources**
+* **CMS / Dnn Sources**
   1. `[Site]`
   1. `[Page]`
   1. `[Module]`
-  1. [Portal](xref:Basics.LookUp.Dnn#portal-tokens) - the current DNN portal
-  1. [Tab](xref:Basics.LookUp.Dnn#tab-tokens) - the current DNN page
-  1. [Module](xref:Basics.LookUp.Dnn#module-tokens) - the current DNN module
+  1. [Portal](xref:Basics.LookUp.Dnn#portal-tokens) - the current Dnn portal
+  1. [Tab](xref:Basics.LookUp.Dnn#tab-tokens) - the current Dnn page
+  1. [Module](xref:Basics.LookUp.Dnn#module-tokens) - the current Dnn module
 * **User Information Sources**
   1. [User](xref:Basics.LookUp.User#user-tokens)
   1. [Membership](xref:Basics.LookUp.User#membership-tokens)

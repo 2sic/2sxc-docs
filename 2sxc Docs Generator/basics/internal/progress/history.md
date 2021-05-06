@@ -44,7 +44,7 @@ Mostly smaller bugfixes
 * [x] Drop all dependencies to Telerik - file browser using ADAM
 
 ### Version 9.5
-* [x] [Support for DNN/Evoq Page Publishing](xref:Basics.Cms.PagePublishing.Index)
+* [x] [Support for Dnn/Evoq Page Publishing](xref:Basics.Cms.PagePublishing.Index)
 
 ### Version 9.6
 * [x] [Extensive logging system to watch all internals](https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging)
@@ -198,7 +198,7 @@ Didn't have time to document this yet, sorry. If you need to know, best check th
 
 * Performance-Enhance App DataSource to delay building objects until needed [#1991](https://github.com/2sic/2sxc/issues/1991)
 * Performance-Enhance internal Token Lookup [#1998](https://github.com/2sic/2sxc/issues/1998)
-* Enhanced DNN Search Index logging [#1997](https://github.com/2sic/2sxc/issues/1997)
+* Enhanced Dnn Search Index logging [#1997](https://github.com/2sic/2sxc/issues/1997)
 * Corrected help-links on all data sources [#1994](https://github.com/2sic/2sxc/issues/1994)
 
 #### Bugfixes
@@ -207,7 +207,7 @@ Didn't have time to document this yet, sorry. If you need to know, best check th
 * QueryRun DataSource doesn't show statitics on all streams [#1989](https://github.com/2sic/2sxc/issues/1989)
 * Modified date and Owner information were missing on json stored entities [#2005](https://github.com/2sic/2sxc/issues/2005) / [#2006](https://github.com/2sic/2sxc/issues/2006)
 * Fixed bug in JS API for non-2sxc endpoint resolution [#2000](https://github.com/2sic/2sxc/issues/2000)
-* Queries didn't resolve DNN tokens when accessed in the Search Index [#1999](https://github.com/2sic/2sxc/issues/1999)
+* Queries didn't resolve Dnn tokens when accessed in the Search Index [#1999](https://github.com/2sic/2sxc/issues/1999)
 
 
 

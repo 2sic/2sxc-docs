@@ -9,18 +9,18 @@ uid: JsCode.Angular.IntegrateAngularDevelopment
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
-This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use DNN/2sxc Endpoints at the same time. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).
+This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use Dnn/2sxc Endpoints at the same time. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).
 
 ## Goals of the Runtime Integration
 
 1. The Angular App can be developed using best-practices incl. partial loading and hashed files
-1. We can see the dev-build in DNN in real-time
-1. The dev-build can access DNN endpoints as if it were running in production
-1. Hot-reload works, so saving files automatically reloads the DNN page
+1. We can see the dev-build in Dnn in real-time
+1. The dev-build can access Dnn endpoints as if it were running in production
+1. Hot-reload works, so saving files automatically reloads the Dnn page
 
 ## Implementation
 
-The Template App is installed in DNN and we have the full copy of it on our local dev environment. Dev-server will run on `localhost:4200`. The way it's integrated in the template app is that the main file `_AngularApp.cshtml` has some code like this:
+The Template App is installed in Dnn and we have the full copy of it on our local dev environment. Dev-server will run on `localhost:4200`. The way it's integrated in the template app is that the main file `_AngularApp.cshtml` has some code like this:
 
 ```razor
 @inherits ToSic.Sxc.Dnn.RazorComponent

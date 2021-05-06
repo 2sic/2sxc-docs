@@ -40,7 +40,7 @@ The following folders have no technical relevance, but we recommend this naming 
 
 ## Platform Differences Dnn ☢ & Oqtane 💧
 
-In DNN ☢ the App-folder is located in 
+In Dnn ☢ the App-folder is located in 
 
 `[Website-Root]\Portals\[site-id]\2sxc\[App-Folder-Name]`
 

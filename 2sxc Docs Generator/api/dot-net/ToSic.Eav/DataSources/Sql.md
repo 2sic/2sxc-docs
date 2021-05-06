@@ -73,7 +73,7 @@ An example code
 ```razor
 @{
   var sql = CreateSource<ToSic.Eav.DataSources.Sql>();
-  sql.ConnectionString = "SiteSqlServer"; // use DNN
+  sql.ConnectionString = "SiteSqlServer"; // use Dnn
   sql.SelectCommand = "Select ... From"; // your sql here
 }
 @foreach(var post in AsDynamic(sql["Default"]))

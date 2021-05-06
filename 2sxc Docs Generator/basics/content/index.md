@@ -43,7 +43,7 @@ The 2sxc/EAV CMS ensures that the editor experiences this as such, and doesn't f
 
 2sxc keeps track of the pieces that belong together as [Content Blocks](xref:Basics.Cms.ContentBlocks.Index). When Inner-Content is needed (placing content inside content) it uses [Inner Content](xref:Basics.Cms.ContentBlocks.InnerContent) to keep track of that information. 
 
-You may also want to know how [Content Blocks fit into DNN Modules](xref:Basics.Cms.ContentBlocks.Dnn).
+You may also want to know how [Content Blocks fit into Dnn Modules](xref:Basics.Cms.ContentBlocks.Dnn).
 
 ---
 

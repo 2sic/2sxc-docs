@@ -92,7 +92,7 @@ First and foremost, these API controllers let you run your code as you wish. But
 ### Fast Development without ever Restarting
 
 1. 2sxc Web API Controllers are stored in your app as pure source code, and you can edit them at runtime. 
-1. They will be compiled on the fly and don't require DNN to restart. 
+1. They will be compiled on the fly and don't require Dnn to restart. 
 1. The built in source-code editor in 2sxc lets you make simple changes through your browser.
 1. And if you want more power then just open it in Visual Studio or Visual Studio Code.
 

@@ -34,9 +34,9 @@ This is located in: `/desktopmodules/ToSIC_SexyContent/.data/contenttypes/`
 This is located in: `/desktopmodules/ToSIC_SexyContent/.data-custom/contenttypes/`
 
 
-### Storage of Content-Types which are Part of a DNN-Extension
+### Storage of Content-Types which are Part of a Dnn-Extension
 
-DNN Extensions can include content-types, for example to configure a DataSource which is part of that DNN Extension. 
+Dnn Extensions can include content-types, for example to configure a DataSource which is part of that Dnn Extension. 
 
 These files can be anywhere in the system, but the DLL will have to tell 2sxc to load them.
 

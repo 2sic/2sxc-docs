@@ -30,9 +30,9 @@ So each _Content Block_ has:
 
 
 
-## Content Blocks in a CMS like DNN
+## Content Blocks in a CMS like Dnn
 
-When you see 2sxc data in DNN, that's because a module was added to the page pointing to a _Content Block_. If you want to know more about that, read [](xref:Basics.Cms.ContentBlocks.Dnn).
+When you see 2sxc data in Dnn, that's because a module was added to the page pointing to a _Content Block_. If you want to know more about that, read [](xref:Basics.Cms.ContentBlocks.Dnn).
 
 ## Manually Managing this Data
 
@@ -47,9 +47,9 @@ Note: you shoudn't usually do this - but sometimes you have to. Check out this s
 ## FAQ
 
 1. If a page or module is deleted, does it also delete the _Content Block_?  
-No. Note that if a page or module is deleted, it goes into the DNN trash, so it could always be restored again. 
+No. Note that if a page or module is deleted, it goes into the Dnn trash, so it could always be restored again. 
 1. If a page or module is deleted from the trash, does it also delete the _Content Block_?  
-No. DNN does not inform modules about delete actions, so we can't do clean-up.
+No. Dnn does not inform modules about delete actions, so we can't do clean-up.
 1. Are _Content Blocks_ which don't appear on a page orphaned and can I delete them?  
 Maybe. Since they could be used in other apps (see [](xref:Basics.Content.Index)) as _Inner Content_, there is no quick way to tell if it's being used elsewhere.
 1. Can a _Content Block_ be used on multiple modules / pages?  

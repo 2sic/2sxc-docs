@@ -41,7 +41,7 @@ Once you've done this, the [VisualQuery Designer](xref:Basics.Query.VisualQuery.
 
 If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical. 
 
-In this case you'll want to export the Content-Type as a JSON and place it in the `.data-custom/contenttypes` folder for [Global Content-Types](xref:Basics.Data.ContentTypes.Global). If you now restart your DNN, then this new Content-Type is picked up and available in _all_ Apps on this Dnn. 
+In this case you'll want to export the Content-Type as a JSON and place it in the `.data-custom/contenttypes` folder for [Global Content-Types](xref:Basics.Data.ContentTypes.Global). If you now restart your Dnn, then this new Content-Type is picked up and available in _all_ Apps on this Dnn. 
 
 
 ## Redistribution Scenario
@@ -50,7 +50,7 @@ The above example works well if you're fine with installing the JSON Content-Typ
 
 For more advanced redistribution, you'll want to include the JSON file in your Dnn Installation package. But in that case it's not in `.data-custom` so 2sxc/EAV can't pick it up. 
 
-To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of DNN. All you have to do is create a `public` class which inherits `ToSic.Eav.Repositories.FolderBasedRepository`. On boot all these classes will be found and asked for other folders which have such data. Here's an example:
+To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of Dnn. All you have to do is create a `public` class which inherits `ToSic.Eav.Repositories.FolderBasedRepository`. On boot all these classes will be found and asked for other folders which have such data. Here's an example:
 
 ```c#
 using System.Collections.Generic;

@@ -6,7 +6,7 @@ uid: JsCode.AngularJs.Index
 > [!WARNING]
 > This is old, obsolete information. AngularJS is really dead. You should use [Angular](xref:JsCode.Angular.Index)
 
-2sxc contains a special helper called *2sxc4ng* which takes care of starting your app inside DNN and providing you with toolbars and data from 2sxc.
+2sxc contains a special helper called *2sxc4ng* which takes care of starting your app inside Dnn and providing you with toolbars and data from 2sxc.
 
 ## How to use
 

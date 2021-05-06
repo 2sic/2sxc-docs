@@ -2,12 +2,12 @@
 uid: Basics.Cms.PagePublishing.Index
 ---
 
-# DNN/Evoq Page Versioning / Publishing and Workflow
+# Dnn/Evoq Page Versioning / Publishing and Workflow
 
-This page explains how a DNN / Evoq does page versioning and workflow, and how to leverage this with 2sxc. 
+This page explains how a Dnn / Evoq does page versioning and workflow, and how to leverage this with 2sxc. 
 
-## Background: DNN / Evoq Page/Module Versioning
-DNN / Evoq had a few different ways of doing versioning, but since DNN 7.4.2 it basically uses a model which works as follows:
+## Background: Dnn / Evoq Page/Module Versioning
+Dnn / Evoq had a few different ways of doing versioning, but since Dnn 7.4.2 it basically uses a model which works as follows:
 
 Each page has a live version number (for this demo we'll say version P27 - for page 27). On this page, various modules exist, each having their own version number. Let's say we have a gallery-module which is currently on version 6 (MG6) and a module with a form in version 12 (MF12). So the page information currently has:
 
@@ -17,7 +17,7 @@ Each page has a live version number (for this demo we'll say version P27 - for p
 
 ### Basic Example with Adding Module
 
-If a new module with a form is added in between, DNN will do the following
+If a new module with a form is added in between, Dnn will do the following
 
 * P28 _draft_ (P27 is still _live_)
   * Mod 1: MG6 _live_ (same version on _live_ and _draft_)
@@ -26,15 +26,15 @@ If a new module with a form is added in between, DNN will do the following
 
 As further changes to modules additions / removals / reordering happen, this happens on the P28 version only. So even if we delete or rename a module, the live version will not show this. 
 
-So DNN mechanims incl. moving/renaming of modules is a DNN/Evoq responsiblity, and is versioned by DNN/Evoq. We'll talk about the internal content of a module further down. 
+So Dnn mechanims incl. moving/renaming of modules is a Dnn/Evoq responsiblity, and is versioned by Dnn/Evoq. We'll talk about the internal content of a module further down. 
 
 ### Publishing a Page
-Basically when an editor publishes a page, DNN will do the following:
+Basically when an editor publishes a page, Dnn will do the following:
 
 1. set P28 to the published page
 1. tell each module to publish in that version (in case the module support inner versioning - read on...)
 
-### DNN / Evoq Workflows
+### Dnn / Evoq Workflows
 Because these topics are almost undocumented - and exist in different implementations, they are confusing. You need to know the following about workflows:
 
 1. Workflows apply to the page only, so pages need to know if they have a workflow and which one
@@ -42,7 +42,7 @@ Because these topics are almost undocumented - and exist in different implementa
 3. ...because Modules only get notified when the workflow reaches a "publish" state
 
 ## Background: Module Inside/Inner Versioning
-Modules have their own content which may or may not be versioned. _99% of all modules don't version their content_ and have no history. And 99.9% _don't support DNN/Evoq page versions & publishing_. 
+Modules have their own content which may or may not be versioned. _99% of all modules don't version their content_ and have no history. And 99.9% _don't support Dnn/Evoq page versions & publishing_. 
 
 So IF a module doesn't know about these mechanisms, then changes _inside_ that module will not be versioned and they will be live immediately as they are applied. But let's assume our modules do support this, and let's say the gallery with module-info in V6 (it was moved a few times, so it has 6 versions) still has the initial V1 content, which we'll call MGi1 (Module Gallery _inside_ V1).
 
@@ -56,7 +56,7 @@ So let's look at the **versioning tree** as it really is
 Now let's simulate a change...
 
 ### Inner Content Changes
-Let's say the editor makes a small change to the Form-module. This will notify DNN of a change. As this happens, it must tell DNN that it has a new version - like this, so DNN will also place the page in a new version (for later publishing):
+Let's say the editor makes a small change to the Form-module. This will notify Dnn of a change. As this happens, it must tell Dnn that it has a new version - like this, so Dnn will also place the page in a new version (for later publishing):
 
 * P28 _draft_
   * Mod 1: MG6 _live_ with MGi1 _live_
@@ -65,26 +65,26 @@ Let's say the editor makes a small change to the Form-module. This will notify D
 Note that if the form module makes more changes, it can choose to report this or not, since basically the newest version is a draft already, on a draft-page. 
 
 ### Inner Content Publishing
-Now once the user decides to publish this page, each module (incl. the Forms-Module) will be notified to publish it's version. DNN will tell the form which version it should publish (in this case v27). The form must take care of whatever processing to ensure that this version is now live / public. 
+Now once the user decides to publish this page, each module (incl. the Forms-Module) will be notified to publish it's version. Dnn will tell the form which version it should publish (in this case v27). The form must take care of whatever processing to ensure that this version is now live / public. 
 
 
-## 2sxc Support for DNN / Evoq Publishing
-2sxc support the core parts of DNN/Evoq Publishing and versioning. To be more specific, it will
+## 2sxc Support for Dnn / Evoq Publishing
+2sxc support the core parts of Dnn/Evoq Publishing and versioning. To be more specific, it will
 
 1. detect if the page requires a publishing workflow
-2. tell DNN/Evoq that on-page content was edited
+2. tell Dnn/Evoq that on-page content was edited
 3. modify the GUI to only allow draft/publish options as it corresponds with the page information
-4. listen to DNN/Evoq messages to publish on-page information
+4. listen to Dnn/Evoq messages to publish on-page information
 
 This sounds simple, but it's very complex because 2sxc can be used in many scenarios, and in some it's not always clear when to draft or publish something. So there are some exceptions, which are documented below. 
 
 ### Activating Page Publishing Feature on 2sxc
-You don't have to do anything - 2sxc asks the environment (DNN/Evoq) it it expects any publishing steps, and will automatically adjust its behavoir. 
+You don't have to do anything - 2sxc asks the environment (Dnn/Evoq) it it expects any publishing steps, and will automatically adjust its behavoir. 
 
 <img src="./assets/evoq-settings-for-workflow.jpg" width="100%" class="full-width">
 
-### Making Changes Start a DNN-Page Versioning
-This too happens automatically, if the page has a publishing setup in DNN/Evoq.
+### Making Changes Start a Dnn-Page Versioning
+This too happens automatically, if the page has a publishing setup in Dnn/Evoq.
 
 ## Auto-Draft and Auto-Publish explained
 To be sure you understand what's going on, please note the following:
@@ -101,7 +101,7 @@ Example 3: An admin-user goes into the admin UI and creates a blog post from wit
 
 
 ## Restoring Previous Versions
-DNN / Evoq has a mechanism for restoring previous page versions, and when implemented perfectly, all modules inside it could also revert back to the state it was in at that time. Such a perfect world is hard to implement and nearly impossible in a dynamic-content setup. For example, apps may have been deleted or content-types (schemas) may have changed. So the idea sounds good, but is impossible to implement correctly. 
+Dnn / Evoq has a mechanism for restoring previous page versions, and when implemented perfectly, all modules inside it could also revert back to the state it was in at that time. Such a perfect world is hard to implement and nearly impossible in a dynamic-content setup. For example, apps may have been deleted or content-types (schemas) may have changed. So the idea sounds good, but is impossible to implement correctly. 
 
 So 2sxc goes the pragmatic way: You can restore any item to a previous version - so you can always roll back a blog-post to a previous copy, but putting the page back into an old version will not roll back anything inside a 2sxc-module. 
 
@@ -128,7 +128,7 @@ The following actions are not regarded as on-page changes, and don't auto-force 
 4. importing data / importing apps
 
 ### What is Published on Page-Publish and What Not
-When a page is published, DNN/Evoq will tell each module that it should now publish that specific version assigned to that page version. When this happens, 2sxc does the following:
+When a page is published, Dnn/Evoq will tell each module that it should now publish that specific version assigned to that page version. When this happens, 2sxc does the following:
 
 1. Retrieves the (usually invisible/secret) content-group entity which contains the information, what template and what items are shown on this module. This one is probably stored as a draft from previous changes, as this one keeps track of the items to show and the order to show them in. This draft is then published. 
 2. Reviews all items on the four primary in-streams, checks each entity and publishes draft versions. The streams it will process are:
@@ -148,7 +148,7 @@ Inner Content is not currently treated as belonging to the page, as it is inside
 Note that this is not fully tested/implemented, you may have unexpected consequences when working with inner content. 
 
 ## Image And Asset Handling
-Images and assets are not versioned / published, as DNN provides no effective way to enable this. So as of now, the following will happen:
+Images and assets are not versioned / published, as Dnn provides no effective way to enable this. So as of now, the following will happen:
 
 1. if a content-type has a file-field using ADAM with a single file (not library), then draging in an additional file will behave like the publishing, because the new file has a new number, and this is not in use till the item is published
 1. if the user drags in an updated file with the same name, it will internally receive a number at the end, and also stay unpublished, as it's a different file on the server
@@ -174,7 +174,7 @@ As mentioned, this is the default setup. In the case of data-oriented apps, whic
 
 ## Read also
 
-* [Data Model of DNN-Modules mapping to content](xref:Basics.Cms.ContentBlocks.Dnn)
+* [Data Model of Dnn-Modules mapping to content](xref:Basics.Cms.ContentBlocks.Dnn)
 * [In-Depth information about content-binding](http://2sxc.org/en/blog/post/understanding-content-binding-to-modules-and-pages-(300))
 
 

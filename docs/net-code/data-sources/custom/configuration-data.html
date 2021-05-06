@@ -258,11 +258,11 @@
 </div>
 <h2 id="advanced-integration-multi-app-use">Advanced Integration: Multi-App Use</h2>
 <p>If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical. </p>
-<p>In this case you&#39;ll want to export the Content-Type as a JSON and place it in the <code>.data-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html">Global Content-Types</a>. If you now restart your DNN, then this new Content-Type is picked up and available in <em>all</em> Apps on this Dnn. </p>
+<p>In this case you&#39;ll want to export the Content-Type as a JSON and place it in the <code>.data-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html">Global Content-Types</a>. If you now restart your Dnn, then this new Content-Type is picked up and available in <em>all</em> Apps on this Dnn. </p>
 <h2 id="redistribution-scenario">Redistribution Scenario</h2>
 <p>The above example works well if you&#39;re fine with installing the JSON Content-Type manually on servers which will use the DataSource. </p>
 <p>For more advanced redistribution, you&#39;ll want to include the JSON file in your Dnn Installation package. But in that case it&#39;s not in <code>.data-custom</code> so 2sxc/EAV can&#39;t pick it up. </p>
-<p>To make sure that it&#39;s still available to all Apps on a server, you&#39;ll need to create a special class to register it on Start of DNN. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here&#39;s an example:</p>
+<p>To make sure that it&#39;s still available to all Apps on a server, you&#39;ll need to create a special class to register it on Start of Dnn. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here&#39;s an example:</p>
 <pre><code class="lang-c#">using System.Collections.Generic;
 using System.Web;
 using ToSic.Eav.Repositories;

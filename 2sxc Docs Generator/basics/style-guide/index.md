@@ -2,9 +2,9 @@
 uid: Basics.StyleGuide.Index
 ---
 
-# Style Guide for DNN / 2sxc Solutions
+# Style Guide for Dnn / 2sxc Solutions
 
-Provide a clear, common guideline for DNN and 2sxc development. 
+Provide a clear, common guideline for Dnn and 2sxc development. 
 
 The current version is the [Style Guide 2020 - beta](xref:Basics.StyleGuide.2021)
 

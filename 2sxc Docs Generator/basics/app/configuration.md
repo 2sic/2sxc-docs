@@ -12,7 +12,7 @@ Every App has a **Configuration** Entity which describes things like
 1. App Name
 1. App Version
 1. Folder (within the 2sxc-folder)
-1. Minimum version of DNN needed for the App to work
+1. Minimum version of Dnn needed for the App to work
 1. Minimum version of 2sxc needed for the App to work
 1. etc.
 

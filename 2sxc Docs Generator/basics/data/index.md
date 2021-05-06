@@ -112,7 +112,7 @@ Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_.
 
 External Data can come from anywhere. Here are some common scenarios:
 
-1. `SQL` data coming from the DNN database or from another DB
+1. `SQL` data coming from the Dnn database or from another DB
 1. `CSV` data from a file which an editor updates from time to time
 1. `SharePoint` document lists or tables
 1. `JSON` data from another REST WebService

@@ -4,9 +4,9 @@ uid: NetCode.DynamicCode.Link
 
 # Link / @Link Object in Dynamic Code
 
-Basically you can always link around to other pages, websites or views using normal `<a href="...">text</a>` html. And often you just want to add some parameters to the current Url like `?id=27` - but the behavior of this can be very different depending on the DNN settings. The `Link` object helps you handle this. 
+Basically you can always link around to other pages, websites or views using normal `<a href="...">text</a>` html. And often you just want to add some parameters to the current Url like `?id=27` - but the behavior of this can be very different depending on the Dnn settings. The `Link` object helps you handle this. 
 
-_Note:_ DNN often has a problem with links, because depending on what page you are on, the behaviour is a bit different. This is especially important on the home page. Use `@Link.To(...)` to make sure everything works no matter what. 
+_Note:_ Dnn often has a problem with links, because depending on what page you are on, the behaviour is a bit different. This is especially important on the home page. Use `@Link.To(...)` to make sure everything works no matter what. 
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -22,10 +22,10 @@ Here's a quick example of using the `Link` object in a Razor template:
 </a>
 ```
 
-This example creates a link to the current page, adding _either_ `?id=27` _or_ `/id/27`, depending on the DNN configuration. 
+This example creates a link to the current page, adding _either_ `?id=27` _or_ `/id/27`, depending on the Dnn configuration. 
 
 ## How it works
-The `Link`-object is always available in all Razor-templates. Internally it uses the DNN API to get the correct url. 
+The `Link`-object is always available in all Razor-templates. Internally it uses the Dnn API to get the correct url. 
 
 ## Using @Link.To()
 Example:

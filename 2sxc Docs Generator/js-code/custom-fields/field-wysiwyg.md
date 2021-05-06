@@ -112,7 +112,7 @@ The global `tinymce` controller is responsible for things like
 
 * Buttons (for use in Toolbars)
 * Toolbars
-* ADAM and DNN-Bridge
+* ADAM and Dnn-Bridge
 
 ### Initialization Process / Life-Cycle
 
@@ -149,7 +149,7 @@ In this phase, translation maps are built, so buttons can show labels in various
 1. Once attaching these events is done, it calls `reconfigure.editorBuilt(editor)` so you could make changes. 
 1. When `init` is triggered, it will first call `reconfigure.editorInit(editor)` so you can make changes or add buttons using the tinyMCE API. 
 1. It will then run internal code to add all the button definitions like `H1`, `H2` etc.
-1. Then it asks for `reconfigure.disablePagePicker` and if not `true`, will attach the DNN page picker
+1. Then it asks for `reconfigure.disablePagePicker` and if not `true`, will attach the Dnn page picker
 1. It will also ask for `reconfigure.disableAdam` and if not true, will attach ADAM functionality
 
 

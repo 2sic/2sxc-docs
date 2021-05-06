@@ -9,7 +9,7 @@ uid: JsCode.Angular.DnnSxcAngular.HttpInterceptor
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
-One of the core challenges when using any JavaScript in DNN is ensuring that WebAPI calls have all the important http headers to make it work. 
+One of the core challenges when using any JavaScript in Dnn is ensuring that WebAPI calls have all the important http headers to make it work. 
 This is what the [HttpInterceptor](https://angular.io/api/common/http/HttpInterceptor) does. 
 It ensures that:
 

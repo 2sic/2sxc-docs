@@ -251,9 +251,9 @@ The following section is helpful if...</p>
 <p>In these docs we explain what each part of the context does, where it&#39;s from, what it&#39;s for and how to optionally override it.</p>
 <hr>
 <h2 id="1-the-site--portal-context-required">1. The Site / Portal Context (required)</h2>
-<p>Since our platforms (DNN/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for. </p>
+<p>Since our platforms (Dnn/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for. </p>
 <h3 id="how-the-site-is-automatically-detected">How the Site is Automatically Detected</h3>
-<p>In <strong>DNN</strong> a site is always identified by the root path to the site, as it&#39;s configured in DNN. Examples:</p>
+<p>In <strong>Dnn</strong> a site is always identified by the root path to the site, as it&#39;s configured in Dnn. Examples:</p>
 <ul>
 <li><a href="https://www.2sxc.org">https://www.2sxc.org</a> is site 0</li>
 <li><a href="https://2sic.org">https://2sic.org</a> is site 0</li>
@@ -280,7 +280,7 @@ The following section is helpful if...</p>
 <h2 id="2-current-language">2. Current Language</h2>
 <p>The current language is necessary for read operations to determine what values to actually use. In case of a no-language or single-language site it&#39;s not important. </p>
 <h3 id="how-the-current-language-is-automatically-detected">How the Current Language is Automatically Detected</h3>
-<p>In DNN the current language is part of the url, as configured in the site, so it&#39;s <em>dependent</em> on the <strong>Site</strong> Context. Here some examples:</p>
+<p>In Dnn the current language is part of the url, as configured in the site, so it&#39;s <em>dependent</em> on the <strong>Site</strong> Context. Here some examples:</p>
 <ul>
 <li>2sxc.org/en would be configured to be <code>en-US</code></li>
 <li>2sxc.org/de would be configured to be <code>de-DE</code></li>
@@ -291,19 +291,19 @@ The following section is helpful if...</p>
 <p>All read operations in the API and internally will try to access values meant for that language. Return values will also prefer that language (if translations exist).</p>
 <h3 id="providing-an-own-value-or-overriding-the-current-language">Providing an Own Value or Overriding the Current Language</h3>
 <p>The most common way to use another language is to use the appropriate url which matches that language. Another way to do it is to include a parameter in the request like <code>?language=en</code>.</p>
-<div class="WARNING"><h5>Warning</h5><p>Setting the <code>?language=xxx</code> parameter in DNN has a suprising performance penalty of ca. 200-300ms.
+<div class="WARNING"><h5>Warning</h5><p>Setting the <code>?language=xxx</code> parameter in Dnn has a suprising performance penalty of ca. 200-300ms.
 So if you can, prefer to just use the correct initial path. </p>
 </div>
 <hr>
 <h2 id="3-page-and-module-context-optional">3. Page and Module Context (optional)</h2>
-<p>Whenever the API call is used on a DNN or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the <strong>App</strong> Context. </p>
+<p>Whenever the API call is used on a Dnn or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the <strong>App</strong> Context. </p>
 <h3 id="how-the-page-and-module-are-automatically-detected">How the Page and Module are Automatically Detected</h3>
 <p>The standard implementation is that API-Calls include special HTTP headers with these IDs. These headers are used:</p>
 <ul>
 <li><code>PageId</code> (number)</li>
 <li><code>ModuleId</code> (number)</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>For historical reasons, DNN includes a <code>TabId</code> which contains the same value as <code>PageId</code>. 
+<div class="NOTE"><h5>Note</h5><p>For historical reasons, Dnn includes a <code>TabId</code> which contains the same value as <code>PageId</code>. 
 The backend will treat these as the same header.
 We changed this to <code>PageId</code> in v11 and for future stability please use <code>PageId</code>. </p>
 </div>
@@ -342,7 +342,7 @@ This is the default mechanism used when calling endpoints from other pages or mo
 <h2 id="5-current-user-required">5. Current User (required)</h2>
 <p>All operations happen in the context of a user, either <em>Anonymous</em> or the <em>Current User Identity</em>. </p>
 <h3 id="how-the-current-user-is-automatically-detected">How the Current User is Automatically Detected</h3>
-<p>The current user is always provided by the environment (DNN or Oqtane). If no user is identified, the platform always tells 2sxc that the user is <em>Anonymous</em>. </p>
+<p>The current user is always provided by the environment (Dnn or Oqtane). If no user is identified, the platform always tells 2sxc that the user is <em>Anonymous</em>. </p>
 <h3 id="what-is-affected-by-the-current-user">What is Affected by the Current User</h3>
 <ol>
 <li>Read / Write permissions (either directly or indirectly if a user is in a group with permissions)</li>

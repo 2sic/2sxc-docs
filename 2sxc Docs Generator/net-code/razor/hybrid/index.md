@@ -23,7 +23,7 @@ Our philosophy is to _not reinvent the wheel_ so it's important that we let you 
 If you follow these three rules you should be good to go:
 
 1. Inherit from `Custom.Hybrid.Razor12`
-1. Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in DNN will also run in Oqtane)
+1. Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in Dnn will also run in Oqtane)
 1. Use .net standard 2.0 APIs and avoid using `System.Web`
 1. Where necessary, use preprocessor directives as explained below
 
@@ -69,7 +69,7 @@ Here's an example:
   <p>
     On Dnn you'll see this because <code>#if NETCOREAPP</code> was <code>false</code>. <br>
 
-    Here you can also place code which only compiles in DNN, like: 
+    Here you can also place code which only compiles in Dnn, like: 
     PortalId = @DotNetNuke.Entities.Portals.PortalSettings.Current.PortalId
   </p>
 @{#endif}
@@ -87,7 +87,7 @@ Use like this:
 * `@{#if !NETCOREAPP} ... @{#else} ... @{#endif}`
 
 
-You can't use `#if DNN ... #endif` because of limitations in the dynamic C# compiler of Dnn. Just use `#if !NETCOREAPP ... #endif`. 
+You can't use `#if Dnn ... #endif` because of limitations in the dynamic C# compiler of Dnn. Just use `#if !NETCOREAPP ... #endif`. 
 
 
 
@@ -102,13 +102,13 @@ You can't use `#if DNN ... #endif` because of limitations in the dynamic C# comp
 | .net Framework | 4.5.1 | 4.7.2 | .net core 5
 | .net Standard | 1.6 | 2.0 | 2.0
 
-Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in DNN 4.7.2, so we'll restrict our work to support _.net standard 1.6_. This means our examples are more limited than what you will be doing. 
+Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in Dnn 4.7.2, so we'll restrict our work to support _.net standard 1.6_. This means our examples are more limited than what you will be doing. 
 
 ## Differences in the Platforms
 
 If you are creating hybrid controllers, we'll assume that you usually don't need to access properties of Dnn or Oqtane. If you do, you'll have to use the standard mechanisms provided by these. 
 
-* In DNN - use global objects like `PortalSettings.Current`
+* In Dnn - use global objects like `PortalSettings.Current`
 * In Oqtane use Dependency Injection
 * To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if NETCOREAPP ... #endif` and `#if !NETCOREAPP ... #endif` blocks
 

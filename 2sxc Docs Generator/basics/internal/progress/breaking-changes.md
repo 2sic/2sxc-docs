@@ -21,7 +21,7 @@ There were small breaking changes in 11.00 to 11.11 but they were internal so sh
 
 #### Version 11.11 - Language Detection
 
-1. Previously the language detection used the Thread culture. Turns out this wasn't reliable because DNN does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change. 
+1. Previously the language detection used the Thread culture. Turns out this wasn't reliable because Dnn does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change. 
 1. Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you. 
 1. We changed all tokens to always resolve boolean values to `true`/`false` (previously they would have been changed to the current language, like `wahr` for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output. 
 
@@ -158,7 +158,7 @@ More internal changes which shouldn't affect anybody, but make the API ready for
 
 #### Version 9.20.00 (2018-03-04)
 
-1. Minor breaking change in ADAM properties, like `Id` instead of `FolderID` which was a leftover of DNN naming.  
+1. Minor breaking change in ADAM properties, like `Id` instead of `FolderID` which was a leftover of Dnn naming.  
 	see full [blog post](https://2sxc.org/en/blog/post/working-with-the-breaking-change-adam-objects-2sxc-9-20)
 
 #### Version 09.08.00 (2017-11-28)

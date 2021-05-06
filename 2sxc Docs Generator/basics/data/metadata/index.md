@@ -23,7 +23,7 @@ In this scenario the File is the **Target** and the additional Tags/Description 
 ## Example: User Metadata
 
 Let's say you have a system which stores basic user data like `UserId`, `UserName` and `Password` and you want to manage additional information like `Biography`. 
-IF the platform (DNN) already offers features to manage such additional info, it _is not Metadata_. But if the information is added _on top_ like with a third-party system (like 2sxc) then this is Metadata.
+IF the platform (Dnn) already offers features to manage such additional info, it _is not Metadata_. But if the information is added _on top_ like with a third-party system (like 2sxc) then this is Metadata.
 
 ## How 2sxc/EAV uses Metadata
 

@@ -6,7 +6,7 @@ uid: Basics.Server.AssetOptimization.Index
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .asset-optimizer { visibility: visible; } </style>
 
-Learn about using the DNN Client-Resource-Management aka DNN Client-Depedency-Management in 2sxc templates. 
+Learn about using the Dnn Client-Resource-Management aka Dnn Client-Depedency-Management in 2sxc templates. 
 
 Whenever a template needs additional files, specifically
 
@@ -46,13 +46,13 @@ This shows:
 1. a script-tag and specifies [priority](#understanding-priorities) and [placement](#understanding-placement) inside the HTML document
 
 ## How it works
-Basically all `<script>` tags and all `<link rel="stylesheet">` tags can have a `data-enableoptimizations` attribute, which the system will parse according to the environments capabilities. In DNN 7/8/9 this means it can
+Basically all `<script>` tags and all `<link rel="stylesheet">` tags can have a `data-enableoptimizations` attribute, which the system will parse according to the environments capabilities. In Dnn 7/8/9 this means it can
 
 * can assign priorities (to ensure load-order)
 * can assign placement in the html-document (head, body, bottom)
 
 ## Understanding Priorities
-There is a fairly complicated article in the [dnn wiki about client resource management][dnn-api-docs] which explains most of it. In general you can say that all DNN scripts load with priorities below 100, the default for all standard scripts is 100, and from there you can order things as you need them.
+There is a fairly complicated article in the [dnn wiki about client resource management][dnn-api-docs] which explains most of it. In general you can say that all Dnn scripts load with priorities below 100, the default for all standard scripts is 100, and from there you can order things as you need them.
 
 We usually prioritize libraries like `2sxc` or `angular.min.js` with 100 or larger, and then place our own script (like an app-blog.min.js) at numbers like 200.
 
@@ -67,8 +67,8 @@ _this is the default location for JS files_
 
 ## Read also
 
-* [DNN API Documentation][dnn-api-docs]
-* [Blog about problems with the DNN resource management](http://2sxc.org/en/blog/post/the-trouble-with-dnn-javascript-css-minification-aka-client-dependency-resource-management) in case you run into problems
+* [Dnn API Documentation][dnn-api-docs]
+* [Blog about problems with the Dnn resource management](http://2sxc.org/en/blog/post/the-trouble-with-dnn-javascript-css-minification-aka-client-dependency-resource-management) in case you run into problems
 
 ## Demo App and further links
 

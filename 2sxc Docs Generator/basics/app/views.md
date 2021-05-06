@@ -27,7 +27,11 @@ The template-file is just part of the view. To be used as a view, it must be con
 
 ## View Configuration
 
-A view has a lot of configuration options, but they are all explained in the edit view dialog, so we're not documenting this here. 
+A view has a lot of configuration options, but they are all explained in the edit view dialog, so we're not documenting this here. Two things of interest which you may want to read about:
+
+1. [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680)
+1. [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737)
+
 
 ## View Polymorphism
 

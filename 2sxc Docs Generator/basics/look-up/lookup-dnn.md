@@ -7,7 +7,7 @@ uid: Basics.LookUp.Dnn
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-DNN has various LookUps built in, which won't be available on Oqtane:
+Dnn has various LookUps built in, which won't be available on Oqtane:
 
 1. `Portal` - Everything about the current Portal
 1. `Tab` - information about the current Page
@@ -17,7 +17,7 @@ DNN has various LookUps built in, which won't be available on Oqtane:
 
 _Note: Dnn ☢ only_
 
-The following tokens are common DNN/DotNetNuke tokens which should work everywhere tokens are in use. Some very common extensions are in the other view Extended Tokens.
+The following tokens are common Dnn/DotNetNuke tokens which should work everywhere tokens are in use. Some very common extensions are in the other view Extended Tokens.
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>
@@ -60,7 +60,7 @@ The following tokens are common DNN/DotNetNuke tokens which should work everywhe
     <tr>
         <td>&#91;Portal:PortalName]</td>
         <td>Portal Name</td>
-        <td>DNN / DotNetNuke App Demos</td>
+        <td>Dnn / DotNetNuke App Demos</td>
     </tr>
     <tr>
         <td>&#91;Portal:PortalAlias]</td>
@@ -225,7 +225,7 @@ _Note: Dnn ☢ only_
 
 
 
-## Other DNN Token Sources
+## Other Dnn Token Sources
 
 Note that according to the Dnn source code there are a total of 11 sources per 2015. The ones not mentioned here are: 
 

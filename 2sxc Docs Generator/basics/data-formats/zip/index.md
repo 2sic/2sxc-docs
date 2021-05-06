@@ -11,7 +11,7 @@ When Apps are exported, they result in a ZIP file which can be easily re-importe
 
 ## Info-Files in the Root Folder
 
-The root folder contains some files which are not important, but they should help in case someone tries to install the App in DNN, because it would then show some messages that it's not a DNN Package. 
+The root folder contains some files which are not important, but they should help in case someone tries to install the App in Dnn, because it would then show some messages that it's not a Dnn Package. 
 
 
 ## Structure of the ZIP

@@ -2,7 +2,7 @@
 uid: Basics.Platforms.Architecture.Index
 ---
 
-# EAV / 2sxc / DNN Architecture
+# EAV / 2sxc / Dnn Architecture
 
 2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside. We'll give you an overview here, so you can better understand what you are using. 
 
@@ -30,7 +30,7 @@ The _Sxc_ layer provides things like [](xref:ToSic.Sxc.Data.IDynamicEntity) to l
 This is usually more interesting for you, but still fairly generic, because 2sxc is also meant to work with other 
 platforms like NopCommerce, Orchard or Oqtane, but it hasn't been implemented yet.
 
-#### The DNN Layer
+#### The Dnn Layer
 
 On top of the _Sxc_ layer we have the **Dnn** layer. It connects 2sxc with Dnn. 
 Usually when you're writing code and want to know about the API, you'll typically start here, 
@@ -64,14 +64,14 @@ This is still more an internal bit, and as of now you shouldn't use it.
 #### App System and Assets
 
 Another part that you may want to know more about. Here is where data is clustered together into virtual containers called **Apps**. 
-These contain all the content-types and items of an App. It also has view-definitions, Content-Blocks (the logical unit usually called a Module in DNN) and way more. 
+These contain all the content-types and items of an App. It also has view-definitions, Content-Blocks (the logical unit usually called a Module in Dnn) and way more. 
 You'll find it in [](xref:ToSic.Eav.Apps). 
 
 The assets - usually using ADAM - are found in [](xref:ToSic.Eav.Apps).Assets.
 
 #### Web API
 
-This is ATM an internal section, mainly for connecting DNN WebAPIs to the EAV. Not documented as of now. 
+This is ATM an internal section, mainly for connecting Dnn WebAPIs to the EAV. Not documented as of now. 
 
 ## The Fine Line Between Eav.Apps and Sxc.*
 

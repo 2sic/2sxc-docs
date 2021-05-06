@@ -19,10 +19,10 @@ Last Update: 2021-04-29
 | ---------- |-------- | :-: | :----: | --- | ---
 | Razor APIs
 | Razor | `@helper` | ✅ | ⛔ | not in .net core 5 | create a separate file for each helper and use `Html.Partial(...)`
-| Razor | `Dnn` object | ✅ | ⛔ | DNN only | Use `CmsContext`, a bit more limited. For Oqtane features use Dependency Injection. 
+| Razor | `Dnn` object | ✅ | ⛔ | Dnn only | Use `CmsContext`, a bit more limited. For Oqtane features use Dependency Injection. 
 | Razor | `Html.Raw(...)` | ✅ | ✅ | all .net | 
 | Razor | `RenderPage(...)` | ✅ | ⛔ | .net 4.5 | Use `Html.Partial(...)` instead
-| Razor | `Html.Partial(...)` | ✅ | ✅ | .net core | Polyfill added to DNN in 2sxc 12
+| Razor | `Html.Partial(...)` | ✅ | ✅ | .net core | Polyfill added to Dnn in 2sxc 12
 | Razor | `Request` object | ✅ | ⛔ | .net 4.5 | .net core uses a much longer name <br> `ViewContext.HttpContext.Request`
 | Razor | `Request.QueryString` | ✅ | ⛔ | .net 4.5 | .net core uses a much longer name <br> `ViewContext.HttpContext.Request.Query`
 | Razor | `CmsContext.Page.Parameters` | ✅ | ✅ | 2sxc 12 | Use this for cross-platform QueryString params

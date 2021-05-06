@@ -4,7 +4,7 @@ uid: ToSic.Sxc.DataSources.CmsBlock
 
 # CmsBlock DataSource (Module-Data)
 
-The **CmsBlock DataSource** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard 2sxc/DNN Data Sources](xref:Basics.Query.DataSources.Index). It is the default data source as it directly delivers module-instance data and is used for all scenarios which don't explicitly have a query, and it can also be used as part of a query.  
+The **CmsBlock DataSource** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard 2sxc/Dnn Data Sources](xref:Basics.Query.DataSources.Index). It is the default data source as it directly delivers module-instance data and is used for all scenarios which don't explicitly have a query, and it can also be used as part of a query.  
 
 ## How to use with the VisualQuery
 

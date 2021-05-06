@@ -6,7 +6,7 @@ uid: NetCode.Razor.ContextAttributes
 
 Technically the entire Edit-UI is JavaScript based, so all the buttons, events etc. are client side scripts.
 
-These scripts need to know what _Context_ they are in, meaning which DNN-Module, which 2sxc-App, which Zone, permissions etc. 
+These scripts need to know what _Context_ they are in, meaning which Dnn-Module, which 2sxc-App, which Zone, permissions etc. 
 
 By default, this context is already provided by the environment, but sometimes a _new context_ must provide overrides. This is rare, but important, for example using [](xref:Basics.Cms.InnerContent.Index). 
 

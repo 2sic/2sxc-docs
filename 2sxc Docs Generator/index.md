@@ -1,28 +1,28 @@
 
-<img src="assets/logos/v11/2sxc500.png" width="250px" align="right" class="float-right">
+<img src="assets/logos/v12/2sxc12-200.png" width="250px" align="right" class="float-right">
 
-# 2sxc / EAV Docs v11.21.00 - WIP for v12
+# 2sxc / EAV Docs v12
 
-This is the documentation for EAV and 2sxc APIs. 
+This is the technical documentation for EAV and 2sxc. 
 
 👉 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
-## 2sxc - The CMS / CMF of DNN (DotNetNuke)
+## 2sxc - The CMS / CMF of Dnn (DotNetNuke) and Oqtane
 
-2sxc is a CMS-Plugin for [DNN/DotNetNuke](http://www.dnnsoftware.com/). It makes content editing easier than Wordpress. It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. And a very cool EAV data-management system. And an online REST JSON database. And a lot more.
+2sxc is a CMS-Plugin for [Dnn/DotNetNuke](http://www.dnnsoftware.com/). It makes content editing easier than Wordpress. It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. And a very cool EAV data-management system. And an online REST JSON database. And a lot more.
 
-2sxc is basically used to provide web-site-builder functionality to DNN, both in a simple **Content** mode (where users just add images, designed text/image blocks, links etc.) or in **App** mode, where user add standalone functional apps like blogs, galleries and more. Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
+2sxc is basically used to provide web-site-builder functionality to Dnn, both in a simple **Content** mode (where users just add images, designed text/image blocks, links etc.) or in **App** mode, where user add standalone functional apps like blogs, galleries and more. Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
 
 
 ## Where to Start
 
-2sxc is an easy to use dynamic content system for .net Platforms like DNN. 
+2sxc is an easy to use dynamic content system for .net Platforms like Dnn. 
 If you are just getting started, then this is probably not where you should be looking. Focus first on:
 
 1. The [Basics](xref:Basics.Index) which tells you about Architecture, Data Models and more
 1. Content on [2sxc.org](https://2sxc.org/) like the [learn section](https://2sxc.org/en/learn)
 1. Apps on [2sxc Catalog](https://2sxc.org/en/apps) which contains many ready-to-use apps like blogs and news, as well as tutorials 
-1. The [DNN Tutorials](https://2sxc.org/dnn-tutorials/en/) on 2sxc.org
+1. The [Dnn Tutorials](https://2sxc.org/dnn-tutorials/en/) on 2sxc.org
 
 👉 With this knowledge, you can already create amazing stuff. 
 
@@ -43,7 +43,7 @@ Here's the overview:
 
 Next to document
 
-1. Document [VisualQuery](xref:Basics.Query.VisualQuery.Index) better
+1. Differences Dnn / Oqtane for Razor, WebApi and JS
 1. Document JS APIs better
 1. Finish metadata documentation
   1. Create in the UI (probably enhance UI first)
@@ -52,17 +52,12 @@ Next to document
 
 These topics are not or insufficiently documented...
 
-1. URL and REST API for retrieving / changing data
+1. URL and REST API for changing data
 1. Future topics, lower priority
     2. React and 2sxc (todo)
     4. jQuery with 2sxc (todo)
 1. etc.
 
-These topics are already documented elsewhere, but should become part of these docs
-
-1. [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680)
-1. [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737)
-
 ---
 
-Generated for EAV/2sxc 11.13.00
+Generated for EAV/2sxc 12 BETA

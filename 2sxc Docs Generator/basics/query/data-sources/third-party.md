@@ -28,7 +28,7 @@ The following list was updated April 2021
 | Free | no |
 | Last Update | 2021-04
 | 2sxc Versions | v7 - 11.14
-| DNN Versions | v7.4.2 - 9.*
+| Dnn Versions | v7.4.2 - 9.*
 | Details | [](xref:Basics.Query.DataSources.SharePoint.Index)
 
 #### SharePointSearch DataSource
@@ -39,7 +39,7 @@ The following list was updated April 2021
 | Creator | 2sic |
 | Free | no |
 | 2sxc Versions | v7 - 11.14
-| DNN Versions | v7.4.2 - 9.*
+| Dnn Versions | v7.4.2 - 9.*
 | Details | [](xref:Basics.Query.DataSources.SharePoint.Index)
 
 

@@ -62,8 +62,8 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 
 ### Common Security Attributes for Custom WebAPI Controllers
 
-The exact set of attributes varies a bit on DNN and Oqtane, but we're working on a unified set. 
-As of now, these attributes are common in DNN. You can apply all to both classes and methods:
+The exact set of attributes varies a bit on Dnn and Oqtane, but we're working on a unified set. 
+As of now, these attributes are common in Dnn. You can apply all to both classes and methods:
 
 1. `[AllowAnonymous]`  
     This allows non-identified users to use this endpoint.  
@@ -75,7 +75,7 @@ As of now, these attributes are common in DNN. You can apply all to both classes
 1. `[ValidateAntiForgeryToken]`  
     Verifies that the `RequestVerificationToken` in the header is valid. 
     These requests will be blocked if the Anti-Forgery-Token is missing, invalid or is meant for another user.  
-    _Note: this means such requests can only be called from a JS on a DNN page_  
+    _Note: this means such requests can only be called from a JS on a Dnn page_  
     requires `DotNetNuke.Web.Api;`
 1. `[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Admin)]`  
     In place of the `SecurityAccessLevel.Admin` you can also use `SecurityAccessLevel.Anonymous` or [other values](https://dnndocs.com/api/DotNetNuke.Security.SecurityAccessLevel.html#DotNetNuke_Security_SecurityAccessLevel).  
@@ -161,4 +161,4 @@ You should find some code examples in this demo App
 
 ## History
 
-1. These security features have been part of DNN since ca. DNN 6.0
+1. These security features have been part of Dnn since ca. Dnn 6.0

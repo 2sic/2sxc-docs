@@ -65,7 +65,7 @@ foreach (var link in links)
 
 ## Read also
 
-* [DNN Factory API](xref:ToSic.Sxc.Dnn.Factory)
+* [Dnn Factory API](xref:ToSic.Sxc.Dnn.Factory)
 * To dive deeper, you must check the [blog post](http://2sxc.org/en/blog/post/using-app-data-outside-of-2sxc-in-razor-custom-webapi-skin-or-another-module-300)
 
 

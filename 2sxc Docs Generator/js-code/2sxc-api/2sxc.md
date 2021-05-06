@@ -189,7 +189,7 @@ This is for information the $2sxc needs for WebApi calls. _This here applies to 
 
 1. It first checks the html-head section for a `meta` tag with the name `_jsApi`. If this exists, it contains a JSON with everything it needs.
 1. If that doesn't exist it will retry 3x times (in case the head wasn't ready yet) and otherwise falls back to the old mechanism.
-1. The old mechanism is to ask DNN and the _ServicesFramework_ for this information. This is always available when you're logged on as an editor, but it's only on the page for anonymous users IF
+1. The old mechanism is to ask Dnn and the _ServicesFramework_ for this information. This is always available when you're logged on as an editor, but it's only on the page for anonymous users IF
     1. ...you are either using the old mechanisms
     1. ...or your Razor code asked for with `@Edit.Enable(js:true)`
 

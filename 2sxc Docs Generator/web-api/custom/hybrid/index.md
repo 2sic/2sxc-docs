@@ -24,7 +24,7 @@ Our philosophy is to _not reinvent the wheel_ so it's important that we let you 
 If you follow these three rules you should be good to go:
 
 1. Inherit from `Custom.Hybrid.Api12`
-1. Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in DNN will also run in Oqtane)
+1. Use very common C# features and syntaxes which existed since C# 7.2 (so anything that runs in Dnn will also run in Oqtane)
 1. Use .net standard 2.0 APIs and avoid using `System.Web`
 1. Where necessary, use preprocessor directives as explained below
 
@@ -34,7 +34,7 @@ C# has special `#if` [preprocessor](https://docs.microsoft.com/en-us/dotnet/csha
 Using this you can define which code should be used in Dnn and Oqtane. Here's an example:
 
 ```c#
-// Add namespaces to enable security in Oqtane & DNN despite the differences
+// Add namespaces to enable security in Oqtane & Dnn despite the differences
 #if OQTANE
 using Microsoft.AspNetCore.Authorization; // .net core [AllowAnonymous] & [Authorize]
 using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] etc.
@@ -48,8 +48,8 @@ using DotNetNuke.Security;  // SecurityAccessLevel.Xyz
 // All commands can be accessed without security checks
 public class HybridController : ToSic.Custom.Api12
 {
-  [AllowAnonymous]  // Works in Oqtane and DNN
-  [HttpGet]         // Works in Oqtane and DNN
+  [AllowAnonymous]  // Works in Oqtane and Dnn
+  [HttpGet]         // Works in Oqtane and Dnn
   public string Hello()
   {
     return "Hello from the basic controller in /api";
@@ -80,7 +80,7 @@ Use like this:
 * `#if !OQTANE ... #else ... #endif`
 
 
-You can't use `#if DNN ... #endif` because of limitations in the dynamic C# compiler of Dnn. Just use `#if !OQTANE ... #endif`. 
+You can't use `#if Dnn ... #endif` because of limitations in the dynamic C# compiler of Dnn. Just use `#if !OQTANE ... #endif`. 
 
 
 ## Different C# and .net Frameworks
@@ -91,13 +91,13 @@ You can't use `#if DNN ... #endif` because of limitations in the dynamic C# comp
 | .net Framework | 4.5.1 | 4.7.2 | .net core 5
 | .net Standard | 1.6 | 2.0 | 2.0
 
-Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in DNN 4.7.2, so we'll restrict our work to support _.net standard 1.6_. This means our examples are more limited than what you will be doing. 
+Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0, depending on the platforms you want to support. Note that any 2sxc standard apps are meant to still run in Dnn 4.7.2, so we'll restrict our work to support _.net standard 1.6_. This means our examples are more limited than what you will be doing. 
 
 ## Differences in the Platforms
 
 If you are creating hybrid controllers, we'll assume that you usually don't need to access properties of Dnn or Oqtane. If you do, you'll have to use the standard mechanisms provided by these. 
 
-* In DNN - use global objects like `PortalSettings.Current`
+* In Dnn - use global objects like `PortalSettings.Current`
 * In Oqtane use Dependency Injection
 * To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if OQTANE ... #endif` and `#if !OQTANE ... #endif` blocks
 
@@ -169,7 +169,7 @@ All APIs need to have attributes like `[HttpGet]` and `[HttpPost]`. The main dif
 
 Standard Implementations:
 
-* In DNN WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. 
+* In Dnn WebApis all data is automatically converted to JSON. This was an early design decision of 2sxc and works great for most cases, but some edge cases (like responding with XML) is more difficult this way. 
 * In Oqtane (.net core 5) the default is more sophisticated. The methods return objects or values. In advanced cases they will return an `ActionResult` or `ContentResult`. The default encoding is as follows:
   * Simple values like strings are returned just as-is
   * Complex objects are serialized - by default as json
@@ -190,7 +190,7 @@ If you need to return a simple string and must ensure it's JSON on both platform
 [Produces("application/json")]
 ```
 
-This is in the namespace `using Microsoft.AspNetCore.Mvc` which you usually already have. Since DNN won't know it, you will probably wrap it in an `#if OQTANE` like this:
+This is in the namespace `using Microsoft.AspNetCore.Mvc` which you usually already have. Since Dnn won't know it, you will probably wrap it in an `#if OQTANE` like this:
 
 ```c#
 #if OQTANE

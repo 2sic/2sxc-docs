@@ -11,10 +11,10 @@ uid: JsCode.Angular.TemplateApp
 
 To quickly get started we've created the [](xref:App.Angular11). It demonstrates how to...
 
-1. Integrate Angular in DNN 
-    1. to [run perfectly](xref:JsCode.Angular.IntegrateAngularRuntime) while using DNN and 2sxc WebAPI endpoints
-    1. during [development with hot-reloading](xref:JsCode.Angular.IntegrateAngularDevelopment) so you can see the real solution in DNN while working
-1. Integrate DNN into Angular
+1. Integrate Angular in Dnn 
+    1. to [run perfectly](xref:JsCode.Angular.IntegrateAngularRuntime) while using Dnn and 2sxc WebAPI endpoints
+    1. during [development with hot-reloading](xref:JsCode.Angular.IntegrateAngularDevelopment) so you can see the real solution in Dnn while working
+1. Integrate Dnn into Angular
     1. So that all http-calls have all the necessary security headers
     1. So that hitting enter on an input-field doesn't reload the page
 1. Integrate 2sxc into Angular

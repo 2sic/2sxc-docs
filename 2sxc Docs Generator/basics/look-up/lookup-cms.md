@@ -7,7 +7,7 @@ uid: Basics.LookUp.Cms
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-The following lookups are new in v12 and work across platforms for both DNN ☢ and Oqtane 💧:
+The following lookups are new in v12 and work across platforms for both Dnn ☢ and Oqtane 💧:
 
 <!-- ## `Tenant` Tokens
 

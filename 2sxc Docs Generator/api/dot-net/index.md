@@ -5,7 +5,7 @@
 > [!TIP]
 > Before you start, please get familiar with the [architecture](xref:Specs.Architecture.Intro) - otherwise you probably won't understand what you see here.
 
-Note also that the real code of EAV/2sxc/DNN has way more stuff, but that's inofficial. 
+Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that's inofficial. 
 Please don't use objects that are not documented here. 
 That allows us to improve the architecture without worrying about breaking your code. 
 Once we're really sure that certain parts are very final, we'll publish the API docs for those parts. 

@@ -9,12 +9,12 @@ uid: JsCode.Angular.IntegrateAngularRuntime
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
-This explains how to best integrate Angular in DNN. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).
+This explains how to best integrate Angular in Dnn. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).
 
 ## Goals of the Runtime Integration
 
 1. The Angular App can be compiled using best-practices incl. partial loading and hashed files
-1. The Angular solution can be easily distributed to another DNN/2sxc as a 2sxc App package
+1. The Angular solution can be easily distributed to another Dnn/2sxc as a 2sxc App package
 1. We can run multiple editions of the same app, like a `live` and a `staging` edition for internal review
 1. The final page has the `app` tag and all the script/css resources as the Angular compiler generated them
 1. Changes to the Angular App are automatically included without manual changes

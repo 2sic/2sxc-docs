@@ -21,7 +21,7 @@ You can also create / modify data using REST, access Queries and work with your 
 
 ## Simple Example
 
-Here's an example JavaScript which would run in a 2sxc News-App on a DNN page:
+Here's an example JavaScript which would run in a 2sxc News-App on a Dnn page:
 
 ```javascript
 // Get news as a promise

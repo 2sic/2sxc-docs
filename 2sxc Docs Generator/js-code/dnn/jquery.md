@@ -1,7 +1,7 @@
 ---
 uid: JsCode.Dnn.JQuery
 ---
-# JQuery in DNN and 2sxc
+# JQuery in Dnn and 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .frameworks-js { visibility: visible; } </style>
@@ -13,16 +13,16 @@ Often you'll need and want jQuery, but when you don't it shouldn't be loaded for
 > Removing jQuery and jQueryUI will boost your mobile PageSpeed like crazy. 
 > So only include it on pages where you really need it. 
 
-## How DNN Auto-Loades jQuery
+## How Dnn Auto-Loades jQuery
 
-There is some history to this which we'll explain briefly. DNN made jQuery a first-class citizen around DNN 4, and since then most of the UI was jQuery based. For a while there even was a standard that buttons etc. should be built and styled with jQuery UI. That is not the case any more. You can now easily run DNN (at least in browsing mode, not editing) without jQuery. 
+There is some history to this which we'll explain briefly. Dnn made jQuery a first-class citizen around Dnn 4, and since then most of the UI was jQuery based. For a while there even was a standard that buttons etc. should be built and styled with jQuery UI. That is not the case any more. You can now easily run Dnn (at least in browsing mode, not editing) without jQuery. 
 
 But because _jQuery was always there_ developers never noticed that they could leave it away, and many parts like Templates would simply rely on them. There were also many things that automatically added jQuery but were never noticed. Here some important examples:
 
-1. 2sxc always used the ServicesFramework of DNN which internally auto-added jQuery
-1. Most DNN websites use popups for login, and just doing this automatically adds jQueryUI and jQuery to the page. You can easily stop this using the recipe [Remove jQueryUI from my page](https://azing.org/dnn-community/r/fjgSyTfI)
+1. 2sxc always used the ServicesFramework of Dnn which internally auto-added jQuery
+1. Most Dnn websites use popups for login, and just doing this automatically adds jQueryUI and jQuery to the page. You can easily stop this using the recipe [Remove jQueryUI from my page](https://azing.org/dnn-community/r/fjgSyTfI)
 
-In case your code is running on a page without jQuery but you need it, your code should tell DNN that you want jQuery, like this:
+In case your code is running on a page without jQuery but you need it, your code should tell Dnn that you want jQuery, like this:
 
 <iframe src="https://azing.org/dnn-community/r/YqJFbNKH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
@@ -32,9 +32,9 @@ In case your code is running on a page without jQuery but you need it, your code
 > [!TIP]
 > If you do need a newer version of jQuery, that is possible but needs some tweaking to get them to run side-by-side. It's done using the [jQuery.noConflict()](https://api.jquery.com/jQuery.noConflict/).
 
-## How 2sxc loads jQuery in DNN
+## How 2sxc loads jQuery in Dnn
 
-* Up until 2sxc 10.24, every 2sxc module automatically loaded jQuery because 2sxc used the ServicesFramework of DNN
+* Up until 2sxc 10.24, every 2sxc module automatically loaded jQuery because 2sxc used the ServicesFramework of Dnn
 * Starting from 2sxc 10.25 
   * old templates auto-load jQuery for backward compatibility. This includes token-templates and Razor templates which don't have an `@inherits` statement at the beginning. 
   * Anything new done using the [RazorComponent](xref:NetCode.Razor.Component) will not do that unless your template code requests it.

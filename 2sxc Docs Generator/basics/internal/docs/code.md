@@ -33,20 +33,20 @@ The correct procedure then is to fork the main repo into yours, and push into yo
 
 The full-scale setup is meant for people, who want to work with all the pieces. As of now (December 2017) you should clone all these projects into the following folders:
 
-### Start by Installing your DNN
+### Start by Installing your Dnn
 
-Installing DNN Please install a DNN - ideally a 7.4.2 version or similar so you wont use APIs which don't exist in that version in the path above. Steps are approx. like this:
+Installing Dnn Please install a Dnn - ideally a 7.4.2 version or similar so you wont use APIs which don't exist in that version in the path above. Steps are approx. like this:
 
-* Recommended: using NVQuickSite you can easily install DNN 7.4.2 in the `C:\Projects\2sxc-dnn742\Website` folder. This exact folder is important, because other parts (like js projects) will copy their builds into this folder
+* Recommended: using NVQuickSite you can easily install Dnn 7.4.2 in the `C:\Projects\2sxc-dnn742\Website` folder. This exact folder is important, because other parts (like js projects) will copy their builds into this folder
 * The domain isn't important, but we recommend `2sxc-dnn742.dnndev.me`
-* Manual:  Download the minimal DNN version that 2sxc supports and extract it to `C:\Projects\2sxc-dnn742\Website` (the exact folder is important, because the grunt/gulp tasks refer to this path)
+* Manual:  Download the minimal Dnn version that 2sxc supports and extract it to `C:\Projects\2sxc-dnn742\Website` (the exact folder is important, because the grunt/gulp tasks refer to this path)
   * Configure the website in IIS (use binding 2sxc.dev)
     * Use a default ASP.NET 4 / 4.5 application pool with Network Service account
   * Add entry to local hosts file: 127.0.0.1 `2sxc-dnn742.dnndev.me` (could also be different, but this is our recommendation)
   * Setup an empty database in SQL Management Studio
-  * Start the website and configure DNN to use the previously created database
+  * Start the website and configure Dnn to use the previously created database
 
-## Installing 2sxc as Code in the DNN
+## Installing 2sxc as Code in the Dnn
 
 1. Then install 2sxc as a normal installable module (to get all the tables etc. setup)
 1. Now you must replace the installed 2sxc with the source-code version, linked to Github.
@@ -60,7 +60,7 @@ _Note: don't open the 2sxc-solution yet in visual studio - you need to later ope
 
 1. in a command line, go to `c:\Projects\`
 1. run `git clone https://github.com/2sic/eav-server` - the EAV server system
-1. run `git clone https://github.com/2sic/2sxc-ui` - the 2sxc / DNN UIs
+1. run `git clone https://github.com/2sic/2sxc-ui` - the 2sxc / Dnn UIs
 
 for all of these you may need to run `npm install`
 
@@ -74,7 +74,7 @@ Basically if you open the solution in the `eav-server` folder, it will open all 
 
 ## The 2sxc UI
 
-This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp `develop` it too will auto-build and copy to the live DNN / 2sxc site. 
+This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp `develop` it too will auto-build and copy to the live Dnn / 2sxc site. 
 
 
 ## WIP (Work In Progress)

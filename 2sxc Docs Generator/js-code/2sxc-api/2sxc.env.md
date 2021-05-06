@@ -10,7 +10,7 @@ uid: JsCode.2sxcApi.$2sxc.Env
 The `$2sxc.env` object manages environment information for the JavaScript. _It's new - introduced in 2sxc 10.25_.
 
 > [!NOTE]
-> The `env`-object was introduced to help $2sxc run without jQuery and without the rather instable ServicesFramework of DNN. 
+> The `env`-object was introduced to help $2sxc run without jQuery and without the rather instable ServicesFramework of Dnn. 
 
 It has the following important methods:
 
@@ -24,7 +24,7 @@ This is new in 2sxc 10.25 and was added to avoid using jQuery when not necessary
 
 ## Internal Stuff
 
-The `env` also has some internal methods like `load(...)` for special scenarios like using $2sxc in an html which does not come from DNN. 
+The `env` also has some internal methods like `load(...)` for special scenarios like using $2sxc in an html which does not come from Dnn. 
 This is not documented in detail, but can be figured out by reading the code. 
 
 For debugging, there is also a `log` object which contains some information how the `env` was built, how long it took etc. 

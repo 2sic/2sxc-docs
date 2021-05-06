@@ -40,7 +40,7 @@ sxc.webApi.post("Form/ProcessForm")
 ```
 
 ## How to Get the Current Context's `sxc` Controller
-Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each DNN-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
+Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
 
 
 ## Working with REST / HTTP Async Stuff

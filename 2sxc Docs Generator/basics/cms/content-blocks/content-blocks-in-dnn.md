@@ -2,28 +2,28 @@
 uid: Basics.Cms.ContentBlocks.Dnn
 ---
 
-# 2sxc Content in DNN
+# 2sxc Content in Dnn
 
-The vision of 2sxc is to be cross-platform, so we hope one day it will also run on NopCommerce and other systems. This is how it's integrated into DNN. 
+The vision of 2sxc is to be cross-platform, so we hope one day it will also run on NopCommerce and other systems. This is how it's integrated into Dnn. 
 
 <img src="./assets/content-in-dnn.png" width="100%" class="full-width">
 
 
 
-## What DNN References to
+## What Dnn References to
 
 ### Portal to ZoneId Mapping
 
-The EAV has a virtual container called a **Zone** which is similar to a Portal in DNN. The IDs will not match though, so each Portal has a setting called `ToSIC_SexyContent_ZoneID` which contains the ZoneId for that portal. 
+The EAV has a virtual container called a **Zone** which is similar to a Portal in Dnn. The IDs will not match though, so each Portal has a setting called `ToSIC_SexyContent_ZoneID` which contains the ZoneId for that portal. 
 
 When 2sxc is used the first time on a portal, it will detect a missing ZoneId, which triggers zone creation and sets this value. 
 
 
 ### Module-Installation to App-Installation Mapping
 
-A DNN Module installation corresponds to an App installation. Internally there is no mapping, as it is not necessary. 
+A Dnn Module installation corresponds to an App installation. Internally there is no mapping, as it is not necessary. 
 
-There is an important difference though: in DNN, each installed Module is installed at the _System level_, so installed Modules are available on all Portals. On the other hand, Apps are installed at the _Zone (Portal) level_, so each app is only available on that portal. Customizations to the app also only affect that portal, and each Portal could have the same App installed in different versions. 
+There is an important difference though: in Dnn, each installed Module is installed at the _System level_, so installed Modules are available on all Portals. On the other hand, Apps are installed at the _Zone (Portal) level_, so each app is only available on that portal. Customizations to the app also only affect that portal, and each Portal could have the same App installed in different versions. 
 
 > [!NOTE]
 > Technically there are a few ways to share Apps, their data, templates etc. across Portals, but these are fairly advanced scenarios. 
@@ -31,7 +31,7 @@ There is an important difference though: in DNN, each installed Module is instal
 
 ### Module-On-Page to ContentBlock Mapping
 
-In DNN each modules has _Module Settings_ to store configuration. 2sxc stores these two pieces of information in the Module Settings:
+In Dnn each modules has _Module Settings_ to store configuration. 2sxc stores these two pieces of information in the Module Settings:
 
 1. App ID - what app is being shown here
 1. _Content Block_ ID - the GUID of the _Content Block_ Entity containing the rest of the configuration

@@ -17,7 +17,7 @@ There are three Sources for web parameters which can be used in LookUps:
 
 
 <h2>Extended Standard Tokens</h2>
-<p>The following tokens are still very "normal" but not part of the common DNN tokens. They work in 2sxc - but not in many DNN-Tools</p>
+<p>The following tokens are still very "normal" but not part of the common Dnn tokens. They work in 2sxc - but not in many Dnn-Tools</p>
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>

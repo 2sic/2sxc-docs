@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Index
 ---
 
-# JavaScript / HTML API Documentation for DNN / 2sxc
+# JavaScript / HTML API Documentation for Dnn / 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc, .context-box-summary .edit-custom { visibility: visible; } </style>

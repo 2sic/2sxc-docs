@@ -11,7 +11,7 @@ The module-specific `sxc`-controller is the core JavaScript object helping you i
 
 1. if you want full control over the edit-experience with custom buttons etc. 
 1. when you want to use view-data as an asyc-JS call
-1. if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or DNN-WebApi
+1. if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or Dnn-WebApi
 
 ## How to use
 First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.$2sxc) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc manager](xref:JsCode.2sxcApi.$2sxc) here. 
@@ -40,7 +40,7 @@ sxc.webApi.post("Form/ProcessForm")
 ```
 
 ## How to Get the Current Context's `sxc` Controller
-Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each DNN-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc).
+Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc).
 
 
 ## The API of an Initialized Module `sxc` Controller

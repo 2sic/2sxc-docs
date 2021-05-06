@@ -9,7 +9,7 @@ uid: Basics.LookUp.Tokens
 
 Often you need a _placeholder_ which should be resolved at runtime with a real value from elsewhere. 
 
-In DNN / 2sxc this is called a **Token**, and they usually look like `[Source:Property]`. 
+In Dnn / 2sxc this is called a **Token**, and they usually look like `[Source:Property]`. 
 
 ## Simple Example
 
@@ -32,7 +32,7 @@ You would use this in a [Query](xref:Basics.Query.Index) to filter out news whic
 
 ## Token Basics
 
-A token is a piece of text that looks like `[Source:Property]`, which will be replaced by an engine so that it will then be a value. For example, `[QueryString:Page]` is replaced with `2` if the current url has `?page=2` in it. You can research more about tokens [in older docs here](https://2sxc.org/en/Learn/Token-Templates-and-Views) and in the [full list of standard tokens](https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens), it's a standard DNN concept. 
+A token is a piece of text that looks like `[Source:Property]`, which will be replaced by an engine so that it will then be a value. For example, `[QueryString:Page]` is replaced with `2` if the current url has `?page=2` in it. You can research more about tokens [in older docs here](https://2sxc.org/en/Learn/Token-Templates-and-Views) and in the [full list of standard tokens](https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens), it's a standard Dnn concept. 
 
 Internally it uses a LookUp-Engine which itself uses LookUp-Sources - see [](Basics.LookUp.Index. 
 

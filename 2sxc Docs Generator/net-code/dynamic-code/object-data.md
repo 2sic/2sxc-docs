@@ -8,7 +8,7 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 
 2sxc will decide what items to deliver, based on the situation.
 
-1. In most cases, a DNN-Module will show a 2sxc-template, and the content-editor will manually add items to it using the normal web-UI. In this case, these items will be tied to this use-case and 2sxc will deliver them in the `Data` object.
+1. In most cases, a Dnn-Module will show a 2sxc-template, and the content-editor will manually add items to it using the normal web-UI. In this case, these items will be tied to this use-case and 2sxc will deliver them in the `Data` object.
 
 1. In other cases, the template (or view) will be configured to get data from a query configered elsewhere. In this case, all data retrieved in the query will be provided in the same `Data` object.
 

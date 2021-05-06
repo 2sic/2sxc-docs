@@ -26,12 +26,12 @@ Everything belonging to the App is stored in these locations
 
 ## Apps are Installed per Site
 
-The EAV is multi-site capable and each Site in the platform corresponds to a **Zone** in the EAV. A Site corresponds to a _Portal_ in DNN or a _Site_ in Oqtane. 
+The EAV is multi-site capable and each Site in the platform corresponds to a **Zone** in the EAV. A Site corresponds to a _Portal_ in Dnn or a _Site_ in Oqtane. 
 Each Zone contains at least 1 default app called **Content** and additional Apps as configured. 
 
 > [!NOTE]
-> The ZoneId is usually different than the DNN _PortalId_ or the Oqtane _SiteId_, 
-> so [DNN has a PortalSetting to connect this](xref:Basics.Cms.ContentBlocks.Dnn) and Oqtane has a matching Setting.
+> The ZoneId is usually different than the Dnn _PortalId_ or the Oqtane _SiteId_, 
+> so [Dnn has a PortalSetting to connect this](xref:Basics.Cms.ContentBlocks.Dnn) and Oqtane has a matching Setting.
 
 > [!TIP]
 > Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. 

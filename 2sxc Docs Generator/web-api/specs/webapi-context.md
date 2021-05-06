@@ -28,11 +28,11 @@ In these docs we explain what each part of the context does, where it's from, wh
 
 ## 1. The Site / Portal Context (required)
 
-Since our platforms (DNN/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for. 
+Since our platforms (Dnn/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for. 
 
 ### How the Site is Automatically Detected
 
-In **DNN** a site is always identified by the root path to the site, as it's configured in DNN. Examples:
+In **Dnn** a site is always identified by the root path to the site, as it's configured in Dnn. Examples:
 
 * https://www.2sxc.org is site 0
 * https://2sic.org is site 0
@@ -67,7 +67,7 @@ The current language is necessary for read operations to determine what values t
 
 ### How the Current Language is Automatically Detected
 
-In DNN the current language is part of the url, as configured in the site, so it's _dependent_ on the **Site** Context. Here some examples:
+In Dnn the current language is part of the url, as configured in the site, so it's _dependent_ on the **Site** Context. Here some examples:
 
 * 2sxc.org/en would be configured to be `en-US`
 * 2sxc.org/de would be configured to be `de-DE`
@@ -84,7 +84,7 @@ All read operations in the API and internally will try to access values meant fo
 The most common way to use another language is to use the appropriate url which matches that language. Another way to do it is to include a parameter in the request like `?language=en`.
 
 > [!WARNING]
-> Setting the `?language=xxx` parameter in DNN has a suprising performance penalty of ca. 200-300ms.
+> Setting the `?language=xxx` parameter in Dnn has a suprising performance penalty of ca. 200-300ms.
 > So if you can, prefer to just use the correct initial path. 
 
 
@@ -92,7 +92,7 @@ The most common way to use another language is to use the appropriate url which 
 
 ## 3. Page and Module Context (optional)
 
-Whenever the API call is used on a DNN or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the **App** Context. 
+Whenever the API call is used on a Dnn or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the **App** Context. 
 
 ### How the Page and Module are Automatically Detected
 
@@ -102,7 +102,7 @@ The standard implementation is that API-Calls include special HTTP headers with 
 * `ModuleId` (number)
 
 > [!NOTE]
-> For historical reasons, DNN includes a `TabId` which contains the same value as `PageId`. 
+> For historical reasons, Dnn includes a `TabId` which contains the same value as `PageId`. 
 > The backend will treat these as the same header.
 > We changed this to `PageId` in v11 and for future stability please use `PageId`. 
 
@@ -157,7 +157,7 @@ All operations happen in the context of a user, either _Anonymous_ or the _Curre
 
 ### How the Current User is Automatically Detected
 
-The current user is always provided by the environment (DNN or Oqtane). If no user is identified, the platform always tells 2sxc that the user is _Anonymous_. 
+The current user is always provided by the environment (Dnn or Oqtane). If no user is identified, the platform always tells 2sxc that the user is _Anonymous_. 
 
 ### What is Affected by the Current User
 

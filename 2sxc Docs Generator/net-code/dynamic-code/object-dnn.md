@@ -19,7 +19,7 @@ Here's a quick example of using the `Dnn` object in a Razor template:
 ```
 
 ## How it works
-There's not much to explain here, we're just providing the standard DNN objects to the template.
+There's not much to explain here, we're just providing the standard Dnn objects to the template.
 
 
 ## The Main Properties of the @Dnn Object
@@ -189,7 +189,7 @@ The `@Dnn.User` is of the type [UserInfo](https://www.dnndocs.com/api/DotNetNuke
 8.	Dnn.User.LastName
 9.	Dnn.User.Membership - these are asp.net memberships, you probably don't need them
 10.	Dnn.User.PortalId
-11.	Dnn.User.Roles - these are DNN roles
+11.	Dnn.User.Roles - these are Dnn roles
 12.	Dnn.User.UserID - note the large D
 13.	Dnn.User.Username
 

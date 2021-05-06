@@ -1,7 +1,7 @@
 ---
 uid: Basics.Browser.Edit.Index
 ---
-# Edit Content or Data in DNN / 2sxc
+# Edit Content or Data in Dnn / 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>

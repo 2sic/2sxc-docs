@@ -15,7 +15,7 @@ The App has three Sources which can be used in LookUps
 
 ## `App` Tokens
 
-The following tokens are related to App-Information and Resources. DNN/DotNetNuke does have these, you can only access them when in a 2sxc-App. 
+The following tokens are related to App-Information and Resources. Dnn/DotNetNuke does have these, you can only access them when in a 2sxc-App. 
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
     <thead>

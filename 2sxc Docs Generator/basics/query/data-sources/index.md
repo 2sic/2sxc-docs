@@ -59,7 +59,7 @@ These are all the data sources which are either provided in the default installa
         <summary>
           Current Module instance data …
         </summary>
-          Will get the content-items assigned to a DNN-Module. This is used internally on each view, but can also be used when using module-data to configure a query.
+          Will get the content-items assigned to a Dnn-Module. This is used internally on each view, but can also be used when using module-data to configure a query.
       </details>
   </tr>
 
@@ -287,7 +287,7 @@ These are Dnn specific DataSources and won't work on Oqtane.
   <tr>
     <td>[DnnUserProfile](xref:ToSic.Sxc.Dnn.DataSources.DnnUserProfile)</td>
     <td>Get Data</td>
-    <td>Get DNN Users and profiles </td>
+    <td>Get Dnn Users and profiles </td>
   </tr>
 
 </table>

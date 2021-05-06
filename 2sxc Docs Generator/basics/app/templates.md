@@ -37,7 +37,7 @@ The template files usually reside inside app root folder or sub folder. As of no
 > [!TIP]
 > **Re-Using Templates Across Portals**  
 > Instead of placing the template in the App-folder of the current portal, 
-> you can also place it in a global App-folder in the `_default` portal of DNN. 
+> you can also place it in a global App-folder in the `_default` portal of Dnn. 
 > This is great if you have the same app in many portals, and want to centralize the template.
 
 > [!TIP]

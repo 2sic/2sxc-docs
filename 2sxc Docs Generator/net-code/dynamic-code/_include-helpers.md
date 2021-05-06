@@ -5,4 +5,4 @@
 1. [Edit](xref:NetCode.Razor.Edit)  
     Helper providing you with various edit-functionality like `Toolbar(...)`
 1. [Link](xref:NetCode.DynamicCode.Link)  
-    Helper to generate links, according to the DNN-environment configuration
+    Helper to generate links, according to the Dnn-environment configuration

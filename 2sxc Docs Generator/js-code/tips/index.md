@@ -11,7 +11,7 @@ Sometimes you just need a simple trick to get things working. We're collecting t
 
 ## Delay your Scripts till the Page is ready
 
-If your script runs too early, you will probably run into problems. Since DNN always has jQuery included, you can do this to delay your code till the page is ready:
+If your script runs too early, you will probably run into problems. Since Dnn always has jQuery included, you can do this to delay your code till the page is ready:
 
 ```javascript
 $(function() {

@@ -8,7 +8,7 @@ uid: NetCode.Razor.CodeBehind
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/wIa23gy26js" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-You can also see a [live demo in the DNN Tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse410/page). 
+You can also see a [live demo in the Dnn Tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse410/page). 
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]

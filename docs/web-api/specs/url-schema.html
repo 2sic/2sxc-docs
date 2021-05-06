@@ -250,7 +250,7 @@ So the remaining information on this page is really only for those who really wa
 </div>
 <h2 id="note-about-platform-and-version-differences">Note about Platform and Version Differences</h2>
 <p>The exact schema for the url varies depending on the platform you&#39;re using. 
-So DNN 7 is different from DNN 9, and Oqtane is different again.</p>
+So Dnn 7 is different from Dnn 9, and Oqtane is different again.</p>
 <p>Also older versions of 2sxc had URLs which still work today but are not recommended any more, 
 because they were not well structured. </p>
 <p>In 2sxc 11.10+ we introduced REST-API help dialogs in the Admin-UI, so from now on
@@ -261,29 +261,29 @@ you 2sxc will tell you what URLs you can use. </p>
 <p>Every 2sxc REST URL is built with the following parts:</p>
 <p><code>[root]/app/[app-identity]/[app-part]/[specifics]</code></p>
 <ol>
-<li>The <code>root</code> is determined by DNN and changes a bit by DNN version, portal, and language configuration. <a href="#part-1-the-root-path">more</a></li>
+<li>The <code>root</code> is determined by Dnn and changes a bit by Dnn version, portal, and language configuration. <a href="#part-1-the-root-path">more</a></li>
 <li>The <code>app-identity</code> says what app we&#39;re addressing. It&#39;s often <code>auto</code> for auto-detection, but when auto-detection isn&#39;t available, it&#39;s the app-folder name. <a href="#part-2-the-app-identity">more</a></li>
 <li>the <code>app-part</code> determines if we&#39;re accessing <a href="#part-3a-app-part-content">content</a>, <a href="#part-3b-app-part-query">query</a> or <a href="#part-3c-app-part-custom-c-web-api">api</a> of the app.</li>
 <li>The <code>specifics</code> is a path part describing what exactly what we&#39;re accessing and varies depending on the API.</li>
 </ol>
 <h2 id="part-1-the-root-path">Part 1: The Root Path</h2>
-<h3 id="the-root-in-dnn-9">The Root in DNN 9+</h3>
-<p>In DNN 9 the root was shortened to: <code>[portal-root-with-language]/api/2sxc/...</code></p>
-<div class="NOTE"><h5>Note</h5><p>The old root from DNN 7 and 8 still work in DNN 9 for compatibility. </p>
+<h3 id="the-root-in-dnn-9">The Root in Dnn 9+</h3>
+<p>In Dnn 9 the root was shortened to: <code>[portal-root-with-language]/api/2sxc/...</code></p>
+<div class="NOTE"><h5>Note</h5><p>The old root from Dnn 7 and 8 still work in Dnn 9 for compatibility. </p>
 </div>
-<h3 id="the-root-in-dnn-7-and-8">The Root in DNN 7 and 8</h3>
-<p>DNN 7 &amp; 8: <code>[portal-root-with-language]/desktopmodules/2sxc/api/...</code></p>
-<div class="WARNING"><h5>Warning</h5><p>An easy thing to overlook is that in DNN 7 and 8 it was <code>2sxc/api</code> but in DNN 9 it&#39;s <code>api/2sxc</code></p>
+<h3 id="the-root-in-dnn-7-and-8">The Root in Dnn 7 and 8</h3>
+<p>Dnn 7 &amp; 8: <code>[portal-root-with-language]/desktopmodules/2sxc/api/...</code></p>
+<div class="WARNING"><h5>Warning</h5><p>An easy thing to overlook is that in Dnn 7 and 8 it was <code>2sxc/api</code> but in Dnn 9 it&#39;s <code>api/2sxc</code></p>
 </div>
 <h3 id="the-root-in-oqtane">The Root in Oqtane</h3>
 <p>This is still WIP, but most likely it&#39;s <code>[domain]/[site-id-number]/api/2sxc/...</code></p>
 <h2 id="part-2-the-app-identity">Part 2: The App-Identity</h2>
 <h3 id="when-to-use-or-not-use-auto-detection-auto">When to use or not-use Auto-Detection <code>auto</code></h3>
 <p>The App-identity can be either the word <code>auto</code> to use auto-detection, or the app-folder-name if you can&#39;t use auto-detection. </p>
-<div class="TIP"><h5>Tip</h5><p>Whenever you&#39;re working in DNN and accessing the endpoint from a module that contains the same App, then you should use auto-detection. </p>
+<div class="TIP"><h5>Tip</h5><p>Whenever you&#39;re working in Dnn and accessing the endpoint from a module that contains the same App, then you should use auto-detection. </p>
 </div>
-<div class="WARNING"><h5>Warning</h5><p>Auto-Detection relies on DNN mechanisms to detect the <strong>Context</strong> (usually sending the <code>PageId</code> and <code>ModuleId</code> in HTTP-headers). 
-2sxc uses these headers to figure out what App you&#39;re using. If something fails in auto-detection, you&#39;re probably not using the normal DNN conventions for making REST calls.</p>
+<div class="WARNING"><h5>Warning</h5><p>Auto-Detection relies on Dnn mechanisms to detect the <strong>Context</strong> (usually sending the <code>PageId</code> and <code>ModuleId</code> in HTTP-headers). 
+2sxc uses these headers to figure out what App you&#39;re using. If something fails in auto-detection, you&#39;re probably not using the normal Dnn conventions for making REST calls.</p>
 </div>
 <div class="WARNING"><h5>Warning</h5><p>When calling an endpoint from another website or a mobile App, you cannot use <code>auto</code> but must specify the app-folder name.
 Or you can provide <strong>Context</strong> by adding <code>?PageId=...&amp;ModuleId=...</code> to the url.</p>

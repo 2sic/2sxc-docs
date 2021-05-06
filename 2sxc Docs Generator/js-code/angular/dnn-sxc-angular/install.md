@@ -24,7 +24,7 @@ Here's an extract from [Template Angular App](xref:JsCode.Angular.TemplateApp) -
     Tutorial
     ---------------------------------------------------------------------------
     This main module configuration has two special things it includes
-    - DnnInterceptor: this ensures all http-requests will have the neecessary DNN headers
+    - DnnInterceptor: this ensures all http-requests will have the neecessary Dnn headers
     - ContentManagerModule: this enables attributes like sxc-toolbar for editing UIs
     ---------------------------------------------------------------------------
 */
@@ -77,7 +77,7 @@ The most important bit is to ensure that
     This entry component extends the DnnAppComponent
     By doing this, it will
     - pick up any configuration attributes on the <app-root> tag
-    - automatically initialize all http adapters to auto-set DNN headers
+    - automatically initialize all http adapters to auto-set Dnn headers
     - ensure that hitting an enter-key on an input field doesn't submit the page, because asp.net would do that
 
     #StepBootstrap

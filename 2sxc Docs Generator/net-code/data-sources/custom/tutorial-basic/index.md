@@ -20,8 +20,8 @@ Here's what you should look into:
 
 ## Installing
 
-Just install the ZIP as a DNN package from the [Git Releases](https://github.com/2sic/datasource-tutorial-basic/releases). 
-This will add the DLLs containing the DataSources and the Configuration Content-Type to DNN as a Library.
+Just install the ZIP as a Dnn package from the [Git Releases](https://github.com/2sic/datasource-tutorial-basic/releases). 
+This will add the DLLs containing the DataSources and the Configuration Content-Type to Dnn as a Library.
 
 Now you can use this DataSource in any 2sxc App. 
 

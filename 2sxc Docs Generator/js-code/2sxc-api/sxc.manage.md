@@ -10,7 +10,7 @@ uid: JsCode.2sxcApi.Sxc.Manage
 The `manage` object helps you manage content, allowing you to `run(...)` [commands](xref:JsCode.Commands.Index) or to get [buttons or toolbars](xref:JsCode.Toolbars.Index). 
 
 ## How to use
-Each content-block (usually a DNN-Module) has it's own 2sxc-controller, which also gives you a prepared manage-object to work with. Here's an example
+Each content-block (usually a Dnn-Module) has it's own 2sxc-controller, which also gives you a prepared manage-object to work with. Here's an example
 
 ```html
 <a onclick='$2sxc(this).manage.run("layout")'>layout</a>

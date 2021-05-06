@@ -73,7 +73,7 @@ JS and CSS files are stored in your app folder and included in your output.
 
 👉 [](xref:Basics.Browser.JavaScript)
 
-👉 [Angular in DNN](xref:JsCode.Angular.Index)
+👉 [Angular in Dnn](xref:JsCode.Angular.Index)
 
 
 ## Automatic In-Page Editing Experience
