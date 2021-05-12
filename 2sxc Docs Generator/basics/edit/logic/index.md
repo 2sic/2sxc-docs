@@ -5,37 +5,9 @@ uid: Basics.Edit.Logic.Index
 
 > This is WIP for 2sxc v12 - it's not final yet
 
-## Object in v1 function call 
-
-This object has the following properties
-
-### Draft 2 2021-05-11 (will be changed to next draft below)
-`context`
-
-* `value`
-  * `current` - ❤
-  * `default`
-* `field`
-  * `name`
-  * `type`
-  * `value`
-* `fields`
-  * `FieldName`
-    * `name` - rarely needed
-    * `value` - ❤
-    * `type` - rarely needed
-* `culture`
-  * `code`
-  * `name`
-* `entity`
-  * `guid`
-  * `id`
-
-### Draft 3
+## Object in v1 function call _Draft #3_
 
 We'll change v1 to be `v1(data, context)` and in most cases it will just be `v1(data)` to keep things much simpler. 
-
-OR `(data) { return data.value; }` ? and put the version in another field
 
 `data` ❤
 * `value` - what used to be `value.current` and = `target.value` so it's a shorthand
@@ -43,7 +15,22 @@ OR `(data) { return data.value; }` ? and put the version in another field
 * `[FieldName]` - just the value of the other fields
 <!-- * `get(...)` - reserved - for future feature to get things like `FieldName.Setting.VisibleInEditUI` -->
 
-_Since fields are usualy pascal-case, there should almost never be a name collision (so a field called `value` or `default` in lower case). If such a collinios exists, people will have to rename the fields to work or differentiate in the `context` - because it's much simpler like this_
+Example for the _visibility_ of a field `FullName`
+
+```js
+data = {
+  "value": true,                        // It's visible because a formula set
+  "default": false,                     // Originally hidden till first/last were given
+  "FirstName": "Douglas",               // string
+  "LastName": "Adams",                  // string
+  "Birthday": Date(1952, 3, 11),        // JS date object
+  "Awards": ["guid-guid", "guid-guid"], // IDs pointing to other entities
+  "FullName": "Douglas Adams",          // calculated by formula
+  "Photo": "file:72",                   // link information
+  "Album": "",                          // library fields have no value
+}
+```
+
 
 
 `context` - additional information about the context we're running in
@@ -90,3 +77,15 @@ The reason it should be so simple is that in 99% of all cases the data is all yo
 ```
 v1(data, context) { ... }
 ```
+
+
+## Reasoning behind these standards (WIP)
+
+* Start with `v1(...)`
+  * The function must always start with `v1` so that future enhancements which need a new signature can be created without breaking stuff people made till then
+  * We could put the function type into another setting so that we could just write `(data) {...}` but that would cause problems when people post questions, because you would always have to ask which function version is being used. So writing `v1` may seem a bit less elegant, it will save us a lot of problems supporting users. 
+* Write a JS function syntax `v1(...) { }`
+  * In future we'll probably also support an Excel-like syntax like `=[FirstName] & " " & [LastName]`. For now we assume that the initial `=` will differentiate between the formula types
+* Use simple `data` object - this is what 95% of all formulas will need, so it should be there to keep most formulas really simple.
+* Offer a more complex `context` object - in rare cases you need to know more about the current situation and maybe access more data from the form. To keep the `data` simple, we must place other stuff on the `context` object.
+* Possible collisions on `data` if a field is called `value` - because the `data.value` should point to the current value. Since fields are usualy pascal-case, there should almost never be a name collision (so a field called `value` or `default` in **lower case**). If such a collisions exists, people will have to rename the fields for now. In future, we'll provide all the fields and more information in the `context`.

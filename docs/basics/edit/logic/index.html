@@ -116,45 +116,8 @@
 
 <blockquote><p>This is WIP for 2sxc v12 - it&#39;s not final yet</p>
 </blockquote>
-<h2 id="object-in-v1-function-call">Object in v1 function call</h2>
-<p>This object has the following properties</p>
-<h3 id="draft-2-2021-05-11-will-be-changed-to-next-draft-below">Draft 2 2021-05-11 (will be changed to next draft below)</h3>
-<p><code>context</code></p>
-<ul>
-<li><code>value</code><ul>
-<li><code>current</code> - ❤</li>
-<li><code>default</code></li>
-</ul>
-</li>
-<li><code>field</code><ul>
-<li><code>name</code></li>
-<li><code>type</code></li>
-<li><code>value</code></li>
-</ul>
-</li>
-<li><code>fields</code><ul>
-<li><code>FieldName</code><ul>
-<li><code>name</code> - rarely needed</li>
-<li><code>value</code> - ❤</li>
-<li><code>type</code> - rarely needed</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>culture</code><ul>
-<li><code>code</code></li>
-<li><code>name</code></li>
-</ul>
-</li>
-<li><code>entity</code><ul>
-<li><code>guid</code></li>
-<li><code>id</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="draft-3">Draft 3</h3>
+<h2 id="object-in-v1-function-call-draft-3">Object in v1 function call <em>Draft #3</em></h2>
 <p>We&#39;ll change v1 to be <code>v1(data, context)</code> and in most cases it will just be <code>v1(data)</code> to keep things much simpler. </p>
-<p>OR <code>(data) { return data.value; }</code> ? and put the version in another field</p>
 <p><code>data</code> ❤</p>
 <ul>
 <li><code>value</code> - what used to be <code>value.current</code> and = <code>target.value</code> so it&#39;s a shorthand</li>
@@ -162,8 +125,19 @@
 <li><code>[FieldName]</code> - just the value of the other fields
 <!-- * `get(...)` - reserved - for future feature to get things like `FieldName.Setting.VisibleInEditUI` --></li>
 </ul>
-<p><em>Since fields are usualy pascal-case, there should almost never be a name collision (so a field called <code>value</code> or <code>default</code> in lower case). If such a collinios exists, people will have to rename the fields to work or differentiate in the <code>context</code> - because it&#39;s much simpler like this</em></p>
-<p><code>context</code> - additional information about the context we&#39;re running in</p>
+<p>Example for the <em>visibility</em> of a field <code>FullName</code></p>
+<pre><code class="lang-js">data = {
+  &quot;value&quot;: true,                        // It&#39;s visible because a formula set
+  &quot;default&quot;: false,                     // Originally hidden till first/last were given
+  &quot;FirstName&quot;: &quot;Douglas&quot;,               // string
+  &quot;LastName&quot;: &quot;Adams&quot;,                  // string
+  &quot;Birthday&quot;: Date(1952, 3, 11),        // JS date object
+  &quot;Awards&quot;: [&quot;guid-guid&quot;, &quot;guid-guid&quot;], // IDs pointing to other entities
+  &quot;FullName&quot;: &quot;Douglas Adams&quot;,          // calculated by formula
+  &quot;Photo&quot;: &quot;file:72&quot;,                   // link information
+  &quot;Album&quot;: &quot;&quot;,                          // library fields have no value
+}
+</code></pre><p><code>context</code> - additional information about the context we&#39;re running in</p>
 <ul>
 <li><code>target</code> - everything about the target of the formula - usually current field - rarely used<ul>
 <li><code>type</code> = <code>Field.Value</code> or <code>Field.Setting</code> (Future: <code>Form.Variable</code> etc.)</li>
@@ -214,7 +188,22 @@
 <pre><code>v1(data) { return data.value; }
 </code></pre><p>The reason it should be so simple is that in 99% of all cases the data is all you need. In future we&#39;ll give them various pre-built templates like: </p>
 <pre><code>v1(data, context) { ... }
-</code></pre></article>
+</code></pre><h2 id="reasoning-behind-these-standards-wip">Reasoning behind these standards (WIP)</h2>
+<ul>
+<li>Start with <code>v1(...)</code><ul>
+<li>The function must always start with <code>v1</code> so that future enhancements which need a new signature can be created without breaking stuff people made till then</li>
+<li>We could put the function type into another setting so that we could just write <code>(data) {...}</code> but that would cause problems when people post questions, because you would always have to ask which function version is being used. So writing <code>v1</code> may seem a bit less elegant, it will save us a lot of problems supporting users. </li>
+</ul>
+</li>
+<li>Write a JS function syntax <code>v1(...) { }</code><ul>
+<li>In future we&#39;ll probably also support an Excel-like syntax like <code>=[FirstName] &amp; &quot; &quot; &amp; [LastName]</code>. For now we assume that the initial <code>=</code> will differentiate between the formula types</li>
+</ul>
+</li>
+<li>Use simple <code>data</code> object - this is what 95% of all formulas will need, so it should be there to keep most formulas really simple.</li>
+<li>Offer a more complex <code>context</code> object - in rare cases you need to know more about the current situation and maybe access more data from the form. To keep the <code>data</code> simple, we must place other stuff on the <code>context</code> object.</li>
+<li>Possible collisions on <code>data</code> if a field is called <code>value</code> - because the <code>data.value</code> should point to the current value. Since fields are usualy pascal-case, there should almost never be a name collision (so a field called <code>value</code> or <code>default</code> in <strong>lower case</strong>). If such a collisions exists, people will have to rename the fields for now. In future, we&#39;ll provide all the fields and more information in the <code>context</code>.</li>
+</ul>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
