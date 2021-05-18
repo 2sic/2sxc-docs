@@ -235,9 +235,9 @@
   </div>
 </div><style>.context-box-summary .data-entities, .context-box-summary .process-razor-app  { visibility: visible; } </style>
 
-<p>When <a class="xref" href="../data/index.html">Data</a> is used as <a class="xref" href="index.html">Content</a> it can also have <strong>Presentation</strong> settings. </p>
-<h2 id="example">Example</h2>
-<p>This is important because the <em>same piece</em> of content (like an Address) may need to be visualized different ways depending on how it&#39;s used. Let&#39;s say we have an Address of 2sic in Switzerland as Data, and we&#39;re using it in a few places:</p>
+<p>When <a class="xref" href="../data/index.html">Data</a> is used as <a class="xref" href="index.html">Content</a> it can also have <strong>Presentation</strong> settings. This is important because the <em>same piece</em> of content (like an Address) may need to be visualized different ways depending on how it&#39;s used.</p>
+<h2 id="quick-example">Quick Example</h2>
+<p>Let&#39;s say we have an Address of 2sic in Switzerland as Data, and we&#39;re using it in a few places:</p>
 <ol>
 <li>In the footer of the website we&#39;re just showing it, the template says how it&#39;s shown</li>
 <li>In the <em>We make Websites Page</em> we have a CTA (Call to Action) with two addresses, and the 2sic address is configured to be highlighted using the <strong>Presentation</strong></li>
@@ -246,7 +246,17 @@
 <h2 id="edit-behavior">Edit Behavior</h2>
 <p>Since the <strong>Presentation</strong> is directly connected to the Item it&#39;s showing, the Edit-UI will open both items for editing together:</p>
 <p><img src="assets/presentation-in-same-edit.png" width="100%" class="full-width"></p>
+<h2 id="more-use-case-examples">More Use-Case Examples</h2>
+<ol>
+<li>You have a template that shows simple content, and sometimes the title should be <code>&lt;h1&gt;</code>, sometimes <code>&lt;h2&gt;</code>, etc. Instead of creating 6 different templates, it would be easier to allow simple configuration of the heading-tag. This kind of presentation-configuration is handled by the Presentation-entity. </li>
+<li>Your Title/Text/Image allows the user to place the image no the right or on the left side. Instead of creating multiple templates, let&#39;s just let the user configure the variation he wants. This too is handled by the Presentation-entity. </li>
+<li>A complex template like a Google-map can configure 10-20 different parameters. These should not be set in the address which we will show - because these parameters have nothing to do with the address itself. So we need a way to provide 10-20 input-fields, drop-downs etc. - but not mix it with the address itself. These 10-20 input fields would be handled in a Presentation-entity. </li>
+<li>The same piece of information - like the address of 2sic - could be shown on different pages. Each instance might have some presentation configuration that differs from the other ones. It would be impossible to configure this if the config-fields were in the address-entity. So we place them in a separate Presentation-entity. </li>
+</ol>
 <h2 id="demo--defaults-behavior">Demo / Defaults Behavior</h2>
+<p>One thing we discovered, is that configurable templates can be annoying because often there is a default configuration which applies to 90%. For example, if you create a configurable heading-tag <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, usually 90% of the cases need <code>&lt;h1&gt;</code> because this is used on every page. Such defaults are handled easily by providing the template with a default-presentation entity containing these common settings. These will automatically be used if not overruled. </p>
+<div class="IMPORTANT"><h5>Important</h5><p>Presentation Settings are not changed in 90% of all cases, so use Defaults whenever possible!</p>
+</div>
 <p>Very often the <strong>Presentation</strong> contains default settings which are often left untouched. In these cases the Presentation-item is not stored, but the Demo-data is provided automatically. This allows you to update the defaults an any time and it will be reflected on all items which have unmodified Presentation settings.</p>
 <p>Here&#39;s what Presentation looks like when inheriting defaults:</p>
 <p><img src="assets/presentation-disabled.png" width="100%" class="full-width"></p>
@@ -258,9 +268,50 @@
 <h2 id="use-in-code">Use in Code</h2>
 <p>In C# you will usually do things like <code>@Content.Presentation.Color</code> or similar. Check the <a class="xref" href="../../net-code/dynamic-code/content.html">C# API Docs for this</a>.</p>
 <p>In Tokens you will usually do things like <code>[Content:Presentation:Color]</code>. Check the <a class="xref" href="../server/render/tokens/index.html">Tokens docs</a>.</p>
+<h2 id="real-example">Real Example</h2>
+<p>Example: Using the Presentation to control the heading-tag in a template</p>
+<h3 id="the-content-types">The Content-Types</h3>
+<ol>
+<li>Simple Content - with the following fields<ul>
+<li><code>Title</code> (text, 1 line)</li>
+<li><code>Content</code> (wysiwyg-text)</li>
+<li><code>Image</code> (link to an image file)</li>
+</ul>
+</li>
+<li>Presentation for Simple Content with the following field<ul>
+<li><code>Heading</code> (text, drop-down containing h1, h2, h3, h4, h5, h6)</li>
+</ul>
+</li>
+</ol>
+<p>The template configuration specifies the simple-content as the content type, and the presentation-for-simple-content as the Presentation-type. The user now has an additional section in the Edit-UI to configure the presentation. </p>
+<h3 id="the-template">The Template</h3>
+<p>This The template would then contain the following fragment:</p>
+<h4 id="token">Token</h4>
+<p>Instead of the classic </p>
+<p><code>&lt;h1&gt;[Content:Title]&lt;/h1&gt;</code></p>
+<p>it would have </p>
+<p><code>&lt;[Presentation:Heading]&gt;[Content.Title]&lt;/[Presentation:Heading]&gt;</code></p>
+<h4 id="razor">Razor</h4>
+<p>Instead of the classic </p>
+<p><code>&lt;h1&gt;@Content.Title&lt;/h1&gt;</code></p>
+<p>...it would have  </p>
+<p><code>&lt;@Presentation.Heading&gt;@Content.Title&lt;/@Presentation.Heading&gt;</code></p>
+<h3 id="power-feature-using-default-values-in-this-presentation">Power-Feature: Using Default-Values in this Presentation</h3>
+<p>Now remember that probably 90% of all use cases for this will want an <code>&lt;h1&gt;</code> tag. It would be annoying to have to specify this every time, so please create a demo-entity and assign it in the template-configuration. </p>
+<h2 id="features-and-behavior-of-presentation-data">Features and Behavior of Presentation-Data</h2>
+<ol>
+<li>Presentation-Types are optional, templates don&#39;t require them</li>
+<li>Default-Values are optional, but highly recommended</li>
+<li>Data / Values in a presentation-content-type are not indexed by the search</li>
+<li>Presentation-Items are unique for every use. So if you show a piece of content in many places, each occurrence can have different presentation-settings</li>
+<li>Content-Items can have a presentation...</li>
+<li>...List Headers can have their own, different presentation. This is used to configure the list (for example, how many items to show before paging)</li>
+<li>...and List Headers can also have their own default presentations for fallback</li>
+<li>The UI always allows the editor to revert back to the default-settings</li>
+</ol>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc v2.0</li>
+<li>Introduced in 2sxc v3.0</li>
 </ol>
 </article>
           </div>

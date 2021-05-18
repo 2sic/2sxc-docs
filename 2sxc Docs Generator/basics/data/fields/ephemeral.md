@@ -23,6 +23,9 @@ To configure a field to _not save_ and be temporary / ephemeral, use this settin
 
 <img src="./assets/ephemeral.jpg">
 
+> [!TIP]
+> Since these fields are usually used as variables, we recommend that you name the `Var...`. 
+> Example: `VarShowAdvanced`.
 
 ## History
 
