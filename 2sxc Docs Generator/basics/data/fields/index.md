@@ -12,6 +12,12 @@ This explains **Content-Type Fields**. For an overview check out [](xref:Basics.
 
 The EAV (Entity-Attribute-Value) system and 2sxc is all about data. The data in the Attributes (aka Fields, Properties) are have a _Type_ This **Value-Type** or **Data-Type** describes how data is stored (persisted) in various formats (SQL, JSON, XML) and how it's used in code (C#, JavaScript, Tokens, Angular, ...). 
 
+## General Settings for all Fields
+
+[General Settings](xref:Basics.Data.Fields.GeneralSettings) contain core information about a field like name, help-text and more. Every field has these configurations. 
+
+## Field Types
+
 These are the core **Field-Types**. Each may have one or more **Input-Types**.
 
 1. [Boolean](xref:Basics.Data.Fields.Boolean) - basic true/false or yes/no values
@@ -23,9 +29,7 @@ These are the core **Field-Types**. Each may have one or more **Input-Types**.
 1. [Number](xref:Basics.Data.Fields.Number) - for any kind of number like 1, 2, 3 or with decimals
 1. [String](xref:Basics.Data.Fields.String) - for string types or when you other options don't fit
 
-## General Settings for all Fields
 
-[@All](xref:Basics.Data.Fields.GeneralSettings) is not a field-type, but contains core information about a field like name, help-text and more. Every field has these configurations. 
 
 
 ## History

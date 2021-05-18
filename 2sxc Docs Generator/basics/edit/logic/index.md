@@ -23,7 +23,8 @@ data = {
   "default": false,                     // Originally hidden till first/last were given
   "FirstName": "Douglas",               // string
   "LastName": "Adams",                  // string
-  "Birthday": Date(1952, 3, 11),        // JS date object
+  "Birthday": Date(1952, 03, 11),           // JS date object; format not yet final
+  "Birthday": "1952-03-11T00:00:00.000Z",   // JS date object; format not yet final
   "Awards": ["guid-guid", "guid-guid"], // IDs pointing to other entities
   "FullName": "Douglas Adams",          // calculated by formula
   "Photo": "file:72",                   // link information
@@ -39,14 +40,15 @@ data = {
   * `name` - field name or setting-name, so `FirstName` or `VisibleInEditUI`
   * `value` - current value
   * `default` = default value
+* `entity`
+  * `id`
+  * `guid`
 * `culture`
   * `code`
   * `name`
+* get
 
 **Future, don't implement yet**
-* `entity`
-  * `guid`
-  * `id`
 * `entities`
   * [entity]
     * `guid`
