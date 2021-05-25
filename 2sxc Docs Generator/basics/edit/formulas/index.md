@@ -39,6 +39,10 @@ todo #todoc
 
 👉 See the [JS Formula Documentation](xref:JsCode.EditForm.Formulas.Index)
 
+## More
+
+You should also check [Ephemeral / Temporary Fields](xref:Basics.Data.Fields.Ephemeral) as they are very useful together with Formulas.
+
 ---
 
 ## History

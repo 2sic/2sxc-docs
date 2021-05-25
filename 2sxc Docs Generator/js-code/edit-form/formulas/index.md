@@ -13,7 +13,7 @@ Formulas let you create JavaScript functions to calculate **Values** and **Prope
 
 ## Examples
 
-### Set Field Value to `TODO` if empty
+### Set Field _Value_ to _TODO_ if empty
 
 This formula would be applied to the fields **Value**.
 
@@ -23,7 +23,7 @@ v1(data) {
 }
 ```
 
-### Set Visibility of a Field based on a Toggle Switch
+### Set Field _Visibility_ based on another Toggle Switch
 
 This formula would be applied to the **Setting** `Visible`.
 
