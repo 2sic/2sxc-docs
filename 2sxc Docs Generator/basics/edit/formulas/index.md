@@ -6,6 +6,11 @@ uid: Basics.Edit.Formulas.Index
 
 # Formulas (Logic) in the Edit Form
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
+
 2sxc 12 introduces _Formulas_ which let you dynamically change all kind of things in the edit UI. With it you can dynamically change 
 
 1. the **value** of the field
@@ -20,24 +25,24 @@ uid: Basics.Edit.Formulas.Index
 
 <img src="./assets/formulas-demo.gif" width="100%" />
 
-## How To Create Formulas
+## How To Create & Develop Formulas
 
-Formulas
+Formulas are stored as normal data as part of the Content-Type. You can configure them in the general field settings here: 
+
+TODO: IMG
+
+To develop Formulas we suggest you try the 
+
+👉 [Interactive Formula Designer](xref:Basics.Edit.Formulas.Designer)
 
 
-## Interactive Formula Designer
+## Specs and JavaScript Documentation
 
-todo #todoc
+👉 Check out the [JS Formula Documentation](xref:JsCode.EditForm.Formulas.Index)
 
+👉 Also read about the [Formula Specs](xref:Basics.Edit.Formulas.Specs)
 
-
-## Keys for the Formula Target
-
-👉 See the [Formula Specs](xref:Basics.Edit.Formulas.Specs)
-
-## JavaScript APIs in the Formula
-
-👉 See the [JS Formula Documentation](xref:JsCode.EditForm.Formulas.Index)
+👉 Also read about the new [empty-end Field to close a Field-Group](xref:Basics.Data.Fields.Empty-End)
 
 ## More
 

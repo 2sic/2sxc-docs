@@ -120,12 +120,12 @@
 It also shows you the UIs, how to configure etc. </p>
 </blockquote>
 <h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-todo-if-empty">Set Field Value to <code>TODO</code> if empty</h3>
+<h3 id="set-field-value-to-todo-if-empty">Set Field <em>Value</em> to <em>TODO</em> if empty</h3>
 <p>This formula would be applied to the fields <strong>Value</strong>.</p>
 <pre><code class="lang-js">v1(data) {
   return data.value ? data.value : &#39;TODO&#39;;
 }
-</code></pre><h3 id="set-visibility-of-a-field-based-on-a-toggle-switch">Set Visibility of a Field based on a Toggle Switch</h3>
+</code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
 <p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
 <pre><code class="lang-js">v1(data) {
   return data.ShowAdvanced;
@@ -223,13 +223,14 @@ This is important because we cannot guess when the API will change, and we also 
 </li>
 </ul>
 <h2 id="tips-and-tricks">Tips and Tricks</h2>
-<ul>
+<ol>
 <li>You can always add a <code>console.log(data, context);</code> or similar in your code to see in real time what&#39;s being processed.</li>
 <li>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</li>
-</ul>
+<li>For now, we strongly recommend to use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>, but with experience the recommendation may change. </li>
+</ol>
 <h2 id="working-with-this-experimental-">Working with <code>this</code> <em>Experimental! ⚠</em></h2>
 <p>The formula is pre-compiled and executed again and again. Because of this, the <code>this</code> object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. </p>
-<p>Future features</p>
+<h2 id="future-features">Future features</h2>
 <ol>
 <li>Ability to read other properties of fields - like check if a field is visible</li>
 <li>Excel-style formula syntax using <code>=[Field]</code></li>

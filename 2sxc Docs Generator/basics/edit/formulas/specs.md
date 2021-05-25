@@ -4,7 +4,12 @@ uid: Basics.Edit.Formulas.Specs
 
 <img src="./assets/formulas-banner.svg" width="100%" >
 
-# Formulas Technical Specs for the Edit Form (WIP)
+# Formulas Technical Specs
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
 
 These are additional infos so you understand the behavior better. 
 
@@ -21,32 +26,45 @@ The target key of a formula determines what your Formula will affect. Since `dat
     * `Field.Settings.Disabled` - controls that the field can be interacted with or is disabled. `true` means it's blocked  
     * `Field.Settings.Required` - shows if a field is required  
         _warning_ required isn't fully implemented ATM - the form will not always reliably enforce this if it's changed dynamically
+    * `Field.Settings.`_[Anything]_ - other Settings that can be changed. We have only tested `Collapsed` as of v12.01
 
-## Special Scenarios when Changing Settings
+> [!TIP]
+> Remember that `data.value` contains the value which would be used if the formula didn't run. 
+>
+> If you need the value in the field/setting at form-load, use `data.default`. 
+> And if you are doing some prefill-magic, you can get that on `data.prefill`. 
+>
+> 👉 Read more about this is the [JS Docs](xref:JsCode.EditForm.Formulas.Index).
 
-#### `Field.Settings.Name` - The Label of a Field
+## Formulas for General Settings
+
+
+#### `Field.Settings.Name` - Label of a Field
 
 This can be changed as needed. We recommend that you don't add `*` to the name, as this is the default indicator for required and would confuse users. 
 
-#### `Field.Settings.Visible` - The Show/Hide Setting
+#### `Field.Settings.Visible` - Show/Hide a Field
 
 When you set this on a group, it applies to all properties in the group. So hiding a group hides all fields inside it, showing it shows all fields inside it. 
 
-#### `Field.Settings.Disabled` - The Enable/Disable Setting
+#### `Field.Settings.Disabled` - Enable/Disable a Field
 
 If you return `true` to set `Disabled=true` it will disable the UI. Of course if the field is already not visible, the user won't see this. 
 
 > [!IMPORTANT]
 > Even if you set `Disabled=false` other rules may override this. For example, if the field may not be translated and you're on a secondary language, it will still remain disabled.
 
-Todo: does disabling a group work?
+> [!IMPORTANT]
+> Disabling a group will not disable all the fields in it. We may consider implementing this some day, but as of now it won't happen, so you'll need to disable each field if this is what you need. 
 
-#### `Field.Settings.Required`
+#### `Field.Settings.Required` - Mark Field as Required
 
 This determines if the Field is required. 
 
 > [!IMPORTANT]
 > Changing the required changes the `*` indicator on the UI, but as of v12.01 it doesn't yet affect the validity checks in the form. This is an important limitation to be aware of. 
+
+## Formulas for Other Settings
 
 #### `Field.Settings.Collapsed` - for Groups
 
@@ -56,37 +74,42 @@ This is a setting which only would affect group fields. Setting `Collapsed` to `
 > Remember that `data.default` will always give you the initial state of this setting.
 
 
-
-
-Additional Keys
+#### `Field.Settings.`_[Anything]_
 
 Since many controls can have other settings these can be controlled by formulas as well. 
 
-_Important_ We haven't tried every field and some may not have the expected result, since the form has never been this dynamic before. We'll work on fixing issues as we hear about them. 
+_Important_ We haven't tried every setting and some may not have the expected result, since the form has never been this dynamic before. We'll work on fixing issues as we hear about them. 
 
 
-## When do Formulas Run?
+
+
+## Formula Lifecycle (WIP)
+
+#### When do Formulas Run?
 
 As of now, they run whenever any data changes in the form. This can mean that they run multiple times because if formulas depend on each other, there may be a few cycles till all values stabilize. 
 
 In future we'll probably provide more settings to control how often they run. 
 
+#### Missing Context Information
 
-## Are Formulas Sometimes Disabled
+As of now the formulas always run on every change detection. The following information is currently _not_ yet given to the formula:
 
-No - even Formulas whose result is discarded are still run. This is not a final decision but as of now it's just how it works. 
+* What phase of the lifecycle the formula is on (init, pre-render, etc.)
+* Events which happened before
+* Run-count
 
+We'll consider how to handle this best, but for now, you simply don't have the information in your formula.
 
-## Lifecycle - maybe on own page TODO:
+#### Can Formulas be Disabled?
 
+Stored Formulas can be disabled with a toggle.
 
+But you cannot disable Formulas at runtime (like using another value to control that). Even Formulas whose result is discarded are still run. This is not a final decision but as of now it's just how it works. If you need to conditionally run your formula, just put the condition into the formula itself. 
 
+#### Running Formulas on Specific Events (WIP)
 
-## Do Formulas need to be Pure Functions?
-
-We strongly recommend this for now, but with experience the recommendation may change. 
-
-
+This is not yet possible. 
 
 
 
@@ -100,3 +123,10 @@ We strongly recommend this for now, but with experience the recommendation may c
 * Use simple `data` object - this is what 95% of all formulas will need, so it should be there to keep most formulas really simple.
 * Offer a more complex `context` object - in rare cases you need to know more about the current situation and maybe access more data from the form. To keep the `data` simple, we must place other stuff on the `context` object.
 * Possible collisions on `data` if a field is called `value` - because the `data.value` should point to the current value. Since fields are usualy pascal-case, there should almost never be a name collision (so a field called `value` or `default` in **lower case**). If such a collisions exists, people will have to rename the fields for now. In future, we'll provide all the fields and more information in the `context`.
+
+
+---
+
+## History
+
+* Introduced in 2sxc 12.01

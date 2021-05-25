@@ -128,18 +128,16 @@ The `context` contain additional information about the context we're running in.
 
 ## Tips and Tricks
 
-* You can always add a `console.log(data, context);` or similar in your code to see in real time what's being processed.
-* You can also add a line `debugger;` and the browser will stop at this line so you can inspect the variables and watch your code.
-
+1. You can always add a `console.log(data, context);` or similar in your code to see in real time what's being processed.
+1. You can also add a line `debugger;` and the browser will stop at this line so you can inspect the variables and watch your code.
+1. For now, we strongly recommend to use Formulas as [pure functions](https://en.wikipedia.org/wiki/Pure_function), but with experience the recommendation may change. 
 
 
 ## Working with `this` _Experimental! ⚠_
 
 The formula is pre-compiled and executed again and again. Because of this, the `this` object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. 
 
-
-
-Future features
+## Future features
 
 1. Ability to read other properties of fields - like check if a field is visible
 1. Excel-style formula syntax using `=[Field]`

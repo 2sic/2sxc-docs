@@ -2,7 +2,14 @@
 uid: Basics.Edit.Formulas.Designer
 ---
 
+<img src="./assets/formulas-banner.svg" width="100%" >
+
 # Formula Designer
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
 
 In the Edit-UI you can always enter a Debug-Mode to develop / debug your formulas using real life data. 
 
