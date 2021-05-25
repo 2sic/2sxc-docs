@@ -26,7 +26,7 @@ The target key of a formula determines what your Formula will affect. Since `dat
     * `Field.Settings.Disabled` - controls that the field can be interacted with or is disabled. `true` means it's blocked  
     * `Field.Settings.Required` - shows if a field is required  
         _warning_ required isn't fully implemented ATM - the form will not always reliably enforce this if it's changed dynamically
-    * `Field.Settings.`_[Anything]_ - other Settings that can be changed. We have only tested `Collapsed` as of v12.01
+    * `Field.Settings.`_[Anything]_ - other Settings that can be changed
 
 > [!TIP]
 > Remember that `data.value` contains the value which would be used if the formula didn't run. 
@@ -83,7 +83,7 @@ _Important_ We haven't tried every setting and some may not have the expected re
 
 
 
-## Formula Lifecycle (WIP)
+## Formula Lifecycle
 
 #### When do Formulas Run?
 

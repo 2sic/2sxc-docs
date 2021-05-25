@@ -132,8 +132,11 @@ It also shows you the UIs, how to configure etc. </p>
 }
 </code></pre><h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
 <p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">
-</code></pre><h2 id="v1-function-specs">V1 Function Specs</h2>
+<pre><code class="lang-js">v1(data) { 
+  return data.default + (data.EditInstructions || data.ListInstructions ? &#39; ✅&#39; : &#39;&#39;); 
+}
+</code></pre><p><em>Note that we&#39;re returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
+<h2 id="v1-function-specs">V1 Function Specs</h2>
 <ol>
 <li>All functions must be called <code>v1</code>, it must be lower case
 This is important because we cannot guess when the API will change, and we also expect to introduce an Excel-like syntax which would begin with <code>=</code></li>
@@ -184,31 +187,33 @@ This is important because we cannot guess when the API will change, and we also 
 </code></pre><h2 id="the-context-object">The <code>context</code> Object</h2>
 <p>The <code>context</code> contain additional information about the context we&#39;re running in.</p>
 <ul>
+<li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
 <li><code>target</code> - everything about the target of the formula - the current field<ul>
-<li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Setting</code> (Future: <code>Form.Variable</code> etc.) </li>
-<li><code>name</code> - field name or setting-name, so <code>FirstName</code> or <code>Visible</code> - TODO: UNSURE IF THIS IS ALREADY HAPPENING</li>
-<li><code>value</code> - current value</li>
-<li><code>default</code> = default value</li>
+<li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Settings</code> (Future: <code>Form.Variable</code> etc.) </li>
+<li><code>name</code> - field name or setting-name, so <code>FirstName</code> or <code>Visible</code></li>
 <li><code>entity</code><ul>
 <li><code>id</code> - the id of the entity - 0 if it&#39;s new</li>
 <li><code>guid</code> - the GUID of the entity, always provided</li>
-<li><code>type</code> - TODO<ul>
-<li><code>id</code></li>
-<li><code>name</code></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><code>culture</code><ul>
 <li><code>code</code></li>
-<li><code>name</code></li>
+<li><code>name</code> - this will return <code>undefined</code> scenarios where no languages are activated</li>
 </ul>
 </li>
 <li><code>experimental</code> - this is for internal APIs we&#39;re testing, they are not public. You can use them, but expect the APIs to change in near future</li>
 </ul>
-<p><strong>Future, don&#39;t implement yet</strong></p>
+<h2 id="using-the-contextcache">Using the <code>context.cache</code></h2>
+<p>In some cases you may want to remember a result of intermediate work. For this you can use the <code>context.cache</code> object. A simple exammple would be if you only want to run something once, in which case you could write something like this</p>
+<pre><code class="lang-js">v1(data, context) {
+  // don&#39;t do anything on following runs / return existing value
+  if(context.cache.notFirstRun) return data.value;
+  context.cache.notFirstRun = true;
+  return true;
+}
+</code></pre><p><strong>Future, don&#39;t implement yet</strong></p>
 <ul>
 <li>getSettings(...)</li>
 <li>getEntities(...)</li>
@@ -228,8 +233,11 @@ This is important because we cannot guess when the API will change, and we also 
 <li>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</li>
 <li>For now, we strongly recommend to use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>, but with experience the recommendation may change. </li>
 </ol>
-<h2 id="working-with-this-experimental-">Working with <code>this</code> <em>Experimental! ⚠</em></h2>
-<p>The formula is pre-compiled and executed again and again. Because of this, the <code>this</code> object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. </p>
+<!-- 
+## Working with `this` _Experimental! ⚠_
+
+The formula is pre-compiled and executed again and again. Because of this, the `this` object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. 
+-->
 <h2 id="future-features">Future features</h2>
 <ol>
 <li>Ability to read other properties of fields - like check if a field is visible</li>

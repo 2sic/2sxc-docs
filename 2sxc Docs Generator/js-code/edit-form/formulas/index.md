@@ -38,9 +38,12 @@ v1(data) {
 This formula would be applied to a group headings **Setting** `Name` which is the visible title:
 
 ```js
-
+v1(data) { 
+  return data.default + (data.EditInstructions || data.ListInstructions ? ' ✅' : ''); 
+}
 ```
 
+_Note that we're returning `data.default` and some more text, not `data.value`. This is because the value would change on each cycle, but `data.default` contains the original value._
 
 
 ## V1 Function Specs
@@ -99,21 +102,30 @@ data = {
 
 The `context` contain additional information about the context we're running in.
 
+* `cache` - an object which is only for this function and will be persisted across calls - use it to save temporary values
 * `target` - everything about the target of the formula - the current field
-  * `type` = What the function processes `Field.Value` or `Field.Setting` (Future: `Form.Variable` etc.) 
-  * `name` - field name or setting-name, so `FirstName` or `Visible` - TODO: UNSURE IF THIS IS ALREADY HAPPENING
-  * `value` - current value
-  * `default` = default value
+  * `type` = What the function processes `Field.Value` or `Field.Settings` (Future: `Form.Variable` etc.) 
+  * `name` - field name or setting-name, so `FirstName` or `Visible`
   * `entity`
     * `id` - the id of the entity - 0 if it's new
     * `guid` - the GUID of the entity, always provided
-    * `type` - TODO
-      * `id`
-      * `name`
 * `culture`
   * `code`
-  * `name`
+  * `name` - this will return `undefined` scenarios where no languages are activated
 * `experimental` - this is for internal APIs we're testing, they are not public. You can use them, but expect the APIs to change in near future
+
+## Using the `context.cache`
+
+In some cases you may want to remember a result of intermediate work. For this you can use the `context.cache` object. A simple exammple would be if you only want to run something once, in which case you could write something like this
+
+```js
+v1(data, context) {
+  // don't do anything on following runs / return existing value
+  if(context.cache.notFirstRun) return data.value;
+  context.cache.notFirstRun = true;
+  return true;
+}
+```
 
 **Future, don't implement yet**
 * getSettings(...)
@@ -132,10 +144,11 @@ The `context` contain additional information about the context we're running in.
 1. You can also add a line `debugger;` and the browser will stop at this line so you can inspect the variables and watch your code.
 1. For now, we strongly recommend to use Formulas as [pure functions](https://en.wikipedia.org/wiki/Pure_function), but with experience the recommendation may change. 
 
-
+<!-- 
 ## Working with `this` _Experimental! ⚠_
 
 The formula is pre-compiled and executed again and again. Because of this, the `this` object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. 
+-->
 
 ## Future features
 

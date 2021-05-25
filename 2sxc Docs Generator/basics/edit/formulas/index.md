@@ -27,13 +27,15 @@ uid: Basics.Edit.Formulas.Index
 
 ## How To Create & Develop Formulas
 
-Formulas are stored as normal data as part of the Content-Type. You can configure them in the general field settings here: 
+Formulas are stored as normal data as part of the Content-Type. As shown in this image, all fields having formulas are easy to discern:
 
-TODO: IMG
+<img src="./assets/fields-with-formulas.jpg" width="100%">
 
-To develop Formulas we suggest you try the 
+You can create or edit Formulas them in the general field settings:
 
-👉 [Interactive Formula Designer](xref:Basics.Edit.Formulas.Designer)
+<img src="./assets/formulas-in-general-field-settings.jpg" width="100%">
+
+👉 To develop Formulas we suggest you try the [Interactive Formula Designer](xref:Basics.Edit.Formulas.Designer)
 
 
 ## Specs and JavaScript Documentation
