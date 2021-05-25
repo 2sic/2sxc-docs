@@ -11,7 +11,10 @@ This explains **Empty Fields**. For an overview check out [](xref:Basics.Data.In
 ---
 
 
-Empty data is a basic [data type](xref:Basics.Data.Fields.Index) and is for adding things to the UI (input form) which doesn't actually save any data. A common use is group-headers which contain a text, but don't result in data being stored.  
+Empty data is a basic [data type](xref:Basics.Data.Fields.Index) and is for adding things to the UI (input form) which doesn't actually save any data. A common use is group-headers which contain a text, but don't result in data being stored.
+
+> [!TIP]
+> 2sxc 12.01 also introduces [Ephemeral Fields](xref:Basics.Data.Fields.Ephemeral) which are normal fields which don't save the value. Use that for fields which should behave like variables and not be saved. 
 
 ## Features 
 
@@ -20,6 +23,7 @@ The basic **empty** field doesn't have any features, since all the features are 
 ## Sub-Types of Empty Fields
 
 1. [empty-default](xref:Basics.Data.Fields.Empty-Default) - a UI-only field for things like grouping fields together under a title
+1. [empty-end](xref:Basics.Data.Fields.Empty-End) - a UI-only field to close a Field-Group
 
 ## Shared Settings
 
