@@ -166,8 +166,9 @@ This is important because we cannot guess when the API will change, and we also 
 <p>The data object contains the most commonly used data, specifically</p>
 <ul>
 <li><code>value</code> - the value which would be used if the function didn&#39;t run</li>
-<li><code>default</code> - the start value this thing would have</li>
+<li><code>default</code> - the default value this thing would have based on field configuration (use for reset to default)</li>
 <li><code>prefill</code> - the prefill value</li>
+<li><code>initial</code> - the initial value this setting/field had when it was loaded (use for reset to initial) <em>new in 12.02</em></li>
 <li><code>[FieldName]</code> - all the values of the other fields</li>
 </ul>
 <p>Example of the <code>data</code> object in a Formula which would set the <code>Visible</code> property of a field <code>FullName</code>:</p>
@@ -188,6 +189,7 @@ This is important because we cannot guess when the API will change, and we also 
 <p>The <code>context</code> contain additional information about the context we&#39;re running in.</p>
 <ul>
 <li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
+<li><code>debug</code> - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. <em>new in 12.02</em></li>
 <li><code>target</code> - everything about the target of the formula - the current field<ul>
 <li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Settings</code> (Future: <code>Form.Variable</code> etc.) </li>
 <li><code>name</code> - field name or setting-name, so <code>FirstName</code> or <code>Visible</code></li>

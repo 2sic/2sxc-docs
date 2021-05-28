@@ -76,8 +76,9 @@ Common Mistakes
 The data object contains the most commonly used data, specifically
 
 * `value` - the value which would be used if the function didn't run
-* `default` - the start value this thing would have
+* `default` - the default value this thing would have based on field configuration (use for reset to default)
 * `prefill` - the prefill value
+* `initial` - the initial value this setting/field had when it was loaded (use for reset to initial) _new in 12.02_
 * `[FieldName]` - all the values of the other fields
 
 Example of the `data` object in a Formula which would set the `Visible` property of a field `FullName`:
@@ -103,6 +104,7 @@ data = {
 The `context` contain additional information about the context we're running in.
 
 * `cache` - an object which is only for this function and will be persisted across calls - use it to save temporary values
+* `debug` - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. _new in 12.02_
 * `target` - everything about the target of the formula - the current field
   * `type` = What the function processes `Field.Value` or `Field.Settings` (Future: `Form.Variable` etc.) 
   * `name` - field name or setting-name, so `FirstName` or `Visible`
