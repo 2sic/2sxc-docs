@@ -24,7 +24,12 @@ So if your template is called `_overview.cshtml` your icon should be `_overview.
 
 ## Icons for Content-Types
 
-Content-Types don't have a folder dedicated to them, so this is configuration based. Just edit the Content-Type Metadata and on the Icon-field, drop the image you want for your content-type. 
+Content-Types don't have a file (like a Template), so this is only configuration based. 
+
+Just edit the Content-Type Metadata and on the Icon-field you have two options:
+
+1. Just drop the image you want for your content-type and let ADAM manage it
+1. Place the file in the [App-folder](xref:Basics.App.FolderStructure) and reference it using `[App:Path]/your-file.png` _v12_
 
 ---
 
