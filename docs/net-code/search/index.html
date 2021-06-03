@@ -118,31 +118,103 @@
 <p>You can easily modify how data in your modules appear in the Dnn search results. </p>
 <div class="TIP"><h5>Tip</h5><p>Before you start, make sure you understand how the <a class="xref" href="../../basics/cms/search/index.html">Search Index and Customizations work</a>.</p>
 </div>
-<h2 id="evolution-of-customizing-search">Evolution of Customizing Search</h2>
-<p>To better understand your options and existing code out in the wild, it helps to understand how this feature developed.</p>
-<h4 id="first-implementation-in-2sxc-6">First Implementation in 2sxc 6</h4>
-<p>The initial versions of 2sxc didn&#39;t offer this feature, it was added in v6. 
-At that time, the idea was that you would create special functions in your Razor files which contained the logic for customizing the results. 
-That mechanism still works and you&#39;ll find it in many older apps, but we strongly discourage it&#39;s use. </p>
-<h4 id="neutralizing-changes-in-2sxc-10">Neutralizing Changes in 2sxc 10</h4>
-<p>In 2sxc v10 we created a new improved base class for Razor files called <a class="xref" href="../razor/razor-component.html">RazorComponent</a> and used the opportunity to improve the signature of the API because the original implementation used some Dnn objects, and we anticipated that we would make this available for other platforms as well. This was a minor change. It still works today, but we discourage it&#39;s use. </p>
-<h4 id="code-behind-in-2sxc-11">Code Behind in 2sxc 11</h4>
-<p>Razor Files were getting very technical if they had this code, and we decided there must be a better way to do this. 
-We invented the concept of <a class="xref" href="../razor/code-behind.html">Code Behind</a> and let developers place the logic there. This was a major improvement, but still not perfect. We discourage it&#39;s use. </p>
-<h4 id="separate-search-customization-in-2sxc-12">Separate Search-Customization in 2sxc 12</h4>
-<p>When we finally implemented 2sxc for Oqtane we realized that our concept still had weaknesses: </p>
-<ol>
-<li>Razor files containing search-customization code were confusing</li>
-<li>Token templates were not able to customize their search result</li>
-<li>Search customizations may vary between platforms (and some may not offer search at all)</li>
-<li>Having the code in the Razor-file actually caused problem when creating hybrid apps</li>
-<li>Often customize search was used for simply disabling search results - which was overkill and confusing</li>
-<li>If many Views needed the same customizations it was hard to share the code</li>
-</ol>
-<p>Because of this we decided to change the implementation completely. As of 2sxc 12 search customization happens in a special code file which can be anywhere in your App. </p>
-<div class="TIP"><h5>Tip</h5><p>As of 2sxc 12 we only recommend this new approach using the separate code file. </p>
-<p>The previous approach may be disabled some day.</p>
+<div class="NOTE"><h5>Note</h5><p>This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file. </p>
+<p>Previous versions used another mechanism which is deprecated. If you need to know more, read the <a class="xref" href="../razor/obsolete.html#data-and-search-customization">Obsolete Razor</a> docs.</p>
 </div>
+<h2 id="programming-a-search-mapper">Programming a Search Mapper</h2>
+<p>Here&#39;s an example of a <code>SearchMapper.cs</code>: </p>
+<pre><code class="lang-c#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using ToSic.Sxc.Context;
+using ToSic.Sxc.Search;
+/*
+Custom code which views use to customize how dnn search treats data of that view.
+It&#39;s meant for customizing the internal indexer of the platform, _not_ for Google Search.
+
+To use it, create a custom code (.cs) file which implements ICustomizeSearch interface.
+You can also inherit from a DynamicCode base class (like Code12) if you need more functionality.
+
+For more guidance on search customizations, see https://r.2sxc.org/customize-search
+*/
+public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
+{
+    /// &lt;summary&gt;
+    /// Populate the search
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;searchInfos&quot;&gt;Dictionary containing the streams and items in the stream for this search.&lt;/param&gt;
+    /// &lt;param name=&quot;moduleInfo&quot;&gt;Module information with which you can find out what page it&#39;s on etc.&lt;/param&gt;
+    /// &lt;param name=&quot;beginDate&quot;&gt;Last time the indexer ran - because the data you will get is only what was modified since.&lt;/param&gt;
+    public void CustomizeSearch(Dictionary&lt;string, List&lt;ISearchItem&gt;&gt; searchInfos, IModule moduleInfo, DateTime beginDate)
+    {
+        // Set this to true if you want to see logs of this search in the insights
+        // Only do this while developing, otherwise you&#39;ll flood the logs and never see the important parts
+        Log.Preserve = false;
+
+        foreach (var si in searchInfos[&quot;AllPosts&quot;])
+        {
+            var entity = AsDynamic(si.Entity);
+            si.Title = &quot;Title: &quot; + entity.Title;
+            si.QueryString = &quot;details=&quot; + entity.UrlKey;
+        }
+
+        // Remove not needed streams
+        var keys = searchInfos.Keys.ToList();
+        foreach (var key in keys)
+        {
+            if (key != &quot;AllPosts&quot;)
+            {
+                searchInfos.Remove(key);
+            }
+        }
+    }
+}
+</code></pre><h2 id="basics-to-get-right">Basics to get Right</h2>
+<ol>
+<li>The File name can be anything you want, but the class name must match it. </li>
+<li>Your code can be a simple C# class, but we recommend it inherits from <code>Custom.Hybrid.Code12</code><ol>
+<li>...because you then also get more objects like <a class="xref" href="../dynamic-code/objects/app/index.html"><code>App</code></a> or <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a> </li>
+<li>You can also inherit from <code>Custom.Dnn.Code12</code> which would give you the <a class="xref" href="../dynamic-code/object-dnn.html"><code>Dnn</code> object</a> but we don&#39;t suggest it, because you should use the <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a> where possible.</li>
+</ol>
+</li>
+<li>Your class must implement <code>ToSic.Sxc.Search.ICustomizeSearch</code> to inform the compiler that it can help with search mapping</li>
+<li>You must then implement <code>public void CustomizeSearch(...)</code> as shown in the example</li>
+</ol>
+<h2 id="understanding-search-mapping">Understanding Search-Mapping</h2>
+<p>Your code will receive the data which would otherwise just be passed to the Dnn Indexer. You can then modify it as you want and make changes like:</p>
+<ol>
+<li>Remove streams from the dictionary <code>streamInfos</code> - thereby dropping entire sets of Entities</li>
+<li>Remove Entities in a specific stream</li>
+<li>Change properties like the Title</li>
+<li>Change properties like the QueryString - this is great on list views where data is indexed in the list, but the link in the search results should go to a details page.</li>
+</ol>
+<h2 id="develop-search-customizations">Develop Search Customizations</h2>
+<p>To create your search indexing code you&#39;ll probably need to tweak and test a few times. Note that the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">2sxc Blog App</a> shows you a real-life example of Search-Customizations. </p>
+<p>So once you&#39;ve <a class="xref" href="../../basics/cms/search/index.html#custom-search-index-using-code">configured a View to use a custom Search-Mapper</a> your work will usually consist of doing the following</p>
+<ol>
+<li>Making some changes</li>
+<li>Going into the Dnn Admin and flushing the search-index</li>
+<li>Then run the indexer and wait till it&#39;s completed</li>
+<li>Check the results or debug issues using the Dnn Events-Log or 2sxc Insights (see below)</li>
+</ol>
+<h2 id="debugging-search-indexing">Debugging Search Indexing</h2>
+<p>Two tools will help you to debug issues</p>
+<h4 id="1-dnn-events-log">1. Dnn Events Log</h4>
+<p>Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn&#39;t even running, check that. </p>
+<h4 id="2-2sxc-insights">2. 2sxc Insights</h4>
+<p><a class="xref" href="../debug/insights.html">2sxc Insights</a> will help you see what&#39;s happening exactly in your code when you need it. </p>
+<div class="WARNING"><h5>Warning</h5><p>By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn&#39;t find the occurances which you need. </p>
+<p>Because of this, logging is disabled by default, and your code can activate it using <code>Log.Preserve = true;</code></p>
+</div>
+<p>Remember to add a bunch of logging like <code>Log.Add(&quot;Got to here&quot;);</code> etc. to verify everything works step-by-step. </p>
+<h2 id="common-issues">Common Issues</h2>
+<h4 id="already-indexed-data-is-not-reindexed">Already Indexed Data is not Reindexed</h4>
+<p>Often when you&#39;re playing with indexing customizations you&#39;ll re-run the indexer and expect to see the changed results - but it&#39;s still what was there before. 
+This is because each Entity has a modified timestamp and only changed entities will be re-indexed. 
+This is great for performance, but challenging when making changes. </p>
+<p>👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked. </p>
+<h4 id="search-index-and-multilanguage-i18n">Search Index and Multilanguage (i18n)</h4>
+<p>It&#39;s important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that. </p>
 <p>This event is called by the view-engine <em>after</em> calling <a class="xref" href="../razor/customizedata.html">CustomizeData</a> and before passing the <code>Data</code> object to the Dnn Search Indexer. </p>
 <p>You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page. </p>
 <div class="TIP"><h5>Tip</h5><p>2sxc 11 introduces Code-Behind. You can now place the <code>CustomizeSearch(...)</code> method in the <a class="xref" href="../razor/organize-code.html">code-behind</a> file.</p>

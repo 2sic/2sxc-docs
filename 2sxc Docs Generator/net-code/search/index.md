@@ -12,44 +12,130 @@ You can easily modify how data in your modules appear in the Dnn search results.
 > Before you start, make sure you understand how the [Search Index and Customizations work](xref:Basics.Cms.Search.Index).
 
 
-## Evolution of Customizing Search
-
-To better understand your options and existing code out in the wild, it helps to understand how this feature developed.
-
-#### First Implementation in 2sxc 6
-
-The initial versions of 2sxc didn't offer this feature, it was added in v6. 
-At that time, the idea was that you would create special functions in your Razor files which contained the logic for customizing the results. 
-That mechanism still works and you'll find it in many older apps, but we strongly discourage it's use. 
-
-#### Neutralizing Changes in 2sxc 10
-
-In 2sxc v10 we created a new improved base class for Razor files called [RazorComponent](xref:NetCode.Razor.Component) and used the opportunity to improve the signature of the API because the original implementation used some Dnn objects, and we anticipated that we would make this available for other platforms as well. This was a minor change. It still works today, but we discourage it's use. 
-
-#### Code Behind in 2sxc 11
-
-Razor Files were getting very technical if they had this code, and we decided there must be a better way to do this. 
-We invented the concept of [Code Behind](xref:NetCode.Razor.CodeBehind) and let developers place the logic there. This was a major improvement, but still not perfect. We discourage it's use. 
-
-#### Separate Search-Customization in 2sxc 12
-
-When we finally implemented 2sxc for Oqtane we realized that our concept still had weaknesses: 
-
-1. Razor files containing search-customization code were confusing
-1. Token templates were not able to customize their search result
-1. Search customizations may vary between platforms (and some may not offer search at all)
-1. Having the code in the Razor-file actually caused problem when creating hybrid apps
-1. Often customize search was used for simply disabling search results - which was overkill and confusing
-1. If many Views needed the same customizations it was hard to share the code
-
-Because of this we decided to change the implementation completely. As of 2sxc 12 search customization happens in a special code file which can be anywhere in your App. 
-
-> [!TIP]
-> As of 2sxc 12 we only recommend this new approach using the separate code file. 
+> [!NOTE]
+> This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file. 
 >
-> The previous approach may be disabled some day.
+> Previous versions used another mechanism which is deprecated. If you need to know more, read the [Obsolete Razor](xref:NetCode.Razor.Obsolete#data-and-search-customization) docs.
 
 
+## Programming a Search Mapper 
+
+Here's an example of a `SearchMapper.cs`: 
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ToSic.Sxc.Context;
+using ToSic.Sxc.Search;
+/*
+Custom code which views use to customize how dnn search treats data of that view.
+It's meant for customizing the internal indexer of the platform, _not_ for Google Search.
+
+To use it, create a custom code (.cs) file which implements ICustomizeSearch interface.
+You can also inherit from a DynamicCode base class (like Code12) if you need more functionality.
+
+For more guidance on search customizations, see https://r.2sxc.org/customize-search
+*/
+public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
+{
+    /// <summary>
+    /// Populate the search
+    /// </summary>
+    /// <param name="searchInfos">Dictionary containing the streams and items in the stream for this search.</param>
+    /// <param name="moduleInfo">Module information with which you can find out what page it's on etc.</param>
+    /// <param name="beginDate">Last time the indexer ran - because the data you will get is only what was modified since.</param>
+    public void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IModule moduleInfo, DateTime beginDate)
+    {
+        // Set this to true if you want to see logs of this search in the insights
+        // Only do this while developing, otherwise you'll flood the logs and never see the important parts
+        Log.Preserve = false;
+        
+        foreach (var si in searchInfos["AllPosts"])
+        {
+            var entity = AsDynamic(si.Entity);
+            si.Title = "Title: " + entity.Title;
+            si.QueryString = "details=" + entity.UrlKey;
+        }
+
+        // Remove not needed streams
+        var keys = searchInfos.Keys.ToList();
+        foreach (var key in keys)
+        {
+            if (key != "AllPosts")
+            {
+                searchInfos.Remove(key);
+            }
+        }
+    }
+}
+```
+
+## Basics to get Right
+
+1. The File name can be anything you want, but the class name must match it. 
+1. Your code can be a simple C# class, but we recommend it inherits from `Custom.Hybrid.Code12`
+    1. ...because you then also get more objects like [`App`](xref:NetCode.DynamicCode.Objects.App.Index) or [`CmsContext`](xref:NetCode.DynamicCode.CmsContext) 
+    1. You can also inherit from `Custom.Dnn.Code12` which would give you the [`Dnn` object](xref:NetCode.DynamicCode.Dnn) but we don't suggest it, because you should use the [`CmsContext`](xref:NetCode.DynamicCode.CmsContext) where possible.
+1. Your class must implement `ToSic.Sxc.Search.ICustomizeSearch` to inform the compiler that it can help with search mapping
+1. You must then implement `public void CustomizeSearch(...)` as shown in the example
+
+## Understanding Search-Mapping
+
+Your code will receive the data which would otherwise just be passed to the Dnn Indexer. You can then modify it as you want and make changes like:
+
+1. Remove streams from the dictionary `streamInfos` - thereby dropping entire sets of Entities
+1. Remove Entities in a specific stream
+1. Change properties like the Title
+1. Change properties like the QueryString - this is great on list views where data is indexed in the list, but the link in the search results should go to a details page.
+
+
+## Develop Search Customizations
+
+To create your search indexing code you'll probably need to tweak and test a few times. Note that the [2sxc Blog App](xref:App.Blog) shows you a real-life example of Search-Customizations. 
+
+So once you've [configured a View to use a custom Search-Mapper](xref:Basics.Cms.Search.Index#custom-search-index-using-code) your work will usually consist of doing the following
+
+1. Making some changes
+1. Going into the Dnn Admin and flushing the search-index
+1. Then run the indexer and wait till it's completed
+1. Check the results or debug issues using the Dnn Events-Log or 2sxc Insights (see below)
+
+
+## Debugging Search Indexing
+
+Two tools will help you to debug issues
+
+#### 1. Dnn Events Log
+
+Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn't even running, check that. 
+
+#### 2. 2sxc Insights
+
+[2sxc Insights](xref:NetCode.Debug.Insights.Index) will help you see what's happening exactly in your code when you need it. 
+
+> [!WARNING]
+> By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn't find the occurances which you need. 
+>
+> Because of this, logging is disabled by default, and your code can activate it using `Log.Preserve = true;`
+
+Remember to add a bunch of logging like `Log.Add("Got to here");` etc. to verify everything works step-by-step. 
+
+
+## Common Issues
+
+#### Already Indexed Data is not Reindexed
+
+Often when you're playing with indexing customizations you'll re-run the indexer and expect to see the changed results - but it's still what was there before. 
+This is because each Entity has a modified timestamp and only changed entities will be re-indexed. 
+This is great for performance, but challenging when making changes. 
+
+👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked. 
+
+
+#### Search Index and Multilanguage (i18n)
+
+It's important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that. 
 
 
 

@@ -4,7 +4,7 @@ uid: NetCode.DynamicCode.Html
 
 # @Html Object 🪒 (Razor only)
 
-The `Html` object is a .net helper from the framework. It's only available in Razor and not in WebApis. 
+The `Html` object is a .net helper from the framework. It's only available in Razor 🪒 and not in WebApis. 
 
 > [!IMPORTANT]
 > Dnn and Oqtane have a different version of .net, so they Html object has more or less features depending on what framework you're using. 
@@ -42,7 +42,7 @@ This will render another razor file in the current location.
 
 > [!IMPORTANT]
 > `@Html.Partial(...)` is actually a newer command which would only work in Oqtane, 
-> but we added it to the Dnn razor implementation to make portable Razor possible.
+> but we back-ported it to the Dnn Razor implementation to make portable Razor possible.
 > In Dnn it will actually call the old .net function `@RenderPage(...)`.
 
 Example - this would be the main file:

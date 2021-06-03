@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CmsContext in Dynamic Code WIP in 11.11 | 2sxc and EAV 10 </title>
+    <title>This page has moved | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="CmsContext in Dynamic Code WIP in 11.11 | 2sxc and EAV 10 ">
+    <meta name="title" content="This page has moved | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -111,158 +111,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.CmsContext">
-<h1 id="cmscontext-in-dynamic-code-wip-in-1111">CmsContext in Dynamic Code <em>WIP in 11.11</em></h1>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="this-page-has-moved">This page has moved</h1>
 
-<p>As we&#39;re getting ready for Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the <code>Dnn</code> object which obviously won&#39;t exist on Oqtane. </p>
-<p>So we&#39;re creating this new standardized object to ask for these things. </p>
-<p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_CmsContext">official API docs</a> of the Object on the Dynamic Code</p>
-<p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsContext.html">official API docs</a> of the <code>ICmsContext</code> object</p>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="cmscontextplatform">CmsContext.Platform</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Value Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type</td>
-<td>PlatformType</td>
-<td><code>PlatformType.Dnn</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Name</td>
-<td>string</td>
-<td><code>Dnn</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="cmscontextmodule">CmsContext.Module</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Value Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>int</td>
-<td>5030</td>
-<td>Module ID</td>
-</tr>
-</tbody>
-</table>
-<p>👉 <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsModule.html">ICmsModule</a></p>
-<h2 id="cmscontextpage">CmsContext.Page</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Value Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>int</td>
-<td>36</td>
-<td>Page ID</td>
-</tr>
-<tr>
-<td>Parameters</td>
-<td><code>IDictionary&lt;string, string&gt;</code></td>
-<td></td>
-<td>Use as cross-platform Query params</td>
-</tr>
-</tbody>
-</table>
-<p>👉 <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsPage.html">ICmsPage</a></p>
-<h2 id="cmscontextsite">CmsContext.Site</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Value Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>int</td>
-<td>2</td>
-<td>Site ID</td>
-</tr>
-</tbody>
-</table>
-<p>👉 <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsSite.html">ICmsSite</a></p>
-<h2 id="cmscontextuser">CmsContext.User</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Value Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>int</td>
-<td>2</td>
-<td>User ID</td>
-</tr>
-<tr>
-<td>IsSiteAdmin</td>
-<td>bool</td>
-<td><code>true</code></td>
-<td>People who can can admin users/content</td>
-</tr>
-<tr>
-<td>IsSystemAdmin</td>
-<td>bool</td>
-<td><code>true</code></td>
-<td>Super Users</td>
-</tr>
-<tr>
-<td>IsSiteDeveloper</td>
-<td>bool</td>
-<td><code>true</code></td>
-<td>Usually just Super-Users</td>
-</tr>
-</tbody>
-</table>
-<p>👉 <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsSite.html">ICmsSite</a></p>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li>No demo apps exist yet</li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 11.11</li>
-</ol>
+<p>Moved to <a class="xref" href="objects/cmscontext/index.html">CmsContext in Dynamic Code</a></p>
 </article>
           </div>
           
