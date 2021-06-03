@@ -2,6 +2,15 @@
 uid: NetCode.Razor.Purpose
 ---
 # Property _Purpose_ on a Razor page
+
+> [!WARNING]
+> This is an older way to customize the Dnn search index. 
+> 
+> It is deprecated. 
+>
+> Use the new mechanisms explained in [Search Customizations](xref:NetCode.Search.Index)
+
+
 To let your code know, if it's running to produce HTML or if it's running to fill the search-index.
 
 

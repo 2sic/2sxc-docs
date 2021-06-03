@@ -3,6 +3,14 @@ uid: NetCode.Razor.CustomizeData
 ---
 
 # Event _CustomizeData()_ on the Razor Page (Dnn ☢ only)
+
+> [!WARNING]
+> This is an older way to customize the Dnn search index. 
+> 
+> It is deprecated. 
+>
+> Use the new mechanisms explained in [Search Customizations](xref:NetCode.Search.Index)
+
 This event is called by the view-engine before the rest of the script is parsed - and it's usually empty.
 It can be overriden to change/configure what data is delivered to the template or search-index. 
 

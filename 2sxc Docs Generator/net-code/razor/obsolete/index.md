@@ -1,5 +1,5 @@
 ---
-uid: NetCode.Razor.Obsolete
+uid: NetCode.Razor.Obsolete.Index
 ---
 
 # Obsolete, Old APIs in Razor
@@ -52,12 +52,8 @@ When we finally implemented 2sxc for Oqtane we realized that our concept still h
 1. Often customize search was used for simply disabling search results - which was overkill and confusing
 1. If many Views needed the same customizations it was hard to share the code
 
-Because of this we decided to change the implementation completely. As of 2sxc 12 search customization happens in a special code file which can be anywhere in your App. 
+Because of this we decided to change the implementation completely. 
+As of 2sxc v12 the search customization happens in a special code file which can be anywhere in your App. 
+Your [view is then configured](xref:Basics.Cms.Search.Index) to use that code.
 
-
-
----
-
-## History
-
-1. Introduced in 2sxc 1.0
+👉 Use the new mechanisms explained in [Search Customizations](xref:NetCode.Search.Index)

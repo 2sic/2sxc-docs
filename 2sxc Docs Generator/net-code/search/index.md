@@ -15,7 +15,7 @@ You can easily modify how data in your modules appear in the Dnn search results.
 > [!NOTE]
 > This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file. 
 >
-> Previous versions used another mechanism which is deprecated. If you need to know more, read the [Obsolete Razor](xref:NetCode.Razor.Obsolete#data-and-search-customization) docs.
+> Previous versions used another mechanism which is deprecated. If you need to know more, read the [Obsolete Razor](xref:NetCode.Razor.Obsolete.Index#data-and-search-customization) docs.
 
 
 ## Programming a Search Mapper 
