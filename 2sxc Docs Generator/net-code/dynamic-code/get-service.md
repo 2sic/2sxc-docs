@@ -14,6 +14,12 @@ Use `GetService<T>()` to get this service.
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
+## Two important services that require you to use GetService are
+
+* [IPageService](xref:NetCode.Razor.Services.IPageService)
+* [Koi ICSS](xref:NetCode.Koi.Index)
+
+
 ## Also Read
 
 * TODO: These docs are incomplete, as the feature is still new.
