@@ -4,7 +4,7 @@ uid: NetCode.DynamicCode.CmsContext
 
 # CmsContext in Dynamic Code
 
-As we're getting ready for Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously won't exist on Oqtane. 
+To enable Hybrid Razor which works on Dnn and Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously doesn't on Oqtane and other platforms. 
 
 So we're creating this new standardized object to ask for these things. 
 
@@ -18,18 +18,35 @@ So we're creating this new standardized object to ask for these things.
 
 ## CmsContext.Platform
 
+Information about the platform the system is running on. Usually Dnn or Oqtane.
+
 | Name | Type | Value Example | Description
 | --- | --- | --- | ---
 | Type | PlatformType | `PlatformType.Dnn` 
 | Name | string | `Dnn` 
 
-## CmsContext.Module
+👉 [](xref:ToSic.Sxc.Context.ICmsPlatform)
+
+
+## CmsContext.Culture
+
+Culture information for the current request.
 
 | Name | Type | Value Example | Description
 | --- | --- | --- | ---
-| Id | int | 5030 | Module ID
+| DefaultCode | string | `en-us` | The default language code of the site
+| CurrentCode | string | `de-ch` | Primary language code for the site
 
-👉 [](xref:ToSic.Sxc.Context.ICmsModule)
+👉 [](xref:ToSic.Sxc.Context.ICmsCulture)
+
+## CmsContext.Site
+
+| Name | Type | Value Example | Description
+| --- | --- | --- | ---
+| Id | int | 2 | Site ID
+| Url | string | 2sxc.org | Primary site url without protocol
+
+👉 [](xref:ToSic.Sxc.Context.ICmsSite)
 
 ## CmsContext.Page
 
@@ -40,13 +57,14 @@ So we're creating this new standardized object to ask for these things.
 
 👉 [](xref:ToSic.Sxc.Context.ICmsPage)
 
-## CmsContext.Site
+## CmsContext.Module
 
 | Name | Type | Value Example | Description
 | --- | --- | --- | ---
-| Id | int | 2 | Site ID
+| Id | int | 5030 | Module ID
 
-👉 [](xref:ToSic.Sxc.Context.ICmsSite)
+👉 [](xref:ToSic.Sxc.Context.ICmsModule)
+
 
 
 ## CmsContext.User
@@ -67,10 +85,12 @@ So we're creating this new standardized object to ask for these things.
 | Name | Type | Value Example | Description
 | --- | --- | --- | ---
 | Id | int | 2 | View ID
-| Guid | 
-| Identity |
-| Resources |
-| Settings |
+| Edition | string | `bs4` | [Polymorphism](xref:Basics.Polymorphism.Index) edition if used, otherwise empty
+| Name | string | `4 Tiles` | Name of the view
+| Identity | string | `BLUE` | Custom identity like name, but language invariant
+| Configuration | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | Configuration entity, use like `Configuration.EntityId`
+| Resources | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | i18n Resources entity as configured, like `Resources.Title`
+| Settings | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | Settings as configured, like `Settings.ItemsPerRow`
 
 👉 [](xref:ToSic.Sxc.Context.ICmsView)
 
@@ -83,3 +103,5 @@ You should find some code examples in this demo App
 ## History
 
 1. Introduced in 2sxc 11.11
+1. CmsContext.Page.Parameters added in 2sxc 12.0
+1. CmsContext.View added in 2sxc 12.02 with all the new features
