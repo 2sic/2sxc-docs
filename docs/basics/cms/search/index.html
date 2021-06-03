@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Prepare Data for Templates and WebApi | 2sxc and EAV 10 </title>
+    <title>Customize the Search-Index Results (Dnn &#9762; only) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Prepare Data for Templates and WebApi | 2sxc and EAV 10 ">
+    <meta name="title" content="Customize the Search-Index Results (Dnn &#9762; only) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Prepare.Index">
-<h1 id="prepare-data-for-templates-and-webapi">Prepare Data for Templates and WebApi</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Cms.Search.Index">
+<h1 id="customize-the-search-index-results-dnn--only">Customize the Search-Index Results (Dnn ☢ only)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -231,71 +231,69 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
 </div><style>.context-box-summary .prepare-all { visibility: visible; } </style>
 
-<p>A common Step in the <a class="xref" href="../server/data-flow.html">data-flow</a> is the <strong>Data Preparation</strong> before the <a class="xref" href="../app/views.html">View</a> or <a class="xref" href="../../web-api/custom/index.html">Custom WebApi</a> work with it. 
-This is fully automated and has three common scenarios:</p>
+<p>Dnn has a built-in search engine which crawls all the modules asking them for data. </p>
+<p>Every 2sxc module will be queried and will give the search index all the entities which are given to this module. </p>
+<h2 id="default-scenarios">Default Scenarios</h2>
 <ol>
-<li><strong><a href="#no-preparation">No Prepare</a></strong> where no Data is used or at least no <em>Instance Data</em> </li>
-<li><strong><a href="#default-preparation-instance-data">Default</a></strong> where content added to a Module by an editor is retrieved and prepared</li>
-<li><strong><a href="#query-preparation">Query</a></strong> where a custom <a class="xref" href="../query/visual-query/index.html">VisualQuery</a> is configured to get the data</li>
+<li>If a view shows data which was added by the editor these items will be in the <code>Default</code> stream and there may also be a single item in the <code>Header</code> stream. This data is given to the search index. This applies to both single-item templates as well as to lists. Note that <code>Presentation</code> items are not given to the search index as they should only contain settings how to show something, and not the real relevant data. </li>
+<li>If a view shows data from a <a class="xref" href="../../query/index.html">Query</a> then all the streams of that query will be given to the search index.</li>
 </ol>
-<p><em>Note: A special case where data is prepared is when it&#39;s used for indexing in the full-text search. This is documented in <a class="xref" href="../cms/search/index.html">Search</a>.</em></p>
-<h2 id="no-preparation">No Preparation</h2>
-<p>Two cases need no preparation at all</p>
+<h2 id="why-customize-the-search-index">Why Customize the Search Index?</h2>
+<p>You can customize this behavior to your hearts desire. Here are typical reasons to do so:</p>
 <ol>
-<li>Templates / code which don&#39;t use any data</li>
-<li>Templates / code which use only general App data or Queries but not instance data</li>
+<li>You may show the same items in many places - for example the <em>Home</em> page may show the top 3 news, but search results shouldn&#39;t point to these. </li>
+<li>A list/details setup would have each item in the list-view, but the search result should lead it to the details view</li>
+<li>You may want to exclude some query-streams in the search results - like exclude the categories-stream since it may not be relevant</li>
 </ol>
-<p>In these cases the View is configured to not use data and the template or WebApi will either not use data or will only access it through the <a class="xref" href="../../net-code/dynamic-code/objects/app/app-data.html">App.Data</a> which has all data at it&#39;s disposal. </p>
-<h2 id="default-preparation-instance-data">Default Preparation: Instance Data</h2>
-<p>By default all <strong>Module Instances</strong> can have data which the editor has added manually in the CMS UI. This corresponds to the normal <a class="xref" href="../content/index.html">Content Editing</a> scenario. Internally it uses a <a class="xref" href="../query/index.html">Query</a> which looks like this:</p>
-<p><img src="assets/default-prepare.jpg" width="100%" class="full-width"></p>
-<p>This does the following (starting from the bottom):</p>
+<h2 id="ways-to-customize-the-search-results">Ways to Customize the Search Results</h2>
+<p>There are two ways to customize the search results:</p>
 <ol>
-<li>The <code>ICache</code> is an <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IAppRoot.html">IAppRoot</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> which hass all data of this App</li>
-<li>The <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter</a> will then ensure that editors can see draft-data, and public users can only see published data</li>
-<li>The <code>ModuleDataSource</code> is a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> which will select all relevant data of this Module instance</li>
-<li>It then provides the retrieved data on a Stream <code>Default</code> (all the items) and <code>Header</code> (previously <code>ListContent</code>)</li>
+<li><a href="#customize-the-search-results-using-configuration">Using configuration</a> <em>new in v12</em></li>
+<li><a href="#custom-search-index-using-code">Using a separate code file which does this</a> <em>new in v12</em></li>
+<li><a href="#custom-search-index-using-code">Using code inside a Razor file</a> <em>not recommended, but works in older versions of 2sxc</em></li>
 </ol>
-<p>The Template or WebApi running for this Module Instance will then have this data</p>
-<ol>
-<li><code>Content</code> or often <code>@Content</code> has the first item on the <code>Default</code> stream</li>
-<li><code>Header</code> or ofter <code>@Header</code> has the first and only item on the <code>ListContent</code> stream</li>
-<li><code>Data</code> will contain all the streams as configured in the above query, usually you will use <code>Data[&quot;Default&quot;]</code> to loop through lists of all the content items</li>
-</ol>
-<p>Note that the <code>ModuleDataSource</code> also does some more magic like</p>
-<ol>
-<li>Retrieve the Demo-Item as configured in the View, if no data exists (or a public user is looking at the page, and the data is still draft)</li>
-<li>Add more information like <code>IsDemoItem</code> to each piece of Information</li>
-</ol>
-<p><strong><a class="xref" href="../app/content-app/index.html"><em>The</em> Content App</a></strong> only uses this kind of preparation. Any App you create can use this, but it can also be configured to use custom Queries (see below).</p>
-<h2 id="query-preparation">Query Preparation</h2>
-<p>If your View is configured to use a <a class="xref" href="../query/index.html">Query</a> it will instead run this query. </p>
-<div class="NOTE"><h5>Note</h5><p>Note that your query can also extend the standard Query as mentioned above and provide <em>both</em> the normal edited content and add more streams as needed.</p>
+<h2 id="customize-the-search-results-using-configuration">Customize the Search Results Using Configuration</h2>
+<p>The following configuration options let you specify how data is handed to the Search Indexer. 
+These options are set in the <a class="xref" href="../../app/views.html">View</a> configuration. </p>
+<div class="TIP"><h5>Tip</h5><p>If you expect to use the same template in many places but need different search-configurations, 
+just configure multiple views using different Search configs. </p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>A common use case for Queries extending the default query is scenarios where the edited content provides parameters for the Query. </p>
-<p>For example, the Header of the <a class="xref" href="https://2sxc.org/en/apps/app/news-app-v4">News App</a> could contain a property <code>Category</code> which the editor can choose. The rest of the Query could then use this category to filter
-what items are retrieved. </p>
-</div>
-<h2 id="note-about-accessing-all-app-data-in-your-code">Note about Accessing all App Data in your Code</h2>
-<p>Your template / WebAPI can also always access all the data in the App using <a class="xref" href="../../net-code/dynamic-code/objects/app/app-data.html">App.Data</a>.</p>
-<h2 id="you-may-also-want-to-learn-about">You may Also want to Learn about</h2>
+<h4 id="ensure-default-search-behavior">Ensure Default Search Behavior</h4>
+<p>By default the data given to the Module is also provided to the search. This is what it looks like in the <a class="xref" href="../../app/views.html">View-Configuration</a>.</p>
+<p><img src="assets/search-config-default.jpg" class="full-width"></p>
+<h4 id="dont-show-any-data-in-the-search-results">Don&#39;t Show Any Data in the Search Results</h4>
+<p>Reasons for doing this:</p>
 <ol>
-<li><a class="xref" href="../query/index.html">Create queries using VisualQuery</a></li>
-<li><a class="xref" href="../../net-code/razor/customizedata.html">Prepare data in code</a></li>
-<li><a class="xref" href="../../net-code/razor/customizesearch.html">Prepare data for the full-text search index of the platform</a></li>
-<li><a class="xref" href="../../web-api/headless/index.html">Headless WebAPI</a></li>
-<li><a class="xref" href="../../net-code/data-sources/index.html">DataSources</a></li>
+<li>If you have views showing extracts of data (like the top 3 news) which are already added to the search index on the full news list, then you may create a <code>Top News</code> view which shouldn&#39;t return data</li>
+<li>If you show a tag-cloud this may not make sense to include in a search index</li>
 </ol>
+<p>This is where you can find the settings in the view configuration:</p>
+<p><img src="assets/search-config-disable.jpg" class="full-width"></p>
+<h4 id="exclude-query-streams-from-the-search-results">Exclude Query-Streams from the Search Results</h4>
+<p>In some cases your View may use a <a class="xref" href="../../query/index.html">Query</a> containing a lot of streams like <code>Default</code> and <code>Categories</code>, where only <code>Default</code> would make sense to include in the search. 
+For this you can simply configure what streams you want. <em>Note that these UIs automatically appear if you are using a Query</em>: </p>
+<p><img src="assets/search-config-query-streams.jpg" class="full-width"></p>
+<h2 id="custom-search-index-using-code">Custom Search-Index Using Code</h2>
+<p>For very advanced cases you will want full control over what lands in the search index. 
+To implement this, you can create your own Search Mapper in C#. </p>
+<p>This is how to configure this:</p>
+<p><img src="assets/search-config-custom.jpg" class="full-width"></p>
+<p>👉 Read about <a class="xref" href="../../../net-code/search/index.html">Custom Search in C# here</a></p>
+<div class="NOTE"><h5>Note</h5><p>In older versions of 2sxc (between 6 and 12) the Search Customization code was placed in the Razor file. 
+This is deprecated and should not be used any more. </p>
+</div>
 <hr>
-<p>Read more</p>
-<ul>
-<li><a class="xref" href="../query/index.html">Queries</a></li>
-<li>Content App</li>
-</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 6.2</li>
+<li>Added support for newer Dnn versions at a later time - not sure when</li>
+<li>Introduced Search Configuration in 2sxc 12.02</li>
+<li>Introduced separate Code-File for this in 2sxc 12.02</li>
+</ol>
 </article>
           </div>
           
@@ -304,7 +302,7 @@ what items are retrieved. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/prepare/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/cms/search/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -330,20 +328,20 @@ what items are retrieved. </p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

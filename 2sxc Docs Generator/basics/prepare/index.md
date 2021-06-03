@@ -7,12 +7,14 @@ uid: Basics.Prepare.Index
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .prepare-all { visibility: visible; } </style>
 
-A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation**. This is fully automated and has three common scenarios:
+A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation** before the [View](xref:Basics.App.Views) or [Custom WebApi](xref:WebApi.Custom.Index) work with it. 
+This is fully automated and has three common scenarios:
 
 1. **[No Prepare](#no-preparation)** where no Data is used or at least no _Instance Data_ 
 1. **[Default](#default-preparation-instance-data)** where content added to a Module by an editor is retrieved and prepared
 1. **[Query](#query-preparation)** where a custom [VisualQuery](xref:Basics.Query.VisualQuery.Index) is configured to get the data
 
+_Note: A special case where data is prepared is when it's used for indexing in the full-text search. This is documented in [Search](xref:Basics.Cms.Search.Index)._
 
 ## No Preparation
 
