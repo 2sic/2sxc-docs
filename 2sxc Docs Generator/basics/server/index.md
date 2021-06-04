@@ -31,7 +31,7 @@ You may want to learn more about:
 1. [Bundling / Optimizing Assets](xref:Basics.Server.AssetOptimization.Index)
 1. [Image Resizing](xref:Basics.ImageResizer.Index)
 1. [Create App Templates using Razor](xref:NetCode.Index)
-1. [Create custom WebApi Controllers](xref:WebApi.Custom.Index)
+1. [Create custom WebApi Controllers](xref:NetCode.WebApi.Index)
 1. [The Headless REST API](xref:WebApi.Headless.Index)
 
 

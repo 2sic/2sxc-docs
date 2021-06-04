@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.DotNet.SaveInAdam
+uid: NetCode.WebApi.DotNet.SaveInAdam
 ---
 
 # SaveInAdam(...) Command in ApiController

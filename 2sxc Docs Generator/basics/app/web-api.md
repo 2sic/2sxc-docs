@@ -10,4 +10,4 @@ Every App has built-in WebAPIs for Headless use and you can create your own cust
 
 1. [WebApi in general](xref:WebApi.Index)
 1. [](xref:WebApi.Headless.Index)
-1. [](xref:WebApi.Custom.Index)
+1. [](xref:NetCode.WebApi.Index)

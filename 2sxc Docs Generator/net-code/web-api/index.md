@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.Index
+uid: NetCode.WebApi.Index
 ---
 
 # 2sxc Custom C# Web APIs

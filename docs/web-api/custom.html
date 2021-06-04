@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Common Issue: Missing HttpResponseMessage | 2sxc and EAV 10 </title>
+    <title>2sxc Custom C# Web APIs | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Common Issue: Missing HttpResponseMessage | 2sxc and EAV 10 ">
+    <meta name="title" content="2sxc Custom C# Web APIs | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li class="active">
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
-                      </li>
-                      <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
-                      </li>
-                      <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,25 +111,11 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.WebApi.Issues.HttpResponseMessage">
-<h1 id="common-issue-missing-httpresponsemessage">Common Issue: Missing HttpResponseMessage</h1>
+            <article class="content wrap" id="_content" data-uid="WebApi.Csutom">
+<h1 id="2sxc-custom-c-web-apis">2sxc Custom C# Web APIs</h1>
 
-<p>The WebApi sometimes needs to return an <code>HttpResponseMessage</code>, for example to trigger redirects. </p>
-<p>In some cases you simply cannot get the code to run, with an error similar to this</p>
-<pre><code>2sxc Api Controller Finder: Error while selecting / compiling a controller for the request. Pls check the event-log and the code. See the inner exception for more details.&quot;, &quot;ExceptionMessage&quot;: &quot;[Some-Path]\Portals\0\2sxc\[Some-App]\api\InstallController.cs(23): error CS0012: The type &#39;System.Net.Http.HttpRequestMessage&#39; is defined in an assembly that is not referenced. You must add a reference to assembly &#39;System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&#39;.&quot;, &quot;ExceptionType&quot;: &quot;System.Web.HttpCompileException&quot;, &quot;StackTrace&quot;: &quot; at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetCompiledAssembly(String virtualPath) at ToSic.SexyContent.WebApi.AppApiControllerSelector.SelectController(HttpRequestMessage request) in C:\Projects\2SexyContent\Web\DesktopModules\ToSIC_SexyContent\Sxc WebApi\AppApiControllerSelector.cs:line 77
-</code></pre><p>The reason is that the compiler has a hard time figuring out where to locate this class. We believe it&#39;s because Dnn has gone through various .net versions and that makes these things a bit harder. </p>
-<p>The solution is to tell the Compiler that you&#39;re using <code>System.Net.Http</code> in the desired version. Add the <code>add</code> tag to the <code>web.config</code> in the location below:</p>
-<pre><code>&lt;configuration&gt;
-  &lt;system.web&gt;
-    &lt;compilation&gt;
-      &lt;assemblies&gt;
-        &lt;add assembly=&quot;System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&gt;
-...
-</code></pre><p><em>Note: you shouldn&#39;t add the whole block - it should just show you where it must go</em></p>
-<h2 id="history">History</h2>
-<ol>
-<li><a href="https://stackoverflow.com/questions/47508179/2sxc-httpresponsemessage-reference-missing-in-custom-api-controller">Reported in 2017</a></li>
-</ol>
+<p>You can create fully custom C# Web APIs in an App. </p>
+<p>Since this is C# focused, it&#39;s documented here: <a class="xref" href="../net-code/web-api/index.html">2sxc Custom C# Web APIs</a></p>
 </article>
           </div>
           
@@ -138,7 +124,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/web-api/issue-http-response-message.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/custom.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -164,20 +150,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

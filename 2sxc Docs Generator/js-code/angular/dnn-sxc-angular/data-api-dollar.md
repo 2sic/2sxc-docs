@@ -11,7 +11,7 @@ uid: JsCode.Angular.DnnSxcAngular.DataApi$
 
 With **dnn-sxc-angular** it's really easy to access WebAPIs on the backend. 
 
-The easiest way is to use `data.api$<T>(...)` which gets you a _Stream_ (`$`) of objects from a [custom WebAPI](xref:WebApi.Custom.Index).
+The easiest way is to use `data.api$<T>(...)` which gets you a _Stream_ (`$`) of objects from a [custom WebAPI](xref:NetCode.WebApi.Index).
 
 Here's what it does:
 

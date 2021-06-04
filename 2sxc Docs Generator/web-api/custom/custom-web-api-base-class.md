@@ -1,4 +1,4 @@
 
 # Custom C# Web API Base Classes
 
-Moved to [](xref:WebApi.Custom.BaseClass)
+Moved to [](xref:NetCode.WebApi.BaseClass)

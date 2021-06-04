@@ -80,11 +80,11 @@ These are the places you can configure to open security:
 
 ## Custom WebAPI Permissions
 
-This is documented separately in [](xref:WebApi.Custom.Security)
+This is documented separately in [](xref:NetCode.WebApi.Security)
 
 ## Read also
 
-- [DotNet WebApi](xref:WebApi.Custom.Index)
+- [DotNet WebApi](xref:NetCode.WebApi.Index)
 - [](xref:WebApi.Specs.Context) - every request has a context, it's best you read up on that
 - [Concepts: Polymorphisms](xref:Basics.Polymorphism.Index)
 

@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.Hybrid.Index
+uid: NetCode.WebApi.Hybrid.Index
 ---
 
 # Custom C# Web API: Hybrid Dnn & Oqtane APIs

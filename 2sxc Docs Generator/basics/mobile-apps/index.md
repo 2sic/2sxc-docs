@@ -14,7 +14,7 @@ uid: Basics.MobileApps.Index
 If you have a Native Mobile App for Android or iOS and need to get either 2sxc Data or Dnn Data to that App, you should check out:
 
 1. [Headless Web APIs](xref:WebApi.Headless.Index)
-1. [Custom WebAPIs](xref:WebApi.Custom.Index)
+1. [Custom WebAPIs](xref:NetCode.WebApi.Index)
 1. [Automatically resizing images to any resolution](xref:Basics.ImageResizer.Index)
 
 ## Web Server Hosted PWA

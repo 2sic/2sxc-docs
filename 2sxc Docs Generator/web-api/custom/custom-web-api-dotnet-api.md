@@ -1,4 +1,4 @@
 
 # C# APIs in ApiController
 
-Moved to [](xref:WebApi.Custom.DotNet.Api)
+Moved to [](xref:NetCode.WebApi.DotNet.Api)

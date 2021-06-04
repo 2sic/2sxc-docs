@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.Issues.HttpResponseMessage
+uid: NetCode.WebApi.Issues.HttpResponseMessage
 ---
 
 # Common Issue: Missing HttpResponseMessage

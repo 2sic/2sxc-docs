@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.BaseClass
+uid: NetCode.WebApi.BaseClass
 ---
 
 # Custom C# Web API Base Classes
@@ -48,7 +48,7 @@ You also get many helper commands like these
 
 * AsDynamic(...)
 * AsEntity(...)
-* [SaveInAdam(...)](xref:WebApi.Custom.DotNet.SaveInAdam)
+* [SaveInAdam(...)](xref:NetCode.WebApi.DotNet.SaveInAdam)
 
 > [!TIP]
 > As of 2sxc 10 we always recommend that your APIs inherit from `ToSic.Sxc.Dnn.ApiController`

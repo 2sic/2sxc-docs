@@ -102,7 +102,7 @@ For now, Data-Polymorphism is low priority, because we're not sure yet if we can
 ## Read also
 
 * [WebApi](xref:WebApi.Index)
-* [DotNet-WebApi](xref:WebApi.Custom.Index)
+* [DotNet-WebApi](xref:NetCode.WebApi.Index)
 * [Checklist for Polymorphism](https://azing.org/2sxc/l/2I53UarY/polymorphism-automatically-switch-templates)
 * [Blog Post around Polymorphism](https://2sxc.org/en/blog/tag/polymorph)
 

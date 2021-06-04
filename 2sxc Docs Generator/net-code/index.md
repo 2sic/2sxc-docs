@@ -16,7 +16,7 @@ When you implement solutions using 2sxc, most of your server-side code will be w
 You will create many dynamic `.cs` or `.cshtml` files in the App folder:
 
 1. [Razor components](xref:NetCode.Razor.Index), shared Razor and Razor Code-Behind (`_*.cshtml` & `_*.code.cshtml`)
-1. [WebApi Controllers](xref:WebApi.Custom.Index) (`*Controller.cs` files in the `api` folder)
+1. [WebApi Controllers](xref:NetCode.WebApi.Index) (`*Controller.cs` files in the `api` folder)
 1. Shared code (`*.cs` files in any folder)
 
 > [!TIP]
@@ -53,7 +53,7 @@ This documentation contains the following sections
     The shared API on all Dynamic Code - Razor, WebApi or other.
 1. [Razor](xref:NetCode.Razor.Index)  
     The APIs special to Razor templates
-1. [Web API](xref:WebApi.Custom.Index)  
+1. [Web API](xref:NetCode.WebApi.Index)  
     Everything you need to know to create/customize Web API Controllers
 1. [External API](xref:NetCode.External.Index)  
     Guides you to access 2sxc-instances on the server from the Theme, WebForms or other MVC components

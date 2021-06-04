@@ -178,7 +178,7 @@ The `[edition]` is relevant if you're using [Polymorphism](xref:Basics.Polymorph
 
 ## Read also
 
-- [DotNet WebApi](xref:WebApi.Custom.Index)
+- [DotNet WebApi](xref:NetCode.WebApi.Index)
 - [Concepts: Polymorphisms](xref:Basics.Polymorphism.Index)
 
 ## Demo App and further links

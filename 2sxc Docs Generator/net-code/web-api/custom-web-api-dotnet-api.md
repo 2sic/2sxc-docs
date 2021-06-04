@@ -1,5 +1,5 @@
 ---
-uid: WebApi.Custom.DotNet.Api
+uid: NetCode.WebApi.DotNet.Api
 ---
 
 # C# APIs in ApiController
@@ -26,7 +26,7 @@ The .net Code Docs for [](xref:ToSic.Sxc.Dnn.ApiController).
 
 The `ApiController` provides additional commands productive:
 
-1. [SaveInAdam(...)](xref:WebApi.Custom.DotNet.SaveInAdam) _new in 9.30_
+1. [SaveInAdam(...)](xref:NetCode.WebApi.DotNet.SaveInAdam) _new in 9.30_
 
 
 ## History

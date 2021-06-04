@@ -1,3 +1,3 @@
 
 # Custom C# Web API File Structure
-Moved to [](xref:WebApi.Custom.Files)
+Moved to [](xref:NetCode.WebApi.Files)
