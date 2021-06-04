@@ -6,6 +6,8 @@ uid: NetCode.DynamicCode.GetService
 
 If you want to do advanced stuff, you will want to ask for other global Services to help your code. 2sxc uses Depedency Injection to do this. 
 
+👉 Read about [Dependency Injection in 2sxc](xref:NetCode.DependencyInjection.Index)
+
 Use `GetService<T>()` to get this service. 
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*).

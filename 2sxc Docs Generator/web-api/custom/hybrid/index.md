@@ -98,7 +98,7 @@ Any hybrid controller must limit itself to features in .net standard 1.6 or 2.0,
 If you are creating hybrid controllers, we'll assume that you usually don't need to access properties of Dnn or Oqtane. If you do, you'll have to use the standard mechanisms provided by these. 
 
 * In Dnn - use global objects like `PortalSettings.Current`
-* In Oqtane use Dependency Injection
+* In Oqtane use [Dependency Injection](xref:NetCode.DependencyInjection.Index)
 * To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if OQTANE ... #endif` and `#if !OQTANE ... #endif` blocks
 
 ## Security Attribute Differences

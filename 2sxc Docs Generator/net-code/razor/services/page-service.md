@@ -23,6 +23,7 @@ We approached it in a futuristic way because we wanted to make sure that the cod
 1. Your code can then tell it what you need - like `SetTitle(...)` or `AddJsonLd(...)`
 1. Once the Razor is done, the engine will forward these requests to the page and ensure it happens
 
+👉 Read about [Dependency Injection](xref:NetCode.DependencyInjection.Index)
 👉 Read about the [IPageService in the API docs](xref:ToSic.Sxc.Web.IPageService)
 
 ## Setting Page Properties

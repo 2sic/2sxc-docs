@@ -3,4 +3,4 @@
 * [CreateSource\<T\>()](xref:NetCode.DynamicCode.CreateSource)  
     Get a DataSource object of type `T` (like filters, sorting, etc.)
 * [GetService\<T\>()](xref:NetCode.DynamicCode.GetService)
-    Get a Service to help you (using Dependency Injection)
+    Get a Service to help you (using [Dependency Injection](xref:NetCode.DependencyInjection.Index))

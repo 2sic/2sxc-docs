@@ -15,7 +15,7 @@ uid: NetCode.Koi.Index
 
 ## New Example (will only work in 2sxc v12)
 
-2sxc v12 includes Koi 2.0 which uses Dependency Injection. Using this it also works in Oqtane. 
+2sxc v12 includes Koi 2.0 which uses [Dependency Injection](xref:NetCode.DependencyInjection.Index). Using this it also works in Oqtane. 
 
 The following example will automatically include Bootstrap4 from a CDN if the theme doesn't already include it.
 
