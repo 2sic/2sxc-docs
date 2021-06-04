@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>2sxc Web API | 2sxc and EAV 10 </title>
+    <title>2sxc Custom C# Web APIs | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="2sxc Web API | 2sxc and EAV 10 ">
+    <meta name="title" content="2sxc Custom C# Web APIs | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../basics/index.html" title="Basics">Basics</a>
-                      </li>
-                      <li>
-                          <a href="../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
-                      </li>
-                      <li>
-                          <a href="../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li class="active">
-                          <a href="../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,12 +111,14 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="WebApi.Index">
+            <article class="content wrap" id="_content" data-uid="WebApi.Custom.Index">
+<h1 id="2sxc-custom-c-web-apis">2sxc Custom C# Web APIs</h1>
 
-<div class="float-right context-box-summary highlight-max" width="400px">
+<p>You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.</p>
+<div class="context-box-process" width="100%">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -230,75 +232,106 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../basics/index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
-</div><style>
-  .context-box-summary .browser-interact,
-  .context-box-summary .process-apis { visibility: visible; }
-</style>
+  <style>.context-box-process .process-web-api { visibility: visible; } </style>
+</div>
 
-
-<h1 id="2sxc-web-api">2sxc Web API</h1>
-<p>2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP <code>GET</code> to an endpoint like <code>app/News/content/NewsItems/</code> and get a list of news items. </p>
-<p>You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need. </p>
-<p><img src="assets/web-api-overview.svg" width="100%"></p>
-<h2 id="simple-example">Simple Example</h2>
-<p>Here&#39;s an example JavaScript which would run in a 2sxc News-App on a Dnn page:</p>
-<pre><code class="lang-javascript">// Get news as a promise
-var allNewsPromise = sxc.webApi.get(&#39;app/auto/content/News/&#39;);
-
-// now log to console
-allNewsPromise.then(data =&gt; console.log(data));
-</code></pre><p>This example has some magic happening in the background. Specifically 3 important things happen on the <strong>client</strong> before sending:</p>
-<ol>
-<li>The real URL which is requested is a bit longer, but the <code>webApi</code> takes care of that.</li>
-<li>The server needs to know what App and Module the script is calling from. This <em>Context</em> information is also added by the <code>webApi</code>.</li>
-<li>To add security, a crypto-token is added which will prove that the JavaScript requesting this is running on the page. This is also added by <code>webApi</code>.</li>
-</ol>
-<p>When the <strong>server</strong> receives the request, it too does important stuff.</p>
-<ol>
-<li>First it will use the URL and <em>Context</em> information to figure out what <em>Site</em>, <em>Language</em> and <em>App</em> should be accessed.</li>
-<li>The server will do some security checks to see if this request should be answered.</li>
-<li>Then it returns the data in a simple <strong>JSON</strong> format</li>
-</ol>
-<h2 id="get-started-step-1-decide-which-endpoint-you-need">Get Started Step 1: Decide which Endpoint you need</h2>
-<p>This checklist should help you decide:</p>
-<iframe src="https://azing.org/2sxc/r/zhLnCg3e?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-
-<h2 id="getting-started">Getting Started</h2>
-<p>Your 1-2-3 steps for using data endpoints are:</p>
-<ol>
-<li>Decide which endpoint you need</li>
-<li>Create / Publish the endpoint<ol>
-<li>For standard endpoints, set the permissions as you need them</li>
-<li>For custom endpoints, write the C# code</li>
-</ol>
-</li>
-<li>Write the code to read the data (typically in JavaScript)</li>
-</ol>
-<h2 id="conventions-used">Conventions Used</h2>
+<h2 id="access-endpoints-with-javascript">Access Endpoints with JavaScript</h2>
+<p>You can find a good example on <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">live tutorials</a> or in the <a class="xref" href="https://2sxc.org/en/apps/app/mobius-forms-4-with-mailchimp-recaptcha-polymorph-weback-and-more">Mobius Forms App</a>. Calling these is as follows:</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> means that there is a url convention to access data like <code>.../blogposts/25</code></li>
-<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> also specifies that an <em>HTTP GET</em> is for reading, <em>HTTP POST</em> is for writing, etc.</li>
-<li>All the APIs use <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for sending/receiving data. <a href="https://azing.org/2sxc/r/2zBGrCAd">This is the default schema</a>.</li>
+<li><code>.../app/auto/api/[YourName]</code> when accessing a WebApi of the current app (from a dnn-page with this module), as then 2sxc uses auto-detect</li>
+<li><code>.../app/[app-folder]/api/[YourName]</code> when using this endpoint from external, as auto-detect can&#39;t work then.</li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
+<p>Most WebApi Actions will require additional parameters. Just add them as url-parameters like <code>?param1=This&amp;param2=That</code></p>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+
+  <h2> Discover More in the Web API Tutorials </h2>
+
+  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API tutorials</a>. You should really check them out 👍.
+
+</div><h2 id="basic-example">Basic Example</h2>
+<p>A file in your app in the <code>api</code> folder called <code>BooksController.cs</code> could look like the following:</p>
+<pre><code class="lang-cs">using DotNetNuke.Security;
+using DotNetNuke.Web.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Web.Http;
+
+public class BooksController : ToSic.Sxc.Dnn.ApiController
+{
+  [HttpGet]
+  [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
+  [ValidateAntiForgeryToken]
+  public object Persons()
+  {
+    return new ToSic.Sxc.Conversion.DataToDictionary(Edit.Enabled)
+      .Convert(App.Data[&quot;Persons&quot;]);
+  }
+}
+</code></pre><p>The custom controller <strong>BooksController</strong> must have the same name as the file and extends the <strong>ApiController</strong> controller. It has a method returning all items of the <strong>Persons</strong> data type. The method is decorated with several attributes:</p>
 <ul>
-<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
+<li><code>[HttGet]</code> defines that the method must be invoked with HTTP GET</li>
+<li><code>[DnnModuleAuthorize(AccessLevel = ...)]</code> defines the permission an invoker must have</li>
+<li><code>[ValidateAntiForgeryToken]</code> ensures that a security token from the cookies is validated before the mehod is invoked</li>
+</ul>
+<p>The custom controller can be called with JavaScript like this:</p>
+<pre><code class="lang-razor">&lt;!-- this ensures the $2sxc scripts are loaded --&gt;
+@Edit.Enable(js: true)
+
+&lt;!-- the button which loads everything --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; onclick=&quot;getPersons(this)&quot;&gt;
+  Get Persons Custom
+&lt;/button&gt; 
+
+
+&lt;script&gt;
+  // this script does the API call and then shows the result
+  function getPersons(moduleContext) {
+    $2sxc(moduleContext)
+      .webApi.get(&#39;app/auto/api/books/persons&#39;)
+      .then(function (results) {
+        alert(&#39;Found &#39; + results.length + &#39; persons. \n&#39;
+          + &#39;The first one is &quot;&#39; + results[0].FirstName + &#39; &#39; + results[0].LastName + &#39;&quot;\n\n&#39;
+          + &#39;The raw JSON: \n&#39; + JSON.stringify(results)
+        );
+      });
+  }
+&lt;/script&gt;
+</code></pre><p>The $2sxc API ensures that the GET request is send to the correct url <code>/DesktopModules/2sxc/API/app/auto/api/Books/Persons</code>. You can also read more about the <a class="xref" href="../../js-code/2sxc-api/sxc.html">sxc Controller</a>.</p>
+<h2 id="the-awesomeness-of-these-api-controllers">The Awesomeness of these API Controllers</h2>
+<p>First and foremost, these API controllers let you run your code as you wish. But there&#39;s a lot more that make this the ideal choice for your code:</p>
+<h3 id="fast-development-without-ever-restarting">Fast Development without ever Restarting</h3>
+<ol>
+<li>2sxc Web API Controllers are stored in your app as pure source code, and you can edit them at runtime. </li>
+<li>They will be compiled on the fly and don&#39;t require Dnn to restart. </li>
+<li>The built in source-code editor in 2sxc lets you make simple changes through your browser.</li>
+<li>And if you want more power then just open it in Visual Studio or Visual Studio Code.</li>
+</ol>
+<h3 id="simple-distribution-and-tweaking">Simple Distribution and Tweaking</h3>
+<p>2sxc Apps can easily be exported and imported to other solutions. 
+What&#39;s also typical is that new copies of the App may need some modifications to better suit the new needs. 
+Since the C# files are included as source you can easily adapt the controllers to your needs. </p>
+<h3 id="all-2sxc-objects-initialized">All 2sxc Objects Initialized</h3>
+<p>Much of the productivity with 2sxc comes with the fact that so much is already done. 
+When you create custom 2sxc Web APIs you automatically get everything like <code>App</code> and <code>Data</code> objects prepared for the context your code is running in. </p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Instead of <strong>App.Data[&quot;MyData&quot;]</strong> you can fetch data from another data source provided by 2sxc (for exmple from the <strong>App.Query[&quot;MyQueryData&quot;]</strong>)</li>
+<li><strong>Sxc.Serializer.Prepare(...)</strong> converts the object returned by App.Data[&quot;MyData&quot;].List to a dynamic and serializable object</li>
 </ul>
 <h2 id="recommended-reading">Recommended Reading</h2>
 <ul>
-<li><a class="xref" href="content-rest-web-api.html">Data CRUD API</a></li>
-<li><a class="xref" href="../net-code/web-api/index.html">DotNet WebApi</a></li>
-<li><a class="xref" href="../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API Tutorials</a></li>
+<li><a class="xref" href="../../web-api/index.html">WebApi</a></li>
+<li><a class="xref" href="../../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced Content-REST API in 2sxc 5.x</li>
-<li>Query added in 2sxc 8.10</li>
+<li>Introduced in 2sxc 06.05</li>
 <li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
 </ol>
 </article>
@@ -309,7 +342,7 @@ allNewsPromise.then(data =&gt; console.log(data));
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/web-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -335,20 +368,20 @@ allNewsPromise.then(data =&gt; console.log(data));
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

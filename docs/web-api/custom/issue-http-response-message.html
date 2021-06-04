@@ -111,25 +111,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="WebApi.Custom.Issues.HttpResponseMessage">
+            <article class="content wrap" id="_content" data-uid="">
 <h1 id="common-issue-missing-httpresponsemessage">Common Issue: Missing HttpResponseMessage</h1>
 
-<p>The WebApi sometimes needs to return an <code>HttpResponseMessage</code>, for example to trigger redirects. </p>
-<p>In some cases you simply cannot get the code to run, with an error similar to this</p>
-<pre><code>2sxc Api Controller Finder: Error while selecting / compiling a controller for the request. Pls check the event-log and the code. See the inner exception for more details.&quot;, &quot;ExceptionMessage&quot;: &quot;[Some-Path]\Portals\0\2sxc\[Some-App]\api\InstallController.cs(23): error CS0012: The type &#39;System.Net.Http.HttpRequestMessage&#39; is defined in an assembly that is not referenced. You must add a reference to assembly &#39;System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&#39;.&quot;, &quot;ExceptionType&quot;: &quot;System.Web.HttpCompileException&quot;, &quot;StackTrace&quot;: &quot; at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetCompiledAssembly(String virtualPath) at ToSic.SexyContent.WebApi.AppApiControllerSelector.SelectController(HttpRequestMessage request) in C:\Projects\2SexyContent\Web\DesktopModules\ToSIC_SexyContent\Sxc WebApi\AppApiControllerSelector.cs:line 77
-</code></pre><p>The reason is that the compiler has a hard time figuring out where to locate this class. We believe it&#39;s because Dnn has gone through various .net versions and that makes these things a bit harder. </p>
-<p>The solution is to tell the Compiler that you&#39;re using <code>System.Net.Http</code> in the desired version. Add the <code>add</code> tag to the <code>web.config</code> in the location below:</p>
-<pre><code>&lt;configuration&gt;
-  &lt;system.web&gt;
-    &lt;compilation&gt;
-      &lt;assemblies&gt;
-        &lt;add assembly=&quot;System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&gt;
-...
-</code></pre><p><em>Note: you shouldn&#39;t add the whole block - it should just show you where it must go</em></p>
-<h2 id="history">History</h2>
-<ol>
-<li><a href="https://stackoverflow.com/questions/47508179/2sxc-httpresponsemessage-reference-missing-in-custom-api-controller">Reported in 2017</a></li>
-</ol>
+<p>Moved to <a class="xref" href="../../net-code/web-api/issue-http-response-message.html">Common Issue: Missing HttpResponseMessage</a></p>
 </article>
           </div>
           
