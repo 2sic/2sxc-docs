@@ -53,7 +53,7 @@ Just like with with Razor, 2sxc 11.11 added the same GetService to all WebAPIs.
 ## How Can I Use Dependency Injection in Web Controls and Themes (.ascx)?
 
 Since Web Controls run inside Dnn they don't automatically have access to the ServiceProvider. 
-As a workaround there is a global Service Provider called `ToSic.Eav.Factory`. 
+As a workaround there is a global Service Provider called [`ToSic.Eav.Factory`](xref:ToSic.Eav.Factory). 
 Here's how you would use it:
 
 ```html
