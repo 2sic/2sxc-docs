@@ -13,7 +13,7 @@ uid: NetCode.Koi.Index
 
 [!include["Koi Tutorials"](~/shared/tutorials/koi.md)]
 
-## New Example (will only work in 2sxc v12)
+## New Example (requires 2sxc v12)
 
 2sxc v12 includes Koi 2.0 which uses [Dependency Injection](xref:NetCode.DependencyInjection.Index). Using this it also works in Oqtane. 
 
