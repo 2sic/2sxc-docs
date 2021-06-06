@@ -94,6 +94,14 @@ var page = GetService<ToSic.Sxc.Web.IPageService>();
 page.Activate("turnOn");
 ```
 
+Features you can activate as of v12.02
+
+* `jQuery`  
+    _note: in Oqtane 💧 this will include jQuery slim as that is the default. We're still trying to enhance this_
+* `jQuery.slim` - this is jQuery without ajax and effects  
+    _note: in Dnn ☢ this will include jQuery_
+* `jQuery.Ui` - this is the UI component. As it requires jQuery to work, that would be auto-included as well.
+
 We'll list the keys of features that can be activated, as there will be quite a few. But as of the first release now it's
 
 * `turnOn` - the JavaScript Activation system
