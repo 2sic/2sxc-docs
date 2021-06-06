@@ -257,6 +257,18 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
     #endif
 }
 </code></pre><p>If you have complex code, a simple trick is to place it in a separate file (so the Razor compiler won&#39;t complain) and then use <code>CreateInstance(...)</code> or <code>Html.Partial(...)</code> to call that if you are in the correct system. </p>
+<h2 id="set-page-properties-and-headers-for-hybrid-apps">Set Page Properties and Headers for Hybrid Apps</h2>
+<p>In Dnn you were able to use RazorBlade to set Title or add Headers. 
+Since RazorBlade has a static implementation, this cannot work in Oqtane. </p>
+<p>To solve this we created the <a class="xref" href="../services/page-service.html">IPageService</a>.</p>
+<h2 id="set-http-status-codes-for-hybrid-apps">Set Http Status Codes for Hybrid Apps</h2>
+<p>In Dnn you could simply get the HttpContext and change the Response object. 
+This uses a static implementation which dosen&#39;t work in Oqtane. </p>
+<p>To solve this we created the <a class="xref" href="../services/page-service.html">IPageService</a>.</p>
+<h2 id="search-integration">Search Integration</h2>
+<p>Previously in Dnn you could write some <code>CustomizeSearch</code> code in the Razor-file which we decided to deprecate in future. 
+From now on please use the the feature <a class="xref" href="../../search/index.html">described here</a>. 
+Note that as of now, Oqtane doesn&#39;t have a search indexer, so there it will simply have no effect, but your code will run on both platforms.</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>

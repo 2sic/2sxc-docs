@@ -26,29 +26,61 @@ We approached it in a futuristic way because we wanted to make sure that the cod
 👉 Read about [Dependency Injection](xref:NetCode.DependencyInjection.Index)
 👉 Read about the [IPageService in the API docs](xref:ToSic.Sxc.Web.IPageService)
 
-## Setting Page Properties
+## Set Page Properties
 
 You can set these page properties
 
-1. `SetTitle(newToPrefix)` or `SetTitle(newTitle, placeholder)`
-1. `SetDescription(newDescription)` or `SetDescription(newDescription, placeholder)`
-1. `SetKeywords(additionalKeywords)` or `SetKeywords(additionalKeywords, placeholder)`
-1. `SetBase(url)`
+1. `SetTitle(newToPrefix)`  
+    `SetTitle(newTitle, placeholder)`  
+    see [docs](xref:ToSic.Sxc.Web.IPageService.SetTitle*)
+1. `SetDescription(newDescription)`  
+    `SetDescription(newDescription, placeholder)`  
+    see [docs](xref:ToSic.Sxc.Web.IPageService.SetDescription*)
+1. `SetKeywords(additionalKeywords)`  
+    `SetKeywords(additionalKeywords, placeholder)`  
+    see [docs](xref:ToSic.Sxc.Web.IPageService.SetKeywords*)
+1. `SetBase(url)` - see [docs](xref:ToSic.Sxc.Web.IPageService.SetBase*)
 
 Note that SetTitle, SetDescription and SetKeywords will prepend or append whatever you give them to the existing value, unless you specify a placeholder - in which case that placeholder will be replaced. 
 
-## Setting Icons and Icon-Sets
+## Set Http Response Codes
 
+In some cases an App may need to set the page to 404 - so that google doesn't index it. Do this using
+
+* `SetHttpStatus(statusCode, optionalmessage)` - see [docs](xref:ToSic.Sxc.Web.IPageService.SetHttpStatus*)
+
+Note: ATM this is Dnn ☢ only, as Oqtane doesn't render each page at a time - so a status code wouldn't work there (yet).
+
+## Add Icons and Icon-Sets like FavIcon
+
+Icons / FavIcons are minor enhancements to a page, but they serve more than just the icon in the browser tab. In many cases they may also have larger images used for tiles and more. Use these two commands to get them working:
+
+* `AddIcon` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddIcon*) to add a single icon
+* `AddIconSet` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddIconSet*) to add a bundle of icons for various use cases in one step
 
 ## Add Custom Headers
 
+Custom headers may be important for JavaScripts running on your page or other special purposes. Set them using these methods:
+
+* `AddToHead(string)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddToHead(System.String))
+* `AddToHead(tag)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddToHead(ToSic.Razor.Markup.TagBase))
+* `AddMeta(name, content)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddMeta*)
 
 ## Add JsonLD Headers (Schema.org)
 
+JsonLD is a powerful way to describe your page to other systems, especially web crawlers like Google. 
+It uses conventions from [schema.org](https://schema.org). 
+Use this to add custom JsonLD headers:
+
+* `AddJsonLd(jsonString)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddJsonLd(System.String))
+* `AddJsonLd(jsonObject)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddJsonLd(System.Object))
 
 ## Add OpenGraph Headers
 
+OpenGraph is a standard to describe your page for Facebook, Twitter and other more social-style systems. 
+It adds meta headers using `og:` prefixes. Use these commands to add such headers:
 
+* `AddOpenGraph(propertyName, content)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddOpenGraph*)
 
 ## Activate Page Features
 
@@ -69,47 +101,9 @@ We'll list the keys of features that can be activated, as there will be quite a 
 _Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
 
-# TODO: Todoc - not done yet!
-
-
-
-
-
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
-
-## How to use
-
-This example shows how you enable the UI using Razor, which will allow public users to create data:
-
-```razor
-<div>
-    @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
-</div>
-```
-
-This example ensures that
-
-1. `api`: basic JS for editing are loaded, allowing you to then run javascript commands like `$2sxc(...).run(...)`
-1. `forms`: additional JS is loaded, enabling the standard form dialogs to open
-1. `context`: the html contains context-information about the app, so that the dialogs actually work - see also [edit context](xref:Basics.Browser.EditUx.EditContext)
-1. the auto-toolbars are disabled (this would generate a default toolbar if no toolbar was specified)
-
-## Usage Notes
-
-This command simply enables editing - but doesn't provide any permissions or show any buttons yet. Here are a few things you must know to get this to work:
-
-1. remember to set [permissions](xref:Basics.Cms.Permissions.Index) to allow what you want to do (like create new draft items for public users)
-1. Edit.Enable uses [named parameters](xref:NetCode.Conventions.NamedParameters), so you always have to use the `api: true` syntax
-1. the Edit.Enable won't output anything in the position it's added, because it controls the main wrapper
-1. you must also create a link or toolbar in your code for the public users, as they won't have a button to press otherwise
-
-
-## Read also
-
-* [Tutorial app for Public Forms](https://2sxc.org/en/apps/app/tutorial-public-forms-with-2sxc-9-30)
-* [Blog Recipe for using Public Forms with 2sxc](https://2sxc.org/en/blog/post/recipe-create-public-forms-with-2sxc)
 
 
 ## History

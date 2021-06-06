@@ -132,19 +132,48 @@
 </ol>
 <p>👉 Read about <a class="xref" href="../../dependency-injection/index.html">Dependency Injection</a>
 👉 Read about the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html">IPageService in the API docs</a></p>
-<h2 id="setting-page-properties">Setting Page Properties</h2>
+<h2 id="set-page-properties">Set Page Properties</h2>
 <p>You can set these page properties</p>
 <ol>
-<li><code>SetTitle(newToPrefix)</code> or <code>SetTitle(newTitle, placeholder)</code></li>
-<li><code>SetDescription(newDescription)</code> or <code>SetDescription(newDescription, placeholder)</code></li>
-<li><code>SetKeywords(additionalKeywords)</code> or <code>SetKeywords(additionalKeywords, placeholder)</code></li>
-<li><code>SetBase(url)</code></li>
+<li><code>SetTitle(newToPrefix)</code><br> <code>SetTitle(newTitle, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetTitle_">docs</a></li>
+<li><code>SetDescription(newDescription)</code><br> <code>SetDescription(newDescription, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetDescription_">docs</a></li>
+<li><code>SetKeywords(additionalKeywords)</code><br> <code>SetKeywords(additionalKeywords, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetKeywords_">docs</a></li>
+<li><code>SetBase(url)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetBase_">docs</a></li>
 </ol>
 <p>Note that SetTitle, SetDescription and SetKeywords will prepend or append whatever you give them to the existing value, unless you specify a placeholder - in which case that placeholder will be replaced. </p>
-<h2 id="setting-icons-and-icon-sets">Setting Icons and Icon-Sets</h2>
+<h2 id="set-http-response-codes">Set Http Response Codes</h2>
+<p>In some cases an App may need to set the page to 404 - so that google doesn&#39;t index it. Do this using</p>
+<ul>
+<li><code>SetHttpStatus(statusCode, optionalmessage)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetHttpStatus_">docs</a></li>
+</ul>
+<p>Note: ATM this is Dnn ☢ only, as Oqtane doesn&#39;t render each page at a time - so a status code wouldn&#39;t work there (yet).</p>
+<h2 id="add-icons-and-icon-sets-like-favicon">Add Icons and Icon-Sets like FavIcon</h2>
+<p>Icons / FavIcons are minor enhancements to a page, but they serve more than just the icon in the browser tab. In many cases they may also have larger images used for tiles and more. Use these two commands to get them working:</p>
+<ul>
+<li><code>AddIcon</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddIcon_">docs</a> to add a single icon</li>
+<li><code>AddIconSet</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddIconSet_">docs</a> to add a bundle of icons for various use cases in one step</li>
+</ul>
 <h2 id="add-custom-headers">Add Custom Headers</h2>
+<p>Custom headers may be important for JavaScripts running on your page or other special purposes. Set them using these methods:</p>
+<ul>
+<li><code>AddToHead(string)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddToHead_System_String_">docs</a></li>
+<li><code>AddToHead(tag)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddToHead_ToSic_Razor_Markup_TagBase_">docs</a></li>
+<li><code>AddMeta(name, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddMeta_">docs</a></li>
+</ul>
 <h2 id="add-jsonld-headers-schemaorg">Add JsonLD Headers (Schema.org)</h2>
+<p>JsonLD is a powerful way to describe your page to other systems, especially web crawlers like Google. 
+It uses conventions from <a href="https://schema.org">schema.org</a>. 
+Use this to add custom JsonLD headers:</p>
+<ul>
+<li><code>AddJsonLd(jsonString)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddJsonLd_System_String_">docs</a></li>
+<li><code>AddJsonLd(jsonObject)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddJsonLd_System_Object_">docs</a></li>
+</ul>
 <h2 id="add-opengraph-headers">Add OpenGraph Headers</h2>
+<p>OpenGraph is a standard to describe your page for Facebook, Twitter and other more social-style systems. 
+It adds meta headers using <code>og:</code> prefixes. Use these commands to add such headers:</p>
+<ul>
+<li><code>AddOpenGraph(propertyName, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddOpenGraph_">docs</a></li>
+</ul>
 <h2 id="activate-page-features">Activate Page Features</h2>
 <p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
 This gets especially complex in scenarios like Oqtane, where the page doesn&#39;t really reload and therefor may already have some scripts / styles loaded, but it&#39;s hard to guess. </p>
@@ -156,7 +185,6 @@ page.Activate(&quot;turnOn&quot;);
 <li><code>turnOn</code> - the JavaScript Activation system</li>
 </ul>
 <p><em>Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
-<h1 id="todo-todoc---not-done-yet">TODO: Todoc - not done yet!</h1>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -164,32 +192,7 @@ page.Activate(&quot;turnOn&quot;);
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="how-to-use">How to use</h2>
-<p>This example shows how you enable the UI using Razor, which will allow public users to create data:</p>
-<pre><code class="lang-razor">&lt;div&gt;
-    @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
-&lt;/div&gt;
-</code></pre><p>This example ensures that</p>
-<ol>
-<li><code>api</code>: basic JS for editing are loaded, allowing you to then run javascript commands like <code>$2sxc(...).run(...)</code></li>
-<li><code>forms</code>: additional JS is loaded, enabling the standard form dialogs to open</li>
-<li><code>context</code>: the html contains context-information about the app, so that the dialogs actually work - see also <a class="xref" href="../../../basics/edit/edit-ux/context.html">edit context</a></li>
-<li>the auto-toolbars are disabled (this would generate a default toolbar if no toolbar was specified)</li>
-</ol>
-<h2 id="usage-notes">Usage Notes</h2>
-<p>This command simply enables editing - but doesn&#39;t provide any permissions or show any buttons yet. Here are a few things you must know to get this to work:</p>
-<ol>
-<li>remember to set <a class="xref" href="../../../basics/cms/permissions/index.html">permissions</a> to allow what you want to do (like create new draft items for public users)</li>
-<li>Edit.Enable uses <a class="xref" href="../../conventions/named-parameters.html">named parameters</a>, so you always have to use the <code>api: true</code> syntax</li>
-<li>the Edit.Enable won&#39;t output anything in the position it&#39;s added, because it controls the main wrapper</li>
-<li>you must also create a link or toolbar in your code for the public users, as they won&#39;t have a button to press otherwise</li>
-</ol>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a href="https://2sxc.org/en/apps/app/tutorial-public-forms-with-2sxc-9-30">Tutorial app for Public Forms</a></li>
-<li><a href="https://2sxc.org/en/blog/post/recipe-create-public-forms-with-2sxc">Blog Recipe for using Public Forms with 2sxc</a></li>
-</ul>
-<h2 id="history">History</h2>
+</div><h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 12.02 to replace the previous static implementation using <a class="xref" href="../../razor-blade/index.html">RazorBlade</a></li>
 </ol>

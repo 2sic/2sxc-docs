@@ -137,6 +137,25 @@ if(fancybox || scripts) {
 
 If you have complex code, a simple trick is to place it in a separate file (so the Razor compiler won't complain) and then use `CreateInstance(...)` or `Html.Partial(...)` to call that if you are in the correct system. 
 
+## Set Page Properties and Headers for Hybrid Apps
+
+In Dnn you were able to use RazorBlade to set Title or add Headers. 
+Since RazorBlade has a static implementation, this cannot work in Oqtane. 
+
+To solve this we created the [IPageService](xref:NetCode.Razor.Services.IPageService).
+
+## Set Http Status Codes for Hybrid Apps
+
+In Dnn you could simply get the HttpContext and change the Response object. 
+This uses a static implementation which dosen't work in Oqtane. 
+
+To solve this we created the [IPageService](xref:NetCode.Razor.Services.IPageService).
+
+## Search Integration
+
+Previously in Dnn you could write some `CustomizeSearch` code in the Razor-file which we decided to deprecate in future. 
+From now on please use the the feature [described here](xref:NetCode.Search.Index). 
+Note that as of now, Oqtane doesn't have a search indexer, so there it will simply have no effect, but your code will run on both platforms.
 
 ---
 
