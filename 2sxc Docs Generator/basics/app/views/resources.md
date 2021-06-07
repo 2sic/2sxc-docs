@@ -45,7 +45,7 @@ For multiple views you may end up using the same Resources Content-Type or creat
 1. First create the Content-Type in the Scope `Configuration` and add the fields you want to configure
 1. Then in the view-configuration select that Content-Type (it will only show types on `Configuration`) and either create a new entity or select an existing one.
 
-Todo: pic
+<img src="./assets/view-settings-and-resources.jpg" class="full-width" />
 
 ## How Can I Access View Resources in Razor?
 

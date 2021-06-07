@@ -19,7 +19,14 @@ Content-Types have a _Scope_. This is like a category for the Content-Type.
 The other Scopes have internal and system Content-Types like `@String`. 
 
 * [Here's the full list of current Scopes](https://azing.org/2sxc/r/LqblhYXD)
-* Here are instructions how to [switch Scopes](https://azing.org/2sxc/r/MEa0dtBw) to manage data of other Scopes
+
+## Switch Scopes
+
+Just use the built-in scope switcher like this:
+
+<img src="./assets/switch-scopes.jpg" class="full-width" />
+
+For older versions see this checklist on how to [switch Scopes](https://azing.org/2sxc/r/MEa0dtBw) to manage data of other Scopes
 
 ## Nice to Know about Scopes
 
