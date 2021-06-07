@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Views and Templates | 2sxc and EAV 10 </title>
+    <title>View Resources (Advanced &#9888;) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Views and Templates | 2sxc and EAV 10 ">
+    <meta name="title" content="View Resources (Advanced &#9888;) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.App.Views.Index">
-<h1 id="views-and-templates">Views and Templates</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.App.Views.Resources">
+<h1 id="view-resources-advanced-">View Resources (Advanced ⚠)</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,53 +235,41 @@
   </div>
 </div><style>.context-box-summary .process-razor, .context-box-summary .data-configuration { visibility: visible; }</style>
 
-<p>Views are what the user will see - and contains things like Html, CSS, Javascript and data from the content. </p>
-<h2 id="how-it-works">How it Works</h2>
-<p>Views configure what <a class="xref" href="../templates.html">templates</a> are combined with what <a class="xref" href="../../data/content-types/index.html">Content-Type</a> to then produce an output. </p>
-<p>Read more about <a class="xref" href="../templates.html">Templates here</a></p>
-<p>The template-file is just part of the view. To be used as a view, it must be configured in the App configuration as a view, where you add things like</p>
+<p>Starting in 2sxc 12.02 you can also now create custom <strong>Resources</strong> for a <a class="xref" href="index.html">View</a>. </p>
+<h2 id="why-use-view-resources">Why Use View Resources?</h2>
+<p>If Views need multi-language texts or images then the Resources would be the right place to handle them. </p>
+<p>Examples</p>
 <ol>
-<li><strong>Name</strong> or <strong>Thumbnail Image</strong> (for the preview when selecting the view)</li>
-<li><strong>Data</strong> specs like what type of data is shown, if the data comes from a query etc.</li>
-<li><strong>View Parameters</strong> to automatically show this view based on url-parameters</li>
+<li>button-labels</li>
+<li>Views whichs how tables may have a lot of row or column labels</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>Views can also specify more Content-Types for using in the Header or Presentation. In addition, they could also say that the data comes from a Query instead of from user/editor input. </p>
+<div class="TIP"><h5>Tip</h5><p>View Resources complement <a class="xref" href="../resources.html">App Resources</a>. 
+The difference is that App-Resources are available on all Templates while View-Resources are only available on the Views they are configured on.</p>
 </div>
-<h2 id="view-configuration">View Configuration</h2>
-<p>👉 See <a class="xref" href="configuration.html">View Configuration</a></p>
-<h2 id="view-identifier">View Identifier</h2>
-<p>2sxc 12.02 introduces a the <strong>Identifier</strong>. 
-This is useful in scenarios where the <em>same</em> <a class="xref" href="../templates.html">Template</a> is used in multiple views, and should result in slightly different output in each case. 
-The <em>Identifier</em> let&#39;s you specify a key to differentiate which behavior the template should have. </p>
-<p>For example: Two views are configured, one with the name <code>2 Columns</code> has an Identifier <code>2Col</code> the other called <code>3 Columns</code> has <code>3Col</code>. 
-Your razor code can then access this on <code>CmsContext.View.Identifier</code> and change what CSS classes it uses. </p>
-<p>In theory you could also check the <code>Name</code> property on <code>CmsContext.View.Name</code> but that could change based on the language, which is why you should use the <em>Identifier</em>. 
-In more complex scenarios we suggest you use <a class="xref" href="settings.html">View Settings</a>.</p>
-<h2 id="view-settings">View Settings</h2>
-<p>👉 See <a class="xref" href="settings.html">View Settings (Advanced ⚠)</a></p>
-<h2 id="view-resources">View Resources</h2>
-<p>👉 See <a class="xref" href="resources.html">View Resources (Advanced ⚠)</a></p>
-<h2 id="view-polymorphism">View Polymorphism</h2>
-<p><a class="xref" href="../../polymorphism/index.html">Polymorphism</a> can be activated on views (new in v11). When you do this, you can choose between two modes</p>
+<div class="TIP"><h5>Tip</h5><p>If you can use View-Resources on multiple views. 
+This is great in cases where the same template is used for multiple views.<br>But you can also choose to use different Resources - just how you need it. </p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>Remember that each Entity/Item can also be multi-language, so you only need View-Resources for static-localization.
+This means texts/labels/images which are the same every time the View is used. </p>
+</div>
+<h2 id="how-do-view-resources-work">How do View Resources Work?</h2>
+<p>View Resources are standard Entities in 2sxc. So you&#39;ll have to create a <a class="xref" href="../../data/content-types/index.html">Content-Type</a> for this containing the fields which you want to configure. </p>
+<p>To keep the normal <code>Data</code> section clean, the content-types are in the <a class="xref" href="../../data/content-types/scopes.html">Scope</a> <code>System.Configuration</code>.</p>
+<p>For multiple views you may end up using the same Resources Content-Type or create a new Content-Type for each view - as you need it. </p>
+<h2 id="how-to-setup-view-resources">How to Setup View Resources?</h2>
 <ol>
-<li>Permission based: in this case SuperUsers get the template from the <code>staging</code> folder while public users get the template from <code>live</code> or the primary one which was configured in the View configuration</li>
-<li>CSS framework based: here the view will automatically try to pick the file from the folder matching the CSS framework set by the Theme/Skin</li>
+<li>First create the Content-Type in the Scope <code>Configuration</code> and add the fields you want to configure</li>
+<li>Then in the view-configuration select that Content-Type (it will only show types on <code>Configuration</code>) and either create a new entity or select an existing one.</li>
 </ol>
-<h2 id="advanced-topics">Advanced Topics</h2>
-<ul>
-<li><a href="https://2sxc.org/en/docs/Feature/feature/4680">Switching between views based on the url</a></li>
-<li><a href="https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use">Differences between features when using Content or App</a></li>
-<li><a href="https://2sxc.org/en/Docs/Feature/feature/4737">Protecting Views for certain users using permissions</a></li>
-<li><a href="https://2sxc.org/en/docs/Feature/feature/3592">Hide advanced features from normal editors</a></li>
-<li><a href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorial</a></li>
-</ul>
+<p>Todo: pic</p>
+<h2 id="how-can-i-access-view-resources-in-razor">How Can I Access View Resources in Razor?</h2>
+<p>These can be found as a <a class="xref" href="../../../net-code/dynamic-data/dynamic-entity.html">Dynamic Entity</a> on <code>CmsContext.View.Resources</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Context.ICmsView.html">ICmsView Docs</a>.</p>
+<h2 id="how-can-i-access-view-settings-in-tokens">How Can I Access View Settings in Tokens?</h2>
+<p>As of now this is not possible. </p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 1.0</li>
-<li>Automatic View-Polymorphism added in 2sxc 11</li>
-<li>View Identifier added in 2sxc 12.02</li>
-<li>View Settings added in 2sxc 12.02</li>
-<li>View Resources added in 2sxc 12.02</li>
+<li>Made available to Razor in 2sxc 12.02</li>
 </ol>
 </article>
           </div>
@@ -291,7 +279,7 @@ In more complex scenarios we suggest you use <a class="xref" href="settings.html
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/views/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/views/resources.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

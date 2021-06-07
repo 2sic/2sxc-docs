@@ -27,11 +27,27 @@ The template-file is just part of the view. To be used as a view, it must be con
 
 ## View Configuration
 
-A view has a lot of configuration options, but they are all explained in the edit view dialog, so we're not documenting this here. Two things of interest which you may want to read about:
+👉 See [](xref:Basics.App.Views.Configuration)
 
-1. [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680)
-1. [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737)
+## View Identifier
 
+2sxc 12.02 introduces a the **Identifier**. 
+This is useful in scenarios where the _same_ [Template](xref:Basics.App.Templates) is used in multiple views, and should result in slightly different output in each case. 
+The _Identifier_ let's you specify a key to differentiate which behavior the template should have. 
+
+For example: Two views are configured, one with the name `2 Columns` has an Identifier `2Col` the other called `3 Columns` has `3Col`. 
+Your razor code can then access this on `CmsContext.View.Identifier` and change what CSS classes it uses. 
+
+In theory you could also check the `Name` property on `CmsContext.View.Name` but that could change based on the language, which is why you should use the _Identifier_. 
+In more complex scenarios we suggest you use [View Settings](xref:Basics.App.Views.Settings).
+
+## View Settings 
+
+👉 See [](xref:Basics.App.Views.Settings)
+
+## View Resources
+
+👉 See [](xref:Basics.App.Views.Resources)
 
 ## View Polymorphism
 
@@ -52,3 +68,6 @@ A view has a lot of configuration options, but they are all explained in the edi
 
 1. Introduced in 2sxc 1.0
 1. Automatic View-Polymorphism added in 2sxc 11
+1. View Identifier added in 2sxc 12.02
+1. View Settings added in 2sxc 12.02
+1. View Resources added in 2sxc 12.02
