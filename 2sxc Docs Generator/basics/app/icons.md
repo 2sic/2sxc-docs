@@ -9,7 +9,8 @@ uid: Basics.App.Icons
 
 App icons are convention based, so there is no configuration for it. 
 To give your app an icon, place a file called `app-icon.png` in the root folder of your app. 
-It should be square, and at least 200x200 Pixels, but we recommend it's at least 500x500 pixels. 
+It should be square, and at least 500x500 pixels. 
+
 
 ## Icons for Views / Templates
 
@@ -35,7 +36,7 @@ Just edit the Content-Type Metadata and on the Icon-field you have two options:
 
 ## History
 
-1. App icons introduced ca. v8
-1. View Icons introduced ca. v8
-1. Content-Type Icons introduced ca. v8
+1. App icons introduced ca. v9.01
+1. View Icons introduced ca. v9.01
+1. Content-Type Icons introduced ca. v9.01
 1. View Icons enhanced with option to upload or specify manually in v12.02
