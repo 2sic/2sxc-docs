@@ -7,7 +7,7 @@ uid: Basics.Prepare.Index
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .prepare-all { visibility: visible; } </style>
 
-A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation** before the [View](xref:Basics.App.Views) or [Custom WebApi](xref:NetCode.WebApi.Index) work with it. 
+A common Step in the [data-flow](xref:Basics.Server.DataFlow) is the **Data Preparation** before the [View](xref:Basics.App.Views.Index) or [Custom WebApi](xref:NetCode.WebApi.Index) work with it. 
 This is fully automated and has three common scenarios:
 
 1. **[No Prepare](#no-preparation)** where no Data is used or at least no _Instance Data_ 

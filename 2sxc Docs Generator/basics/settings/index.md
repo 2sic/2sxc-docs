@@ -98,7 +98,7 @@ _App Resources were introduced in 2sxc 6.0, availability in Razor as well._
 
 ### View Configuration
 
-Each view has [View-Configuration](xref:Basics.App.Views) containing the name, how it works with data and more.
+Each view has [View-Configuration](xref:Basics.App.Views.Index) containing the name, how it works with data and more.
 
 In Razor you can access basic View information on the `CmsContext.View` object, or the entire configuration on the dynamic `CmsContext.View.Configuration` object.
 

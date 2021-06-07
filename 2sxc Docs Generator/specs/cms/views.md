@@ -1,2 +1,2 @@
 
-# Moved to [](xref:Basics.App.Views)
+# Moved to [](xref:Basics.App.Views.Index)

@@ -21,7 +21,7 @@ It will _first_ show the [Content Type](xref:Basics.Data.ContentTypes.Index) pic
 
 <img src="./assets/choose-type.jpg" width="100%" class="full-width">
 
-...and _then_ the [View](xref:Basics.App.Views) to use for this Content-Type.
+...and _then_ the [View](xref:Basics.App.Views.Index) to use for this Content-Type.
 
 <img src="./assets/choose-view.jpg" width="100%" class="full-width">
 

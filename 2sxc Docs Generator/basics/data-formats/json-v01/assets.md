@@ -4,7 +4,7 @@ uid: Basics.DataFormats.JsonV1.Assets
 
 # JSON Assets V1
 
-JSON Data can include Assets. This is currently only used for export/import of [Views](xref:Basics.App.Views)
+JSON Data can include Assets. This is currently only used for export/import of [Views](xref:Basics.App.Views.Index)
 
 ## Assets
 

@@ -35,7 +35,7 @@ There are two ways to customize the search results:
 ## Customize the Search Results Using Configuration
 
 The following configuration options let you specify how data is handed to the Search Indexer. 
-These options are set in the [View](xref:Basics.App.Views) configuration. 
+These options are set in the [View](xref:Basics.App.Views.Index) configuration. 
 
 > [!TIP]
 > If you expect to use the same template in many places but need different search-configurations, 
@@ -43,7 +43,7 @@ These options are set in the [View](xref:Basics.App.Views) configuration.
 
 #### Ensure Default Search Behavior
 
-By default the data given to the Module is also provided to the search. This is what it looks like in the [View-Configuration](xref:Basics.App.Views).
+By default the data given to the Module is also provided to the search. This is what it looks like in the [View-Configuration](xref:Basics.App.Views.Index).
 
 <img src="./assets/search-config-default.jpg" class="full-width">
 

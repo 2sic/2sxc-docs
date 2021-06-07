@@ -25,7 +25,7 @@ The complete **App Data** is _always_ available in these objects:
 [!include[""](../dynamic-data/_include-data-origins.md)]
 
 
-If the [View](xref:Basics.App.Views) is configured for manual content-editing or uses a [Query](xref:Basics.Query.Index) then
+If the [View](xref:Basics.App.Views.Index) is configured for manual content-editing or uses a [Query](xref:Basics.Query.Index) then
 **[Instance Data](xref:Basics.Data.Instance.Index)** is automatically [prepared](xref:Basics.Prepare.Index) in these objects:
 
 [!include[""](../dynamic-code/_include-instance-data.md)]

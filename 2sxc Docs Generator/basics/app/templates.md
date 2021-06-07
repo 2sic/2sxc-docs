@@ -18,7 +18,7 @@ The system is built in a way, that furhter templating engines could also be impl
 
 ## How it Works
 
-Each [View](xref:Basics.App.Views) has a configuration referencing a template file. 2sxc will then decide what type it is, and run the appropriate engine. 
+Each [View](xref:Basics.App.Views.Index) has a configuration referencing a template file. 2sxc will then decide what type it is, and run the appropriate engine. 
 
 The template files usually reside inside app root folder or sub folder. As of now, there are two types:
 
@@ -32,7 +32,7 @@ The template files usually reside inside app root folder or sub folder. As of no
 
 > [!NOTE]
 > **Re-Using in many Views**  
-> Sometimes you'll want to use the same template file in multiple Views. This can just be configured at the [View](xref:Basics.App.Views) level
+> Sometimes you'll want to use the same template file in multiple Views. This can just be configured at the [View](xref:Basics.App.Views.Index) level
 
 > [!TIP]
 > **Re-Using Templates Across Portals**  
@@ -46,7 +46,7 @@ The template files usually reside inside app root folder or sub folder. As of no
 
 ## Read also
 
-* [](xref:Basics.App.Views)
+* [](xref:Basics.App.Views.Index)
 * [](xref:Tut.Razor.Home)
 * [](xref:Tut.RazorBlade.Home)
 

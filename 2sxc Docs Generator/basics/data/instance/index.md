@@ -17,7 +17,7 @@ This is possible thanks to two common scenarios which determine what data should
 1. A [Query](xref:Basics.Query.Index) [prepared](xref:Basics.Prepare.Index) data for this Module Instance
 
 > **Instance Data** is data which is pre-selected for one **Module Instance**. 
-> Either because it was edited this way or because the [View Configuration](xref:Basics.App.Views) specified a [Query](xref:Basics.Query.Index).
+> Either because it was edited this way or because the [View Configuration](xref:Basics.App.Views.Index) specified a [Query](xref:Basics.Query.Index).
 
 
 ## Common Scenarios for Instance Data

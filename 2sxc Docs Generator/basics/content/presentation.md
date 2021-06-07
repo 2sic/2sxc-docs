@@ -56,7 +56,7 @@ This is what Presentation looks like when you set it on the current item:
 
 **Presentation** is available on _each_ Content item and also in the Header (if a View is configured to have a [List](xref:Basics.Content.Lists)). Each Content item will have it's own presentation settings.
 
-The [View](xref:Basics.App.Views) configuration determines if there is a **Presentation** setting on Content (or Header) and what Content-Type is to be used. 
+The [View](xref:Basics.App.Views.Index) configuration determines if there is a **Presentation** setting on Content (or Header) and what Content-Type is to be used. 
 
 ## Use in Code
 

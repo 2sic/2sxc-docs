@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Prepare Data for Templates and WebApi | 2sxc and EAV 10 </title>
+    <title>Views and Templates | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Prepare Data for Templates and WebApi | 2sxc and EAV 10 ">
+    <meta name="title" content="Views and Templates | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v11/2sxc50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,13 +111,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Prepare.Index">
-<h1 id="prepare-data-for-templates-and-webapi">Prepare Data for Templates and WebApi</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.App.Views.Index">
+<h1 id="views-and-templates">Views and Templates</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
 
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
@@ -231,71 +231,47 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
+    you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
-</div><style>.context-box-summary .prepare-all { visibility: visible; } </style>
+</div><style>.context-box-summary .process-razor, .context-box-summary .data-configuration { visibility: visible; }</style>
 
-<p>A common Step in the <a class="xref" href="../server/data-flow.html">data-flow</a> is the <strong>Data Preparation</strong> before the <a class="xref" href="../app/views/index.html">View</a> or <a class="xref" href="../../net-code/web-api/index.html">Custom WebApi</a> work with it. 
-This is fully automated and has three common scenarios:</p>
+<p>Views are what the user will see - and contains things like Html, CSS, Javascript and data from the content. </p>
+<h2 id="how-it-works">How it Works</h2>
+<p>Views configure what <a class="xref" href="../templates.html">templates</a> are combined with what <a class="xref" href="../../data/content-types/index.html">Content-Type</a> to then produce an output. </p>
+<p>Read more about <a class="xref" href="../templates.html">Templates here</a></p>
+<p>The template-file is just part of the view. To be used as a view, it must be configured in the App configuration as a view, where you add things like</p>
 <ol>
-<li><strong><a href="#no-preparation">No Prepare</a></strong> where no Data is used or at least no <em>Instance Data</em> </li>
-<li><strong><a href="#default-preparation-instance-data">Default</a></strong> where content added to a Module by an editor is retrieved and prepared</li>
-<li><strong><a href="#query-preparation">Query</a></strong> where a custom <a class="xref" href="../query/visual-query/index.html">VisualQuery</a> is configured to get the data</li>
+<li><strong>Name</strong> or <strong>Thumbnail Image</strong> (for the preview when selecting the view)</li>
+<li><strong>Data</strong> specs like what type of data is shown, if the data comes from a query etc.</li>
+<li><strong>View Parameters</strong> to automatically show this view based on url-parameters</li>
 </ol>
-<p><em>Note: A special case where data is prepared is when it&#39;s used for indexing in the full-text search. This is documented in <a class="xref" href="../cms/search/index.html">Search</a>.</em></p>
-<h2 id="no-preparation">No Preparation</h2>
-<p>Two cases need no preparation at all</p>
-<ol>
-<li>Templates / code which don&#39;t use any data</li>
-<li>Templates / code which use only general App data or Queries but not instance data</li>
-</ol>
-<p>In these cases the View is configured to not use data and the template or WebApi will either not use data or will only access it through the <a class="xref" href="../../net-code/dynamic-code/objects/app/app-data.html">App.Data</a> which has all data at it&#39;s disposal. </p>
-<h2 id="default-preparation-instance-data">Default Preparation: Instance Data</h2>
-<p>By default all <strong>Module Instances</strong> can have data which the editor has added manually in the CMS UI. This corresponds to the normal <a class="xref" href="../content/index.html">Content Editing</a> scenario. Internally it uses a <a class="xref" href="../query/index.html">Query</a> which looks like this:</p>
-<p><img src="assets/default-prepare.jpg" width="100%" class="full-width"></p>
-<p>This does the following (starting from the bottom):</p>
-<ol>
-<li>The <code>ICache</code> is an <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.IAppRoot.html">IAppRoot</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> which hass all data of this App</li>
-<li>The <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter</a> will then ensure that editors can see draft-data, and public users can only see published data</li>
-<li>The <code>ModuleDataSource</code> is a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> which will select all relevant data of this Module instance</li>
-<li>It then provides the retrieved data on a Stream <code>Default</code> (all the items) and <code>Header</code> (previously <code>ListContent</code>)</li>
-</ol>
-<p>The Template or WebApi running for this Module Instance will then have this data</p>
-<ol>
-<li><code>Content</code> or often <code>@Content</code> has the first item on the <code>Default</code> stream</li>
-<li><code>Header</code> or ofter <code>@Header</code> has the first and only item on the <code>ListContent</code> stream</li>
-<li><code>Data</code> will contain all the streams as configured in the above query, usually you will use <code>Data[&quot;Default&quot;]</code> to loop through lists of all the content items</li>
-</ol>
-<p>Note that the <code>ModuleDataSource</code> also does some more magic like</p>
-<ol>
-<li>Retrieve the Demo-Item as configured in the View, if no data exists (or a public user is looking at the page, and the data is still draft)</li>
-<li>Add more information like <code>IsDemoItem</code> to each piece of Information</li>
-</ol>
-<p><strong><a class="xref" href="../app/content-app/index.html"><em>The</em> Content App</a></strong> only uses this kind of preparation. Any App you create can use this, but it can also be configured to use custom Queries (see below).</p>
-<h2 id="query-preparation">Query Preparation</h2>
-<p>If your View is configured to use a <a class="xref" href="../query/index.html">Query</a> it will instead run this query. </p>
-<div class="NOTE"><h5>Note</h5><p>Note that your query can also extend the standard Query as mentioned above and provide <em>both</em> the normal edited content and add more streams as needed.</p>
+<div class="TIP"><h5>Tip</h5><p>Views can also specify more Content-Types for using in the Header or Presentation. In addition, they could also say that the data comes from a Query instead of from user/editor input. </p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>A common use case for Queries extending the default query is scenarios where the edited content provides parameters for the Query. </p>
-<p>For example, the Header of the <a class="xref" href="https://2sxc.org/en/apps/app/news-app-v4">News App</a> could contain a property <code>Category</code> which the editor can choose. The rest of the Query could then use this category to filter
-what items are retrieved. </p>
-</div>
-<h2 id="note-about-accessing-all-app-data-in-your-code">Note about Accessing all App Data in your Code</h2>
-<p>Your template / WebAPI can also always access all the data in the App using <a class="xref" href="../../net-code/dynamic-code/objects/app/app-data.html">App.Data</a>.</p>
-<h2 id="you-may-also-want-to-learn-about">You may Also want to Learn about</h2>
+<h2 id="view-configuration">View Configuration</h2>
+<p>A view has a lot of configuration options, but they are all explained in the edit view dialog, so we&#39;re not documenting this here. Two things of interest which you may want to read about:</p>
 <ol>
-<li><a class="xref" href="../query/index.html">Create queries using VisualQuery</a></li>
-<li><a class="xref" href="../../net-code/razor/customizedata.html">Prepare data in code</a></li>
-<li><a class="xref" href="../../net-code/razor/customizesearch.html">Prepare data for the full-text search index of the platform</a></li>
-<li><a class="xref" href="../../web-api/headless/index.html">Headless WebAPI</a></li>
-<li><a class="xref" href="../../net-code/data-sources/index.html">DataSources</a></li>
+<li><a href="http://2sxc.org/en/Docs/Feature/feature/4680">View-switching based on url-params</a></li>
+<li><a href="http://2sxc.org/en/Docs/Feature/feature/4737">Security protecting views like admin-views</a></li>
 </ol>
-<hr>
-<p>Read more</p>
+<h2 id="view-polymorphism">View Polymorphism</h2>
+<p><a class="xref" href="../../polymorphism/index.html">Polymorphism</a> can be activated on views (new in v11). When you do this, you can choose between two modes</p>
+<ol>
+<li>Permission based: in this case SuperUsers get the template from the <code>staging</code> folder while public users get the template from <code>live</code> or the primary one which was configured in the View configuration</li>
+<li>CSS framework based: here the view will automatically try to pick the file from the folder matching the CSS framework set by the Theme/Skin</li>
+</ol>
+<h2 id="advanced-topics">Advanced Topics</h2>
 <ul>
-<li><a class="xref" href="../query/index.html">Queries</a></li>
-<li>Content App</li>
+<li><a href="https://2sxc.org/en/docs/Feature/feature/4680">Switching between views based on the url</a></li>
+<li><a href="https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use">Differences between features when using Content or App</a></li>
+<li><a href="https://2sxc.org/en/Docs/Feature/feature/4737">Protecting Views for certain users using permissions</a></li>
+<li><a href="https://2sxc.org/en/docs/Feature/feature/3592">Hide advanced features from normal editors</a></li>
+<li><a href="https://2sxc.org/dnn-tutorials/en/razor">Razor Tutorial</a></li>
 </ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 1.0</li>
+<li>Automatic View-Polymorphism added in 2sxc 11</li>
+</ol>
 </article>
           </div>
           
@@ -304,7 +280,7 @@ what items are retrieved. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/prepare/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/views/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -330,20 +306,20 @@ what items are retrieved. </p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

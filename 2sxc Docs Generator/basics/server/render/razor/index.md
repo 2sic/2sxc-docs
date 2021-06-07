@@ -9,7 +9,7 @@ uid: Basics.Server.Render.Razor.Index
 Token Templates will generate HTML - often based on the data a editor entered, and/or which was provided from the App.
 
 > [!NOTE]
-> The [View](xref:Basics.App.Views) determines which template file is being loaded. 
+> The [View](xref:Basics.App.Views.Index) determines which template file is being loaded. 
 
 ## How it Works
 
