@@ -88,9 +88,6 @@ Culture information for the current request.
 | Edition | string | `bs4` | [Polymorphism](xref:Basics.Polymorphism.Index) edition if used, otherwise empty
 | Name | string | `4 Tiles` | Name of the view
 | Identity | string | `BLUE` | Custom identity like name, but language invariant
-| Configuration | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | Configuration entity, use like `Configuration.EntityId`
-| Resources | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | i18n Resources entity as configured, like `Resources.Title`
-| Settings | [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) | (dynamic) | Settings as configured, like `Settings.ItemsPerRow`
 
 👉 [](xref:ToSic.Sxc.Context.ICmsView)
 
