@@ -134,15 +134,19 @@ Where things will surprise you is when you convert the `data.value` and simply r
 This is because our `data.value` doesn't have a time zone, and converting it to `Date(...)` will construct a date in the users time zone resulting in a shift by a few hours. 
 So this will only affect formulas which use the existing date, modify it, and are not aware of the time-zones. 
 
-To fix this, make sure that if you convert existing data to a Date, you pretend it's in the time-zone changes of the current browser. This would do that:
+To fix this, make sure that if you convert existing data to a Date, you pretend it's in the time-zone changes of the current browser. 
+
+This example shows a formula that will remove the time on a new date or the existing one.
 
 ```js
-v1(data) {
-  // Drop 'Z' to pretend it's in local time
-  var date = new Date(data.value.replace('Z', '')); 
-  date.setMinutes(0);
-  date.setSeconds(0);
-  return date; // date.toString() would also work
+v1(data, context) {
+  // Use existing date (but pretend it's local time by dropping 'Z') or use current Date
+  var date = data.value 
+    ? new Date(data.value.replace('Z', ''))
+    : new Date();
+
+  date.setHours(0,0,0,0); // flush all time parts
+  return date;
 }
 ```
 
@@ -196,11 +200,6 @@ v1(data, context) {
 1. You can also add a line `debugger;` and the browser will stop at this line so you can inspect the variables and watch your code.
 1. For now, we strongly recommend to use Formulas as [pure functions](https://en.wikipedia.org/wiki/Pure_function), but with experience the recommendation may change. 
 
-<!-- 
-## Working with `this` _Experimental! ⚠_
-
-The formula is pre-compiled and executed again and again. Because of this, the `this` object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. 
--->
 
 ## Future features
 

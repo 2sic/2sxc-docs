@@ -43,7 +43,10 @@ The [](xref:Basics.App.Settings) can contain any information you configure it to
 
 ## Use in C# Code (Razor / WebAPI)
 
-In code you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Settings.AnimationSpeed`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
+In 2sxc 12.02+ you _should use the new `Settings` object_ which stacks settings from different sources incl. the App Settings. 
+See [Settings Docs](xref:NetCode.DynamicCode.Objects.Settings).
+
+In older version you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Settings.AnimationSpeed`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
 ## Use in Tokens Templates
 

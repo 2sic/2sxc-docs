@@ -29,7 +29,11 @@ Many templates may have special labels, intro-texts or buttons which would benef
 
 ## Use in C# Code (Razor / WebAPI)
 
-In code you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
+In 2sxc 12.02+ you _should use the new `Resources` object_ which stacks resources from different sources incl. the App Resources. 
+See [Resources Docs](xref:NetCode.DynamicCode.Objects.Resources).
+
+
+In older version you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
 ## Use in Tokens Templates
 

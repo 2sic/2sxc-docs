@@ -210,13 +210,16 @@ And you construct a UTC-only date everything will work too. </p>
 </ul>
 <p>This is because our <code>data.value</code> doesn&#39;t have a time zone, and converting it to <code>Date(...)</code> will construct a date in the users time zone resulting in a shift by a few hours. 
 So this will only affect formulas which use the existing date, modify it, and are not aware of the time-zones. </p>
-<p>To fix this, make sure that if you convert existing data to a Date, you pretend it&#39;s in the time-zone changes of the current browser. This would do that:</p>
-<pre><code class="lang-js">v1(data) {
-  // Drop &#39;Z&#39; to pretend it&#39;s in local time
-  var date = new Date(data.value.replace(&#39;Z&#39;, &#39;&#39;)); 
-  date.setMinutes(0);
-  date.setSeconds(0);
-  return date; // date.toString() would also work
+<p>To fix this, make sure that if you convert existing data to a Date, you pretend it&#39;s in the time-zone changes of the current browser. </p>
+<p>This example shows a formula that will remove the time on a new date or the existing one.</p>
+<pre><code class="lang-js">v1(data, context) {
+  // Use existing date (but pretend it&#39;s local time by dropping &#39;Z&#39;) or use current Date
+  var date = data.value 
+    ? new Date(data.value.replace(&#39;Z&#39;, &#39;&#39;))
+    : new Date();
+
+  date.setHours(0,0,0,0); // flush all time parts
+  return date;
 }
 </code></pre><p>Another option is to work with the Zulu time but make sure you UTC it when returning, or work with <code>.getTimezoneOffset()</code>. </p>
 <h2 id="the-context-object">The <code>context</code> Object</h2>
@@ -269,11 +272,6 @@ So this will only affect formulas which use the existing date, modify it, and ar
 <li>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</li>
 <li>For now, we strongly recommend to use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>, but with experience the recommendation may change. </li>
 </ol>
-<!-- 
-## Working with `this` _Experimental! ⚠_
-
-The formula is pre-compiled and executed again and again. Because of this, the `this` object will remain the same across all calls. As such, you can use it for remembering stuff - like a previous value you may need again. 
--->
 <h2 id="future-features">Future features</h2>
 <ol>
 <li>Ability to read other properties of fields - like check if a field is visible</li>
