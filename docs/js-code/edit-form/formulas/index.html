@@ -120,10 +120,10 @@
 It also shows you the UIs, how to configure etc. </p>
 </blockquote>
 <h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-todo-if-empty">Set Field <em>Value</em> to <em>TODO</em> if empty</h3>
+<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
 <p>This formula would be applied to the fields <strong>Value</strong>.</p>
 <pre><code class="lang-js">v1(data) {
-  return data.value ? data.value : &#39;TODO&#39;;
+  return data.value ? data.value : &#39;missing-data&#39;;
 }
 </code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
 <p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
@@ -178,14 +178,48 @@ This is important because we cannot guess when the API will change, and we also 
   &quot;prefill&quot;: undefined,                 // Would contain prefill information
   &quot;FirstName&quot;: &quot;Douglas&quot;,               // string
   &quot;LastName&quot;: &quot;Adams&quot;,                  // string
-  &quot;Birthday&quot;: Date(1952, 03, 11),           // JS date object; format not yet final
-  &quot;Birthday&quot;: &quot;1952-03-11T00:00:00.000Z&quot;,   // JS date object; format not yet final
+  &quot;Birthday&quot;: &quot;1952-03-11T00:00:00.000Z&quot;, // string, always as neutral/Zulu/UTC time
   &quot;Awards&quot;: [&quot;guid-guid&quot;, &quot;guid-guid&quot;], // IDs pointing to other entities
   &quot;FullName&quot;: &quot;Douglas Adams&quot;,          // calculated by formula
   &quot;Photo&quot;: &quot;file:72&quot;,                   // link information
   &quot;Album&quot;: &quot;&quot;,                          // library fields have no value
 }
-</code></pre><h2 id="the-context-object">The <code>context</code> Object</h2>
+</code></pre><h3 id="special-remarks-about-date-values">Special Remarks about <strong>Date</strong> Values</h3>
+<p>Dates are stored as strings, not as Date objects. 
+The UI doesn&#39;t care about time zones, so the strings always use Zulu time and <em>not the local time zone</em>. 
+This may cause some challenges which you want to know about.</p>
+<p><strong>Returned Date Objects</strong></p>
+<p>If your function returns a date-object we will assume that you were creating a new date and didn&#39;t worry about time zones. 
+So we will simply drop the time-zone information and assume that&#39;s what you wanted.</p>
+<p>So if you do <code>return new Date();</code> it will contain something like <code>Tue Jun 08 2021 11:22:33 GMT+0200 (Central European Summer Time)</code>. 
+We will treat this as <code>2021-06-08T11:22:33</code> and ignore the time zone. 
+The UI will then also show <code>2021-06-08 11:22:33</code></p>
+<p><strong>Returned Date Strings</strong></p>
+<ul>
+<li>If you return a date-string without time-zone like <code>2021-06-08 10:00</code> we will assume this is what you want, and treat it as such. </li>
+<li>If you return a date-string with time zone like <code>2021-06-08 10:00 +0200</code> we will assume you used something like <code>new Date().toString()</code> and ignore the time zone, so we&#39;ll keep <code>2021-06-08 10:00</code> because you almost certainly didn&#39;t realize that the toString() would result in a wrong time. </li>
+</ul>
+<p><strong>Likely Problems on Date-Formulas</strong></p>
+<p>Basically if you create a <code>new Date()</code> object and return that, everything will work as expected. 
+And you construct a UTC-only date everything will work too. </p>
+<p>Where things will surprise you is when you convert the <code>data.value</code> and simply return it without making corrections. These things will cause problems:</p>
+<ul>
+<li>Problem: <code>return new Date(data.value);</code><br>No Problem: <code>return new Date();</code></li>
+<li>Problem: <code>var x = new Date(data.value); x.setMinutes(0); x.setSeconds(0); return x;</code><br>No Problem: <code>var x = new Date(); x.setMinutes(0); x.setSeconds(0); return x;</code></li>
+<li>Problem: <code>var otherFieldDate = new Date(data.Birthday).getDay();</code> <em>will probably return the wrong day</em></li>
+</ul>
+<p>This is because our <code>data.value</code> doesn&#39;t have a time zone, and converting it to <code>Date(...)</code> will construct a date in the users time zone resulting in a shift by a few hours. 
+So this will only affect formulas which use the existing date, modify it, and are not aware of the time-zones. </p>
+<p>To fix this, make sure that if you convert existing data to a Date, you pretend it&#39;s in the time-zone changes of the current browser. This would do that:</p>
+<pre><code class="lang-js">v1(data) {
+  // Drop &#39;Z&#39; to pretend it&#39;s in local time
+  var date = new Date(data.value.replace(&#39;Z&#39;, &#39;&#39;)); 
+  date.setMinutes(0);
+  date.setSeconds(0);
+  return date; // date.toString() would also work
+}
+</code></pre><p>Another option is to work with the Zulu time but make sure you UTC it when returning, or work with <code>.getTimezoneOffset()</code>. </p>
+<h2 id="the-context-object">The <code>context</code> Object</h2>
 <p>The <code>context</code> contain additional information about the context we&#39;re running in.</p>
 <ul>
 <li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
