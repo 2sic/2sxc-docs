@@ -49,7 +49,7 @@ For multiple views you may end up using the same Resources Content-Type or creat
 
 ## How Can I Access View Resources in Razor?
 
-These can be found as a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) on `CmsContext.View.Resources` - see [ICmsView Docs](xref:ToSic.Sxc.Context.ICmsView).
+These can be found as a [Dynamic Stack Object](xref:ToSic.Sxc.Data.IDynamicStack) on `Resources` - see [Resources Docs](xref:NetCode.DynamicCode.Objects.Settings).
 
 ## How Can I Access View Settings in Tokens?
 

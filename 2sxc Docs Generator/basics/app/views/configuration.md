@@ -14,12 +14,13 @@ A view has a lot of configuration options, but they are all explained in the edi
 
 ## View Configuration in Razor
 
-2sxc 12.02 introduces the ability to access View Configuration from Razor. 
+2sxc 12.02 introduces the ability to access View some Configuration from Razor. 
 
 * The most important properties are available on `CmsContext.View` - this is an [ICmsView](xref:ToSic.Sxc.Context.ICmsView) object with properties like
     * `Id`
     * `Identifier`
-* The entire configuration can be accessed on `CmsContext.View.Configuration` - this is a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity)
+    * `Edition`
+    * `Name`
 
 ## Advanced Topics
 

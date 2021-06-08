@@ -127,10 +127,266 @@ It will try to find a value inside each source in the order the Sources are mana
   <h5 id="ToSic_Sxc_Data_IDynamicStack_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi(&quot;Careful - still WIP in 12.02&quot;)]
-public interface IDynamicStack : IDynamicEntityGet</code></pre>
+public interface IDynamicStack</code></pre>
   </div>
   <h5 id="ToSic_Sxc_Data_IDynamicStack_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>New in 12.02</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyBooleanProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyBooleanProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L18">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyBooleanProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyBooleanProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyBooleanProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyBooleanProperty">AnyBooleanProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.IsFemale</code> or whatever other property your item has.
+If it&apos;s a true/false, it will just magically work and return a <code>bool</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AnyBooleanProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyChildrenProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyChildrenProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L41">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyChildrenProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyChildrenProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyChildrenProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyChildrenProperty">AnyChildrenProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Tags</code> or whatever other property your item has.
+If it&apos;s contains relationships, it will just magically work and return a list of further <code>DynamicEntity</code> objects.
+If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;DynamicEntity&gt; AnyChildrenProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Sxc.Data.DynamicEntity.html">DynamicEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IDynamicStack_AnyChildrenProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Very often you&apos;ll want to use LINQ to further sort or query these items.
+But the Razor compiler cannot know that it got a list, so using <code>.Any()</code> or similar fails.
+To fix this, put an <code>AsList</code> around it - a bit like <code>AsList(myThing.Tags)</code>.
+Sometimes you&apos;ll also need to help a bit more with <code>AsList(myThings.Tags as object)</code>.
+Now you can do things like <code>var tags = AsList(myThings.Tags as object); if (myTags.Any()) {...}</code>
+Read more about this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/linq/home">Dnn LINQ Tutorials</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyDateTimeProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyDateTimeProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L25">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyDateTimeProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyDateTimeProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyDateTimeProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyDateTimeProperty">AnyDateTimeProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Birthday</code> or whatever other property your item has.
+If it&apos;s a date/time, it will just magically work and return a <code>DateTime</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime AnyDateTimeProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyJsonProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyJsonProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L55">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyJsonProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyJsonProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyJsonProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyJsonProperty">AnyJsonProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Gps</code> or whatever other property your item has.
+If the field contains JSON, it will just magically work and return a <code>string</code>.
+If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string AnyJsonProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IDynamicStack_AnyJsonProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Very often you&apos;ll want to use the Json as a dynamic object again.
+Just pass the result through <code>AsDynamic</code> and it will work.
+Example: <code>var gps = AsDynamic(myThing.Gps); var lat = gps.Lat;</code>
+Read more about this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/json/home">Dnn JSON Tutorials</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyLinkOrFileProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyLinkOrFileProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L66">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyLinkOrFileProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyLinkOrFileProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyLinkOrFileProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyLinkOrFileProperty">AnyLinkOrFileProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Image</code> or whatever other property your item has.
+If it&apos;s a link, it will just magically work and return a <code>string</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string AnyLinkOrFileProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IDynamicStack_AnyLinkOrFileProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that many internal references in the CMS use <code>file:2742</code> or similar. This will automatically be resolved to the real
+link which your output needs. </p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyNumberProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyNumberProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L73">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyNumberProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyNumberProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyNumberProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyNumberProperty">AnyNumberProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.Length</code> or whatever other property your item has.
+If it&apos;s a number, it will just magically work and return a <code>double</code>. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double AnyNumberProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_AnyStringProperty.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.AnyStringProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L83">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IDynamicStack_AnyStringProperty_" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyStringProperty*"></a>
+  <h4 id="ToSic_Sxc_Data_IDynamicStack_AnyStringProperty" data-uid="ToSic.Sxc.Data.IDynamicStack.AnyStringProperty">AnyStringProperty</h4>
+  <div class="markdown level1 summary"><p>A Dynamic Entity always contains an item of your data - a book, person, blog-post or a piece of content.
+Since the object is dynamic, you can just use <code>.FirstName</code> or whatever other property your item has.
+If it&apos;s a string, it will just magically work. If it doesn&apos;t exist, it will return null. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string AnyStringProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IDynamicStack_AnyStringProperty_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Remember to use <code>@Html.Raw(...)</code> if you want the html to be preserved and not cleaned when placed in the page. </p>
 </div>
   <h3 id="methods">Methods
   </h3>
@@ -139,11 +395,18 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_Get_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.Get(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack.cs/#L21">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack.cs/#L30">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_IDynamicStack_Get_" data-uid="ToSic.Sxc.Data.IDynamicStack.Get*"></a>
   <h4 id="ToSic_Sxc_Data_IDynamicStack_Get_System_String_" data-uid="ToSic.Sxc.Data.IDynamicStack.Get(System.String)">Get(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get a value of the entity. Usually you will prefer the quick access like
+@content.FirstName - which will give you the same things as content.Get(&quot;FirstName&quot;).
+There are two cases to use this:</p>
+<ul>
+<li>when you dynamically assemble the field name in your code, like when using App.Resources or similar use cases.</li>
+<li>to access a field which has a conflicting name with this object, like Get(&quot;Parents&quot;)</li>
+</ul>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -177,7 +440,8 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Object</span></td>
-        <td></td>
+        <td><p>An object which can be either a string, number, boolean or List&lt;IDynamicEntity&gt;, depending on the field type. Will return null if the field was not found. </p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -186,15 +450,16 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack_Get_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack.Get(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack.cs/#L24">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack.cs/#L44">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_IDynamicStack_Get_" data-uid="ToSic.Sxc.Data.IDynamicStack.Get*"></a>
   <h4 id="ToSic_Sxc_Data_IDynamicStack_Get_System_String_System_String_System_String_System_Boolean_" data-uid="ToSic.Sxc.Data.IDynamicStack.Get(System.String,System.String,System.String,System.Boolean)">Get(String, String, String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get a property using the string name. Only needed in special situations, as most cases can use the object.name directly</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic Get(string name, string dontRelyOnParameterOrder = &quot;Rule: all params must be named (https://r.2sxc.org/named-params), Example: \&quot;enable: true, language: ''de-ch''\&quot;&quot;, string language = null, bool convertLinks = true)</code></pre>
+    <pre><code class="lang-csharp hljs">dynamic Get(string name, string dontRelyOnParameterOrder = &quot;Rule: all params must be named (https://r.2sxc.org/named-params), Example: 'enable: true, version: 10'&quot;, string language = null, bool convertLinks = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,22 +474,27 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">name</span></td>
-        <td></td>
+        <td><p>the property name. </p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">dontRelyOnParameterOrder</span></td>
-        <td></td>
+        <td><p>This should enforce the convention that all following parameters (which are optional) must explicitly use the parameter name.
+So <pre><code>Get(&quot;FirstName&quot;, &quot;en&quot;)</code></pre> won&apos;t work, you must use <pre><code>Get(&quot;FirstName&quot;, language: &quot;en&quot;)</code></pre> and similar</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">language</span></td>
-        <td></td>
+        <td><p>Optional language code - like &quot;de-ch&quot; to prioritize that language</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">convertLinks</span></td>
-        <td></td>
+        <td><p>Optionally turn off if links like file:72 are looked up to a real link. Default is true.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -239,7 +509,8 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Object</span></td>
-        <td></td>
+        <td><p>a dynamically typed result, can be string, bool, etc.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -252,7 +523,7 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
   </span>
   <a id="ToSic_Sxc_Data_IDynamicStack_GetSource_" data-uid="ToSic.Sxc.Data.IDynamicStack.GetSource*"></a>
   <h4 id="ToSic_Sxc_Data_IDynamicStack_GetSource_System_String_" data-uid="ToSic.Sxc.Data.IDynamicStack.GetSource(System.String)">GetSource(String)</h4>
-  <div class="markdown level1 summary"><p>Get a dynamic object</p>
+  <div class="markdown level1 summary"><p>Get a source object which is used in the stack. Returned as a dynamic object. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -303,7 +574,7 @@ public interface IDynamicStack : IDynamicEntityGet</code></pre>
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDynamicStack.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDynamicStack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DynamicStack/IDynamicStack_Anything.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

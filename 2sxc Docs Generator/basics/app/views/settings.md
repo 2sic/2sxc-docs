@@ -37,7 +37,7 @@ For multiple views you may end up using the same Settings Content-Type or create
 
 ## How Can I Access View Settings in Razor?
 
-These can be found as a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) on `CmsContext.View.Settings` - see [ICmsView Docs](xref:ToSic.Sxc.Context.ICmsView).
+These can be found on the [Dynamic Stack Object](xref:ToSic.Sxc.Data.IDynamicStack) on `Settings` - see [Settings Docs](xref:NetCode.DynamicCode.Objects.Settings).
 
 ## How Can I Access View Settings in Tokens?
 
