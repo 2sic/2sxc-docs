@@ -96,11 +96,10 @@ page.Activate("turnOn");
 
 Features you can activate as of v12.02
 
-* `jQuery`  
-    _note: in Oqtane 💧 this will include jQuery slim as that is the default. We're still trying to enhance this_
-* `jQuery.slim` - this is jQuery without ajax and effects  
-    _note: in Dnn ☢ this will include jQuery_
+* `jQuery`  - activate jQuery
+  _note: in Oqtane 💧 this will include jQuery slim as that is the default. We're still trying to enhance this_
 * `turnOn` - the JavaScript Activation system
+  _note: new feature, docs still incomplete_
 
 _Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
