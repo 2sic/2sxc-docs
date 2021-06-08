@@ -1,6 +1,10 @@
 ---
 uid: NetCode.DynamicData.Entity
 ---
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-all { visibility: visible; } </style>
+
 # Entity Objects
 
 All content-items in the **EAV** database of 2sxc are internally handled as `Entity` objects with the interface `IEntity`. When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a [](xref:ToSic.Sxc.Data.IDynamicEntity).

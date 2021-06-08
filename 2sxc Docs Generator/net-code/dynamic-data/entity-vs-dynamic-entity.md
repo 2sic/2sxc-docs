@@ -2,6 +2,9 @@
 uid: NetCode.DynamicData.EntityVsDynamicEntity
 ---
 
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-all { visibility: visible; } </style>
+
 # Entity vs. Dynamic Entity Content-Items
 
 

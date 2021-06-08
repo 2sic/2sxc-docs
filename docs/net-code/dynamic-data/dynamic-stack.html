@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Where Data Comes From | 2sxc and EAV 10 </title>
+    <title>Dynamic Stack Objects | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Where Data Comes From | 2sxc and EAV 10 ">
+    <meta name="title" content="Dynamic Stack Objects | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -111,7 +111,7 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.DataOrigins">
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.DynamicStack">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -232,51 +232,59 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
+</div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<h1 id="where-data-comes-from">Where Data Comes From</h1>
-<p>From a developer perspective you have three kinds of Data</p>
+<h1 id="dynamic-stack-objects">Dynamic Stack Objects</h1>
+<p><em>Important: this is new in 2sxc 12.02 and may still have minor issues</em></p>
+<p>In some scenarios you want to ask multiple Entities if they have an Value. 
+For example you may need i18n Resources (like the label of a button). 
+This could be in the <a class="xref" href="../../basics/app/views/resources.html">View Resources</a> or in the <a class="xref" href="../../basics/app/resources.html">App Resources</a>.</p>
+<p>It would be cumbersome to write code to check all this, which is there the <strong>DynamicStack</strong> comes in.</p>
+<blockquote><p>The DynamicStack will hold a stack of <a class="xref" href="entity.html">Entities</a> or <a class="xref" href="dynamic-entity.html">DynamicEntities</a>.
+It will ask them in sequence if they have the value you need, and return the first match. 
+The order of the stack is important, as the first entity to provide an answer will be used. </p>
+</blockquote>
+<p>Dynamic Stacks behave as if they were <a class="xref" href="dynamic-entity.html">Dynamic Entities</a>.</p>
+<h2 id="examples-of-dynamic-stacks">Examples of Dynamic Stacks</h2>
+<p>In Razor and WebApi you will find these objects are Dynamic Stacks:</p>
 <ol>
-<li><strong><a href="#app-data">App Data</a></strong></li>
-<li><strong><a href="#instance-data">Instance Data</a></strong></li>
-<li><strong><a href="#code-retrieved-data">Code Retrieved Data</a></strong></li>
+<li><a class="xref" href="../dynamic-code/objects/settings.html">Settings</a> </li>
+<li><a class="xref" href="../dynamic-code/objects/resources.html">Resources</a></li>
 </ol>
-<h2 id="app-data">App Data</h2>
-<p>The complete <strong>App Data</strong> is <em>always</em> available in these objects:</p>
+<h2 id="why-use-dynamic-stacks">Why Use Dynamic Stacks?</h2>
+<p>Our core goal is the consolidation of spread out Settings and Resources. 
+We&#39;re not yet sure if developers will find other uses for this, but we&#39;re pretty sure there are some cool reasons to do this. 
+Some Ideas we have are:</p>
 <ol>
-<li><a class="xref" href="../dynamic-code/objects/app/index.html">App</a><br> The current App with <code>Settings</code>, <code>Resources</code>, <code>Path</code> information and more.</li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data</a><br> All the data of the current app for immediate use, fully cached in memory of the web server.</li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-query.html">App.Query</a><br> Queries which were created using <strong>VisualQuery</strong> and can be run to access prepared data.</li>
+<li>Make your code simpler by merging 2-3 objects which describe the same thing, like a Person and Profile</li>
+<li>Merge Presentation settings with Defaults from another Entity</li>
 </ol>
-<h2 id="instance-data">Instance Data</h2>
-<div class="NOTE"><h5>Note</h5><p>Instance specific data <em>belongs</em> to the module-instance on the page, 
-either because it was added manually as <a class="xref" href="../../basics/content/index.html">Content</a> 
-or because the <a class="xref" href="../../basics/app/views/index.html">View</a> of the module-instance uses a <a class="xref" href="../../basics/query/index.html">Query</a>.</p>
-<p>Best read about <a class="xref" href="../../basics/data/instance/index.html">App vs. Instance Data</a> and <a class="xref" href="data-origins.html">Where Data Comes From</a></p>
-</div>
-<p>If the <a class="xref" href="../../basics/app/views/index.html">View</a> is configured for manual content-editing or uses a <a class="xref" href="../../basics/query/index.html">Query</a> then
-<strong><a class="xref" href="../../basics/data/instance/index.html">Instance Data</a></strong> is automatically <a class="xref" href="../../basics/prepare/index.html">prepared</a> in these objects:</p>
-<ol>
-<li><a class="xref" href="../dynamic-code/content.html">Content</a><br> The primary and often the only content-items for this template. </li>
-<li><a class="xref" href="../dynamic-code/content.html#contentpresentation">Content.Presentation</a><br> Can contain additional presentation settings for this content, like how to format it. </li>
-<li><a class="xref" href="../dynamic-code/object-data.html">Data</a><br> One or more <a class="xref" href="../data-sources/datastream.html">Streams</a> (lists) of zero-or-more content items</li>
-<li><a class="xref" href="../dynamic-code/header.html">Header</a><br> The header data if the template expects to be a list and also needs a title or intro.</li>
-<li><a class="xref" href="../dynamic-code/header.html#headerpresentation">Header.Presentation</a><br> Can contain additional presentation settings for the header, like how to format it. </li>
-</ol>
-<h2 id="code-retrieved-data">Code Retrieved Data</h2>
-<p>Your code can also retrieve data using normal C# code to do things like</p>
-<ol>
-<li>Get lists of files from ADAM or the file system</li>
-<li>Read data from SQL</li>
-<li>Manually parse CSV files or access external Web Services</li>
-<li>Use <a class="xref" href="../data-sources/index.html">DataSources</a> to get SQL, CSV or other data</li>
-</ol>
+<h2 id="how-to-create-a-dynamic-stack">How to Create a Dynamic Stack</h2>
+<p>In 2sxc 12.02 there is an <em>experimental</em> overload of <code>AsDynamic(...)</code> to create your own stacks. Here&#39;s how it works:</p>
+<pre><code class="lang-c#">// the personEntity and profileEntity are Entity objects
+var person = AsDynamic(personEntity);
+var name = person.Name;
+var profile = AsDynamic(profileEntity);
+var favoriteColor = profile.FavoriteColor;
+
+var stack = AsDynamic(personEntity, profileEntity);
+var nameFromStack = stack.Name;
+var colorFromStack = stack.FavoriteColor;
+</code></pre><h2 id="possible-gotchas-with-dynamic-stacks">Possible Gotchas with Dynamic Stacks</h2>
+<h4 id="proritized-by-source-not-language">Proritized by Source, not Language</h4>
+<p>As of now, the stack always checks each entity one by one to see if it can supply an answer. 
+This means that if one source has an answer from the fallback language it will supply it, even if a later source might have the perfect answer in the primary language. 
+We&#39;re not sure how relevant this is, but it&#39;s something you will want to keep in mind. </p>
+<h4 id="empty-values-are-treated-as-no-value">Empty Values are Treated as No Value</h4>
+<p>To detect if a value should be used the code checks for emptyness.
+This means an empty string or an empty list of relationships will be treated as no-hit and the search will continue through the stack. </p>
+<p>This also means that it may be difficult to &quot;nullify&quot; a value in a higher-level source, as that will be ignored.</p>
+<h2 id="read-also">Read Also</h2>
+<p>👉 API docs for <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a></p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc v1</li>
-<li>App.Data added ca. 2sxc 6</li>
-<li>App.Query added ca. 2sxc 7</li>
+<li>Introduced in 2sxc 12.02</li>
 </ol>
 </article>
           </div>
@@ -286,7 +294,7 @@ or because the <a class="xref" href="../../basics/app/views/index.html">View</a>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-data/data-origins.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-data/dynamic-stack.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

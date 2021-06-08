@@ -2,10 +2,10 @@
 uid: NetCode.DynamicData.DataOrigins
 ---
 
-# Where Data Comes From
-
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
+
+# Where Data Comes From
 
 From a developer perspective you have three kinds of Data
 

@@ -1,12 +1,15 @@
 ---
 uid: NetCode.DynamicData.DynamicEntity
 ---
-# How to Use a Dynamic Entity
+
+[!include[](~/basics/stack/_shared-float-summary.md)]
+<style>.context-box-summary .data-all { visibility: visible; } </style>
+
+# Dynamic Entity Objects
 
 Whenever you create a content-type - like _Person_ - and want to work with the data in your C# Razor templates, you'll be working with a _Dynamic Entity_. 
 
-> [!TIP]
-> Also read about [](xref:NetCode.DynamicCode.AsDynamic)
+👉 also read about [](xref:NetCode.DynamicCode.AsDynamic)
 
 ## Code example using a Dynamic Entity
 
@@ -77,6 +80,8 @@ The following properties/methods exist, but shouldn't be used. They are document
 3. Owner - the current owner of the item, usually the author
 1. Metadadata - currently use `AsEntity(theObject).Metadata`
 4. Permissions - permissions of the current item (if any are defined)
+
+---
 
 ## History
 
