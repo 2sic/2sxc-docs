@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>turnOn JavaScript API (WIP!) | 2sxc and EAV 10 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="turnOn JavaScript API (WIP!) | 2sxc and EAV 10 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v11/2sxc50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="JsCode.TurnOn.Index">
+
+<p><img src="assets/icon-turn-on.svg" width="100%"></p>
+<h1 id="turnon-javascript-api-wip">turnOn JavaScript API (WIP!)</h1>
+<h2 id="the-problem-turnon-solves">The Problem turnOn Solves</h2>
+<p>A core problem with all JavaScript is making sure that all scripts and dependencies are loaded, available and ready, and the data needed to init is available (usually in the Html itself).</p>
+<p>Even something as simple as this can fail...</p>
+<pre><code class="lang-js">$(start);
+</code></pre><p>...because even this example requires jQuery to already exist.</p>
+<blockquote><p><strong>turnOn</strong> solves this problem with a new architecture. Loading is now configuration based. No matter which parts load in what order, turnOn will work.</p>
+</blockquote>
+<div class="TIP"><h5>Tip</h5><p><strong>turnOn</strong> is also building an architecture which will reliably work even with very <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">strict CSP</a> enforced - which we believe will be essential in future. </p>
+</div>
+<h2 id="the-turnon-solution">The turnOn Solution</h2>
+<p>When using turnOn, the page will request the <code>turnOn.js</code> in any way. It can also be <code>deferred</code>. Then this will be used to turn-on your code:</p>
+<pre><code class="lang-html">&lt;div turn-on=&#39;{ &quot;await&quot;: [&quot;window.$&quot;], &quot;run&quot;: &quot;window.appContent.maps.load()&quot;, &quot;data&quot;: &quot;some-google-maps-key&quot; }&#39;&gt;
+  &lt;!-- more html --&gt;
+&lt;/div&gt;
+</code></pre><p>This is what happens</p>
+<ol>
+<li>The html will just be loaded and have no effects, throw no errors and nothing</li>
+<li>Once the <code>turnOn.js</code> loads it will find this and process it - it doesn&#39;t matter if turnOn was already loaded or deferred</li>
+<li>turnOn will then wait for all this to exist:<ul>
+<li><code>window</code></li>
+<li><code>window.$</code></li>
+<li><code>window.appContent</code></li>
+<li><code>window.appContent.maps</code></li>
+<li><code>window.appContent.maps.load</code></li>
+</ul>
+</li>
+<li>It will then call <code>window.appContent.maps.load(data)</code> with the data provided</li>
+</ol>
+<p>Here&#39;s another example, taken from the new Content-App in 2sxc:</p>
+<pre><code class="lang-html">&lt;!-- Instruct turnOn to init this specific Map once everything is loaded --&gt;
+&lt;script turn-on=&#39;{ &quot;run&quot;: &quot;window.appContent.maps.configureMap()&quot;, &quot;data&quot;: { 
+  &quot;domId&quot;: &quot;GoogleMap-@DynamicModel.mapId&quot;, 
+  &quot;marker&quot;: &quot;@Text.First(DynamicModel.markerImage, &quot;&quot;)&quot;,
+  &quot;lat&quot;: @DynamicModel.mapInfo.GpsLat.ToString(&quot;R&quot;),
+  &quot;lng&quot;: @DynamicModel.mapInfo.GpsLong.ToString(&quot;R&quot;), 
+  &quot;zoom&quot;: @Content.Presentation.Zoom, 
+  &quot;info&quot;: &quot;@DynamicModel.company&quot;,
+  &quot;warn&quot;: @(Settings.GoogleMapsShowWarning ? &quot;true&quot; : &quot;false&quot;)
+}}&#39;&gt;&lt;/script&gt;
+</code></pre><p>This example will init a map with the configuration of the map incl. pin-image, coordinates and more. </p>
+<h2 id="advantages-of-using-turnon">Advantages of Using turnOn</h2>
+<ol>
+<li>Works, no matter in what order the scripts were loaded</li>
+<li>Works even if the HTML was created before or after loading the scripts</li>
+<li>Works for lazy-loaded HTML which can introduce new turnOn configurations</li>
+</ol>
+<h2 id="responsibility-of-your-code">Responsibility of Your Code</h2>
+<p>There are a few things turnOn doesn&#39;t do, which you should be aware of:</p>
+<ol>
+<li>It doesn&#39;t load JS or CSS files (yet). As of now, you must still do this in the HTML template.</li>
+<li>The init code must still do it&#39;s work properly. If multiple inits should not be called, then your code must ensure that it detects this and skips multiple initializations.</li>
+<li>Your init-code should not auto-run when loading the script, as this could again be missing dependencies.</li>
+</ol>
+<h2 id="examples-of-the-full-challenge">Examples of the Full Challenge</h2>
+<p>Common things which may be needed before the code starts:</p>
+<ol>
+<li>The main JS code</li>
+<li>Additional JS parts</li>
+<li>Some JS Libraries</li>
+<li>CSS</li>
+<li>DOM nodes which the JS should work on</li>
+<li>Configuration data like ModuleId which should be known.</li>
+</ol>
+<p>Dynamic pages make this even harder - like when Oqtane/Blazor reloads just parts of the page multiple times. We must ensure that the JS isn&#39;t re-initialized again and again, as that can cause issues like:</p>
+<ol>
+<li>The same code running in parallel - causing all sorts of damage</li>
+<li>Memory leaks where the same library and complex object states are loaded many times</li>
+<li>Issues where some code initialized and was then replaced by new, uninitialized code</li>
+</ol>
+<p>Our goal is to simplify this, so that your solution can simply state what it needs, and then run once all that has been provided. </p>
+<ol>
+<li>a dom node with a specific id like <code>#module-57</code></li>
+<li>an object on the window like <code>window.someLibrary</code></li>
+<li>a js file which should be loaded if it&#39;s not loaded yet like <code>/js/jquery.min.js</code></li>
+<li>a css file like <code>/css/mycss.js</code></li>
+</ol>
+<h2 id="-"></h2>
+<hr>
+<h2 id="history">History</h2>
+<h2 id="future-features">Future features</h2>
+<ol>
+<li>also await certain DOM events; ATM you can do this easily after turnOn has run it&#39;s magic, but it would be nice to specify it in the config</li>
+<li>load scripts and js</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/turn-on/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
