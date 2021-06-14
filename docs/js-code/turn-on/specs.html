@@ -165,6 +165,7 @@
 <ul>
 <li>must begin with <code>window</code></li>
 <li>if they end with <code>()</code> then it will be called repeatedly until it returns <code>true</code></li>
+<li>experimental: if the node returns a promise object, will wait for that to complete (not fully tested)</li>
 </ul>
 <h2 id="more-on-the-run-property">More on the <code>run</code> Property</h2>
 <ul>
@@ -183,17 +184,23 @@
 This is especially common if you add dynamic data from the CMS to the object, as it could contain <code>&quot;</code> characters which break the json. </p>
 <p>Another common problem is converting boolean C# values to inject into the JSON. Here&#39;s why:</p>
 <pre><code class="lang-html">&lt;!-- this will fail --&gt;
-&lt;script turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: Settings.Show }}&#39;&gt;&lt;/script&gt;
+&lt;span turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: Settings.Show }}&#39;&gt;&lt;/span&gt;
 
 &lt;!-- will produce this --&gt;
-&lt;script turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: True }}&#39;&gt;&lt;/script&gt;
+&lt;span turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: True }}&#39;&gt;&lt;/span&gt;
 
 &lt;!-- this will work --&gt;
-&lt;script turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: @(Settings.Show ? &quot;true&quot; : &quot;false&quot;) }}&#39;&gt;&lt;/script&gt;
+&lt;span turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: @(Settings.Show ? &quot;true&quot; : &quot;false&quot;) }}&#39;&gt;&lt;/span&gt;
 
 &lt;!-- will produce this --&gt;
-&lt;script turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: true }}&#39;&gt;&lt;/script&gt;
-</code></pre><h2 id="-"></h2>
+&lt;span turn-on=&#39;{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: true }}&#39;&gt;&lt;/span&gt;
+</code></pre><h2 id="allowed-html-tags">Allowed HTML Tags</h2>
+<p>Any valid HTML tag can be used, incl. existing <code>div</code> or <code>span</code> tags which just get a <code>turn-on</code> attribute added. So you can use <code>&lt;em&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> or even <code>&lt;turnOn&gt;</code></p>
+<p>There are a few cases where problems could arise though:</p>
+<ol>
+<li>If you use a <code>&lt;script&gt;</code> tag, this may not work as expected, as additional processing layers may do something with these script tags. This is especially important in Oqtane, as there the script tags are filtered out and treated separately. </li>
+<li>If you use a tag which you will later modify in HTML (like using jQuery or Angular) this may fail, because <strong>turnOn</strong> will make status-updates to the tag and this could interfere with your code doing updates as well. </li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ol>

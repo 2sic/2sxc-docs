@@ -120,7 +120,7 @@
 <li>Add Meta-headers</li>
 <li>Add Icons or Icon-Sets</li>
 <li>Create JsonLD headers</li>
-<li>Activate page features like turnOn</li>
+<li>Activate page features like <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a></li>
 </ol>
 <h2 id="concept">Concept</h2>
 <p>A Razor template is standalone - the page requests that it&#39;s rendered, but there is no official way to also tell the page that the title should change or that certain headers must be set. </p>
@@ -177,17 +177,22 @@ It adds meta headers using <code>og:</code> prefixes. Use these commands to add 
 <h2 id="activate-page-features">Activate Page Features</h2>
 <p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
 This gets especially complex in scenarios like Oqtane, where the page doesn&#39;t really reload and therefor may already have some scripts / styles loaded, but it&#39;s hard to guess. </p>
-<p>For this we have developed a helper called <code>turnOn</code> (not documented yet, WIP) and the <code>PageService</code> is able to activate this feature (and more in future). Here&#39;s how it works</p>
+<p>For this we have developed a helper called <a class="xref" href="../../../js-code/turn-on/index.html"><code>turnOn</code></a> and the <code>PageService</code> is able to activate this feature (and more in future). Here&#39;s how it works</p>
 <pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Web.IPageService&gt;();
 page.Activate(&quot;turnOn&quot;);
 </code></pre><p>Features you can activate as of v12.02</p>
 <ul>
 <li><code>jQuery</code>  - activate jQuery
 <em>note: in Oqtane 💧 this will include jQuery slim as that is the default. We&#39;re still trying to enhance this</em></li>
-<li><code>turnOn</code> - the JavaScript Activation system
+<li><code>turnOn</code> - <a class="xref" href="../../../js-code/turn-on/index.html">the JavaScript turnOn Activation system</a>
 <em>note: new feature, docs still incomplete</em></li>
 </ul>
 <p><em>Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
+<p>Features that are explicitly not implemented</p>
+<ol>
+<li>jQueryUI is often used in ASP.net but it&#39;s really old and hasn&#39;t had updates since 2016</li>
+<li>knockoutJS is often used in ASP.net but it&#39;s also barely alive, so it&#39;s not meant to be activatable in modern systems like the ones usually built with 2sxc</li>
+</ol>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 

@@ -50,7 +50,7 @@ Here's another example, taken from the new Content-App in 2sxc:
 
 ```html
 <!-- Instruct turnOn to init this specific Map once everything is loaded -->
-<script turn-on='{ "run": "window.appContent.maps.configureMap()", "data": { 
+<turnOn turn-on='{ "run": "window.appContent.maps.configureMap()", "data": { 
   "domId": "GoogleMap-@DynamicModel.mapId", 
   "marker": "@Text.First(DynamicModel.markerImage, "")",
   "lat": @DynamicModel.mapInfo.GpsLat.ToString("R"),
@@ -58,7 +58,7 @@ Here's another example, taken from the new Content-App in 2sxc:
   "zoom": @Content.Presentation.Zoom, 
   "info": "@DynamicModel.company",
   "warn": @(Settings.GoogleMapsShowWarning ? "true" : "false")
-}}'></script>
+}}'></turnOn>
 ```
 
 This example will init a map with the configuration of the map incl. pin-image, coordinates and more. 

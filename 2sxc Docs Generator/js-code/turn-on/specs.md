@@ -80,19 +80,26 @@ Another common problem is converting boolean C# values to inject into the JSON. 
 
 ```html
 <!-- this will fail -->
-<script turn-on='{ "run": "window.load()", "data": { "show": Settings.Show }}'></script>
+<span turn-on='{ "run": "window.load()", "data": { "show": Settings.Show }}'></span>
 
 <!-- will produce this -->
-<script turn-on='{ "run": "window.load()", "data": { "show": True }}'></script>
+<span turn-on='{ "run": "window.load()", "data": { "show": True }}'></span>
 
 <!-- this will work -->
-<script turn-on='{ "run": "window.load()", "data": { "show": @(Settings.Show ? "true" : "false") }}'></script>
+<span turn-on='{ "run": "window.load()", "data": { "show": @(Settings.Show ? "true" : "false") }}'></span>
 
 <!-- will produce this -->
-<script turn-on='{ "run": "window.load()", "data": { "show": true }}'></script>
+<span turn-on='{ "run": "window.load()", "data": { "show": true }}'></span>
 ```
 
-## 
+## Allowed HTML Tags
+
+Any valid HTML tag can be used, incl. existing `div` or `span` tags which just get a `turn-on` attribute added. So you can use `<em>`, `<div>`, `<span>` or even `<turnOn>`
+
+There are a few cases where problems could arise though:
+
+1. If you use a `<script>` tag, this may not work as expected, as additional processing layers may do something with these script tags. This is especially important in Oqtane, as there the script tags are filtered out and treated separately. 
+1. If you use a tag which you will later modify in HTML (like using jQuery or Angular) this may fail, because **turnOn** will make status-updates to the tag and this could interfere with your code doing updates as well. 
 
 
 
