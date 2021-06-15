@@ -164,12 +164,15 @@
 <p>This is always a string array. As of v0.1 all values...</p>
 <ul>
 <li>must begin with <code>window</code></li>
-<li>if they end with <code>()</code> then it will be called repeatedly until it returns <code>true</code></li>
+<li>can end with just a name like <code>window.something</code> or with <code>()</code> like <code>window.something()</code></li>
+<li>can have a much longer name like <code>window.myTopic.mySubtopic.ready</code></li>
+<li>if it ends with <code>()</code> then it will be called repeatedly until it returns <code>true</code></li>
 <li>experimental: if the node returns a promise object, will wait for that to complete (not fully tested)</li>
 </ul>
 <h2 id="more-on-the-run-property">More on the <code>run</code> Property</h2>
 <ul>
 <li>must begin with <code>window</code></li>
+<li>can have a short name like <code>window.ready()</code> or a long name like <code>window.myTopic.mySubtopic.ready()</code></li>
 <li>must end with <code>()</code></li>
 <li>the run can be an isolated function or part of a larger object. It will preserve the <code>this</code> if it&#39;s part of a larger object</li>
 </ul>
@@ -177,7 +180,7 @@
 <p>In some cases you may not get what you expect and need to debug what you&#39;re doing. There are two options:</p>
 <ul>
 <li>To debug a specific turnOn just add the <code>&quot;debug&quot;: true</code> to the JSON</li>
-<li>To debug everything in turnOn, set <code>window.debugTurnOn = true;</code> anywhere on the page - this will flood your console though</li>
+<li>To debug everything in turnOn, set <code>window.debugTurnOn = true;</code> anywhere on the page. <em>this will flood your console</em></li>
 </ul>
 <h2 id="common-problems">Common Problems</h2>
 <p>The most common cause of issues is an invalid JSON. You&#39;ll get errors in the console if you do this. 

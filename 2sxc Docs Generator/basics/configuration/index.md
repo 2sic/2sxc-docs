@@ -1,5 +1,5 @@
 ---
-uid: Basics.Settings.Index
+uid: Basics.Configuration.Index
 ---
 
 # Configuration, Settings and Resources in 2sxc
@@ -177,3 +177,4 @@ If a View is configured to be a List then it can also have a **Header** and also
 * View Configuration introduced ca. v4
 * App Configuration, Settings and Resources introduced in v6.0
 * View Settings and Resources introduced in v12.02
+* Full Settings Stack introduced in 2sxc 12.03

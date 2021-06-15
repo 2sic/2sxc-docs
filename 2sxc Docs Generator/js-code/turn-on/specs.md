@@ -54,13 +54,16 @@ These are the properties you can set
 This is always a string array. As of v0.1 all values...
 
 * must begin with `window`
-* if they end with `()` then it will be called repeatedly until it returns `true`
+* can end with just a name like `window.something` or with `()` like `window.something()`
+* can have a much longer name like `window.myTopic.mySubtopic.ready`
+* if it ends with `()` then it will be called repeatedly until it returns `true`
 * experimental: if the node returns a promise object, will wait for that to complete (not fully tested)
 
 
 ## More on the `run` Property
 
 * must begin with `window`
+* can have a short name like `window.ready()` or a long name like `window.myTopic.mySubtopic.ready()`
 * must end with `()`
 * the run can be an isolated function or part of a larger object. It will preserve the `this` if it's part of a larger object
 
@@ -69,7 +72,7 @@ This is always a string array. As of v0.1 all values...
 In some cases you may not get what you expect and need to debug what you're doing. There are two options:
 
 * To debug a specific turnOn just add the `"debug": true` to the JSON
-* To debug everything in turnOn, set `window.debugTurnOn = true;` anywhere on the page - this will flood your console though
+* To debug everything in turnOn, set `window.debugTurnOn = true;` anywhere on the page. _this will flood your console_
 
 ## Common Problems
 
