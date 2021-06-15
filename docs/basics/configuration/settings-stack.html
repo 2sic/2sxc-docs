@@ -239,14 +239,64 @@
 <p>The Settings are stacked in the following priority</p>
 <ol>
 <li><code>View</code> - settings configured in the View</li>
-<li><code>App</code> - the standard AppSettings</li>
+<li><code>App</code> - the standard <code>AppSettings</code> of an App</li>
 <li><code>AppSystem</code> - The SystemSettings in the current App</li>
-<li><code>Site</code> - an optional, manually created <code>CustomSettings</code> on the <strong>default Content App</strong> of the current site</li>
+<li><code>Site</code> - an optional, manually created <code>Settings</code> on the <strong>default Content App</strong> of the current site</li>
 <li><code>SiteSystem</code> - an optional <code>SystemSettings</code> in the <strong>default Content App</strong> of the current site, where the scope is set to Site</li>
-<li><code>Global</code> - an optional, manually created <code>CustomSettings</code> on the <strong>default System App</strong></li>
+<li><code>Global</code> - an optional, manually created <code>Settings</code> on the <strong>default System App</strong></li>
 <li><code>GlobalSystem</code> - an optional <code>SystemSettings</code> on the <strong>default System App</strong>
 <!-- 1. `Preset` - todo --></li>
 <li><code>PresetSystem</code> - the <code>SystemSettings</code> which are included in the installation of 2sxc</li>
+</ol>
+<p>Next we&#39;ll explain where you can configure settings for different effects / scopes.</p>
+<h2 id="global-settings-which-affect-all-sites">Global Settings which Affect All Sites</h2>
+<p>Global Settings for all sites are configured in the default System App. It&#39;s usually on Zone <code>1</code> and App <code>1</code>.</p>
+<p>todo: explain how to get there</p>
+<h4 id="global-system-settings">Global System Settings</h4>
+<p>To globally override system settings which are predefined by 2sxc:</p>
+<ol>
+<li>go to the <strong>default System App</strong> </li>
+<li>Switch scopes to <code>Configuration</code></li>
+<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>To test the result, create a Razor file which accesses this setting in another Site or App. </li>
+</ol>
+<h4 id="global-custom-settings">Global Custom Settings</h4>
+<p>To create own settings which are available globaly...</p>
+<ol>
+<li>go to the <strong>default System App</strong> </li>
+<li>Switch scopes to <code>Configuration</code></li>
+<li>Check if the ContentType <code>Settings</code> exists - if not, create one</li>
+<li>Check if the fields you need already exist, otherwise create them</li>
+<li>To test the result, create a Razor file which accesses this setting in another Site or App. </li>
+</ol>
+<h2 id="site-settings-which-affect-an-entire-site">Site Settings which Affect an Entire Site</h2>
+<p>These are configured in the <strong>Content App</strong> of the site you want to configure. </p>
+<h4 id="site-system-settings">Site System Settings</h4>
+<p>To override system settings which are predefined by 2sxc on a Site:</p>
+<ol>
+<li>go to the <strong>Content App</strong> on the Site you want to configure</li>
+<li>Switch scopes to <code>Configuration</code></li>
+<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
+</ol>
+<h4 id="site-custom-settings">Site Custom Settings</h4>
+<p>To create own settings which are available globaly...</p>
+<ol>
+<li>go to the <strong>Content App</strong> on the Site you want to configure</li>
+<li>Switch scopes to <code>Configuration</code></li>
+<li>Check if the ContentType <code>Settings</code> exists - if not, create one</li>
+<li>Check if the fields you need already exist, otherwise create them</li>
+<li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
+</ol>
+<h2 id="app-settings-which-affect-an-entire-app">App Settings which Affect an Entire App</h2>
+<p>These settings override previous settings but only for a specific App. </p>
+<h4 id="app-system-settings">App System Settings</h4>
+<p>To override system settings which are predefined by 2sxc on a Site:</p>
+<ol>
+<li>go to the <strong>Content App</strong> on the Site you want to configure</li>
+<li>Switch scopes to <code>Configuration</code></li>
+<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
 </ol>
 <hr>
 <h2 id="history">History</h2>
