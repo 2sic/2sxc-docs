@@ -14,11 +14,11 @@ Whenever you create a content-type - like _Person_ - and want to work with the d
 ## Code example using a Dynamic Entity
 
 We'll assume we have a _Content Type_ called *Book* with the following properties:
-* Title (text, 1-line)
-* Teaser (text, multi-line)
-* Description (text, html)
-* ReleaseDate (date)
-* Author (entity - another content item)
+* **Title** (text, 1-line)
+* **Teaser** (text, multi-line)
+* **Description** (text, html)
+* **ReleaseDate** (date)
+* **Author** (entity - another content item)
 
 Here's a code example in a C# Razor template:
 
@@ -46,6 +46,18 @@ The main things that the _dynamic entity_ does for you, are
 3. Give conveniant access to related information like the `Presentation` object
 4. Automatically handle some data-not-found errors
 5. Automatically do conversions, like convert related entities (like `.Children`) into dynamic objects to make your code more consistant  
+
+## How the Property Lookup Works
+
+Internally there are a few things that can returned if you do something like `Content.SomeProperty`
+
+1. If the `SomeProperty` is one of the internal properties like `EntityId` etc. (see below) this will be returned
+1. Topmost is a simple property of the underlying Entity, like `FirstName`
+1. Similar to that are relationship properties, like `Tags` which will return a special DynamicEntity that behaves as a list (see below)
+1. _if the entity is a list_ (for example the result of `var tags = Content.Tags`) then going deeper like `tags.Name` has the following behavior
+    1. If the Tags-list had anything, then it will try to find a match on the first item according to these rules. _new in v10.27_
+    1. If up till then nothing was found, it will check if any of the items in the list has that `Title` property. This lets you write `Tags.Webdesign.Name` _new in v12.03_
+1. Last but not least - if nothing matches, it's `null`
 
 ## Properties of a Dynamic Entity
 
