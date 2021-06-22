@@ -7,6 +7,13 @@ uid: Internal.Progress.BreakingChanges
 We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API. 
 We're documenting it here to ensure you know what happened, in case you still run into this.
 
+## Version 12
+
+#### Version 12.03
+
+1. DynamicEntity now has a property Count because it's a list as well, this could cause issues if a content-type has a property `Count`
+1. DynamicEntity is now always a list. Because of this we removed the `DynamicEntityWithList` object. We believe the type is never referenced in user code, but if it is, this would be a breaking change.
+
 ## Version 11
 
 There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers. 

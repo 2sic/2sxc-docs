@@ -271,11 +271,12 @@
 <p>Internally there are a few things that can returned if you do something like <code>Content.SomeProperty</code></p>
 <ol>
 <li>If the <code>SomeProperty</code> is one of the internal properties like <code>EntityId</code> etc. (see below) this will be returned</li>
-<li>Topmost is a simple property of the underlying Entity, like <code>FirstName</code></li>
-<li>Similar to that are relationship properties, like <code>Tags</code> which will return a special DynamicEntity that behaves as a list (see below)</li>
-<li><em>if the entity is a list</em> (for example the result of <code>var tags = Content.Tags</code>) then going deeper like <code>tags.Name</code> has the following behavior<ol>
+<li>Next is a simple property of the underlying Entity, <ol>
+<li>like <code>FirstName</code> which would be a string</li>
+<li>or a relationship property like <code>Tags</code> which will return a special DynamicEntity that behaves as a list (see below)
+&lt;!-- 1. <em>if the entity is a list</em> (for example the result of <code>var tags = Content.Tags</code>) then going deeper like <code>tags.Name</code> has the following behavior</li>
 <li>If the Tags-list had anything, then it will try to find a match on the first item according to these rules. <em>new in v10.27</em></li>
-<li>If up till then nothing was found, it will check if any of the items in the list has that <code>Title</code> property. This lets you write <code>Tags.Webdesign.Name</code> <em>new in v12.03</em></li>
+<li>If up till then nothing was found, it will check if any of the items in the list has that <code>Title</code> property. This lets you write <code>Tags.Webdesign.Name</code> <em>new in v12.03</em> --&gt;</li>
 </ol>
 </li>
 <li>Last but not least - if nothing matches, it&#39;s <code>null</code></li>
@@ -290,7 +291,7 @@
 <li><strong>IsPublished</strong> <em>bool</em> - true/false if this item is currently published</li>
 <li><strong><em>AnyProperty</em></strong> <em>dynamic, but actually bool | string | decimal | datetime | List<dynamicentity></dynamicentity></em> any normal property of the content-item can be accessd directly. It&#39;s correctly .net typed (string, etc.)</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>In 2sxc 10.27 any property that returns a <code>List&lt;DynamicEntity&gt;</code> now returns a <a href="xref:ToSic.Sxc.Data.DynamicEntityWithList"></a>. 
+<div class="TIP"><h5>Tip</h5><p>In 2sxc 10.27 any property that returns a <code>List&lt;DynamicEntity&gt;</code> now returns a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> containing a list. 
 This means that if you expect the list to just return one item, you can directly access its properties like this:<br><code>Content.Author.FirstName</code>.<br>To otherwise enumerate the items, we recommend <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_AsList_System_Object_">AsList(Object)</a> so <code>AsList(Content.Tags)</code></p>
 </div>
 <h2 id="working-with-unpublisheddraft-items">Working with unpublished/draft items</h2>

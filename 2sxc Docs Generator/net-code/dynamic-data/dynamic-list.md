@@ -1,11 +1,68 @@
 ---
-uid: NetCode.DynamicData.DynamicEntity
+uid: NetCode.DynamicData.DynamicList
 ---
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
-# Dynamic Entity Objects
+# Dynamic Entity Lists
+
+It's very common to work with a list of items, like a list of blog posts, tags etc.
+
+2sxc has a lot of magic under the hood to just make it work. Here's an example:
+
+```razor
+<ul>
+@foreach(var tag in blogPost.Tags) {
+  <li>@tag.Name</li>
+}
+</ul>
+```
+
+To get really good at coding lists, there are a few things you want to learn:
+
+1. Use list from different sources
+    1. Entities which are a property of something (like `blogPost.Tags`)
+    1. Entities which belong to the Module
+    1. Entities which come from a Query
+    1. Entities of a specific Content-Type from App.Data
+1. Difference between Entity-lists and DynamicEntity-Lists
+1. Looping
+1. Using LINQ to sort, filter and more
+
+## Basics First - What Are Lists of Dynamic Entities
+
+In the lingo of C# they are `IEnumerable<IDynamicEntity>` objects. 
+
+> But basically lists are objects that can be stepped through (iterated).
+
+You will usually use them to show the list of items (like a list of News items). 
+And if the list has too much data or is in a weird sorting order, you'll usually want to filter and sort before doing this. 
+
+## How to Get a List of Dynamic Entities
+
+In many cases the list is aleady there for you to use. 
+For example, if your `BlogPost` object has a property `Tags` which is an Entity-Picker in the Edit-UI, then this will automatically work:
+
+```razor
+<ul>
+@foreach(var tag in blogPost.Tags) {
+  <li>@tag.Name</li>
+}
+</ul>
+```
+
+In other scenarios you may get objects which are still IEntity objects. For example, `App.Data["BlogPost"]` will get you a list of `IEntity` objects.
+But these don't allow you to just access a property, so you'll have to use `AsList(...)`.
+
+```Razor
+@* this won't work *@
+
+
+```
+
+1. Find some information
+
 
 Whenever you create a content-type - like _Person_ - and want to work with the data in your C# Razor templates, you'll be working with a _Dynamic Entity_. 
 
@@ -52,12 +109,11 @@ The main things that the _dynamic entity_ does for you, are
 Internally there are a few things that can returned if you do something like `Content.SomeProperty`
 
 1. If the `SomeProperty` is one of the internal properties like `EntityId` etc. (see below) this will be returned
-1. Next is a simple property of the underlying Entity, 
-    1. like `FirstName` which would be a string
-    1. or a relationship property like `Tags` which will return a special DynamicEntity that behaves as a list (see below)
-<!-- 1. _if the entity is a list_ (for example the result of `var tags = Content.Tags`) then going deeper like `tags.Name` has the following behavior
+1. Topmost is a simple property of the underlying Entity, like `FirstName`
+1. Similar to that are relationship properties, like `Tags` which will return a special DynamicEntity that behaves as a list (see below)
+1. _if the entity is a list_ (for example the result of `var tags = Content.Tags`) then going deeper like `tags.Name` has the following behavior
     1. If the Tags-list had anything, then it will try to find a match on the first item according to these rules. _new in v10.27_
-    1. If up till then nothing was found, it will check if any of the items in the list has that `Title` property. This lets you write `Tags.Webdesign.Name` _new in v12.03_ -->
+    1. If up till then nothing was found, it will check if any of the items in the list has that `Title` property. This lets you write `Tags.Webdesign.Name` _new in v12.03_
 1. Last but not least - if nothing matches, it's `null`
 
 ## Properties of a Dynamic Entity
@@ -73,7 +129,7 @@ Additional properties that work (they are dynamic, so don't appear in the code)
 1. **_AnyProperty_** _dynamic, but actually bool | string | decimal | datetime | List<DynamicEntity>_ any normal property of the content-item can be accessd directly. It's correctly .net typed (string, etc.)
 
 > [!TIP]
-> In 2sxc 10.27 any property that returns a `List<DynamicEntity>` now returns a [](xref:ToSic.Sxc.Data.IDynamicEntity) containing a list. 
+> In 2sxc 10.27 any property that returns a `List<DynamicEntity>` now returns a [](xref:ToSic.Sxc.Data.IDynamicEntity) containing the list. 
 > This means that if you expect the list to just return one item, you can directly access its properties like this:  
 > `Content.Author.FirstName`.  
 > To otherwise enumerate the items, we recommend [](xref:ToSic.Sxc.Code.DynamicCode.AsList(System.Object)) so `AsList(Content.Tags)`

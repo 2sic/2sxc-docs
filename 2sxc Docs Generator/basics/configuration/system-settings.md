@@ -28,32 +28,41 @@ _Note: the following QuickEdit Settings are stored, but have no effect ATM_
 
 | Part                 | Key                  | Value in Default     | Introduced | Comments
 | -------------------- | -------------------- | -------------------- | ------ | ---
-| QuickEdit.Parts.Default              | Enable     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Default              | AddApp     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Default              | AddContent | b `true`             | v12.03 | 
-| QuickEdit.Parts.Default              | Select     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Default              | Paste      | b `true`             | v12.03 | 
-| QuickEdit.Parts.Default              | Move       | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | Enable     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | AddApp     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | AddContent | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | Select     | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | Paste      | b `true`             | v12.03 | 
-| QuickEdit.Parts.Module               | Move       | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | Enable     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | AddApp     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | AddContent | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | Select     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | Paste      | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentArea     | Move       | b `false`            | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | Enable     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | AddApp     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | AddContent | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | Select     | b `true`             | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | Paste      | b `false`            | v12.03 | 
-| QuickEdit.Parts.InnerContentDynamic  | Move       | b `false`            | v12.03 | 
+| QuickEdit.Default              | Enable     | b `true`             | v12.03 | 
+| QuickEdit.Default              | AddApp     | b `true`             | v12.03 | 
+| QuickEdit.Default              | AddContent | b `true`             | v12.03 | 
+| QuickEdit.Default              | Select     | b `true`             | v12.03 | 
+| QuickEdit.Default              | Paste      | b `true`             | v12.03 | 
+| QuickEdit.Default              | Move       | b `true`             | v12.03 | 
+| QuickEdit.Module               | Enable     | b `true`             | v12.03 | 
+| QuickEdit.Module               | AddApp     | b `true`             | v12.03 | 
+| QuickEdit.Module               | AddContent | b `true`             | v12.03 | 
+| QuickEdit.Module               | Select     | b `true`             | v12.03 | 
+| QuickEdit.Module               | Paste      | b `true`             | v12.03 | 
+| QuickEdit.Module               | Move       | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | Enable     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | AddApp     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | AddContent | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | Select     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | Paste      | b `true`             | v12.03 | 
+| QuickEdit.InnerContentArea     | Move       | b `false`            | v12.03 | 
+| QuickEdit.InnerContentDynamic  | Enable     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentDynamic  | AddApp     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentDynamic  | AddContent | b `true`             | v12.03 | 
+| QuickEdit.InnerContentDynamic  | Select     | b `true`             | v12.03 | 
+| QuickEdit.InnerContentDynamic  | Paste      | b `false`            | v12.03 | 
+| QuickEdit.InnerContentDynamic  | Move       | b `false`            | v12.03 | 
 
+WebResources.Bootstrap4
+WebResources.Bootstrap5
+WebResources.fancybox3
+WebResources.FontAwesome5
 
+Images.Content
+Images.Lightbox
+
+Images.Section
+Images.Screen
 
 
 ## Conventions used in System Settings
@@ -61,9 +70,10 @@ _Note: the following QuickEdit Settings are stored, but have no effect ATM_
 The built-in system settings are meant to carry hundreds of settings. To enable that, the structure is always as follows:
 
 1. Every topic - like `GoogleMaps` will have an own configuration ContentType
-1. All the names of these will probably start with the emoji "⚙" so the ContentType will have a name like `⚙GoogleMaps`
+1. All the names of these will probably start with the emoji "⚙️" so the ContentType will have a name like `⚙️GoogleMaps`
 1. It should always have a field called `SettingsIdentifier` repeating the name like `GoogleMaps`
 1. All of these fields should have an empty-state (like empty string, not-set-number) etc.
+1. ... `Items` and ... `ItemIdentifier`
 
 ---
 

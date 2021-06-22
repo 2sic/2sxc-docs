@@ -308,7 +308,21 @@ If you really need them, download an old release of 2sxc and get them manually.
 
 1. Toolbar had issue when color code was numbers only
 
+### Version 11.14 - 11.22 LTS TODO
 
+
+## Version 12
+
+### Version 12 Todo
+
+
+### Version 12.03
+
+
+**Possible Breaking Changes**
+
+1. DynamicEntity now has a property Count because it's a list as well, this could cause issues if a content-type has a property `Count`
+1. DynamicEntity is now always a list. Because of this we removed the `DynamicEntityWithList` object. We believe the type is never referenced in user code, but if it is, this would be a breaking change.
 
 ## Github Release Notes
 
