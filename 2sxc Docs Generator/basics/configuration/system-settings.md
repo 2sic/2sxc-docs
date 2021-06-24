@@ -23,8 +23,41 @@ _Note: The System Settings feature is new in 12.03 so only a few settings are pr
 | GoogleMaps           | ShowApiKeyWarning    | b `true`             | v12.03 | Show a warning if it's still the default key, which isn't meant for live sites
 | GoogleMaps           | MarkerIcon           | $ (empty)            | v12.03 | empty = google default 📍
 
+| Part                 | Key                  | Value in Default     | Introduced | Comments
+| -------------------- | -------------------- | -------------------- | ------ | ---
+| Images.Content       |                      |                      | v12.03 | *For sizing Content-Images*
+| Images.Content       | Width                | # `1400`             | v12.03 | Full-Content-Width images
+| Images.Content       | Height               | # `865`              | v12.03 | Based on golden ratio
+| Images.Content       | Quality              | # `75`               | v12.03 | Good average jpg/png compression
+| Images.Content       | AspectRatio          | # `1.618`            | v12.03 | Golden Ratio
+| Images.Content       | ResizeMode           | $ `crop`             | v12.03 | Will fill area exactly
+| Images.Content       | ScaleMode            | $ `both`             | v12.03 | Up-scale small images
+| Images.Lightbox      |                      |                      | v12.03 | *For Lightbox-Images*
+| Images.Lightbox      | Width                | # `2000`             | v12.03 | Full-screen Lightboxes
+| Images.Lightbox      | Height               | # `1500`             | v12.03 | 4:3
+| Images.Lightbox      | Quality              | # `75`               | v12.03 | Good average jpg/png compression
+| Images.Lightbox      | AspectRatio          | # `1.333`            | v12.03 | 4:3
+| Images.Lightbox      | ResizeMode           | $ `max`              | v12.03 | Will keep image shape 
+| Images.Lightbox      | ScaleMode            | $ `down`             | v12.03 | Only down-scale, never up-scale
+| Images.Screen        |                      |                      | v12.03 | *For Screen-Size related images like backgrounds*
+| Images.Screen        | Width                | # `2000`             | v12.03 | Full-Content-Width images
+| Images.Screen        | Height               | # `1500`             | v12.03 | 4:3
+| Images.Screen        | Quality              | # `60`               | v12.03 | Stronger jpg/png compression
+| Images.Screen        | AspectRatio          | # `1.333`            | v12.03 | 4:3
+| Images.Screen        | ResizeMode           | $ `crop`             | v12.03 | Will fill area exactly
+| Images.Screen        | ScaleMode            | $ `both`             | v12.03 | Up-scale small images
+| Images.Section       |                      |                      | v12.03 | *For Backgrounds in Content-Area*
+| Images.Section       | Width                | # `1600`             | v12.03 | Full-Content-Width images
+| Images.Section       | Height               | # `1200`             | v12.03 | Based on golden ratio
+| Images.Section       | Quality              | # `60`               | v12.03 | Stronger jpg/png compression
+| Images.Section       | AspectRatio          | # `1.333`            | v12.03 | 4:3
+| Images.Section       | ResizeMode           | $ `crop`             | v12.03 | Will fill area exactly
+| Images.Section       | ScaleMode            | $ `both`             | v12.03 | Up-scale small images
 
-_Note: the following QuickEdit Settings are stored, but have no effect ATM_
+
+
+
+_Note: the following QuickEdit Settings exist but have no effect ATM_
 
 | Part                 | Key                  | Value in Default     | Introduced | Comments
 | -------------------- | -------------------- | -------------------- | ------ | ---
