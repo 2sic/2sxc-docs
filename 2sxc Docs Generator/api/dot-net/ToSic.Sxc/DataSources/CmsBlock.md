@@ -24,7 +24,7 @@ Things get really exciting when you use values which the user edited in the modu
 
 <img src="./assets/module-providing-settings-to-sort.png" width="100%" class="full-width">
 
-As you can see, the _Default_ out of the **CmsBlock** is passed into the [ValueSort](xref:ToSic.Eav.DataSources.ValueSort) data source with the stream-name _Settings_ and is then used in a token to configure behaviour of the sort. 
+As you can see, the _Default_ out of the **CmsBlock** is passed into the [ValueSort](xref:ToSic.Eav.DataSources.ValueSort) data source with the stream-name _Settings_ and is then used in a token to configure bbehavior of the sort. 
 
 
 ## Manually Assigning a Module ID (2sxc 9.9)

@@ -39,7 +39,7 @@ This shows the configuration dialog:
 
 Dropdown-Fields can be cascaded - so that a selection on one dropdown changes the list of possible items on another dropdown. You'll have to work with the Parameters to get this to fly. S
 
-## Special Behaviour
+## Special Behavior
 
 1. When the drop-down UI element finds data stored, which doesn't match any of the values it has available, it will leave that data intact unless the users selects something manually
 

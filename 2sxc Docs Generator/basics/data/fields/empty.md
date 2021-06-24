@@ -24,7 +24,7 @@ The basic **empty** field doesn't have any features, since all the features are 
 
 1. [empty-default](xref:Basics.Data.Fields.Empty-Default) - a UI-only field for things like grouping fields together under a title
 1. [empty-end](xref:Basics.Data.Fields.Empty-End) - a UI-only field to close a Field-Group
-
+1. [empty-message](xref:Basics.Data.Fields.Empty-Message) - just a message in the edit form
 ## Shared Settings
 
 Doesn't have shared settings.

@@ -51,3 +51,4 @@ This is simply stored as a JSON string.
 
 1. Introduced in EAV 1.0 / 2sxc 1.0
 2. Changed in EAV 3.0 / 2sxc 6.0 (it used to have many configuration fields for all kinds of uses, which were then moved to sub-types)
+3. Enhanced in 12.02 to show old, invisible configuration which may still have an effect and allow copy/purge

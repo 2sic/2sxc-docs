@@ -9,7 +9,7 @@ uid: NetCode.DataSources.Custom.Errors
 
 Custom DataSources sometimes need to throw an error, for example if a SQL isn't found, a remote WebAPI fails or the configuration is faulty. 
 
-Since 2sxc 11.13 we changed the behaviour so that [DataSource Errors](xref:Basics.Query.Debug.Index) will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging. 
+Since 2sxc 11.13 we changed the bbehavior so that [DataSource Errors](xref:Basics.Query.Debug.Index) will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging. 
 
 ## You Don't Have to Do Anything...
 

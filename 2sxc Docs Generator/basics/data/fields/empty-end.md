@@ -11,7 +11,7 @@ It's an extension of the basic [empty field type](xref:Basics.Data.Fields.Empty)
 
 ## Features 
 
-_none_
+1. Closes a previously opened field-group
 
 ## Configuring a Empty-Default
 

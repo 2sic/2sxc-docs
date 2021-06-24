@@ -176,7 +176,7 @@ Didn't have time to document this yet, sorry. If you need to know, best check th
 * New DataSource `StreamPick`
 * New automatic Param called `[Params:ShowDrafts]` to be used in [VisualQuery](xref:Basics.Query.VisualQuery.Index) - returns `True` or `False`
 * New tokens `[App:AppId]` and `[App:ZoneId]` to use in [VisualQuery](xref:Basics.Query.VisualQuery.Index) calles (dropdown from query)
-* Changed List-Caching behaviour to create more reliable cache-keys for complex queries (previously it only went through `Default` streams to generate the cache-key)
+* Changed List-Caching bbehavior to create more reliable cache-keys for complex queries (previously it only went through `Default` streams to generate the cache-key)
 
 ### Version 10.27
 
