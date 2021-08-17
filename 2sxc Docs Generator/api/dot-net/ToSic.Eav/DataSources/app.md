@@ -5,7 +5,9 @@ uid: ToSic.Eav.DataSources.App
 The **App** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It provides all items of the current App or of another App if needed. 
 
 ## How to use with the VisualQuery
-When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. Now you can create out-connections with the names of the types you need - which looks like this:
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. In its initial state, the Default out stream will deliver all Entities of all Content-Types which you can then filter. 
+
+🔑 However, you can rename that or create more; _the out-connections will automatically filter to the name of the matching content types_, which looks like this:
 
 <img src="./assets/app-out-2-in-0.png" width="100%" class="full-width">
 
