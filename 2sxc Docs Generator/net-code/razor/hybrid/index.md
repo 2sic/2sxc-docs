@@ -2,7 +2,7 @@
 uid: NetCode.Razor.Hybrid.Index
 ---
 
-# Hybrid Razor running on Dnn ☢ and Oqtane 💧 
+# Hybrid Razor running on Dnn ☢ and Oqtane 🩸 
 
 Dnn and Oqtane have a few differences because of these important factors:
 
@@ -57,7 +57,7 @@ Here's an example:
 
 ```razor
 @{#if NETCOREAPP}
-  <h3>.net Core code = Oqtane 💧</h3>
+  <h3>.net Core code = Oqtane 🩸</h3>
   <p>
     On Oqtane or any .net core system you should see this because <code>#if NETCOREAPP</code> was <code>true</code>. <br>
 

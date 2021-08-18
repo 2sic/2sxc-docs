@@ -8,10 +8,11 @@ uid: Basics.Platforms.Oqtane.Index
 
 [Oqtane](https://oqtane.org/) is a modern [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) based platform similar to Dnn. It's inspired by the Dnn model but uses the latest .net core and more. 
 
-As of now (March 2021) we are porting 2sxc to work on Oqtane and Dnn. The work is still in progress. 
+👉 As of now (August 2021) 2sxc works great on Oqtane and Dnn. 
 
+## Install Oqtane and 2sxc
 
-
+👉 See [](xref:Basics.Platforms.Oqtane.Install)
 
 
 ## Features currently not implemented

@@ -4,9 +4,9 @@ summary: *content
 title: Custom.Oqtane Namespace
 ---
 
-# Custom.Oqtane Namespace for Oqtane 💧
+# Custom.Oqtane Namespace for Oqtane 🩸
 
-This contains all the base classes for your own solutions, which are targeted to Oqtane 💧. 
+This contains all the base classes for your own solutions, which are targeted to Oqtane 🩸. 
 
 ## Versioned Base Classes
 
