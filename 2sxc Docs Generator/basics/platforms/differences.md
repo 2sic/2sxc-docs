@@ -48,7 +48,8 @@ Last Update: 2021-04-29
 | RazorBlade | `Tag` object | ✅ | ✅ | - | 
 | RazorBlade | `Tags` object | ✅ | ✅ | - | 
 | RazorBlade | `Text` object | ✅ | ✅ | - | 
-| RazorBlade | `HtmlPage` object | ✅ | ⛔ | uncertain | evaluating recommendation
+| RazorBlade | `HtmlPage` object | ✅ | ⛔ | - | Use `IPageService`
+| RazorBlade | `IPageService` | ✅ | ✅ | 12.02 | see [IPageService](xref:NetCode.Razor.Services.IPageService)
 
 
 ### Koi Extension
@@ -56,9 +57,9 @@ Last Update: 2021-04-29
 | Collection | Feature | Dnn | Oqtane | Compatibility | Notes / Alternatives |
 | ---------- |-------- | :-: | :----: | --- | ---
 | Razor | `Koi` static object | ✅ | ⛔ | Not supported | Use Dependency Injection version of Koi 2
-| Razor | `Koi` `ICss` Service | ✅ | ✅ | v12 | New Koi 2. Unclear if the full functionality will be re-implemented, as it had some design flaws
+| Razor | `Koi` `ICss` Service | ✅ | ✅ | v12.01 | New Koi 2. See [ICss](xref:NetCode.Koi.Index)
 
-Koi supports the CSS Information API, but not yet the class-generating API. We're not sure if we will implement this. 
+Koi 2 supports the CSS Information API, but not the class-generating API. We probably won't implement it, as it was too complicated. 
 
 ### WIP
 

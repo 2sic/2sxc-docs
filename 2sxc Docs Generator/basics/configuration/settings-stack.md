@@ -91,7 +91,7 @@ To override system settings which are predefined by 2sxc on an App:
 
 To create own settings which are available on an App is a bit different, because this feature has existed long before the stack was invented. 
 
-👉 [](xref:Basics.App.Settings.Index)
+👉 [](xref:Basics.App.Settings)
 
 ## View Settings which Affect a specific View
 

@@ -20,7 +20,7 @@ we created on installing Oqtane and 2sxc.
 | --- | --- | --- | --- | --- | 
 | 2.0 | 12.00 | 12.00 - 12.02 | 12.03+ |
 | 2.1 | 12.03 | 12.03 | 12.04+ | Changes in Multi-Language
-| 2.2 | 12.04 | 12.04+ | pre 12.04 | Changes in Bootstrap / jQuery
+| 2.2 | 12.04 | 12.04+ | pre 12.04 | Changes in Bootstrap / jQuery & Authentication
 | next | ? | ? | pre 12.04 |
 
 ## Upgrade Existing Installations
