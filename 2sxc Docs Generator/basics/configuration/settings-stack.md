@@ -19,7 +19,10 @@ Settings come in 2 distinct flavors:
 Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. 
 
 In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured. 
-To make this possible, settings are treated as a stack. The most-relevant setting is top-most setting and is the one which will be used.
+To make this possible, settings are treated as a stack. 
+The most-relevant setting is top-most setting and is the one which will be used. 
+So if a _View_ setting and a _Site_ setting have the same key, the _View_ setting will be preferred. 
+
 
 The Settings are stacked in the following priority:
 

@@ -114,7 +114,9 @@
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Settings">
 <h1 id="settings--settings-object-dynamic-code">Settings / @Settings Object Dynamic Code</h1>
 
-<p>The <code>Settings</code> object consolidates settings for the current scenario. It merges settings configured in the View and App and gives View-Settings the preference. </p>
+<p>The <code>Settings</code> object consolidates settings for the current scenario. 
+It merges settings configured in the <em>View</em>, <em>App</em>, <em>Site</em>, <em>System</em> and <em>Presets</em>. 
+The top-most setting has preference. So if a view overrides a site-setting, the view-setting will be used. </p>
 <p>TODO: #TODOC - CREATE TUTORIALS FOR THIS</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
@@ -123,12 +125,15 @@
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="example">Example</h2>
+</div><div class="TIP"><h5>Tip</h5><p>Learn more about settings and what predefined settings exist in <a class="xref" href="../../../basics/configuration/index.html">these docs</a>.</p>
+<p>There you&#39;ll learn about predefined image sizes, google maps keys and more.</p>
+</div>
+<h2 id="example">Example</h2>
 <p>Let&#39;s assume you have these View-Settings</p>
 <ul>
 <li><strong>PrimaryColor</strong> would be <code>#FF0000</code></li>
 <li><strong>Columns</strong> would be <code>4</code></li>
-<li><strong>GoogleMapsKey</strong> would be <code>6n23cnhi502ceh</code></li>
+<li><strong>SomeApiKey</strong> would be <code>6n23cnhi502ceh</code></li>
 </ul>
 <p>An these App-Settings</p>
 <ul>
@@ -140,8 +145,9 @@
 <li><code>@Settings.PrimaryColor</code> would be <code>#FF0000</code> - found it View</li>
 <li><code>@Settings.SecondaryColor</code> would be <code>#00AA00</code> - only exists in App</li>
 <li><code>@Settings.Columns</code> would be <code>4</code> - only exists in View</li>
-<li><code>@Settings.GoogleMapsKey</code> would be <code>6n23cnhi502ceh</code> - from App</li>
+<li><code>@Settings.SomeApiKey</code> would be <code>6n23cnhi502ceh</code> - from App</li>
 <li><code>@Settings.DoesntExist</code> would be <code>null</code> as that data doesn&#39;t exist</li>
+<li><code>@Settings.Images.Content.Width</code> would be <code>1400</code> as it is a <a class="xref" href="../../../basics/configuration/system-settings.html">preset</a></li>
 </ul>
 <div class="TIP"><h5>Tip</h5><p>Remember that <a class="xref" href="settings.html">Settings</a> are meant for configuration 
 and <a class="xref" href="resources.html">Resources</a> should be used for multi-language output.
@@ -152,9 +158,14 @@ You could do it differently, but that would be bad practice.</p>
 Internally the Settings use the new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a> object to <em>stack</em> entities like sources on each other, and take the first best match. 
 As of now the two underlying sources used are:</p>
 <ol>
-<li><strong>View</strong> which contains View settings if the view has any</li>
-<li><strong>App</strong> which contains App settings if the App has any</li>
+<li><strong>View</strong> with View-level settings (with dynamic/custom fields 💪)</li>
+<li><strong>App</strong> with App-level settings (both <em>dynamic</em> 💪  as well as <em>system settings</em> 📋)</li>
+<li><strong>Site</strong> with Site-level settings (dynamic 💪 &amp; system 📋)</li>
+<li><strong>Global</strong> with System-level settings (dynamic 💪 &amp; system 📋)</li>
+<li><strong>Preset</strong> with pre-defined settings from the installation (system 📋 only)</li>
 </ol>
+<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/settings-stack.html">Settings Stack in 2sxc</a></p>
+</div>
 <p>The order of the sources is important, as the first match will be returned. 
 The View has priority over the App. 
 This setup allows Views to override App-Defaults.</p>
@@ -171,9 +182,8 @@ For this you can use the <code>GetSource(name)</code> method like this:</p>
 <ol>
 <li>Previously you could use App.Settings since ca. 2sxc 6</li>
 <li>Settings object Introduced in 2sxc 12.02 to consolidate View and App Settings</li>
+<li>Settings object was expanden in 12.03/12.04 to also cover global, portal and site level settings - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
 </ol>
-<h2 id="future">Future</h2>
-<p>We plan to introduce site-level, portal level and system-level settings, would would all be accessible in this object. </p>
 </article>
           </div>
           

@@ -4,11 +4,18 @@ uid: NetCode.DynamicCode.Objects.Settings
 
 # Settings / @Settings Object Dynamic Code
 
-The `Settings` object consolidates settings for the current scenario. It merges settings configured in the View and App and gives View-Settings the preference. 
+The `Settings` object consolidates settings for the current scenario. 
+It merges settings configured in the _View_, _App_, _Site_, _System_ and _Presets_. 
+The top-most setting has preference. So if a view overrides a site-setting, the view-setting will be used. 
 
 TODO: #TODOC - CREATE TUTORIALS FOR THIS
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
+
+> [!TIP]
+> Learn more about settings and what predefined settings exist in [these docs](xref:Basics.Configuration.Index).
+>
+> There you'll learn about predefined image sizes, google maps keys and more.
 
 ## Example
 
@@ -16,7 +23,7 @@ Let's assume you have these View-Settings
 
 * **PrimaryColor** would be `#FF0000`
 * **Columns** would be `4`
-* **GoogleMapsKey** would be `6n23cnhi502ceh`
+* **SomeApiKey** would be `6n23cnhi502ceh`
 
 An these App-Settings
 
@@ -28,8 +35,9 @@ Then you could get these values from the `Settings` object
 * `@Settings.PrimaryColor` would be `#FF0000` - found it View
 * `@Settings.SecondaryColor` would be `#00AA00` - only exists in App
 * `@Settings.Columns` would be `4` - only exists in View
-* `@Settings.GoogleMapsKey` would be `6n23cnhi502ceh` - from App
+* `@Settings.SomeApiKey` would be `6n23cnhi502ceh` - from App
 * `@Settings.DoesntExist` would be `null` as that data doesn't exist
+* `@Settings.Images.Content.Width` would be `1400` as it is a [preset](xref:Basics.Configuration.SystemSettings)
 
 > [!TIP]
 > Remember that [Settings](xref:NetCode.DynamicCode.Objects.Settings) are meant for configuration 
@@ -42,8 +50,14 @@ The `Settings` is a dynamic object.
 Internally the Settings use the new [](xref:ToSic.Sxc.Data.IDynamicStack) object to _stack_ entities like sources on each other, and take the first best match. 
 As of now the two underlying sources used are:
 
-1. **View** which contains View settings if the view has any
-1. **App** which contains App settings if the App has any
+1. **View** with View-level settings (with dynamic/custom fields 💪)
+1. **App** with App-level settings (both _dynamic_ 💪  as well as _system settings_ 📋)
+1. **Site** with Site-level settings (dynamic 💪 & system 📋)
+1. **Global** with System-level settings (dynamic 💪 & system 📋)
+1. **Preset** with pre-defined settings from the installation (system 📋 only)
+
+> [!TIP]
+> Read more about this stack and what's in it here [](xref:Basics.Configuration.SettingsStack)
 
 The order of the sources is important, as the first match will be returned. 
 The View has priority over the App. 
@@ -58,14 +72,12 @@ For this you can use the `GetSource(name)` method like this:
 * `@Settings.GetSource("View").PrimaryColor` would return `#FF0000`
 * `@Settings.GetSource("App").PrimaryColor` would return `#CCCCCC`
 
-
+> [!TIP]
+> You can get the full list of sources and their names [here](xref:Basics.Configuration.SettingsStack)
 ---
 
 ## History
 
 1. Previously you could use App.Settings since ca. 2sxc 6
 1. Settings object Introduced in 2sxc 12.02 to consolidate View and App Settings
-
-## Future
-
-We plan to introduce site-level, portal level and system-level settings, would would all be accessible in this object. 
+1. Settings object was expanden in 12.03/12.04 to also cover global, portal and site level settings - see [settings docs](xref:Basics.Configuration.Index)
