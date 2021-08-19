@@ -40,11 +40,11 @@ ADAM uses the Dnn file-numbering system by default, and keeps a reference to `fi
 * [](xref:ToSic.Sxc.Adam)
 * To access ADAM files/links in a RazorTemplate, check out `AsAdam(...)` in the [](xref:ToSic.Sxc.Dnn.RazorComponent) and [](xref:ToSic.Sxc.Dnn.ApiController)
 
-## Platform Differences Dnn ☢ & Oqtane 🩸
+## Platform Differences Dnn ☢️ & Oqtane 🩸
 
 ### ADAM Content-Root Folder
 
-In Dnn ☢ the adam root is:
+In Dnn ☢️ the adam root is:
 
 `[Website-Root]\Portals\[site-id]\adam\`
 
@@ -54,7 +54,7 @@ In Oqtane 🩸 the adam root is:
 
 ### Adam File URLs
 
-Dnn ☢ urls look like this:
+Dnn ☢️ urls look like this:
 
 `[Domain]/Portals/[Site-Id]/adam/[App-Folder-Name]/[Short-Guid]/[Field-Name]/[Optional-Subfolders]/FileName.Ext`
 

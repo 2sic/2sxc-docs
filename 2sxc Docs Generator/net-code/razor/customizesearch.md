@@ -2,7 +2,7 @@
 uid: NetCode.Razor.CustomizeSearch
 ---
 
-# Event _CustomizeSearch()_ on the Razor Page (Dnn ☢ only)
+# Event _CustomizeSearch()_ on the Razor Page (Dnn ☢️ only)
 
 > [!WARNING]
 > This is an older way to customize the Dnn search index. 

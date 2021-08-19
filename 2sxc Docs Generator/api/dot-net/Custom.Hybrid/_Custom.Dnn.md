@@ -4,9 +4,9 @@ summary: *content
 title: Custom.Dnn  Namespace
 ---
 
-# Custom.Dnn Namespace for Dnn ☢
+# Custom.Dnn Namespace for Dnn ☢️
 
-This contains all the base classes for your own solutions, which are targeted to Dnn ☢. 
+This contains all the base classes for your own solutions, which are targeted to Dnn ☢️. 
 
 ## Versioned Base Classes
 

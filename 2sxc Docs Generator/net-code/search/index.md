@@ -2,7 +2,7 @@
 uid: NetCode.Search.Index
 ---
 
-# Customize the Search-Index Results (Dnn ☢ only)
+# Customize the Search-Index Results (Dnn ☢️ only)
 
 Dnn has a built-in search engine which crawls all the modules asking them for data. 
 

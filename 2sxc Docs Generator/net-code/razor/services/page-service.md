@@ -49,7 +49,7 @@ In some cases an App may need to set the page to 404 - so that google doesn't in
 
 * `SetHttpStatus(statusCode, optionalmessage)` - see [docs](xref:ToSic.Sxc.Web.IPageService.SetHttpStatus*)
 
-Note: ATM this is Dnn ☢ only, as Oqtane doesn't render each page at a time - so a status code wouldn't work there (yet).
+Note: ATM this is Dnn ☢️ only, as Oqtane doesn't render each page at a time - so a status code wouldn't work there (yet).
 
 ## Add Icons and Icon-Sets like FavIcon
 

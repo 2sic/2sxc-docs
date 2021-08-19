@@ -2,7 +2,7 @@
 uid: Basics.Cms.Search.Index
 ---
 
-# Customize the Search-Index Results (Dnn ☢ only)
+# Customize the Search-Index Results (Dnn ☢️ only)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .prepare-all { visibility: visible; } </style>

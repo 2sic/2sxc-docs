@@ -2,7 +2,7 @@
 uid: NetCode.Razor.Hybrid.Index
 ---
 
-# Hybrid Razor running on Dnn ☢ and Oqtane 🩸 
+# Hybrid Razor running on Dnn ☢️ and Oqtane 🩸 
 
 Dnn and Oqtane have a few differences because of these important factors:
 
@@ -65,7 +65,7 @@ Here's an example:
     Version: @Oqtane.Shared.Constants.Version
   </p>
 @{#else}
-  <h3>NON .net Core code = Dnn ☢</h3>
+  <h3>NON .net Core code = Dnn ☢️</h3>
   <p>
     On Dnn you'll see this because <code>#if NETCOREAPP</code> was <code>false</code>. <br>
 

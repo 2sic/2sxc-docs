@@ -38,9 +38,9 @@ The following folders have no technical relevance, but we recommend this naming 
 1. `dist` should contain your processed, minified, uglified and combined JS files  
     _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the dist folder is usually in a sub-folder, like `live\dist`_
 
-## Platform Differences Dnn ☢ & Oqtane 🩸
+## Platform Differences Dnn ☢️ & Oqtane 🩸
 
-In Dnn ☢ the App-folder is located in 
+In Dnn ☢️ the App-folder is located in 
 
 `[Website-Root]\Portals\[site-id]\2sxc\[App-Folder-Name]`
 

@@ -2,12 +2,12 @@
 uid: Basics.LookUp.Cms
 ---
 
-# Cms LookUps for Dnn ☢ and Oqtane 🩸
+# Cms LookUps for Dnn ☢️ and Oqtane 🩸
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
-The following lookups are new in v12 and work across platforms for both Dnn ☢ and Oqtane 🩸:
+The following lookups are new in v12 and work across platforms for both Dnn ☢️ and Oqtane 🩸:
 
 <!-- ## `Tenant` Tokens
 
@@ -16,14 +16,14 @@ The following lookups are new in v12 and work across platforms for both Dnn ☢ 
 | `[Tenant:Id]` | ✅ | ✅ | 
 | `[Tenant:Guid]` | - | - | future feature | - -->
 
-## `Site` Tokens (new in v12 ☢🩸)
+## `Site` Tokens (new in v12 ☢️🩸)
 
 | Token | Dnn | Oqtane | Description | Result
 | --- | :-: | :-: | --- | ---
 | `[Site:Id]` | ✅ | ✅ | 
 | `[Site:Guid]` | ? | ✅ | 
 
-## `Page` Tokens (new in v12 ☢🩸)
+## `Page` Tokens (new in v12 ☢️🩸)
 
 | Token | Dnn | Oqtane | Description | Result
 | --- | :-: | :-: | --- | ---

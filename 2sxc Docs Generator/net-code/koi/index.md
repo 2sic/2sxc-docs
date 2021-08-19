@@ -32,7 +32,7 @@ The following example will automatically include Bootstrap4 from a CDN if the th
 ```
 
 
-## Old Example (will only work in Dnn ☢)
+## Old Example (will only work in Dnn ☢️)
 
 The following example will automatically include Bootstrap4 from a CDN if the theme doesn't already include it.
 
