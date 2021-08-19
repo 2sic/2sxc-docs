@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Settings Stack in 2sxc WIP &#9888; | 2sxc and EAV 10 </title>
+    <title>Settings Stack in 2sxc | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Settings Stack in 2sxc WIP &#9888; | 2sxc and EAV 10 ">
+    <meta name="title" content="Settings Stack in 2sxc | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/logos/v11/favicon.ico">
@@ -112,7 +112,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Basics.Configuration.SettingsStack">
-<h1 id="settings-stack-in-2sxc-wip-">Settings Stack in 2sxc WIP ⚠</h1>
+<h1 id="settings-stack-in-2sxc">Settings Stack in 2sxc</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,23 +235,29 @@
   </div>
 </div><style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-
-<p>The Settings are stacked in the following priority</p>
+<p>Settings come in 2 distinct flavors:</p>
+<ul>
+<li><strong>Standardized Settings</strong> marked with 📋 are edited in a content-type called <code>SystemSettings</code> with a predefined structure.<br>These settings are meant to be used across tools and apps.</li>
+<li><strong>Dynamic Settings</strong> marked with 💪 use content-types which you define.<br>These settings can have any keys and values you want.<br>These will usually only affect a single App or a single Installation.<br>The code using these will usually come from you, as these settings are not standardized. </li>
+</ul>
+<p>Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. </p>
+<p>In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured. 
+To make this possible, settings are treated as a stack. The most-relevant setting is top-most setting and is the one which will be used.</p>
+<p>The Settings are stacked in the following priority:</p>
 <ol>
-<li><code>View</code> - settings configured in the View</li>
-<li><code>App</code> - the standard <code>AppSettings</code> of an App</li>
-<li><code>AppSystem</code> - The SystemSettings in the current App</li>
-<li><code>Site</code> - an optional, manually created <code>Settings</code> on the <strong>default Content App</strong> of the current site</li>
-<li><code>SiteSystem</code> - an optional <code>SystemSettings</code> in the <strong>default Content App</strong> of the current site, where the scope is set to Site</li>
-<li><code>Global</code> - an optional, manually created <code>Settings</code> on the <strong>default System App</strong></li>
-<li><code>GlobalSystem</code> - an optional <code>SystemSettings</code> on the <strong>default System App</strong>
-<!-- 1. `Preset` - todo --></li>
-<li><code>PresetSystem</code> - the <code>SystemSettings</code> which are included in the installation of 2sxc</li>
+<li>💪 <strong>View</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html">View</a> </li>
+<li>💪 <strong>App</strong> - the dynamic <code>AppSettings</code> (see <a class="xref" href="../app/settings.html">AppSettings</a>) of an <a class="xref" href="../app/index.html">App</a> </li>
+<li>📋 <strong>AppSystem</strong> - The <code>SystemSettings</code> in the current <a class="xref" href="../app/index.html">App</a> </li>
+<li>💪 <strong>Site</strong> - an optional, manually created dynamic <code>Settings</code> on the <strong>default Content App</strong> of the current site</li>
+<li>📋 <strong>SiteSystem</strong> - an optional <code>SystemSettings</code> in the <strong>default Content App</strong> of the current site, where the scope is set to Site</li>
+<li>💪 <strong>Global</strong> - an optional, manually created dynamic <code>Settings</code> on the <strong>default System App</strong></li>
+<li>📋 <strong>GlobalSystem</strong> - an optional <code>SystemSettings</code> on the <strong>default System App</strong></li>
+<li>📋 <strong>PresetSystem</strong> - the <code>SystemSettings</code> which are included in the installation of 2sxc</li>
 </ol>
+<p><em>Note that there is no setting called <strong>ViewSystem</strong> or <strong>Preset</strong> (without ...System) as these would make no sense.</em></p>
 <p>Next we&#39;ll explain where you can configure settings for different effects / scopes.</p>
 <h2 id="global-settings-which-affect-all-sites">Global Settings which Affect All Sites</h2>
 <p>Global Settings for all sites are configured in the default System App. It&#39;s usually on Zone <code>1</code> and App <code>1</code>.</p>
-<p>todo: explain how to get there</p>
 <h4 id="global-system-settings">Global System Settings</h4>
 <p>To globally override system settings which are predefined by 2sxc:</p>
 <ol>
@@ -311,7 +317,7 @@
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Full Settings Stack introduced in 2sxc 12.03</li>
+<li>Full Settings Stack introduced in 2sxc 12.03 / 12.04</li>
 </ul>
 </article>
           </div>

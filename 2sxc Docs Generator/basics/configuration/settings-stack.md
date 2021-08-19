@@ -2,23 +2,37 @@
 uid: Basics.Configuration.SettingsStack
 ---
 
-# Settings Stack in 2sxc WIP ⚠
+# Settings Stack in 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
+Settings come in 2 distinct flavors:
 
-The Settings are stacked in the following priority
+* **Standardized Settings** marked with 📋 are edited in a content-type called `SystemSettings` with a predefined structure.  
+  These settings are meant to be used across tools and apps.
+* **Dynamic Settings** marked with 💪 use content-types which you define.  
+  These settings can have any keys and values you want.  
+  These will usually only affect a single App or a single Installation.  
+  The code using these will usually come from you, as these settings are not standardized. 
 
-1. `View` - settings configured in the View
-1. `App` - the standard `AppSettings` of an App
-1. `AppSystem` - The SystemSettings in the current App
-1. `Site` - an optional, manually created `Settings` on the **default Content App** of the current site
-1. `SiteSystem` - an optional `SystemSettings` in the **default Content App** of the current site, where the scope is set to Site
-1. `Global` - an optional, manually created `Settings` on the **default System App**
-1. `GlobalSystem` - an optional `SystemSettings` on the **default System App**
-<!-- 1. `Preset` - todo -->
-1. `PresetSystem` - the `SystemSettings` which are included in the installation of 2sxc
+Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. 
+
+In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured. 
+To make this possible, settings are treated as a stack. The most-relevant setting is top-most setting and is the one which will be used.
+
+The Settings are stacked in the following priority:
+
+1. 💪 **View** - dynamic settings configured in the [View](xref:Basics.App.Views.Index) 
+1. 💪 **App** - the dynamic `AppSettings` (see [AppSettings](xref:Basics.App.Settings)) of an [App](xref:Basics.App.Index) 
+1. 📋 **AppSystem** - The `SystemSettings` in the current [App](xref:Basics.App.Index) 
+1. 💪 **Site** - an optional, manually created dynamic `Settings` on the **default Content App** of the current site
+1. 📋 **SiteSystem** - an optional `SystemSettings` in the **default Content App** of the current site, where the scope is set to Site
+1. 💪 **Global** - an optional, manually created dynamic `Settings` on the **default System App**
+1. 📋 **GlobalSystem** - an optional `SystemSettings` on the **default System App**
+1. 📋 **PresetSystem** - the `SystemSettings` which are included in the installation of 2sxc
+
+_Note that there is no setting called **ViewSystem** or **Preset** (without ...System) as these would make no sense._
 
 
 Next we'll explain where you can configure settings for different effects / scopes.
@@ -26,8 +40,6 @@ Next we'll explain where you can configure settings for different effects / scop
 ## Global Settings which Affect All Sites
 
 Global Settings for all sites are configured in the default System App. It's usually on Zone `1` and App `1`.
-
-todo: explain how to get there
 
 #### Global System Settings
 
@@ -111,4 +123,4 @@ Just create a custom content-type in the **Configuration** scope and use it in t
 
 ## History
 
-* Full Settings Stack introduced in 2sxc 12.03
+* Full Settings Stack introduced in 2sxc 12.03 / 12.04

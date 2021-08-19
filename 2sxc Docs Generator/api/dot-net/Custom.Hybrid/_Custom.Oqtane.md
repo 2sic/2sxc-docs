@@ -12,10 +12,6 @@ This contains all the base classes for your own solutions, which are targeted to
 
 All the base classes in this have a version number, so it will become easier to document differences between versions and also to give guidance how to upgrade in case of future breaking changes or security issues. 
 
-## This is WIP for 2sxc 12
-
-This section is still work in progress and should be released in 2sxc 12
-
 ## Note: Not everything documented
 
 Because of technical issues we cannot auto-generate the docs for all the classes here, sorry. 
