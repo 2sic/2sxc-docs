@@ -4,5 +4,5 @@
     The common Dnn object providing page, module, user information
 1. [Edit](xref:NetCode.Razor.Edit)  
     Helper providing you with various edit-functionality like `Toolbar(...)`
-1. [Link](xref:NetCode.DynamicCode.Link)  
+1. [Link](xref:NetCode.DynamicCode.Objects.Link)  
     Helper to generate links, according to the Dnn-environment configuration

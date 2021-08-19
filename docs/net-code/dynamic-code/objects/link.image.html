@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Settings /  Object Dynamic Code | 2sxc and EAV 10 </title>
+    <title>Link.Image(...) /  Method in Dynamic Code &#127381; | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Settings /  Object Dynamic Code | 2sxc and EAV 10 ">
+    <meta name="title" content="Link.Image(...) /  Method in Dynamic Code &#127381; | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,79 +111,68 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Settings">
-<h1 id="settings--settings-object-dynamic-code">Settings / @Settings Object Dynamic Code</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Link.Image">
+<h1 id="linkimage--linkimage-method-in-dynamic-code-">Link.Image(...) / @Link.Image Method in Dynamic Code 🆕</h1>
 
-<p>The <code>Settings</code> object consolidates settings for the current scenario. 
-It merges settings configured in the <em>View</em>, <em>App</em>, <em>Site</em>, <em>System</em> and <em>Presets</em>. 
-The top-most setting has preference. So if a view overrides a site-setting, the view-setting will be used. </p>
-<p>TODO: #TODOC - CREATE TUTORIALS FOR THIS</p>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+<p>Linking images - especially images which should be automatically resized - can be tricky. This is where <code>Link.Image(...)</code> helps. </p>
+<h2 id="simple-examples">Simple Examples</h2>
+<pre><code class="lang-html">&lt;!-- simple example --&gt;
+&lt;img src=&#39;@Link.Image(Content.MainPicture)&#39;&gt;
 
-  <h2> Discover More in the Razor Tutorials </h2>
+&lt;!-- simple example with resize --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700)&#39;&gt;
 
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
+&lt;!-- simple example with resize and custom quality --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700, quality: 75.2)&#39;&gt;
+</code></pre><h2 id="using-preconfigured-image-sizes">Using Preconfigured Image Sizes</h2>
+<p>The <code>Image</code> method can also use predefined image configuration. This uses the new <a class="xref" href="../../../basics/configuration/index.html">Settings System</a>.</p>
+<pre><code class="lang-html">&lt;!-- Resize an image to the default of content --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content)&#39;&gt;
 
-</div><div class="TIP"><h5>Tip</h5><p>Learn more about settings and what predefined settings exist in <a class="xref" href="../../../basics/configuration/index.html">these docs</a>.</p>
-<p>There you&#39;ll learn about predefined image sizes, google maps keys and more.</p>
+&lt;!-- Resize an image to the default of lightboxes --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Lightbox)&#39;&gt;
+
+&lt;!-- Resize an image to the default of screen / backgrounds --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Screen)&#39;&gt;
+
+&lt;!-- Resize an image to HALF the size of a default content --&gt;
+&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)&#39;&gt;
+</code></pre><div class="TIP"><h5>Tip</h5><p>This is very powerful and is the recommended way to resize images,
+because this way all images follow the same sizes / proportions in all your apps.</p>
 </div>
-<h2 id="example">Example</h2>
-<p>Let&#39;s assume you have these View-Settings</p>
-<ul>
-<li><strong>PrimaryColor</strong> would be <code>#FF0000</code></li>
-<li><strong>Columns</strong> would be <code>4</code></li>
-<li><strong>SomeApiKey</strong> would be <code>6n23cnhi502ceh</code></li>
-</ul>
-<p>An these App-Settings</p>
-<ul>
-<li><strong>PrimaryColor</strong> = <code>#CCCCCC</code></li>
-<li><strong>SecondaryColor</strong> = <code>#00AA00</code></li>
-</ul>
-<p>Then you could get these values from the <code>Settings</code> object</p>
-<ul>
-<li><code>@Settings.PrimaryColor</code> would be <code>#FF0000</code> - found it View</li>
-<li><code>@Settings.SecondaryColor</code> would be <code>#00AA00</code> - only exists in App</li>
-<li><code>@Settings.Columns</code> would be <code>4</code> - only exists in View</li>
-<li><code>@Settings.SomeApiKey</code> would be <code>6n23cnhi502ceh</code> - from App</li>
-<li><code>@Settings.DoesntExist</code> would be <code>null</code> as that data doesn&#39;t exist</li>
-<li><code>@Settings.Images.Content.Width</code> would be <code>1400</code> as it is a <a class="xref" href="../../../basics/configuration/system-settings.html">preset</a></li>
-</ul>
-<div class="TIP"><h5>Tip</h5><p>Remember that <a class="xref" href="settings.html">Settings</a> are meant for configuration 
-and <a class="xref" href="resources.html">Resources</a> should be used for multi-language output.
-You could do it differently, but that would be bad practice.</p>
-</div>
-<h2 id="how-it-works">How it Works</h2>
-<p>The <code>Settings</code> is a dynamic object. 
-Internally the Settings use the new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a> object to <em>stack</em> entities like sources on each other, and take the first best match. 
-As of now the two underlying sources used are:</p>
+<h2 id="parameters">Parameters</h2>
+<p>To promote long term API stability, we require most parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used. 
+This allows us to add further parameters later on, and the calls will still work.</p>
+<p>The first three parameters don&#39;t need naming, as they will be the most used. They are these in this order:</p>
 <ol>
-<li><strong>View</strong> with View-level settings (with dynamic/custom fields 💪)</li>
-<li><strong>App</strong> with App-level settings (both <em>dynamic</em> 💪  as well as <em>system settings</em> 📋)</li>
-<li><strong>Site</strong> with Site-level settings (dynamic 💪 &amp; system 📋)</li>
-<li><strong>Global</strong> with System-level settings (dynamic 💪 &amp; system 📋)</li>
-<li><strong>Preset</strong> with pre-defined settings from the installation (system 📋 only)</li>
+<li><code>url</code> - the only required parameter</li>
+<li><code>settings</code> - optional, would be an <a class="xref" href="../../../basics/configuration/system-settings.html">image-settings configuration</a></li>
+<li><code>factor</code> - optional multiplier - eg. 0.5 to be half the size of the preset configuration</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/settings-stack.html">Settings Stack in 2sxc</a></p>
-</div>
-<p>The order of the sources is important, as the first match will be returned. 
-The View has priority over the App. 
-This setup allows Views to override App-Defaults.</p>
-<h2 id="accessing-settings-from-one-source">Accessing Settings from One Source</h2>
-<p>In rare cases you may want to access settings from a specific source - maybe to detect if it has been changed or because your template explicitly wants the App settings. 
-For this you can use the <code>GetSource(name)</code> method like this:</p>
+<p>All other parameters need to be named:</p>
 <ul>
-<li><code>@Settings.PrimaryColor</code> would return <code>#FF0000</code></li>
-<li><code>@Settings.GetSource(&quot;View&quot;).PrimaryColor</code> would return <code>#FF0000</code></li>
-<li><code>@Settings.GetSource(&quot;App&quot;).PrimaryColor</code> would return <code>#CCCCCC</code></li>
+<li><code>width</code> width in pixels</li>
+<li><code>height</code> height in pixels</li>
+<li><code>quality</code> a quality factor between 1 and 100; eg. jpgs usually have 50 - 80</li>
+<li><code>resizeMode</code> which can be <code>max</code>, <code>crop</code>, <code>pad</code> etc.</li>
+<li><code>scaleMode</code> which can be <code>up</code>, <code>down</code> (default) or <code>both</code></li>
+<li><code>format</code> which can be <code>jpg</code>, <code>png</code>, <code>gif</code></li>
+<li><code>aspectRatio</code> </li>
 </ul>
-<div class="TIP"><h5>Tip</h5><h2 id="you-can-get-the-full-list-of-sources-and-their-names-herexrefbasicsconfigurationsettingsstack">You can get the full list of sources and their names <a class="xref" href="../../../basics/configuration/settings-stack.html">here</a></h2>
-</div>
+<p>So this will work:</p>
+<pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, Settings.Images.Content, 0.5)
+@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)
+@Link.Image(&quot;test.jpg&quot;, width: 200)
+</code></pre><p>...and this won&#39;t:</p>
+<pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, 200)
+</code></pre><h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li>TODO - </li>
+</ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Previously you could use App.Settings since ca. 2sxc 6</li>
-<li>Settings object Introduced in 2sxc 12.02 to consolidate View and App Settings</li>
-<li>Settings object was expanden in 12.03/12.04 to also cover global, portal and site level settings - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
+<li>Introduced in 2sxc 12.04</li>
 </ol>
 </article>
           </div>
@@ -193,7 +182,7 @@ For this you can use the <code>GetSource(name)</code> method like this:</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/settings.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/link.image.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

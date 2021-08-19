@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Settings /  Object Dynamic Code | 2sxc and EAV 10 </title>
+    <title>Link /  Object in Dynamic Code | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Settings /  Object Dynamic Code | 2sxc and EAV 10 ">
+    <meta name="title" content="Link /  Object in Dynamic Code | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,13 +111,11 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Settings">
-<h1 id="settings--settings-object-dynamic-code">Settings / @Settings Object Dynamic Code</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Link.Api">
+<h1 id="link--link-object-in-dynamic-code">Link / @Link Object in Dynamic Code</h1>
 
-<p>The <code>Settings</code> object consolidates settings for the current scenario. 
-It merges settings configured in the <em>View</em>, <em>App</em>, <em>Site</em>, <em>System</em> and <em>Presets</em>. 
-The top-most setting has preference. So if a view overrides a site-setting, the view-setting will be used. </p>
-<p>TODO: #TODOC - CREATE TUTORIALS FOR THIS</p>
+<p>Basically you can always link around to other pages, websites or views using normal <code>&lt;a href=&quot;...&quot;&gt;text&lt;/a&gt;</code> html. And often you just want to add some parameters to the current Url like <code>?id=27</code> - but the behavior of this can be very different depending on the Dnn settings. The <code>Link</code> object helps you handle this. </p>
+<p><em>Note:</em> Dnn often has a problem with links, because depending on what page you are on, the bbehavior is a bit different. This is especially important on the home page. Use <code>@Link.To(...)</code> to make sure everything works no matter what. </p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -125,65 +123,55 @@ The top-most setting has preference. So if a view overrides a site-setting, the 
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><div class="TIP"><h5>Tip</h5><p>Learn more about settings and what predefined settings exist in <a class="xref" href="../../../basics/configuration/index.html">these docs</a>.</p>
-<p>There you&#39;ll learn about predefined image sizes, google maps keys and more.</p>
-</div>
-<h2 id="example">Example</h2>
-<p>Let&#39;s assume you have these View-Settings</p>
+</div><h2 id="how-to-use">How to use</h2>
+<p>Here&#39;s a quick example of using the <code>Link</code> object in a Razor template: </p>
+<pre><code class="lang-razor">&lt;a href=&quot;@Link.To(parameters: &quot;id=&quot; + item.EntityId)&quot;&gt;
+    @item.Title 
+&lt;/a&gt;
+</code></pre><p>This example creates a link to the current page, adding <em>either</em> <code>?id=27</code> <em>or</em> <code>/id/27</code>, depending on the Dnn configuration. </p>
+<h2 id="how-it-works">How it works</h2>
+<p>The <code>Link</code>-object is always available in all Razor-templates. Internally it uses the Dnn API to get the correct url. </p>
+<h2 id="using-linkto">Using @Link.To()</h2>
+<p>Example:</p>
+<pre><code class="lang-Razor">@Link.To(parameters: &quot;id=17&quot;)
+@Link.To(parameters: &quot;id=403&amp;category=all&quot;)
+</code></pre><p>TODO: Link.Api(...)</p>
+<h2 id="linking-to-a-target-element-with-an-assigned-id">Linking to a target element with an assigned <code>id</code></h2>
+<p>For reference, see <a href="https://www.w3schools.com/html/html_links_bookmarks.asp">HTML Link Bookmarks</a></p>
+<p>Example:</p>
+<p>Let&#39;s assume you&#39;ve build a target like this</p>
+<pre><code class="lang-Razor">    &lt;div id=&quot;@(&quot;person-&quot; + person.EntityId)&quot;&gt;
+        ...
+    &lt;/div&gt;
+</code></pre><p>Then to link straight there in the same page</p>
+<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
+</code></pre><p>Or on another page</p>
+<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(pageId: 40, parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
+</code></pre><h2 id="using-linkbase-for-javascript-spa-modules">Using @Link.Base() for JavaScript SPA modules</h2>
+<p>This is new in 2sxc v9.5.1. It ensures that the url can be used for SPAs, as some pages will otherwise provide a wrong link (like home) which then breaks the SPA.</p>
+<pre><code class="lang-razor">&lt;base href=&quot;@Link.Base()&quot;&gt;
+</code></pre><h2 id="notes-and-clarifications">Notes and Clarifications</h2>
+<p>The Link-Object is of type <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.ILinkHelper.html">ILinkHelper</a>.</p>
+<h3 id="enforced-parameter-naming">Enforced Parameter Naming</h3>
+<p>To promote long term API stability, we require all parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used. This allows us to add further parameters later on, and the calls will still work.</p>
+<pre><code class="lang-razor">&lt;!-- this will work --&gt;
+@Link.To(parameters: &quot;id=17&quot;)
+@Link.To(parameters: &quot;id=403&amp;category=all&quot;)
+
+&lt;!-- new in 2sxc 9.5.1 --&gt;
+@Link.To(pageId: 40, parameters: &quot;id=403&amp;category=all&quot;)
+
+&lt;!-- this won&#39;t work --&gt;
+@Link.To(&quot;id=17&quot;)
+</code></pre><h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
 <ul>
-<li><strong>PrimaryColor</strong> would be <code>#FF0000</code></li>
-<li><strong>Columns</strong> would be <code>4</code></li>
-<li><strong>SomeApiKey</strong> would be <code>6n23cnhi502ceh</code></li>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
 </ul>
-<p>An these App-Settings</p>
-<ul>
-<li><strong>PrimaryColor</strong> = <code>#CCCCCC</code></li>
-<li><strong>SecondaryColor</strong> = <code>#00AA00</code></li>
-</ul>
-<p>Then you could get these values from the <code>Settings</code> object</p>
-<ul>
-<li><code>@Settings.PrimaryColor</code> would be <code>#FF0000</code> - found it View</li>
-<li><code>@Settings.SecondaryColor</code> would be <code>#00AA00</code> - only exists in App</li>
-<li><code>@Settings.Columns</code> would be <code>4</code> - only exists in View</li>
-<li><code>@Settings.SomeApiKey</code> would be <code>6n23cnhi502ceh</code> - from App</li>
-<li><code>@Settings.DoesntExist</code> would be <code>null</code> as that data doesn&#39;t exist</li>
-<li><code>@Settings.Images.Content.Width</code> would be <code>1400</code> as it is a <a class="xref" href="../../../basics/configuration/system-settings.html">preset</a></li>
-</ul>
-<div class="TIP"><h5>Tip</h5><p>Remember that <a class="xref" href="settings.html">Settings</a> are meant for configuration 
-and <a class="xref" href="resources.html">Resources</a> should be used for multi-language output.
-You could do it differently, but that would be bad practice.</p>
-</div>
-<h2 id="how-it-works">How it Works</h2>
-<p>The <code>Settings</code> is a dynamic object. 
-Internally the Settings use the new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a> object to <em>stack</em> entities like sources on each other, and take the first best match. 
-As of now the two underlying sources used are:</p>
-<ol>
-<li><strong>View</strong> with View-level settings (with dynamic/custom fields 💪)</li>
-<li><strong>App</strong> with App-level settings (both <em>dynamic</em> 💪  as well as <em>system settings</em> 📋)</li>
-<li><strong>Site</strong> with Site-level settings (dynamic 💪 &amp; system 📋)</li>
-<li><strong>Global</strong> with System-level settings (dynamic 💪 &amp; system 📋)</li>
-<li><strong>Preset</strong> with pre-defined settings from the installation (system 📋 only)</li>
-</ol>
-<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/settings-stack.html">Settings Stack in 2sxc</a></p>
-</div>
-<p>The order of the sources is important, as the first match will be returned. 
-The View has priority over the App. 
-This setup allows Views to override App-Defaults.</p>
-<h2 id="accessing-settings-from-one-source">Accessing Settings from One Source</h2>
-<p>In rare cases you may want to access settings from a specific source - maybe to detect if it has been changed or because your template explicitly wants the App settings. 
-For this you can use the <code>GetSource(name)</code> method like this:</p>
-<ul>
-<li><code>@Settings.PrimaryColor</code> would return <code>#FF0000</code></li>
-<li><code>@Settings.GetSource(&quot;View&quot;).PrimaryColor</code> would return <code>#FF0000</code></li>
-<li><code>@Settings.GetSource(&quot;App&quot;).PrimaryColor</code> would return <code>#CCCCCC</code></li>
-</ul>
-<div class="TIP"><h5>Tip</h5><h2 id="you-can-get-the-full-list-of-sources-and-their-names-herexrefbasicsconfigurationsettingsstack">You can get the full list of sources and their names <a class="xref" href="../../../basics/configuration/settings-stack.html">here</a></h2>
-</div>
 <h2 id="history">History</h2>
 <ol>
-<li>Previously you could use App.Settings since ca. 2sxc 6</li>
-<li>Settings object Introduced in 2sxc 12.02 to consolidate View and App Settings</li>
-<li>Settings object was expanden in 12.03/12.04 to also cover global, portal and site level settings - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
+<li>Introduced in 2sxc 8.4</li>
+<li>Enhanced in 2sxc 9.5.1 with Base() and with parameter pageId on Link.To</li>
 </ol>
 </article>
           </div>
@@ -193,7 +181,7 @@ For this you can use the <code>GetSource(name)</code> method like this:</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/settings.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dynamic-code/objects/link.api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
