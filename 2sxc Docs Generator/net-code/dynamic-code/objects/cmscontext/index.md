@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.CmsContext
 ---
 
-# CmsContext in Dynamic Code
+# CmsContext in Dynamic Code ✨ new!
 
 To enable Hybrid Razor which works on Dnn and Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously doesn't on Oqtane and other platforms. 
 

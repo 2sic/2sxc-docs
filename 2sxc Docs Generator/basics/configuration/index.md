@@ -2,7 +2,7 @@
 uid: Basics.Configuration.Index
 ---
 
-# Configuration, Settings and Resources in 2sxc
+# Configuration, Settings and Resources in 2sxc ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>

@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Objects.Link.Image
 ---
 
-# Link.Image(...) / @Link.Image Method in Dynamic Code 🆕
+# Link.Image(...) / @Link.Image Method in Dynamic Code ✨ new!
 
 Linking images - especially images which should be automatically resized - can be tricky. This is where `Link.Image(...)` helps. 
 

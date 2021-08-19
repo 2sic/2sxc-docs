@@ -2,7 +2,7 @@
 uid: Basics.Configuration.SystemSettings
 ---
 
-# System Settings in 2sxc WIP ⚠
+# System Settings in 2sxc ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>

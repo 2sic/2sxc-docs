@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Objects.Settings
 ---
 
-# Settings / @Settings Object Dynamic Code
+# Settings in Dynamic Code ✨ new!
 
 The `Settings` object consolidates settings for the current scenario. 
 It merges settings configured in the _View_, _App_, _Site_, _System_ and _Presets_. 

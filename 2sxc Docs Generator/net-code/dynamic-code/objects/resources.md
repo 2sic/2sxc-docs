@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Objects.Resources
 ---
 
-# Resources / @Resources Object Dynamic Code
+# Resources in Dynamic Code ✨ new!
 
 The `Resources` object consolidates resources for the current scenario. It merges resources configured in the View and App and gives View-Resources the preference. 
 

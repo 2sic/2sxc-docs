@@ -74,7 +74,7 @@ Or on another page
     <a href="@Link.To(pageId: 40, parameters: "#person-" + person.EntityId)">
 ```
 
-## Linking to APIs 🆕
+## Linking to APIs ✨ new!
 
 This was introduced in 2sxc 12.02, since APIs are becoming more important. Here's an example from the Blog 5:
 
