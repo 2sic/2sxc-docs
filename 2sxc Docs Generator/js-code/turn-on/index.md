@@ -23,6 +23,16 @@ $(start);
 > [!TIP]
 > **turnOn** is also building an architecture which will reliably work even with very [strict CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) enforced - which we believe will be essential in future. 
 
+## Activate turnOn
+
+To use turnOn you must must tell the page that you need it. Here's how:
+
+```c#
+var page = GetService<ToSic.Sxc.Web.IPageService>();
+page.Activate("turnOn");
+```
+
+👉 Read more about the [IPageService](xref:NetCode.Razor.Services.IPageService)
 
 ## The turnOn Solution
 
