@@ -7,11 +7,16 @@ uid: NetCode.DynamicData.DataOrigins
 
 # Where Data Comes From
 
-From a developer perspective you have three kinds of Data
+From a developer perspective you have three kinds of Data:
 
 1. **[App Data](#app-data)**
 1. **[Instance Data](#instance-data)**
 1. **[Code Retrieved Data](#code-retrieved-data)**
+
+In addition you have Settings and Resources: 
+
+1. **[Configuration & Settings](#configuration-and-settings)**
+1. **[Resources](#resources)**
 
 ## App Data
 
@@ -40,6 +45,29 @@ Your code can also retrieve data using normal C# code to do things like
 1. Manually parse CSV files or access external Web Services
 1. Use [DataSources](xref:NetCode.DataSources.Index) to get SQL, CSV or other data
 
+## Configuration and Settings
+
+**Configuration** is usually found on specific objects which are configured. 
+There are three types:
+
+1. View Configuration
+1. App Configuration
+1. Feature activations
+
+**Settings** usually affect templates / Razor or C# WebAPIs. 
+They are usually configured at various levels like on the View, App, Site or Global. 
+
+C# code will usually get these settings from the `Settings` object which consolidates all the settings. 
+
+👉 See [Settings](xref:NetCode.DynamicCode.Objects.Settings)
+
+## Resources
+
+**Resources** are meant to provide translated labels, logos etc. 
+You can configure them at View, App, Site or Global level. 
+
+👉 See [Resources](xref:NetCode.DynamicCode.Objects.Resources)
+
 ---
 
 
@@ -48,3 +76,4 @@ Your code can also retrieve data using normal C# code to do things like
 1. Introduced in 2sxc v1
 1. App.Data added ca. 2sxc 6
 1. App.Query added ca. 2sxc 7
+1. Settings and Resources added in 2sxc 12
