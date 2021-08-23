@@ -37,29 +37,41 @@ In addition some minor global Configuration exists for alternate Caching systems
 
 ### Global Settings
 
-As of now (v12) there are no Global Settings yet. We're still developing a concept to make this possible. 
-If you want to create Apps which have shared, global settings you will need to solve this yourself. Examples for solutions are placing them in `web.config` or in custom shared DLLs.
+<img src="./assets/apps-management-goto-global-settings.jpg" class="right-thumbnail">
 
-Note that there is a minor exception: There are some global ADAM Settings that can be configured, but it's not standardized/finalized yet, so not public.
+Global settings were introduced in 2sxc 12.03. You can configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
+Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
+
+In C#/Razor you can access these Settings with the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
+
+
+Note that there are some global ADAM Settings that can be configured in a different way, but it's not standardized/finalized yet, so not public, and we'll try to move that into the new standard. 
 
 ### Global Resources
 
+TODO: 
 There are now global resources. 
 
 ---
 
 ## Site Level (Portal) 
 
-#### Site Configuration
+### Site Configuration
 
 Only [Languages](xref:Basics.Cms.Languages.Index) are configured at Site-Level. 
 
-#### Site Settings
+### Site Settings
 
-As of now (v12) there are no site-level settings. We're still developing a concept to make this possible.
+<img src="./assets/apps-management-goto-site-settings.jpg" class="right-thumbnail">
+
+Site-Level Settings were introduced in 12.03. You can configure them in the _Default App_ (usuall the **Content** App). 
+Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
+
+In C#/Razor you can access these Settings with the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
 
 ### Site Resources
 
+TODO:
 There are no site resources. 
 
 ---
@@ -72,25 +84,20 @@ Apps have a standard [App-Configuration](xref:Basics.App.Configuration) containi
 
 In Razor you can access this on the dynamic `App.Configuration` object.
 
-_App Configuration was introduced in 2sxc 6.0_
-
 ### App Settings
 
 Apps can have custom [App-Settings](xref:Basics.App.Settings) which every app manages itself. 
 The names/types of these settings can be freely configured, as each App has a Content-Type called **AppSettings** which can have different fields as needed. 
 
-In Razor you can access this on the dynamic `App.Settings` object.
-
-_App Settings were introduced in 2sxc 6.0_
+In C#/Razor you can access this on the dynamic `App.Settings` object 
+or use the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
 
 ### App Resources
 
 Apps can have custom [App-Resources](xref:Basics.App.Resources) which every app manages itself. 
 The names/types of these settings can be freely configured, as each App has a Content-Type called **AppResources** which can have different fields as needed. 
 
-In Razor you can access this on the dynamic `App.Resources` object.
-
-_App Resources were introduced in 2sxc 6.0, availability in Razor as well._
+In C#/Razor you can access this on the dynamic `App.Resources` object or use the `Resources` object which consolidates all possible resources. 
 
 ---
 
@@ -109,18 +116,15 @@ _View Configuration was introduced ca. v4 and made accessible to Razor in v12.02
 A view can have Views-Settings which apply to all uses of this View. 
 Since View-Settings could be re-used in various views, the concept more open than _App Settings_, meaning that you could re-use both the content-type as well as the settings data. 
 
-In Razor you can access this on the dynamic `CmsContext.View.Settings` object.
-
-_New in 2sxc 12.02_
+In Razor you can access this on the dynamic `CmsContext.View.Settings` object 
+or use the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
 
 ### View Resources
 
 A view can have Views-Resources which apply to all uses of this View. 
 Since View-Resources could be re-used in various views, the concept more open than _App Resouces_, meaning that you could re-use both the content-type as well as the resources data. 
 
-In Razor you can access this on the dynamic `CmsContext.View.Resources` object.
-
-_New in 2sxc 12.02_
+In Razor you can access this on the dynamic `CmsContext.View.Resources` object or use the `Resources` object which consolidates all possible resources. 
 
 ---
 
@@ -129,12 +133,11 @@ _New in 2sxc 12.02_
 ### Content-Type Configuration
 
 Each Content-Type has [Content-Type Configuration](xref:Basics.Data.ContentTypes.Index) with the description, icon and more. 
-
-_Since ca. 2sxc 6.0_
+The Configuration can be multi-language.
 
 ### Content-Type Settings and Resources. 
 
-There are no Content-Type settings or resources, but the Configuration can be multi-language. 
+There are no Content-Type settings or resources.
 
 ---
 
@@ -143,10 +146,11 @@ There are no Content-Type settings or resources, but the Configuration can be mu
 ### Attribute Configuration
 
 Each [Attribute / Field can be configured](xref:Basics.Data.Fields.Index) as needed. The configuration options depend on the Attribute-Type. 
+The Configuration can be multi-language.
 
 ### Attribute Settings and Resources
 
-There are no Attribute Settings or Resources, but the Configuration can be multi-language. 
+There are no Attribute Settings or Resources.
 
 ---
 
@@ -154,7 +158,8 @@ There are no Attribute Settings or Resources, but the Configuration can be multi
 
 ### Entity Configuration, Resources and Settings
 
-An Entity just has the data it caries, and no additional intrinsic Configuration, Settings or Resources. Entities themselves are multi-language.
+An Entity just has the data it caries, and no additional intrinsic Configuration, Settings or Resources. 
+Entities themselves are multi-language.
 
 
 ### Per Entity-Use (Item-Use) Settings aka Presentation Settings
@@ -177,4 +182,5 @@ If a View is configured to be a List then it can also have a **Header** and also
 * View Configuration introduced ca. v4
 * App Configuration, Settings and Resources introduced in v6.0
 * View Settings and Resources introduced in v12.02
+* Site and global settings introduced in 2sxc 12.03
 * Full Settings Stack introduced in 2sxc 12.03 / 12.04
