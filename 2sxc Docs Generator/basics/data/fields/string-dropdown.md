@@ -10,7 +10,7 @@ Use this field type for configuring simple dropdown UI elements, storing [string
 1. provide values to select
 1. provide visible labels which are different from the stored value
 1. optionally allow users to type in something different
-1. choose between value-label and label-value ordering (2sxc 12.03)
+1. choose between value-label and label-value ordering (2sxc 12.04)
 1. allow the use of `:` in values (just escape as `\:`)
 
 ## Special Behavior

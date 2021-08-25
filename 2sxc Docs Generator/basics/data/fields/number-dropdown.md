@@ -38,4 +38,4 @@ If the user then clicks on the **I**-bar icon (**TT** in v11+), the input will c
 
 ## History
 
-1. Introduced in EAV / 2sxc 12.03
+1. Introduced in EAV / 2sxc 12.04

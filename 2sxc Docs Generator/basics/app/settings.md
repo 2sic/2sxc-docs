@@ -43,18 +43,22 @@ The [](xref:Basics.App.Settings) can contain any information you configure it to
 
 ## Use in C# Code (Razor / WebAPI)
 
-In 2sxc 12.02+ you _should use the new `Settings` object_ which stacks settings from different sources incl. the App Settings. 
-See [Settings Docs](xref:NetCode.DynamicCode.Objects.Settings).
+In 2sxc 12.04+ you should use the new `Settings` [Stack](xref:Basics.Configuration.SettingsStack) object which stacks settings from different sources incl. the App Settings. 
+See [Settings C# Docs](xref:NetCode.DynamicCode.Objects.Settings).
 
-In older version you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Settings.AnimationSpeed`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
+In previous version you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Settings.AnimationSpeed`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
-## Use in Tokens Templates
+## Use in Token Templates
 
 Tokens templates are much more limited, but you can access these values using `[App:Settings:...]` - for example `[App:Settings:AnimationSpeed]`
+
+_The new v12 Settings-Stack is not available in tokens. If you think you need it, please post an issue on github._
 
 ## Use in VisualQuery
 
 You can also access these properties in [VisualQuery](xref:Basics.Query.VisualQuery.Index), also using tokens like `[App:Settings:DefaultCategory]`
+
+_The new v12 Settings-Stack is not available in Visual Query. If you think you need it, please post an issue on github._
 
 ## Using Settings in Multi-Language Scenarios
 
@@ -70,3 +74,4 @@ Remember to use [](xref:Basics.App.Resources) for button-labels, titles etc. and
 
 1. Introduced in 2sxc 6.0
 1. Extendend [_The_ Content App](xref:Basics.App.ContentApp.Index) to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11
+1. Created the global [Settings](xref:Basics.Configuration.SettingsStack) in v12.04

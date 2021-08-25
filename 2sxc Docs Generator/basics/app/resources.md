@@ -29,15 +29,17 @@ Many templates may have special labels, intro-texts or buttons which would benef
 
 ## Use in C# Code (Razor / WebAPI)
 
-In 2sxc 12.02+ you _should use the new `Resources` object_ which stacks resources from different sources incl. the App Resources. 
-See [Resources Docs](xref:NetCode.DynamicCode.Objects.Resources).
+In 2sxc 12.04+ you should use the new `Resources` [Stack object](xref:Basics.Configuration.ResourcesStack) which merges resources from different sources incl. the App Resources. 
+See [Resources C# Docs](xref:NetCode.DynamicCode.Objects.Resources).
 
 
-In older version you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
+In previous version you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
-## Use in Tokens Templates
+## Use in Token Templates
 
-Tokens templates are much more limited, but you can access these values using `[App:Resources:...]` - for example `[App:Resources:Introduction]`
+Tokens templates are much more limited, but you can access these values using `[App:Resources:...]` - for example `[App:Resources:Introduction]`.
+
+_The new v12 Resources-Stack is not available in tokens. If you think you need it, please post an issue on github._
 
 ## Don't use in VisualQuery
 
@@ -53,3 +55,4 @@ Resources should only be used for labels, logos, introduction-texts and similar.
 
 1. Introduced in 2sxc 6.0
 1. Extendend [_The_ Content App](xref:Basics.App.ContentApp.Index) to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11
+1. Created the global [Resources](xref:Basics.Configuration.ResourcesStack) in v12.04

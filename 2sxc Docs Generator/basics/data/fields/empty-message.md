@@ -20,4 +20,4 @@ There is nothing to configure on this field which is special to empty-message. J
 
 ## History
 
-1. Introduced in 2sxc 12.03
+1. Introduced in 2sxc 12.04

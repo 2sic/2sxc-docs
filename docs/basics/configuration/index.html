@@ -248,62 +248,62 @@
 <p><strong>Resources</strong> on the other hand are simply meant for language/culture specific labels, logos and similar. 
 They are also dynamic, so they can have as many values as you need.</p>
 </div>
-<p>This is how it works as of now:</p>
 <h2 id="global-level">Global Level</h2>
 <h3 id="global-configuration">Global Configuration</h3>
 <p>As of now (v12) global Configuration only exists for <a class="xref" href="../cms/features/index.html">Features</a> which can be enabled/disabled at the system level. 
 This is primarily for security reasons. </p>
 <p>In addition some minor global Configuration exists for alternate Caching systems (like using Redis) but this is only for <a href="https://2sxc.org/en/web-farm-cache">2sxc Professional</a>.</p>
-<h3 id="global-settings">Global Settings</h3>
+<h3 id="global-settings-and-resources">Global Settings and Resources</h3>
 <p><img src="assets/apps-management-goto-global-settings.jpg" class="right-thumbnail"></p>
-<p>Global settings were introduced in 2sxc 12.03. You can configure them in the <em>Default App</em> of the <em>Default Zone</em> (usuall Zone 1 App 1). 
-Here you can configure both the standardized SystemSettings or create an own content-type called <code>Settings</code> for custom settings. </p>
-<p>In C#/Razor you can access these Settings with the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object which consolidates all possible settings</a>. </p>
-<p>Note that there are some global ADAM Settings that can be configured in a different way, but it&#39;s not standardized/finalized yet, so not public, and we&#39;ll try to move that into the new standard. </p>
-<h3 id="global-resources">Global Resources</h3>
-<p>TODO: 
-There are now global resources. </p>
+<p>Global Settings and Resources were introduced in 2sxc 12.04. 
+You can configure them in the <em>Default App</em> of the <em>Default Zone</em> (usuall Zone 1 App 1). 
+Here you can configure both the standardized <code>SystemSettings</code>/<code>SystemResources</code> or create an own content-type called <code>Settings</code>/<code>Resources</code> for custom values. </p>
+<p>In C#/Razor you can access them here:</p>
+<ul>
+<li><a class="xref" href="settings-stack.html">Settings Stack</a> using the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object</a>. </li>
+<li><a class="xref" href="resources-stack.html">Resources Stack</a> using the <code>Resources</code> <a class="xref" href="../../net-code/dynamic-code/objects/resources.html">object</a>. </li>
+</ul>
+<p>Note: <em>there are some global ADAM Settings that can be configured in a different way, but it&#39;s not standardized/finalized yet, so not public, and we&#39;ll try to move that into the new standard.</em> </p>
 <hr>
 <h2 id="site-level-portal">Site Level (Portal)</h2>
 <h3 id="site-configuration">Site Configuration</h3>
 <p>Only <a class="xref" href="../cms/languages/index.html">Languages</a> are configured at Site-Level. </p>
-<h3 id="site-settings">Site Settings</h3>
+<h3 id="site-settings-and-resources">Site Settings and Resources</h3>
 <p><img src="assets/apps-management-goto-site-settings.jpg" class="right-thumbnail"></p>
-<p>Site-Level Settings were introduced in 12.03. You can configure them in the <em>Default App</em> (usuall the <strong>Content</strong> App). 
+<p>Site-Level Settings / Resources were introduced in 12.04. You can configure them in the <em>Default App</em> (usuall the <strong>Content</strong> App). 
 Here you can configure both the standardized SystemSettings or create an own content-type called <code>Settings</code> for custom settings. </p>
-<p>In C#/Razor you can access these Settings with the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object which consolidates all possible settings</a>. </p>
-<h3 id="site-resources">Site Resources</h3>
-<p>TODO:
-There are no site resources. </p>
+<p>In C#/Razor you can access them here:</p>
+<ul>
+<li><a class="xref" href="settings-stack.html">Settings Stack</a> using the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object</a>. </li>
+<li><a class="xref" href="resources-stack.html">Resources Stack</a> using the <code>Resources</code> <a class="xref" href="../../net-code/dynamic-code/objects/resources.html">object</a>. </li>
+</ul>
 <hr>
 <h2 id="app-level">App Level</h2>
 <h3 id="app-configuration">App Configuration</h3>
 <p>Apps have a standard <a class="xref" href="../app/configuration.html">App-Configuration</a> containing their version, name, folder etc. </p>
 <p>In Razor you can access this on the dynamic <code>App.Configuration</code> object.</p>
 <h3 id="app-settings">App Settings</h3>
-<p>Apps can have custom <a class="xref" href="../app/settings.html">App-Settings</a> which every app manages itself. 
+<p>Apps can have custom <a class="xref" href="../app/settings.html">App-Settings</a> and <a class="xref" href="../app/resources.html">App-Resources</a> which every app manages itself. 
 The names/types of these settings can be freely configured, as each App has a Content-Type called <strong>AppSettings</strong> which can have different fields as needed. </p>
-<p>In C#/Razor you can access this on the dynamic <code>App.Settings</code> object 
-or use the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object which consolidates all possible settings</a>. </p>
-<h3 id="app-resources">App Resources</h3>
-<p>Apps can have custom <a class="xref" href="../app/resources.html">App-Resources</a> which every app manages itself. 
-The names/types of these settings can be freely configured, as each App has a Content-Type called <strong>AppResources</strong> which can have different fields as needed. </p>
-<p>In C#/Razor you can access this on the dynamic <code>App.Resources</code> object or use the <code>Resources</code> object which consolidates all possible resources. </p>
+<p>In C#/Razor you can access them here:</p>
+<ul>
+<li><a class="xref" href="settings-stack.html">Settings Stack</a> using the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object</a>. </li>
+<li><a class="xref" href="resources-stack.html">Resources Stack</a> using the <code>Resources</code> <a class="xref" href="../../net-code/dynamic-code/objects/resources.html">object</a>. </li>
+</ul>
 <hr>
 <h2 id="view-level">View Level</h2>
 <h3 id="view-configuration">View Configuration</h3>
 <p>Each view has <a class="xref" href="../app/views/index.html">View-Configuration</a> containing the name, how it works with data and more.</p>
 <p>In Razor you can access basic View information on the <code>CmsContext.View</code> object, or the entire configuration on the dynamic <code>CmsContext.View.Configuration</code> object.</p>
 <p><em>View Configuration was introduced ca. v4 and made accessible to Razor in v12.02</em></p>
-<h3 id="view-settings">View Settings</h3>
-<p>A view can have Views-Settings which apply to all uses of this View. 
-Since View-Settings could be re-used in various views, the concept more open than <em>App Settings</em>, meaning that you could re-use both the content-type as well as the settings data. </p>
-<p>In Razor you can access this on the dynamic <code>CmsContext.View.Settings</code> object 
-or use the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object which consolidates all possible settings</a>. </p>
-<h3 id="view-resources">View Resources</h3>
-<p>A view can have Views-Resources which apply to all uses of this View. 
-Since View-Resources could be re-used in various views, the concept more open than <em>App Resouces</em>, meaning that you could re-use both the content-type as well as the resources data. </p>
-<p>In Razor you can access this on the dynamic <code>CmsContext.View.Resources</code> object or use the <code>Resources</code> object which consolidates all possible resources. </p>
+<h3 id="view-settings-and-resources">View Settings and Resources</h3>
+<p>A view can have Views-Settings and View-Resouces which apply to all uses of this View. 
+Since View-Settings could be <em>re-used</em> in various views, the concept more flexible than <em>App Settings/Resources</em>, meaning that you could re-use both the content-type as well as the settings data. </p>
+<p>In C#/Razor you can access them here:</p>
+<ul>
+<li><a class="xref" href="settings-stack.html">Settings Stack</a> using the <code>Settings</code> <a class="xref" href="../../net-code/dynamic-code/objects/settings.html">object</a>. </li>
+<li><a class="xref" href="resources-stack.html">Resources Stack</a> using the <code>Resources</code> <a class="xref" href="../../net-code/dynamic-code/objects/resources.html">object</a>. </li>
+</ul>
 <hr>
 <h2 id="content-type-level">Content-Type Level</h2>
 <h3 id="content-type-configuration">Content-Type Configuration</h3>
@@ -335,8 +335,9 @@ Since each View may need different settings (a map View could need other present
 <li>View Configuration introduced ca. v4</li>
 <li>App Configuration, Settings and Resources introduced in v6.0</li>
 <li>View Settings and Resources introduced in v12.02</li>
-<li>Site and global settings introduced in 2sxc 12.03</li>
-<li>Full Settings Stack introduced in 2sxc 12.03 / 12.04</li>
+<li>Site and global settings introduced in 2sxc 12.04</li>
+<li>Full Settings Stack introduced in 2sxc 12.04</li>
+<li>Full Resources Stack introduced in 2sxc 12.04</li>
 </ul>
 </article>
           </div>

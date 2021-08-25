@@ -63,4 +63,4 @@ You should find some code examples in this demo App
 1. Introduced in 2sxc 8.4
 1. Enhanced in 2sxc 9.5.1 with Base() and with parameter `pageId` on Link.To
 1. Link.To was enhanced with `api` in v12.02
-1. Link.Image was created in v12.03/12.04
+1. Link.Image was created in v12.04

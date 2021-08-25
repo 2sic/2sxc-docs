@@ -117,7 +117,6 @@
 <p>The <code>Settings</code> object consolidates settings for the current scenario. 
 It merges settings configured in the <em>View</em>, <em>App</em>, <em>Site</em>, <em>System</em> and <em>Presets</em>. 
 The top-most setting has preference. So if a view overrides a site-setting, the view-setting will be used. </p>
-<p>TODO: #TODOC - CREATE TUTORIALS FOR THIS</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -147,7 +146,7 @@ The top-most setting has preference. So if a view overrides a site-setting, the 
 <li><code>@Settings.Columns</code> would be <code>4</code> - only exists in View</li>
 <li><code>@Settings.SomeApiKey</code> would be <code>6n23cnhi502ceh</code> - from App</li>
 <li><code>@Settings.DoesntExist</code> would be <code>null</code> as that data doesn&#39;t exist</li>
-<li><code>@Settings.Images.Content.Width</code> would be <code>1400</code> as it is a <a class="xref" href="../../../basics/configuration/system-settings.html">preset</a></li>
+<li><code>@Settings.Images.Content.Width</code> would be <code>1400</code> as it is a <a class="xref" href="../../../basics/configuration/settings-system.html">preset</a></li>
 </ul>
 <div class="TIP"><h5>Tip</h5><p>Remember that <a class="xref" href="settings.html">Settings</a> are meant for configuration 
 and <a class="xref" href="resources.html">Resources</a> should be used for multi-language output.
@@ -156,7 +155,7 @@ You could do it differently, but that would be bad practice.</p>
 <h2 id="how-it-works">How it Works</h2>
 <p>The <code>Settings</code> is a dynamic object. 
 Internally the Settings use the new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a> object to <em>stack</em> entities like sources on each other, and take the first best match. 
-As of now the two underlying sources used are:</p>
+The sources are: </p>
 <ol>
 <li><strong>View</strong> with View-level settings (with dynamic/custom fields 💪)</li>
 <li><strong>App</strong> with App-level settings (both <em>dynamic</em> 💪  as well as <em>system settings</em> 📋)</li>
@@ -164,7 +163,8 @@ As of now the two underlying sources used are:</p>
 <li><strong>Global</strong> with System-level settings (dynamic 💪 &amp; system 📋)</li>
 <li><strong>Preset</strong> with pre-defined settings from the installation (system 📋 only)</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/settings-stack.html">Settings Stack in 2sxc ✨ new!</a></p>
+<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/settings-stack.html">Settings Stack in 2sxc ✨ new!</a>.
+This also includes the full list of sources and their exact names. </p>
 </div>
 <p>The order of the sources is important, as the first match will be returned. 
 The View has priority over the App. 
@@ -177,13 +177,12 @@ For this you can use the <code>GetSource(name)</code> method like this:</p>
 <li><code>@Settings.GetSource(&quot;View&quot;).PrimaryColor</code> would return <code>#FF0000</code></li>
 <li><code>@Settings.GetSource(&quot;App&quot;).PrimaryColor</code> would return <code>#CCCCCC</code></li>
 </ul>
-<div class="TIP"><h5>Tip</h5><h2 id="you-can-get-the-full-list-of-sources-and-their-names-herexrefbasicsconfigurationsettingsstack">You can get the full list of sources and their names <a class="xref" href="../../../basics/configuration/settings-stack.html">here</a></h2>
-</div>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Previously you could use App.Settings since ca. 2sxc 6</li>
-<li>Settings object Introduced in 2sxc 12.02 to consolidate View and App Settings</li>
-<li>Settings object was expanden in 12.03/12.04 to also cover global, portal and site level settings - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
+<li>You could use <code>App.Settings</code> since ca. 2sxc 6</li>
+<li><code>Settings</code> object Introduced in 2sxc 12.02 to consolidate View and App Settings</li>
+<li><code>Settings</code> object was expanded in 12.04 to also cover global, portal and site level settings - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
 </ol>
 </article>
           </div>

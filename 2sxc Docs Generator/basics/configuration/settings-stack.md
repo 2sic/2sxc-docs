@@ -126,4 +126,4 @@ Just create a custom content-type in the **Configuration** scope and use it in t
 
 ## History
 
-* Full Settings Stack introduced in 2sxc 12.03 / 12.04
+* Full Settings Stack introduced in 2sxc 12.04

@@ -228,11 +228,17 @@ You could do it differently, but that would be bad practice.</p>
 <h2 id="how-it-works">How it Works</h2>
 <p>The <code>Resources</code> is a dynamic object. 
 Internally the Settings use the new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a> object to <em>stack</em> entities like sources on each other, and take the first best match. 
-As of now the two underlying sources used are:</p>
+The sources are: </p>
 <ol>
-<li><strong>View</strong> which contains View resources if the view has any</li>
-<li><strong>App</strong> which contains App resources if the App has any</li>
+<li><strong>View</strong> with View-level resources (with dynamic/custom fields 💪)</li>
+<li><strong>App</strong> with App-level resources (both <em>dynamic</em> 💪  as well as <em>system settings</em> 📋)</li>
+<li><strong>Site</strong> with Site-level resources (dynamic 💪 &amp; system 📋)</li>
+<li><strong>Global</strong> with System-level resources (dynamic 💪 &amp; system 📋)</li>
+<li><strong>Preset</strong> with pre-defined resources from the installation (system 📋 only)</li>
 </ol>
+<div class="TIP"><h5>Tip</h5><p>Read more about this stack and what&#39;s in it here <a class="xref" href="../../../basics/configuration/resources-stack.html">Resources Stack in 2sxc ✨ new!</a>.
+This also includes the full list of sources and their exact names. </p>
+</div>
 <p>The order of the sources is important, as the first match will be returned. 
 The View has priority over the App. 
 This setup allows Views to override App-Defaults.</p>
@@ -247,11 +253,10 @@ For this you can use the <code>GetSource(name)</code> method like this:</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Previously you could use App.Resources since ca. 2sxc 6</li>
-<li>Resources object Introduced in 2sxc 12.02 to consolidate View and App Resources</li>
+<li>You could use <code>App.Resources</code> since ca. 2sxc 6</li>
+<li><code>Resources</code> object Introduced in 2sxc 12.02 to consolidate View and App Resources</li>
+<li><code>Resources</code> object was expanded in 12.04 to also cover global, portal and site level resources - see <a class="xref" href="../../../basics/configuration/index.html">settings docs</a></li>
 </ol>
-<h2 id="future">Future</h2>
-<p>We plan to introduce site-level, portal level and system-level settings, would would all be accessible in this object. </p>
 </article>
           </div>
           

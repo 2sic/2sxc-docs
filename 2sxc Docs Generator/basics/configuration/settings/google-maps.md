@@ -8,7 +8,7 @@ uid: Basics.Configuration.Settings.GoogleMaps
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
 > [!TIP]
-> This documentation is for 2sxc 12.03+. For older versions, [consult this checklist](https://azing.org/2sxc/r/ippFQYkz).
+> This documentation is for 2sxc 12.04+. For older versions, [consult this checklist](https://azing.org/2sxc/r/ippFQYkz).
 
 2sxc include centralized settings for Google Maps. 
 This ensures that people testing 2sxc can install/use apps which show maps.
@@ -42,4 +42,4 @@ This will feel very random, because all the maps generated on other sites are co
 
 ## History
 
-* Global Maps Settings introduced in v12.03
+* Global Maps Settings introduced in v12.04

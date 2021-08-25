@@ -24,8 +24,6 @@ In an ideal world, these settings can compound each other to determine defaults,
 > **Resources** on the other hand are simply meant for language/culture specific labels, logos and similar. 
 > They are also dynamic, so they can have as many values as you need.
 
-This is how it works as of now:
-
 ## Global Level
 
 ### Global Configuration
@@ -35,22 +33,20 @@ This is primarily for security reasons.
 
 In addition some minor global Configuration exists for alternate Caching systems (like using Redis) but this is only for [2sxc Professional](https://2sxc.org/en/web-farm-cache).
 
-### Global Settings
+### Global Settings and Resources
 
 <img src="./assets/apps-management-goto-global-settings.jpg" class="right-thumbnail">
 
-Global settings were introduced in 2sxc 12.03. You can configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
-Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
+Global Settings and Resources were introduced in 2sxc 12.04. 
+You can configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
+Here you can configure both the standardized `SystemSettings`/`SystemResources` or create an own content-type called `Settings`/`Resources` for custom values. 
 
-In C#/Razor you can access these Settings with the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
+In C#/Razor you can access them here:
 
+* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
+* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
 
-Note that there are some global ADAM Settings that can be configured in a different way, but it's not standardized/finalized yet, so not public, and we'll try to move that into the new standard. 
-
-### Global Resources
-
-TODO: 
-There are now global resources. 
+Note: _there are some global ADAM Settings that can be configured in a different way, but it's not standardized/finalized yet, so not public, and we'll try to move that into the new standard._ 
 
 ---
 
@@ -60,19 +56,17 @@ There are now global resources.
 
 Only [Languages](xref:Basics.Cms.Languages.Index) are configured at Site-Level. 
 
-### Site Settings
+### Site Settings and Resources
 
 <img src="./assets/apps-management-goto-site-settings.jpg" class="right-thumbnail">
 
-Site-Level Settings were introduced in 12.03. You can configure them in the _Default App_ (usuall the **Content** App). 
+Site-Level Settings / Resources were introduced in 12.04. You can configure them in the _Default App_ (usuall the **Content** App). 
 Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
 
-In C#/Razor you can access these Settings with the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
+In C#/Razor you can access them here:
 
-### Site Resources
-
-TODO:
-There are no site resources. 
+* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
+* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 
@@ -86,18 +80,13 @@ In Razor you can access this on the dynamic `App.Configuration` object.
 
 ### App Settings
 
-Apps can have custom [App-Settings](xref:Basics.App.Settings) which every app manages itself. 
+Apps can have custom [App-Settings](xref:Basics.App.Settings) and [App-Resources](xref:Basics.App.Resources) which every app manages itself. 
 The names/types of these settings can be freely configured, as each App has a Content-Type called **AppSettings** which can have different fields as needed. 
 
-In C#/Razor you can access this on the dynamic `App.Settings` object 
-or use the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
+In C#/Razor you can access them here:
 
-### App Resources
-
-Apps can have custom [App-Resources](xref:Basics.App.Resources) which every app manages itself. 
-The names/types of these settings can be freely configured, as each App has a Content-Type called **AppResources** which can have different fields as needed. 
-
-In C#/Razor you can access this on the dynamic `App.Resources` object or use the `Resources` object which consolidates all possible resources. 
+* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
+* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 
@@ -111,20 +100,15 @@ In Razor you can access basic View information on the `CmsContext.View` object, 
 
 _View Configuration was introduced ca. v4 and made accessible to Razor in v12.02_
 
-### View Settings
+### View Settings and Resources
 
-A view can have Views-Settings which apply to all uses of this View. 
-Since View-Settings could be re-used in various views, the concept more open than _App Settings_, meaning that you could re-use both the content-type as well as the settings data. 
+A view can have Views-Settings and View-Resouces which apply to all uses of this View. 
+Since View-Settings could be _re-used_ in various views, the concept more flexible than _App Settings/Resources_, meaning that you could re-use both the content-type as well as the settings data. 
 
-In Razor you can access this on the dynamic `CmsContext.View.Settings` object 
-or use the `Settings` [object which consolidates all possible settings](xref:NetCode.DynamicCode.Objects.Settings). 
+In C#/Razor you can access them here:
 
-### View Resources
-
-A view can have Views-Resources which apply to all uses of this View. 
-Since View-Resources could be re-used in various views, the concept more open than _App Resouces_, meaning that you could re-use both the content-type as well as the resources data. 
-
-In Razor you can access this on the dynamic `CmsContext.View.Resources` object or use the `Resources` object which consolidates all possible resources. 
+* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
+* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 
@@ -182,5 +166,6 @@ If a View is configured to be a List then it can also have a **Header** and also
 * View Configuration introduced ca. v4
 * App Configuration, Settings and Resources introduced in v6.0
 * View Settings and Resources introduced in v12.02
-* Site and global settings introduced in 2sxc 12.03
-* Full Settings Stack introduced in 2sxc 12.03 / 12.04
+* Site and global settings introduced in 2sxc 12.04
+* Full Settings Stack introduced in 2sxc 12.04
+* Full Resources Stack introduced in 2sxc 12.04

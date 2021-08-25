@@ -113,7 +113,7 @@ Internally there are a few things that can returned if you do something like `Co
 1. Similar to that are relationship properties, like `Tags` which will return a special DynamicEntity that behaves as a list (see below)
 1. _if the entity is a list_ (for example the result of `var tags = Content.Tags`) then going deeper like `tags.Name` has the following behavior
     1. If the Tags-list had anything, then it will try to find a match on the first item according to these rules. _new in v10.27_
-    1. If up till then nothing was found, it will check if any of the items in the list has that `Title` property. This lets you write `Tags.Webdesign.Name` _new in v12.03_
+    1. If up till then nothing was found, it will check if any of the items in the list has that `Title` property. This lets you write `Tags.Webdesign.Name` _new in v12.04_
 1. Last but not least - if nothing matches, it's `null`
 
 ## Properties of a Dynamic Entity

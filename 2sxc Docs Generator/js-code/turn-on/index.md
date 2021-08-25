@@ -4,7 +4,7 @@ uid: JsCode.TurnOn.Index
 
 <img src="./assets/icon-turn-on.svg" width="100%" >
 
-# turnOn JavaScript API 🆕 in v12.03
+# turnOn JavaScript API 🆕 in v12.04
 
 ## The Problem turnOn Solves
 
@@ -117,7 +117,7 @@ Our goal is to simplify this, so that your solution can simply state what it nee
 
 ## History
 
-1. Added in 2sxc v12.03
+1. Added in 2sxc v12.04
 
 ## Future features
 
