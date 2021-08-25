@@ -315,9 +315,29 @@ If you really need them, download an old release of 2sxc and get them manually.
 
 ### Version 12 Todo
 
+### Version 12.02
 
-### Version 12.04
+1. Formulas feature finalized
+1. DynamicEntityStack object created
+1. Hybrid `IPageService` created with `Activate` and similar features
+1. `CmsContext` was enhanced with `View` information
+1. Content-Type icons can now be stored in the app with an `[App:Path]/image.jpg` style reference
+1. Enabled view-configuration to configure search behavior incl. not-to-index or what streams should be indexed
+1. `turnOn` created / deployed
+1. #Oqtane 2.1 support added in 2sxc 12.02.01
 
+### Version 12.04 incl 12.03 which was not officially released
+
+
+1. Settings Stack and Resources Stack added, and the `Settings` / `Resources` object now have this
+1. Global `Settings.Images.xxx` settings defined for Content, Screen, Lightbox and Section
+1. Global `Settings.Resources.xxx` defined for fancybox3, fancybox4, bootstrap4, bootstrap5
+1. Link.Image API created to support predefined sizes/resize modes etc.
+1. Created feature where DynamicEntities can browse to sub-items using their identifier (used for `Settings.Images.Content` where `Content` is actually the title of a sub-entity)
+1. Added debug-feature for DynamicEntity get
+1. String-Dropdown inputs now have a value-key presets option (instead of the key-value which was flaky) and added support for escaping special characters
+1. #Oqtane 2.2 support added
+1. Introduced Monaco (VS-Code online) editor for beta-testing source-editing
 
 **Possible Breaking Changes**
 
