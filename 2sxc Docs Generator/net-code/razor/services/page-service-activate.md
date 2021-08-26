@@ -14,6 +14,8 @@ For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) 
 > [!TIP]
 > Using the `IPageService.Activate(...)` ensures that all apps use the same resources, and that these are only loaded once per page. 
 
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
+
 ## Difference between features and WebResources**
 
 * **Features** are some system-specific JS/CSS (like jQuery or turnOn)

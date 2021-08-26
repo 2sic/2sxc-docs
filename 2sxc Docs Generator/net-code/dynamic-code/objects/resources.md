@@ -6,8 +6,6 @@ uid: NetCode.DynamicCode.Objects.Resources
 
 The `Resources` object consolidates resources for the current scenario. It merges resources configured in the View and App and gives View-Resources the preference. 
 
-TODO: #TODOC - CREATE TUTORIALS FOR THIS
-
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Example

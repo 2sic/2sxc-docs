@@ -12,6 +12,7 @@ In 2sxc 12.02 we introduced the `IPageService` which helps you to do things like
 1. Create JsonLD headers
 1. Activate page features like [turnOn](xref:JsCode.TurnOn.Index)
 
+[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Concept
 
