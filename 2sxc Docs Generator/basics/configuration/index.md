@@ -41,10 +41,8 @@ Global Settings and Resources were introduced in 2sxc 12.04.
 You can configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
 Here you can configure both the standardized `SystemSettings`/`SystemResources` or create an own content-type called `Settings`/`Resources` for custom values. 
 
-In C#/Razor you can access them here:
-
-* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
-* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
+In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
+and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 Note: _there are some global ADAM Settings that can be configured in a different way, but it's not standardized/finalized yet, so not public, and we'll try to move that into the new standard._ 
 
@@ -63,10 +61,8 @@ Only [Languages](xref:Basics.Cms.Languages.Index) are configured at Site-Level.
 Site-Level Settings / Resources were introduced in 12.04. You can configure them in the _Default App_ (usuall the **Content** App). 
 Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
 
-In C#/Razor you can access them here:
-
-* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
-* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
+In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
+and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 
@@ -78,15 +74,13 @@ Apps have a standard [App-Configuration](xref:Basics.App.Configuration) containi
 
 In Razor you can access this on the dynamic `App.Configuration` object.
 
-### App Settings
+### App Settings and Resources
 
 Apps can have custom [App-Settings](xref:Basics.App.Settings) and [App-Resources](xref:Basics.App.Resources) which every app manages itself. 
 The names/types of these settings can be freely configured, as each App has a Content-Type called **AppSettings** which can have different fields as needed. 
 
-In C#/Razor you can access them here:
-
-* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
-* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
+In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
+and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 
@@ -96,7 +90,7 @@ In C#/Razor you can access them here:
 
 Each view has [View-Configuration](xref:Basics.App.Views.Index) containing the name, how it works with data and more.
 
-In Razor you can access basic View information on the `CmsContext.View` object, or the entire configuration on the dynamic `CmsContext.View.Configuration` object.
+In Razor you can access basic View information on the `CmsContext.View` object, like the `Identifier` or the `Edition`. See [](xref:ToSic.Sxc.Context.ICmsView)
 
 _View Configuration was introduced ca. v4 and made accessible to Razor in v12.02_
 
@@ -105,10 +99,8 @@ _View Configuration was introduced ca. v4 and made accessible to Razor in v12.02
 A view can have Views-Settings and View-Resouces which apply to all uses of this View. 
 Since View-Settings could be _re-used_ in various views, the concept more flexible than _App Settings/Resources_, meaning that you could re-use both the content-type as well as the settings data. 
 
-In C#/Razor you can access them here:
-
-* [Settings Stack](xref:Basics.Configuration.SettingsStack) using the `Settings` [object](xref:NetCode.DynamicCode.Objects.Settings). 
-* [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the `Resources` [object](xref:NetCode.DynamicCode.Objects.Resources). 
+In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
+and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
 
 ---
 

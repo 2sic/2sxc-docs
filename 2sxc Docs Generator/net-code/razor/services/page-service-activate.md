@@ -35,8 +35,7 @@ Note that it will only be activated once, even if the code would accidentally ac
 
 Features you can activate as of v12.02
 
-* `jQuery`  - activate jQuery
-  _note: in Oqtane 🩸 this will include jQuery slim as that is the default. We're still trying to enhance this_
+* `jQuery`  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+
 * `turnOn` - [the JavaScript turnOn Activation system](xref:JsCode.TurnOn.Index)
   _note: new feature, docs still incomplete_
 
