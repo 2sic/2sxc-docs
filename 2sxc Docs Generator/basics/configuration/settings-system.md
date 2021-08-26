@@ -16,6 +16,8 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 
 ## Predefined System Settings
 
+### Google Maps Settings
+
 | Part                 | Key                  | Value in Default     | Introduced | Comments
 | -------------------- | -------------------- | -------------------- | ------ | ---
 | GoogleMaps           |                      |                      | v12.04 | *Pls read [special docs](xref:Basics.Configuration.Settings.GoogleMaps)*
@@ -23,6 +25,8 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 | GoogleMaps           | ApiKey               | $ `AIzaSyAKEFB...`   | v12.04 | The API key used to show a Map
 | GoogleMaps           | ShowApiKeyWarning    | b `true`             | v12.04 | Show a warning if it's still the default key, which isn't meant for live sites
 | GoogleMaps           | MarkerIcon           | $ (empty)            | v12.04 | empty = google default 📍
+
+### Images Settings
 
 | Part                 | Key                  | Value in Default     | Introduced | Comments
 | -------------------- | -------------------- | -------------------- | ------ | ---

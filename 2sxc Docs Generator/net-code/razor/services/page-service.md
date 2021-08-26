@@ -84,29 +84,7 @@ It adds meta headers using `og:` prefixes. Use these commands to add such header
 
 ## Activate Page Features
 
-An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
-This gets especially complex in scenarios like Oqtane, where the page doesn't really reload and therefor may already have some scripts / styles loaded, but it's hard to guess. 
-
-For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) and the `PageService` is able to activate this feature (and more in future). Here's how it works
-
-```c#
-var page = GetService<ToSic.Sxc.Web.IPageService>();
-page.Activate("turnOn");
-```
-
-Features you can activate as of v12.02
-
-* `jQuery`  - activate jQuery
-  _note: in Oqtane 🩸 this will include jQuery slim as that is the default. We're still trying to enhance this_
-* `turnOn` - [the JavaScript turnOn Activation system](xref:JsCode.TurnOn.Index)
-  _note: new feature, docs still incomplete_
-
-_Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
-
-Features that are explicitly not implemented
-
-1. jQueryUI is often used in ASP.net but it's really old and hasn't had updates since 2016
-1. knockoutJS is often used in ASP.net but it's also barely alive, so it's not meant to be activatable in modern systems like the ones usually built with 2sxc
+👉 See [](xref:NetCode.Razor.Services.IPageServiceActivate)
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -116,4 +94,4 @@ Features that are explicitly not implemented
 ## History
 
 1. Introduced in 2sxc 12.02 to replace the previous static implementation using [RazorBlade](xref:NetCode.RazorBlade.Index)
-
+1. Enhanced in 12.05

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Page Service to set Title, Headers and Activate Features | 2sxc and EAV 10 </title>
+    <title>Page Service to Activate Features &amp; WebResources (JS, CSS, etc.) | 2sxc and EAV 10 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Page Service to set Title, Headers and Activate Features | 2sxc and EAV 10 ">
+    <meta name="title" content="Page Service to Activate Features &amp; WebResources (JS, CSS, etc.) | 2sxc and EAV 10 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/logos/v11/favicon.ico">
@@ -111,82 +111,51 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Razor.Services.IPageService">
-<h1 id="page-service-to-set-title-headers-and-activate-features">Page Service to set Title, Headers and Activate Features</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Razor.Services.IPageServiceActivate">
+<h1 id="page-service-to-activate-features--webresources-js-css-etc">Page Service to Activate Features &amp; WebResources (JS, CSS, etc.)</h1>
 
-<p>In 2sxc 12.02 we introduced the <code>IPageService</code> which helps you to do things like</p>
-<ol>
-<li>Set the page Title, Keywords, Description or Base-Tag</li>
-<li>Add Meta-headers</li>
-<li>Add Icons or Icon-Sets</li>
-<li>Create JsonLD headers</li>
-<li>Activate page features like <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a></li>
-</ol>
-<h2 id="concept">Concept</h2>
-<p>A Razor template is standalone - the page requests that it&#39;s rendered, but there is no official way to also tell the page that the title should change or that certain headers must be set. </p>
-<p>We approached it in a futuristic way because we wanted to make sure that the code you write works in Dnn and Oqtane. So here&#39;s how it works</p>
-<ol>
-<li>Your code will get a <code>IPageService</code> object using <a class="xref" href="../../dynamic-code/get-service.html">`GetService&lt;IPageService>()</a></li>
-<li>Your code can then tell it what you need - like <code>SetTitle(...)</code> or <code>AddJsonLd(...)</code></li>
-<li>Once the Razor is done, the engine will forward these requests to the page and ensure it happens</li>
-</ol>
-<p>👉 Read about <a class="xref" href="../../dependency-injection/index.html">Dependency Injection</a>
-👉 Read about the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html">IPageService in the API docs</a></p>
-<h2 id="set-page-properties">Set Page Properties</h2>
-<p>You can set these page properties</p>
-<ol>
-<li><code>SetTitle(newToPrefix)</code><br> <code>SetTitle(newTitle, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetTitle_">docs</a></li>
-<li><code>SetDescription(newDescription)</code><br> <code>SetDescription(newDescription, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetDescription_">docs</a></li>
-<li><code>SetKeywords(additionalKeywords)</code><br> <code>SetKeywords(additionalKeywords, placeholder)</code><br> see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetKeywords_">docs</a></li>
-<li><code>SetBase(url)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetBase_">docs</a></li>
-</ol>
-<p>Note that SetTitle, SetDescription and SetKeywords will prepend or append whatever you give them to the existing value, unless you specify a placeholder - in which case that placeholder will be replaced. </p>
-<h2 id="set-http-response-codes">Set Http Response Codes</h2>
-<p>In some cases an App may need to set the page to 404 - so that google doesn&#39;t index it. Do this using</p>
+<p>The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources). </p>
+<p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
+This gets especially complex in scenarios like Oqtane, where the page doesn&#39;t really reload and therefor may already have some scripts / styles loaded, but it&#39;s hard to guess. </p>
+<p>For this we have developed a helper called <a class="xref" href="../../../js-code/turn-on/index.html"><code>turnOn</code></a> and the <code>PageService</code> is able to activate this feature (and more in future). </p>
+<div class="TIP"><h5>Tip</h5><p>Using the <code>IPageService.Activate(...)</code> ensures that all apps use the same resources, and that these are only loaded once per page. </p>
+</div>
+<h2 id="difference-between-features-and-webresources">Difference between features and WebResources**</h2>
 <ul>
-<li><code>SetHttpStatus(statusCode, optionalmessage)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_SetHttpStatus_">docs</a></li>
-</ul>
-<p>Note: ATM this is Dnn ☢️ only, as Oqtane doesn&#39;t render each page at a time - so a status code wouldn&#39;t work there (yet).</p>
-<h2 id="add-icons-and-icon-sets-like-favicon">Add Icons and Icon-Sets like FavIcon</h2>
-<p>Icons / FavIcons are minor enhancements to a page, but they serve more than just the icon in the browser tab. In many cases they may also have larger images used for tiles and more. Use these two commands to get them working:</p>
-<ul>
-<li><code>AddIcon</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddIcon_">docs</a> to add a single icon</li>
-<li><code>AddIconSet</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddIconSet_">docs</a> to add a bundle of icons for various use cases in one step</li>
-</ul>
-<h2 id="add-custom-headers">Add Custom Headers</h2>
-<p>Custom headers may be important for JavaScripts running on your page or other special purposes. Set them using these methods:</p>
-<ul>
-<li><code>AddToHead(string)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddToHead_System_String_">docs</a></li>
-<li><code>AddToHead(tag)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddToHead_ToSic_Razor_Markup_TagBase_">docs</a></li>
-<li><code>AddMeta(name, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddMeta_">docs</a></li>
-</ul>
-<h2 id="add-jsonld-headers-schemaorg">Add JsonLD Headers (Schema.org)</h2>
-<p>JsonLD is a powerful way to describe your page to other systems, especially web crawlers like Google. 
-It uses conventions from <a href="https://schema.org">schema.org</a>. 
-Use this to add custom JsonLD headers:</p>
-<ul>
-<li><code>AddJsonLd(jsonString)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddJsonLd_System_String_">docs</a></li>
-<li><code>AddJsonLd(jsonObject)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddJsonLd_System_Object_">docs</a></li>
-</ul>
-<h2 id="add-opengraph-headers">Add OpenGraph Headers</h2>
-<p>OpenGraph is a standard to describe your page for Facebook, Twitter and other more social-style systems. 
-It adds meta headers using <code>og:</code> prefixes. Use these commands to add such headers:</p>
-<ul>
-<li><code>AddOpenGraph(propertyName, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Web.IPageService.html#ToSic_Sxc_Web_IPageService_AddOpenGraph_">docs</a></li>
+<li><strong>Features</strong> are some system-specific JS/CSS (like jQuery or turnOn)</li>
+<li><strong>WebResources</strong> are JS/CSS which are configured in Settings, so you can use the preset WebResources or define your own at the App, Site or Installation. Examples are <code>fancybox4</code>, <code>Bootstrap5</code> etc.</li>
 </ul>
 <h2 id="activate-page-features">Activate Page Features</h2>
-<p>👉 See <a class="xref" href="page-service-activate.html">Page Service to Activate Features &amp; WebResources (JS, CSS, etc.)</a></p>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="history">History</h2>
+<p>A simple example:</p>
+<pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Web.IPageService&gt;();
+page.Activate(&quot;jQuery&quot;);            // Activate jQuery
+page.Activate(&quot;turnOn&quot;);            // Activate turnOn
+page.Activate(&quot;jQuery&quot;, &quot;turnOn&quot;);  // Activate both
+</code></pre><p>This will ensure that jQuery and <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> are available on the page. 
+Note that it will only be activated once, even if the code would accidentally activate it multiple times. </p>
+<p>Features you can activate as of v12.02</p>
+<ul>
+<li><code>jQuery</code>  - activate jQuery
+<em>note: in Oqtane 🩸 this will include jQuery slim as that is the default. We&#39;re still trying to enhance this</em></li>
+<li><code>turnOn</code> - <a class="xref" href="../../../js-code/turn-on/index.html">the JavaScript turnOn Activation system</a>
+<em>note: new feature, docs still incomplete</em></li>
+</ul>
+<p><em>Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
+<p>Features that are explicitly not implemented</p>
+<ol>
+<li>jQueryUI is often used in ASP.net but it&#39;s really old and hasn&#39;t had updates since 2016</li>
+<li>knockoutJS is often used in ASP.net but it&#39;s also barely alive, so it&#39;s not meant to be activatable in modern systems like the ones usually built with 2sxc</li>
+</ol>
+<h2 id="activate-webresources">Activate WebResources</h2>
+<p>Any WebResources registered in the settings can be activated. Here&#39;s an example: </p>
+<pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Web.IPageService&gt;();
+page.Activate(&quot;Bootstrap5&quot;);                // Activate Bootstrap5 from a CDN
+page.Activate(&quot;fancybox4&quot;);                 // Activate fancybox4 from a CDN
+page.Activate(&quot;fancybox3&quot;, &quot;FontAwesome5&quot;);  // Activate the older fancybox + FontAwesome5
+</code></pre><h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 12.02 to replace the previous static implementation using <a class="xref" href="../../razor-blade/index.html">RazorBlade</a></li>
-<li>Enhanced in 12.05</li>
+<li>Activating WebResources added in 2sxc 12.04</li>
 </ol>
 </article>
           </div>
@@ -196,7 +165,7 @@ It adds meta headers using <code>og:</code> prefixes. Use these commands to add 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/razor/services/page-service.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/razor/services/page-service-activate.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
