@@ -133,8 +133,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
-    <div><a class="xref" href="ToSic.Eav.Conversion.IEntitiesTo-1.html">IEntitiesTo</a>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</div>
-    <div><a class="xref" href="ToSic.Eav.Conversion.IStreamsTo-1.html">IStreamsTo</a>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</div>
+    <div><a class="xref" href="ToSic.Eav.Conversion.IEntitiesTo-1.html">IEntitiesTo</a>&lt;<span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</div>
+    <div><a class="xref" href="ToSic.Eav.Conversion.IStreamsTo-1.html">IStreamsTo</a>&lt;<span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -146,9 +146,6 @@
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Conversion.EntitiesToDictionaryBase.html#ToSic_Eav_Conversion_EntitiesToDictionaryBase_IdField">EntitiesToDictionaryBase.IdField</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Conversion.EntitiesToDictionaryBase.html#ToSic_Eav_Conversion_EntitiesToDictionaryBase_ValueConverter">EntitiesToDictionaryBase.ValueConverter</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Conversion.EntitiesToDictionaryBase.html#ToSic_Eav_Conversion_EntitiesToDictionaryBase_MaxItems">EntitiesToDictionaryBase.MaxItems</a>
@@ -192,7 +189,7 @@
   <h5 id="ToSic_Eav_Conversion_EntitiesToDictionary_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;EntitiesToDictionaryBase&gt;, IHasLog, IEntitiesTo&lt;Dictionary&lt;string, object&gt;&gt;, IStreamsTo&lt;Dictionary&lt;string, object&gt;&gt;</code></pre>
+public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;EntitiesToDictionaryBase&gt;, IHasLog, IEntitiesTo&lt;IDictionary&lt;string, object&gt;&gt;, IStreamsTo&lt;IDictionary&lt;string, object&gt;&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -201,16 +198,58 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary__ctor.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L24">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L38">View Source</a>
   </span>
   <a id="ToSic_Eav_Conversion_EntitiesToDictionary__ctor_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.#ctor*"></a>
   <h4 id="ToSic_Eav_Conversion_EntitiesToDictionary__ctor" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.#ctor">EntitiesToDictionary()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Old constructor used in some public apps in razor, so it must remain for DNN implementation
+But .net 451 only!
+In .net .451 it must also set the formatters to use the right date-time, which isn&apos;t necessary in .net core. </p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntitiesToDictionary()</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete]
+public EntitiesToDictionary()</code></pre>
   </div>
+  <h5 id="ToSic_Eav_Conversion_EntitiesToDictionary__ctor_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>has an important side effect, this isn&apos;t clear from outside!</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary__ctor_ToSic_Eav_Conversion_EntitiesToDictionaryBase_Dependencies_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary.%23ctor(ToSic.Eav.Conversion.EntitiesToDictionaryBase.Dependencies)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L27">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Conversion_EntitiesToDictionary__ctor_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.#ctor*"></a>
+  <h4 id="ToSic_Eav_Conversion_EntitiesToDictionary__ctor_ToSic_Eav_Conversion_EntitiesToDictionaryBase_Dependencies_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.#ctor(ToSic.Eav.Conversion.EntitiesToDictionaryBase.Dependencies)">EntitiesToDictionary(EntitiesToDictionaryBase.Dependencies)</h4>
+  <div class="markdown level1 summary"><p>Important: this constructor is used both in inherited,
+but also in EAV-code which uses only this object (so no inherited)
+This is why it must be public, because otherwise it can&apos;t be constructed from eav?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntitiesToDictionary(EntitiesToDictionaryBase.Dependencies dependencies)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ToSic.Eav.Conversion.EntitiesToDictionaryBase.Dependencies</span></td>
+        <td><span class="parametername">dependencies</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -218,7 +257,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataSource_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataSource%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L38">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L51">View Source</a>
   </span>
   <a id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert*"></a>
   <h4 id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataSource_System_Collections_Generic_IEnumerable_System_String__" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataSource,System.Collections.Generic.IEnumerable{System.String})">Convert(IDataSource, IEnumerable&lt;String&gt;)</h4>
@@ -226,7 +265,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt;&gt; Convert(IDataSource source, IEnumerable&lt;string&gt; streams = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, IEnumerable&lt;IDictionary&lt;string, object&gt;&gt;&gt; Convert(IDataSource source, IEnumerable&lt;string&gt; streams = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -260,7 +299,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -270,7 +309,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataSource_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataSource%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L86">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L99">View Source</a>
   </span>
   <a id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert*"></a>
   <h4 id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataSource_System_String_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataSource,System.String)">Convert(IDataSource, String)</h4>
@@ -278,7 +317,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt;&gt; Convert(IDataSource source, string streams)</code></pre>
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, IEnumerable&lt;IDictionary&lt;string, object&gt;&gt;&gt; Convert(IDataSource source, string streams)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -312,7 +351,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -322,7 +361,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataStream_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L90">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L103">View Source</a>
   </span>
   <a id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert*"></a>
   <h4 id="ToSic_Eav_Conversion_EntitiesToDictionary_Convert_ToSic_Eav_DataSources_IDataStream_" data-uid="ToSic.Eav.Conversion.EntitiesToDictionary.Convert(ToSic.Eav.DataSources.IDataStream)">Convert(IDataStream)</h4>
@@ -330,7 +369,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Dictionary&lt;string, object&gt;&gt; Convert(IDataStream stream)</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;IDictionary&lt;string, object&gt;&gt; Convert(IDataStream stream)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -359,7 +398,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -385,7 +424,7 @@ public class EntitiesToDictionary : EntitiesToDictionaryBase, IHasLog&lt;Entitie
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Conversion_EntitiesToDictionary.md&amp;value=---%0Auid%3A%20ToSic.Eav.Conversion.EntitiesToDictionary%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/Conversion/EntitiesToDictionary.cs/#L18" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

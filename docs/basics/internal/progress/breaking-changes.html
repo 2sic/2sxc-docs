@@ -121,6 +121,7 @@ We&#39;re documenting it here to ensure you know what happened, in case you stil
 <ol>
 <li>DynamicEntity now has a property Count because it&#39;s a list as well, this could cause issues if a content-type has a property <code>Count</code></li>
 <li>DynamicEntity is now always a list. Because of this we removed the <code>DynamicEntityWithList</code> object. We believe the type is never referenced in user code, but if it is, this would be a breaking change.</li>
+<li>Many parts that prepare Entities returned a <code>Dictionary&lt;string, object&gt;</code> and now return an <code>IDictionary&lt;string, object&gt;</code>.<br>We believe this shouldn&#39;t hurt much, since the result would usually be in a <code>var</code> or returend directly to the API for streaming, but in case someone had used explicitly typed code, this will require a minor change</li>
 </ol>
 <h2 id="version-11">Version 11</h2>
 <p>There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn&#39;t affect normal developers. </p>
