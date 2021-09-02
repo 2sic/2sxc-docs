@@ -49,7 +49,7 @@ This allows us to add further parameters later on, and the calls will still work
 The first three parameters don't need naming, as they will be the most used. They are these in this order:
 
 1. `url` - the only required parameter
-2. `settings` - optional, would be an [image-settings configuration](xref:Basics.Configuration.SystemSettings)
+2. `settings` - optional, would be an [image-settings configuration](xref:Basics.Configuration.SettingsSystem)
 3. `factor` - optional multiplier - eg. 0.5 to be half the size of the preset configuration
 
 All other parameters need to be named:

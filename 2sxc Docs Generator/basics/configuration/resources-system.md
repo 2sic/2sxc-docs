@@ -1,5 +1,5 @@
 ---
-uid: Basics.Configuration.SystemResources
+uid: Basics.Configuration.ResourcesSystem
 ---
 
 # System Resources in 2sxc ✨ new!

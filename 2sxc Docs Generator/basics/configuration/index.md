@@ -38,8 +38,8 @@ In addition some minor global Configuration exists for alternate Caching systems
 <img src="./assets/apps-management-goto-global-settings.jpg" class="right-thumbnail">
 
 Global Settings and Resources were introduced in 2sxc 12.04. 
-You can configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
-Here you can configure both the standardized `SystemSettings`/`SystemResources` or create an own content-type called `Settings`/`Resources` for custom values. 
+Configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
+You can configure the standardized `SettingsSystem`/`ResourcesSystem` or create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values. 
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
@@ -59,7 +59,7 @@ Only [Languages](xref:Basics.Cms.Languages.Index) are configured at Site-Level.
 <img src="./assets/apps-management-goto-site-settings.jpg" class="right-thumbnail">
 
 Site-Level Settings / Resources were introduced in 12.04. You can configure them in the _Default App_ (usuall the **Content** App). 
-Here you can configure both the standardized SystemSettings or create an own content-type called `Settings` for custom settings. 
+You can configure the standardized `SettingsSystem`/`ResourcesSystem` or create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values. 
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
@@ -77,7 +77,10 @@ In Razor you can access this on the dynamic `App.Configuration` object.
 ### App Settings and Resources
 
 Apps can have custom [App-Settings](xref:Basics.App.Settings) and [App-Resources](xref:Basics.App.Resources) which every app manages itself. 
-The names/types of these settings can be freely configured, as each App has a Content-Type called **AppSettings** which can have different fields as needed. 
+The names/types of these settings can be freely configured, as each App has a Content-Type called **App-Settings** which can have different fields as needed. 
+
+You can also configure the standardized `SettingsSystem`/`ResourcesSystem`. 
+You _cannot_ create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values, because this functionality is already covered in the App-Settings/Resources.
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 

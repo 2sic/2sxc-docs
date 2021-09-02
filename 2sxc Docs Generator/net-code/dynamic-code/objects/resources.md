@@ -65,8 +65,8 @@ In rare cases you may want to access settings from a specific source - maybe to 
 For this you can use the `GetSource(name)` method like this:
 
 * `@Resources.HelpLink` would return `/help`
-* `@Resources.GetSource("View").HelpLink` would return `/help`
-* `@Resources.GetSource("App").HelpLink` would return `www.2sxc.org`
+* `@Resources.GetSource("ViewCustom").HelpLink` would return `/help`
+* `@Resources.GetSource("AppCustom").HelpLink` would return `www.2sxc.org`
 
 ---
 

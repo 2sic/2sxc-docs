@@ -35,7 +35,7 @@ Then you could get these values from the `Settings` object
 * `@Settings.Columns` would be `4` - only exists in View
 * `@Settings.SomeApiKey` would be `6n23cnhi502ceh` - from App
 * `@Settings.DoesntExist` would be `null` as that data doesn't exist
-* `@Settings.Images.Content.Width` would be `1400` as it is a [preset](xref:Basics.Configuration.SystemSettings)
+* `@Settings.Images.Content.Width` would be `1400` as it is a [preset](xref:Basics.Configuration.SettingsSystem)
 
 > [!TIP]
 > Remember that [Settings](xref:NetCode.DynamicCode.Objects.Settings) are meant for configuration 
@@ -68,8 +68,8 @@ In rare cases you may want to access settings from a specific source - maybe to 
 For this you can use the `GetSource(name)` method like this:
 
 * `@Settings.PrimaryColor` would return `#FF0000`
-* `@Settings.GetSource("View").PrimaryColor` would return `#FF0000`
-* `@Settings.GetSource("App").PrimaryColor` would return `#CCCCCC`
+* `@Settings.GetSource("ViewCustom").PrimaryColor` would return `#FF0000`
+* `@Settings.GetSource("AppCustom").PrimaryColor` would return `#CCCCCC`
 
 ---
 

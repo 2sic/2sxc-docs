@@ -1,5 +1,5 @@
 ---
-uid: Basics.Configuration.SystemSettings
+uid: Basics.Configuration.SettingsSystem
 ---
 
 # System Settings in 2sxc ✨ new!
@@ -11,7 +11,7 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 
 > [!TIP]
 > These are just the predefined settings. 
-> Remember you can create any other settings on your own `Settings` ContentType
+> Remember you can create any other settings on your own `SettingsCustom` ContentType
 
 
 ## Predefined System Settings
@@ -60,7 +60,12 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 | Images.Section       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
 
 
+### WebResources
 
+Find out more about the Settings.WebResources here [](xref:Basics.Configuration.Settings.WebResources)
+
+
+### Work-in-Progress Settings
 
 _Note: the following QuickEdit Settings exist but have no effect ATM_
 
@@ -92,16 +97,11 @@ _Note: the following QuickEdit Settings exist but have no effect ATM_
 | QuickEdit.InnerContentDynamic  | Move       | b `false`            | v12.04 | 
 
 
-TODO: #todoc
-WebResources.Bootstrap4
-WebResources.Bootstrap5
-WebResources.fancybox3
-WebResources.fancybox4
-WebResources.FontAwesome5
 
 
 
-## Conventions used in System Settings
+
+## Conventions used in System Settings ⚠ Advanced
 
 The built-in system settings are meant to carry hundreds of settings. To enable that, the structure is always as follows:
 

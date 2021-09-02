@@ -237,8 +237,8 @@
 
 <p>Settings come in 2 distinct flavors:</p>
 <ul>
-<li><strong>Standardized Settings</strong> marked with 📋 are edited in a content-type called <code>SystemSettings</code> with a predefined structure.<br>These settings are meant to be used across tools and apps.</li>
-<li><strong>Dynamic Settings</strong> marked with 💪 use content-types which you define.<br>These settings can have any keys and values you want.<br>These will usually only affect a single App or a single Installation.<br>The code using these will usually come from you, as these settings are not standardized. </li>
+<li><strong>Standardized Settings</strong> marked with 📋 are edited in a content-type called <code>SettingsSystem</code> with a predefined structure.<br>These settings are meant to be used across tools and apps.</li>
+<li><strong>Dynamic Settings</strong> marked with 💪 use a custom <code>SettingsCustom</code> content-types which you define.<br>These settings can have any keys and values you want.<br>These will usually only affect a single App or a single Installation.<br>The code using these will usually come from you, as these settings are not standardized. </li>
 </ul>
 <p>Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. </p>
 <p>In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured. 
@@ -247,16 +247,16 @@ The most-relevant setting is top-most setting and is the one which will be used.
 So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the <em>View</em> setting will be preferred. </p>
 <p>The Settings are stacked in the following priority:</p>
 <ol>
-<li>💪 <strong>View</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html">View</a> </li>
-<li>💪 <strong>App</strong> - the dynamic <code>AppSettings</code> (see <a class="xref" href="../app/settings.html">AppSettings</a>) of an <a class="xref" href="../app/index.html">App</a> </li>
-<li>📋 <strong>AppSystem</strong> - The <code>SystemSettings</code> in the current <a class="xref" href="../app/index.html">App</a> </li>
-<li>💪 <strong>Site</strong> - an optional, manually created dynamic <code>Settings</code> on the <strong>default Content App</strong> of the current site</li>
-<li>📋 <strong>SiteSystem</strong> - an optional <code>SystemSettings</code> in the <strong>default Content App</strong> of the current site, where the scope is set to Site</li>
-<li>💪 <strong>Global</strong> - an optional, manually created dynamic <code>Settings</code> on the <strong>default System App</strong></li>
-<li>📋 <strong>GlobalSystem</strong> - an optional <code>SystemSettings</code> on the <strong>default System App</strong></li>
-<li>📋 <strong>PresetSystem</strong> - the <code>SystemSettings</code> which are included in the installation of 2sxc</li>
+<li>💪 <strong>ViewCustom</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html">View</a> </li>
+<li>💪 <strong>AppCustom</strong> - the dynamic <code>App-Settings</code> (see <a class="xref" href="../app/settings.html">App-Settings</a>) of an <a class="xref" href="../app/index.html">App</a> </li>
+<li>📋 <strong>AppSystem</strong> - The <code>SettingsSystem</code> in the current <a class="xref" href="../app/index.html">App</a> </li>
+<li>💪 <strong>SiteCustom</strong> - an optional, manually created dynamic <code>SettingsCustom</code> on the _default Content App- of the current site</li>
+<li>📋 <strong>SiteSystem</strong> - an optional <code>SettingsSystem</code> in the <em>default Content App</em> of the current site, where the scope is set to Site</li>
+<li>💪 <strong>GlobalCustom</strong> - an optional, manually created dynamic <code>SettingsCustom</code> on the <em>default System App</em></li>
+<li>📋 <strong>GlobalSystem</strong> - an optional <code>SettingsSystem</code> on the <em>default System App</em></li>
+<li>📋 <strong>PresetSystem</strong> - the <code>SettingsSystem</code> which are included in the installation of 2sxc</li>
 </ol>
-<p><em>Note that there is no setting called <strong>ViewSystem</strong> or <strong>Preset</strong> (without ...System) as these would make no sense.</em></p>
+<p>There is no setting called <strong>ViewSystem</strong> or <strong>PresetCustom</strong> as these would make no sense.</p>
 <p>Next we&#39;ll explain where you can configure settings for different effects / scopes.</p>
 <h2 id="global-settings-which-affect-all-sites">Global Settings which Affect All Sites</h2>
 <p>Global Settings for all sites are configured in the default System App. It&#39;s usually on Zone <code>1</code> and App <code>1</code>.</p>
@@ -265,7 +265,7 @@ So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the
 <ol>
 <li>go to the <strong>default System App</strong> </li>
 <li>On <strong>Data</strong> switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>Check if the ContentType <code>SettingsSystem</code> already has an entry - if yes, edit that, if not, create a new one</li>
 <li>To test the result, create a Razor file which accesses this setting in another Site or App. </li>
 </ol>
 <h4 id="global-custom-settings">Global Custom Settings</h4>
@@ -273,10 +273,14 @@ So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the
 <ol>
 <li>go to the <strong>default System App</strong> </li>
 <li>On <strong>Data</strong> switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>Settings</code> exists - if not, create one</li>
+<li>Check if the ContentType <code>SettingsCustom</code> exists - if not, create one</li>
 <li>Check if the fields you need already exist, otherwise create them</li>
 <li>To test the result, create a Razor file which accesses this setting in another Site or App. </li>
 </ol>
+<div class="TIP"><h5>Tip</h5><p>This stuff is fairly new, and in rare cases new global settings don&#39;t automatically
+propagate to the sites. If you experience this, just restart the system. </p>
+<p>As of now, this only affects new fields, so once a field has been available changes will propagate as expected. </p>
+</div>
 <h2 id="site-settings-which-affect-an-entire-site">Site Settings which Affect an Entire Site</h2>
 <p>These are configured in the <strong>Content App</strong> of the site you want to configure. </p>
 <h4 id="site-system-settings">Site System Settings</h4>
@@ -284,7 +288,7 @@ So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the
 <ol>
 <li>go to the <strong>Content App</strong> on the Site you want to configure</li>
 <li>On <strong>Data</strong> switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>Check if the ContentType <code>SettingsSystem</code> already has an entry - if yes, edit that, if not, create a new one</li>
 <li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
 </ol>
 <h4 id="site-custom-settings">Site Custom Settings</h4>
@@ -292,10 +296,14 @@ So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the
 <ol>
 <li>go to the <strong>Content App</strong> on the Site you want to configure</li>
 <li>On <strong>Data</strong> switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>Settings</code> exists - if not, create one</li>
+<li>Check if the ContentType <code>SettingsCustom</code> exists - if not, create one</li>
 <li>Check if the fields you need already exist, otherwise create them</li>
 <li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
 </ol>
+<div class="TIP"><h5>Tip</h5><p>This stuff is fairly new, and in rare cases new site settings don&#39;t automatically
+propagate to the apps. If you experience this, just restart the system. </p>
+<p>As of now, this only affects new fields, so once a field has been available changes will propagate as expected. </p>
+</div>
 <h2 id="app-settings-which-affect-an-entire-app">App Settings which Affect an Entire App</h2>
 <p>These settings override previous settings but only for a specific App. </p>
 <h4 id="app-system-settings">App System Settings</h4>
@@ -303,19 +311,19 @@ So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the
 <ol>
 <li>go to the <strong>Content App</strong> on the Site you want to configure</li>
 <li>On <strong>Data</strong> switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>SystemSettings</code> already has an entry - if yes, edit that, if not, create a new one</li>
+<li>Check if the ContentType <code>SettingsSystem</code> already has an entry - if yes, edit that, if not, create a new one</li>
 <li>To test the result, create a Razor file which accesses this setting in another App on the same Site. </li>
 </ol>
 <h4 id="app-custom-settings">App Custom Settings</h4>
-<p>To create own settings which are available on an App is a bit different, because this feature has existed long before the stack was invented. </p>
-<p>👉 <a class="xref" href="../app/settings.html">App Settings</a></p>
+<p>To create own settings which are available on an App is a bit different, because this feature has existed long before the stack was invented. 
+See <a class="xref" href="../app/settings.html">App Settings</a>.</p>
 <h2 id="view-settings-which-affect-a-specific-view">View Settings which Affect a specific View</h2>
 <h4 id="view-settings-which-override-global-settings">View Settings which Override Global Settings</h4>
 <p>View Settings can also override Global Settings - but it&#39;s a bit harder to set up. This is because ViewSettings are always one custom Entity and doesn&#39;t come in the pairs used on App, Site or Global. </p>
 <p>We don&#39;t have time to document the exact steps, but in general you&#39;ll have to create an Entity-Field matching the name on the Global Settings and add an entity to it like the one used in Global Settigns. </p>
 <h4 id="custom-view-settings">Custom View Settings</h4>
-<p>Just create a custom content-type in the <strong>Configuration</strong> scope and use it in the view. </p>
-<p>👉 <a class="xref" href="../app/views/settings.html">View Settings (Advanced ⚠)</a></p>
+<p>Just create a custom content-type in the <strong>Configuration</strong> scope and use it in the view. 
+See <a class="xref" href="../app/views/settings.html">View Settings (Advanced ⚠)</a>.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
