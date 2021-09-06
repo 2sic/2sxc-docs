@@ -44,11 +44,11 @@ The `Resources` is a dynamic object.
 Internally the Settings use the new [](xref:ToSic.Sxc.Data.IDynamicStack) object to _stack_ entities like sources on each other, and take the first best match. 
 The sources are: 
 
-1. **View** with View-level resources (with dynamic/custom fields 💪)
-1. **App** with App-level resources (both _dynamic_ 💪  as well as _system settings_ 📋)
-1. **Site** with Site-level resources (dynamic 💪 & system 📋)
-1. **Global** with System-level resources (dynamic 💪 & system 📋)
-1. **Preset** with pre-defined resources from the installation (system 📋 only)
+1. **ViewCustom** with View-level resources
+1. **AppCustom**/**AppSystem** with App-level resources
+1. **SiteCustom**/**SiteSystem** with Site-level resources
+1. **GlobalCustom**/**GlobalSystem** with System-level resources
+1. **PresetSystem** with pre-defined resources from the installation
 
 > [!TIP]
 > Read more about this stack and what's in it here [](xref:Basics.Configuration.ResourcesStack).

@@ -24,6 +24,18 @@ In an ideal world, these settings can compound each other to determine defaults,
 > **Resources** on the other hand are simply meant for language/culture specific labels, logos and similar. 
 > They are also dynamic, so they can have as many values as you need.
 
+## Settings and Resources are Stacked
+
+Settings and Resources can be configured at any level of the application. This is how it stacks up:
+
+<img src="./assets/settings-stack.png" width="100%" class="full-width">
+
+👉 Learn more about the [](xref:Basics.Configuration.SettingsStack) and the [](xref:Basics.Configuration.ResourcesStack)
+
+👉 Learn about the [predefined System-Settings](xref:Basics.Configuration.SettingsSystem)
+
+👉 Learn about the [predefined System-Resources](xref:Basics.Configuration.ResourcesSystem)
+
 ## Global Level
 
 ### Global Configuration
@@ -35,11 +47,8 @@ In addition some minor global Configuration exists for alternate Caching systems
 
 ### Global Settings and Resources
 
-<img src="./assets/apps-management-goto-global-settings.jpg" class="right-thumbnail">
-
 Global Settings and Resources were introduced in 2sxc 12.04. 
-Configure them in the _Default App_ of the _Default Zone_ (usuall Zone 1 App 1). 
-You can configure the standardized `SettingsSystem`/`ResourcesSystem` or create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values. 
+Read about configuring them in the [](xref:Basics.Configuration.SettingsStack). 
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
@@ -56,10 +65,8 @@ Only [Languages](xref:Basics.Cms.Languages.Index) are configured at Site-Level.
 
 ### Site Settings and Resources
 
-<img src="./assets/apps-management-goto-site-settings.jpg" class="right-thumbnail">
-
-Site-Level Settings / Resources were introduced in 12.04. You can configure them in the _Default App_ (usuall the **Content** App). 
-You can configure the standardized `SettingsSystem`/`ResourcesSystem` or create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values. 
+Site-Wide Settings and Resources were introduced in 2sxc 12.04. 
+Read about configuring them in the [](xref:Basics.Configuration.SettingsStack). 
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 

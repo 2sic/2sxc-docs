@@ -48,11 +48,11 @@ The `Settings` is a dynamic object.
 Internally the Settings use the new [](xref:ToSic.Sxc.Data.IDynamicStack) object to _stack_ entities like sources on each other, and take the first best match. 
 The sources are: 
 
-1. **View** with View-level settings (with dynamic/custom fields 💪)
-1. **App** with App-level settings (both _dynamic_ 💪  as well as _system settings_ 📋)
-1. **Site** with Site-level settings (dynamic 💪 & system 📋)
-1. **Global** with System-level settings (dynamic 💪 & system 📋)
-1. **Preset** with pre-defined settings from the installation (system 📋 only)
+1. **ViewCustom** with View-level settings
+1. **AppCustom**/**AppSystem** with App-level settings
+1. **SiteCustom**/**SiteSystem** with Site-level settings
+1. **GlobalCustom**/**GlobalSystem** with System-level settings
+1. **PresetSystem** with pre-defined settings from the installation
 
 > [!TIP]
 > Read more about this stack and what's in it here [](xref:Basics.Configuration.SettingsStack).
