@@ -2,6 +2,8 @@
 uid: Basics.Configuration.Settings.GoogleMaps
 ---
 
+<img src="./assets/settings-stack-banner.svg" class="feature">
+
 # GoogleMaps Settings in 2sxc
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

@@ -2,6 +2,8 @@
 uid: Basics.Configuration.SettingsSystem
 ---
 
+<img src="./assets/settings-stack-banner.svg" class="feature">
+
 # System Settings in 2sxc ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

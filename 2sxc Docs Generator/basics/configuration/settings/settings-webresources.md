@@ -2,6 +2,8 @@
 uid: Basics.Configuration.Settings.WebResources
 ---
 
+<img src="./assets/settings-stack-banner.svg" class="feature">
+
 # WebResources in Settings Stack ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

@@ -2,6 +2,8 @@
 uid: NetCode.DynamicCode.Objects.Resources
 ---
 
+<img src="~/basics/configuration/assets/settings-stack-banner.svg" class="feature">
+
 # Resources in Dynamic Code ✨ new!
 
 The `Resources` object consolidates resources for the current scenario. It merges resources configured in the View and App and gives View-Resources the preference. 

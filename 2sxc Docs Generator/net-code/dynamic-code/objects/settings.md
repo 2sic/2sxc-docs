@@ -2,6 +2,8 @@
 uid: NetCode.DynamicCode.Objects.Settings
 ---
 
+<img src="~/basics/configuration/assets/settings-stack-banner.svg" class="feature">
+
 # Settings in Dynamic Code ✨ new!
 
 The `Settings` object consolidates settings for the current scenario. 

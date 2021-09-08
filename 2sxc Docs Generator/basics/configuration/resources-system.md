@@ -2,6 +2,8 @@
 uid: Basics.Configuration.ResourcesSystem
 ---
 
+<img src="./assets/settings-stack-banner.svg" class="feature">
+
 # System Resources in 2sxc ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
