@@ -2,14 +2,18 @@
 uid: Basics.App.ContentApp.Index
 ---
 
-# _The_ Content App
+# _The Primary_ Content App
 
-The Content-App is a special App in each site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page. 
+The Content-App is a special App in each Site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page. 
 
 > [!TIP]
 > The content App has some special behavior and limitations by design. 
+> 
+> It is also treated as the **primary App** in a Site, so some settings on this app
+> can affect other Apps in the site. 
+> Read more about [Settings](xref:Basics.Configuration.Index)
 
-## Special Behavior of _The_ Content App
+## Special Behavior of _The Primary_ Content App
 
 When adding _the_ Content-App to a page, the dialog which appears will ask the editor to choose the _Content-Type_ (like _Image_) and then how to show it (like _Full-Size_). This is different from all other Apps where the editor will first choose the App (like _Blog_), and then the functionality (like _Tag-Cloud_).
 
@@ -58,3 +62,4 @@ Since the Content-App is always there by default and the purpose is to add/edit 
 
 1. Introduced in 2sxc 1.0
 1. Enhanced to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11
+1. Extended to contain [Settings and Resources which apply to the whole site](xref:Basics.Configuration.Index) in v12.04

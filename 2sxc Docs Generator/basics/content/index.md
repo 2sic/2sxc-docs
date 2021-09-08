@@ -7,8 +7,12 @@ uid: Basics.Content.Index
 [!include[](../stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
+Data is just numbers and texts.
 Content extends Data to become information. 
 Since this confuses many people, we must explain it in more depth. 
+
+_Important: This document is about the **Concept of Content vs. Data**. 
+If you're looking for information about the [Content-App go here](xref:Basics.App.ContentApp.Index)._
 
 ## Content vs. Data
 
@@ -28,7 +32,7 @@ On the other hand we have **Content** placed on a specific page in a specific po
 
 
 
-<img src="./assets/dikw-pyramid.svg" width="400px" class="float-right">
+<img src="./assets/dikw-pyramid.svg" width="33%" class="float-right">
 
 ## Content is Information
 
