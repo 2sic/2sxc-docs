@@ -2,7 +2,7 @@
 uid: Basics.Configuration.Settings.GoogleMaps
 ---
 
-<img src="./assets/settings-stack-banner.svg" class="feature">
+<img src="../assets/settings-stack-banner.svg" class="feature">
 
 # GoogleMaps Settings in 2sxc
 
