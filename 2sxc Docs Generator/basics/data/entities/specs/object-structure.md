@@ -30,7 +30,7 @@ Entities are structured as follows:
 * [](xref:ToSic.Eav.Data.IEntity) describes the main unit, the Entity
 * [](xref:ToSic.Eav.Data.IContentType) defines what fields exist, it's the ContentType / Schema
 * [](xref:ToSic.Eav.Data.IAttributeBase), [](xref:ToSic.Eav.Data.IAttribute),  
-	[](xref:ToSic.Eav.Data.IAttribute`1), [](xref:ToSic.Eav.Data.Attribute`1)  
+	[](xref:ToSic.Eav.Data.IAttribute`1), [](xref:ToSic.Eav.Data.IAttribute`1)  
 	determine the internal model how an attribute is built
 * [](xref:ToSic.Eav.Data.IValue), [](xref:ToSic.Eav.Data.IValue`1), [](xref:ToSic.Eav.Data.Value`1)  
 	determines how values in an attribute are stored, because an attribute like `Description`  
