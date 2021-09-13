@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Eav.Convert
+    <title>Interface IConvert&lt;TFrom, TTo&gt;
    | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Eav.Convert
+    <meta name="title" content="Interface IConvert&lt;TFrom, TTo&gt;
    | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -113,27 +113,140 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Convert">
+            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Data.IConvert`2">
   
-  <h1 id="ToSic_Eav_Convert" data-uid="ToSic.Eav.Convert" class="text-break">Namespace ToSic.Eav.Convert
+  
+  <h1 id="ToSic_Eav_Data_IConvert_2" data-uid="ToSic.Eav.Data.IConvert`2" class="text-break">Interface IConvert&lt;TFrom, TTo&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="ToSic.Eav.Convert.IConvert-2.html">IConvert&lt;TFrom, TTo&gt;</a></h4>
-      <section><p>Interface which converts one type into another, or a list of that type into a list of the resulting type.
+  <div class="markdown level0 summary"><p>Interface which converts one type into another, or a list of that type into a list of the resulting type.
 Commonly used to convert entities to dictionaries etc. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Convert.IConvertJson.html">IConvertJson</a></h4>
-      <section><p>Service to serialize/restore JSON. Get it using GetService &lt; T &gt;</p>
-<p>It works for 2sxc/EAV data but can be used for any data which can be serialized/deserialized.
-Since it&apos;s a data-operation, we keep it in this namespace, even if most other things in this namespace are 2sxc-data objects.</p>
-<p><em>Important</em> This is simple object-string conversion.
-It doesn&apos;t change entity objects to be serializable.
-For that you should use the <a href="xref:ToSic.Eav.ImportExport.JsonLight.IConvertToJsonLight"></a> which returns an object that can then be serialized. </p>
-</section>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.Data.html">ToSic.Eav.Data</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Eav.Core.dll</h6>
+  <h5 id="ToSic_Eav_Data_IConvert_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Just FYI to understand the internals. It will probably be moved elsewhere in the namespace some day. &quot;)]
+public interface IConvert&lt;in TFrom, out TTo&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td><p>The source format of this conversion</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IConvert_2_Convert__0_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IConvert%602.Convert(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/IConvert_T.cs/#L23">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IConvert_2_Convert_" data-uid="ToSic.Eav.Data.IConvert`2.Convert*"></a>
+  <h4 id="ToSic_Eav_Data_IConvert_2_Convert__0_" data-uid="ToSic.Eav.Data.IConvert`2.Convert(`0)">Convert(TFrom)</h4>
+  <div class="markdown level1 summary"><p>Convert an object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TTo Convert(TFrom item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IConvert_2_Convert_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IConvert%602.Convert(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/IConvert_T.cs/#L18">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IConvert_2_Convert_" data-uid="ToSic.Eav.Data.IConvert`2.Convert*"></a>
+  <h4 id="ToSic_Eav_Data_IConvert_2_Convert_System_Collections_Generic_IEnumerable__0__" data-uid="ToSic.Eav.Data.IConvert`2.Convert(System.Collections.Generic.IEnumerable{`0})">Convert(IEnumerable&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Return a list of converted objects - usually prepared for serialization or similar. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TTo&gt; Convert(IEnumerable&lt;TFrom&gt; list)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -141,6 +254,12 @@ For that you should use the <a href="xref:ToSic.Eav.ImportExport.JsonLight.IConv
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IConvert_2.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IConvert%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/IConvert_T.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

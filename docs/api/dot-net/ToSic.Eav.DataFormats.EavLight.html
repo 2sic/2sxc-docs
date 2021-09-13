@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Eav.Convert
+    <title>Namespace ToSic.Eav.DataFormats.EavLight
    | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Eav.Convert
+    <meta name="title" content="Namespace ToSic.Eav.DataFormats.EavLight
    | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -113,26 +113,47 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Convert">
+            <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataFormats.EavLight">
   
-  <h1 id="ToSic_Eav_Convert" data-uid="ToSic.Eav.Convert" class="text-break">Namespace ToSic.Eav.Convert
+  <h1 id="ToSic_Eav_DataFormats_EavLight" data-uid="ToSic.Eav.DataFormats.EavLight" class="text-break">Namespace ToSic.Eav.DataFormats.EavLight
   </h1>
   <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><p>The <strong>ToSic.Eav.Formats</strong> Namespace contain DTO-style objects which are meant for transferring or import/export of data. </p>
+<p>Most of the formats are currently not publicly documented, as they can still change a bit. </p>
+<p>Note that the formats themselves are more like DTO objects, so they can be serialized to JSON, XML or other future data formats. </p>
+<h2 id="eavlight">EavLight</h2>
+<p>The EAV Light data format is very trivial, basically a dictionary with values. 
+It&#39;s mainly used to serialize entities for use in JS etc. 
+Internally it&#39;s used for some admin-dialogs, and custom Razor and Web-APIs usually use this to provide one or more entities for direct use - either as inline-JSON or to then automatically serialize. </p>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+
+  <h2> Discover More in the Razor Tutorials </h2>
+
+  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
+
+</div></div>
   <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="ToSic.Eav.DataFormats.EavLight.EavLightEntity.html">EavLightEntity</a></h4>
+      <section><p>DTO for the most basic JSON format of EAV.
+It&apos;s a simple dictionary with name-value pairs.
+It is for export/serialization only, there is no official way to re-import an entity of this type.</p>
+<p>It is only meant to hold values of one language.</p>
+<p>Note that keys are always <span class="xref">System.StringComparer.InvariantCultureIgnoreCase</span></p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataFormats.EavLight.EavLightEntityReference.html">EavLightEntityReference</a></h4>
+      <section><p>DTO for a relationship pointer to other entities.</p>
+<p>Used in preparing Entities for Basic-JSON serialization.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
-      <h4><a class="xref" href="ToSic.Eav.Convert.IConvert-2.html">IConvert&lt;TFrom, TTo&gt;</a></h4>
-      <section><p>Interface which converts one type into another, or a list of that type into a list of the resulting type.
-Commonly used to convert entities to dictionaries etc. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Convert.IConvertJson.html">IConvertJson</a></h4>
-      <section><p>Service to serialize/restore JSON. Get it using GetService &lt; T &gt;</p>
-<p>It works for 2sxc/EAV data but can be used for any data which can be serialized/deserialized.
-Since it&apos;s a data-operation, we keep it in this namespace, even if most other things in this namespace are 2sxc-data objects.</p>
-<p><em>Important</em> This is simple object-string conversion.
-It doesn&apos;t change entity objects to be serializable.
-For that you should use the <a href="xref:ToSic.Eav.ImportExport.JsonLight.IConvertToJsonLight"></a> which returns an object that can then be serialized. </p>
+      <h4><a class="xref" href="ToSic.Eav.DataFormats.EavLight.IConvertToEavLight.html">IConvertToEavLight</a></h4>
+      <section><p>Helper / Service to prepare Entities, Streams and DataSources to <a class="xref" href="ToSic.Eav.DataFormats.EavLight.html">ToSic.Eav.DataFormats.EavLight</a> for automatic serialization in WebApis. </p>
+<p>It can prepare single items like <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Eav.Data.IEntityWrapper.html">IEntityWrapper</a> like DynamicEntities.
+It can also prepare IEnumerable/List of these types, as well as <strong>DataStream</strong> and <strong>DataSource</strong> objects. </p>
+<p>In Custom Code / Razor / WebApi you can get this service with Dependency Injection like <br> <code>var converter = GetService&amp;lt;IConvertToJsonLight&gt;()</code></p>
 </section>
 </article>
           </div>
@@ -141,6 +162,9 @@ For that you should use the <a href="xref:ToSic.Eav.ImportExport.JsonLight.IConv
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Eav/DataFormats/EavLight.md/#L2" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
 var ns = require('./api-meta.js');
 
 /**
@@ -73,6 +71,15 @@ const truncateTo = 2;
 function processNode(item, level) {
   // console.warn('2dm-processNode');
 
+  // debug data on item
+  // var debugModel = JSON.stringify(item);
+  // if(item.topicUid && item.topicUid.indexOf("ImportExport") > 0) {
+  //     console.warn('2dm - debug processNode' + debugModel);
+
+  //     if(item.level) // topicUid == 'ToSic.Eav.ImportExport.JsonLight') 
+  //       item.level += 1;
+  // }
+
   if(isNamespace(item.name)) {
     // add metadata - before changing the namespace
     addMeta(item, level);
@@ -80,7 +87,7 @@ function processNode(item, level) {
       shortenNamespace(item, level);
   }
   else
-    removeMeta(item);
+    setPriorityNormal(item);
 
   // do recursively if necessary, but should only matter on the 1st or 2nd recursion
   // if(level > 2) return; 
@@ -133,7 +140,7 @@ function addMeta(item, level) {
   //   console.warn("found and added priority" + JSON.stringify(item));
 }
 
-function removeMeta(item) {
+function setPriorityNormal(item) {
   count++;
   item.priority = ns.priorityNormal;
 }

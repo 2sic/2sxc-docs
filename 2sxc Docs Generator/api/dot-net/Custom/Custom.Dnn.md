@@ -1,7 +1,7 @@
 ﻿---
 uid: Custom.Dnn
 summary: *content
-title: Custom.Dnn Namespace
+# title: Custom.Dnn Namespace
 ---
 
 # Custom.Dnn Namespace for Dnn ☢️

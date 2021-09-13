@@ -17,9 +17,15 @@ const prioData = {
   priority: "data"
 };
 
+const prioDataInternal = {
+  // temp workaround because all classes which affect priority need the priority-prefix
+  priority: prioData.priority + ' priority-' + prioInternal.priority
+}
+
 const prioMeta = {
   priority: "metadata"
 };
+
 const prioAdam = {
   priority: "adam"
 };
@@ -37,10 +43,13 @@ exports.data = {
   "ToSic.Eav.Data": prioData,
   "ToSic.Eav.DataSources": prioData,
   "ToSic.Eav.DataSources.Caching": prioInternal,
-  "ToSic.Eav.DataSources.Queries": prioData,
+  "ToSic.Eav.DataSources.Queries": prioDataInternal,
   "ToSic.Eav.DataSources.System": prioInternal,
   "ToSic.Eav.Environment": prioInternal,
-  "ToSic.Eav.ImportExport.Json.Basic": prioInternal,
+  "ToSic.Eav.DataFormats": prioInternal,
+  "ToSic.Eav.DataFormats.EavLight": prioDataInternal,
+  // "ToSic.Eav.ImportExport.Json.Basic": prioInternal,
+  // "ToSic.Eav.ImportExport": prioData,
   "ToSic.Eav.Logging": prioInternal,
   "ToSic.Eav.LookUp": prioInternal,
   "ToSic.Eav.Metadata": prioMeta,

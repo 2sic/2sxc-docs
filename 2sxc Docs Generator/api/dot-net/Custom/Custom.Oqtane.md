@@ -1,7 +1,7 @@
 ﻿---
 uid: Custom.Oqtane
 summary: *content
-title: Custom.Oqtane Namespace
+# title: Custom.Oqtane Namespace
 ---
 
 # Custom.Oqtane Namespace for Oqtane 🩸
