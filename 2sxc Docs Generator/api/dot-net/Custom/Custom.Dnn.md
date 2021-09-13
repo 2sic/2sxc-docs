@@ -1,6 +1,6 @@
 ﻿---
 uid: Custom.Dnn
-summary: *content
+summary: Namespace for base classes of custom code, razor and WebApis in DNN
 # title: Custom.Dnn Namespace
 ---
 

@@ -344,6 +344,18 @@ If you really need them, download an old release of 2sxc and get them manually.
 1. DynamicEntity now has a property Count because it's a list as well, this could cause issues if a content-type has a property `Count`
 1. DynamicEntity is now always a list. Because of this we removed the `DynamicEntityWithList` object. We believe the type is never referenced in user code, but if it is, this would be a breaking change.
 
+### Version 12.05
+
+1. Introduced [](xref:ToSic.Sxc.Web.IJsonService) for json serialize/deserialize
+1. Published [](xref:ToSic.Eav.DataFormats.EavLight) to better document simple eav data
+1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.  
+   This is meant to replace previous code using objects such as `EntitiesToDictionary` or `DataToDictionary` which are now marked as obsolete.
+1. Bugfix: 
+
+**Possible Breaking Changes**
+
+1. We believe nothing broke, but it could be that some commands on `EntitiesToDictionary` or `DataToDictionary` were accidentally changed. Pls report so we can fix that. 
+
 ## Github Release Notes
 
 You can always find the latest and detailed release notes on the [github releases](https://github.com/2sic/2sxc/releases)
