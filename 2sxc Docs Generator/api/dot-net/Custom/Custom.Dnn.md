@@ -32,7 +32,3 @@ The base class for custom code. If you inherit from this class, you'll automatic
 #### [Razor12](xref:Custom.Dnn.Razor12)
 
 The base class for custom Razor. If you inherit from this class, you'll automatically have all the properties from [DynamicCode](xref:NetCode.DynamicCode.Index).
-
-<!-- #### [Razor12&lt;TModel&gt;](xref:Custom.Oqtane.Razor12`1)
-
-The base class for custom Razor. If you inherit from this class, you'll automatically have all the properties from [DynamicCode](xref:NetCode.DynamicCode.Index). -->

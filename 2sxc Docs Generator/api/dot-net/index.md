@@ -22,10 +22,14 @@ Once we're really sure that certain parts are very final, we'll publish the API 
 
 ### APIs in Razor Templates and WebApi
 
-1. If you are creating a **Razor** template and want to know what APIs are available, start with [](xref:ToSic.Sxc.Dnn.RazorComponent). 
+1. To create a **Razor** template and want to know what APIs are available, start with [](xref:Custom.Hybrid.Razor12) or [](xref:Custom.Dnn.Razor12). 
 	This is because new Razor Components inherits from that, so you'll see all the commannds you get there. 
 
-1. If you're creating a **WebApi** and need to know everything in it, you also want to check the [](xref:ToSic.Sxc.Dnn.ApiController), because all new WebApi classes inherit that. 
+1. To create a **WebApi** and need to know everything in it, you also want to check the [](xref:Custom.Hybrid.Api12) / [](xref:Custom.Dnn.Api12), because all new WebApi classes inherit that. 
+
+1. To create **Shared C# Code Files** we suggest you use the [](xref:Custom.Hybrid.Code12). 
+
+_Note: Previous versions of 2sxc recommended other base classes, but for the current v12 you should begin using the **Hybrid** versions, as it will also run on Oqtane in future._
 
 ### Working with Entities and ADAM Assets
 
@@ -36,5 +40,5 @@ Once we're really sure that certain parts are very final, we'll publish the API 
 
 ### Programming with DataSources and VisualQuery
 
-All the DataSources are based on [](xref:ToSic.Eav.DataSources.IDataSource) and most of them are also [](xref:ToSic.Eav.DataSources.IDataTarget) . You can find most of them in [](xref:ToSic.Eav.DataSources) . 
+All the DataSources are based on [](xref:ToSic.Eav.DataSources.IDataSource) and most of them are also [](xref:ToSic.Eav.DataSources.IDataTarget)s . You can find most of them in [](xref:ToSic.Eav.DataSources) . 
 
