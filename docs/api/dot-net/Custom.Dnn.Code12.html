@@ -118,10 +118,14 @@
   
   <h1 id="Custom_Dnn_Code12" data-uid="Custom.Dnn.Code12" class="text-break">Class Code12
   </h1>
-  <div class="markdown level0 summary"><p>This is the base class for custom code (.cs) files in your Apps.
-By inheriting from this base class, you will automatically have the context like the App object etc. available. </p>
+  <div class="markdown level0 summary"><p>Base Class for Dynamic CSharp Classes in Dnn</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><h3 id="class-customdnncode12-for-dnn-">Class Custom.Dnn.Code12 for Dnn ☢️</h3>
+<p>This is the Dnn specific base class. It&#39;s the very same as <code>Custom.Hybrid.Code12</code> except for the additional <code>Dnn</code> Property. </p>
+<p>Because of this, the documentation here only shows <code>Dnn</code> - for all other properties go to <a class="xref" href="Custom.Hybrid.Code12.html">Custom.Hybrid.Code12</a></p>
+<div class="TIP"><h5>Tip</h5><p>If you don&#39;t need these special properties, we strongly suggest to move to the Hybrid implementation.</p>
+</div>
+</div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
@@ -136,11 +140,15 @@ By inheriting from this base class, you will automatically have the context like
     <div><a class="xref" href="ToSic.Eav.Run.ICompatibilityLevel.html">ICompatibilityLevel</a></div>
     <div><a class="xref" href="ToSic.Eav.Logging.IHasLog.html">IHasLog</a></div>
     <div><a class="xref" href="ToSic.Eav.Data.IWrapper-1.html">IWrapper</a>&lt;<a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a>&gt;</div>
+    <div><a class="xref" href="ToSic.Sxc.Dnn.Code.IDnnDynamicCodeAdditions.html">IDnnDynamicCodeAdditions</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_UnwrappedContents">DynamicCode.UnwrappedContents</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_GetContents">DynamicCode.GetContents()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_App">DynamicCode.App</a>
@@ -197,6 +205,9 @@ By inheriting from this base class, you will automatically have the context like
       <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_AsList_System_Object_">DynamicCode.AsList(Object)</a>
     </div>
     <div>
+      <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_Convert">DynamicCode.Convert</a>
+    </div>
+    <div>
       <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_CreateSource__1_ToSic_Eav_DataSources_IDataStream_">DynamicCode.CreateSource&lt;T&gt;(IDataStream)</a>
     </div>
     <div>
@@ -222,9 +233,43 @@ By inheriting from this base class, you will automatically have the context like
   <h6><strong>Assembly</strong>: ToSic.Sxc.Dnn.dll</h6>
   <h5 id="Custom_Dnn_Code12_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode(&quot;Still WIP&quot;)]
-public abstract class Code12 : DynamicCode, IDynamicCode, ICreateInstance, ICompatibilityLevel, IHasLog, IWrapper&lt;IDynamicCode&gt;, ICoupledDynamicCode, IHasDynamicCodeRoot</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
+public abstract class Code12 : DynamicCode, IDynamicCode, ICreateInstance, ICompatibilityLevel, IHasLog, IWrapper&lt;IDynamicCode&gt;, ICoupledDynamicCode, IHasDynamicCodeRoot, IDnnDynamicCodeAdditions</code></pre>
   </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Dnn_Code12_Dnn.md&amp;value=---%0Auid%3A%20Custom.Dnn.Code12.Dnn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn/Custom.Dnn/Code12.cs/#L16">View Source</a>
+  </span>
+  <a id="Custom_Dnn_Code12_Dnn_" data-uid="Custom.Dnn.Code12.Dnn*"></a>
+  <h4 id="Custom_Dnn_Code12_Dnn" data-uid="Custom.Dnn.Code12.Dnn">Dnn</h4>
+  <div class="markdown level1 summary"><p>The DNN context.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDnnContext Dnn { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Dnn.Run.IDnnContext.html">IDnnContext</a></td>
+        <td><p>The DNN context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a>
@@ -241,6 +286,9 @@ public abstract class Code12 : DynamicCode, IDynamicCode, ICreateInstance, IComp
   <div>
       <a class="xref" href="ToSic.Eav.Data.IWrapper-1.html">IWrapper&lt;T&gt;</a>
   </div>
+  <div>
+      <a class="xref" href="ToSic.Sxc.Dnn.Code.IDnnDynamicCodeAdditions.html">IDnnDynamicCodeAdditions</a>
+  </div>
 </article>
           </div>
           
@@ -249,10 +297,10 @@ public abstract class Code12 : DynamicCode, IDynamicCode, ICreateInstance, IComp
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Dnn_Code12.md&amp;value=---%0Auid%3A%20Custom.Dnn.Code12%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/Custom/Dnn/Code12.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn/Custom.Dnn/Code12.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn/Custom.Dnn/Code12.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
