@@ -16,6 +16,18 @@ We're documenting it here to ensure you know what happened, in case you still ru
 1. Many parts that prepare Entities returned a `Dictionary<string, object>` and now return an `IDictionary<string, object>`.  
    We believe this shouldn't hurt much, since the result would usually be in a `var` or returend directly to the API for streaming, but in case someone had used explicitly typed code, this will require a minor change
 
+#### Version 12.05
+
+V12 adds new properties to Razor and WebAPI which could result in some surprises: `Path`, `Convert`, `Settings`, `Resources` and `DevTools`. 
+Especially the new `Path` and `Convert` could clash with existing code which had `@using System` or `@using System.IO` so the code would just read `Path.GetFileName(...)` or something. 
+Because of this, we only give the latest classes `Custom.Dnn.Razor12`, `Custom.Dnn.Code12`, `Custom.Hybrid.Razor12`, `Custom.Hybrid.Api12` etc. these properties. 
+
+This means that previous base classes do not have these by design, and we encourage you to move to these latest base classes. 
+
+> Important: 2sxc 12.00 - 12.04 also had some of these properties on `ToSic.Sxc.Dnn.RazorComponent` as well as `ToSic.Sxc.Dnn.ApiController`.
+> So if you were eager to use these properties but didn't change the base class, you were able to use it. 
+> To protect thousands of upgrade-scenarios we had to take them away from the old base classes. Sorry!
+
 ## Version 11
 
 There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers. 
