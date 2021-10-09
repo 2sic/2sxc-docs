@@ -135,7 +135,7 @@ public interface ILinkHelper : INeedsCodeRoot</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_Base.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.Base%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L48">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_Base_" data-uid="ToSic.Sxc.Web.ILinkHelper.Base*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_Base" data-uid="ToSic.Sxc.Web.ILinkHelper.Base">Base()</h4>
@@ -166,11 +166,18 @@ public interface ILinkHelper : INeedsCodeRoot</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_Image_System_String_System_Object_System_Object_System_String_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.Image(System.String%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L106">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L104">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_Image_" data-uid="ToSic.Sxc.Web.ILinkHelper.Image*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_Image_System_String_System_Object_System_Object_System_String_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_" data-uid="ToSic.Sxc.Web.ILinkHelper.Image(System.String,System.Object,System.Object,System.String,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object)">Image(String, Object, Object, String, Object, Object, Object, String, String, String, Object, String, Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Generate an Image-Resizing link base on presets or custom parameters.<br>It will also ensure that the final url is safe, so it will encode umlauts, spaces etc.</p>
+<p>Note that you can basically just use presets, or set every parameter manually.</p>
+<ul>
+<li>All params are optional.</li>
+<li>Some combinations are not valid - like setting a factor and a width doesn&apos;t make sense and will throw an error</li>
+<li>Most parameters if set to 0 will cause a reset so that this aspect is not in the URL</li>
+</ul>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -189,62 +196,79 @@ public interface ILinkHelper : INeedsCodeRoot</code></pre>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">url</span></td>
-        <td></td>
+        <td><p>The image url. Use an empty string if you want to just get the params for re-use.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">settings</span></td>
-        <td></td>
+        <td><p>A standardized Image-Settings object like Settings.Images.Content - see <a href="http://r.2sxc.org/settings">http://r.2sxc.org/settings</a> </p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">factor</span></td>
-        <td></td>
+        <td><p>A multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5. It only affects sizes from the settings.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
-        <td></td>
+        <td><p>a helper to ensure that you must use named parameters. You shouldn&apos;t give it anything, but you must use all others like parameters: &quot;id=47&amp;name=42&quot;</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">width</span></td>
-        <td></td>
+        <td><p>Optional width parameter. Cannot be used if <code>factor</code> is set. Usually takes the default from the <code>settings</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">height</span></td>
-        <td></td>
+        <td><p>Optional height parameter. Can only be 0 if <code>factor</code> is set, no not specify a height. Usually takes the default from the <code>settings</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">quality</span></td>
-        <td></td>
+        <td><p>Optional quality parameter. Usually takes the default from the <code>settings</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">resizeMode</span></td>
-        <td></td>
+        <td><p>Optional resize-mode, like <code>crop</code> or <code>max</code>. Usually takes the default from the <code>settings</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">scaleMode</span></td>
-        <td></td>
+        <td><p>Optional scale-mode to allow up-scaling images like <code>up</code> or <code>both</code>. Usually takes the default from the <code>settings</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">format</span></td>
-        <td></td>
+        <td><p>Optional file format like <code>jpg</code> or <code>png</code></p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">aspectRatio</span></td>
-        <td></td>
+        <td><p>Aspect Ratio width/height, only relevant if a <code>factor</code> is supplied. Usually takes default from the <code>settings</code> or is ignored. </p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>Optional type changes how the link is generated. Possible values are:</p>
+<ul>
+<li>null / not specified / empty = return link as is generated</li>
+<li><code>&amp;quot;full&amp;quot;</code> return link with protocol and domain. If that was missing before, it will add current protocol/domain if possible, but not on relative <code>./</code> or <code>../</code> links</li>
+<li><code>&amp;quot;//&amp;quot;</code> return link with <code>//domain</code>. If that was missing before, will add current domain if possible, but not on relative <code>./</code> or <code>../</code> links</li>
+</ul>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
@@ -268,12 +292,17 @@ public interface ILinkHelper : INeedsCodeRoot</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Sxc_Web_ILinkHelper_Image_System_String_System_Object_System_Object_System_String_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Usually a factor is applied to create a link which is possibly 50% of the content-width or similar.
+In these cases the height is not applied but the aspectRatio is used, which usually comes from <code>settings</code> if any were provided.
+New in 2sxc 12.03</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_SetDebug_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.SetDebug(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L128">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L126">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_SetDebug_" data-uid="ToSic.Sxc.Web.ILinkHelper.SetDebug*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_SetDebug_System_Boolean_" data-uid="ToSic.Sxc.Web.ILinkHelper.SetDebug(System.Boolean)">SetDebug(Boolean)</h4>
@@ -308,11 +337,12 @@ void SetDebug(bool debug)</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_To_System_String_System_Nullable_System_Int32__System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.To(System.String%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L36">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L35">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_To_" data-uid="ToSic.Sxc.Web.ILinkHelper.To*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_To_System_String_System_Nullable_System_Int32__System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Web.ILinkHelper.To(System.String,System.Nullable{System.Int32},System.Object,System.String,System.String)">To(String, Nullable&lt;Int32&gt;, Object, String, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>returns a link to the current page with parameters resolved in a way that DNN wants it</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -331,27 +361,40 @@ void SetDebug(bool debug)</code></pre>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
-        <td></td>
+        <td><p>a helper to ensure that you must use named parameters. You shouldn&apos;t give it anything, but you must use all others like parameters: &quot;id=47&amp;name=42&quot;</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td><span class="parametername">pageId</span></td>
-        <td></td>
+        <td><p>optional page ID (TabId) - if not supplied, will use current page</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><ul>
+<li>the parameters either as <code>id=47&amp;amp;name=daniel</code> (Dnn also supports <code>/id/47/name/daniel</code>)</li>
+<li>in 2sxc 12.05+ it can also be an <a class="xref" href="ToSic.Sxc.Context.IParameters.html">IParameters</a></li>
+</ul>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">api</span></td>
-        <td></td>
+        <td><p>optional api url &quot;api/name/method?id=something&quot;</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>Optional type changes how the link is generated. Possible values are:</p>
+<ul>
+<li>null / not specified / empty = return link as is generated</li>
+<li><code>&amp;quot;full&amp;quot;</code> return link with protocol and domain. If that was missing before, it will add current protocol/domain if possible, but not on relative <code>./</code> or <code>../</code> links</li>
+<li><code>&amp;quot;//&amp;quot;</code> return link with <code>//domain</code>. If that was missing before, will add current domain if possible, but not on relative <code>./</code> or <code>../</code> links</li>
+</ul>
+</td>
       </tr>
     </tbody>
   </table>
@@ -370,6 +413,13 @@ void SetDebug(bool debug)</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Sxc_Web_ILinkHelper_To_System_String_System_Nullable_System_Int32__System_Object_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>History</p>
+<ul>
+<li>v12 added the api parameter for liking APIs of the current app</li>
+<li>In v12.05 the type of parameters was changed from string to object, to allow <a class="xref" href="ToSic.Sxc.Context.IParameters.html">IParameters</a> as well</li>
+</ul>
+</div>
 </article>
           </div>
           
@@ -381,7 +431,7 @@ void SetDebug(bool debug)</code></pre>
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/ILinkHelper.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
