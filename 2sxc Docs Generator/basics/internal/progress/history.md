@@ -346,11 +346,14 @@ If you really need them, download an old release of 2sxc and get them manually.
 
 ### Version 12.05
 
-1. Introduced [](xref:ToSic.Sxc.Web.IJsonService) for json serialize/deserialize
+1. Introduced [](xref:ToSic.Sxc.Services.IJsonService) for json serialize/deserialize
+1. Introduced [](xref:ToSic.Sxc.Services.IConvertService) for simple data-type conversion, also available on the `Convert` property of Razor12 and Api12
+1. Introduced [](xref:ToSic.Sxc.Services.ILogService) to log messages to the system (Dnn/Oqtane)
+1. Introduced [](xref:ToSic.Sxc.Services.IMailService) to easily send mails cross-platform
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight) to better document simple eav data
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.  
    This is meant to replace previous code using objects such as `EntitiesToDictionary` or `DataToDictionary` which are now marked as obsolete.
-1. Bugfix: 
+1. Bugfix: lots of small ones
 
 **Possible Breaking Changes**
 

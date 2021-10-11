@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Features
+    <title>Interface IJsonService
    | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Features
+    <meta name="title" content="Interface IJsonService
    | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -113,46 +113,50 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Configuration.Features">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.IJsonService">
   
   
-  <h1 id="ToSic_Eav_Configuration_Features" data-uid="ToSic.Eav.Configuration.Features" class="text-break">Class Features
+  <h1 id="ToSic_Sxc_Services_IJsonService" data-uid="ToSic.Sxc.Services.IJsonService" class="text-break">Interface IJsonService
   </h1>
-  <div class="markdown level0 summary"><p>This in an old API for determining if a system feature is enabled. Some will continue to work, but you should not use them.</p>
-<p>Prefer to use the IFeatureService instead</p>
+  <div class="markdown level0 summary"><p>Service to serialize/restore JSON. Get it using GetService &lt; T &gt;</p>
+<p>It works for 2sxc/EAV data but can be used for any data which can be serialized/deserialized.
+Since it&apos;s a data-operation, we keep it in this namespace, even if most other things in this namespace are 2sxc-data objects.</p>
+<p><em>Important</em> This is simple object-string conversion.
+It doesn&apos;t change entity objects to be serializable.
+For that you should use the <a class="xref" href="ToSic.Eav.DataFormats.EavLight.IConvertToEavLight.html">IConvertToEavLight</a> which returns an object that can then be serialized. </p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Features</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.Configuration.html">ToSic.Eav.Configuration</a></h6>
-  <h6><strong>Assembly</strong>: ToSic.Eav.Core.dll</h6>
-  <h5 id="ToSic_Eav_Configuration_Features_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
+  <h5 id="ToSic_Sxc_Services_IJsonService_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Obsolete in 2sxc 12 - please use the IFeaturesService instead&quot;)]
-[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;this is just fyi&quot;)]
-public static class Features</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public interface IJsonService</code></pre>
   </div>
+  <h5 id="ToSic_Sxc_Services_IJsonService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Introduced in 2sxc 12.05.
+For previous versions of 2sxc, you can just write code to access Newtonsoft directly.
+For more control regarding serialization, also just work with Newtonsoft directly.</p>
+<p>Internally it uses Newtonsoft and preserves the case of keys.
+In future the internal engine may change (like for .net core), but we&apos;ll ensure that the result remains consistent. </p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Configuration_Features_Enabled_System_Collections_Generic_IEnumerable_System_Guid__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Configuration.Features.Enabled(System.Collections.Generic.IEnumerable%7BSystem.Guid%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IJsonService_To__1_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IJsonService.To%60%601(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Configuration/Features.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/JsonService/IJsonService.cs/#L39">View Source</a>
   </span>
-  <a id="ToSic_Eav_Configuration_Features_Enabled_" data-uid="ToSic.Eav.Configuration.Features.Enabled*"></a>
-  <h4 id="ToSic_Eav_Configuration_Features_Enabled_System_Collections_Generic_IEnumerable_System_Guid__" data-uid="ToSic.Eav.Configuration.Features.Enabled(System.Collections.Generic.IEnumerable{System.Guid})">Enabled(IEnumerable&lt;Guid&gt;)</h4>
-  <div class="markdown level1 summary"><p>Checks if a list of features are enabled, in case you need many features to be activated.</p>
+  <a id="ToSic_Sxc_Services_IJsonService_To_" data-uid="ToSic.Sxc.Services.IJsonService.To*"></a>
+  <h4 id="ToSic_Sxc_Services_IJsonService_To__1_System_String_" data-uid="ToSic.Sxc.Services.IJsonService.To``1(System.String)">To&lt;T&gt;(String)</h4>
+  <div class="markdown level1 summary"><p>Convert a JSON to a typed object. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Do not use anymore, get the IFeaturesService for this. Will not remove for a long time, because in use in public Apps like Mobius&quot;)]
-public static bool Enabled(IEnumerable&lt;Guid&gt; guids)</code></pre>
+    <pre><code class="lang-csharp hljs">T To&lt;T&gt;(string json)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,10 +169,9 @@ public static bool Enabled(IEnumerable&lt;Guid&gt; guids)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
-        <td><span class="parametername">guids</span></td>
-        <td><p>list/array of Guids</p>
-</td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">json</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -182,28 +185,42 @@ public static bool Enabled(IEnumerable&lt;Guid&gt; guids)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>true if all features are enabled, false if any one of them is not</p>
-</td>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Configuration_Features_Enabled_System_Guid_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Configuration.Features.Enabled(System.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IJsonService_ToJson_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IJsonService.ToJson(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Configuration/Features.cs/#L41">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/JsonService/IJsonService.cs/#L31">View Source</a>
   </span>
-  <a id="ToSic_Eav_Configuration_Features_Enabled_" data-uid="ToSic.Eav.Configuration.Features.Enabled*"></a>
-  <h4 id="ToSic_Eav_Configuration_Features_Enabled_System_Guid_" data-uid="ToSic.Eav.Configuration.Features.Enabled(System.Guid)">Enabled(Guid)</h4>
-  <div class="markdown level1 summary"><p>Checks if a feature is enabled</p>
+  <a id="ToSic_Sxc_Services_IJsonService_ToJson_" data-uid="ToSic.Sxc.Services.IJsonService.ToJson*"></a>
+  <h4 id="ToSic_Sxc_Services_IJsonService_ToJson_System_Object_" data-uid="ToSic.Sxc.Services.IJsonService.ToJson(System.Object)">ToJson(Object)</h4>
+  <div class="markdown level1 summary"><p>Convert an object to JSON.</p>
+<p>If you need to add the JSON to HTML of a page, make sure you also use <code>Html.Raw(...)</code>, otherwise it will be encoded and not usable in JavaScript.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Do not use anymore, get the IFeaturesService for this. Will not remove for a long time, because in use in public Apps like Mobius&quot;)]
-public static bool Enabled(Guid guid)</code></pre>
+    <pre><code class="lang-csharp hljs">string ToJson(object item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,10 +233,9 @@ public static bool Enabled(Guid guid)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
-        <td><span class="parametername">guid</span></td>
-        <td><p>The feature Guid</p>
-</td>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -233,9 +249,58 @@ public static bool Enabled(Guid guid)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>true if the feature is enabled</p>
-</td>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IJsonService_ToObject_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IJsonService.ToObject(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/JsonService/IJsonService.cs/#L49">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Services_IJsonService_ToObject_" data-uid="ToSic.Sxc.Services.IJsonService.ToObject*"></a>
+  <h4 id="ToSic_Sxc_Services_IJsonService_ToObject_System_String_" data-uid="ToSic.Sxc.Services.IJsonService.ToObject(System.String)">ToObject(String)</h4>
+  <div class="markdown level1 summary"><p>Convert a json to an anonymous object.
+This is a very technical thing to do, so only use it if you know why you&apos;re doing this.</p>
+<p>It&apos;s usually better to use <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_AsDynamic_System_String_System_String_">AsDynamic(String, String)</a> or  <a class="xref" href="ToSic.Sxc.Services.IJsonService.html#ToSic_Sxc_Services_IJsonService_To__1_System_String_">To&lt;T&gt;(String)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object ToObject(string json)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">json</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -247,10 +312,10 @@ public static bool Enabled(Guid guid)</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Configuration_Features.md&amp;value=---%0Auid%3A%20ToSic.Eav.Configuration.Features%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IJsonService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IJsonService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Configuration/Features.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/JsonService/IJsonService.cs/#L23" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
