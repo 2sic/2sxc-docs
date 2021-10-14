@@ -451,13 +451,25 @@ If you really need them, download an old release of 2sxc and get them manually. 
 <li>Introduced <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IConvertService.html">IConvertService</a> for simple data-type conversion, also available on the <code>Convert</code> property of Razor12 and Api12</li>
 <li>Introduced <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.ILogService.html">ILogService</a> to log messages to the system (Dnn/Oqtane)</li>
 <li>Introduced <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IMailService.html">IMailService</a> to easily send mails cross-platform</li>
+<li>Introduced <a href="xref:ToSic.Sxc.Services.ISecureDataService"></a> to use encrypted settings</li>
+<li>Introduced <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Blocks.IRenderService.html">IRenderService</a> for inner-content rendering (Oqtane code must use this)</li>
 <li>Published <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataFormats.EavLight.html">ToSic.Eav.DataFormats.EavLight</a> to better document simple eav data</li>
 <li>Published <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataFormats.EavLight.IConvertToEavLight.html">IConvertToEavLight</a> as the new standard way to prepare entities for WebAPI serialization.<br>This is meant to replace previous code using objects such as <code>EntitiesToDictionary</code> or <code>DataToDictionary</code> which are now marked as obsolete.</li>
+<li>New Razor12, Api12 and Code12 Classes now don&#39;t support old, obsolete APIs anymore </li>
+<li>Link.Image now also accepts <code>parameters</code> as a parameter</li>
+<li>Link.Image and Link.To always create safe urls now (spaces are encoded etc.)</li>
+<li>Link.To and Link.Image now have a parameter <code>type</code> which can be <code>&quot;full&quot;</code> to ensure domains are always added to links (for use in APIs generating RSS etc.)</li>
+<li>Update to RazorBlade v3.7</li>
+<li>Edit.Toolbar now supports <code>condition</code> so that toolbars may or may not be created based on a true/false value</li>
+<li>Link.Image now also accepts a <code>factor</code> or <code>aspectRatio</code> which is a string like <code>1:2</code> or <code>3/4</code></li>
+<li><code>AsDynamic(...)</code> now also wraps anonymous objects in quite an amazing way</li>
 <li>Bugfix: lots of small ones</li>
 </ol>
 <p><strong>Possible Breaking Changes</strong></p>
 <ol>
 <li>We believe nothing broke, but it could be that some commands on <code>EntitiesToDictionary</code> or <code>DataToDictionary</code> were accidentally changed. Pls report so we can fix that. </li>
+<li>The <code>Link.To(...)</code> now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now <code>%20</code></li>
+<li>We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you&#39;ll get an error telling you about this.</li>
 </ol>
 <h2 id="github-release-notes">Github Release Notes</h2>
 <p>You can always find the latest and detailed release notes on the <a href="https://github.com/2sic/2sxc/releases">github releases</a></p>

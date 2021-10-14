@@ -350,14 +350,26 @@ If you really need them, download an old release of 2sxc and get them manually.
 1. Introduced [](xref:ToSic.Sxc.Services.IConvertService) for simple data-type conversion, also available on the `Convert` property of Razor12 and Api12
 1. Introduced [](xref:ToSic.Sxc.Services.ILogService) to log messages to the system (Dnn/Oqtane)
 1. Introduced [](xref:ToSic.Sxc.Services.IMailService) to easily send mails cross-platform
+1. Introduced [](xref:ToSic.Sxc.Services.ISecureDataService) to use encrypted settings
+1. Introduced [](xref:ToSic.Sxc.Blocks.IRenderService) for inner-content rendering (Oqtane code must use this)
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight) to better document simple eav data
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.  
    This is meant to replace previous code using objects such as `EntitiesToDictionary` or `DataToDictionary` which are now marked as obsolete.
+1. New Razor12, Api12 and Code12 Classes now don't support old, obsolete APIs anymore 
+1. Link.Image now also accepts `parameters` as a parameter
+1. Link.Image and Link.To always create safe urls now (spaces are encoded etc.)
+1. Link.To and Link.Image now have a parameter `type` which can be `"full"` to ensure domains are always added to links (for use in APIs generating RSS etc.)
+1. Update to RazorBlade v3.7
+1. Edit.Toolbar now supports `condition` so that toolbars may or may not be created based on a true/false value
+1. Link.Image now also accepts a `factor` or `aspectRatio` which is a string like `1:2` or `3/4`
+1. `AsDynamic(...)` now also wraps anonymous objects in quite an amazing way
 1. Bugfix: lots of small ones
 
 **Possible Breaking Changes**
 
 1. We believe nothing broke, but it could be that some commands on `EntitiesToDictionary` or `DataToDictionary` were accidentally changed. Pls report so we can fix that. 
+1. The `Link.To(...)` now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now `%20`
+1. We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you'll get an error telling you about this.
 
 ## Github Release Notes
 
