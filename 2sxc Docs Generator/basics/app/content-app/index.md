@@ -35,10 +35,14 @@ It will _first_ show the [Content Type](xref:Basics.Data.ContentTypes.Index) pic
 _The_ Content App can auto-install prepared templates which are specifically designed for this use case. This is why the installer looks different for _The_ Content App than for normal Apps. 
 
 > [!TIP]
-> Instead of installing the default set of Content-Types and Views, you can also skip this and just configure your own or import your preferred default Content-App.
+> Instead of installing the default set of Content-Types and Views, you can also skip this and just configure your own or import your preferred default Content-App. 
+> 
+> Use this [✅ checklist to create a custom template app](https://azing.org/2sxc/r/YHKvArc6)
+> 
+> Use this [✅ checklist to import the custom app](https://azing.org/2sxc/r/t5OIFlI6)
 
 
-## Special Limitations of _The_ Content App
+## Special Limitations of The Primary Content App
 
 Since the Content-App is always there by default and the purpose is to add/edit simple content, it's limited by design to _not_ have some functionality other Apps have. This is mainly to protect the developer from building solutions with a bad user experience, since anything complex should be self-contained in it's own App. The limitations are:
 
@@ -52,14 +56,16 @@ Since the Content-App is always there by default and the purpose is to add/edit 
 
 ---
 
-## Rearn More
+## Learn More
 
 1. [The App Folder Structure](xref:Basics.App.FolderStructure)
 1. [App Icons](xref:Basics.App.Icons)
 1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
+1. [✅ How to reset the content-app to factory defaults](https://azing.org/2sxc/r/Ll3AalkO)
 
 ## History
 
 1. Introduced in 2sxc 1.0
 1. Enhanced to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11
 1. Extended to contain [Settings and Resources which apply to the whole site](xref:Basics.Configuration.Index) in v12.04
+1. Massively enhanced to be Hybrid (Dnn/Oqtane) and follow best practices in 12.05
