@@ -49,7 +49,7 @@ An example code
 }
 ```
 
-The previous example creates an App source to the zone 2, app 403 and retrieves all items of type  `BolgPost` to show in a loop. 
+The previous example creates an App source to the zone 2, app 403 and retrieves all items of type  `BlogPost` to show in a loop. 
 
 ### Important When Coding
 Note that data sources only retrieve data once, and then ignore any further configuration. So you must set Zone/App before accessing the data. 
