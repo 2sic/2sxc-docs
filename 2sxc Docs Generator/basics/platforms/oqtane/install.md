@@ -18,15 +18,16 @@ we created on installing Oqtane and 2sxc.
 
 | Oqtane V. | Best | Compatible | Incompatible | Comments |
 | --- | --- | --- | --- | --- | 
-| 2.0 | 12.00 | 12.00 - 12.02 | 12.04+ |
-| 2.1 | 12.04 | 12.04 | 12.04+ | Changes in Multi-Language
-| 2.2 | 12.04 | 12.04+ | pre 12.04 | Changes in Bootstrap / jQuery & Authentication
-| next | ? | ? | pre 12.04 |
+| 2.0 | 12.00 | ✅ 12.00 - 12.02 | ⛔ 12.04+ |
+| 2.1 | 12.04 | ✅ 12.04         | ⛔ 12.04+ | Changes in Multi-Language
+| 2.2 | 12.04 | ✅ 12.04+        | ⛔ pre 12.04 | Changes in Bootstrap / jQuery & Authentication
+| 2.3 | 12.04 | ✅ 12.04+        | ⛔ pre 12.04 | 
+ next | ? | ? | pre 12.04 |
 
 ## Upgrade Existing Installations
 
 When upgrading an existing Oqtane/2sxc you should follow these steps: 
 
 1. make sure that a compatible 2sxc exists
-1. upgrade Oqtane first - probably 2sxc then stops working
+1. upgrade Oqtane first - possibly 2sxc then stops working
 1. then upgrade 2sxc

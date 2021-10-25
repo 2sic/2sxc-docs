@@ -132,6 +132,12 @@ Because of this, we only give the latest classes <code>Custom.Dnn.Razor12</code>
 So if you were eager to use these properties but didn&#39;t change the base class, you were able to use it. 
 To protect thousands of upgrade-scenarios we had to take them away from the old base classes. Sorry!</p>
 </blockquote>
+<p><strong>Possible Breaking Changes</strong></p>
+<ol>
+<li>We believe nothing broke, but it could be that some commands on <code>EntitiesToDictionary</code> or <code>DataToDictionary</code> were accidentally changed. Pls report so we can fix that. </li>
+<li>The <code>Link.To(...)</code> now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now <code>%20</code></li>
+<li>We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you&#39;ll get an error telling you about this.</li>
+</ol>
 <h2 id="version-11">Version 11</h2>
 <p>There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn&#39;t affect normal developers. </p>
 <h4 id="version-1107---drop-the-old-edit-ui">Version 11.07 - Drop the old edit UI</h4>

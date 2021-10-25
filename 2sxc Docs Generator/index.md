@@ -1,7 +1,7 @@
 
 <img src="assets/logos/v12/2sxc12-200.png" width="250px" align="right" class="float-right">
 
-# 2sxc / EAV Docs v12.06
+# 2sxc / EAV Docs v12.06 LTS
 
 This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
 
@@ -49,7 +49,7 @@ Next to document
   1. Create in the APIs (simplify APIs first)
   1. Create good sample of Page-Metadata App
 
-These topics are not or insufficiently documented...
+These topics are insufficiently documented...
 
 1. URL and REST API for changing data
 1. Future topics, lower priority

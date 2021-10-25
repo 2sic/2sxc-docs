@@ -115,17 +115,24 @@
 <h1 id="platform-differences">Platform Differences</h1>
 
 <p>This is a temporary documentation. We&#39;ll try to collect differences in behavior and APIs of all the supported platforms and how to work around limitations of each. </p>
-<p>Last Update: 2021-04-29</p>
 <h2 id="app--file-management">App / File Management</h2>
 <ol>
-<li>ATM the final location for storing apps hasn&#39;t been decided yet, still WIP</li>
-<li>ATM the final location for ADAM assets hasn&#39;t been decided yet</li>
+<li>App files<ul>
+<li>☢️ Dnn places App folders in the <code>[PortalRoot]/2sxc/[AppName]</code> eg. <code>/Portals/0/2sxc/Blog5</code></li>
+<li>💧 Oqtane places App folders in <code>/2sxc/[SiteId]/[AppName]</code> eg. <code>/2sxc/1/Blog5</code></li>
+</ul>
+</li>
+<li>ADAM Files (Automatic Digital Asset Management)<ul>
+<li>☢️ Dnn places ADAM assets in the <code>[PortalRoot]/adam/[AppName]</code> eg. <code>/Portals/0/adam/[AppName]</code></li>
+<li>💧 Oqtane places ADAM assets in <code>/Content/Tenants/[TenantId]/Sites/[SiteId]/adam/[AppName]</code> eg. <code>/Content/Tenants/1/Sites/1/adam/Blog5</code></li>
+</ul>
+</li>
 </ol>
 <h2 id="razor-api">Razor API</h2>
+<p>Dnn uses ASP.net Framework MVC v.3 which is much older than Oqtane, but 95% is compatible. </p>
 <table>
 <thead>
 <tr>
-<th>Collection</th>
 <th>Feature</th>
 <th style="text-align:center">Dnn</th>
 <th style="text-align:center">Oqtane</th>
@@ -135,23 +142,13 @@
 </thead>
 <tbody>
 <tr>
-<td>Razor APIs</td>
-<td></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Razor</td>
 <td><code>@helper</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
-<td>not in .net core 5</td>
+<td>.net 4</td>
 <td>create a separate file for each helper and use <code>Html.Partial(...)</code></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Dnn</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
@@ -159,7 +156,6 @@
 <td>Use <code>CmsContext</code>, a bit more limited. For Oqtane features use Dependency Injection.</td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Html.Raw(...)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -167,15 +163,13 @@
 <td></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>RenderPage(...)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
-<td>.net 4.5</td>
+<td>.net 4</td>
 <td>Use <code>Html.Partial(...)</code> instead</td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Html.Partial(...)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -183,31 +177,42 @@
 <td>Polyfill added to Dnn in 2sxc 12</td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Request</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
-<td>.net 4.5</td>
+<td>.net 4</td>
 <td>.net core uses a much longer name <br> <code>ViewContext.HttpContext.Request</code></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Request.QueryString</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
-<td>.net 4.5</td>
+<td>.net 4</td>
 <td>.net core uses a much longer name <br> <code>ViewContext.HttpContext.Request.Query</code></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>CmsContext.Page.Parameters</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
 <td>2sxc 12</td>
 <td>Use this for cross-platform QueryString params</td>
 </tr>
+</tbody>
+</table>
+<h2 id="razor-2sxc-api">Razor 2sxc API</h2>
+<p>These are 2sxc APIs which are often used in Razor.</p>
+<table>
+<thead>
 <tr>
-<td>2sxc API</td>
+<th>Feature</th>
+<th style="text-align:center">Dnn</th>
+<th style="text-align:center">Oqtane</th>
+<th>Compatibility</th>
+<th>Notes / Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td><code>Link.To(...)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -215,24 +220,21 @@
 <td>works cross-platform</td>
 </tr>
 <tr>
-<td>Shared Code</td>
-<td><code>CreateInstance(...cs)</code></td>
+<td><code>CreateInstance(.cs)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
 <td>2sxc 10</td>
 <td>works cross-platform</td>
 </tr>
 <tr>
-<td>Shared Code</td>
-<td><code>CreateInstance(...cshtml)</code></td>
+<td><code>CreateInstance(.cshtml)</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>Dnn only</td>
 <td>Doesn&#39;t make sense on .net core, use <code>.cs</code></td>
 </tr>
 <tr>
-<td>Code-Behind</td>
-<td><code>Code.xxx</code></td>
+<td><code>Code.Something()</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>2sxc 11</td>
@@ -244,7 +246,6 @@
 <table>
 <thead>
 <tr>
-<th>Collection</th>
 <th>Feature</th>
 <th style="text-align:center">Dnn</th>
 <th style="text-align:center">Oqtane</th>
@@ -254,7 +255,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Razor</td>
 <td><code>Model</code> object</td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
@@ -262,7 +262,6 @@
 <td>Use <code>DynamicModel</code></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>PageData</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
@@ -270,7 +269,6 @@
 <td>Use <code>DynamicModel</code></td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>DynamicModel</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -283,7 +281,6 @@
 <table>
 <thead>
 <tr>
-<th>Collection</th>
 <th>Feature</th>
 <th style="text-align:center">Dnn</th>
 <th style="text-align:center">Oqtane</th>
@@ -293,7 +290,6 @@
 </thead>
 <tbody>
 <tr>
-<td>RazorBlade</td>
 <td><code>Tag</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -301,7 +297,6 @@
 <td></td>
 </tr>
 <tr>
-<td>RazorBlade</td>
 <td><code>Tags</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -309,7 +304,6 @@
 <td></td>
 </tr>
 <tr>
-<td>RazorBlade</td>
 <td><code>Text</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -317,19 +311,17 @@
 <td></td>
 </tr>
 <tr>
-<td>RazorBlade</td>
 <td><code>HtmlPage</code> object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
 <td>-</td>
-<td>Use <code>IPageService</code></td>
+<td>Use <a class="xref" href="../../net-code/razor/services/page-service.html">IPageService</a></td>
 </tr>
 <tr>
-<td>RazorBlade</td>
 <td><code>IPageService</code></td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
-<td>12.02</td>
+<td>2sxc 12.02</td>
 <td>see <a class="xref" href="../../net-code/razor/services/page-service.html">IPageService</a></td>
 </tr>
 </tbody>
@@ -338,7 +330,6 @@
 <table>
 <thead>
 <tr>
-<th>Collection</th>
 <th>Feature</th>
 <th style="text-align:center">Dnn</th>
 <th style="text-align:center">Oqtane</th>
@@ -348,7 +339,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Razor</td>
 <td><code>Koi</code> static object</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">⛔</td>
@@ -356,7 +346,6 @@
 <td>Use Dependency Injection version of Koi 2</td>
 </tr>
 <tr>
-<td>Razor</td>
 <td><code>Koi</code> <code>ICss</code> Service</td>
 <td style="text-align:center">✅</td>
 <td style="text-align:center">✅</td>
@@ -366,14 +355,7 @@
 </tbody>
 </table>
 <p>Koi 2 supports the CSS Information API, but not the class-generating API. We probably won&#39;t implement it, as it was too complicated. </p>
-<h3 id="wip">WIP</h3>
-<p>...</p>
-<h3 id="features-implemented--done">Features implemented / done</h3>
-<ol>
-<li>Razor Base class - you should use <code>ToSic.Custom.Razor12</code> as a base class</li>
-</ol>
-<h3 id="partially-implemented-features">Partially Implemented features</h3>
-<h3 id="not-yet-implemented-features">Not yet Implemented features</h3>
+<h3 id="not-yet-implemented-features-in-oqtane">Not yet Implemented features in Oqtane</h3>
 <ol>
 <li>CustomizeData / CustomizeSearch are not implemented yet, we&#39;re not yet sure how we want to implement this</li>
 <li>RazorBlade feature to change page title or set headers etc. cannot work yet</li>
@@ -383,17 +365,21 @@
 <li>We should probably create a list of viable base classes and explain the differences</li>
 </ol>
 <h2 id="rest-apis">REST APIs</h2>
+<p>No relevant differences, except that the root paths to the APIs are different. 
+This is automatically handled if you use 2sxc, and for external code you can get the exact endpoints in the admin UI.</p>
 <h2 id="javascript-differences">JavaScript Differences</h2>
+<p>No relevant differences, except that Oqtane doesn&#39;t include jQuery by default. 
+If you need jQuery, activate it using the <a class="xref" href="../../net-code/razor/services/page-service.html">IPageService</a>.</p>
 <h2 id="css-frameworks--html-differences">CSS-Frameworks / HTML Differences</h2>
+<p>No relevant differences.
+Note that Oqtane by default uses Bootstrap5 so the output may look a bit different. </p>
 <h2 id="image-resizing">Image Resizing</h2>
-<ol>
-<li>PoC is ready, ATM only works on ADAM files and not on general Oqtane files</li>
-</ol>
-<h2 id="minor--re-verify-at-end">Minor / Re-Verify at end</h2>
-<ol>
-<li>Automatic view switching</li>
-<li>Image Resizer - installation etc.</li>
-</ol>
+<p>In Oqtane, only ADAM files can use the ImageResizer. Files from the normal file management cannot use it. </p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Last update 2021-10-25 with regards to 2sxc 12.06 LTS</li>
+</ul>
 </article>
           </div>
           

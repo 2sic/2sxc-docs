@@ -28,6 +28,13 @@ This means that previous base classes do not have these by design, and we encour
 > So if you were eager to use these properties but didn't change the base class, you were able to use it. 
 > To protect thousands of upgrade-scenarios we had to take them away from the old base classes. Sorry!
 
+**Possible Breaking Changes**
+
+1. We believe nothing broke, but it could be that some commands on `EntitiesToDictionary` or `DataToDictionary` were accidentally changed. Pls report so we can fix that. 
+1. The `Link.To(...)` now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now `%20`
+1. We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you'll get an error telling you about this.
+
+
 ## Version 11
 
 There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers. 

@@ -371,6 +371,10 @@ If you really need them, download an old release of 2sxc and get them manually.
 1. The `Link.To(...)` now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now `%20`
 1. We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you'll get an error telling you about this.
 
+### Version 12.06 LTS
+
+No relevant changes
+
 ## Github Release Notes
 
 You can always find the latest and detailed release notes on the [github releases](https://github.com/2sic/2sxc/releases)
