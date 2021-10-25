@@ -121,28 +121,14 @@
   <div class="markdown level0 summary"><p>Helper / Service to prepare Entities, Streams and DataSources to <a class="xref" href="ToSic.Eav.DataFormats.EavLight.html">ToSic.Eav.DataFormats.EavLight</a> for automatic serialization in WebApis. </p>
 <p>It can prepare single items like <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Eav.Data.IEntityWrapper.html">IEntityWrapper</a> like DynamicEntities.
 It can also prepare IEnumerable/List of these types, as well as <strong>DataStream</strong> and <strong>DataSource</strong> objects. </p>
-<p>In Custom Code / Razor / WebApi you can get this service with Dependency Injection like <br> <code>var converter = GetService&amp;lt;IConvertToJsonLight&gt;()</code></p>
+<p>In Custom Code / Razor / WebApi you can get this service with Dependency Injection like <br>
+<code>var converter = GetService&amp;lt;IConvertToJsonLight&gt;();</code></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_MaxItems">IConvertEntity&lt;EavLightEntity&gt;.MaxItems</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_WithGuid">IConvertEntity&lt;EavLightEntity&gt;.WithGuid</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_WithPublishing">IConvertEntity&lt;EavLightEntity&gt;.WithPublishing</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_WithTitle">IConvertEntity&lt;EavLightEntity&gt;.WithTitle</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_Languages">IConvertEntity&lt;EavLightEntity&gt;.Languages</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html#ToSic_Eav_Data_IConvertEntity_1_ConfigureForAdminUse">IConvertEntity&lt;EavLightEntity&gt;.ConfigureForAdminUse()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Data.IConvert-2.html#ToSic_Eav_Data_IConvert_2_Convert_System_Collections_Generic_IEnumerable__0__">IConvert&lt;IEntity, EavLightEntity&gt;.Convert(IEnumerable&lt;IEntity&gt;)</a>
@@ -176,6 +162,11 @@ It can also prepare IEnumerable/List of these types, as well as <strong>DataStre
     <pre><code class="lang-csharp hljs">[PublicApi]
 public interface IConvertToEavLight : IConvertEntity&lt;EavLightEntity&gt;, IConvert&lt;IEntity, EavLightEntity&gt;, IConvert&lt;IEntityWrapper, EavLightEntity&gt;, IConvert&lt;object, EavLightEntity&gt;, IConvertDataSource&lt;EavLightEntity&gt;</code></pre>
   </div>
+  <h5 id="ToSic_Eav_DataFormats_EavLight_IConvertToEavLight_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>We&apos;re standardizing how conversions are done using the <a class="xref" href="ToSic.Eav.Data.IConvert-2.html">IConvert&lt;TFrom, TTo&gt;</a> interface.
+This is why you don&apos;t see any methods on this interface in the docs.
+In most cases you&apos;ll just do <code>var prepared = converter.Convert(someEntityObjectOrList);</code></p>
+</div>
 </article>
           </div>
           
@@ -187,7 +178,7 @@ public interface IConvertToEavLight : IConvertEntity&lt;EavLightEntity&gt;, ICon
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataFormats_EavLight_IConvertToEavLight.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataFormats.EavLight.IConvertToEavLight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/ToSic.Eav.DataFormats.EavLight/IConvertToEavLight.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.WebApi/ToSic.Eav.DataFormats.EavLight/IConvertToEavLight.cs/#L24" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
