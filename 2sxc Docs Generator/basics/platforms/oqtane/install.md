@@ -16,13 +16,14 @@ we created on installing Oqtane and 2sxc.
 > Because of this, extensions like 2sxc can quickly become incompatible with the latest enhancements, 
 > so here we'll maintain a list of Oqtane / 2sxc versions.
 
-| Oqtane V. | Best | Compatible | Incompatible | Comments |
-| --- | --- | --- | --- | --- | 
-| 2.0 | 12.00 | ✅ 12.00 - 12.02 | ⛔ 12.04+ |
-| 2.1 | 12.04 | ✅ 12.04         | ⛔ 12.04+ | Changes in Multi-Language
-| 2.2 | 12.04 | ✅ 12.04+        | ⛔ pre 12.04 | Changes in Bootstrap / jQuery & Authentication
-| 2.3 | 12.04 | ✅ 12.04+        | ⛔ pre 12.04 | 
- next | ? | ? | pre 12.04 |
+| Oqtane V. | Best  | Compatible          | Incompatible  | Comments |
+| ---       | ----- | ------------------- | ------------- | --- | 
+| 2.0       | 12.00 | ✅ 12.00 - 12.02    | ⛔ 12.04      |
+| 2.1       | 12.04 | ✅ 12.04            | ⛔ 12.05      | Changes in Multi-Language
+| 2.2       | 12.06 | ✅ 12.04+           | ⛔ pre 12.04  | Changes in Bootstrap / jQuery & Authentication
+| 2.3       | 12.06 | ✅ 12.04+           | ⛔ pre 12.04  | 
+| 2.next    | ?     | ?                   | pre 12.04     |
+| 3.0       | ?     |                     | all ATM       | Changes in .net 6
 
 ## Upgrade Existing Installations
 
