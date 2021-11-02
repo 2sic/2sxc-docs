@@ -6,13 +6,14 @@ uid: Internal.Progress.Roadmap
 
 The 2sxc roadmap contains the things we think are fairly important to tackle next. Since we're all working for free, there is no commitment to do this in the order you see below. And sometimes a customer will need a feature quickly - and pay for it - then it will appear sooner. _You too can sponsor a feature!_
 
-## Next Priorities (2021 Q1/2)
+## Next Priorities (2021 Q4)
 
-1. Create an LTS of 2sxc 11
+1. Release all template apps as hybrid (ATM 95%, missing: Mobius, News, Events)
+1. Finalize release without jQuery (ca. Nov 2021)
+1. Release Monaco as primary editor with more file templates etc. (ca. Nov 2021)
+1. Database re-organization ca. Dec. 2021
 1. Provide more help UIs for using REST APIs
 1. Make the Metadata-System completely discoverable
-1. Enable 2sxc run on [Oqtane](https://www.oqtane.org/)
-1. Formula based field calculations and formula based show/hide or required/not-required fields
 
 
 ## Future / Other
