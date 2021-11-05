@@ -119,67 +119,26 @@
 <ol>
 <li>Visual Studio 2019</li>
 <li>MSBuild Community Tasks 1.4 or newer (required for automatic module packaging if you want to create dnn-module packages of 2sxc to distribute to another dnn) <a href="https://github.com/loresoft/msbuildtasks">https://github.com/loresoft/msbuildtasks</a> or chec <a href="https://www.microsoft.com/en-in/download/details.aspx?id=19372">https://www.microsoft.com/en-in/download/details.aspx?id=19372</a></li>
-<li>We also use grunt, gulp and bower so if you want to do some JS you&#39;ll also need to install NPM, Gulp and Bower (grunt will auto-install as a dependency)</li>
-</ol>
-<p>Recommendations:</p>
-<ol>
-<li>SQL Server 2014, but it also works on older versions like 2008</li>
+<li>SQL Server 2017 or newer</li>
+<li>You have a working DNN 7.4.2 or higher with 2sxc already installed as a module, ideally in c:\projects\2sxc-dnn742\ or something similar</li>
 </ol>
 <h2 id="basics">Basics</h2>
-<p>The full solution pulls together 3 projects, some responsible for server-code, some for UI, some for in-page JS. We separated these to make it easier to contribute to a specific part without worrying about the rest. </p>
+<p>The full solution pulls together 4 Github projects, some responsible for server-code, some for UI, some for in-page JS. We separated these to make it easier to contribute to a specific part without worrying about the rest. </p>
 <p>If you only want to contribute to something small - like the languages / translations - then you only need to download that repository. </p>
 <p>In the complex scenarios each project can build into the other target, so if you want to work full-stack and use all of the automation, you will want to put everything in <code>C:\Projects\2sxc\</code>.</p>
 <h2 id="contribute-with-pull-requests">Contribute with Pull-Requests</h2>
 <p>After you have made changes, you cannot just push the code back to our repo, since you probably won&#39;t have write permissions on the main repo.
 The correct procedure then is to fork the main repo into yours, and push into your own online repo. Then start a pull request, which we can then process. </p>
-<h2 id="full-scale-setup">Full Scale Setup</h2>
-<p>The full-scale setup is meant for people, who want to work with all the pieces. As of now (December 2017) you should clone all these projects into the following folders:</p>
-<h3 id="start-by-installing-your-dnn">Start by Installing your Dnn</h3>
-<p>Installing Dnn Please install a Dnn - ideally a 7.4.2 version or similar so you wont use APIs which don&#39;t exist in that version in the path above. Steps are approx. like this:</p>
-<ul>
-<li>Recommended: using NVQuickSite you can easily install Dnn 7.4.2 in the <code>C:\Projects\2sxc-dnn742\Website</code> folder. This exact folder is important, because other parts (like js projects) will copy their builds into this folder</li>
-<li>The domain isn&#39;t important, but we recommend <code>2sxc-dnn742.dnndev.me</code></li>
-<li>Manual:  Download the minimal Dnn version that 2sxc supports and extract it to <code>C:\Projects\2sxc-dnn742\Website</code> (the exact folder is important, because the grunt/gulp tasks refer to this path)<ul>
-<li>Configure the website in IIS (use binding 2sxc.dev)<ul>
-<li>Use a default ASP.NET 4 / 4.5 application pool with Network Service account</li>
-</ul>
-</li>
-<li>Add entry to local hosts file: 127.0.0.1 <code>2sxc-dnn742.dnndev.me</code> (could also be different, but this is our recommendation)</li>
-<li>Setup an empty database in SQL Management Studio</li>
-<li>Start the website and configure Dnn to use the previously created database</li>
-</ul>
-</li>
-</ul>
-<h2 id="installing-2sxc-as-code-in-the-dnn">Installing 2sxc as Code in the Dnn</h2>
-<ol>
-<li>Then install 2sxc as a normal installable module (to get all the tables etc. setup)</li>
-<li>Now you must replace the installed 2sxc with the source-code version, linked to Github.<ol>
-<li>/DesktopModules/ToSIC_SexyContent folder again (required because we clone the git repository there)</li>
-<li>Use Visual Studio, Git or SourceTree to clone the 2sxc repository at <a href="https://github.com/2sic/2sxc">https://github.com/2sic/2sxc</a> to the empty folder ToSIC_SexyContent - eg. in <code>/DesktopModules/</code> type <code>git clone https://github.com/2sic/2sxc ToSic_SexyContent</code></li>
-<li>also run <code>bower install</code> and <code>npm install</code> in the folder (using command-line or visual studio)</li>
-</ol>
-</li>
-</ol>
-<p><em>Note: don&#39;t open the 2sxc-solution yet in visual studio - you need to later open the full package which includes the EAV with 2sxc, otherwise project references get &quot;fixed&quot; in a wrong way</em></p>
-<h3 id="installing-the-additional-git-repositories">Installing the additional git repositories</h3>
-<ol>
-<li>in a command line, go to <code>c:\Projects\</code></li>
-<li>run <code>git clone https://github.com/2sic/eav-server</code> - the EAV server system</li>
-<li>run <code>git clone https://github.com/2sic/2sxc-ui</code> - the 2sxc / Dnn UIs</li>
-</ol>
-<p>for all of these you may need to run <code>npm install</code></p>
+<h2 id="setup-git-repos-to-use">Setup Git Repos to use</h2>
+<p>Use this checklist:</p>
+<iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
 <h2 id="git-branches">GIT Branches</h2>
 <p>We use the <a href="https://jeffkreeftmeijer.com/git-flow/">git-flow convention</a>, and you should familiarize yourself with this, to properly work with the branches. As of now, the development-branch is called <code>dev</code> but we&#39;ll rename it to <code>develop</code> within the next few days.  </p>
 <h2 id="the-eav--2sxc-server-solution">The EAV / 2sxc Server Solution</h2>
 <p>Basically if you open the solution in the <code>eav-server</code> folder, it will open all the EAV server (C#) code and 2sxc code in Visual Studio. This is very important, because if you build anything extensive and rename anything, it guarantees that everything is correctly updated. </p>
 <h2 id="the-2sxc-ui">The 2sxc UI</h2>
 <p>This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp <code>develop</code> it too will auto-build and copy to the live Dnn / 2sxc site. </p>
-<h2 id="wip-work-in-progress">WIP (Work In Progress)</h2>
-<p>At the moment not important yet, but some new features we&#39;re working on are in these Repos:</p>
-<ul>
-<li><code>git clone https://github.com/2sic/2sxc-inpage</code></li>
-<li><code>git clone https://github.com/2sic/eav-item-dialog-angular</code></li>
-</ul>
 </article>
           </div>
           
