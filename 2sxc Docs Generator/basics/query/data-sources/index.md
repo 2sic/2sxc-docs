@@ -11,7 +11,7 @@ uid: Basics.Query.DataSources.Index
 
 ## All Public DataSources
 
-These are all the data sources which are either provided in the default installation of 2sxc, or which are available for you to install (manually). 
+These are all the data sources which are either provided in the default installation of 2sxc.
 
 
 <table>
@@ -49,6 +49,12 @@ These are all the data sources which are either provided in the default installa
     <td>[CacheAllStreams](xref:ToSic.Eav.DataSources.Caching.CacheAllStreams)</td>
     <td>Caching</td>
     <td>Cache all streams passing through</td>
+  </tr>
+
+  <tr>
+    <td>[Children](xref:ToSic.Eav.DataSources.Children)</td>
+    <td>Get Data</td>
+    <td>Get all related child enties _v12.10_</td>
   </tr>
 
   <tr>
@@ -128,6 +134,12 @@ These are all the data sources which are either provided in the default installa
     <td>[Paging](xref:ToSic.Eav.DataSources.Paging)</td>
     <td>Logic</td>
     <td>Page through items</td>
+  </tr>
+
+  <tr>
+    <td>[Parents](xref:ToSic.Eav.DataSources.Parents)</td>
+    <td>Get Data</td>
+    <td>Get all related parent enties _v12.10_</td>
   </tr>
 
   <tr>

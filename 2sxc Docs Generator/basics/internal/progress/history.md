@@ -378,3 +378,9 @@ No relevant changes
 ## Github Release Notes
 
 You can always find the latest and detailed release notes on the [github releases](https://github.com/2sic/2sxc/releases)
+
+
+### Version 12.10
+
+1. New [Children](xref:ToSic.Eav.DataSources.Children) DataSource
+1. New [Parents](xref:ToSic.Eav.DataSources.Parents) DataSource
