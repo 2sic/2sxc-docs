@@ -384,3 +384,4 @@ You can always find the latest and detailed release notes on the [github release
 
 1. New [Children](xref:ToSic.Eav.DataSources.Children) DataSource
 1. New [Parents](xref:ToSic.Eav.DataSources.Parents) DataSource
+1. The [StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge) DataSource got three new out-streams `Distinct`, `And` and `Xor`

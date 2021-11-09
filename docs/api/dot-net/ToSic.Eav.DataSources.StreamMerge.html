@@ -267,12 +267,14 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   <h5 id="ToSic_Eav_DataSources_StreamMerge_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(NiceName = &quot;Merge Stream&quot;, UiHint = &quot;Combine multiple streams into one&quot;, Icon = &quot;merge_type&quot;, Type = DataSourceType.Logic, GlobalName = &quot;ToSic.Eav.DataSources.StreamMerge, ToSic.Eav.DataSources&quot;, DynamicOut = false, DynamicIn = true, HelpLink = &quot;https://r.2sxc.org/DsStreamMerge&quot;)]
+[VisualQuery(NiceName = &quot;Merge Streams&quot;, UiHint = &quot;Combine multiple streams into one&quot;, Icon = &quot;merge_type&quot;, Type = DataSourceType.Logic, GlobalName = &quot;ToSic.Eav.DataSources.StreamMerge, ToSic.Eav.DataSources&quot;, DynamicOut = false, DynamicIn = true, HelpLink = &quot;https://r.2sxc.org/DsStreamMerge&quot;)]
 public sealed class StreamMerge : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_StreamMerge_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Technically many things could just identify the app they belong to, and let the system look up the zone.
-But this would be inefficient, so for optimization, many items identify themselves with both the app and zone Ids</p>
+  <div class="markdown level0 remarks"><p>History</p>
+<ul>
+<li>v12.10 added new Out streams <code>Distinct</code> removes duplicates, <code>And</code> keeps items which are in <em>all</em> streams and <code>Xor</code> keeps items which are only in one stream</li>
+</ul>
 </div>
   <h3 id="implements">Implements</h3>
   <div>
@@ -319,7 +321,7 @@ But this would be inefficient, so for optimization, many items identify themselv
                     <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Eav/DataSources/StreamMerge.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Streams/StreamMerge.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Streams/StreamMerge.cs/#L18" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
