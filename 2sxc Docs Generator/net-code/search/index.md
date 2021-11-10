@@ -221,3 +221,4 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 ## History
 1. Introduced in 2sxc 6.2
 2. Added support for newer Dnn versions at a later time - not sure when
+1. Easier standalone `.cs` implementation introduced in 2sxc 12

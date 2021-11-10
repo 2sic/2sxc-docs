@@ -4,6 +4,10 @@ uid: Basics.Platforms.Index
 
 # Platforms
 
-2sxc always runs on a platform like Dnn. Oqtane is WIP should be completed around April 2021. 
+2sxc runs on the following platforms: 
 
-These pages should give you an overview how 2sxc ties in with these platforms
+[<img src="~/assets/features/platform-dnn.svg" height="100px" class="for-link">](xref:Basics.Platforms.Dnn.Index)
+
+
+[<img src="~/assets/features/platform-oqtane.svg" height="100px" class="for-link">](xref:Basics.Platforms.Oqtane.Index)
+

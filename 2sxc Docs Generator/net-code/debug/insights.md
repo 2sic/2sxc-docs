@@ -1,6 +1,9 @@
 ---
 uid: NetCode.Debug.Insights.Index
 ---
+
+<img src="~/assets/features/2sxc-insights.svg" width="100%">
+
 # 2sxc Insights on the Server
 
 The Server **Insights** gives you a lot of internal information such as

@@ -2,7 +2,7 @@
 uid: JsCode.TurnOn.Index
 ---
 
-<img src="./assets/icon-turn-on.svg" width="100%" >
+<img src="~/assets/features/turn-on.svg" width="100%">
 
 # turnOn JavaScript API 🆕 in v12.04
 

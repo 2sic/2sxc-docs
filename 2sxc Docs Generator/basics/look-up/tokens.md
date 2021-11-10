@@ -2,6 +2,8 @@
 uid: Basics.LookUp.Tokens
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # LookUp Tokens Explained
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

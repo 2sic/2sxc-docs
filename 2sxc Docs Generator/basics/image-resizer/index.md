@@ -2,6 +2,8 @@
 uid: Basics.ImageResizer.Index
 ---
 
+<img src="~/assets/features/image-resizer.svg" width="100%">
+
 # Image Resizer
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
@@ -21,6 +23,7 @@ Internally it uses the amazing [ImageResizer.net](https://imageresizing.net/).
 The docs here are not ready, but you can find [various examples here](https://2sxc.org/learn-extensions/ImageResizer)
 
 
+<!-- [!include[](~/assets/features/image-resizer.md)] -->
 
 ## Read More
 

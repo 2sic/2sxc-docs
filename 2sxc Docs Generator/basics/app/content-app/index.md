@@ -32,6 +32,8 @@ It will _first_ show the [Content Type](xref:Basics.Data.ContentTypes.Index) pic
 
 ## Pre-Built Content Templates
 
+<img src="~/assets/features/content-templates.svg" width="100%">
+
 _The_ Content App can auto-install prepared templates which are specifically designed for this use case. This is why the installer looks different for _The_ Content App than for normal Apps. 
 
 > [!TIP]

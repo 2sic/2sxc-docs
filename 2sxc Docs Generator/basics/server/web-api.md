@@ -1,4 +1,6 @@
 
+<img src="~/assets/features/headless.svg" width="100%">
+
 # WebApi and Headless APIs on the Server
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

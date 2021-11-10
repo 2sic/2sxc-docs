@@ -2,6 +2,8 @@
 uid: Basics.LookUp.Sources
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # LookUp Sources
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

@@ -2,6 +2,8 @@
 uid: Basics.LookUp.Index
 ---
 
+<img src="~/assets/features/look-up-system.svg" width="100%">
+
 # LookUp System
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

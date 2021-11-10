@@ -2,6 +2,8 @@
 uid: Basics.LookUp.Dnn
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # Dnn Specific LookUps
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

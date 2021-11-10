@@ -2,6 +2,8 @@
 uid: Basics.LookUp.User
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # User Information LookUps
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

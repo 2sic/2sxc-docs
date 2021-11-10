@@ -2,9 +2,11 @@
 uid: JsCode.Index
 ---
 
-# Work-In-Progress
+<img src="~/assets/features/image-resizer.svg" width="100%">
 
-_We're reorganizing our JS API Docs - they will be moved to here. This is still WIP._
+# 2sxc JS API Documentation is WIP
+
+_We're reorganizing our JS API Docs - they will be moved to here. This is still Work-In-Progress._
 
 # JavaScript and TypeScript Code
 

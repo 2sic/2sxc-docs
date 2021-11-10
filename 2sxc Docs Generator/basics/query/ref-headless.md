@@ -2,6 +2,8 @@
 uid: Basics.Query.Headless
 ---
 
+<img src="~/assets/features/headless.svg" width="100%">
+
 # Use Queries in Headless APIs
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

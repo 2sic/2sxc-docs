@@ -2,6 +2,8 @@
 uid: Basics.Platforms.Oqtane.Install
 ---
 
+<img src="~/assets/features/platform-oqtane.svg" width="100%">
+
 <img src="./assets/oqtane-logo.png" width="250px" align="right">
 
 # Install Oqtane and 2sxc

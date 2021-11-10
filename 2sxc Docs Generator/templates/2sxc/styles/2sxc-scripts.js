@@ -1,7 +1,7 @@
 // Activate featherlite for quick lightboxes
 $(document).ready(function() {
         //find all images, but not the logo, and add the lightbox
-        $('img').not('#logo').each(function(){
+        $('img').not('#logo').not('.for-link').each(function(){
             var $img = $(this);
             var filename = $img.attr('src')
             //add cursor

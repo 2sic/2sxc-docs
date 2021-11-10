@@ -20,5 +20,5 @@ We strongly suggest that you use the same concepts in your code. You'll have to 
 ## History
 
 1. [Introduced in 2sxc 9.6](https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging)
-1. Added 2sxc Insights (server-side) v9.31
+1. Added [2sxc Insights](xref:NetCode.Debug.Index) (server-side) v9.31
 1. [Major enhancements](https://2sxc.org/en/blog/post/awesome-insights-in-10-22) in v10.22

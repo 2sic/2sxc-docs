@@ -2,6 +2,8 @@
 uid: Basics.LookUp.Cms
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # Cms LookUps for Dnn ☢️ and Oqtane 🩸
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

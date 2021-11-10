@@ -2,6 +2,8 @@
 uid: Basics.LookUp.App
 ---
 
+[!include[](~/assets/features/look-up-system.md)]
+
 # `App` LookUps
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

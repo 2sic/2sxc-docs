@@ -1,6 +1,9 @@
 ---
 uid: NetCode.Debug.Index
 ---
+
+<img src="~/assets/features/2sxc-insights.svg" width="100%">
+
 # 2sxc Insights for Debugging Server-Code
 
 This should give you some minimal guidance into debugging 2sxc. You have the following tools at your disposal:

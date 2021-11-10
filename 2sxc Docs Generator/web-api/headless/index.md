@@ -1,6 +1,7 @@
 ---
 uid: WebApi.Headless.Index
 ---
+<img src="~/assets/features/headless.svg" width="100%">
 
 # Headless WebAPIs in 2sxc
 

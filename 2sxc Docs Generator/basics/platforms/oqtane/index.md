@@ -2,6 +2,8 @@
 uid: Basics.Platforms.Oqtane.Index
 ---
 
+<img src="~/assets/features/platform-oqtane.svg" width="100%">
+
 <img src="./assets/oqtane-logo.png" width="250px" align="right">
 
 # Oqtane Platform
@@ -26,3 +28,9 @@ ADAM works and images uploaded will automatically work. But as of now, you canno
 #### Image Resizer won't work on Global Content Files
 
 Image Resizer works for app-assets (like the app-icon) and for ADAM assets, but not for files in the `\Tenants\x\Sites\x\` folder
+
+---
+
+## History
+
+* 2sxc 12 was developed for Oqtane 2.0
