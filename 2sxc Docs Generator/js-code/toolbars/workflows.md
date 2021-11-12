@@ -63,5 +63,5 @@ You should find some code examples in this demo App
 
 ## History
 
-1. Introduced in 2sxc ca. v11.00
+1. Introduced in 2sxc v11.12
 

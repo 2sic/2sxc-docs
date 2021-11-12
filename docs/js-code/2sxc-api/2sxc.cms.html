@@ -241,7 +241,67 @@
 <ol>
 <li>when you create custom JS buttons to start a content-management action</li>
 </ol>
-<h2 id="how-to-use">How to use</h2>
+<h2 id="how-to-use-v1210-and-newer">How to use v12.10 and newer</h2>
+<p>2sxc 12.10 enhanced the <code>cms.run(...)</code> to accept an object with parameters. 
+This makes it easier to reliably pass in optional parameters, and also supports the use of <a class="xref" href="../toolbars/workflows.html">Workflow Steps</a>.</p>
+<p>The <code>RunParams</code> object has this structure:</p>
+<pre><code class="lang-js">export interface RunParams {
+
+    /** The tag on which the run was triggered - it&#39;s used to give the command a context to start from */
+    tag: HTMLElement;
+
+    /** The action to perform. Required if you don&#39;t have params which themselves have the action */
+    action?: string;
+
+    /** The command params, like contentType, entityId etc. */
+    params?: CommandParams;
+
+    /** The event which triggered this command - sometimes useful internally further use */
+    event?: MouseEvent;
+
+    /** Workflow steps work the same way as with a toolbar */
+    workflowSteps?: WorkflowStep | WorkflowStep[];
+}
+</code></pre><p>Here&#39;s an example:</p>
+<pre><code class="lang-html">&lt;div class=&quot;alert alert-primary&quot; style=&quot;width: 50%;&quot;&gt;
+    The following command will open an edit dialog. 
+    When you click it and close the dialog again, the page will &lt;em&gt;not refresh&lt;/em&gt;. &lt;br&gt;
+    Instead, you&#39;ll see console messages that a custom JS took over the process. &lt;br&gt;
+
+    &lt;a href=&quot;#&quot; onclick=&quot;openAndCancelRefreshAfterwards(this, &#39;new&#39;, { contentType: &#39;UiEmptyHelloWorld&#39;})&quot;&gt;Run open command&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+
+  function openAndCancelRefreshAfterwards(tag, action, params) {
+
+    // This workflow step will run on every action, just to log what&#39;s happening
+    const workflowToLog = {
+      command: &#39;all&#39;,   // Run on every command/action
+      phase: &#39;all&#39;,     // Run before and after
+      code: (wfArgs) =&gt; {
+        console.log(&quot;Toolbar asked to to something - here are the details.&quot;, wfArgs);
+      }
+    }
+
+    // This is the workflow step we will register to stop page refresh
+    const workflowToDisableRefresh = {
+      command: &#39;refresh&#39;,   // The command name it&#39;s for
+      phase: &#39;before&#39;,      // The workflow-step should run before the command is executed
+      code: (wfArgs) =&gt; {   // The code which should be run
+        console.log(&#39;Toolbar asked to refresh, will return false to stop it. These are the arguments we got.&#39;, wfArgs);
+        return false;       // Return false to stop this command from happening
+      }
+    };
+
+    $2sxc.cms.run({ tag: tag, action: action, params: params, workflowSteps: [workflowToLog, workflowToDisableRefresh]})
+      .then(function(data) {
+        console.log(&quot;after run&quot;, data);
+        return false;
+      });
+  }
+&lt;/script&gt;
+</code></pre><h2 id="how-to-use-v930">How to use (v9.30)</h2>
 <p>Before you start, ensure you have the necessary JS scripts loaded:</p>
 <ol>
 <li>in edit-mode this happens automatically</li>
@@ -277,6 +337,7 @@
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 09.30</li>
+<li>Enhanced with <code>RunParams</code> in 2sxc 12.10</li>
 </ol>
 </article>
           </div>

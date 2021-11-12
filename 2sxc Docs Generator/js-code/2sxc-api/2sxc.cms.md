@@ -14,7 +14,77 @@ You need this in advanced use cases. _otherwise you don't need this_. Such advan
 
 1. when you create custom JS buttons to start a content-management action
 
-## How to use
+## How to use v12.10 and newer
+
+2sxc 12.10 enhanced the `cms.run(...)` to accept an object with parameters. 
+This makes it easier to reliably pass in optional parameters, and also supports the use of [Workflow Steps](xref:JsCode.Toolbars.Workflows).
+
+The `RunParams` object has this structure:
+
+```js
+export interface RunParams {
+
+    /** The tag on which the run was triggered - it's used to give the command a context to start from */
+    tag: HTMLElement;
+
+    /** The action to perform. Required if you don't have params which themselves have the action */
+    action?: string;
+
+    /** The command params, like contentType, entityId etc. */
+    params?: CommandParams;
+
+    /** The event which triggered this command - sometimes useful internally further use */
+    event?: MouseEvent;
+
+    /** Workflow steps work the same way as with a toolbar */
+    workflowSteps?: WorkflowStep | WorkflowStep[];
+}
+```
+
+Here's an example:
+
+```html
+<div class="alert alert-primary" style="width: 50%;">
+    The following command will open an edit dialog. 
+    When you click it and close the dialog again, the page will <em>not refresh</em>. <br>
+    Instead, you'll see console messages that a custom JS took over the process. <br>
+
+    <a href="#" onclick="openAndCancelRefreshAfterwards(this, 'new', { contentType: 'UiEmptyHelloWorld'})">Run open command</a>
+</div>
+
+<script>
+
+  function openAndCancelRefreshAfterwards(tag, action, params) {
+
+    // This workflow step will run on every action, just to log what's happening
+    const workflowToLog = {
+      command: 'all',   // Run on every command/action
+      phase: 'all',     // Run before and after
+      code: (wfArgs) => {
+        console.log("Toolbar asked to to something - here are the details.", wfArgs);
+      }
+    }
+
+    // This is the workflow step we will register to stop page refresh
+    const workflowToDisableRefresh = {
+      command: 'refresh',   // The command name it's for
+      phase: 'before',      // The workflow-step should run before the command is executed
+      code: (wfArgs) => {   // The code which should be run
+        console.log('Toolbar asked to refresh, will return false to stop it. These are the arguments we got.', wfArgs);
+        return false;       // Return false to stop this command from happening
+      }
+    };
+
+    $2sxc.cms.run({ tag: tag, action: action, params: params, workflowSteps: [workflowToLog, workflowToDisableRefresh]})
+      .then(function(data) {
+        console.log("after run", data);
+        return false;
+      });
+  }
+</script>
+```
+
+## How to use (v9.30)
 
 Before you start, ensure you have the necessary JS scripts loaded:
 
@@ -57,3 +127,4 @@ Simple example:
 ## History
 
 1. Introduced in 2sxc 09.30
+1. Enhanced with `RunParams` in 2sxc 12.10
