@@ -259,8 +259,8 @@ This makes it easier to reliably pass in optional parameters, and also supports 
     /** The event which triggered this command - sometimes useful internally further use */
     event?: MouseEvent;
 
-    /** Workflow steps work the same way as with a toolbar */
-    workflowSteps?: WorkflowStep | WorkflowStep[];
+    /** Workflows work the same way as with a toolbar, except that they are added here and not registered on init */
+    workflows?: WorkflowStep | WorkflowStep[];
 }
 </code></pre><p>Here&#39;s an example:</p>
 <pre><code class="lang-html">&lt;div class=&quot;alert alert-primary&quot; style=&quot;width: 50%;&quot;&gt;
@@ -294,7 +294,7 @@ This makes it easier to reliably pass in optional parameters, and also supports 
       }
     };
 
-    $2sxc.cms.run({ tag: tag, action: action, params: params, workflowSteps: [workflowToLog, workflowToDisableRefresh]})
+    $2sxc.cms.run({ tag: tag, action: action, params: params, workflows: [workflowToLog, workflowToDisableRefresh]})
       .then(function(data) {
         console.log(&quot;after run&quot;, data);
         return false;
@@ -337,7 +337,7 @@ This makes it easier to reliably pass in optional parameters, and also supports 
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 09.30</li>
-<li>Enhanced with <code>RunParams</code> in 2sxc 12.10</li>
+<li>Enhanced with <code>RunParams</code> in 2sxc 12.10 to support registering <code>workflows</code></li>
 </ol>
 </article>
           </div>

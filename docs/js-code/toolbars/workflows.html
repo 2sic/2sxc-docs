@@ -272,9 +272,9 @@ See <a class="xref" href="../angular/dnn-sxc-angular/toolbars.html">Toolbars in 
 <p>As of now, there is no pre-built React implementation, but you can easily create your own based on the angular version.</p>
 <h2 id="limitations">Limitations</h2>
 <ul>
-<li>Toolbar workflows are only available for tag-toolbars created using <code>@Edit.TagToolbar(...)</code> or the JS equivalent</li>
-<li>For toolbars which always show using <code>@Edit.Toolbar(...)</code> there is currently no way to register a workflow. If you need this, please contact us.</li>
-<li>For custom actions using <code>$2sxc.cms.run(target, command, ...)</code> there is currently no way to register a workflow. Normally any before would be handled by your code anyhow, and the <code>run()</code> returns a promise which you can cancel to avoid refresh. </li>
+<li>TagToolbar workflows created using <code>@Edit.TagToolbar(...)</code> should attach the init-listener to that tag</li>
+<li>Toolbar workflows created using <code>@Edit.Toolbar(...)</code> should attach the init-listener to a parent tag</li>
+<li>For custom actions using <code>$2sxc.cms.run(target, command, ...)</code> you should use the new (12.10) signature to add workflows - see <a class="xref" href="../2sxc-api/2sxc.cms.html">The $2sxc.cms API</a></li>
 </ul>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
@@ -284,6 +284,7 @@ See <a class="xref" href="../angular/dnn-sxc-angular/toolbars.html">Toolbars in 
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc v11.12</li>
+<li>Enhanced so it also works on inline toolbars (<code>Edit.Toolbar(...)</code>) in 12.10</li>
 </ol>
 </article>
           </div>

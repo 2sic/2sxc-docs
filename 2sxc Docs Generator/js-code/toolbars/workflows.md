@@ -50,9 +50,9 @@ As of now, there is no pre-built React implementation, but you can easily create
 
 ## Limitations
 
-* Toolbar workflows are only available for tag-toolbars created using `@Edit.TagToolbar(...)` or the JS equivalent
-* For toolbars which always show using `@Edit.Toolbar(...)` there is currently no way to register a workflow. If you need this, please contact us.
-* For custom actions using `$2sxc.cms.run(target, command, ...)` there is currently no way to register a workflow. Normally any before would be handled by your code anyhow, and the `run()` returns a promise which you can cancel to avoid refresh. 
+* TagToolbar workflows created using `@Edit.TagToolbar(...)` should attach the init-listener to that tag
+* Toolbar workflows created using `@Edit.Toolbar(...)` should attach the init-listener to a parent tag
+* For custom actions using `$2sxc.cms.run(target, command, ...)` you should use the new (12.10) signature to add workflows - see [](xref:JsCode.2sxcApi.$2sxc.Cms)
 
 
 ## Demo App and further links
@@ -64,4 +64,4 @@ You should find some code examples in this demo App
 ## History
 
 1. Introduced in 2sxc v11.12
-
+1. Enhanced so it also works on inline toolbars (`Edit.Toolbar(...)`) in 12.10

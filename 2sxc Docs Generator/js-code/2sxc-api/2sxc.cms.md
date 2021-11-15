@@ -36,8 +36,8 @@ export interface RunParams {
     /** The event which triggered this command - sometimes useful internally further use */
     event?: MouseEvent;
 
-    /** Workflow steps work the same way as with a toolbar */
-    workflowSteps?: WorkflowStep | WorkflowStep[];
+    /** Workflows work the same way as with a toolbar, except that they are added here and not registered on init */
+    workflows?: WorkflowStep | WorkflowStep[];
 }
 ```
 
@@ -75,7 +75,7 @@ Here's an example:
       }
     };
 
-    $2sxc.cms.run({ tag: tag, action: action, params: params, workflowSteps: [workflowToLog, workflowToDisableRefresh]})
+    $2sxc.cms.run({ tag: tag, action: action, params: params, workflows: [workflowToLog, workflowToDisableRefresh]})
       .then(function(data) {
         console.log("after run", data);
         return false;
@@ -127,4 +127,4 @@ Simple example:
 ## History
 
 1. Introduced in 2sxc 09.30
-1. Enhanced with `RunParams` in 2sxc 12.10
+1. Enhanced with `RunParams` in 2sxc 12.10 to support registering `workflows`
