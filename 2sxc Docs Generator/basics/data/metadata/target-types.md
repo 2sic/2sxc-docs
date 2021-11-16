@@ -21,15 +21,21 @@ The following list are internally reserved Target-Types
 4. Entity-Metadata - key should be guid of entity
 5. Content-Type Metadata - key should be string static-name
 6. Zone Metadata - not used ATM
+7. Reserved
 8. Reserved
 9. Reserved
 10. CMS-Object (like `file:72` or `page:42`) - key should be string
 11. 11-100 are reserved
 12. 101+ is free to define for your own purpose
 
+See also
+
+* [](xref:ToSic.Eav.Metadata.TargetTypes)
+
 ## Custom Target Types
 
 You can easily add custom types as you need them in the SQL database yourself. 
+Just make sure your type-id is greater than 100.
 
 ---
 

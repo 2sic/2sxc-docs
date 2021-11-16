@@ -56,6 +56,7 @@ Noteworthy to know
 1. [](xref:Basics.Data.Metadata.Create) 
 1. [](xref:Basics.Data.Metadata.Read)
 1. [](xref:Basics.Data.Metadata.TargetTypes)
+1. [](xref:ToSic.Eav.Metadata)
 
 ## Demo App and further links
 
