@@ -1,38 +1,63 @@
 ---
-uid: JsCode.2sxcApi.Sxc.WebApi
+uid: JsCode.2sxcApi.Sxc.WebApi.jQuery
 ---
 
-# The WebApi Helpers on the Sxc Controller
+# The WebApi Helpers on the Sxc Controller using JQuery
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-The WebApi object on the module-specific `sxc`-controller is for AJAX calls. It helps you in these advanced cases:  
+2sxc originally used jQuery and the JS API still has commands which do jQuery AJAX calls. On the `webApi` object they are
 
-1. to read/write content-items using REST
-1. to access your apps WebApi controllers
+* `webApi.delete(...)` for HTTP DELETE calls
+* `webApi.get(...)`  for HTTP GET calls
+* `webApi.post(...)`  for HTTP POST calls
+* `webApi.put(...)`  for HTTP PUT calls
+* `webApi.request(...)` for any other HTTP calls
 
-## How to use
-First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.$2sxc) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc manager](xref:JsCode.2sxcApi.$2sxc) here. 
+> [!IMPORTANT]
+> As of 2sxc 12.10 we don't recommend using this any more.
+> It will only work if the page also has jQuery enabled either using 
+> `pageService.Activate("jQuery");` (see [IPageService](xref:todo))
+> or because something else already loads it.
+> 
+> From now on we strongly suggest you use `fetch` which is supported by all modern browsers. 
+
+> [!TIP]
+> To find out how to get the module sxc-object using $2sxc, check out [](xref:JsCode.2sxcApi.Sxc.WebApi)
+
+## Example
 
 Here's a simple example (assuming you have the $2sxc manager):
 
 ```HTML
-<a onclick="$2sxc(this).webApi.fetchJson('app/auto/content/Category').then(handleResult);">
+<a onclick="$2sxc(this).webApi.get('app/auto/content/Category').then(handleResult);">
     get all Categories 
 </a>
 ```
 
-TODO: link fetch, jquery, etc.
+The code above shows
 
-## How to Get the Current Context's `sxc` Controller
-Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
+1. how the sxc-object is retrieved using the `$2sxc(...)` manager, based on the current context `this`
+2. how all items of type "Category" are requested
+3. how the result (promise) is passed on to `handleResults` for updating the view etc.
 
+Here's another quick example, calling a C# web-api endpoint: 
+
+```JavaScript
+var sxc = $2sxc(27);
+sxc.webApi.post("Form/ProcessForm")
+    .success(function(result) {
+        // ....
+    });
+```
 
 ## Working with REST / HTTP Async Stuff
-Short note: the WebAPIs work like classic javascript promises, supporting `.then(...)`, `.error(...)` etc.
 
-The $2sxc(...).webApi has 4 commands
+Short note: these WebAPIs work using jQuery promises (_not_ JavaScript promises), supporting `.then(...)`, `.error(...)` etc.
+
+The $2sxc(...).webApi has 4 **jQuery** commands
+
 * `.webApi.get(url, ...)` 
 * `.webApi.post(url, ...)`
 * `.webApi.delete(url, ...)`
@@ -63,6 +88,16 @@ This will call the C# WebApi controller `FormController` in the `api` folder and
 _Till we find time to document more, please consult the [source][source]_
 
 ## Using App-Queries with $2sxc  (TODO)
+
+
+
+
+
+
+
+
+
+
 Todo: must document more about this
 
 In short: 
