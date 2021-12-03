@@ -70,12 +70,14 @@ exports.data = {
   "ToSic.Sxc.Dnn.LookUp": prioInternal,
   "ToSic.Sxc.Dnn.Run": prioInternal,
   "ToSic.Sxc.Dnn.Web": prioInternal,
+  "ToSic.Sxc.Edit": prioWeb,
   "ToSic.Sxc.Engines": prioInternal,
   "ToSic.Sxc.Hybrid": prioInternal,
   "ToSic.Sxc.Hybrid.Razor": prioInternal,
   "ToSic.Sxc.LookUp": prioInternal,
   "ToSic.Sxc.Search": prioWeb,
-  "ToSic.Sxc.Web": prioWeb,
+  "ToSic.Sxc.Services": prioWeb,
+  "ToSic.Sxc.Web": prioInternal,
 }
 
 exports.priorityNormal = 'normal';

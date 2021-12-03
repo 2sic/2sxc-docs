@@ -351,7 +351,7 @@ If you really need them, download an old release of 2sxc and get them manually.
 1. Introduced [](xref:ToSic.Sxc.Services.ILogService) to log messages to the system (Dnn/Oqtane)
 1. Introduced [](xref:ToSic.Sxc.Services.IMailService) to easily send mails cross-platform
 1. Introduced [](xref:ToSic.Sxc.Services.ISecureDataService) to use encrypted settings
-1. Introduced [](xref:ToSic.Sxc.Blocks.IRenderService) for inner-content rendering (Oqtane code must use this)
+1. Introduced [](xref:ToSic.Sxc.Services.IRenderService) for inner-content rendering (Oqtane code must use this)
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight) to better document simple eav data
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.  
    This is meant to replace previous code using objects such as `EntitiesToDictionary` or `DataToDictionary` which are now marked as obsolete.
@@ -387,3 +387,5 @@ You can always find the latest and detailed release notes on the [github release
 1. New [Metadata](xref:ToSic.Eav.DataSources.Metadata) DataSource
 1. New [MetadataTargets](xref:ToSic.Eav.DataSources.MetadataTargets) DataSource
 1. The [StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge) DataSource got three new out-streams `Distinct`, `And` and `Xor`
+1. Moved [IPageService](xref:ToSic.Sxc.Services.IPageService) from previously [ToSic.Sxc.Web](xref:ToSic.Sxc.Web) to [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) but preserving compatibility with old code
+1. Moved [IPageService](xref:ToSic.Sxc.Services.IRenderService) from previously [ToSic.Sxc.Web](xref:ToSic.Sxc.Blocks) to [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) but preserving compatibility with old code

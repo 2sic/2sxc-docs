@@ -10,6 +10,9 @@ The 2sxc roadmap contains the things we think are fairly important to tackle nex
 
 1. Release all template apps as hybrid (ATM 95%, missing: Mobius, News, Events)
 1. Finalize release without jQuery (ca. Nov 2021)
+
+## V13
+1. IToolbarService and ToolbarBuilder
 1. Release Monaco as primary editor with more file templates etc. (ca. Nov 2021)
 1. Database re-organization ca. Dec. 2021
 1. Provide more help UIs for using REST APIs

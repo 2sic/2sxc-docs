@@ -40,7 +40,7 @@ Starting in 2sxc v11.11 all Razor classes have a command called [GetService](xre
 This is how your code would get a service:
 
 ```c#
-var page = GetService<ToSic.Sxc.Web.IPageService>();
+var page = GetService<ToSic.Sxc.Services.IPageService>();
 page.AddOpenGraph("video", "https://2sxc.org/videos/intro.mp4");
 ```
 
@@ -72,7 +72,7 @@ Here's how you would use it:
 
 You can get just about anything from 2sxc, but the most common services you'll request as of 2sxc 12 are:
 
-1. `ToSic.Sxc.Web.IPageService` - for setting page title, headers, open-graph, JsonLD etc.
+1. `ToSic.Sxc.Services.IPageService` - for setting page title, headers, open-graph, JsonLD etc.
 1. `Connect.Koi.ICss` for detecting theme properties like the used CSS Framework
 
 ## How Can I Get Dnn Objects using Dependency Injection?

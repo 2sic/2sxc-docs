@@ -35,12 +35,12 @@ Entities are structured as follows:
 * [](xref:ToSic.Eav.Data.IValue), [](xref:ToSic.Eav.Data.IValue`1), [](xref:ToSic.Eav.Data.Value`1)  
 	determines how values in an attribute are stored, because an attribute like `Description`  
 	can have many values in different languages
-* [](xref:ToSic.Eav.Data.ILanguage), [](xref:ToSic.Eav.Data.IDimension), [](xref:ToSic.Eav.Data.Language)  
+* [](xref:ToSic.Eav.Data.ILanguage), [](xref:ToSic.Eav.Data.IDimension), [](xref:ToSic.Eav.Data.ILanguage)  
 	languages and dimensions determine how the values are used in each language
 * [](xref:ToSic.Eav.Metadata.ITarget), [](xref:ToSic.Eav.Metadata.Target)  
 	this determines if the Entity is by itself, or if it's enriching something else -  
 	in which case this Entity is Metadata. 
-* [](xref:ToSic.Eav.Metadata.MetadataOf`1)  
+* [](xref:ToSic.Eav.Metadata.IMetadataOf)  
 	sometimes an Entity may itself have more metadata, which would then be stored here.
 
 

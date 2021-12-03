@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ICmsSite
+    <title>Interface IToolbarService
    | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ICmsSite
+    <meta name="title" content="Interface IToolbarService
    | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -113,99 +113,141 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Context.ICmsSite">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.IToolbarService">
   
   
-  <h1 id="ToSic_Sxc_Context_ICmsSite" data-uid="ToSic.Sxc.Context.ICmsSite" class="text-break">Interface ICmsSite
+  <h1 id="ToSic_Sxc_Services_IToolbarService" data-uid="ToSic.Sxc.Services.IToolbarService" class="text-break">Interface IToolbarService
   </h1>
-  <div class="markdown level0 summary"><p>The site context of the code - so basically which website / portal it&apos;s running on. </p>
+  <div class="markdown level0 summary"><p>Special helper to generate edit toolbars in the front-end.
+It is used in combination with <code>@Edit.Toolbar(...)</code>.
+It&apos;s especially useful for complex rules like Metadata-buttons which are more complex to create. </p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="ToSic.Eav.Metadata.IHasMetadata.html#ToSic_Eav_Metadata_IHasMetadata_Metadata">IHasMetadata.Metadata</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Context.html">ToSic.Sxc.Context</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
-  <h5 id="ToSic_Sxc_Context_ICmsSite_syntax">Syntax</h5>
+  <h5 id="ToSic_Sxc_Services_IToolbarService_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-public interface ICmsSite : IHasMetadata</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi(&quot;WIP 13&quot;)]
+public interface IToolbarService</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h5 id="ToSic_Sxc_Services_IToolbarService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>History</p>
+<ul>
+<li>Added in 2sxc 13</li>
+</ul>
+</div>
+  <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Context_ICmsSite_Id.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Context.ICmsSite.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Default_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Default(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsSite.cs/#L20">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L27">View Source</a>
   </span>
-  <a id="ToSic_Sxc_Context_ICmsSite_Id_" data-uid="ToSic.Sxc.Context.ICmsSite.Id*"></a>
-  <h4 id="ToSic_Sxc_Context_ICmsSite_Id" data-uid="ToSic.Sxc.Context.ICmsSite.Id">Id</h4>
-  <div class="markdown level1 summary"><p>The Id of the site in systems like DNN and Oqtane.</p>
-<p>🪒 Use in Razor: <code>CmsContext.Site.Id</code></p>
+  <a id="ToSic_Sxc_Services_IToolbarService_Default_" data-uid="ToSic.Sxc.Services.IToolbarService.Default*"></a>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Default_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Default(System.String,System.String)">Default(String, String)</h4>
+  <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>default</code> template/buttons to use with <code>@Edit.Toolbar</code>
+It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
+For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int Id { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Default(string noParamOrder = &quot;Rule: all params must be named (https://r.2sxc.org/named-params), Example: 'enable: true, version: 10'&quot;, string ui = &quot;&quot;)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="ToSic_Sxc_Context_ICmsSite_Id_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>In DNN this is the same as the <code>PortalId</code></p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Context_ICmsSite_Url.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Context.ICmsSite.Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsSite.cs/#L33">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Context_ICmsSite_Url_" data-uid="ToSic.Sxc.Context.ICmsSite.Url*"></a>
-  <h4 id="ToSic_Sxc_Context_ICmsSite_Url" data-uid="ToSic.Sxc.Context.ICmsSite.Url">Url</h4>
-  <div class="markdown level1 summary"><p>The site url with protocol. Can be variation of any such examples:</p>
-<ul>
-<li><a href="https://website.org">https://website.org</a></li>
-<li><a href="https://www.website.org">https://www.website.org</a></li>
-<li><a href="https://website.org/products">https://website.org/products</a></li>
-<li><a href="https://website.org/en-us">https://website.org/en-us</a></li>
-<li><a href="https://website.org/products/en-us">https://website.org/products/en-us</a></li>
-</ul>
-<p>🪒 Use in Razor: <code>CmsContext.Site.Url</code></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Url { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ui</span></td>
+        <td><p>Parameters for the UI, like color=red - see <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a> for all possible options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Edit.IToolbarBuilder.html">IToolbarBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Empty_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Empty(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L37">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Services_IToolbarService_Empty_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty*"></a>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Empty_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty(System.String,System.String)">Empty(String, String)</h4>
+  <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>empty</code> toolbar to use with <code>@Edit.Toolbar</code>
+It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
+For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Empty(string noParamOrder = &quot;Rule: all params must be named (https://r.2sxc.org/named-params), Example: 'enable: true, version: 10'&quot;, string ui = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ui</span></td>
+        <td><p>Parameters for the UI, like color=red - see <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a> for all possible options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Edit.IToolbarBuilder.html">IToolbarBuilder</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -218,10 +260,10 @@ public interface ICmsSite : IHasMetadata</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Context_ICmsSite.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Context.ICmsSite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsSite.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -25,7 +25,7 @@ We approached it in a futuristic way because we wanted to make sure that the cod
 1. Once the Razor is done, the engine will forward these requests to the page and ensure it happens
 
 👉 Read about [Dependency Injection](xref:NetCode.DependencyInjection.Index)
-👉 Read about the [IPageService in the API docs](xref:ToSic.Sxc.Web.IPageService)
+👉 Read about the [IPageService in the API docs](xref:ToSic.Sxc.Services.IPageService)
 
 ## Set Page Properties
 
@@ -33,14 +33,14 @@ You can set these page properties
 
 1. `SetTitle(newToPrefix)`  
     `SetTitle(newTitle, placeholder)`  
-    see [docs](xref:ToSic.Sxc.Web.IPageService.SetTitle*)
+    see [docs](xref:ToSic.Sxc.Services.IPageService.SetTitle*)
 1. `SetDescription(newDescription)`  
     `SetDescription(newDescription, placeholder)`  
-    see [docs](xref:ToSic.Sxc.Web.IPageService.SetDescription*)
+    see [docs](xref:ToSic.Sxc.Services.IPageService.SetDescription*)
 1. `SetKeywords(additionalKeywords)`  
     `SetKeywords(additionalKeywords, placeholder)`  
-    see [docs](xref:ToSic.Sxc.Web.IPageService.SetKeywords*)
-1. `SetBase(url)` - see [docs](xref:ToSic.Sxc.Web.IPageService.SetBase*)
+    see [docs](xref:ToSic.Sxc.Services.IPageService.SetKeywords*)
+1. `SetBase(url)` - see [docs](xref:ToSic.Sxc.Services.IPageService.SetBase*)
 
 Note that SetTitle, SetDescription and SetKeywords will prepend or append whatever you give them to the existing value, unless you specify a placeholder - in which case that placeholder will be replaced. 
 
@@ -48,7 +48,7 @@ Note that SetTitle, SetDescription and SetKeywords will prepend or append whatev
 
 In some cases an App may need to set the page to 404 - so that google doesn't index it. Do this using
 
-* `SetHttpStatus(statusCode, optionalmessage)` - see [docs](xref:ToSic.Sxc.Web.IPageService.SetHttpStatus*)
+* `SetHttpStatus(statusCode, optionalmessage)` - see [docs](xref:ToSic.Sxc.Services.IPageService.SetHttpStatus*)
 
 Note: ATM this is Dnn ☢️ only, as Oqtane doesn't render each page at a time - so a status code wouldn't work there (yet).
 
@@ -56,16 +56,16 @@ Note: ATM this is Dnn ☢️ only, as Oqtane doesn't render each page at a time 
 
 Icons / FavIcons are minor enhancements to a page, but they serve more than just the icon in the browser tab. In many cases they may also have larger images used for tiles and more. Use these two commands to get them working:
 
-* `AddIcon` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddIcon*) to add a single icon
-* `AddIconSet` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddIconSet*) to add a bundle of icons for various use cases in one step
+* `AddIcon` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddIcon*) to add a single icon
+* `AddIconSet` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddIconSet*) to add a bundle of icons for various use cases in one step
 
 ## Add Custom Headers
 
 Custom headers may be important for JavaScripts running on your page or other special purposes. Set them using these methods:
 
-* `AddToHead(string)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddToHead(System.String))
-* `AddToHead(tag)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddToHead(ToSic.Razor.Markup.TagBase))
-* `AddMeta(name, content)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddMeta*)
+* `AddToHead(string)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddToHead(System.String))
+* `AddToHead(tag)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddToHead(ToSic.Razor.Markup.TagBase))
+* `AddMeta(name, content)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddMeta*)
 
 ## Add JsonLD Headers (Schema.org)
 
@@ -73,15 +73,15 @@ JsonLD is a powerful way to describe your page to other systems, especially web 
 It uses conventions from [schema.org](https://schema.org). 
 Use this to add custom JsonLD headers:
 
-* `AddJsonLd(jsonString)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddJsonLd(System.String))
-* `AddJsonLd(jsonObject)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddJsonLd(System.Object))
+* `AddJsonLd(jsonString)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddJsonLd(System.String))
+* `AddJsonLd(jsonObject)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddJsonLd(System.Object))
 
 ## Add OpenGraph Headers
 
 OpenGraph is a standard to describe your page for Facebook, Twitter and other more social-style systems. 
 It adds meta headers using `og:` prefixes. Use these commands to add such headers:
 
-* `AddOpenGraph(propertyName, content)` - see [docs](xref:ToSic.Sxc.Web.IPageService.AddOpenGraph*)
+* `AddOpenGraph(propertyName, content)` - see [docs](xref:ToSic.Sxc.Services.IPageService.AddOpenGraph*)
 
 ## Activate Page Features
 

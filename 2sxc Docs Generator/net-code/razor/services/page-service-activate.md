@@ -26,7 +26,7 @@ For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) 
 A simple example:
 
 ```c#
-var page = GetService<ToSic.Sxc.Web.IPageService>();
+var page = GetService<ToSic.Sxc.Services.IPageService>();
 page.Activate("jQuery");            // Activate jQuery
 page.Activate("turnOn");            // Activate turnOn
 page.Activate("jQuery", "turnOn");  // Activate both
@@ -53,7 +53,7 @@ Features that are explicitly not implemented
 Any WebResources registered in the settings can be activated. Here's an example: 
 
 ```c#
-var page = GetService<ToSic.Sxc.Web.IPageService>();
+var page = GetService<ToSic.Sxc.Services.IPageService>();
 page.Activate("Bootstrap5");                // Activate Bootstrap5 from a CDN
 page.Activate("fancybox4");                 // Activate fancybox4 from a CDN
 page.Activate("fancybox3", "FontAwesome5");  // Activate the older fancybox + FontAwesome5

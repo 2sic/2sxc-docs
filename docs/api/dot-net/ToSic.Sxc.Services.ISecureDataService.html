@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Sxc.Services
+    <title>Interface ISecureDataService
    | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Sxc.Services
+    <meta name="title" content="Interface ISecureDataService
    | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -113,56 +113,76 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ISecureDataService">
   
-  <h1 id="ToSic_Sxc_Services" data-uid="ToSic.Sxc.Services" class="text-break">Namespace ToSic.Sxc.Services
+  
+  <h1 id="ToSic_Sxc_Services_ISecureDataService" data-uid="ToSic.Sxc.Services.ISecureDataService" class="text-break">Interface ISecureDataService
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Helper to work with secure / encrypted data. </p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IConvertService.html">IConvertService</a></h4>
-      <section><p>Conversion helper for things which are very common in web-code like Razor and WebAPIs.
-It&apos;s mainly a safe conversion from anything to a target-type.</p>
-<p>Some special things it does:</p>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
+  <h5 id="ToSic_Sxc_Services_ISecureDataService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public interface ISecureDataService</code></pre>
+  </div>
+  <h5 id="ToSic_Sxc_Services_ISecureDataService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>History</p>
 <ul>
-<li>Strings like &quot;4.2&quot; reliably get converted to int 4 which would otherwise return 0</li>
-<li>Numbers like 42 reliably converts to bool true which would otherwise return false</li>
-<li>Numbers like 42.5 reliably convert to strings &quot;42.5&quot; instead of &quot;42,5&quot; in certain cultures</li>
+<li>Added in 2sxc 12.05</li>
 </ul>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IJsonService.html">IJsonService</a></h4>
-      <section><p>Service to serialize/restore JSON. Get it using GetService &lt; T &gt;</p>
-<p>It works for 2sxc/EAV data but can be used for any data which can be serialized/deserialized.
-Since it&apos;s a data-operation, we keep it in this namespace, even if most other things in this namespace are 2sxc-data objects.</p>
-<p><em>Important</em> This is simple object-string conversion.
-It doesn&apos;t change entity objects to be serializable.
-For that you should use the <a class="xref" href="ToSic.Eav.DataFormats.EavLight.IConvertToEavLight.html">IConvertToEavLight</a> which returns an object that can then be serialized. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.ILogService.html">ILogService</a></h4>
-      <section><p>Service to add messages to the global log in any platform Dnn/Oqtane</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IMailService.html">IMailService</a></h4>
-      <section><p>Service to send mail messages cross-platform.</p>
-<p>Get this service in Razor or WebApi using <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_GetService_">GetService</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IPageService.html">IPageService</a></h4>
-      <section><p>Make changes to the page - usually from Razor.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IRenderService.html">IRenderService</a></h4>
-      <section><p>Block-Rendering system. It&apos;s responsible for taking a Block and delivering HTML for the output. <br>
-It&apos;s used for InnerContent, so that Razor-Code can easily render additional content blocks. <br>
-See also <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content (Content Within Other Content)</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.ISecureDataService.html">ISecureDataService</a></h4>
-      <section><p>Helper to work with secure / encrypted data. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Services.IToolbarService.html">IToolbarService</a></h4>
-      <section><p>Special helper to generate edit toolbars in the front-end.
-It is used in combination with <code>@Edit.Toolbar(...)</code>.
-It&apos;s especially useful for complex rules like Metadata-buttons which are more complex to create. </p>
-</section>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_ISecureDataService_Parse_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.ISecureDataService.Parse(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Secrets/ISecureDataService.cs/#L16">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Services_ISecureDataService_Parse_" data-uid="ToSic.Sxc.Services.ISecureDataService.Parse*"></a>
+  <h4 id="ToSic_Sxc_Services_ISecureDataService_Parse_System_String_" data-uid="ToSic.Sxc.Services.ISecureDataService.Parse(System.String)">Parse(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISecureData&lt;string&gt; Parse(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Data.ISecureData-1.html">ISecureData</a>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -170,6 +190,12 @@ It&apos;s especially useful for complex rules like Metadata-buttons which are mo
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_ISecureDataService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.ISecureDataService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Secrets/ISecureDataService.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

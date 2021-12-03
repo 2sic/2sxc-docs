@@ -28,7 +28,7 @@ $(start);
 To use turnOn you must must tell the page that you need it. Here's how:
 
 ```c#
-var page = GetService<ToSic.Sxc.Web.IPageService>();
+var page = GetService<ToSic.Sxc.Services.IPageService>();
 page.Activate("turnOn");
 ```
 

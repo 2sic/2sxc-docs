@@ -18,7 +18,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.jQuery
 > [!IMPORTANT]
 > As of 2sxc 12.10 we don't recommend using this any more.
 > It will only work if the page also has jQuery enabled either using 
-> `pageService.Activate("jQuery");` (see [IPageService](xref:todo))
+> `pageService.Activate("jQuery");` (see [IPageService](xref:ToSic.Sxc.Services.IPageService))
 > or because something else already loads it.
 > 
 > From now on we strongly suggest you use `fetch` which is supported by all modern browsers. 
