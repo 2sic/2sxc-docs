@@ -11,6 +11,10 @@ We're documenting it here to ensure you know what happened, in case you still ru
 
 V12 did a lot of internal rework to get it to run on Oqtane. Almost none of the changes will affect you. 
 
+#### Version 12.10
+
+1. Jquery is completely removed. This shouldn't affect your code, since all old code usually runs in DNN where jQuery is included by default. 
+
 #### Version 12.04
 
 1. DynamicEntity now has a property Count because it's a list as well, this could cause issues if a content-type has a property `Count`

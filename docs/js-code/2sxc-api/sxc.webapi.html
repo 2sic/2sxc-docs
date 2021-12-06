@@ -246,73 +246,21 @@
 <pre><code class="lang-HTML">&lt;a onclick=&quot;$2sxc(this).webApi.fetchJson(&#39;app/auto/content/Category&#39;).then(handleResult);&quot;&gt;
     get all Categories 
 &lt;/a&gt;
-</code></pre><p>TODO: link fetch, jquery, etc.</p>
+</code></pre><h2 id="the-apis-to-get-data">The APIs to Get Data</h2>
+<ol>
+<li><a class="xref" href="sxc.webapi-fetch.html">Modern <code>fetch</code> and <code>fetchJson</code> API</a></li>
+<li><a class="xref" href="sxc.webapi-bare-metal.html">APIs to get URLs and headers</a></li>
+<li><a class="xref" href="sxc.webapi-jquery.html">Old jQuery APIs</a></li>
+</ol>
 <h2 id="how-to-get-the-current-contexts-sxc-controller">How to Get the Current Context&#39;s <code>sxc</code> Controller</h2>
 <p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the <a class="xref" href="2sxc.html">$2sxc Manager docs</a>. Here you&#39;ll also find out more about the <a class="xref" href="sxc.html">sxc-controller</a>.</p>
-<h2 id="working-with-rest--http-async-stuff">Working with REST / HTTP Async Stuff</h2>
-<p>Short note: the WebAPIs work like classic javascript promises, supporting <code>.then(...)</code>, <code>.error(...)</code> etc.</p>
-<p>The $2sxc(...).webApi has 4 commands</p>
-<ul>
-<li><code>.webApi.get(url, ...)</code> </li>
-<li><code>.webApi.post(url, ...)</code></li>
-<li><code>.webApi.delete(url, ...)</code></li>
-<li><code>.webApi.put(url, ...)</code></li>
-</ul>
-<p>Each of these has the following parameters</p>
-<ol>
-<li><code>url</code> or <code>settings</code> <em>required</em> string|object: a Url for the end-point OR a <code>{ ... }</code> settings object  </li>
-<li><code>params</code> <em>optional</em> object: the url params like <code>{ id: 27, name: &quot;hello&quot; }</code></li>
-<li><code>data</code> <em>optional</em> object: the data - in case of post / put, like <code>{ ... }</code></li>
-<li><code>preventAutoFail</code> <em>optional</em> bool: if true, won&#39;t automatically show a default message on error, so that you can handle errors differently</li>
-</ol>
-<p>Quick examples:</p>
-<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
-sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
-    .success(function() {
-        // ....
-    })
-    .error(function() {
-        // ...
-    });
-</code></pre><p>This will call the C# WebApi controller <code>FormController</code> in the <code>api</code> folder and go for its <code>ProcessForm</code> command. It will use no url-params, but put a <code>data</code> object in the body (as json), and will do error-handling itself. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="using-app-queries-with-2sxc--todo">Using App-Queries with $2sxc  (TODO)</h2>
-<p>Todo: must document more about this</p>
-<p>In short: </p>
-<ol>
-<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
-<li>for the path-parameter, use a path starting with <code>app/auto/query/[queryname]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/query/</code> </li>
-</ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="working-with-custom-c-app-webapis-todo">Working with Custom C# App WebAPIs (TODO)</h2>
-<p>TODO - must document more about what the web-apis are (link to more documentation)</p>
-<p>In short: </p>
-<ol>
-<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
-<li>for the path-parameter, use a path starting with <code>app/auto/api/[controller]/[action]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/api/</code> </li>
-</ol>
-<p>You can read more about the <a class="xref" href="../../net-code/web-api/index.html">C# WebApi Server Side</a></p>
-<p>Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="technical-features-explained">Technical Features Explained</h2>
-<p>todo</p>
-<h2 id="additional-properties-of-a-module-controller">Additional Properties of a Module Controller</h2>
-<p>TODO - must document more about properties like</p>
-<ol>
-<li>isLoaded, lastRefresh, etc.</li>
-<li>that these are all internal-use and not guaranteed to stay stable in future versions</li>
-</ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
-<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
-</ul>
-<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 04.00</li>
+<li>jQuery based <code>webApi.get(...)</code> etc. introduced in 2sxc 04.00</li>
+<li><code>webApi.fetch()</code>, <code>webApi.fetchJson()</code>, <code>webApi.url()</code>, <code>webApi.headers()</code> API introduced in v12.10</li>
+<li>jQuery commands deprecated in v12.10 but will continue to work if the page has jQuery loaded</li>
+<li><code>webApi.url(...)</code> enhanced with parameters object in v12.11</li>
 </ol>
 </article>
           </div>

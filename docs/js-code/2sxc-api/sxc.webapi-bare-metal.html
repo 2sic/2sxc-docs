@@ -257,18 +257,24 @@ or whatever API system you want. </p>
 <p>This method will extend short API / Content / Query URLs for you. This means it will handle URLs like this:</p>
 <ol>
 <li>Simple api-urls like <code>controller/method</code> or <code>controller/method?params</code> will be converted to the full API needed</li>
+<li>Longer API urls like <code>app/auto/controller/method</code> will also be converted to the full url</li>
+<li>Parameters in the object <code>params</code> will be added as <code>?...=...</code> <em>v12.11+</em></li>
 </ol>
-<p>TODO: this all isn&#39;t right yet</p>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
-<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
-</ul>
-<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<h2 id="webapiheadersverb">webApi.headers(verb?)</h2>
+<p>This will get you an object containing all the headers you need for a common WebAPI request. It includes things like:</p>
+<ol>
+<li><code>ModuleId</code> and <code>PageId</code></li>
+<li>Security headers/tokens</li>
+<li>Encoding headers - this will vary based on the optional verb you pass in</li>
+</ol>
+<p>If you don&#39;t specify a verb, <code>GET</code> is assumed, so it will only have encoding-headers for the response. </p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 04.00</li>
+<li>jQuery based <code>webApi.get(...)</code> etc. introduced in 2sxc 04.00</li>
+<li><code>webApi.fetch()</code>, <code>webApi.fetchJson()</code>, <code>webApi.url()</code>, <code>webApi.headers()</code> API introduced in v12.10</li>
+<li>jQuery commands deprecated in v12.10 but will continue to work if the page has jQuery loaded</li>
+<li><code>webApi.url(...)</code> enhanced with parameters object in v12.11</li>
 </ol>
 </article>
           </div>

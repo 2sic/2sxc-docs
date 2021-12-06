@@ -24,7 +24,7 @@ You can create awesome solutions, customizing the edit-experience and working wi
 ## The quickE (Quick Edit) experience
 1. customizing the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)
 
-## Using 2sxc with Popular JS Libraries (TODO)
+## Using 2sxc with Popular JS Libraries
 1. [Angular / dnn-sxc-angular](xref:JsCode.Angular.Index)
 
 

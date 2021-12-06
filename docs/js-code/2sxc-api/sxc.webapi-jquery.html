@@ -243,11 +243,12 @@
 <li><code>webApi.put(...)</code>  for HTTP PUT calls</li>
 <li><code>webApi.request(...)</code> for any other HTTP calls</li>
 </ul>
-<div class="IMPORTANT"><h5>Important</h5><p>As of 2sxc 12.10 we don&#39;t recommend using this any more.
+<div class="WARNING"><h5>Warning</h5><p>As of 2sxc 12.10 we don&#39;t recommend using this any more.
 It will only work if the page also has jQuery enabled either using 
 <code>pageService.Activate(&quot;jQuery&quot;);</code> (see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>)
-or because something else already loads it.</p>
-<p>From now on we strongly suggest you use <code>fetch</code> which is supported by all modern browsers. </p>
+or because something else like the theme/skin already loads it.</p>
+<p>From now on we strongly suggest you use <code>fetch</code> which is supported by all modern browsers. 
+See <a class="xref" href="sxc.webapi-fetch.html">webApi.fetch</a></p>
 </div>
 <div class="TIP"><h5>Tip</h5><p>To find out how to get the module sxc-object using $2sxc, check out <a class="xref" href="sxc.webapi.html">The WebApi Helpers on the Sxc Controller</a></p>
 </div>
@@ -294,17 +295,12 @@ sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
         // ...
     });
 </code></pre><p>This will call the C# WebApi controller <code>FormController</code> in the <code>api</code> folder and go for its <code>ProcessForm</code> command. It will use no url-params, but put a <code>data</code> object in the body (as json), and will do error-handling itself. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="using-app-queries-with-2sxc--todo">Using App-Queries with $2sxc  (TODO)</h2>
-<p>Todo: must document more about this</p>
 <p>In short: </p>
 <ol>
 <li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
 <li>for the path-parameter, use a path starting with <code>app/auto/query/[queryname]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/query/</code> </li>
 </ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="working-with-custom-c-app-webapis-todo">Working with Custom C# App WebAPIs (TODO)</h2>
-<p>TODO - must document more about what the web-apis are (link to more documentation)</p>
+<h2 id="working-with-custom-c-app-webapis">Working with Custom C# App WebAPIs</h2>
 <p>In short: </p>
 <ol>
 <li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
@@ -312,16 +308,6 @@ sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
 </ol>
 <p>You can read more about the <a class="xref" href="../../net-code/web-api/index.html">C# WebApi Server Side</a></p>
 <p>Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="technical-features-explained">Technical Features Explained</h2>
-<p>todo</p>
-<h2 id="additional-properties-of-a-module-controller">Additional Properties of a Module Controller</h2>
-<p>TODO - must document more about properties like</p>
-<ol>
-<li>isLoaded, lastRefresh, etc.</li>
-<li>that these are all internal-use and not guaranteed to stay stable in future versions</li>
-</ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>
@@ -329,9 +315,13 @@ sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
 <li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
 </ul>
 <p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 04.00</li>
+<li>jQuery based <code>webApi.get(...)</code> etc. introduced in 2sxc 04.00</li>
+<li><code>webApi.fetch()</code>, <code>webApi.fetchJson()</code>, <code>webApi.url()</code>, <code>webApi.headers()</code> API introduced in v12.10</li>
+<li>jQuery commands deprecated in v12.10 but will continue to work if the page has jQuery loaded</li>
+<li><code>webApi.url(...)</code> enhanced with parameters object in v12.11</li>
 </ol>
 </article>
           </div>

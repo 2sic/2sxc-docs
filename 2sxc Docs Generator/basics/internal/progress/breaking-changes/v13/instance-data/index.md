@@ -34,6 +34,7 @@ _Note that the stream `Default` is still called `Default` today, but `ListConten
 Once this was setup, there was a way to get this data through a WebApi call. 
 
 1. From v3 to ca. v6 there was a call which actually went through the Dnn Page (so it was slow)
+1. V6 to ca. v11 it used a call to `app-sys/AppContent/GetContentBlockData`
 2. Later there was a special WebApi call to `app/auto/InstanceData` which did the same thing
 
 The format of the response was a bit special, specifically it looked like this (TimelineJs example):

@@ -15,13 +15,14 @@ uid: JsCode.2sxcApi.Sxc.WebApi.jQuery
 * `webApi.put(...)`  for HTTP PUT calls
 * `webApi.request(...)` for any other HTTP calls
 
-> [!IMPORTANT]
+> [!WARNING]
 > As of 2sxc 12.10 we don't recommend using this any more.
 > It will only work if the page also has jQuery enabled either using 
 > `pageService.Activate("jQuery");` (see [IPageService](xref:ToSic.Sxc.Services.IPageService))
-> or because something else already loads it.
+> or because something else like the theme/skin already loads it.
 > 
 > From now on we strongly suggest you use `fetch` which is supported by all modern browsers. 
+> See [webApi.fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
 
 > [!TIP]
 > To find out how to get the module sxc-object using $2sxc, check out [](xref:JsCode.2sxcApi.Sxc.WebApi)
@@ -85,31 +86,12 @@ sxc.webApi.post("Form/ProcessForm", {}, data, true)
 
 This will call the C# WebApi controller `FormController` in the `api` folder and go for its `ProcessForm` command. It will use no url-params, but put a `data` object in the body (as json), and will do error-handling itself. 
 
-_Till we find time to document more, please consult the [source][source]_
-
-## Using App-Queries with $2sxc  (TODO)
-
-
-
-
-
-
-
-
-
-
-Todo: must document more about this
-
 In short: 
 
 1. use `$2sxc(...).webApi.get(...)` or `$2sxc(...).webApi.post(...)` etc.
 2. for the path-parameter, use a path starting with `app/auto/query/[queryname]` - 2sxc will take care of all the path resolutions if the path starts with `app/auto/query/` 
 
-_Till we find time to document more, please consult the [source][source]_
-
-
-## Working with Custom C# App WebAPIs (TODO)
-TODO - must document more about what the web-apis are (link to more documentation)
+## Working with Custom C# App WebAPIs
 
 In short: 
 
@@ -120,33 +102,6 @@ You can read more about the [C# WebApi Server Side](xref:NetCode.WebApi.Index)
 
 Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. 
 
-_Till we find time to document more, please consult the [source][source]_
-
-
-
-
-
-
-
-
-## Technical Features Explained
-todo
-
-
-
-
-
-## Additional Properties of a Module Controller
-
-TODO - must document more about properties like
-
-1. isLoaded, lastRefresh, etc.
-2. that these are all internal-use and not guaranteed to stay stable in future versions
-
-_Till we find time to document more, please consult the [source][source]_
-
-
-
 
 ## Demo App and further links
 
@@ -156,8 +111,4 @@ You should find some code examples in this demo App
 
 More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Manuals/Feature/feature/2683)
 
-## History
-
-1. Introduced in 2sxc 04.00
-
-[source]: https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js
+[!include["history"](_webapi-history.md)]

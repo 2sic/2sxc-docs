@@ -237,119 +237,52 @@
 
 <p>Modern browsers all support <code>fetch</code> and this is now the preferred way to get data. </p>
 <p>2sxc 12 / 13 introduce new JS APIs for this. </p>
-<p>_Note that if you want to use other AJAX libraries, check out the <a class="xref" href="sxc.webapi-bare-metal.html">Bare Metal APIs</a>.</p>
+<p><em>Note: If you want to use other AJAX libraries, check out the <a class="xref" href="sxc.webapi-bare-metal.html">Bare Metal APIs</a>.</em></p>
 <h2 id="simple-apis">Simple APIs</h2>
 <p>The simple APIs perform a browser <code>fetch</code> and return a promise. This is very similar to jQuery. </p>
 <ul>
 <li><code>webApi.fetch(...)</code> performs a basic <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> and returns a standard promise containing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> object</li>
 <li><code>webApi.fetchJson(...)</code> performs a <code>fetch</code> and returs a promise containing an object which came from JSON <strong>recommended</strong></li>
-<li><code>webApi.fetchData(...)</code> WIP</li>
-<li><code>webApi.fetchQuery(...)</code> WIP</li>
 </ul>
 <h2 id="parameters">Parameters</h2>
 <p>All of these methods can be called with just 1 parameter, the <code>url</code>. But for more control, you can have these parameters: </p>
 <ol>
-<li><code>url</code> - short api url like <code>controller/method?params</code> or other variations (see below TODO)</li>
+<li><code>url</code> - short api url like <code>controller/method?params</code> or other variations (see below)</li>
 <li><code>data</code> - optional POST data, empty by default. Can be a string or an object. If it&#39;s an object, it will auto-convert to JSON</li>
 <li><code>method</code> - optional method name, default is <code>GET</code>, unless you specify data, in which case it defaults to <code>POST</code></li>
 </ol>
-<p>2sxc originally used jQuery and the JS API still has commands which do jQuery AJAX calls. On the <code>webApi</code> object they are</p>
-<ul>
-<li><code>delete(...)</code> for HTTP DELETE calls</li>
-<li><code>get(...)</code>  for HTTP GET calls</li>
-<li><code>post(...)</code>  for HTTP POST calls</li>
-<li><code>put(...)</code>  for HTTP PUT calls</li>
-<li><code>request(...)</code> for any other HTTP calls</li>
-</ul>
-<div class="IMPORTANT"><h5>Important</h5><p>As of 2sxc 12.10 we don&#39;t recommend using this any more.
-It will only work if the page also has jQuery enabled either using 
-<code>pageService.Activate(&quot;jQuery&quot;);</code> (see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>)
-or because something else already loads it.</p>
-<p>From now on we strongly suggest you use <code>fetch</code> which is supported by all modern browsers. </p>
-</div>
-<div class="TIP"><h5>Tip</h5><p>To find out how to get the module sxc-object using $2sxc, check out <a class="xref" href="sxc.webapi.html">The WebApi Helpers on the Sxc Controller</a></p>
-</div>
-<h2 id="example">Example</h2>
-<p>Here&#39;s a simple example (assuming you have the $2sxc manager):</p>
-<pre><code class="lang-HTML">&lt;a onclick=&quot;$2sxc(this).webApi.get(&#39;app/auto/content/Category&#39;).then(handleResult);&quot;&gt;
-    get all Categories 
-&lt;/a&gt;
-</code></pre><p>The code above shows</p>
+<h2 id="url">Url</h2>
+<p>The url can be any one of these:</p>
 <ol>
-<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> manager, based on the current context <code>this</code></li>
-<li>how all items of type &quot;Category&quot; are requested</li>
-<li>how the result (promise) is passed on to <code>handleResults</code> for updating the view etc.</li>
+<li>Api URL pointing to a WebAPI of the app - short like <code>controller/method</code> or long like <code>app/auto/controller/method</code></li>
+<li>Query url with a query name like <code>app/auto/query/queryName</code></li>
+<li>Data url pointing to the data like <code>app/auto/content/contentType</code></li>
 </ol>
-<p>Here&#39;s another quick example, calling a C# web-api endpoint: </p>
-<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
-sxc.webApi.post(&quot;Form/ProcessForm&quot;)
-    .success(function(result) {
-        // ....
-    });
-</code></pre><h2 id="working-with-rest--http-async-stuff">Working with REST / HTTP Async Stuff</h2>
-<p>Short note: these WebAPIs work using jQuery promises (<em>not</em> JavaScript promises), supporting <code>.then(...)</code>, <code>.error(...)</code> etc.</p>
-<p>The $2sxc(...).webApi has 4 <strong>jQuery</strong> commands</p>
-<ul>
-<li><code>.webApi.get(url, ...)</code> </li>
-<li><code>.webApi.post(url, ...)</code></li>
-<li><code>.webApi.delete(url, ...)</code></li>
-<li><code>.webApi.put(url, ...)</code></li>
-</ul>
-<p>Each of these has the following parameters</p>
-<ol>
-<li><code>url</code> or <code>settings</code> <em>required</em> string|object: a Url for the end-point OR a <code>{ ... }</code> settings object  </li>
-<li><code>params</code> <em>optional</em> object: the url params like <code>{ id: 27, name: &quot;hello&quot; }</code></li>
-<li><code>data</code> <em>optional</em> object: the data - in case of post / put, like <code>{ ... }</code></li>
-<li><code>preventAutoFail</code> <em>optional</em> bool: if true, won&#39;t automatically show a default message on error, so that you can handle errors differently</li>
-</ol>
-<p>Quick examples:</p>
-<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
-sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
-    .success(function() {
-        // ....
-    })
-    .error(function() {
-        // ...
-    });
-</code></pre><p>This will call the C# WebApi controller <code>FormController</code> in the <code>api</code> folder and go for its <code>ProcessForm</code> command. It will use no url-params, but put a <code>data</code> object in the body (as json), and will do error-handling itself. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="using-app-queries-with-2sxc--todo">Using App-Queries with $2sxc  (TODO)</h2>
-<p>Todo: must document more about this</p>
-<p>In short: </p>
-<ol>
-<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
-<li>for the path-parameter, use a path starting with <code>app/auto/query/[queryname]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/query/</code> </li>
-</ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="working-with-custom-c-app-webapis-todo">Working with Custom C# App WebAPIs (TODO)</h2>
-<p>TODO - must document more about what the web-apis are (link to more documentation)</p>
-<p>In short: </p>
-<ol>
-<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
-<li>for the path-parameter, use a path starting with <code>app/auto/api/[controller]/[action]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/api/</code> </li>
-</ol>
-<p>You can read more about the <a class="xref" href="../../net-code/web-api/index.html">C# WebApi Server Side</a></p>
-<p>Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
-<h2 id="technical-features-explained">Technical Features Explained</h2>
-<p>todo</p>
-<h2 id="additional-properties-of-a-module-controller">Additional Properties of a Module Controller</h2>
-<p>TODO - must document more about properties like</p>
-<ol>
-<li>isLoaded, lastRefresh, etc.</li>
-<li>that these are all internal-use and not guaranteed to stay stable in future versions</li>
-</ol>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">source</a></em></p>
+<p>These can also have parameters like <code>controller/method?id=27</code> or <code>app/auto/content/contentType/574</code> depending on what the endpoint expects. </p>
+<h2 id="helper-for-urls-with-parameters-v13">Helper for URLs with Parameters <em>v13</em></h2>
+<p>2sxc 13 enhances the <code>webApi.url(...)</code> function to build a url using a parameters object. 
+So you can do either one of these examples:</p>
+<pre><code class="lang-js">var webApi = $2sxc(moduleId).webApi;
+
+var jsonPromise1 = webApi.fetchJson(&#39;blog/rss?category=17&#39;);
+
+var jsonPromise2 = webApi.fetchJson(webApi.url(&#39;blog/rss&#39;, { category: 17 }));
+</code></pre><hr>
+<h2 id="tutorial">Tutorial</h2>
+<p>👉 We&#39;ve updated the simple <a href="https://2sxc.org/dnn-tutorials/en/razor/webapi110/page">web api tutorials</a> to demo this</p>
+<hr>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>
 <li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
-<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
 </ul>
-<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 04.00</li>
+<li>jQuery based <code>webApi.get(...)</code> etc. introduced in 2sxc 04.00</li>
+<li><code>webApi.fetch()</code>, <code>webApi.fetchJson()</code>, <code>webApi.url()</code>, <code>webApi.headers()</code> API introduced in v12.10</li>
+<li>jQuery commands deprecated in v12.10 but will continue to work if the page has jQuery loaded</li>
+<li><code>webApi.url(...)</code> enhanced with parameters object in v12.11</li>
 </ol>
 </article>
           </div>

@@ -35,24 +35,18 @@ These APIs get you things you need to construct your own `fetch`, `Request`, XHR
 This method will extend short API / Content / Query URLs for you. This means it will handle URLs like this:
 
 1. Simple api-urls like `controller/method` or `controller/method?params` will be converted to the full API needed
+1. Longer API urls like `app/auto/controller/method` will also be converted to the full url
+1. Parameters in the object `params` will be added as `?...=...` _v12.11+_
 
 
+## webApi.headers(verb?)
 
+This will get you an object containing all the headers you need for a common WebAPI request. It includes things like:
 
+1. `ModuleId` and `PageId`
+1. Security headers/tokens
+1. Encoding headers - this will vary based on the optional verb you pass in
 
-TODO: this all isn't right yet
+If you don't specify a verb, `GET` is assumed, so it will only have encoding-headers for the response. 
 
-
-## Demo App and further links
-
-You should find some code examples in this demo App
-* [TimeLineJS](xref:App.TimelineJs)
-* all the JS-apps including AngularJS in the [app-catalog](xref:AppsCatalog)
-
-More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Manuals/Feature/feature/2683)
-
-## History
-
-1. Introduced in 2sxc 04.00
-
-[source]: https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js
+[!include["history"](_webapi-history.md)]
