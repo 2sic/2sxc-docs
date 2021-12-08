@@ -2,7 +2,9 @@
 uid: Internal.Progress.BreakingChanges.V13.DataSource
 ---
 
-# Upgrading from Breaking Change in v13 #DeprecatedDataSource
+# Fix Breaking Change _DataSource_ in v13
+
+**Keywords:** #Deprecated #DataSource
 
 2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
 
@@ -40,4 +42,4 @@ Then, just put a dependency on the new `ToSic.Eav.DataSources.DataSourceFactory`
 
 ---
 
-Shortlink to here: [](https://r.2sxc.org/brc-13-datasource)
+Shortlink to here: https://r.2sxc.org/brc-13-datasource

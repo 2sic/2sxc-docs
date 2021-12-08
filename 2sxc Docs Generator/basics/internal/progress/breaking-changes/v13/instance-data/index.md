@@ -2,7 +2,9 @@
 uid: Internal.Progress.BreakingChanges.V13.InstanceData
 ---
 
-# Upgrading from Breaking Change in v13 #DeprecatedInstanceData
+# Fix Breaking Change _InstanceData_ in v13
+
+**Keywords:** #Deprecated #InstanceData
 
 2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
 
@@ -135,4 +137,4 @@ After doing Step 1 & 2 you will have a working solution, but only super-users (h
 
 ---
 
-Shortlink to here: [](https://r.2sxc.org/brc-13-di)
+Shortlink to here: https://r.2sxc.org/brc-13-di

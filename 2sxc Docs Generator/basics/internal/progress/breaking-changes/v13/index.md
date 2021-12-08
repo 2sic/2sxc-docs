@@ -14,11 +14,19 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 
 ## Breaking Changes in 2sxc 13.00
 
-Things that may affect you:
+### API Changes that may affect you
 
-1. An old feature for publishing module _InstanceData_ as JSON is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.InstanceData)
-1. An old feature to create _DataSources_ is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.DataSource)
-1. Two old data-conversion features _DataToDictionary_ and _EntitiesToDictionary_ were removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.Conversion)
+1. An old feature for publishing module _InstanceData_ as JSON is removed  
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.InstanceData)
+1. An old feature to create _DataSources_ is removed  
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.DataSource)
+1. Two old data-conversion features _DataToDictionary_ and _EntitiesToDictionary_ were removed  
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.Conversion)
+1. Some internal functionality which enabled `IEntity` objects to convert links containing `file:...` and `page:...` has been removed. This only affects special deep code calls on `IEntity` and does _not affect `DynamicEntity` objects in Razor
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.IEntityLinks)
+
+
+
 1. The Image Resizer is being replaced TODO:
 1. The App containing Site-wide settings is changed to TODO:
 
