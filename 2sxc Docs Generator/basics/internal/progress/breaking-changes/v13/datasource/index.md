@@ -29,8 +29,8 @@ var ds = dsMaker.GetDataSource<Sql>();
 
 In Razor and WebApi there are always built-in methods to get data sources, specifically:
 
-1. `CreateSource()` 
-1. `CreateSource<T>`
+1. `CreateSource(...)` 
+1. `CreateSource<T>(...)`
 
 See [docs](xref:ToSic.Sxc.Code.DynamicCode.CreateSource*)
 

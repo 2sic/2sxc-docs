@@ -17,7 +17,8 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 Things that may affect you:
 
 1. An old feature for publishing module _InstanceData_ as JSON is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.InstanceData)
-1. An old feature to create DataSources is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.DataSource)
+1. An old feature to create _DataSources_ is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.DataSource)
+1. Two old data-conversion features _DataToDictionary_ and _EntitiesToDictionary_ were removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.Conversion)
 1. The Image Resizer is being replaced TODO:
 1. The App containing Site-wide settings is changed to TODO:
 
@@ -35,3 +36,8 @@ Things which probably don't affect anybody
     1. `ToSic.Sxc.Dnn.dll` became `ToSic.Sxc.Dnn.Core.dll` for consistency
     1. `ToSic.SexyContent.WebApi.dll` became `ToSic.Sxc.Dnn.WebApi.dll`
     1. `ToSic.SexyContent.Razor.dll` became `ToSic.Sxc.Dnn.Razor.dll`
+
+
+Internal APIs which were removed
+
+1. Static `ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)`
