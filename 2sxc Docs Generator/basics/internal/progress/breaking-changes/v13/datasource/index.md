@@ -38,3 +38,6 @@ If you need this in a DLL then these will be missing. For that, please ensure yo
 
 Then, just put a dependency on the new `ToSic.Eav.DataSources.DataSourceFactory` to get the same functionality. 
 
+---
+
+Shortlink to here: [](https://r.2sxc.org/brc-13-datasource)

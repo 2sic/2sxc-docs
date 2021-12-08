@@ -133,4 +133,6 @@ After doing Step 1 & 2 you will have a working solution, but only super-users (h
 <iframe src="https://azing.org/2sxc/r/BE0HbDwA?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
 
+---
 
+Shortlink to here: [](https://r.2sxc.org/brc-13-di)

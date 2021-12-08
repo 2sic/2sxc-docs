@@ -41,3 +41,7 @@ var convert = GetService<ToSic.Eav.DataFormats.EavLight.IConvertToEavLight>();
 
 var result = convert.Convert(...);
 ```
+
+---
+
+Shortlink to here: [](https://r.2sxc.org/brc-13-conversion)
