@@ -8,7 +8,7 @@ uid: Internal.Progress.BreakingChanges.V13.IEntityLinks
 
 2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
 
-Specifically, these features were removed which convert special `file:...` and `page:...` links on the `IEntity`:
+Specifically, features were removed which convert special `file:...` and `page:...` links on the `IEntity`:
 
 > [!IMPORTANT]
 > You are probably not affected
@@ -36,13 +36,11 @@ So all code which uses `AsDynamic(...).SomeLinkProperty` will always work as exp
 
 But in rare cases you may have been getting the `SomeLinkProperty` from the IEntity. This will now not throw an error, but simply not lookup the link any more. 
 
-So if you end up getting links like this:
+So if you end up getting links like this, you are probably affected:
 
 ```html
 <a href="file:74">click here</a>
 ```
-
-You are probably affected. 
 
 ## Upgrade to Newer functionality
 
