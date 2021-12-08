@@ -17,6 +17,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 Things that may affect you:
 
 1. An old feature for publishing module _InstanceData_ as JSON is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.InstanceData)
+1. An old feature to create DataSources is removed - [see instructions](xref:Internal.Progress.BreakingChanges.V13.DataSource)
 1. The Image Resizer is being replaced TODO:
 1. The App containing Site-wide settings is changed to TODO:
 
