@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.Settings
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Toolbar Settings
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

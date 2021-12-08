@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.Workflows
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Toolbar Workflows
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

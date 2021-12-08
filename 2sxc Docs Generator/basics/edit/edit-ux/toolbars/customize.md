@@ -1,6 +1,9 @@
 ---
 uid: Basics.Browser.EditUx.Toolbars.Customize
 ---
+
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Custom Toolbars
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

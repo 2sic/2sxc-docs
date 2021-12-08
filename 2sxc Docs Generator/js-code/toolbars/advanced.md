@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.Advanced
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Toolbars and Buttons
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

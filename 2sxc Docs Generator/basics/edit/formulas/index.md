@@ -2,7 +2,7 @@
 uid: Basics.Edit.Formulas.Index
 ---
 
-<img src="./assets/formulas-banner.svg" width="100%" >
+<img src="~/assets/features/formulas.svg" class="feature">
 
 # Formulas (Logic) in the Edit Form
 

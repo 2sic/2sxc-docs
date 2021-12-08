@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.CreateMetadata
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Toolbars which Create Metadata
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

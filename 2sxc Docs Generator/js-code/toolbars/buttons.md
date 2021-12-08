@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.Buttons
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # Toolbar Button Definitions
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

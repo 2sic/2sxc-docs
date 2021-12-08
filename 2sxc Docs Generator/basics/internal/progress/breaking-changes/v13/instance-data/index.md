@@ -78,6 +78,11 @@ function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
 
 ## Upgrade to Newer functionality
 
+> [!TIP]
+> Below you'll find instructions how to create the same functionality using Visual Query and newer JS APIs. 
+>
+> But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need. 
+
 ### Step 1: Create Query which Gets Instance Data
 
 This creates a Query API call which gets the same data as before, but in a newer API and newer standard. 

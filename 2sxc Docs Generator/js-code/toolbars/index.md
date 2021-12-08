@@ -2,6 +2,8 @@
 uid: JsCode.Toolbars.Index
 ---
 
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # In-Page Edit Toolbars and Buttons
 
 [!include[](~/basics/stack/_shared-float-summary.md)]

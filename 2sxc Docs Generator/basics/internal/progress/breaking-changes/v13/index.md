@@ -28,6 +28,8 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.EavFactory)
 
 
+### Major Updates with may affect you
+
 1. The Image Resizer is being replaced TODO:
 1. The App containing Site-wide settings is changed to TODO:
 

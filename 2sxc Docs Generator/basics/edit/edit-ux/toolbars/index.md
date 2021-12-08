@@ -1,6 +1,9 @@
 ---
 uid: Basics.Browser.EditUx.Toolbars.Index
 ---
+
+<img src="~/assets/features/toolbar.svg" class="feature">
+
 # In-Page Edit-Item Toolbars and Buttons
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
