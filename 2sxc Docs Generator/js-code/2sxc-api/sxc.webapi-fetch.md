@@ -34,9 +34,9 @@ The url can be any one of these:
 
 1. Api URL pointing to a WebAPI of the app - short like `controller/method` or long like `app/auto/controller/method`
 1. Query url with a query name like `app/auto/query/queryName`
-1. Data url pointing to the data like `app/auto/content/contentType`
+1. Data url pointing to the data like `app/auto/data/contentType`
 
-These can also have parameters like `controller/method?id=27` or `app/auto/content/contentType/574` depending on what the endpoint expects. 
+These can also have parameters like `controller/method?id=27` or `app/auto/data/contentType/574` depending on what the endpoint expects. 
 
 ## Helper for URLs with Parameters _v13_
 

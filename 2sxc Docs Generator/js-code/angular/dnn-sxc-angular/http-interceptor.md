@@ -15,7 +15,7 @@ It ensures that:
 
 1. Security headers like the `RequestVerificationToken` are included
 1. Context headers like `ModuleId` are correct
-1. Shorthand api urls like `app/content/BlogPost` are mapped to the correct endpoints
+1. Shorthand api urls like `app/data/BlogPost` are mapped to the correct endpoints
 
 ## How it works
 

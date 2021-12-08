@@ -8,7 +8,7 @@ uid: Internal.Progress.BreakingChanges.V13.EavFactory
 
 2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
 
-The `ToSic.Eav.Factory.Resolve<T>()` was removed.
+The `ToSic.Eav.Factory.Resolve<T>()` is being deprecated, and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else. 
 
 ## Reason for Removal
 
@@ -32,7 +32,7 @@ var convertService = ToSic.Eav.Factory.Resolve<IConvertService>();
 In 2sxc 11.11 we introduced the `GetService<T>()` ([docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*)) which takes care of this.
 Please use this from now on.
 
-The old API was disabled and should show an error pointing to this documentation.
+The old API will be disabled disabled and will show an error pointing to this documentation.
 
 
 ## Upgrade to Newer functionality
@@ -43,7 +43,7 @@ So the previous example would look like this:
 var convertService = GetService<IConvertService>();
 ```
 
-If you were using this from outside of 2sxc Razor / WebApi, you will need to use the Dnn specific DependencyInjection (available in Dnn 9.4+).
+If you were using this from outside of 2sxc Razor / WebApi, you will need to use the [Dnn specific DependencyInjection (available in Dnn 9.4+)](xref:NetCode.DependencyInjection.Dnn).
 
 ---
 

@@ -389,3 +389,10 @@ You can always find the latest and detailed release notes on the [github release
 1. The [StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge) DataSource got three new out-streams `Distinct`, `And` and `Xor`
 1. Moved [IPageService](xref:ToSic.Sxc.Services.IPageService) from previously [ToSic.Sxc.Web](xref:ToSic.Sxc.Web) to [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) but preserving compatibility with old code
 1. Moved [IPageService](xref:ToSic.Sxc.Services.IRenderService) from previously [ToSic.Sxc.Web](xref:ToSic.Sxc.Blocks) to [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) but preserving compatibility with old code
+
+
+## Version 13
+
+TODO
+
+1. New WebApi route `app/auto/data` to replace `/app/auto/content` - the old one will still work, but we won't document it any more, because it was a confusing name

@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | 2sxc 12 / EAV 12 </title>
+    <title>Depedency Injection in Oqtane | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | 2sxc 12 / EAV 12 ">
+    <meta name="title" content="Depedency Injection in Oqtane | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../assets/favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../assets/logos/v12/2sxc12-50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v12/2sxc12-50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,19 +65,19 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../basics/index.html" title="Basics">Basics</a>
-                      </li>
-                      <li>
-                          <a href="../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
-                      </li>
-                      <li>
-                          <a href="../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li class="active">
-                          <a href="../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,9 +111,28 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="NetCode.DependencyInjection.Oqtane">
+<h1 id="depedency-injection-in-oqtane">Depedency Injection in Oqtane</h1>
 
-<p>Moved to <a class="xref" href="data-rest-web-api.html">Data REST and CRUD Web API</a></p>
+<p>Oqtane has used Dependency Injection since day one, so it&#39;s much better integrated than with Dnn.</p>
+<h2 id="how-can-i-get-oqtane-objects-using-dependency-injection">How Can I Get Oqtane Objects using Dependency Injection?</h2>
+<p>Oqtane uses the same Dependency Injection like 2sxc, so your Razor-Code can access all Oqtane objects using <code>GetService&lt;ISomeOqtaneInterface&gt;()</code>. 
+Just be aware of the fact that Oqtanes architecture is very different from the classic setup, so many services <a href="https://docs.oqtane.org/">documented in the Oqtane docs</a> will actually behave as remote services, so they will internally call http-endpoints to perform their work. This makes many Oqtane Services a bit slower than you might expect. </p>
+<h2 id="can-i-use-razor-net-core-inject-in-oqtane">Can I Use Razor .net Core @inject in Oqtane?</h2>
+<p>Yes you can, as the 2sxc DI is fully integrated with the Oqtane DI. So your Razor could also do this:</p>
+<pre><code class="lang-razor">@inject ICmsContext Context
+</code></pre><h2 id="how-can-i-get-2sxc-objects-in-oqtane-blazor-controls">How can I get 2sxc Objects in Oqtane Blazor Controls?</h2>
+<p>This is currently not possible, as most of 2sxc runs on the server, while the Blazor controls run in the client. </p>
+<p>We&#39;re working on this, but I assume this will not be ready till ca. Q2 2022. </p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
+<li>Integrated with Oqtane DI in v12 (May 2021)</li>
+<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
+<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
+<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
+</ol>
 </article>
           </div>
           
@@ -122,7 +141,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/content-rest-web-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/net-code/dependency-injection/oqtane.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -148,20 +167,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

@@ -263,7 +263,7 @@ you 2sxc will tell you what URLs you can use. </p>
 <ol>
 <li>The <code>root</code> is determined by Dnn and changes a bit by Dnn version, portal, and language configuration. <a href="#part-1-the-root-path">more</a></li>
 <li>The <code>app-identity</code> says what app we&#39;re addressing. It&#39;s often <code>auto</code> for auto-detection, but when auto-detection isn&#39;t available, it&#39;s the app-folder name. <a href="#part-2-the-app-identity">more</a></li>
-<li>the <code>app-part</code> determines if we&#39;re accessing <a href="#part-3a-app-part-content">content</a>, <a href="#part-3b-app-part-query">query</a> or <a href="#part-3c-app-part-custom-c-web-api">api</a> of the app.</li>
+<li>the <code>app-part</code> determines if we&#39;re accessing <a href="#part-3a-app-part-data">data</a>, <a href="#part-3b-app-part-query">query</a> or <a href="#part-3c-app-part-custom-c-web-api">api</a> of the app.</li>
 <li>The <code>specifics</code> is a path part describing what exactly what we&#39;re accessing and varies depending on the API.</li>
 </ol>
 <h2 id="part-1-the-root-path">Part 1: The Root Path</h2>
@@ -291,20 +291,23 @@ Or you can provide <strong>Context</strong> by adding <code>?PageId=...&amp;Modu
 <div class="TIP"><h5>Tip</h5><p>If you&#39;re <em>not</em> using auto-detection, then the root path must be absolutely correct. Here&#39;s why: If you have multiple portals then each portal could have other apps, or sometimes even the same app (like a Blog app). In this case, the root-path says what portal is being used, which in turn is important to get the correct app.</p>
 </div>
 <h3 id="app-identity-examples">App-Identity Examples</h3>
-<p>To access an API (in this example the <code>content</code>) from JS code in the same app you can rely on auto-detection of the app, like this: </p>
-<p><code>.../app/auto/content/...</code></p>
+<p>To access an API (in this example the <code>data</code>) from JS code in the same app you can rely on auto-detection of the app, like this: </p>
+<p><code>.../app/auto/data/...</code></p>
 <p>To access the same Glossary-App from elsewhere, like from the skin (for example, to highlight all words to which your glossary-app has definitions), from another app, or from another website, you would specify the folder name as auto-detection won&#39;t work. Like this:</p>
-<p><code>.../app/Glossary/content/...</code></p>
-<p>This applies to all endpoints like <code>content</code>, <code>query</code>, <code>api</code>.</p>
-<h2 id="part-3-app-part-content-query-or-web-api">Part 3: App-Part Content, Query or Web-Api</h2>
-<h3 id="part-3a-app-part-content">Part 3a: App-Part Content</h3>
-<p>If your part is <code>content</code> then you&#39;re using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after <code>content/</code>:</p>
+<p><code>.../app/Glossary/data/...</code></p>
+<p>This applies to all endpoints like <code>data</code>, <code>query</code>, <code>api</code>.</p>
+<h2 id="part-3-app-part-data-query-or-web-api">Part 3: App-Part Data, Query or Web-Api</h2>
+<h3 id="part-3a-app-part-data">Part 3a: App-Part Data</h3>
+<div class="TIP"><h5>Tip</h5><p>Starting with 2sxc v13, the data-api is <code>.../app/.../data/TYPENAME</code>. 
+In previous versions, it&#39;s <code>.../app/.../content/TYPENAME</code>. </p>
+</div>
+<p>If your part is <code>data</code> then you&#39;re using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after <code>data/</code>:</p>
 <ul>
-<li><code>.../content/[YourContentType]</code> <ul>
+<li><code>.../data/[YourContentType]</code> <ul>
 <li>HTTP GET will retrieve all items of this type</li>
 </ul>
 </li>
-<li><code>.../content/[your-content-type]/[item-id]</code> where <code>item-id</code> is the number or the GUID<ul>
+<li><code>.../data/[your-content-type]/[item-id]</code> where <code>item-id</code> is the number or the GUID<ul>
 <li>HTTP GET will get one item</li>
 <li>HTTP POST is used to create an item or update it</li>
 <li>HTTP DELETE will delete the item</li>
@@ -317,13 +320,13 @@ The permissions are very powerful so make sure you understand them. </p>
 <div class="TIP"><h5>Tip</h5><p>You can also configure permissions in ways that allow users to only create draft items
 (which would then require an admin to publish it)</p>
 </div>
-<h4 id="content-example">Content Example</h4>
+<h4 id="data-example">Data Example</h4>
 <p>Assume you have the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">blog-app</a> installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):</p>
-<p><code>[root-path]/app/auto/content/BlogPost</code></p>
+<p><code>[root-path]/app/auto/data/BlogPost</code></p>
 <p>...then your JS would receive a JSON with all BlogPost items. More examples:</p>
 <ol>
-<li>Reading <code>[root-path]/app/auto/content/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</li>
-<li>HTTP POST to <code>[root-path]/app/auto/content/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</li>
+<li>Reading <code>[root-path]/app/auto/data/BlogPost/1050</code> would give you exactly one BlogPost item (with the id 1050)</li>
+<li>HTTP POST to <code>[root-path]/app/auto/data/BlogPost/1050</code> with a POST body of <code>{ &quot;Title&quot;: &quot;changed title&quot;}</code> would let you update the item 1050.</li>
 </ol>
 <h3 id="part-3b-app-part-query">Part 3b: App-Part Query</h3>
 <p>The Query endpoint can be accessed on <code>.../query/[your-query-name]</code>. Note that Query endpoints only support the HTTP-verb GET, since it&#39;s read-only. </p>

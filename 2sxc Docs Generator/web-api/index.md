@@ -11,7 +11,7 @@ uid: WebApi.Index
 
 # 2sxc Web API
 
-2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP `GET` to an endpoint like `app/News/content/NewsItems/` and get a list of news items. 
+2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP `GET` to an endpoint like `app/News/data/NewsItems/` and get a list of news items. 
 
 
 You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need. 
@@ -25,7 +25,7 @@ Here's an example JavaScript which would run in a 2sxc News-App on a Dnn page:
 
 ```javascript
 // Get news as a promise
-var allNewsPromise = sxc.webApi.get('app/auto/content/News/');
+var allNewsPromise = sxc.webApi.get('app/auto/data/News/');
 
 // now log to console
 allNewsPromise.then(data => console.log(data));

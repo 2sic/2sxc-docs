@@ -48,7 +48,7 @@ Every 2sxc REST URL is built with the following parts:
 
 1. The `root` is determined by Dnn and changes a bit by Dnn version, portal, and language configuration. [more](#part-1-the-root-path)
 1. The `app-identity` says what app we're addressing. It's often `auto` for auto-detection, but when auto-detection isn't available, it's the app-folder name. [more](#part-2-the-app-identity)
-1. the `app-part` determines if we're accessing [content](#part-3a-app-part-content), [query](#part-3b-app-part-query) or [api](#part-3c-app-part-custom-c-web-api) of the app.
+1. the `app-part` determines if we're accessing [data](#part-3a-app-part-data), [query](#part-3b-app-part-query) or [api](#part-3c-app-part-custom-c-web-api) of the app.
 1. The `specifics` is a path part describing what exactly what we're accessing and varies depending on the API.
 
 
@@ -94,25 +94,30 @@ The App-identity can be either the word `auto` to use auto-detection, or the app
 
 ### App-Identity Examples
 
-To access an API (in this example the `content`) from JS code in the same app you can rely on auto-detection of the app, like this: 
+To access an API (in this example the `data`) from JS code in the same app you can rely on auto-detection of the app, like this: 
 
-`.../app/auto/content/...`
+`.../app/auto/data/...`
 
 To access the same Glossary-App from elsewhere, like from the skin (for example, to highlight all words to which your glossary-app has definitions), from another app, or from another website, you would specify the folder name as auto-detection won't work. Like this:
 
-`.../app/Glossary/content/...`
+`.../app/Glossary/data/...`
 
-This applies to all endpoints like `content`, `query`, `api`.
+This applies to all endpoints like `data`, `query`, `api`.
 
 
-## Part 3: App-Part Content, Query or Web-Api
+## Part 3: App-Part Data, Query or Web-Api
 
-### Part 3a: App-Part Content
-If your part is `content` then you're using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after `content/`:
+### Part 3a: App-Part Data
 
-* `.../content/[YourContentType]` 
+> [!TIP]
+> Starting with 2sxc v13, the data-api is `.../app/.../data/TYPENAME`. 
+> In previous versions, it's `.../app/.../content/TYPENAME`. 
+
+If your part is `data` then you're using the normal content/entity REST API. It supports all common HTTP verbs. In this case you have the following possibilities after `data/`:
+
+* `.../data/[YourContentType]` 
   * HTTP GET will retrieve all items of this type
-- `.../content/[your-content-type]/[item-id]` where `item-id` is the number or the GUID
+- `.../data/[your-content-type]/[item-id]` where `item-id` is the number or the GUID
   * HTTP GET will get one item
   * HTTP POST is used to create an item or update it
   * HTTP DELETE will delete the item
@@ -125,16 +130,16 @@ If your part is `content` then you're using the normal content/entity REST API. 
 > You can also configure permissions in ways that allow users to only create draft items
 > (which would then require an admin to publish it)
 
-#### Content Example
+#### Data Example
 
 Assume you have the [blog-app](xref:App.Blog) installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):
 
-`[root-path]/app/auto/content/BlogPost`
+`[root-path]/app/auto/data/BlogPost`
 
 ...then your JS would receive a JSON with all BlogPost items. More examples:
 
-1. Reading `[root-path]/app/auto/content/BlogPost/1050` would give you exactly one BlogPost item (with the id 1050)
-1. HTTP POST to `[root-path]/app/auto/content/BlogPost/1050` with a POST body of `{ "Title": "changed title"}` would let you update the item 1050.
+1. Reading `[root-path]/app/auto/data/BlogPost/1050` would give you exactly one BlogPost item (with the id 1050)
+1. HTTP POST to `[root-path]/app/auto/data/BlogPost/1050` with a POST body of `{ "Title": "changed title"}` would let you update the item 1050.
 
 
 ### Part 3b: App-Part Query

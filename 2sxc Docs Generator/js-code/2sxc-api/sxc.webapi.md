@@ -19,7 +19,7 @@ First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.$2
 Here's a simple example (assuming you have the $2sxc manager):
 
 ```HTML
-<a onclick="$2sxc(this).webApi.fetchJson('app/auto/content/Category').then(handleResult);">
+<a onclick="$2sxc(this).webApi.fetchJson('app/auto/data/Category').then(handleResult);">
     get all Categories 
 </a>
 ```
