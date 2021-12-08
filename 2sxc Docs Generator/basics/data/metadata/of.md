@@ -1,1 +1,1 @@
-Moved to [](xref:Basics.Data.Metadata.Of)
+Moved to [](xref:Basics.Metadata.Of)

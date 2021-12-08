@@ -9,7 +9,7 @@ JSON Data can
 1. **be Metadata** for something. The target reference is stored in the `For` object.
 1. **have Metadata** which is stored in the `Metadata` object.
 
-👉 Read more about [Metadata](xref:Basics.Data.Metadata.Index).
+👉 Read more about [Metadata](xref:Basics.Metadata.Index).
 
 
 ## For Information

@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.TargetTypes
+uid: Basics.Metadata.TargetTypes
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">

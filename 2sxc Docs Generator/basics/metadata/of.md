@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.Of
+uid: Basics.Metadata.Of
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">
@@ -23,9 +23,9 @@ In 2sxc many object _have_ Metadata, such as
 You can always access the Metadata through the `.Metadata` property. 
 
 > [!TIP]
-> When looking at **Metadata** from the _Owner_ object, we call it **[Metadata Of](xref:Basics.Data.Metadata.For)** the _Owner_. 
+> When looking at **Metadata** from the _Owner_ object, we call it **[Metadata Of](xref:Basics.Metadata.For)** the _Owner_. 
 > 
-> When looking at it from the Metadata-items point of view, they are **[Metadata-For](xref:Basics.Data.Metadata.For)** the _Owner_.
+> When looking at it from the Metadata-items point of view, they are **[Metadata-For](xref:Basics.Metadata.For)** the _Owner_.
 
 ## The Metadata Property
 

@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.For
+uid: Basics.Metadata.For
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">
@@ -19,9 +19,9 @@ To be **Metadata For** something, an Entity must have **Target** information.
 1. An item can only be _Metadata For_ one thing
 
 > [!TIP]
-> When looking at **Metadata** from the _Owner_ object, we call it **[Metadata Of](xref:Basics.Data.Metadata.For)** the _Owner_. 
+> When looking at **Metadata** from the _Owner_ object, we call it **[Metadata Of](xref:Basics.Metadata.For)** the _Owner_. 
 > 
-> When looking at it from the Metadata-items point of view, they are **[Metadata-For](xref:Basics.Data.Metadata.For)** the _Owner_.
+> When looking at it from the Metadata-items point of view, they are **[Metadata-For](xref:Basics.Metadata.For)** the _Owner_.
 
 ## The MetadataFor Property
 

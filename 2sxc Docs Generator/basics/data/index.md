@@ -134,4 +134,4 @@ Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and 
 1. [VisualQuery](xref:Basics.Query.VisualQuery.Index)
 1. [Data Sources](xref:NetCode.DataSources.Index)
 1. [Headless APIs](xref:WebApi.Headless.Index)
-1. [Metadata](xref:Basics.Data.Metadata.Index)
+1. [Metadata](xref:Basics.Metadata.Index)

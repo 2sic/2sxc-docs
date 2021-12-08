@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.Create
+uid: Basics.Metadata.Create
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">

@@ -1,1 +1,1 @@
-Moved to [](xref:Basics.Data.Metadata.For)
+Moved to [](xref:Basics.Metadata.For)

@@ -1,1 +1,1 @@
-Moved to [](xref:Basics.Data.Metadata.TargetTypes)
+Moved to [](xref:Basics.Metadata.TargetTypes)

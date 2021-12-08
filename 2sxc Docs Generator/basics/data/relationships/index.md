@@ -40,7 +40,7 @@ Values of Entities are multi-language, but relationships-connections apply to al
 
 ## Metadata Relationships
 
-This is a very different concept, where an Entity enriches something else. Read more about it in [metadata](xref:Basics.Data.Metadata.Index).
+This is a very different concept, where an Entity enriches something else. Read more about it in [metadata](xref:Basics.Metadata.Index).
 
 ## Advanced Topics
 

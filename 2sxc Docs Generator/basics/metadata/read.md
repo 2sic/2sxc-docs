@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.Read
+uid: Basics.Metadata.Read
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">

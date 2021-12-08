@@ -1,5 +1,5 @@
 ---
-uid: Basics.Data.Metadata.Index
+uid: Basics.Metadata.Index
 ---
 
 <img src="~/assets/features/metadata.svg" class="feature">
@@ -44,7 +44,7 @@ Most internal configuration of 2sxc works as Metadata.
 Every Entity in 2sxc can be assigned to any other **Target** data. This happens through a **Target Identifier** which consists of 2 parts:
 
 1. The **Target ID** which can be a _number_, _guid_ or _string_ 
-1. The **[Target Type](xref:Basics.Data.Metadata.TargetTypes)** which is important to ensure that an ID like `5027` is pointing to the person 5027, not the page 5027
+1. The **[Target Type](xref:Basics.Metadata.TargetTypes)** which is important to ensure that an ID like `5027` is pointing to the person 5027, not the page 5027
 
 Noteworthy to know
 
@@ -55,9 +55,9 @@ Noteworthy to know
 
 ## Discover More
 
-1. [](xref:Basics.Data.Metadata.Create) 
-1. [](xref:Basics.Data.Metadata.Read)
-1. [](xref:Basics.Data.Metadata.TargetTypes)
+1. [](xref:Basics.Metadata.Create) 
+1. [](xref:Basics.Metadata.Read)
+1. [](xref:Basics.Metadata.TargetTypes)
 1. [](xref:ToSic.Eav.Metadata)
 
 ## Demo App and further links
