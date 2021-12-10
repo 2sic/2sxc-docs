@@ -27,6 +27,8 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 1. The old feature `Eav.Factory.Resolve<T>()` was removed  
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.EavFactory)
 
+1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed
+    [see instructions](xref:todo)
 
 ### Major Updates with may affect you
 
@@ -47,6 +49,7 @@ Things which probably don't affect anybody
     1. `ToSic.Sxc.Dnn.dll` became `ToSic.Sxc.Dnn.Core.dll` for consistency
     1. `ToSic.SexyContent.WebApi.dll` became `ToSic.Sxc.Dnn.WebApi.dll`
     1. `ToSic.SexyContent.Razor.dll` became `ToSic.Sxc.Dnn.Razor.dll`
+1. An internal object `ToSic.Eav.Apps.State` was removed
 
 
 Internal APIs which were removed

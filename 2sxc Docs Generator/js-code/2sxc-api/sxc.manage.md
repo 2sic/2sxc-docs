@@ -4,6 +4,9 @@ uid: JsCode.2sxcApi.Sxc.Manage
 
 # Manage Everything With the `manage` Controller
 
+> [!WARNING]
+> This is obsolete code and will stop working soon. Please use newer APIs instead like `cms.run`
+
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 

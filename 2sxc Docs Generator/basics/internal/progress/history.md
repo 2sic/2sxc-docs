@@ -396,3 +396,5 @@ You can always find the latest and detailed release notes on the [github release
 TODO
 
 1. New WebApi route `app/auto/data` to replace `/app/auto/content` - the old one will still work, but we won't document it any more, because it was a confusing name
+1. Lots of metadata stuff... TODO:
+1. New `sxc.data` and `sxc.query`
