@@ -27,9 +27,9 @@ A simple example:
 
 ```c#
 var page = GetService<ToSic.Sxc.Services.IPageService>();
-page.Activate("jQuery");            // Activate jQuery
-page.Activate("turnOn");            // Activate turnOn
-page.Activate("jQuery", "turnOn");  // Activate both
+page.Activate("jQuery");                          // Activate jQuery
+page.Activate("turnOn");                          // Activate turnOn
+page.Activate("jQuery", "turnOn", "2sxc.JsCore"); // Activate many
 ```
 
 This will ensure that jQuery and [turnOn](xref:JsCode.TurnOn.Index) are available on the page. 
@@ -39,9 +39,14 @@ Features you can activate as of v12.02
 
 * `jQuery`  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+
 * `turnOn` - [the JavaScript turnOn Activation system](xref:JsCode.TurnOn.Index)
-  _note: new feature, docs still incomplete_
+* `2sxc.JsCore` - the 2sxc standard JS APIs.  
+    Replaces `@Edit.Enable(js: true)` _new in v13_
+* `2sxc.JsCms` - 2sxc JS APIs to run commands for edit, etc.  
+    Replaces `@Edit.Enable(api: true)` _new in v13_
+* `2sxc.Toolbars` - edit-toolbars on the page.  
+    Replaces `@Edit.Enable(styles: true, autoToolbar: true)` _new in v13_
 
-_Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
+_Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
 Features that are explicitly not implemented
 

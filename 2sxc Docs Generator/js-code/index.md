@@ -2,7 +2,7 @@
 uid: JsCode.Index
 ---
 
-<img src="~/assets/features/js-api.svg" height="100px">
+<img src="~/assets/features/js-api.svg" class="feature">
 
 # 2sxc JS API Documentation is WIP
 

@@ -135,18 +135,20 @@ This gets especially complex in scenarios like Oqtane, where the page doesn&#39;
 <h2 id="activate-page-features">Activate Page Features</h2>
 <p>A simple example:</p>
 <pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Services.IPageService&gt;();
-page.Activate(&quot;jQuery&quot;);            // Activate jQuery
-page.Activate(&quot;turnOn&quot;);            // Activate turnOn
-page.Activate(&quot;jQuery&quot;, &quot;turnOn&quot;);  // Activate both
+page.Activate(&quot;jQuery&quot;);                          // Activate jQuery
+page.Activate(&quot;turnOn&quot;);                          // Activate turnOn
+page.Activate(&quot;jQuery&quot;, &quot;turnOn&quot;, &quot;2sxc.JsCore&quot;); // Activate many
 </code></pre><p>This will ensure that jQuery and <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> are available on the page. 
 Note that it will only be activated once, even if the code would accidentally activate it multiple times. </p>
 <p>Features you can activate as of v12.02</p>
 <ul>
 <li><code>jQuery</code>  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+</li>
-<li><code>turnOn</code> - <a class="xref" href="../../../js-code/turn-on/index.html">the JavaScript turnOn Activation system</a>
-<em>note: new feature, docs still incomplete</em></li>
+<li><code>turnOn</code> - <a class="xref" href="../../../js-code/turn-on/index.html">the JavaScript turnOn Activation system</a></li>
+<li><code>2sxc.JsCore</code> - the 2sxc standard JS APIs.<br>  Replaces <code>@Edit.Enable(js: true)</code> <em>new in v13</em></li>
+<li><code>2sxc.JsCms</code> - 2sxc JS APIs to run commands for edit, etc.<br>  Replaces <code>@Edit.Enable(api: true)</code> <em>new in v13</em></li>
+<li><code>2sxc.Toolbars</code> - edit-toolbars on the page.<br>  Replaces <code>@Edit.Enable(styles: true, autoToolbar: true)</code> <em>new in v13</em></li>
 </ul>
-<p><em>Note: The system is meant to also cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
+<p><em>Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
 <p>Features that are explicitly not implemented</p>
 <ol>
 <li>jQueryUI is often used in ASP.net but it&#39;s really old and hasn&#39;t had updates since 2016</li>

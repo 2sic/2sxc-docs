@@ -2,18 +2,18 @@
 uid: JsCode.2sxcApi.$2sxc
 ---
 
-# The $2sxc Root Object
+<img src="~/assets/features/js-api.svg" class="feature">
+
+# The `$2sxc` Global Object
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-The $2sxc-object is the core JavaScript object helping you to access data of your view or WebAPIs of your 2sxc-App.
+The `$2sxc` is a global JavaScript object helping you to access data of your view or WebAPIs of your 2sxc-App.
 
-> [!NOTE]
-> 2sxc uses these objects internally for building the edit experience. You only need this if you wish to do 
-> custom JavaScript stuff in 2sxc, like retrieve data from a WebApi.
+> You need this if you wish to do JavaScript stuff in 2sxc, like retrieve data from a WebApi.
 
-Advanced cases where _you_ need $2sxc:
+Cases where _you_ need $2sxc:
 
 1. When you want to use view-data as an asyc-JS call
 1. if you wish to work with WebAPI REST calls
