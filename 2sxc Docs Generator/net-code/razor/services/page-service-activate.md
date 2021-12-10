@@ -61,7 +61,7 @@ Any WebResources registered in the settings can be activated. Here's an example:
 var page = GetService<ToSic.Sxc.Services.IPageService>();
 page.Activate("Bootstrap5");                // Activate Bootstrap5 from a CDN
 page.Activate("fancybox4");                 // Activate fancybox4 from a CDN
-page.Activate("fancybox3", "FontAwesome5");  // Activate the older fancybox + FontAwesome5
+page.Activate("fancybox3", "FontAwesome5"); // Activate the older fancybox + FontAwesome5
 ```
 
 You can define your own WebResources in the Settings, or check out the list of [pre-defined WebResources](xref:Basics.Configuration.Settings.WebResources).
