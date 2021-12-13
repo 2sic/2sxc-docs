@@ -16,6 +16,8 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 
 ### API Changes that may affect you
 
+1. An old, non-DI feature for Inner Content is being deprecated and will be removed in v14  
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.StaticRender)
 1. An old feature for publishing module _InstanceData_ as JSON is removed  
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.InstanceData)
 1. An old feature to create _DataSources_ is removed  
@@ -24,7 +26,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.Conversion)
 1. Some internal functionality which enabled `IEntity` objects to convert links containing `file:...` and `page:...` has been removed. This only affects special deep code calls on `IEntity` and does _not affect `DynamicEntity` objects in Razor
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.IEntityLinks)
-1. The old feature `Eav.Factory.Resolve<T>()` was removed  
+1. The old feature `Eav.Factory.Resolve<T>()` was deprecated and will be removed in v14  
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.EavFactory)
 
 1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed

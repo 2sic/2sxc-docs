@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Fix Breaking Change Static EAV Factory Resolve in v13 | 2sxc 12 / EAV 12 </title>
+    <title>Fix Breaking Change Static EAV Factory StartUp in v13 | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Fix Breaking Change Static EAV Factory Resolve in v13 | 2sxc 12 / EAV 12 ">
+    <meta name="title" content="Fix Breaking Change Static EAV Factory StartUp in v13 | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../../../../assets/favicon.ico">
@@ -111,36 +111,28 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Internal.Progress.BreakingChanges.V13.EavFactory">
-<h1 id="fix-breaking-change-static-eav-factory-resolve-in-v13">Fix Breaking Change <em>Static EAV Factory Resolve</em> in v13</h1>
+            <article class="content wrap" id="_content" data-uid="Internal.Progress.BreakingChanges.V13.EavFactoryStartUp">
+<h1 id="fix-breaking-change-static-eav-factory-startup-in-v13">Fix Breaking Change <em>Static EAV Factory StartUp</em> in v13</h1>
 
 <p><strong>Keywords:</strong> #Deprecated #Factory #Build #DependencyInjection</p>
 <p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here&#39;s how to fix any code in production. </p>
-<p>The <code>ToSic.Eav.Factory.Resolve&lt;T&gt;()</code> is being deprecated, and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn&#39;t be used anywhere else. </p>
+<p>The <code>ToSic.Eav.Factory.ActivateNetCoreDi(...)</code> is removed and will not work any more.</p>
 <h2 id="reason-for-removal">Reason for Removal</h2>
 <p>2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow. </p>
-<p>The solution we used was to have static object <code>Eav.Factory</code> which managed this, but this is actually bad practice and encourages bad code. </p>
-<p>We believe this is rarely used, so we removed it. But it was in the official docs, so there may have been a few users who picked this up.</p>
-<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
-<p>Previously you could write code like this in your Razor:</p>
-<pre><code class="lang-csharp">var convertService = ToSic.Eav.Factory.Resolve&lt;IConvertService&gt;();
-</code></pre><h2 id="what-we-changed">What we Changed</h2>
-<p>In 2sxc 11.11 we introduced the <code>GetService&lt;T&gt;()</code> (<a class="xref" href="../../../../../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_GetService_">docs</a>) which takes care of this.
-Please use this from now on.</p>
-<p>The old API will be disabled disabled and will show an error pointing to this documentation.</p>
+<p><code>ActivateNetCoreDi</code> was used to register services startup, but caused issues in special cases. </p>
 <h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<p>So the previous example would look like this:</p>
-<pre><code class="lang-csharp">var convertService = GetService&lt;IConvertService&gt;();
-</code></pre><p>If you were using this from outside of 2sxc Razor / WebApi, you will need to use the <a class="xref" href="../../../../../../net-code/dependency-injection/dnn.html">Dnn specific DependencyInjection (available in Dnn 9.4+)</a>.</p>
+<p>2sxc 13 is now fully integrated in Dnn 9.4 DI, so registering services must use the Dnn Mechanisms for this - see <a class="xref" href="../../../../../../net-code/dependency-injection/dnn.html">Dnn Services</a>.</p>
+<p>There is no alternative for Dnn 7, so you must either remain on an older 2sxc (v12 or lower) or upgrade to Dnn 9.4 or newer.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Introduced in 2sxc 7 with Dependency Injection based on .net Standard 1.6</li>
-<li>Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI</li>
+<li>It only ever worked in Dnn, Oqtane never had this feature</li>
+<li>Removed in 2sxc 13 with the integration of Dnn 9.4 DI - API still exits, but doesn&#39;t do anything except for log an error</li>
 <li>Planned for full removal in 2sxc 14 ca. middle of 2022</li>
 </ul>
 <hr>
-<p>Shortlink to here: <a href="https://r.2sxc.org/brc-13-eav-factory">https://r.2sxc.org/brc-13-eav-factory</a></p>
+<p>Shortlink to here: <a href="https://r.2sxc.org/brc-13-eav-factory-startup">https://r.2sxc.org/brc-13-eav-factory-startup</a></p>
 </article>
           </div>
           
@@ -149,7 +141,7 @@ Please use this from now on.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/internal/progress/breaking-changes/v13/eav-factory/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/internal/progress/breaking-changes/v13/eav-factory-startup/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

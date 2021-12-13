@@ -29,34 +29,39 @@ _note 2: always use lower-case paths and the minified version_
 
 Here's a simple example of a template-file:
 
-```HTML
-@Edit.Enable(js: true)
+```razor
+@inherits Custom.Hybrid.Razor12
+@using ToSic.Sxc.Services;
+@{
+  // Tell the page that we need the 2sxc Js APIs
+  GetService<IPageService>().Activate("2sxc.JsCore"); 
+}
 <script>
     $(function () {
-        var modId = 17;
-        var sxc = $2sxc(modId);
-        alert("edit mode: " + sxc.isEditMode());
+        var modId = @CmsContext.Module.Id;        // Get the ModuleId from Razor
+        var sxc = $2sxc(modId);                   // Get the Module Service in JS from the Global object
+        alert("edit mode: " + sxc.isEditMode());  // Check if we are in Edit mode
     });
 </script>
 ```
 
 The code above shows
 
-1. how to include the api-file in the best way using `@Edit.Enable(js: true)`
-2. how the sxc-object is resolved
+1. how to include the api-file in the best way using `GetService<IPageService>().Activate("2sxc.JsCore")`
+2. how go get the ModuleId into JS using `@CmsContext.Module.Id` from Razor (there is another way - read below)
 3. how to ask if we're in edit-mode
 
 The moduleId is usually dynamic, so you can't hardwire it with `var modId = 17` into your JS code. This is explained in the next section _Initialization_.
 
 
-## Initialization of the $2sxc for a Module
+## Get the Sxc-Module-Service using $2sxc
+
 We have three initializers:
 
 1. `$2sxc(DomNode)` - recommended
 2. `$2sxc(moduleId)` - oldest way, very common
 3. ~~`$2sxc(moduleId, contentBlockId)`~~ - a special version for [internal use only](#module-instances-and-content-blocks)
 
-### The Recommended HTML/DOM-Node Initializer
 We recommend the *DOM-Node syntax*, because in that mode $2sxc will go up through the DOM-tree and find the module it's in (or the content-block), and auto-configure itself. What's nice about this is that this method works without any server-side support (which you need for the other methods). Here's a simple example:
 
 ```html
@@ -89,11 +94,20 @@ $(function(){
 
 ```
 
-### The Classic ModuleId method
+### The ModuleId method
 
 In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use `[Module:ModuleId]` and in a Razor-Template it's `@Dnn.Module.ModuleID` (large "ID").
 
-The previous code in Tokens would be like:
+The same code in **Razor** for Dnn and Oqtane would be:
+
+```JavaScript
+$(function () {
+    var sxc = $2sxc(@CmsContext.Module.Id);
+    alert("edit mode: " + sxc.isEditMode());
+})
+```
+
+The same code in **Tokens** would be:
 
 ```JavaScript
 $(function () {
@@ -102,18 +116,11 @@ $(function () {
 })
 ```
 
-And the same code in Razor would be like:
-
-```JavaScript
-$(function () {
-    var sxc = $2sxc(@Dnn.Module.ModuleID);
-    alert("edit mode: " + sxc.isEditMode());
-})
-```
 
 You can also find an example of finding all of our nodes and initializing them in the [TimeLineJS App](xref:App.TimelineJs). If you're interested, here's the [js-initializer](https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js).  
 
 ## Everything about the Module-Level `sxc` Controller
+
 In the [module sxc controller](xref:JsCode.2sxcApi.Sxc.Index) you'll read about:
 
 1. The API of a module-level controller
@@ -205,5 +212,6 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 
 1. Introduced in 2sxc 04.00
 1. Enhanced with `cms` (see [cms](xref:JsCode.2sxcApi.$2sxc.Cms)) in 9.30
+1. Replaced `Edit.Enable(js:true)` with the new `IPageService.Activate("2sxc.JsCore")` in v13.0
 
 [content-blocks]: http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules

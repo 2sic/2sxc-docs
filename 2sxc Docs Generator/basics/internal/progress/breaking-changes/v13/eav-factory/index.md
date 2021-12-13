@@ -47,4 +47,12 @@ If you were using this from outside of 2sxc Razor / WebApi, you will need to use
 
 ---
 
+## History
+
+* Introduced in 2sxc 7 with Dependency Injection based on .net Standard 1.6
+* Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI
+* Planned for full removal in 2sxc 14 ca. middle of 2022
+
+---
+
 Shortlink to here: https://r.2sxc.org/brc-13-eav-factory

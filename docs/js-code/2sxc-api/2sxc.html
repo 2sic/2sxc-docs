@@ -253,29 +253,33 @@
 <li><em>work with the API</em> of the sxc-controller</li>
 </ol>
 <p>Here&#39;s a simple example of a template-file:</p>
-<pre><code class="lang-HTML">@Edit.Enable(js: true)
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
+@using ToSic.Sxc.Services;
+@{
+  // Tell the page that we need the 2sxc Js APIs
+  GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;); 
+}
 &lt;script&gt;
     $(function () {
-        var modId = 17;
-        var sxc = $2sxc(modId);
-        alert(&quot;edit mode: &quot; + sxc.isEditMode());
+        var modId = @CmsContext.Module.Id;        // Get the ModuleId from Razor
+        var sxc = $2sxc(modId);                   // Get the Module Service in JS from the Global object
+        alert(&quot;edit mode: &quot; + sxc.isEditMode());  // Check if we are in Edit mode
     });
 &lt;/script&gt;
 </code></pre><p>The code above shows</p>
 <ol>
-<li>how to include the api-file in the best way using <code>@Edit.Enable(js: true)</code></li>
-<li>how the sxc-object is resolved</li>
+<li>how to include the api-file in the best way using <code>GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;)</code></li>
+<li>how go get the ModuleId into JS using <code>@CmsContext.Module.Id</code> from Razor (there is another way - read below)</li>
 <li>how to ask if we&#39;re in edit-mode</li>
 </ol>
 <p>The moduleId is usually dynamic, so you can&#39;t hardwire it with <code>var modId = 17</code> into your JS code. This is explained in the next section <em>Initialization</em>.</p>
-<h2 id="initialization-of-the-2sxc-for-a-module">Initialization of the $2sxc for a Module</h2>
+<h2 id="get-the-sxc-module-service-using-2sxc">Get the Sxc-Module-Service using $2sxc</h2>
 <p>We have three initializers:</p>
 <ol>
 <li><code>$2sxc(DomNode)</code> - recommended</li>
 <li><code>$2sxc(moduleId)</code> - oldest way, very common</li>
 <li><del><code>$2sxc(moduleId, contentBlockId)</code></del> - a special version for <a href="#module-instances-and-content-blocks">internal use only</a></li>
 </ol>
-<h3 id="the-recommended-htmldom-node-initializer">The Recommended HTML/DOM-Node Initializer</h3>
 <p>We recommend the <em>DOM-Node syntax</em>, because in that mode $2sxc will go up through the DOM-tree and find the module it&#39;s in (or the content-block), and auto-configure itself. What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). Here&#39;s a simple example:</p>
 <pre><code class="lang-html">&lt;a onclick=&#39;$2sxc(this).manage.run(&quot;layout&quot;)&#39;&gt;layout&lt;/a&gt;
 </code></pre><p>In the above example, the dom-node is given by the current click, which puts the current <code>&lt;a&gt;</code> node in the <code>this</code> object.</p>
@@ -294,16 +298,16 @@ $(function(){
         // now do something...
     });
 });
-</code></pre><h3 id="the-classic-moduleid-method">The Classic ModuleId method</h3>
+</code></pre><h3 id="the-moduleid-method">The ModuleId method</h3>
 <p>In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use <code>[Module:ModuleId]</code> and in a Razor-Template it&#39;s <code>@Dnn.Module.ModuleID</code> (large &quot;ID&quot;).</p>
-<p>The previous code in Tokens would be like:</p>
+<p>The same code in <strong>Razor</strong> for Dnn and Oqtane would be:</p>
 <pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc([Module:ModuleId]);
+    var sxc = $2sxc(@CmsContext.Module.Id);
     alert(&quot;edit mode: &quot; + sxc.isEditMode());
 })
-</code></pre><p>And the same code in Razor would be like:</p>
+</code></pre><p>The same code in <strong>Tokens</strong> would be:</p>
 <pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc(@Dnn.Module.ModuleID);
+    var sxc = $2sxc([Module:ModuleId]);
     alert(&quot;edit mode: &quot; + sxc.isEditMode());
 })
 </code></pre><p>You can also find an example of finding all of our nodes and initializing them in the <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS App</a>. If you&#39;re interested, here&#39;s the <a href="https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js">js-initializer</a>.  </p>
@@ -379,6 +383,7 @@ so don&#39;t read/rely on that JSON, use the $2sxc to access any information. </
 <ol>
 <li>Introduced in 2sxc 04.00</li>
 <li>Enhanced with <code>cms</code> (see <a class="xref" href="2sxc.cms.html">cms</a>) in 9.30</li>
+<li>Replaced <code>Edit.Enable(js:true)</code> with the new <code>IPageService.Activate(&quot;2sxc.JsCore&quot;)</code> in v13.0</li>
 </ol>
 </article>
           </div>
