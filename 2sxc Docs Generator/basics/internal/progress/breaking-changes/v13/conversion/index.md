@@ -46,4 +46,14 @@ var result = convert.Convert(...);
 
 ---
 
+## History
+
+* Created `ToSic.Eav.Conversion.EntitiesToDictionary` ca. v5
+* Introduced `ToSic.Sxc.Conversion.DataToDictionary` ca. v7
+* Both marked as Deprecated in v12
+* Was only ever used in Dnn, never used in Oqtane
+* To be removed ca. v14 ca. middle of 2022
+
+---
+
 Shortlink to here: https://r.2sxc.org/brc-13-conversion
