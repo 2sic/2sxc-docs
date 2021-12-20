@@ -27,7 +27,7 @@ To get a 2sxc Service with this, you could write code like this
 
 ```csharp
 using ToSic.Sxc.Services;
-var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService))
+var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService));
 var json = jsonSvc.ToJson(someObject);
 ```
 
@@ -37,7 +37,7 @@ This is a bit clunky, so usually we'll add the namespace [Microsoft.Extensions.D
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sxc.Services;
-var jsonSvc = DependencyProvider.GetService<IJsonService>()
+var jsonSvc = DependencyProvider.GetService<IJsonService>();
 var json = jsonSvc.ToJson(someObject);
 ```
 
@@ -54,10 +54,11 @@ To get a 2sxc Service in a Skin, you can write code like this:
 ```csharp
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using ToSic.Sxc.Services;
 
 var spScope = (IServiceScope)HttpContextSource.Current.Items[typeof(IServiceScope)];
 var sp = spScope.ServiceProvider;
-var jsonSvc = sp.GetService<IJsonService>()
+var jsonSvc = sp.GetService<IJsonService>();
 var json = jsonSvc.ToJson(someObject);
 ```
 
