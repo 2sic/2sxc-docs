@@ -48,10 +48,37 @@ A Query Service has the following commands:
 * `getStream(streamName)` - Same as GetAll, just using a specific stream name to retrieve
 * `getStream(streamName, urlParams)` - Same as `getStream`, just with additional url parameters
 * `getStream(streamName, urlParams, data)` - Same as before, just with post-data
-* `getStreams(streamName)` - Same as `getStream` but you can have multiple stream names comma-separated
-* `getStreams(streamName, urlParams)` - Same as above, just with additional url parameters
-* `getStreams(streamName, urlParams, data)` - Same as above, just with post-data
+* `getStreams(streamNames)` - Same as GetAll, just using a specific stream name to retrieve - can have multiple stream names comma-separated
+* `getStreams(streamNames, urlParams)` - Same as above, just with additional url parameters
+* `getStreams(streamNames, urlParams, data)` - Same as above, just with post-data
 
+## Returned Data
+
+`getAll` and `getStreams` return multiple streams. 
+The resulting object is based on this structure:
+
+```json
+{
+  "Default": [
+    { ... },
+    { ... }
+  ],
+  "NextStreamName": [
+    { ... },
+    { ... }
+  ]
+}
+```
+
+`getStream` only retrieves one stream, so the it's clear that we don't need to pick by stream. 
+The resulting object is based on this structure. 
+
+```json
+[
+  { ... },
+  { ... }
+]
+```
 
 ---
 ## Tutorial

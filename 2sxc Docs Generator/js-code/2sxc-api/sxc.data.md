@@ -48,17 +48,22 @@ A Data Service has the following commands:
 * `getAll()` - no parameters, will return an array of all items of this content-type
 * `getOne(id)` - `id` is an int - will return a single item of this content-type
 * `create(objectWithValues)` - `objectWithValues` is a JS object with keys/values - will create the item and return it
-* `create(objectWithValues, metadataFor)` - `metadataFor` creates an item as metadata for something TODO: DOCUMENT
+* `create(objectWithValues, metadataFor)` - `metadataFor` creates an item as metadata for something
+* `delete(id)` WIP
+* `delete(guid)` WIP
 * `update(id, objectWithValues)` - performs an update on the targeted item and returns the item. Note that objectWithValues can also just have a few properties, all others will be left as is.
 
 
 ## Create Metadata
 
-When using `create(..., ...)` with two parameters you are creating metadata. The signature of the address-object is as follows:
+When using `create(..., ...)` with two parameters you are creating metadata. The signature of the address-object is 
+
+1. Either a string containing a GUID to an entity (the most common case) - like `31f509f1-e553-4371-bf60-3d5e98937b79`
+1. Or a full target identifier in the schema below
 
 ```js
 {
-  TargetType: int; // one of known target types
+  Target: int; // one of known target types
   Number?: number; // Key if it's a number key
   String?: string; // Key if it's a string ey
   Guid?: string;   // Guid if it's a GUID key
@@ -68,7 +73,7 @@ When using `create(..., ...)` with two parameters you are creating metadata. The
 ---
 ## Tutorial
 
-👉 TODO!
+👉 TODO: link tutorial
 
 ---
 

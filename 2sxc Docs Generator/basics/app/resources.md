@@ -56,3 +56,4 @@ Resources should only be used for labels, logos, introduction-texts and similar.
 1. Introduced in 2sxc 6.0
 1. Extendend [_The_ Content App](xref:Basics.App.ContentApp.Index) to have multi-language App [Resources](xref:Basics.App.Settings) and [Settings](xref:Basics.App.Settings) 2sxc v11
 1. Created the global [Resources](xref:Basics.Configuration.ResourcesStack) in v12.04
+1. Placed the global Resources in the [Primary App](xref:Basics.App.PrimaryApp.Index) in v13.0

@@ -89,9 +89,13 @@ You can create such SPAs using any popular JavaScript Framework such as
 1. Vue
 
 
-### _The_ Content App
+### The _Content_ App
 
 👉 See [](xref:Basics.App.ContentApp.Index)
+
+### The _Primary_ App
+
+👉 See [](xref:Basics.App.PrimaryApp.Index)
 
 ---
 

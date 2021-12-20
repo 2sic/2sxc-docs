@@ -265,11 +265,30 @@ authorsSvc.getAll().then(data =&gt; console.log(data));
 <li><code>getStream(streamName)</code> - Same as GetAll, just using a specific stream name to retrieve</li>
 <li><code>getStream(streamName, urlParams)</code> - Same as <code>getStream</code>, just with additional url parameters</li>
 <li><code>getStream(streamName, urlParams, data)</code> - Same as before, just with post-data</li>
-<li><code>getStreams(streamName)</code> - Same as <code>getStream</code> but you can have multiple stream names comma-separated</li>
-<li><code>getStreams(streamName, urlParams)</code> - Same as above, just with additional url parameters</li>
-<li><code>getStreams(streamName, urlParams, data)</code> - Same as above, just with post-data</li>
+<li><code>getStreams(streamNames)</code> - Same as GetAll, just using a specific stream name to retrieve - can have multiple stream names comma-separated</li>
+<li><code>getStreams(streamNames, urlParams)</code> - Same as above, just with additional url parameters</li>
+<li><code>getStreams(streamNames, urlParams, data)</code> - Same as above, just with post-data</li>
 </ul>
-<hr>
+<h2 id="returned-data">Returned Data</h2>
+<p><code>getAll</code> and <code>getStreams</code> return multiple streams. 
+The resulting object is based on this structure:</p>
+<pre><code class="lang-json">{
+  &quot;Default&quot;: [
+    { ... },
+    { ... }
+  ],
+  &quot;NextStreamName&quot;: [
+    { ... },
+    { ... }
+  ]
+}
+</code></pre><p><code>getStream</code> only retrieves one stream, so the it&#39;s clear that we don&#39;t need to pick by stream. 
+The resulting object is based on this structure. </p>
+<pre><code class="lang-json">[
+  { ... },
+  { ... }
+]
+</code></pre><hr>
 <h2 id="tutorial">Tutorial</h2>
 <p>👉 TODO!</p>
 <hr>

@@ -35,7 +35,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 ### Major Updates with may affect you
 
 1. The Image Resizer is being replaced TODO:
-1. The App containing Site-wide settings is changed to TODO:
+1. The App containing Site-wide settings is changed to `Primary` - previously it used the `Content` app for this. We believe this won't affect many users, as the settings-stack is still very new in v12
 
 
 Things which probably don't affect anybody

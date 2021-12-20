@@ -264,22 +264,26 @@ authorsSvc.getAll().then(authors =&gt; console.log(authors));
 <li><code>getAll()</code> - no parameters, will return an array of all items of this content-type</li>
 <li><code>getOne(id)</code> - <code>id</code> is an int - will return a single item of this content-type</li>
 <li><code>create(objectWithValues)</code> - <code>objectWithValues</code> is a JS object with keys/values - will create the item and return it</li>
-<li><code>create(objectWithValues, metadataFor)</code> - <code>metadataFor</code> creates an item as metadata for something TODO: DOCUMENT</li>
+<li><code>create(objectWithValues, metadataFor)</code> - <code>metadataFor</code> creates an item as metadata for something</li>
+<li><code>delete(id)</code> WIP</li>
+<li><code>delete(guid)</code> WIP</li>
 <li><code>update(id, objectWithValues)</code> - performs an update on the targeted item and returns the item. Note that objectWithValues can also just have a few properties, all others will be left as is.</li>
 </ul>
 <h2 id="create-metadata">Create Metadata</h2>
-<p>When using <code>create(..., ...)</code> with two parameters you are creating metadata. The signature of the address-object is as follows:</p>
+<p>When using <code>create(..., ...)</code> with two parameters you are creating metadata. The signature of the address-object is </p>
+<ol>
+<li>Either a string containing a GUID to an entity (the most common case) - like <code>31f509f1-e553-4371-bf60-3d5e98937b79</code></li>
+<li>Or a full target identifier in the schema below</li>
+</ol>
 <pre><code class="lang-js">{
-  TargetType: int; // one of known target types
+  Target: int; // one of known target types
   Number?: number; // Key if it&#39;s a number key
   String?: string; // Key if it&#39;s a string ey
   Guid?: string;   // Guid if it&#39;s a GUID key
 }
-</code></pre><hr>
-<h2 id="tutorial">Tutorial</h2>
-<p>👉 TODO!</p>
-<hr>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+</code></pre><yamlheader start="73" end="78">## Tutorial
+
+&#128073; TODO: link tutorial</yamlheader><h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>
 <li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
