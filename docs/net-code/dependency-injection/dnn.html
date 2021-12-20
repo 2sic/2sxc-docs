@@ -130,12 +130,12 @@ It&#39;s still fairly basic, so there are some hoops to jump through, but for no
 <p>The naming is a bit unfortunate, since normally we talk of <code>ServiceProvider</code> and this is called <code>DependencyProvider</code> but otherwise it works the same. </p>
 <p>To get a 2sxc Service with this, you could write code like this</p>
 <pre><code class="lang-csharp">using ToSic.Sxc.Services;
-var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService))
+var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService));
 var json = jsonSvc.ToJson(someObject);
 </code></pre><p>This is a bit clunky, so usually we&#39;ll add the namespace <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions">Microsoft.Extensions.DependencyInjection</a> and write this:</p>
 <pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sxc.Services;
-var jsonSvc = DependencyProvider.GetService&lt;IJsonService&gt;()
+var jsonSvc = DependencyProvider.GetService&lt;IJsonService&gt;();
 var json = jsonSvc.ToJson(someObject);
 </code></pre><h2 id="how-can-i-use-dependency-injection-in-dnn-skinsthemes">How Can I Use Dependency Injection in Dnn Skins/Themes?</h2>
 <p>This is unfortunately not prepared well - I guess at the time it was developed this wasn&#39;t seen as an important use case. </p>
@@ -147,10 +147,11 @@ var json = jsonSvc.ToJson(someObject);
 <p>To get a 2sxc Service in a Skin, you can write code like this:</p>
 <pre><code class="lang-csharp">using System;
 using Microsoft.Extensions.DependencyInjection;
+using ToSic.Sxc.Services;
 
 var spScope = (IServiceScope)HttpContextSource.Current.Items[typeof(IServiceScope)];
 var sp = spScope.ServiceProvider;
-var jsonSvc = sp.GetService&lt;IJsonService&gt;()
+var jsonSvc = sp.GetService&lt;IJsonService&gt;();
 var json = jsonSvc.ToJson(someObject);
 </code></pre><h2 id="how-can-i-get-dnn-objects-using-dependency-injection">How Can I Get Dnn Objects using Dependency Injection?</h2>
 <p>Probably yes 😶...</p>
