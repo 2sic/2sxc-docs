@@ -19,6 +19,8 @@ _Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCo
 > [!TIP]
 > You may sometimes find old code which does something like `data.on(...)` or `data.sourceUrl` - this is obsolete and will not work any more.
 
+👉 Check out the [](xref:Tut.JsData)
+
 ## Get a Data Service
 
 1. Get the [sxc instance controller](xref:JsCode.2sxcApi.Sxc.Index) of the current module
@@ -73,7 +75,7 @@ When using `create(..., ...)` with two parameters you are creating metadata. The
 ---
 ## Tutorial
 
-👉 TODO: link tutorial
+👉 [](xref:Tut.JsData)
 
 ---
 

@@ -23,6 +23,8 @@ $(start);
 > [!TIP]
 > **turnOn** is also building an architecture which will reliably work even with very [strict CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) enforced - which we believe will be essential in future. 
 
+👉 Check out the [](xref:Tut.TurnOn)
+
 ## Activate turnOn
 
 To use turnOn you must must tell the page that you need it. Here's how:

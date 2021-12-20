@@ -9,7 +9,10 @@ uid: JsCode.Commands.ContentItems
 
 This button opens the admin-dialog with all content-items. It has a (beta) feature which also allows you to add filters (since 2sxc 8.7).
 
+TODO: UPDATE TO SHOW MODERN TOOLBAR + USE ID Array of items
+
 ## How to use
+
 Here's a basic example showing a 2sxc-toolbar with a custom code:
 
 ```razor
@@ -67,6 +70,7 @@ The filters-object is a JS-object with properties. We're still working on the fo
 
 
 ## Read also
+
 * [commands](xref:JsCode.Commands.Index)
 
 ## Demo App and further links
@@ -75,3 +79,4 @@ The filters-object is a JS-object with properties. We're still working on the fo
 ## History
 1. Introduced in 2sxc v08.06
 2. Filters introduced in 2sxc v08.08
+1. Filters improved to support id-array in v13.0

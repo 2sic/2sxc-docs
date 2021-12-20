@@ -11,6 +11,13 @@ uid: JsCode.Toolbars.Buttons
 
 When you create custom buttons in a floating toolbar you can customize everything including the icon and more. This is explained here. 
 
+> [!WARNING]
+> Old Complicated Stuff
+> 
+> This is old complicated stuff which you shouldn't need any more. 
+> We left it in the docs because we're not sure if some people still use this.
+> But we strongy urge you not to use it, and use the simple toolbar APIs instead.
+
 Buttons are of html, basically a `<a click="...">[some-icon]</a>`. When the button is created, it must already know what it's for, which is why the command must be prepared when the button is created. 
 
 ## How to use

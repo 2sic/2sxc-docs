@@ -4,7 +4,7 @@ uid: JsCode.Toolbars.Advanced
 
 <img src="~/assets/features/toolbar.svg" class="feature">
 
-# Toolbars and Buttons
+# Pure JS Mode (OLD)
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>

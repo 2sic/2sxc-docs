@@ -237,50 +237,58 @@
 </div><style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 <p>Each in page toolbar can have some settings which control how it works and how it&#39;s shown. </p>
-<p><em>note: there is a <a href="http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel">blog post on using toolbar settings</a>.</em></p>
-<h2 id="how-to-use">How to use</h2>
-<p>Here&#39;s a quick example:</p>
-<pre><code class="lang-Html">&lt;div style=&quot;height: 100px&quot; class=&quot;sc-element&quot;&gt;
-    100px tall area to show alignments floating left with more to the left
-    &lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;&#39; settings=&#39;{ &quot;hover&quot;: &quot;left&quot;, &quot;align&quot;: &quot;left&quot; }&#39;&gt;&lt;/ul&gt;
-&lt;/div&gt;
-</code></pre><p>The above example will hover the toolbar when the mouse moves over this DIV but place it to the left <code>hover: &quot;left&quot;</code> and place the <em>more</em> button on the left side as well <code>align: &quot;left&quot;</code>.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>Internally the toolbar configuration has a very flexible structure, so internally it will look a bit like</p>
-<pre><code class="lang-javascript">{
-    groups: [...], // array of groups
-    settings: {
-        hover: &quot;...&quot;,
-        autoAddMore: ...,
-        show: &quot;...&quot;
-    },
-    ... // more stuff
-}
-</code></pre><p>In many cases the <code>&lt;ul toolbar=&quot;...&quot;&gt;</code> tag will be very simple, and adding these <em>settings</em> would be very complex. Because of this, we added the attribute <code>settings=&quot;{json}</code> which is merged into that object. </p>
-<h2 id="settings-and-values">Settings and Values</h2>
+<p>👉 Best start with the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/ui100/page">Toolbar Tutorials</a></p>
+<p>These Settings control how the Toolbar works</p>
 <ol>
-<li>string <code>autoAddMore</code>: <strong>(null)</strong> | &quot;right&quot; | &quot;left&quot;<br>will automatically add a &quot;...&quot; (more) button if multiple button groups are detected</li>
+<li><code>autoAddMore</code> determines if an ellipsis button is added automatically</li>
+<li><code>hover</code> determines where the toolbar appears when the mouse hovers over the area</li>
+<li><code>follow</code> tells the toolbar to follow the mouse - ideal for large content blocks </li>
+<li><code>show</code> determines if th toolbar is always visible, or only on hover</li>
+<li><code>classes</code> let you add classes for custom styling</li>
+</ol>
+<h2 id="how-to-use-in-razor">How to Use in Razor</h2>
+<p>This example uses the <a class="xref" href="../../net-code/razor/edit.toolbar.html">simple TagToolbar</a> API:</p>
+<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new[] { 
+  &quot;settings&amp;hover=left&amp;autoAddMore=start&quot;
+})&gt;
+  Stuff inside the div - hover over this would show the toolbar
+&lt;/div&gt;
+</code></pre><p>Here&#39;s another example where it uses the explicit <code>settings</code> parameter:</p>
+<pre><code class="lang-razor">&lt;div id=&#39;tagWithToolbar1&#39; @Edit.TagToolbar(
+  toolbar: new [] { &quot;toolbar=empty&quot;, &quot;+new?contentType=UiEmptyHelloWorld&quot; },
+  settings: new { hover = &quot;left&quot;, show = &quot;always&quot; } )&gt;
+  Float over this box to get a (+) button. 
+&lt;/div&gt;
+</code></pre><h2 id="how-to-use-in-javascript">How to Use in JavaScript</h2>
+<p>If you are writing code that doesn&#39;t have Razor (for example in a JS-SPA scenario) you would write the following (which is actually what the above sample creates):</p>
+<pre><code class="lang-html">&lt;div sxc-toolbar=&#39;[&quot;settings&amp;hover=left&amp;autoAddMore=start&quot;]&#39;&gt;
+  Stuff inside the div - hover over this would show the toolbar
+&lt;/div&gt;
+</code></pre><h2 id="settings-and-values">Settings and Values</h2>
+<ol>
+<li>string <code>autoAddMore</code>: <strong>(null)</strong> | &quot;start&quot; | &quot;end&quot;<br>will automatically add a &quot;...&quot; (more) button if multiple button groups are detected</li>
 <li>string <code>hover</code>: <strong>&quot;right&quot;</strong> | &quot;left&quot; | &quot;none&quot;  (&quot;center&quot; ist still beta)
 determines where the toolbar appears when the mouse hovers over the area (usually a DIV) with the class <code>sc-element</code></li>
 <li>string <code>follow</code> <em>new in 11.06</em> <strong>&quot;none&quot;</strong> | &quot;initial&quot; | &quot;scroll&quot; | &quot;always&quot;<br>tells the toolbar to follow the mouse - ideal for large content blocks where you need the toolbar even if otherwise it would be off-screen. <em>Note: this used to default to <code>scroll</code> on the <code>TagToolbar</code> but was changed to <code>none</code> in 2sxc 11.06 because it caused too many UX issues.</em></li>
 <li>string <code>show</code>: <strong>&quot;hover&quot;</strong> | &quot;always&quot;<br>by default any toolbar inside an element with a <code>sc-element</code> class will appear on hover</li>
 <li>string <code>classes</code>: <strong>(null)</strong> | <em>any kind of string</em>   </li>
 </ol>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../net-code/razor/purpose.html">InstancePurpose</a> - which tells you why the current code is running so you could change the data added</li>
-<li><a class="xref" href="../../net-code/razor/customizedata.html">CustomizeData</a></li>
-</ul>
+<h2 id="old-use-cases-not-recommended">Old use Cases <em>not Recommended</em></h2>
+<p>Here&#39;s a quick example of how it used to be done - not recommended any more:</p>
+<pre><code class="lang-Html">&lt;div style=&quot;height: 100px&quot; class=&quot;sc-element&quot;&gt;
+    100px tall area to show alignments floating left with more to the left
+    &lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;&#39; settings=&#39;{ &quot;hover&quot;: &quot;left&quot;, &quot;align&quot;: &quot;left&quot; }&#39;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>The above example will hover the toolbar when the mouse moves over this DIV but place it to the left <code>hover: &quot;left&quot;</code> and place the <em>more</em> button on the left side as well <code>align: &quot;left&quot;</code>.</p>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
 <ul>
-<li><a href="http://2sxc.org/en/apps/app/faq-with-categories-and-6-views">FAQ with Categories</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/ui100/page">Toolbar Tutorials</a></li>
+<li><a href="http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel">old! blog post on using toolbar settings</a></li>
 </ul>
-<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc ??.??</li>
-<li></li>
+<li>Introduced in 2sxc 8.06</li>
+<li><code>follow</code> introduced in 11.06</li>
 </ol>
 </article>
           </div>

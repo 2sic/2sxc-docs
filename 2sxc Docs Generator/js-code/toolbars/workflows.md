@@ -18,7 +18,51 @@ This can be done using **Toolbar Workflows**. It's especially useful in SPA appl
 
 ## Demo
 
-👉 We don't have enough time to document everything - here's a live demo with source of the [2sxc Toolbar Workflow](https://2sxc.org/dnn-tutorials/en/razor/ui130/page).
+👉 Here's a live demo with source of the [2sxc Toolbar Workflow](https://2sxc.org/dnn-tutorials/en/razor/ui130/page)
+
+```razor
+<div id='tagWithToolbar1' @Edit.TagToolbar(
+  toolbar: new [] { "toolbar=empty", "+new?contentType=UiEmptyHelloWorld" },
+  settings: new { hover = "left", show = "always" } )>
+  Float over this box to get a (+) button. 
+  When you click it and close the dialog again, the page will <em>not refresh</em>. <br>
+  Instead, you'll see console messages that a custom JS took over the process.
+</div>
+```
+
+```javascript
+  // This workflow definition will run on every action, just to log what's happening
+  const workflowToLog = {
+    command: 'all',   // Run on every command/action
+    phase: 'all',     // Run before and after
+    code: (wfArgs) => {
+      console.log("Toolbar asked to to something - here are the details.", wfArgs);
+    }
+  }
+
+  // This is the workflow definition we will register to stop page refresh
+  const workflowToDisableRefresh = {
+    command: 'refresh',   // The command name it's for
+    phase: 'before',      // The workflow-step should run before the command is executed
+    code: (wfArgs) => {   // The code which should be run
+      console.log('Toolbar asked to refresh, will return false to stop it. These are the arguments we got.', wfArgs);
+      return false;       // Return false to stop this command from happening
+    }
+  };
+
+  // Attach event-listener to the TagToolbar parent, so we can register the workflow when the toolbar is created
+  var parent = document.getElementById('tagWithToolbar1');
+  parent.addEventListener('toolbar-init', (initEvent) => {
+    console.log("Workflow Demo: Tag Toolbar was initialized - event kicked in - will now register");
+    const workflow = initEvent.detail.workflow;
+
+    workflow.add(workflowToLog);
+    workflow.add(workflowToDisableRefresh);
+
+    // Stop the event here, otherwise parent elements which have an event listener would get triggered as well
+    initEvent.stopPropagation();
+  });
+```
 
 ## How Toolbar Workflows Work
 

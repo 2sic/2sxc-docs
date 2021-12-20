@@ -16,6 +16,8 @@ A common need in JS is to read/write data from/to the backend.
 
 _Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
 
+👉 Check out the [](xref:Tut.JsData)
+
 ## Get a Query Service
 
 1. Get the [sxc instance controller](xref:JsCode.2sxcApi.Sxc.Index) of the current module
@@ -83,7 +85,7 @@ The resulting object is based on this structure.
 ---
 ## Tutorial
 
-👉 TODO!
+👉 Check out the [](xref:Tut.JsData)
 
 ---
 
