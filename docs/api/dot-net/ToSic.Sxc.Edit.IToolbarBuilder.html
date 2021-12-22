@@ -126,7 +126,7 @@ Note that it has a fluid API, and each method/use returns a fresh object with th
   <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
   <h5 id="ToSic_Sxc_Edit_IToolbarBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi(&quot;WIP v13&quot;)]
+    <pre><code class="lang-csharp hljs">[PublicApi]
 public interface IToolbarBuilder : IHybridHtmlString, IHtmlString</code></pre>
   </div>
   <h5 id="ToSic_Sxc_Edit_IToolbarBuilder_remarks"><strong>Remarks</strong></h5>
@@ -144,7 +144,7 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_IToolbarBuilder_Add_System_String___.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.IToolbarBuilder.Add(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L26">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L30">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_IToolbarBuilder_Add_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Add*"></a>
   <h4 id="ToSic_Sxc_Edit_IToolbarBuilder_Add_System_String___" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Add(System.String[])">Add(String[])</h4>
@@ -187,12 +187,18 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Sxc_Edit_IToolbarBuilder_Add_System_String____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>History</p>
+<ul>
+<li>Added in 2sxc 13</li>
+</ul>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_IToolbarBuilder_Metadata_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.IToolbarBuilder.Metadata(System.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L43">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L55">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_IToolbarBuilder_Metadata_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Metadata*"></a>
   <h4 id="ToSic_Sxc_Edit_IToolbarBuilder_Metadata_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Metadata(System.Object,System.String)">Metadata(Object, String)</h4>
@@ -201,7 +207,7 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Metadata(object target, string contentType)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Metadata(object target, string contentTypes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,11 +222,104 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">target</span></td>
+        <td><p>The target object which should receive metadata. Must support <a class="xref" href="ToSic.Eav.Metadata.IHasMetadata.html">IHasMetadata</a> </p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">contentTypes</span></td>
+        <td><p>Name of <strong>one</strong> content-type for which to generate the button. In future <em>may</em> also allow more content-types</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Edit.IToolbarBuilder.html">IToolbarBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Edit_IToolbarBuilder_Metadata_System_Object_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>History</p>
+<ul>
+<li>Added in 2sxc 13</li>
+</ul>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_IToolbarBuilder_Settings_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.IToolbarBuilder.Settings(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L75">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Edit_IToolbarBuilder_Settings_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Settings*"></a>
+  <h4 id="ToSic_Sxc_Edit_IToolbarBuilder_Settings_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.Settings(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">Settings(String, String, String, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Add a <code>settings</code> rule to configure what the toolbar should look like. See <a class="xref" href="../../js-code/toolbars/settings.html">Toolbar Settings</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Settings(string noParamOrder = &quot;Rule: all params must be named (https://r.2sxc.org/named-params), Example: 'enable: true, version: 10'&quot;, string show = null, string hover = null, string follow = null, string classes = null, string autoAddMore = null, string ui = &quot;&quot;, string parameters = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">show</span></td>
         <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">contentType</span></td>
+        <td><span class="parametername">hover</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">follow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">classes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">autoAddMore</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ui</span></td>
+        <td><p>Parameters for the UI, like color=red - see <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a> for all possible options</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">parameters</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -240,12 +339,18 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Sxc_Edit_IToolbarBuilder_Settings_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>History</p>
+<ul>
+<li>Added in 2sxc 13</li>
+</ul>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_IToolbarBuilder_ToString.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.IToolbarBuilder.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/IToolbarBuilder.cs/#L89">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_IToolbarBuilder_ToString_" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.ToString*"></a>
   <h4 id="ToSic_Sxc_Edit_IToolbarBuilder_ToString" data-uid="ToSic.Sxc.Edit.IToolbarBuilder.ToString">ToString()</h4>
