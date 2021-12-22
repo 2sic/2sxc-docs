@@ -31,6 +31,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 
 1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed
     [see instructions](xref:todo)
+1. The `App.Data.Metadata` was inconsistent with other APIs so this was changed. It should not affect anybody.
 
 ### Major Updates with may affect you
 
