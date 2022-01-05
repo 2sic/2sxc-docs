@@ -7,22 +7,25 @@ uid: NetCode.Features.Index
 
 ## How To Use
 
-This example is taken from [Mobius Forms](xref:App.Mobius) and the code can be found in the [Mobius Github Repo](https://github.com/2sic/app-mobius-forms/blob/master/_Shared-Feature-UploadInAdam.cshtml).
+This example is taken from [Mobius Forms](xref:App.Mobius) and the code can be found in the [Mobius Github Repo](https://github.com/2sic/app-mobius-forms/).
 
 ```cs
-@using ToSic.Eav.Configuration
 @{
-    // show warning if the save-attachments in web api isn't activated
-    var reqFeatures = new[]{new Guid("ecdab0f6-4692-4544-b1e7-72581f489f6a")};
-    FeaturesDisabledException missingException;
+  var feats = GetService<ToSic.Sxc.Services.IFeaturesService>();
 
-    if(!Features.EnabledOrException(reqFeatures,
-        "Warning: file upload won't work yet, as it hasn't been enabled.",
-        out missingException)) {
-        <div class="alert alert-warning">
-            @missingException.Message
-        </div>
-    }
+  // show warning if the save-attachments in web api isn't activated
+  if(!feats.Enabled("SaveInAdamApi")) {
+    <div class="alert alert-warning">
+      Warning: file upload won't work yet, as it hasn't been enabled.
+    </div>
+  }
+
+  // Show warning if any of the following features are not enabled
+  if(!feats.Enabled("PublicEditForm", "PublicUploadFiles")) {
+    <div class="alert alert-warning">
+      Warning: Edit Form and file upload have not been enabled.
+    </div>
+  }
 }
 ```
 
@@ -30,19 +33,26 @@ The code above checks if a feature is enabled, and if not, will show a message t
 
 ## What you Need To Know
 
-1. The API lies in the namespace `ToSic.Eav.Configuration`
-1. The `Features` object is static, so you don't need to create it, just use the commands on it
+1. The (new) API lies in the namespace `ToSic.Sxc.Services` - see [](xref:ToSic.Sxc.Services.IFeaturesService)
+1. The `IFeaturesService` will do the checks for you
 1. ATM the public API has the following commands
-    1. `Enabled(Guid featureId)` which checks if a feature is enabled
-    1. `Enabled(IEnumerable<Guid> featureIds)` which checks if multiple features are enabled
-    1. `EnabledOrException(IEnumerable<Guid> featIds, string message, out FeaturesDisabledException)` which will check and give you an error object back, which you can either throw or show the message of (like in the example above)
+    1. `Enabled(string nameId)` which checks if a feature is enabled based on the name
+    1. `Enabled(string nameId, nameId)` use with more parameters
+    1. `Enabled(string nameId, nameId, nameId, ...)` use with as many parameters a you want
+    1. `Enabled(string[] nameIds)` use with string-array
 
-## Finding Feature GUIDs
+## Finding Feature NameIds and GUIDs
 
-At the moment there is no catalog of feature GUIDs yet, and sometimes you may actually create your own. So for now you'll mainly need this for features of 2sxc / eav, and you can simply look them up in the code, or see them in the [features management](https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30) of the installation you're developing on.
+As of v13 we always recommend using the NameIds since they are easier to read. These features are currently managed:
 
-_Warning: there are constants in the EAV code which have these feature GUIDs, but do not use them, as they will be moved to other places in the code at a later time_
-
+1. `PasteImageFromClipboard` - enables paste image from clipboard in the TinyMCE editor
+1. `WysiwygPasteFormatted` - enables paste formatted text in the TinyMCE editor
+1. `PublicEditForm` - enables the form to open up for non-editors (to use as input dialogs) - security will still be checked based on config, so it's safe
+1. `PublicUploadFiles` - allows public (non-editors) to upload files (types will still be checked), so it's safe
+1. `SaveInAdamApi` - enables the `SaveInAdam` API in the WebAPIs
+1. `PermissionCheckUsers` - enables you to set permissions for specific users (by default you can only set by standard roles like Admin, etc.)
+1. `PermissionCheckGroups` - enables you to set permissions for specific groups (by default you can only set by standard roles like Admin, etc.)
+1. `WebFarmCache` - enables the [enterprise WebFarmCache](https://2sxc.org/en/web-farm-cache) (requires a license)
 
 ## Read also
 
@@ -51,3 +61,5 @@ _Warning: there are constants in the EAV code which have these feature GUIDs, bu
 ## History
 
 1. Introduced in 2sxc 09.30
+1. Moved from the static object `Features` to a proper Sxc Service in v13.01
+1. Added nameId checks for more readable code in v13.01
