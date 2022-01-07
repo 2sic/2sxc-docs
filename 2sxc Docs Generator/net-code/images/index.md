@@ -15,21 +15,25 @@ Aspects which are covered
 
 ## Example
 
+```razor
+@using ToSic.Sxc.Services;
+@{
+  var imgService = GetService<IImageService>();
+  var blogPic = imgService.Picture(blogPost.Image);
+}
+@blogPic
+```
+
 TODO: LINK TO EXAMPLES
 
-## How This Works TODO:
+## How This Works
 
-FORMAT lookup
+Internally this is what will happen:
 
-Settings lookup
-
-SrcSet automation
-
-generate stuff
-
-RazorBlade Tags
-
-
+1. The format of the file is checked, to detect if other formats could be converted to (like jpg cound also be webp)
+1. If no settings are provided, the default settings for content-images are used (see below)
+1. If no srcSet is provided, the default from the settings are used (see below)
+1. It will then generate a ResponsivePicture object which you can just show, or do more things with (see below)
 
 ## Guide Basic
 
@@ -116,7 +120,7 @@ var img = imgService.Img(blogPost.Image, imgAlt: blogPost.Title, imgClass: "some
 Other attributes can be set as well, but it's more complicated. See custom Output below. 
 
 
-### Custom Output TODO:
+### Custom Output
 
 In most cases you'll just want to show the image or picture, like this:
 
@@ -213,17 +217,6 @@ In cases where you are generating other custom code and need properly created Sr
 1. The (new) API lies in the namespace `ToSic.Sxc.Services` - see [](xref:ToSic.Sxc.Services)
 1. The `IImageService` will do all the magic - see [](xref:ToSic.Sxc.Services.IImageService)
 
-TODO:
-
-
-
-
-## Read also
-
-...
-
 ## History
 
 1. Introduced in 2sxc 13.01
-1. Moved from the static object `Features` to a proper Sxc Service in v13.01
-1. Added nameId checks for more readable code in v13.01

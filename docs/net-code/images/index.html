@@ -123,13 +123,21 @@
 <li>...or manually specify other sizes</li>
 </ol>
 <h2 id="example">Example</h2>
-<p>TODO: LINK TO EXAMPLES</p>
-<h2 id="how-this-works-todo">How This Works TODO:</h2>
-<p>FORMAT lookup</p>
-<p>Settings lookup</p>
-<p>SrcSet automation</p>
-<p>generate stuff</p>
-<p>RazorBlade Tags</p>
+<pre><code class="lang-razor">@using ToSic.Sxc.Services;
+@{
+  var imgService = GetService&lt;IImageService&gt;();
+  var blogPic = imgService.Picture(blogPost.Image);
+}
+@blogPic
+</code></pre><p>TODO: LINK TO EXAMPLES</p>
+<h2 id="how-this-works">How This Works</h2>
+<p>Internally this is what will happen:</p>
+<ol>
+<li>The format of the file is checked, to detect if other formats could be converted to (like jpg cound also be webp)</li>
+<li>If no settings are provided, the default settings for content-images are used (see below)</li>
+<li>If no srcSet is provided, the default from the settings are used (see below)</li>
+<li>It will then generate a ResponsivePicture object which you can just show, or do more things with (see below)</li>
+</ol>
 <h2 id="guide-basic">Guide Basic</h2>
 <h3 id="1-prepare">1. Prepare</h3>
 <p>Always start by getting the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> - you will usually just get this once per Razor template:</p>
@@ -172,7 +180,7 @@ var img = imgService.Img(blogPost.Image, settings: resizeSettings);
 <p>These are the most common things you may want to specify, so the <code>Img(...)</code> and <code>Picture(...)</code> tag support this in the initial call:</p>
 <pre><code class="lang-c#">var img = imgService.Img(blogPost.Image, imgAlt: blogPost.Title, imgClass: &quot;some-class-names&quot;);
 </code></pre><p>Other attributes can be set as well, but it&#39;s more complicated. See custom Output below. </p>
-<h3 id="custom-output-todo">Custom Output TODO:</h3>
+<h3 id="custom-output">Custom Output</h3>
 <p>In most cases you&#39;ll just want to show the image or picture, like this:</p>
 <pre><code class="lang-razor">@{
   var img = imgService.Img(blogPost.Image);
@@ -245,14 +253,9 @@ Let&#39;s assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;pic
 <li>The (new) API lies in the namespace <code>ToSic.Sxc.Services</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></li>
 <li>The <code>IImageService</code> will do all the magic - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a></li>
 </ol>
-<p>TODO:</p>
-<h2 id="read-also">Read also</h2>
-<p>...</p>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 13.01</li>
-<li>Moved from the static object <code>Features</code> to a proper Sxc Service in v13.01</li>
-<li>Added nameId checks for more readable code in v13.01</li>
 </ol>
 </article>
           </div>
