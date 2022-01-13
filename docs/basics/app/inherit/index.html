@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Problems Installing Apps with Hot Reload Enabled | 2sxc 12 / EAV 12 </title>
+    <title>Inherit Apps (v13+) WIP | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Problems Installing Apps with Hot Reload Enabled | 2sxc 12 / EAV 12 ">
+    <meta name="title" content="Inherit Apps (v13+) WIP | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -111,26 +111,60 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Platforms.Oqtane.Install.IssueHotReload">
+            <article class="content wrap" id="_content" data-uid="Basics.App.InheritApps.Index">
+<h1 id="inherit-apps-v13-wip">Inherit Apps (v13+) WIP</h1>
 
-<p><img src="../../../assets/features/platform-oqtane.svg" width="100%"></p>
-<h1 id="problems-installing-apps-with-hot-reload-enabled">Problems Installing Apps with Hot Reload Enabled</h1>
-<p>When using Oqtane in <strong>developer mode</strong> there is a feature called <strong>Hot Reload</strong> which restarts Oqtane when files change. </p>
-<div class="WARNING"><h5>Warning</h5><p>Installing Content-Templates and Apps with <strong>Hot Reload</strong> enabled causes problems.</p>
-<p>This is because the server will restart a few times during installation of the ZIP. </p>
+<p>There are a few ways to re-use data, content-types and templates across sites. </p>
+<p>In very advanced cases you may want to define an App in one central place, and re-use that in many sites. </p>
+<p>This describes how to do this - it&#39;s a new feature in 2sxc 13.01.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>This only works if the feature has been enabled - WIP!</p>
 </div>
-<p>Because of this you can only install Apps and Content-Templates if <strong>Hot Reload is disabled</strong>. </p>
-<div class="TIP"><h5>Tip</h5><p>After installation you can re-enable Hot-Reload as you see fit. </p>
+<div class="IMPORTANT"><h5>Important</h5><p>As of v13.01 this feature only works in Dnn. Oqtane does not support this yet. </p>
 </div>
-<h2 id="checklist-to-disable-hot-reload-temporarily">Checklist to Disable Hot Reload Temporarily</h2>
-<iframe src="https://azing.org/2sxc/r/YUm957D-?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-<h2 id="background-hot-reload-detection">Background: Hot-Reload Detection</h2>
-<p>Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled by checking that this DLL is loaded in memory:</p>
-<ul>
-<li><code>Microsoft.AspNetCore.Watch.BrowserRefresh.dll</code></li>
-</ul>
-<p>If you believe that we are checking this incorrectly, please open an issue on Github. </p>
+<h2 id="how-it-works-todo">How it Works TODO:</h2>
+<p>Inherited Apps work like a multi-layer app. </p>
+<ol>
+<li>The bottom layer is the <strong>Ancestor App</strong>. Changes to this affect all Apps which inherit it.</li>
+<li>On top of this is the <strong>Descendant App</strong> on a specific site, it can only add more material to the parent app, but not change any inherited data</li>
+</ol>
+<p>Descendant Apps inherit all this:</p>
+<ol>
+<li>App Name and Folder Name (they must be the same)</li>
+<li>All Content-Types of the Ancestor</li>
+<li>All Data / Entities of the Ancestor</li>
+<li>All Queries of the Ancestor</li>
+<li>All View definitions of the Ancestor</li>
+<li>All Template files and JS/CSS resources in the global storage of the App</li>
+</ol>
+<p>Descendant Apps don&#39;t inherit this:</p>
+<ol>
+<li>Settings - not sure yet if they do - still WIP</li>
+<li>Templates and Resources in the local storage of the Ancestor App</li>
+<li>ADAM files of the Ancestor App</li>
+</ol>
+<h2 id="how-to-create">How to Create</h2>
+<ol>
+<li>Enable Feature</li>
+<li>Define the Ancestor / Master App</li>
+<li>Define an Descendant App</li>
+<li>Test :)</li>
+</ol>
+<h2 id="enable-the-feature-todo">Enable the Feature TODO:</h2>
+<h2 id="create-the-ancestor-app-todo">Create the Ancestor App TODO:</h2>
+<p>todo</p>
+<h3 id="limitations-of-the-ancestor-app">Limitations of the Ancestor App</h3>
+<p>You must be aware of a few limitations in the Ancestor App.</p>
+<ol>
+<li>Only views with templates stored in the global location can be used in Descendant Apps</li>
+<li>If you have data (entities) with images/files in the data, they cannot use the <code>file:72</code> reference, 
+but must use the full path to the file for it to work on other sites, as the file-id lookup would not work in other sites.</li>
+</ol>
+<h2 id="create-the-descendant-app-todo">Create The Descendant App TODO:</h2>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in v13.01</li>
+</ol>
 </article>
           </div>
           
@@ -139,7 +173,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/platforms/oqtane/install-issue-hot-reload.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/inherit/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
