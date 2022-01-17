@@ -29,3 +29,7 @@ Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled b
 * `Microsoft.AspNetCore.Watch.BrowserRefresh.dll`
 
 If you believe that we are checking this incorrectly, please open an issue on Github. 
+
+---
+
+Shortlink to here: https://r.2sxc.org/oqt-hr
