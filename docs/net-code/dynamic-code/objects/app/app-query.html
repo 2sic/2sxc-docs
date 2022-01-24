@@ -115,7 +115,7 @@
 <h1 id="appquery--appquery-object-in-dynamic-code">App.Query / @App.Query Object in Dynamic Code</h1>
 
 <p>The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here&#39;s how:</p>
-<pre><code class="lang-razor">@foreach(var tag in AsDynamic(App.Query[&quot;SortedTags&quot;])) {
+<pre><code class="lang-razor">@foreach(var tag in AsList(App.Query[&quot;SortedTags&quot;])) {
   &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;
     &lt;a href=&#39;@Link.To(&quot;tag= &quot; tag.Tag)&#39; title=&quot;@tag.Name&quot;&gt;
       @tag.Name

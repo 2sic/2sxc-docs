@@ -13,17 +13,18 @@ uid: Basics.LnF.Index
 
 Some **features** require a **license** to be activated.
 
-> [!TIP]
-> 99.9% of 2sxc is free for everybody to use. 
-> 
-> Only some really advanced features require a license. 
-> The other features are simply configurable to improve your security. 
+The other features are simply configurable to improve your security. 
 
 ## Licenses in 2sxc 13
 
 ### Core Free License
 
 This is the default license which is auto-enabled for everybody, and covers 99.9% of all features. 
+
+> [!TIP]
+> 99.9% of 2sxc is free for everybody to use. 
+> 
+> Only some really advanced features require a license. 
 
 ### Patron / Supporter License
 
