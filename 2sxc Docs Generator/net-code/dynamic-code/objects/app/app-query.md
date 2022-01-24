@@ -6,7 +6,7 @@ uid: NetCode.DynamicCode.Objects.App.Query
 The queries you create in the app-configuration dialogs can do many things like filter certain items, order them and more. You will often just connect them to a template and visualize the result, by you can also use it in your code. Here's how:
 
 ```razor
-@foreach(var tag in AsDynamic(App.Query["SortedTags"])) {
+@foreach(var tag in AsList(App.Query["SortedTags"])) {
   <li class='@("app-blog-tag" + tag.ManualWeight)'>
     <a href='@Link.To("tag= " tag.Tag)' title="@tag.Name">
       @tag.Name
