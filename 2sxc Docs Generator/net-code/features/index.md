@@ -14,14 +14,14 @@ This example is taken from [Mobius Forms](xref:App.Mobius) and the code can be f
   var feats = GetService<ToSic.Sxc.Services.IFeaturesService>();
 
   // show warning if the save-attachments in web api isn't activated
-  if(!feats.Enabled("SaveInAdamApi")) {
+  if(!feats.IsEnabled("SaveInAdamApi")) {
     <div class="alert alert-warning">
       Warning: file upload won't work yet, as it hasn't been enabled.
     </div>
   }
 
   // Show warning if any of the following features are not enabled
-  if(!feats.Enabled("PublicEditForm", "PublicUploadFiles")) {
+  if(!feats.IsEnabled("PublicEditForm", "PublicUploadFiles")) {
     <div class="alert alert-warning">
       Warning: Edit Form and file upload have not been enabled.
     </div>

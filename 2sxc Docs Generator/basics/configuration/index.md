@@ -42,7 +42,7 @@ Settings and Resources can be configured at any level of the application. This i
 
 ### Global Configuration
 
-As of now (v12) global Configuration only exists for [Features](xref:Basics.Cms.Features.Index) which can be enabled/disabled at the system level. 
+As of now (v12) global Configuration only exists for [Features](xref:Basics.LnF.Features.Index) which can be enabled/disabled at the system level. 
 This is primarily for security reasons. 
 
 In addition some minor global Configuration exists for alternate Caching systems (like using Redis) but this is only for [2sxc Professional](https://2sxc.org/en/web-farm-cache).

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Configuration, Settings and Resources in 2sxc &#10024; new! | 2sxc 12 / EAV 12 </title>
+    <title>Features Management | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Configuration, Settings and Resources in 2sxc &#10024; new! | 2sxc 12 / EAV 12 ">
+    <meta name="title" content="Features Management | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -111,10 +111,9 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Configuration.Index">
+            <article class="content wrap" id="_content" data-uid="Basics.LnF.Features.Index">
+<h1 id="features-management">Features Management</h1>
 
-<p><img src="assets/settings-stack-banner.svg" class="feature"></p>
-<h1 id="configuration-settings-and-resources-in-2sxc--new">Configuration, Settings and Resources in 2sxc ✨ new!</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -236,102 +235,40 @@
   </div>
 </div><style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-<p>Settings can be a complex issue as the should have an effect on differenc scopes. Here are some examples:</p>
+<p>To increase the security of 2sxc, many features are <a href="https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30">only available if actively enabled</a>. This <a href="https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30">reduced the security surface and hardens the installation</a>.</p>
+<p>A feature is a functionality of 2sxc or EAV, which can be enabled/disabled at system level. Each feature is identified by a GUID, and all features are disabled by default. Some examples of features:</p>
 <ol>
-<li>An input-field may have a setting to show/hide a button</li>
-<li>An App may have a setting which affects the entire App</li>
-<li>A system may have a setting which affects the entire installation</li>
+<li>define permissions by user (<em>new in 9.30</em>)</li>
+<li>use the new (beta) Angular 5 UI for editing (<em>new in 9.30</em>)</li>
+<li>use standard 2sxc forms to allow public users to submit data (<em>new in 9.30</em>)</li>
+<li>let certain users save draft-only data (<em>new in 9.30</em>)</li>
+<li>enable paste-image-from-clipboard (beta, <em>new in 9.30</em>)</li>
 </ol>
-<p>In an ideal world, these settings can compound each other to determine defaults, fallbacks and overrides. 
-2sxc has some of this ready, other parts are still in development. </p>
-<div class="TIP"><h5>Tip</h5><p>In 2sxc/EAV we talk about <strong>Configuration</strong> when something has a standard set of properties and about <strong>Settings</strong> when the properties can vary dynamically. </p>
-<p>So an <em>App-Configuration</em> contains standardized aspects like the Folder it&#39;s in, while <em>App-Settings</em> can be a dynamic set of properties that are different in each App.</p>
-<p><strong>Resources</strong> on the other hand are simply meant for language/culture specific labels, logos and similar. 
-They are also dynamic, so they can have as many values as you need.</p>
-</div>
-<h2 id="settings-and-resources-are-stacked">Settings and Resources are Stacked</h2>
-<p>Settings and Resources can be configured at any level of the application. This is how it stacks up:</p>
-<p><img src="assets/settings-stack.png" width="100%" class="full-width"></p>
-<p>👉 Learn more about the <a class="xref" href="settings-stack.html">Settings Stack in 2sxc ✨ new!</a> and the <a class="xref" href="resources-stack.html">Resources Stack in 2sxc ✨ new!</a></p>
-<p>👉 Learn about the <a class="xref" href="settings-system.html">predefined System-Settings</a></p>
-<p>👉 Learn about the <a class="xref" href="resources-system.html">predefined System-Resources</a></p>
-<h2 id="global-level">Global Level</h2>
-<h3 id="global-configuration">Global Configuration</h3>
-<p>As of now (v12) global Configuration only exists for <a class="xref" href="../licenses-features/features.html">Features</a> which can be enabled/disabled at the system level. 
-This is primarily for security reasons. </p>
-<p>In addition some minor global Configuration exists for alternate Caching systems (like using Redis) but this is only for <a href="https://2sxc.org/en/web-farm-cache">2sxc Professional</a>.</p>
-<h3 id="global-settings-and-resources">Global Settings and Resources</h3>
-<p>Global Settings and Resources were introduced in 2sxc 12.04. 
-Read about configuring them in the <a class="xref" href="settings-stack.html">Settings Stack in 2sxc ✨ new!</a>. </p>
-<p>In C#/Razor you can access the <a class="xref" href="settings-stack.html">Settings Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/settings.html"><code>Settings</code> object</a>
-and the <a class="xref" href="resources-stack.html">Resources Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/resources.html"><code>Resources</code> object</a>. </p>
-<p>Note: <em>there are some global ADAM Settings that can be configured in a different way, but it&#39;s not standardized/finalized yet, so not public, and we&#39;ll try to move that into the new standard.</em> </p>
-<hr>
-<h2 id="site-level-portal">Site Level (Portal)</h2>
-<h3 id="site-configuration">Site Configuration</h3>
-<p>Only <a class="xref" href="../cms/languages/index.html">Languages</a> are configured at Site-Level. </p>
-<h3 id="site-settings-and-resources">Site Settings and Resources</h3>
-<p>Site-Wide Settings and Resources were introduced in 2sxc 12.04. 
-Read about configuring them in the <a class="xref" href="settings-stack.html">Settings Stack in 2sxc ✨ new!</a>. </p>
-<p>In C#/Razor you can access the <a class="xref" href="settings-stack.html">Settings Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/settings.html"><code>Settings</code> object</a>
-and the <a class="xref" href="resources-stack.html">Resources Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/resources.html"><code>Resources</code> object</a>. </p>
-<hr>
-<h2 id="app-level">App Level</h2>
-<h3 id="app-configuration">App Configuration</h3>
-<p>Apps have a standard <a class="xref" href="../app/configuration.html">App-Configuration</a> containing their version, name, folder etc. </p>
-<p>In Razor you can access this on the dynamic <code>App.Configuration</code> object.</p>
-<h3 id="app-settings-and-resources">App Settings and Resources</h3>
-<p>Apps can have custom <a class="xref" href="../app/settings.html">App-Settings</a> and <a class="xref" href="../app/resources.html">App-Resources</a> which every app manages itself. 
-The names/types of these settings can be freely configured, as each App has a Content-Type called <strong>App-Settings</strong> which can have different fields as needed. </p>
-<p>You can also configure the standardized <code>SettingsSystem</code>/<code>ResourcesSystem</code>. </p>
-<p>In C#/Razor you can access the <a class="xref" href="settings-stack.html">Settings Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/settings.html"><code>Settings</code> object</a>
-and the <a class="xref" href="resources-stack.html">Resources Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/resources.html"><code>Resources</code> object</a>. </p>
-<hr>
-<h2 id="view-level">View Level</h2>
-<h3 id="view-configuration">View Configuration</h3>
-<p>Each view has <a class="xref" href="../app/views/index.html">View-Configuration</a> containing the name, how it works with data and more.</p>
-<p>In Razor you can access basic View information on the <code>CmsContext.View</code> object, like the <code>Identifier</code> or the <code>Edition</code>. See <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsView.html">ICmsView</a></p>
-<p><em>View Configuration was introduced ca. v4 and made accessible to Razor in v12.02</em></p>
-<h3 id="view-settings-and-resources">View Settings and Resources</h3>
-<p>A view can have Views-Settings and View-Resouces which apply to all uses of this View. 
-Since View-Settings could be <em>re-used</em> in various views, the concept more flexible than <em>App Settings/Resources</em>, meaning that you could re-use both the content-type as well as the settings data. </p>
-<p>In C#/Razor you can access the <a class="xref" href="settings-stack.html">Settings Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/settings.html"><code>Settings</code> object</a>
-and the <a class="xref" href="resources-stack.html">Resources Stack</a> using the <a class="xref" href="../../net-code/dynamic-code/objects/resources.html"><code>Resources</code> object</a>. </p>
-<hr>
-<h2 id="content-type-level">Content-Type Level</h2>
-<h3 id="content-type-configuration">Content-Type Configuration</h3>
-<p>Each Content-Type has <a class="xref" href="../data/content-types/index.html">Content-Type Configuration</a> with the description, icon and more. 
-The Configuration can be multi-language.</p>
-<h3 id="content-type-settings-and-resources">Content-Type Settings and Resources.</h3>
-<p>There are no Content-Type settings or resources.</p>
-<hr>
-<h2 id="attribute-field-level">Attribute (Field) Level</h2>
-<h3 id="attribute-configuration">Attribute Configuration</h3>
-<p>Each <a class="xref" href="../data/fields/index.html">Attribute / Field can be configured</a> as needed. The configuration options depend on the Attribute-Type. 
-The Configuration can be multi-language.</p>
-<h3 id="attribute-settings-and-resources">Attribute Settings and Resources</h3>
-<p>There are no Attribute Settings or Resources.</p>
-<hr>
-<h2 id="entity-item-level">Entity (Item) Level</h2>
-<h3 id="entity-configuration-resources-and-settings">Entity Configuration, Resources and Settings</h3>
-<p>An Entity just has the data it caries, and no additional intrinsic Configuration, Settings or Resources. 
-Entities themselves are multi-language.</p>
-<h3 id="per-entity-use-item-use-settings-aka-presentation-settings">Per Entity-Use (Item-Use) Settings aka Presentation Settings</h3>
-<p>Items can have a per-use setting called <strong>Presentation</strong> - see <a class="xref" href="../content/presentation.html">Content-Presentation</a>. 
-This means that when the item is shown in a specific view, there may be settings which configure how it&#39;s to be shown. 
-Since each View may need different settings (a map View could need other presentation-settings than a text/image View) this is specific to each <em>use</em> of an Entity.</p>
-<h3 id="per-list-use-settings-aka-header-presentation-settings">Per List-Use Settings aka Header-Presentation Settings</h3>
-<p>If a View is configured to be a List then it can also have a <strong>Header</strong> and also <strong>Header Presentation Setttings</strong> which work just like <a class="xref" href="../content/presentation.html">Content-Presentation</a>.</p>
-<hr>
-<h2 id="history">History</h2>
+<h2 id="behavior-if-feature-is-disabled">Behavior if Feature is Disabled</h2>
+<p>If a feature is not enabled and code needs to use the feature, it will either show an error OR simply skip that functionality. This varies from feature to feature. If an error is thrown, the system will include a link to the missing feature as well as instructions to enable.</p>
+<h2 id="managing-features">Managing Features</h2>
+<p>This is done through the Apps-Management. This is what it looks like:</p>
+<p><img src="assets/features-manage.png" width="100%" class="full-width"></p>
+<p>Read about managing features in the <a href="https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30">blog about features-management</a></p>
+<h2 id="how-the-feature-configurations-are-stored">How the Feature-Configurations are Stored</h2>
+<p>Features use a json-file called <code>features.json</code> located in the <code>desktopmodules/tosic_sexycontent/.data-custom/configurations</code> folder.</p>
+<h2 id="additional-security-mechanisms">Additional Security Mechanisms</h2>
+<p>For added security, there are two layers of additional protection:</p>
+<ol>
+<li>The configuration contains a fingerprint of the current installation (so that an attacker cannot simply replace the features-configuration with an own copy). This fingerprint should match the fingerprint of the installation for the configuration to be valid. Read more about <a href="https://2sxc.org/en/blog/post/system-fingerprint-used-in-2sxc-9-30">fingerprinting in this blog</a>.</li>
+<li>When the configuration is created, it is signed by the 2sxc.org server using a digital certificate and verified when the features are loaded.</li>
+</ol>
+<p><em>Note: the security features are already built into 9.30 but not yet enforced. This is because it&#39;s a fairly new setup, and we want to be sure that we don&#39;t accidentally disable something if something doesn&#39;t work properly.</em></p>
+<h2 id="read-also">Read also</h2>
 <ul>
-<li>View Configuration introduced ca. v4</li>
-<li>App Configuration, Settings and Resources introduced in v6.0</li>
-<li>View Settings and Resources introduced in v12.02</li>
-<li>Site and global settings introduced in 2sxc 12.04</li>
-<li>Full Settings Stack introduced in 2sxc 12.04</li>
-<li>Full Resources Stack introduced in 2sxc 12.04</li>
+<li><a href="https://2sxc.org/en/blog/post/security-first-strategy-for-2sxc-9-30">Blog about new security mechanisms in 9.30</a></li>
 </ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Feature system introduced in v9.30</li>
+<li>Improved to work with licenses in v13.01</li>
+<li>New <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IFeaturesService.html">IFeaturesService</a> in v13.01</li>
+</ol>
 </article>
           </div>
           
@@ -340,7 +277,7 @@ Since each View may need different settings (a map View could need other present
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/configuration/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/licenses-features/features.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
