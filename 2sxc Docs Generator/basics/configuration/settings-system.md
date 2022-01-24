@@ -13,7 +13,7 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 
 > [!TIP]
 > These are just the predefined settings. 
-> Remember you can create any other settings on your own `SettingsCustom` ContentType
+> Remember you can create any other settings on the `App-Settings` ContentType
 
 
 ## Predefined System Settings

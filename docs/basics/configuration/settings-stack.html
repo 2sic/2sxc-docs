@@ -239,7 +239,8 @@
 <p>Settings come in 2 distinct flavors:</p>
 <ul>
 <li><strong>Standardized Settings</strong> use a content-type called <code>SettingsSystem</code> with a predefined structure.<br>These settings are meant to be used across tools and apps.</li>
-<li><strong>Dynamic Settings</strong> use a custom <code>SettingsCustom</code> content-types which you define.<br>These settings can have any keys and values you want.<br>These will usually only affect a single App or a single Installation.<br>The code using these will usually come from you, as these settings are not standardized. </li>
+<li><strong>Dynamic Settings</strong> use a custom <code>App-Settings</code> content-types which you define.<br>These settings can have any keys and values you want.<br>The effect/reach of this depends on the level where you add it (global, site, app).
+The code using these will usually come from you, as these settings are not standardized. </li>
 </ul>
 <p>Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. </p>
 <p>In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured. 
@@ -259,10 +260,12 @@ So each Blog could get a different Setting, depending on where it is configured 
 <li><strong>ViewCustom</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html">View</a> </li>
 <li><strong>AppCustom</strong> - the dynamic <code>App-Settings</code> (see <a class="xref" href="../app/settings.html">App-Settings</a>) of an <a class="xref" href="../app/index.html">App</a> </li>
 <li><strong>AppSystem</strong> - The <code>SettingsSystem</code> in the current <a class="xref" href="../app/index.html">App</a> </li>
-<li><strong>SiteCustom</strong> - an optional, manually created dynamic <code>SettingsCustom</code> on the <em>default Content App</em> of the current site</li>
-<li><strong>SiteSystem</strong> - an optional <code>SettingsSystem</code> in the <em>default Content App</em> of the current site, where the scope is set to Site</li>
-<li><strong>GlobalCustom</strong> - an optional, manually created dynamic <code>SettingsCustom</code> on the <em>default System App</em></li>
-<li><strong>GlobalSystem</strong> - an optional <code>SettingsSystem</code> on the <em>default System App</em></li>
+<li><strong>AncestorCustom</strong> - Optional, only on inherited Apps - <code>App-Settings</code> on ancestor app (v13)</li>
+<li><strong>AncestorSystem</strong> - Optional, only on inherited Apps - <code>SettingsSystem</code> on ancestor app (v13)</li>
+<li><strong>SiteCustom</strong> - an optional, manually created dynamic <code>App-Settings</code> on the <em>Primary App</em> of the current site</li>
+<li><strong>SiteSystem</strong> - an optional <code>SettingsSystem</code> in the <em>Primary App</em> of the current site</li>
+<li><strong>GlobalCustom</strong> - an optional, manually created dynamic <code>App-Settings</code> on the <em>Global System App</em></li>
+<li><strong>GlobalSystem</strong> - an optional <code>SettingsSystem</code> on the <em>Global System App</em></li>
 <li><strong>PresetSystem</strong> - the <code>SettingsSystem</code> which are included in the installation of 2sxc</li>
 </ol>
 <p>There is no setting called <strong>ViewSystem</strong> or <strong>PresetCustom</strong>.</p>
@@ -277,30 +280,18 @@ So each Blog could get a different Setting, depending on where it is configured 
 <ol>
 <li>go to the <strong>Global System App</strong> using <a href="https://azing.org/2sxc/r/QES7BFGU">this checklist</a>. </li>
 <li>for <strong>Global System-Settings</strong> just edit them here</li>
-<li>for <strong>Global Custom-Settings</strong> it&#39;s a bit more complex for now<ol>
-<li>Go to the Tab <strong>Data</strong> and switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>SettingsCustom</code> exists - if not, create one</li>
-<li>Check if the fields you need already exist, otherwise create them</li>
-<li>Now add/edit the entity as needed - there should always only be one entity</li>
-</ol>
-</li>
+<li>for <strong>Global Custom-Settings</strong> just edit the App-Settings of the global app </li>
 </ol>
 <div class="TIP"><h5>Tip</h5><p>This stuff is fairly new, and in rare cases new global settings don&#39;t automatically
 propagate to the sites. If you experience this, just restart the system. </p>
 <p>As of now, this only affects new fields, so once a field has been available changes will propagate as expected. </p>
 </div>
 <h2 id="site-settings-which-affect-an-entire-site">Site Settings which Affect an Entire Site</h2>
-<p>These are configured in the <strong>Primary App</strong> which is usually the <strong>Content App</strong> of the site you want to configure. </p>
+<p>These are configured in the <strong>Primary App</strong> of the site you want to configure. </p>
 <ol>
-<li>go to the <strong>Primary / Content App</strong> of the Site <a href="https://azing.org/2sxc/r/653OKPVz">using this checklist</a></li>
+<li>go to the <strong>Primary App</strong> of the Site <a href="https://azing.org/2sxc/r/653OKPVz">using this checklist</a></li>
 <li>for <strong>Site System-Settings</strong> just edit them here</li>
-<li>for <strong>Site Custom-Settings</strong> it&#39;s a bit more complex for now<ol>
-<li>Go to the Tab <strong>Data</strong> and switch scopes to <strong>Configuration</strong></li>
-<li>Check if the ContentType <code>SettingsCustom</code> exists - if not, create one</li>
-<li>Check if the fields you need already exist, otherwise create them</li>
-<li>Now add/edit the entity as needed - there should always only be one entity</li>
-</ol>
-</li>
+<li>for <strong>Site Custom-Settings</strong> just edit the App-Settings of this app</li>
 </ol>
 <div class="TIP"><h5>Tip</h5><p>This stuff is fairly new, and in rare cases new site settings don&#39;t automatically
 propagate to the apps. If you experience this, just restart the system. </p>
@@ -323,6 +314,8 @@ See <a class="xref" href="../app/views/settings.html">View Settings (Advanced âš
 <h2 id="history">History</h2>
 <ul>
 <li>Full Settings Stack introduced in 2sxc 12.04</li>
+<li>Dropped <code>SettingsCustom</code> as a type in v13, as not needed any more because we changed how the site-level settings work</li>
+<li>Added <code>AncestorCustom</code> and <code>AncestorSettings</code> on v13 if the app inherits from an ancestor</li>
 </ul>
 </article>
           </div>

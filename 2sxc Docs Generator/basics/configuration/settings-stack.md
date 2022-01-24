@@ -13,9 +13,9 @@ Settings come in 2 distinct flavors:
 
 * **Standardized Settings** use a content-type called `SettingsSystem` with a predefined structure.  
   These settings are meant to be used across tools and apps.
-* **Dynamic Settings** use a custom `SettingsCustom` content-types which you define.  
+* **Dynamic Settings** use a custom `App-Settings` content-types which you define.  
   These settings can have any keys and values you want.  
-  These will usually only affect a single App or a single Installation.  
+  The effect/reach of this depends on the level where you add it (global, site, app).
   The code using these will usually come from you, as these settings are not standardized. 
 
 Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view. 
@@ -43,10 +43,12 @@ The Settings are stacked in the following priority:
 1. **ViewCustom** - dynamic settings configured in the [View](xref:Basics.App.Views.Index) 
 1. **AppCustom** - the dynamic `App-Settings` (see [App-Settings](xref:Basics.App.Settings)) of an [App](xref:Basics.App.Index) 
 1. **AppSystem** - The `SettingsSystem` in the current [App](xref:Basics.App.Index) 
-1. **SiteCustom** - an optional, manually created dynamic `SettingsCustom` on the _default Content App_ of the current site
-1. **SiteSystem** - an optional `SettingsSystem` in the _default Content App_ of the current site, where the scope is set to Site
-1. **GlobalCustom** - an optional, manually created dynamic `SettingsCustom` on the _default System App_
-1. **GlobalSystem** - an optional `SettingsSystem` on the _default System App_
+1. **AncestorCustom** - Optional, only on inherited Apps - `App-Settings` on ancestor app (v13)
+1. **AncestorSystem** - Optional, only on inherited Apps - `SettingsSystem` on ancestor app (v13)
+1. **SiteCustom** - an optional, manually created dynamic `App-Settings` on the _Primary App_ of the current site
+1. **SiteSystem** - an optional `SettingsSystem` in the _Primary App_ of the current site
+1. **GlobalCustom** - an optional, manually created dynamic `App-Settings` on the _Global System App_
+1. **GlobalSystem** - an optional `SettingsSystem` on the _Global System App_
 1. **PresetSystem** - the `SettingsSystem` which are included in the installation of 2sxc
 
 There is no setting called **ViewSystem** or **PresetCustom**.
@@ -73,11 +75,7 @@ Global Settings for all sites are configured in the **Global System App**. It's 
 
 1. go to the **Global System App** using [this checklist](https://azing.org/2sxc/r/QES7BFGU). 
 1. for **Global System-Settings** just edit them here
-1. for **Global Custom-Settings** it's a bit more complex for now
-    1. Go to the Tab **Data** and switch scopes to **Configuration**
-    1. Check if the ContentType `SettingsCustom` exists - if not, create one
-    1. Check if the fields you need already exist, otherwise create them
-    1. Now add/edit the entity as needed - there should always only be one entity
+1. for **Global Custom-Settings** just edit the App-Settings of the global app 
 
 > [!TIP]
 > This stuff is fairly new, and in rare cases new global settings don't automatically
@@ -87,15 +85,11 @@ Global Settings for all sites are configured in the **Global System App**. It's 
 
 ## Site Settings which Affect an Entire Site
 
-These are configured in the **Primary App** which is usually the **Content App** of the site you want to configure. 
+These are configured in the **Primary App** of the site you want to configure. 
 
-1. go to the **Primary / Content App** of the Site [using this checklist](https://azing.org/2sxc/r/653OKPVz)
+1. go to the **Primary App** of the Site [using this checklist](https://azing.org/2sxc/r/653OKPVz)
 1. for **Site System-Settings** just edit them here
-1. for **Site Custom-Settings** it's a bit more complex for now
-    1. Go to the Tab **Data** and switch scopes to **Configuration**
-    1. Check if the ContentType `SettingsCustom` exists - if not, create one
-    1. Check if the fields you need already exist, otherwise create them
-    1. Now add/edit the entity as needed - there should always only be one entity
+1. for **Site Custom-Settings** just edit the App-Settings of this app
 
 > [!TIP]
 > This stuff is fairly new, and in rare cases new site settings don't automatically
@@ -125,3 +119,5 @@ See [](xref:Basics.App.Views.Settings).
 ## History
 
 * Full Settings Stack introduced in 2sxc 12.04
+* Dropped `SettingsCustom` as a type in v13, as not needed any more because we changed how the site-level settings work
+* Added `AncestorCustom` and `AncestorSettings` on v13 if the app inherits from an ancestor

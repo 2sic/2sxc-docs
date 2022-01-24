@@ -89,7 +89,6 @@ Apps can have custom [App-Settings](xref:Basics.App.Settings) and [App-Resources
 The names/types of these settings can be freely configured, as each App has a Content-Type called **App-Settings** which can have different fields as needed. 
 
 You can also configure the standardized `SettingsSystem`/`ResourcesSystem`. 
-You _cannot_ create an own content-type called `SettingsCustom`/`ResourcesCustom` for custom values, because this functionality is already covered in the App-Settings/Resources.
 
 In C#/Razor you can access the [Settings Stack](xref:Basics.Configuration.SettingsStack) using the [`Settings` object](xref:NetCode.DynamicCode.Objects.Settings)
 and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`Resources` object](xref:NetCode.DynamicCode.Objects.Resources). 
