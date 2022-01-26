@@ -27,7 +27,7 @@ As a result you'll get an [](xref:ToSic.Sxc.Adam.IFolder) object with which you 
 This example is taken from the [Fancybox Gallery App](xref:App.FancyBoxGallery)
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 

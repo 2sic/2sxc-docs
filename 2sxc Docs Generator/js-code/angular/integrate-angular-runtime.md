@@ -24,7 +24,7 @@ This explains how to best integrate Angular in Dnn. Note that you can find a wor
 In the Template App the compiled Angular SPA is in `[app-root]/live/dist/ng-app/`. The way it's integrated in the template app is that the main file `_AngularApp.cshtml` has some code like this:
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
   // ...

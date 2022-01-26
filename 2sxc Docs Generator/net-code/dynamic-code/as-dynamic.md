@@ -19,7 +19,7 @@ just pass it through `AsDynamic(...)` and the result will be a [](xref:ToSic.Sxc
 You can then access the properties with the simple `thing.Property` syntax.
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @{
     var unknown = App.Data["Default"].List.First(); // this will be an IEntity
     var myThing = AsDynamic(unknown);
@@ -56,8 +56,8 @@ Check out these docs: [](xref:NetCode.DynamicCode.AsEntity)
 > [!WARNING]
 > In previous versions of 2sxc you'll find AsDynamic(...) also used to convert lists (IEnumerable or DataStreams) into lists. 
 > This caused a lot of issues with dynamic code compilation, so in 2sxc 10.20 we introduced [AsList(...)](xref:NetCode.DynamicCode.AsList) for that use case. So if you find that kind of code, it works because...
-> * without `@inherits ToSic.Sxc.Dnn.RazorComponent` in the header, the old calls still work
-> * with `@inherits ToSic.Sxc.Dnn.RazorComponent` in the header, you must use `AsList(...)`
+> * without `@inherits Custom.Hybrid.Razor12` in the header, the old calls still work
+> * with `@inherits Custom.Hybrid.Razor12` in the header, you must use `AsList(...)`
 
 ## History
 

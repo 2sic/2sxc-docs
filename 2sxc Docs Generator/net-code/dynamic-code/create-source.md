@@ -15,7 +15,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 ## Simple Example
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @{
   // A source which can filter by Content-Type (EntityType)
   var allAuthors = CreateSource<ToSic.Eav.DataSources.EntityTypeFilter>();
@@ -29,7 +29,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 ## Example Chaining DataSources
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @{
   // A source which can filter by Content-Type (EntityType)
   var allAuthors = CreateSource<ToSic.Eav.DataSources.EntityTypeFilter>();

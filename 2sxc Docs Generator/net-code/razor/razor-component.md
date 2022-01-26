@@ -3,8 +3,8 @@ uid: NetCode.Razor.Component
 ---
 # RazorComponent API
 
-As of 2sxc 10.20, all Razor templates should start with a line like  
-`@inherits ToSic.Sxc.Dnn.RazorComponent` 
+As of 2sxc 12, all Razor templates should start with a line like  
+`@inherits Custom.Hybrid.Razor12` or `@inherits Custom.Dnn.Razor12`
 to make sure that it has all the new features. 
 
 > [!WARNING]

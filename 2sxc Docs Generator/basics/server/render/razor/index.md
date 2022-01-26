@@ -18,7 +18,7 @@ Razor templates are files in the [App Folder](xref:Basics.App.FolderStructure) o
 Here's a simple example from the Tutorial:
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 <h2>Hello World</h2>
 <div>
   Now is @DateTime.Now

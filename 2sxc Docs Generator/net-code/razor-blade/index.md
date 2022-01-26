@@ -20,7 +20,7 @@ uid: NetCode.RazorBlade.Index
 The following example is taken from the tutorials. It shows how to use `@Text.Zip(...)` to ensure that a string containing random white spaces is cleaned up. This is useful for counting visible characters or truncating text. 
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
   var samples = new string[] {

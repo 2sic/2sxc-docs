@@ -15,7 +15,7 @@ If you have external code you want to import you can use **CreateInstance**.
 ## Example
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @{
   var helper = CreateInstance("_helpers.cshtml");
   var businessLogic = CreateInstance("BusinessLogic.cs");

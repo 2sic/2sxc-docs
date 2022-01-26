@@ -23,7 +23,7 @@ This explains how to best integrate Angular development in Dnn so you can enjoy 
 The Template App is installed in Dnn and we have the full copy of it on our local dev environment. Dev-server will run on `localhost:4200`. The way it's integrated in the template app is that the main file `_AngularApp.cshtml` has some code like this:
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
   // ...

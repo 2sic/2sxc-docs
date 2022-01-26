@@ -14,7 +14,7 @@ Razor Templates will generate HTML - often based on the data a editor entered, a
 Here's an example:
 
 ```razor
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 <ul>
   @foreach(var person in AsList(App.Data["Persons"])) {
     <li>@person.Name</li>
