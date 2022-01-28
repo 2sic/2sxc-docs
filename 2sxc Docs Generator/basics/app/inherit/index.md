@@ -47,7 +47,19 @@ Descendant Apps don't inherit this:
 1. Define an Descendant App
 1. Test :)
 
+## Best Practices
+
+Everything in the ancestor App will be available in all inherited apps, and anything you change can affect the inherited Apps. 
+Because of this, you should _not_ use an App from a productive site (like the main/home site) as an ancestor, 
+but always create a special site which isn't public, just to manage the ancestors. 
+
+This will save you a lot of pains which would result from quickly making some edits which accidentally affect all the child sites. 
+
 ## Enable the Feature TODO:
+
+## Migrate an Existing App to becoming a Master Ancestor
+
+<iframe src="https://azing.org/2sxc/r/qRgoIOv0?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
 ## Create the Ancestor App TODO:
 

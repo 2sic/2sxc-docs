@@ -13,20 +13,22 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Inherit Apps (v13+) WIP | 2sxc 12 / EAV 12 </title>
+    <title>Namespace ToSic.Sxc.Dnn.Context
+   | 2sxc 12 / EAV 12 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Inherit Apps (v13+) WIP | 2sxc 12 / EAV 12 ">
+    <meta name="title" content="Namespace ToSic.Sxc.Dnn.Context
+   | 2sxc 12 / EAV 12 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +54,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v12/2sxc12-50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v12/2sxc12-50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -64,20 +66,20 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
                       <li class="active">
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
-                      </li>
-                      <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
-                      </li>
-                      <li>
-                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
-                      </li>
-                      <li>
-                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
-                      </li>
-                      <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -111,68 +113,27 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.App.InheritApps.Index">
-<h1 id="inherit-apps-v13-wip">Inherit Apps (v13+) WIP</h1>
-
-<p>There are a few ways to re-use data, content-types and templates across sites. </p>
-<p>In very advanced cases you may want to define an App in one central place, and re-use that in many sites. </p>
-<p>This describes how to do this - it&#39;s a new feature in 2sxc 13.01.</p>
-<div class="IMPORTANT"><h5>Important</h5><p>This only works if the feature has been enabled - WIP!</p>
-</div>
-<div class="IMPORTANT"><h5>Important</h5><p>As of v13.01 this feature only works in Dnn. Oqtane does not support this yet. </p>
-</div>
-<h2 id="how-it-works-todo">How it Works TODO:</h2>
-<p>Inherited Apps work like a multi-layer app. </p>
-<ol>
-<li>The bottom layer is the <strong>Ancestor App</strong>. Changes to this affect all Apps which inherit it.</li>
-<li>On top of this is the <strong>Descendant App</strong> on a specific site, it can only add more material to the parent app, but not change any inherited data</li>
-</ol>
-<p>Descendant Apps inherit all this:</p>
-<ol>
-<li>App Name and Folder Name (they must be the same)</li>
-<li>All Content-Types of the Ancestor</li>
-<li>All Data / Entities of the Ancestor</li>
-<li>All Queries of the Ancestor</li>
-<li>All View definitions of the Ancestor</li>
-<li>All Template files and JS/CSS resources in the global storage of the App</li>
-</ol>
-<p>Descendant Apps don&#39;t inherit this:</p>
-<ol>
-<li>Settings - not sure yet if they do - still WIP</li>
-<li>Templates and Resources in the local storage of the Ancestor App</li>
-<li>ADAM files of the Ancestor App</li>
-</ol>
-<h2 id="how-to-create">How to Create</h2>
-<ol>
-<li>Enable Feature</li>
-<li>Define the Ancestor / Master App</li>
-<li>Define an Descendant App</li>
-<li>Test :)</li>
-</ol>
-<h2 id="best-practices">Best Practices</h2>
-<p>Everything in the ancestor App will be available in all inherited apps, and anything you change can affect the inherited Apps. 
-Because of this, you should <em>not</em> use an App from a productive site (like the main/home site) as an ancestor, 
-but always create a special site which isn&#39;t public, just to manage the ancestors. </p>
-<p>This will save you a lot of pains which would result from quickly making some edits which accidentally affect all the child sites. </p>
-<h2 id="enable-the-feature-todo">Enable the Feature TODO:</h2>
-<h2 id="migrate-an-existing-app-to-becoming-a-master-ancestor">Migrate an Existing App to becoming a Master Ancestor</h2>
-<iframe src="https://azing.org/2sxc/r/qRgoIOv0?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-<h2 id="create-the-ancestor-app-todo">Create the Ancestor App TODO:</h2>
-<p>todo</p>
-<h3 id="limitations-of-the-ancestor-app">Limitations of the Ancestor App</h3>
-<p>You must be aware of a few limitations in the Ancestor App.</p>
-<ol>
-<li>Only views with templates stored in the global location can be used in Descendant Apps</li>
-<li>If you have data (entities) with images/files in the data, they cannot use the <code>file:72</code> reference, 
-but must use the full path to the file for it to work on other sites, as the file-id lookup would not work in other sites.</li>
-</ol>
-<h2 id="create-the-descendant-app-todo">Create The Descendant App TODO:</h2>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in v13.01</li>
-</ol>
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Dnn.Context">
+  
+  <h1 id="ToSic_Sxc_Dnn_Context" data-uid="ToSic.Sxc.Dnn.Context" class="text-break">Namespace ToSic.Sxc.Dnn.Context
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="ToSic.Sxc.Dnn.Context.DnnModule.html">DnnModule</a></h4>
+      <section><p>The DNN implementation of a Block Container (a Module).</p>
+</section>
+      <h4><a class="xref" href="ToSic.Sxc.Dnn.Context.DnnSite.html">DnnSite</a></h4>
+      <section><p>This is a DNN implementation of a Tenant-object. </p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="ToSic.Sxc.Dnn.Context.IDnnContext.html">IDnnContext</a></h4>
+      <section><p>Provides information about the current context within DNN.
+This only applies to 2sxc running inside DNN, not inside another platform. </p>
+</section>
 </article>
           </div>
           
@@ -180,9 +141,6 @@ but must use the full path to the file for it to work on other sites, as the fil
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/app/inherit/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
@@ -207,20 +165,20 @@ but must use the full path to the file for it to work on other sites, as the fil
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
