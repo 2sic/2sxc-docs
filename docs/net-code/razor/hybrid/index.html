@@ -137,35 +137,26 @@
 <ol>
 <li><code>@helper</code> directive</li>
 </ol>
-<h2 id="the-preprocessor-directives-todoc">The Preprocessor Directives #todoc</h2>
+<h2 id="switch-between-code-variations-in-razor">Switch between Code variations in Razor</h2>
+<p>In Oqtane 2 we recommended using <code>#if NETCOREAPP</code> switches in your Razor code. </p>
+<p>In Oqtane 3, this only works in <code>.cs</code> files. 
+So the only way to switch between code variations in the latest Razor is to use normal <code>@if(...)</code> statements and place your platform specific code in sub-files. </p>
+<pre><code class="lang-razor">@if(CmsContext.Platform.Name == &quot;Oqtane) {
+  // OqtaneStuff which doesn&#39;t trigger compile errors can be inline
+  someVar = &quot;Oqtane&quot;;
+  // Code which would trigger compile errors must be in a separate file
+  @Html.Partial(&quot;OqtaneCode.cshtml&quot;);
+} else {
+  // DnnStuff - same principles
+}
+</code></pre><h2 id="the-preprocessor-directives-in-cs-files">The Preprocessor Directives in <code>.cs</code> files</h2>
 <p>C# has special <code>#if</code> <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives">preprocessor</a> statements which are evaluated during compilation. 
 Using this you can define which code should be used in Dnn and Oqtane. </p>
-<p>Since these are C# code, you have to put them in a <code>@{ }</code> wrapper and the must be at the beginning of a line, so either <code>@{#if ...}</code> or </p>
-<pre><code class="lang-razor">@{
-#if NETCOREAPP
+<pre><code class="lang-cs">#if NETCOREAPP
   // OqtaneStuff
 #else
   // DnnStuff
 #endif
-}
-</code></pre><p>Here&#39;s an example:</p>
-<pre><code class="lang-razor">@{#if NETCOREAPP}
-  &lt;h3&gt;.net Core code = Oqtane 🩸&lt;/h3&gt;
-  &lt;p&gt;
-    On Oqtane or any .net core system you should see this because &lt;code&gt;#if NETCOREAPP&lt;/code&gt; was &lt;code&gt;true&lt;/code&gt;. &lt;br&gt;
-
-    Here you can also place code which only works in Oqtane, like: 
-    Version: @Oqtane.Shared.Constants.Version
-  &lt;/p&gt;
-@{#else}
-  &lt;h3&gt;NON .net Core code = Dnn ☢️&lt;/h3&gt;
-  &lt;p&gt;
-    On Dnn you&#39;ll see this because &lt;code&gt;#if NETCOREAPP&lt;/code&gt; was &lt;code&gt;false&lt;/code&gt;. &lt;br&gt;
-
-    Here you can also place code which only compiles in Dnn, like: 
-    PortalId = @DotNetNuke.Entities.Portals.PortalSettings.Current.PortalId
-  &lt;/p&gt;
-@{#endif}
 </code></pre><p>The following <em>symbols</em> are set when Api Controllers are compiled:</p>
 <table>
 <thead>
@@ -181,30 +172,17 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
 <td><code>NETCOREAPP</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Works in Razor, WebAPIs and code (.cs)</td>
-</tr>
-<tr>
-<td><code>NET5_0</code></td>
-<td style="text-align:center">⛔</td>
-<td style="text-align:center">✅</td>
-<td>Works in Razor, WebAPIs and code (.cs)</td>
+<td>Only works in WebAPIs and code (.cs)</td>
 </tr>
 <tr>
 <td><code>OQTANE</code></td>
 <td style="text-align:center">⛔</td>
 <td style="text-align:center">✅</td>
-<td>Only works in WebAPIs And code (.cs)</td>
+<td>Only works in WebAPIs and code (.cs)</td>
 </tr>
 </tbody>
 </table>
-<p>Use like this:</p>
-<ul>
-<li><code>@{#if NETCOREAPP} ... @{#endif}</code></li>
-<li><code>@{#if NETCOREAPP} ... @{#else} ... @{#endif}</code></li>
-<li><code>@{#if !NETCOREAPP} ... @{#endif}</code></li>
-<li><code>@{#if !NETCOREAPP} ... @{#else} ... @{#endif}</code></li>
-</ul>
-<p>You can&#39;t use <code>#if Dnn ... #endif</code> because of limitations in the dynamic C# compiler of Dnn. Just use <code>#if !NETCOREAPP ... #endif</code>. </p>
+<p><em>Important: These don&#39;t work in <strong>Razor</strong> on Oqtane 3+ because we cannot activate these in the compiler - so they only work in .cs files</em></p>
 <h2 id="different-c-and-net-frameworks">Different C# and .net Frameworks</h2>
 <table>
 <thead>
@@ -242,7 +220,8 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
 <ul>
 <li>In Dnn - use global objects like <code>PortalSettings.Current</code></li>
 <li>In Oqtane use <a class="xref" href="../../dependency-injection/index.html">Dependency Injection</a></li>
-<li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if NETCOREAPP ... #endif</code> and <code>#if !NETCOREAPP ... #endif</code> blocks</li>
+<li>To avoid the code from causing trouble during compilation, wrap the necessary differences in <code>#if NETCOREAPP ... #endif</code> and <code>#if !NETCOREAPP ... #endif</code> blocks in C#</li>
+<li>To avoid the Razor from causing trouble during compilation, wrap the necessary differences in <code>@if(CmsContext.Platform.Name == &quot;Oqtane&quot;) { ... }</code> blocks in Razor</li>
 </ul>
 <h2 id="limitations-for-using-statements">Limitations for <code>@using</code> Statements</h2>
 <p>The Razor Compiler in Dnn &amp; Oqtane behave a bit differently regarding preprocessor statements. So you cannot use them for <code>@using ...</code> statements. This WILL NOT WORK: </p>
@@ -252,9 +231,10 @@ Using this you can define which code should be used in Dnn and Oqtane. </p>
 </code></pre><p>In Dnn it will work, but in Oqtane / .net 5 it will not result in an error, because the <code>@using</code> statements are handled in a way which doesn&#39;t result in them being skipped. </p>
 <p>If you only need the namespace on a single command, just use the full namespace in your command, like this:</p>
 <pre><code class="lang-c#">if(fancybox || scripts) {
-    #if !NETCOREAPP
-    DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
-    #endif
+    #if(CmsContext.Platform.Name == &quot;Dnn&quot;) {
+      // Put this line in a separate file to call from here
+      // DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
+    }
 }
 </code></pre><p>If you have complex code, a simple trick is to place it in a separate file (so the Razor compiler won&#39;t complain) and then use <code>CreateInstance(...)</code> or <code>Html.Partial(...)</code> to call that if you are in the correct system. </p>
 <h2 id="set-page-properties-and-headers-for-hybrid-apps">Set Page Properties and Headers for Hybrid Apps</h2>

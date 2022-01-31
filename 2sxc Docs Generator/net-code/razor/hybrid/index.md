@@ -33,65 +33,39 @@ The old razor had a few features which won't work in .net Core 5 / Oqtane:
 
 1. `@helper` directive
 
+## Switch between Code variations in Razor
 
+In Oqtane 2 we recommended using `#if NETCOREAPP` switches in your Razor code. 
 
+In Oqtane 3, this only works in `.cs` files. 
+So the only way to switch between code variations in the latest Razor is to use normal `@if(...)` statements and place your platform specific code in sub-files. 
 
-## The Preprocessor Directives #todoc
+```razor
+@if(CmsContext.Platform.Name == "Oqtane) {
+  // OqtaneStuff which doesn't trigger compile errors can be inline
+  someVar = "Oqtane";
+  // Code which would trigger compile errors must be in a separate file
+  @Html.Partial("OqtaneCode.cshtml");
+} else {
+  // DnnStuff - same principles
+}
+```
+
+## The Preprocessor Directives in `.cs` files
 
 C# has special `#if` [preprocessor](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives) statements which are evaluated during compilation. 
 Using this you can define which code should be used in Dnn and Oqtane. 
 
-Since these are C# code, you have to put them in a `@{ }` wrapper and the must be at the beginning of a line, so either `@{#if ...}` or 
-
-```razor
-@{
+```cs
 #if NETCOREAPP
   // OqtaneStuff
 #else
   // DnnStuff
 #endif
-}
 ```
-
-Here's an example:
-
-```razor
-@{#if NETCOREAPP}
-  <h3>.net Core code = Oqtane 🩸</h3>
-  <p>
-    On Oqtane or any .net core system you should see this because <code>#if NETCOREAPP</code> was <code>true</code>. <br>
-
-    Here you can also place code which only works in Oqtane, like: 
-    Version: @Oqtane.Shared.Constants.Version
-  </p>
-@{#else}
-  <h3>NON .net Core code = Dnn ☢️</h3>
-  <p>
-    On Dnn you'll see this because <code>#if NETCOREAPP</code> was <code>false</code>. <br>
-
-    Here you can also place code which only compiles in Dnn, like: 
-    PortalId = @DotNetNuke.Entities.Portals.PortalSettings.Current.PortalId
-  </p>
-@{#endif}
-```
-
 The following _symbols_ are set when Api Controllers are compiled:
 
 [!include[](~/net-code/hybrid/_include-preprocessor-symbols.md)]
-
-Use like this:
-
-* `@{#if NETCOREAPP} ... @{#endif}`
-* `@{#if NETCOREAPP} ... @{#else} ... @{#endif}`
-* `@{#if !NETCOREAPP} ... @{#endif}`
-* `@{#if !NETCOREAPP} ... @{#else} ... @{#endif}`
-
-
-You can't use `#if Dnn ... #endif` because of limitations in the dynamic C# compiler of Dnn. Just use `#if !NETCOREAPP ... #endif`. 
-
-
-
-
 
 
 ## Different C# and .net Frameworks
@@ -110,7 +84,8 @@ If you are creating hybrid controllers, we'll assume that you usually don't need
 
 * In Dnn - use global objects like `PortalSettings.Current`
 * In Oqtane use [Dependency Injection](xref:NetCode.DependencyInjection.Index)
-* To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if NETCOREAPP ... #endif` and `#if !NETCOREAPP ... #endif` blocks
+* To avoid the code from causing trouble during compilation, wrap the necessary differences in `#if NETCOREAPP ... #endif` and `#if !NETCOREAPP ... #endif` blocks in C#
+* To avoid the Razor from causing trouble during compilation, wrap the necessary differences in `@if(CmsContext.Platform.Name == "Oqtane") { ... }` blocks in Razor
 
 
 ## Limitations for `@using` Statements
@@ -129,9 +104,10 @@ If you only need the namespace on a single command, just use the full namespace 
 
 ```c#
 if(fancybox || scripts) {
-    #if !NETCOREAPP
-    DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
-    #endif
+    #if(CmsContext.Platform.Name == "Dnn") {
+      // Put this line in a separate file to call from here
+      // DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.jQuery);
+    }
 }
 ```
 
