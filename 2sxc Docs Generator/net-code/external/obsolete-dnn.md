@@ -4,6 +4,8 @@
 > This is obsolete documentation for older versions of 2sxc and _not best practice_. 
 > We left it here for old-timers who may still need to use this.
 >
+> Please use [](xref:NetCode.External.Index) instead.
+>
 > If you can in any way, do not use this, these APIs are deprecated. 
 
 ---

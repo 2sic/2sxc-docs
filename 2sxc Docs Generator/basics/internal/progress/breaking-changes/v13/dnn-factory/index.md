@@ -116,4 +116,4 @@ If you were using this from outside of 2sxc Razor / WebApi, you will need to use
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-eav-factory
+Shortlink to here: https://r.2sxc.org/brc-13-dnn-factory
