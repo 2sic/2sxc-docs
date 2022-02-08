@@ -48,24 +48,25 @@ This is unfortunately not prepared well - I guess at the time it was developed t
 * Dnn has Dependency Injection prepared for each request
 * Each Request has a separate _Scope_ (to not mix services between requests)
 * This scoped Service-Provider is cached on the HttpContext
+* Dnn has a special extension method called `GetScope()` to work with this - [see docs](https://github.com/dnnsoftware/Dnn.Platform/blob/develop/DNN%20Platform/Library/Common/Extensions/HttpContextDependencyInjectionExtensions.cs)
 
 To get a 2sxc Service in a Skin, you can write code like this:
 
 ```csharp
+using DotNetNuke.Common.Extensions;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sxc.Services;
 
-var spScope = (IServiceScope)HttpContextSource.Current.Items[typeof(IServiceScope)];
-var sp = spScope.ServiceProvider;
+var sp = HttpContext.Current.GetScope().ServiceProvider;
 var jsonSvc = sp.GetService<IJsonService>();
 var json = jsonSvc.ToJson(someObject);
 ```
 
 ## How Can I Get Dnn Objects using Dependency Injection?
 
-Probably yes 😶...
+As of Dnn 9.10 the answer is mostly no 😶. Dnn is simply not there yet. Work-in-progress.
 
-But the documentation is almost non-existant, so you'll need to dig through Dnn code to get this to fly. 
+The documentation is almost non-existant, so if you want to try using Dnn objects, you'll need to dig through Dnn code to get this to fly. 
 
 [!include["history"](../services/_history.md)]

@@ -31,10 +31,12 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 
 1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed
     [see instructions](xref:todo)
+1. The Dnn Static `ToSic.Sxc.Dnn.Factory` is being deprecated and will be removed in v14
+    [see instructions](xref:Internal.Progress.BreakingChanges.V13.DnnFactory)
 
 ### Major Updates with may affect you
 
-1. The Image Resizer is being replaced TODO:
+1. The Image Resizer is being replaced with [ImageFlow](https://www.imageflow.io/)
 1. The App containing Site-wide settings is changed to `Primary` - previously it used the `Content` app for this. We believe this won't affect many users, as the settings-stack is still very new in v12
 
 

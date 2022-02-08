@@ -115,13 +115,26 @@
 <h1 id="use-2sxc-instances-or-app-data-from-external-c-code">Use 2sxc Instances or App-Data from External C# Code</h1>
 
 <p>Sometimes you want to leverage 2sxc to create a solution, provide data input etc. but want to output or re-use the data in your own Module, Skin, Script or something else. This is easy to do.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>We massively improved this in 2sxc 13 which integrates with Dnn 9 Dependency Injection.
+These examples require Dnn 9.5+ and 2sxc 13.02+</p>
+</div>
 <h2 id="simple-example">Simple Example</h2>
-<p>Imagine this was your C# code in your WebForms Code-Behind:</p>
-<pre><code class="lang-cs">// the app id
+<p>The following example assumes you&#39;re working with Dnn 9.5+ and have a Module. </p>
+<ul>
+<li>for Skins, the Dependency-Injection is a bit different - see <a class="xref" href="../dependency-injection/dnn.html">Dnn Dependency Injection</a></li>
+<li>for Oqtane Dependency-Injection is much simpler, and not documented here</li>
+</ul>
+<p>Imagine this was your C# code in your WebForms Module Code-Behind:</p>
+<pre><code class="lang-cs">using Microsoft.Extensions.DependencyInjection;
+using ToSic.Sxc.Services;
+var ServiceProvider = DependencyProvider;
+var dynCodeSvc = ServiceProvider.GetService&lt;IDynamicCodeService&gt;();
+
+// the app id
 var appId = 42;
 
 // create a simple app object to then access data
-var appSimple = ToSic.Sxc.Dnn.Factory.App(appId);
+var appSimple = dynCodeSvc.App(appId);
 
 // example getting all data of content type Tag
 var tags = appSimple.Data[&quot;Tag&quot;];
@@ -135,19 +148,31 @@ vals.Add(&quot;Tag&quot;, &quot;test-tag&quot;);
 vals.Add(&quot;Label&quot;, &quot;Test Tag&quot;);
 
 App.Data.Create(&quot;Tag&quot;, vals);
+</code></pre><p><em>Important: if you try to do this in a Dnn Skin/Theme it will fail, because the <code>DependencyProvider</code> object is missing. In that case use this:</em></p>
+<pre><code class="lang-cs">using DotNetNuke.Common.Extensions;
+var ServiceProvider = HttpContext.Current.GetScope().ServiceProvider;
 </code></pre><h2 id="example-of-gaining-access-to-links-managed-in-a-simple-2sxc-content-app">Example of Gaining Access to Links Managed in a simple 2sxc Content App</h2>
 <p>Imagine you have a theme using DDR Menu with Razor Templates. The theme has a MegaMenu and you want to include one or more featured links that will change often and those links are easily managed in the Content App using the Links Content-Type with any of the default Views.</p>
 <p>Your C# code in your MegaMenu.cshtml file could get access to those Links like this:</p>
-<pre><code class="lang-cs">// the details you need to know
+<pre><code class="lang-cs">using Microsoft.Extensions.DependencyInjection;
+using ToSic.Sxc.Services;
+using DotNetNuke.Common.Extensions;
+var ServiceProvider = HttpContext.Current.GetScope().ServiceProvider;
+
+// the details you need to know
 // var appId = 2;       // Content App is usually 2, but thanks to DynamicCode, we don&#39;t need this
 var tabId = 234;        // this is the page with the Links View on it
 var modId = 678;        // this is the module ID of the Links View
 
-// get the BlockBuilder
-var block = ToSic.Sxc.Dnn.Factory.CmsBlock(tabId, modId);
+// Get the Service for generating DynamicCode 
+var dynCodeSvc = ServiceProvider.GetService&lt;IDynamicCodeService&gt;();
 
-// the get the DynamicCode instance (Code.DnnDynamicCodeRoot) of the block
-var dynCode = ToSic.Sxc.Dnn.Factory.DynamicCode(block);
+// the get the DynamicCode instance of the module
+var dynCode = dynCodeSvc.OfModule(tabId, modId);
+
+// Note: you could also do this:
+// var appId = 27;
+// var dynCode = dynCodeSvc.OfApp(appId);
 
 // if we were running &quot;inside&quot; 2sxc, we would just do this:
 // var links = AsList(Data[&quot;Default&quot;]);
@@ -170,6 +195,8 @@ foreach (var link in links)
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 08.03</li>
+<li>Archived the old docs for v13 - see <a href="obsolete-dnn.html">old Dnn Factory Docs</a></li>
+<li>Created new <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a> in v13</li>
 </ol>
 </article>
           </div>

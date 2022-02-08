@@ -14,7 +14,7 @@ The `ToSic.Eav.Factory.Resolve<T>()` is being deprecated, and will be removed in
 
 2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow. 
 
-The solution we used was to have static object `Eav.Factory` which managed this, but this is actually bad practice and encourages bad code. 
+The solution we used was to have static object `ToSic.Eav.Factory` which managed this, but this is actually bad practice and encourages bad code. 
 
 We believe this is rarely used, so we removed it. But it was in the official docs, so there may have been a few users who picked this up.
 
