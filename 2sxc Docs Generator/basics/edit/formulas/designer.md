@@ -15,7 +15,8 @@ In the Edit-UI you can always enter a Debug-Mode to develop / debug your formula
 
 ## Enter Debug Mode
 
-When the edit form is open, press **Ctrl + Alt + Shift** and click anywhere in the form. The debug bar should appear. If you have difficulties, use [this checklist](https://azing.org/2sxc/r/Lh88MFoT).
+When the edit form is open, press **Ctrl + Alt + Shift** (Ctrl + Option + Shift on Mac) and click anywhere in the form. The debug bar should appear. 
+If you have difficulties, use [this checklist](https://azing.org/2sxc/r/Lh88MFoT).
 
 ## Select Formula to work On
 

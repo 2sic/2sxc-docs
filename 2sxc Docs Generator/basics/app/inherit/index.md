@@ -8,14 +8,10 @@ There are a few ways to re-use data, content-types and templates across sites.
 
 In very advanced cases you may want to define an App in one central place, and re-use that in many sites. 
 
-This describes how to do this - it's a new feature in 2sxc 13.01.
+This describes how to do this - it's a new feature in 2sxc 13.02.
 
 > [!IMPORTANT]
-> This only works if the feature has been enabled - WIP!
-
-
-> [!IMPORTANT]
-> As of v13.01 this feature only works in Dnn. Oqtane does not support this yet. 
+> This only works if the feature has been enabled and requires the EnterpriseCMS license - docs WIP!
 
 
 ## How it Works TODO:
