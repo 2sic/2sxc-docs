@@ -25,7 +25,9 @@ we created on installing Oqtane and 2sxc.
 | 2.2       | 12.06 | ✅ 12.04+           | ⛔ pre 12.04  | Changes in Bootstrap / jQuery & Authentication
 | 2.3       | 12.10 | ✅ 12.04+           | ⛔ pre 12.04  | 
 | 3.0       | 12.10 | ✅ 12.10+           | ⛔ pre 12.10  | Changes in .net 6
-| 3.01      | 13.01 | ✅ 13.01+           | ⛔ pre 13.01  | Oqtane save/delete module settings
+| 3.01      | 13.02 | ✅ 13.01+           | ⛔ pre 13.01  | Oqtane save/delete module settings
+| 3.02      | 13.02 | ✅ 13.01+           | ⛔ pre 13.01  | 
+| 3.03      | 13.02 | ✅ 13.01+           | ⛔ pre 13.01  | 
 
 ## Upgrade Existing Installations
 

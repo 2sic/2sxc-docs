@@ -1,5 +1,5 @@
 
-<img src="assets/logos/v12/2sxc12-200.png" width="250px" align="right" class="float-right">
+<img src="assets/logos/v13/2sxc13-500.png" width="250px" align="right" class="float-right">
 
 # 2sxc / EAV Docs v13.03
 
@@ -7,9 +7,17 @@ This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, sta
 
 ## Turn Dnn ☢️ and Oqtane 🩸 into a CMS
 
-2sxc is a CMS-Plugin for [Dnn/DotNetNuke](http://www.dnnsoftware.com/) and [Oqtane](xref:Basics.Platforms.Oqtane.Index). It makes content editing easier than Wordpress. It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. And a very cool EAV data-management system. And an online REST JSON database. And a lot more.
+2sxc is a CMS-Plugin for [Dnn/DotNetNuke](http://www.dnnsoftware.com/) and [Oqtane](xref:Basics.Platforms.Oqtane.Index). 
+It makes content editing easier than Wordpress. 
+It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. 
+And a very cool EAV data-management system. 
+And an online REST JSON database. 
+And a lot more.
 
-2sxc is basically used to provide web-site-builder functionality to Dnn, both in a simple **Content** mode (where users just add images, designed text/image blocks, links etc.) or in **App** mode, where user add standalone functional apps like blogs, galleries and more. Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
+2sxc is basically used to provide web-site-builder functionality.
+It has a simple **Content** mode (where users just add images, designed text/image blocks, links etc.).
+Then there's the sophisticated **App** mode, where user add standalone functional apps like blogs, galleries and more. 
+Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
 
 
 ## Where to Start
@@ -42,10 +50,8 @@ Here's the overview:
 
 Next to document
 
-1. Differences Dnn / Oqtane for Razor, WebApi and JS
 1. Document JS APIs better
 1. Finish metadata documentation
-  1. Create in the UI (probably enhance UI first)
   1. Create in the APIs (simplify APIs first)
   1. Create good sample of Page-Metadata App
 

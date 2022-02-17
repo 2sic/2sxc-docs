@@ -20,7 +20,7 @@ This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data,
 but we've created a much better replacement using:
 
 * [](xref:ToSic.Sxc.Services.IDynamicCodeService) 
-* [](xref:ToSic.Sxc.Services.IRenderCodeService)
+* [](xref:ToSic.Sxc.Services.IRenderService)
 
 
 ## History - How it Used to Work
