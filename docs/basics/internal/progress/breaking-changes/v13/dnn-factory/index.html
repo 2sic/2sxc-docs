@@ -121,7 +121,11 @@
 <p>2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow. </p>
 <p>The solution we used was to have static object <code>ToSic.Sxc.Dnn.Factory</code> which managed this, but this is actually bad practice and encourages bad code. </p>
 <p>This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data, 
-but we&#39;ve created a much better replacement using the <a class="xref" href="../../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a>.</p>
+but we&#39;ve created a much better replacement using:</p>
+<ul>
+<li><a class="xref" href="../../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a> </li>
+<li><a href="xref:ToSic.Sxc.Services.IRenderCodeService"></a></li>
+</ul>
 <h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
 <p>Previously you could write code like this in your ascx Theme:</p>
 <pre><code class="lang-html">&lt;%@ Import Namespace=&quot;System.Linq&quot; %&gt;
@@ -133,6 +137,15 @@ but we&#39;ve created a much better replacement using the <a class="xref" href="
     var questions = app.Data[&quot;Question&quot;];
     var title = questions.First().GetBestValue(&quot;EntityTitle&quot;);
     return &quot;Questions: &quot; + questions.Count() + &quot;: First Title:&quot; + title;
+  }
+
+  public string OldRender()
+  {
+    var pageId = 21;
+    var moduleId = 380;
+    var block = ToSic.Sxc.Dnn.Factory.CmsBlock(pageId, moduleId);
+    var result = block.Render();
+    return result;
   }
 
   public string OldDynamicCode()
@@ -174,6 +187,13 @@ This allows you to get 2sxc services from DI. </li>
     var questions = app.Data[&quot;Question&quot;];
     var title = questions.First().GetBestValue(&quot;EntityTitle&quot;);
     return &quot;Questions: &quot; + questions.Count() + &quot;: First Title:&quot; + title;
+  }
+
+  public string NewRender()
+  {
+    var renderSvc = ServiceProvider.GetService&lt;IRenderService&gt;();
+    var result = renderSvc.Module(pageId: 21, moduleId: 380);
+    return result.ToString();
   }
 
   public string NewDynamicCode()

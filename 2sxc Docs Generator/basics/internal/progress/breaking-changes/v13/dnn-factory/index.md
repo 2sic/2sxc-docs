@@ -17,7 +17,10 @@ The `ToSic.Sxc.Dnn.Factory.[various]()` are being deprecated, and will be remove
 The solution we used was to have static object `ToSic.Sxc.Dnn.Factory` which managed this, but this is actually bad practice and encourages bad code. 
 
 This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data, 
-but we've created a much better replacement using the [](xref:ToSic.Sxc.Services.IDynamicCodeService).
+but we've created a much better replacement using:
+
+* [](xref:ToSic.Sxc.Services.IDynamicCodeService) 
+* [](xref:ToSic.Sxc.Services.IRenderCodeService)
 
 
 ## History - How it Used to Work
@@ -34,6 +37,15 @@ Previously you could write code like this in your ascx Theme:
     var questions = app.Data["Question"];
     var title = questions.First().GetBestValue("EntityTitle");
     return "Questions: " + questions.Count() + ": First Title:" + title;
+  }
+
+  public string OldRender()
+  {
+    var pageId = 21;
+    var moduleId = 380;
+    var block = ToSic.Sxc.Dnn.Factory.CmsBlock(pageId, moduleId);
+    var result = block.Render();
+    return result;
   }
 
   public string OldDynamicCode()
@@ -89,6 +101,13 @@ So the previous example would look like this:
     var questions = app.Data["Question"];
     var title = questions.First().GetBestValue("EntityTitle");
     return "Questions: " + questions.Count() + ": First Title:" + title;
+  }
+
+  public string NewRender()
+  {
+    var renderSvc = ServiceProvider.GetService<IRenderService>();
+    var result = renderSvc.Module(pageId: 21, moduleId: 380);
+    return result.ToString();
   }
 
   public string NewDynamicCode()
