@@ -32,9 +32,10 @@ This is the most basic license and we hope everybody will apply for this license
 Basically if you become a supporter of 2sxc, you will get some goodies as a special thanks. 
 Goodies include: 
 
-1. Ability to paste images from clipboard into file-fields and wysiwyg
+1. Ability to paste images from clipboard into file-fields and wysiwyg.  
+  (note: this works with all kinds of bitmap, but will not work if the image has transparent parts, because transparency in the clipboard isn't standardized)
 1. Hide "sponsored with 💖 by 2sic" on ADAM
-1. Enhance automatic `<picture>` tag generation to automatically include better formats like WebP
+1. Enhance automatic `<picture>` tag generation to include newer formats like WebP automatically
 
 ### Enterprise CMS License
 
@@ -47,9 +48,13 @@ This is a special license which activates Enterprise CMS functionality which onl
 
 This is used to synchronise web server caches across multiple websites in Farm Scenarios. 
 
-## How to Get a License
+## How to Get and Install a License
 
-As of now (January 2022) licenses cannot be purchased yet. We're still working on this - should become available Q1 2022.
+As of now (February 2022) licenses cannot be purchased yet. 
+We're still working on this - should become available Q1 2022.
+
+Licenses currently require [manual installation](xref:Basics.LnF.Licenses.Manual). 
+This too should be improved by the end of Q1 2022.
 
 ## History
 
