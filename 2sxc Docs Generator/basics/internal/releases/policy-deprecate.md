@@ -1,5 +1,5 @@
 ---
-uid: Internal.Progress.DeprecationPolicy
+uid: Internal.Releases.PolicyDeprecate
 ---
 
 # Deprecation Policy & Breaking Changes
