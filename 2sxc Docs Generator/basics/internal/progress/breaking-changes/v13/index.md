@@ -30,7 +30,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.EavFactory)
 
 1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed
-    [see instructions](xref:todo)
+    If you need a similar feature, please post an issue and we'll help
 1. The Dnn Static `ToSic.Sxc.Dnn.Factory` is being deprecated and will be removed in v14
     [see instructions](xref:Internal.Progress.BreakingChanges.V13.DnnFactory)
 

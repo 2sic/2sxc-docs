@@ -11,7 +11,7 @@ Both `<img>` as well as `<source>` tags can have a `srcset` attribute.
 > to get familiar with this
 
 The Responsive Images API generates these automatically for you.
-In many cases, the configuration for this comes from the settings - like from [Settings.Images.Content](xref:todo).
+In many cases, the configuration for this comes from the settings - like from [Settings.Images.Content](xref:Basics.Configuration.SettingsSystem).
 
 But often you may want to configure it yourself  - either by reconfiguring the Settings in the Admin-UI, or by supplying in in the code. 
 
