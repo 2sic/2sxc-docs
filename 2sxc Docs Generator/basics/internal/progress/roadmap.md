@@ -8,7 +8,7 @@ The 2sxc roadmap contains the things we think are fairly important to tackle nex
 
 ## Priorities we're Working on 2022 Q1 (V13)
 
-### Done
+### Done but maybe not fully documented
 
 1. Improve Tutorials massively
 1. View Metadata

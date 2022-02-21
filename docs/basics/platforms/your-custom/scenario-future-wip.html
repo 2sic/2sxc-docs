@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Roadmap of EAV and 2sxc - Vision of the Future | 2sxc 13 / EAV 13 </title>
+    <title>Your Custom Platform - Scenario XX Notes to maybe use later | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Roadmap of EAV and 2sxc - Vision of the Future | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Your Custom Platform - Scenario XX Notes to maybe use later | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -111,57 +111,58 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Internal.Progress.Roadmap">
-<h1 id="roadmap-of-eav-and-2sxc---vision-of-the-future">Roadmap of EAV and 2sxc - Vision of the Future</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Platforms.YourCustom.Scenario-wip">
+<h1 id="your-custom-platform---scenario-xx-notes-to-maybe-use-later">Your Custom Platform - Scenario XX Notes to maybe use later</h1>
 
-<p>The 2sxc roadmap contains the things we think are fairly important to tackle next. Since we&#39;re all working for free, there is no commitment to do this in the order you see below. And sometimes a customer will need a feature quickly - and pay for it - then it will appear sooner. <em>You too can sponsor a feature!</em></p>
-<h2 id="priorities-were-working-on-2022-q1-v13">Priorities we&#39;re Working on 2022 Q1 (V13)</h2>
-<h3 id="done-but-maybe-not-fully-documented">Done but maybe not fully documented</h3>
+<p>TODO: REMOVE</p>
+<p>The more complete code for the <strong>StartUp</strong> looks a bit like this (taken from the <code>OqStartUp</code>):</p>
+<pre><code class="lang-c#">public void ConfigureServices(IServiceCollection services)
+{
+  // 1. Initial code to do things not related to EAV/2sxc
+  // ...
+
+  // 2. Register all 2sxc services
+  services
+    .AddSxcOqtane()                 // Always first add your override services
+    .AddSxcRazor()                  // this is the .net core Razor compiler
+    .AddAdamWebApi&lt;int, int&gt;()      // This is used to enable ADAM WebAPIs
+    .AddSxcWebApi&lt;IActionResult&gt;()  // This adds all the standard backend services for WebAPIs to work
+    .AddSxcCore()                   // Core 2sxc services
+    .AddEav()                       // Core EAV services
+    .AddOqtWebApis()                // Oqtane App WebAPI stuff
+    .AddRazorBlade();               // RazorBlade helpers for Razor in the edition used by Oqtane
+
+  // 3. Other stuff in your Configure Services
+  // ...
+}
+</code></pre><p>Note that you don&#39;t need all of this. For example, if you don&#39;t use razor, you won&#39;t need two of the lines above, etc.
+In general you should probably leave most of this disabled, and then activate each line as you need it. </p>
+<p>The code for registering your own services looks a bit like this (taken from Oqtane):</p>
+<pre><code class="lang-c#">namespace ToSic.Sxc.Oqt.Server.StartUp
+{
+  internal static partial class OqtRegisterServices
+  {
+    public static IServiceCollection AddSxcOqtane(this IServiceCollection services)
+    {
+      // You&#39;ll probably have lots of these:
+      services.AddScoped&lt;I..., ...&gt;();
+      services.TryAddTransient&lt;I..., ...&gt;();
+      return services;
+    }
+  }
+}
+</code></pre><p>TODO: REMOVE</p>
+<p>The following are optional, depending on the features you will be using</p>
 <ol>
-<li>Improve Tutorials massively</li>
-<li>View Metadata</li>
-<li>Oqtane Website Mode which can be indexed in Google</li>
-<li>Improve Feature-Management</li>
-<li>IFeaturesService</li>
-<li>Shared Apps across Sites</li>
-<li>Enable editing of Shared Templates / files</li>
-<li>Enable shared APIs</li>
-<li>Language Editing Permissions based on roles/users</li>
-<li>Disable translation of specific content-types</li>
-<li>Dnn Factory replacement to render module or get DynamicCode outside of 2sxc</li>
-<li>Fully integrate with Dnn Dependency Injection</li>
-<li>Improve DI Scopes to Module-Level</li>
+<li>The Global Assets base url - so links to in that global location work. ATM only used for the image of the <a class="xref" href="../../app/primary-app/index.html">Primary App</a></li>
+<li>The <strong>SharedAppsFolder</strong> which contains Razor or Token templates that are shared across sites</li>
 </ol>
-<h3 id="wip">WIP</h3>
-<ol>
-<li>Enable viewing read-only data / configuration to better discover options/features</li>
-<li>Patron-System, where sponsors of 2sxc get some extra features</li>
-<li>Enterprise Features which will be availabe for bigger sponsors</li>
-<li>IImageService</li>
-<li>Standardize how to integrate into other systems (non-Dnn/Oqtane)</li>
-<li>Provide more help UIs for using REST APIs</li>
-<li>Make the Metadata-System completely discoverable</li>
-<li>Update another ca. 5 Apps to the lastest/greatest conventions</li>
-</ol>
-<h2 id="priorities-2022-q2">Priorities 2022 Q2</h2>
-<ol>
-<li>Note-feature to add notes to various things like entities, fields etc.</li>
-<li>Provide Page-Level Metadata and Settings (outside of a specific App)</li>
-<li>IToolbarService and ToolbarBuilder</li>
-<li>Improve Formulas with Features</li>
-<li>Blazor integration for use in client-side Blazor</li>
-<li>Enterprise Lightspeed Cache</li>
-</ol>
-<h2 id="v13">V13</h2>
-<h2 id="future--other">Future / Other</h2>
+<hr>
+<h2 id="history">History</h2>
 <ul>
-<li>Support for persisting data to the file-system instead of DB</li>
-<li>Files DataSource</li>
-<li>ADAM DataSource</li>
-<li>Pages DataSource</li>
-<li>Navigation DataSource</li>
-<li>Database re-organization ca. Dec. 2021</li>
-<li>...or whatever is needed next :)</li>
+<li>Proof of Concept implemented with 2sxc 11 in 2021</li>
+<li>Finalized when integrating Oqtane in 2sxc 12</li>
+<li>final docs WIP</li>
 </ul>
 </article>
           </div>
@@ -171,7 +172,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/internal/progress/roadmap.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/platforms/your-custom/scenario-future-wip.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
