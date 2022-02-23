@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Your Custom Platform - Scenario #2 - Edit Data | 2sxc 13 / EAV 13 </title>
+    <title>Your Custom Platform - Scenario #2 - Edit Data + ADAM | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Your Custom Platform - Scenario #2 - Edit Data | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Your Custom Platform - Scenario #2 - Edit Data + ADAM | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -112,10 +112,11 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Basics.Platforms.YourCustom.Scenario02">
-<h1 id="your-custom-platform---scenario-2---edit-data">Your Custom Platform - Scenario #2 - Edit Data</h1>
+<h1 id="your-custom-platform---scenario-2---edit-data--adam">Your Custom Platform - Scenario #2 - Edit Data + ADAM</h1>
 
 <p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution. </p>
 <div class="TIP"><h5>Tip</h5><p>You can find this fully implemented in the <code>Integration\SxcEdit01</code> project</p>
+<p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
 <div class="WARNING"><h5>Warning</h5><p>These docs are very WIP and incomplete.</p>
 </div>
@@ -123,15 +124,22 @@
 <p><strong>Functionality</strong></p>
 <ol>
 <li>A link on a page can open the edit dialog</li>
-<li>Users can edit texts and save again</li>
+<li>Users can edit texts</li>
+<li>Users can save the result</li>
 <li>ADAM<ol>
 <li>Users can see previously uploaded assets</li>
 <li>Users can upload assets in the edit-dialog</li>
+<li>Users can delete and rename assets in the edit-dialog</li>
 </ol>
 </li>
-<li>todo</li>
+<li>Adam files of an entity can be shown on a page</li>
+<li>TODO:</li>
 </ol>
-<h2 id="integration-overview-for-basic-read-from-existing-db-scenarios">Integration Overview for Basic Read-From-Existing-DB Scenarios</h2>
+<p>Not implemented</p>
+<ol>
+<li>Security checks are fake, it always returns that edit etc. is allowed</li>
+</ol>
+<h2 id="integration-overview-for-basic-edit--adam">Integration Overview for Basic Edit + ADAM</h2>
 <p>To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
 <ol>
 <li>Add <em>more</em> necessary DLLs</li>
@@ -145,22 +153,51 @@
 <p>For this scenario you need to add just about all of the DLLs except for Razor helpers. </p>
 <p>You can add these manually, reference them or whatever. </p>
 <hr>
-<h2 id="2-copy-important-web-files-to-your-target">2. Copy Important Web Files to Your Target</h2>
+<h2 id="2-2sxc-web-files-js-css">2. 2sxc Web Files (JS, CSS)</h2>
+<h3 id="21-copy-important-web-files-to-your-target">2.1 Copy Important Web Files to Your Target</h3>
 <p>All the dialogs are JS based, so you must get these JS files in a place where they can be loaded. </p>
 <div class="TIP"><h5>Tip</h5><p>The <code>dist</code>, <code>js</code> folders etc. <strong>must</strong> be accessible from outside. </p>
 </div>
 <p>For reference, check out the build script on the <code>SxcEdit01</code> project. </p>
-<p>TODO:</p>
+<h3 id="22-make-sure-in-page-2sxc-jss-are-loaded">2.2 Make sure in page 2sxc JSs are loaded</h3>
+<p>For the page to be able to trigger edit dialogs, it needs at least these two files to be loaded on the page when a user should be able to edit:</p>
+<ol>
+<li><code>[2sxc public files root]/js/2sxc.api.min.js</code> -  note that the location could change in a future version</li>
+<li><code>[2sxc public files root]/dist/inpage/inpage.min.js</code> -  note that the location could change in a future version</li>
+</ol>
+<p>2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
+The logic to do that and ensure it&#39;s part of the final output is sophisticated.
+So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.</p>
 <hr>
+<p>TODO:</p>
 <h2 id="3-implement-core-objects-which-are-necessary">3. Implement Core Objects which are Necessary</h2>
 <p>Specifically</p>
 <ol>
-<li>ISite</li>
-<li>IUser</li>
-<li></li>
+<li>Implement<ol>
+<li><code>Context\ISite</code> is needed to have information about the <code>ContentPath</code></li>
+<li><code>Context\IUser</code> is needed to pretend it&#39;s a super-user and allow editing</li>
+<li><code>Adam\IAdamPaths</code> - our test-case assumes it&#39;s in wwwroot, for which there is already a prepared <code>AdamPathsWwwroot</code> object</li>
+</ol>
+</li>
+<li>Register these replacements in the StartUp - in the demo project it&#39;s in the <code>StartupEavAndSxc.AddImplementations(...)</code></li>
+</ol>
+<h2 id="4-implement-and-activate-webapis">4. Implement and Activate WebApis</h2>
+<ol>
+<li>Implement WebApis to answer on the appropriate endpoints (see examples)<ol>
+<li><code>DialogController</code> is required to get general information for dialogs to work. They should react to `[apiroot]/</li>
+<li><code>EditController</code></li>
+<li><code>AdamController</code></li>
+</ol>
+</li>
+<li>Register / activate<ol>
+<li>Depending on the framework, <strong>registration</strong> is different. For .net core, check out the example <code>AddControllersAndConfigureJson(...)</code> or the Oqtane registration examples.</li>
+<li>Remember that it must also be <strong>configured</strong> - see the <code>UseEndpoints(...)</code> or the <code>Startup.cs</code></li>
+</ol>
+</li>
 </ol>
 <hr>
 <h2 id="4-expand-startup-configuration---todo">4. Expand StartUp Configuration - TODO:</h2>
+<p>Do the same as </p>
 <p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts. 
 These are the required ones as of 2022-02:</p>
 <ol>

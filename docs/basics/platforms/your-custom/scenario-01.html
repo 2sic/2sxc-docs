@@ -115,7 +115,8 @@
 <h1 id="your-custom-platform---scenario-1---read-eav-data">Your Custom Platform - Scenario #1 - Read EAV Data</h1>
 
 <p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution. </p>
-<div class="TIP"><h5>Tip</h5><p>You can find this fully implemented in the <code>Integration\BasicEav01</code> project</p>
+<div class="TIP"><h5>Tip</h5><p>You can find this fully implemented in the <code>Integration\BasicEav01</code> project.</p>
+<p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
 <h2 id="scope-of-scenario-1---read-eav-data">Scope of Scenario #1 - Read EAV Data</h2>
 <p>In Scenario #1 we will setup a basic system. 
@@ -264,46 +265,8 @@ It will show you what services were requested which are not implemented yet, and
 <li>Test the routes to see things are coming out</li>
 </ol>
 <p><strong>Minimal <code>InsightsController</code></strong></p>
-<pre><code class="lang-c#">using Microsoft.AspNetCore.Mvc;
-using ToSic.Eav.Logging.Simple;
-using ToSic.Eav.WebApi.Sys;
-
-namespace IntegrationSamples.BasicEav01.Controllers
-{
-    [Route(&quot;api/sxc/sys/[controller]&quot;)]
-    [ApiController]
-    public class InsightsController : ControllerBase
-    {
-        /// &lt;summary&gt;
-        /// Constructor which will retrieve the Insights backend for use here
-        /// &lt;/summary&gt;
-        public InsightsController(Insights insights) =&gt; _insights = insights;
-        private readonly Insights _insights;
-
-        /// &lt;summary&gt;
-        /// The main call on this controller, will return all kinds of views with information
-        /// &lt;/summary&gt;
-        [HttpGet(&quot;{view}&quot;)]
-        public ContentResult Details(
-            [FromRoute] string view,
-            [FromQuery] int? appId = null, 
-            [FromQuery] string key = null, 
-            [FromQuery] int? position = null,
-            [FromQuery] string type = null,
-            [FromQuery] bool? toggle = null,
-            [FromQuery] string nameId = null)
-        {
-            // Temporary setting to allow Insights despite minimal setup
-            ToSic.Eav.Context.UserUnknown.AllowEverything = true;
-
-            var result = _insights
-                .Init(new Log(&quot;Int.Insights&quot;))
-                .Details(view, appId, key, position, type, toggle, nameId);
-            return base.Content(result, &quot;text/html&quot;);
-        }
-    }
-}
-</code></pre><p><strong>Activate it in the <code>StartUp.cs</code></strong></p>
+<p>You can review the code of the InsightsController in the <code>Controllers</code> folder in the project. </p>
+<p><strong>Activate it in the <code>StartUp.cs</code></strong></p>
 <pre><code class="lang-c#">public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
   // ...
@@ -316,7 +279,9 @@ namespace IntegrationSamples.BasicEav01.Controllers
       endpoints.MapControllers();
   });
 }
-</code></pre><p>Test by calling <code>https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed</p>
+</code></pre><p>Test by calling <code>https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed.</p>
+<div class="TIP"><h5>Tip</h5><p>Once the insights work, you can also see what objects were used in a <a class="xref" href="../../../net-code/conventions/unknown-implementations/index.html">fallback/unknown implementation</a>. </p>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ul>

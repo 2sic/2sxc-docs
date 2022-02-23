@@ -2,12 +2,14 @@
 uid: Basics.Platforms.YourCustom.Scenario02
 ---
 
-# Your Custom Platform - Scenario #2 - Edit Data
+# Your Custom Platform - Scenario #2 - Edit Data + ADAM
 
 This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) for integrating EAV or 2sxc into your own solution. 
 
 > [!TIP]
 > You can find this fully implemented in the `Integration\SxcEdit01` project
+>
+> Search for `#2sxcIntegration` in the code to find all the things that were adjusted to get it to work.
 
 > [!WARNING]
 > These docs are very WIP and incomplete.
@@ -17,13 +19,20 @@ This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) 
 **Functionality**
 
 1. A link on a page can open the edit dialog
-1. Users can edit texts and save again
+1. Users can edit texts
+1. Users can save the result
 1. ADAM
     1. Users can see previously uploaded assets
     1. Users can upload assets in the edit-dialog
-1. todo
+    1. Users can delete and rename assets in the edit-dialog
+1. Adam files of an entity can be shown on a page
+1. TODO:
 
-## Integration Overview for Basic Read-From-Existing-DB Scenarios
+Not implemented
+
+1. Security checks are fake, it always returns that edit etc. is allowed
+
+## Integration Overview for Basic Edit + ADAM
 
 To Integrate EAV and 2sxc into your system, these are the core things you must do:
 
@@ -43,7 +52,9 @@ You can add these manually, reference them or whatever.
 
 ---
 
-## 2. Copy Important Web Files to Your Target
+## 2. 2sxc Web Files (JS, CSS)
+
+### 2.1 Copy Important Web Files to Your Target
 
 All the dialogs are JS based, so you must get these JS files in a place where they can be loaded. 
 
@@ -52,27 +63,50 @@ All the dialogs are JS based, so you must get these JS files in a place where th
 
 For reference, check out the build script on the `SxcEdit01` project. 
 
-TODO:
+### 2.2 Make sure in page 2sxc JSs are loaded
 
+For the page to be able to trigger edit dialogs, it needs at least these two files to be loaded on the page when a user should be able to edit:
+
+1. `[2sxc public files root]/js/2sxc.api.min.js` -  note that the location could change in a future version
+1. `[2sxc public files root]/dist/inpage/inpage.min.js` -  note that the location could change in a future version
+
+2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
+The logic to do that and ensure it's part of the final output is sophisticated.
+So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.
 
 ---
+
+TODO:
+
 
 ## 3. Implement Core Objects which are Necessary
 
 Specifically
 
-1. ISite
-1. IUser
-1. 
+1. Implement
+    1. `Context\ISite` is needed to have information about the `ContentPath`
+    1. `Context\IUser` is needed to pretend it's a super-user and allow editing
+    1. `Adam\IAdamPaths` - our test-case assumes it's in wwwroot, for which there is already a prepared `AdamPathsWwwroot` object
+1. Register these replacements in the StartUp - in the demo project it's in the `StartupEavAndSxc.AddImplementations(...)`
 
 
+## 4. Implement and Activate WebApis
 
-
-
+1. Implement WebApis to answer on the appropriate endpoints (see examples)
+    1. `DialogController` is required to get general information for dialogs to work. They should react to `[apiroot]/
+    1. `EditController`
+    1. `AdamController`
+1. Register / activate
+    1. Depending on the framework, **registration** is different. For .net core, check out the example `AddControllersAndConfigureJson(...)` or the Oqtane registration examples.
+    1. Remember that it must also be **configured** - see the `UseEndpoints(...)` or the `Startup.cs`
 
 ---
 
 ## 4. Expand StartUp Configuration - TODO:
+
+Do the same as 
+
+
 
 Some aspects of EAV & 2sxc are super important that they are configured before anything starts. 
 These are the required ones as of 2022-02:

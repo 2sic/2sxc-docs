@@ -7,7 +7,9 @@ uid: Basics.Platforms.YourCustom.Scenario01
 This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) for integrating EAV or 2sxc into your own solution. 
 
 > [!TIP]
-> You can find this fully implemented in the `Integration\BasicEav01` project
+> You can find this fully implemented in the `Integration\BasicEav01` project.
+>
+> Search for `#2sxcIntegration` in the code to find all the things that were adjusted to get it to work.
 
 ## Scope of Scenario #1 - Read EAV Data
 
@@ -200,47 +202,7 @@ It will show you what services were requested which are not implemented yet, and
 
 **Minimal `InsightsController`**
 
-```c#
-using Microsoft.AspNetCore.Mvc;
-using ToSic.Eav.Logging.Simple;
-using ToSic.Eav.WebApi.Sys;
-
-namespace IntegrationSamples.BasicEav01.Controllers
-{
-    [Route("api/sxc/sys/[controller]")]
-    [ApiController]
-    public class InsightsController : ControllerBase
-    {
-        /// <summary>
-        /// Constructor which will retrieve the Insights backend for use here
-        /// </summary>
-        public InsightsController(Insights insights) => _insights = insights;
-        private readonly Insights _insights;
-
-        /// <summary>
-        /// The main call on this controller, will return all kinds of views with information
-        /// </summary>
-        [HttpGet("{view}")]
-        public ContentResult Details(
-            [FromRoute] string view,
-            [FromQuery] int? appId = null, 
-            [FromQuery] string key = null, 
-            [FromQuery] int? position = null,
-            [FromQuery] string type = null,
-            [FromQuery] bool? toggle = null,
-            [FromQuery] string nameId = null)
-        {
-            // Temporary setting to allow Insights despite minimal setup
-            ToSic.Eav.Context.UserUnknown.AllowEverything = true;
-
-            var result = _insights
-                .Init(new Log("Int.Insights"))
-                .Details(view, appId, key, position, type, toggle, nameId);
-            return base.Content(result, "text/html");
-        }
-    }
-}
-```
+You can review the code of the InsightsController in the `Controllers` folder in the project. 
 
 **Activate it in the `StartUp.cs`**
 
@@ -259,7 +221,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-Test by calling `https://localhost:44384/api/sxc/sys/Insights/Help` - replace the base path as needed
+Test by calling `https://localhost:44384/api/sxc/sys/Insights/Help` - replace the base path as needed.
+
+> [!TIP]
+> Once the insights work, you can also see what objects were used in a [fallback/unknown implementation](xref:NetCode.Conventions.UnknownImplementations). 
 
 ---
 
