@@ -44,4 +44,4 @@ But it's a good idea to keep an eye on the logs, to determine if a specific obje
 
 Coverage: ca. 100% of relevant objects implement this
 
-Shortlink: https://r.2sxc.org/unknown-implementations TODO:
+Shortlink: https://r.2sxc.org/unknown-implementations

@@ -32,7 +32,7 @@ Once all controllers are built this way, they will probably be renamed just to `
 Each platform and integration will just have the minimal _Proxy_ Controller which has the following functions:
 
 1. Make the endpoint available on this platform, on the correct address
-1. Ensure basic endpoint security as the platform does it
+1. Ensure basic endpoint security as the platform does it (like ensure authentication, etc.)
 1. Forward all calls to the _Real_ controller
 1. In rare cases, convert data which is treated differently on that platform to the format the _Real_ Controller expects.
 
@@ -42,6 +42,14 @@ Each platform and integration will just have the minimal _Proxy_ Controller whic
 
 * Introduced in v13
 
-Coverage: ca. 10% of all Controllers implement this as of 2022-02
+Coverage: ca. 15% of all Controllers implement this as of 2022-02:
 
-Shortlink: https://r.2sxc.org/proxy-controllers TODO:
+* `Eav.InsightsControllerReal`
+* `Eav.LicenseControllerReal`
+* `Sxc.EditControllerReal`
+* `Sxc.AdamControllerReal`
+* `Sxc.DialogControllerReal`
+* `Sxc.AppControllerReal<T>`
+
+
+Shortlink: https://r.2sxc.org/proxy-controllers

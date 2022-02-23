@@ -76,9 +76,6 @@ So for this minimal implementation, best do it yourself, and choose yourself if 
 
 ---
 
-TODO:
-
-
 ## 3. Implement Core Objects which are Necessary
 
 Specifically
@@ -92,10 +89,15 @@ Specifically
 
 ## 4. Implement and Activate WebApis
 
+1. Implement a base class to assist in various aspects
+    1. Add the request to the insights logs
+    1. Ensure timing of the request to better spot issues
+    1. Provide the `Real` controller - see [](xref:NetCode.Conventions.ProxyControllers)
+    1. Make some minor corrections to HTTP responses, so empty ones really return an HTTP 204
 1. Implement WebApis to answer on the appropriate endpoints (see examples)
-    1. `DialogController` is required to get general information for dialogs to work. They should react to `[apiroot]/
-    1. `EditController`
-    1. `AdamController`
+    1. `DialogController` is required to get general information for dialogs to work
+    1. `EditController` is reponsible for loading and saving data from the dialog
+    1. `AdamController` helps with file uploads etc.
 1. Register / activate
     1. Depending on the framework, **registration** is different. For .net core, check out the example `AddControllersAndConfigureJson(...)` or the Oqtane registration examples.
     1. Remember that it must also be **configured** - see the `UseEndpoints(...)` or the `Startup.cs`

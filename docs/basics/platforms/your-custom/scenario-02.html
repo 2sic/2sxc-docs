@@ -169,7 +169,6 @@
 The logic to do that and ensure it&#39;s part of the final output is sophisticated.
 So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.</p>
 <hr>
-<p>TODO:</p>
 <h2 id="3-implement-core-objects-which-are-necessary">3. Implement Core Objects which are Necessary</h2>
 <p>Specifically</p>
 <ol>
@@ -183,10 +182,17 @@ So for this minimal implementation, best do it yourself, and choose yourself if 
 </ol>
 <h2 id="4-implement-and-activate-webapis">4. Implement and Activate WebApis</h2>
 <ol>
+<li>Implement a base class to assist in various aspects<ol>
+<li>Add the request to the insights logs</li>
+<li>Ensure timing of the request to better spot issues</li>
+<li>Provide the <code>Real</code> controller - see <a class="xref" href="../../../net-code/conventions/proxy-controllers/index.html">Convention: Proxy and Real Controllers</a></li>
+<li>Make some minor corrections to HTTP responses, so empty ones really return an HTTP 204</li>
+</ol>
+</li>
 <li>Implement WebApis to answer on the appropriate endpoints (see examples)<ol>
-<li><code>DialogController</code> is required to get general information for dialogs to work. They should react to `[apiroot]/</li>
-<li><code>EditController</code></li>
-<li><code>AdamController</code></li>
+<li><code>DialogController</code> is required to get general information for dialogs to work</li>
+<li><code>EditController</code> is reponsible for loading and saving data from the dialog</li>
+<li><code>AdamController</code> helps with file uploads etc.</li>
 </ol>
 </li>
 <li>Register / activate<ol>
