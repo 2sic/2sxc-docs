@@ -247,8 +247,7 @@
 </ol>
 <h2 id="how-to-use">How to use</h2>
 <ol>
-<li><em>add a script-tag</em> to include the 2sxc.api.min.js
-<em>note 1: in edit-mode this happens automatically</em><br><em>note 2: always use lower-case paths and the minified version</em></li>
+<li><em>add a script-tag</em> to include the 2sxc.api.min.js<br><em>note 1: in edit-mode this happens automatically</em><br><em>note 2: always use lower-case paths and the minified version</em></li>
 <li><em>call the <code>$2sxc(...)</code> constructor</em> to get a sxc-controller for your module (as each module on the page will have an own $2sxc controller)</li>
 <li><em>work with the API</em> of the sxc-controller</li>
 </ol>
@@ -274,15 +273,17 @@
 </ol>
 <p>The moduleId is usually dynamic, so you can&#39;t hardwire it with <code>var modId = 17</code> into your JS code. This is explained in the next section <em>Initialization</em>.</p>
 <h2 id="get-the-sxc-module-service-using-2sxc">Get the Sxc-Module-Service using $2sxc</h2>
-<p>We have three initializers:</p>
+<p>We have four initializers:</p>
 <ol>
-<li><code>$2sxc(DomNode)</code> - recommended</li>
+<li><code>$2sxc(HTMLElement)</code> - recommended</li>
 <li><code>$2sxc(moduleId)</code> - oldest way, very common</li>
 <li><del><code>$2sxc(moduleId, contentBlockId)</code></del> - a special version for <a href="#module-instances-and-content-blocks">internal use only</a></li>
+<li><code>$2sxc(ContextIdentifier)</code> - new in v11.11</li>
 </ol>
-<p>We recommend the <em>DOM-Node syntax</em>, because in that mode $2sxc will go up through the DOM-tree and find the module it&#39;s in (or the content-block), and auto-configure itself. What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). Here&#39;s a simple example:</p>
+<h3 id="the-htmlelement-method">The HTMLElement Method</h3>
+<p>We recommend the <em>HTMLElement syntax</em>, because in that mode $2sxc will go up through the DOM-tree and find the module it&#39;s in (or the content-block), and auto-configure itself. What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). Here&#39;s a simple example:</p>
 <pre><code class="lang-html">&lt;a onclick=&#39;$2sxc(this).manage.run(&quot;layout&quot;)&#39;&gt;layout&lt;/a&gt;
-</code></pre><p>In the above example, the dom-node is given by the current click, which puts the current <code>&lt;a&gt;</code> node in the <code>this</code> object.</p>
+</code></pre><p>In the above example, the HTMLElement is given by the current click, which puts the current <code>&lt;a&gt;</code> node in the <code>this</code> object.</p>
 <p>Here&#39;s a JS example:</p>
 <pre><code class="lang-javascript">var x = $(&quot;.myApp&quot;);    // get ANY dom element inside this 2sxc app
 var sxc1 = $2sxc(x);    // use it
@@ -298,7 +299,7 @@ $(function(){
         // now do something...
     });
 });
-</code></pre><h3 id="the-moduleid-method">The ModuleId method</h3>
+</code></pre><h3 id="the-moduleid-method">The ModuleId Method</h3>
 <p>In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use <code>[Module:ModuleId]</code> and in a Razor-Template it&#39;s <code>@Dnn.Module.ModuleID</code> (large &quot;ID&quot;).</p>
 <p>The same code in <strong>Razor</strong> for Dnn and Oqtane would be:</p>
 <pre><code class="lang-JavaScript">$(function () {
@@ -311,6 +312,30 @@ $(function(){
     alert(&quot;edit mode: &quot; + sxc.isEditMode());
 })
 </code></pre><p>You can also find an example of finding all of our nodes and initializing them in the <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS App</a>. If you&#39;re interested, here&#39;s the <a href="https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js">js-initializer</a>.  </p>
+<h3 id="the-contextidentifier-method-new-v1111">The ContextIdentifier Method (new v11.11)</h3>
+<p>When you use the <code>ContextIdentifier</code>, you are bypassing various automations which pick up the context by default. 
+The <code>ContextIdentifier</code> has this setup:</p>
+<pre><code class="lang-js">export class ContextIdentifier {
+  /** ZoneId of this Context */
+  zoneId: number;
+  /** AppId of this Context */
+  appId: number;
+  /** PageId of this Context (optional) */
+  pageId?: number;
+  /** ModuleId of this Context (optional) */
+  moduleId?: number;
+}
+</code></pre><p>This mode is mainly used </p>
+<ul>
+<li>when integrating 2sxc into other systems which don&#39;t provide the full CMS functionality</li>
+<li>when creating edit-functionality which is outside the default context, like in the context of a Module where you must edit data of a different App</li>
+</ul>
+<hr>
+<h2 id="additional-properties-of-the-2sxc-controller">Additional properties of the $2sxc Controller</h2>
+<ul>
+<li>In 2sxc 9.30 a new object <code>$2sxc.cms</code> was added - read about it in <a class="xref" href="2sxc.cms.html">$2sxc.cms</a></li>
+</ul>
+<hr>
 <h2 id="everything-about-the-module-level-sxc-controller">Everything about the Module-Level <code>sxc</code> Controller</h2>
 <p>In the <a class="xref" href="sxc.html">module sxc controller</a> you&#39;ll read about:</p>
 <ol>
@@ -337,22 +362,20 @@ but following calls to it will use the cached information. Example:</p>
 <pre><code class="lang-javascript">var sxc = $2sxc(42); // initial call, will build controller for Module 42
 var sxc2 = $2sxc(42); // second call, will use cached controller
 var sxc3 = $2sxc(domNodeInsideTheModule42); // another call, will also used cached controller
-</code></pre><h3 id="metadata-needed-by-2sxc-to-work">Metadata Needed by $2sxc to Work</h3>
-<p>The $2sxc object needs a few pieces of information to work properly, which are stored in a JSON in the HTML. 
-So the Module-DIV-Tag is actually enhanced with additional pieces of information. 
+</code></pre><h3 id="environment-and-context-data-needed-by-2sxc-to-work">Environment and Context Data Needed by $2sxc to Work</h3>
+<p>The $2sxc object needs a few pieces of information to work properly, which are usually stored in two locations:</p>
+<ol>
+<li>In a page-header Meta tag with the Id <code>_jsApi</code></li>
+<li>In JSON in the HTML where the Module start</li>
+</ol>
+<p>So the Module-DIV-Tag is actually enhanced with additional pieces of information. 
 This structure is open and easy to read, but the structure can change from time to time, 
 so don&#39;t read/rely on that JSON, use the $2sxc to access any information. </p>
-<p>There are even situations where additional metadata in inserted into the HTML rendered by your template. This has to do with inner-content (see next section) and the same &quot;don&#39;t rely on the JSON&quot; applies. </p>
+<p>There are even situations where additional context data in inserted into the HTML rendered by your template. This has to do with inner-content (see next section) and the same &quot;don&#39;t rely on the JSON&quot; applies. </p>
 <h3 id="module-instances-and-content-blocks">Module-Instances and Content-Blocks</h3>
 <p>This is a very advanced topic, so if you&#39;re new - just skip this. Also if you use content-blocks you don&#39;t need to understand this, it&#39;s just included for completeness.</p>
 <p>A 2sxc-module can contain many <a href="http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules">2sxc-content-blocks since version 8.4</a> because an item could have independent, inner content-blocks. Because of this, the controller may need an additional parameter, so instead of <code>$2sxc(moduleId)</code> it can also use <code>$2sxc(moduleId, contentBlockId)</code>.</p>
 <p>As mentioned above, you never need to work with this, it&#39;s included for completeness. Since the now recommended method to initialized $2sxc is not with the moduleId but with a DOM-node, that call will automatically resolve everything correctly.</p>
-<h2 id="additional-properties-of-the-2sxc-controller">Additional properties of the $2sxc Controller</h2>
-<ul>
-<li>In 2sxc 9.30 a new object <code>$2sxc.cms</code> was added - read about it in <a class="xref" href="2sxc.cms.html">$2sxc.cms</a></li>
-</ul>
-<p>TODO: document the properties, mention that they won&#39;t be stable in future versions</p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">$2sxc API</a></em></p>
 <h2 id="background-how-2sxc-works">Background: How $2sxc works</h2>
 <p>This is just some info for you to better understand what happens behind the scenes:</p>
 <h3 id="how-module-level-information-is-found">How Module-Level Information is found</h3>
@@ -383,6 +406,7 @@ so don&#39;t read/rely on that JSON, use the $2sxc to access any information. </
 <ol>
 <li>Introduced in 2sxc 04.00</li>
 <li>Enhanced with <code>cms</code> (see <a class="xref" href="2sxc.cms.html">cms</a>) in 9.30</li>
+<li>Enhanced the <code>$2sxc(...)</code> constructor with the ContextIdentifier in v11.11</li>
 <li>Replaced <code>Edit.Enable(js:true)</code> with the new <code>IPageService.Activate(&quot;2sxc.JsCore&quot;)</code> in v13.0</li>
 </ol>
 </article>

@@ -21,7 +21,7 @@ Cases where _you_ need $2sxc:
 
 ## How to use
 
-1. *add a script-tag* to include the 2sxc.api.min.js
+1. *add a script-tag* to include the 2sxc.api.min.js  
 _note 1: in edit-mode this happens automatically_  
 _note 2: always use lower-case paths and the minified version_
 2. *call the `$2sxc(...)` constructor* to get a sxc-controller for your module (as each module on the page will have an own $2sxc controller)
@@ -56,19 +56,22 @@ The moduleId is usually dynamic, so you can't hardwire it with `var modId = 17` 
 
 ## Get the Sxc-Module-Service using $2sxc
 
-We have three initializers:
+We have four initializers:
 
-1. `$2sxc(DomNode)` - recommended
+1. `$2sxc(HTMLElement)` - recommended
 2. `$2sxc(moduleId)` - oldest way, very common
 3. ~~`$2sxc(moduleId, contentBlockId)`~~ - a special version for [internal use only](#module-instances-and-content-blocks)
+1. `$2sxc(ContextIdentifier)` - new in v11.11
 
-We recommend the *DOM-Node syntax*, because in that mode $2sxc will go up through the DOM-tree and find the module it's in (or the content-block), and auto-configure itself. What's nice about this is that this method works without any server-side support (which you need for the other methods). Here's a simple example:
+### The HTMLElement Method
+
+We recommend the *HTMLElement syntax*, because in that mode $2sxc will go up through the DOM-tree and find the module it's in (or the content-block), and auto-configure itself. What's nice about this is that this method works without any server-side support (which you need for the other methods). Here's a simple example:
 
 ```html
 <a onclick='$2sxc(this).manage.run("layout")'>layout</a>
 ```
 
-In the above example, the dom-node is given by the current click, which puts the current `<a>` node in the `this` object.
+In the above example, the HTMLElement is given by the current click, which puts the current `<a>` node in the `this` object.
 
 Here's a JS example:
 
@@ -94,7 +97,7 @@ $(function(){
 
 ```
 
-### The ModuleId method
+### The ModuleId Method
 
 In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use `[Module:ModuleId]` and in a Razor-Template it's `@Dnn.Module.ModuleID` (large "ID").
 
@@ -118,6 +121,37 @@ $(function () {
 
 
 You can also find an example of finding all of our nodes and initializing them in the [TimeLineJS App](xref:App.TimelineJs). If you're interested, here's the [js-initializer](https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js).  
+
+### The ContextIdentifier Method (new v11.11)
+
+When you use the `ContextIdentifier`, you are bypassing various automations which pick up the context by default. 
+The `ContextIdentifier` has this setup:
+
+```js
+export class ContextIdentifier {
+  /** ZoneId of this Context */
+  zoneId: number;
+  /** AppId of this Context */
+  appId: number;
+  /** PageId of this Context (optional) */
+  pageId?: number;
+  /** ModuleId of this Context (optional) */
+  moduleId?: number;
+}
+```
+
+This mode is mainly used 
+
+* when integrating 2sxc into other systems which don't provide the full CMS functionality
+* when creating edit-functionality which is outside the default context, like in the context of a Module where you must edit data of a different App
+
+---
+
+## Additional properties of the $2sxc Controller
+
+* In 2sxc 9.30 a new object `$2sxc.cms` was added - read about it in [$2sxc.cms](xref:JsCode.2sxcApi.$2sxc.Cms)
+
+---
 
 ## Everything about the Module-Level `sxc` Controller
 
@@ -153,14 +187,18 @@ var sxc2 = $2sxc(42); // second call, will use cached controller
 var sxc3 = $2sxc(domNodeInsideTheModule42); // another call, will also used cached controller
 ```
 
-### Metadata Needed by $2sxc to Work
+### Environment and Context Data Needed by $2sxc to Work
 
-The $2sxc object needs a few pieces of information to work properly, which are stored in a JSON in the HTML. 
+The $2sxc object needs a few pieces of information to work properly, which are usually stored in two locations:
+
+1. In a page-header Meta tag with the Id `_jsApi`
+1. In JSON in the HTML where the Module start
+
 So the Module-DIV-Tag is actually enhanced with additional pieces of information. 
 This structure is open and easy to read, but the structure can change from time to time, 
 so don't read/rely on that JSON, use the $2sxc to access any information. 
 
-There are even situations where additional metadata in inserted into the HTML rendered by your template. This has to do with inner-content (see next section) and the same "don't rely on the JSON" applies. 
+There are even situations where additional context data in inserted into the HTML rendered by your template. This has to do with inner-content (see next section) and the same "don't rely on the JSON" applies. 
 
 ### Module-Instances and Content-Blocks
 
@@ -170,15 +208,6 @@ A 2sxc-module can contain many [2sxc-content-blocks since version 8.4][content-b
 
 As mentioned above, you never need to work with this, it's included for completeness. Since the now recommended method to initialized $2sxc is not with the moduleId but with a DOM-node, that call will automatically resolve everything correctly.
 
-
-## Additional properties of the $2sxc Controller
-
-* In 2sxc 9.30 a new object `$2sxc.cms` was added - read about it in [$2sxc.cms](xref:JsCode.2sxcApi.$2sxc.Cms)
-
-
-TODO: document the properties, mention that they won't be stable in future versions
-
-_Till we find time to document more, please consult the [$2sxc API](https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js)_
 
 ## Background: How $2sxc works
 
@@ -212,6 +241,7 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 
 1. Introduced in 2sxc 04.00
 1. Enhanced with `cms` (see [cms](xref:JsCode.2sxcApi.$2sxc.Cms)) in 9.30
+1. Enhanced the `$2sxc(...)` constructor with the ContextIdentifier in v11.11
 1. Replaced `Edit.Enable(js:true)` with the new `IPageService.Activate("2sxc.JsCore")` in v13.0
 
 [content-blocks]: http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules
