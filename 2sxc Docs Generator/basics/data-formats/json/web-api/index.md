@@ -73,7 +73,14 @@ Some notes
 ## Write / PUT is the same, just sending
 
 To create data or update it, use the identical format. 
+When creating or updating data, there are some system properties you can also set, which affect how things are saved
 
+* `IsPublished`
+    * `null` or `""` will save new as is preset by permissions; on update it will leave the existing state unchanged
+    * `true`, `"true"`, `1` will always set the published to true (if permissions allow)
+    * `false`, `"false"`, `0` will alwyays set published to false
+    * `"draft"` will set published to false; if it's an update and there was a published one before, that will remain published
+* `For` can contain metadata headers to anchor this item to another thing. Will only affect new data, and be ignored on updates. See [](xref:JsCode.2sxcApi.Sxc.Data)
 
 ## Read Multi-Language Data
 

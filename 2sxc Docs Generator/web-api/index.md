@@ -79,7 +79,7 @@ You should find some code examples in this demo App
 
 ## Recommended Reading
 
-* [Data CRUD API](xref:WebApi.Content)
+* [Data CRUD API](xref:WebApi.Data.Index)
 * [DotNet WebApi](xref:NetCode.WebApi.Index)
 * [Concepts: Polymorphisms](xref:Basics.Polymorphism.Index)
 

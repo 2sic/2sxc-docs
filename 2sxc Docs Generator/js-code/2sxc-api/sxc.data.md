@@ -21,6 +21,9 @@ _Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCo
 
 👉 Check out the [](xref:Tut.JsData)
 
+> [!TIP]
+> The data format is described here: [](xref:Basics.DataFormats.Json.WebApi.Index)
+
 ## Get a Data Service
 
 1. Get the [sxc instance controller](xref:JsCode.2sxcApi.Sxc.Index) of the current module
@@ -28,7 +31,7 @@ _Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCo
 
 Example:
 
-```csharp
+```js
 const modId = @CmsContext.Module.Id;
 const sxc = $2sxc(modId);
 const authorsSvc = sxc.data('Authors');

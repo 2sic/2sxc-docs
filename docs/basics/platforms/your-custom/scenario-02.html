@@ -118,7 +118,7 @@
 <div class="TIP"><h5>Tip</h5><p>You can find this fully implemented in the <code>Integration\SxcEdit01</code> project</p>
 <p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
-<div class="WARNING"><h5>Warning</h5><p>These docs are very WIP and incomplete.</p>
+<div class="WARNING"><h5>Warning</h5><p>These docs are still WIP.</p>
 </div>
 <h2 id="scope-of-scenario-2---edit-eav-data">Scope of Scenario #2 - Edit EAV Data</h2>
 <p><strong>Functionality</strong></p>
@@ -127,9 +127,10 @@
 <li>Users can edit texts</li>
 <li>Users can save the result</li>
 <li>ADAM<ol>
+<li>Users can upload assets in the edit-dialog - which is stored in this new web (not in the original Dnn/Oqtane)</li>
 <li>Users can see previously uploaded assets</li>
-<li>Users can upload assets in the edit-dialog</li>
 <li>Users can delete and rename assets in the edit-dialog</li>
+<li>Assets are referenced using their path, not an ID (which would be the default in Dnn/Oqtane)</li>
 </ol>
 </li>
 <li>Adam files of an entity can be shown on a page</li>
@@ -168,6 +169,17 @@
 <p>2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
 The logic to do that and ensure it&#39;s part of the final output is sophisticated.
 So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.</p>
+<h3 id="23-give-the-js-environment-variables">2.3 Give the JS Environment Variables</h3>
+<p>The JS needs to know a few global things for it to work. 
+At the minimum it&#39;s the location of the WebAPI root as well as the location of the UI files. 
+For this you either need a <code>_jsApi</code> meta header or add this to the page after the $2sxc-js has been loaded:</p>
+<pre><code class="lang-js">$2sxc.env.load({
+  // optional pageId: 0,
+  rvt: &#39;@IntegrationConstants.EnvRvt&#39;,
+  api: &#39;@IntegrationConstants.EnvApiRoot&#39;,
+  uiRoot: `@IntegrationConstants.EnvUiRoot`, 
+});
+</code></pre><p>The previous code was taken from the <code>_Layout.cshtml</code> in the example. </p>
 <hr>
 <h2 id="3-implement-core-objects-which-are-necessary">3. Implement Core Objects which are Necessary</h2>
 <p>Specifically</p>

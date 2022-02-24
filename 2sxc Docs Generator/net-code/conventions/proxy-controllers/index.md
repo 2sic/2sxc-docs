@@ -44,12 +44,39 @@ Each platform and integration will just have the minimal _Proxy_ Controller whic
 
 Coverage: ca. 15% of all Controllers implement this as of 2022-02:
 
-* `Eav.InsightsControllerReal`
-* `Eav.LicenseControllerReal`
-* `Sxc.EditControllerReal`
-* `Sxc.AdamControllerReal`
-* `Sxc.DialogControllerReal`
-* `Sxc.AppControllerReal<T>`
+1. Adam
+    * `Sxc.AdamControllerReal`
+    * AppAssets
+1. Admin
+    * ApiExplorer
+    * `Sxc.AppControllerReal<T>` - 95% - there is still a bit of code left
+    * `AppFilesControllerReal`
+    * AppParts
+    * `Sxc.DialogControllerReal`
+    * Entity
+    * `Eav.FeaturesControllerReal`
+    * Field
+    * `Eav.MetadataControllerReal`
+    * `Sxc.QueryControllerReal`
+    * Type
+    * View
+    * Zone
+1. App
+    * AppAssets
+    * AppContent
+    * AppQuery
+1. CMS
+    * Block
+    * ** ContentGroup
+    * `Sxc.EditControllerReal` (almost?)
+    * `Sxc.HistoryControllerReal`
+    * ~~Item~~
+    * List
+1. Sys
+    * `Eav.InsightsControllerReal`
+    * Install
+    * `Eav.LicenseControllerReal`
+    * Log
 
 
 Shortlink: https://r.2sxc.org/proxy-controllers

@@ -1,5 +1,5 @@
 ---
-uid: HowTo.WebApi.Content
+uid: HowTo.WebApi.Data.Index
 ---
 
-This page moved to [](xref:WebApi.Content)
+This page moved to [](xref:WebApi.Data.Index)

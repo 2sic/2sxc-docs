@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Security for 2sxc WebAPI and REST APIs | 2sxc 13 / EAV 13 </title>
+    <title>Query REST Web API | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Security for 2sxc WebAPI and REST APIs | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Query REST Web API | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -111,8 +111,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="WebApi.Specs.Security">
-<h1 id="security-for-2sxc-webapi-and-rest-apis">Security for 2sxc WebAPI and REST APIs</h1>
+            <article class="content wrap" id="_content" data-uid="WebApi.Query">
+<h1 id="query-rest-web-api">Query REST Web API</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -235,74 +235,39 @@
   </div>
 </div><style>
   .context-box-summary .browser-interact,
-  .context-box-summary .process-apis { visibility: visible; }
+  .context-box-summary .process-headless { visibility: visible; }
 </style>
 
 
-<p>All WebAPI calls in Dnn, Oqtane and 2sxc have some security features. 
-In the basic use cases it&#39;s straightforward: the current user may do some things, and that should be allowed. </p>
-<p>These docs should help you understand where these things are configured and what to change if you need adjustments. </p>
-<h2 id="request-security">Request Security</h2>
-<p>Each request contains information needed for the backend to determine if this request should be answered or not. In Dnn and Oqtane this is the <strong>User Identity</strong> and the <strong>RequestVerificationToken</strong>. </p>
-<h3 id="user-identity">User Identity</h3>
-<p>By default, the user is logged in using normal web conventions and from then on the user will have an encrypted cookie identifying this person. </p>
-<p>In advanced scenarios you may also use <a href="https://jwt.io/">JWT</a> aka <strong>Json Web Tokens</strong>. 
-This is useful in mobile app scenarios and scenarios where the client application is remote (like a web-server or a SPA). 
-Consult the docs of Dnn or Oqtane to find out how to use this. </p>
-<p>You could also use custom login systems like OAuth, but in these cases you will really need to figure out how to implement it in Dnn or Oqtane. </p>
-<h3 id="anti-forgery-token-requestverificationtoken">Anti Forgery Token: RequestVerificationToken</h3>
-<p>ASP.net has a feature to prevent XSS (Cross Site Scripting / Cross-Site Request Forgery). 
-To make this possible, pages viewed by a user have some hidden key included which is encrypted to include identity-information for this user. It is included in all HTTP requests except for <code>GET</code> requests. </p>
-<p>If an endpoint is secured to check for this using <code>[ValidateAntiForgeryToken]</code>, then only requests containing this header will be processed. </p>
-<div class="TIP"><h5>Tip</h5><p>Not all endpoints require this, but many do. 
-It&#39;s commonly enforced on admin-endpoints and on any endpoint which are not expected to be used from
-outside of the site. It&#39;s best practice to require this where possible. </p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p><code>GET</code> requests don&#39;t include this header, so don&#39;t enforce checking this in the backend for GET endpoints. </p>
-</div>
-<p>When you use standard <strong>2sxc JS</strong> WebAPI calls, the RequestVerificationToken is automatically included in the request. If you use your own JS API stack or plain vanilla browser implementations, make sure you add it. </p>
-<h2 id="rest-content-and-query-endpoint-security">REST Content and Query Endpoint Security</h2>
-<p>The built-in <a class="xref" href="../data/index.html">Content</a> and <a class="xref" href="../query/index.html">Query</a> endpoints use configuration based security. </p>
-<h3 id="prerequisites-platform-permissions-are-ok">Prerequisites: Platform Permissions are OK</h3>
-<p>Just to be aware of the obvious: if the platform (Dnn/Oqtane) don&#39;t allow access to the endpoints for whatever reason, then even the built-in endpoints won&#39;t do anything. </p>
-<h3 id="default-security-configuration-nothing-is-allowed">Default Security Configuration: Nothing is allowed</h3>
-<p>Both Content and Query are by default only available to admins and super-users. To make these available to other users (incl. Anonymous) this must be configured.</p>
-<h3 id="opening-security-configuration">Opening Security Configuration</h3>
-<p>These are the places you can configure to open security: </p>
-<ol>
-<li>On an <strong>App</strong> you can give general permissions that apply to all content types. This is usually not recommended. </li>
-<li>On a <strong>Query</strong> you can configure read permissions for specific users or user groups.</li>
-<li>On a <strong>Content-Type</strong> (the schema that says what fields exist) you can configure many permissions incl. read and write. You can even configure more exotic permissions like:<ol>
-<li><em>Anonymous users can create data, but they are set to draft and not visible</em></li>
-<li><em>Registered users can create data and only edit data which they created</em></li>
-</ol>
-</li>
-</ol>
-<div class="NOTE"><h5>Note</h5><p>Permissions are all locked by default, and adding permissions will only open up permissions.
-There are no deny-permissions.</p>
-</div>
-<div class="WARNING"><h5>Warning</h5><p>Some permissions like <em>If the user has View permissions, allow Read</em> require a <a class="xref" href="webapi-context.html">Module Context</a> since that&#39;s required to detect if the condition <em>View Permissions</em> is met. </p>
-</div>
-<h2 id="custom-webapi-permissions">Custom WebAPI Permissions</h2>
-<p>This is documented separately in <a class="xref" href="../../net-code/web-api/custom-web-api-security.html">Security &amp; Permissions in Custom WebAPIs</a></p>
-<h2 id="read-also">Read also</h2>
+<p>Every <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> you create has a REST URL. If you set the permissions, you can then read from the Query through REST. You can also pass query-parameters in the URL. Queries are Read APIs.</p>
+<h2 id="standard-query-calls">Standard Query Calls</h2>
+<p>The Query endpoint can be accessed on</p>
 <ul>
-<li><a class="xref" href="../../net-code/web-api/index.html">DotNet WebApi</a></li>
-<li><a class="xref" href="webapi-context.html">Context for 2sxc WebAPI and REST APIs</a> - every request has a context, it&#39;s best you read up on that</li>
-<li><a class="xref" href="../../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
+<li><code>.../app/auto/query/[your-query-name]</code> when you&#39;re accessing a query of the current App (from a dnn-page with this module), as then 2sxc uses auto-detect</li>
+<li><code>.../app/[app-folder]/query/[your-query-name]</code> using this endpoint from external (other module, other page, other website) as then auto-detect can&#39;t work. </li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
-<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
-<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
-</ul>
+<p>👉 read more about <a class="xref" href="../specs/url-schema.html">different URLs depending on how you access it</a></p>
+<h2 id="read-only-certain-streams">Read Only Certain Streams</h2>
+<p>A query may have many streams that your client may not necessarily need. To limit the results to only specific streams, add the stream name to the url, like this:</p>
+<p><code>.../app/auto/query/[your-query-name]/Default</code></p>
+<h2 id="http-get-only">HTTP GET only</h2>
+<p>Note that Query endpoints only support the http-verb GET.</p>
+<h2 id="naming-recommendations">Naming Recommendations</h2>
+<p>As the query-name is used in the path it&#39;s best-practice to use query-names without spaces and special characters. You can get it to work even with such specials, but we recommend you don&#39;t do that for simplicity. </p>
+<h2 id="post-with-guid-filter-wip">POST with GUID filter (WIP)</h2>
+<p>In 2sxc 11.20 we&#39;re experimenting with a post-access to the query which will allow you to also specify GUIDs to filter. This is not final yet. </p>
+<h2 id="setting-security">Setting Security</h2>
+<p>Querying a query requires read-permissions on that query. </p>
+<iframe src="https://azing.org/2sxc/r/34pAzAF2?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+
+
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 5.x</li>
-<li>Query added in 2sxc 8.10</li>
-<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
+<li>Introduced Content-REST API in 2sxc 5.x</li>
+<li>Queries introduced ca. 2sxc 6</li>
+<li>Query-API enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+<li>Option to provide GUIDs to limit what is returned 2sxc 11.20 WIP</li>
 </ol>
 </article>
           </div>
@@ -312,7 +277,7 @@ There are no deny-permissions.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/specs/webapi-security.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/web-api/query/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

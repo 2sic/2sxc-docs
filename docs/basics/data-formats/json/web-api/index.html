@@ -291,7 +291,18 @@
   }
 ]
 </code></pre><h2 id="write--put-is-the-same-just-sending">Write / PUT is the same, just sending</h2>
-<p>To create data or update it, use the identical format. </p>
+<p>To create data or update it, use the identical format. 
+When creating or updating data, there are some system properties you can also set, which affect how things are saved</p>
+<ul>
+<li><code>IsPublished</code><ul>
+<li><code>null</code> or <code>&quot;&quot;</code> will save new as is preset by permissions; on update it will leave the existing state unchanged</li>
+<li><code>true</code>, <code>&quot;true&quot;</code>, <code>1</code> will always set the published to true (if permissions allow)</li>
+<li><code>false</code>, <code>&quot;false&quot;</code>, <code>0</code> will alwyays set published to false</li>
+<li><code>&quot;draft&quot;</code> will set published to false; if it&#39;s an update and there was a published one before, that will remain published</li>
+</ul>
+</li>
+<li><code>For</code> can contain metadata headers to anchor this item to another thing. Will only affect new data, and be ignored on updates. See <a class="xref" href="../../../../js-code/2sxc-api/sxc.data.html">Data Services of the Sxc Controller (WIP #v13)</a></li>
+</ul>
 <h2 id="read-multi-language-data">Read Multi-Language Data</h2>
 <p>This is currently WIP</p>
 <h2 id="write-multi-language-data">Write Multi-Language Data</h2>

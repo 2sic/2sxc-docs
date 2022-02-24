@@ -50,7 +50,7 @@ When you use standard **2sxc JS** WebAPI calls, the RequestVerificationToken is 
 
 ## REST Content and Query Endpoint Security
 
-The built-in [Content](xref:WebApi.Content) and [Query](xref:WebApi.Query) endpoints use configuration based security. 
+The built-in [Content](xref:WebApi.Data.Index) and [Query](xref:WebApi.Query) endpoints use configuration based security. 
 
 ### Prerequisites: Platform Permissions are OK
 

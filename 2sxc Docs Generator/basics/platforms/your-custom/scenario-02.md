@@ -12,7 +12,7 @@ This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) 
 > Search for `#2sxcIntegration` in the code to find all the things that were adjusted to get it to work.
 
 > [!WARNING]
-> These docs are very WIP and incomplete.
+> These docs are still WIP.
 
 ## Scope of Scenario #2 - Edit EAV Data
 
@@ -22,9 +22,10 @@ This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) 
 1. Users can edit texts
 1. Users can save the result
 1. ADAM
+    1. Users can upload assets in the edit-dialog - which is stored in this new web (not in the original Dnn/Oqtane)
     1. Users can see previously uploaded assets
-    1. Users can upload assets in the edit-dialog
     1. Users can delete and rename assets in the edit-dialog
+    1. Assets are referenced using their path, not an ID (which would be the default in Dnn/Oqtane)
 1. Adam files of an entity can be shown on a page
 1. TODO:
 
@@ -73,6 +74,23 @@ For the page to be able to trigger edit dialogs, it needs at least these two fil
 2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
 The logic to do that and ensure it's part of the final output is sophisticated.
 So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.
+
+### 2.3 Give the JS Environment Variables
+
+The JS needs to know a few global things for it to work. 
+At the minimum it's the location of the WebAPI root as well as the location of the UI files. 
+For this you either need a `_jsApi` meta header or add this to the page after the $2sxc-js has been loaded:
+
+```js
+$2sxc.env.load({
+  // optional pageId: 0,
+  rvt: '@IntegrationConstants.EnvRvt',
+  api: '@IntegrationConstants.EnvApiRoot',
+  uiRoot: `@IntegrationConstants.EnvUiRoot`, 
+});
+```
+
+The previous code was taken from the `_Layout.cshtml` in the example. 
 
 ---
 
