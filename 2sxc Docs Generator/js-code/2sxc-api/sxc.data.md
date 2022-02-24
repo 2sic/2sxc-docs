@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Sxc.Data
 ---
 
-# Data Services of the Sxc Controller (WIP #v13)
+# Data Services of the Sxc Controller
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
@@ -68,12 +68,14 @@ When using `create(..., ...)` with two parameters you are creating metadata. The
 
 ```js
 {
-  Target: int; // one of known target types
+  TargetType: int; // one of known target types
   Number?: number; // Key if it's a number key
   String?: string; // Key if it's a string ey
   Guid?: string;   // Guid if it's a GUID key
 }
 ```
+
+See also [](xref:Basics.Metadata.TargetTypes)
 
 ---
 ## Tutorial

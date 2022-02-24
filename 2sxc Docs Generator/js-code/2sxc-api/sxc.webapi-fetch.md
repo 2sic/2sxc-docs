@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Sxc.WebApi.Fetch
 ---
 
-# The WebApi Helpers on the Sxc Controller using Fetch (WIP #v13)
+# The WebApi Helpers on the Sxc Controller using Fetch
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>

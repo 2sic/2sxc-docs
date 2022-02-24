@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Sxc.Query
 ---
 
-# Query Services of the Sxc Controller (WIP #v13)
+# Query Services of the Sxc Controller
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>

@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Sxc.WebApi.BareMetal
 ---
 
-# The WebApi Helpers on the Sxc Controller - Bare Metal (WIP #v13)
+# The WebApi Helpers on the Sxc Controller - Bare Metal
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>

@@ -21,13 +21,14 @@ This is part of the [Integration Guide](xref:Basics.Platforms.YourCustom.Index) 
 1. A link on a page can open the edit dialog
 1. Users can edit texts
 1. Users can save the result
+1. Users can see the history of an item and restore it to a previous state
 1. ADAM
     1. Users can upload assets in the edit-dialog - which is stored in this new web (not in the original Dnn/Oqtane)
     1. Users can see previously uploaded assets
     1. Users can delete and rename assets in the edit-dialog
     1. Assets are referenced using their path, not an ID (which would be the default in Dnn/Oqtane)
 1. Adam files of an entity can be shown on a page
-1. TODO:
+1. All API Controllers log what they do
 
 Not implemented
 
@@ -110,7 +111,7 @@ Specifically
 1. Implement a base class to assist in various aspects
     1. Add the request to the insights logs
     1. Ensure timing of the request to better spot issues
-    1. Provide the `Real` controller - see [](xref:NetCode.Conventions.ProxyControllers)
+    1. Make sure your controllers [are just proxies calling the `Real` controller](xref:NetCode.Conventions.ProxyControllers)
     1. Make some minor corrections to HTTP responses, so empty ones really return an HTTP 204
 1. Implement WebApis to answer on the appropriate endpoints (see examples)
     1. `DialogController` is required to get general information for dialogs to work

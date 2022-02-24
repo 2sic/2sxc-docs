@@ -124,6 +124,7 @@ This is the foundation for more enhanced scenarios. </p>
 <p><strong>Functionality</strong></p>
 <ol>
 <li>Can read / get EAV Data from an existing Dnn or Oqtane Database</li>
+<li>Has a dummy <code>IUser</code> implementation which says the user is always a SystemAdmin</li>
 <li>Can see <a class="xref" href="../../../net-code/debug/insights.html">Insights</a> to see what&#39;s happening internally and to verify everything is ok</li>
 </ol>
 <h2 id="integration-overview-for-basic-read-from-existing-db-scenarios">Integration Overview for Basic Read-From-Existing-DB Scenarios</h2>
@@ -167,6 +168,9 @@ robocopy /mir &quot;$(ProjectDir)..\..\Data\.data\ &quot; &quot;%BuildTarget%\.d
 </code></pre><hr>
 <h2 id="3-integrate-into-your-dependency-injection">3. Integrate into your Dependency Injection</h2>
 <p>The EAV and 2sxc need Dependency Injection to work. As of now (2022-02) we use the .net Standard 2.1 DI.</p>
+<div class="NOTE"><h5>Note</h5><p>The example below also registers the <code>IntUser</code> which is the Integration-implementation of the <code>IUser</code>.
+To see the code of that, just check out the example code in the project. </p>
+</div>
 <h3 id="31-general-principles">3.1 General Principles</h3>
 <p>The general principle is as follows:</p>
 <ol>
@@ -184,11 +188,14 @@ robocopy /mir &quot;$(ProjectDir)..\..\Data\.data\ &quot; &quot;%BuildTarget%\.d
 /// &lt;/summary&gt;
 public void ConfigureServices(IServiceCollection services)
 {
-    // Enable EAV
-    services.AddEav();
+  // #2sxcIntegration
+  // Register our Always-Super-User (to allow Insights to be used)
+  services.TryAddTransient&lt;IUser, IntUser&gt;();
+  // Enable all of EAV
+  services.AddEav();
 
-    // RazorPages - standard .net core MVC feature
-    services.AddRazorPages();
+  // RazorPages - standard .net core MVC feature
+  services.AddRazorPages();
 }
 </code></pre><h3 id="32-various-di-scenarios">3.2 Various DI Scenarios</h3>
 <p>Your project may already use DI, or it may not. Here are the common scenarios you will probably have:</p>

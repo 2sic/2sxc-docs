@@ -22,13 +22,32 @@ The following list are internally reserved Target-Types
 3. App Metadata - key should be number (AppId)
 4. Entity-Metadata - key should be guid of entity
 5. Content-Type Metadata - key should be string static-name
-6. Zone Metadata - not used ATM
-7. Reserved
-8. Reserved
+6. Zone Metadata
+7. Scope Metadata
+8. Dimension (Language) Metadata
 9. Reserved
-10. CMS-Object (like `file:72` or `page:42`) - key should be string
-11. 11-100 are reserved
-12. 101+ is free to define for your own purpose
+10. CMS-Item (like `file:72` or `page:42`) - key should be string
+11. System Metadata
+12. Site Metadata
+13. Reserved
+14. Page Metadata
+15. Reserved
+16. Module Metadata
+17. Reserved
+18. User Metadata
+19. `19`-`89` are Reserved
+90. `90` Custom Metadata target - for your most common custom target that only you care about
+91. `91` Custom1 - additional custom target for your own use, only your app cares about this
+92. `92` Custom2 - ...
+93. `93` Custom3
+94. `94` Custom4
+95. `95` Custom5
+96. `96` Custom6
+97. `97` Custom7
+98. `98` Custom8
+99. `99` Custom9
+100. `100` Reserved
+101. `101`+ is free to define for your own purpose, but ATM you probably shouldn't use them
 
 See also
 

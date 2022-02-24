@@ -19,6 +19,7 @@ This is the foundation for more enhanced scenarios.
 **Functionality**
 
 1. Can read / get EAV Data from an existing Dnn or Oqtane Database
+1. Has a dummy `IUser` implementation which says the user is always a SystemAdmin
 1. Can see [Insights](xref:NetCode.Debug.Insights.Index) to see what's happening internally and to verify everything is ok
 
 ## Integration Overview for Basic Read-From-Existing-DB Scenarios
@@ -79,6 +80,10 @@ robocopy /mir "$(ProjectDir)..\..\Data\.data\ " "%BuildTarget%\.data\ "
 
 The EAV and 2sxc need Dependency Injection to work. As of now (2022-02) we use the .net Standard 2.1 DI.
 
+> [!NOTE]
+> The example below also registers the `IntUser` which is the Integration-implementation of the `IUser`.
+> To see the code of that, just check out the example code in the project. 
+
 ### 3.1 General Principles
 
 The general principle is as follows:
@@ -97,11 +102,14 @@ This would be a minimal StartUp taken from `BasicEav01`:
 /// </summary>
 public void ConfigureServices(IServiceCollection services)
 {
-    // Enable EAV
-    services.AddEav();
+  // #2sxcIntegration
+  // Register our Always-Super-User (to allow Insights to be used)
+  services.TryAddTransient<IUser, IntUser>();
+  // Enable all of EAV
+  services.AddEav();
 
-    // RazorPages - standard .net core MVC feature
-    services.AddRazorPages();
+  // RazorPages - standard .net core MVC feature
+  services.AddRazorPages();
 }
 ```
 
