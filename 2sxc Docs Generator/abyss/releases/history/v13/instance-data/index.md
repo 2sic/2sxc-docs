@@ -142,4 +142,4 @@ After doing Step 1 & 2 you will have a working solution, but only super-users (h
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-di
+Shortlink to here: https://r.2sxc.org/brc-13-id
