@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Breaking Changes in EAV and 2sxc | 2sxc 13 / EAV 13 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Breaking Changes in EAV and 2sxc | 2sxc 13 / EAV 13 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../assets/logos/v13/2sxc13-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V13">
+<h1 id="breaking-changes-in-eav-and-2sxc">Breaking Changes in EAV and 2sxc</h1>
+
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h2 id="summary">Summary</h2>
+<p>V13 did some clean-up. It will rarely affect you, but if you are using the TimelineJs App it will.</p>
+<h2 id="breaking-changes-in-2sxc-1300">Breaking Changes in 2sxc 13.00</h2>
+<h3 id="api-changes-that-may-affect-you">API Changes that may affect you</h3>
+<ol>
+<li>An old, non-DI feature for Inner Content is being deprecated and will be removed in v14<br> <a class="xref" href="sxc-static-render/index.html">see instructions</a></li>
+<li>An old feature for publishing module <em>InstanceData</em> as JSON is removed<br> <a class="xref" href="instance-data/index.html">see instructions</a></li>
+<li>An old feature to create <em>DataSources</em> is removed<br> <a class="xref" href="datasource/index.html">see instructions</a></li>
+<li>Two old data-conversion features <em>DataToDictionary</em> and <em>EntitiesToDictionary</em> were removed<br> <a class="xref" href="conversion/index.html">see instructions</a></li>
+<li>Some internal functionality which enabled <code>IEntity</code> objects to convert links containing <code>file:...</code> and <code>page:...</code> has been removed. This only affects special deep code calls on <code>IEntity</code> and does _not affect <code>DynamicEntity</code> objects in Razor
+ <a class="xref" href="ientity-links/index.html">see instructions</a></li>
+<li><p>The old feature <code>Eav.Factory.Resolve&lt;T&gt;()</code> was deprecated and will be removed in v14<br> <a class="xref" href="eav-factory/index.html">see instructions</a></p>
+</li>
+<li><p>The old feature <code>BlockDataSource.Cache.GetContentType(...)</code> was removed
+ If you need a similar feature, please post an issue and we&#39;ll help</p>
+</li>
+<li>The Dnn Static <code>ToSic.Sxc.Dnn.Factory</code> is being deprecated and will be removed in v14
+ <a class="xref" href="dnn-factory/index.html">see instructions</a></li>
+</ol>
+<h3 id="major-updates-with-may-affect-you">Major Updates with may affect you</h3>
+<ol>
+<li>The Image Resizer is being replaced with <a href="https://www.imageflow.io/">ImageFlow</a></li>
+<li>The App containing Site-wide settings is changed to <code>Primary</code> - previously it used the <code>Content</code> app for this. We believe this won&#39;t affect many users, as the settings-stack is still very new in v12</li>
+</ol>
+<p>Things which probably don&#39;t affect anybody</p>
+<ol>
+<li>SQL changes - minor updates to the Database</li>
+<li>.net Framework and Dll Updated to Match Dnn 9 Requirements - but still works in Dnn 7.4.2<ol>
+<li>.net Framework 4.7.2 now required (previously .net Framework 4.5.1)</li>
+<li>.net Standard 2.0.3 required (previously .net Standard 1.6)<br><strong>Important</strong>: This will be referenced in the <code>web.config</code> upon installation</li>
+<li>Dependency Injection updated to .net core 2.1.1 (previously 1.1)</li>
+<li>Newtonsoft.Json updated to v10.0.3 </li>
+</ol>
+</li>
+<li>Entity Framework updated to 2.1.1 (previously 1.1) - Oqtane is unmodified and uses 3.1.4</li>
+<li>Dnn DLLs renamed<ol>
+<li><code>ToSic.Sxc.Dnn.dll</code> became <code>ToSic.Sxc.Dnn.Core.dll</code> for consistency</li>
+<li><code>ToSic.SexyContent.WebApi.dll</code> became <code>ToSic.Sxc.Dnn.WebApi.dll</code></li>
+<li><code>ToSic.SexyContent.Razor.dll</code> became <code>ToSic.Sxc.Dnn.Razor.dll</code></li>
+</ol>
+</li>
+<li>An internal object <code>ToSic.Eav.Apps.State</code> was removed</li>
+</ol>
+<p>Internal APIs which were removed</p>
+<ol>
+<li>Static <code>ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)</code></li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/abyss/releases/history/breaking-changes/v13/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

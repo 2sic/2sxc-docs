@@ -7,7 +7,7 @@ This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, sta
 
 ## Turn Dnn ☢️ and Oqtane 🩸 into a CMS
 
-2sxc is a CMS-Plugin for [Dnn/DotNetNuke](http://www.dnnsoftware.com/) and [Oqtane](xref:Basics.Platforms.Oqtane.Index). 
+2sxc is a CMS-Plugin for [Dnn/DotNetNuke](http://www.dnnsoftware.com/) and [Oqtane](xref:Abyss.Platforms.Oqtane.Index). 
 It makes content editing easier than Wordpress. 
 It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal. 
 And a very cool EAV data-management system. 
@@ -39,7 +39,7 @@ Here's the overview:
 1. A [list of features](http://2sxc.org/en/docs), concepts and examples can be found in the _Docs_ section of 2sxc.org, including things not specifically code related
 1. [Many solutions and recommendations](http://2sxc.org/en/blog) are found in the _Blog_ on 2sxc.org
 1. [Many demo, template and tutorial Apps](http://2sxc.org/en/Apps) are found in the _App Catalog_ on 2sxc.org
-1. [2sxc / EAV Roadmap](xref:Internal.Progress.Roadmap)
+1. [2sxc / EAV Roadmap](xref:Abyss.Releases.Roadmap)
 
 
 

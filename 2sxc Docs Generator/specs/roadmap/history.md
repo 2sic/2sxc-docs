@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:Internal.Progress.History)
+# Moved to [](xref:Abyss.Releases.History.Index)

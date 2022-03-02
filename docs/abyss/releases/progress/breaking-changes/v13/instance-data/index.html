@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fix Breaking Change InstanceData in v13 | 2sxc 13 / EAV 13 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fix Breaking Change InstanceData in v13 | 2sxc 13 / EAV 13 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../../assets/logos/v13/2sxc13-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.BreakingChanges.V13.InstanceData">
+<h1 id="fix-breaking-change-instancedata-in-v13">Fix Breaking Change <em>InstanceData</em> in v13</h1>
+
+<p><strong>Keywords:</strong> #Deprecated #InstanceData</p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here&#39;s how to fix any code in production. </p>
+<p>Specifically, three features were removed:</p>
+<ol>
+<li>The ability to publish Module Instance Data directly</li>
+<li>The ability to configure this in the View settings</li>
+<li>The JS API which was optimized to process the resulting data in a fairly untypical way</li>
+</ol>
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>These features were removed because they were almost never used, and newer mechanisms are much more appropriate than that old stuff. </p>
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>2sxc V3 (ca. 2013) introduced a feature where a Module could <em>publish</em> the data it was also showing on a normal screen as a WebApi / JSON call. </p>
+<p>It was required that a view activates this feature to ensure that it doesn&#39;t happen by accident. The settings in the view were like this (example from the <a href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimelineJs App</a>):</p>
+<p><img src="view-configuration-instance-data.jpg" width="100%" class="full-width"></p>
+<ol>
+<li>Go to the view configuration</li>
+<li>The old deprecated settings</li>
+<li>Enable data publishing (which opened the data for JS)</li>
+<li>The streams which were to be published</li>
+</ol>
+<p><em>Note that the stream <code>Default</code> is still called <code>Default</code> today, but <code>ListContent</code> is usually called <code>Header</code> today.</em></p>
+<p>Once this was setup, there was a way to get this data through a WebApi call. </p>
+<ol>
+<li>From v3 to ca. v6 there was a call which actually went through the Dnn Page (so it was slow)</li>
+<li>V6 to ca. v11 it used a call to <code>app-sys/AppContent/GetContentBlockData</code></li>
+<li>Later there was a special WebApi call to <code>app/auto/InstanceData</code> which did the same thing</li>
+</ol>
+<p>The format of the response was a bit special, specifically it looked like this (TimelineJs example):</p>
+<p><img src="web-api-instance-data-output.jpg" width="100%" class="full-width"></p>
+<ol>
+<li>The call to <code>InstanceData</code></li>
+<li>The data which was on a special <code>List</code> sub-object</li>
+</ol>
+<p>To complement this, there was a JS-API which worked as follows:</p>
+<pre><code class="lang-js">// Process each Timeline DOM-element on the page
+$(&quot;.timeline-embed&quot;).each(function() {
+    // Define our timeline element, get moduleId
+    var timeLineElement = $(this);
+    var sxc = $2sxc(this);
+
+    // Load the data from the 2SexyContent module and define a callback
+    sxc.data.on(&quot;load&quot;, function (source, data) { 
+        processDataAndCreateTimeline(source, data, sxc.id, timeLineElement) 
+    }).load();
+});
+</code></pre><p>Specifically, it used a <code>data.on</code> call to kind of say: <em>on load get the data from the current module</em>.</p>
+<p>The resulting data was then used in the JS - for example like this in TimelineJS:</p>
+<pre><code class="lang-js">// what should happen on loading of the data:
+function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
+    // Old code using the `in`, the `ListContent` and `.List[...]` stream
+    var content = data.in.Default.List;
+    var listContent = data.in.ListContent.List[0];
+    var timelineData = getTimelineData(moduleId, content, listContent);
+    ...
+</code></pre><h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
+<div class="TIP"><h5>Tip</h5><p>Below you&#39;ll find instructions how to create the same functionality using Visual Query and newer JS APIs. </p>
+<p>But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need. </p>
+</div>
+<h3 id="step-1-create-query-which-gets-instance-data">Step 1: Create Query which Gets Instance Data</h3>
+<p>This creates a Query API call which gets the same data as before, but in a newer API and newer standard. </p>
+<p>Create the Query - in our example we&#39;ll call it <code>ModuleData</code>
+<br>
+<img src="query-create.jpg" width="25%">
+<img src="query-edit.jpg" width="25%">
+<img src="query-run.jpg" width="25%">
+<img src="query-results.jpg" width="25%"></p>
+<p>After doing this, you have created a query which returns the same data as before, with 2 important differences:</p>
+<ol>
+<li>The stream <code>ListContent</code> is now called <code>Header</code></li>
+<li>There are no permissions configured yet for anonymous users to access the query</li>
+</ol>
+<h3 id="step-2-update-the-js-code-to-use-the-query-instead-of-the-data">Step 2: Update the JS code to use the Query instead of the .data</h3>
+<p>We have updated the TimelineJS code to use the new <code>fetchJson</code> <a href="https://github.com/2sic/app-timelinejs/blob/master/assets/scripts.js">api - see docs</a>:</p>
+<pre><code class="lang-js">// Process each Timeline DOM-element on the page
+$(&quot;.timeline-embed&quot;).each(function() {
+  // Define our timeline element, get moduleId
+  var timeLineElement = $(this);
+  var sxc = $2sxc(this);
+
+  // New version using fetch and the default Query we just created
+  sxc.webApi.fetchJson(&#39;app/auto/query/ModuleData&#39;)
+    .then((data) =&gt; processDataAndCreateTimeline(data, sxc.id, timeLineElement));
+});
+</code></pre><p>In addition, the data returned is a simpler. Specifically three things are now different: </p>
+<ol>
+<li>it doesn&#39;t have a level <code>in</code></li>
+<li>it doesn&#39;t need the use <code>.List</code></li>
+<li>in our new Query the Header is in a stream <code>Header</code> and not <code>ListContent</code></li>
+</ol>
+<p>This would be the modified code in TimelineJs:</p>
+<pre><code class="lang-js">function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
+  // Re-format streams that are contained in data
+  var content = data.Default;
+  var listContent = data.Header[0];
+  var timelineData = getTimelineData(moduleId, content, listContent);
+  ...
+</code></pre><h3 id="step-3-set-query-permissions">Step 3: Set Query Permissions</h3>
+<p>After doing Step 1 &amp; 2 you will have a working solution, but only super-users (host-users) can use the query because the read-permissions have not yet been configured. To configure them, use this checklist:</p>
+<iframe src="https://azing.org/2sxc/r/BE0HbDwA?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+
+
+<hr>
+<p>Shortlink to here: <a href="https://r.2sxc.org/brc-13-di">https://r.2sxc.org/brc-13-di</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/abyss/releases/progress/breaking-changes/v13/instance-data/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
