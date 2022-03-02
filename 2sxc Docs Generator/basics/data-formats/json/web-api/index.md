@@ -73,19 +73,48 @@ Some notes
 ## Write / PUT is the same, just sending
 
 To create data or update it, use the identical format. 
+
+## Special System Properties
+
 When creating or updating data, there are some system properties you can also set, which affect how things are saved
 
-* `IsPublished`
-    * `null` or `""` will save new as is preset by permissions; on update it will leave the existing state unchanged
-    * `true`, `"true"`, `1` will always set the published to true (if permissions allow)
-    * `false`, `"false"`, `0` will alwyays set published to false
-    * `"draft"` will set published to false; if it's an update and there was a published one before, that will remain published
-* `For` can contain metadata headers to anchor this item to another thing. Will only affect new data, and be ignored on updates. See [](xref:JsCode.2sxcApi.Sxc.Data)
+### IsPublished Controls Publishing Status (v13.03)
 
-## Read Multi-Language Data
+If you set the property `PublishState` it can have these values and effects:
 
-This is currently WIP
+* `null` or `""` will save new as is preset by permissions; on update it will leave the existing state unchanged
+* `true`, `"true"`, `1` will always set the published to true (if permissions allow)
+* `false`, `"false"`, `0` will alwyays set published to false
+* `"draft"` will set published to false; if it's an update and there was a published one before, that will remain published
 
-## Write Multi-Language Data
+### For Determines Metadata-Target (ca. v11)
 
-This is WIP
+`For` can contain metadata headers to anchor this item to another thing. Will only affect new data, and be ignored on updates. See [](xref:JsCode.2sxcApi.Sxc.Data)
+
+### ParentRelationship Adds Item to a Parent (v13.03)
+
+If your data has a property `ParentRelationship` with these fields:
+
+1. `Parent` - a GUID to the parent
+1. `Field` - the name of the field it should be added to (must be an entity-field)
+1. `Index` - the location it should be added to in that field which is a list of items
+
+Then upon creating the new item, it will also be added to that parent and it's list of items. 
+
+TODO: 
+
+todo
+
+## Read / Write Multi-Language Data
+
+This does not exist yet as a simple REST API but is a planned feature for 2022. For now, create your own WebApi if you need this.
+
+---
+
+## History
+
+* REST API added ca. v7 on the path `/app/content`
+* `For` feature added ca. v11
+* primary path changed to `/app/data/`
+* `PublishState` added v13.03
+* `ParentRelationship` added v13.03

@@ -42,6 +42,7 @@ V13 did some clean-up. It will rarely affect you, but if you are using the Timel
 
 Things which probably don't affect anybody
 
+1. SQL changes - minor updates to the Database
 1. .net Framework and Dll Updated to Match Dnn 9 Requirements - but still works in Dnn 7.4.2
     1. .net Framework 4.7.2 now required (previously .net Framework 4.5.1)
     1. .net Standard 2.0.3 required (previously .net Standard 1.6)  

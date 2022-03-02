@@ -317,13 +317,13 @@ These data sources are used internally, like for selecting an App in an edit dia
   </tr>
 
   <tr>
-    <td>[Apps](xref:ToSic.Eav.DataSources.System.Apps)</td>
+    <td>[Apps](xref:ToSic.Eav.DataSources.Sys.Apps)</td>
     <td>(system)</td>
     <td>Get all Apps in a Zone/Site</td>
   </tr>
 
   <tr>
-    <td>[Attributes](xref:ToSic.Eav.DataSources.System.Attributes)</td>
+    <td>[Attributes](xref:ToSic.Eav.DataSources.Sys.Attributes)</td>
     <td>(system)</td>
     <td>Get all Attributes of a Content-Type</td>
   </tr>
@@ -335,19 +335,19 @@ These data sources are used internally, like for selecting an App in an edit dia
   </tr>
 
   <tr>
-    <td>[ContentTypes](xref:ToSic.Eav.DataSources.System.ContentTypes)</td>
+    <td>[ContentTypes](xref:ToSic.Eav.DataSources.Sys.ContentTypes)</td>
     <td>(system)</td>
     <td>Get all ContentTypes of an App</td>
   </tr>
 
   <tr>
-    <td>[QueryInfo](xref:ToSic.Eav.DataSources.System.QueryInfo)</td>
+    <td>[QueryInfo](xref:ToSic.Eav.DataSources.Sys.QueryInfo)</td>
     <td>(system)</td>
     <td>Provide debug info when creating Queries</td>
   </tr>
 
   <tr>
-    <td>[Zones](xref:ToSic.Eav.DataSources.System.Zones)</td>
+    <td>[Zones](xref:ToSic.Eav.DataSources.Sys.Zones)</td>
     <td>(system)</td>
     <td>Get all Zones (Sites) in an installation</td>
   </tr>
