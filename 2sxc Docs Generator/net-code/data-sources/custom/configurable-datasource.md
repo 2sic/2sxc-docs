@@ -59,7 +59,7 @@ public ValueFilter(ValueLanguages valLanguages)
 }
 ```
 
-Note that we're using the [ConfigMask](xref:NetCode.DataSources.Custom.ConfigMask) command and using the standard [Token Syntax](xref:Basics.LookUp.Tokens). 
+Note that we're using the [ConfigMask](xref:NetCode.DataSources.Custom.ConfigMask) command and using the standard [Token Syntax](xref:Abyss.Parts.LookUp.Tokens). 
 The `ConfigMask(...)` will actually add the property to the `Configuration` manager which will later on fill in the tokens from values in the UI. 
 Things to note in the example above:
 

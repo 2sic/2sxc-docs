@@ -43,8 +43,8 @@ if your DataSource performs filtering or similar actions on existing data, then 
 
 A DataSource gets the configuration from a configuration provider. To better understand this, you should read:
 
-* [](xref:Basics.LookUp.Index)
-* [about tokens](xref:Basics.LookUp.Tokens) 
+* [](xref:Abyss.Parts.LookUp.Index)
+* [about tokens](xref:Abyss.Parts.LookUp.Tokens) 
 * [](xref:NetCode.DataSources.Custom.Configuration)
 * [ConfigMask(...)](xref:NetCode.DataSources.Custom.ConfigMask).
 

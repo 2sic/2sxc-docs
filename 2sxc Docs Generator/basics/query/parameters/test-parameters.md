@@ -20,9 +20,9 @@ The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) also allows you 
 
 Here's an example:
 
-<img src="../../look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
+<img src="~/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
 
-You will find a full explanation of this here: [](xref:Basics.LookUp.Params).
+You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params).
 
 > [!TIP]
 > As you can see in the example, even test params can contain more tokens if you need them. 
@@ -44,5 +44,5 @@ You will find a full explanation of this here: [](xref:Basics.LookUp.Params).
 ## History
 
 1. Introduced in 2sxc 07.00
-1. [Query Params](xref:Basics.LookUp.Params) added in 2sxc 10.22
+1. [Query Params](xref:Abyss.Parts.LookUp.Params) added in 2sxc 10.22
 

@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Breaking Changes Overview for 2sxc/EAV | 2sxc 13 / EAV 13 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Breaking Changes Overview for 2sxc/EAV | 2sxc 13 / EAV 13 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v13/2sxc13-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web API">Web API</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.BreakingChanges">
+<h1 id="breaking-changes-overview-for-2sxceav">Breaking Changes Overview for 2sxc/EAV</h1>
+
+<h2 id="breaking-changes-in-eav-and-2sxc-v13">Breaking Changes in EAV and 2sxc v13</h2>
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="summary">Summary</h3>
+<p>V13 did some clean-up. It will rarely affect you, but if you are using the TimelineJs App it will.</p>
+<h3 id="breaking-changes-in-2sxc-1300">Breaking Changes in 2sxc 13.00</h3>
+<h4 id="api-changes-that-may-affect-you">API Changes that may affect you</h4>
+<ol>
+<li>An old, non-DI feature for Inner Content is being deprecated and will be removed in v14<br> <a class="xref" href="v13/sxc-static-render/index.html">see instructions</a></li>
+<li>An old feature for publishing module <em>InstanceData</em> as JSON is removed<br> <a class="xref" href="v13/instance-data/index.html">see instructions</a></li>
+<li>An old feature to create <em>DataSources</em> is removed<br> <a class="xref" href="v13/datasource/index.html">see instructions</a></li>
+<li>Two old data-conversion features <em>DataToDictionary</em> and <em>EntitiesToDictionary</em> were removed<br> <a class="xref" href="v13/conversion/index.html">see instructions</a></li>
+<li>Some internal functionality which enabled <code>IEntity</code> objects to convert links containing <code>file:...</code> and <code>page:...</code> has been removed. This only affects special deep code calls on <code>IEntity</code> and does _not affect <code>DynamicEntity</code> objects in Razor
+ <a class="xref" href="v13/ientity-links/index.html">see instructions</a></li>
+<li><p>The old feature <code>Eav.Factory.Resolve&lt;T&gt;()</code> was deprecated and will be removed in v14<br> <a class="xref" href="v13/eav-factory/index.html">see instructions</a></p>
+</li>
+<li><p>The old feature <code>BlockDataSource.Cache.GetContentType(...)</code> was removed
+ If you need a similar feature, please post an issue and we&#39;ll help</p>
+</li>
+<li>The Dnn Static <code>ToSic.Sxc.Dnn.Factory</code> is being deprecated and will be removed in v14
+ <a class="xref" href="v13/dnn-factory/index.html">see instructions</a></li>
+</ol>
+<h4 id="major-updates-with-may-affect-you">Major Updates with may affect you</h4>
+<ol>
+<li>The Image Resizer is being replaced with <a href="https://www.imageflow.io/">ImageFlow</a></li>
+<li>The App containing Site-wide settings is changed to <code>Primary</code> - previously it used the <code>Content</code> app for this. We believe this won&#39;t affect many users, as the settings-stack is still very new in v12</li>
+</ol>
+<p>Things which probably don&#39;t affect anybody</p>
+<ol>
+<li>SQL changes - minor updates to the Database</li>
+<li>.net Framework and Dll Updated to Match Dnn 9 Requirements - but still works in Dnn 7.4.2<ol>
+<li>.net Framework 4.7.2 now required (previously .net Framework 4.5.1)</li>
+<li>.net Standard 2.0.3 required (previously .net Standard 1.6)<br><strong>Important</strong>: This will be referenced in the <code>web.config</code> upon installation</li>
+<li>Dependency Injection updated to .net core 2.1.1 (previously 1.1)</li>
+<li>Newtonsoft.Json updated to v10.0.3 </li>
+</ol>
+</li>
+<li>Entity Framework updated to 2.1.1 (previously 1.1) - Oqtane is unmodified and uses 3.1.4</li>
+<li>Dnn DLLs renamed<ol>
+<li><code>ToSic.Sxc.Dnn.dll</code> became <code>ToSic.Sxc.Dnn.Core.dll</code> for consistency</li>
+<li><code>ToSic.SexyContent.WebApi.dll</code> became <code>ToSic.Sxc.Dnn.WebApi.dll</code></li>
+<li><code>ToSic.SexyContent.Razor.dll</code> became <code>ToSic.Sxc.Dnn.Razor.dll</code></li>
+</ol>
+</li>
+<li>An internal object <code>ToSic.Eav.Apps.State</code> was removed</li>
+</ol>
+<p>Internal APIs which were removed</p>
+<ol>
+<li>Static <code>ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)</code></li>
+</ol>
+<h2 id="breaking-changes-in-eav-and-2sxc-v12">Breaking Changes in EAV and 2sxc v12</h2>
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="summary">Summary</h3>
+<p>V12 did a lot of internal rework to get it to run on Oqtane. Almost none of the changes will affect you. </p>
+<h3 id="version-1210">Version 12.10</h3>
+<ol>
+<li>Jquery is completely removed. This shouldn&#39;t affect your code, since all old code usually runs in DNN where jQuery is included by default. </li>
+</ol>
+<h3 id="version-1204">Version 12.04</h3>
+<ol>
+<li>DynamicEntity now has a property Count because it&#39;s a list as well, this could cause issues if a content-type has a property <code>Count</code></li>
+<li>DynamicEntity is now always a list. Because of this we removed the <code>DynamicEntityWithList</code> object. We believe the type is never referenced in user code, but if it is, this would be a breaking change.</li>
+<li>Many parts that prepare Entities returned a <code>Dictionary&lt;string, object&gt;</code> and now return an <code>IDictionary&lt;string, object&gt;</code>.<br>We believe this shouldn&#39;t hurt much, since the result would usually be in a <code>var</code> or returend directly to the API for streaming, but in case someone had used explicitly typed code, this will require a minor change</li>
+</ol>
+<h3 id="version-1205">Version 12.05</h3>
+<p>V12 adds new properties to Razor and WebAPI which could result in some surprises: <code>Path</code>, <code>Convert</code>, <code>Settings</code>, <code>Resources</code> and <code>DevTools</code>. 
+Especially the new <code>Path</code> and <code>Convert</code> could clash with existing code which had <code>@using System</code> or <code>@using System.IO</code> so the code would just read <code>Path.GetFileName(...)</code> or something. 
+Because of this, we only give the latest classes <code>Custom.Dnn.Razor12</code>, <code>Custom.Dnn.Code12</code>, <code>Custom.Hybrid.Razor12</code>, <code>Custom.Hybrid.Api12</code> etc. these properties. </p>
+<p>This means that previous base classes do not have these by design, and we encourage you to move to these latest base classes. </p>
+<blockquote><p>Important: 2sxc 12.00 - 12.04 also had some of these properties on <code>ToSic.Sxc.Dnn.RazorComponent</code> as well as <code>ToSic.Sxc.Dnn.ApiController</code>.
+So if you were eager to use these properties but didn&#39;t change the base class, you were able to use it. 
+To protect thousands of upgrade-scenarios we had to take them away from the old base classes. Sorry!</p>
+</blockquote>
+<p><strong>Possible Breaking Changes</strong></p>
+<ol>
+<li>We believe nothing broke, but it could be that some commands on <code>EntitiesToDictionary</code> or <code>DataToDictionary</code> were accidentally changed. Pls report so we can fix that. </li>
+<li>The <code>Link.To(...)</code> now returns safe URLs. This should not be an issue, but in rare cases post-processing of the string returned may expect spaces or something, which are now <code>%20</code></li>
+<li>We disabled old obsolete APIs on the new Razor12, Api12 and Code12 base classes. In case you were using this (not likely) you&#39;ll get an error telling you about this.</li>
+</ol>
+<h2 id="breaking-changes-in-eav-and-2sxc-v11">Breaking Changes in EAV and 2sxc v11</h2>
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="summary">Summary</h3>
+<p>There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn&#39;t affect normal developers. </p>
+<h3 id="version-1107---drop-the-old-edit-ui">Version 11.07 - Drop the old edit UI</h3>
+<ol>
+<li>In 11.07 the old edit UI was removed, so customizations for that UI would not be in effect any more. </li>
+</ol>
+<h3 id="version-1110---mainly-dependency-injection">Version 11.10 - Mainly Dependency Injection</h3>
+<ol>
+<li>In v11.10 we used much more dependency injection than ever before and stopped using static values which were still in the API in many places. Because of this, certain helper objects to create entities or lookup values were changed and their constructors were changed. We invested a lot of time to try to ensure that old APIs still work, but in case you&#39;re hit by one of these, make sure you check the DI and switch to resolving the objects using DI. </li>
+</ol>
+<h3 id="version-1111---language-detection">Version 11.11 - Language Detection</h3>
+<ol>
+<li>Previously the language detection used the Thread culture. Turns out this wasn&#39;t reliable because Dnn does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change. </li>
+<li>Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you. </li>
+<li>We changed all tokens to always resolve boolean values to <code>true</code>/<code>false</code> (previously they would have been changed to the current language, like <code>wahr</code> for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output. </li>
+</ol>
+<h3 id="version-1111---datasources-datasourceconfiguration">Version 11.11 - DataSources: DataSourceConfiguration</h3>
+<p>Note that we also improved the <code>DataSourceConfiguration</code> to an interface <code>IDataSourceConfiguration</code> and documented this. 
+As a side effect the API stays the same, but you will have to recompile your data sources for them to work again - sorry.</p>
+<h3 id="version-111103---ientity-values">Version 11.11.03 - IEntity Values</h3>
+<ol>
+<li><code>IEntity</code> had a command called <code>Value(fieldName)</code> which was probably never used. The idea used to be that it does language lookup internally, but we refactored this out since it could never be fully reliable because the full language list wasn&#39;t known to the <code>IEntity</code>. So we re-purposed the method (assuming it&#39;s not used) to just lookup the first occurance of the value. This way it`s useful for configurations and similar which are not multi-language. </li>
+<li><code>IEntity</code> also had a <code>Value(fieldname, lookup)</code> method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.</li>
+<li><code>IEntity</code> had a command called <code>PrimaryValue(fieldName)</code> which was probably never ever used, so we&#39;re deprecating it. Use <code>Value(fieldName)</code> instead.</li>
+</ol>
+<h3 id="version-111103---other">Version 11.11.03 - Other</h3>
+<ol>
+<li>UI Toolbar dropped the button and command for <code>item-history</code>, as the history is now part of the edit dialog</li>
+</ol>
+<h2 id="breaking-changes-in-eav-and-2sxc">Breaking Changes in EAV and 2sxc</h2>
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="summary">Summary</h3>
+<blockquote><p>Version 10 has a lot of small breaking changes because 
+we restructured the internal API so it&#39;s consistent when we publish it. 
+All these things shouldn&#39;t affect you, because they were internal APIs, 
+but in case it does - here&#39;s what we did.</p>
+</blockquote>
+<h3 id="version-1022-and-1023">Version 10.22 and 10.23</h3>
+<ol>
+<li>Renamed the <code>RootDataSource</code> and the Interface to <code>IAppRoot</code></li>
+<li>Split SOC of the <code>AppRoot</code> DataSource so that caching, Root-Metadata and ListCache is fully separate</li>
+<li>Since the Logging system now auto-picks up the code lines and names of the methods, we simplified the commands and dropped some parameters.</li>
+<li>Moved quite a bit of the DataSource objects into sub-objects, again for SOC.</li>
+</ol>
+<h3 id="version-1020-04-ca-2019-12-03">Version 10.20-04 (ca. 2019-12-03)</h3>
+<ol>
+<li>Renamed <code>DataTableDataSource</code> to <code>DataTable</code>, old name still works.</li>
+<li>Renamed <code>ExternalDataDataSource</code> to <code>ExternalData</code>, old name still works.</li>
+<li>Renamed <code>ToSic.SexyContent.DataSources.ModuleDataSource</code> to <code>ToSic.Sxc.DataSources.CmsBlock</code>, old name still works.</li>
+<li>Renamed <code>ToSic.Eav.DataSources.VisualQuery.VisualQueryAttribute</code> to <code>ToSic.Eav.DataSources.Queries.VisualQueryAttribute</code>, old name still works.</li>
+<li>Renamed <code>ToSic.SexyContent.Environment.Dnn7.Factory</code> to <code>ToSic.Sxc.Dnn.Factory</code>, old name still works.</li>
+<li>Renamed <code>ToSic.Eav.DataSources.BaseDataSource</code> to <code>ToSic.Eav.DataSources.DataSourceBase</code> for consistency, old name still works.</li>
+<li>Moved the LookUp namespaces into the Core DLL</li>
+</ol>
+<h3 id="version-1020-02-ca-2019-11-22">Version 10.20-02 (ca. 2019-11-22)</h3>
+<p>More internal changes which shouldn&#39;t affect anybody, but make the API ready for public docs...</p>
+<ol>
+<li>Moved/renamed the internal <code>Eav.AppDataPackage</code> to <code>Eav.Apps.AppState</code></li>
+<li>Moved/renamed some internal interfaces like <code>Entity...</code></li>
+<li>Did a major change for how <code>Attribute&lt;T&gt;</code> for relationships work.<br> Before they were <code>Attribute&lt;EntityRelationship&gt;</code> and now they are <code>Attribute&lt;IEnumerable&lt;IEntity&gt;&gt;</code>.<br> This also affects <code>Value&lt;EntityRelationship&gt;</code> which is now <code>Value&lt;IEnumerable&lt;IEntity&gt;&gt;</code></li>
+<li>Moved <code>Tenant&lt;T&gt;</code> and <code>Container&lt;T&gt;</code> including matching interfaces to <code>Eav.Environment</code></li>
+<li>Renamed <code>IAppIdentity</code> to <code>IInAppAndZone</code> and <code>IZoneIdentity</code> to <code>IInZone</code></li>
+<li>Renamed <code>ICacheKeyProvider</code> to <code>ICacheKey</code></li>
+<li>Renamed <code>CacheChainedIEnumerable&lt;T&gt;</code> to <code>SynchronizedList&lt;T&gt;</code></li>
+<li>Moved/Renamed <code>MetadataFor</code> to <code>Eav.Metadata.Target</code>. Left old name compatible.</li>
+<li>Moved some extension methods for IEntity from <code>ToSic.Eav.Data.Query</code> to <code>ToSic.Eav.Data</code></li>
+<li>Changed <code>Permissions</code> to be strongly typed EntityBased objects</li>
+</ol>
+<h3 id="version-102001-2019-11-12">Version 10.20.01 (2019-11-12)</h3>
+<ol>
+<li>Internal code now uses the term <code>Header</code> instead of <code>ListContent</code>. External code provides both for backward-compatibility</li>
+<li>moved internal interfaces for engines (Razor/Token) to final namespaces <code>ToSic.Sxc.Engines</code><ol>
+<li><code>IEngine</code></li>
+<li><code>EngineBase</code></li>
+<li><code>ITokenEngine</code></li>
+<li><code>IRazorEngine</code></li>
+</ol>
+</li>
+<li>corrected architecture - some template-management code had slipped into <code>Eav.Apps</code>, was moved back to <code>Sxc.Apps</code></li>
+<li>The <code>Template</code> object was moved from <code>Eav.Apps</code> to <code>Sxc.Views</code> and we added an interface <code>IView</code>. 
+ We also renamed the internal properti <code>ViewNameInUrl</code> to <code>UrlIdentifier</code>. </li>
+<li>To correct the API a CmsManager was created extending the AppManager, which is in charge of Views</li>
+<li>Moving internal stuff related to content blocks<ol>
+<li><code>IContentBlock</code> from <code>SexyContent.Interfaces</code> to <code>Sxc.Blocks</code></li>
+<li>from <code>ToSic.SexyContent.ISxcInstance</code> to <code>ToSic.Sxc.Blocks.IBlockContext</code></li>
+<li>actually moved a lot of things there incl. <code>ContentBlock</code> now <code>BlockConfiguration</code> and more - all internal stuff</li>
+</ol>
+</li>
+<li>Moving the <code>ToSic.SexyContent.App</code> to <code>ToSic.Sxc.Apps.App</code></li>
+<li>In a razor page, we added the preferred <code>Purpose</code>. The old <code>InstancePurpose</code> will still work</li>
+<li>Placed some things we just moved in 10.20 to a final place - since it&#39;s a very recent change, we updated the docs in the 10.20.00 section</li>
+</ol>
+<h4 id="changed-but-completely-internal">Changed, but completely internal</h4>
+<ol>
+<li>Some namespaces on <code>SexyContent.ContentBlocks</code> were moved to <code>Sxc.Blocks</code></li>
+</ol>
+<h3 id="version-102000-2019-11-05">Version 10.20.00 (2019-11-05)</h3>
+<ol>
+<li>the internal interface <code>IInPageEditingHelpers</code> was moved from <code>ToSic.SexyContent.Interfaces</code> to the namespace <code>ToSic.Sxc.Web</code></li>
+<li>the internal interface <code>ILinkHelper</code> was moved to <code>ToSic.Sxc.Web</code></li>
+<li>the internal interface <code>IHtmlHelper</code> was moved to <code>ToSic.Sxc.Dnn</code></li>
+<li>the property <code>Configuration</code> on dynamic entities was deprecated in 2sxc 4 and removed in 2sxc 10 - we don&#39;t think it was ever used</li>
+<li>moved internal Metadata interfaces (ca. 5) into final namespace <a class="xref" href="../../../api/dot-net/ToSic.Eav.Metadata.html">ToSic.Eav.Metadata</a></li>
+<li>Moved a bunch of internal interfaces which we believe were never used externally from <code>ToSic.Eav.Interfaces</code> to <code>ToSic.Eav.Data</code><ol>
+<li><code>ToSic.Eav.Data.IAttribute</code></li>
+<li><code>ToSic.Eav.IAttribute&lt;T&gt;</code></li>
+<li><code>IAttributeBase</code></li>
+<li><code>IAttributeDefinition</code></li>
+<li><code>IChildEntities</code> </li>
+<li><code>IContentType</code></li>
+<li><code>IDimension</code></li>
+<li><code>IEntityLight</code></li>
+<li><code>ILanguage</code></li>
+<li><code>IRelationshipManager</code></li>
+<li><code>IValue</code></li>
+<li><code>IValue&lt;T&gt;</code></li>
+<li><code>IValueOfDimension&lt;T&gt;</code></li>
+</ol>
+</li>
+<li>Moved a bunch of internal interfaces which we believe were never used externally from <code>ToSic.Eav.Apps.Interfaces</code> to <code>ToSic.Eav.Apps</code><ol>
+<li><code>IApp</code></li>
+<li><code>IAppData</code></li>
+<li><code>IAppDataConfiguration</code></li>
+<li><code>IAppEnvironment</code></li>
+<li><code>IEnvironmentFactory</code></li>
+<li><code>IInstanceInfo</code></li>
+<li><code>IItemListAction</code></li>
+<li><code>IPagePublishing</code></li>
+<li><code>ITenant</code></li>
+<li><code>IZoneMapper</code></li>
+</ol>
+</li>
+<li>the internal namespace <code>ToSic.Eav.ValueProvider</code> was changed to <code>ToSic.Eav.LookUp</code> and inside it<br> we renamed a bunch of internal interfaces and objects which we believe were never used externally</li>
+</ol>
+<h4 id="deprecatedchanged-but-not-broken">Deprecated/Changed, but not broken</h4>
+<ol>
+<li>the internal interface <code>ToSic.SexyContent.IAppAndDataHelpers</code> was renamed to <code>ToSic.Sxc.IDynamicCode</code> but the old interface still exists, so it shouldn&#39;t break<br> <em>it was used by Mobius Forms</em></li>
+<li>moved <code>ToSic.Eav.Interfaces.IEntity</code> to <code>ToSic.Eav.Data.IEntity</code> - but preserved the old interface for compatibility
+ <em>it was used everywhere</em></li>
+</ol>
+<h4 id="clean-up-but-not-broken">Clean-Up, but not broken</h4>
+<ol>
+<li>We&#39;re transitioning to the term <code>Header</code> instead of <code>ListContent</code> in templates.<br> The Razor pages and WebApi have this starting now, while old terms still work. 
+ Note that we&#39;re <em>not</em> creating a <code>HeaderPresentation</code>, because you should use <code>Header.Presentation</code></li>
+</ol>
+<h2 id="breaking-changes-in-eav-and-2sxc-version-9">Breaking Changes in EAV and 2sxc Version 9</h2>
+<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
+We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="version-92000-2018-03-04">Version 9.20.00 (2018-03-04)</h3>
+<ol>
+<li>Minor breaking change in ADAM properties, like <code>Id</code> instead of <code>FolderID</code> which was a leftover of Dnn naming.<br> see full <a href="https://2sxc.org/en/blog/post/working-with-the-breaking-change-adam-objects-2sxc-9-20">blog post</a></li>
+</ol>
+<h3 id="version-090800-2017-11-28">Version 09.08.00 (2017-11-28)</h3>
+<ol>
+<li>Minor breaking change <code>List&lt;IEntity&gt;</code> instead of <code>Dictionary&lt;int, IEntity&gt;</code> on the <code>IDataSource</code><br> see full <a href="https://2sxc.org/en/blog/post/fixing-the-breaking-change-in-2sxc-9-8-list-instead-of-dictionary">blog post</a></li>
+</ol>
+<h3 id="version-090300-2017-10-08">Version 09.03.00 (2017-10-08)</h3>
+<ol>
+<li>Breaking change on inconsistent naming <code>ToSic.Eav.IEntity</code> instead of <code>ToSic.Eav.Interfaces.IEntity</code>.<br> see full <a href="https://2sxc.org/en/blog/post/fixing-the-breaking-change-on-tosic-eav-ientity-in-2sxc-9-3">blog post</a></li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/abyss/releases/history/breaking-changes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

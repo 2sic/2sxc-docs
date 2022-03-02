@@ -12,7 +12,7 @@ If you want to create your own DataSource and use it in C# or the VisualQuery de
 
 * [Docs about the API](xref:NetCode.DataSources.Custom.Api)
 * [](xref:NetCode.DataSources.Custom.Configuration) 
-* how [LookUps work](xref:Basics.LookUp.Index)
+* how [LookUps work](xref:Abyss.Parts.LookUp.Index)
 
 ## Simple Example
 

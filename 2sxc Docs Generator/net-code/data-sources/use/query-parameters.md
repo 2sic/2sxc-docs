@@ -10,7 +10,7 @@ uid: NetCode.DataSources.Use.QueryParameters
 If a [Query](xref:Basics.Query.Index) has been configured to use **Parameters** 
 then your C# code can set these parameters before running the query. 
 
-This uses the [Params](xref:Basics.LookUp.Params) [LookUp](xref:Basics.LookUp.Index)
+This uses the [Params](xref:Abyss.Parts.LookUp.Params) [LookUp](xref:Abyss.Parts.LookUp.Index)
 
 #todoc - explain how it's configured to use parameters
 

@@ -1,3 +1,3 @@
 
 
-# Moved to [](xref:Basics.LookUp.Index)
+# Moved to [](xref:Abyss.Parts.LookUp.Index)

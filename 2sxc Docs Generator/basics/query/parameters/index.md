@@ -11,7 +11,7 @@ DataSources are _parts_ of a query, and each performs certain functions. To do t
 
 1. The Configuration-UI of this specific Data
 1. The general [Query-Parameters](xref:Basics.Query.Parameters.Index)
-1. Various [Look-Up Sources (Tokens)](xref:Basics.LookUp.Index)
+1. Various [Look-Up Sources (Tokens)](xref:Abyss.Parts.LookUp.Index)
 1. Other DataSources which give the configuration value on an In-Stream
 
 
@@ -21,7 +21,7 @@ Each _part_ is a DataSource. If it's configurable you'll see a button appear whe
 
 <img src="./assets/edit-settings-button.jpg" width="100%" class="full-width">
 
-The dialog which appears will be different for each type of DataSource. In the C# code of the DataSource, these parameters are available as [Settings](xref:Basics.LookUp.Settings).
+The dialog which appears will be different for each type of DataSource. In the C# code of the DataSource, these parameters are available as [Settings](xref:Abyss.Parts.LookUp.Settings).
 
 ## Configuration can be Values or Tokens
 
@@ -36,14 +36,14 @@ Queries can be parameterized with token placeholders like
 * `[App:Settings:PageSize]` 
 * `[Params:Sort]` 
 
-To understand these placeholder tokens, best read up on [](xref:Basics.LookUp.Tokens). 
+To understand these placeholder tokens, best read up on [](xref:Abyss.Parts.LookUp.Tokens). 
 There you'll read about how tokens work, where they come from, how to use default/fallback values and more. 
 
 Aside from the normal LookUps like `QueryString`, `User` etc. there are two special LookUps which you should know about: **Params** and **In**.
 
 ## Global Query Parameters with Params-Token
 
-Each Query can have a list of Parameters which all parts can access through the [Params LookUp](xref:Basics.LookUp.Params). This has some great benefits:
+Each Query can have a list of Parameters which all parts can access through the [Params LookUp](xref:Abyss.Parts.LookUp.Params). This has some great benefits:
 
 1. A developer can always see what parameters affect the Query
 1. If you use the same parameter in various places, you can be sure that it's always the same value.
@@ -51,9 +51,9 @@ Each Query can have a list of Parameters which all parts can access through the 
 
 This is what it looks like in VisualQuery:
 
-<img src="../../look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
+<img src="~/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
 
-You will find a full explanation of this here: [](xref:Basics.LookUp.Params).
+You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params).
 
 > [!TIP]
 > You _can_ write the tokens you need like `[QueryString:Id]` directly into any DataSource configuration. 
@@ -72,17 +72,17 @@ Here's how the settings of that are configured:
 
 <img src="./assets/query-part-with-in-params-edit.jpg" width="100%" class="full-width">
 
-Read more about the [In LookUp](xref:Basics.LookUp.In).
+Read more about the [In LookUp](xref:Abyss.Parts.LookUp.In).
 
 ## Settings from the Current Module (CmsBlock)
 
 Another common use case is when a normal Module-Content provides more settings. This uses the [CmsBlock DataSource](xref:ToSic.Sxc.DataSources.CmsBlock):
 
-<img src="../../look-up/assets/sql-with-in-param.jpg" width="100%" class="full-width">
+<img src="~/abyss/parts/look-up/assets/sql-with-in-param.jpg" width="100%" class="full-width">
 
 This shows how the In will look in the `Mod` stream to find the `PortalId`. Read more about this
 
-* [In LookUp](xref:Basics.LookUp.In)
+* [In LookUp](xref:Abyss.Parts.LookUp.In)
 * [](xref:ToSic.Sxc.DataSources.CmsBlock)
 
 

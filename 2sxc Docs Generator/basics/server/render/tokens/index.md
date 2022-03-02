@@ -32,7 +32,7 @@ Token templates use a Token Engine to generate Html. The convention uses placeho
 The template files usually reside inside app root folder or sub folder. These end with `.html`. 
 Placeholders and code usually is marked with `[...]` like `[Content:Name]`.
 
-Internally the Token-Engine uses [LookUps](xref:Basics.LookUp.Index) to find what can be shown. 
+Internally the Token-Engine uses [LookUps](xref:Abyss.Parts.LookUp.Index) to find what can be shown. 
 
 > [!TIP]
 > Tokens are very limited, we strongly recommend to use [Razor Templates](xref:Basics.Server.Render.Razor.Index) templates instead. 
@@ -57,9 +57,9 @@ Note that in Token-templates the `Header` is called the `ListContent` for histor
 
 ## Common LookUp Sources
 
-[!include[](~/basics/look-up/_include-common-sources.md)]
+[!include[](~/abyss/parts/look-up/_include-common-sources.md)]
 
-Read more about [LookUp Sources](xref:Basics.LookUp.Sources)
+Read more about [LookUp Sources](xref:Abyss.Parts.LookUp.Sources)
 
 ## Repeaters / Lists
 

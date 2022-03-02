@@ -46,7 +46,7 @@ In addition to data providing In-Streams, a DataSource may also use the data fro
 - explain a bit
 -->
 
-In these cases the _first item_ in the stream can be used as a parameter in the Settings using **In-Lookups** like `[In:Module:Category]`. Read more about [In-LookUps](xref:Basics.LookUp.In).
+In these cases the _first item_ in the stream can be used as a parameter in the Settings using **In-Lookups** like `[In:Module:Category]`. Read more about [In-LookUps](xref:Abyss.Parts.LookUp.In).
 
 
 ## In-Stream Names

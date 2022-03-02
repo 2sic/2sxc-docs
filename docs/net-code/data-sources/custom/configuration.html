@@ -248,7 +248,7 @@
 <li>A <strong><a class="xref" href="configuration-data.html">Content-Type</a></strong> which describes what fields can be edited</li>
 <li>The <strong><a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
 <li>The <strong>Configuration manager</strong> on the DataSource which helps you get the configuration</li>
-<li>The <strong><a class="xref" href="../../../basics/look-up/engine.html">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
+<li>The <strong><a class="xref" href="../../../abyss/parts/look-up/engine.html">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
 </ol>
 <h2 id="examples-of-configurations-needed">Examples of Configurations Needed</h2>
 <ul>
@@ -263,18 +263,18 @@
 <p>👉 <a class="xref" href="configurable-datasource.html">Configurable DataSource</a></p>
 <h2 id="configuration-basics">Configuration Basics</h2>
 <p>Each configuration value of a <a class="xref" href="../datasource.html">DataSource</a> must be a value (string, int etc.). 
-But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../basics/look-up/tokens.html">Token</a> like <code>[Settings:PageNumber]</code>. 
+But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> like <code>[Settings:PageNumber]</code>. 
 This token is parsed <em>before any data is queried</em> using <a class="xref" href="configuration-parse.html">Configuration.Parse()</a> to convert the Token to the expected value type. 
-Best read more about <a class="xref" href="../../../basics/look-up/tokens.html">Tokens</a> and how fallbacks, defaults and recursion work.  </p>
+Best read more about <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Tokens</a> and how fallbacks, defaults and recursion work.  </p>
 <p>The Tokens allow quite some fancy features:</p>
 <ol>
 <li>Your DataSource will use <code>[Settings:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
 <li>Since tokens also allow for default/fallback values, your code will often have <code>[Settings:Id||0]</code></li>
 <li>As tokens are recursive, the admin can specify things like <code>[QueryString:Id||752]</code> in the UI and your code (asking for <code>[Settings:Id]</code>) will get the ID from the URL or the default <code>752</code> as the Admin specified it. </li>
-<li>Thanks to <a class="xref" href="../../../basics/look-up/tokens.html">Token Stacking</a> a lot more is possible 😉</li>
+<li>Thanks to <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token Stacking</a> a lot more is possible 😉</li>
 </ol>
-<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../basics/look-up/sources.html">LookUp Sources</a>.</p>
-<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../basics/look-up/lookup-settings.html"><code>Settings</code> source</a>. This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>. So the token <code>[Settings:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>. </p>
+<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../abyss/parts/look-up/sources.html">LookUp Sources</a>.</p>
+<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html"><code>Settings</code> source</a>. This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>. So the token <code>[Settings:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>. </p>
 <h2 id="how-tokens-are-defined-settings-edited-and-resolved">How Tokens are Defined, Settings Edited and Resolved</h2>
 <p>When you&#39;re using the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
 <ol>
@@ -291,8 +291,8 @@ Best read more about <a class="xref" href="../../../basics/look-up/tokens.html">
 </ol>
 <h2 id="also-read">Also Read</h2>
 <ul>
-<li><a class="xref" href="../../../basics/look-up/index.html">LookUp System</a></li>
-<li><a class="xref" href="../../../basics/look-up/tokens.html">LookUp Tokens Explained</a></li>
+<li><a class="xref" href="../../../abyss/parts/look-up/index.html">LookUp System</a></li>
+<li><a class="xref" href="../../../abyss/parts/look-up/tokens.html">LookUp Tokens Explained</a></li>
 <li><a class="xref" href="api.html">DataSource API</a></li>
 <li><a class="xref" href="configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></li>

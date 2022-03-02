@@ -17,7 +17,7 @@ Most Custom DataSources will want to provide a configuration UI to the editor. T
 1. A **[Content-Type](xref:NetCode.DataSources.Custom.ConfigurationData)** which describes what fields can be edited
 1. The **[VisualQuery Attribute](xref:NetCode.DataSources.Custom.VisualQueryAttribute)** on your DataSource which references that Content-Type
 1. The **Configuration manager** on the DataSource which helps you get the configuration
-1. The **[LookUp Engine](xref:Basics.LookUp.Engine)** which resolves any Tokens in the configuration
+1. The **[LookUp Engine](xref:Abyss.Parts.LookUp.Engine)** which resolves any Tokens in the configuration
 
 ## Examples of Configurations Needed
 
@@ -39,20 +39,20 @@ Some of this information depends on the current context (ModuleId, UserId), othe
 ## Configuration Basics
 
 Each configuration value of a [DataSource](xref:NetCode.DataSources.DataSource) must be a value (string, int etc.). 
-But to allow greater flexibility in configuration, it usually starts as a string [Token](xref:Basics.LookUp.Tokens) like `[Settings:PageNumber]`. 
+But to allow greater flexibility in configuration, it usually starts as a string [Token](xref:Abyss.Parts.LookUp.Tokens) like `[Settings:PageNumber]`. 
 This token is parsed _before any data is queried_ using [Configuration.Parse()](xref:NetCode.DataSources.Custom.ConfigurationParse) to convert the Token to the expected value type. 
-Best read more about [Tokens](xref:Basics.LookUp.Tokens) and how fallbacks, defaults and recursion work.  
+Best read more about [Tokens](xref:Abyss.Parts.LookUp.Tokens) and how fallbacks, defaults and recursion work.  
 
 The Tokens allow quite some fancy features:
 
 1. Your DataSource will use `[Settings:...]` tokens and will automatically get the settings as they were added in the UI
 1. Since tokens also allow for default/fallback values, your code will often have `[Settings:Id||0]`
 1. As tokens are recursive, the admin can specify things like `[QueryString:Id||752]` in the UI and your code (asking for `[Settings:Id]`) will get the ID from the URL or the default `752` as the Admin specified it. 
-1. Thanks to [Token Stacking](xref:Basics.LookUp.Tokens) a lot more is possible 😉
+1. Thanks to [Token Stacking](xref:Abyss.Parts.LookUp.Tokens) a lot more is possible 😉
 
-When a DataSource is configured, it has many parameter LookUp Sources like `Module`, `QueryString`, `App` etc. These are shared and are identical for all objects. Read more about the [LookUp Sources](xref:Basics.LookUp.Sources).
+When a DataSource is configured, it has many parameter LookUp Sources like `Module`, `QueryString`, `App` etc. These are shared and are identical for all objects. Read more about the [LookUp Sources](xref:Abyss.Parts.LookUp.Sources).
 
-In your code you will usually not use these sources, but only use the [`Settings` source](xref:Basics.LookUp.Settings). This source only exists in C# and contains all the values the Admin/Editor entered in the [Configuration-UI](xref:NetCode.DataSources.Custom.ConfigurationData). So the token `[Settings:PageNumber]` will deliver the number or text in the input-field `pagenumber`. 
+In your code you will usually not use these sources, but only use the [`Settings` source](xref:Abyss.Parts.LookUp.Settings). This source only exists in C# and contains all the values the Admin/Editor entered in the [Configuration-UI](xref:NetCode.DataSources.Custom.ConfigurationData). So the token `[Settings:PageNumber]` will deliver the number or text in the input-field `pagenumber`. 
 
 ## How Tokens are Defined, Settings Edited and Resolved
 
@@ -74,8 +74,8 @@ So how does each scenario work out?
 
 ## Also Read
 
-* [](xref:Basics.LookUp.Index)
-* [](xref:Basics.LookUp.Tokens)
+* [](xref:Abyss.Parts.LookUp.Index)
+* [](xref:Abyss.Parts.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.Api)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 * [](xref:ToSic.Eav.DataSources.IDataStream)

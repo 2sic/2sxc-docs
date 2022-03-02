@@ -17,7 +17,7 @@ The ConfigMask is part of the [Configuration System](xref:NetCode.DataSources.Cu
 
 This value will later be used for
 
-1. Parsing [Tokens](xref:Basics.LookUp.Tokens) to find the correct parameter to use
+1. Parsing [Tokens](xref:Abyss.Parts.LookUp.Tokens) to find the correct parameter to use
 1. Use as part of the Cache-Key for high-performance caching.   
   This ensures that DataSources which have different data based on dynamic configuration (like using a URL parameter) will have separate caches for each value used. 
 
@@ -55,7 +55,7 @@ This example adds 8 configuration masks - let's find out what exactly happens.
 
 ## Read also
 
-* [Configuration using Tokens](xref:Basics.LookUp.Index)
+* [Configuration using Tokens](xref:Abyss.Parts.LookUp.Index)
 * [ConfigMask in the API](xref:ToSic.Eav.DataSources.DataSourceBase.ConfigMask*)
 * [](xref:NetCode.DataSources.Custom.Configuration)
 * [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)

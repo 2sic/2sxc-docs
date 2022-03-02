@@ -12,7 +12,7 @@ uid: NetCode.DataSources.Custom.ConfigurationParse
   { visibility: visible; } 
 </style>
 
-If a [DataSource](xref:NetCode.DataSources.DataSource) is [configurable](xref:NetCode.DataSources.Custom.Configuration), then the code must parse any [configuration tokens](xref:Basics.LookUp.Tokens) before accessing the values. 
+If a [DataSource](xref:NetCode.DataSources.DataSource) is [configurable](xref:NetCode.DataSources.Custom.Configuration), then the code must parse any [configuration tokens](xref:Abyss.Parts.LookUp.Tokens) before accessing the values. 
 
 This is done with `Configuration.Parse()`. It will cycle through all settings previously added by [ConfigMask](xref:NetCode.DataSources.Custom.ConfigMask) and resolve the tokens. 
 

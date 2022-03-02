@@ -53,8 +53,8 @@ allAuthors.TypeName = "[QueryString:TypeName]";
 var authors = allAuthors["Default"]; 
 ``` 
 
-In this case we specified a [Token](xref:Basics.LookUp.Tokens) which will be processed by the system and replaced before the DataSource does it's internal work. 
-Tokens use a [LookUp System](Basics.LookUp.Index to identify a source (in this case `QueryString`) 
+In this case we specified a [Token](xref:Abyss.Parts.LookUp.Tokens) which will be processed by the system and replaced before the DataSource does it's internal work. 
+Tokens use a [LookUp System](Abyss.Parts.LookUp.Index to identify a source (in this case `QueryString`) 
 and then ask that source for the value (in this case the url parameter `TypeName`). 
 
 Tokens have additional features like fallbacks (so `[QueryString:Typename||BlogPost]` would use `BlogPost` if the URL didn't have a parameter). Since you will usually prefer to do this kind of value-resolution in your C# code, tokens are rarely used here.
