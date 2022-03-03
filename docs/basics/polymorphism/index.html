@@ -130,13 +130,6 @@
 <h2 id="polymorph-folder-structure">Polymorph Folder Structure</h2>
 <p>Let&#39;s compare the perfect multi-edition (polymorph) setup to the classic solution:</p>
 <p><img src="assets/app-polymorph-classic-vs.png" width="100%" class="full-width"></p>
-<h2 id="progress">Progress</h2>
-<ul>
-<li>WebAPI Polymorphims was introduced in 2sxc 9.35</li>
-<li>Manual View-Polymorphism was introduced in 2sxc 9.35</li>
-<li>Automatic View-Polymorphism was introduced in 2sxc 11.00</li>
-<li>Data Polymorphism has not been implemented yet</li>
-</ul>
 <div class="NOTE"><h5>Note</h5><p>Automatic View-Polymorphism replaces the manual approach for CSS-Framework and common Open-Heart-Surgery scenarios. The manual approach is still recommended for complex polymorphism as well as A/B Testing.</p>
 </div>
 <h2 id="view-polymorphism">View Polymorphism</h2>
@@ -170,6 +163,18 @@
 <p>In case the automatic setup doesn&#39;t suit your needs, you can do it manually  like this:</p>
 <iframe src="https://azing.org/2sxc/r/hkzLSezS?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
+
+<h2 id="razor-guide-to-view-polymorphism">Razor Guide to View Polymorphism</h2>
+<div class="TIP"><h5>Tip</h5><p>These are just a few hints for you as you work with it.</p>
+</div>
+<ol>
+<li>Don&#39;t forget to activate it in the settings</li>
+<li>If the Razor code ever wants to know what edition (morph) it&#39;s in, check the <code>CmsContext.View.Edition</code> property. You would do this for things like<ol>
+<li>If you need a JS or CSS from the same folder</li>
+<li>If you need to link to a WebApi of the same edition</li>
+</ol>
+</li>
+</ol>
 <h2 id="webapi-polymorphims">WebAPI Polymorphims</h2>
 <ol>
 <li>Api Controllers are already fully polymorph. They can be placed in a subfolder like <code>[app-root]/live/api/WtfController.cs</code> and can be accessed using a url with the edition in the name, allowing multiple identically named controllers to be used.</li>
@@ -185,7 +190,8 @@
 <li>In your JS, you would then (while testing/developing) access this edition using<br><code>[dnn-api-root]/app/auto/dev/api/Wtf</code><br>without causing problems on the live solution, as all other users are still accessing the <code>live</code> edition, while you&#39;re working on the <code>dev</code> edition.</li>
 <li>Once everything works, deploy (copy) the now modified <code>WtfController.cs</code> from the <code>dev/api</code> folder to <code>live/api</code> and all users benefit from the changes.</li>
 </ol>
-<h2 id="next-development-steps">Next Development Steps</h2>
+<h2 id="data-polymorphism">Data Polymorphism</h2>
+<p>Data Polymorphism has not been implemented yet. The idea would be that changes to data or even schemas (fields of a type) would be staged as we work. </p>
 <p>For now, Data-Polymorphism is low priority, because we&#39;re not sure yet if we can &quot;pull this off&quot; in a way that won&#39;t confuse the users.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
@@ -201,7 +207,8 @@
 </ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 9.35 - WebApi Polymorphism</li>
+<li>WebAPI Polymorphims was introduced in 2sxc 9.35</li>
+<li>Manual View-Polymorphism was introduced in 2sxc 9.35</li>
 <li>Automatic View Polymorphism introduced in 2sxc 11.0 (css-frameworks and super-user)</li>
 </ol>
 </article>

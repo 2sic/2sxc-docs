@@ -1,8 +1,8 @@
 ---
-uid: Abyss.Platforms.YourCustom.Index
+uid: Abyss.Integration.Index
 ---
 
-# Your Custom Platform (WIP Docs)
+# Integration into Your Custom Platform (WIP Docs)
 
 EAV and 2sxc can be included as part of your own custom platform or application. 
 
@@ -17,9 +17,9 @@ You may want to do this for things such as:
 
 ## Integration Overview
 
-1. Start with [Scenario 1 - Read EAV Data](xref:Abyss.Platforms.YourCustom.Scenario01)
+1. Start with [Scenario 1 - Read EAV Data](xref:Abyss.Integration.Scenario01)
 
-1. Then expand to [Scenario 2 - Edit EAV Data](xref:Abyss.Platforms.YourCustom.Scenario01)
+1. Then expand to [Scenario 2 - Edit EAV Data](xref:Abyss.Integration.Scenario01)
 
 1. Then continue with Admin
 

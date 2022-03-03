@@ -42,41 +42,4 @@ Each platform and integration will just have the minimal _Proxy_ Controller whic
 
 * Introduced in v13
 
-Coverage: ca. 95% of all Controllers implement this as of 2022-03-01:
-
-1. Adam
-    * `Sxc.AdamControllerReal`
-    * ~~AppAssetsController~~ - Oqtane only, proxy/real concept doesn't apply
-1. Admin
-    * ApiExplorer
-    * `Sxc.AppControllerReal<T>` - 95% - there is still a bit of code left
-    * `AppFilesControllerReal`
-    * `Eav.AppPartsControllerReal` - 300seconds?
-    * `Sxc.DialogControllerReal`
-    * `Eav.EntityControllerReal`
-    * `Eav.FeaturesControllerReal`
-    * `Sxc.FieldControllerReal`
-    * `Eav.MetadataControllerReal`
-    * `Sxc.QueryControllerReal`
-    * `Sxc.TypeControllerReal` - 300seconds?
-    * `Sxc.ViewControllerReal` - 300seconds?
-    * `Eav.ZoneControllerReal`
-1. App
-    * ~~AppAssetsController~~ - Oqtane only, proxy/real concept doesn't apply
-    * `Sxc.AppDataControllerReal`
-    * `Sxc.AppQueryControllerReal`
-1. CMS
-    * ** Block
-    * `Sxc.ContentGroupControllerReal`
-    * `Sxc.EditControllerReal` (almost?)
-    * `Sxc.HistoryControllerReal`
-    * ~~Item~~
-    * `Sxc.ListControllerReal`
-1. Sys
-    * `Eav.InsightsControllerReal`
-    * ** Install
-    * `Eav.LicenseControllerReal`
-    * Log
-
-
 Shortlink: https://r.2sxc.org/proxy-controllers

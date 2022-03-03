@@ -1,10 +1,10 @@
 ---
-uid: Abyss.Platforms.YourCustom.Scenario01
+uid: Abyss.Integration.Scenario01
 ---
 
 # Your Custom Platform - Scenario #1 - Read EAV Data
 
-This is part of the [Integration Guide](xref:Abyss.Platforms.YourCustom.Index) for integrating EAV or 2sxc into your own solution. 
+This is part of the [Integration Guide](xref:Abyss.Integration.Index) for integrating EAV or 2sxc into your own solution. 
 
 > [!TIP]
 > You can find this fully implemented in the `Integration\BasicEav01` project.

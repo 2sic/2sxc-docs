@@ -1,5 +1,5 @@
 ---
-uid: Abyss.Platforms.YourCustom.Scenario-wip
+uid: Abyss.Integration.Scenario-wip
 ---
 
 # Your Custom Platform - Scenario XX Notes to maybe use later

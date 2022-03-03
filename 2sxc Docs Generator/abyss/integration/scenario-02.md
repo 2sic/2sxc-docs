@@ -1,10 +1,10 @@
 ---
-uid: Abyss.Platforms.YourCustom.Scenario02
+uid: Abyss.Integration.Scenario02
 ---
 
 # Your Custom Platform - Scenario #2 - Edit Data + ADAM
 
-This is part of the [Integration Guide](xref:Abyss.Platforms.YourCustom.Index) for integrating EAV or 2sxc into your own solution. 
+This is part of the [Integration Guide](xref:Abyss.Integration.Index) for integrating EAV or 2sxc into your own solution. 
 
 > [!TIP]
 > You can find this fully implemented in the `Integration\SxcEdit01` project

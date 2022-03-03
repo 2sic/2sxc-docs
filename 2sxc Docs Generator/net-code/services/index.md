@@ -51,6 +51,6 @@ Anything Oqtane has can be requested as a Service, but there are some caveats:
 
 ## Create your own Service
 
-👉 Check out [](xref:NetCode.Services.Index)
+👉 Check out [](xref:NetCode.Services.Custom)
 
 [!include["history"](_history.md)]

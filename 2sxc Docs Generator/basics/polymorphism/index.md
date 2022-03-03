@@ -29,13 +29,6 @@ Let's compare the perfect multi-edition (polymorph) setup to the classic solutio
 
 <img src="./assets/app-polymorph-classic-vs.png" width="100%" class="full-width">
 
-## Progress
-
-* WebAPI Polymorphims was introduced in 2sxc 9.35
-* Manual View-Polymorphism was introduced in 2sxc 9.35
-* Automatic View-Polymorphism was introduced in 2sxc 11.00
-* Data Polymorphism has not been implemented yet
-
 > [!NOTE]
 > Automatic View-Polymorphism replaces the manual approach for CSS-Framework and common Open-Heart-Surgery scenarios. The manual approach is still recommended for complex polymorphism as well as A/B Testing.
 
@@ -76,6 +69,18 @@ In case the automatic setup doesn't suit your needs, you can do it manually  lik
 
 <iframe src="https://azing.org/2sxc/r/hkzLSezS?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
+
+## Razor Guide to View Polymorphism
+
+> [!TIP]
+> These are just a few hints for you as you work with it.
+
+1. Don't forget to activate it in the settings
+1. If the Razor code ever wants to know what edition (morph) it's in, check the `CmsContext.View.Edition` property. You would do this for things like
+    1. If you need a JS or CSS from the same folder
+    1. If you need to link to a WebApi of the same edition
+
+
 ## WebAPI Polymorphims
 
 1. Api Controllers are already fully polymorph. They can be placed in a subfolder like `[app-root]/live/api/WtfController.cs` and can be accessed using a url with the edition in the name, allowing multiple identically named controllers to be used.
@@ -95,7 +100,9 @@ As of now, to use the WebApi Polymorp, this is what you would do:
 without causing problems on the live solution, as all other users are still accessing the `live` edition, while you're working on the `dev` edition.
 1. Once everything works, deploy (copy) the now modified `WtfController.cs` from the `dev/api` folder to `live/api` and all users benefit from the changes.
 
-## Next Development Steps
+## Data Polymorphism
+
+Data Polymorphism has not been implemented yet. The idea would be that changes to data or even schemas (fields of a type) would be staged as we work. 
 
 For now, Data-Polymorphism is low priority, because we're not sure yet if we can "pull this off" in a way that won't confuse the users.
 
@@ -113,5 +120,6 @@ For now, Data-Polymorphism is low priority, because we're not sure yet if we can
 
 ## History
 
-1. Introduced in 2sxc 9.35 - WebApi Polymorphism
+1. WebAPI Polymorphims was introduced in 2sxc 9.35
+1. Manual View-Polymorphism was introduced in 2sxc 9.35
 1. Automatic View Polymorphism introduced in 2sxc 11.0 (css-frameworks and super-user)
