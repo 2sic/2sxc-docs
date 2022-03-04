@@ -268,7 +268,7 @@
     command: &#39;refresh&#39;,   // The command name it&#39;s for
     phase: &#39;before&#39;,      // The workflow-step should run before the command is executed
     code: (wfArgs) =&gt; {   // The code which should be run
-      console.log(&#39;Toolbar asked to refresh, will return false to stop it. These are the arguments we got.&#39;, wfArgs);
+      console.log(&#39;Asked to refresh, will return false to stop it. These are the arguments we got.&#39;, wfArgs);
       return false;       // Return false to stop this command from happening
     }
   };
@@ -285,39 +285,33 @@
     // Stop the event here, otherwise parent elements which have an event listener would get triggered as well
     initEvent.stopPropagation();
   });
-</code></pre><h2 id="how-toolbar-workflows-work">How Toolbar Workflows Work</h2>
+</code></pre><h2 id="how-workflows-work">How Workflows Work</h2>
+<p>👉 Learn more about <a class="xref" href="../2sxc-api/cms/cms.command-workflow.html">Workflows</a></p>
+<h2 id="how-toolbars-register-the-workflows">How Toolbars Register the Workflows</h2>
 <p>Each toolbar can have different workflows attached. 
-Since the toolbars are generated on-the-fly and sometimes re-generated on partial reloading, you must register your workflow-steps when the toolbar reports that it&#39;s ready. So this is the flow of logic:</p>
+The toolbars are generated on-the-fly and sometimes re-generated on partial reloading.
+So you must register your workflow-steps when the toolbar reports that it&#39;s ready. 
+So this is the flow of logic:</p>
 <ol>
 <li>A toolbar is created - often on mouse-over</li>
 <li>It will fire a <code>toolbar-init</code> event contains a lot of internal information on the <code>event.details</code> and also a <code>workflow</code> object which is the <strong>Workflow Manager</strong> for this toolbar. </li>
 <li>Your code will pick up the <code>event.details.workflow</code> and then<ol>
-<li><code>add(...)</code> a workflow step</li>
+<li><code>add(...)</code> a workflow step - see <a class="xref" href="../2sxc-api/cms/cms.command-workflow.html">Workflow Step Object</a></li>
 <li>probably call <code>event.stopPropagation()</code> or similar to prevent other event listeners from also adding stuff. 
 This is especially important if you have entities within entities, in which case there may be listeners for each toolbar at various DOM levels. </li>
 </ol>
 </li>
-<li>The workflow step contains a <code>command</code> for which it will trigger, a <code>phase</code> (before/after) and a <code>code</code> what is to be done</li>
-<li>If your code is triggered, it will receive a <code>wfArgs</code> object containing a lot of internal stuff, workflow information and more</li>
-<li>If your code returns false, the workflow will stop - this can prevent the dialog from openening and the page from refreshing</li>
 </ol>
-<h2 id="specs">Specs</h2>
-<ol>
-<li>Possible <code>command</code> values - see the <a class="xref" href="../commands/index.html">Commands List</a>. </li>
-<li>There is also a special command called <code>refresh</code> which isn&#39;t a normal command used on a button, but an internal command called when refreshing the page through reload or ajax. This too can be handled and cancelled. </li>
-<li>Possible <code>phase</code> values: <code>before</code>, <code>after</code>, <code>all</code></li>
-</ol>
+<p>👉 Learn more about <a class="xref" href="../2sxc-api/cms/cms.command-workflow.html">Workflows</a></p>
+<ul>
+<li>TagToolbar workflows created using <code>@Edit.TagToolbar(...)</code> should attach the init-listener to that tag</li>
+<li>Toolbar workflows created using <code>@Edit.Toolbar(...)</code> should attach the init-listener to a parent tag</li>
+</ul>
 <h2 id="angular-implementation">Angular Implementation</h2>
 <p>In <code>dnn-sxc-angular</code> there is a directive for toolbars, which hides all this and just allows you to do a custom <code>refresh</code> as you need it. 
 See <a class="xref" href="../angular/dnn-sxc-angular/toolbars.html">Toolbars in Angular (dnn-sxc-angular)</a></p>
 <h2 id="react-implementation">React Implementation</h2>
 <p>As of now, there is no pre-built React implementation, but you can easily create your own based on the angular version.</p>
-<h2 id="limitations">Limitations</h2>
-<ul>
-<li>TagToolbar workflows created using <code>@Edit.TagToolbar(...)</code> should attach the init-listener to that tag</li>
-<li>Toolbar workflows created using <code>@Edit.Toolbar(...)</code> should attach the init-listener to a parent tag</li>
-<li>For custom actions using <code>$2sxc.cms.run(target, command, ...)</code> you should use the new (12.10) signature to add workflows - see <a class="xref" href="../2sxc-api/2sxc.cms.html">The $2sxc.cms API</a></li>
-</ul>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>

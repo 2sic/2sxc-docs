@@ -10,8 +10,8 @@ uid: JsCode.2sxcApi.Index
 You can create awesome solutions, customizing the edit-experience and working with 2sxc-data in your javascript.
 
 ## The Core JavaScript Helper Objects
-1. [$2sxc Manager](xref:JsCode.2sxcApi.$2sxc) which is the page-scope manager for everything
-1. [sxc Controller](xref:JsCode.2sxcApi.Sxc.Index) with is the module-specific controller (TODO ca. 70% documented)
+1. [$2sxc Manager](xref:JsCode.2sxcApi.$2sxc.Index) which is the page-scope manager for everything
+1. [Sxc Instance](xref:JsCode.2sxcApi.Sxc.Index) with is the module-specific controller (TODO ca. 70% documented)
 
 ## The Editing Experience
 1. [Overview to Editing Content](xref:Basics.Browser.EditUx.Index) 

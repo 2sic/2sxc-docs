@@ -122,7 +122,7 @@ As of now there are only limited stying functions:
 This happens automatically, if a surrounding HTML-tag has a class "sc-element". [more...](http://2sxc.org/en/Docs-Manuals/Feature/feature/2875)
 
 ## What Really Happens with the toolbar
-As previously noted, the toolbar actually puts some html/js into the page, which the javascript [$2sxc](xref:JsCode.2sxcApi.$2sxc) object will pick up and work with. Quite a lot happens on the client, and that will be documented some other day. Here just the short version:
+As previously noted, the toolbar actually puts some html/js into the page, which the javascript [$2sxc](xref:JsCode.2sxcApi.$2sxc.Index) object will pick up and work with. Quite a lot happens on the client, and that will be documented some other day. Here just the short version:
 
 1. js runs, picks up Toolbars
 2. jc reviews DOM to see what context it's in (either the module-instance or an inner-content)
