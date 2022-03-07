@@ -16,12 +16,11 @@ All controllers are implemented using the [proxy/real system](xref:NetCode.Conve
 
 | Part  | Route                         | In  | Controller      | Purpose & Notes                           |
 | ----- | -------------                 | --- | --------------- | ----------------------------------------- |
-| Adam  | `app/[name]/data` [note1]     | Sxc | `Adam`          |
-| Adam  | TODO:                         | Oqt | `AppAssets`     | Oqtane only, without proxy/real concept
-| Admin |                               | Sxc | `ApiExplorer`   | 
-| Admin |                               | Sxc | `App`           | TODO: not quite perfect yet 2022-03-07
+| Adam  | `app/[name]/data` [note1]     | Sxc | `Adam`          | REST for ADAM Assets
+| Adam  |                               | Oqt | `AppAssets`     | Oqtane only, without proxy/real concept
+| Admin |                               | Sxc | `ApiExplorer`   | Analyse App-Level WebApi Controllers
+| Admin |                               | Sxc | `App`           | Admin the App itself
 | Admin |                               | Sxc | `AppFiles`      | Get files for Code Editor
-| Admin |                               | Sxc | `App`           | 
 | Admin |                               | Eav | `AppParts`      | Export/Import of parts of the App
 | Admin |                               | Sxc | `Dialog`        | Get settings of dialogs
 | Admin |                               | Sxc | `Entity`        | Admin of Entities
@@ -33,17 +32,17 @@ All controllers are implemented using the [proxy/real system](xref:NetCode.Conve
 | Admin |                               | Sxc | `View`          | Admin: Views
 | Admin |                               | Eav | `Zone`          | Admin: Zone - information about the current Zone (site)
 | App   |                               | Oqt | `AppAssets`     | Oqtane only, without proxy/real concept
-| App   | `app/[name]/data` [note1]     | Sxc | `AppData`       | 
-| App   | `app/[name]/query` [note1]    | Sxc | `AppQuery`      | 
-| Cms   |                               | Sxc | `Block`         |
-| Cms   |                               | Sxc | `ContentGroup`  |
+| App   | `app/[name]/data` [note1]     | Sxc | `AppData`       | REST for App Data/Entities
+| App   | `app/[name]/query` [note1]    | Sxc | `AppQuery`      | REST for App Queries
+| Cms   |                               | Sxc | `Block`         | Manage Modules on a page
+| Cms   |                               | Sxc | `ContentGroup`  | Manage Content-Blocks on a page
 | Cms   | `cms/edit`                    | Sxc | `Edit`          | Edit: Edit data / entities (load/save)
 | Cms   | `cms/history`                 | Sxc | `History`       | Edit: History of an item incl. restore of a previous version
 | Cms   | `cms/list`                    | Sxc | `List`          | In-Page editing of lists
-| Sys   | `sys/insights`                | Eav | `Insights`      | 
-| Sys   | `sys/install`                 | Sxc | `Install` **    | TODO: no interface
-| Sys   | `sys/license`                 | Eav | `License`       | 
-| Sys   | `sys/log`                     | Eav | `Log` **        | TODO: no interface?
+| Sys   | `sys/insights`                | Eav | `Insights`      | Insights debugging
+| Sys   | `sys/install`                 | Sxc | `Install`       | Installation of 2sxc on the current system
+| Sys   | `sys/license`                 | Eav | `License`       | License / extensions information
+| Sys   | `sys/log`                     | Eav | `Log`           | Special logging settings
 
 [note1]: #note-app-data
 ## Note App Data
