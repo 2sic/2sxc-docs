@@ -14,51 +14,52 @@ This is a reference of all Controllers (System WebApi Endpoints) in 2sxc/eav.
 
 All controllers are implemented using the [proxy/real system](xref:NetCode.Conventions.ProxyControllers), except those were specifically noted. 
 
-1. Adam
-    1. `Sxc.AdamControllerReal`
-    1. `Oqt.AppAssetsController` - Oqtane only, proxy/real concept doesn't apply
-1. Admin
-    1. `Sxc.ApiExplorerControllerReal` - TODO: not quite perfect yet 2022-03-02
-    1. `Sxc.AppControllerReal<T>` - TODO: not quite perfect yet 2022-03-02, timeout300
-    1. `AppFilesControllerReal`  
-      Responsible for giving folders/files of the App-folder to the code editor. 
-    1. `Eav.AppPartsControllerReal`  
-    1. `Sxc.DialogControllerReal`  
-      In charge of getting settings etc. to dialogs.
-    1. `Eav.EntityControllerReal`  
-      Admin of Entities, like listing all entities of a specific type. 
-    1. `Eav.FeaturesControllerReal`  
-      Provides information about the features to the Features-Management dialogs
-    1. `Sxc.FieldControllerReal`  
-      Admin: Fields - like get all, create new etc.
-    1. `Eav.MetadataControllerReal`  
-      Admin: Metadata - like get all for a specific target
-    1. `Sxc.QueryControllerReal`  
-      Admin: Query - like create new, import/export etc.
-    1. `Sxc.TypeControllerReal`  
-      Admin: Content Types
-    1. `Sxc.ViewControllerReal`  
-      Admin: Views
-    1. `Eav.ZoneControllerReal`  
-      Admin: Zone - information about the current Zone (site)
-1. App
-    1. `Oqt.AppAssetsController` - Oqtane only, proxy/real concept doesn't apply
-    1. `app/[name]/data` - `Sxc.AppDataControllerReal`
-    1. `app/[name]/query` - `Sxc.AppQueryControllerReal`
-1. CMS
-    1. `Sxc.BlockControllerReal`
-    1. `Sxc.ContentGroupControllerReal`
-    1. `cms/edit` - `Sxc.EditControllerReal` (almost?)  
-      Edit: Edit data
-    1. `cms/history` - `Sxc.HistoryControllerReal`  
-      Edit: History of an item incl. restore of a previous version
-    1. `cms/list` - `Sxc.ListControllerReal`  
-      In-Page editing of lists
-1. Sys
-    1. `sys/insights` - `Eav.InsightsControllerReal`
-    1. ** `Sxc.InstallControllerReal` - TODO: no interface, timeout300
-    1. `sys/license` - `Eav.LicenseControllerReal`
-    1. ** Log - TODO: no interface?
+| Part  | Route                         | In  | Controller      | Purpose & Notes                           |
+| ----- | -------------                 | --- | --------------- | ----------------------------------------- |
+| Adam  | `app/[name]/data` [note1]     | Sxc | `Adam`          |
+| Adam  | TODO:                         | Oqt | `AppAssets`     | Oqtane only, without proxy/real concept
+| Admin |                               | Sxc | `ApiExplorer`   | 
+| Admin |                               | Sxc | `App`           | TODO: not quite perfect yet 2022-03-07
+| Admin |                               | Sxc | `AppFiles`      | Get files for Code Editor
+| Admin |                               | Sxc | `App`           | 
+| Admin |                               | Eav | `AppParts`      | Export/Import of parts of the App
+| Admin |                               | Sxc | `Dialog`        | Get settings of dialogs
+| Admin |                               | Sxc | `Entity`        | Admin of Entities
+| Admin |                               | Eav | `Features`      | Features to the Features-Management dialogs
+| Admin |                               | Sxc | `Field`         | Admin of Fields - like get all, create new etc.
+| Admin |                               | Eav | `Metadata`      | Admin: Metadata - like get all for a specific target
+| Admin |                               | Sxc | `Query`         | Admin: Query - like create new, import/export etc.
+| Admin |                               | Sxc | `Type`          | Admin: Content Types
+| Admin |                               | Sxc | `View`          | Admin: Views
+| Admin |                               | Eav | `Zone`          | Admin: Zone - information about the current Zone (site)
+| App   |                               | Oqt | `AppAssets`     | Oqtane only, without proxy/real concept
+| App   | `app/[name]/data` [note1]     | Sxc | `AppData`       | 
+| App   | `app/[name]/query` [note1]    | Sxc | `AppQuery`      | 
+| Cms   |                               | Sxc | `Block`         |
+| Cms   |                               | Sxc | `ContentGroup`  |
+| Cms   | `cms/edit`                    | Sxc | `Edit`          | Edit: Edit data / entities (load/save)
+| Cms   | `cms/history`                 | Sxc | `History`       | Edit: History of an item incl. restore of a previous version
+| Cms   | `cms/list`                    | Sxc | `List`          | In-Page editing of lists
+| Sys   | `sys/insights`                | Eav | `Insights`      | 
+| Sys   | `sys/install`                 | Sxc | `Install` **    | TODO: no interface
+| Sys   | `sys/license`                 | Eav | `License`       | 
+| Sys   | `sys/log`                     | Eav | `Log` **        | TODO: no interface?
+
+[note1]: #note-app-data
+## Note App Data
+
+Some things have a virtual REST route. This includes
+
+1. Adam files
+1. Data / Entities
+
+The route is basically made of multiple parts
+
+`[api-root]/app/[app-identifier]/[topic]/[optional-details]`
+
+We'll document this more in future.
+
+
 
 
 ---
