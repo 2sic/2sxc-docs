@@ -169,7 +169,7 @@ public interface ILinkHelper : INeedsDynamicCodeRoot</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_Image_System_String_System_Object_System_Object_System_String_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.Image(System.String%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/LinkHelper/ILinkHelper.cs/#L122">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/LinkHelper/ILinkHelper.cs/#L125">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_Image_" data-uid="ToSic.Sxc.Web.ILinkHelper.Image*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_Image_System_String_System_Object_System_Object_System_String_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_" data-uid="ToSic.Sxc.Web.ILinkHelper.Image(System.String,System.Object,System.Object,System.String,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object)">Image(String, Object, Object, String, Object, Object, Object, String, String, String, Object, String, Object)</h4>
@@ -208,14 +208,15 @@ public interface ILinkHelper : INeedsDynamicCodeRoot</code></pre>
         <td><ul>
 <li>A standardized Image-Settings object like Settings.Images.Content - see <a href="http://r.2sxc.org/settings">http://r.2sxc.org/settings</a></li>
 <li>Or a dynamic object containing settings properties (this can also be a merged custom + standard settings)</li>
-<li>Or a specially prepared <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings. If this is provided, only <code>factor</code> will still be respected, all other settings like <code>width</code> on this command will be ignored.</li>
+<li>Or a specially prepared <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings.
+If this is provided, only <code>factor</code> will still be respected, all other settings like <code>width</code> on this command will be ignored.</li>
 </ul>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">factor</span></td>
-        <td><p>A multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5. It only affects sizes from the settings.</p>
+        <td><p>A multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5.</p>
 </td>
       </tr>
       <tr>
@@ -227,13 +228,13 @@ public interface ILinkHelper : INeedsDynamicCodeRoot</code></pre>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">width</span></td>
-        <td><p>Optional width parameter. Cannot be used if <code>factor</code> is set. Usually takes the default from the <code>settings</code>.</p>
+        <td><p>Optional width parameter. Usually takes the default from the <code>settings</code>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">height</span></td>
-        <td><p>Optional height parameter. Can only be 0 if <code>factor</code> is set, no not specify a height. Usually takes the default from the <code>settings</code>.</p>
+        <td><p>Optional height parameter. Usually takes the default from the <code>settings</code>.</p>
 </td>
       </tr>
       <tr>
@@ -263,7 +264,7 @@ public interface ILinkHelper : INeedsDynamicCodeRoot</code></pre>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">aspectRatio</span></td>
-        <td><p>Aspect Ratio width/height, only relevant if a <code>factor</code> is supplied. Usually takes default from the <code>settings</code> or is ignored. </p>
+        <td><p>Aspect Ratio width/height, only relevant if a <code>width</code> is supplied. Can&apos;t be used together with height. Usually takes default from the <code>settings</code> or is ignored. </p>
 </td>
       </tr>
       <tr>
@@ -310,7 +311,8 @@ In these cases the height is not applied but the aspectRatio is used, which usua
 <ul>
 <li>New in 2sxc 12.03</li>
 <li>type added ca. v12.08</li>
-<li>srcSet added v13.01</li>
+<li>Option to use <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> added in v13.03</li>
+<li>Factor originally didn&apos;t influence width/height if provided here, updated it v13.03 to influence that as well</li>
 </ul>
 </div>
   <span class="small pull-right mobile-hide">
@@ -318,7 +320,7 @@ In these cases the height is not applied but the aspectRatio is used, which usua
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Web_ILinkHelper_SetDebug_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Web.ILinkHelper.SetDebug(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/LinkHelper/ILinkHelper.cs/#L143">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Web/LinkHelper/ILinkHelper.cs/#L146">View Source</a>
   </span>
   <a id="ToSic_Sxc_Web_ILinkHelper_SetDebug_" data-uid="ToSic.Sxc.Web.ILinkHelper.SetDebug*"></a>
   <h4 id="ToSic_Sxc_Web_ILinkHelper_SetDebug_System_Boolean_" data-uid="ToSic.Sxc.Web.ILinkHelper.SetDebug(System.Boolean)">SetDebug(Boolean)</h4>
