@@ -239,12 +239,12 @@
 </div><style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 <p>A common need in JS is to read/write data from/to the backend. </p>
-<p>2sxc 12 / 13 introduce new JS APIs for this. </p>
+<p>2sxc 13 introduce new JS APIs for this. </p>
 <ul>
 <li><code>data(...)</code> gets a data service to get one or many items of the same type, and also create/update data (this document)</li>
 <li><code>query(...)</code> gets a query service to call server-side queries 👉 <a class="xref" href="sxc.query.html">docs</a></li>
 </ul>
-<p><em>Note: You can do all what these services do using <a class="xref" href="sxc.webapi-fetch.html">webApi.fetch(...)</a>, but this is more convenient.</em></p>
+<p><em>Note: You can do all what these services do using <a class="xref" href="sxc.webapi-fetch.html">webApi.fetchJson(...)</a>, but this is more convenient.</em></p>
 <div class="TIP"><h5>Tip</h5><p>You may sometimes find old code which does something like <code>data.on(...)</code> or <code>data.sourceUrl</code> - this is obsolete and will not work any more.</p>
 </div>
 <p>👉 Check out the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/js200/page">Js Data and Query Tutorials</a></p>
@@ -279,15 +279,8 @@ authorsSvc.getAll().then(authors =&gt; console.log(authors));
 <p>When using <code>create(..., ...)</code> with two parameters you are creating metadata. The signature of the address-object is </p>
 <ol>
 <li>Either a string containing a GUID to an entity (the most common case) - like <code>31f509f1-e553-4371-bf60-3d5e98937b79</code></li>
-<li>Or a full target identifier in the schema below</li>
+<li>Or a full target identifier with TargetType and the ID as String, Number or Guid - see <a class="xref" href="../../../abyss/data-formats/json/web-api/index.html">JSON Data Format used in WebAPI calls (technical)</a></li>
 </ol>
-<pre><code class="lang-js">{
-  TargetType: int; // one of known target types
-  Number?: number; // Key if it&#39;s a number key
-  String?: string; // Key if it&#39;s a string ey
-  Guid?: string;   // Guid if it&#39;s a GUID key
-}
-</code></pre><p>See also <a class="xref" href="../../../basics/metadata/target-types.html">Metadata Target Types</a></p>
 <hr>
 <h2 id="tutorial">Tutorial</h2>
 <p>👉 <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/js200/page">Js Data and Query Tutorials</a></p>

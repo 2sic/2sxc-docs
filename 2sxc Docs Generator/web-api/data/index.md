@@ -34,9 +34,9 @@ uid: WebApi.Data.Index
 
 Read [](xref:Basics.DataFormats.Json.WebApi.Index) to understand the data format.
 
-## How to Read Data-Items/Entities
+## Read Data-Items/Entities
 
-Assume you have the [blog-app](xref:App.Blog) installed and your JS would request a JSON from this endpoint (logged in as host, so security is not an issue):
+Assume you have the [blog-app](xref:App.Blog) installed and your JS would request a JSON from this endpoint (logged in as SystemAdmin, so security is not an issue):
 
 `[root-path]/app/auto/data/BlogPost`
 
@@ -50,17 +50,17 @@ Reading `[root-path]/app/auto/data/BlogPost/1050` would give you exactly one Blo
 > or work your way into the [](xref:WebApi.Specs.UrlSchema)
 
 
-## How to Create Data-Items/Entities
+## Create Data-Items/Entities
 
 Doing an http POST to this `[root-path]/app/auto/data/BlogPost` with a POST body of `{ "Title": "changed title"}` would let you create the item. You will get a return message containing ID, GUID etc. of the new item. 
 
-If your POST package also contains an `EntityGuid` then this will be used as the GUID for the new item. 
+If your POST package also contains a `EntityGuid` then this will be used as the GUID for the new item. 
 
-## How to Update Data-Items/Entities
+## Update Data-Items/Entities
 
 Doing an http POST to this `[root-path]/app/auto/data/BlogPost/1050` with a POST body of `{ "Title": "changed title"}` would let you update the item 1050.
 
-## How to Delete Data-Items/Entities
+## Delete Data-Items/Entities
 
 Doing an http DELETE to this `[root-path]/app/auto/data/BlogPost/1050` would delete the item 1050.
 

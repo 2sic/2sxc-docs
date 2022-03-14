@@ -9,7 +9,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.Fetch
 
 Modern browsers all support `fetch` and this is now the preferred way to get data. 
 
-2sxc 12 / 13 introduce new JS APIs for this. 
+2sxc 13 introduce new JS APIs for this. 
 
 _Note: If you want to use other AJAX libraries, check out the [Bare Metal APIs](xref:JsCode.2sxcApi.Sxc.WebApi.BareMetal)._
 
@@ -17,7 +17,7 @@ _Note: If you want to use other AJAX libraries, check out the [Bare Metal APIs](
 
 The simple APIs perform a browser `fetch` and return a promise. This is very similar to jQuery. 
 
-* `webApi.fetch(...)` performs a basic [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns a standard promise containing a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object
+* `webApi.fetchRaw(...)` performs a basic [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) and returns a standard promise containing a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object
 * `webApi.fetchJson(...)` performs a `fetch` and returs a promise containing an object which came from JSON **recommended**
 
 ## Parameters

@@ -9,12 +9,12 @@ uid: JsCode.2sxcApi.Sxc.Query
 
 A common need in JS is to read/write data from/to the backend. 
 
-2sxc 12 / 13 introduce new JS APIs for this. 
+2sxc 13 introduce new JS APIs for this. 
 
 * `data(...)` gets a data service to read/write data 👉 [docs](xref:JsCode.2sxcApi.Sxc.Data)
 * `query(...)` gets a query service to call server-side queries (this document)
 
-_Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
+_Note: You can do all what these services do using [webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
 
 👉 Check out the [](xref:Tut.JsData)
 

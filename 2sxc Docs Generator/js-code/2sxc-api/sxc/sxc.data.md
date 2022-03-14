@@ -9,12 +9,12 @@ uid: JsCode.2sxcApi.Sxc.Data
 
 A common need in JS is to read/write data from/to the backend. 
 
-2sxc 12 / 13 introduce new JS APIs for this. 
+2sxc 13 introduce new JS APIs for this. 
 
 * `data(...)` gets a data service to get one or many items of the same type, and also create/update data (this document)
 * `query(...)` gets a query service to call server-side queries 👉 [docs](xref:JsCode.2sxcApi.Sxc.Query)
 
-_Note: You can do all what these services do using [webApi.fetch(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
+_Note: You can do all what these services do using [webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
 
 > [!TIP]
 > You may sometimes find old code which does something like `data.on(...)` or `data.sourceUrl` - this is obsolete and will not work any more.
@@ -64,18 +64,7 @@ A Data Service has the following commands:
 When using `create(..., ...)` with two parameters you are creating metadata. The signature of the address-object is 
 
 1. Either a string containing a GUID to an entity (the most common case) - like `31f509f1-e553-4371-bf60-3d5e98937b79`
-1. Or a full target identifier in the schema below
-
-```js
-{
-  TargetType: int; // one of known target types
-  Number?: number; // Key if it's a number key
-  String?: string; // Key if it's a string ey
-  Guid?: string;   // Guid if it's a GUID key
-}
-```
-
-See also [](xref:Basics.Metadata.TargetTypes)
+1. Or a full target identifier with TargetType and the ID as String, Number or Guid - see [](xref:Basics.DataFormats.Json.WebApi.Index)
 
 ---
 ## Tutorial
