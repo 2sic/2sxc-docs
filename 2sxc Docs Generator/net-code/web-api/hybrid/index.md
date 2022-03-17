@@ -117,7 +117,8 @@ The Attributes come from these namespaces:
 
 * Dnn: `DotNetNuke.Web.Api`
   * `[DnnModuleAuthorize]` - the most common security attribute
-  * `[DnnAuthorize]` - for special cases, we're not sure if it's ever used
+  * `[DnnAuthorize]` - for special cases, we're not sure if it's ever used.  
+    _my understanding is that it's for protecting an endpoint that will be accessed by users, but not from a module on the page, so the module-context would be missing. note that it's very different from the DnnModuleAuthorize_
   * `[SupportedModules]` - to limit access to an API from specific modules. You probabably won't ever use this. 
 * Oqtane: `Microsoft.AspNetCore.Authorization` 
   * `[Authorize]` - standard Authorize of .net core
