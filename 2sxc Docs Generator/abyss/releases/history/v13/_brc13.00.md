@@ -17,7 +17,7 @@
     [see instructions](xref:Abyss.Releases.History.V13.EavFactory)
 
 1. The old feature `BlockDataSource.Cache.GetContentType(...)` was removed
-    If you need a similar feature, please post an issue and we'll help
+    [see instructions](xref:Abyss.Releases.History.V13.DataSource.Cache)
 1. The Dnn Static `ToSic.Sxc.Dnn.Factory` is being deprecated and will be removed in v14
     [see instructions](xref:Abyss.Releases.History.V13.DnnFactory)
 
