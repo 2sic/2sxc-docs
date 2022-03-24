@@ -45,7 +45,7 @@ Always start by getting the [](xref:ToSic.Sxc.Services.IImageService) - you will
 var imgService = GetService<ToSic.Sxc.Services.IImageService>();
 ```
 
-If needed, prepare resize settings using the [ResizeSettings(...)](xref:ToSic.Sxc.Services.IImageService.ResizeSettings*). 
+If needed, prepare resize settings using the [ResizeSettings(...)](xref:ToSic.Sxc.Services.IImageService.Settings*). 
 This is probably only needed in ca. 10% of all cases, because the defaults are usually what you want to use.
 If you want to do this, see further explanations further down. 
 
@@ -199,7 +199,9 @@ In case you want even more control over your output, you can also piece it toget
 
 ```
 
+TODO: document recipe system
 
+<!-- 
 ## SrcSet Parameters
 
 The `srcSet` will default to the ones given in the settings, or you can specify your own. 
@@ -208,7 +210,7 @@ The `srcSet` will default to the ones given in the settings, or you can specify 
 
 In cases where you are generating other custom code and need properly created SrcSet values, you can also use:
 
-👉 [](xref:ToSic.Sxc.Services.IImageService.SrcSet*)
+👉 [](xref:ToSic.Sxc.Services.IImageService.SrcSet*) -->
 
 
 
