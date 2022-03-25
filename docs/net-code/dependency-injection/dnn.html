@@ -160,7 +160,25 @@ var json = jsonSvc.ToJson(someObject);
 </code></pre><h2 id="how-can-i-get-dnn-objects-using-dependency-injection">How Can I Get Dnn Objects using Dependency Injection?</h2>
 <p>As of Dnn 9.10 the answer is mostly no 😶. Dnn is simply not there yet. Work-in-progress.</p>
 <p>The documentation is almost non-existant, so if you want to try using Dnn objects, you&#39;ll need to dig through Dnn code to get this to fly. </p>
-<hr>
+<h2 id="how-can-i-register-my-services-in-dnn-di">How Can I Register my Services in Dnn DI?</h2>
+<p>You need to create a class that implement <code>IDnnStartup</code> like this</p>
+<pre><code class="lang-c#">using azing.Catalog.Permissions;
+using DotNetNuke.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace azing.Catalog
+{
+    public class StartupAzing : IDnnStartup
+    {
+        // This is the new v13 mode, requires DNN 9.44+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.TryAddTransient&lt;AppPermissions&gt;();
+        }
+    }
+}
+</code></pre><hr>
 <h2 id="history">History</h2>
 <ol>
 <li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>

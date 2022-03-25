@@ -69,4 +69,28 @@ As of Dnn 9.10 the answer is mostly no 😶. Dnn is simply not there yet. Work-i
 
 The documentation is almost non-existant, so if you want to try using Dnn objects, you'll need to dig through Dnn code to get this to fly. 
 
+## How Can I Register my Services in Dnn DI?
+
+You need to create a class that implement `IDnnStartup` like this
+
+```c#
+using azing.Catalog.Permissions;
+using DotNetNuke.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace azing.Catalog
+{
+    public class StartupAzing : IDnnStartup
+    {
+        // This is the new v13 mode, requires DNN 9.44+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.TryAddTransient<AppPermissions>();
+        }
+    }
+}
+
+```
+
 [!include["history"](../services/_history.md)]
