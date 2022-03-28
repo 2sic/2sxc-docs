@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Objects.Resources
 ---
 
-<img src="~/basics/configuration/assets/settings-stack-banner.svg" class="feature">
+<img src="~/assets/features/settings-stack.svg" class="feature">
 
 # Resources in Dynamic Code ✨ new!
 

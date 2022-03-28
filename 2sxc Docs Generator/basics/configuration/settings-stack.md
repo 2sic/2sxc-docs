@@ -2,7 +2,7 @@
 uid: Basics.Configuration.SettingsStack
 ---
 
-<img src="./assets/settings-stack-banner.svg" class="feature">
+<img src="~/assets/features/settings-stack.svg" class="feature">
 
 # Settings Stack in 2sxc ✨ new!
 

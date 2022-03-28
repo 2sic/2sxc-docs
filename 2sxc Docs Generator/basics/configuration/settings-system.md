@@ -2,7 +2,7 @@
 uid: Basics.Configuration.SettingsSystem
 ---
 
-<img src="./assets/settings-stack-banner.svg" class="feature">
+<img src="~/assets/features/settings-stack.svg" class="feature">
 
 # System Settings in 2sxc ✨ new!
 
@@ -30,41 +30,9 @@ _Note: The System Settings feature is new in 12.04 so only a few settings are pr
 
 ### Images Settings
 
-| Part                 | Key                  | Value in Default     | Introduced | Comments
-| -------------------- | -------------------- | -------------------- | ------ | ---
-| **Images.Content**   |                      |                      | v12.04 | *For sizing Content-Images*
-| Images.Content       | Width                | # `1400`             | v12.04 | Full-Content-Width images
-| Images.Content       | Height               | # `865`              | v12.04 | Based on golden ratio
-| Images.Content       | Quality              | # `75`               | v12.04 | Good average jpg/png compression
-| Images.Content       | AspectRatio          | # `1.618`            | v12.04 | Golden Ratio
-| Images.Content       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Content       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Content       | SrcSet               | $ `1/1*,3/4*,1/2*,1/4*` | v13.01 | Sizes to use for SrcSets
-| **Images.Lightbox**  |                      |                      | v12.04 | *For Lightbox-Images*
-| Images.Lightbox      | Width                | # `2000`             | v12.04 | Full-screen Lightboxes
-| Images.Lightbox      | Height               | # `1500`             | v12.04 | 4:3
-| Images.Lightbox      | Quality              | # `75`               | v12.04 | Good average jpg/png compression
-| Images.Lightbox      | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Lightbox      | ResizeMode           | $ `max`              | v12.04 | Will keep image shape 
-| Images.Lightbox      | ScaleMode            | $ `down`             | v12.04 | Only down-scale, never up-scale
-| Images.Lightbox      | SrcSet               | $ `1/1*,3/4*,1/2*,1/4*` | v13.01 | Sizes to use for SrcSets
-| **Images.Screen**    |                      |                      | v12.04 | *For Screen-Size related images like backgrounds*
-| Images.Screen        | Width                | # `2000`             | v12.04 | Full-Content-Width images
-| Images.Screen        | Height               | # `1500`             | v12.04 | 4:3
-| Images.Screen        | Quality              | # `60`               | v12.04 | Stronger jpg/png compression
-| Images.Screen        | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Screen        | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Screen        | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Screen        | SrcSet               | $ `2400,2000,1600,1200,800,400` | v13.01 | Sizes to use for SrcSets
-| **Images.Section**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
-| Images.Section       | Width                | # `1600`             | v12.04 | Full-Content-Width images
-| Images.Section       | Height               | # `1200`             | v12.04 | Based on golden ratio
-| Images.Section       | Quality              | # `60`               | v12.04 | Stronger jpg/png compression
-| Images.Section       | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Section       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Section       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Section       | SrcSet               | $ `2400,2000,1600,1200,800,400` | v13.01 | Sizes to use for SrcSets
+Image settings are very sophisticated, so they are documented on an own page:
 
+👉 see [](xref:Basics.Configuration.Settings.Images.Index)
 
 ### WebResources
 

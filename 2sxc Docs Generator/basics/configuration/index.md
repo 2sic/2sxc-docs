@@ -2,7 +2,7 @@
 uid: Basics.Configuration.Index
 ---
 
-<img src="./assets/settings-stack-banner.svg" class="feature">
+<img src="~/assets/features/settings-stack.svg" class="feature">
 
 # Configuration, Settings and Resources in 2sxc ✨ new!
 

@@ -2,7 +2,7 @@
 uid: Basics.Configuration.ResourcesStack
 ---
 
-<img src="./assets/settings-stack-banner.svg" class="feature">
+<img src="~/assets/features/settings-stack.svg" class="feature">
 
 # Resources Stack in 2sxc ✨ new!
 
