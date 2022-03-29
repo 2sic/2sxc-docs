@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Image Resize Settings in 2sxc | 2sxc 13 / EAV 13 </title>
+    <title>Recipes in Image Resize Settings in 2sxc &#10024; new! / BETA | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Image Resize Settings in 2sxc | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Recipes in Image Resize Settings in 2sxc &#10024; new! / BETA | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
@@ -114,10 +114,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Configuration.Settings.Images.Index">
+            <article class="content wrap" id="_content" data-uid="Basics.Configuration.Settings.Images.Recipes">
 
 <p><img src="../../../../assets/features/settings-stack.svg" class="feature"></p>
-<h1 id="image-resize-settings-in-2sxc">Image Resize Settings in 2sxc</h1>
+<h1 id="recipes-in-image-resize-settings-in-2sxc--new--beta">Recipes in Image Resize Settings in 2sxc ✨ new! / BETA</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -239,280 +239,122 @@
   </div>
 </div><style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-<p>This explains the Settings which will be used by subssystemms which...</p>
-<ol>
-<li>...generate links for the Image Resizer using the <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Web.ILinkHelper.html#ToSic_Sxc_Web_ILinkHelper_To_">Link.Image(...)</a> API</li>
-<li>...generate <code>img</code> and <code>picture</code> tags using the <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a></li>
+<p>Version 13.10 will introduce a new <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">ImageService</a> 
+which can generate advanced multi-resolution <code>img</code> and <code>picture</code> tags. 
+As the configuration can be quite complex, it is explained here:</p>
+<h2 id="a-resize-recipe">A Resize Recipe</h2>
+<p>A resize recipe has the following values, most of which are optional:</p>
+<ul>
+<li>Resize Settings<ol>
+<li><code>variants</code> (string) - determines which variant resolutions will be provided</li>
+<li><code>width</code> (int) size of the initial image before variants are applied</li>
 </ol>
-<p>It is part of the <a class="xref" href="../../settings-system.html">System Settings</a>.
-Settings seen here start with <code>System.Images.</code>...</p>
-<h2 id="predefined-image-settings---overview">Predefined Image Settings - Overview</h2>
-<p>These are the names of the predefined configurations. 
-You can always create your own and give them other names (like <code>Blog</code>) or override these settings. 
-You can do this at the global, site or app level.</p>
-<ol>
-<li><code>Content</code> for any kind of images in the normal content of a page</li>
-<li><code>Lightbox</code> for images which should open in a lightbox - usually almost full-screen</li>
-<li><code>Screen</code> for images which cover the entire screen, like page-background images</li>
-<li><code>Section</code> for images used in page sections, like parallax backgrounds</li>
+</li>
+<li>Restrictions<ol>
+<li><code>factor</code> if set, the rule will only apply to images which should be resized to this factor</li>
+<li><code>cssFramework</code> if set, the rule will only apply to images when the page uses this Css Framework</li>
+<li><code>tag</code> if set, the rule will only apply to this tag type - either <code>img</code> or <code>source</code></li>
 </ol>
-<h2 id="configurations-on-these-settings">Configurations on these Settings</h2>
-<p>Each of these settings have the following properties:</p>
-<ol>
-<li><code>Width</code> determines how wide an image should be - this should always be set, as it&#39;s very important for image resizing</li>
-<li><code>Height</code> determines how tall an image should be - in most cases this should be empty</li>
-<li><code>AspectRatio</code> also determines the <code>height</code> of the image, but using a factor of the width - so 2:1 means twice as wide</li>
-<li><code>ResizeMode</code> how images are resized on the server - typically <code>crop</code> is what is used</li>
-<li><code>ScaleMode</code> determines if resizing also happens, if the desired size is larger than the original image (upscaling)</li>
-<li><code>Advanced</code> a complex JSON configuration used for advanced tuning of resizing and generation of <code>img</code> and <code>picture</code> tags.
- It uses the <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">ImageService</a>.<br> 👉 see <a class="xref" href="recipes.html">Recipes in Image Resize Settings in 2sxc ✨ new! / BETA</a></li>
+</li>
+<li>Additional Effects<ol>
+<li><code>setWidth</code> (bool) will add an appropriate <code>width</code> attribute to the <code>img</code> tag if width is known</li>
+<li><code>setHeight</code> (bool) will add an appropriate <code>height</code> attribute to the <code>img</code> tag if height is known</li>
+<li><code>attributes</code> (Dictionary&lt;string, object&gt;) lists additional tag-attributes to apply to the <code>img</code> tag</li>
 </ol>
-<div class="NOTE"><h5>Note</h5><p>We recommend to use <code>AspectRatio</code> instead of <code>Height</code> to determine the image height, as it often makes a more consistent look and feel.
-If both <code>Height</code> and <code>AspectRatio</code> are set, then <code>AspectRatio</code> takes precendence.</p>
+</li>
+</ul>
+<p>This is an example of a simple resize recipe:</p>
+<pre><code class="lang-json">{
+  &quot;recipe&quot;: {
+    // Means the initial image will be 700px wide
+    &quot;width&quot;: 700,
+    // This will generate 3 variants: 700px, 1400px and 350px
+    &quot;variants&quot;: &quot;1*, 2*, 0.5*&quot;,
+    &quot;attributes&quot;: {
+      // This will always add an img-fluid class to the img-tag
+      &quot;class&quot;: &quot;img-fluid&quot;
+    }
+  }
+}
+</code></pre><h2 id="variants">Variants</h2>
+<p><code>variants</code> is a string which tells us which variants to generate. 
+It is comma-separated. 
+There are three different ways to specify the variants:</p>
+<ol>
+<li>By multiplier - marked by <code>*</code> or no trailing character<ol>
+<li><code>1*</code> means the original image will be used</li>
+<li><code>2*</code> means the image will be resized to 2 times its original size</li>
+<li><code>0.5*</code> means the image will be resized to half its original size</li>
+</ol>
+</li>
+<li>By Pixel size marked by <code>w</code><ol>
+<li><code>700w</code> means the image will be resized to 700px wide</li>
+<li><code>1400w</code> means the image will be resized to 1400px wide</li>
+<li><code>350w</code> means the image will be resized to 350px wide</li>
+</ol>
+</li>
+<li>By Screen Pixel Density marked by <code>x</code><ol>
+<li><code>1x</code> means the image will be used as is, for normal screen pixel density</li>
+<li><code>2x</code> means the image will be douled in size for 2x screen pixel density</li>
+<li><code>3x</code> means the image will be trippled in size for 3x screen pixel density</li>
+</ol>
+</li>
+</ol>
+<div class="WARNING"><h5>Warning</h5><p>It&#39;s tempting to mix these, but only <code>*</code> and <code>w</code> can be combined. 
+Trying to combine <code>x</code> (pixel density) with any of the others results in an invalid configuration which the browser cannot handle.
+It will not generate an error, but the browser will usually then just ignore the <code>x</code> variants.</p>
 </div>
-<h2 id="values-in-the-images-settings-of-v1204-and-later">Values in the Images Settings of v12.04 and later</h2>
-<table>
-<thead>
-<tr>
-<th>Part</th>
-<th>Key</th>
-<th>Value in Default</th>
-<th>Introduced</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Images.Content</strong></td>
-<td></td>
-<td></td>
-<td>v12.04</td>
-<td><em>For sizing Content-Images</em></td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>Width</td>
-<td># <code>1400</code></td>
-<td>v12.04</td>
-<td>Full-Content-Width images</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>Height</td>
-<td># <code>865</code></td>
-<td>v12.04</td>
-<td>Based on golden ratio</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>Quality</td>
-<td># <code>75</code></td>
-<td>v12.04</td>
-<td>Good average jpg/png compression</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>AspectRatio</td>
-<td># <code>1.618</code></td>
-<td>v12.04</td>
-<td>Golden Ratio</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>ResizeMode</td>
-<td>$ <code>crop</code></td>
-<td>v12.04</td>
-<td>Will fill area exactly</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>ScaleMode</td>
-<td>$ <code>both</code></td>
-<td>v12.04</td>
-<td>Up-scale small images</td>
-</tr>
-<tr>
-<td>Images.Content</td>
-<td>Advanced</td>
-<td>$ <code>{...complex...}</code></td>
-<td>v13.10</td>
-<td>Sizes to use for SrcSets</td>
-</tr>
-<tr>
-<td><strong>Images.Lightbox</strong></td>
-<td></td>
-<td></td>
-<td>v12.04</td>
-<td><em>For Lightbox-Images</em></td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>Width</td>
-<td># <code>2000</code></td>
-<td>v12.04</td>
-<td>Full-screen Lightboxes</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>Height</td>
-<td># <code>1500</code></td>
-<td>v12.04</td>
-<td>4:3</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>Quality</td>
-<td># <code>75</code></td>
-<td>v12.04</td>
-<td>Good average jpg/png compression</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>AspectRatio</td>
-<td># <code>1.333</code></td>
-<td>v12.04</td>
-<td>4:3</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>ResizeMode</td>
-<td>$ <code>max</code></td>
-<td>v12.04</td>
-<td>Will keep image shape</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>ScaleMode</td>
-<td>$ <code>down</code></td>
-<td>v12.04</td>
-<td>Only down-scale, never up-scale</td>
-</tr>
-<tr>
-<td>Images.Lightbox</td>
-<td>Advanced</td>
-<td>$ <code>{...complex...}</code></td>
-<td>v13.10</td>
-<td>Sizes to use for SrcSets</td>
-</tr>
-<tr>
-<td><strong>Images.Screen</strong></td>
-<td></td>
-<td></td>
-<td>v12.04</td>
-<td><em>For Screen-Size related images like backgrounds</em></td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>Width</td>
-<td># <code>2000</code></td>
-<td>v12.04</td>
-<td>Full-Content-Width images</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>Height</td>
-<td># <code>1500</code></td>
-<td>v12.04</td>
-<td>4:3</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>Quality</td>
-<td># <code>60</code></td>
-<td>v12.04</td>
-<td>Stronger jpg/png compression</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>AspectRatio</td>
-<td># <code>1.333</code></td>
-<td>v12.04</td>
-<td>4:3</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>ResizeMode</td>
-<td>$ <code>crop</code></td>
-<td>v12.04</td>
-<td>Will fill area exactly</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>ScaleMode</td>
-<td>$ <code>both</code></td>
-<td>v12.04</td>
-<td>Up-scale small images</td>
-</tr>
-<tr>
-<td>Images.Screen</td>
-<td>Advanced</td>
-<td>$ <code>{...complex...}</code></td>
-<td>v13.10</td>
-<td>Sizes to use for SrcSets</td>
-</tr>
-<tr>
-<td><strong>Images.Section</strong></td>
-<td></td>
-<td></td>
-<td>v12.04</td>
-<td><em>For Backgrounds in Content-Area</em></td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>Width</td>
-<td># <code>1600</code></td>
-<td>v12.04</td>
-<td>Full-Content-Width images</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>Height</td>
-<td># <code>1200</code></td>
-<td>v12.04</td>
-<td>Based on golden ratio</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>Quality</td>
-<td># <code>60</code></td>
-<td>v12.04</td>
-<td>Stronger jpg/png compression</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>AspectRatio</td>
-<td># <code>1.333</code></td>
-<td>v12.04</td>
-<td>4:3</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>ResizeMode</td>
-<td>$ <code>crop</code></td>
-<td>v12.04</td>
-<td>Will fill area exactly</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>ScaleMode</td>
-<td>$ <code>both</code></td>
-<td>v12.04</td>
-<td>Up-scale small images</td>
-</tr>
-<tr>
-<td>Images.Section</td>
-<td>Advanced</td>
-<td>$ <code>{...complex...}</code></td>
-<td>v13.10</td>
-<td>Sizes to use for SrcSets</td>
-</tr>
-</tbody>
-</table>
+<h2 id="adding-many-recipes">Adding Many Recipes</h2>
+<p>A perfect resizing system must actually behave differently in many scenarios. 
+Here are some reasons, why we need many recipes:</p>
+<ol>
+<li>If we use Bootstrap5 we may want to add the class <code>img-fluid</code>, but not if we use Tailwind</li>
+<li>If we want an image that fits 1/2 the content-area and we have Bootstrap5, then 100% is 1230px, but a 50% image is 600px because of paddings</li>
+</ol>
+<p>So a really amazing configuration will need a LOT of recipes - easily 10-20 per CssFramework.
+This is how it&#39;s done:</p>
+<pre><code class="lang-json">{
+  // Default Recipe
+  &quot;recipe&quot;: {
+    &quot;width&quot;: 1400,
+    &quot;variants&quot;: &quot;1*, 2*, 0.5*&quot;,
+    &quot;setWidth&quot;: true,
+    // Sub-Recipes, which inherit all the settings from main, unless they override it
+    &quot;recipes&quot;: [
+      {
+        // This section would only affect Bootstrap5
+        &quot;cssFramework&quot;: &quot;bs5&quot;,
+        &quot;width&quot;: 1230,
+        &quot;attributes&quot;: {
+          &quot;class&quot;: &quot;img-fluid&quot;
+        },
+        // Sub-Sub-Recipes, which inherit from the BS5 and from main, unless they override it
+        &quot;recipes&quot;: [
+          { &quot;factor&quot;: &quot;1&quot;, &quot;width&quot;: 1230 },
+          { &quot;factor&quot;: &quot;1/2&quot;, &quot;width&quot;: 600 },
+          { &quot;factor&quot;: &quot;12/3&quot;, &quot;width&quot;: 400 },
+          { &quot;factor&quot;: &quot;12/4&quot;, &quot;width&quot;: 300 }
+        ]
+      },
+      {
+        // This section would only affect non-Bootstrap5, as that would match first
+        &quot;setWidth&quot;: false,  // override default to false
+        &quot;attributes&quot;: {
+          &quot;class&quot;: &quot;img&quot;
+        }
+      }
+    ]
+  }
+}
+</code></pre><div class="TIP"><h5>Tip</h5><p>Sub-Recipes inherit everything from the parents.
+This is so you are DRY - you don&#39;t have to repeat yourself.</p>
+<p>It&#39;s important to know that at runtime this is flattened to a table.
+So the hierarchy you see in the JSON is purely to make the configuration easier to write.</p>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Full Settings Stack introduced in v12.04 and includes the here mentioned Image settings</li>
-<li>Advanced Json configuration with <a class="xref" href="recipes.html">recipes</a> added in v13.05</li>
+<li>Advanced Json configuration with Recipe added in v13.05, to be released v13.10</li>
 </ul>
 </article>
           </div>
@@ -522,7 +364,7 @@ If both <code>Height</code> and <code>AspectRatio</code> are set, then <code>Asp
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/configuration/settings/images/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/basics/configuration/settings/images/recipes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
