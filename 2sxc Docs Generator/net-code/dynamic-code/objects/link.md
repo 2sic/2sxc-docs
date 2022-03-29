@@ -50,7 +50,7 @@ This will add a lot more debug information in the Insights, so you should be abl
 
 ## Notes and Clarifications
 
-The Link-Object is of type [](xref:ToSic.Sxc.Web.ILinkHelper).
+The Link-Object is of type [](xref:ToSic.Sxc.Services.ILinkService).
 
 
 ## Demo App and further links

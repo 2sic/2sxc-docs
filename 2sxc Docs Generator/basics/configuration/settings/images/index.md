@@ -11,7 +11,7 @@ uid: Basics.Configuration.Settings.Images.Index
 
 This explains the Settings which will be used by subssystemms which...
 
-1. ...generate links for the Image Resizer using the [Link.Image(...)](xref:ToSic.Sxc.Web.ILinkHelper.To*) API
+1. ...generate links for the Image Resizer using the [Link.Image(...)](xref:ToSic.Sxc.Services.ILinkService.To*) API
 1. ...generate `img` and `picture` tags using the [IImageService](xref:ToSic.Sxc.Services.IImageService)
 
 It is part of the [System Settings](xref:Basics.Configuration.SettingsSystem).

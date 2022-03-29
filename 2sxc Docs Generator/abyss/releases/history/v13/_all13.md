@@ -20,3 +20,14 @@ TODO
 ### 13.02
 * JS
 * Global Apps
+
+
+### 13.03 TODO
+
+### 13.04 TODO
+
+
+### 13.05
+
+* Moved the `Web.IInPageEditingHelper` to `Services.IEditService` - this is non breaking and shouldn't matter, as people won't be using the direct inteface
+* Moved the `Web.ILinkHelper` to `Services.ILinkService` - this is non breaking and shouldn't matter, as people won't be using the direct inteface
