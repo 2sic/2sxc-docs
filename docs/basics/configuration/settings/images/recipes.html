@@ -251,9 +251,9 @@ As the configuration can be quite complex, it is explained here:</p>
 </ol>
 </li>
 <li>Restrictions<ol>
-<li><code>factor</code> if set, the rule will only apply to images which should be resized to this factor</li>
-<li><code>cssFramework</code> if set, the rule will only apply to images when the page uses this Css Framework</li>
-<li><code>tag</code> if set, the rule will only apply to this tag type - either <code>img</code> or <code>source</code></li>
+<li><code>forFactor</code> if set, the rule will only apply to images which should be resized to this factor</li>
+<li><code>forCss</code> if set, the rule will only apply to images when the page uses this Css Framework</li>
+<li><code>forTag</code> if set, the rule will only apply to this tag type - either <code>img</code> or <code>source</code></li>
 </ol>
 </li>
 <li>Additional Effects<ol>
@@ -323,17 +323,17 @@ This is how it&#39;s done:</p>
     &quot;recipes&quot;: [
       {
         // This section would only affect Bootstrap5
-        &quot;cssFramework&quot;: &quot;bs5&quot;,
+        &quot;forCss&quot;: &quot;bs5&quot;,
         &quot;width&quot;: 1230,
         &quot;attributes&quot;: {
           &quot;class&quot;: &quot;img-fluid&quot;
         },
         // Sub-Sub-Recipes, which inherit from the BS5 and from main, unless they override it
         &quot;recipes&quot;: [
-          { &quot;factor&quot;: &quot;1&quot;, &quot;width&quot;: 1230 },
-          { &quot;factor&quot;: &quot;1/2&quot;, &quot;width&quot;: 600 },
-          { &quot;factor&quot;: &quot;12/3&quot;, &quot;width&quot;: 400 },
-          { &quot;factor&quot;: &quot;12/4&quot;, &quot;width&quot;: 300 }
+          { &quot;forFactor&quot;: &quot;1&quot;, &quot;width&quot;: 1230 },
+          { &quot;forFactor&quot;: &quot;1/2&quot;, &quot;width&quot;: 600 },
+          { &quot;forFactor&quot;: &quot;12/3&quot;, &quot;width&quot;: 400 },
+          { &quot;forFactor&quot;: &quot;12/4&quot;, &quot;width&quot;: 300 }
         ]
       },
       {
@@ -350,6 +350,11 @@ This is how it&#39;s done:</p>
 This is so you are DRY - you don&#39;t have to repeat yourself.</p>
 <p>It&#39;s important to know that at runtime this is flattened to a table.
 So the hierarchy you see in the JSON is purely to make the configuration easier to write.</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>Attributes are cummulative, so if a parent-node has attributes and a child-node has other attributes, 
+they will be merged. 
+Child node attributes will replace parent node attributes.
+To reset an attribute which the parent had set already, use <code>null</code> on the child node.</p>
 </div>
 <hr>
 <h2 id="history">History</h2>

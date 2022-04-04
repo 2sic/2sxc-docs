@@ -86,7 +86,7 @@ This was introduced in 2sxc 12.02, since APIs are becoming more important. Here'
 
 ## Notes and Clarifications
 
-The Link-Object is of type [](xref:ToSic.Sxc.Web.ILinkHelper).
+The Link-Object is of type [](xref:ToSic.Sxc.Services.ILinkService).
 
 ### Enforced Parameter Naming
 

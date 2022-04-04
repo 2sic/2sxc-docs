@@ -21,9 +21,9 @@ A resize recipe has the following values, most of which are optional:
     1. `variants` (string) - determines which variant resolutions will be provided
     1. `width` (int) size of the initial image before variants are applied
 * Restrictions
-    1. `factor` if set, the rule will only apply to images which should be resized to this factor
-    1. `cssFramework` if set, the rule will only apply to images when the page uses this Css Framework
-    1. `tag` if set, the rule will only apply to this tag type - either `img` or `source`
+    1. `forFactor` if set, the rule will only apply to images which should be resized to this factor
+    1. `forCss` if set, the rule will only apply to images when the page uses this Css Framework
+    1. `forTag` if set, the rule will only apply to this tag type - either `img` or `source`
 * Additional Effects
     1. `setWidth` (bool) will add an appropriate `width` attribute to the `img` tag if width is known
     1. `setHeight` (bool) will add an appropriate `height` attribute to the `img` tag if height is known
@@ -94,17 +94,17 @@ This is how it's done:
     "recipes": [
       {
         // This section would only affect Bootstrap5
-        "cssFramework": "bs5",
+        "forCss": "bs5",
         "width": 1230,
         "attributes": {
           "class": "img-fluid"
         },
         // Sub-Sub-Recipes, which inherit from the BS5 and from main, unless they override it
         "recipes": [
-          { "factor": "1", "width": 1230 },
-          { "factor": "1/2", "width": 600 },
-          { "factor": "12/3", "width": 400 },
-          { "factor": "12/4", "width": 300 }
+          { "forFactor": "1", "width": 1230 },
+          { "forFactor": "1/2", "width": 600 },
+          { "forFactor": "12/3", "width": 400 },
+          { "forFactor": "12/4", "width": 300 }
         ]
       },
       {
@@ -125,6 +125,12 @@ This is how it's done:
 > 
 > It's important to know that at runtime this is flattened to a table.
 > So the hierarchy you see in the JSON is purely to make the configuration easier to write.
+
+> [!TIP]
+> Attributes are cummulative, so if a parent-node has attributes and a child-node has other attributes, 
+> they will be merged. 
+> Child node attributes will replace parent node attributes.
+> To reset an attribute which the parent had set already, use `null` on the child node.
 
 ---
 

@@ -37,7 +37,7 @@ In this example, the `Edit.ContextAttributes` will add some attributes with JSON
 
 ## What's In the Edit Object
 
-The `Edit`-object is always available in all Razor-templates. Read the API: [](xref:ToSic.Sxc.Web.IInPageEditingSystem).
+The `Edit`-object is always available in all Razor-templates. Read the API: [](xref:ToSic.Sxc.Services.IEditService).
 
 A short summary of what's inside
 

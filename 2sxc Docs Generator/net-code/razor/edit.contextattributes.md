@@ -23,7 +23,7 @@ The `Edit.ContextAttributes(...)` is always used inside an HTML-tag and will add
 
 By default, this context is already provided by the 2sxc-environment, but sometimes a _new context_ must provide overrides. For example using [](xref:Basics.Cms.InnerContent.Index). 
 
-For this you need the `Edit.ContextAttributes` - see [docs here](xref:ToSic.Sxc.Web.IInPageEditingSystem.ContextAttributes*).
+For this you need the `Edit.ContextAttributes` - see [docs here](xref:ToSic.Sxc.Services.IEditService.ContextAttributes*).
 
 
 ## How to use
