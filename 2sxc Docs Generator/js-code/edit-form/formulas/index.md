@@ -80,6 +80,7 @@ The data object contains the most commonly used data, specifically
 * `prefill` - the prefill value
 * `initial` - the initial value this setting/field had when it was loaded (use for reset to initial) _new in 12.02_
 * `[FieldName]` - all the values of the other fields
+* `parameters.[paramname]` - all the parameters passed to the dialog, currently the ones in the `prefill` - WIP v13.06, not final
 
 Example of the `data` object in a Formula which would set the `Visible` property of a field `FullName`:
 
@@ -168,6 +169,11 @@ The `context` contain additional information about the context we're running in.
 * `culture`
   * `code`
   * `name` - this will return `undefined` scenarios where no languages are activated
+* `features`
+  * `isEnabled('FeatureName')` - will return true if this feature is enabled.  
+  _Important: only admins users will know about all available features, non-admins will only have a subset marked as public._  
+  **WIP v13.06**
+  * `get('FeatureName')` - will return the feature object **WIP v13.06**
 * `experimental` - this is for internal APIs we're testing, they are not public. You can use them, but expect the APIs to change in near future
 
 ## Using the `context.cache`
@@ -214,3 +220,6 @@ v1(data, context) {
 ## History
 
 * Introduced in 2sxc 12.01
+* Added `data.parameters` in v13.06 BETA
+* Added `context.features.isEnabled('FeatureName')` in v13.06 BETA
+* Added `context.features.get('FeatureName')` in v13.06 BETA

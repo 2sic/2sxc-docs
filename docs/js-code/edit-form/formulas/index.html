@@ -173,6 +173,7 @@ This is important because we cannot guess when the API will change, and we also 
 <li><code>prefill</code> - the prefill value</li>
 <li><code>initial</code> - the initial value this setting/field had when it was loaded (use for reset to initial) <em>new in 12.02</em></li>
 <li><code>[FieldName]</code> - all the values of the other fields</li>
+<li><code>parameters.[paramname]</code> - all the parameters passed to the dialog, currently the ones in the <code>prefill</code> - WIP v13.06, not final</li>
 </ul>
 <p>Example of the <code>data</code> object in a Formula which would set the <code>Visible</code> property of a field <code>FullName</code>:</p>
 <pre><code class="lang-js">data = {
@@ -245,6 +246,11 @@ So this will only affect formulas which use the existing date, modify it, and ar
 <li><code>name</code> - this will return <code>undefined</code> scenarios where no languages are activated</li>
 </ul>
 </li>
+<li><code>features</code><ul>
+<li><code>isEnabled(&#39;FeatureName&#39;)</code> - will return true if this feature is enabled.<br><em>Important: only admins users will know about all available features, non-admins will only have a subset marked as public.</em><br><strong>WIP v13.06</strong></li>
+<li><code>get(&#39;FeatureName&#39;)</code> - will return the feature object <strong>WIP v13.06</strong></li>
+</ul>
+</li>
 <li><code>experimental</code> - this is for internal APIs we&#39;re testing, they are not public. You can use them, but expect the APIs to change in near future</li>
 </ul>
 <h2 id="using-the-contextcache">Using the <code>context.cache</code></h2>
@@ -286,6 +292,9 @@ So this will only affect formulas which use the existing date, modify it, and ar
 <h2 id="history">History</h2>
 <ul>
 <li>Introduced in 2sxc 12.01</li>
+<li>Added <code>data.parameters</code> in v13.06 BETA</li>
+<li>Added <code>context.features.isEnabled(&#39;FeatureName&#39;)</code> in v13.06 BETA</li>
+<li>Added <code>context.features.get(&#39;FeatureName&#39;)</code> in v13.06 BETA</li>
 </ul>
 </article>
           </div>
@@ -294,9 +303,6 @@ So this will only affect formulas which use the existing date, modify it, and ar
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
