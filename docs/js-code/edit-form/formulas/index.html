@@ -229,6 +229,14 @@ So this will only affect formulas which use the existing date, modify it, and ar
 <h2 id="the-context-object">The <code>context</code> Object</h2>
 <p>The <code>context</code> contain additional information about the context we&#39;re running in.</p>
 <ul>
+<li><code>app</code> - contains information about the current app <em>new 13.07</em><ul>
+<li><code>appId</code></li>
+<li><code>zoneId</code></li>
+<li><code>isContent</code></li>
+<li><code>isSite</code></li>
+<li><code>isGlobal</code></li>
+</ul>
+</li>
 <li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
 <li><code>debug</code> - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. <em>new in 12.02</em></li>
 <li><code>target</code> - everything about the target of the formula - the current field<ul>
@@ -249,6 +257,10 @@ So this will only affect formulas which use the existing date, modify it, and ar
 <li><code>features</code><ul>
 <li><code>isEnabled(&#39;FeatureName&#39;)</code> - will return true if this feature is enabled.<br><em>Important: only admins users will know about all available features, non-admins will only have a subset marked as public.</em><br><strong>WIP v13.06</strong></li>
 <li><code>get(&#39;FeatureName&#39;)</code> - will return the feature object <strong>WIP v13.06</strong></li>
+</ul>
+</li>
+<li><code>form</code><ul>
+<li><code>runFormulas()</code> - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache <em>new 13.07</em></li>
 </ul>
 </li>
 <li><code>experimental</code> - this is for internal APIs we&#39;re testing, they are not public. You can use them, but expect the APIs to change in near future</li>
@@ -303,6 +315,9 @@ So this will only affect formulas which use the existing date, modify it, and ar
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/main/2sxc Docs Generator/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -158,6 +158,12 @@ Another option is to work with the Zulu time but make sure you UTC it when retur
 
 The `context` contain additional information about the context we're running in.
 
+* `app` - contains information about the current app _new 13.07_
+  * `appId`
+  * `zoneId`
+  * `isContent`
+  * `isSite`
+  * `isGlobal`
 * `cache` - an object which is only for this function and will be persisted across calls - use it to save temporary values
 * `debug` - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. _new in 12.02_
 * `target` - everything about the target of the formula - the current field
@@ -174,6 +180,8 @@ The `context` contain additional information about the context we're running in.
   _Important: only admins users will know about all available features, non-admins will only have a subset marked as public._  
   **WIP v13.06**
   * `get('FeatureName')` - will return the feature object **WIP v13.06**
+* `form`
+  * `runFormulas()` - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
 * `experimental` - this is for internal APIs we're testing, they are not public. You can use them, but expect the APIs to change in near future
 
 ## Using the `context.cache`
