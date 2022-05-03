@@ -68,6 +68,23 @@ Here's a simple method for testing brand-new policies
 ## TODO: Guide (WIP)
 
 
+## Monitoring CSP at Runtime after Deployment
+
+Once you've deployed CSP you may wish to be notified of any violations. 
+The idea is that violations could just be a sign that something wasn't configured correctly and you may have missed this. 
+
+There are some cool online services which can do this, like https://report-uri.com/. 
+
+TODO:
+
+## Warning about 'nonce-...' and 'sha256-...' Policies
+
+`'nonce-...'` and `'sha256-...'` policies are great for allowing a specific inline bit of script or CSS. 
+
+> [!WARNING]
+> If any of these policies are used, it automatically disables the `'unsafe-inline'` rule. 
+> This is how CSP works.
+
 
 ## Example Configurations
 
