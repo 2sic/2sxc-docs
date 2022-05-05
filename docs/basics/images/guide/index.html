@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Images Guide (Best Practices &amp; Code) TODO | 2sxc 13 / EAV 13 </title>
+    <title>Images Guide (Best Practices &amp; Code) | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Images Guide (Best Practices &amp; Code) TODO | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Images Guide (Best Practices &amp; Code) | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -117,7 +117,7 @@
             <article class="content wrap" id="_content" data-uid="Basics.Images.Guide.Index">
 
 <p><img src="../../../assets/features/image-resizer.svg" class="feature"></p>
-<h1 id="images-guide-best-practices--code-todo">Images Guide (Best Practices &amp; Code) TODO</h1>
+<h1 id="images-guide-best-practices--code">Images Guide (Best Practices &amp; Code)</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -268,23 +268,67 @@
 <p>For every detail there is much more technical documentation, which will be linked here. </p>
 </div>
 <h2 id="the-parts-that-make-this-possible">The Parts that Make this Possible</h2>
-<p>TODO:</p>
+<h3 id="part-1-edit-ui--ux">Part 1: Edit UI / UX</h3>
+<p>The Edit UI presents various options to the user for uploading and configuring images. </p>
+<p>It&#39;s important to note that v13.10+ has a new feature to let the user customize what part of the image is really important (what corner/edge). 
+This is important in scenarios where a resize would otherwise always show the middle, which may not be appropriate. </p>
+<p>Since this feature will only affect the output if the Razor template uses the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a>,
+the designer must activate it on the field. Otherwise the feature is not available. </p>
+<p><img src="assets/image-configuration.jpg" class="full-width" width="100%"></p>
+<p><strong>Important</strong></p>
+<p>This button is only available </p>
 <ol>
-<li>Edit UI / UX (edit dialog and toolbars)</li>
-<li>Razor Templates created by the Designer</li>
-<li>Helpers like the ImageService</li>
-<li>Automatic image resizing on the server and caching of resized images</li>
+<li>IF it has been enabled</li>
+<li>and IF the file is an image</li>
+<li>and IF the file &quot;belongs&quot; to the item being edited<br> If the file is a general file from another item or from the root folder, the metadata is not available. 
+ This is important because files from elsewhere could be shared, and editing the metadata could have unexpected side-effects.</li>
 </ol>
-<p>TODO: we&#39;re still working on these docs</p>
-<hr>
-<hr>
-<h2 id="history">History</h2>
+<h3 id="part-2-image-metadata">Part 2: Image Metadata</h3>
+<p>When a user edits the image settings in the UI, the data is stored as <a class="xref" href="../../metadata/index.html">metadata</a> for this image. 
+This is important, because generating a perfect <code>&lt;img&gt;</code> or <code>&lt;picture&gt;</code> tag requires this information. </p>
+<h3 id="part-3-dynamic-field">Part 3: Dynamic Field</h3>
+<p>If a content item stores the image on a property <code>.Image</code> then something like <code>Content.Image</code> would return <code>/Portal/0/Adam/some-image.jpg</code>.
+In this case, the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> cannot find the metadata.</p>
+<p>This is why we need to give it the entire field, not just the value. This is done using <code>Content.Field(&quot;Image&quot;)</code> 
+and will get your code a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IDynamicField.html">IDynamicField</a>.</p>
+<h3 id="part-4-imageservice">Part 4: ImageService</h3>
+<p>The <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> will take all the known information and generate an <code>&lt;img&gt;</code> or a <code>&lt;picture&gt;</code> tag.</p>
+<p>This can be used in its default implementation just using <code>.Img(Content.Field)</code> or <code>.Picture(...)</code>. 
+In this case is uses the default <code>Content</code> settings (see below).</p>
+<p>If you need more control, there are 3 options:</p>
 <ol>
-<li>Introduced in 2sxc 5.03</li>
-<li>Special Razor API to create links called <a class="xref" href="../../../net-code/dynamic-code/objects/link.image.html">Link.Image</a> introduced in 12.04</li>
-<li>Introduced <a href="https://www.imageflow.io/">ImageFlow</a> in v12 for Oqtane</li>
-<li>Switched to <a href="https://www.imageflow.io/">ImageFlow</a> in 13.0 for both Dnn and Oqtane</li>
-<li>Introducing <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> in 13.05 beta, to be released in 13.10</li>
+<li>The <code>Img(...)</code> command has many more parameters for common scenarios such as using other settings, factor, imgAlt or imgClass</li>
+<li>You can also generate very custom settings using the <code>.Settings(...)</code> command on the ImageService</li>
+<li>You can also take the resulting object like <code>var img = imgSvc.Img(Content.Image)</code> and use it to generate the final tag yourself.</li>
+</ol>
+<p>TODO: LINK TUTORIAL</p>
+<h3 id="part-5-settings-and-recipes">Part 5: Settings and Recipes</h3>
+<p><strong>Settings</strong> are preconfigured parameters how the image is to be resized. 
+They are stored at App, Site, Global or Preset level. </p>
+<p>By default the configuration called <code>Content</code> is used for images in the Content of the page. 
+Other settings also exist, such as <code>Lightbox</code> or <code>Screen</code>. 
+You can also create your own configurations, such as <code>PersonProfile</code>. </p>
+<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/index.html">Image Settings</a></p>
+<p>In your Razor code you can create new settings or modify existing ones using the <code>.Setting(...)</code> command on the ImageService.</p>
+<ul>
+<li>To create settings based on the <code>Content</code> use <code>.Setting(&quot;Content&quot;, ...)</code></li>
+<li>To create brand new settings, use <code>.Setting(false, ...)</code></li>
+</ul>
+<p><strong>Recipes</strong> define what variants of the image should be generated for other sizes, as well as other parameters to use when generating <code>img</code> or <code>picture</code> tags. 
+The initial configuration is also stored in the settings and will be used, unless you specify something different. </p>
+<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/recipes.html">Image Recipes</a></p>
+<p>You can also generate your own recipes:</p>
+<ul>
+<li>create a new recipe like this: <code>.Recipe(&quot;2x, 3x&quot;)</code> - this is only meant to create a quick recipe with a few variants.</li>
+<li>inherit/expand an existing recipe like this: <code>.Recipe(originalRecipe, ...)</code></li>
+</ul>
+<h3 id="part-3-special-in-page-toolbar-wip-ca-v1313">Part 3: Special In-Page Toolbar (WIP ca. v13.13)</h3>
+<p>TODO:</p>
+<yamlheader start="116" end="121">
+
+TODO: we&#39;re still working on these docs</yamlheader><h2 id="history">History</h2>
+<ol>
+<li>Guide created for v13.10</li>
 </ol>
 </article>
           </div>
@@ -293,9 +337,6 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/main/2sxc Docs Generator/basics/images/guide/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

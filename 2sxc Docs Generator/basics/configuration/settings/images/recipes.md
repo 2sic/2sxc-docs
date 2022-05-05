@@ -4,7 +4,7 @@ uid: Basics.Configuration.Settings.Images.Recipes
 
 <img src="~/assets/features/settings-stack.svg" class="feature">
 
-# Recipes in Image Resize Settings in 2sxc ✨ new! / BETA
+# Recipes in Image Resize Settings in 2sxc ✨ new!
 
 [!include[](~/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
