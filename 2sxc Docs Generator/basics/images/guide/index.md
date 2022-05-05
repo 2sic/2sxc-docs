@@ -29,9 +29,10 @@ Images are a crucial part of every website and CMS. We want to be sure that:
 > [!TIP]
 > This guide should help you understand the big &lt;picture&gt; 😏. 
 >
+> Best read this while looking at the [Tutorial](https://2sxc.org/dnn-tutorials/en/razor/img107/page)
+>
 > For every detail there is much more technical documentation, which will be linked here. 
 
-We'll now explain the Parts that Make this Possible.
 
 ## Part 1: Edit UI / UX
 
@@ -45,14 +46,12 @@ the designer must activate it on the field. Otherwise the feature is not availab
 
 <img src="./assets/image-configuration.jpg" class="full-width" width="100%">
 
-**Important**
-
-This button is only available 
-1. IF it has been enabled
-1. and IF the file is an image
-1. and IF the file "belongs" to the item being edited  
-    If the file is a general file from another item or from the root folder, the metadata is not available. 
-    This is important because files from elsewhere could be shared, and editing the metadata could have unexpected side-effects.
+**Important**: The config-button is only available...
+1. ...IF it has been enabled
+1. ...and IF the file is an image
+1. ...and IF the file "belongs" to the item being edited  
+    _If the file is a general file from another item or from the root folder, the metadata is not available._
+    _This is important because files from elsewhere could be shared, and editing the metadata could have unexpected side-effects._
 
 ## Part 2: Image Metadata
 

@@ -11,15 +11,12 @@ uid: Basics.Images.Index
 
 Images are a crucial part of every website and CMS. You should learn about:
 
-1. Image Formats
+1. [Image Formats](https://2sxc.org/dnn-tutorials/en/razor/img100/page)
+1. [Guide how to use the Image Service](xref:Basics.Images.Guide.Index)
+1. [Image Resizing](xref:Basics.ImageResizer.Index)
 
 
-
-TODO: we're still working on these docs
-
----
----
-
+we're still working on these docs... 😉
 
 ---
 
