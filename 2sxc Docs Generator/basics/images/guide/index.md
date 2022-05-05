@@ -31,9 +31,9 @@ Images are a crucial part of every website and CMS. We want to be sure that:
 >
 > For every detail there is much more technical documentation, which will be linked here. 
 
-## The Parts that Make this Possible
+We'll now explain the Parts that Make this Possible.
 
-### Part 1: Edit UI / UX
+## Part 1: Edit UI / UX
 
 The Edit UI presents various options to the user for uploading and configuring images. 
 
@@ -54,12 +54,12 @@ This button is only available
     If the file is a general file from another item or from the root folder, the metadata is not available. 
     This is important because files from elsewhere could be shared, and editing the metadata could have unexpected side-effects.
 
-### Part 2: Image Metadata
+## Part 2: Image Metadata
 
 When a user edits the image settings in the UI, the data is stored as [metadata](xref:Basics.Metadata.Index) for this image. 
 This is important, because generating a perfect `<img>` or `<picture>` tag requires this information. 
 
-### Part 3: Dynamic Field
+## Part 3: Dynamic Field
 
 If a content item stores the image on a property `.Image` then something like `Content.Image` would return `/Portal/0/Adam/some-image.jpg`.
 In this case, the [IImageService](xref:ToSic.Sxc.Services.IImageService) cannot find the metadata.
@@ -67,7 +67,7 @@ In this case, the [IImageService](xref:ToSic.Sxc.Services.IImageService) cannot 
 This is why we need to give it the entire field, not just the value. This is done using `Content.Field("Image")` 
 and will get your code a [IDynamicField](xref:ToSic.Sxc.Data.IDynamicField).
 
-### Part 4: ImageService
+## Part 4: ImageService
 
 The [IImageService](xref:ToSic.Sxc.Services.IImageService) will take all the known information and generate an `<img>` or a `<picture>` tag.
 
@@ -82,7 +82,7 @@ If you need more control, there are 3 options:
 
 TODO: LINK TUTORIAL
 
-### Part 5: Settings and Recipes
+## Part 5: Settings and Recipes
 
 **Settings** are preconfigured parameters how the image is to be resized. 
 They are stored at App, Site, Global or Preset level. 
@@ -109,7 +109,7 @@ You can also generate your own recipes:
 * inherit/expand an existing recipe like this: `.Recipe(originalRecipe, ...)`
 
 
-### Part 3: Special In-Page Toolbar (WIP ca. v13.13)
+## Part 3: Special In-Page Toolbar (WIP ca. v13.13)
 
 TODO:
 
