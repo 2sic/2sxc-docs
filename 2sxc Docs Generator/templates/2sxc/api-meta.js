@@ -9,7 +9,7 @@ const prioInternal = {
   priority: "internal"
 };
 
-const prioCustom = {
+const prioTop = {
   priority: "custom"
 };
 
@@ -31,9 +31,9 @@ const prioAdam = {
 };
 
 exports.data = {
-  "Custom.Hybrid": prioCustom,
-  "Custom.Dnn": prioCustom,
-  "Custom.Oqtane": prioCustom,
+  "Custom.Hybrid": prioTop,
+  "Custom.Dnn": prioTop,
+  "Custom.Oqtane": prioTop,
   "ToSic.Eav": prioInternal,
   "ToSic.Eav.Apps": prioInternal,
   "ToSic.Eav.Apps.Assets": prioInternal,
@@ -71,13 +71,13 @@ exports.data = {
   "ToSic.Sxc.Dnn.LookUp": prioInternal,
   "ToSic.Sxc.Dnn.Run": prioInternal,
   "ToSic.Sxc.Dnn.Web": prioInternal,
-  "ToSic.Sxc.Edit": prioWeb,
+  "ToSic.Sxc.Edit": prioInternal,
   "ToSic.Sxc.Engines": prioInternal,
   "ToSic.Sxc.Hybrid": prioInternal,
   "ToSic.Sxc.Hybrid.Razor": prioInternal,
   "ToSic.Sxc.LookUp": prioInternal,
   "ToSic.Sxc.Search": prioWeb,
-  "ToSic.Sxc.Services": prioWeb,
+  "ToSic.Sxc.Services": prioTop,
   "ToSic.Sxc.Web": prioInternal,
 }
 

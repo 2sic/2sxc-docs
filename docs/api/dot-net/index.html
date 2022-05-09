@@ -117,14 +117,28 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="this-is-the-2sxc-api-documentation">This is the <strong>2sxc API Documentation</strong></h1>
 
-<h2 id="background-architecture-of-eav-sxc-dnn">Background: Architecture of Eav, Sxc, Dnn</h2>
-<div class="TIP"><h5>Tip</h5><p>Before you start, please get familiar with the <a class="xref" href="../../abyss/architecture/index.html">architecture</a> - otherwise you probably won&#39;t understand what you see here.</p>
-</div>
-<p>Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that&#39;s inofficial. 
-Please don&#39;t use objects that are not documented here. 
-That allows us to improve the architecture without worrying about breaking your code. 
-Once we&#39;re really sure that certain parts are very final, we&#39;ll publish the API docs for those parts. </p>
-<div class="TIP"><h5>Tip</h5><p>We&#39;ve color and icon coded all the things you might care about. <br></p>
+<p>This that will probably interest you the most:</p>
+<ul>
+<li><a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a> contains services you&#39;ll usually use in Razor and WebAPIs</li>
+<li>Your code should inherit base classes from the <code>Custom</code> namespace to inherit a rich API of <a class="xref" href="../../net-code/dynamic-code/index.html">Dynamic Code</a><ul>
+<li>for <strong>Razor</strong> use <a class="xref" href="Custom.Hybrid.Razor12.html">Hybrid.Razor12</a> or <a class="xref" href="Custom.Dnn.Razor12.html">Dnn.Razor12</a></li>
+<li>for <strong>WebAPIs</strong> use <a class="xref" href="Custom.Hybrid.Api12.html">Hybrid.Api12</a> / <a class="xref" href="Custom.Dnn.Api12.html">Dnn.Api12</a></li>
+<li>for <strong>shared C# code</strong> use <a class="xref" href="Custom.Hybrid.Code12.html">Hybrid.Code12</a></li>
+</ul>
+</li>
+<li>If you&#39;re interested in data or file-assets, please read about <a class="xref" href="../../net-code/dynamic-data/index.html">Dynamic Data</a><ul>
+<li>you may also care about 
+<a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>, 
+<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> 
+as well as the <a class="xref" href="../../net-code/dynamic-data/entity-vs-dynamic-entity.html">differences</a></li>
+<li>or about the 
+<a class="xref" href="../../basics/cms/adam/index.html">ADAM Assets</a> 
+such as <a class="xref" href="ToSic.Sxc.Adam.IFolder.html">IFolder</a>, <a class="xref" href="ToSic.Sxc.Adam.IFile.html">IFile</a> 
+and <a class="xref" href="ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_AsAdam_">.AsAdam(...)</a></li>
+</ul>
+</li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>We&#39;ve color-coded and icon-coded all the things you might care about. <br></p>
 <ul>
 <li><span class="priority-internal">Internal</span> stuff in subdued <br></li>
 <li><span class="priority-web"></span> marks things usually used in Razor/WebApi development <br></li>
@@ -133,23 +147,14 @@ Once we&#39;re really sure that certain parts are very final, we&#39;ll publish 
 <li><span class="priority-metadata"></span> marks things related to metadata <br></li>
 </ul>
 </div>
-<h2 id="what-youre-probably-looking-for">What You&#39;re Probably Looking for</h2>
-<h3 id="apis-in-razor-templates-and-webapi">APIs in Razor Templates and WebApi</h3>
-<ol>
-<li><p>To create a <strong>Razor</strong> template and want to know what APIs are available, start with <a class="xref" href="Custom.Hybrid.Razor12.html">Razor12</a> or <a class="xref" href="Custom.Dnn.Razor12.html">Razor12</a>. 
- This is because new Razor Components inherits from that, so you&#39;ll see all the commannds you get there. </p>
-</li>
-<li><p>To create a <strong>WebApi</strong> and need to know everything in it, you also want to check the <a class="xref" href="Custom.Hybrid.Api12.html">Api12</a> / <a class="xref" href="Custom.Dnn.Api12.html">Api12</a>, because all new WebApi classes inherit that. </p>
-</li>
-<li><p>To create <strong>Shared C# Code Files</strong> we suggest you use the <a class="xref" href="Custom.Hybrid.Code12.html">Code12</a>. </p>
-</li>
-</ol>
-<p><em>Note: Previous versions of 2sxc recommended other base classes, but for the current v12 you should begin using the <strong>Hybrid</strong> versions, as it will also run on Oqtane in future.</em></p>
-<h3 id="working-with-entities-and-adam-assets">Working with Entities and ADAM Assets</h3>
-<ol>
-<li>If you&#39;re working with <code>DynamicEntity</code> objects and want to know more about them, check out <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.<br> In very rare cases you also want to know more about the underlying <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>.</li>
-<li>If you&#39;re working with <code>ADAM</code> Assets, like from the <code>AsAdam(...)</code> command on <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> objects,<br> you&#39;ll want to read about <a class="xref" href="ToSic.Sxc.Adam.IFolder.html">IFolder</a> and <a class="xref" href="ToSic.Sxc.Adam.IFile.html">IFile</a></li>
-</ol>
+<p>Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that&#39;s inofficial. 
+Please don&#39;t use objects that are not documented here. 
+That allows us to improve the architecture without worrying about breaking your code. 
+Once we&#39;re really sure that certain parts are very final, we&#39;ll publish the API docs for those parts. </p>
+<h2 id="advanced-topics">Advanced Topics</h2>
+<h3 id="background-architecture-of-eav-sxc-dnn">Background: Architecture of Eav, Sxc, Dnn</h3>
+<div class="TIP"><h5>Tip</h5><p>If you really care, please get familiar with the <a class="xref" href="../../abyss/architecture/index.html">architecture</a> - it helps a 👍🏼</p>
+</div>
 <h3 id="programming-with-datasources-and-visualquery">Programming with DataSources and VisualQuery</h3>
 <p>All the DataSources are based on <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a> and most of them are also <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>s . You can find most of them in <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a> . </p>
 </article>

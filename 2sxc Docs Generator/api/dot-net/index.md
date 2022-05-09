@@ -1,42 +1,43 @@
 # This is the **2sxc API Documentation**
 
-## Background: Architecture of Eav, Sxc, Dnn
+This that will probably interest you the most:
+
+* [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) contains services you'll usually use in Razor and WebAPIs
+* Your code should inherit base classes from the `Custom` namespace to inherit a rich API of [Dynamic Code](xref:NetCode.DynamicCode.Index)
+  * for **Razor** use [Hybrid.Razor12](xref:Custom.Hybrid.Razor12) or [Dnn.Razor12](xref:Custom.Dnn.Razor12)
+  * for **WebAPIs** use [Hybrid.Api12](xref:Custom.Hybrid.Api12) / [Dnn.Api12](xref:Custom.Dnn.Api12)
+  * for **shared C# code** use [Hybrid.Code12](xref:Custom.Hybrid.Code12)
+* If you're interested in data or file-assets, please read about [Dynamic Data](xref:NetCode.DynamicData.Index)
+  * you may also care about 
+    [](xref:ToSic.Sxc.Data.IDynamicEntity), 
+    [](xref:ToSic.Eav.Data.IEntity) 
+    as well as the [differences](xref:NetCode.DynamicData.EntityVsDynamicEntity)
+  * or about the 
+    [ADAM Assets](xref:Basics.Cms.Adam.Index) 
+    such as [](xref:ToSic.Sxc.Adam.IFolder), [](xref:ToSic.Sxc.Adam.IFile) 
+    and [.AsAdam(...)](xref:ToSic.Sxc.Code.DynamicCode.AsAdam*)
+
 
 > [!TIP]
-> Before you start, please get familiar with the [architecture](xref:Abyss.Architecture.Index) - otherwise you probably won't understand what you see here.
-
-Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that's inofficial. 
-Please don't use objects that are not documented here. 
-That allows us to improve the architecture without worrying about breaking your code. 
-Once we're really sure that certain parts are very final, we'll publish the API docs for those parts. 
-
-> [!TIP]
-> We've color and icon coded all the things you might care about. <br>
+> We've color-coded and icon-coded all the things you might care about. <br>
 > * <span class="priority-internal">Internal</span> stuff in subdued <br/>
 > * <span class="priority-web"></span> marks things usually used in Razor/WebApi development <br/>
 > * <span class="priority-data"></span> marks things related to data processing, usually data sources <br/>
 > * <span class="priority-adam"></span> marks ADAM things (automatic Digital Asset Management) <br/>
 > * <span class="priority-metadata"></span> marks things related to metadata <br/>
 
-## What You're Probably Looking for
+Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that's inofficial. 
+Please don't use objects that are not documented here. 
+That allows us to improve the architecture without worrying about breaking your code. 
+Once we're really sure that certain parts are very final, we'll publish the API docs for those parts. 
 
-### APIs in Razor Templates and WebApi
+## Advanced Topics
 
-1. To create a **Razor** template and want to know what APIs are available, start with [](xref:Custom.Hybrid.Razor12) or [](xref:Custom.Dnn.Razor12). 
-	This is because new Razor Components inherits from that, so you'll see all the commannds you get there. 
+### Background: Architecture of Eav, Sxc, Dnn
 
-1. To create a **WebApi** and need to know everything in it, you also want to check the [](xref:Custom.Hybrid.Api12) / [](xref:Custom.Dnn.Api12), because all new WebApi classes inherit that. 
+> [!TIP]
+> If you really care, please get familiar with the [architecture](xref:Abyss.Architecture.Index) - it helps a 👍🏼
 
-1. To create **Shared C# Code Files** we suggest you use the [](xref:Custom.Hybrid.Code12). 
-
-_Note: Previous versions of 2sxc recommended other base classes, but for the current v12 you should begin using the **Hybrid** versions, as it will also run on Oqtane in future._
-
-### Working with Entities and ADAM Assets
-
-1. If you're working with `DynamicEntity` objects and want to know more about them, check out [](xref:ToSic.Sxc.Data.IDynamicEntity).  
-	In very rare cases you also want to know more about the underlying [](xref:ToSic.Eav.Data.IEntity).
-1. If you're working with `ADAM` Assets, like from the `AsAdam(...)` command on [](xref:ToSic.Sxc.Data.IDynamicEntity) objects,  
-	you'll want to read about [](xref:ToSic.Sxc.Adam.IFolder) and [](xref:ToSic.Sxc.Adam.IFile)
 
 ### Programming with DataSources and VisualQuery
 
