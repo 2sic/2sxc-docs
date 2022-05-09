@@ -182,6 +182,11 @@ The `context` contain additional information about the context we're running in.
   * `get('FeatureName')` - will return the feature object **WIP v13.06**
 * `form`
   * `runFormulas()` - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
+* `user` WIP _new in v13.11_
+  * `id`
+  * `isAnonymous`
+  * `isSiteAdmin`
+  * `isSystemAdmin`
 * `experimental` - this is for internal APIs we're testing, they are not public. You can use them, but expect the APIs to change in near future
 
 ## Using the `context.cache`
