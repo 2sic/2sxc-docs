@@ -11,25 +11,25 @@ uid: Basics.Images.Guide.Index
 
 Images are a crucial part of every website and CMS. We want to be sure that:
 
-1. Perfect Editing
+1. **Perfect Editing**
     1. Editors can easily add images
     1. Editors can give titles to images
     1. Editors can have some control over how the image is shown - but not too much, it must be within the restrictions of the design
-1. Perfect Output
+1. **Perfect Output**
     1. Images look great no matter what the editor does
     1. Images are accessible (for people with disabilities, etc.)
     1. Images use the latest possible file formats
     1. Images load quickly - which also requires images to be the best-possible size
-1. Perfect SEO & Page Speed
+1. **Perfect SEO & Page Speed**
     1. Images are optimized for search engines
     1. Images are optimized for page speed, especially mobile page speed
-1. Pefect Control by the Designer
+1. **Pefect Control by the Designer**
     1. The designer determines how images should look in various scenarios
 
 > [!TIP]
 > This guide should help you understand the big &lt;picture&gt; 😏. 
 >
-> Best read this while looking at the [Tutorial](https://2sxc.org/dnn-tutorials/en/razor/img107/page)
+> Best read this while looking at the [Tutorial](xref:Tut.Img.Guide)
 >
 > For every detail there is much more technical documentation, which will be linked here. 
 
@@ -79,7 +79,11 @@ If you need more control, there are 3 options:
 1. You can also generate very custom settings using the `.Settings(...)` command on the ImageService
 1. You can also take the resulting object like `var img = imgSvc.Img(Content.Image)` and use it to generate the final tag yourself.
 
-TODO: LINK TUTORIAL
+Some Tutorials to learn this
+
+* [](xref:Tut.Img.Img)
+* [](xref:Tut.Img.Picture)
+* [](xref:Tut.Img.Guide)
 
 ## Part 5: Settings and Recipes
 
@@ -108,6 +112,15 @@ You can also generate your own recipes:
 * inherit/expand an existing recipe like this: `.Recipe(originalRecipe, ...)`
 
 
+## Part 6: Link.Image(...) API
+
+In the rare cases where you just need a URL and not the full HTML, check out the [Link.Image(...) API](xref:NetCode.DynamicCode.Objects.Link.Image).
+
+It is not as powerful as the ImageService but if you only need a URL it may be what you need.
+
+🎓 [](xref:Tut.Img.LinkImage)
+
+<!--
 ## Part 3: Special In-Page Toolbar (WIP ca. v13.13)
 
 TODO:
@@ -116,6 +129,8 @@ TODO:
 
 
 TODO: we're still working on these docs
+
+--> 
 
 ---
 

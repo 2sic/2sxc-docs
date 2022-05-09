@@ -15,14 +15,18 @@ It's really easy to use - just add url parameters to the image. So instead of `i
 
 Internally it uses the amazing [ImageFlow](https://www.imageflow.io/) which has the same URL setup as the previous [ImageResizer.net](https://imageresizing.net/).
 
-> [!TIP]
-> 2sic 12.04 introduces a helper command [Link.Image(...)](xref:NetCode.DynamicCode.Objects.Link.Image).
-> 
-> This can be combined with global image-size settings to create consistent image sizes all across your site. 
+## How to Use
 
-The docs here are not ready, but you can find [various examples here](https://2sxc.org/learn-extensions/ImageResizer)
+You can learn about the url parameters in the [](xref:Tut.Img.Parameters)
 
+But normally you won't use them directly, because it's better to use APIs which will set these parameters for you. 
+Your best options are:
 
+1. The [IImageService](xref:ToSic.Sxc.Services.IImageService) with `.Img(...)` or `.Picture(...)` which will create the best possible _HTML_ for you
+1. The [Link.Image(...)](xref:NetCode.DynamicCode.Objects.Link.Image) which will create the best possible _URL_ for you
+
+In most scenarios you will prefer the `IImageService`. 
+In cases where you need exactly 1 url (like in `background-url` CSS) you will probably use the `Link.Image(...)`.
 
 ---
 

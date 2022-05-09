@@ -2,9 +2,17 @@
 uid: NetCode.DynamicCode.Objects.Link.Image
 ---
 
-# Link.Image(...) / @Link.Image Method in Dynamic Code ✨ new!
+<img src="~/assets/features/image-resizer.svg" class="feature">
+
+# Link.Image(...) / @Link.Image Method in Dynamic Code
 
 Linking images - especially images which should be automatically resized - can be tricky. This is where `Link.Image(...)` helps. 
+
+> [!TIP]
+> 2sxc 13.10 adds a new [ImageService](xref:Basics.Images.Guide.Index) which helps generate the best possible HTML for images. 
+> 
+> Only use the `Link.Image(...)` where really necessary, because the `IImageService` is usually the better choice.
+
 
 ## Simple Examples
 
@@ -79,10 +87,11 @@ So this will work:
 
 ## Demo App and further links
 
-You should find some code examples in this demo App
+🎓 [](xref:Tut.Img.LinkImage)
 
-* TODO - 
+📔 [](xref:Basics.Images.Guide.Index)
 
 ## History
 
 1. Introduced in 2sxc 12.04
+1. For many cases you should now use the ImageService in 2sxc 13.10+

@@ -242,10 +242,16 @@
 <p>2sxc has an awesome Image Resizer built in. </p>
 <p>It&#39;s really easy to use - just add url parameters to the image. So instead of <code>img.jpg</code> add <code>img.jpg?w=200</code> to resize it to 200px width. </p>
 <p>Internally it uses the amazing <a href="https://www.imageflow.io/">ImageFlow</a> which has the same URL setup as the previous <a href="https://imageresizing.net/">ImageResizer.net</a>.</p>
-<div class="TIP"><h5>Tip</h5><p>2sic 12.04 introduces a helper command <a class="xref" href="../../net-code/dynamic-code/objects/link.image.html">Link.Image(...)</a>.</p>
-<p>This can be combined with global image-size settings to create consistent image sizes all across your site. </p>
-</div>
-<p>The docs here are not ready, but you can find <a href="https://2sxc.org/learn-extensions/ImageResizer">various examples here</a></p>
+<h2 id="how-to-use">How to Use</h2>
+<p>You can learn about the url parameters in the <a class="xref" href="https://2sxc.org/learn-extensions/ImageResizer">Image Resizer URL Parameters</a></p>
+<p>But normally you won&#39;t use them directly, because it&#39;s better to use APIs which will set these parameters for you. 
+Your best options are:</p>
+<ol>
+<li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> with <code>.Img(...)</code> or <code>.Picture(...)</code> which will create the best possible <em>HTML</em> for you</li>
+<li>The <a class="xref" href="../../net-code/dynamic-code/objects/link.image.html">Link.Image(...)</a> which will create the best possible <em>URL</em> for you</li>
+</ol>
+<p>In most scenarios you will prefer the <code>IImageService</code>. 
+In cases where you need exactly 1 url (like in <code>background-url</code> CSS) you will probably use the <code>Link.Image(...)</code>.</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
