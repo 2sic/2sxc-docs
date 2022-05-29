@@ -54,6 +54,7 @@ Next to document
 1. Finish metadata documentation
   1. Create in the APIs (simplify APIs first)
   1. Create good sample of Page-Metadata App
+1. Formulas: explain prefill, more examples incl. cache & promise
 
 These topics are insufficiently documented...
 

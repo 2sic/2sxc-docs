@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Formulas JavaScript Specs | 2sxc 13 / EAV 13 </title>
+    <title>context Object in Formulas | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Formulas JavaScript Specs | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="context Object in Formulas | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,93 +114,74 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Index">
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Context">
 
 <p><img src="../../../basics/edit/formulas/assets/formulas-banner.svg" width="100%"></p>
-<h1 id="formulas-javascript-specs">Formulas JavaScript Specs</h1>
-<p>Formulas let you create JavaScript functions to calculate <strong>Values</strong> and <strong>Properties</strong> of things in the edit form. </p>
-<blockquote><p>Learn about <a class="xref" href="../../../basics/edit/formulas/index.html">the Formula concepts</a> here. 
-It also shows you the UIs, how to configure etc. </p>
-</blockquote>
-<h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
-<p>This formula would be applied to the fields <strong>Value</strong>.</p>
-<pre><code class="lang-js">v1(data) {
-  return data.value ? data.value : &#39;missing-data&#39;;
-}
-</code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
-<p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
-<pre><code class="lang-js">v1(data) {
-  return data.ShowAdvanced;
-}
-</code></pre><h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
-<p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">v1(data) { 
-  return data.default + (data.EditInstructions || data.ListInstructions ? &#39; ✅&#39; : &#39;&#39;); 
-}
-</code></pre><p><em>Note that we&#39;re returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
-<h2 id="v1-function-specs">V1 Function Specs</h2>
-<ol>
-<li>All functions must be called <code>v1</code>, it must be lower case
-This is important because we cannot guess when the API will change, and we also expect to introduce an Excel-like syntax which would begin with <code>=</code></li>
-<li>The first line in the code must start with the function name <code>v1</code>. You cannot put comments or empty lines before the <code>v1</code></li>
-<li>Your function <em>must</em> have brackets afterwards and it can have 0, 1 or two params, so you can use one of the following<ul>
-<li><code>v1() { ... }</code></li>
-<li><code>v1(data) { ... }</code></li>
-<li><code>v1(data, context) { ...}</code></li>
+<h1 id="context-object-in-formulas"><code>context</code> Object in Formulas</h1>
+<p>The <code>context</code> contain additional information about the context we&#39;re running in.</p>
+<ul>
+<li><code>app</code> - contains information about the current app <em>new 13.07</em><ul>
+<li><code>appId</code></li>
+<li><code>zoneId</code></li>
+<li><code>isContent</code></li>
+<li><code>isSite</code></li>
+<li><code>isGlobal</code></li>
 </ul>
 </li>
-<li>The parameter names are anything you want, but the order of what you get is always <code>data</code> and then <code>context</code>. You can also write<ul>
-<li><code>v1(d, c) { ... }</code></li>
+<li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
+<li><code>debug</code> - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. <em>new in 12.02</em></li>
+<li><code>target</code> - everything about the target of the formula - the current field<ul>
+<li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Settings</code> (Future: <code>Form.Variable</code> etc.) </li>
+<li><code>name</code> - field name or setting-name, so <code>FirstName</code> or <code>Visible</code></li>
+<li><code>entity</code><ul>
+<li><code>id</code> - the id of the entity - 0 if it&#39;s new</li>
+<li><code>guid</code> - the GUID of the entity, always provided</li>
 </ul>
 </li>
-</ol>
-<h2 id="you-must-return-a-valid-value">You Must Return a Valid Value</h2>
-<p>Each field type or property may expect a different data type. Make sure you provide that. </p>
-<div class="WARNING"><h5>Warning</h5><p>If you return nothing, <code>undefined</code> or the wrong data type, the result will be ignored and the value/setting will not be changed. </p>
-</div>
-<p>Common Mistakes</p>
-<ul>
-<li>returning nothing with <code>return;</code> - this will be regarded as an error and be ignored.</li>
-<li>returning <code>undefined</code>.</li>
-<li>Returning a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a> instead of a real <code>true</code> or <code>false</code> for a boolean value</li>
 </ul>
-<h2 id="the-data-and-context-objects">The <code>data</code> and <code>context</code> Objects</h2>
-<p>👉🏼 See <a class="xref" href="data.html">data</a></p>
-<p>👉🏼 See <a class="xref" href="context.html">context</a></p>
-<h2 id="tips-and-tricks">Tips and Tricks</h2>
-<ol>
-<li>You can always add a <code>console.log(data, context);</code> or similar in your code to see in real time what&#39;s being processed.</li>
-<li>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</li>
-<li>For now, we strongly recommend to use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>, but with experience the recommendation may change. </li>
-</ol>
-<h2 id="future-features">Future features</h2>
-<ol>
-<li>Ability to read other properties of fields - like check if a field is visible</li>
-<li>Excel-style formula syntax using <code>=[Field]</code></li>
-<li>Ability to read other entities / check their types etc.</li>
-<li>Ability to read fields of other entities</li>
-</ol>
-<ul>
-<li>getSettings(...)</li>
-<li>getEntities(...)</li>
-<li>getFields(entity)</li>
-<li><code>entities</code><ul>
-<li>[entity]<ul>
-<li><code>guid</code></li>
+</li>
+<li><code>culture</code><ul>
+<li><code>code</code></li>
+<li><code>name</code> - this will return <code>undefined</code> scenarios where no languages are activated</li>
+</ul>
+</li>
+<li><code>features</code> <em>new v13.10</em><ul>
+<li><code>isEnabled(&#39;FeatureName&#39;)</code> - will return true if this feature is enabled.<br><em>Important: only admins users will know about all available features, non-admins will only have a subset marked as public.</em>  </li>
+<li><code>get(&#39;FeatureName&#39;)</code> - will return the feature object</li>
+</ul>
+</li>
+<li><code>form</code> <em>new v13.10</em><ul>
+<li><code>runFormulas()</code> - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache <em>new 13.07</em></li>
+</ul>
+</li>
+<li><code>user</code> <em>new in v13.11</em><ul>
 <li><code>id</code></li>
+<li><code>isAnonymous</code></li>
+<li><code>isSiteAdmin</code></li>
+<li><code>isSystemAdmin</code></li>
 </ul>
 </li>
+<li><code>experimental</code> - this is for internal APIs we&#39;re testing, they are not public. You can use them, but expect the APIs to change in near future</li>
 </ul>
-</li>
-</ul>
-<hr>
+<h2 id="using-the-contextcache">Using the <code>context.cache</code></h2>
+<p>In some cases you may want to remember a result of intermediate work. For this you can use the <code>context.cache</code> object. A simple exammple would be if you only want to run something once, in which case you could write something like this</p>
+<pre><code class="lang-js">v1(data, context) {
+  // don&#39;t do anything on following runs / return existing value
+  if(context.cache.notFirstRun) return data.value;
+  context.cache.notFirstRun = true;
+  return true;
+}
+</code></pre><hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Introduced in 2sxc 12.01</li>
-<li>Added <code>data.parameters</code> in v13.10</li>
-<li>Added <code>context.features</code>, <code>context.app</code>, <code>context.user</code>, <code>context.sxc</code> etc. in v13.10</li>
+<li>Added <code>context.features.isEnabled(&#39;FeatureName&#39;)</code> in v13.10</li>
+<li>Added <code>context.features.get(&#39;FeatureName&#39;)</code> in v13.10</li>
+<li>Added <code>context.app</code> in v13.10</li>
+<li>Added <code>context.user</code> in v13.11</li>
+<li>Added <code>context.form.runFormulas()</code> in v13.11</li>
 </ul>
+<p>Shortlink to here: <a href="https://r.2sxc.org/js-fcontext">https://r.2sxc.org/js-fcontext</a></p>
 </article>
           </div>
           
@@ -209,7 +190,7 @@ This is important because we cannot guess when the API will change, and we also 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/js-code/edit-form/formulas/context.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

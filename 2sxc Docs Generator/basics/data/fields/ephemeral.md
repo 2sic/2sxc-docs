@@ -2,11 +2,16 @@
 uid: Basics.Data.Fields.Ephemeral
 ---
 
-# Temporary Variable Fields (Emphemeral Fields)
+# Ephemeral / Temporary Fields for Variables
 
 [!include["Data"](~/basics/data/_shared-content-types.md)]
 
 This explains **Ephemeral aka Temporary Variable Fields**. For an overview check out [](xref:Basics.Data.Index).
+
+> [!NOTE]
+> In v14 we added `data.parameters.*` which contains all parameters given in the prefill. 
+> 
+> So in many cases, you may not even need to create ephemeral fields any more.
 
 ---
 
@@ -30,3 +35,6 @@ To configure a field to _not save_ and be temporary / ephemeral, use this settin
 ## History
 
 1. Introduced in 2sxc 12.01
+1. Added `data.parameters` in v14
+
+Shortlink to here: https://r.2sxc.org/ephemeral
