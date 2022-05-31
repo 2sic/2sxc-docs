@@ -30,6 +30,10 @@ const prioAdam = {
   priority: "adam"
 };
 
+const deprecated = {
+  priority: "deprecated"
+};
+
 exports.data = {
   "Custom.Hybrid": prioTop,
   "Custom.Dnn": prioTop,
@@ -65,6 +69,7 @@ exports.data = {
   "ToSic.Sxc.Data": prioWeb,
   "ToSic.Sxc.DataSources": prioData,
   "ToSic.Sxc.Dnn": prioWeb,
+  "ToSic.Sxc.Dnn.Factory": deprecated,
   "ToSic.Sxc.Dnn.Code": prioInternal,
   "ToSic.Sxc.Dnn.Context": prioInternal,
   "ToSic.Sxc.Dnn.DataSources": prioData,
