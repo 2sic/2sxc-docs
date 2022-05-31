@@ -41,8 +41,13 @@ function isApiToc(model) {
   if(!(model.items && model.items.length))
     return false;
 
-  var firstName = model.items[0].name;
+  var firstName = model.items[0].topicUid || model.items[0].name;
   var match = isNamespace(firstName);
+
+  // Debug
+  if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0) {
+    console.warn('Debug isApiToc Dnn:' + debugModel);
+  }
   return match;
 }
 
@@ -68,8 +73,15 @@ let count = 0;
 const keepParts = 3;
 const truncateTo = 2;
 
+let debugJustAFew = 0;
+const debugJustAFewMax = 0;
+
 function processNode(item, level) {
-  // console.warn('2dm-processNode');
+  if (debugJustAFew < debugJustAFewMax) {
+    console.warn('2dm-processNode');
+    console.warn('item:' + toJsonShort(item));
+    debugJustAFew++;
+  }
 
   // debug data on item
   // var debugModel = JSON.stringify(item);
@@ -80,14 +92,17 @@ function processNode(item, level) {
   //       item.level += 1;
   // }
 
-  if(isNamespace(item.name)) {
+  if(isNamespace(item.topicUid || item.name)) {
     // add metadata - before changing the namespace
     addMeta(item, level);
     if(level <= 2)
       shortenNamespace(item, level);
   }
   else
+  {
+    addMeta(item, level, true);
     setPriorityNormal(item);
+  }
 
   // do recursively if necessary, but should only matter on the 1st or 2nd recursion
   // if(level > 2) return; 
@@ -97,8 +112,15 @@ function processNode(item, level) {
     var length = item.items.length;
     for (var i = 0; i < length; i++) {
       processNode(item.items[i], level + 1);
-    };
+    }
   } 
+}
+
+function toJsonShort(obj) {
+  if (obj == null) return "(null)";
+  const json = JSON.stringify(obj);
+  if (json.length > 100) return json.slice(100) + "...";
+  return json;
 }
 
 /**
@@ -108,7 +130,7 @@ function shortenNamespace(item, level) {
   item.fullName = item.name;
   var parts = item.name.split('.');
   var count = parts.length;
-  if(count > keepParts) {
+  if (count > keepParts) {
     parts.splice(0, count - truncateTo);
     var newName = repeatString("...", count - keepParts) + parts.join('.');
     item.name = newName;
@@ -122,18 +144,19 @@ function shortenNamespace(item, level) {
  * @param {*} item 
  * @param {*} level 
  */
-function addMeta(item, level) {
+function addMeta(item, level, debug) {
   count++;
   // if(level > 2) return;
   item.priority = ns.priorityNormal;
 
-  if(level > 2 || !item.topicUid) {
-    return;
-  };
+  // 2022-05-31 2dm - disable checking if we should also do deeper nodes, so we can add deprecated etc.
+  // if(level > 2 || !item.topicUid) {
+  //   return;
+  // };
 
   var found = ns.data[item.topicUid];
-  if(found) {
-    // console.warn('uid:' + item.topicUid);
+  if (found) {
+    if (debug) console.warn('JS Debug addMeta - uid:' + item.topicUid);
     item.priority = found.priority;
   }
   // if(item.priority == "adam")
