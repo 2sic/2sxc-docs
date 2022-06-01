@@ -1,16 +1,16 @@
 ### YamlMime:UniversalReference
 items:
-  - uid: Api.Js.InPage.SxcRoot
-    name: SxcRoot
-    fullName: SxcRoot
+  - uid: Api.Js.InPage.SxcGlobal
+    name: SxcGlobal
+    fullName: SxcGlobal
     children:
-      - Api.Js.InPage.SxcRoot.env
-      - Api.Js.InPage.SxcRoot.get
-      - Api.Js.InPage.SxcRoot.http
-      - Api.Js.InPage.SxcRoot.insights
-      - Api.Js.InPage.SxcRoot.log
-      - Api.Js.InPage.SxcRoot.sysinfo
-      - Api.Js.InPage.SxcRoot.urlParams
+      - Api.Js.InPage.SxcGlobal.env
+      - Api.Js.InPage.SxcGlobal.get
+      - Api.Js.InPage.SxcGlobal.http
+      - Api.Js.InPage.SxcGlobal.insights
+      - Api.Js.InPage.SxcGlobal.log
+      - Api.Js.InPage.SxcGlobal.sysinfo
+      - Api.Js.InPage.SxcGlobal.urlParams
     langs:
       - typeScript
     type: interface
@@ -29,7 +29,7 @@ items:
 
       So `$2sxc(...)` is the same as `$2sxc.get(...)`
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.env
+  - uid: Api.Js.InPage.SxcGlobal.env
     name: env
     fullName: env
     children: []
@@ -44,8 +44,8 @@ items:
           - Api.Js.InPage.Environment
         description: ''
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.get
-    name: 'get(number | HTMLElement | ContextIdentifier | SxcInstance, number)'
+  - uid: Api.Js.InPage.SxcGlobal.get
+    name: 'get(number | HTMLElement | ContextIdentifier | Sxc, number)'
     children: []
     type: method
     langs:
@@ -53,14 +53,14 @@ items:
     summary: Get an SxcInstance
     syntax:
       content: >-
-        function get(id: number | HTMLElement | ContextIdentifier | SxcInstance,
-        cbid?: number)
+        function get(id: number | HTMLElement | ContextIdentifier | Sxc, cbid?:
+        number)
       parameters:
         - id: id
           type:
             - >-
-              number | HTMLElement | ContextIdentifier |
-              Api.Js.InPage.SxcInstance
+              number | HTMLElement | Api.Js.InPage.ContextIdentifier |
+              Api.Js.InPage.Sxc
           description: number | HTMLElement | ContextIdentifier | SxcInstance
         - id: cbid
           type:
@@ -69,10 +69,10 @@ items:
           optional: true
       return:
         type:
-          - Api.Js.InPage.SxcInstance
+          - Api.Js.InPage.Sxc
         description: SxcInstance
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.http
+  - uid: Api.Js.InPage.SxcGlobal.http
     name: http
     fullName: http
     children: []
@@ -81,28 +81,54 @@ items:
     type: property
     summary: Http helper for API calls and such
     syntax:
-      content: 'http: SxcHttp'
+      content: 'http: HttpGlobal'
       return:
         type:
-          - SxcHttp
+          - Api.Js.InPage.HttpGlobal
         description: ''
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.insights
-    name: insights
-    fullName: insights
+  - uid: Api.Js.InPage.SxcGlobal.insights
+    name: 'insights(string, number, number, number)'
     children: []
+    type: method
     langs:
       - typeScript
-    type: property
-    summary: The debugging / insights system
+    summary: >-
+      The debugging / insights system.
+
+      Call the `$2sxc.insights()` without parameters to get instructions what
+      the parameters could be.
     syntax:
-      content: 'insights: show'
-      return:
-        type:
-          - show
-        description: ''
+      content: >-
+        function insights(partName: string, index?: number, start?: number,
+        length?: number)
+      parameters:
+        - id: partName
+          type:
+            - string
+          description: >-
+            optional name of a part of the system for which we want to see the
+            logs
+        - id: index
+          type:
+            - number
+          description: optional index on that part for which log we want to see
+          optional: true
+        - id: start
+          type:
+            - number
+          description: >-
+            log start index - this is to skip the first few lines if there are
+            too many
+          optional: true
+        - id: length
+          type:
+            - number
+          description: |
+            amount of lines to show - in some cases will default to 25
+          optional: true
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.log
+  - uid: Api.Js.InPage.SxcGlobal.log
     name: log
     fullName: log
     children: []
@@ -117,7 +143,7 @@ items:
           - Api.Js.InPage.Log
         description: ''
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.sysinfo
+  - uid: Api.Js.InPage.SxcGlobal.sysinfo
     name: sysinfo
     fullName: sysinfo
     children: []
@@ -134,7 +160,7 @@ items:
           - Object
         description: ''
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.SxcRoot.urlParams
+  - uid: Api.Js.InPage.SxcGlobal.urlParams
     name: urlParams
     fullName: urlParams
     children: []
@@ -156,6 +182,12 @@ references:
       - name: Environment
         fullName: Environment
         uid: Api.Js.InPage.Environment
+  - uid: Api.Js.InPage.HttpGlobal
+    name: HttpGlobal
+    spec.typeScript:
+      - name: HttpGlobal
+        fullName: HttpGlobal
+        uid: Api.Js.InPage.HttpGlobal
   - uid: Api.Js.InPage.Log
     name: Log
     spec.typeScript:
@@ -168,17 +200,22 @@ references:
       - name: UrlParams
         fullName: UrlParams
         uid: Api.Js.InPage.UrlParams
-  - uid: number | HTMLElement | ContextIdentifier | Api.Js.InPage.SxcInstance
-    name: SxcInstance
+  - uid: number | HTMLElement | Api.Js.InPage.ContextIdentifier | Api.Js.InPage.Sxc
+    name: Sxc
     spec.typeScript:
-      - name: 'number | HTMLElement | ContextIdentifier | '
-        fullName: 'number | HTMLElement | ContextIdentifier | '
-      - name: SxcInstance
-        fullName: SxcInstance
-        uid: Api.Js.InPage.SxcInstance
-  - uid: Api.Js.InPage.SxcInstance
-    name: SxcInstance
+      - name: 'number | HTMLElement | '
+        fullName: 'number | HTMLElement | '
+      - name: ContextIdentifier
+        fullName: ContextIdentifier
+        uid: Api.Js.InPage.ContextIdentifier
+      - name: ' | '
+        fullName: ' | '
+      - name: Sxc
+        fullName: Sxc
+        uid: Api.Js.InPage.Sxc
+  - uid: Api.Js.InPage.Sxc
+    name: Sxc
     spec.typeScript:
-      - name: SxcInstance
-        fullName: SxcInstance
-        uid: Api.Js.InPage.SxcInstance
+      - name: Sxc
+        fullName: Sxc
+        uid: Api.Js.InPage.Sxc

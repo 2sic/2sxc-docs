@@ -5,11 +5,14 @@ items:
     fullName: UrlParams
     children:
       - Api.Js.InPage.UrlParams.get
+      - Api.Js.InPage.UrlParams.isDebug
       - Api.Js.InPage.UrlParams.require
     langs:
       - typeScript
-    type: interface
-    summary: ''
+    type: class
+    summary: |-
+      Helper object to read url params.
+      Available on `$2sxc.urlParams`
     package: Api.Js.InPage
   - uid: Api.Js.InPage.UrlParams.get
     name: get(string)
@@ -17,7 +20,9 @@ items:
     type: method
     langs:
       - typeScript
-    summary: 'Get a param from the url, no matter if it''s behind ? or #'
+    summary: |-
+      Get a param from the url, no matter if it's behind ? or #
+      If not found, will return an empty string `''`
     syntax:
       content: 'function get(name: string)'
       parameters:
@@ -28,6 +33,21 @@ items:
       return:
         type:
           - string
+        description: ''
+    package: Api.Js.InPage
+  - uid: Api.Js.InPage.UrlParams.isDebug
+    name: isDebug()
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: Checks if debug is enabled in the URL
+    syntax:
+      content: function isDebug()
+      parameters: []
+      return:
+        type:
+          - boolean
         description: ''
     package: Api.Js.InPage
   - uid: Api.Js.InPage.UrlParams.require
