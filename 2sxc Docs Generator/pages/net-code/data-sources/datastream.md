@@ -4,7 +4,7 @@ uid: NetCode.DataSources.DataStream
 
 # Data Streams (IDataStream)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .datasource { visibility: visible; } </style>
 
 DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities. 

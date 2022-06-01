@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.DataQuery$
 
 # Data.query$\<T\>(...)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 With **dnn-sxc-angular** it's really easy to access Data from the backend. 

@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.Toolbars
 
 # Toolbars in Angular (dnn-sxc-angular)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 `dnn-sxc-angular` provides  directives/components which allow to place toolbars in an Angular App. 

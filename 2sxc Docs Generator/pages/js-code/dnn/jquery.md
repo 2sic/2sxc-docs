@@ -3,7 +3,7 @@ uid: JsCode.Dnn.JQuery
 ---
 # JQuery in Dnn and 2sxc
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .frameworks-js { visibility: visible; } </style>
 
 

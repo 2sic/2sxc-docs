@@ -8,7 +8,7 @@ uid: JsCode.2sxcApi.Sxc.Manage
 > This is obsolete code and will stop working soon. 
 > Please use newer APIs instead like `.cms.run(...)`
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 The `manage` object helps you manage content, allowing you to `run(...)` [commands](xref:JsCode.Commands.Index) or to get [buttons or toolbars](xref:JsCode.Toolbars.Index). 

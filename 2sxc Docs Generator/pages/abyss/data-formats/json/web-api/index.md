@@ -4,7 +4,7 @@ uid: Basics.DataFormats.Json.WebApi.Index
 
 # JSON Data Format used in WebAPI calls (technical)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .format-json-headless { visibility: visible; } </style>
 
 When reading or writing data to/from the [Headless WebAPI](xref:WebApi.Headless.Index) the data format used is JSON. Here are the basics:

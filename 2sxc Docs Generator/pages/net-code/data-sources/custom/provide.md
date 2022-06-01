@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.Provide
 
 # DataSource API: Provide(...)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 DataSources always provide data on an [`Out` Stream](xref:NetCode.DataSources.Custom.StreamsOut). The `Provide` method makes it very easy to do. 

@@ -2,7 +2,7 @@
 uid: NetCode.DynamicData.DynamicList
 ---
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 # Dynamic Entity Lists

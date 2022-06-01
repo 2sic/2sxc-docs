@@ -6,7 +6,7 @@ uid: JsCode.2sxcApi.$2sxc.Index
 
 # The `$2sxc` Global Object
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 The `$2sxc` is a global JavaScript object helping you to access data of your view or WebAPIs of your 2sxc-App.

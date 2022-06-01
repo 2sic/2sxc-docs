@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.Install
 
 # Installing and Bootstrapping dnn-sxc-angular
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 ## Step 1. Install the Package

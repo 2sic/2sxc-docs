@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.StreamsOut
 
 # DataSource API: Out Streams
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 All DataSources must have **Out** Streams.
@@ -16,7 +16,7 @@ But there are two important things you can change
 1. You can determine one or more predefined Out streams
 1. You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the [App DataSource](xref:ToSic.Eav.DataSources.App)
 
-<img src="~/basics/query/streams/assets/out-streams.png" width="100%" class="full-width">
+<img src="~/pages/basics/query/streams/assets/out-streams.png" width="100%" class="full-width">
 
 
 > [!IMPORTANT]

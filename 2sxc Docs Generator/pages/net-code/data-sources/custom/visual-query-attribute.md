@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.VisualQueryAttribute
 
 # DataSource API: VisualQuery Attribute
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 DataSources themselves are useful in the 2sxc/EAV data processing - but they really become great when used in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) Designer. 

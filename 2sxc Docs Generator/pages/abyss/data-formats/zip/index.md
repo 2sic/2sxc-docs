@@ -4,7 +4,7 @@ uid: Basics.DataFormats.Zip.Index
 
 # ZIP App Data Format in 2sxc (technical)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 When Apps are exported, they result in a ZIP file which can be easily re-imported. 

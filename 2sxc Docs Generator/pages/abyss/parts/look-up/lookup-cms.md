@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Cms
 
 # Cms LookUps for Dnn ☢️ and Oqtane 🩸
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 The following lookups are new in v12 and work across platforms for both Dnn ☢️ and Oqtane 🩸:

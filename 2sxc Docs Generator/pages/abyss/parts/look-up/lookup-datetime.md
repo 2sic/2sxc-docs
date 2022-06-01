@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.DateTime
 
 # DateTime LookUps
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 There is one `DateTime` Source which can be used in LookUps:

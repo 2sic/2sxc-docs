@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.Index
 
 # The Module Level Sxc Instance
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 The module-specific `sxc`-instance is the core JavaScript object helping you in these cases:  

@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.Index
 
 # NPM Package @2sic/dnn-sxc-angular
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 We've created a library to help you connect Angular with Dnn called **dnn-sxc-angular**. 

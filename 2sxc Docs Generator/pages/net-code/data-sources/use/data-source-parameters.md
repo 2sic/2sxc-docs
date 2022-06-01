@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Use.DataSourceParameters
 
 # Set Parameters for DataSource Objects in C#
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .datasource, .context-box-summary .process-razor-app, .context-box-summary .process-web-api-app { visibility: visible; } </style>
 
 Most DataSource Objects will do something that you can parameterize / configure. 

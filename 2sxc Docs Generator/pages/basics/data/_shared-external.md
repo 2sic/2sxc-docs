@@ -1,0 +1,5 @@
+
+<div class="overlay-container">
+  <div class="overlay-box" style="left: 75.1%; top: 7%; height: 45%; width: 24%"></div>
+  <img src="./assets/app-data.png" class="full-width">
+</div>

@@ -4,7 +4,7 @@ uid: NetCode.DataSources.DataSource
 
 # Data Sources (IDataSource)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .datasource, .context-box-summary .query-datasource { visibility: visible; } </style>
 
 **Root DataSources** are [](xref:ToSic.Eav.DataSources.IDataSource) objects which deliver one or many [DataStreams](xref:ToSic.Eav.DataSources.IDataStream), which contain a bunch of content-items. 

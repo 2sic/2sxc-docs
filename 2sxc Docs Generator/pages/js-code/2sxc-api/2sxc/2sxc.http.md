@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.$2sxc.Http
 
 # The $2sxc.http API
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 

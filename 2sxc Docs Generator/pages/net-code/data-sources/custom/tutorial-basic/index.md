@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.TutorialBasic.Index
 
 # Custom DataSources - Basic Tutorial
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 We've re-created our Tutorial for the Custom DataSources to match features of 2sxc 11.13. It has 3 DataSources:

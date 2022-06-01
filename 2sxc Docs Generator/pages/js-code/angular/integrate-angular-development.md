@@ -6,7 +6,7 @@ uid: JsCode.Angular.IntegrateAngularDevelopment
 
 # Integrate Angular for Runtime in 2sxc / Dnn
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
 This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use Dnn/2sxc Endpoints at the same time. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).

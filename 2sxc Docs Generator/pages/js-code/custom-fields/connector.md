@@ -4,7 +4,7 @@ uid: JsCode.CustomFields.Connector
 
 # API of Connector Object in Custom Input Fields
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
 
 The `connector` object provides values to your WebComponent and let's you communicate with the form. Here's the API you need:

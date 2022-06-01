@@ -3,7 +3,7 @@ uid: JsCode.QuickE.Index
 ---
 # Html & JS: quickE - Quick Edit 2.0
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 quickE (pronounced quicky) is the quick-edit feature inside 2sxc to quickly add / move modules and inner content blocks.

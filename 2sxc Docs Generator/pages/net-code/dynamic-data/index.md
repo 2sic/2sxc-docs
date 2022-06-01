@@ -9,7 +9,7 @@ Once you've gotten the basics to work, it's important that you understand what's
 This section should give you that overview. 
 
 <div class="context-box-process" width="100%">
-  [!include[](~/basics/stack/_shared-all.md)]
+  [!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 

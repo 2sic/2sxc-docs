@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.TypeSource
 
 # DataSource API: Root DataSources which Introduce Data
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 If your DataSource creates new items - like from memory or elsewhere - it's called a **Root DataSource**. 

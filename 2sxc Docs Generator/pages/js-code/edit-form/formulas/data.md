@@ -2,7 +2,7 @@
 uid: JsCode.EditForm.Formulas.Data
 ---
 
-<img src="~/basics/edit/formulas/assets/formulas-banner.svg" width="100%" >
+<img src="~/pages/basics/edit/formulas/assets/formulas-banner.svg" width="100%" >
 
 # `data` Object in Formulas
 

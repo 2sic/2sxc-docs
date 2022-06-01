@@ -6,7 +6,7 @@ uid: JsCode.Angular.Index
 
 # Using Angular in 2sxc / Dnn
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
 [Angular](https://angular.io/) is an awesome JavaScript framework to build applications, especially SPA style applications. 

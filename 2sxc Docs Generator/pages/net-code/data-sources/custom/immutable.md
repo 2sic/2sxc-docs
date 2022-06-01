@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.ImmutableData
 
 # DataSource API: About Immutable Data 
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 All Streams are internally immutable, and we recommend that you also use Provide with an immutable List. This is _not required_ but best-practice. 

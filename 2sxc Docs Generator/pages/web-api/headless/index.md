@@ -5,7 +5,7 @@ uid: WebApi.Headless.Index
 
 # Headless WebAPIs in 2sxc
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .process-headless { visibility: visible; }
 </style>

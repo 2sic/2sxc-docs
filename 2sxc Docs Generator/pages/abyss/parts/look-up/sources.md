@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Sources
 
 # LookUp Sources
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 The [LookUp System](xref:Abyss.Parts.LookUp.Index) will use the [LookUp Engine](xref:Abyss.Parts.LookUp.Engine) to retrieve values for Queries and more. 

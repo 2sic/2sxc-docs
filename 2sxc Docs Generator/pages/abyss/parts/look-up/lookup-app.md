@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.App
 
 # `App` LookUps
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 The App has three Sources which can be used in LookUps

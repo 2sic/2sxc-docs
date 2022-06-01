@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.DataApi
 
 # Data.api(...)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 With **dnn-sxc-angular** it's really easy to access WebAPIs on the backend. If you want to make multiple calls to the same controller, the easiest way is to use `data.api<T>(...)`.

@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.In
 
 # `In` LookUp in Query Parameters
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 Data Sources in a query can retrieve values from another data-source which is a source. Use the `[In:source-name:attribute-name]` syntax. 

@@ -6,7 +6,7 @@ uid: JsCode.Angular.TemplateApp
 
 # Angular Template App for Dnn / 2sxc
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
 To quickly get started we've created the [](xref:App.Angular11). It demonstrates how to...

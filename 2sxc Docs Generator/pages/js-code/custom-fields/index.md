@@ -3,7 +3,7 @@ uid: JsCode.CustomFields.Index
 ---
 # How To Create Custom Input Fields (v11.2)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
 
 Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever. 

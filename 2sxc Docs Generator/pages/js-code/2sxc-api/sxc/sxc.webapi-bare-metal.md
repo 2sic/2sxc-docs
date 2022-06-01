@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.BareMetal
 
 # The WebApi Helpers on the Sxc Controller - Bare Metal
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 In most cases you will want to use the new [fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) APIs in 2sxc 12.10+. 

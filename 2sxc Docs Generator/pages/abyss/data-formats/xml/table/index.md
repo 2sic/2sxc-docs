@@ -4,7 +4,7 @@ uid: Basics.DataFormats.Xml.Table.Index
 
 # Table Data Format in 2sxc (technical)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 You can export/import lists of data for mass-editing in Excel. 

@@ -7,7 +7,7 @@ uid: NetCode.DynamicCode.Index
 Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a lot of helpers to work with [Dynamic Data](xref:NetCode.DynamicData.Index).
 
 <div class="context-box-process" width="100%">
-  [!include[](~/basics/stack/_shared-all.md)]
+  [!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 

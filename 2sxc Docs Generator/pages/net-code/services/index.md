@@ -7,7 +7,7 @@ uid: NetCode.Services.Index
 2sxc and EAV provide **Services** through **Dependency Injection** to get stuff done. 
 
 <div class="context-box-process" width="100%">
-  [!include[](~/basics/stack/_shared-all.md)]
+  [!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 

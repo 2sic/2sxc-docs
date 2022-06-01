@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.jQuery
 
 # The WebApi Helpers on the Sxc Controller using JQuery
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 2sxc originally used jQuery and the JS API still has commands which do jQuery AJAX calls. On the `webApi` object they are

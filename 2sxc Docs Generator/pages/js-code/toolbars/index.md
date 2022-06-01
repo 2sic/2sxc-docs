@@ -6,7 +6,7 @@ uid: JsCode.Toolbars.Index
 
 # In-Page Edit Toolbars and Buttons
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 When a user is logged on and has edit permissions, he should see buttons to edit his content or perform other actions. This is all done in HTML / JavaScript. By default, the server will render this in places defined by the template using placeholders like `@Edit.TagToolbar(Content)` and similar.

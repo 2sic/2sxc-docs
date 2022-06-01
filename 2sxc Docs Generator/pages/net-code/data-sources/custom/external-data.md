@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.ExternalData
 
 # DataSource API: Inherit from ExternalData 
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 If your DataSource gets data from elsewhere, please always inherit from [ExternalData](xref:ToSic.Eav.DataSources.ExternalData).

@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Use.Index
 
 # Use DataSources in your C# Code
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .datasource, .context-box-summary .process-razor-app, .context-box-summary .process-web-api-app { visibility: visible; } </style>
 
 

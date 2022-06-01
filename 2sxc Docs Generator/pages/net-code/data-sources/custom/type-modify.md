@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.TypeModify
 
 # DataSource API: Modify Data DataSources
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 If your DataSource takes an `In` stream and _changes the properties_ of the items forwarded it's called a **Modify DataSource**. 

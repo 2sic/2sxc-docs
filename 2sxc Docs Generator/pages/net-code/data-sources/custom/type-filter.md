@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.TypeFilter
 
 # DataSource API: Filter DataSources
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 If your DataSource takes an `In` stream and limits what is forwarded it's called a **Filter DataSource**. 

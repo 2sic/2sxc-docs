@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Tokens
 
 # LookUp Tokens Explained
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
 Often you need a _placeholder_ which should be resolved at runtime with a real value from elsewhere. 

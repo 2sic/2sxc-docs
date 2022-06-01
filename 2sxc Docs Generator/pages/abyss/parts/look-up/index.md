@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Index
 
 # LookUp System
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup { visibility: visible; } </style>
 
 Many things in the EAV and 2sxc require it to look up parameters. Examples could be:

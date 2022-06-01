@@ -4,7 +4,7 @@ uid: WebApi.Query
 
 # Query REST Web API
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-headless { visibility: visible; }

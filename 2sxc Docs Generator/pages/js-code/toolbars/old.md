@@ -6,7 +6,7 @@ uid: JsCode.Toolbars.Old
 
 # Old APIs for In-Page Edit Toolbars and Buttons
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 > [!WARNING]

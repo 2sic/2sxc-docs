@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.Cms
 
 # `cms` Service of the Sxc Instance
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 Very often your JS will want to execute CMS related commands, like opening the edit dialog. 

@@ -6,7 +6,7 @@ uid: JsCode.Toolbars.Workflows
 
 # Toolbar Workflows
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 2sxc Toolbars do a lot of things automatically, but in some cases you want to...

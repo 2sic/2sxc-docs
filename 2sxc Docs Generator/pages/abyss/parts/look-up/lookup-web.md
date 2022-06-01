@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Web
 
 # Web / Server / HTTP LookUps
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 There are three Sources for web parameters which can be used in LookUps:

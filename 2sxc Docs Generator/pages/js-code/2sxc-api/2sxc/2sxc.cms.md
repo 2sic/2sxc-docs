@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.$2sxc.Cms
 
 # The $2sxc.cms API
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
 

@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.Index
 
 # Create Custom DataSources
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 

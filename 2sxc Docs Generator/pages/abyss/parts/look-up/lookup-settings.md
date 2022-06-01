@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Settings
 
 # `Settings` LookUp in DataSources
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 The `Settings` LookUp is special because it's only used in C# on [DataSources](xref:NetCode.DataSources.Index). 

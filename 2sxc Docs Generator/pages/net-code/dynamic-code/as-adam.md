@@ -4,7 +4,7 @@ uid: NetCode.DynamicCode.AsAdam
 
 # AsAdam(...) Command
 
-[!include["ADAM Summary"](~/basics/cms/adam/_shared-what-is-adam.md)]
+[!include["ADAM Summary"](~/pages/basics/cms/adam/_shared-what-is-adam.md)]
 
 When a content-item has a `Library` field (see [](xref:Basics.Data.Fields.Hyperlink-Library)) your code needs to get a list of all the files and folders of that field. For example to show galleries. 
 This is where `AsAdam(...)` comes in. It gives you the ADAM parts of this field.

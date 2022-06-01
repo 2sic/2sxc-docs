@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi
 
 # The WebApi Helpers on the Sxc Controller
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 The WebApi object on the module-specific `sxc`-controller is for AJAX calls. It helps you in these advanced cases:  

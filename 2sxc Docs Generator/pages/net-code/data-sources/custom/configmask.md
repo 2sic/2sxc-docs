@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.ConfigMask
 
 # DataSource Configuration: ConfigMask(...)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
   .context-box-summary .datasource-custom, 
   .context-box-summary .query-params,

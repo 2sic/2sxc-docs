@@ -4,7 +4,7 @@ uid: Basics.DataFormats.Xml.AppData.Index
 
 # App.xml Data Format in 2sxc (technical)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 Apps can store their entire state as an XML file, for 2 use cases

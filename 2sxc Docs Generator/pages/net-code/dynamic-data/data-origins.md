@@ -2,7 +2,7 @@
 uid: NetCode.DynamicData.DataOrigins
 ---
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
 
 # Where Data Comes From

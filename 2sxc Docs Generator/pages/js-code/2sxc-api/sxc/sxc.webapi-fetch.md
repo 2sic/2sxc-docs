@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.Fetch
 
 # The WebApi Helpers on the Sxc Controller using Fetch
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 Modern browsers all support `fetch` and this is now the preferred way to get data. 

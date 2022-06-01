@@ -6,7 +6,7 @@ uid: JsCode.Angular.DnnSxcAngular.Context
 
 # Context (dnn-sxc-angular)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
 
 **dnn-sxc-angular** can give you a lot of _Context Information_ like this:

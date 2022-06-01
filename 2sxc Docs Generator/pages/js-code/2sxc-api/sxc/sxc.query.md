@@ -4,7 +4,7 @@ uid: JsCode.2sxcApi.Sxc.Query
 
 # Query Services of the Sxc Instance
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
 A common need in JS is to read/write data from/to the backend. 

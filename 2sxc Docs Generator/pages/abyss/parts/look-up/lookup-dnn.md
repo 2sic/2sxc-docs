@@ -6,7 +6,7 @@ uid: Abyss.Parts.LookUp.Dnn
 
 # Dnn Specific LookUps
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .lookup-sources { visibility: visible; } </style>
 
 Dnn has various LookUps built in, which won't be available on Oqtane:

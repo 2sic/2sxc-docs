@@ -7,7 +7,7 @@ uid: NetCode.WebApi.Index
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
 
 <div class="context-box-process" width="100%">
-  [!include[](~/basics/stack/_shared-all.md)]
+  [!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-web-api { visibility: visible; } </style>
 </div>
 

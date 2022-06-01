@@ -4,7 +4,7 @@ uid: JsCode.Tips.Index
 
 # JavaScript Tips
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
 
 Sometimes you just need a simple trick to get things working. We're collecting the most important ones here.

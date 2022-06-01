@@ -4,7 +4,7 @@ uid: Basics.DataFormats.Index
 
 # Data Formats in 2sxc (technical)
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 This is very technical information, you usually won't need this. 

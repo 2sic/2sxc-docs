@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Use.QueryParameters
 
 # Set Parameters for Queries in C#
 
-[!include[](~/basics/stack/_shared-float-summary.md)]
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query { visibility: visible; } </style>
 
 If a [Query](xref:Basics.Query.Index) has been configured to use **Parameters** 
