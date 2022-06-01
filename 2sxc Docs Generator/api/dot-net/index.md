@@ -1,3 +1,6 @@
+---
+uid: ToSic.Home
+---
 # This is the **2sxc API Documentation**
 
 This that will probably interest you the most:
