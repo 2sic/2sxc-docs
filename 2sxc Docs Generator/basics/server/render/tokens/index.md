@@ -57,7 +57,7 @@ Note that in Token-templates the `Header` is called the `ListContent` for histor
 
 ## Common LookUp Sources
 
-[!include[](~/abyss/parts/look-up/_include-common-sources.md)]
+[!include[](~/pages/abyss/parts/look-up/_include-common-sources.md)]
 
 Read more about [LookUp Sources](xref:Abyss.Parts.LookUp.Sources)
 

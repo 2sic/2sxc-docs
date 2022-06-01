@@ -26,7 +26,7 @@ On this page we'll explain how these work, and what special sources exist.
 
 These are the sources which are automatically included in 2sxc
 
-[!include[](~/abyss/parts/look-up/_include-common-sources.md)]
+[!include[](~/pages/abyss/parts/look-up/_include-common-sources.md)]
 
 ### Token Template Sources
 

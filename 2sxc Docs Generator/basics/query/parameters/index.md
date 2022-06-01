@@ -51,7 +51,7 @@ Each Query can have a list of Parameters which all parts can access through the 
 
 This is what it looks like in VisualQuery:
 
-<img src="~/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
+<img src="~/pages/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
 
 You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params).
 
@@ -78,7 +78,7 @@ Read more about the [In LookUp](xref:Abyss.Parts.LookUp.In).
 
 Another common use case is when a normal Module-Content provides more settings. This uses the [CmsBlock DataSource](xref:ToSic.Sxc.DataSources.CmsBlock):
 
-<img src="~/abyss/parts/look-up/assets/sql-with-in-param.jpg" width="100%" class="full-width">
+<img src="~/pages/abyss/parts/look-up/assets/sql-with-in-param.jpg" width="100%" class="full-width">
 
 This shows how the In will look in the `Mod` stream to find the `PortalId`. Read more about this
 

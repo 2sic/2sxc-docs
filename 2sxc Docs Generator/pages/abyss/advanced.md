@@ -6,4 +6,4 @@ uid: Abyss.Advanced.Index
 
 These are some really advanced things you may want to know about. 
 
-[!include["Abyss Info"](~/abyss/_abyss-info.md)]
+[!include["Abyss Info"](~/pages/abyss/_abyss-info.md)]

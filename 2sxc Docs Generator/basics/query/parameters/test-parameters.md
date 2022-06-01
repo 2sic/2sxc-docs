@@ -20,7 +20,7 @@ The [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index) also allows you 
 
 Here's an example:
 
-<img src="~/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
+<img src="~/pages/abyss/parts/look-up/assets/query-params-for-part.jpg" width="100%" class="full-width">
 
 You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params).
 
