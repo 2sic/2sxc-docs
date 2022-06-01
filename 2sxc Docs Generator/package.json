@@ -1,0 +1,22 @@
+{
+  "name": "2sxc-docs",
+  "version": "14.0.0",
+  "description": "",
+  "scripts": {
+    "import-inpage": "npm run import-inpage-1-pre-clean && npm run import-inpage-2-typedoc && npm run import-inpage-3-docfx",
+    "import-inpage-1-pre-clean": "cd import && delete.cmd \".\\api.js.inpage\"",
+    "import-inpage-2-typedoc": "cd \"../../2sxc-ui/projects/$2sxc/\" && typedoc --tsconfig ./src/tsconfig.typedoc.json --json \"../../../2sxc-docs/2sxc Docs Generator/import/api.js.inpage/inpage-typedoc.json\"", 
+    "import-inpage-3-docfx": "type2docfx ./import/api.js.inpage/inpage-typedoc.json ./import/api.js.inpage/docFx",
+
+    "temp": "// && typedoc --tsconfig ./src/tsconfig.typedoc.json",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "type2docfx": "^0.10.5",
+    "typedoc": "^0.15.8",
+    "typescript": "^3.8.3"
+  }
+}
