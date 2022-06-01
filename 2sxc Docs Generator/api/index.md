@@ -1,3 +1,11 @@
+# 2sxc and EAV APIs
 
-# PLACEHOLDER
-TODO: Add .NET projects to *src* folder and run `docfx` to generate a **REAL** *API Documentation*!
+## .net APIs
+
+See [](./dot-net/index.md)
+
+
+## JavaScript APIs
+
+See [](../js-code/index.md)
+
