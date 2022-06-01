@@ -2,10 +2,10 @@
 
 ## .net APIs
 
-See [](./dot-net/index.md)
+See [](xref:NetCode.Index)
 
 
 ## JavaScript APIs
 
-See [](../js-code/index.md)
+See [](xref:JsCode.Index)
 

@@ -1,0 +1,1 @@
+Moved to [](xref:JsCode.2sxcApi.Sxc.Manage)
