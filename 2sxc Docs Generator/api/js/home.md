@@ -2,6 +2,4 @@
 uid: Api.Js.Home
 ---
 
-# JavaScript APIs
-
-TODO: !
+moved to [](xref:JsCode.Index)
