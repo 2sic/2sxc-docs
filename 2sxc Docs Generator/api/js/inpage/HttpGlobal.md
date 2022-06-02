@@ -1,12 +1,10 @@
+﻿---
+uid: Api.Js.InPage.HttpGlobal
+title: $2sxc.http - Class HttpGlobal
 ---
-uid: JsCode.2sxcApi.$2sxc.Http
----
-
-# The $2sxc.http API
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
-
 
 The `$2sxc.http` object contains information for doing API calls. _It's new - introduced in 2sxc 10.25_.
 
@@ -27,13 +25,13 @@ This is new in 2sxc 10.25 and was added to avoid using jQuery when not necessary
 > A very safe way to do this is to run your code on-document-ready, 
 > or just to ensure that whatever bootstraps your application runs inside the `<body>` tag. 
 
-## Internal Stuff
+### Internal APIs
 
 The `http` also has some internal methods like:
 
 * `apiRoot(endpointName)` the full api-root to use in calling Dnn or 2sxc endpoints. It's internal, because for all 2sxc stuff and 2sxc Apps the endpointName is always `2sxc`
 * `headers(moduleId, contentBlockId)` headers incl. ModuleId and content-Block ID - rarely used
 
-## History
+### History
 
 1. Introduced in 2sxc 10.25
