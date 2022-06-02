@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.InPage.Environment
+uid: Api.Js.SxcJs.Environment
 ---
 
 ### The $2sxc.env API

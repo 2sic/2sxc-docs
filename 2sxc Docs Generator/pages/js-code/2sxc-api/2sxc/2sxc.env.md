@@ -1,1 +1,1 @@
-Moved to [](xref:Api.Js.InPage.Environment)
+Moved to [](xref:Api.Js.SxcJs.Environment)

@@ -25,7 +25,7 @@ uid: JsCode.2sxcApi.Sxc.WebApi.jQuery
 > See [webApi.fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
 
 > [!TIP]
-> To find out how to get the module sxc-object using $2sxc, check out [](xref:Api.Js.InPage.SxcWebApi)
+> To find out how to get the module sxc-object using $2sxc, check out [](xref:Api.Js.SxcJs.SxcWebApi)
 
 ## Example
 

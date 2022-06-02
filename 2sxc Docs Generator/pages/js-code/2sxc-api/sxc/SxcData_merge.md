@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.InPage.SxcData
+uid: Api.Js.SxcJs.SxcData
 ---
 
 ### `sxc.data` Services of the Sxc Instance
@@ -12,7 +12,7 @@ A common need in JS is to read/write data from/to the backend.
 2sxc 13 introduce new JS APIs for this. 
 
 * `data(...)` gets a data service to get one or many items of the same type, and also create/update data (this document)
-* `query(...)` gets a query service to call server-side queries 👉 [docs](xref:Api.Js.InPage.SxcQuery)
+* `query(...)` gets a query service to call server-side queries 👉 [docs](xref:Api.Js.SxcJs.SxcQuery)
 
 _Note: You can do all what these services do using [webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch), but this is more convenient._
 

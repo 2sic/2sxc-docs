@@ -1,5 +1,5 @@
 ﻿---
-uid: Api.Js.InPage.WorkflowStepCode
+uid: Api.Js.SxcJs.WorkflowStepCode
 summary: Signature of your code which is used in workflows.
 ---
 
@@ -7,7 +7,7 @@ summary: Signature of your code which is used in workflows.
 
 Signature of your code which is used in workflows.
 
-Basically it's just a function receiving [](xref:Api.Js.InPage.WorkflowStepCodeArguments) 
+Basically it's just a function receiving [](xref:Api.Js.SxcJs.WorkflowStepCodeArguments) 
 
 ```js
 export type WorkflowCode = (args: WorkflowStepCodeArguments) => WorkflowStepCodeArguments;

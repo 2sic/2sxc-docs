@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.InPage.SxcWebApi
+uid: Api.Js.SxcJs.SxcWebApi
 ---
 
 ### `sxc.webApi` Helpers on the Sxc Controller

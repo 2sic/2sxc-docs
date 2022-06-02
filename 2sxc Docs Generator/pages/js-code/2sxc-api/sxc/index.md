@@ -48,11 +48,11 @@ Before you continue, make sure you know how to resolve/get your `sxc`-strong>, a
 ## The API of an Initialized Module `sxc` Instance
 
 * `.cms` - Run Cms Commands like `edit` etc.
-* `.data` _object_ to access backend data, see [](xref:Api.Js.InPage.SxcData)
+* `.data` _object_ to access backend data, see [](xref:Api.Js.SxcJs.SxcData)
 * `.id` _int_: the id of this sxc-instance, usually the module-id
 * `.isEditMode()` _bool_: looks up if this module is editable - this can vary on each module
 * [`.manage...`](xref:JsCode.2sxcApi.Sxc.Manage) _object_ - to create your own buttons, toolbars or run CMS commands
-* `.query` _object_ to retrieve queries from the backend, see [](xref:Api.Js.InPage.SxcQuery)
+* `.query` _object_ to retrieve queries from the backend, see [](xref:Api.Js.SxcJs.SxcQuery)
 * `.webApi...` _object_: helpers to call server side WebApis and REST resources
 
 Internal objects which exist, but you shouldn't use:
@@ -80,21 +80,21 @@ _Till we find time to document more, please consult the [$2sxc API](https://gith
 
 ## Working with REST Api to Read/Write Content-Items / Data
 
-In v.13+ you should should use the [data](xref:Api.Js.InPage.SxcData).
+In v.13+ you should should use the [data](xref:Api.Js.SxcJs.SxcData).
 
-_In older versions, use the [Sxc WebApi](xref:Api.Js.InPage.SxcWebApi)_
+_In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
 
 
 ## Using App-Queries with $2sxc
 
-In v.13+ you should should use the [query](xref:Api.Js.InPage.SxcQuery) objects.
+In v.13+ you should should use the [query](xref:Api.Js.SxcJs.SxcQuery) objects.
 
-_In older versions, use the [Sxc WebApi](xref:Api.Js.InPage.SxcWebApi)_
+_In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
 
 
 ## Working with Custom C# App WebAPIs
 
-Read about it in the [Sxc WebApi](xref:Api.Js.InPage.SxcWebApi) page.
+Read about it in the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi) page.
 
 
 ## Demo App and further links
