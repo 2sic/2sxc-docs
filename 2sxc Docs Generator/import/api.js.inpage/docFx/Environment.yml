@@ -6,7 +6,6 @@ items:
     children:
       - Api.Js.InPage.Environment.api
       - Api.Js.InPage.Environment.load
-      - Api.Js.InPage.Environment.log
       - Api.Js.InPage.Environment.page
       - Api.Js.InPage.Environment.platform
       - Api.Js.InPage.Environment.ready
@@ -44,8 +43,11 @@ items:
     langs:
       - typeScript
     summary: >-
-      Load a new jsInfo - must be public, as it's used in iframes where jquery
-      is missing
+      Manually load a new EnvironmentSpecs in cases where the page cannot
+      provide them.
+
+      This is only used in scenarios outside of Dnn / Oqtane, you will usually
+      not need this.
     syntax:
       content: 'function load(newJsInfo: EnvironmentSpecs, source?: string)'
       parameters:
@@ -60,28 +62,13 @@ items:
           description: ''
           optional: true
     package: Api.Js.InPage
-  - uid: Api.Js.InPage.Environment.log
-    name: log
-    fullName: log
-    children: []
-    langs:
-      - typeScript
-    type: property
-    summary: The logger for this object
-    syntax:
-      content: 'log: Log'
-      return:
-        type:
-          - Api.Js.InPage.Log
-        description: ''
-    package: Api.Js.InPage
   - uid: Api.Js.InPage.Environment.page
     name: page()
     children: []
     type: method
     langs:
       - typeScript
-    summary: The current page ID
+    summary: The current page ID - often needed in API calls
     syntax:
       content: function page()
       parameters: []
@@ -128,7 +115,7 @@ items:
     type: method
     langs:
       - typeScript
-    summary: The request verification token value
+    summary: The request-verification token for internal WebAPI calls
     syntax:
       content: function rvt()
       parameters: []
@@ -143,7 +130,7 @@ items:
     type: method
     langs:
       - typeScript
-    summary: The request verification token header name
+    summary: The request verification token header name for internal WebAPI calls
     syntax:
       content: function rvtHeader()
       parameters: []
@@ -174,12 +161,6 @@ references:
       - name: HasLog
         fullName: HasLog
         uid: Api.Js.InPage.HasLog
-  - uid: Api.Js.InPage.Log
-    name: Log
-    spec.typeScript:
-      - name: Log
-        fullName: Log
-        uid: Api.Js.InPage.Log
   - uid: Api.Js.InPage.EnvironmentSpecs
     name: EnvironmentSpecs
     spec.typeScript:

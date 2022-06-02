@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../../js-code/toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -73,7 +73,7 @@
                       <li>
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
                       </li>
                       <li>
@@ -82,7 +82,7 @@
                       <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../api/js/home.html" title="JS API">JS API</a>
                       </li>
                 </ul>    </div>
@@ -122,10 +122,10 @@
   
   <h1 id="Api_Js_InPage_HttpGlobal" data-uid="Api.Js.InPage.HttpGlobal">Class HttpGlobal
   </h1>
-  <div class="markdown level0 summary"><p>Global HTTP Service for information and helpers.
-Provided on on <code>$2sxc.http</code></p>
+  <div class="markdown level0 summary"><p>Global HTTP Service for information and helpers on <code>$2sxc.http</code></p>
 </div>
-  <div class="markdown level0 conceptual"><div class="float-right context-box-summary highlight-max" width="400px">
+  <div class="markdown level0 conceptual"><h3 id="the-2sxchttp-api">The $2sxc.http Api</h3>
+<div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
   <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
@@ -246,73 +246,37 @@ Provided on on <code>$2sxc.http</code></p>
   </div>
 </div><style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-<p>The <code>$2sxc.http</code> object contains information for doing API calls. <em>It&#39;s new - introduced in 2sxc 10.25</em>.</p>
-<p>It has the following important methods:</p>
-<ul>
-<li><code>apiUrl(url)</code> resolves a partial url like <code>app/auto/api/Posts/All</code> to the real url needed in Dnn</li>
-<li><code>apiUrl(url, endpointName)</code> special version of the <code>apiUrl(...)</code> method, for calling endpoints which are not in 2sxc</li>
-<li><code>headers()</code> returns the headers you need to add to a WebApi call for it to work in Dnn</li>
-<li><code>headers(moduleId)</code> the headers incl. the one needed when addressing a specific module</li>
-</ul>
+<p>The <code>$2sxc.http</code> object contains information for doing custom API calls.</p>
+<div class="TIP"><h5>Tip</h5><p>In most cases you won&#39;t use this, but instead get the Sxc object for the current instance
+and use either the data, query or webApi service.</p>
+</div>
 <p>Internally this information is automatically retrieved from the html-header. 
-The environment looks for a special meta-tag called <code>_jsApi</code> which contains all this information. 
-This is new in 2sxc 10.25 and was added to avoid using jQuery when not necessary. </p>
-<div class="WARNING"><h5>Warning</h5><p>Internally all these commands need the <a class="xref" href="../../js-code/2sxc-api/2sxc/2sxc.env.html">env</a> to be ready. 
+The environment looks for a special meta-tag called <code>_jsApi</code> which contains all this information. </p>
+<div class="NOTE"><h5>Note</h5><p>Internally all these commands need the <a class="xref" href="Environment.html#Api_Js_InPage_Environment">env</a> to be ready. 
 This means that the entire html <code>&lt;head&gt;</code> tag was processed by the browser. 
 A very safe way to do this is to run your code on-document-ready, 
 or just to ensure that whatever bootstraps your application runs inside the <code>&lt;body&gt;</code> tag. </p>
 </div>
-<h3 id="internal-apis">Internal APIs</h3>
-<p>The <code>http</code> also has some internal methods like:</p>
-<ul>
-<li><code>apiRoot(endpointName)</code> the full api-root to use in calling Dnn or 2sxc endpoints. It&#39;s internal, because for all 2sxc stuff and 2sxc Apps the endpointName is always <code>2sxc</code></li>
-<li><code>headers(moduleId, contentBlockId)</code> headers incl. ModuleId and content-Block ID - rarely used</li>
-</ul>
+<p>The <code>http</code> also has some internal methods which are not documented here.</p>
 <h3 id="history">History</h3>
 <ol>
 <li>Introduced in 2sxc 10.25</li>
 </ol>
+<hr>
 </div>
   <h6><strong>Package</strong>: <a class="xref" href="index.html">Api.Js.InPage</a></h6>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <h4 id="Api_Js_InPage_HttpGlobal_log" data-uid="Api.Js.InPage.HttpGlobal.log">log</h4>
-  <div class="markdown level1 summary"><p>The logger for this object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">log: Log</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Log.html#Api_Js_InPage_Log">Log</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <h4 id="Api_Js_InPage_HttpGlobal_apiUrl" data-uid="Api.Js.InPage.HttpGlobal.apiUrl">apiUrl(string, string)</h4>
-  <div class="markdown level1 summary"><p>Get the URL for a specific web API endpoint
+  <h4 id="Api_Js_InPage_HttpGlobal_apiUrl" data-uid="Api.Js.InPage.HttpGlobal.apiUrl">apiUrl(string)</h4>
+  <div class="markdown level1 summary"><p>Convert short urls like <code>app/auto/api/Posts/All</code> to the full URL needed.
 Will ignore urls which clearly already are the full url.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function apiUrl(url: string, endpointName?: string)</code></pre>
+    <pre><code class="lang-typeScript hljs">function apiUrl(url: string)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -328,15 +292,8 @@ Will ignore urls which clearly already are the full url.</p>
         <td><span class="xref">string</span></td>
         <td><em>url</em></td>
         <td>
-          
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>endpointName</em></td>
-        <td>
-          
+          <p>short URL like <code>app/auto/api/Posts/All</code></p>
+
           
         </td>
       </tr>
@@ -353,20 +310,103 @@ Will ignore urls which clearly already are the full url.</p>
     <tbody>
       <tr>
         <td><span class="xref">string</span></td>
-        <td></td>
+        <td><p>the converted, long url with the full endpoint</p>
+</td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_InPage_HttpGlobal_headers" data-uid="Api.Js.InPage.HttpGlobal.headers">headers(number, number, ContextIdentifier)</h4>
-  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call for this to work reliably.
-Use this if you need to get a list of headers in another system</p>
+  <h4 id="Api_Js_InPage_HttpGlobal_apiUrl_1" data-uid="Api.Js.InPage.HttpGlobal.apiUrl_1">apiUrl(string, string)</h4>
+  <div class="markdown level1 summary"><p>Convert short urls like <code>app/auto/api/Posts/All</code> to the full URL needed.
+Will ignore urls which clearly already are the full url.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function headers(id?: number, cbid?: number, ctx?: ContextIdentifier)</code></pre>
+    <pre><code class="lang-typeScript hljs">function apiUrl(url: string, endpointName: string)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><em>url</em></td>
+        <td>
+          <p>short URL like <code>app/auto/api/Posts/All</code></p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><em>endpointName</em></td>
+        <td>
+          <p><em>optional</em> endpoint name if accessing a different exotic endpoint</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><p>the converted, long url with the full endpoint</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_InPage_HttpGlobal_headers" data-uid="Api.Js.InPage.HttpGlobal.headers">headers()</h4>
+  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function headers()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Record&lt;string, string&gt;</span></td>
+        <td><p>Dictionary / Record of headers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_InPage_HttpGlobal_headers_1" data-uid="Api.Js.InPage.HttpGlobal.headers_1">headers(number)</h4>
+  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call - within a module context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function headers(id: number)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -382,23 +422,8 @@ Use this if you need to get a list of headers in another system</p>
         <td><span class="xref">number</span></td>
         <td><em>id</em></td>
         <td>
-          
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>cbid</em></td>
-        <td>
-          
-          
-        </td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ContextIdentifier.html#Api_Js_InPage_ContextIdentifier">ContextIdentifier</a></td>
-        <td><em>ctx</em></td>
-        <td>
-          
+          <p><em>optional</em> module ID</p>
+
           
         </td>
       </tr>
@@ -414,8 +439,132 @@ Use this if you need to get a list of headers in another system</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Dictionary.html#Api_Js_InPage_Dictionary">Dictionary</a>&lt;string&gt;</td>
-        <td></td>
+        <td><span class="xref">Record&lt;string, string&gt;</span></td>
+        <td><p>Dictionary / Record of headers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_InPage_HttpGlobal_headers_2" data-uid="Api.Js.InPage.HttpGlobal.headers_2">headers(number, number)</h4>
+  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call - within a module and content-block context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function headers(id: number, cbid: number)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>id</em></td>
+        <td>
+          <p><em>optional</em> module ID</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>cbid</em></td>
+        <td>
+          <p><em>optional</em> content block ID</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Record&lt;string, string&gt;</span></td>
+        <td><p>Dictionary / Record of headers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_InPage_HttpGlobal_headers_3" data-uid="Api.Js.InPage.HttpGlobal.headers_3">headers(number, number, ContextIdentifier)</h4>
+  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call.
+Uses a module and content-block context (but these could also be null)
+and a full context identifier for advanced operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function headers(id: number, cbid: number, ctx: ContextIdentifier)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>id</em></td>
+        <td>
+          <p><em>optional</em> module ID</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>cbid</em></td>
+        <td>
+          <p><em>optional</em> content block ID</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ContextIdentifier.html#Api_Js_InPage_ContextIdentifier">ContextIdentifier</a></td>
+        <td><em>ctx</em></td>
+        <td>
+          <p><em>optional</em> context information to include in the header</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Record&lt;string, string&gt;</span></td>
+        <td><p>Dictionary / Record of headers</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -427,7 +576,7 @@ Use this if you need to get a list of headers in another system</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/js/inpage/HttpGlobal.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/2sxc/HttpGlobal_merge.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

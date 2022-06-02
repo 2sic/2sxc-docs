@@ -5,91 +5,154 @@ items:
     fullName: HttpGlobal
     children:
       - Api.Js.InPage.HttpGlobal.apiUrl
+      - Api.Js.InPage.HttpGlobal.apiUrl_1
       - Api.Js.InPage.HttpGlobal.headers
-      - Api.Js.InPage.HttpGlobal.log
+      - Api.Js.InPage.HttpGlobal.headers_1
+      - Api.Js.InPage.HttpGlobal.headers_2
+      - Api.Js.InPage.HttpGlobal.headers_3
     langs:
       - typeScript
     type: class
-    summary: |-
-      Global HTTP Service for information and helpers.
-      Provided on on `$2sxc.http`
+    summary: Global HTTP Service for information and helpers on `$2sxc.http`
     extends:
       name: Api.Js.InPage.HasLog
     package: Api.Js.InPage
   - uid: Api.Js.InPage.HttpGlobal.apiUrl
+    name: apiUrl(string)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: |-
+      Convert short urls like `app/auto/api/Posts/All` to the full URL needed.
+      Will ignore urls which clearly already are the full url.
+    syntax:
+      content: 'function apiUrl(url: string)'
+      parameters:
+        - id: url
+          type:
+            - string
+          description: short URL like `app/auto/api/Posts/All`
+      return:
+        type:
+          - string
+        description: 'the converted, long url with the full endpoint'
+    package: Api.Js.InPage
+  - uid: Api.Js.InPage.HttpGlobal.apiUrl_1
     name: 'apiUrl(string, string)'
     children: []
     type: method
     langs:
       - typeScript
     summary: |-
-      Get the URL for a specific web API endpoint
+      Convert short urls like `app/auto/api/Posts/All` to the full URL needed.
       Will ignore urls which clearly already are the full url.
     syntax:
-      content: 'function apiUrl(url: string, endpointName?: string)'
+      content: 'function apiUrl(url: string, endpointName: string)'
       parameters:
         - id: url
           type:
             - string
-          description: ''
+          description: short URL like `app/auto/api/Posts/All`
         - id: endpointName
           type:
             - string
-          description: ''
-          optional: true
+          description: _optional_ endpoint name if accessing a different exotic endpoint
       return:
         type:
           - string
-        description: ''
+        description: 'the converted, long url with the full endpoint'
     package: Api.Js.InPage
   - uid: Api.Js.InPage.HttpGlobal.headers
-    name: 'headers(number, number, ContextIdentifier)'
+    name: headers()
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: All the headers which are needed in an ajax call.
+    syntax:
+      content: function headers()
+      parameters: []
+      return:
+        type:
+          - 'Record<string, string>'
+        description: Dictionary / Record of headers
+    package: Api.Js.InPage
+  - uid: Api.Js.InPage.HttpGlobal.headers_1
+    name: headers(number)
     children: []
     type: method
     langs:
       - typeScript
     summary: >-
-      All the headers which are needed in an ajax call for this to work
-      reliably.
-
-      Use this if you need to get a list of headers in another system
+      All the headers which are needed in an ajax call - within a module
+      context.
     syntax:
-      content: 'function headers(id?: number, cbid?: number, ctx?: ContextIdentifier)'
+      content: 'function headers(id: number)'
       parameters:
         - id: id
           type:
             - number
-          description: ''
-          optional: true
+          description: _optional_ module ID
+      return:
+        type:
+          - 'Record<string, string>'
+        description: Dictionary / Record of headers
+    package: Api.Js.InPage
+  - uid: Api.Js.InPage.HttpGlobal.headers_2
+    name: 'headers(number, number)'
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: >-
+      All the headers which are needed in an ajax call - within a module and
+      content-block context.
+    syntax:
+      content: 'function headers(id: number, cbid: number)'
+      parameters:
+        - id: id
+          type:
+            - number
+          description: _optional_ module ID
         - id: cbid
           type:
             - number
-          description: ''
-          optional: true
+          description: _optional_ content block ID
+      return:
+        type:
+          - 'Record<string, string>'
+        description: Dictionary / Record of headers
+    package: Api.Js.InPage
+  - uid: Api.Js.InPage.HttpGlobal.headers_3
+    name: 'headers(number, number, ContextIdentifier)'
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: |-
+      All the headers which are needed in an ajax call.
+      Uses a module and content-block context (but these could also be null)
+      and a full context identifier for advanced operations.
+    syntax:
+      content: 'function headers(id: number, cbid: number, ctx: ContextIdentifier)'
+      parameters:
+        - id: id
+          type:
+            - number
+          description: _optional_ module ID
+        - id: cbid
+          type:
+            - number
+          description: _optional_ content block ID
         - id: ctx
           type:
             - Api.Js.InPage.ContextIdentifier
-          description: ''
-          optional: true
+          description: _optional_ context information to include in the header
       return:
         type:
-          - Api.Js.InPage.Dictionary<string>
-        description: ''
-    package: Api.Js.InPage
-  - uid: Api.Js.InPage.HttpGlobal.log
-    name: log
-    fullName: log
-    children: []
-    langs:
-      - typeScript
-    type: property
-    summary: The logger for this object
-    syntax:
-      content: 'log: Log'
-      return:
-        type:
-          - Api.Js.InPage.Log
-        description: ''
+          - 'Record<string, string>'
+        description: Dictionary / Record of headers
     package: Api.Js.InPage
 references:
   - uid: Api.Js.InPage.HasLog
@@ -98,23 +161,9 @@ references:
       - name: HasLog
         fullName: HasLog
         uid: Api.Js.InPage.HasLog
-  - uid: Api.Js.InPage.Log
-    name: Log
-    spec.typeScript:
-      - name: Log
-        fullName: Log
-        uid: Api.Js.InPage.Log
   - uid: Api.Js.InPage.ContextIdentifier
     name: ContextIdentifier
     spec.typeScript:
       - name: ContextIdentifier
         fullName: ContextIdentifier
         uid: Api.Js.InPage.ContextIdentifier
-  - uid: Api.Js.InPage.Dictionary<string>
-    name: Dictionary<string>
-    spec.typeScript:
-      - name: Dictionary
-        fullName: Dictionary
-        uid: Api.Js.InPage.Dictionary
-      - name: <string>
-        fullName: <string>

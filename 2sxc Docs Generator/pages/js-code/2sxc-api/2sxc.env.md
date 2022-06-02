@@ -1,1 +1,1 @@
-Moved to [](xref:JsCode.2sxcApi.$2sxc.Env)
+Moved to [](xref:Api.Js.InPage.Environment)
