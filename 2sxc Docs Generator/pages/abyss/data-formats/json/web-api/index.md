@@ -118,7 +118,7 @@ This is the schema of this object
 Note that you must provide one of the keys, othewise it will fail. 
 
 * See also [](xref:Basics.Metadata.TargetTypes)
-* See also [](xref:JsCode.2sxcApi.Sxc.Data)
+* See also [](xref:Api.Js.InPage.SxcData)
 
 
 ### `ParentRelationship` Adds Item to a Parent (v13.03)

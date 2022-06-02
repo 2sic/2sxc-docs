@@ -1,1 +1,1 @@
-Moved to [](xref:JsCode.2sxcApi.Sxc.Query)
+Moved to [](xref:Api.Js.InPage.SxcQuery)
