@@ -71,19 +71,16 @@
                           <a href="../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
-                      </li>
-                      <li class="active">
-                          <a href="../../js-code/index.html" title="JavaScript &amp; TS">JavaScript &amp; TS</a>
+                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web API">Web API</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
-                      <li>
-                          <a href="../../api/js/home.html" title="JS API">JS API</a>
+                      <li class="active">
+                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -243,12 +240,13 @@
 
 <p>Sometimes you just need a simple trick to get things working. We&#39;re collecting the most important ones here.</p>
 <h2 id="delay-your-scripts-till-the-page-is-ready">Delay your Scripts till the Page is ready</h2>
-<p>If your script runs too early, you will probably run into problems. Since Dnn always has jQuery included, you can do this to delay your code till the page is ready:</p>
-<pre><code class="lang-javascript">$(function() {
-  // your code here
-})
-</code></pre><h2 id="use-module-id-to-point-your-js-to-your-module">Use Module ID to point your JS to your Module</h2>
-<p>Often you need to your script to work with your module only, and not accidentally work on other HTML. Here&#39;s how you can do it using Razor (Example from the <a class="xref" href="https://2sxc.org/en/apps/app/blueimp-gallery-slider-4-0-with-koi-bootstrap-3-and-4">Blueimp Gallery</a>):</p>
+<p>If your script runs too early, you will run into problems. 
+Best use <a class="xref" href="../turn-on/index.html">turnOn</a>.</p>
+<h2 id="use-module-id-to-point-your-js-to-your-module">Use Module ID to point your JS to your Module</h2>
+<p>Often you need to your script to work with your module only, and not accidentally work on other HTML.
+The best solution is also to use <a class="xref" href="../turn-on/index.html">turnOn</a>.</p>
+<p>Alternatively you can dynamically write your JavaScript. 
+Here&#39;s how you can do it using Razor (Example from the <a class="xref" href="https://2sxc.org/en/apps/app/blueimp-gallery-slider-4-0-with-koi-bootstrap-3-and-4">Blueimp Gallery</a>):</p>
 <pre><code class="lang-html">
 &lt;div id=&quot;blueimp-gallery-items-@Dnn.Module.ModuleID&quot; style=&quot;display:none;&quot;&gt;
   &lt;!-- stuff --&gt;

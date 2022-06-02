@@ -11,17 +11,16 @@ Sometimes you just need a simple trick to get things working. We're collecting t
 
 ## Delay your Scripts till the Page is ready
 
-If your script runs too early, you will probably run into problems. Since Dnn always has jQuery included, you can do this to delay your code till the page is ready:
-
-```javascript
-$(function() {
-  // your code here
-})
-```
+If your script runs too early, you will run into problems. 
+Best use [turnOn](xref:JsCode.TurnOn.Index).
 
 ## Use Module ID to point your JS to your Module
 
-Often you need to your script to work with your module only, and not accidentally work on other HTML. Here's how you can do it using Razor (Example from the [](xref:App.Blueimp)):
+Often you need to your script to work with your module only, and not accidentally work on other HTML.
+The best solution is also to use [turnOn](xref:JsCode.TurnOn.Index).
+
+Alternatively you can dynamically write your JavaScript. 
+Here's how you can do it using Razor (Example from the [](xref:App.Blueimp)):
 
 ```html
 
