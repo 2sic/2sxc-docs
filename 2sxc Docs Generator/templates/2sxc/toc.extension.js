@@ -9,18 +9,13 @@ const dbg = require('./toc-debug.js');
 // Constants etc.
 const tocLevelTop = 1;
 
-const prefix1 = 'ToSic.Sxc';
-const prefix2 = 'ToSic.Eav';
-const prefixCustom = 'Custom.';
-
 const nsKeepParts = 3;    // Namespace parts to keep, like ToSic.Eav.ImportExport
 const nsTruncateToParts = 2;   // If NS has more parts, keep only the last two (and prefix with ...)
 
 // Debug Parameters
-const dbgProcessNode = true;
+const dbgProcessNode = false;
 const dbgProcessNodeJustAFewMax = 0;
-const dbgSortNetToc = true;
-
+const dbgSortNetToc = false;
 const dbgIsApiToc = false;
 let count = 0;
 
@@ -70,7 +65,7 @@ function isApiToc(model) {
 
   // Debug
   if (dbgIsApiToc)
-    if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0)
+    if (firstName && firstName.indexOf(ns.prefixes[0] /*+ ".Dnn" */) === 0)
       dbg.warn('isApiToc Dnn:', model);
 
   return match;
@@ -78,11 +73,16 @@ function isApiToc(model) {
 
 // check if a string is likely a namespace API prefix
 function isNamespace(name) {
-  return name && (
-    name.indexOf(prefix1) === 0 
-    || name.indexOf(prefix2) === 0
-    || name.indexOf(prefixCustom) === 0
-  );
+  if (!name) return false;
+  for (let i = 0; i < ns.prefixes.length; i++)
+    if (name.indexOf(ns.prefixes[i]) === 0) return true;
+  return false;
+
+  // return (
+  //   name.indexOf(prefix1) === 0 
+  //   || name.indexOf(prefix2) === 0
+  //   || name.indexOf(prefixCustom) === 0
+  // );
 }
 
 // repeat a string X times
@@ -97,16 +97,14 @@ function repeatString(part, count) {
 let dbgProcessNodeJustAFew = 0;
 function processNode(item, level) {
   if (dbgProcessNode && dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax) {
-    dbg.warn('processNode item: [lvl:' + level + ']:', item);
+    dbg.log('processNode item: [lvl:' + level + ']:', item);
     dbgProcessNodeJustAFew++;
   }
 
   // debug data on item
   // var debugModel = JSON.stringify(item);
-  if (item.topicUid && item.topicUid.indexOf("Custom") > -1) {
-      dbg.warn('debug processNode[' + level + "] ", item);
-  //     if(item.level) // topicUid == 'ToSic.Eav.ImportExport.JsonLight') 
-  //       item.level += 1;
+  if (dbgProcessNode && item.topicUid && item.topicUid.indexOf("Custom") > -1) {
+    dbg.log('debug processNode[' + level + "] ", item);
   }
 
   const isOurNamespace = isNamespace(item.topicUid || item.name);
@@ -134,9 +132,9 @@ function processNode(item, level) {
     }
 
     // Only sort the items if we are really on the top-level of our namespace
-    if (level === 1)
+    if (level === tocLevelTop)
       item.items = sortNetToc(item);
-  } 
+  }
 }
 
 function sortNetToc(item) {

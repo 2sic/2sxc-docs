@@ -41,6 +41,8 @@ const deprecated = {
   priority: "deprecated"
 };
 
+exports.prefixes = ['ToSic.Sxc', 'ToSic.Eav', 'Custom.'];
+
 exports.data = {
   "Custom.Hybrid": prioTop,
   "Custom.Dnn": prioTop,
