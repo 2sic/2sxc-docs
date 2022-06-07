@@ -1,7 +1,7 @@
 const ns = require('./api-meta.js');
+const dbg = require('./toc-debug.js');
 
 // Constants etc.
-const logPrefix = 'TOC-JS: ';
 const tocLevelTop = 1;
 
 const prefix1 = 'ToSic.Sxc';
@@ -12,7 +12,6 @@ const nsKeepParts = 3;    // Namespace parts to keep, like ToSic.Eav.ImportExpor
 const nsTruncateToParts = 2;   // If NS has more parts, keep only the last two (and prefix with ...)
 
 // Debug Parameters
-const jsonDebugMaxLength = 100;
 const dbgProcessNode = true;
 const dbgProcessNodeJustAFewMax = 3;
 
@@ -25,7 +24,7 @@ let count = 0;
  * This method will be called at the start of exports.transform in toc.html.js
  */
 exports.preTransform = function (model) {
-  console.Log(logPrefix + 'preTransform');
+  dbg.log('preTransform', model);
   return model;
 }
 
@@ -34,12 +33,11 @@ exports.preTransform = function (model) {
  */
 exports.postTransform = function (model) {
   const isApi = isApiToc(model);
-  const jsonModel = toJsonShort(model, 25);
   if (isApi) {
-    console.log(logPrefix + 'postTransform start as isApiToc for ' + jsonModel);
+    dbg.log('postTransform start as isApiToc for ', model, 25);
     processNode(model, tocLevelTop);
   } else {
-    console.log(logPrefix + 'postTransform skip as !isApiToc for ' + jsonModel);
+    dbg.log('postTransform skip as !isApiToc for ', model, 25);
   }
   // console.error("count:" + count);
   // console.log(logPrefix + 'postTransform end');
@@ -67,7 +65,7 @@ function isApiToc(model) {
   // Debug
   if (dbgIsApiToc)
     if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0) {
-      console.warn(logPrefix + 'isApiToc Dnn:' + toJsonShort(model));
+      dbg.warn('isApiToc Dnn:', model);
     }
   return match;
 }
@@ -93,14 +91,14 @@ function repeatString(part, count) {
 let dbgProcessNodeJustAFew = 0;
 function processNode(item, level) {
   if (dbgProcessNode && dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax) {
-    console.warn(logPrefix + 'processNode item: [lvl:' + level + ']:' + toJsonShort(item));
+    dbg.warn('processNode item: [lvl:' + level + ']:', item);
     dbgProcessNodeJustAFew++;
   }
 
   // debug data on item
   // var debugModel = JSON.stringify(item);
   if (item.topicUid && item.topicUid.indexOf("Custom") > -1) {
-      console.warn(logPrefix + 'debug processNode[' + level + "] " + toJsonShort(item));
+      dbg.warn('debug processNode[' + level + "] ", item);
   //     if(item.level) // topicUid == 'ToSic.Eav.ImportExport.JsonLight') 
   //       item.level += 1;
   }
@@ -128,14 +126,6 @@ function processNode(item, level) {
       processNode(item.items[i], level + 1);
     }
   } 
-}
-
-function toJsonShort(obj, maxLength) {
-  if (obj == null) return "(null)";
-  const json = JSON.stringify(obj);
-  maxLength = maxLength || jsonDebugMaxLength;
-  if (json.length >= maxLength) return json.slice(0, maxLength) + "...";
-  return json;
 }
 
 /**
@@ -171,11 +161,11 @@ function addMeta(item, level, debug) {
 
   var found = ns.data[item.topicUid];
   if (found) {
-    if (debug) console.warn('JS Debug addMeta - uid:' + item.topicUid);
+    if (debug) dbg.warn('JS Debug addMeta - uid:' + item.topicUid);
     item.priority = found.priority;
   }
   // if(item.priority == "adam")
-  //   console.warn("found and added priority" + JSON.stringify(item));
+  //   dbg.warn("found and added priority", item);
 }
 
 function setPriorityNormal(item) {
