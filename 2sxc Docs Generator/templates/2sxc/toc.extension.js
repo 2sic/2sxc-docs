@@ -1,10 +1,31 @@
-var ns = require('./api-meta.js');
+const ns = require('./api-meta.js');
+
+// Constants etc.
+const logPrefix = 'TOC-JS: ';
+const tocLevelTop = 1;
+
+const prefix1 = 'ToSic.Sxc';
+const prefix2 = 'ToSic.Eav';
+const prefixCustom = 'Custom.';
+
+const nsKeepParts = 3;    // Namespace parts to keep, like ToSic.Eav.ImportExport
+const nsTruncateToParts = 2;   // If NS has more parts, keep only the last two (and prefix with ...)
+
+// Debug Parameters
+const jsonDebugMaxLength = 100;
+const dbgProcessNode = true;
+const dbgProcessNodeJustAFewMax = 3;
+
+const dbgIsApiToc = false;
+let count = 0;
+
+
 
 /**
  * This method will be called at the start of exports.transform in toc.html.js
  */
 exports.preTransform = function (model) {
-  // console.warn('2dm-preTransform');
+  console.Log(logPrefix + 'preTransform');
   return model;
 }
 
@@ -12,21 +33,20 @@ exports.preTransform = function (model) {
  * This method will be called at the end of exports.transform in toc.html.js
  */
 exports.postTransform = function (model) {
-  // console.warn('2dm-postTransform:');
-
-  if(isApiToc(model))
-    processNode(model, 1);
-
+  const isApi = isApiToc(model);
+  const jsonModel = toJsonShort(model, 25);
+  if (isApi) {
+    console.log(logPrefix + 'postTransform start as isApiToc for ' + jsonModel);
+    processNode(model, tocLevelTop);
+  } else {
+    console.log(logPrefix + 'postTransform skip as !isApiToc for ' + jsonModel);
+  }
   // console.error("count:" + count);
-
+  // console.log(logPrefix + 'postTransform end');
   return model;
 }
 
-// Constants etc.
 
-const prefix1 = 'ToSic.Sxc';
-const prefix2 = 'ToSic.Eav';
-const prefixCustom = 'Custom.';
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -34,8 +54,8 @@ const prefixCustom = 'Custom.';
 // find out if it's the API toc
 function isApiToc(model) {
   if(!model) return false;
-  var debugModel = JSON.stringify(model);
-  var first100 = debugModel.substr(0, 100);
+  // var debugModel = JSON.stringify(model);
+  // var first100 = debugModel.substr(0, 100);
 
   // find out if it's the TOC of the API
   if(!(model.items && model.items.length))
@@ -45,9 +65,10 @@ function isApiToc(model) {
   var match = isNamespace(firstName);
 
   // Debug
-  if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0) {
-    console.warn('Debug isApiToc Dnn:' + debugModel);
-  }
+  if (dbgIsApiToc)
+    if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0) {
+      console.warn(logPrefix + 'isApiToc Dnn:' + toJsonShort(model));
+    }
   return match;
 }
 
@@ -69,28 +90,20 @@ function repeatString(part, count) {
   return result;
 }
 
-let count = 0;
-const keepParts = 3;
-const truncateTo = 2;
-
-let debugJustAFew = 0;
-const debugJustAFewMax = 0;
-
+let dbgProcessNodeJustAFew = 0;
 function processNode(item, level) {
-  if (debugJustAFew < debugJustAFewMax) {
-    console.warn('2dm-processNode');
-    console.warn('item:' + toJsonShort(item));
-    debugJustAFew++;
+  if (dbgProcessNode && dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax) {
+    console.warn(logPrefix + 'processNode item: [lvl:' + level + ']:' + toJsonShort(item));
+    dbgProcessNodeJustAFew++;
   }
 
   // debug data on item
   // var debugModel = JSON.stringify(item);
-  // if(item.topicUid && item.topicUid.indexOf("ImportExport") > 0) {
-  //     console.warn('2dm - debug processNode' + debugModel);
-
+  if (item.topicUid && item.topicUid.indexOf("Custom") > -1) {
+      console.warn(logPrefix + 'debug processNode[' + level + "] " + toJsonShort(item));
   //     if(item.level) // topicUid == 'ToSic.Eav.ImportExport.JsonLight') 
   //       item.level += 1;
-  // }
+  }
 
   if(isNamespace(item.topicUid || item.name)) {
     // add metadata - before changing the namespace
@@ -105,6 +118,7 @@ function processNode(item, level) {
   }
 
   // do recursively if necessary, but should only matter on the 1st or 2nd recursion
+  // 2022-05 2dm disabled this, as we also mark sub-items as obsolete
   // if(level > 2) return; 
 
   item.level = level;
@@ -116,10 +130,11 @@ function processNode(item, level) {
   } 
 }
 
-function toJsonShort(obj) {
+function toJsonShort(obj, maxLength) {
   if (obj == null) return "(null)";
   const json = JSON.stringify(obj);
-  if (json.length > 100) return json.slice(100) + "...";
+  maxLength = maxLength || jsonDebugMaxLength;
+  if (json.length >= maxLength) return json.slice(0, maxLength) + "...";
   return json;
 }
 
@@ -130,9 +145,9 @@ function shortenNamespace(item, level) {
   item.fullName = item.name;
   var parts = item.name.split('.');
   var count = parts.length;
-  if (count > keepParts) {
-    parts.splice(0, count - truncateTo);
-    var newName = repeatString("...", count - keepParts) + parts.join('.');
+  if (count > nsKeepParts) {
+    parts.splice(0, count - nsTruncateToParts);
+    var newName = repeatString("...", count - nsKeepParts) + parts.join('.');
     item.name = newName;
   }
 }
