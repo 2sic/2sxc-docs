@@ -1,3 +1,9 @@
+/*
+ * IMPORTANT
+ * DocFx seems to use an older JS version.
+ * We seem to be forced to use the "exports.xxx" syntax
+ * We cannot use lambdas, because they are not supported by DocFx
+ */
 exports.test = {};
 exports.getData = getData;
 
@@ -12,6 +18,7 @@ const prioInternal = {
 const prioTop = {
   priority: "custom"
 };
+exports.prioTop = prioTop.priority;
 
 const prioData = {
   priority: "data"

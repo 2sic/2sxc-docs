@@ -1,12 +1,12 @@
-
+/*
+ * IMPORTANT
+ * DocFx seems to use an older JS version.
+ * We seem to be forced to use the "exports.xxx" syntax
+ * We cannot use lambdas, because they are not supported by DocFx
+ */
 const enabled = true;
-// exports.enabled = enabled;
-
 const jsonDebugMaxLength = 100;
-// exports.jsonDebugMaxLength = jsonDebugMaxLength;
 const prefix = 'TOC-JS: ';
-// exports.prefix = prefix;
-
 
 function toJsonShort(obj, maxLength) {
   if (obj == null) return "(null)";
@@ -15,17 +15,22 @@ function toJsonShort(obj, maxLength) {
   if (json.length >= maxLength) return json.slice(0, maxLength) + "...";
   return json;
 }
-// exports.toJsonShort = toJsonShort;
+
+function message(msg, obj, maxLength) {
+  return prefix + msg + toJsonShort(obj, maxLength);
+}
 
 function log(msg, obj, maxLength) {
-  console.log(prefix + msg + toJsonShort(obj, maxLength));
+  console.log(message(msg, obj, maxLength));
 }
-// exports.log = log;
 
 function warn(msg, obj, maxLength) {
-  console.warn(prefix + msg + toJsonShort(obj, maxLength));
+  console.warn(message(msg, obj, maxLength));
 }
-// exports.warn = warn;
+
+function error(msg, obj, maxLength) {
+  console.error(message(msg, obj, maxLength));
+}
 
 exports = {
   enabled: enabled,
@@ -33,4 +38,5 @@ exports = {
   jsonDebugMaxLength: jsonDebugMaxLength,
   log: log,
   warn: warn,
+  error: error,
 };

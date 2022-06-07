@@ -1,3 +1,8 @@
+/*
+ * IMPORTANT
+ * DocFx seems to use an older JS version.
+ * We cannot use lambdas, because they are not supported by DocFx
+ */
 const ns = require('./api-meta.js');
 const dbg = require('./toc-debug.js');
 
@@ -39,8 +44,8 @@ exports.postTransform = function (model) {
   } else {
     dbg.log('postTransform skip as !isApiToc for ', model, 25);
   }
-  // console.error("count:" + count);
-  // console.log(logPrefix + 'postTransform end');
+  // dbg.log("count:" + count);
+  // dbg.log(logPrefix + 'postTransform end');
   return model;
 }
 
@@ -64,9 +69,9 @@ function isApiToc(model) {
 
   // Debug
   if (dbgIsApiToc)
-    if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0) {
+    if (firstName && firstName.indexOf(prefix1 /*+ ".Dnn" */) === 0)
       dbg.warn('isApiToc Dnn:', model);
-    }
+
   return match;
 }
 
@@ -124,6 +129,21 @@ function processNode(item, level) {
     var length = item.items.length;
     for (var i = 0; i < length; i++) {
       processNode(item.items[i], level + 1);
+    }
+
+    if (level === 1) {
+      dbg.error("level 1 hit");
+      dbg.error('level 1', item.items[0], 1000);
+      const top = item.items.filter(function(i) {
+        if (i.name == 'Custom.Dnn') {
+          dbg.error('DNN found');
+          dbg.error(i.priority);
+        }
+        const ok = i.prority === 'custom';
+        if (ok) dbg.error("ok");
+        return ok;
+      });
+      dbg.error('top', top);
     }
   } 
 }
