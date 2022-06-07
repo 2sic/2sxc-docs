@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Content Security Policy (CSP) Basics | 2sxc 13 / EAV 13 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Content Security Policy (CSP) Basics | 2sxc 13 / EAV 13 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v13/2sxc13-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                      </li>
+                      <li>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Background">
+<h1 id="content-security-policy-csp-basics">Content Security Policy (CSP) Basics</h1>
+
+<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
+<p>This page should help you understand what it is and how it works. Here&#39;s just a quick example of CSP in action:</p>
+<p><img src="assets/2shine-with-csp-headers.jpg" width="100%" class="full-width"></p>
+<h2 id="the-need-for-csp">The Need for CSP</h2>
+<p>There is always a risk that the visitor will see content which you didn&#39;t intend. 
+It could happen because your server was hacked, but there are many other ways to make this happen which are outside of your control. </p>
+<p>This content-insecurity places your visitor at a very high risk of being compromised or redirected.
+Or it&#39;s possible that actions are performed <em>as the current user</em> without their consent.
+Here some basic examples:</p>
+<h3 id="example-url-injection">Example: URL Injection</h3>
+<p>Your website has a thank-you page which shows the name from the url like <code>?name=John Doe</code>.
+When you made it, you expected to show <code>Thank you John Doe</code>. 
+But smart people figured out, that giving it <code>?name=&lt;script&gt;alert(&#39;Hello&#39;)&lt;/script&gt;</code> would also work. </p>
+<p>This injection in many flavors BTW: A few years ago even 2sxc had a small loophole which allowed this.
+This looks harmless - what can an <code>alert</code> do? 
+As every hacker will tell you, the alert is just the PoC. Once it works, the rest will follow.</p>
+<h3 id="example-css-attacks">Example: CSS Attacks</h3>
+<p>You thought CSS was harmless, right? Nyet. 
+If an attacker can manipulate CSS on a page, they can do things like move important links to other locations and make them invisible.
+This way you can trick people into performing actions they are not aware of. </p>
+<h3 id="example-hack-attacks">Example: Hack Attacks</h3>
+<p>Every DNN Website loads a copy of jQuery located in a very specific folder. 
+A hacker figured out that it is possible to modify this file using a security loophole. 
+Now that file also loads additional files from another server.</p>
+<h3 id="example-javascript-inside-an-svg">Example: JavaScript inside an SVG</h3>
+<p>Your editor just replaced an image on the page, without knowing it contains a JavaScript...</p>
+<h3 id="example-javascript-inject-through-cdn">Example: JavaScript inject through CDN</h3>
+<p>Your website may load a script such as the old AngularJS from a CDN. 
+In many such cases, tweaking the url or cookie can cause it to load more JavaScripts from other sources. </p>
+<h2 id="what-is-csp">What is CSP?</h2>
+<p>CSP stands for <strong>Content Security Policy</strong> and it sets rules (policies) which are enforced by the browser.</p>
+<p>Think of CSP as invisible instructions (HTTP headers) for your browser.
+All modern browsers understand these instructions. 
+Of course it assumes the browser is friendly - because a user being attacked won&#39;t try to actively disable it. </p>
+<p>With CSP you can set rules such as:</p>
+<ol>
+<li>Never execute any JavaScript</li>
+<li>Only load CSS files which are from my server</li>
+<li>Only load images and fonts from my server</li>
+<li>Never run <code>on-click</code> javascripts</li>
+</ol>
+<h2 id="why-does-content-security-policy-use-http-headers">Why does Content-Security-Policy use HTTP Headers?</h2>
+<p>The headers can only be set by the server delivering the content. 
+This means it&#39;s fairly tamper proof.
+For example, JavaScript cannot modify it. 
+This is really important, because this is mostly used when something unexpected compromises your website.</p>
+<p>There are two main headers used by CSP</p>
+<ol>
+<li><code>Content-Security-Policy</code> this will set the rules for the current page/request</li>
+<li><code>Content-Security-Policy-Report-Only</code> this is for development to see what the browser would do with the rules</li>
+</ol>
+<p>Important: You can only use one of these headers at a time. </p>
+<div class="WARNING"><h5>Warning</h5><p>Technically the <code>Content-Security-Policy</code> header could also be set using a <code>&lt;meta&gt;</code> tag. 
+But not the <code>Content-Security-Policy-Report-Only</code>.</p>
+<p>Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.
+You will also need the <code>...-Report-Only</code> during setup, which cannot be done using the meta-tag.
+So for simplicity all the documentations here assume HTTP-headers.</p>
+</div>
+<h2 id="the-four-types-of-whitelisting">The Four Types of Whitelisting</h2>
+<ol>
+<li>You can just allow everything (not a good idea)</li>
+<li>You can explicitly allow certain protocols like <code>https:</code>/<code>data:</code>, domains, files or features like <code>unsafe-eval</code></li>
+<li>You can allow an inline code/style using a <strong>nonce</strong></li>
+<li>You can allow an inline code/style using a <strong>hash</strong></li>
+</ol>
+<p>The first two are probably obvious, but the nonce and hash could use some help...</p>
+<h3 id="what-is-a-nonce">What is a Nonce?</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a> is a random string which is used to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
+<p>It basically works like this:</p>
+<pre><code class="lang-html">&lt;script nonce=&quot;random123&quot;&gt;
+  alert(&#39;Hello&#39;);
+&lt;/script&gt;
+</code></pre><p>Obviously this nonce must change on every single request! 
+The final piece of the puzzle would be an http header like this:</p>
+<pre><code>Content-Security-Policy: script-src &#39;nonce-random123&#39;
+</code></pre><h3 id="what-is-a-hash">What is a Hash?</h3>
+<p>Instead of using a <em>nonce</em> you can also write a script and <a href="https://report-uri.com/home/hash">calculate the hash</a> of it.</p>
+<pre><code class="lang-html">&lt;script&gt;
+  alert(&#39;hello world!&#39;);
+&lt;/script&gt;
+</code></pre><p>Now you would mention this hash in the header:</p>
+<pre><code>Content-Security-Policy: script-src &#39;sha256-VAqTxgfXYRCLFYN1tICr/TFOgCNcl16bsv4r8weidBc=&#39;
+</code></pre><h3 id="warning-nonce-and-hashes-disable-unsafe-inline">Warning: Nonce and Hashes disable unsafe-inline</h3>
+<p>This may come as a surprise but it&#39;s important. As soon as you specify a <code>nonce</code> or a <code>hash</code>, you can&#39;t use <code>unsafe-inline</code>.
+Meaning you can add it, but it will be ignored. 
+This is because it&#39;s kind of a replacement; older browsers would then process <code>unsafe-inline</code> and newer ones would ignore it.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>👉🏼 <a class="xref" href="index.html">Learn how to setup CSP in your website</a></p>
+<hr>
+<h2 id="learn-more-about-csp">Learn more About CSP</h2>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Read about CSP on MDN</a></li>
+<li><a href="https://www.w3.org/TR/CSP/">Read about CSP on W3</a></li>
+</ol>
+<h2 id="history">History</h2>
+<ul>
+<li>CSP added in 2sxc 13.10</li>
+<li>These docs added in 2sxc 14.00</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/background.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>
