@@ -40,6 +40,11 @@ const prioAdam = {
   priority: "adam"
 };
 
+const prioAdamTop = {
+  priority: "adam",
+  top: true,
+};
+
 const prioWeb = { 
   priority: "web",
 };
@@ -84,7 +89,7 @@ exports.data = {
   "ToSic.Eav.Run": prioInternal,
   "ToSic.Eav.Security": prioInternal,
   "ToSic.Eav.Serialization": prioInternal,
-  "ToSic.Sxc.Adam": prioAdam,
+  "ToSic.Sxc.Adam": prioAdamTop,
   "ToSic.Sxc.Apps": prioInternal,
   "ToSic.Sxc.Blocks": prioInternal,
   "ToSic.Sxc.Code": prioInternal,
@@ -111,7 +116,11 @@ exports.data = {
   "ToSic.Sxc.WebApi": prioInternal,
 }
 
-exports.priorityNormal = 'normal';
+exports.defaultSettings = {
+  priority: 'normal',
+  top: false,
+  deprecated: false,
+}
 
 function getData() {
     return "hello;"

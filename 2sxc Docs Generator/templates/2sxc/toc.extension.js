@@ -6,6 +6,9 @@
 const ns = require('./api-meta.js');
 const dbg = require('./toc-debug.js');
 
+// Experimental - get Object.assign to work using Polyfill
+const polyfills = require('./polyfill-object.assign.js');
+
 // Constants etc.
 const tocLevelTop = 1;
 
@@ -53,8 +56,6 @@ exports.postTransform = function (model) {
 // find out if it's the API toc
 function isApiToc(model) {
   if(!model) return false;
-  // var debugModel = JSON.stringify(model);
-  // var first100 = debugModel.substr(0, 100);
 
   // find out if it's the TOC of the API
   if(!(model.items && model.items.length))
@@ -110,13 +111,8 @@ function processNode(item, level) {
   }
   else
   {
-    addMeta(item, level, true);
-    setPriorityNormal(item);
+    addMeta(item, level, false);
   }
-
-  // do recursively if necessary, but should only matter on the 1st or 2nd recursion
-  // 2022-05 2dm disabled this, as we also mark sub-items as obsolete
-  // if(level > 2) return; 
 
   item.level = level;
   if (item.items && item.items.length > 0) {
@@ -184,27 +180,15 @@ function shortenNamespace(item, level) {
  */
 function addMeta(item, level, debug) {
   setPriorityNormal(item);
-  // if(level > 2) return;
-
-  // 2022-05-31 2dm - disable checking if we should also do deeper nodes, so we can add deprecated etc.
-  // if(level > 2 || !item.topicUid) {
-  //   return;
-  // };
 
   var found = ns.data[item.topicUid];
-  if (found && found.priority) {
+  if (found) {
     if (debug) dbg.warn('JS Debug addMeta - uid:' + item.topicUid);
-    item.priority = found.priority;
-    if (found.top) item.top = found.top;
-    if (found.deprecated) item.deprecated = found.deprecated;
+    polyfills.objectAssign(item, found);
   }
-  // if(item.priority == "adam")
-  //   dbg.warn("found and added priority", item);
 }
 
 function setPriorityNormal(item) {
   count++;
-  item.priority = ns.priorityNormal;
-  item.top = false;
-  item.deprecated = false;
+  polyfills.objectAssign(item, ns.defaultSettings);
 }
