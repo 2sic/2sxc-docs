@@ -7,22 +7,25 @@
 exports.test = {};
 exports.getData = getData;
 
-const prioWeb = { 
-  priority: "web"
-};
 
 const prioInternal = {
   priority: "internal"
 };
 
 const prioTop = {
-  priority: "custom"
+  priority: "custom",
+  top: true,
 };
 exports.prioTop = prioTop.priority;
 
 const prioData = {
   priority: "data"
 };
+
+const prioDataTop = {
+  priority: "data",
+  top: true,
+}
 
 const prioDataInternal = {
   // temp workaround because all classes which affect priority need the priority-prefix
@@ -37,8 +40,18 @@ const prioAdam = {
   priority: "adam"
 };
 
+const prioWeb = { 
+  priority: "web",
+};
+
+const prioWebTop = { 
+  priority: "web",
+  top: true,
+};
+
 const deprecated = {
-  priority: "deprecated"
+  priority: "deprecated",
+  deprecated: true
 };
 
 exports.prefixes = ['ToSic.Sxc', 'ToSic.Eav', 'Custom.'];
@@ -58,7 +71,7 @@ exports.data = {
   "ToSic.Eav.DataSources": prioData,
   "ToSic.Eav.DataSources.Caching": prioInternal,
   "ToSic.Eav.DataSources.Queries": prioDataInternal,
-  "ToSic.Eav.DataSources.System": prioInternal,
+  "ToSic.Eav.DataSources.Sys": prioInternal,
   "ToSic.Eav.Environment": prioInternal,
   "ToSic.Eav.DataFormats": prioInternal,
   "ToSic.Eav.DataFormats.EavLight": prioDataInternal,
@@ -75,8 +88,8 @@ exports.data = {
   "ToSic.Sxc.Apps": prioInternal,
   "ToSic.Sxc.Blocks": prioInternal,
   "ToSic.Sxc.Code": prioInternal,
-  "ToSic.Sxc.Context": prioWeb,
-  "ToSic.Sxc.Data": prioWeb,
+  "ToSic.Sxc.Context": prioWebTop,
+  "ToSic.Sxc.Data": prioDataTop,
   "ToSic.Sxc.DataSources": prioData,
   "ToSic.Sxc.Dnn": prioWeb,
   "ToSic.Sxc.Dnn.Factory": deprecated,
@@ -90,10 +103,12 @@ exports.data = {
   "ToSic.Sxc.Engines": prioInternal,
   "ToSic.Sxc.Hybrid": prioInternal,
   "ToSic.Sxc.Hybrid.Razor": prioInternal,
+  "ToSic.Sxc.Images": prioInternal,
   "ToSic.Sxc.LookUp": prioInternal,
   "ToSic.Sxc.Search": prioWeb,
   "ToSic.Sxc.Services": prioTop,
   "ToSic.Sxc.Web": prioInternal,
+  "ToSic.Sxc.WebApi": prioInternal,
 }
 
 exports.priorityNormal = 'normal';

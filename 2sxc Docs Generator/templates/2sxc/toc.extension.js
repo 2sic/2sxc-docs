@@ -77,12 +77,6 @@ function isNamespace(name) {
   for (let i = 0; i < ns.prefixes.length; i++)
     if (name.indexOf(ns.prefixes[i]) === 0) return true;
   return false;
-
-  // return (
-  //   name.indexOf(prefix1) === 0 
-  //   || name.indexOf(prefix2) === 0
-  //   || name.indexOf(prefixCustom) === 0
-  // );
 }
 
 // repeat a string X times
@@ -140,9 +134,9 @@ function processNode(item, level) {
 function sortNetToc(item) {
   if (dbgSortNetToc) dbg.error("level 1 hit");
   if (dbgSortNetToc) dbg.error('level 1', item.items[0], 1000);
-  const top = item.items.filter(function(i) { return !!i && i.priority === ns.prioTop; });
+  const top = item.items.filter(function(i) { return !!i && i.top === true; });
   if (dbgSortNetToc) dbg.error('top', top);
-  const rest = item.items.filter(function(i) { return !i || i.priority !== ns.prioTop; });
+  const rest = item.items.filter(function(i) { return !i || i.top !== true; });
   if (dbgSortNetToc) dbg.error('rest', rest);
   const all = [manualTocEntry("<strong>Top Namespaces</strong>")]
     .concat(top)
@@ -189,9 +183,8 @@ function shortenNamespace(item, level) {
  * @param {*} level 
  */
 function addMeta(item, level, debug) {
-  count++;
+  setPriorityNormal(item);
   // if(level > 2) return;
-  item.priority = ns.priorityNormal;
 
   // 2022-05-31 2dm - disable checking if we should also do deeper nodes, so we can add deprecated etc.
   // if(level > 2 || !item.topicUid) {
@@ -199,9 +192,11 @@ function addMeta(item, level, debug) {
   // };
 
   var found = ns.data[item.topicUid];
-  if (found) {
+  if (found && found.priority) {
     if (debug) dbg.warn('JS Debug addMeta - uid:' + item.topicUid);
     item.priority = found.priority;
+    if (found.top) item.top = found.top;
+    if (found.deprecated) item.deprecated = found.deprecated;
   }
   // if(item.priority == "adam")
   //   dbg.warn("found and added priority", item);
@@ -210,4 +205,6 @@ function addMeta(item, level, debug) {
 function setPriorityNormal(item) {
   count++;
   item.priority = ns.priorityNormal;
+  item.top = false;
+  item.deprecated = false;
 }
