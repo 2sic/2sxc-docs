@@ -1,1 +1,0 @@
-Moved to [](xref:JsCode.2sxcApi.Sxc.WebApi.BareMetal)

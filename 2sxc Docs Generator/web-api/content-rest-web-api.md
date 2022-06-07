@@ -1,1 +1,0 @@
-Moved to [](xref:WebApi.Data.Index)
