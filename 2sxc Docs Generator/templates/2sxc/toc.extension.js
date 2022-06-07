@@ -18,7 +18,7 @@ const nsTruncateToParts = 2;   // If NS has more parts, keep only the last two (
 
 // Debug Parameters
 const dbgProcessNode = true;
-const dbgProcessNodeJustAFewMax = 3;
+const dbgProcessNodeJustAFewMax = 0;
 
 const dbgIsApiToc = false;
 let count = 0;
@@ -108,7 +108,8 @@ function processNode(item, level) {
   //       item.level += 1;
   }
 
-  if(isNamespace(item.topicUid || item.name)) {
+  const isOurNamespace = isNamespace(item.topicUid || item.name);
+  if (isOurNamespace) {
     // add metadata - before changing the namespace
     addMeta(item, level);
     if(level <= 2)
@@ -131,19 +132,15 @@ function processNode(item, level) {
       processNode(item.items[i], level + 1);
     }
 
+    // Only sort the items if we are really on the top-level of our namespace
     if (level === 1) {
-      dbg.error("level 1 hit");
-      dbg.error('level 1', item.items[0], 1000);
-      const top = item.items.filter(function(i) {
-        if (i.name == 'Custom.Dnn') {
-          dbg.error('DNN found');
-          dbg.error(i.priority);
-        }
-        const ok = i.prority === 'custom';
-        if (ok) dbg.error("ok");
-        return ok;
-      });
-      dbg.error('top', top);
+      // dbg.error("level 1 hit");
+      // dbg.error('level 1', item.items[0], 1000);
+      const top = item.items.filter(function(i) { return !!i && i.priority === ns.prioTop; });
+      // dbg.error('top', top);
+      const rest = item.items.filter(function(i) { return !i || i.priority !== ns.prioTop; });
+      // dbg.error('rest', rest);
+      item.items = top.concat(rest);
     }
   } 
 }
