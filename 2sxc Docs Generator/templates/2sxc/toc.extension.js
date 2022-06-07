@@ -19,6 +19,7 @@ const nsTruncateToParts = 2;   // If NS has more parts, keep only the last two (
 // Debug Parameters
 const dbgProcessNode = true;
 const dbgProcessNodeJustAFewMax = 0;
+const dbgSortNetToc = true;
 
 const dbgIsApiToc = false;
 let count = 0;
@@ -133,16 +134,39 @@ function processNode(item, level) {
     }
 
     // Only sort the items if we are really on the top-level of our namespace
-    if (level === 1) {
-      // dbg.error("level 1 hit");
-      // dbg.error('level 1', item.items[0], 1000);
-      const top = item.items.filter(function(i) { return !!i && i.priority === ns.prioTop; });
-      // dbg.error('top', top);
-      const rest = item.items.filter(function(i) { return !i || i.priority !== ns.prioTop; });
-      // dbg.error('rest', rest);
-      item.items = top.concat(rest);
-    }
+    if (level === 1)
+      item.items = sortNetToc(item);
   } 
+}
+
+function sortNetToc(item) {
+  if (dbgSortNetToc) dbg.error("level 1 hit");
+  if (dbgSortNetToc) dbg.error('level 1', item.items[0], 1000);
+  const top = item.items.filter(function(i) { return !!i && i.priority === ns.prioTop; });
+  if (dbgSortNetToc) dbg.error('top', top);
+  const rest = item.items.filter(function(i) { return !i || i.priority !== ns.prioTop; });
+  if (dbgSortNetToc) dbg.error('rest', rest);
+  const all = [manualTocEntry("<strong>Top Namespaces</strong>")]
+    .concat(top)
+    .concat([manualTocEntry("<hr>")])
+    .concat(rest);
+  if (dbgSortNetToc) dbg.error('all', all);
+  return all;
+}
+
+function manualTocEntry(name) {
+  return {
+    "name": name,
+    // "href": "Custom.Dnn.html",
+    // "topicHref": "Custom.Dnn.html",
+    // "topicUid": "Custom.Dnn",
+    "tocHref": null,
+    "level": 2,
+    "items": [],
+    "leaf": true,
+    "priority": "", // "custom",
+    // "fullName": "Custom.Dnn"
+  }  
 }
 
 /**
