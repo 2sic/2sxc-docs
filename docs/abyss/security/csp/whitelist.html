@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Content Security Policy (CSP) Reporting Guide | 2sxc 13 / EAV 13 </title>
+    <title>Content Security Policy (CSP) Whitelist Guide | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Content Security Policy (CSP) Reporting Guide | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Content Security Policy (CSP) Whitelist Guide | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,17 +114,96 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Reporting">
+            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Whitelist">
 
 <p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
-<h1 id="content-security-policy-csp-reporting-guide">Content Security Policy (CSP) Reporting Guide</h1>
-<p>CSP allows for easy reporting of rule violations.</p>
-<p>When a violation occurs, the browser will send a request to the given URL. For testing we recommend report-uri.com. Simply add the &quot;report-uri&quot; directive and specify your URI.</p>
-<pre><code>report-uri: https://YOUR-DOMAIN.report-uri.com/r/d/csp/enforce
-</code></pre><p>Using &quot;report-uri.com&quot; you can see all violations in the reports section and can analyse them.</p>
-<h2 id="report-only-mode">Report Only mode</h2>
-<p>You can configure CSP to use the report only mode. This stops the browser from forcing the CSP policies on the client and only reports violations.</p>
-</article>
+<h1 id="content-security-policy-csp-whitelist-guide">Content Security Policy (CSP) Whitelist Guide</h1>
+<p>Most of your CSP policies will allow something to work. 
+This is called <em>whitelisting</em>. </p>
+<h2 id="default-fallback">Default fallback</h2>
+<p>First, we set the <code>all-src</code> directive with the value <code>&#39;self&#39;</code> and <code>https:</code>. 
+This will force the browser to only accept sources originating from the host URL. 
+<code>all-src</code> is a custom directive from 2sxc, which all source directives inherit from.</p>
+<pre><code>all-src &#39;self&#39; https:
+</code></pre><p>To improve documentation / clarity, you can also use multiple lines and comments:</p>
+<pre><code>// Always allow things from the own server
+all-src: &#39;self&#39;
+
+// No matter where it comes from, it must use HTTPS
+all-src: https:
+</code></pre><h2 id="script-sources">Script sources</h2>
+<p>For JavaScript code, we use the <code>scipt-src</code> directive. 
+It is important for this directive to have <code>&#39;self&#39;</code> specified as origin, but because we have set the <code>all-src</code> directive it gets inherited automatically. 
+For the trusted scripts to work properly we will also add <code>&#39;unsafe-eval&#39;</code>, which will allow script execution methods.</p>
+<pre><code>script-src &#39;unsafe-eval&#39;
+</code></pre><h2 id="style-sources">Style Sources</h2>
+<p>Because we sometimes use inline styles, we need to add the directive <code>style-src</code> with the value <code>&#39;unsafe-inline&#39;</code>.</p>
+<pre><code>style-src &#39;unsafe-inline&#39;
+</code></pre><h2 id="font-sources">Font Sources</h2>
+<p>Some of our fonts are hosted on the same origin and some are external. </p>
+<h3 id="inline-fonts">Inline Fonts</h3>
+<p>For example, we may allow fonts from inline data. 
+You would do this by adding a <code>font-src</code> with the value <code>data:</code>.</p>
+<pre><code>font-src data:
+</code></pre><h3 id="google-fonts">Google Fonts</h3>
+<p>Because fonts are often included in the skin, we can&#39;t whitelist them using 2sxc and must specify them in the config. 
+For fonts included from google you typically need to add the url <code>fonts.googleapis.com</code> as trusted <code>style-src</code> origin and <code>fonts.gstatic.com</code> as trusted <code>font-src</code> origin. </p>
+<pre><code>style-src https://fonts.googleapis.com
+font-src https://fonts.gstatic.com
+</code></pre><h2 id="image-sources">Image sources</h2>
+<p>We will only allow images from secure sources. 
+If you have the all-src specified above, we don&#39;t need to add this again. 
+But we may wish to add <code>data:</code> for inline images.</p>
+<pre><code>img-src data:
+</code></pre><h2 id="media-sources">Media sources</h2>
+<p>For the usage of video/audio tags we will only allow media from secure sources as well. 
+The &quot;media-src&quot; directive with the value &quot;&#39;self&#39; https:&quot; will be automatically assumed, if you have the <code>all-src</code> set above.</p>
+<h2 id="form-actions">Form actions</h2>
+<p>Form actions can be a sensitive topic while handling data. 
+Simply by adding the <code>form-action</code> directive with the value &quot;&#39;self&#39;&quot;, we can prevent data-leaks. 
+When dealing with other websites you should add the external domain specifically, like for example &quot;&#39;self&#39; <a href="https://externaldomain.com">https://externaldomain.com</a>&quot;.</p>
+<pre><code>form-action &#39;self&#39;
+form-action https://externaldomain.com
+</code></pre><h2 id="insecure-http-resources">Insecure (http) Resources</h2>
+<p>For most resources we have specified to only allow secure https connections as origin. 
+Because it would be hard to migrate every HTTP resource to HTTPS, we can use the &quot;upgrade-insecure-requests&quot; directive. 
+Using this directive, the browser will request every resource (even if originating from HTTP) using HTTPS. </p>
+<p>Note that we don&#39;t recommend doing this!</p>
+<h2 id="include-external-resources">Include External Resources</h2>
+<p>When including external resources in apps, you should use the AssetAttributes method from the IPageService. </p>
+<pre><code class="lang-razor">@using ToSic.Sxc.Services;
+@{
+  var pageSvc = GetService&lt;IPageService&gt;();
+}
+&lt;script src=&quot;@App.Path/dist/scripts.min.js&quot; @pageSvc.AssetAttributes()&gt;&lt;/script&gt;
+</code></pre><p>For cases, which are outside of the scope of 2sxc Apps you can whitelist them by specifying the directive <code>script-src</code> with the origin URL.</p>
+<h2 id="trusted-pre-registered-web-resources">Trusted, Pre-Registered Web Resources</h2>
+<p>For pre-registered resources, you can also just activate them.</p>
+<pre><code class="lang-razor">@using ToSic.Sxc.Services;
+@{
+  var pageSvc = GetService&lt;IPageService&gt;();  // Service to set titles etc. on the page
+  pageSvc.Activate(&quot;turnOn&quot;, &quot;2sxc.JsCore&quot;, &quot;fancybox4&quot;);
+}
+</code></pre><h3 id="fontawesome-icon-libraries">Fontawesome Icon Libraries</h3>
+<p>As our default icon library, fontawesome gets set as trusted source automatically by 2sxc. 
+This will only work if added using <code>pageSvc.Activate(&quot;Fontawesome5&quot;)</code>. 
+Otherwise you will have to specify it in the configuration.</p>
+<pre><code class="lang-razor">@using ToSic.Sxc.Services;
+@{
+  var pageSvc = GetService&lt;IPageService&gt;();  // Service to set titles etc. on the page
+  pageSvc.Activate(&quot;fontawesome5&quot;);
+}
+</code></pre><h3 id="fancybox">FancyBox</h3>
+<p>Within 2sxc the FancyBox library is also a pre-registered resource. 
+Because 2sxc hosts the JavaScript file internally, we only need to trust the origin of its stylesheet file. 
+We do this by adding a &quot;style-src&quot; directive and setting the &quot;cdn.jsdelivr.net/npm/@fancyapps/&quot; origin as value.
+But this will also happen automatically when we activate the resource.</p>
+<pre><code class="lang-razor">@using ToSic.Sxc.Services;
+@{
+  var pageSvc = GetService&lt;IPageService&gt;();  // Service to set titles etc. on the page
+  pageSvc.Activate(&quot;fancybox3&quot;);
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -132,7 +211,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/reporting.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/whitelist.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

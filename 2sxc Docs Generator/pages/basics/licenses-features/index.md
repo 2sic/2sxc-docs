@@ -50,11 +50,13 @@ This is used to synchronise web server caches across multiple websites in Farm S
 
 ## How to Get and Install a License
 
-As of now (February 2022) licenses cannot be purchased yet. 
-We're still working on this - should become available Q1 2022.
+1. Go to your system management (the four-squares button)
+1. Click on `register`
+1. Follow the registrations on https://patrons.2sxc.org - if you plan to get paid licenses, make sure you use the github account which will be sponsoring 2sxc
+1. Toggle the licenses you want
+1. Go back to your admin and retrieve the license on the `Features` tab
 
-Licenses currently require [manual installation](xref:Basics.LnF.Licenses.Manual). 
-This too should be improved by the end of Q1 2022.
+For offline scenarios there is also a [manual installation](xref:Basics.LnF.Licenses.Manual) you can follow. 
 
 ## History
 

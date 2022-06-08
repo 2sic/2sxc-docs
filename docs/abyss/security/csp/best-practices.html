@@ -133,8 +133,17 @@ Then use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> t
 <h3 id="use-comments-to-document-your-csp">Use Comments to Document your CSP</h3>
 <p>In the Settings you can use comments with lines beginning with <code>//</code> to document your CSP.
 It will make your work easier and help others who make changes in the future.</p>
-<h3 id="use-all-src">Use <code>all-src</code></h3>
-<p>2sxc has a special <code>all-src</code> rule which you should use for <code>self</code> or <code>https:</code> rules. </p>
+<pre><code>// This will apply to all ...-src
+all-src: &#39;self&#39; https:
+</code></pre><h3 id="use-multiple-lines">Use Multiple Lines</h3>
+<p>All rules will be merged in the end, so in many cases it&#39;s better to have rules on multiple lines.</p>
+<pre><code>// This is for the image gallery
+script-src https://some-cdn.com/
+
+// This is for jQuery
+script-src https://some-other-cdn.com/
+</code></pre><h3 id="use-all-src">Use <code>all-src</code></h3>
+<p>2sxc has a special <code>all-src</code> rule which you should use for <code>&#39;self&#39;</code> or <code>https:</code> rules. </p>
 <p>You should use these at global/site level, because it ensures that any further rules from Apps or other sources won&#39;t break your site.</p>
 <h3 id="avoid-nonce--and-sha256--policies">Avoid &#39;nonce-...&#39; and &#39;sha256-...&#39; Policies</h3>
 <p><code>&#39;nonce-...&#39;</code> and <code>&#39;sha256-...&#39;</code> policies are great for allowing a specific inline bit of script or CSS. </p>

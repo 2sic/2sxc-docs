@@ -36,9 +36,26 @@ turnOn will also help you pass parameters like the current ModuleId to the scrip
 In the Settings you can use comments with lines beginning with `//` to document your CSP.
 It will make your work easier and help others who make changes in the future.
 
+```
+// This will apply to all ...-src
+all-src: 'self' https:
+```
+
+### Use Multiple Lines
+
+All rules will be merged in the end, so in many cases it's better to have rules on multiple lines.
+
+```
+// This is for the image gallery
+script-src https://some-cdn.com/
+
+// This is for jQuery
+script-src https://some-other-cdn.com/
+```
+
 ### Use `all-src`
 
-2sxc has a special `all-src` rule which you should use for `self` or `https:` rules. 
+2sxc has a special `all-src` rule which you should use for `'self'` or `https:` rules. 
 
 You should use these at global/site level, because it ensures that any further rules from Apps or other sources won't break your site.
 

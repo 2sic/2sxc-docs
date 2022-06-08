@@ -8,7 +8,7 @@ uid: Abyss.Security.Csp.Sources
 
 The Content-Security-Policy value is made of directives with specify a _source_. 
 
-These are the most relevant:
+These are the most relevant. Note that special keywords such as `'*'` or `'self'` must be enclosed in single quotes `'`.:
 
 | Source  |	Description |
 | ------- | ----------- |
