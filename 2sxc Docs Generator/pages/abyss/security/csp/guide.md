@@ -2,18 +2,20 @@
 uid: Abyss.Security.Csp.Guide
 ---
 
+<img src="~/assets/features/content-security-policy.svg" class="feature">
+
 # Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane
 
 Content Security Policy (CSP) is a security policy that helps you to protect your web application from [cross-site scripting attacks](https://en.wikipedia.org/wiki/Cross-site_scripting).
 
 In this guide we'll give you step-by-step instructions how to harden a website in no time. 
-Basically with a bit of practice you can harden a DNN with Content-Security-Policy in about an hour 🚀.
+With a bit of practice you can harden a DNN with Content-Security-Policy in one to two hours 🚀.
 
 🎬 Before you start, be sure you've read the [background, parts and best-practices](xref:Abyss.Security.Csp.Index).
 
 ## General Process
 
-1. Do preparations
+1. Plan and prepare
 1. Setup CSP for anonymous users in reporting-only-mode with a reporting-server
 1. Setup CSP for other users - reporting-only
 1. Go productive
@@ -22,14 +24,43 @@ Basically with a bit of practice you can harden a DNN with Content-Security-Poli
 
 ## CSP Preparations
 
-### Prepare a Site for CSP
+### Planning CSP
 
-Before you try to configure CSP it's best to have a good setup which makes it easier. 
+> Think before you act
+
+Some choices made ahead of time will save you time and effort later. 
+
+1. Will you make different CSP rules for admins and anonymous users?
+1. Will you use a reporting-server?
+1. Are you doing this just to "tick the box, yes we did it" or do you want it as secure as possible?
+
+
+> [!TIP]
+> We highly suggest you segment this by users. 
+> That will allow you to make much stricter rules for anonymous users and less strict for admins.
+> 
+> This also gives you a better score in most penetration tests, because they will evaluate the rules for anonymous users.
+
+In addition, we suggest you ask yourself these questions ahead of time, because it will make it easier to hand off work:
+
+1. When you have a situation where a code-change would let you make the rule more strict, will you make the code change, or use a lax rule?
+1. When you have CDN resources, will you want to whitelist them, or move them to your server?
+1. If you have resources from CDNs, will you whitelist the entire CDNs or just these resources?
+
+### Prepare / Harden a Site for CSP
+
+Before you try to configure CSP it's best to have a good setup which makes it more secure. 
+
+> [!TIP]
+> If you follow these recommendations, you will be able to have much stricter policies.
+> If you don't, you can still activate CSP but will need a much laxer setup.
+
+
 Rework your Skins / Apps to match a secure architecture, following the best practices. 
 Things such as:
 
 1. Get rid of unused js/css code/files
-1. Reduce or better still, remove all jQuery dependent code (at least in anonymous mode)
+1. Reduce or better still, remove all jQuery dependent code (especially for anonymous users)
 1. Reduce all CDN references to as few as possible
 1. Place all your inline scripts and styles in files
 1. Change all inline `onclick` or `href:javascript:...` to be bound by the loaded code
@@ -105,14 +136,14 @@ The Lax-First method assumes that you start with rules that allow everything, th
 Here's an example of a very lax rule set, taken from [StackOverflow](https://stackoverflow.com/questions/35978863/allow-all-content-security-policy):
 
 ```text
-default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic'
-script-src * data: blob: 'unsafe-inline' 'unsafe-eval'
-connect-src * data: blob: 'unsafe-inline'
-img-src * data: blob: 'unsafe-inline'
-frame-src * data: blob:
-style-src * data: blob: 'unsafe-inline'
-font-src * data: blob: 'unsafe-inline'
-frame-ancestors * data: blob: 'unsafe-inline'
+default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic' ;
+script-src * data: blob: 'unsafe-inline' 'unsafe-eval' ;
+connect-src * data: blob: 'unsafe-inline' ;
+img-src * data: blob: 'unsafe-inline' ;
+frame-src * data: blob: ;
+style-src * data: blob: 'unsafe-inline' ;
+font-src * data: blob: 'unsafe-inline' ;
+frame-ancestors * data: blob: 'unsafe-inline' ;
 ```
 
 for 2sxc it can be shorted to:

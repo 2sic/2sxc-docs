@@ -115,15 +115,16 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Guide">
-<h1 id="content-security-policy-csp-guide-for-2sxc-dnn-and-oqtane">Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane</h1>
 
+<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
+<h1 id="content-security-policy-csp-guide-for-2sxc-dnn-and-oqtane">Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane</h1>
 <p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
 <p>In this guide we&#39;ll give you step-by-step instructions how to harden a website in no time. 
 Basically with a bit of practice you can harden a DNN with Content-Security-Policy in about an hour 🚀.</p>
 <p>🎬 Before you start, be sure you&#39;ve read the <a class="xref" href="index.html">background, parts and best-practices</a>.</p>
 <h2 id="general-process">General Process</h2>
 <ol>
-<li>Do preparations</li>
+<li>Plan and prepare</li>
 <li>Setup CSP for anonymous users in reporting-only-mode with a reporting-server</li>
 <li>Setup CSP for other users - reporting-only</li>
 <li>Go productive</li>
@@ -131,13 +132,35 @@ Basically with a bit of practice you can harden a DNN with Content-Security-Poli
 <li>Switch to full-mode</li>
 </ol>
 <h2 id="csp-preparations">CSP Preparations</h2>
-<h3 id="prepare-a-site-for-csp">Prepare a Site for CSP</h3>
-<p>Before you try to configure CSP it&#39;s best to have a good setup which makes it easier. 
-Rework your Skins / Apps to match a secure architecture, following the best practices. 
+<h3 id="planning-csp">Planning CSP</h3>
+<blockquote><p>Think before you act</p>
+</blockquote>
+<p>Some choices made ahead of time will save you time and effort later. </p>
+<ol>
+<li>Will you make different CSP rules for admins and anonymous users?</li>
+<li>Will you use a reporting-server?</li>
+<li>Are you doing this just to &quot;tick the box, yes we did it&quot; or do you want it as secure as possible?</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p>We highly suggest you segment this by users. 
+That will allow you to make much stricter rules for anonymous users and less strict for admins.</p>
+<p>This also gives you a better score in most penetration tests, because they will evaluate the rules for anonymous users.</p>
+</div>
+<p>In addition, we suggest you ask yourself these questions ahead of time, because it will make it easier to hand off work:</p>
+<ol>
+<li>When you have a situation where a code-change would let you make the rule more strict, will you make the code change, or use a lax rule?</li>
+<li>When you have CDN resources, will you want to whitelist them, or move them to your server?</li>
+<li>If you have resources from CDNs, will you whitelist the entire CDNs or just these resources?</li>
+</ol>
+<h3 id="prepare--harden-a-site-for-csp">Prepare / Harden a Site for CSP</h3>
+<p>Before you try to configure CSP it&#39;s best to have a good setup which makes it more secure. </p>
+<div class="TIP"><h5>Tip</h5><p>If you follow these recommendations, you will be able to have much stricter policies.
+If you don&#39;t, you can still activate CSP but will need a much laxer setup.</p>
+</div>
+<p>Rework your Skins / Apps to match a secure architecture, following the best practices. 
 Things such as:</p>
 <ol>
 <li>Get rid of unused js/css code/files</li>
-<li>Reduce or better still, remove all jQuery dependent code (at least in anonymous mode)</li>
+<li>Reduce or better still, remove all jQuery dependent code (especially for anonymous users)</li>
 <li>Reduce all CDN references to as few as possible</li>
 <li>Place all your inline scripts and styles in files</li>
 <li>Change all inline <code>onclick</code> or <code>href:javascript:...</code> to be bound by the loaded code</li>
@@ -193,14 +216,14 @@ Then you will loosen up the rules step-by-step.</p>
 <h3 id="lax-first-method">Lax-First Method</h3>
 <p>The Lax-First method assumes that you start with rules that allow everything, then you tighten them up step-by-step.
 Here&#39;s an example of a very lax rule set, taken from <a href="https://stackoverflow.com/questions/35978863/allow-all-content-security-policy">StackOverflow</a>:</p>
-<pre><code class="lang-text">default-src *  data: blob: filesystem: about: ws: wss: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; &#39;unsafe-dynamic&#39;
-script-src * data: blob: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39;
-connect-src * data: blob: &#39;unsafe-inline&#39;
-img-src * data: blob: &#39;unsafe-inline&#39;
-frame-src * data: blob:
-style-src * data: blob: &#39;unsafe-inline&#39;
-font-src * data: blob: &#39;unsafe-inline&#39;
-frame-ancestors * data: blob: &#39;unsafe-inline&#39;
+<pre><code class="lang-text">default-src *  data: blob: filesystem: about: ws: wss: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; &#39;unsafe-dynamic&#39; ;
+script-src * data: blob: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; ;
+connect-src * data: blob: &#39;unsafe-inline&#39; ;
+img-src * data: blob: &#39;unsafe-inline&#39; ;
+frame-src * data: blob: ;
+style-src * data: blob: &#39;unsafe-inline&#39; ;
+font-src * data: blob: &#39;unsafe-inline&#39; ;
+frame-ancestors * data: blob: &#39;unsafe-inline&#39; ;
 </code></pre><p>for 2sxc it can be shorted to:</p>
 <pre><code>// all-src would always be applied to all rules
 all-src * data: blob: &#39;unsafe-inline&#39;

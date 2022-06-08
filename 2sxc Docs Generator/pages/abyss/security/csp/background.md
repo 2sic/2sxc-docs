@@ -2,6 +2,8 @@
 uid: Abyss.Security.Csp.Background
 ---
 
+<img src="~/assets/features/content-security-policy.svg" class="feature">
+
 # Content Security Policy (CSP) Basics
 
 Content Security Policy (CSP) is a security policy that helps you to protect your web application from [cross-site scripting attacks](https://en.wikipedia.org/wiki/Cross-site_scripting).
@@ -20,7 +22,7 @@ This content-insecurity places your visitor at a very high risk of being comprom
 Or it's possible that actions are performed _as the current user_ without their consent.
 Here some basic examples:
 
-### Example: URL Injection
+### Example: URL Injection for XSS
 
 Your website has a thank-you page which shows the name from the url like `?name=John Doe`.
 When you made it, you expected to show `Thank you John Doe`. 
@@ -86,6 +88,9 @@ Important: You can only use one of these headers at a time.
 > But not the `Content-Security-Policy-Report-Only`.
 > 
 > Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.
+> 
+> In addition, you could end up with CSP in HTTP headers and meta-tags, which will confuse everybody. 
+> 
 > You will also need the `...-Report-Only` during setup, which cannot be done using the meta-tag.
 > So for simplicity all the documentations here assume HTTP-headers.
 

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Content Security Policy (CSP) Best Practices | 2sxc 13 / EAV 13 </title>
+    <title>Content Security Policy (CSP) Sources | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Content Security Policy (CSP) Best Practices | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Content Security Policy (CSP) Sources | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,43 +114,80 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.BestPractices">
+            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Sources">
 
 <p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
-<h1 id="content-security-policy-csp-best-practices">Content Security Policy (CSP) Best Practices</h1>
-<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
-<p>There are many ways you can setup CSP, but it is easier if the entire setup is geared towards this goal.</p>
-<h2 id="javascript-csp-best-practices">JavaScript CSP Best Practices</h2>
-<h3 id="js-avoid-eval-and-other-stupid-stuff">JS: Avoid <code>eval</code> and other Stupid Stuff</h3>
-<p>This is fairly basic: don&#39;t use <code>eval</code> in your code.</p>
-<h3 id="js-avoid-any-js-in-the-page">JS: Avoid any JS in the Page</h3>
-<p>Any In-Page JS will either force you to use lax security rules or require a lot of whitelisting using nonce or hashes. </p>
-<p>We recommend that you avoid this alltogether. </p>
-<p>Place all your code in external JS files which are on the same server (rule: <code>self</code>).
-Then use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to start the code. </p>
-<p>turnOn will also help you pass parameters like the current ModuleId to the script, in case you need it. </p>
-<h2 id="csp-configuration-best-practices">CSP Configuration Best Practices</h2>
-<h3 id="use-comments-to-document-your-csp">Use Comments to Document your CSP</h3>
-<p>In the Settings you can use comments with lines beginning with <code>//</code> to document your CSP.
-It will make your work easier and help others who make changes in the future.</p>
-<h3 id="use-all-src">Use <code>all-src</code></h3>
-<p>2sxc has a special <code>all-src</code> rule which you should use for <code>self</code> or <code>https:</code> rules. </p>
-<p>You should use these at global/site level, because it ensures that any further rules from Apps or other sources won&#39;t break your site.</p>
-<h3 id="avoid-nonce--and-sha256--policies">Avoid &#39;nonce-...&#39; and &#39;sha256-...&#39; Policies</h3>
-<p><code>&#39;nonce-...&#39;</code> and <code>&#39;sha256-...&#39;</code> policies are great for allowing a specific inline bit of script or CSS. </p>
-<p>But they have a huge side-effect: they automatically disable the <code>&#39;unsafe-inline&#39;</code> rule. </p>
-<p>Because of this, you should avoid using these policies, as most Dnn/Oqtane sites will have other scripts which are outside of your control, so you will typically need <code>unsafe-inline</code>.</p>
-<div class="WARNING"><h5>Warning</h5><p>If any of these policies are used, it automatically disables the <code>&#39;unsafe-inline&#39;</code> rule. 
-This is how CSP works.</p>
+<h1 id="content-security-policy-csp-sources">Content Security Policy (CSP) Sources</h1>
+<p>The Content-Security-Policy value is made of directives with specify a <em>source</em>. </p>
+<p>These are the most relevant:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;*&#39;</code></td>
+<td>Wildcard – Allows any URL except data</td>
+</tr>
+<tr>
+<td><code>&#39;none&#39;</code></td>
+<td>Prevents loading from any source</td>
+</tr>
+<tr>
+<td><code>&#39;self&#39;</code></td>
+<td>Allows loading from same origin (scheme, host, port) – <a href="https://yourdomain.com:80">https://yourdomain.com:80</a></td>
+</tr>
+<tr>
+<td><code>data:</code></td>
+<td>Allows loading data resources</td>
+</tr>
+<tr>
+<td><code>yourdomain.com</code></td>
+<td>Allows loading resources from the specified domain (yourdomain.com)</td>
+</tr>
+<tr>
+<td><code>*.yourdomain.com</code></td>
+<td>Allows loading resources from any subdomain from the specified domain (xy.yourdomain.com)</td>
+</tr>
+<tr>
+<td><code>https://yourdomain.com</code></td>
+<td>Allows loading resources from the specified domain only over https</td>
+</tr>
+<tr>
+<td><code>https:</code></td>
+<td>Allows loading resources over https</td>
+</tr>
+<tr>
+<td><code>&#39;unsafe-inline&#39;</code></td>
+<td>Allows use of inline source attributes (style, onclick…)</td>
+</tr>
+<tr>
+<td><code>&#39;unsafe-eval&#39;</code></td>
+<td>Allows unsafe dynamic code evaluation (eval() in JS)</td>
+</tr>
+<tr>
+<td><code>&#39;sha256-H4shV41ue&#39;</code></td>
+<td>Allows inline execution if it matches the hash in the header</td>
+</tr>
+<tr>
+<td><code>&#39;nonce-r4nd0mV41ue&#39;</code></td>
+<td>Allows inline execution of tags that match the nonce attribute</td>
+</tr>
+<tr>
+<td><code>&#39;strict-dynamic&#39;</code></td>
+<td>Allows trusted scripts to load other scripts</td>
+</tr>
+<tr>
+<td><code>&#39;unsafe-hashes&#39;</code></td>
+<td>Allows enabling scripts in event handlers. (not <code>href=&quot;javascript:...&quot;</code> or inline <code>&lt;script&gt;</code> tags)</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP"><h5>Tip</h5><p>Also check out the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources">MDN sources docs</a></p>
 </div>
-<h3 id="be-as-local-as-possible">Be as Local as Possible</h3>
-<p>Rules which should only be used in a specific App should be on that App, not on the site.</p>
-<p>Rules which only apply to a specific razor page should ideally also be on that page only.</p>
-<h2 id="production--operations-reporting">Production / Operations Reporting</h2>
-<h3 id="use-a-reporting-server">Use a Reporting Server</h3>
-<p>Even if you think you&#39;re done, make sure to setup a reporting server.
-You can get free system from <a href="https://report-uri.com/">Report-URI</a>.
-This will allow you to monitor if your site is being compromised - or if you forgot to set some rules, which result in the site breaking. </p>
 </article>
           </div>
           
@@ -159,7 +196,7 @@ This will allow you to monitor if your site is being compromised - or if you for
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/best-practices.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/sources.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

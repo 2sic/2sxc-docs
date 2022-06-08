@@ -115,8 +115,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Background">
-<h1 id="content-security-policy-csp-basics">Content Security Policy (CSP) Basics</h1>
 
+<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
+<h1 id="content-security-policy-csp-basics">Content Security Policy (CSP) Basics</h1>
 <p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
 <p>This page should help you understand what it is and how it works. Here&#39;s just a quick example of CSP in action:</p>
 <p><img src="assets/2shine-with-csp-headers.jpg" width="100%" class="full-width"></p>
@@ -126,7 +127,7 @@ It could happen because your server was hacked, but there are many other ways to
 <p>This content-insecurity places your visitor at a very high risk of being compromised or redirected.
 Or it&#39;s possible that actions are performed <em>as the current user</em> without their consent.
 Here some basic examples:</p>
-<h3 id="example-url-injection">Example: URL Injection</h3>
+<h3 id="example-url-injection-for-xss">Example: URL Injection for XSS</h3>
 <p>Your website has a thank-you page which shows the name from the url like <code>?name=John Doe</code>.
 When you made it, you expected to show <code>Thank you John Doe</code>. 
 But smart people figured out, that giving it <code>?name=&lt;script&gt;alert(&#39;Hello&#39;)&lt;/script&gt;</code> would also work. </p>
@@ -171,8 +172,9 @@ This is really important, because this is mostly used when something unexpected 
 <p>Important: You can only use one of these headers at a time. </p>
 <div class="WARNING"><h5>Warning</h5><p>Technically the <code>Content-Security-Policy</code> header could also be set using a <code>&lt;meta&gt;</code> tag. 
 But not the <code>Content-Security-Policy-Report-Only</code>.</p>
-<p>Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.
-You will also need the <code>...-Report-Only</code> during setup, which cannot be done using the meta-tag.
+<p>Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.</p>
+<p>In addition, you could end up with CSP in HTTP headers and meta-tags, which will confuse everybody. </p>
+<p>You will also need the <code>...-Report-Only</code> during setup, which cannot be done using the meta-tag.
 So for simplicity all the documentations here assume HTTP-headers.</p>
 </div>
 <h2 id="the-four-types-of-whitelisting">The Four Types of Whitelisting</h2>
