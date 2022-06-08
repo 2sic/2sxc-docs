@@ -7,9 +7,9 @@ uid: JsCode.Commands.ContentItems
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-This button opens the admin-dialog with all content-items. It has a (beta) feature which also allows you to add filters (since 2sxc 8.7).
+This button opens the admin-dialog with all content-items. It has a feature which also allows you to add filters.
 
-TODO: UPDATE TO SHOW MODERN TOOLBAR + USE ID Array of items
+TODO: UPDATE TO SHOW MODERN TOOLBAR + USE ID Array of items in v14.02
 
 ## How to use
 
@@ -61,9 +61,10 @@ This shows 2sxc-toolbar with 2 buttons, one opening tag-management (filtered by 
 The filters-object is a JS-object with properties. We're still working on the format, but for now it's probably
 
 1. NumberPropertyName: ##
-2. StringPropertyName: "..."
-3. BoolPropertyName: true
-4. EntityPropertyName: ["title1", "title2", ...]
+2. StringPropertyName: `"..."`
+3. BoolPropertyName: `true`
+4. EntityPropertyName: `["title1", "title2", ...]` list of values to check
+4. EntityPropertyName: `[ 203004, 40203 ]` // list of IDs to check
 5. IsPublished: true
 6. IsMetadata: true
 
@@ -80,3 +81,4 @@ The filters-object is a JS-object with properties. We're still working on the fo
 1. Introduced in 2sxc v08.06
 2. Filters introduced in 2sxc v08.08
 1. Filters improved to support id-array in v13.0
+1. Code improved in v14.02 so new toolbar syntax with `contentitems?filter:parent=[5030]` works - before this didn't work as expected
