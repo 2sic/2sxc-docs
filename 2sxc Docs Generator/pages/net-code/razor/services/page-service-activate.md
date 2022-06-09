@@ -37,14 +37,20 @@ Note that it will only be activated once, even if the code would accidentally ac
 
 Features you can activate as of v12.02
 
-* `jQuery`  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+
+* `jQuery`  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+  
+    _note: we really want to discourage the use of jQuery - so avoid if possible_
 * `turnOn` - [the JavaScript turnOn Activation system](xref:JsCode.TurnOn.Index)
 * `2sxc.JsCore` - the 2sxc standard JS APIs.  
     Replaces `@Edit.Enable(js: true)` _new in v13_
 * `2sxc.JsCms` - 2sxc JS APIs to run commands for edit, etc.  
-    Replaces `@Edit.Enable(api: true)` _new in v13_
-* `2sxc.Toolbars` - edit-toolbars on the page.  
-    Replaces `@Edit.Enable(styles: true, autoToolbar: true)` _new in v13_
+    Replaces `@Edit.Enable(api: true)` _new in v13_  
+    Includes `2sxc.JsCore`
+* `2sxc.Toolbars` - _allow_ edit-toolbars on the page.  
+    Replaces `@Edit.Enable(js: true, api: true, styles: true)` _new in v13_  
+    Includes `2sic.JsCms` and `2sic.JsCore`
+* `2sxc.ToolbarsAuto` - _auto-show_ edit-toolbars on the page.  
+    Replaces `@Edit.Enable(js: true, api: true, styles: true, autoToolbar: true)` _new in v14_  
+    Includes `2sxc.Toolbars`, `2sic.JsCms` and `2sic.JsCore`
 
 _Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
