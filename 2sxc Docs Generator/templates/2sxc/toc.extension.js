@@ -80,15 +80,28 @@ function processNode(item, level) {
 function sortNetToc(item) {
   if (dbgSortNetToc) dbg.error("level 1 hit");
   if (dbgSortNetToc) dbg.error('level 1', item.items[0], 1000);
-  // const condition = 
+
+  // Split into various segments to prioritize and give titles
   const set = toc.split(item.items, function(i) { return !!i && i.top === true; });
+  const custom = toc.split(set[1], toc.conditionNameSpaceStartsWith("Custom.")); 
+  const eav = toc.split(custom[1], toc.conditionNameSpaceStartsWith("ToSic.Eav")); 
+
   if (dbgSortNetToc) dbg.error('top', set[0]);
   if (dbgSortNetToc) dbg.error('rest', set[1]);
 
-  const all = [toc.createLeaf("<strong>Top Namespaces</strong>")]
+  const all = 
+    [toc.createLeaf("<strong>Top Namespaces</strong>")]
     .concat(set[0])
     .concat([toc.createLeaf("<hr>")])
-    .concat(set[1]);
+    .concat([toc.createLeaf("<strong>Base Classes</strong>")])
+    .concat(custom[0])
+    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf("<strong>ToSic.Eav</strong>")])
+    .concat(eav[0])
+    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf("<strong>ToSic.Sxc</strong>")])
+    .concat(eav[1])
+    ;
   if (dbgSortNetToc) dbg.error('all', all);
   return all;
 }

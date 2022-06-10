@@ -107,6 +107,10 @@ function splitByCondition(items, condition) {
   return [ top, rest ];
 }
 
+function conditionNameSpaceStartsWith(prefix) {
+  return function(i) { return !!i && i.topicUid && i.topicUid.indexOf(prefix) === 0; };
+}
+
 exports = {
   createLeaf: createLeaf,
   repeatString: repeatString,
@@ -126,4 +130,5 @@ exports = {
 
   isTopLevelApiToc: isTopLevelApiToc,
   split: splitByCondition,
+  conditionNameSpaceStartsWith: conditionNameSpaceStartsWith
 }
