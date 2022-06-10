@@ -12,6 +12,11 @@ const prioInternal = {
   priority: "internal"
 };
 
+const prioUntyped = {
+  priority: "default",
+  top: false,
+}
+
 const prioTop = {
   priority: "custom",
   top: true,
@@ -63,8 +68,8 @@ exports.prefixes = ['ToSic.Sxc', 'ToSic.Eav', 'Custom.'];
 
 exports.data = {
   "Custom.Hybrid": prioTop,
-  "Custom.Dnn": prioTop,
-  "Custom.Oqtane": prioTop,
+  "Custom.Dnn": prioUntyped,
+  "Custom.Oqtane": prioUntyped,
   "ToSic.Eav": deprecated,
   "ToSic.Eav.Factory": deprecated,
   "ToSic.Eav.Apps": prioInternal,
