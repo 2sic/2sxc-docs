@@ -80,14 +80,15 @@ function processNode(item, level) {
 function sortNetToc(item) {
   if (dbgSortNetToc) dbg.error("level 1 hit");
   if (dbgSortNetToc) dbg.error('level 1', item.items[0], 1000);
-  const top = item.items.filter(function(i) { return !!i && i.top === true; });
-  if (dbgSortNetToc) dbg.error('top', top);
-  const rest = item.items.filter(function(i) { return !i || i.top !== true; });
-  if (dbgSortNetToc) dbg.error('rest', rest);
+  // const condition = 
+  const set = toc.split(item.items, function(i) { return !!i && i.top === true; });
+  if (dbgSortNetToc) dbg.error('top', set[0]);
+  if (dbgSortNetToc) dbg.error('rest', set[1]);
+
   const all = [toc.createLeaf("<strong>Top Namespaces</strong>")]
-    .concat(top)
+    .concat(set[0])
     .concat([toc.createLeaf("<hr>")])
-    .concat(rest);
+    .concat(set[1]);
   if (dbgSortNetToc) dbg.error('all', all);
   return all;
 }

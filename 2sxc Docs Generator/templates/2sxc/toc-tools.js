@@ -101,7 +101,11 @@ function isTopLevelApiToc(model) {
   return match;
 }
 
-
+function splitByCondition(items, condition) {
+  const top = items.filter(condition);
+  const rest = items.filter(function(i) { return !condition(i) });
+  return [ top, rest ];
+}
 
 exports = {
   createLeaf: createLeaf,
@@ -121,4 +125,5 @@ exports = {
   addNodeData: addNodeData,
 
   isTopLevelApiToc: isTopLevelApiToc,
+  split: splitByCondition,
 }
