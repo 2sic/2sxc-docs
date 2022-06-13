@@ -18,7 +18,7 @@ Internally this information is automatically retrieved from the html-header.
 The environment looks for a special meta-tag called `_jsApi` which contains all this information. 
 
 > [!NOTE]
-> Internally all these commands need the [env](xref:Api.Js.SxcJs.Environment) to be ready. 
+> Internally all these commands need the [env](xref:Api.Js.SxcJs.SxcGlobalEnvironment) to be ready. 
 > This means that the entire html `<head>` tag was processed by the browser. 
 > A very safe way to do this is to run your code on-document-ready, 
 > or just to ensure that whatever bootstraps your application runs inside the `<body>` tag. 

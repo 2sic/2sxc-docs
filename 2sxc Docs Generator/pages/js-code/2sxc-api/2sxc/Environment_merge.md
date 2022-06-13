@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.SxcJs.Environment
+uid: Api.Js.SxcJs.SxcGlobalEnvironment
 ---
 
 ### The $2sxc.env API

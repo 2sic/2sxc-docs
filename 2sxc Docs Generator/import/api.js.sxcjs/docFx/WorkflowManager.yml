@@ -5,16 +5,15 @@ items:
     fullName: WorkflowManager
     children:
       - Api.Js.SxcJs.WorkflowManager.add
-      - Api.Js.SxcJs.WorkflowManager.attach
-      - Api.Js.SxcJs.WorkflowManager.steps
-      - Api.Js.SxcJs.WorkflowManager.constructor
     langs:
       - typeScript
     type: class
     summary: >-
-      A workflow manager which will run stuff before / after commands.
+      A workflow manager _of a Toolbar_ which will run stuff before / after
+      commands.
 
-      As of now, it must be attached to a toolbar to take effect.
+      When toolbars are created, they will add a Manager and then raise an event
+      for in-page code to add workflow steps.
 
       Normally the toolbar with raise a `toolbar-init` event where you can then
       add steps.
@@ -36,59 +35,6 @@ items:
             - 'WorkflowStep | WorkflowStep[]'
           description: ''
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.WorkflowManager.attach
-    name: 'attach(HTMLElement, ContextComplete)'
-    children: []
-    type: method
-    langs:
-      - typeScript
-    summary: Attach a workflow to a toolbar
-    syntax:
-      content: 'function attach(node: HTMLElement, context: ContextComplete)'
-      parameters:
-        - id: node
-          type:
-            - HTMLElement
-          description: ''
-        - id: context
-          type:
-            - ContextComplete
-          description: ''
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.WorkflowManager.steps
-    name: steps
-    fullName: steps
-    children: []
-    langs:
-      - typeScript
-    type: property
-    summary: The workflow steps registered here
-    syntax:
-      content: 'steps: WorkflowStep[] = []'
-      return:
-        type:
-          - 'WorkflowStep[]'
-        description: ''
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.WorkflowManager.constructor
-    name: 'WorkflowManager(Log, boolean)'
-    children: []
-    type: constructor
-    langs:
-      - typeScript
-    summary: ''
-    syntax:
-      content: 'new WorkflowManager(parentLog: Log, isDummy: boolean)'
-      parameters:
-        - id: parentLog
-          type:
-            - Api.Js.SxcJs.Log
-          description: ''
-        - id: isDummy
-          type:
-            - boolean
-          description: ''
-    package: Api.Js.SxcJs
 references:
   - uid: Api.Js.SxcJs.HasLog
     name: HasLog
@@ -96,9 +42,3 @@ references:
       - name: HasLog
         fullName: HasLog
         uid: Api.Js.SxcJs.HasLog
-  - uid: Api.Js.SxcJs.Log
-    name: Log
-    spec.typeScript:
-      - name: Log
-        fullName: Log
-        uid: Api.Js.SxcJs.Log
