@@ -28,7 +28,6 @@ Here's a simple example (assuming you have the $2sxc manager):
 
 1. [Modern `fetchRaw` and `fetchJson` API](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
 1. [APIs to get URLs and headers](xref:JsCode.2sxcApi.Sxc.WebApi.BareMetal)
-1. [Old jQuery APIs](xref:JsCode.2sxcApi.Sxc.WebApi.jQuery)
 
 
 ### How to Get the Current Context's `sxc` Controller

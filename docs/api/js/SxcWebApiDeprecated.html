@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SxcWebApi
+    <title>Interface SxcWebApiDeprecated
    | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SxcWebApi
+    <meta name="title" content="Interface SxcWebApiDeprecated
    | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,16 +116,16 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.SxcWebApi">
+            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated">
   
   
-  <h1 id="Api_Js_SxcJs_SxcWebApi" data-uid="Api.Js.SxcJs.SxcWebApi">Class SxcWebApi
+  <h1 id="Api_Js_SxcJs_SxcWebApiDeprecated" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated">Interface SxcWebApiDeprecated
   </h1>
-  <div class="markdown level0 summary"><p>helper API to run ajax / REST calls to the server
-it will ensure that the headers etc. are set correctly
-and that urls are rewritten</p>
+  <div class="markdown level0 summary"><p><strong>Deprecated</strong>
+Old APIs on sxc.webApi.
+They only exist if jQuery is included on the page, and we highly discourage their use.</p>
 </div>
-  <div class="markdown level0 conceptual"><h3 id="sxcwebapi-helpers-on-the-sxc-controller"><code>sxc.webApi</code> Helpers on the Sxc Controller</h3>
+  <div class="markdown level0 conceptual"><h3 id="deprecated-sxcwebapi-helpers-using-jquery">Deprecated sxc.webApi Helpers using JQuery</h3>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -247,24 +247,86 @@ and that urls are rewritten</p>
   </div>
 </div><style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-<p>The WebApi object on the App/Module-specific <code>sxc</code>-controller is for AJAX calls. It helps you in these advanced cases:  </p>
-<ol>
-<li>to read/write content-items using REST</li>
-<li>to access your apps WebApi controllers</li>
-</ol>
-<h3 id="how-to-use">How to use</h3>
-<p>First you must ensure that you have the <a class="xref" href="../../js-code/2sxc-api/2sxc/index.html"><code>$2sxc</code> manager</a> on your page, which will get you a module-specific <code>sxc</code> controller. Read about the <a class="xref" href="../../js-code/2sxc-api/2sxc/index.html">$2sxc manager</a> here. </p>
+<p>2sxc originally used jQuery and the JS API still has commands which do jQuery AJAX calls. On the <code>webApi</code> object they are</p>
+<ul>
+<li><code>webApi.delete(...)</code> for HTTP DELETE calls</li>
+<li><code>webApi.get(...)</code>  for HTTP GET calls</li>
+<li><code>webApi.post(...)</code>  for HTTP POST calls</li>
+<li><code>webApi.put(...)</code>  for HTTP PUT calls</li>
+<li><code>webApi.request(...)</code> for any other HTTP calls</li>
+</ul>
+<div class="WARNING"><h5>Warning</h5><p>As of 2sxc 12.10 we don&#39;t recommend using this any more.
+It will only work if the page also has jQuery enabled either using 
+<code>pageService.Activate(&quot;jQuery&quot;);</code> (see <a class="xref" href="../dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>)
+or because something else like the theme/skin already loads it.</p>
+<p>From now on we strongly suggest you use <code>fetch</code> which is supported by all modern browsers. 
+See <a class="xref" href="../../js-code/2sxc-api/sxc/sxc.webapi-fetch.html">webApi.fetch</a></p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>To find out how to get the module sxc-object using $2sxc, check out <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">SxcWebApi</a></p>
+</div>
+<h3 id="example">Example</h3>
 <p>Here&#39;s a simple example (assuming you have the $2sxc manager):</p>
-<pre><code class="lang-HTML">&lt;a onclick=&quot;$2sxc(this).webApi.fetchJson(&#39;app/auto/data/Category&#39;).then(handleResult);&quot;&gt;
+<pre><code class="lang-HTML">&lt;a onclick=&quot;$2sxc(this).webApi.get(&#39;app/auto/data/Category&#39;).then(handleResult);&quot;&gt;
     get all Categories 
 &lt;/a&gt;
-</code></pre><h3 id="the-apis-to-get-data">The APIs to Get Data</h3>
+</code></pre><p>The code above shows</p>
 <ol>
-<li><a class="xref" href="../../js-code/2sxc-api/sxc/sxc.webapi-fetch.html">Modern <code>fetchRaw</code> and <code>fetchJson</code> API</a></li>
-<li><a class="xref" href="../../js-code/2sxc-api/sxc/sxc.webapi-bare-metal.html">APIs to get URLs and headers</a></li>
+<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> manager, based on the current context <code>this</code></li>
+<li>how all items of type &quot;Category&quot; are requested</li>
+<li>how the result (promise) is passed on to <code>handleResults</code> for updating the view etc.</li>
 </ol>
-<h3 id="how-to-get-the-current-contexts-sxc-controller">How to Get the Current Context&#39;s <code>sxc</code> Controller</h3>
-<p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the <a class="xref" href="../../js-code/2sxc-api/2sxc/index.html">$2sxc Manager docs</a>. Here you&#39;ll also find out more about the <a class="xref" href="../../js-code/2sxc-api/sxc/index.html">sxc-controller</a>.</p>
+<p>Here&#39;s another quick example, calling a C# web-api endpoint: </p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
+sxc.webApi.post(&quot;Form/ProcessForm&quot;)
+    .success(function(result) {
+        // ....
+    });
+</code></pre><h3 id="working-with-rest--http-async-stuff">Working with REST / HTTP Async Stuff</h3>
+<p>Short note: these WebAPIs work using jQuery promises (<em>not</em> JavaScript promises), supporting <code>.then(...)</code>, <code>.error(...)</code> etc.</p>
+<p>The $2sxc(...).webApi has 4 <strong>jQuery</strong> commands</p>
+<ul>
+<li><code>.webApi.get(url, ...)</code> </li>
+<li><code>.webApi.post(url, ...)</code></li>
+<li><code>.webApi.delete(url, ...)</code></li>
+<li><code>.webApi.put(url, ...)</code></li>
+</ul>
+<p>Each of these has the following parameters</p>
+<ol>
+<li><code>url</code> or <code>settings</code> <em>required</em> string|object: a Url for the end-point OR a <code>{ ... }</code> settings object  </li>
+<li><code>params</code> <em>optional</em> object: the url params like <code>{ id: 27, name: &quot;hello&quot; }</code></li>
+<li><code>data</code> <em>optional</em> object: the data - in case of post / put, like <code>{ ... }</code></li>
+<li><code>preventAutoFail</code> <em>optional</em> bool: if true, won&#39;t automatically show a default message on error, so that you can handle errors differently</li>
+</ol>
+<p>Quick examples:</p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
+sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
+    .success(function() {
+        // ....
+    })
+    .error(function() {
+        // ...
+    });
+</code></pre><p>This will call the C# WebApi controller <code>FormController</code> in the <code>api</code> folder and go for its <code>ProcessForm</code> command. It will use no url-params, but put a <code>data</code> object in the body (as json), and will do error-handling itself. </p>
+<p>In short: </p>
+<ol>
+<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
+<li>for the path-parameter, use a path starting with <code>app/auto/query/[queryname]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/query/</code> </li>
+</ol>
+<h3 id="working-with-custom-c-app-webapis">Working with Custom C# App WebAPIs</h3>
+<p>In short: </p>
+<ol>
+<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
+<li>for the path-parameter, use a path starting with <code>app/auto/api/[controller]/[action]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/api/</code> </li>
+</ol>
+<p>You can read more about the <a class="xref" href="../../net-code/web-api/index.html">C# WebApi Server Side</a></p>
+<p>Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. </p>
+<h3 id="demo-app-and-further-links">Demo App and further links</h3>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
+<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
+</ul>
+<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
 <hr>
 <h3 id="history">History</h3>
 <ol>
@@ -276,19 +338,23 @@ and that urls are rewritten</p>
 <li><code>fetchRaw</code>, <code>fetchJson</code>, <code>sxc.data(...)</code> and <code>sxc.query(...)</code> official for use 13.04</li>
 </ol>
 <hr>
+<hr>
 </div>
   <h6><strong>Package</strong>: <a class="xref" href="index.html">Api.Js.SxcJs</a></h6>
   <h3 id="methods">Methods
   </h3>
   
   
-  <h4 id="Api_Js_SxcJs_SxcWebApi_fetchJson" data-uid="Api.Js.SxcJs.SxcWebApi.fetchJson">fetchJson(string, string | Record&lt;string, any&gt;, string)</h4>
-  <div class="markdown level1 summary"><p>Will retrieve data from the backend using a standard fetch and give you an object.</p>
+  <h4 id="Api_Js_SxcJs_SxcWebApiDeprecated_delete" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated.delete">delete(string | AjaxSettings, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-delete promise using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function fetchJson&lt;T&gt;(url: string, data?: string | Record&lt;string, any&gt;, method?: string)</code></pre>
+    <pre><code class="lang-typeScript hljs">function delete(settingsOrUrl: string | AjaxSettings, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -301,204 +367,348 @@ and that urls are rewritten</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>url</em></td>
+        <td><span class="xref">string | AjaxSettings</span></td>
+        <td><em>settingsOrUrl</em></td>
         <td>
-          <p>a full url or short-hand like <code>controller/method?params</code> <code>app/auto/api/controller/method?params</code>. Note that params would also be specified on the url.</p>
+          <p>the url to talk to</p>
 
           
         </td>
       </tr>
       <tr>
-        <td><span class="xref">string | Record&lt;string, any&gt;</span></td>
-        <td><em>data</em></td>
-        <td>
-          <p>optional POST data</p>
-
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>method</em></td>
-        <td>
-          <p>optional method, defaults to <code>GET</code> unless it has data, in which case it defaults to <code>POST</code></p>
-
-          
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Promise&lt;T&gt;</span></td>
-        <td><p>a Promise containing any object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcWebApi_fetchRaw" data-uid="Api.Js.SxcJs.SxcWebApi.fetchRaw">fetchRaw(string, string | Record&lt;string, any&gt;, string)</h4>
-  <div class="markdown level1 summary"><p>Will retrieve data from the backend using a standard fetch.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function fetchRaw(url: string, data?: string | Record&lt;string, any&gt;, method?: string)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>url</em></td>
-        <td>
-          <p>a full url or short-hand like <code>controller/method?params</code> <code>app/auto/api/controller/method?params</code>. Note that params would also be specified on the url.</p>
-
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">string | Record&lt;string, any&gt;</span></td>
-        <td><em>data</em></td>
-        <td>
-          <p>optional POST data</p>
-
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>method</em></td>
-        <td>
-          <p>optional method, defaults to <code>GET</code> unless it has data, in which case it defaults to <code>POST</code></p>
-
-          
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Promise&lt;Response&gt;</span></td>
-        <td><p>a Promise containing a Response object, just like a normal fetch would.
-example: webApi.fetchRaw(&#39;Rss/Feed&#39;);
-example: webApi.fetchRaw(webApi.url(&#39;Rss/Feed&#39;, { id: 47 })); // url params
-example: webApi.fetchRaw(&#39;Rss/Feed&#39;, { id: 47 }); // post params
-example: webApi.fetchRaw(webApi.url(&#39;Rss/Feed&#39;, { id: 47 }), { something: &#39;this is a test&#39; }); // url &amp; post params
-maybe: webApi.fetchRaw({url: &#39;Rss/Feed&#39;, params: { id: 47 }})
-maybe: webApi.fetchRaw({url: ..., params: { ...}, body: { ...}, method: &#39;GET&#39; })</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcWebApi_headers" data-uid="Api.Js.SxcJs.SxcWebApi.headers">headers(string)</h4>
-  <div class="markdown level1 summary"><p>All the headers which are needed in an ajax call for this to work reliably.
-Use this if you need to get a list of headers in another system</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function headers(method?: string)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>method</em></td>
-        <td>
-          
-          
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Record&lt;string, string&gt;</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcWebApi_url" data-uid="Api.Js.SxcJs.SxcWebApi.url">url(string, string | Record&lt;string, any&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function url(url: string, params?: string | Record&lt;string, any&gt;)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><em>url</em></td>
-        <td>
-          <p>A short, medium or long url.
-Short like <code>controller/method</code>,
-medium like <code>app/auto/api/controller/method</code>
-long like `<a href="https://xyz">https://xyz</a>.
-In all cases it can also have ?params etc.</p>
-
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">string | Record&lt;string, any&gt;</span></td>
+        <td><span class="xref">any</span></td>
         <td><em>params</em></td>
         <td>
-          <p>Optional parameters as string or object, will be added to url-params.</p>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JQueryPromise&lt;any&gt;</span></td>
+        <td><p>jQuery ajax promise object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcWebApiDeprecated_get" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated.get">get(string | AjaxSettings, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-get promise using jQuery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function get(settingsOrUrl: string | AjaxSettings, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string | AjaxSettings</span></td>
+        <td><em>settingsOrUrl</em></td>
+        <td>
+          <p>the url to get</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JQueryPromise&lt;any&gt;</span></td>
+        <td><p>jQuery ajax promise object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcWebApiDeprecated_post" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated.post">post(string | AjaxSettings, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-post promise using jQuery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function post(settingsOrUrl: string | AjaxSettings, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string | AjaxSettings</span></td>
+        <td><em>settingsOrUrl</em></td>
+        <td>
+          <p>the url to get</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JQueryPromise&lt;any&gt;</span></td>
+        <td><p>jQuery ajax promise object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcWebApiDeprecated_put" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated.put">put(string | AjaxSettings, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-put promise using jQuery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function put(settingsOrUrl: string | AjaxSettings, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string | AjaxSettings</span></td>
+        <td><em>settingsOrUrl</em></td>
+        <td>
+          <p>the url to put</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JQueryPromise&lt;any&gt;</span></td>
+        <td><p>jQuery ajax promise object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcWebApiDeprecated_request" data-uid="Api.Js.SxcJs.SxcWebApiDeprecated.request">request(string | AjaxSettings, any, any, boolean, string)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Generic http request using jQuery</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function request(settings: string | AjaxSettings, params: any, data: any, preventAutoFail: boolean, method: string)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string | AjaxSettings</span></td>
+        <td><em>settings</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><em>method</em></td>
+        <td>
+          <p>the http verb name</p>
 
           
         </td>
@@ -515,9 +725,8 @@ In all cases it can also have ?params etc.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><p>In the cases of a short/medium url,
-it will auto-expand to have the full url as needed for an API call.</p>
+        <td><span class="xref">JQueryPromise&lt;any&gt;</span></td>
+        <td><p>jQuery ajax promise object</p>
 </td>
       </tr>
     </tbody>
@@ -530,7 +739,7 @@ it will auto-expand to have the full url as needed for an API call.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/sxc/SxcWebApi_merge.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/sxc/SxcWebApiDeprecated_merge.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
