@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>JavaScript / HTML API Documentation for Dnn / 2sxc | 2sxc 13 / EAV 13 </title>
+    <title>Html &amp; JS: quickE - Quick Edit 2.0 | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="JavaScript / HTML API Documentation for Dnn / 2sxc | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Html &amp; JS: quickE - Quick Edit 2.0 | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,8 +114,8 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Index">
-<h1 id="javascript--html-api-documentation-for-dnn--2sxc">JavaScript / HTML API Documentation for Dnn / 2sxc</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.QuickE.Index">
+<h1 id="html--js-quicke---quick-edit-20">Html &amp; JS: quickE - Quick Edit 2.0</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -236,31 +236,59 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .interact-2sxc, .context-box-summary .edit-custom { visibility: visible; } </style>
+</div><style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-<p>You can create awesome solutions, customizing the edit-experience and working with 2sxc-data in your javascript.</p>
-<h2 id="the-core-javascript-helper-objects">The Core JavaScript Helper Objects</h2>
+<p>quickE (pronounced quicky) is the quick-edit feature inside 2sxc to quickly add / move modules and inner content blocks.
+This page explains the In-Browser things you must know, incl. JSON configuration</p>
+<h2 id="concept-and-background">Concept and Background</h2>
+<p>For this please read <a class="xref" href="../../basics/edit/edit-ux/quick-edit.html">Concept-Quick-Edit</a>, which also explains how to include it in a Skin etc.</p>
+<p>Assuming that the $quickE is already on the page and you&#39;re logged on, it&#39;s automatically there...
+...if one of two things is true:</p>
 <ol>
-<li><a class="xref" href="2sxc/index.html">$2sxc Manager</a> which is the page-scope manager for everything</li>
-<li><a class="xref" href="sxc/index.html">Sxc Instance</a> with is the module-specific controller (TODO ca. 70% documented)</li>
+<li>The skin includes it automatically (like the 2shine skin)</li>
+<li>You&#39;ve added any 2sxc module to the page</li>
 </ol>
-<h2 id="the-editing-experience">The Editing Experience</h2>
+<h2 id="configuring-quicke-quick-edit-in-html">Configuring quickE Quick-Edit in HTML</h2>
+<p>Since quickE 2.0 (released in 2sxc 8.7) you can now also configure it a bit. Here are the most important features</p>
 <ol>
-<li><a class="xref" href="../../basics/edit/edit-ux/index.html">Overview to Editing Content</a> </li>
-<li>Customize the edit experience (buttons, toolbars...) with the <a class="xref" href="sxc/obsolete/sxc.manage.html">manage controller</a></li>
+<li>enable / disable the entire quickE</li>
+<li>enable / disable module quick-edit</li>
+<li>enable / disable inner-content-block quick edit</li>
+<li>enable / disable specific buttons across everything or just on modules or inner-content-blocks</li>
 </ol>
-<h2 id="toolbars-buttons-and-commands">Toolbars, Buttons and Commands</h2>
+<p>To do this, just add a <code>quick-edit-config=&#39;{...}&#39;</code> attribute to any DOM node with the desired configuration. Here&#39;s what will happen</p>
 <ol>
-<li>In-page edit toolbars for <a class="xref" href="../toolbars/index.html">html</a> or <a class="xref" href="../toolbars/advanced.html">javascript</a> with <a class="xref" href="../toolbars/settings.html">settings</a></li>
-<li>internals of a <a class="xref" href="../commands/index.html">command (with full list)</a>, of <a class="xref" href="../toolbars/buttons.html">buttons</a> and creating <a class="xref" href="../commands/custom-code.html">custom buttons</a></li>
+<li>if you add it to a skin-dom-node, you can set &quot;defaults&quot; like &quot;never enable at all&quot;</li>
+<li>if you add it to a view-template, you can change the behavior if that view is included</li>
 </ol>
-<h2 id="the-quicke-quick-edit-experience">The quickE (Quick Edit) experience</h2>
+<h2 id="why-include-configuration-it-in-a-view">Why include configuration it in a View?</h2>
+<p>As explained above, quickE changes it&#39;s behavior by default if it finds inner-content. This is desired on details-views, but not on templates which just create more complex content on a normal page. So on these templates, you could add a config to continue enabling module-quick-edit.</p>
+<h2 id="the-configuration-object-structure">The Configuration Object Structure</h2>
+<p>See <a class="xref" href="../../api/js/QuickEditConfigRoot.html#Api_Js_SxcJs_QuickEditConfigRoot">QuickEditConfigRoot</a>, <a class="xref" href="../../api/js/QuickEditConfig.html#Api_Js_SxcJs_QuickEditConfig">QuickEditConfig</a> and <a class="xref" href="../../api/js/QuickEditConfigButtons.html#Api_Js_SxcJs_QuickEditConfigButtons">QuickEditConfigButtons</a></p>
+<h2 id="a-quick-razor-example">A Quick Razor Example</h2>
+<p>If you want to add this attribute only when the user is editing the page, the best way to do it is like this:</p>
+<pre><code class="lang-razor">&lt;div @Edit.Attribute(&quot;quick-edit-config&quot;, new { modules = new {  enable = true }})&gt;
+  ...
+&lt;/div&gt;
+</code></pre><p>or this</p>
+<pre><code class="lang-razor">&lt;div @Edit.Attribute(&quot;quick-edit-config&quot;, new { buttons = new { select = false},  modules = new {  enable = true, buttons = new { addApp = false }}})&gt;
+  ...
+&lt;/div&gt;
+</code></pre><h2 id="read-also">Read also</h2>
+<ul>
+<li><a href="http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules">Inner Content Blocks</a> - blog about inner content-blocks</li>
+</ul>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a href="https://github.com/2sic/app-accordion-bootstrap3">Accordion (collapsible sections)</a></li>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">2sxc blog</a></li>
+</ul>
+<h2 id="history">History</h2>
 <ol>
-<li>customizing the <a class="xref" href="../quick-e/index.html">quickE (quick edit) experience</a></li>
-</ol>
-<h2 id="using-2sxc-with-popular-js-libraries">Using 2sxc with Popular JS Libraries</h2>
-<ol>
-<li><a class="xref" href="../angular/index.html">Angular / dnn-sxc-angular</a></li>
+<li>Introduced in 2sxc v08.04</li>
+<li>Enhanced / made configurable in 2sxc 08.06.01</li>
+<li>Added ability to specify each button in 2sxc 11.11.03</li>
 </ol>
 </article>
           </div>
@@ -270,7 +298,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/quick-e/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
