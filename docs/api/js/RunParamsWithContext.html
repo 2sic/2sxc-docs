@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface MetadataFor
+    <title>Interface RunParamsWithContext
    | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface MetadataFor
+    <meta name="title" content="Interface RunParamsWithContext
    | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,15 +116,14 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.MetadataFor">
+            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.RunParamsWithContext">
   
   
-  <h1 id="Api_Js_SxcJs_MetadataFor" data-uid="Api.Js.SxcJs.MetadataFor">Interface MetadataFor
+  <h1 id="Api_Js_SxcJs_RunParamsWithContext" data-uid="Api.Js.SxcJs.RunParamsWithContext">Interface RunParamsWithContext
   </h1>
-  <div class="markdown level0 summary"><p>A Metadata-Target identifier to tell an entity that it describes something else.
-Usually used in Sxc instances with the <a class="xref" href="SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a></p>
-<p>Warning: There is another MetadataFor type and they are not fully consistent.
-This is historical and not easy to correct, but we&#39;re working on it.</p>
+  <div class="markdown level0 summary"><p>Parameters for the <strong>Global</strong> $2sxc.cms.run(...) command in Addition to the <a class="xref" href="RunParams.html#Api_Js_SxcJs_RunParams">RunParams</a>.
+It provides context to the run-params such as a Sxc instance or a tag which it started on.
+New in 12.10</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Package</strong>: <a class="xref" href="index.html">Api.Js.SxcJs</a></h6>
@@ -132,13 +131,14 @@ This is historical and not easy to correct, but we&#39;re working on it.</p>
   </h3>
   
   
-  <h4 id="Api_Js_SxcJs_MetadataFor_Guid" data-uid="Api.Js.SxcJs.MetadataFor.Guid">Guid</h4>
-  <div class="markdown level1 summary"><p>The GUID of the target, if it&#39;s identified by a GUID.</p>
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_action" data-uid="Api.Js.SxcJs.RunParamsWithContext.action">action</h4>
+  <div class="markdown level1 summary"><p>The action to perform.
+Required if you don&#39;t have params which themselves have the action</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">Guid?: string</code></pre>
+    <pre><code class="lang-typeScript hljs">action?: string</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -157,13 +157,14 @@ This is historical and not easy to correct, but we&#39;re working on it.</p>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_MetadataFor_Number" data-uid="Api.Js.SxcJs.MetadataFor.Number">Number</h4>
-  <div class="markdown level1 summary"><p>The number of the target, if it&#39;s identified by a number.</p>
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_context" data-uid="Api.Js.SxcJs.RunParamsWithContext.context">context</h4>
+  <div class="markdown level1 summary"><p>The context to run in, basically containing module id, etc.
+We always need the tag OR the context, but never both</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">Number?: number</code></pre>
+    <pre><code class="lang-typeScript hljs">context?: Sxc | ContextIdentifier</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -175,20 +176,21 @@ This is historical and not easy to correct, but we&#39;re working on it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">number</span></td>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a> | <a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_MetadataFor_String" data-uid="Api.Js.SxcJs.MetadataFor.String">String</h4>
-  <div class="markdown level1 summary"><p>The string-id of the target, if it&#39;s identified by a string.</p>
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_event" data-uid="Api.Js.SxcJs.RunParamsWithContext.event">event</h4>
+  <div class="markdown level1 summary"><p>The event which triggered this command - sometimes useful internally further use.
+Optional in most cases, but in some cases it will improve the behavior of the code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">String?: string</code></pre>
+    <pre><code class="lang-typeScript hljs">event?: MouseEvent</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -200,23 +202,21 @@ This is historical and not easy to correct, but we&#39;re working on it.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
+        <td><span class="xref">MouseEvent</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_MetadataFor_Target" data-uid="Api.Js.SxcJs.MetadataFor.Target">Target</h4>
-  <div class="markdown level1 summary"><p>The target type identifier</p>
-<ul>
-<li>TODO: @2dm - THIS SHOULD probably be number only</li>
-</ul>
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_params" data-uid="Api.Js.SxcJs.RunParamsWithContext.params">params</h4>
+  <div class="markdown level1 summary"><p>The command params, like contentType, entityId etc.
+Optional for many actions, but can themselves also contain the property <code>action</code>, in which case action can be ommited.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">Target: string | TargetTypes</code></pre>
+    <pre><code class="lang-typeScript hljs">params?: CommandParams</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,7 +228,59 @@ This is historical and not easy to correct, but we&#39;re working on it.</p>
     </thead>
     <tbody>
       <tr>
-        <td>string | <a class="xref" href="TargetTypes.html#Api_Js_SxcJs_TargetTypes">TargetTypes</a></td>
+        <td><span class="xref">CommandParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_tag" data-uid="Api.Js.SxcJs.RunParamsWithContext.tag">tag</h4>
+  <div class="markdown level1 summary"><p>The tag on which the run was triggered - it&#39;s used to give the command a context to start from
+We always need the tag OR the context, but never both</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">tag?: HTMLElement</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HTMLElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_RunParamsWithContext_workflows" data-uid="Api.Js.SxcJs.RunParamsWithContext.workflows">workflows</h4>
+  <div class="markdown level1 summary"><p>Workflows work the same way as with a toolbar, except that they are added here and not registered on init.
+Because of limitations in automatic documentation, the type here is set to <code>unknown</code> but it&#39;s actually <code>WorkflowStep</code> | <code>WorkflowStep[]</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">workflows?: unknown</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">unknown</span></td>
         <td></td>
       </tr>
     </tbody>

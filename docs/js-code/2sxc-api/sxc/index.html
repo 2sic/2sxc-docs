@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Module Level Sxc Instance | 2sxc 13 / EAV 13 </title>
+    <title>The App / Module Sxc Instance | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="The Module Level Sxc Instance | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="The App / Module Sxc Instance | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -115,7 +115,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Sxc.Index">
-<h1 id="the-module-level-sxc-instance">The Module Level Sxc Instance</h1>
+<h1 id="the-app--module-sxc-instance">The App / Module Sxc Instance</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -245,14 +245,14 @@
 <li>if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or Dnn-WebApi</li>
 </ol>
 <h2 id="how-to-use">How to use</h2>
-<p>First you must ensure that you have the <a class="xref" href="../2sxc/index.html"><code>$2sxc</code> manager</a> on your page, which will get you a module-specific <code>sxc</code> strong&gt;. Read about the <a class="xref" href="../2sxc/index.html">$2sxc manager</a> here. </p>
-<p>Here&#39;s a simple example (assuming you have the $2sxc manager):</p>
+<p>First you must ensure that you have the <a class="xref" href="../2sxc/index.html"><code>$2sxc</code> global</a> on your page, which will get you a module-specific <code>sxc</code>.</p>
+<p>Here&#39;s a simple example (assuming you have the $2sxc global):</p>
 <pre><code class="lang-HTML">&lt;a onclick=&quot;var sxc = $2sxc(this); alert(sxc.isEditMode())&quot;&gt;
     click me 
 &lt;/a&gt;
 </code></pre><p>The code above shows</p>
 <ol>
-<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> manager, based on the current context <code>this</code></li>
+<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> global, based on the current context <code>this</code></li>
 <li>how to ask if we&#39;re in edit-mode</li>
 </ol>
 <p>Here&#39;s another quick example, calling a C# web-api endpoint: </p>
@@ -262,40 +262,18 @@ sxc.webApi.post(&quot;Form/ProcessForm&quot;)
         // ....
     });
 </code></pre><h2 id="how-to-get-the-current-contexts-sxc-instance">How to Get the Current Context&#39;s <code>sxc</code> Instance</h2>
-<p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>-strong&gt;, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the <a class="xref" href="../2sxc/index.html">$2sxc Manager docs</a>.</p>
-<h2 id="the-api-of-an-initialized-module-sxc-instance">The API of an Initialized Module <code>sxc</code> Instance</h2>
-<ul>
-<li><code>.cms</code> - Run Cms Commands like <code>edit</code> etc.</li>
-<li><code>.data</code> <em>object</em> to access backend data, see <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">SxcData</a></li>
-<li><code>.id</code> <em>int</em>: the id of this sxc-instance, usually the module-id</li>
-<li><code>.isEditMode()</code> <em>bool</em>: looks up if this module is editable - this can vary on each module</li>
-<li><a class="xref" href="obsolete/sxc.manage.html"><code>.manage...</code></a> <em>object</em> - to create your own buttons, toolbars or run CMS commands</li>
-<li><code>.query</code> <em>object</em> to retrieve queries from the backend, see <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">SxcQuery</a></li>
-<li><code>.webApi...</code> <em>object</em>: helpers to call server side WebApis and REST resources</li>
-</ul>
-<p>Internal objects which exist, but you shouldn&#39;t use:</p>
-<ul>
-<li><del><code>.cbid</code> <em>int</em>: internal use</del></li>
-<li><del><code>.showDetailedHttpError(...)</code> <em>void</em>: internal use</del></li>
-</ul>
-<h2 id="custom-toolbars-buttons-and-commands">Custom Toolbars, Buttons and Commands</h2>
-<p>Read the <a class="xref" href="obsolete/sxc.manage.html">manage</a> documentation to discover more about the <code>getToolbar(...)</code>, <code>getButton(...)</code> or <code>run(...)</code> methods which let you customize the toolbars, buttons and use other UI elements like links to run commands like &quot;show layout selector&quot;. </p>
-<h2 id="working-with-the-json-data-of-the-current-module-todo">Working with the JSON Data of the Current Module (TODO)</h2>
+<p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>, as it is unique for each Dnn-Module. 
+This is because each action needs to know which module it belongs to. 
+Read about the 3 ways to get this in the <a class="xref" href="../2sxc/index.html">$2sxc Global docs</a>.</p>
+<h2 id="the-api-of-an-module-sxc-instance">The API of an Module <code>sxc</code> Instance</h2>
+<p>📖 <a class="xref" href="../../../api/js/Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></p>
+<h2 id="common-tasks">Common Tasks</h2>
 <ol>
-<li>The data object and how-to use, probably using the example of <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
-<li>Using the load-event, reload, and the &quot;one&quot; event</li>
-<li>The structure of the returned data</li>
+<li>Work with the JSON Data of the Current Module<br> 📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a></li>
+<li>Work with REST Api to Read/Write Content-Items / Data<br> 📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a><br> <em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></li>
+<li>Use App-Queries with $2sxc<br> 📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">Query Service</a> objects.<br> <em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></li>
+<li>Work with Custom C# App WebAPIs<br> 📖 Read about it in the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a> page.</li>
 </ol>
-<p>Short note: The data is loaded using jQuery and when it&#39;s returned and processed, a callback will be executed. This is different from modern promise-implementations but easy to use anyhow. We haven&#39;t changed this, because it&#39;s trivial and we don&#39;t want to break existing code. </p>
-<p><em>Till we find time to document more, please consult the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js">$2sxc API</a></em></p>
-<h2 id="working-with-rest-api-to-readwrite-content-items--data">Working with REST Api to Read/Write Content-Items / Data</h2>
-<p>In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">data</a>.</p>
-<p><em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></p>
-<h2 id="using-app-queries-with-2sxc">Using App-Queries with $2sxc</h2>
-<p>In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">query</a> objects.</p>
-<p><em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></p>
-<h2 id="working-with-custom-c-app-webapis">Working with Custom C# App WebAPIs</h2>
-<p>Read about it in the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a> page.</p>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
 <ul>
@@ -306,6 +284,7 @@ sxc.webApi.post(&quot;Form/ProcessForm&quot;)
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 04.00</li>
+<li>Enhanced with <code>SxcData</code> and <code>SxcQuery</code> in 2sxc 13.00</li>
 </ol>
 </article>
           </div>

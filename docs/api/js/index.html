@@ -128,6 +128,12 @@
         <h4><a class="xref" href="Environment.html#Api_Js_SxcJs_Environment">Environment</a></h4>
         <section><p>Provides environment information to $2sxc - usually page-id, api-root and stuff like that</p>
 </section>
+        <h4><a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a></h4>
+        <section><p>ContextIdentifier is used to initialize a Sxc object outside of the default context.</p>
+</section>
+        <h4><a class="xref" href="HttpGlobal.html#Api_Js_SxcJs_HttpGlobal">HttpGlobal</a></h4>
+        <section><p>Global HTTP Service for information and helpers on <code>$2sxc.http</code></p>
+</section>
         <h4><a class="xref" href="SxcData.html#Api_Js_SxcJs_SxcData">SxcData</a></h4>
         <section><p>Data Service for an App / Sxc-Instance to get/create data of a specific Content-Type</p>
 </section>
@@ -137,16 +143,15 @@
         <h4><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></h4>
         <section><p>The typical sxc-instance object for a specific DNN module or content-block</p>
 </section>
+        <h4><a class="xref" href="SxcCms.html#Api_Js_SxcJs_SxcCms">SxcCms</a></h4>
+        <section><p>This is in charge of sxc.cms on the instance level.
+ATM it just has the run command.
+In future, it may also have dedicated command like <code>layout</code> etc.</p>
+</section>
         <h4><a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">SxcWebApi</a></h4>
         <section><p>helper API to run ajax / REST calls to the server
 it will ensure that the headers etc. are set correctly
 and that urls are rewritten</p>
-</section>
-        <h4><a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a></h4>
-        <section><p>ContextIdentifier is used to initialize a Sxc object outside of the default context.</p>
-</section>
-        <h4><a class="xref" href="HttpGlobal.html#Api_Js_SxcJs_HttpGlobal">HttpGlobal</a></h4>
-        <section><p>Global HTTP Service for information and helpers on <code>$2sxc.http</code></p>
 </section>
         <h4><a class="xref" href="UrlParams.html#Api_Js_SxcJs_UrlParams">UrlParams</a></h4>
         <section><p>Helper object to read url params.
@@ -161,6 +166,10 @@ Available on <code>$2sxc.urlParams</code></p>
         <h4><a class="xref" href="HasLog.html#Api_Js_SxcJs_HasLog">HasLog</a></h4>
         <section><p>Any object that has an own log object</p>
 </section>
+        <h4><a class="xref" href="SxcGlobalCms.html#Api_Js_SxcJs_SxcGlobalCms">SxcGlobalCms</a></h4>
+        <section><p>Global Content-Management System on the $2sxc.cms.
+It is only available if the page is in edit mode / the page feature <code>2sxc.JsCms</code> has been activated.</p>
+</section>
         <h4><a class="xref" href="WorkflowManager.html#Api_Js_SxcJs_WorkflowManager">WorkflowManager</a></h4>
         <section><p>A workflow manager which will run stuff before / after commands.
 As of now, it must be attached to a toolbar to take effect.
@@ -173,9 +182,20 @@ This also allows cancelling further execution.</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
+        <h4><a class="xref" href="RunParams.html#Api_Js_SxcJs_RunParams">RunParams</a></h4>
+        <section><p>Parameters for the Instance sxc.cms.run(...) command.
+New in 13.03</p>
+</section>
+        <h4><a class="xref" href="RunParamsWithContext.html#Api_Js_SxcJs_RunParamsWithContext">RunParamsWithContext</a></h4>
+        <section><p>Parameters for the <strong>Global</strong> $2sxc.cms.run(...) command in Addition to the <a class="xref" href="RunParams.html#Api_Js_SxcJs_RunParams">RunParams</a>.
+It provides context to the run-params such as a Sxc instance or a tag which it started on.
+New in 12.10</p>
+</section>
         <h4><a class="xref" href="MetadataFor.html#Api_Js_SxcJs_MetadataFor">MetadataFor</a></h4>
         <section><p>A Metadata-Target identifier to tell an entity that it describes something else.
-Usually used in Sxc instances with the Data service</p>
+Usually used in Sxc instances with the <a class="xref" href="SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a></p>
+<p>Warning: There is another MetadataFor type and they are not fully consistent.
+This is historical and not easy to correct, but we&#39;re working on it.</p>
 </section>
         <h4><a class="xref" href="EnvironmentSpecs.html#Api_Js_SxcJs_EnvironmentSpecs">EnvironmentSpecs</a></h4>
         <section><p>A context information for the current page, helping the JS talk with the backend</p>
@@ -183,6 +203,11 @@ Usually used in Sxc instances with the Data service</p>
         <h4><a class="xref" href="SxcGlobal.html#Api_Js_SxcJs_SxcGlobal">SxcGlobal</a></h4>
         <section><p>This is the root global <code>window.$2sxc</code> function / object.
 It is both a function <code>window.$2sxc(...)</code> and object <code>window.$2sxc.insights...</code></p>
+<p>If the page feature <code>2sxc.JsCms</code> is enabled, the <code>window.$2sxc</code> will also be a <a class="xref" href="SxcGlobalWithCms.html#Api_Js_SxcJs_SxcGlobalWithCms">SxcGlobalWithCms</a></p>
+</section>
+        <h4><a class="xref" href="SxcGlobalWithCms.html#Api_Js_SxcJs_SxcGlobalWithCms">SxcGlobalWithCms</a></h4>
+        <section><p>$2sxc global interface <em>extending</em> the <code>SxcGlobal</code> when the page feature <code>JsCms</code> is enabled.
+If the page feature <code>2sxc.JsCms</code> is not enabled, the <code>window.$2sxc</code> will be a <a class="xref" href="SxcGlobal.html#Api_Js_SxcJs_SxcGlobal">SxcGlobal</a></p>
 </section>
     <h3 id="enums">Enums
   </h3>

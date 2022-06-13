@@ -8,7 +8,6 @@ items:
       - Api.Js.SxcJs.Sxc.cms
       - Api.Js.SxcJs.Sxc.data
       - Api.Js.SxcJs.Sxc.id
-      - Api.Js.SxcJs.Sxc.is
       - Api.Js.SxcJs.Sxc.isEditMode
       - Api.Js.SxcJs.Sxc.query
       - Api.Js.SxcJs.Sxc.webApi
@@ -46,12 +45,12 @@ items:
     langs:
       - typeScript
     type: property
-    summary: CMS operations on this sxc-instance.
+    summary: 'CMS operations on this sxc-instance, such as opening the edit dialog etc.'
     syntax:
-      content: 'cms: SxcCms = new SxcCms(this, ''cms'')'
+      content: 'cms: SxcCms = new SxcCms(this)'
       return:
         type:
-          - SxcCms
+          - Api.Js.SxcJs.SxcCms
         description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.Sxc.data
@@ -86,25 +85,6 @@ items:
       return:
         type:
           - number
-        description: ''
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.Sxc.is
-    name: is(unknown)
-    children: []
-    type: method
-    langs:
-      - typeScript
-    summary: TypeGuard for TypeScript to verify this is a SxcInstance
-    syntax:
-      content: 'static function is(thing: unknown)'
-      parameters:
-        - id: thing
-          type:
-            - unknown
-          description: ''
-      return:
-        type:
-          - thing
         description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.Sxc.isEditMode
@@ -150,7 +130,10 @@ items:
     langs:
       - typeScript
     type: property
-    summary: ''
+    summary: |-
+      Web API calls for this instance.
+      This is the pure call APIs system.
+      To get data or queries, best use the data or query services.
     syntax:
       content: 'webApi: SxcWebApi'
       return:
@@ -165,6 +148,12 @@ references:
       - name: HasLog
         fullName: HasLog
         uid: Api.Js.SxcJs.HasLog
+  - uid: Api.Js.SxcJs.SxcCms
+    name: SxcCms
+    spec.typeScript:
+      - name: SxcCms
+        fullName: SxcCms
+        uid: Api.Js.SxcJs.SxcCms
   - uid: Api.Js.SxcJs.SxcWebApi
     name: SxcWebApi
     spec.typeScript:

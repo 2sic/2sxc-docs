@@ -71,11 +71,5 @@ When using `create(..., ...)` with two parameters you are creating metadata. The
 
 👉 [](xref:Tut.JsData)
 
----
-
-### Demo App and further links
-
-You should find some code examples in this demo App
-* [TimeLineJS](xref:App.TimelineJs)
 
 [!include["history"](_data-history.md)]

@@ -149,7 +149,7 @@ This mode is mainly used
 
 ## Additional properties of the $2sxc Controller: `cms`
 
-* In 2sxc 9.30 a new object `$2sxc.cms` was added - read about it in [$2sxc.cms](xref:JsCode.2sxcApi.$2sxc.Cms)
+* In 2sxc 9.30 a new object `$2sxc.cms` was added - read about it in [$2sxc.cms](xref:Api.Js.SxcJs.SxcGlobalCms)
 
 ---
 
@@ -240,7 +240,7 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 ## History
 
 1. Introduced in 2sxc 04.00
-1. Enhanced with `cms` (see [cms](xref:JsCode.2sxcApi.$2sxc.Cms)) in 9.30
+1. Enhanced with `cms` (see [cms](xref:Api.Js.SxcJs.SxcGlobalCms)) in 9.30
 1. Enhanced the `$2sxc(...)` constructor with the ContextIdentifier in v11.11
 1. Replaced `Edit.Enable(js:true)` with the new `IPageService.Activate("2sxc.JsCore")` in v13.0
 

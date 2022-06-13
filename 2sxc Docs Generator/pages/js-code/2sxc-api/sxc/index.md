@@ -2,7 +2,7 @@
 uid: JsCode.2sxcApi.Sxc.Index
 ---
 
-# The Module Level Sxc Instance
+# The App / Module Sxc Instance
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
@@ -15,9 +15,9 @@ The module-specific `sxc`-instance is the core JavaScript object helping you in 
 
 ## How to use
 
-First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.$2sxc.Index) on your page, which will get you a module-specific `sxc` strong>. Read about the [$2sxc manager](xref:JsCode.2sxcApi.$2sxc.Index) here. 
+First you must ensure that you have the [`$2sxc` global](xref:JsCode.2sxcApi.$2sxc.Index) on your page, which will get you a module-specific `sxc`.
 
-Here's a simple example (assuming you have the $2sxc manager):
+Here's a simple example (assuming you have the $2sxc global):
 
 ```HTML
 <a onclick="var sxc = $2sxc(this); alert(sxc.isEditMode())">
@@ -27,7 +27,7 @@ Here's a simple example (assuming you have the $2sxc manager):
 
 The code above shows
 
-1. how the sxc-object is retrieved using the `$2sxc(...)` manager, based on the current context `this`
+1. how the sxc-object is retrieved using the `$2sxc(...)` global, based on the current context `this`
 2. how to ask if we're in edit-mode
 
 Here's another quick example, calling a C# web-api endpoint: 
@@ -42,59 +42,26 @@ sxc.webApi.post("Form/ProcessForm")
 
 ## How to Get the Current Context's `sxc` Instance
 
-Before you continue, make sure you know how to resolve/get your `sxc`-strong>, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc.Index).
+Before you continue, make sure you know how to resolve/get your `sxc`, as it is unique for each Dnn-Module. 
+This is because each action needs to know which module it belongs to. 
+Read about the 3 ways to get this in the [$2sxc Global docs](xref:JsCode.2sxcApi.$2sxc.Index).
 
+## The API of an Module `sxc` Instance
 
-## The API of an Initialized Module `sxc` Instance
+📖 [Sxc](xref:Api.Js.SxcJs.Sxc)
 
-* `.cms` - Run Cms Commands like `edit` etc.
-* `.data` _object_ to access backend data, see [](xref:Api.Js.SxcJs.SxcData)
-* `.id` _int_: the id of this sxc-instance, usually the module-id
-* `.isEditMode()` _bool_: looks up if this module is editable - this can vary on each module
-* [`.manage...`](xref:JsCode.2sxcApi.Sxc.Manage) _object_ - to create your own buttons, toolbars or run CMS commands
-* `.query` _object_ to retrieve queries from the backend, see [](xref:Api.Js.SxcJs.SxcQuery)
-* `.webApi...` _object_: helpers to call server side WebApis and REST resources
+## Common Tasks
 
-Internal objects which exist, but you shouldn't use:
-
-* ~~`.cbid` _int_: internal use~~
-* ~~`.showDetailedHttpError(...)` _void_: internal use~~
-
-
-## Custom Toolbars, Buttons and Commands
-Read the [manage](xref:JsCode.2sxcApi.Sxc.Manage) documentation to discover more about the `getToolbar(...)`, `getButton(...)` or `run(...)` methods which let you customize the toolbars, buttons and use other UI elements like links to run commands like "show layout selector". 
-
-
-
-
-
-## Working with the JSON Data of the Current Module (TODO)
-
-1. The data object and how-to use, probably using the example of [TimeLineJS](xref:App.TimelineJs)
-2. Using the load-event, reload, and the "one" event
-3. The structure of the returned data
-
-Short note: The data is loaded using jQuery and when it's returned and processed, a callback will be executed. This is different from modern promise-implementations but easy to use anyhow. We haven't changed this, because it's trivial and we don't want to break existing code. 
-
-_Till we find time to document more, please consult the [$2sxc API](https://github.com/2sic/2sxc-ui/blob/master/src/js-api/2sxc.api/2sxc.api.js)_
-
-## Working with REST Api to Read/Write Content-Items / Data
-
-In v.13+ you should should use the [data](xref:Api.Js.SxcJs.SxcData).
-
-_In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
-
-
-## Using App-Queries with $2sxc
-
-In v.13+ you should should use the [query](xref:Api.Js.SxcJs.SxcQuery) objects.
-
-_In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
-
-
-## Working with Custom C# App WebAPIs
-
-Read about it in the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi) page.
+1. Work with the JSON Data of the Current Module  
+    📖 In v.13+ you should should use the [Data Service](xref:Api.Js.SxcJs.SxcData)
+1. Work with REST Api to Read/Write Content-Items / Data  
+    📖 In v.13+ you should should use the [Data Service](xref:Api.Js.SxcJs.SxcData)  
+    _In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
+1. Use App-Queries with $2sxc  
+    📖 In v.13+ you should should use the [Query Service](xref:Api.Js.SxcJs.SxcQuery) objects.  
+    _In older versions, use the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi)_
+1. Work with Custom C# App WebAPIs  
+    📖 Read about it in the [Sxc WebApi](xref:Api.Js.SxcJs.SxcWebApi) page.
 
 
 ## Demo App and further links
@@ -108,4 +75,4 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 ## History
 
 1. Introduced in 2sxc 04.00
-
+1. Enhanced with `SxcData` and `SxcQuery` in 2sxc 13.00

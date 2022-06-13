@@ -6,7 +6,7 @@ uid: JsCode.2sxcApi.Obsolete.$2sxc.CmsV9
 
 > [!WARNING]
 > This is documentation for an old feature. 
-> You should use the [new one instead](xref:JsCode.2sxcApi.$2sxc.Cms)
+> You should use the [new one instead](xref:Api.Js.SxcJs.SxcGlobalCms)
 
 ## How to use (v9.30)
 
@@ -51,4 +51,4 @@ Simple example:
 ## History
 
 1. Introduced in 2sxc 09.30
-1. Made obsolete with new `RunParams` in 2sxc 12.10 to support registering `workflows` - see [](xref:JsCode.2sxcApi.$2sxc.Cms)
+1. Made obsolete with new `RunParams` in 2sxc 12.10 to support registering `workflows` - see [](xref:Api.Js.SxcJs.SxcGlobalCms)

@@ -10,9 +10,9 @@ uid: JsCode.2sxcApi.Cms.Run
 Two commands in the 2sxc APIs allow running CMS commands
 
 * `$2sxc.cms.run(params: RunParamsWithContext)`  
-    This is the `run` on the [Global Cms object](xref:JsCode.2sxcApi.$2sxc.Cms)
+    This is the `run` on the [Global Cms object](xref:Api.Js.SxcJs.SxcGlobalCms)
 * `sxc.cms.run(params: RunParams)`  
-    This is the `run` on the [Instance Cms object](xref:JsCode.2sxcApi.Sxc.Cms)
+    This is the `run` on the [Instance Cms object](xref:Api.Js.SxcJs.SxcCms)
 
 Both of these commands will run a CMS command with parameters. 
 
