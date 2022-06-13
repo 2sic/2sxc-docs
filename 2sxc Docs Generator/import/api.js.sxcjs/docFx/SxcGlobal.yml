@@ -5,7 +5,11 @@ items:
     fullName: SxcGlobal
     children:
       - Api.Js.SxcJs.SxcGlobal.env
+      - Api.Js.SxcJs.SxcGlobal.get_3
+      - Api.Js.SxcJs.SxcGlobal.get_2
       - Api.Js.SxcJs.SxcGlobal.get
+      - Api.Js.SxcJs.SxcGlobal.get_1
+      - Api.Js.SxcJs.SxcGlobal.get_4
       - Api.Js.SxcJs.SxcGlobal.http
       - Api.Js.SxcJs.SxcGlobal.insights
       - Api.Js.SxcJs.SxcGlobal.log
@@ -39,38 +43,115 @@ items:
           - Api.Js.SxcJs.Environment
         description: ''
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.SxcGlobal.get
-    name: 'get(number | HTMLElement | ContextIdentifier | Sxc, number)'
+  - uid: Api.Js.SxcJs.SxcGlobal.get_3
+    name: get(ContextIdentifier)
     children: []
     type: method
     langs:
       - typeScript
     summary: >-
-      Get an SxcInstance. Using `$2sxc.get(...)` is the same as using
-      `$2sxc(...)`
+      Get an Sxc Instance using a full context-identifier (advanced). Using
+      `$2sxc.get(...)` is the same as using `$2sxc(...)`
     syntax:
-      content: >-
-        function get(id: number | HTMLElement | ContextIdentifier | Sxc, cbid?:
-        number)
+      content: 'function get(context: ContextIdentifier)'
       parameters:
-        - id: id
+        - id: context
           type:
-            - >-
-              number | HTMLElement | Api.Js.SxcJs.ContextIdentifier |
-              Api.Js.SxcJs.Sxc
-          description: >-
-            number: moduleId | HTMLElement: tag in the page | Sxc: an existing
-            sxc - will just be returned | ContextIdentifier: an identifier in
-            complex scenarios without a moduleId/context
-        - id: cbid
+            - Api.Js.SxcJs.ContextIdentifier
+          description: 'ContextIdentifier: full context identifier'
+      return:
+        type:
+          - Api.Js.SxcJs.Sxc
+        description: Sxc
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcGlobal.get_2
+    name: get(HTMLElement)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: >-
+      Get an Sxc Instance using a tag / `HtmlElement`. Using `$2sxc.get(...)` is
+      the same as using `$2sxc(...)`
+    syntax:
+      content: 'function get(tag: HTMLElement)'
+      parameters:
+        - id: tag
+          type:
+            - HTMLElement
+          description: 'HTMLElement: tag in the page'
+      return:
+        type:
+          - Api.Js.SxcJs.Sxc
+        description: Sxc
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcGlobal.get
+    name: get(number)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: |-
+      Get an Sxc Instance using the moduleId.
+      Using `$2sxc.get(...)` is the same as using `$2sxc(...)`
+    syntax:
+      content: 'function get(moduleId: number)'
+      parameters:
+        - id: moduleId
           type:
             - number
-          description: number
-          optional: true
+          description: 'number: moduleId'
       return:
         type:
           - Api.Js.SxcJs.Sxc
         description: SxcInstance
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcGlobal.get_1
+    name: 'get(number, number)'
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: |-
+      Get an Sxc Instance using the moduleId and contentBlockId.
+      Using `$2sxc.get(...)` is the same as using `$2sxc(...)`
+    syntax:
+      content: 'function get(moduleId: number, contentBlockId: number)'
+      parameters:
+        - id: moduleId
+          type:
+            - number
+          description: 'number: moduleId'
+        - id: contentBlockId
+          type:
+            - number
+          description: 'number: content-block ID'
+      return:
+        type:
+          - Api.Js.SxcJs.Sxc
+        description: Sxc
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcGlobal.get_4
+    name: get(Sxc)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: >-
+      Get an Sxc Instance passing in an existing Sxc - just for cases where
+      you're not sure what you aready have. Using `$2sxc.get(...)` is the same
+      as using `$2sxc(...)`
+    syntax:
+      content: 'function get(sxc: Sxc)'
+      parameters:
+        - id: sxc
+          type:
+            - Api.Js.SxcJs.Sxc
+          description: 'Sxc: an existing sxc - will just be returned'
+      return:
+        type:
+          - Api.Js.SxcJs.Sxc
+        description: Sxc - the same Sxc as the one which was passed in
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcGlobal.http
     name: http
@@ -200,22 +281,15 @@ references:
       - name: UrlParams
         fullName: UrlParams
         uid: Api.Js.SxcJs.UrlParams
-  - uid: number | HTMLElement | Api.Js.SxcJs.ContextIdentifier | Api.Js.SxcJs.Sxc
-    name: Sxc
-    spec.typeScript:
-      - name: 'number | HTMLElement | '
-        fullName: 'number | HTMLElement | '
-      - name: ContextIdentifier
-        fullName: ContextIdentifier
-        uid: Api.Js.SxcJs.ContextIdentifier
-      - name: ' | '
-        fullName: ' | '
-      - name: Sxc
-        fullName: Sxc
-        uid: Api.Js.SxcJs.Sxc
   - uid: Api.Js.SxcJs.Sxc
     name: Sxc
     spec.typeScript:
       - name: Sxc
         fullName: Sxc
         uid: Api.Js.SxcJs.Sxc
+  - uid: Api.Js.SxcJs.ContextIdentifier
+    name: ContextIdentifier
+    spec.typeScript:
+      - name: ContextIdentifier
+        fullName: ContextIdentifier
+        uid: Api.Js.SxcJs.ContextIdentifier

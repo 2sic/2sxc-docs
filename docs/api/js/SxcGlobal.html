@@ -264,13 +264,13 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
   </h3>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get" data-uid="Api.Js.SxcJs.SxcGlobal.get">get(number | HTMLElement | ContextIdentifier | Sxc, number)</h4>
-  <div class="markdown level1 summary"><p>Get an SxcInstance. Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+  <h4 id="Api_Js_SxcJs_SxcGlobal_get_3" data-uid="Api.Js.SxcJs.SxcGlobal.get_3">get(ContextIdentifier)</h4>
+  <div class="markdown level1 summary"><p>Get an Sxc Instance using a full context-identifier (advanced). Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(id: number | HTMLElement | ContextIdentifier | Sxc, cbid?: number)</code></pre>
+    <pre><code class="lang-typeScript hljs">function get(context: ContextIdentifier)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -283,19 +283,105 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
     </thead>
     <tbody>
       <tr>
-        <td>number | HTMLElement | <a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a> | <a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><em>id</em></td>
+        <td><a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a></td>
+        <td><em>context</em></td>
         <td>
-          <p>number: moduleId | HTMLElement: tag in the page | Sxc: an existing sxc - will just be returned | ContextIdentifier: an identifier in complex scenarios without a moduleId/context</p>
+          <p>ContextIdentifier: full context identifier</p>
 
           
         </td>
       </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
+        <td><p>Sxc</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcGlobal_get_2" data-uid="Api.Js.SxcJs.SxcGlobal.get_2">get(HTMLElement)</h4>
+  <div class="markdown level1 summary"><p>Get an Sxc Instance using a tag / <code>HtmlElement</code>. Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function get(tag: HTMLElement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HTMLElement</span></td>
+        <td><em>tag</em></td>
+        <td>
+          <p>HTMLElement: tag in the page</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
+        <td><p>Sxc</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcGlobal_get" data-uid="Api.Js.SxcJs.SxcGlobal.get">get(number)</h4>
+  <div class="markdown level1 summary"><p>Get an Sxc Instance using the moduleId.
+Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function get(moduleId: number)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><span class="xref">number</span></td>
-        <td><em>cbid</em></td>
+        <td><em>moduleId</em></td>
         <td>
-          <p>number</p>
+          <p>number: moduleId</p>
 
           
         </td>
@@ -314,6 +400,110 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
       <tr>
         <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
         <td><p>SxcInstance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcGlobal_get_1" data-uid="Api.Js.SxcJs.SxcGlobal.get_1">get(number, number)</h4>
+  <div class="markdown level1 summary"><p>Get an Sxc Instance using the moduleId and contentBlockId.
+Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function get(moduleId: number, contentBlockId: number)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>moduleId</em></td>
+        <td>
+          <p>number: moduleId</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">number</span></td>
+        <td><em>contentBlockId</em></td>
+        <td>
+          <p>number: content-block ID</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
+        <td><p>Sxc</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_SxcGlobal_get_4" data-uid="Api.Js.SxcJs.SxcGlobal.get_4">get(Sxc)</h4>
+  <div class="markdown level1 summary"><p>Get an Sxc Instance passing in an existing Sxc - just for cases where you&#39;re not sure what you aready have. Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">function get(sxc: Sxc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
+        <td><em>sxc</em></td>
+        <td>
+          <p>Sxc: an existing sxc - will just be returned</p>
+
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
+        <td><p>Sxc - the same Sxc as the one which was passed in</p>
 </td>
       </tr>
     </tbody>
