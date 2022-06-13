@@ -7,7 +7,7 @@ uid: Api.Js.SxcJs.SxcWebApi
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-The WebApi object on the module-specific `sxc`-controller is for AJAX calls. It helps you in these advanced cases:  
+The WebApi object on the App/Module-specific `sxc`-controller is for AJAX calls. It helps you in these advanced cases:  
 
 1. to read/write content-items using REST
 1. to access your apps WebApi controllers
@@ -26,12 +26,13 @@ Here's a simple example (assuming you have the $2sxc manager):
 
 ### The APIs to Get Data
 
-1. [Modern `fetch` and `fetchJson` API](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
+1. [Modern `fetchRaw` and `fetchJson` API](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
 1. [APIs to get URLs and headers](xref:JsCode.2sxcApi.Sxc.WebApi.BareMetal)
 1. [Old jQuery APIs](xref:JsCode.2sxcApi.Sxc.WebApi.jQuery)
 
 
-## How to Get the Current Context's `sxc` Controller
+### How to Get the Current Context's `sxc` Controller
+
 Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc.Index). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
 
 
