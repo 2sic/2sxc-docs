@@ -40,7 +40,7 @@ There are a few ways to get the current `Sxc` object:
 1. Using any html tag in the DOM:  
   `<a onclick='alert($2sxc(this))'>layout</a>`
 
- There are more ways to do this - see TODO: 
+ There are more ways to do this - see [How to get Sxc](xref:JsCode.2sxcApi.GetSxc.Index).
 
 ## Step 3: Use the `Sxc` to get Data or Perform CMS Actions
 

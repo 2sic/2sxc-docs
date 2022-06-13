@@ -270,51 +270,13 @@
 &lt;/script&gt;
 </code></pre><p>The code above shows</p>
 <ol>
-<li>how to include the api-file in the best way using <code>GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;)</code></li>
+<li>how to activate the JS features for non-admins - see <a class="xref" href="../basics/activate.html">Activate 2sxc JavaScript APIs on a Page</a></li>
 <li>how go get the ModuleId into JS using <code>@CmsContext.Module.Id</code> from Razor (there is another way - read below)</li>
 <li>how to ask if we&#39;re in edit-mode</li>
 </ol>
-<p>The moduleId is usually dynamic, so you can&#39;t hardwire it with <code>var modId = 17</code> into your JS code. This is explained in the next section <em>Initialization</em>.</p>
+<p>The moduleId is usually dynamic, so you can&#39;t hardwire it with <code>var modId = 17</code> into your JS code.</p>
 <h2 id="get-the-sxc-module-service-using-2sxc">Get the Sxc-Module-Service using $2sxc</h2>
-<p>We have four initializers:</p>
-<ol>
-<li><code>$2sxc(HTMLElement)</code> - recommended</li>
-<li><code>$2sxc(moduleId)</code> - oldest way, very common</li>
-<li><del><code>$2sxc(moduleId, contentBlockId)</code></del> - a special version for <a href="#module-instances-and-content-blocks">internal use only</a></li>
-<li><code>$2sxc(ContextIdentifier)</code> - new in v11.11</li>
-</ol>
-<h3 id="the-htmlelement-method">The HTMLElement Method</h3>
-<p>We recommend the <em>HTMLElement syntax</em>, because in that mode $2sxc will go up through the DOM-tree and find the module it&#39;s in (or the content-block), and auto-configure itself. What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). Here&#39;s a simple example:</p>
-<pre><code class="lang-html">&lt;a onclick=&#39;$2sxc(this).manage.run(&quot;layout&quot;)&#39;&gt;layout&lt;/a&gt;
-</code></pre><p>In the above example, the HTMLElement is given by the current click, which puts the current <code>&lt;a&gt;</code> node in the <code>this</code> object.</p>
-<p>Here&#39;s a JS example:</p>
-<pre><code class="lang-javascript">var x = $(&quot;.myApp&quot;);    // get ANY dom element inside this 2sxc app
-var sxc1 = $2sxc(x);    // use it
-
-// the same thing in 1 line
-var sxc2 = $2sxc($(&quot;#SomeNodeInThePage&quot;));
-</code></pre><p>Note that the simple example above assumes that there is only one item on the page, but there can often be more. So you&#39;ll usually need to do something like this</p>
-<pre><code class="lang-javascript">// note that we cannot work before the page-onready.
-// so our code is in a $(our-code);
-$(function(){
-    $(&quot;some-jquery-selector&quot;).each(function(index, element){
-        var sxc = $2sxc(element);
-        // now do something...
-    });
-});
-</code></pre><h3 id="the-moduleid-method">The ModuleId Method</h3>
-<p>In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use <code>[Module:ModuleId]</code> and in a Razor-Template it&#39;s <code>@Dnn.Module.ModuleID</code> (large &quot;ID&quot;).</p>
-<p>The same code in <strong>Razor</strong> for Dnn and Oqtane would be:</p>
-<pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc(@CmsContext.Module.Id);
-    alert(&quot;edit mode: &quot; + sxc.isEditMode());
-})
-</code></pre><p>The same code in <strong>Tokens</strong> would be:</p>
-<pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc([Module:ModuleId]);
-    alert(&quot;edit mode: &quot; + sxc.isEditMode());
-})
-</code></pre><p>You can also find an example of finding all of our nodes and initializing them in the <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS App</a>. If you&#39;re interested, here&#39;s the <a href="https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js">js-initializer</a>.  </p>
+<p>See <a class="xref" href="../basics/get-sxc.html">How to get Sxc</a></p>
 <hr>
 <h2 id="everything-about-the-module-level-sxc-instance">Everything about the Module-Level Sxc Instance</h2>
 <p>In the <a class="xref" href="../sxc/index.html">module level Sxc Instance</a> you&#39;ll read about:</p>
@@ -325,55 +287,6 @@ $(function(){
 <li>Working with REST / HTTP Async Stuff</li>
 <li>Working with WebAPI calls, especially to your backend WebAPI in your api-folder</li>
 <li>Calling Queries (from the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> designer)</li>
-</ol>
-<h2 id="technical-features-explained">Technical Features Explained</h2>
-<h3 id="including-the-2sxc-api-javascript-file">Including the $2sxc API JavaScript File</h3>
-<p>Each template that needs the $2sxc-file when not logged in must include it, to be sure it&#39;s always there when needed. Note that we&#39;ve included various features to prevent duplicate execution.</p>
-<ol>
-<li>if the file is included multiple times, it will only execute once</li>
-<li>if the file is included <a class="xref" href="../../../basics/server/asset-optimization/index.html">minified</a> and unminified, it too will only be executed once</li>
-<li>if you need to debug the JS for whatever reason with <a href="http://2sxc.org/en/blog/post/debugging-javascript-errors-with-a-modern-browser-and-f12-(200)">F12 in the browser</a> a sourcemap is included</li>
-<li>for more advanced debuging, just include the unminified version</li>
-</ol>
-<p>Note that the entire code is packed in an IIFE, so the only global variable created is the <code>$2sxc</code>.</p>
-<h3 id="everything-is-cached">Everything is Cached</h3>
-<p>We optimized for just about every thinkable situation, so the $2sxc will build a controller-object for a module,
-but following calls to it will use the cached information. Example:</p>
-<pre><code class="lang-javascript">var sxc = $2sxc(42); // initial call, will build controller for Module 42
-var sxc2 = $2sxc(42); // second call, will use cached controller
-var sxc3 = $2sxc(domNodeInsideTheModule42); // another call, will also used cached controller
-</code></pre><h3 id="environment-and-context-data-needed-by-2sxc-to-work">Environment and Context Data Needed by $2sxc to Work</h3>
-<p>The $2sxc object needs a few pieces of information to work properly, which are usually stored in two locations:</p>
-<ol>
-<li>In a page-header Meta tag with the Id <code>_jsApi</code></li>
-<li>In JSON in the HTML where the Module start</li>
-</ol>
-<p>So the Module-DIV-Tag is actually enhanced with additional pieces of information. 
-This structure is open and easy to read, but the structure can change from time to time, 
-so don&#39;t read/rely on that JSON, use the $2sxc to access any information. </p>
-<p>There are even situations where additional context data in inserted into the HTML rendered by your template. This has to do with inner-content (see next section) and the same &quot;don&#39;t rely on the JSON&quot; applies. </p>
-<h3 id="module-instances-and-content-blocks">Module-Instances and Content-Blocks</h3>
-<p>This is a very advanced topic, so if you&#39;re new - just skip this. Also if you use content-blocks you don&#39;t need to understand this, it&#39;s just included for completeness.</p>
-<p>A 2sxc-module can contain many <a href="http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules">2sxc-content-blocks since version 8.4</a> because an item could have independent, inner content-blocks. Because of this, the controller may need an additional parameter, so instead of <code>$2sxc(moduleId)</code> it can also use <code>$2sxc(moduleId, contentBlockId)</code>.</p>
-<p>As mentioned above, you never need to work with this, it&#39;s included for completeness. Since the now recommended method to initialized $2sxc is not with the moduleId but with a DOM-node, that call will automatically resolve everything correctly.</p>
-<h2 id="background-how-2sxc-works">Background: How $2sxc works</h2>
-<p>This is just some info for you to better understand what happens behind the scenes:</p>
-<h3 id="how-module-level-information-is-found">How Module-Level Information is found</h3>
-<ol>
-<li>When you use <code>$2sxc(moduleId)</code> it scans the DOM for the <code>&lt;div&gt;</code> tag that contains the module with that ID</li>
-<li>When you use <code>$2sxc(htmlNode)</code> it starts from that node and scans all parents till it finds the <code>&lt;div&gt;</code> which is the module wrapper</li>
-<li>Once it finds that, it knows what module it&#39;s for and configures itself</li>
-</ol>
-<h3 id="how-page-and-portal-information-is-found">How Page and Portal Information is Found</h3>
-<p>This is for information the $2sxc needs for WebApi calls. <em>This here applies to 2sxc 10.25+</em></p>
-<ol>
-<li>It first checks the html-head section for a <code>meta</code> tag with the name <code>_jsApi</code>. If this exists, it contains a JSON with everything it needs.</li>
-<li>If that doesn&#39;t exist it will retry 3x times (in case the head wasn&#39;t ready yet) and otherwise falls back to the old mechanism.</li>
-<li>The old mechanism is to ask Dnn and the <em>ServicesFramework</em> for this information. This is always available when you&#39;re logged on as an editor, but it&#39;s only on the page for anonymous users IF<ol>
-<li>...you are either using the old mechanisms</li>
-<li>...or your Razor code asked for with <code>@Edit.Enable(js:true)</code></li>
-</ol>
-</li>
 </ol>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
