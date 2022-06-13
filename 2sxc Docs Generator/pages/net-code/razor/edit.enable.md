@@ -1,7 +1,11 @@
 ---
 uid: NetCode.Razor.Edit.Enable
 ---
-# @Edit.Enable Method in C# Razor
+# @Edit.Enable Method in C# Razor (Deprecated)
+
+> [!WARNING]
+> This is deprecated but will continue to work for a very long time. 
+> For anything new, see [](xref:JsCode.2sxcApi.Activate.Index)
 
 Editing or adding data to a 2sxc app requires the UI to have some JS, CSS and context information. This is only loaded/included for editors/admin/super-users, and not available for users with limited permissions.
 

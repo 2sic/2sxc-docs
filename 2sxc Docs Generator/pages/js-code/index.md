@@ -4,49 +4,35 @@ uid: JsCode.Index
 
 <img src="~/assets/features/js-api.svg" class="feature">
 
-# 2sxc JS API Documentation is WIP
-
-_We're reorganizing our JS API Docs - they will be moved to here. This is still Work-In-Progress._
-
-# JavaScript and TypeScript Code
+# 2sxc JavaScript and TypeScript for Dnn/Oqtane
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
 
-Many people implement JavaScript or TypeScript solutions using 2sxc, as it's ideal both for simple scripts like galleries as well as for bundling and distributing complex Angular or React SPAs.
+You can create awesome solutions, customizing the edit-experience and working with 2sxc-data in your JavaScript and TypeScript.
+It's ideal both for simple scripts like galleries as well as for bundling and distributing complex Angular or React SPAs.
 
-Note: We're just consolidating docs in this section, so it's still very incomplete. 
+## Get Started
 
-What it should contain in the end is...
+1. You should probably import the [npm package](xref:JsCode.NpmTypes) into your code
 
-1. Guidance for using the basic $2sxc and sxc for working with data/apis - with npm packages etc.
-1. Guidance for using the edit API
-1. Guidance for customizing toolbars?
-1. Guidance for Angular integration
-1. Guidance for React integration
+## The 2sxc JavaScript APIs
 
+1. [Read up on getting started](xref:JsCode.2sxcApi.Index)
+1. [$2sxc Global](xref:JsCode.2sxcApi.$2sxc.Index) is the global object for everything
+1. [Sxc Instance](xref:JsCode.2sxcApi.Sxc.Index) with is the module-level object
 
-Basic Structure probably
+## The Edit Experience
 
-* JS Framework Overview
-
-* JS Basics
-
-* Inpage CMS API
-
-* Angular SPAs
-
-* Edit UI API
+1. [Overview to Editing Content](xref:Basics.Browser.EditUx.Index) 
+1. Customize the edit experience (buttons, toolbars...) with the [manage controller](xref:JsCode.2sxcApi.Sxc.Manage)
+1. Customize the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)
+1. In-page edit toolbars for [html](xref:JsCode.Toolbars.Index) or [javascript](xref:JsCode.Toolbars.Advanced) with [settings](xref:JsCode.Toolbars.Settings)
+1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:JsCode.Toolbars.Buttons) and creating [custom buttons](xref:JsCode.Commands.Code)
 
 
-## Quick Example
+## Using 2sxc with Popular JS Libraries
 
-TODO 
-
-## What's Where
-
-This documentation contains the following sections
-
-TODO
+1. [Angular / dnn-sxc-angular](xref:JsCode.Angular.Index)
 
 

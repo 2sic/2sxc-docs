@@ -10,17 +10,12 @@ uid: JsCode.2sxcApi.Obsolete.$2sxc.CmsV9
 
 ## How to use (v9.30)
 
-Before you start, ensure you have the necessary JS scripts loaded:
-
-1. in edit-mode this happens automatically
-2. if you want to provide this to low-priviledge users, use `@Edit.Enable(...)` in [razor](xref:NetCode.Razor.Edit.Enable)
+Before you start, ensure you have the necessary JS scripts loaded. 
+See [](xref:JsCode.2sxcApi.Activate.Index).
 
 Simple example:
 
 ```razor
-@* enable the editing *@
-@Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
-
 <script>
     // simple function to run the command and handle the returned promise
     function addProject(tag) {

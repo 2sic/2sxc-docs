@@ -21,9 +21,7 @@ Cases where _you_ need $2sxc:
 
 ## How to use
 
-1. *add a script-tag* to include the 2sxc.api.min.js  
-_note 1: in edit-mode this happens automatically_  
-_note 2: always use lower-case paths and the minified version_
+1. If you need the JS APIs for non-admins, [activate it first](xref:JsCode.2sxcApi.Activate.Index)
 2. *call the `$2sxc(...)` constructor* to get a sxc-controller for your module (as each module on the page will have an own $2sxc controller)
 3. *work with the API* of the sxc-controller
 

@@ -41,11 +41,10 @@ In case your code is running on a page without jQuery but you need it, your code
 
 In 2sxc 10.25 and newer, all core features of 2sxc _don't_ need jQuery. So anonyomus browsing of your site won't require jQuery at all, even if you're doing API calls or using the [$2sxc javascript API](xref:JsCode.2sxcApi.$2sxc.Index). 
 
-But what you do need (if you're using the new [RazorComponent](xref:NetCode.Razor.Component)) is to tell 2sxc that you plan to use JavaScript and APIs, so that 2sxc can add the stuff to the page to make the magic happen. This is done with this line in your razor code:
-
-```
-@Edit.Enable(js:true)
-```
+But what you do need if you're using the new [RazorComponent](xref:NetCode.Razor.Component), 
+is to tell 2sxc that you plan to use JavaScript and APIs. 
+This lets 2sxc add the stuff to the page to make the magic happen. 
+See [](xref:JsCode.2sxcApi.Activate.Index).
 
 Because 2sxc doesn't use jQuery any more for normal stuff, this will have the following effect:
 

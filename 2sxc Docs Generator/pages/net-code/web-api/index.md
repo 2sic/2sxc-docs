@@ -58,8 +58,13 @@ The custom controller **BooksController** must have the same name as the file an
 The custom controller can be called with JavaScript like this:
 
 ```razor
-<!-- this ensures the $2sxc scripts are loaded -->
-@Edit.Enable(js: true)
+```razor
+@inherits Custom.Hybrid.Razor12
+@using ToSic.Sxc.Services;
+@{
+  // Tell the page that we need the 2sxc Js APIs
+  GetService<IPageService>().Activate("2sxc.JsCore"); 
+}
 
 <!-- the button which loads everything -->
 <button type="button" class="btn btn-primary" onclick="getPersons(this)">

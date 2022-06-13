@@ -1,8 +1,8 @@
 ---
-uid: JsCode.Tips.Typings
+uid: JsCode.NpmTypes
 ---
 
-# Get Typings to Write Error-Free Code
+# npm Types Help Write Error-Free Code
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
