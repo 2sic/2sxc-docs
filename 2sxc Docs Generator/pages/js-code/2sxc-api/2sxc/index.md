@@ -122,34 +122,6 @@ $(function () {
 
 You can also find an example of finding all of our nodes and initializing them in the [TimeLineJS App](xref:App.TimelineJs). If you're interested, here's the [js-initializer](https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js).  
 
-### The ContextIdentifier Method (new v11.11)
-
-When you use the `ContextIdentifier`, you are bypassing various automations which pick up the context by default. 
-The `ContextIdentifier` has this setup:
-
-```js
-export class ContextIdentifier {
-  /** ZoneId of this Context */
-  zoneId: number;
-  /** AppId of this Context */
-  appId: number;
-  /** PageId of this Context (optional) */
-  pageId?: number;
-  /** ModuleId of this Context (optional) */
-  moduleId?: number;
-}
-```
-
-This mode is mainly used 
-
-* when integrating 2sxc into other systems which don't provide the full CMS functionality
-* when creating edit-functionality which is outside the default context, like in the context of a Module where you must edit data of a different App
-
----
-
-## Additional properties of the $2sxc Controller: `cms`
-
-* In 2sxc 9.30 a new object `$2sxc.cms` was added - read about it in [$2sxc.cms](xref:Api.Js.SxcJs.SxcGlobalCms)
 
 ---
 
