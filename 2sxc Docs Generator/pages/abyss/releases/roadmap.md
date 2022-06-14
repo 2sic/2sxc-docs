@@ -6,7 +6,41 @@ uid: Abyss.Releases.Roadmap
 
 The 2sxc roadmap contains the things we think are fairly important to tackle next. Since we're all working for free, there is no commitment to do this in the order you see below. And sometimes a customer will need a feature quickly - and pay for it - then it will appear sooner. _You too can sponsor a feature!_
 
-## Priorities we're Working on 2022 Q1 (V13)
+## Priorities we're Working on 2022 Q2 v13 / v14
+
+1. ✅ v13 LTS
+1. ✅ Image-Service/Picture
+1. ✅ Image primary area / corner selector
+1. ✅ Patron features with licensing & payment system
+1. ✅ Lightning cache
+1. ✅ v14 Release
+1. ✅ Formula Boost with many new features #1
+1. ✅ DNN DI integration
+1. ✅ Update turnOn to 0.1.2
+1. Formula Boost #2
+1. ✅ CSP for the site (DNN only ATM)
+1. CSP for the Edit UI
+1. ✅ NPM Types updated to latest release
+1. Service Kits
+1. Deprecation System
+1. Toolbar Services
+1. ✅ JS Docs updated to the latest version and auto-generated
+1. JS Docs for formula...
+1. Oqtane Theme release
+1. Notes everywhere - especially on the page
+1. Tutorials Formulas
+
+## Priorities 2022 Q3 v14
+
+1. OpenGraph system
+1. Improved custom DataSources API
+1. New data sources
+1. CSP for Oqtane
+1. string-Dropdowns from many data sources like CSVs or WebService
+1. New Icon-Dropdowns from other data sources
+1. Blazor CMS
+
+## Priorities we're Working on 2022 Q1 V13
 
 ### Done but maybe not fully documented
 
