@@ -64,4 +64,4 @@ History
 
 1. Added the script method ca. v4
 1. Added the Edit.Enable v9.30
-1. Created Page.Activate ca. v13 and v14
+1. Replaced `Edit.Enable(js:true)` with the new `IPageService.Activate("2sxc.JsCore")` in v13.0

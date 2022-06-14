@@ -2,9 +2,9 @@
 uid: JsCode.TurnOn.Index
 ---
 
-<img src="~/assets/features/turn-on.svg" width="100%">
+<img src="~/assets/features/turn-on.svg" class="feature">
 
-# turnOn JavaScript API 🆕 in v12.04
+# turnOn JavaScript API
 
 ## The Problem turnOn Solves
 
@@ -75,6 +75,21 @@ Here's another example, taken from the new Content-App in 2sxc:
 
 This example will init a map with the configuration of the map incl. pin-image, coordinates and more. 
 
+## Signature of Run call
+
+The `run` method - in the above example `...configureMap()` is as follows:
+
+```js
+public void configureMap(data)
+{
+  // data is the data provided in the turnOn
+}
+```
+
+2sxc v14.02 includes turnOn v0.1.2, where the `run` method also has another parameter: `context`. 
+The most important property is `context.tag` which is the tag which contained the configuration.
+This allows you to use `$2sxc(context.tag)` to [get the Sxc of the tag](xref:JsCode.2sxcApi.GetSxc.Index).
+
 ## Advantages of Using turnOn
 
 1. Works, no matter in what order the scripts were loaded
@@ -119,7 +134,8 @@ Our goal is to simplify this, so that your solution can simply state what it nee
 
 ## History
 
-1. Added in 2sxc v12.04
+1. Added v0.1.1 in 2sxc v12.04
+1. Updated to v0.1.2 in 2sxc v14.02 providing the `context` as the second parameter
 
 ## Future features
 

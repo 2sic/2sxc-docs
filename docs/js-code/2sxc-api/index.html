@@ -115,8 +115,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Index">
-<h1 id="introduction-to-the-2sxc-javascript-apis">Introduction to the 2sxc JavaScript APIs</h1>
 
+<p><img src="../../assets/features/js-api.svg" class="feature"></p>
+<h1 id="introduction-to-the-2sxc-javascript-apis">Introduction to the 2sxc JavaScript APIs</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +241,10 @@
 
 <p>The JS APIs let you do many things such as:</p>
 <ol>
-<li>retrieve data of the current App from the backend</li>
+<li>get or create data of the current App from 
+the <a class="xref" href="../../web-api/data/index.html">headless REST APIs</a> 
+or the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a></li>
+<li>call custom backend <a class="xref" href="../../net-code/web-api/index.html">WebAPI controllers</a></li>
 <li>provide a custom edit experience</li>
 </ol>
 <p>This is very simple, but you need to know some basics. </p>
@@ -262,7 +266,7 @@ To even create visible toolbars (which requires some CSS) use <code>&quot;2sxc.T
 Read more about <a class="xref" href="../../net-code/razor/services/page-service-activate.html">activating page features here</a>.</p>
 <p>For older versions consult the <a class="xref" href="basics/activate.html">activate</a> instructions.</p>
 <h2 id="step-2-get-the-current-sxc-object">Step 2: Get the Current <code>Sxc</code> Object</h2>
-<p>Once you&#39;ve activated the JS APIs, there will be a <a class="xref" href="2sxc/index.html">window.$2sxc(...) function/object</a>.
+<p>Once you&#39;ve activated the JS APIs, there will be a <a class="xref" href="../../api/js/SxcGlobal.html#Api_Js_SxcJs_SxcGlobal">window.$2sxc(...) function/object</a>.
 It&#39;s primary purpose is to get you an <a class="xref" href="sxc/index.html">Sxc object</a>.</p>
 <div class="TIP"><h5>Tip</h5><p>A page can contain many 2sxc Apps and Modules. 
 For your code to work easily, it needs to get an Sxc object for the current App.</p>
@@ -271,12 +275,16 @@ For your code to work easily, it needs to get an Sxc object for the current App.
 <ol>
 <li>Using the module ID with inline code:<br><code>const sxc = $2sxc(17);</code></li>
 <li>Using the module ID with inline code and Razor:<br><code>const sxc = $2sxc(@CmsContext.Module.Id);</code></li>
-<li><p>Using any html tag in the DOM:<br><code>&lt;a onclick=&#39;alert($2sxc(this))&#39;&gt;layout&lt;/a&gt;</code></p>
-<p>There are more ways to do this - see <a class="xref" href="basics/get-sxc.html">How to get Sxc</a>.</p>
-</li>
+<li>Using any html tag in the DOM:<br><code>&lt;a onclick=&#39;alert($2sxc(this))&#39;&gt;layout&lt;/a&gt;</code></li>
 </ol>
+<p>There are more ways to do this - see <a class="xref" href="basics/get-sxc.html">How to get Sxc</a>.</p>
 <h2 id="step-3-use-the-sxc-to-get-data-or-perform-cms-actions">Step 3: Use the <code>Sxc</code> to get Data or Perform CMS Actions</h2>
 <p>Once you have the <code>Sxc</code> object of the current App, you can do all kinds of things. </p>
+<ul>
+<li>Use the <a class="xref" href="../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">.data(...)</a> to get or create data on the current App</li>
+<li>Use the <a class="xref" href="../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">.query(...)</a> to get data from a Query</li>
+<li>Use the <a class="xref" href="sxc/sxc.webapi-fetch.html">webApi.fetchJson(...)</a> to get data from a WebAPI</li>
+</ul>
 </article>
           </div>
           

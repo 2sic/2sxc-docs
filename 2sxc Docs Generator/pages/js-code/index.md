@@ -19,7 +19,7 @@ It's ideal both for simple scripts like galleries as well as for bundling and di
 ## The 2sxc JavaScript APIs
 
 1. [Read up on getting started](xref:JsCode.2sxcApi.Index)
-1. [$2sxc Global](xref:JsCode.2sxcApi.$2sxc.Index) is the global object for everything
+1. [$2sxc Global](xref:Api.Js.SxcJs.SxcGlobal) is the global object for everything
 1. [Sxc Instance](xref:JsCode.2sxcApi.Sxc.Index) with is the module-level object
 
 ## The Edit Experience

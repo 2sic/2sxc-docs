@@ -239,52 +239,125 @@
   </div>
 </div><style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-<p>TODO:</p>
 <p>This assumes you have the JS API page features enabled, 
 either because you are logged in as Admin, or because you <a class="xref" href="activate.html">activated them</a>.</p>
-<h2 id="get-the-sxc-module-service-using-2sxc">Get the Sxc-Module-Service using $2sxc</h2>
-<p>We have four initializers:</p>
+<h2 id="get-the-sxc-using-2sxc">Get the <code>Sxc</code> using <code>$2sxc</code></h2>
+<p>There are four get-signatures:</p>
 <ol>
-<li><code>$2sxc(HTMLElement)</code> - recommended</li>
-<li><code>$2sxc(moduleId)</code> - oldest way, very common</li>
-<li><code>$2sxc(ContextIdentifier)</code> - new in v11.11</li>
+<li>With an HTML Tag: <code>$2sxc(tag: HTMLElement)</code> - recommended</li>
+<li>With a Module ID: <code>$2sxc(moduleId: number)</code> - oldest way, very common</li>
+<li>Using a Context: <code>$2sxc(context: ContextIdentifier)</code> - new in v11.11</li>
 <li><del><code>$2sxc(moduleId, contentBlockId)</code></del> - a special version for internal use only</li>
 </ol>
-<h3 id="the-htmlelement-method">The HTMLElement Method</h3>
-<p>We recommend the <em>HTMLElement syntax</em>, because in that mode $2sxc will go up through the DOM-tree and find the module it&#39;s in (or the content-block), and auto-configure itself. What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). Here&#39;s a simple example:</p>
-<pre><code class="lang-html">&lt;a onclick=&#39;$2sxc(this).manage.run(&quot;layout&quot;)&#39;&gt;layout&lt;/a&gt;
+<p>For demos it depends a bit on your scenario. </p>
+<ul>
+<li>Vanilla JavaScript or TypeScript<ul>
+<li><a href="#get-sxc-with-inline-javascript">Inline JavaScript</a> - easiest to use</li>
+<li><a href="#get-sxc-with-external-javascript">External JavaScript</a></li>
+<li><a href="#get-sxc-with-external-javascript-and-turnon">External JavaScript with turnOn</a> - recommended! 🚀</li>
+</ul>
+</li>
+<li>External JavaScript Framework such as Angular, Vue or React</li>
+</ul>
+<h2 id="get-sxc-with-inline-javascript">Get <code>Sxc</code> with Inline JavaScript</h2>
+<p>This is the easiest to use, but we suggest you try to avoid it, because of <a class="xref" href="../../../abyss/security/csp/index.html">CSP-Hardening</a>.</p>
+<h3 id="get-with-an-html-tag-inline">Get with an HTML Tag (Inline)</h3>
+<p>We recommend the <strong>HTMLElement syntax</strong>. 
+With this syntax, <code>$2sxc</code> will go up through the DOM-tree and find the module it&#39;s in (or the content-block).
+It will then auto-configure itself. 
+What&#39;s nice about this is that this method works without any server-side support (which you need for the other methods). 
+Here&#39;s a simple example:</p>
+<pre><code class="lang-html">&lt;a onclick=&#39;$2sxc(this).cms.run(&quot;layout&quot;)&#39;&gt;layout&lt;/a&gt;
 </code></pre><p>In the above example, the HTMLElement is given by the current click, which puts the current <code>&lt;a&gt;</code> node in the <code>this</code> object.</p>
 <p>Here&#39;s a JS example:</p>
-<pre><code class="lang-javascript">var x = $(&quot;.myApp&quot;);    // get ANY dom element inside this 2sxc app
-var sxc1 = $2sxc(x);    // use it
+<pre><code class="lang-javascript">var x = document.getElementById(&quot;myApp&quot;); // get a dom element inside this 2sxc app
+var sxc1 = $2sxc(x);                      // use it
 
 // the same thing in 1 line
-var sxc2 = $2sxc($(&quot;#SomeNodeInThePage&quot;));
-</code></pre><p>Note that the simple example above assumes that there is only one item on the page, but there can often be more. So you&#39;ll usually need to do something like this</p>
-<pre><code class="lang-javascript">// note that we cannot work before the page-onready.
-// so our code is in a $(our-code);
-$(function(){
-    $(&quot;some-jquery-selector&quot;).each(function(index, element){
-        var sxc = $2sxc(element);
-        // now do something...
-    });
-});
-</code></pre><h3 id="the-moduleid-method">The ModuleId Method</h3>
-<p>In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. In a Token-Template you would use <code>[Module:ModuleId]</code> and in a Razor-Template it&#39;s <code>@Dnn.Module.ModuleID</code> (large &quot;ID&quot;).</p>
+var sxc2 = $2sxc(document.getElementById(&quot;myApp&quot;));
+</code></pre><p>With jQuery (not recommended, jQuery should be seen as <a class="xref" href="../../dnn/jquery.html">end-of-life</a>):</p>
+<pre><code class="lang-javascript">// the same thing in 1 line
+var sxc = $2sxc($(&quot;#myApp&quot;)[0]);
+</code></pre><p>Note that the simple example above assumes that there is only one item on the page, but there can often be more. 
+In that scenario you&#39;ll need to loop or something. </p>
+<h3 id="get-with-a-module-id-inline">Get with a Module ID (Inline)</h3>
+<p>In this method, you need to get the ModuleId from somewhere, usually provided by the server-side template. 
+In a Token-Template you would use <code>[Module:ModuleId]</code> and in a Razor-Template it&#39;s <code>@Dnn.Module.ModuleID</code> (large &quot;ID&quot;).</p>
 <p>The same code in <strong>Razor</strong> for Dnn and Oqtane would be:</p>
 <pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc(@CmsContext.Module.Id);
-    alert(&quot;edit mode: &quot; + sxc.isEditMode());
+  var sxc = $2sxc(@CmsContext.Module.Id);
+  alert(&quot;edit mode: &quot; + sxc.isEditMode());
 })
 </code></pre><p>The same code in <strong>Tokens</strong> would be:</p>
 <pre><code class="lang-JavaScript">$(function () {
-    var sxc = $2sxc([Module:ModuleId]);
-    alert(&quot;edit mode: &quot; + sxc.isEditMode());
+  var sxc = $2sxc([Module:ModuleId]);
+  alert(&quot;edit mode: &quot; + sxc.isEditMode());
 })
 </code></pre><p>You can also find an example of finding all of our nodes and initializing them in the <a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS App</a>. 
 If you&#39;re interested, here&#39;s the <a href="https://github.com/2sic/app-TimeLineJS/blob/master/assets/scripts.js">js-initializer</a>.  </p>
-<p>TODO: TURNoN ETC.</p>
-<hr>
+<h2 id="get-sxc-with-external-javascript">Get <code>Sxc</code> with External JavaScript</h2>
+<p>When using external vanilla JavaScript, you will need:</p>
+<ol>
+<li>either a strong naming convention - such as making sure your app always has a tag with id <code>myAmazingApp</code></li>
+<li>or pass it a tag or ID to get started.</li>
+</ol>
+<p>If you use a strong naming convention, this is the same as the inline-JavaScript-method.</p>
+<pre><code class="lang-js">// the same thing in 1 line
+var sxc = $2sxc(document.getElementById(&quot;myAmazingApp&quot;));
+</code></pre><p>If you want to pass in the name or something, then the <strong>external</strong> file would look something like this:</p>
+<pre><code class="lang-JavaScript">function startWithId(moduleId) {
+  var sxc = $2sxc(moduleId);
+  alert(&quot;edit mode: &quot; + sxc.isEditMode());
+}
+
+function alertFromTag(tag) {
+  var sxc = $2sxc(tag);
+  alert(&quot;edit mode: &quot; + sxc.isEditMode());
+}
+</code></pre><p>And the page would contain code such as:</p>
+<pre><code class="lang-html">&lt;!-- Run a script--&gt;
+&lt;script&gt;
+  startWithId(@CmsContext.Module.Id);
+&lt;/script&gt;
+
+&lt;!-- use the this-dom element --&gt;
+&lt;a onclick=&#39;alertFromTag(this)&#39;&gt;show edit mode&lt;/a&gt;
+</code></pre><h2 id="get-sxc-with-external-javascript-and-turnon">Get <code>Sxc</code> with External JavaScript and turnOn</h2>
+<p><strong>turnOn</strong> is a special helper to <strong>boot your JavaScript</strong>. 
+It&#39;s especially useful because you cannot always rely on the loading order / speed of scripts, 
+on scripts which may depend on other libraries to run as well. 
+Read more about <a class="xref" href="../../turn-on/index.html">turnOn</a>.</p>
+<h3 id="use-module-id-with-turnon">Use Module ID with turnOn</h3>
+<p>Razor File - example taken from the <a class="xref" href="https://2sxc.org/en/apps/app/counter2-hybrid-for-dnn-and-oqtane">Counter App</a>:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
+@using ToSic.Sxc.Services;
+@{
+  // Basics / Preparation
+  var pageSvc = GetService&lt;IPageService&gt;();  // Service to set titles etc. on the page
+  pageSvc.Activate(&quot;turnOn&quot;);
+  var domId = &quot;app-counter2-js-&quot; + CmsContext.Module.Id;
+}
+&lt;div id=&quot;@domId&quot; data-count=&quot;@fact.Number&quot;&gt;
+  &lt;!-- more --&gt;
+&lt;/div&gt;
+
+@* include the JS, at the bottom of the page *@
+&lt;script src=&quot;@App.Path/scripts.js&quot; @pageSvc.AssetAttributes(position: &quot;bottom&quot;) &gt;&lt;/script&gt;
+&lt;turnOn turn-on=&#39;{ &quot;run&quot;: &quot;window.initMyApp()&quot;, &quot;data&quot;: { &quot;domId&quot;: &quot;@domId&quot; }}&#39;&gt;&lt;/turnOn&gt;
+</code></pre><p>JavaScript / TypeScript File:</p>
+<pre><code class="lang-ts">function initMyApp({ domId } : { domId: string }) {
+  var sxc = $2sxc(document.getElementById(domId));
+  // ...
+}
+</code></pre><h3 id="use-tag-with-turnon">Use Tag with turnOn</h3>
+<p>This is almost the same as with the Module ID, but the tag is passed in automatically. 
+Note that this requires v14.02 with turnOn v0.1.2.</p>
+<p>JavaScript / TypeScript File:</p>
+<pre><code class="lang-ts">function initMyApp(data: any, context: any) {
+  var sxc = $2sxc(document.getElementById(context.tag));
+  // ...
+}
+</code></pre><hr>
 <h2 id="technical-features-explained">Technical Features Explained</h2>
 <h3 id="everything-is-cached">Everything is Cached</h3>
 <p>We optimized for just about every thinkable situation, so the $2sxc will build a controller-object for a module,

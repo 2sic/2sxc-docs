@@ -14,7 +14,7 @@ The WebApi object on the App/Module-specific `sxc`-controller is for AJAX calls.
 
 ### How to use
 
-First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.$2sxc.Index) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc manager](xref:JsCode.2sxcApi.$2sxc.Index) here. 
+First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.Index) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc global](xref:Api.Js.SxcJs.SxcGlobal) here. 
 
 Here's a simple example (assuming you have the $2sxc manager):
 
@@ -32,7 +32,7 @@ Here's a simple example (assuming you have the $2sxc manager):
 
 ### How to Get the Current Context's `sxc` Controller
 
-Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.$2sxc.Index). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
+Before you continue, make sure you know how to resolve/get your `sxc`-controller, as it is unique for each Dnn-Module. This is because each action needs to know which module it belongs to. Read about the 3 ways to get this in the [$2sxc Manager docs](xref:JsCode.2sxcApi.Index). Here you'll also find out more about the [sxc-controller](xref:JsCode.2sxcApi.Sxc.Index).
 
 
 

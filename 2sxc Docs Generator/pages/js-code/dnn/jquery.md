@@ -13,6 +13,12 @@ Often you'll need and want jQuery, but when you don't it shouldn't be loaded for
 > Removing jQuery and jQueryUI will boost your mobile PageSpeed like crazy. 
 > So only include it on pages where you really need it. 
 
+> [!WARNING]
+> We believe jQuery was once amazing, but should be seen as end-of-life.
+> Our docs still show how to work with it, but we highly recommend to stop using it. 
+> 
+> See also our [blog](https://2sxc.org/en/blog/post/bye-jquery-go-fetch-2sxc-12-10)
+
 ## How Dnn Auto-Loades jQuery
 
 There is some history to this which we'll explain briefly. Dnn made jQuery a first-class citizen around Dnn 4, and since then most of the UI was jQuery based. For a while there even was a standard that buttons etc. should be built and styled with jQuery UI. That is not the case any more. You can now easily run Dnn (at least in browsing mode, not editing) without jQuery. 
@@ -39,7 +45,7 @@ In case your code is running on a page without jQuery but you need it, your code
   * old templates auto-load jQuery for backward compatibility. This includes token-templates and Razor templates which don't have an `@inherits` statement at the beginning. 
   * Anything new done using the [RazorComponent](xref:NetCode.Razor.Component) will not do that unless your template code requests it.
 
-In 2sxc 10.25 and newer, all core features of 2sxc _don't_ need jQuery. So anonyomus browsing of your site won't require jQuery at all, even if you're doing API calls or using the [$2sxc javascript API](xref:JsCode.2sxcApi.$2sxc.Index). 
+In 2sxc 10.25 and newer, all core features of 2sxc _don't_ need jQuery. So anonyomus browsing of your site won't require jQuery at all, even if you're doing API calls or using the [$2sxc javascript API](xref:JsCode.2sxcApi.Index). 
 
 But what you do need if you're using the new [RazorComponent](xref:NetCode.Razor.Component), 
 is to tell 2sxc that you plan to use JavaScript and APIs. 

@@ -15,7 +15,7 @@ The module-specific `sxc`-instance is the core JavaScript object helping you in 
 
 ## How to use
 
-First you must ensure that you have the [`$2sxc` global](xref:JsCode.2sxcApi.$2sxc.Index) on your page, which will get you a module-specific `sxc`.
+First you must ensure that you have the [`$2sxc` global](xref:JsCode.2sxcApi.Index) on your page, which will get you a module-specific `sxc`.
 
 Here's a simple example (assuming you have the $2sxc global):
 
@@ -44,7 +44,7 @@ sxc.webApi.post("Form/ProcessForm")
 
 Before you continue, make sure you know how to resolve/get your `sxc`, as it is unique for each Dnn-Module. 
 This is because each action needs to know which module it belongs to. 
-Read about the 3 ways to get this in the [$2sxc Global docs](xref:JsCode.2sxcApi.$2sxc.Index).
+Read about the 3 ways to get this in the [$2sxc Global docs](xref:JsCode.2sxcApi.Index).
 
 ## The API of an Module `sxc` Instance
 
