@@ -71,6 +71,7 @@ For the page to be able to trigger edit dialogs, it needs at least these two fil
 
 1. `[2sxc public files root]/js/2sxc.api.min.js` -  note that the location could change in a future version
 1. `[2sxc public files root]/dist/inpage/inpage.min.js` -  note that the location could change in a future version
+1. Optional: Load the CSS `[2sxc public files root]/dist/inpage/inpage.min.css` for Toolbars to work
 
 2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
 The logic to do that and ensure it's part of the final output is sophisticated.
@@ -121,12 +122,37 @@ Specifically
     1. Depending on the framework, **registration** is different. For .net core, check out the example `AddControllersAndConfigureJson(...)` or the Oqtane registration examples.
     1. Remember that it must also be **configured** - see the `UseEndpoints(...)` or the `Startup.cs`
 
+## 5. Provide `index-raw.html` On the `/` _new v14_
+
+The 2sxc dialogs (quick-dialog and eav-edit) both create an `index-raw.html`. 
+These are incomplete - they need some placeholders to be replaced at runtime based on the page they are opened from. 
+
+Linking to these UIs happens through these targets:
+
+* `[2sxc public files root]/dist/quickDialog/?pageId=123&sxcver=14...` 
+* `[2sxc public files root]/dist/ng-edit/?pageId=123&sxcver=14...`
+
+You must ensure that these URLs deliver the corresponding `index-raw.html` with the placeholders fixed. 
+
+For this, either create a real page (like a `default.aspx` in DNN) which responds to the request and renders the `index-raw.html` with the placeholders replaced.
+Or you can create a route/endpoint (like in Oqtane) which does the same thing. 
+Best check the code how it's done in Dnn/Oqtane. 
+
+The placeholders which are currently set are:
+
+1. `@base` - for the base-tag containing the page-id so that refreshes preserve this
+1. `@jsapi` - the meta-header containing context information
+1. `@sxcver` - for the version of 2sxc extended with the server-start timestamp, mainly for cache-break purposes
+1. `<!--@customheaders-->` - custom headers - ATM not used but you may need it
+1. `<!--@custombody-->` - custom body - ATM used by Oqtane to provide the Request Verification Token
+
+These are replaced automatically for you when you use the `ToSic.Sxc.Web.HmlDialog` helpers.
+
 ---
 
-## 4. Expand StartUp Configuration - TODO:
+## 6. Expand StartUp Configuration
 
-Do the same as 
-
+Do the same as TODO:
 
 
 Some aspects of EAV & 2sxc are super important that they are configured before anything starts. 
@@ -188,81 +214,6 @@ If you did everything right, you can now run your code and access data from the 
 
 1. If the folder to the `.data` isn't quite correct, you will have a long loading time and then a stack overflow
 
-
----
-
-## 5. Get Insights WebApi to Work
-
-The [Insights](xref:NetCode.Debug.Insights.Index) will help you figure out what parts you need to implement. 
-It will show you what services were requested which are not implemented yet, and will show you what code was used. 
-
-1. Create your minimal `InsightsController` as you see in the demo project
-1. Register the routes using whatever system you have ATM (.net core, ASP.net Framework)
-1. Test the routes to see things are coming out
-
-**Minimal `InsightsController`**
-
-```c#
-using Microsoft.AspNetCore.Mvc;
-using ToSic.Eav.Logging.Simple;
-using ToSic.Eav.WebApi.Sys;
-
-namespace IntegrationSamples.BasicEav01.Controllers
-{
-    [Route("api/sxc/sys/[controller]")]
-    [ApiController]
-    public class InsightsController : ControllerBase
-    {
-        /// <summary>
-        /// Constructor which will retrieve the Insights backend for use here
-        /// </summary>
-        public InsightsController(Insights insights) => _insights = insights;
-        private readonly Insights _insights;
-
-        /// <summary>
-        /// The main call on this controller, will return all kinds of views with information
-        /// </summary>
-        [HttpGet("{view}")]
-        public ContentResult Details(
-            [FromRoute] string view,
-            [FromQuery] int? appId = null, 
-            [FromQuery] string key = null, 
-            [FromQuery] int? position = null,
-            [FromQuery] string type = null,
-            [FromQuery] bool? toggle = null,
-            [FromQuery] string nameId = null)
-        {
-            // Temporary setting to allow Insights despite minimal setup
-            ToSic.Eav.Context.UserUnknown.AllowEverything = true;
-
-            var result = _insights
-                .Init(new Log("Int.Insights"))
-                .Details(view, appId, key, position, type, toggle, nameId);
-            return base.Content(result, "text/html");
-        }
-    }
-}
-```
-
-**Activate it in the `StartUp.cs`**
-
-```c#
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-  // ...
-
-  app.UseEndpoints(endpoints =>
-  {
-      endpoints.MapRazorPages();
-
-      // #2sxcIntegration - enable insights controllers
-      endpoints.MapControllers();
-  });
-}
-```
-
-Test by calling `https://localhost:44384/api/sxc/sys/Insights/Help` - replace the base path as needed
-
 ---
 
 ## History
@@ -270,3 +221,4 @@ Test by calling `https://localhost:44384/api/sxc/sys/Insights/Help` - replace th
 * Proof of Concept implemented with 2sxc 11 in 2021
 * Finalized when integrating Oqtane in 2sxc 12
 * Updated docs for basic Scenario for v13.03
+* Updated for dialog-integration with index-raw in v14.02

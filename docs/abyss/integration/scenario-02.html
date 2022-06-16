@@ -169,6 +169,7 @@
 <ol>
 <li><code>[2sxc public files root]/js/2sxc.api.min.js</code> -  note that the location could change in a future version</li>
 <li><code>[2sxc public files root]/dist/inpage/inpage.min.js</code> -  note that the location could change in a future version</li>
+<li>Optional: Load the CSS <code>[2sxc public files root]/dist/inpage/inpage.min.css</code> for Toolbars to work</li>
 </ol>
 <p>2sxc does this automatically in a full implementation like in Dnn and Oqtane. 
 The logic to do that and ensure it&#39;s part of the final output is sophisticated.
@@ -217,9 +218,30 @@ For this you either need a <code>_jsApi</code> meta header or add this to the pa
 </ol>
 </li>
 </ol>
+<h2 id="5-provide-index-rawhtml-on-the--new-v14">5. Provide <code>index-raw.html</code> On the <code>/</code> <em>new v14</em></h2>
+<p>The 2sxc dialogs (quick-dialog and eav-edit) both create an <code>index-raw.html</code>. 
+These are incomplete - they need some placeholders to be replaced at runtime based on the page they are opened from. </p>
+<p>Linking to these UIs happens through these targets:</p>
+<ul>
+<li><code>[2sxc public files root]/dist/quickDialog/?pageId=123&amp;sxcver=14...</code> </li>
+<li><code>[2sxc public files root]/dist/ng-edit/?pageId=123&amp;sxcver=14...</code></li>
+</ul>
+<p>You must ensure that these URLs deliver the corresponding <code>index-raw.html</code> with the placeholders fixed. </p>
+<p>For this, either create a real page (like a <code>default.aspx</code> in DNN) which responds to the request and renders the <code>index-raw.html</code> with the placeholders replaced.
+Or you can create a route/endpoint (like in Oqtane) which does the same thing. 
+Best check the code how it&#39;s done in Dnn/Oqtane. </p>
+<p>The placeholders which are currently set are:</p>
+<ol>
+<li><code>@base</code> - for the base-tag containing the page-id so that refreshes preserve this</li>
+<li><code>@jsapi</code> - the meta-header containing context information</li>
+<li><code>@sxcver</code> - for the version of 2sxc extended with the server-start timestamp, mainly for cache-break purposes</li>
+<li><code>&lt;!--@customheaders--&gt;</code> - custom headers - ATM not used but you may need it</li>
+<li><code>&lt;!--@custombody--&gt;</code> - custom body - ATM used by Oqtane to provide the Request Verification Token</li>
+</ol>
+<p>These are replaced automatically for you when you use the <code>ToSic.Sxc.Web.HmlDialog</code> helpers.</p>
 <hr>
-<h2 id="4-expand-startup-configuration---todo">4. Expand StartUp Configuration - TODO:</h2>
-<p>Do the same as </p>
+<h2 id="6-expand-startup-configuration">6. Expand StartUp Configuration</h2>
+<p>Do the same as TODO:</p>
 <p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts. 
 These are the required ones as of 2022-02:</p>
 <ol>
@@ -270,74 +292,12 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 <li>If the folder to the <code>.data</code> isn&#39;t quite correct, you will have a long loading time and then a stack overflow</li>
 </ol>
 <hr>
-<h2 id="5-get-insights-webapi-to-work">5. Get Insights WebApi to Work</h2>
-<p>The <a class="xref" href="../../net-code/debug/insights.html">Insights</a> will help you figure out what parts you need to implement. 
-It will show you what services were requested which are not implemented yet, and will show you what code was used. </p>
-<ol>
-<li>Create your minimal <code>InsightsController</code> as you see in the demo project</li>
-<li>Register the routes using whatever system you have ATM (.net core, ASP.net Framework)</li>
-<li>Test the routes to see things are coming out</li>
-</ol>
-<p><strong>Minimal <code>InsightsController</code></strong></p>
-<pre><code class="lang-c#">using Microsoft.AspNetCore.Mvc;
-using ToSic.Eav.Logging.Simple;
-using ToSic.Eav.WebApi.Sys;
-
-namespace IntegrationSamples.BasicEav01.Controllers
-{
-    [Route(&quot;api/sxc/sys/[controller]&quot;)]
-    [ApiController]
-    public class InsightsController : ControllerBase
-    {
-        /// &lt;summary&gt;
-        /// Constructor which will retrieve the Insights backend for use here
-        /// &lt;/summary&gt;
-        public InsightsController(Insights insights) =&gt; _insights = insights;
-        private readonly Insights _insights;
-
-        /// &lt;summary&gt;
-        /// The main call on this controller, will return all kinds of views with information
-        /// &lt;/summary&gt;
-        [HttpGet(&quot;{view}&quot;)]
-        public ContentResult Details(
-            [FromRoute] string view,
-            [FromQuery] int? appId = null, 
-            [FromQuery] string key = null, 
-            [FromQuery] int? position = null,
-            [FromQuery] string type = null,
-            [FromQuery] bool? toggle = null,
-            [FromQuery] string nameId = null)
-        {
-            // Temporary setting to allow Insights despite minimal setup
-            ToSic.Eav.Context.UserUnknown.AllowEverything = true;
-
-            var result = _insights
-                .Init(new Log(&quot;Int.Insights&quot;))
-                .Details(view, appId, key, position, type, toggle, nameId);
-            return base.Content(result, &quot;text/html&quot;);
-        }
-    }
-}
-</code></pre><p><strong>Activate it in the <code>StartUp.cs</code></strong></p>
-<pre><code class="lang-c#">public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-  // ...
-
-  app.UseEndpoints(endpoints =&gt;
-  {
-      endpoints.MapRazorPages();
-
-      // #2sxcIntegration - enable insights controllers
-      endpoints.MapControllers();
-  });
-}
-</code></pre><p>Test by calling <code>https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed</p>
-<hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Proof of Concept implemented with 2sxc 11 in 2021</li>
 <li>Finalized when integrating Oqtane in 2sxc 12</li>
 <li>Updated docs for basic Scenario for v13.03</li>
+<li>Updated for dialog-integration with index-raw in v14.02</li>
 </ul>
 </article>
           </div>

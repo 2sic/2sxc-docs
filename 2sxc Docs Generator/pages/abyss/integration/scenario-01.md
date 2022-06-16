@@ -211,6 +211,7 @@ It will show you what services were requested which are not implemented yet, and
 **Minimal `InsightsController`**
 
 You can review the code of the InsightsController in the `Controllers` folder in the project. 
+It's basically just a simple controller with one `Details(...)` action. 
 
 **Activate it in the `StartUp.cs`**
 
