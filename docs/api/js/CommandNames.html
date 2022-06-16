@@ -152,8 +152,39 @@ Note that this is similar to <code>new</code> but still not the same</p>
 </td>
       </tr>
       <tr>
+        <td id="Api_Js_SxcJs_CommandNames_app">app</td>
+        <td><p><code>app</code> will open the app-admin dialog</p>
+</td>
+      </tr>
+      <tr>
         <td id="Api_Js_SxcJs_CommandNames_appImport">appImport</td>
         <td><p><code>app-import</code> command will open the dialog to import an App</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_appResources">appResources</td>
+        <td><p><code>app-resources</code> will open the edit for app-resources (multi-language texts, labels etc.). It&#39;s disabled if the app doesn&#39;t have resource-values to configure</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_appSettings">appSettings</td>
+        <td><p><code>app-settings</code> will open the edit dialog for the app-settings. It&#39;s disabled if the app doesn&#39;t have setting-values to configure</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_apps">apps</td>
+        <td><p><code>apps</code> will open the manage all apps dialog</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_contentItems">contentItems</td>
+        <td><p><code>contentitems</code> will open the dialog to manage content-items for the current template. Will use the settings of the current template to open.
+ contentType (optional) - name of data-type to manage/open</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_contentType">contentType</td>
+        <td><p><code>contenttype</code> will open the dialog to view or change the current content-type, meaning you can change what fields it has, their types etc</p>
 </td>
       </tr>
       <tr>
@@ -164,9 +195,121 @@ WIP v14.02</p>
 </td>
       </tr>
       <tr>
+        <td id="Api_Js_SxcJs_CommandNames_custom">custom</td>
+        <td><p><code>custom</code> will execute custom javascript
+customCode - some JS like &quot;alert(&#39;hello&#39;);&quot;</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_delete">delete</td>
+        <td><p><code>delete</code> will delete (not just remove) a content-item. Needs:
+entityId
+entityGuid
+entityTitle</p>
+</td>
+      </tr>
+      <tr>
         <td id="Api_Js_SxcJs_CommandNames_edit">edit</td>
         <td><p><code>edit</code> command will open the edit-dialog for the current item.
 In scenarios where we have a list of items and it&#39;s currently showing the demo, this will have the same effect as <code>add</code></p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_image">image</td>
+        <td><p><code>image</code> command will open the edit-dialog for the metadata of the current image</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_insightsServer">insightsServer</td>
+        <td><p><code>insights-server</code> command will open the insights logs page</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_instanceList">instanceList</td>
+        <td><p><code>instance-list</code> command will open a dialog to manually re-order items in a list. (note: in older versions was called &quot;sort&quot;</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_layout">layout</td>
+        <td><p><code>layout</code> command will open the in-page dialog to change the layout of the current content.
+[no parameters needed]</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_metadata">metadata</td>
+        <td><p><code>metadata</code> command will open the edit-dialog for the current metadata item</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_more">more</td>
+        <td><p><code>more</code> command create a &quot;…&quot; button which flips through the menu-buttons of toolbars</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_moveDown">moveDown</td>
+        <td><p><code>movedown</code> command moves a content-item down one position in the list
+useModuleList: true (required to be true for it to work)
+sortOrder: [number] (important so it knows the position)</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_moveUp">moveUp</td>
+        <td><p><code>moveup</code> command moves a content-item up one position in the list
+useModuleList: true (required to be true for it to work)
+sortOrder: [number] (important so it knows the position)</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_new">new</td>
+        <td><p><code>new</code> command opens the edit-dialog for a new content-item.
+contentType
+Then it needs either the ID...:
+entityId</p>
+<p>...or it needs the position within the list:
+useModuleList: true
+sortOrder: [number] (important so it knows the position</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_newMode">newMode</td>
+        <td><p><code>new</code> command sets new mode used in parameters</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_publish">publish</td>
+        <td><p><code>publish</code> command tells the system to update a content-items status to published. If there was a published and a draft before, the draft will replace the previous item</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_remove">remove</td>
+        <td><p><code>remove</code> command removes an item from a list of items.
+useModuleList: true (required to be true for it to work)
+sortOrder: [number] (important so it knows the position)</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_replace">replace</td>
+        <td><p><code>replace</code> command will open the dialog to assign a different content-item in this slot on module-assigned content items</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_templateDevelop">templateDevelop</td>
+        <td><p><code>template-develop</code> will open the template-editor dialog in a new window. (note: in older versions was called &quot;develop&quot;)</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_templateQuery">templateQuery</td>
+        <td><p><code>template-query</code> will open the pipeline/query-designer in a new window. It&#39;s invisible on content, and disabled if no pipeline is configured</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_templateSettings">templateSettings</td>
+        <td><p><code>template-settings</code> will change settings on the template currently used</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_zone">zone</td>
+        <td><p><code>zone</code> will open the manage all apps dialog</p>
 </td>
       </tr>
     </tbody>
