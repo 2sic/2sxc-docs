@@ -1,6 +1,5 @@
 ﻿---
-uid: Api.Js.SxcJs.HttpGlobal
-title: $2sxc.http - Class HttpGlobal
+uid: Api.Js.SxcJs.SxcGlobalHttp
 ---
 
 ### The $2sxc.http Api

@@ -1,1 +1,1 @@
-Moved to [](xref:Api.Js.SxcJs.Environment)
+Moved to [](xref:Api.Js.SxcJs.SxcGlobalEnvironment)
