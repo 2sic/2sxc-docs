@@ -8625,7 +8625,7 @@
 						},
 						{
 							"type": "reference",
-							"name": "WorkflowManager",
+							"name": "ToolbarWorkflowManager",
 							"id": 2957
 						}
 					]
@@ -34339,7 +34339,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"name": "WorkflowManager",
+						"name": "ToolbarWorkflowManager",
 						"id": 2957
 					}
 				}
@@ -34374,7 +34374,7 @@
 			"children": [
 				{
 					"id": 2957,
-					"name": "WorkflowManager",
+					"name": "ToolbarWorkflowManager",
 					"kind": 128,
 					"kindString": "Class",
 					"flags": {
@@ -34400,7 +34400,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Add one or many steps to the workflow"
+										"shortText": "Register one or many [workflow-steps](xref:Api.Js.SxcJs.WorkflowStep) to the toolbar, to use if toolbar commands are executed."
 									},
 									"parameters": [
 										{
@@ -34414,13 +34414,15 @@
 												"types": [
 													{
 														"type": "reference",
-														"name": "WorkflowStep"
+														"name": "WorkflowStep",
+														"id": 3001
 													},
 													{
 														"type": "array",
 														"elementType": {
 															"type": "reference",
-															"name": "WorkflowStep"
+															"name": "WorkflowStep",
+															"id": 3001
 														}
 													}
 												]
@@ -34455,7 +34457,7 @@
 						{
 							"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-manager.ts",
 							"line": 14,
-							"character": 28
+							"character": 35
 						}
 					],
 					"extendedTypes": [
@@ -34678,6 +34680,170 @@
 				"isExported": true
 			},
 			"originalName": "C:/Projects/2sxc/2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+			"children": [
+				{
+					"id": 3001,
+					"name": "WorkflowStep",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "A workflow step (code-sequence) to run before/after specific events."
+					},
+					"children": [
+						{
+							"id": 3006,
+							"name": "code",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "The code which is run, must be a promise-factory.\nSo it's a function that will return a promise.\nRequired."
+							},
+							"sources": [
+								{
+									"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+									"line": 36,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "WorkflowStepCode"
+							}
+						},
+						{
+							"id": 3003,
+							"name": "command",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "The action this step is for, can be 'any', 'edit', etc.\nWill be 'all' by default"
+							},
+							"sources": [
+								{
+									"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+									"line": 17,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 3002,
+							"name": "name",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "The name of this step, in case it needs to be replaced or somehow controlled\nWill be empty by default"
+							},
+							"sources": [
+								{
+									"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+									"line": 11,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 3004,
+							"name": "phase",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "Action-phase being run, like 'all', 'before', 'after'\nwill be 'before' by default"
+							},
+							"sources": [
+								{
+									"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+									"line": 23,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "WorkflowPhases",
+								"id": 2996
+							}
+						},
+						{
+							"id": 3005,
+							"name": "priority",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "Execution priority, higher comes first\nWill be 1 by default."
+							},
+							"sources": [
+								{
+									"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+									"line": 29,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								3006,
+								3003,
+								3002,
+								3004,
+								3005
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
+							"line": 6,
+							"character": 29
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						3001
+					]
+				}
+			],
 			"sources": [
 				{
 					"fileName": "2sxc-ui/projects/inpage/src/workflow/workflow-step.ts",
