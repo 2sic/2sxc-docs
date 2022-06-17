@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Introduction to the 2sxc JavaScript APIs | 2sxc 13 / EAV 13 </title>
+    <title>Various Run Commands | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Introduction to the 2sxc JavaScript APIs | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Various Run Commands | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,10 +114,9 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.2sxcApi.Index">
+            <article class="content wrap" id="_content" data-uid="JsCode.Commands.RunVariations">
+<h1 id="various-run-commands">Various Run Commands</h1>
 
-<p><img src="../../assets/features/js-api.svg" class="feature"></p>
-<h1 id="introduction-to-the-2sxc-javascript-apis">Introduction to the 2sxc JavaScript APIs</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -237,55 +236,64 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a>
   </div>
-</div><style>.context-box-summary .interact-2sxc, .context-box-summary .edit-custom { visibility: visible; } </style>
+</div><style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-<p>The JS APIs let you do many things such as:</p>
-<ol>
-<li>get or create data of the current App from 
-the <a class="xref" href="../../web-api/data/index.html">headless REST APIs</a> 
-or the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a></li>
-<li>call custom backend <a class="xref" href="../../net-code/web-api/index.html">WebAPI controllers</a></li>
-<li>provide a custom edit experience</li>
-</ol>
-<p>This is very simple, but you need to know some basics. </p>
-<h2 id="step-1-activate-the-js-apis">Step 1: Activate the JS APIs</h2>
-<p>If you are logged in as SiteAdmin or SystemAdmin, all the JS APIs are already loaded. 
-So if you only want to customize the edit experience for admins, you can skip this step.</p>
-<p>If you need to use the JS APIs on public pages, you must first activate them. </p>
-<p>In 2sxc v13 or newer you would do this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services;
-@{
-  // Tell the page that we need the 2sxc Js APIs
-  GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;); 
-}
-</code></pre><p>This will load and activate the standard JavaScript APIs and let you get data 
-using the <a class="xref" href="../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a> and the <a class="xref" href="../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">Query Service</a>.</p>
-<p>If your public / anonymous users also need CMS features (such as open the edit dialog), you would replace the <code>&quot;2sxc.JsCore&quot;</code> with <code>&quot;2sxc.JsCms&quot;</code>.
-To even create visible toolbars (which requires some CSS) use <code>&quot;2sxc.Toolbars&quot;</code>.
-Read more about <a class="xref" href="../../net-code/razor/services/page-service-activate.html">activating page features here</a>.</p>
-<p>For older versions consult the <a class="xref" href="basics/activate.html">activate</a> instructions.</p>
-<h2 id="step-2-get-the-current-sxc-object">Step 2: Get the Current <code>Sxc</code> Object</h2>
-<p>Once you&#39;ve activated the JS APIs, there will be a <a class="xref" href="../../api/js/SxcGlobal.html#Api_Js_SxcJs_SxcGlobal">window.$2sxc(...) function/object</a>.
-It&#39;s primary purpose is to get you an <a class="xref" href="sxc/index.html">Sxc object</a>.</p>
-<div class="TIP"><h5>Tip</h5><p>A page can contain many 2sxc Apps and Modules. 
-For your code to work easily, it needs to get an Sxc object for the current App.</p>
+<p>The API of 2sxc has changed with time, and we try ensure all samples include the latest best practices. </p>
+<p>But sometimes you&#39;ll stumble over old code or old samples, so we believe it&#39;s important you understand the differences. </p>
+<h2 id="newest-cms-run-on-the-sxc-object">Newest CMS Run on the Sxc Object</h2>
+<p>As of v13.03+, you should always use the <code>.cms.run(...)</code> command on the <a class="xref" href="index.html">Sxc</a> object.</p>
+<p>It always expects an object such as this:</p>
+<pre><code class="lang-js">$2sxc(moduleId).cms.run({ action: &quot;edit&quot; });
+$2sxc(moduleId).cms.run({ action: &quot;edit&quot;, params: { entityId: 27 } });
+$2sxc(moduleId).cms.run({ action: &quot;edit&quot;, params: { entityId: 27 }, event: event });
+</code></pre><p>This may feel a bit complicated, but it&#39;s to ensure that the API doesn&#39;t change as we add new features.</p>
+<div class="TIP"><h5>Tip</h5><p>This is the only recommended run API we recommend as of now. </p>
+<p>It also supports workflows, so you can add code to intercept what happens, 
+such as preventing page reloads after an edit command.</p>
 </div>
-<p>There are a few ways to get the current <code>Sxc</code> object:</p>
-<ol>
-<li>Using the module ID with inline code:<br><code>const sxc = $2sxc(17);</code></li>
-<li>Using the module ID with inline code and Razor:<br><code>const sxc = $2sxc(@CmsContext.Module.Id);</code></li>
-<li>Using any html tag in the DOM:<br><code>&lt;a onclick=&#39;alert($2sxc(this))&#39;&gt;layout&lt;/a&gt;</code></li>
-</ol>
-<p>There are more ways to do this - see <a class="xref" href="basics/get-sxc.html">How to get Sxc</a>.</p>
-<h2 id="step-3-use-the-sxc-to-get-data-or-perform-cms-actions">Step 3: Use the <code>Sxc</code> to get Data or Perform CMS Actions</h2>
-<p>Once you have the <code>Sxc</code> object of the current App, you can do all kinds of things. </p>
+<p><em>This was introduced ca. 2sxc v13.03.</em></p>
+<h2 id="global-cms-run-on-the-2sxc-object">Global CMS Run on the $2sxc Object</h2>
+<p>The <code>$2sxc.cms.run(...)</code> is also available, but it&#39;s not recommended.</p>
+<p>It has many different overloads with different kinds of parameters which tend to confuse developers. </p>
+<p>Since most run-commands also need a context, you must provide this on the global <code>run(...)</code>.
+If you would use the <code>Sxc.cms.run(...)</code> above, this isn&#39;t necessary as the context is known.</p>
+<p><em>This was introduced ca. 2sxc v9.30.</em></p>
+<h2 id="old-manage-run-on-the-sxc-objects">Old Manage Run on the Sxc objects</h2>
+<p>Previous versions of 2sxc had similar functionality on</p>
 <ul>
-<li>Use the <a class="xref" href="../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">.data(...)</a> to get or create data on the current App</li>
-<li>Use the <a class="xref" href="../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">.query(...)</a> to get data from a Query</li>
-<li>Use the <a class="xref" href="sxc/sxc.webapi-fetch.html">.webApi.fetchJson(...)</a> to get data from a WebAPI</li>
-<li>Use the <a class="xref" href="../commands/index.html">.cms.run(...)</a> to run CMS commands</li>
+<li><code>$2sxc.manage.run(...)</code></li>
+<li><code>$2sxc(moduleId).manage.run(...)</code></li>
 </ul>
+<p>These continue to work for compatibility reasons, but we highly recommend using the new <code>.cms.run(...)</code> instead.</p>
+<p>An important difference for the old <code>manage.run(...)</code> 
+is that you could just write the <a class="xref" href="../../api/js/CommandNames.html#Api_Js_SxcJs_CommandNames">command name</a> into the call, 
+such as <code>$2sxc(moduleId).manage.run(&quot;edit&quot;)</code>.</p>
+<p>This may feel simpler, but it led to a lot of difficulties when more parameters were needed. 
+This resulted in JS code that tries to guess what parameter was meant for what, so it&#39;s just not recommended.</p>
+<p>Some old examples:</p>
+<pre><code class="lang-html">&lt;!-- quick version with name only --&gt; 
+&lt;a onclick=&quot;$2sxc(this).manage.run(&#39;layout&#39;, event)&quot;&gt;
+    change layout
+&lt;/a&gt;
+
+&lt;!-- expanded version --&gt;
+&lt;a onclick=&quot;$2sxc(this).manage.run({ action: &#39;layout&#39; }, event)&quot;&gt;
+    change layout
+&lt;/a&gt;
+
+&lt;!-- expanded version with many params --&gt;
+&lt;a onclick=&quot;$2sxc(this).manage.run({ action: &#39;new&#39;, contentType: &#39;BlogPost&#39; }, event)&quot;&gt;
+    createBlogPost
+&lt;/a&gt;
+</code></pre><p><em>This was introduced ca. 2sxc v4.0.</em></p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced old method ca. v4</li>
+<li>Official API since 2sxc 08.06</li>
+<li>Improved in 9.30</li>
+<li>Massively improved in 13.03</li>
+</ol>
 </article>
           </div>
           
@@ -294,7 +302,7 @@ For your code to work easily, it needs to get an Sxc object for the current App.
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/commands/run-variations.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

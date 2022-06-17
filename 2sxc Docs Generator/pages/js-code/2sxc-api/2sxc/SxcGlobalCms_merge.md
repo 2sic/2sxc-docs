@@ -20,7 +20,7 @@ You need this in advanced use cases. _otherwise you don't need this_. Such advan
 2sxc 12.10 enhanced the `cms.run(params: RunParamsWithContext)` to accept an object with parameters. 
 This makes it easier to reliably pass in optional parameters, and also supports the use of [Workflow Steps](xref:JsCode.Toolbars.Workflows).
 
-👉 Learn more in the [Cms-Run Docs](xref:JsCode.2sxcApi.Cms.Run).
+👉 Learn more in the [Cms-Run Docs](xref:JsCode.Commands.Index).
 
 ---
 

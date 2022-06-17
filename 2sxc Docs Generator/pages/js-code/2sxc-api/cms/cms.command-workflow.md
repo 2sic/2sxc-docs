@@ -7,7 +7,7 @@ uid: JsCode.2sxcApi.Cms.CommandWorkflows
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-CMS Commands which are triggered [using JS](xref:JsCode.2sxcApi.Cms.Run) or using the [toolbar](xref:JsCode.Toolbars.Workflows) can also have special workflows to customize what happens. 
+CMS Commands which are triggered [using JS](xref:JsCode.Commands.Index) or using the [toolbar](xref:JsCode.Toolbars.Workflows) can also have special workflows to customize what happens. 
 
 Examples of things you can do
 

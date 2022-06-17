@@ -53,5 +53,6 @@ Once you have the `Sxc` object of the current App, you can do all kinds of thing
 
 * Use the [.data(...)](xref:Api.Js.SxcJs.SxcData) to get or create data on the current App
 * Use the [.query(...)](xref:Api.Js.SxcJs.SxcQuery) to get data from a Query
-* Use the [webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) to get data from a WebAPI
+* Use the [.webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) to get data from a WebAPI
+* Use the [.cms.run(...)](xref:JsCode.Commands.Index) to run CMS commands
 
