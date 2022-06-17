@@ -142,67 +142,99 @@
     <tbody>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_add">add</td>
-        <td><p><code>add</code> command open a <code>new</code> dialog to add a new item to a list of items
-Note that this is similar to <code>new</code> but still not the same</p>
+        <td><p><code>add</code> command opens a <code>new</code> dialog to create and add a new item to a <strong>list of items</strong>.
+<br> The new item is placed after the item the (+) was clicked on.
+<br>💡
+This is similar to <code>new</code> but also adds the item to the existing list of items shown on the page.
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_addExisting">addExisting</td>
-        <td><p><code>add-existing</code> command to open a dialog allowing the user to select something to add to a list of items</p>
+        <td><p><code>add-existing</code> command opens a dialog allowing the user to select an existing item to add to a <strong>list of items</strong>.
+<br> The new item is placed after the item the (+) was clicked on.
+<br> 🔘
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_app">app</td>
-        <td><p><code>app</code> will open the app-admin dialog</p>
+        <td><p><code>app</code> will open the app-admin dialog
+<br> 🔘
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_appImport">appImport</td>
-        <td><p><code>app-import</code> command will open the dialog to import an App</p>
+        <td><p><code>app-import</code> command will open the dialog to import an App.
+<br> 🔘
+This is not available on the toolbar.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_appResources">appResources</td>
-        <td><p><code>app-resources</code> will open the edit for app-resources (multi-language texts, labels etc.). It&#39;s disabled if the app doesn&#39;t have resource-values to configure</p>
+        <td><p><code>app-resources</code> will open the edit dialog for app-resources (multi-language texts, labels etc.).
+<br> 🔘
+It&#39;s disabled on the toolbar if the app doesn&#39;t have resource-values to configure.
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_appSettings">appSettings</td>
-        <td><p><code>app-settings</code> will open the edit dialog for the app-settings. It&#39;s disabled if the app doesn&#39;t have setting-values to configure</p>
+        <td><p><code>app-settings</code> will open the edit dialog for the app-settings.
+<br> 🔘
+It&#39;s disabled on the toolbar if the app doesn&#39;t have setting-values to configure
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_apps">apps</td>
-        <td><p><code>apps</code> will open the manage all apps dialog</p>
+        <td><p><code>apps</code> will open the manage all apps dialog.
+<br> 🔘
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_contentItems">contentItems</td>
-        <td><p><code>contentitems</code> will open the dialog to manage content-items for the current template. Will use the settings of the current template to open.
- contentType (optional) - name of data-type to manage/open</p>
+        <td><p><code>contentitems</code> will open the list to manage all items of a specific content-type.
+<br> 🔘
+Will use the settings of the current template to open.
+It is only shown to elevated admins.
+<br> 📩 <a class="xref" href="CommandContentItemsParams.html#Api_Js_SxcJs_CommandContentItemsParams">Parameters</a></p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_contentType">contentType</td>
-        <td><p><code>contenttype</code> will open the dialog to view or change the current content-type, meaning you can change what fields it has, their types etc</p>
+        <td><p><code>contenttype</code> will open the dialog to view or modify fields of a content-type.
+<br> 🔘
+On a toolbar it will use the content-type of the current item.
+<br> 🔐 Toolbar shows this automatically to elevated admins.
+<br> 📩 <a class="xref" href="CommandContentTypeParams.html#Api_Js_SxcJs_CommandContentTypeParams">Parameters</a></p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_copy">copy</td>
-        <td><p><code>copy</code> command will open the edit-dialog for the current item in copy-mode, so when saving it will be a new item
-To work, it also needs <code>contentTypeName</code>
-WIP v14.02</p>
+        <td><p><code>copy</code> command will open the edit-dialog for the current item in copy-mode, so when saving it will be a new item.
+<br> 📩 <a class="xref" href="CommandCopyParams.html#Api_Js_SxcJs_CommandCopyParams">Parameters</a>
+<br> 🆕 in v14.03</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_custom">custom</td>
-        <td><p><code>custom</code> will execute custom javascript
-customCode - some JS like &quot;alert(&#39;hello&#39;);&quot;</p>
+        <td><p><code>custom</code> will execute custom javascript.
+<br> 🔘
+This is mainly for toolbars, to add buttons with custom code.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_delete">delete</td>
-        <td><p><code>delete</code> will delete (not just remove) a content-item. Needs:
+        <td><p><code>delete</code> will delete (not just remove) a content-item.
+<br>
+💡 This is similar to <code>remove</code> but really deletes the data from the DB.
+<br> 🔘
+It only appears if the toolbar explicitly asks for it.
+<br>
+Needs:
 entityId
 entityGuid
 entityTitle</p>
@@ -210,34 +242,36 @@ entityTitle</p>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_edit">edit</td>
-        <td><p><code>edit</code> command will open the edit-dialog for the current item.
-In scenarios where we have a list of items and it&#39;s currently showing the demo, this will have the same effect as <code>add</code></p>
-</td>
-      </tr>
-      <tr>
-        <td id="Api_Js_SxcJs_CommandNames_image">image</td>
-        <td><p><code>image</code> command will open the edit-dialog for the metadata of the current image</p>
+        <td><p><code>edit</code> command will open an edit-dialog.
+<br>
+In scenarios where the page is currently showing a demo item, this will have the same effect as <code>add</code></p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_insightsServer">insightsServer</td>
-        <td><p><code>insights-server</code> command will open the insights logs page</p>
+        <td><p><code>insights-server</code> command will open the insights logs page
+<br> 🔘
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_instanceList">instanceList</td>
-        <td><p><code>instance-list</code> command will open a dialog to manually re-order items in a list. (note: in older versions was called &quot;sort&quot;</p>
+        <td><p><code>instance-list</code> command will open a dialog to manually re-order <strong>items in a list</strong>.
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_layout">layout</td>
         <td><p><code>layout</code> command will open the in-page dialog to change the layout of the current content.
+<br>
 [no parameters needed]</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_metadata">metadata</td>
-        <td><p><code>metadata</code> command will open the edit-dialog for the current metadata item</p>
+        <td><p><code>metadata</code> command will open the edit-dialog for the current metadata item.
+<br> 🔘
+It only appears if the toolbar explicitly asks for it.</p>
 </td>
       </tr>
       <tr>
@@ -247,16 +281,20 @@ In scenarios where we have a list of items and it&#39;s currently showing the de
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_moveDown">moveDown</td>
-        <td><p><code>movedown</code> command moves a content-item down one position in the list
+        <td><p><code>movedown</code> command moves a content-item down one position in a <strong>list of items</strong>.
 useModuleList: true (required to be true for it to work)
-sortOrder: [number] (important so it knows the position)</p>
+sortOrder: [number] (important so it knows the position)
+⚠️ do not use this yet, we plan to change the parameters
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_moveUp">moveUp</td>
-        <td><p><code>moveup</code> command moves a content-item up one position in the list
+        <td><p><code>moveup</code> command moves a content-item up one position in a <strong>list of items</strong>.
 useModuleList: true (required to be true for it to work)
-sortOrder: [number] (important so it knows the position)</p>
+sortOrder: [number] (important so it knows the position)
+⚠️ do not use this yet, we plan to change the parameters
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
@@ -271,20 +309,18 @@ sortOrder: [number] (important so it knows the position</p>
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_newMode">newMode</td>
-        <td><p><code>new</code> command sets new mode used in parameters</p>
-</td>
-      </tr>
-      <tr>
         <td id="Api_Js_SxcJs_CommandNames_publish">publish</td>
-        <td><p><code>publish</code> command tells the system to update a content-items status to published. If there was a published and a draft before, the draft will replace the previous item</p>
+        <td><p><code>publish</code> command tells the system to update a content-items status to published. If there was a published and a draft before, the draft will replace the previous item
+<br> 🔘
+Only appears on the toolbar if the item is not published.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_remove">remove</td>
         <td><p><code>remove</code> command removes an item from a list of items.
 useModuleList: true (required to be true for it to work)
-sortOrder: [number] (important so it knows the position)</p>
+sortOrder: [number] (important so it knows the position)
+<br> 🪜 Only appears on toolbars of items which are in a list.</p>
 </td>
       </tr>
       <tr>
@@ -294,22 +330,28 @@ sortOrder: [number] (important so it knows the position)</p>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_templateDevelop">templateDevelop</td>
-        <td><p><code>template-develop</code> will open the template-editor dialog in a new window. (note: in older versions was called &quot;develop&quot;)</p>
+        <td><p><code>template-develop</code> will open the template-editor dialog in a new window.
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_templateQuery">templateQuery</td>
-        <td><p><code>template-query</code> will open the pipeline/query-designer in a new window. It&#39;s invisible on content, and disabled if no pipeline is configured</p>
+        <td><p><code>template-query</code> will open the pipeline/query-designer in a new window.
+<br> 🔘It&#39;s not available on the simple Content App, only on full Apps.
+It is disabled if no query is configured.
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_templateSettings">templateSettings</td>
-        <td><p><code>template-settings</code> will change settings on the template currently used</p>
+        <td><p><code>template-settings</code> will change settings on the template currently used
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
       <tr>
         <td id="Api_Js_SxcJs_CommandNames_zone">zone</td>
-        <td><p><code>zone</code> will open the manage all apps dialog</p>
+        <td><p><code>zone</code> will open the system dialog for this zone/site.
+<br> 🔐 Toolbar shows this automatically to elevated admins.</p>
 </td>
       </tr>
     </tbody>
