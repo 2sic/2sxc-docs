@@ -265,7 +265,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   border-right:none;border-bottom:.5pt solid black;border-left:none">Description
   and Parameters</td>
  </tr>
- <tr height="180" style="height:135.0pt">
+ <!-- <tr height="180" style="height:135.0pt">
   <td height="180" class="xl6522490" align="left" width="130" style="height:135.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -312,7 +312,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">New in 11.01. Adds a content-item to the
   current list of items, right below the item where it was clicked. But to do this, it shows the user a list of existing items.<br>
- </tr>
+ </tr> -->
  <tr height="160" style="height:120.0pt">
   <td height="160" class="xl6522490" align="left" width="130" style="height:120.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
