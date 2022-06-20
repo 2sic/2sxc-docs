@@ -140,7 +140,7 @@ There is a command called **custom** which is meant to be used for this. Check o
 
 Details about some specific commands: 
 
-1. [ContentItems with Filters](xref:JsCode.Commands.ContentItems)
+1. [ContentItems with Filters](xref:Api.Js.SxcJs.CommandContentItemsParams)
 1. [Delete](xref:Api.Js.SxcJs.CommandDeleteParams)
 1. [Custom Code](xref:Api.Js.SxcJs.CommandCustomParams)
 
