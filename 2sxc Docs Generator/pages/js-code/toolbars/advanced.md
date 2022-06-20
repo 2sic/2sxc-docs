@@ -98,7 +98,7 @@ In most cases you just care about the shorthand. But in advanced cases where you
 
 1. [Buttons are explained in more details here](xref:JsCode.Toolbars.Buttons)
 1. [Commands which run when a button is pressed are here](xref:JsCode.Commands.Index)
-1. [Custom commands which run your JS are here](xref:JsCode.Commands.Code)
+1. [Custom commands which run your JS are here](xref:Api.Js.SxcJs.CommandCustomParams)
 
 ## Button group
 
@@ -176,7 +176,7 @@ var tb2 = {
 You can customize _hover behavior_, _show behavior_ and more. Read about it in the [toolbar settings](xref:JsCode.Toolbars.Settings).
 
 ## Custom Buttons with Custom Commands
-You can easily create custom buttons with custom icons, parameters and even custom scripts. It's not well documented yet, but it's best to just look through the tutorial app below. It's also explained more in the [Html Custom Code](xref:JsCode.Commands.Code) 
+You can easily create custom buttons with custom icons, parameters and even custom scripts. It's not well documented yet, but it's best to just look through the tutorial app below. It's also explained more in the [Html Custom Code](xref:Api.Js.SxcJs.CommandCustomParams) 
 
 
 ## Demo App and further links

@@ -28,7 +28,7 @@ It's ideal both for simple scripts like galleries as well as for bundling and di
 1. Customize the edit experience (buttons, toolbars...) with the [manage controller](xref:JsCode.2sxcApi.Sxc.Manage)
 1. Customize the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)
 1. In-page edit toolbars for [html](xref:JsCode.Toolbars.Index) or [javascript](xref:JsCode.Toolbars.Advanced) with [settings](xref:JsCode.Toolbars.Settings)
-1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:JsCode.Toolbars.Buttons) and creating [custom buttons](xref:JsCode.Commands.Code)
+1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:JsCode.Toolbars.Buttons) and creating [custom buttons](xref:Api.Js.SxcJs.CommandCustomParams)
 
 
 ## Using 2sxc with Popular JS Libraries

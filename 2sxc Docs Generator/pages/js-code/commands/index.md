@@ -235,7 +235,7 @@ Every action in the UI is a command, and for it to run, it must know a few thing
 ```
 
 ## Command With Custom Code
-There is a command called **custom** which is meant to be used for this. Check out the example on [Custom Code](xref:JsCode.Commands.Code)
+There is a command called **custom** which is meant to be used for this. Check out the example on [Custom Code](xref:Api.Js.SxcJs.CommandCustomParams)
 
 ## All Commands & Parameters (todo - update)
 
@@ -313,7 +313,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri">New in 11.01. Adds a content-item to the
   current list of items, right below the item where it was clicked. But to do this, it shows the user a list of existing items.<br>
  </tr> -->
- <tr height="160" style="height:120.0pt">
+ <!-- <tr height="160" style="height:120.0pt">
   <td height="160" class="xl6522490" align="left" width="130" style="height:120.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -333,8 +333,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
     ...or it needs the position within the list:<br>
     * useModuleList: true <br>
     * sortOrder: [number] (important so it knows the position</td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6822490" align="left" width="130" style="height:15.0pt;
   width:98pt"><s>dash-view</s></td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
@@ -343,8 +343,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   <td class="xl6522490" align="left" width="436" style="width:327pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">internal, don't use this</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -358,7 +358,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Open the app-import dialog to import a new app.<br>
     * [no parameters]</td>
- </tr>
+ </tr> -->
  <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
@@ -370,7 +370,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">todo - more documentation</td>
  </tr>
- <tr height="80" style="height:60.0pt">
+ <!-- <tr height="80" style="height:60.0pt">
   <td height="80" class="xl6722490" align="left" width="130" style="height:60.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
@@ -388,8 +388,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
     * entityId<br>
     * entityGuid<br>
     * entityTitle</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">remove</td>
@@ -402,8 +402,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   items. <br>
     * useModuleList: true (required to be true for it to work)<br>
     * sortOrder: [number] (important so it knows the position)</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -432,8 +432,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   position in the list<br>
     * useModuleList: true (required to be true for it to work)<br>
     * sortOrder: [number] (important so it knows the position)</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -447,8 +447,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Open a dialog to manually re-order items in a list.<br>
     (note: in older versions was called "sort"</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">publish</td>
@@ -460,8 +460,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri">Tells the system to update a
   content-items status to published. If there was a published and a draft
   before, the draft will replace the previous item.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -476,7 +476,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   #D9D9D9 none">Only available on module-assigned content items. Will open the
   dialog to assign a different content-item in this slot.<br>
     *…</td>
- </tr>
+ </tr> -->
  <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
@@ -489,7 +489,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri">Review previous versions of this
   item and restore if necessary.</td>
  </tr> -->
- <tr height="60" style="height:45.0pt">
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -504,8 +504,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   #D9D9D9 none">Opens the in-page dialog to change the layout of the current
   content.<br>
     * [no parameters needed]</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">template-develop</td>
@@ -517,8 +517,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri">Opens the template-editor dialog
   in a new window.<br>
     (note: in older versions was called "develop")</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -544,8 +544,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Change settings on the template
   currently used.</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6722490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
@@ -562,8 +562,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   #D9D9D9 none">Opens the dialog to manage content-items for the current
   template. Will use the settings of the current template to open. <br>
     * contentType (optional) - name of data-type to manage/open</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">contenttype</td>
@@ -575,8 +575,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri">Opens the dialog to view or
   change the current content-type, meaning you can change what fields it has,
   their types etc.</td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -589,8 +589,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Opens the app-admin dialog.</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">app-settings</td>
@@ -618,8 +618,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   #D9D9D9 none">Opens the edit for app-resources (multi-language texts, labels
   etc.). It's disable if the app doesn't have resource-values to
   configure.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">zone</td>
@@ -629,8 +629,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   <td class="xl6522490" align="left" width="436" style="width:327pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Opens the manage all apps dialog.</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6722490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
@@ -646,8 +646,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Execute custom javascript<br>
     * customCode - some JS like "alert('hello');"</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -662,7 +662,7 @@ To understand the internals, check out the [source code](https://github.com/2sic
   text-line-through:none;font-family:Calibri;border-top:none;border-right:none;
   border-bottom:.5pt solid black;border-left:none">Only needed in toolbars,
   creates a "…" button which flips through the menu-buttons.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
+ </tr> -->
  <!--[if supportMisalignedColumns]-->
  <tr height="0" style="display:none">
   <td width="130" style="width:98pt"></td>
@@ -679,8 +679,8 @@ To understand the internals, check out the [source code](https://github.com/2sic
 ## See also
 
 1. [ContentItems with Filters](xref:JsCode.Commands.ContentItems)
-1. [Delete](xref:JsCode.Commands.Delete)
-1. [Code](xref:JsCode.Commands.Code)
+1. [Delete](xref:Api.Js.SxcJs.CommandDeleteParams)
+1. [Custom Code](xref:Api.Js.SxcJs.CommandCustomParams)
 
 ## Demo App and further links
 

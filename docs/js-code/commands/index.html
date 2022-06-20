@@ -245,7 +245,7 @@
 </ul>
 <p>Each command needs 3 things</p>
 <ol>
-<li>a short <a href="xref:Api.Js.SxcJs.CommandNames">CommandName</a> like <code>new</code></li>
+<li>a short <a class="xref" href="../../api/js/CommandNames.html#Api_Js_SxcJs_CommandNames">CommandName</a> like <code>new</code></li>
 <li><strong>parameters</strong> <code>entityId</code> which differ for each command </li>
 <li>a context - usually the current module</li>
 </ol>
@@ -260,8 +260,8 @@
 </div><h2 id="run-commands-and-parameters">Run Commands and Parameters</h2>
 <p>Two commands in the 2sxc APIs allow running CMS commands</p>
 <ul>
-<li><code>$2sxc.cms.run(params: RunParamsWithContext)</code><br>  This is the <code>run</code> on the <a href="xref:Api.Js.SxcJs.SxcGlobalCms">Global Cms object</a></li>
-<li><code>sxc.cms.run(params: RunParams)</code><br>  This is the <code>run</code> on the <a href="xref:Api.Js.SxcJs.SxcCms">Instance Cms object</a></li>
+<li><code>$2sxc.cms.run(params: RunParamsWithContext)</code><br>  This is the <code>run</code> on the <a class="xref" href="../../api/js/SxcGlobalCms.html#Api_Js_SxcJs_SxcGlobalCms">Global Cms object</a></li>
+<li><code>sxc.cms.run(params: RunParams)</code><br>  This is the <code>run</code> on the <a class="xref" href="../../api/js/SxcCms.html#Api_Js_SxcJs_SxcCms">Instance Cms object</a></li>
 </ul>
 <p>Both of these commands will run a CMS command with parameters. </p>
 <div class="IMPORTANT"><h5>Important</h5><p>There are some possibilities for confusion which you should be aware of.</p>
@@ -317,10 +317,10 @@ As you can see in the sample above, this lets you show a specific message or do 
 <p>To handle special cases like prevent a page-refresh or to do custom JS actions at certain points, check out the <a class="xref" href="../toolbars/workflows.html">Workflows</a>.</p>
 <h2 id="runparams-and-runparamswithcontext">RunParams and RunParamsWithContext</h2>
 <p>Both commands take one object with named properties, to help keep the API stable across changes. </p>
-<div class="TIP"><h5>Tip</h5><p>The Instance call on <code>sxc.cms.run(...)</code> uses the <a href="xref:Api.Js.SxcJs.RunParams">RunParams</a>.
+<div class="TIP"><h5>Tip</h5><p>The Instance call on <code>sxc.cms.run(...)</code> uses the <a class="xref" href="../../api/js/RunParams.html#Api_Js_SxcJs_RunParams">RunParams</a>.
 It will throw an error if a <code>context</code> is also provided, because that indicates
 you&#39;re doing something wrong. </p>
-<p>On the other hand the Global call on the <code>$2sxc.cms.run(...)</code> explicitly needs <a href="xref:Api.Js.SxcJs.RunParamsWithContext">RunParamsWithContext</a>
+<p>On the other hand the Global call on the <code>$2sxc.cms.run(...)</code> explicitly needs <a class="xref" href="../../api/js/RunParamsWithContext.html#Api_Js_SxcJs_RunParamsWithContext">RunParamsWithContext</a>
 either <code>tag</code> or <code>context</code>, and will throw an error if both are missing. </p>
 </div>
 <h2 id="command-workflow-example">Command Workflow Example</h2>
@@ -410,7 +410,7 @@ $(function() {
     };
     sxc.manage.run(&quot;edit&quot;, editSlot7Params);
 </code></pre><h2 id="command-with-custom-code">Command With Custom Code</h2>
-<p>There is a command called <strong>custom</strong> which is meant to be used for this. Check out the example on <a class="xref" href="custom-code.html">Custom Code</a></p>
+<p>There is a command called <strong>custom</strong> which is meant to be used for this. Check out the example on <a class="xref" href="../../api/js/CommandCustomParams.html#Api_Js_SxcJs_CommandCustomParams">Custom Code</a></p>
 <h2 id="all-commands--parameters-todo---update">All Commands &amp; Parameters (todo - update)</h2>
 <p>To understand the internals, check out the <a href="https://github.com/2sic/2sxc-ui/blob/master/src/inpage/commands/commands.definitions.js">source code</a>. These are the currently available actions and their parameters:</p>
 <table border="0" cellpadding="0" cellspacing="0" width="650" style="border-collapse:
@@ -482,7 +482,7 @@ $(function() {
   text-line-through:none;font-family:Calibri">New in 11.01. Adds a content-item to the
   current list of items, right below the item where it was clicked. But to do this, it shows the user a list of existing items.<br>
  </tr> -->
- <tr height="160" style="height:120.0pt">
+ <!-- <tr height="160" style="height:120.0pt">
   <td height="160" class="xl6522490" align="left" width="130" style="height:120.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -502,8 +502,8 @@ $(function() {
     ...or it needs the position within the list:<br>
     * useModuleList: true <br>
     * sortOrder: [number] (important so it knows the position</td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6822490" align="left" width="130" style="height:15.0pt;
   width:98pt"><s>dash-view</s></td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
@@ -511,9 +511,9 @@ $(function() {
   text-line-through:none;font-family:Calibri">-</td>
   <td class="xl6522490" align="left" width="436" style="width:327pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:Calibri">internal, don&#39;t use this</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+  text-line-through:none;font-family:Calibri">internal, don't use this</td>
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -527,7 +527,7 @@ $(function() {
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Open the app-import dialog to import a new app.<br>
     * [no parameters]</td>
- </tr>
+ </tr> -->
  <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
@@ -539,12 +539,12 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">todo - more documentation</td>
  </tr>
- <tr height="80" style="height:60.0pt">
+ <!-- <tr height="80" style="height:60.0pt">
   <td height="80" class="xl6722490" align="left" width="130" style="height:60.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
   Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
-  <a class="xref" href="delete.html">delete</a>
+  [delete](xref:JsCode.Commands.Delete)
   </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
@@ -557,8 +557,8 @@ $(function() {
     * entityId<br>
     * entityGuid<br>
     * entityTitle</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">remove</td>
@@ -571,8 +571,8 @@ $(function() {
   items. <br>
     * useModuleList: true (required to be true for it to work)<br>
     * sortOrder: [number] (important so it knows the position)</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -601,8 +601,8 @@ $(function() {
   position in the list<br>
     * useModuleList: true (required to be true for it to work)<br>
     * sortOrder: [number] (important so it knows the position)</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -615,9 +615,9 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Open a dialog to manually re-order items in a list.<br>
-    (note: in older versions was called &quot;sort&quot;</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+    (note: in older versions was called "sort"</td>
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">publish</td>
@@ -629,8 +629,8 @@ $(function() {
   text-line-through:none;font-family:Calibri">Tells the system to update a
   content-items status to published. If there was a published and a draft
   before, the draft will replace the previous item.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -645,7 +645,7 @@ $(function() {
   #D9D9D9 none">Only available on module-assigned content items. Will open the
   dialog to assign a different content-item in this slot.<br>
     *…</td>
- </tr>
+ </tr> -->
  <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
@@ -658,7 +658,7 @@ $(function() {
   text-line-through:none;font-family:Calibri">Review previous versions of this
   item and restore if necessary.</td>
  </tr> -->
- <tr height="60" style="height:45.0pt">
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6522490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -673,8 +673,8 @@ $(function() {
   #D9D9D9 none">Opens the in-page dialog to change the layout of the current
   content.<br>
     * [no parameters needed]</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">template-develop</td>
@@ -685,9 +685,9 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Opens the template-editor dialog
   in a new window.<br>
-    (note: in older versions was called &quot;develop&quot;)</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+    (note: in older versions was called "develop")</td>
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -700,7 +700,7 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Opens the pipeline/query-designer in a new window.<br>
-    It&#39;s invisible on content, and disabled if no pipeline is configured.</td>
+    It's invisible on content, and disabled if no pipeline is configured.</td>
  </tr>
  <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
@@ -713,13 +713,13 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Change settings on the template
   currently used.</td>
- </tr>
- <tr height="60" style="height:45.0pt">
+ </tr> -->
+ <!-- <tr height="60" style="height:45.0pt">
   <td height="60" class="xl6722490" align="left" width="130" style="height:45.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
   Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
-  <a class="xref" href="content-items.html">contentitems</a>
+  [contentitems](xref:JsCode.Commands.ContentItems)
   </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
@@ -731,8 +731,8 @@ $(function() {
   #D9D9D9 none">Opens the dialog to manage content-items for the current
   template. Will use the settings of the current template to open. <br>
     * contentType (optional) - name of data-type to manage/open</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">contenttype</td>
@@ -744,8 +744,8 @@ $(function() {
   text-line-through:none;font-family:Calibri">Opens the dialog to view or
   change the current content-type, meaning you can change what fields it has,
   their types etc.</td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -758,8 +758,8 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Opens the app-admin dialog.</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">app-settings</td>
@@ -769,7 +769,7 @@ $(function() {
   <td class="xl6522490" align="left" width="436" style="width:327pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Opens the edit dialog for the
-  app-settings. It&#39;s disabled if the app doesn&#39;t have setting-values to
+  app-settings. It's disabled if the app doesn't have setting-values to
   configure.<span style="mso-spacerun:yes">&nbsp;</span></td>
  </tr>
  <tr height="60" style="height:45.0pt">
@@ -785,10 +785,10 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Opens the edit for app-resources (multi-language texts, labels
-  etc.). It&#39;s disable if the app doesn&#39;t have resource-values to
+  etc.). It's disable if the app doesn't have resource-values to
   configure.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
- <tr height="20" style="height:15.0pt">
+ </tr> -->
+ <!-- <tr height="20" style="height:15.0pt">
   <td height="20" class="xl6522490" align="left" width="130" style="height:15.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri">zone</td>
@@ -798,13 +798,13 @@ $(function() {
   <td class="xl6522490" align="left" width="436" style="width:327pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri">Opens the manage all apps dialog.</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6722490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:#0563C1;font-weight:400;text-decoration:
   underline;text-underline-style:single;text-line-through:none;font-family:
   Calibri;background:#D9D9D9;mso-pattern:#D9D9D9 none">
-  <a class="xref" href="custom-code.html">custom</a>
+  [custom](xref:JsCode.Commands.Code)
   </td>
   <td class="xl6522490" align="left" width="84" style="width:63pt;font-size:11.0pt;
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
@@ -814,9 +814,9 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;background:#D9D9D9;mso-pattern:
   #D9D9D9 none">Execute custom javascript<br>
-    * customCode - some JS like &quot;alert(&#39;hello&#39;);&quot;</td>
- </tr>
- <tr height="40" style="height:30.0pt">
+    * customCode - some JS like "alert('hello');"</td>
+ </tr> -->
+ <!-- <tr height="40" style="height:30.0pt">
   <td height="40" class="xl6522490" align="left" width="130" style="height:30.0pt;
   width:98pt;font-size:11.0pt;color:black;font-weight:400;text-decoration:none;
   text-underline-style:none;text-line-through:none;font-family:Calibri;
@@ -830,8 +830,8 @@ $(function() {
   color:black;font-weight:400;text-decoration:none;text-underline-style:none;
   text-line-through:none;font-family:Calibri;border-top:none;border-right:none;
   border-bottom:.5pt solid black;border-left:none">Only needed in toolbars,
-  creates a &quot;…&quot; button which flips through the menu-buttons.<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
+  creates a "…" button which flips through the menu-buttons.<span style="mso-spacerun:yes">&nbsp;</span></td>
+ </tr> -->
  <!--[if supportMisalignedColumns]-->
  <tr height="0" style="display:none">
   <td width="130" style="width:98pt"></td>
@@ -848,8 +848,8 @@ $(function() {
 <h2 id="see-also">See also</h2>
 <ol>
 <li><a class="xref" href="content-items.html">ContentItems with Filters</a></li>
-<li><a class="xref" href="delete.html">Delete</a></li>
-<li><a class="xref" href="custom-code.html">Code</a></li>
+<li><a class="xref" href="../../api/js/CommandDeleteParams.html#Api_Js_SxcJs_CommandDeleteParams">Delete</a></li>
+<li><a class="xref" href="../../api/js/CommandCustomParams.html#Api_Js_SxcJs_CommandCustomParams">Custom Code</a></li>
 </ol>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>You should find some code examples in this demo App</p>
