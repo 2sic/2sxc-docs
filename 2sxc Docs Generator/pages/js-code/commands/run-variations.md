@@ -79,7 +79,15 @@ Some old examples:
 </a>
 ```
 
+These examples example gets the $2sxc-controller related to the `<a>` tag using `$2sxc(this)` and thereby giving it a context so it knows what module-id, etc. Then it executes the command. 
+
+
 _This was introduced ca. 2sxc v4.0._
+
+> [!WARNING]
+> Remember this is a depracecated API. 
+> It's only included to better understand old code. 
+> Use the new API. 
 
 ---
 
