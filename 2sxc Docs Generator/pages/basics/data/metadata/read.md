@@ -1,1 +1,0 @@
-Moved to [](xref:Basics.Metadata.Read)
