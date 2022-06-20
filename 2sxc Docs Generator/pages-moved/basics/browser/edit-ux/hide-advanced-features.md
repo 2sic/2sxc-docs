@@ -1,0 +1,1 @@
+moved to [](xref:Basics.Browser.EditUx.HideAdvancedFeatures)
