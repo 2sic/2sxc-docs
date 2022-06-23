@@ -137,6 +137,7 @@ public interface IToolbarService</code></pre>
   <div class="markdown level0 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
+<li>parameter <code>target</code> added to <code>Default()</code> and <code>Empty()</code> in v14.03</li>
 </ul>
 </div>
   <h3 id="methods">Methods
@@ -146,7 +147,7 @@ public interface IToolbarService</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Copy_System_Object_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Copy(System.Object%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L94">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L109">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Copy_" data-uid="ToSic.Sxc.Services.IToolbarService.Copy*"></a>
   <h4 id="ToSic_Sxc_Services_IToolbarService_Copy_System_Object_System_String_System_String_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Copy(System.Object,System.String,System.String,System.String,System.String)">Copy(Object, String, String, String, String)</h4>
@@ -220,13 +221,13 @@ public interface IToolbarService</code></pre>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Default_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Default(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Default(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L30">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L37">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Default_" data-uid="ToSic.Sxc.Services.IToolbarService.Default*"></a>
-  <h4 id="ToSic_Sxc_Services_IToolbarService_Default_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Default(System.String,System.String)">Default(String, String)</h4>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Default(System.Object,System.String,System.String)">Default(Object, String, String)</h4>
   <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>default</code> template/buttons to use with <code>@Edit.Toolbar</code>
 It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
 For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
@@ -234,7 +235,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Default(string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, string ui = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Default(object target = null, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, string ui = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -246,6 +247,14 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>The optional content-item this toolbar is for. Can be null. <br>
+Usually a <a class="xref" href="../../net-code/dynamic-data/dynamic-entity.html">Dynamic Entity Objects</a> or a <a class="xref" href="../../net-code/dynamic-data/entity.html">Entity Objects</a></p>
+<p><em>Added in v14.03</em></p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
@@ -275,7 +284,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Services_IToolbarService_Default_System_String_System_String__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
@@ -283,13 +292,13 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Empty_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Empty(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Empty(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L47">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L61">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Empty_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty*"></a>
-  <h4 id="ToSic_Sxc_Services_IToolbarService_Empty_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty(System.String,System.String)">Empty(String, String)</h4>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty(System.Object,System.String,System.String)">Empty(Object, String, String)</h4>
   <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>empty</code> toolbar to use with <code>@Edit.Toolbar</code>
 It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
 For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
@@ -297,7 +306,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Empty(string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, string ui = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Empty(object target = null, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, string ui = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -309,6 +318,14 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>The optional content-item this toolbar is for. Can be null. <br>
+Usually a <a class="xref" href="../../net-code/dynamic-data/dynamic-entity.html">Dynamic Entity Objects</a> or a <a class="xref" href="../../net-code/dynamic-data/entity.html">Entity Objects</a></p>
+<p><em>Added in v14.03</em></p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
@@ -338,7 +355,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Services_IToolbarService_Empty_System_String_System_String__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
@@ -349,7 +366,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Metadata_System_Object_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Metadata(System.Object%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L72">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L87">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Metadata_" data-uid="ToSic.Sxc.Services.IToolbarService.Metadata*"></a>
   <h4 id="ToSic_Sxc_Services_IToolbarService_Metadata_System_Object_System_String_System_String_System_String_System_String_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Metadata(System.Object,System.String,System.String,System.String,System.String,System.String)">Metadata(Object, String, String, String, String, String)</h4>
@@ -446,7 +463,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
