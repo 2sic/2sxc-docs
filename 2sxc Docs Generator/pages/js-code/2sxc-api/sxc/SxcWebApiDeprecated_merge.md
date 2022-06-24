@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.SxcJs.SxcWebApiDeprecated
+uid: Api.Js.SxcJs.ZzzSxcWebApiDeprecated
 ---
 
 ### Deprecated sxc.webApi Helpers using JQuery

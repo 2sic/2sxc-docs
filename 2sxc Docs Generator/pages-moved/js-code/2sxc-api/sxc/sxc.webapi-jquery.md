@@ -1,1 +1,1 @@
-Moved to [](xref:Api.Js.SxcJs.SxcWebApiDeprecated)
+Moved to [](xref:Api.Js.SxcJs.ZzzSxcWebApiDeprecated)

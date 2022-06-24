@@ -19,7 +19,7 @@ items:
     type: class
     summary: Instance Query Service
     extends:
-      name: SxcDataServiceBase
+      name: Api.Js.SxcJs.SxcDataServiceBase
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getAll
     name: getAll()
@@ -27,14 +27,14 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Retrieve the entire query with all streams
+    summary: ''
     syntax:
       content: function getAll<T>()
       parameters: []
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getAll_1
     name: 'getAll(string | Record<string, unknown>)'
@@ -42,7 +42,7 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Retrieve the entire query with all streams
+    summary: ''
     syntax:
       content: 'function getAll<T>(urlParams: string | Record<string, unknown>)'
       parameters:
@@ -53,7 +53,7 @@ items:
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getAll_2
     name: 'getAll(string | Record<string, unknown>, string | Record<string, unknown>)'
@@ -61,7 +61,7 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Retrieve the entire query with all streams
+    summary: ''
     syntax:
       content: >-
         function getAll<T>(urlParams: string | Record<string, unknown>, data:
@@ -78,7 +78,7 @@ items:
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getStream
     name: getStream(string)
@@ -163,7 +163,11 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Get a query but only the selected streams.
+    summary: >-
+      Get a query but only the mentioned streams.
+
+      This will reduce the amount of data retrieved on queries that have many
+      streams.
     syntax:
       content: 'function getStreams<T>(streams: string)'
       parameters:
@@ -174,7 +178,9 @@ items:
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: >-
+          Promise containing a object with stream-names and items in the
+          streams.
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getStreams_1
     name: 'getStreams(string, string | Record<string, unknown>)'
@@ -182,7 +188,11 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Get a query but only the selected streams.
+    summary: >-
+      Get a query but only the mentioned streams.
+
+      This will reduce the amount of data retrieved on queries that have many
+      streams.
     syntax:
       content: >-
         function getStreams<T>(streams: string, urlParams: string |
@@ -191,15 +201,17 @@ items:
         - id: streams
           type:
             - string
-          description: ''
+          description: 'name of streams to get, comma separated'
         - id: urlParams
           type:
             - 'string | Record<string, unknown>'
-          description: ''
+          description: 'additional parameters for the URL, either as a string or as a object'
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: >-
+          Promise containing a object with stream-names and items in the
+          streams.
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.getStreams_2
     name: >-
@@ -209,7 +221,11 @@ items:
     type: method
     langs:
       - typeScript
-    summary: Get a query but only the selected streams.
+    summary: >-
+      Get a query but only the mentioned streams.
+
+      This will reduce the amount of data retrieved on queries that have many
+      streams.
     syntax:
       content: >-
         function getStreams<T>(streams: string, urlParams: string |
@@ -218,19 +234,23 @@ items:
         - id: streams
           type:
             - string
-          description: ''
+          description: 'name of streams to get, comma separated'
         - id: urlParams
           type:
             - 'string | Record<string, unknown>'
-          description: ''
+          description: 'additional parameters for the URL, either as a string or as a object'
         - id: data
           type:
             - 'string | Record<string, unknown>'
-          description: ''
+          description: >-
+            data to include in case of a POST call - if this is provided, it
+            will use a post
       return:
         type:
           - Promise<T>
-        description: containing a object with stream-names and items in the streams.
+        description: >-
+          Promise containing a object with stream-names and items in the
+          streams.
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcQuery.name
     name: name
@@ -247,3 +267,10 @@ items:
           - string
         description: ''
     package: Api.Js.SxcJs
+references:
+  - uid: Api.Js.SxcJs.SxcDataServiceBase
+    name: SxcDataServiceBase
+    spec.typeScript:
+      - name: SxcDataServiceBase
+        fullName: SxcDataServiceBase
+        uid: Api.Js.SxcJs.SxcDataServiceBase

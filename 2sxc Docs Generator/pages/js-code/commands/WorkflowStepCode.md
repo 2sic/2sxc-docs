@@ -32,3 +32,5 @@ See also: [](xref:JsCode.2sxcApi.Cms.CommandWorkflows)
 ### History
 
 1. Introduced in 2sxc 11.12
+
+#### Api Js SxcJs WorkflowStepCode

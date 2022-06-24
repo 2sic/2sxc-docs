@@ -4,6 +4,10 @@ items:
     name: SxcData
     fullName: SxcData<T>
     children:
+      - Api.Js.SxcJs.SxcData.create
+      - Api.Js.SxcJs.SxcData.create_1
+      - Api.Js.SxcJs.SxcData.delete
+      - Api.Js.SxcJs.SxcData.delete_1
       - Api.Js.SxcJs.SxcData.getAll
       - Api.Js.SxcJs.SxcData.getOne
       - Api.Js.SxcJs.SxcData.name
@@ -15,7 +19,95 @@ items:
       Data Service for an App / Sxc-Instance to get/create data of a specific
       Content-Type
     extends:
-      name: SxcDataServiceBase
+      name: Api.Js.SxcJs.SxcDataServiceBase
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcData.create
+    name: 'create(Record<string, unknown>)'
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: Create a new entity with the values supplied
+    syntax:
+      content: 'function create(values: Record<string, unknown>)'
+      parameters:
+        - id: values
+          type:
+            - 'Record<string, unknown>'
+          description: |
+            a simple object containing the values to create
+      return:
+        type:
+          - 'Promise<Record<string, unknown>>'
+        description: ''
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcData.create_1
+    name: 'create(Record<string, unknown>, MetadataFor | string)'
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: >-
+      Create a new entity with the values supplied and also a metadata-for
+      reference
+    syntax:
+      content: >-
+        function create(values: Record<string, unknown>, metadataFor:
+        MetadataFor | string)
+      parameters:
+        - id: values
+          type:
+            - 'Record<string, unknown>'
+          description: |
+            a simple object containing the values to create
+        - id: metadataFor
+          type:
+            - Api.Js.SxcJs.MetadataFor | string
+          description: ''
+      return:
+        type:
+          - 'Promise<Record<string, unknown>>'
+        description: ''
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcData.delete
+    name: delete(number)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: Delete an entity
+    syntax:
+      content: 'function delete(id: number)'
+      parameters:
+        - id: id
+          type:
+            - number
+          description: |
+            id of the item to delete
+      return:
+        type:
+          - Promise<null>
+        description: ''
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.SxcData.delete_1
+    name: delete(string)
+    children: []
+    type: method
+    langs:
+      - typeScript
+    summary: Delete an entity
+    syntax:
+      content: 'function delete(guid: string)'
+      parameters:
+        - id: guid
+          type:
+            - string
+          description: |
+            GUID of the item to delete
+      return:
+        type:
+          - Promise<null>
+        description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.SxcData.getAll
     name: getAll()
@@ -58,7 +150,7 @@ items:
     langs:
       - typeScript
     type: property
-    summary: the content-type name
+    summary: ''
     syntax:
       content: 'name: string'
       return:
@@ -89,3 +181,18 @@ items:
           - 'Promise<Record<string, unknown>>'
         description: ''
     package: Api.Js.SxcJs
+references:
+  - uid: Api.Js.SxcJs.SxcDataServiceBase
+    name: SxcDataServiceBase
+    spec.typeScript:
+      - name: SxcDataServiceBase
+        fullName: SxcDataServiceBase
+        uid: Api.Js.SxcJs.SxcDataServiceBase
+  - uid: Api.Js.SxcJs.MetadataFor | string
+    name: MetadataFor | string
+    spec.typeScript:
+      - name: MetadataFor
+        fullName: MetadataFor
+        uid: Api.Js.SxcJs.MetadataFor
+      - name: ' | string'
+        fullName: ' | string'

@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface SxcGlobal
+    <title>Interface ZzzSxcWebApiDeprecated
    | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface SxcGlobal
+    <meta name="title" content="Interface ZzzSxcWebApiDeprecated
    | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,16 +116,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.SxcGlobal">
+            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated">
   
   
-  <h1 id="Api_Js_SxcJs_SxcGlobal" data-uid="Api.Js.SxcJs.SxcGlobal">Interface SxcGlobal
+  <h1 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated">Interface ZzzSxcWebApiDeprecated
   </h1>
-  <div class="markdown level0 summary"><p>This is the root global <code>window.$2sxc</code> function / object.
-It is both a function <code>window.$2sxc(...)</code> and object <code>window.$2sxc.insights...</code></p>
-<p>If the page feature <code>2sxc.JsCms</code> is enabled, the <code>window.$2sxc</code> will also be a <a class="xref" href="SxcGlobalWithCms.html#Api_Js_SxcJs_SxcGlobalWithCms">SxcGlobalWithCms</a></p>
+  <div class="markdown level0 summary"><p><strong>Deprecated</strong>
+Old APIs on sxc.webApi.
+They only exist if jQuery is included on the page, and we highly discourage their use.</p>
 </div>
-  <div class="markdown level0 conceptual"><div class="float-right context-box-summary highlight-max" width="400px">
+  <div class="markdown level0 conceptual"><h3 id="deprecated-sxcwebapi-helpers-using-jquery">Deprecated sxc.webApi Helpers using JQuery</h3>
+<div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
   <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
@@ -246,134 +247,114 @@ It is both a function <code>window.$2sxc(...)</code> and object <code>window.$2s
   </div>
 </div><style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-
-<h3 id="main-function-2sxc">Main Function $2sxc(...)</h3>
-<p>This is a object/function hybrid. So it is usually used like this:</p>
-<pre><code class="lang-js">var sxc = window.$2sxc(moduleId);
-</code></pre><p>The signature /parameters is the same as the <a class="xref" href="SxcGlobal.html#Api_Js_SxcJs_SxcGlobal_get"><code>$2sxc.get(...)</code></a> function.</p>
-<p>The resulting object is a <a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></p>
+<p>2sxc originally used jQuery and the JS API still has commands which do jQuery AJAX calls. On the <code>webApi</code> object they are</p>
+<ul>
+<li><code>webApi.delete(...)</code> for HTTP DELETE calls</li>
+<li><code>webApi.get(...)</code>  for HTTP GET calls</li>
+<li><code>webApi.post(...)</code>  for HTTP POST calls</li>
+<li><code>webApi.put(...)</code>  for HTTP PUT calls</li>
+<li><code>webApi.request(...)</code> for any other HTTP calls</li>
+</ul>
+<div class="WARNING"><h5>Warning</h5><p>As of 2sxc 12.10 we don&#39;t recommend using this any more.
+It will only work if the page also has jQuery enabled either using 
+<code>pageService.Activate(&quot;jQuery&quot;);</code> (see <a class="xref" href="../dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>)
+or because something else like the theme/skin already loads it.</p>
+<p>From now on we strongly suggest you use <code>fetch</code> which is supported by all modern browsers. 
+See <a class="xref" href="../../js-code/2sxc-api/sxc/sxc.webapi-fetch.html">webApi.fetch</a></p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>To find out how to get the module sxc-object using $2sxc, check out <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">SxcWebApi</a></p>
+</div>
+<h3 id="example">Example</h3>
+<p>Here&#39;s a simple example (assuming you have the $2sxc manager):</p>
+<pre><code class="lang-HTML">&lt;a onclick=&quot;$2sxc(this).webApi.get(&#39;app/auto/data/Category&#39;).then(handleResult);&quot;&gt;
+    get all Categories 
+&lt;/a&gt;
+</code></pre><p>The code above shows</p>
+<ol>
+<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> manager, based on the current context <code>this</code></li>
+<li>how all items of type &quot;Category&quot; are requested</li>
+<li>how the result (promise) is passed on to <code>handleResults</code> for updating the view etc.</li>
+</ol>
+<p>Here&#39;s another quick example, calling a C# web-api endpoint: </p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
+sxc.webApi.post(&quot;Form/ProcessForm&quot;)
+    .success(function(result) {
+        // ....
+    });
+</code></pre><h3 id="working-with-rest--http-async-stuff">Working with REST / HTTP Async Stuff</h3>
+<p>Short note: these WebAPIs work using jQuery promises (<em>not</em> JavaScript promises), supporting <code>.then(...)</code>, <code>.error(...)</code> etc.</p>
+<p>The $2sxc(...).webApi has 4 <strong>jQuery</strong> commands</p>
+<ul>
+<li><code>.webApi.get(url, ...)</code> </li>
+<li><code>.webApi.post(url, ...)</code></li>
+<li><code>.webApi.delete(url, ...)</code></li>
+<li><code>.webApi.put(url, ...)</code></li>
+</ul>
+<p>Each of these has the following parameters</p>
+<ol>
+<li><code>url</code> or <code>settings</code> <em>required</em> string|object: a Url for the end-point OR a <code>{ ... }</code> settings object  </li>
+<li><code>params</code> <em>optional</em> object: the url params like <code>{ id: 27, name: &quot;hello&quot; }</code></li>
+<li><code>data</code> <em>optional</em> object: the data - in case of post / put, like <code>{ ... }</code></li>
+<li><code>preventAutoFail</code> <em>optional</em> bool: if true, won&#39;t automatically show a default message on error, so that you can handle errors differently</li>
+</ol>
+<p>Quick examples:</p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
+sxc.webApi.post(&quot;Form/ProcessForm&quot;, {}, data, true)
+    .success(function() {
+        // ....
+    })
+    .error(function() {
+        // ...
+    });
+</code></pre><p>This will call the C# WebApi controller <code>FormController</code> in the <code>api</code> folder and go for its <code>ProcessForm</code> command. It will use no url-params, but put a <code>data</code> object in the body (as json), and will do error-handling itself. </p>
+<p>In short: </p>
+<ol>
+<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
+<li>for the path-parameter, use a path starting with <code>app/auto/query/[queryname]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/query/</code> </li>
+</ol>
+<h3 id="working-with-custom-c-app-webapis">Working with Custom C# App WebAPIs</h3>
+<p>In short: </p>
+<ol>
+<li>use <code>$2sxc(...).webApi.get(...)</code> or <code>$2sxc(...).webApi.post(...)</code> etc.</li>
+<li>for the path-parameter, use a path starting with <code>app/auto/api/[controller]/[action]</code> - 2sxc will take care of all the path resolutions if the path starts with <code>app/auto/api/</code> </li>
+</ol>
+<p>You can read more about the <a class="xref" href="../../net-code/web-api/index.html">C# WebApi Server Side</a></p>
+<p>Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. </p>
+<h3 id="demo-app-and-further-links">Demo App and further links</h3>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
+<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
+</ul>
+<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<hr>
 <h3 id="history">History</h3>
 <ol>
-<li>Introduced in 2sxc 04.00</li>
-<li>Enhanced with <code>cms</code> (see <a class="xref" href="SxcGlobalCms.html#Api_Js_SxcJs_SxcGlobalCms">cms</a>) in 9.30</li>
-<li>Enhanced the <code>$2sxc(...)</code> constructor with the ContextIdentifier in v11.11</li>
+<li>jQuery based <code>webApi.get(...)</code> etc. introduced in 2sxc 04.00 - <a class="xref" href="ZzzSxcWebApiDeprecated.html#Api_Js_SxcJs_ZzzSxcWebApiDeprecated">see old docs</a></li>
+<li><code>fetchRaw()</code>, <code>fetchJson()</code>, <code>url()</code>, <code>headers()</code> API introduced as beta in v12.10</li>
+<li>jQuery commands deprecated in v12.10 but will continue to work if the page has jQuery loaded</li>
+<li><code>url(...)</code> enhanced with parameters object in v12.11</li>
+<li><code>fetchRaw(...)</code> created to fix difficult naming in 12.10; <code>fetch(...)</code> is now deprecated and will stop working some day</li>
+<li><code>fetchRaw</code>, <code>fetchJson</code>, <code>sxc.data(...)</code> and <code>sxc.query(...)</code> official for use 13.04</li>
 </ol>
+<hr>
+<hr>
 </div>
   <h6><strong>Package</strong>: <a class="xref" href="index.html">Api.Js.SxcJs</a></h6>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcGlobal_env" data-uid="Api.Js.SxcJs.SxcGlobal.env">env</h4>
-  <div class="markdown level1 summary"><p>Environment information</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">env: SxcGlobalEnvironment</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SxcGlobalEnvironment.html#Api_Js_SxcJs_SxcGlobalEnvironment">SxcGlobalEnvironment</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcGlobal_http" data-uid="Api.Js.SxcJs.SxcGlobal.http">http</h4>
-  <div class="markdown level1 summary"><p>Http helper for API calls and such</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">http: SxcGlobalHttp</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SxcGlobalHttp.html#Api_Js_SxcJs_SxcGlobalHttp">SxcGlobalHttp</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcGlobal_sysinfo" data-uid="Api.Js.SxcJs.SxcGlobal.sysinfo">sysinfo</h4>
-  <div class="markdown level1 summary"><p>system information, mainly for checking which version of 2sxc is running
-note: it&#39;s not always updated reliably, but it helps when debugging</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">sysinfo: Object</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Object</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcGlobal_urlParams" data-uid="Api.Js.SxcJs.SxcGlobal.urlParams">urlParams</h4>
-  <div class="markdown level1 summary"><p>Helper to work with url parameters behind ? or #</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">urlParams: UrlParams</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="UrlParams.html#Api_Js_SxcJs_UrlParams">UrlParams</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get_3" data-uid="Api.Js.SxcJs.SxcGlobal.get_3">get(ContextIdentifier)</h4>
-  <div class="markdown level1 summary"><p>Get an Sxc Instance using a full context-identifier (advanced). Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+  <h4 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated_delete" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated.delete">delete(string | ZzzAjaxSettingsDeprecated, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-delete promise using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(context: ContextIdentifier)</code></pre>
+    <pre><code class="lang-typeScript hljs">function delete(settingsOrUrl: string | ZzzAjaxSettingsDeprecated, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -386,11 +367,37 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ContextIdentifier.html#Api_Js_SxcJs_ContextIdentifier">ContextIdentifier</a></td>
-        <td><em>context</em></td>
+        <td>string | <a class="xref" href="ZzzAjaxSettingsDeprecated.html#Api_Js_SxcJs_ZzzAjaxSettingsDeprecated">ZzzAjaxSettingsDeprecated</a></td>
+        <td><em>settingsOrUrl</em></td>
         <td>
-          <p>ContextIdentifier: full context identifier</p>
+          <p>the url to talk to</p>
 
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
           
         </td>
       </tr>
@@ -406,21 +413,24 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><p>Sxc</p>
+        <td><span class="xref">any</span></td>
+        <td><p>jQuery ajax promise object</p>
 </td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get_2" data-uid="Api.Js.SxcJs.SxcGlobal.get_2">get(HTMLElement)</h4>
-  <div class="markdown level1 summary"><p>Get an Sxc Instance using a tag / <code>HtmlElement</code>. Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+  <h4 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated_get" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated.get">get(string | ZzzAjaxSettingsDeprecated, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-get promise using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(tag: HTMLElement)</code></pre>
+    <pre><code class="lang-typeScript hljs">function get(settingsOrUrl: string | ZzzAjaxSettingsDeprecated, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -433,11 +443,37 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HTMLElement</span></td>
-        <td><em>tag</em></td>
+        <td>string | <a class="xref" href="ZzzAjaxSettingsDeprecated.html#Api_Js_SxcJs_ZzzAjaxSettingsDeprecated">ZzzAjaxSettingsDeprecated</a></td>
+        <td><em>settingsOrUrl</em></td>
         <td>
-          <p>HTMLElement: tag in the page</p>
+          <p>the url to get</p>
 
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
           
         </td>
       </tr>
@@ -453,22 +489,24 @@ note: it&#39;s not always updated reliably, but it helps when debugging</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><p>Sxc</p>
+        <td><span class="xref">any</span></td>
+        <td><p>jQuery ajax promise object</p>
 </td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get" data-uid="Api.Js.SxcJs.SxcGlobal.get">get(number)</h4>
-  <div class="markdown level1 summary"><p>Get an Sxc Instance using the moduleId.
-Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+  <h4 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated_post" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated.post">post(string | ZzzAjaxSettingsDeprecated, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-post promise using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(moduleId: number)</code></pre>
+    <pre><code class="lang-typeScript hljs">function post(settingsOrUrl: string | ZzzAjaxSettingsDeprecated, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -481,11 +519,37 @@ Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>moduleId</em></td>
+        <td>string | <a class="xref" href="ZzzAjaxSettingsDeprecated.html#Api_Js_SxcJs_ZzzAjaxSettingsDeprecated">ZzzAjaxSettingsDeprecated</a></td>
+        <td><em>settingsOrUrl</em></td>
         <td>
-          <p>number: moduleId</p>
+          <p>the url to get</p>
 
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
           
         </td>
       </tr>
@@ -501,22 +565,24 @@ Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><p>SxcInstance</p>
+        <td><span class="xref">any</span></td>
+        <td><p>jQuery ajax promise object</p>
 </td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get_1" data-uid="Api.Js.SxcJs.SxcGlobal.get_1">get(number, number)</h4>
-  <div class="markdown level1 summary"><p>Get an Sxc Instance using the moduleId and contentBlockId.
-Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
+  <h4 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated_put" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated.put">put(string | ZzzAjaxSettingsDeprecated, any, any, boolean)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Returns an http-put promise using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(moduleId: number, contentBlockId: number)</code></pre>
+    <pre><code class="lang-typeScript hljs">function put(settingsOrUrl: string | ZzzAjaxSettingsDeprecated, params?: any, data?: any, preventAutoFail?: boolean)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -529,67 +595,37 @@ Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>moduleId</em></td>
+        <td>string | <a class="xref" href="ZzzAjaxSettingsDeprecated.html#Api_Js_SxcJs_ZzzAjaxSettingsDeprecated">ZzzAjaxSettingsDeprecated</a></td>
+        <td><em>settingsOrUrl</em></td>
         <td>
-          <p>number: moduleId</p>
+          <p>the url to put</p>
 
           
         </td>
       </tr>
       <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>contentBlockId</em></td>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
         <td>
-          <p>number: content-block ID</p>
+          <p>jQuery style ajax parameters</p>
 
           
         </td>
       </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><p>Sxc</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="Api_Js_SxcJs_SxcGlobal_get_4" data-uid="Api.Js.SxcJs.SxcGlobal.get_4">get(Sxc)</h4>
-  <div class="markdown level1 summary"><p>Get an Sxc Instance passing in an existing Sxc - just for cases where you&#39;re not sure what you aready have. Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function get(sxc: Sxc)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><em>sxc</em></td>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
         <td>
-          <p>Sxc: an existing sxc - will just be returned</p>
+          <p>jQuery style data for post/put requests</p>
 
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
           
         </td>
       </tr>
@@ -605,22 +641,24 @@ Using <code>$2sxc.get(...)</code> is the same as using <code>$2sxc(...)</code></
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></td>
-        <td><p>Sxc - the same Sxc as the one which was passed in</p>
+        <td><span class="xref">any</span></td>
+        <td><p>jQuery ajax promise object</p>
 </td>
       </tr>
     </tbody>
   </table>
   
   
-  <h4 id="Api_Js_SxcJs_SxcGlobal_insights" data-uid="Api.Js.SxcJs.SxcGlobal.insights">insights(string, number, number, number)</h4>
-  <div class="markdown level1 summary"><p>The debugging / insights system.
-Call the <code>$2sxc.insights()</code> without parameters to get instructions what the parameters could be.</p>
+  <h4 id="Api_Js_SxcJs_ZzzSxcWebApiDeprecated_request" data-uid="Api.Js.SxcJs.ZzzSxcWebApiDeprecated.request">request(string | ZzzAjaxSettingsDeprecated, any, any, boolean, string)</h4>
+  <div class="markdown level1 summary"><p><strong>Deprecated</strong>
+Please use <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchJson">fetchJson()</a>
+or <a class="xref" href="SxcWebApi.html#Api_Js_SxcJs_SxcWebApi_fetchRaw">fetchJson()</a> instead.
+Generic http request using jQuery</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-typeScript hljs">function insights(partName: string, index?: number, start?: number, length?: number)</code></pre>
+    <pre><code class="lang-typeScript hljs">function request(settings: string | ZzzAjaxSettingsDeprecated, params: any, data: any, preventAutoFail: boolean, method: string)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -632,41 +670,64 @@ Call the <code>$2sxc.insights()</code> without parameters to get instructions wh
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>string | <a class="xref" href="ZzzAjaxSettingsDeprecated.html#Api_Js_SxcJs_ZzzAjaxSettingsDeprecated">ZzzAjaxSettingsDeprecated</a></td>
+        <td><em>settings</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>params</em></td>
+        <td>
+          <p>jQuery style ajax parameters</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">any</span></td>
+        <td><em>data</em></td>
+        <td>
+          <p>jQuery style data for post/put requests</p>
+
+          
+        </td>
+      </tr>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td><em>preventAutoFail</em></td>
+        <td>
+          
+          
+        </td>
+      </tr>
       <tr>
         <td><span class="xref">string</span></td>
-        <td><em>partName</em></td>
+        <td><em>method</em></td>
         <td>
-          <p>optional name of a part of the system for which we want to see the logs</p>
+          <p>the http verb name</p>
 
           
         </td>
       </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>index</em></td>
-        <td>
-          <p>optional index on that part for which log we want to see</p>
-
-          
-        </td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>start</em></td>
-        <td>
-          <p>log start index - this is to skip the first few lines if there are too many</p>
-
-          
-        </td>
-      </tr>
-      <tr>
-        <td><span class="xref">number</span></td>
-        <td><em>length</em></td>
-        <td>
-          <p>amount of lines to show - in some cases will default to 25</p>
-
-          
-        </td>
+        <td><span class="xref">any</span></td>
+        <td><p>jQuery ajax promise object</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -678,7 +739,7 @@ Call the <code>$2sxc.insights()</code> without parameters to get instructions wh
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/2sxc/SxcGlobal_merge.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/2sxc-api/sxc/SxcWebApiDeprecated_merge.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
