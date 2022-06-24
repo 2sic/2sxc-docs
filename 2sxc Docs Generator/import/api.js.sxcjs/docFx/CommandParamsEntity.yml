@@ -5,7 +5,9 @@ items:
     fullName: CommandParamsEntity
     children:
       - Api.Js.SxcJs.CommandParamsEntity.entityId
-      - Api.Js.SxcJs.CommandParamsEntity.sortOrder
+      - Api.Js.SxcJs.CommandParamsEntity.fields
+      - Api.Js.SxcJs.CommandParamsEntity.index
+      - Api.Js.SxcJs.CommandParamsEntity.parent
       - Api.Js.SxcJs.CommandParamsEntity.useModuleList
     langs:
       - typeScript
@@ -32,19 +34,52 @@ items:
           - number
         description: ''
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandParamsEntity.sortOrder
-    name: sortOrder
-    fullName: sortOrder
+  - uid: Api.Js.SxcJs.CommandParamsEntity.fields
+    name: fields
+    fullName: fields
     children: []
     langs:
       - typeScript
     type: property
-    summary: Determins the position of the item in the list that will be edited.
+    summary: |-
+      Parent Entity field(s) name(s).
+      Usually just one field, like `Authors`.
+      In field-sets it could be `Author,Award` or similar.
     syntax:
-      content: 'sortOrder: number'
+      content: 'fields: string'
+      return:
+        type:
+          - string
+        description: ''
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.CommandParamsEntity.index
+    name: index
+    fullName: index
+    children: []
+    langs:
+      - typeScript
+    type: property
+    summary: Determins the position of the item in the list.
+    syntax:
+      content: 'index: number'
       return:
         type:
           - number
+        description: ''
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.CommandParamsEntity.parent
+    name: parent
+    fullName: parent
+    children: []
+    langs:
+      - typeScript
+    type: property
+    summary: Parent entity _GUID_ which has the field referencing this item.
+    syntax:
+      content: 'parent: string'
+      return:
+        type:
+          - string
         description: ''
     package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.CommandParamsEntity.useModuleList
