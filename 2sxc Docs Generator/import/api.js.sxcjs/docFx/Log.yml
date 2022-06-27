@@ -26,7 +26,22 @@ items:
         - id: message
           type:
             - () => string | string
-          description: ''
+          description: >
+
+
+            preferred usage is with string parameter:
+
+            log.add(`description ${ parameter }`);
+
+
+            in case that we experience error with normal string parameter, we
+            can use arrow function to enclose parameter like this () =>
+            parameter
+
+            but use it very rarely, because there is certainly a performance
+            implication!
+
+            log.add(`description ${() => parameter}`);
         - id: data
           type:
             - unknown
