@@ -39,7 +39,7 @@ If you want to do more than the default toolbars do, you want to read about:
 3. [Buttons](xref:JsCode.Toolbars.Buttons) to understand in details how buttons work and how to customize them
 4. There is also a more technical article if you want to see deeper into the [JavaScript](xref:JsCode.Toolbars.Advanced).
 5. [Commands](xref:JsCode.Commands.Index) to understand which commands the CMS can run, and how to call them from normal links
-6. [Custom Code Buttons](xref:Api.Js.SxcJs.CommandCustomParams) to create buttons which run your custom code
+6. [Custom Code Buttons](xref:Api.Js.SxcJs.CommandCodeParams) to create buttons which run your custom code
 
 ## Customize QuickE (Quick Edit)
 

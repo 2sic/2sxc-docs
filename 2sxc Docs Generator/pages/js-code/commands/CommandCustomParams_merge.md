@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.SxcJs.CommandCustomParams
+uid: Api.Js.SxcJs.CommandCodeParams
 ---
 ### Buttons with Custom Code in a Toolbar
 

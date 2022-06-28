@@ -11,27 +11,27 @@ items:
       - Api.Js.SxcJs.CommandNames.appResources
       - Api.Js.SxcJs.CommandNames.appSettings
       - Api.Js.SxcJs.CommandNames.apps
-      - Api.Js.SxcJs.CommandNames.contentItems
-      - Api.Js.SxcJs.CommandNames.contentType
+      - Api.Js.SxcJs.CommandNames.code
       - Api.Js.SxcJs.CommandNames.copy
-      - Api.Js.SxcJs.CommandNames.custom
+      - Api.Js.SxcJs.CommandNames.data
       - Api.Js.SxcJs.CommandNames.delete
       - Api.Js.SxcJs.CommandNames.edit
-      - Api.Js.SxcJs.CommandNames.insightsServer
-      - Api.Js.SxcJs.CommandNames.instanceList
+      - Api.Js.SxcJs.CommandNames.fields
+      - Api.Js.SxcJs.CommandNames.insights
       - Api.Js.SxcJs.CommandNames.layout
+      - Api.Js.SxcJs.CommandNames.list
       - Api.Js.SxcJs.CommandNames.metadata
       - Api.Js.SxcJs.CommandNames.more
       - Api.Js.SxcJs.CommandNames.moveDown
       - Api.Js.SxcJs.CommandNames.moveUp
       - Api.Js.SxcJs.CommandNames.new
       - Api.Js.SxcJs.CommandNames.publish
+      - Api.Js.SxcJs.CommandNames.query
       - Api.Js.SxcJs.CommandNames.remove
       - Api.Js.SxcJs.CommandNames.replace
-      - Api.Js.SxcJs.CommandNames.templateDevelop
-      - Api.Js.SxcJs.CommandNames.templateQuery
-      - Api.Js.SxcJs.CommandNames.templateSettings
-      - Api.Js.SxcJs.CommandNames.zone
+      - Api.Js.SxcJs.CommandNames.system
+      - Api.Js.SxcJs.CommandNames.template
+      - Api.Js.SxcJs.CommandNames.view
     langs:
       - typeScript
     type: enum
@@ -102,21 +102,12 @@ items:
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.contentItems
-    name: contentItems
+  - uid: Api.Js.SxcJs.CommandNames.code
+    name: code
     children: []
     langs:
       - typeScript
-    summary: "`contentitems` opens the list to manage all items of a specific content-type.\n<br> \U0001F518 Will use the settings of the current template to open.\nIt is only shown to elevated admins.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandContentItemsParams)"
-    type: field
-    numericValue: null
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.contentType
-    name: contentType
-    children: []
-    langs:
-      - typeScript
-    summary: "`contenttype` opens the dialog to view or modify fields of a content-type.\n<br> \U0001F518 On a toolbar it will use the content-type of the current item.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandContentTypeParams)"
+    summary: "`code` will execute custom javascript.\n<br> \U0001F518 This is mainly for toolbars, to add buttons with custom code.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandCustomParams)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs
@@ -129,12 +120,12 @@ items:
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.custom
-    name: custom
+  - uid: Api.Js.SxcJs.CommandNames.data
+    name: data
     children: []
     langs:
       - typeScript
-    summary: "`custom` will execute custom javascript.\n<br> \U0001F518 This is mainly for toolbars, to add buttons with custom code.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandCustomParams)"
+    summary: "`data` opens the list to manage all items of a specific content-type.\n<br> \U0001F518 Will use the settings of the current template to open.\nIt is only shown to elevated admins.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandDataParams)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs
@@ -152,25 +143,25 @@ items:
     children: []
     langs:
       - typeScript
-    summary: "`edit` opens an edit-dialog.\n<br>\nIn scenarios where the page is currently showing a demo item, this will have the same effect as `add`\n<br> \U0001F518 Only appears if `entityId` is known or item is in a list.\n<br> \U0001F4E9 Parameters either one of these:\n[Id](xref:Api.Js.SxcJs.CommandParamsEntityById),\n[In Block](xref:Api.Js.SxcJs.CommandParamsEntityInContentBlock),\n[In List](xref:Api.Js.SxcJs.CommandParamsEntityInList)\n(auto-detected from context)"
+    summary: "`edit` opens an edit-dialog.\n<br>\nIn scenarios where the page is currently showing a _demo item_, this will have the same effect as `add`.\nSo instead of editing the _demo item_ it would trigger a dialog to add a new item.\n<br> \U0001F518 Only appears if `entityId` is known or item is in a list.\n<br> \U0001F4E9 Parameters either one of these:\n[Id](xref:Api.Js.SxcJs.CommandParamsEntityById),\n[In Block](xref:Api.Js.SxcJs.CommandParamsEntityInContentBlock),\n[In List](xref:Api.Js.SxcJs.CommandParamsEntityInList)\n(auto-detected from context)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.insightsServer
-    name: insightsServer
+  - uid: Api.Js.SxcJs.CommandNames.fields
+    name: fields
     children: []
     langs:
       - typeScript
-    summary: "`insights-server` opens the insights logs page\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required."
+    summary: "`fields` opens the dialog to view or modify fields of a content-type.\n<br> \U0001F518 On a toolbar it will use the content-type of the current item.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 [Parameters](xref:Api.Js.SxcJs.CommandContentTypeParams)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.instanceList
-    name: instanceList
+  - uid: Api.Js.SxcJs.CommandNames.insights
+    name: insights
     children: []
     langs:
       - typeScript
-    summary: "`instance-list` opens a dialog to manually re-order **items in a list**.\n<br> \U0001FA9C Only appears on toolbars of items which are in a list.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
+    summary: "`insights` opens the insights logs page\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required."
     type: field
     numericValue: null
     package: Api.Js.SxcJs
@@ -180,6 +171,15 @@ items:
     langs:
       - typeScript
     summary: "`layout` opens the in-page dialog to change the layout of the current content.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
+    type: field
+    numericValue: null
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.CommandNames.list
+    name: list
+    children: []
+    langs:
+      - typeScript
+    summary: "`instance-list` opens a dialog to manually re-order **items in a list**.\n<br> \U0001FA9C Only appears on toolbars of items which are in a list.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs
@@ -237,6 +237,15 @@ items:
     type: field
     numericValue: null
     package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.CommandNames.query
+    name: query
+    children: []
+    langs:
+      - typeScript
+    summary: "`template-query` opens the pipeline/query-designer in a new window.\n<br> \U0001F518 It's not available on the simple Content App, only on full Apps.\nIt is disabled if no query is configured.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
+    type: field
+    numericValue: null
+    package: Api.Js.SxcJs
   - uid: Api.Js.SxcJs.CommandNames.remove
     name: remove
     children: []
@@ -255,8 +264,17 @@ items:
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.templateDevelop
-    name: templateDevelop
+  - uid: Api.Js.SxcJs.CommandNames.system
+    name: system
+    children: []
+    langs:
+      - typeScript
+    summary: "`system` opens the system dialog for this zone/site.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
+    type: field
+    numericValue: null
+    package: Api.Js.SxcJs
+  - uid: Api.Js.SxcJs.CommandNames.template
+    name: template
     children: []
     langs:
       - typeScript
@@ -264,30 +282,12 @@ items:
     type: field
     numericValue: null
     package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.templateQuery
-    name: templateQuery
-    children: []
-    langs:
-      - typeScript
-    summary: "`template-query` opens the pipeline/query-designer in a new window.\n<br> \U0001F518 It's not available on the simple Content App, only on full Apps.\nIt is disabled if no query is configured.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
-    type: field
-    numericValue: null
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.templateSettings
-    name: templateSettings
+  - uid: Api.Js.SxcJs.CommandNames.view
+    name: view
     children: []
     langs:
       - typeScript
     summary: "`template-settings` will change settings on the template currently used\n<br> \U0001F510 Toolbar shows this automatically to elevated admins."
-    type: field
-    numericValue: null
-    package: Api.Js.SxcJs
-  - uid: Api.Js.SxcJs.CommandNames.zone
-    name: zone
-    children: []
-    langs:
-      - typeScript
-    summary: "`zone` opens the system dialog for this zone/site.\n<br> \U0001F510 Toolbar shows this automatically to elevated admins.\n<br> \U0001F4E9 No params required,\n(auto-detected from context)"
     type: field
     numericValue: null
     package: Api.Js.SxcJs

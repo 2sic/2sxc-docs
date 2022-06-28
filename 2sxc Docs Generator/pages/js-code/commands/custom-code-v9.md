@@ -94,4 +94,4 @@ The second example shows 3 additional variables which are available inside the c
 ### History
 
 1. Introduced in 2sxc v08.06
-1. Basically [obsolete since v10](xref:Api.Js.SxcJs.CommandCustomParams) where you should use `call` instead
+1. Basically [obsolete since v10](xref:Api.Js.SxcJs.CommandCodeParams) where you should use `call` instead

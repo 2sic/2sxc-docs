@@ -1,2 +1,2 @@
 
-Moved to [](xref:Api.Js.SxcJs.CommandContentItemsParams)
+Moved to [](xref:Api.Js.SxcJs.CommandDataParams)

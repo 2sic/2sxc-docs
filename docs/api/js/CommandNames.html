@@ -203,19 +203,10 @@ This is different than new, which opens a dialog to add something.
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_contentItems">contentItems</td>
-        <td><p><code>contentitems</code> opens the list to manage all items of a specific content-type.
-<br> 🔘 Will use the settings of the current template to open.
-It is only shown to elevated admins.
-<br> 📩 <a class="xref" href="CommandContentItemsParams.html#Api_Js_SxcJs_CommandContentItemsParams">Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td id="Api_Js_SxcJs_CommandNames_contentType">contentType</td>
-        <td><p><code>contenttype</code> opens the dialog to view or modify fields of a content-type.
-<br> 🔘 On a toolbar it will use the content-type of the current item.
-<br> 🔐 Toolbar shows this automatically to elevated admins.
-<br> 📩 <a class="xref" href="CommandContentTypeParams.html#Api_Js_SxcJs_CommandContentTypeParams">Parameters</a></p>
+        <td id="Api_Js_SxcJs_CommandNames_code">code</td>
+        <td><p><code>code</code> will execute custom javascript.
+<br> 🔘 This is mainly for toolbars, to add buttons with custom code.
+<br> 📩 <a href="xref:Api.Js.SxcJs.CommandCustomParams">Parameters</a></p>
 </td>
       </tr>
       <tr>
@@ -226,10 +217,11 @@ It is only shown to elevated admins.
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_custom">custom</td>
-        <td><p><code>custom</code> will execute custom javascript.
-<br> 🔘 This is mainly for toolbars, to add buttons with custom code.
-<br> 📩 <a class="xref" href="CommandCustomParams.html#Api_Js_SxcJs_CommandCustomParams">Parameters</a></p>
+        <td id="Api_Js_SxcJs_CommandNames_data">data</td>
+        <td><p><code>data</code> opens the list to manage all items of a specific content-type.
+<br> 🔘 Will use the settings of the current template to open.
+It is only shown to elevated admins.
+<br> 📩 <a class="xref" href="CommandDataParams.html#Api_Js_SxcJs_CommandDataParams">Parameters</a></p>
 </td>
       </tr>
       <tr>
@@ -245,7 +237,8 @@ It is only shown to elevated admins.
         <td id="Api_Js_SxcJs_CommandNames_edit">edit</td>
         <td><p><code>edit</code> opens an edit-dialog.
 <br>
-In scenarios where the page is currently showing a demo item, this will have the same effect as <code>add</code>
+In scenarios where the page is currently showing a <em>demo item</em>, this will have the same effect as <code>add</code>.
+So instead of editing the <em>demo item</em> it would trigger a dialog to add a new item.
 <br> 🔘 Only appears if <code>entityId</code> is known or item is in a list.
 <br> 📩 Parameters either one of these:
 <a class="xref" href="CommandParamsEntityById.html#Api_Js_SxcJs_CommandParamsEntityById">Id</a>,
@@ -255,23 +248,31 @@ In scenarios where the page is currently showing a demo item, this will have the
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_insightsServer">insightsServer</td>
-        <td><p><code>insights-server</code> opens the insights logs page
+        <td id="Api_Js_SxcJs_CommandNames_fields">fields</td>
+        <td><p><code>fields</code> opens the dialog to view or modify fields of a content-type.
+<br> 🔘 On a toolbar it will use the content-type of the current item.
+<br> 🔐 Toolbar shows this automatically to elevated admins.
+<br> 📩 <a class="xref" href="CommandContentTypeParams.html#Api_Js_SxcJs_CommandContentTypeParams">Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_insights">insights</td>
+        <td><p><code>insights</code> opens the insights logs page
 <br> 🔐 Toolbar shows this automatically to elevated admins.
 <br> 📩 No params required.</p>
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_instanceList">instanceList</td>
-        <td><p><code>instance-list</code> opens a dialog to manually re-order <strong>items in a list</strong>.
-<br> 🪜 Only appears on toolbars of items which are in a list.
+        <td id="Api_Js_SxcJs_CommandNames_layout">layout</td>
+        <td><p><code>layout</code> opens the in-page dialog to change the layout of the current content.
 <br> 📩 No params required,
 (auto-detected from context)</p>
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_layout">layout</td>
-        <td><p><code>layout</code> opens the in-page dialog to change the layout of the current content.
+        <td id="Api_Js_SxcJs_CommandNames_list">list</td>
+        <td><p><code>instance-list</code> opens a dialog to manually re-order <strong>items in a list</strong>.
+<br> 🪜 Only appears on toolbars of items which are in a list.
 <br> 📩 No params required,
 (auto-detected from context)</p>
 </td>
@@ -334,6 +335,16 @@ Otherwise it just creates it and the visualization will differ depending on the 
 </td>
       </tr>
       <tr>
+        <td id="Api_Js_SxcJs_CommandNames_query">query</td>
+        <td><p><code>template-query</code> opens the pipeline/query-designer in a new window.
+<br> 🔘 It&#39;s not available on the simple Content App, only on full Apps.
+It is disabled if no query is configured.
+<br> 🔐 Toolbar shows this automatically to elevated admins.
+<br> 📩 No params required,
+(auto-detected from context)</p>
+</td>
+      </tr>
+      <tr>
         <td id="Api_Js_SxcJs_CommandNames_remove">remove</td>
         <td><p><code>remove</code> removes an item from a list of items.
 <br> 🪜 Only appears on toolbars of items which are in a list.
@@ -349,7 +360,15 @@ Otherwise it just creates it and the visualization will differ depending on the 
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_templateDevelop">templateDevelop</td>
+        <td id="Api_Js_SxcJs_CommandNames_system">system</td>
+        <td><p><code>system</code> opens the system dialog for this zone/site.
+<br> 🔐 Toolbar shows this automatically to elevated admins.
+<br> 📩 No params required,
+(auto-detected from context)</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Api_Js_SxcJs_CommandNames_template">template</td>
         <td><p><code>template-develop</code> opens the template-editor dialog in a new window.
 <br> 🔐 Toolbar shows this automatically to elevated admins.
 <br> 📩 No params required,
@@ -357,27 +376,9 @@ Otherwise it just creates it and the visualization will differ depending on the 
 </td>
       </tr>
       <tr>
-        <td id="Api_Js_SxcJs_CommandNames_templateQuery">templateQuery</td>
-        <td><p><code>template-query</code> opens the pipeline/query-designer in a new window.
-<br> 🔘 It&#39;s not available on the simple Content App, only on full Apps.
-It is disabled if no query is configured.
-<br> 🔐 Toolbar shows this automatically to elevated admins.
-<br> 📩 No params required,
-(auto-detected from context)</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Api_Js_SxcJs_CommandNames_templateSettings">templateSettings</td>
+        <td id="Api_Js_SxcJs_CommandNames_view">view</td>
         <td><p><code>template-settings</code> will change settings on the template currently used
 <br> 🔐 Toolbar shows this automatically to elevated admins.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Api_Js_SxcJs_CommandNames_zone">zone</td>
-        <td><p><code>zone</code> opens the system dialog for this zone/site.
-<br> 🔐 Toolbar shows this automatically to elevated admins.
-<br> 📩 No params required,
-(auto-detected from context)</p>
 </td>
       </tr>
     </tbody>

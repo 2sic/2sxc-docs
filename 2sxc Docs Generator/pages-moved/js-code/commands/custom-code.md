@@ -1,2 +1,2 @@
 
-Moved to [](xref:Api.Js.SxcJs.CommandCustomParams)
+Moved to [](xref:Api.Js.SxcJs.CommandCodeParams)

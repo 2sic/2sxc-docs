@@ -132,7 +132,7 @@ Commands can be called with additional workflow steps which are processed before
 
 ## Command With Custom Code
 
-There is a command called **custom** which is meant to be used for this. Check out the example on [Custom Code](xref:Api.Js.SxcJs.CommandCustomParams)
+There is a command called **custom** which is meant to be used for this. Check out the example on [Custom Code](xref:Api.Js.SxcJs.CommandCodeParams)
 
 ## All Commands & Parameters
 
@@ -140,9 +140,9 @@ There is a command called **custom** which is meant to be used for this. Check o
 
 Details about some specific commands: 
 
-1. [ContentItems with Filters](xref:Api.Js.SxcJs.CommandContentItemsParams)
+1. [ContentItems with Filters](xref:Api.Js.SxcJs.CommandDataParams)
 1. [Delete](xref:Api.Js.SxcJs.CommandDeleteParams)
-1. [Custom Code](xref:Api.Js.SxcJs.CommandCustomParams)
+1. [Custom Code](xref:Api.Js.SxcJs.CommandCodeParams)
 
 ## Demo App and further links
 

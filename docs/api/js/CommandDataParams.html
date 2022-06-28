@@ -13,9 +13,11 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Use the Old Signature of Custom Code up to V9 | 2sxc 13 / EAV 13 </title>
+    <title>Interface CommandDataParams
+   | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Use the Old Signature of Custom Code up to V9 | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Interface CommandDataParams
+   | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -24,7 +26,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="../../js-code/toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -114,9 +116,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.Commands.CustomCode.V9">
-<h1 id="use-the-old-signature-of-custom-code-up-to-v9">Use the Old Signature of Custom Code up to V9</h1>
-
+            <article class="content wrap" id="_content" data-uid="Api.Js.SxcJs.CommandDataParams">
+  
+  
+  <h1 id="Api_Js_SxcJs_CommandDataParams" data-uid="Api.Js.SxcJs.CommandDataParams">Interface CommandDataParams
+  </h1>
+  <div class="markdown level0 summary"><p>Parameters used for the command <code>data</code>.
+<br>
+The content-type name determines what items will be managed.
+<br>
+⤴️ back to <a class="xref" href="CommandNames.html#Api_Js_SxcJs_CommandNames">All Command Names</a></p>
+</div>
+  <div class="markdown level0 conceptual"><h3 id="cms-command-contentitems">CMS Command <code>contentitems</code></h3>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -238,75 +249,127 @@
   </div>
 </div><style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-
-
-<h2 id="how-to-use-old-v9">How to use OLD v9</h2>
+<p>This button opens the admin-dialog with all content-items. It has a feature which also allows you to add filters.</p>
+<p>TODO: UPDATE TO SHOW MODERN TOOLBAR + USE ID Array of items in v14.02</p>
+<h2 id="how-to-use">How to use</h2>
 <p>Here&#39;s a basic example showing a 2sxc-toolbar with a custom code:</p>
-<pre><code class="lang-html">&lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;{
-    &quot;groups&quot;: [{ 
-        &quot;buttons&quot;: [{ 
-            &quot;command&quot;: { 
-                &quot;action&quot;: &quot;custom&quot;, 
-                &quot;customCode&quot;: &quot;alert(\&quot;custom button!\&quot;)&quot;
-            }
-        }]
-    }]
-}&#39;&gt;&lt;/ul&gt;
-</code></pre><p>This shows 2sxc-toolbar with 1 button, calling the <a class="xref" href="index.html">command</a> <strong>custom</strong> and giving it the code <strong>customCode</strong> which will be executed. </p>
-<p>Here&#39;s a more extensive example:</p>
-<pre><code class="lang-html">&lt;div class=&quot;sc-element&quot;&gt;
-    custom js action
-    &lt;ul class=&quot;sc-menu&quot; data-toolbar=&#39;{&quot;groups&quot;: [
-        { &quot;buttons&quot;: [
-            { 
-                &quot;command&quot;: { 
-                    &quot;action&quot;: &quot;custom&quot;, 
-                    &quot;customCode&quot;: &quot;alert(\&quot;custom button!\&quot;)&quot;
-                },
-                &quot;icon&quot;: &quot;icon-sxc-code&quot;, 
-                &quot;title&quot;: &quot;my custom code&quot;
-            },{
-                &quot;command&quot;: {
-                    &quot;action&quot;: &quot;custom&quot;, 
-                    &quot;customCode&quot;: &quot;someCustomAction(settings, event, sxc);&quot;
-                }, 
-                &quot;icon&quot;: &quot;icon-sxc-code&quot;, 
-                &quot;title&quot;: &quot;my custom code&quot;
-            },
-            &quot;layout&quot;, 
-            &quot;more&quot;
-        ]}, {
-            &quot;buttons&quot;: &quot;layout,more&quot;
-        }
-    ], &quot;debug&quot;: true}&#39;&gt;&lt;/ul&gt;
+<pre><code class="lang-razor">@* Example using hover TagToolbar (recommended) *@
+&lt;div @Edit.TagToolbar(toolbar: new {
+    action = &quot;contentitems&quot;,
+    contentType= &quot;Tag&quot;,
+    filters = new {  ManualWeight = 2 })&gt;
+...
 &lt;/div&gt;
 
-&lt;script&gt;
-    function someCustomAction(settings, event, sxc) {
-        console.log(&quot;found these settings: &quot;, settings); 
-        console.log(&quot;for this click event: &quot;, event); 
-        console.log(&quot;in the context of this sxc: &quot;, sxc);
-        alert(&quot;check js console output&quot;);
-    }
-&lt;/script&gt;
-</code></pre><p>The above example also provides a custom icon, a title and a second button which also knows about the <strong>event</strong> (the click), the <strong>settings</strong> (like the entityId) and the <strong>sxc</strong> (the controller).</p>
-<h2 id="how-it-works">How it works</h2>
-<p>Internally, the <strong>command</strong> custom is meant to simply execute the code which is in the attribute <code>customCode</code>. That&#39;s all it does. </p>
-<h2 id="json-encode-if-using-data-toolbar-attribute">JSON Encode if using data-toolbar attribute</h2>
-<p>If you&#39;re adding this in the HTML, then everything must be correctly JSON encoded (which isn&#39;t exactly fun). So if you plan to do that, we recommend to put most of the JS in an external file and just put the call to it in the button itself. </p>
-<h2 id="more-specs-on-click">More Specs On Click</h2>
-<p>The second example shows 3 additional variables which are available inside the click event. They are</p>
+@* Example using inline Toolbar (not recommended) *@
+&lt;div&gt;
+    @Edit.Toolbar(toolbar: new {
+        action = &quot;contentitems&quot;,
+        contentType= &quot;Tag&quot;,
+        filters = new {  ManualWeight = 2 })
+...
+&lt;/div&gt;
+</code></pre><p>This shows a button which opens the table with all <strong>Tag</strong> items and filters for ManualWeight = 2. Let&#39;s try a more complex setup:</p>
+<pre><code class="lang-razor">@* Example using hover TagToolbar (recommended) *@
+&lt;div @Edit.TagToolbar(
+    toolbar: new object[] {
+        new { action = &quot;contentitems&quot;,
+            contentType= &quot;Tag&quot;,
+            filters = new {  ManualWeight = 2 }
+        },
+        new { action = &quot;contentitems&quot;,
+            contentType= &quot;BlogPost&quot;,
+            filters = new {Tags = new[] { tag.Tag } }
+        }
+    },
+    settings: new { show = &quot;always&quot; })&gt;
+...
+&lt;/div&gt;
+</code></pre><p>This shows 2sxc-toolbar with 2 buttons, one opening tag-management (filtered by ManualWeight), the other opens all BlogPosts filtering by Tag. It also has some settings which always show it, even if the mouse is not hovering.</p>
+<h3 id="possible-filters-on-contentitems">Possible filters on contentitems</h3>
+<p>The filters-object is a JS-object with properties. We&#39;re still working on the format, but for now it&#39;s probably</p>
+<ol>
+<li>NumberPropertyName: ##</li>
+<li>StringPropertyName: <code>&quot;...&quot;</code></li>
+<li>BoolPropertyName: <code>true</code></li>
+<li>EntityPropertyName: <code>[&quot;title1&quot;, &quot;title2&quot;, ...]</code> list of values to check</li>
+<li>EntityPropertyName: <code>[ 203004, 40203 ]</code> // list of IDs to check</li>
+<li>IsPublished: true</li>
+<li>IsMetadata: true</li>
+</ol>
+<h3 id="read-also">Read also</h3>
 <ul>
-<li>settings - these are the parameters passed in, like entityId</li>
-<li>event - this is the JS event like click</li>
-<li>sxc - this is the current sxc-controller - you can also access sxc.manage if you need it</li>
+<li><a class="xref" href="../../js-code/commands/index.html">commands</a></li>
 </ul>
-<hr>
+<h3 id="demo-app-and-further-links">Demo App and further links</h3>
+<ul>
+<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms</a> uses the contentitems command to let the admin see the forms-records for his use case only</li>
+</ul>
 <h3 id="history">History</h3>
 <ol>
 <li>Introduced in 2sxc v08.06</li>
-<li>Basically <a class="xref" href="../../api/js/CommandCodeParams.html#Api_Js_SxcJs_CommandCodeParams">obsolete since v10</a> where you should use <code>call</code> instead</li>
+<li>Filters introduced in 2sxc v08.08</li>
+<li>Filters improved to support id-array in v13.0</li>
+<li>Code improved in v14.02 so new toolbar syntax with <code>contentitems?filter:parent=[5030]</code> works - before this didn&#39;t work as expected</li>
 </ol>
+<hr>
+</div>
+  <h6><strong>Package</strong>: <a class="xref" href="index.html">Api.Js.SxcJs</a></h6>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <h4 id="Api_Js_SxcJs_CommandDataParams_contentType" data-uid="Api.Js.SxcJs.CommandDataParams.contentType">contentType</h4>
+  <div class="markdown level1 summary"><p>The content-type name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">contentType: string</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Api_Js_SxcJs_CommandDataParams_filters" data-uid="Api.Js.SxcJs.CommandDataParams.filters">filters</h4>
+  <div class="markdown level1 summary"><p>Filters to apply to the list of items.
+<br>
+Each property targets a field.
+The value is a string, number or array for filtering EntityIds or EntityGuids</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-typeScript hljs">filters?: Record&lt;string, string | number | string[] | number[]&gt;</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Record&lt;string, string | number | string[] | number[]&gt;</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -315,7 +378,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/commands/custom-code-v9.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/commands/CommandContentItemsParams_merge.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

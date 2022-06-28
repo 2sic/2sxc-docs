@@ -1,5 +1,5 @@
 ---
-uid: Api.Js.SxcJs.CommandContentItemsParams
+uid: Api.Js.SxcJs.CommandDataParams
 ---
 
 ### CMS Command `contentitems`
