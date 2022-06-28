@@ -18,7 +18,7 @@ const prioUntyped = {
 }
 
 const prioTop = {
-  priority: "custom",
+  priority: "star",
   top: true,
 };
 exports.prioTop = prioTop.priority;
@@ -68,6 +68,9 @@ exports.prefixes = ['ToSic.Sxc', 'ToSic.Eav', 'Custom.'];
 
 exports.data = {
   "Custom.Hybrid": prioTop,
+  "Custom.Hybrid.Api14": prioTop,
+  "Custom.Hybrid.Code14": prioTop,
+  "Custom.Hybrid.Razor14": prioTop,
   "Custom.Dnn": prioUntyped,
   "Custom.Oqtane": prioUntyped,
   "ToSic.Eav": deprecated,
