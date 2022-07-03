@@ -11,9 +11,14 @@ uid: NetCode.Services.Index
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 
+## ServiceKits (new in v14)
+
+V14 introduces the concept of [ServiceKits](xref:NetCode.Services.ServiceKits).
+They give you access to all common services directly, without using `GetService<...>()`. 
+
 ## Standard Services
 
-As of 2sxc 13+ we publish all services which your Razor / C# code usually uses on [ToSic.Sxc.Services](xref:ToSic.Sxc.Services).
+As of 2sxc 13+ we publish all common services for your Razor / C# code on [ToSic.Sxc.Services](xref:ToSic.Sxc.Services).
 This helps you figure out what's in the box - just go check it out. 
 
 ## How Services Work

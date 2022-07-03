@@ -118,17 +118,19 @@
 <h1 id="inherits-base-classes-todoc--wip"><code>@inherits</code> Base Classes #todoc / WIP</h1>
 
 <p>Every Razor template inherits from a base class - and depending on that the features in the template will change. </p>
-<p>These are the base classes you can inherit from as of v12 (we&#39;ll explain ich in more detail below)</p>
+<p>These are the base classes you can inherit from as of v14 (we&#39;ll explain each in more detail below)</p>
 <ol>
+<li><code>Custom.Hybrid.Razor14</code> - new in v14</li>
 <li><code>Custom.Hybrid.Razor12</code> - new in v12</li>
-<li><code>ToSic.Sxc.Dnn.RazorComponent</code> - new in v12</li>
-<li>The old one #todoc</li>
+<li><code>Custom.Dnn.Razor12</code> - new in v12; same as Hybrid, but with <code>Dnn</code> property</li>
+<li><code>ToSic.Sxc.Dnn.RazorComponent</code> - new in v10</li>
+<li><code>ToSic.SexyContent.Razor.SexyContentWebPage</code> - very old since v2 - deprecated, but the default if nothing is set.</li>
 <li>Default in Oqtane</li>
 <li></li>
 </ol>
 <p>Important: If you don&#39;t specify an <code>@inherits</code> in your code, the system will automatically apply a default base class to your code. This is different in Dnn and Oqtane:</p>
 <ol>
-<li>In Dnn the default base class is <code>#todoc</code> as it&#39;s specified in a web.config somewhere.<br>This is the oldest base class and should not be used any more. </li>
+<li>In Dnn the default base class is <code>ToSic.SexyContent.Razor.SexyContentWebPage</code> as it&#39;s specified in a <code>web.config</code> in the 2sxc folder of each site.<br>This is the oldest base class and should not be used any more. </li>
 <li>In Oqtane the default base is <code>#todoc</code> which is the default for .net 5</li>
 </ol>
 <div style="background: #0088F444; overflow: auto">
@@ -138,10 +140,19 @@
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="details-about-each-base-class">Details about each Base Class</h2>
-<h3 id="customhybridrazor12">Custom.Hybrid.Razor12</h3>
+</div><h2 id="customhybridrazor14">Custom.Hybrid.Razor14</h2>
+<p>This is the newest base class and recommended to use. 
+It&#39;s almost identical with Razor12 with these differences:</p>
+<ol>
+<li>the <code>Kit</code> property is new, providing access to the ServiceKit called ServiceKit14</li>
+<li>the <code>Convert</code> property is removed, as it caused confusion with <code>System.Convert</code></li>
+</ol>
+<p>Note that the hybrid base classes don&#39;t have a <code>Dnn</code> property as they are hybrid and work on Oqtane and Dnn. </p>
+<p>If you think you need the Dnn property, best first check if the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.html">CmsContext</a> can&#39;t be used instead. </p>
+<p>Otherwise inherit from <code>Custom.Dnn.Razor12</code> and just get the Services you need with GetService.</p>
+<h2 id="customhybridrazor12">Custom.Hybrid.Razor12</h2>
 <p>This is the newest base class and was introduced in 2sxc 12. It contains the features which will work cross-platform on both Dnn and Oqtane. You should use this base class to create solutions / Apps which work on Dnn and Oqtane. </p>
-<h4 id="limitations-of-customhybridrazor12">Limitations of Custom.Hybrid.Razor12</h4>
+<h3 id="limitations-of-customhybridrazor12">Limitations of Custom.Hybrid.Razor12</h3>
 <p>Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support. </p>
 <ol>
 <li>The property <code>Dnn</code> doesn&#39;t exist on this base class, as it would lead to code which can&#39;t run cross-platform</li>

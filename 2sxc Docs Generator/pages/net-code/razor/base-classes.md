@@ -6,29 +6,43 @@ uid: NetCode.Razor.BaseClasses
 
 Every Razor template inherits from a base class - and depending on that the features in the template will change. 
 
-These are the base classes you can inherit from as of v12 (we'll explain ich in more detail below)
+These are the base classes you can inherit from as of v14 (we'll explain each in more detail below)
 
+1. `Custom.Hybrid.Razor14` - new in v14
 1. `Custom.Hybrid.Razor12` - new in v12
-1. `ToSic.Sxc.Dnn.RazorComponent` - new in v12
-1. The old one #todoc
+1. `Custom.Dnn.Razor12` - new in v12; same as Hybrid, but with `Dnn` property
+1. `ToSic.Sxc.Dnn.RazorComponent` - new in v10
+1. `ToSic.SexyContent.Razor.SexyContentWebPage` - very old since v2 - deprecated, but the default if nothing is set.
 1. Default in Oqtane
 1. 
 
 Important: If you don't specify an `@inherits` in your code, the system will automatically apply a default base class to your code. This is different in Dnn and Oqtane:
 
-1. In Dnn the default base class is `#todoc` as it's specified in a web.config somewhere.  
+1. In Dnn the default base class is `ToSic.SexyContent.Razor.SexyContentWebPage` as it's specified in a `web.config` in the 2sxc folder of each site.  
   This is the oldest base class and should not be used any more. 
 1. In Oqtane the default base is `#todoc` which is the default for .net 5
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
-## Details about each Base Class
+## Custom.Hybrid.Razor14
 
-### Custom.Hybrid.Razor12
+This is the newest base class and recommended to use. 
+It's almost identical with Razor12 with these differences:
+
+1. the `Kit` property is new, providing access to the ServiceKit called ServiceKit14
+1. the `Convert` property is removed, as it caused confusion with `System.Convert`
+
+Note that the hybrid base classes don't have a `Dnn` property as they are hybrid and work on Oqtane and Dnn. 
+
+If you think you need the Dnn property, best first check if the [CmsContext](xref:ToSic.Sxc.Context) can't be used instead. 
+
+Otherwise inherit from `Custom.Dnn.Razor12` and just get the Services you need with GetService.
+
+## Custom.Hybrid.Razor12
 
 This is the newest base class and was introduced in 2sxc 12. It contains the features which will work cross-platform on both Dnn and Oqtane. You should use this base class to create solutions / Apps which work on Dnn and Oqtane. 
 
-#### Limitations of Custom.Hybrid.Razor12
+### Limitations of Custom.Hybrid.Razor12
 
 Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support. 
 
