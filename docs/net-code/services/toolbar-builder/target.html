@@ -126,24 +126,25 @@ This <em>thing</em> is usually an Entity or a DynamicEntity. </p>
 <li>...for each button what target it will be for</li>
 <li>...both - in which case button-target takes precedence if set</li>
 </ul>
+<p>The target is usually the <em>first</em> parameter on every command, and does not need to be named. </p>
 <h2 id="entity-like-targets">Entity-Like Targets</h2>
 <p>Targets for most commands are entity-like, meaning they can be an <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.IEntity.html">Entity</a> or a <a class="xref" href="../../dynamic-data/dynamic-entity.html">Dynamic Entity</a>.</p>
 <h2 id="target-for-the-entire-toolbar">Target for the Entire Toolbar</h2>
 <p>Targets can be set globally for the toolbar, or specific for each button. </p>
-<p>To set it globally, you have 4 options:</p>
+<p>To set it globally, you have these options:</p>
 <ol>
 <li>On the first creation of the object - eg. <code>Kit.Toolbar.Default(item)</code></li>
 <li>At any time using <code>For(...)</code> eg. <code>Kit.Toolbar.Default().For(item)</code></li>
 <li>When setting global parameters eg. <code>Kit.Toolbar.Default().Parameters(item, prefill: &quot;Title=new item&quot;)</code></li>
 <li>If using <code>.AsTag()</code> you can also do <code>.AsTag(item)</code></li>
 </ol>
-<p>If your code ends up combining these variations, the last target set will be the one used. </p>
+<p>If your code does more than one of these, the last value will be the one used. </p>
 <h2 id="target-for-one-specific-button">Target for One Specific Button</h2>
-<p>Many methods accept an optional target. 
+<p>Many methods accept an optional <code>target</code>. 
 Is that case the button would be specifically for the item in the target, 
 and not for the main item of the toolbar. </p>
 <p>So you could do something like this</p>
-<pre><code>// Normal toolbar for Content, but also has an edit-button for the header
+<pre><code class="lang-c#">// Normal toolbar for Content, but also has an edit-button for the header
 var tlb = Kit.Toolbar.Default(Content).Edit(Header, ui: &quot;color=red&quot;);
 </code></pre><div class="TIP"><h5>Tip</h5><p>In many cases you will only set it for the toolbar, and not for the item. 
 Setting the target for the item is important if the toolbar shows buttons to operate on different objects. </p>
