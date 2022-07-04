@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Toolbar Builder Guide | 2sxc 13 / EAV 13 </title>
+    <title>Toolbar Builder Guide &#8211; Parameters | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Toolbar Builder Guide | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="Toolbar Builder Guide &#8211; Parameters | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,35 +114,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ToolbarBuilder.Index">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ToolbarBuilder.Parameters">
 
 <p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
-<h1 id="toolbar-builder-guide">Toolbar Builder Guide</h1>
-<p>These docs should help with various aspects of the Toolbar Builder.</p>
-<h2 id="basics">Basics</h2>
-<p>Just for context: usually you will use the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IToolbarService.html">IToolbarService</a>
-to get a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.html">IToolbarBuilder</a>.</p>
-<p>You will typically do something like this:</p>
-<pre><code class="lang-razor">var customTlb = Kit.Toolbar.Empty().Edit(Content);
-&lt;div @customTlb&gt;
-&lt;/div&gt;
-</code></pre><p>Almost all commands will return a new toolbar builder with the modified configuration.
-This means you can chain the commands as you need them. </p>
-<p>It also means that each object is <em>immutable</em>. To understand this, check out this example:</p>
-<pre><code class="lang-razor">@{
-var tlbGeneral = Kit.Toolbar.Empty().Edit(Content);
-// Create another toolbar which builds upon the original
-// This will not modify the first tlbGeneral object
-var tlbItem = tlbGeneral.MoveUp().MoveDown();
-}
-
-@foreach(var post in App.Data[&quot;BlogPosts&quot;]) {
-  &lt;!-- this will show the toolbar, but never change the inner configuration --&gt;
-  &lt;li @tlbItem.For(post)&gt;
-    ...
-  &lt;/li&gt;
-}
-</code></pre></article>
+<h1 id="toolbar-builder-guide--parameters">Toolbar Builder Guide – Parameters</h1>
+<p>The <strong>Parameters</strong> are used in the command. </p>
+<p>Parameters can be specified globally for the entire toolbar, or just for a specific button. </p>
+<p>TODO:</p>
+<p>It is given to the commands using the <code>parameters</code> parameter like this:</p>
+<pre><code>TODO
+</code></pre><p>There are two ways you can specify <code>ui</code>. 
+Either as a string - like this:</p>
+<pre><code class="lang-c#">ui: &quot;color=red&quot;
+</code></pre><p>Or as an object (since v14.04) - like this: </p>
+<pre><code class="lang-c#">ui: new { color = &quot;red&quot; }
+</code></pre><p>TODO: </p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -150,7 +137,7 @@ var tlbItem = tlbGeneral.MoveUp().MoveDown();
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/toolbar-builder/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/toolbar-builder/parameters.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
