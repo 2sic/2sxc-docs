@@ -15,7 +15,7 @@ Each in page toolbar can have some settings which control how it works and how i
 
 These Settings control how the Toolbar works
 
-1. `autoAddMore` determines if an ellipsis button is added automatically
+1. `autoAddMore` determines _where_ the ellipsis "more" button is added when the toolbar has many button-groups
 1. `hover` determines where the toolbar appears when the mouse hovers over the area
 1. `follow` tells the toolbar to follow the mouse - ideal for large content blocks 
 1. `show` determines if th toolbar is always visible, or only on hover
@@ -55,8 +55,8 @@ If you are writing code that doesn't have Razor (for example in a JS-SPA scenari
 
 ## Settings and Values
 
-1. string `autoAddMore`: **(null)** | "start" | "end"  
-will automatically add a "..." (more) button if multiple button groups are detected
+1. string `autoAddMore`: **(null)** | `start` | `end`  
+will automatically add a "..." (more) button if multiple button groups are detected. Default is `end`
 1. string `hover`: **"right"** | "left" | "none"  ("center" ist still beta)
 determines where the toolbar appears when the mouse hovers over the area (usually a DIV) with the class `sc-element`
 1. string `follow` _new in 11.06_ **"none"** | "initial" | "scroll" | "always"  

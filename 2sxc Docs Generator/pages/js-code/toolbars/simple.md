@@ -33,7 +33,10 @@ You can customize just about everything:
 1. you can even call custom code from your custom buttons
 
 > [!TIP]
-> This overview will get you started, anything more advanced will need the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
+> This overview will get you started, anything more advanced will need the 
+> 
+> * [specs](xref:Basics.Browser.EditUx.Toolbars.Customize)
+> * [button UI rules](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)
 
 > [!IMPORTANT]
 > This will show you how to do things in Razor, but the same principles apply to plain HTML-Toolbars. 

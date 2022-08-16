@@ -135,14 +135,29 @@ Is that case the button would have their own UI settings. </p>
 <p>So you could do something like this</p>
 <pre><code class="lang-c#">// Normal toolbar for Content, but also has an edit-button for the header
 var tlb = Kit.Toolbar.Default(Content).New(ui: &quot;color=blue,white&quot;);
-</code></pre><h2 id="ui-as-string-or-object">UI as String or Object</h2>
+</code></pre><h2 id="ui-as-string-object-or-combinations-thereof">UI as String, Object or Combinations Thereof</h2>
 <p>There are two ways you can specify <code>ui</code>. 
 Either as a string - like this:</p>
 <pre><code class="lang-c#">ui: &quot;color=red&amp;classes=extra-glow&quot;
 </code></pre><p>Or as an object (since v14.04) - like this: </p>
 <pre><code class="lang-c#">ui: new { color = &quot;red&quot;, classes = &quot;extra-glow&quot; }
-</code></pre><hr>
-<p>See also the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></p>
+</code></pre><p>Or as a combination of strings and objects (v14.07.05+):</p>
+<pre><code class="lang-c#">ui: new object[] { &quot;color=red&quot;, new { classes = &quot;extra-glow&quot; } }
+</code></pre><h2 id="complex-strings-will-be-made-safe-with-base64-v140705">Complex Strings will be Made Safe with Base64 (v14.07.05+)</h2>
+<div class="TIP"><h5>Tip</h5><p>This feature is mainly used for the <code>icon</code> property, which could contain an SVG string. </p>
+</div>
+<p>If you use an object which has complex string (which wouldn&#39;t survive a URL) then it will be made safe. 
+So you can do this:</p>
+<pre><code class="lang-c#">  // https://fonts.google.com/icons?icon.query=sticky+note
+  var iconNote = &quot;&lt;svg xmlns=\&quot;http://www.w3.org/2000/svg\&quot; height=\&quot;48\&quot; width=\&quot;48\&quot;&gt;&lt;path d=\&quot;M9 39h20V29h10V9H9v30Zm0 3q-1.25 0-2.125-.875T6 39V9q0-1.25.875-2.125T9 6h30q1.25 0 2.125.875T42 9v21L30 42Zm6-15v-3h8.5v3Zm0-8v-3h18v3ZM9 39V9v30Z\&quot;/&gt;&lt;/svg&gt;&quot;;
+  var tlb = Kit.Toolbar.Default().Edit(ui: new { Icon = iconNote })
+</code></pre><p>Note that this auto-conversion only happens on <strong>objects</strong> handed to the <code>ui</code> property and not to <strong>strings</strong>.</p>
+<hr>
+<p>See also </p>
+<ul>
+<li>the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></li>
+<li>list of all <a class="xref" href="../../../basics/edit/edit-ux/toolbars/button-ui.html">common UI parameters can be found here</a></li>
+</ul>
 </article>
           </div>
           

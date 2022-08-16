@@ -93,7 +93,7 @@ The toolbar currently doesn't have any additional parameters. But you can add `&
 
 Settings affect how the toolbar is shown. These are the known settings:
 
-* `&color=...` - specify a different button - see [color](#colors)
+* `&color=...` - specify a different button - see [color](xref:Basics.Browser.EditUx.Toolbars.ButtonUi#color)
 * `&hover=left` or `=right` or `=none` - default is `right`
 * `&class=my-class` to add one or more classes to the toolbar
 
@@ -107,14 +107,16 @@ Groups currently don't have additional parameters.
 
 ### Build Parameters for Buttons
 
-Buttons can have the following parameters:
+👉🏼 see [Button UI Rules](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)
+
+<!-- Buttons can have the following parameters:
 
 * `&icon=icon-class-name` allows you to set an alternate icon
 * `&color=...` gives the button another - see [color](#colors)
 * `&show=true` or `&show=false` - force show/hide a button  
 Most common use case is to force-show or hide an existing button. For example, if you think it's ok to show the delete button, just use `delete&show=true`
 * `&class=your-class` add one or more classes to the button to affect styling
-* `&title=some-text` - mouseover message
+* `&title=some-text` - mouseover message -->
 
 
 ## Call Parameters (`?`)
