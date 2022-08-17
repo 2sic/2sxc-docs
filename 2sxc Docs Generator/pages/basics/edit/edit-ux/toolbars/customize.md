@@ -105,18 +105,11 @@ Params don't have any additional settings - they only have parameters (after the
 
 Groups currently don't have additional parameters.
 
+👉🏼 see also [](xref:Basics.Browser.EditUx.Toolbars.ButtonGroups)
+
 ### Build Parameters for Buttons
 
 👉🏼 see [Button UI Rules](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)
-
-<!-- Buttons can have the following parameters:
-
-* `&icon=icon-class-name` allows you to set an alternate icon
-* `&color=...` gives the button another - see [color](#colors)
-* `&show=true` or `&show=false` - force show/hide a button  
-Most common use case is to force-show or hide an existing button. For example, if you think it's ok to show the delete button, just use `delete&show=true`
-* `&class=your-class` add one or more classes to the button to affect styling
-* `&title=some-text` - mouseover message -->
 
 
 ## Call Parameters (`?`)
@@ -206,28 +199,6 @@ The metadata parameters are for creating new metadata or editing existing data. 
 > The entityId should be 0 when no entity exists yet. 
 
 To use metadata, read more about metadata (TODO).
-
-
-
-## Special Notes
-
-### Colors
-
-Both `settings` and `buttons` can have an `&color=...` parameter. The `...` can be just one color or two, like `&color=red,green` or `&color=brown`. 
-
-When specifying colors you can either use standard names like `red` or HEX-codes like `FF0000`. You cannot use the `#` hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes. 
-
-Note that you can also use semi-transparent hex-codes, like `FF000088`. 
-
-### Groups
-
-The following button groups exist by default. You can target them to add your buttons, or remove them using `-group=name`:
-
-* `default` - the main initial buttons like edit, add etc.
-* `list` - anthing having to do with the current list - move-up/down etc.
-* `edit-advanced` - advanced, not-recommended buttons like `delete`
-* `view` - anything related to the view - edit template etc.
-* `app` - app related buttons
 
 
 
