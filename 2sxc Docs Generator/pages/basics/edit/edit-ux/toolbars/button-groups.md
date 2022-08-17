@@ -28,12 +28,6 @@ The following button groups exist by default. You can target them to add your bu
 
 
 
-## Read also
-
-* check out the list of [commands/buttons](xref:JsCode.Commands.Index)
-
-
-
 ## History
 
 1. Introduced custom Toolbars in 2sxc ca. v5

@@ -218,7 +218,7 @@ You'll get this result, and hitting the ellipsis will show you the default butto
 > When using position like `pos=#` you may have unexpected results, because the button is added to the list _before_ some buttons decide to hide themselves. 
 > So you may think you're adding it to `pos=1` but if the edit button (which would be at position 0) shouldn't be shown, your button will still appear to be the first one.
 
-There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Basics.Browser.EditUx.Toolbars.Customize) here. As of now, it only contains the `delete` button which is hidden by default. 
+There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Basics.Browser.EditUx.Toolbars.ButtonGroups) here. As of now, it only contains the `delete` button which is hidden by default. 
 
 
 ## Attaching Custom JavaScript Code to a Button
