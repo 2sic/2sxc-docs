@@ -7,7 +7,7 @@ uid: Abyss.Releases.History.V14
 ## 14.07.05
 
 * ToolbarBuilder now has `Group` command
-* 
+* Toolbar Buttons can now use SVGs for icons (usually base64 encoded)
 * ...
 
 ## Important Issues

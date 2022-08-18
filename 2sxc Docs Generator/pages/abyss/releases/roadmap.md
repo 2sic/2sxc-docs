@@ -8,22 +8,19 @@ The 2sxc roadmap contains the things we think are fairly important to tackle nex
 
 ## Priorities 2022 Q3 v14
 
-_Updated 2022-08-11_
+_Updated 2022-08-17_
 
 Finish-Fine-Tune existing stuff from Q2
 
 1. Improve UI/Flow of system registration (ATM still confusing) - ca. 1-2d
-1. Deprecation System - ca. 2d
-1. Toolbars Service Improvements (icon-metadata, notes, ...) - ca. 2d
+1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
+1. Toolbars Service Improvements (✅ icon-metadata, ✅ group, data, ✅ base64, ✅ ui multiple params, params mult. params, bugfixes...) - ca. 2d
 1. Formulas - ca. 2d
   1. Formula Boost #3 (intellisense in Formulas, entity-type info)
   1. JS Docs for formula
 1. CSP - ca. 5d
   1. CSP for the Edit UI incl. custom extensions etc.
   1. CSP Tutorials, docs and more
-1. Language editing permissions - improve, test, finalize, document - ca. 3-5d
-  1. also allow non-admins to possibly translate resources
-1. Note-feature to add notes to various things like entities, fields etc. - ca. 2-3d
 1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d
 1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
@@ -33,7 +30,7 @@ New Stuf and Major Enhancements
 1. Improved custom DataSources API - ca. 1d
 1. New data sources like: Users, Roles, ADAM (Files, Folders), Navigation - ca. 1d
 1. Improve data sources for Pages - ca. 0.5d
-1. create a new `_app.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d
+1. create a new `2sxc.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d
 1. More Tutorials Formulas (dropdown values from api-call, ...) - ca. 0.5d
 1. Notes everywhere - especially on the page - ca. 2d
 1. Code editor intellisense for most APIs - ca. 3-4d
@@ -58,7 +55,9 @@ New Stuf and Major Enhancements
 1. Improve WYSIWYG
   1. Sections to better allign images
   1. Images which auto-resize based on size
+1. Note-feature to add notes to various things like entities, fields etc. (show, persist show, add to all kinds of things, ...) - ca. 3d
 1. Oqtane Theme release
+1. Change storage of `app.xml` to `App_Data`, change how import works and enable import-from-folder/git
 1. Blazor / Oqtane CMS Website to demo functionality & features
 1. CSP for Oqtane
   1. It's partially done, but docs are missing
@@ -66,6 +65,8 @@ New Stuf and Major Enhancements
 1. sxc-angular
   1. Re-release sxc-angular and demo-app for it
   1. Js Docs for sxc-angular
+1. Language editing permissions - improve, test, finalize, document - ca. 3-5d
+  1. also allow non-admins to possibly translate resources
 1. Review dropping `_` prefix requirement on cshtml files by protecting them in an additional manner
   1. It's not needed on Oqtane, as the files are not accessible
   1. Only needed ATM on DNN because each file could be called from the browser directly
