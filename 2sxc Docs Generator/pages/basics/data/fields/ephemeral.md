@@ -9,9 +9,14 @@ uid: Basics.Data.Fields.Ephemeral
 This explains **Ephemeral aka Temporary Variable Fields**. For an overview check out [](xref:Basics.Data.Index).
 
 > [!NOTE]
-> In v14 we added `data.parameters.*` which contains all parameters given in the prefill. 
+> In v14 we added `data.parameters.*` to the [Formulas](xref:Basics.Edit.Formulas.Index).
+> It containss all parameters given in the prefill. 
 > 
-> So in many cases, you may not even need to create ephemeral fields any more.
+> Since ephemeral fields are mainly used in [Formulas](xref:Basics.Edit.Formulas.Index), 
+> you may not need to ephemeral fields for your scenario.
+> 
+> The main reason to still use ephemeral fields over `parameters` is when you do additional initalization logic
+> which would be used in many Formulas in the form. 
 
 ---
 
