@@ -8,45 +8,63 @@ The 2sxc roadmap contains the things we think are fairly important to tackle nex
 
 ## Priorities 2022 Q3 v14
 
-_Updated 2022-08-17_
+_Updated 2022-08-22_
 
 Finish-Fine-Tune existing stuff from Q2
 
 1. Improve UI/Flow of system registration (ATM still confusing) - ca. 1-2d
 1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
-1. Toolbars Service Improvements (✅ icon-metadata, ✅ group, data, ✅ base64, ✅ ui multiple params, params mult. params, bugfixes...) - ca. 2d
-1. Formulas - ca. 2d
-  1. Formula Boost #3 (intellisense in Formulas, entity-type info)
-  1. JS Docs for formula
+1. Toolbars Service Improvements {started, ca. 1d of 3d left}
+  1. ✅ icon-metadata
+  1. ✅ group C# API
+  1. ✅ SVG icons
+  1. ✅ base64
+  1. ✅ ui multiple params
+  1. ✅ bugfixes
+  1. ⏳ params multiple params
+  1. ⏳ data
+  1. array params
+  1. ...
 1. CSP - ca. 5d
   1. CSP for the Edit UI incl. custom extensions etc.
   1. CSP Tutorials, docs and more
-1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d
-1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
+1. ⏳ Debug-logging on Oqtane client side code, bugfixing {ca. 0.5d}
 
 New Stuf and Major Enhancements
 
 1. Improved custom DataSources API - ca. 1d
-1. New data sources like: Users, Roles, ADAM (Files, Folders), Navigation - ca. 1d
+1. New data sources like: Users, Roles, ADAM (Files, Folders), Navigation - ca. 2d
 1. Improve data sources for Pages - ca. 0.5d
-1. create a new `2sxc.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d
+1. ⏳ Create a new `2sxc.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d
 1. More Tutorials Formulas (dropdown values from api-call, ...) - ca. 0.5d
-1. Notes everywhere - especially on the page - ca. 2d
 1. Code editor intellisense for most APIs - ca. 3-4d
-1. Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 1. v14 LTS #2 ca. v14.14
 
 Other
 
+1. Clean up JS code, latest webpack, packages etc. {started, ca. 1d}
 1. Infrastructure for automated testing of JS - ca. 5d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d
 
 Apps / App Maintenance
 
-1. Update most apps which used ephemeral variables for formulas to just use parameters (new in v14)
-1. New Timeline Apps
-1. New Files App
+1. ⏳ Update most apps which used ephemeral variables for formulas to just use parameters (new in v14) {started, ca. 0.5d}
+1. ✅ new Timeline Apps
+1. ✅ new Files App
+1. ✅ new Jobs
+1. New other apps
+
+Ongoing, probably not complete Q3
+
+1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
+1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
+1. Notes everywhere - especially on the page - ca. 2d
+1. Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
+1. Formulas - ca. 2d
+  1. Formula Boost #3 (intellisense in Formulas, entity-type info)
+  1. JS Docs for formula
+
 
 ## Priorities 2022 Q4 v14 / v15
 
@@ -80,6 +98,10 @@ New Stuf and Major Enhancements
 1. Create demo app with react
 1. More public headless APIs and Demos
 1. Oqtane Page/Module integration / use (also for notes etc.)
+
+Apps / App Maintenance
+
+1. Status App
 
 
 ## WIP / Ongoing Larger Projects / Enhancements
