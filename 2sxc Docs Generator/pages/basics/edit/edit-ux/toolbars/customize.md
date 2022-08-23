@@ -93,9 +93,14 @@ The toolbar currently doesn't have any additional parameters. But you can add `&
 
 Settings affect how the toolbar is shown. These are the known settings:
 
-* `&color=...` - specify a different button - see [color](xref:Basics.Browser.EditUx.Toolbars.ButtonUi#color)
-* `&hover=left` or `=right` or `=none` - default is `right`
-* `&class=my-class` to add one or more classes to the toolbar
+* `color=...` - specify a different button - see [color](xref:Basics.Browser.EditUx.Toolbars.ButtonUi#color)
+* `hover=left` or `=right` or `=none` - default is `right`
+* `class=my-class` to add one or more classes to the toolbar
+* `autoAddMore` = 
+  * `auto` _default_ end if right-float, start if left-float, new in 14.07.05
+  * `end` used to be the default
+  * `start`
+  * `never` new v14.07.05
 
 ### Build Parameters for Params (`params`)
 

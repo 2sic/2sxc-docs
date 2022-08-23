@@ -19,6 +19,7 @@ uid: Abyss.Platforms.Oqtane.Index
 
 ## Features currently not implemented
 
+1. The QuickE Toolbar is not implemented in Oqtane
 
 #### Global Content Files
 
