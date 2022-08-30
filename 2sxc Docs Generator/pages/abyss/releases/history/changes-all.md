@@ -10,12 +10,11 @@ This page collects all the changes of all versions into one place, making it eas
 
 ---
 
-## Version 1-7 (2012-2016)
-Didn't find time to document this :)
+[!include["All"](./v14/_all14.md)]
 
 ---
-[!include["All"](./v13/_all13.md)]
 
+[!include["All"](./v13/_all13.md)]
 
 ---
 
@@ -43,4 +42,8 @@ Didn't find time to document this :)
 
 [!include["All"](./v08/_all08.md)]
 
+---
 
+## Version 1-7 (2012-2016)
+
+Didn't find time to document this :)

@@ -23,6 +23,16 @@ It's been around since ca. 2001.
 | 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          |
 | 9.6.1+    | latest     | ✅ ca. v9 - latest    | ⛔ old versions    | changes to DI and .net 4.8
 
+## Upgrade Path
+
+We are very focused on making upgrades easy and pain-free. 
+Here's what you need to know:
+
+1. You can upgrade 2sxc by installing the latest version on a system which already has 2sxc installed.
+1. If you have a version _before_ 8.12, you must first upgrade to 8.12.
+1. In general when updating from v9 to v14 there are no expected problems. 
+1. Before going to v14 you must be running DNN 9.6.1 or newer.
+1. In _very rare cases_ you may be affected by [breaking changes](xref:Abyss.Releases.History.AllChanges)
 
 ## Features currently not implemented
 

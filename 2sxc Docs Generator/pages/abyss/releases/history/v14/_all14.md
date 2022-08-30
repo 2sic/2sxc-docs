@@ -1,12 +1,11 @@
----
-uid: Abyss.Releases.History.V14
----
 
-# All Changes in EAV and 2sxc v14
+## Version 14
 
-[!include["All Changes"](./_all14.md)]
+### 14.00 - 14.07.04 
 
-## 14.07.05
+TODO NOT YET DOCUMENTED - CHECK THE GITHUB PROJECT
+
+### 14.07.05
 
 * ToolbarBuilder now has `Group` command
 * Toolbar Buttons can now use SVGs for icons (usually base64 encoded)
