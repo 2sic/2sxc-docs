@@ -8,12 +8,11 @@ The 2sxc roadmap contains the things we think are fairly important to tackle nex
 
 ## Priorities 2022 Q3 v14
 
-_Updated 2022-08-22_
+_Updated 2022-09-16_
 
 Finish-Fine-Tune existing stuff from Q2
 
 1. Improve UI/Flow of system registration (ATM still confusing) - ca. 1-2d
-1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Toolbars Service Improvements {started, ca. 1d of 3d left}
   1. ✅ icon-metadata
   1. ✅ group C# API
@@ -21,42 +20,48 @@ Finish-Fine-Tune existing stuff from Q2
   1. ✅ base64
   1. ✅ ui multiple params
   1. ✅ bugfixes
-  1. ⏳ params multiple params
+  1. ✅ params multiple params
+  1. ✅ array params
   1. ⏳ data
-  1. array params
   1. ...
-1. CSP - ca. 5d
-  1. CSP for the Edit UI incl. custom extensions etc.
-  1. CSP Tutorials, docs and more
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d
-1. ⏳ Debug-logging on Oqtane client side code, bugfixing {ca. 0.5d}
+1. ✅ Debug-logging on Oqtane client side code, bugfixing ca. 0.5d
 
 New Stuf and Major Enhancements
 
-1. Improved custom DataSources API - ca. 1d
-1. New data sources like: Users, Roles, ADAM (Files, Folders), Navigation - ca. 2d
-1. Improve data sources for Pages - ca. 0.5d
-1. ⏳ Create a new `2sxc.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d
+1. ✅ Change storage of `app.xml` to `App_Data`, change how import works and enable import-from-folder/git
+1. ⏳ Create a new `app.json` configuration file for 2sxc apps to tune how export/import works - ca. 1d (75%)
+  1. 
 1. More Tutorials Formulas (dropdown values from api-call, ...) - ca. 0.5d
 1. Code editor intellisense for most APIs - ca. 3-4d
-1. v14 LTS #2 ca. v14.14
+1. v14 LTS #2 ca. v14.14 🚀
 
 Other
 
-1. Clean up JS code, latest webpack, packages etc. {started, ca. 1d}
-1. Infrastructure for automated testing of JS - ca. 5d
+1. ✅ Clean up JS code, latest webpack, packages etc. ca. 1d
+1. ✅ Infrastructure for automated testing of JS - ca. 5d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d
 
 Apps / App Maintenance
 
-1. ⏳ Update most apps which used ephemeral variables for formulas to just use parameters (new in v14) {started, ca. 0.5d}
+1. ✅ Update most apps which used ephemeral variables for formulas to just use parameters (new in v14) ca. 0.5d
 1. ✅ new Timeline Apps
 1. ✅ new Files App
 1. ✅ new Jobs
-1. New other apps
+1. ✅ Make many Apps backwards compatible with Bootstrap 3 for a big customer
+1. ✅ Have the core apps tested & optimized for WCAG for a government customer
+1. publish other new apps
 
 Ongoing, probably not complete Q3
 
+1. CSP - ca. 5d
+  1. CSP for the Edit UI incl. custom extensions etc.
+  1. CSP Tutorials, docs and more
+1. Data Sources
+    1. Improve data sources for Pages - ca. 0.5d
+    1. Improved custom DataSources API - ca. 1d
+    1. New data sources like: Users, Roles, ADAM (Files, Folders), Navigation - ca. 2d
+1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
 1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
 1. Notes everywhere - especially on the page - ca. 2d
@@ -75,7 +80,6 @@ New Stuf and Major Enhancements
   1. Images which auto-resize based on size
 1. Note-feature to add notes to various things like entities, fields etc. (show, persist show, add to all kinds of things, ...) - ca. 3d
 1. Oqtane Theme release
-1. Change storage of `app.xml` to `App_Data`, change how import works and enable import-from-folder/git
 1. Blazor / Oqtane CMS Website to demo functionality & features
 1. CSP for Oqtane
   1. It's partially done, but docs are missing
