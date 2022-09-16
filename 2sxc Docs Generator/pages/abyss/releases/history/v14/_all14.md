@@ -14,3 +14,5 @@ TODO NOT YET DOCUMENTED - CHECK THE GITHUB PROJECT
 ## Important Issues
 
 1. [](xref:Abyss.Releases.History.V14.IssueAssemblyBinding)
+1. [](xref:Abyss.Releases.History.V14.AppZip)
+1. [](xref:Abyss.Releases.History.V14.AppDataFolder)
