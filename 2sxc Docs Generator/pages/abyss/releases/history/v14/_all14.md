@@ -1,7 +1,9 @@
 
-## Version 14
 
 [!include["Breaking Changes"](./_brc14.md)]
+
+
+## All Changes V14
 
 ### 14.00 - 14.07.04 
 
@@ -12,6 +14,7 @@ TODO NOT YET DOCUMENTED - CHECK THE GITHUB PROJECT
 * ToolbarBuilder now has `Group` command
 * Toolbar Buttons can now use SVGs for icons (usually base64 encoded)
 * ...
+
 
 ## Important Changes
 
