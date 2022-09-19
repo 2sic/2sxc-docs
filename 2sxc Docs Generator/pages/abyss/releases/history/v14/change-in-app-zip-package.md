@@ -41,3 +41,7 @@ This change makes the system more consistent, but also means that exported ZIPs 
 Please manually modify the zip file.
 
 1. Copy file `Apps/[app-name]/2sexy/App_Data/app.xml` to `Apps/[app-name]/app.xml`.
+
+---
+
+Changed in v14.08

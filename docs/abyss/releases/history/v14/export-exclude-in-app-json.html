@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Breaking Changes in EAV and 2sxc v14 | 2sxc 13 / EAV 13 </title>
+    <title>New app.json with Export Exclude | 2sxc 13 / EAV 13 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Breaking Changes in EAV and 2sxc v14 | 2sxc 13 / EAV 13 ">
+    <meta name="title" content="New app.json with Export Exclude | 2sxc 13 / EAV 13 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
@@ -114,18 +114,55 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h2 id="breaking-changes-in-eav-and-2sxc-v14">Breaking Changes in EAV and 2sxc v14</h2>
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V14.ExportExcludeInAppJson">
+<h1 id="new-appjson-with-export-exclude">New <code>app.json</code> with Export Exclude</h1>
 
-<p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
-We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
-<h3 id="summary">Summary</h3>
-<p>V14 did some clean-up of internal APIs, but otherwise there are no known breaking changes.</p>
-<p>Note that these changes could be seen as a breaking change for certain users:</p>
-<ol>
-<li><a class="xref" href="change-in-app-zip-package.html">Change in App Zip Package in v14.08</a> <em>v14.08</em></li>
-<li><a class="xref" href="change-in-app-data-folder.html">Change in App Data Folder in v14.08</a> <em>v14.08</em></li>
-</ol>
+<p>In older versions, exported apps automatically excluded some folders such sa</p>
+<ul>
+<li><code>.git</code></li>
+<li><code>node_modules</code></li>
+</ul>
+<p>To allow more control (and also exclude folders such as <code>.temp_cache</code> of Webpack5) this is now configurable. </p>
+<p>Here&#39;s a sample <code>app.json</code> for 14.09+</p>
+<pre><code class="lang-json">{
+  /*
+    This is a JSON file but it is treated like a JSONC (with comments).
+
+    Different editors may complain about the comments. 
+    To reconfigure VS Code so it knows comments are ok, do this: https://azing.org/2sxc/r/h9m1l6JO
+  */
+
+  // Export-App configuration
+  &quot;export&quot;: {
+
+    // Exclude certain folders/file beginning with the values specified below
+    // Note that it may look like glob, but ATM it&#39;s a simpler starts-with mechanism
+    &quot;exclude&quot;: [
+      // Skip git versioning folders, github config folders
+      &quot;.git/&quot;,
+      &quot;.github/&quot;,
+      // &quot;.gitignore&quot;,
+
+      // Webpack 5 temporary folder and NPM folders
+      &quot;.temp_cache/&quot;,
+      &quot;node_modules/&quot;
+
+      // Other examples
+      // &quot;.vs&quot;,
+      // &quot;.vscode&quot;,
+      // &quot;package.json&quot;,
+      // &quot;package-lock.json&quot;,
+      // &quot;nuget.config&quot;,
+    ]
+  }
+}
+</code></pre><h2 id="behavior-if-file-is-missing">Behavior if file is missing</h2>
+<p>Without the file, the previous defaults will be applied.</p>
+<h2 id="behavior-with-the-file">Behavior with the file</h2>
+<p>With this file, all excludes must be mentioned. 
+This includes <code>node_modules</code> if you don&#39;t want it in your export. </p>
+<hr>
+<p>Added in v14.09</p>
 </article>
           </div>
           
@@ -134,7 +171,7 @@ We&#39;re documenting it here to ensure you know what happened, in case you stil
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v14/_brc14.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v14/export-exclude-in-app-json.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

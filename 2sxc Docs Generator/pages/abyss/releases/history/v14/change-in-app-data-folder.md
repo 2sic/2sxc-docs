@@ -24,3 +24,7 @@ If it finds the older folder, will migrate `app.xml` from the old `.data` folder
 ## See also
 
 👉🏻 [](xref:Abyss.Releases.History.V14.AppZip)
+
+---
+
+Changed in v14.08
