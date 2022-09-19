@@ -4,15 +4,23 @@ uid: Abyss.Releases.History.V14.AppDataFolder
 
 # Change in App Data Folder in v14.08
 
-In older versions, **App-State versioning** saves or restores the app with data and configuration in `.data/app.xml`. That is useful for versioning using git (aka **git-sync**). `.data` folder is renamed to the safer `App_Data`.
+In older versions, **App-State versioning** saves and restores the app with data and configuration in `[App-Folder]/.data/app.xml`.
+That is useful for versioning using git (aka **git-sync**).
 
 ## What has changed
 
-For the installed apps **App-Export**, **App-Import**, **App-State** save or restore will migrate `app.xml` from the old `.data` folder to the new `App_Data` folder.
+The `.data` folder is renamed to the more protected `App_Data`.
 
-## Workaround if you Need to Import in an Older Version
+This means that in the following processes, this folder will now be used instead:
 
-Please manually modify the zip file.
+* App Export
+* App Import
+* App State Versioning
 
-1. Copy file `Apps/app-name/2sexy/App_Data/app.xml` to `Apps/app-name/app.xml`.
-1. Rename folder `Apps/app-name/2sexy/App_Data/` to `Apps/app-name/2sexy/.data/`.
+It will always save / restore in this folder. 
+
+If it finds the older folder, will migrate `app.xml` from the old `.data` folder to the new `App_Data` folder.
+
+## See also
+
+👉🏻 [](xref:Abyss.Releases.History.V14.AppZip)

@@ -117,12 +117,20 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V14.AppDataFolder">
 <h1 id="change-in-app-data-folder-in-v1408">Change in App Data Folder in v14.08</h1>
 
-<p>TODO: BACKGROUND - 3-4 LINES</p>
-<p>info about used in git-sync etc.</p>
+<p>In older versions, <strong>App-State versioning</strong> saves and restores the app with data and configuration in <code>[App-Folder]/.data/app.xml</code>.
+That is useful for versioning using git (aka <strong>git-sync</strong>).</p>
 <h2 id="what-has-changed">What has changed</h2>
-<p>TODO: EXPLAIN IN WHAT LOCATION THE ZIP IS NEW</p>
-<h2 id="woraround-if-you-need-to-import-in-an-older-version">Woraround if you Need to Import in an Older Version</h2>
-<p>TODO: Explain how to manually modify the zip</p>
+<p>The <code>.data</code> folder is renamed to the more protected <code>App_Data</code>.</p>
+<p>This means that in the following processes, this folder will now be used instead:</p>
+<ul>
+<li>App Export</li>
+<li>App Import</li>
+<li>App State Versioning</li>
+</ul>
+<p>It will always save / restore in this folder. </p>
+<p>If it finds the older folder, will migrate <code>app.xml</code> from the old <code>.data</code> folder to the new <code>App_Data</code> folder.</p>
+<h2 id="see-also">See also</h2>
+<p>👉🏻 <a class="xref" href="change-in-app-zip-package.html">Change in App Zip Package in v14.08</a></p>
 </article>
           </div>
           

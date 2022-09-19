@@ -117,11 +117,34 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V14.AppZip">
 <h1 id="change-in-app-zip-package-in-v1408">Change in App Zip Package in v14.08</h1>
 
-<p>TODO: BACKGROUND - 3-4 LINES</p>
+<p>Apps which are <strong>exported to ZIP</strong> place all their data in a file called <code>app.xml</code>. </p>
+<p>We&#39;ve changed where this file is located to make it identical with the 
+<a class="xref" href="change-in-app-data-folder.html">better protected folder used in sync scenarios</a>. </p>
 <h2 id="what-has-changed">What has changed</h2>
-<p>TODO: EXPLAIN IN WHAT LOCATION THE ZIP IS NEW</p>
-<h2 id="woraround-if-you-need-to-import-in-an-older-version">Woraround if you Need to Import in an Older Version</h2>
-<p>TODO: Explain how to manually modify the zip</p>
+<ol>
+<li>Location of the <code>app.xml</code> file</li>
+</ol>
+<p>In previous versions, this ZIP file was located inside the zip in the folder <code>Apps/[app-name]/app.xml</code>.</p>
+<p>Starting from v14.08 it is located in <code>Apps/[app-name]/2sexy/App_Data/app.xml</code>.</p>
+<p>This is the <em>same</em> location as the one used for app-sync.</p>
+<ol>
+<li>Behavior on Export</li>
+</ol>
+<p>Previously export created this file in a temporary location and deleted it afterwards. </p>
+<p>Now the file is directly created in the <code>App_Data</code> folder. 
+This makes it easier to export and also git-sync in the same steps. </p>
+<ol>
+<li>Behavior on Import</li>
+</ol>
+<p><strong>App-Import</strong> will import <code>app.xml</code> from the old and new path.</p>
+<p>After import, the app folder will have an <code>App_Data</code> containing the imported state. </p>
+<h2 id="breaking-change">Breaking Change</h2>
+<p>This change makes the system more consistent, but also means that exported ZIPs cannot be imported into older versions of 2sxc. </p>
+<h2 id="workaround-if-you-need-to-import-in-an-older-version">Workaround if you Need to Import in an Older Version</h2>
+<p>Please manually modify the zip file.</p>
+<ol>
+<li>Copy file <code>Apps/[app-name]/2sexy/App_Data/app.xml</code> to <code>Apps/[app-name]/app.xml</code>.</li>
+</ol>
 </article>
           </div>
           
