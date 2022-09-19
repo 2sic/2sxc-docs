@@ -11,7 +11,9 @@ In older versions, exported apps automatically excluded some folders such sa
 
 To allow more control (and also exclude folders such as `.temp_cache` of Webpack5) this is now configurable. 
 
-Here's a sample `app.json` for 14.09+
+The configuration is in `[App-Folder]/App_Data/app.json`.
+
+Here's a sample `[App-Folder]/App_Data/app.json` for 14.09+
 
 ```json
 {
