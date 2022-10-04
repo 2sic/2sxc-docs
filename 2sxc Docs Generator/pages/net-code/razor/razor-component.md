@@ -31,7 +31,7 @@ In addition there are a few additional objects & commands which you will usually
 
 1. [Edit](xref:NetCode.Razor.Edit)  
     Helper providing you with various edit-functionality like `@Edit.TagToolbar(...)`
-1. [Code](xref:NetCode.Razor.CodeBehind)  
+1. ~~[Code](xref:NetCode.Razor.CodeBehind)~~ (deprecated)  
     The object from the Code-Behind
 
 ### Common Standard Razor APIs and Keywords

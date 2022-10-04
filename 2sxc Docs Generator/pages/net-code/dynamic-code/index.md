@@ -13,7 +13,7 @@ Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a 
 
 The following APIs are available on all 2sxc **Dynamic Code**. You can use this in:
 
-1. [Razor](xref:NetCode.Razor.Index) (including Code-Behind)
+1. [Razor](xref:NetCode.Razor.Index)
 1. [WebAPI Controllers](xref:NetCode.WebApi.Index)
 1. Helper Code files
 

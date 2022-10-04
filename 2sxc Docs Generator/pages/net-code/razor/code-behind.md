@@ -4,6 +4,15 @@ uid: NetCode.Razor.CodeBehind
 
 # Razor Templates - Code-Behind
 
+> [!WARNING]
+> The code-behind feature has been deprecated but will continue to work for older code.
+> So it will only work if you inherit from `ToSic.Sxc.Dnn.RazorComponent`.
+> 
+> If you use any of the newer v12 or v14 base classes, 
+> you should either use [shared C#](https://2sxc.org/dnn-tutorials/en/razor/reuse310/page)
+> or partial views using `@Html.Partial("_something.cshtml")`.
+
+
 2sxc 11 introduces a new way to split out most of the C# code from the main template Razor file. We call this code-behind. Best watch the video to get the idea. 
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/wIa23gy26js" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -136,6 +145,9 @@ This works and is no big deal, but there are known cases where this breaks, usua
 }
 ```
 
+---
+
 ## History
 
-1. Introduced in 2sxc 11.0
+1. Code-Behind Introduced in 2sxc 11.0
+1. Code-Behind deprecated in 2sxc 12 because it's not compatible with Oqtane

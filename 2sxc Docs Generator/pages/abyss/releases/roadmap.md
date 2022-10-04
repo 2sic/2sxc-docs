@@ -40,6 +40,7 @@ Other
 
 1. ✅ Clean up JS code, latest webpack, packages etc. ca. 1d
 1. ✅ Infrastructure for automated testing of JS - ca. 5d
+1. Make sure edit-ui doesn't need material fonts for icons - ca. 0.5d SDV
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d
 
 Apps / App Maintenance
@@ -65,7 +66,7 @@ Ongoing, probably not complete Q3
 1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
 1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
 1. Notes everywhere - especially on the page - ca. 2d
-1. Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
+1. Auto-Install more apps from catalog - even after some have already been installed - ca. 1d - SDV?
 1. Formulas - ca. 2d
   1. Formula Boost #3 (intellisense in Formulas, entity-type info)
   1. JS Docs for formula

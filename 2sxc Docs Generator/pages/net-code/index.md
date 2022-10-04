@@ -15,7 +15,7 @@ When you implement solutions using 2sxc, most of your server-side code will be w
 
 You will create many dynamic `.cs` or `.cshtml` files in the App folder:
 
-1. [Razor components](xref:NetCode.Razor.Index), shared Razor and Razor Code-Behind (`_*.cshtml` & `_*.code.cshtml`)
+1. [Razor components](xref:NetCode.Razor.Index) and shared Razor views
 1. [WebApi Controllers](xref:NetCode.WebApi.Index) (`*Controller.cs` files in the `api` folder)
 1. Shared code (`*.cs` files in any folder)
 

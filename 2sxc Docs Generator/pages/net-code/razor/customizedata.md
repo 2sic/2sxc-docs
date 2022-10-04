@@ -14,10 +14,6 @@ uid: NetCode.Razor.CustomizeData
 This event is called by the view-engine before the rest of the script is parsed - and it's usually empty.
 It can be overriden to change/configure what data is delivered to the template or search-index. 
 
-> [!TIP]
-> 2sxc 11 introduces Code-Behind. You can now place the `CustomizeData()` method in the [code-behind](xref:NetCode.Razor.OrganizeCode) file.
-
-
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 

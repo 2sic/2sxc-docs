@@ -118,13 +118,6 @@
 <h1 id="how-to-organize-your-code-in-razor">How To Organize your Code in Razor</h1>
 
 <p>In simple scenarios you have some Razor files containing a bit of HTML and some code. As your solution grows, you&#39;ll want to organize your work better to ensure that you can maintain it. 2sxc offers various ways to do this:</p>
-<ol>
-<li>Use the <code>@helper</code> syntax in Razor</li>
-<li>Reuse a Partial-View Razor file with <code>@RenderPage()</code></li>
-<li>You can have a shared razor file which is used as a library (v9)</li>
-<li>You can have a shared .cs file as a library (v10)</li>
-<li>You can split a Razor file into a Template and Code-Behind</li>
-</ol>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -132,20 +125,13 @@
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="reuse-snippets-with-helper-in-razor">Reuse Snippets with @helper in Razor</h2>
-<p>Razor has a <code>@helper</code> syntax which allows you to create fragments and re-use them. 
-Discover this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse/home">tutorials</a>.</p>
-<h2 id="reuse-a-partial-view-with-renderpage">Reuse a Partial View with @RenderPage()</h2>
-<p>Razor templates can <em>include</em> other razor files with more Razor code inside them, using <code>RenderPage(...)</code>. This is a standard asp.net function to render another Razor file where you need it. You usually use it to make small component Razor files which might just show a button or something, and then call that file. </p>
+</div><h2 id="recommended-methods-v12">Recommended Methods v12+</h2>
+<h3 id="reuse-a-partial-view-with-htmlpartial-v12">Reuse a Partial View with @Html.Partial(...) v12+</h3>
+<p>Razor templates can <em>include</em> other razor files with more Razor code inside them, using <code>Html.Partial(&quot;_Something.cshtml&quot;)</code>.
+This is a standard asp.net function to render another Razor file where you need it.
+You usually use it to make small component Razor files which might just show a button or something, and then call that file. </p>
 <p>You can find examples in the <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse110/page">tutorials</a></p>
-<h2 id="share-a-cshtml-file-as-library-of-sub-templates">Share a .cshtml File as Library of Sub-Templates</h2>
-<p>When you have a <strong>lot of components</strong> it may be easier to create a library of <code>@helper</code> commands. This library is just a normal <code>.cshtml</code> file - usually in a folder called <code>shared</code> or something, and you can then call these snippets and helpers from all your template files. </p>
-<p>To use it, you need something like:</p>
-<pre><code class="lang-razor">@{
-  var helper = CreateInstance(&quot;_Helper.cshtml&quot;);
-}
-</code></pre><p>See <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse210/page">examples in the tutorials</a></p>
-<h2 id="share-a-cs-file-as-library">Share a .cs File as Library</h2>
+<h3 id="share-a-cs-file-as-library-v10">Share a .cs File as Library v10+</h3>
 <p>Sometimes you want to share C# code which isn&#39;t meant for HTML-output. For example, a security check. You can do this using <code>CreateInstance(...)</code>. </p>
 <p>If you:</p>
 <ol>
@@ -157,17 +143,39 @@ Discover this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse/home
 <pre><code class="lang-razor">@{
   var helper = CreateInstance(&quot;_Helper.cs&quot;);
 }
-</code></pre><div class="TIP"><h5>Tip</h5><p>The helper file should ideally inherit from <code>ToSic.Sxc.Dnn.DynamicCode</code>, in which case it will have have the same full APIs incl. the <code>App</code> and <code>Content</code> object just like the main file. </p>
+</code></pre><div class="TIP"><h5>Tip</h5><p>The helper file should ideally inherit from <code>Custom.Hybrid.Code14</code> (or similar <a class="xref" href="../../api/dot-net/Custom.Hybrid.html">base classes</a>). 
+in which case it will have have the same full APIs incl. the <code>App</code> and <code>Content</code> object just like the main file. </p>
 </div>
-<p>See <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse320/page">examples in the tutorials</a></p>
-<h2 id="razor-code-behind">Razor Code-Behind</h2>
+<p>👉🏼 See <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse320/page">examples in the tutorials</a></p>
+<h3 id="reuse-a-template-delegate-function-generating-html-v5">Reuse a Template Delegate Function generating HTML v5+</h3>
+<p><a href="https://medium.com/@isaac.d.adams/reusing-html-blocks-without-partials-or-view-components-6db59b86eab7">Template Delegates</a>
+are a very old Razor feature, but they are quite hard to use. </p>
+<p>They are similar to <code>@helpers</code> but work in both Oqtane and DNN. </p>
+<p>👉🏼 See <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse101/page">tutorial example</a>.</p>
+<h2 id="older--alternative-methods-dnn-only">Older / Alternative Methods (DNN only)</h2>
+<h3 id="reuse-snippets-with-helper-in-razor">Reuse Snippets with @helper in Razor</h3>
+<p>Razor has a <code>@helper</code> syntax which allows you to create fragments and re-use them. </p>
+<p>👉🏼 Discover this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse/home">tutorials</a>.</p>
+<p>This will not work in Oqtane, as the newer Razor engines don&#39;t support this. </p>
+<h3 id="reuse-a-partial-view-with-renderpage">Reuse a Partial View with @RenderPage()</h3>
+<p><code>@RenderPage(...)</code> does the same thing as <code>@Html.Partial(...)</code> (see above) but it will only work on DNN, not Oqtane. </p>
+<h3 id="share-a-cshtml-file-as-library-of-sub-templates">Share a .cshtml File as Library of Sub-Templates</h3>
+<p>When you have a <strong>lot of components</strong> it may be easier to create a library of <code>@helper</code> commands. This library is just a normal <code>.cshtml</code> file - usually in a folder called <code>shared</code> or something, and you can then call these snippets and helpers from all your template files. </p>
+<p>To use it, you need something like:</p>
+<pre><code class="lang-razor">@{
+  var helper = CreateInstance(&quot;_Helper.cshtml&quot;);
+}
+</code></pre><p>👉🏼 See <a href="https://2sxc.org/dnn-tutorials/en/razor/reuse210/page">examples in the tutorials</a></p>
+<h3 id="razor-code-behind">Razor Code-Behind</h3>
 <p>If your Razor file is getting kind of large because of C# functions, best place it in a <a class="xref" href="code-behind.html">Razor Code-Behind</a>. </p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>RenderPage has always been part of Razor so part of 2sxc v2</li>
 <li>CreateInstance for <code>.cshtml</code> was introduced ca. v6</li>
 <li>CreateInstance for <code>.cs</code> was introduced in 2sxc v10.01</li>
 <li>Code-Behind Introduced in 2sxc 11.0</li>
+<li>Code-Behind deprecated in 2sxc 12 because it&#39;s not compatible with Oqtane</li>
 </ol>
 </article>
           </div>
