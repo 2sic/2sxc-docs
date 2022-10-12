@@ -4,13 +4,13 @@ uid: Basics.Configuration.Settings.Images.Recipes
 
 <img src="~/assets/features/settings-stack.svg" class="feature">
 
-# Recipes in Image Resize Settings in 2sxc ✨ new!
+# Recipes in Image Resize Settings in 2sxc ✨ new
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-Version 13.10 will introduce a new [ImageService](xref:ToSic.Sxc.Services.IImageService) 
-which can generate advanced multi-resolution `img` and `picture` tags. 
+Version 13.10 will introduce a new [ImageService](xref:ToSic.Sxc.Services.IImageService)
+which can generate advanced multi-resolution `img` and `picture` tags.
 As the configuration can be quite complex, it is explained here:
 
 ## A Resize Recipe
@@ -46,11 +46,14 @@ This is an example of a simple resize recipe:
 }
 ```
 
+> [!TIP]
+> In v14.09 we updated the editor to use a [JSON schema](https://schemas.2sxc.org/image-resize/v13/index.json),
+> so you should now get intellisense 😉.
 
 ## Variants
 
-`variants` is a string which tells us which variants to generate. 
-It is comma-separated. 
+`variants` is a string which tells us which variants to generate.
+It is comma-separated.
 There are three different ways to specify the variants:
 
 1. By multiplier - marked by `*` or no trailing character
@@ -67,14 +70,14 @@ There are three different ways to specify the variants:
     1. `3x` means the image will be trippled in size for 3x screen pixel density
 
 > [!WARNING]
-> It's tempting to mix these, but only `*` and `w` can be combined. 
+> It's tempting to mix these, but only `*` and `w` can be combined.
 > Trying to combine `x` (pixel density) with any of the others results in an invalid configuration which the browser cannot handle.
 > It will not generate an error, but the browser will usually then just ignore the `x` variants.
 
 
 ## Adding Many Recipes
 
-A perfect resizing system must actually behave differently in many scenarios. 
+A perfect resizing system must actually behave differently in many scenarios.
 Here are some reasons, why we need many recipes:
 
 1. If we use Bootstrap5 we may want to add the class `img-fluid`, but not if we use Tailwind
@@ -122,13 +125,13 @@ This is how it's done:
 > [!TIP]
 > Sub-Recipes inherit everything from the parents.
 > This is so you are DRY - you don't have to repeat yourself.
-> 
+>
 > It's important to know that at runtime this is flattened to a table.
 > So the hierarchy you see in the JSON is purely to make the configuration easier to write.
 
 > [!TIP]
-> Attributes are cummulative, so if a parent-node has attributes and a child-node has other attributes, 
-> they will be merged. 
+> Attributes are cummulative, so if a parent-node has attributes and a child-node has other attributes,
+> they will be merged.
 > Child node attributes will replace parent node attributes.
 > To reset an attribute which the parent had set already, use `null` on the child node.
 
