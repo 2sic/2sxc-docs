@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AttributeFilter
+    <title>Class DnnRoles
    | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AttributeFilter
+    <meta name="title" content="Class DnnRoles
    | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,79 +116,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataSources.AttributeFilter">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.DataSources.DnnRoles">
   
   
-  <h1 id="ToSic_Eav_DataSources_AttributeFilter" data-uid="ToSic.Eav.DataSources.AttributeFilter" class="text-break">Class AttributeFilter
+  <h1 id="ToSic_Sxc_DataSources_DnnRoles" data-uid="ToSic.Sxc.DataSources.DnnRoles" class="text-break">Class DnnRoles
   </h1>
-  <div class="markdown level0 summary"><p>DataSource to only pass through configured AttributeNames - other attributes/properties are removed from the entities.</p>
+  <div class="markdown level0 summary"><p>Deliver a list of roles from the current platform (Dnn or Oqtane)</p>
 </div>
-  <div class="markdown level0 conceptual"><p>The <strong>AttributeFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It removes values from items so that the result is smaller, and doesn&#39;t publish confidential data. It&#39;s primarily used when providing data as JSON, so that not all values are published. </p>
-<h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
-<p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver <code>Name</code> and <code>Country</code>:</p>
-<p><img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%" class="full-width"></p>
-<p>This is what you get on the default-case (unfiltered):</p>
-<pre><code class="lang-json">&quot;Default&quot;: [
-    {
-      &quot;Name&quot;: &quot;2sic&quot;,
-      &quot;Country&quot;: &quot;Switzerland&quot;,
-      &quot;Notes&quot;: &quot;&lt;p&gt;Secret notes&lt;/p&gt;&quot;,
-      &quot;Categories&quot;: [
-        {
-          &quot;Id&quot;: 38646,
-          &quot;Title&quot;: &quot;Second&quot;
-        }
-      ],
-      &quot;Id&quot;: 38653,
-      &quot;Guid&quot;: &quot;46a46d9e-f572-413c-a42e-a82ac40d929d&quot;,
-      &quot;Title&quot;: &quot;2sic&quot;,
-      &quot;Modified&quot;: &quot;2017-11-06T22:38:00.15Z&quot;
-    },
-    ...
-]
-</code></pre><p>This is what you get on the filtered stream:</p>
-<pre><code class="lang-json">&quot;Cleaned&quot;: [
-    {
-      &quot;Name&quot;: &quot;2sic&quot;,
-      &quot;Country&quot;: &quot;Switzerland&quot;,
-      &quot;Id&quot;: 38653,
-      &quot;Guid&quot;: &quot;46a46d9e-f572-413c-a42e-a82ac40d929d&quot;,
-      &quot;Title&quot;: &quot;2sic&quot;,
-      &quot;Modified&quot;: &quot;2017-11-06T22:38:00.15Z&quot;
-    },
-    ...
-]
-</code></pre><p>As you can see, the secret <code>Notes</code> and the <code>Categories</code> are not in the <em>Cleaned</em> stream any more. 
-There are three common use cases: </p>
-<h2 id="programming-with-the-attribute-filter">Programming With The Attribute Filter</h2>
-<blockquote><p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible, 
-as it&#39;s easier to understand and is identical for C# and JavaScript. 
-It&#39;s also better because it separates data-retrieval from visualization.</p>
-</blockquote>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> / <a class="xref" href="../../net-code/data-sources/datastream.html">DataStream</a></li>
-<li><a class="xref" href="../../basics/query/data-sources/index.html">List of all EAV Data Sources</a></li>
-<li><a class="xref" href="../../basics/query/index.html">Query</a> / <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some examples in this demo App</p>
-<ul>
-<li><a href="https://github.com/2sic/app-demo-visual-query/releases/latest">Demo App with examples for most DataSources</a></li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV 3.x, 2sxc ca. v6</li>
-</ol>
-<!-- note: this must be an H1 because of the automatic TOC in the code pages -->
-<h1 id="api-documentation">API Documentation</h1>
-</div>
+  <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="ToSic.Eav.Logging.HasLog.html">HasLog</a></div>
     <div class="level2"><a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html">DataSourceBase</a></div>
-    <div class="level3"><span class="xref">AttributeFilter</span></div>
+    <div class="level3"><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></div>
+    <div class="level4"><a class="xref" href="ToSic.Sxc.DataSources.Roles.html">Roles</a></div>
+    <div class="level5"><span class="xref">DnnRoles</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -206,6 +149,12 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="ToSic.Sxc.DataSources.Roles.html#ToSic_Sxc_DataSources_Roles_ExcludeRoleIds">Roles.ExcludeRoleIds</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.ExternalData.html#ToSic_Eav_DataSources_ExternalData_CacheTimestamp">ExternalData.CacheTimestamp</a>
+    </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_ErrorStream">DataSourceBase.ErrorStream</a>
     </div>
@@ -249,9 +198,6 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheFullKey">DataSourceBase.CacheFullKey</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSourceBase.html#ToSic_Eav_DataSources_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(Int64)</a>
     </div>
     <div>
@@ -291,95 +237,32 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.Logging.HasLog.html#ToSic_Eav_Logging_HasLog_InitLog_System_String_ToSic_Eav_Logging_ILog_System_String_ToSic_Eav_Logging_CodeRef_">HasLog.InitLog(String, ILog, String, CodeRef)</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
-  <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
-  <h5 id="ToSic_Eav_DataSources_AttributeFilter_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.DataSources.html">ToSic.Sxc.DataSources</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.Dnn.Core.dll</h6>
+  <h5 id="ToSic_Sxc_DataSources_DnnRoles_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete-sweep&quot;, Type = DataSourceType.Modify, GlobalName = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[]{&quot;Default*&quot;}, ExpectsDataOfType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
-public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still BETA, many changes expected&quot;)]
+[VisualQuery(NiceName = &quot;Roles - BETA - DO NOT USE YET&quot;, Icon = &quot;date-range&quot;, UiHint = &quot;Roles in the CMS&quot;, HelpLink = &quot;https://r.2sxc.org/ds-roles&quot;, GlobalName = &quot;eee54266-d7ad-4f5e-9422-2d00c8f93b45&quot;, Type = DataSourceType.Source, ExpectsDataOfType = &quot;1b9fd9d1-dde0-40ad-bb66-5cd7f30de18d&quot;, Difficulty = DifficultyBeta.Default)]
+public class DnnRoles : Roles, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
-  <h5 id="ToSic_Eav_DataSources_AttributeFilter_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Technically many things could just identify the app they belong to, and let the system look up the zone.
-But this would be inefficient, so for optimization, many items identify themselves with both the app and zone Ids</p>
-</div>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_ModeKeep.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.ModeKeep%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L33">View Source</a>
-  </span>
-  <h4 id="ToSic_Eav_DataSources_AttributeFilter_ModeKeep" data-uid="ToSic.Eav.DataSources.AttributeFilter.ModeKeep">ModeKeep</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ModeKeep</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_ModeRemove.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.ModeRemove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L34">View Source</a>
-  </span>
-  <h4 id="ToSic_Eav_DataSources_AttributeFilter_ModeRemove" data-uid="ToSic.Eav.DataSources.AttributeFilter.ModeRemove">ModeRemove</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ModeRemove</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_AttributeNames.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.AttributeNames%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_DnnRoles_FilterRoleIds.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.DnnRoles.FilterRoleIds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L50">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Core/ToSic.Sxc.DataSources/DnnRoles.cs/#L32">View Source</a>
   </span>
-  <a id="ToSic_Eav_DataSources_AttributeFilter_AttributeNames_" data-uid="ToSic.Eav.DataSources.AttributeFilter.AttributeNames*"></a>
-  <h4 id="ToSic_Eav_DataSources_AttributeFilter_AttributeNames" data-uid="ToSic.Eav.DataSources.AttributeFilter.AttributeNames">AttributeNames</h4>
-  <div class="markdown level1 summary"><p>A string containing one or more attribute names. like &quot;FirstName&quot; or &quot;FirstName,LastName,Birthday&quot;</p>
+  <a id="ToSic_Sxc_DataSources_DnnRoles_FilterRoleIds_" data-uid="ToSic.Sxc.DataSources.DnnRoles.FilterRoleIds*"></a>
+  <h4 id="ToSic_Sxc_DataSources_DnnRoles_FilterRoleIds" data-uid="ToSic.Sxc.DataSources.DnnRoles.FilterRoleIds">FilterRoleIds</h4>
+  <div class="markdown level1 summary"><p>Optional (single value or comma-separated integers) filter,
+include roles based on roleId</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string AttributeNames { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public override string FilterRoleIds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -396,37 +279,8 @@ But this would be inefficient, so for optimization, many items identify themselv
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_Mode.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L59">View Source</a>
-  </span>
-  <a id="ToSic_Eav_DataSources_AttributeFilter_Mode_" data-uid="ToSic.Eav.DataSources.AttributeFilter.Mode*"></a>
-  <h4 id="ToSic_Eav_DataSources_AttributeFilter_Mode" data-uid="ToSic.Eav.DataSources.AttributeFilter.Mode">Mode</h4>
-  <div class="markdown level1 summary"><p>A string containing one or more attribute names. like &quot;FirstName&quot; or &quot;FirstName,LastName,Birthday&quot;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Mode { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="ToSic.Sxc.DataSources.Roles.html#ToSic_Sxc_DataSources_Roles_FilterRoleIds">Roles.FilterRoleIds</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
@@ -469,10 +323,10 @@ But this would be inefficient, so for optimization, many items identify themselv
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Eav/DataSources/AttributeFilter.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_DnnRoles.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.DnnRoles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L17" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Core/ToSic.Sxc.DataSources/DnnRoles.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
