@@ -97,11 +97,20 @@ A typical example would be
 > This is because you may have special buttons or **My Comments** page or something to do this.
 > So don't forget to ensure the UI is available as you want it.
 
-### Content-Type REST Permissions (Headless)
+
+## REST API Permissions (Headless)
 
 To use data on the REST API you must also determine what is allowed.
 
-You can configure this at the Content-Type level.
+You can configure this at the App Content-Type level.
+
+
+## WebApi Controller Permissions
+
+When you create [custom WebApi controllers](xref:NetCode.WebApi.Index),
+you will have to use C# attributes to configure permissions.
+
+Please check the examples, ATM we don't have time to document the details.
 
 
 ## Polymorph Editions
@@ -110,9 +119,16 @@ The System Admin can also review new code on the live system without affecting o
 This feature is called [Polymorphism](xref:Basics.Polymorphism.Index).
 It is only available to _SystemAdmins_.
 
+
+## Checking Permissions in Formulas
+
+[Formulas](xref:Basics.Edit.Formulas.Index) allow you to check the basic permissions such as `isSystemAdmin` etc. on the `context.user` object.
+
+Please check the examples, ATM we don't have time to document the details.
+
 ---
 
 ## History
 
 1. Basic permissions introduced in 2012 for 2sxc 1
-1. Special role `2sxc Designers` introduced ca. 
+1. Special role `2sxc Designers` introduced ca.
