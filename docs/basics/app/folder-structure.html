@@ -117,30 +117,27 @@
             <article class="content wrap" id="_content" data-uid="Basics.App.FolderStructure">
 <h1 id="app-folder-structure">App Folder Structure</h1>
 
-<p>Every app has an own folder for its files. Within that folder the App can have zero or hundreds of folders. </p>
+<p>Every app has an own folder for its files. Within that folder the App can have zero or hundreds of folders.</p>
 <ul>
 <li>all apps are located in <code>[portal-root]\2sxc\[app-name]</code></li>
 <li>the <em>primary</em> / <em>Content</em> App is located in <code>[portal-root]\2sxc\Content</code></li>
 </ul>
-<p>You can create your own folders to organize your templates as you need as the structure is completely open. </p>
+<p>You can create your own folders to organize your templates as you need as the structure is completely open.</p>
 <h2 id="system-files">System Files</h2>
 <ul>
 <li><code>app-icon.png</code> is always used as the <a class="xref" href="icons.html">app-icon</a> if provided</li>
+<li><code>App_Data/app.json</code> is an optional configuration file, see <a class="xref" href="export-import/app-json.html">app.json</a></li>
 </ul>
 <h2 id="system-folders">System Folders</h2>
 <ol>
 <li><code>api</code> this folder contains c# files for the web services this app has. It&#39;s not available on the simpler <strong>Content App</strong>.<br> <em>Note: if you&#39;re using <a class="xref" href="../polymorphism/index.html">Polymorphism</a> then the api folder is usually in a sub-folder, like <code>live\api</code></em></li>
-<li><code>.data\app</code> this folder may contain a snapshot of the app-data and is usefull when git-versioning your app</li>
-<li><code>.data\.[something]</code> is usually used for special data like <a class="xref" href="../edit/edit-form/custom-fields.html">custom input field configuration</a></li>
+<li><code>App_Data</code> (previously <code>.data</code>) this folder may contain a snapshot of the app-data and is usefull when git-versioning your app</li>
+<li><code>App_Data\[something]</code> (previously <code>.data\.[something]</code>) is usually used for special data like <a class="xref" href="../edit/edit-form/custom-fields.html">custom input field configuration</a></li>
 <li><code>system</code> this folder would contain <a class="xref" href="../edit/edit-form/custom-fields.html">custom input fields</a></li>
 </ol>
 <h2 id="non-exportable-folders">Non-Exportable Folders</h2>
-<p>The following folders and files are special source-code folders and will not be included in export / import of Apps.</p>
-<ol>
-<li><code>.git</code> is a hidden folder which all github repositories have.</li>
-<li><code>node_modules</code> is the default folders when you use JS-automation while developing; it can be very large. </li>
-<li><code>bower_components</code> contains bower (run-time) dependencies for your JS and can become very large. Normally you will not want this in your app (because it contains a lot of unneeded stuff) so it too will not be exported when you create an app-package. </li>
-</ol>
+<p>Some folders are not exported by default, and in v14.10+ you can configure it in more detail.
+See <a class="xref" href="export-import/app-json.html">Export restrictions and app.json</a></p>
 <h2 id="recommended-sub-folder-names">Recommended sub folder names</h2>
 <p>The following folders have no technical relevance, but we recommend this naming to improve consistency.</p>
 <ol>
@@ -148,11 +145,11 @@
 <li><code>dist</code> should contain your processed, minified, uglified and combined JS files<br> <em>Note: if you&#39;re using <a class="xref" href="../polymorphism/index.html">Polymorphism</a> then the dist folder is usually in a sub-folder, like <code>live\dist</code></em></li>
 </ol>
 <h2 id="platform-differences-dnn---oqtane-">Platform Differences Dnn ☢️ &amp; Oqtane 🩸</h2>
-<p>In Dnn ☢️ the App-folder is located in </p>
+<p>In Dnn ☢️ the App-folder is located in</p>
 <p><code>[Website-Root]\Portals\[site-id]\2sxc\[App-Folder-Name]</code></p>
 <p>In Oqtane 🩸 the App-folder is located in</p>
 <p><code>[Website-Root]\2sxc\[Site-Id]\[App-Folder-Name]</code></p>
-<p>This difference is due to architecture and security reasons and may change in future. </p>
+<p>This difference is due to architecture and security differences.</p>
 </article>
           </div>
           
