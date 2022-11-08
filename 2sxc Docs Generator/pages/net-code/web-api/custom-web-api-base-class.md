@@ -128,8 +128,9 @@ Based on that these public base classes were made:
 1. 🥷🏽 `ToSic.Sxc.WebApi.ApiCoreShim` _internal_  
     _adds a lot of .net core API commands to the controller_
     1. ⭐💀 `Custom.Hybrid.Api12` _public, old/deprecated_
+        1. ⭐💀 `Custom.Dnn.Api12` _public, old/deprecated_
     1. `Custom.Hybrid.Advanced.Api14<TModel, TServiceKit>` _internal_  
         _like Api12, but without the `Convert` object_
         1. ⭐🌟 `Custom.Hybrid.Api14` _public, **recommended**_
         1. ❓ `Custom.Hybrid.Api15` _WIP_  
-            _will use System.Text.Json for javascript serialization_
+            ⚡ _will use System.Text.Json for javascript serialization_
