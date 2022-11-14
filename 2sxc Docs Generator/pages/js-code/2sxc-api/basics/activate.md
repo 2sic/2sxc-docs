@@ -37,10 +37,10 @@ You can also enable more features, like these:
 
 ## Activate the JS APIs in Older Versions
 
-Before 2sxc 9.30 there was no real API to do this. 
+Before 2sxc 9.30 there was no real API to do this.
 You had to use a `<script>` tag like this:
 
-<script src="/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js" data-enableoptimizations="100"></script> 
+<script src="/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js" data-enableoptimizations="100"></script>
 
 > [!WARNING]
 > Avoid this if possible, as we plan to phase it out in the next few years.
@@ -49,7 +49,7 @@ You had to use a `<script>` tag like this:
 
 ## How Things Work Internally
 
-Each template that needs the $2sxc-file when not logged in must include it, to be sure it's always there when needed. 
+Each template that needs the $2sxc-file when not logged in must include it, to be sure it's always there when needed.
 Note that we've included various features to prevent duplicate execution.
 
 1. if the file is included multiple times, it will only execute once

@@ -124,20 +124,14 @@
 <p>Until we find time to document everything, here&#39;s the short version</p>
 <ol>
 <li>To use 2sxc4ng you must include a JS file in your template, and you must bootstrap your app using this (not using the standard angularjs bootstrapping)<br>this is to ensure that multiple Angular apps can run on the same page, and to provide your app with the necessary context so it knows what module it&#39;s working on, etc.<br><a href="http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng">Here&#39;s an introduction to that</a>.</li>
-<li>To get your current sxc-controller there are two objects <em>$2sxc</em> and <em>sxc</em> which you can just include it in your function definition, like<br><code>module.controller(&#39;AppCatalogCtrl&#39;, function ($2sxc, sxc, $http, ...) {</code><ol>
+<li>To get your current sxc-controller there are two objects <em>$2sxc</em> and <em>sxc</em> which you can just include it in your function definition, like<br><code>module.controller(&#39;AppCatalogCtrl&#39;, function ($2sxc, sxc, $http, ...) {</code></li>
 <li>The sxc is the one you want most, it is already set to your current instance, so you can ask it things like <code>sxc.manage</code> etc.</li>
 <li>The $2sxc is the same as the global <a class="xref" href="../2sxc-api/index.html">$2sxc</a> object you know from jquery. You could of course also do <code>$2sxc(27).manage</code> to acces the manage, but that&#39;s unnecessarily complicated</li>
-</ol>
-</li>
-<li>Additional services provided when bootstrapping with <em>2sxc4ng</em> is<ol>
+<li>Additional services provided when bootstrapping with <em>2sxc4ng</em> is</li>
 <li><code>content(typename)</code> - a service which requests content-data from the current app / context, can also delete / create items etc.</li>
 <li><code>query(queryname)</code> - a service which gets data from app-queries</li>
-</ol>
-</li>
-<li>Additional directives<ol>
+<li>Additional directives</li>
 <li><code>sxcToolbar</code> - a create-toolbar directive to provide in-app toolbars to edit/manage etc. for <code>&lt;sxc-toolbar toolbar=&quot;...&quot;&gt;</code> tags</li>
-</ol>
-</li>
 </ol>
 <p>Todo: a simple full example right here</p>
 <h2 id="including-all-necessary-files">Including All Necessary Files</h2>
@@ -163,7 +157,7 @@
 </code></pre><h2 id="content-service">Content Service</h2>
 <p>This is a quick example of the <em>content</em> service
 Todo: you can find some infos till then in the (<a href="http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng">http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng</a>) article</p>
-<p>Important: you can use the <code>content</code> service to </p>
+<p>Important: you can use the <code>content</code> service to</p>
 <ol>
 <li>get all of a type</li>
 <li>get one of a type</li>
@@ -178,7 +172,7 @@ var createPromise = cSrv.create({ &quot;Title&quot;: &quot;hello&quot;, &quot;Bo
 var deletePromise = cSrv.delete(7740); 
 </code></pre><h2 id="query-service">Query Service</h2>
 <p>This is a quick example of the <em>query</em> service</p>
-<p>Todo: you can find some infos till then in the (<a href="http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng">http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng</a>) article </p>
+<p>Todo: you can find some infos till then in the (<a href="http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng">http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng)(http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng</a>) article</p>
 <pre><code class="lang-JavaScript">// this example assumes you added the query service in your constructor
 // it also assumes you created a visual-query called &quot;All-blog-items&quot;
 var qAll = query(&quot;All-blog-items&quot;);
@@ -201,7 +195,7 @@ qCurrent.get().then(function (result) {
 <li>providing an attribute like <code>iid=&quot;@Dnn.Module.ModuleId&quot;</code> or for tokens <code>iid=&quot;[Module:ModuleId]&quot;</code></li>
 <li>providing the mod-id in the app name like <code>sxc-app=&quot;MyApp-@Dnn.Module.ModuleId&quot;</code></li>
 </ol>
-<p>This is because it needs if for webservice calls. In 2sxc 8.8.1 the bootstrapping will auto-detect the module id, so you don&#39;t have to provide it any more. </p>
+<p>This is because it needs if for webservice calls. In 2sxc 8.8.1 the bootstrapping will auto-detect the module id, so you don&#39;t have to provide it any more.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a href="http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng">Full explanation of bootstrapping and how/why etc.</a> - which tells you why the current code is running so you could change the data added</li>

@@ -147,12 +147,11 @@ Read more about [turnOn](xref:JsCode.TurnOn.Index).
 Razor File - example taken from the [Counter App](xref:App.Counter):
 
 ```razor
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Sxc.Services;
 @{
   // Basics / Preparation
-  var pageSvc = GetService<IPageService>();  // Service to set titles etc. on the page
-  pageSvc.Activate("turnOn");
+  Kit.Page.Activate("turnOn");
   var domId = "app-counter2-js-" + CmsContext.Module.Id;
 }
 <div id="@domId" data-count="@fact.Number">

@@ -244,14 +244,18 @@
 <li>JS files</li>
 <li>Images, Logos</li>
 </ul>
-<p>Note that they should not be <a class="xref" href="../content/content-assets.html">content-files</a>, but files your App and the templates need to work. </p>
+<p>Note that they should not be <a class="xref" href="../content/content-assets.html">content-files</a>, but files your App and the templates need to work.</p>
 <h2 id="using-app-assets-in-your-template">Using App Assets in your Template</h2>
 <p>These files will also be referenced in your template. Since the App may be installed in various places, you should always use the <strong>App Path</strong> to find the file, like this:</p>
-<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot; data-enableoptimizations=&quot;150&quot; /&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot; data-enableoptimizations=&quot;bottom&quot; /&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; data-enableoptimizations=&quot;200:bottom&quot; /&gt; &lt;/script&gt;
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot; @Kit.Page.AssetAttributes(priority: 150) /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot; @Kit.Page.AssetAttributes(position: &quot;bottom&quot;) /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; @Kit.Page.AssetAttributes(priority: 200, position: &quot;bottom&quot;) /&gt; &lt;/script&gt;
 &lt;img src=&quot;@App.Path/some-logo.png?w=200&quot;&gt;
-</code></pre><h2 id="read-more">Read More</h2>
+</code></pre><div class="NOTE"><h5>Note</h5><p>The above example uses the <code>@Kit.Page</code> service.
+This requires your razor to inherit from <code>Custom.Hybrid.Razor14</code> or newer.
+For other uses, see <a class="xref" href="../server/asset-optimization/index.html">Asset Optimization</a></p>
+</div>
+<h2 id="read-more">Read More</h2>
 <ul>
 <li><a class="xref" href="folder-structure.html">App Folder Structure</a></li>
 <li><a class="xref" href="../server/asset-optimization/index.html">Optimizing Template Assets / Client Dependencies (JS &amp; CSS)</a></li>

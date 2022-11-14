@@ -131,22 +131,22 @@
 <li><a href="#special-all-src-shorthand">Special <code>all-src</code> shorthand</a></li>
 <li><a href="#test-configurations-for-development">Test configurations which can be activated during development</a></li>
 <li>Really <a href="#smart-csp-engine">Smart CSP Engine</a> which combines everything to make the rules you need</li>
-<li><a href="#turnon-javascript">turnOn JavaScript</a> to run scripts which need Razor data </li>
+<li><a href="#turnon-javascript">turnOn JavaScript</a> to run scripts which need Razor data</li>
 <li><a href="#dnn-page-integration">DNN Page Integration</a></li>
 <li><a href="#lightspeed-integration">LightSpeed Integration</a></li>
 </ol>
 <h2 id="global-csp-features">Global CSP Features</h2>
-<p>You can manage CSP features in the system administration to enable/disable just the rules you want. </p>
-<p>For example, you could only enable dev-rules until you are happy with the configuration. </p>
+<p>You can manage CSP features in the system administration to enable/disable just the rules you want.</p>
+<p>For example, you could only enable dev-rules until you are happy with the configuration.</p>
 <p><img src="assets/manage-features-csp.jpg" width="100%" class="full-width"></p>
-<div class="NOTE"><h5>Note</h5><p>The CSP features are very advanced features. 
+<div class="NOTE"><h5>Note</h5><p>The CSP features are very advanced features.
 They are exclusive to patrons who support 2sxc.
 To use them, you must enable the bundle <code>Patron Sentinel</code>.</p>
 </div>
 <h2 id="settings">Settings</h2>
 <h3 id="global-and-site-settings">Global and Site Settings</h3>
-<p>You can configure CSP settings at the site- and global-level. 
-Anything that is configured at global, but not site-level, will use the global settings. </p>
+<p>You can configure CSP settings at the site- and global-level.
+Anything that is configured at global, but not site-level, will use the global settings.</p>
 <p><img src="assets/site-settings-to-csp.jpg" width="100%" class="full-width"></p>
 <p>With these settings you can:</p>
 <ol>
@@ -154,18 +154,18 @@ Anything that is configured at global, but not site-level, will use the global s
 <li>Determine if it&#39;s report-only or fully enforced</li>
 <li>Set a bunch of rules which will be applied</li>
 </ol>
-<p>Note that if you set CSP rules at the site level, they will apply to that site and not inherit global settings any more. 
-This is by design, because it could lead to very confusing, hard-to-debug configurations. </p>
+<p>Note that if you set CSP rules at the site level, they will apply to that site and not inherit global settings any more.
+This is by design, because it could lead to very confusing, hard-to-debug configurations.</p>
 <h3 id="app-settings">App Settings</h3>
-<p>The same configuration which is applied to the site or global can also be configured at the app-level. 
+<p>The same configuration which is applied to the site or global can also be configured at the app-level.
 The main difference is that this will only be applied to pages which have that App.
-In addition, these settigs will be mixed in with the site/global settings. </p>
+In addition, these settigs will be mixed in with the site/global settings.</p>
 <div class="TIP"><h5>Tip</h5><p>All default 2sxc Apps have been built with CSP in mind, so all of them already include the CSP settings they need.
 You may need to get the latest releases to see this in action.</p>
 </div>
 <h2 id="content-security-policies-by-user-groups">Content Security Policies by User Groups</h2>
 <p>Different users typically need different CSP policies.
-For example, we can really harden the Content Security Policy for end-users, as we can clearly restrict what they need and can do. 
+For example, we can really harden the Content Security Policy for end-users, as we can clearly restrict what they need and can do.
 Admins and super-users cannot work with the most restrictive rules, because some of the admin-functionality needs more permissions.</p>
 <p>2sxc has policies for these user groups:</p>
 <ol>
@@ -176,20 +176,19 @@ Admins and super-users cannot work with the most restrictive rules, because some
 <li><strong>Dev</strong> - a policy which will only apply if the url has <code>?csp=dev</code></li>
 </ol>
 <h2 id="automatic-white-listing-trusted-resources">Automatic White-Listing Trusted Resources</h2>
-<p>As a developer, you want your code to just-work. 
+<p>As a developer, you want your code to just-work.
 So ideally any JS/CSS you add, is automatically white-listed.
-But we cannot just white-list every <code>&lt;script&gt;</code> tag in your code, as that would make CSP useless again. 
+But we cannot just white-list every <code>&lt;script&gt;</code> tag in your code, as that would make CSP useless again.
 So to make this easy <em>and</em> secure, there are two ways to white-list your trusted resources.</p>
-<div class="TIP"><h5>Tip</h5><p>All default 2sxc Apps apply these practices. 
+<div class="TIP"><h5>Tip</h5><p>All default 2sxc Apps apply these practices.
 You may need to get the latest releases to see this in action.</p>
 </div>
 <h3 id="option-1-registered-web-resources">Option 1: Registered Web-Resources</h3>
-<p>Every registered web-resource used by your code will be white-listed automatically. 
-<a class="xref" href="../../../basics/configuration/settings/settings-webresources.html">Web Resources are registered in the Settings</a> 
+<p>Every registered web-resource used by your code will be white-listed automatically.
+<a class="xref" href="../../../basics/configuration/settings/settings-webresources.html">Web Resources are registered in the Settings</a>
 at global, site or app-level, and then activated using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_Activate_">Razor API</a>.</p>
-<pre><code class="lang-c#">var pageSvc = GetService&lt;IPageService&gt;();
-pageSvc.Activate(&quot;fancybox4&quot;, &quot;MySpecialFormJs&quot;);
-</code></pre><p><a name="auto-white-listing-explicit"></a> </p>
+<pre><code class="lang-c#">Kit.Page.Activate(&quot;fancybox4&quot;, &quot;MySpecialFormJs&quot;);
+</code></pre><p><a name="auto-white-listing-explicit"></a></p>
 <h3 id="option-2-explicitly-whitelist-assets">Option 2: Explicitly Whitelist Assets</h3>
 <p>If you have inline scripts or styles, you can mark them as trusted by using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AssetAttributes_">Razor API</a>.</p>
 <pre><code class="lang-html">&lt;script src=&quot;@App.Path/@Edition/dist/scripts.min.js&quot; @pageSvc.AssetAttributes()&gt;&lt;/script&gt;
@@ -200,32 +199,32 @@ Internally it will be processed and removed again, but this ensures that the HTM
 to whitelist the resource, while making it impossible for an attacker to guess the key.</p>
 </div>
 <h2 id="c-apis-for-advanced-scenarios">C# APIs for Advanced Scenarios</h2>
-<p>The previously mentioned features cover 99.9% of all use cases. 
+<p>The previously mentioned features cover 99.9% of all use cases.
 We ourselves have not seen a scenario that would need more than this.
 But you may want to create other rules for your own use-cases.
 In this case, you can use the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddCsp_">IPageService.AddCsp</a> method.</p>
 <h2 id="special-all-src-shorthand">Special <code>all-src</code> Shorthand</h2>
-<p>CSP is a funny beast. If you set a rule such as <code>default-src: https:</code> 
+<p>CSP is a funny beast. If you set a rule such as <code>default-src: https:</code>
 it will be be applied automatically for js, css, fonts etc.
-...But only if you don&#39;t set those rules as well. 
+...But only if you don&#39;t set those rules as well.
 As soon as you set <code>script-src: &#39;self&#39;</code>, it will not include the previous <code>https:</code> rule.</p>
-<p>I assume there are cases where this makes sense. 
-But in our experience this leads to a lot of mistakes. 
-For example, if the site already whitelists <code>https:</code> an an App also needs whitelist another font, 
-it would have to also manually add all the previous rules. 
-We felt this is not a good idea. </p>
-<p>So we&#39;ve added a special <code>all-src</code> shorthand which will apply the rule to all resources. 
+<p>I assume there are cases where this makes sense.
+But in our experience this leads to a lot of mistakes.
+For example, if the site already whitelists <code>https:</code> an an App also needs whitelist another font,
+it would have to also manually add all the previous rules.
+We felt this is not a good idea.</p>
+<p>So we&#39;ve added a special <code>all-src</code> shorthand which will apply the rule to all resources.
 It works as follows:</p>
 <ol>
 <li>Everything you add to <code>all-src</code> is added to <code>default-src</code></li>
 <li>Whenever other rules are added - such as <code>font-src</code> - it will add all the rules ever added to <code>all-src</code> as well</li>
 </ol>
 <h2 id="test-configurations-for-development">Test Configurations for Development</h2>
-<p>Testing and developing your CSP rules can be very tricky, especially on a live site. 
-Because if the HTTP headers block something, the site may become unusable. 
+<p>Testing and developing your CSP rules can be very tricky, especially on a live site.
+Because if the HTTP headers block something, the site may become unusable.
 There are three distinct challenges:</p>
 <ol>
-<li>Step-by-step tweaking your rules </li>
+<li>Step-by-step tweaking your rules</li>
 <li>Improving your rules on a site which already has CSP</li>
 <li>Testing rules for different roles / user-groups</li>
 </ol>
@@ -237,25 +236,25 @@ There are three distinct challenges:</p>
 <li>A url-parameter <code>?csp=true</code> which will switch a page to use the <code>Dev</code> settings</li>
 </ol>
 <p><img src="assets/site-settings-csp-dev.jpg" width="100%" class="full-width"></p>
-<p>This way you can test modified rules in all kinds of combinations and with various users. 
+<p>This way you can test modified rules in all kinds of combinations and with various users.
 Once you&#39;re happy, you can then copy/paste the configuration to the live Settings.</p>
 <h2 id="smart-csp-engine">Smart CSP Engine</h2>
-<p>Technically the HTTP-header can only be set once. 
-So to make it possible to merge rules / configurations from the Site, App and Razor code, 
-we&#39;ve implemented a Smart Engine. </p>
-<p>It will collect all the requirements and before rendering the final page, 
-it merges everything to a final rule-set and generates the HTTP-Header. </p>
+<p>Technically the HTTP-header can only be set once.
+So to make it possible to merge rules / configurations from the Site, App and Razor code,
+we&#39;ve implemented a Smart Engine.</p>
+<p>It will collect all the requirements and before rendering the final page,
+it merges everything to a final rule-set and generates the HTTP-Header.</p>
 <h2 id="turnon-javascript">turnOn JavaScript</h2>
-<p>2sxc introduced <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> in v12.04 in preparation for CSP. </p>
+<p>2sxc introduced <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> in v12.04 in preparation for CSP.</p>
 <p>It is a crucial part in the entire concept, because it allows you to place your scripts in external files,
-and still use parameters/configuration from Razor (such as the ModuleId) in your scripts. 
+and still use parameters/configuration from Razor (such as the ModuleId) in your scripts.
 Do check it out 😉.</p>
 <h2 id="dnn-page-integration">DNN Page Integration</h2>
-<p>All of this leaves just one final piece of the puzzle: 
-DNN Pages without 2sxc on it. We also want to protect these pages. </p>
-<p>Technically this requires the CSP Smart-Engine to be activate on the skin. 
+<p>All of this leaves just one final piece of the puzzle:
+DNN Pages without 2sxc on it. We also want to protect these pages.</p>
+<p>Technically this requires the CSP Smart-Engine to be activate on the skin.
 We do this automatically, the moment you access DynamicCode using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a> on the skin.</p>
-<p>To make it work, you must get DynamicCode of the Site or any App from the theme. 
+<p>To make it work, you must get DynamicCode of the Site or any App from the theme.
 The rest will happen automatically. Something like this will do the trick:</p>
 <pre><code>&lt;%-- This has all common 2sxc services and GetScopedService(...)  --%&gt;
 &lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;

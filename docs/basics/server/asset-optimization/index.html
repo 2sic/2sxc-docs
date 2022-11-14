@@ -238,7 +238,7 @@
   </div>
 </div><style>.context-box-summary .asset-optimizer { visibility: visible; } </style>
 
-<p>Learn about using the Dnn Client-Resource-Management aka Dnn Client-Depedency-Management in 2sxc templates. </p>
+<p>Learn about using the Dnn Client-Resource-Management aka Dnn Client-Depedency-Management in 2sxc templates.</p>
 <p>Whenever a template needs additional files, specifically</p>
 <ol>
 <li>JavaScripts</li>
@@ -246,18 +246,24 @@
 <li>Image Resources</li>
 <li>Fonts</li>
 </ol>
-<p>These should be included in an optimized form to enhance performance dramatically. This is all about reducing the amount of server requests (very important for end-user performance) and delivering them in the order / places in the HTML-file, optimal for their purpose. </p>
-<p>So far 2sxc will take care of your JS/CSS files by bundling and minifying them, at the position and order you need. </p>
+<p>These should be included in an optimized form to enhance performance dramatically. This is all about reducing the amount of server requests (very important for end-user performance) and delivering them in the order / places in the HTML-file, optimal for their purpose.</p>
+<p>So far 2sxc will take care of your JS/CSS files by bundling and minifying them, at the position and order you need.</p>
 <h2 id="how-to-use">How to use</h2>
 <p>Here&#39;s a trivial example for optimizing a CSS with default settings:</p>
-<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; data-enableoptimizations=&quot;true&quot; /&gt;
-</code></pre><p>Here&#39;s a more typical example, showing an optimization for a style &amp; js which are inside the app-folder. This example uses Razor, so we use <code>@App.Path</code> to ensure it&#39;s picking up the right folder (use <code>[App:Path]</code> in token-templates):</p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/style.css&quot; @Kit.Page.AssetAttributes() /&gt;
+</code></pre><p>This will</p>
+<ol>
+<li>Create a link to the file <code>styles.css</code> in the current App</li>
+<li>Add some attributes which will enable optimizations</li>
+<li>If you have <a class="xref" href="../../../abyss/security/csp/index.html">Content Security Policy (CSP)</a> enabled, it will also <a class="xref" href="../../../abyss/security/csp/whitelist.html">whitelist the resources in CSP</a></li>
+</ol>
+<p>Here&#39;s a more typical example, showing an optimization for a style &amp; js which are inside the app-folder. This example uses Razor, so we use <code>@App.Path</code> to ensure it&#39;s picking up the right folder (use <code>[App:Path]</code> in token-templates):</p>
 <pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;
-    data-enableoptimizations=&quot;150&quot; /&gt;
+    @Kit.Page.AssetAttributes(priority: 150) /&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot;
-    data-enableoptimizations=&quot;bottom&quot; /&gt;
+    @Kit.Page.AssetAttributes(position: &quot;bottom&quot;) /&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot;
-    data-enableoptimizations=&quot;200:bottom&quot; /&gt;
+    @Kit.Page.AssetAttributes(priority: 200, position: &quot;bottom&quot;) /&gt;
 &lt;/script&gt;
 </code></pre><p>This shows:</p>
 <ol>
@@ -279,7 +285,7 @@
 <ul>
 <li><code>head</code> meaning that the resulting data is requested in the HTML header. So it will be loaded before the page is rendered, meaning it&#39;s available right from the start but also delays page-build. This is often detrimental in terms of page-load times.<br><em>this is the default location for CSS files</em></li>
 <li><code>body</code> meaning it will be loaded in the beginning of the HTML body tag. Again this means it&#39;s there very early, but will slow down page buildup.<br><em>this is the default location for JS files</em></li>
-<li><code>bottom</code> meaning it will be loaded at the end of the html document. This is actually great for page-loading performance to improve <em>above-the-fold</em> loading. But it takes a bit of work to perfect its application. </li>
+<li><code>bottom</code> meaning it will be loaded at the end of the html document. This is actually great for page-loading performance to improve <em>above-the-fold</em> loading. But it takes a bit of work to perfect its application.</li>
 </ul>
 <h2 id="read-also">Read also</h2>
 <ul>
@@ -291,6 +297,21 @@
 <ul>
 <li>basically this is used in every app in the <a href="http://2sxc.org/en/apps">app-catalog</a></li>
 </ul>
+<hr>
+<h2 id="old-api-before-v14">Old API Before v14</h2>
+<p>The syntax above using the <code>@Kit.Page</code> <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>.
+It was introduced in v14 and requires your Razor to inherit from <a class="xref" href="../../../api/dot-net/Custom.Hybrid.Razor14.html">Razor14</a> or later.
+This is the recommended way of doing this. 
+But there is also a more manual way for older razor files, like this:</p>
+<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; data-enableoptimizations=&quot;true&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;
+    data-enableoptimizations=&quot;150&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot;
+    data-enableoptimizations=&quot;bottom&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot;
+    data-enableoptimizations=&quot;200:bottom&quot; /&gt;
+&lt;/script&gt;
+</code></pre><hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in Version 04.00 with true/false</li>

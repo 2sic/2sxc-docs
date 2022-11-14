@@ -329,12 +329,11 @@ on scripts which may depend on other libraries to run as well.
 Read more about <a class="xref" href="../../turn-on/index.html">turnOn</a>.</p>
 <h3 id="use-module-id-with-turnon">Use Module ID with turnOn</h3>
 <p>Razor File - example taken from the <a class="xref" href="https://2sxc.org/en/apps/app/counter2-hybrid-for-dnn-and-oqtane">Counter App</a>:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @using ToSic.Sxc.Services;
 @{
   // Basics / Preparation
-  var pageSvc = GetService&lt;IPageService&gt;();  // Service to set titles etc. on the page
-  pageSvc.Activate(&quot;turnOn&quot;);
+  Kit.Page.Activate(&quot;turnOn&quot;);
   var domId = &quot;app-counter2-js-&quot; + CmsContext.Module.Id;
 }
 &lt;div id=&quot;@domId&quot; data-count=&quot;@fact.Number&quot;&gt;

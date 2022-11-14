@@ -242,14 +242,13 @@
 So if you only want to customize the edit experience for admins, you can skip this step.</p>
 <p>If you need to use the JS APIs on public pages, you must first activate them. </p>
 <h2 id="activate-the-js-apis-in-v13">Activate the JS APIs in v13+</h2>
-<p>In 2sxc v13 or newer you would do this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services;
+<p>In 2sxc v14 or newer you would do this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   // Tell the page that we need the 2sxc Js APIs
-  GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;); 
+  Kit.Page.Activate(&quot;2sxc.JsCore&quot;); 
 }
-</code></pre><p>This will load and activate the standard JavaScript APIs and let you get data 
+</code></pre><p>This will load and activate the standard JavaScript APIs and let you get data
 using the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a> and the <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">Query Service</a>.</p>
 <p>If your public / anonymous users also need CMS features (such as open the edit dialog), you would replace the <code>&quot;2sxc.JsCore&quot;</code> with <code>&quot;2sxc.JsCms&quot;</code>.
 To even create visible toolbars (which requires some CSS) use <code>&quot;2sxc.Toolbars&quot;</code>.
@@ -266,15 +265,15 @@ Read more about <a class="xref" href="../../../net-code/razor/services/page-serv
     @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
 &lt;/div&gt;
 </code></pre><h2 id="activate-the-js-apis-in-older-versions">Activate the JS APIs in Older Versions</h2>
-<p>Before 2sxc 9.30 there was no real API to do this. 
+<p>Before 2sxc 9.30 there was no real API to do this.
 You had to use a <code>&lt;script&gt;</code> tag like this:</p>
-<script src="/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js" data-enableoptimizations="100"></script> 
+<script src="/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js" data-enableoptimizations="100"></script>
 
 <div class="WARNING"><h5>Warning</h5><p>Avoid this if possible, as we plan to phase it out in the next few years.</p>
 </div>
 <hr>
 <h2 id="how-things-work-internally">How Things Work Internally</h2>
-<p>Each template that needs the $2sxc-file when not logged in must include it, to be sure it&#39;s always there when needed. 
+<p>Each template that needs the $2sxc-file when not logged in must include it, to be sure it&#39;s always there when needed.
 Note that we&#39;ve included various features to prevent duplicate execution.</p>
 <ol>
 <li>if the file is included multiple times, it will only execute once</li>

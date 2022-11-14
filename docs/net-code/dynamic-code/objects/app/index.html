@@ -127,8 +127,8 @@
 
 </div><h2 id="how-to-use">How to use</h2>
 <p>Here&#39;s are two simple examples taken from the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a>:</p>
-<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  data-enableoptimizations=&quot;true&quot;/&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; data-enableoptimizations=&quot;true&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  @Kit.Page.AssetAttributes()/&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; @Kit.Page.AssetAttributes()&gt;&lt;/script&gt;
 @foreach(var tag in AsDynamic(App.Data[&quot;Tag&quot;])) {
     &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;&lt;a href=&quot;@App.Settings.DetailsPage/tag/@tag.Tag&quot; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;&lt;/li&gt;
 }

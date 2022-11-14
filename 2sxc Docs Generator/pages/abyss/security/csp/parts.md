@@ -21,21 +21,21 @@ This should give you an overview as to the parts that make CSP work in 2sxc with
 4. [Special `all-src` shorthand](#special-all-src-shorthand)
 5. [Test configurations which can be activated during development](#test-configurations-for-development)
 6. Really [Smart CSP Engine](#smart-csp-engine) which combines everything to make the rules you need
-6. [turnOn JavaScript](#turnon-javascript) to run scripts which need Razor data 
+6. [turnOn JavaScript](#turnon-javascript) to run scripts which need Razor data
 6. [DNN Page Integration](#dnn-page-integration)
 6. [LightSpeed Integration](#lightspeed-integration)
 
 
 ## Global CSP Features
 
-You can manage CSP features in the system administration to enable/disable just the rules you want. 
+You can manage CSP features in the system administration to enable/disable just the rules you want.
 
-For example, you could only enable dev-rules until you are happy with the configuration. 
+For example, you could only enable dev-rules until you are happy with the configuration.
 
 <img src="./assets/manage-features-csp.jpg" width="100%" class="full-width">
 
 > [!NOTE]
-> The CSP features are very advanced features. 
+> The CSP features are very advanced features.
 > They are exclusive to patrons who support 2sxc.
 > To use them, you must enable the bundle `Patron Sentinel`.
 
@@ -43,8 +43,8 @@ For example, you could only enable dev-rules until you are happy with the config
 
 ### Global and Site Settings
 
-You can configure CSP settings at the site- and global-level. 
-Anything that is configured at global, but not site-level, will use the global settings. 
+You can configure CSP settings at the site- and global-level.
+Anything that is configured at global, but not site-level, will use the global settings.
 
 <img src="./assets/site-settings-to-csp.jpg" width="100%" class="full-width">
 
@@ -54,15 +54,15 @@ With these settings you can:
 1. Determine if it's report-only or fully enforced
 1. Set a bunch of rules which will be applied
 
-Note that if you set CSP rules at the site level, they will apply to that site and not inherit global settings any more. 
-This is by design, because it could lead to very confusing, hard-to-debug configurations. 
+Note that if you set CSP rules at the site level, they will apply to that site and not inherit global settings any more.
+This is by design, because it could lead to very confusing, hard-to-debug configurations.
 
 
 ### App Settings
 
-The same configuration which is applied to the site or global can also be configured at the app-level. 
+The same configuration which is applied to the site or global can also be configured at the app-level.
 The main difference is that this will only be applied to pages which have that App.
-In addition, these settigs will be mixed in with the site/global settings. 
+In addition, these settigs will be mixed in with the site/global settings.
 
 > [!TIP]
 > All default 2sxc Apps have been built with CSP in mind, so all of them already include the CSP settings they need.
@@ -71,7 +71,7 @@ In addition, these settigs will be mixed in with the site/global settings.
 ## Content Security Policies by User Groups
 
 Different users typically need different CSP policies.
-For example, we can really harden the Content Security Policy for end-users, as we can clearly restrict what they need and can do. 
+For example, we can really harden the Content Security Policy for end-users, as we can clearly restrict what they need and can do.
 Admins and super-users cannot work with the most restrictive rules, because some of the admin-functionality needs more permissions.
 
 2sxc has policies for these user groups:
@@ -85,28 +85,27 @@ Admins and super-users cannot work with the most restrictive rules, because some
 
 ## Automatic White-Listing Trusted Resources
 
-As a developer, you want your code to just-work. 
+As a developer, you want your code to just-work.
 So ideally any JS/CSS you add, is automatically white-listed.
-But we cannot just white-list every `<script>` tag in your code, as that would make CSP useless again. 
+But we cannot just white-list every `<script>` tag in your code, as that would make CSP useless again.
 So to make this easy _and_ secure, there are two ways to white-list your trusted resources.
 
 > [!TIP]
-> All default 2sxc Apps apply these practices. 
+> All default 2sxc Apps apply these practices.
 > You may need to get the latest releases to see this in action.
 
 
 ### Option 1: Registered Web-Resources
 
-Every registered web-resource used by your code will be white-listed automatically. 
-[Web Resources are registered in the Settings](xref:Basics.Configuration.Settings.WebResources) 
+Every registered web-resource used by your code will be white-listed automatically.
+[Web Resources are registered in the Settings](xref:Basics.Configuration.Settings.WebResources)
 at global, site or app-level, and then activated using the [Razor API](xref:ToSic.Sxc.Services.IPageService.Activate*).
 
 ```c#
-var pageSvc = GetService<IPageService>();
-pageSvc.Activate("fancybox4", "MySpecialFormJs");
+Kit.Page.Activate("fancybox4", "MySpecialFormJs");
 ```
 
-<a name="auto-white-listing-explicit"></a> 
+<a name="auto-white-listing-explicit"></a>
 
 ### Option 2: Explicitly Whitelist Assets
 
@@ -128,7 +127,7 @@ But anywhere it's applied it will also mark it for whitelisting in CSP (if CSP i
 
 ## C# APIs for Advanced Scenarios
 
-The previously mentioned features cover 99.9% of all use cases. 
+The previously mentioned features cover 99.9% of all use cases.
 We ourselves have not seen a scenario that would need more than this.
 But you may want to create other rules for your own use-cases.
 In this case, you can use the [IPageService.AddCsp](xref:ToSic.Sxc.Services.IPageService.AddCsp*) method.
@@ -136,18 +135,18 @@ In this case, you can use the [IPageService.AddCsp](xref:ToSic.Sxc.Services.IPag
 
 ## Special `all-src` Shorthand
 
-CSP is a funny beast. If you set a rule such as `default-src: https:` 
+CSP is a funny beast. If you set a rule such as `default-src: https:`
 it will be be applied automatically for js, css, fonts etc.
-...But only if you don't set those rules as well. 
+...But only if you don't set those rules as well.
 As soon as you set `script-src: 'self'`, it will not include the previous `https:` rule.
 
-I assume there are cases where this makes sense. 
-But in our experience this leads to a lot of mistakes. 
-For example, if the site already whitelists `https:` an an App also needs whitelist another font, 
-it would have to also manually add all the previous rules. 
-We felt this is not a good idea. 
+I assume there are cases where this makes sense.
+But in our experience this leads to a lot of mistakes.
+For example, if the site already whitelists `https:` an an App also needs whitelist another font,
+it would have to also manually add all the previous rules.
+We felt this is not a good idea.
 
-So we've added a special `all-src` shorthand which will apply the rule to all resources. 
+So we've added a special `all-src` shorthand which will apply the rule to all resources.
 It works as follows:
 
 1. Everything you add to `all-src` is added to `default-src`
@@ -156,11 +155,11 @@ It works as follows:
 
 ## Test Configurations for Development
 
-Testing and developing your CSP rules can be very tricky, especially on a live site. 
-Because if the HTTP headers block something, the site may become unusable. 
+Testing and developing your CSP rules can be very tricky, especially on a live site.
+Because if the HTTP headers block something, the site may become unusable.
 There are three distinct challenges:
 
-1. Step-by-step tweaking your rules 
+1. Step-by-step tweaking your rules
 1. Improving your rules on a site which already has CSP
 1. Testing rules for different roles / user-groups
 
@@ -174,37 +173,37 @@ There are three distinct challenges:
 
 <img src="./assets/site-settings-csp-dev.jpg" width="100%" class="full-width">
 
-This way you can test modified rules in all kinds of combinations and with various users. 
+This way you can test modified rules in all kinds of combinations and with various users.
 Once you're happy, you can then copy/paste the configuration to the live Settings.
 
 
 ## Smart CSP Engine
 
-Technically the HTTP-header can only be set once. 
-So to make it possible to merge rules / configurations from the Site, App and Razor code, 
-we've implemented a Smart Engine. 
+Technically the HTTP-header can only be set once.
+So to make it possible to merge rules / configurations from the Site, App and Razor code,
+we've implemented a Smart Engine.
 
-It will collect all the requirements and before rendering the final page, 
-it merges everything to a final rule-set and generates the HTTP-Header. 
+It will collect all the requirements and before rendering the final page,
+it merges everything to a final rule-set and generates the HTTP-Header.
 
 ## turnOn JavaScript
 
-2sxc introduced [turnOn](xref:JsCode.TurnOn.Index) in v12.04 in preparation for CSP. 
+2sxc introduced [turnOn](xref:JsCode.TurnOn.Index) in v12.04 in preparation for CSP.
 
 It is a crucial part in the entire concept, because it allows you to place your scripts in external files,
-and still use parameters/configuration from Razor (such as the ModuleId) in your scripts. 
+and still use parameters/configuration from Razor (such as the ModuleId) in your scripts.
 Do check it out 😉.
 
 
 ## DNN Page Integration
 
-All of this leaves just one final piece of the puzzle: 
-DNN Pages without 2sxc on it. We also want to protect these pages. 
+All of this leaves just one final piece of the puzzle:
+DNN Pages without 2sxc on it. We also want to protect these pages.
 
-Technically this requires the CSP Smart-Engine to be activate on the skin. 
+Technically this requires the CSP Smart-Engine to be activate on the skin.
 We do this automatically, the moment you access DynamicCode using the [IDynamicCodeService](xref:ToSic.Sxc.Services.IDynamicCodeService) on the skin.
 
-To make it work, you must get DynamicCode of the Site or any App from the theme. 
+To make it work, you must get DynamicCode of the Site or any App from the theme.
 The rest will happen automatically. Something like this will do the trick:
 
 ```

@@ -15,9 +15,8 @@ Starting in 2sxc v11.11 all Razor classes have a command called [GetService](xre
 This is how your code would get a service:
 
 ```c#
-using ToSic.Sxc.Services;
-var page = GetService<IPageService>();
-page.AddOpenGraph("video", "https://2sxc.org/videos/intro.mp4");
+@inherits Custom.Hybrid.Razor14
+@Kit.Page.AddOpenGraph("video", "https://2sxc.org/videos/intro.mp4");
 ```
 
 👉 Read more about [GetService](xref:NetCode.DynamicCode.GetService) in the docs or in the [GetService API](xref:ToSic.Sxc.Code.IDynamicCode.GetService*).

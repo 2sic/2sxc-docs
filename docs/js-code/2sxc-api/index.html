@@ -252,14 +252,13 @@ or the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQ
 <p>If you are logged in as SiteAdmin or SystemAdmin, all the JS APIs are already loaded. 
 So if you only want to customize the edit experience for admins, you can skip this step.</p>
 <p>If you need to use the JS APIs on public pages, you must first activate them. </p>
-<p>In 2sxc v13 or newer you would do this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services;
+<p>In 2sxc v14 or newer you would do this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   // Tell the page that we need the 2sxc Js APIs
-  GetService&lt;IPageService&gt;().Activate(&quot;2sxc.JsCore&quot;); 
+  Kit.Page.Activate(&quot;2sxc.JsCore&quot;); 
 }
-</code></pre><p>This will load and activate the standard JavaScript APIs and let you get data 
+</code></pre><p>This will load and activate the standard JavaScript APIs and let you get data
 using the <a class="xref" href="../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a> and the <a class="xref" href="../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">Query Service</a>.</p>
 <p>If your public / anonymous users also need CMS features (such as open the edit dialog), you would replace the <code>&quot;2sxc.JsCore&quot;</code> with <code>&quot;2sxc.JsCms&quot;</code>.
 To even create visible toolbars (which requires some CSS) use <code>&quot;2sxc.Toolbars&quot;</code>.
