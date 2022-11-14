@@ -24,7 +24,7 @@ In all Razor-templates and also the web-api files, the `Data` object is already 
 
 ```razor
 <div class="app-blog">
-    @foreach(var post in AsDynamic(Data))
+    @foreach(var post in AsList(Data))
     {
         // do something with the @post here
     }
@@ -55,7 +55,7 @@ Or in most cases, because of the simpler syntax later on:
 
 ```cs
 var book = AsDynamic(Data["Book"].FirstOrDefault());    // returns one dynamic entity
-var cats = AsDynamic(Data["Categories"]);               // returns an IEnumerable of dynamic entities
+var cats = AsList(Data["Categories"]);                  // returns an IEnumerable of dynamic entities
 ```  
 
 

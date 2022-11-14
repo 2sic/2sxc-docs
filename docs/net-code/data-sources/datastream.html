@@ -257,7 +257,7 @@ Common examples in <a class="xref" href="../razor/razor-component.html">Razor-te
 </code></pre><p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../dynamic-data/entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>. </p>
 <p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <a class="xref" href="../dynamic-code/as-list.html"><code>AsList</code></a> in the Loop, like this:</p>
 <pre><code class="lang-cs">&lt;ol&gt;
-  @foreach(var person in AsDynamic(Data[&quot;Default&quot;])) {
+  @foreach(var person in AsList(Data[&quot;Default&quot;])) {
     &lt;li&gt;@person.FullName - born @person.Birthday and married to @person.SpouseName&lt;/li&gt;
   }
 &lt;/ol&gt;

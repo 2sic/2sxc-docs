@@ -49,6 +49,7 @@ You also get many helper commands like these
 
 * AsDynamic(...)
 * AsEntity(...)
+* AsList(...)
 * [SaveInAdam(...)](xref:NetCode.WebApi.DotNet.SaveInAdam)
 
 > [!TIP]

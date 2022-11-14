@@ -129,13 +129,15 @@
 <p>Here&#39;s are two simple examples taken from the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a>:</p>
 <pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  @Kit.Page.AssetAttributes()/&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; @Kit.Page.AssetAttributes()&gt;&lt;/script&gt;
-@foreach(var tag in AsDynamic(App.Data[&quot;Tag&quot;])) {
-    &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;&lt;a href=&quot;@App.Settings.DetailsPage/tag/@tag.Tag&quot; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;&lt;/li&gt;
+@foreach(var tag in AsList(App.Data[&quot;Tag&quot;])) {
+  &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;
+    &lt;a href=&quot;@App.Settings.DetailsPage/tag/@tag.Tag&quot; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;
+  &lt;/li&gt;
 }
 </code></pre><p>The <code>&lt;link...</code> and <code>&lt;script...</code> use the app-path to ensure that the file is correctly loaded, no matter what portal or app-name is currently valid. Here you can discover more about the <a class="xref" href="../../../../basics/server/asset-optimization/index.html">optimizations</a>.</p>
-<p>The loop iterates through all tags with the <code>@foreach(var tag in AsDynamic(App.Data[&quot;Tag&quot;]))</code>, creates <code>&lt;li&gt;</code> items and links these to a page defined in the <code>App.Settings</code>.  </p>
+<p>The loop iterates through all tags with the <code>@foreach(var tag in AsList(App.Data[&quot;Tag&quot;]))</code>, creates <code>&lt;li&gt;</code> items and links these to a page defined in the <code>App.Settings</code>.  </p>
 <h2 id="how-it-works">How it works</h2>
-<p>Whenever a 2sxc-instance is created to render a page or to deliver JSON data, the <code>App</code> object is created and prepared to deliver everything you need. It&#39;s very performant, because it doesn&#39;t actually get any data or run any queries unless these are accessed. </p>
+<p>Whenever a 2sxc-instance is created to render a page or to deliver JSON data, the <code>App</code> object is created and prepared to deliver everything you need. It&#39;s very performant, because it doesn&#39;t actually get any data or run any queries unless these are accessed.</p>
 <h2 id="app-properties">App Properties</h2>
 <p>The app-object uses the <code>IApp</code> interface (<a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Apps.IApp.html">see code</a>) has the following simple properties:</p>
 <ol>
@@ -148,7 +150,7 @@
 <li><code>Name</code> string, the app name</li>
 <li><code>Path</code> string, the path as used in URLs in  html</li>
 <li><code>PhysicalPath</code> string, the path as used on the server C:...</li>
-<li><a class="xref" href="app-query.html">Query[&quot;QueryName&quot;]</a> dictionary of queries (see below) </li>
+<li><a class="xref" href="app-query.html">Query[&quot;QueryName&quot;]</a> dictionary of queries (see below)</li>
 <li><code>Resources</code> <a class="xref" href="../../../dynamic-data/dynamic-entity.html">DynamicEntity</a>, all the multi-language labels etc. (see below)</li>
 <li><code>Settings</code> <a class="xref" href="../../../dynamic-data/dynamic-entity.html">DynamicEntity</a>, all the app-settings (see below)</li>
 <li><code>ZoneId</code> number, current Zone ID (similar to PortalId)</li>
@@ -159,7 +161,7 @@
 <p>Read <a class="xref" href="app-query.html">App.Query /  Object in Dynamic Code</a></p>
 <h2 id="note-about-unpublished--draft-content-items">Note about Unpublished / Draft Content-Items</h2>
 <p>In case you&#39;re not aware of the draft/unpublished features in 2sxc, we want to note that each item can be live/draft, and each item could have a corresponding counterpart. So a draft-item <em>could</em> have a live-item (but doesn&#39;t have to), and a live-item <em>could</em> have a draft item.</p>
-<p>This is important, because the admin/editor will see all the draft items, while the end-user will only see the live ones. So the exact items shown and the item-count can differ if you are logged in. </p>
+<p>This is important, because the admin/editor will see all the draft items, while the end-user will only see the live ones. So the exact items shown and the item-count can differ if you are logged in.</p>
 <h2 id="app-settings-and-resources">App Settings and Resources</h2>
 <p>In the App dialogs you can manage <code>Settings</code> and <code>Resources</code>. Basically both are a content-item with the fields you specify, the only difference is the <em>purpose</em> they have.</p>
 <ul>

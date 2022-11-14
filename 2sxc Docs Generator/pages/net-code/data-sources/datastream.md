@@ -37,7 +37,7 @@ In most cases we will need the loop-item a lot, and would preferr to not write `
 
 ```cs
 <ol>
-  @foreach(var person in AsDynamic(Data["Default"])) {
+  @foreach(var person in AsList(Data["Default"])) {
     <li>@person.FullName - born @person.Birthday and married to @person.SpouseName</li>
   }
 </ol>

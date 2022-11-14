@@ -5,6 +5,7 @@
 ## Version 10
 
 ### Changes Version 10.01 - 10.09 LTS
+
 * Develop and fine-tuning of the new Edit-UI based on Angular 8
 
 ### Changes Version 10.20-00 to 10.20-05
@@ -72,7 +73,7 @@
 
 #### New Features / Major Improvements
 
-*  Changed DynamicEntity so that accessing a property which contains many other entities it will return a `DynamicEntityWithList`. This allows Razor files to access the properties like `.EntityId` or `.FirstName` of the main entity in a sub-list easily without requiring `AsList(...)` [#1993](https://github.com/2sic/2sxc/issues/1993)
+* Changed DynamicEntity so that accessing a property which contains many other entities it will return a `DynamicEntityWithList`. This allows Razor files to access the properties like `.EntityId` or `.FirstName` of the main entity in a sub-list easily without requiring `AsList(...)` [#1993](https://github.com/2sic/2sxc/issues/1993)
 * Updated Quick-Dialog to use Angular 9, Ivy and the latest Dnn-Sxc-Angular [#1992](https://github.com/2sic/2sxc/issues/1992)
 * New DataSource [](xref:ToSic.Eav.DataSources.AttributeRename) [#2004](https://github.com/2sic/2sxc/issues/2004)
 * Completely refactored internal list management API [#1995]((https://github.com/2sic/2sxc/issues/1995))

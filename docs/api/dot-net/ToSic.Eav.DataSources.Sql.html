@@ -127,19 +127,19 @@
 <h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
 <p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  you can just drag it into your query. The <code>Default</code> out will contain the items from the DB:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-basic.png" width="100%" class="full-width"></p>
-<p>We recommend that you rename it so you know what it&#39;s for: </p>
+<p>We recommend that you rename it so you know what it&#39;s for:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-renamed.png" width="100%" class="full-width"></p>
 <p>You can then configure your connection to the DB and Query as you need it:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-config-full.png" width="100%" class="full-width"></p>
 <h2 id="understanding-the-settings">Understanding the Settings</h2>
 <h3 id="title--notes">Title &amp; Notes</h3>
-<p>This is just for your notes, to remind you what this is for and to put notes about anything you wanted to remember. </p>
+<p>This is just for your notes, to remind you what this is for and to put notes about anything you wanted to remember.</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-config-title-notes.png" width="100%" class="full-width"></p>
 <h3 id="connection">Connection</h3>
 <p>There are two ways to connect to SQL databases: using a <strong>Connection Name</strong> (which points to a detailed connection string in the <em>web.config</em>) or using a detailed <strong>Connection String</strong> as you need it. We recommend to use connection names where possible. If you provide both, the connection name will be used:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-config-connection.png" width="100%" class="full-width"></p>
 <h3 id="the-sql-query">The SQL-Query</h3>
-<p>The <strong>Query</strong> section has quite a lot of options, most of which are not required but are important for this to work: </p>
+<p>The <strong>Query</strong> section has quite a lot of options, most of which are not required but are important for this to work:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-config-query.png" width="100%" class="full-width"></p>
 <p>Here&#39;s what you need to know</p>
 <ul>
@@ -148,8 +148,8 @@
 </ul>
 </li>
 <li>EntityId and EntityTitle<ul>
-<li>when using entities in 2sxc / EAV, each entity must be able to supply a title and an ID which is an integer. This is important for internal data processing to work. </li>
-<li>For this to work with SQL, the source needs to know what data-fields to use for this. By default it will use a field called <code>EntityId</code> and <code>EntityTitle</code>, but you can also use any other field - in which case you must supply the names in the following fields. </li>
+<li>when using entities in 2sxc / EAV, each entity must be able to supply a title and an ID which is an integer. This is important for internal data processing to work.</li>
+<li>For this to work with SQL, the source needs to know what data-fields to use for this. By default it will use a field called <code>EntityId</code> and <code>EntityTitle</code>, but you can also use any other field - in which case you must supply the names in the following fields.</li>
 </ul>
 </li>
 </ul>
@@ -160,7 +160,7 @@ AdministratorRoleId,GUID,HomeDirectory,
 CreatedOnDate,PortalGroupID
   FROM [Portals]
   Where PortalId = [QueryString:Id]
-</code></pre><p>This will automatically use the <code>id</code> parameter from the URL to filter the result. </p>
+</code></pre><p>This will automatically use the <code>id</code> parameter from the URL to filter the result.</p>
 <h2 id="using-another-entity-as-sql-parameter">Using Another Entity As SQL Parameter</h2>
 <p>You can of course use the <code>In</code> stream to provide entities which configure the SQL. The following example has a content-type <code>SqlSetting</code> with only one item (to make the example easier to understand). The <a class="xref" href="ToSic.Eav.DataSources.App.html">App DataSource</a> delivers this in the <code>AppSetting</code> stream, which also goes into the Sql as <code>AppSetting</code> and is then used as a token in the SQL:</p>
 <p><img src="ToSic.Eav/DataSources/assets/sqldatasource-using-entity-as-config.png" width="100%" class="full-width"></p>
@@ -172,18 +172,18 @@ CreatedOnDate,PortalGroupID
 as it&#39;s easier to understand and is identical for C# and JavaScript. 
 It&#39;s also better because it separates data-retrieval from visualization.</p>
 </blockquote>
-<p>An example code </p>
+<p>An example code</p>
 <pre><code class="lang-razor">@{
   var sql = CreateSource&lt;ToSic.Eav.DataSources.Sql&gt;();
   sql.ConnectionString = &quot;SiteSqlServer&quot;; // use Dnn
   sql.SelectCommand = &quot;Select ... From&quot;; // your sql here
 }
-@foreach(var post in AsDynamic(sql[&quot;Default&quot;]))
+@foreach(var post in AsList(sql[&quot;Default&quot;]))
 {
   &lt;div&gt;@post.EntityTitle&lt;/div&gt;
 }
 </code></pre><h3 id="important-when-coding">Important When Coding</h3>
-<p>Note that data sources only retrieve data once, and then ignore any further configuration. So you must set everything before accessing the data. </p>
+<p>Note that data sources only retrieve data once, and then ignore any further configuration. So you must set everything before accessing the data.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> / <a class="xref" href="../../net-code/data-sources/datastream.html">DataStream</a></li>

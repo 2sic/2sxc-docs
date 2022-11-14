@@ -35,7 +35,7 @@ Filter a list (IEnumerable) based on a criteria.
 Example: Basic filter of a list by string
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 items = items.Where(p => p.Name == "Chuck Norris");
 // items now contains only items which have "Chuck Norris" as name property
 ```
@@ -44,7 +44,7 @@ items = items.Where(p => p.Name == "Chuck Norris");
 Returns true if any of the elements matches a criteria.
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 var containsChuckNorris = items.Any(p => p.Name == "Chuck Norris");
 // if containsChuckNorris is true, at least one element has name "Chuck Norris"
 ```
@@ -64,7 +64,7 @@ Here's another Any - to see if a relationship contains something. It's a bit mor
 Order a list (IEnumerable) by a specific field.
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 items = items.OrderBy(p => p.Name);
 // items are now ordered by property "Name"
 ```
@@ -73,7 +73,7 @@ items = items.OrderBy(p => p.Name);
 Get first or last element of the list.
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 var first = items.First(); // contains the first element
 var last = items.Last(); // contains the last element
 ```
@@ -82,7 +82,7 @@ var last = items.Last(); // contains the last element
 Transform list into a new list, selecting only specified field(s).
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 var names = items.Select(p => p.Name); // names is a list of all names
 ```
 
@@ -90,7 +90,7 @@ var names = items.Select(p => p.Name); // names is a list of all names
 Paging functions: Take only n elements, skip m elements
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 items = items.Skip(10).Take(10); // Skips the first 10 elements and select only 10
 ```
 
@@ -98,7 +98,7 @@ items = items.Skip(10).Take(10); // Skips the first 10 elements and select only 
 Count number of elements in a list.
 
 ```C#
-var items = AsDynamic(Data["Default"]);
+var items = AsList(Data["Default"]);
 var count = items.Count(); // contains the number of elements in the list
 ```
 
@@ -107,7 +107,7 @@ Find index of a specific element in the list.
 
 ```C#
 @{
-    var items = AsDynamic(Data["Default"]);
+    var items = AsList(Data["Default"]);
 }
 @foreach(var item in items) {
     <h1>Item number @items.IndexOf(item)</h1>

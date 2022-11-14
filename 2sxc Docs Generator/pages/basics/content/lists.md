@@ -21,7 +21,7 @@ When a View is a List...
 
 ## Use in Code
 
-In C# you will usually do things like `@foreach(var item in AsDynamic(Data)) { ... }` or similar. Check the [C# API Docs for this](xref:NetCode.DynamicCode.Data).
+In C# you will usually do things like `@foreach(var item in AsList(Data)) { ... }` or similar. Check the [C# API Docs for this](xref:NetCode.DynamicCode.Data).
 
 In Tokens you there is a special `<repeat>` tag. Check the [Tokens docs](xref:Basics.Server.Render.Tokens.Index).
 

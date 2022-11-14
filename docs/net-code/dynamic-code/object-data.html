@@ -140,7 +140,7 @@
 </div><h2 id="most-common-way-to-use-the-data-object">Most common way to use the Data object</h2>
 <p>In all Razor-templates and also the web-api files, the <code>Data</code> object is already created and ready to access. Here&#39;s a code example:</p>
 <pre><code class="lang-razor">&lt;div class=&quot;app-blog&quot;&gt;
-    @foreach(var post in AsDynamic(Data))
+    @foreach(var post in AsList(Data))
     {
         // do something with the @post here
     }
@@ -162,7 +162,7 @@
 var cats = Data[&quot;Categories&quot;];                          // returns an IEnumerable of iEntity objects
 </code></pre><p>Or in most cases, because of the simpler syntax later on:</p>
 <pre><code class="lang-cs">var book = AsDynamic(Data[&quot;Book&quot;].FirstOrDefault());    // returns one dynamic entity
-var cats = AsDynamic(Data[&quot;Categories&quot;]);               // returns an IEnumerable of dynamic entities
+var cats = AsList(Data[&quot;Categories&quot;]);                  // returns an IEnumerable of dynamic entities
 </code></pre><h2 id="changing-what-is-provided-by-data">Changing what is provided by Data</h2>
 <p>The main configuration of the template will determine, what data is initially provided to the template.
 Afterwards, other mechanisms can override / change this.</p>
