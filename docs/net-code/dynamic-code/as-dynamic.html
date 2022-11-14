@@ -117,7 +117,7 @@
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.AsDynamic">
 <h1 id="asdynamic">AsDynamic(...)</h1>
 
-<p>To make a complex system like the EAV work, the real objects like the <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> must very very smart and complicated. This would not be fun to use in razor, where you would prefer a simple <code>@Something.Property</code> syntax. This is where <code>AsDynamic(...)</code> comes in. </p>
+<p>To make a complex system like the EAV work, the real objects like the <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> must very very smart and complicated. This would not be fun to use in razor, where you would prefer a simple <code>@Something.Property</code> syntax. This is where <code>AsDynamic(...)</code> comes in.</p>
 <p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_AsDynamic_System_Object_">official API docs</a>.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
@@ -127,9 +127,9 @@
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
 </div><h2 id="how-to-use">How to Use</h2>
-<p>If you have an <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> 
-or you&#39;re not sure if it&#39;s either an IEntity or a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>, 
-just pass it through <code>AsDynamic(...)</code> and the result will be a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>. 
+<p>If you have an <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a>
+or you&#39;re not sure if it&#39;s either an IEntity or a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>,
+just pass it through <code>AsDynamic(...)</code> and the result will be a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
 You can then access the properties with the simple <code>thing.Property</code> syntax.</p>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
 @{
@@ -137,10 +137,10 @@ You can then access the properties with the simple <code>thing.Property</code> s
     var myThing = AsDynamic(unknown);
 }
 &lt;div&gt;@myThing.FirstName&lt;/div&gt;
-</code></pre><div class="NOTE"><h5>Note</h5><p>Results of AsDynamic are dynamically typed, so you can write <code>.Anything</code> behind it. 
+</code></pre><div class="NOTE"><h5>Note</h5><p>Results of AsDynamic are dynamically typed, so you can write <code>.Anything</code> behind it.
 But the data coming out of it is strongly typed, so <code>Content.Birthday</code> is a real date object.</p>
 </div>
-<div class="TIP"><h5>Tip</h5><p><a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> objects also have some additional properties like 
+<div class="TIP"><h5>Tip</h5><p><a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> objects also have some additional properties like
 <code>EntityId</code> or <code>Parents(...)</code>. Check out the API docs.</p>
 </div>
 <h2 id="how-it-works">How it works</h2>
@@ -155,19 +155,21 @@ But the data coming out of it is strongly typed, so <code>Content.Birthday</code
 <h2 id="reversing-asdynamic-with-asentity">Reversing AsDynamic with AsEntity</h2>
 <p>Check out these docs: <a class="xref" href="as-entity.html">AsEntity(...) - Get the Underlying Data</a></p>
 <h2 id="obsolete-use-of-asdynamic-for-lists">Obsolete use of AsDynamic() for Lists</h2>
-<div class="WARNING"><h5>Warning</h5><p>In previous versions of 2sxc you&#39;ll find AsDynamic(...) also used to convert lists (IEnumerable or DataStreams) into lists. 
-This caused a lot of issues with dynamic code compilation, so in 2sxc 10.20 we introduced <a class="xref" href="as-list.html">AsList(...)</a> for that use case. So if you find that kind of code, it works because...</p>
+<div class="WARNING"><h5>Warning</h5><p>In previous versions of 2sxc you&#39;ll find AsDynamic(...) also used to convert lists (IEnumerable or DataStreams) into lists.
+This caused a lot of issues with dynamic code compilation, so in 2sxc 10.20 we introduced <a class="xref" href="as-list.html">AsList(...)</a> for that use case.
+So if you find that kind of code, it works because...</p>
 <ul>
 <li>without <code>@inherits Custom.Hybrid.Razor12</code> in the header, the old calls still work</li>
 <li>with <code>@inherits Custom.Hybrid.Razor12</code> in the header, you must use <code>AsList(...)</code></li>
 </ul>
 </div>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced ca. in 2sxc 1</li>
 <li>Modified/added signatures in 2sxc 7</li>
 <li>Added the string and DataSource signature in 2sxc 10.20</li>
-<li>TODO: AsList</li>
+<li>Introduced AsList to make code more readable for lists 10.20</li>
 </ol>
 </article>
           </div>
