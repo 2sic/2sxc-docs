@@ -209,6 +209,37 @@ It&#39;s almost identical with Razor12 with these differences:</p>
 <p>todo #todoc</p>
 <h3 id="the-old-one">The old one...</h3>
 <p>todo: #todoc</p>
+<h2 id="internal-docs-api-controller-inheritance">Internal Docs: Api Controller Inheritance</h2>
+<div class="WARNING"><h5>Warning</h5><p>This is internal documentation for the 2sxc core developers.
+You don&#39;t need this part.</p>
+</div>
+<h3 id="internal-docs-dnn-api-controller-inheritance">Internal Docs: Dnn API Controller Inheritance</h3>
+<p>Basis for everything:</p>
+<ol>
+<li><code>System.Web.WebPages.WebPageBase</code><ol>
+<li>🥷🏽 <code>ToSic.Sxc.Web.RazorComponentBase</code>
+ <em>internal base for all Razor Pages in DNN</em><br> 🔹 adds dynamic code context, <code>Html</code>, <code>RenderPage</code>, etc.<br> 🔹 adds simple <code>Log</code> object<br> 🔹 Adds logging to insights<br> 🔹 Base class for everything</li>
+</ol>
+</li>
+</ol>
+<p>Based on that these public base classes were made:</p>
+<ol>
+<li>⭐💀 <code>ToSic.SexyContent.Razor.SexyContentWebPage</code> <em>public, very old/deprecated</em><br> <em>oldest base class, should not be used any more</em><br> 🔹 TODO: MUST CHECK IF THIS IS STILL THE DEFAULT in web.config<br> 🔹 had some exotic propecties such as <code>List</code> which contained Content/Presentation pairs  <ol>
+<li>🥷🏽 <code>ToSic.SexyContent.Razor.SexyContentWebPage&lt;T&gt;</code> <em>internal, only for technical reasons</em></li>
+</ol>
+</li>
+<li>⭐💀 <code>ToSic.Sxc.Dnn.RazorComponent</code> <em>public, old/deprecated</em><br> <em>was the replacement for the previous, without the exotic <code>List</code></em>
+ 🔹 Had old APIs such as <code>CustomizeData</code> and <code>CustomizeCode</code> which isn&#39;t needed any more  <ol>
+<li>⭐💀 <code>ToSic.Sxc.Dnn.RazorComponentCode</code> <em>public, old/deprecated</em><br><em>used for deprecated feature: code-behind</em></li>
+</ol>
+</li>
+<li>⭐💀 <code>Custom.Hybrid.Razor12</code> <em>public, recommended to move to 14</em><br> <em>works fine, but is missing some newer features</em>
+ 🔹 Removed <code>CustomizeData</code> and <code>CustomizeCode</code><br> 🔹 Had a public object <code>Convert</code> which interfered with the <code>System.Convert</code></li>
+<li>🥷🏽 <code>Custom.Hybrid.Advanced.Razor14&lt;TModel, TServiceKit&gt;</code> <em>internal</em><br> 🔹 adds the <code>Kit</code> property with all kinds of ready-to-use Services<br> 🔹 also removes the <code>.Convert</code> object, which is now on Kit.Convert<ol>
+<li>⭐🌟 <code>Custom.Hybrid.Razor14</code> <em>public, <strong>recommended</strong></em></li>
+</ol>
+</li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ul>
