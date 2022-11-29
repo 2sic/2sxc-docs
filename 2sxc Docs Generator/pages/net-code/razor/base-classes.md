@@ -79,6 +79,44 @@ todo #todoc
 
 todo: #todoc
 
+## Internal Docs: Api Controller Inheritance
+
+> [!WARNING]
+> This is internal documentation for the 2sxc core developers.
+> You don't need this part.
+
+### Internal Docs: Dnn API Controller Inheritance
+
+Basis for everything:
+
+1. `System.Web.WebPages.WebPageBase`
+    1. 🥷🏽 `ToSic.Sxc.Web.RazorComponentBase`
+        _internal base for all Razor Pages in DNN_  
+        🔹 adds dynamic code context, `Html`, `RenderPage`, etc.  
+        🔹 adds simple `Log` object  
+        🔹 Adds logging to insights  
+        🔹 Base class for everything
+
+Based on that these public base classes were made:
+
+1. ⭐💀 `ToSic.SexyContent.Razor.SexyContentWebPage` _public, very old/deprecated_  
+    _oldest base class, should not be used any more_  
+    🔹 TODO: MUST CHECK IF THIS IS STILL THE DEFAULT in web.config  
+    🔹 had some exotic propecties such as `List` which contained Content/Presentation pairs  
+    1. 🥷🏽 `ToSic.SexyContent.Razor.SexyContentWebPage<T>` _internal, only for technical reasons_
+1. ⭐💀 `ToSic.Sxc.Dnn.RazorComponent` _public, old/deprecated_  
+    _was the replacement for the previous, without the exotic `List`_
+    1. ⭐💀 `ToSic.Sxc.Dnn.RazorComponentCode` _public, old/deprecated_  
+      _used for deprecated feature: code-behind_
+1. ⭐💀 `Custom.Hybrid.Razor12` _public, recommended to move to 14_  
+    _works fine, but is missing some newer features_
+    🔹 Had a public object `Convert` which interfered with the `System.Convert`
+1. 🥷🏽 `Custom.Hybrid.Advanced.Razor14<TModel, TServiceKit>` _internal_  
+    🔹 adds the `Kit` property with all kinds of ready-to-use Services  
+    🔹 also removes the `.Convert` object, which is now on Kit.Convert
+    1. ⭐🌟 `Custom.Hybrid.Razor14` _public, **recommended**_
+
+
 ---
 
 ## History

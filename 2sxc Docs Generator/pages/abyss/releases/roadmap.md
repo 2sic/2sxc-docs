@@ -17,13 +17,13 @@ Last Update: **2022-11-10**
 
 1. ✅ Publish [blazor-cms.org](https://blazor-cms.org/)
     1. ✅ get a great page speed - 95%+
-    1. ⏳ Get blazor-cms.org to index really well in google
+    1. ✅ Get blazor-cms.org to index really well in google
 1. ✅ v14 LTS #2 ca. v14.12 🚀
 1. v15 Release
     1. ⏳ Improve logging so it's in an own library
-    1. Update CSV DLL to latest version
-    1. Improve install-file names
-    1. Better indicate premium features and explain to the user what it is and how to get it
+    1. ⏳ Update CSV DLL to latest version
+    1. ⏳ Improve install-file names
+    1. ⏳ Better indicate premium features and explain to the user what it is and how to get it
     1. ⏳ TinyMCE upgrade to v6
     1. Improve WYSIWYG
         1. div-Sections to better allign images
