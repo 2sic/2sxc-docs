@@ -106,10 +106,12 @@ Based on that these public base classes were made:
     1. 🥷🏽 `ToSic.SexyContent.Razor.SexyContentWebPage<T>` _internal, only for technical reasons_
 1. ⭐💀 `ToSic.Sxc.Dnn.RazorComponent` _public, old/deprecated_  
     _was the replacement for the previous, without the exotic `List`_
+    🔹 Had old APIs such as `CustomizeData` and `CustomizeCode` which isn't needed any more  
     1. ⭐💀 `ToSic.Sxc.Dnn.RazorComponentCode` _public, old/deprecated_  
       _used for deprecated feature: code-behind_
 1. ⭐💀 `Custom.Hybrid.Razor12` _public, recommended to move to 14_  
     _works fine, but is missing some newer features_
+    🔹 Removed `CustomizeData` and `CustomizeCode`  
     🔹 Had a public object `Convert` which interfered with the `System.Convert`
 1. 🥷🏽 `Custom.Hybrid.Advanced.Razor14<TModel, TServiceKit>` _internal_  
     🔹 adds the `Kit` property with all kinds of ready-to-use Services  
