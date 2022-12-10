@@ -19,30 +19,43 @@ Last Update: **2022-11-10**
     1. ✅ get a great page speed - 95%+
     1. ✅ Get blazor-cms.org to index really well in google
 1. ✅ v14 LTS #2 ca. v14.12 🚀
+
+## December 2022 - v15
+
 1. v15 Release
     1. ⏳ Improve logging so it's in an own library
-    1. ⏳ Update CSV DLL to latest version
+    1. ✅ Update CSV DLL to latest version
     1. ⏳ Improve install-file names
     1. ⏳ Better indicate premium features and explain to the user what it is and how to get it
     1. ⏳ TinyMCE upgrade to v6
-    1. Improve WYSIWYG
-        1. div-Sections to better allign images
+    1. ⏳ Improve WYSIWYG
+        1. Sections to better allign images
+        1. Use classes to determine size instead of styles
         1. Images which auto-resize based on size
-        1. Ability to do more configuration on WYSIWYG
-            1. ability to override toolbar buttons
-            1. ability to set various easy-to-set configuration
-            1. Possibly ability to preset various configurations globally or at site-level and use in other places
     1. Review dropping `_` prefix requirement on cshtml files by protecting them in an another manner
         1. It's not needed on Oqtane, as the files are not accessible
         1. Only needed ATM on DNN because each file could be called from the browser directly
         1. Probably make sure all base classes refuse to render standalone
     1. ⏳ Ability to import apps from folder directly
-    1. ~~Support Oqtane v4 with .net 7~~ - ATM Oqtane doesn't plan on going to .net 7
+    1. ✅ ~~Support Oqtane v4 with .net 7~~ - ATM Oqtane doesn't plan on going to .net 7
+    1. Integration of Google Translate in the Edit UI
+
+
+<!-- 
+  AsCmsItem(Content);
+  AsCmsList(App.Data["xxx"])
+  Kit.Cms.Show(Content.Field("Body"), wrapIn: "div") - returns an ITag ?
+-->
 
 
 ## Probably 2022 December
 
-1. Auto-Install more apps from catalog - even after some have already been installed - ca. 1d - SDV?
+1. Improve WYSIWYG
+    1. Ability to do more configuration on WYSIWYG
+        1. ability to override toolbar buttons
+        1. ability to set various easy-to-set configuration
+        1. Possibly ability to preset various configurations globally or at site-level and use in other places
+1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
 1. Code editor intellisense for most APIs - ca. 3-4d
 1. Data Sources
