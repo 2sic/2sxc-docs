@@ -123,23 +123,96 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <div class="TIP"><h5>Tip</h5><p>You too can sponsor a feature to make things happen sooner!</p>
 </div>
 <p>Last Update: <strong>2022-11-10</strong></p>
-<h2 id="november-2022---lts-and-v15">November 2022 - LTS and v15</h2>
+<h2 id="december-2022---v15-release">December 2022 - v15 Release</h2>
 <ol>
-<li>✅ Publish <a href="https://blazor-cms.org/">blazor-cms.org</a><ol>
-<li>✅ get a great page speed - 95%+</li>
-<li>✅ Get blazor-cms.org to index really well in google</li>
+<li>⏳ Better indicate premium/patron features and explain to the user what it is and how to get it</li>
+<li>⏳ Improve WYSIWYG<ol>
+<li>Sections to better allign images</li>
+<li>Use classes to determine size instead of styles</li>
+<li>Images which auto-resize based on size</li>
 </ol>
 </li>
-<li>✅ v14 LTS #2 ca. v14.12 🚀</li>
-<li>v15 Release<ol>
-<li>⏳ Improve logging so it&#39;s in an own library</li>
-<li>⏳ Update CSV DLL to latest version</li>
-<li>⏳ Improve install-file names</li>
-<li>⏳ Better indicate premium features and explain to the user what it is and how to get it</li>
-<li>⏳ TinyMCE upgrade to v6</li>
+<li>⏳ Review dropping <code>_</code> prefix requirement on cshtml files by protecting them in an another manner<ol>
+<li>It&#39;s not needed on Oqtane, as the files are not accessible</li>
+<li>Only needed ATM on DNN because each file could be called from the browser directly</li>
+<li>Probably make sure all base classes refuse to render standalone</li>
+</ol>
+</li>
+<li>⏳ Ability to import apps from folder directly (patrons)</li>
+<li>Settings: Ability to augment the preset configuration / settings with custom overrides</li>
+<li>⏳ Integration of Google Translate in the Edit UI</li>
+<li>⏳ New Auto-Installer with search, list-view etc.<ol>
+<li>⏳ Features to configure at system level which apps are allowed / must be installed</li>
+<li>✅ Feature to tell new auto-installer what apps are already installed</li>
+</ol>
+</li>
+<li>Export / Import<ol>
+<li>✅ Create export bundle configuration to mark content-types and entities for export together</li>
+<li>⏳ Create json bundle export system</li>
+<li>⏳ Create json bundle import system</li>
+<li>⏳ Extend the file-based data loader to also load bundles</li>
+</ol>
+</li>
+<li>⏳ Ability to use compressed GZIP data for DataTimeline (patrons)</li>
+<li>Release v15 before XMas</li>
+</ol>
+<p>This is all done and ready for v15 as of 2022-12-10</p>
+<ol>
+<li>✅ Improve logging<ol>
+<li>✅ Place it in an own library DLL for better reuse</li>
+<li>✅ Create ICodeLog for improve logging in Razor and WebApi which ensures compatibility with existing code</li>
+</ol>
+</li>
+<li>✅ Update CsvHelper DLL to latest version</li>
+<li>✅ Improve install-file names</li>
+<li>✅ Update to Razor Blade 4</li>
+<li>✅ <del>Support Oqtane v4 with .net 7</del> - ATM Oqtane doesn&#39;t plan on going to .net 7</li>
+<li>✅ Tutorial App<ol>
+<li>✅ Improve internal structure</li>
+<li>✅ Change how to show code vs results - mostly use tabs</li>
+</ol>
+</li>
+<li>✅ Razor APIs and Services<ol>
+<li>✅ Improve <code>ImageService</code> to have an <code>imgAltFallback</code> on <code>.Img()</code>, <code>.Picture()</code> and <code>.ImgOrPic()</code></li>
+<li>✅ Improve <code>ImageService</code> to better respect multi-language crop-settings and labels</li>
+<li>✅ Improve <code>Page</code> service <code>Parameters.Set(...)</code> to also allow bool, int etc. (not just strings)</li>
+<li>✅ Create Kit.HtmlTag</li>
+<li>✅ Create <code>ITurnOnService</code> and <code>Kit.Page.TurnOn(...)</code></li>
+</ol>
+</li>
+<li>✅ Data Sources<ol>
+<li>✅ Improve <code>ValuFilter</code> Data Source to also allow <code>Contains</code> on numbers</li>
+</ol>
+</li>
+<li>✅ DB Clean-Up<ol>
+<li>✅ Remove SQL triggers which log XML data to <code>DataTimeline</code> which isn&#39;t used any more</li>
+<li>✅ Remove XML column <code>NewData</code> in <code>DataTimeline</code> which isn&#39;t used any more</li>
+</ol>
+</li>
+<li>✅ Internal APIs<ol>
+<li>✅ Improve Settings/Resources Stack with various unit tests</li>
+<li>✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like <code>&quot;Images.Content.Width&quot;</code></li>
+<li>✅ Create API <code>DependenciesBase</code> to better handle log attachments to dependencies</li>
+</ol>
+</li>
+<li>✅ TinyMCE upgrade to v6</li>
+</ol>
+<p>Probably also do:</p>
+<ol>
+<li>Blazor / Oqtane<ol>
+<li>⏳ cre8magic - auto-generate sitemap.xml</li>
+</ol>
+</li>
+<li>Probably update ImageFlow again, if PNG resize bug is fixed</li>
+</ol>
+<!-- 
+  AsCmsItem(Content);
+  AsCmsList(App.Data["xxx"])
+  Kit.Cms.Show(Content.Field("Body"), wrapIn: "div") - returns an ITag ?
+-->
+<h2 id="probably-2022-december">Probably 2022 December</h2>
+<ol>
 <li>Improve WYSIWYG<ol>
-<li>div-Sections to better allign images</li>
-<li>Images which auto-resize based on size</li>
 <li>Ability to do more configuration on WYSIWYG<ol>
 <li>ability to override toolbar buttons</li>
 <li>ability to set various easy-to-set configuration</li>
@@ -148,20 +221,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 </li>
 </ol>
 </li>
-<li>Review dropping <code>_</code> prefix requirement on cshtml files by protecting them in an another manner<ol>
-<li>It&#39;s not needed on Oqtane, as the files are not accessible</li>
-<li>Only needed ATM on DNN because each file could be called from the browser directly</li>
-<li>Probably make sure all base classes refuse to render standalone</li>
-</ol>
-</li>
-<li>⏳ Ability to import apps from folder directly</li>
-<li><del>Support Oqtane v4 with .net 7</del> - ATM Oqtane doesn&#39;t plan on going to .net 7</li>
-</ol>
-</li>
-</ol>
-<h2 id="probably-2022-december">Probably 2022 December</h2>
-<ol>
-<li>Auto-Install more apps from catalog - even after some have already been installed - ca. 1d - SDV?</li>
+<li>⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d</li>
 <li>⏳ Toolbars Service Improvements:  transport <code>data</code> for use in notes etc. ca. 0.5d 2dm</li>
 <li>Code editor intellisense for most APIs - ca. 3-4d</li>
 <li>Data Sources<ol>
@@ -175,6 +235,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV</li>
 <li>Apps / App Maintenance: publish other new apps<ol>
 <li>New timeline</li>
+<li>Files</li>
 <li>etc.</li>
 </ol>
 </li>
@@ -215,6 +276,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>sxc-angular<ol>
 <li>Re-release sxc-angular demo-app for it</li>
 <li>Js Docs for sxc-angular</li>
+<li>React sample application</li>
 </ol>
 </li>
 <li><p>Language editing permissions - improve, test, finalize, document - ca. 3-5d</p>
@@ -356,6 +418,15 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>✅ Security update System.Data.SqlClient</li>
 <li>✅ Oqtane 2shine Theme release</li>
 <li>✅ cre8magic v0.0.1 released</li>
+</ol>
+<h2 id="november-2022---lts">November 2022 - LTS</h2>
+<ol>
+<li>✅ Publish <a href="https://blazor-cms.org/">blazor-cms.org</a><ol>
+<li>✅ get a great page speed - 95%+</li>
+<li>✅ Get blazor-cms.org to index really well in google</li>
+</ol>
+</li>
+<li>✅ v14 LTS #2 ca. v14.12 🚀</li>
 </ol>
 <h2 id="future--other">Future / Other</h2>
 <ol>
