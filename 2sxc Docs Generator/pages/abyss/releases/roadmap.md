@@ -20,10 +20,6 @@ Last Update: **2022-11-10**
     1. Sections to better allign images
     1. Use classes to determine size instead of styles
     1. Images which auto-resize based on size
-1. ⏳ Review dropping `_` prefix requirement on cshtml files by protecting them in an another manner
-    1. It's not needed on Oqtane, as the files are not accessible
-    1. Only needed ATM on DNN because each file could be called from the browser directly
-    1. Probably make sure all base classes refuse to render standalone
 1. ⏳ Ability to import apps from folder directly (patrons)
 1. Settings: Ability to augment the preset configuration / settings with custom overrides
 1. ⏳ Integration of Google Translate in the Edit UI
@@ -35,10 +31,11 @@ Last Update: **2022-11-10**
     1. ⏳ Create json bundle export system
     1. ⏳ Create json bundle import system
     1. ⏳ Extend the file-based data loader to also load bundles
-1. ⏳ Ability to use compressed GZIP data for DataTimeline (patrons)
+1. ⏳ Rename internal `.data` folder to `App_Data/system` and similar as this folder will contain private data in future
+1. ⏳ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites
 1. Release v15 before XMas
 
-This is all done and ready for v15 as of 2022-12-10
+This is all done and ready for v15 as of 2022-12-12
 
 1. ✅ Improve logging
     1. ✅ Place it in an own library DLL for better reuse
@@ -66,6 +63,13 @@ This is all done and ready for v15 as of 2022-12-10
     1. ✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like `"Images.Content.Width"`
     1. ✅ Create API `DependenciesBase` to better handle log attachments to dependencies
 1. ✅ TinyMCE upgrade to v6
+1. ✅ Drop `_` prefix requirement on cshtml files by protecting them in an another manner
+    1. ✅ It's not needed on Oqtane, as the files are not accessible
+    1. ✅ Only needed ATM on DNN because each file could be called from the browser directly
+    1. ✅ Probably make sure all base classes refuse to render standalone
+1. ✅ Ability to use compressed GZIP data for DataTimeline (patrons)
+    1. ✅ Technical features
+    1. ✅ Toggle to turn on/off
 
 Probably also do:
 
@@ -111,6 +115,7 @@ Probably also do:
 1. Formulas - ca. 2d
     1. Formula Boost #3 (intellisense in Formulas, entity-type info)
     1. JS Docs for formula
+1. Compress Timeline: Feature to compress the existing history
 
 Blazor CMS
 
