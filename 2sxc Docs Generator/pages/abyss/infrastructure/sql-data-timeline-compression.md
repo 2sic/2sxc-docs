@@ -22,7 +22,7 @@ If you activate `Patron Infrastructure`, this feature is automatically enabled.
 Older data is not modified by the change, but you can run the following SQL to compress it:
 
 ```sql
-TODO: @STV
+UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))), [Json] = NULL WHERE [Json] IS NOT NULL
 ```
 
 ## Decompress Previous Data
@@ -30,7 +30,7 @@ TODO: @STV
 If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:
 
 ```sql
-TODO @STV
+UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
 ```
 
 ---
