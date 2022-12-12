@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Migrating from the old Razor (before 10.20) to the new RazorComponent | 2sxc 14 / EAV 14 </title>
+    <title>Razor File Names | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Migrating from the old Razor (before 10.20) to the new RazorComponent | 2sxc 14 / EAV 14 ">
+    <meta name="title" content="Razor File Names | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,15 +114,75 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Razor.MigrateToV10">
-<h1 id="migrating-from-the-old-razor-before-1020-to-the-new-razorcomponent">Migrating from the old Razor (before 10.20) to the new RazorComponent</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Razor.FileNames">
+<h1 id="razor-file-names">Razor File Names</h1>
 
-<div class="WARNING"><h5>Warning</h5><p>These are old docs.
-If you migrate, you should migrate to <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor14.html"><code>Custom.Hybrid.Razor14</code></a></p>
+<p>Topics</p>
+<ul>
+<li><a href="#underscore-prefix">Underscore Prefix</a></li>
+<li><a href="#spaces-in-file-names">Spaces</a></li>
+<li><a href="#casing">Casing</a></li>
+<li><a href="#naming-partial-files">Partial Files</a></li>
+</ul>
+<h2 id="underscore-prefix">Underscore Prefix</h2>
+<h3 id="no-more-underscore-in-v15">No More Underscore in v15</h3>
+<p>Previously our recommendation was to stick to the conventions of prefixing Razor files with an underscore <code>_</code>.</p>
+<p>In 2sxc v15 we are changig this recommendation, to <em>not</em> use an undescore.
+It is simply not relevant and adds a technical feeling to it, which simply is not necessary.</p>
+<div class="TIP"><h5>Tip</h5><p>Starting in 2sxc v15, the default for Razor files is not to use an underscore.</p>
 </div>
-<p>The RazorComponent was created in v10.20 to provide a newer, cleaner API. To not break existing code, old templates still work, but you must migrate a template to RazorComponent if you wish to use the new features. Here what you need to do:</p>
-<p><iframe src="https://azing.org/2sxc/r/9g6xRMrD?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<script src="https://cdn.azing.org/e/1/embed.js"></script></p>
+<h3 id="old-convention-with-underscore">Old Convention with Underscore</h3>
+<p>There is an official convention to prefix all razor files with an underscore <code>_</code>.
+This would result in files such as <code>_Default.cshtml</code>.</p>
+<p>This is because IIS will not run any razor files with an underscore, so if a user (or an attacker) would try:</p>
+<pre><code class="lang-text">https://yourdomain.com/_default.cshtml
+</code></pre><p>...the code would not run. Basically IIS does not run any Razor files with a leading underscore.
+In addition to that, such files would not be added to the page-tree when creating menus in asp.net MVC.
+This makes sense in asp.net MVC.</p>
+<h3 id="underscore-not-relevant-for-2sxc">Underscore not Relevant for 2sxc</h3>
+<p>In 2sxc the Razor files themselves cannot be accessed.</p>
+<ol>
+<li>DNN doesn&#39;t have a handler for <code>.cshtml</code> files</li>
+<li>Oqtane has the files in a protected location which is not publicly available</li>
+<li>All 2sxc Razor files inherit from a custom class, which makes them unusable if called directly</li>
+</ol>
+<h2 id="spaces-in-file-names">Spaces in File Names</h2>
+<p>You can use spaces in file names.
+All of the following are valid:</p>
+<ul>
+<li><code>I Like Spaces.cshtml</code></li>
+<li><code>IDontLikeSpaces.cshtml</code></li>
+<li><code>I-Would-Rather-use-dashes.cshtml</code></li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>The 2sxc Recommendation for Razor files is to use spaces.
+We believe it makes the files/folders easier to skim in a code editor.</p>
+</div>
+<h2 id="casing">Casing</h2>
+<p>You can use any casing you prefer.
+All of the following are valid:</p>
+<ul>
+<li><code>My Razor File.cshtml</code></li>
+<li><code>myrazorfile.cshtml</code></li>
+<li><code>MyRazorFile.cshtml</code></li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>The 2sxc Recommendation for Razor files is to start with upper case.</p>
+<p>If you do not use spaces in your file names, you should use PascalCase.</p>
+</div>
+<h2 id="naming-partial-files">Naming Partial Files</h2>
+<p>Partial Razor files are called by other files to render parts.
+A common use case is a sub-template for a complex item in a list.</p>
+<p>You can name this anyhow you want.
+But we recommend that parts are named in a way that makes it obvious...</p>
+<ul>
+<li>... that they are a part</li>
+<li>... if they are shared, or just used by a single other Razor</li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>The 2sxc Recommendation is to use the term <code>Part</code> for partial files.</p>
+<ul>
+<li>We suggest <code>Part User Info.cshtml</code> for parts which are used by many files</li>
+<li>We suggest <code>[originalfile].part.cshtml</code> for parts which are only used by a single file</li>
+</ul>
+</div>
 </article>
           </div>
           
@@ -131,7 +191,7 @@ If you migrate, you should migrate to <a class="xref" href="../../api/dot-net/Cu
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/razor/migrate-to-v10.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/razor/file-names.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
