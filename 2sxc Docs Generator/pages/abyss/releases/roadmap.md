@@ -16,30 +16,26 @@ Last Update: **2022-11-10**
 ## December 2022 - v15 Release
 
 1. ⏳ Better indicate premium/patron features and explain to the user what it is and how to get it
-1. ⏳ TinyMCE upgrade to v6
 1. ⏳ Improve WYSIWYG
     1. Sections to better allign images
     1. Use classes to determine size instead of styles
     1. Images which auto-resize based on size
-1. Review dropping `_` prefix requirement on cshtml files by protecting them in an another manner
+1. ⏳ Review dropping `_` prefix requirement on cshtml files by protecting them in an another manner
     1. It's not needed on Oqtane, as the files are not accessible
     1. Only needed ATM on DNN because each file could be called from the browser directly
     1. Probably make sure all base classes refuse to render standalone
 1. ⏳ Ability to import apps from folder directly (patrons)
 1. Settings: Ability to augment the preset configuration / settings with custom overrides
-1. Blazor / Oqtane
-    1. ⏳ cre8magic - auto-generate sitemap.xml
 1. ⏳ Integration of Google Translate in the Edit UI
 1. ⏳ New Auto-Installer with search, list-view etc.
     1. ⏳ Features to configure at system level which apps are allowed / must be installed
     1. ✅ Feature to tell new auto-installer what apps are already installed
 1. Export / Import
-    1. ✅ Create export bundle system to mark content-types and entities for export together
+    1. ✅ Create export bundle configuration to mark content-types and entities for export together
     1. ⏳ Create json bundle export system
     1. ⏳ Create json bundle import system
     1. ⏳ Extend the file-based data loader to also load bundles
-1. ⏳ Ability to use compressed GZIP data for DataTimeline (patron)
-1. Probably update ImageFlow again, if PNG resize bug is fixed
+1. ⏳ Ability to use compressed GZIP data for DataTimeline (patrons)
 1. Release v15 before XMas
 
 This is all done and ready for v15 as of 2022-12-10
@@ -69,6 +65,13 @@ This is all done and ready for v15 as of 2022-12-10
     1. ✅ Improve Settings/Resources Stack with various unit tests
     1. ✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like `"Images.Content.Width"`
     1. ✅ Create API `DependenciesBase` to better handle log attachments to dependencies
+1. ✅ TinyMCE upgrade to v6
+
+Probably also do:
+
+1. Blazor / Oqtane
+    1. ⏳ cre8magic - auto-generate sitemap.xml
+1. Probably update ImageFlow again, if PNG resize bug is fixed
 
 
 <!-- 
