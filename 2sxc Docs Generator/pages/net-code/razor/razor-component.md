@@ -3,13 +3,14 @@ uid: NetCode.Razor.Component
 ---
 # RazorComponent API
 
-As of 2sxc 12, all Razor templates should start with a line like  
-`@inherits Custom.Hybrid.Razor12` or `@inherits Custom.Dnn.Razor12`
-to make sure that it has all the new features. 
+For current best-practices, all Razor templates should start with a line like  
+`@inherits Custom.Hybrid.Razor14` to make sure that it has all the new features.
+If you really need DNN features such as the `.Dnn` object use `@inherits Custom.Dnn.Razor12`.
+
 
 > [!WARNING]
 > If you don't specify this first line, your code will inherit from a different class,
-> so many features won't work as documented. 
+> so many features won't work as documented.
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -41,7 +42,7 @@ In addition there are a few additional objects & commands which you will usually
 1. `RenderPage(path, data)`  
     Standard Razor API - google it if you need it or read about [splitting code in Razor](xref:NetCode.Razor.OrganizeCode)
 
-The following keywords are normal in any Razor system, but it's good if you know them. Google them to learn more. 
+The following keywords are normal in any Razor system, but it's good if you know them. Google them to learn more.
 
 * `@functions`
 * `@helpers`

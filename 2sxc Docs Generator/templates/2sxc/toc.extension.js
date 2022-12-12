@@ -87,7 +87,7 @@ function sortNetToc(item) {
   const eav = toc.split(custom[1], toc.conditionNameSpaceStartsWith("ToSic.Eav")); 
   const sxcAndDnn = toc.split(eav[1], toc.conditionNameSpaceStartsWith("ToSic.Sxc.Dnn")); 
   const sxcNoDnn = sxcAndDnn[1];
-  const rest = sxcAndDnn[0];
+  const sxcDnn = sxcAndDnn[0];
 
   if (dbgSortNetToc) dbg.error('top', set[0]);
   if (dbgSortNetToc) dbg.error('rest', set[1]);
@@ -95,18 +95,31 @@ function sortNetToc(item) {
   const all = 
     [toc.createLeaf("<strong>Top Namespaces</strong>")]
     .concat(set[0])
+
+    // Custom.* Base Classes
     .concat([toc.createLeaf("<hr>")])
     .concat([toc.createLeaf("<strong>Other Base Classes</strong>")])
     .concat(custom[0])
-    .concat([toc.createLeaf("<hr>")])
-    .concat([toc.createLeaf("<strong>ToSic.Eav</strong>")])
-    .concat(eav[0])
+
+    // ToSic.Sxc
     .concat([toc.createLeaf("<hr>")])
     .concat([toc.createLeaf("<strong>ToSic.Sxc</strong>")])
     .concat(sxcNoDnn)
+
+    // ToSic.Eav
+    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf("<strong>ToSic.Eav</strong>")])
+    .concat(eav[0])
+
+    // ToSic.Sxc.Dnn
     .concat([toc.createLeaf("<hr>")])
     .concat([toc.createLeaf("<strong>ToSic.Sxc.Dnn</strong>")])
-    .concat(rest)
+    .concat(sxcDnn)
+
+    // Add some padding at the end
+    .concat([toc.createLeaf("<br>")])
+    .concat([toc.createLeaf("<br>")])
+
     ;
   if (dbgSortNetToc) dbg.error('all', all);
   return all;
