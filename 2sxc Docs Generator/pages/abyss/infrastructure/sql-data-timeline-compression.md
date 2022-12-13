@@ -22,7 +22,19 @@ If you activate `Patron Infrastructure`, this feature is automatically enabled.
 Older data is not modified by the change, but you can run the following SQL to compress it:
 
 ```sql
+-- Will Compress everything and remove the data from the json column
 UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))), [Json] = NULL WHERE [Json] IS NOT NULL
+```
+
+Alternative (for analysis) - should result in 60-80% reduction
+
+```sql
+-- Will compress, but leave the old data there
+UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))) WHERE [Json] IS NOT NULL
+
+-- Compare sizes
+Select Sum( DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
+From [dbo].[ToSIC_EAV_DataTimeline]
 ```
 
 ## Decompress Previous Data

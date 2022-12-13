@@ -241,24 +241,24 @@
   </div>
 </div><style>.context-box-summary .lookup-engine { visibility: visible; } </style>
 
-<p>The <strong>LookUp Engine</strong> is responsible for getting values. It will use <strong>LookUp</strong> sources to resolve the values. </p>
+<p>The <strong>LookUp Engine</strong> is responsible for getting values. It will use <strong>LookUp</strong> sources to resolve the values.</p>
 <ul>
 <li>The LookUp System is in the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a> namespace</li>
 <li>The LookUp Engine is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></li>
 </ul>
-<div class="WARNING"><h5>Warning</h5><p>This is very technical stuff, you usually don&#39;t need to know this. We&#39;re just including it for completeness sake. </p>
+<div class="WARNING"><h5>Warning</h5><p>This is very technical stuff, you usually don&#39;t need to know this. We&#39;re just including it for completeness sake.</p>
 </div>
 <h2 id="lookupengine">LookUpEngine</h2>
-<p>LookUp Engines will collect a set of LookUp objects and use these to resolve strings like <code>Module:ModuleId</code>. For this, they will check which LookUp has the right name (in this case <code>Module</code>) and will ask it if it can provide the value (in this case the <code>ModuleId</code>). </p>
+<p>LookUp Engines will collect a set of LookUp objects and use these to resolve strings like <code>Module:ModuleId</code>. For this, they will check which LookUp has the right name (in this case <code>Module</code>) and will ask it if it can provide the value (in this case the <code>ModuleId</code>).</p>
 <h2 id="notes">Notes</h2>
 <p>Usually LookUp Engines will receive a long list (Dictionary) of things to look up, and resolve these in one quick call. This is because often they are attached to a DataSource which requires many configuration values - so they will prepare the list of parameters, pass it to the LookUpEngine and then work with the results as needed.</p>
-<div class="TIP"><h5>Tip</h5><p>LookUp Engines can also perform default-fallbacks - so if a LookUp source can&#39;t provide the answer needed, the engine may use a static value instead: 
-<code>[QueryString:PageSize||10]</code> </p>
+<div class="TIP"><h5>Tip</h5><p>LookUp Engines can also perform default-fallbacks - so if a LookUp source can&#39;t provide the answer needed, the engine may use a static value instead:
+<code>[QueryString:PageSize||10]</code></p>
 </div>
 <div class="TIP"><h5>Tip</h5><p>LookUp Engines can also perform lookup-fallbacks if the source can&#39;t provide an answer. In this case it may ask another LookUp if it has the answer. This happens when the Token looks like this:<br><code>[QueryString:PageSize||[App:Settings:PageSize]]</code></p>
 </div>
 <h2 id="c-and-dependency-injection">C# and Dependency Injection</h2>
-<p>LookUp Engines all implement the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a> interface and should inherit the <a href="xref:ToSic.Eav.LookUp.LookUpEngine"></a> object. </p>
+<p>LookUp Engines all implement the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a> interface and should inherit the <code>LookUpEngine</code> object.</p>
 <p>LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngineResolver.html">ILookUpEngineResolver</a>.</p>
 <h2 id="also-read-todoc">Also Read #todoc</h2>
 <ul>

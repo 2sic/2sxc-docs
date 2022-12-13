@@ -127,10 +127,18 @@ This can easily save you hundreds, if not thousands of MB in DB storage.</p>
 If you activate <code>Patron Infrastructure</code>, this feature is automatically enabled.</p>
 <h2 id="compress-previous-data">Compress Previous Data</h2>
 <p>Older data is not modified by the change, but you can run the following SQL to compress it:</p>
-<pre><code class="lang-sql">TODO: @STV
+<pre><code class="lang-sql">-- Will Compress everything and remove the data from the json column
+UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))), [Json] = NULL WHERE [Json] IS NOT NULL
+</code></pre><p>Alternative (for analysis) - should result in 60-80% reduction</p>
+<pre><code class="lang-sql">-- Will compress, but leave the old data there
+UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))) WHERE [Json] IS NOT NULL
+
+-- Compare sizes
+Select Sum( DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
+From [dbo].[ToSIC_EAV_DataTimeline]
 </code></pre><h2 id="decompress-previous-data">Decompress Previous Data</h2>
 <p>If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:</p>
-<pre><code class="lang-sql">TODO @STV
+<pre><code class="lang-sql">UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
 </code></pre><hr>
 <h2 id="history">History</h2>
 <ol>
