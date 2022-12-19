@@ -20,16 +20,15 @@ As such, there are different parts that make it work:
 The internal EAV Data Model stores each value with language assignment.
 Key facts:
 
-1. There is always a **primary language**.  
-  This is usually the primary language of the platform you're using (DNN/Oqtane).
-    1. The primary language must always be edited first - other languages cannot be edited without the primary language having content
-    1. Other languages will inherit the values from the primary language by default
+1. There is always a **primary language** which is set by the platform (DNN/Oqtane).
+    1. The primary language must always be filled first. Other languages cannot be edited without the primary language having content.
+    1. Other languages will inherit the values from the primary language by default.
     1. Changing the primary language can have suprising side-effects, because it can result in scenarios where the primary language is missing.  
       In such scenarios the system will still try the primary language, but if it's empty, will fall back to the first language having any content for a specific field.
 1. Values can be for a single language only, or **shared** across languages
     1. In read/write shares, any change made in the value will automatically apply to all languages that use this value
     1. In read-only shares, the value can only be edited in the main language; all other languages just "inherit" the value
-    1. In secondary languages which are not translated, they are simply "empty" / not translated, and auto-fallback to the primary language
+    1. In secondary languages which are not translated, they are not translated and will automatically fall back to the primary language
 
 👉🏽 Read more about the [Multilanguage Data Model](xref:Basics.Data.MultiLanguage.Index)
 
@@ -46,7 +45,7 @@ TODO: SCREENSHOTS?
 
 ## Automatic Content Translation
 
-This is a new feature in 2sxc v15 and reserved to Patrons (people who wish to support the development of 2sxc).
+This is a new feature in 2sxc v15 and available to Patrons (people who wish to support the development of 2sxc).
 
 👉🏽 Read more about [Automatic Translation](xref:Basics.Languages.AutoTranslate.Index)
 
