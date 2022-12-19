@@ -13,11 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ServiceForDynamicCode
-   | 2sxc 14 / EAV 14 </title>
+    <title>2sxc Auto-Translate Overview (new v15) | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ServiceForDynamicCode
-   | 2sxc 14 / EAV 14 ">
+    <meta name="title" content="2sxc Auto-Translate Overview (new v15) | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -26,7 +24,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
@@ -66,7 +64,7 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
-                      <li>
+                      <li class="active">
                           <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
@@ -78,7 +76,7 @@
                       <li>
                           <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
@@ -116,28 +114,52 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ServiceForDynamicCode">
-  
-  
-  <h1 id="ToSic_Sxc_Services_ServiceForDynamicCode" data-uid="ToSic.Sxc.Services.ServiceForDynamicCode" class="text-break">Class ServiceForDynamicCode
-  </h1>
-  <div class="markdown level0 summary"><p>Internal special base class for services which link to the dynamic code root</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ToSic.Lib.Logging.HasLog</span></div>
-    <div class="level2"><span class="xref">ToSic.Eav.DI.ServiceWithLog</span></div>
-    <div class="level3"><span class="xref">ServiceForDynamicCode</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></h6>
-  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
-  <h5 id="ToSic_Sxc_Services_ServiceForDynamicCode_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public abstract class ServiceForDynamicCode : ServiceWithLog, IHasLog, INeedsDynamicCodeRoot, IHasDynamicCodeRoot</code></pre>
-  </div>
+            <article class="content wrap" id="_content" data-uid="Basics.Languages.AutoTranslate.Index">
+
+<p><img src="../../assets/features/multi-language.svg" class="feature"></p>
+<h1 id="2sxc-auto-translate-overview-new-v15">2sxc Auto-Translate Overview (new v15)</h1>
+<p>2sxc 15 adds a new feature to automatically translate content in the Edit UI.
+Here&#39;s what you need to know.</p>
+<h2 id="patrons-only-feature">Patrons Only Feature</h2>
+<p>This is a patrons only feature.
+To use this feature, you must enable the license <strong>Patrons AdvancedCMS</strong>. TODO: LINK</p>
+<h2 id="auto-translate-uses-google-translate">Auto Translate uses Google Translate</h2>
+<p>Auto Translate uses the Google Translate API TODO: LINK.
+It is available in the edit UI, because we believe that any automatic translation still needs a user to review it.
+So it will not just auto-translate content in the output.</p>
+<p>This requires a <a class="xref" href="auto-translate-api-key.html">Google API key</a> for each site.</p>
+<h2 id="auto-translate-user-experience">Auto Translate User Experience</h2>
+<p>The user can choose to auto-translate a <em>single field</em> or <em>all fields</em>.</p>
+<p>TODO: PICS</p>
+<p>After this, the user must select what source language should be used.
+The UI will show you how many fields of the available source languages have content.</p>
+<p>TODO: PIC</p>
+<h2 id="html-and-unknown-content-are-preserved">HTML and Unknown Content are Preserved</h2>
+<p>Google Translate will preserve anything it can&#39;t translate - such as names (if it can tell it&#39;s a name)
+as well as HTML formatting.</p>
+<h2 id="not-all-fields-are-auto-translated">Not all Fields are Auto-Translated</h2>
+<p>Some fields are not auto-translated - either by default, or by configuration.</p>
+<ul>
+<li>Some fields will not be translated by default<ul>
+<li>Fields which can&#39;t be translated - such as entity-pickers</li>
+<li>Fields which don&#39;t make sense to translate - eg. Numbers, Links, GPS coordinates</li>
+</ul>
+</li>
+<li>Some fields are configured to not translate<br><em>this can be configured at the field level</em><ul>
+<li>Name fields should be configured to not translate</li>
+<li>Address fields (street, city, etc.) should be configured to not translate</li>
+</ul>
+</li>
+<li>Some fields were already translated manually, and will not auto-translate<br><em>this is to prevent manual translations from being overwritten</em></li>
+</ul>
+<p>Fields which are not auto-translated will keep their previous status - in most cases locked (auto-inherit).</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 2 ca. 2012</li>
+<li>...</li>
+<li>Auto-Translate Content added in v15</li>
+</ol>
 </article>
           </div>
           
@@ -146,10 +168,7 @@ public abstract class ServiceForDynamicCode : ServiceWithLog, IHasLog, INeedsDyn
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/version/15/apiSpec/new?filename=ToSic_Sxc_Services_ServiceForDynamicCode.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.ServiceForDynamicCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/2sic/2sxc/blob/version/15/Src/Sxc/ToSic.Sxc/Services/ServiceForDynamicCode.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/languages/auto-translate.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

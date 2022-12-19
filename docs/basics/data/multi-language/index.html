@@ -238,31 +238,31 @@
   </div>
 </div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<p>Data in 2sxc is Multi-Language by default, but the UI will only offer languages which have been activated in the Site settings. </p>
+<p>Data in 2sxc is Multi-Language by default, but the UI will only offer languages which have been activated in the Site settings.</p>
 <h2 id="multi-language-attributes">Multi-Language Attributes</h2>
 <p>Every <strong>Attribute</strong> (like a <code>Title</code>) <em>can</em> be stored in multiple languages. So the data model of some content can look like this:</p>
 <ol>
 <li><code>Title</code><ul>
-<li><code>en-US</code>: Enjoy a Visit to our Headquarters</li>
-<li><code>de-DE</code>: Genießen Sie einen Besuch in unserem Hauptquartier</li>
-<li><code>de-CH</code>: Geniessen Sie einen Besuch in unserem Hauptquartier</li>
+<li><code>en-US</code>: <code>Enjoy a Visit to our Headquarters</code></li>
+<li><code>de-DE</code>: <code>Genießen Sie einen Besuch in unserem Hauptquartier</code></li>
+<li><code>de-CH</code>: <code>Geniessen Sie einen Besuch in unserem Hauptquartier</code></li>
 </ul>
 </li>
 <li><code>Photo</code><ul>
-<li><code>*</code>: file:7402</li>
+<li><code>*</code>: <code>file:7402</code></li>
 </ul>
 </li>
 <li><code>SloganImage</code><ul>
-<li><code>en-US</code>: file:7405</li>
-<li><code>de-DE</code>,<code>de-CH</code>: file:7406</li>
+<li><code>en-US</code>: <code>file:7405</code></li>
+<li><code>de-DE</code>,<code>de-CH</code>: <code>file:7406</code></li>
 </ul>
 </li>
 <li><code>GpsCoordinates</code><ul>
 <li><code>en-US</code>: <code>{ &quot;Long&quot;: 74.6020030, &quot;Lat&quot;: 53.002030060 }</code></li>
 </ul>
 </li>
-<li><code>Employees</code><ul>
-<li><code>*</code>: [ 74, 592, 6030, 39 ]</li>
+<li><code>Employees</code> (reference to other entities/items)<ul>
+<li><code>*</code>: <code>[74, 592, 6030, 39]</code></li>
 </ul>
 </li>
 </ol>
@@ -275,10 +275,10 @@
 <li>The <code>Employees</code> relationship to other data is not translatable, and the <a class="xref" href="../relationships/index.html">order of the items is also preserved</a></li>
 </ol>
 <h2 id="language-assignment-and-readwrite-state">Language Assignment and Read/Write State</h2>
-<p>Each <strong>Attribute</strong> or <strong>Property</strong> like <code>Title</code> has one or more <strong>Values</strong>. </p>
+<p>Each <strong>Attribute</strong> or <strong>Property</strong> like <code>Title</code> has one or more <strong>Values</strong>.</p>
 <ul>
-<li>These Values are mapped to the Attribute with <strong>one or more languages</strong>. </li>
-<li>Each language-assignment also stores the read/write state for the UI. </li>
+<li>These Values are mapped to the Attribute with <strong>one or more languages</strong>.</li>
+<li>Each language-assignment also stores the read/write state for the UI.</li>
 </ul>
 <p>As such, a value can have different internal rules</p>
 <ol>
@@ -287,12 +287,12 @@
 <li>It can be assigned to multiple languages and editable in the UI of some of these languages. Changing it (in one of the editable languages) would change it in all assigned languages. The assigned languages which are not editable would always just show this language, but not enable editing in the UI.</li>
 </ol>
 <h2 id="relationships-cannot-be-translated">Relationships Cannot be Translated</h2>
-<p><a class="xref" href="../relationships/index.html">Relationships</a> are not Translatable. 
-If a Blog-Post references Tags, <a class="xref" href="../relationships/index.html">the same tags are referenced in all languages</a>. 
-Note that related items may again have multi-language properties, so even if the <code>Authors</code> list contains the same authors across languages, accessing the <code>Bio</code> of a related <code>Author</code> will probably return a different value. </p>
+<p><a class="xref" href="../relationships/index.html">Relationships</a> are not Translatable.
+If a Blog-Post references Tags, <a class="xref" href="../relationships/index.html">the same tags are referenced in all languages</a>.
+Note that related items may again have multi-language properties, so even if the <code>Authors</code> list contains the same authors across languages, accessing the <code>Bio</code> of a related <code>Author</code> will probably return a different value.</p>
 <h2 id="assets-are-multi-language-but-the-files-are-shared-across-languages">Assets are Multi-Language, but the Files are Shared Across Languages</h2>
-<p>A link/file-field can have a different value in each language, but the files uploaded will be available to that field in the UI of every language. So a <code>SloganImage</code> field would show all the files that were uploaded to this field, but the selected file can be different in each language. </p>
-<p>This wil also affect Libraries of files - the libraries will always contain the same files/images in all languages. But if these files have Metadata, then that Metadata can be different in each language. </p>
+<p>A link/file-field can have a different value in each language, but the files uploaded will be available to that field in the UI of every language. So a <code>SloganImage</code> field would show all the files that were uploaded to this field, but the selected file can be different in each language.</p>
+<p>This wil also affect Libraries of files - the libraries will always contain the same files/images in all languages. But if these files have Metadata, then that Metadata can be different in each language.</p>
 <h2 id="disable-translation-for-individual-fields">Disable Translation for Individual Fields</h2>
 <p>The UI can be configured to not allow translation of specific fields if this is desired (for example URL-key fields). See also <a class="xref" href="../../cms/languages/index.html">Multi-Language Content</a>.</p>
 <h2 id="internal-functionality">Internal Functionality</h2>

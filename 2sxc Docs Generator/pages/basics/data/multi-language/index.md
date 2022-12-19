@@ -7,25 +7,25 @@ uid: Basics.Data.MultiLanguage.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
-Data in 2sxc is Multi-Language by default, but the UI will only offer languages which have been activated in the Site settings. 
+Data in 2sxc is Multi-Language by default, but the UI will only offer languages which have been activated in the Site settings.
 
 ## Multi-Language Attributes
 
 Every **Attribute** (like a `Title`) _can_ be stored in multiple languages. So the data model of some content can look like this:
 
 1. `Title`
-  * `en-US`: Enjoy a Visit to our Headquarters
-  * `de-DE`: Genießen Sie einen Besuch in unserem Hauptquartier
-  * `de-CH`: Geniessen Sie einen Besuch in unserem Hauptquartier
+    * `en-US`: `Enjoy a Visit to our Headquarters`
+    * `de-DE`: `Genießen Sie einen Besuch in unserem Hauptquartier`
+    * `de-CH`: `Geniessen Sie einen Besuch in unserem Hauptquartier`
 1. `Photo`
-  * `*`: file:7402
+    * `*`: `file:7402`
 1. `SloganImage`
-  * `en-US`: file:7405
-  * `de-DE`,`de-CH`: file:7406
+    * `en-US`: `file:7405`
+    * `de-DE`,`de-CH`: `file:7406`
 1. `GpsCoordinates`
-  * `en-US`: `{ "Long": 74.6020030, "Lat": 53.002030060 }`
-1. `Employees`
-  * `*`: [ 74, 592, 6030, 39 ]
+    * `en-US`: `{ "Long": 74.6020030, "Lat": 53.002030060 }`
+1. `Employees` (reference to other entities/items)
+    * `*`: `[74, 592, 6030, 39]`
 
 Some things to understand in the above data model:
 
@@ -37,10 +37,10 @@ Some things to understand in the above data model:
 
 ## Language Assignment and Read/Write State
 
-Each **Attribute** or **Property** like `Title` has one or more **Values**. 
+Each **Attribute** or **Property** like `Title` has one or more **Values**.
 
-* These Values are mapped to the Attribute with **one or more languages**. 
-* Each language-assignment also stores the read/write state for the UI. 
+* These Values are mapped to the Attribute with **one or more languages**.
+* Each language-assignment also stores the read/write state for the UI.
 
 As such, a value can have different internal rules
 
@@ -50,15 +50,15 @@ As such, a value can have different internal rules
 
 ## Relationships Cannot be Translated
 
-[Relationships](xref:Basics.Data.Relationships.Index) are not Translatable. 
-If a Blog-Post references Tags, [the same tags are referenced in all languages](xref:Basics.Data.Relationships.Index). 
-Note that related items may again have multi-language properties, so even if the `Authors` list contains the same authors across languages, accessing the `Bio` of a related `Author` will probably return a different value. 
+[Relationships](xref:Basics.Data.Relationships.Index) are not Translatable.
+If a Blog-Post references Tags, [the same tags are referenced in all languages](xref:Basics.Data.Relationships.Index).
+Note that related items may again have multi-language properties, so even if the `Authors` list contains the same authors across languages, accessing the `Bio` of a related `Author` will probably return a different value.
 
 ## Assets are Multi-Language, but the Files are Shared Across Languages
 
-A link/file-field can have a different value in each language, but the files uploaded will be available to that field in the UI of every language. So a `SloganImage` field would show all the files that were uploaded to this field, but the selected file can be different in each language. 
+A link/file-field can have a different value in each language, but the files uploaded will be available to that field in the UI of every language. So a `SloganImage` field would show all the files that were uploaded to this field, but the selected file can be different in each language.
 
-This wil also affect Libraries of files - the libraries will always contain the same files/images in all languages. But if these files have Metadata, then that Metadata can be different in each language. 
+This wil also affect Libraries of files - the libraries will always contain the same files/images in all languages. But if these files have Metadata, then that Metadata can be different in each language.
 
 ## Disable Translation for Individual Fields
 
