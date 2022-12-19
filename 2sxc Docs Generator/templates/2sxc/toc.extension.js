@@ -83,8 +83,9 @@ function sortNetToc(item) {
 
   // Split into various segments to prioritize and give titles
   const set = toc.split(item.items, function(i) { return !!i && i.top === true; });
-  const custom = toc.split(set[1], toc.conditionNameSpaceStartsWith("Custom.")); 
-  const eav = toc.split(custom[1], toc.conditionNameSpaceStartsWith("ToSic.Eav")); 
+  const custom = toc.split(set[1], toc.conditionNameSpaceStartsWith("Custom."));
+  const libSet = toc.split(custom[1], toc.conditionNameSpaceStartsWith("ToSic.Lib"));
+  const eav = toc.split(libSet[1], toc.conditionNameSpaceStartsWith("ToSic.Eav")); 
   const sxcAndDnn = toc.split(eav[1], toc.conditionNameSpaceStartsWith("ToSic.Sxc.Dnn")); 
   const sxcNoDnn = sxcAndDnn[1];
   const sxcDnn = sxcAndDnn[0];
@@ -116,6 +117,11 @@ function sortNetToc(item) {
     .concat([toc.createLeaf("<strong>ToSic.Sxc.Dnn</strong>")])
     .concat(sxcDnn)
 
+    // ToSic.Lib
+    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf("<strong>ToSic.Lib</strong>")])
+    .concat(libSet[0])
+    
     // Add some padding at the end
     .concat([toc.createLeaf("<br>")])
     .concat([toc.createLeaf("<br>")])

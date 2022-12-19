@@ -90,7 +90,6 @@ exports.data = {
   "ToSic.Eav.DataFormats.EavLight": prioDataInternal,
   // "ToSic.Eav.ImportExport.Json.Basic": prioInternal,
   // "ToSic.Eav.ImportExport": prioData,
-  "ToSic.Eav.Logging": prioInternal,
   "ToSic.Eav.LookUp": prioInternal,
   "ToSic.Eav.Metadata": prioMeta,
   "ToSic.Eav.Repositories": prioInternal,
@@ -122,6 +121,11 @@ exports.data = {
   "ToSic.Sxc.Services": prioTop,
   "ToSic.Sxc.Web": prioInternal,
   "ToSic.Sxc.WebApi": prioInternal,
+
+  // Lib stuff...
+  "ToSic.Lib.Documentation": prioInternal,
+  "ToSic.Lib.Logging": prioInternal,
+
 }
 
 exports.defaultSettings = {
