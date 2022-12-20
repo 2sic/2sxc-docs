@@ -38,3 +38,5 @@ TODO: DOCS
 ## History
 
 1. Introduced in 2sxc v15
+
+Shortlink: <https://r.2sxc.org/translate-api-key>

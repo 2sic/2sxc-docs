@@ -123,7 +123,9 @@ exports.data = {
   "ToSic.Sxc.WebApi": prioInternal,
 
   // Lib stuff...
+  "ToSic.Lib.Data": prioInternal,
   "ToSic.Lib.Documentation": prioInternal,
+  "ToSic.Lib.Helpers": prioInternal,
   "ToSic.Lib.Logging": prioInternal,
 
 }

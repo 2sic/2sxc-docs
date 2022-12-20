@@ -75,3 +75,5 @@ TODO:
 1. Introduced in 2sxc 2 ca. 2012
 1. ...
 1. Auto-Translate Content added in v15
+
+Shortlink: <https://r.2sxc.org/translate>
