@@ -159,7 +159,7 @@ Some aspects of EAV & 2sxc are super important that they are configured before a
 These are the required ones as of 2022-02:
 
 1. The database **ConnectionString** required to connect to the EAV DB
-1. **GlobalFolder** of the distributed 2sxc files containing things like the `.data` subfolder - required to load initial configurations and initial data
+1. **GlobalFolder** of the distributed 2sxc files containing things like the `App_Data` subfolder - required to load initial configurations and initial data
 1. Call `StartUp` on the `SystemLoader` which you must get from DI
 
 This is the working code taken from `BasicEav01`:
@@ -176,7 +176,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   // Set Connection String
   serviceProvider.Build<IDbConfiguration>().ConnectionString = _connStringFromConfig;
 
-  // Set global path where it will find the .data folder
+  // Set global path where it will find the App_Data folder
   var globalConfig = serviceProvider.Build<IGlobalConfiguration>();
   globalConfig.GlobalFolder = Path.Combine(env.ContentRootPath, "sys-2sxc");
 
@@ -212,7 +212,7 @@ If you did everything right, you can now run your code and access data from the 
 
 **Common Problems**
 
-1. If the folder to the `.data` isn't quite correct, you will have a long loading time and then a stack overflow
+1. If the folder to the `App_Data` isn't quite correct, you will have a long loading time and then a stack overflow
 
 ---
 

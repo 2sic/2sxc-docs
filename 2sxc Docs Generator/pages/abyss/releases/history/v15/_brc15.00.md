@@ -21,6 +21,10 @@ We believe it will only affect you in these scenarios:
     [see instructions](xref:Abyss.Releases.History.V15.Logging)
 1. Internal object wrappers were completely refactored  
     [see instructions](xref:Abyss.Releases.History.V15.UnwrappedContents)
+1. [TinyMCE Upgrade to v6](xref:Abyss.Releases.History.V15.TinyMce)
+1. [Database changes](xref:Abyss.Releases.History.V15.Database)
+1. [Minor API changes](xref:Abyss.Releases.History.V15.Minor)
+
 
 #### Major Updates with may affect you
 

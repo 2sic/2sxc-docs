@@ -75,7 +75,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 ```
 
 > [!TIP]
-> Remember that the folder (in this case `.data`) is _not_ where the shared Content-Types are stored. They must be placed in a `contenttypes` subfolder. 
+> Remember that the folder (in this case `App_Data`) is _not_ where the shared Content-Types are stored. They must be placed in a `contenttypes` subfolder. 
 
 
 ## History

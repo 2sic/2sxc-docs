@@ -4,10 +4,14 @@ uid: Abyss.Releases.History.BreakingChanges
 
 # Breaking Changes Overview for 2sxc/EAV
 
-We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API. 
+We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
 We're documenting it here to ensure you know what happened, in case you still run into this.
 
 👉 please also read about the [Deprecation Policy](xref:Abyss.Releases.Management.PolicyDeprecate)
+
+---
+
+[!include["Breaking Changes"](./v15/_brc15.md)]
 
 ---
 

@@ -117,13 +117,13 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Integration.Scenario01">
 <h1 id="your-custom-platform---scenario-1---read-eav-data">Your Custom Platform - Scenario #1 - Read EAV Data</h1>
 
-<p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution. </p>
+<p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution.</p>
 <div class="TIP"><h5>Tip</h5><p>You can find this fully implemented in the <code>Integration\BasicEav01</code> project.</p>
 <p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
 <h2 id="scope-of-scenario-1---read-eav-data">Scope of Scenario #1 - Read EAV Data</h2>
-<p>In Scenario #1 we will setup a basic system. 
-This is the foundation for more enhanced scenarios. </p>
+<p>In Scenario #1 we will setup a basic system.
+This is the foundation for more enhanced scenarios.</p>
 <p><strong>Functionality</strong></p>
 <ol>
 <li>Can read / get EAV Data from an existing Dnn or Oqtane Database</li>
@@ -134,7 +134,7 @@ This is the foundation for more enhanced scenarios. </p>
 <p>To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
 <ol>
 <li>Add necessary DLLs</li>
-<li>Copy all relevant files core files like <code>.data</code></li>
+<li>Copy all relevant files core files like <code>App_Data</code></li>
 <li>Integrate into your Dependency Injection</li>
 <li>Do StartUp configuration as needed</li>
 <li>Test / Verify you can Read Data</li>
@@ -150,14 +150,14 @@ This is the foundation for more enhanced scenarios. </p>
 <li>Persistence.Efc</li>
 <li>Repository.Efc</li>
 </ol>
-<p>You can add these manually, reference them or whatever. </p>
+<p>You can add these manually, reference them or whatever.</p>
 <hr>
 <h2 id="2-copy-important-data-to-your-target">2. Copy Important Data to Your Target</h2>
-<p>The EAV loads important data from the file system when it starts. This data contains Content-Types and basic configuration which is necessary to work. </p>
-<p>In the basic implementation, you need the <code>.data</code> folder to be copied to the right location, which must be available at runtime. </p>
-<div class="TIP"><h5>Tip</h5><p>The <code>.data</code> folder does not need to be accessible from outside. </p>
+<p>The EAV loads important data from the file system when it starts. This data contains Content-Types and basic configuration which is necessary to work.</p>
+<p>In the basic implementation, you need the <code>App_Data</code> folder to be copied to the right location, which must be available at runtime.</p>
+<div class="TIP"><h5>Tip</h5><p>The <code>App_Data</code> folder does not need to be accessible from outside.</p>
 </div>
-<p>You may copy the <code>.data</code> manually, or automate it on build. </p>
+<p>You may copy the <code>App_Data</code> manually, or automate it on build.</p>
 <p>The following script is used in the <code>BasicEav01</code> project on build (adjust it to your needs):</p>
 <pre><code>@Echo Configuration=&#39;$(Configuration)&#39;
 @Echo StartWith =&#39;$(Configuration.StartsWith(&#39;Debug&#39;))&#39;
@@ -172,7 +172,7 @@ robocopy /mir &quot;$(ProjectDir)..\..\Data\.data\ &quot; &quot;%BuildTarget%\.d
 <h2 id="3-integrate-into-your-dependency-injection">3. Integrate into your Dependency Injection</h2>
 <p>The EAV and 2sxc need Dependency Injection to work. As of now (2022-02) we use the .net Standard 2.1 DI.</p>
 <div class="NOTE"><h5>Note</h5><p>The example below also registers the <code>IntUser</code> which is the Integration-implementation of the <code>IUser</code>.
-To see the code of that, just check out the example code in the project. </p>
+To see the code of that, just check out the example code in the project.</p>
 </div>
 <h3 id="31-general-principles">3.1 General Principles</h3>
 <p>The general principle is as follows:</p>
@@ -203,24 +203,24 @@ public void ConfigureServices(IServiceCollection services)
 </code></pre><h3 id="32-various-di-scenarios">3.2 Various DI Scenarios</h3>
 <p>Your project may already use DI, or it may not. Here are the common scenarios you will probably have:</p>
 <h4 id="321-di-scenario-1---no-dependency-injection">3.2.1 DI Scenario #1 - No Dependency Injection</h4>
-<p>This scenario is common in classic <em>.net Framework</em> and <em>WebForms</em> projects which are a bit older. 
-We assume nobody will actually be needing this much, so we won&#39;t explain this in detail. 
+<p>This scenario is common in classic <em>.net Framework</em> and <em>WebForms</em> projects which are a bit older.
+We assume nobody will actually be needing this much, so we won&#39;t explain this in detail.
 Your work will basically consist of</p>
 <ol>
 <li>At Startup, create a new DI and store it somewhere (see DNN samples to see how this can be done)</li>
 <li>When you use it, make sure you get the <code>IServiceProvider</code> - probably in an own Scope per request and module</li>
 </ol>
 <h4 id="322-di-scenario-2---net-core-dependency-injection">3.2.2 DI Scenario #2 - .net Core Dependency Injection</h4>
-<p>This scenario is common in new <code>Asp.net Core</code> projects. 
-It already has Dependency Injection setup, and all you need to do is use the existing one. 
+<p>This scenario is common in new <code>Asp.net Core</code> projects.
+It already has Dependency Injection setup, and all you need to do is use the existing one.
 For this scenario, best see how it&#39;s done in Oqtane</p>
 <hr>
 <h2 id="4-do-startup-configuration">4. Do StartUp Configuration</h2>
-<p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts. 
+<p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts.
 These are the required ones as of 2022-02:</p>
 <ol>
 <li>The database <strong>ConnectionString</strong> required to connect to the EAV DB</li>
-<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>.data</code> subfolder - required to load initial configurations and initial data</li>
+<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>App_Data</code> subfolder - required to load initial configurations and initial data</li>
 <li>Call <code>StartUp</code> on the <code>SystemLoader</code> which you must get from DI</li>
 </ol>
 <p>This is the working code taken from <code>BasicEav01</code>:</p>
@@ -263,20 +263,20 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 </code></pre><p><strong>Common Problems</strong></p>
 <ol>
-<li>If the folder to the <code>.data</code> isn&#39;t quite correct, you will have a long loading time and then a stack overflow</li>
+<li>If the folder to the <code>App_Data</code> isn&#39;t quite correct, you will have a long loading time and then a stack overflow</li>
 </ol>
 <hr>
 <h2 id="5-get-insights-webapi-to-work">5. Get Insights WebApi to Work</h2>
-<p>The <a class="xref" href="../../net-code/debug/insights.html">Insights</a> will help you figure out what parts you need to implement. 
-It will show you what services were requested which are not implemented yet, and will show you what code was used. </p>
+<p>The <a class="xref" href="../../net-code/debug/insights.html">Insights</a> will help you figure out what parts you need to implement.
+It will show you what services were requested which are not implemented yet, and will show you what code was used.</p>
 <ol>
 <li>Create your minimal <code>InsightsController</code> as you see in the demo project</li>
 <li>Register the routes using whatever system you have ATM (.net core, ASP.net Framework)</li>
 <li>Test the routes to see things are coming out</li>
 </ol>
 <p><strong>Minimal <code>InsightsController</code></strong></p>
-<p>You can review the code of the InsightsController in the <code>Controllers</code> folder in the project. 
-It&#39;s basically just a simple controller with one <code>Details(...)</code> action. </p>
+<p>You can review the code of the InsightsController in the <code>Controllers</code> folder in the project.
+It&#39;s basically just a simple controller with one <code>Details(...)</code> action.</p>
 <p><strong>Activate it in the <code>StartUp.cs</code></strong></p>
 <pre><code class="lang-c#">public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
@@ -291,7 +291,7 @@ It&#39;s basically just a simple controller with one <code>Details(...)</code> a
   });
 }
 </code></pre><p>Test by calling <code>https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed.</p>
-<div class="TIP"><h5>Tip</h5><p>Once the insights work, you can also see what objects were used in a <a class="xref" href="../../net-code/conventions/unknown-implementations/index.html">fallback/unknown implementation</a>. </p>
+<div class="TIP"><h5>Tip</h5><p>Once the insights work, you can also see what objects were used in a <a class="xref" href="../../net-code/conventions/unknown-implementations/index.html">fallback/unknown implementation</a>.</p>
 </div>
 <hr>
 <h2 id="history">History</h2>

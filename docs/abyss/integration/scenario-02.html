@@ -246,7 +246,7 @@ Best check the code how it&#39;s done in Dnn/Oqtane. </p>
 These are the required ones as of 2022-02:</p>
 <ol>
 <li>The database <strong>ConnectionString</strong> required to connect to the EAV DB</li>
-<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>.data</code> subfolder - required to load initial configurations and initial data</li>
+<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>App_Data</code> subfolder - required to load initial configurations and initial data</li>
 <li>Call <code>StartUp</code> on the <code>SystemLoader</code> which you must get from DI</li>
 </ol>
 <p>This is the working code taken from <code>BasicEav01</code>:</p>
@@ -261,7 +261,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   // Set Connection String
   serviceProvider.Build&lt;IDbConfiguration&gt;().ConnectionString = _connStringFromConfig;
 
-  // Set global path where it will find the .data folder
+  // Set global path where it will find the App_Data folder
   var globalConfig = serviceProvider.Build&lt;IGlobalConfiguration&gt;();
   globalConfig.GlobalFolder = Path.Combine(env.ContentRootPath, &quot;sys-2sxc&quot;);
 
@@ -289,7 +289,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 </code></pre><p><strong>Common Problems</strong></p>
 <ol>
-<li>If the folder to the <code>.data</code> isn&#39;t quite correct, you will have a long loading time and then a stack overflow</li>
+<li>If the folder to the <code>App_Data</code> isn&#39;t quite correct, you will have a long loading time and then a stack overflow</li>
 </ol>
 <hr>
 <h2 id="history">History</h2>

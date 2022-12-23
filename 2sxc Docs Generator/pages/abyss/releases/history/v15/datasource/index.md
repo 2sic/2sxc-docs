@@ -57,6 +57,23 @@ class MyDataSource
 
 If your DataSource does any logging, see also [breaking changes in logging](xref:Abyss.Releases.History.V15.Logging)
 
+
+### 3. Removed Old Base Classes
+
+Some old base classes may have still been in use, but because the code must be recompiled anyhow we decided to remove these.
+
+These are the classes and their replacement:
+
+1. ToSic.Eav.DataSources.BaseDataSource - > DataSource
+1. ToSic.Eav.DataSources.DataTableDataSource -> ToSic.Eav.DataSources.DataTable
+1. ToSic.Eav.DataSources.ExternalDataDataSource: ToSic.Eav.DataSources.ExternalData
+1. ToSic.Eav.DataSources.SqlDataSource: ToSic.Eav.DataSources.Sql
+
+Also
+
+1. ToSic.Eav.DataSources.VisualQuery.VisualQueryAttribute -> DataSources.Queries.VisualQueryAttribute
+
+
 ---
 
 ## History
