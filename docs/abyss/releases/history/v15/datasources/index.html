@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fix Breaking Change DataSource in v15 | 2sxc 14 / EAV 14 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Fix Breaking Change DataSource in v15 | 2sxc 14 / EAV 14 ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../../../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    <meta property="docfx:newtab" content="true">
+  
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+  
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+  
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../../../index.html">
+                <img id="logo" class="svg" src="../../../../../assets/logos/v14/2sxc14-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                      <li>
+                          <a href="../../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V15.DataSource">
+<h1 id="fix-breaking-change-datasource-in-v15">Fix Breaking Change <em>DataSource</em> in v15</h1>
+
+<p><strong>Keywords:</strong> #DataSource #CustomDataSource</p>
+<p>2sxc/EAV has a powerful extension system called <code>DataSource</code> which allows you to create new data providers.</p>
+<p>We completely reworked object hierarchy and Dependency Injection.
+Because of this, any custom DataSource will have to be adjusted and recompiled.</p>
+<h2 id="reason-for-change">Reason for Change</h2>
+<p>The DataSource concept was created in times before Dependency Injection.
+This means that the architecture was very problematic,
+and we had a lot of hacky implementations to make it work.</p>
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>Previously all DataSources inherited from</p>
+<ol>
+<li><code>ToSic.Eav.DataSources.DataSourceBase</code></li>
+<li><code>ToSic.Eav.DataSources.ExternalData</code></li>
+<li>...from another data source</li>
+</ol>
+<p>These had empty constructors, so your DataSource could also have an empty constructor.</p>
+<p>Internally it still needed some helper objects which were only available because a special factory added them later on.</p>
+<h2 id="what-we-changed">What we Changed</h2>
+<ol>
+<li>The base class was renamed to <code>ToSic.Eav.DataSources.DataSource</code></li>
+<li>The base class now always expects 2 parameters in the constructor<ol>
+<li><code>Dependencies dependencies</code> - type</li>
+<li><code>string logName</code> - for any messages which appear in Insights</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-move-to-tosiclibcore">1. Move to ToSic.Lib.Core</h3>
+<p>In 2sxc 15 we introduced a new DLL <code>ToSic.Lib.Core</code>.
+It contains very fundamental parts such as <strong>Logging</strong> and <strong>Dependency Injection Helpers</strong>.</p>
+<p>👉🏽 All classes now inherit from this. If you had any compiled code, it would need to be recompiled.</p>
+<p>We then changed almost all logging commands to be <em>Extension Methods</em>.
+By doing this, we could make all calls <em>null safe</em>, so if the <code>Log</code> object is null, the call will not do anything.</p>
+<p>This means, that calling anything on the <code>Log</code> object requires you to add the namespace <code>ToSic.Lib.Logging</code>:</p>
+<pre><code class="lang-c#">using ToSic.Lib.Logging;
+
+Log.A(&quot;some message);
+</code></pre><h3 id="2-new-icodelog-for-dynamic-code-logging">2. New ICodeLog for Dynamic Code Logging</h3>
+<p>We believe that any Razor or WebApi should have a simpler logging mechanism which doesn&#39;t need much documentation or learning.
+Because of this, we created a new <a href="xref:ToSic.Sxc.Code.ICodelog"><code>ICodeLog</code></a> which still has very simple <code>Add(...)</code> methods.</p>
+<p>This will be what the <code>Log</code> property of every Razor and WebApi will return.
+So they will not be <code>ILog</code> but <code>ICodeLog</code>.</p>
+<p>This should also ensure that any apps which previously used <code>Add(...)</code> will continue to work.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced ca. 2sxc 9</li>
+<li>Completely reworked in 2sxc/eav 15</li>
+</ul>
+<hr>
+<!-- Shortlink to here: https://r.2sxc.org/brc-15-logging TODO: -->
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v15/datasources/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="../../../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../../styles/2sxc-scripts.js"></script>
+    
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+</html>

@@ -28,7 +28,8 @@ The `context` contain additional information about the context we're running in.
 * `features` _new v13.10_
   * `isEnabled('FeatureName')` - will return true if this feature is enabled.  
   _Important: only admins users will know about all available features, non-admins will only have a subset marked as public._  
-  * `get('FeatureName')` - will return the feature object
+  <!-- 2022-12-23 removed this again, believe it's never used and adds problems to the edit-ui -->
+  <!-- * `get('FeatureName')` - will return the feature object -->
 * `form` _new v13.10_
   * `runFormulas()` - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
 * `user` _new in v13.11_
