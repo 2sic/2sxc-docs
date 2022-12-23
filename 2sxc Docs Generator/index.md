@@ -1,5 +1,5 @@
 
-<img src="assets/logos/v14/2sxc14-500.png" width="250px" align="right" class="float-right">
+<img src="assets/logos/v15/500.png" width="250px" align="right" class="float-right">
 
 # 2sxc and EAV Docs v15
 
