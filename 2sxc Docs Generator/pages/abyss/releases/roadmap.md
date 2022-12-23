@@ -16,23 +16,29 @@ Last Update: **2022-11-10**
 ## December 2022 - v15 Release
 
 1. ⏳ Better indicate premium/patron features and explain to the user what it is and how to get it
+    1. Visual indicators on buttons
+    1. Visual messages in certain places
+    1. Details dialog to know more about the feature
+    1. Public DB of the feature explaining it in more details, how to activate etc.
 1. ⏳ Improve WYSIWYG
     1. Sections to better allign images
     1. Use classes to determine size instead of styles
     1. Images which auto-resize based on size
-1. ⏳ Ability to import apps from folder directly (patrons)
-1. Settings: Ability to augment the preset configuration / settings with custom overrides
-1. ⏳ Integration of Google Translate in the Edit UI
-1. ⏳ New Auto-Installer with search, list-view etc.
-    1. ⏳ Features to configure at system level which apps are allowed / must be installed
-    1. ✅ Feature to tell new auto-installer what apps are already installed
-1. Export / Import
-    1. ✅ Create export bundle configuration to mark content-types and entities for export together
-    1. ⏳ Create json bundle export system
-    1. ⏳ Create json bundle import system
-    1. ⏳ Extend the file-based data loader to also load bundles
-1. ⏳ Rename internal `.data` folder to `App_Data/system` and similar as this folder will contain private data in future
-1. ⏳ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites
+    1. Create `CmsService.Show()` to auto apply certain aspects
+    1. Possibly auto-include some CSS to make things look right?
+1. ✅ Ability to import apps from folder directly (patrons)
+    1. ✅ Functionality
+    1. ✅ Hints / Infos to user
+    1. Documentation
+1. ✅ Integration of Google Translate in the Edit UI
+    1. ✅ Functionality for one field
+    1. ✅ For many fields
+    1. ✅ Configure so it only affects string fields
+    1. ✅ Ability to disable auto-translate on certain fields - eg. name fields
+    1. ✅ Ability to add custom API key
+    1. ✅ Clear warning when using the demo key
+    1. ✅ Make sure the license is respected and easy to spot
+    1. ⏳ Documentation for this (how the fields are selected, how to activate, etc.)
 1. Release v15 before XMas
 
 This is all done and ready for v15 as of 2022-12-12
@@ -40,6 +46,7 @@ This is all done and ready for v15 as of 2022-12-12
 1. ✅ Improve logging
     1. ✅ Place it in an own library DLL for better reuse
     1. ✅ Create ICodeLog for improve logging in Razor and WebApi which ensures compatibility with existing code
+    1. ⏳ Improve automatic connecting logs with helpers so most `Init(Log)` become obsolete
 1. ✅ Update CsvHelper DLL to latest version
 1. ✅ Improve install-file names
 1. ✅ Update to Razor Blade 4
@@ -70,13 +77,30 @@ This is all done and ready for v15 as of 2022-12-12
 1. ✅ Ability to use compressed GZIP data for DataTimeline (patrons)
     1. ✅ Technical features
     1. ✅ Toggle to turn on/off
+1. ✅ Rename internal `.data` folder to `App_Data/system` and similar as this folder will contain private data in future
+1. ✅ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites
+1. ✅ Settings: Ability to augment the preset configuration / settings with custom overrides
+1. ✅ Provide Google Services API Keys (Maps, Translate) from backend to edit UI
+1. ✅ Ability to set own default GPS coordinates for when not set
+    1. ✅ Ability to configure them in settings
+    1. ✅ Provide Default maps coordinates from backend to Edit UI
 
 Probably also do:
 
 1. Blazor / Oqtane
     1. ⏳ cre8magic - auto-generate sitemap.xml
 1. Probably update ImageFlow again, if PNG resize bug is fixed
-
+1. Export / Import
+    1. ✅ Create export bundle configuration to mark content-types and entities for export together
+    1. ⏳ Create json bundle export system
+    1. ⏳ Create json bundle import system
+    1. ⏳ Extend the file-based data loader to also load bundles
+1. Enable standard apps to be installed from catalog easily after first apps have been installed
+    1. ✅ Feature to tell new auto-installer what apps are already installed
+    1. UI to add-install apps later on
+1. ⏳ New Auto-Installer with search, list-view etc.
+    1. ⏳ Features to configure at system level which apps are allowed / must be installed
+1. Probably update ImageFlow again, if PNG resize bug is fixed
 
 <!-- 
   AsCmsItem(Content);
