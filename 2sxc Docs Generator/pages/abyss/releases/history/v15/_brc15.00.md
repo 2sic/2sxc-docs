@@ -26,17 +26,8 @@ We believe it will only affect you in these scenarios:
 1. [Minor API changes](xref:Abyss.Releases.History.V15.Minor)
 
 
-#### Major Updates with may affect you
-
-1. ...
-
-
-Things which probably don't affect anybody
+#### Breaking Updates which probably don't affect anybody
 
 1. SQL changes - minor updates to the Database
-
-
-
-Internal APIs which were removed
-
-1. Static `ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)`
+1. Internal APIs which were removed
+    1. Static `ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)`

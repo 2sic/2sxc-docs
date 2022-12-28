@@ -122,8 +122,8 @@ Since we&#39;re all working for free, there is no commitment to do this in the o
 And sometimes a customer will need a feature quickly - and pay for it - then it will appear sooner.</p>
 <div class="TIP"><h5>Tip</h5><p>You too can sponsor a feature to make things happen sooner!</p>
 </div>
-<p>Last Update: <strong>2022-11-10</strong></p>
-<h2 id="december-2022---v15-release">December 2022 - v15 Release</h2>
+<p>Last Update: <strong>2022-12-28</strong></p>
+<h2 id="january-2023---v150102">January 2023 - v15.01/02</h2>
 <ol>
 <li>⏳ Better indicate premium/patron features and explain to the user what it is and how to get it<ol>
 <li>Visual indicators on buttons</li>
@@ -140,89 +140,11 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>Possibly auto-include some CSS to make things look right?</li>
 </ol>
 </li>
-<li>✅ Ability to import apps from folder directly (patrons)<ol>
-<li>✅ Functionality</li>
-<li>✅ Hints / Infos to user</li>
-<li>Documentation</li>
+<li>Remaining docs for Features released in v15.00<ol>
+<li>⏳ Ability to import apps from folder directly (patrons)</li>
+<li>⏳ Documentation for google translate (how the fields are selected, how to activate, etc.)</li>
 </ol>
 </li>
-<li>✅ Integration of Google Translate in the Edit UI<ol>
-<li>✅ Functionality for one field</li>
-<li>✅ For many fields</li>
-<li>✅ Configure so it only affects string fields</li>
-<li>✅ Ability to disable auto-translate on certain fields - eg. name fields</li>
-<li>✅ Ability to add custom API key</li>
-<li>✅ Clear warning when using the demo key</li>
-<li>✅ Make sure the license is respected and easy to spot</li>
-<li>⏳ Documentation for this (how the fields are selected, how to activate, etc.)</li>
-</ol>
-</li>
-<li>Release v15 before XMas</li>
-</ol>
-<p>This is all done and ready for v15 as of 2022-12-12</p>
-<ol>
-<li>✅ Improve logging<ol>
-<li>✅ Place it in an own library DLL for better reuse</li>
-<li>✅ Create ICodeLog for improve logging in Razor and WebApi which ensures compatibility with existing code</li>
-<li>⏳ Improve automatic connecting logs with helpers so most <code>Init(Log)</code> become obsolete</li>
-</ol>
-</li>
-<li>✅ Update CsvHelper DLL to latest version</li>
-<li>✅ Improve install-file names</li>
-<li>✅ Update to Razor Blade 4</li>
-<li>✅ <del>Support Oqtane v4 with .net 7</del> - ATM Oqtane doesn&#39;t plan on going to .net 7</li>
-<li>✅ Tutorial App<ol>
-<li>✅ Improve internal structure</li>
-<li>✅ Change how to show code vs results - mostly use tabs</li>
-</ol>
-</li>
-<li>✅ Razor APIs and Services<ol>
-<li>✅ Improve <code>ImageService</code> to have an <code>imgAltFallback</code> on <code>.Img()</code>, <code>.Picture()</code> and <code>.ImgOrPic()</code></li>
-<li>✅ Improve <code>ImageService</code> to better respect multi-language crop-settings and labels</li>
-<li>✅ Improve <code>Page</code> service <code>Parameters.Set(...)</code> to also allow bool, int etc. (not just strings)</li>
-<li>✅ Create Kit.HtmlTag</li>
-<li>✅ Create <code>ITurnOnService</code> and <code>Kit.Page.TurnOn(...)</code></li>
-</ol>
-</li>
-<li>✅ Data Sources<ol>
-<li>✅ Improve <code>ValuFilter</code> Data Source to also allow <code>Contains</code> on numbers</li>
-</ol>
-</li>
-<li>✅ DB Clean-Up<ol>
-<li>✅ Remove SQL triggers which log XML data to <code>DataTimeline</code> which isn&#39;t used any more</li>
-<li>✅ Remove XML column <code>NewData</code> in <code>DataTimeline</code> which isn&#39;t used any more</li>
-</ol>
-</li>
-<li>✅ Internal APIs<ol>
-<li>✅ Improve Settings/Resources Stack with various unit tests</li>
-<li>✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like <code>&quot;Images.Content.Width&quot;</code></li>
-<li>✅ Create API <code>DependenciesBase</code> to better handle log attachments to dependencies</li>
-</ol>
-</li>
-<li>✅ TinyMCE upgrade to v6</li>
-<li>✅ Drop <code>_</code> prefix requirement on cshtml files by protecting them in an another manner<ol>
-<li>✅ It&#39;s not needed on Oqtane, as the files are not accessible</li>
-<li>✅ Only needed ATM on DNN because each file could be called from the browser directly</li>
-<li>✅ Probably make sure all base classes refuse to render standalone</li>
-</ol>
-</li>
-<li>✅ Ability to use compressed GZIP data for DataTimeline (patrons)<ol>
-<li>✅ Technical features</li>
-<li>✅ Toggle to turn on/off</li>
-</ol>
-</li>
-<li>✅ Rename internal <code>.data</code> folder to <code>App_Data/system</code> and similar as this folder will contain private data in future</li>
-<li>✅ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites</li>
-<li>✅ Settings: Ability to augment the preset configuration / settings with custom overrides</li>
-<li>✅ Provide Google Services API Keys (Maps, Translate) from backend to edit UI</li>
-<li>✅ Ability to set own default GPS coordinates for when not set<ol>
-<li>✅ Ability to configure them in settings</li>
-<li>✅ Provide Default maps coordinates from backend to Edit UI</li>
-</ol>
-</li>
-</ol>
-<p>Probably also do:</p>
-<ol>
 <li>Blazor / Oqtane<ol>
 <li>⏳ cre8magic - auto-generate sitemap.xml</li>
 </ol>
@@ -251,7 +173,9 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
   AsCmsList(App.Data["xxx"])
   Kit.Cms.Show(Content.Field("Body"), wrapIn: "div") - returns an ITag ?
 -->
-<h2 id="probably-2022-december">Probably 2022 December</h2>
+<h2 id="just-released-v1500-x-mas-2022">Just Released v15.00 X-Mas 2022</h2>
+<p>See <a class="xref" href="history/v15/index.html">All Changes in EAV and 2sxc v15</a></p>
+<h2 id="probably-2023-janfeb">Probably 2023 Jan/Feb</h2>
 <ol>
 <li>Improve WYSIWYG<ol>
 <li>Ability to do more configuration on WYSIWYG<ol>
@@ -311,7 +235,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>More Tutorials Formulas - ca. 0.5d</li>
 <li>Get tutorial app to run perfectly on Oqtane - ca. 0.5d 2dm</li>
 </ol>
-<h2 id="backlog-2022-q4-v14--v15">Backlog 2022 Q4 v14 / v15</h2>
+<h2 id="backlog-2023-v15">Backlog 2023 v15</h2>
 <p>New Stuf and Major Enhancements</p>
 <ol>
 <li>Note-feature to add notes to various things like entities, fields etc. (show, persist show, add to all kinds of things, ...) - ca. 3d</li>
@@ -366,110 +290,6 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 <li>Oqtane Page/Module integration / use (also for notes etc.)</li>
 </ol>
 <hr>
-<h2 id="priorities-2022-q1-v13">Priorities 2022 Q1 V13</h2>
-<ol>
-<li>✅ Improve Tutorials massively</li>
-<li>✅ View Metadata</li>
-<li>✅ Oqtane Website Mode which can be indexed in Google</li>
-<li>✅ Improve Feature-Management</li>
-<li>✅ IFeaturesService</li>
-<li>✅ Shared Apps across Sites (Patrons only feature)</li>
-<li>✅ Enable editing of Shared Templates / files</li>
-<li>✅ Enable shared APIs</li>
-<li>✅ Disable translation of specific content-types</li>
-<li>✅ Dnn Factory replacement to render module or get DynamicCode outside of 2sxc</li>
-<li>✅ Fully integrate with Dnn Dependency Injection</li>
-<li>✅ Improve DI Scopes to Module-Level</li>
-<li>✅ IImageService</li>
-</ol>
-<h2 id="completed-priorities-2022-q2-v13--v14">Completed Priorities 2022 Q2 v13 / v14</h2>
-<ol>
-<li>✅ v13 LTS</li>
-<li>✅ Image-Service/Picture</li>
-<li>✅ Image primary area / corner selector</li>
-<li>✅ Patron features with licensing &amp; payment system</li>
-<li>✅ LightSpeed cache</li>
-<li>✅ v14 Release</li>
-<li>✅ DNN 9.6.1 only</li>
-<li>✅ Formula Boost with many new features #1</li>
-<li>✅ DNN DI integration</li>
-<li>✅ Update turnOn to 0.1.2</li>
-<li>✅ CSP for the site (DNN only ATM)</li>
-<li>✅ Formula Boost #2 (more context info, features-infos, etc.)</li>
-<li>✅ NPM Types updated to latest release</li>
-<li>✅ Enterprise Features which will be availabe for bigger sponsors</li>
-<li>✅ Patron-System, where sponsors of 2sxc get some extra features</li>
-<li>✅ Standardize how to integrate into other systems (non-Dnn/Oqtane)</li>
-<li>✅ Service Kits</li>
-<li>✅ Deprecation System</li>
-<li>✅ Toolbar Services v1</li>
-<li>✅ JS Docs updated to the latest version and auto-generated</li>
-<li>✅ Tutorials Formulas</li>
-<li>✅ Update all Apps to the lastest/greatest conventions</li>
-<li>✅ v14 LTS</li>
-</ol>
-<h2 id="completed-priorities-2022-q3-v14">Completed Priorities 2022 Q3 v14</h2>
-<ol>
-<li>Toolbars Service Improvements<ol>
-<li>✅ icon-metadata</li>
-<li>✅ group C# API</li>
-<li>✅ SVG icons</li>
-<li>✅ base64</li>
-<li>✅ ui multiple params</li>
-<li>✅ bugfixes</li>
-<li>✅ params multiple params</li>
-<li>✅ array params</li>
-</ol>
-</li>
-<li>✅ Debug-logging on Oqtane client side code, bugfixing ca. 0.5d</li>
-<li>✅ Change storage of <code>app.xml</code> to <code>App_Data</code>, change how import works and enable import-from-folder/git</li>
-<li>✅ Clean up JS code, latest webpack, packages etc. ca. 1d</li>
-<li>✅ Infrastructure for automated testing of JS - ca. 5d</li>
-<li>Apps / App Maintenance<ol>
-<li>✅ Update most apps which used ephemeral variables for formulas to just use parameters (new in v14) ca. 0.5d</li>
-<li>✅ new Timeline Apps</li>
-<li>✅ new Files App</li>
-<li>✅ new Jobs</li>
-<li>✅ Make many Apps backwards compatible with Bootstrap 3 for a big customer</li>
-<li>✅ Have the core apps tested &amp; optimized for WCAG for a government customer</li>
-</ol>
-</li>
-<li>✅ Re-release sxc-angular</li>
-<li>✅ Remove dependency on SharpZipLib</li>
-</ol>
-<h2 id="2022-october-v1409---1412">2022 October v14.09 - 14.12</h2>
-<ol>
-<li>✅ Improve UI/Flow of system registration (ATM still confusing)</li>
-<li>✅ Make sure edit-ui doesn&#39;t need material fonts from CDN for icons</li>
-<li>✅ Create a new <code>app.json</code> configuration file for 2sxc apps to tune how export/import works</li>
-<li>✅ Remove Newtonsoft JSON and migrate to System.Text.Json</li>
-<li>✅ Improve handling of app-metadata (resources, settings)</li>
-<li>✅ Enable init and import completely new app directly from folder/git copy 1d SDV</li>
-<li>✅ Ability to sync Apps through git including the Assets and ADAM</li>
-<li>✅ Improve handing feature details to edit-ui</li>
-<li>Data Sources<ol>
-<li>New data source <code>Users</code></li>
-<li>New data source <code>Roles</code></li>
-</ol>
-</li>
-<li>✅ Update Imageflow to latest version</li>
-<li>✅ Remove dependency on Newtonsoft - only use System.Text.Json</li>
-<li>✅ Create <a href="https://schemas.2sxc.org">https://schemas.2sxc.org</a> for json schemas</li>
-<li>✅ Create JSON Schemas for image recipe and app.json</li>
-<li>✅ More formula tutorials how to call a WebAPI</li>
-<li>✅ Security update System.Data.SqlClient</li>
-<li>✅ Oqtane 2shine Theme release</li>
-<li>✅ cre8magic v0.0.1 released</li>
-</ol>
-<h2 id="november-2022---lts">November 2022 - LTS</h2>
-<ol>
-<li>✅ Publish <a href="https://blazor-cms.org/">blazor-cms.org</a><ol>
-<li>✅ get a great page speed - 95%+</li>
-<li>✅ Get blazor-cms.org to index really well in google</li>
-</ol>
-</li>
-<li>✅ v14 LTS #2 ca. v14.12 🚀</li>
-</ol>
 <h2 id="future--other">Future / Other</h2>
 <ol>
 <li><a class="xref" href="planned/db-schema-changes-v14.html">Update DB-Schema</a></li>

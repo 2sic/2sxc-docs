@@ -120,6 +120,116 @@
 <p>This page collects all the changes of all versions into one place, making it easier to search for certain keywords. </p>
 <p>👉 if you only care about breaking, please check <a class="xref" href="changes-breaking.html">Breaking Changes Overview for 2sxc/EAV</a></p>
 <hr>
+<h2 id="version-15">Version 15</h2>
+<h3 id="changes-in-2sxc-1500-2022-12-23">Changes in 2sxc 15.00 (2022-12-23)</h3>
+<ol>
+<li>✅ Improve logging<ol>
+<li>✅ Place it in an own library DLL for better reuse</li>
+<li>✅ Create ICodeLog for improve logging in Razor and WebApi which ensures compatibility with existing code</li>
+<li>✅ Improve automatic connecting logs with helpers so most <code>Init(Log)</code> become obsolete</li>
+</ol>
+</li>
+<li>✅ Update CsvHelper DLL to latest version</li>
+<li>✅ Improve install-file names</li>
+<li>✅ Update to Razor Blade 4</li>
+<li>✅ <del>Support Oqtane v4 with .net 7</del> - ATM Oqtane doesn&#39;t plan on going to .net 7</li>
+<li>✅ Tutorial App<ol>
+<li>✅ Improve internal structure</li>
+<li>✅ Change how to show code vs results - mostly use tabs</li>
+</ol>
+</li>
+<li>✅ Razor APIs and Services<ol>
+<li>✅ Improve <code>ImageService</code> to have an <code>imgAltFallback</code> on <code>.Img()</code>, <code>.Picture()</code> and <code>.ImgOrPic()</code></li>
+<li>✅ Improve <code>ImageService</code> to better respect multi-language crop-settings and labels</li>
+<li>✅ Improve <code>Page</code> service <code>Parameters.Set(...)</code> to also allow bool, int etc. (not just strings)</li>
+<li>✅ Create Kit.HtmlTag</li>
+<li>✅ Create <code>ITurnOnService</code> and <code>Kit.Page.TurnOn(...)</code></li>
+</ol>
+</li>
+<li>✅ Data Sources<ol>
+<li>✅ Improve <code>ValuFilter</code> Data Source to also allow <code>Contains</code> on numbers</li>
+</ol>
+</li>
+<li>✅ DB Clean-Up<ol>
+<li>✅ Remove SQL triggers which log XML data to <code>DataTimeline</code> which isn&#39;t used any more</li>
+<li>✅ Remove XML column <code>NewData</code> in <code>DataTimeline</code> which isn&#39;t used any more</li>
+</ol>
+</li>
+<li>✅ Internal APIs<ol>
+<li>✅ Improve Settings/Resources Stack with various unit tests</li>
+<li>✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like <code>&quot;Images.Content.Width&quot;</code></li>
+<li>✅ Create API <code>DependenciesBase</code> to better handle log attachments to dependencies</li>
+</ol>
+</li>
+<li>✅ TinyMCE upgrade to v6</li>
+<li>✅ Drop <code>_</code> prefix requirement on cshtml files by protecting them in an another manner<ol>
+<li>✅ It&#39;s not needed on Oqtane, as the files are not accessible</li>
+<li>✅ Only needed ATM on DNN because each file could be called from the browser directly</li>
+<li>✅ Probably make sure all base classes refuse to render standalone</li>
+</ol>
+</li>
+<li>✅ Ability to use compressed GZIP data for DataTimeline (patrons)<ol>
+<li>✅ Technical features</li>
+<li>✅ Toggle to turn on/off</li>
+</ol>
+</li>
+<li>✅ Rename internal <code>.data</code> folder to <code>App_Data/system</code> and similar as this folder will contain private data in future</li>
+<li>✅ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites</li>
+<li>✅ Settings: Ability to augment the preset configuration / settings with custom overrides</li>
+<li>✅ Provide Google Services API Keys (Maps, Translate) from backend to edit UI</li>
+<li>✅ Ability to set own default GPS coordinates for when not set<ol>
+<li>✅ Ability to configure them in settings</li>
+<li>✅ Provide Default maps coordinates from backend to Edit UI</li>
+</ol>
+</li>
+<li>✅ Ability to import apps from folder directly (patrons)<ol>
+<li>✅ Functionality</li>
+<li>✅ Hints / Infos to user</li>
+<li>⏳ Documentation</li>
+</ol>
+</li>
+<li>✅ Integration of Google Translate in the Edit UI<ol>
+<li>✅ Functionality for one field</li>
+<li>✅ For many fields</li>
+<li>✅ Configure so it only affects string fields</li>
+<li>✅ Ability to disable auto-translate on certain fields - eg. name fields</li>
+<li>✅ Ability to add custom API key</li>
+<li>✅ Clear warning when using the demo key</li>
+<li>✅ Make sure the license is respected and easy to spot</li>
+<li>⏳ Documentation for this (how the fields are selected, how to activate, etc.)</li>
+</ol>
+</li>
+<li>✅ Release v15 before XMas</li>
+</ol>
+<h3 id="breaking-changes-in-2sxc-1500">Breaking Changes in 2sxc 15.00</h3>
+<div class="TIP"><h5>Tip</h5><p>In summary we&#39;ve made a lot of internal breaking changes.
+But for all normal users it will have no effect at all.</p>
+</div>
+<p>We believe it will only affect you in these scenarios:</p>
+<ol>
+<li>If you have a <strong>custom DataSource</strong>, you will need to make some minor changes and recompile them</li>
+<li>If you used special, non-public Logging APIs you would need to update your work</li>
+<li>If you used any undocumented APIs, you will need to check if everything still works</li>
+</ol>
+<h4 id="api-changes-that-may-affect-you">API Changes that may affect you</h4>
+<ol>
+<li>DataSource base class was completely refactored<br> <a class="xref" href="v15/datasource/index.html">see instructions</a></li>
+<li>Old static <code>ToSic.Eav.DataSource</code> was removed (<a class="xref" href="v13/datasource/index.html">deprecated since v13</a>)</li>
+<li>Internal logging API <code>ILog</code> was completely refactored<br> <a class="xref" href="v15/logging/index.html">see instructions</a></li>
+<li>Internal object wrappers were completely refactored<br> <a class="xref" href="v15/unwrappedcontents/index.html">see instructions</a></li>
+<li><a class="xref" href="v15/tinymce-upgrade/index.html">TinyMCE Upgrade to v6</a></li>
+<li><a class="xref" href="v15/database/index.html">Database changes</a></li>
+<li><a class="xref" href="v15/minor/index.html">Minor API changes</a></li>
+</ol>
+<h4 id="breaking-updates-which-probably-dont-affect-anybody">Breaking Updates which probably don&#39;t affect anybody</h4>
+<ol>
+<li>SQL changes - minor updates to the Database</li>
+<li>Internal APIs which were removed<ol>
+<li>Static <code>ToSic.Eav.Data.Builder.AttribBuilder.AddValue(...)</code></li>
+</ol>
+</li>
+</ol>
+<hr>
 <h2 id="breaking-changes-in-eav-and-2sxc-v14">Breaking Changes in EAV and 2sxc v14</h2>
 <p>We try to minimize breaking changes, and most breaking changes won&#39;t affect your work, because it&#39;s internal API. 
 We&#39;re documenting it here to ensure you know what happened, in case you still run into this.</p>
@@ -131,14 +241,99 @@ We&#39;re documenting it here to ensure you know what happened, in case you stil
 <li><a class="xref" href="v14/change-in-app-data-folder.html">Change in App Data Folder in v14.08</a> <em>v14.08</em></li>
 </ol>
 <h2 id="all-changes-v14">All Changes V14</h2>
-<h3 id="1400---140704">14.00 - 14.07.04</h3>
-<p>TODO NOT YET DOCUMENTED - CHECK THE GITHUB PROJECT</p>
-<h3 id="140705">14.07.05</h3>
-<ul>
-<li>ToolbarBuilder now has <code>Group</code> command</li>
-<li>Toolbar Buttons can now use SVGs for icons (usually base64 encoded)</li>
-<li>...</li>
-</ul>
+<h3 id="1400---140705-2022-q2--2022-q3">14.00 - 14.07.05 (2022-Q2 &amp; 2022-Q3)</h3>
+<p>Q2</p>
+<ol>
+<li>✅ Image-Service/Picture</li>
+<li>✅ Image primary area / corner selector</li>
+<li>✅ Patron features with licensing &amp; payment system</li>
+<li>✅ LightSpeed cache</li>
+<li>✅ v14 Release</li>
+<li>✅ DNN 9.6.1 only</li>
+<li>✅ Formula Boost with many new features #1</li>
+<li>✅ DNN DI integration</li>
+<li>✅ Update turnOn to 0.1.2</li>
+<li>✅ CSP for the site (DNN only ATM)</li>
+<li>✅ Formula Boost #2 (more context info, features-infos, etc.)</li>
+<li>✅ NPM Types updated to latest release</li>
+<li>✅ Enterprise Features which will be availabe for bigger sponsors</li>
+<li>✅ Patron-System, where sponsors of 2sxc get some extra features</li>
+<li>✅ Standardize how to integrate into other systems (non-Dnn/Oqtane)</li>
+<li>✅ Service Kits</li>
+<li>✅ Deprecation System</li>
+<li>✅ Toolbar Services v1</li>
+<li>✅ JS Docs updated to the latest version and auto-generated</li>
+<li>✅ Tutorials Formulas</li>
+<li>✅ Update all Apps to the lastest/greatest conventions</li>
+<li>✅ v14 LTS</li>
+</ol>
+<p>Q3</p>
+<ol>
+<li>✅ Toolbars Service Improvements<ol>
+<li>✅ icon-metadata</li>
+<li>✅ group C# API - ToolbarBuilder now has <code>Group</code> command</li>
+<li>✅ SVG icons - Toolbar Buttons can now use SVGs for icons (usually base64 encoded)</li>
+<li>✅ base64</li>
+<li>✅ ui multiple params</li>
+<li>✅ bugfixes</li>
+<li>✅ params multiple params</li>
+<li>✅ array params</li>
+</ol>
+</li>
+<li>✅ Debug-logging on Oqtane client side code, bugfixing ca. 0.5d</li>
+<li>✅ Change storage of <code>app.xml</code> to <code>App_Data</code>, change how import works and enable import-from-folder/git</li>
+<li>✅ Clean up JS code, latest webpack, packages etc. ca. 1d</li>
+<li>✅ Infrastructure for automated testing of JS - ca. 5d</li>
+<li>Apps / App Maintenance<ol>
+<li>✅ Update most apps which used ephemeral variables for formulas to just use parameters (new in v14) ca. 0.5d</li>
+<li>✅ new Timeline Apps</li>
+<li>✅ new Files App</li>
+<li>✅ new Jobs</li>
+<li>✅ Make many Apps backwards compatible with Bootstrap 3 for a big customer</li>
+<li>✅ Have the core apps tested &amp; optimized for WCAG for a government customer</li>
+</ol>
+</li>
+<li>✅ Re-release sxc-angular</li>
+<li>✅ Remove dependency on SharpZipLib</li>
+</ol>
+<!-- ### 14.07.05
+
+* ToolbarBuilder now has `Group` command
+* Toolbar Buttons can now use SVGs for icons (usually base64 encoded)
+* ... -->
+<h2 id="1409---1412-2022-10">14.09 - 14.12 (2022-10)</h2>
+<ol>
+<li>✅ Improve UI/Flow of system registration (ATM still confusing)</li>
+<li>✅ Make sure edit-ui doesn&#39;t need material fonts from CDN for icons</li>
+<li>✅ Create a new <code>app.json</code> configuration file for 2sxc apps to tune how export/import works</li>
+<li>✅ Remove Newtonsoft JSON and migrate to System.Text.Json</li>
+<li>✅ Improve handling of app-metadata (resources, settings)</li>
+<li>✅ Enable init and import completely new app directly from folder/git copy 1d SDV</li>
+<li>✅ Ability to sync Apps through git including the Assets and ADAM</li>
+<li>✅ Improve handing feature details to edit-ui</li>
+<li>Data Sources<ol>
+<li>New data source <code>Users</code></li>
+<li>New data source <code>Roles</code></li>
+</ol>
+</li>
+<li>✅ Update Imageflow to latest version</li>
+<li>✅ Remove dependency on Newtonsoft - only use System.Text.Json</li>
+<li>✅ Create <a href="https://schemas.2sxc.org">https://schemas.2sxc.org</a> for json schemas</li>
+<li>✅ Create JSON Schemas for image recipe and app.json</li>
+<li>✅ More formula tutorials how to call a WebAPI</li>
+<li>✅ Security update System.Data.SqlClient</li>
+<li>✅ Oqtane 2shine Theme release</li>
+<li>✅ cre8magic v0.0.1 released</li>
+</ol>
+<h3 id="141200---141203-lts-november-2022">14.12.00 - 14.12.03 LTS (November 2022)</h3>
+<ol>
+<li>✅ Publish <a href="https://blazor-cms.org/">blazor-cms.org</a><ol>
+<li>✅ get a great page speed - 95%+</li>
+<li>✅ Get blazor-cms.org to index really well in google</li>
+</ol>
+</li>
+<li>✅ v14 LTS #2 ca. v14.12 🚀</li>
+</ol>
 <h2 id="important-changes">Important Changes</h2>
 <ol>
 <li><a class="xref" href="v14/issue-assembly-binding.html">Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02</a></li>
@@ -217,6 +412,26 @@ We&#39;re documenting it here to ensure you know what happened, in case you stil
 <li>Moved the <code>Web.IInPageEditingHelper</code> to <code>Services.IEditService</code> - this is non breaking and shouldn&#39;t matter, as people won&#39;t be using the direct inteface</li>
 <li>Moved the <code>Web.ILinkHelper</code> to <code>Services.ILinkService</code> - this is non breaking and shouldn&#39;t matter, as people won&#39;t be using the direct inteface</li>
 </ul>
+<h3 id="13x-2022-q1">13.x 2022-Q1</h3>
+<ol>
+<li>✅ Improve Tutorials massively</li>
+<li>✅ View Metadata</li>
+<li>✅ Oqtane Website Mode which can be indexed in Google</li>
+<li>✅ Improve Feature-Management</li>
+<li>✅ IFeaturesService</li>
+<li>✅ Shared Apps across Sites (Patrons only feature)</li>
+<li>✅ Enable editing of Shared Templates / files</li>
+<li>✅ Enable shared APIs</li>
+<li>✅ Disable translation of specific content-types</li>
+<li>✅ Dnn Factory replacement to render module or get DynamicCode outside of 2sxc</li>
+<li>✅ Fully integrate with Dnn Dependency Injection</li>
+<li>✅ Improve DI Scopes to Module-Level</li>
+<li>✅ IImageService</li>
+</ol>
+<h3 id="13x-lts-2022-q2">13.x LTS 2022-Q2</h3>
+<ol>
+<li>✅ v13 LTS</li>
+</ol>
 <hr>
 <h2 id="version-12">Version 12</h2>
 <h3 id="changes-version-1210">Changes Version 12.10</h3>

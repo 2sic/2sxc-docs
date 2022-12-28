@@ -10,6 +10,10 @@ This page collects all the changes of all versions into one place, making it eas
 
 ---
 
+[!include["All"](./v15/_all15.md)]
+
+---
+
 [!include["All"](./v14/_all14.md)]
 
 ---

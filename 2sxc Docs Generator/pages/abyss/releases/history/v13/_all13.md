@@ -32,3 +32,23 @@ TODO
 
 * Moved the `Web.IInPageEditingHelper` to `Services.IEditService` - this is non breaking and shouldn't matter, as people won't be using the direct inteface
 * Moved the `Web.ILinkHelper` to `Services.ILinkService` - this is non breaking and shouldn't matter, as people won't be using the direct inteface
+
+### 13.x 2022-Q1
+
+1. ✅ Improve Tutorials massively
+1. ✅ View Metadata
+1. ✅ Oqtane Website Mode which can be indexed in Google
+1. ✅ Improve Feature-Management
+1. ✅ IFeaturesService
+1. ✅ Shared Apps across Sites (Patrons only feature)
+1. ✅ Enable editing of Shared Templates / files
+1. ✅ Enable shared APIs
+1. ✅ Disable translation of specific content-types
+1. ✅ Dnn Factory replacement to render module or get DynamicCode outside of 2sxc
+1. ✅ Fully integrate with Dnn Dependency Injection
+1. ✅ Improve DI Scopes to Module-Level
+1. ✅ IImageService
+
+### 13.x LTS 2022-Q2
+
+1. ✅ v13 LTS
