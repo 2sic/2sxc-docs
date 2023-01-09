@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ILog
+    <title>Class LogCall&lt;T&gt;
    | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ILog
+    <meta name="title" content="Class LogCall&lt;T&gt;
    | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,68 +116,100 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Lib.Logging.ILog">
+            <article class="content wrap" id="_content" data-uid="ToSic.Lib.Logging.LogCall`1">
   
   
-  <h1 id="ToSic_Lib_Logging_ILog" data-uid="ToSic.Lib.Logging.ILog" class="text-break">Interface ILog
+  <h1 id="ToSic_Lib_Logging_LogCall_1" data-uid="ToSic.Lib.Logging.LogCall`1" class="text-break">Class LogCall&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>A logger with special capabilities.
-It can take log messages, and chain itself to other loggers. <br>
-If chained, it can broadcast the messages to the other loggers from that time forward.
-Basically this is the backbone of Insights.</p>
-<p>To add messages/logs of all kinds you must use null-safe extension methods.
-It will require you to add the namespace <a class="xref" href="ToSic.Lib.Logging.html">ToSic.Lib.Logging</a>.</p>
+  <div class="markdown level0 summary"><p>A mini logger for a function call, which should be closed using a form of <code>Return(...)</code> when the function completes.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ToSic.Lib.Logging.LogCallBase</span></div>
+    <div class="level2"><span class="xref">LogCall&lt;T&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ToSic.Lib.Logging.ILogCall.html">ILogCall</a></div>
+    <div><a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Lib.Logging.html">ToSic.Lib.Logging</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Lib.Core.dll</h6>
-  <h5 id="ToSic_Lib_Logging_ILog_syntax">Syntax</h5>
+  <h5 id="ToSic_Lib_Logging_LogCall_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;this is just FYI&quot;)]
-public interface ILog</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public class LogCall&lt;T&gt; : LogCallBase, ILogLike, ILogCall&lt;T&gt;, ILogCall, ILog</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILog_NameId.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILog.NameId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/Log/ILog.cs/#L25">View Source</a>
-  </span>
-  <a id="ToSic_Lib_Logging_ILog_NameId_" data-uid="ToSic.Lib.Logging.ILog.NameId*"></a>
-  <h4 id="ToSic_Lib_Logging_ILog_NameId" data-uid="ToSic.Lib.Logging.ILog.NameId">NameId</h4>
-  <div class="markdown level1 summary"><p>A unique identifier containing a special <code>Scp.NameOf[id]</code> name.
-This consists of</p>
-<ol>
-<li><code>Scp</code> Scope - up to 3 characters</li>
-<li><code>NameOf</code> Name - up to 6 characters</li>
-<li><code>id</code> A random id 2 characters long</li>
-</ol>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string NameId { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of data to return at the end of the call.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Lib_Logging_LogCall_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><ol>
+<li>It&apos;s important to note that many Return commands are extension methods.</li>
+<li>Certain types such as <code>bool</code> have their own custom <code>Return...</code> commands, such as <code>ReturnFalse()</code></li>
+</ol>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCall.html">ILogCall</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a>
+  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_">ILogCallExtensions.Done(ILogCall)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;, T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAsOk__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAsOk&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;, T, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__System_String_">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_GetAndLog__1_ToSic_Lib_Logging_ILog_System_Func_ToSic_Lib_Logging_LogCall___0____0__System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.GetAndLog&lt;TResult&gt;(ILog, Func&lt;LogCall&lt;TResult&gt;, TResult&gt;, Boolean, String, String, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_GetAndLog__1_ToSic_Lib_Logging_ILog_System_Func_ToSic_Lib_Logging_LogCall___0__System_ValueTuple___0_System_String___System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.GetAndLog&lt;TResult&gt;(ILog, Func&lt;LogCall&lt;TResult&gt;, (TResult Result, String Message)&gt;, Boolean, String, String, Int32)</a>
+  </div>
+  <div>
       <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_A_ToSic_Lib_Logging_ILog_System_String_System_String_System_String_System_Int32_">ILogExtensions.A(ILog, String, String, String, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_A_ToSic_Lib_Logging_ILog_System_Func_System_String__System_String_System_String_System_Int32_">ILogExtensions.A(ILog, Func&lt;String&gt;, String, String, Int32)</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_W_ToSic_Lib_Logging_ILog_System_String_System_String_System_String_System_Int32_">ILogExtensions.W(ILog, String, String, String, Int32)</a>
@@ -189,16 +221,16 @@ This consists of</p>
       <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Ex_ToSic_Lib_Logging_ILog_System_Exception_System_String_System_String_System_Int32_">ILogExtensions.Ex(ILog, Exception, String, String, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn__1_ToSic_Lib_Logging_ILog_System_String_System_String_System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.Fn&lt;T&gt;(ILog, String, String, Boolean, String, String, Int32)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn__1_ToSic_Lib_Logging_ILog_System_String_System_String_System_Boolean_ToSic_Lib_Logging_CodeRef_System_String_System_String_System_Int32_">ILogExtensions.Fn&lt;T&gt;(ILog, String, String, Boolean, CodeRef, String, String, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn__1_ToSic_Lib_Logging_ILog_System_Boolean_System_String_System_String_System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.Fn&lt;T&gt;(ILog, Boolean, String, String, Boolean, String, String, Int32)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn__1_ToSic_Lib_Logging_ILog_System_Boolean_System_String_System_String_System_Boolean_ToSic_Lib_Logging_CodeRef_System_String_System_String_System_Int32_">ILogExtensions.Fn&lt;T&gt;(ILog, Boolean, String, String, Boolean, CodeRef, String, String, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn_ToSic_Lib_Logging_ILog_System_String_System_String_System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.Fn(ILog, String, String, Boolean, String, String, Int32)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn_ToSic_Lib_Logging_ILog_System_String_System_String_System_Boolean_ToSic_Lib_Logging_CodeRef_System_String_System_String_System_Int32_">ILogExtensions.Fn(ILog, String, String, Boolean, CodeRef, String, String, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Try_ToSic_Lib_Logging_ILog_System_Func_System_String__">ILogExtensions.Try(ILog, Func&lt;String&gt;)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Fn__1_ToSic_Lib_Logging_ILog_System_Func_System_String__System_Func_System_String__System_Boolean_System_String_System_String_System_Int32_">ILogExtensions.Fn&lt;T&gt;(ILog, Func&lt;String&gt;, Func&lt;String&gt;, Boolean, String, String, Int32)</a>
   </div>
 </article>
           </div>
@@ -208,10 +240,10 @@ This consists of</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILog.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_LogCall_1.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.LogCall%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/Log/ILog.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/LogCall/LogCall_T.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

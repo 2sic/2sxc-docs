@@ -77,7 +77,7 @@ These are all the data sources which are either provided in the default installa
 
 
   <tr>
-    <td>[DataSourceBase](xref:ToSic.Eav.DataSources.DataSourceBase)</td>
+    <td>[DataSourceBase](xref:ToSic.Eav.DataSources.DataSource)</td>
     <td>(base)</td>
     <td>The base class for all DataSources</td>
   </tr>

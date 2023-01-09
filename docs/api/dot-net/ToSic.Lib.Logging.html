@@ -141,7 +141,15 @@ class names, code-file names and line of code where it was logged 😎.</p>
   </h3>
       <h4><a class="xref" href="ToSic.Lib.Logging.CodeRef.html">CodeRef</a></h4>
       <section><p>Reference to source code.
-It contains the path to the file, the method name and the line in the code. </p>
+It contains the path to the file, the method name and the line in the code.</p>
+<p>This is used to track the exact location in the code where a log was added/created.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html">ILogCallExtensions</a></h4>
+      <section><p>Extensions for <a class="xref" href="ToSic.Lib.Logging.ILogCall.html">ILogCall</a> objects which don&apos;t need to return a value.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html">ILogExtensions</a></h4>
+      <section><p>Various extensions for <a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a> objects to add logs.
+They are all implemented as extension methods, so that they will not fail even if the log object is null.</p>
 </section>
       <h4><a class="xref" href="ToSic.Lib.Logging.LogConstants.html">LogConstants</a></h4>
       <section></section>
@@ -163,6 +171,14 @@ If chained, it can broadcast the messages to the other loggers from that time fo
 Basically this is the backbone of Insights.</p>
 <p>To add messages/logs of all kinds you must use null-safe extension methods.
 It will require you to add the namespace <a class="xref" href="ToSic.Lib.Logging.html">ToSic.Lib.Logging</a>.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Lib.Logging.ILogCall.html">ILogCall</a></h4>
+      <section><p>A log object used to log the activity of a specific function call.
+It is usually created in the beginning of the call and closed on various return calls or at the end of the function.</p>
+<p>Note that most of the methods used to complete a call are <strong>extension methods</strong>.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Lib.Logging.ILogCall-1.html">ILogCall&lt;T&gt;</a></h4>
+      <section><p>A mini logger for a function call, which should be closed using a form of <code>Return(...)</code> when the function completes.</p>
 </section>
       <h4><a class="xref" href="ToSic.Lib.Logging.ILogStore.html">ILogStore</a></h4>
       <section><p>Interface to add <a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a>s to the log storage.</p>

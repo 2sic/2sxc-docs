@@ -56,7 +56,7 @@ This example adds 8 configuration masks - let's find out what exactly happens.
 ## Read also
 
 * [Configuration using Tokens](xref:Abyss.Parts.LookUp.Index)
-* [ConfigMask in the API](xref:ToSic.Eav.DataSources.DataSourceBase.ConfigMask*)
+* [ConfigMask in the API](xref:ToSic.Eav.DataSources.DataSource.ConfigMask*)
 * [](xref:NetCode.DataSources.Custom.Configuration)
 * [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)
 

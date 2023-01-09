@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ILog
+    <title>Interface ILogCall
    | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ILog
+    <meta name="title" content="Interface ILogCall
    | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,49 +116,49 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Lib.Logging.ILog">
+            <article class="content wrap" id="_content" data-uid="ToSic.Lib.Logging.ILogCall">
   
   
-  <h1 id="ToSic_Lib_Logging_ILog" data-uid="ToSic.Lib.Logging.ILog" class="text-break">Interface ILog
+  <h1 id="ToSic_Lib_Logging_ILogCall" data-uid="ToSic.Lib.Logging.ILogCall" class="text-break">Interface ILogCall
   </h1>
-  <div class="markdown level0 summary"><p>A logger with special capabilities.
-It can take log messages, and chain itself to other loggers. <br>
-If chained, it can broadcast the messages to the other loggers from that time forward.
-Basically this is the backbone of Insights.</p>
-<p>To add messages/logs of all kinds you must use null-safe extension methods.
-It will require you to add the namespace <a class="xref" href="ToSic.Lib.Logging.html">ToSic.Lib.Logging</a>.</p>
+  <div class="markdown level0 summary"><p>A log object used to log the activity of a specific function call.
+It is usually created in the beginning of the call and closed on various return calls or at the end of the function.</p>
+<p>Note that most of the methods used to complete a call are <strong>extension methods</strong>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILog.html#ToSic_Lib_Logging_ILog_NameId">ILog.NameId</a>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Lib.Logging.html">ToSic.Lib.Logging</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Lib.Core.dll</h6>
-  <h5 id="ToSic_Lib_Logging_ILog_syntax">Syntax</h5>
+  <h5 id="ToSic_Lib_Logging_ILogCall_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;this is just FYI&quot;)]
-public interface ILog</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public interface ILogCall : ILog</code></pre>
   </div>
+  <h5 id="ToSic_Lib_Logging_ILogCall_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Normal code will never create this object, but get such an object when calling <code>ILog.Fn(...)</code> extensions <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html">ILogExtensions</a>.</p>
+</div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILog_NameId.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILog.NameId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall_Entry.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall.Entry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/Log/ILog.cs/#L25">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/LogCall/ILogCall.cs/#L21">View Source</a>
   </span>
-  <a id="ToSic_Lib_Logging_ILog_NameId_" data-uid="ToSic.Lib.Logging.ILog.NameId*"></a>
-  <h4 id="ToSic_Lib_Logging_ILog_NameId" data-uid="ToSic.Lib.Logging.ILog.NameId">NameId</h4>
-  <div class="markdown level1 summary"><p>A unique identifier containing a special <code>Scp.NameOf[id]</code> name.
-This consists of</p>
-<ol>
-<li><code>Scp</code> Scope - up to 3 characters</li>
-<li><code>NameOf</code> Name - up to 6 characters</li>
-<li><code>id</code> A random id 2 characters long</li>
-</ol>
+  <a id="ToSic_Lib_Logging_ILogCall_Entry_" data-uid="ToSic.Lib.Logging.ILogCall.Entry*"></a>
+  <h4 id="ToSic_Lib_Logging_ILogCall_Entry" data-uid="ToSic.Lib.Logging.ILogCall.Entry">Entry</h4>
+  <div class="markdown level1 summary"><p>The main log-entry for this call, which will also receive the final value at the end of the call.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string NameId { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">Entry Entry { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,12 +170,80 @@ This consists of</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">ToSic.Lib.Logging.Entry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall_Log.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall.Log%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/LogCall/ILogCall.cs/#L31">View Source</a>
+  </span>
+  <a id="ToSic_Lib_Logging_ILogCall_Log_" data-uid="ToSic.Lib.Logging.ILogCall.Log*"></a>
+  <h4 id="ToSic_Lib_Logging_ILogCall_Log" data-uid="ToSic.Lib.Logging.ILogCall.Log">Log</h4>
+  <div class="markdown level1 summary"><p>Reference to the parent log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILog Log { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall_Timer.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall.Timer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/LogCall/ILogCall.cs/#L26">View Source</a>
+  </span>
+  <a id="ToSic_Lib_Logging_ILogCall_Timer_" data-uid="ToSic.Lib.Logging.ILogCall.Timer*"></a>
+  <h4 id="ToSic_Lib_Logging_ILogCall_Timer" data-uid="ToSic.Lib.Logging.ILogCall.Timer">Timer</h4>
+  <div class="markdown level1 summary"><p>A stopwatch object which is used for timing purposes on this call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stopwatch Timer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.Stopwatch</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_">ILogCallExtensions.Done(ILogCall)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall, String)</a>
+  </div>
   <div>
       <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_A_ToSic_Lib_Logging_ILog_System_String_System_String_System_String_System_Int32_">ILogExtensions.A(ILog, String, String, String, Int32)</a>
   </div>
@@ -208,10 +276,10 @@ This consists of</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILog.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/Log/ILog.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Logging/LogCall/ILogCall.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
