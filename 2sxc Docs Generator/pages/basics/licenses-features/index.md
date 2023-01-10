@@ -1,64 +1,35 @@
 ---
 uid: Basics.LnF.Index
 ---
+
+<img src="~/assets/features/2sxc-patrons.svg" class="feature">
+
 # Licenses and Features
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-2sxc 13 introduces licenses and features. 
+## The basics
 
-* **Licenses** are keys which _allow_ the use of advanced features in 2sxc.
-* **Features** are settings which _activate_ certain features in 2sxc.
+* **Features** are global aspects in 2sxc which can be _activated_ or also _disabled_ by configuration.
+* Some features are enabled by default, others are disabled by default.
+* Some features may affect security. This information is shown in the admin UI.
+* Some features require a license to be activated.
+* **Licenses** are keys which _allow_ the use of _advanced_ features.
+* Some features are automatically activated when a license is activated, but can be disabled.
 
-Some **features** require a **license** to be activated.
+## Start Using it
 
-The other features are simply configurable to improve your security. 
+👉🏾 [See the full list of licenses and features](https://patrons.2sxc.org/features)
 
-## Licenses in 2sxc 13
+👉🏾 [Licenses - How they Work and How to Activate](xref:Basics.LnF.Licenses.Index)
 
-### Core Free License
+👉🏾 [Manage Features](xref:Basics.LnF.Features.Index)
 
-This is the default license which is auto-enabled for everybody, and covers 99.9% of all features. 
-
-> [!TIP]
-> 99.9% of 2sxc is free for everybody to use. 
-> 
-> Only some really advanced features require a license. 
-
-### Patron / Supporter License
-
-This is the most basic license and we hope everybody will apply for this license 😉. 
-Basically if you become a supporter of 2sxc, you will get some goodies as a special thanks. 
-Goodies include: 
-
-1. Ability to paste images from clipboard into file-fields and wysiwyg.  
-  (note: this works with all kinds of bitmap, but will not work if the image has transparent parts, because transparency in the clipboard isn't standardized)
-1. Hide "sponsored with 💖 by 2sic" on ADAM
-1. Enhance automatic `<picture>` tag generation to include newer formats like WebP automatically
-
-### Enterprise CMS License
-
-This is a special license which activates Enterprise CMS functionality which only very sophisticated sites need. As of now, they are:
-
-1. Ability to inherit Apps across sites - useful for installations with many sites using the identical apps
-1. Ability to specify edit permissions for each language
-
-### WebFarmCache Licenses
-
-This is used to synchronise web server caches across multiple websites in Farm Scenarios. 
-
-## How to Get and Install a License
-
-1. Go to your system management (the four-squares button)
-1. Click on `register`
-1. Follow the registrations on https://patrons.2sxc.org - if you plan to get paid licenses, make sure you use the github account which will be sponsoring 2sxc
-1. Toggle the licenses you want
-1. Go back to your admin and retrieve the license on the `Features` tab
-
-For offline scenarios there is also a [manual installation](xref:Basics.LnF.Licenses.Manual) you can follow. 
+---
 
 ## History
 
 1. Feature system introduced in 2sxc 9.30
 1. License system introduced in 2sxc 13.01
+1. UIs massively enhanced in v15

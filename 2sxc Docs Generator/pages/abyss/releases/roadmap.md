@@ -27,6 +27,7 @@ Last Update: **2022-12-28**
     1. Create `CmsService.Show()` to auto apply certain aspects
     1. Possibly auto-include some CSS to make things look right?
 1. Remaining docs for Features released in v15.00
+    1. ✅ Finish API and docs for Logging v15.01
     1. ⏳ Ability to import apps from folder directly (patrons)
     1. ⏳ Documentation for google translate (how the fields are selected, how to activate, etc.)
 1. Blazor / Oqtane
@@ -43,6 +44,7 @@ Last Update: **2022-12-28**
 1. ⏳ New Auto-Installer with search, list-view etc.
     1. ⏳ Features to configure at system level which apps are allowed / must be installed
 1. Probably update ImageFlow again, if PNG resize bug is fixed
+
 
 <!-- 
   AsCmsItem(Content);
