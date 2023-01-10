@@ -12,26 +12,42 @@ Here's what you need to know.
 ## Patrons Only Feature
 
 This is a patrons only feature.
-To use this feature, you must enable the license **Patrons AdvancedCMS**. TODO: LINK
+To use this feature, need the license [**Patrons Advanced CMS**](xref:2sxc Auto-Translate Overview).
+[See activation instructions](xref:Basics.LnF.Licenses.Index).
 
 ## Auto Translate uses Google Translate
 
-Auto Translate uses the Google Translate API TODO: LINK.
-It is available in the edit UI, because we believe that any automatic translation still needs a user to review it.
-So it will not just auto-translate content in the output.
-
+Auto Translate uses the [Google Translate API](https://cloud.google.com/translate).
+It is available in the Edit UI.
+This way the editor can run auto-translate, optimize the results and save.
 This requires a [Google API key](xref:Basics.Languages.AutoTranslate.ApiKey) for each site.
 
 ## Auto Translate User Experience
 
 The user can choose to auto-translate a _single field_ or _all fields_.
 
-TODO: PICS
+<div class="float-container">
+  <img src="./assets/auto-translate-all-menu.jpg" width="45%" class="float-right glow">
+  <img src="./assets/auto-translate-original.jpg" width="45%" class="float-left glow">
+</div>
+
 
 After this, the user must select what source language should be used.
 The UI will show you how many fields of the available source languages have content.
 
-TODO: PIC
+<div class="float-container">
+  <img src="./assets/auto-translate-all-dialog-many-sources.jpg" width="45%" class="float-right glow">
+  <img src="./assets/auto-translate-all-dialog.jpg" width="45%" class="float-left glow">
+</div>
+
+In the end you'll get the result for further editing.
+
+<div class="float-container">
+  <img src="./assets/auto-translate-all-result-ar.jpg" width="45%" class="float-right glow">
+  <img src="./assets/auto-translate-all-result-de.jpg" width="45%" class="float-left glow">
+</div>
+
+
 
 ## HTML and Unknown Content are Preserved
 
@@ -55,10 +71,15 @@ Some fields are not auto-translated - either by default, or by configuration.
 Fields which are not auto-translated will keep their previous status - in most cases locked (auto-inherit).
 
 
+## FAQ
+
+1. **Q: Is it possible to just auto-translate at runtime?**  
+  A: Fully automatic translate at runtime is not useful so this is not what the feature does.
+
+
 ---
 
 ## History
 
 1. Introduced in 2sxc 2 ca. 2012
-1. ...
 1. Auto-Translate Content added in v15

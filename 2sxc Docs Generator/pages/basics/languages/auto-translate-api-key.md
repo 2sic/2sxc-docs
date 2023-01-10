@@ -20,18 +20,24 @@ Because of this you will need to register your own API key.
 
 ## Register a Google Translate API Key
 
-Here's how: TODO:
+👉🏾 See [Googles Instructions](https://cloud.google.com/translate/docs/setup?hl=en)
 
 ## Activate the Google Translate API Key in the 2sxc/EAV Settings
+
+The API Key is stored in the [Settings](xref:Basics.Configuration.Index).
+Make sure you are familiar with them.
+In the settings, this is where you would configure them:
+
+<img src="./assets/settings-step1.jpg" width="100%" class="glow">
+
+<img src="./assets/settings-step2.jpg" width="100%" class="glow">
 
 You can place the key in 4 different locations:
 
 1. A specific App (not recommended)
 1. A specific Site
-1. Global settings on all Sites of an installation
-1. In the presets (for scenarios where you pre-install the same API key in many installations)
-
-TODO: DOCS
+1. Global settings on all Sites of an installation (recommended)
+1. In the presets (for scenarios where you pre-install the same API key in many installations, not documented ATM)
 
 ---
 
