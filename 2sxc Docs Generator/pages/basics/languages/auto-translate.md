@@ -70,6 +70,10 @@ Some fields are not auto-translated - either by default, or by configuration.
 
 Fields which are not auto-translated will keep their previous status - in most cases locked (auto-inherit).
 
+To configure a field to not auto-translate, you can do this here:
+
+<img src="./assets/settings-field-auto-translate.jpg" width="100%" class="glow">
+
 
 ## FAQ
 
