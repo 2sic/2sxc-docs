@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Content Security Policy (CSP) | 2sxc 14 / EAV 14 </title>
+    <title>Sync Apps from Dev &#10145;&#65039; Production - Sync Entire App | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Content Security Policy (CSP) | 2sxc 14 / EAV 14 ">
+    <meta name="title" content="Sync Apps from Dev &#10145;&#65039; Production - Sync Entire App | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v15/50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v15/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +65,22 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li class="active">
-                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,20 +114,36 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Index">
+            <article class="content wrap" id="_content" data-uid="Abyss.EntDev.AppSyncReSync">
+<h1 id="sync-apps-from-dev--production---sync-entire-app">Sync Apps from Dev ➡️ Production - Sync Entire App</h1>
 
-<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
-<h1 id="content-security-policy-csp">Content Security Policy (CSP)</h1>
-<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
-<p>You should...</p>
-<ol>
-<li><a class="xref" href="background.html">Learn about Content Security Policy (CSP)</a></li>
-<li><a class="xref" href="parts.html">Learn about the Parts that make it work in 2sxc</a></li>
-<li><a class="xref" href="best-practices.html">Smarten up on the Best-Practices</a></li>
-<li><a class="xref" href="guide.html">Follow the CSP Guide</a></li>
-</ol>
+<p>In this scenario the App already exists on the production environment and you made changes on dev.
+This scenario makes sense when you can fully reset the production environment to the same state as dev.</p>
+<div class="WARNING"><h5>Warning</h5><p>This will reset everything on production, including data and assets added by the editor.</p>
+</div>
+<h2 id="step-1-re-export-everything-to-file-system">Step 1: Re-Export Everything to File System</h2>
+<p>Note that the app is only complete if you also export the App-State in the Admin UI.
+Ideally you would export it together with all the content-assets (if there are any).</p>
+<p><img src="assets/export-app-state-with-assets.jpg" width="100%" class="glow"></p>
+<h2 id="step-2-re-sync-with-git--versioning">Step 2: Re-Sync with Git / Versioning</h2>
+<p>Typically you will have your App in git-versioning.
+So after saving the entire state, you will want to commit and push.</p>
+<p>In the new location, go to the target folder.
+Then git-pull the repo.</p>
+<h2 id="step-3-re-import--reset-app-on-production">Step 3: Re-Import / Reset App on Production</h2>
+<p>Now got to the App settings on the Production site and import everything.</p>
+<div class="WARNING"><h5>Warning</h5><p>Make sure you verify you&#39;re importing on the correct system.
+It&#39;s easy to accidentally be on the wrong system (dev instead of production).</p>
+</div>
+<p><img src="assets/sync-app-with-state.jpg" width="100%" class="glow"></p>
+<p>🦸🏾‍♂️ If you want to sync the ADAM assets as well, you need the Patron feature <a href="https://patrons.2sxc.org/rf?AppSyncWithSiteFiles">AppSyncWithSiteFiles</a></p>
 <hr>
-<p>Shortlink: <a href="https://r.2sxc.org/csp">https://r.2sxc.org/csp</a></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Export / Import of Apps introduced ca. 2sxc v4</li>
+<li>App-state export with content-assets 2sxc v15</li>
+<li>App-import from file system 2sxc v15</li>
+</ol>
 </article>
           </div>
           
@@ -136,7 +152,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/security/csp/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/enterprise-development/app-sync-resync.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -162,20 +178,20 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

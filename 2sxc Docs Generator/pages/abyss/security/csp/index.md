@@ -14,3 +14,7 @@ You should...
 2. [Learn about the Parts that make it work in 2sxc](xref:Abyss.Security.Csp.Parts)
 3. [Smarten up on the Best-Practices](xref:Abyss.Security.Csp.BestPractices)
 4. [Follow the CSP Guide](xref:Abyss.Security.Csp.Guide)
+
+---
+
+Shortlink: <https://r.2sxc.org/csp>
