@@ -7,17 +7,20 @@ uid: Basics.Languages.Index
 # 2sxc Languages Overview
 
 2sxc is exceptionally good at multi-language content.
+
+> All content/data is **Multi-Language** by default.
+
 As such, there are different parts that make it work:
 
-1. Multi-Language data model
+1. Multi language principles and data model
 1. Manual Content localization / translation / internationalization (i18n)
 1. [Automatic Content translation](xref:Basics.Languages.AutoTranslate.Index) (new in v15)
 1. Translation Permissions TODO: DOCS
 1. UI localization
 
-## Multi-Language Data Model
+## Multi-Language Principles
 
-The internal EAV Data Model stores each value with language assignment.
+The internal EAV Data Model stores _each value_ with language assignment.
 Key facts:
 
 1. There is always a **primary language** which is set by the platform (DNN/Oqtane).
@@ -32,6 +35,20 @@ Key facts:
 
 👉🏽 Read more about the [Multilanguage Data Model](xref:Basics.Data.MultiLanguage.Index)
 
+## Edit-UI Translation Features
+
+The Edit-UI can make a field editable in certain languages and not in others. These are the factors that control it:
+
+1. Data is missing in the primary language (then translating it isn't possible yet)
+1. Some data is not multi-languages so it's either not editable in other languages, or the changes automatically affect all languages. This specifically affects these two cases:
+  1. Related items (which are the same across languages)
+  1. Asset-files (which are the same across languages)
+1. Field-Configuration disables translation of field (common in url-id-fields)
+
+
+## Export-Import of Multi-Language Content
+
+This is documented in [](xref:Basics.Data.ExportImport.Index).
 
 ## Manual Content Translation
 

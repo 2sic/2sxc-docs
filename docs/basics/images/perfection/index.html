@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Multilanguage Data | 2sxc 14 / EAV 14 </title>
+    <title>Images Perfection | 2sxc 14 / EAV 14 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Multilanguage Data | 2sxc 14 / EAV 14 ">
+    <meta name="title" content="Images Perfection | 2sxc 14 / EAV 14 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,9 +114,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.MultiLanguage.Index">
-<h1 id="multilanguage-data">Multilanguage Data</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Images.Perfection.Index">
 
+<p><img src="../../../assets/features/image-resizer.svg" class="feature"></p>
+<h1 id="images-perfection">Images Perfection</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -236,77 +237,93 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a>
   </div>
-</div><style>.context-box-summary .data-all { visibility: visible; } </style>
+</div><style>  .context-box-summary .image-resizer    { visibility: visible; } </style>
 
-<p>Data in 2sxc is Multi-Language by default, but the UI will only offer languages which have been activated in the Site settings.</p>
-<h2 id="multi-language-attributes">Multi-Language Attributes</h2>
-<p>Every <strong>Attribute</strong> (like a <code>Title</code>) <em>can</em> be stored in multiple languages. So the data model of some content can look like this:</p>
+<p>Perfect images in HTML will have a big impact on User Experience and SEO</p>
 <ol>
-<li><code>Title</code><ul>
-<li><code>en-US</code>: <code>Enjoy a Visit to our Headquarters</code></li>
-<li><code>de-DE</code>: <code>Genießen Sie einen Besuch in unserem Hauptquartier</code></li>
-<li><code>de-CH</code>: <code>Geniessen Sie einen Besuch in unserem Hauptquartier</code></li>
-</ul>
-</li>
-<li><code>Photo</code><ul>
-<li><code>*</code>: <code>file:7402</code></li>
-</ul>
-</li>
-<li><code>SloganImage</code><ul>
-<li><code>en-US</code>: <code>file:7405</code></li>
-<li><code>de-DE</code>,<code>de-CH</code>: <code>file:7406</code></li>
-</ul>
-</li>
-<li><code>GpsCoordinates</code><ul>
-<li><code>en-US</code>: <code>{ &quot;Long&quot;: 74.6020030, &quot;Lat&quot;: 53.002030060 }</code></li>
-</ul>
-</li>
-<li><code>Employees</code> (reference to other entities/items)<ul>
-<li><code>*</code>: <code>[74, 592, 6030, 39]</code></li>
-</ul>
-</li>
+<li>Pages load faster</li>
+<li>The browser loads images in the perfect size based on it&#39;s screen</li>
+<li>Google PageSpeed returns a better score</li>
+<li>Mobile devices are much faster</li>
 </ol>
-<p>Some things to understand in the above data model:</p>
+<p>For perfect images, you must do quite a bit</p>
 <ol>
-<li><code>Title</code> is translated in 3 languages (Germany/Switzerland only differing with <code>ß</code> vs <code>ss</code>)</li>
-<li>The <code>Photo</code> has the language <code>*</code> which means that it was edited before languages were enabled and doesn&#39;t map to any particular language</li>
-<li>The <code>GpsCoordinates</code> are only set in 1 language, so every language will show the same value</li>
-<li>The <code>SloganImage</code> is translated so <code>en</code> and <code>de</code> have different images</li>
-<li>The <code>Employees</code> relationship to other data is not translatable, and the <a class="xref" href="../relationships/index.html">order of the items is also preserved</a></li>
+<li>Images should load lazy</li>
+<li>Images should specify width and if possible, height</li>
+<li>Images should be resized on the server to match what&#39;s needed</li>
+<li>In most cases, use a <code>&lt;picture&gt;</code> tag instead of <code>img</code> so you can provide multiple formats such as jpg and webp</li>
+<li>You should provide the best possible format (often webp)</li>
+<li>You should provide multiple formats (jpg/webp, png/webp) so browsers can pick</li>
+<li>You should provide multiple sizes so the browser can pick the best one</li>
+<li>You should include resolution-factors or screen-factors for the sizes</li>
+<li>You should include sizes-information so the browser can better select the perfect resolution</li>
 </ol>
-<h2 id="language-assignment-and-readwrite-state">Language Assignment and Read/Write State</h2>
-<p>Each <strong>Attribute</strong> or <strong>Property</strong> like <code>Title</code> has one or more <strong>Values</strong>.</p>
+<p>All this while still</p>
+<ol>
+<li>Using images the content-editor added</li>
+<li>...with optional custom alt-text adjusting to the editors needs (sometimes it should crop, sometimes not, ...)</li>
+<li>Automatically behave differently depending on the format (svg, png, jpg, etc.)</li>
+<li>Automatically behave differently depending on the size that should be shown (like 1/3 of the screen)</li>
+<li>Automatically give larger images when the screen gets smaller (eg. when a 1/3rd image becomes full-width)</li>
+</ol>
+<p>So instead of this...</p>
+<pre><code class="lang-html">&lt;img src=&quot;/[path]/jellyfish-img-srcset-2000.jpg&quot; /&gt;
+</code></pre><p>...you should provide this for every image you have:</p>
+<pre><code class="lang-html">&lt;picture&gt;
+  &lt;source
+    type=&quot;image/webp&quot;
+    srcset=&quot;
+      /[path]/jellyfish-img-srcset-2000.jpg?w=2460&amp;amp;h=1520&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both&amp;amp;format=webp 2460w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=1230&amp;amp;h=760&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both&amp;amp;format=webp  1230w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=922&amp;amp;h=569&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both&amp;amp;format=webp    922w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=615&amp;amp;h=380&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both&amp;amp;format=webp    615w
+    &quot;
+    sizes=&quot;(max-width: 1400px) 100vw, 1230px&quot;
+  /&gt;
+  &lt;source
+    type=&quot;image/jpeg&quot;
+    srcset=&quot;
+      /[path]/jellyfish-img-srcset-2000.jpg?w=2460&amp;amp;h=1520&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both 2460w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=1230&amp;amp;h=760&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both  1230w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=922&amp;amp;h=569&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both    922w,
+      /[path]/jellyfish-img-srcset-2000.jpg?w=615&amp;amp;h=380&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both    615w
+    &quot;
+    sizes=&quot;(max-width: 1400px) 100vw, 1230px&quot;
+  /&gt;
+  &lt;img
+    src=&quot;/[path]/jellyfish-img-srcset-2000.jpg?w=1230&amp;amp;h=760&amp;amp;quality=75&amp;amp;mode=crop&amp;amp;scale=both&quot;
+    loading=&quot;lazy&quot;
+    class=&quot;img-fluid&quot;
+    width=&quot;1230&quot;
+    height=&quot;760&quot;
+  /&gt;
+&lt;/picture&gt;
+</code></pre><h2 id="super-easy-with-image-service">Super Easy with Image Service</h2>
+<p>2sxc 14 introduced the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">Image Service</a>.
+It will do all of this and more, and is super configurable. So to get the entire code above all you need is this:</p>
+<pre><code class="lang-razor">@Kit.Image.Picture(App.Path + &quot;/img/assets/jellyfish-img-srcset-2000.jpg&quot;)
+</code></pre><p>🎓 See a live example in the <a href="https://2sxc.org/dnn-tutorials/en/razor/img106/page">tutorials</a></p>
+<p>All of it is fully automated.
+By default, you will get the core functionality such as automatic resize etc.</p>
+<p>The full scope of features requires a <strong>Patron Perfectionist</strong> licenses for 10 USD/month.
+Only then will all the things you see above work.
+Otherwise you can still code it yourself 😉.</p>
+<p>🦸🏻‍♀️ Learn about <a href="https://patrons.2sxc.org/features/package/015077bb-9829-4291-bf99-244d8ba3b100">Patron Perfectionist</a></p>
+<p>🦸🏻‍♀️ Learn about <a class="xref" href="../../licenses-features/index.html">becoming a Patron</a></p>
+<h2 id="more">More</h2>
+<p>Some Tutorials to learn this</p>
 <ul>
-<li>These Values are mapped to the Attribute with <strong>one or more languages</strong>.</li>
-<li>Each language-assignment also stores the read/write state for the UI.</li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img105/page">ImageService Img Tutorial</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img106/page">ImageService Picture Tutorial</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img107/page">ImageService Guide</a></li>
 </ul>
-<p>As such, a value can have different internal rules</p>
-<ol>
-<li>It can be assigned to one language only.</li>
-<li>It can be assigned to multiple languages and editable in the UI of each language. Changing it would change the value in all the languages.</li>
-<li>It can be assigned to multiple languages and editable in the UI of some of these languages. Changing it (in one of the editable languages) would change it in all assigned languages. The assigned languages which are not editable would always just show this language, but not enable editing in the UI.</li>
-</ol>
-<h2 id="relationships-cannot-be-translated">Relationships Cannot be Translated</h2>
-<p><a class="xref" href="../relationships/index.html">Relationships</a> are not Translatable.
-If a Blog-Post references Tags, <a class="xref" href="../relationships/index.html">the same tags are referenced in all languages</a>.
-Note that related items may again have multi-language properties, so even if the <code>Authors</code> list contains the same authors across languages, accessing the <code>Bio</code> of a related <code>Author</code> will probably return a different value.</p>
-<h2 id="assets-are-multi-language-but-the-files-are-shared-across-languages">Assets are Multi-Language, but the Files are Shared Across Languages</h2>
-<p>A link/file-field can have a different value in each language, but the files uploaded will be available to that field in the UI of every language. So a <code>SloganImage</code> field would show all the files that were uploaded to this field, but the selected file can be different in each language.</p>
-<p>This wil also affect Libraries of files - the libraries will always contain the same files/images in all languages. But if these files have Metadata, then that Metadata can be different in each language.</p>
-<h2 id="disable-translation-for-individual-fields">Disable Translation for Individual Fields</h2>
-<p>The UI can be configured to not allow translation of specific fields if this is desired (for example URL-key fields). See also <a class="xref" href="../../cms/languages/index.html">Basics.Cms.Languages.Index</a>.</p>
-<h2 id="internal-functionality">Internal Functionality</h2>
-<p>When languages are enabled, this is what happens</p>
-<ol>
-<li>Every field can be translated individually - or you can translate all fields of an Entity</li>
-<li>On every Entity the primary language must always be created first</li>
-<li>The primary language will then serve as the fallback for all languages which have not been translated</li>
-<li>In addition to translating values you can also <em>link</em> them to other languages, so that editing a value in <code>de-DE</code> would automatically affect <code>de-CH</code> but not <code>en-US</code></li>
-</ol>
+<p>You can also do some really advanced custom configuration to change how the resizer behaves.</p>
+<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/index.html">Image Settings</a></p>
+<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/recipes.html">Image Recipes</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 2.0</li>
-<li>Non-Translatable fields were made an option in 2sxc 11</li>
+<li>Added in v14</li>
 </ol>
 </article>
           </div>
@@ -316,7 +333,7 @@ Note that related items may again have multi-language properties, so even if the
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/multi-language/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/images/perfection/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

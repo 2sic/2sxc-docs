@@ -2,9 +2,9 @@
 uid: Abyss.Index
 ---
 
-# 2sxc & EAV Abyss - The Deep Stuff (WIP)
+# 2sxc & EAV Abyss - The Deep Stuff
 
-Here you will find things about the internals and depths (aka **Abyss**) of the system. 
+Here you will find things about the internals and depths (aka **Abyss**) of the system.
 
 [!include["Abyss Info"](~/pages/abyss/_abyss-info.md)]
 
