@@ -8,12 +8,7 @@ This is a temporary documentation. We'll try to collect differences in behavior 
 
 ## App / File Management
 
-1. App files
-    * ☢️ Dnn places App folders in the `[PortalRoot]/2sxc/[AppName]` eg. `/Portals/0/2sxc/Blog5`
-    * 💧 Oqtane places App folders in `/2sxc/[SiteId]/[AppName]` eg. `/2sxc/1/Blog5`
-1. ADAM Files (Automatic Digital Asset Management)
-    * ☢️ Dnn places ADAM assets in the `[PortalRoot]/adam/[AppName]` eg. `/Portals/0/adam/[AppName]`
-    * 💧 Oqtane places ADAM assets in `/Content/Tenants/[TenantId]/Sites/[SiteId]/adam/[AppName]` eg. `/Content/Tenants/1/Sites/1/adam/Blog5`
+👉🏻 See [](xref:Abyss.Platforms.Folders) for a list of all folders.
 
 ## Razor API
 
