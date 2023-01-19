@@ -26,11 +26,11 @@ Within this folder, you'll typically see the following folders:
 
 * `new-app` - these files are used when creating a new app.
 * `system` - the preset system files containing global content-types and more.
-    These will be replaced on every update
+    These will be replaced on _every_ update
 * `system-custom` - _optional_ additional overriding files to augment the system files.
-    These will be preserved on every update
+    These will be preserved on updates
 * `system-beta` - _optional_ only used for the development of 2sxc
-    These will be preserved on every update
+    These will be preserved on updates
 
 Note that the `system...` folders will all have some of the following folders inside them:
 
