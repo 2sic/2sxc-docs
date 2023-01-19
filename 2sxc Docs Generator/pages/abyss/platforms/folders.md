@@ -24,16 +24,24 @@ Note that for Dnn, `[PortalRoot]` is usually `[WebsiteRoot]/Portals/`.
 
 Within this folder, you'll typically see the following folders:
 
+* `new-app` - these files are used when creating a new app.
 * `system` - the preset system files containing global content-types and more.
     These will be replaced on every update
 * `system-custom` - _optional_ additional overriding files to augment the system files.
     These will be preserved on every update
-* `new-app` - these files are used when creating a new app.
 * `system-beta` - _optional_ only used for the development of 2sxc
+    These will be preserved on every update
 
+Note that the `system...` folders will all have some of the following folders inside them:
+
+* `bundles` - contains the bundles of many content-types and entities (new in v15)
+* `configurations` - contains the configuration files for the system - especially licenses
+* `contenttypes` - contains the content-types for the system
+* `entities` - contains data for the system (records/rows/items)
 
 ---
 
 ## History
 
-* Last update 2021-10-25 with regards to 2sxc 12.06 LTS
+* [Changed](xref:Abyss.Releases.History.V14.AppDataFolder) `.data` folder to `App_Data` in v14.08
+* Enhanced with `bundles` folder in v15.01
