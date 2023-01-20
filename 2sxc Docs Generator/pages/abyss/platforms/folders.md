@@ -39,6 +39,11 @@ Note that the `system...` folders will all have some of the following folders in
 * `contenttypes` - contains the content-types for the system
 * `entities` - contains data for the system (records/rows/items)
 
+## Temporary Files
+
+* ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/_/`
+* 💧 Oqtane places system files in `[WebRoot]/Content/2sxc/system/_/`
+
 ---
 
 ## History
