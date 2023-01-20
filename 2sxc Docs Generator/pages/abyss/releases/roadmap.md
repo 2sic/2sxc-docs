@@ -19,11 +19,6 @@ See [](xref:Abyss.Releases.History.V15)
 
 ## January 2023 - v15.01/02
 
-1. ⏳ Better indicate premium/patron features and explain to the user what it is and how to get it
-    1. ⏳ Visual indicators on buttons
-    1. ⏳ Visual messages in certain places
-    1. ✅ Details dialog to know more about the feature
-    1. ✅ Public DB of the feature explaining it in more details, how to activate etc. on <https://patrons.2sxc.org/features>
 1. ⏳ Improve WYSIWYG
     1. Sections to better align images
     1. Use classes to determine size instead of styles
@@ -34,12 +29,17 @@ See [](xref:Abyss.Releases.History.V15)
     1. ✅ Create export bundle configuration to mark content-types and entities for export together
     1. ⏳ Create json bundle export system
     1. ⏳ Create json bundle import system
-    1. ⏳ Extend the file-based data loader to also load bundles
+    1. ✅ Extend the file-based data loader to also load bundles
 1. ✅ New Auto-Installer with search, list-view etc.
 1. ✅ Remaining docs for Features released in v15.00
     1. ✅ Finish API and docs for Logging v15.01
     1. ✅ Ability to import apps from folder directly (patrons)
     1. ✅ Documentation for google translate (how the fields are selected, how to activate, etc.)
+1. ✅ Better indicate premium/patron features and explain to the user what it is and how to get it
+    1. ✅ Visual indicators on buttons
+    1. ✅ Visual messages in certain places
+    1. ✅ Details dialog to know more about the feature
+    1. ✅ Public DB of the feature explaining it in more details, how to activate etc. on <https://patrons.2sxc.org/features>
 
 
 ## Probably 2023 Feb
