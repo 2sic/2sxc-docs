@@ -4,15 +4,15 @@ uid: NetCode.Razor.Services.IPageServiceActivate
 
 # Page Service to Activate Features & WebResources (JS, CSS, etc.)
 
-The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources). 
+The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources).
 
-An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
-This gets especially complex in scenarios like Oqtane, where the page doesn't really reload and therefor may already have some scripts / styles loaded, but it's hard to guess. 
+An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc.
+This gets especially complex in scenarios like Oqtane, where the page doesn't really reload and therefor may already have some scripts / styles loaded, but it's hard to guess.
 
-For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) and the `PageService` is able to activate this feature (and more in future). 
+For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) and the `PageService` is able to activate this feature (and more in future).
 
 > [!TIP]
-> Using the `IPageService.Activate(...)` ensures that all apps use the same resources, and that these are only loaded once per page. 
+> Using the `IPageService.Activate(...)` ensures that all apps use the same resources, and that these are only loaded once per page.
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
@@ -32,8 +32,8 @@ page.Activate("turnOn");                          // Activate turnOn
 page.Activate("jQuery", "turnOn", "2sxc.JsCore"); // Activate many
 ```
 
-This will ensure that jQuery and [turnOn](xref:JsCode.TurnOn.Index) are available on the page. 
-Note that it will only be activated once, even if the code would accidentally activate it multiple times. 
+This will ensure that jQuery and [turnOn](xref:JsCode.TurnOn.Index) are available on the page.
+Note that it will only be activated once, even if the code would accidentally activate it multiple times.
 
 Features you can activate as of v12.02
 
@@ -51,6 +51,8 @@ Features you can activate as of v12.02
 * `2sxc.ToolbarsAuto` - _auto-show_ edit-toolbars on the page.  
     Replaces `@Edit.Enable(js: true, api: true, styles: true, autoToolbar: true)` _new in v14_  
     Includes `2sxc.Toolbars`, `2sic.JsCms` and `2sic.JsCore`
+* `Cms.Wysiwyg` - activate special CSS for content made in the rich WYSIWYG editor _WIP in v15.01_  
+    Usually auto-activated by `CmsService.Show(some-wysiwyg-field)`
 
 _Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
@@ -61,7 +63,7 @@ Features that are explicitly not implemented
 
 ## Activate WebResources
 
-Any WebResources registered in the settings can be activated. Here's an example: 
+Any WebResources registered in the settings can be activated. Here's an example:
 
 ```c#
 var page = GetService<ToSic.Sxc.Services.IPageService>();

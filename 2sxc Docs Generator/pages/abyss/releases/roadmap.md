@@ -11,50 +11,85 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-01-11**
+Last Update: **2023-01-27**
 
 ## Just Released v15.00 X-Mas 2022
 
 See [](xref:Abyss.Releases.History.V15)
 
-## January 2023 - v15.01/02
+## January 2023 - v15.01
 
-1. ⏳ Improve WYSIWYG
-    1. Sections to better align images
-    1. Use classes to determine size instead of styles
-    1. Images which auto-resize based on size
-    1. Create `CmsService.Show()` to auto apply certain aspects
-    1. Possibly auto-include some CSS to make things look right?
-1. Export / Import
+1. ✅ Export / Import
     1. ✅ Create export bundle configuration to mark content-types and entities for export together
-    1. ⏳ Create json bundle export system
-    1. ⏳ Create json bundle import system
+    1. ✅ Create json bundle export system
+    1. ✅ Create json bundle import system
     1. ✅ Extend the file-based data loader to also load bundles
+    1. ✅ Change all pre-loaded data items to be in bundles
 1. ✅ New Auto-Installer with search, list-view etc.
 1. ✅ Remaining docs for Features released in v15.00
     1. ✅ Finish API and docs for Logging v15.01
     1. ✅ Ability to import apps from folder directly (patrons)
     1. ✅ Documentation for google translate (how the fields are selected, how to activate, etc.)
-1. ✅ Better indicate premium/patron features and explain to the user what it is and how to get it
+1. ✅ Indicate premium/patron features in UI and explain what it is and how to get it
     1. ✅ Visual indicators on buttons
     1. ✅ Visual messages in certain places
     1. ✅ Details dialog to know more about the feature
     1. ✅ Public DB of the feature explaining it in more details, how to activate etc. on <https://patrons.2sxc.org/features>
+1. ✅ Licenses / Features
+    1. ✅ Ability to license a specific feature only (for enterprise customers)
+    1. ✅ Feature to generate enterprise license fingerprints for enterprise distribution
+    1. ✅ Allow parts of the license to expire earlier (for evaluation purpose)
+1. ✅ Internal / Data Management
+    1. ✅ Ability to retrieve Entities for App, parent-App, global-App etc. for certain settings-pickers
+    1. ✅ System query to retrieve such entities (need for Wysiwyg-functionality)
+1. ✅ Oqtane: fix compatibility so it works in Oqtane 3.3+
 
+## January v15.02
+
+1. Probably change Secure Data Service to be FIPS compliant
+1. Enhance Page DataSource with community requests
 
 ## Probably 2023 Feb
 
+1. ⏳ Improve WYSIWYG
+    1. ✅ Ability to select which "mode" the editor is in, affecting toolbars
+    1. Allow selected mode to affect other things (like deny image-drop if in text-mode)
+    1. Sections to better align images
+    1. Use classes to determine size instead of styles
+    1. Images which auto-resize based on size
+    1. Create `CmsService.Show()` to auto apply certain aspects
+    1. Possibly auto-include some CSS to make things look right?
+1. Formula improvements
+    1. ✅ Get App or global settings for formulas
+1. Query Improvements
+    1. ✅ Allow edit/new to be done in a query-selector
+    1. ✅ Get query to know if entity can be edited (based on AppId)
+1. Improve Export-Import Bundles
+    1. Ability to create bundles in the Admin UI
+    1. Ability to review bundles and what's inside in the Admin-UI
+    1. Ability to download/export bundles
+    1. Ability to import bundles in the Admin-UI
+    1. Ability to save bundles to App_Data
+    1. Ability to import bundles from App_Data
+    1. Maybe ability to auto-save bundles to App_Data on standard export
 1. Improve WYSIWYG
     1. Ability to do more configuration on WYSIWYG
         1. ability to override toolbar buttons
         1. ability to set various easy-to-set configuration
         1. Possibly ability to preset various configurations globally or at site-level and use in other places
 1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
-1. ⏳ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
+1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
 1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
 1. Data Sources
     1. Improve data sources for Pages - ca. 0.5d
     1. Improved custom DataSources API - ca. 1d
+    1. ✅ New Data Source Scopes
+    1. ✅ New Data Source MetadataTargetTypes
+    1. ✅ New Query Scopes
+    1. ✅ New Query MetadataTargetTypes
+    1. ✅ Internal/WIP data source to get data from app parents
+    1. ✅ Internal/WIP Query to get data from app-parents
+    1. ✅ New (WIP) API for data sources to make data generation easier
     1. New data sources like: ADAM (Files, Folders), Navigation, Metadata-Types, etc. - ca. 2d
     1. ⏳ Publish SharePoint DataSource (premium)
 1. Apps / App Maintenance: publish other new apps

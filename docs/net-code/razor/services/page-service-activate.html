@@ -117,11 +117,11 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Razor.Services.IPageServiceActivate">
 <h1 id="page-service-to-activate-features--webresources-js-css-etc">Page Service to Activate Features &amp; WebResources (JS, CSS, etc.)</h1>
 
-<p>The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources). </p>
-<p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc. 
-This gets especially complex in scenarios like Oqtane, where the page doesn&#39;t really reload and therefor may already have some scripts / styles loaded, but it&#39;s hard to guess. </p>
-<p>For this we have developed a helper called <a class="xref" href="../../../js-code/turn-on/index.html"><code>turnOn</code></a> and the <code>PageService</code> is able to activate this feature (and more in future). </p>
-<div class="TIP"><h5>Tip</h5><p>Using the <code>IPageService.Activate(...)</code> ensures that all apps use the same resources, and that these are only loaded once per page. </p>
+<p>The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources).</p>
+<p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc.
+This gets especially complex in scenarios like Oqtane, where the page doesn&#39;t really reload and therefor may already have some scripts / styles loaded, but it&#39;s hard to guess.</p>
+<p>For this we have developed a helper called <a class="xref" href="../../../js-code/turn-on/index.html"><code>turnOn</code></a> and the <code>PageService</code> is able to activate this feature (and more in future).</p>
+<div class="TIP"><h5>Tip</h5><p>Using the <code>IPageService.Activate(...)</code> ensures that all apps use the same resources, and that these are only loaded once per page.</p>
 </div>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
@@ -141,8 +141,8 @@ This gets especially complex in scenarios like Oqtane, where the page doesn&#39;
 page.Activate(&quot;jQuery&quot;);                          // Activate jQuery
 page.Activate(&quot;turnOn&quot;);                          // Activate turnOn
 page.Activate(&quot;jQuery&quot;, &quot;turnOn&quot;, &quot;2sxc.JsCore&quot;); // Activate many
-</code></pre><p>This will ensure that jQuery and <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> are available on the page. 
-Note that it will only be activated once, even if the code would accidentally activate it multiple times. </p>
+</code></pre><p>This will ensure that jQuery and <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> are available on the page.
+Note that it will only be activated once, even if the code would accidentally activate it multiple times.</p>
 <p>Features you can activate as of v12.02</p>
 <ul>
 <li><code>jQuery</code>  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+<br>  <em>note: we really want to discourage the use of jQuery - so avoid if possible</em></li>
@@ -151,6 +151,7 @@ Note that it will only be activated once, even if the code would accidentally ac
 <li><code>2sxc.JsCms</code> - 2sxc JS APIs to run commands for edit, etc.<br>  Replaces <code>@Edit.Enable(api: true)</code> <em>new in v13</em><br>  Includes <code>2sxc.JsCore</code></li>
 <li><code>2sxc.Toolbars</code> - <em>allow</em> edit-toolbars on the page.<br>  Replaces <code>@Edit.Enable(js: true, api: true, styles: true)</code> <em>new in v13</em><br>  Includes <code>2sic.JsCms</code> and <code>2sic.JsCore</code></li>
 <li><code>2sxc.ToolbarsAuto</code> - <em>auto-show</em> edit-toolbars on the page.<br>  Replaces <code>@Edit.Enable(js: true, api: true, styles: true, autoToolbar: true)</code> <em>new in v14</em><br>  Includes <code>2sxc.Toolbars</code>, <code>2sic.JsCms</code> and <code>2sic.JsCore</code></li>
+<li><code>Cms.Wysiwyg</code> - activate special CSS for content made in the rich WYSIWYG editor <em>WIP in v15.01</em><br>  Usually auto-activated by <code>CmsService.Show(some-wysiwyg-field)</code></li>
 </ul>
 <p><em>Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
 <p>Features that are explicitly not implemented</p>
@@ -159,7 +160,7 @@ Note that it will only be activated once, even if the code would accidentally ac
 <li>knockoutJS is often used in ASP.net but it&#39;s also barely alive, so it&#39;s not meant to be activatable in modern systems like the ones usually built with 2sxc</li>
 </ol>
 <h2 id="activate-webresources">Activate WebResources</h2>
-<p>Any WebResources registered in the settings can be activated. Here&#39;s an example: </p>
+<p>Any WebResources registered in the settings can be activated. Here&#39;s an example:</p>
 <pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Services.IPageService&gt;();
 page.Activate(&quot;Bootstrap5&quot;);                // Activate Bootstrap5 from a CDN
 page.Activate(&quot;fancybox4&quot;);                 // Activate fancybox4 from a CDN
