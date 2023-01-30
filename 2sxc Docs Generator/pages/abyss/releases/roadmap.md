@@ -43,11 +43,15 @@ See [](xref:Abyss.Releases.History.V15)
     1. ✅ Ability to retrieve Entities for App, parent-App, global-App etc. for certain settings-pickers
     1. ✅ System query to retrieve such entities (need for Wysiwyg-functionality)
 1. ✅ Oqtane: fix compatibility so it works in Oqtane 3.3+
+1. ✅ FIPS Compliance
+    1. ✅ Change Secure Data Service to be FIPS compliant
+    1. ✅ Change System fingerprint to use FIPS compliant SHA256
+1. ✅ Internal - re-org ApiKeys for UI to be in a better place
 
 ## January v15.02
 
-1. Probably change Secure Data Service to be FIPS compliant
-1. Enhance Page DataSource with community requests
+
+1. ⏳ Enhance Page DataSource with community requests
 
 ## Probably 2023 Feb
 
