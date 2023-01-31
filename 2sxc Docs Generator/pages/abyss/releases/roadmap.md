@@ -11,13 +11,13 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-01-27**
+Last Update: **2023-01-31**
 
 ## Just Released v15.00 X-Mas 2022
 
 See [](xref:Abyss.Releases.History.V15)
 
-## January 2023 - v15.01
+## January 2023 - Released v15.01
 
 1. ✅ Export / Import
     1. ✅ Create export bundle configuration to mark content-types and entities for export together
@@ -47,11 +47,12 @@ See [](xref:Abyss.Releases.History.V15)
     1. ✅ Change Secure Data Service to be FIPS compliant
     1. ✅ Change System fingerprint to use FIPS compliant SHA256
 1. ✅ Internal - re-org ApiKeys for UI to be in a better place
+1. ✅ Enhance Page DataSource with community requests
 
-## January v15.02
+## Next Priorities
 
-
-1. ⏳ Enhance Page DataSource with community requests
+1. CSP Training
+1. Image Perfectionist Training
 
 ## Probably 2023 Feb
 
@@ -94,6 +95,8 @@ See [](xref:Abyss.Releases.History.V15)
     1. ✅ Internal/WIP data source to get data from app parents
     1. ✅ Internal/WIP Query to get data from app-parents
     1. ✅ New (WIP) API for data sources to make data generation easier
+    1. Licenses
+    1. Features
     1. New data sources like: ADAM (Files, Folders), Navigation, Metadata-Types, etc. - ca. 2d
     1. ⏳ Publish SharePoint DataSource (premium)
 1. Apps / App Maintenance: publish other new apps
