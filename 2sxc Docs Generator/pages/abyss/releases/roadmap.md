@@ -19,54 +19,42 @@ See [](xref:Abyss.Releases.History.V15)
 
 ## January 2023 - Released v15.01
 
-1. ✅ Export / Import
-    1. ✅ Create export bundle configuration to mark content-types and entities for export together
-    1. ✅ Create json bundle export system
-    1. ✅ Create json bundle import system
-    1. ✅ Extend the file-based data loader to also load bundles
-    1. ✅ Change all pre-loaded data items to be in bundles
-1. ✅ New Auto-Installer with search, list-view etc.
-1. ✅ Remaining docs for Features released in v15.00
-    1. ✅ Finish API and docs for Logging v15.01
-    1. ✅ Ability to import apps from folder directly (patrons)
-    1. ✅ Documentation for google translate (how the fields are selected, how to activate, etc.)
-1. ✅ Indicate premium/patron features in UI and explain what it is and how to get it
-    1. ✅ Visual indicators on buttons
-    1. ✅ Visual messages in certain places
-    1. ✅ Details dialog to know more about the feature
-    1. ✅ Public DB of the feature explaining it in more details, how to activate etc. on <https://patrons.2sxc.org/features>
-1. ✅ Licenses / Features
-    1. ✅ Ability to license a specific feature only (for enterprise customers)
-    1. ✅ Feature to generate enterprise license fingerprints for enterprise distribution
-    1. ✅ Allow parts of the license to expire earlier (for evaluation purpose)
-1. ✅ Internal / Data Management
-    1. ✅ Ability to retrieve Entities for App, parent-App, global-App etc. for certain settings-pickers
-    1. ✅ System query to retrieve such entities (need for Wysiwyg-functionality)
-1. ✅ Oqtane: fix compatibility so it works in Oqtane 3.3+
-1. ✅ FIPS Compliance
-    1. ✅ Change Secure Data Service to be FIPS compliant
-    1. ✅ Change System fingerprint to use FIPS compliant SHA256
-1. ✅ Internal - re-org ApiKeys for UI to be in a better place
-1. ✅ Enhance Page DataSource with community requests
+👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
+
+## February 2023 - Released v15.02
+
+This was a quick release, no changes to report ATM, they will be reported in v15.03
 
 ## Next Priorities
 
-1. CSP Training
-1. Image Perfectionist Training
+1. ✅ Upgrade Blazor-CMS.org to use 2sxc 15.01 for real-life testing
+1. ✅ Create blog on Blazor-CMS.org
+1. ✅ Publish Tutorial in Blazor-CMS.org
+1. ✅ CSP Training at DNN Summit
+1. ✅ Image Perfectionist Training at DNN Summit
 
-## Probably 2023 Feb
+## Planned for February 2023
 
+1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
+    1. ⏳ Angular 15 upgrade
+    1. ⏳ Angular Material upgrade
+    1. ⏳ AG DataGrid upgrade
+    1. ⏳ Improve / Refactor some public types code
 1. ⏳ Improve WYSIWYG
     1. ✅ Ability to select which "mode" the editor is in, affecting toolbars
     1. Allow selected mode to affect other things (like deny image-drop if in text-mode)
     1. Sections to better align images
     1. Use classes to determine size instead of styles
     1. Images which auto-resize based on size
-    1. Create `CmsService.Show()` to auto apply certain aspects
-    1. Possibly auto-include some CSS to make things look right?
+    1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
+    1. ⏳ Create best practices CSS styling for `wysiwyg` content
+1. ⏳ Internal - Rework Getting-Started Server to be latest and greatest @2ro
 1. Formula improvements
     1. ✅ Get App or global settings for formulas
-1. Query Improvements
+    1. Better support for promises
+    1. ⏳ Ability to set the value of another field
+    1. Intellisense on Formulas
+1. ✅ Query Improvements
     1. ✅ Allow edit/new to be done in a query-selector
     1. ✅ Get query to know if entity can be edited (based on AppId)
 1. Improve Export-Import Bundles
@@ -84,10 +72,12 @@ See [](xref:Abyss.Releases.History.V15)
         1. Possibly ability to preset various configurations globally or at site-level and use in other places
 1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
-1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
 1. Data Sources
-    1. Improve data sources for Pages - ca. 0.5d
-    1. Improved custom DataSources API - ca. 1d
+    1. ✅ Improve data sources for Pages - ca. 0.5d
+    1. ✅ Improve Pages DataSource with `LinkTarget`
+    1. ✅ Improve Pages DataSource with internal ability to configure what to get
+    1. Improve Pages DataSource to have a UI to configure what to get
+    1. Improve Oqtane Pages DS to also respect settings
     1. ✅ New Data Source Scopes
     1. ✅ New Data Source MetadataTargetTypes
     1. ✅ New Query Scopes
@@ -95,37 +85,44 @@ See [](xref:Abyss.Releases.History.V15)
     1. ✅ Internal/WIP data source to get data from app parents
     1. ✅ Internal/WIP Query to get data from app-parents
     1. ✅ New (WIP) API for data sources to make data generation easier
-    1. Licenses
-    1. Features
-    1. New data sources like: ADAM (Files, Folders), Navigation, Metadata-Types, etc. - ca. 2d
-    1. ⏳ Publish SharePoint DataSource (premium)
+    1. ✅ New DataSource Licenses - with state
+    1. ✅ New DataSource Features - with state
+    1. ⏳ New DataSource (name TBD) AppWithParentApps to retrieve data from an App and all it's parent Apps for use in Settings etc.
+    1. ⏳ Improved custom DataSources API - ca. 1d - 2dm
+    1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources
+    1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, Metadata-Types, etc. - ca. 2d
+    1. New LookUp for Settings- and Resources-Stack
+    1. ⏳ Publish SharePoint DataSource (Premium/Patrons only)
 1. Apps / App Maintenance: publish other new apps
     1. New timeline
     1. Files
     1. etc.
 1. CSP - ca. 5d
     1. CSP for the Edit UI incl. custom extensions etc.
-    1. CSP Tutorials, docs and more
-1. Notes / Metadata
-    1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
-    1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
-    1. Notes everywhere - especially on the page - ca. 2d
-1. Compress Timeline: Feature to compress the existing history
+    1. ⏳ CSP Tutorials, docs and more
+1. ✅ Compress Timeline: Feature to compress the existing history
 
 Blazor CMS / cre8magic
 
-1. Create blog
 1. ⏳ cre8magic - auto-generate sitemap.xml
 
 Minor: Tutorial App Enhancements
 
 1. More Tutorials Formulas - ca. 0.5d
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d 2dm
+1. Upgrade Auto-Installer
+1. Upgrade all template Apps to v15
 
 ## Probably 2023 Q1
 
 2sxc
 
+1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+1. Notes / Metadata
+    1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
+    1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
+    1. Notes everywhere - especially on the page - ca. 2d
+1. Massively improve JSON import with language checks, overwrite/vs new etc.
 1. Code editor intellisense for most APIs - ca. 3-4d
 1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
