@@ -45,7 +45,7 @@ This was a quick release, no changes to report ATM, they will be reported in v15
     1. Allow selected mode to affect other things (like deny image-drop if in text-mode)
     1. Sections to better align images
     1. Use classes to determine size instead of styles
-    1. Images which auto-resize based on size
+    1. WYSIWYG Images which auto-resize on the server based on size (eg 1/2 of the screen)
     1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
     1. ⏳ Create best practices CSS styling for `wysiwyg` content
 1. ⏳ Internal - Rework Getting-Started Server to be latest and greatest @2ro
@@ -98,7 +98,6 @@ This was a quick release, no changes to report ATM, they will be reported in v15
     1. Files
     1. etc.
 1. CSP - ca. 5d
-    1. CSP for the Edit UI incl. custom extensions etc.
     1. ⏳ CSP Tutorials, docs and more
 1. ✅ Compress Timeline: Feature to compress the existing history
 
@@ -133,6 +132,9 @@ Minor: Tutorial App Enhancements
 1. Enable standard apps to be installed from catalog easily after first apps have been installed
     1. ✅ Feature to tell new auto-installer what apps are already installed
     1. App-Auto-Installer UI to add-install apps later on
+1. CSP
+    1. CSP for inline code - eg using nonce
+    1. CSP for the Edit UI incl. custom extensions etc.
 
 Blazor CMS / cre8magic
 
