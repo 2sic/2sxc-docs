@@ -25,7 +25,7 @@ See [](xref:Abyss.Releases.History.V15)
 
 This was a quick release, no changes to report ATM, they will be reported in v15.03
 
-## Next Priorities
+also done:
 
 1. ✅ Upgrade Blazor-CMS.org to use 2sxc 15.01 for real-life testing
 1. ✅ Create blog on Blazor-CMS.org
@@ -33,8 +33,21 @@ This was a quick release, no changes to report ATM, they will be reported in v15
 1. ✅ CSP Training at DNN Summit
 1. ✅ Image Perfectionist Training at DNN Summit
 
+## Priorities for v15 LTS
+
+1. New WYSIWYG mode completed (and documented)
+1. New APIs for Data Sources finalized (and documented)
+1. ⏳ Probably move to .net 6 (and drop .net standard 2.0) - almost done, last tests @STV
+1. Probably data-conversion of entities to json in attribute...
+1. Bugs
+    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
+    1. ...
+
 ## Planned for February 2023
 
+1. Bugs
+    1. 2sxc in DNN Skins on 404 pages https://github.com/2sic/2sxc/issues/2986
+    1. ...
 1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
     1. ⏳ Angular 15 upgrade
     1. ⏳ Angular Material upgrade
@@ -49,14 +62,62 @@ This was a quick release, no changes to report ATM, they will be reported in v15
     1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
     1. ⏳ Create best practices CSS styling for `wysiwyg` content
 1. ⏳ Internal - Rework Getting-Started Server to be latest and greatest @2ro
+1. ✅ Query Improvements
+    1. ✅ Allow edit/new to be done in a query-selector
+    1. ✅ Get query to know if entity can be edited (based on AppId)
+1. Improve WYSIWYG
+    1. Ability to do more configuration on WYSIWYG
+        1. ability to override toolbar buttons
+        1. ability to set various easy-to-set configuration
+        1. Possibly ability to preset various configurations globally or at site-level and use in other places
+1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
+1. Data Sources
+    1. ✅ Improve data sources for Pages - ca. 0.5d
+    1. ✅ New Data Source `Scopes`
+    1. ✅ New Query `Scopes`
+    1. ✅ New Data Source `MetadataTargetTypes`
+    1. ✅ New Query `MetadataTargetTypes`
+    1. ✅ Internal/WIP data source to get data from app parents
+    1. ✅ Internal/WIP Query to get data from app-parents
+    1. ✅ New (WIP) API for data sources to make data generation easier
+    1. ✅ New DataSource `Licenses` - with state
+    1. ✅ New Query `Licenses`
+    1. ✅ New DataSource `Features` - with state
+    1. ✅ New Query `Features`
+    1. ✅ New DataSource `Sites`
+    1. ✅ New Query `Sites`
+    1. ✅ Change internal key for `Settings` to something else, probably `MyConfig` or something (breaking) ⭐
+    1. ✅ New LookUp for Settings- and Resources-Stack - to use `Settings` and `Resources` ⭐
+    1. Pages DataSource
+        1. ✅ Improve Pages DataSource with `LinkTarget`
+        1. ✅ Improve Pages DataSource with internal ability to configure what to get
+        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
+        1. Improve Oqtane Pages DS to also respect settings - @STV
+    1. ⏳ New DataSource (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
+    1. ⏳ New Query (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
+    1. ⏳ Improved custom DataSources API - ca. 1d - 2dm ⭐
+    1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources ⭐
+    1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
+    1. ⏳ Upgrade Demo DataSources Code
+    1. Upgrade docs for custom DataSources
+    1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
+1. ✅ Compress Timeline: Feature to compress the existing history
+
+Minor: Tutorial App Enhancements
+
+1. Custom DataSources
+    1. Create new demos
+    1. Create Testing-framework to make it testable despite dependency injection
+    1. Update docs
+    1. Create migration instructions ?
+
+## February post LTS
+
 1. Formula improvements
     1. ✅ Get App or global settings for formulas
     1. Better support for promises
     1. ⏳ Ability to set the value of another field
     1. Intellisense on Formulas
-1. ✅ Query Improvements
-    1. ✅ Allow edit/new to be done in a query-selector
-    1. ✅ Get query to know if entity can be edited (based on AppId)
 1. Improve Export-Import Bundles
     1. Ability to create bundles in the Admin UI
     1. Ability to review bundles and what's inside in the Admin-UI
@@ -65,41 +126,13 @@ This was a quick release, no changes to report ATM, they will be reported in v15
     1. Ability to save bundles to App_Data
     1. Ability to import bundles from App_Data
     1. Maybe ability to auto-save bundles to App_Data on standard export
-1. Improve WYSIWYG
-    1. Ability to do more configuration on WYSIWYG
-        1. ability to override toolbar buttons
-        1. ability to set various easy-to-set configuration
-        1. Possibly ability to preset various configurations globally or at site-level and use in other places
-1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
-1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
-1. Data Sources
-    1. ✅ Improve data sources for Pages - ca. 0.5d
-    1. ✅ Improve Pages DataSource with `LinkTarget`
-    1. ✅ Improve Pages DataSource with internal ability to configure what to get
-    1. Improve Pages DataSource to have a UI to configure what to get
-    1. Improve Oqtane Pages DS to also respect settings
-    1. ✅ New Data Source Scopes
-    1. ✅ New Data Source MetadataTargetTypes
-    1. ✅ New Query Scopes
-    1. ✅ New Query MetadataTargetTypes
-    1. ✅ Internal/WIP data source to get data from app parents
-    1. ✅ Internal/WIP Query to get data from app-parents
-    1. ✅ New (WIP) API for data sources to make data generation easier
-    1. ✅ New DataSource Licenses - with state
-    1. ✅ New DataSource Features - with state
-    1. ⏳ New DataSource (name TBD) AppWithParentApps to retrieve data from an App and all it's parent Apps for use in Settings etc.
-    1. ⏳ Improved custom DataSources API - ca. 1d - 2dm
-    1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources
-    1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, Metadata-Types, etc. - ca. 2d
-    1. New LookUp for Settings- and Resources-Stack
-    1. ⏳ Publish SharePoint DataSource (Premium/Patrons only)
 1. Apps / App Maintenance: publish other new apps
     1. New timeline
     1. Files
     1. etc.
 1. CSP - ca. 5d
     1. ⏳ CSP Tutorials, docs and more
-1. ✅ Compress Timeline: Feature to compress the existing history
+1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 
 Blazor CMS / cre8magic
 
@@ -109,8 +142,8 @@ Minor: Tutorial App Enhancements
 
 1. More Tutorials Formulas - ca. 0.5d
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d 2dm
-1. Upgrade Auto-Installer
 1. Upgrade all template Apps to v15
+
 
 ## Probably 2023 Q1
 
