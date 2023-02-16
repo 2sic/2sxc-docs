@@ -11,7 +11,7 @@ uid: Basics.Edit.Formulas.Index
   .context-box-summary .browser-edit-ui { visibility: visible; }
 </style>
 
-2sxc provides _Formulas_ which let you dynamically change all kind of things in the edit UI. With it you can dynamically change 
+2sxc provides _Formulas_ which let you dynamically change all kind of things in the edit UI. With it you can dynamically change
 
 1. the **value** of the field
 1. General field settings like
@@ -21,21 +21,13 @@ uid: Basics.Edit.Formulas.Index
     1. `Name` to change the label
     1. `Notes` to change the description / help-text (v14)
 1. Field-specific settings like
-  1. `Collapsed` on a field-group to change if it's open/closed
+    1. `Collapsed` on a field-group to change if it's open/closed
 
 ## Demo
 
 <img src="./assets/formulas-demo.gif" width="100%" />
 
 ## How To Create & Develop Formulas
-
-Formulas are stored as normal data as part of the Content-Type. As shown in this image, all fields having formulas are easy to discern:
-
-<img src="./assets/fields-with-formulas.jpg" width="100%">
-
-You can create or edit Formulas them in the general field settings:
-
-<img src="./assets/formulas-in-general-field-settings.jpg" width="100%">
 
 👉 To develop Formulas we suggest you try the [Interactive Formula Designer](xref:Basics.Edit.Formulas.Designer)
 
@@ -59,5 +51,7 @@ You should also check [Ephemeral / Temporary Fields](xref:Basics.Data.Fields.Eph
 * Introduced in 2sxc 12.01
 * Extended with `Required` ca. v13.00
 * Extended with `Notes` ca. v13.10
+* Improve formula designer to allow creating new formulas directly in the designer ca. v14.00
+* Added formula designer API help ca. v14.00
 
-Shortlink to here: https://r.2sxc.org/formulas
+Shortlink to here: <https://r.2sxc.org/formulas>

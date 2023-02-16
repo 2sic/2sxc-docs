@@ -129,7 +129,7 @@ Tell it where/how the relationships are mapped, and it will create Entities that
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ToSic.Lib.Services.ServiceBase</span></div>
-    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.Dependencies</span>&gt;</div>
+    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.MyServices</span>&gt;</div>
     <div class="level3"><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></div>
     <div class="level4"><span class="xref">TreeModeler</span></div>
   </div>
@@ -174,16 +174,7 @@ Tell it where/how the relationships are mapped, and it will create Entities that
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Guid">DataSource.Guid</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_DataBuilder">DataSource.DataBuilder</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CacheRelevantConfigurations">DataSource.CacheRelevantConfigurations</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CachePartialKey">DataSource.CachePartialKey</a>
@@ -199,6 +190,15 @@ Tell it where/how the relationships are mapped, and it will create Entities that
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_PurgeList_System_Boolean_">DataSource.PurgeList(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_MyConfiguration">DataSource.MyConfiguration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_In">DataSource.In</a>
@@ -243,7 +243,7 @@ public sealed class TreeModeler : DataSource, IDataSource, IAppIdentity, IZoneId
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_TreeModeler_Identifier.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.TreeModeler.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L48">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L43">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_TreeModeler_Identifier_" data-uid="ToSic.Eav.DataSources.TreeModeler.Identifier*"></a>
   <h4 id="ToSic_Eav_DataSources_TreeModeler_Identifier" data-uid="ToSic.Eav.DataSources.TreeModeler.Identifier">Identifier</h4>
@@ -253,7 +253,8 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Identifier { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Field = &quot;ParentIdentifierAttribute&quot;, Fallback = &quot;entityid&quot;)]
+public string Identifier { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -275,7 +276,7 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_TreeModeler_NewChildrenField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.TreeModeler.NewChildrenField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L66">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L63">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_TreeModeler_NewChildrenField_" data-uid="ToSic.Eav.DataSources.TreeModeler.NewChildrenField*"></a>
   <h4 id="ToSic_Eav_DataSources_TreeModeler_NewChildrenField" data-uid="ToSic.Eav.DataSources.TreeModeler.NewChildrenField">NewChildrenField</h4>
@@ -284,7 +285,8 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NewChildrenField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Field = &quot;TargetChildrenAttribute&quot;, Fallback = &quot;Children&quot;)]
+public string NewChildrenField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -306,7 +308,7 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_TreeModeler_NewParentField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.TreeModeler.NewParentField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L75">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L73">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_TreeModeler_NewParentField_" data-uid="ToSic.Eav.DataSources.TreeModeler.NewParentField*"></a>
   <h4 id="ToSic_Eav_DataSources_TreeModeler_NewParentField" data-uid="ToSic.Eav.DataSources.TreeModeler.NewParentField">NewParentField</h4>
@@ -315,7 +317,8 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NewParentField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Field = &quot;TargetParentAttribute&quot;, Fallback = &quot;Parent&quot;)]
+public string NewParentField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,7 +340,7 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_TreeModeler_ParentReferenceField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.TreeModeler.ParentReferenceField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L57">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L53">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_TreeModeler_ParentReferenceField_" data-uid="ToSic.Eav.DataSources.TreeModeler.ParentReferenceField*"></a>
   <h4 id="ToSic_Eav_DataSources_TreeModeler_ParentReferenceField" data-uid="ToSic.Eav.DataSources.TreeModeler.ParentReferenceField">ParentReferenceField</h4>
@@ -346,7 +349,8 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ParentReferenceField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Field = &quot;ChildParentAttribute&quot;, Fallback = &quot;ParentId&quot;)]
+public string ParentReferenceField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -408,7 +412,7 @@ Currently only allows &quot;EntityId&quot; and &quot;EntityGuid&quot;</p>
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_TreeModeler.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.TreeModeler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Modelers/TreeModeler/TreeModeler.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

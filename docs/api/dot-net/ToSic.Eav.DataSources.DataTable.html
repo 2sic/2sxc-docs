@@ -129,7 +129,7 @@ This is not meant for VisualQuery, but for code which pre-processes data in a Da
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ToSic.Lib.Services.ServiceBase</span></div>
-    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.Dependencies</span>&gt;</div>
+    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.MyServices</span>&gt;</div>
     <div class="level3"><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></div>
     <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></div>
     <div class="level5"><span class="xref">DataTable</span></div>
@@ -178,16 +178,7 @@ This is not meant for VisualQuery, but for code which pre-processes data in a Da
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Guid">DataSource.Guid</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_DataBuilder">DataSource.DataBuilder</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CacheRelevantConfigurations">DataSource.CacheRelevantConfigurations</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CachePartialKey">DataSource.CachePartialKey</a>
@@ -200,6 +191,15 @@ This is not meant for VisualQuery, but for code which pre-processes data in a Da
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_PurgeList_System_Boolean_">DataSource.PurgeList(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_MyConfiguration">DataSource.MyConfiguration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_In">DataSource.In</a>
@@ -234,8 +234,8 @@ This is not meant for VisualQuery, but for code which pre-processes data in a Da
 public class DataTable : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_DataTable_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Technically many things could just identify the app they belong to, and let the system look up the zone.
-But this would be inefficient, so for optimization, many items identify themselves with both the app and zone Ids</p>
+  <div class="markdown level0 remarks"><p>This has changed a lot in v15 (breaking change).
+Read about it in the docs.</p>
 </div>
   <h3 id="properties">Properties
   </h3>
@@ -244,16 +244,17 @@ But this would be inefficient, so for optimization, many items identify themselv
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable_ContentType.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable.ContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L39">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataTable_ContentType_" data-uid="ToSic.Eav.DataSources.DataTable.ContentType*"></a>
   <h4 id="ToSic_Eav_DataSources_DataTable_ContentType" data-uid="ToSic.Eav.DataSources.DataTable.ContentType">ContentType</h4>
-  <div class="markdown level1 summary"><p>Name of the ContentType</p>
+  <div class="markdown level1 summary"><p>Name of the ContentType. Defaults to <code>Data</code></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ContentType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;Data&quot;)]
+public string ContentType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -270,12 +271,17 @@ But this would be inefficient, so for optimization, many items identify themselv
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Eav_DataSources_DataTable_ContentType_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>in v15 changed default name to <code>Data</code>, previously was just empty.</li>
+</ul>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable_EntityIdField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable.EntityIdField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L67">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L59">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataTable_EntityIdField_" data-uid="ToSic.Eav.DataSources.DataTable.EntityIdField*"></a>
   <h4 id="ToSic_Eav_DataSources_DataTable_EntityIdField" data-uid="ToSic.Eav.DataSources.DataTable.EntityIdField">EntityIdField</h4>
@@ -284,7 +290,8 @@ But this would be inefficient, so for optimization, many items identify themselv
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string EntityIdField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;entityid&quot;)]
+public string EntityIdField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -306,7 +313,7 @@ But this would be inefficient, so for optimization, many items identify themselv
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable_ModifiedField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable.ModifiedField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L76">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L69">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataTable_ModifiedField_" data-uid="ToSic.Eav.DataSources.DataTable.ModifiedField*"></a>
   <h4 id="ToSic_Eav_DataSources_DataTable_ModifiedField" data-uid="ToSic.Eav.DataSources.DataTable.ModifiedField">ModifiedField</h4>
@@ -315,7 +322,8 @@ But this would be inefficient, so for optimization, many items identify themselv
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ModifiedField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string ModifiedField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,7 +345,7 @@ But this would be inefficient, so for optimization, many items identify themselv
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable_Source.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable.Source%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L44">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L31">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataTable_Source_" data-uid="ToSic.Eav.DataSources.DataTable.Source*"></a>
   <h4 id="ToSic_Eav_DataSources_DataTable_Source" data-uid="ToSic.Eav.DataSources.DataTable.Source">Source</h4>
@@ -368,7 +376,7 @@ But this would be inefficient, so for optimization, many items identify themselv
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable_TitleField.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable.TitleField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L58">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L49">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataTable_TitleField_" data-uid="ToSic.Eav.DataSources.DataTable.TitleField*"></a>
   <h4 id="ToSic_Eav_DataSources_DataTable_TitleField" data-uid="ToSic.Eav.DataSources.DataTable.TitleField">TitleField</h4>
@@ -377,7 +385,8 @@ But this would be inefficient, so for optimization, many items identify themselv
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TitleField { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;entitytitle&quot;)]
+public string TitleField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -439,7 +448,7 @@ But this would be inefficient, so for optimization, many items identify themselv
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataTable.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataTable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/DataTable.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -37,7 +37,7 @@ also done:
 
 1. New WYSIWYG mode completed (and documented)
 1. New APIs for Data Sources finalized (and documented)
-1. ⏳ Probably move to .net 6 (and drop .net standard 2.0) - almost done, last tests @STV
+1. ✅ Probably move to .net 6 (and drop .net standard 2.0) - almost done, last tests @STV
 1. Probably data-conversion of entities to json in attribute...
 1. Bugs
     1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
@@ -98,16 +98,14 @@ also done:
     1. ⏳ Improved custom DataSources API - ca. 1d - 2dm ⭐
     1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources ⭐
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
-    1. ⏳ Upgrade Demo DataSources Code
-    1. Upgrade docs for custom DataSources
     1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
 1. ✅ Compress Timeline: Feature to compress the existing history
 
 Minor: Tutorial App Enhancements
 
 1. Custom DataSources
-    1. Create new demos
-    1. Create Testing-framework to make it testable despite dependency injection
+    1. ⏳ Create new demos
+    1. ⏳ Create Testing-framework to make it testable despite dependency injection
     1. Update docs
     1. Create migration instructions ?
 

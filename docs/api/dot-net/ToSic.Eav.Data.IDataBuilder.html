@@ -121,34 +121,202 @@
   
   <h1 id="ToSic_Eav_Data_IDataBuilder" data-uid="ToSic.Eav.Data.IDataBuilder" class="text-break">Interface IDataBuilder
   </h1>
-  <div class="markdown level0 summary"><p>This is a Builder-Object which is used to create any kind of data.
-Get it using Dependency Injection</p>
+  <div class="markdown level0 summary"><p>A data builder which will generate items for a specific type.
+In many cases it will also take care of auto increasing the id and more.</p>
+<p>This is more efficient than using the bare bones <span class="xref">ToSic.Eav.Data.IDataBuilderInternal</span></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.Data.html">ToSic.Eav.Data</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Eav.Core.dll</h6>
   <h5 id="ToSic_Eav_Data_IDataBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;in development for v15&quot;)]
 public interface IDataBuilder</code></pre>
   </div>
+  <h5 id="ToSic_Eav_Data_IDataBuilder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><ul>
+<li>Added in v15 to replace the previous IDataBuilder which is now internal</li>
+</ul>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_AppId.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.AppId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L25">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_AppId_" data-uid="ToSic.Eav.Data.IDataBuilder.AppId*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_AppId" data-uid="ToSic.Eav.Data.IDataBuilder.AppId">AppId</h4>
+  <div class="markdown level1 summary"><p>The App-ID which will be assigned to the generated entities.
+By default it will be <code>0</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AppId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_ContentType.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.ContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L49">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_ContentType_" data-uid="ToSic.Eav.Data.IDataBuilder.ContentType*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_ContentType" data-uid="ToSic.Eav.Data.IDataBuilder.ContentType">ContentType</h4>
+  <div class="markdown level1 summary"><p>The generated ContentType.
+This will only be generated once, for better performance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IContentType ContentType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.Data.IContentType.html">IContentType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_IdAutoIncrementZero.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.IdAutoIncrementZero%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L42">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_IdAutoIncrementZero_" data-uid="ToSic.Eav.Data.IDataBuilder.IdAutoIncrementZero*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_IdAutoIncrementZero" data-uid="ToSic.Eav.Data.IDataBuilder.IdAutoIncrementZero">IdAutoIncrementZero</h4>
+  <div class="markdown level1 summary"><p>Determines if Zero IDs are auto-incremented - default is <code>true</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IdAutoIncrementZero { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_IdCounter.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.IdCounter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L37">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_IdCounter_" data-uid="ToSic.Eav.Data.IDataBuilder.IdCounter*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_IdCounter" data-uid="ToSic.Eav.Data.IDataBuilder.IdCounter">IdCounter</h4>
+  <div class="markdown level1 summary"><p>A counter for the ID in case the data provided doesn&apos;t have an ID to use.
+Default is <code>1</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IdCounter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_TitleField.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.TitleField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L31">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_TitleField_" data-uid="ToSic.Eav.Data.IDataBuilder.TitleField*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_TitleField" data-uid="ToSic.Eav.Data.IDataBuilder.TitleField">TitleField</h4>
+  <div class="markdown level1 summary"><p>The field in the data which is the default title.
+Defaults to <code>Title</code> if not set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TitleField { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Attribute_System_String_System_String_System_String_ToSic_Eav_Data_ValueTypes_System_Collections_Generic_IList_ToSic_Eav_Data_IValue__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Attribute(System.String%2CSystem.String%2CSystem.String%2CToSic.Eav.Data.ValueTypes%2CSystem.Collections.Generic.IList%7BToSic.Eav.Data.IValue%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Configure_System_String_System_Int32_System_String_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Configure(System.String%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L88">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L62">View Source</a>
   </span>
-  <a id="ToSic_Eav_Data_IDataBuilder_Attribute_" data-uid="ToSic.Eav.Data.IDataBuilder.Attribute*"></a>
-  <h4 id="ToSic_Eav_Data_IDataBuilder_Attribute_System_String_System_String_System_String_ToSic_Eav_Data_ValueTypes_System_Collections_Generic_IList_ToSic_Eav_Data_IValue__" data-uid="ToSic.Eav.Data.IDataBuilder.Attribute(System.String,System.String,System.String,ToSic.Eav.Data.ValueTypes,System.Collections.Generic.IList{ToSic.Eav.Data.IValue})">Attribute(String, String, String, ValueTypes, IList&lt;IValue&gt;)</h4>
-  <div class="markdown level1 summary"><p>Create a new attribute for adding to an Entity.</p>
+  <a id="ToSic_Eav_Data_IDataBuilder_Configure_" data-uid="ToSic.Eav.Data.IDataBuilder.Configure*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_Configure_System_String_System_Int32_System_String_System_String_System_Int32_System_Boolean_" data-uid="ToSic.Eav.Data.IDataBuilder.Configure(System.String,System.Int32,System.String,System.String,System.Int32,System.Boolean)">Configure(String, Int32, String, String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initial configuration call to setup all the parameters for this builder.
+It must be called before building anything. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IAttribute Attribute(string name, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, string typeName = null, ValueTypes type = ValueTypes.Undefined, IList&lt;IValue&gt; values = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IDataBuilder Configure(string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, int appId = 0, string typeName = null, string titleField = null, int idSeed = 1, bool idAutoIncrementZero = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -160,87 +328,6 @@ public interface IDataBuilder</code></pre>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">noParamOrder</span></td>
-        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">typeName</span></td>
-        <td><p>optional type name as string, like &quot;String&quot; or &quot;Entity&quot; - note that type OR typeName must be provided</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.ValueTypes.html">ValueTypes</a></td>
-        <td><span class="parametername">type</span></td>
-        <td><p>optional type code - note that type OR typeName must be provided</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="ToSic.Eav.Data.IValue.html">IValue</a>&gt;</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>list of values to add to this attribute</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IAttribute.html">IAttribute</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Entities_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_System_Int32_System_String_System_String_ToSic_Eav_Data_IContentType_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable%7BSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D%7D%2CSystem.String%2CSystem.Int32%2CSystem.String%2CSystem.String%2CToSic.Eav.Data.IContentType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L57">View Source</a>
-  </span>
-  <a id="ToSic_Eav_Data_IDataBuilder_Entities_" data-uid="ToSic.Eav.Data.IDataBuilder.Entities*"></a>
-  <h4 id="ToSic_Eav_Data_IDataBuilder_Entities_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_System_Int32_System_String_System_String_ToSic_Eav_Data_IContentType_" data-uid="ToSic.Eav.Data.IDataBuilder.Entities(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.Int32,System.String,System.String,ToSic.Eav.Data.IContentType)">Entities(IEnumerable&lt;Dictionary&lt;String, Object&gt;&gt;, String, Int32, String, String, IContentType)</h4>
-  <div class="markdown level1 summary"><p>Convert a list of value-dictionaries dictionary into a list of entities
-this assumes that the entities don&apos;t have an own id or guid, 
-otherwise you should use the single-item command.</p>
-<p>Read more about <a class="xref" href="../../net-code/data-sources/custom/data-builder.html">DataSource API: DataBuilder.Entity(...)</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; Entities(IEnumerable&lt;Dictionary&lt;string, object&gt;&gt; itemValues, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, int appId = 0, string titleField = null, string typeName = &quot;unspecified&quot;, IContentType type = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
-        <td><span class="parametername">itemValues</span></td>
-        <td><p>list of value-dictionaries</p>
-</td>
-      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
@@ -250,25 +337,31 @@ otherwise you should use the single-item command.</p>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">appId</span></td>
-        <td><p>optional app id for this item, defaults to the current app</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">titleField</span></td>
-        <td><p>which field should be access if every something wants to know the title of this item</p>
+        <td><p>The App this is virtually coming from, defaults to <code>0</code></p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">typeName</span></td>
-        <td><p>an optional type-name - usually not needed, defaults to &quot;unspecified&quot;; alternatively you can specify the type directly</p>
+        <td><p>The name of the virtual content-type, defaults to <code>unspecified</code></p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IContentType.html">IContentType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td><p>an optional type object - use this OR the typename to specify a type</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">titleField</span></td>
+        <td><p>The field name to use as title, defaults to <code>Title</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">idSeed</span></td>
+        <td><p>Default is <code>1</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">idAutoIncrementZero</span></td>
+        <td><p>Default is <code>true</code></p>
 </td>
       </tr>
     </tbody>
@@ -283,27 +376,26 @@ otherwise you should use the single-item command.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
-        <td></td>
+        <td><a class="xref" href="ToSic.Eav.Data.IDataBuilder.html">IDataBuilder</a></td>
+        <td><p>Itself, to make call chaining easier</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Entity_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_System_Int32_System_Int32_System_String_System_String_ToSic_Eav_Data_IContentType_System_Nullable_System_Guid__System_Nullable_System_DateTime__System_Nullable_System_DateTime__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CToSic.Eav.Data.IContentType%2CSystem.Nullable%7BSystem.Guid%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Create_System_Collections_Generic_Dictionary_System_String_System_Object__System_Int32_System_Guid_System_DateTime_System_DateTime_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Create(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D%2CSystem.Int32%2CSystem.Guid%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L30">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L85">View Source</a>
   </span>
-  <a id="ToSic_Eav_Data_IDataBuilder_Entity_" data-uid="ToSic.Eav.Data.IDataBuilder.Entity*"></a>
-  <h4 id="ToSic_Eav_Data_IDataBuilder_Entity_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_System_Int32_System_Int32_System_String_System_String_ToSic_Eav_Data_IContentType_System_Nullable_System_Guid__System_Nullable_System_DateTime__System_Nullable_System_DateTime__" data-uid="ToSic.Eav.Data.IDataBuilder.Entity(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Int32,System.Int32,System.String,System.String,ToSic.Eav.Data.IContentType,System.Nullable{System.Guid},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">Entity(Dictionary&lt;String, Object&gt;, String, Int32, Int32, String, String, IContentType, Nullable&lt;Guid&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;)</h4>
-  <div class="markdown level1 summary"><p>Create an Entity using a dictionary of values.</p>
-<p>Read more about <a class="xref" href="../../net-code/data-sources/custom/data-builder.html">DataSource API: DataBuilder.Entity(...)</a></p>
-</div>
+  <a id="ToSic_Eav_Data_IDataBuilder_Create_" data-uid="ToSic.Eav.Data.IDataBuilder.Create*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_Create_System_Collections_Generic_Dictionary_System_String_System_Object__System_Int32_System_Guid_System_DateTime_System_DateTime_System_Int32_System_String_System_String_" data-uid="ToSic.Eav.Data.IDataBuilder.Create(System.Collections.Generic.Dictionary{System.String,System.Object},System.Int32,System.Guid,System.DateTime,System.DateTime,System.Int32,System.String,System.String)">Create(Dictionary&lt;String, Object&gt;, Int32, Guid, DateTime, DateTime, Int32, String, String)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEntity Entity(Dictionary&lt;string, object&gt; values = null, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, int appId = 0, int id = 0, string titleField = null, string typeName = &quot;unspecified&quot;, IContentType type = null, Guid? guid = default(Guid? ), DateTime? created = default(DateTime? ), DateTime? modified = default(DateTime? ))</code></pre>
+    <pre><code class="lang-csharp hljs">IEntity Create(Dictionary&lt;string, object&gt; values, int id = 0, Guid guid = default(Guid), DateTime created = default(DateTime), DateTime modified = default(DateTime), int appId = 0, string typeName = null, string titleField = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -318,62 +410,42 @@ otherwise you should use the single-item command.</p>
       <tr>
         <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">values</span></td>
-        <td><p>dictionary of values</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">noParamOrder</span></td>
-        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">appId</span></td>
-        <td><p>optional app id for this item, defaults to the current app</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>an optional id for this item, defaults to 0</p>
-</td>
+        <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">titleField</span></td>
-        <td><p>which field should be access if every something wants to know the title of this item</p>
-</td>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">created</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">modified</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">appId</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">typeName</span></td>
-        <td><p>an optional type-name - usually not needed, defaults to &quot;unspecified&quot;; alternatively you can specify the type directly</p>
-</td>
+        <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IContentType.html">IContentType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td><p>an optional type object - use this OR the typename to specify a type</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
-        <td><span class="parametername">guid</span></td>
-        <td><p>an optional guid for this item, defaults to empty guid</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">created</span></td>
-        <td><p>creation timestamp</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">modified</span></td>
-        <td><p>modified timestamp</p>
-</td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">titleField</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -394,19 +466,19 @@ otherwise you should use the single-item command.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Type_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Type(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Create_ToSic_Eav_Data_Raw_IHasRawEntity_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Create(ToSic.Eav.Data.Raw.IHasRawEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L103">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L76">View Source</a>
   </span>
-  <a id="ToSic_Eav_Data_IDataBuilder_Type_" data-uid="ToSic.Eav.Data.IDataBuilder.Type*"></a>
-  <h4 id="ToSic_Eav_Data_IDataBuilder_Type_System_String_" data-uid="ToSic.Eav.Data.IDataBuilder.Type(System.String)">Type(String)</h4>
-  <div class="markdown level1 summary"><p>Create a fake content-type using the specified name. </p>
+  <a id="ToSic_Eav_Data_IDataBuilder_Create_" data-uid="ToSic.Eav.Data.IDataBuilder.Create*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_Create_ToSic_Eav_Data_Raw_IHasRawEntity_" data-uid="ToSic.Eav.Data.IDataBuilder.Create(ToSic.Eav.Data.Raw.IHasRawEntity)">Create(IHasRawEntity)</h4>
+  <div class="markdown level1 summary"><p>For objects which delegate the IRawEntity to a property.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IContentType Type(string typeName)</code></pre>
+    <pre><code class="lang-csharp hljs">IEntity Create(IHasRawEntity withRawEntity)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -419,10 +491,9 @@ otherwise you should use the single-item command.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">typeName</span></td>
-        <td><p>Name to use for this content-type</p>
-</td>
+        <td><a class="xref" href="ToSic.Eav.Data.Raw.IHasRawEntity.html">IHasRawEntity</a></td>
+        <td><span class="parametername">withRawEntity</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -436,7 +507,102 @@ otherwise you should use the single-item command.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IContentType.html">IContentType</a></td>
+        <td><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_Create_ToSic_Eav_Data_Raw_IRawEntity_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.Create(ToSic.Eav.Data.Raw.IRawEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L83">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_Create_" data-uid="ToSic.Eav.Data.IDataBuilder.Create*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_Create_ToSic_Eav_Data_Raw_IRawEntity_" data-uid="ToSic.Eav.Data.IDataBuilder.Create(ToSic.Eav.Data.Raw.IRawEntity)">Create(IRawEntity)</h4>
+  <div class="markdown level1 summary"><p>For objects which themselves are IRawEntity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEntity Create(IRawEntity rawEntity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a></td>
+        <td><span class="parametername">rawEntity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder_CreateMany_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_Raw_IRawEntity__.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder.CreateMany(System.Collections.Generic.IEnumerable%7BToSic.Eav.Data.Raw.IRawEntity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L94">View Source</a>
+  </span>
+  <a id="ToSic_Eav_Data_IDataBuilder_CreateMany_" data-uid="ToSic.Eav.Data.IDataBuilder.CreateMany*"></a>
+  <h4 id="ToSic_Eav_Data_IDataBuilder_CreateMany_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_Raw_IRawEntity__" data-uid="ToSic.Eav.Data.IDataBuilder.CreateMany(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.Raw.IRawEntity})">CreateMany(IEnumerable&lt;IRawEntity&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IImmutableList&lt;IEntity&gt; CreateMany(IEnumerable&lt;IRawEntity&gt; rawEntities)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a>&gt;</td>
+        <td><span class="parametername">rawEntities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Immutable.IImmutableList</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -452,7 +618,7 @@ otherwise you should use the single-item command.</p>
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_IDataBuilder.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.IDataBuilder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/IDataBuilder.cs/#L18" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -128,7 +128,7 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ToSic.Lib.Services.ServiceBase</span></div>
-    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.Dependencies</span>&gt;</div>
+    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSources.DataSource.MyServices</span>&gt;</div>
     <div class="level3"><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></div>
     <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></div>
     <div class="level5"><span class="xref">Users</span></div>
@@ -177,16 +177,7 @@
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Guid">DataSource.Guid</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_DataBuilder">DataSource.DataBuilder</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CacheRelevantConfigurations">DataSource.CacheRelevantConfigurations</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_CachePartialKey">DataSource.CachePartialKey</a>
@@ -199,6 +190,15 @@
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_PurgeList_System_Boolean_">DataSource.PurgeList(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_MyConfiguration">DataSource.MyConfiguration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Configuration">DataSource.Configuration</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ConfigMask_System_String_System_String_System_Boolean_">DataSource.ConfigMask(String, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_In">DataSource.In</a>
@@ -231,7 +231,7 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
 [VisualQuery(NiceName = &quot;Users&quot;, Icon = &quot;account_circle&quot;, UiHint = &quot;Users in this site&quot;, HelpLink = &quot;https://r.2sxc.org/ds-users&quot;, GlobalName = &quot;93ac53c6-adc6-4218-b979-48d1071a5765&quot;, Type = DataSourceType.Source, ExpectsDataOfType = &quot;ac11fae7-1916-4d2d-8583-09872e1e6966&quot;, Difficulty = DifficultyBeta.Default)]
-public abstract class Users : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
+public class Users : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -240,7 +240,7 @@ public abstract class Users : ExternalData, IDataSource, IAppIdentity, IZoneIden
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users_ExcludeRoleIds.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users.ExcludeRoleIds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L93">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L82">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_Users_ExcludeRoleIds_" data-uid="ToSic.Sxc.DataSources.Users.ExcludeRoleIds*"></a>
   <h4 id="ToSic_Sxc_DataSources_Users_ExcludeRoleIds" data-uid="ToSic.Sxc.DataSources.Users.ExcludeRoleIds">ExcludeRoleIds</h4>
@@ -250,7 +250,8 @@ exclude users that have any of roles from filter</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ExcludeRoleIds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string ExcludeRoleIds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -272,7 +273,7 @@ exclude users that have any of roles from filter</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users_ExcludeUserIds.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users.ExcludeUserIds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L73">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L60">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_Users_ExcludeUserIds_" data-uid="ToSic.Sxc.DataSources.Users.ExcludeUserIds*"></a>
   <h4 id="ToSic_Sxc_DataSources_Users_ExcludeUserIds" data-uid="ToSic.Sxc.DataSources.Users.ExcludeUserIds">ExcludeUserIds</h4>
@@ -282,7 +283,8 @@ exclude users based on guid or id</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ExcludeUserIds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string ExcludeUserIds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -304,7 +306,7 @@ exclude users based on guid or id</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users_IncludeSystemAdmins.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users.IncludeSystemAdmins%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L104">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L94">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_Users_IncludeSystemAdmins_" data-uid="ToSic.Sxc.DataSources.Users.IncludeSystemAdmins*"></a>
   <h4 id="ToSic_Sxc_DataSources_Users_IncludeSystemAdmins" data-uid="ToSic.Sxc.DataSources.Users.IncludeSystemAdmins">IncludeSystemAdmins</h4>
@@ -315,7 +317,8 @@ false - without SuperUsers</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string IncludeSystemAdmins { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = false)]
+public bool IncludeSystemAdmins { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -327,7 +330,7 @@ false - without SuperUsers</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -337,7 +340,7 @@ false - without SuperUsers</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users_RoleIds.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users.RoleIds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L83">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L71">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_Users_RoleIds_" data-uid="ToSic.Sxc.DataSources.Users.RoleIds*"></a>
   <h4 id="ToSic_Sxc_DataSources_Users_RoleIds" data-uid="ToSic.Sxc.DataSources.Users.RoleIds">RoleIds</h4>
@@ -347,7 +350,8 @@ include users that have any of roles from filter</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RoleIds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string RoleIds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -369,7 +373,7 @@ include users that have any of roles from filter</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users_UserIds.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users.UserIds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L63">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L49">View Source</a>
   </span>
   <a id="ToSic_Sxc_DataSources_Users_UserIds_" data-uid="ToSic.Sxc.DataSources.Users.UserIds*"></a>
   <h4 id="ToSic_Sxc_DataSources_Users_UserIds" data-uid="ToSic.Sxc.DataSources.Users.UserIds">UserIds</h4>
@@ -379,7 +383,8 @@ include users based on guid or id</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserIds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string UserIds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -441,7 +446,7 @@ include users based on guid or id</p>
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Users.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Users%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L22" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Users.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
