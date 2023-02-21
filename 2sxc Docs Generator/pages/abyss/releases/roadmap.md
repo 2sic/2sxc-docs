@@ -37,11 +37,7 @@ also done:
 
 1. New WYSIWYG mode completed (and documented)
 1. New APIs for Data Sources finalized (and documented)
-1. ✅ Probably move to .net 6 (and drop .net standard 2.0) - almost done, last tests @STV
 1. Probably data-conversion of entities to json in attribute...
-1. Bugs
-    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
-    1. ...
 
 ## Planned for February 2023
 
@@ -89,16 +85,40 @@ also done:
     1. ✅ Change internal key for `Settings` to something else, probably `MyConfig` or something (breaking) ⭐
     1. ✅ New LookUp for Settings- and Resources-Stack - to use `Settings` and `Resources` ⭐
     1. Pages DataSource
-        1. ✅ Improve Pages DataSource with `LinkTarget`
-        1. ✅ Improve Pages DataSource with internal ability to configure what to get
-        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
         1. Improve Oqtane Pages DS to also respect settings - @STV
     1. ⏳ New DataSource (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
     1. ⏳ New Query (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
-    1. ⏳ Improved custom DataSources API - ca. 1d - 2dm ⭐
+    1. ✅ Improved custom DataSources API - ca. 1d - 2dm ⭐
     1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources ⭐
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
     1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
+
+
+
+## Done in 15.03 2023-02-21
+
+1. APIs
+    1. ✅ EntityId now has a OwnerId property
+    1. ✅ `Kit.Page.Activate(condition: bool, features: "...")`
+1. ✅ move to .net 6 (and drop .net standard 2.0) - almost done, last tests
+1. Bugs
+    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
+    1. ✅ Support for use on DNN 404 pages
+    1. ✅ Date was off in date-picker
+1. ✅ FIPS compliance on encryption APIs
+1. DataSources
+    1. ✅ Pages DataSource
+        1. ✅ Improve Pages DataSource with `LinkTarget`
+        1. ✅ Improve Pages DataSource with internal ability to configure what to get
+        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
+    1. ✅ Users DataSource Massively improved - with Roles and configurable
+    1. ✅ Roles DataSource improved
+... and more see <https://github.com/2sic/2sxc/releases>
+
+
+
+## Done but not officially communicated
+
 1. ✅ Compress Timeline: Feature to compress the existing history
 
 Minor: Tutorial App Enhancements
