@@ -131,11 +131,23 @@
 <li><code>cache</code> - an object which is only for this function and will be persisted across calls - use it to save temporary values</li>
 <li><code>debug</code> - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. <em>new in 12.02</em></li>
 <li><code>target</code> - everything about the target of the formula - the current field<ul>
-<li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Settings</code> (Future: <code>Form.Variable</code> etc.) </li>
+<li><code>type</code> = What the function processes <code>Field.Value</code> or <code>Field.Settings</code> (Future: <code>Form.Variable</code> etc.)</li>
 <li><code>name</code> - field name or setting-name, so <code>FirstName</code> or <code>Visible</code></li>
 <li><code>entity</code><ul>
 <li><code>id</code> - the id of the entity - 0 if it&#39;s new</li>
 <li><code>guid</code> - the GUID of the entity, always provided</li>
+<li><code>type</code> - entity type information<ul>
+<li><code>guid</code></li>
+<li><code>name</code></li>
+</ul>
+</li>
+<li><code>for</code> - Metadata For information - a target pointer to another thing which this entity describes <em>new in 15.04</em><ul>
+<li><code>targetType</code> (int) - the type of the target, eg. <code>CmsItem</code> = 10, <code>Entity</code> = 4, etc.</li>
+<li><code>guid</code> (string) - the guid of the target as string - if it&#39;s using a guid-key, otherwise null</li>
+<li><code>number</code> (int) - the number of the target, if it&#39;s using a number-key, otherwise null</li>
+<li><code>string</code> (string) the string of the target, if it&#39;s using a string-key, otherwise null</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

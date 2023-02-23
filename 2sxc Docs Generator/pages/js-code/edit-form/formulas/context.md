@@ -17,11 +17,19 @@ The `context` contain additional information about the context we're running in.
 * `cache` - an object which is only for this function and will be persisted across calls - use it to save temporary values
 * `debug` - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. _new in 12.02_
 * `target` - everything about the target of the formula - the current field
-  * `type` = What the function processes `Field.Value` or `Field.Settings` (Future: `Form.Variable` etc.) 
+  * `type` = What the function processes `Field.Value` or `Field.Settings` (Future: `Form.Variable` etc.)
   * `name` - field name or setting-name, so `FirstName` or `Visible`
   * `entity`
     * `id` - the id of the entity - 0 if it's new
     * `guid` - the GUID of the entity, always provided
+    * `type` - entity type information
+      * `guid`
+      * `name`
+    * `for` - Metadata For information - a target pointer to another thing which this entity describes _new in 15.04_
+      * `targetType` (int) - the type of the target, eg. `CmsItem` = 10, `Entity` = 4, etc.
+      * `guid` (string) - the guid of the target as string - if it's using a guid-key, otherwise null
+      * `number` (int) - the number of the target, if it's using a number-key, otherwise null
+      * `string` (string) the string of the target, if it's using a string-key, otherwise null
 * `culture`
   * `code`
   * `name` - this will return `undefined` scenarios where no languages are activated
@@ -64,4 +72,4 @@ v1(data, context) {
 * Added `context.user` in v13.11
 * Added `context.form.runFormulas()` in v13.11
 
-Shortlink to here: https://r.2sxc.org/js-fcontext
+Shortlink to here: <https://r.2sxc.org/js-fcontext>
