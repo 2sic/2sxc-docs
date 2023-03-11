@@ -73,6 +73,28 @@ Also
 
 1. ToSic.Eav.DataSources.VisualQuery.VisualQueryAttribute -> DataSources.Queries.VisualQueryAttribute
 
+### 4. Changes in Provide signature
+
+Previously there were many `Provide(...)` methods but we reduced it to 2.
+Now you should use:
+
+* `Provide(function)` or the named stream `Provide(function, "MyStream")`
+
+Where `function` can be
+
+1. `() => IEnumerable<IEntity>`
+1. `() => IImmutableList<IEntity>`
+
+They will behave the same, but providing an `IImmutableList` is slightly more performant.
+
+### 5. Changes in how Configuration is retrieved
+
+Now it uses the attribute `[Configuration]` and `Configuration.GetThis()` and `Configuration.SetThis(value)`.
+
+### 6. Changes in Error handling
+
+TODO:
+
 
 ---
 

@@ -33,11 +33,35 @@ also done:
 1. ✅ CSP Training at DNN Summit
 1. ✅ Image Perfectionist Training at DNN Summit
 
+
+## Done in 15.03 2023-02-21
+
+1. ✅ APIs
+    1. ✅ EntityId now has a OwnerId property
+    1. ✅ `Kit.Page.Activate(condition: bool, features: "...")`
+1. ✅ move to .net 6 (and drop .net standard 2.0) - almost done, last tests
+1. ✅ Bugs
+    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
+    1. ✅ Support for use on DNN 404 pages
+    1. ✅ Date was off in date-picker
+1. ✅ FIPS compliance on encryption APIs
+1. ✅ DataSources
+    1. ✅ Pages DataSource
+        1. ✅ Improve Pages DataSource with `LinkTarget`
+        1. ✅ Improve Pages DataSource with internal ability to configure what to get
+        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
+    1. ✅ Users DataSource Massively improved - with Roles and configurable
+    1. ✅ Roles DataSource improved
+1. ✅ Internal - Rework Getting-Started Server to be latest and greatest @2ro
+... and more see <https://github.com/2sic/2sxc/releases>
+
 ## Priorities for v15 LTS
 
 1. New WYSIWYG mode completed (and documented)
 1. New APIs for Data Sources finalized (and documented)
+    1. ✅ Public `IDataFactory` API
 1. Probably data-conversion of entities to json in attribute...
+1. ✅ Make everything internal immutable
 
 ## Planned for February 2023
 
@@ -57,15 +81,9 @@ also done:
     1. WYSIWYG Images which auto-resize on the server based on size (eg 1/2 of the screen)
     1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
     1. ⏳ Create best practices CSS styling for `wysiwyg` content
-1. ⏳ Internal - Rework Getting-Started Server to be latest and greatest @2ro
 1. ✅ Query Improvements
     1. ✅ Allow edit/new to be done in a query-selector
     1. ✅ Get query to know if entity can be edited (based on AppId)
-1. Improve WYSIWYG
-    1. Ability to do more configuration on WYSIWYG
-        1. ability to override toolbar buttons
-        1. ability to set various easy-to-set configuration
-        1. Possibly ability to preset various configurations globally or at site-level and use in other places
 1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
 1. Data Sources
     1. ✅ Improve data sources for Pages - ca. 0.5d
@@ -95,25 +113,6 @@ also done:
 
 
 
-## Done in 15.03 2023-02-21
-
-1. APIs
-    1. ✅ EntityId now has a OwnerId property
-    1. ✅ `Kit.Page.Activate(condition: bool, features: "...")`
-1. ✅ move to .net 6 (and drop .net standard 2.0) - almost done, last tests
-1. Bugs
-    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
-    1. ✅ Support for use on DNN 404 pages
-    1. ✅ Date was off in date-picker
-1. ✅ FIPS compliance on encryption APIs
-1. DataSources
-    1. ✅ Pages DataSource
-        1. ✅ Improve Pages DataSource with `LinkTarget`
-        1. ✅ Improve Pages DataSource with internal ability to configure what to get
-        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
-    1. ✅ Users DataSource Massively improved - with Roles and configurable
-    1. ✅ Roles DataSource improved
-... and more see <https://github.com/2sic/2sxc/releases>
 
 
 
@@ -131,19 +130,18 @@ Minor: Tutorial App Enhancements
 
 ## February post LTS
 
+1. Improve WYSIWYG
+    1. Ability to do more configuration on WYSIWYG
+        1. ability to override toolbar buttons
+        1. ability to set various easy-to-set configuration
+        1. Possibly ability to preset various configurations globally or at site-level and use in other places
+
 1. Formula improvements
     1. ✅ Get App or global settings for formulas
-    1. Better support for promises
+    1. ⏳ Better support for promises
     1. ⏳ Ability to set the value of another field
-    1. Intellisense on Formulas
-1. Improve Export-Import Bundles
-    1. Ability to create bundles in the Admin UI
-    1. Ability to review bundles and what's inside in the Admin-UI
-    1. Ability to download/export bundles
-    1. Ability to import bundles in the Admin-UI
-    1. Ability to save bundles to App_Data
-    1. Ability to import bundles from App_Data
-    1. Maybe ability to auto-save bundles to App_Data on standard export
+    1. ✅ Intellisense on Formulas
+1. ⏳ Entity Serialization Improvements
 1. Apps / App Maintenance: publish other new apps
     1. New timeline
     1. Files
@@ -168,6 +166,14 @@ Minor: Tutorial App Enhancements
 2sxc
 
 1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+1. Improve Export-Import Bundles
+    1. Ability to create bundles in the Admin UI
+    1. Ability to review bundles and what's inside in the Admin-UI
+    1. Ability to download/export bundles
+    1. Ability to import bundles in the Admin-UI
+    1. Ability to save bundles to App_Data
+    1. Ability to import bundles from App_Data
+    1. Maybe ability to auto-save bundles to App_Data on standard export
 1. Notes / Metadata
     1. Provide Page-Level Metadata and Settings (outside of a specific App) - ca. 2d
     1. Metadata for Page, User, Site incl. Notes for each - ca. 2d
