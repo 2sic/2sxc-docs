@@ -15,14 +15,14 @@ Until we find time to document everything, here's the short version
 1. To use 2sxc4ng you must include a JS file in your template, and you must bootstrap your app using this (not using the standard angularjs bootstrapping)  
 this is to ensure that multiple Angular apps can run on the same page, and to provide your app with the necessary context so it knows what module it's working on, etc.  
 [Here's an introduction to that](http://2sxc.org/en/Learn/Simple-AngularJS-in-DNN-with-2sxc4ng).
-2. To get your current sxc-controller there are two objects *$2sxc* and *sxc* which you can just include it in your function definition, like  
+1. To get your current sxc-controller there are two objects *$2sxc* and *sxc* which you can just include it in your function definition, like  
 `module.controller('AppCatalogCtrl', function ($2sxc, sxc, $http, ...) {`
 1. The sxc is the one you want most, it is already set to your current instance, so you can ask it things like `sxc.manage` etc.
-2. The $2sxc is the same as the global [$2sxc](xref:JsCode.2sxcApi.Index) object you know from jquery. You could of course also do `$2sxc(27).manage` to acces the manage, but that's unnecessarily complicated
-3. Additional services provided when bootstrapping with *2sxc4ng* is
+1. The $2sxc is the same as the global [$2sxc](xref:JsCode.2sxcApi.Index) object you know from jquery. You could of course also do `$2sxc(27).manage` to acces the manage, but that's unnecessarily complicated
+1. Additional services provided when bootstrapping with *2sxc4ng* is
 1. `content(typename)` - a service which requests content-data from the current app / context, can also delete / create items etc.
-2. `query(queryname)` - a service which gets data from app-queries
-4. Additional directives
+1. `query(queryname)` - a service which gets data from app-queries
+1. Additional directives
 1. `sxcToolbar` - a create-toolbar directive to provide in-app toolbars to edit/manage etc. for `<sxc-toolbar toolbar="...">` tags
 
 

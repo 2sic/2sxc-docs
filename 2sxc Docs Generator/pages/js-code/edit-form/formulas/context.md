@@ -15,7 +15,7 @@ The `context` contain additional information about the context we're running in.
   * `isSite`
   * `isGlobal`
 * `cache` - an object which is only for this function and will be persisted across calls - use it to save temporary values
-* `debug` - a true/false toggle if the form is in debug mode - Use this to show/hide really advanced fields. _new in 12.02_
+* `debug` - a true/false toggle if the form is in develop/debug mode - Use this to show/hide really advanced fields. _new in 12.02_
 * `target` - everything about the target of the formula - the current field
   * `type` = What the function processes `Field.Value` or `Field.Settings` (Future: `Form.Variable` etc.)
   * `name` - field name or setting-name, so `FirstName` or `Visible`

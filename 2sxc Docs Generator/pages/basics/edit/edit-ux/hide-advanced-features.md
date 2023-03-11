@@ -2,18 +2,18 @@
 uid: Basics.Browser.EditUx.HideAdvancedFeatures
 ---
 
-# Hide Advanced Features From Non-Admins 
+# Hide Advanced Features From Non-Admins
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-edit { visibility: visible; }</style>
 
-For many users 2sxc is too powerful, so there are various mechanisms for hiding the complexity from normal editors. 
+For many users 2sxc is too powerful, so there are various mechanisms for hiding the complexity from normal editors.
 
 ## Overview
 
 1. You can _auto-hide_ all advanced toolbar buttons using a special security group.
 2. You can create _custom toolbars_ for all users, or even for certain user groups inside a Razor template
-3. You can see even more advanced stuff by going into a special _debug mode_
+3. You can see even more advanced stuff by going into a special _developer mode_
 4. You can see more internal code and messages by loading the JS-Code unminified
 
 ## Auto-Hide Advanced Buttons From Non-Admins
@@ -22,9 +22,9 @@ This is very simple - 2sxc asks Dnn if there is a security group called **2sxc D
 
 ## Custom Toolbars
 
-You can create any kind of toolbar, and you can decide to show/hide which ever you want based on security roles in Dnn. This requires standard C# / Razor skills and is not explained more in detail right now. 
+You can create any kind of toolbar, and you can decide to show/hide which ever you want based on security roles in Dnn. This requires standard C# / Razor skills and is not explained more in detail right now.
 
-Note that you'll find some snippets which should help you in the snippets, to both check what group a user is in, and to generate various custom toolbars. 
+Note that you'll find some snippets which should help you in the snippets, to both check what group a user is in, and to generate various custom toolbars.
 
 
 ## Read also

@@ -11,11 +11,11 @@ uid: Basics.Edit.Formulas.Designer
   .context-box-summary .browser-edit-ui { visibility: visible; }
 </style>
 
-In the Edit-UI you can always enter a Debug-Mode to develop / debug your formulas using real life data. 
+In the Edit-UI you can always enter a Developer-Mode to develop / debug your formulas using real life data.
 
-## Enter Debug Mode
+## Enter Developer Mode
 
-When the edit form is open, press **Ctrl + Alt + Shift** (Ctrl + Option + Shift on Mac) and click anywhere in the form. The debug bar should appear. 
+When the edit form is open, press **Ctrl + Alt + Shift** (Ctrl + Option + Shift on Mac) and click anywhere in the form. The debug bar should appear.
 If you have difficulties, use [this checklist](https://azing.org/2sxc/r/Lh88MFoT).
 
 ## Select Formula to work On
@@ -43,11 +43,11 @@ These are the important parts in the UI:
 11. **Edit** to enter formula edit mode
 12. **Reset** the formula to what it was originally
 13. **Save** - this will only work if the configuration already contained save data ([limitation in v12.01](#limited-saving-capabilities))
-14. **Play** 
+14. **Play**
 
 ## Debugging
 
-By default, as soon as you're working on a formula, it will dump the `data`, `context` and `result` to the console once it's running. This is what that looks like (Make sure to enter debug mode in Chrome using F12):
+By default, as soon as you're working on a formula, it will dump the `data`, `context` and `result` to the console once it's running. This is what that looks like (Make sure to enter developer mode in Chrome using F12):
 
 <img src="./assets/consol-showing-designer-run-information.jpg" width="100%" class="full-width">
 
@@ -55,9 +55,9 @@ You can also to do additional debugging. For that please consult the [JavaScript
 
 ## Limited Saving Capabilities
 
-As of now the live-developer can be used to develop the formulas and you can _update_ formulas which had already existed. 
+As of now the live-developer can be used to develop the formulas and you can _update_ formulas which had already existed.
 
-As of v12.01 you cannot save new formulas. For this you'll need to copy-paste them manually to the Field-Settings. Once they have been created you can go back to the designer and change/save them from there. 
+As of v12.01 you cannot save new formulas. For this you'll need to copy-paste them manually to the Field-Settings. Once they have been created you can go back to the designer and change/save them from there.
 
 ---
 
