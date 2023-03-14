@@ -164,7 +164,21 @@ as specified.</p>
       <section><p>DataSource for importing/reading CSV files. </p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></h4>
-      <section><p>The base class, which should always be inherited. Already implements things like Get One / Get many, Caching and a lot more.</p>
+      <section><p>The base class for all DataSources, especially custom DataSources.
+It must always be inherited.
+It provides a lot of core functionality to get configurations, ensure caching and more.</p>
+<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a> DataSource for custom data sources.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.MyServices.html">DataSource.MyServices</a></h4>
+      <section><p>Services used by the <a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a>.
+This ensures that it&apos;s easy to inherit DataSources, while giving it all the services it needs even if the needs change with time.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSourceConstants.html">DataSourceConstants</a></h4>
+      <section><p>Various constants typically used in/for DataSources.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSourceErrorHelper.html">DataSourceErrorHelper</a></h4>
+      <section><p>An Errors-helper which is automatically available on all <a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a> objects.</p>
+<p>It helps create a stream of standardized error entities.</p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.DataTable.html">DataTable</a></h4>
       <section><p>Provide Entities from a System.Data.DataTable. <br>
@@ -267,6 +281,10 @@ Usually used in serialization scenarios.</p>
       <section><p>This helps a data source get configured.
 It manages all the properties which the data source will want to look up, as well as
 the LookUp engine which will perform the token resolution</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceFactory.html">IDataSourceFactory</a></h4>
+      <section><p>A factory to create / initialize data sources.</p>
+<p>Not meant for use in Razor code, but to be used in custom DataSources which may need other internal data sources to work.</p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></h4>
       <section><p>Represents a DataStream object. This is a stream of IEntity objects, which has a source and a name.

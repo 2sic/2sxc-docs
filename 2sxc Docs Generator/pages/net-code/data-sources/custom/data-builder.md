@@ -2,6 +2,12 @@
 uid: NetCode.DataSources.Custom.DataBuilder
 ---
 
+> [!IMPORTANT]
+> Before v15, the DataBuilder was used in custom DataSources to create entities.
+> In v15+ you should use the [IDataFactory](xref:ToSic.Eav.DataSources.IDataFactory) instead.
+>
+> The following docs are out of date and will be upgraded soon.
+
 # DataSource API: DataBuilder.Entity(...)
 
 Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where `DataBuilder.Entity(...)` helps. 

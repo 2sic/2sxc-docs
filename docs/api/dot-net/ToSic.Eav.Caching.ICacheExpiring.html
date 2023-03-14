@@ -144,17 +144,17 @@ public interface ICacheExpiring : ITimestamped</code></pre>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Caching_ICacheExpiring_CacheChanged_System_Int64_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Caching.ICacheExpiring.CacheChanged(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Caching/ICacheExpiring.cs/#L17">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Caching/ICacheExpiring.cs/#L20">View Source</a>
   </span>
   <a id="ToSic_Eav_Caching_ICacheExpiring_CacheChanged_" data-uid="ToSic.Eav.Caching.ICacheExpiring.CacheChanged*"></a>
   <h4 id="ToSic_Eav_Caching_ICacheExpiring_CacheChanged_System_Int64_" data-uid="ToSic.Eav.Caching.ICacheExpiring.CacheChanged(System.Int64)">CacheChanged(Int64)</h4>
-  <div class="markdown level1 summary"><p>Detect if the cache has old data, by comparing it to a timestamp which may be newer. <br>
-This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+  <div class="markdown level1 summary"><p>Detect if the cache has newer data.
+It&apos;s called using the TimeStamp of the dependent object which may still have old data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool CacheChanged(long newCacheTimeStamp)</code></pre>
+    <pre><code class="lang-csharp hljs">bool CacheChanged(long dependentTimeStamp)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,8 +168,8 @@ This is implemented in each object, because sometimes it compares its own timest
     <tbody>
       <tr>
         <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">newCacheTimeStamp</span></td>
-        <td><p>New time stamp to compare with</p>
+        <td><span class="parametername">dependentTimeStamp</span></td>
+        <td><p>New time stamp of a dependent object, which could have an older timestamp.</p>
 </td>
       </tr>
     </tbody>
@@ -190,6 +190,9 @@ This is implemented in each object, because sometimes it compares its own timest
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Eav_Caching_ICacheExpiring_CacheChanged_System_Int64__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+</div>
 </article>
           </div>
           

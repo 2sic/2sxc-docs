@@ -168,6 +168,22 @@ and we had a lot of hacky implementations to make it work.</p>
 <ol>
 <li>ToSic.Eav.DataSources.VisualQuery.VisualQueryAttribute -&gt; DataSources.Queries.VisualQueryAttribute</li>
 </ol>
+<h3 id="4-changes-in-provide-signature">4. Changes in Provide signature</h3>
+<p>Previously there were many <code>Provide(...)</code> methods but we reduced it to 2.
+Now you should use:</p>
+<ul>
+<li><code>Provide(function)</code> or the named stream <code>Provide(function, &quot;MyStream&quot;)</code></li>
+</ul>
+<p>Where <code>function</code> can be</p>
+<ol>
+<li><code>() =&gt; IEnumerable&lt;IEntity&gt;</code></li>
+<li><code>() =&gt; IImmutableList&lt;IEntity&gt;</code></li>
+</ol>
+<p>They will behave the same, but providing an <code>IImmutableList</code> is slightly more performant.</p>
+<h3 id="5-changes-in-how-configuration-is-retrieved">5. Changes in how Configuration is retrieved</h3>
+<p>Now it uses the attribute <code>[Configuration]</code> and <code>Configuration.GetThis()</code> and <code>Configuration.SetThis(value)</code>.</p>
+<h3 id="6-changes-in-error-handling">6. Changes in Error handling</h3>
+<p>TODO:</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>

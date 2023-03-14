@@ -170,6 +170,23 @@ But for all normal users it will have no effect at all.</p>
 <li>An internal property <code>IUser.Guid</code> was changed from <code>Guid?</code> to <code>Guid</code></li>
 <li>The <code>Users</code> DataSource had a property called <code>IncludeSystemAdmins</code> which was changed from <code>bool</code> to <code>string</code> to allow for more options</li>
 <li>The <code>Users</code> DataSource had a property called <code>RoleIds</code> which returned a non-standard string-array. It has been removed, and the new <code>Roles</code> returns standard related entities.</li>
+<li>Removed static <code>ToSic.Eav.Data.Build.Entity(...)</code> method which was deprecated in v12</li>
+</ol>
+<h4 id="api-changes-which-should-really-not-affect-you">API Changes which should really not affect you</h4>
+<p>These are internal APIs which we changed to make everything more immutable.
+They should never have been in use outside of the internal code.</p>
+<ol>
+<li>Changed <code>IValue.Languages</code> from <code>IList</code> to <code>IEnumerable</code> and made it immutable</li>
+<li>Change <code>IEntity.Attributes</code> from <code>Dictionary&lt;string, IAttribute&gt;</code> to <code>IImmutableDictionary&lt;string, IAttribute&gt;</code> as a step to later make it immutable</li>
+<li>Removed some old, probably never used APIs on <code>IAttribute&lt;T&gt;</code> such as<ul>
+<li><code>IAttribute&lt;T&gt;[int[] languageIDs]</code></li>
+<li><code>IAttribute&lt;T&gt;[string]</code></li>
+<li><code>IAttribute&lt;T&gt;[string[]]</code></li>
+<li><code>IAttribute[string[] languageKeys]</code> - was always marked as private</li>
+</ul>
+</li>
+<li>Changed the type of <code>Attribute.Type</code> from string to <code>ValueTypes</code> to make it more strongly typed</li>
+<li>Removed the property <code>Attribute.ControlledType</code> which previously contained the ValueType</li>
 </ol>
 <hr>
 <h2 id="breaking-changes-in-eav-and-2sxc-v14">Breaking Changes in EAV and 2sxc v14</h2>

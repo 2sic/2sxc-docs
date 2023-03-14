@@ -138,7 +138,7 @@ It also manages and caches relationships between entities of the same app.</p>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
-    <div><a class="xref" href="ToSic.Eav.Data.IEntitiesSource.html">IEntitiesSource</a></div>
+    <div><a class="xref" href="ToSic.Eav.Data.Source.IEntitiesSource.html">IEntitiesSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Metadata.IMetadataSource.html">IMetadataSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Caching.ICacheExpiring.html">ICacheExpiring</a></div>
     <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
@@ -361,7 +361,7 @@ Needed to pre-load file based content-types</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_List.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.List%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState_Entities.cs/#L17">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState_Entities.cs/#L18">View Source</a>
   </span>
   <a id="ToSic_Eav_Apps_AppState_List_" data-uid="ToSic.Eav.Apps.AppState.List*"></a>
   <h4 id="ToSic_Eav_Apps_AppState_List" data-uid="ToSic.Eav.Apps.AppState.List">List</h4>
@@ -492,13 +492,13 @@ Needed to pre-load file based content-types</p>
   </span>
   <a id="ToSic_Eav_Apps_AppState_CacheChanged_" data-uid="ToSic.Eav.Apps.AppState.CacheChanged*"></a>
   <h4 id="ToSic_Eav_Apps_AppState_CacheChanged_System_Int64_" data-uid="ToSic.Eav.Apps.AppState.CacheChanged(System.Int64)">CacheChanged(Int64)</h4>
-  <div class="markdown level1 summary"><p>Detect if the cache has old data, by comparing it to a timestamp which may be newer. <br>
-This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+  <div class="markdown level1 summary"><p>Detect if the cache has newer data.
+It&apos;s called using the TimeStamp of the dependent object which may still have old data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool CacheChanged(long newCacheTimeStamp)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool CacheChanged(long dependentTimeStamp)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -512,8 +512,8 @@ This is implemented in each object, because sometimes it compares its own timest
     <tbody>
       <tr>
         <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">newCacheTimeStamp</span></td>
-        <td><p>New time stamp to compare with</p>
+        <td><span class="parametername">dependentTimeStamp</span></td>
+        <td><p>New time stamp of a dependent object, which could have an older timestamp.</p>
 </td>
       </tr>
     </tbody>
@@ -534,6 +534,9 @@ This is implemented in each object, because sometimes it compares its own timest
       </tr>
     </tbody>
   </table>
+  <h5 id="ToSic_Eav_Apps_AppState_CacheChanged_System_Int64__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_DoInLock_ToSic_Lib_Logging_ILog_System_Action_.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.DoInLock(ToSic.Lib.Logging.ILog%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -822,13 +825,13 @@ public IContentType GetContentType(string name)</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_ToSic_Eav_Data_IEntitiesSource_List.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.ToSic%23Eav%23Data%23IEntitiesSource%23List%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Apps_AppState_ToSic_Eav_Data_Source_IEntitiesSource_List.md&amp;value=---%0Auid%3A%20ToSic.Eav.Apps.AppState.ToSic%23Eav%23Data%23Source%23IEntitiesSource%23List%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState_Entities.cs/#L33">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Apps/State/AppState_Entities.cs/#L34">View Source</a>
   </span>
-  <a id="ToSic_Eav_Apps_AppState_ToSic_Eav_Data_IEntitiesSource_List_" data-uid="ToSic.Eav.Apps.AppState.ToSic#Eav#Data#IEntitiesSource#List*"></a>
-  <h4 id="ToSic_Eav_Apps_AppState_ToSic_Eav_Data_IEntitiesSource_List" data-uid="ToSic.Eav.Apps.AppState.ToSic#Eav#Data#IEntitiesSource#List">IEntitiesSource.List</h4>
+  <a id="ToSic_Eav_Apps_AppState_ToSic_Eav_Data_Source_IEntitiesSource_List_" data-uid="ToSic.Eav.Apps.AppState.ToSic#Eav#Data#Source#IEntitiesSource#List*"></a>
+  <h4 id="ToSic_Eav_Apps_AppState_ToSic_Eav_Data_Source_IEntitiesSource_List" data-uid="ToSic.Eav.Apps.AppState.ToSic#Eav#Data#Source#IEntitiesSource#List">IEntitiesSource.List</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -855,7 +858,7 @@ public IContentType GetContentType(string name)</code></pre>
       <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.Data.IEntitiesSource.html">IEntitiesSource</a>
+      <a class="xref" href="ToSic.Eav.Data.Source.IEntitiesSource.html">IEntitiesSource</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.Metadata.IMetadataSource.html">IMetadataSource</a>

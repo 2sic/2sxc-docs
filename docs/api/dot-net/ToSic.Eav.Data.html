@@ -121,18 +121,7 @@
   <h1 id="ToSic_Eav_Data" data-uid="ToSic.Eav.Data" class="text-break">Namespace ToSic.Eav.Data
   </h1>
   <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"><p>The EAV Data system underlying 2sxc is the core data management system, in charge of Entities and such. For long term stability, we only use interfaces in the API. </p>
-<p>To better understand this stuff, best read about the <a class="xref" href="../../basics/data/index.html">Understanding Data...</a>.</p>
-<p><br></p>
-<div style="display: inline-block;">
-    <a class="xref" href="../../basics/data/index.html"><img src="../../basics/data/entities/specs/assets/entity.png" width="48%" align="left"></a>
-
-    <a class="xref" href="../../basics/data/index.html"><img src="../../basics/data/content-types/specs/assets/content-type-internal-structure.png" width="48%" align="right"></a>
-</div>
-
-<p><br></p>
-<p>In most cases you only care about the <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> interface and things below that.</p>
-</div>
+  <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
@@ -143,16 +132,6 @@ but when programming they should use typed objects to not accidentally access in
 </section>
       <h4><a class="xref" href="ToSic.Eav.Data.EntityBasedWithLog.html">EntityBasedWithLog</a></h4>
       <section><p>A strongly typed object which gets its data from an entity, and also logs what it does.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Data.LazyEntities.html">LazyEntities</a></h4>
-      <section><p>Delivers entities which are needed. <br>
-It&apos;s lazy, because on initialization it only knows the Ids (int/guid) of the items to pick up,
-and only retrieves them when needed. <br></p>
-<ul>
-<li>Once retrieved, it will cache the result, until the up-stream reports changes.</li>
-<li>An additional optimization: in special cases where we just need the IDs for saving,
-it won&apos;t actually query the cache if the IDs are already known.</li>
-</ul>
 </section>
       <h4><a class="xref" href="ToSic.Eav.Data.Value-1.html">Value&lt;T&gt;</a></h4>
       <section><p>Represents a typed Value object in the memory model</p>
@@ -186,11 +165,6 @@ Commonly used to convert entities to dictionaries etc. </p>
       <h4><a class="xref" href="ToSic.Eav.Data.IConvertEntity-1.html">IConvertEntity&lt;T&gt;</a></h4>
       <section><p>Convert an entity into another format</p>
 </section>
-      <h4><a class="xref" href="ToSic.Eav.Data.IDataBuilder.html">IDataBuilder</a></h4>
-      <section><p>A data builder which will generate items for a specific type.
-In many cases it will also take care of auto increasing the id and more.</p>
-<p>This is more efficient than using the bare bones <span class="xref">ToSic.Eav.Data.IDataBuilderInternal</span></p>
-</section>
       <h4><a class="xref" href="ToSic.Eav.Data.IDecorator.html">IDecorator</a></h4>
       <section><p>This marks add-on information for things which can be decorated.
 This allows taking something (like an <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and adding additional information for later processing</p>
@@ -202,9 +176,6 @@ This allows taking something (like an <a class="xref" href="ToSic.Eav.Data.IEnti
       <h4><a class="xref" href="ToSic.Eav.Data.IDimension.html">IDimension</a></h4>
       <section><p>Represents a Dimension to assign values to. Dimensions are usually languages (<a class="xref" href="ToSic.Eav.Data.ILanguage.html">ILanguage</a>),
 but in future they could also be multi-dimensional, like values which are mapped to a language <em>and</em> to a specific edition, use case, etc.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Data.IEntitiesSource.html">IEntitiesSource</a></h4>
-      <section><p>This marks something which can give a list of entities. Usually used for lazy-loading data, where the source is attached, but the data isn&apos;t loaded yet. </p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></h4>
       <section><p>The primary data-item in the system, IEntity is a generic data-item for any kind of information.
@@ -256,9 +227,6 @@ For the more powerful Entity, use <a class="xref" href="ToSic.Eav.Data.IEntity.h
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Eav/Eav.Data.md/#L2" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
