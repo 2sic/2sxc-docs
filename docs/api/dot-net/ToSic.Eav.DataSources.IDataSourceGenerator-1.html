@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Eav.Caching
+    <title>Interface IDataSourceGenerator&lt;TDataSource&gt;
    | 2sxc 15 / EAV 15 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Eav.Caching
+    <meta name="title" content="Interface IDataSourceGenerator&lt;TDataSource&gt;
    | 2sxc 15 / EAV 15 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,50 +116,113 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Eav.Caching">
+            <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataSources.IDataSourceGenerator`1">
   
-  <h1 id="ToSic_Eav_Caching" data-uid="ToSic.Eav.Caching" class="text-break">Namespace ToSic.Eav.Caching
+  
+  <h1 id="ToSic_Eav_DataSources_IDataSourceGenerator_1" data-uid="ToSic.Eav.DataSources.IDataSourceGenerator`1" class="text-break">Interface IDataSourceGenerator&lt;TDataSource&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"><p>Everything related to how the EAV caches stuff. Fairly internal tidbits, you probably won&#39;t need them.</p>
+  <div class="markdown level0 summary"><p>A factory/generator to create one specific kind of data source.</p>
+<p><em>Note: This is not meant for use in Razor code, but to be used in custom DataSources which may need other internal data sources to work.</em></p>
+<p>Where possible, use the Generator instead of the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceFactory.html">IDataSourceFactory</a>.
+The Generator makes it clearer when you only need to use a single typed DataSource and not need access to all kinds of DataSources.</p>
 </div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
+  <h5 id="ToSic_Eav_DataSources_IDataSourceGenerator_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public interface IDataSourceGenerator&lt;out TDataSource&gt;
+    where TDataSource : IDataSource</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDataSource</span></td>
+        <td><p>The type of the data source to be created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Eav_DataSources_IDataSourceGenerator_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Released in v15.04</p>
+</div>
+  <h3 id="methods">Methods
   </h3>
-      <h4><a class="xref" href="ToSic.Eav.Caching.AppsCacheBase.html">AppsCacheBase</a></h4>
-      <section><p>The Apps Cache is the main cache for App States. <br>
-This is just the abstract base implementation.
-The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.SynchronizedList-1.html">SynchronizedList&lt;T&gt;</a></h4>
-      <section><p>This is an IEnumerable which relies on an up-stream cache, which may change. That would require this IEnumerable to update what it delivers.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.SynchronizedObject-1.html">SynchronizedObject&lt;T&gt;</a></h4>
-      <section><p>WIP 12.03</p>
-</section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="ToSic.Eav.Caching.IAppsCache.html">IAppsCache</a></h4>
-      <section><p>Marks the objects which are responsible for caching <a class="xref" href="ToSic.Eav.Apps.AppState.html">AppState</a> in memory. <br>
-This is a very powerful system ensuring performance and more. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.ICacheDependent.html">ICacheDependent</a></h4>
-      <section><p>Marks something that is cache-dependent. Used for things that are themselves cached, but rely on an upstream cache. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.ICacheExpiring.html">ICacheExpiring</a></h4>
-      <section><p>Marks objects which are cache-based, and which may contain obsolete cached data.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.ICacheKey.html">ICacheKey</a></h4>
-      <section><p>Marks objects which can identify what cache it&apos;s for. <br>
-For example, when parameters change what data is cached, then the cache-key can contain this parameter,
-so that a different cache is used based on changing parameters. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.ICacheKeyManager.html">ICacheKeyManager</a></h4>
-      <section><p>Generates cache-keys for certain objects and combines them with CacheKeys of parent-objects which this object relies on.  </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></h4>
-      <section><p>Provides a time stamp when something was created / updated for caching. </p>
-</section>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceGenerator_1_New_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceGenerator%601.New(System.String%2CToSic.Eav.DataSources.IDataSource%2CToSic.Eav.Apps.IAppIdentity%2CToSic.Eav.LookUp.ILookUpEngine)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceGenerator.cs/#L30">View Source</a>
+  </span>
+  <a id="ToSic_Eav_DataSources_IDataSourceGenerator_1_New_" data-uid="ToSic.Eav.DataSources.IDataSourceGenerator`1.New*"></a>
+  <h4 id="ToSic_Eav_DataSources_IDataSourceGenerator_1_New_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_" data-uid="ToSic.Eav.DataSources.IDataSourceGenerator`1.New(System.String,ToSic.Eav.DataSources.IDataSource,ToSic.Eav.Apps.IAppIdentity,ToSic.Eav.LookUp.ILookUpEngine)">New(String, IDataSource, IAppIdentity, ILookUpEngine)</h4>
+  <div class="markdown level1 summary"><p>Preferred way to create DataSources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TDataSource New(string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, IDataSource source = null, IAppIdentity appIdentity = null, ILookUpEngine configSource = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>optional source to attach as <code>in</code> on the newly created data source. If provided, it can also provide <code>appIdentity</code> and <code>configSource</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></td>
+        <td><span class="parametername">appIdentity</span></td>
+        <td><p>optional identity, usually necessary if not <code>source</code> was specified</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></td>
+        <td><span class="parametername">configSource</span></td>
+        <td><p>optional configuration lookup if needed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataSource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -168,7 +231,10 @@ so that a different cache is used based on changing parameters. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Eav/Eav.Caching.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceGenerator_1.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceGenerator%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceGenerator.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
