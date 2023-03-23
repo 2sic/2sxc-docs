@@ -11,114 +11,60 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-01-31**
+Last Update: **2023-03-22**
 
-## Just Released v15.00 X-Mas 2022
-
-See [](xref:Abyss.Releases.History.V15)
-
-## January 2023 - Released v15.01
+## 2023 Q1 - Released v15.00 - 15.04
 
 👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
 
-## February 2023 - Released v15.02
 
-This was a quick release, no changes to report ATM, they will be reported in v15.03
+## March 2023
 
-also done:
+Todo to complete all these features in March
 
-1. ✅ Upgrade Blazor-CMS.org to use 2sxc 15.01 for real-life testing
-1. ✅ Create blog on Blazor-CMS.org
-1. ✅ Publish Tutorial in Blazor-CMS.org
-1. ✅ CSP Training at DNN Summit
-1. ✅ Image Perfectionist Training at DNN Summit
-
-
-## Done in 15.03 2023-02-21
-
-1. ✅ APIs
-    1. ✅ EntityId now has a OwnerId property
-    1. ✅ `Kit.Page.Activate(condition: bool, features: "...")`
-1. ✅ move to .net 6 (and drop .net standard 2.0) - almost done, last tests
-1. ✅ Bugs
-    1. ✅ RazorBlade json serialization https://github.com/2sic/2sxc/issues/2998
-    1. ✅ Support for use on DNN 404 pages
-    1. ✅ Date was off in date-picker
-1. ✅ FIPS compliance on encryption APIs
-1. ✅ DataSources
-    1. ✅ Pages DataSource
-        1. ✅ Improve Pages DataSource with `LinkTarget`
-        1. ✅ Improve Pages DataSource with internal ability to configure what to get
-        1. ✅ Improve Pages DataSource to have a UI to configure what to get - @2dm
-    1. ✅ Users DataSource Massively improved - with Roles and configurable
-    1. ✅ Roles DataSource improved
-1. ✅ Internal - Rework Getting-Started Server to be latest and greatest @2ro
-... and more see <https://github.com/2sic/2sxc/releases>
+1. ✅ improve IConfiguration API - lighten the `IDataSourceFactory` API
+1. Document CDN / Asset management
+1. Document Formula improvements
+1. Document new data sources API
+1. Standardize / complete `IDataBuilder` API
+1. finish Custom DataSources
+1. Remove setters on new DataSources
+    1. New Data Source `Scopes` - has none
+    1. New Data Source `MetadataTargetTypes` - none
+    1. New DataSource `Licenses` - with state - none
+    1. New DataSource `Features` - with state - none
+    1. New DataSource `Sites` - none
+    1. Users
+    1. Roles
+    1. AppFiles
+    1. AdamFiles
 
 ## Priorities for v15 LTS
 
 1. New WYSIWYG mode completed (and documented)
-1. New APIs for Data Sources finalized (and documented)
-    1. ✅ Public `IDataFactory` API
-1. Probably data-conversion of entities to json in attribute...
-1. ✅ Make everything internal immutable
+1. Data-conversion of entities to json in attribute...
+1. Improve Oqtane Pages DS to also respect settings - @STV
 
-## Planned for February 2023
 
-1. Bugs
-    1. 2sxc in DNN Skins on 404 pages https://github.com/2sic/2sxc/issues/2986
-    1. ...
-1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
-    1. ⏳ Angular 15 upgrade
-    1. ⏳ Angular Material upgrade
-    1. ⏳ AG DataGrid upgrade
-    1. ⏳ Improve / Refactor some public types code
-1. ⏳ Improve WYSIWYG
-    1. ✅ Ability to select which "mode" the editor is in, affecting toolbars
-    1. Allow selected mode to affect other things (like deny image-drop if in text-mode)
-    1. Sections to better align images
-    1. Use classes to determine size instead of styles
-    1. WYSIWYG Images which auto-resize on the server based on size (eg 1/2 of the screen)
+## Done but not communicated, or still tweaking / WIP
+
+1. Live DataSources
+1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
+1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
+1. Data Sources
+    1. ✅ Internal data source to get data from app parents
+    1. ✅ Internal Query to get data from app-parents
+    1. ✅ New DataSource `AppFiles`
+    1. ✅ New DataSource `AdamFiles`
+    1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
+    1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
+1. Create Wysiwyg Rich Mode
     1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
     1. ⏳ Create best practices CSS styling for `wysiwyg` content
-1. ✅ Query Improvements
-    1. ✅ Allow edit/new to be done in a query-selector
-    1. ✅ Get query to know if entity can be edited (based on AppId)
-1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
-1. Data Sources
-    1. ✅ Improve data sources for Pages - ca. 0.5d
-    1. ✅ New Data Source `Scopes`
-    1. ✅ New Query `Scopes`
-    1. ✅ New Data Source `MetadataTargetTypes`
-    1. ✅ New Query `MetadataTargetTypes`
-    1. ✅ Internal/WIP data source to get data from app parents
-    1. ✅ Internal/WIP Query to get data from app-parents
-    1. ✅ New (WIP) API for data sources to make data generation easier
-    1. ✅ New DataSource `Licenses` - with state
-    1. ✅ New Query `Licenses`
-    1. ✅ New DataSource `Features` - with state
-    1. ✅ New Query `Features`
-    1. ✅ New DataSource `Sites`
-    1. ✅ New Query `Sites`
-    1. ✅ Change internal key for `Settings` to something else, probably `MyConfig` or something (breaking) ⭐
-    1. ✅ New LookUp for Settings- and Resources-Stack - to use `Settings` and `Resources` ⭐
-    1. Pages DataSource
-        1. Improve Oqtane Pages DS to also respect settings - @STV
-    1. ⏳ New DataSource (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
-    1. ⏳ New Query (name TBD) `AppWithParentApps` to retrieve data from an App and all it's parent Apps for use in Settings etc.
-    1. ✅ Improved custom DataSources API - ca. 1d - 2dm ⭐
-    1. ⏳ Improve custom DataSource API with something like `ICanConvertToEntity` to make it easier to create data sources ⭐
-    1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
-    1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
-
-
-
-
-
-
-## Done but not officially communicated
-
 1. ✅ Compress Timeline: Feature to compress the existing history
+1. ⏳ Entity Serialization Improvements
+
+
 
 Minor: Tutorial App Enhancements
 
@@ -128,7 +74,7 @@ Minor: Tutorial App Enhancements
     1. Update docs
     1. Create migration instructions ?
 
-## February post LTS
+## Post LTS
 
 1. Improve WYSIWYG
     1. Ability to do more configuration on WYSIWYG
@@ -136,19 +82,12 @@ Minor: Tutorial App Enhancements
         1. ability to set various easy-to-set configuration
         1. Possibly ability to preset various configurations globally or at site-level and use in other places
 
-1. Formula improvements
-    1. ✅ Get App or global settings for formulas
-    1. ⏳ Better support for promises
-    1. ⏳ Ability to set the value of another field
-    1. ✅ Intellisense on Formulas
-1. ⏳ Entity Serialization Improvements
 1. Apps / App Maintenance: publish other new apps
     1. New timeline
     1. Files
     1. etc.
 1. CSP - ca. 5d
     1. ⏳ CSP Tutorials, docs and more
-1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 
 Blazor CMS / cre8magic
 
@@ -161,7 +100,7 @@ Minor: Tutorial App Enhancements
 1. Upgrade all template Apps to v15
 
 
-## Probably 2023 Q1
+## Probably 2023 Q2 April+
 
 2sxc
 
@@ -182,16 +121,12 @@ Minor: Tutorial App Enhancements
 1. Code editor intellisense for most APIs - ca. 3-4d
 1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
-1. Formulas - ca. 2d
-    1. Formula Boost #3 (intellisense in Formulas, entity-type info)
+1. Formulas
     1. JS Docs for formula
 1. Probably update ImageFlow again, if PNG resize bug is fixed
 1. Enable standard apps to be installed from catalog easily after first apps have been installed
     1. ✅ Feature to tell new auto-installer what apps are already installed
     1. App-Auto-Installer UI to add-install apps later on
-1. CSP
-    1. CSP for inline code - eg using nonce
-    1. CSP for the Edit UI incl. custom extensions etc.
 
 Blazor CMS / cre8magic
 
@@ -203,8 +138,11 @@ Blazor CMS / cre8magic
 
 ## Backlog 2023 v15
 
-New Stuf and Major Enhancements
+New Stuff and Major Enhancements
 
+1. CSP
+    1. CSP for inline code - eg using nonce
+    1. CSP for the Edit UI incl. custom extensions etc.
 1. Note-feature to add notes to various things like entities, fields etc. (show, persist show, add to all kinds of things, ...) - ca. 3d
 1. sxc-angular
     1. Re-release sxc-angular demo-app for it
@@ -213,11 +151,18 @@ New Stuf and Major Enhancements
 1. Language editing permissions - improve, test, finalize, document - ca. 3-5d
     1. also allow non-admins to possibly translate resources
 
-1. string-Dropdowns from many data sources like
+1. ⏳ Edit UI Picker (Entity, Number, String, etc.) - completely rework concept / system - SDV ca. 10d
+1. ⏳ Edit UI Picker - hierarchy / tree of data
+1. ⏳ string-Dropdowns from many data sources like
     1. CSVs
     1. WebService
     1. svg files icon-picker
 1. New Icon-Dropdowns from other data sources for better icons-support without fonts
+1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
+    1. ⏳ Angular 15 upgrade
+    1. ⏳ Angular Material upgrade
+    1. ⏳ AG DataGrid upgrade
+    1. ⏳ Improve / Refactor some public types code
 
 Apps / App Maintenance
 

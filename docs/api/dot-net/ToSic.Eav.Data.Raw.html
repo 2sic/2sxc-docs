@@ -123,13 +123,43 @@
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.RawConvertOptions.html">RawConvertOptions</a></h4>
+      <section><p>Options which may be needed to create new <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>s from <a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a>.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.RawEntity.html">RawEntity</a></h4>
+      <section><p>A ready-to-use <a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a> which receives all the data in the constructor.</p>
+<p>Use this for scenarios where you don&apos;t want to create your own IRawEntity but wish to return this kind of typed object.
+Typical use case is when you implement <a class="xref" href="ToSic.Eav.Data.Raw.IHasRawEntity-1.html">IHasRawEntity&lt;T&gt;</a></p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.RawEntityBase.html">RawEntityBase</a></h4>
+      <section><p>Base class for raw entities which makes implementations a bit simpler when not much is needed.
+For example, the dates default to now.</p>
+<p>You can inherit this class, but you can also just re-implement the interface yourself.
+Whatever works better for you.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.RawRelationship.html">RawRelationship</a></h4>
+      <section><p>Represents a relationship in a RawEntity.</p>
+<p>Basically you add such an object to your properties dictionary, containing the keys it needs to find its related items.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
-      <h4><a class="xref" href="ToSic.Eav.Data.Raw.IHasRawEntity.html">IHasRawEntity</a></h4>
-      <section></section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.IHasRawEntity-1.html">IHasRawEntity&lt;T&gt;</a></h4>
+      <section><p>Marks objects which are not <a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a>
+but can provide one for automatic conversion.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.IHasRelationshipKeys.html">IHasRelationshipKeys</a></h4>
+      <section><p>Mark objects of type <a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a> to also provide relationship keys.</p>
+<p>This is important to automatically create relationships between newly created <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>s</p>
+</section>
       <h4><a class="xref" href="ToSic.Eav.Data.Raw.IRawEntity.html">IRawEntity</a></h4>
       <section><p>This marks objects which have data prepared to be converted to Entities.</p>
 <p>Typically used for external data DataSources which get something and pass it to an Entity Builder.</p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.Data.Raw.IRawRelationship.html">IRawRelationship</a></h4>
+      <section><p>Marks raw relationships.
+This is internal, only used to mark <a class="xref" href="ToSic.Eav.Data.Raw.RawRelationship.html">RawRelationship</a> objects which are generic.</p>
 </section>
 </article>
           </div>

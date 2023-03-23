@@ -124,7 +124,7 @@
   <div class="markdown level0 summary"><p>The base class for all DataSources, especially custom DataSources.
 It must always be inherited.
 It provides a lot of core functionality to get configurations, ensure caching and more.</p>
-<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a> DataSource for custom data sources.</p>
+<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a> DataSource for custom data sources.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -138,10 +138,10 @@ It provides a lot of core functionality to get configurations, ensure caching an
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.AttributeFilter.html">AttributeFilter</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.AttributeRename.html">AttributeRename</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Caching.CacheAllStreams.html">CacheAllStreams</a></div>
+      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.EntityIdFilter.html">EntityIdFilter</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.EntityTypeFilter.html">EntityTypeFilter</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Error.html">Error</a></div>
-      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.ItemFilterDuplicates.html">ItemFilterDuplicates</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.LanguageModeler.html">LanguageModeler</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.OwnerFilter.html">OwnerFilter</a></div>
@@ -156,11 +156,7 @@ It provides a lot of core functionality to get configurations, ensure caching an
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.StreamFallback.html">StreamFallback</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.StreamPick.html">StreamPick</a></div>
-      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.Apps.html">Apps</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.Attributes.html">Attributes</a></div>
-      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.ContentTypes.html">ContentTypes</a></div>
-      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.Features.html">Features</a></div>
-      <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.Licenses.html">Licenses</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.MetadataTargetTypes.html">MetadataTargetTypes</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.QueryInfo.html">QueryInfo</a></div>
       <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.Sys.Scopes.html">Scopes</a></div>
@@ -175,6 +171,7 @@ It provides a lot of core functionality to get configurations, ensure caching an
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
@@ -183,15 +180,15 @@ It provides a lot of core functionality to get configurations, ensure caching an
     <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
     <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
   <h5 id="ToSic_Eav_DataSources_DataSource_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public abstract class DataSource : ServiceBase&lt;DataSource.MyServices&gt;, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
+public abstract class DataSource : ServiceBase&lt;DataSource.MyServices&gt;, IDataSource, IDataSourceSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataSourceTarget, IDataTarget, IDataSourceShared, IAppIdentitySync</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_DataSource_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Had a major, breaking update in v15.
@@ -204,7 +201,7 @@ Consult the guide to upgrade your custom data sources.</p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource__ctor_ToSic_Eav_DataSources_DataSource_MyServices_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.%23ctor(ToSic.Eav.DataSources.DataSource.MyServices%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L29">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L30">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource__ctor_" data-uid="ToSic.Eav.DataSources.DataSource.#ctor*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource__ctor_ToSic_Eav_DataSources_DataSource_MyServices_System_String_" data-uid="ToSic.Eav.DataSources.DataSource.#ctor(ToSic.Eav.DataSources.DataSource.MyServices,System.String)">DataSource(DataSource.MyServices, String)</h4>
@@ -245,7 +242,7 @@ To inherit this, make sure your new class also gets the <code>MyServices</code> 
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource__ctor_ToSic_Lib_Services_MyServicesBase_ToSic_Eav_DataSources_DataSource_MyServices__System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.%23ctor(ToSic.Lib.Services.MyServicesBase%7BToSic.Eav.DataSources.DataSource.MyServices%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L33">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L34">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource__ctor_" data-uid="ToSic.Eav.DataSources.DataSource.#ctor*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource__ctor_ToSic_Lib_Services_MyServicesBase_ToSic_Eav_DataSources_DataSource_MyServices__System_String_" data-uid="ToSic.Eav.DataSources.DataSource.#ctor(ToSic.Lib.Services.MyServicesBase{ToSic.Eav.DataSources.DataSource.MyServices},System.String)">DataSource(MyServicesBase&lt;DataSource.MyServices&gt;, String)</h4>
@@ -317,7 +314,7 @@ Always use this variable, don&apos;t ever write the name as a string, as it coul
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_AppId.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.AppId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L57">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L65">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource_AppId_" data-uid="ToSic.Eav.DataSources.DataSource.AppId*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource_AppId" data-uid="ToSic.Eav.DataSources.DataSource.AppId">AppId</h4>
@@ -425,7 +422,7 @@ It will be used when generating a unique ID for caching the data.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public List&lt;string&gt; CacheRelevantConfigurations { get; set; }</code></pre>
+public List&lt;string&gt; CacheRelevantConfigurations { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -513,7 +510,7 @@ which provides these values. </p>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_Error.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.Error%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L68">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L76">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource_Error_" data-uid="ToSic.Eav.DataSources.DataSource.Error*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource_Error" data-uid="ToSic.Eav.DataSources.DataSource.Error">Error</h4>
@@ -544,7 +541,7 @@ public DataSourceErrorHelper Error { get; }</code></pre>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_Guid.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.Guid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L63">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L71">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource_Guid_" data-uid="ToSic.Eav.DataSources.DataSource.Guid*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource_Guid" data-uid="ToSic.Eav.DataSources.DataSource.Guid">Guid</h4>
@@ -553,7 +550,7 @@ public DataSourceErrorHelper Error { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid Guid { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Guid Guid { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -706,7 +703,7 @@ public IEnumerable&lt;IEntity&gt; List { get; }</code></pre>
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_Name.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L51">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L52">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource_Name_" data-uid="ToSic.Eav.DataSources.DataSource.Name*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource_Name" data-uid="ToSic.Eav.DataSources.DataSource.Name">Name</h4>
@@ -772,7 +769,7 @@ public virtual IDictionary&lt;string, IDataStream&gt; Out { get; protected set; 
     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_ZoneId.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.ZoneId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L60">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource.cs/#L68">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_DataSource_ZoneId_" data-uid="ToSic.Eav.DataSources.DataSource.ZoneId*"></a>
   <h4 id="ToSic_Eav_DataSources_DataSource_ZoneId" data-uid="ToSic.Eav.DataSources.DataSource.ZoneId">ZoneId</h4>
@@ -1042,7 +1039,7 @@ Set to <code>false</code> for parameters which don&apos;t affect the result or a
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public IDataStream GetStream(string name = null, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, bool nullIfNotFound = false, bool emptyIfNotFound = false)</code></pre>
+public IDataStream GetStream(string name = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, bool nullIfNotFound = false, bool emptyIfNotFound = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1099,7 +1096,7 @@ public IDataStream GetStream(string name = null, string noParamOrder = &quot;Rul
   <h5 id="ToSic_Eav_DataSources_DataSource_GetStream_System_String_System_String_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><ol>
 <li>Added in 2sxc 12.05</li>
-<li>for more in-depth checking if a stream exists, you can access the <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html#ToSic_Eav_DataSources_IDataSource_Out">Out</a> which is an IDictionary</li>
+<li>for more in-depth checking if a stream exists, you can access the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html#ToSic_Eav_DataSources_IDataSourceSource_Out">Out</a> which is an IDictionary</li>
 </ol>
 </div>
   <h5 class="exceptions">Exceptions</h5>
@@ -1120,13 +1117,13 @@ public IDataStream GetStream(string name = null, string noParamOrder = &quot;Rul
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.Provide(System.Func%7BSystem.Collections.Generic.IEnumerable%7BToSic.Eav.Data.IEntity%7D%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.ProvideOut(System.Func%7BSystem.Collections.Generic.IEnumerable%7BToSic.Eav.Data.IEntity%7D%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource_Provide.cs/#L21">View Source</a>
   </span>
-  <a id="ToSic_Eav_DataSources_DataSource_Provide_" data-uid="ToSic.Eav.DataSources.DataSource.Provide*"></a>
-  <h4 id="ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSources.DataSource.Provide(System.Func{System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity}},System.String)">Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</h4>
+  <a id="ToSic_Eav_DataSources_DataSource_ProvideOut_" data-uid="ToSic.Eav.DataSources.DataSource.ProvideOut*"></a>
+  <h4 id="ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSources.DataSource.ProvideOut(System.Func{System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity}},System.String)">ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</h4>
   <div class="markdown level1 summary"><p>Provide a function to get the data which this DataSource offers.</p>
 <p>This is the more generic <code>IEnumerable</code> implementation.
 We recommend using the IImmutableList overload as it allows the system to optimize more.</p>
@@ -1135,7 +1132,7 @@ We recommend using the IImmutableList overload as it allows the system to optimi
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-protected void Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt; getList, string name = &quot;Default&quot;)</code></pre>
+protected void ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt; getList, string name = &quot;Default&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1163,13 +1160,13 @@ protected void Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt; getList, string na
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.Provide(System.Func%7BSystem.Collections.Immutable.IImmutableList%7BToSic.Eav.Data.IEntity%7D%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.DataSource.ProvideOut(System.Func%7BSystem.Collections.Immutable.IImmutableList%7BToSic.Eav.Data.IEntity%7D%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/DataSource/DataSource_Provide.cs/#L32">View Source</a>
   </span>
-  <a id="ToSic_Eav_DataSources_DataSource_Provide_" data-uid="ToSic.Eav.DataSources.DataSource.Provide*"></a>
-  <h4 id="ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSources.DataSource.Provide(System.Func{System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity}},System.String)">Provide(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</h4>
+  <a id="ToSic_Eav_DataSources_DataSource_ProvideOut_" data-uid="ToSic.Eav.DataSources.DataSource.ProvideOut*"></a>
+  <h4 id="ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSources.DataSource.ProvideOut(System.Func{System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity}},System.String)">ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</h4>
   <div class="markdown level1 summary"><p>Provide a function to get the data which this DataSource offers.</p>
 <p>This is the <code>ImmutableList</code> implementation, which is recommended.</p>
 </div>
@@ -1177,7 +1174,7 @@ protected void Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt; getList, string na
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-protected void Provide(Func&lt;IImmutableList&lt;IEntity&gt;&gt; getList, string name = &quot;Default&quot;)</code></pre>
+protected void ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt; getList, string name = &quot;Default&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1313,6 +1310,9 @@ public IImmutableList&lt;IEntity&gt; TryGetIn(string name = &quot;Default&quot;)
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
   </div>
   <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a>
+  </div>
+  <div>
       <a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a>
   </div>
   <div>
@@ -1337,10 +1337,10 @@ public IImmutableList&lt;IEntity&gt; TryGetIn(string name = &quot;Default&quot;)
       <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a>
   </div>
 </article>
           </div>

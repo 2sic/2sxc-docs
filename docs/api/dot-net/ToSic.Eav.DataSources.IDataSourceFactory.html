@@ -129,7 +129,7 @@
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
   <h5 id="ToSic_Eav_DataSources_IDataSourceFactory_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
 public interface IDataSourceFactory</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_IDataSourceFactory_remarks"><strong>Remarks</strong></h5>
@@ -139,20 +139,20 @@ public interface IDataSourceFactory</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.Create(System.Type%2CSystem.String%2CToSic.Eav.DataSources.IDataSource%2CToSic.Eav.Apps.IAppIdentity%2CToSic.Eav.LookUp.ILookUpEngine)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_DataSources_IDataSourceOptions_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.Create(System.Type%2CSystem.String%2CToSic.Eav.DataSources.IDataSource%2CToSic.Eav.DataSources.IDataSourceOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L33">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L30">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_IDataSourceFactory_Create_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create*"></a>
-  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create(System.Type,System.String,ToSic.Eav.DataSources.IDataSource,ToSic.Eav.Apps.IAppIdentity,ToSic.Eav.LookUp.ILookUpEngine)">Create(Type, String, IDataSource, IAppIdentity, ILookUpEngine)</h4>
+  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_DataSources_IDataSourceOptions_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create(System.Type,System.String,ToSic.Eav.DataSources.IDataSource,ToSic.Eav.DataSources.IDataSourceOptions)">Create(Type, String, IDataSource, IDataSourceOptions)</h4>
   <div class="markdown level1 summary"><p>Get DataSource for specified sourceName/Type.</p>
 <p><em>Note that this is not the preferred way to do things - if possible, use the generic Create below.</em></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IDataSource Create(Type type, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, IDataSource source = null, IAppIdentity appIdentity = null, ILookUpEngine configSource = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IDataSource Create(Type type, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, IDataSource source = null, IDataSourceOptions options = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -179,18 +179,12 @@ public interface IDataSourceFactory</code></pre>
       <tr>
         <td><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></td>
         <td><span class="parametername">source</span></td>
-        <td><p>optional source to attach as <code>in</code> on the newly created data source. If provided, it can also provide <code>appIdentity</code> and <code>configSource</code></p>
+        <td><p>optional source to attach as <code>in</code> on the newly created data source. It can also provide <code>AppIdentity</code> and <code>LookUp</code></p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></td>
-        <td><span class="parametername">appIdentity</span></td>
-        <td><p>optional identity, usually necessary if <code>source</code> was not specified</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></td>
-        <td><span class="parametername">configSource</span></td>
+        <td><span class="xref">ToSic.Eav.DataSources.IDataSourceOptions</span></td>
+        <td><span class="parametername">options</span></td>
         <td><p>optional configuration lookup if needed</p>
 </td>
       </tr>
@@ -212,24 +206,24 @@ public interface IDataSourceFactory</code></pre>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine__remarks">Remarks</h5>
+  <h5 id="ToSic_Eav_DataSources_IDataSourceFactory_Create_System_Type_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_DataSources_IDataSourceOptions__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Released in v15.04</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_Create__1_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.Create%60%601(System.String%2CToSic.Eav.DataSources.IDataSource%2CToSic.Eav.Apps.IAppIdentity%2CToSic.Eav.LookUp.ILookUpEngine)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_Create__1_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_DataSources_IDataSourceOptions_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.Create%60%601(System.String%2CToSic.Eav.DataSources.IDataSource%2CToSic.Eav.DataSources.IDataSourceOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L49">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L44">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_IDataSourceFactory_Create_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create*"></a>
-  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_Create__1_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_Apps_IAppIdentity_ToSic_Eav_LookUp_ILookUpEngine_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create``1(System.String,ToSic.Eav.DataSources.IDataSource,ToSic.Eav.Apps.IAppIdentity,ToSic.Eav.LookUp.ILookUpEngine)">Create&lt;TDataSource&gt;(String, IDataSource, IAppIdentity, ILookUpEngine)</h4>
+  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_Create__1_System_String_ToSic_Eav_DataSources_IDataSource_ToSic_Eav_DataSources_IDataSourceOptions_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.Create``1(System.String,ToSic.Eav.DataSources.IDataSource,ToSic.Eav.DataSources.IDataSourceOptions)">Create&lt;TDataSource&gt;(String, IDataSource, IDataSourceOptions)</h4>
   <div class="markdown level1 summary"><p>Preferred way to create DataSources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataSource Create&lt;TDataSource&gt;(string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, IDataSource source = null, IAppIdentity appIdentity = null, ILookUpEngine configSource = null)
+    <pre><code class="lang-csharp hljs">TDataSource Create&lt;TDataSource&gt;(string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, IDataSource source = null, IDataSourceOptions options = null)
     where TDataSource : IDataSource</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -251,18 +245,12 @@ public interface IDataSourceFactory</code></pre>
       <tr>
         <td><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></td>
         <td><span class="parametername">source</span></td>
-        <td><p>optional source to attach as <code>in</code> on the newly created data source. If provided, it can also provide <code>appIdentity</code> and <code>configSource</code></p>
+        <td><p>optional source to attach as <code>in</code> on the newly created data source. It can also provide <code>AppIdentity</code> and <code>LookUp</code></p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></td>
-        <td><span class="parametername">appIdentity</span></td>
-        <td><p>optional identity, usually necessary if not <code>source</code> was specified</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></td>
-        <td><span class="parametername">configSource</span></td>
+        <td><span class="xref">ToSic.Eav.DataSources.IDataSourceOptions</span></td>
+        <td><span class="parametername">options</span></td>
         <td><p>optional configuration lookup if needed</p>
 </td>
       </tr>
@@ -301,19 +289,19 @@ public interface IDataSourceFactory</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_CreateDefault_ToSic_Eav_Apps_IAppIdentity_System_String_System_Nullable_System_Boolean__ToSic_Eav_LookUp_ILookUpEngine_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.CreateDefault(ToSic.Eav.Apps.IAppIdentity%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CToSic.Eav.LookUp.ILookUpEngine)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory_CreateDefault_ToSic_Eav_DataSources_IDataSourceOptions_.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory.CreateDefault(ToSic.Eav.DataSources.IDataSourceOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L63">View Source</a>
+    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L54">View Source</a>
   </span>
   <a id="ToSic_Eav_DataSources_IDataSourceFactory_CreateDefault_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.CreateDefault*"></a>
-  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_CreateDefault_ToSic_Eav_Apps_IAppIdentity_System_String_System_Nullable_System_Boolean__ToSic_Eav_LookUp_ILookUpEngine_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.CreateDefault(ToSic.Eav.Apps.IAppIdentity,System.String,System.Nullable{System.Boolean},ToSic.Eav.LookUp.ILookUpEngine)">CreateDefault(IAppIdentity, String, Nullable&lt;Boolean&gt;, ILookUpEngine)</h4>
+  <h4 id="ToSic_Eav_DataSources_IDataSourceFactory_CreateDefault_ToSic_Eav_DataSources_IDataSourceOptions_" data-uid="ToSic.Eav.DataSources.IDataSourceFactory.CreateDefault(ToSic.Eav.DataSources.IDataSourceOptions)">CreateDefault(IDataSourceOptions)</h4>
   <div class="markdown level1 summary"><p>Gets a <code>Default</code> DataSource for a specific app. This is a <a class="xref" href="ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter</a> data source which returns the data the current user is allowed to see.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IDataSource CreateDefault(IAppIdentity appIdentity, string noParamOrder = &quot;Rule: All params must be named (https://r.2sxc.org/named-params)&quot;, bool? showDrafts = default(bool? ), ILookUpEngine configSource = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IDataSource CreateDefault(IDataSourceOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -326,27 +314,9 @@ public interface IDataSourceFactory</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></td>
-        <td><span class="parametername">appIdentity</span></td>
-        <td><p>identity, <strong>required</strong></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">noParamOrder</span></td>
-        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">showDrafts</span></td>
-        <td><p>optional override whether Draft Entities should be returned</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></td>
-        <td><span class="parametername">configSource</span></td>
-        <td><p>optional configuration lookup if needed</p>
+        <td><span class="xref">ToSic.Eav.DataSources.IDataSourceOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>required configuration - must at least have an <code>AppIdentity</code></p>
 </td>
       </tr>
     </tbody>
@@ -378,7 +348,7 @@ public interface IDataSourceFactory</code></pre>
                     <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_IDataSourceFactory.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.IDataSourceFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/Factory/IDataSourceFactory.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

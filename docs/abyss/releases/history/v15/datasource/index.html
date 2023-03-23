@@ -169,10 +169,10 @@ and we had a lot of hacky implementations to make it work.</p>
 <li>ToSic.Eav.DataSources.VisualQuery.VisualQueryAttribute -&gt; DataSources.Queries.VisualQueryAttribute</li>
 </ol>
 <h3 id="4-changes-in-provide-signature">4. Changes in Provide signature</h3>
-<p>Previously there were many <code>Provide(...)</code> methods but we reduced it to 2.
+<p>Previously there were many <code>Provide(...)</code> methods but we reduced it to 2 and renamed to <code>ProvideOut</code> for better readability.
 Now you should use:</p>
 <ul>
-<li><code>Provide(function)</code> or the named stream <code>Provide(function, &quot;MyStream&quot;)</code></li>
+<li><code>ProvideOut(function)</code> or the named stream <code>ProvideOut(function, &quot;MyStream&quot;)</code></li>
 </ul>
 <p>Where <code>function</code> can be</p>
 <ol>
@@ -182,8 +182,16 @@ Now you should use:</p>
 <p>They will behave the same, but providing an <code>IImmutableList</code> is slightly more performant.</p>
 <h3 id="5-changes-in-how-configuration-is-retrieved">5. Changes in how Configuration is retrieved</h3>
 <p>Now it uses the attribute <code>[Configuration]</code> and <code>Configuration.GetThis()</code> and <code>Configuration.SetThis(value)</code>.</p>
-<h3 id="6-changes-in-error-handling">6. Changes in Error handling</h3>
-<p>TODO:</p>
+<h3 id="6-changes-in-visualquery-attribute">6. Changes in VisualQuery attribute</h3>
+<ol>
+<li><code>GlobalName</code> is now <code>NameId</code></li>
+<li><code>PreviousNames</code> is now <code>NameIds</code></li>
+</ol>
+<h3 id="7-changes-in-error-handling">7. Changes in Error handling</h3>
+<ol>
+<li>Use <code>TryGetIn()</code> to see if an in-stream exists and get the data</li>
+<li>TODO:</li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ul>

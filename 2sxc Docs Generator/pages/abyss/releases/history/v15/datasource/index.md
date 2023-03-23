@@ -75,10 +75,10 @@ Also
 
 ### 4. Changes in Provide signature
 
-Previously there were many `Provide(...)` methods but we reduced it to 2.
+Previously there were many `Provide(...)` methods but we reduced it to 2 and renamed to `ProvideOut` for better readability.
 Now you should use:
 
-* `Provide(function)` or the named stream `Provide(function, "MyStream")`
+* `ProvideOut(function)` or the named stream `ProvideOut(function, "MyStream")`
 
 Where `function` can be
 
@@ -91,8 +91,15 @@ They will behave the same, but providing an `IImmutableList` is slightly more pe
 
 Now it uses the attribute `[Configuration]` and `Configuration.GetThis()` and `Configuration.SetThis(value)`.
 
-### 6. Changes in Error handling
+### 6. Changes in VisualQuery attribute
 
+1. `GlobalName` is now `NameId`
+1. `PreviousNames` is now `NameIds`
+
+### 7. Changes in Error handling
+
+1. Use `TryGetIn()` to see if an in-stream exists and get the data
+1. 
 TODO:
 
 

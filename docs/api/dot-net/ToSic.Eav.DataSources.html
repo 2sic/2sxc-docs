@@ -163,11 +163,16 @@ as specified.</p>
       <h4><a class="xref" href="ToSic.Eav.DataSources.CsvDataSource.html">CsvDataSource</a></h4>
       <section><p>DataSource for importing/reading CSV files. </p>
 </section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></h4>
+      <section><p>Base DataSource class for providing data from external sources.
+This is the advanced base class which is more complex.
+You will usually want to use the CustomDataSourceLight</p>
+</section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></h4>
       <section><p>The base class for all DataSources, especially custom DataSources.
 It must always be inherited.
 It provides a lot of core functionality to get configurations, ensure caching and more.</p>
-<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a> DataSource for custom data sources.</p>
+<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a> DataSource for custom data sources.</p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.MyServices.html">DataSource.MyServices</a></h4>
       <section><p>Services used by the <a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a>.
@@ -193,9 +198,6 @@ This is not meant for VisualQuery, but for code which pre-processes data in a Da
       <h4><a class="xref" href="ToSic.Eav.DataSources.Error.html">Error</a></h4>
       <section><p>Internal DataSource to generate an error on purpose.
 This is to test / verify error handling in VisualQuery. See also <a class="xref" href="../../basics/query/debug/index.html">VisualQuery 3: Debugging</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></h4>
-      <section><p>Base DataSource class for providing data from external sources.</p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.ItemFilterDuplicates.html">ItemFilterDuplicates</a></h4>
       <section><p>A DataSource that removes duplicate items in a Stream. Often used after a StreamMerge.</p>
@@ -271,11 +273,10 @@ It&apos;s just like a normal <a class="xref" href="ToSic.Eav.DataSources.IDataSo
 <p>This will always return some kind of dictionary with stream-names and the converted items as sub-lists. 
 Usually used in serialization scenarios.</p>
 </section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></h4>
-      <section><p>Shared properties of IDataSource and IDataTarget</p>
-</section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></h4>
-      <section><p>Public interface for an Eav DataSource. All DataSource objects are based on this. </p>
+      <section><p>Public interface for an Eav DataSource.
+All DataSource objects are based on this.
+It is based on both the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a> and <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceConfiguration.html">IDataSourceConfiguration</a></h4>
       <section><p>This helps a data source get configured.
@@ -292,13 +293,19 @@ the LookUp engine which will perform the token resolution</p>
 <p>Where possible, use the Generator instead of the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceFactory.html">IDataSourceFactory</a>.
 The Generator makes it clearer when you only need to use a single typed DataSource and not need access to all kinds of DataSources.</p>
 </section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a></h4>
+      <section><p>Shared properties of <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a> and <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a></h4>
+      <section><p>Public interface for an Eav DataSource. All DataSource objects are based on this. </p>
+</section>
+      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></h4>
+      <section><p>Represents a data source that can be the recipient of Data.
+This basically means it has an In <a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></p>
+</section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></h4>
       <section><p>Represents a DataStream object. This is a stream of IEntity objects, which has a source and a name.
 A stream can be read from, and it can be attached to upstream data-sources for further processing.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></h4>
-      <section><p>Represents a data source that can be the recipient of Data.
-This basically means it has an In <a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></p>
 </section>
 </article>
           </div>

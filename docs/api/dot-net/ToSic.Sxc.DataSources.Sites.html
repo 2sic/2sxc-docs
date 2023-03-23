@@ -132,12 +132,14 @@
     <div class="level1"><span class="xref">ToSic.Lib.Services.ServiceBase</span></div>
     <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSources.DataSource.MyServices.html">DataSource.MyServices</a>&gt;</div>
     <div class="level3"><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></div>
-    <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.ExternalData.html">ExternalData</a></div>
-    <div class="level5"><span class="xref">Sites</span></div>
+    <div class="level4"><a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
+    <div class="level5"><span class="xref">ToSic.Eav.DataSources.CustomDataSourceLight</span></div>
+    <div class="level6"><span class="xref">Sites</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
@@ -146,13 +148,16 @@
     <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
     <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.ExternalData.html#ToSic_Eav_DataSources_ExternalData_CacheTimestamp">ExternalData.CacheTimestamp</a>
+      <a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html#ToSic_Eav_DataSources_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html#ToSic_Eav_DataSources_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Name">DataSource.Name</a>
@@ -221,10 +226,10 @@
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Attach_System_String_ToSic_Eav_DataSources_IDataStream_">DataSource.Attach(String, IDataStream)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSource.Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSource.ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSource.Provide(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSource.ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.DataSources.html">ToSic.Sxc.DataSources</a></h6>
@@ -232,12 +237,15 @@
   <h5 id="ToSic_Sxc_DataSources_Sites_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-[VisualQuery(ExpectsDataOfType = &quot;&quot;, GlobalName = &quot;a11c28fb-7d8d-40a2-a22c-50beaa019e41&quot;, HelpLink = &quot;https://r.2sxc.org/ds-sites&quot;, Icon = &quot;public&quot;, NiceName = &quot;Sites&quot;, Type = DataSourceType.Source, UiHint = &quot;Sites in this CMS&quot;)]
-public class Sites : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
+[VisualQuery(ConfigurationType = &quot;&quot;, NameId = &quot;a11c28fb-7d8d-40a2-a22c-50beaa019e41&quot;, HelpLink = &quot;https://r.2sxc.org/ds-sites&quot;, Icon = &quot;public&quot;, NiceName = &quot;Sites&quot;, Type = DataSourceType.Source, UiHint = &quot;Sites in this CMS&quot;)]
+public class Sites : CustomDataSourceLight, IDataSource, IDataSourceSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataSourceTarget, IDataTarget, IDataSourceShared, IAppIdentitySync</code></pre>
   </div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a>
@@ -264,10 +272,10 @@ public class Sites : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAp
       <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a>
   </div>
 </article>
           </div>
@@ -280,7 +288,7 @@ public class Sites : ExternalData, IDataSource, IAppIdentity, IZoneIdentity, IAp
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_Sites.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.Sites%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Sites.cs/#L25" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/Sites.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

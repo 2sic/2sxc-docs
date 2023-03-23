@@ -136,6 +136,7 @@ Tell it where/how the relationships are mapped, and it will create Entities that
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
@@ -144,8 +145,8 @@ Tell it where/how the relationships are mapped, and it will create Entities that
     <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
     <div><a class="xref" href="ToSic.Eav.DataSources.Caching.ICanPurgeListCache.html">ICanPurgeListCache</a></div>
     <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a></div>
-    <div><a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></div>
+    <div><a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -219,19 +220,19 @@ Tell it where/how the relationships are mapped, and it will create Entities that
       <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Attach_System_String_ToSic_Eav_DataSources_IDataStream_">DataSource.Attach(String, IDataStream)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSource.Provide(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSource.ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_Provide_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSource.Provide(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSources.DataSource.html#ToSic_Eav_DataSources_DataSource_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSource.ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
   <h5 id="ToSic_Eav_DataSources_TreeModeler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[VisualQuery(GlobalName = &quot;58cfcbd6-e2ae-40f7-9acf-ac8d758adff9&quot;, NiceName = &quot;Relationship/Tree Modeler&quot;, UiHint = &quot;Connect items to create relationships or trees&quot;, Icon = &quot;account_tree&quot;, PreviousNames = new string[]{&quot;58cfcbd6-e2ae-40f7-9acf-ac8d758adff9&quot;, &quot;ToSic.Eav.DataSources.TreeBuilder, ToSic.Eav.DataSources.SharePoint&quot;}, Type = DataSourceType.Modify, ExpectsDataOfType = &quot;d167054a-fe0f-4e98-b1f1-0a9990873e86&quot;, In = new string[]{&quot;Default*&quot;}, HelpLink = &quot;https://r.2sxc.org/DsTreeModeler&quot;)]
+    <pre><code class="lang-csharp hljs">[VisualQuery(NameId = &quot;58cfcbd6-e2ae-40f7-9acf-ac8d758adff9&quot;, NiceName = &quot;Relationship/Tree Modeler&quot;, UiHint = &quot;Connect items to create relationships or trees&quot;, Icon = &quot;account_tree&quot;, NameIds = new string[]{&quot;58cfcbd6-e2ae-40f7-9acf-ac8d758adff9&quot;, &quot;ToSic.Eav.DataSources.TreeBuilder, ToSic.Eav.DataSources.SharePoint&quot;}, Type = DataSourceType.Modify, ConfigurationType = &quot;d167054a-fe0f-4e98-b1f1-0a9990873e86&quot;, In = new string[]{&quot;Default*&quot;}, HelpLink = &quot;https://r.2sxc.org/DsTreeModeler&quot;)]
 [PublicApi(&quot;Brand new in v11.20, WIP, may still change a bit&quot;)]
-public sealed class TreeModeler : DataSource, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IDataPartShared</code></pre>
+public sealed class TreeModeler : DataSource, IDataSource, IDataSourceSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataSourceTarget, IDataTarget, IDataSourceShared, IAppIdentitySync</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_TreeModeler_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>New in v11.20</p>
@@ -372,6 +373,9 @@ public string ParentReferenceField { get; set; }</code></pre>
       <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a>
   </div>
   <div>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a>
+  </div>
+  <div>
       <a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a>
   </div>
   <div>
@@ -396,10 +400,10 @@ public string ParentReferenceField { get; set; }</code></pre>
       <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataTarget.html">IDataTarget</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Eav.DataSources.IDataPartShared.html">IDataPartShared</a>
+      <a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a>
   </div>
 </article>
           </div>
