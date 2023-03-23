@@ -28,16 +28,6 @@ Todo to complete all these features in March
 1. Document new data sources API
 1. Standardize / complete `IDataBuilder` API
 1. finish Custom DataSources
-1. Remove setters on new DataSources
-    1. New Data Source `Scopes` - has none
-    1. New Data Source `MetadataTargetTypes` - none
-    1. New DataSource `Licenses` - with state - none
-    1. New DataSource `Features` - with state - none
-    1. New DataSource `Sites` - none
-    1. Users
-    1. Roles
-    1. AppFiles
-    1. AdamFiles
 
 ## Priorities for v15 LTS
 
@@ -60,7 +50,7 @@ Todo to complete all these features in March
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
 1. Create Wysiwyg Rich Mode
     1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
-    1. ⏳ Create best practices CSS styling for `wysiwyg` content
+    1. ✅ Create best practices CSS styling for `wysiwyg` content
 1. ✅ Compress Timeline: Feature to compress the existing history
 1. ⏳ Entity Serialization Improvements
 

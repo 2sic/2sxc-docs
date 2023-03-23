@@ -8,10 +8,10 @@ There are many programming paradigms.
 One that's become very important to us is **functional** programming.
 
 This means that code (usually functions) will have inputs and outputs, but no side effects.
-
 This also means that an object which must be modified will be copied into a new object, with the modifications applied.
 The original object is never modified.
 In most cases it will be discarded.
+This is strongly related to [immutability](xref:NetCode.Conventions.Immutable)
 
 > [!IMPORTANT]
 > This was not always our approach, so some of the code is still not functional.
@@ -39,4 +39,4 @@ In the end, the quality and robustness of our application is much better.
 
 Coverage: ca. 100% of relevant objects implement this
 
-Shortlink: https://r.2sxc.org/unknown-implementations
+Shortlink: <https://r.2sxc.org/functional>
