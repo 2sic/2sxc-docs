@@ -184,7 +184,7 @@ These are all the data sources which are either provided in the default installa
 
 
   <tr>
-    <td>[Serialization Configuration](xref:ToSic.Eav.DataSources.SerializationConfiguration)</a></td>
+    <td>[Serialization Configuration](xref:ToSic.Eav.DataSources.Serialization)</a></td>
     <td>special</td>
     <td>Control created JSON content for security and optimization</td>
   </tr>

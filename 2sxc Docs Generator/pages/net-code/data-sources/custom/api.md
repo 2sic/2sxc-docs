@@ -16,7 +16,7 @@ DataSources are a magic, generic system which can generate new data-items or fil
 1. **Data going in and out of DataSources**
   1. Each data-item is an `IEntity` containing data about a person, product, file-information etc.
   1. A list of items is is a `List<IEntity>` which contains zero, one or many items
-  1. A **[Stream](xref:ToSic.Eav.DataSources.IDataStream)** is an object which has list of items and a name
+  1. A **[Stream](xref:ToSic.Eav.DataSource.IDataStream)** is an object which has list of items and a name
   1. A correctly built Stream will **[Provide](xref:NetCode.DataSources.Custom.Provide)** this list, but only run the code if it's requested
   1. Each DataSource has one or more named `Out` streams
   1. Each DataSource _can_ have one or more named `In` streams coming from other DataSources

@@ -8,7 +8,7 @@ The `App.Data` object gives you immediate acccess to all data in the app, throug
 
 ## Get All Data Items of a Content Type
 
-`App.Data["ContentTypeName"]` will give you a [stream](xref:ToSic.Eav.DataSources.IDataStream) of all entities of that type. In most cases you'll use an `AsList(...)` to use it efficiently in loops etc. because most of the razor templating will prefer a [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) to a pure IEntity-object. Here's an example:
+`App.Data["ContentTypeName"]` will give you a [stream](xref:ToSic.Eav.DataSource.IDataStream) of all entities of that type. In most cases you'll use an `AsList(...)` to use it efficiently in loops etc. because most of the razor templating will prefer a [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity) to a pure IEntity-object. Here's an example:
 
 ```razor
 @foreach(var post in AsList(App.Data["BlogPost"]))

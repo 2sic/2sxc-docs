@@ -4,7 +4,7 @@ uid: NetCode.DataSources.Custom.DataBuilder
 
 > [!IMPORTANT]
 > Before v15, the DataBuilder was used in custom DataSources to create entities.
-> In v15+ you should use the [IDataFactory](xref:ToSic.Eav.DataSources.IDataFactory) instead.
+> In v15+ you should use the [IDataFactory](xref:ToSic.Eav.Services.IDataSourcesService) instead.
 >
 > The following docs are out of date and will be upgraded soon.
 

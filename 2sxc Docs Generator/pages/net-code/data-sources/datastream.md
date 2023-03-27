@@ -47,7 +47,7 @@ In most cases we will need the loop-item a lot, and would preferr to not write `
 
 ## Advanced Use Cases
 
-There are some advanced use-cases where you need to know more about the [`IDataStream`](xref:ToSic.Eav.DataSources.IDataStream) object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it's best to consult the EAV DataSource code. 
+There are some advanced use-cases where you need to know more about the [`IDataStream`](xref:ToSic.Eav.DataSource.IDataStream) object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it's best to consult the EAV DataSource code. 
 
 Just a few more details you might care about:
 

@@ -2,7 +2,7 @@
 uid: ToSic.Eav.DataSources
 ---
 
-DataSources are objects which deliver one or many [DataStreams](xref:ToSic.Eav.DataSources.IDataStream), which contain a bunch of content-items. They are then attached to each other (from one sources `Out` to another ones `In`) creating a `Query`. Queries can be customized at will. The whole system is used to prepare/process data for views, WebApi or anything else.
+DataSources are objects which deliver one or many [DataStreams](xref:ToSic.Eav.DataSource.IDataStream), which contain a bunch of content-items. They are then attached to each other (from one sources `Out` to another ones `In`) creating a `Query`. Queries can be customized at will. The whole system is used to prepare/process data for views, WebApi or anything else.
 
 In most cases there will be a [VisualQuery](xref:Basics.Query.VisualQuery.Index) which connects all the parts automatically, but when you want to work with them programatically, here you'll find the API. 
 

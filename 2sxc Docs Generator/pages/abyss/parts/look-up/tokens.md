@@ -68,7 +68,7 @@ Some situations will have token sources beyond the default. For example, when co
 ## Also Read
 
 * [](xref:Abyss.Parts.LookUp.Index)
-* [](xref:ToSic.Eav.DataSources.IDataStream)
+* [](xref:ToSic.Eav.DataSource.IDataStream)
 * [](xref:NetCode.DataSources.Custom.Api)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 

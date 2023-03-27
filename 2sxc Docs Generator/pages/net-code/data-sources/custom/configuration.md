@@ -78,7 +78,7 @@ So how does each scenario work out?
 * [](xref:Abyss.Parts.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.Api)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
-* [](xref:ToSic.Eav.DataSources.IDataStream)
+* [](xref:ToSic.Eav.DataSource.IDataStream)
 
 
 ## History

@@ -18,7 +18,7 @@ Here we'll explain how you must code your DataSource that it can be configurable
 
 ## 1. Create Typed Properties 
 
-For each piece of configuration your DataSource expects you should expose a normal property which will have that value. Internally it should get the data from the `Configuration` object which is an [IDataSourceConfiguration](xref:ToSic.Eav.DataSources.IDataSourceConfiguration). Here's an example from the [ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter):
+For each piece of configuration your DataSource expects you should expose a normal property which will have that value. Internally it should get the data from the `Configuration` object which is an [IDataSourceConfiguration](xref:ToSic.Eav.DataSource.IDataSourceConfiguration). Here's an example from the [ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter):
 
 ```c#
 private const string AttrKey = "Attribute";

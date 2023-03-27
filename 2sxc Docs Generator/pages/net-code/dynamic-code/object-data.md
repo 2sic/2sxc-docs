@@ -37,7 +37,7 @@ In all Razor-templates and also the web-api files, the `Data` object is already 
 
 
 ## The Streams in a Data Object
-The data object can have multiple _Streams_, each containing a list of items. In most cases you'll just have the _Default_ stream, which you can access using `Data["Default"]`. Read more about streams in the [Stream docs](xref:ToSic.Eav.DataSources.IDataStream)
+The data object can have multiple _Streams_, each containing a list of items. In most cases you'll just have the _Default_ stream, which you can access using `Data["Default"]`. Read more about streams in the [Stream docs](xref:ToSic.Eav.DataSource.IDataStream)
 
 But you may also have additional streams, depending on what has been configured in the data-preparation stuff (usually a VisualQuery). For example, if you are working on a view showing one product and a menu with all possible categories, then your query may have these streams:
 
@@ -72,7 +72,7 @@ Afterwards, other mechanisms can override / change this.
 
 
 ## Data Object API
-The `Data` object itself is actually a normal [EAV IDataSource](xref:ToSic.Eav.DataSources.IDataSource). So if you need to know more about the internals, read it up there.
+The `Data` object itself is actually a normal [EAV IDataSource](xref:ToSic.Eav.DataSource.IDataSource). So if you need to know more about the internals, read it up there.
 
 All other properties of the Data object are very special use only, so you probably shouldn't bother about them - which is why they are not documented here.
 

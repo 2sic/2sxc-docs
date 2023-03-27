@@ -33,10 +33,10 @@ You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params
 ## Read also
 
 * [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
-* APIs
+<!-- * APIs
     * [](xref:ToSic.Eav.DataSources.Queries.Query)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
-    * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition)
+    * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition) -->
 * [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 
 ---

@@ -117,16 +117,16 @@
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.DataBuilder">
 
 <div class="IMPORTANT"><h5>Important</h5><p>Before v15, the DataBuilder was used in custom DataSources to create entities.
-In v15+ you should use the <a href="xref:ToSic.Eav.DataSources.IDataFactory">IDataFactory</a> instead.</p>
+In v15+ you should use the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Services.IDataSourcesService.html">IDataFactory</a> instead.</p>
 <p>The following docs are out of date and will be upgraded soon.</p>
 </div>
 <h1 id="datasource-api-databuilderentity">DataSource API: DataBuilder.Entity(...)</h1>
-<p>Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code>DataBuilder.Entity(...)</code> helps. </p>
+<p>Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code>DataBuilder.Entity(...)</code> helps.</p>
 <p>Just fyi: Here are the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entity*">API docs</a>. There is also an <code>Entities</code> for multiple Entities.</p>
 <h2 id="how-the-databuilder-is-added">How the DataBuilder is added</h2>
-<p>The DataBuilder is a <a href="xref:ToSic.Eav.Data.IDataBuilder">IDataBuilder</a> which is automatically given as a property <code>DataBuilder</code>. The DataSource-Factory creates it. </p>
+<p>The DataBuilder is a <a href="xref:ToSic.Eav.Data.IDataBuilder">IDataBuilder</a> which is automatically given as a property <code>DataBuilder</code>. The DataSource-Factory creates it.</p>
 <h2 id="how-to-use-databuilderentity">How to use DataBuilder.Entity(...)</h2>
-<p>Here&#39;s a simple example of the tutorial <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/">DateTime DataSource</a>: </p>
+<p>Here&#39;s a simple example of the tutorial <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/">DateTime DataSource</a>:</p>
 <pre><code class="lang-cs">const string DateFieldName = &quot;Date&quot;;
 var date = DateTime.Now;
 var values = new Dictionary&lt;string, object&gt;
@@ -142,10 +142,10 @@ return new [] {entity}.ToImmutableArray();
 </code></pre><p>This example shows how an entity-object is build using <code>DataBuilder.Entity(values)</code> on the <code>ToSic.Eav.Data</code> namespace.</p>
 <h2 id="concept-behind-databuilderentity">Concept Behind DataBuilder.Entity(...)</h2>
 <p>Internally it will generate a simplified <code>IEntity</code> object.
-It&#39;s also missing some advanced features like multi-language and repository identity (which would be important in edit-scenarios). </p>
-<p>The simplest way is to just use <code>DataBuilder.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more. </p>
+It&#39;s also missing some advanced features like multi-language and repository identity (which would be important in edit-scenarios).</p>
+<p>The simplest way is to just use <code>DataBuilder.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more.</p>
 <h2 id="building-lists-of-entities">Building Lists of Entities</h2>
-<p>You can loop through your data and call <code>DataBuilder.Entity(someDictionary)</code> many times. 
+<p>You can loop through your data and call <code>DataBuilder.Entity(someDictionary)</code> many times.
 You can also use the overload <code>DataBuilder.Entities(IEnumerable&lt;someDictionary&gt;)</code>. Best read the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entities*">API docs</a>.</p>
 <h2 id="more-parameters-on-databuilderentity">More Parameters on DataBuilder.Entity(...)</h2>
 <p>All paramaters are optional, except the first one containing the values. Here&#39;s what each one does:</p>
@@ -155,7 +155,7 @@ You can also use the overload <code>DataBuilder.Entities(IEnumerable&lt;someDict
 <li><code>int id</code> gives a number identity, so <code>.EntityId</code> is useful and filtering by EntityId (like when having details-pages needing this id) works</li>
 <li><code>Guid guidId</code> is a UUID identity, so <code>.EntityGuid</code> is useful</li>
 <li><code>DateTime modified</code> would allow to filter / sort by the <code>.Modified</code> property</li>
-<li><code>int appId</code> could be used to pretend it&#39;s part of another app. This only affects the AppId property, and ATM there is no important reason to do this. </li>
+<li><code>int appId</code> could be used to pretend it&#39;s part of another app. This only affects the AppId property, and ATM there is no important reason to do this.</li>
 </ul>
 <h2 id="read-also">Read also</h2>
 <ul>

@@ -68,7 +68,7 @@ This documentation contains the following sections
 
 TODO: this must be moved elsewhere
 
-1. [DataSource](xref:NetCode.DataSources.DataSource) and [DataStream](xref:ToSic.Eav.DataSources.IDataStream), the core concept for data read/processing/delivery
+1. [DataSource](xref:NetCode.DataSources.DataSource) and [DataStream](xref:ToSic.Eav.DataSource.IDataStream), the core concept for data read/processing/delivery
     1. [List of all DataSource Objects](xref:Basics.Query.DataSources.Index)
     2. [how to create custom data sources](http://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query)
 

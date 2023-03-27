@@ -104,7 +104,7 @@ The most important thing to notice is that each additional data-source uses the 
 ## Read also
 
 * [Data Sources](xref:NetCode.DataSources.DataSource)
-* [Data Streams](xref:ToSic.Eav.DataSources.IDataStream)
+* [Data Streams](xref:ToSic.Eav.DataSource.IDataStream)
 * [Dynamic Code CreateSource\<T\>(...)](xref:NetCode.DynamicCode.CreateSource)
 * [.net API](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*)
 * [Demo-App showing some coding of DataSources][app-ds-code]

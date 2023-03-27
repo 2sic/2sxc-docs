@@ -48,7 +48,7 @@ If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 Read more about this in [](xref:NetCode.DataSources.DataSource)
 
 > [!NOTE]
-> The type `T` mentioned above must be an [IDataSource](xref:ToSic.Eav.DataSources.IDataSource). The built in ones are usually in these namespaces:
+> The type `T` mentioned above must be an [IDataSource](xref:ToSic.Eav.DataSource.IDataSource). The built in ones are usually in these namespaces:
 
 * [](xref:ToSic.Eav.DataSources)
 * [](xref:ToSic.Sxc.DataSources)

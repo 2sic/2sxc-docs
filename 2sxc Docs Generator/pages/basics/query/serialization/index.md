@@ -16,7 +16,7 @@ You can control things like
 1. If [Metadata](xref:Basics.Metadata.Of) is included and which identifiers
 1. If [Relationships](xref:Basics.Data.Relationships.Index) are included and which identifiers
 
-This is made possible through the new [SerializationConfiguration](xref:ToSic.Eav.DataSources.SerializationConfiguration) DataSource. Just try it out.
+This is made possible through the new [SerializationConfiguration](xref:ToSic.Eav.DataSources.Serialization) DataSource. Just try it out.
 
 Todo: #todoc screenshots etc. 
 

@@ -7,7 +7,7 @@ uid: NetCode.DataSources.DataSource
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .datasource, .context-box-summary .query-datasource { visibility: visible; } </style>
 
-**Root DataSources** are [](xref:ToSic.Eav.DataSources.IDataSource) objects which deliver one or many [DataStreams](xref:ToSic.Eav.DataSources.IDataStream), which contain a bunch of content-items. 
+**Root DataSources** are [](xref:ToSic.Eav.DataSource.IDataSource) objects which deliver one or many [DataStreams](xref:ToSic.Eav.DataSource.IDataStream), which contain a bunch of content-items. 
 
 ## Two Core Types
 
@@ -80,7 +80,7 @@ The configuration uses a sophisticated token system to provide all necessary inf
 
 ## Read also
 
-* about [Data Streams](xref:ToSic.Eav.DataSources.IDataStream)
+* about [Data Streams](xref:ToSic.Eav.DataSource.IDataStream)
 * [Dynamic Code CreateSource(...)](xref:NetCode.DynamicCode.CreateSource)
 * [.net API](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*)
 * [Demo-App showing some coding of DataSources][app-ds-code]
