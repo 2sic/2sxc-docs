@@ -13,7 +13,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 
 Last Update: **2023-03-22**
 
-## 2023 Q1 - Released v15.00 - 15.04
+## 2023 Q1 - Released v15.00 - 15.05
 
 👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
 
@@ -22,7 +22,7 @@ Last Update: **2023-03-22**
 
 Todo to complete all these features in March
 
-1. ✅ improve IConfiguration API - lighten the `IDataSourceFactory` API
+1. ✅ improve IConfiguration API - lighten the `IDataSourcesService` API
 1. Document CDN / Asset management
 1. Document Formula improvements
 1. Document new data sources API
@@ -53,6 +53,7 @@ Todo to complete all these features in March
     1. ✅ Create best practices CSS styling for `wysiwyg` content
 1. ✅ Compress Timeline: Feature to compress the existing history
 1. ⏳ Entity Serialization Improvements
+1. ⏳ Data Bundles
 
 
 

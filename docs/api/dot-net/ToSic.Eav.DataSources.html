@@ -121,7 +121,7 @@
   <h1 id="ToSic_Eav_DataSources" data-uid="ToSic.Eav.DataSources" class="text-break">Namespace ToSic.Eav.DataSources
   </h1>
   <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"><p>DataSources are objects which deliver one or many <a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">DataStreams</a>, which contain a bunch of content-items. They are then attached to each other (from one sources <code>Out</code> to another ones <code>In</code>) creating a <code>Query</code>. Queries can be customized at will. The whole system is used to prepare/process data for views, WebApi or anything else.</p>
+  <div class="markdown level0 conceptual"><p>DataSources are objects which deliver one or many <a href="xref:ToSic.Eav.DataSources.IDataStream">DataStreams</a>, which contain a bunch of content-items. They are then attached to each other (from one sources <code>Out</code> to another ones <code>In</code>) creating a <code>Query</code>. Queries can be customized at will. The whole system is used to prepare/process data for views, WebApi or anything else.</p>
 <p>In most cases there will be a <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> which connects all the parts automatically, but when you want to work with them programatically, here you&#39;ll find the API. </p>
 <div class="NOTE"><h5>Note</h5><p>We&#39;ve hidden the constructors for all DataSource objects in these docs, because you should usually use the <code>CreateSource&lt;T&gt;(...)</code> command on the Razor template or WebApi, which will auto-configure things behind the scenes. </p>
 </div>
@@ -149,41 +149,8 @@ This is also the object returned as the root in any query.</p>
       <h4><a class="xref" href="ToSic.Eav.DataSources.Children.html">Children</a></h4>
       <section><p>Get Children Entities (child-relationships) of the Entities coming into this DataSource</p>
 </section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.ConfigurationAttribute.html">ConfigurationAttribute</a></h4>
-      <section><p>Marks an attribute of a DataSource as a <code>Configuration</code> attribute.
-This means that the internal system which loads configurations from a config-entity will automatically retrieve the value
-as specified.</p>
-<p>Note that </p>
-<p><strong>Usage</strong></p>
-<ul>
-<li><code>[ConfigurationData]</code> - simple case, just get it from configuration, no fallback</li>
-<li><code>[ConfigurationData(Fallback = True)]</code></li>
-</ul>
-</section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.CsvDataSource.html">CsvDataSource</a></h4>
       <section><p>DataSource for importing/reading CSV files. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></h4>
-      <section><p>Base DataSource class for providing data from external sources.
-This is the advanced base class which is more complex.
-You will usually want to use the CustomDataSourceLight</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a></h4>
-      <section><p>The base class for all DataSources, especially custom DataSources.
-It must always be inherited.
-It provides a lot of core functionality to get configurations, ensure caching and more.</p>
-<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSources.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a> DataSource for custom data sources.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSource.MyServices.html">DataSource.MyServices</a></h4>
-      <section><p>Services used by the <a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a>.
-This ensures that it&apos;s easy to inherit DataSources, while giving it all the services it needs even if the needs change with time.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSourceConstants.html">DataSourceConstants</a></h4>
-      <section><p>Various constants typically used in/for DataSources.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.DataSourceErrorHelper.html">DataSourceErrorHelper</a></h4>
-      <section><p>An Errors-helper which is automatically available on all <a class="xref" href="ToSic.Eav.DataSources.DataSource.html">DataSource</a> objects.</p>
-<p>It helps create a stream of standardized error entities.</p>
 </section>
       <h4><a class="xref" href="ToSic.Eav.DataSources.DataTable.html">DataTable</a></h4>
       <section><p>Provide Entities from a System.Data.DataTable. <br>
@@ -266,46 +233,7 @@ Tell it where/how the relationships are mapped, and it will create Entities that
   </h3>
       <h4><a class="xref" href="ToSic.Eav.DataSources.IAppRoot.html">IAppRoot</a></h4>
       <section><p>Interface for the App Root - usually the very first node in any data-delivery or query. <br>
-It&apos;s just like a normal <a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a> but will internally access the <a class="xref" href="ToSic.Eav.Apps.AppState.html">AppState</a> from the Cache/&gt;.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IConvertDataSource-1.html">IConvertDataSource&lt;T&gt;</a></h4>
-      <section><p>Marks objects which can convert a DataSource to another format.</p>
-<p>This will always return some kind of dictionary with stream-names and the converted items as sub-lists. 
-Usually used in serialization scenarios.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSource.html">IDataSource</a></h4>
-      <section><p>Public interface for an Eav DataSource.
-All DataSource objects are based on this.
-It is based on both the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a> and <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceConfiguration.html">IDataSourceConfiguration</a></h4>
-      <section><p>This helps a data source get configured.
-It manages all the properties which the data source will want to look up, as well as
-the LookUp engine which will perform the token resolution</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceFactory.html">IDataSourceFactory</a></h4>
-      <section><p>A factory to create / initialize data sources.</p>
-<p>Not meant for use in Razor code, but to be used in custom DataSources which may need other internal data sources to work.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceGenerator-1.html">IDataSourceGenerator&lt;TDataSource&gt;</a></h4>
-      <section><p>A factory/generator to create one specific kind of data source.</p>
-<p><em>Note: This is not meant for use in Razor code, but to be used in custom DataSources which may need other internal data sources to work.</em></p>
-<p>Where possible, use the Generator instead of the <a class="xref" href="ToSic.Eav.DataSources.IDataSourceFactory.html">IDataSourceFactory</a>.
-The Generator makes it clearer when you only need to use a single typed DataSource and not need access to all kinds of DataSources.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceShared.html">IDataSourceShared</a></h4>
-      <section><p>Shared properties of <a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a> and <a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceSource.html">IDataSourceSource</a></h4>
-      <section><p>Public interface for an Eav DataSource. All DataSource objects are based on this. </p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataSourceTarget.html">IDataSourceTarget</a></h4>
-      <section><p>Represents a data source that can be the recipient of Data.
-This basically means it has an In <a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></p>
-</section>
-      <h4><a class="xref" href="ToSic.Eav.DataSources.IDataStream.html">IDataStream</a></h4>
-      <section><p>Represents a DataStream object. This is a stream of IEntity objects, which has a source and a name.
-A stream can be read from, and it can be attached to upstream data-sources for further processing.</p>
+It&apos;s just like a normal <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IDataSource</a> but will internally access the <a class="xref" href="ToSic.Eav.Apps.AppState.html">AppState</a> from the Cache/&gt;.</p>
 </section>
 </article>
           </div>
