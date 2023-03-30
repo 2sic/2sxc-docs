@@ -35,7 +35,7 @@ var authors = allAuthors["Default"];
 
 This demonstrates the [EntityTypeFilter DataSource](xref:ToSic.Eav.DataSources.EntityTypeFilter) which has only a single property [TypeName](xref:ToSic.Eav.DataSources.EntityTypeFilter.TypeName) to configure.
 
-The [CsvDataSource](xref:ToSic.Eav.DataSources.CsvDataSource) on the other hand has [5 Properties you can set](xref:ToSic.Eav.DataSources.CsvDataSource#properties) like the file name to use, the delimiter etc.
+The [Csv DataSource](xref:ToSic.Eav.DataSources.Csv) on the other hand has [5 Properties you can set](xref:ToSic.Eav.DataSources.Csv#properties) like the file name to use, the delimiter etc.
 
 > [!TIP]
 > Setting properties is the most common way to configure DataSources in C#.

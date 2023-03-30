@@ -6,6 +6,10 @@ uid: ToSic.Sxc.Services.ToolbarBuilder.DataFilter
 
 # Toolbar Builder Guide – Filter Parameter
 
+> [!IMPORTANT]
+> The examples below explain how to use the `filter:` parameter.
+> Starting in v15.07+ we recommend using the [Tweak API](xref:ToSic.Sxc.Services.ToolbarBuilder.TweakButtons) instead.
+
 The **Filter** reduces the amount of items shown in a Data-List.  
 
 It is given to the `data` command using the `filter` parameter
@@ -13,22 +17,22 @@ which is an optional parameter and [must be named](xref:NetCode.Conventions.Name
 
 ## `filter` Parameters
 
-The `filter` can contain multiple filters to filter a list of entities in the admin-UI. 
+The `filter` can contain multiple filters to filter a list of entities in the admin-UI.
 
 You could for example only show all items containing the word `something`.
 But the most common case is to restrict entities shown to these
-having a child-relationship with something else. 
+having a child-relationship with something else.
 
 > **Example**
 > You may have a list of `Books` and only wish to show all of the books
 > by the `Author` by the name of _Daniel Mettler_.
-> You could try to filter by the name, but that's not reliable, 
-> so you would usually want to filter by the unique ID of _Daniel Mettler_. 
+> You could try to filter by the name, but that's not reliable,
+> so you would usually want to filter by the unique ID of _Daniel Mettler_.
 
 
 ## Ways to Set the Filter
 
-The following examples assume you're calling `.Data` on the IToolbarBuilder from the IToolbarService. 
+The following examples assume you're calling `.Data` on the IToolbarBuilder from the IToolbarService.
 So typically it would be something like this in front of each line:
 
 ```c#
@@ -75,7 +79,7 @@ Data(..., filter: new { Author = lotsOfAuthors });
 
 ---
 
-See also 
+See also
 
 * the JS [toolbar docs](xref:JsCode.Toolbars.Simple)
 * list of all [common UI parameters can be found here](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)

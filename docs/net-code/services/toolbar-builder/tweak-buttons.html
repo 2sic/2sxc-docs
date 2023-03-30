@@ -132,22 +132,40 @@ Kit.Toolbar.Default().Add(ui: &quot;color=green&quot;, parameters: new { app = 2
 Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(new { app = 2, zone = 3 }));
 // Or another example
 Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(&quot;app&quot;, 2).Parameters(&quot;zone&quot;, 3));
-</code></pre><h2 id="why-a-new-api">Why a New API?</h2>
+</code></pre><h2 id="how-it-works">How it Works</h2>
+<p>Almost every command on the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.html">IToolbarBuilder</a> has a <code>tweak</code> parameter.
+This parameter is a function which takes a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a> and returns a new one.
+The <code>ITweakButton</code> itself has a <a class="xref" href="../../conventions/functional-api/index.html">functional API</a> which allows you to chain multiple tweaks.</p>
+<p>This means when you do this:</p>
+<pre><code class="lang-c#">Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(&quot;id&quot;, 93030)));
+</code></pre><p>...it says</p>
+<ol>
+<li>Take the button <code>b</code></li>
+<li>Set the color to green</li>
+<li>Add the parameter <code>id</code> with the value <code>93030</code></li>
+</ol>
+<p>Each command returns a fresh <code>ITweakButton</code> with the changes applied using the <a class="xref" href="../../conventions/immutable/index.html">immutable</a> pattern.
+So the final result is returned by the function and used by the toolbar builder.</p>
+<h2 id="why-a-new-api">Why a New API?</h2>
 <p>The new method achieves the same purpose as the old, and the old way will continue to work indefinitely.</p>
 <p>But the advantages of the new API are:</p>
 <ol>
 <li>It&#39;s easier to document so it&#39;s also easier to discover the possibilities you have</li>
 <li>It&#39;s easier to use because it&#39;s more type-safe and less error-prone</li>
 <li>It&#39;s easier to extend - for example with the new <code>note</code> feature added in v15.07</li>
+<li>It&#39;s safer, for example the API will remove <code>#</code> characters in colors, which would otherwise cause problems</li>
 </ol>
 <h2 id="api-docs">API Docs</h2>
 <ul>
-<li><a href="xref:ToSic.Sxc.Edit.Toolbar.ITweakButtons">Tweak API</a></li>
+<li><a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.ITweakButton.html">Tweak API</a></li>
 <li>See also the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></li>
 </ul>
 <h2 id="important-to-know">Important to Know</h2>
 <ul>
 <li>You cannot mix the tweak API with the previous parameters.<br>So if you use tweak on a button, you cannot also use <code>ui</code> or <code>parameters</code> etc.</li>
+<li>The tweak API is a fluid API, so you can chain multiple tweaks together.</li>
+<li>The tweak API is <a class="xref" href="../../conventions/immutable/index.html">immutable</a>, so every step returns a new object.</li>
+<li>The tweak API is <a class="xref" href="../../conventions/functional-api/index.html">functional</a>.</li>
 </ul>
 <hr>
 <p>History</p>

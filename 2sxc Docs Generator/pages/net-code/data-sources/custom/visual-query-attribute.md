@@ -78,7 +78,7 @@ An icon name from the [Material Icons](https://fonts.google.com/icons).
 #### Type
 
 A value which tells the [VisualQuery](xref:Basics.Query.VisualQuery.Index) in what group to place this source for the Query developer.
-Must be a valid value from [](xref:ToSic.Eav.DataSources.VisualQuery.DataSourceType).
+Must be a valid value from [](xref:ToSic.Eav.DataSource.VisualQuery.DataSourceType).
 
 #### HelpLink
 

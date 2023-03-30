@@ -6,26 +6,30 @@ uid: ToSic.Sxc.Services.ToolbarBuilder.Ui
 
 # Toolbar Builder Guide – UI
 
-The **UI** determines how buttons are shown. 
+> [!IMPORTANT]
+> The examples below explain how to use the `ui:` parameter.
+> Starting in v15.07+ we recommend using the [Tweak API](xref:ToSic.Sxc.Services.ToolbarBuilder.TweakButtons) instead.
+
+The **UI** determines how buttons are shown.
 
 It is given to the commands using the `ui` parameter
 which is an optional parameter and [must be named](xref:NetCode.Conventions.NamedParameters).
 
 ## UI Settings for the Entire Toolbar
 
-UI settings can be set globally for the toolbar, or specific for each button. 
+UI settings can be set globally for the toolbar, or specific for each button.
 
 To set it globally, you have these options:
 
 1. On the first creation of the object - eg. `Kit.Toolbar.Default(item, ui: "color=red,white")`
-3. When setting global parameters eg. `Kit.Toolbar.Default().Parameters(ui: "color=red,white")`
+1. When setting global parameters eg. `Kit.Toolbar.Default().Parameters(ui: "color=red,white")`
 
-If your code does more than one of these, the last value will be the one used. 
+If your code does more than one of these, the last value will be the one used.
 
 ## UI Settings for One Specific Button
 
-Many methods accept an optional `ui`. 
-Is that case the button would have their own UI settings. 
+Many methods accept an optional `ui`.
+Is that case the button would have their own UI settings.
 
 So you could do something like this
 
@@ -36,14 +40,14 @@ var tlb = Kit.Toolbar.Default(Content).New(ui: "color=blue,white");
 
 ## UI as String, Object or Combinations Thereof
 
-There are two ways you can specify `ui`. 
+There are two ways you can specify `ui`.
 Either as a string - like this:
 
 ```c#
 ui: "color=red&classes=extra-glow"
 ```
 
-Or as an object (since v14.04) - like this: 
+Or as an object (since v14.04) - like this:
 
 ```c#
 ui: new { color = "red", classes = "extra-glow" }
@@ -58,9 +62,9 @@ ui: new object[] { "color=red", new { classes = "extra-glow" } }
 ## Complex Strings will be Made Safe with Base64 (v14.07.05+)
 
 > [!TIP]
-> This feature is mainly used for the `icon` property, which could contain an SVG string. 
+> This feature is mainly used for the `icon` property, which could contain an SVG string.
 
-If you use an object which has complex string (which wouldn't survive a URL) then it will be made safe. 
+If you use an object which has complex string (which wouldn't survive a URL) then it will be made safe.
 So you can do this:
 
 ```c#
@@ -74,7 +78,7 @@ Note that this auto-conversion only happens on **objects** handed to the `ui` pr
 
 ---
 
-See also 
+See also
 
 * the JS [toolbar docs](xref:JsCode.Toolbars.Simple)
 * list of all [common UI parameters can be found here](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)

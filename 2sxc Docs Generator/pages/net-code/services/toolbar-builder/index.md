@@ -22,9 +22,9 @@ var customTlb = Kit.Toolbar.Empty().Edit(Content);
 ```
 
 Almost all commands will return a new toolbar builder with the modified configuration.
-This means you can chain the commands as you need them. 
+This means you can chain the commands as you need them.
 
-It also means that each object is _immutable_. To understand this, check out this example:
+It also means that each object is [immutable](xref:NetCode.Conventions.Immutable). To understand this, check out this example:
 
 ```razor
 @{

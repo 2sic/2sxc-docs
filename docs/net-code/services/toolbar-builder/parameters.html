@@ -118,31 +118,34 @@
 
 <p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
 <h1 id="toolbar-builder-guide--parameters">Toolbar Builder Guide – Parameters</h1>
-<p>The <strong>Parameters</strong> are used in the command. </p>
-<p>Parameters can be specified globally for the entire toolbar, or just for a specific button. </p>
+<div class="IMPORTANT"><h5>Important</h5><p>The examples below explain how to use the <code>parameters:</code> parameter.
+Starting in v15.07+ we recommend using the <a class="xref" href="tweak-buttons.html">Tweak API</a> instead.</p>
+</div>
+<p>The <strong>Parameters</strong> are used in the command.</p>
+<p>Parameters can be specified globally for the entire toolbar, or just for a specific button.</p>
 <p>The <code>parameters</code> is an optional parameter and <a class="xref" href="../../conventions/named-parameters.html">must be named</a>.</p>
 <h2 id="parameters-for-the-entire-toolbar">Parameters for the Entire Toolbar</h2>
-<p>Parameters can be set globally for the toolbar, or specific for each button. </p>
+<p>Parameters can be set globally for the toolbar, or specific for each button.</p>
 <p>To set it globally, you have these options:</p>
 <ol>
 <li>On the first creation of the object - eg. <code>Kit.Toolbar.Default(item, parameters: &quot;contentType=BlogPost&quot;)</code></li>
 <li>When setting global parameters eg. <code>Kit.Toolbar.Default().Parameters(prefill: &quot;contentType=BlogPost&quot;)</code></li>
 </ol>
-<p>If your code does more than one of these, the last value will be the one used. </p>
+<p>If your code does more than one of these, the last value will be the one used.</p>
 <h2 id="parameters-for-one-specific-button">Parameters for One Specific Button</h2>
-<p>Many methods accept an optional <code>parameters</code>. 
-Is that case the button would have their own parameters. </p>
+<p>Many methods accept an optional <code>parameters</code>.
+Is that case the button would have their own parameters.</p>
 <p>So you could do something like this</p>
 <pre><code class="lang-c#">// Normal toolbar for Content, but also has an edit-button for the header
 var tlb = Kit.Toolbar.Default(Content).New(parameters: &quot;contentType=BlogPost&quot;);
 </code></pre><h2 id="parameters-as-string-or-object">Parameters as String or Object</h2>
-<p>There are two ways you can specify <code>parameters</code>. 
+<p>There are two ways you can specify <code>parameters</code>.
 Either as a string - like this:</p>
 <pre><code class="lang-c#">parameters: &quot;contentType=BlogPost&amp;something=other&quot;
-</code></pre><p>Or as an object (since v14.04) - like this: </p>
+</code></pre><p>Or as an object (since v14.04) - like this:</p>
 <pre><code class="lang-c#">parameters: new { contentType = &quot;BlogPost&quot;, something = &quot;other&quot; }
 </code></pre><h2 id="how-prefill-works-with-parameters">How Prefill works with Parameters</h2>
-<p>Internally two infos <a class="xref" href="prefill.html">prefill</a> 
+<p>Internally two infos <a class="xref" href="prefill.html">prefill</a>
 and <a class="xref" href="parameters.html">parameters</a> are merged.</p>
 <p>So technically you could also set prefill on the parameters, but we believe it&#39;s easier to read if each is set explicitly.</p>
 <hr>

@@ -238,15 +238,15 @@
   </div>
 </div><style>.context-box-summary .datasource, .context-box-summary .query-datasource { visibility: visible; } </style>
 
-<p><strong>Root DataSources</strong> are <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataSource.html">IDataSource</a> objects which deliver one or many <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">DataStreams</a>, which contain a bunch of content-items. </p>
+<p><strong>Root DataSources</strong> are <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataSource.html">IDataSource</a> objects which deliver one or many <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">DataStreams</a>, which contain a bunch of content-items.</p>
 <h2 id="two-core-types">Two Core Types</h2>
 <h3 id="1-root-datasources">1. Root DataSources</h3>
-<p>This kind of DataSource generates or retrieves data from somewhere external like SQL, CSV, REST or the EAV-cache. This is a Root <code>IDataSource</code>. </p>
-<p>An example is the <a href="xref:ToSic.Eav.DataSources.CsvDataSource">CsvDataSource</a>. 
-Note that even this DataSource can have use Data on the <code>In</code>-Stream. 
-But in this case the <code>In</code> provides configuration data, not raw data to process. </p>
+<p>This kind of DataSource generates or retrieves data from somewhere external like SQL, CSV, REST or the EAV-cache. This is a Root <code>IDataSource</code>.</p>
+<p>An example is the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Csv.html">Csv DataSource</a>.
+Note that even this DataSource can have use Data on the <code>In</code>-Stream.
+But in this case the <code>In</code> provides configuration data, not raw data to process.</p>
 <h3 id="2-processing-datasources">2. Processing DataSources</h3>
-<p><strong>Processing DataSources</strong>  receive data from <em>another</em> DataSource, then process/filter this and provide the result for further use, in which case it&#39;s both an <code>IDataSource</code> as well as an <code>IDataTarget</code> </p>
+<p><strong>Processing DataSources</strong>  receive data from <em>another</em> DataSource, then process/filter this and provide the result for further use, in which case it&#39;s both an <code>IDataSource</code> as well as an <code>IDataTarget</code></p>
 <p>An example of this is the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html">Shuffle DataSource</a>.
 It receives items on the <code>In[&quot;Default&quot;]</code>, randomly reorganizes them and provides them on the <code>Out[&quot;Default]</code>.</p>
 <h2 id="datasource-out-can-be-another-datasources-in">DataSource <code>Out</code> can be another DataSources <code>In</code></h2>
@@ -258,10 +258,10 @@ It receives items on the <code>In[&quot;Default&quot;]</code>, randomly reorgani
 </ol>
 <p>This can be done both in code as well as in a prepared <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>.</p>
 <h2 id="queries-reusable-datasource-wirings">Queries: Reusable DataSource Wirings</h2>
-<p>As described above, DataSources can be joined together and the configuration can be saved as a <a class="xref" href="query/index.html">Query</a>. 
+<p>As described above, DataSources can be joined together and the configuration can be saved as a <a class="xref" href="query/index.html">Query</a>.
 Here&#39;s another example:</p>
 <ol>
-<li>a Root <a href="xref:ToSic.Eav.DataSources.CsvDataSource"><code>CsvDataSource</code></a> can read a CSV-file and provide the data as a stream on Entities on <code>csvDs[&quot;Default&quot;]</code>...</li>
+<li>a Root <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Csv.html"><code>Csv DataSource</code></a> can read a CSV-file and provide the data as a stream on Entities on <code>csvDs[&quot;Default&quot;]</code>...</li>
 <li>...and pipe the result it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.Caching.CacheAllStreams.html"><code>CacheAllStreams</code></a> which caches the data for 60 minutes<br> <em>this would ensure that the slow reading process only happens every hour</em></li>
 <li>...then pipe it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html"><code>ValueFilter</code></a>, which only shows the items where the <em>Country</em> matches the Url-parameters <em>country</em></li>
 <li>...then pipe it to a <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.ValueSort.html"><code>ValueSort</code></a>, ordering it by <em>LastName</em> and then <em>FirstName</em></li>
@@ -269,14 +269,14 @@ Here&#39;s another example:</p>
 </ol>
 <p>The result can be used in a Template or streamed as JSON to a JavaScript SPA using the <a class="xref" href="../../web-api/headless/index.html">Headless API</a>.</p>
 <h2 id="understanding-data-flow-between-datasource-objects">Understanding Data-Flow between DataSource Objects</h2>
-<p>Each DataSource has a list of out-streams available on the <code>.Out[&quot;StreamName&quot;]</code> property, but usually access directly just with the <code>DataSourceName[&quot;StreamName&quot;]</code>. This is what also happens when you use the <a class="xref" href="../dynamic-code/object-data.html">Data</a> object and write <code>foreach(var item in Data[&quot;Default&quot;])</code>. </p>
+<p>Each DataSource has a list of out-streams available on the <code>.Out[&quot;StreamName&quot;]</code> property, but usually access directly just with the <code>DataSourceName[&quot;StreamName&quot;]</code>. This is what also happens when you use the <a class="xref" href="../dynamic-code/object-data.html">Data</a> object and write <code>foreach(var item in Data[&quot;Default&quot;])</code>.</p>
 <p>Aside from consuming data in your your template, most data-sources will simply offer the Out-Stream to other DataSources for further processing. Technically it&#39;s mapped like this:</p>
 <ul>
 <li><code>Cache.Out[&quot;Default&quot;]</code> &gt; <code>ContentTypeFilter.In[&quot;Default&quot;]</code></li>
 <li>... then some magic happens inside the <code>ContentTypeFilter</code></li>
 <li>... then the <code>ContentTypeFilter.Out[&quot;Default&quot;]</code> has the resulting items, which can again be used as an In on another DataSource, or simply used in your template</li>
 </ul>
-<p>Most DataSources will only have one In-stream and one Out-stream, but this is very variable depending on your need. </p>
+<p>Most DataSources will only have one In-stream and one Out-stream, but this is very variable depending on your need.</p>
 <h2 id="how-to-use">How to use</h2>
 <p> 👉 <a class="xref" href="use/index.html">Use DataSources in your C# Code</a></p>
 <h2 id="create-your-own-custom-datasource">Create your own Custom DataSource</h2>

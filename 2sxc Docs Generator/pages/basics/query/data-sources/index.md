@@ -70,7 +70,7 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[CsvDataSource](xref:ToSic.Eav.DataSources.CsvDataSource)</td>
+    <td>[Csv](xref:ToSic.Eav.DataSources.Csv)</td>
     <td>Get Data</td>
     <td>Get data from a CSV-file</td>
   </tr>

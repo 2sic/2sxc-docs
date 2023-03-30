@@ -118,22 +118,25 @@
 
 <p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
 <h1 id="toolbar-builder-guide--filter-parameter">Toolbar Builder Guide – Filter Parameter</h1>
+<div class="IMPORTANT"><h5>Important</h5><p>The examples below explain how to use the <code>filter:</code> parameter.
+Starting in v15.07+ we recommend using the <a class="xref" href="tweak-buttons.html">Tweak API</a> instead.</p>
+</div>
 <p>The <strong>Filter</strong> reduces the amount of items shown in a Data-List.  </p>
 <p>It is given to the <code>data</code> command using the <code>filter</code> parameter
 which is an optional parameter and <a class="xref" href="../../conventions/named-parameters.html">must be named</a>.</p>
 <h2 id="filter-parameters"><code>filter</code> Parameters</h2>
-<p>The <code>filter</code> can contain multiple filters to filter a list of entities in the admin-UI. </p>
+<p>The <code>filter</code> can contain multiple filters to filter a list of entities in the admin-UI.</p>
 <p>You could for example only show all items containing the word <code>something</code>.
 But the most common case is to restrict entities shown to these
-having a child-relationship with something else. </p>
+having a child-relationship with something else.</p>
 <blockquote><p><strong>Example</strong>
 You may have a list of <code>Books</code> and only wish to show all of the books
 by the <code>Author</code> by the name of <em>Daniel Mettler</em>.
-You could try to filter by the name, but that&#39;s not reliable, 
-so you would usually want to filter by the unique ID of <em>Daniel Mettler</em>. </p>
+You could try to filter by the name, but that&#39;s not reliable,
+so you would usually want to filter by the unique ID of <em>Daniel Mettler</em>.</p>
 </blockquote>
 <h2 id="ways-to-set-the-filter">Ways to Set the Filter</h2>
-<p>The following examples assume you&#39;re calling <code>.Data</code> on the IToolbarBuilder from the IToolbarService. 
+<p>The following examples assume you&#39;re calling <code>.Data</code> on the IToolbarBuilder from the IToolbarService.
 So typically it would be something like this in front of each line:</p>
 <pre><code class="lang-c#">@Kit.Toolbar.Default().Data(&quot;Books&quot;, filter: ...);
 </code></pre><p>Basic syntax which worked ca. v14.07</p>
@@ -165,7 +168,7 @@ Data(..., filter: new { Author = new object[] { someAuthor, someAuthor } });
 var lotsOfAuthors = AsList(App.Data[&quot;Author&quot;]).Select(a =&gt; a.LastName == &quot;Mettler&quot;);
 Data(..., filter: new { Author = lotsOfAuthors });
 </code></pre><hr>
-<p>See also </p>
+<p>See also</p>
 <ul>
 <li>the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></li>
 <li>list of all <a class="xref" href="../../../basics/edit/edit-ux/toolbars/button-ui.html">common UI parameters can be found here</a></li>

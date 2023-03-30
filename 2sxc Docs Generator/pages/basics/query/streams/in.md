@@ -24,7 +24,7 @@ This is what In-Streams look like in VisualQuery:
 
 ### Case 1: DataSources without In-Streams
 
-Root DataSources generate or get data, and don't need an In-Stream. Here's an example from a [CSV DataSource](xref:ToSic.Eav.DataSources.CsvDataSource).
+Root DataSources generate or get data, and don't need an In-Stream. Here's an example from a [CSV DataSource](xref:ToSic.Eav.DataSources.Csv).
 
 <img src="./assets/in-stream-not-used.jpg" width="100%" class="full-width">
 
