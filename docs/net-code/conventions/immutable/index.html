@@ -138,13 +138,17 @@ var data = entityFilter.List;
 But newer DataSources such as <code>AppFiles</code> will not allow this, and will throw an exception if you try to modify the properties.
 They are immutable. Instead, you must do this:</p>
 <pre><code class="lang-c#">var appFiles = CreateSource&lt;AppFiles&gt;(options: new { OnlyFolders = true });
-// This would throw an error:
+// The following would throw an error:
 // appFiles.OnlyFolders = true;
 var data = appFiles.List;
-</code></pre><p>This new method is the only recommended way of doing this from now on.</p>
+</code></pre><p>This new way is the only recommended way of doing this from now on.</p>
 <h2 id="coverage">Coverage</h2>
 <p>As of March 2023, ca. 80% of all objects in 2sxc are immutable, we hope to reach 95% by end of 2023.
 We cannot reach 100% any time soon, because we must ensure compatibility with existing code.</p>
+<ol>
+<li>IEntity is internally 98% immutable - some details left to optimize</li>
+<li>DataSources <em>can</em> be immutable. Newer DataSources are immutable, and data sources created using Kit.Data are immutable by default.</li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ul>

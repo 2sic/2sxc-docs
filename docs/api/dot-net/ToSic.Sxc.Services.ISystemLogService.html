@@ -13,20 +13,22 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Convention: Functional API (Immutable) | 2sxc 15 / EAV 15 </title>
+    <title>Interface ISystemLogService
+   | 2sxc 15 / EAV 15 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Convention: Functional API (Immutable) | 2sxc 15 / EAV 15 ">
+    <meta name="title" content="Interface ISystemLogService
+   | 2sxc 15 / EAV 15 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +54,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/v15/50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/v15/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +67,22 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
+                      </li>
+                      <li>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li class="active">
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
-                      </li>
-                      <li>
-                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,51 +116,64 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Conventions.Functional">
-<h1 id="convention-functional-api-immutable">Convention: Functional API (Immutable)</h1>
-
-<p>There are many programming paradigms.
-One that&#39;s become very important to us is <strong>functional</strong> programming.</p>
-<p>This means that code (usually functions) will have inputs and outputs, but no side effects.
-This also means that an object which must be modified will be copied into a new object, with the modifications applied.
-The original object is never modified.
-In most cases it will be discarded.
-This is strongly related to <a class="xref" href="../immutable/index.html">immutability</a></p>
-<div class="IMPORTANT"><h5>Important</h5><p>This was not always our approach, so some of the code is still not functional.
-But you must assume that anything you find which is not functional, will be so in the future.</p>
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ISystemLogService">
+  
+  
+  <h1 id="ToSic_Sxc_Services_ISystemLogService" data-uid="ToSic.Sxc.Services.ISystemLogService" class="text-break">Interface ISystemLogService
+  </h1>
+  <div class="markdown level0 summary"><p>System-Log Service to add messages to the global log in any platform Dnn/Oqtane</p>
 </div>
-<h2 id="example">Example</h2>
-<p>This assumes code inside a Razor page, as it uses <code>Kit.Toolbar</code></p>
-<pre><code class="lang-c#">// Create a toolbar with a single edit button
-var toolbar = Kit.Toolbar.Empty().Edit();
-
-// Add a button to the toolbar
-var toolbarWithLayout = toolbar.Layout();
-
-// Note that as of now, the original toolbar still only has the Edit button.
-</code></pre><p>This goes even further.
-In v15.07 the toolbar API was extended with features to make UI settings more robust:</p>
-<pre><code class="lang-c#">
-// Give an inner tweak function to set more properties
-var toolbar = Kit.Toolbar.Edit(tweak: b =&gt; b.Color(&quot;red&quot;).Tooltip(&quot;Edit here&quot;));
-</code></pre><h2 id="why-functional">Why Functional?</h2>
-<p>Functional programming has many advantages, but the most important one is that it&#39;s easier to test and debug.
-It&#39;s also easier to understand, because you can see the inputs and outputs of a function, without having to look at the code.
-In the end, the quality and robustness of our application is much better.</p>
-<h2 id="coverage---parts-of-2sxc-which-are-functional">Coverage - Parts of 2sxc which are Functional</h2>
-<ol>
-<li>The Toolbar API on <code>Kit.Toolbar</code> is 100% functional (new v14)</li>
-<li>The Razor HTML Tags API on <code>Kit.HtmlTags</code> is 100% functional (new ca. v13)</li>
-<li>Page Parameters <code>CmsContext.Page.Parameters</code> are 100% functional (new ca. v12)</li>
-<li>Linking data sources using the <code>Link</code> property is 100% functional (new in v15)</li>
-</ol>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced gradually starting with 2sxc 12</li>
-<li>RazorBlade started doing this in v3 also in 2sxc 13</li>
-</ul>
-<p>Shortlink: <a href="https://r.2sxc.org/functional">https://r.2sxc.org/functional</a></p>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Services.html">ToSic.Sxc.Services</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
+  <h5 id="ToSic_Sxc_Services_ISystemLogService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PublicApi]
+public interface ISystemLogService</code></pre>
+  </div>
+  <h5 id="ToSic_Sxc_Services_ISystemLogService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>As of now this service is still very simple, later we may add methods like <code>Warn()</code> or <code>Error()</code> but let&apos;s wait and see what&apos;s needed</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_ISystemLogService_Add_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.ISystemLogService.Add(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/LogService/ILogService.cs/#L19">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Services_ISystemLogService_Add_" data-uid="ToSic.Sxc.Services.ISystemLogService.Add*"></a>
+  <h4 id="ToSic_Sxc_Services_ISystemLogService_Add_System_String_System_String_" data-uid="ToSic.Sxc.Services.ISystemLogService.Add(System.String,System.String)">Add(String, String)</h4>
+  <div class="markdown level1 summary"><p>Add a general message to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add(string title, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -167,7 +182,10 @@ In the end, the quality and robustness of our application is much better.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/conventions/functional-api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_ISystemLogService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.ISystemLogService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/LogService/ILogService.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -193,20 +211,20 @@ In the end, the quality and robustness of our application is much better.</p>
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

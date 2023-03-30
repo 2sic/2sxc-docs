@@ -124,7 +124,9 @@
   <div class="markdown level0 summary"><p>The toolbar builder helps you create Toolbar configurations for the UI.
 Note that it has a fluid API, and each method/use returns a fresh object with the updated configuration.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><p><img src="../../assets/features/toolbar.svg" class="feature"></p>
+<p>📖 See <a class="xref" href="../../net-code/services/toolbar-builder/index.html">Guide for the Toolbar Builder</a></p>
+</div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -136,7 +138,6 @@ Note that it has a fluid API, and each method/use returns a fresh object with th
   <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-[PublicApi]
 public interface IToolbarBuilder : IHybridHtmlString, IHtmlString, IHasLog, INeedsDynamicCodeRoot</code></pre>
   </div>
   <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_remarks"><strong>Remarks</strong></h5>
@@ -144,6 +145,7 @@ public interface IToolbarBuilder : IHybridHtmlString, IHtmlString, IHasLog, INee
 To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Services.IToolbarService.html">IToolbarService</a>.</p>
 <p>History</p>
 <ul>
+<li>uses the <a class="xref" href="../../net-code/conventions/functional-api/index.html">Convention: Functional API (Immutable)</a></li>
 <li>Added in 2sxc 13, just minimal API</li>
 <li>massively enhanced in v14.04</li>
 </ul>
@@ -152,20 +154,20 @@ To get a <code>ToolbarBuilder</code>, use the <a class="xref" href="ToSic.Sxc.Se
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Add_System_Object_System_String_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Add(System.Object%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Add_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Add(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L19">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L22">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Add_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Add*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Add_System_Object_System_String_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Add(System.Object,System.String,System.String,System.Object,System.Object,System.String)">Add(Object, String, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Add_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Add(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.String,System.Object,System.Object,System.String)">Add(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, String, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>add a new entity</strong> to a list of entities.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Add(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, string contentType = null, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Add(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, string contentType = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,6 +190,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -233,20 +241,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AddExisting_System_Object_System_String_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AddExisting(System.Object%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AddExisting_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AddExisting(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L42">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L47">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AddExisting_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AddExisting*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AddExisting_System_Object_System_String_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AddExisting(System.Object,System.String,System.String,System.Object,System.Object,System.String)">AddExisting(Object, String, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AddExisting_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AddExisting(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.String,System.Object,System.Object,System.String)">AddExisting(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, String, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>add an existing</strong> entity to the list.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder AddExisting(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, string contentType = null, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder AddExisting(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, string contentType = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,6 +277,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -314,20 +328,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_App_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.App(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_App_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.App(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L18">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L21">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_App_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.App*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_App_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.App(System.Object,System.String,System.Object,System.Object,System.String)">App(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_App_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.App(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">App(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>admin the app</strong>.
 Can also be used to remove the same button on a toolbar which would have it by default. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder App(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder App(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -349,6 +363,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -390,20 +410,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppImport_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppImport(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppImport_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppImport(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L39">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L44">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppImport_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppImport*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppImport_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppImport(System.Object,System.String,System.Object,System.Object,System.String)">AppImport(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppImport_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppImport(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">AppImport(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to open the <strong>import-app</strong> dialog.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder AppImport(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder AppImport(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -425,6 +445,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -466,20 +492,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppResources_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppResources(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppResources_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppResources(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L60">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L67">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppResources_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppResources*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppResources_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppResources(System.Object,System.String,System.Object,System.Object,System.String)">AppResources(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppResources_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppResources(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">AppResources(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>edit the app resources</strong> if there are any.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder AppResources(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder AppResources(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -501,6 +527,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -542,20 +574,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Apps_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Apps(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Apps_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Apps(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L102">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L113">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Apps_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Apps*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Apps_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Apps(System.Object,System.String,System.Object,System.Object,System.String)">Apps(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Apps_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Apps(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Apps(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to open the <strong>apps management</strong> of the current site.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Apps(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Apps(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -577,6 +609,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -618,20 +656,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppSettings_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppSettings(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppSettings_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppSettings(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L81">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L90">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppSettings_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppSettings*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppSettings_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppSettings(System.Object,System.String,System.Object,System.Object,System.String)">AppSettings(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_AppSettings_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.AppSettings(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">AppSettings(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>edit the custom app settings</strong> if there are any.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder AppSettings(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder AppSettings(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -653,6 +691,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -802,20 +846,20 @@ See also <a href="https://github.com/2sic/2sxc/issues/2838">issue</a></p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Button_System_String_System_Object_System_String_System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Button(System.String%2CSystem.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Button_System_String_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Button(System.String%2CSystem.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Buttons.cs/#L23">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Buttons.cs/#L26">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Button_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Button*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Button_System_String_System_Object_System_String_System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Button(System.String,System.Object,System.String,System.Object,System.Object,System.String,System.String)">Button(String, Object, String, Object, Object, String, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Button_System_String_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Button(System.String,System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String,System.String)">Button(String, Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String, String)</h4>
   <div class="markdown level1 summary"><p>Add a custom button / command.
 Can also be used to do advanced remove operations or modify a button on a toolbar which would have it by default. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Button(string name, object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null, string context = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Button(string name, object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null, string context = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -850,6 +894,12 @@ according to the conventions of the <a class="xref" href="../../js-code/toolbars
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -895,20 +945,20 @@ according to the conventions of the <a class="xref" href="../../js-code/toolbars
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Code_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Code(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Code_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Code(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L33">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L39">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Code_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Code*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Code_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Code(System.Object,System.String,System.Object,System.Object,System.String)">Code(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Code_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Code(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Code(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to <strong>run JS code</strong>.
 Can also be used to remove the same button on a toolbar which would have it by default. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Code(object target, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Code(object target, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -930,6 +980,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1081,13 +1137,13 @@ It will only run if the toolbar would already show. </p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Copy(System.Object%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Copy(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L180">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L195">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Copy*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Copy(System.Object,System.String,System.String,System.Object,System.Object,System.Object,System.String,System.String)">Copy(Object, String, String, Object, Object, Object, String, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Copy(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.String,System.Object,System.Object,System.Object,System.String,System.String)">Copy(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, String, Object, Object, Object, String, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>copy an item</strong>.
 Can also be used to remove the same button on a toolbar which would have it by default.
 It needs the item which it will copy as a parameter.</p>
@@ -1095,7 +1151,7 @@ It needs the item which it will copy as a parameter.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Copy(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, string contentType = null, object ui = null, object parameters = null, object prefill = null, string operation = null, string context = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Copy(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, string contentType = null, object ui = null, object parameters = null, object prefill = null, string operation = null, string context = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1120,6 +1176,12 @@ It needs the item which it will copy as a parameter.</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1175,25 +1237,25 @@ It needs the item which it will copy as a parameter.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Copy_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_System_Object_System_Object_System_Object_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Added in v14.02</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Data_System_Object_System_String_System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Data(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Data_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Data(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L91">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L100">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Data_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Data*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Data_System_Object_System_String_System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Data(System.Object,System.String,System.Object,System.Object,System.Object,System.String)">Data(Object, String, Object, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Data_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Data(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object,System.String)">Data(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>show a data-admin dialog</strong> with all the data-items / entities of a specific content type.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Data(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object filter = null, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Data(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object filter = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1220,6 +1282,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1266,13 +1334,13 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Delete_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Delete(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Delete_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Delete(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L23">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L26">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Delete_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Delete*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Delete_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Delete(System.Object,System.String,System.Object,System.Object,System.String)">Delete(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Delete_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Delete(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Delete(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create (or reconfigure) the button to <strong>delete an item</strong>.</p>
 <p>This has a special behavior.
 The <code>default</code> toolbar already includes a delete-button in the third group.
@@ -1284,7 +1352,7 @@ But it will still be in the third group of buttons.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Delete(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Delete(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1306,6 +1374,12 @@ But it will still be in the third group of buttons.</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1346,20 +1420,20 @@ But it will still be in the third group of buttons.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Edit_System_Object_System_String_System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Edit(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Edit_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Edit(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L42">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L47">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Edit_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Edit*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Edit_System_Object_System_String_System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Edit(System.Object,System.String,System.Object,System.Object,System.Object,System.String)">Edit(Object, String, Object, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Edit_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Edit(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object,System.String)">Edit(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>edit an item</strong>.
 Can also be used to remove the same button on a toolbar which would have it by default. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Edit(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, object prefill = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Edit(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, object prefill = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1381,6 +1455,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1427,20 +1507,20 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Fields_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Fields(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Fields_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Fields(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L51">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L59">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Fields_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Fields*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Fields_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Fields(System.Object,System.String,System.Object,System.Object,System.String)">Fields(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Fields_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Fields(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Fields(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to open a dialog to <strong>manage the fields/attributes</strong> of the content type.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Fields(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Fields(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1461,6 +1541,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1610,20 +1696,86 @@ See <a class="xref" href="../../basics/edit/edit-ux/toolbars/button-groups.html"
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Insights_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Insights(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Info_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Info(System.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L144">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_InfoNote.cs/#L17">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Info_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Info*"></a>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Info_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Info(System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.String)">Info(String, Func&lt;ITweakButton, ITweakButton&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Create an info, warning, help or link-button to assist the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Info(string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, string link = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>Optional function call to tweak the button.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">link</span></td>
+        <td><p>If provided, will make the button open the link in a new window.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.html">IToolbarBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Info_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>Added in v15.07</li>
+</ul>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Insights_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Insights(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L159">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Insights_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Insights*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Insights_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Insights(System.Object,System.String,System.Object,System.Object,System.String)">Insights(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Insights_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Insights(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Insights(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to open the <strong>insights</strong> for debugging.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Insights(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Insights(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1645,6 +1797,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1686,20 +1844,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Layout_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Layout(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Layout_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Layout(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L15">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L19">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Layout_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Layout*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Layout_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Layout(System.Object,System.String,System.Object,System.Object,System.String)">Layout(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Layout_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Layout(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Layout(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to <strong>change the view/layout</strong> of the data shown on the page.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Layout(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Layout(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1721,6 +1879,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1761,20 +1925,20 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_List_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.List(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_List_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.List(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L64">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L71">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_List_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.List*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_List_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.List(System.Object,System.String,System.Object,System.Object,System.String)">List(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_List_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.List(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">List(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>manage the list</strong> of entities shown here.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder List(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder List(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1800,6 +1964,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">ui</span></td>
         <td><p><em>optional</em> configuration how to show, see <a class="xref" href="../../net-code/services/toolbar-builder/ui.html">ui guide</a></p>
@@ -1837,20 +2007,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Metadata(System.Object%2CSystem.String%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Metadata(System.Object%2CSystem.String%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L128">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L139">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Metadata*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Metadata(System.Object,System.String,System.String,System.Object,System.Object,System.Object,System.String,System.String)">Metadata(Object, String, String, Object, Object, Object, String, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Metadata(System.Object,System.String,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object,System.String,System.String)">Metadata(Object, String, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object, String, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>add or edit metadata</strong> to the specified object and using the content-type specified here.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Metadata(object target, string contentTypes = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, object prefill = null, string operation = null, string context = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Metadata(object target, string contentTypes = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, object prefill = null, string operation = null, string context = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1881,6 +2051,12 @@ but can also other metadata supporting objects, like an Asset, Page, Site, etc.<
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -1931,7 +2107,7 @@ but can also other metadata supporting objects, like an Asset, Page, Site, etc.<
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Object_System_Object_System_Object_System_String_System_String__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Metadata_System_Object_System_String_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
@@ -2000,20 +2176,20 @@ but can also other metadata supporting objects, like an Asset, Page, Site, etc.<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveDown_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveDown(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveDown_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveDown(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L85">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L94">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveDown_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveDown*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveDown_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveDown(System.Object,System.String,System.Object,System.Object,System.String)">MoveDown(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveDown_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveDown(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">MoveDown(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>move an item down</strong> in a list.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder MoveDown(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder MoveDown(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2036,6 +2212,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2076,20 +2258,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveUp_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveUp(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveUp_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveUp(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L106">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L117">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveUp_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveUp*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveUp_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveUp(System.Object,System.String,System.Object,System.Object,System.String)">MoveUp(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_MoveUp_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.MoveUp(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">MoveUp(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>move an item up</strong> in a list.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder MoveUp(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder MoveUp(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2112,6 +2294,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2152,20 +2340,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_New_System_Object_System_String_System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.New(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_New_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.New(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L66">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L73">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_New_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.New*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_New_System_Object_System_String_System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.New(System.Object,System.String,System.Object,System.Object,System.Object,System.String)">New(Object, String, Object, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_New_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.New(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object,System.String)">New(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>create a new item</strong>.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder New(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, object prefill = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder New(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, object prefill = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2191,6 +2379,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2321,13 +2515,13 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Publish_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Publish(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Publish_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Publish(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L151">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsItems.cs/#L164">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Publish_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Publish*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Publish_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Publish(System.Object,System.String,System.Object,System.Object,System.String)">Publish(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Publish_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Publish(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Publish(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to publish the current item.
 Can also be used to remove the same button on a toolbar which would have it by default.
 By default it will only appear if the current item is draft/unpublished.
@@ -2336,7 +2530,7 @@ You can change this (but probably shouldn&apos;t) by setting an <code>operation<
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Publish(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Publish(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2361,6 +2555,12 @@ You can change this (but probably shouldn&apos;t) by setting an <code>operation<
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">ui</span></td>
         <td><p><em>optional</em> configuration how to show, see <a class="xref" href="../../net-code/services/toolbar-builder/ui.html">ui guide</a></p>
@@ -2398,20 +2598,20 @@ You can change this (but probably shouldn&apos;t) by setting an <code>operation<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Query_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Query(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Query_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Query(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L87">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L99">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Query_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Query*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Query_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Query(System.Object,System.String,System.Object,System.Object,System.String)">Query(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Query_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Query(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Query(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to <strong>open the design/edit query</strong> dialog.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Query(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Query(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2435,6 +2635,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">ui</span></td>
         <td><p><em>optional</em> configuration how to show, see <a class="xref" href="../../net-code/services/toolbar-builder/ui.html">ui guide</a></p>
@@ -2472,13 +2678,13 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Remove_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Remove(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Remove_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Remove(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L128">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L141">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Remove_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Remove*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Remove_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Remove(System.Object,System.String,System.Object,System.Object,System.String)">Remove(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Remove_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Remove(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Remove(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>remove an item</strong> from a list.
 Can also be used to remove the same button on a toolbar which would have it by default.
 This will not delete the item, just remove. </p>
@@ -2486,7 +2692,7 @@ This will not delete the item, just remove. </p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Remove(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Remove(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2509,6 +2715,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2549,20 +2761,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Replace_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Replace(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Replace_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Replace(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L149">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsForLists.cs/#L164">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Replace_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Replace*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Replace_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Replace(System.Object,System.String,System.Object,System.Object,System.String)">Replace(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Replace_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Replace(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Replace(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to <strong>replace the current item</strong> in the list with another existing item.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Replace(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Replace(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2585,6 +2797,12 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2723,20 +2941,20 @@ see <a class="xref" href="../../net-code/services/toolbar-builder/target.html">t
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_System_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.System(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_System_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.System(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L123">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsAdmin.cs/#L136">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_System_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.System*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_System_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.System(System.Object,System.String,System.Object,System.Object,System.String)">System(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_System_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.System(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">System(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create button to open the <strong>system admin</strong> dialog.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder System(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder System(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2758,6 +2976,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2799,20 +3023,20 @@ By default, the button will show based on conditions like permissions.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Template_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Template(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Template_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Template(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L69">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L79">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Template_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Template*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Template_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Template(System.Object,System.String,System.Object,System.Object,System.String)">Template(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Template_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Template(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">Template(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to <strong>open the edit-template</strong> (source-code) dialog.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Template(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Template(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2833,6 +3057,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2873,20 +3103,20 @@ Can also be used to remove the same button on a toolbar which would have it by d
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_View_System_Object_System_String_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.View(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_View_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.View(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L105">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_CommandsView.cs/#L119">View Source</a>
   </span>
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_View_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.View*"></a>
-  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_View_System_Object_System_String_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.View(System.Object,System.String,System.Object,System.Object,System.String)">View(Object, String, Object, Object, String)</h4>
+  <h4 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_View_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.View(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.String)">View(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, String)</h4>
   <div class="markdown level1 summary"><p>Create Button to open the <strong>edit view settings</strong> dialog.
 Can also be used to remove the same button on a toolbar which would have it by default.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder View(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, string operation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder View(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, string operation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2907,6 +3137,12 @@ Can also be used to remove the same button on a toolbar which would have it by d
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>New feature v15.07 - WIP</p>
 </td>
       </tr>
       <tr>
@@ -2953,7 +3189,7 @@ Can also be used to remove the same button on a toolbar which would have it by d
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Edit_Toolbar_IToolbarBuilder.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Edit.Toolbar.IToolbarBuilder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Sxc/Edit.Toolbar/IToolbarBuilder.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
                     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_SettingsAndParams.cs/#L4" class="contribution-link">View Source</a>

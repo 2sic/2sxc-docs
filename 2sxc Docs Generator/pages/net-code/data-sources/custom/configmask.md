@@ -6,24 +6,24 @@ uid: NetCode.DataSources.Custom.ConfigMask
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
-  .context-box-summary .datasource-custom, 
+  .context-box-summary .datasource-custom,
   .context-box-summary .query-params,
   .context-box-summary .data-configuration
-  { visibility: visible; } 
+  { visibility: visible; }
 </style>
 
-DataSources often need settings which come from the App or from a settings dialog. 
+DataSources often need settings which come from the App or from a settings dialog.
 The ConfigMask is part of the [Configuration System](xref:NetCode.DataSources.Custom.Configuration) and initializes a configuration value.
 
 This value will later be used for
 
 1. Parsing [Tokens](xref:Abyss.Parts.LookUp.Tokens) to find the correct parameter to use
-1. Use as part of the Cache-Key for high-performance caching.   
-  This ensures that DataSources which have different data based on dynamic configuration (like using a URL parameter) will have separate caches for each value used. 
+1. Use as part of the Cache-Key for high-performance caching.
+  This ensures that DataSources which have different data based on dynamic configuration (like using a URL parameter) will have separate caches for each value used.
 
 ## How to use ConfigMask
 
-Here's a example of the constructor of our SharePoint 2019 DataSource, which expects lots of settings: 
+Here's a example of the constructor of our SharePoint 2019 DataSource, which expects lots of settings:
 
 ```cs
 
@@ -66,4 +66,4 @@ This example adds 8 configuration masks - let's find out what exactly happens.
 
 ## History
 
-1. Introduced in 2sxc 9.13 to aid custom data sources 
+1. Introduced in 2sxc 9.13 to aid custom data sources

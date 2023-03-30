@@ -39,17 +39,20 @@ They are immutable. Instead, you must do this:
 
 ```c#
 var appFiles = CreateSource<AppFiles>(options: new { OnlyFolders = true });
-// This would throw an error:
+// The following would throw an error:
 // appFiles.OnlyFolders = true;
 var data = appFiles.List;
 ```
 
-This new method is the only recommended way of doing this from now on.
+This new way is the only recommended way of doing this from now on.
 
 ## Coverage
 
 As of March 2023, ca. 80% of all objects in 2sxc are immutable, we hope to reach 95% by end of 2023.
 We cannot reach 100% any time soon, because we must ensure compatibility with existing code.
+
+1. IEntity is internally 98% immutable - some details left to optimize
+1. DataSources _can_ be immutable. Newer DataSources are immutable, and data sources created using Kit.Data are immutable by default.
 
 ---
 
