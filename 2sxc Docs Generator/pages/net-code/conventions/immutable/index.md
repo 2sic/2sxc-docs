@@ -58,8 +58,8 @@ We cannot reach 100% any time soon, because we must ensure compatibility with ex
 
 ## History
 
-* Introduced in 2sxc 15
-
+* First introductions in 2sxc 13
+* Spread out more in 2sxc 15, eg. IEntity is now immutable
 
 
 Shortlink: <https://r.2sxc.org/immutable>

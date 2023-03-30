@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Convention: Everything is Immutable | 2sxc 15 / EAV 15 </title>
+    <title>Toolbar Builder Guide &#8211; Tweak API for Buttons new 15.07 | 2sxc 15 / EAV 15 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Convention: Everything is Immutable | 2sxc 15 / EAV 15 ">
+    <meta name="title" content="Toolbar Builder Guide &#8211; Tweak API for Buttons new 15.07 | 2sxc 15 / EAV 15 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,48 +114,47 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Conventions.Immutable">
-<h1 id="convention-everything-is-immutable">Convention: Everything is Immutable</h1>
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ToolbarBuilder.TweakButtons">
 
-<p>There are many programming paradigms.
-One that&#39;s become very important to us is <strong>immutable</strong> programming.
-This is strongly related to <a class="xref" href="../functional-api/index.html">functional APIs</a></p>
-<p>This means than objects inside 2sxc are never modified.
-Instead, they are copied and modified, and the original object is discarded.</p>
+<p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
+<h1 id="toolbar-builder-guide--tweak-api-for-buttons-new-1507">Toolbar Builder Guide – Tweak API for Buttons <em>new 15.07</em></h1>
+<p>Buttons can be tweaked to change their look and behavior.</p>
+<p>Previously, this was done using parameters such as <code>ui</code>, <code>parameters</code>, <code>prefill</code> etc.
+Now, you can use the <code>tweak</code> API to do the same thing.</p>
+<div class="TIP"><h5>Tip</h5><p>Using the <code>tweak</code> API is the recommended way to tweak buttons.
+It gives you compile time checking so it&#39;s less error-prone.</p>
+</div>
 <h2 id="example">Example</h2>
-<pre><code class="lang-c#">
-var original = new { Name = &quot;John&quot;, Age = 42 };
-var modified = SomeService.ChangeAge(original, 43);
+<pre><code class="lang-c#">// Old way without tweak
+Kit.Toolbar.Default().Add(ui: &quot;color=green&quot;, parameters: new { app = 2, zone = 3 });
 
-var areEqual = original.Age == modified.Age; // false
-</code></pre><h2 id="use-in-datasources">Use in DataSources</h2>
-<p>A common place where this affects Razor and WebApis is when using DataSources.
-Old data sources could do this:</p>
-<pre><code class="lang-c#">var entityFilter = CreateSource&lt;EntityIdFilter&gt;();
-entityFilter.EntityIds = &quot;123,456&quot;;
-var data = entityFilter.List;
-</code></pre><p>This behavior still works on old data sources to ensure compatibility.
-But newer DataSources such as <code>AppFiles</code> will not allow this, and will throw an exception if you try to modify the properties.
-They are immutable. Instead, you must do this:</p>
-<pre><code class="lang-c#">var appFiles = CreateSource&lt;AppFiles&gt;(options: new { OnlyFolders = true });
-// The following would throw an error:
-// appFiles.OnlyFolders = true;
-var data = appFiles.List;
-</code></pre><p>This new way is the only recommended way of doing this from now on.</p>
-<h2 id="coverage">Coverage</h2>
-<p>As of March 2023, ca. 80% of all objects in 2sxc are immutable, we hope to reach 95% by end of 2023.
-We cannot reach 100% any time soon, because we must ensure compatibility with existing code.</p>
+// New way with tweak - one example
+Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(new { app = 2, zone = 3 }));
+// Or another example
+Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(&quot;app&quot;, 2).Parameters(&quot;zone&quot;, 3));
+</code></pre><h2 id="why-a-new-api">Why a New API?</h2>
+<p>The new method achieves the same purpose as the old, and the old way will continue to work indefinitely.</p>
+<p>But the advantages of the new API are:</p>
 <ol>
-<li>IEntity is internally 98% immutable - some details left to optimize</li>
-<li>DataSources <em>can</em> be immutable. Newer DataSources are immutable, and data sources created using Kit.Data are immutable by default.</li>
+<li>It&#39;s easier to document so it&#39;s also easier to discover the possibilities you have</li>
+<li>It&#39;s easier to use because it&#39;s more type-safe and less error-prone</li>
+<li>It&#39;s easier to extend - for example with the new <code>note</code> feature added in v15.07</li>
 </ol>
-<hr>
-<h2 id="history">History</h2>
+<h2 id="api-docs">API Docs</h2>
 <ul>
-<li>First introductions in 2sxc 13</li>
-<li>Spread out more in 2sxc 15, eg. IEntity is now immutable</li>
+<li><a href="xref:ToSic.Sxc.Edit.Toolbar.ITweakButtons">Tweak API</a></li>
+<li>See also the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></li>
 </ul>
-<p>Shortlink: <a href="https://r.2sxc.org/immutable">https://r.2sxc.org/immutable</a></p>
+<h2 id="important-to-know">Important to Know</h2>
+<ul>
+<li>You cannot mix the tweak API with the previous parameters.<br>So if you use tweak on a button, you cannot also use <code>ui</code> or <code>parameters</code> etc.</li>
+</ul>
+<hr>
+<p>History</p>
+<ol>
+<li>Added in v15.07</li>
+</ol>
+<p>ShortLink: <a href="https://r.2sxc.org/tweak-buttons">https://r.2sxc.org/tweak-buttons</a></p>
 </article>
           </div>
           
@@ -164,7 +163,7 @@ We cannot reach 100% any time soon, because we must ensure compatibility with ex
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/conventions/immutable/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/toolbar-builder/tweak-buttons.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
