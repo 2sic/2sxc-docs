@@ -19,7 +19,7 @@ If your code just raises a .net Exception, the execution engine will catch this 
 
 Instead of raising the normal exception, your DataSource can also return an `ErrorStream` which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:
 
-1. The [DataSource.Error](xref:ToSic.Eav.DataSources.DataSource.Error) property ([DataSourceErrorHelper](xref:ToSic.Eav.DataSource.DataSourceErrorHelper)) to create error streams
+1. The [DataSource.Error](xref:ToSic.Eav.DataSource.DataSourceErrorHelper) property ([DataSourceErrorHelper](xref:ToSic.Eav.DataSource.DataSourceErrorHelper)) to create error streams
 1. The [TryGetIn()](xref:ToSic.Eav.DataSource.DataSourceBase.TryGetIn*) helper to get an `In` stream which must be available - or null so you can return an error
 
 Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.
