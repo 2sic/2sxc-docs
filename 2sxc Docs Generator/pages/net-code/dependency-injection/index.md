@@ -10,8 +10,8 @@ uid: NetCode.DependencyInjection.Index
 
 ## How Can I Use Dependency Injection in Razor?
 
-Previously this was reserved for internal use. 
-Starting in 2sxc v11.11 all Razor classes have a command called [GetService](xref:NetCode.DynamicCode.GetService). 
+Previously this was reserved for internal use.
+Starting in 2sxc v11.11 all Razor classes have a command called [GetService](xref:NetCode.DynamicCode.GetService).
 This is how your code would get a service:
 
 ```c#
@@ -27,15 +27,15 @@ Just like with with Razor, 2sxc 11.11 added the same GetService to all WebAPIs.
 
 ## How Can I Use Dependency Injection in Dnn Modules and Skins
 
-👉 [](xref:NetCode.DependencyInjection.Dnn)
+👉 [](xref:NetCode.PlatformApi.Dnn.DependencyInjection)
 
 ## How Can I Use Dependency Injection in Oqtane
 
-👉 [](xref:NetCode.DependencyInjection.Oqtane)
+👉 [](xref:NetCode.PlatformApi.Oqtane.DependencyInjection)
 
 ## Services My Code May Need
 
-You can get just about anything from 2sxc. 
+You can get just about anything from 2sxc.
 The most common services you'll request as of 2sxc 12 are in the [ToSic.Sxc.Services namespace](xref:ToSic.Sxc.Services).
 
 

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Depedency Injection in Dnn Skins and Modules | 2sxc 15 / EAV 15 </title>
+    <title> | 2sxc 15 / EAV 15 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Depedency Injection in Dnn Skins and Modules | 2sxc 15 / EAV 15 ">
+    <meta name="title" content=" | 2sxc 15 / EAV 15 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -115,79 +115,8 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DependencyInjection.Dnn">
-<h1 id="depedency-injection-in-dnn-skins-and-modules">Depedency Injection in Dnn Skins and Modules</h1>
 
-<p>Since Dnn 9.4, Dependency Injection is built in. 
-It&#39;s still fairly basic, so there are some hoops to jump through, but for now it&#39;s the recommended way to work with this. </p>
-<div class="TIP"><h5>Tip</h5><p>Andrew Hoefling wrote a <a href="https://www.andrewhoefling.com/Blog/Post/dnn-dependency-injection">comprehensive guide how to use Dependency Injection in Dnn</a>.</p>
-</div>
-<div class="IMPORTANT"><h5>Important</h5><p>You need Dnn 9.4+ for these examples to work. </p>
-<p>2sxc 13 will only support this form of providing services outside of 2sxc, so if you need this, make sure you upgrade. </p>
-</div>
-<h2 id="how-can-i-use-dependency-injection-in-dnn-modules">How Can I Use Dependency Injection in Dnn Modules?</h2>
-<ul>
-<li>Dnn Modules inherit from the <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html">PortalModuleBase</a></li>
-<li>This has a property called <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html#DotNetNuke_Entities_Modules_PortalModuleBase_DependencyProvider">DependencyProvider</a></li>
-<li>This is a <em>.net Standard 2</em> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.iserviceprovider">IServiceProvider</a></li>
-</ul>
-<p>The naming is a bit unfortunate, since normally we talk of <code>ServiceProvider</code> and this is called <code>DependencyProvider</code> but otherwise it works the same. </p>
-<p>To get a 2sxc Service with this, you could write code like this</p>
-<pre><code class="lang-csharp">using ToSic.Sxc.Services;
-var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService));
-var json = jsonSvc.ToJson(someObject);
-</code></pre><p>This is a bit clunky, so usually we&#39;ll add the namespace <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions">Microsoft.Extensions.DependencyInjection</a> and write this:</p>
-<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
-using ToSic.Sxc.Services;
-var jsonSvc = DependencyProvider.GetService&lt;IJsonService&gt;();
-var json = jsonSvc.ToJson(someObject);
-</code></pre><h2 id="how-can-i-use-dependency-injection-in-dnn-skinsthemes">How Can I Use Dependency Injection in Dnn Skins/Themes?</h2>
-<p>This is unfortunately not prepared well - I guess at the time it was developed this wasn&#39;t seen as an important use case. </p>
-<ul>
-<li>Dnn has Dependency Injection prepared for each request</li>
-<li>Each Request has a separate <em>Scope</em> (to not mix services between requests)</li>
-<li>This scoped Service-Provider is cached on the HttpContext</li>
-<li>Dnn has a special extension method called <code>GetScope()</code> to work with this - <a href="https://github.com/dnnsoftware/Dnn.Platform/blob/develop/DNN%20Platform/Library/Common/Extensions/HttpContextDependencyInjectionExtensions.cs">see docs</a></li>
-</ul>
-<p>To get a 2sxc Service in a Skin, you can write code like this:</p>
-<pre><code class="lang-csharp">using DotNetNuke.Common.Extensions;
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using ToSic.Sxc.Services;
-
-var sp = HttpContext.Current.GetScope().ServiceProvider;
-var jsonSvc = sp.GetService&lt;IJsonService&gt;();
-var json = jsonSvc.ToJson(someObject);
-</code></pre><h2 id="how-can-i-get-dnn-objects-using-dependency-injection">How Can I Get Dnn Objects using Dependency Injection?</h2>
-<p>As of Dnn 9.10 the answer is mostly no 😶. Dnn is simply not there yet. Work-in-progress.</p>
-<p>The documentation is almost non-existant, so if you want to try using Dnn objects, you&#39;ll need to dig through Dnn code to get this to fly. </p>
-<h2 id="how-can-i-register-my-services-in-dnn-di">How Can I Register my Services in Dnn DI?</h2>
-<p>You need to create a class that implement <code>IDnnStartup</code> like this</p>
-<pre><code class="lang-c#">using azing.Catalog.Permissions;
-using DotNetNuke.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
-namespace azing.Catalog
-{
-    public class StartupAzing : IDnnStartup
-    {
-        // This is the new v13 mode, requires DNN 9.44+
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.TryAddTransient&lt;AppPermissions&gt;();
-        }
-    }
-}
-</code></pre><hr>
-<h2 id="history">History</h2>
-<ol>
-<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
-<li>Integrated with Oqtane DI in v12 (May 2021)</li>
-<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
-<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
-<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li>Created <a class="xref" href="../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
-</ol>
+<p>Moved to <a class="xref" href="../platform-api/dnn/dependency-injection.html">Dependency Injection in Dnn Skins and Modules</a></p>
 </article>
           </div>
           

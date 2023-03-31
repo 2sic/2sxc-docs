@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>What is Dependency Injection? | 2sxc 15 / EAV 15 </title>
+    <title>Dependency Injection in Dnn Skins and Modules | 2sxc 15 / EAV 15 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="What is Dependency Injection? | 2sxc 15 / EAV 15 ">
+    <meta name="title" content="Dependency Injection in Dnn Skins and Modules | 2sxc 15 / EAV 15 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     <meta property="docfx:newtab" content="true">
   
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/v15/50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/v15/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +65,22 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li class="active">
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
           </div>
@@ -114,38 +114,25 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DependencyInjection.Introduction">
-<h1 id="what-is-dependency-injection">What is Dependency Injection?</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.PlatformApi.Dnn.DependencyInjection">
+<h1 id="dependency-injection-in-dnn-skins-and-modules">Dependency Injection in Dnn Skins and Modules</h1>
 
-<p><strong>Dependency Injection</strong> is a way to <strong>structure applications</strong> and to <strong>get Services</strong> or <strong>Helpers</strong> in your code.</p>
-<div class="TIP"><h5>Tip</h5><p>When an application becomes advanced it becomes more difficult to get <em>Services</em> and <em>Helpers</em>
-because these may also rely on other Services and Helpers to function.</p>
-<p>Dependency Injection makes sure that you don&#39;t need to know about the sub-dependencies, and just work with what you need.</p>
+<p>Since Dnn 9.4, Dependency Injection is built in.
+It&#39;s still fairly basic, so there are some hoops to jump through, but for now it&#39;s the recommended way to work with this.</p>
+<div class="TIP"><h5>Tip</h5><p>Andrew Hoefling wrote a <a href="https://www.andrewhoefling.com/Blog/Post/dnn-dependency-injection">comprehensive guide how to use Dependency Injection in Dnn</a>.</p>
 </div>
-<p>Most advanced solutions today use <strong>Dependency Injection</strong> or <strong>Inversion of Control</strong> (IoC) to handle this problem. The concept builds on two core parts:</p>
+<div class="IMPORTANT"><h5>Important</h5><p>You need Dnn 9.4+ for these examples to work.</p>
+<p>2sxc 13 will only support this form of providing services outside of 2sxc, so if you need this, make sure you upgrade.</p>
+</div>
+<h2 id="what-works-and-what-doesnt">What works, and what doesn&#39;t</h2>
 <ol>
-<li>There is a shared <strong>Service Provider</strong> which can give me any Service I need</li>
-<li>Every piece of code uses this Service Provider to fetch everything it needs</li>
+<li>All 2sxc services can be accessed via DI from Dnn code that support DI - such as <a class="xref" href="themes-modules.html">themes and modules</a></li>
+<li>2sxc has a full API to provide rendered Blocks, Services and Data to Dnn code</li>
+<li>Some - but only a few - of Dnn Services are available on DI</li>
 </ol>
-<p>In <em>.net Core</em> and <em>.net MVC</em> this is a standard thing everybody learns early on (even though they probably don&#39;t understand it 😉).
-But in the .net Classic it was not so common, so older developers tend to not use it, so here some more details to round off the picture how this works in .net:</p>
-<ol>
-<li>.net provides an <em>IServiceProvider</em> which is this shared ServiceProvider.</li>
-<li>At application start-up all parts &amp; services are registered and there are specifications if they should be shared (singleton), shared-per-http-request (scoped) or recreated for each use (transient).</li>
-<li>All parts &amp; services in turn must also get their dependencies from this ServiceProvider. This happens in 2 ways<ol>
-<li>Either they have a constructor which lists all their dependencies, like <code>public MyClass(ICmsContext context)</code> - in this case the ServiceProvider will automatically fetch the <code>ICmsContext</code> when the <code>MyClass</code> is created.</li>
-<li>Or they depend on the service provider to generate new objects later on, using <code>public MyClass(IServiceProvider sp)</code> and later running things like <code>var context = sp.GetService&lt;ICmsContext&gt;()</code>. This is common in scenarios where you may need multiple separate objects (like to generate a list of objects which again need dependencies).</li>
-<li>Or they request <strong>Lazy</strong> dependencies - which are heavier objects that are maybe not used, using <code>public MyClass(Lazy&lt;ICmsContext&gt; contextLazy)</code>. These are not automatically created, but will be created if they are used.</li>
-<li>Or there is a <strong>Factory</strong> master-object which creates objects and adds their dependencies later on. This is how <strong>Razor</strong> in .net Core works.</li>
-</ol>
-</li>
-</ol>
-<p>Using this setup anything can easily be requested when needed, and even if it needs dependencies which again have sub-dependencies, all this is automatically taken care of without the final code having to know about the structure.</p>
-<p>This also has 2 more important benefits:</p>
-<ol>
-<li>Internals can easily change, but the code using a service doesn&#39;t need to be updated</li>
-<li>It&#39;s easy to replace parts of the system without affecting the code itself. For example, 2sxc has different Url-Resolvers in Dnn and Oqtane, but your code doesn&#39;t need to know about this</li>
-</ol>
+<h2 id="how-can-i-get-dnn-objects-using-dependency-injection">How Can I Get Dnn Objects using Dependency Injection?</h2>
+<p>As of Dnn 9.10 the answer is mostly no 😶. Dnn is simply not there yet. Work-in-progress.</p>
+<p>The documentation is almost non-existant, so if you want to try using Dnn objects, you&#39;ll need to dig through Dnn code to get this to fly.</p>
 <h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
 <ol>
 <li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
@@ -154,7 +141,7 @@ But in the .net Classic it was not so common, so older developers tend to not us
 <li>Integrated with Oqtane DI in v12 (May. 2021)</li>
 <li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
 <li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li>Created <a class="xref" href="../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
+<li>Created <a class="xref" href="../../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
 </ol>
 </article>
           </div>
@@ -164,7 +151,7 @@ But in the .net Classic it was not so common, so older developers tend to not us
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dependency-injection/introduction.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/platform-api/dnn/dependency-injection.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -190,20 +177,20 @@ But in the .net Classic it was not so common, so older developers tend to not us
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
     
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.initHighlightingOnLoad();
     </script>
     
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
     
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>

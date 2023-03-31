@@ -1,12 +1,12 @@
 # Use 2sxc Instances or App-Data from External C# Code
 
 > [!WARNING]
-> This is obsolete documentation for older versions of 2sxc and _not best practice_. 
+> This is obsolete documentation for older versions of 2sxc and _not best practice_.
 > We left it here for old-timers who may still need to use this.
 >
 > Please use [](xref:NetCode.External.Index) instead.
 >
-> If you can in any way, do not use this, these APIs are deprecated. 
+> If you can in any way, do not use this, these APIs are deprecated.
 
 ---
 
@@ -38,7 +38,7 @@ App.Data.Create("Tag", vals);
 ```
 
 ## Example of Gaining Access to Links Managed in a simple 2sxc Content App
- 
+
 Imagine you have a theme using DDR Menu with Razor Templates. The theme has a MegaMenu and you want to include one or more featured links that will change often and those links are easily managed in the Content App using the Links Content-Type with any of the default Views.
 
 Your C# code in your MegaMenu.cshtml file could get access to those Links like this:
