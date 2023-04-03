@@ -6,7 +6,7 @@ uid: NetCode.Conventions.UnknownImplementations
 
 [!include["This is for integration only"](../_include-for-integration.md)]
 
-EAV and 2sxc have about 30 objects which can be implemented specifically to a platform. 
+EAV and 2sxc have about 30 objects which can be implemented specifically to a platform.
 Examples:
 
 * `ISite` gives information about the current site
@@ -19,11 +19,11 @@ To make integration easier, these objects have an `...Unknown` implementation wh
 * `IUserUnknown` will always say that it's not a Admin
 
 Because they are auto-registered as a fallback, they will be used if you didn't provide your own implementation.
-This ensures that even minimal integrations can work, but will be missing some functionality. 
+This ensures that even minimal integrations can work, but will be missing some functionality.
 
 ## Warnings when Unknown Objects are Used
 
-All the unknown objects will add a warning to the Insights-log, so you can see that these objects were used. 
+All the unknown objects will add a warning to the Insights-log, so you can see that these objects were used.
 You will see an entry for `warnings-not-implemented`
 
 <img src="./assets/insights-unknown-overview.jpg" width="100%" class="full-width">
@@ -32,8 +32,8 @@ You will see an entry for `warnings-not-implemented`
 
 ## Which Objects to Replace
 
-As you integrate 2sxc/EAV on your platform, you will probably not implement all these services, as you won't need them all. 
-But it's a good idea to keep an eye on the logs, to determine if a specific object should be implemented. 
+As you integrate 2sxc/EAV on your platform, you will probably not implement all these services, as you won't need them all.
+But it's a good idea to keep an eye on the logs, to determine if a specific object should be implemented.
 
 ---
 
@@ -44,4 +44,4 @@ But it's a good idea to keep an eye on the logs, to determine if a specific obje
 
 Coverage: ca. 100% of relevant objects implement this
 
-Shortlink: https://r.2sxc.org/unknown-implementations
+Shortlink: <https://r.2sxc.org/unknown-implementations>

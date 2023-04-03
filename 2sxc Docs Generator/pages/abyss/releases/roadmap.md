@@ -26,11 +26,12 @@ Todo to complete all these features in March
 1. Document CDN / Asset management
 1. Document Formula improvements
 1. Document new data sources API
-1. Standardize / complete `IDataBuilder` API
 1. finish Custom DataSources
 
 ## Priorities for v15 LTS
 
+1. ✅ IDataService completed
+1. ✅...and documented
 1. New WYSIWYG mode completed (and documented)
 1. Data-conversion of entities to json in attribute...
 1. Improve Oqtane Pages DS to also respect settings - @STV
@@ -79,6 +80,7 @@ Minor: Tutorial App Enhancements
     1. etc.
 1. CSP - ca. 5d
     1. ⏳ CSP Tutorials, docs and more
+1. Standardize / complete `IDataBuilder` API
 
 Blazor CMS / cre8magic
 
