@@ -9,11 +9,11 @@ uid: Basics.Browser.EditUx.Toolbars.ButtonUi
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-edit { visibility: visible; }</style>
 
-Buttons in the Toolbars can have custom UI parameters. 
+Buttons in the Toolbars can have custom UI parameters.
 
 You can set them in [C# APIs](xref:ToSic.Sxc.Services.ToolbarBuilder.Ui) as well as [JS APIs](xref:JsCode.Toolbars.Simple).
 
-Since the values and everything applies to both, the possibilities are documented here. 
+Since the values and everything applies to both, the possibilities are documented here.
 
 ## Overview of UI Rules on Button
 
@@ -23,6 +23,7 @@ Since the values and everything applies to both, the possibilities are documente
 * [classes](#class)
 * [title](#title)
 * [group](#group)
+* [position](#position)
 
 ## Icon
 
@@ -34,22 +35,22 @@ Since v14.07.05 you can also specify an SVG like this:
 
 This would use the specified SVG directly on the button, but there are some caveats:
 
-1. The SVG will need to auto-resize to fit the button. Because of that, your SVG will either need to specify a `viewBox` or it will be auto-calculated for you. 
+1. The SVG will need to auto-resize to fit the button. Because of that, your SVG will either need to specify a `viewBox` or it will be auto-calculated for you.
 1. Since an SVG usually contains many characters that won't work in a URL, it must be base64 encoded, so it's more like `&icon=base64:PHN2ZyB...`
 
 ## Color
 
 * `&color=...` gives the button other colors
 
-Both `settings` and `buttons` can have an `&color=...` parameter. The `...` can be just one color or two, like `&color=red,green` or `&color=brown`. 
+Both `settings` and `buttons` can have an `&color=...` parameter. The `...` can be just one color or two, like `&color=red,green` or `&color=brown`.
 
-When specifying colors you can either use standard names like `red` or HEX-codes like `FF0000`. You cannot use the `#` hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes. 
+When specifying colors you can either use standard names like `red` or HEX-codes like `FF0000`. You cannot use the `#` hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes.
 
-Note that you can also use semi-transparent hex-codes, like `FF000088`. 
+Note that you can also use semi-transparent hex-codes, like `FF000088`.
 
 ## Show
 
-Force show/hide a button. This is only used in cases where show is auto detected, and you wish to override it. 
+Force show/hide a button. This is only used in cases where show is auto detected, and you wish to override it.
 
 * `&show=true` or `&show=false`
 
@@ -67,12 +68,15 @@ Add more classes to your button for custom styling.
 
 ## Group
 
-This is used in toolbars which have many button groups - either the standard groups or groups you made yourself. 
-By specifying the `group` you can make sure a button is in another button group. 
+This is used in toolbars which have many button groups - either the standard groups or groups you made yourself.
+By specifying the `group` you can make sure a button is in another button group.
 
 * `&group=my`
 
+## Position
 
+* `&pos=0` - add the button to the front of the list
+* `&pos=-1` - add the button to the end of the list
 
 ## Read also
 

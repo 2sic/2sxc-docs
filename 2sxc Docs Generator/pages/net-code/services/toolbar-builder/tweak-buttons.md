@@ -72,6 +72,42 @@ But the advantages of the new API are:
 * The tweak API is [immutable](xref:NetCode.Conventions.Immutable), so every step returns a new object.
 * The tweak API is [functional](xref:NetCode.Conventions.Functional).
 
+## Issues / Challenges
+
+The tweak API uses _lambda expressions_.
+This can cause problems with `dynamic` objects which are very common in Razor.
+If you don't know about `dynamic`s you should briefly google it.
+
+Basically the following code will cause issues:
+
+```c#
+// Note that Content is a dynamic object
+Kit.Toolbar.Default(Content).New(tweak: b => b.Color("pink,black"))
+```
+
+This will result in a message like this:
+
+```text
+...error CS1978: Cannot use an expression of type 'lambda expression' as an argument to a dynamically dispatched operation at...
+```
+
+<img src="./assets/tweak-error-lambda-after-dynamic.jpg" width="40%" align="right">
+
+This means: because the initial part `Kit.Toolbar.Default(Content)` contains a dynamic parameter (`Content`),
+the compiler treats what comes after that as dynamic as well.
+So the following `.New(...)` is also treated as dynamic.
+This is usually not a problem, but the compiler will complain that the inner lambda
+`b => b.Color("pink,black")` can't be reliably compiled, since it could be anything.
+
+For now, the best workaround is to do one of the following:
+
+* Tell the compiler that `Content` is an `object`  
+  `Kit.Toolbar.Default(Content as object).New(tweak: b => b.Color("pink,black"))`
+* Place the dynamic parameter at the end  
+  `Kit.Toolbar.Default().New(tweak: b => b.Color("pink,black")).For(Content)`
+
+This is not ideal, and we're striving for improvements in future releases.
+
 ---
 
 History

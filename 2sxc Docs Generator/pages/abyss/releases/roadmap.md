@@ -22,7 +22,7 @@ Last Update: **2023-03-22**
 
 Todo to complete all these features in March
 
-1. ✅ improve IConfiguration API - lighten the `IDataSourcesService` API
+1. ✅ improve IConfiguration API - lighten the `IDataService` API
 1. Document CDN / Asset management
 1. Document Formula improvements
 1. Document new data sources API
@@ -33,7 +33,7 @@ Todo to complete all these features in March
 1. ✅ IDataService completed
 1. ✅...and documented
 1. New WYSIWYG mode completed (and documented)
-1. Data-conversion of entities to json in attribute...
+1. ✅ Data-conversion of entities to json in attribute...
 1. Improve Oqtane Pages DS to also respect settings - @STV
 
 

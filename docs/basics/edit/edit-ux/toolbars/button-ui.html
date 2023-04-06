@@ -239,9 +239,9 @@
   </div>
 </div><style>.context-box-summary .browser-edit { visibility: visible; }</style>
 
-<p>Buttons in the Toolbars can have custom UI parameters. </p>
+<p>Buttons in the Toolbars can have custom UI parameters.</p>
 <p>You can set them in <a class="xref" href="../../../../net-code/services/toolbar-builder/ui.html">C# APIs</a> as well as <a class="xref" href="../../../../js-code/toolbars/simple.html">JS APIs</a>.</p>
-<p>Since the values and everything applies to both, the possibilities are documented here. </p>
+<p>Since the values and everything applies to both, the possibilities are documented here.</p>
 <h2 id="overview-of-ui-rules-on-button">Overview of UI Rules on Button</h2>
 <ul>
 <li><a href="#icon">icon</a></li>
@@ -250,6 +250,7 @@
 <li><a href="#class">classes</a></li>
 <li><a href="#title">title</a></li>
 <li><a href="#group">group</a></li>
+<li><a href="#position">position</a></li>
 </ul>
 <h2 id="icon">Icon</h2>
 <ul>
@@ -261,18 +262,18 @@
 </ul>
 <p>This would use the specified SVG directly on the button, but there are some caveats:</p>
 <ol>
-<li>The SVG will need to auto-resize to fit the button. Because of that, your SVG will either need to specify a <code>viewBox</code> or it will be auto-calculated for you. </li>
+<li>The SVG will need to auto-resize to fit the button. Because of that, your SVG will either need to specify a <code>viewBox</code> or it will be auto-calculated for you.</li>
 <li>Since an SVG usually contains many characters that won&#39;t work in a URL, it must be base64 encoded, so it&#39;s more like <code>&amp;icon=base64:PHN2ZyB...</code></li>
 </ol>
 <h2 id="color">Color</h2>
 <ul>
 <li><code>&amp;color=...</code> gives the button other colors</li>
 </ul>
-<p>Both <code>settings</code> and <code>buttons</code> can have an <code>&amp;color=...</code> parameter. The <code>...</code> can be just one color or two, like <code>&amp;color=red,green</code> or <code>&amp;color=brown</code>. </p>
-<p>When specifying colors you can either use standard names like <code>red</code> or HEX-codes like <code>FF0000</code>. You cannot use the <code>#</code> hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes. </p>
-<p>Note that you can also use semi-transparent hex-codes, like <code>FF000088</code>. </p>
+<p>Both <code>settings</code> and <code>buttons</code> can have an <code>&amp;color=...</code> parameter. The <code>...</code> can be just one color or two, like <code>&amp;color=red,green</code> or <code>&amp;color=brown</code>.</p>
+<p>When specifying colors you can either use standard names like <code>red</code> or HEX-codes like <code>FF0000</code>. You cannot use the <code>#</code> hash symbol, so when specifying hex-colors, always just write the characters. The button rendering system will auto-detect hex color codes.</p>
+<p>Note that you can also use semi-transparent hex-codes, like <code>FF000088</code>.</p>
 <h2 id="show">Show</h2>
-<p>Force show/hide a button. This is only used in cases where show is auto detected, and you wish to override it. </p>
+<p>Force show/hide a button. This is only used in cases where show is auto detected, and you wish to override it.</p>
 <ul>
 <li><code>&amp;show=true</code> or <code>&amp;show=false</code></li>
 </ul>
@@ -287,10 +288,15 @@
 <li><code>&amp;title=some-text</code> - mouseover message</li>
 </ul>
 <h2 id="group">Group</h2>
-<p>This is used in toolbars which have many button groups - either the standard groups or groups you made yourself. 
-By specifying the <code>group</code> you can make sure a button is in another button group. </p>
+<p>This is used in toolbars which have many button groups - either the standard groups or groups you made yourself.
+By specifying the <code>group</code> you can make sure a button is in another button group.</p>
 <ul>
 <li><code>&amp;group=my</code></li>
+</ul>
+<h2 id="position">Position</h2>
+<ul>
+<li><code>&amp;pos=0</code> - add the button to the front of the list</li>
+<li><code>&amp;pos=-1</code> - add the button to the end of the list</li>
 </ul>
 <h2 id="read-also">Read also</h2>
 <ul>

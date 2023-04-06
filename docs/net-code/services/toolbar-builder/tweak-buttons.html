@@ -167,6 +167,27 @@ So the final result is returned by the function and used by the toolbar builder.
 <li>The tweak API is <a class="xref" href="../../conventions/immutable/index.html">immutable</a>, so every step returns a new object.</li>
 <li>The tweak API is <a class="xref" href="../../conventions/functional-api/index.html">functional</a>.</li>
 </ul>
+<h2 id="issues--challenges">Issues / Challenges</h2>
+<p>The tweak API uses <em>lambda expressions</em>.
+This can cause problems with <code>dynamic</code> objects which are very common in Razor.
+If you don&#39;t know about <code>dynamic</code>s you should briefly google it.</p>
+<p>Basically the following code will cause issues:</p>
+<pre><code class="lang-c#">// Note that Content is a dynamic object
+Kit.Toolbar.Default(Content).New(tweak: b =&gt; b.Color(&quot;pink,black&quot;))
+</code></pre><p>This will result in a message like this:</p>
+<pre><code class="lang-text">...error CS1978: Cannot use an expression of type &#39;lambda expression&#39; as an argument to a dynamically dispatched operation at...
+</code></pre><p><img src="assets/tweak-error-lambda-after-dynamic.jpg" width="40%" align="right"></p>
+<p>This means: because the initial part <code>Kit.Toolbar.Default(Content)</code> contains a dynamic parameter (<code>Content</code>),
+the compiler treats what comes after that as dynamic as well.
+So the following <code>.New(...)</code> is also treated as dynamic.
+This is usually not a problem, but the compiler will complain that the inner lambda
+<code>b =&gt; b.Color(&quot;pink,black&quot;)</code> can&#39;t be reliably compiled, since it could be anything.</p>
+<p>For now, the best workaround is to do one of the following:</p>
+<ul>
+<li>Tell the compiler that <code>Content</code> is an <code>object</code><br><code>Kit.Toolbar.Default(Content as object).New(tweak: b =&gt; b.Color(&quot;pink,black&quot;))</code></li>
+<li>Place the dynamic parameter at the end<br><code>Kit.Toolbar.Default().New(tweak: b =&gt; b.Color(&quot;pink,black&quot;)).For(Content)</code></li>
+</ul>
+<p>This is not ideal, and we&#39;re striving for improvements in future releases.</p>
 <hr>
 <p>History</p>
 <ol>
