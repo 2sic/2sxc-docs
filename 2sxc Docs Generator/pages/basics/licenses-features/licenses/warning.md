@@ -10,6 +10,10 @@ After a major upgrade you may see a message similar to this:
 
 <img src="./assets/warning-license-invalid-v15.jpg" class="full-width">
 
+or this:
+
+<img src="./assets/warning-license-invalid-v16.jpg" class="full-width">
+
 The message appears, because
 
 1. The system has one or more license files
@@ -49,7 +53,7 @@ Warning: Registration is Invalid. Some features may be disabled because of this.
 The text in v16 is:
 
 ```text
-Warning: Registration is Invalid, so some features may be disabled. Please re-register in Apps Management.
+Warning: Registration not valid so some features may be disabled. Please re-register in System-Management.
 This is common after a major upgrade. See r.2sxc.org/license-warning.
 ```
 
