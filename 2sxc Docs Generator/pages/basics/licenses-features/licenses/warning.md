@@ -20,8 +20,7 @@ The message appears, because
 1. None of them are valid for the current system
 
 As a result, any special features which are licensed / activated will be disabled.
-
-The cause is usually that a license file was installed for a previous version of 2sxc, and must be upgraded to the new version.
+The reason is that a license file was installed for a previous version of 2sxc, and must be upgraded to the new version.
 
 ## Background
 
@@ -36,7 +35,7 @@ So it uses a security hash which also contains the major version of 2sxc, requir
 
 ## How to Fix
 
-Just re-register your system using patrons.
+Just [re-register your system using patrons](xref:Basics.LnF.Licenses.Index).
 
 ---
 
