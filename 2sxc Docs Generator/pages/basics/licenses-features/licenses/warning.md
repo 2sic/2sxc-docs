@@ -50,7 +50,7 @@ The text in v16 is:
 
 ```text
 Warning: Registration is Invalid, so some features may be disabled. Please re-register in Apps Management.
-This is common after a major upgrade. See https://r.2sxc.org/license-warning.
+This is common after a major upgrade. See r.2sxc.org/license-warning.
 ```
 
 
