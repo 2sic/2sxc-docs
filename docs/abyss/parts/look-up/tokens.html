@@ -241,10 +241,10 @@
   </div>
 </div><style>.context-box-summary .query-params, .context-box-summary .lookup { visibility: visible; } </style>
 
-<p>Often you need a <em>placeholder</em> which should be resolved at runtime with a real value from elsewhere. </p>
-<p>In Dnn / 2sxc this is called a <strong>Token</strong>, and they usually look like <code>[Source:Property]</code>. </p>
+<p>Often you need a <em>placeholder</em> which should be resolved at runtime with a real value from elsewhere.</p>
+<p>In Dnn / 2sxc this is called a <strong>Token</strong>, and they usually look like <code>[Source:Property]</code>.</p>
 <h2 id="simple-example">Simple Example</h2>
-<p>As example could be <code>[DateTime:Now]</code> which would be resolved to the current date/time at runtime. 
+<p>As example could be <code>[DateTime:Now]</code> which would be resolved to the current date/time at runtime.
 You would use this in a <a class="xref" href="../../../basics/query/index.html">Query</a> to filter out news which should be published in future, so <code>PublicationDate &lt; [DateTime:Now]</code>.</p>
 <div class="NOTE"><h5>Note</h5><p>There is also a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Engines.TokenEngine.html">TokenEngine</a> which uses the same Token mechanism to generate HTML. What you see here also applies to that, but it&#39;s actually a separate topic.</p>
 </div>
@@ -253,12 +253,12 @@ You would use this in a <a class="xref" href="../../../basics/query/index.html">
 <li><code>[Portal:PortalId]</code> would return the current portal Id</li>
 <li><code>[App:Settings:PageSize]</code> would return the page size as configured in app-settings</li>
 <li><code>[QueryString:Id]</code> would retrieve the id-parameter from the url</li>
-<li><code>[Settings:ProductId]</code> would retrieve the id as configured in the UI by the user</li>
-<li><code>[Settings:productId||27]</code> would also try to get the id, but return 27 if not found</li>
+<li><code>[MyConfiguration:ProductId]</code> would retrieve the id as configured in the UI by the user</li>
+<li><code>[MyConfiguration:productId||27]</code> would also try to get the id, but return 27 if not found</li>
 </ol>
 <h2 id="token-basics">Token Basics</h2>
-<p>A token is a piece of text that looks like <code>[Source:Property]</code>, which will be replaced by an engine so that it will then be a value. For example, <code>[QueryString:Page]</code> is replaced with <code>2</code> if the current url has <code>?page=2</code> in it. You can research more about tokens <a href="https://2sxc.org/en/Learn/Token-Templates-and-Views">in older docs here</a> and in the <a href="https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens">full list of standard tokens</a>, it&#39;s a standard Dnn concept. </p>
-<p>Internally it uses a LookUp-Engine which itself uses LookUp-Sources - see [](Abyss.Parts.LookUp.Index. </p>
+<p>A token is a piece of text that looks like <code>[Source:Property]</code>, which will be replaced by an engine so that it will then be a value. For example, <code>[QueryString:Page]</code> is replaced with <code>2</code> if the current url has <code>?page=2</code> in it. You can research more about tokens <a href="https://2sxc.org/en/Learn/Token-Templates-and-Views">in older docs here</a> and in the <a href="https://2sxc.org/dnn-app-demos/en/Apps/Tutorial-Tokens">full list of standard tokens</a>, it&#39;s a standard Dnn concept.</p>
+<p>Internally it uses a LookUp-Engine which itself uses LookUp-Sources - see [](Abyss.Parts.LookUp.Index.</p>
 <h2 id="special-token-features-in-2sxceav">Special Token Features in 2sxc/EAV</h2>
 <p>The EAV and 2sxc have enhanced Tokens to a new level with these features:</p>
 <h3 id="1-sub-tokens">1. Sub-Tokens</h3>
@@ -268,7 +268,7 @@ You would use this in a <a class="xref" href="../../../basics/query/index.html">
 <h3 id="3-stacking">3. Stacking</h3>
 <p>Stacking with more Tokens: a token like <code>[QueryString:PageSize||[App:Settings:PageSize]]</code> will try the first token, and if it doesn&#39;t resolve, try the next one</p>
 <h3 id="4-recursion">4. Recursion</h3>
-<p>A token can resolve into a token, which would then be looked up again. So if a token <code>[Settings:Page||1]</code> is used, and the setting <code>Page</code> is not a number but again a token like <code>[QueryString:Page]</code>, then it will...</p>
+<p>A token can resolve into a token, which would then be looked up again. So if a token <code>[MyConfiguration:Page||1]</code> is used, and the setting <code>Page</code> is not a number but again a token like <code>[QueryString:Page]</code>, then it will...</p>
 <ol>
 <li>resolve <code>Settings:Page</code> and find <code>Querystring:Page</code></li>
 <li>resolve <code>QueryString:Page</code> and maybe find something</li>
@@ -278,7 +278,7 @@ You would use this in a <a class="xref" href="../../../basics/query/index.html">
 <p>Some situations will have token sources beyond the default. For example, when configuring data sources they always have 2 more sources</p>
 <ul>
 <li><code>In</code> - used like <code>[In:Default:PageSize]</code></li>
-<li><code>Settings</code> - used like <code>[Settings:PageSize]</code></li>
+<li><code>MyConfiguration</code> - used like <code>[MyConfiguration:PageSize]</code></li>
 <li>There is another special <a class="xref" href="../../../basics/query/parameters/test-parameters.html">override-token system</a> which is used for testing</li>
 </ul>
 <h2 id="also-read">Also Read</h2>
@@ -286,7 +286,7 @@ You would use this in a <a class="xref" href="../../../basics/query/index.html">
 <li><a class="xref" href="index.html">LookUp System</a></li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a></li>
 <li><a class="xref" href="../../../net-code/data-sources/custom/api.html">DataSource API</a></li>
-<li><a class="xref" href="../../../net-code/data-sources/custom/configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
+<li><a class="xref" href="../../../net-code/data-sources/custom/pre-v15/configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>

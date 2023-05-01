@@ -243,12 +243,36 @@
   { visibility: visible; }
 </style>
 
-<p>Most Custom DataSources will want to provide a configuration UI to the editor. This happens through these parts:</p>
+<p>DataSources are consumed in code and in VisualQuery.
+In both cases they may need some configuration.</p>
+<p>When used in code, the code will look a bit like this:</p>
+<pre><code class="lang-c#">var withConfig = Kit.Data.GetSource(name: &quot;WithConfig&quot;, options: new {
+  AmountOfItems = 3,
+  FavoriteColor = &quot;dark blue&quot;
+});
+</code></pre><p>When used in VisualQuery, the developer will specify the configuration in the UI, and the Query system will automatically transfer all the values to the DataSource.</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>For all of this to work, there is a robust <strong>Configuration System</strong>.
+Here&#39;s how it works in summary:</p>
 <ol>
-<li>A <strong><a class="xref" href="configuration-data.html">Content-Type</a></strong> which describes what fields can be edited</li>
-<li>The <strong><a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
-<li>The <strong>Configuration manager</strong> on the DataSource which helps you get the configuration</li>
+<li>All properties of a DataSource which are part of the configuration are decorated using the <a class="xref" href="configuration-attribute.html">Configuration Attribute</a></li>
+<li>When the object is created, the class is scanned for these attributes and a internal dictionary of all configuration values is created</li>
+<li>These configurations use <code>Tokens</code> - so internally it will be something like <code>AmountOfItems = [MyConfiguration:AmountOfItems||3]</code></li>
+<li>If code set a new value, the token is flushed and the new value is set</li>
+<li>If a query is used, then the token part <code>[MyConfiguration:AmountOfItems]</code> returns what was in the data</li>
+<li>If no value is set, the fallback value is used, since <code>[MyConfiguration:AmountOfItems]</code> doesn&#39;t return anything</li>
+</ol>
+<p>The foundation of this is built using:</p>
+<ol>
+<li>The <strong><a class="xref" href="configuration-attribute.html">Configuration Attribute</a></strong> and an internal loader</li>
+<li>The <strong><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">Configuration manager</a></strong> on the DataSource which helps you get the configuration</li>
 <li>The <strong><a class="xref" href="../../../abyss/parts/look-up/engine.html">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
+</ol>
+<p>For it to work in VisualQuery, it also needs:</p>
+<ol>
+<li>A <strong><a class="xref" href="configuration-data.html">Content-Type</a></strong> with fields matching the property names</li>
+<li>The <strong><a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
+<li>The internal <strong>Query Engine</strong> which provides the data on the lookup called <code>MyConfiguration</code></li>
 </ol>
 <h2 id="examples-of-configurations-needed">Examples of Configurations Needed</h2>
 <ul>
@@ -259,30 +283,33 @@
 </ul>
 <p>Some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn&#39;t defined, use 10&quot;</em>.</p>
 <h2 id="how-to-build-a-configurable-datasource">How to Build a Configurable DataSource</h2>
-<p>👉 <a class="xref" href="configuration-data.html">DataSource Configuration Data</a></p>
-<p>👉 <a class="xref" href="configurable-datasource.html">Configurable DataSource</a></p>
+<p>👉 Best check the <a class="xref" href="https://app-dev.2sxc.org/tutorial-razor/Home/data-sources200/page">Dynamic DataSources Tutorials</a> for some easy examples</p>
 <h2 id="configuration-basics">Configuration Basics</h2>
 <p>Each configuration value of a <a class="xref" href="../datasource.html">DataSource</a> must be a value (string, int etc.).
-But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> like <code>[Settings:PageNumber]</code>.
-This token is parsed <em>before any data is queried</em> using <a class="xref" href="configuration-parse.html">Configuration.Parse()</a> to convert the Token to the expected value type.
+But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> like <code>[MyConfiguration:PageNumber]</code>.
+This token is parsed <em>before any data is queried</em> using <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">Configuration.GetThis()</a> to convert the Token to the expected value type.
 Best read more about <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Tokens</a> and how fallbacks, defaults and recursion work.  </p>
 <p>The Tokens allow quite some fancy features:</p>
 <ol>
-<li>Your DataSource will use <code>[Settings:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
-<li>Since tokens also allow for default/fallback values, your code will often have <code>[Settings:Id||0]</code></li>
-<li>As tokens are recursive, the admin can specify things like <code>[QueryString:Id||752]</code> in the UI and your code (asking for <code>[Settings:Id]</code>) will get the ID from the URL or the default <code>752</code> as the Admin specified it.</li>
+<li>Your DataSource will use <code>[MyConfiguration:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
+<li>Since tokens also allow for default/fallback values, your code will often have <code>[MyConfiguration:Id||0]</code></li>
+<li>As tokens are recursive, the admin can specify things like <code>[QueryString:Id||752]</code> in the UI and your code (asking for <code>[MyConfiguration:Id]</code>) will get the ID from the URL or the default <code>752</code> as the Admin specified it.</li>
 <li>Thanks to <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token Stacking</a> a lot more is possible 😉</li>
 </ol>
-<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc. These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../abyss/parts/look-up/sources.html">LookUp Sources</a>.</p>
-<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html"><code>Settings</code> source</a>. This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>. So the token <code>[Settings:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>.</p>
+<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc.
+These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../abyss/parts/look-up/sources.html">LookUp Sources</a>.</p>
+<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html"><code>MyConfiguration</code> source</a>.
+This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>.
+So the token <code>[MyConfiguration:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>.</p>
 <h2 id="how-tokens-are-defined-settings-edited-and-resolved">How Tokens are Defined, Settings Edited and Resolved</h2>
 <p>When you&#39;re using the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
 <ol>
 <li>Each DataSource object has a property called <code>Configuration</code> which is a dictionary containing all configuration properties the data source will care about. For example, the <code>EntityIdFilter</code> has a Configuration with only one property which is called <code>EntityIds</code>.</li>
-<li>The each property is first initialized with a Token-Template. For example, the Csv DataSource has a<br><code>ConfigMask(DelimiterKey, &quot;[Settings:Delimiter||\t]&quot;);</code>
-This says that the delimiter should come from the Settings-Entity field <code>Delimiter</code> and if not provided, fall back to <code>\t</code> (which is a tab character)<br><em>read about <a class="xref" href="configmask.html">ConfigMask here</a></em>  </li>
+<li>The each property is first initialized with a Token-Template. This happens through the <code>[Configuration]</code> <a class="xref" href="configuration-attribute.html">attribute</a>.
+ For example, the Csv DataSource has a <code>[Configuration(Fallback = &quot;\t&quot;)]</code>
+ This says that the delimiter should come from the Settings-Entity field <code>Delimiter</code> and if not provided, fall back to <code>\t</code> (which is a tab character)</li>
 <li>For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the Csv DataSource has a string-property <code>Delimiter</code> which internally will get/set the in the Configuration dictionary.  </li>
-<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants. <em>read about <a class="xref" href="configuration-parse.html">ensuring configuration is parsed</a> here</em></li>
+<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants.</li>
 </ol>
 <p>So how does each scenario work out?</p>
 <ol>
@@ -295,13 +322,14 @@ This says that the delimiter should come from the Settings-Entity field <code>De
 <li><a class="xref" href="../../../abyss/parts/look-up/index.html">LookUp System</a></li>
 <li><a class="xref" href="../../../abyss/parts/look-up/tokens.html">LookUp Tokens Explained</a></li>
 <li><a class="xref" href="api.html">DataSource API</a></li>
-<li><a class="xref" href="configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
+<li><a class="xref" href="pre-v15/configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
 <li>General Tokens introduced in 2sxc 1.0</li>
 <li>Most enhancements were in 2sxc 07.00</li>
+<li>Completely reworked in v15/16</li>
 </ol>
 </article>
           </div>

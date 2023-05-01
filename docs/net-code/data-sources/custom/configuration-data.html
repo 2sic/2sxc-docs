@@ -237,14 +237,14 @@
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
 </div><style>
-  .context-box-summary .datasource-custom, 
+  .context-box-summary .datasource-custom,
   .context-box-summary .query-params,
   .context-box-summary .data-configuration
-  { visibility: visible; } 
+  { visibility: visible; }
 </style>
 
-<p>Most Custom DataSources will want to provide a configuration UI to the editor. </p>
-<p>To enable this we create a Content-Type for each DataSource which will contain the fields to configure it. </p>
+<p>Most Custom DataSources will want to provide a configuration UI to the editor.</p>
+<p>To enable this we create a Content-Type for each DataSource which will contain the fields to configure it.</p>
 <h2 id="example">Example</h2>
 <p>Let&#39;s say we need a <code>Weather</code> DataSource which must be configured. We would create a DataSource with these fields:</p>
 <ol>
@@ -252,19 +252,24 @@
 <li><code>ZipCode</code> - text field to enter the ZIP code</li>
 <li><code>ApiKey</code> - a key which will let our backend use the WeatherService</li>
 </ol>
-<p>Once this Content-Type is defined, we automatically have an editing-UI (thanks to the CMS features) but it&#39;s not yet connected to the DataSource. </p>
+<p>Once this Content-Type is defined, we automatically have an editing-UI (thanks to the CMS features) but it&#39;s not yet connected to the DataSource.</p>
+<h2 id="easiest-way-dynamic-datasources--v16">Easiest Way: Dynamic DataSources 🆕 v16</h2>
+<p>When using <a class="xref" href="dynamic.html">Dynamic DataSources</a> (new in v16) it is fully automatic.</p>
+<p>Just create a ContentType with the same name as the DataSource + <code>Configuration</code>.
+So if your DataSource is called <code>MySource</code>, call the ContentType <code>MySourceConfiguration</code>.</p>
+<p>If for any reason you need to give it a different name, you can do this by using the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a>.</p>
 <h2 id="basic-integration-single-app-use">Basic Integration: Single-App Use</h2>
-<p>If you don&#39;t plan on distributing your DataSource and only need it in one or two Apps, then you can just create the Content-Type there and export/import it to other apps. </p>
-<p>You&#39;ll need to register the <a class="xref" href="../../../basics/data/content-types/names.html">internal name</a> in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> of your DataSource so that the UI will show the configuration where it&#39;s needed. </p>
-<p>Once you&#39;ve done this, the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery Designer</a> will know about it and offer your content-type when configuring that part of a Query. </p>
-<div class="TIP"><h5>Tip</h5><p>The data entered will be made available to your DataSource Configuration as the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html">Settings</a>.</p>
+<p>If you don&#39;t plan on distributing your DataSource and only need it in one or two Apps, then you can just create the Content-Type there and export/import it to other apps.</p>
+<p>You&#39;ll need to register the <a class="xref" href="../../../basics/data/content-types/names.html">internal name</a> in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> of your DataSource so that the UI will show the configuration where it&#39;s needed.</p>
+<p>Once you&#39;ve done this, the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery Designer</a> will know about it and offer your content-type when configuring that part of a Query.</p>
+<div class="TIP"><h5>Tip</h5><p>The data entered will be made available to your DataSource Configuration as the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html">MyConfiguration</a>.</p>
 </div>
 <h2 id="advanced-integration-multi-app-use">Advanced Integration: Multi-App Use</h2>
-<p>If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical. </p>
-<p>In this case you&#39;ll want to export the Content-Type as a JSON and place it in the <code>.data-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html">Global Content-Types</a>. If you now restart your Dnn, then this new Content-Type is picked up and available in <em>all</em> Apps on this Dnn. </p>
+<p>If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical.</p>
+<p>In this case you&#39;ll want to export the Content-Type as a JSON and place it in the <code>App_Data/system-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html">Global Content-Types</a>. If you now restart your Dnn, then this new Content-Type is picked up and available in <em>all</em> Apps on this Dnn.</p>
 <h2 id="redistribution-scenario">Redistribution Scenario</h2>
-<p>The above example works well if you&#39;re fine with installing the JSON Content-Type manually on servers which will use the DataSource. </p>
-<p>For more advanced redistribution, you&#39;ll want to include the JSON file in your Dnn Installation package. But in that case it&#39;s not in <code>.data-custom</code> so 2sxc/EAV can&#39;t pick it up. </p>
+<p>The above example works well if you&#39;re fine with installing the JSON Content-Type manually on servers which will use the DataSource.</p>
+<p>For more advanced redistribution, you&#39;ll want to include the JSON file in your Dnn Installation package. But in that case it&#39;s not in <code>App_Data/system-custom</code> so 2sxc/EAV can&#39;t pick it up.</p>
 <p>To make sure that it&#39;s still available to all Apps on a server, you&#39;ll need to create a special class to register it on Start of Dnn. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here&#39;s an example:</p>
 <pre><code class="lang-c#">using System.Collections.Generic;
 using System.Web;
@@ -281,11 +286,11 @@ namespace ToSic.Tutorial.DataSource.Basic
     {
         public override List&lt;string&gt; RootPaths =&gt; new List&lt;string&gt;
         {
-            HttpContext.Current.Server.MapPath(&quot;~/DesktopModules/ToSic.Eav.DataSources.SharePoint/.data&quot;)
+            HttpContext.Current.Server.MapPath(&quot;~/DesktopModules/ToSic.Eav.DataSources.SharePoint/App_Data&quot;)
         };
     }
 }
-</code></pre><div class="TIP"><h5>Tip</h5><p>Remember that the folder (in this case <code>App_Data</code>) is <em>not</em> where the shared Content-Types are stored. They must be placed in a <code>contenttypes</code> subfolder. </p>
+</code></pre><div class="TIP"><h5>Tip</h5><p>Remember that the folder (in this case <code>App_Data</code>) is <em>not</em> where the shared Content-Types are stored. They must be placed in a <code>contenttypes</code> subfolder.</p>
 </div>
 <h2 id="history">History</h2>
 <ol>

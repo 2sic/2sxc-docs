@@ -61,7 +61,7 @@ Todo to complete all these features in March
 Minor: Tutorial App Enhancements
 
 1. Custom DataSources
-    1. ⏳ Create new demos
+    1. ✅ Create new demos
     1. ⏳ Create Testing-framework to make it testable despite dependency injection
     1. Update docs
     1. Create migration instructions ?

@@ -123,28 +123,28 @@
 </div>
 <p>This explains <strong>Global Content-Types</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
 <hr>
-<div class="WARNING"><h5>Warning</h5><p>This is a very advanced topic which less than 1% of all developers use. </p>
-<p>You almost certainly will <em>not</em> need this. So if you start playing around with this, 
-make sure that you really need this. </p>
+<div class="WARNING"><h5>Warning</h5><p>This is a very advanced topic which less than 1% of all developers use.</p>
+<p>You almost certainly will <em>not</em> need this. So if you start playing around with this,
+make sure that you really need this.</p>
 </div>
 <h2 id="what-is-a-global-content-type">What is a Global Content-Type?</h2>
-<p><strong>Global Content Types</strong> are a <a class="xref" href="index.html">Content Types</a> which are defined in a central location and available in all Apps of your system. </p>
+<p><strong>Global Content Types</strong> are a <a class="xref" href="index.html">Content Types</a> which are defined in a central location and available in all Apps of your system.</p>
 <ul>
-<li>These are custom Content-Types which are treated like System Content-Types. </li>
+<li>These are custom Content-Types which are treated like System Content-Types.</li>
 <li>They can be used inside <em>every single App</em></li>
-<li>The App data is in the export/import, but <em>not</em> the <strong>Content-Type Definition</strong>. </li>
+<li>The App data is in the export/import, but <em>not</em> the <strong>Content-Type Definition</strong>.</li>
 <li>If you import an App with such data, the <strong>Global Type</strong> must be configured first.</li>
 <li>These Content-Types are stored in the <a class="xref" href="specs/file-storage.html">file system</a></li>
 </ul>
-<p>For most scenarios you don&#39;t want to use this. </p>
+<p>For most scenarios you don&#39;t want to use this.</p>
 <h2 id="how-it-works">How it works</h2>
 <ul>
-<li>Global Content-Type are stored in special folders as JSON files and are loaded by the system when it starts. From then on they are automatically available in all apps for use. </li>
-<li>Since the schema is not stored in the SQL database, the Entities cannot use the normal storage system. Instead they are stored as <strong>JSON Entities</strong> in the SQL tables. </li>
+<li>Global Content-Type are stored in special folders as JSON files and are loaded by the system when it starts. From then on they are automatically available in all apps for use.</li>
+<li>Since the schema is not stored in the SQL database, the Entities cannot use the normal storage system. Instead they are stored as <strong>JSON Entities</strong> in the SQL tables.</li>
 </ul>
 <h2 id="why-does-this-feature-exist">Why does this Feature exist?</h2>
-<p>2sxc uses this concept for all the internal Content-Types. So any time you edit Field-settings or Visual-Query configurations, they use Global Content-Types. </p>
-<p>We also have some really sophisticated solutions which use this feature. </p>
+<p>2sxc uses this concept for all the internal Content-Types. So any time you edit Field-settings or Visual-Query configurations, they use Global Content-Types.</p>
+<p>We also have some really sophisticated solutions which use this feature.</p>
 <h2 id="why-would-you-want-to-use-this">Why would you want to use this?</h2>
 <ol>
 <li>If you are creating a complex system with many portals and apps which should share the schema</li>
@@ -157,8 +157,8 @@ make sure that you really need this. </p>
 <h2 id="important-warnings">Important Warnings</h2>
 <p>Since the data for the <strong>Global Content-Types</strong> is stored as <strong>JSON Entities</strong> there are a few drawbacks you should be aware of:</p>
 <ol>
-<li>If you plan on using the raw SQL data (not recommended anyhow) then the JSON format used in Global Content-Types adds quite a lot of complexity. </li>
-<li>If you ever rename fields in the Global Content-Type, the stored data will not follow the rename. From the systems perspective it has lost the old field and gotten a new one. </li>
+<li>If you plan on using the raw SQL data (not recommended anyhow) then the JSON format used in Global Content-Types adds quite a lot of complexity.</li>
+<li>If you ever rename fields in the Global Content-Type, the stored data will not follow the rename. From the systems perspective it has lost the old field and gotten a new one.</li>
 </ol>
 <h2 id="create-a-global-content-type">Create a Global Content-Type</h2>
 <p>Assume you really want to do this, here&#39;s how:</p>
@@ -166,13 +166,13 @@ make sure that you really need this. </p>
 <li>Create the Content-Type in the normal way</li>
 <li>Export the Content-Type Definition as JSON</li>
 <li>Store it in your global custom folder (you may need to create these folders)<ol>
-<li>In Dnn: <code>[system-root]/DesktopModules/ToSIC_SexyContent/.data-custom/contenttypes</code></li>
+<li>In Dnn: <code>[system-root]/DesktopModules/ToSIC_SexyContent/App_Data/system-custom/contenttypes</code></li>
 <li>In Oqtane: TODO</li>
 </ol>
 </li>
 <li>Restart the system</li>
 </ol>
-<p>You should now have this Content-Type show up in every App. </p>
+<p>You should now have this Content-Type show up in every App.</p>
 <h2 id="update-a-global-content-type">Update a Global Content-Type</h2>
 <ol>
 <li>Make the updates in the original system</li>

@@ -18,11 +18,11 @@ This example is taken from our internally used **SharePoint DataSource**:
 
 ```c#
 [VisualQuery(
-  GlobalName = "fd5288d2-5a13-4f58-90a0-e9d207f00121",
   NiceName = "SharePoint 2016",
-  PreviousNames = new[] { "1b7cc60d-9fac-4473-a89a-c19017995307" },
+  NameId = "fd5288d2-5a13-4f58-90a0-e9d207f00121",
+  NameIds = new[] { "1b7cc60d-9fac-4473-a89a-c19017995307" },
   Type = DataSourceType.Source, 
-  ExpectsDataOfType = "e5ee51da-1859-4e2b-9f4c-0ead39bbf4a6",
+  ConfigurationType = "e5ee51da-1859-4e2b-9f4c-0ead39bbf4a6",
   HelpLink = "")] 
 ```
 
@@ -56,7 +56,7 @@ Array of In-Streams which the UI will show as prepared landing markers to connec
 
 ### Name and Identity
 
-#### GlobalName - the Unique Identity
+#### NameId - the Unique Identity
 
 The global name should be super-unique because it will be stored as the ID in [Queries](xref:Basics.Query.Index).
 We recommend you get a [new random Guid here](https://www.guidgenerator.com/).
@@ -65,7 +65,7 @@ We recommend you get a [new random Guid here](https://www.guidgenerator.com/).
 
 This will be shown in the [VisualQuery](xref:Basics.Query.VisualQuery.Index) UI. Make sure it's reasonable.
 
-#### PreviousNames
+#### NameIds
 
 This is a for historical reasons. In rare cases we had to rename a DataSource and the old GlobalName values are listed here. Avoid using this.
 
@@ -90,10 +90,13 @@ Additional text to be shown in the UI.
 
 ### Configuration
 
-#### ExpectsDataOfType
+#### ConfigurationType
 
 This is the GUID (aka [StaticName](xref:Basics.Data.ContentTypes.Names)) of the [Content-Type](xref:Basics.Data.ContentTypes.Index) which should be used for configuring the DataSource.
 The UI will open a edit dialog for this Content-Type when the Query creator hits Settings on this DataSource.
+
+If this is not provided, the system will check if there is a ContentType with a name matching this DataSource + `Configuration`.
+So if your DataSource is called `MyXyz` and a ContentType `MyXyzConfiguration` exists, this will be used automatically. (new in v16)
 
 
 ---
@@ -101,4 +104,8 @@ The UI will open a edit dialog for this Content-Type when the Query creator hits
 ## History
 
 1. Introduced ca. in 2sxc 6
-1. Moved from `ToSic.Eav.DataSources.Queries.VisualQueryAttribute` to `ToSic.Eav.DataSource.VisualQuery.VisualQueryAttribute` in v15
+1. Large changes in v15 / v16
+    1. Moved from `ToSic.Eav.DataSources.Queries.VisualQueryAttribute` to `ToSic.Eav.DataSource.VisualQuery.VisualQueryAttribute`
+    1. Renamed `GlobalName` to `NameId`
+    1. Renamed `PreviousNames` to `NameIds`
+    1. Renamed `ExpectsDataOfType` to `ConfigurationType`

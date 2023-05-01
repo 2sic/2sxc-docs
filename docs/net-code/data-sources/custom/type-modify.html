@@ -238,12 +238,22 @@
   </div>
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-<p>If your DataSource takes an <code>In</code> stream and <em>changes the properties</em> of the items forwarded it&#39;s called a <strong>Modify DataSource</strong>. </p>
-<p>You can find some simple examples in our DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.AttributeRename.html">AttributeRename</a> or <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.AttributeFilter.html">AttributeFilter</a>. </p>
-<p>Also make sure you mark your sources in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> as <code>DataSourceType.Modify</code>.</p>
+<p>If your DataSource takes an <code>In</code> stream and <em>changes the properties</em> of the items forwarded it&#39;s called a <strong>Modify DataSource</strong>.</p>
+<p>You can find some simple examples in our DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.AttributeRename.html">AttributeRename</a> or <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.AttributeFilter.html">AttributeFilter</a>.</p>
+<div class="WARNING"><h5>Warning</h5><p>Modify DataSources are the most complex and require much more understanding of the internals of the EAV.
+As such, they are not a good starting point for learning how to create DataSources.</p>
+<p>You will also need to use some internal APIs which are currently not documented.</p>
+</div>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>Inherit from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> base class</li>
+<li>Use <code>ProvideOut</code> and give it a lambda or method which returns the modified data - usually as RawEntity objects</li>
+<li>If applicable, also use the <code>options</code> on <code>ProvideOut(..., options: ...)</code> to customize how the data is converted to IEntities.</li>
+<li>Mark your sources in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> as <code>DataSourceType.Modify</code>.</li>
+</ol>
 <h2 id="read-also">Read Also</h2>
 <ul>
-<li><a class="xref" href="tutorial-basic/index.html">Custom DataSources - Basic Tutorial</a></li>
+<li>no additional information as of now</li>
 </ul>
 <h2 id="history">History</h2>
 <ol>

@@ -107,9 +107,9 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[ExternalData](xref:ToSic.Eav.DataSources.ExternalData)</td>
+    <td>[CustomDataSource](xref:ToSic.Eav.DataSource.CustomDataSource)</td>
     <td>(base)</td>
-    <td>Base Class for external data DataSources</td>
+    <td>Base Class for custom data DataSources</td>
   </tr>
 
   <tr>

@@ -2,14 +2,16 @@
 uid: NetCode.DataSources.Custom.Errors
 ---
 
-# DataSource API: Error Handling 🆕
+[!include[](_obsolete-docs.md)]
+
+# DataSource API: Error Handling
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 Custom DataSources sometimes need to throw an error, for example if a SQL isn't found, a remote WebAPI fails or the configuration is faulty.
 
-Since 2sxc 11.13 we changed the bbehavior so that [DataSource Errors](xref:Basics.Query.Debug.Index) will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.
+Since 2sxc 11.13 we changed the behavior so that [DataSource Errors](xref:Basics.Query.Debug.Index) will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.
 
 ## You Don't Have to Do Anything
 
@@ -19,7 +21,7 @@ If your code just raises a .net Exception, the execution engine will catch this 
 
 Instead of raising the normal exception, your DataSource can also return an `ErrorStream` which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:
 
-1. The [DataSource.Error](xref:ToSic.Eav.DataSource.DataSourceErrorHelper) property ([DataSourceErrorHelper](xref:ToSic.Eav.DataSource.DataSourceErrorHelper)) to create error streams
+1. The [Error](xref:ToSic.Eav.DataSource.DataSourceErrorHelper) property ([DataSourceErrorHelper](xref:ToSic.Eav.DataSource.DataSourceErrorHelper)) to create error streams
 1. The [TryGetIn()](xref:ToSic.Eav.DataSource.DataSourceBase.TryGetIn*) helper to get an `In` stream which must be available - or null so you can return an error
 
 Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.
@@ -30,7 +32,7 @@ Read the API docs above or check out examples in the 2sxc EAV code base for more
 [TryGetIn](xref:ToSic.Eav.DataSource.DataSourceBase.TryGetIn*) ensures that we get a stream we really need, or null if something went wrong.
 
 ```c#
-private IImmutableList<IEntity> GetEntities()
+private IEnumerable<IEntity> GetEntities()
 {
   // This will resolve the tokens before starting
   Configuration.Parse();
@@ -40,7 +42,7 @@ private IImmutableList<IEntity> GetEntities()
   
   var results = ...; 
 
-  return results.ToImmutableArray();
+  return results;
 }
 ```
 

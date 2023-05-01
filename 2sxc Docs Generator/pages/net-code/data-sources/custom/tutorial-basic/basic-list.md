@@ -34,7 +34,7 @@ namespace ToSic.Tutorial.DataSource.Basic
   [VisualQuery(
     NiceName = "Demo DateTime List",
     Icon = "date_range",
-    GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // random & unique Guid
+    NameId = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // random & unique Guid
   )]
   public class DateTimeDataSourceBasicList: ExternalData
   {

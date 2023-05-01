@@ -71,14 +71,14 @@ namespace ToSic.Tutorial.DataSource.Basic
 {
   // Note that this attribute is necessary for the DataSource to show up in the 
   [VisualQuery(
-    GlobalName = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
+    NameId = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
     Icon = "event",
     Type = DataSourceType.Source,
     NiceName = "DateTime Configurable",
     // Guid of the Content-Type which must be exported with this DataSource
     // It's located in .data/contenttypes
     // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
-    ExpectsDataOfType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
+    ConfigurationType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
     HelpLink = "https://r.2sxc.org/DsCustom")]
   public class ConfigurableDateTime : ExternalData
   {

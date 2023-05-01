@@ -239,53 +239,57 @@
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 <p>All DataSources must have <strong>Out</strong> Streams.</p>
-<p>By convention, the primary Out is called <code>Default</code> and the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> Designer assumes that it exists by default. </p>
+<p>By convention, the primary Out is called <code>Default</code> and the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> Designer assumes that it exists by default.</p>
 <p>But there are two important things you can change</p>
 <ol>
 <li>You can determine one or more predefined Out streams</li>
 <li>You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App DataSource</a></li>
 </ol>
 <p><img src="../../../basics/query/streams/assets/out-streams.png" width="100%" class="full-width"></p>
-<div class="IMPORTANT"><h5>Important</h5><p>Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/out.html">general concept of Out-Streams</a>. </p>
+<div class="IMPORTANT"><h5>Important</h5><p>Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/out.html">general concept of Out-Streams</a>.</p>
 </div>
 <h2 id="pre-named-out-streams">Pre-Named Out-Streams</h2>
-<p>For an example, we&#39;ll use the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging DataSource</a>. It&#39;s job is to take a list of items and only forward a chunk on the <code>Default</code>, like &quot;Page 3 containing items 61-90&quot;. In addition it should also provide information as to what page we&#39;re on and how many pages exist. </p>
+<p>For an example, we&#39;ll use the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging DataSource</a>.
+It&#39;s job is to take a list of items and only forward a chunk on the <code>Default</code>, like &quot;Page 3 containing items 61-90&quot;.
+In addition it should also provide information as to what page we&#39;re on and how many pages exist.</p>
 <p>This is defined in the constructor, where the DataSource determines what it Provides #todoc.</p>
 <pre><code class="lang-c#">public Paging()
 {
-  Provide(GetList);
-  Provide(&quot;Paging&quot;, GetPaging);
-  ConfigMask(PageSizeKey, &quot;[Settings:&quot; + PageSizeKey + &quot;||&quot; + DefPageSize + &quot;]&quot;);
-  ConfigMask(PageNumberKey, &quot;[Settings:&quot; + PageNumberKey + &quot;||&quot; + DefPageNum + &quot;]&quot;);
+  ProvideOut(GetList);
+  ProvideOut(GetPaging, &quot;Paging&quot;);
 }
-</code></pre><p>The two lines of <code>Provide</code> are the important bits:</p>
+</code></pre><p>The two lines of <code>ProvideOut</code> are the important bits:</p>
 <ol>
-<li><code>Provide(GetList)</code> will provide data on the <code>Default</code> Out-Stream</li>
-<li><code>Provide(&quot;Paging&quot;, GetPaging)</code> will provide data on the <code>Paging</code> Out-Stream</li>
+<li><code>ProvideOut(GetList)</code> will provide data on the <code>Default</code> Out-Stream</li>
+<li><code>ProvideOut(GetPaging, &quot;Paging&quot;)</code> will provide data on the <code>Paging</code> Out-Stream</li>
 </ol>
 <h2 id="dynamic-out-streams">Dynamic Out Streams</h2>
-<p>Some DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App DataSource</a> can have many Out-streams which are not known till Runtime. To allow the UI to provide these, we must specify this in the <a class="xref" href="visual-query-attribute.html">VisualQuery attribute</a>. Here&#39;s an example of the App DataSource:</p>
-<pre><code class="lang-c#">[VisualQuery(GlobalName = &quot;...&quot;,
+<p>Some DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App DataSource</a> can have many Out-streams which are not known till Runtime.
+To allow the UI to provide these, we must specify this in the <a class="xref" href="visual-query-attribute.html">VisualQuery attribute</a>.
+ Here&#39;s an example of the App DataSource:</p>
+<pre><code class="lang-c#">[VisualQuery(
+  NameId = &quot;...&quot;,
   Type = DataSourceType.Source, 
   Icon = &quot;app&quot;,
   DynamicOut = true,
   NiceName = &quot;App&quot;,
   UiHint = &quot;...&quot;,
-  ExpectsDataOfType = &quot;...&quot;,
+  ConfigurationType = &quot;...&quot;,
   HelpLink = &quot;...&quot;)]
-</code></pre><p>The important part here is the <code>DynamicOut = true</code>. </p>
+</code></pre><p>The important part here is the <code>DynamicOut = true</code>.</p>
 <h2 id="strategies-for-providing-dynamic-out">Strategies for Providing Dynamic Out</h2>
 <p>Providing dynamic-out in your code can be tricky, and there are 2 strategies you can use:</p>
 <ol>
 <li>Create all Out-Streams on first Use of <code>Out</code><br>This would create the Out-Accessors when <code>Out</code> is first accessed. You can see examples of this on the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App</a> DataSource</li>
 <li>Re-Implement the <code>Out</code> of the type <code>IDictionary&lt;string, IDataStream&gt;</code> to do some kind of Lazy-Loading
-There is no example to do this, but it could be done. </li>
+There is no example to do this, but it could be done.</li>
 </ol>
-<p>Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this. </p>
+<p>Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this.</p>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced ca. in 2sxc 6</li>
 <li>Extended with Dynamic Out ca. 2sxc 8</li>
+<li>Provide API completely changed in v15+ and uses the new <code>ProvideOut</code> method</li>
 </ol>
 </article>
           </div>

@@ -244,11 +244,11 @@ there is a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.Visua
 <h2 id="example">Example</h2>
 <p>This example is taken from our internally used <strong>SharePoint DataSource</strong>:</p>
 <pre><code class="lang-c#">[VisualQuery(
-  GlobalName = &quot;fd5288d2-5a13-4f58-90a0-e9d207f00121&quot;,
   NiceName = &quot;SharePoint 2016&quot;,
-  PreviousNames = new[] { &quot;1b7cc60d-9fac-4473-a89a-c19017995307&quot; },
+  NameId = &quot;fd5288d2-5a13-4f58-90a0-e9d207f00121&quot;,
+  NameIds = new[] { &quot;1b7cc60d-9fac-4473-a89a-c19017995307&quot; },
   Type = DataSourceType.Source, 
-  ExpectsDataOfType = &quot;e5ee51da-1859-4e2b-9f4c-0ead39bbf4a6&quot;,
+  ConfigurationType = &quot;e5ee51da-1859-4e2b-9f4c-0ead39bbf4a6&quot;,
   HelpLink = &quot;&quot;)] 
 </code></pre><h2 id="use-it">Use It</h2>
 <p>To best apply it, you should</p>
@@ -270,12 +270,12 @@ If <code>true</code> the UI will indicate this with a yellot Out-marker.</p>
 <h4 id="in">In</h4>
 <p>Array of In-Streams which the UI will show as prepared landing markers to connect streams to.</p>
 <h3 id="name-and-identity">Name and Identity</h3>
-<h4 id="globalname---the-unique-identity">GlobalName - the Unique Identity</h4>
+<h4 id="nameid---the-unique-identity">NameId - the Unique Identity</h4>
 <p>The global name should be super-unique because it will be stored as the ID in <a class="xref" href="../../../basics/query/index.html">Queries</a>.
 We recommend you get a <a href="https://www.guidgenerator.com/">new random Guid here</a>.</p>
 <h4 id="nicename">NiceName</h4>
 <p>This will be shown in the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> UI. Make sure it&#39;s reasonable.</p>
-<h4 id="previousnames">PreviousNames</h4>
+<h4 id="nameids">NameIds</h4>
 <p>This is a for historical reasons. In rare cases we had to rename a DataSource and the old GlobalName values are listed here. Avoid using this.</p>
 <h3 id="ui-enhancements">UI Enhancements</h3>
 <h4 id="icon">Icon</h4>
@@ -288,14 +288,22 @@ Must be a valid value from <a class="xref" href="../../../api/dot-net/ToSic.Eav.
 <h4 id="uihint">UiHint</h4>
 <p>Additional text to be shown in the UI.</p>
 <h3 id="configuration">Configuration</h3>
-<h4 id="expectsdataoftype">ExpectsDataOfType</h4>
+<h4 id="configurationtype">ConfigurationType</h4>
 <p>This is the GUID (aka <a class="xref" href="../../../basics/data/content-types/names.html">StaticName</a>) of the <a class="xref" href="../../../basics/data/content-types/index.html">Content-Type</a> which should be used for configuring the DataSource.
 The UI will open a edit dialog for this Content-Type when the Query creator hits Settings on this DataSource.</p>
+<p>If this is not provided, the system will check if there is a ContentType with a name matching this DataSource + <code>Configuration</code>.
+So if your DataSource is called <code>MyXyz</code> and a ContentType <code>MyXyzConfiguration</code> exists, this will be used automatically. (new in v16)</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced ca. in 2sxc 6</li>
-<li>Moved from <code>ToSic.Eav.DataSources.Queries.VisualQueryAttribute</code> to <code>ToSic.Eav.DataSource.VisualQuery.VisualQueryAttribute</code> in v15</li>
+<li>Large changes in v15 / v16<ol>
+<li>Moved from <code>ToSic.Eav.DataSources.Queries.VisualQueryAttribute</code> to <code>ToSic.Eav.DataSource.VisualQuery.VisualQueryAttribute</code></li>
+<li>Renamed <code>GlobalName</code> to <code>NameId</code></li>
+<li>Renamed <code>PreviousNames</code> to <code>NameIds</code></li>
+<li>Renamed <code>ExpectsDataOfType</code> to <code>ConfigurationType</code></li>
+</ol>
+</li>
 </ol>
 </article>
           </div>

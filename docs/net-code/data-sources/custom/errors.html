@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Error Handling &#127381; | 2sxc 16 / EAV 16 </title>
+    <title>DataSource API: Error Handling | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Error Handling &#127381; | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="DataSource API: Error Handling | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -115,8 +115,12 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling-">DataSource API: Error Handling 🆕</h1>
 
+<!-- BEGIN ERROR INCLUDE: Unable to resolve [!include[](_obsolete-docs.md)]
+
+: Couldn&#39;t find file pages/net-code/data-sources/custom/_obsolete-docs.md. -->[!include[](_obsolete-docs.md)]
+
+<!--END ERROR INCLUDE --><h1 id="datasource-api-error-handling">DataSource API: Error Handling</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -239,19 +243,19 @@
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
 <p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty.</p>
-<p>Since 2sxc 11.13 we changed the bbehavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
+<p>Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
 <h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything</h2>
 <p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see.</p>
 <h2 id="but-you-can-do-better">...but You can do Better</h2>
 <p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
 <ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSource.Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
 <li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn()</a> helper to get an <code>In</code> stream which must be available - or null so you can return an error</li>
 </ol>
 <p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
 <h2 id="example-using-trygetin">Example using TryGetIn</h2>
 <p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
-<pre><code class="lang-c#">private IImmutableList&lt;IEntity&gt; GetEntities()
+<pre><code class="lang-c#">private IEnumerable&lt;IEntity&gt; GetEntities()
 {
   // This will resolve the tokens before starting
   Configuration.Parse();
@@ -261,7 +265,7 @@
 
   var results = ...; 
 
-  return results.ToImmutableArray();
+  return results;
 }
 </code></pre><h2 id="create-custom-error-messages">Create Custom Error Messages</h2>
 <p>If you need an error which is not a predefined type, you can create your own using <a href="xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create*">Error.Create</a>:</p>
@@ -269,7 +273,7 @@
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="api.html">DataSource API</a> - DataSource API overview</li>
-<li><a class="xref" href="configuration-parse.html">Ensuring configuration is parsed</a></li>
+<li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
 </ul>
 <h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <ul>

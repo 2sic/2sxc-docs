@@ -237,71 +237,48 @@
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
 </div><style>
-  .context-box-summary .datasource-custom, 
+  .context-box-summary .datasource-custom,
   .context-box-summary .query-params,
   .context-box-summary .data-configuration
-  { visibility: visible; } 
+  { visibility: visible; }
 </style>
 
-<p>Most Custom DataSources will want to provide a configuration UI to the editor. </p>
-<p>Here we&#39;ll explain how you must code your DataSource that it can be configurable. </p>
+<p>Most Custom DataSources will want to provide a configuration UI to the editor.</p>
+<p>Here we&#39;ll explain how you must code your DataSource that it can be configurable.</p>
 <h2 id="1-create-typed-properties">1. Create Typed Properties</h2>
-<p>For each piece of configuration your DataSource expects you should expose a normal property which will have that value. Internally it should get the data from the <code>Configuration</code> object which is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">IDataSourceConfiguration</a>. Here&#39;s an example from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a>:</p>
-<pre><code class="lang-c#">private const string AttrKey = &quot;Attribute&quot;;
-private const string OperatorKey = &quot;Operator&quot;;
-
-/// &lt;summary&gt;
+<p>For each piece of configuration your DataSource expects you should expose a normal property which will have that value.
+Internally it should get the data from the <code>Configuration</code> object which is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">IDataSourceConfiguration</a>.
+Here&#39;s an example from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a>:</p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
 /// The attribute whose value will be scanned / filtered.
 /// &lt;/summary&gt;
-public string Attribute
-{
-  get =&gt; Configuration[AttrKey];
-  set =&gt; Configuration[AttrKey] = value;
-}
+[Configuration]
+public string Attribute =&gt; Configuration.GetThis();
 
 /// &lt;summary&gt;
 /// The comparison operator, == by default, many possibilities exist
 /// depending on the original types we&#39;re comparing
 /// &lt;/summary&gt;
-public string Operator
-{
-  get =&gt; Configuration[OperatorKey];
-  set =&gt; Configuration[OperatorKey] = value;
-}
-</code></pre><p>Remember that if the type is not string, you&#39;ll have to add some type-checking and fallbacks, since the Configuration object only works with strings to handle Tokens. </p>
-<h2 id="2-configure-where-the-values-come-from-in-the-constructor">2. Configure Where the Values come from in the Constructor</h2>
-<pre><code class="lang-c#">public ValueFilter(ValueLanguages valLanguages)
-{
-  Provide(GetValueFilterOrFallback);
-  ConfigMask(AttrKey, &quot;[Settings:Attribute]&quot;);
-  ConfigMask(FilterKey, &quot;[Settings:Value]&quot;);
-  ConfigMask(OperatorKey, &quot;[Settings:Operator||==]&quot;);
-  ConfigMask(TakeKey, &quot;[Settings:Take]&quot;);
-}
-</code></pre><p>Note that we&#39;re using the <a class="xref" href="configmask.html">ConfigMask</a> command and using the standard <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token Syntax</a>. 
-The <code>ConfigMask(...)</code> will actually add the property to the <code>Configuration</code> manager which will later on fill in the tokens from values in the UI. 
-Things to note in the example above:</p>
-<ol>
-<li>The <code>Attribute</code> property is going to come from the <code>Settings</code></li>
-<li>The <code>Operator</code> property is also coming from the <code>Settings</code> but if it&#39;s not supplied, will do a fallback to <code>==</code></li>
-</ol>
-<h2 id="3-ensure-tokens-are-replaced-before-use">3. Ensure Tokens are Replaced Before Use</h2>
-<p>In your code which will generate the List of results, you must first call one important command:</p>
-<pre><code class="lang-c#">private IImmutableList&lt;IEntity&gt; GetValueFilter()
-{
-  var opBefore = Operator;  // would return &quot;[Settings:Operator||==]&quot;
-  Configuration.Parse();
-  var opAfter = Operator;   // now returns &quot;==&quot;
-  // rest of the code to do what this DataSource must do
-}
-</code></pre><p>This will make sure that all tokens are parsed/converted in the list of values. 
-Accessing the <code>Operator</code> property <em>before</em> calling this would give your code an unexpected <code>[Settings:Operator||==]</code>.
-After calling <a class="xref" href="configuration-parse.html">Configuration.Parse()</a> the <code>Operator</code> property will give you <code>==</code> or whatever was configured in the settings. </p>
+[Configuration(Fallback = &quot;==&quot;)]
+public string Operator =&gt; Configuration.GetThis();
+</code></pre><p>Remember that if the type is not string, you&#39;ll have to add some type-checking and fallbacks, since the Configuration object only works with strings to handle Tokens.
+Fortunately the new v16 API does this automatically for you.
+Here&#39;s an example from the <code>AppFiles.cs</code></p>
+<pre><code class="lang-c#">[Configuration(Fallback = false)]
+public bool OnlyFolders =&gt; Configuration.GetThis(false);
+</code></pre><h2 id="2-use-the-value">2. Use the Value</h2>
+<p>With this setup, everything is automatic. So if your code now does this:</p>
+<pre><code class="lang-c#">var x = Operator;
+</code></pre><p>...it will get the parsed token with either the value provided by the config, or the fallback.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>In the constructor the Configuration object is not yet populated, so you can&#39;t use the properties there.
+So make sure it&#39;s accessed later, typically inside the function or lambda which is called by <code>ProvideOut</code>.</p>
+</div>
 <h2 id="history">History</h2>
 <ol>
 <li>General Tokens introduced in 2sxc 1.0</li>
 <li>Most enhancements were in 2sxc 07.00</li>
 <li>2sxc 10 and 11 changed the Configuration API to better separate the Configuration Manager</li>
+<li>2sxc 15/16 changed this completely using the new <code>[Configuration]</code> attribute and <code>Configuration.GetThis()</code></li>
 </ol>
 </article>
           </div>

@@ -238,18 +238,28 @@
   </div>
 </div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
 
-<p>If your DataSource creates new items - like from memory or elsewhere - it&#39;s called a <strong>Root DataSource</strong>. </p>
+<p>If your DataSource creates new items - like from memory or elsewhere - it&#39;s called a <strong>Root DataSource</strong>.</p>
 <p>Examples would be DataSources which...</p>
 <ul>
 <li>...get data from a WebApi</li>
 <li>...list files in a Folder</li>
 <li>...reads image file properties</li>
 </ul>
-<p>You can find some simple examples in the <a class="xref" href="tutorial-basic/index.html">Tutorial</a>.</p>
-<p>Also make sure you mark your sources in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> as <code>DataSourceType.Source</code>.</p>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>Inherit from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> base class</li>
+<li>Use <code>ProvideOut</code> and give it a lambda or method which returns the data either as...<ol>
+<li>Anonymous objects</li>
+<li>RawEntity objects</li>
+</ol>
+</li>
+<li>If applicable, also use the <code>options</code> on <code>ProvideOut(..., options: ...)</code> to customize how the data is converted to IEntities.</li>
+<li>Mark your sources in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> as <code>DataSourceType.Source</code></li>
+</ol>
 <h2 id="read-also">Read Also</h2>
 <ul>
-<li><a class="xref" href="tutorial-basic/index.html">Custom DataSources - Basic Tutorial</a></li>
+<li>Check out the <a class="xref" href="https://app-dev.2sxc.org/tutorial-razor/Home/data-sources200/page">Dynamic DataSources Tutorials</a> for some easy examples</li>
+<li>Check out some DataSources in 2sxc which do this, such as the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.Sites.html">Sites DataSource</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>

@@ -51,7 +51,7 @@ In [Queries](xref:Basics.Query.Index) we also have the following sources
 
 In [DataSources](xref:NetCode.DataSources.Index) code you will usually only work with `Settings` which contain all the settings that specific DataSource should work with. The `Settings` source only exists in your C# code, not in the VisualQuery. 
 
-1. [Settings](xref:Abyss.Parts.LookUp.Settings)
+1. [Settings](xref:Abyss.Parts.LookUp.MyConfiguration)
 
 
 ## What is a LookUp Source (technical ⚠)
