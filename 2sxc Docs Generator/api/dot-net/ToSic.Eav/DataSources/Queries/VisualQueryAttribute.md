@@ -32,7 +32,7 @@ This example shows how the the FormAndList DataSource tells the UI things like:
 
 ## Read also
 
-* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
+* [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 
 ## Demo Code and further links
 

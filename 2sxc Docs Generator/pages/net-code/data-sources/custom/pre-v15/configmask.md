@@ -2,6 +2,8 @@
 uid: NetCode.DataSources.Custom.ConfigMask
 ---
 
+[!include[](_obsolete-docs.md)]
+
 # DataSource Configuration: ConfigMask(...)
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]

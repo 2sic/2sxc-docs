@@ -70,8 +70,8 @@ All paramaters are optional, except the first one containing the values. Here's 
 
 ## Read also
 
-* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
-* [](xref:NetCode.DataSources.Custom.Provide)
+* [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
+* [](xref:NetCode.DataSources.Custom.PreV15.Provide)
 * [](xref:ToSic.Eav.Data.IDataBuilder.Entity*)
 
 ## Demo Code and further links

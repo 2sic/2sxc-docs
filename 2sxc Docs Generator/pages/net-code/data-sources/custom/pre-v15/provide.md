@@ -1,5 +1,5 @@
 ---
-uid: NetCode.DataSources.Custom.Provide
+uid: NetCode.DataSources.Custom.PreV15.Provide
 ---
 
 [!include[](_obsolete-docs.md)]
@@ -75,7 +75,7 @@ It's important to know that `Provide` simply prepares the `Out` for use, but wil
 
 ## Read also
 
-* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
+* [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 * [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)
 
 ## Demo App and further links

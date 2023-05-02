@@ -2,6 +2,8 @@
 uid: NetCode.DataSources.Custom.TutorialBasic.Configurable
 ---
 
+[!include[](_obsolete-docs.md)]
+
 # Tutorial Custom DataSources - Configurable
 
 This explains the **ConfigurableDateTime** DataSource in the [DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index).

@@ -2,6 +2,8 @@
 uid: NetCode.DataSources.Custom.TutorialBasic.Index
 ---
 
+[!include[](_obsolete-docs.md)]
+
 # Custom DataSources - Basic Tutorial
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Create Custom DataSources | 2sxc 16 / EAV 16 </title>
+    <title>Custom DataSources | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Create Custom DataSources | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Custom DataSources | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -115,7 +115,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Index">
-<h1 id="create-custom-datasources">Create Custom DataSources</h1>
+<h1 id="custom-datasources">Custom DataSources</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -240,138 +240,28 @@
 
 
 <p>If you want to create your own DataSource and use it in C# or the VisualQuery designer, this is for you.</p>
-<p>You have two options:</p>
-<ol>
-<li>Create a <em>Dynamic</em> Custom DataSource (recommended) <em>new in v16</em></li>
-<li>Create a <em>Compiled</em> Custom DataSource (classic, much more difficult)</li>
-</ol>
-<p>Once you&#39;ve figured out the basics, you&#39;ll want to dive deeper into subjects like:</p>
-<h2 id="dynamic-custom-datasources--new-in-v16">Dynamic Custom DataSources <em>(⭐ new in v16)</em></h2>
-<p>These data sources are simple <code>.cs</code> files in the <code>DataSources</code> folder of the App.
-They are compiled on the fly and can be edited in the browser or VS Code.</p>
-<div class="TIP"><h5>Tip</h5><p>This is new in v16 and is the recommended way to create custom DataSources.</p>
-<p>This is also the recommended way to get started and learn about DataSources.</p>
-</div>
-<p>An important feature/limitation of this is that the DataSource can only be used in that single App.
-This is often preferred, as it can be distributed together with the App and won&#39;t affect any other Apps.</p>
-<p>Here is a very simple example of a dynamic DataSource:</p>
-<pre><code class="lang-cs">using System.Linq;
-
-public class ListBasic : Custom.DataSource.DataSource16
-{
-  public ListBasic(MyServices services) : base(services)
-  {
-    ProvideOut(() =&gt; Enumerable.Range(1, 5).Select(i =&gt; new {
-      Id = i,
-      Guid = System.Guid.NewGuid(),
-      Title = &quot;Hello from ListBasic&quot;,
-      FavoriteNumber = 2742,
-    }));
-  }
-}
-</code></pre><p>👉🏽 Get started <a class="xref" href="dynamic.html">Custom Dynamic DataSources &#127381; v16</a></p>
-<h2 id="compiled-custom-datasources-classic">Compiled Custom DataSources (classic)</h2>
-<p>This is the classic way of creating DataSources.
-Basically you create a Visual Studio project and compile the DataSource into a DLL.
-This is much more advanced and difficult.</p>
-<p>The advantage is that you can use the same DataSource in multiple Apps,
-and that you can distribute the DLL independently of the App.
-It also allows you to write unit tests to create more robust code.</p>
-<p>Here is a very simple example of a compiled DataSource:</p>
-<pre><code class="lang-cs">using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using ToSic.Eav.Data;
-using ToSic.Eav.Data.Build;
-using ToSic.Eav.DataSource;
-using ToSic.Eav.DataSource.VisualQuery;
-
-namespace ToSic.Tutorial.DataSources
-{
-    // additional info so the visual query can provide the correct buttons and infos
-    [VisualQuery(
-        NiceName = &quot;Random Dates (Tutorial)&quot;,
-        Icon = &quot;date_range&quot;,
-        NameId = &quot;10ebb0af-4b4e-44cb-81e3-68c3b0bb388d&quot;   // random &amp; unique Guid
-    )]
-    public class RandomDates: CustomDataSource
-    {
-        #region Constants
-
-        public const string DateFieldName = &quot;Date&quot;;
-        public const string IdField = &quot;Id&quot;;
-        public const int ItemsToGenerate = 27;
-
-        #endregion
-
-        #region Constructor for Dependency Injection and Services
-
-        /// &lt;summary&gt;
-        /// Constructor to tell the system what out-streams we have
-        /// &lt;/summary&gt;
-        public RandomDates(MyServices services): base(services, &quot;My.BsList&quot;)
-        {
-            // default out, if accessed, will deliver GetList
-            ProvideOut(Get27RandomDates);
-        }
-
-        #endregion
-
-        /// &lt;summary&gt;
-        /// Get-List method, which will load/build the items once requested 
-        /// Note that the setup is lazy-loading,
-        /// ...so this code will not execute unless it&#39;s really used
-        /// &lt;/summary&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        private IImmutableList&lt;IEntity&gt; Get27RandomDates()
-        {
-            var dateBuilder = DataFactory.New(options: new DataFactoryOptions(typeName: &quot;BasicList&quot;, titleField: &quot;Date&quot;));
-            var result = Enumerable
-                .Range(1, ItemsToGenerate)
-                .Select(i =&gt; dateBuilder.Create(
-                    new Dictionary&lt;string, object&gt;
-                    {
-                        { IdField, i },
-                        { DateFieldName, RandomDay() }
-                    },
-                    id: i))
-                .ToImmutableList();
-
-            return result;
-        }
-
-        // helper to randomly generate dates
-        private readonly Random _randomizer = new Random();
-        private readonly DateTime _start = new DateTime(1995, 1, 1);
-
-        private DateTime RandomDay()
-        {
-            var range = (DateTime.Today - _start).Days;
-            return _start.AddDays(_randomizer.Next(range));
-        }
-
-    }
-}
-</code></pre><h2 id="use-in-visualquery-designer">Use in VisualQuery Designer</h2>
+<h2 id="get-started">Get Started</h2>
+<p>🎓 Start with our <a class="xref" href="guide/index.html">Custom DataSource Guide</a></p>
+<p>🗺️ Continue with the <a class="xref" href="guide/big-picture.html">Big Picture</a></p>
+<p>🚀 Then start to <a href="NetCode.DataSources.Custom.Create">Create DataSources</a></p>
+<p>For everything else, continue with the buttons in the menu to the left...</p>
+<h2 id="use-in-visualquery-designer">Use in VisualQuery Designer</h2>
 <p>This is what the DataSource would appear like in VisualQuery</p>
 <p><img src="assets/basic-datasource-in-visual-query.png" width="100%" class="full-width"></p>
 <p>...and this is what the test-run would look like</p>
 <p><img src="assets/basic-datasource-run.png" width="100%" class="full-width"></p>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<h2 id="read-more">Read More</h2>
 <ul>
-<li><a class="xref" href="visual-query-attribute.html">DataSource API: VisualQuery Attribute</a></li>
-<li><a class="xref" href="pre-v15/provide.html">DataSource API: Provide(...)</a></li>
-<li><a class="xref" href="pre-v15/data-builder.html">DataSource API: DataBuilder.Entity(...)</a></li>
-<li><a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource">Basic DataSources for EAV and 2sxc</a></li>
 <li><a href="https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1">Blog about this feature</a></li>
 <li><a class="xref" href="https://2sxc.org/en/blog/post/new-2sxc7-create-your-own-custom-datasource-for-visual-query">Blog post about custom DataSources</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc ca. 4 but with a difficult API</li>
-<li>API strongly enhanced and simplifield in 2sxc 09.13 </li>
+<li>API strongly enhanced and simplifield in 2sxc 09.13</li>
 <li>Another API rework ca. 2sxc 10.25 (but we&#39;re not exactly sure)</li>
+<li>Major breaking API changes and improvements in 2sxc 15</li>
+<li>Dynamic DataSources introduced in 2sxc 16</li>
 </ol>
 </article>
           </div>

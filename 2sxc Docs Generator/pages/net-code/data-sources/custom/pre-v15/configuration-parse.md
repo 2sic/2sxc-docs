@@ -2,6 +2,8 @@
 uid: NetCode.DataSources.Custom.ConfigurationParse
 ---
 
+[!include[](_obsolete-docs.md)]
+
 # DataSource Configuration: Configuration.Parse()
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
@@ -55,7 +57,7 @@ This command used to be called `EnsureConfigurationIsLoaded()` but was changed i
 
 ## Read also
 
-* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
+* [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 
 ## Demo Code and further links
 

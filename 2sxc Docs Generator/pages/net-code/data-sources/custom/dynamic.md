@@ -42,7 +42,7 @@ public class ListBasic : Custom.DataSource.DataSource16
 
 ## Differences to Compiled DataSources
 
-The main difference is that the DataSource is compiled on the fly, and that it's only available in that App.
+The main difference is that the Dynamic DataSource is compiled on the fly, and that it's only available in that App.
 The main advantage is that it's much simpler to create and maintain.
 
 💡 Dynamic DataSources always inherit from `Custom.DataSource.DataSource16`
@@ -71,8 +71,22 @@ Comparable
 1. First you should review the live samples in our [](xref:Tut.DynamicDataSources)
 1. Then you should try to create your own 😉
 
-[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
+## Tips / Common Issues
+
+1. Dynamic DataSources must always be in the `DataSources` folder of the App
+1. The name of the code file (eg. `MyDs.cs`) must match the class name (eg. `class MyDs`)
+1. The `ProvideOut(...)` expects a function name or lambda expression, so you must use `() => ...` and not just `...`
+1. If your code wants to use [Configuration](xref:NetCode.DataSources.Custom.Configuration) make sure you access that within the `ProvideOut` function, not in the constructor itself
+
+## Handling Compile Issues with Insights
+
+You will make mistakes, and you will run into compile errors.
+But the DataSources are invisible, so you won't see the error on your Razor page.
+
+To see the compile errors, you must go to the [2sxc Insights](xref:NetCode.Debug.Insights.Index) and look at the log, eg.:
+
+<img src="./assets/dynamic-compile-error.jpg" width="100%" class="full-width">
 
 ## History
 
-1. Introduced in 2sxc ca. 16
+1. Introduced in 2sxc 16

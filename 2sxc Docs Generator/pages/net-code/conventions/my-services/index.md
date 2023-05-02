@@ -68,7 +68,7 @@ Internally the system does quite a bit more, but this is all you need to know to
 ## Use in DataSources
 
 The most common place for you to see this is when creating custom DataSources.
-You will usually inherit from [](xref:ToSic.Eav.DataSource.CustomDataSourceLight).
+You will usually inherit from [](xref:ToSic.Eav.DataSource.CustomDataSource).
 It too has a `MyServices` class.
 
 ## Coverage

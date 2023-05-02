@@ -263,7 +263,7 @@ public class ListBasic : Custom.DataSource.DataSource16
   }
 }
 </code></pre><h2 id="differences-to-compiled-datasources">Differences to Compiled DataSources</h2>
-<p>The main difference is that the DataSource is compiled on the fly, and that it&#39;s only available in that App.
+<p>The main difference is that the Dynamic DataSource is compiled on the fly, and that it&#39;s only available in that App.
 The main advantage is that it&#39;s much simpler to create and maintain.</p>
 <p>💡 Dynamic DataSources always inherit from <code>Custom.DataSource.DataSource16</code></p>
 <p>Advantages</p>
@@ -290,16 +290,21 @@ The main advantage is that it&#39;s much simpler to create and maintain.</p>
 <li>First you should review the live samples in our <a class="xref" href="https://app-dev.2sxc.org/tutorial-razor/Home/data-sources200/page">Dynamic DataSources Tutorials</a></li>
 <li>Then you should try to create your own 😉</li>
 </ol>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="history">History</h2>
+<h2 id="tips--common-issues">Tips / Common Issues</h2>
 <ol>
-<li>Introduced in 2sxc ca. 16</li>
+<li>Dynamic DataSources must always be in the <code>DataSources</code> folder of the App</li>
+<li>The name of the code file (eg. <code>MyDs.cs</code>) must match the class name (eg. <code>class MyDs</code>)</li>
+<li>The <code>ProvideOut(...)</code> expects a function name or lambda expression, so you must use <code>() =&gt; ...</code> and not just <code>...</code></li>
+<li>If your code wants to use <a class="xref" href="configuration.html">Configuration</a> make sure you access that within the <code>ProvideOut</code> function, not in the constructor itself</li>
+</ol>
+<h2 id="handling-compile-issues-with-insights">Handling Compile Issues with Insights</h2>
+<p>You will make mistakes, and you will run into compile errors.
+But the DataSources are invisible, so you won&#39;t see the error on your Razor page.</p>
+<p>To see the compile errors, you must go to the <a class="xref" href="../../debug/insights.html">2sxc Insights</a> and look at the log, eg.:</p>
+<p><img src="assets/dynamic-compile-error.jpg" width="100%" class="full-width"></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 16</li>
 </ol>
 </article>
           </div>

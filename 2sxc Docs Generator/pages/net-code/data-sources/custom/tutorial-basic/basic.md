@@ -2,6 +2,8 @@
 uid: NetCode.DataSources.Custom.TutorialBasic.Basic
 ---
 
+[!include[](_obsolete-docs.md)]
+
 # Tutorial Custom DataSources - Basic
 
 This explains the **Basic** DataSource in the [DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index).
@@ -73,7 +75,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 What this does is...
 
 1. Inform [VisualQuery](xref:Basics.Query.VisualQuery.Index) that there is a DataSource and registers it with a unique GUID
-1. The constructor says it [provides](xref:NetCode.DataSources.Custom.Provide) one `Default` stream which can be built by `GetList()`
+1. The constructor says it [provides](xref:NetCode.DataSources.Custom.PreV15.Provide) one `Default` stream which can be built by `GetList()`
 1. `GetList()` will simply create a simple entity and return it as a list
 
 ---

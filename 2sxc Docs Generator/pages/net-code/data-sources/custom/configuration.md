@@ -105,9 +105,9 @@ So how does each scenario work out?
 
 ## Also Read
 
+* [](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 * [](xref:Abyss.Parts.LookUp.Index)
 * [](xref:Abyss.Parts.LookUp.Tokens)
-* [](xref:NetCode.DataSources.Custom.Api)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
 * [](xref:ToSic.Eav.DataSource.IDataStream)
 

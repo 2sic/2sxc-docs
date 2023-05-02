@@ -54,7 +54,7 @@ If you need an error which is not a predefined type, you can create your own usi
 
 ## Read also
 
-* [DataSource API](xref:NetCode.DataSources.Custom.Api) - DataSource API overview
+* [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 * [Ensuring configuration is parsed](xref:NetCode.DataSources.Custom.ConfigurationParse)
 
 ## Demo App and further links
