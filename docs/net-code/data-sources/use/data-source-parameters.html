@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Set Parameters for DataSource Objects in C# | 2sxc 16 / EAV 16 </title>
+    <title>Set Parameters for DataSource Objects in C#/Razor Code | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Set Parameters for DataSource Objects in C# | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Set Parameters for DataSource Objects in C#/Razor Code | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -115,7 +115,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Use.DataSourceParameters">
-<h1 id="set-parameters-for-datasource-objects-in-c">Set Parameters for DataSource Objects in C#</h1>
+<h1 id="set-parameters-for-datasource-objects-in-crazor-code">Set Parameters for DataSource Objects in C#/Razor Code</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -238,44 +238,70 @@
   </div>
 </div><style>.context-box-summary .datasource, .context-box-summary .process-razor-app, .context-box-summary .process-web-api-app { visibility: visible; } </style>
 
-<p>Most DataSource Objects will do something that you can parameterize / configure. </p>
+<p>Many DataSource Objects will do something that you can parameterize / configure.</p>
 <p>There are two ways to do this</p>
 <ol>
-<li>Set Property values on the DataSource objects</li>
-<li>Put Tokens in the Property Values of the objects</li>
+<li>Set Configuration values on the DataSource objects</li>
+<li>Put Tokens in the Configuration Values of the objects</li>
 </ol>
-<div class="IMPORTANT"><h5>Important</h5><p>DataSource Objects are <strong>Single-Use</strong>, so any configuration you set must happen before data is accessed. </p>
-<p>Once Data has been retrieved (by accessing the List of a DataSource) the inner engine 
-will cache the result and not re-run the code, so changing parameters afterwards will have no effect. </p>
+<div class="TIP"><h5>Tip</h5><p>DataSource Objects are <strong>Single-Use</strong>, so any configuration you set must happen before data is accessed.</p>
+<p>Once Data has been retrieved (by accessing the List of a DataSource) the inner engine
+will cache the result and not re-run the code, so changing parameters afterwards will have no effect.</p>
+</div>
+<div class="TIP"><h5>Tip</h5><p>These samples require 2sxc 16.
+For older versions, check the code at the end of this page.</p>
 </div>
 <h2 id="set-property-values">Set Property Values</h2>
 <p>Each DataSource object has unique properties you can set. Example:</p>
+<pre><code class="lang-c#">using ToSic.Eav.DataSources;
+
+// A source which can filter by Content-Type (EntityType)
+var allAuthors = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(
+  attach: App.Data,                     // Use the apps data as input
+  options: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
+);
+
+// access the data and automatically apply the filter/config
+var authors = allAuthors.List;
+</code></pre><p>This demonstrates the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.EntityTypeFilter.html">EntityTypeFilter DataSource</a>.
+We <code>attach</code> it to the <code>App.Data</code> so that will be the input, before the filter is applied.
+It has a single configuration <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.EntityTypeFilter.html#ToSic_Eav_DataSources_EntityTypeFilter_TypeName">TypeName</a>.
+Since we set the <code>TypeName</code> property to <code>Author</code>, only items of type <code>Author</code> will be returned.</p>
+<p>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html">Csv DataSource</a> on the other hand has <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html#properties">5 Properties you can set</a> like the file name to use, the delimiter etc.</p>
+<div class="TIP"><h5>Tip</h5><p>Setting properties is the most common way to configure DataSources in C#.</p>
+</div>
+<h2 id="set-property-tokens">Set Property Tokens</h2>
+<p>Tokens are usually used in <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> but mentioned here for completeness. This is what you could do:</p>
+<pre><code class="lang-cs">using ToSic.Eav.DataSources;
+
+// A source which can filter by Content-Type (EntityType)
+var allAuthors = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(
+  attach: App.Data,
+  options: new { TypeName = &quot;[QueryString:TypeName]&quot; }
+);
+CreateSource&lt;EntityTypeFilter&gt;();
+
+// access the data and automatically apply the filter/config
+var authors = allAuthors.List;
+</code></pre><p>In this case we specified a <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> which will be processed by the system and replaced before the DataSource does it&#39;s internal work.
+Tokens use a <a class="xref" href="../../../abyss/parts/look-up/index.html">LookUp System</a> to identify a source (in this case <code>QueryString</code>)
+and then ask that source for the value (in this case the url parameter <code>TypeName</code>).</p>
+<p>Tokens have additional features like fallbacks (so <code>[QueryString:Typename||BlogPost]</code> would use <code>BlogPost</code> if the URL didn&#39;t have a parameter).
+Since you will usually prefer to do this kind of value-resolution in your C# code, tokens are rarely used here.</p>
+<h2 id="deprecated-samples">Deprecated Samples</h2>
+<p>The following code is old/deprecated and shouldn&#39;t be used any more.
+But since many older samples used this (pre v15) we&#39;re still including it in the docs.</p>
 <pre><code class="lang-cs">// A source which can filter by Content-Type (EntityType)
 var allAuthors = CreateSource&lt;ToSic.Eav.DataSources.EntityTypeFilter&gt;();
 allAuthors.TypeName = &quot;Authors&quot;;
 
 // access the data and automatically apply the filter/config
 var authors = allAuthors[&quot;Default&quot;]; 
-</code></pre><p>This demonstrates the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.EntityTypeFilter.html">EntityTypeFilter DataSource</a> which has only a single property <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.EntityTypeFilter.html#ToSic_Eav_DataSources_EntityTypeFilter_TypeName">TypeName</a> to configure.</p>
-<p>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html">Csv DataSource</a> on the other hand has <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html#properties">5 Properties you can set</a> like the file name to use, the delimiter etc.</p>
-<div class="TIP"><h5>Tip</h5><p>Setting properties is the most common way to configure DataSources in C#.</p>
-</div>
-<h2 id="set-property-tokens">Set Property Tokens</h2>
-<p>Tokens are usually used in <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> but mentioned here for completeness. This is what you could do:</p>
-<pre><code class="lang-cs">// A source which can filter by Content-Type (EntityType)
-var allAuthors = CreateSource&lt;ToSic.Eav.DataSources.EntityTypeFilter&gt;();
-allAuthors.TypeName = &quot;[QueryString:TypeName]&quot;;
-
-// access the data and automatically apply the filter/config
-var authors = allAuthors[&quot;Default&quot;]; 
-</code></pre><p>In this case we specified a <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> which will be processed by the system and replaced before the DataSource does it&#39;s internal work. 
-Tokens use a [LookUp System](Abyss.Parts.LookUp.Index to identify a source (in this case <code>QueryString</code>) 
-and then ask that source for the value (in this case the url parameter <code>TypeName</code>). </p>
-<p>Tokens have additional features like fallbacks (so <code>[QueryString:Typename||BlogPost]</code> would use <code>BlogPost</code> if the URL didn&#39;t have a parameter). Since you will usually prefer to do this kind of value-resolution in your C# code, tokens are rarely used here.</p>
-<hr>
+</code></pre><hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 04.00</li>
+<li>Massively enhanced in 2sxc 16 using Kit.Data which supports <code>attach:</code> and <code>options:</code> parameters</li>
 </ol>
 </article>
           </div>

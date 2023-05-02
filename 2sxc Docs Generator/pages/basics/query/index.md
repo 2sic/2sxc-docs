@@ -18,9 +18,9 @@ uid: Basics.Query.Index
 In addition, there are also some built-in [System Queries](xref:Basics.Query.SystemQueries) built-in which will get system data for you like a list of Content-Types or Apps in the System.
 
 > [!TIP]
-> Note that Queries can created in code and using VisualQuery. 
-> The code method is very advanced. You can read more about [using DataSources in C# / Razor code](xref:NetCode.DataSources.Use.Index). 
-> The rest of this page is about VisualQuery. 
+> Note that Queries can created in code and using VisualQuery.
+> The code method is very advanced. You can read more about [using DataSources in C# / Razor code](xref:NetCode.DataSources.Use.Guide).
+> The rest of this page is about VisualQuery.
 
 ## Queries in an App
 
@@ -44,7 +44,7 @@ Use the [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
 
 ## Technical Implementation
 
-When queries run they behave like [Data-Sources](xref:NetCode.DataSources.Index) while internally chaining various other Data-Sources to query the underlying data. 
+When queries run they behave like [Data-Sources](xref:NetCode.DataSources.Index) while internally chaining various other Data-Sources to query the underlying data.
 
 ---
 

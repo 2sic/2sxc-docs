@@ -238,23 +238,23 @@
   </div>
 </div><style>.context-box-summary .datasource { visibility: visible; } </style>
 
-<p>DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities. 
+<p>DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities.
 Common examples in <a class="xref" href="../razor/razor-component.html">Razor-templates</a> are:</p>
 <ol>
 <li><a class="xref" href="../dynamic-code/object-data.html">Data[&quot;Default&quot;]</a><br> This is a data-stream containing all content-items prepared for the template.</li>
 <li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data[&quot;Tag&quot;]</a><br> This would be a data-stream containing all tag-items in the entire app, if the App has <code>Tag</code> items.</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>All <a class="xref" href="datasource.html">DataSources</a> have at least one <strong>Out</strong>-stream called <code>Default</code>. But they can have more streams as well. </p>
+<div class="TIP"><h5>Tip</h5><p>All <a class="xref" href="datasource.html">DataSources</a> have at least one <strong>Out</strong>-stream called <code>Default</code>. But they can have more streams as well.</p>
 <p>Most DataSources also have one or more <strong>In</strong> streams providing data or configuration to that DataSource which will then give a modified list to the <strong>Out</strong>.</p>
 </div>
 <h2 id="how-to-use">How to use</h2>
-<p>The most commen uses will loop through all items in such a stream and show them. Here&#39;s an example: </p>
+<p>The most commen uses will loop through all items in such a stream and show them. Here&#39;s an example:</p>
 <pre><code class="lang-cs">&lt;ol&gt;
   @foreach(var person in Data[&quot;Default&quot;]){
     &lt;li&gt;@AsDynamic(person).FullName&lt;/li&gt;
   }
 &lt;/ol&gt;
-</code></pre><p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../dynamic-data/entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>. </p>
+</code></pre><p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../dynamic-data/entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>.</p>
 <p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <a class="xref" href="../dynamic-code/as-list.html"><code>AsList</code></a> in the Loop, like this:</p>
 <pre><code class="lang-cs">&lt;ol&gt;
   @foreach(var person in AsList(Data[&quot;Default&quot;])) {
@@ -269,19 +269,17 @@ Common examples in <a class="xref" href="../razor/razor-component.html">Razor-te
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
 </div><h2 id="advanced-use-cases">Advanced Use Cases</h2>
-<p>There are some advanced use-cases where you need to know more about the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html"><code>IDataStream</code></a> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it&#39;s best to consult the EAV DataSource code. </p>
+<p>There are some advanced use-cases where you need to know more about the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html"><code>IDataStream</code></a> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it&#39;s best to consult the EAV DataSource code.</p>
 <p>Just a few more details you might care about:</p>
 <ol>
-<li>The stream has a property <code>Source</code> which points to the owning <a class="xref" href="datasource.html">DataSource</a>. </li>
+<li>The stream has a property <code>Source</code> which points to the owning <a class="xref" href="datasource.html">DataSource</a>.</li>
 <li>a stream might be attached to many targets for further processing or for templating, but the stream doesn&#39;t know about this</li>
 <li>you can always looup through items on the stream itself using LINQ, like<br> <code>var blues = Data[&quot;Default&quot;].Where(x =&gt; AsDynamic(x).Category == &quot;Blue&quot;))</code><br> see also <a class="xref" href="../data/index.html">Use LINQ with Dynamic Data in Dynamic Code</a></li>
 </ol>
 <p>of course there&#39;s always quite a bit more to it, like auto-caching, but you usually don&#39;t need to understand all that.  </p>
 <h2 id="read-also">Read also</h2>
 <ul>
-<li>todo: tutorial links</li>
-<li>you should also read about <a class="xref" href="datasource.html">DataSources</a></li>
-<li>todo: api links</li>
+<li><a class="xref" href="datasource.html">DataSources</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>

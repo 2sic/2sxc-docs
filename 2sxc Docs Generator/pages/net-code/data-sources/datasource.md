@@ -64,7 +64,7 @@ Most DataSources will only have one In-stream and one Out-stream, but this is ve
 
 ## How to use
 
- 👉 [](xref:NetCode.DataSources.Use.Index)
+ 👉 [](xref:NetCode.DataSources.Use.Guide)
 
 ## Create your own Custom DataSource
 

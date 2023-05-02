@@ -9,7 +9,7 @@ uid: Basics.Browser.Edit.Index
   .context-box-summary .browser-edit-ui { visibility: visible; }
 </style>
 
-2sxc has powerfull CMS features, most of them just work by magic. 
+2sxc has powerful CMS features, most of them just work by magic. 
 You can also modify the behavior to fit your needs.
 
 When users edit content they usually use in-page buttons to access edit-dialogs and more. Here is a short overview and links to what you need to know.
