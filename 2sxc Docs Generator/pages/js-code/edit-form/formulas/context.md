@@ -2,7 +2,7 @@
 uid: JsCode.EditForm.Formulas.Context
 ---
 
-<img src="~/pages/basics/edit/formulas/assets/formulas-banner.svg" width="100%" >
+<img src="~/assets/features/formulas.svg" class="feature">
 
 # `context` Object in Formulas
 
@@ -25,11 +25,12 @@ The `context` contain additional information about the context we're running in.
     * `type` - entity type information
       * `guid`
       * `name`
-    * `for` - Metadata For information - a target pointer to another thing which this entity describes _new in 15.04_
-      * `targetType` (int) - the type of the target, eg. `CmsItem` = 10, `Entity` = 4, etc.
-      * `guid` (string) - the guid of the target as string - if it's using a guid-key, otherwise null
-      * `number` (int) - the number of the target, if it's using a number-key, otherwise null
-      * `string` (string) the string of the target, if it's using a string-key, otherwise null
+      <!-- 2dm v16 - plan to rework metadata and prefer to not publish this API since it would probably change again -->
+    <!-- * `for` - Metadata For information - a target pointer to another thing which this entity describes _new in 15.04_ -->
+      <!-- * `targetType` (int) - the type of the target, eg. `CmsItem` = 10, `Entity` = 4, etc. -->
+      <!-- * `guid` (string) - the guid of the target as string - if it's using a guid-key, otherwise null -->
+      <!-- * `number` (int) - the number of the target, if it's using a number-key, otherwise null -->
+      <!-- * `string` (string) the string of the target, if it's using a string-key, otherwise null -->
 * `culture`
   * `code`
   * `name` - this will return `undefined` scenarios where no languages are activated
@@ -39,7 +40,7 @@ The `context` contain additional information about the context we're running in.
   <!-- 2022-12-23 removed this again, believe it's never used and adds problems to the edit-ui -->
   <!-- * `get('FeatureName')` - will return the feature object -->
 * `form` _new v13.10_
-  * `runFormulas()` - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
+  * ~~`runFormulas()`~~ (deprecated in v2) - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
 * `user` _new in v13.11_
   * `id`
   * `isAnonymous`

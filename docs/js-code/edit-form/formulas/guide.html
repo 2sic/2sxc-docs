@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Error Handling | 2sxc 16 / EAV 16 </title>
+    <title>Formulas in the Edit UI Guide | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Error Handling | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Formulas in the Edit UI Guide | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -73,13 +73,13 @@
                       <li>
                           <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
                           <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
@@ -114,9 +114,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling">DataSource API: Error Handling</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Guide">
 
+<p><img src="../../../assets/features/formulas.svg" class="feature"></p>
+<h1 id="formulas-in-the-edit-ui-guide">Formulas in the Edit UI Guide</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -236,50 +237,58 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
-</div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+</div><style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
 
-<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty.</p>
-<p>Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
-<h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything</h2>
-<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see.</p>
-<h2 id="but-you-can-do-better">...but You can do Better</h2>
-<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
+<p>This guide will help you get started with Formulas.</p>
+<h2 id="step-1-discover-live-examples">Step 1: Discover Live Examples</h2>
+<p>🔬 First you must look at the live samples in <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/f100/page">Formulas Tutorials</a></p>
+<p>If you did this, you should now have seen</p>
 <ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn()</a> helper to get an <code>In</code> stream which must be available - or null so you can return an error</li>
+<li><p>What formulas tend to look like</p>
+</li>
+<li><p>All kinds of things they can affect</p>
+</li>
+<li><p>That they run in the browser, and keep updating with every interaction</p>
+</li>
 </ol>
-<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
-<h2 id="example-using-trygetin">Example using TryGetIn</h2>
-<p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
-<pre><code class="lang-c#">private IEnumerable&lt;IEntity&gt; GetEntities()
-{
-  // This will resolve the tokens before starting
-  Configuration.Parse();
-
-  var source = TryGetIn();
-  if (source is null) return Error.TryGetInFailed(this);
-
-  var results = ...; 
-
-  return results;
-}
-</code></pre><h2 id="create-custom-error-messages">Create Custom Error Messages</h2>
-<p>If you need an error which is not a predefined type, you can create your own using <a href="xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create*">Error.Create</a>:</p>
+<h2 id="step-2-get-to-know-the-formula-designer">Step 2: Get to Know the Formula Designer</h2>
+<p>👉 To develop Formulas use the <a class="xref" href="designer/index.html">Interactive Formula Designer</a></p>
+<h2 id="step-3-try-it-yourself">Step 3: Try it Yourself</h2>
+<p>👉 Check out the <a class="xref" href="index.html">JS Formula Documentation</a> - also the <a class="xref" href="data.html">data</a> and <a class="xref" href="context.html">context</a> objects</p>
+<p>👉 Also read about the <a class="xref" href="targets-and-return.html">Formula Targets and Return Values</a></p>
+<h3 id="tips-and-tricks">Tips and Tricks</h3>
+<ol>
+<li><p>While developing, always keep the F12-Console open to see what&#39;s happening</p>
+</li>
+<li><p>You can always add a <code>console.log(data, context);</code> or similar in your code to see in real time what&#39;s being processed.</p>
+</li>
+<li><p>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</p>
+</li>
+<li><p>Do use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>.</p>
+</li>
+</ol>
+<h2 id="step-4-go-deeper">Step 4: Go Deeper</h2>
+<ul>
+<li><p>You should also check <a class="xref" href="../../../basics/data/fields/ephemeral.html">Ephemeral / Temporary Fields</a> as they are very useful together with Formulas.</p>
+</li>
+<li><p>Know that you can also use webApi calls on the <code>context.sxc.webApi</code> to get data from the backend (see tutorials)</p>
+</li>
+<li><p>Also read about the <a class="xref" href="../../../basics/data/fields/empty-end.html">empty-end Field to close a Field-Group</a> as it&#39;s useful when grouping fields.</p>
+</li>
+</ul>
 <hr>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="guide/big-picture.html">DataSources Big Picture</a></li>
-<li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<ul>
-<li>todo</li>
-</ul>
 <h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV / 2sxc 11.13</li>
-<li>Error API completely rewritten in 2sxc 15 (breaking change)</li>
-</ol>
+<ul>
+<li>Introduced in 2sxc 12.01</li>
+<li>Extended with <code>Required</code> ca. v13.00</li>
+<li>Extended with <code>Notes</code> ca. v13.10</li>
+<li>Improve formula designer to allow creating new formulas directly in the designer ca. v14.00</li>
+<li>Added formula designer API help ca. v14.00</li>
+<li>Massively improved v2 Formulas in 2sxc 15.07 (officially released in 16.0)</li>
+</ul>
+<p>Shortlink to here: <a href="https://r.2sxc.org/formulas">https://r.2sxc.org/formulas</a></p>
 </article>
           </div>
           
@@ -288,7 +297,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data-sources/custom/errors.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/guide.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

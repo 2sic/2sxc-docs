@@ -16,7 +16,7 @@ If you want to create your own DataSource and use it in C# or the VisualQuery de
 
 🗺️ Continue with the [Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 
-🚀 Then start to [Create DataSources](NetCode.DataSources.Custom.Create)
+🚀 Then start to [Create DataSources](xref:NetCode.DataSources.Custom.Create)
 
 For everything else, continue with the buttons in the menu to the left...
 

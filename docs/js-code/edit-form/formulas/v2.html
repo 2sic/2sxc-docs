@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Formulas JavaScript Specs | 2sxc 16 / EAV 16 </title>
+    <title>Formulas JavaScript V2 Specs &#127381; v16 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Formulas JavaScript Specs | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Formulas JavaScript V2 Specs &#127381; v16 | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,32 +114,127 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Index">
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.V2">
 
 <p><img src="../../../assets/features/formulas.svg" class="feature"></p>
-<h1 id="formulas-javascript-specs">Formulas JavaScript Specs</h1>
-<p>Formulas let you create JavaScript functions to calculate <strong>Values</strong> and <strong>Properties</strong> of things in the edit form.</p>
-<blockquote><p>Learn about <a class="xref" href="../../../basics/edit/formulas/index.html">the Formula concepts</a> here.
-It also shows you the UIs, how to configure etc.</p>
-<p>Then you should continue with the <a class="xref" href="guide.html">Formulas Guide 🎓</a></p>
-</blockquote>
-<h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
-<p>This formula would be applied to the fields <strong>Value</strong>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.value ? data.value : &#39;missing-data&#39;;
+<h1 id="formulas-javascript-v2-specs--v16">Formulas JavaScript V2 Specs 🆕 v16</h1>
+<p>V2 formulas are a major enhancement to <a class="xref" href="v1.html">v1</a> formulas.
+Improvements include:</p>
+<ol>
+<li><p><strong>Intellisense</strong> while typing the formula using VS Code</p>
+</li>
+<li><p><strong>Promise</strong> support</p>
+</li>
+<li><p>Ability to <strong>stop</strong> the formula from running</p>
+</li>
+<li><p>Ability to <strong>set other fields</strong> from a formula</p>
+</li>
+<li><p>Ability to add <strong>Comments</strong> before the formula</p>
+</li>
+<li><p>Ability to get <strong>App Settings</strong> in your formula</p>
+</li>
+<li><p>Ability to return <strong>Validation</strong> on a field</p>
+</li>
+</ol>
+<h2 id="v2-function-specs">V2 Function Specs</h2>
+<pre><code class="lang-js">// new formula syntax - see https://r.2sxc.org/formulas
+v2((data, context) =&gt; {
+  return data.value;
 });
-</code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
-<p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.ShowAdvanced;
-});
-</code></pre><h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
-<p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.default + (data.EditInstructions || data.ListInstructions ? &#39; ✅&#39; : &#39;&#39;); 
-});
-</code></pre><p><em>Note that we&#39;re returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
+</code></pre><ol>
+<li><p>All functions must be called <code>v2</code>, it must be lower case<br>This is important because when APIs change, we will use v3, etc.</p>
+</li>
+<li><p>The first line in the code must start with the function name <code>v2</code>.<br> You <em>can</em> put comments or empty lines before the <code>v2</code>, but they must always use <code>//</code> and not <code>/* */</code></p>
+</li>
+<li><p>The <code>v2(...)</code> function takes 1 parameter, namely the function to execute. This is different from v1.</p>
+</li>
+<li><p>The reason we need an inner function is so that VS Code can provide intellisense while you type.</p>
+</li>
+<li><p>Your function <em>must</em> look like one of these</p>
+<ul>
+<li><code>v2(() =&gt; { ... });</code></li>
+<li><code>v2((data) =&gt; { ... });</code></li>
+<li><code>v2((data, context) =&gt; { ... });</code></li>
+</ul>
+</li>
+<li><p>The parameter names are anything you want, but the order of what you get is always <code>data</code> and then <code>context</code>. You can also write</p>
+<ul>
+<li><code>v2((d, c) =&gt; { ... });</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="the-data-and-context-objects">The <code>data</code> and <code>context</code> Objects</h2>
+<p>👉🏼 See <a class="xref" href="data.html">data</a></p>
+<p>👉🏼 See <a class="xref" href="context.html">context</a></p>
+<h2 id="return-values-on-v2">Return Values on v2</h2>
+<p>You can return the same data as you did in v1 but we now have more options:</p>
+<ol>
+<li><p>return the value which should be used, like <code>return true;</code> or <code>return data.value;</code> (same as v1)</p>
+</li>
+<li><p>return a special <code>FormulaResult</code>-object (specs below) like <code>return { value: true, stop: true };</code></p>
+</li>
+<li><p>return a promise which will resolve to one of the above</p>
+</li>
+<li><p>return a special validation object (specs below)</p>
+</li>
+</ol>
+<p>For the next part of the documentation, we&#39;ll refer to the value to be used as the <strong>Value</strong> and if a special object is returned, we&#39;ll call it the <strong>FormulaResult</strong>.</p>
+<p>TODO: Validation</p>
+<h2 id="the-formularesult-object">The FormulaResult Object</h2>
+<p>For advanced features, the formula must be able to return multiple values, which is why we have the <strong>FormulaResult</strong> object.
+It has the following properties - all of which are <em>optional</em>:</p>
+<ul>
+<li><code>value</code> - the value to be used as the result of the formula</li>
+<li><code>stop</code> - if true, the formula will stop and not execute any other formulas</li>
+<li><code>promise</code> - a promise to run - eg. in scenarios where we returned a value for now, and a promise for later</li>
+<li><code>fields</code> - an array of fields to be set, each with a <code>name</code> and <code>value</code> property</li>
+</ul>
+<h2 id="the-returned-value">The Returned Value</h2>
+<p>The returned value is either a simple value returned directly using <code>return &#39;...&#39;;</code> or the <code>value</code> property of the <strong>FormulaResult</strong> object.</p>
+<p>Each field type or property may expect a different data type. Make sure you provide that.
+So if you are updating a boolean field, you should return a boolean value.</p>
+<div class="WARNING"><h5>Warning</h5><p>If you return nothing, <code>undefined</code> or the wrong data type, the result will be ignored and the value/setting will not be changed.</p>
+</div>
+<p>Common Mistakes</p>
+<ul>
+<li>returning nothing with <code>return;</code> - this will be regarded as an error and be ignored.</li>
+<li>returning <code>undefined</code>.</li>
+<li>Returning a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a> instead of a real <code>true</code> or <code>false</code> for a boolean value</li>
+<li>returning a date with the wrong timezone - see <a class="xref" href="return-date.html">returning dates</a></li>
+</ul>
+<h2 id="returning-a-promise">Returning a Promise</h2>
+<p>This is a highlight in v2.
+Any formula can now return a promise, or a <strong>FormulaResult</strong> object with a <code>promise</code> property.</p>
+<p>The promise itself can then return a value or a <strong>FormulaResult</strong> object.</p>
+<div class="TIP"><h5>Tip</h5><p>When a promise is returned, it behaves as if <code>stop</code> was set to true.
+So returned promises deactivate the formula to not run again.</p>
+<p>If your code is more sophisticated and needs to run again,
+then the promise should also return something like <code>{ value: &#39;new value&#39;, stop: false }</code>.</p>
+</div>
+<h2 id="returning-validation-information">Returning Validation Information</h2>
+<p>Field Validations are errors/warnings about the contents of the field.
+The purpose is to do very special validations,
+or to show a warning for values which could be ok, but are not recommended.</p>
+<p>A validation object return looks like this:</p>
+<pre><code class="lang-js">{
+  severity: &#39;warning&#39;,
+  message: &#39;please use lower case only&#39;,
+}
+</code></pre><p>Since the this kind of <em>return value</em> is an object, in can easily be confused with a <strong>FormulaResult</strong> object.
+So to return this object, it <em>must</em> be wrapped in a <strong>FormulaResult</strong> object like this:</p>
+<pre><code class="lang-js">return {
+  value: {
+    severity: &#39;warning&#39;,
+    message: &#39;please use lower case only&#39;,
+  }
+};
+</code></pre><p>You can see an example of this in the <a href="https://2sxc.org/dnn-tutorials/en/razor/f115/page">tutorial</a>.</p>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<ol>
+<li>You can always add a <code>console.log(data, context);</code> or similar in your code to see in real time what&#39;s being processed.</li>
+<li>You can also add a line <code>debugger;</code> and the browser will stop at this line so you can inspect the variables and watch your code.</li>
+<li>For now, we strongly recommend to use Formulas as <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>, but with experience the recommendation may change.</li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ul>
@@ -155,7 +250,7 @@ It also shows you the UIs, how to configure etc.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/v2.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

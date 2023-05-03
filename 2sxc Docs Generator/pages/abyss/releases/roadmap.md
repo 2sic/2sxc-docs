@@ -18,15 +18,13 @@ Last Update: **2023-03-22**
 👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
 
 
-## March 2023
-
-Todo to complete all these features in March
+## May 4th 2023 - v16.x LTS
 
 1. ✅ improve IConfiguration API - lighten the `IDataService` API
+1. ✅ Document new data sources API
+1. ✅ finish Dynamic DataSources
 1. Document CDN / Asset management
 1. Document Formula improvements
-1. Document new data sources API
-1. finish Custom DataSources
 
 ## Priorities for v15 LTS
 
@@ -63,8 +61,8 @@ Minor: Tutorial App Enhancements
 1. Custom DataSources
     1. ✅ Create new demos
     1. ⏳ Create Testing-framework to make it testable despite dependency injection
-    1. Update docs
-    1. Create migration instructions ?
+    1. ✅ Update docs
+    1. ~~Create migration instructions ?~~
 
 ## Post LTS
 
@@ -97,7 +95,9 @@ Minor: Tutorial App Enhancements
 
 2sxc
 
-1. ⏳ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+1. ✅ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+1. Plan new Metadata Target/Address system using only a string
+1. Major update on dropdowns/selectors
 1. Improve Export-Import Bundles
     1. Ability to create bundles in the Admin UI
     1. Ability to review bundles and what's inside in the Admin-UI

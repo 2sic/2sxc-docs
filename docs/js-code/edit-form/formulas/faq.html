@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Error Handling | 2sxc 16 / EAV 16 </title>
+    <title>Formulas Frequently Asked Questions | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Error Handling | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Formulas Frequently Asked Questions | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -73,13 +73,13 @@
                       <li>
                           <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
                           <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
@@ -114,9 +114,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling">DataSource API: Error Handling</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Faq">
 
+<p><img src="../../../assets/features/formulas.svg" class="feature"></p>
+<h1 id="formulas-frequently-asked-questions">Formulas Frequently Asked Questions</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -236,50 +237,32 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
-</div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+</div><style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
 
-<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty.</p>
-<p>Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
-<h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything</h2>
-<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see.</p>
-<h2 id="but-you-can-do-better">...but You can do Better</h2>
-<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
-<ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn()</a> helper to get an <code>In</code> stream which must be available - or null so you can return an error</li>
-</ol>
-<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
-<h2 id="example-using-trygetin">Example using TryGetIn</h2>
-<p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
-<pre><code class="lang-c#">private IEnumerable&lt;IEntity&gt; GetEntities()
-{
-  // This will resolve the tokens before starting
-  Configuration.Parse();
-
-  var source = TryGetIn();
-  if (source is null) return Error.TryGetInFailed(this);
-
-  var results = ...; 
-
-  return results;
-}
-</code></pre><h2 id="create-custom-error-messages">Create Custom Error Messages</h2>
-<p>If you need an error which is not a predefined type, you can create your own using <a href="xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create*">Error.Create</a>:</p>
-<hr>
-<h2 id="read-also">Read also</h2>
+<h2 id="where-are-formulas-stored">Where are Formulas Stored?</h2>
+<p>See <a class="xref" href="storage.html">Where Formulas are Stored</a>.</p>
+<h2 id="when-do-formulas-run">When do Formulas Run?</h2>
+<p>As of now, they run whenever any data changes in the form.
+This can mean that they run multiple times because if formulas depend on each other, there may be a few cycles till all values stabilize.</p>
+<h2 id="can-formulas-detect-lifecycle-information">Can Formulas detect Lifecycle Information?</h2>
+<p>As of now the formulas always run on every change detection. The following information is currently <em>not</em> yet given to the formula:</p>
 <ul>
-<li><a class="xref" href="guide/big-picture.html">DataSources Big Picture</a></li>
-<li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
+<li>What phase of the lifecycle the formula is on (init, pre-render, etc.)</li>
+<li>Events which happened before</li>
+<li>Run-count</li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<ul>
-<li>todo</li>
-</ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV / 2sxc 11.13</li>
-<li>Error API completely rewritten in 2sxc 15 (breaking change)</li>
-</ol>
+<p>If you really need this, your formula can track this using the <code>context.cache</code> object.</p>
+<h2 id="can-formulas-be-disabled">Can Formulas be Disabled?</h2>
+<p>Stored Formulas can be disabled with a toggle in the field settings.</p>
+<p>In v2 (🆕 2sxc 16) this is possible by returning a object with <code>{stop: true}</code>.
+This will stop the formula from running again.</p>
+<p>In v1 you cannot disable Formulas at runtime.
+Even Formulas whose result is discarded are still run on every cycle - this is by design.
+If you need to stop a formula in v1, do this by placing a value on <code>context.cache</code> (see <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/f100/page">Formulas Tutorials</a>).</p>
+<h2 id="can-formulas-run-on-specific-events">Can Formulas run on Specific Events?</h2>
+<p>This is not yet possible.</p>
 </article>
           </div>
           
@@ -288,7 +271,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data-sources/custom/errors.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/faq.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

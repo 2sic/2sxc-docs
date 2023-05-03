@@ -17,7 +17,7 @@ You have two options:
 
 Once you've figured out the basics, you'll want to dive deeper into subjects like:
 
-💡 You should read through the [Big Picture of DataSources](xref:NetCode.DataSources.Custom.BigPicture)
+💡 You should read through the [Big Picture of DataSources](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 
 ## Dynamic Custom DataSources _(⭐ new in v16)_
 

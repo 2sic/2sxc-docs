@@ -1,8 +1,8 @@
 ---
-uid: Basics.Edit.Formulas.Designer
+uid: JsCode.EditForm.Formulas.Designer.Index
 ---
 
-<img src="./assets/formulas-banner.svg" width="100%" >
+<img src="~/assets/features/formulas.svg" class="feature">
 
 # Formula Designer
 
@@ -38,29 +38,27 @@ These are the important parts in the UI:
 6. Free-Text entry to create formulas for other properties. Use `Fields.Settings.SettingName`
 7. **Help**
 8. **Formula code** - see [JS Formulas docs](xref:JsCode.EditForm.Formulas.Index)
-9. **Data-Snippets** showing you what the `data` object has for use in your code
+9. **Data-Snippets** showing you what the `data` object has for use in your code  
+   This is only visible in v1, but not in v2, as v2 has intellisense and doesn't need this
 10. **Results** (live) when the formula is running to show what came out of it
 11. **Edit** to enter formula edit mode
 12. **Reset** the formula to what it was originally
-13. **Save** - this will only work if the configuration already contained save data ([limitation in v12.01](#limited-saving-capabilities))
-14. **Play**
+13. **Save**
+14. **Play** / **Run** the formula
 
-## Debugging
+## Debug Formulas
 
-By default, as soon as you're working on a formula, it will dump the `data`, `context` and `result` to the console once it's running. This is what that looks like (Make sure to enter developer mode in Chrome using F12):
+By default, as soon as you're working on a formula, it will dump the `data`, `context` and `result` to the console once it's running.
+This is what that looks like (Make sure to enter developer mode in Chrome using F12):
 
 <img src="./assets/consol-showing-designer-run-information.jpg" width="100%" class="full-width">
 
 You can also to do additional debugging. For that please consult the [JavaScript Formulas Docs](xref:JsCode.EditForm.Formulas.Index)
-
-## Limited Saving Capabilities
-
-As of now the live-developer can be used to develop the formulas and you can _update_ formulas which had already existed.
-
-As of v12.01 you cannot save new formulas. For this you'll need to copy-paste them manually to the Field-Settings. Once they have been created you can go back to the designer and change/save them from there.
 
 ---
 
 ## History
 
 * Added in 2sxc 12.01
+* Ability to also create new formulas directly in the UI ca. 2sxc 14
+* Enhanced new v2 API in 2sxc 15.7 - officially released in 16.0

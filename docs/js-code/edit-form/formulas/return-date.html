@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Formulas JavaScript Specs | 2sxc 16 / EAV 16 </title>
+    <title>Return Date-Values in Formulas | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Formulas JavaScript Specs | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Return Date-Values in Formulas | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,38 +114,52 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Index">
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.ReturnDate">
 
 <p><img src="../../../assets/features/formulas.svg" class="feature"></p>
-<h1 id="formulas-javascript-specs">Formulas JavaScript Specs</h1>
-<p>Formulas let you create JavaScript functions to calculate <strong>Values</strong> and <strong>Properties</strong> of things in the edit form.</p>
-<blockquote><p>Learn about <a class="xref" href="../../../basics/edit/formulas/index.html">the Formula concepts</a> here.
-It also shows you the UIs, how to configure etc.</p>
-<p>Then you should continue with the <a class="xref" href="guide.html">Formulas Guide 🎓</a></p>
-</blockquote>
-<h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
-<p>This formula would be applied to the fields <strong>Value</strong>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.value ? data.value : &#39;missing-data&#39;;
-});
-</code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
-<p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.ShowAdvanced;
-});
-</code></pre><h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
-<p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.default + (data.EditInstructions || data.ListInstructions ? &#39; ✅&#39; : &#39;&#39;); 
-});
-</code></pre><p><em>Note that we&#39;re returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
+<h1 id="return-date-values-in-formulas">Return Date-Values in Formulas</h1>
+<p>Date values can cause problems, because when you are working with them in JavaScript, the time zone is always important.</p>
+<p>Internally dates are stored as strings, not as Date objects.
+The UI doesn&#39;t care about time zones, so the strings always use Zulu time and <em>not the local time zone</em>.
+This may cause some challenges which you want to know about.</p>
+<h2 id="returned-date-objects">Returned Date Objects</h2>
+<p>If your function returns a date-object we will assume that you were creating a new date and didn&#39;t worry about time zones.
+So we will simply drop the time-zone information and assume that&#39;s what you wanted.</p>
+<p>So if you do <code>return new Date();</code> it will contain something like <code>Tue Jun 08 2021 11:22:33 GMT+0200 (Central European Summer Time)</code>.
+We will treat this as <code>2021-06-08T11:22:33</code> and ignore the time zone.
+The UI will then also show <code>2021-06-08 11:22:33</code></p>
+<h2 id="returned-date-strings">Returned Date Strings</h2>
+<ul>
+<li>If you return a date-string without time-zone like <code>2021-06-08 10:00</code> we will assume this is what you want, and treat it as such.</li>
+<li>If you return a date-string with time zone like <code>2021-06-08 10:00 +0200</code> we will assume you used something like <code>new Date().toString()</code> and ignore the time zone, so we&#39;ll keep <code>2021-06-08 10:00</code> because you almost certainly didn&#39;t realize that the toString() would result in a wrong time.</li>
+</ul>
+<h2 id="likely-problems-on-date-formulas">Likely Problems on Date-Formulas</h2>
+<p>Basically if you create a <code>new Date()</code> object and return that, everything will work as expected.
+And you construct a UTC-only date everything will work too.</p>
+<p>Where things will surprise you is when you convert the <code>data.value</code> and simply return it without making corrections. These things will cause problems:</p>
+<ul>
+<li>Problem: <code>return new Date(data.value);</code><br>No Problem: <code>return new Date();</code></li>
+<li>Problem: <code>var x = new Date(data.value); x.setMinutes(0); x.setSeconds(0); return x;</code><br>No Problem: <code>var x = new Date(); x.setMinutes(0); x.setSeconds(0); return x;</code></li>
+<li>Problem: <code>var otherFieldDate = new Date(data.Birthday).getDay();</code> <em>will probably return the wrong day</em></li>
+</ul>
+<p>This is because our <code>data.value</code> doesn&#39;t have a time zone, and converting it to <code>Date(...)</code> will construct a date in the users time zone resulting in a shift by a few hours.
+So this will only affect formulas which use the existing date, modify it, and are not aware of the time-zones.</p>
+<p>To fix this, make sure that if you convert existing data to a Date, you pretend it&#39;s in the time-zone changes of the current browser.</p>
+<p>This example shows a formula that will remove the time on a new date or the existing one.</p>
+<pre><code class="lang-js">v1(data, context) {
+  // Use existing date (but pretend it&#39;s local time by dropping &#39;Z&#39;) or use current Date
+  var date = data.value 
+    ? new Date(data.value.replace(&#39;Z&#39;, &#39;&#39;))
+    : new Date();
+
+  date.setHours(0,0,0,0); // flush all time parts
+  return date;
+}
+</code></pre><p>Another option is to work with the Zulu time but make sure you UTC it when returning, or work with <code>.getTimezoneOffset()</code>.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Introduced in 2sxc 12.01</li>
-<li>Added <code>data.parameters</code> in v13.10</li>
-<li>Added <code>context.features</code>, <code>context.app</code>, <code>context.user</code>, <code>context.sxc</code> etc. in v13.10</li>
 </ul>
 </article>
           </div>
@@ -155,7 +169,7 @@ It also shows you the UIs, how to configure etc.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/return-date.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -2,8 +2,6 @@
 uid: NetCode.DataSources.Custom.Errors
 ---
 
-[!include[](_obsolete-docs.md)]
-
 # DataSource API: Error Handling
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]

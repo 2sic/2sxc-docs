@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DataSource API: Error Handling | 2sxc 16 / EAV 16 </title>
+    <title>Formulas Targets and Return Values | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="DataSource API: Error Handling | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Formulas Targets and Return Values | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -73,13 +73,13 @@
                       <li>
                           <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
-                      <li class="active">
+                      <li>
                           <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
                           <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
-                      <li>
+                      <li class="active">
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>    </div>
@@ -114,9 +114,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling">DataSource API: Error Handling</h1>
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.TargetsReturn">
 
+<p><img src="../../../assets/features/formulas.svg" class="feature"></p>
+<h1 id="formulas-targets-and-return-values">Formulas Targets and Return Values</h1>
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
     <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -236,50 +237,92 @@
   <div class="overlay-description">
     you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a>
   </div>
-</div><style> .context-box-summary .datasource-custom { visibility: visible; } </style>
+</div><style>
+  .context-box-summary .browser-edit-ui { visibility: visible; }
+</style>
 
-<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn&#39;t found, a remote WebAPI fails or the configuration is faulty.</p>
-<p>Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
-<h2 id="you-dont-have-to-do-anything">You Don&#39;t Have to Do Anything</h2>
-<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see.</p>
-<h2 id="but-you-can-do-better">...but You can do Better</h2>
-<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
-<ol>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
-<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn()</a> helper to get an <code>In</code> stream which must be available - or null so you can return an error</li>
-</ol>
-<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
-<h2 id="example-using-trygetin">Example using TryGetIn</h2>
-<p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
-<pre><code class="lang-c#">private IEnumerable&lt;IEntity&gt; GetEntities()
-{
-  // This will resolve the tokens before starting
-  Configuration.Parse();
-
-  var source = TryGetIn();
-  if (source is null) return Error.TryGetInFailed(this);
-
-  var results = ...; 
-
-  return results;
+<p>These are additional infos so you understand the behavior better.</p>
+<h2 id="the-target">The Target</h2>
+<p>The target key of a formula determines what your Formula will affect.
+Since <code>data.value</code> contains what would be used if your formula didn&#39;t run, then this of course will also contain the previous value of the target.
+These are the possible targets:</p>
+<ul>
+<li><code>Field.Value</code> - will get / set a value on a field</li>
+<li><code>Field.Settings</code> - will get will get/set a setting of the field. This is just the Type identifier. A full key often includes the exact setting to be addressed, like<ul>
+<li><code>Field.Settings.Name</code> - change the label / name / title of a field</li>
+<li><code>Field.Settings.Visible</code> - Controls the visibility of the field / group. <code>true</code> means visible</li>
+<li><code>Field.Settings.Disabled</code> - controls that the field can be interacted with or is disabled. <code>true</code> means it&#39;s blocked  </li>
+<li><code>Field.Settings.Required</code> - shows if a field is required<br>    <em>warning</em> required isn&#39;t fully implemented ATM - the form will not always reliably enforce this if it&#39;s changed dynamically
+*. <code>Field.Settings.Notes</code> to change the description / help-text (v14)</li>
+<li><code>Field.Settings._[Anything]_</code> - other Settings that can be changed, eg.<ul>
+<li><code>Field.Settings.Collapsed</code> on a field-group to change if it&#39;s open/closed</li>
+<li><code>Field.Settings.DropdownValues</code> on dropdown fields (new v15)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Field.Validation</code> - show errors/warnings on a field based on the input 🆕 v16</li>
+</ul>
+<div class="TIP"><h5>Tip</h5><p>Remember that <code>data.value</code> contains the value which is used if the formula doesn&#39;t run or doesn&#39;t return anything.</p>
+<p>If you need the value in the field/setting at form-load, use <code>data.default</code>.
+And if you are doing some prefill-magic, you can get that on <code>data.prefill</code>.</p>
+<p>👉 Read more about this is the <a class="xref" href="data.html">JS Docs</a>.</p>
+</div>
+<h2 id="field-value-formulas">Field Value Formulas</h2>
+<p>These are the most common formulas, as they are used to get/set the value of a field.
+Each field type or property may expect a different data type. Make sure you provide that.
+So if you are updating a boolean field, you should return a boolean value.</p>
+<h2 id="formulas-for-common-settings">Formulas for Common Settings</h2>
+<h4 id="fieldsettingsname---label-of-a-field"><code>Field.Settings.Name</code> - Label of a Field</h4>
+<p>This can be changed as needed.
+We recommend that you never add <code>*</code> to the name, as this is the indicator for <em>required</em> and would confuse users.</p>
+<p>On field groups we often use this to add emojis such as ✅ or ❌ to indicate if the fields inside are what is needed.</p>
+<p>Expected type: <code>string</code></p>
+<h4 id="fieldsettingsvisible---showhide-a-field"><code>Field.Settings.Visible</code> - Show/Hide a Field</h4>
+<p>Shows/hides a field or a group of fields.
+When you set this on a group, it applies to all properties in the group.
+So hiding a group hides all fields inside it, showing it shows all fields inside it.</p>
+<p>Expected type: <code>boolean</code></p>
+<h4 id="fieldsettingsdisabled---enabledisable-a-field"><code>Field.Settings.Disabled</code> - Enable/Disable a Field</h4>
+<p>If you return <code>true</code> to set <code>Disabled=true</code> it will disable the UI. Of course if the field is already not visible, the user won&#39;t see this.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>Even if you set <code>Disabled=false</code> other rules may override this. For example, if the field may not be translated and you&#39;re on a secondary language, it will still remain disabled.</p>
+</div>
+<div class="IMPORTANT"><h5>Important</h5><p>Disabling a group will not disable all the fields in it. We may consider implementing this some day, but as of now it won&#39;t happen, so you&#39;ll need to disable each field if this is what you need.</p>
+</div>
+<p>Expected type: <code>boolean</code></p>
+<h4 id="fieldsettingsrequired---mark-field-as-required"><code>Field.Settings.Required</code> - Mark Field as Required</h4>
+<p>This determines if the Field is required.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>Changing the required changes the <code>*</code> indicator on the UI, but as of v12.01 it doesn&#39;t yet affect the validity checks in the form.
+This is an important limitation to be aware of.</p>
+</div>
+<p>Expected type: <code>boolean</code></p>
+<h2 id="formulas-for-special-settings">Formulas for Special Settings</h2>
+<h4 id="fieldsettingscollapsed---for-groups"><code>Field.Settings.Collapsed</code> - for Groups</h4>
+<p>This is a setting which only would affect group fields.
+Setting <code>Collapsed</code> to <code>true</code> collapses the group, to <code>false</code> opens it.</p>
+<div class="TIP"><h5>Tip</h5><p>Remember that <code>data.default</code> will always give you the initial state of this setting.</p>
+</div>
+<p>Expected type: <code>boolean</code></p>
+<h4 id="fieldsettingsdropdownvalues---for-dropdowns"><code>Field.Settings.DropdownValues</code> - for DropDowns</h4>
+<h4 id="fieldsettingsanything"><code>Field.Settings.</code><em>[Anything]</em></h4>
+<p>Since many controls can have other settings these can be controlled by formulas as well.</p>
+<p><em>Important</em> We haven&#39;t tried every setting and some may not have the expected result, since the form has never been this dynamic before.
+We&#39;ll work on fixing issues as we hear about them.</p>
+<h2 id="formulas-for-validation">Formulas for Validation</h2>
+<h4 id="fieldvalidation---show-errorswarnings"><code>Field.Validation</code> - Show Errors/Warnings</h4>
+<p>This is a special kind of formula as it only affects the hints below the input field.
+Best check out the tutorials to see it in action.</p>
+<p>Expected type: json object</p>
+<pre><code class="lang-js">{
+  severity: &#39;warning&#39;,
+  message: &#39;please use lower case only&#39;,
 }
-</code></pre><h2 id="create-custom-error-messages">Create Custom Error Messages</h2>
-<p>If you need an error which is not a predefined type, you can create your own using <a href="xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create*">Error.Create</a>:</p>
-<hr>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="guide/big-picture.html">DataSources Big Picture</a></li>
-<li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<ul>
-<li>todo</li>
-</ul>
+</code></pre><hr>
 <h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV / 2sxc 11.13</li>
-<li>Error API completely rewritten in 2sxc 15 (breaking change)</li>
-</ol>
+<ul>
+<li>Introduced in 2sxc 12.01</li>
+<li>Dramatically enhanced with v2 in 2sxc 16.00</li>
+</ul>
 </article>
           </div>
           
@@ -288,7 +331,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data-sources/custom/errors.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/targets-and-return.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Formulas JavaScript Specs | 2sxc 16 / EAV 16 </title>
+    <title>Formulas JavaScript V1 Specs &#129393; (obsolete) | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Formulas JavaScript Specs | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Formulas JavaScript V1 Specs &#129393; (obsolete) | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
@@ -114,32 +114,41 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.Index">
+            <article class="content wrap" id="_content" data-uid="JsCode.EditForm.Formulas.V1">
 
 <p><img src="../../../assets/features/formulas.svg" class="feature"></p>
-<h1 id="formulas-javascript-specs">Formulas JavaScript Specs</h1>
-<p>Formulas let you create JavaScript functions to calculate <strong>Values</strong> and <strong>Properties</strong> of things in the edit form.</p>
-<blockquote><p>Learn about <a class="xref" href="../../../basics/edit/formulas/index.html">the Formula concepts</a> here.
-It also shows you the UIs, how to configure etc.</p>
-<p>Then you should continue with the <a class="xref" href="guide.html">Formulas Guide 🎓</a></p>
-</blockquote>
-<h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
-<p>This formula would be applied to the fields <strong>Value</strong>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.value ? data.value : &#39;missing-data&#39;;
-});
-</code></pre><h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
-<p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.ShowAdvanced;
-});
-</code></pre><h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
-<p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">v2((data) =&gt; {
-  return data.default + (data.EditInstructions || data.ListInstructions ? &#39; ✅&#39; : &#39;&#39;); 
-});
-</code></pre><p><em>Note that we&#39;re returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
+<h1 id="formulas-javascript-v1-specs--obsolete">Formulas JavaScript V1 Specs 🥱 (obsolete)</h1>
+<p>V1 formulas were the first formulas introduced.
+The documentation for them is preserved, as you&#39;ll still see them around.</p>
+<h2 id="v1-function-specs">V1 Function Specs</h2>
+<ol>
+<li>All functions must be called <code>v1</code>, it must be lower case
+This is important because we cannot guess when the API will change</li>
+<li>The first line in the code must start with the function name <code>v1</code>. You cannot put comments or empty lines before the <code>v1</code></li>
+<li>Your function <em>must</em> have brackets afterwards and it can have 0, 1 or two params, so you can use one of the following<ul>
+<li><code>v1() { ... }</code></li>
+<li><code>v1(data) { ... }</code></li>
+<li><code>v1(data, context) { ...}</code></li>
+</ul>
+</li>
+<li>The parameter names are anything you want, but the order of what you get is always <code>data</code> and then <code>context</code>. You can also write<ul>
+<li><code>v1(d, c) { ... }</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="the-data-and-context-objects">The <code>data</code> and <code>context</code> Objects</h2>
+<p>👉🏼 See <a class="xref" href="data.html">data</a></p>
+<p>👉🏼 See <a class="xref" href="context.html">context</a></p>
+<h2 id="return-a-valid-value">Return a Valid Value</h2>
+<p>Each field type or property may expect a different data type. Make sure you provide that.</p>
+<div class="WARNING"><h5>Warning</h5><p>If you return nothing, <code>undefined</code> or the wrong data type, the result will be ignored and the value/setting will not be changed.</p>
+</div>
+<p>Common Mistakes</p>
+<ul>
+<li>returning nothing with <code>return;</code> - this will be regarded as an error and be ignored.</li>
+<li>returning <code>undefined</code>.</li>
+<li>Returning a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a> instead of a real <code>true</code> or <code>false</code> for a boolean value</li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ul>
@@ -155,7 +164,7 @@ It also shows you the UIs, how to configure etc.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/js-code/edit-form/formulas/v1.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

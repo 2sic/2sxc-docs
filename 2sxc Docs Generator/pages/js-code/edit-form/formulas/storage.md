@@ -1,5 +1,5 @@
 ---
-uid: Basics.Edit.Formulas.Storage
+uid: JsCode.EditForm.Formulas.Storage
 ---
 
 <img src="~/assets/features/formulas.svg" class="feature">
@@ -16,7 +16,7 @@ If ever you need to do some manual operations (which you shouldn't need to do), 
 
 > [!TIP]
 > Normally you will just add/edit formulas in
-> [Interactive Formula Designer](xref:Basics.Edit.Formulas.Designer)
+> [Interactive Formula Designer](xref:JsCode.EditForm.Formulas.Designer.Index)
 
 As shown in this image, all fields having formulas are easy to discern:
 

@@ -39,7 +39,7 @@ Once you have seen the live code, you should have a basic idea of:
 
 ## Step 3: Learn the Big Picture
 
-💡 You should read through the [Big Picture of DataSources](xref:NetCode.DataSources.Custom.BigPicture)
+💡 You should read through the [Big Picture of DataSources](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 
 
 ## Step 4: Create your first Dynamic DataSources
