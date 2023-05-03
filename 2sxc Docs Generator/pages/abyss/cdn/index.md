@@ -52,7 +52,51 @@ To solve this, we had to figure out solutions for:
 
 ## The 2sxc Resources Git Repo
 
-We created / scripted a Git Repository ... TODO:
+We created / scripted a Git Repository which contains all the resources we need.
+You can find it on <https://cdn.2sxc.org/>.
+
+You can use this as a starting point in case you yourself wish to create a CDN.
+
+As of now (v16.00 2023-05) it contains all the resources for
+
+1. public JavaScripts, css and fonts provided as [Resources](xref:Basics.Configuration.Settings.WebResources) in 2sxc
+1. icons and fonts used in the [Edit UI](xref:Basics.Browser.Edit.Index)
+
+In future, we plan to extend it with resources used by other Admin UIs such as the code editor.
+
+
+## cdn.2sxc.org
+
+Using the Git Repo, we created a CDN which is under our control.
+It's published as GitHub Pages on <https://cdn.2sxc.org/>.
+GitHub uses CloudFlare to distribute the pages, so it's fast and reliable.
+
+💡 You can simply use this CDN for your own projects - we don't collect any data
+
+## Create your own Custom CDN
+
+If you want to create your own CDN, you can simply fork the Git Repo and publish it on your own.
+You can also just keep the parts you need and copy them to your site, eg. to `/cdn/`.
+
+
+## Quick-Configure Resources for Custom CDN
+
+The easiest way to do it is by using a simple setting in the UI like this:
+
+<img src="./assets/cdn-settings-1.jpg" width="32%" class="img.float-left">
+<img src="./assets/cdn-settings-2.jpg" width="32%" class="img.float-left">
+<img src="./assets/cdn-settings-3.jpg" width="32%" class="img.float-left">
+
+This is a [Patrons Sentinel](xref:Patrons.Sentinel) only feature.
+So if you want it fast, simple and fire/forget, just become a patron 🦸🏽‍♀️.
+
+
+## Manually Configure Resources for Custom CDN
+
+If you want to do it manually, you can do it like this:
+
+1. Go to the resources management
+1. Select each resource you want to change and enter a different HTML block for these resources
 
 
 

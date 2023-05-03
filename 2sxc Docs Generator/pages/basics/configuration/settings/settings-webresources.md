@@ -4,12 +4,12 @@ uid: Basics.Configuration.Settings.WebResources
 
 <img src="~/assets/features/settings-stack.svg" class="feature">
 
-# WebResources in Settings Stack ✨ new!
+# WebResources in Settings Stack ✨ new
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-WebResources are JS/CSS libraries which your code will use, like [Fancybox4](https://fancyapps.com/). 
+WebResources are JS/CSS libraries which your code will use, like [Fancybox4](https://fancyapps.com/).
 These can be managed in Settings to ensure that it can be changed as needed, and that all Apps will load the _same versions_.
 
 > [!IMPORTANT]
@@ -27,13 +27,14 @@ The following Resources are pre-configured in Settings:
 | fancybox3            | v12.04
 | fancybox4            | v12.04
 | FontAwesome5         | v12.04
+| FontAwesome6         | v13.00
 
-You can override these configurations in the Settings at any level you want. 
+You can override these configurations in the Settings at any level you want.
 
 > [!TIP]
 > You can also just configure a WebResource to be deactivated (`Enabled` = `false`).
-> 
-> You would do this if the skin already loads the assets you need. 
+>
+> You would do this if the skin already loads the assets you need.
 
 Usually your code will activate it using the [IPageService](xref:NetCode.Razor.Services.IPageServiceActivate).
 

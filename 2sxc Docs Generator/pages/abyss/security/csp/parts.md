@@ -2,6 +2,8 @@
 uid: Abyss.Security.Csp.Parts
 ---
 
+<img src="~/assets/features/content-security-policy.svg" class="feature">
+
 # Content Security Policy (CSP) Parts in 2sxc
 
 Content Security Policy (CSP) is a security policy that helps you to protect your web application from [cross-site scripting attacks](https://en.wikipedia.org/wiki/Cross-site_scripting).
