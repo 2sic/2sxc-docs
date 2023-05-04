@@ -13,6 +13,12 @@ uid: JsCode.EditForm.Formulas.Guide
 
 This guide will help you get started with Formulas.
 
+## Start with an Overview
+
+Before you even start it's best to have an overview.
+The 2sxc 12 Formulas Release Video is a good place to start.
+
+<iframe title="YouTube video player" src="https://www.youtube.com/embed/2frf4RRNy5c" width="100%" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe>
 
 ## Step 1: Discover Live Examples
 

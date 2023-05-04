@@ -10,6 +10,13 @@ uid: NetCode.DataSources.Custom.Guide.Index
 There is a lot of information about DataSources, but some of it is outdated, and some of it is hard to understand.
 This guide will help you get started and find the right information.
 
+## Start with an Overview
+
+Before you even start it's best to have an overview.
+The 2sxc 16 Dynamic DataSources Release Video is a good place to start.
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/-1GOv7rAX1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Step 1: Experience Live Code
 
 Before you read anything else in these docs, you must look at the live tutorials.
