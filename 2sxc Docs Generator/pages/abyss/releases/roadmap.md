@@ -28,11 +28,15 @@ Last Update: **2023-05-04** (international Star Wars day)
 1. ✅ IDataService completed
 1. ✅...and documented
 1. ✅ New WYSIWYG mode completed (and documented)
+1. ✅ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
 
-## Priorities for v15 LTS
+## Priorities for v16 LTS
 
 1. ✅ Data-conversion of entities to json in attribute... - documented ⌛
+1. User Service - documentation
 1. Improve Oqtane Pages DS to also respect settings - @STV
+
+
 
 
 ## Done but not communicated, or still tweaking / WIP
@@ -46,30 +50,30 @@ Last Update: **2023-05-04** (international Star Wars day)
     1. ✅ New DataSource `AdamFiles`
     1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
-1. Create Wysiwyg Rich Mode
-    1. ⏳ Create `CmsService.Show()` to auto apply certain aspects
-    1. ✅ Create best practices CSS styling for `wysiwyg` content
 1. ✅ Compress Timeline: Feature to compress the existing history
 1. ⏳ Entity Serialization Improvements
 1. ⏳ Data Bundles
 
 
+## Priority May / Towel Day 2023
 
-Minor: Tutorial App Enhancements
+1. ✅ Create Wysiwyg Rich Mode
+    1. ✅ Create `Content.ToHtml()` to auto apply certain aspects
+    1. ✅ Create best practices CSS styling for `wysiwyg` content
 
-1. Custom DataSources
-    1. ✅ Create new demos
-    1. ⏳ Create Testing-framework to make it testable despite dependency injection
-    1. ✅ Update docs
-    1. ~~Create migration instructions ?~~
+
+## Currently being developed / WIP
+
+1. Slim down Oqtane Client @STV
+1. Rework the Selector system
+    1. to have titles, help, notes, links, and more @SDV
+    1. to also have various data sources
+    1. dropdown for numbers etc.
+1. Clean up ancient documentation which is probably invalid, but still seen by many :(
+
+
 
 ## Post LTS
-
-1. Improve WYSIWYG
-    1. Ability to do more configuration on WYSIWYG
-        1. ability to override toolbar buttons
-        1. ability to set various easy-to-set configuration
-        1. Possibly ability to preset various configurations globally or at site-level and use in other places
 
 1. Apps / App Maintenance: publish other new apps
     1. New timeline
@@ -94,7 +98,6 @@ Minor: Tutorial App Enhancements
 
 2sxc
 
-1. ✅ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
 1. Plan new Metadata Target/Address system using only a string
 1. Major update on dropdowns/selectors
 1. Improve Export-Import Bundles
@@ -111,10 +114,9 @@ Minor: Tutorial App Enhancements
     1. Notes everywhere - especially on the page - ca. 2d
 1. Massively improve JSON import with language checks, overwrite/vs new etc.
 1. Code editor intellisense for most APIs - ca. 3-4d
-1. Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
+1. ⚠️ Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
-1. Formulas
-    1. JS Docs for formula
+1. ~~JS Docs for formula~~
 1. Probably update ImageFlow again, if PNG resize bug is fixed
 1. Enable standard apps to be installed from catalog easily after first apps have been installed
     1. ✅ Feature to tell new auto-installer what apps are already installed
@@ -127,6 +129,10 @@ Blazor CMS / cre8magic
     1. Improve getting started with theme etc.
 1. Create section with showcase
 1. Create section with partners / experts
+
+
+
+
 
 ## Backlog 2023 v15
 
@@ -149,12 +155,15 @@ New Stuff and Major Enhancements
     1. CSVs
     1. WebService
     1. svg files icon-picker
+1. after new Selectors - improve permissions UIs
 1. New Icon-Dropdowns from other data sources for better icons-support without fonts
 1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
     1. ⏳ Angular 15 upgrade
     1. ⏳ Angular Material upgrade
     1. ⏳ AG DataGrid upgrade
     1. ⏳ Improve / Refactor some public types code
+
+
 
 Apps / App Maintenance
 
@@ -173,6 +182,13 @@ Apps / App Maintenance
 1. OpenGraph system - probably requires rewrite of CSP-Stack
 1. Create demo app with react
 1. More public headless APIs and Demos
+1. Improve WYSIWYG
+    1. Ability to do more configuration on WYSIWYG
+        1. ability to override toolbar buttons
+        1. ability to set various easy-to-set configuration
+        1. Possibly ability to preset various configurations globally or at site-level and use in other places
+
+
 
 ### Oqtane specific
 
