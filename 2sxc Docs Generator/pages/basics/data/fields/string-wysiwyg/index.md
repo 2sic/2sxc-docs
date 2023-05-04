@@ -66,13 +66,22 @@ In addition to the toolbar, the plain text mode also has the following configura
 
 ## Mode `rich`
 
-todo
+This is a new mode which is still in development.
+It provides special features to make content which is rich and responsive at the same time.
+Features include:
+
+1. Automatic image resizing of wysiwyg-images using the `<picture>` tag
+1. Image arrangements which work on all screens (eg. 4-in-a-row on desktop, but under-each-other on mobile)
+1. Optimized CSS to make this possible
+1. Special spacers to create proper gaps where necessary
+1. Image text wrapping so that multiple side-images are under each other and not staggered
+
+This is still WIP as it also needs some Razor support to ensure the rendering is correct.
+Expected release: Towel Day 2023.
 
 ## Configure a String-Wysiwyg
 
-_TODO_
-
-* **TODO** is for todo
+The mode is configured in the normal field settings.
 
 ## History
 
@@ -81,4 +90,4 @@ _TODO_
 1. Changed to be full-screen dialog editing only in 10.00
 1. Added option to switch between full-screen or directly in the form in 10.09
 1. Added options to enable / disable HTML and Advanced buttons in 10.09
-1. Added modes in 15.04
+1. Added modes in 15.04, released in 16.00

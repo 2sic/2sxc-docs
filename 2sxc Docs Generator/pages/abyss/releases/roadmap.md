@@ -11,33 +11,32 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-03-22**
+Last Update: **2023-05-04** (international Star Wars day)
 
 ## 2023 Q1 - Released v15.00 - 15.05
 
 👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
 
 
-## May 4th 2023 - v16.x LTS
+## May the 4th 2023 - v16.x LTS
 
 1. ✅ improve IConfiguration API - lighten the `IDataService` API
 1. ✅ Document new data sources API
 1. ✅ finish Dynamic DataSources
-1. Document CDN / Asset management
-1. Document Formula improvements
+1. ✅ Document CDN / Asset management
+1. ✅ Document Formula improvements
+1. ✅ IDataService completed
+1. ✅...and documented
+1. ✅ New WYSIWYG mode completed (and documented)
 
 ## Priorities for v15 LTS
 
-1. ✅ IDataService completed
-1. ✅...and documented
-1. New WYSIWYG mode completed (and documented)
-1. ✅ Data-conversion of entities to json in attribute...
+1. ✅ Data-conversion of entities to json in attribute... - documented ⌛
 1. Improve Oqtane Pages DS to also respect settings - @STV
 
 
 ## Done but not communicated, or still tweaking / WIP
 
-1. Live DataSources
 1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
 1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 1. Data Sources
