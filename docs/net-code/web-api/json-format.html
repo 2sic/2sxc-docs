@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Custom C# Web API File Structure | 2sxc 16 / EAV 16 </title>
+    <title>Custom C# Web API - JSON Format | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Custom C# Web API File Structure | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Custom C# Web API - JSON Format | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,46 +114,87 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.WebApi.Files">
-<h1 id="custom-c-web-api-file-structure">Custom C# Web API File Structure</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.WebApi.JsonFormat">
+<h1 id="custom-c-web-api---json-format">Custom C# Web API - JSON Format</h1>
 
-<h2 id="default-setup-without-editions">Default Setup without Editions</h2>
-<p>All your WebAPIs are C# files saved in the special folder called <code>api</code>. The folder must be in root of your 2sxc app, and the files have to end with <code>...Controller.cs</code> (this is a convention in ASP.net).</p>
-<ul>
-<li>File: <code>[app-folder]/api/[Your]Controller.cs</code></li>
-<li>Url: <code>[api-root]/app/auto/api/[Your]</code></li>
-</ul>
-<p><strong>Example</strong></p>
-<ul>
-<li>File: <code>/Portals/0/2sxc/DemoApp/api/PersonController.cs</code></li>
-<li>Url: <code>GET</code>: <code>/api/2sxc/auto/app/auto/api/Person/List</code></li>
-</ul>
-<p>Read more about url schema in the <a class="xref" href="../../web-api/specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
-<h2 id="advanced-setup-with-editions">Advanced Setup with Editions</h2>
-<div class="TIP"><h5>Tip</h5><p>New in 2sxc 9.35+<em>: you can now also create <code>api</code> folders as_subfolders</em> to run the api in multiple editions.
-This is the <a class="xref" href="../../basics/polymorphism/index.html">polymorph feature</a>.
-It let&#39;s you have the <strong>same</strong> api-controller in multiple editions, where the end-user is using <code>live</code> and you&#39;re doing open-heart-surgery in the background on a new edition like <code>staging</code>.</p>
+<h2 id="background-json-format-in-webapi-requests">Background: JSON Format in WebApi Requests</h2>
+<p>Today most JavaScript clients use JSON to communicate with the server.
+This is a very simple format, which is easy to read and write.
+It&#39;s also very easy to parse in JavaScript, which is why it&#39;s so popular.</p>
+<p>In the old days, Microsoft used XML for this, but it&#39;s much more complex and difficult to read and write.
+When 2sxc was created, JSON was already the standard, so we never used XML.
+But at that time, the json plugin <strong>Newtonsoft</strong> was the de-facto standard, so we used that.
+But nowadays <code>System.Text.Json</code> is the de-facto standard.
+This means that <em>by default</em> this is what is being used:</p>
+<ol>
+<li>On DNN on all base classes up until <code>Custom.Hybrid.Api14</code> Newtonsoft is used for serialization</li>
+<li>On Oqtane all base classes use the new .net core serializer</li>
+</ol>
+<h2 id="how-to-go-modern">How to Go Modern</h2>
+<p>In 2sxc 16 we introduced a new attribute called <code>[JsonFormatter]</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.JsonFormatterAttribute.html">JsonFormatterAttribute</a>.
+When it&#39;s applied to:</p>
+<ol>
+<li>a WebApi Controller class</li>
+<li>a specific method of that class</li>
+</ol>
+<p>then it will use the new .net core serializer.
+It has the following effects:</p>
+<ol>
+<li>It can auto-convert <code>IEntity</code> objects as well as lists/arrays of <code>IEntity</code> objects</li>
+<li>By default it will use <strong>camelCase</strong> for all properties, which is the modern standard.</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p>Remember that this applies to both <code>POST</code> data from the client,
+as well as response data.</p>
 </div>
-<ul>
-<li>File: <code>[app-folder]/[edition]/api/YourController.cs</code></li>
-<li>Url: <code>[api-root]/app/auto/[edition]/api/[Your]</code></li>
-</ul>
-<p><strong>Example</strong></p>
-<ul>
-<li>File: <code>/Portals/0/2sxc/DemoApp/staging/api/PersonController.cs</code></li>
-<li>Url: <code>GET</code>: <code>/api/2sxc/auto/app/auto/staging/api/Person/List</code></li>
-</ul>
-<p>Read more about url schema in the <a class="xref" href="../../web-api/specs/url-schema.html">URLs for 2sxc WebAPI and REST APIs</a></p>
+<h2 id="example">Example</h2>
+<pre><code class="lang-c#">using ToSic.Sxc.WebApi;   // For the [JsonFormatter] (see below)
+
+[AllowAnonymous]
+[JsonFormatter]
+public class Api14AttController : Custom.Hybrid.Api14
+{
+    [HttpGet]
+    public object GetEntity()
+    {
+        return (App.Data.List.First());
+    }
+
+    [HttpGet]
+    public object GetEntities()
+    {
+        return App.Data.List;
+    }
+}
+</code></pre><h2 id="effects-on-the-post-data">Effects on the POST Data</h2>
+<div class="TIP"><h5>Tip</h5><p><code>POST</code> data is parsed case-insensitive, so it doesn&#39;t matter if the client sends <code>camelCase</code> or <code>PascalCase</code> - it will be parsed correctly.</p>
+</div>
+<p>There are 2 important effects to keep in mind:</p>
+<ol>
+<li>Most JSON in the POST will be the same no matter which serializer is used</li>
+<li>Only exotic data such as binary files will be different</li>
+</ol>
+<h2 id="effects-on-response-data">Effects on Response Data</h2>
+<div class="TIP"><h5>Tip</h5><p>Response data is usually read by JavaScript, which is case sensitive.</p>
+</div>
+<p>The main impact on Response Data is the client should expect <code>camelCase</code> instead of <code>PascalCase</code>.
+This can be configured if you want it differently, like this:</p>
+<pre><code class="lang-c#">  [HttpGet]
+  [JsonFormatter(Casing = Casing.Preserve)] // auto-convert but preserve casing
+  public dynamic PersonsAutoPreserveCasing()
+  {
+    return App.Data[&quot;Persons&quot;];
+  }
+</code></pre><p>It will also auto-convert Entities for you, which used to be very difficult.
+See <a class="xref" href="auto-convert-entities.html">Custom C# Web API - Auto Convert Entities</a></p>
 <h2 id="recommended-reading">Recommended Reading</h2>
 <ul>
 <li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API Tutorials</a></li>
-<li><a class="xref" href="../../web-api/index.html">WebApi</a></li>
-<li><a class="xref" href="../../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
+<li><a href="xref:ToSic.Sxc.WebApi.JsonFormat"></a></li>
 </ul>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 06.05</li>
-<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+<li>New JsonFormatter introduced in 2sxc 16.00</li>
 </ol>
 </article>
           </div>
@@ -163,7 +204,7 @@ It let&#39;s you have the <strong>same</strong> api-controller in multiple editi
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/web-api/custom-web-api-files.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/web-api/json-format.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

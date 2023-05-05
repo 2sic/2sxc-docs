@@ -22,9 +22,9 @@ Read more about url schema in the [](xref:WebApi.Specs.UrlSchema)
 ## Advanced Setup with Editions
 
 > [!TIP]
-> New in 2sxc 9.35+_: you can now also create `api` folders as _subfolders_ to run the api in multiple editions. 
-> This is the [polymorph feature](xref:Basics.Polymorphism.Index). 
-> It let's you have the **same** api-controller in multiple editions, where the end-user is using `live` and you're doing open-heart-surgery in the background on a new edition like `staging`. 
+> New in 2sxc 9.35+_: you can now also create `api` folders as_subfolders_ to run the api in multiple editions.
+> This is the [polymorph feature](xref:Basics.Polymorphism.Index).
+> It let's you have the **same** api-controller in multiple editions, where the end-user is using `live` and you're doing open-heart-surgery in the background on a new edition like `staging`.
 
 * File: `[app-folder]/[edition]/api/YourController.cs`
 * Url: `[api-root]/app/auto/[edition]/api/[Your]`
