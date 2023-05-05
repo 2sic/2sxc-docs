@@ -20,15 +20,7 @@ Last Update: **2023-05-04** (international Star Wars day)
 
 ## May the 4th 2023 - v16.x LTS
 
-1. ✅ improve IConfiguration API - lighten the `IDataService` API
-1. ✅ Document new data sources API
-1. ✅ finish Dynamic DataSources
-1. ✅ Document CDN / Asset management
-1. ✅ Document Formula improvements
-1. ✅ IDataService completed
-1. ✅...and documented
-1. ✅ New WYSIWYG mode completed (and documented)
-1. ✅ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+👉🏽 [See all changes v15](xref:Abyss.Releases.History.V16)
 
 ## Priorities for v16 LTS
 
@@ -36,6 +28,23 @@ Last Update: **2023-05-04** (international Star Wars day)
 1. User Service - documentation
 1. Improve Oqtane Pages DS to also respect settings - @STV
 
+
+## Priority May / Towel Day 2023
+
+1. ✅ Create Wysiwyg Rich Mode
+    1. ✅ Create `Content.ToHtml()` to auto apply certain aspects
+    1. ✅ Create best practices CSS styling for `wysiwyg` content
+1. Clean up Formulas code into better SoC @SDV
+
+
+## Currently being developed / WIP
+
+1. Slim down Oqtane Client @STV
+1. Rework the UI Selector / DropDown system
+    1. to have titles, help, notes, links, and more @SDV
+    1. to also have various data sources
+    1. dropdown for numbers etc.
+1. Clean up ancient documentation which is probably invalid, but still seen by many :(
 
 
 
@@ -53,24 +62,8 @@ Last Update: **2023-05-04** (international Star Wars day)
 1. ✅ Compress Timeline: Feature to compress the existing history
 1. ⏳ Entity Serialization Improvements
 1. ⏳ Data Bundles
-
-
-## Priority May / Towel Day 2023
-
-1. ✅ Create Wysiwyg Rich Mode
-    1. ✅ Create `Content.ToHtml()` to auto apply certain aspects
-    1. ✅ Create best practices CSS styling for `wysiwyg` content
-
-
-## Currently being developed / WIP
-
-1. Slim down Oqtane Client @STV
-1. Rework the Selector system
-    1. to have titles, help, notes, links, and more @SDV
-    1. to also have various data sources
-    1. dropdown for numbers etc.
-1. Clean up ancient documentation which is probably invalid, but still seen by many :(
-
+1. ⏳ Language editing permissions - improve, test, finalize, document - ca. 3-5d
+    1. also allow non-admins to possibly translate resources
 
 
 ## Post LTS
@@ -94,7 +87,7 @@ Minor: Tutorial App Enhancements
 1. Upgrade all template Apps to v15
 
 
-## Probably 2023 Q2 April+
+## Probably 2023 Q3
 
 2sxc
 
@@ -146,8 +139,6 @@ New Stuff and Major Enhancements
     1. Re-release sxc-angular demo-app for it
     1. Js Docs for sxc-angular
     1. React sample application
-1. Language editing permissions - improve, test, finalize, document - ca. 3-5d
-    1. also allow non-admins to possibly translate resources
 
 1. ⏳ Edit UI Picker (Entity, Number, String, etc.) - completely rework concept / system - SDV ca. 10d
 1. ⏳ Edit UI Picker - hierarchy / tree of data

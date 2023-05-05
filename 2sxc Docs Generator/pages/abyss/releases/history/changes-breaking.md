@@ -11,6 +11,10 @@ We're documenting it here to ensure you know what happened, in case you still ru
 
 ---
 
+[!include["Breaking Changes"](./v16/_brc.md)]
+
+---
+
 [!include["Breaking Changes"](./v15/_brc15.md)]
 
 ---

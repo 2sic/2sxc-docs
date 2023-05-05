@@ -3,7 +3,7 @@
 
 [!include["Changes"](./_changes15.00.md)]
 
-[!include["Breaking Changes"](./_brc15.00.md)]
+[!include["Breaking"](./_brc15.00.md)]
 
 
 [!include["Changes"](./_changes15.01.md)]
@@ -12,4 +12,8 @@
 
 [!include["Changes"](./_changes15.03.md)]
 
+[!include["Breaking"](./_brc15.03.md)]
+
 [!include["Changes"](./_changes15.04.md)]
+
+[!include["Breaking"](./_brc15.06.md)]
