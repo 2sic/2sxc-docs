@@ -7,7 +7,7 @@ uid: Basics.Query.DataSources.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query { visibility: visible; } </style>
 
-2sxc provides a large set of [DataSource](xref:NetCode.DataSources.DataSource) objects which either get data from somewhere (SQL, CSV, ...) or modify data on the `In` and passing it to `Out`. This page will give you an overview and link you to further sources if you need to know more. 
+2sxc provides a large set of [DataSource](xref:NetCode.DataSources.DataSource) objects which either get data from somewhere (SQL, CSV, ...) or modify data on the `In` and passing it to `Out`. This page will give you an overview and link you to further sources if you need to know more.
 
 ## All Public DataSources
 
@@ -19,6 +19,7 @@ These are all the data sources which are either provided in the default installa
     <td><strong>Data Source</strong></td>
     <td><strong>Purpose</strong></td>
     <td><strong>Description &amp; Details</strong></td>
+    <td><strong>Ver.</strong></td>
   </tr>
 
   <tr>
@@ -53,8 +54,9 @@ These are all the data sources which are either provided in the default installa
 
   <tr>
     <td>[Children](xref:ToSic.Eav.DataSources.Children)</td>
-    <td>Get Data</td>
-    <td>Get all related child enties _v12.10_</td>
+    <td>Relationships</td>
+    <td>Get all related child entities</td>
+    <td>v12.10</td>
   </tr>
 
   <tr>
@@ -111,6 +113,7 @@ These are all the data sources which are either provided in the default installa
     <td>(base)</td>
     <td>Base Class for custom data DataSources</td>
   </tr>
+  
 
   <tr>
     <td>[ItemFilterDuplicates](xref:ToSic.Eav.DataSources.ItemFilterDuplicates)</td>
@@ -121,13 +124,24 @@ These are all the data sources which are either provided in the default installa
   <tr>
     <td>[LanguageModeler](xref:ToSic.Eav.DataSources.LanguageModeler)</td>
     <td>Modify</td>
-    <td>Restructure imported data to be multi-language _new in v11.20_</td>
+    <td>Restructure imported data to be multi-language</td>
+    <td>v11.20</td>
   </tr>
+  
+  
+
 
   <tr>
     <td>[OwnerFilter](xref:ToSic.Eav.DataSources.OwnerFilter)</td>
     <td>Filter</td>
     <td>Get items created by specific user</td>
+  </tr>
+
+  <tr>
+    <td>[Pages](xref:ToSic.Sxc.DataSources.Pages)</td>
+    <td>CMS Data</td>
+    <td>All the pages of the current site</td>
+    <td>v15</td>
   </tr>
 
   <tr>
@@ -138,8 +152,9 @@ These are all the data sources which are either provided in the default installa
 
   <tr>
     <td>[Parents](xref:ToSic.Eav.DataSources.Parents)</td>
-    <td>Get Data</td>
-    <td>Get all related parent enties _v12.10_</td>
+    <td>Relationships</td>
+    <td>Get all related parent entities</td>
+    <td>v12.10</td>
   </tr>
 
   <tr>
@@ -156,10 +171,10 @@ These are all the data sources which are either provided in the default installa
         <summary>
           Filters items the current user shouldn't see …
         </summary>
-          This is part of the "Unpublished-Data" concept. 
-          Since each item could be either published or draft, 
-          this helps you show the correct ones for the current user based on his edit-rights. 
-          It's automatically in the default pipeline, unless you explicitly don't want it. 
+          This is part of the "Unpublished-Data" concept.
+          Since each item could be either published or draft,
+          this helps you show the correct ones for the current user based on his edit-rights.
+          It's automatically in the default pipeline, unless you explicitly don't want it.
       </details>
     </td>
   </tr>
@@ -190,6 +205,14 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
+    <td>[Sites](xref:ToSic.Sxc.DataSources.Sites)</td>
+    <td>CMS Data</td>
+    <td>All the sites of the current system</td>
+    <td>v15</td>
+  </tr>
+
+
+  <tr>
     <td>[Shuffle](xref:ToSic.Eav.DataSources.Shuffle)</td>
     <td>Logic</td>
     <td>Shuffle/randomize item order</td>
@@ -203,7 +226,7 @@ These are all the data sources which are either provided in the default installa
         <summary>
           Get SQL data as entities …
         </summary>
-          This lets you get data from any SQL data base. 
+          This lets you get data from any SQL data base.
           It also has powerful script-injection protection, so messy parameters won't hurt it.
       </details>
   </tr>
@@ -216,9 +239,9 @@ These are all the data sources which are either provided in the default installa
         <summary>
           Returns the first stream having data …
         </summary>
-        Use this to choose from multiple in-streams which data to show. 
-        It will use all the in-streams sorted A-Z, and return the first stream which can deliver data. 
-        The remaining streams will not be queried. 
+        Use this to choose from multiple in-streams which data to show.
+        It will use all the in-streams sorted A-Z, and return the first stream which can deliver data.
+        The remaining streams will not be queried.
       </details>
   </tr>
 
@@ -241,9 +264,18 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
+    <td>[SystemStack](xref:ToSic.Eav.DataSources.Sys.SystemStack)</td>
+    <td>Get Data</td>
+    <td>All the Settings / Resources of the current System and App</td>
+    <td>v15</td>
+  </tr>
+
+
+  <tr>
     <td>[TreeModeler](xref:ToSic.Eav.DataSources.TreeModeler)</td>
     <td>Modify</td>
-    <td>Restructure imported data to have tree-relationships _new in v11.20_</td>
+    <td>Restructure imported data to have tree-relationships</td>
+    <td>v11.20</td>
   </tr>
 
 
@@ -284,9 +316,9 @@ These are Dnn specific DataSources and won't work on Oqtane.
         <summary>
           Use old FnL data in 2sxc …
         </summary>
-          Will let you access Form-And-List aka UDT (Universal Data Table) data. 
-          Note that this DataSource is in external DLLs and has not been maintained, it probably doesn't work any more. 
-      </details> 
+          Will let you access Form-And-List aka UDT (Universal Data Table) data.
+          Note that this DataSource is in external DLLs and has not been maintained, it probably doesn't work any more.
+      </details>
     </td>
   </tr>
 
@@ -307,13 +339,14 @@ These are Dnn specific DataSources and won't work on Oqtane.
 
 ## Internal / System DataSources
 
-These data sources are used internally, like for selecting an App in an edit dialog. 
+These data sources are used internally, like for selecting an App in an edit dialog.
 
 <table>
   <tr>
     <td><strong>Data Source</strong></td>
     <td><strong>Purpose</strong></td>
     <td><strong>Description &amp; Details</strong></td>
+    <td><strong>Ver.</strong></td>
   </tr>
 
   <tr>
@@ -339,11 +372,39 @@ These data sources are used internally, like for selecting an App in an edit dia
     <td>(system)</td>
     <td>Get all ContentTypes of an App</td>
   </tr>
+  
+  <tr>
+    <td>[Features](xref:ToSic.Eav.DataSources.Sys.Features)</td>
+    <td>(system)</td>
+    <td>All the features in the the current system</td>
+    <td>v15</td>
+  </tr>
+
+  <tr>
+    <td>[Licenses](xref:ToSic.Eav.DataSources.Sys.Licenses)</td>
+    <td>(system)</td>
+    <td>All the licenses in the the current system</td>
+    <td>v15</td>
+  </tr>
+
+  <tr>
+    <td>[MetadataTargetTypes](xref:ToSic.Eav.DataSources.Sys.MetadataTargetTypes)</td>
+    <td>(system)</td>
+    <td>All the Metadata Target Types in the EAV</td>
+    <td>v15</td>
+  </tr>
 
   <tr>
     <td>[QueryInfo](xref:ToSic.Eav.DataSources.Sys.QueryInfo)</td>
     <td>(system)</td>
     <td>Provide debug info when creating Queries</td>
+  </tr>
+
+  <tr>
+    <td>[Scopes](xref:ToSic.Eav.DataSources.Sys.Scopes)</td>
+    <td>(system)</td>
+    <td>All the sites of the current system</td>
+    <td>v15</td>
   </tr>
 
   <tr>
@@ -373,9 +434,11 @@ These data sources are used internally, like for selecting an App in an edit dia
 
 
 
+
 ## Demo App and further links
 
 You should find some code examples in this demo App
+
 * ...
 
 More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Manuals/Feature/feature/2683)
@@ -383,6 +446,6 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 ## History
 
 1. Introduced in 2sxc ??.??
-2. 
+2.
 
 

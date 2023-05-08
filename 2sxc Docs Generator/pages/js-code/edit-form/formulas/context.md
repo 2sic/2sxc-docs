@@ -42,10 +42,15 @@ The `context` contain additional information about the context we're running in.
 * `form` _new v13.10_
   * ~~`runFormulas()`~~ (deprecated in v2) - will run all formulas in the current form. This is typically meant for use in fetch-promises after the data returned and was put in the cache _new 13.07_
 * `user` _new in v13.11_
-  * `id`
-  * `isAnonymous`
+  * `email` _new v16.00_
+  * `guid` _new v16.00_
+  * `id` user id or `-1` if anonymous
+  * `isAnonymous` - `true` if the user is not logged in
+  * `isContentAdmin` _new v16.00_
   * `isSiteAdmin`
   * `isSystemAdmin`
+  * `name` _new v16.00_
+  * `username` _new v16.00_
 * `experimental` - this is for internal APIs we're testing, they are not public. You can use them, but expect the APIs to change in near future
 
 ## Using the `context.cache`
