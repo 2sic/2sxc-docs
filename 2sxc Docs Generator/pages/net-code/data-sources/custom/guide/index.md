@@ -35,7 +35,7 @@ Once you have seen the live code, you should have a basic idea of:
 1. Use in Razor/WebApi C# Code
     1. How code will create such a DataSource using `Kit.Data.GetSource`
     1. How code can connect DataSources using `attach`
-    1. How code can pass in configuration using `options`
+    1. How code can pass in configuration using `parameters:`
 1. Use in Visual Query
     1. How DataSources appear in VisualQuery
     1. How they can be configured using the ContentType

@@ -246,7 +246,7 @@ This is usually done by attaching it to another DataSource.</p>
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
+  parameters: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
 );
 </code></pre><p>Note the <code>attach: App.Data</code>.
 This says &quot;attach <code>App.Data</code> as the input to this DataSource on the stream <code>Default</code>&quot;.</p>
@@ -282,8 +282,8 @@ As such anything you write will only affect this use, and not really rename anyt
 var appDs2 = Kit.Data.GetAppSource();
 
 // Now create a Type-Filter and tell it to only keep Books / Authors
-var books2 = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(attach: appDs2, options: new { TypeName = &quot;Books&quot; });
-var authors2 = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(attach: appDs2, options: new { TypeName = &quot;Persons&quot; });
+var books2 = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(attach: appDs2, parameters: new { TypeName = &quot;Books&quot; });
+var authors2 = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(attach: appDs2, parameters: new { TypeName = &quot;Persons&quot; });
 
 // The following lines are just spread for easier documentation
 // Usually you would write in inline

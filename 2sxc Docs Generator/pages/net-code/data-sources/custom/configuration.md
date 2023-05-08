@@ -18,7 +18,7 @@ In both cases they may need some configuration.
 When used in code, the code will look a bit like this:
 
 ```c#
-var withConfig = Kit.Data.GetSource(name: "WithConfig", options: new {
+var withConfig = Kit.Data.GetSource(name: "WithConfig", parameters: new {
   AmountOfItems = 3,
   FavoriteColor = "dark blue"
 });

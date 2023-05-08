@@ -35,7 +35,7 @@ using ToSic.Eav.DataSources;
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource<EntityTypeFilter>(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = "Author" }  // tell it to filter by "Author"
+  parameters: new { TypeName = "Author" }  // tell it to filter by "Author"
 );
 
 // access the data and automatically apply the filter/config
@@ -62,7 +62,7 @@ using ToSic.Eav.DataSources;
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource<EntityTypeFilter>(
   attach: App.Data,
-  options: new { TypeName = "[QueryString:TypeName]" }
+  parameters: new { TypeName = "[QueryString:TypeName]" }
 );
 CreateSource<EntityTypeFilter>();
 
@@ -97,4 +97,4 @@ var authors = allAuthors["Default"];
 ## History
 
 1. Introduced in 2sxc 04.00
-1. Massively enhanced in 2sxc 16 using Kit.Data which supports `attach:` and `options:` parameters
+1. Massively enhanced in 2sxc 16 using Kit.Data which supports `attach:` and `parameters:` parameters

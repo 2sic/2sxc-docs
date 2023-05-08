@@ -308,7 +308,7 @@ For some magical reasons we&#39;ll explain later, the <code>Data</code> is a Dat
 <pre><code class="lang-cs">// A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource&lt;ToSic.Eav.DataSources.EntityTypeFilter&gt;(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
+  parameters: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
 );
 
 // access the data and automatically apply the filter/config
@@ -328,24 +328,24 @@ Here&#39;s a simple example:</p>
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource&lt;EntityTypeFilter&gt;(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
+  parameters: new { TypeName = &quot;Author&quot; }  // tell it to filter by &quot;Author&quot;
 );
 
 // Sort by FullName
 var sortedAuthors = Kit.Data.GetSource&lt;ValueSort&gt;(attach: allAuthors,
-  options: { Attributes = &quot;FullName&quot; });
+  parameters: { Attributes = &quot;FullName&quot; });
 
 // Sort by FullName descending
 var sortedAuthorsDesc = Kit.Data.GetSource&lt;ValueSort&gt;(attach: allAuthors,
-  options: { Attributes = &quot;FullName&quot;, Directions = &quot;desc&quot; });
+  parameters: { Attributes = &quot;FullName&quot;, Directions = &quot;desc&quot; });
 
 // Sort by 2 fields
 var sortedAuthorsMult = Kit.Data.GetSource&lt;ValueSort&gt;(attach: allAuthors,
-  options: { Attributes = &quot;Website,FullName&quot;, Directions = &quot;asc, desc&quot; });
+  parameters: { Attributes = &quot;Website,FullName&quot;, Directions = &quot;asc, desc&quot; });
 
 // sort by internal EntityId
 var sortedAuthorsById = Kit.Data.GetSource&lt;ValueSort&gt;(attach: allAuthors,
-  options: { Attributes = &quot;EntityId&quot; });
+  parameters: { Attributes = &quot;EntityId&quot; });
 </code></pre><p>The most important thing to notice is that each additional data-source uses the first <code>allAuthors</code> DataSource as the default <strong>upstream</strong> DataSource.
 So when these sort/filter or do something, they will only receive the data already filtered by the allAuthors.</p>
 <h2 id="read-also">Read also</h2>
@@ -361,7 +361,7 @@ So when these sort/filter or do something, they will only receive the data alrea
 <ol>
 <li>Introduced in 2sxc 04.00</li>
 <li>Changed API in 2sxc 16 to use <code>Kit.Data.GetSource(...)</code> instead of <code>CreateSource(...)</code></li>
-<li>Changed API ni 2sxc 16 to use <code>options:</code> at construction time instead of setting variables on the object</li>
+<li>Changed API ni 2sxc 16 to use <code>parameters:</code> at construction time instead of setting variables on the object</li>
 </ol>
 </article>
           </div>

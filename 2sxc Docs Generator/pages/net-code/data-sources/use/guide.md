@@ -95,7 +95,7 @@ Sometimes you want to have full control over what a DataSource does or what para
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource<ToSic.Eav.DataSources.EntityTypeFilter>(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = "Author" }  // tell it to filter by "Author"
+  parameters: new { TypeName = "Author" }  // tell it to filter by "Author"
 );
 
 // access the data and automatically apply the filter/config
@@ -124,24 +124,24 @@ using ToSic.Eav.DataSources;
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource<EntityTypeFilter>(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = "Author" }  // tell it to filter by "Author"
+  parameters: new { TypeName = "Author" }  // tell it to filter by "Author"
 );
 
 // Sort by FullName
 var sortedAuthors = Kit.Data.GetSource<ValueSort>(attach: allAuthors,
-  options: { Attributes = "FullName" });
+  parameters: { Attributes = "FullName" });
 
 // Sort by FullName descending
 var sortedAuthorsDesc = Kit.Data.GetSource<ValueSort>(attach: allAuthors,
-  options: { Attributes = "FullName", Directions = "desc" });
+  parameters: { Attributes = "FullName", Directions = "desc" });
 
 // Sort by 2 fields
 var sortedAuthorsMult = Kit.Data.GetSource<ValueSort>(attach: allAuthors,
-  options: { Attributes = "Website,FullName", Directions = "asc, desc" });
+  parameters: { Attributes = "Website,FullName", Directions = "asc, desc" });
 
 // sort by internal EntityId
 var sortedAuthorsById = Kit.Data.GetSource<ValueSort>(attach: allAuthors,
-  options: { Attributes = "EntityId" });
+  parameters: { Attributes = "EntityId" });
 ```
 
 The most important thing to notice is that each additional data-source uses the first `allAuthors` DataSource as the default **upstream** DataSource.
@@ -162,6 +162,6 @@ So when these sort/filter or do something, they will only receive the data alrea
 
 1. Introduced in 2sxc 04.00
 1. Changed API in 2sxc 16 to use `Kit.Data.GetSource(...)` instead of `CreateSource(...)`
-1. Changed API ni 2sxc 16 to use `options:` at construction time instead of setting variables on the object
+1. Changed API ni 2sxc 16 to use `parameters:` at construction time instead of setting variables on the object
 
 [app-ds-code]: https://2sxc.org/en/apps/app/tutorial-use-a-custom-developed-datasource

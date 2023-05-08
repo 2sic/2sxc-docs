@@ -18,7 +18,7 @@ using ToSic.Eav.DataSources;
 // A source which can filter by Content-Type (EntityType)
 var allAuthors = Kit.Data.GetSource<EntityTypeFilter>(
   attach: App.Data,                     // Use the apps data as input
-  options: new { TypeName = "Author" }  // tell it to filter by "Author"
+  parameters: new { TypeName = "Author" }  // tell it to filter by "Author"
 );
 ```
 
@@ -74,8 +74,8 @@ Since any `.Link` provide a link, you can chain multiple links together like thi
 var appDs2 = Kit.Data.GetAppSource();
 
 // Now create a Type-Filter and tell it to only keep Books / Authors
-var books2 = Kit.Data.GetSource<EntityTypeFilter>(attach: appDs2, options: new { TypeName = "Books" });
-var authors2 = Kit.Data.GetSource<EntityTypeFilter>(attach: appDs2, options: new { TypeName = "Persons" });
+var books2 = Kit.Data.GetSource<EntityTypeFilter>(attach: appDs2, parameters: new { TypeName = "Books" });
+var authors2 = Kit.Data.GetSource<EntityTypeFilter>(attach: appDs2, parameters: new { TypeName = "Persons" });
 
 // The following lines are just spread for easier documentation
 // Usually you would write in inline
