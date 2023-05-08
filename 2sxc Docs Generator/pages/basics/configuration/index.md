@@ -9,7 +9,7 @@ uid: Basics.Configuration.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-Settings can be a complex issue as the should have an effect on differenc scopes. Here are some examples:
+Settings can be a complex issue as the should have an effect on different scopes. Here are some examples:
 
 1. An input-field may have a setting to show/hide a button
 1. An App may have a setting which affects the entire App

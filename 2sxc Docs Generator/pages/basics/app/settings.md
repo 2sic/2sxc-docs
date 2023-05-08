@@ -11,7 +11,7 @@ Every App has a **Settings** Entity. The fields available can be anything your A
 
 ## Edit/Configure App Settings
 
-This is where you can find the App Settings
+This is where you can find the App Settings:
 
 <img src="./assets/app-settings-path.jpg" width="100%" >
 
