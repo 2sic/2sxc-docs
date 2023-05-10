@@ -22,12 +22,6 @@ Last Update: **2023-05-04** (international Star Wars day)
 
 👉🏽 [See all changes v15](xref:Abyss.Releases.History.V16)
 
-## Priorities for v16 LTS
-
-1. ✅ Data-conversion of entities to json in attribute... - documented ⌛
-1. User Service - documentation
-1. Improve Oqtane Pages DS to also respect settings - @STV
-
 
 ## Priority May / Towel Day 2023
 
@@ -35,6 +29,7 @@ Last Update: **2023-05-04** (international Star Wars day)
     1. ✅ Create `Content.ToHtml()` to auto apply certain aspects
     1. ✅ Create best practices CSS styling for `wysiwyg` content
 1. Clean up Formulas code into better SoC @SDV
+1. Improve Oqtane Pages DS to also respect settings - @STV
 
 
 ## Currently being developed / WIP
@@ -75,6 +70,7 @@ Last Update: **2023-05-04** (international Star Wars day)
 1. CSP - ca. 5d
     1. ⏳ CSP Tutorials, docs and more
 1. Standardize / complete `IDataBuilder` API
+1. User Service - requires some final decision in regards to the data-format returned
 
 Blazor CMS / cre8magic
 

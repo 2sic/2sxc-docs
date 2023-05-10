@@ -291,17 +291,74 @@ private IEnumerable&lt;IEntity&gt; GetList()
 
     // ...
 }
-</code></pre><h2 id="performance-notes">Performance Notes</h2>
+</code></pre><h2 id="providing-data-with-relationships">Providing Data with Relationships</h2>
+<p>In some cases you want the created Entities to have relationships to each other.
+Examples could be:</p>
+<ul>
+<li>Blog posts with relationships to their tags</li>
+<li>Tree structures such as folders</li>
+<li>etc.</li>
+</ul>
+<p>For this you should first understand how relationships are created.
+Every created entity is <a class="xref" href="../../conventions/immutable/index.html">immutable</a>.
+This means that it can&#39;t be modified once created.
+Now this poses a special challenge, because some of the referenced entities
+may not exist when the <em>referencing</em> entity (aka the parent) is created.</p>
+<p>So internally there is a lookup concept, which basically works like this:</p>
+<ol>
+<li>A <strong>Relationship Manager</strong> knows about all the entities and how they can be referenced</li>
+<li>An entity which needs other entities will get this manager injected</li>
+<li>A field which references other entities keeps a list of references - either the IDs or special strings like <code>file-of:/some/path</code></li>
+<li>When the field is accessed, internally it will ask the ReferenceManager to find the entities</li>
+</ol>
+<p>For creating relationships you must do two things:</p>
+<ol>
+<li>Ensure that each new entity provides the keys it should be found on.
+ If you are only using IDs, you don&#39;t have to do anything, but if you need magic strings, you must provide them.</li>
+<li>Tell the relationship fields (eg: <code>MyChildren</code> or <code>Parent</code>) what IDs / keys to use.</li>
+</ol>
+<p>Here&#39;s a simple example from the tutorial:</p>
+<pre><code class="lang-c#">using System.Collections.Generic;
+
+public class TreeBasic : Custom.DataSource.DataSource16
+{
+  public TreeBasic(MyServices services) : base(services, &quot;My.Magic&quot;)
+  {
+    ProvideOut(() =&gt; {     
+      return new List&lt;object&gt; {
+        // Root has ID 1 and points to 2 children
+        CreateNode(1, &quot;Root Node&quot;, new [] { 101, 102 }),
+        // This is a subnode, with 2 more children
+        CreateNode(101, &quot;Sub Item 101&quot;, new [] { 1011, 1012 }),
+        CreateNode(102, &quot;Sub Item 102&quot;),
+        CreateNode(1011, &quot;Sub Item 1011&quot;),
+        CreateNode(1012, &quot;Sub Item 1012&quot;),
+      };
+    });
+  }
+
+  private object CreateNode(int id, string title, int[] relationships = null) {
+    return new {
+      Id = id,
+      Title = title,
+      // To reference another item in the same list,
+      // create an anonymous object with &quot;Relationships&quot; as an Enumerable, Array or List
+      SubItems = new { Relationships = relationships }
+    };
+  }
+}
+</code></pre><p>This example skips step one, because it only uses IDs.
+As you can see, the property <code>SubItems</code> creates a special object which contains the references to the children of a parent.</p>
+<p>💡 For more examples, check out the <a href="https://app-dev.2sxc.org/tutorial-razor/Home/data-sources500/page">Relationships Tutorial</a></p>
+<h2 id="performance-notes">Performance Notes</h2>
 <p>It&#39;s important to know that <code>ProvideOut</code> simply prepares the <code>Out</code> for use, but will <em>not</em> call the inner function unless this stream is requested. This makes DataSources very performant, as no code is run which isn&#39;t needed.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="guide/big-picture.html">DataSources Big Picture</a></li>
 <li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor#data-createsource">Dynamic DataSources Tutorials</a></li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<ul>
-<li>todo</li>
-</ul>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in EAV 4.x, 2sxc 09.13</li>

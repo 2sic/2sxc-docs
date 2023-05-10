@@ -13,3 +13,4 @@ We mainly finished the docs for various features, so this is what is now done.
 1. ✅...and documented
 1. ✅ New WYSIWYG mode completed (and documented)
 1. ✅ Toolbars Service Improvements:  transport `data` for use in notes etc. ca. 0.5d 2dm
+1. ✅ Data-conversion of entities to json in attribute... - documented
