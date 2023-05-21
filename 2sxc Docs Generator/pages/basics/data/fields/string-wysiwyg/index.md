@@ -1,7 +1,7 @@
 ---
 uid: Basics.Data.Fields.String-Wysiwyg
 ---
-# Field Input-Type **string-wysiwyg**
+# Field Input-Type string-wysiwyg
 
 Use this field type for configuring simple text UI elements, storing [string/text data](xref:Basics.Data.Fields.String). It's an extension of the basic [string field type](xref:Basics.Data.Fields.String).
 
@@ -68,6 +68,9 @@ In addition to the toolbar, the plain text mode also has the following configura
 
 This is a new mode which is still in development.
 It provides special features to make content which is rich and responsive at the same time.
+
+<img src="./assets/toolbar-rich.jpg" width="100%">
+
 Features include:
 
 1. Automatic image resizing of wysiwyg-images using the `<picture>` tag
@@ -76,8 +79,7 @@ Features include:
 1. Special spacers to create proper gaps where necessary
 1. Image text wrapping so that multiple side-images are under each other and not staggered
 
-This is still WIP as it also needs some Razor support to ensure the rendering is correct.
-Expected release: Towel Day 2023.
+👉🏽 See [](xref:Basics.Data.Fields.String-Wysiwyg-Rich)
 
 ## Configure a String-Wysiwyg
 

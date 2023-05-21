@@ -7,11 +7,13 @@ uid: NetCode.DynamicData.Entity
 
 # Entity Objects
 
-All content-items in the **EAV** database of 2sxc are internally handled as `Entity` objects with the interface `IEntity`. When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a [](xref:ToSic.Sxc.Data.IDynamicEntity).
+All content-items in the **EAV** database of 2sxc are internally handled as `Entity` objects with the interface `IEntity`.
+When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a [](xref:ToSic.Sxc.Data.IDynamicEntity).
 
-But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it's null, or an empty string. In this case you'll need to look at the internals, the `IEntity`.
+But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it's null, or an empty string.
+In this case you'll need to look at the internals, the `IEntity`.
 
-To learn more about the differences, check out [DynamicEntity vs Entity](xref:NetCode.DynamicData.EntityVsDynamicEntity)
+To learn more about the differences, check out [DynamicEntity vs Entity](xref:NetCode.DynamicData.DataObjectTypes)
 
 
 ## Using the IEntity Interface
@@ -55,7 +57,7 @@ In case you feel like you really need to know more about the real Entity objects
 
 1. [IEntity](xref:ToSic.Eav.Data.IEntity) API
 1. [AsEntity(...)](xref:NetCode.DynamicCode.AsEntity)
-1. [](xref:NetCode.DynamicData.EntityVsDynamicEntity)
+1. [](xref:NetCode.DynamicData.DataObjectTypes)
 
 
 

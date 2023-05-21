@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Field Input-Type string-wysiwyg | 2sxc 16 / EAV 16 </title>
+    <title>Field Input-Type string-wysiwyg Rich-Mode new 16.01 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Field Input-Type string-wysiwyg | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Field Input-Type string-wysiwyg Rich-Mode new 16.01 | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
@@ -114,77 +114,89 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Basics.Data.Fields.String-Wysiwyg">
-<h1 id="field-input-type-string-wysiwyg">Field Input-Type string-wysiwyg</h1>
+            <article class="content wrap" id="_content" data-uid="Basics.Data.Fields.String-Wysiwyg-Rich">
+<h1 id="field-input-type-string-wysiwyg-rich-mode-new-1601">Field Input-Type string-wysiwyg Rich-Mode <em>new 16.01</em></h1>
 
-<p>Use this field type for configuring simple text UI elements, storing <a class="xref" href="../string.html">string/text data</a>. It&#39;s an extension of the basic <a class="xref" href="../string.html">string field type</a>.</p>
-<h2 id="features">Features</h2>
+<p>A wysiwyg field which can be configured to be in various modes - see <a class="xref" href="index.html">Field Input-Type string-wysiwyg</a>.
+When this configuration is set, it will:</p>
 <ol>
-<li>provide a wysiwyg text box</li>
-<li>rich WYSIWYG experience using TinyMCE</li>
-<li>ADAM support to drop images and documents</li>
+<li>Provide buttons in the Edit UI to<ol>
+<li>align images in a special way</li>
+<li>add splitters to reset content alignments after the splitter</li>
+<li>add spacers to create gaps of various sizes in content</li>
+<li>specify resizing using css-classes for the server-side image-resizing</li>
 </ol>
-<h2 id="modes-new-v1504">Modes (new v15.04)</h2>
-<p>The string-wysiwyg field type has these modes</p>
+</li>
+<li>Allow the razor <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...)</a> to<ol>
+<li>automatically resize images</li>
+<li>make all images responsive using <code>&lt;picture&gt;</code> tags</li>
+<li>automatically add spacers</li>
+</ol>
+</li>
+</ol>
+<p>To make all this happen it needs this:</p>
 <ol>
-<li><a href="#mode-default">Default</a></li>
-<li><a href="#mode-text">Text</a></li>
-<li><a href="#mode-text-basic">Text Basic</a></li>
-<li><a href="#mode-text-minimal">Text Minimal</a></li>
-<li><a href="#mode-text-plain">Text Plain</a></li>
-<li><a href="#mode-rich">Rich WYSIWYG</a></li>
+<li>The new <a class="xref" href="index.html">mode setting</a></li>
+<li>The new behavior in the Edit UI</li>
+<li>The new <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...)</a> API</li>
+<li>Internal server-side code to find the images and replace them with responsive <code>&lt;picture&gt;</code> tags</li>
+<li>Special CSS to make it all work (see below)</li>
+<li>A special <code>debug</code> mode to help you in optimizing the CSS for your use case (see below)</li>
 </ol>
-<h2 id="mode-default">Mode <code>default</code></h2>
-<p>This is the standard mode, which is used if you don&#39;t specify a mode.
-It has various buttons to edit text and more.</p>
-<p><img src="assets/toolbar-default.jpg" width="100%"></p>
-<h2 id="mode-text">Mode <code>text</code></h2>
-<p>This is the basic text mode.
-It doesn&#39;t show as many buttons and disables features such as adding images to the content.
-The text-mode is meant for WYSIWYG where the user shouldn&#39;t add images.</p>
-<p><img src="assets/toolbar-text.jpg" width="100%"></p>
-<h2 id="mode-text-basic">Mode <code>text-basic</code></h2>
-<p>This is a reduced text mode and doesn&#39;t provide the editor with headings.
-It&#39;s meant for simpler text where the editor should really not add headings to the content,
-but can still do basic formatting and add lists etc.</p>
-<p><img src="assets/toolbar-text-basic.jpg" width="100%"></p>
-<h2 id="mode-text-minimal">Mode <code>text-minimal</code></h2>
-<p>This is a very reduced text mode which only provides basic formatting such as bold/italic.
-It&#39;s meant for inputs where the user should not be able to add headings or lists.</p>
-<p><img src="assets/toolbar-text-minimal.jpg" width="100%"></p>
-<h2 id="mode-text-plain">Mode <code>text-plain</code></h2>
-<p>This is the most reduced wysiwyg mode, almost not a WYSIWYG at all.
-It&#39;s meant for teasers and other short texts, where the user can basically not paste formatted text
-or make anything bold/italic.</p>
-<p><img src="assets/toolbar-text-plain.jpg" width="100%"></p>
-<p>In addition to the toolbar, the plain text mode also has the following configuration:</p>
-<ol>
-<li>Disable dialog mode. Since the plain text mode is meant for short texts, it&#39;s not really useful to have a dialog mode.</li>
-</ol>
-<h2 id="mode-rich">Mode <code>rich</code></h2>
-<p>This is a new mode which is still in development.
-It provides special features to make content which is rich and responsive at the same time.</p>
+<h2 id="the-edit-ui">The Edit UI</h2>
+<p>If a string-wysiwyg is configured to behave in the new <code>rich</code> mode, the toolbars will look as follows:</p>
 <p><img src="assets/toolbar-rich.jpg" width="100%"></p>
-<p>Features include:</p>
+<p>The new buttons on the second row allow you to add spacers of various sizes.
+When you add images or spacers which resulting in extra padding, the padding will be shown in the UI as follows:</p>
+<p><img src="assets/edit-ui-showing-padding.jpg" width="100%"></p>
+<p>When selecting a spacer, the context-toolbar will look as follows:</p>
+<p><img src="assets/spacer-context-toolbar.jpg" width="100%"></p>
+<p>When selecting an image, the context-toolbar will look as follows:</p>
+<p><img src="assets/image-context-toolbar.jpg" width="100%"></p>
+<p>This allows you to change the alignment (left/right) and to specify the size of the image.</p>
+<div class="IMPORTANT"><h5>Important</h5><p>In the <em>classic</em> wysiwyg-mode, the image-alignment was done using the <code>float</code> css-property
+and the width uses the <code>width</code> css-property.</p>
+<p>In this new <strong>Rich</strong> mode, it will only set CSS classes like <code>wysiwyg-left</code> or <code>wysiwyg-50</code>.
+So the final output will only change, if the CSS definition exists.
+This happens automatically, when you use the <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...) method</a>.</p>
+</div>
+<h2 id="css">CSS</h2>
+<p>To make all of this work, we use a list of CSS classes which are applied in the edit-UI.
+The output must of course also have these classes, so that the final result looks the same.
+These are the classes that make it work:</p>
+<ul>
+<li><code>wysiwyg-container</code> is set on the wrapper <code>&lt;div&gt;</code> so the classes inside will only apply to this field</li>
+<li><code>wysiwyg-100</code>, <code>wysiwyg-50</code> etc. are width classes on the image</li>
+<li><code>wysiwyg-left</code>, <code>wysiwyg-right</code> etc. are alignment classes on the image which also apply a padding to the opposite side</li>
+<li><code>wysiwyg-splitter</code> are classes applied to <code>&lt;hr&gt;</code> tags to reset image alignment and ensure the next content start below it</li>
+<li><code>wysiwyg-spacer-0</code>, <code>wysiwyg-spacer-s</code> etc. are classes applied to <code>&lt;hr&gt;</code> tags to create gaps of various sizes</li>
+</ul>
+<p>The built-in CSS for this is automatically added to the page when you use the <code>.Html(...)</code> method.
+It ensures correct sizing and will also re-order the images to be above the text on mobile.</p>
+<p>It also ensures that multiple images on the same line will properly align and not stagger.
+For example, 3 images each being 33% should have a padding after the first two, but not after the last one.</p>
 <ol>
-<li>Automatic image resizing of wysiwyg-images using the <code>&lt;picture&gt;</code> tag</li>
 <li>Image arrangements which work on all screens (eg. 4-in-a-row on desktop, but under-each-other on mobile)</li>
-<li>Optimized CSS to make this possible</li>
-<li>Special spacers to create proper gaps where necessary</li>
 <li>Image text wrapping so that multiple side-images are under each other and not staggered</li>
 </ol>
-<p>👉🏽 See <a class="xref" href="rich.html">Field Input-Type string-wysiwyg Rich-Mode new 16.01</a></p>
-<h2 id="configure-a-string-wysiwyg">Configure a String-Wysiwyg</h2>
-<p>The mode is configured in the normal field settings.</p>
+<p><img src="assets/output-images-3-in-row-all-left-aligned.jpg" width="100%"></p>
+<p>You can also add your own CSS to make it look different.</p>
+<h2 id="debug-css">Debug CSS</h2>
+<p>If you specify <code>debug: true</code> in the <code>.Html(..., debug: true)</code> method, it will add some CSS to the page to help you see what&#39;s going on.</p>
+<p><img src="assets/output-debug-css.jpg" width="100%"></p>
+<p>This will show you:</p>
+<ol>
+<li>the exact size/location/placement of the <code>wysiwyg-container</code> - shown in fading magenta</li>
+<li>exact sizes of images - shown in bright fading green</li>
+<li>paddings around images - shown as shaded areas</li>
+<li>spacings / gaps of splitters - shown as shaded areas</li>
+</ol>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in EAV 1.0 2sxc 1.0, originally as part of the <a class="xref" href="../string.html">string field type</a></li>
-<li>Changed in 2sxc 6.0 - Moved to it&#39;s own sub-type</li>
-<li>Changed to be full-screen dialog editing only in 10.00</li>
-<li>Added option to switch between full-screen or directly in the form in 10.09</li>
-<li>Added options to enable / disable HTML and Advanced buttons in 10.09</li>
-<li>Added modes in 15.04, released in 16.00</li>
+<li>Introduced in v16.01 on Towel Day 2023</li>
 </ol>
+<p>Shortlink: <a href="https://r.2sxc.org/wysiwyg-rich">https://r.2sxc.org/wysiwyg-rich</a></p>
 </article>
           </div>
           
@@ -193,7 +205,7 @@ It provides special features to make content which is rich and responsive at the
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/string-wysiwyg/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/string-wysiwyg/rich.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

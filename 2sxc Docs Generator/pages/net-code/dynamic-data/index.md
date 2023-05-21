@@ -24,7 +24,7 @@ Data for your Code can come from various sources. Read about [](xref:NetCode.Dyn
 
 ## DynamicEntity and Entity Objects
 
-It helps to understand the difference between [Dynamic Entities and Entities](xref:NetCode.DynamicData.EntityVsDynamicEntity).
+It helps to understand the difference between [Dynamic Entities and Entities](xref:NetCode.DynamicData.DataObjectTypes).
 
 
 ## APIs and Conversion Commands

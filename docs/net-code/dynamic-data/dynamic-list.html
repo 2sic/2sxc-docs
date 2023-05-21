@@ -259,13 +259,13 @@
 <li>Using LINQ to sort, filter and more</li>
 </ol>
 <h2 id="basics-first---what-are-lists-of-dynamic-entities">Basics First - What Are Lists of Dynamic Entities</h2>
-<p>In the lingo of C# they are <code>IEnumerable&lt;IDynamicEntity&gt;</code> objects. </p>
+<p>In the lingo of C# they are <code>IEnumerable&lt;IDynamicEntity&gt;</code> objects.</p>
 <blockquote><p>But basically lists are objects that can be stepped through (iterated).</p>
 </blockquote>
-<p>You will usually use them to show the list of items (like a list of News items). 
-And if the list has too much data or is in a weird sorting order, you&#39;ll usually want to filter and sort before doing this. </p>
+<p>You will usually use them to show the list of items (like a list of News items).
+And if the list has too much data or is in a weird sorting order, you&#39;ll usually want to filter and sort before doing this.</p>
 <h2 id="how-to-get-a-list-of-dynamic-entities">How to Get a List of Dynamic Entities</h2>
-<p>In many cases the list is aleady there for you to use. 
+<p>In many cases the list is aleady there for you to use.
 For example, if your <code>BlogPost</code> object has a property <code>Tags</code> which is an Entity-Picker in the Edit-UI, then this will automatically work:</p>
 <pre><code class="lang-razor">&lt;ul&gt;
 @foreach(var tag in blogPost.Tags) {
@@ -279,66 +279,8 @@ But these don&#39;t allow you to just access a property, so you&#39;ll have to u
 </code></pre><ol>
 <li>Find some information</li>
 </ol>
-<p>Whenever you create a content-type - like <em>Person</em> - and want to work with the data in your C# Razor templates, you&#39;ll be working with a <em>Dynamic Entity</em>. </p>
+<p>Whenever you create a content-type - like <em>Person</em> - and want to work with the data in your C# Razor templates, you&#39;ll be working with a <em>Dynamic Entity</em>.</p>
 <p>👉 also read about <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a></p>
-<h2 id="code-example-using-a-dynamic-entity">Code example using a Dynamic Entity</h2>
-<p>We&#39;ll assume we have a <em>Content Type</em> called <em>Book</em> with the following properties:</p>
-<ul>
-<li><strong>Title</strong> (text, 1-line)</li>
-<li><strong>Teaser</strong> (text, multi-line)</li>
-<li><strong>Description</strong> (text, html)</li>
-<li><strong>ReleaseDate</strong> (date)</li>
-<li><strong>Author</strong> (entity - another content item)</li>
-</ul>
-<p>Here&#39;s a code example in a C# Razor template:</p>
-<pre><code class="lang-razor">&lt;!--
-  The default variable for the current item is Content, 
-  we&#39;ll just use another name for this sample
-  note that .Title is automatically provided, 
-  because the content-type has the property title. 
---&gt;
-&lt;h1&gt;@Content.Title&lt;/h1&gt;
-&lt;div&gt;@Content.Description&lt;/div&gt;
-&lt;div&gt;Author: @Content.Author.FullName&lt;/div&gt;
-</code></pre><p>So basically all properties of this book can be shown using <code>[Object].[PropertyName]</code> - for example <code>Content.ReleaseDate</code>.</p>
-<h2 id="what-dynamic-entity-really-does---and-how">What Dynamic Entity really does - and how...</h2>
-<p>Technically the dynamic entity object is like a read-helper for the more complex <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a>. So actually the <em>dynamic entity</em> object will keep a reference to the underlying read-only <code>IEntity</code> item on a property <code>Entity</code>, and whenever your code accesses a property, the dynamic entity will query it from the underlying <code>Entity</code>.</p>
-<p>The main things that the <em>dynamic entity</em> does for you, are</p>
-<ol>
-<li>Give you a nice, short syntax to access a property - so <code>Content.FirstName</code> instead of <code>Object.Attributes[&quot;FirstName&quot;][&quot;en&quot;]</code> which would be necessary using the more advanced <code>IEntity</code> object</li>
-<li>Ensure that the language used in retrieving a value is the current user language</li>
-<li>Give conveniant access to related information like the <code>Presentation</code> object</li>
-<li>Automatically handle some data-not-found errors</li>
-<li>Automatically do conversions, like convert related entities (like <code>.Children</code>) into dynamic objects to make your code more consistant  </li>
-</ol>
-<h2 id="how-the-property-lookup-works">How the Property Lookup Works</h2>
-<p>Internally there are a few things that can returned if you do something like <code>Content.SomeProperty</code></p>
-<ol>
-<li>If the <code>SomeProperty</code> is one of the internal properties like <code>EntityId</code> etc. (see below) this will be returned</li>
-<li>Topmost is a simple property of the underlying Entity, like <code>FirstName</code></li>
-<li>Similar to that are relationship properties, like <code>Tags</code> which will return a special DynamicEntity that behaves as a list (see below)</li>
-<li><em>if the entity is a list</em> (for example the result of <code>var tags = Content.Tags</code>) then going deeper like <code>tags.Name</code> has the following behavior<ol>
-<li>If the Tags-list had anything, then it will try to find a match on the first item according to these rules. <em>new in v10.27</em></li>
-<li>If up till then nothing was found, it will check if any of the items in the list has that <code>Title</code> property. This lets you write <code>Tags.Webdesign.Name</code> <em>new in v12.04</em></li>
-</ol>
-</li>
-<li>Last but not least - if nothing matches, it&#39;s <code>null</code></li>
-</ol>
-<h2 id="properties-of-a-dynamic-entity">Properties of a Dynamic Entity</h2>
-<p>Read the API docs in the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.</p>
-<p>Additional properties that work (they are dynamic, so don&#39;t appear in the code)</p>
-<ol>
-<li><strong>EntityId</strong> <em>int</em></li>
-<li><strong>EntityGuid</strong> <em>Guid</em></li>
-<li><strong>EntityType</strong> <em>string</em> - the type name like <em>Person</em></li>
-<li><strong>IsPublished</strong> <em>bool</em> - true/false if this item is currently published</li>
-<li><strong><em>AnyProperty</em></strong> <em>dynamic, but actually bool | string | decimal | datetime | List<dynamicentity></dynamicentity></em> any normal property of the content-item can be accessd directly. It&#39;s correctly .net typed (string, etc.)</li>
-</ol>
-<div class="TIP"><h5>Tip</h5><p>In 2sxc 10.27 any property that returns a <code>List&lt;DynamicEntity&gt;</code> now returns a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> containing the list. 
-This means that if you expect the list to just return one item, you can directly access its properties like this:<br><code>Content.Author.FirstName</code>.<br>To otherwise enumerate the items, we recommend <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.DynamicCode.html#ToSic_Sxc_Code_DynamicCode_AsList_System_Object_">AsList(Object)</a> so <code>AsList(Content.Tags)</code></p>
-</div>
-<h2 id="working-with-unpublisheddraft-items">Working with unpublished/draft items</h2>
-<p>TODO: write something about how-to-check if published/unpublished, navigating it, etc. - or link to such a page</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -346,29 +288,11 @@ This means that if you expect the list to just return one item, you can directly
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><h2 id="appendix">Appendix</h2>
-<p>The following properties/methods exist, but shouldn&#39;t be used. They are documented here so that you know that they are not meant for public use:</p>
-<ol>
-<li>Created - the created date</li>
-<li>Modified - the modified date</li>
-<li>Owner - the current owner of the item, usually the author</li>
-<li>Metadadata - currently use <code>AsEntity(theObject).Metadata</code></li>
-<li>Permissions - permissions of the current item (if any are defined)</li>
-</ol>
-<hr>
+</div><hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 01.00</li>
 <li>Changed to use interface IDynamicEntity in 6.x</li>
-<li>Draft/Published introduced in 2sxc 7.x</li>
-<li>Presentation introduced in 2sxc 7.x</li>
-<li>Modified introduced in 2sxc 8.x</li>
-<li>Implemented .net equality comparer in 2sxc 9.42</li>
-<li>Parents added in 2sxc 9.42</li>
-<li>Get added in 2sxc 9.42 and added to interface IDynamicEntity in 10.07</li>
-<li>Parents introduced in 2sxc 9.42, and added to interface IDynamicEntity in 10.07</li>
-<li>IsDemoItem property added in 2sxc 10.06</li>
-<li>Changed dynamic access to a property to return a DynamicEntity which is enumerable in 10.27</li>
 </ol>
 </article>
           </div>

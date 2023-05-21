@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Entity Objects | 2sxc 16 / EAV 16 </title>
+    <title>Data Object Types | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Entity Objects | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Data Object Types | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,7 +114,7 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.Entity">
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.DataObjectTypes">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -237,40 +237,62 @@
   </div>
 </div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<h1 id="entity-objects">Entity Objects</h1>
-<p>All content-items in the <strong>EAV</strong> database of 2sxc are internally handled as <code>Entity</code> objects with the interface <code>IEntity</code>.
-When using content-items in Razor-Templates and WebAPIs you usually don&#39;t care about this, as you will use it as a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.</p>
-<p>But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it&#39;s null, or an empty string.
-In this case you&#39;ll need to look at the internals, the <code>IEntity</code>.</p>
-<p>To learn more about the differences, check out <a class="xref" href="data-object-types.html">DynamicEntity vs Entity</a></p>
-<h2 id="using-the-ientity-interface">Using the IEntity Interface</h2>
-<p>Just a short piece of code to show how it would work (but not usually recommended).</p>
-<pre><code class="lang-cs">// This example shows how to get the link as stored in the data 
-// without converting page:74 to the real link
-var languagePreference = [&quot;de&quot;, &quot;en&quot;];
-var autoResolveLinks = false;
-var rawLink = AsEntity(Content).GetBestValue(&quot;Link&quot;, languagePreference, autoResolveLinks);
-
-// Hard-core accessing the internal data structure
-IEntity entity = AsEntity(Content);
-Dictionary&lt;string, IAttribute&gt; attribs = entity.Attributes;
-IAttribute titleMultiLanguage = attribs[&quot;Title&quot;];
-string attType = titleMultiLanguage.Type;
-IEnumerable&lt;IValue&gt; titleVals = titleMultiLanguage.Values;
-IValue firstTitle = titleVals.First();
-string firstString = firstTitle.ToString();
-IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
-//etc.
-</code></pre><h2 id="when-would-you-need-to-work-with-entity-objects">When would You need to work with Entity objects</h2>
-<p>For Razor and WebAPI these are edge cases, but they are real:</p>
+<h1 id="data-object-types">Data Object Types</h1>
+<p>When coding with 2sxc data, there are three common data object types:</p>
 <ol>
-<li>The DynamicEntity will automatically resolve links like <code>page:72</code> and give you <code>http://...</code>. In rare cases you may need to actually get <code>page:72</code> and for this you need to convert back to Entity. </li>
-<li>If you want to explicitly figure out what languages have been translated on a value</li>
-<li>To find out more about the underlying Content-Type (like to list the fields)</li>
-<li>If the entity is Metadata and you want to know what it&#39;s assigned to</li>
-<li>If the entity has Metadata and you want to get that</li>
+<li><strong>DynamicEntity</strong></li>
+<li><strong>Entity</strong></li>
+<li><strong>TypedEntity</strong> (new/WIP v16.0x)</li>
 </ol>
-<h2 id="read-also">Read also</h2>
+<p>There are also some typical data objects for working with file/assets (not documented here):</p>
+<ol>
+<li><strong>IAsset</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IAsset.html">IAsset</a></li>
+<li><strong>IFile</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFile.html">IFile</a></li>
+<li><strong>IFolder</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a></li>
+</ol>
+<p><a class="xref" href="dynamic-entity.html">Dynamic Entities</a> are simple, <em>dynamic</em> objects that allow you to write template with any property you believe the data should have, like <code>@person.FirstName</code> etc.
+They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background.</p>
+<p><a class="xref" href="entity.html">Entities</a> are strongly typed objects for complex work, but getting values is much more difficult.
+You usually don&#39;t need this, but it&#39;s important that you know this exists.</p>
+<p><strong>TypedEntity</strong> is a new type of object which is still in development.
+It&#39;s a strongly typed object which is very similar to the DynamicEntity, but has a few advantages.
+It&#39;s still in development.</p>
+<p>This piece of code shows why you usually <em>don&#39;t want to use the IEntity</em> and will prefer the <em>IDynamicEntity</em> instead.</p>
+<pre><code class="lang-cs">// The easy way, using the content-item as a DynamicEntity
+var titleFromDynamic = Content.Title; 
+
+// The hard way, what actually happens internally
+var languagePreference = [&quot;de&quot;, &quot;en&quot;];
+var autoResolveLinks = true;
+var contentEntity = AsEntity(Content);
+var titleFromEntity = contentEntity.GetBestValue(&quot;Title&quot;, languagePreference, autoResolveLinks);
+</code></pre><p>As you can see, the internals provide a lot of information about the underlying data - things you usually don&#39;t care about, but in rare cases may be important.</p>
+<h2 id="conversion">Conversion</h2>
+<p>Each type can be converted to the other type using helpers like <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>, <a class="xref" href="../dynamic-code/as-list.html">AsList(...)</a> and <a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a>. The APIs are explained here <a class="xref" href="../dynamic-code/index.html">Dynamic Code API</a>.</p>
+<div class="TIP"><h5>Tip</h5><p>In most cases you&#39;ll always use <a class="xref" href="dynamic-entity.html">Dynamic Entities</a> and if you&#39;re not sure whan an object is, just run it through <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>.</p>
+</div>
+<h2 id="conversion-examples">Conversion Examples</h2>
+<p>This is just a bit of code so you can see how to convert back and forth. You usually won&#39;t care too much about this and not do this.</p>
+<p>Note that this is a very advanced topic, and you&#39;ll need Visual Studio Intellisense to get this done reasonably. Since you&#39;ll figure it out fairly quickly, we won&#39;t document it in detail here.</p>
+<pre><code class="lang-cs">// assume that you have a DynamicEntity like Content
+var entity = AsEntity(Content);
+
+// assume that you have a DataStream with Entities...
+@foreach(var postEntity in Data[&quot;Default&quot;])
+{
+    var postDyn = AsDynamic(postEntity);
+    // postEntity is a IEntity
+    // postDyn is a DynamicEntity
+}
+
+// but this is easier - convert the whole list
+@foreach(var post in AsList(Data[&quot;Default&quot;]))
+{
+    var postEnt = AsEntity(post);
+    // do something with the @post here, it&#39;s a DynamicEntity
+    // ...or with postEnt, it&#39;s an IEntity
+}
+</code></pre><h2 id="read-also">Read also</h2>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
 
@@ -278,12 +300,10 @@ IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
 
   We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
 
-</div><p>In case you feel like you really need to know more about the real Entity objects, check out these things:</p>
-<ol>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> API</li>
-<li><a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a></li>
-<li><a class="xref" href="data-object-types.html">Data Object Types</a></li>
-</ol>
+</div><ul>
+<li><a class="xref" href="dynamic-entity.html">Dynamic Entity Objects</a></li>
+<li><a class="xref" href="entity.html">Entity Objects</a></li>
+</ul>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 01.00</li>
@@ -298,7 +318,7 @@ IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-data/entity.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-data/data-object-types.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

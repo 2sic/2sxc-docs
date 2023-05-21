@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Entity Objects | 2sxc 16 / EAV 16 </title>
+    <title>Dynamic Entity Html Method new v16.01 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Entity Objects | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Dynamic Entity Html Method new v16.01 | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,7 +114,7 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.Entity">
+            <article class="content wrap" id="_content" data-uid="NetCode.DynamicData.DynamicEntityHtml">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
     <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -237,58 +237,103 @@
   </div>
 </div><style>.context-box-summary .data-all { visibility: visible; } </style>
 
-<h1 id="entity-objects">Entity Objects</h1>
-<p>All content-items in the <strong>EAV</strong> database of 2sxc are internally handled as <code>Entity</code> objects with the interface <code>IEntity</code>.
-When using content-items in Razor-Templates and WebAPIs you usually don&#39;t care about this, as you will use it as a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.</p>
-<p>But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it&#39;s null, or an empty string.
-In this case you&#39;ll need to look at the internals, the <code>IEntity</code>.</p>
-<p>To learn more about the differences, check out <a class="xref" href="data-object-types.html">DynamicEntity vs Entity</a></p>
-<h2 id="using-the-ientity-interface">Using the IEntity Interface</h2>
-<p>Just a short piece of code to show how it would work (but not usually recommended).</p>
-<pre><code class="lang-cs">// This example shows how to get the link as stored in the data 
-// without converting page:74 to the real link
-var languagePreference = [&quot;de&quot;, &quot;en&quot;];
-var autoResolveLinks = false;
-var rawLink = AsEntity(Content).GetBestValue(&quot;Link&quot;, languagePreference, autoResolveLinks);
-
-// Hard-core accessing the internal data structure
-IEntity entity = AsEntity(Content);
-Dictionary&lt;string, IAttribute&gt; attribs = entity.Attributes;
-IAttribute titleMultiLanguage = attribs[&quot;Title&quot;];
-string attType = titleMultiLanguage.Type;
-IEnumerable&lt;IValue&gt; titleVals = titleMultiLanguage.Values;
-IValue firstTitle = titleVals.First();
-string firstString = firstTitle.ToString();
-IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
-//etc.
-</code></pre><h2 id="when-would-you-need-to-work-with-entity-objects">When would You need to work with Entity objects</h2>
-<p>For Razor and WebAPI these are edge cases, but they are real:</p>
+<h1 id="dynamic-entity-html-method-new-v1601">Dynamic Entity Html Method <em>new v16.01</em></h1>
+<p>The <code>Html</code> method is a new feature in 2sxc 16.01 which allows you to render a property/field as HTML.
+The main purpose is to allow you to render a rich-text field as HTML, but it can also be used to render other fields.</p>
+<p>Simple example assuming a blog-post with a <code>Body</code> field:</p>
+<pre><code class="lang-razor">@post.Html(&quot;Body&quot;)
+</code></pre><div class="IMPORTANT"><h5>Important</h5><p>WIP - this is still in development and the features are not complete.</p>
+</div>
+<h2 id="behavior--features-of-the-html-method">Behavior / Features of the Html Method</h2>
 <ol>
-<li>The DynamicEntity will automatically resolve links like <code>page:72</code> and give you <code>http://...</code>. In rare cases you may need to actually get <code>page:72</code> and for this you need to convert back to Entity. </li>
-<li>If you want to explicitly figure out what languages have been translated on a value</li>
-<li>To find out more about the underlying Content-Type (like to list the fields)</li>
-<li>If the entity is Metadata and you want to know what it&#39;s assigned to</li>
-<li>If the entity has Metadata and you want to get that</li>
+<li>Return an <code>IHtmlTag</code> object which can be rendered as HTML directly</li>
+<li>Wrap the value in a <code>&lt;div&gt;</code> tag by default (but you can change this)</li>
+<li>Sometimes automatically add an edit-toolbar for this specific field</li>
+<li>Automatically do some optimizations on certain field types, such as <code>string-wysiwyg</code></li>
 </ol>
-<h2 id="read-also">Read also</h2>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
-  <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><p>In case you feel like you really need to know more about the real Entity objects, check out these things:</p>
+<h3 id="default-behavior">Default Behavior</h3>
+<p>By default it will just do this</p>
 <ol>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> API</li>
-<li><a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a></li>
-<li><a class="xref" href="data-object-types.html">Data Object Types</a></li>
+<li>Wrap in a <code>&lt;div&gt;</code> tag</li>
+<li>Output the value</li>
 </ol>
+<p>So by default it will not add a toolbar, and it will not do any special processing.</p>
+<h3 id="behavior-on-rich-string-wysiwyg-fields">Behavior on Rich, string-wysiwyg fields</h3>
+<p>If the field is a <code>string-wysiwyg</code> field which has been configured to be of the new <code>Rich</code> type, it will automatically do the following:</p>
+<ol>
+<li>Wrap in a <code>&lt;div&gt;</code> tag</li>
+<li>Add some helper classes to the <code>&lt;div&gt;</code> tag to ensure proper styling</li>
+<li>Add a toolbar to edit the value</li>
+<li>Change all the images in the wysiwyg to be responsive, lazy-loaded and multiple resolutions</li>
+</ol>
+<div class="TIP"><h5>Tip</h5><p>In future, other field types will also receive special treatment,
+so for now, you should only use this on fields where you expect the special treatment.</p>
+</div>
+<h2 id="container">Container</h2>
+<p>By default, it will always add a <code>div</code> tag around the value.
+This is to ensure that the contents is properly styled and to allow adding a toolbar.
+To change this, you can specify the <code>container</code> parameter to be one of the following:</p>
+<ol>
+<li><code>null</code> - default, the default <code>div</code> container will be added</li>
+<li><code>&quot;&quot;</code> - empty string, no container will be added</li>
+<li><code>&quot;tagname&quot;</code> - any tag name like <code>p</code>, <code>span</code>, <code>h1</code> etc. will be added</li>
+<li><code>IHtmlTag</code> - any <code>IHtmlTag</code> object will be added, usually created using <code>Kit.HtmlTags.TagName()</code></li>
+</ol>
+<p>Examples:</p>
+<pre><code class="lang-razor">@* default, will wrap in a div *@
+@post.Html(&quot;Body&quot;)
+@post.Html(&quot;Body&quot;, container: null)
+
+@* don&#39;t wrap in any container *@
+@post.Html(&quot;Body&quot;, container: &quot;&quot;)
+
+@* will warp in a &lt;p&gt; or &lt;h1&gt; tag *@
+@post.Html(&quot;Body&quot;, container: &quot;p&quot;)
+@post.Html(&quot;Body&quot;, container: &quot;h1&quot;)
+
+@* will warp in a &lt;div class=&#39;my-class&#39;&gt; tag *@
+@post.Html(&quot;Body&quot;, container: Kit.HtmlTags.Div().Classes(&quot;my-class&quot;))
+</code></pre><h2 id="toolbar">Toolbar</h2>
+<p>By default, it will not add a toolbar, unless it&#39;s a <code>string-wysiwyg</code> field.
+To change this, you can specify the <code>toolbar</code> parameter to be one of the following:</p>
+<ol>
+<li><code>null</code> - default, the default behavior will apply</li>
+<li><code>false</code> - enforce no toolbar</li>
+<li><code>true</code> - enforce a toolbar to edit just this field</li>
+</ol>
+<p>For any other custom behavior, use <code>toolbar: false</code> and add your own toolbar to the container.</p>
+<p>Examples:</p>
+<pre><code class="lang-razor">@* default, normal fields will not have a toolbar *@
+@post.Html(&quot;Title&quot;)
+@post.Html(&quot;Title&quot;, toolbar: false)
+
+@* normal fields can enable the field-toolbar *@
+@post.Html(&quot;Title&quot;, toolbar: true)
+
+@* string-wysiwyg fields will have a toolbar *@
+@post.Html(&quot;Body&quot;)
+@post.Html(&quot;Body&quot;, toolbar: true)
+
+@* string-wysiwyg fields can disable the toolbar *@
+@post.Html(&quot;Body&quot;, toolbar: false)
+</code></pre><h2 id="image-resize-settings">Image Resize Settings</h2>
+<p>If the field is a <code>string-wysiwyg</code> field which has been configured to be of the new <code>Rich</code> type, it will automatically replace all images with a responsive, lazy-loaded version.</p>
+<p>To do this, it uses the <a class="xref" href="../../basics/configuration/settings/images/index.html">resize configuration</a> called <code>Wysiwyg</code>.
+This is different from <code>Content</code> as it doesn&#39;t enforce a specific height.</p>
+<p>To change this, you can do various things:</p>
+<ol>
+<li>Reconfigure the <code>Wysiwyg</code> image settings on the App, Site or entire System</li>
+<li>Specify another word such as <code>Content</code> in the <code>imageSettings</code> parameter</li>
+<li>Specify another configuration object in the <code>imageSettings</code> parameter</li>
+</ol>
+<h2 id="debug">Debug</h2>
+<p>Especially in the case of <code>string-wysiwyg</code> fields, it can be very helpful to see what&#39;s going on.
+To make this possible, there is a parameter <code>debug</code> which can be set to true.</p>
+<p>👉🏽 Read more in the <a class="xref" href="../../basics/data/fields/string-wysiwyg/rich.html">Rich WYSIWYG docs</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 01.00</li>
-<li>Multi-Language since 2sxc 02.00</li>
-<li>Added <code>Value</code> and <code>Value&lt;T&gt;</code> as well as <code>Parents()</code> and <code>Children(...)</code> in 09.42. Note that Value does not do the same thing as GetBestValue.</li>
+<li>Introduced in 2sxc 16.01 for the new Rich-Text field type</li>
 </ol>
 </article>
           </div>
@@ -298,7 +343,7 @@ IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-data/entity.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-data/dynamic-entity-html.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

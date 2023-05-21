@@ -4,7 +4,7 @@ uid: Basics.Configuration.Settings.Images.Index
 
 <img src="~/assets/features/settings-stack.svg" class="feature">
 
-# Image Resize Settings in 2sxc 
+# Image Resize Settings in 2sxc
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
@@ -19,8 +19,8 @@ Settings seen here start with `System.Images.`...
 
 ## Predefined Image Settings - Overview
 
-These are the names of the predefined configurations. 
-You can always create your own and give them other names (like `Blog`) or override these settings. 
+These are the names of the predefined configurations.
+You can always create your own and give them other names (like `Blog`) or override these settings.
 You can do this at the global, site or app level.
 
 1. `Content` for any kind of images in the normal content of a page
@@ -33,7 +33,7 @@ You can do this at the global, site or app level.
 Each of these settings have the following properties:
 
 1. `Width` determines how wide an image should be - this should always be set, as it's very important for image resizing
-2. `Height` determines how tall an image should be - in most cases this should be empty
+1. `Height` determines how tall an image should be - in most cases this should be empty
 1. `AspectRatio` also determines the `height` of the image, but using a factor of the width - so 2:1 means twice as wide
 1. `ResizeMode` how images are resized on the server - typically `crop` is what is used
 1. `ScaleMode` determines if resizing also happens, if the desired size is larger than the original image (upscaling)
@@ -56,15 +56,15 @@ Each of these settings have the following properties:
 | Images.Content       | AspectRatio          | # `1.618`            | v12.04 | Golden Ratio
 | Images.Content       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
 | Images.Content       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Content       | Advanced             | $ `{...complex...}`  | v13.10 | Sizes to use for SrcSets
+| Images.Content       | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Lightbox**  |                      |                      | v12.04 | *For Lightbox-Images*
 | Images.Lightbox      | Width                | # `2000`             | v12.04 | Full-screen Lightboxes
 | Images.Lightbox      | Height               | # `1500`             | v12.04 | 4:3
 | Images.Lightbox      | Quality              | # `75`               | v12.04 | Good average jpg/png compression
 | Images.Lightbox      | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Lightbox      | ResizeMode           | $ `max`              | v12.04 | Will keep image shape 
+| Images.Lightbox      | ResizeMode           | $ `max`              | v12.04 | Will keep image shape
 | Images.Lightbox      | ScaleMode            | $ `down`             | v12.04 | Only down-scale, never up-scale
-| Images.Lightbox      | Advanced             | $ `{...complex...}`  | v13.10 | Sizes to use for SrcSets
+| Images.Lightbox      | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Screen**    |                      |                      | v12.04 | *For Screen-Size related images like backgrounds*
 | Images.Screen        | Width                | # `2000`             | v12.04 | Full-Content-Width images
 | Images.Screen        | Height               | # `1500`             | v12.04 | 4:3
@@ -72,7 +72,7 @@ Each of these settings have the following properties:
 | Images.Screen        | AspectRatio          | # `1.333`            | v12.04 | 4:3
 | Images.Screen        | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
 | Images.Screen        | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Screen        | Advanced             | $ `{...complex...}`  | v13.10 | Sizes to use for SrcSets
+| Images.Screen        | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Section**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
 | Images.Section       | Width                | # `1600`             | v12.04 | Full-Content-Width images
 | Images.Section       | Height               | # `1200`             | v12.04 | Based on golden ratio
@@ -80,8 +80,15 @@ Each of these settings have the following properties:
 | Images.Section       | AspectRatio          | # `1.333`            | v12.04 | 4:3
 | Images.Section       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
 | Images.Section       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
-| Images.Section       | Advanced             | $ `{...complex...}`  | v13.10 | Sizes to use for SrcSets
-
+| Images.Section       | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
+| **Images.Wysiwyg**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
+| Images.Section       | Width                | # `1400`             | v16.01 | Full-Content-Width images
+| Images.Section       | Height               | ``                   | v16.01 | None, show as-is
+| Images.Section       | Quality              | # `75`               | v16.01 | Stronger jpg/png compression
+| Images.Section       | AspectRatio          | ``                   | v16.01 | None, show as-is
+| Images.Section       | ResizeMode           | $ `max`              | v16.01 | Preserve aspect ratio
+| Images.Section       | ScaleMode            | $ `both`             | v16.01 | Up-scale small images
+| Images.Section       | Advanced             | $ `{complex}`        | v16.01 | Sizes to use for SrcSets
 
 
 ---
@@ -90,3 +97,4 @@ Each of these settings have the following properties:
 
 * Full Settings Stack introduced in v12.04 and includes the here mentioned Image settings
 * Advanced Json configuration with [recipes](xref:Basics.Configuration.Settings.Images.Recipes) added in v13.05
+* _Images.Wysiwyg_ added in v16.01
