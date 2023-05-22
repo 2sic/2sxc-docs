@@ -75,7 +75,7 @@ Examples:
 @post.Html("Body", container: "h1")
 
 @* will warp in a <div class='my-class'> tag *@
-@post.Html("Body", container: Kit.HtmlTags.Div().Classes("my-class"))
+@post.Html("Body", container: Kit.HtmlTags.Div().Class("my-class"))
 ```
 
 ## Toolbar
