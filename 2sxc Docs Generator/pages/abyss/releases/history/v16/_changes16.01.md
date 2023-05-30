@@ -5,7 +5,7 @@ Various bugfixes + some enhancements.
 
 1. ✅ New [rich WYSIWYG experience](xref:Basics.Data.Fields.String-Wysiwyg-Rich)
 1. ✅ Edit-UI can now be opened to only show a few specified fields (feature API not yet public, but used in the new WYSIWYG feature) #3080
-1. ✅ New ITypedEntity and AsTyped(...) API
+1. ✅ New ITypedItem and AsTyped(...) API
 1. ✅ New Data.Content and Data.Header objects
 1. ✅ IDynamicEntity now has methods like `String(...)`, `Int(...)`, `Bool(...)`, `Date(...)`, `Decimal(...)`, `Double(...)`, `Long(...)`, `DateTime(...)`, `Float(...)` to convert values to the desired type. #3089
 1. ✅ Sort-Items UI was enhanced with remove, add, add-existing #3077

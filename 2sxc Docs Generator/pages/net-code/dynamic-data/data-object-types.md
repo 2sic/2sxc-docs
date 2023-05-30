@@ -11,7 +11,7 @@ When coding with 2sxc data, there are three common data object types:
 
 1. **DynamicEntity**
 1. **Entity**
-1. **TypedEntity** (new/WIP v16.0x)
+1. **TypedItem** (new/WIP v16.01)
 
 There are also some typical data objects for working with file/assets (not documented here):
 
@@ -26,7 +26,7 @@ They will automatically pick the right language and do a lot of magic 🧙‍♂
 [Entities](xref:NetCode.DynamicData.Entity) are strongly typed objects for complex work, but getting values is much more difficult.
 You usually don't need this, but it's important that you know this exists.
 
-**TypedEntity** is a new type of object which is still in development.
+[TypedItem](xref:ToSic.Sxc.Data.ITypedItem) is a new type of object which is still in development.
 It's a strongly typed object which is very similar to the DynamicEntity, but has a few advantages.
 It's still in development.
 
