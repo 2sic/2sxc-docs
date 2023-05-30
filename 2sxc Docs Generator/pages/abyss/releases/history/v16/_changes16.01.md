@@ -13,6 +13,8 @@ Various bugfixes + some enhancements.
 1. ✅ DynamicDataSource now shows better errors in Razor on compile issues #3084
 1. ✅ Razor now automatically suggests the `insights` button on the toolbar if there are errors #3085
 1. ✅ Enhancement: Serializing Entities to JSON now skips `empty` fields such as messages or ephemeral fields
+1. ✅ Clean up Formulas code into better SoC @SDV
+1. ✅ Clean up ancient documentation which is probably invalid, but still seen by many :(
 
 Dnn / Evoq
 

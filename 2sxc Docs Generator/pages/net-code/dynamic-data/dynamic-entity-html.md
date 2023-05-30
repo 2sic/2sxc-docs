@@ -5,7 +5,7 @@ uid: NetCode.DynamicData.DynamicEntityHtml
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
-# Dynamic Entity Html Method _new v16.01_
+# DynamicEntity / TypedItem .Html(...) Method _new v16.01_
 
 The `Html` method is a new feature in 2sxc 16.01 which allows you to render a property/field as HTML.
 The main purpose is to allow you to render a rich-text field as HTML, but it can also be used to render other fields.
@@ -15,10 +15,6 @@ Simple example assuming a blog-post with a `Body` field:
 ```razor
 @post.Html("Body")
 ```
-
-> [!IMPORTANT]
-> WIP - this is still in development and the features are not complete.
-
 
 ## Behavior / Features of the Html Method
 
@@ -42,8 +38,9 @@ If the field is a `string-wysiwyg` field which has been configured to be of the 
 
 1. Wrap in a `<div>` tag
 1. Add some helper classes to the `<div>` tag to ensure proper styling
-1. Add a toolbar to edit the value
+1. Add a toolbar to edit the field
 1. Change all the images in the wysiwyg to be responsive, lazy-loaded and multiple resolutions
+1. Automatically process [InnerContent](xref:Basics.Cms.InnerContent.Index) just like the [IRenderService](xref:ToSic.Sxc.Services.IRenderService)
 
 > [!TIP]
 > In future, other field types will also receive special treatment,

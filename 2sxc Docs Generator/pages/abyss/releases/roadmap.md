@@ -11,35 +11,19 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-05-04** (international Star Wars day)
+Last Update: **2023-05-30**
 
-## 2023 Q1 - Released v15.00 - 15.05
+## Currently being developed 2023-Q2
 
-👉🏽 [See all changes v15](xref:Abyss.Releases.History.V15)
-
-
-## May the 4th 2023 - v16.x LTS
-
-👉🏽 [See all changes v15](xref:Abyss.Releases.History.V16)
-
-
-## Priority May / Towel Day 2023
-
-1. ✅ Create Wysiwyg Rich Mode
-    1. ✅ Create `Content.ToHtml()` to auto apply certain aspects
-    1. ✅ Create best practices CSS styling for `wysiwyg` content
-1. Clean up Formulas code into better SoC @SDV
-1. Improve Oqtane Pages DS to also respect settings - @STV
-
-
-## Currently being developed / WIP
-
-1. Slim down Oqtane Client @STV
 1. Rework the UI Selector / DropDown system
     1. to have titles, help, notes, links, and more @SDV
     1. to also have various data sources
     1. dropdown for numbers etc.
-1. Clean up ancient documentation which is probably invalid, but still seen by many :(
+1. Improve Oqtane Pages DS to also respect all known settings - @STV
+1. Finalize Deprecation system @2dm
+1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV
+1. Optimize build of docfx to also better handle js docs @STV
+1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
 
 
 
@@ -55,7 +39,7 @@ Last Update: **2023-05-04** (international Star Wars day)
     1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
 1. ✅ Compress Timeline: Feature to compress the existing history
-1. ⏳ Entity Serialization Improvements
+1. ✅ Entity Serialization Improvements
 1. ⏳ Data Bundles
 1. ⏳ Language editing permissions - improve, test, finalize, document - ca. 3-5d
     1. also allow non-admins to possibly translate resources
