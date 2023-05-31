@@ -1,13 +1,13 @@
 {
   "name": "2sxc-docs",
-  "version": "14.0.0",
+  "version": "16.0.0",
   "description": "",
   "scripts": {
     "// import": "Note: This is not yet working",
     "import": "npm run import-js && npm run import-jsng",
 
     "// import-js": "This is the import that already works. It will get the docs from the sxc-typings project and generate YAML for DocFx",
-    "import-js": "npm run import-js1-pre-clean && npm run import-js2-typedoc && npm run import-js3-docfx",
+    "import-js": "npm run import-js1-pre-clean && npm run import-js2-typedoc && npm run import-js3-docfx && npm run adjust_toc",
     "import-js1-pre-clean": "cd import && delete.cmd \".\\api.js.sxcjs\"",
     "import-js2-typedoc": "cd \"../../2sxc-ui/projects/sxc-typings/\" && typedoc --tsconfig ./tsconfig.typedoc.json --json \"../../../2sxc-docs/2sxc Docs Generator/import/api.js.sxcjs/typedoc.json\"",
     "import-js3-docfx": "type2docfx ./import/api.js.sxcjs/typedoc.json ./import/api.js.sxcjs/docFx",
@@ -15,7 +15,10 @@
     "import-jsng": "npm run import-jsng1-pre-clean && npm run import-jsng2-typedoc && npm run import-jsng3-docfx",
     "import-jsng1-pre-clean": "cd import && delete.cmd \".\\api.js.sxc-angular\"",
     "import-jsng2-typedoc": "cd \"../../2sxc-ui/projects/dnn-sxc-angular\" && typedoc --tsconfig ./tsconfig.typedoc.json --json \"../../../2sxc-docs/2sxc Docs Generator/import/api.js.sxc-angular/typedoc.json\"",
-    "import-jsng3-docfx": "type2docfx ./import/api.js.sxc-angular/typedoc.json ./import/api.js.sxc-angular/docFx"
+    "import-jsng3-docfx": "type2docfx ./import/api.js.sxc-angular/typedoc.json ./import/api.js.sxc-angular/docFx",
+
+    "adjust_toc": "node adjust-toc-namespaces.js",
+    "build_serve": "docfx build --serve --port 8081"
 
   },
   "author": "",
