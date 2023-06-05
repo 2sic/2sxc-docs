@@ -6,4 +6,6 @@ We're documenting it here to ensure you know what happened, in case you still ru
 
 ### Summary
 
-V16 doesn't have breaking changes as of today.
+V16.00 doesn't have breaking changes; 16.02 has some very minor breaking changes
+
+[!include["Breaking Changes"](./_brc16.02.md)]
