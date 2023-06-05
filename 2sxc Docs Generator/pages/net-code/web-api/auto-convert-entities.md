@@ -54,7 +54,7 @@ public dynamic PersonsAuto()
 ## Recommended Reading
 
 * [](xref:Tut.WebApi)
-* [](xref:ToSic.Sxc.WebApi.JsonFormat)
+* [](xref:ToSic.Sxc.WebApi.JsonFormatterAttribute)
 
 ---
 

@@ -38,7 +38,7 @@ Each of these settings have the following properties:
 1. `ResizeMode` how images are resized on the server - typically `crop` is what is used
 1. `ScaleMode` determines if resizing also happens, if the desired size is larger than the original image (upscaling)
 1. `Advanced` a complex JSON configuration used for advanced tuning of resizing and generation of `img` and `picture` tags.
-    It uses the [ImageService](xref:ToSic.Sxc.Services.IImageService).  
+    It uses the [ImageService](xref:ToSic.Sxc.Services.IImageService).
     👉 see [](xref:Basics.Configuration.Settings.Images.Recipes)
 
 > [!NOTE]
@@ -83,15 +83,15 @@ Each of these settings have the following properties:
 | Images.Section       | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Wysiwyg**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
 | Images.Section       | Width                | # `1400`             | v16.01 | Full-Content-Width images
-| Images.Section       | Height               | ``                   | v16.01 | None, show as-is
+| Images.Section       | Height               | ` `                  | v16.01 | None, show as-is
 | Images.Section       | Quality              | # `75`               | v16.01 | Stronger jpg/png compression
-| Images.Section       | AspectRatio          | ``                   | v16.01 | None, show as-is
+| Images.Section       | AspectRatio          | ` `                  | v16.01 | None, show as-is
 | Images.Section       | ResizeMode           | $ `max`              | v16.01 | Preserve aspect ratio
 | Images.Section       | ScaleMode            | $ `both`             | v16.01 | Up-scale small images
 | Images.Section       | Advanced             | $ `{complex}`        | v16.01 | Sizes to use for SrcSets
 
-
----
+<!-- use ` ` instead of `` to avoid Markup failed: Markdown elements in the input are too deeply nested - depth limit exceeded.
+Input is most likely not sensible or is a very large table.-->
 
 ## History
 

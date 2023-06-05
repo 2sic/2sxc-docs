@@ -7,13 +7,14 @@ uid: NetCode.Services.ServiceKits
 # C# ServiceKits (v14)
 
 <div class="context-box-process" width="100%">
-  [!include[](~/pages/basics/stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 
-**ServiceKits** help you get a [Service](xref:NetCode.Services.ServiceKits) with fewer lines of code. 
+**ServiceKits** help you get a [Service](xref:NetCode.Services.ServiceKits) with fewer lines of code.
 
-For example, you may need to call the IPageService Activate. 
+For example, you may need to call the IPageService Activate.
 With the v14 API it looks like this:
 
 ```c#
@@ -39,10 +40,10 @@ They are...
 
 ## Services in the ServiceKit
 
-This will depend on the ServiceKit you will use. 
+This will depend on the ServiceKit you will use.
 
 In v14, the Kit will then always be a [ServiceKit14](xref:ToSic.Sxc.Services.ServiceKit14).
-You can read about the included servicen in those docs. 
+You can read about the included servicen in those docs.
 
 
 [!include["history"](_history.md)]

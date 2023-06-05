@@ -8,7 +8,7 @@ uid: Basics.Data.Index
 <style>.context-box-summary .data-all { visibility: visible; } </style>
 
 
-Data in 2sxc covers various aspects: 
+Data in 2sxc covers various aspects:
 
 1. **Data** as a developers sees it - as tables of items / Entities
 1. [Content](xref:Basics.Content.Index) as an editor sees it - basically bundles of text/image shown on a specific page
@@ -19,7 +19,7 @@ Data in 2sxc covers various aspects:
 
 This kind of data is usually used to:
 
-1. Show in the browser with HTML 
+1. Show in the browser with HTML
 1. Show in the browser in a JS-application or SPA
 1. Edit in the browser
 1. Export / import data
@@ -30,23 +30,24 @@ This kind of data can be used in many ways. Let's start by looking where this fi
 
 
 <div class="context-box2" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box2 .data-data { visibility: visible; } </style>
 </div>
 
 
 > [!TIP]
-> The Edit UIs are automatically generated based on the Content-Type Schema which says what fields each kind of data has. 
+> The Edit UIs are automatically generated based on the Content-Type Schema which says what fields each kind of data has.
 
 ## App Data Model
 
-Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Entities](xref:Basics.Data.Entities.Index) - like this:  
+Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Entities](xref:Basics.Data.Entities.Index) - like this:
 
 <img src="./assets/app-content-type-entity.png" width="100%" class="full-width">
 <br>
 
-* [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has.  
-* [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content.  
+* [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has.
+* [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content.
 
 Let's look at each piece in detail.
 
@@ -76,7 +77,7 @@ Usually a **Content-Type** is part of the App and only available inside that App
 
 [!include["Data"](_shared-entities.md)]
 
-**Entities** are **Dynamic Data Items**. They always belong to a **Content-Type** and have all the fields specified in that _Content-Type_. This makes them very dynamic. 
+**Entities** are **Dynamic Data Items**. They always belong to a **Content-Type** and have all the fields specified in that _Content-Type_. This makes them very dynamic.
 
 * A `Person` has different fields than a `BlogPost`
 * All the **Values** in an **Entity** can also be [multi-language](xref:Basics.Data.MultiLanguage.Index) by default
@@ -88,12 +89,12 @@ Usually a **Content-Type** is part of the App and only available inside that App
 
 [!include["Data"](_shared-assets.md)]
 
-Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_. 
+Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_.
 
-* **Private Assets**  
-    By default, assets uploaded in the UI belong to the **Entity** and to the **Field** they were added to. So the photo `daniel.jpg` belongs to the _Field_ `ProfilePhoto` of the _Entity_ `Person` #5020. 
-* **Shared Assets**  
-    _If_ the editor expects to re-use an asset elsewhere and _if_ the _Content-Type_ configuration allows this, then the asset can also be stored in a shared location. 
+* **Private Assets**
+    By default, assets uploaded in the UI belong to the **Entity** and to the **Field** they were added to. So the photo `daniel.jpg` belongs to the _Field_ `ProfilePhoto` of the _Entity_ `Person` #5020.
+* **Shared Assets**
+    _If_ the editor expects to re-use an asset elsewhere and _if_ the _Content-Type_ configuration allows this, then the asset can also be stored in a shared location.
 
 👉 [](xref:Basics.Content.Assets)
 
@@ -101,7 +102,7 @@ Assets come in 2 Flavors: _Private Assets_ and _Shared Assets_.
 
 [!include["Data"](_shared-adam.md)]
 
-**ADAM** is a subsystem of 2sxc. It's responsible for managing the files and storing them in a way that assigns _Private Assets_ to the _Entities_ and _Fields_ they belong to. 
+**ADAM** is a subsystem of 2sxc. It's responsible for managing the files and storing them in a way that assigns _Private Assets_ to the _Entities_ and _Fields_ they belong to.
 
 👉 [](xref:Basics.Cms.Adam.Index)
 
@@ -123,7 +124,7 @@ External Data is retrieved using one of the following methods:
 1. C# code creating **[DataSource](xref:NetCode.DataSources.Index)** objects to retrieve this data
 1. C# code using standard .net APIs to get / use this data
 
-Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and SPAs. 
+Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and SPAs.
 
 
 ## More Advanced Topics

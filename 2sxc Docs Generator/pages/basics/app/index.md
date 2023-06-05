@@ -6,10 +6,11 @@ uid: Basics.App.Index
 
 An app is a standalone bundle of data and functionality. It contains the green and blue parts of the following diagram + any kind of additional material used to build these parts like  JavaScript frameworks which are bundled in the App:
 
-[!include[](../stack/_shared-full.md)]
+[!include[](~/pages/basics/stack/_shared-full.md)]
+
 <style>
   .context-box-full .todo,
-   { visibility: visible; } 
+   { visibility: visible; }
 </style>
 
 Everything belonging to the App is stored in these locations
@@ -19,27 +20,27 @@ Everything belonging to the App is stored in these locations
 1. The [ADAM](xref:Basics.Cms.Adam.Index) folder contains the Assets for the App items
 
 > [!Important]
-> An App doesn't need all of the parts above. Apps can be really trivial. 
-> 
+> An App doesn't need all of the parts above. Apps can be really trivial.
+>
 > For example they may only contain 1 simple `Hello World` template and no data at all. And they may also contain 100'000 data items and complex list/details templates.
 
 
 ## Apps are Installed per Site
 
-The EAV is multi-site capable and each Site in the platform corresponds to a **Zone** in the EAV. A Site corresponds to a _Portal_ in Dnn or a _Site_ in Oqtane. 
-Each Zone contains at least 1 default app called **Content** and additional Apps as configured. 
+The EAV is multi-site capable and each Site in the platform corresponds to a **Zone** in the EAV. A Site corresponds to a _Portal_ in Dnn or a _Site_ in Oqtane.
+Each Zone contains at least 1 default app called **Content** and additional Apps as configured.
 
 > [!NOTE]
-> The ZoneId is usually different than the Dnn _PortalId_ or the Oqtane _SiteId_, 
+> The ZoneId is usually different than the Dnn _PortalId_ or the Oqtane _SiteId_,
 > so [Dnn has a PortalSetting to connect this](xref:Basics.Cms.ContentBlocks.Dnn) and Oqtane has a matching Setting.
 
 > [!TIP]
-> Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times. 
- 
+> Apps are installed _per Site_. So if your platform has multiple Sites, then each site can have different apps, or the same app may be installed multiple times.
+
 
 ## Types of Apps
 
-Your App can be anything you want it to be. The following types are more to give you a sense of how Apps can be used, but these types are not clearly defined. An App can also be many of these at the same time. 
+Your App can be anything you want it to be. The following types are more to give you a sense of how Apps can be used, but these types are not clearly defined. An App can also be many of these at the same time.
 
 
 ### Data Focused Apps
@@ -104,4 +105,3 @@ You may want to learn more about
 1. [The App Folder Structure](xref:Basics.App.FolderStructure)
 1. [App Icons](xref:Basics.App.Icons)
 1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
-

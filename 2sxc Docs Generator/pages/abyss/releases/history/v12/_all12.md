@@ -29,9 +29,9 @@ No relevant changes
 1. Introduced [](xref:ToSic.Sxc.Services.ISecureDataService) to use encrypted settings
 1. Introduced [](xref:ToSic.Sxc.Services.IRenderService) for inner-content rendering (Oqtane code must use this)
 1. Published [](xref:ToSic.Eav.DataFormats.EavLight) to better document simple eav data
-1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.  
+1. Published [](xref:ToSic.Eav.DataFormats.EavLight.IConvertToEavLight) as the new standard way to prepare entities for WebAPI serialization.
    This is meant to replace previous code using objects such as `EntitiesToDictionary` or `DataToDictionary` which are now marked as obsolete.
-1. New Razor12, Api12 and Code12 Classes now don't support old, obsolete APIs anymore 
+1. New Razor12, Api12 and Code12 Classes now don't support old, obsolete APIs anymore
 1. Link.Image now also accepts `parameters` as a parameter
 1. Link.Image and Link.To always create safe urls now (spaces are encoded etc.)
 1. Link.To and Link.Image now have a parameter `type` which can be `"full"` to ensure domains are always added to links (for use in APIs generating RSS etc.)

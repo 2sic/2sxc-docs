@@ -45,5 +45,4 @@ Once we're really sure that certain parts are very final, we'll publish the API 
 
 ### Programming with DataSources and VisualQuery
 
-All the DataSources are based on [](xref:ToSic.Eav.DataSource.IDataSource) and most of them are also [](xref:ToSic.Eav.DataSource.IDataSourceTarget)s . You can find most of them in [](xref:ToSic.Eav.DataSources) .
-
+All the DataSources are based on [](xref:ToSic.Eav.DataSource.IDataSource)<!-- and most of them are also [](xref:ToSic.Eav.DataSource.IDataSourceTarget)s -->. You can find most of them in [](xref:ToSic.Eav.DataSources) .

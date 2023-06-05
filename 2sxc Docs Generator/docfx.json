@@ -4,31 +4,38 @@
       "src": [
         {
           "files": [
+            // docfx v2.59.4 is required for vs2022 17.3+ msbuild to work with *.csproj
             "2sxc/**.csproj",
             "eav-server/**.csproj"
+            // github multirepo 'View source' not working with *.dll
+            // "2sxc/Src/Dnn/ToSic.Sxc.Dnn/bin/Release/ToSic.Sxc*.dll",
+            // "eav-server/ToSic.Eav/bin/Release/net6.0/*.dll"
           ],
           "cwd": "../..",
           "exclude": [
             "**/obj/**",
             "**/bin/**",
             "_site/**",
-            "**/*Testing/**",
+            "**/*Testing*/**",
             "**/*.Tests/**",
             "**/XOLD-*/**",
             "**Mvc/Website/**",
             "**/ToSic.Sxc.Mvc/**",
-            "Comment about the next oqtane line - we would rather just exclude oqtane.framework but ATM it results in errors because of diff .net versions", 
+            "Comment about the next oqtane line - we would rather just exclude oqtane.framework but ATM it results in errors because of diff .net versions",
             "**/Oqtane/**",
-            "**/ToSic.Sxc.Razor.Engine/**",
+            "**/ToSic.Sxc.Razor/**",
             "**/Integration/**"
           ]
         }
       ],
       "dest": "obj/api/dot-net/",
+      "disableGitFeatures": false, // Disable fetching Git related information for articles. By default it is enabled and may have side effect on performance when the repo is large.
       "filter": "filterConfig.yml",
-      "force": true,
+      "force": true, // Re-build all the documentation
       "properties": {
-        "TargetFramework": "net472"
+        "TargetFramework": "net472", // must be net472 because of DNN and 2sxc/eav *.csproj configurations
+        "GenerateDocumentationFile": true,
+        "ProduceReferenceAssembly": true
       }
     }
   ],
@@ -156,13 +163,16 @@
       "material/material",
       "templates/2sxc"
     ],
+    "cleanupCacheHistory": true, // If set to true, docfx create a new intermediate folder for cache files, historical cache data will be cleaned up.
+    "disableGitFeatures": false, // Disable fetching Git related information for articles. By default it is enabled and may have side effect on performance when the repo is large.
     "globalMetadata": {
       "_appTitle": "2sxc 16 / EAV 16",
-
       "_appLogoPath": "assets/logos/vcurrent/50.png",
       "_appFaviconPath": "assets/favicon.ico",
       "_enableNewTab": true,
-      "_enableSearch": true
+      "_enableSearch": true,
+      "_gitUrlPattern": "github",
+      "_disableContribution": false // Disabling the "View Source" and "Improve this Doc" buttons.
     }
   }
 }

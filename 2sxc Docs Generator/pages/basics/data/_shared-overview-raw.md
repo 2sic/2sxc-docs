@@ -1,1 +1,1 @@
-<img src="./assets/app-data.png" class="full-width">
+<img src="~/pages/basics/data/assets/app-data.png" class="full-width">

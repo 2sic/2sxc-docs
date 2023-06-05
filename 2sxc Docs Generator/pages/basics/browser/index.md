@@ -7,7 +7,7 @@ uid: Basics.Browser.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .browser-all { visibility: visible; } </style>
 
-In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work. 
+In 2sxc most things _just work_. These docs give you a deep understanding of how they work so you can figure out really cool stuff. But don't be intimidated - by default things just magically work.
 
 This is what web-systems do from a bird's-eyes perspective. On the top you see what happens in the browser (the purple boxes).
 
@@ -23,10 +23,11 @@ This document will go into more detail what happens at that level. To understand
 
 ## Standard CSS and JS Libraries and Frameworks
 
-A key goal of 2sxc is to stay out of the way and let you do things using your favorite CSS and JS Frameworks. So the frameworks-section is simply here for you to see that you can use any standard framework or library you want. 
+A key goal of 2sxc is to stay out of the way and let you do things using your favorite CSS and JS Frameworks. So the frameworks-section is simply here for you to see that you can use any standard framework or library you want.
 
 <div class="context-box2" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box2 .frameworks-browser { visibility: visible; } </style>
 </div>
 
@@ -37,11 +38,12 @@ Basically you can simply add these frameworks to your Razor-template files as `<
 
 ## Custom App HTML is created by the Server-Templates
 
-The HTML you need is 100% customizable and comes from the server using your [templates](xref:Basics.App.Templates). 
-Usually you'll use Razor templates to generate this. 
+The HTML you need is 100% customizable and comes from the server using your [templates](xref:Basics.App.Templates).
+Usually you'll use Razor templates to generate this.
 
 <div class="context-box3" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box3 .show-html { visibility: visible; } </style>
 </div>
 
@@ -50,10 +52,11 @@ Usually you'll use Razor templates to generate this.
 
 ## Custom CSS and JS Assets
 
-JS and CSS files are stored in your app folder and included in your output. 
+JS and CSS files are stored in your app folder and included in your output.
 
 <div class="context-box4" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box4 .show-js { visibility: visible; } </style>
 </div>
 
@@ -64,10 +67,11 @@ JS and CSS files are stored in your app folder and included in your output.
 
 ## Create Awesome SPAs (Single-Page-Applications)
 
-2sxc is great and bundling SPA JS Applications built using Angular, React, Vue or whatever. 
+2sxc is great and bundling SPA JS Applications built using Angular, React, Vue or whatever.
 
 <div class="context-box5" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box5 .spa-all { visibility: visible; } </style>
 </div>
 
@@ -81,7 +85,8 @@ JS and CSS files are stored in your app folder and included in your output.
 By default 2sxc creates hover toolbars to add modules and on most items which only a _Content Editor_ can see. These let them edit the content or data. It's made possible thanks to the server helper [@Edit.TagToolbar](xref:NetCode.Razor.Edit.Toolbar) in your templates.
 
 <div class="context-box6" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box6 .edit-auto { visibility: visible; } </style>
 </div>
 
@@ -93,7 +98,8 @@ By default 2sxc creates hover toolbars to add modules and on most items which on
 The edit experience can be customized to a very large extent:
 
 <div class="context-box-edit-js" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-edit-js .edit-custom { visibility: visible; } </style>
 </div>
 
@@ -102,10 +108,11 @@ The edit experience can be customized to a very large extent:
 
 ## Edit Form
 
-The edit form is generated automatically from the Content-Type information (Schema) and the template configuration. 
+The edit form is generated automatically from the Content-Type information (Schema) and the template configuration.
 
 <div class="context-box-edit-form" width="100%">
-  [!include[](../stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-edit-form .browser-edit-ui { visibility: visible; } </style>
 </div>
 

@@ -37,8 +37,8 @@ private IEnumerable<IEntity> GetEntities()
 
   var source = TryGetIn();
   if (source is null) return Error.TryGetInFailed(this);
-  
-  var results = ...; 
+
+  var results = ...;
 
   return results;
 }
@@ -46,7 +46,7 @@ private IEnumerable<IEntity> GetEntities()
 
 ## Create Custom Error Messages
 
-If you need an error which is not a predefined type, you can create your own using [Error.Create](xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create*):
+If you need an error which is not a predefined type, you can create your own using [Error.Create](xref:ToSic.Eav.DataSources.DataSourceErrorHelper.Create):
 
 ---
 

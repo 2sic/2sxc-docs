@@ -1,6 +1,6 @@
 
 <div style="background: #A1002B44; overflow: auto">
-  <img src="./assets/koi.svg" width="200px"  style="padding-right: 20px; float: left">
+  <img src="~/shared/tutorials/assets/koi.svg" width="200px"  style="padding-right: 20px; float: left">
 
   <h2> Discover More in the Koi Tutorials </h2>
 

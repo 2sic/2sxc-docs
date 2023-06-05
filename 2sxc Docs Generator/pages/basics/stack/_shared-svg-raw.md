@@ -1,6 +1,6 @@
 <svg version="1.1" baseProfile="full" viewBox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="./assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"/>
-  
+  <image href="~/pages/basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"/>
+
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"/>
   <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"/>
@@ -75,7 +75,7 @@
   <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"/>
   <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"/>
   <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"/>
-  
+
   <!-- Frameworks -->
   <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"/>
   <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"/>
@@ -90,7 +90,7 @@
   <!-- Interact parts -->
   <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"/>
   <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"/>
-  
+
   <!-- Edit parts -->
   <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"/>
   <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"/>
@@ -98,11 +98,11 @@
   <!-- Edit UI parts -->
   <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"/>
   <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"/>
-  
+
   <!-- SPA parts -->
   <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"/>
   <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"/>
-  
+
 
   <!-- Custom highlight boxes - can be controlled by in-page CSS -->
   <rect class="svg-highlight highlight1"/>

@@ -105,7 +105,7 @@ var authors = allAuthors.List;
 👉 Also read [](xref:NetCode.DataSources.Use.DataSourceParameters)
 
 > [!TIP]
-> 2sxc 16 uses a new [Kit.Data.GetSource(...)](xref:ToSic.Sxc.Service.IDataService) to get DataSources.
+> 2sxc 16 uses a new [Kit.Data.GetSource(...)](xref:ToSic.Sxc.Services.IDataService) to get DataSources.
 > Older code used `CreateSource(...)` which is still available, but deprecated.
 > The new method is more powerful and we'll slowly migrate to that API only
 

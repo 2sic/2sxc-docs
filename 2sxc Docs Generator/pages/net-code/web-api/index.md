@@ -7,7 +7,8 @@ uid: NetCode.WebApi.Index
 You can easily create custom C# WebAPIs, and then access them from JavaScript or anywhere. What these endpoints do is completely up to you.
 
 <div class="context-box-process" width="100%">
-  [!include[](~/pages/basics/stack/_shared-all.md)]
+
+[!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box-process .process-web-api { visibility: visible; } </style>
 </div>
 
@@ -61,13 +62,13 @@ The custom controller can be called with JavaScript like this:
 @inherits Custom.Hybrid.Razor14
 @{
   // Tell the page that we need the 2sxc Js APIs
-  Kit.Page.Activate("2sxc.JsCore"); 
+  Kit.Page.Activate("2sxc.JsCore");
 }
 
 <!-- the button which loads everything -->
 <button type="button" class="btn btn-primary" onclick="getPersons(this)">
   Get Persons Custom
-</button> 
+</button>
 
 
 <script>
@@ -94,21 +95,21 @@ First and foremost, these API controllers let you run your code as you wish. But
 
 ### Fast Development without ever Restarting
 
-1. 2sxc Web API Controllers are stored in your app as pure source code, and you can edit them at runtime. 
-1. They will be compiled on the fly and don't require Dnn to restart. 
+1. 2sxc Web API Controllers are stored in your app as pure source code, and you can edit them at runtime.
+1. They will be compiled on the fly and don't require Dnn to restart.
 1. The built in source-code editor in 2sxc lets you make simple changes through your browser.
 1. And if you want more power then just open it in Visual Studio or Visual Studio Code.
 
 ### Simple Distribution and Tweaking
 
-2sxc Apps can easily be exported and imported to other solutions. 
-What's also typical is that new copies of the App may need some modifications to better suit the new needs. 
-Since the C# files are included as source you can easily adapt the controllers to your needs. 
+2sxc Apps can easily be exported and imported to other solutions.
+What's also typical is that new copies of the App may need some modifications to better suit the new needs.
+Since the C# files are included as source you can easily adapt the controllers to your needs.
 
 ### All 2sxc Objects Initialized
 
-Much of the productivity with 2sxc comes with the fact that so much is already done. 
-When you create custom 2sxc Web APIs you automatically get everything like `App` and `Data` objects prepared for the context your code is running in. 
+Much of the productivity with 2sxc comes with the fact that so much is already done.
+When you create custom 2sxc Web APIs you automatically get everything like `App` and `Data` objects prepared for the context your code is running in.
 
 
 
@@ -132,4 +133,3 @@ When you create custom 2sxc Web APIs you automatically get everything like `App`
 
 1. Introduced in 2sxc 06.05
 1. Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)
-

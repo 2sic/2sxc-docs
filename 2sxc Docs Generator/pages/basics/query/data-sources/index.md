@@ -23,44 +23,58 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[App](xref:ToSic.Eav.DataSources.App)</td>
+    <td>
+
+[App](xref:ToSic.Eav.DataSources.App)</td>
     <td>Get Data</td>
     <td>Provides each content-type on the out-stream </td>
   </tr>
 
   <tr>
-    <td>[AppRoot](xref:ToSic.Eav.DataSources.AppRoot)</td>
+    <td>
+
+[AppRoot](xref:ToSic.Eav.DataSources.AppRoot)</td>
     <td>Get Data</td>
     <td>This is the root cache node per App</td>
   </tr>
 
   <tr>
-    <td>[AttributeFilter](xref:ToSic.Eav.DataSources.AttributeFilter)</td>
+    <td>
+
+[AttributeFilter](xref:ToSic.Eav.DataSources.AttributeFilter)</td>
     <td>Modify</td>
     <td>Removes properties/attributes.</td>
   </tr>
 
   <tr>
-    <td>[AttributeRename](xref:ToSic.Eav.DataSources.AttributeRename)</td>
+    <td>
+
+[AttributeRename](xref:ToSic.Eav.DataSources.AttributeRename)</td>
     <td>Modify</td>
     <td>Renames properties/attributes.</td>
   </tr>
 
   <tr>
-    <td>[CacheAllStreams](xref:ToSic.Eav.DataSources.Caching.CacheAllStreams)</td>
+    <td>
+
+[CacheAllStreams](xref:ToSic.Eav.DataSources.Caching.CacheAllStreams)</td>
     <td>Caching</td>
     <td>Cache all streams passing through</td>
   </tr>
 
   <tr>
-    <td>[Children](xref:ToSic.Eav.DataSources.Children)</td>
+    <td>
+
+[Children](xref:ToSic.Eav.DataSources.Children)</td>
     <td>Relationships</td>
     <td>Get all related child entities</td>
     <td>v12.10</td>
   </tr>
 
   <tr>
-    <td>[CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock)</td>
+    <td>
+
+[CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock)</td>
     <td>Get Data</td>
     <td>
       <details>
@@ -72,99 +86,129 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[Csv](xref:ToSic.Eav.DataSources.Csv)</td>
+    <td>
+
+[Csv](xref:ToSic.Eav.DataSources.Csv)</td>
     <td>Get Data</td>
     <td>Get data from a CSV-file</td>
   </tr>
 
 
   <tr>
-    <td>[DataSourceBase](xref:ToSic.Eav.DataSources.DataSource)</td>
+    <td>
+
+[DataSourceBase](xref:ToSic.Eav.DataSources.DataSource)</td>
     <td>(base)</td>
     <td>The base class for all DataSources</td>
   </tr>
 
   <tr>
-    <td>[DataTable](xref:ToSic.Eav.DataSources.DataTable)</td>
+    <td>
+
+[DataTable](xref:ToSic.Eav.DataSources.DataTable)</td>
     <td>Get Data</td>
     <td>Base class for coding using .net Tables</td>
   </tr>
 
   <tr>
-    <td>[EntityIdFilter](xref:ToSic.Eav.DataSources.EntityIdFilter)</td>
+    <td>
+
+[EntityIdFilter](xref:ToSic.Eav.DataSources.EntityIdFilter)</td>
     <td>Filter</td>
     <td>Get one or more items with specific Ids</td>
   </tr>
 
   <tr>
-    <td>[EntityTypeFilter](xref:ToSic.Eav.DataSources.EntityTypeFilter) </td>
+    <td>
+
+[EntityTypeFilter](xref:ToSic.Eav.DataSources.EntityTypeFilter) </td>
     <td>Filter</td>
     <td>Get items of a specific content-type</td>
   </tr>
 
   <tr>
-    <td>[Error](xref:ToSic.Eav.DataSources.Error) </td>
+    <td>
+
+[Error](xref:ToSic.Eav.DataSources.Error) </td>
     <td>(internal)</td>
     <td>Generate an error for [testing VisualQuery debug](xref:Basics.Query.Debug.Index)</td>
   </tr>
 
   <tr>
-    <td>[CustomDataSource](xref:ToSic.Eav.DataSource.CustomDataSource)</td>
+    <td>
+
+[CustomDataSource](xref:ToSic.Eav.DataSource.CustomDataSource)</td>
     <td>(base)</td>
     <td>Base Class for custom data DataSources</td>
   </tr>
-  
+
 
   <tr>
-    <td>[ItemFilterDuplicates](xref:ToSic.Eav.DataSources.ItemFilterDuplicates)</td>
+    <td>
+
+[ItemFilterDuplicates](xref:ToSic.Eav.DataSources.ItemFilterDuplicates)</td>
     <td>Logic</td>
     <td>Find and remove OR retrieve duplicate items</td>
   </tr>
 
   <tr>
-    <td>[LanguageModeler](xref:ToSic.Eav.DataSources.LanguageModeler)</td>
+    <td>
+
+[LanguageModeler](xref:ToSic.Eav.DataSources.LanguageModeler)</td>
     <td>Modify</td>
     <td>Restructure imported data to be multi-language</td>
     <td>v11.20</td>
   </tr>
-  
-  
+
+
 
 
   <tr>
-    <td>[OwnerFilter](xref:ToSic.Eav.DataSources.OwnerFilter)</td>
+    <td>
+
+[OwnerFilter](xref:ToSic.Eav.DataSources.OwnerFilter)</td>
     <td>Filter</td>
     <td>Get items created by specific user</td>
   </tr>
 
   <tr>
-    <td>[Pages](xref:ToSic.Sxc.DataSources.Pages)</td>
+    <td>
+
+[Pages](xref:ToSic.Sxc.DataSources.Pages)</td>
     <td>CMS Data</td>
     <td>All the pages of the current site</td>
     <td>v15</td>
   </tr>
 
   <tr>
-    <td>[Paging](xref:ToSic.Eav.DataSources.Paging)</td>
+    <td>
+
+[Paging](xref:ToSic.Eav.DataSources.Paging)</td>
     <td>Logic</td>
     <td>Page through items</td>
   </tr>
 
   <tr>
-    <td>[Parents](xref:ToSic.Eav.DataSources.Parents)</td>
+    <td>
+
+[Parents](xref:ToSic.Eav.DataSources.Parents)</td>
     <td>Relationships</td>
     <td>Get all related parent entities</td>
     <td>v12.10</td>
   </tr>
 
   <tr>
-    <td>[PassThrough](xref:ToSic.Eav.DataSources.PassThrough)</td>
+    <td>
+
+[PassThrough](xref:ToSic.Eav.DataSources.PassThrough)</td>
     <td>(internal)</td>
     <td>Do-Nothing DataSource mainly for testing</td>
   </tr>
 
   <tr>
-    <td>[PublishingFilter](xref:ToSic.Eav.DataSources.PublishingFilter)</td>
+    <td>
+
+[PublishingFilter](xref:ToSic.Eav.DataSources.PublishingFilter)</td>
     <td>Filter</td>
     <td>
       <details>
@@ -180,32 +224,42 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[Query](xref:ToSic.Eav.DataSources.Queries.Query)</td>
+    <td>
+
+[Query](xref:ToSic.Eav.DataSources.Queries.Query)</td>
     <td>(internal)</td>
     <td>Internal system to run [Queries](xref:Basics.Query.Index)</td>
   </tr>
 
   <tr>
-    <td>[QueryRun](xref:ToSic.Eav.DataSources.QueryRun)</td>
+    <td>
+
+[QueryRun](xref:ToSic.Eav.DataSources.QueryRun)</td>
     <td>Sub-Query</td>
     <td>Run another query and use results</td>
   </tr>
 
-  <tr >
-    <td>[RelationshipFilter](xref:ToSic.Eav.DataSources.RelationshipFilter)</td>
-    <td >Filter</td>
+  <tr>
+    <td>
+
+[RelationshipFilter](xref:ToSic.Eav.DataSources.RelationshipFilter)</td>
+    <td>Filter</td>
     <td>Filter items with a specific relationship </td>
   </tr>
 
 
   <tr>
-    <td>[Serialization Configuration](xref:ToSic.Eav.DataSources.Serialization)</a></td>
+    <td>
+
+[Serialization Configuration](xref:ToSic.Eav.DataSources.Serialization)</a></td>
     <td>special</td>
     <td>Control created JSON content for security and optimization</td>
   </tr>
 
   <tr>
-    <td>[Sites](xref:ToSic.Sxc.DataSources.Sites)</td>
+    <td>
+
+[Sites](xref:ToSic.Sxc.DataSources.Sites)</td>
     <td>CMS Data</td>
     <td>All the sites of the current system</td>
     <td>v15</td>
@@ -213,13 +267,17 @@ These are all the data sources which are either provided in the default installa
 
 
   <tr>
-    <td>[Shuffle](xref:ToSic.Eav.DataSources.Shuffle)</td>
+    <td>
+
+[Shuffle](xref:ToSic.Eav.DataSources.Shuffle)</td>
     <td>Logic</td>
     <td>Shuffle/randomize item order</td>
   </tr>
 
   <tr>
-    <td>[Sql](xref:ToSic.Eav.DataSources.Sql)</td>
+    <td>
+
+[Sql](xref:ToSic.Eav.DataSources.Sql)</td>
     <td>Get Data</td>
     <td>
       <details>
@@ -232,7 +290,9 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[StreamFallback](xref:ToSic.Eav.DataSources.StreamFallback)</td>
+    <td>
+
+[StreamFallback](xref:ToSic.Eav.DataSources.StreamFallback)</td>
     <td>Logic</td>
     <td>
       <details>
@@ -246,13 +306,17 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge)</td>
+    <td>
+
+[StreamMerge](xref:ToSic.Eav.DataSources.StreamMerge)</td>
     <td>Logic</td>
     <td>Merge multiple streams into one</td>
   </tr>
 
   <tr>
-    <td>[StreamPick](xref:ToSic.Eav.DataSources.StreamPick)</td>
+    <td>
+
+[StreamPick](xref:ToSic.Eav.DataSources.StreamPick)</td>
     <td>Logic</td>
     <td>
       <details>
@@ -264,7 +328,9 @@ These are all the data sources which are either provided in the default installa
   </tr>
 
   <tr>
-    <td>[SystemStack](xref:ToSic.Eav.DataSources.Sys.SystemStack)</td>
+    <td>
+
+[SystemStack](xref:ToSic.Eav.DataSources.Sys.SystemStack)</td>
     <td>Get Data</td>
     <td>All the Settings / Resources of the current System and App</td>
     <td>v15</td>
@@ -272,7 +338,9 @@ These are all the data sources which are either provided in the default installa
 
 
   <tr>
-    <td>[TreeModeler](xref:ToSic.Eav.DataSources.TreeModeler)</td>
+    <td>
+
+[TreeModeler](xref:ToSic.Eav.DataSources.TreeModeler)</td>
     <td>Modify</td>
     <td>Restructure imported data to have tree-relationships</td>
     <td>v11.20</td>
@@ -280,13 +348,17 @@ These are all the data sources which are either provided in the default installa
 
 
   <tr>
-    <td>[ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter)</td>
+    <td>
+
+[ValueFilter](xref:ToSic.Eav.DataSources.ValueFilter)</td>
     <td>Filter</td>
     <td>Filters by value</td>
   </tr>
 
   <tr>
-    <td>[ValueSort](xref:ToSic.Eav.DataSources.ValueSort)</td>
+    <td>
+
+[ValueSort](xref:ToSic.Eav.DataSources.ValueSort)</td>
     <td>Sort</td>
     <td>Sorts all items by values</td>
   </tr>
@@ -323,13 +395,17 @@ These are Dnn specific DataSources and won't work on Oqtane.
   </tr>
 
   <tr>
-    <td>[DnnSql DataSource](xref:ToSic.Sxc.Dnn.DataSources.DnnSql)</td>
+    <td>
+
+[DnnSql DataSource](xref:ToSic.Sxc.Dnn.DataSources.DnnSql)</td>
     <td>Get Data</td>
     <td>Get data from the Dnn Database</td>
   </tr>
 
   <tr>
-    <td>[DnnUserProfile](xref:ToSic.Sxc.Dnn.DataSources.DnnUserProfile)</td>
+    <td>
+
+[DnnUserProfile](xref:ToSic.Sxc.Dnn.DataSources.DnnUserProfile)</td>
     <td>Get Data</td>
     <td>Get Dnn Users and profiles </td>
   </tr>
@@ -350,65 +426,85 @@ These data sources are used internally, like for selecting an App in an edit dia
   </tr>
 
   <tr>
-    <td>[Apps](xref:ToSic.Eav.DataSources.Sys.Apps)</td>
+    <td>
+
+[Apps](xref:ToSic.Eav.DataSources.Sys.Apps)</td>
     <td>(system)</td>
     <td>Get all Apps in a Zone/Site</td>
   </tr>
 
   <tr>
-    <td>[Attributes](xref:ToSic.Eav.DataSources.Sys.Attributes)</td>
+    <td>
+
+[Attributes](xref:ToSic.Eav.DataSources.Sys.Attributes)</td>
     <td>(system)</td>
     <td>Get all Attributes of a Content-Type</td>
   </tr>
 
   <tr>
-    <td>[Block](xref:ToSic.Sxc.DataSources.Block)</td>
+    <td>
+
+[Block](xref:ToSic.Sxc.DataSources.Block)</td>
     <td>(system)</td>
     <td>Helper to correct data with Templates</td>
   </tr>
 
   <tr>
-    <td>[ContentTypes](xref:ToSic.Eav.DataSources.Sys.ContentTypes)</td>
+    <td>
+
+[ContentTypes](xref:ToSic.Eav.DataSources.Sys.ContentTypes)</td>
     <td>(system)</td>
     <td>Get all ContentTypes of an App</td>
   </tr>
-  
+
   <tr>
-    <td>[Features](xref:ToSic.Eav.DataSources.Sys.Features)</td>
+    <td>
+
+[Features](xref:ToSic.Eav.DataSources.Sys.Features)</td>
     <td>(system)</td>
     <td>All the features in the the current system</td>
     <td>v15</td>
   </tr>
 
   <tr>
-    <td>[Licenses](xref:ToSic.Eav.DataSources.Sys.Licenses)</td>
+    <td>
+
+[Licenses](xref:ToSic.Eav.DataSources.Sys.Licenses)</td>
     <td>(system)</td>
     <td>All the licenses in the the current system</td>
     <td>v15</td>
   </tr>
 
   <tr>
-    <td>[MetadataTargetTypes](xref:ToSic.Eav.DataSources.Sys.MetadataTargetTypes)</td>
+    <td>
+
+[MetadataTargetTypes](xref:ToSic.Eav.DataSources.Sys.MetadataTargetTypes)</td>
     <td>(system)</td>
     <td>All the Metadata Target Types in the EAV</td>
     <td>v15</td>
   </tr>
 
   <tr>
-    <td>[QueryInfo](xref:ToSic.Eav.DataSources.Sys.QueryInfo)</td>
+    <td>
+
+[QueryInfo](xref:ToSic.Eav.DataSources.Sys.QueryInfo)</td>
     <td>(system)</td>
     <td>Provide debug info when creating Queries</td>
   </tr>
 
   <tr>
-    <td>[Scopes](xref:ToSic.Eav.DataSources.Sys.Scopes)</td>
+    <td>
+
+[Scopes](xref:ToSic.Eav.DataSources.Sys.Scopes)</td>
     <td>(system)</td>
     <td>All the sites of the current system</td>
     <td>v15</td>
   </tr>
 
   <tr>
-    <td>[Zones](xref:ToSic.Eav.DataSources.Sys.Zones)</td>
+    <td>
+
+[Zones](xref:ToSic.Eav.DataSources.Sys.Zones)</td>
     <td>(system)</td>
     <td>Get all Zones (Sites) in an installation</td>
   </tr>
@@ -447,5 +543,3 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 
 1. Introduced in 2sxc ??.??
 2.
-
-
