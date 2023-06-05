@@ -187,6 +187,146 @@ public interface IContextData : IBlockDataSource, IDataSource, IDataSourceLinkab
   <h5 id="ToSic_Sxc_Data_IContextData_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Introduced in v16.01 to simplify the API when using <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>s.</p>
 </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IContextData_MyContent.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IContextData.MyContent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/ContextData/IContextData.cs/#L42">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IContextData_MyContent_" data-uid="ToSic.Sxc.Data.IContextData.MyContent*"></a>
+  <h4 id="ToSic_Sxc_Data_IContextData_MyContent" data-uid="ToSic.Sxc.Data.IContextData.MyContent">MyContent</h4>
+  <div class="markdown level1 summary"><p>The items which <em>belongs</em> to this block,
+aka <code>Content</code> which was edited by the user on this block.</p>
+<p>In most scenarios it&apos;s the same as the first/all Entities in this DataSource.
+But not when this block uses a Query, in which case the Entities of the DataSource return what&apos;s in the Query,
+and this returns the first/main item belonging to the block (eg. for configurations, titles, etc.)</p>
+<ul>
+<li>it may also contain a demo item if the view is configured to use demo-data and no data was added by the user</li>
+<li>to get all the items in the <code>Default</code> stream (eg. from a Query), see the <a class="xref" href="ToSic.Sxc.Data.IContextData.html#ToSic_Sxc_Data_IContextData_MyData">MyData</a></li>
+<li>to get all items from another stream, use <code>GetStream(streamName, optionalParameters...)</code></li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; MyContent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><p>The list of all of the instance content items, OR an empty list.
+Should <em>never</em> return <code>null</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IContextData_MyContent_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>New in v16.02</li>
+<li>This <code>Data.MyContent</code> is a list of IEntity objects; the root <code>Content</code> object is a dynamic object</li>
+<li>This <code>Data.MyContent</code> is always the module/block instance content, never query data</li>
+</ul>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IContextData_MyData.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IContextData.MyData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/ContextData/IContextData.cs/#L62">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IContextData_MyData_" data-uid="ToSic.Sxc.Data.IContextData.MyData*"></a>
+  <h4 id="ToSic_Sxc_Data_IContextData_MyData" data-uid="ToSic.Sxc.Data.IContextData.MyData">MyData</h4>
+  <div class="markdown level1 summary"><p>The data items which which are in the <code>Default</code> stream.</p>
+<p>In many scenarios it&apos;s the same as <a class="xref" href="ToSic.Sxc.Data.IContextData.html#ToSic_Sxc_Data_IContextData_MyContent">MyContent</a>.
+But not when this block uses a Query, in which case this contains the <code>Default</code> stream from the query.</p>
+<ul>
+<li>to get all the items belonging to the current instance, see the <a class="xref" href="ToSic.Sxc.Data.IContextData.html#ToSic_Sxc_Data_IContextData_MyContent">MyContent</a></li>
+<li>to get all items from another stream, use <code>GetStream(streamName, optionalParameters...)</code></li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; MyData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><p>The list of items in the <code>Default</code> stream.
+Should <em>never</em> return <code>null</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IContextData_MyData_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>New in v16.02</li>
+<li>It&apos;s basically identical to the <code>List</code> property, but for API consistency we created the <code>MyData</code></li>
+</ul>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IContextData_MyHeader.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IContextData.MyHeader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/ContextData/IContextData.cs/#L81">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IContextData_MyHeader_" data-uid="ToSic.Sxc.Data.IContextData.MyHeader*"></a>
+  <h4 id="ToSic_Sxc_Data_IContextData_MyHeader" data-uid="ToSic.Sxc.Data.IContextData.MyHeader">MyHeader</h4>
+  <div class="markdown level1 summary"><p>The header item which <em>belongs</em> to this block.
+This is usually something to configure what this block does, in addition to normal content items.</p>
+<ul>
+<li>this only returns data if the <strong>View</strong> was configured to have <code>Header</code> data</li>
+<li>it may also contain a demo item if no data was added by the user</li>
+<li>it will normally only have zero or one (0/1) items, more or not expected, but it&apos;s an IEnumerable for consistency with <a class="xref" href="ToSic.Sxc.Data.IContextData.html#ToSic_Sxc_Data_IContextData_MyContent">MyContent</a> and <a class="xref" href="ToSic.Sxc.Data.IContextData.html#ToSic_Sxc_Data_IContextData_MyData">MyData</a></li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; MyHeader { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</td>
+        <td><p>A list of Entities with one item; zero items if the view doesn&apos;t have header entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="ToSic_Sxc_Data_IContextData_MyHeader_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>New in v16.02</li>
+<li>This <code>Data.MyHeader</code> is a List of IEntity objects; the root <code>Header</code> is a dynamic object</li>
+</ul>
+</div>
 </article>
           </div>
           

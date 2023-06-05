@@ -152,13 +152,13 @@ public interface IToolbarService</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Object_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Default(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Default(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L36">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L37">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Default_" data-uid="ToSic.Sxc.Services.IToolbarService.Default*"></a>
-  <h4 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IToolbarService.Default(System.Object,System.String,System.Object,System.Object,System.Object)">Default(Object, String, Object, Object, Object)</h4>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IToolbarService.Default(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object)">Default(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object)</h4>
   <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>default</code> template/buttons to use with <code>@Edit.Toolbar</code>
 It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
 For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
@@ -166,7 +166,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Default(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, object prefill = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Default(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, object prefill = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,6 +188,12 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>Functional <a class="xref" href="../../net-code/services/toolbar-builder/tweak-buttons.html">Tweak API</a> to modify UI and parameters (new v16.02)</p>
 </td>
       </tr>
       <tr>
@@ -225,7 +231,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Services_IToolbarService_Default_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
@@ -234,13 +240,13 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Object_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Empty(System.Object%2CSystem.String%2CSystem.Object%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Empty(System.Object%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L60">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L63">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Empty_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty*"></a>
-  <h4 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty(System.Object,System.String,System.Object,System.Object,System.Object)">Empty(Object, String, Object, Object, Object)</h4>
+  <h4 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IToolbarService.Empty(System.Object,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object)">Empty(Object, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object)</h4>
   <div class="markdown level1 summary"><p>Build a Toolbar configuration using the <code>empty</code> toolbar to use with <code>@Edit.Toolbar</code>
 It&apos;s a fluid API, so the returned object can be extended with further <code>Add(...)</code> or special helpers to quickly create complex configurations.
 For guidance what to give it, also check out the <a class="xref" href="../../js-code/toolbars/simple.html">toolbar docs</a>.</p>
@@ -248,7 +254,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Empty(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, object ui = null, object parameters = null, object prefill = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Empty(object target = null, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, Func&lt;ITweakButton, ITweakButton&gt; tweak = null, object ui = null, object parameters = null, object prefill = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -270,6 +276,12 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">noParamOrder</span></td>
         <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
+        <td><span class="parametername">tweak</span></td>
+        <td><p>Functional <a class="xref" href="../../net-code/services/toolbar-builder/tweak-buttons.html">Tweak API</a> to modify UI and parameters (new v16.02)</p>
 </td>
       </tr>
       <tr>
@@ -307,7 +319,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Services_IToolbarService_Empty_System_Object_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>History</p>
 <ul>
 <li>Added in 2sxc 13</li>
@@ -319,7 +331,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IToolbarService_Metadata_System_Object_System_String_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IToolbarService.Metadata(System.Object%2CSystem.String%2CSystem.String%2CSystem.Func%7BToSic.Sxc.Edit.Toolbar.ITweakButton%2CToSic.Sxc.Edit.Toolbar.ITweakButton%7D%2CSystem.Object%2CSystem.Object%2CSystem.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L90">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/ToolbarService/IToolbarService.cs/#L94">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IToolbarService_Metadata_" data-uid="ToSic.Sxc.Services.IToolbarService.Metadata*"></a>
   <h4 id="ToSic_Sxc_Services_IToolbarService_Metadata_System_Object_System_String_System_String_System_Func_ToSic_Sxc_Edit_Toolbar_ITweakButton_ToSic_Sxc_Edit_Toolbar_ITweakButton__System_Object_System_Object_System_Object_System_String_" data-uid="ToSic.Sxc.Services.IToolbarService.Metadata(System.Object,System.String,System.String,System.Func{ToSic.Sxc.Edit.Toolbar.ITweakButton,ToSic.Sxc.Edit.Toolbar.ITweakButton},System.Object,System.Object,System.Object,System.String)">Metadata(Object, String, String, Func&lt;ITweakButton, ITweakButton&gt;, Object, Object, Object, String)</h4>
@@ -362,7 +374,7 @@ For guidance what to give it, also check out the <a class="xref" href="../../js-
       <tr>
         <td><span class="xref">System.Func</span>&lt;<a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>, <a class="xref" href="ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a>&gt;</td>
         <td><span class="parametername">tweak</span></td>
-        <td><p>New feature v15.07 - WIP</p>
+        <td><p>Functional <a class="xref" href="../../net-code/services/toolbar-builder/tweak-buttons.html">Tweak API</a> to modify UI and parameters (new v16.02)</p>
 </td>
       </tr>
       <tr>
