@@ -7,4 +7,5 @@
     This is to sync types with RazorBlade. It should have no effect on any code out there, as the result type is usually `dynamic`
 1. Renamed the type `ToSic.Sxc.Data.IDynamicMetadata` to `ToSic.Sxc.Data.IMetadata`  
     This is technically a breaking change, but the type name should never have been used in any razor code, so it shouldn't affect anybody.
-
+1. Renamed `ToSic.Sxc.Data.IDynamicField` to `ToSic.Sxc.Data.IField`  
+    This is technically a breaking change, but the type name should never have been used in any razor code, so it shouldn't affect anybody.

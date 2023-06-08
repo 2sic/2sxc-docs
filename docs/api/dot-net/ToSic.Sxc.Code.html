@@ -167,7 +167,14 @@ Important for dynamic code files like Razor or WebApi. Note that there are many 
       <section><p>Marks all Razor / WebAPI classes which provide logging functionality</p>
 </section>
       <h4><a class="xref" href="ToSic.Sxc.Code.ITypedModel.html">ITypedModel</a></h4>
-      <section></section>
+      <section><p>Object in partial Razor files to access parameters handed in.
+Example caller:</p>
+<pre><code class="lang-c#">@Html.Partial(someFile, new { blogPost, file = mainFile, title = &amp;quot;hello&amp;quot; }
+</code></pre><p>Example partial:</p>
+<pre><code class="lang-c#">var blogPost = TypedModel.Item(&amp;quot;BlogPost&amp;quot;);
+var file = TypedModel.File(&amp;quot;File&amp;quot;);
+var title = TypedModel.String(&amp;quot;Title&amp;quot;);
+</code></pre></section>
 </article>
           </div>
           

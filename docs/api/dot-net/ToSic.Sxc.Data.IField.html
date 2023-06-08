@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Render
+    <title>Interface IField
    | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Render
+    <meta name="title" content="Interface IField
    | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -116,96 +116,55 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Blocks.Render">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Data.IField">
   
   
-  <h1 id="ToSic_Sxc_Blocks_Render" data-uid="ToSic.Sxc.Blocks.Render" class="text-break">Class Render
+  <h1 id="ToSic_Sxc_Data_IField" data-uid="ToSic.Sxc.Data.IField" class="text-break">Interface IField
   </h1>
-  <div class="markdown level0 summary"><p>Block-Rendering system. It&apos;s responsible for taking a Block and delivering HTML for the output. <br>
-It&apos;s used for InnerContent, so that Razor-Code can easily render additional content blocks. <br>
-See also <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content (Content Within Other Content)</a></p>
+  <div class="markdown level0 summary"><p>This describes a field-property of an item/entity. 
+It&apos;s used for APIs which can need to know more about the field holding an item, like:</p>
+<ul>
+<li>The field name and parent reference</li>
+<li>The values in raw and converted</li>
+<li>Any metadata of the field</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Render</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Blocks.html">ToSic.Sxc.Blocks</a></h6>
-  <h6><strong>Assembly</strong>: ToSic.Sxc.Dnn.Core.dll</h6>
-  <h5 id="ToSic_Sxc_Blocks_Render_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Sxc.Data.html">ToSic.Sxc.Data</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
+  <h5 id="ToSic_Sxc_Data_IField_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-[Obsolete(&quot;Deprecated in v12 - please use IRenderService instead - will not work in v12 Base classes like Razor12&quot;)]
-public class Render</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;This is just FYI so you see how it works; you shouldn't use any of these properties in your code&quot;)]
+public interface IField : IHasLink, IHasMetadata</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h5 id="ToSic_Sxc_Data_IField_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><ul>
+<li>Created in v13.10</li>
+<li>In v16.02 renamed from <code>IDynamicField</code> to <code>IField</code> as it&apos;s not dynamic any more
+Kind of a breaking change, but shouldn&apos;t affect any code out there as the type name is not used</li>
+<li>In 16.02 changed types of <code>Value</code> and <code>Raw</code> to <code>object</code> - previously <code>dynamic</code></li>
+</ul>
+</div>
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Blocks_Render_All_ToSic_Sxc_Data_DynamicEntity_System_String_System_String_System_String_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Blocks.Render.All(ToSic.Sxc.Data.DynamicEntity%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField_Metadata.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField.Metadata%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Core/Compatibility/Sxc/ToSic.Sxc.Blocks.Render.cs/#L75">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L55">View Source</a>
   </span>
-  <a id="ToSic_Sxc_Blocks_Render_All_" data-uid="ToSic.Sxc.Blocks.Render.All*"></a>
-  <h4 id="ToSic_Sxc_Blocks_Render_All_ToSic_Sxc_Data_DynamicEntity_System_String_System_String_System_String_System_Int32_System_String_" data-uid="ToSic.Sxc.Blocks.Render.All(ToSic.Sxc.Data.DynamicEntity,System.String,System.String,System.String,System.Int32,System.String)">All(DynamicEntity, String, String, String, Int32, String)</h4>
-  <div class="markdown level1 summary"><p>Render content-blocks into a larger html-block containing placeholders</p>
+  <a id="ToSic_Sxc_Data_IField_Metadata_" data-uid="ToSic.Sxc.Data.IField.Metadata*"></a>
+  <h4 id="ToSic_Sxc_Data_IField_Metadata" data-uid="ToSic.Sxc.Data.IField.Metadata">Metadata</h4>
+  <div class="markdown level1 summary"><p>Metadata of the thing in the field - if it has such metadata.</p>
+<p>The object will never be null, but it can of course not have any data if there is no metadata. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IRawHtmlString All(DynamicEntity parent, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, string field = null, string apps = null, int max = 100, string merge = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IMetadata Metadata { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ToSic.Sxc.Data.DynamicEntity</span></td>
-        <td><span class="parametername">parent</span></td>
-        <td><p>The parent-item containing the content-blocks and providing edit-context</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">noParamOrder</span></td>
-        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">field</span></td>
-        <td><p>Required: Field containing the content-blocks. </p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">apps</span></td>
-        <td><p>BETA / WIP</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">max</span></td>
-        <td><p>BETA / WIP</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">merge</span></td>
-        <td><p>Optional: html-text containing special placeholders.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -215,77 +174,28 @@ public class Render</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ToSic.Razor.Markup.IRawHtmlString</span></td>
+        <td><a class="xref" href="ToSic.Sxc.Data.IMetadata.html">IMetadata</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Blocks_Render_All_ToSic_Sxc_Data_DynamicEntity_System_String_System_String_System_String_System_Int32_System_String__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><ul>
-<li>Changed result object to <code>IRawHtmlString</code> in v16.02 from <code>IHybridHtmlString</code></li>
-</ul>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Blocks_Render_One_ToSic_Sxc_Data_DynamicEntity_System_String_ToSic_Eav_Data_ICanBeEntity_System_String_System_Nullable_System_Guid__.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Blocks.Render.One(ToSic.Sxc.Data.DynamicEntity%2CSystem.String%2CToSic.Eav.Data.ICanBeEntity%2CSystem.String%2CSystem.Nullable%7BSystem.Guid%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField_Name.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Core/Compatibility/Sxc/ToSic.Sxc.Blocks.Render.cs/#L34">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L28">View Source</a>
   </span>
-  <a id="ToSic_Sxc_Blocks_Render_One_" data-uid="ToSic.Sxc.Blocks.Render.One*"></a>
-  <h4 id="ToSic_Sxc_Blocks_Render_One_ToSic_Sxc_Data_DynamicEntity_System_String_ToSic_Eav_Data_ICanBeEntity_System_String_System_Nullable_System_Guid__" data-uid="ToSic.Sxc.Blocks.Render.One(ToSic.Sxc.Data.DynamicEntity,System.String,ToSic.Eav.Data.ICanBeEntity,System.String,System.Nullable{System.Guid})">One(DynamicEntity, String, ICanBeEntity, String, Nullable&lt;Guid&gt;)</h4>
-  <div class="markdown level1 summary"><p>Render one content block
-This is accessed through DynamicEntity.Render()
-At the moment it MUST stay internal, as it&apos;s not clear what API we want to surface</p>
+  <a id="ToSic_Sxc_Data_IField_Name_" data-uid="ToSic.Sxc.Data.IField.Name*"></a>
+  <h4 id="ToSic_Sxc_Data_IField_Name" data-uid="ToSic.Sxc.Data.IField.Name">Name</h4>
+  <div class="markdown level1 summary"><p>The field name</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IRawHtmlString One(DynamicEntity parent, string noParamOrder = &quot;Params must be named (https://r.2sxc.org/named-params)&quot;, ICanBeEntity item = null, string field = null, Guid? newGuid = default(Guid? ))</code></pre>
+    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ToSic.Sxc.Data.DynamicEntity</span></td>
-        <td><span class="parametername">parent</span></td>
-        <td><p>The parent-item containing the content-blocks and providing edit-context</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">noParamOrder</span></td>
-        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ToSic.Eav.Data.ICanBeEntity</span></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The content-block item to render. Optional, by default the same item is used as the context.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">field</span></td>
-        <td><p>Optional: </p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
-        <td><span class="parametername">newGuid</span></td>
-        <td><p>Internal: this is the guid given to the item when being created in this block. Important for the inner-content functionality to work. </p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -295,16 +205,108 @@ At the moment it MUST stay internal, as it&apos;s not clear what API we want to 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ToSic.Razor.Markup.IRawHtmlString</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Blocks_Render_One_ToSic_Sxc_Data_DynamicEntity_System_String_ToSic_Eav_Data_ICanBeEntity_System_String_System_Nullable_System_Guid___remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><ul>
-<li>Changed result object to <code>IRawHtmlString</code> in v16.02 from <code>IHybridHtmlString</code></li>
-</ul>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField_Parent.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField.Parent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L33">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IField_Parent_" data-uid="ToSic.Sxc.Data.IField.Parent*"></a>
+  <h4 id="ToSic_Sxc_Data_IField_Parent" data-uid="ToSic.Sxc.Data.IField.Parent">Parent</h4>
+  <div class="markdown level1 summary"><p>The parent object of this field</p>
 </div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITypedItem Parent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField_Raw.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField.Raw%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L40">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IField_Raw_" data-uid="ToSic.Sxc.Data.IField.Raw*"></a>
+  <h4 id="ToSic_Sxc_Data_IField_Raw" data-uid="ToSic.Sxc.Data.IField.Raw">Raw</h4>
+  <div class="markdown level1 summary"><p>The raw value of the field, without any modifications.
+If the value is <code>file:22</code> then Raw will also return <code>file:22</code>.
+To get the value as a link, use <a class="xref" href="ToSic.Sxc.Data.IField.html#ToSic_Sxc_Data_IField_Value">Value</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object Raw { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField_Value.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L47">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Data_IField_Value_" data-uid="ToSic.Sxc.Data.IField.Value*"></a>
+  <h4 id="ToSic_Sxc_Data_IField_Value" data-uid="ToSic.Sxc.Data.IField.Value">Value</h4>
+  <div class="markdown level1 summary"><p>The value of the field with modifications.
+For example, <code>file:22</code> would be converted to the real link.
+To get the raw value, use <a class="xref" href="ToSic.Sxc.Data.IField.html#ToSic_Sxc_Data_IField_Raw">Raw</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -313,10 +315,10 @@ At the moment it MUST stay internal, as it&apos;s not clear what API we want to 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Blocks_Render.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Blocks.Render%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IField.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Core/Compatibility/Sxc/ToSic.Sxc.Blocks.Render.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Field/IField.cs/#L22" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

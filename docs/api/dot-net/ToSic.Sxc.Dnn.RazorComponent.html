@@ -124,7 +124,16 @@
   <div class="markdown level0 summary"><p>The base class for Razor-Components in 2sxc 10+ to 2sxc 11 - deprecated now<br>
 Provides context infos like the Dnn object, helpers like Edit and much more. <br></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual"><p>To use this, create <code>cshtml</code> files like <code>_person-list.cshtml</code> in your app-folder.
+<em>By default, they will be typed the old way - which continues to work for compatibility.</em>
+We recommend to use this from now on. To do it, your code file must begin with an <code>@inherits</code> statement, like this:</p>
+<div class="TIP"><h5>Tip</h5><p>We highly recommend you use <a class="xref" href="Custom.Hybrid.Razor14.html"><code>@inherits Custom.Hybrid.Razor14</code></a>
+ or <a class="xref" href="Custom.Dnn.Razor12.html"><code>@inherits Custom.Dnn.Razor12</code></a> instead</p>
+</div>
+<pre><code class="lang-cshtml">@inherits ToSic.Sxc.Dnn.RazorComponent
+
+&lt;h1&gt;hello from RazorComponent&lt;/h1&gt;
+</code></pre></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
@@ -187,7 +196,7 @@ public abstract class RazorComponent : RazorComponentBase, ITemplateFile, IHasCo
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_App.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.App%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Sxc/Dnn/RazorComponent.App.md/#L2">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L91">View Source</a>
@@ -196,7 +205,11 @@ public abstract class RazorComponent : RazorComponentBase, ITemplateFile, IHasCo
   <h4 id="ToSic_Sxc_Dnn_RazorComponent_App" data-uid="ToSic.Sxc.Dnn.RazorComponent.App">App</h4>
   <div class="markdown level1 summary"><p>A fully prepared <a class="xref" href="ToSic.Sxc.Apps.IApp.html">IApp</a> object letting you access all the data and queries in the current app. </p>
 </div>
-  <div class="markdown level1 conceptual"></div>
+  <div class="markdown level1 conceptual"><p>You&#39;ll usually want to access the data, like <code>App.Data[&quot;Categories&quot;]</code> or the queries <code>App.Query[&quot;AllPosts&quot;]</code>.  </p>
+<pre><code class="lang-cs">foreach(var cat in AsList(App.Data[&quot;Categories&quot;])) {
+    @cat.Name
+}
+</code></pre></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IApp App { get; }</code></pre>
@@ -222,7 +235,7 @@ public abstract class RazorComponent : RazorComponentBase, ITemplateFile, IHasCo
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_CmsContext.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.CmsContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L165">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L161">View Source</a>
   </span>
   <a id="ToSic_Sxc_Dnn_RazorComponent_CmsContext_" data-uid="ToSic.Sxc.Dnn.RazorComponent.CmsContext*"></a>
   <h4 id="ToSic_Sxc_Dnn_RazorComponent_CmsContext" data-uid="ToSic.Sxc.Dnn.RazorComponent.CmsContext">CmsContext</h4>
@@ -319,7 +332,7 @@ To tell if it&apos;s the demo/default item, use <a class="xref" href="ToSic.Sxc.
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_Data.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Sxc/Dnn/RazorComponent.Data.md/#L2">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L94">View Source</a>
@@ -328,7 +341,11 @@ To tell if it&apos;s the demo/default item, use <a class="xref" href="ToSic.Sxc.
   <h4 id="ToSic_Sxc_Dnn_RazorComponent_Data" data-uid="ToSic.Sxc.Dnn.RazorComponent.Data">Data</h4>
   <div class="markdown level1 summary"><p>The data prepared for the current Code. Usually user data which was manually added to the instance, but can also be a query.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
+  <div class="markdown level1 conceptual"><p>You&#39;ll usually want to access the &quot;Default&quot; stream like <code>Data[&quot;Default&quot;]</code>.  </p>
+<pre><code class="lang-cs">foreach(var person in AsList(Data[&quot;Default&quot;])) {
+    @person.Name
+}
+</code></pre></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IContextData Data { get; }</code></pre>
@@ -520,75 +537,19 @@ public Purpose Purpose { get; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Eav_Data_IEntity_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Eav.Data.IEntity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L158">View Source</a>
-  </span>
-  <a id="ToSic_Sxc_Dnn_RazorComponent_AsAdam_" data-uid="ToSic.Sxc.Dnn.RazorComponent.AsAdam*"></a>
-  <h4 id="ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Eav_Data_IEntity_System_String_" data-uid="ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Eav.Data.IEntity,System.String)">AsAdam(IEntity, String)</h4>
-  <div class="markdown level1 summary"><p>Provides an Adam instance for this item and field</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IFolder AsAdam(IEntity entity, string fieldName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></td>
-        <td><span class="parametername">entity</span></td>
-        <td><p>The entity, often Content or similar</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fieldName</span></td>
-        <td><p>The field name, like &quot;Gallery&quot; or &quot;Pics&quot;</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ToSic.Sxc.Adam.IFolder.html">IFolder</a></td>
-        <td><p>An Adam object for navigating the assets</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Sxc_Data_IDynamicEntity_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Sxc.Data.IDynamicEntity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Eav_Data_ICanBeEntity_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Eav.Data.ICanBeEntity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L154">View Source</a>
   </span>
   <a id="ToSic_Sxc_Dnn_RazorComponent_AsAdam_" data-uid="ToSic.Sxc.Dnn.RazorComponent.AsAdam*"></a>
-  <h4 id="ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Sxc_Data_IDynamicEntity_System_String_" data-uid="ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Sxc.Data.IDynamicEntity,System.String)">AsAdam(IDynamicEntity, String)</h4>
+  <h4 id="ToSic_Sxc_Dnn_RazorComponent_AsAdam_ToSic_Eav_Data_ICanBeEntity_System_String_" data-uid="ToSic.Sxc.Dnn.RazorComponent.AsAdam(ToSic.Eav.Data.ICanBeEntity,System.String)">AsAdam(ICanBeEntity, String)</h4>
   <div class="markdown level1 summary"><p>Provides an Adam instance for this item and field</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IFolder AsAdam(IDynamicEntity entity, string fieldName)</code></pre>
+    <pre><code class="lang-csharp hljs">public IFolder AsAdam(ICanBeEntity item, string fieldName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -601,9 +562,9 @@ public Purpose Purpose { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a></td>
-        <td><span class="parametername">entity</span></td>
-        <td><p>The entity, often Content or similar</p>
+        <td><span class="xref">ToSic.Eav.Data.ICanBeEntity</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The item - an IEntity, IDynamicEntity, ITypedItem etc. often Content or similar</p>
 </td>
       </tr>
       <tr>
@@ -1177,7 +1138,7 @@ public virtual void CustomizeSearch(Dictionary&lt;string, List&lt;ISearchItem&gt
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Dnn_RazorComponent.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Dnn.RazorComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/api/dot-net/ToSic.Sxc/Dnn/RazorComponent.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
                     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Dnn/RazorComponent.cs/#L26" class="contribution-link">View Source</a>
