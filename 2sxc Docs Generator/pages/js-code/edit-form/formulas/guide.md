@@ -75,4 +75,4 @@ If you did this, you should now have seen
 * Added formula designer API help ca. v14.00
 * Massively improved v2 Formulas in 2sxc 15.07 (officially released in 16.0)
 
-Shortlink to here: <https://r.2sxc.org/formulas>
+Shortlink to here: <https://go.2sxc.org/formulas>

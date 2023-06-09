@@ -33,4 +33,4 @@ There is no alternative for Dnn 7, so you must either remain on an older 2sxc (v
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-eav-factory-startup
+Shortlink to here: https://go.2sxc.org/brc-13-eav-factory-startup

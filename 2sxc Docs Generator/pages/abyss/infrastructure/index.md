@@ -25,4 +25,4 @@ As of now, you get:
 
 1. not relevant
 
-Shortlink: <https://r.2sxc.org/lightspeed> -->
+Shortlink: <https://go.2sxc.org/lightspeed> -->

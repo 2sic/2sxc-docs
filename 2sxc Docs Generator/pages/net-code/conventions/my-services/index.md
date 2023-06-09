@@ -82,4 +82,4 @@ Many other objects use this as well, but we don't expect that you'll be needing 
 
 * Introduced in 2sxc 15
 
-Shortlink: <https://r.2sxc.org/myservices>
+Shortlink: <https://go.2sxc.org/myservices>

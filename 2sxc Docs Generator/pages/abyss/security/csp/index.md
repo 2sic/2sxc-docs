@@ -17,4 +17,4 @@ You should...
 
 ---
 
-Shortlink: <https://r.2sxc.org/csp>
+Shortlink: <https://go.2sxc.org/csp>

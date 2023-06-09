@@ -41,4 +41,4 @@ _Note: you could of course work around this, by providing that random value and 
 
 1. Introduced ca. in 2sxc 6
 
-Shortlink: https://r.2sxc.org/named-params
+Shortlink: https://go.2sxc.org/named-params

@@ -107,4 +107,4 @@ If you want to do it manually, you can do it like this:
 1. Developed in 2sxc 15.04 for the public resources and Edit UI
 1. Released in 2sxc 16.00 LTS
 
-Shortlink: <https://r.2sxc.org/cdn>
+Shortlink: <https://go.2sxc.org/cdn>

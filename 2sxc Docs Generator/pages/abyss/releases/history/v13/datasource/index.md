@@ -42,4 +42,4 @@ Then, just put a dependency on the new `ToSic.Eav.DataSources.DataSourceFactory`
 
 ---
 
-Shortlink to here: <https://r.2sxc.org/brc-13-datasource>
+Shortlink to here: <https://go.2sxc.org/brc-13-datasource>

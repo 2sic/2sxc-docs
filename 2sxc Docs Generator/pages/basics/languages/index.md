@@ -93,4 +93,4 @@ TODO:
 1. ...
 1. Auto-Translate Content added in v15
 
-Shortlink: <https://r.2sxc.org/translate>
+Shortlink: <https://go.2sxc.org/translate>

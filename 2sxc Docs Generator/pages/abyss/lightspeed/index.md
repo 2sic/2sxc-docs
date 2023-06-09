@@ -149,4 +149,4 @@ Change your code to use the `IPageService` instead. It will queue the page chang
 
 1. Created in 2sxc 13.10
 
-Shortlink: <https://r.2sxc.org/lightspeed>
+Shortlink: <https://go.2sxc.org/lightspeed>

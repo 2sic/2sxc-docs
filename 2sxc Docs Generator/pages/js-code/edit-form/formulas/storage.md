@@ -34,4 +34,4 @@ You can create or edit Formulas them in the general field settings:
 * Extended with `Required` ca. v13.00
 * Extended with `Notes` ca. v13.10
 
-Shortlink to here: https://r.2sxc.org/formulas
+Shortlink to here: https://go.2sxc.org/formulas

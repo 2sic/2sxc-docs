@@ -65,4 +65,4 @@ This is common after a major upgrade. See r.2sxc.org/license-warning.
 1. Enterprise Licenses introduced in v15
 1. Message updated in v16
 
-Shortlink: <https://r.2sxc.org/license-warning>
+Shortlink: <https://go.2sxc.org/license-warning>

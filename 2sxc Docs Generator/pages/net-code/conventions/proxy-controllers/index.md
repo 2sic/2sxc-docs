@@ -42,4 +42,4 @@ Each platform and integration will just have the minimal _Proxy_ Controller whic
 
 * Introduced in v13
 
-Shortlink: https://r.2sxc.org/proxy-controllers
+Shortlink: https://go.2sxc.org/proxy-controllers

@@ -38,4 +38,4 @@ In cases where you need exactly 1 url (like in `background-url` CSS) you will pr
 1. Switched to [ImageFlow](https://www.imageflow.io/) in 13.0 for both Dnn and Oqtane
 1. Introducing [IImageService](xref:ToSic.Sxc.Services.IImageService) in 13.05 beta, to be released in 13.10
 
-Shortlink: <https://r.2sxc.org/resize>
+Shortlink: <https://go.2sxc.org/resize>

@@ -48,4 +48,4 @@ Just make sure you always access the properties using the **Dynamic Entity** - s
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-ientitylink
+Shortlink to here: https://go.2sxc.org/brc-13-ientitylink

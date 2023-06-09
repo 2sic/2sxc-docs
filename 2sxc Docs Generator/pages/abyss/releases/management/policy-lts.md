@@ -41,4 +41,4 @@ If you have a special need and wish to sponsor a fix in either an LTS or any oth
 1. LTS policy introduced in v9.14 - [see blog](https://2sxc.org/en/blog/post/special-edition-2sxc-9-14-lts-long-term-support)
 1. Information added to docs in v13.03
 
-Shortlink: https://r.2sxc.org/lts
+Shortlink: https://go.2sxc.org/lts

@@ -48,4 +48,4 @@ This may cause some challenges which you want to know about.
 * Introduced in 2sxc 12.01
 * Added `data.parameters` in v13.10
 
-Shortlink to here: <https://r.2sxc.org/js-fdata>
+Shortlink to here: <https://go.2sxc.org/js-fdata>

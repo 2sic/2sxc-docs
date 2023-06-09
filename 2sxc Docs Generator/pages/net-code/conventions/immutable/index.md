@@ -62,4 +62,4 @@ We cannot reach 100% any time soon, because we must ensure compatibility with ex
 * Spread out more in 2sxc 15, eg. IEntity is now immutable
 
 
-Shortlink: <https://r.2sxc.org/immutable>
+Shortlink: <https://go.2sxc.org/immutable>

@@ -58,4 +58,4 @@ Only in rare cases where an API is widely used will we keep it in the docs, but 
 
 1. Deprecation warning system added in v13
 
-Shortlink: https://r.2sxc.org/pol-deprecation
+Shortlink: https://go.2sxc.org/pol-deprecation

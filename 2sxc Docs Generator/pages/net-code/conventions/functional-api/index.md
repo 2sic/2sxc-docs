@@ -63,4 +63,4 @@ In the end, the quality and robustness of our application is much better.
 * Introduced gradually starting with 2sxc 12
 * RazorBlade started doing this in v3 also in 2sxc 13
 
-Shortlink: <https://r.2sxc.org/functional>
+Shortlink: <https://go.2sxc.org/functional>

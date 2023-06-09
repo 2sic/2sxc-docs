@@ -40,4 +40,4 @@ When upgrading an existing Oqtane/2sxc you should follow these steps:
 1. upgrade Oqtane first - possibly 2sxc then stops working
 1. then upgrade 2sxc
 
-Shortlink: <https://r.2sxc.org/oqtane-install>
+Shortlink: <https://go.2sxc.org/oqtane-install>

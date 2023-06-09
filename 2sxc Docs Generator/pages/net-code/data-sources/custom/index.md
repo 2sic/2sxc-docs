@@ -43,4 +43,4 @@ This is what the DataSource would appear like in VisualQuery
 1. Major breaking API changes and improvements in 2sxc 15
 1. Dynamic DataSources introduced in 2sxc 16
 
-Shortlink: <https://r.2sxc.org/DsCustom>
+Shortlink: <https://go.2sxc.org/DsCustom>

@@ -45,4 +45,4 @@ You can place the key in 4 different locations:
 
 1. Introduced in 2sxc v15
 
-Shortlink: <https://r.2sxc.org/translate-api-key>
+Shortlink: <https://go.2sxc.org/translate-api-key>

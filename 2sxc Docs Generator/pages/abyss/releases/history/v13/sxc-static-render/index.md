@@ -63,4 +63,4 @@ var renderSvc = GetService<IRenderService>();
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-static-render
+Shortlink to here: https://go.2sxc.org/brc-13-static-render

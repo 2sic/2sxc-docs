@@ -72,4 +72,4 @@ Noteworthy to know
 1. Introduced in 2sxc v2
 1. Continuously improved in 2sxc 7, 8, 10 and 11
 
-Shortlink: <https://r.2sxc.org/metadata>
+Shortlink: <https://go.2sxc.org/metadata>

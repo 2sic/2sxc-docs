@@ -82,4 +82,4 @@ This should also ensure that any apps which previously used `Add(...)` will cont
 
 ---
 
-<!-- Shortlink to here: https://r.2sxc.org/brc-15-logging TODO: -->
+<!-- Shortlink to here: https://go.2sxc.org/brc-15-logging TODO: -->

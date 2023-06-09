@@ -32,4 +32,4 @@ If you believe that we are checking this incorrectly, please open an issue on Gi
 
 ---
 
-Shortlink to here: https://r.2sxc.org/oqt-hr
+Shortlink to here: https://go.2sxc.org/oqt-hr

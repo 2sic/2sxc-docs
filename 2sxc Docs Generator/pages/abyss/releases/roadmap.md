@@ -15,6 +15,15 @@ Last Update: **2023-05-30**
 
 ## Currently being developed 2023-Q2
 
+1. Major `ITypedItem` upgrade
+1. Release all apps in the new typed mode
+1. Upgrade documentation generation to latest docfx etc.
+1. Improve JS build to make it easier for others to contribute
+1. Optimize build of docfx to also better handle js docs @STV
+1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
+
+
+
 1. Rework the UI Selector / DropDown system
     1. to have titles, help, notes, links, and more @SDV
     1. to also have various data sources
@@ -22,8 +31,6 @@ Last Update: **2023-05-30**
 1. Improve Oqtane Pages DS to also respect all known settings - @STV
 1. Finalize Deprecation system @2dm
 1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV
-1. Optimize build of docfx to also better handle js docs @STV
-1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
 
 
 

@@ -78,4 +78,4 @@ v1(data, context) {
 * Added `context.user` in v13.11
 * Added `context.form.runFormulas()` in v13.11
 
-Shortlink to here: <https://r.2sxc.org/js-fcontext>
+Shortlink to here: <https://go.2sxc.org/js-fcontext>

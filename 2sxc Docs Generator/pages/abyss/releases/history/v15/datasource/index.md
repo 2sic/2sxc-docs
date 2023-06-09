@@ -112,4 +112,4 @@ TODO:
 
 ---
 
-<!-- Shortlink to here: https://r.2sxc.org/brc-15-datasource todo -->
+<!-- Shortlink to here: https://go.2sxc.org/brc-15-datasource todo -->

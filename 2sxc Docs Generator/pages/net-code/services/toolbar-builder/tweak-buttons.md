@@ -114,4 +114,4 @@ History
 
 1. Added in v15.07
 
-ShortLink: <https://r.2sxc.org/tweak-buttons>
+ShortLink: <https://go.2sxc.org/tweak-buttons>

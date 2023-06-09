@@ -30,4 +30,4 @@ F12 is one of your most important friends when debugging what's happening. Watch
 1. Introduced 2sxc Insights (server-side) v9.31
 1. [Major enhancements](https://2sxc.org/en/blog/post/awesome-insights-in-10-22) in v10.22
 
-Shortlink: <https://r.2sxc.org/insights>
+Shortlink: <https://go.2sxc.org/insights>

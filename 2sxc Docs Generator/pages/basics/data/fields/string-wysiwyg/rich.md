@@ -99,4 +99,4 @@ This will show you:
 
 1. Introduced in v16.01 on Towel Day 2023
 
-Shortlink: <https://r.2sxc.org/wysiwyg-rich>
+Shortlink: <https://go.2sxc.org/wysiwyg-rich>

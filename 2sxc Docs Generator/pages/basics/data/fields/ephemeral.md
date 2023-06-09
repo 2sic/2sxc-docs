@@ -42,4 +42,4 @@ To configure a field to _not save_ and be temporary / ephemeral, use this settin
 1. Introduced in 2sxc 12.01
 1. Added `data.parameters` in v14
 
-Shortlink to here: https://r.2sxc.org/ephemeral
+Shortlink to here: https://go.2sxc.org/ephemeral

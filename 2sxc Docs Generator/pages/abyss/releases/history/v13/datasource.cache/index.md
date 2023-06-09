@@ -39,4 +39,4 @@ If you need the type for other uses, best create an issue on GitHub.
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-datasource-cache
+Shortlink to here: https://go.2sxc.org/brc-13-datasource-cache

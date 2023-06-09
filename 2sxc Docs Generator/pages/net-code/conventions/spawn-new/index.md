@@ -24,4 +24,4 @@ This is usually done using a `New(...)` method which specifies the configuration
 
 * Introduced in v15
 
-Shortlink: <https://r.2sxc.org/spawn-new>
+Shortlink: <https://go.2sxc.org/spawn-new>

@@ -56,4 +56,4 @@ var result = convert.Convert(...);
 
 ---
 
-Shortlink to here: https://r.2sxc.org/brc-13-conversion
+Shortlink to here: https://go.2sxc.org/brc-13-conversion

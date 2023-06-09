@@ -35,7 +35,7 @@ It's meant for customizing the internal indexer of the platform, _not_ for Googl
 To use it, create a custom code (.cs) file which implements ICustomizeSearch interface.
 You can also inherit from a DynamicCode base class (like Code12) if you need more functionality.
 
-For more guidance on search customizations, see https://r.2sxc.org/customize-search
+For more guidance on search customizations, see https://go.2sxc.org/customize-search
 */
 public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
 {

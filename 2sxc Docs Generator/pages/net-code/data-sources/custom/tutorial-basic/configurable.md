@@ -81,7 +81,7 @@ namespace ToSic.Tutorial.DataSource.Basic
     // It's located in .data/contenttypes
     // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
     ConfigurationType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
-    HelpLink = "https://r.2sxc.org/DsCustom")]
+    HelpLink = "https://go.2sxc.org/DsCustom")]
   public class ConfigurableDateTime : ExternalData
   {
     #region Configuration-properties

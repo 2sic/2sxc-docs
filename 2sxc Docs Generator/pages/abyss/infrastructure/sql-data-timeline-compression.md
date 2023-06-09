@@ -51,4 +51,4 @@ UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson])
 
 1. Added in v15
 
-<!-- Shortlink: <https://r.2sxc.org/lightspeed> -->
+<!-- Shortlink: <https://go.2sxc.org/lightspeed> -->
