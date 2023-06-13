@@ -27,26 +27,27 @@ Images are a crucial part of every website and CMS. We want to be sure that:
     1. The designer determines how images should look in various scenarios
 
 > [!TIP]
-> This guide should help you understand the big &lt;picture&gt; 😏. 
+> This guide should help you understand the big &lt;picture&gt; 😏.
 >
 > Best read this while looking at the [Tutorial](xref:Tut.Img.Guide)
 >
-> For every detail there is much more technical documentation, which will be linked here. 
+> For every detail there is much more technical documentation, which will be linked here.
 
 
 ## Part 1: Edit UI / UX
 
-The Edit UI presents various options to the user for uploading and configuring images. 
+The Edit UI presents various options to the user for uploading and configuring images.
 
-It's important to note that v13.10+ has a new feature to let the user customize what part of the image is really important (what corner/edge). 
-This is important in scenarios where a resize would otherwise always show the middle, which may not be appropriate. 
+It's important to note that v13.10+ has a new feature to let the user customize what part of the image is really important (what corner/edge).
+This is important in scenarios where a resize would otherwise always show the middle, which may not be appropriate.
 
 Since this feature will only affect the output if the Razor template uses the [IImageService](xref:ToSic.Sxc.Services.IImageService),
-the designer must activate it on the field. Otherwise the feature is not available. 
+the designer must activate it on the field. Otherwise the feature is not available.
 
 <img src="./assets/image-configuration.jpg" class="full-width" width="100%">
 
 **Important**: The config-button is only available...
+
 1. ...IF it has been enabled
 1. ...and IF the file is an image
 1. ...and IF the file "belongs" to the item being edited  
@@ -55,22 +56,22 @@ the designer must activate it on the field. Otherwise the feature is not availab
 
 ## Part 2: Image Metadata
 
-When a user edits the image settings in the UI, the data is stored as [metadata](xref:Basics.Metadata.Index) for this image. 
-This is important, because generating a perfect `<img>` or `<picture>` tag requires this information. 
+When a user edits the image settings in the UI, the data is stored as [metadata](xref:Basics.Metadata.Index) for this image.
+This is important, because generating a perfect `<img>` or `<picture>` tag requires this information.
 
 ## Part 3: Dynamic Field
 
 If a content item stores the image on a property `.Image` then something like `Content.Image` would return `/Portal/0/Adam/some-image.jpg`.
 In this case, the [IImageService](xref:ToSic.Sxc.Services.IImageService) cannot find the metadata.
 
-This is why we need to give it the entire field, not just the value. This is done using `Content.Field("Image")` 
-and will get your code a [IDynamicField](xref:ToSic.Sxc.Data.IDynamicField).
+This is why we need to give it the entire field, not just the value. This is done using `Content.Field("Image")`
+and will get your code a [IDynamicField](xref:ToSic.Sxc.Data.IField).
 
 ## Part 4: ImageService
 
 The [IImageService](xref:ToSic.Sxc.Services.IImageService) will take all the known information and generate an `<img>` or a `<picture>` tag.
 
-This can be used in its default implementation just using `.Img(Content.Field)` or `.Picture(...)`. 
+This can be used in its default implementation just using `.Img(Content.Field)` or `.Picture(...)`.
 In this case is uses the default `Content` settings (see below).
 
 If you need more control, there are 3 options:
@@ -87,12 +88,12 @@ Some Tutorials to learn this
 
 ## Part 5: Settings and Recipes
 
-**Settings** are preconfigured parameters how the image is to be resized. 
-They are stored at App, Site, Global or Preset level. 
+**Settings** are preconfigured parameters how the image is to be resized.
+They are stored at App, Site, Global or Preset level.
 
-By default the configuration called `Content` is used for images in the Content of the page. 
-Other settings also exist, such as `Lightbox` or `Screen`. 
-You can also create your own configurations, such as `PersonProfile`. 
+By default the configuration called `Content` is used for images in the Content of the page.
+Other settings also exist, such as `Lightbox` or `Screen`.
+You can also create your own configurations, such as `PersonProfile`.
 
 👉🏼 Read more about [Image Settings](xref:Basics.Configuration.Settings.Images.Index)
 
@@ -101,8 +102,8 @@ In your Razor code you can create new settings or modify existing ones using the
 * To create settings based on the `Content` use `.Setting("Content", ...)`
 * To create brand new settings, use `.Setting(false, ...)`
 
-**Recipes** define what variants of the image should be generated for other sizes, as well as other parameters to use when generating `img` or `picture` tags. 
-The initial configuration is also stored in the settings and will be used, unless you specify something different. 
+**Recipes** define what variants of the image should be generated for other sizes, as well as other parameters to use when generating `img` or `picture` tags.
+The initial configuration is also stored in the settings and will be used, unless you specify something different.
 
 👉🏼 Read more about [Image Recipes](xref:Basics.Configuration.Settings.Images.Recipes)
 
@@ -130,7 +131,7 @@ TODO:
 
 TODO: we're still working on these docs
 
---> 
+-->
 
 ---
 

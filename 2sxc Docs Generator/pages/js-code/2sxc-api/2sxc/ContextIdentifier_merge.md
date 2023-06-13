@@ -4,7 +4,7 @@ uid: Api.Js.SxcJs.ContextIdentifier
 
 ### About the ContextIdentifier
 
-When you use the `ContextIdentifier` to get a `$2sxc(contextIdentifier)` you are bypassing various automations which pick up the context by default. 
+When you use the `ContextIdentifier` to get a `$2sxc(contextIdentifier)` you are bypassing various automations which pick up the context by default.
 The `ContextIdentifier` has this setup:
 
 ```js
@@ -20,7 +20,7 @@ export class ContextIdentifier {
 }
 ```
 
-This mode is mainly used 
+This mode is mainly used
 
 * when integrating 2sxc into other systems which don't provide the full CMS functionality
 * when creating edit-functionality which is outside the default context, like in the context of a Module where you must edit data of a different App

@@ -25,7 +25,7 @@ To learn the basics, you should:
 
 1. Look at live code in the [DataSource Tutorials](xref:Tut.DynamicDataSources)
 
-1. Continue with the [Custom DataSource Guide](xref:NetCode.DataSources.Custom.Guide)
+1. Continue with the [Custom DataSource Guide](xref:NetCode.DataSources.Custom.Guide.Index)
 
 ---
 

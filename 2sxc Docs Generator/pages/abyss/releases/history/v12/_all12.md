@@ -24,7 +24,7 @@ No relevant changes
 
 1. Introduced [](xref:ToSic.Sxc.Services.IJsonService) for json serialize/deserialize
 1. Introduced [](xref:ToSic.Sxc.Services.IConvertService) for simple data-type conversion, also available on the `Convert` property of Razor12 and Api12
-1. Introduced [](xref:ToSic.Sxc.Services.ILogService) to log messages to the system (Dnn/Oqtane)
+1. Introduced [ToSic.Sxc.Services.ILogService](xref:ToSic.Sxc.Services.ISystemLogService) to log messages to the system (Dnn/Oqtane)
 1. Introduced [](xref:ToSic.Sxc.Services.IMailService) to easily send mails cross-platform
 1. Introduced [](xref:ToSic.Sxc.Services.ISecureDataService) to use encrypted settings
 1. Introduced [](xref:ToSic.Sxc.Services.IRenderService) for inner-content rendering (Oqtane code must use this)
