@@ -16,8 +16,8 @@
     <title>AsAdam(...) Command | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="AsAdam(...) Command | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,10 +117,14 @@
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.AsAdam">
 <h1 id="asadam-command">AsAdam(...) Command</h1>
 
-<div class="NOTE"><h5>Note</h5><p>ADAM is the Automatic Digital Asset Manager. It manages files (Assets) for content in 2sxc. </p>
-<p>The files are managed so that they really belong to the item they are used in.<br><a class="xref" href="../../basics/cms/adam/index.html">Read more about ADAM</a></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ADAM is the Automatic Digital Asset Manager. It manages files (Assets) for content in 2sxc.</p>
+<p>The files are managed so that they really belong to the item they are used in.<br>
+<a class="xref" href="../../basics/cms/adam/index.html">Read more about ADAM</a></p>
 </div>
-<p>When a content-item has a <code>Library</code> field (see <a class="xref" href="../../basics/data/fields/hyperlink-library.html">Field Input-Type hyperlink-library</a>) your code needs to get a list of all the files and folders of that field. For example to show galleries. 
+
+<p>When a content-item has a <code>Library</code> field (see <a class="xref" href="../../basics/data/fields/hyperlink-library.html">Field Input-Type hyperlink-library</a>) your code needs to get a list of all the files and folders of that field. For example to show galleries.
 This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of this field.</p>
 <p>⚡ The <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_AsAdam_">official API docs</a>.</p>
 <p>Basically all you need for <code>AsAdam(...)</code> is</p>
@@ -128,15 +132,13 @@ This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of 
 <li>The Content Item (Entity or DynamicEntity)</li>
 <li>The field name of which you want the Adam objects</li>
 </ol>
-<p>As a result you&#39;ll get an <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a> object with which you can get all files in the folder or subfolders. </p>
+<p>As a result you'll get an <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a> object with which you can get all files in the folder or subfolders.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="example">Example</h2>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="example">Example</h2>
 <p>This example is taken from the <a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></p>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
@@ -151,20 +153,21 @@ This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of 
         : images.First().Url;
 
       &lt;div class=&quot;ga-album col-12 col-sm-6 col-md-6 col-lg-4&quot; @Edit.TagToolbar(album)&gt;
-        &lt;a href=&#39;@Tags.SafeUrl(Link.To(parameters: &quot;mid/&quot; + Dnn.Module.ModuleID + &quot;&amp;album=&quot; + album.Path))&#39;&gt;
+        &lt;a href='@Tags.SafeUrl(Link.To(parameters: &quot;mid/&quot; + Dnn.Module.ModuleID + &quot;&amp;album=&quot; + album.Path))'&gt;
           &lt;div class=&quot;ga-img&quot;&gt;
             &lt;div class=&quot;overlay&quot;&gt;
               &lt;div class=&quot;ga-album-title&quot;&gt;&lt;h5 class=&quot;ga-title&quot;&gt;@album.Title&lt;/h5&gt;&lt;/div&gt;
               &lt;div class=&quot;ga-files-count&quot;&gt;&lt;span class=&quot;badge badge-pill badge-dark float-right&quot;&gt;@images.Count()&lt;/span&gt;&lt;/div&gt;
             &lt;/div&gt;
-            &lt;img class=&quot;img-fluid&quot; src=&#39;@Tags.SafeUrl(albumThumbUrl + &quot;?w=720&amp;h=500&amp;mode=crop&amp;scale=both&amp;quality=80&quot;)&#39; alt=&quot;@album.Title&quot; /&gt;
+            &lt;img class=&quot;img-fluid&quot; src='@Tags.SafeUrl(albumThumbUrl + &quot;?w=720&amp;h=500&amp;mode=crop&amp;scale=both&amp;quality=80&quot;)' alt=&quot;@album.Title&quot; /&gt;
           &lt;/div&gt;
         &lt;/a&gt;
       &lt;/div&gt;
     }
   &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p>We suggest you check out some apps which use ADAM to see how they work. </p>
+</code></pre>
+<p>We suggest you check out some apps which use ADAM to see how they work.</p>
 <h2 id="also-read">Also Read</h2>
 <ul>
 <li><a class="xref" href="../../basics/cms/adam/index.html">ADAM - Automatic Digital Asset Management</a></li>
@@ -178,7 +181,7 @@ This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of 
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -189,13 +192,14 @@ This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of 
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -203,28 +207,29 @@ This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

@@ -16,8 +16,8 @@
     <title>EAV / 2sxc / Dnn Architecture | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="EAV / 2sxc / Dnn Architecture | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,9 +117,9 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Architecture.Index">
 <h1 id="eav--2sxc--dnn-architecture">EAV / 2sxc / Dnn Architecture</h1>
 
-<p>2sxc is simple to use, but to enable that, it&#39;s pretty sophisticated on the inside. We&#39;ll give you an overview here, so you can better understand what you are using.</p>
+<p>2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside. We'll give you an overview here, so you can better understand what you are using.</p>
 <h2 id="overall-architecture">Overall Architecture</h2>
-<p><img src="assets/eav-2sxc-dnn.png" width="100%" class="full-width"></p>
+<img src="assets/eav-2sxc-dnn.png" width="100%" class="full-width">
 <h4 id="the-storage-systems">The Storage Systems</h4>
 <p>This is fairly straight forward - data can be stored in SQL (spread across tables or using JSON) and the File System (stored as JSON). Note that assets like images are not handled here, but in the EAV-Apps layer (see below).</p>
 <h4 id="the-eav-layer">The EAV Layer</h4>
@@ -130,36 +130,36 @@ The same applies to <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html"
 You can usually ignore this.</p>
 <h4 id="the-sxc-layer">The SXC Layer</h4>
 <p>On top of the <em>EAV</em> layer we have the <strong>Sxc</strong> layer.
-It&#39;s responsible for <em>Content Management</em> on top of the <em>App</em> model provided by the <em>EAV</em>.
+It's responsible for <em>Content Management</em> on top of the <em>App</em> model provided by the <em>EAV</em>.
 The <em>Sxc</em> layer provides things like <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> to let you code like <code>@Content.Title</code>.
 This is usually more interesting for you, but still fairly generic, because 2sxc is also meant to work with other
-platforms like NopCommerce, Orchard or Oqtane, but it hasn&#39;t been implemented yet.</p>
+platforms like NopCommerce, Orchard or Oqtane, but it hasn't been implemented yet.</p>
 <h4 id="the-dnn-layer">The Dnn Layer</h4>
 <p>On top of the <em>Sxc</em> layer we have the <strong>Dnn</strong> layer. It connects 2sxc with Dnn.
-Usually when you&#39;re writing code and want to know about the API, you&#39;ll typically start here,
+Usually when you're writing code and want to know about the API, you'll typically start here,
 and drill down to the other APIs as needed.</p>
 <h2 id="architecture-of-the-eav-layer">Architecture of the EAV Layer</h2>
-<p><img src="assets/eav-internals.png" width="100%" class="full-width"></p>
-<p>Inside the EAV you&#39;ll find a whole ecosystem of parts which make the magic happen.</p>
+<img src="assets/eav-internals.png" width="100%" class="full-width">
+<p>Inside the EAV you'll find a whole ecosystem of parts which make the magic happen.</p>
 <h4 id="infrastructure">Infrastructure</h4>
 <p>This is very internal stuff, to make sure everything happens. You will usually not go here. Most if it is also not public API.
 Areas of interest may be the <a class="xref" href="../../api/dot-net/ToSic.Lib.Logging.html">ToSic.Lib.Logging</a> or <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.</p>
 <h4 id="core-data-models">Core Data Models</h4>
 <p>This is more interesting and relevant to you, when you want to dive deep into the data model. Again you should note that this is advanced stuff.
-You&#39;ll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> - the most common bit you may care about is <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html">IContentType</a>.</p>
+You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> - the most common bit you may care about is <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html">IContentType</a>.</p>
 <h4 id="data-processing">Data Processing</h4>
 <p>This is where things get relevant for you. Check out the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a> to find all the bits and pieces used to process, filter and cache data.</p>
 <h4 id="storage">Storage</h4>
-<p>This is still more an internal bit, and as of now you shouldn&#39;t use it.</p>
+<p>This is still more an internal bit, and as of now you shouldn't use it.</p>
 <h4 id="app-system-and-assets">App System and Assets</h4>
 <p>Another part that you may want to know more about. Here is where data is clustered together into virtual containers called <strong>Apps</strong>.
 These contain all the content-types and items of an App. It also has view-definitions, Content-Blocks (the logical unit usually called a Module in Dnn) and way more.
-You&#39;ll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.</p>
+You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.</p>
 <p>The assets - usually using ADAM - are found in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.Assets.</p>
 <h4 id="web-api">Web API</h4>
 <p>This is ATM an internal section, mainly for connecting Dnn WebAPIs to the EAV. Not documented as of now.</p>
 <h2 id="the-fine-line-between-eavapps-and-sxc">The Fine Line Between Eav.Apps and Sxc.*</h2>
-<p>To keep the architecture clean, it&#39;s important to draw a clear line between Apps and what Sxc does. Basically it&#39;s this:</p>
+<p>To keep the architecture clean, it's important to draw a clear line between Apps and what Sxc does. Basically it's this:</p>
 <ul>
 <li>Eav.Apps are virtual containers bundling things together. This means content-types, data, queries, settings, etc.</li>
 <li>Sxc is all about (Web) Content Management. So anything related to views, templates, assets, content-blocks is in Sxc.</li>
@@ -173,7 +173,7 @@ You&#39;ll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.htm
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -184,13 +184,14 @@ You&#39;ll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.htm
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -198,28 +199,29 @@ You&#39;ll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.htm
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

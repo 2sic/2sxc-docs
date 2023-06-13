@@ -16,8 +16,8 @@
     <title>Content Security Policy (CSP) Best Practices | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Content Security Policy (CSP) Best Practices | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,40 +116,44 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.BestPractices">
 
-<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
+<img src="../../../assets/features/content-security-policy.svg" class="feature">
 <h1 id="content-security-policy-csp-best-practices">Content Security Policy (CSP) Best Practices</h1>
 <p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
 <p>There are many ways you can setup CSP, but it is easier if the entire setup is geared towards this goal.</p>
 <h2 id="javascript-csp-best-practices">JavaScript CSP Best Practices</h2>
 <h3 id="js-avoid-eval-and-other-stupid-stuff">JS: Avoid <code>eval</code> and other Stupid Stuff</h3>
-<p>This is fairly basic: don&#39;t use <code>eval</code> in your code.</p>
+<p>This is fairly basic: don't use <code>eval</code> in your code.</p>
 <h3 id="js-avoid-any-js-in-the-page">JS: Avoid any JS in the Page</h3>
-<p>Any In-Page JS will either force you to use lax security rules or require a lot of whitelisting using nonce or hashes. </p>
-<p>We recommend that you avoid this alltogether. </p>
+<p>Any In-Page JS will either force you to use lax security rules or require a lot of whitelisting using nonce or hashes.</p>
+<p>We recommend that you avoid this alltogether.</p>
 <p>Place all your code in external JS files which are on the same server (rule: <code>self</code>).
-Then use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to start the code. </p>
-<p>turnOn will also help you pass parameters like the current ModuleId to the script, in case you need it. </p>
+Then use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to start the code.</p>
+<p>turnOn will also help you pass parameters like the current ModuleId to the script, in case you need it.</p>
 <h2 id="csp-configuration-best-practices">CSP Configuration Best Practices</h2>
 <h3 id="use-comments-to-document-your-csp">Use Comments to Document your CSP</h3>
 <p>In the Settings you can use comments with lines beginning with <code>//</code> to document your CSP.
 It will make your work easier and help others who make changes in the future.</p>
 <pre><code>// This will apply to all ...-src
-all-src: &#39;self&#39; https:
-</code></pre><h3 id="use-multiple-lines">Use Multiple Lines</h3>
-<p>All rules will be merged in the end, so in many cases it&#39;s better to have rules on multiple lines.</p>
+all-src: 'self' https:
+</code></pre>
+<h3 id="use-multiple-lines">Use Multiple Lines</h3>
+<p>All rules will be merged in the end, so in many cases it's better to have rules on multiple lines.</p>
 <pre><code>// This is for the image gallery
 script-src https://some-cdn.com/
 
 // This is for jQuery
 script-src https://some-other-cdn.com/
-</code></pre><h3 id="use-all-src">Use <code>all-src</code></h3>
-<p>2sxc has a special <code>all-src</code> rule which you should use for <code>&#39;self&#39;</code> or <code>https:</code> rules. </p>
-<p>You should use these at global/site level, because it ensures that any further rules from Apps or other sources won&#39;t break your site.</p>
-<h3 id="avoid-nonce--and-sha256--policies">Avoid &#39;nonce-...&#39; and &#39;sha256-...&#39; Policies</h3>
-<p><code>&#39;nonce-...&#39;</code> and <code>&#39;sha256-...&#39;</code> policies are great for allowing a specific inline bit of script or CSS. </p>
-<p>But they have a huge side-effect: they automatically disable the <code>&#39;unsafe-inline&#39;</code> rule. </p>
+</code></pre>
+<h3 id="use-all-src">Use <code>all-src</code></h3>
+<p>2sxc has a special <code>all-src</code> rule which you should use for <code>'self'</code> or <code>https:</code> rules.</p>
+<p>You should use these at global/site level, because it ensures that any further rules from Apps or other sources won't break your site.</p>
+<h3 id="avoid-nonce--and-sha256--policies">Avoid 'nonce-...' and 'sha256-...' Policies</h3>
+<p><code>'nonce-...'</code> and <code>'sha256-...'</code> policies are great for allowing a specific inline bit of script or CSS.</p>
+<p>But they have a huge side-effect: they automatically disable the <code>'unsafe-inline'</code> rule.</p>
 <p>Because of this, you should avoid using these policies, as most Dnn/Oqtane sites will have other scripts which are outside of your control, so you will typically need <code>unsafe-inline</code>.</p>
-<div class="WARNING"><h5>Warning</h5><p>If any of these policies are used, it automatically disables the <code>&#39;unsafe-inline&#39;</code> rule. 
+<div class="WARNING">
+<h5>Warning</h5>
+<p>If any of these policies are used, it automatically disables the <code>'unsafe-inline'</code> rule.
 This is how CSP works.</p>
 </div>
 <h3 id="be-as-local-as-possible">Be as Local as Possible</h3>
@@ -157,12 +161,12 @@ This is how CSP works.</p>
 <p>Rules which only apply to a specific razor page should ideally also be on that page only.</p>
 <h2 id="production--operations-reporting">Production / Operations Reporting</h2>
 <h3 id="use-a-reporting-server">Use a Reporting Server</h3>
-<p>Even if you think you&#39;re done, make sure to setup a reporting server.
+<p>Even if you think you're done, make sure to setup a reporting server.
 You can get free system from <a href="https://report-uri.com/">Report-URI</a>.
-This will allow you to monitor if your site is being compromised - or if you forgot to set some rules, which result in the site breaking. </p>
+This will allow you to monitor if your site is being compromised - or if you forgot to set some rules, which result in the site breaking.</p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -173,13 +177,14 @@ This will allow you to monitor if your site is being compromised - or if you for
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -187,28 +192,29 @@ This will allow you to monitor if your site is being compromised - or if you for
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

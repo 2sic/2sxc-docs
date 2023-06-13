@@ -16,8 +16,8 @@
     <title>Content Security Policy (CSP) Whitelist Guide | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Content Security Policy (CSP) Whitelist Guide | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,71 +116,81 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Whitelist">
 
-<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
+<img src="../../../assets/features/content-security-policy.svg" class="feature">
 <h1 id="content-security-policy-csp-whitelist-guide">Content Security Policy (CSP) Whitelist Guide</h1>
 <p>Most of your CSP policies will allow something to work.
 This is called <em>whitelisting</em>.</p>
 <h2 id="default-fallback">Default fallback</h2>
-<p>First, we set the <code>all-src</code> directive with the value <code>&#39;self&#39;</code> and <code>https:</code>.
+<p>First, we set the <code>all-src</code> directive with the value <code>'self'</code> and <code>https:</code>.
 This will force the browser to only accept sources originating from the host URL.
 <code>all-src</code> is a custom directive from 2sxc, which all source directives inherit from.</p>
-<pre><code class="lang-text">all-src &#39;self&#39; https:
-</code></pre><p>To improve documentation / clarity, you can also use multiple lines and comments:</p>
+<pre><code class="lang-text">all-src 'self' https:
+</code></pre>
+<p>To improve documentation / clarity, you can also use multiple lines and comments:</p>
 <pre><code class="lang-text">// Always allow things from the own server
-all-src: &#39;self&#39;
+all-src: 'self'
 
 // No matter where it comes from, it must use HTTPS
 all-src: https:
-</code></pre><h2 id="script-sources">Script sources</h2>
+</code></pre>
+<h2 id="script-sources">Script sources</h2>
 <p>For JavaScript code, we use the <code>scipt-src</code> directive.
-It is important for this directive to have <code>&#39;self&#39;</code> specified as origin, but because we have set the <code>all-src</code> directive it gets inherited automatically.
-For the trusted scripts to work properly we will also add <code>&#39;unsafe-eval&#39;</code>, which will allow script execution methods.</p>
-<pre><code class="lang-text">script-src &#39;unsafe-eval&#39;
-</code></pre><h2 id="style-sources">Style Sources</h2>
-<p>Because we sometimes use inline styles, we need to add the directive <code>style-src</code> with the value <code>&#39;unsafe-inline&#39;</code>.</p>
-<pre><code class="lang-text">style-src &#39;unsafe-inline&#39;
-</code></pre><h2 id="font-sources">Font Sources</h2>
+It is important for this directive to have <code>'self'</code> specified as origin, but because we have set the <code>all-src</code> directive it gets inherited automatically.
+For the trusted scripts to work properly we will also add <code>'unsafe-eval'</code>, which will allow script execution methods.</p>
+<pre><code class="lang-text">script-src 'unsafe-eval'
+</code></pre>
+<h2 id="style-sources">Style Sources</h2>
+<p>Because we sometimes use inline styles, we need to add the directive <code>style-src</code> with the value <code>'unsafe-inline'</code>.</p>
+<pre><code class="lang-text">style-src 'unsafe-inline'
+</code></pre>
+<h2 id="font-sources">Font Sources</h2>
 <p>Some of our fonts are hosted on the same origin and some are external.</p>
 <h3 id="inline-fonts">Inline Fonts</h3>
 <p>For example, we may allow fonts from inline data.
 You would do this by adding a <code>font-src</code> with the value <code>data:</code>.</p>
 <pre><code class="lang-text">font-src data:
-</code></pre><h3 id="google-fonts">Google Fonts</h3>
-<p>Because fonts are often included in the skin, we can&#39;t whitelist them using 2sxc and must specify them in the config.
+</code></pre>
+<h3 id="google-fonts">Google Fonts</h3>
+<p>Because fonts are often included in the skin, we can't whitelist them using 2sxc and must specify them in the config.
 For fonts included from google you typically need to add the url <code>fonts.googleapis.com</code> as trusted <code>style-src</code> origin and <code>fonts.gstatic.com</code> as trusted <code>font-src</code> origin.</p>
 <pre><code class="lang-text">style-src https://fonts.googleapis.com
 font-src https://fonts.gstatic.com
-</code></pre><h2 id="image-sources">Image sources</h2>
+</code></pre>
+<h2 id="image-sources">Image sources</h2>
 <p>We will only allow images from secure sources.
-If you have the all-src specified above, we don&#39;t need to add this again.
+If you have the all-src specified above, we don't need to add this again.
 But we may wish to add <code>data:</code> for inline images.</p>
 <pre><code class="lang-text">img-src data:
-</code></pre><h2 id="media-sources">Media sources</h2>
+</code></pre>
+<h2 id="media-sources">Media sources</h2>
 <p>For the usage of video/audio tags we will only allow media from secure sources as well.
-The &quot;media-src&quot; directive with the value &quot;&#39;self&#39; https:&quot; will be automatically assumed, if you have the <code>all-src</code> set above.</p>
+The &quot;media-src&quot; directive with the value &quot;'self' https:&quot; will be automatically assumed, if you have the <code>all-src</code> set above.</p>
 <h2 id="form-actions">Form actions</h2>
 <p>Form actions can be a sensitive topic while handling data.
-Simply by adding the <code>form-action</code> directive with the value &quot;&#39;self&#39;&quot;, we can prevent data-leaks.
-When dealing with other websites you should add the external domain specifically, like for example &quot;&#39;self&#39; <a href="https://externaldomain.com">https://externaldomain.com</a>&quot;.</p>
-<pre><code class="lang-text">form-action &#39;self&#39;
+Simply by adding the <code>form-action</code> directive with the value &quot;'self'&quot;, we can prevent data-leaks.
+When dealing with other websites you should add the external domain specifically, like for example &quot;'self' <a href="https://externaldomain.com">https://externaldomain.com</a>&quot;.</p>
+<pre><code class="lang-text">form-action 'self'
 form-action https://externaldomain.com
-</code></pre><h2 id="insecure-http-resources">Insecure (http) Resources</h2>
+</code></pre>
+<h2 id="insecure-http-resources">Insecure (http) Resources</h2>
 <p>For most resources we have specified to only allow secure https connections as origin.
 Because it would be hard to migrate every HTTP resource to HTTPS, we can use the &quot;upgrade-insecure-requests&quot; directive.
 Using this directive, the browser will request every resource (even if originating from HTTP) using HTTPS.</p>
-<p>Note that we don&#39;t recommend doing this!</p>
+<p>Note that we don't recommend doing this!</p>
 <h2 id="include-external-resources">Include External Resources</h2>
 <p>When including external resources in apps, you should use the AssetAttributes method from the IPageService.</p>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 &lt;script src=&quot;@App.Path/dist/scripts.min.js&quot; @Kit.Page.AssetAttributes() &gt;&lt;/script&gt;
-</code></pre><p>For cases, which are outside of the scope of 2sxc Apps you can whitelist them by specifying the directive <code>script-src</code> with the origin URL.</p>
+</code></pre>
+<p>For cases, which are outside of the scope of 2sxc Apps you can whitelist them by specifying the directive <code>script-src</code> with the origin URL.</p>
 <h2 id="trusted-pre-registered-web-resources">Trusted, Pre-Registered Web Resources</h2>
 <p>For pre-registered resources, you can also just activate them.</p>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   Kit.Page.Activate(&quot;turnOn&quot;, &quot;2sxc.JsCore&quot;, &quot;fancybox4&quot;);
 }
-</code></pre><h3 id="fontawesome-icon-libraries">Fontawesome Icon Libraries</h3>
+</code></pre>
+<h3 id="fontawesome-icon-libraries">Fontawesome Icon Libraries</h3>
 <p>As our default icon library, fontawesome gets set as trusted source automatically by 2sxc.
 This will only work if added using <code>Kit.Page.Activate(&quot;Fontawesome5&quot;)</code>.
 Otherwise you will have to specify it in the configuration.</p>
@@ -188,7 +198,8 @@ Otherwise you will have to specify it in the configuration.</p>
 @{
   Kit.Page.Activate(&quot;fontawesome5&quot;);
 }
-</code></pre><h3 id="fancybox">FancyBox</h3>
+</code></pre>
+<h3 id="fancybox">FancyBox</h3>
 <p>Within 2sxc the FancyBox library is also a pre-registered resource.
 Because 2sxc hosts the JavaScript file internally, we only need to trust the origin of its stylesheet file.
 We do this by adding a &quot;style-src&quot; directive and setting the &quot;cdn.jsdelivr.net/npm/@fancyapps/&quot; origin as value.
@@ -197,9 +208,10 @@ But this will also happen automatically when we activate the resource.</p>
 @{
   Kit.Page.Activate(&quot;fancybox3&quot;);
 }
-</code></pre></article>
+</code></pre>
+</article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -210,13 +222,14 @@ But this will also happen automatically when we activate the resource.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -224,28 +237,29 @@ But this will also happen automatically when we activate the resource.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

@@ -16,8 +16,8 @@
     <title>Logging in 2sxc / EAV | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Logging in 2sxc / EAV | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -126,22 +126,24 @@
 </ol>
 <p>With this we can easily see what the code did in the <a class="xref" href="../../debug/insights.html">Insights</a>.</p>
 <h2 id="how-to-use-in-your-code">How to Use in Your Code</h2>
-<p>We strongly suggest that you use the same concepts in your code. You&#39;ll have to look at the 2sxc/EAV source in Github to discover more.</p>
+<p>We strongly suggest that you use the same concepts in your code. You'll have to look at the 2sxc/EAV source in Github to discover more.</p>
 <h2 id="use-on-object">Use on Object</h2>
 <h3 id="object-creation">Object Creation</h3>
 <p>All objects which have a log, have a <code>Log</code> property which you can use to add notes.
 This is the most common way to log.
 Normally they will inherit from:</p>
 <ol>
-<li><code>ToSic.Lib.Services.ServiceBase</code><br> This is for services which have a few dependencies.</li>
-<li><code>ToSic.Lib.Services.ServiceBase&lt;Dependencies&gt;</code><br> This is for services which have a lot of dependencies.
- In this case you&#39;ll have to pass the dependencies to the base class.
- Dependencies usually inherit from <code>ToSic.Lib.Services.ServiceDependencies</code>.</li>
+<li><code>ToSic.Lib.Services.ServiceBase</code><br>
+This is for services which have a few dependencies.</li>
+<li><code>ToSic.Lib.Services.ServiceBase&lt;Dependencies&gt;</code><br>
+This is for services which have a lot of dependencies.
+In this case you'll have to pass the dependencies to the base class.
+Dependencies usually inherit from <code>ToSic.Lib.Services.ServiceDependencies</code>.</li>
 <li><code>ToSic.Lib.Services.HelperBase</code>
- This is for helpers which are not services and will usually be created in code (not from DI).</li>
+This is for helpers which are not services and will usually be created in code (not from DI).</li>
 </ol>
 <p>You can also just create normal objects and implement <code>ToSic.Lib.Logging.IHasLog</code>.</p>
-<p>Note that if you&#39;re inheriting from <code>ServiceBase&lt;Dependencies&gt;</code> then the dependencies class should
+<p>Note that if you're inheriting from <code>ServiceBase&lt;Dependencies&gt;</code> then the dependencies class should
 inherit from <code>ToSic.Lib.Services.DependenciesBase</code>.</p>
 <h3 id="log-linking">Log Linking</h3>
 <p>For optimal log structures, they should be linked together.
@@ -149,12 +151,14 @@ This helps to show the call hierarchy in the Insights.</p>
 <p>This is fully automated, if you adhere to the conventions.
 It works as follows:</p>
 <ol>
-<li>Any object inheriting from <code>ServiceBase</code><ol>
+<li>Any object inheriting from <code>ServiceBase</code>
+<ol>
 <li>should call <code>ConnectServices</code> in the constructor.
 TODO: EXAMPLE</li>
 </ol>
 </li>
-<li>Any object inheriting from <code>ServiceBase&lt;Dependencies&gt;</code><ol>
+<li>Any object inheriting from <code>ServiceBase&lt;Dependencies&gt;</code>
+<ol>
 <li>should pass the dependencies into the base constructor.</li>
 <li>The dependencies are then available on a <code>Deps</code> property.</li>
 <li>For this to work, the <code>Dependencies</code> should inherit from <code>ServiceDependencies</code> and in the constructor call <code>ConnectServices</code>.</li>
@@ -202,7 +206,7 @@ To log these, you must consider a few aspects:</p>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -213,13 +217,14 @@ To log these, you must consider a few aspects:</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -227,28 +232,29 @@ To log these, you must consider a few aspects:</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

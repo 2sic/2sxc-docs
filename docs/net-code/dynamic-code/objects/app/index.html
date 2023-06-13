@@ -16,8 +16,8 @@
     <title>App /  object Dynamic Code | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="App /  object Dynamic Code | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../../toc.html">
     <meta property="docfx:tocrel" content="../../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../../index.html">
                 <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -115,29 +115,28 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.App.Index">
-<h1 id="app--app-object-dynamic-code">App / @App object Dynamic Code</h1>
+<h1 id="app---object-dynamic-code">App / @App object Dynamic Code</h1>
 
 <p>The <code>App</code> object gives you full access to everything you need to know about the current App, including Path-info, access to all Data this App has, access to Settings and language Resources and more.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="how-to-use">How to use</h2>
-<p>Here&#39;s are two simple examples taken from the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a>:</p>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="how-to-use">How to use</h2>
+<p>Here's are two simple examples taken from the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a>:</p>
 <pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;  @Kit.Page.AssetAttributes()/&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;@App.Path/assets/scripts.js&quot; @Kit.Page.AssetAttributes()&gt;&lt;/script&gt;
 @foreach(var tag in AsList(App.Data[&quot;Tag&quot;])) {
-  &lt;li class=&#39;@(&quot;app-blog-tag&quot; + tag.ManualWeight)&#39;&gt;
+  &lt;li class='@(&quot;app-blog-tag&quot; + tag.ManualWeight)'&gt;
     &lt;a href=&quot;@App.Settings.DetailsPage/tag/@tag.Tag&quot; title=&quot;@tag.Name&quot;&gt;@tag.Name&lt;/a&gt;
   &lt;/li&gt;
 }
-</code></pre><p>The <code>&lt;link...</code> and <code>&lt;script...</code> use the app-path to ensure that the file is correctly loaded, no matter what portal or app-name is currently valid. Here you can discover more about the <a class="xref" href="../../../../basics/server/asset-optimization/index.html">optimizations</a>.</p>
-<p>The loop iterates through all tags with the <code>@foreach(var tag in AsList(App.Data[&quot;Tag&quot;]))</code>, creates <code>&lt;li&gt;</code> items and links these to a page defined in the <code>App.Settings</code>.  </p>
+</code></pre>
+<p>The <code>&lt;link...</code> and <code>&lt;script...</code> use the app-path to ensure that the file is correctly loaded, no matter what portal or app-name is currently valid. Here you can discover more about the <a class="xref" href="../../../../basics/server/asset-optimization/index.html">optimizations</a>.</p>
+<p>The loop iterates through all tags with the <code>@foreach(var tag in AsList(App.Data[&quot;Tag&quot;]))</code>, creates <code>&lt;li&gt;</code> items and links these to a page defined in the <code>App.Settings</code>.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>Whenever a 2sxc-instance is created to render a page or to deliver JSON data, the <code>App</code> object is created and prepared to deliver everything you need. It&#39;s very performant, because it doesn&#39;t actually get any data or run any queries unless these are accessed.</p>
+<p>Whenever a 2sxc-instance is created to render a page or to deliver JSON data, the <code>App</code> object is created and prepared to deliver everything you need. It's very performant, because it doesn't actually get any data or run any queries unless these are accessed.</p>
 <h2 id="app-properties">App Properties</h2>
 <p>The app-object uses the <code>IApp</code> interface (<a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Apps.IApp.html">see code</a>) has the following simple properties:</p>
 <ol>
@@ -160,7 +159,7 @@
 <h2 id="using-app-queries-appquery">Using App Queries (App.Query)</h2>
 <p>Read <a class="xref" href="app-query.html">App.Query /  Object in Dynamic Code</a></p>
 <h2 id="note-about-unpublished--draft-content-items">Note about Unpublished / Draft Content-Items</h2>
-<p>In case you&#39;re not aware of the draft/unpublished features in 2sxc, we want to note that each item can be live/draft, and each item could have a corresponding counterpart. So a draft-item <em>could</em> have a live-item (but doesn&#39;t have to), and a live-item <em>could</em> have a draft item.</p>
+<p>In case you're not aware of the draft/unpublished features in 2sxc, we want to note that each item can be live/draft, and each item could have a corresponding counterpart. So a draft-item <em>could</em> have a live-item (but doesn't have to), and a live-item <em>could</em> have a draft item.</p>
 <p>This is important, because the admin/editor will see all the draft items, while the end-user will only see the live ones. So the exact items shown and the item-count can differ if you are logged in.</p>
 <h2 id="app-settings-and-resources">App Settings and Resources</h2>
 <p>In the App dialogs you can manage <code>Settings</code> and <code>Resources</code>. Basically both are a content-item with the fields you specify, the only difference is the <em>purpose</em> they have.</p>
@@ -169,7 +168,7 @@
 <li>You should put settings like &quot;what page is xxx on&quot; or &quot;the primary color is #53aaff&quot; into <code>Settings</code></li>
 </ul>
 <p>You would normally use it like this:</p>
-<pre><code class="lang-razor">&lt;h1 class=&#39;@App.Settings.HeadingsDecorators&#39;&gt;
+<pre><code class="lang-razor">&lt;h1 class='@App.Settings.HeadingsDecorators'&gt;
     @Content.Title
 &lt;/h1&gt;
 &lt;div&gt;
@@ -178,7 +177,8 @@
 &lt;a href=&quot;@App.Settings.DisclaimerPage&quot;&gt;
     @App.Resources.Disclaimer
 &lt;/a&gt;
-</code></pre><p>As you can see, the <code>HeadingsDecorators</code> or <code>DisclaimerPage</code> are best placed in the <code>Settings</code>, while the label of the <code>Disclaimer</code> link are best handled as a multi-language <code>Resource</code>.</p>
+</code></pre>
+<p>As you can see, the <code>HeadingsDecorators</code> or <code>DisclaimerPage</code> are best placed in the <code>Settings</code>, while the label of the <code>Disclaimer</code> link are best handled as a multi-language <code>Resource</code>.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
 <li>If you need to get an App object for other apps, read <a class="xref" href="../../../external/dotnet-external-use.html">External App Use</a></li>
@@ -201,7 +201,7 @@
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -212,13 +212,14 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -226,28 +227,29 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

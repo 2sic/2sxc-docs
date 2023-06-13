@@ -16,8 +16,8 @@
     <title>Tutorial Custom DataSources - Configurable | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tutorial Custom DataSources - Configurable | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../../toc.html">
     <meta property="docfx:tocrel" content="../../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../../index.html">
                 <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,11 +116,15 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DataSources.Custom.TutorialBasic.Configurable">
 
-<div class="WARNING"><h5>Warning</h5><p>These documentations are for versions before 15.x.
-They don&#39;t apply to v15+ but are kept for reference.
-We highly recommend that you don&#39;t use them.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>These documentations are for versions before 15.x.
+They don't apply to v15+ but are kept for reference.
+We highly recommend that you don't use them.</p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>The code samples shown here are obsolete.
+<div class="TIP">
+<h5>Tip</h5>
+<p>The code samples shown here are obsolete.
 But the code was updated to the latest version.
 So best get the real code from the <a href="https://https://github.com/2sic/datasource-tutorial-basic">DataSource Tutorial Repo</a></p>
 </div>
@@ -135,21 +139,21 @@ So best get the real code from the <a href="https://https://github.com/2sic/data
 </ol>
 <h2 id="add-to-visualquery">Add to VisualQuery</h2>
 <p>This is what it looks like in <a class="xref" href="../../../../basics/query/visual-query/index.html">VisualQuery</a>:</p>
-<p><img src="assets/query-configurable-empty-design.jpg" width="100%" class="full-width"></p>
+<img src="assets/query-configurable-empty-design.jpg" width="100%" class="full-width">
 <p>And this is what you see when you run it without configuration:</p>
-<p><img src="assets/query-configurable-empty-results.jpg" width="100%" class="full-width"></p>
+<img src="assets/query-configurable-empty-results.jpg" width="100%" class="full-width">
 <h2 id="running-with-configuration-from-params">Running with Configuration from Params</h2>
 <p>Since this DataSource has configuration enabled, the UI knows that it can offer a <em>Settings</em> button:</p>
-<p><img src="assets/query-configurable-go-edit.jpg" width="100%" class="full-width"></p>
-<p>You could just write a number like <code>14</code> but here we&#39;re showing how to use <a class="xref" href="../../../../basics/query/parameters/index.html">Query Parameters</a>.</p>
-<p><img src="assets/query-configurable-edit-params.jpg" width="100%" class="full-width"></p>
+<img src="assets/query-configurable-go-edit.jpg" width="100%" class="full-width">
+<p>You could just write a number like <code>14</code> but here we're showing how to use <a class="xref" href="../../../../basics/query/parameters/index.html">Query Parameters</a>.</p>
+<img src="assets/query-configurable-edit-params.jpg" width="100%" class="full-width">
 <p>The Result would then look like this:</p>
-<p><img src="assets/query-configurable-show-22.jpg" width="100%" class="full-width"></p>
+<img src="assets/query-configurable-show-22.jpg" width="100%" class="full-width">
 <h2 id="running-with-invalid-configuration">Running with Invalid Configuration</h2>
-<p>Here&#39;s an example with an invalid configuration where the Hour would be <code>24</code> (hours can only go from 0 to 23):</p>
-<p><img src="assets/query-configurable-design-error.jpg" width="100%" class="full-width"></p>
+<p>Here's an example with an invalid configuration where the Hour would be <code>24</code> (hours can only go from 0 to 23):</p>
+<img src="assets/query-configurable-design-error.jpg" width="100%" class="full-width">
 <p>And here the resulting message which is optimized because the DataSource expected this mis-configuration:</p>
-<p><img src="assets/query-configurable-error-results.jpg" width="100%" class="full-width"></p>
+<img src="assets/query-configurable-error-results.jpg" width="100%" class="full-width">
 <h2 id="source-of-the-configurabledatetime-datasource">Source of the <code>ConfigurableDateTime</code> DataSource</h2>
 <p>This is the code for the simplest DataSource:</p>
 <pre><code class="lang-c#">using System;
@@ -174,7 +178,7 @@ namespace ToSic.Tutorial.DataSource.Basic
     Type = DataSourceType.Source,
     NiceName = &quot;DateTime Configurable&quot;,
     // Guid of the Content-Type which must be exported with this DataSource
-    // It&#39;s located in .data/contenttypes
+    // It's located in .data/contenttypes
     // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
     ConfigurationType = &quot;677210a2-cf08-46e5-a6b2-86e56e27be99&quot;,
     HelpLink = &quot;https://go.2sxc.org/DsCustom&quot;)]
@@ -203,16 +207,16 @@ namespace ToSic.Tutorial.DataSource.Basic
       {
         if (decimal.TryParse(Configuration[HoursKey], out var hour))
         {
-          // check that it&#39;s a valid hour-range
+          // check that it's a valid hour-range
           if (hour &gt;= 0 &amp;&amp; hour &lt;= 23) return (int)hour;
 
           // If not, set the error, so that the code can later pick up the error-stream
-          SetError(&quot;Hour value out of range&quot;, $&quot;The hour was &#39;{hour}&#39; which is not valid&quot;);
+          SetError(&quot;Hour value out of range&quot;, $&quot;The hour was '{hour}' which is not valid&quot;);
           return 0;
         }
 
         // Apparently not a decimal, so set the error, so that the code can later pick up the error-stream
-        SetError(&quot;Hour value invalid&quot;, $&quot;Tried to parse the hour, but couldn&#39;t. Value was &#39;{Configuration[HoursKey]}&#39;&quot;);
+        SetError(&quot;Hour value invalid&quot;, $&quot;Tried to parse the hour, but couldn't. Value was '{Configuration[HoursKey]}'&quot;);
         return 0;
       }
       set =&gt; Configuration[HoursKey] = value.ToString();
@@ -239,7 +243,7 @@ namespace ToSic.Tutorial.DataSource.Basic
       ConfigMask(DesiredDateKey, &quot;[Settings:DesiredDate||Today]&quot;);
 
       // Example of pre-configuring a number value
-      // We can&#39;t just say AnotherDemoConfig = &quot;text&quot; because that would not compile since it expects a number
+      // We can't just say AnotherDemoConfig = &quot;text&quot; because that would not compile since it expects a number
       // So we just add the token to be resolved directly to the configuration list
       ConfigMask(HoursKey, &quot;[Settings:Hours||17]&quot;);
     }
@@ -247,7 +251,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 
     /// &lt;summary&gt;
     /// This is the deferred call to retrieve entities
-    /// If you created the source correctly it won&#39;t be called unless accessed
+    /// If you created the source correctly it won't be called unless accessed
     /// This is recommended for performance reasons
     /// We also recommend placing the result in the cache...
     /// &lt;/summary&gt;
@@ -257,27 +261,27 @@ namespace ToSic.Tutorial.DataSource.Basic
       // This will resolve the tokens before starting
       Configuration.Parse();
 
-      // Here&#39;s your real code. 
+      // Here's your real code. 
       // Typically you will either perform some work with the In-streams
       // or retrieve data from another source like XML, RSS, SQL, File-storage etc.
-      // Usually you would also need configuration from the UI - but sometimes not, especially if it&#39;s just for a very specific purpose
+      // Usually you would also need configuration from the UI - but sometimes not, especially if it's just for a very specific purpose
       #region Your Custom Business Logic
 
       try
       {
-        // Check if we&#39;re trying to inform about today
+        // Check if we're trying to inform about today
         if (DesiredDate != &quot;Today&quot;)
-          return SetError(&quot;Demo Config not Today&quot;, &quot;The Demo Configuration should be &#39;Today&#39; or empty.&quot;);
+          return SetError(&quot;Demo Config not Today&quot;, &quot;The Demo Configuration should be 'Today' or empty.&quot;);
 
         // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
         var hours = Hours;
         if (!ErrorStream.IsDefaultOrEmpty)
           return ErrorStream;
 
-        // For this demo we&#39;ll treat the current time as UTC
+        // For this demo we'll treat the current time as UTC
         var todayDate = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
 
-        // In this demo we&#39;ll just create 1 entity containing some values related to today
+        // In this demo we'll just create 1 entity containing some values related to today
         var today = new Dictionary&lt;string, object&gt;
         {
           {&quot;Title&quot;, &quot;Date Today&quot;},
@@ -292,7 +296,7 @@ namespace ToSic.Tutorial.DataSource.Basic
       }
       catch (Exception ex)
       {
-        // if something happens, let&#39;s return this information as a result
+        // if something happens, let's return this information as a result
         return SetError(&quot;Unexpected Error&quot;, &quot;The Configurable DateTime DataSource ran into an exception.&quot;, ex);
       }
       #endregion
@@ -300,7 +304,8 @@ namespace ToSic.Tutorial.DataSource.Basic
     }
   }
 }
-</code></pre><p>This does a LOT more. Here the important bits</p>
+</code></pre>
+<p>This does a LOT more. Here the important bits</p>
 <ol>
 <li>The <a class="xref" href="../../../../basics/query/visual-query/index.html">VisualQuery</a> Attribute has a lot more information</li>
 <li>It has various properties like <code>Hour</code> which will be populated by settings in the Constructor...</li>
@@ -320,7 +325,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -331,13 +336,14 @@ namespace ToSic.Tutorial.DataSource.Basic
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -345,28 +351,29 @@ namespace ToSic.Tutorial.DataSource.Basic
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

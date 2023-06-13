@@ -16,8 +16,8 @@
     <title>Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02 | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../../toc.html">
     <meta property="docfx:tocrel" content="../../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../../index.html">
                 <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,7 +117,7 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V14.IssueAssemblyBinding">
 <h1 id="assembly-binding-issue-on-installs-from-2sxc-1304-to-1402">Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02</h1>
 
-<p>2sxc 13.04 up until v14.02 had a bug where the assembly bindings in web.config wasn&#39;t done correctly.
+<p>2sxc 13.04 up until v14.02 had a bug where the assembly bindings in web.config wasn't done correctly.
 The result is, that many bindings were added repeatedly.
 Issue is fixed in v14.03.</p>
 <p>The problems:</p>
@@ -171,7 +171,8 @@ Issue is fixed in v14.03.</p>
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre><p>This assemblyBinding fragment can be repeated many times, depending on the amount of times you upgraded 2sxc (since v13.04 till v14.02), what DNN version you&#39;re using and what 3rd party modules you have.</p>
+</code></pre>
+<p>This assemblyBinding fragment can be repeated many times, depending on the amount of times you upgraded 2sxc (since v13.04 till v14.02), what DNN version you're using and what 3rd party modules you have.</p>
 <p>While testing this issue, we did not noticed anything that is breaking dnn and 2sxc because .NET Framework will follow only first occurrence of assembly binding for specified assembly in web.config. From functional point of view, second and any other assembly binding for the same specified assembly will be ignored by .NET Framework. Still it is not nice to have unnecessary assembly binding copies in web.config.</p>
 <p>For v13.04-v14.02. recommendation is that you manually remove unnecessary bindings in web.config to keep it clean.</p>
 <p>Upgrade to v14.03 (or latter version) will auto-fix this.</p>
@@ -192,28 +193,33 @@ Issue is fixed in v14.03.</p>
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre><h2 id="how-to-clean">How to Clean</h2>
+</code></pre>
+<h2 id="how-to-clean">How to Clean</h2>
 <p>Do the following:</p>
 <ol>
-<li>Backup web.config.</li>
+<li><p>Backup web.config.</p>
+</li>
 <li><p>Search for first occurrence of...</p>
 <pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre><p> ...that is followed by list of unnecessary duplicate assembly bindings, started with duplicate...</p>
+</code></pre>
+<p>...that is followed by list of unnecessary duplicate assembly bindings, started with duplicate...</p>
 <pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
   &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre><p> ...ending with duplicate...</p>
+</code></pre>
+<p>...ending with duplicate...</p>
 <pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>Select and remove all duplicate assembly bindings fragments.
- Second (and any other) copy of this fragment is unnecessary.</p>
+Second (and any other) copy of this fragment is unnecessary.</p>
 <pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
   &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; /&gt;
@@ -258,16 +264,17 @@ Issue is fixed in v14.03.</p>
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
-</code></pre><p> YouTube video: How to manually remove duplicate assembly bindings?
- <a href="https://www.youtube.com/watch?v=eTL-VTjxF9k"><img src="https://img.youtube.com/vi/eTL-VTjxF9k/0.jpg" alt="How to manually remove duplicate assembly bindings?"></a></p>
-<p> Ensure that you have only one list of this bindings in web.config.</p>
+</code></pre>
+<p>YouTube video: How to manually remove duplicate assembly bindings?
+<a href="https://www.youtube.com/watch?v=eTL-VTjxF9k"><img src="https://img.youtube.com/vi/eTL-VTjxF9k/0.jpg" alt="How to manually remove duplicate assembly bindings?"></a></p>
+<p>Ensure that you have only one list of this bindings in web.config.</p>
 </li>
 <li><p>Save web.config and test dnn that is working.</p>
 </li>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -278,13 +285,14 @@ Issue is fixed in v14.03.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -292,28 +300,29 @@ Issue is fixed in v14.03.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

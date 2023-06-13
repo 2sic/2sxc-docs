@@ -13,11 +13,11 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Customize the Search-Index Results (Dnn &#9762;&#65039; only) | 2sxc 16 / EAV 16 </title>
+    <title>Customize the Search-Index Results (Dnn ☢️ only) | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Customize the Search-Index Results (Dnn &#9762;&#65039; only) | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="title" content="Customize the Search-Index Results (Dnn ☢️ only) | 2sxc 16 / EAV 16 ">
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,15 +117,19 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Search.Index">
 <h1 id="customize-the-search-index-results-dnn--only">Customize the Search-Index Results (Dnn ☢️ only)</h1>
 
-<p>Dnn has a built-in search engine which crawls all the modules asking them for data. </p>
-<p>You can easily modify how data in your modules appear in the Dnn search results. </p>
-<div class="TIP"><h5>Tip</h5><p>Before you start, make sure you understand how the <a class="xref" href="../../basics/cms/search/index.html">Search Index and Customizations work</a>.</p>
+<p>Dnn has a built-in search engine which crawls all the modules asking them for data.</p>
+<p>You can easily modify how data in your modules appear in the Dnn search results.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Before you start, make sure you understand how the <a class="xref" href="../../basics/cms/search/index.html">Search Index and Customizations work</a>.</p>
 </div>
-<div class="NOTE"><h5>Note</h5><p>This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file. </p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file.</p>
 <p>Previous versions used another mechanism which is deprecated. If you need to know more, read the <a class="xref" href="../razor/obsolete/index.html#data-and-search-customization">Obsolete Razor</a> docs.</p>
 </div>
 <h2 id="programming-a-search-mapper">Programming a Search Mapper</h2>
-<p>Here&#39;s an example of a <code>SearchMapper.cs</code>: </p>
+<p>Here's an example of a <code>SearchMapper.cs</code>:</p>
 <pre><code class="lang-c#">using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +137,7 @@ using ToSic.Sxc.Context;
 using ToSic.Sxc.Search;
 /*
 Custom code which views use to customize how dnn search treats data of that view.
-It&#39;s meant for customizing the internal indexer of the platform, _not_ for Google Search.
+It's meant for customizing the internal indexer of the platform, _not_ for Google Search.
 
 To use it, create a custom code (.cs) file which implements ICustomizeSearch interface.
 You can also inherit from a DynamicCode base class (like Code12) if you need more functionality.
@@ -146,14 +150,14 @@ public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
     /// Populate the search
     /// &lt;/summary&gt;
     /// &lt;param name=&quot;searchInfos&quot;&gt;Dictionary containing the streams and items in the stream for this search.&lt;/param&gt;
-    /// &lt;param name=&quot;moduleInfo&quot;&gt;Module information with which you can find out what page it&#39;s on etc.&lt;/param&gt;
+    /// &lt;param name=&quot;moduleInfo&quot;&gt;Module information with which you can find out what page it's on etc.&lt;/param&gt;
     /// &lt;param name=&quot;beginDate&quot;&gt;Last time the indexer ran - because the data you will get is only what was modified since.&lt;/param&gt;
     public void CustomizeSearch(Dictionary&lt;string, List&lt;ISearchItem&gt;&gt; searchInfos, IModule moduleInfo, DateTime beginDate)
     {
         // Set this to true if you want to see logs of this search in the insights
-        // Only do this while developing, otherwise you&#39;ll flood the logs and never see the important parts
+        // Only do this while developing, otherwise you'll flood the logs and never see the important parts
         Log.Preserve = false;
-
+        
         foreach (var si in searchInfos[&quot;AllPosts&quot;])
         {
             var entity = AsDynamic(si.Entity);
@@ -172,12 +176,14 @@ public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
         }
     }
 }
-</code></pre><h2 id="basics-to-get-right">Basics to get Right</h2>
+</code></pre>
+<h2 id="basics-to-get-right">Basics to get Right</h2>
 <ol>
-<li>The File name can be anything you want, but the class name must match it. </li>
-<li>Your code can be a simple C# class, but we recommend it inherits from <code>Custom.Hybrid.Code12</code><ol>
-<li>...because you then also get more objects like <a class="xref" href="../dynamic-code/objects/app/index.html"><code>App</code></a> or <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a> </li>
-<li>You can also inherit from <code>Custom.Dnn.Code12</code> which would give you the <a class="xref" href="../dynamic-code/object-dnn.html"><code>Dnn</code> object</a> but we don&#39;t suggest it, because you should use the <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a> where possible.</li>
+<li>The File name can be anything you want, but the class name must match it.</li>
+<li>Your code can be a simple C# class, but we recommend it inherits from <code>Custom.Hybrid.Code12</code>
+<ol>
+<li>...because you then also get more objects like <a class="xref" href="../dynamic-code/objects/app/index.html"><code>App</code></a> or <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a></li>
+<li>You can also inherit from <code>Custom.Dnn.Code12</code> which would give you the <a class="xref" href="../dynamic-code/object-dnn.html"><code>Dnn</code> object</a> but we don't suggest it, because you should use the <a class="xref" href="../dynamic-code/objects/cmscontext/index.html"><code>CmsContext</code></a> where possible.</li>
 </ol>
 </li>
 <li>Your class must implement <code>ToSic.Sxc.Search.ICustomizeSearch</code> to inform the compiler that it can help with search mapping</li>
@@ -192,53 +198,53 @@ public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
 <li>Change properties like the QueryString - this is great on list views where data is indexed in the list, but the link in the search results should go to a details page.</li>
 </ol>
 <h2 id="develop-search-customizations">Develop Search Customizations</h2>
-<p>To create your search indexing code you&#39;ll probably need to tweak and test a few times. Note that the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">2sxc Blog App</a> shows you a real-life example of Search-Customizations. </p>
-<p>So once you&#39;ve <a class="xref" href="../../basics/cms/search/index.html#custom-search-index-using-code">configured a View to use a custom Search-Mapper</a> your work will usually consist of doing the following</p>
+<p>To create your search indexing code you'll probably need to tweak and test a few times. Note that the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">2sxc Blog App</a> shows you a real-life example of Search-Customizations.</p>
+<p>So once you've <a class="xref" href="../../basics/cms/search/index.html#custom-search-index-using-code">configured a View to use a custom Search-Mapper</a> your work will usually consist of doing the following</p>
 <ol>
 <li>Making some changes</li>
 <li>Going into the Dnn Admin and flushing the search-index</li>
-<li>Then run the indexer and wait till it&#39;s completed</li>
+<li>Then run the indexer and wait till it's completed</li>
 <li>Check the results or debug issues using the Dnn Events-Log or 2sxc Insights (see below)</li>
 </ol>
 <h2 id="debugging-search-indexing">Debugging Search Indexing</h2>
 <p>Two tools will help you to debug issues</p>
 <h4 id="1-dnn-events-log">1. Dnn Events Log</h4>
-<p>Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn&#39;t even running, check that. </p>
+<p>Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn't even running, check that.</p>
 <h4 id="2-2sxc-insights">2. 2sxc Insights</h4>
-<p><a class="xref" href="../debug/insights.html">2sxc Insights</a> will help you see what&#39;s happening exactly in your code when you need it. </p>
-<div class="WARNING"><h5>Warning</h5><p>By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn&#39;t find the occurances which you need. </p>
+<p><a class="xref" href="../debug/insights.html">2sxc Insights</a> will help you see what's happening exactly in your code when you need it.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn't find the occurances which you need.</p>
 <p>Because of this, logging is disabled by default, and your code can activate it using <code>Log.Preserve = true;</code></p>
 </div>
-<p>Remember to add a bunch of logging like <code>Log.Add(&quot;Got to here&quot;);</code> etc. to verify everything works step-by-step. </p>
+<p>Remember to add a bunch of logging like <code>Log.Add(&quot;Got to here&quot;);</code> etc. to verify everything works step-by-step.</p>
 <h2 id="common-issues">Common Issues</h2>
 <h4 id="already-indexed-data-is-not-reindexed">Already Indexed Data is not Reindexed</h4>
-<p>Often when you&#39;re playing with indexing customizations you&#39;ll re-run the indexer and expect to see the changed results - but it&#39;s still what was there before. 
-This is because each Entity has a modified timestamp and only changed entities will be re-indexed. 
-This is great for performance, but challenging when making changes. </p>
-<p>👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked. </p>
+<p>Often when you're playing with indexing customizations you'll re-run the indexer and expect to see the changed results - but it's still what was there before.
+This is because each Entity has a modified timestamp and only changed entities will be re-indexed.
+This is great for performance, but challenging when making changes.</p>
+<p>👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked.</p>
 <h4 id="search-index-and-multilanguage-i18n">Search Index and Multilanguage (i18n)</h4>
-<p>It&#39;s important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that. </p>
-<p>This event is called by the view-engine <em>after</em> calling <a class="xref" href="../razor/customizedata.html">CustomizeData</a> and before passing the <code>Data</code> object to the Dnn Search Indexer. </p>
-<p>You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page. </p>
+<p>It's important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that.</p>
+<p>This event is called by the view-engine <em>after</em> calling <a class="xref" href="../razor/customizedata.html">CustomizeData</a> and before passing the <code>Data</code> object to the Dnn Search Indexer.</p>
+<p>You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="how-to-use">How to use</h2>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="how-to-use">How to use</h2>
 <p>In your razor page (.cshtml file) you can add a script block implementing this, as follows:</p>
 <pre><code class="lang-cs">@using ToSic.Eav.Run;
 @using ToSic.Sxc.Dnn.Run;
 @using ToSic.Sxc.Search;
 @functions
 {
-    // this method is optional - your code wouldn&#39;t need it, but it&#39;s in here to show how it would work together
+    // this method is optional - your code wouldn't need it, but it's in here to show how it would work together
     // the CustomizeData would be called first, and potentially modify what is in the Data-object
     public override void CustomizeData()
     {
-        // Don&#39;t customize anything, nothing to customize in this case
+        // Don't customize anything, nothing to customize in this case
     }
 
     /// &lt;summary&gt;
@@ -256,25 +262,30 @@ This is great for performance, but challenging when making changes. </p>
         }
     }
 }
-</code></pre><p>The code above will skip customizing any data (but often you would want that too), then CustomizeSearch modifies the list of search-items before they are indexed. </p>
+
+</code></pre>
+<p>The code above will skip customizing any data (but often you would want that too), then CustomizeSearch modifies the list of search-items before they are indexed.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>In general everything will work automatically. This is what happens:</p>
 <ol>
 <li>2sxc will retrieve the data added to this module</li>
-<li>2sxc will call the <a class="xref" href="../razor/customizedata.html">CustomizeData()</a> event if the template has such an event. In this event, your code can add more data to the module as needed.<ol>
+<li>2sxc will call the <a class="xref" href="../razor/customizedata.html">CustomizeData()</a> event if the template has such an event. In this event, your code can add more data to the module as needed.
+<ol>
 <li>Note that during the search index, no Request-variables exist.</li>
 <li>So your method will cause an error if it does something like var x = Request[&quot;Category&quot;].</li>
 <li>In case of an error, the index will still continue to work, but your changes to the data will fail</li>
 <li>To help you with this, a new property called Purpose was added. It tells you if this view/template was created for displaying or for indexing.</li>
 </ol>
 </li>
-<li>2sxc will then use the data and create SearchItems, ready to index.<ol>
+<li>2sxc will then use the data and create SearchItems, ready to index.
+<ol>
 <li>Each entity will be turned into a SearchItem</li>
 <li>Each Content-Type will have an own list (so you can differentiate between all the SearchItems for the Categories and the SearchItems for the Questions)</li>
 <li>Multi-Language is handled correctly, so the English index will contain the English content, etc.</li>
 </ol>
 </li>
-<li>2sxc will then call a CustomizeSearch() event, so your code could provide changes.<ol>
+<li>2sxc will then call a CustomizeSearch() event, so your code could provide changes.
+<ol>
 <li>A common scenario is to say that each entity (say each question) has a different URL (say a details-page).</li>
 <li>So even though all entities belong to the module (and Dnn only knows of this one module), the module can say that each entity has an own details page.</li>
 </ol>
@@ -300,7 +311,7 @@ This is great for performance, but challenging when making changes. </p>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -311,13 +322,14 @@ This is great for performance, but challenging when making changes. </p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -325,28 +337,29 @@ This is great for performance, but challenging when making changes. </p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

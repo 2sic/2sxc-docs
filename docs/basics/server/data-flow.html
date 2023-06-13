@@ -16,8 +16,8 @@
     <title>How Data Flows in the Server | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="How Data Flows in the Server | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -118,32 +118,25 @@
 <h1 id="how-data-flows-in-the-server">How Data Flows in the Server</h1>
 
 <div class="float-right context-box-summary highlight-max" width="400px">
-    <div class="fancybox-auto svg-highlight" style="width: 100%">
-    <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
+  <div class="fancybox-auto svg-highlight" style="width: 100%">
+<svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
   <image href="../stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
-
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
   <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
   <rect class="svg-highlight prepared data-assets-all" x="3%" y="82%" width="33%" height="18%"></rect>
   <rect class="svg-highlight prepared data-assets-app" x="3%" y="82%" width="17%" height="10%"></rect>
   <rect class="svg-highlight prepared data-assets-entities" x="18.5%" y="82%" width="17%" height="10%"></rect>
-
   <rect class="svg-highlight prepared data-configuration" x="3%" y="93%" width="17%" height="6.5%"></rect>
-
   <rect class="svg-highlight prepared data-entities" x="34%" y="82%" width="33%" height="10.5%"></rect>
   <rect class="svg-highlight prepared data-content-types" x="34%" y="89%" width="33%" height="10%"></rect>
   <rect class="svg-highlight prepared data-content-types-app" x="34%" y="89%" width="17.5%" height="10%"></rect>
   <rect class="svg-highlight prepared data-content-types-global" x="50%" y="89%" width="17%" height="10%"></rect>
   <rect class="svg-highlight prepared data-external" x="65.5%" y="82%" width="17%" height="10.5%"></rect>
-
   <!-- ADAM -->
   <rect class="svg-highlight prepared adam" x="18.5%" y="89%" width="17%" height="8%"></rect>
-
   <!-- Server -->
   <rect class="svg-highlight prepared server-all" x="0%" y="41%" width="84%" height="38%"></rect>
-
-
   <!-- Prepare -->
   <rect class="svg-highlight prepared prepare-all" x="0%" y="61%" width="84%" height="18%"></rect>
   <rect class="svg-highlight prepared query" x="44.5%" y="61%" width="34%" height="18%"></rect>
@@ -152,7 +145,6 @@
   <rect class="svg-highlight prepared query-app" x="60.5%" y="62.5%" width="17%" height="11%"></rect>
   <rect class="svg-highlight prepared query-datasource" x="71%" y="70%" width="7%" height="7%"></rect>
   <rect class="svg-highlight prepared query-params" x="65%" y="70%" width="10%" height="7%"></rect>
-
   <!-- Data Source -->
   <rect class="svg-highlight prepared datasource" x="86%" y="51%" width="13%" height="16%"></rect>
   <rect class="svg-highlight prepared datasource-custom" x="87.5%" y="54.5%" width="12%" height="6%"></rect>
@@ -160,11 +152,9 @@
   <rect class="svg-highlight prepared lookup" x="86%" y="66%" width="13%" height="15%"></rect>
   <rect class="svg-highlight prepared lookup-engine" x="87.5%" y="69%" width="12%" height="6%"></rect>
   <rect class="svg-highlight prepared lookup-sources" x="87.5%" y="73%" width="12%" height="7%"></rect>
-
   <!-- Optimzers -->
   <rect class="svg-highlight prepared asset-optimizer" x="3%" y="49.5%" width="13.5%" height="8%"></rect>
   <rect class="svg-highlight prepared image-resizer" x="15%" y="30%" width="17%" height="34%"></rect>
-
   <!-- Process / Awesomize -->
   <rect class="svg-highlight prepared process-all" x="0%" y="41%" width="84%" height="18%"></rect>
   <rect class="svg-highlight prepared process-cs" x="34%" y="41%" width="33%" height="18%"></rect>
@@ -177,18 +167,14 @@
   <rect class="svg-highlight prepared process-web-api-engine" x="50%" y="50%" width="17%" height="7%"></rect>
   <rect class="svg-highlight prepared process-libraries" x="47%" y="47%" width="7%" height="7%"></rect>
   <rect class="svg-highlight prepared process-headless" x="65.5%" y="49.5%" width="17%" height="7%"></rect>
-
   <!-- Libraries -->
   <rect class="svg-highlight prepared libraries" x="86%" y="38%" width="13%" height="15%"></rect>
   <rect class="svg-highlight prepared libraries-app" x="87.5%" y="41%" width="12%" height="6.5%"></rect>
   <rect class="svg-highlight prepared libraries-built-in" x="87.5%" y="46%" width="12%" height="6%"></rect>
-
-
   <!-- data formats -->
   <rect class="svg-highlight prepared format-json-custom" x="50%" y="32%" width="17%" height="14%"></rect>
   <rect class="svg-highlight prepared format-json-headless" x="65.5%" y="32%" width="17%" height="21%"></rect>
   <rect class="svg-highlight prepared format-json-edit" x="74%" y="30%" width="19%" height="23%"></rect>
-
   <!-- Browser -->
   <rect class="svg-highlight prepared browser-all" x="0%" y="0%" width="100%" height="34%"></rect>
   <rect class="svg-highlight prepared browser-show" x="0%" y="0%" width="50%" height="34%"></rect>
@@ -196,35 +182,27 @@
   <rect class="svg-highlight prepared browser-interact" x="47%" y="0%" width="20.5%" height="34%"></rect>
   <rect class="svg-highlight prepared browser-edit" x="64%" y="0%" width="20.5%" height="34%"></rect>
   <rect class="svg-highlight prepared browser-edit-ui" x="81.5%" y="0%" width="18%" height="34%"></rect>
-
   <!-- Frameworks -->
   <rect class="svg-highlight prepared frameworks-browser" x="0%" y="0%" width="17.5%" height="34%"></rect>
   <rect class="svg-highlight prepared frameworks-CSS" x="0%" y="3%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared frameworks-js" x="0%" y="12%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared frameworks-spa" x="0%" y="21%" width="17.5%" height="12%"></rect>
-
   <!-- App show parts -->
   <rect class="svg-highlight prepared show-html" x="15.8%" y="3%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared show-js" x="15.8%" y="12%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared show-spa" x="15.8%" y="21%" width="17.5%" height="12%"></rect>
-
   <!-- Interact parts -->
   <rect class="svg-highlight prepared interact-mobile" x="48.5%" y="3%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared interact-2sxc" x="48.5%" y="12%" width="17.5%" height="12%"></rect>
-
   <!-- Edit parts -->
   <rect class="svg-highlight prepared edit-auto" x="65.5%" y="3%" width="17.5%" height="12%"></rect>
   <rect class="svg-highlight prepared edit-custom" x="65.5%" y="12%" width="17.5%" height="12%"></rect>
-
   <!-- Edit UI parts -->
   <rect class="svg-highlight prepared edit-ui" x="82.5%" y="3%" width="17.5%" height="18%"></rect>
   <rect class="svg-highlight prepared edit-ui-custom" x="82.5%" y="20%" width="17.5%" height="12%"></rect>
-
   <!-- SPA parts -->
   <rect class="svg-highlight prepared spa-all" x="0%" y="21%" width="83%" height="12%"></rect>
   <rect class="svg-highlight prepared spa-2sxc-js" x="31.5%" y="21%" width="52%" height="12%"></rect>
-
-
   <!-- Custom highlight boxes - can be controlled by in-page CSS -->
   <rect class="svg-highlight highlight1"></rect>
   <rect class="svg-highlight highlight2"></rect>
@@ -234,66 +212,81 @@
 </svg>
   </div>
   <div class="overlay-description">
-    you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a></p>
   </div>
-</div><style>.context-box-summary .process-all { visibility: visible; } </style>
-
-
-<p>2sxc is simple to use, but to enable that, it&#39;s pretty sophisticated on the inside.
-Let&#39;s take a look at how data is accessed, cached, queried, maybe cached again, and provided to the output.</p>
-<div class="NOTE"><h5>Note</h5><p>All the data handling systems come from the <a class="xref" href="../../api/dot-net/ToSic.Eav.html">EAV</a>. This is then enhanced and customized by Sxc and Sxc.Dnn.</p>
+</div>
+<style>.context-box-summary .process-all { visibility: visible; } </style>
+<p>2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside.
+Let's take a look at how data is accessed, cached, queried, maybe cached again, and provided to the output.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All the data handling systems come from the <a class="xref" href="../../api/dot-net/ToSic.Eav.html">EAV</a>. This is then enhanced and customized by Sxc and Sxc.Dnn.</p>
 </div>
 <h2 id="core-paradigms">Core Paradigms</h2>
 <h3 id="rule-1-data-is-reactive">Rule #1: Data is Reactive</h3>
-<p>As you&#39;ll soon see, the EAV performs a lot of automatic lookup and caching, but as a first rule, this happens <em>Reactively</em>, only when data is actually accessed. 
-This is similar to how <a href="http://reactivex.io/">ReactiveX</a> or <a href="https://ngrx.io/">NgRx</a> work, just much simpler. </p>
+<p>As you'll soon see, the EAV performs a lot of automatic lookup and caching, but as a first rule, this happens <em>Reactively</em>, only when data is actually accessed.
+This is similar to how <a href="http://reactivex.io/">ReactiveX</a> or <a href="https://ngrx.io/">NgRx</a> work, just much simpler.</p>
 <h3 id="rule-2-data-is-read-only">Rule #2: Data is Read-Only</h3>
-<p>Any data the code receives as <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> objects is read-only. 
-This allows for a much more robust data model and API which in a CMS environment is usually 99% read, 1% write. </p>
+<p>Any data the code receives as <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> objects is read-only.
+This allows for a much more robust data model and API which in a CMS environment is usually 99% read, 1% write.</p>
 <h3 id="rule-3-data-always-comes-from-datasources">Rule #3: Data Always Comes from DataSources</h3>
-<p>Inside the system everything is loosely coupled (think Depedency Injection). 
-So anything requesting data will always use a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> provided by some magic, and then use what was given. </p>
+<p>Inside the system everything is loosely coupled (think Depedency Injection).
+So anything requesting data will always use a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> provided by some magic, and then use what was given.</p>
 <h3 id="rule-4-data-is-managed-and-cached-per-app">Rule #4: Data is Managed and Cached per App</h3>
-<p>Once data from an App was requested, the entire app is loaded and cached. 
+<p>Once data from an App was requested, the entire app is loaded and cached.
 Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an <a class="xref" href="caching/app-state/app-state.html">AppState</a>.</p>
 <h2 id="overall-flow-when-creating-html">Overall Flow When Creating Html</h2>
-<p>Imagine that your custom Razor template in a Dnn module is initialized. Here&#39;s what happens:</p>
+<p>Imagine that your custom Razor template in a Dnn module is initialized. Here's what happens:</p>
 <h3 id="1-preparation">1. Preparation</h3>
-<p>2sxc starts with the ModuleId as it&#39;s inside a Dnn Module. It will then create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IBlock.html">Block</a> for this InstanceId (which is the ModuleId).</p>
+<p>2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IBlock.html">Block</a> for this InstanceId (which is the ModuleId).</p>
 <ol>
 <li>The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
-<li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the <code>AppId</code> which it is visualizing, and a <code>ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included). </li>
-<li>The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.  <ol>
-<li>When the configuration is found, the CmsBlock then knows what <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IView.html">View</a> will be used. </li>
-<li>The CmsBlock itself is a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> and is now configured to deliver the data which the view expects. </li>
+<li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the <code>AppId</code> which it is visualizing, and a <code>ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included).</li>
+<li>The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.
+<ol>
+<li>When the configuration is found, the CmsBlock then knows what <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.IView.html">View</a> will be used.</li>
+<li>The CmsBlock itself is a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> and is now configured to deliver the data which the view expects.</li>
 </ol>
 </li>
 </ol>
-<div class="NOTE"><h5>Note</h5><p>The CmsBlock doesn&#39;t know about the internals of the cache, it just asks for it. The cache will auto-initialize the <a class="xref" href="caching/app-state/app-state.html">AppState</a> if it hasn&#39;t been accessed before.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the <a class="xref" href="caching/app-state/app-state.html">AppState</a> if it hasn't been accessed before.</p>
 </div>
-<div class="NOTE"><h5>Note</h5><p>The CmsBlock will also <em>not</em> load any data yet. It just knows what would be loaded, should it ever be accessed.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The CmsBlock will also <em>not</em> load any data yet. It just knows what would be loaded, should it ever be accessed.</p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>When you use views which don&#39;t have a content-type configured, then properties like <code>Data</code>, <code>Content</code> or <code>Header</code> will be null. But <code>App.Data</code> will still work.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>When you use views which don't have a content-type configured, then properties like <code>Data</code>, <code>Content</code> or <code>Header</code> will be null. But <code>App.Data</code> will still work.</p>
 </div>
 <h3 id="2-execution">2. Execution</h3>
-<p>The Block is now ready. 2sxc now consults the View to find out which <a class="xref" href="../../api/dot-net/ToSic.Sxc.Engines.IEngine.html">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created. </p>
+<p>The Block is now ready. 2sxc now consults the View to find out which <a class="xref" href="../../api/dot-net/ToSic.Sxc.Engines.IEngine.html">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
 <ol>
-<li>The engine loads the template and lets it do what it should. </li>
-<li>If the template has code accessing <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_Data">Data</a> then the underlying source will retrieve the necessary data.<ul>
-<li>If it&#39;s a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock. </li>
+<li>The engine loads the template and lets it do what it should.</li>
+<li>If the template has code accessing <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_Data">Data</a> then the underlying source will retrieve the necessary data.
+<ul>
+<li>If it's a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock.</li>
 <li>If the view relies on a Query, then this query is built and will be waiting to execute if the data is accessed.</li>
 </ul>
 </li>
 <li>If the code accesses <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_Data">App</a>.<a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.App.html#ToSic_Eav_Apps_App_Data">Data</a> then this data source will build up everything necessary so it just works.</li>
-<li>If the code accesses <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_Data">App</a>.<a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.App.html#ToSic_Eav_Apps_App_Query">Query</a> then the underlying system will prepare the Query as needed. </li>
+<li>If the code accesses <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_Data">App</a>.<a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.App.html#ToSic_Eav_Apps_App_Query">Query</a> then the underlying system will prepare the Query as needed.</li>
 </ol>
-<div class="NOTE"><h5>Note</h5><p>All the data retrieving features like <code>Data</code> do not actually retrieve any data unless accessed.<br>This also means that <code>Content</code> or <code>Header</code> won&#39;t use any CPU cycles unless accessed.<br>The same goes for <code>App.Data</code> - nothing is processed unless it&#39;s accessed.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All the data retrieving features like <code>Data</code> do not actually retrieve any data unless accessed.<br>
+This also means that <code>Content</code> or <code>Header</code> won't use any CPU cycles unless accessed.<br>
+The same goes for <code>App.Data</code> - nothing is processed unless it's accessed.</p>
 </div>
-<div class="NOTE"><h5>Note</h5><p>The queries are only provided by the App for immediate use. They won&#39;t be built or executed unless they are actually read.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The queries are only provided by the App for immediate use. They won't be built or executed unless they are actually read.</p>
 </div>
 <h2 id="overall-flow-when-creating-webapis">Overall Flow when Creating WebAPIs</h2>
-<p>This works just like the Html creation, except that we don&#39;t need an engine. The code which inherits from <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a> now works with the data as needed. </p>
-<p>The same lazy-execution rules apply: neither <code>Data</code>, <code>Content</code>, <code>App.Data</code> or <code>App.Query</code> use any CPU cycles, unless the data is actually pulled by reading it. </p>
+<p>This works just like the Html creation, except that we don't need an engine. The code which inherits from <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a> now works with the data as needed.</p>
+<p>The same lazy-execution rules apply: neither <code>Data</code>, <code>Content</code>, <code>App.Data</code> or <code>App.Query</code> use any CPU cycles, unless the data is actually pulled by reading it.</p>
 <h2 id="read-also">Read Also</h2>
 <ol>
 <li>Templates</li>
@@ -303,7 +296,7 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -314,13 +307,14 @@ Within an app a lot of data can be linked together using Content-Types, Relation
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -328,28 +322,29 @@ Within an app a lot of data can be linked together using Content-Types, Relation
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

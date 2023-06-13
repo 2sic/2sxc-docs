@@ -16,8 +16,8 @@
     <title>Data /  in Dynamic Code | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data /  in Dynamic Code | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -115,7 +115,7 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Data">
-<h1 id="data--data-in-dynamic-code">Data / @Data in Dynamic Code</h1>
+<h1 id="data---in-dynamic-code">Data / @Data in Dynamic Code</h1>
 
 <h2 id="what-is-data">What is <em>Data</em></h2>
 <p>A 2sxc instance is a running <em>2sxc-engine</em> which is about to execute some code (Razor, Token or a web service) together with some content-items which should be used in this case. These content-items are provided to the code in an object called <code>Data</code>.</p>
@@ -132,26 +132,25 @@
 </ol>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="most-common-way-to-use-the-data-object">Most common way to use the Data object</h2>
-<p>In all Razor-templates and also the web-api files, the <code>Data</code> object is already created and ready to access. Here&#39;s a code example:</p>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="most-common-way-to-use-the-data-object">Most common way to use the Data object</h2>
+<p>In all Razor-templates and also the web-api files, the <code>Data</code> object is already created and ready to access. Here's a code example:</p>
 <pre><code class="lang-razor">&lt;div class=&quot;app-blog&quot;&gt;
     @foreach(var post in AsList(Data))
     {
         // do something with the @post here
     }
 &lt;/div&gt;
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>the foreach will loop through all items of the data in the <em>Stream</em> <strong>Default</strong> - read more about streams below</li>
 <li>the var post is the inner variable containing the current item</li>
-<li>the AsDynamic will ensure that the items we&#39;re working with are easy to code with, because they are <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entities</a></li>
+<li>the AsDynamic will ensure that the items we're working with are easy to code with, because they are <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entities</a></li>
 </ul>
 <h2 id="the-streams-in-a-data-object">The Streams in a Data Object</h2>
-<p>The data object can have multiple <em>Streams</em>, each containing a list of items. In most cases you&#39;ll just have the <em>Default</em> stream, which you can access using <code>Data[&quot;Default&quot;]</code>. Read more about streams in the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">Stream docs</a></p>
+<p>The data object can have multiple <em>Streams</em>, each containing a list of items. In most cases you'll just have the <em>Default</em> stream, which you can access using <code>Data[&quot;Default&quot;]</code>. Read more about streams in the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">Stream docs</a></p>
 <p>But you may also have additional streams, depending on what has been configured in the data-preparation stuff (usually a VisualQuery). For example, if you are working on a view showing one product and a menu with all possible categories, then your query may have these streams:</p>
 <ul>
 <li>Book (the current book, this stream has 1 item with the ID matching the ID in the URL)</li>
@@ -160,29 +159,34 @@
 <p>The code would then look a bit like this:</p>
 <pre><code class="lang-cs">var book = Data[&quot;Book&quot;].FirstOrDefault();               // returns an IEntity Object
 var cats = Data[&quot;Categories&quot;];                          // returns an IEnumerable of iEntity objects
-</code></pre><p>Or in most cases, because of the simpler syntax later on:</p>
+</code></pre>
+<p>Or in most cases, because of the simpler syntax later on:</p>
 <pre><code class="lang-cs">var book = AsDynamic(Data[&quot;Book&quot;].FirstOrDefault());    // returns one dynamic entity
 var cats = AsList(Data[&quot;Categories&quot;]);                  // returns an IEnumerable of dynamic entities
-</code></pre><h2 id="changing-what-is-provided-by-data">Changing what is provided by Data</h2>
+</code></pre>
+<h2 id="changing-what-is-provided-by-data">Changing what is provided by Data</h2>
 <p>The main configuration of the template will determine, what data is initially provided to the template.
 Afterwards, other mechanisms can override / change this.</p>
 <ol>
-<li>Initial Sources<ol>
-<li>Default type/list configuration - this can determine that 0, 1 or many items (of a certain type) are delivered<br>if one or many are delivered, then the selection will be based on what the editor added to the module instance.</li>
+<li>Initial Sources
+<ol>
+<li>Default type/list configuration - this can determine that 0, 1 or many items (of a certain type) are delivered<br>
+if one or many are delivered, then the selection will be based on what the editor added to the module instance.</li>
 <li><a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> - if the template has a query attached, this query will deliver the data</li>
 </ol>
 </li>
-<li>Modifications to the source for the template<ol>
+<li>Modifications to the source for the template
+<ol>
 <li>The event <a class="xref" href="../razor/customizedata.html">CustomizeData</a> can optionally completely reconfigure what Data contains in your code.</li>
 </ol>
 </li>
 </ol>
 <h2 id="data-object-api">Data Object API</h2>
 <p>The <code>Data</code> object itself is actually a normal <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataSource.html">EAV IDataSource</a>. So if you need to know more about the internals, read it up there.</p>
-<p>All other properties of the Data object are very special use only, so you probably shouldn&#39;t bother about them - which is why they are not documented here.</p>
+<p>All other properties of the Data object are very special use only, so you probably shouldn't bother about them - which is why they are not documented here.</p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -193,13 +197,14 @@ Afterwards, other mechanisms can override / change this.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -207,28 +212,29 @@ Afterwards, other mechanisms can override / change this.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

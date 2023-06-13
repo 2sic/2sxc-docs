@@ -13,11 +13,11 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Toolbar Builder Guide &#8211; Filter Parameter | 2sxc 16 / EAV 16 </title>
+    <title>Toolbar Builder Guide – Filter Parameter | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Toolbar Builder Guide &#8211; Filter Parameter | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="title" content="Toolbar Builder Guide – Filter Parameter | 2sxc 16 / EAV 16 ">
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,12 +116,14 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ToolbarBuilder.DataFilter">
 
-<p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
+<img src="../../../assets/features/toolbar.svg" class="feature">
 <h1 id="toolbar-builder-guide--filter-parameter">Toolbar Builder Guide – Filter Parameter</h1>
-<div class="IMPORTANT"><h5>Important</h5><p>The examples below explain how to use the <code>filter:</code> parameter.
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>The examples below explain how to use the <code>filter:</code> parameter.
 Starting in v15.07+ we recommend using the <a class="xref" href="tweak-buttons.html">Tweak API</a> instead.</p>
 </div>
-<p>The <strong>Filter</strong> reduces the amount of items shown in a Data-List.  </p>
+<p>The <strong>Filter</strong> reduces the amount of items shown in a Data-List.</p>
 <p>It is given to the <code>data</code> command using the <code>filter</code> parameter
 which is an optional parameter and <a class="xref" href="../../conventions/named-parameters.html">must be named</a>.</p>
 <h2 id="filter-parameters"><code>filter</code> Parameters</h2>
@@ -129,17 +131,19 @@ which is an optional parameter and <a class="xref" href="../../conventions/named
 <p>You could for example only show all items containing the word <code>something</code>.
 But the most common case is to restrict entities shown to these
 having a child-relationship with something else.</p>
-<blockquote><p><strong>Example</strong>
+<blockquote>
+<p><strong>Example</strong>
 You may have a list of <code>Books</code> and only wish to show all of the books
 by the <code>Author</code> by the name of <em>Daniel Mettler</em>.
-You could try to filter by the name, but that&#39;s not reliable,
+You could try to filter by the name, but that's not reliable,
 so you would usually want to filter by the unique ID of <em>Daniel Mettler</em>.</p>
 </blockquote>
 <h2 id="ways-to-set-the-filter">Ways to Set the Filter</h2>
-<p>The following examples assume you&#39;re calling <code>.Data</code> on the IToolbarBuilder from the IToolbarService.
+<p>The following examples assume you're calling <code>.Data</code> on the IToolbarBuilder from the IToolbarService.
 So typically it would be something like this in front of each line:</p>
 <pre><code class="lang-c#">@Kit.Toolbar.Default().Data(&quot;Books&quot;, filter: ...);
-</code></pre><p>Basic syntax which worked ca. v14.07</p>
+</code></pre>
+<p>Basic syntax which worked ca. v14.07</p>
 <pre><code class="lang-c#">// Simple relationship: Author has entity with ID 52
 Data(..., filter: &quot;Author=52&quot;);
 
@@ -152,7 +156,8 @@ Data(..., filter: &quot;Author=52&amp;Publisher=9306&quot;);
 
 // The same as a object
 Data(..., filter: new { Author = 52, Publisher = 9306 }); 
-</code></pre><p>Advanced, simpler options requiring v14.07.05</p>
+</code></pre>
+<p>Advanced, simpler options requiring v14.07.05</p>
 <pre><code class="lang-c#">// Values with Arrays automatically get converted
 Data(..., filter: new { Author = new int[] { 52 } }); 
 Data(..., filter: new { Author = new int[] { 52, 58, 29 } }); 
@@ -167,7 +172,8 @@ Data(..., filter: new { Author = new object[] { someAuthor, someAuthor } });
 // IEnumerable of Authors
 var lotsOfAuthors = AsList(App.Data[&quot;Author&quot;]).Select(a =&gt; a.LastName == &quot;Mettler&quot;);
 Data(..., filter: new { Author = lotsOfAuthors });
-</code></pre><hr>
+</code></pre>
+<hr>
 <p>See also</p>
 <ul>
 <li>the JS <a class="xref" href="../../../js-code/toolbars/simple.html">toolbar docs</a></li>
@@ -175,7 +181,7 @@ Data(..., filter: new { Author = lotsOfAuthors });
 </ul>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -186,13 +192,14 @@ Data(..., filter: new { Author = lotsOfAuthors });
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -200,28 +207,29 @@ Data(..., filter: new { Author = lotsOfAuthors });
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

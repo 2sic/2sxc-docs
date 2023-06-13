@@ -13,11 +13,11 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Toolbar Builder Guide &#8211; Tweak API for Buttons new 15.07 | 2sxc 16 / EAV 16 </title>
+    <title>Toolbar Builder Guide – Tweak API for Buttons new 15.07 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Toolbar Builder Guide &#8211; Tweak API for Buttons new 15.07 | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="title" content="Toolbar Builder Guide – Tweak API for Buttons new 15.07 | 2sxc 16 / EAV 16 ">
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,13 +116,15 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Services.ToolbarBuilder.TweakButtons">
 
-<p><img src="../../../assets/features/toolbar.svg" class="feature"></p>
+<img src="../../../assets/features/toolbar.svg" class="feature">
 <h1 id="toolbar-builder-guide--tweak-api-for-buttons-new-1507">Toolbar Builder Guide – Tweak API for Buttons <em>new 15.07</em></h1>
 <p>Buttons can be tweaked to change their look and behavior.</p>
 <p>Previously, this was done using parameters such as <code>ui</code>, <code>parameters</code>, <code>prefill</code> etc.
 Now, you can use the <code>tweak</code> API to do the same thing.</p>
-<div class="TIP"><h5>Tip</h5><p>Using the <code>tweak</code> API is the recommended way to tweak buttons.
-It gives you compile time checking so it&#39;s less error-prone.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Using the <code>tweak</code> API is the recommended way to tweak buttons.
+It gives you compile time checking so it's less error-prone.</p>
 </div>
 <h2 id="example">Example</h2>
 <pre><code class="lang-c#">// Old way without tweak
@@ -132,13 +134,15 @@ Kit.Toolbar.Default().Add(ui: &quot;color=green&quot;, parameters: new { app = 2
 Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(new { app = 2, zone = 3 }));
 // Or another example
 Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(&quot;app&quot;, 2).Parameters(&quot;zone&quot;, 3));
-</code></pre><h2 id="how-it-works">How it Works</h2>
+</code></pre>
+<h2 id="how-it-works">How it Works</h2>
 <p>Almost every command on the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.html">IToolbarBuilder</a> has a <code>tweak</code> parameter.
 This parameter is a function which takes a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.ITweakButton.html">ITweakButton</a> and returns a new one.
 The <code>ITweakButton</code> itself has a <a class="xref" href="../../conventions/functional-api/index.html">functional API</a> which allows you to chain multiple tweaks.</p>
 <p>This means when you do this:</p>
 <pre><code class="lang-c#">Kit.Toolbar.Default().Add(tweak: b =&gt; b.Color(&quot;green&quot;).Parameters(&quot;id&quot;, 93030)));
-</code></pre><p>...it says</p>
+</code></pre>
+<p>...it says</p>
 <ol>
 <li>Take the button <code>b</code></li>
 <li>Set the color to green</li>
@@ -150,10 +154,10 @@ So the final result is returned by the function and used by the toolbar builder.
 <p>The new method achieves the same purpose as the old, and the old way will continue to work indefinitely.</p>
 <p>But the advantages of the new API are:</p>
 <ol>
-<li>It&#39;s easier to document so it&#39;s also easier to discover the possibilities you have</li>
-<li>It&#39;s easier to use because it&#39;s more type-safe and less error-prone</li>
-<li>It&#39;s easier to extend - for example with the new <code>note</code> feature added in v15.07</li>
-<li>It&#39;s safer, for example the API will remove <code>#</code> characters in colors, which would otherwise cause problems</li>
+<li>It's easier to document so it's also easier to discover the possibilities you have</li>
+<li>It's easier to use because it's more type-safe and less error-prone</li>
+<li>It's easier to extend - for example with the new <code>note</code> feature added in v15.07</li>
+<li>It's safer, for example the API will remove <code>#</code> characters in colors, which would otherwise cause problems</li>
 </ol>
 <h2 id="api-docs">API Docs</h2>
 <ul>
@@ -162,7 +166,8 @@ So the final result is returned by the function and used by the toolbar builder.
 </ul>
 <h2 id="important-to-know">Important to Know</h2>
 <ul>
-<li>You cannot mix the tweak API with the previous parameters.<br>So if you use tweak on a button, you cannot also use <code>ui</code> or <code>parameters</code> etc.</li>
+<li>You cannot mix the tweak API with the previous parameters.<br>
+So if you use tweak on a button, you cannot also use <code>ui</code> or <code>parameters</code> etc.</li>
 <li>The tweak API is a fluid API, so you can chain multiple tweaks together.</li>
 <li>The tweak API is <a class="xref" href="../../conventions/immutable/index.html">immutable</a>, so every step returns a new object.</li>
 <li>The tweak API is <a class="xref" href="../../conventions/functional-api/index.html">functional</a>.</li>
@@ -170,24 +175,28 @@ So the final result is returned by the function and used by the toolbar builder.
 <h2 id="issues--challenges">Issues / Challenges</h2>
 <p>The tweak API uses <em>lambda expressions</em>.
 This can cause problems with <code>dynamic</code> objects which are very common in Razor.
-If you don&#39;t know about <code>dynamic</code>s you should briefly google it.</p>
+If you don't know about <code>dynamic</code>s you should briefly google it.</p>
 <p>Basically the following code will cause issues:</p>
 <pre><code class="lang-c#">// Note that Content is a dynamic object
 Kit.Toolbar.Default(Content).New(tweak: b =&gt; b.Color(&quot;pink,black&quot;))
-</code></pre><p>This will result in a message like this:</p>
-<pre><code class="lang-text">...error CS1978: Cannot use an expression of type &#39;lambda expression&#39; as an argument to a dynamically dispatched operation at...
-</code></pre><p><img src="assets/tweak-error-lambda-after-dynamic.jpg" width="40%" align="right"></p>
+</code></pre>
+<p>This will result in a message like this:</p>
+<pre><code class="lang-text">...error CS1978: Cannot use an expression of type 'lambda expression' as an argument to a dynamically dispatched operation at...
+</code></pre>
+<img src="assets/tweak-error-lambda-after-dynamic.jpg" width="40%" align="right">
 <p>This means: because the initial part <code>Kit.Toolbar.Default(Content)</code> contains a dynamic parameter (<code>Content</code>),
 the compiler treats what comes after that as dynamic as well.
 So the following <code>.New(...)</code> is also treated as dynamic.
 This is usually not a problem, but the compiler will complain that the inner lambda
-<code>b =&gt; b.Color(&quot;pink,black&quot;)</code> can&#39;t be reliably compiled, since it could be anything.</p>
+<code>b =&gt; b.Color(&quot;pink,black&quot;)</code> can't be reliably compiled, since it could be anything.</p>
 <p>For now, the best workaround is to do one of the following:</p>
 <ul>
-<li>Tell the compiler that <code>Content</code> is an <code>object</code><br><code>Kit.Toolbar.Default(Content as object).New(tweak: b =&gt; b.Color(&quot;pink,black&quot;))</code></li>
-<li>Place the dynamic parameter at the end<br><code>Kit.Toolbar.Default().New(tweak: b =&gt; b.Color(&quot;pink,black&quot;)).For(Content)</code></li>
+<li>Tell the compiler that <code>Content</code> is an <code>object</code><br>
+<code>Kit.Toolbar.Default(Content as object).New(tweak: b =&gt; b.Color(&quot;pink,black&quot;))</code></li>
+<li>Place the dynamic parameter at the end<br>
+<code>Kit.Toolbar.Default().New(tweak: b =&gt; b.Color(&quot;pink,black&quot;)).For(Content)</code></li>
 </ul>
-<p>This is not ideal, and we&#39;re striving for improvements in future releases.</p>
+<p>This is not ideal, and we're striving for improvements in future releases.</p>
 <hr>
 <p>History</p>
 <ol>
@@ -196,7 +205,7 @@ This is usually not a problem, but the compiler will complain that the inner lam
 <p>ShortLink: <a href="https://go.2sxc.org/tweak-buttons">https://go.2sxc.org/tweak-buttons</a></p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -207,13 +216,14 @@ This is usually not a problem, but the compiler will complain that the inner lam
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -221,28 +231,29 @@ This is usually not a problem, but the compiler will complain that the inner lam
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

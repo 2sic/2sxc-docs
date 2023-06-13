@@ -16,8 +16,8 @@
     <title>Entities (Data, Records, Items) | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Entities (Data, Records, Items) | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -121,20 +121,25 @@
   <div class="overlay-box" style="left: 28.5%; top: 7%; height: 45%; width: 47.5%"></div>
   <img src="../assets/app-data.png" class="full-width">
 </div>
+
 <p>This explains <strong>Entities</strong> aka <strong>Data Items</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
 <hr>
-<p>Every <em>thing</em>, <em>record</em> or <em>object</em> in 2sxc is called an <strong>Entity</strong>. So if you have a list of <code>Book</code> objects, then each <code>Book</code> is an entity. </p>
-<blockquote><p>Many other systems use the term <em>Record</em>, <em>Content Item</em>, <em>Item</em> or <em>Object</em>. </p>
+<p>Every <em>thing</em>, <em>record</em> or <em>object</em> in 2sxc is called an <strong>Entity</strong>. So if you have a list of <code>Book</code> objects, then each <code>Book</code> is an entity.</p>
+<blockquote>
+<p>Many other systems use the term <em>Record</em>, <em>Content Item</em>, <em>Item</em> or <em>Object</em>.</p>
 </blockquote>
-<div class="TIP"><h5>Tip</h5><p>Before you start: Remember that you usually don&#39;t need this if you are creating Razor templates 
+<div class="TIP">
+<h5>Tip</h5>
+<p>Before you start: Remember that you usually don't need this if you are creating Razor templates
 or WebApi - for that, you want to read <a class="xref" href="../../../net-code/dynamic-data/dynamic-entity.html">Dynamic Entity Objects</a>.</p>
 </div>
 <h2 id="data-model-eavd--entity-attribute-value--dimension">Data Model: EAV+D = Entity-Attribute-Value + Dimension</h2>
-<blockquote><p>EAV stands for <strong>Entity</strong>, <strong>Attribute</strong>, <strong>Value</strong>
+<blockquote>
+<p>EAV stands for <strong>Entity</strong>, <strong>Attribute</strong>, <strong>Value</strong>
 The D stands for <strong>Dimension</strong>, it says what Dimension (Language) a <em>Value</em> is for</p>
 </blockquote>
 <h2 id="how-it-works">How it Works</h2>
-<p>Each <em>Entity</em> has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the <a class="xref" href="../content-types/index.html">Content-Type</a>, so each Entity is like a record of that type. </p>
+<p>Each <em>Entity</em> has many fields, some containing text, numbers etc. The fields an Entity can have is defined in the <a class="xref" href="../content-types/index.html">Content-Type</a>, so each Entity is like a record of that type.</p>
 <p>This basic principle is used everywhere in 2sxc. For example, all these things are Entities:</p>
 <ul>
 <li><em>Simple Content</em> items in the <em>Content-App</em> are entities containing a title, body and image</li>
@@ -144,18 +149,18 @@ The D stands for <strong>Dimension</strong>, it says what Dimension (Language) a
 <li>Anything you define in your apps will result in entities</li>
 </ul>
 <h4 id="multilanguage-data">Multilanguage Data</h4>
-<p>Each value can also be <a class="xref" href="../multi-language/index.html">multilanguage</a>, so there are actually many <code>Descriptions</code> in a multi-language product Entity. </p>
+<p>Each value can also be <a class="xref" href="../multi-language/index.html">multilanguage</a>, so there are actually many <code>Descriptions</code> in a multi-language product Entity.</p>
 <h4 id="relationships">Relationships</h4>
 <p>Entities are much more than just records, as they can have <a class="xref" href="../relationships/index.html">relationships</a>.</p>
 <h4 id="input-forms-and-fields-like-wysiwyg">Input Forms and Fields (like WYSIWYG)</h4>
-<p>The input mask is automatically generated from the <a class="xref" href="../content-types/index.html">Content-Type</a>. Based on the specifications, it will generate the correct <a class="xref" href="../fields/index.html">Input-Field</a> like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. </p>
+<p>The input mask is automatically generated from the <a class="xref" href="../content-types/index.html">Content-Type</a>. Based on the specifications, it will generate the correct <a class="xref" href="../fields/index.html">Input-Field</a> like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader.</p>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 1.0</li>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -166,13 +171,14 @@ The D stands for <strong>Dimension</strong>, it says what Dimension (Language) a
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -180,28 +186,29 @@ The D stands for <strong>Dimension</strong>, it says what Dimension (Language) a
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

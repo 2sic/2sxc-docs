@@ -16,8 +16,8 @@
     <title>Querying Data and Data Sources with code and LINQ | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Querying Data and Data Sources with code and LINQ | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -132,55 +132,63 @@
 <p>For a full list of all <code>System.Linq</code> methods, check out the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=netframework-4.7.2#methods">methods of IEnumerable</a></p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="using-statements">Using Statements</h2>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="using-statements">Using Statements</h2>
 <p>As explained in the <a class="xref" href="linq-guide.html">guide</a> we recommend the following using statements in Razor:</p>
 <pre><code class="lang-razor">@using System.Linq;
 @using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
-</code></pre><h2 id="where">Where</h2>
+</code></pre>
+<h2 id="where">Where</h2>
 <p>Filter a list (IEnumerable) based on a criteria.</p>
 <p>Example: Basic filter of a list by string</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 items = items.Where(p =&gt; p.Name == &quot;Chuck Norris&quot;);
 // items now contains only items which have &quot;Chuck Norris&quot; as name property
-</code></pre><h2 id="any">Any</h2>
+</code></pre>
+<h2 id="any">Any</h2>
 <p>Returns true if any of the elements matches a criteria.</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 var containsChuckNorris = items.Any(p =&gt; p.Name == &quot;Chuck Norris&quot;);
 // if containsChuckNorris is true, at least one element has name &quot;Chuck Norris&quot;
-</code></pre><p>Here&#39;s another Any - to see if a relationship contains something. It&#39;s a bit more complex, because Razor needs to know what it&#39;s working with:</p>
+</code></pre>
+<p>Here's another Any - to see if a relationship contains something. It's a bit more complex, because Razor needs to know what it's working with:</p>
 <pre><code class="lang-cs">// filter - keep only those that have this Category
 // note that the compare must run on the EntityId because of object wrapping/unwrapping
     postsToShow = postsToShow
         .Where(p =&gt; (p.Categories as List&lt;dynamic&gt;)
             .Any(c =&gt; c.EntityId == ListContent.Category[0].EntityId))
-</code></pre><h2 id="orderby--orderbydescending">OrderBy / OrderByDescending</h2>
+
+</code></pre>
+<h2 id="orderby--orderbydescending">OrderBy / OrderByDescending</h2>
 <p>Order a list (IEnumerable) by a specific field.</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 items = items.OrderBy(p =&gt; p.Name);
 // items are now ordered by property &quot;Name&quot;
-</code></pre><h2 id="first--last">First / Last</h2>
+</code></pre>
+<h2 id="first--last">First / Last</h2>
 <p>Get first or last element of the list.</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 var first = items.First(); // contains the first element
 var last = items.Last(); // contains the last element
-</code></pre><h2 id="select">Select</h2>
+</code></pre>
+<h2 id="select">Select</h2>
 <p>Transform list into a new list, selecting only specified field(s).</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 var names = items.Select(p =&gt; p.Name); // names is a list of all names
-</code></pre><h2 id="take--skip">Take / Skip</h2>
+</code></pre>
+<h2 id="take--skip">Take / Skip</h2>
 <p>Paging functions: Take only n elements, skip m elements</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 items = items.Skip(10).Take(10); // Skips the first 10 elements and select only 10
-</code></pre><h2 id="count">Count</h2>
+</code></pre>
+<h2 id="count">Count</h2>
 <p>Count number of elements in a list.</p>
 <pre><code class="lang-C#">var items = AsList(Data[&quot;Default&quot;]);
 var count = items.Count(); // contains the number of elements in the list
-</code></pre><h2 id="indexof">IndexOf</h2>
+</code></pre>
+<h2 id="indexof">IndexOf</h2>
 <p>Find index of a specific element in the list.</p>
 <pre><code class="lang-C#">@{
     var items = AsList(Data[&quot;Default&quot;]);
@@ -188,9 +196,10 @@ var count = items.Count(); // contains the number of elements in the list
 @foreach(var item in items) {
     &lt;h1&gt;Item number @items.IndexOf(item)&lt;/h1&gt;
 }
-</code></pre></article>
+</code></pre>
+</article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -201,13 +210,14 @@ var count = items.Count(); // contains the number of elements in the list
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -215,28 +225,29 @@ var count = items.Count(); // contains the number of elements in the list
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

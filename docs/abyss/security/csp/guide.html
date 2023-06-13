@@ -16,8 +16,8 @@
     <title>Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,12 +116,12 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Abyss.Security.Csp.Guide">
 
-<p><img src="../../../assets/features/content-security-policy.svg" class="feature"></p>
+<img src="../../../assets/features/content-security-policy.svg" class="feature">
 <h1 id="content-security-policy-csp-guide-for-2sxc-dnn-and-oqtane">Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane</h1>
 <p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
-<p>In this guide we&#39;ll give you step-by-step instructions how to harden a website in no time. 
+<p>In this guide we'll give you step-by-step instructions how to harden a website in no time.
 With a bit of practice you can harden a DNN with Content-Security-Policy in one to two hours 🚀.</p>
-<p>🎬 Before you start, be sure you&#39;ve read the <a class="xref" href="index.html">background, parts and best-practices</a>.</p>
+<p>🎬 Before you start, be sure you've read the <a class="xref" href="index.html">background, parts and best-practices</a>.</p>
 <h2 id="general-process">General Process</h2>
 <ol>
 <li>Plan and prepare</li>
@@ -133,15 +133,18 @@ With a bit of practice you can harden a DNN with Content-Security-Policy in one 
 </ol>
 <h2 id="csp-preparations">CSP Preparations</h2>
 <h3 id="planning-csp">Planning CSP</h3>
-<blockquote><p>Think before you act</p>
+<blockquote>
+<p>Think before you act</p>
 </blockquote>
-<p>Some choices made ahead of time will save you time and effort later. </p>
+<p>Some choices made ahead of time will save you time and effort later.</p>
 <ol>
 <li>Will you make different CSP rules for admins and anonymous users?</li>
 <li>Will you use a reporting-server?</li>
 <li>Are you doing this just to &quot;tick the box, yes we did it&quot; or do you want it as secure as possible?</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>We highly suggest you segment this by users. 
+<div class="TIP">
+<h5>Tip</h5>
+<p>We highly suggest you segment this by users.
 That will allow you to make much stricter rules for anonymous users and less strict for admins.</p>
 <p>This also gives you a better score in most penetration tests, because they will evaluate the rules for anonymous users.</p>
 </div>
@@ -152,11 +155,13 @@ That will allow you to make much stricter rules for anonymous users and less str
 <li>If you have resources from CDNs, will you whitelist the entire CDNs or just these resources?</li>
 </ol>
 <h3 id="prepare--harden-a-site-for-csp">Prepare / Harden a Site for CSP</h3>
-<p>Before you try to configure CSP it&#39;s best to have a good setup which makes it more secure. </p>
-<div class="TIP"><h5>Tip</h5><p>If you follow these recommendations, you will be able to have much stricter policies.
-If you don&#39;t, you can still activate CSP but will need a much laxer setup.</p>
+<p>Before you try to configure CSP it's best to have a good setup which makes it more secure.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If you follow these recommendations, you will be able to have much stricter policies.
+If you don't, you can still activate CSP but will need a much laxer setup.</p>
 </div>
-<p>Rework your Skins / Apps to match a secure architecture, following the best practices. 
+<p>Rework your Skins / Apps to match a secure architecture, following the best practices.
 Things such as:</p>
 <ol>
 <li>Get rid of unused js/css code/files</li>
@@ -167,23 +172,27 @@ Things such as:</p>
 <li>Use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to couple the JS with Razor-data such as the ModuleId</li>
 <li>Use <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_Activate_">IPageService.Activate(...)</a> and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AssetAttributes_">IPageService.AssetAttributes(...)</a> wherever possible</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>All the latest standard 2sxc apps implement all these best practices. 
-If you still have older Apps, we suggest you install the latest on another server and copy the parts you need. </p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>All the latest standard 2sxc apps implement all these best practices.
+If you still have older Apps, we suggest you install the latest on another server and copy the parts you need.</p>
 </div>
 <h3 id="prepare-for-monitoring">Prepare for Monitoring</h3>
-<p>Once you&#39;ve deployed CSP you should get notified of any violations. 
-The idea is that violations could just be a sign that something wasn&#39;t configured correctly and you may have missed this. </p>
-<p>There are some cool online services which can do this, like <a href="https://report-uri.com/">https://report-uri.com/</a>. 
+<p>Once you've deployed CSP you should get notified of any violations.
+The idea is that violations could just be a sign that something wasn't configured correctly and you may have missed this.</p>
+<p>There are some cool online services which can do this, like <a href="https://report-uri.com/">https://report-uri.com/</a>.
 So we highly recommend you get an account to use for monitoring.</p>
 <h2 id="develop-csp-rules">Develop CSP Rules</h2>
 <h3 id="general-pattern">General Pattern</h3>
 <ol>
-<li>Always do dry-run tests first<ol>
+<li>Always do dry-run tests first
+<ol>
 <li>Create a new <code>Dev</code> policy and set it to <em>Report-Only</em></li>
 <li>Test it using <code>?csp=dev</code> in the url</li>
 </ol>
 </li>
-<li>Choose to start restrictive or lax<ol>
+<li>Choose to start restrictive or lax
+<ol>
 <li>either start restrictive and open up the rules step-by-step</li>
 <li>or start with lax rules and tighten step-by-step</li>
 </ol>
@@ -193,21 +202,25 @@ So we highly recommend you get an account to use for monitoring.</p>
 </ol>
 <h3 id="dry-run-without-enforcing-policies">Dry-Run Without Enforcing Policies</h3>
 <p>First you must enable the dev-feature.</p>
-<p><img src="assets/manage-features-csp.jpg" width="100%" class="full-width"></p>
-<p>Now you can test the policy by adding <code>?csp=dev</code> to any page. 
+<img src="assets/manage-features-csp.jpg" width="100%" class="full-width">
+<p>Now you can test the policy by adding <code>?csp=dev</code> to any page.
 It will work with any login - as soon as you add the parameter, it will use the <code>Dev</code> settings.
 This is how the dev settings could look:</p>
-<p><img src="assets/site-settings-csp-dev.jpg" width="100%" class="full-width"></p>
+<img src="assets/site-settings-csp-dev.jpg" width="100%" class="full-width">
 <h3 id="browser-setup">Browser Setup</h3>
 <p>You will want to have a logged-in window to make configuration changes, and another window to test the policy.
-You can either use two browsers (chrome+canary, chrome+firefox, firefox+edge, etc.) 
-or a single browser with anonymous/guest modes to have different login states. </p>
-<p>As we&#39;re testing this, you will always need to add <code>?csp=dev</code> to the url you&#39;re testing. </p>
-<div class="TIP"><h5>Tip</h5><p>In the window where you make the configuration, use Ctl+S to just save and not close the widow.
+You can either use two browsers (chrome+canary, chrome+firefox, firefox+edge, etc.)
+or a single browser with anonymous/guest modes to have different login states.</p>
+<p>As we're testing this, you will always need to add <code>?csp=dev</code> to the url you're testing.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>In the window where you make the configuration, use Ctl+S to just save and not close the widow.
 This will make it much faster to try various setups.</p>
 </div>
-<div class="TIP"><h5>Tip</h5><p>During development, please disable <a class="xref" href="../../lightspeed/index.html">LightSpeed Cache</a>
-as it may cache some settings, making it hard to debug. </p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>During development, please disable <a class="xref" href="../../lightspeed/index.html">LightSpeed Cache</a>
+as it may cache some settings, making it hard to debug.</p>
 </div>
 <h3 id="strict-first-method-recommended">Strict-First Method (recommended)</h3>
 <p>With Strict-First you start with very strict rules in <code>...-Report-Only</code> mode.
@@ -215,24 +228,26 @@ You will then review the errors you see in the browsers F12 console.
 Then you will loosen up the rules step-by-step.</p>
 <h3 id="lax-first-method">Lax-First Method</h3>
 <p>The Lax-First method assumes that you start with rules that allow everything, then you tighten them up step-by-step.
-Here&#39;s an example of a very lax rule set, taken from <a href="https://stackoverflow.com/questions/35978863/allow-all-content-security-policy">StackOverflow</a>:</p>
-<pre><code class="lang-text">default-src *  data: blob: filesystem: about: ws: wss: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; &#39;unsafe-dynamic&#39; ;
-script-src * data: blob: &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; ;
-connect-src * data: blob: &#39;unsafe-inline&#39; ;
-img-src * data: blob: &#39;unsafe-inline&#39; ;
+Here's an example of a very lax rule set, taken from <a href="https://stackoverflow.com/questions/35978863/allow-all-content-security-policy">StackOverflow</a>:</p>
+<pre><code class="lang-text">default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic' ;
+script-src * data: blob: 'unsafe-inline' 'unsafe-eval' ;
+connect-src * data: blob: 'unsafe-inline' ;
+img-src * data: blob: 'unsafe-inline' ;
 frame-src * data: blob: ;
-style-src * data: blob: &#39;unsafe-inline&#39; ;
-font-src * data: blob: &#39;unsafe-inline&#39; ;
-frame-ancestors * data: blob: &#39;unsafe-inline&#39; ;
-</code></pre><p>for 2sxc it can be shorted to:</p>
+style-src * data: blob: 'unsafe-inline' ;
+font-src * data: blob: 'unsafe-inline' ;
+frame-ancestors * data: blob: 'unsafe-inline' ;
+</code></pre>
+<p>for 2sxc it can be shorted to:</p>
 <pre><code>// all-src would always be applied to all rules
-all-src * data: blob: &#39;unsafe-inline&#39;
-default-src filesystem: about: ws: wss: &#39;unsafe-eval&#39; &#39;unsafe-dynamic&#39;
-script-src &#39;unsafe-eval&#39;
-</code></pre><p>You can now start to tighten up the rules.</p>
+all-src * data: blob: 'unsafe-inline'
+default-src filesystem: about: ws: wss: 'unsafe-eval' 'unsafe-dynamic'
+script-src 'unsafe-eval'
+</code></pre>
+<p>You can now start to tighten up the rules.</p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -243,13 +258,14 @@ script-src &#39;unsafe-eval&#39;
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -257,28 +273,29 @@ script-src &#39;unsafe-eval&#39;
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

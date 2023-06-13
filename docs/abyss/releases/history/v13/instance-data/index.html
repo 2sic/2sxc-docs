@@ -16,8 +16,8 @@
     <title>Fix Breaking Change InstanceData in v13 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Fix Breaking Change InstanceData in v13 | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../../../toc.html">
     <meta property="docfx:tocrel" content="../../../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../../../index.html">
                 <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -118,7 +118,7 @@
 <h1 id="fix-breaking-change-instancedata-in-v13">Fix Breaking Change <em>InstanceData</em> in v13</h1>
 
 <p><strong>Keywords:</strong> #Deprecated #InstanceData</p>
-<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here&#39;s how to fix any code in production. </p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
 <p>Specifically, three features were removed:</p>
 <ol>
 <li>The ability to publish Module Instance Data directly</li>
@@ -126,11 +126,11 @@
 <li>The JS API which was optimized to process the resulting data in a fairly untypical way</li>
 </ol>
 <h2 id="reason-for-removal">Reason for Removal</h2>
-<p>These features were removed because they were almost never used, and newer mechanisms are much more appropriate than that old stuff. </p>
+<p>These features were removed because they were almost never used, and newer mechanisms are much more appropriate than that old stuff.</p>
 <h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
-<p>2sxc V3 (ca. 2013) introduced a feature where a Module could <em>publish</em> the data it was also showing on a normal screen as a WebApi / JSON call. </p>
-<p>It was required that a view activates this feature to ensure that it doesn&#39;t happen by accident. The settings in the view were like this (example from the <a href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimelineJs App</a>):</p>
-<p><img src="view-configuration-instance-data.jpg" width="100%" class="full-width"></p>
+<p>2sxc V3 (ca. 2013) introduced a feature where a Module could <em>publish</em> the data it was also showing on a normal screen as a WebApi / JSON call.</p>
+<p>It was required that a view activates this feature to ensure that it doesn't happen by accident. The settings in the view were like this (example from the <a href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimelineJs App</a>):</p>
+<img src="view-configuration-instance-data.jpg" width="100%" class="full-width">
 <ol>
 <li>Go to the view configuration</li>
 <li>The old deprecated settings</li>
@@ -138,14 +138,14 @@
 <li>The streams which were to be published</li>
 </ol>
 <p><em>Note that the stream <code>Default</code> is still called <code>Default</code> today, but <code>ListContent</code> is usually called <code>Header</code> today.</em></p>
-<p>Once this was setup, there was a way to get this data through a WebApi call. </p>
+<p>Once this was setup, there was a way to get this data through a WebApi call.</p>
 <ol>
 <li>From v3 to ca. v6 there was a call which actually went through the Dnn Page (so it was slow)</li>
 <li>V6 to ca. v11 it used a call to <code>app-sys/AppContent/GetContentBlockData</code></li>
 <li>Later there was a special WebApi call to <code>app/auto/InstanceData</code> which did the same thing</li>
 </ol>
 <p>The format of the response was a bit special, specifically it looked like this (TimelineJs example):</p>
-<p><img src="web-api-instance-data-output.jpg" width="100%" class="full-width"></p>
+<img src="web-api-instance-data-output.jpg" width="100%" class="full-width">
 <ol>
 <li>The call to <code>InstanceData</code></li>
 <li>The data which was on a special <code>List</code> sub-object</li>
@@ -162,7 +162,8 @@ $(&quot;.timeline-embed&quot;).each(function() {
         processDataAndCreateTimeline(source, data, sxc.id, timeLineElement) 
     }).load();
 });
-</code></pre><p>Specifically, it used a <code>data.on</code> call to kind of say: <em>on load get the data from the current module</em>.</p>
+</code></pre>
+<p>Specifically, it used a <code>data.on</code> call to kind of say: <em>on load get the data from the current module</em>.</p>
 <p>The resulting data was then used in the JS - for example like this in TimelineJS:</p>
 <pre><code class="lang-js">// what should happen on loading of the data:
 function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
@@ -171,13 +172,16 @@ function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
     var listContent = data.in.ListContent.List[0];
     var timelineData = getTimelineData(moduleId, content, listContent);
     ...
-</code></pre><h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<div class="TIP"><h5>Tip</h5><p>Below you&#39;ll find instructions how to create the same functionality using Visual Query and newer JS APIs. </p>
-<p>But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need. </p>
+</code></pre>
+<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Below you'll find instructions how to create the same functionality using Visual Query and newer JS APIs.</p>
+<p>But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need.</p>
 </div>
 <h3 id="step-1-create-query-which-gets-instance-data">Step 1: Create Query which Gets Instance Data</h3>
-<p>This creates a Query API call which gets the same data as before, but in a newer API and newer standard. </p>
-<p>Create the Query - in our example we&#39;ll call it <code>ModuleData</code>
+<p>This creates a Query API call which gets the same data as before, but in a newer API and newer standard.</p>
+<p>Create the Query - in our example we'll call it <code>ModuleData</code>
 <br>
 <img src="query-create.jpg" width="25%">
 <img src="query-edit.jpg" width="25%">
@@ -197,13 +201,14 @@ $(&quot;.timeline-embed&quot;).each(function() {
   var sxc = $2sxc(this);
 
   // New version using fetch and the default Query we just created
-  sxc.webApi.fetchJson(&#39;app/auto/query/ModuleData&#39;)
+  sxc.webApi.fetchJson('app/auto/query/ModuleData')
     .then((data) =&gt; processDataAndCreateTimeline(data, sxc.id, timeLineElement));
 });
-</code></pre><p>In addition, the data returned is a simpler. Specifically three things are now different: </p>
+</code></pre>
+<p>In addition, the data returned is a simpler. Specifically three things are now different:</p>
 <ol>
-<li>it doesn&#39;t have a level <code>in</code></li>
-<li>it doesn&#39;t need the use <code>.List</code></li>
+<li>it doesn't have a level <code>in</code></li>
+<li>it doesn't need the use <code>.List</code></li>
 <li>in our new Query the Header is in a stream <code>Header</code> and not <code>ListContent</code></li>
 </ol>
 <p>This would be the modified code in TimelineJs:</p>
@@ -213,16 +218,15 @@ $(&quot;.timeline-embed&quot;).each(function() {
   var listContent = data.Header[0];
   var timelineData = getTimelineData(moduleId, content, listContent);
   ...
-</code></pre><h3 id="step-3-set-query-permissions">Step 3: Set Query Permissions</h3>
+</code></pre>
+<h3 id="step-3-set-query-permissions">Step 3: Set Query Permissions</h3>
 <p>After doing Step 1 &amp; 2 you will have a working solution, but only super-users (host-users) can use the query because the read-permissions have not yet been configured. To configure them, use this checklist:</p>
 <iframe src="https://azing.org/2sxc/r/BE0HbDwA?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-
-
 <hr>
 <p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-id">https://go.2sxc.org/brc-13-id</a></p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -233,13 +237,14 @@ $(&quot;.timeline-embed&quot;).each(function() {
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -247,28 +252,29 @@ $(&quot;.timeline-embed&quot;).each(function() {
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

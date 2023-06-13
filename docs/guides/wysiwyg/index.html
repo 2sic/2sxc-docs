@@ -16,8 +16,8 @@
     <title>Wysiwyg - Guide | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Wysiwyg - Guide | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,13 +95,13 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -119,19 +119,22 @@ When content is edited this way, it will be stored as a string containing HTML.<
 <p>As of v15.0x there are two core types of Wysiwyg content.
 The main difference is how the edit UI provides special features and adds styling to the content.</p>
 <ol>
-<li><strong>Standard wysiwyg</strong> (the only option before v15)<ul>
+<li><strong>Standard wysiwyg</strong> (the only option before v15)
+<ul>
 <li>In standard mode the editor is limited in what he/she can do, and styling (eg. image size or alignment) is applied directly to the HTML as <code>style</code> attributes.</li>
 <li>Since the HTML contains everything, you simply have to output it as raw HTML.</li>
 <li>Use <code>@Html.Raw(item.FieldName)</code> to output it.</li>
 </ul>
 </li>
-<li><strong>Text wysiwyg</strong> (new v15)<ul>
-<li>In text mode the editor is limited in what he/she can do, for example (WIP) they can&#39;t add images</li>
+<li><strong>Text wysiwyg</strong> (new v15)
+<ul>
+<li>In text mode the editor is limited in what he/she can do, for example (WIP) they can't add images</li>
 <li>Since the HTML contains everything, you simply have to output it as raw HTML.</li>
 <li>Use <code>@Html.Raw(item.FieldName)</code> to output it.</li>
 </ul>
 </li>
-<li><strong>Rich wysiwyg</strong> (new in v15)<ul>
+<li><strong>Rich wysiwyg</strong> (new in v15)
+<ul>
 <li>In rich mode the editor can do more, and styling is applied as CSS <strong>classes</strong>.</li>
 <li>An important difference is that images are <em>not</em> inside <code>p</code> tags, but always outside of them.</li>
 <li>Since the HTML only specifies classes, these classes must be defined in your CSS to have an effect.</li>
@@ -139,7 +142,9 @@ The main difference is how the edit UI provides special features and adds stylin
 </ul>
 </li>
 </ol>
-<div class="NOTE"><h5>Note</h5><p>As we&#39;ll improve the features, the differences in the editor will become more apparent.
+<div class="NOTE">
+<h5>Note</h5>
+<p>As we'll improve the features, the differences in the editor will become more apparent.
 We plan to also introduce lightweight <strong>Text</strong> modes which prevent image uploading and more.</p>
 </div>
 <p>TODO: how to select these modes</p>
@@ -147,13 +152,16 @@ We plan to also introduce lightweight <strong>Text</strong> modes which prevent 
 <p>The following should explain the various features in <strong>Rich</strong> mode so you have an idea of their purpose and how they are applied.
 When using the <code>@Cms.Show(...)</code> method, it will create a wrapper with a <code>wysiwyg</code> classes, so it will look ca. like this:</p>
 <pre><code class="lang-html">...
-&lt;div class=&#39;wysiwyg-container&#39;&gt;
+&lt;div class='wysiwyg-container'&gt;
   ...
-  &lt;img class=&#39;wysiwyg-left wysiwyg-50&#39; src=&#39;...&#39;&gt;
-  &lt;hr class=&#39;wysiwyg-splitter wysiwyg-spacer-s&#39;&gt;
-  &lt;img class=&#39;wysiwyg-right wysiwyg-33&#39; src=&#39;...&#39;&gt;
+  &lt;img class='wysiwyg-left wysiwyg-50' src='...'&gt;
+  &lt;hr class='wysiwyg-splitter wysiwyg-spacer-s'&gt;
+  &lt;img class='wysiwyg-right wysiwyg-33' src='...'&gt;
 &lt;/div&gt;
-</code></pre><div class="TIP"><h5>Tip</h5><p>You can of course specify a different tag than <code>div</code> and also change other defaults.</p>
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can of course specify a different tag than <code>div</code> and also change other defaults.</p>
 </div>
 <p>The CSS that is automatically added will do some magic:</p>
 <ul>
@@ -188,7 +196,7 @@ This means that if final HTML is shown on a wide div, the alignments will be app
 However, if the final HTML is shown in a narrow div, the alignment will be ignored.</p>
 <h3 id="splitters-and-spacers">Splitters and Spacers</h3>
 <p>Splitters break the page into sections, so that the content following a splitter is freshly aligned.
-This is important to ensure that aligned content doesn&#39;t get stacked, but starts anew below the previous content.
+This is important to ensure that aligned content doesn't get stacked, but starts anew below the previous content.
 Splitters are implemented as <code>&lt;hr&gt;</code> tags with special CSS classes (see below).</p>
 <p>Spacers are splitters with additional CSS classes which determine the height of the gap.
 This allows the editor to add standardized space between content.</p>
@@ -204,7 +212,7 @@ This allows the editor to add standardized space between content.</p>
 <p>todo: link to Cms...</p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -215,13 +223,14 @@ This allows the editor to add standardized space between content.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -229,28 +238,29 @@ This allows the editor to add standardized space between content.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

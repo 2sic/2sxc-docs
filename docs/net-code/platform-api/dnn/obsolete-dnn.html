@@ -16,8 +16,8 @@
     <title>Use 2sxc Instances or App-Data from External C# Code | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Use 2sxc Instances or App-Data from External C# Code | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,7 +117,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="use-2sxc-instances-or-app-data-from-external-c-code">Use 2sxc Instances or App-Data from External C# Code</h1>
 
-<div class="WARNING"><h5>Warning</h5><p>This is obsolete documentation for older versions of 2sxc and <em>not best practice</em>.
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is obsolete documentation for older versions of 2sxc and <em>not best practice</em>.
 We left it here for old-timers who may still need to use this.</p>
 <p>Please use <a class="xref" href="../../external/dotnet-external-use.html">NetCode.External.Index</a> instead.</p>
 <p>If you can in any way, do not use this, these APIs are deprecated.</p>
@@ -128,41 +130,42 @@ We left it here for old-timers who may still need to use this.</p>
 <p>Imagine this was your C# code in your WebForms Code-Behind:</p>
 <pre><code class="lang-cs">// the app id
 var appId = 42;
-
+ 
 // create a simple app object to then access data
 var appSimple = ToSic.Sxc.Dnn.Factory.App(appId);
-
+ 
 // example getting all data of content type Tag
 var tags = appSimple.Data[&quot;Tag&quot;];
-
+ 
 // example accessing a query
 var tagsSorted = appSimple.Query[&quot;Tags sorted&quot;];
-
+ 
 // Creating an entity
 var vals = new Dictionary&lt;string, object&gt;();
 vals.Add(&quot;Tag&quot;, &quot;test-tag&quot;);
 vals.Add(&quot;Label&quot;, &quot;Test Tag&quot;);
-
+ 
 App.Data.Create(&quot;Tag&quot;, vals);
-</code></pre><h2 id="example-of-gaining-access-to-links-managed-in-a-simple-2sxc-content-app">Example of Gaining Access to Links Managed in a simple 2sxc Content App</h2>
+</code></pre>
+<h2 id="example-of-gaining-access-to-links-managed-in-a-simple-2sxc-content-app">Example of Gaining Access to Links Managed in a simple 2sxc Content App</h2>
 <p>Imagine you have a theme using DDR Menu with Razor Templates. The theme has a MegaMenu and you want to include one or more featured links that will change often and those links are easily managed in the Content App using the Links Content-Type with any of the default Views.</p>
 <p>Your C# code in your MegaMenu.cshtml file could get access to those Links like this:</p>
 <pre><code class="lang-cs">// the details you need to know
-// var appId = 2;       // Content App is usually 2, but thanks to DynamicCode, we don&#39;t need this
+// var appId = 2;       // Content App is usually 2, but thanks to DynamicCode, we don't need this
 var tabId = 234;        // this is the page with the Links View on it
 var modId = 678;        // this is the module ID of the Links View
-
+ 
 // get the BlockBuilder
 var block = ToSic.Sxc.Dnn.Factory.CmsBlock(tabId, modId);
-
+ 
 // the get the DynamicCode instance (Code.DnnDynamicCodeRoot) of the block
 var dynCode = ToSic.Sxc.Dnn.Factory.DynamicCode(block);
-
+ 
 // if we were running &quot;inside&quot; 2sxc, we would just do this:
 // var links = AsList(Data[&quot;Default&quot;]);
 // but instead we use our magical DynamicCode instance like this
 var links = dynCode.AsList(dynCode.App.Data[&quot;Default&quot;]);
-
+ 
 &lt;ul&gt;
 foreach (var link in links) 
 {
@@ -171,7 +174,9 @@ foreach (var link in links)
   &lt;/li&gt;
 }
 &lt;/ul&gt;
-</code></pre><h2 id="read-also">Read also</h2>
+
+</code></pre>
+<h2 id="read-also">Read also</h2>
 <ul>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Sxc.Dnn.Factory.html">Dnn Factory API</a></li>
 <li>To dive deeper, you must check the <a href="http://2sxc.org/en/blog/post/using-app-data-outside-of-2sxc-in-razor-custom-webapi-skin-or-another-module-300">blog post</a></li>
@@ -182,7 +187,7 @@ foreach (var link in links)
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -193,13 +198,14 @@ foreach (var link in links)
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -207,28 +213,29 @@ foreach (var link in links)
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

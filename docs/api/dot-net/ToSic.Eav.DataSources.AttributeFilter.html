@@ -14,12 +14,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Class AttributeFilter
-   | 2sxc 16 / EAV 16 </title>
+ | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AttributeFilter
-   | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+ | 2sxc 16 / EAV 16 ">
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -27,23 +27,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -64,7 +64,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -84,10 +84,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -97,17 +97,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,16 +117,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="ToSic.Eav.DataSources.AttributeFilter">
-  
-  
+
+
+
   <h1 id="ToSic_Eav_DataSources_AttributeFilter" data-uid="ToSic.Eav.DataSources.AttributeFilter" class="text-break">Class AttributeFilter
-  </h1>
-  <div class="markdown level0 summary"><p>DataSource to only pass through configured AttributeNames - other attributes/properties are removed from the entities.</p>
+</h1>
+  <div class="markdown level0 summary"><p>The base class for all DataSources, especially custom DataSources.
+It must always be inherited.
+It provides a lot of core functionality to get configurations, ensure caching and more.</p>
+<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> DataSource for custom data sources.</p>
 </div>
-  <div class="markdown level0 conceptual"><p>The <strong>AttributeFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It removes values from items so that the result is smaller, and doesn&#39;t publish confidential data. It&#39;s primarily used when providing data as JSON, so that not all values are published. </p>
+  <div class="markdown level0 conceptual">
+<p>The <strong>AttributeFilter</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It removes values from items so that the result is smaller, and doesn't publish confidential data. It's primarily used when providing data as JSON, so that not all values are published.</p>
 <h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
 <p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver <code>Name</code> and <code>Country</code>:</p>
-<p><img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%" class="full-width"></p>
+<img src="ToSic.Eav/DataSources/assets/attribute-filter-basic.png" width="100%" class="full-width">
 <p>This is what you get on the default-case (unfiltered):</p>
 <pre><code class="lang-json">&quot;Default&quot;: [
     {
@@ -146,7 +151,8 @@
     },
     ...
 ]
-</code></pre><p>This is what you get on the filtered stream:</p>
+</code></pre>
+<p>This is what you get on the filtered stream:</p>
 <pre><code class="lang-json">&quot;Cleaned&quot;: [
     {
       &quot;Name&quot;: &quot;2sic&quot;,
@@ -158,12 +164,14 @@
     },
     ...
 ]
-</code></pre><p>As you can see, the secret <code>Notes</code> and the <code>Categories</code> are not in the <em>Cleaned</em> stream any more. 
-There are three common use cases: </p>
+</code></pre>
+<p>As you can see, the secret <code>Notes</code> and the <code>Categories</code> are not in the <em>Cleaned</em> stream any more.
+There are three common use cases:</p>
 <h2 id="programming-with-the-attribute-filter">Programming With The Attribute Filter</h2>
-<blockquote><p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible, 
-as it&#39;s easier to understand and is identical for C# and JavaScript. 
-It&#39;s also better because it separates data-retrieval from visualization.</p>
+<blockquote>
+<p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible,
+as it's easier to understand and is identical for C# and JavaScript.
+It's also better because it separates data-retrieval from visualization.</p>
 </blockquote>
 <h2 id="read-also">Read also</h2>
 <ul>
@@ -177,6 +185,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
 <li><a href="https://github.com/2sic/app-demo-visual-query/releases/latest">Demo App with examples for most DataSources</a></li>
 </ul>
 <h2 id="history">History</h2>
+
 <ol>
 <li>Introduced in EAV 3.x, 2sxc ca. v6</li>
 </ol>
@@ -185,13 +194,13 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
 </div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ToSic.Lib.Services.ServiceBase</span></div>
-    <div class="level2"><span class="xref">ToSic.Lib.Services.ServiceBase</span>&lt;<span class="xref">ToSic.Eav.DataSource.DataSourceBase.MyServices</span>&gt;</div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="ToSic.Lib.Services.ServiceBase.html">ServiceBase</a></div>
+    <div class="level2"><span class="xref">ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.MyServices.html">MyServices</a>&gt;</div>
     <div class="level3"><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
     <div class="level4"><span class="xref">AttributeFilter</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IDataSource</a></div>
     <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
@@ -221,7 +230,7 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(Int64)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
@@ -233,19 +242,19 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_In">DataSourceBase.In</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_System_String_">DataSourceBase.TryGetIn(String)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_System_String_">DataSourceBase.TryGetIn(string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetOut_System_String_">DataSourceBase.TryGetOut(String)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetOut_System_String_">DataSourceBase.TryGetOut(string)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Out">DataSourceBase.Out</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Item_System_String_">DataSourceBase.Item[String]</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Item_System_String_">DataSourceBase.this[string]</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_System_String_System_Boolean_System_Boolean_">DataSourceBase.GetStream(String, String, Boolean, Boolean)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_System_String_System_Boolean_System_Boolean_">DataSourceBase.GetStream(string, string, bool, bool)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_List">DataSourceBase.List</a>
@@ -254,35 +263,35 @@ It&#39;s also better because it separates data-retrieval from visualization.</p>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Attach_ToSic_Eav_DataSource_IDataSource_">DataSourceBase.Attach(IDataSource)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataSource_System_String_">DataSourceBase.Attach(String, IDataSource, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataSource_System_String_">DataSourceBase.Attach(string, IDataSource, string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataStream_">DataSourceBase.Attach(String, IDataStream)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataStream_">DataSourceBase.Attach(string, IDataStream)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, String)</a>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, string)</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.DataSources.html">DataSources</a></h6>
   <h6><strong>Assembly</strong>: ToSic.Eav.DataSources.dll</h6>
   <h5 id="ToSic_Eav_DataSources_AttributeFilter_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode]
-[VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete_sweep&quot;, Type = DataSourceType.Modify, NameId = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[]{&quot;Default*&quot;}, ConfigurationType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
-public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheInfo, ICacheKey, ICacheExpiring, ITimestamped, ICanPurgeListCache, IHasLog, IDataTarget, IAppIdentitySync, IDataSourceLinkable</code></pre>
+[VisualQuery(NiceName = &quot;Remove Attribute/Property&quot;, UiHint = &quot;Remove attributes/properties to limit what is available&quot;, Icon = &quot;delete_sweep&quot;, Type = DataSourceType.Modify, NameId = &quot;ToSic.Eav.DataSources.AttributeFilter, ToSic.Eav.DataSources&quot;, DynamicOut = false, In = new string[] { &quot;Default*&quot; }, ConfigurationType = &quot;|Config ToSic.Eav.DataSources.AttributeFilter&quot;, HelpLink = &quot;https://r.2sxc.org/DsAttributeFilter&quot;)]
+public class AttributeFilter : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
   <h5 id="ToSic_Eav_DataSources_AttributeFilter_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Had a major, breaking update in v15.
 Consult the guide to upgrade your custom data sources.</p>
 </div>
   <h3 id="properties">Properties
-  </h3>
+</h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_AttributeNames.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.AttributeNames%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_AttributeNames.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.AttributeNames%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L44">View Source</a>
@@ -292,13 +301,13 @@ Consult the guide to upgrade your custom data sources.</p>
   <div class="markdown level1 summary"><p>A string containing one or more attribute names. like &quot;FirstName&quot; or &quot;FirstName,LastName,Birthday&quot;</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Configuration]
 public string AttributeNames { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -307,14 +316,14 @@ public string AttributeNames { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_Mode.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_AttributeFilter_Mode.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.AttributeFilter.Mode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Attributes/AttributeFilter.cs/#L54">View Source</a>
@@ -324,13 +333,13 @@ public string AttributeNames { get; set; }</code></pre>
   <div class="markdown level1 summary"><p>A string containing one or more attribute names. like &quot;FirstName&quot; or &quot;FirstName,LastName,Birthday&quot;</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;+&quot;)]
 public string Mode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -339,7 +348,7 @@ public string Mode { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -372,9 +381,10 @@ public string Mode { get; set; }</code></pre>
   <div>
       <a class="xref" href="ToSic.Eav.DataSource.IDataSourceLinkable.html">IDataSourceLinkable</a>
   </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -388,13 +398,14 @@ public string Mode { get; set; }</code></pre>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -402,28 +413,29 @@ public string Mode { get; set; }</code></pre>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

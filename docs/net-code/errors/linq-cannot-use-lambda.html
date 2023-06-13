@@ -16,8 +16,8 @@
     <title>Error Cannot use a lambda expression | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Error Cannot use a lambda expression | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,34 +117,38 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Errors.LinqLambda">
 <h1 id="error-cannot-use-a-lambda-expression">Error Cannot use a lambda expression</h1>
 
-<p>If you see an error like this: </p>
+<p>If you see an error like this:</p>
 <pre><code>Cannot use a lambda expression as an argument to a dynamically dispatched operation without first casting it to a delegate or expression tree type at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in
-</code></pre><p>It usually means that you tried to write LINQ code like a <code>.First(...)</code> or <code>.Select(...)</code> on an object, and the compiler can&#39;t be sure that you tried to write LINQ.</p>
+</code></pre>
+<p>It usually means that you tried to write LINQ code like a <code>.First(...)</code> or <code>.Select(...)</code> on an object, and the compiler can't be sure that you tried to write LINQ.</p>
 <h2 id="background-dynamic-code-and-extension-methods">Background: Dynamic Code and Extension Methods</h2>
-<p>Razor is dynamically compiled code, and many objects like <code>Content</code> are typed as <code>dynamic</code>. Because of this, the compiler can&#39;t be sure what&#39;s in a <code>dynamic</code> object, and also not what is in a <code>Content.Tags</code> - since this too is regarded as <code>dynamic</code>. </p>
-<p>This is why you can&#39;t just write <code>Content.Tags.First()</code>, because <code>.First()</code> is an extension method which the compiler must find first - but it can&#39;t do that, since it doesn&#39;t know that <code>Content.Tags</code> are of the type <code>IEnumerable&lt;...&gt;</code>. </p>
+<p>Razor is dynamically compiled code, and many objects like <code>Content</code> are typed as <code>dynamic</code>. Because of this, the compiler can't be sure what's in a <code>dynamic</code> object, and also not what is in a <code>Content.Tags</code> - since this too is regarded as <code>dynamic</code>.</p>
+<p>This is why you can't just write <code>Content.Tags.First()</code>, because <code>.First()</code> is an extension method which the compiler must find first - but it can't do that, since it doesn't know that <code>Content.Tags</code> are of the type <code>IEnumerable&lt;...&gt;</code>.</p>
 <h2 id="solution-1---use-aslist">Solution #1 - use AsList(...)</h2>
-<p>2sxc 10.20 introduces <code>AsList(...)</code> which the compiler knows is an IEnumerable. Unfortunately if the the compiler isn&#39;t sure about <code>Content.Tags</code>, then it&#39;s also not sure about <code>AsList(Content.Tags)</code>. This is a minor inconvenience, since <code>AsList(...)</code> would figure things out, but Razor wants to be sure. So to use <code>AsList()</code> for solving this problem, you&#39;ll need to write <code>AsList(Content.Tags as object)</code>. That solves it. </p>
+<p>2sxc 10.20 introduces <code>AsList(...)</code> which the compiler knows is an IEnumerable. Unfortunately if the the compiler isn't sure about <code>Content.Tags</code>, then it's also not sure about <code>AsList(Content.Tags)</code>. This is a minor inconvenience, since <code>AsList(...)</code> would figure things out, but Razor wants to be sure. So to use <code>AsList()</code> for solving this problem, you'll need to write <code>AsList(Content.Tags as object)</code>. That solves it.</p>
 <h2 id="solution-2---cast-as-ienumerabledynamic">Solution #2 - cast as <code>IEnumerable&lt;dynamic&gt;</code></h2>
-<p>If you already know it&#39;s a list, you can also cast it as an <code>IEnumerable&lt;dynamic&gt;</code>. Since <code>IEnumerable&lt;T&gt;</code> is in the namespace <code>System.Collections.Generic</code> you have 3 options: </p>
+<p>If you already know it's a list, you can also cast it as an <code>IEnumerable&lt;dynamic&gt;</code>. Since <code>IEnumerable&lt;T&gt;</code> is in the namespace <code>System.Collections.Generic</code> you have 3 options:</p>
 <h4 id="cast-with-full-namespace">Cast with full Namespace</h4>
-<p>This is what the compiler actually understands - but it&#39;s a bit long and hard to read:</p>
+<p>This is what the compiler actually understands - but it's a bit long and hard to read:</p>
 <pre><code class="lang-cs">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre><h4 id="cast-with-using-and-ienumerabledynamic">Cast with <code>@using</code> and <code>IEnumerable&lt;dynamic&gt;</code></h4>
+</code></pre>
+<h4 id="cast-with-using-and-ienumerabledynamic">Cast with <code>@using</code> and <code>IEnumerable&lt;dynamic&gt;</code></h4>
 <p>This is the same thing, just nicer to read:</p>
 <pre><code class="lang-cs">@using System.Collections.Generic;
 
 var authors = (book.Authors as IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre><h4 id="cast-with-using-dynlist--">Cast with <code>@using Dynlist = ...</code></h4>
+</code></pre>
+<h4 id="cast-with-using-dynlist--">Cast with <code>@using Dynlist = ...</code></h4>
 <p>This is the same thing, but the nicest, easiest to read method:</p>
 <pre><code class="lang-cs">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 var authors = (book.Authors as Dynlist)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
-</code></pre></article>
+</code></pre>
+</article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -155,13 +159,14 @@ var authors = (book.Authors as Dynlist)
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -169,28 +174,29 @@ var authors = (book.Authors as Dynlist)
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

@@ -16,8 +16,8 @@
     <title>Razor: Rendering Content-Blocks | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Razor: Rendering Content-Blocks | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,35 +117,36 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Razor.Blocks">
 <h1 id="razor-rendering-content-blocks">Razor: Rendering Content-Blocks</h1>
 
-<p>When using <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here&#39;s how to do it in Razor. </p>
+<p>When using <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-
   <h2> Discover More in the Razor Tutorials </h2>
-
-  We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.
-
-</div><h2 id="how-to-use">How to use</h2>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<h2 id="how-to-use">How to use</h2>
 <p>There are two common use cases</p>
 <ol>
-<li>Virtual Panes at item level - in this case, the item has it&#39;s own pane for placing apps and content-blocks</li>
+<li>Virtual Panes at item level - in this case, the item has it's own pane for placing apps and content-blocks</li>
 <li>Very Rich Text - where you add content-blocks and apps in the WYSIWYG</li>
 </ol>
 <h2 id="item-level-virtual-panes">Item-Level Virtual Panes</h2>
-<p>Here&#39;s a quick example which renders an area with all content-blocks: </p>
+<p>Here's a quick example which renders an area with all content-blocks:</p>
 <pre><code class="lang-razor">@ToSic.Sxc.Block.Render.All(Content, field: &quot;InnerContent&quot;)
-</code></pre><p>This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area. </p>
-<p>Here&#39;s a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes: </p>
+</code></pre>
+<p>This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area.</p>
+<p>Here's a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes:</p>
 <pre><code class="lang-html">&lt;div class=&quot;some-class sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
     @foreach(var cb in @post.DesignedContent) {
         @cb.Render();
     }
 &lt;/div&gt;
-</code></pre><p>If you care about doing it manually, read more about the <a class="xref" href="edit.html">Edit object</a>.</p>
+</code></pre>
+<p>If you care about doing it manually, read more about the <a class="xref" href="edit.html">Edit object</a>.</p>
 <h2 id="very-rich-text--inner-content">Very Rich Text / Inner-Content</h2>
-<p>Here&#39;s an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps. </p>
+<p>Here's an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps.</p>
 <pre><code class="lang-razor">@ToSic.Sxc.Blocks.Render.All(post, field: &quot;WysiwygContent&quot;, merge: post.Body)
-</code></pre><p>There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
+</code></pre>
+<p>There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
 <p>Here is a <a href="http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc">blog tutorial on implementing Very Rich Text</a>.</p>
 <h2 id="read-also">Read also</h2>
 <ul>
@@ -163,7 +164,7 @@
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -174,13 +175,14 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -188,28 +190,29 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

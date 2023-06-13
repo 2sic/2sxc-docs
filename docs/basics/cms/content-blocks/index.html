@@ -16,8 +16,8 @@
     <title>Content Blocks | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Content Blocks | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,17 +117,19 @@
             <article class="content wrap" id="_content" data-uid="Basics.Cms.ContentBlocks.Index">
 <h1 id="content-blocks">Content Blocks</h1>
 
-<p>Content items wouldn&#39;t do much - they must be shown to the user in the intended layout. The configuration of such a <em>show these things using this template</em> is handled in a <strong>ContentBlock</strong>. The data model for these <em>Content Blocks</em> looks like this:</p>
-<p><img src="assets/content-block.png" width="100%" class="full-width"></p>
+<p>Content items wouldn't do much - they must be shown to the user in the intended layout. The configuration of such a <em>show these things using this template</em> is handled in a <strong>ContentBlock</strong>. The data model for these <em>Content Blocks</em> looks like this:</p>
+<img src="assets/content-block.png" width="100%" class="full-width">
 <p>So each <em>Content Block</em> has:</p>
 <ol>
 <li>One reference to a View configuration</li>
 <li>Zero, one or many references to content items</li>
-<li>The same amount of Content-Presentation items </li>
+<li>The same amount of Content-Presentation items</li>
 <li>Zero or one references to Header items</li>
 <li>The same amount of Header-Presentation items</li>
 </ol>
-<div class="TIP"><h5>Tip</h5><p>Content Blocks contain a reference to the <em>View</em> and optionally a bunch of <em>Content Items</em> that will be used/shown in that <em>View</em>. But there are actually 4 possible scenarios deciding what is actually shown:</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Content Blocks contain a reference to the <em>View</em> and optionally a bunch of <em>Content Items</em> that will be used/shown in that <em>View</em>. But there are actually 4 possible scenarios deciding what is actually shown:</p>
 <ol>
 <li>The <em>View</em> can show the content-items provided by the <em>Content Block</em></li>
 <li>The <em>View</em> can be configured to use a <em>Query</em> and show data from that</li>
@@ -135,25 +137,33 @@
 <li>Combinations of the three options above are possible</li>
 </ol>
 </div>
-<div class="IMPORTANT"><h5>Important</h5><p>Since the <em>View</em> can also be configured to get data from other sources, it may show items that are not in the list of the <em>Content Block</em>. </p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Since the <em>View</em> can also be configured to get data from other sources, it may show items that are not in the list of the <em>Content Block</em>.</p>
 </div>
 <h2 id="content-blocks-in-a-cms-like-dnn">Content Blocks in a CMS like Dnn</h2>
-<p>When you see 2sxc data in Dnn, that&#39;s because a module was added to the page pointing to a <em>Content Block</em>. If you want to know more about that, read <a class="xref" href="content-blocks-in-dnn.html">2sxc Content in Dnn</a>.</p>
+<p>When you see 2sxc data in Dnn, that's because a module was added to the page pointing to a <em>Content Block</em>. If you want to know more about that, read <a class="xref" href="content-blocks-in-dnn.html">2sxc Content in Dnn</a>.</p>
 <h2 id="manually-managing-this-data">Manually Managing this Data</h2>
-<p>Note: you shoudn&#39;t usually do this - but sometimes you have to. Check out this short explanation:</p>
-<p><img src="assets/administrating-content-group-in-an-app.jpg" width="100%" class="full-width"></p>
-<div class="NOTE"><h5>Note</h5><p>This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.</p>
+<p>Note: you shoudn't usually do this - but sometimes you have to. Check out this short explanation:</p>
+<img src="assets/administrating-content-group-in-an-app.jpg" width="100%" class="full-width">
+<div class="NOTE">
+<h5>Note</h5>
+<p>This scerenshot above is from 2sxc 8. In 2sxc 11 you can change scopes in the dropdown below the data table.</p>
 </div>
 <h2 id="faq">FAQ</h2>
 <ol>
-<li>If a page or module is deleted, does it also delete the <em>Content Block</em>?<br>No. Note that if a page or module is deleted, it goes into the Dnn trash, so it could always be restored again. </li>
-<li>If a page or module is deleted from the trash, does it also delete the <em>Content Block</em>?<br>No. Dnn does not inform modules about delete actions, so we can&#39;t do clean-up.</li>
-<li>Are <em>Content Blocks</em> which don&#39;t appear on a page orphaned and can I delete them?<br>Maybe. Since they could be used in other apps (see <a class="xref" href="../../content/index.html">Content - Data made Useful</a>) as <em>Inner Content</em>, there is no quick way to tell if it&#39;s being used elsewhere.</li>
-<li>Can a <em>Content Block</em> be used on multiple modules / pages?<br>Yes. It&#39;s not common, but since a module can be shown on multiple pages or even on other portals, it would show the same <em>Content Block</em> there as well. </li>
+<li>If a page or module is deleted, does it also delete the <em>Content Block</em>?<br>
+No. Note that if a page or module is deleted, it goes into the Dnn trash, so it could always be restored again.</li>
+<li>If a page or module is deleted from the trash, does it also delete the <em>Content Block</em>?<br>
+No. Dnn does not inform modules about delete actions, so we can't do clean-up.</li>
+<li>Are <em>Content Blocks</em> which don't appear on a page orphaned and can I delete them?<br>
+Maybe. Since they could be used in other apps (see <a class="xref" href="../../content/index.html">Content - Data made Useful</a>) as <em>Inner Content</em>, there is no quick way to tell if it's being used elsewhere.</li>
+<li>Can a <em>Content Block</em> be used on multiple modules / pages?<br>
+Yes. It's not common, but since a module can be shown on multiple pages or even on other portals, it would show the same <em>Content Block</em> there as well.</li>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -164,13 +174,14 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -178,28 +189,29 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

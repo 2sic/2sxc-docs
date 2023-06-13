@@ -16,8 +16,8 @@
     <title>Responsive Images API in .net | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Responsive Images API in .net | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,7 +117,7 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Images.Index">
 <h1 id="responsive-images-api-in-net">Responsive Images API in .net</h1>
 
-<p>Creating perfect responsive images can be really hard. </p>
+<p>Creating perfect responsive images can be really hard.</p>
 <p>Aspects which are covered</p>
 <ol>
 <li>Creating <code>img</code> tags with perfect <code>srcset</code>s</li>
@@ -132,7 +132,8 @@
   var blogPic = imgService.Picture(blogPost.Image);
 }
 @blogPic
-</code></pre><p>TODO: LINK TO EXAMPLES</p>
+</code></pre>
+<p>TODO: LINK TO EXAMPLES</p>
 <h2 id="how-this-works">How This Works</h2>
 <p>Internally this is what will happen:</p>
 <ol>
@@ -145,46 +146,54 @@
 <h3 id="1-prepare">1. Prepare</h3>
 <p>Always start by getting the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> - you will usually just get this once per Razor template:</p>
 <pre><code class="lang-c#">var imgService = GetService&lt;ToSic.Sxc.Services.IImageService&gt;();
-</code></pre><p>If needed, prepare resize settings using the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_">ResizeSettings(...)</a>. 
+</code></pre>
+<p>If needed, prepare resize settings using the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_">ResizeSettings(...)</a>.
 This is probably only needed in ca. 10% of all cases, because the defaults are usually what you want to use.
-If you want to do this, see further explanations further down. </p>
+If you want to do this, see further explanations further down.</p>
 <h3 id="2-get-the-responsive-object">2. Get the Responsive Object</h3>
-<p>Get the responsive <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsiveImage.html">Image</a> or <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsivePicture.html">Picture</a> 
+<p>Get the responsive <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsiveImage.html">Image</a> or <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsivePicture.html">Picture</a>
 using the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Img_">Img(...)</a> or <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Picture_">Picture(...)</a>.</p>
 <pre><code class="lang-c#">// Example for a file in the App folder
 var appIconImg = imgService.Img(App.Path + &quot;/app-icon.png&quot;);
 var appIconPicture = imgService.Picture(App.Path + &quot;/app-icon.png&quot;);
 // Example for an image on a dynamic-data object
 var blogPicImg = imgService.Img(blogPost.Image);
-</code></pre><h3 id="3-output">3. Output</h3>
+</code></pre>
+<h3 id="3-output">3. Output</h3>
 <p>When creating the HTML you have many options. The most basic is just to show the result:</p>
 <pre><code class="lang-razor">@appIconImg
 @appIconPicture
-</code></pre><h2 id="guide-advanced">Guide Advanced</h2>
+</code></pre>
+<h2 id="guide-advanced">Guide Advanced</h2>
 <h3 id="resize-settings">Resize Settings</h3>
 <p>If no settings are provided, the <code>Settings.Images.Content</code> <a class="xref" href="../../basics/configuration/settings-system.html">see settings</a> will be used automatically.</p>
-<p>The most common scenario is that you have a razor template which shows images that are typically half or a third the size of the normal content. 
+<p>The most common scenario is that you have a razor template which shows images that are typically half or a third the size of the normal content.
 In such a case you would also supply a factor in various possible formats.
 Here some examples:</p>
 <pre><code class="lang-c#">var blogPicImgHalf = imgService.Img(blogPost.Image, factor: 0.5);
 var blogPicImgThird = imgService.Img(blogPost.Image, factor: &quot;1/3&quot;);
 var blogPicImg2Thirds = imgService.Img(blogPost.Image, factor: &quot;2:3&quot;);
-</code></pre><p>You can also use other settings, like <code>Settings.Images.Screen</code> for larger settings.
-This can also be combined with factor - here&#39;s an example:</p>
+</code></pre>
+<p>You can also use other settings, like <code>Settings.Images.Screen</code> for larger settings.
+This can also be combined with factor - here's an example:</p>
 <pre><code class="lang-c#">var background = imgService.Img(blogPost.Image, settings: Settings.Images.Screen);
 var backgroundSmaller = imgService.Img(blogPost.Image, settings: Settings.Images.Screen, factor: 0.9);
-</code></pre><p>You can also use custom settings like this:</p>
+</code></pre>
+<p>You can also use custom settings like this:</p>
 <pre><code class="lang-c#">var resizeSettings = imgService.ResizeSettings(width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
 var img = imgService.Img(blogPost.Image, settings: resizeSettings);
-</code></pre><p>And you can merge standard settings with your custom settings like this:</p>
+</code></pre>
+<p>And you can merge standard settings with your custom settings like this:</p>
 <pre><code class="lang-c#">var resizeSettings = imgService.ResizeSettings(settings: Settings.Images.Custom, width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
 var img = imgService.Img(blogPost.Image, settings: resizeSettings);
-</code></pre><h3 id="image-alt-description-or-class-attribute">Image <code>alt</code> Description or <code>class</code> Attribute</h3>
+</code></pre>
+<h3 id="image-alt-description-or-class-attribute">Image <code>alt</code> Description or <code>class</code> Attribute</h3>
 <p>These are the most common things you may want to specify, so the <code>Img(...)</code> and <code>Picture(...)</code> tag support this in the initial call:</p>
 <pre><code class="lang-c#">var img = imgService.Img(blogPost.Image, imgAlt: blogPost.Title, imgClass: &quot;some-class-names&quot;);
-</code></pre><p>Other attributes can be set as well, but it&#39;s more complicated. See custom Output below. </p>
+</code></pre>
+<p>Other attributes can be set as well, but it's more complicated. See custom Output below.</p>
 <h3 id="custom-output">Custom Output</h3>
-<p>In most cases you&#39;ll just want to show the image or picture, like this:</p>
+<p>In most cases you'll just want to show the image or picture, like this:</p>
 <pre><code class="lang-razor">@{
   var img = imgService.Img(blogPost.Image);
   var picture = imgService.Picture(blogPost.Image);
@@ -192,8 +201,9 @@ var img = imgService.Img(blogPost.Image, settings: resizeSettings);
 @* Now just show them *@
 @img
 @picture
-</code></pre><p>But you may need to customize more what the output shows. 
-Let&#39;s assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code> tag a special <code>id</code> here&#39;s what you would do:</p>
+</code></pre>
+<p>But you may need to customize more what the output shows.
+Let's assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code> tag a special <code>id</code> here's what you would do:</p>
 <pre><code class="lang-razor">@{
   var img = imgService.Img(blogPost.Image);
   img.ImgTag.Id(&quot;mainImg&quot;);
@@ -204,7 +214,8 @@ Let&#39;s assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;pic
 @* Now just show them *@
 @img
 @picture
-</code></pre><p>The img and picture variables are <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsiveImage.html">IResponsiveImage</a> and <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsivePicture.html">IResponsivePicture</a> objects. </p>
+</code></pre>
+<p>The img and picture variables are <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsiveImage.html">IResponsiveImage</a> and <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsivePicture.html">IResponsivePicture</a> objects.</p>
 <p>The <code>ImgTag</code> and <code>PictureTag</code> properties are <a class="xref" href="../razor-blade/index.html">RazorBlade</a> objects and can be customized using the RazorBlade fluid Tag API.</p>
 <p>In case you want even more control over your output, you can also piece it together yourself:</p>
 <pre><code class="lang-razor">@{
@@ -246,7 +257,9 @@ Let&#39;s assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;pic
   }
   &lt;img src=&quot;@picture.Url&quot; style=&quot;width: 30%&quot;&gt;
 &lt;/picture&gt;
-</code></pre><p>TODO: document recipe system</p>
+
+</code></pre>
+<p>TODO: document recipe system</p>
 <!-- 
 ## SrcSet Parameters
 
@@ -268,7 +281,7 @@ In cases where you are generating other custom code and need properly created Sr
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -279,13 +292,14 @@ In cases where you are generating other custom code and need properly created Sr
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -293,28 +307,29 @@ In cases where you are generating other custom code and need properly created Sr
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

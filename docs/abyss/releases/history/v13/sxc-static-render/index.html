@@ -16,8 +16,8 @@
     <title>Fix Breaking Change Static Render in v13 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Fix Breaking Change Static Render in v13 | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../../../toc.html">
     <meta property="docfx:tocrel" content="../../../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../../../index.html">
                 <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -118,8 +118,8 @@
 <h1 id="fix-breaking-change-static-render-in-v13">Fix Breaking Change <em>Static Render</em> in v13</h1>
 
 <p><strong>Keywords:</strong> #Deprecated #Render #Static #DependencyInjection</p>
-<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here&#39;s how to fix any code in production. </p>
-<p>These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn&#39;t be used anywhere else. </p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p>These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else.</p>
 <ul>
 <li><code>ToSic.SexyContent.ContentBlocks.One(...)</code></li>
 <li><code>ToSic.SexyContent.ContentBlocks.All(...)</code></li>
@@ -127,26 +127,28 @@
 <li><code>ToSic.Sxc.Blocks.Render.All(...)</code></li>
 </ul>
 <h2 id="reason-for-removal">Reason for Removal</h2>
-<p>2sxc used to not have Dependency Injection so there were some static APIs which we provided. 
-But this is bad practice and causes a lot of difficulty to keep everything working. 
-The newer APIs use Services and Dependency Injection and do what they should. </p>
+<p>2sxc used to not have Dependency Injection so there were some static APIs which we provided.
+But this is bad practice and causes a lot of difficulty to keep everything working.
+The newer APIs use Services and Dependency Injection and do what they should.</p>
 <h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
 <p>Previously you could write code like this in your Razor:</p>
 <pre><code class="lang-csharp">@using ToSic.Sxc.Blocks;
 // some code
 @Render.All(someEntity, field: &quot;AnswerInnerContent&quot;, merge: someEntity.Answer)
-</code></pre><h2 id="what-we-changed">What we Changed</h2>
+</code></pre>
+<h2 id="what-we-changed">What we Changed</h2>
 <p>In 2sxc 11.11 we introduced the <code>GetService&lt;T&gt;()</code> (<a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Code.IDynamicCode.html#ToSic_Sxc_Code_IDynamicCode_GetService_">docs</a>) which provides proper DI.
 We also introduced a <code>ToSic.Sxc.Services.IRenderService</code> which should replace these commands - see <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html">docs</a>.
 Please use this from now on.</p>
-<p>The old API will continue to work for a while but show errors in the insight. </p>
+<p>The old API will continue to work for a while but show errors in the insight.</p>
 <h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
 <p>So the previous example would look like this:</p>
 <pre><code class="lang-csharp">@using ToSic.Sxc.Services;
 // some code
 var renderSvc = GetService&lt;IRenderService&gt;();
 @renderSvc.All(someEntity, field: &quot;AnswerInnerContent&quot;, merge: someEntity.Answer)
-</code></pre><hr>
+</code></pre>
+<hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Introduced <code>ToSic.SexyContent.ContentBlocks</code> ca. 2sxc 5</li>
@@ -159,7 +161,7 @@ var renderSvc = GetService&lt;IRenderService&gt;();
 <p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-static-render">https://go.2sxc.org/brc-13-static-render</a></p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -170,13 +172,14 @@ var renderSvc = GetService&lt;IRenderService&gt;();
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -184,28 +187,29 @@ var renderSvc = GetService&lt;IRenderService&gt;();
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

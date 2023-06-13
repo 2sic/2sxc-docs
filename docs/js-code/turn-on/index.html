@@ -16,8 +16,8 @@
     <title>turnOn JavaScript API | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="turnOn JavaScript API | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li class="active">
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,33 +116,40 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="JsCode.TurnOn.Index">
 
-<p><img src="../../assets/features/turn-on.svg" class="feature"></p>
+<img src="../../assets/features/turn-on.svg" class="feature">
 <h1 id="turnon-javascript-api">turnOn JavaScript API</h1>
 <h2 id="the-problem-turnon-solves">The Problem turnOn Solves</h2>
 <p>A core problem with all JavaScript is making sure that all scripts and dependencies are loaded, available and ready, and the data needed to init is available (usually in the Html itself).</p>
 <p>Even something as simple as this can fail...</p>
 <pre><code class="lang-js">$(start);
-</code></pre><p>...because even this example requires jQuery to already exist.</p>
-<blockquote><p><strong>turnOn</strong> solves this problem with a new architecture. Loading is now configuration based. No matter which parts load in what order, turnOn will work.</p>
+</code></pre>
+<p>...because even this example requires jQuery to already exist.</p>
+<blockquote>
+<p><strong>turnOn</strong> solves this problem with a new architecture. Loading is now configuration based. No matter which parts load in what order, turnOn will work.</p>
 </blockquote>
-<div class="TIP"><h5>Tip</h5><p><strong>turnOn</strong> is also building an architecture which will reliably work even with very <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">strict CSP</a> enforced - which we believe will be essential in future. </p>
+<div class="TIP">
+<h5>Tip</h5>
+<p><strong>turnOn</strong> is also building an architecture which will reliably work even with very <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">strict CSP</a> enforced - which we believe will be essential in future.</p>
 </div>
 <p>👉 Check out the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/turn-on/home">turnOn Tutorials</a></p>
 <h2 id="activate-turnon">Activate turnOn</h2>
-<p>To use turnOn you must must tell the page that you need it. Here&#39;s how:</p>
+<p>To use turnOn you must must tell the page that you need it. Here's how:</p>
 <pre><code class="lang-c#">var page = GetService&lt;ToSic.Sxc.Services.IPageService&gt;();
 page.Activate(&quot;turnOn&quot;);
-</code></pre><p>👉 Read more about the <a class="xref" href="../../net-code/razor/services/page-service.html">IPageService</a></p>
+</code></pre>
+<p>👉 Read more about the <a class="xref" href="../../net-code/razor/services/page-service.html">IPageService</a></p>
 <h2 id="the-turnon-solution">The turnOn Solution</h2>
 <p>When using turnOn, the page will request the <code>turnOn.js</code> in any way. It can also be <code>deferred</code>. Then this will be used to turn-on your code:</p>
-<pre><code class="lang-html">&lt;div turn-on=&#39;{ &quot;await&quot;: [&quot;window.$&quot;], &quot;run&quot;: &quot;window.appContent.maps.load()&quot;, &quot;data&quot;: &quot;some-google-maps-key&quot; }&#39;&gt;
+<pre><code class="lang-html">&lt;div turn-on='{ &quot;await&quot;: [&quot;window.$&quot;], &quot;run&quot;: &quot;window.appContent.maps.load()&quot;, &quot;data&quot;: &quot;some-google-maps-key&quot; }'&gt;
   &lt;!-- more html --&gt;
 &lt;/div&gt;
-</code></pre><p>This is what happens</p>
+</code></pre>
+<p>This is what happens</p>
 <ol>
 <li>The html will just be loaded and have no effects, throw no errors and nothing</li>
-<li>Once the <code>turnOn.js</code> loads it will find this and process it - it doesn&#39;t matter if turnOn was already loaded or deferred</li>
-<li>turnOn will then wait for all this to exist:<ul>
+<li>Once the <code>turnOn.js</code> loads it will find this and process it - it doesn't matter if turnOn was already loaded or deferred</li>
+<li>turnOn will then wait for all this to exist:
+<ul>
 <li><code>window</code></li>
 <li><code>window.$</code></li>
 <li><code>window.appContent</code></li>
@@ -152,9 +159,9 @@ page.Activate(&quot;turnOn&quot;);
 </li>
 <li>It will then call <code>window.appContent.maps.load(data)</code> with the data provided</li>
 </ol>
-<p>Here&#39;s another example, taken from the new Content-App in 2sxc:</p>
+<p>Here's another example, taken from the new Content-App in 2sxc:</p>
 <pre><code class="lang-html">&lt;!-- Instruct turnOn to init this specific Map once everything is loaded --&gt;
-&lt;turnOn turn-on=&#39;{ &quot;run&quot;: &quot;window.appContent.maps.configureMap()&quot;, &quot;data&quot;: { 
+&lt;turnOn turn-on='{ &quot;run&quot;: &quot;window.appContent.maps.configureMap()&quot;, &quot;data&quot;: { 
   &quot;domId&quot;: &quot;GoogleMap-@DynamicModel.mapId&quot;, 
   &quot;marker&quot;: &quot;@Text.First(DynamicModel.markerImage, &quot;&quot;)&quot;,
   &quot;lat&quot;: @DynamicModel.mapInfo.GpsLat.ToString(&quot;R&quot;),
@@ -162,15 +169,17 @@ page.Activate(&quot;turnOn&quot;);
   &quot;zoom&quot;: @Content.Presentation.Zoom, 
   &quot;info&quot;: &quot;@DynamicModel.company&quot;,
   &quot;warn&quot;: @(Settings.GoogleMapsShowWarning ? &quot;true&quot; : &quot;false&quot;)
-}}&#39;&gt;&lt;/turnOn&gt;
-</code></pre><p>This example will init a map with the configuration of the map incl. pin-image, coordinates and more. </p>
+}}'&gt;&lt;/turnOn&gt;
+</code></pre>
+<p>This example will init a map with the configuration of the map incl. pin-image, coordinates and more.</p>
 <h2 id="signature-of-run-call">Signature of Run call</h2>
 <p>The <code>run</code> method - in the above example <code>...configureMap()</code> is as follows:</p>
 <pre><code class="lang-js">public void configureMap(data)
 {
   // data is the data provided in the turnOn
 }
-</code></pre><p>2sxc v14.02 includes turnOn v0.1.2, where the <code>run</code> method also has another parameter: <code>context</code>. 
+</code></pre>
+<p>2sxc v14.02 includes turnOn v0.1.2, where the <code>run</code> method also has another parameter: <code>context</code>.
 The most important property is <code>context.tag</code> which is the tag which contained the configuration.
 This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="../2sxc-api/basics/get-sxc.html">get the Sxc of the tag</a>.</p>
 <h2 id="advantages-of-using-turnon">Advantages of Using turnOn</h2>
@@ -180,10 +189,10 @@ This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="
 <li>Works for lazy-loaded HTML which can introduce new turnOn configurations</li>
 </ol>
 <h2 id="responsibility-of-your-code">Responsibility of Your Code</h2>
-<p>There are a few things turnOn doesn&#39;t do, which you should be aware of:</p>
+<p>There are a few things turnOn doesn't do, which you should be aware of:</p>
 <ol>
-<li>It doesn&#39;t load JS or CSS files (yet). As of now, you must still do this in the HTML template.</li>
-<li>The init code must still do it&#39;s work properly. If multiple inits should not be called, then your code must ensure that it detects this and skips multiple initializations.</li>
+<li>It doesn't load JS or CSS files (yet). As of now, you must still do this in the HTML template.</li>
+<li>The init code must still do it's work properly. If multiple inits should not be called, then your code must ensure that it detects this and skips multiple initializations.</li>
 <li>Your init-code should not auto-run when loading the script, as this could again be missing dependencies.</li>
 </ol>
 <h2 id="examples-of-the-full-challenge">Examples of the Full Challenge</h2>
@@ -196,17 +205,17 @@ This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="
 <li>DOM nodes which the JS should work on</li>
 <li>Configuration data like ModuleId which should be known.</li>
 </ol>
-<p>Dynamic pages make this even harder - like when Oqtane/Blazor reloads just parts of the page multiple times. We must ensure that the JS isn&#39;t re-initialized again and again, as that can cause issues like:</p>
+<p>Dynamic pages make this even harder - like when Oqtane/Blazor reloads just parts of the page multiple times. We must ensure that the JS isn't re-initialized again and again, as that can cause issues like:</p>
 <ol>
 <li>The same code running in parallel - causing all sorts of damage</li>
 <li>Memory leaks where the same library and complex object states are loaded many times</li>
 <li>Issues where some code initialized and was then replaced by new, uninitialized code</li>
 </ol>
-<p>Our goal is to simplify this, so that your solution can simply state what it needs, and then run once all that has been provided. </p>
+<p>Our goal is to simplify this, so that your solution can simply state what it needs, and then run once all that has been provided.</p>
 <ol>
 <li>a dom node with a specific id like <code>#module-57</code></li>
 <li>an object on the window like <code>window.someLibrary</code></li>
-<li>a js file which should be loaded if it&#39;s not loaded yet like <code>/js/jquery.min.js</code></li>
+<li>a js file which should be loaded if it's not loaded yet like <code>/js/jquery.min.js</code></li>
 <li>a css file like <code>/css/mycss.js</code></li>
 </ol>
 <hr>
@@ -217,12 +226,12 @@ This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="
 </ol>
 <h2 id="future-features">Future features</h2>
 <ol>
-<li>also await certain DOM events; ATM you can do this easily after turnOn has run it&#39;s magic, but it would be nice to specify it in the config</li>
+<li>also await certain DOM events; ATM you can do this easily after turnOn has run it's magic, but it would be nice to specify it in the config</li>
 <li>load scripts and js</li>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -233,13 +242,14 @@ This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -247,28 +257,29 @@ This allows you to use <code>$2sxc(context.tag)</code> to <a class="xref" href="
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

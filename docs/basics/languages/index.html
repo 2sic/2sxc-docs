@@ -16,8 +16,8 @@
     <title>2sxc Languages Overview | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="2sxc Languages Overview | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,10 +116,11 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Basics.Languages.Index">
 
-<p><img src="../../assets/features/multi-language.svg" class="feature"></p>
+<img src="../../assets/features/multi-language.svg" class="feature">
 <h1 id="2sxc-languages-overview">2sxc Languages Overview</h1>
 <p>2sxc is exceptionally good at multi-language content.</p>
-<blockquote><p>All content/data is <strong>Multi-Language</strong> by default.</p>
+<blockquote>
+<p>All content/data is <strong>Multi-Language</strong> by default.</p>
 </blockquote>
 <p>As such, there are different parts that make it work:</p>
 <ol>
@@ -133,13 +134,16 @@
 <p>The internal EAV Data Model stores <em>each value</em> with language assignment.
 Key facts:</p>
 <ol>
-<li>There is always a <strong>primary language</strong> which is set by the platform (DNN/Oqtane).<ol>
+<li>There is always a <strong>primary language</strong> which is set by the platform (DNN/Oqtane).
+<ol>
 <li>The primary language must always be filled first. Other languages cannot be edited without the primary language having content.</li>
 <li>Other languages will inherit the values from the primary language by default.</li>
-<li>Changing the primary language can have suprising side-effects, because it can result in scenarios where the primary language is missing.<br>In such scenarios the system will still try the primary language, but if it&#39;s empty, will fall back to the first language having any content for a specific field.</li>
+<li>Changing the primary language can have suprising side-effects, because it can result in scenarios where the primary language is missing.<br>
+In such scenarios the system will still try the primary language, but if it's empty, will fall back to the first language having any content for a specific field.</li>
 </ol>
 </li>
-<li>Values can be for a single language only, or <strong>shared</strong> across languages<ol>
+<li>Values can be for a single language only, or <strong>shared</strong> across languages
+<ol>
 <li>In read/write shares, any change made in the value will automatically apply to all languages that use this value</li>
 <li>In read-only shares, the value can only be edited in the main language; all other languages just &quot;inherit&quot; the value</li>
 <li>In secondary languages which are not translated, they are not translated and will automatically fall back to the primary language</li>
@@ -150,12 +154,10 @@ Key facts:</p>
 <h2 id="edit-ui-translation-features">Edit-UI Translation Features</h2>
 <p>The Edit-UI can make a field editable in certain languages and not in others. These are the factors that control it:</p>
 <ol>
-<li>Data is missing in the primary language (then translating it isn&#39;t possible yet)</li>
-<li>Some data is not multi-languages so it&#39;s either not editable in other languages, or the changes automatically affect all languages. This specifically affects these two cases:<ol>
+<li>Data is missing in the primary language (then translating it isn't possible yet)</li>
+<li>Some data is not multi-languages so it's either not editable in other languages, or the changes automatically affect all languages. This specifically affects these two cases:</li>
 <li>Related items (which are the same across languages)</li>
 <li>Asset-files (which are the same across languages)</li>
-</ol>
-</li>
 <li>Field-Configuration disables translation of field (common in url-id-fields)</li>
 </ol>
 <h2 id="export-import-of-multi-language-content">Export-Import of Multi-Language Content</h2>
@@ -177,7 +179,7 @@ This is ideal in scenarios where multiple <em>secondary</em> languages are close
 <li>Custom Inputs, Help-Texts etc.</li>
 <li>System labels (like <code>Save</code> buttons)</li>
 </ol>
-<p>The Admin UI is not localized, it&#39;s English only.</p>
+<p>The Admin UI is not localized, it's English only.</p>
 <p>TODO:</p>
 <hr>
 <h2 id="history">History</h2>
@@ -189,7 +191,7 @@ This is ideal in scenarios where multiple <em>secondary</em> languages are close
 <p>Shortlink: <a href="https://go.2sxc.org/translate">https://go.2sxc.org/translate</a></p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -200,13 +202,14 @@ This is ideal in scenarios where multiple <em>secondary</em> languages are close
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -214,28 +217,29 @@ This is ideal in scenarios where multiple <em>secondary</em> languages are close
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

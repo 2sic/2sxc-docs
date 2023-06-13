@@ -16,8 +16,8 @@
     <title>Link.Image(...) /  Method in Dynamic Code | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Link.Image(...) /  Method in Dynamic Code | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -116,41 +116,47 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="NetCode.DynamicCode.Objects.Link.Image">
 
-<p><img src="../../../assets/features/image-resizer.svg" class="feature"></p>
-<h1 id="linkimage--linkimage-method-in-dynamic-code">Link.Image(...) / @Link.Image Method in Dynamic Code</h1>
-<p>Linking images - especially images which should be automatically resized - can be tricky. This is where <code>Link.Image(...)</code> helps. </p>
-<div class="TIP"><h5>Tip</h5><p>2sxc 13.10 adds a new <a class="xref" href="../../../basics/images/guide/index.html">ImageService</a> which helps generate the best possible HTML for images. </p>
+<img src="../../../assets/features/image-resizer.svg" class="feature">
+<h1 id="linkimage---method-in-dynamic-code">Link.Image(...) / @Link.Image Method in Dynamic Code</h1>
+<p>Linking images - especially images which should be automatically resized - can be tricky. This is where <code>Link.Image(...)</code> helps.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>2sxc 13.10 adds a new <a class="xref" href="../../../basics/images/guide/index.html">ImageService</a> which helps generate the best possible HTML for images.</p>
 <p>Only use the <code>Link.Image(...)</code> where really necessary, because the <code>IImageService</code> is usually the better choice.</p>
 </div>
 <h2 id="simple-examples">Simple Examples</h2>
 <pre><code class="lang-html">&lt;!-- simple example --&gt;
-&lt;img src=&#39;@Link.Image(Content.MainPicture)&#39;&gt;
+&lt;img src='@Link.Image(Content.MainPicture)'&gt;
 
 &lt;!-- simple example with resize --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700)&#39;&gt;
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700)'&gt;
 
 &lt;!-- simple example with resize and custom quality --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700, quality: 75.2)&#39;&gt;
-</code></pre><h2 id="using-preconfigured-image-sizes">Using Preconfigured Image Sizes</h2>
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700, quality: 75.2)'&gt;
+</code></pre>
+<h2 id="using-preconfigured-image-sizes">Using Preconfigured Image Sizes</h2>
 <p>The <code>Image</code> method can also use predefined image configuration. This uses the new <a class="xref" href="../../../basics/configuration/index.html">Settings System</a>.</p>
 <pre><code class="lang-html">&lt;!-- Resize an image to the default of content --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content)&#39;&gt;
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content)'&gt;
 
 &lt;!-- Resize an image to the default of lightboxes --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Lightbox)&#39;&gt;
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Lightbox)'&gt;
 
 &lt;!-- Resize an image to the default of screen / backgrounds --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Screen)&#39;&gt;
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Screen)'&gt;
 
 &lt;!-- Resize an image to HALF the size of a default content --&gt;
-&lt;img src=&#39;@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)&#39;&gt;
-</code></pre><div class="TIP"><h5>Tip</h5><p>This is very powerful and is the recommended way to resize images,
+&lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)'&gt;
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is very powerful and is the recommended way to resize images,
 because this way all images follow the same sizes / proportions in all your apps.</p>
 </div>
 <h2 id="parameters">Parameters</h2>
-<p>To promote long term API stability, we require most parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used. 
+<p>To promote long term API stability, we require most parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used.
 This allows us to add further parameters later on, and the calls will still work.</p>
-<p>The first three parameters don&#39;t need naming, as they will be the most used. They are these in this order:</p>
+<p>The first three parameters don't need naming, as they will be the most used. They are these in this order:</p>
 <ol>
 <li><code>url</code> - the only required parameter</li>
 <li><code>settings</code> - optional, would be an <a class="xref" href="../../../basics/configuration/settings-system.html">image-settings configuration</a></li>
@@ -164,15 +170,17 @@ This allows us to add further parameters later on, and the calls will still work
 <li><code>resizeMode</code> which can be <code>max</code>, <code>crop</code>, <code>pad</code> etc.</li>
 <li><code>scaleMode</code> which can be <code>up</code>, <code>down</code> (default) or <code>both</code></li>
 <li><code>format</code> which can be <code>jpg</code>, <code>png</code>, <code>gif</code></li>
-<li><code>aspectRatio</code> </li>
+<li><code>aspectRatio</code></li>
 </ul>
 <p>So this will work:</p>
 <pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, Settings.Images.Content, 0.5)
 @Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)
 @Link.Image(&quot;test.jpg&quot;, width: 200)
-</code></pre><p>...and this won&#39;t:</p>
+</code></pre>
+<p>...and this won't:</p>
 <pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, 200)
-</code></pre><h2 id="demo-app-and-further-links">Demo App and further links</h2>
+</code></pre>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
 <p>🎓 <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img200/page">Image Resizer Parameters with Link.Image</a></p>
 <p>📔 <a class="xref" href="../../../basics/images/guide/index.html">Images Guide (Best Practices &amp; Code)</a></p>
 <h2 id="history">History</h2>
@@ -182,7 +190,7 @@ This allows us to add further parameters later on, and the calls will still work
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -193,13 +201,14 @@ This allows us to add further parameters later on, and the calls will still work
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -207,28 +216,29 @@ This allows us to add further parameters later on, and the calls will still work
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

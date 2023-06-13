@@ -16,8 +16,8 @@
     <title>Convention: Unknown Implementations | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Convention: Unknown Implementations | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../../assets/favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../../toc.html">
     <meta property="docfx:tocrel" content="../../toc.html">
-    
-    <meta property="docfx:rel" content="../../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../../index.html">
                 <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li>
                           <a href="../../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -117,10 +117,13 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Conventions.UnknownImplementations">
 <h1 id="convention-unknown-implementations">Convention: Unknown Implementations</h1>
 
-<div class="TIP"><h5>Tip</h5><p>This convention is <em>not relevant for App developers</em>. 
-So if your focus is App Razor or App WebAPIs, you don&#39;t need this.</p>
-<p>It&#39;s meant for people who <a class="xref" href="../../../abyss/integration/index.html">integrate 2sxc/EAV into another system</a>. </p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This convention is <em>not relevant for App developers</em>.
+So if your focus is App Razor or App WebAPIs, you don't need this.</p>
+<p>It's meant for people who <a class="xref" href="../../../abyss/integration/index.html">integrate 2sxc/EAV into another system</a>.</p>
 </div>
+
 <p>EAV and 2sxc have about 30 objects which can be implemented specifically to a platform.
 Examples:</p>
 <ul>
@@ -128,21 +131,21 @@ Examples:</p>
 <li><code>IUser</code> gives information about the current user</li>
 <li><code>IEnvironmentPermission</code> determines if certain user permissions are given (like Edit rights)</li>
 </ul>
-<p>To make integration easier, these objects have an <code>...Unknown</code> implementation which is registered if you didn&#39;t specifically provide a custom implementation first. Examples:</p>
+<p>To make integration easier, these objects have an <code>...Unknown</code> implementation which is registered if you didn't specifically provide a custom implementation first. Examples:</p>
 <ul>
 <li><code>SiteUnknown</code> will be auto-registered, always reporting Id: -2742 and ZoneId: 2</li>
-<li><code>IUserUnknown</code> will always say that it&#39;s not a Admin</li>
+<li><code>IUserUnknown</code> will always say that it's not a Admin</li>
 </ul>
-<p>Because they are auto-registered as a fallback, they will be used if you didn&#39;t provide your own implementation.
+<p>Because they are auto-registered as a fallback, they will be used if you didn't provide your own implementation.
 This ensures that even minimal integrations can work, but will be missing some functionality.</p>
 <h2 id="warnings-when-unknown-objects-are-used">Warnings when Unknown Objects are Used</h2>
 <p>All the unknown objects will add a warning to the Insights-log, so you can see that these objects were used.
 You will see an entry for <code>warnings-not-implemented</code></p>
-<p><img src="assets/insights-unknown-overview.jpg" width="100%" class="full-width"></p>
-<p><img src="assets/insights-unknown-details.jpg" width="100%" class="full-width"></p>
+<img src="assets/insights-unknown-overview.jpg" width="100%" class="full-width">
+<img src="assets/insights-unknown-details.jpg" width="100%" class="full-width">
 <h2 id="which-objects-to-replace">Which Objects to Replace</h2>
-<p>As you integrate 2sxc/EAV on your platform, you will probably not implement all these services, as you won&#39;t need them all.
-But it&#39;s a good idea to keep an eye on the logs, to determine if a specific object should be implemented.</p>
+<p>As you integrate 2sxc/EAV on your platform, you will probably not implement all these services, as you won't need them all.
+But it's a good idea to keep an eye on the logs, to determine if a specific object should be implemented.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
@@ -153,7 +156,7 @@ But it&#39;s a good idea to keep an eye on the logs, to determine if a specific 
 <p>Shortlink: <a href="https://go.2sxc.org/unknown-implementations">https://go.2sxc.org/unknown-implementations</a></p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -164,13 +167,14 @@ But it&#39;s a good idea to keep an eye on the logs, to determine if a specific 
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -178,28 +182,29 @@ But it&#39;s a good idea to keep an eye on the logs, to determine if a specific 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>

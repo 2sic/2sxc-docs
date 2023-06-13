@@ -16,8 +16,8 @@
     <title>Permissions in 2sxc | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Permissions in 2sxc | 2sxc 16 / EAV 16 ">
-    <meta name="generator" content="docfx 2.48.1.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../../assets/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
@@ -25,23 +25,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
-    <meta property="docfx:rel" content="../../">
-    <meta property="docfx:newtab" content="true">
   
+  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:newtab" content="true">
+
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
-  
+
     <!-- overwrite the built in highlightJs with a newer version -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
-  
+
     <!-- fancybox -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../../index.html">
                 <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
+
                 <ul class="nav level1 navbar-nav">
                       <li class="active">
                           <a href="../../basics/index.html" title="Basics">Basics</a>
@@ -82,10 +82,10 @@
                       <li>
                           <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
-                </ul>    </div>
+                </ul>            </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -95,17 +95,17 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -124,10 +124,10 @@
 <p>2sxc permissions are interlinked with the users and roles of the platform (Dnn or Oqtane).
 So if Dnn or Oqtane say a user may do something, 2sxc will follow that.</p>
 <p>But there is more to it.
-Many situations require some control which the platform doesn&#39;t offer.
+Many situations require some control which the platform doesn't offer.
 Here are some examples:</p>
 <ol>
-<li>Admins in DNN are often just content-editors, and shouldn&#39;t be able to reconfigure 2sxc</li>
+<li>Admins in DNN are often just content-editors, and shouldn't be able to reconfigure 2sxc</li>
 <li>Headles APIs (REST) needs permissions which you cannot set in the platfrom</li>
 <li>Custom APIs (C# Controllers) need permissions which are not platform-configurable</li>
 </ol>
@@ -145,11 +145,11 @@ So <em>by default</em> they can do everything which only affects the current sit
 <p>In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html"><code>CmsContext.User.IsSiteAdmin</code></a></p>
 <h3 id="content-admins-contentadmin">Content Admins (ContentAdmin)</h3>
 <p>Many admins are just configured as admins to allow them to edit everything.
-So often the status <code>Administrator</code> is only given because it&#39;s the only real way
+So often the status <code>Administrator</code> is only given because it's the only real way
 to ensure the user can change every page, without wanting to allow the user to
 edit other users or reconfigure the site.</p>
 <p>Because of this, we have the concept of <strong>ContentAdmins</strong></p>
-<p>The platforms Dnn and Oqtane currently don&#39;t offer a pure content-admin role.
+<p>The platforms Dnn and Oqtane currently don't offer a pure content-admin role.
 Because of this, 2sxc allows us to do this in another way.</p>
 <p>If the site/portal has a role called <code>2sxcAdministrators</code> (previously <code>2sxc Designers</code>)
 then <em>all</em> administrators will be treated as <strong>ContentAdmins</strong> with less permissions.</p>
@@ -164,7 +164,9 @@ but not be able to access advanced admin features.</p>
 <h2 id="app-permissions">App Permissions</h2>
 <p>For special use cases you may want to give users permissions in a specific App.
 For example, a <em>Classifieds</em> App or a <em>Comments</em> App could allow registered users to add their own posts and also edit them.</p>
-<div class="WARNING"><h5>Warning</h5><p>Be careful with such permissions, as you don&#39;t want to open up your entire App.
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Be careful with such permissions, as you don't want to open up your entire App.
 Normally you will only want to assign permissions to a specific <strong>Content Type</strong>.</p>
 </div>
 <h3 id="content-type-edit-permissions">Content-Type Edit Permissions</h3>
@@ -175,9 +177,11 @@ Normally you will only want to assign permissions to a specific <strong>Content 
 <li><strong>Registered Users</strong> can read the schema of <strong>Comment</strong> so the edit-UI can be accessed</li>
 <li><strong>Registered Users</strong> can edit <strong>Comment</strong>s which they own/created</li>
 </ul>
-<div class="TIP"><h5>Tip</h5><p>Just because the permissions allow editing doesn&#39;t mean the UI will automatically show toolbars.
+<div class="TIP">
+<h5>Tip</h5>
+<p>Just because the permissions allow editing doesn't mean the UI will automatically show toolbars.
 This is because you may have special buttons or <strong>My Comments</strong> page or something to do this.
-So don&#39;t forget to ensure the UI is available as you want it.</p>
+So don't forget to ensure the UI is available as you want it.</p>
 </div>
 <h2 id="rest-api-permissions-headless">REST API Permissions (Headless)</h2>
 <p>To use data on the REST API you must also determine what is allowed.</p>
@@ -185,14 +189,14 @@ So don&#39;t forget to ensure the UI is available as you want it.</p>
 <h2 id="webapi-controller-permissions">WebApi Controller Permissions</h2>
 <p>When you create <a class="xref" href="../../net-code/web-api/index.html">custom WebApi controllers</a>,
 you will have to use C# attributes to configure permissions.</p>
-<p>Please check the examples, ATM we don&#39;t have time to document the details.</p>
+<p>Please check the examples, ATM we don't have time to document the details.</p>
 <h2 id="polymorph-editions">Polymorph Editions</h2>
 <p>The System Admin can also review new code on the live system without affecting other users.
 This feature is called <a class="xref" href="../polymorphism/index.html">Polymorphism</a>.
 It is only available to <em>SystemAdmins</em>.</p>
 <h2 id="checking-permissions-in-formulas">Checking Permissions in Formulas</h2>
 <p><a class="xref" href="../edit/formulas/index.html">Formulas</a> allow you to check the basic permissions such as <code>isSystemAdmin</code> etc. on the <code>context.user</code> object.</p>
-<p>Please check the examples, ATM we don&#39;t have time to document the details.</p>
+<p>Please check the examples, ATM we don't have time to document the details.</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
@@ -201,7 +205,7 @@ It is only available to <em>SystemAdmins</em>.</p>
 </ol>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -212,13 +216,14 @@ It is only available to <em>SystemAdmins</em>.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -226,28 +231,29 @@ It is only available to <em>SystemAdmins</em>.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    
+
     <!-- override the built-in highlightjs with a newer version -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
     </script>
-    
+
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
-    
+
     <!-- fancybox -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>  </body>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
 </html>
