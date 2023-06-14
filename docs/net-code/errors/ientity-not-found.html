@@ -118,14 +118,14 @@
 <h1 id="error-ientity-does-not-exist-in-the-namespace">Error IEntity does not exist in the Namespace</h1>
 
 <p>If you see an error like this:</p>
-<pre><code>error CS0234: The type or namespace name 'IEntity' does not exist in the namespace 'ToSic.Eav
+<pre><code class="lang-text">error CS0234: The type or namespace name 'IEntity' does not exist in the namespace 'ToSic.Eav
 </code></pre>
 <p>It usually means that you have code using IEntity which had to be moved to another namespace for consistency. We're sorry about the breaking change.</p>
 <h2 id="background-ientity-was-moved">Background: IEntity was moved</h2>
 <p>To create the public documentation we had to make sure our API was consistent, and IEntity was one of the exceptions. Before 2sxc 10.20 it was in the namespace <code>ToSic.Eav</code> and later in <code>ToSic.Eav.Interfaces</code>. We standardized it now to <code>ToSic.Eav.Data</code> so the full name is <code>ToSic.Eav.Data.IEntity</code>.</p>
 <h2 id="solution-change-the-namespace">Solution: Change the namespace</h2>
 <p>Your code probably has a <code>@using ToSic.Eav</code> or <code>@using ToSic.Eav.Interfaces</code>. You should change this to</p>
-<pre><code>@using ToSic.Eav.Data;
+<pre><code class="lang-razor">@using ToSic.Eav.Data;
 </code></pre>
 <p>And everything should work.</p>
 </article>
