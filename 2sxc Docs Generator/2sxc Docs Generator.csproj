@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <ProjectGuid>{991006CF-1F50-4A9B-A5B2-A17A1624BF38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -9,6 +8,7 @@
     <AssemblyName>Docs-Generator</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <RestoreOnBuild>true</RestoreOnBuild>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -58,9 +58,6 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.59.4" />
-  </ItemGroup>
   <ItemGroup>
     <None Include="api\.gitignore" />
     <None Include="api\.gitignore" />
@@ -116,14 +113,7 @@
     <Folder Include="Properties\" />
     <Folder Include="wiki\later-html-stuff\" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\docfx.console.2.59.4\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\docfx.console.2.59.4\build\docfx.console.targets'))" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet docfx" />
   </Target>
-  <Import Project="packages\docfx.console.2.59.4\build\docfx.console.targets" Condition="Exists('packages\docfx.console.2.59.4\build\docfx.console.targets')" />
 </Project>
