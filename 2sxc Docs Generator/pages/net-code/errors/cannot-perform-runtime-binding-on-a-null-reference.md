@@ -90,4 +90,4 @@ You could do some reflection here, but once you know the type, I recommend you j
 
 ---
 
-Shortlink: <https://go.2sxc.org/ErrBindingOnNullReference>
+Shortlink: <https://go.2sxc.org/err-binding-on-null-reference>
