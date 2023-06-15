@@ -145,9 +145,39 @@ var a = SomeKindOfHelper.CheckIfNull(Settings) ? &quot;ok&quot; : &quot;not ok&q
 // This will fail at runtime with the above message
 a.DoSomethingImpossible();
 </code></pre>
+<h2 id="possible-causes">Possible Causes</h2>
+<ol>
+<li>the object is null</li>
+<li>the object is not what you thought it is (eg. you expected a <code>List&lt;...&gt;</code> but got an <code>IEntity</code>)</li>
+<li>the method doesn't exist</li>
+<li>the method exists, but the signature is very different from what you tried to call</li>
+</ol>
 <h2 id="solution-fix-your-code">Solution: Fix your Code</h2>
-<p>This one is often hard to fix, since the compiler doesn't tell us what line it ocurred on.</p>
-<p>We recommend you comment out most of the code till it works, then add it back in piece by piece.</p>
+<p>In many cases the runtime will tell you what line the error was on, in which case you
+can see what method was trying to be called. In other cases you don't know the exact line of code.
+Our recommendation is:</p>
+<h3 id="first-make-sure-you-know-what-line-breaks">First Make sure you know what line breaks</h3>
+<p>If the compiler told you, you're lucky.
+If not, you'll have to work it out. The easiest way to do this is to comment out most of the code
+until you don't have an error, and put the code back in piece by piece.</p>
+<h3 id="then-figure-out-the-cause">Then Figure out the Cause</h3>
+<p>The following example assumes that your object is called <code>myThing</code> and you're trying to call <code>myThing.DoSomething()</code>.</p>
+<h4 id="1-check-if-the-object-is-null">1. Check if the object is null</h4>
+<pre><code class="lang-razor">&lt;div&gt;
+  @* this will show true or false *@
+  Debug: @(myThing == null)
+&lt;/div&gt;
+</code></pre>
+<h4 id="2-check-what-type-the-object-is">2. Check what type the object is</h4>
+<pre><code class="lang-razor">&lt;div&gt;
+  @* this will show the type name *@
+  Debug: @myThing.GetType().Name
+&lt;/div&gt;
+</code></pre>
+<h4 id="3-check-if-the-method-and-signature-exists">3. Check if the method and signature exists</h4>
+<p>You could do some reflection here, but once you know the type, I recommend you just check the docs.</p>
+<hr>
+<p>Shortlink: <a href="https://go.2sxc.org/ErrBindingOnNullReference">https://go.2sxc.org/ErrBindingOnNullReference</a></p>
 </article>
           </div>
 

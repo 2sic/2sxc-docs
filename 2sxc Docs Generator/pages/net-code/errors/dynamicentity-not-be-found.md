@@ -62,3 +62,7 @@ Error: System.Web.HttpCompileException (0x80004005): ...\Portals\...\2sxc\FAQ wi
 Here's a print-screen:
 
 <img src="./assets/dynamicentity-not-found.jpg" width="100%" />
+
+---
+
+Shortlink: <https://go.2sxc.org/ErrDynamicEntity>

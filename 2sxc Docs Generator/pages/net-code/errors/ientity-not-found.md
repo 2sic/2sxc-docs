@@ -25,3 +25,7 @@ Your code probably has a `@using ToSic.Eav` or `@using ToSic.Eav.Interfaces`. Yo
 ```
 
 And everything should work.
+
+---
+
+Shortlink: <https://go.2sxc.org/ErrIEntity>

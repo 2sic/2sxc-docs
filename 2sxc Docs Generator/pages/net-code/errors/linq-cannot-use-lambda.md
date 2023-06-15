@@ -55,3 +55,7 @@ This is the same thing, but the nicest, easiest to read method:
 var authors = (book.Authors as Dynlist)
     .Select(a => a.FirstName + " " + a.LastName);
 ```
+
+---
+
+Shortlink: <https://go.2sxc.org/ErrLambda>
