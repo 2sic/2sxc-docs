@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Planned DB Schema Changes 2023 | 2sxc 16 / EAV 16 </title>
+    <title>Planned Removals for 2sxc v17 | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Planned DB Schema Changes 2023 | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Planned Removals for 2sxc v17 | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
   
-  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:rel" content="../../../../">
   <meta property="docfx:newtab" content="true">
 
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +65,22 @@
 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li class="active">
-                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li>
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>            </div>
           </div>
@@ -114,26 +114,48 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Abyss.Releases.Planned.DbSchema">
-<h1 id="planned-db-schema-changes-2023">Planned DB Schema Changes 2023</h1>
+            <article class="content wrap" id="_content" data-uid="Abyss.Releases.History.V17">
+<h1 id="planned-removals-for-2sxc-v17">Planned Removals for 2sxc v17</h1>
 
-<p>This page collects planned changes to the DB Schema, so that we'll be able to implement them all in one go when we do it.</p>
-<p>We plan to do this ca. 2023 Q3 or Q4</p>
+<h1 id="planned-removals-for-2sxc-v17">Planned Removals for 2sxc v17</h1>
+<p>For 2sxc 17 we plan to remove some very old APIs.
+The process is as follows:</p>
 <ol>
-<li><code>ModifiedBy</code> on each entity and Json - and prefill with current owner</li>
-<li><code>CreatedBy</code> on each entity and Json - and prefill with current owner</li>
-<li>Rename various fields with names that don't match current naming conventions
-<ol>
-<li>Todo</li>
+<li>Mark the API as deprecated in the code</li>
+<li>Add internal code which warns the admin that the App is using deprecated code</li>
+<li>Provide guidance here how to resolve</li>
+<li>Make sure the warnings have been around for at least 6 months</li>
+<li>Remove the code on the next major release</li>
 </ol>
-</li>
-<li>Rename various tables with names that don't match current naming conventions
-<ol>
-<li><code>AttributeSets</code>...</li>
-<li>TODO</li>
-</ol>
-</li>
-</ol>
+<p>For v17 we plan to remove some very old APIs, which we believe are probably not even used any more.
+This is the list:</p>
+<ul>
+<li>The old namespace <code>SexyContent.Interfaces.IApp</code> and all related code<br>
+We believe this is probably not used at all, since it's probably only ever used to access <code>App.Configuration</code> which is <code>dynamic</code> when using this interface,
+but a normal object with typed properties when using the normal <code>ToSic.Sxc.Apps.IApp</code> interface.</li>
+</ul>
+<h2 id="guide-to-fixing-issues">Guide to Fixing Issues</h2>
+<h3 id="fixing-sexycontentinterfacesiapp-removal">Fixing SexyContent.Interfaces.IApp removal</h3>
+<h4 id="background">Background</h4>
+<p>A long time ago 2sxc was called <strong>SexyContent</strong> and we used the namespace <code>SexyContent.Interfaces</code> for various things.
+Ca. 2014, we decided to rename it to <strong>2sxc</strong> and use a <code>ToSic.Sxc</code> namespace instead.
+In addition to that, we created a clearer namespace structure.</p>
+<h4 id="am-i-affected">Am I Affected?</h4>
+<p>Most code does <em>not</em> explicitly use namespaces, and if your code is newer than 2016, you are probably not affected.</p>
+<p>But if you have <strong>any</strong> code which uses the namespace <code>SexyContent</code> in your Razor or C# code you are affected.</p>
+<p>This is especially true if you have code such as:</p>
+<pre><code class="lang-c#">using SexyContent.Interfaces;
+IApp app = App;
+var version = app.Configuration.Version;
+</code></pre>
+<h4 id="how-to-fix">How to Fix</h4>
+<p>It's difficult to give you an exact guideline, because we don't know what your code does.
+But in most cases, you'll just be working with the current <code>App</code> object which is typed as <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a>.
+So in most cases, you don't need to specify the type at all, just use something like:</p>
+<pre><code class="lang-c#">var app = App;
+var version = App.Configuration.Get(&quot;Version&quot;);
+</code></pre>
+<!-- [!include["All Changes"](./_all.md)] -->
 </article>
           </div>
 
@@ -142,7 +164,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/planned/db-schema-changes-v14.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v17/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -169,20 +191,20 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
 
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.highlightAll();
     </script>
 
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../../styles/2sxc-scripts.js"></script>
 
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
