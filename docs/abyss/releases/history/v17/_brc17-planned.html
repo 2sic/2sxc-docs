@@ -129,19 +129,19 @@ The process is as follows:</p>
 <p>For v17 we plan to remove some very old APIs, which we believe are probably not even used any more.
 This is the list:</p>
 <ul>
-<li>The old namespace <code>SexyContent.Interfaces.IApp</code> and all related code<br>
+<li>The old namespace <code>ToSic.SexyContent.Interfaces.IApp</code> and all related code<br>
 We believe this is probably not used at all, since it's probably only ever used to access <code>App.Configuration</code> which is <code>dynamic</code> when using this interface,
 but a normal object with typed properties when using the normal <code>ToSic.Sxc.Apps.IApp</code> interface.</li>
 </ul>
 <h2 id="guide-to-fixing-issues">Guide to Fixing Issues</h2>
 <h3 id="fixing-sexycontentinterfacesiapp-removal">Fixing SexyContent.Interfaces.IApp removal</h3>
 <h4 id="background">Background</h4>
-<p>A long time ago 2sxc was called <strong>SexyContent</strong> and we used the namespace <code>SexyContent.Interfaces</code> for various things.
+<p>A long time ago 2sxc was called <strong>SexyContent</strong> and we used the namespace <code>ToSic.SexyContent.Interfaces</code> for various things.
 Ca. 2014, we decided to rename it to <strong>2sxc</strong> and use a <code>ToSic.Sxc</code> namespace instead.
 In addition to that, we created a clearer namespace structure.</p>
 <h4 id="am-i-affected">Am I Affected?</h4>
 <p>Most code does <em>not</em> explicitly use namespaces, and if your code is newer than 2016, you are probably not affected.</p>
-<p>But if you have <strong>any</strong> code which uses the namespace <code>SexyContent</code> in your Razor or C# code you are affected.</p>
+<p>But if you have <strong>any</strong> code which uses the namespace <code>ToSic.SexyContent</code> in your Razor or C# code you are affected.</p>
 <p>This is especially true if you have code such as:</p>
 <pre><code class="lang-c#">using SexyContent.Interfaces;
 IApp app = App;

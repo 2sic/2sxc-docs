@@ -13,7 +13,7 @@ The process is as follows:
 For v17 we plan to remove some very old APIs, which we believe are probably not even used any more.
 This is the list:
 
-* The old namespace `SexyContent.Interfaces.IApp` and all related code  
+* The old namespace `ToSic.SexyContent.Interfaces.IApp` and all related code  
   We believe this is probably not used at all, since it's probably only ever used to access `App.Configuration` which is `dynamic` when using this interface,
   but a normal object with typed properties when using the normal `ToSic.Sxc.Apps.IApp` interface.
 
@@ -24,7 +24,7 @@ This is the list:
 
 #### Background
 
-A long time ago 2sxc was called **SexyContent** and we used the namespace `SexyContent.Interfaces` for various things.
+A long time ago 2sxc was called **SexyContent** and we used the namespace `ToSic.SexyContent.Interfaces` for various things.
 Ca. 2014, we decided to rename it to **2sxc** and use a `ToSic.Sxc` namespace instead.
 In addition to that, we created a clearer namespace structure.
 
@@ -32,7 +32,7 @@ In addition to that, we created a clearer namespace structure.
 
 Most code does _not_ explicitly use namespaces, and if your code is newer than 2016, you are probably not affected.
 
-But if you have **any** code which uses the namespace `SexyContent` in your Razor or C# code you are affected.
+But if you have **any** code which uses the namespace `ToSic.SexyContent` in your Razor or C# code you are affected.
 
 This is especially true if you have code such as:
 
