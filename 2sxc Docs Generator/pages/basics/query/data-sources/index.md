@@ -97,7 +97,7 @@ These are all the data sources which are either provided in the default installa
   <tr>
     <td>
 
-[DataSourceBase](xref:ToSic.Eav.DataSources.DataSource)</td>
+[DataSourceBase](xref:ToSic.Eav.DataSource.DataSourceBase)</td>
     <td>(base)</td>
     <td>The base class for all DataSources</td>
   </tr>
@@ -226,7 +226,7 @@ These are all the data sources which are either provided in the default installa
   <tr>
     <td>
 
-[Query](xref:ToSic.Eav.DataSources.Queries.Query)</td>
+[Query](xref:ToSic.Eav.DataSources.QueryRun)</td>
     <td>(internal)</td>
     <td>Internal system to run [Queries](xref:Basics.Query.Index)</td>
   </tr>
@@ -444,7 +444,7 @@ These data sources are used internally, like for selecting an App in an edit dia
   <tr>
     <td>
 
-[Block](xref:ToSic.Sxc.DataSources.Block)</td>
+[Block](xref:ToSic.Sxc.DataSources.CmsBlock)</td>
     <td>(system)</td>
     <td>Helper to correct data with Templates</td>
   </tr>

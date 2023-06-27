@@ -1,6 +1,6 @@
 ---
 uid: Api.Js.SxcJs.SxcGlobalCms
-title: $2sxc.cms - Class SxcGlobalCms
+# title: $2sxc.cms - Class SxcGlobalCms
 ---
 
 ### The $2sxc.cms API

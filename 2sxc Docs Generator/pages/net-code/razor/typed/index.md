@@ -17,7 +17,7 @@ This forces the developer to be more explicit and helps avoid many hard to solve
 * Anything beginning with `My...` _belongs_ to the current code.
   * MyItem
   * MyItems
-  * MyData
+  * MyData ??
   * MyModel
 * Objects or methods which are singular are/return a single item
   * Item
@@ -85,6 +85,7 @@ MyData ?
 
 
 TODO:
+
 * Merge(...?) / Stack / MergeItems / **StackItems** / StackRead / AsStack / AsItemStack / AsThingStack(...)
 
 ### Naming of Typed? Read? Thing? Object?
@@ -218,7 +219,7 @@ The template files usually reside inside App root folder or sub folder. These al
 
 ## Tips
 
-[!include["Tip Inherits"](_include-tip-inherits.md)]
+[!include["Tip Inherits"](../_include-tip-inherits.md)]
 
 
 
