@@ -196,24 +196,42 @@ The template files usually reside inside App root folder or sub folder. These al
 >
 > If you are using [Polymorphism](xref:Basics.Polymorphism.Index) then you may have multiple razor files with the same name in various folders, and Polymorph will decide which one will be shown.
 
-## Get Started with Razor Templates
 
-[!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
+## Guide to Moving to Pro Code - important Changes
 
-1. Install some Apps from the [App Catalog](xref:AppsCatalog) - almost all apps use Razor
-1. Learn the APIs using
-    1. The @Tut.Razor.Home
-    1. using these docs
-    1. The technical [RazorComponent API](xref:ToSic.Sxc.Dnn.RazorComponent)
-1. We also suggest you look into the **RazorBlade** library which has a lot of neat helpers
+### Content is now MyItem and not Dynamic
+
+...
 
 
-## Read also
+### Header is no MyHeader and not Dynamic
 
-* [Views](xref:Basics.App.Views.Index)
-* [Templates](xref:Basics.App.Templates)
-* [Token Templates](xref:Basics.Server.Render.Tokens.Index)
-* [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
+
+### Use Kit.Toolbar for Toolbars
+
+
+### Use MyContext instead of CmsContext
+
+
+### Avoid the Edit Object or use Kit.Edit
+
+
+### Use object.Folder("name") instead of AsAdam
+
+
+### Instead of Settings, use App.Settings or Alternatives
+
+...
+explain differences
+Recommend App.Settings
+
+
+
+### Instead of Resources, use App.Resources or Alternatives
+
+
+
+
 
 
 
