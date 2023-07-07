@@ -230,7 +230,10 @@ Recommend App.Settings
 ### Instead of Resources, use App.Resources or Alternatives
 
 
+### Instead of AsDynamic(jsonString) use Kit.Json.ToTyped(jsonString)
 
+
+### Use GetCode() instead of CreateInstance(...)
 
 
 

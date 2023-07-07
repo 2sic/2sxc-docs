@@ -11,15 +11,12 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-05-30**
+Last Update: **2023-08-07**
 
-## Currently being developed 2023-Q2
+## Currently being developed 2023-Q3
 
-1. Major `ITypedItem` upgrade
-1. Release all apps in the new typed mode
-1. Upgrade documentation generation to latest docfx etc.
 1. Improve JS build to make it easier for others to contribute
-1. Optimize build of docfx to also better handle js docs @STV
+1. Release all apps in the new typed mode
 1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
 
 

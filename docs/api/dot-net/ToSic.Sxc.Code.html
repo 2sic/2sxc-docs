@@ -154,11 +154,6 @@ Interfaces
       <section><p>A special logger for dynamic code (Razor, WebApi).
 It is always available to add messages to insights.</p>
 </section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.ICreateInstance.html">ICreateInstance</a></h4>
-      <section><p>Marks objects - usually DynamicCode - which can create instances of other C# files. <br>
-A special feature is that it must store a reference to the path it's in (provided by the compiler that created this instance).
-This is important, so that CreateInstance knows what path to start in.</p>
-</section>
       <h4><a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a></h4>
       <section><p>Dynamic code files like Razor or WebApis.
 Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
@@ -171,10 +166,6 @@ Important for dynamic code files like Razor or WebApi. Note that there are many 
 Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
 Also provides many Conversions between <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
 Important for dynamic code files like Razor or WebApi. Note that there are many overloads to ensure that AsDynamic and AsEntity &quot;just work&quot; even if you give them the original data.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IDynamicCode16.html">IDynamicCode16</a></h4>
-      <section><p>Standard interface for all TypedCode such as RazorPro or WebApiPro.
-Provides typed APIs to access Settings, Resources and more.</p>
 </section>
       <h4><a class="xref" href="ToSic.Sxc.Code.IHasCodeLog.html">IHasCodeLog</a></h4>
       <section><p>Marks all Razor / WebAPI classes which provide logging functionality</p>
@@ -189,6 +180,13 @@ Example caller:</p>
 var file = MyModel.File(&quot;File&quot;);
 var title = MyModel.String(&quot;Title&quot;);
 </code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The common data types such as <code>string</code> or <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> have methods to quickly get them in the desired type.
+This allows things such as <code>var message = MyModel.String(&quot;Message&quot;);</code>
+For less common types you'll need to use <a class="xref" href="ToSic.Sxc.Code.ITypedModel.html#ToSic_Sxc_Code_ITypedModel_Get_System_String_System_String_System_Nullable_System_Boolean__">Get(string, string, bool?)</a> and cast it as needed, like this:
+<code>string message = MyModel.Get(&quot;Message&quot;);</code>.</p>
+</div>
 </section>
 
 

@@ -1,6 +1,13 @@
 
 ### Breaking Changes in 2sxc 16.02
 
+#### API Changes which affect you if you had installed v16.01 with the latest Blog or Mobius
+
+In v16.01 we had introduced a new Typed API, which turned out to be not good-enough.
+
+This meant we had to rollback some of the changes we had introduced there, 
+
+
 #### API Changes which should really not affect you
 
 1. Various APIs which used to return an `IHybridHtmlString` now return an `IRawHtml`  
