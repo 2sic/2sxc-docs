@@ -4,9 +4,12 @@ uid: NetCode.DynamicCode.CreateInstance
 
 # CreateInstance(...) Command
 
-If you have external code you want to import you can use **CreateInstance**. 
+If you have external code you want to import you can use **CreateInstance**.
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.ICreateInstance.CreateInstance*).
+⚡ The [official API docs eg. on Razor14](xref:Custom.Hybrid.Razor14.CreateInstance*).
+
+> [!IMPORTANT]
+> In RazorPro, ApiPro and CodePro we use `GetCode(...)` instead of `CreateInstance(...)`.
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -34,7 +37,7 @@ The code you will import is either another Razor page (`_*.cshtml`) or a C# code
 ## Also Read
 
 * [](xref:Tut.Razor.Reuse)
-* [](xref:AppsCatalog) - we suggest you check out some apps - almost all use this. 
+* [](xref:AppsCatalog) - we suggest you check out some apps - almost all use this.
 
 ## History
 

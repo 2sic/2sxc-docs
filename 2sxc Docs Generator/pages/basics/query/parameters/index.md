@@ -98,7 +98,7 @@ This shows how the In will look in the `Mod` stream to find the `PortalId`. Read
 * [Set Query Parameters in your Code](xref:NetCode.DataSources.Use.QueryParameters)
 <!-- * APIs
     * [](xref:ToSic.Eav.DataSources.Queries.Query)
-    * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
+    * [](xref:ToSic.Eav.DataSource.Query.QueryDefinition)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition) -->
 * [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 

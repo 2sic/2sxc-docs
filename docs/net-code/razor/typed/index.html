@@ -117,6 +117,11 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Razor.Typed.Index">
 <h1 id="typed-razor-components-v16---draft--wip">Typed Razor Components (v16) - DRAFT / WIP</h1>
 
+<div class="WARNING">
+<h5>Warning</h5>
+<p>These docs are still very messy and need some love, as they contain a lot of temporary
+wrong information.</p>
+</div>
 <p>Before v16 we focused on Razor code which extensively used <code>dynamic</code> objects.
 This allowed a lot of neat, compact code such as <code>&lt;div&gt;@Content.Title&lt;/div&gt;</code>
 but in advanced scenarios resulted in many runtime issues which were hard to debug.</p>
@@ -164,8 +169,8 @@ This forces the developer to be more explicit and helps avoid many hard to solve
 </li>
 <li>Built-in objects which are stacks, are explicitly named as such
 <ul>
-<li>SettingsStack (previously <code>Settings</code>)</li>
-<li>ResourcesStack (previously <code>Resources</code>)</li>
+<li>AllSettings (previously <code>Settings</code>)</li>
+<li>AllResources (previously <code>Resources</code>)</li>
 </ul>
 </li>
 </ul>
@@ -212,59 +217,37 @@ This forces the developer to be more explicit and helps avoid many hard to solve
 <li><p><code>someItem.Parents(typeName)</code> + overload</p>
 </li>
 </ul>
-<p>MyData ?</p>
-<ul>
-<li><p>MyData.Item(...)</p>
-</li>
-<li><p>MyData.Items(...)</p>
-</li>
-<li><p>.Item <del>.Child(...)</del></p>
-</li>
-<li><p>.Items <del>.Children(...)</del></p>
-</li>
-<li><p>.Ref(...) <del>.Parent(...)</del></p>
-</li>
-<li><p>.Refs(...) <del>.Parents(...)</del></p>
-</li>
-</ul>
 <p>TODO:</p>
 <ul>
-<li>Merge(...?) / Stack / MergeItems / <strong>StackItems</strong> / StackRead / AsStack / AsItemStack / AsThingStack(...)</li>
+<li>AsStack(..)</li>
 </ul>
 <h3 id="naming-of-typed-read-thing-object">Naming of Typed? Read? Thing? Object?</h3>
 <ul>
-<li>IThing</li>
-<li>ITypedThing</li>
+<li>ITyped</li>
+<li>ITypedItem</li>
+<li>AsItem(...)</li>
+<li>AsItems(...)</li>
 <li>AsThing(...)</li>
-<li>AsThings(...)</li>
-<li>StackThings(...)</li>
-<li>MyModel.Thing(...)</li>
-<li>MyModel.Things(...)</li>
-<li>CreateInstance.Thing(...)</li>
-<li>CreateInstance.Things(...)</li>
+<li>AsStack(...)</li>
+<li>MyModel.Item(...)</li>
+<li>MyModel.Items(...)</li>
 </ul>
 <h3 id="settings--resources-todo">Settings / Resources TODO</h3>
 <ul>
-<li>Settings</li>
-<li><del>AllSettings</del></li>
-<li><del>AllResources</del></li>
-<li><code>SettingsStack</code></li>
-<li><code>ResourcesStack</code></li>
-<li><del>StackedSettings</del></li>
-<li><del>MergedSettings</del></li>
-<li>Something.Settings - eg. <code>All.Settings</code></li>
+<li><code>AllSettings</code></li>
+<li><code>AllResources</code></li>
 </ul>
 <h2 id="where-data-comes-from-in-typed-razor">Where Data Comes from in Typed Razor</h2>
 <ul>
-<li><code>Data.MyContent</code> - an <code>IEntity</code> containing the first (or demo) item which belongs to this block/module.<br>
+<li><code>MyItem</code> - an <code>ITypedItem</code> containing the first (or demo) item which belongs to this block/module.<br>
 <em>previously</em>: <code>Content</code><br>
-<em>typical use</em>: <code>var album = AsItem(Data.MyContent);</code></li>
-<li><code>Data.MyHeader</code> - an <code>IEntity</code> containing the Header settings (or demo) which belong to this block/module.<br>
+<em>typical use</em>: <code>&lt;/div&gt;@MyItem.Html(&quot;Body&quot;)&lt;/div&gt;</code></li>
+<li><code>MyHeader</code> - an <code>IEntity</code> containing the Header settings (or demo) which belong to this block/module.<br>
 <em>previously</em>: <code>Header</code><br>
-<em>typical use</em>: <code>var album = AsItem(Data.MyHeader);</code></li>
-<li><code>Data.MyData</code> - an <code>IEnumerable&lt;IEntity&gt;</code> containing all items (or none, or one demo-item) belonging to this block/module.
+<em>typical use</em>: <code>&lt;h2&gt;@MyHeader.String(&quot;Title&quot;)&lt;/h2&gt;</code></li>
+<li><code>MyItems</code> - an <code>IEnumerable&lt;IEntity&gt;</code> containing all items (or none, or one demo-item) belonging to this block/module.
 <em>previously</em>: <code>Content</code> or <code>Data</code> (this caused some confusion)<br>
-<em>typical use</em>: <code>var list = AsItems(Data.MyContent);</code></li>
+<em>typical use</em>: <code>@foreach (var item in MyItems) { ...}</code></li>
 <li><code>Data</code>, <code>Data[&quot;Default&quot;]</code> or <code>Data[&quot;some-stream-name]</code> lists/streams containing all items given to the block/module.
 <ul>
 <li>if the view is configured to use a <strong>Query</strong> then the query will provide these streams</li>
@@ -314,7 +297,7 @@ This forces the developer to be more explicit and helps avoid many hard to solve
 <td>Content</td>
 <td><code>dynamic</code> object pointing to the first / main item</td>
 <td>Disabled, should throw error if used TODO:</td>
-<td>Data.MyContent (an IEntity)</td>
+<td><code>MyItem</code></td>
 </tr>
 <tr>
 <td></td>

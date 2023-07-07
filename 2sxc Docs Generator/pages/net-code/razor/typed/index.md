@@ -4,6 +4,10 @@ uid: NetCode.Razor.Typed.Index
 
 # Typed Razor Components (v16) - DRAFT / WIP
 
+> [!WARNING]
+> These docs are still very messy and need some love, as they contain a lot of temporary
+> wrong information.
+
 Before v16 we focused on Razor code which extensively used `dynamic` objects.
 This allowed a lot of neat, compact code such as `<div>@Content.Title</div>`
 but in advanced scenarios resulted in many runtime issues which were hard to debug.
@@ -40,8 +44,8 @@ This forces the developer to be more explicit and helps avoid many hard to solve
   * AsThing
   * AsThings
 * Built-in objects which are stacks, are explicitly named as such
-  * SettingsStack (previously `Settings`)
-  * ResourcesStack (previously `Resources`)
+  * AllSettings (previously `Settings`)
+  * AllResources (previously `Resources`)
 
 ## Not-available APIs any more
 
@@ -73,56 +77,40 @@ This forces the developer to be more explicit and helps avoid many hard to solve
 * `someItem.Child(fieldName)` + overload
 * `someItem.Parents(typeName)` + overload
 
-MyData ?
-
-* MyData.Item(...)
-* MyData.Items(...)
-
-* .Item ~~.Child(...)~~
-* .Items ~~.Children(...)~~
-* .Ref(...) ~~.Parent(...)~~
-* .Refs(...) ~~.Parents(...)~~
 
 
 TODO:
 
-* Merge(...?) / Stack / MergeItems / **StackItems** / StackRead / AsStack / AsItemStack / AsThingStack(...)
+* AsStack(..)
 
 ### Naming of Typed? Read? Thing? Object?
 
-* IThing
-* ITypedThing
+* ITyped
+* ITypedItem
+* AsItem(...)
+* AsItems(...)
 * AsThing(...)
-* AsThings(...)
-* StackThings(...)
-* MyModel.Thing(...)
-* MyModel.Things(...)
-* CreateInstance.Thing(...)
-* CreateInstance.Things(...)
+* AsStack(...)
+* MyModel.Item(...)
+* MyModel.Items(...)
 
 ### Settings / Resources TODO
 
-* Settings
-* ~~AllSettings~~
-* ~~AllResources~~
-* `SettingsStack`
-* `ResourcesStack`
-* ~~StackedSettings~~
-* ~~MergedSettings~~
-* Something.Settings - eg. `All.Settings`
+* `AllSettings`
+* `AllResources`
 
 
 ## Where Data Comes from in Typed Razor
 
-* `Data.MyContent` - an `IEntity` containing the first (or demo) item which belongs to this block/module.  
+* `MyItem` - an `ITypedItem` containing the first (or demo) item which belongs to this block/module.  
   _previously_: `Content`  
-  _typical use_: `var album = AsItem(Data.MyContent);`
-* `Data.MyHeader` - an `IEntity` containing the Header settings (or demo) which belong to this block/module.  
+  _typical use_: `</div>@MyItem.Html("Body")</div>`
+* `MyHeader` - an `IEntity` containing the Header settings (or demo) which belong to this block/module.  
   _previously_: `Header`  
-  _typical use_: `var album = AsItem(Data.MyHeader);`
-* `Data.MyData` - an `IEnumerable<IEntity>` containing all items (or none, or one demo-item) belonging to this block/module.
+  _typical use_: `<h2>@MyHeader.String("Title")</h2>`
+* `MyItems` - an `IEnumerable<IEntity>` containing all items (or none, or one demo-item) belonging to this block/module.
   _previously_: `Content` or `Data` (this caused some confusion)  
-  _typical use_: `var list = AsItems(Data.MyContent);`
+  _typical use_: `@foreach (var item in MyItems) { ...}`
 * `Data`, `Data["Default"]` or `Data["some-stream-name]` lists/streams containing all items given to the block/module.
   * if the view is configured to use a **Query** then the query will provide these streams
   * if the view is configured to not use a Query, but just use data added by the user, then this contains the same data as `Data.MyData`
@@ -160,7 +148,7 @@ The exact list is still WIP!! TODO:
 
 | API of Previous Razors | Old Behavior                                     | New Behavior                                      | Replacement |
 | ---------------------- | ------------------------------------------------ | ------------------------------------------------- | ----------- |
-| Content                | `dynamic` object pointing to the first / main item | Disabled, should throw error if used TODO:      | Data.MyContent (an IEntity) |
+| Content                | `dynamic` object pointing to the first / main item | Disabled, should throw error if used TODO:      | `MyItem` |
 | 
 | Settings
 | Resources

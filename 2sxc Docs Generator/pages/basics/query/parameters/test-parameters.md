@@ -35,7 +35,7 @@ You will find a full explanation of this here: [](xref:Abyss.Parts.LookUp.Params
 * [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
 <!-- * APIs
     * [](xref:ToSic.Eav.DataSources.Queries.Query)
-    * [](xref:ToSic.Eav.DataSources.Queries.QueryDefinition)
+    * [](xref:ToSic.Eav.DataSource.Query.QueryDefinition)
     * [](xref:ToSic.Eav.DataSources.Queries.QueryPartDefinition) -->
 * [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 
