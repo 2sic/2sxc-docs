@@ -29,8 +29,9 @@ we created on installing Oqtane and 2sxc.
 | 3.00.02   | 13.02   | ✅ 13.01+           | ⛔ pre 13.01 / 13.06+   |
 | 3.00.03   | 13.02   | ✅ 13.01+           | ⛔ pre 13.01 / 13.06+   |
 | 3.01.+    | 14.12   | ✅ 13.06 - 14.12    | ⛔ pre 13.06 / 15+      | Changes in Oqtane 3.3
-| 3.3+      | latest  | ✅ 15.05+           | ⛔ pre 15.04            | Changes in Oqtane 3.3
-| 3.4+      | latest  | ✅ 15.06+           | ⛔ pre 15.06            | Changes in Oqtane 3.4
+| 3.3+      | latest  | ✅ 15.05+           | ⛔ pre 15.04            | Breaking changes in Permissions
+| 3.4+      | latest  | ✅ 15.06+           | ⛔ pre 15.06            | Undo breaking changes in Permissions
+| 4.0+      | 16.02+  | ✅ 16.02+           | ⛔ pre 16.02            | .net Framework and EF 7
 
 ## Upgrade Existing Installations
 
