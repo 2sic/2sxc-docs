@@ -11,13 +11,15 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-08-07**
+Last Update: **2023-07-10**
 
 ## Currently being developed 2023-Q3
 
+1. ⌛ Tutorials for new Pro mode / CheatSheet
 1. Improve JS build to make it easier for others to contribute
 1. Release all apps in the new typed mode
 1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
+1. Document new Pro mode
 
 
 
@@ -75,6 +77,8 @@ Minor: Tutorial App Enhancements
 
 2sxc
 
+1. Page Level Settings and Metadata
+1. User Help / Manual in-page
 1. Plan new Metadata Target/Address system using only a string
 1. Major update on dropdowns/selectors
 1. Improve Export-Import Bundles
