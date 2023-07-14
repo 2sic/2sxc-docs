@@ -50,45 +50,53 @@ Each of these settings have the following properties:
 | Part                 | Key                  | Value in Default     | Introduced | Comments
 | -------------------- | -------------------- | -------------------- | ------ | ---
 | **Images.Content**   |                      |                      | v12.04 | *For sizing Content-Images*
-| Images.Content       | Width                | # `1400`             | v12.04 | Full-Content-Width images
-| Images.Content       | Height               | # `865`              | v12.04 | Based on golden ratio
-| Images.Content       | Quality              | # `75`               | v12.04 | Good average jpg/png compression
-| Images.Content       | AspectRatio          | # `1.618`            | v12.04 | Golden Ratio
-| Images.Content       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Content       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
+| Images.Content       | Width                | # `1400`             |        | Full-Content-Width images
+| Images.Content       | Height               | # `865`              |        | Based on golden ratio
+| Images.Content       | Quality              | # `75`               |        | Good average jpg/png compression
+| Images.Content       | AspectRatio          | # `1.618`            |        | Golden Ratio
+| Images.Content       | ResizeMode           | $ `crop`             |        | Will fill area exactly
+| Images.Content       | ScaleMode            | $ `both`             |        | Up-scale small images
 | Images.Content       | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Lightbox**  |                      |                      | v12.04 | *For Lightbox-Images*
-| Images.Lightbox      | Width                | # `2000`             | v12.04 | Full-screen Lightboxes
-| Images.Lightbox      | Height               | # `1500`             | v12.04 | 4:3
-| Images.Lightbox      | Quality              | # `75`               | v12.04 | Good average jpg/png compression
-| Images.Lightbox      | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Lightbox      | ResizeMode           | $ `max`              | v12.04 | Will keep image shape
-| Images.Lightbox      | ScaleMode            | $ `down`             | v12.04 | Only down-scale, never up-scale
+| Images.Lightbox      | Width                | # `2000`             |        | Full-screen Lightboxes
+| Images.Lightbox      | Height               | # `1500`             |        | 4:3
+| Images.Lightbox      | Quality              | # `75`               |        | Good average jpg/png compression
+| Images.Lightbox      | AspectRatio          | # `1.333`            |        | 4:3
+| Images.Lightbox      | ResizeMode           | $ `max`              |        | Will keep image shape
+| Images.Lightbox      | ScaleMode            | $ `down`             |        | Only down-scale, never up-scale
 | Images.Lightbox      | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Screen**    |                      |                      | v12.04 | *For Screen-Size related images like backgrounds*
-| Images.Screen        | Width                | # `2000`             | v12.04 | Full-Content-Width images
-| Images.Screen        | Height               | # `1500`             | v12.04 | 4:3
-| Images.Screen        | Quality              | # `60`               | v12.04 | Stronger jpg/png compression
-| Images.Screen        | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Screen        | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Screen        | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
+| Images.Screen        | Width                | # `2000`             |        | Full-Content-Width images
+| Images.Screen        | Height               | # `1500`             |        | 4:3
+| Images.Screen        | Quality              | # `60`               |        | Stronger jpg/png compression
+| Images.Screen        | AspectRatio          | # `1.333`            |        | 4:3
+| Images.Screen        | ResizeMode           | $ `crop`             |        | Will fill area exactly
+| Images.Screen        | ScaleMode            | $ `both`             |        | Up-scale small images
 | Images.Screen        | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
 | **Images.Section**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
-| Images.Section       | Width                | # `1600`             | v12.04 | Full-Content-Width images
-| Images.Section       | Height               | # `1200`             | v12.04 | Based on golden ratio
-| Images.Section       | Quality              | # `60`               | v12.04 | Stronger jpg/png compression
-| Images.Section       | AspectRatio          | # `1.333`            | v12.04 | 4:3
-| Images.Section       | ResizeMode           | $ `crop`             | v12.04 | Will fill area exactly
-| Images.Section       | ScaleMode            | $ `both`             | v12.04 | Up-scale small images
+| Images.Section       | Width                | # `1600`             |        | Full-Content-Width images
+| Images.Section       | Height               | # `1200`             |        | Based on golden ratio
+| Images.Section       | Quality              | # `60`               |        | Stronger jpg/png compression
+| Images.Section       | AspectRatio          | # `1.333`            |        | 4:3
+| Images.Section       | ResizeMode           | $ `crop`             |        | Will fill area exactly
+| Images.Section       | ScaleMode            | $ `both`             |        | Up-scale small images
 | Images.Section       | Advanced             | $ `{complex}`        | v13.10 | Sizes to use for SrcSets
-| **Images.Wysiwyg**   |                      |                      | v12.04 | *For Backgrounds in Content-Area*
-| Images.Section       | Width                | # `1400`             | v16.01 | Full-Content-Width images
-| Images.Section       | Height               | ` `                  | v16.01 | None, show as-is
-| Images.Section       | Quality              | # `75`               | v16.01 | Stronger jpg/png compression
-| Images.Section       | AspectRatio          | ` `                  | v16.01 | None, show as-is
-| Images.Section       | ResizeMode           | $ `max`              | v16.01 | Preserve aspect ratio
-| Images.Section       | ScaleMode            | $ `both`             | v16.01 | Up-scale small images
-| Images.Section       | Advanced             | $ `{complex}`        | v16.01 | Sizes to use for SrcSets
+| **Images.Wysiwyg**   |                      |                      | v16.01 | *For Backgrounds in Content-Area*
+| Images.Section       | Width                | # `1400`             |        | Full-Content-Width images
+| Images.Section       | Height               | ` `                  |        | None, show as-is
+| Images.Section       | Quality              | # `75`               |        | Stronger jpg/png compression
+| Images.Section       | AspectRatio          | ` `                  |        | None, show as-is
+| Images.Section       | ResizeMode           | $ `max`              |        | Preserve aspect ratio
+| Images.Section       | ScaleMode            | $ `both`             |        | Up-scale small images
+| Images.Section       | Advanced             | $ `{complex}`        |        | Sizes to use for SrcSets
+| **Images.Square**    |                      |                      | v16.03 | *Square images / profile pics*
+| Images.Section       | Width                | # `1400`             |        | Full-Content-Width images
+| Images.Section       | Height               | ` `                  |        | None, show as-is
+| Images.Section       | Quality              | # `75`               |        | Stronger jpg/png compression
+| Images.Section       | AspectRatio          | `1:1`                |        | None, show as-is
+| Images.Section       | ResizeMode           | $ `max`              |        | Preserve aspect ratio
+| Images.Section       | ScaleMode            | $ `both`             |        | Up-scale small images
+| Images.Section       | Advanced             | $ `{complex}`        |        | Sizes to use for SrcSets
 
 <!-- use ` ` instead of `` to avoid Markup failed: Markdown elements in the input are too deeply nested - depth limit exceeded.
 Input is most likely not sensible or is a very large table.-->
