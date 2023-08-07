@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PH2TVNW');</script>
+    <!-- End Google Tag Manager -->
+    <!-- azing recipe embed resizer -->
+    <script src="https://cdn.azing.org/e/1/embed.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Convention: Strict Name Checks | 2sxc 16 / EAV 16 </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Convention: Strict Name Checks | 2sxc 16 / EAV 16 ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:newtab" content="true">
+
+    <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- overwrite the built in highlightJs with a newer version -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+
+    <!-- fancybox -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                      </li>
+                      <li>
+                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                      </li>
+                      <li>
+                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                      </li>
+                      <li class="active">
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                      </li>
+                      <li>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                      </li>
+                      <li>
+                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                      </li>
+                </ul>            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NetCode.Conventions.TypedRequired">
+<h1 id="convention-strict-name-checks">Convention: Strict Name Checks</h1>
+
+<p>On newer APIs we implement a policy that properties are <strong>required</strong> by default (but you can override this).
+This applies to newer base classes such as</p>
+<ul>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.RazorPro.html">RazorPro</a></li>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.ApiPro.html">ApiPro</a></li>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.CodePro.html">CodePro</a></li>
+</ul>
+<p>This means that by <em>default</em>, retrieving any property such as <code>something.String(&quot;FirstName&quot;)</code>
+will only work, if the underlying Entity has the property <code>FirstName</code>.
+Otherwise it will throw an error.</p>
+<h2 id="why">Why?</h2>
+<p>This should help you find errors earlier, and make your code more stable.
+Previously when using <code>dynamic</code> objects, it was easy to make a typo and not notice it,
+or to be using the wrong object (such as having and underlying <code>BlogPost</code> object instead of a <code>Category</code> object).</p>
+<h2 id="how-to-override">How to Override</h2>
+<p>You can override this at object/wrapper creation, or when retrieving the value.</p>
+<p>When creating the object, you can override the default behavior by setting the <code>TODO:</code> parameter.
+Example:</p>
+<pre><code class="lang-c#">var lax = AsItem(someEntity, strict: false);
+var willBeNull = lax.String(&quot;DoesNotExist&quot;);
+</code></pre>
+<p>When accessing a property, you can override it by using the <code>required</code> parameter.
+Example:</p>
+<pre><code class="lang-c#">var willBeNull = MyItem.String(&quot;DoesNotExist&quot;, required: false);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The <code>required</code> parameter is a nullable boolean.
+This is to ensure that it's clear if you set it or not, in which case the default will be used.</p>
+</div>
+<h2 id="behavior-when-providing-a-fallback-value">Behavior when providing a fallback value</h2>
+<p>Most methods which have a <code>required</code> also have a <code>fallback</code> parameter.
+This is a value which will be returned if the property is empty or is not populated.</p>
+<p>So there is a slightly different behavior.</p>
+<ul>
+<li>When using it on data-object such as <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> the <code>fallback</code> does not change the behavior of <code>required</code>.<br>
+So if you don't change required, and the field <em>doesn't exist</em>, it will throw an error.</li>
+<li>When using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Code.ITypedModel.html">MyModel</a> the fallback will also affect the <code>required</code>.<br>
+So if you specify a <code>fallback</code> which can be distinguished from the <code>default</code> (eg. not a <code>null</code> on a string, not a <code>false</code> on a bool) then
+<code>required</code> will be ignored and the <code>fallback</code> will be returned.</li>
+</ul>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>First introductions in 2sxc 16.03</li>
+</ul>
+<p>Shortlink: <a href="https://go.2sxc.org/immutable">https://go.2sxc.org/immutable</a></p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/conventions/typed-required/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+
+    <!-- override the built-in highlightjs with a newer version -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
+    <script>
+        hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
+        hljs.highlightAll();
+    </script>
+
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  </body>
+</html>
