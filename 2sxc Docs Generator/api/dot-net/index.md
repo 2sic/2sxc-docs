@@ -10,11 +10,11 @@ This that will probably interest you the most:
   * for **Razor** use [Hybrid.Razor12](xref:Custom.Hybrid.Razor12) or [Dnn.Razor12](xref:Custom.Dnn.Razor12)
   * for **WebAPIs** use [Hybrid.Api12](xref:Custom.Hybrid.Api12) / [Dnn.Api12](xref:Custom.Dnn.Api12)
   * for **shared C# code** use [Hybrid.Code12](xref:Custom.Hybrid.Code12)
-* If you're interested in data or file-assets, please read about [Dynamic Data](xref:NetCode.DynamicData.Index)
+* If you're interested in data or file-assets, please read about [Dynamic Data](xref:NetCode.Data.Index)
   * you may also care about
     [](xref:ToSic.Sxc.Data.IDynamicEntity),
     [](xref:ToSic.Eav.Data.IEntity)
-    as well as the [differences](xref:NetCode.DynamicData.DataObjectTypes)
+    as well as the [differences](xref:NetCode.Data.ObjectTypes)
   * or about the
     [ADAM Assets](xref:Basics.Cms.Adam.Index)
     such as [](xref:ToSic.Sxc.Adam.IFolder), [](xref:ToSic.Sxc.Adam.IFile)

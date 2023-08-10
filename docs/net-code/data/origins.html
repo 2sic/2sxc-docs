@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data Streams (IDataStream) | 2sxc 16 / EAV 16 </title>
+    <title>Where Data Comes From | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data Streams (IDataStream) | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Where Data Comes From | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,8 +114,7 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.DataStream">
-<h1 id="data-streams-idatastream">Data Streams (IDataStream)</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Data.Origins">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -215,60 +214,91 @@
 <p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
-<style>.context-box-summary .datasource { visibility: visible; } </style>
-<p>DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities.
-Common examples in <a class="xref" href="../razor/razor-component.html">Razor-templates</a> are:</p>
+<style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
+<h1 id="where-data-comes-from">Where Data Comes From</h1>
+<p>From a developer perspective you have three kinds of Data:</p>
 <ol>
-<li><a class="xref" href="../dynamic-code/object-data.html">Data[&quot;Default&quot;]</a><br>
-This is a data-stream containing all content-items prepared for the template.</li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data[&quot;Tag&quot;]</a><br>
-This would be a data-stream containing all tag-items in the entire app, if the App has <code>Tag</code> items.</li>
+<li><strong><a href="#app-data">App Data</a></strong></li>
+<li><strong><a href="#instance-data">Instance Data</a></strong></li>
+<li><strong><a href="#code-retrieved-data">Code Retrieved Data</a></strong></li>
 </ol>
-<div class="TIP">
-<h5>Tip</h5>
-<p>All <a class="xref" href="datasource.html">DataSources</a> have at least one <strong>Out</strong>-stream called <code>Default</code>. But they can have more streams as well.</p>
-<p>Most DataSources also have one or more <strong>In</strong> streams providing data or configuration to that DataSource which will then give a modified list to the <strong>Out</strong>.</p>
-</div>
-<h2 id="how-to-use">How to use</h2>
-<p>The most commen uses will loop through all items in such a stream and show them. Here's an example:</p>
-<pre><code class="lang-cs">&lt;ol&gt;
-  @foreach(var person in Data[&quot;Default&quot;]){
-    &lt;li&gt;@AsDynamic(person).FullName&lt;/li&gt;
-  }
-&lt;/ol&gt;
-</code></pre>
-<p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../data/object-entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>.</p>
-<p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <a class="xref" href="../dynamic-code/as-list.html"><code>AsList</code></a> in the Loop, like this:</p>
-<pre><code class="lang-cs">&lt;ol&gt;
-  @foreach(var person in AsList(Data[&quot;Default&quot;])) {
-    &lt;li&gt;@person.FullName - born @person.Birthday and married to @person.SpouseName&lt;/li&gt;
-  }
-&lt;/ol&gt;
-</code></pre>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-  <h2> Discover More in the Razor Tutorials </h2>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
-</div>
-<h2 id="advanced-use-cases">Advanced Use Cases</h2>
-<p>There are some advanced use-cases where you need to know more about the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html"><code>IDataStream</code></a> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it's best to consult the EAV DataSource code.</p>
-<p>Just a few more details you might care about:</p>
+<p>In addition you have Settings and Resources:</p>
 <ol>
-<li>The stream has a property <code>Source</code> which points to the owning <a class="xref" href="datasource.html">DataSource</a>.</li>
-<li>a stream might be attached to many targets for further processing or for templating, but the stream doesn't know about this</li>
-<li>you can always looup through items on the stream itself using LINQ, like<br>
-<code>var blues = Data[&quot;Default&quot;].Where(x =&gt; AsDynamic(x).Category == &quot;Blue&quot;))</code><br>
-see also <a class="xref" href="../data/linq/index.html">Use LINQ with Dynamic Data in Dynamic Code</a></li>
+<li><strong><a href="#configuration-and-settings">Configuration &amp; Settings</a></strong></li>
+<li><strong><a href="#resources">Resources</a></strong></li>
 </ol>
-<p>of course there's always quite a bit more to it, like auto-caching, but you usually don't need to understand all that.</p>
-<h2 id="read-also">Read also</h2>
+<p>And you have Context information:</p>
 <ul>
-<li><a class="xref" href="datasource.html">DataSources</a></li>
+<li>MyContext / CmsContext</li>
+<li>MyPage</li>
+<li>MyUser</li>
+<li>MyView</li>
+<li>etc.</li>
 </ul>
+<h2 id="app-data">App Data</h2>
+<p>The complete <strong>App Data</strong> is <em>always</em> available in these objects:</p>
+<ol>
+<li><a class="xref" href="../dynamic-code/objects/app/index.html">App</a><br>
+The current App with <code>Settings</code>, <code>Resources</code>, <code>Path</code> information and more.</li>
+<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data</a><br>
+All the data of the current app for immediate use, fully cached in memory of the web server.</li>
+<li><a class="xref" href="../dynamic-code/objects/app/app-query.html">App.Query</a><br>
+Queries which were created using <strong>VisualQuery</strong> and can be run to access prepared data.</li>
+</ol>
+<h2 id="instance-data">Instance Data</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Instance specific data <em>belongs</em> to the module-instance on the page,
+either because it was added manually as <a class="xref" href="../../basics/content/index.html">Content</a>
+or because the <a class="xref" href="../../basics/app/views/index.html">View</a> of the module-instance uses a <a class="xref" href="../../basics/query/index.html">Query</a>.</p>
+<p>Best read about <a class="xref" href="../../basics/data/instance/index.html">App vs. Instance Data</a> and <a class="xref" href="origins.html">Where Data Comes From</a></p>
+</div>
+
+<p>If the <a class="xref" href="../../basics/app/views/index.html">View</a> is configured for manual content-editing or uses a <a class="xref" href="../../basics/query/index.html">Query</a> then
+<strong><a class="xref" href="../../basics/data/instance/index.html">Instance Data</a></strong> is automatically <a class="xref" href="../../basics/prepare/index.html">prepared</a> in these objects:</p>
+<ol>
+<li><a class="xref" href="../dynamic-code/content.html">Content</a><br>
+The primary and often the only content-items for this template.</li>
+<li><a class="xref" href="../dynamic-code/content.html#contentpresentation">Content.Presentation</a><br>
+Can contain additional presentation settings for this content, like how to format it.</li>
+<li><a class="xref" href="../dynamic-code/object-data.html">Data</a><br>
+One or more <a class="xref" href="../data-sources/datastream.html">Streams</a> (lists) of zero-or-more content items</li>
+<li><a class="xref" href="../dynamic-code/header.html">Header</a><br>
+The header data if the template expects to be a list and also needs a title or intro.</li>
+<li><a class="xref" href="../dynamic-code/header.html#headerpresentation">Header.Presentation</a><br>
+Can contain additional presentation settings for the header, like how to format it.</li>
+</ol>
+<h2 id="code-retrieved-data">Code Retrieved Data</h2>
+<p>Your code can also retrieve data using normal C# code to do things like</p>
+<ol>
+<li>Get lists of files from ADAM or the file system</li>
+<li>Read data from SQL</li>
+<li>Manually parse CSV files or access external Web Services</li>
+<li>Use <a class="xref" href="../data-sources/index.html">DataSources</a> to get SQL, CSV or other data</li>
+</ol>
+<h2 id="configuration-and-settings">Configuration and Settings</h2>
+<p><strong>Configuration</strong> is usually found on specific objects which are configured.
+There are three types:</p>
+<ol>
+<li>View Configuration</li>
+<li>App Configuration</li>
+<li>Feature activations</li>
+</ol>
+<p><strong>Settings</strong> usually affect templates / Razor or C# WebAPIs.
+They are usually configured at various levels like on the View, App, Site or Global.</p>
+<p>C# code will usually get these settings from the <code>Settings</code> object which consolidates all the settings.</p>
+<p>👉 See <a class="xref" href="../dynamic-code/objects/settings.html">Settings</a></p>
+<h2 id="resources">Resources</h2>
+<p><strong>Resources</strong> are meant to provide translated labels, logos etc.
+You can configure them at View, App, Site or Global level.</p>
+<p>👉 See <a class="xref" href="../dynamic-code/objects/resources.html">Resources</a></p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 01.00</li>
-<li>Multi-Language since 2sxc 02.00</li>
+<li>Introduced in 2sxc v1</li>
+<li>App.Data added ca. 2sxc 6</li>
+<li>App.Query added ca. 2sxc 7</li>
+<li>Settings and Resources added in 2sxc 12</li>
 </ol>
 </article>
           </div>
@@ -278,7 +308,7 @@ see also <a class="xref" href="../data/linq/index.html">Use LINQ with Dynamic Da
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data-sources/datastream.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data/origins.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

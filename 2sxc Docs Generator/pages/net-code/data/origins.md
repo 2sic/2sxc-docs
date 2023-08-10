@@ -1,5 +1,5 @@
 ---
-uid: NetCode.DynamicData.DataOrigins
+uid: NetCode.Data.Origins
 ---
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
@@ -17,6 +17,14 @@ In addition you have Settings and Resources:
 
 1. **[Configuration & Settings](#configuration-and-settings)**
 1. **[Resources](#resources)**
+
+And you have Context information:
+
+* MyContext / CmsContext
+* MyPage
+* MyUser
+* MyView
+* etc.
 
 ## App Data
 

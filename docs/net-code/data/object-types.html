@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data Streams (IDataStream) | 2sxc 16 / EAV 16 </title>
+    <title>Data Object Types | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data Streams (IDataStream) | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Data Object Types | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -114,8 +114,7 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.DataSources.DataStream">
-<h1 id="data-streams-idatastream">Data Streams (IDataStream)</h1>
+            <article class="content wrap" id="_content" data-uid="NetCode.Data.ObjectTypes">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -215,60 +214,83 @@
 <p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
-<style>.context-box-summary .datasource { visibility: visible; } </style>
-<p>DataStreams are objects which behave like a table or a list. They deliver a bunch of content-items/Entities.
-Common examples in <a class="xref" href="../razor/razor-component.html">Razor-templates</a> are:</p>
+<style>.context-box-summary .data-all { visibility: visible; } </style>
+<h1 id="data-object-types">Data Object Types</h1>
+<p>When coding with 2sxc data, there are three common data object types:</p>
 <ol>
-<li><a class="xref" href="../dynamic-code/object-data.html">Data[&quot;Default&quot;]</a><br>
-This is a data-stream containing all content-items prepared for the template.</li>
-<li><a class="xref" href="../dynamic-code/objects/app/app-data.html">App.Data[&quot;Tag&quot;]</a><br>
-This would be a data-stream containing all tag-items in the entire app, if the App has <code>Tag</code> items.</li>
+<li><strong>DynamicEntity</strong></li>
+<li><strong>Entity</strong></li>
+<li><strong>TypedItem</strong> (new/WIP v16.01)</li>
 </ol>
+<p>There are also some typical data objects for working with file/assets (not documented here):</p>
+<ol>
+<li><strong>IAsset</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IAsset.html">IAsset</a></li>
+<li><strong>IFile</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFile.html">IFile</a></li>
+<li><strong>IFolder</strong> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a></li>
+</ol>
+<p><a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entities</a> are simple, <em>dynamic</em> objects that allow you to write template with any property you believe the data should have, like <code>@person.FirstName</code> etc.
+They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background.</p>
+<p><a class="xref" href="object-entity.html">Entities</a> are strongly typed objects for complex work, but getting values is much more difficult.
+You usually don't need this, but it's important that you know this exists.</p>
+<p><a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html">TypedItem</a> is a new type of object which is still in development.
+It's a strongly typed object which is very similar to the DynamicEntity, but has a few advantages.
+It's still in development.</p>
+<p>This piece of code shows why you usually <em>don't want to use the IEntity</em> and will prefer the <em>IDynamicEntity</em> instead.</p>
+<pre><code class="lang-cs">// The easy way, using the content-item as a DynamicEntity
+var titleFromDynamic = Content.Title; 
+
+// The hard way, what actually happens internally
+var languagePreference = [&quot;de&quot;, &quot;en&quot;];
+var autoResolveLinks = true;
+var contentEntity = AsEntity(Content);
+var titleFromEntity = contentEntity.GetBestValue(&quot;Title&quot;, languagePreference, autoResolveLinks);
+
+</code></pre>
+<p>As you can see, the internals provide a lot of information about the underlying data - things you usually don't care about, but in rare cases may be important.</p>
+<h2 id="conversion">Conversion</h2>
+<p>Each type can be converted to the other type using helpers like <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>, <a class="xref" href="../dynamic-code/as-list.html">AsList(...)</a> and <a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a>. The APIs are explained here <a class="xref" href="../dynamic-code/index.html">Dynamic Code API</a>.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>All <a class="xref" href="datasource.html">DataSources</a> have at least one <strong>Out</strong>-stream called <code>Default</code>. But they can have more streams as well.</p>
-<p>Most DataSources also have one or more <strong>In</strong> streams providing data or configuration to that DataSource which will then give a modified list to the <strong>Out</strong>.</p>
+<p>In most cases you'll always use <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entities</a> and if you're not sure whan an object is, just run it through <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a>.</p>
 </div>
-<h2 id="how-to-use">How to use</h2>
-<p>The most commen uses will loop through all items in such a stream and show them. Here's an example:</p>
-<pre><code class="lang-cs">&lt;ol&gt;
-  @foreach(var person in Data[&quot;Default&quot;]){
-    &lt;li&gt;@AsDynamic(person).FullName&lt;/li&gt;
-  }
-&lt;/ol&gt;
+<h2 id="conversion-examples">Conversion Examples</h2>
+<p>This is just a bit of code so you can see how to convert back and forth. You usually won't care too much about this and not do this.</p>
+<p>Note that this is a very advanced topic, and you'll need Visual Studio Intellisense to get this done reasonably. Since you'll figure it out fairly quickly, we won't document it in detail here.</p>
+<pre><code class="lang-cs">// assume that you have a DynamicEntity like Content
+var entity = AsEntity(Content);
+
+// assume that you have a DataStream with Entities...
+@foreach(var postEntity in Data[&quot;Default&quot;])
+{
+    var postDyn = AsDynamic(postEntity);
+    // postEntity is a IEntity
+    // postDyn is a DynamicEntity
+}
+
+// but this is easier - convert the whole list
+@foreach(var post in AsList(Data[&quot;Default&quot;]))
+{
+    var postEnt = AsEntity(post);
+    // do something with the @post here, it's a DynamicEntity
+    // ...or with postEnt, it's an IEntity
+}
 </code></pre>
-<p>The <code>@foreach</code> will go through all the items. Each item is of the type <a class="xref" href="../data/object-entity.html">IEntity</a>. To make it easier to template, we convert it to a <a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity</a> using <a class="xref" href="../dynamic-code/as-dynamic.html"><code>AsDynamic</code></a> and then we can just show the name with <code>.FullName</code>.</p>
-<p>In most cases we will need the loop-item a lot, and would preferr to not write <code>AsDynamic</code> every time. Because of this, we usually write the <a class="xref" href="../dynamic-code/as-list.html"><code>AsList</code></a> in the Loop, like this:</p>
-<pre><code class="lang-cs">&lt;ol&gt;
-  @foreach(var person in AsList(Data[&quot;Default&quot;])) {
-    &lt;li&gt;@person.FullName - born @person.Birthday and married to @person.SpouseName&lt;/li&gt;
-  }
-&lt;/ol&gt;
-</code></pre>
+<h2 id="read-also">Read also</h2>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <h2> Discover More in the Razor Tutorials </h2>
 <p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
-<h2 id="advanced-use-cases">Advanced Use Cases</h2>
-<p>There are some advanced use-cases where you need to know more about the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html"><code>IDataStream</code></a> object, mostly when using LINQ. This is fairly rare, and if you really need to know more, it's best to consult the EAV DataSource code.</p>
-<p>Just a few more details you might care about:</p>
-<ol>
-<li>The stream has a property <code>Source</code> which points to the owning <a class="xref" href="datasource.html">DataSource</a>.</li>
-<li>a stream might be attached to many targets for further processing or for templating, but the stream doesn't know about this</li>
-<li>you can always looup through items on the stream itself using LINQ, like<br>
-<code>var blues = Data[&quot;Default&quot;].Where(x =&gt; AsDynamic(x).Category == &quot;Blue&quot;))</code><br>
-see also <a class="xref" href="../data/linq/index.html">Use LINQ with Dynamic Data in Dynamic Code</a></li>
-</ol>
-<p>of course there's always quite a bit more to it, like auto-caching, but you usually don't need to understand all that.</p>
-<h2 id="read-also">Read also</h2>
+
 <ul>
-<li><a class="xref" href="datasource.html">DataSources</a></li>
+<li><a class="xref" href="../dynamic-data/dynamic-entity.html">Dynamic Entity Objects</a></li>
+<li><a class="xref" href="object-entity.html">Entity Objects</a></li>
 </ul>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 01.00</li>
 <li>Multi-Language since 2sxc 02.00</li>
+<li>Added <code>Value</code> and <code>Value&lt;T&gt;</code> as well as <code>Parents()</code> and <code>Children(...)</code> in 09.42. Note that Value does not do the same thing as GetBestValue.</li>
 </ol>
 </article>
           </div>
@@ -278,7 +300,7 @@ see also <a class="xref" href="../data/linq/index.html">Use LINQ with Dynamic Da
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data-sources/datastream.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data/object-types.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

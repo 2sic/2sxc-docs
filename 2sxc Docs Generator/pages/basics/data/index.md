@@ -129,7 +129,7 @@ Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and 
 
 ## More Advanced Topics
 
-1. [Entities and Dynamic Entities](xref:NetCode.DynamicData.Index)
+1. [Entities and Dynamic Entities](xref:NetCode.Data.Index)
 1. [Using Entities as Content or as Data](xref:Basics.Content.Index)
 1. [Content Lists of Entities](xref:Basics.Content.Lists)
 1. [VisualQuery](xref:Basics.Query.VisualQuery.Index)

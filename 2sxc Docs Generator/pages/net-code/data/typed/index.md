@@ -16,14 +16,13 @@ The objects you will then work with are either
 1. `IFolder`
 1. etc.
 
-> [!INFO]
+> [!NOTE]
 > These docs are still being written. Please be patient.
 
 ## Things which need documentation
 
 1. Use of the now API
 1. Differences to the old API / gotchas
-1. Create Mock data for scenarios where fallback objects are needed
 1. Working with strict / required properties/fields
 1. Working with files etc.
 1. Special actions such as Attribute(), Html(), Picture(), etc.

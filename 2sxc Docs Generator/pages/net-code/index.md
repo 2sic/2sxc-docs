@@ -48,7 +48,7 @@ The code first creates a `div` tag which would show a hover-toolbar (to admins o
 
 This documentation contains the following sections
 
-1. [Dynamic Data](xref:NetCode.DynamicData.Index)
+1. [Dynamic Data](xref:NetCode.Data.Index)
     Everything you need to understand how data, especially dynamic data, works in 2sxc.
 1. [Dynamic Code](xref:NetCode.DynamicCode.Index)
     The shared API on all Dynamic Code - Razor, WebApi or other.

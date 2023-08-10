@@ -36,7 +36,7 @@ In your code, **Instance Data** is [prepared](xref:Basics.Prepare.Index) by the 
 
 On the other hand the complete **App Data** is available on objects like `App` which are always available even if no Instance Data exists.
 
-Read more about [where data comes from in your code](xref:NetCode.DynamicData.DataOrigins)
+Read more about [where data comes from in your code](xref:NetCode.Data.Origins)
 
 ---
 

@@ -4,7 +4,7 @@ uid: NetCode.DynamicCode.Index
 
 # Dynamic Code API
 
-Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a lot of helpers to work with [Dynamic Data](xref:NetCode.DynamicData.Index).
+Every C# file in 2sxc is **Dynamic Code** as it's compiled on-the-fly and has a lot of helpers to work with [Dynamic Data](xref:NetCode.Data.Index).
 
 <div class="context-box-process" width="100%">
 
