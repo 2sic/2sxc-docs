@@ -1,1 +1,1 @@
-Moved to: [](xref:NetCode.Data.LinqGuide)
+Moved to: [](xref:NetCode.Data.Linq.Guide)

@@ -1,2 +1,2 @@
 
-Moved to: [](xref:NetCode.Data.Index)
+Moved to: [](xref:NetCode.Data.Linq.Index)

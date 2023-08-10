@@ -1,5 +1,5 @@
 ---
-uid: NetCode.Data.Index
+uid: NetCode.Data.Linq.Index
 ---
 
 # Use LINQ with Dynamic Data in Dynamic Code
@@ -17,8 +17,8 @@ You probably want to check out one of the following:
 
 ## 2sxc LINQ Docs
 
-1. [](xref:NetCode.Data.LinqGuide)
-1. [](xref:NetCode.Data.Linq)
+1. [](xref:NetCode.Data.Linq.Guide)
+1. [](xref:NetCode.Data.Linq.Dynamic)
 
 ## Microsoft Docs
 

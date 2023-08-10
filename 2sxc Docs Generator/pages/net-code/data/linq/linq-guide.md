@@ -1,11 +1,11 @@
 ---
-uid: NetCode.Data.LinqGuide
+uid: NetCode.Data.Linq.Guide
 ---
 # Guide to Working with LINQ and 2sxc/EAV Data
 
 In many cases you will want to sort, filter or group some data, or quickly check if any data was found. When using Razor or working in WebApi, this is best done with LINQ. This guide will assist you to get everything working.
 
-For a more API-oriented documentation, see [DotNet Query LINQ](xref:NetCode.Data.Linq).
+For a more API-oriented documentation, see [DotNet Query LINQ](xref:NetCode.Data.Linq.Dynamic).
 We also recommend to play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -217,7 +217,7 @@ list = links.Where(x => x.Show == null);  // take null, skip true & false
 
 ## Read also, Demo App and further links
 
-1. [LINQ API Docs](xref:NetCode.Data.Linq)
+1. [LINQ API Docs](xref:NetCode.Data.Linq.Dynamic)
 2. [Razor Tutorial App showing all kinds of Queries](https://2sxc.org/en/apps/app/razor-tutorial)
 
 ## History

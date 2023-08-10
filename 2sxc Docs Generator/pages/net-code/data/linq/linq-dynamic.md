@@ -1,9 +1,9 @@
 ---
-uid: NetCode.Data.Linq
+uid: NetCode.Data.Linq.Dynamic
 ---
 # Querying Data and Data Sources with code and LINQ
 
-To get started, we recommend you read the [LINQ Guide](xref:NetCode.Data.LinqGuide) and play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
+To get started, we recommend you read the [LINQ Guide](xref:NetCode.Data.Linq.Guide) and play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
 These common (extension) methods can be used on lists from 2sxc data streams (they all inherit from types implementing [IEnumerable](https://msdn.microsoft.com/de-de/library/system.collections.ienumerable(v=vs.110).aspx)):
 
@@ -23,7 +23,7 @@ For a full list of all `System.Linq` methods, check out the [methods of IEnumera
 
 ## Using Statements
 
-As explained in the [guide](xref:NetCode.Data.LinqGuide) we recommend the following using statements in Razor:
+As explained in the [guide](xref:NetCode.Data.Linq.Guide) we recommend the following using statements in Razor:
 
 ```razor
 @using System.Linq;
