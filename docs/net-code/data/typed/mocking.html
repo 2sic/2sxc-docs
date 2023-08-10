@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data in 2sxc | 2sxc 16 / EAV 16 </title>
+    <title>Mocking Typed Data | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data in 2sxc | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Mocking Typed Data | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
-    <link rel="shortcut icon" href="../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="shortcut icon" href="../../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
   
-  <meta property="docfx:rel" content="../../">
+  <meta property="docfx:rel" content="../../../">
   <meta property="docfx:newtab" content="true">
 
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +65,22 @@
 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li class="active">
-                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>            </div>
           </div>
@@ -114,12 +114,12 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NetCode.Data.Index">
+            <article class="content wrap" id="_content" data-uid="NetCode.Data.Typed.Mocking.Index">
 
 <div class="float-right context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../../basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
   <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
@@ -211,14 +211,191 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
-<h1 id="data-in-2sxc">Data in 2sxc</h1>
-<p>2sxc has a lot of powerful features to help you do amazing stuff, but it all starts with data.
-So get familiar with the basics of data in 2sxc.</p>
-<p>TODO: MORE</p>
+<h1 id="mocking-typed-data">Mocking Typed Data</h1>
+<p>In some scenarios you have code which expects to work with existing data,
+but in certain cases the data may not be available.</p>
+<h2 id="example-scenario">Example Scenario</h2>
+<p>Imagine you have a Razor which shows details about a building,
+but in some cases the build data is not available.
+In this case you want to show a fallback, like a default building.</p>
+<p>For this, the pseudo-code would look like this:</p>
+<pre><code class="lang-razor">@{
+  var building = expectedBuilding;
+}
+&lt;h1&gt;@building.Title&lt;/h1&gt;
+&lt;table&gt;
+  &lt;!-- show specs --&gt;
+&lt;table&gt;
+</code></pre>
+<h2 id="how-to-show-mock-data-instead">How to Show Mock Data instead</h2>
+<p>There are basically 3 ways to handle this:</p>
+<h3 id="option-1-lots-of-if-statements">Option 1: Lots of <code>if</code>-statements</h3>
+<p>You could use a bunch of if-statements everywhere, but this is not elegant.
+That would look a bit like this:</p>
+<pre><code class="lang-razor">@{
+  var building = expectedBuilding;
+  var mockTitle = &quot;Default Building&quot;;
+}
+&lt;h1&gt;
+  @if (expectedBuilding != null) {
+    @expectedBuilding.Title
+  } else {
+    @mockTitle
+  }
+&lt;/h1&gt;
+</code></pre>
+<h3 id="option-2-use-a-special-dummy-entity-record">Option 2: Use a special Dummy-Entity (record)</h3>
+<p>You could have a special entity containing the demo data, and use that.
+This is the approach which is provided by default in views which should show dummy-data until the editor adds custom information.</p>
+<p>In the default-views-setup this just magically works, because the view-configuration
+knows what item to provide when there is no user-data yet.</p>
+<p>But for more advanced scenarios, you would need to do this manually.
+It would look a bit like this:</p>
+<pre><code class="lang-razor">@{
+  var building = expectedBuilding
+    ?? AsItems(App.Data[&quot;Buildings&quot;]).FirstOrDefault(b =&gt; b.SpecialId == &quot;Dummy&quot;);
+}
+&lt;h1&gt;@expectedBuilding.Title&lt;/h1&gt;
+</code></pre>
+<p>This is a reasonable approach and should be used where it makes sense.
+But there are issues with this:</p>
+<ol>
+<li>It requires a clear way to find the dummy-item in the list of all items, and this marker should never change</li>
+<li>The list of all data always contains some dummy data, which must be filtered out in other scenarios</li>
+</ol>
+<h3 id="option-3-use-mock-data">Option 3: Use Mock Data</h3>
+<p>A very popular way to handle this is using mock data.
+Here's an example:</p>
+<pre><code class="lang-razor">@{
+  var building = expectedBuilding
+    ?? AsItem(new {
+      Title = &quot;Default Building&quot;,
+      Description = &quot;This is a default building&quot;,
+      Image = &quot;file:72&quot;,
+    }, mock: true);
+}
+&lt;h1&gt;@expectedBuilding.Title&lt;/h1&gt;
+</code></pre>
+<p>Note the <code>mock: true</code> in the <code>AsItem(new {...}, mock: true)</code>.
+Without this parameter, 2sxc would throw an error.
+The reason is that 2sxc wants to make sure that you are aware that you are using mock data.
+So <em>without</em> the <code>mock: true</code>, 2sxc will only accept Entity-like objects in <code>AsItem()</code>.
+With the <code>mock: true</code> it will also accept any other object, and will then create a mock-entity from it.</p>
+<h2 id="basic-mock-data">Basic Mock Data</h2>
+<p>The mock data API is quite powerful, so let's see some advanced examples:</p>
+<pre><code class="lang-c#">var m = AsItem(new {
+    Id = 99999,               // The Id will be available on m.Id
+    Guid = Guid.NewGuid(),    // The Guid will be available on m.Guid
+    Title = &quot;Dummy Item&quot;,     // The Title will be available on m.Title
+    SomeNumber = 42,          // eg. for m.Int(&quot;SomeNumber&quot;) or m.Float(&quot;SomeNumber&quot;)
+    SomeString = &quot;Hello&quot;,     // eg. for m.String(&quot;SomeString&quot;)
+  }, mock: true);
+</code></pre>
+<h2 id="mock-data-with-sub-objects">Mock Data with Sub-Objects</h2>
+<p>Items can have sub-objects such as Children or the special <code>Presentation</code> object.
+Here are some examples:</p>
+<pre><code class="lang-c#">var m = AsItem(new {
+    Presentation = new {                  // m.Presentation
+      Highlight = true,                   // m.Presentation.Bool(&quot;Highlight&quot;)
+      GalleryMode = &quot;tiles&quot;,              // m.Presentation.String(&quot;GalleryMode&quot;)
+    },
+    Architect = new {                     // m.Child(&quot;Architect&quot;)
+      Title = &quot;John Doe&quot;,                 // m.Child(&quot;Architect&quot;).Title
+      Website = &quot;https://www.2sxc.org&quot;,   // m.Child(&quot;Architect&quot;).String(&quot;Website&quot;)
+    },
+    tags = new object[] {                 // foreach(var t in m.Children(&quot;tags&quot;)
+      new {
+        Title = &quot;Tag 1&quot;,
+      },
+      new {
+        Title = &quot;Tag 2&quot;,
+      },
+    }
+  }, mock: true);
+</code></pre>
+<h2 id="mock-parents">Mock Parents</h2>
+<p>Any normal TypedItem has a Method <code>.Parents(...)</code> to find other entities which are related.
+This is the opposite of <code>.Children(...)</code> which finds children.</p>
+<p>If your code expects parents, you can mock it like this:</p>
+<pre><code class="lang-c#">var m = AsItem(new {
+    Parents = new object[] {                // foreach(var p in m.Parents(&quot;tags&quot;)
+      new {
+        Title = &quot;How to get your dream-home&quot;,
+        Type = &quot;Blog&quot;,
+      },
+      new {
+        Title = &quot;Evaluating Architects&quot;,
+        Type = &quot;Blog&quot;,
+      },
+      new {
+        Title = &quot;Modern Architecture&quot;,
+        Type = &quot;CaseStudy&quot;,
+        Field = &quot;Primary&quot;,
+      },
+      new {
+        Title = &quot;Modern Architecture&quot;,
+        Type = &quot;CaseStudy&quot;,
+        Field = &quot;Example&quot;,
+      },
+      new {
+        Title = &quot;Modern Architecture&quot;,
+        Type = &quot;CaseStudy&quot;,
+        Field = &quot;Example&quot;,
+      },
+
+    }
+  }, mock: true);
+</code></pre>
+<p>At first, this seems similar to the <code>Children</code> example, but there is more too it.
+The reason is that the <code>.Parents(...)</code> has optional parameters:</p>
+<ul>
+<li><code>type</code> is used to only find parents, which have a specific type, such as only <code>Blog</code> parents</li>
+<li><code>field</code> allows us to restrict the list even further, eg. only type <code>CaseStudy</code> which reference this in the <code>Primary</code> field</li>
+</ul>
+<pre><code class="lang-c#">var blogParents = m.Parents(type: &quot;Blog&quot;);
+var caseStudyParents = m.Parents(type: &quot;CaseStudy&quot;);
+var caseStudyPrimaryParents = m.Parents(type: &quot;CaseStudy&quot;, field: &quot;Primary&quot;);
+</code></pre>
+<h2 id="mock-links--references">Mock Links / References</h2>
+<p>Links can be values such as <code>https://...</code> or internal references such as <code>page:123</code> or <code>file:50203</code>.
+Note that the IDs in the examples below must of course exist on your system.</p>
+<pre><code class="lang-c#">var m = AsItem(new {
+    // m.Url(&quot;Website&quot;) and m.String(&quot;Website&quot;) both return the same
+    Website = &quot;https://www.2sxc.org&quot;,
+    // m.String(&quot;ListPage&quot;) will contain `page:123`
+    // m.Url(&quot;ListPage&quot;) will contain the full url to the page
+    ListPage = &quot;page:123&quot;,
+    // m.String(&quot;Logo&quot;) will contain `file:50203`
+    // m.Url(&quot;Logo&quot;) will contain the full url to the file
+    Logo = &quot;file:50203&quot;,
+  }, mock: true);
+</code></pre>
+<h2 id="mock-files">Mock Files</h2>
+<p>Typed Items can reference one or many files, using these APIs:</p>
+<ul>
+<li><code>thing.File(&quot;fieldName&quot;)</code> to get a single <code>IFile</code></li>
+<li><code>thing.Folder(&quot;fieldName&quot;)</code> to get an <code>IFolder</code> containing zero or more files and folders</li>
+</ul>
+<pre><code class="lang-c#">var m = AsItem(new {
+    // m.String(&quot;Logo&quot;) will contain `file:50203`
+    // m.Url(&quot;Logo&quot;) will contain the full url to the file
+    // m.File(&quot;Logo&quot;) will contain the IFile object to this file
+    Logo = &quot;file:50203&quot;,
+  }, mock: true);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>As of now, mocking files is possible, but mocking folders is not supported.</p>
+</div>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc v16.03</li>
+</ol>
 </article>
           </div>
 
@@ -227,7 +404,7 @@ So get familiar with the basics of data in 2sxc.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/data/typed/mocking.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -254,20 +431,20 @@ So get familiar with the basics of data in 2sxc.</p>
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
 
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="../../styles/cshtml-razor.js"></script>
+    <script src="../../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.highlightAll();
     </script>
 
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
 
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>

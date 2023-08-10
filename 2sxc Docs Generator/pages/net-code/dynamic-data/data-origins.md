@@ -13,7 +13,7 @@ From a developer perspective you have three kinds of Data:
 1. **[Instance Data](#instance-data)**
 1. **[Code Retrieved Data](#code-retrieved-data)**
 
-In addition you have Settings and Resources: 
+In addition you have Settings and Resources:
 
 1. **[Configuration & Settings](#configuration-and-settings)**
 1. **[Resources](#resources)**
@@ -47,24 +47,24 @@ Your code can also retrieve data using normal C# code to do things like
 
 ## Configuration and Settings
 
-**Configuration** is usually found on specific objects which are configured. 
+**Configuration** is usually found on specific objects which are configured.
 There are three types:
 
 1. View Configuration
 1. App Configuration
 1. Feature activations
 
-**Settings** usually affect templates / Razor or C# WebAPIs. 
-They are usually configured at various levels like on the View, App, Site or Global. 
+**Settings** usually affect templates / Razor or C# WebAPIs.
+They are usually configured at various levels like on the View, App, Site or Global.
 
-C# code will usually get these settings from the `Settings` object which consolidates all the settings. 
+C# code will usually get these settings from the `Settings` object which consolidates all the settings.
 
 👉 See [Settings](xref:NetCode.DynamicCode.Objects.Settings)
 
 ## Resources
 
-**Resources** are meant to provide translated labels, logos etc. 
-You can configure them at View, App, Site or Global level. 
+**Resources** are meant to provide translated labels, logos etc.
+You can configure them at View, App, Site or Global level.
 
 👉 See [Resources](xref:NetCode.DynamicCode.Objects.Resources)
 
