@@ -6,6 +6,7 @@ uid: NetCode.Data.Linq
 To get started, we recommend you read the [LINQ Guide](xref:NetCode.Data.LinqGuide) and play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
 These common (extension) methods can be used on lists from 2sxc data streams (they all inherit from types implementing [IEnumerable](https://msdn.microsoft.com/de-de/library/system.collections.ienumerable(v=vs.110).aspx)):
+
 * [.Where()](#where) - filter a list (IEnumerable) based on a specific criteria
 * [.Any()](#any) - returns true if any of the elements matches a criteria
 * [.OrderBy() / .OrderByDescending()](#orderby--orderbydescending) - order a list (IEnumerable) by a specific field
@@ -30,6 +31,7 @@ As explained in the [guide](xref:NetCode.Data.LinqGuide) we recommend the follow
 ```
 
 ## Where
+
 Filter a list (IEnumerable) based on a criteria.
 
 Example: Basic filter of a list by string
@@ -41,6 +43,7 @@ items = items.Where(p => p.Name == "Chuck Norris");
 ```
 
 ## Any
+
 Returns true if any of the elements matches a criteria.
 
 ```C#
@@ -61,6 +64,7 @@ Here's another Any - to see if a relationship contains something. It's a bit mor
 ```
 
 ## OrderBy / OrderByDescending
+
 Order a list (IEnumerable) by a specific field.
 
 ```C#
@@ -70,6 +74,7 @@ items = items.OrderBy(p => p.Name);
 ```
 
 ## First / Last
+
 Get first or last element of the list.
 
 ```C#
@@ -79,6 +84,7 @@ var last = items.Last(); // contains the last element
 ```
 
 ## Select
+
 Transform list into a new list, selecting only specified field(s).
 
 ```C#
@@ -87,6 +93,7 @@ var names = items.Select(p => p.Name); // names is a list of all names
 ```
 
 ## Take / Skip
+
 Paging functions: Take only n elements, skip m elements
 
 ```C#
@@ -95,6 +102,7 @@ items = items.Skip(10).Take(10); // Skips the first 10 elements and select only 
 ```
 
 ## Count
+
 Count number of elements in a list.
 
 ```C#
@@ -103,6 +111,7 @@ var count = items.Count(); // contains the number of elements in the list
 ```
 
 ## IndexOf
+
 Find index of a specific element in the list.
 
 ```C#

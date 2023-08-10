@@ -5,7 +5,8 @@ uid: NetCode.Data.LinqGuide
 
 In many cases you will want to sort, filter or group some data, or quickly check if any data was found. When using Razor or working in WebApi, this is best done with LINQ. This guide will assist you to get everything working.
 
-For a more API-oriented documentation, see [DotNet Query LINQ](xref:NetCode.Data.Linq). We also recommend to play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
+For a more API-oriented documentation, see [DotNet Query LINQ](xref:NetCode.Data.Linq).
+We also recommend to play around with the [Razor Tutorial App](https://2sxc.org/en/apps/app/razor-tutorial)
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
@@ -35,6 +36,7 @@ This demonstrates:
 ## Important: Working with LINQ and dynamic objects
 
 ### LINQ needs IEnumerable<...>
+
 Before we continue, it's important that you really understand that LINQ commands are stored as [extension methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) of `IEnumerable<T>`. So this works:
 
 ```razor
@@ -57,6 +59,7 @@ Before we continue, it's important that you really understand that LINQ commands
 This sounds obvious, but there's an important catch: if the compiler doesn't know that something is an `IEnumerable`, it will not even try to use the LINQ extension methods, because it doesn't know that it can. So let's look at that...
 
 ### LINQs Problems with dynamic objects #1
+
 Here's an example that would fail:
 
 ```razor
