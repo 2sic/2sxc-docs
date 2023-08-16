@@ -321,20 +321,28 @@ If conversion fails, will return default <code>false</code> or what is specified
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_ITyped_ContainsData_System_String_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.ITyped.ContainsData(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_ITyped_ContainsData_System_String_System_String_System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.ITyped.ContainsData(System.String%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITyped_SharedGetGeneric.cs/#L12">View Source</a>
   </span>
   <a id="ToSic_Sxc_Data_ITyped_ContainsData_" data-uid="ToSic.Sxc.Data.ITyped.ContainsData*"></a>
-  <h4 id="ToSic_Sxc_Data_ITyped_ContainsData_System_String_" data-uid="ToSic.Sxc.Data.ITyped.ContainsData(System.String)">ContainsData(string)</h4>
-  <div class="markdown level1 summary"><p>Check if this typed object has a property of this specified name, and has real data.
-It's case insensitive.</p>
+  <h4 id="ToSic_Sxc_Data_ITyped_ContainsData_System_String_System_String_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Data.ITyped.ContainsData(System.String,System.String,System.Nullable{System.Boolean})">ContainsData(string, string, bool?)</h4>
+  <div class="markdown level1 summary"><p>Check if this typed object has a property of this specified name, and has real data.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This method is optimized for use in Razor-like scenarios.
+It may have some behavior that is super-useful but maybe not always expected.</p>
+<ul>
+<li>If the value is a string, and is empty or only contains whitespace (even &amp;nbsp;) it will still return <code>false</code> - you can change this behavior by changing the <code>isBlank</code> attribute.</li>
+<li>If the returned value is an empty list (eg. a field containing relationships, without any items in it) it returns <code>false</code>.</li>
+</ul>
+</div>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ContainsData(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">bool ContainsData(string name, string noParamOrder = &quot;Params must be named (https://go.2sxc.org/named-params)&quot;, bool? blankIs = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -350,6 +358,20 @@ It's case insensitive.</p>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
+        <td><span class="parametername">blankIs</span></td>
+        <td><p>Change how blank strings (empty, whitespace, html-whitespace) is treated.
+<code>true</code> means that every whitespace inkl. empty strings return <code>true</code>,
+<code>false</code> (default) means every whitespace incl. empty strings return <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -369,7 +391,7 @@ It's case insensitive.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="ToSic_Sxc_Data_ITyped_ContainsData_System_String__remarks">Remarks</h5>
+  <h5 id="ToSic_Sxc_Data_ITyped_ContainsData_System_String_System_String_System_Nullable_System_Boolean___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Adding in 16.03 (WIP)</p>
 </div>
   <span class="small pull-right mobile-hide">
