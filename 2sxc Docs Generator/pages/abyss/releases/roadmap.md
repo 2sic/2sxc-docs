@@ -11,15 +11,19 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-07-10**
+Last Update: **2023-08-16**
 
 ## Currently being developed 2023-Q3
 
+1. ⌛ Change `RazorPro` to `RazorTyped` etc.
+1. ✅ Make all typed objects very strict when checking if fields exist
+1. ✅ Add much more helpful info / error when fields not found
 1. ⌛ Tutorials for new Pro mode / CheatSheet
+1. ⌛ Change UI to use Angular 16 (from Angular 14)
 1. Improve JS build to make it easier for others to contribute
 1. Release all apps in the new typed mode
 1. Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
-1. Document new Pro mode
+1. ⌛ Document new ~~Pro~~ Typed mode
 
 
 

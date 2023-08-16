@@ -13,10 +13,10 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace ToSic.Sxc.Code
+    <title>Interface IDevTools
  | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace ToSic.Sxc.Code
+    <meta name="title" content="Interface IDevTools
  | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
@@ -116,85 +116,70 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Code">
+            <article class="content wrap" id="_content" data-uid="ToSic.Sxc.Code.IDevTools">
 
-  <h1 id="ToSic_Sxc_Code" data-uid="ToSic.Sxc.Code" class="text-break">Namespace ToSic.Sxc.Code
+
+
+  <h1 id="ToSic_Sxc_Code_IDevTools" data-uid="ToSic.Sxc.Code.IDevTools" class="text-break">Interface IDevTools
 </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">
-Classes
-</h3>
-      <h4><a class="xref" href="ToSic.Sxc.Code.DynamicCode.html">DynamicCode</a></h4>
-      <section><p>This is a base class for dynamic code which is compiled at runtime.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This is an old base class and works, but you should use a newer one such as <a class="xref" href="Custom.Hybrid.CodeTyped.html">CodeTyped</a></p>
-</div>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.DynamicCode12.html">DynamicCode12</a></h4>
-      <section><p>Base class for v12 Dynamic Code
-Adds new properties and methods, and doesn't keep old / legacy APIs</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This is an old base class and works, but you should use a newer one such as <a class="xref" href="Custom.Hybrid.CodeTyped.html">CodeTyped</a></p>
-</div>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.DynamicCodeRoot.html">DynamicCodeRoot</a></h4>
-      <section><p>Base class for any dynamic code root objects. <br>
-Root objects are the ones compiled by 2sxc - like the RazorComponent or ApiController. <br>
-If you create code for dynamic compilation, you'll always inherit from ToSic.Sxc.Dnn.DynamicCode.
-Note that other DynamicCode objects like RazorComponent or ApiController reference this object for all the interface methods of <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a>.</p>
-</section>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-      <h4><a class="xref" href="ToSic.Sxc.Code.ICodeLog.html">ICodeLog</a></h4>
-      <section><p>A special logger for dynamic code (Razor, WebApi).
-It is always available to add messages to insights.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IDevTools.html">IDevTools</a></h4>
-      <section><p>WIP!!!</p>
+  <div class="markdown level0 summary"><p>WIP!!!</p>
 <p>This should provide special APIs to assist developers.
 It will probably change from version to version, so the use should be limited to quick debugs and similar,
 but never remain in the code.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a></h4>
-      <section><p>Dynamic code files like Razor or WebApis.
-Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
-Also provides many Conversions between <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
-Important for dynamic code files like Razor or WebApi. Note that there are many overloads to ensure that AsDynamic and AsEntity &quot;just work&quot; even if you give them the original data.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IDynamicCode12.html">IDynamicCode12</a></h4>
-      <section><p>Interface for Dynamic Code with enhancements after v12. It extends <a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a></p>
-<p>Dynamic Code is the API for files like Razor or WebApis.
-Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
-Also provides many Conversions between <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
-Important for dynamic code files like Razor or WebApi. Note that there are many overloads to ensure that AsDynamic and AsEntity &quot;just work&quot; even if you give them the original data.</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.IHasCodeLog.html">IHasCodeLog</a></h4>
-      <section><p>Marks all Razor / WebAPI classes which provide logging functionality</p>
-</section>
-      <h4><a class="xref" href="ToSic.Sxc.Code.ITypedModel.html">ITypedModel</a></h4>
-      <section><p>Object in partial Razor files to access parameters handed in.
-Example caller:</p>
-<pre><code class="lang-c#">@Html.Partial(someFile, new { blogPost, file = mainFile, title = &quot;hello&quot; }
-</code></pre>
-<p>Example partial:</p>
-<pre><code class="lang-c#">var blogPost = MyModel.Item(&quot;BlogPost&quot;);
-var file = MyModel.File(&quot;File&quot;);
-var title = MyModel.String(&quot;Title&quot;);
-</code></pre>
-<div class="TIP">
-<h5>Tip</h5>
-<p>The common data types such as <code>string</code> or <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> have methods to quickly get them in the desired type.
-This allows things such as <code>var message = MyModel.String(&quot;Message&quot;);</code>
-For less common types you'll need to use <a class="xref" href="ToSic.Sxc.Code.ITypedModel.html#ToSic_Sxc_Code_ITypedModel_Get_System_String_System_String_System_Nullable_System_Boolean__">Get(string, string, bool?)</a> and cast it as needed, like this:
-<code>string message = MyModel.Get(&quot;Message&quot;);</code>.</p>
 </div>
-</section>
-
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.Code.html">Code</a></h6>
+  <h6><strong>Assembly</strong>: ToSic.Sxc.dll</h6>
+  <h5 id="ToSic_Sxc_Code_IDevTools_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;Not yet in use&quot;)]
+public interface IDevTools</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Code_IDevTools_Debug_System_Object_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Code.IDevTools.Debug(System.Object%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Code/DevTools/IDevTools.cs/#L22">View Source</a>
+  </span>
+  <a id="ToSic_Sxc_Code_IDevTools_Debug_" data-uid="ToSic.Sxc.Code.IDevTools.Debug*"></a>
+  <h4 id="ToSic_Sxc_Code_IDevTools_Debug_System_Object_System_String_System_Boolean_" data-uid="ToSic.Sxc.Code.IDevTools.Debug(System.Object,System.String,System.Boolean)">Debug(object, string, bool)</h4>
+  <div class="markdown level1 summary"><p>Enable debugging on a specific object, if it supports it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Debug(object target, string noParamOrder = &quot;Params must be named (https://go.2sxc.org/named-params)&quot;, bool debug = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">noParamOrder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">debug</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
           </div>
@@ -203,6 +188,12 @@ For less common types you'll need to use <a class="xref" href="ToSic.Sxc.Code.IT
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Code_IDevTools.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Code.IDevTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Code/DevTools/IDevTools.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
