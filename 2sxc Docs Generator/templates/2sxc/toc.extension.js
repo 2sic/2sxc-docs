@@ -15,8 +15,8 @@ toc.nodeData = ns.data;
 const tocLevelTop = 1;
 
 // Debug Parameters
-const dbgProcessNode = false;
-const dbgProcessNodeJustAFewMax = 0;
+const dbgProcessNodeNetApi = false;
+const dbgProcessNodeJustAFewMax = 10;
 const dbgSortNetToc = false;
 
 /**
@@ -36,7 +36,7 @@ exports.postTransform = function (model) {
     dbg.log('postTransform start as isApiToc for ', model, 25);
     processNode(model, tocLevelTop);
     // Only sort the items if we are really on the top-level of our namespace
-    model.items = sortNetToc(model);
+    model.items = sortNetApiToc(model);
   } else {
     dbg.log('postTransform skip as !isApiToc for ', model, 25);
   }
@@ -50,14 +50,16 @@ exports.postTransform = function (model) {
 
 let dbgProcessNodeJustAFew = 0;
 function processNode(item, level) {
-  if (dbgProcessNode && dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax) {
+  if (dbgProcessNodeNetApi && dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax) {
     dbg.log('processNode item: [lvl:' + level + ']:', item);
     dbgProcessNodeJustAFew++;
+    if (dbgProcessNodeJustAFew < dbgProcessNodeJustAFewMax)
+      dbg.log(`will stop logging activity as we've reached ${dbgProcessNodeJustAFewMax}`)
   }
 
   // debug data on item
   // var debugModel = JSON.stringify(item);
-  if (dbgProcessNode && item.topicUid && item.topicUid.indexOf("Custom") > -1) {
+  if (dbgProcessNodeNetApi && item.topicUid && item.topicUid.indexOf("Custom") > -1) {
     dbg.log('debug processNode[' + level + "] ", item);
   }
 
@@ -77,7 +79,7 @@ function processNode(item, level) {
   }
 }
 
-function sortNetToc(item) {
+function sortNetApiToc(item) {
   if (dbgSortNetToc) dbg.error("level 1 hit");
   if (dbgSortNetToc) dbg.error('level 1', item.items[0], 1000);
 
