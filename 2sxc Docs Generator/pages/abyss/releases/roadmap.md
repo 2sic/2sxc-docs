@@ -11,13 +11,23 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-08-16**
+Last Update: **2023-08-21**
+
+## v16.03 2023-08-21
+
+1. ✅ Make all typed objects very strict when checking if fields exist
+1. ✅ Change `RazorPro` to `RazorTyped` etc.
+1. ✅ Add much more helpful info / error when fields not found
+
+
 
 ## Currently being developed 2023-Q3
 
-1. ⌛ Change `RazorPro` to `RazorTyped` etc.
 1. ✅ Make all typed objects very strict when checking if fields exist
+1. ✅ Change `RazorPro` to `RazorTyped` etc.
 1. ✅ Add much more helpful info / error when fields not found
+
+
 1. ⌛ Tutorials for new Pro mode / CheatSheet
 1. ⌛ Change UI to use Angular 16 (from Angular 14)
 1. Improve JS build to make it easier for others to contribute

@@ -1,8 +1,8 @@
 ---
-uid: NetCode.Conventions.TypedRequired
+uid: NetCode.Conventions.PropertiesRequired
 ---
 
-# Convention: Strict Name Checks
+# Convention: Property Required Name Checks
 
 On newer APIs we implement a policy that properties are **required** by default (but you can override this).
 This applies to newer base classes such as
@@ -31,7 +31,7 @@ When creating the object, you can override the default behavior by setting the `
 Example:
 
 ```c#
-var lax = AsItem(someEntity, strict: false);
+var lax = AsItem(someEntity, propsRequired: false);
 var willBeNull = lax.String("DoesNotExist");
 ```
 
