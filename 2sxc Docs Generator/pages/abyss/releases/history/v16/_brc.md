@@ -9,3 +9,5 @@ We're documenting it here to ensure you know what happened, in case you still ru
 V16.00 doesn't have breaking changes; 16.02 has some very minor breaking changes
 
 [!include["Breaking Changes"](./_brc16.02.md)]
+
+[!include["Breaking Changes"](./_brc16.03.md)]
