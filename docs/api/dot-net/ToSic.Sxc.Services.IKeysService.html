@@ -139,7 +139,7 @@ public interface IKeysService</code></pre>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IKeysService_UniqueKey.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IKeysService.UniqueKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L30">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L31">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IKeysService_UniqueKey_" data-uid="ToSic.Sxc.Services.IKeysService.UniqueKey*"></a>
   <h4 id="ToSic_Sxc_Services_IKeysService_UniqueKey" data-uid="ToSic.Sxc.Services.IKeysService.UniqueKey">UniqueKey</h4>
@@ -187,13 +187,21 @@ So your code should usually use the built in property <code>UniqueKey</code> whi
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IKeysService_UniqueKeyWith_System_Object___.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IKeysService.UniqueKeyWith(System.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L40">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L49">View Source</a>
   </span>
   <a id="ToSic_Sxc_Services_IKeysService_UniqueKeyWith_" data-uid="ToSic.Sxc.Services.IKeysService.UniqueKeyWith*"></a>
   <h4 id="ToSic_Sxc_Services_IKeysService_UniqueKeyWith_System_Object___" data-uid="ToSic.Sxc.Services.IKeysService.UniqueKeyWith(System.Object[])">UniqueKeyWith(params object[])</h4>
   <div class="markdown level1 summary"><p>Generate a unique key based on the <a class="xref" href="ToSic.Sxc.Services.IKeysService.html#ToSic_Sxc_Services_IKeysService_UniqueKey">UniqueKey</a> and additional objects.</p>
 <p>It has a special mechanisms for creating unique keys for specific data types such as entities,
 so calling this multiple times with the same objects will still result in the same key being generated.</p>
+<p>Special behaviors:</p>
+<ul>
+<li>Strings will use the HashCode</li>
+<li>Entities and similar will use a shortened unique string based on the GUID</li>
+<li>Assets (files, folders) will use the HashCode of their <a class="xref" href="ToSic.Sxc.Adam.IAsset.html#ToSic_Sxc_Adam_IAsset_Url">Url</a></li>
+<li>Dates are converted to a safe string and trimmed for all trailing zeros</li>
+<li>Most key parts will receive a simple prefix making debugging easier</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -244,7 +252,7 @@ so calling this multiple times with the same objects will still result in the sa
                     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IKeysService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IKeysService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IKeysService.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
