@@ -36,6 +36,7 @@ The objects you will then work with are either
 
 ### Differences in the App object (`IApp` vs. `IAppTyped`)
 
+* `App.Query[...]` is now `App.GetQuery(...)` - this will also allow for more advanced options in future
 * `App.Folder` is now a `IFolder` object
 * `App.Path` is replaced by `App.Folder.Url`
 * `App.PathShared` is replaced by `App.FolderAdvanced(location: "shared").Url`
