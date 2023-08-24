@@ -609,7 +609,7 @@ This is typical for Razor components which are re-used, and called from other Ra
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_MyPage.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.MyPage%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L139">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L136">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_MyPage_" data-uid="Custom.Hybrid.RazorTyped.MyPage*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_MyPage" data-uid="Custom.Hybrid.RazorTyped.MyPage">MyPage</h4>
@@ -641,7 +641,7 @@ It's especially useful to get current URL Parameters.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_MyUser.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.MyUser%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L136">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L139">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_MyUser_" data-uid="Custom.Hybrid.RazorTyped.MyUser*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_MyUser" data-uid="Custom.Hybrid.RazorTyped.MyUser">MyUser</h4>
@@ -702,6 +702,52 @@ It's especially useful to see if the user has any kind of Admin privileges.</p>
   <h5 id="Custom_Hybrid_RazorTyped_MyView_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>New in v12.02</p>
 </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_UniqueKey.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.UniqueKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L145">View Source</a>
+  </span>
+  <a id="Custom_Hybrid_RazorTyped_UniqueKey_" data-uid="Custom.Hybrid.RazorTyped.UniqueKey*"></a>
+  <h4 id="Custom_Hybrid_RazorTyped_UniqueKey" data-uid="Custom.Hybrid.RazorTyped.UniqueKey">UniqueKey</h4>
+  <div class="markdown level1 summary"><p>A unique, random key for the current module.
+It's recommended for giving DOM elements a unique id for scripts to then access them.</p>
+<p>It's generated for every content-block, and more reliable than <code>Module.Id</code>
+since that sometimes results in duplicate keys, if the many blocks are used inside each other.</p>
+<p>It's generated using a GUID and converted/shortened.
+In the current version it's 8 characters long, so it has 10^14 combinations, making collisions extremely unlikely.
+(currently 8 characters)</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>To get a unique key which is based on additional objects such as Entities,
+use the <a class="xref" href="ToSic.Sxc.Services.IKeysService.html#ToSic_Sxc_Services_IKeysService_UniqueKeyWith_System_Object___">UniqueKeyWith(params object[])</a> method.</p>
+</div>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string UniqueKey { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Custom_Hybrid_RazorTyped_UniqueKey_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you get a fresh <a class="xref" href="ToSic.Sxc.Services.IKeysService.html">IKeysService</a> it will also create a new UniqueKey.
+So your code should usually use the built in property <code>UniqueKey</code> which comes from teh shared ServiceKit <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Keys">Keys</a>.</p>
+</div>
   <h3 id="methods">Methods
 </h3>
   <span class="small pull-right mobile-hide">
@@ -709,7 +755,7 @@ It's especially useful to see if the user has any kind of Admin privileges.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsEntity_ToSic_Eav_Data_ICanBeEntity_.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsEntity(ToSic.Eav.Data.ICanBeEntity)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L157">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L160">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsEntity_" data-uid="Custom.Hybrid.RazorTyped.AsEntity*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsEntity_ToSic_Eav_Data_ICanBeEntity_" data-uid="Custom.Hybrid.RazorTyped.AsEntity(ToSic.Eav.Data.ICanBeEntity)">AsEntity(ICanBeEntity)</h4>
@@ -758,7 +804,7 @@ It's especially useful to see if the user has any kind of Admin privileges.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsItem_System_Object_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsItem(System.Object%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L149">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L152">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsItem_" data-uid="Custom.Hybrid.RazorTyped.AsItem*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsItem_System_Object_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.RazorTyped.AsItem(System.Object,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">AsItem(object, string, bool?, bool?)</h4>
@@ -833,7 +879,7 @@ If null was provided, it will return null.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsItems_System_Object_System_String_System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsItems(System.Object%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L153">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L156">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsItems_" data-uid="Custom.Hybrid.RazorTyped.AsItems*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsItems_System_Object_System_String_System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.RazorTyped.AsItems(System.Object,System.String,System.Nullable{System.Boolean})">AsItems(object, string, bool?)</h4>
@@ -897,7 +943,7 @@ If null was provided, it will return null.</p>
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsStack_System_Object___.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsStack(System.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L168">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L171">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsStack_" data-uid="Custom.Hybrid.RazorTyped.AsStack*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsStack_System_Object___" data-uid="Custom.Hybrid.RazorTyped.AsStack(System.Object[])">AsStack(params object[])</h4>
@@ -946,7 +992,7 @@ The priority is first-object first, so if multiple items have the property, the 
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsTyped_System_Object_System_String_System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsTyped(System.Object%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L160">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L163">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsTyped_" data-uid="Custom.Hybrid.RazorTyped.AsTyped*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsTyped_System_Object_System_String_System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.RazorTyped.AsTyped(System.Object,System.String,System.Nullable{System.Boolean})">AsTyped(object, string, bool?)</h4>
@@ -1008,7 +1054,7 @@ This is usually used to process objects which the compiler can't know, such as a
     <a href="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=Custom_Hybrid_RazorTyped_AsTypedList_System_Object_System_String_System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20Custom.Hybrid.RazorTyped.AsTypedList(System.Object%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L164">View Source</a>
+    <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.Razor/Custom/Hybrid/RazorTyped.cs/#L167">View Source</a>
   </span>
   <a id="Custom_Hybrid_RazorTyped_AsTypedList_" data-uid="Custom.Hybrid.RazorTyped.AsTypedList*"></a>
   <h4 id="Custom_Hybrid_RazorTyped_AsTypedList_System_Object_System_String_System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.RazorTyped.AsTypedList(System.Object,System.String,System.Nullable{System.Boolean})">AsTypedList(object, string, bool?)</h4>
