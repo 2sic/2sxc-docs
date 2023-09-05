@@ -26,6 +26,8 @@ Razor in **Typed** Mode
 * ✅ Complete various scenarios for ITyped with unit tests, especially conversion of anonymous and json-based ITyped
 * ✅ All ITyped now have APIs for ContainsKey, IsEmpty and IsNotEmpty
 * ✅ Razor: Errors now highlight the .cshtml file with a 🎯 emoji
+* ~~GetDraft / GetPublished~~ (decided not to implement yet)
+* ✅ Override Equality operations - using ITyped.Equals
 
 Oqtane
 

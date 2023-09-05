@@ -15,18 +15,12 @@ Last Update: **2023-08-21**
 
 ## Currently being developed 2023-Q3
 
-1. Finish some edge cases for Typed code, incl.
-    1. ~~GetDraft / GetPublished~~ (decided not to implement yet)
-    1. ✅ Override Equality operations - using ITyped.Equals
-    1. ✅ Add IsEmpty / IsNotEmpty / ContainsKey
-    1. Improve stack to fully support path-keys in all use cases incl. mixed scenarios
 1. ⌛ Tutorials for new Pro mode / CheatSheet
 1. ⌛ Change UI to use Angular 16 (from Angular 14)
 1. ⌛ Improve JS build to make it easier for others to contribute
 1. ⌛ Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
 1. ⌛ Document new ~~Pro~~ Typed mode
 1. ⌛ Release all apps in the new typed mode
-1. ✅ Improve Image Metadata with more options, detailed descriptions etc.
 1. Improve headers handling in Oqtane 4
 1. Improve CSP in Oqtane 4
 1. Create a User service to get more user data
