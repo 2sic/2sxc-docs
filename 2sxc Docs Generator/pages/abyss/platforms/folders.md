@@ -10,17 +10,17 @@ This is where the various folders are located on each platform.
 
 1. App files
     * ☢️ Dnn places App folders in the `[PortalRoot]/2sxc/[AppName]` eg. `/Portals/0/2sxc/Blog5`
-    * 💧 Oqtane places App folders in `[WebRoot]/2sxc/[SiteId]/[AppName]` eg. `/2sxc/1/Blog5`
+    * 🩸 Oqtane places App folders in `[WebRoot]/2sxc/[SiteId]/[AppName]` eg. `/2sxc/1/Blog5`
 1. ADAM Files (Automatic Digital Asset Management)
     * ☢️ Dnn places ADAM assets in the `[PortalRoot]/adam/[AppName]` eg. `/Portals/0/adam/[AppName]`
-    * 💧 Oqtane places ADAM assets in `[WebRoot]/Content/Tenants/[TenantId]/Sites/[SiteId]/adam/[AppName]` eg. `/Content/Tenants/1/Sites/1/adam/Blog5`
+    * 🩸 Oqtane places ADAM assets in `[WebRoot]/Content/Tenants/[TenantId]/Sites/[SiteId]/adam/[AppName]` eg. `/Content/Tenants/1/Sites/1/adam/Blog5`
 
 Note that for Dnn, `[PortalRoot]` is usually `[WebsiteRoot]/Portals/`.
 
 ## System Data Files
 
 * ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/App_Data/`
-* 💧 Oqtane places system files in `[WebRoot]/Content/2sxc/system/App_Data/`
+* 🩸 Oqtane places system files in `[WebRoot]/Content/2sxc/system/App_Data/`
 
 Within this folder, you'll typically see the following folders:
 
@@ -42,7 +42,7 @@ Note that the `system...` folders will all have some of the following folders in
 ## Temporary Files
 
 * ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/_/`
-* 💧 Oqtane places system files in `[WebRoot]/Content/2sxc/system/_/`
+* 🩸 Oqtane places system files in `[WebRoot]/Content/2sxc/system/_/`
 
 ---
 
