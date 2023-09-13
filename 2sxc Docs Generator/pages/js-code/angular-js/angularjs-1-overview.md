@@ -5,6 +5,12 @@ uid: JsCode.AngularJs.Index
 
 > [!WARNING]
 > This is old, obsolete information. AngularJS is really dead. You should use [Angular](xref:JsCode.Angular.Index)
+>
+> The files in the folder `/js/angularjs` such as `2sxc4ng.js`, `2sxc4ng.min.js` and `angular.min.js`
+> were supposed to be removed in v12.0 but were somehow included again by accident.
+> We discovered this and removed them again in v16.06.
+>
+> If for some random reason you need it, get them from this git repo: [2sxc-js-archive](https://github.com/2sic/2sxc-js-archive/tree/main/obsolete/published/js/angularjs)
 
 2sxc contains a special helper called *2sxc4ng* which takes care of starting your app inside Dnn and providing you with toolbars and data from 2sxc.
 
@@ -18,7 +24,7 @@ this is to ensure that multiple Angular apps can run on the same page, and to pr
 1. To get your current sxc-controller there are two objects *$2sxc* and *sxc* which you can just include it in your function definition, like  
 `module.controller('AppCatalogCtrl', function ($2sxc, sxc, $http, ...) {`
 1. The sxc is the one you want most, it is already set to your current instance, so you can ask it things like `sxc.manage` etc.
-1. The $2sxc is the same as the global [$2sxc](xref:JsCode.2sxcApi.Index) object you know from jquery. You could of course also do `$2sxc(27).manage` to acces the manage, but that's unnecessarily complicated
+1. The $2sxc is the same as the global [$2sxc](xref:JsCode.2sxcApi.Index) object you know from jquery. You could of course also do `$2sxc(27).manage` to access the manage, but that's unnecessarily complicated
 1. Additional services provided when bootstrapping with *2sxc4ng* is
 1. `content(typename)` - a service which requests content-data from the current app / context, can also delete / create items etc.
 1. `query(queryname)` - a service which gets data from app-queries
