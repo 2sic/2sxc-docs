@@ -188,11 +188,12 @@ Apps / App Maintenance
 
 1. [Update DB-Schema](xref:Abyss.Releases.Planned.DbSchema)
 1. Support for persisting data to the file-system instead of DB
-1. Database re-organization ca. Dec. 2021
 1. Blazor integration for use in client-side Blazor  
     ATM not really usefuly, because blazor is not run-time compiled yet, so development would be super difficult
-1. nopCommerce integration
-1. Review Orchard / Umbraco integration
+1. Review further integrations
+    1. nopCommerce integration
+    1. Orchard integration
+    1. Umbraco integration
 1. In-Page direct upload / replacement of images
 1. In-Page direct editing of texts
 1. Possible side-by-side editing with live-preview
