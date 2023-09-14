@@ -11,17 +11,18 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-08-21**
+Last Update: **2023-09-13**
 
 ## Currently being developed 2023-Q3
 
-1. ⌛ Tutorials for new Pro mode / CheatSheet
+1. ✅ Tutorials for new Pro mode / Quick-Ref
+1. ✅ Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
+1. ✅ Improve JS build to make it easier for others to contribute
+1. ⌛ Improve headers handling in Oqtane 4
+
 1. ⌛ Change UI to use Angular 16 (from Angular 14)
-1. ⌛ Improve JS build to make it easier for others to contribute
-1. ⌛ Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
 1. ⌛ Document new ~~Pro~~ Typed mode
 1. ⌛ Release all apps in the new typed mode
-1. Improve headers handling in Oqtane 4
 1. Improve CSP in Oqtane 4
 1. Create a User service to get more user data
 
@@ -72,9 +73,8 @@ Blazor CMS / cre8magic
 
 Minor: Tutorial App Enhancements
 
-1. More Tutorials Formulas - ca. 0.5d
 1. Get tutorial app to run perfectly on Oqtane - ca. 0.5d 2dm
-1. Upgrade all template Apps to v15
+
 
 
 ## Probably 2023 Q3
