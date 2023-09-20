@@ -10,3 +10,7 @@
 [!include["Changes"](./_changes16.03.md)]
 
 [!include["Changes"](./_changes16.04.md)]
+
+
+
+[!include["Changes"](./_changes16.06.md)]

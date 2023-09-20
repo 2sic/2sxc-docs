@@ -15,11 +15,6 @@ Last Update: **2023-09-13**
 
 ## Currently being developed 2023-Q3
 
-1. ✅ Tutorials for new Pro mode / Quick-Ref
-1. ✅ Optimize build of 2sxc to use local config-files so it's easier for others to contribute @STV
-1. ✅ Improve JS build to make it easier for others to contribute
-1. ⌛ Improve headers handling in Oqtane 4
-
 1. ⌛ Change UI to use Angular 16 (from Angular 14)
 1. ⌛ Document new ~~Pro~~ Typed mode
 1. ⌛ Release all apps in the new typed mode
