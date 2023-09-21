@@ -21,11 +21,17 @@ to determine places which it should copy things to...
 
 ## Use Cases
 
-### Use Case 1: Build a JS Library Copy Manually
+### Use Case 1: Build a Part and Copy Manually
 
-Let's assume you just got started and want to try something in JS.
-You can just pull the repo, npm-init everything and build.
+Let's assume you just got started and want to try something in partial project.
+You can just pull the repo, npm-ci everything and build.
 
+As a result you'll have the compiled JS in the `dist` folder and can manually copy it to folder of any DNN/Oqtane as you wish.
+
+### Use Case 2: Build a JS Library and Copy to DNN/Oqtane Automatically
+
+In this scenario you would do the same as above, but in addition to that,
+create a `2sxc-build.config.json` file in the repo folder
 
 ---
 
@@ -33,3 +39,4 @@ You can just pull the repo, npm-init everything and build.
 
 * New in 2023-09 v16.06
 
+Shortlink: <https://go.2sxc.org/build>
