@@ -126,20 +126,61 @@
 <p>2sxc has a few git repositories, each with their own build process.
 But in general they all follow the same principles:</p>
 <ol>
-<li>When you compile a project, it will first compile the standard way, into the <code>dist</code> or <code>bin</code> folder</li>
-<li>The build process (WebPack or MSBuild) will then check the current folder and all parent folders for a file <code>2sxc-build.config.json</code>
+<li>When you compile a project, it will first compile the standard way, into the <code>dist</code> (JS) or <code>bin</code> (C#) folder</li>
+<li>The build process (WebPack or MSBuild) will then check the current folder <em>and all parent folders</em> for a file <code>2sxc-build.config.json</code>
 to determine places which it should copy things to...</li>
-<li>If not found, it will use <code>2sxc-build-fallback.config.json</code> which is located in the root of each repository - this is usually empty.</li>
+<li>If not found, it will use <code>2sxc-build-fallback.config.json</code> which is located in the root of each repository - this is basically empty but should reference these docs.</li>
 </ol>
 <h2 id="use-cases">Use Cases</h2>
-<h3 id="use-case-1-build-a-js-library-copy-manually">Use Case 1: Build a JS Library Copy Manually</h3>
-<p>Let's assume you just got started and want to try something in JS.
-You can just pull the repo, npm-init everything and build.</p>
+<h3 id="use-case-1-build-a-part-and-copy-manually">Use Case 1: Build a Part and Copy Manually</h3>
+<p>Let's assume you just got started and want to try something in partial project.
+You can just pull the repo, npm-ci everything and build.</p>
+<p>As a result you'll have the compiled JS in the <code>dist</code> folder and can manually copy it to folder of any DNN/Oqtane as you wish.</p>
+<h3 id="use-case-2-build-a-js-library-and-copy-to-dnnoqtane-automatically">Use Case 2: Build a JS Library and Copy to DNN/Oqtane Automatically</h3>
+<p>In this scenario you would do the same as above, but in addition to that,
+create a <code>2sxc-build.config.json</code> file in the repo folder with the specs.</p>
+<h3 id="use-case-3-build-everything-automatically">Use Case 3: Build Everything Automatically</h3>
+<p>This is the scenario that the 2sxc team uses to build everything automatically.
+This is our folder structure:</p>
+<ul>
+<li><code>C:\Projects\2sxc</code> the root folder
+<ul>
+<li><code>C:\Projects\2sxc\2sxc-build.config.json</code> - The config file in our root</li>
+<li><code>c:\Projects\2sxc\2sxc-dnn961.dnndev.me\Website</code> - our main DNN installation for verifying DNN 9.6.1</li>
+<li><code>C:\Projects\2sxc\Oqtane\oqtane.framework\Oqtane.Server</code> - our main Oqtane installation for verifying Oqtane 4.x</li>
+<li><code>C:\Projects\2sxc\2sxc</code> - the main 2sxc C# repo</li>
+<li><code>C:\Projects\2sxc\2sxc-ui</code> - the 2sxc JS repo</li>
+<li><code>C:\Projects\2sxc\eav-server</code> - the eav C# repo</li>
+<li><code>C:\Projects\2sxc\eav-ui</code> - the EAV JS parts repo</li>
+<li><code>C:\Projects\2sxc\InstallPackages</code> the location where the final ZIP and NuGets are created</li>
+</ul>
+</li>
+</ul>
+<p>And this is the <code>2sxc-build.config.json</code> mentioned above:</p>
+<pre><code class="lang-json">{
+  &quot;JsTargets&quot;: [
+    &quot;C:/Projects/2sxc/2sxc-dnn/Website/DesktopModules/ToSIC_SexyContent&quot;,
+    &quot;C:/Projects/2sxc/Oqtane/oqtane.framework/Oqtane.Server/wwwroot/Modules/ToSic.Sxc.Oqtane&quot;,
+  ],
+  &quot;DnnTargets&quot;: [
+    &quot;C:/Projects/2sxc/2sxc-dnn961.dnndev.me/Website&quot;,
+  ],
+  &quot;OqtaneTargets&quot;: [
+    &quot;C:/Projects/2sxc/oqtane/oqtane.framework/Oqtane.Server&quot;,
+  ],
+  &quot;Sources&quot;: [
+    &quot;C:/Projects/2sxc/2sxc-sources/_latest&quot;,
+  ],
+  &quot;DnnInstallPackage&quot;: &quot;C:/Projects/2sxc/InstallPackages/Dnn-Installer&quot;,
+  &quot;OqtaneInstallPackage&quot;: &quot;C:/Projects/2sxc/InstallPackages/OqtaneModule&quot;
+}
+</code></pre>
 <hr>
 <h2 id="history">History</h2>
 <ul>
 <li>New in 2023-09 v16.06</li>
 </ul>
+<p>Shortlink: <a href="https://go.2sxc.org/build">https://go.2sxc.org/build</a></p>
 </article>
           </div>
 
