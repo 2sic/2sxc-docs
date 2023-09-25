@@ -117,7 +117,8 @@
             <article class="content wrap" id="_content" data-uid="Abyss.Platforms.Differences">
 <h1 id="platform-differences">Platform Differences</h1>
 
-<p>This is a temporary documentation. We'll try to collect differences in behavior and APIs of all the supported platforms and how to work around limitations of each.</p>
+<p>This is a temporary documentation.
+We'll try to collect differences in behavior and APIs of all the supported platforms and how to work around limitations of each.</p>
 <h2 id="app--file-management">App / File Management</h2>
 <p>👉🏻 See <a class="xref" href="folders.html">Platform Folders</a> for a list of all folders.</p>
 <h2 id="razor-api">Razor API</h2>
@@ -145,7 +146,7 @@
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">⛔</td>
 <td>Dnn only</td>
-<td>Use <code>CmsContext</code>, a bit more limited. For Oqtane features use Dependency Injection.</td>
+<td>Use <code>CmsContext</code>/<code>MyContext</code>, a bit more limited. For Oqtane features use Dependency Injection.</td>
 </tr>
 <tr>
 <td><code>Html.Raw(...)</code></td>
@@ -188,6 +189,13 @@
 <td style="text-align: center;">✅</td>
 <td>2sxc 12</td>
 <td>Use this for cross-platform QueryString params</td>
+</tr>
+<tr>
+<td><code>MyPage.Parameters</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td>2sxc 1y</td>
+<td>requires <code>RazorTyped</code> base class</td>
 </tr>
 </tbody>
 </table>
@@ -232,6 +240,13 @@
 <td>2sxc 11</td>
 <td>Doesn't make sense on .net core, use <code>.cs</code></td>
 </tr>
+<tr>
+<td><code>GetCode(*.cs)</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td>2sxc 16</td>
+<td>works cross-platform, req. <code>RazorTyped</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="sub-view-data">Sub-View Data</h3>
@@ -266,6 +281,13 @@
 <td style="text-align: center;">✅</td>
 <td>2sxc 12</td>
 <td>Works in old &amp; new</td>
+</tr>
+<tr>
+<td><code>MyModel</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td>2sxc 16</td>
+<td>Works in old &amp; new - req. <code>RazorTyped</code></td>
 </tr>
 </tbody>
 </table>
@@ -350,7 +372,6 @@
 <h3 id="not-yet-implemented-features-in-oqtane">Not yet Implemented features in Oqtane</h3>
 <ol>
 <li>CustomizeData / CustomizeSearch are not implemented yet, we're not yet sure how we want to implement this</li>
-<li>RazorBlade feature to change page title or set headers etc. cannot work yet</li>
 </ol>
 <h2 id="webapis">WebAPIs</h2>
 <ol>
@@ -366,11 +387,13 @@ If you need jQuery, activate it using the <a class="xref" href="../../net-code/r
 <p>No relevant differences.
 Note that Oqtane by default uses Bootstrap5 so the output may look a bit different.</p>
 <h2 id="image-resizing">Image Resizing</h2>
-<p>In Oqtane, only ADAM files can use the ImageResizer. Files from the normal file management cannot use it.</p>
+<p>In Oqtane, only ADAM files and App-files can use the ImageResizer.
+Files from the normal file management cannot use it.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Last update 2021-10-25 with regards to 2sxc 12.06 LTS</li>
+<li>RazorBlade feature to change page title or set headers etc. - work in v16.05</li>
 </ul>
 </article>
           </div>

@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-09-13**
+Last Update: **2023-09-25**
 
 ## Currently being developed 2023-Q3
 
@@ -23,7 +23,7 @@ Last Update: **2023-09-13**
 
 also...
 
-1. Rework the UI Selector / DropDown system
+1. Rework the UI **Picker** aka DropDown system
     1. to have titles, help, notes, links, and more @SDV
     1. to also have various data sources
     1. dropdown for numbers etc.

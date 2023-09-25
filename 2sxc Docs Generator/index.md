@@ -59,7 +59,6 @@ These topics are insufficiently documented...
 1. URL and REST API for changing data
 1. Future topics, lower priority
     2. React and 2sxc (todo)
-    4. jQuery with 2sxc (todo)
 1. etc.
 
 
