@@ -45,10 +45,21 @@ If you were using this feature before and must opt-out, you can decompress the h
 UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
 ```
 
+## Query the Json From Compressed
+
+If you need to see the json in SQL for debugging purposes, you can start with the following sample.
+This is just a sample, you'll probably want to add a `WHERE` clause to limit the results:
+
+```sql
+SELECT TOP (1000) *, CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)) as Decompressed
+  FROM [dbo].[ToSIC_EAV_DataTimeline]
+  order by id desc
+```
+
 ---
 
 ## History
 
 1. Added in v15
 
-<!-- Shortlink: <https://go.2sxc.org/lightspeed> -->
+<!-- Shortlink: <https://go.2sxc.org/todo> -->
