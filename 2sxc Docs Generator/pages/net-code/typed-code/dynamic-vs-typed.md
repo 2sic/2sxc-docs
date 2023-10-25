@@ -22,7 +22,7 @@ but they could also come from loops, queries, etc.
 | `dyn.EntityTitle` | `itm.Title` | Title of the item
 | `dyn.Name` | `itm.Get("Name")` <br> `itm.Dyn.Name` | value no matter the type
 | `dyn.Name` | `itm.String("Name")` | string value
-| `dyn.IsPublished` | `itm.Bool("IsPublished")` | boolean value
+| `dyn.IsGreen` | `itm.Bool("IsGreen")` | boolean value
 | `dyn.Birthday` | `itm.DateTime("Birthday")` | date value
 | `(dyn.Birthday as DateTime).Year` | `itm.DateTime("Birthday").Year` | year of a date
 | `dyn.Weight` | `itm.Int("Weight")` | number value
@@ -36,9 +36,11 @@ Property names are case-insensitive, so `dyn.weight` and `itm.Int("WEIGHT")` wil
 > When simply showing data in HTML, the exact type is not super important
 > as the Razor engine will convert it to a string anyway.
 > The differences become much more important when you want to do a bit more in your code.
-> 
+>
 > This is why it's really ok to just do `@itm.Get("FirstName")`.  
 > But `var name = itm.String("FirstName") + " " + itm.String("LastName");` is much better.
+
+TODO: IsDemoItem etc.
 
 ## Show/Output Complex Values
 
