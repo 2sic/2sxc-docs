@@ -13,20 +13,20 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | 2sxc 16 / EAV 16 </title>
+    <title>Typed API Naming Conventions | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Typed API Naming Conventions | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
   
-  <meta property="docfx:rel" content="../../../">
+  <meta property="docfx:rel" content="../../">
   <meta property="docfx:newtab" content="true">
 
     <!-- Enable lightboxes on all images using https://github.com/roel4ez/docfx-lightbox-plugin -->
@@ -52,8 +52,8 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -65,22 +65,22 @@
 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../../../basics/index.html" title="Basics">Basics</a>
+                          <a href="../../basics/index.html" title="Basics">Basics</a>
                       </li>
                       <li>
-                          <a href="../../../abyss/index.html" title="Abyss">Abyss</a>
+                          <a href="../../abyss/index.html" title="Abyss">Abyss</a>
                       </li>
                       <li>
-                          <a href="../../../web-api/index.html" title="Web APIs">Web APIs</a>
+                          <a href="../../web-api/index.html" title="Web APIs">Web APIs</a>
                       </li>
                       <li class="active">
-                          <a href="../../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
+                          <a href="../../net-code/index.html" title="C# &amp; Razor">C# &amp; Razor</a>
                       </li>
                       <li>
-                          <a href="../../../api/dot-net/index.html" title=".net API">.net API</a>
+                          <a href="../../api/dot-net/index.html" title=".net API">.net API</a>
                       </li>
                       <li>
-                          <a href="../../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
+                          <a href="../../js-code/index.html" title="JS &amp; TS API">JS &amp; TS API</a>
                       </li>
                 </ul>            </div>
           </div>
@@ -114,9 +114,72 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
+            <article class="content wrap" id="_content" data-uid="NetCode.TypedCode.Naming">
+<h1 id="typed-api-naming-conventions">Typed API Naming Conventions</h1>
 
-<p>Moving to <a class="xref" href="../../typed-code/index.html">Typed APIs in 2sxc 16+</a></p>
+<p>With the transition to a typed API, we also changed the naming conventions.
+These are the conventions for the new API.</p>
+<h2 id="clear-new-naming-conventions">Clear, new Naming Conventions</h2>
+<ul>
+<li>Anything beginning with <code>My...</code> <em>belongs</em> to the current code and the current context
+<ul>
+<li>MyItem / MyItems / MyHeader</li>
+<li>MyData</li>
+<li>MyModel</li>
+<li>MyContext / MyPage / MyUser / MyView</li>
+</ul>
+</li>
+<li>Objects or methods which are singular are/return a single item
+<ul>
+<li>MyItem / MyHeader</li>
+<li>MyModel.Item(...) / MyModel.Typed(...)</li>
+<li>AsItem(...) / AsTyped(...)</li>
+</ul>
+</li>
+<li>Objects or methods which are plural are/return a list of items
+<ul>
+<li>Items</li>
+<li>MyModel.Items(...) / MyModel.TypedList(...)</li>
+<li>AsItems(...) / AsTypedList(...)</li>
+</ul>
+</li>
+<li>Anything beginning with <code>As...</code> is a helper to convert something to something else
+<ul>
+<li>AsEntity(...)</li>
+<li>AsItem(...) / AsItems(...)</li>
+<li>AsTyped(...) / AsTypedList(...)</li>
+<li>AsStack(..., ..., ...)</li>
+</ul>
+</li>
+<li>Settings and Resources are now better named to ensure clarity
+<ul>
+<li>AllSettings (previously <code>Settings</code>)</li>
+<li>AllResources (previously <code>Resources</code>)</li>
+<li>App.Settings</li>
+<li>App.Resources</li>
+</ul>
+</li>
+</ul>
+<h2 id="naming-api-of-item-objects">Naming API of Item-objects</h2>
+<ul>
+<li>Object of <code>ITypedItem</code> have
+<ul>
+<li>properties such as <code>.Id</code>, <code>.Guid</code>, <code>.Title</code></li>
+<li>methods such as <code>.Get(fieldName)</code> <code>.String(fieldName)</code>, <code>.Bool(fieldName)</code> etc.</li>
+<li>extended methods such as <code>.Html(fieldName)</code>, <code>.Picture(fieldName)</code> etc.</li>
+<li>most methods have additional parameters, such as <code>.Get(fieldName, required: false)</code></li>
+</ul>
+</li>
+<li><code>MyItem</code> and <code>MyHeader</code> are <code>ITypedItem</code>s which wraps a content-object (IEntity)</li>
+<li><code>MyItems</code> is a list of TypedItems (<code>IEnumerable&lt;ITypedItem&gt;</code>)</li>
+<li><code>AsItem(...)</code> will take a IEntity, a DynamicEntity or a List of these and return one <code>ITypedItem</code></li>
+<li><code>AsItems(...)</code> ...</li>
+<li><code>MyModel.Item(...)</code></li>
+<li><code>MyModel.Items(...)</code></li>
+<li><code>someItem.Children(fieldName)</code> + overloads</li>
+<li><code>someItem.Child(fieldName)</code> + overloads</li>
+<li><code>someItem.Parents(type: typeName, field: fieldName)</code> + overloads</li>
+</ul>
 </article>
           </div>
 
@@ -125,7 +188,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/razor/typed/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/naming.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -152,20 +215,20 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
 
     <!-- override the built-in highlightjs with a newer version -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="../../../styles/cshtml-razor.js"></script>
+    <script src="../../styles/cshtml-razor.js"></script>
     <script>
         hljs.registerLanguage('cshtml-razor', window.hljsDefineCshtmlRazor);
         hljs.highlightAll();
     </script>
 
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../styles/2sxc-scripts.js"></script>
+    <script type="text/javascript" src="../../styles/2sxc-scripts.js"></script>
 
     <!-- fancybox -->
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>

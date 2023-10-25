@@ -113,15 +113,20 @@
 <p>This guide will help you get VS Code Setup as best as possible for 2sxc development.</p>
 <h2 id="background">Background</h2>
 <p>You'll often write code in your 2sxc Apps - either as C#/Razor or JavaScript.
-For this you will need an editor.
 2sxc is a very open system, so you can use any editor you like.
-For quick fixes and simple things, you can also use the built-in editor, which is based on Monaco (VS Code Online).
-But for more sophisticated stuff we currently recommend VS Code.</p>
+For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
+But for more sophisticated stuff we recommend VS Code.</p>
 <h2 id="prepare-vs-code-for-2sxc">Prepare VS Code for 2sxc</h2>
 <p>VSCode is amazing right out of the box, but to really be productive, you need to do a few things:</p>
 <ol>
 <li>Install VS Code</li>
 <li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit">C# DevKit extensions</a></li>
+<li>Configure each App with
+<ol>
+<li>Intellisense (see below)</li>
+<li>Ignore the <code>obj</code> and <code>.vs</code> folders (see below)</li>
+</ol>
+</li>
 </ol>
 <p>With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.</p>
@@ -167,6 +172,11 @@ EndProject
 But be aware that it can't help with <code>dynamic</code> code.
 To get the full benefit, use <a class="xref" href="../../net-code/typed-code/index.html">typed code</a>.</p>
 </div>
+<h2 id="gitignore-temporary-folders">GitIgnore Temporary Folders</h2>
+<p>Add these lines to your <code>.gitignore</code> file to prevent temporary files from being added to your repository:</p>
+<pre><code class="lang-text">.vs/
+obj/
+</code></pre>
 <h2 id="configure-an-app-for-javascript-intellisense">Configure an App for JavaScript IntelliSense</h2>
 <p>TODO: this is not yet documented</p>
 <hr>

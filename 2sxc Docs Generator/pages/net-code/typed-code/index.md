@@ -2,37 +2,57 @@
 uid: NetCode.TypedCode.Index
 ---
 
-# Typed Code in 2sxc 16+
+# Typed APIs in 2sxc 16+
 
-Before 2sxc 16, the code was very dynamic.
-This looked neat (eg. `<div>@Content.Title</div>`) but relied on dynamic objects which were hard to debug.
-2sxc 16 introduces the new **Typed Mode** which is much more robust and easier to debug.
+**Typed Mode** is a new way to write C# and Razor code in 2sxc 16+.
+It is much more robust and easier to debug than the classic _dynamic_ code.
 
-These docs should help you work with typed code.
+## What does Typed Mode Look Like?
+
+```razor
+@inherits Custom.Hybrid.RazorTyped
+<h1>@MyItem.String("Title")</h1>
+<div>
+  @MyItem.Picture("Screenshot")
+  @MyItem.Html("Description")
+</div>
+```
 
 > [!IMPORTANT]
-> You'll often see older code which is _dynamic_.
-> The API is quite different, so be aware of this as you copy any old snippets.
+> Older code is _dynamic_.
+> The API is quite different, so if you copy old snippets you'll probably need to refactor it.
 
-## Activating Typed Mode
 
-Dynamic and Typed code can get along in the same app.
+## Major Differences
+
+1. The compiler can detect many more issues in typed mode
+1. If your code isn't correct, you will get much better errors in typed mode
+1. Accessing invalid properties will throw an error in typed mode (eg. `MyItem.String("InvalidProperty")` will throw, but `Content.InvalidProperty` will not)
+1. Typed code works much better with LINQ, so `MyItem.Children("Authors").Count()` will just work (in dynamic mode you'd need to cast it to `IEnumerable<dynamic>` first)
+
+
+## Activate Typed Mode
+
+Dynamic and Typed code can coexist in the same app.
 Each Razor / C# file can decide which mode it wants to use.
+To be in typed mode, your Razor/C# must inherit from a typed base class like this:
 
-To be in typed mode, your code must inherit from a Typed base class.
-This is what you should see in your file to ensure you're in typed mode:
+* Razor files should begin with:  
+  `@inherits Custom.Hybrid.RazorTyped`
+* C# files should have something like:  
+  `public class YourClassName : Custom.Hybrid.CodeTyped`
+* WebApi files should be like:  
+  `public class YourControllerName : Custom.Hybrid.ApiTyped`
 
-* Razor files should begin with: `@inherits Custom.Hybrid.RazorTyped`
-* C# files should have something like `public class YourClassName : Custom.Hybrid.CodeTyped`
-* WebApi files be like `public class YourControllerName : Custom.Hybrid.ApiTyped`
-
-> [!IMPORTANT]
-> Changing the base class will completely change the API you have available.
+> [!TIP]
+> Changing the base class will completely change the APIs you have available.
 
 ## Configure Visual Studio Code for IntelliSense
 
 Now that everything is typed, we highly recommend you setup VSCode to provide IntelliSense.
 
 👉 Check out the [VS Code Setup Docs](xref:Guides.VsCode.Index)
+
+
 
 ---

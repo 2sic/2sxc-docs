@@ -9,10 +9,9 @@ This guide will help you get VS Code Setup as best as possible for 2sxc developm
 ## Background
 
 You'll often write code in your 2sxc Apps - either as C#/Razor or JavaScript.
-For this you will need an editor.
 2sxc is a very open system, so you can use any editor you like.
-For quick fixes and simple things, you can also use the built-in editor, which is based on Monaco (VS Code Online).
-But for more sophisticated stuff we currently recommend VS Code.
+For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
+But for more sophisticated stuff we recommend VS Code.
 
 ## Prepare VS Code for 2sxc
 
@@ -20,6 +19,9 @@ VSCode is amazing right out of the box, but to really be productive, you need to
 
 1. Install VS Code
 1. Install the [C# DevKit extensions](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+1. Configure each App with
+    1. Intellisense (see below)
+    1. Ignore the `obj` and `.vs` folders (see below)
 
 With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.
@@ -73,6 +75,17 @@ EndProject
 > Adding these files helps VSCode provide IntelliSense.
 > But be aware that it can't help with `dynamic` code.
 > To get the full benefit, use [typed code](xref:NetCode.TypedCode.Index).
+
+
+## GitIgnore Temporary Folders
+
+Add these lines to your `.gitignore` file to prevent temporary files from being added to your repository:
+
+```text
+.vs/
+obj/
+```
+
 
 ## Configure an App for JavaScript IntelliSense
 
