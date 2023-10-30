@@ -219,7 +219,6 @@
 <style>  .context-box-summary .image-resizer    { visibility: visible; } </style>
 <p>2sxc has an awesome Image Resizer built in.</p>
 <p>It's really easy to use - just add url parameters to the image. So instead of <code>img.jpg</code> add <code>img.jpg?w=200</code> to resize it to 200px width.</p>
-<p>Internally it uses the amazing <a href="https://www.imageflow.io/">ImageFlow</a> which has the same URL setup as the previous <a href="https://imageresizing.net/">ImageResizer.net</a>.</p>
 <h2 id="how-to-use">How to Use</h2>
 <p>You can learn about the url parameters in the <a class="xref" href="https://2sxc.org/learn-extensions/ImageResizer">Image Resizer URL Parameters</a></p>
 <p>But normally you won't use them directly, because it's better to use APIs which will set these parameters for you.
@@ -230,6 +229,150 @@ Your best options are:</p>
 </ol>
 <p>In most scenarios you will prefer the <code>IImageService</code>.
 In cases where you need exactly 1 url (like in <code>background-url</code> CSS) you will probably use the <code>Link.Image(...)</code>.</p>
+<h2 id="how-it-works">How it Works</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is just additional info in case you run into problems and need to dig deeper.</p>
+</div>
+<p>The image resizer is built into 2sxc 13+ and uses the amazing <a href="https://www.imageflow.io/">ImageFlow</a> library (previously <a href="https://imageresizing.net/">ImageResizer.net</a>).
+It's installed automatically by 2sxc but it can also be installed standalone (<a href="https://github.com/2sic/dnn-imageflow">Dnn</a> / <a href="https://github.com/2sic/oqtane-imageflow">Oqtane</a>).</p>
+<h3 id="imageflow-setup-in-dnn">ImageFlow Setup in DNN</h3>
+<p>In DNN the DLLs are located in:</p>
+<ul>
+<li><code>[root]/bin/ToSic.Imageflow.Dnn.dll</code></li>
+<li><code>[root]/bin/Imageflow.Net.dll</code></li>
+<li><code>[root]/bin/Imazen.Common.dll</code></li>
+<li><code>[root]/bin/Imazen.HybridCache.dll</code></li>
+<li><code>[root]/bin/Newtonsoft.Json.dll</code> - ATM part of DNN, but also used by ImageFlow in current version</li>
+<li><code>[root]/bin/System.Text.Json.dll</code> - ATM part of 2sxc, and not used by ImageFlow, but will be used in future versions</li>
+<li><code>[root]/bin/ImageFlow/*.dll</code> - ca. 12 Microsoft DLLs with specific versions for ImageFlow<br>
+They are located in this folder as they would sometimes create version conflicts with other DLLs in DNN</li>
+</ul>
+<p>The <code>web.config</code> must be updated, which happens automatically.
+It will:</p>
+<ul>
+<li>enable url-handling of image files (eg. <code>.jpg</code> should be handled)</li>
+<li>register all the Microsoft DLLs in the <code>ImageFlow</code> folder so they are available for exactly this version</li>
+</ul>
+<p>The <code>web.config</code> changes look like this (v16.07):</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+  &lt;!-- other stuff --&gt;
+  &lt;system.webServer&gt;
+    &lt;!-- other stuff --&gt;
+    &lt;modules&gt;
+      &lt;!-- other stuff --&gt;
+      &lt;add name=&quot;ImageflowModule&quot; type=&quot;ToSic.Imageflow.Dnn.ImageflowModule, ToSic.Imageflow.Dnn&quot; /&gt;
+    &lt;/modules&gt;
+  &lt;/system.webServer&gt;
+  &lt;!-- other stuff --&gt;
+  &lt;runtime&gt;
+    &lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+      &lt;!-- other stuff --&gt;
+
+      &lt;!-- Register all Microsoft/System DLLs necessary for ImageFlow so they are available for exactly this version --&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;System.Buffers&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-4.0.3.0&quot; newVersion=&quot;4.0.3.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;4.0.3.0&quot; href=&quot;bin\Imageflow\System.Buffers.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;4.0.3.1-32767.32767.32767.32767&quot; newVersion=&quot;4.0.3.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;2.2.0.0-32767.32767.32767.32767&quot; newVersion=&quot;2.2.0.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-2.1.1.0&quot; newVersion=&quot;2.1.1.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Logging.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;2.2.0.0-32767.32767.32767.32767&quot; newVersion=&quot;2.2.0.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Logging.Abstractions.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-2.1.1.0&quot; newVersion=&quot;2.1.1.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Primitives&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;2.2.0.0-32767.32767.32767.32767&quot; newVersion=&quot;2.2.0.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Primitives.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-2.1.1.0&quot; newVersion=&quot;2.1.1.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;System.Memory&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;4.0.1.2&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;System.Numerics.Vectors&quot; publicKeyToken=&quot;b03f5f7f11d50a3a&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-4.1.3.0&quot; newVersion=&quot;4.1.3.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;4.1.3.0&quot; href=&quot;bin\Imageflow\System.Numerics.Vectors.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;4.1.3.1-32767.32767.32767.32767&quot; newVersion=&quot;4.1.4.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;System.Runtime.CompilerServices.Unsafe&quot; publicKeyToken=&quot;b03f5f7f11d50a3a&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-4.0.4.1&quot; newVersion=&quot;4.0.4.1&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;codeBase version=&quot;4.0.4.1&quot; href=&quot;bin\Imageflow\System.Runtime.CompilerServices.Unsafe.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+        &lt;bindingRedirect oldVersion=&quot;4.0.4.2-32767.32767.32767.32767&quot; newVersion=&quot;6.0.0.0&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.DependencyInjection.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.DependencyInjection.Abstractions.dll&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.DependencyInjection&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.DependencyInjection.dll&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.FileProviders.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.FileProviders.Abstractions.dll&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Hosting.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+        &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Hosting.Abstractions.dll&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+      &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+        &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
+        &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
+      &lt;/dependentAssembly&gt;
+    &lt;/assemblyBinding&gt;
+  &lt;/runtime&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h3 id="imageflow-setup-in-oqtane">ImageFlow Setup in Oqtane</h3>
+<p>In Oqtane they are all located in the main <code>bin</code> folder.</p>
+<ul>
+<li>for development it's in <code>[root]/bin/Debug/.net7.0/</code> (or <code>.net8.0</code> for Oqtane 5)</li>
+<li>for production it's in <code>[root]/</code> (the main folder of Oqtane)</li>
+</ul>
+<p>Oqtane does not need <code>web.config</code> changes.
+The URL handling is activated using the <code>IServerStartup</code> interface
+as seen in this <a href="https://github.com/2sic/oqtane-imageflow/blob/ac4f70229247fdba6b0037891aa353810bc40eda/Src/Server/Startup.cs">code</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Usually the image resizer just works, but if you run into problems, here are some tips.</p>
+<h3 id="first-make-sure-imageflow-is-used">First: Make Sure ImageFlow is Used</h3>
+<p>To start you may need to find out if ImageFlow is used at all, or if something else is handling the images.</p>
+<ul>
+<li>check if there is something else that could handle images registered in the <code>web.config</code>
+<ul>
+<li>it's quite common to still have some ImageResizer.net entries there</li>
+</ul>
+</li>
+<li>check if you have a folder for the cached images and if it gets new files as you try different resize combinations (eg <code>?w=1000</code> v <code>?w=1001</code>)
+<ul>
+<li>in DNN / Oqtane check the folder <code>[root]/App_Data/imageflow_hybrid_cache</code></li>
+</ul>
+</li>
+<li>an indication we found is to check the response headers with F12 loading an image - we found the following difference
+<ul>
+<li>we believe that if ImageFlow is used, it seems to return an <code>ETAG</code> header without quotes, eg: <code>ETAG: ybLeicE_NA97ZbYIyeURwOcFAn77bg45utBbtzOzgB0</code></li>
+<li>we believe that IIS returns an <code>ETAG</code> with quotes eg. <code>ETAG: &quot;54fa36c88844d41:0&quot;</code></li>
+</ul>
+</li>
+</ul>
+<p>Also check your log files.</p>
+<p>If you believe that ImageFlow isn't being used, the try to fix that first. Suggestions:</p>
+<ul>
+<li>install ImageFlow by itself from the git repos (<a href="https://github.com/2sic/dnn-imageflow">Dnn</a> / <a href="https://github.com/2sic/oqtane-imageflow">Oqtane</a>)</li>
+<li>compare a brand new system with 2sxc which it works with the broken setup</li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ol>
@@ -237,7 +380,8 @@ In cases where you need exactly 1 url (like in <code>background-url</code> CSS) 
 <li>Special Razor API to create links called <a class="xref" href="../../net-code/dynamic-code/objects/link.image.html">Link.Image</a> introduced in 12.04</li>
 <li>Introduced <a href="https://www.imageflow.io/">ImageFlow</a> in v12 for Oqtane</li>
 <li>Switched to <a href="https://www.imageflow.io/">ImageFlow</a> in 13.0 for both Dnn and Oqtane</li>
-<li>Introducing <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> in 13.05 beta, to be released in 13.10</li>
+<li>Introducing <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> in 13.05 beta, released in 13.10</li>
+<li>Improved docs for DLLs etc. 2023-10</li>
 </ol>
 <p>Shortlink: <a href="https://go.2sxc.org/resize">https://go.2sxc.org/resize</a></p>
 </article>
