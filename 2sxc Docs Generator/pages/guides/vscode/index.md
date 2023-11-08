@@ -91,6 +91,10 @@ obj/
 
 TODO: this is not yet documented
 
+## Other Guides
+
+* [Very helpful guide by Accuraty](https://www.accu4.com/H2R2S/VS-Code-IntelliSense)
+
 ---
 
 ## History
