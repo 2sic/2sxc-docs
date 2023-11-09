@@ -22,6 +22,7 @@ VSCode is amazing right out of the box, but to really be productive, you need to
 1. Configure each App with
     1. Intellisense (see below)
     1. Ignore the `obj` and `.vs` folders (see below)
+1. Check possible edge cases (see below)
 
 With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.
@@ -85,6 +86,29 @@ Add these lines to your `.gitignore` file to prevent temporary files from being 
 .vs/
 obj/
 ```
+
+## Check for Edge Cases - DNN with .net 4.7.2 / 4.8
+
+If you're using DNN with .net 4.7.2 or 4.8, you may have to do some extra work.
+We're still not 100% sure what this is, since our dev PCs are always setup with all kinds of build tools where it works.
+According to research by [Accuraty](https://www.accu4.com/H2R2S/VS-Code-IntelliSense)
+you may need to follow the instructions as noted on the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
+
+The **C#** extension is auto-installed by the Dev-Kit, but there is this (quoted):
+
+> [!NOTE]
+> Note: If working on a solution that requires versions prior to .NET 6 or non-solution based projects, install a .NET Framework runtime and MSBuild tooling.
+>
+> * Set omnisharp.useModernNet to false and set dotnet.server.useOmnisharp to true
+> * Uninstall or disable C# Dev Kit **we're not sure if this is correct any more!**
+> * Windows: .NET Framework along with MSBuild Tools
+> * MacOS/Linux: Mono with MSBuild
+
+According to our current understanding you don't need to do this is you have Visual Studio 2022 installed.
+We assume that already includes all the bits which VS Code needs as well.
+
+We haven't been able to verify or simplify this, but if you're having trouble,
+do read the blog post by [Accuraty](https://www.accu4.com/H2R2S/VS-Code-IntelliSense) as well.
 
 
 ## Configure an App for JavaScript IntelliSense

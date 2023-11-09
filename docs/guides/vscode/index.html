@@ -127,6 +127,7 @@ But for more sophisticated stuff we recommend VS Code.</p>
 <li>Ignore the <code>obj</code> and <code>.vs</code> folders (see below)</li>
 </ol>
 </li>
+<li>Check possible edge cases (see below)</li>
 </ol>
 <p>With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.</p>
@@ -177,8 +178,32 @@ To get the full benefit, use <a class="xref" href="../../net-code/typed-code/ind
 <pre><code class="lang-text">.vs/
 obj/
 </code></pre>
+<h2 id="check-for-edge-cases---dnn-with-net-472--48">Check for Edge Cases - DNN with .net 4.7.2 / 4.8</h2>
+<p>If you're using DNN with .net 4.7.2 or 4.8, you may have to do some extra work.
+We're still not 100% sure what this is, since our dev PCs are always setup with all kinds of build tools where it works.
+According to research by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Accuraty</a>
+you may need to follow the instructions as noted on the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">C# extension</a>.</p>
+<p>The <strong>C#</strong> extension is auto-installed by the Dev-Kit, but there is this (quoted):</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Note: If working on a solution that requires versions prior to .NET 6 or non-solution based projects, install a .NET Framework runtime and MSBuild tooling.</p>
+<ul>
+<li>Set omnisharp.useModernNet to false and set dotnet.server.useOmnisharp to true</li>
+<li>Uninstall or disable C# Dev Kit <strong>we're not sure if this is correct any more!</strong></li>
+<li>Windows: .NET Framework along with MSBuild Tools</li>
+<li>MacOS/Linux: Mono with MSBuild</li>
+</ul>
+</div>
+<p>According to our current understanding you don't need to do this is you have Visual Studio 2022 installed.
+We assume that already includes all the bits which VS Code needs as well.</p>
+<p>We haven't been able to verify or simplify this, but if you're having trouble,
+do read the blog post by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Accuraty</a> as well.</p>
 <h2 id="configure-an-app-for-javascript-intellisense">Configure an App for JavaScript IntelliSense</h2>
 <p>TODO: this is not yet documented</p>
+<h2 id="other-guides">Other Guides</h2>
+<ul>
+<li><a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Very helpful guide by Accuraty</a></li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ul>
