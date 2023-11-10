@@ -72,7 +72,18 @@ Most common version of inherit (inherits all metadata of a shared field, nothing
 }
 ```
 
-Future: Complex Metadata inheritance
+#### WIP - Preserve minimal features of own Metadata
+
+Prototyping...
+
+```jsonc
+{
+  "InheritMetadataOf": "00000000-0000-0000-0000-000000000000/@All/Name,0fc6d925-77df-4ccc-80dd-5d9ddaf003c9",
+}
+```
+
+
+#### Future: Complex Metadata inheritance
 
 ```jsonc
 {
