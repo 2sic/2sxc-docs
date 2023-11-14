@@ -25,27 +25,24 @@ C# 7 was once installed by default, but was reset to **include but not auto-inst
 <!-- <script src="https://cdn.azing.org/e/1/embed.js"></script> -->
 
 
-
-
-
 ## Preinstalled System Capabilities
 
-The following are always available in every supported DNN:
+The following are always available in every Dnn:
 
 * `SystemCapability-NetFramework`
 * `SystemCapability-Razor`
 * `SystemCapability-CSharp05`
 
-## Currently Unavailable System Capabilities
+## Unavailable System Capabilities
 
 The following are listed just to clarify that they currently don't exist in DNN and
 probably cannot be added in any feasible way.
 
-* `SystemCapability-CSharp08`
-* `SystemCapability-CSharp09`
-* `SystemCapability-CSharp10`
-* `SystemCapability-CSharp11` .net 7
-* `SystemCapability-CSharp12` .net 8
+* `SystemCapability-CSharp08` .net 3 (core)
+* `SystemCapability-CSharp09` .net 5 (core)
+* `SystemCapability-CSharp10` .net 6 (core)
+* `SystemCapability-CSharp11` .net 7 (core)
+* `SystemCapability-CSharp12` .net 8 (core)
 * `SystemCapability-NetCore` Dnn is .net Framework only as of now
 * `SystemCapability-Blazor` requires .net Core v3+; works in Oqtane
 
