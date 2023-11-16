@@ -1,5 +1,5 @@
 ---
-uid: Abyss.Platforms.Oqtane.SystemCapabilities
+uid: Abyss.Platforms.Oqtane.SystemFeatures
 ---
 
 # Oqtane System Capabilities
