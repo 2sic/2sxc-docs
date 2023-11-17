@@ -347,6 +347,14 @@ The URL handling is activated using the <code>IServerStartup</code> interface
 as seen in this <a href="https://github.com/2sic/oqtane-imageflow/blob/ac4f70229247fdba6b0037891aa353810bc40eda/Src/Server/Startup.cs">code</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>Usually the image resizer just works, but if you run into problems, here are some tips.</p>
+<h3 id="new-servers-make-sure-visual-c-redistributable-is-installed">New Servers: Make sure Visual C++ Redistributable is Installed</h3>
+<p>The Imageflow library is built with a mixture of Rust and C and requires the Visual C++ runtime to run.
+These runtime libraries are usually pre-installed, as they are a common dependency for a lot of software.
+However, they are missing on newer Windows Server Core, so this is a common issue.</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">Microsoft docs</a></li>
+<li><a href="https://aka.ms/vs/16/release/vc_redist.x64.exe">Direct Download VC 16 Redistributables</a></li>
+</ul>
 <h3 id="first-make-sure-imageflow-is-used">First: Make Sure ImageFlow is Used</h3>
 <p>To start you may need to find out if ImageFlow is used at all, or if something else is handling the images.</p>
 <ul>

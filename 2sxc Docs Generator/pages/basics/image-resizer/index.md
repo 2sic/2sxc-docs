@@ -158,6 +158,15 @@ as seen in this [code](https://github.com/2sic/oqtane-imageflow/blob/ac4f7022924
 
 Usually the image resizer just works, but if you run into problems, here are some tips.
 
+### New Servers: Make sure Visual C++ Redistributable is Installed
+
+The Imageflow library is built with a mixture of Rust and C and requires the Visual C++ runtime to run.
+These runtime libraries are usually pre-installed, as they are a common dependency for a lot of software.
+However, they are missing on newer Windows Server Core, so this is a common issue.
+
+* [Microsoft docs](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+* [Direct Download VC 16 Redistributables](https://aka.ms/vs/16/release/vc_redist.x64.exe)
+
 ### First: Make Sure ImageFlow is Used
 
 To start you may need to find out if ImageFlow is used at all, or if something else is handling the images.
