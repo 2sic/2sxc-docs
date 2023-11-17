@@ -32,6 +32,7 @@ we created on installing Oqtane and 2sxc.
 | 3.3+      | latest  | ✅ 15.05+           | ⛔ pre 15.04            | Breaking changes in Permissions
 | 3.4+      | latest  | ✅ 15.06+           | ⛔ pre 15.06            | Undo breaking changes in Permissions
 | 4.0+      | 16.02+  | ✅ 16.02+           | ⛔ pre 16.02            | .net Framework and EF 7
+| 5.0+      | 16.08+  | none yet, tbr soon  | all current versions    | Should be released soon, .net 8 differences in System.Text.Json
 
 ## Upgrade Existing Installations
 

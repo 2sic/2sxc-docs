@@ -13,7 +13,7 @@ To find out how to add features, check the section of your platform:
 * 🩸 [Oqtane](xref:Abyss.Platforms.Oqtane.SystemFeatures)
 
 
-## Configure Apps to Require / Not Require Features
+## Alternative: Configure Apps to not Request said Features
 
 You probably arrived here because an App you installed requires a feature which is not installed.
 
