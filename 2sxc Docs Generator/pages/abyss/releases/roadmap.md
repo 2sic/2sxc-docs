@@ -13,23 +13,22 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 
 Last Update: **2023-11-10**
 
-## Currently being developed 2023-Q4
+## About to release v16.09 2023-11-22
+
+
+## Currently being developed v17 2023-Q4
 
 1. ✅ Show app icon in admin UI
-1. ✅ `TypedItem.Picture("Child.Property")` path notation
-1. ✅ fix js minification of `inpage.min.js`
 1. ✅ Completely refactor internal APIs to do advanced work and save data
 1. ⌛ Change UI to use Angular 16 (from Angular 14)
 1. ⌛ Document new ~~Pro~~ Typed mode
-1. ✅ Release all apps in the new typed mode
 1. ✅ Ability to share field configurations
     1. ⌛ Custom config inherit from multiple sources or keeping the Label
 1. ✅ Ability to change input config types/metadata - eg. skip `@String` when never needed
-1. ✅ Blazor .net 8 / Oqtane 5 support
 1. Get intellisense to work in VS Code
 1. ⌛ Support C# 7.3 in DNN with warning if not installed
 1. ✅ System Capabilities Framework for tagging apps which need certain technologies/features
-1. Experiment with Mobius Form Builder
+1. ⌛ Experiment with Mobius Form Builder
 
 1. Improve CSP in Oqtane 4
 1. Create a User service to get more user data
