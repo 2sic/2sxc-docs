@@ -1,20 +1,24 @@
 // Activate featherlite for quick lightboxes
 $(document).ready(function() {
-    //find all images, but not the logo, and add the lightbox
-    $('img').not('#logo').not('.for-link').each(function() {
-      var $img = $(this);
-      // debug
-      console.log('img', $img);
-      var filename = $img.attr('src')
-      //add cursor
-      $img.css('cursor','zoom-in');
-      $img.css('cursor','-moz-zoom-in');
-      $img.css('cursor','-webkit-zoom-in');
+  //find all images, but not the logo, and add the lightbox
+  $('img').not('#logo').not('.for-link').each(function() {
+    var $img = $(this);
+    // debug
+    console.log('img', $img);
+    var filename = $img.attr('src')
+    //add cursor
+    $img.css('cursor','zoom-in');
+    $img.css('cursor','-moz-zoom-in');
+    $img.css('cursor','-webkit-zoom-in');
 
-      //add featherlight
-      $img.attr('alt', filename);
-      $img.featherlight(filename);
+    //add featherlight
+    $img.attr('alt', filename);
+    $img.featherlight(filename);
   });
+
+  // attach current link to the version box
+  const vButton = $('.version-button');
+  vButton.attr('href', vButton.attr('href') + '?version=16.09&path=' + window.location.pathname);
 });
 
 // Fancybox
