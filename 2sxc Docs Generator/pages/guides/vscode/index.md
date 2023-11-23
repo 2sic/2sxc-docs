@@ -68,6 +68,23 @@ EndProject
   <ItemGroup>
     <!-- Tell Visual Studio & VSCode to respect all ToSic.* DLLs in the root bin folder -->
     <Reference Include="..\..\..\..\bin\ToSic.*.dll" />
+
+    <!-- also add DotNetNuke DLLs - we don't recommend this, because then your code will never be hybrid -->
+    <!-- <Reference Include="..\..\..\..\bin\DotNetNuke.*.dll" /> -->
+  </ItemGroup>
+
+  <!-- Polymorphism
+    If you're working with Polymorphism then you have many of the same files, which confuses Intellisense eg.
+    - /live and /staging have the same files
+    - /bs3 /bs4 / bs5 have the same files
+    The following is meant to exclude some of these folders from intellisense
+  -->
+  <!-- Example: exclude /live as we're always working on /staging -->
+  <ItemGroup>
+    <None Remove="live\**" />
+    <Content Remove="live\**" />
+    <Compile Remove="live\**" />
+    <EmbeddedResource Remove="live\**" />
   </ItemGroup>
 </Project>
 ```
