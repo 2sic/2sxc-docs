@@ -11,21 +11,22 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-11-10**
-
-## About to release v16.09 2023-11-22
-
+Last Update: **2023-11-23**
 
 ## Currently being developed v17 2023-Q4
 
+1. ✅ Docs infrastructure can now be multi-versioned
 1. ✅ Show app icon in admin UI
 1. ✅ Completely refactor internal APIs to do advanced work and save data
-1. ⌛ Change UI to use Angular 16 (from Angular 14)
+1. ✅ Change UI to use Angular 16 (from Angular 14)
 1. ⌛ Document new ~~Pro~~ Typed mode
 1. ✅ Ability to share field configurations
     1. ⌛ Custom config inherit from multiple sources or keeping the Label
 1. ✅ Ability to change input config types/metadata - eg. skip `@String` when never needed
-1. Get intellisense to work in VS Code
+1. ⌛ Get intellisense to work in VS Code
+    1. ⌛ Work out best way to do this in VS Code
+    1. ⌛ Work out best way to hide non-public APIs
+    1. ⌛ Work out best way to include docs (xml files, nuget, etc.)
 1. ⌛ Support C# 7.3 in DNN with warning if not installed
 1. ✅ System Capabilities Framework for tagging apps which need certain technologies/features
 1. ⌛ Experiment with Mobius Form Builder
