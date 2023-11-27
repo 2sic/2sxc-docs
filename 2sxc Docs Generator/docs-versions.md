@@ -30,6 +30,15 @@ but future releases will start creating separated documentations.
 
 ## Previous Documentation Versions
 
+
+### Archive v16.09
+
+* [Docs v16 Home](https://v16.docs.2sxc.org)
+* <script>document.write('<a target="_blank" href="https://v16.docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
+
+
+### Older Versions
+
 _as of now there are no previous documentation versions_
 
 ---
