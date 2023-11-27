@@ -7,7 +7,7 @@
   var path = urlParams.get('path');
 </script>
 
-# 2sxc Documentation Versions
+# 2sxc Docs Version Hub
 
 This page is a hub to all the documentation versions.
 It should help users find older/newer versions of the documentation.
@@ -23,12 +23,12 @@ but future releases will start creating separated documentations.
 > ...this path may or may not exist in other versions
 
 
-## Latest Documentation
+## Latest Docs
 
 * [Docs Home](https://docs.2sxc.org)
 * <script>document.write('<a target="_blank" href="https://docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
 
-## Previous Documentation Versions
+## Previous Versions
 
 
 ### Archive v16.09
@@ -39,7 +39,7 @@ but future releases will start creating separated documentations.
 
 ### Older Versions
 
-_as of now there are no previous documentation versions_
+_as of now there are no older documentation versions_
 
 ---
 
