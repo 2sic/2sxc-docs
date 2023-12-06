@@ -3,17 +3,55 @@ uid: NetCode.Conventions.NamedParameters
 ---
 # Convention: Named Parameters
 
-When working with the C# / Razor API, most commands require named parameters. This means that a command like this is valid
+When working with the C# / Razor API, _advanced/optional parameters_ must be **named**.
 
-```cs
+> [!TIP]
+> A named parameter is determined by it's name (eg `settings:`),  
+> like `SomeMethod(settings: someValue)`  
+> vs. a positional parameter which is specified by the position in the list of arguments,  
+> like `SomeMethod(someValue)`.
+
+## Example
+
+```razor
+@inherits Custom.Hybrid.RazorTyped
+
+@* this is a command without named parameters - all works *@
+@MyItem.Picture("Packshot")
+
+@* this is a command with named parameters for more advanced settings *@
+@MyItem.Picture("Packshot", settings: "Lightbox")
+
+@* this is a command with named parameters for exact width control *@
+@MyItem.Picture("Packshot", width: 500)
+
+@* An example using both parameters in any order *@
+@MyItem.Picture("Packshot", settings: "Lightbox", width: 500)
+@MyItem.Picture("Packshot", width: 500, settings: "Lightbox")
+```
+
+The previous example shows
+
+1. A Razor inheriting from `Custom.Hybrid.RazorTyped` to enable the new `MyItem.Picture(...)` API
+1. A add-picture with only the basic parameter. This doesn't need the name as the position (first parameter) makes it clear that `Packshot` is the field containing the picture
+1. A more advanced use case where the picture uses `settings: "Lightbox"` (this must be named with `settings: ...`)
+1. Another use case where the picture uses `width: 500` (named with `width: ...`)
+1. Two more examples specifying multiple parameters - showing that the order is not important since we have the names
+
+As you can see in the `settings:` and `width:` example, both of these parameters are on the second position.
+If they were not named, the API wouldn't know if `500` or `Lightbox` was a width, setting or anything else.
+
+## Example using Toolbars
+
+This means that a command like this is valid
+
+```html
+<!-- valid -->
 <div @Edit.TagToolbar(actions: "new", contentType: "BlogPost")>
   ...
 </div>
-```
 
-...and this is not
-
-```cs
+<!-- not valid -->
 <div @Edit.TagToolbar("new", "BlogPost")>
   ...
 </div>

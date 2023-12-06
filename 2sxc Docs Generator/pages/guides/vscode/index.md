@@ -70,7 +70,10 @@ EndProject
     <Reference Include="..\..\..\..\bin\ToSic.*.dll" />
 
     <!-- also add DotNetNuke DLLs - we don't recommend this, because then your code will never be hybrid -->
-    <!-- <Reference Include="..\..\..\..\bin\DotNetNuke.*.dll" /> -->
+    <!--
+    <Reference Include="..\..\..\..\bin\DotNetNuke.dll" />
+    <Reference Include="..\..\..\..\bin\DotNetNuke.*.dll" />
+    -->
   </ItemGroup>
 
   <!-- Polymorphism

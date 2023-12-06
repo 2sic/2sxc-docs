@@ -122,13 +122,49 @@
             <article class="content wrap" id="_content" data-uid="NetCode.Conventions.NamedParameters">
 <h1 id="convention-named-parameters">Convention: Named Parameters</h1>
 
-<p>When working with the C# / Razor API, most commands require named parameters. This means that a command like this is valid</p>
-<pre><code class="lang-cs">&lt;div @Edit.TagToolbar(actions: &quot;new&quot;, contentType: &quot;BlogPost&quot;)&gt;
+<p>When working with the C# / Razor API, <em>advanced/optional parameters</em> must be <strong>named</strong>.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>A named parameter is determined by it's name (eg <code>settings:</code>),<br>
+like <code>SomeMethod(settings: someValue)</code><br>
+vs. a positional parameter which is specified by the position in the list of arguments,<br>
+like <code>SomeMethod(someValue)</code>.</p>
+</div>
+<h2 id="example">Example</h2>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+
+@* this is a command without named parameters - all works *@
+@MyItem.Picture(&quot;Packshot&quot;)
+
+@* this is a command with named parameters for more advanced settings *@
+@MyItem.Picture(&quot;Packshot&quot;, settings: &quot;Lightbox&quot;)
+
+@* this is a command with named parameters for exact width control *@
+@MyItem.Picture(&quot;Packshot&quot;, width: 500)
+
+@* An example using both parameters in any order *@
+@MyItem.Picture(&quot;Packshot&quot;, settings: &quot;Lightbox&quot;, width: 500)
+@MyItem.Picture(&quot;Packshot&quot;, width: 500, settings: &quot;Lightbox&quot;)
+</code></pre>
+<p>The previous example shows</p>
+<ol>
+<li>A Razor inheriting from <code>Custom.Hybrid.RazorTyped</code> to enable the new <code>MyItem.Picture(...)</code> API</li>
+<li>A add-picture with only the basic parameter. This doesn't need the name as the position (first parameter) makes it clear that <code>Packshot</code> is the field containing the picture</li>
+<li>A more advanced use case where the picture uses <code>settings: &quot;Lightbox&quot;</code> (this must be named with <code>settings: ...</code>)</li>
+<li>Another use case where the picture uses <code>width: 500</code> (named with <code>width: ...</code>)</li>
+<li>Two more examples specifying multiple parameters - showing that the order is not important since we have the names</li>
+</ol>
+<p>As you can see in the <code>settings:</code> and <code>width:</code> example, both of these parameters are on the second position.
+If they were not named, the API wouldn't know if <code>500</code> or <code>Lightbox</code> was a width, setting or anything else.</p>
+<h2 id="example-using-toolbars">Example using Toolbars</h2>
+<p>This means that a command like this is valid</p>
+<pre><code class="lang-html">&lt;!-- valid --&gt;
+&lt;div @Edit.TagToolbar(actions: &quot;new&quot;, contentType: &quot;BlogPost&quot;)&gt;
   ...
 &lt;/div&gt;
-</code></pre>
-<p>...and this is not</p>
-<pre><code class="lang-cs">&lt;div @Edit.TagToolbar(&quot;new&quot;, &quot;BlogPost&quot;)&gt;
+
+&lt;!-- not valid --&gt;
+&lt;div @Edit.TagToolbar(&quot;new&quot;, &quot;BlogPost&quot;)&gt;
   ...
 &lt;/div&gt;
 </code></pre>
