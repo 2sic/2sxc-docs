@@ -69,11 +69,10 @@ EndProject
     <!-- Tell Visual Studio & VSCode to respect all ToSic.* DLLs in the root bin folder -->
     <Reference Include="..\..\..\..\bin\ToSic.*.dll" />
 
-    <!-- also add DotNetNuke DLLs - we don't recommend this, because then your code will never be hybrid -->
-    <!--
+    <!-- also add System.Web and DotNetNuke DLLs - useful when creating APIs, but be aware that it may make your code less hybrid -->
     <Reference Include="..\..\..\..\bin\DotNetNuke.dll" />
     <Reference Include="..\..\..\..\bin\DotNetNuke.*.dll" />
-    -->
+    <Reference Include="..\..\..\..\bin\System.Web.Http.dll" />
   </ItemGroup>
 
   <!-- Polymorphism
