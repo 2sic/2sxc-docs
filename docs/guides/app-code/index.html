@@ -13,9 +13,9 @@
     <script src="https://cdn.azing.org/e/1/embed.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Visual Studio Code - Guide | 2sxc 16 / EAV 16 </title>
+    <title>Hot App Code - Guide (&#127775; v17) | 2sxc 16 / EAV 16 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Visual Studio Code - Guide | 2sxc 16 / EAV 16 ">
+    <meta name="title" content="Hot App Code - Guide (&#127775; v17) | 2sxc 16 / EAV 16 ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../../assets/favicon.ico">
@@ -112,128 +112,103 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Guides.VsCode.Index">
-<h1 id="visual-studio-code---guide">Visual Studio Code - Guide</h1>
+            <article class="content wrap" id="_content" data-uid="Guides.AppCode.Index">
+<h1 id="hot-app-code---guide--v17">Hot App Code - Guide (🌟 v17)</h1>
 
-<p>This guide will help you get VS Code Setup as best as possible for 2sxc development.</p>
+<p>2sxc 17 introduces a major new feature: Precompiled App Code.
+This guide will help you understand what this is, how it works, and how to use it.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is quite a difficult feature to implement.
+Internally there is a LOT of magic happening,
+so as of the first release of 2sxc 17 this feature is still to be considered experimental.</p>
+</div>
 <h2 id="background">Background</h2>
-<p>You'll often write code in your 2sxc Apps - either as C#/Razor or JavaScript.
-2sxc is a very open system, so you can use any editor you like.
-For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
-But for more sophisticated stuff we recommend VS Code.</p>
-<h2 id="prepare-vs-code-for-2sxc">Prepare VS Code for 2sxc</h2>
-<p>VSCode is amazing right out of the box, but to really be productive, you need to do a few things:</p>
+<h3 id="the-original-problem">The Original Problem</h3>
+<p>In more sophisticated apps, you will often create code which is used in multiple places.
+This kind of code would be placed in separate C# files, like <code>helper.cs</code> and then used like this.</p>
+<pre><code class="lang-c#">// Get the helper - the helper object is dynamic
+var helper = GetCode(&quot;helper.cs&quot;);
+
+// Use the helper to get some info - the someInfo object is dynamic
+// Note that the compiler cannot know if helper has a method called GetDetailsFor
+var someInfo = helper.GetDetailsFor(something);
+
+// Get some value from the result (which is dynamic)
+// this results in isImage being dynamic (not bool, which you could assume)
+// the compiler also doesn't know if someInfo has a property called FileIsImage
+var isImage = someInfo.FileIsImage;
+</code></pre>
+<p>As you can see, the code looks simple, but has a lot of possible traps which are hard to debug.</p>
+<h3 id="the-way-c-would-like-it">The Way C# Would Like it</h3>
+<p>In C# you would create a class - eg. <code>public class Helper</code>, and then use it like this:</p>
+<pre><code class="lang-c#">// Reference the namespace of the helper class
+@using App.Code;
+
+// Create an instance of the helper class - this is typed, NOT dynamic
+var helper = new Helper();
+
+// Use the helper to get some info - the someInfo object is typed
+var someInfo = helper.GetDetailsFor(something);
+
+// Get some value from the result (which is typed)
+// this results in isImage being bool, just as expected
+var isImage = someInfo.FileIsImage;
+</code></pre>
+<p>This all appears very obvious.
+The reason this didn't work before, is that our helper code is not compiled into a DLL.
+Because of this, the compiler would already die on <code>@using App.Code</code> because it doesn't know what that is.</p>
+<h2 id="hot-app-code-and-intellisense">Hot App Code and Intellisense</h2>
+<p>2sxc 17 introduces a new feature called Hot App Code.
+It allows you to write code just like C# would like it.</p>
+<p>It also allows VS-Code to assist you with IntelliSense,
+but you must <a class="xref" href="../vscode/index.html">configure VS-Code separately</a>.</p>
+<h2 id="how-to-use-hot-app-code">How To Use Hot App Code</h2>
+<h3 id="rules">Rules</h3>
 <ol>
-<li>Install VS Code</li>
-<li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit">C# DevKit extensions</a></li>
-<li>Configure each App with
+<li>All of the helper code must be placed in the folder <code>/App_Code/Default/</code>.
+<ul>
+<li><em>The folder <code>App_Code</code> is a known .net system folder</em></li>
+<li><em>the extra term <code>Default</code> is to allow alternate editions in future versions</em></li>
+<li><em>Sub folders are not supported yet.</em></li>
+</ul>
+</li>
+<li>All of the helper code must be in a file with the extension <code>.cs</code>.</li>
+<li>All of the helper classes must be in the namespace <code>App.Code</code>.</li>
+</ol>
+<h2 id="how-it-works">How It Works</h2>
+<p>Internally 2sxc will setup a file-watcher for this folder.
+Whenever a file changes, it will be compiled into a DLL and loaded into some magic place.
+This uses the Roslyn compiler, the same compiler used by Visual Studio.
+Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it will also reference this magic place.
+Note that this magic hot DLL is only referenced if the Razor or C# has a <code>using App.Code</code>.</p>
+<h2 id="how-to-debug-hot-app-code">How To Debug Hot App Code</h2>
+<p>These files are compiled in the background, so you can't see the build process.
+This creates a new challenge: how do you debug this?
+Eg. when you have invalid helper code, how do you know?</p>
+<p>TODO:</p>
+<h1 id="todo">TODO</h1>
 <ol>
-<li>Intellisense (see below)</li>
-<li>Ignore the <code>obj</code> and <code>.vs</code> folders (see below)</li>
+<li>Plan for sub folders and sub-namespaces</li>
+</ol>
+<h1 id="todo-tech-wise">TODO: Tech-wise</h1>
+<ol>
+<li>Change to use folder <code>/App_Code/Default/</code></li>
+<li>Change to namespace <code>App.Code</code></li>
+<li>Enforce namespace <code>App.Code</code> for all files somehow? maybe auto-add?</li>
+<li>Create insights page where compiling and errors are shown
+<ol>
+<li>also show what was in the compiled DLL - eg. classes?</li>
 </ol>
 </li>
-<li>Check possible edge cases (see below)</li>
+<li>Detect compile issues and offer special button to debug</li>
 </ol>
-<p>With these preparations, VS-Code is able to assist in basic C# code.
-It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.</p>
-<h2 id="configure-an-app-for-razor-intellisense">Configure an App for Razor IntelliSense</h2>
-<p>Apps are usually opened as a folder in VS-Code.
-The problem for IntelliSense is that it doesn't know which DLLs it should use.
-So you need to tell it.
-This is done by adding a <code>.sln</code> solution file and a <code>.csproj</code> project file.</p>
-<p>Add the following two files to the root of your app:</p>
-<p><strong>Template for the <code>/app.sln</code> file</strong></p>
-<pre><code class="lang-text">Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.002.0
-Project(&quot;{9A19103F-16F7-4668-BE54-9A1E7A4F7556}&quot;) = &quot;App&quot;, &quot;app.csproj&quot;, &quot;{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}&quot;
-EndProject
-
-#
-# Visual Studio .sln File for 2sxc App
-# This is necessary so that VS Code can perform intellisense in Razor
-# It also requires a csproj file to exist as well
-# 
-# Read more on https://go.2sxc.org/vscode
-#
-</code></pre>
-<p><strong>Template for the <code>/app.csproj</code> file</strong></p>
-<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk.Web&quot;&gt;
-  &lt;!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode --&gt;
-
-  &lt;PropertyGroup&gt;
-    &lt;TargetFramework&gt;net4.7.2&lt;/TargetFramework&gt;
-    &lt;RootNamespace&gt;App&lt;/RootNamespace&gt;
-  &lt;/PropertyGroup&gt;
-
-  &lt;ItemGroup&gt;
-    &lt;!-- Tell Visual Studio &amp; VSCode to respect all ToSic.* DLLs in the root bin folder --&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\ToSic.*.dll&quot; /&gt;
-
-    &lt;!-- also add System.Web and DotNetNuke DLLs - useful when creating APIs, but be aware that it may make your code less hybrid --&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\DotNetNuke.dll&quot; /&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\DotNetNuke.*.dll&quot; /&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\System.Web.Http.dll&quot; /&gt;
-  &lt;/ItemGroup&gt;
-
-  &lt;!-- Polymorphism
-    If you're working with Polymorphism then you have many of the same files, which confuses Intellisense eg.
-    - /live and /staging have the same files
-    - /bs3 /bs4 / bs5 have the same files
-    The following is meant to exclude some of these folders from intellisense
-  --&gt;
-  &lt;!-- Example: exclude /live as we're always working on /staging --&gt;
-  &lt;ItemGroup&gt;
-    &lt;None Remove=&quot;live\**&quot; /&gt;
-    &lt;Content Remove=&quot;live\**&quot; /&gt;
-    &lt;Compile Remove=&quot;live\**&quot; /&gt;
-    &lt;EmbeddedResource Remove=&quot;live\**&quot; /&gt;
-  &lt;/ItemGroup&gt;
-&lt;/Project&gt;
-</code></pre>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Adding these files helps VSCode provide IntelliSense.
-But be aware that it can't help with <code>dynamic</code> code.
-To get the full benefit, use <a class="xref" href="../../net-code/typed-code/index.html">typed code</a>.</p>
-</div>
-<h2 id="gitignore-temporary-folders">GitIgnore Temporary Folders</h2>
-<p>Add these lines to your <code>.gitignore</code> file to prevent temporary files from being added to your repository:</p>
-<pre><code class="lang-text">.vs/
-obj/
-</code></pre>
-<h2 id="check-for-edge-cases---dnn-with-net-472--48">Check for Edge Cases - DNN with .net 4.7.2 / 4.8</h2>
-<p>If you're using DNN with .net 4.7.2 or 4.8, you may have to do some extra work.
-We're still not 100% sure what this is, since our dev PCs are always setup with all kinds of build tools where it works.
-According to research by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Accuraty</a>
-you may need to follow the instructions as noted on the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">C# extension</a>.</p>
-<p>The <strong>C#</strong> extension is auto-installed by the Dev-Kit, but there is this (quoted):</p>
-<div class="NOTE">
-<h5>Note</h5>
-<p>Note: If working on a solution that requires versions prior to .NET 6 or non-solution based projects, install a .NET Framework runtime and MSBuild tooling.</p>
-<ul>
-<li>Set omnisharp.useModernNet to false and set dotnet.server.useOmnisharp to true</li>
-<li>Uninstall or disable C# Dev Kit <strong>we're not sure if this is correct any more!</strong></li>
-<li>Windows: .NET Framework along with MSBuild Tools</li>
-<li>MacOS/Linux: Mono with MSBuild</li>
-</ul>
-</div>
-<p>According to our current understanding you don't need to do this is you have Visual Studio 2022 installed.
-We assume that already includes all the bits which VS Code needs as well.</p>
-<p>We haven't been able to verify or simplify this, but if you're having trouble,
-do read the blog post by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Accuraty</a> as well.</p>
-<h2 id="configure-an-app-for-javascript-intellisense">Configure an App for JavaScript IntelliSense</h2>
-<p>TODO: this is not yet documented</p>
-<h2 id="other-guides">Other Guides</h2>
-<ul>
-<li><a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Very helpful guide by Accuraty</a></li>
-</ul>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Added v16.07 2023-10</li>
+<li>Added v17.00 2023-12</li>
 </ul>
-<p>Shortlink: <a href="https://go.2sxc.org/vscode">https://go.2sxc.org/vscode</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/hot-app-code">https://go.2sxc.org/hot-app-code</a></p>
 </article>
           </div>
 
@@ -242,7 +217,7 @@ do read the blog post by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSen
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/guides/vscode/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/guides/app-code/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
