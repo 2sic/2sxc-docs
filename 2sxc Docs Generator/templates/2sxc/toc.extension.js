@@ -15,7 +15,7 @@ toc.nodeData = ns.data;
 const tocLevelTop = 1;
 
 // Debug Parameters
-const dbgProcessNodeNetApi = false;
+const dbgProcessNodeNetApi = true;
 const dbgProcessNodeJustAFewMax = 10;
 const dbgSortNetToc = false;
 
@@ -23,7 +23,15 @@ const dbgSortNetToc = false;
  * This method will be called at the start of exports.transform in toc.html.js
  */
 exports.preTransform = function (model) {
-  dbg.log('preTransform', model);
+  // const isApi = toc.isTopLevelApiToc(model);
+  // if (isApi) {
+  //   dbg.log('2sxc preTransform start as isApiToc for ', model, 25);
+  //   processNodeRecursive(model, tocLevelTop, changeNodeNetApi);
+  //   // Only sort the items if we are really on the top-level of our namespace
+  //   // model.items = sortNetApiToc(model);
+  // }
+
+  // dbg.log('preTransform', model);
   return model;
 }
 
@@ -31,70 +39,21 @@ exports.preTransform = function (model) {
  * This method will be called at the end of exports.transform in toc.html.js
  */
 exports.postTransform = function (model) {
+  return model;
+  
   const isApi = toc.isTopLevelApiToc(model);
   if (isApi) {
-    dbg.log('postTransform start as isApiToc for ', model, 25);
+    dbg.log('2sxc postTransform start as isApiToc for ', model, 25);
     processNodeRecursive(model, tocLevelTop, changeNodeNetApi);
     // Only sort the items if we are really on the top-level of our namespace
     model.items = sortNetApiToc(model);
   } else {
-    dbg.log('postTransform skip as !isApiToc for ', model, 25);
-    processNodeRecursive(model, tocLevelTop, changeNodeAddLines);
+    // dbg.log('2sxc postTransform start !isApiToc for ', model, 25);
+    // processNodeRecursive(model, tocLevelTop, createFindAndLog("Deeper Dive"));
   }
   return model;
 }
 
-/**
- * apply changes such as converting '---' to <hr>
- * and ensure that they will be "empty" nodes without link tags
- * this is important because the empty <a> tags caused navigation issues in the browser
- * @param {*} node 
- * @param {*} level 
- * @returns 
- */
-function changeNodeAddLines(node, level) {
-  if (!node || !node.name) return;
-
-  // Parse --- and <hr> tags
-  // if (node.name == '---' || node.name == '<hr>') {
-  //   node.name = '<hr>';
-  //   unlinkNode(node);
-  //   dbg.log('changeNodeAddLines - found ' + node.name, node);
-  //   dbg.log(JSON.stringify(node));
-  //   return;
-  // }
-
-  // parse tags like **Some Title**
-  // if (node.name.indexOf('**') == 0 && (node.name.lastIndexOf('**') == node.name.length - 2)) {
-  //   // dbg.log('index of **' + node.name.indexOf('**'));
-  //   // dbg.log('last index of **' + node.name.lastIndexOf('**'));
-  //   // dbg.log('length ' + node.name.length);
-  //   // dbg.log('last index of **' + (node.name.lastIndexOf('**') == node.name.length - 2));
-  //   // dbg.log('has nodes ' + (node.items && node.items.length > 0));
-  //   const namePart = node.name.replaceAll('**', '');
-  //   // dbg.log('final name: ' + namePart);
-  //   node.name = `<strong>${namePart}</strong>`;
-  //   unlinkNode(node);
-  //   node.topicHref = '#test';
-  //   return;
-  // }
-
-  // parse an explicit test title, which is usually not available
-  // but you can add one any time to test other logic
-  if (node.name.indexOf('TestXXX') > -1) {
-    dbg.log('changeNodeAddLines - found ' + node.name, node);
-    dbg.log(JSON.stringify(node));
-    unlinkNode(node);
-    return;
-  }
-}
-
-function unlinkNode(node) {
-  node.topicUid = null;
-  node.topicHref = null;
-  // custom property we add to ensure the li-template doesn't add a link
-  node.noLink = true;
-}
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -118,7 +77,10 @@ function processNodeRecursive(node, level, modifyNodeCall) {
   // debug data on item
   // var debugModel = JSON.stringify(item);
   if (dbgProcessNodeNetApi && node.topicUid && node.topicUid.indexOf("Custom") > -1) {
-    dbg.log('debug processNode[' + level + "] ", node);
+    if (level === 2) {
+      node.name = node.name + "x";
+      dbg.log('processNode[' + level + "] ", node);
+    }
   }
 
   // Modify the node using the passed in function
@@ -132,6 +94,14 @@ function processNodeRecursive(node, level, modifyNodeCall) {
     var length = node.items.length;
     for (var i = 0; i < length; i++) {
       processNodeRecursive(node.items[i], level + 1, modifyNodeCall);
+    }
+  }
+}
+
+function createFindAndLog(name) {
+  return function findAndLog(node, level) {
+    if (node.name === name) {
+      dbg.error('createFindAndLog:', node, 1000);
     }
   }
 }
@@ -162,22 +132,30 @@ function sortNetApiToc(item) {
   if (dbgSortNetToc) dbg.error('top', set[0]);
   if (dbgSortNetToc) dbg.error('rest', set[1]);
 
+  // Special debug during development
+  // try {
+  //   dbg.error("leaf", toc.createLeaf(" "), 1000);
+  //   dbg.error("node", set[0][0].items[0], 1000);
+  // }  catch (e) {
+  //   dbg.error("error", e);
+  // }
+
   const all = 
-    [toc.createLeaf("<strong>Top Namespaces</strong>")]
+    [toc.createLeaf("Top Namespaces")]
     .concat(set[0])
 
     // Custom.* Base Classes
-    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf(" ")])
     .concat([toc.createLeaf("<strong>Other Base Classes</strong>")])
     .concat(custom[0])
 
     // ToSic.Sxc
-    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf(" ")])
     .concat([toc.createLeaf("<strong>ToSic.Sxc</strong>")])
     .concat(sxcNoDnn)
 
     // ToSic.Eav
-    .concat([toc.createLeaf("<hr>")])
+    .concat([toc.createLeaf(" ")])
     .concat([toc.createLeaf("<strong>ToSic.Eav</strong>")])
     .concat(eav[0])
 
@@ -196,6 +174,11 @@ function sortNetApiToc(item) {
     .concat([toc.createLeaf("<br>")])
 
     ;
+  
+  for (let i = 0; i < all.length; i++) {
+    const item = all[i];
+    item.order = i;
+  }
   if (dbgSortNetToc) dbg.error('all', all);
   return all;
 }

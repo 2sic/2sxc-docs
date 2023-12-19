@@ -1,6 +1,6 @@
 ﻿---
 uid: Custom.Dnn
-summary: Namespace for base classes of custom code, razor and WebApis in DNN
+summary: Base classes for custom Razor / C# which only runs on DNN.
 # title: Custom.Dnn Namespace
 ---
 
