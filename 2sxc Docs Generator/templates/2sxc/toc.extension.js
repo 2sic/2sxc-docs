@@ -56,28 +56,28 @@ function changeNodeAddLines(node, level) {
   if (!node || !node.name) return;
 
   // Parse --- and <hr> tags
-  if (node.name == '---' || node.name == '<hr>') {
-    node.name = '<hr>';
-    unlinkNode(node);
-    // dbg.log('changeNodeAddLines - found ' + node.name, node);
-    // dbg.log(JSON.stringify(node));
-    return;
-  }
+  // if (node.name == '---' || node.name == '<hr>') {
+  //   node.name = '<hr>';
+  //   unlinkNode(node);
+  //   dbg.log('changeNodeAddLines - found ' + node.name, node);
+  //   dbg.log(JSON.stringify(node));
+  //   return;
+  // }
 
   // parse tags like **Some Title**
-  if (node.name.indexOf('**') == 0 && (node.name.lastIndexOf('**') == node.name.length - 2)) {
-    // dbg.log('index of **' + node.name.indexOf('**'));
-    // dbg.log('last index of **' + node.name.lastIndexOf('**'));
-    // dbg.log('length ' + node.name.length);
-    // dbg.log('last index of **' + (node.name.lastIndexOf('**') == node.name.length - 2));
-    // dbg.log('has nodes ' + (node.items && node.items.length > 0));
-    const namePart = node.name.replaceAll('**', '');
-    // dbg.log('final name: ' + namePart);
-    node.name = `<strong>${namePart}</strong>`;
-    unlinkNode(node);
-    node.topicHref = '#test';
-    return;
-  }
+  // if (node.name.indexOf('**') == 0 && (node.name.lastIndexOf('**') == node.name.length - 2)) {
+  //   // dbg.log('index of **' + node.name.indexOf('**'));
+  //   // dbg.log('last index of **' + node.name.lastIndexOf('**'));
+  //   // dbg.log('length ' + node.name.length);
+  //   // dbg.log('last index of **' + (node.name.lastIndexOf('**') == node.name.length - 2));
+  //   // dbg.log('has nodes ' + (node.items && node.items.length > 0));
+  //   const namePart = node.name.replaceAll('**', '');
+  //   // dbg.log('final name: ' + namePart);
+  //   node.name = `<strong>${namePart}</strong>`;
+  //   unlinkNode(node);
+  //   node.topicHref = '#test';
+  //   return;
+  // }
 
   // parse an explicit test title, which is usually not available
   // but you can add one any time to test other logic
