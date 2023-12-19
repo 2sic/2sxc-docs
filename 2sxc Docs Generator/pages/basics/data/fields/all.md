@@ -16,7 +16,7 @@ Every field has some general settings which apply to all fields. It's the inform
 
 Any field you open will contain the UI to configure the _All_ fields. This is what it looks like:
 
-<img src="./assets/all.png" width="50%" class="float-right" align="right">
+<img src="./assets/all.png" width="50%" class="float-end" align="right">
 
 * `Name` is the is the label to be shown (multi-language)  
 _Important: the name is not the name used in code, which shouldn't change - this is the visible label_

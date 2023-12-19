@@ -20,7 +20,7 @@ The special thing about this is that the items shown for selecting are retrieved
 
 This shows the configuration dialog:
 
-<img src="./assets/entity-query.png" width="50%" class="float-right">
+<img src="./assets/entity-query.png" width="50%" class="float-end">
 
 1. **Query** the name of the query to use
 1. Advanced

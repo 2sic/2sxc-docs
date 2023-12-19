@@ -44,7 +44,7 @@ This example is taken from the [Fancybox Gallery App](xref:App.FancyBoxGallery)
           <div class="ga-img">
             <div class="overlay">
               <div class="ga-album-title"><h5 class="ga-title">@album.Title</h5></div>
-              <div class="ga-files-count"><span class="badge badge-pill badge-dark float-right">@images.Count()</span></div>
+              <div class="ga-files-count"><span class="badge badge-pill badge-dark float-end">@images.Count()</span></div>
             </div>
             <img class="img-fluid" src='@Tags.SafeUrl(albumThumbUrl + "?w=720&h=500&mode=crop&scale=both&quality=80")' alt="@album.Title" />
           </div>

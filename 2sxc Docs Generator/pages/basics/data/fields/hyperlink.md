@@ -25,7 +25,7 @@ The basic **hyperlink (links/files)** field is used for normal links, page or fi
 
 All Hyperlink-Field Types have the following settings:
 
-<img src="./assets/hyperlink.png" width="50%" class="float-right">
+<img src="./assets/hyperlink.png" width="50%" class="float-end">
 
 * **File Filter** - list of extensions allowed in file/image picker. Example: *.jpg,*.bmp,*.png,*.gif
 * **Paths** - this is only needed if you use the old file pickers (not ADAM). Root paths for the picker dialog - ideal if you want all images for this Content-Type to be in the same folder

@@ -13,7 +13,7 @@ Use this field type for grouping fields together under a title, storing [empty (
 
 This shows the configuration dialog:
 
-<img src="./assets/empty-default-configuration.png" width="50%" class="float-right">
+<img src="./assets/empty-default-configuration.png" width="50%" class="float-end">
 
 * **Collapsed by default**  is for setting whether the field group is collapsed by default.
 If set to true, then the field group is collapsed by default.

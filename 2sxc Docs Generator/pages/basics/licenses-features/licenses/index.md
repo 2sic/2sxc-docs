@@ -34,7 +34,7 @@ There are two types of users on **2sxc Patrons**:
 1. If you have a GitHub Login you can use it to log on  
 1. If you need an enterprise login or just don't have a GitHub login, you can log on using a normal DNN user in Patrons
 
-<img src="./assets/license-manage.jpg" width="30%" class="float-right">
+<img src="./assets/license-manage.jpg" width="30%" class="float-end">
 
 Registration can be automatic or manual, depending on your needs.
 
