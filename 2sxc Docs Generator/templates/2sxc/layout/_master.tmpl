@@ -40,7 +40,12 @@
       <meta name="loc:downloadPdf" content="{{__global.downloadPdf}}">
 
       {{!2sxc added fancybox - TODO: PROBABLY update once it works }}
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+      {{! <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" /> }}
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+      />
       
       {{!2sxc - added 2sxc-scripts}}
       <script type="module" src="./{{_rel}}public/2sxc-scripts.min.js"></script>
@@ -78,12 +83,23 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
+
+
+
               {{#_enableSearch}}
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="{{__global.search}}" autocomplete="off" aria-label="Search">
+
+                {{!2sxc - added 2sxc-search}}
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+                {{!/2sxc}}
               </form>
               {{/_enableSearch}}
+
+
             </div>
           </div>
         </div>
