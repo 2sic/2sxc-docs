@@ -9,44 +9,44 @@ uid: JsCode.Toolbars.Simple
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
 
-A lot in 2sxc is fully automatic. But sometimes you want to customize how the content editor can work. 
+A lot in 2sxc is fully automatic. But sometimes you want to customize how the content editor can work.
 
 > [!NOTE]
-> 2sxc 10.27 introduces a much simpler system, which is what is shown here. 
-> Previously everything was possible, but quite complicated. 
-> So if you find examples out there which look very different - they work as well, but here's the simple system. 
+> 2sxc 10.27 introduces a much simpler system, which is what is shown here.
+> Previously everything was possible, but quite complicated.
+> So if you find examples out there which look very different - they work as well, but here's the simple system.
 
 ## Live Examples
 
-The [Dnn Tutorials have a live demo of toolbar customization](xref:Tut.Toolbar). Head over there while reading these docs to see all this in action. 
+The [Dnn Tutorials have a live demo of toolbar customization](xref:Tut.Toolbar). Head over there while reading these docs to see all this in action.
 
 ## Overview - What You can Customize
 
-You can customize just about everything: 
+You can customize just about everything:
 
 1. hover-behavior - you may want hover, maybe not, and maybe to the right | left
 1. colors using color names, hex-codes or CSS classes of the entire toolbar or just of individual buttons
 1. you can just enhance/change the default toolbar or create a custom one with just your buttons
 1. you can change the button groups - add, remove etc.
 1. you can add/remove buttons as you need
-1. you can create buttons with custom icons 
+1. you can create buttons with custom icons
 1. you can even call custom code from your custom buttons
 
 > [!TIP]
-> This overview will get you started, anything more advanced will need the 
-> 
+> This overview will get you started, anything more advanced will need the
+>
 > * [specs](xref:Basics.Browser.EditUx.Toolbars.Customize)
 > * [button UI rules](xref:Basics.Browser.EditUx.Toolbars.ButtonUi)
 
 > [!IMPORTANT]
-> This will show you how to do things in Razor, but the same principles apply to plain HTML-Toolbars. 
+> This will show you how to do things in Razor, but the same principles apply to plain HTML-Toolbars.
 > We assume that 99% of all toolbars will be initiated from razor, so that's what we'll be showing here.
 
 ## Getting Started with Custom Toolbars
 
 Usually your code will look a bit like this:
 
-```razor
+```cshtml-razor
 <div @Edit.TagToolbar(Content)>
   ...
 </div>
@@ -58,10 +58,10 @@ This will create a standard hover-toolbar with some buttons and the _more_ ellip
 
 ### Add our First Button
 
-Let's add an extra _new_ button to create an item of the content-type _Category_. 
+Let's add an extra _new_ button to create an item of the content-type _Category_.
 
 > [!NOTE]
-> This code will make the button appear, but on click you may see an error, because you probably don't have a ContentType _Category_ in your app. 
+> This code will make the button appear, but on click you may see an error, because you probably don't have a ContentType _Category_ in your app.
 
 ```razor
 <div @Edit.TagToolbar(Content, toolbar: "+new?contentType=Category")>
@@ -69,13 +69,13 @@ Let's add an extra _new_ button to create an item of the content-type _Category_
 </div>
 ```
 
-You should now have an extra + button like this: 
+You should now have an extra + button like this:
 
 <img src="./assets/step-1-with-plus-button.png" width="100%" class="full-width">
 
 
 
-Let's emphasize it, because for whatever reason it's a super important button. We'll also drop the leading `+` since it's optional and defaulted to: 
+Let's emphasize it, because for whatever reason it's a super important button. We'll also drop the leading `+` since it's optional and defaulted to:
 
 ```razor
 <div @Edit.TagToolbar(Content, toolbar: "new&color=red?contentType=Category")>
@@ -83,13 +83,13 @@ Let's emphasize it, because for whatever reason it's a super important button. W
 </div>
 ```
 
-You should now have a _red_ + button like this: 
+You should now have a _red_ + button like this:
 
 <img src="./assets/step-1-with-plus-button-red.png" width="100%" class="full-width">
 
 > [!IMPORTANT]
 > The term `new` in this example means we want a button of _type_ `new` which will open the dialog to create new entities.  
-> We could also write `app&color=red` which would add a button to manage the app. 
+> We could also write `app&color=red` which would add a button to manage the app.
 > So `new` ≠ 'new button' but 'button to add a new entity'. The full list of button names can be found in the [CMS Commands list](xref:JsCode.Commands.Index).
 
 ### Adding more Buttons
@@ -105,12 +105,12 @@ Now we want to add another button - maybe to add a _Tag_. The `toolbar` attribut
 </div>
 ```
 
-You should now see this: 
+You should now see this:
 
 <img src="./assets/step-1-with-plus-button-red-and-teal.png" width="100%" class="full-width">
 
 > [!TIP]
-> When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize). 
+> When creating new items you can also add prefill default values. This is great for News-Apps where you want to prefill the date or for list of something where you want to prefill the category. Check out the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
 
 ### Removing Buttons with `-`
 
@@ -143,9 +143,10 @@ But what if we want to modify an existing button? Let's change the icon and both
   ...
 </div>
 ```
+
 <img src="./assets/step-1-modified-view.png" width="100%" class="full-width">
 
-As you can see, we just used `%` to modify a button, set the `icon` and 2 colors. 
+As you can see, we just used `%` to modify a button, set the `icon` and 2 colors.
 
 ### Show Only Our Buttons
 
@@ -164,13 +165,13 @@ But maybe we would prefer to have a toolbar with only the two _add_ buttons, and
 <img src="./assets/step-1-empty-and-2-plus-buttons.png" width="100%" class="full-width">
 
 > [!TIP]
-> As you can see, the principle is to use a toolbar template and make modifications to it. 
+> As you can see, the principle is to use a toolbar template and make modifications to it.
 
 ### Showing the Delete Button
 
 > [!WARNING]
-> A special case in modifying buttons is also to force-show the `delete` button which is hidden by default. 
-> The reason it's hidden is because in most content-editing scenarios the editor should be able to remove content, but not delete it - in case it's re-used elsewhere. 
+> A special case in modifying buttons is also to force-show the `delete` button which is hidden by default.
+> The reason it's hidden is because in most content-editing scenarios the editor should be able to remove content, but not delete it - in case it's re-used elsewhere.
 
 But let's say you created a **News App** and want to allow the editor to also delete the news-items. Here's how:
 
@@ -189,7 +190,7 @@ The `delete` button is in the third group of buttons, so you'll have to hit the 
 
 ## Adding Custom Groups
 
-Let's assume you understand the principle of adding, removing and changing buttons. Let's add a custom button group with only the buttons you want - followed by the normal ellipsis-button with the standard functionality: 
+Let's assume you understand the principle of adding, removing and changing buttons. Let's add a custom button group with only the buttons you want - followed by the normal ellipsis-button with the standard functionality:
 
 ```razor
 <div @Edit.TagToolbar(Content, toolbar: new [] { 
@@ -208,17 +209,17 @@ You'll get this result, and hitting the ellipsis will show you the default butto
 <img src="./assets/step-2-custom-group2.png" width="100%" class="full-width">
 
 > [!NOTE]
-> We had to give our new group a name - in this case `add-buttons` and told the new buttons that they should go inside that group. 
+> We had to give our new group a name - in this case `add-buttons` and told the new buttons that they should go inside that group.
 
 > [!TIP]
-> A new group can also go after the `default` group of buttons. If you add a `&pos=1` or another number the group will be placed later on in the sequence. 
+> A new group can also go after the `default` group of buttons. If you add a `&pos=1` or another number the group will be placed later on in the sequence.
 > You can also use `&pos=-0` or `&pos=-1` or similar to place it counting from the end of the list.
 
 > [!WARNING]
-> When using position like `pos=#` you may have unexpected results, because the button is added to the list _before_ some buttons decide to hide themselves. 
+> When using position like `pos=#` you may have unexpected results, because the button is added to the list _before_ some buttons decide to hide themselves.
 > So you may think you're adding it to `pos=1` but if the edit button (which would be at position 0) shouldn't be shown, your button will still appear to be the first one.
 
-There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Basics.Browser.EditUx.Toolbars.ButtonGroups) here. As of now, it only contains the `delete` button which is hidden by default. 
+There is also a hidden group called `edit-advanced` - you can find the [list of groups](xref:Basics.Browser.EditUx.Toolbars.ButtonGroups) here. As of now, it only contains the `delete` button which is hidden by default.
 
 
 ## Attaching Custom JavaScript Code to a Button
@@ -239,13 +240,13 @@ Now you may want to call your own code when you create a button. This is very ad
 </script>
 ```
 
-You'll then see this toolbar, and on click this message: 
+You'll then see this toolbar, and on click this message:
 
 <img src="./assets/pro-1-custom-js-call.png" width="100%" class="full-width">
 
 <img src="./assets/pro-1-custom-js-alert.png" width="100%" class="full-width">
 
-You'll notice that we have a `?call=functionName` and also an `id=17` just to show how additional information is passed around. Your function also gets an `event` from the browser, so you can check the `event.target` and other things to see what was actually clicked. 
+You'll notice that we have a `?call=functionName` and also an `id=17` just to show how additional information is passed around. Your function also gets an `event` from the browser, so you can check the `event.target` and other things to see what was actually clicked.
 
 > [!WARNING]
 > This is very advanced stuff, you may run into difficulties to get this to fly 😉.
@@ -253,13 +254,13 @@ You'll notice that we have a `?call=functionName` and also an `id=17` just to sh
 
 ## Debugging Custom Toolbars
 
-In most cases if your problems will be caused by invalid syntax. It's easy to forget a closing quote `"` or a comma `,` to separate values. So always check that first. 
+In most cases if your problems will be caused by invalid syntax. It's easy to forget a closing quote `"` or a comma `,` to separate values. So always check that first.
 
-If you really want to do deep debugging, you should use the `$2sxc.insights()` command in the console to see what whas processed and how. If you add `?debug=true` to the url of the page, it will also log way more intermediate data for you to review. 
+If you really want to do deep debugging, you should use the `$2sxc.insights()` command in the console to see what whas processed and how. If you add `?debug=true` to the url of the page, it will also log way more intermediate data for you to review.
 
 ## Read More
 
-Basically you have what it takes. To go further: 
+Basically you have what it takes. To go further:
 
 * review the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
 * check out the list of [commands/buttons](xref:JsCode.Commands.Index)
