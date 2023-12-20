@@ -70,9 +70,8 @@ but you must [configure VS-Code separately](xref:Guides.VsCode.Index).
 
 ### Rules
 
-1. All of the helper code must be placed in the folder `/App_Code/Default/`.
+1. All of the helper code must be placed in the folder `/App_Code/`.
     * _The folder `App_Code` is a known .net system folder_
-    * _the extra term `Default` is to allow alternate editions in future versions_
     * _Sub folders are not supported yet._
 1. All of the helper code must be in a file with the extension `.cs`.
 1. All of the helper classes must be in the namespace `App.Code`.
@@ -91,17 +90,18 @@ These files are compiled in the background, so you can't see the build process.
 This creates a new challenge: how do you debug this?
 Eg. when you have invalid helper code, how do you know?
 
-TODO:
+TODO: still WIP
 
 
 # TODO
 
 1. Plan for sub folders and sub-namespaces
+1. Plan for editions
 
 
 # TODO: Tech-wise
 
-1. Change to use folder `/App_Code/Default/`
+1. Change to use folder `/App_Code/` or `App.Code` or `App/Code` ? 
 1. Change to namespace `App.Code`
 1. Enforce namespace `App.Code` for all files somehow? maybe auto-add?
 1. Create insights page where compiling and errors are shown

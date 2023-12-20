@@ -83,9 +83,9 @@ You can also just keep the parts you need and copy them to your site, eg. to `/c
 
 The easiest way to do it is by using a simple setting in the UI like this:
 
-<img src="./assets/cdn-settings-1.jpg" width="32%" class="img.float-left">
-<img src="./assets/cdn-settings-2.jpg" width="32%" class="img.float-left">
-<img src="./assets/cdn-settings-3.jpg" width="32%" class="img.float-left">
+<img src="./assets/cdn-settings-1.jpg" width="32%" class="img.float-start">
+<img src="./assets/cdn-settings-2.jpg" width="32%" class="img.float-start">
+<img src="./assets/cdn-settings-3.jpg" width="32%" class="img.float-start">
 
 This is a [Patrons Sentinel](xref:Patrons.Sentinel) only feature.
 So if you want it fast, simple and fire/forget, just become a patron 🦸🏽‍♀️.

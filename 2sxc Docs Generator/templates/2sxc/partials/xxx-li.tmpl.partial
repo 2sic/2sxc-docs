@@ -1,0 +1,39 @@
+{{!Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this file to you under the MIT license.}}
+{{!-- This is used to create the LI items in the TOC menu to the left --}}
+<div>test</div>
+<ul class="nav level{{level}}">
+  {{#items}}
+    {{!2sxc info: this is what is shown when it's NOT a dropdown }}
+    {{^dropdown}}
+      <li>
+      xxx
+        {{^leaf}}
+          <span class="expand-stub"></span>
+        {{/leaf}}
+        {{!-- this adds nodes without link, usually hr-nodes or title nodes; the property noLink was set by JS --}}
+        {{#noLink}}
+          {{{{name}}}}
+        {{/noLink}}
+
+        {{! default: show a link with the active state (important for intermediate titles which have sub-nodes) }}
+        {{#topicHref}}
+          <a href="{{topicHref}}" name="{{tocHref}}" title="{{name}}">{{name}}</a>
+        {{/topicHref}}
+        {{^topicHref}}
+          <a>{{{name}}}</a>
+        {{/topicHref}}
+        {{^leaf}}
+          {{>partials/li}}
+        {{/leaf}}
+      </li>
+    {{/dropdown}}
+    {{#dropdown}}
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{name}} <span class="caret"></span></a>
+        <ul class="dropdown-menu level{{level}}">
+          {{>partials/dd-li}}
+        </ul>
+      </li>
+    {{/dropdown}}
+  {{/items}}
+</ul>

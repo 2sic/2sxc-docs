@@ -1,7 +1,7 @@
 
-<img src="assets/logos/vcurrent/500.png" width="250px" align="right" class="float-right">
+<img src="assets/logos/vcurrent/500.png" width="250px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v16.07 [LTS](xref:Abyss.Releases.Management.PolicyLts) / v16.09
+# 2sxc and EAV Docs v17.00 Pre-Release
 
 This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
 
@@ -61,4 +61,15 @@ These topics are insufficiently documented...
     2. React and 2sxc (todo)
 1. etc.
 
+
+## To Doc about Docs
+
+1. All kinds of customizations
+    1. How Illustrations work (SVGs, CSS, JS etc.)
+    1. Lightbox
+    1. Possibly activation of additional languages
+    1. How version switcher works
+    1. How TOC customizations work
+        1. icons in .net API
+        1. HR splitters
 

@@ -32,7 +32,7 @@ On the other hand we have **Content** placed on a specific page in a specific po
 
 
 
-<img src="./assets/dikw-pyramid.svg" width="33%" class="float-right">
+<img src="./assets/dikw-pyramid.svg" width="33%" class="float-end">
 
 ## Content is Information
 

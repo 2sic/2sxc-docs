@@ -27,8 +27,8 @@ This requires a [Google API key](xref:Basics.Languages.AutoTranslate.ApiKey) for
 The user can choose to auto-translate a _single field_ or _all fields_.
 
 <div class="float-container">
-  <img src="./assets/auto-translate-all-menu.jpg" width="45%" class="float-right glow">
-  <img src="./assets/auto-translate-original.jpg" width="45%" class="float-left glow">
+  <img src="./assets/auto-translate-all-menu.jpg" width="45%" class="float-end glow">
+  <img src="./assets/auto-translate-original.jpg" width="45%" class="float-start glow">
 </div>
 
 
@@ -36,15 +36,15 @@ After this, the user must select what source language should be used.
 The UI will show you how many fields of the available source languages have content.
 
 <div class="float-container">
-  <img src="./assets/auto-translate-all-dialog-many-sources.jpg" width="45%" class="float-right glow">
-  <img src="./assets/auto-translate-all-dialog.jpg" width="45%" class="float-left glow">
+  <img src="./assets/auto-translate-all-dialog-many-sources.jpg" width="45%" class="float-end glow">
+  <img src="./assets/auto-translate-all-dialog.jpg" width="45%" class="float-start glow">
 </div>
 
 In the end you'll get the result for further editing.
 
 <div class="float-container">
-  <img src="./assets/auto-translate-all-result-ar.jpg" width="45%" class="float-right glow">
-  <img src="./assets/auto-translate-all-result-de.jpg" width="45%" class="float-left glow">
+  <img src="./assets/auto-translate-all-result-ar.jpg" width="45%" class="float-end glow">
+  <img src="./assets/auto-translate-all-result-de.jpg" width="45%" class="float-start glow">
 </div>
 
 

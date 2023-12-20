@@ -20,7 +20,7 @@ Every App has a **Configuration** Entity which describes things like
 
 This is where you can find the App Configuration
 
-<img src="./assets/app-configuration-path.jpg" class="float-right" width="400px" >
+<img src="./assets/app-configuration-path.jpg" class="float-end" width="400px" >
 
 On **2** you can configure the permissions you need:
 

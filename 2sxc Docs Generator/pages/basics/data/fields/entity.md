@@ -26,7 +26,7 @@ The basic **entity** field simply allows you to select items of a specific type,
 
 All Entity-Field Types have the following settings:
 
-<img src="./assets/entity.png" width="50%" class="float-right">
+<img src="./assets/entity.png" width="50%" class="float-end">
 
 * Basic
   * **Entity Type**
