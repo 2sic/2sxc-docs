@@ -9,7 +9,7 @@ Others can be installed later on, as needed.
 
 Sometimes you may install an App which requires an additional capability.
 This page should guide you through installing them if you're stuck.
-Look for the code you received, such as `SystemCapability-DataSource-SharePoint` to find the instruction.
+Look for the code you received, such as `System-DataSource-SharePoint` to find the instruction.
 
 ## Additional System Capabilities
 
@@ -22,22 +22,22 @@ The following are are capabilities which may or may not be pre-installed.
 
 The following are always available in every Dnn:
 
-* `SystemCapability-NetCore`
-* `SystemCapability-Razor`
-* `SystemCapability-Blazor`
-* `SystemCapability-CSharp07`
-* `SystemCapability-CSharp08`
-* `SystemCapability-CSharp09`
-* `SystemCapability-CSharp10`
-* `SystemCapability-CSharp11` .net 7 (core) - Oqtane 4
+* `System-NetCore`
+* `System-Razor`
+* `System-Blazor`
+* `System-CSharp07`
+* `System-CSharp08`
+* `System-CSharp09`
+* `System-CSharp10`
+* `System-CSharp11` .net 7 (core) - Oqtane 4
 
 ## Unavailable System Capabilities
 
 The following are listed just to clarify that they currently don't exist in DNN and
 probably cannot be added in any feasible way.
 
-* `SystemCapability-CSharp12` .net 8 (core) - wait for Oqtane 5
-* `SystemCapability-NetFramework` Oqtane is .net Core only
+* `System-CSharp12` .net 8 (core) - wait for Oqtane 5
+* `System-NetFramework` Oqtane is .net Core only
 
 ---
 
