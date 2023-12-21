@@ -158,11 +158,11 @@ For example apps using live/staging would have this setup:</p>
 </ul>
 </li>
 </ul>
-<h2 id="customizing-the-look-and-feel">Customizing the Look and Feel</h2>
+<h2 id="customize-look-and-feel">Customize Look and Feel</h2>
 <p>If the <em>Site Theme</em> adheres to the latest Bootstrap 5 conventions, then our Apps will
 automatically inherit the CSS variables from the theme.</p>
 <p>So in most cases, you won't need to adjust anything.</p>
-<h3 id="customizing-the-look-and-feel---simple">Customizing the Look and Feel - Simple</h3>
+<h3 id="customize-look-and-feel---simple">Customize Look and Feel - Simple</h3>
 <p>For this use case, locate the <code>/theme/theme.css</code> file and edit it.
 Changes you make should be visible immediately.</p>
 <p>This is an example of such a theme file, which adheres to Bootstrap 5 conventions:</p>
@@ -179,10 +179,23 @@ Check our Docs for more information: https://go.2sxc.org/app-theme
 </code></pre>
 <div class="TIP">
 <h5>Tip</h5>
+<p>This uses CSS-Variables, so if you don't understand this, better read up on it first.
+The default rules basically say to use the variable if it exists, and if not, use the fallback value.</p>
+</div>
+<p>So for a brief primer</p>
+<ul>
+<li><code>--bs-primary</code> is the name of the variable</li>
+<li><code>var(--bs-primary, #0060AC)</code> is the value, which means &quot;use the value of <code>--bs-primary</code> if it exists, and if not, use <code>#0060AC</code>&quot;</li>
+<li><code>#0060AC</code> is the fallback value, which is used if the variable doesn't exist</li>
+<li>so if the skin specifies this variable, it will simply be inherited, and if not, the fallback value will be used</li>
+<li>if you wish to manually set it, you can simplify to <code>--bs-primary: #0060AC;</code> since you don't need the logic</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
 <p>If Dnn is configured to optimize the CSS, you may need to clear the cache to see the changes.</p>
 <p>If you don't know how to do this, google it :) - keywords <code>client dependency management</code>.</p>
 </div>
-<h3 id="customizing-the-look-and-feel---advanced">Customizing the Look and Feel - Advanced</h3>
+<h3 id="customize-look-and-feel---advanced">Customize Look and Feel - Advanced</h3>
 <p>For this use case, you need to edit the SCSS files in the <code>/styles</code> folder.
 Building it uses standard WebPack mechanisms, which you'll need to understand to use this.</p>
 <hr>

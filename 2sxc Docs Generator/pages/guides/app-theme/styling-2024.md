@@ -51,14 +51,14 @@ For example apps using live/staging would have this setup:
   * `styles`
   * `theme`
 
-## Customizing the Look and Feel
+## Customize Look and Feel
 
 If the _Site Theme_ adheres to the latest Bootstrap 5 conventions, then our Apps will
 automatically inherit the CSS variables from the theme.
 
 So in most cases, you won't need to adjust anything.
 
-### Customizing the Look and Feel - Simple
+### Customize Look and Feel - Simple
 
 For this use case, locate the `/theme/theme.css` file and edit it.
 Changes you make should be visible immediately.
@@ -79,11 +79,23 @@ Check our Docs for more information: https://go.2sxc.org/app-theme
 ```
 
 > [!TIP]
+> This uses CSS-Variables, so if you don't understand this, better read up on it first.
+> The default rules basically say to use the variable if it exists, and if not, use the fallback value.
+
+So for a brief primer
+
+* `--bs-primary` is the name of the variable
+* `var(--bs-primary, #0060AC)` is the value, which means "use the value of `--bs-primary` if it exists, and if not, use `#0060AC`"
+* `#0060AC` is the fallback value, which is used if the variable doesn't exist
+* so if the skin specifies this variable, it will simply be inherited, and if not, the fallback value will be used
+* if you wish to manually set it, you can simplify to `--bs-primary: #0060AC;` since you don't need the logic
+
+> [!IMPORTANT]
 > If Dnn is configured to optimize the CSS, you may need to clear the cache to see the changes.
 >
 > If you don't know how to do this, google it :) - keywords `client dependency management`.
 
-### Customizing the Look and Feel - Advanced
+### Customize Look and Feel - Advanced
 
 For this use case, you need to edit the SCSS files in the `/styles` folder.
 Building it uses standard WebPack mechanisms, which you'll need to understand to use this.
