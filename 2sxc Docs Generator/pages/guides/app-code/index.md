@@ -41,7 +41,7 @@ In C# you would create a class - eg. `public class Helper`, and then use it like
 
 ```c#
 // Reference the namespace of the helper class
-@using App.Code;
+@using ThisApp.Code;
 
 // Create an instance of the helper class - this is typed, NOT dynamic
 var helper = new Helper();
@@ -56,7 +56,7 @@ var isImage = someInfo.FileIsImage;
 
 This all appears very obvious.
 The reason this didn't work before, is that our helper code is not compiled into a DLL.
-Because of this, the compiler would already die on `@using App.Code` because it doesn't know what that is.
+Because of this, the compiler would already die on `@using ThisApp.Code` because it doesn't know what that is.
 
 ## Hot App Code and Intellisense
 
@@ -70,11 +70,10 @@ but you must [configure VS-Code separately](xref:Guides.VsCode.Index).
 
 ### Rules
 
-1. All of the helper code must be placed in the folder `/App_Code/`.
-    * _The folder `App_Code` is a known .net system folder_
+1. All of the helper code must be placed in the folder `/ThisApp/Code`.
     * _Sub folders are not supported yet._
 1. All of the helper code must be in a file with the extension `.cs`.
-1. All of the helper classes must be in the namespace `App.Code`.
+1. All of the helper classes must be in the namespace `ThisApp.Code`.
 
 ## How It Works
 
@@ -82,7 +81,17 @@ Internally 2sxc will setup a file-watcher for this folder.
 Whenever a file changes, it will be compiled into a DLL and loaded into some magic place.
 This uses the Roslyn compiler, the same compiler used by Visual Studio.
 Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it will also reference this magic place.
-Note that this magic hot DLL is only referenced if the Razor or C# has a `using App.Code`.
+Note that this magic hot DLL is only referenced if the Razor or C# has a `using ThisApp.Code`.
+
+> [!IMPORTANT]
+> **For Dnn ☢️ Only**
+> 
+> Since this feature is still very new and we're still working on it,
+> the trigger to use the latest Roslyn compiler looks for `@using ThisApp.Code` in the Razor file,
+> or `using ThisApp.Code` in the C# file.
+> 
+> Without this line of code, the standard compiler will be used.
+> This means that adding the `using` statement also activates the latest C# 8
 
 ## How To Debug Hot App Code
 
@@ -101,9 +110,9 @@ TODO: still WIP
 
 # TODO: Tech-wise
 
-1. Change to use folder `/App_Code/` or `App.Code` or `App/Code` ? 
-1. Change to namespace `App.Code`
-1. Enforce namespace `App.Code` for all files somehow? maybe auto-add?
+1. Change to use folder `/App_Code/` or `ThisApp.Code` or `App/Code` ? 
+1. Change to namespace `ThisApp.Code`
+1. Enforce namespace `ThisApp.Code` for all files somehow? maybe auto-add?
 1. Create insights page where compiling and errors are shown
     1. also show what was in the compiled DLL - eg. classes?
 1. Detect compile issues and offer special button to debug
