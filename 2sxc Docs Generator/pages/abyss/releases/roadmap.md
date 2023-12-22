@@ -15,29 +15,46 @@ Last Update: **2023-11-23**
 
 ## Currently being developed v17 2023-Q4
 
-1. ⏳ DNN: Require CodeDome C# 7.3 to be installed
+1. ✅ DNN: Require CodeDome C# 7.3 to be installed
 1. ✅ Docs infrastructure can now be multi-versioned
 1. ✅ Show app icon in admin UI
 1. ✅ Ctrl+Click on toolbar buttons to open in new tab
 1. ✅ Completely refactor internal APIs to do advanced work and save data
-1. ✅ Change UI to use Angular 16 (from Angular 14)
-1. ⌛ Document new ~~Pro~~ Typed mode
-1. ✅ Ability to share field configurations
-    1. ⌛ Custom config inherit from multiple sources or keeping the Label
-1. ✅ Ability to change input config types/metadata - eg. skip `@String` when never needed
-1. ⌛ Get intellisense to work in VS Code
-    1. ⌛ Work out best way to do this in VS Code
-    1. ⌛ Work out best way to hide non-public APIs
-    1. ⌛ Work out best way to include docs (xml files, nuget, etc.)
+1. ✅ Change UI to use Angular 17 (from Angular 14)
+1. ✅ Get intellisense to work in VS Code
+    1. ✅ Work out best way to do this in VS Code
+    1. ✅ Work out best way to hide non-public APIs
+    1. ✅ Work out best way to include docs (xml files, nuget, etc.)
 1. ✅ Support C# 7.3 in DNN with warning if not installed
 1. ✅ System Capabilities Framework for tagging apps which need certain technologies/features
-1. ⌛ Mobius Form Builder
-1. ⌛ Crazy new compiled typed _shared_ code
-1. ⌛ New APIs on Typed Code
+1. ✅ Crazy new compiled typed _shared_ code `/ThisApp/Code` - see [Hot App Code](xref:Guides.HotBuild.Index)
+1. ✅ New APIs on Typed Code
     1. `IsPublished`
     1. `Publishing`
       - `Publishing.HasPublished`, `Publishing.HasUnpublished`, `Publishing.HasBoth`
       - `Publishing.GetPublished()`, `Publishing.GetUnpublished()`, `Publishing.GetOpposite()`
+
+## To Improve Q1
+
+1. ⌛ Mobius Form Builder
+1. Improve Intellisense
+    1. Hide more internal APIs
+    1. Include more XML docs
+    1. Find way to link to the official docs from inside the help
+1. Improve HotBuild
+    1. ⌛ Improve initial list of included assemblies and namespaces @STV
+    1. Improve caching of information how to build/compile to improve speed
+    1. ⌛ Add support for sub-folders
+    1. Support Editions
+    1. Provide special UI to build the code and debug
+    1. Improve error messages on building the ThisCode folder
+    1. Improve error messages when building Razor and C# using Roslyn
+1. Shared Field Configurations (not yet "published")
+1. ✅ Ability to change input config types/metadata - eg. skip `@String` when never needed
+1. ✅ Ability to share field configurations
+    1. ⌛ Custom config inherit from multiple sources or keeping the Label
+1. ⌛ Document new ~~Pro~~ Typed mode
+
 
 1. Improve CSP in Oqtane 4
 1. Create a User service to get more user data

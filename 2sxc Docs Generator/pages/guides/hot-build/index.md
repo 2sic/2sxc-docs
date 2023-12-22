@@ -1,11 +1,13 @@
 ---
-uid: Guides.AppCode.Index
+uid: Guides.HotBuild.Index
 ---
 
-# Hot App Code - Guide (🌟 v17)
+# HotBuild - ThisApp.Code - Guide (🌟 v17)
 
-2sxc 17 introduces a major new feature: Precompiled App Code.
+2sxc 17 introduces a major new feature **HotBuild**: Precompiled App Code.
 This guide will help you understand what this is, how it works, and how to use it.
+
+➡️ Check out the [HotBuild Introduction Blog](https://2sxc.org/en/blog/post/scale-5-with-2sxc-hotbuild-on-the-5th-day)
 
 > [!WARNING]
 > This is quite a difficult feature to implement.
@@ -84,13 +86,14 @@ Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it wi
 Note that this magic hot DLL is only referenced if the Razor or C# has a `using ThisApp.Code`.
 
 > [!IMPORTANT]
-> **For Dnn ☢️ Only**
-> 
+> **Special Note for Dnn ☢️**
+>
 > Since this feature is still very new and we're still working on it,
-> the trigger to use the latest Roslyn compiler looks for `@using ThisApp.Code` in the Razor file,
+> by default Razor is still compiled using the built in `System.Web.Compilation.BuildManager` which will only support C# 7.3.
+>
+> The trigger to use the latest Roslyn compiler looks for `@using ThisApp.Code` in the Razor file,
 > or `using ThisApp.Code` in the C# file.
-> 
-> Without this line of code, the standard compiler will be used.
+>
 > This means that adding the `using` statement also activates the latest C# 8
 
 ## How To Debug Hot App Code
@@ -102,6 +105,11 @@ Eg. when you have invalid helper code, how do you know?
 TODO: still WIP
 
 
+## Limitations
+
+As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or `CodeTyped`) can use the DLLs created by HotBuild App Code.
+
+
 # TODO
 
 1. Plan for sub folders and sub-namespaces
@@ -110,9 +118,6 @@ TODO: still WIP
 
 # TODO: Tech-wise
 
-1. Change to use folder `/App_Code/` or `ThisApp.Code` or `App/Code` ? 
-1. Change to namespace `ThisApp.Code`
-1. Enforce namespace `ThisApp.Code` for all files somehow? maybe auto-add?
 1. Create insights page where compiling and errors are shown
     1. also show what was in the compiled DLL - eg. classes?
 1. Detect compile issues and offer special button to debug
@@ -124,4 +129,4 @@ TODO: still WIP
 
 * Added v17.00 2023-12
 
-Shortlink: <https://go.2sxc.org/hot-app-code>
+Shortlink: <https://go.2sxc.org/hot-build>
