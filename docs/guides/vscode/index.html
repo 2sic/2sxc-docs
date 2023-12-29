@@ -155,18 +155,44 @@ EndProject
   &lt;!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode --&gt;
 
   &lt;PropertyGroup&gt;
-    &lt;TargetFramework&gt;net4.7.2&lt;/TargetFramework&gt;
-    &lt;RootNamespace&gt;App&lt;/RootNamespace&gt;
+    &lt;!-- Specify the .net Framework you are targeting - this is usually net4.7.2 or net4.8
+      https://learn.microsoft.com/en-us/dotnet/standard/frameworks
+      - eg &quot;net472&quot;, &quot;net48&quot;, &quot;net8.0&quot; etc.
+      - net472 is the default for DNN 9.8 and earlier but usually net48 works
+      - net8.0 is the default for Oqtane 5
+    --&gt;
+    &lt;TargetFramework&gt;net472&lt;/TargetFramework&gt;
+
+    &lt;!-- Specify the default Namespace for code in this specific App --&gt;
+    &lt;RootNamespace&gt;ThisApp&lt;/RootNamespace&gt;
+
+    &lt;!-- Specify what C# version to use
+      https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history
+      - eg. &quot;7.3&quot;, &quot;8.0&quot; or &quot;12.0&quot; (Oqtane 5+)
+    --&gt;
+    &lt;LangVersion&gt;8.0&lt;/LangVersion&gt;
+
+    &lt;!-- Variable to path where the DLLs are in Dnn
+      - This allows you to easily adjust the path if you have a different location
+      - For clarity / consistency, we recommend to not end with a slash
+      - Below you will use it using $(PathBin)
+    --&gt;
+    &lt;!-- PathBin for Dnn --&gt;
+    &lt;PathBin&gt;..\..\..\..\bin&lt;/PathBin&gt;
+    &lt;!-- PathBin Oqtane production, just up 3 folders, no bin-subfolder --&gt;
+    &lt;!-- &lt;PathBin&gt;..\..\..&lt;/PathBin&gt; --&gt;
+    &lt;!-- PathBin Oqtane dev/debug, up 3 folders and current build folder --&gt;
+    &lt;!-- &lt;PathBin&gt;..\..\..\bin\Debug\net8.0&lt;/PathBin&gt; --&gt;
   &lt;/PropertyGroup&gt;
 
   &lt;ItemGroup&gt;
     &lt;!-- Tell Visual Studio &amp; VSCode to respect all ToSic.* DLLs in the root bin folder --&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\ToSic.*.dll&quot; /&gt;
+    &lt;Reference Include=&quot;$(PathBin)\ToSic.*.dll&quot; /&gt;
 
     &lt;!-- also add System.Web and DotNetNuke DLLs - useful when creating APIs, but be aware that it may make your code less hybrid --&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\DotNetNuke.dll&quot; /&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\DotNetNuke.*.dll&quot; /&gt;
-    &lt;Reference Include=&quot;..\..\..\..\bin\System.Web.Http.dll&quot; /&gt;
+    &lt;Reference Include=&quot;$(PathBin)\DotNetNuke.dll&quot; /&gt;
+    &lt;Reference Include=&quot;$(PathBin)\DotNetNuke.*.dll&quot; /&gt;
+    &lt;Reference Include=&quot;$(PathBin)\System.Web.Http.dll&quot; /&gt;
   &lt;/ItemGroup&gt;
 
   &lt;!-- Polymorphism
