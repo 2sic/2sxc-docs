@@ -156,6 +156,28 @@ We haven't been able to verify or simplify this, but if you're having trouble,
 do read the blog post by [Accuraty](https://www.accu4.com/H2R2S/VS-Code-IntelliSense) as well.
 
 
+## Warnings when Using IntelliSense
+
+> [!WARNING]
+> IntelliSense can show you _internal_ APIs which will change over time.
+
+IntelliSense is an amazing productivity boost, but you should avoid using internal APIs.
+
+To make this unlikely, we spent a LOT of time to clearly mark internal stuff.
+Avoid the following:
+
+1. Almost everything in the `ToSic.Eav.*` namespace is usually internal, so avoid using it
+    1. Exception: `ToSic.Eav.DataSource` and `ToSic.Eav.DataSources` are really public
+1. Anything in a `*.Internal` namespace
+1. Anything in a `*.Integration` namespace
+1. Anything in a `*.Backend` namespace
+1. Anything in a `*.Sys` namespace
+1. Anything marked with `[Obsolete]`
+1. Anything marked with `[EditorBrowsable(EditorBrowsableState.Never)]` - IntelliSense will not show these APIs
+1. Properties beginning with an underscore, eg `_Something`
+
+
+
 ## Configure an App for JavaScript IntelliSense
 
 TODO: this is not yet documented

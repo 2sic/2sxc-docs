@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Eav_DataSources_AppRoot" data-uid="ToSic.Eav.DataSources.AppRoot" class="text-break">
     Class AppRoot
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -182,12 +182,6 @@ public class AppRoot : DataSourceBase, IAppRoot, IDataSource, IDataSourceLinkabl
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Configuration">DataSourceBase.Configuration</a>
     </div>
     <div>
@@ -237,11 +231,45 @@ public class AppRoot : DataSourceBase, IAppRoot, IDataSource, IDataSourceLinkabl
 </h2>
 
 
+  <a id="ToSic_Eav_DataSources_AppRoot_CacheTimestamp_" data-uid="ToSic.Eav.DataSources.AppRoot.CacheTimestamp*"></a>
+
+  <h3 id="ToSic_Eav_DataSources_AppRoot_CacheTimestamp" data-uid="ToSic.Eav.DataSources.AppRoot.CacheTimestamp">
+  CacheTimestamp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>System time-stamp of when the data in this cached thing was initialized or updated.
+Depending on the implementation, this may go up-stream and return an up-stream value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long CacheTimestamp { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>A timestamp as a long number</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="ToSic_Eav_DataSources_AppRoot_Link_" data-uid="ToSic.Eav.DataSources.AppRoot.Link*"></a>
 
   <h3 id="ToSic_Eav_DataSources_AppRoot_Link" data-uid="ToSic.Eav.DataSources.AppRoot.Link">
   Link
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A link - or possibly many.
@@ -270,11 +298,58 @@ In most cases, this references the parent object which provides this/these links
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ToSic_Eav_DataSources_AppRoot_CacheChanged_" data-uid="ToSic.Eav.DataSources.AppRoot.CacheChanged*"></a>
+
+  <h3 id="ToSic_Eav_DataSources_AppRoot_CacheChanged_System_Int64_" data-uid="ToSic.Eav.DataSources.AppRoot.CacheChanged(System.Int64)">
+  CacheChanged(long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Detect if the cache has newer data.
+It's called using the TimeStamp of the dependent object which may still have old data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CacheChanged(long dependentTimeStamp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dependentTimeStamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>New time stamp of a dependent object, which could have an older timestamp.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the timestamps differ, false if it's the same</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Eav_DataSources_AppRoot_CacheChanged_System_Int64__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This is implemented in each object, because sometimes it compares its own timestamp, sometimes that of another underlying object.</p>
+</div>
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/App/AppRoot.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

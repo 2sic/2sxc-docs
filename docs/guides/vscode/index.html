@@ -241,6 +241,28 @@ you may need to follow the instructions as noted on the <a href="https://marketp
 We assume that already includes all the bits which VS Code needs as well.</p>
 <p>We haven't been able to verify or simplify this, but if you're having trouble,
 do read the blog post by <a href="https://www.accu4.com/H2R2S/VS-Code-IntelliSense">Accuraty</a> as well.</p>
+<h2 id="warnings-when-using-intellisense">Warnings when Using IntelliSense</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>IntelliSense can show you <em>internal</em> APIs which will change over time.</p>
+</div>
+<p>IntelliSense is an amazing productivity boost, but you should avoid using internal APIs.</p>
+<p>To make this unlikely, we spent a LOT of time to clearly mark internal stuff.
+Avoid the following:</p>
+<ol>
+<li>Almost everything in the <code>ToSic.Eav.*</code> namespace is usually internal, so avoid using it
+<ol>
+<li>Exception: <code>ToSic.Eav.DataSource</code> and <code>ToSic.Eav.DataSources</code> are really public</li>
+</ol>
+</li>
+<li>Anything in a <code>*.Internal</code> namespace</li>
+<li>Anything in a <code>*.Integration</code> namespace</li>
+<li>Anything in a <code>*.Backend</code> namespace</li>
+<li>Anything in a <code>*.Sys</code> namespace</li>
+<li>Anything marked with <code>[Obsolete]</code></li>
+<li>Anything marked with <code>[EditorBrowsable(EditorBrowsableState.Never)]</code> - IntelliSense will not show these APIs</li>
+<li>Properties beginning with an underscore, eg <code>_Something</code></li>
+</ol>
 <h2 id="configure-an-app-for-javascript-intellisense">Configure an App for JavaScript IntelliSense</h2>
 <p>TODO: this is not yet documented</p>
 <h2 id="other-guides">Other Guides</h2>

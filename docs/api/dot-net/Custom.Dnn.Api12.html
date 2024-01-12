@@ -113,7 +113,7 @@
 
   <h1 id="Custom_Dnn_Api12" data-uid="Custom.Dnn.Api12" class="text-break">
     Class Api12
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -121,20 +121,23 @@
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.Dnn.WebApi.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base Class for modern Api Controllers in Dnn</p>
+  <div class="markdown summary"><p>Base Class for Api Controllers for Dnn ☢️ only.</p>
 </div>
-  <div class="markdown conceptual"><h3 id="class-customdnnapi12-for-dnn-">Class Custom.Dnn.Api12 for Dnn ☢️</h3>
-<p>This is the Dnn specific base class. It's the very same as <code>Custom.Hybrid.Api12</code> except for the additional <code>Dnn</code> Property.</p>
+  <div class="markdown conceptual">
+<p>This is the Dnn specific base class. It's the very same as <code>Custom.Hybrid.Api12</code> except for the additional <code>Dnn</code> Property.
+If you inherit from this class, you'll automatically have all the properties from <a class="xref" href="../../net-code/dynamic-code/index.html">DynamicCode</a>.</p>
 <p>Because of this, the documentation here only shows <code>Dnn</code> - for all other properties go to <a class="xref" href="Custom.Hybrid.Api12.html">Custom.Hybrid.Api12</a></p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>If you don't need these special properties, we strongly suggest to move to the Hybrid implementation.</p>
+<p>If you don't need the <code>Dnn</code> object, we strongly suggest to move to the Hybrid implementation.</p>
+<p>The latest Hybrid base classes also have many new features and are easier to use.
+See <a class="xref" href="Custom.Hybrid.html">Custom.Hybrid</a> for more information.</p>
 </div>
 </div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi_Stable_ForUseInYourCode(&quot;This is the official base class for v12+&quot;)]
-public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi, IDnnDynamicCode, IDynamicCode, IHasLog, IHasDnn</code></pre>
+    <pre><code class="lang-csharp hljs">[PublicApi(&quot;This is the official base class for v12+&quot;)]
+public abstract class Api12 : Api12, IDnnDynamicCode, IHasLog, IHasDnn</code></pre>
   </div>
 
 
@@ -146,9 +149,9 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.web.http.apicontroller">ApiController</a></div>
       <div><span class="xref">DnnApiController</span></div>
-      <div><a class="xref" href="ToSic.Sxc.Dnn.WebApi.DnnApiControllerWithFixes.html">DnnApiControllerWithFixes</a></div>
-      <div><a class="xref" href="ToSic.Sxc.WebApi.SxcApiControllerBase.html">SxcApiControllerBase</a></div>
-      <div><a class="xref" href="ToSic.Sxc.WebApi.DynamicApiController.html">DynamicApiController</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Dnn.WebApi.Internal.DnnSxcControllerRoot.html">DnnSxcControllerRoot</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Dnn.WebApi.Internal.DnnSxcControllerBase.html">DnnSxcControllerBase</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Dnn.WebApi.Internal.DnnSxcCustomControllerBase.html">DnnSxcCustomControllerBase</a></div>
       <div><a class="xref" href="Custom.Hybrid.Api12.html">Api12</a></div>
       <div><span class="xref">Api12</span></div>
     </dd>
@@ -157,11 +160,7 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="ToSic.Sxc.Code.IDynamicCode12.html">IDynamicCode12</a></div>
-      <div><a class="xref" href="ToSic.Sxc.Code.IHasCodeLog.html">IHasCodeLog</a></div>
-      <div><a class="xref" href="ToSic.Sxc.WebApi.IDynamicWebApi.html">IDynamicWebApi</a></div>
       <div><a class="xref" href="ToSic.Sxc.Dnn.Code.IDnnDynamicCode.html">IDnnDynamicCode</a></div>
-      <div><a class="xref" href="ToSic.Sxc.Code.IDynamicCode.html">IDynamicCode</a></div>
       <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
       <div><a class="xref" href="ToSic.Sxc.Dnn.Code.IHasDnn.html">IHasDnn</a></div>
     </dd>
@@ -306,7 +305,7 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
 
   <h3 id="Custom_Dnn_Api12__ctor" data-uid="Custom.Dnn.Api12.#ctor">
   Api12()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -332,10 +331,12 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
 
   <h3 id="Custom_Dnn_Api12__ctor_System_String_" data-uid="Custom.Dnn.Api12.#ctor(System.String)">
   Api12(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This is the base class for all custom API Controllers. <br>
+With this, your code receives the full context  incl. the current App, DNN, Data, etc.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -367,7 +368,7 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
 
   <h3 id="Custom_Dnn_Api12_Dnn" data-uid="Custom.Dnn.Api12.Dnn">
   Dnn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The DNN context. Has various objects to access the Dnn Page, etc.</p>
@@ -399,7 +400,7 @@ public abstract class Api12 : Api12, IDynamicCode12, IHasCodeLog, IDynamicWebApi
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Dnn/ToSic.Sxc.Dnn.WebApi/Custom/Dnn/Api12.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

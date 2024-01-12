@@ -1,10 +1,8 @@
 ﻿---
 uid: Custom.Hybrid
 summary: Recommended Base Classes for all your Razor and C# files which work on Dnn ☢️ & Oqtane 🩸.
-# title: Custom.Hybrid Namespace
+title: Custom.Hybrid Namespace Dnn ☢️ & Oqtane 🩸
 ---
-
-# Custom.Hybrid Namespace Dnn ☢️ & Oqtane 🩸
 
 This contains all the _hybrid_ base classes for your own solutions.
 They are meant to work across platforms (Dnn ☢️, Oqtane 🩸, NopCommerce 🔵 etc.)
