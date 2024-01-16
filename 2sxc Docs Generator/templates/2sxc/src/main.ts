@@ -33,7 +33,7 @@ docReady(function() {
   const imgs : NodeListOf<HTMLImageElement> = document.querySelectorAll('img:not(#logo):not(.for-link)');
   imgs.forEach(img => {
     // debug
-    console.log('img', img);
+    console.log('2dm img', img);
     const filename = img.src;
     // add cursor
     img.style.cursor = 'zoom-in';
@@ -52,4 +52,13 @@ docReady(function() {
     //   // custom options tbd
     // });
   });
+
+  // Find the version selector and update the URL
+  // const vButton = $('.version-button');
+  // vButton.attr('href', vButton.attr('href') + '?version=16.09&path=' + window.location.pathname);
+
+  const versionSelector = document.getElementsByClassName('version-button')[0] as HTMLAnchorElement;
+  var oldLink = versionSelector.href;
+  var newLink = oldLink + '?version=17.00&path=' + window.location.pathname
+  versionSelector.setAttribute('href', newLink);
 });
