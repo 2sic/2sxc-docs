@@ -1,34 +1,30 @@
 ---
 uid: ToSic.Home
 ---
-# This is the **2sxc API Documentation**
 
-This that will probably interest you the most:
-
-* [ToSic.Sxc.Services](xref:ToSic.Sxc.Services) contains services you'll usually use in Razor and WebAPIs
-* Your code should inherit base classes from the `Custom` namespace to inherit a rich API of [Dynamic Code](xref:NetCode.DynamicCode.Index)
-  * for **Razor** use [Hybrid.Razor12](xref:Custom.Hybrid.Razor12) or [Dnn.Razor12](xref:Custom.Dnn.Razor12)
-  * for **WebAPIs** use [Hybrid.Api12](xref:Custom.Hybrid.Api12) / [Dnn.Api12](xref:Custom.Dnn.Api12)
-  * for **shared C# code** use [Hybrid.Code12](xref:Custom.Hybrid.Code12)
-* If you're interested in data or file-assets, please read about [Dynamic Data](xref:NetCode.Data.Index)
-  * you may also care about
-    [](xref:ToSic.Sxc.Data.IDynamicEntity),
-    [](xref:ToSic.Eav.Data.IEntity)
-    as well as the [differences](xref:NetCode.Data.ObjectTypes)
-  * or about the
-    [ADAM Assets](xref:Basics.Cms.Adam.Index)
-    such as [](xref:ToSic.Sxc.Adam.IFolder), [](xref:ToSic.Sxc.Adam.IFile)
-    and [.AsAdam(...)](xref:ToSic.Sxc.Code.DynamicCode.AsAdam*)
-
+# 2sxc .net API Docs
 
 > [!TIP]
-> We've color-coded and icon-coded all the things you might care about. <br>
->
-> * <span class="priority-internal">Internal</span> stuff in subdued <br/>
-> * <span class="priority-web"></span> marks things usually used in Razor/WebApi development <br/>
-> * <span class="priority-data"></span> marks things related to data processing, usually data sources <br/>
-> * <span class="priority-adam"></span> marks ADAM things (automatic Digital Asset Management) <br/>
-> * <span class="priority-metadata"></span> marks things related to metadata <br/>
+> This that will probably interest you the most:
+
+1. Recommended Base Classes for Razor / C# / Api Controllers
+    * [](xref:Custom.Hybrid.RazorTyped) for hybrid Razor
+    * [](xref:Custom.Hybrid.ApiTyped) for hybrid WebAPIs
+    * [](xref:Custom.Hybrid.CodeTyped) for hybrid shared C# code
+    * [](xref:Custom.DataSource.DataSource16) for custom DataSources
+
+2. Most of the Service you'll use on the `Kit` object
+    * [Kit of Typed Code](xref:ToSic.Sxc.Services.ServiceKit16) and [Kit of Razor14](xref:ToSic.Sxc.Services.ServiceKit14)
+    * [](xref:ToSic.Sxc.Services) - all the services you will usually use
+    * [](xref:ToSic.Sxc.Context) - any kind of context, like the current page and url-parameters
+
+3. Most important Data-Objects
+    * [](xref:ToSic.Sxc.Data.ITypedItem) - for all the data objects in RazorTyped
+    * [](xref:ToSic.Eav.Data) - namespace for all 2sxc Data
+    * [](xref:ToSic.Sxc.Adam.IFolder), [](xref:ToSic.Sxc.Adam.IFile) and [](xref:ToSic.Sxc.Adam) for working with files
+
+
+## Note About Internal APIs
 
 Note also that the real code of EAV/2sxc/Dnn has way more stuff, but that's inofficial.
 Please don't use objects that are not documented here.

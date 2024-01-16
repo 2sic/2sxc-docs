@@ -44,31 +44,9 @@ docReady(function () {
         // add alt if not already there
         if (!img.alt)
             img.setAttribute('alt', filename);
-        // var link = img.parentElement as HTMLElement;
-        // if ((link as HTMLAnchorElement)?.href) {
-        //   console.log('2dm link', link);
-        //   // link = img;
-        //   (Fancybox as any).bind([link]);
-        // } else {
-        //   console.log('2dm link when img', link);
-        //   link.addEventListener('click', function() {
-        //     (Fancybox as any).fromNodes([img]);
-        //   }, false);
-        // }
-        // add featherlight
-        // img.addEventListener('click', function() {
-        //   $.featherlight(filename);
-        // });
-        // Bind Fancybox 5
-        // Fancybox.fromNodes([img], {
-        //   // custom options tbd
-        //   // defaultType: 'html',
-        // });
     });
+    // Attach Fancybox to all these images
     Fancybox.bind(imgSelector);
-    // var imgArray = Array.from(imgs);
-    // var Fancybox = (window as any).Fancybox as Fancybox;
-    // (Fancybox as any).fromNodes(imgArray);
     // set version button link
     setVersionButtonLink();
 });
