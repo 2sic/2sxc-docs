@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build-theme-ts": "npx tsc --watch",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && node ./templates/utils/copy-script.js",
+    "build-dev": "webpack --mode development && node ./templates/utils/copy-script.js",
     "// import": "Note: This is not yet working",
     "import": "npm run import-js && npm run import-jsng",
     "// import-js": "This is the import that already works. It will get the docs from the sxc-typings project and generate YAML for DocFx",
@@ -23,7 +24,7 @@
     "@2sic.com/2sxc-typings": "^11.0.0",
     "@types/jquery": "^2.0.33",
     "@types/node": "^20.10.5",
-    "copy-webpack-plugin": "^12.0.1",
+    "clean-webpack-plugin": "^4.0.0",
     "ts-loader": "^9.5.1",
     "type2docfx": "^0.10.5",
     "typedoc": "^0.15.8",
