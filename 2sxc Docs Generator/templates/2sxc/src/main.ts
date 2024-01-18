@@ -1,5 +1,5 @@
 // import * as hljsRazor from 'highlightjs-cshtml-razor';
-// import { Fancybox } from "@fancyapps/ui";
+import { Fancybox } from "@fancyapps/ui";
 // import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // https://stackoverflow.com/questions/9899372/vanilla-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-whe
@@ -62,6 +62,7 @@ function generateLightboxHtml(img: HTMLImageElement) {
 
 }
 
+console.log('2sxc main.ts');
 
 function setVersionButtonLink() {
   const versionSelector = document.getElementsByClassName('version-button')[0] as HTMLAnchorElement;
