@@ -117,12 +117,7 @@
 <li>...or manually specify other sizes</li>
 </ol>
 <h2 id="example">Example</h2>
-<pre><code class="lang-razor">@using ToSic.Sxc.Services;
-@{
-  var imgService = GetService&lt;IImageService&gt;();
-  var blogPic = imgService.Picture(blogPost.Image);
-}
-@blogPic
+<pre><code class="lang-razor">@Kit.Image.Picture(blogPost.Image)
 </code></pre>
 <p>TODO: LINK TO EXAMPLES</p>
 <h2 id="how-this-works">How This Works</h2>
@@ -136,8 +131,6 @@
 <h2 id="guide-basic">Guide Basic</h2>
 <h3 id="1-prepare">1. Prepare</h3>
 <p>Always start by getting the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> - you will usually just get this once per Razor template:</p>
-<pre><code class="lang-c#">var imgService = GetService&lt;ToSic.Sxc.Services.IImageService&gt;();
-</code></pre>
 <p>If needed, prepare resize settings using the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_">ResizeSettings(...)</a>.
 This is probably only needed in ca. 10% of all cases, because the defaults are usually what you want to use.
 If you want to do this, see further explanations further down.</p>
@@ -145,10 +138,10 @@ If you want to do this, see further explanations further down.</p>
 <p>Get the responsive <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsiveImage.html">Image</a> or <a class="xref" href="../../api/dot-net/ToSic.Sxc.Images.IResponsivePicture.html">Picture</a>
 using the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Img_">Img(...)</a> or <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Picture_">Picture(...)</a>.</p>
 <pre><code class="lang-c#">// Example for a file in the App folder
-var appIconImg = imgService.Img(App.Path + &quot;/app-icon.png&quot;);
-var appIconPicture = imgService.Picture(App.Path + &quot;/app-icon.png&quot;);
+var appIconImg = Kit.Image.Img(App.Path + &quot;/app-icon.png&quot;);
+var appIconPicture = Kit.Image.Picture(App.Path + &quot;/app-icon.png&quot;);
 // Example for an image on a dynamic-data object
-var blogPicImg = imgService.Img(blogPost.Image);
+var blogPicImg = Kit.Image.Img(blogPost.Image);
 </code></pre>
 <h3 id="3-output">3. Output</h3>
 <p>When creating the HTML you have many options. The most basic is just to show the result:</p>
@@ -161,33 +154,33 @@ var blogPicImg = imgService.Img(blogPost.Image);
 <p>The most common scenario is that you have a razor template which shows images that are typically half or a third the size of the normal content.
 In such a case you would also supply a factor in various possible formats.
 Here some examples:</p>
-<pre><code class="lang-c#">var blogPicImgHalf = imgService.Img(blogPost.Image, factor: 0.5);
-var blogPicImgThird = imgService.Img(blogPost.Image, factor: &quot;1/3&quot;);
-var blogPicImg2Thirds = imgService.Img(blogPost.Image, factor: &quot;2:3&quot;);
+<pre><code class="lang-c#">var blogPicImgHalf = Kit.Image.Img(blogPost.Image, factor: 0.5);
+var blogPicImgThird = Kit.Image.Img(blogPost.Image, factor: &quot;1/3&quot;);
+var blogPicImg2Thirds = Kit.Image.Img(blogPost.Image, factor: &quot;2:3&quot;);
 </code></pre>
 <p>You can also use other settings, like <code>Settings.Images.Screen</code> for larger settings.
 This can also be combined with factor - here's an example:</p>
-<pre><code class="lang-c#">var background = imgService.Img(blogPost.Image, settings: Settings.Images.Screen);
-var backgroundSmaller = imgService.Img(blogPost.Image, settings: Settings.Images.Screen, factor: 0.9);
+<pre><code class="lang-c#">var background = Kit.Image.Img(blogPost.Image, settings: Settings.Images.Screen);
+var backgroundSmaller = Kit.Image.Img(blogPost.Image, settings: Settings.Images.Screen, factor: 0.9);
 </code></pre>
 <p>You can also use custom settings like this:</p>
-<pre><code class="lang-c#">var resizeSettings = imgService.ResizeSettings(width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
-var img = imgService.Img(blogPost.Image, settings: resizeSettings);
+<pre><code class="lang-c#">var resizeSettings = Kit.Image.ResizeSettings(width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
+var img = Kit.Image.Img(blogPost.Image, settings: resizeSettings);
 </code></pre>
 <p>And you can merge standard settings with your custom settings like this:</p>
-<pre><code class="lang-c#">var resizeSettings = imgService.ResizeSettings(settings: Settings.Images.Custom, width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
-var img = imgService.Img(blogPost.Image, settings: resizeSettings);
+<pre><code class="lang-c#">var resizeSettings = Kit.Image.ResizeSettings(settings: Settings.Images.Custom, width: 1000, quality: 75, aspectRatio: &quot;16/9&quot;);
+var img = Kit.Image.Img(blogPost.Image, settings: resizeSettings);
 </code></pre>
 <h3 id="image-alt-description-or-class-attribute">Image <code>alt</code> Description or <code>class</code> Attribute</h3>
 <p>These are the most common things you may want to specify, so the <code>Img(...)</code> and <code>Picture(...)</code> tag support this in the initial call:</p>
-<pre><code class="lang-c#">var img = imgService.Img(blogPost.Image, imgAlt: blogPost.Title, imgClass: &quot;some-class-names&quot;);
+<pre><code class="lang-c#">var img = Kit.Image.Img(blogPost.Image, imgAlt: blogPost.Title, imgClass: &quot;some-class-names&quot;);
 </code></pre>
 <p>Other attributes can be set as well, but it's more complicated. See custom Output below.</p>
 <h3 id="custom-output">Custom Output</h3>
 <p>In most cases you'll just want to show the image or picture, like this:</p>
 <pre><code class="lang-razor">@{
-  var img = imgService.Img(blogPost.Image);
-  var picture = imgService.Picture(blogPost.Image);
+  var img = Kit.Image.Img(blogPost.Image);
+  var picture = Kit.Image.Picture(blogPost.Image);
 }
 @* Now just show them *@
 @img
@@ -196,9 +189,9 @@ var img = imgService.Img(blogPost.Image, settings: resizeSettings);
 <p>But you may need to customize more what the output shows.
 Let's assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;picture&gt;</code> tag a special <code>id</code> here's what you would do:</p>
 <pre><code class="lang-razor">@{
-  var img = imgService.Img(blogPost.Image);
+  var img = Kit.Image.Img(blogPost.Image);
   img.ImgTag.Id(&quot;mainImg&quot;);
-  var picture = imgService.Picture(blogPost.Image);
+  var picture = Kit.Image.Picture(blogPost.Image);
   picture.ImgTag.Id(&quot;mainImg&quot;);
   picture.PictureTag.Id(&quot;mainPic&quot;);
 }
@@ -210,8 +203,8 @@ Let's assume you want to give the <code>&lt;img&gt;</code> and <code>&lt;picture
 <p>The <code>ImgTag</code> and <code>PictureTag</code> properties are <a class="xref" href="../razor-blade/index.html">RazorBlade</a> objects and can be customized using the RazorBlade fluid Tag API.</p>
 <p>In case you want even more control over your output, you can also piece it together yourself:</p>
 <pre><code class="lang-razor">@{
-  var img = imgService.Img(blogPost.Image);
-  var picture = imgService.Picture(blogPost.Image);
+  var img = Kit.Image.Img(blogPost.Image);
+  var picture = Kit.Image.Picture(blogPost.Image);
 }
 @* Show the Image with some custom changes *@
 @img.Id(&quot;imgId&quot;).Style(&quot;width: 33%&quot;)

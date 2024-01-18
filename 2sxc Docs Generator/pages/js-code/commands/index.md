@@ -57,15 +57,13 @@ To activate these features manually just use the [IPageService](xref:NetCode.Raz
 
 
 
-## How to use (v13.03)
+## How to use (v14+)
 
 Simple example:
 
 ```razor
-@{
-  // enable editing for all users
-  GetService<ToSic.Sxc.Services.IPageService>().Activate("2sxc.JsCms");
-}
+@* enable editing for all users *@
+@Kit.Page.Activate("2sxc.JsCms")
 
 <script>
   // Run the command and handle the returned promise

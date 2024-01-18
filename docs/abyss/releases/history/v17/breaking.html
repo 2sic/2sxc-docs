@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Planned Breaking Changes in EAV and 2sxc 17 | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Breaking Changes in EAV and 2sxc v17 | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Planned Breaking Changes in EAV and 2sxc 17 | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Breaking Changes in EAV and 2sxc v17 | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -106,9 +106,25 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V17.Breaking">
-<h1 id="planned-breaking-changes-in-eav-and-2sxc-17">Planned Breaking Changes in EAV and 2sxc 17</h1>
+<h1 id="breaking-changes-in-eav-and-2sxc-v17">Breaking Changes in EAV and 2sxc v17</h1>
 
-<h1 id="planned-removals-for-2sxc-v17">Planned Removals for 2sxc v17</h1>
+<h2 id="breaking-changes-in-eav-and-2sxc-v17">Breaking Changes in EAV and 2sxc v17</h2>
+<p>We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
+We're documenting it here to ensure you know what happened, in case you still run into this.</p>
+<h3 id="summary">Summary</h3>
+<p>TODO:</p>
+<h4 id="v1700">v17.00</h4>
+<p>TODO:</p>
+<ol>
+<li><code>ToSic.Eav.App.AppData</code> is renamed to <code>ToSic.Eav.Apps.DataSources.AppDataWithCrud</code></li>
+<li>In Typed mode, the <code>App.Data</code> now has a different interface <code>ToSic.Sxc.Apps.IAppDataTyped</code></li>
+<li><code>AppState</code> changes...</li>
+<li><code>App</code> object had a hidden <code>AppState</code> property which was never documented and is now removed.<br>
+If you were using it, then probably to access <code>GetContentType(string)</code>. You can find a replacement on <code>App.Data.GetContentType(...)</code>.</li>
+</ol>
+<hr>
+<p>Shortlink: <a href="https://go.2sxc.org/brc-17">https://go.2sxc.org/brc-17</a></p>
+<h2 id="planned-removals-for-2sxc-v17">Planned Removals for 2sxc v17</h2>
 <p>For 2sxc 17 we plan to remove some very old APIs.
 The process is as follows:</p>
 <ol>
@@ -146,17 +162,6 @@ So in most cases, you don't need to specify the type at all, just use something 
 <pre><code class="lang-c#">var app = App;
 var version = App.Configuration.Get(&quot;Version&quot;);
 </code></pre>
-
-<p>TODO:</p>
-<ol>
-<li><code>ToSic.Eav.App.AppData</code> is renamed to <code>ToSic.Eav.Apps.DataSources.AppDataWithCrud</code></li>
-<li>In Typed mode, the <code>App.Data</code> now has a different interface <code>ToSic.Sxc.Apps.IAppDataTyped</code></li>
-<li><code>AppState</code> changes...</li>
-<li><code>App</code> object had a hidden <code>AppState</code> property which was never documented and is now removed.<br>
-If you were using it, then probably to access <code>GetContentType(string)</code>. You can find a replacement on <code>App.Data.GetContentType(...)</code>.</li>
-</ol>
-<hr>
-<p>Shortlink: <a href="https://go.2sxc.org/brc-17">https://go.2sxc.org/brc-17</a></p>
 
 </article>
 

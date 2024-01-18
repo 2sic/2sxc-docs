@@ -1,5 +1,5 @@
 
-# Planned Removals for 2sxc v17
+## Planned Removals for 2sxc v17
 
 For 2sxc 17 we plan to remove some very old APIs.
 The process is as follows:

@@ -26,10 +26,9 @@ For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) 
 A simple example:
 
 ```c#
-var page = GetService<ToSic.Sxc.Services.IPageService>();
-page.Activate("jQuery");                          // Activate jQuery
-page.Activate("turnOn");                          // Activate turnOn
-page.Activate("jQuery", "turnOn", "2sxc.JsCore"); // Activate many
+Kit.Page.Activate("jQuery");                          // Activate jQuery
+Kit.Page.Activate("turnOn");                          // Activate turnOn
+Kit.Page.Activate("jQuery", "turnOn", "2sxc.JsCore"); // Activate many
 ```
 
 This will ensure that jQuery and [turnOn](xref:JsCode.TurnOn.Index) are available on the page.
@@ -66,10 +65,9 @@ Features that are explicitly not implemented
 Any WebResources registered in the settings can be activated. Here's an example:
 
 ```c#
-var page = GetService<ToSic.Sxc.Services.IPageService>();
-page.Activate("Bootstrap5");                // Activate Bootstrap5 from a CDN
-page.Activate("fancybox4");                 // Activate fancybox4 from a CDN
-page.Activate("fancybox3", "FontAwesome5"); // Activate the older fancybox + FontAwesome5
+Kit.Image.Activate("Bootstrap5");                // Activate Bootstrap5 from a CDN
+Kit.Image.Activate("fancybox4");                 // Activate fancybox4 from a CDN
+Kit.Image.Activate("fancybox3", "FontAwesome5"); // Activate the older fancybox + FontAwesome5
 ```
 
 You can define your own WebResources in the Settings, or check out the list of [pre-defined WebResources](xref:Basics.Configuration.Settings.WebResources).

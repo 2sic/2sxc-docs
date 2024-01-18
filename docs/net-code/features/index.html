@@ -112,17 +112,15 @@
 <h2 id="how-to-use">How To Use</h2>
 <p>This example is taken from <a class="xref" href="https://2sxc.org/en/apps/app/mobius-forms-4-with-mailchimp-recaptcha-polymorph-weback-and-more">Mobius Forms</a> and the code can be found in the <a href="https://github.com/2sic/app-mobius-forms/">Mobius Github Repo</a>.</p>
 <pre><code class="lang-cs">@{
-  var feats = GetService&lt;ToSic.Sxc.Services.IFeaturesService&gt;();
-
   // show warning if the save-attachments in web api isn't activated
-  if(!feats.IsEnabled(&quot;SaveInAdamApi&quot;)) {
+  if(!Kit.Feature.IsEnabled(&quot;SaveInAdamApi&quot;)) {
     &lt;div class=&quot;alert alert-warning&quot;&gt;
       Warning: file upload won't work yet, as it hasn't been enabled.
     &lt;/div&gt;
   }
 
   // Show warning if any of the following features are not enabled
-  if(!feats.IsEnabled(&quot;PublicEditForm&quot;, &quot;PublicUploadFiles&quot;)) {
+  if(!Kit.Feature.IsEnabled(&quot;PublicEditForm&quot;, &quot;PublicUploadFiles&quot;)) {
     &lt;div class=&quot;alert alert-warning&quot;&gt;
       Warning: Edit Form and file upload have not been enabled.
     &lt;/div&gt;

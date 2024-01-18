@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v17/_brc17-planned.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v17/_changes17.00.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -107,49 +107,40 @@
 
         <article data-uid="">
 
-<h2 id="planned-removals-for-2sxc-v17">Planned Removals for 2sxc v17</h2>
-<p>For 2sxc 17 we plan to remove some very old APIs.
-The process is as follows:</p>
+<h3 id="changes-in-2sxc-1700-lts-2023-12-23">Changes in 2sxc 17.00 LTS (2023-12-23)</h3>
 <ol>
-<li>Mark the API as deprecated in the code</li>
-<li>Add internal code which warns the admin that the App is using deprecated code</li>
-<li>Provide guidance here how to resolve</li>
-<li>Make sure the warnings have been around for at least 6 months</li>
-<li>Remove the code on the next major release</li>
+<li>✅ DNN: Require CodeDome C# 7.3 to be installed</li>
+<li>✅ Docs infrastructure can now be multi-versioned</li>
+<li>✅ Show app icon in admin UI</li>
+<li>✅ Ctrl+Click on toolbar buttons to open in new tab</li>
+<li>✅ Completely refactor internal APIs to do advanced work and save data</li>
+<li>✅ Change UI to use Angular 17 (from Angular 14)</li>
+<li>✅ Get intellisense to work in VS Code
+<ol>
+<li>✅ Work out best way to do this in VS Code</li>
+<li>✅ Work out best way to hide non-public APIs</li>
+<li>✅ Work out best way to include docs (xml files, nuget, etc.)</li>
 </ol>
-<p>For v17 we plan to remove some very old APIs, which we believe are probably not even used any more.
-This is the list:</p>
+</li>
+<li>✅ Support C# 7.3 in DNN with warning if not installed</li>
+<li>✅ System Capabilities Framework for tagging apps which need certain technologies/features</li>
+<li>✅ Crazy new compiled typed <em>shared</em> code <code>/ThisApp/Code</code> - see <a class="xref" href="../../../../guides/hot-build/index.html">Hot App Code</a></li>
+<li>✅ New APIs on Typed Code
+<ol>
+<li><code>IsPublished</code></li>
+<li><code>Publishing</code></li>
+</ol>
 <ul>
-<li>The old namespace <code>ToSic.SexyContent.Interfaces.IApp</code> and all related code<br>
-We believe this is probably not used at all, since it's probably only ever used to access <code>App.Configuration</code> which is <code>dynamic</code> when using this interface,
-but a normal object with typed properties when using the normal <code>ToSic.Sxc.Apps.IApp</code> interface.</li>
+<li><code>Publishing.HasPublished</code>, <code>Publishing.HasUnpublished</code>, <code>Publishing.HasBoth</code></li>
+<li><code>Publishing.GetPublished()</code>, <code>Publishing.GetUnpublished()</code>, <code>Publishing.GetOpposite()</code></li>
 </ul>
-<h2 id="guide-to-fixing-issues">Guide to Fixing Issues</h2>
-<h3 id="fixing-sexycontentinterfacesiapp-removal">Fixing SexyContent.Interfaces.IApp removal</h3>
-<h4 id="background">Background</h4>
-<p>A long time ago 2sxc was called <strong>SexyContent</strong> and we used the namespace <code>ToSic.SexyContent.Interfaces</code> for various things.
-Ca. 2014, we decided to rename it to <strong>2sxc</strong> and use a <code>ToSic.Sxc</code> namespace instead.
-In addition to that, we created a clearer namespace structure.</p>
-<h4 id="am-i-affected">Am I Affected?</h4>
-<p>Most code does <em>not</em> explicitly use namespaces, and if your code is newer than 2016, you are probably not affected.</p>
-<p>But if you have <strong>any</strong> code which uses the namespace <code>ToSic.SexyContent</code> in your Razor or C# code you are affected.</p>
-<p>This is especially true if you have code such as:</p>
-<pre><code class="lang-c#">using SexyContent.Interfaces;
-IApp app = App;
-var version = app.Configuration.Version;
-</code></pre>
-<h4 id="how-to-fix">How to Fix</h4>
-<p>It's difficult to give you an exact guideline, because we don't know what your code does.
-But in most cases, you'll just be working with the current <code>App</code> object which is typed as <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a>.
-So in most cases, you don't need to specify the type at all, just use something like:</p>
-<pre><code class="lang-c#">var app = App;
-var version = App.Configuration.Get(&quot;Version&quot;);
-</code></pre>
+</li>
+</ol>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v17/_brc17-planned.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/releases/history/v17/_changes17.00.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
