@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra'); // fs-extra is a module that extends the standard fs module.
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -15,7 +16,14 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.ts$/,
-          use: 'ts-loader',
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              },
+            },
+          ],
           exclude: /node_modules/
         }
       ]
@@ -26,13 +34,19 @@ module.exports = (env, argv) => {
     output: {
       filename: 'main.js',
       path: path.resolve(__dirname, 'templates/2sxc/public'),
-      libraryTarget: 'module'
+      libraryTarget: 'module',
+      // clean: true,
     },
     plugins: [
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ['main.js', 'main.js.map', '../../../../docs/public/main.js.map'],
+        cleanOnceBeforeBuildPatterns: ['main.js', 'main.js.map', '../../../../docs/public/main.js', '../../../../docs/public/main.js.map'],
         dangerouslyAllowCleanPatternsOutsideProject: true,
         dry: false
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, 'templates/2sxc/public'), to: path.resolve(__dirname, '../docs/public') }
+        ]
       })
     ]
   }
