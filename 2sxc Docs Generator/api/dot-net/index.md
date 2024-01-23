@@ -20,7 +20,7 @@ uid: ToSic.Home
 
 3. Most important Data-Objects
     * [](xref:ToSic.Sxc.Data.ITypedItem) - for all the data objects in RazorTyped
-    * [](xref:ToSic.Eav.Data) - namespace for all 2sxc Data
+    * [](xref:ToSic.Sxc.Data) - namespace for all 2sxc Data
     * [](xref:ToSic.Sxc.Adam.IFolder), [](xref:ToSic.Sxc.Adam.IFile) and [](xref:ToSic.Sxc.Adam) for working with files
 
 
