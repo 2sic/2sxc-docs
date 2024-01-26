@@ -1,5 +1,6 @@
 // import * as hljsRazor from 'highlightjs-cshtml-razor';
 import { Fancybox } from "@fancyapps/ui";
+import { Xref } from './xref/xref';
 // import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // https://stackoverflow.com/questions/9899372/vanilla-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-whe
@@ -56,13 +57,20 @@ docReady(function() {
 
   // set version button link
   setVersionButtonLink();
+
+  // add xref links if we're on xref.html
+  // This is a bit special, but I don't know how to trigger code inside the JS-Module
+  // from the page itself, so I'm just doing it here with url-checks
+  Xref.runXrefPage();
 });
+
+
 
 function generateLightboxHtml(img: HTMLImageElement) {
 
 }
 
-console.log('2sxc main.ts');
+console.log('2sxc main.ts 2');
 
 function setVersionButtonLink() {
   const versionSelector = document.getElementsByClassName('version-button')[0] as HTMLAnchorElement;
