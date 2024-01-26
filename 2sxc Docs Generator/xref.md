@@ -6,7 +6,7 @@ Found the following XREF reference: <code id="xref-show">loading...</code>
 
 Target is: <a id="xref-target" href="#">loading target...</a>
 
-Will try to redirect you in ca. 3 seconds unless you press escape... <code id="xref-cancelled" style="display: none">cancelled</code>
+Auto redirect in 3 seconds unless you press escape... <code id="xref-cancelled" style="display: none">cancelled</code>
 
 ---
 
