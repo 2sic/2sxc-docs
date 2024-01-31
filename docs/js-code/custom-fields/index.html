@@ -282,7 +282,7 @@ That is not discussed here.</p>
   }
 }
 </code></pre>
-<h2 id="reading-and-writing-values">Reading and Writing Values</h2>
+<h2 id="read-and-write-values">Read and Write Values</h2>
 <p>The 2sxc form will initialize your custom element and attach a <code>connector</code> object. This happens automatically, so you will have it once <code>connectedCallback()</code> is fired. This connector is a rich object with lots of stuff, but for your field value you need to know these bits</p>
 <ul>
 <li><code>connector.data.value</code> gets you the current value</li>
@@ -297,7 +297,7 @@ That is not discussed here.</p>
 <h5>Tip</h5>
 <p>Check out this <a href="https://2sxc.org/dnn-tutorials/en/razor/ui211/page">tutorial example of Pickr</a> to see all this in action</p>
 </div>
-<h2 id="loading-custom-css-and-js-libraries">Loading Custom CSS and JS Libraries</h2>
+<h2 id="load-custom-css-and-js-libraries">Load Custom CSS and JS Libraries</h2>
 <p>Since this is all standard JavaScript, you can do it anyhow you want. For example, to load some CSS we recommend that you simply add a <code>&lt;link&gt;</code> tag to your html, like this:</p>
 <pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css&quot;/&gt;
 </code></pre>
@@ -312,9 +312,18 @@ That is not discussed here.</p>
 <h5>Tip</h5>
 <p>Check out the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui211/page">tutorial example of Pickr</a> to see all this in action</p>
 </div>
-<h2 id="making-your-fields-configurable">Making your Fields Configurable</h2>
+<h2 id="make-your-fields-configurable">Make your Fields Configurable</h2>
 <p>Now you have a color-picker, but each field may require a different set of preconfigured colors. Or maybe your date picker has could optionally restrict dates to weekdays. In these cases, you need configuration specific for the field.</p>
 <iframe src="https://azing.org/2sxc/r/1_bUtjCH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+<div class="TIP">
+<h5>Tip</h5>
+<p>2sxc 17 introduces the ability to configure exactly what content-types are provided
+to configure the Input-Type.</p>
+<p>So without this config, the default system always uses a <code>@All</code>,
+<code>@Xyz</code> where Xyz is the name of the data eg. <code>String</code>,
+and <code>@exact-name-of-the-input-type</code> eg. <code>@string-my-picker</code>.</p>
+<p>With the config, you can eg. skip the <code>@String</code> even if you have a string field.</p>
+</div>
 <h2 id="create-your-own-wysiwyg-field">Create Your own WYSIWYG Field</h2>
 <p>WYSIWYG fields are very hard to do right. Basically you can simply create your own using the same principles as mentioned above. But we recommend that you use the existing WYSIWYG field provided by 2sxc and just change some of the configurations.</p>
 <div class="TIP">

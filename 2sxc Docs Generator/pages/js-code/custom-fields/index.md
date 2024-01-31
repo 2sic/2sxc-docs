@@ -6,16 +6,17 @@ uid: JsCode.CustomFields.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
 
-Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever. 
+Sometimes you want a custom input field - as color-picker, dropdown-from-api or whatever.
 
 > [!TIP]
+>
 > 1. 2sxc 11 finally allows you to do this using simple [WebComponents](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 > 1. Registering these happens by placing them in a specific folder  
 > 1. You can also make them configurable by placing a content-type json in another folder  
 
 > [!NOTE]
-> There are more ways to provide and register custom input fields - like when you need them globally across many apps and portals. 
-> That is not discussed here. 
+> There are more ways to provide and register custom input fields - like when you need them globally across many apps and portals.
+> That is not discussed here.
 
 ## Quick-Start Video and Tutorial
 
@@ -27,7 +28,7 @@ Then check out the [tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home).
 
 ## What kind of Custom Input Field can you Create
 
-You can create any kind of custom input field, as a JavaScript WebComponent. 
+You can create any kind of custom input field, as a JavaScript WebComponent.
 
 1. Look and Feel however you want it
 1. Any kind of JS code
@@ -41,10 +42,10 @@ You can create any kind of custom input field, as a JavaScript WebComponent.
 
 Basically a custom Input Field is just a `index.js` in the correct folder. These are the specs:
 
-1. An input field as described here is an **App Extension**. 
+1. An input field as described here is an **App Extension**.
     1. All **App Extensions** must each lie in an own folder...
     1. within a folder called `system` inside the _App folder_
-1. The folder name for your custom input field must obey certain naming rules so that they are auto-detected. 
+1. The folder name for your custom input field must obey certain naming rules so that they are auto-detected.
 1. The javascript that will be loaded must be called `index.js`
 1. Your script must register a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) - a WebComponent - in the browser
 1. The name of your custom element is predefined, and must adhere to the naming rules.
@@ -54,7 +55,7 @@ Here's a checklist to get this setup
 <iframe src="https://azing.org/2sxc/r/n8nJ1dfd?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
 > [!Note]
-> Once you have that setup, the input field is automatically detected and a user can choose it as a field type in the configuration. 
+> Once you have that setup, the input field is automatically detected and a user can choose it as a field type in the configuration.
 
 
 ## Some Background on WebComponents
@@ -91,7 +92,7 @@ class EmptyHelloWorld extends HTMLElement {
 }
 ```
 
-## Reading and Writing Values
+## Read and Write Values
 
 The 2sxc form will initialize your custom element and attach a `connector` object. This happens automatically, so you will have it once `connectedCallback()` is fired. This connector is a rich object with lots of stuff, but for your field value you need to know these bits
 
@@ -100,12 +101,12 @@ The 2sxc form will initialize your custom element and attach a `connector` objec
 * `connector.data.value$` is the observable version of the value - this is great for advanced use cases, but otherwise you can stick to the simple `.value`
 
 > [!TIP]
-> Avoid calling `update(...)` if nothing changed - as it will make the form dirty, so the user will be asked if he wants to save when cancelling the dialog, even though nothing changed. 
+> Avoid calling `update(...)` if nothing changed - as it will make the form dirty, so the user will be asked if he wants to save when cancelling the dialog, even though nothing changed.
 
 > [!TIP]
 > Check out this [tutorial example of Pickr](https://2sxc.org/dnn-tutorials/en/razor/ui211/page) to see all this in action
 
-## Loading Custom CSS and JS Libraries
+## Load Custom CSS and JS Libraries
 
 Since this is all standard JavaScript, you can do it anyhow you want. For example, to load some CSS we recommend that you simply add a `<link>` tag to your html, like this:
 
@@ -123,18 +124,29 @@ For JavaScript you can do the same, either using a `<script>` tag or telling the
 > [!TIP]
 > Check out the [tutorial example of Pickr](https://2sxc.org/dnn-tutorials/en/razor/ui211/page) to see all this in action
 
-## Making your Fields Configurable
+## Make your Fields Configurable
 
-Now you have a color-picker, but each field may require a different set of preconfigured colors. Or maybe your date picker has could optionally restrict dates to weekdays. In these cases, you need configuration specific for the field. 
+Now you have a color-picker, but each field may require a different set of preconfigured colors. Or maybe your date picker has could optionally restrict dates to weekdays. In these cases, you need configuration specific for the field.
 
 <iframe src="https://azing.org/2sxc/r/1_bUtjCH?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
-## Create Your own WYSIWYG Field 
+> [!TIP]
+> 2sxc 17 introduces the ability to configure exactly what content-types are provided
+> to configure the Input-Type.
+>
+> So without this config, the default system always uses a `@All`,
+> `@Xyz` where Xyz is the name of the data eg. `String`,
+> and `@exact-name-of-the-input-type` eg. `@string-my-picker`.
+>
+> With the config, you can eg. skip the `@String` even if you have a string field.
 
-WYSIWYG fields are very hard to do right. Basically you can simply create your own using the same principles as mentioned above. But we recommend that you use the existing WYSIWYG field provided by 2sxc and just change some of the configurations. 
+
+## Create Your own WYSIWYG Field
+
+WYSIWYG fields are very hard to do right. Basically you can simply create your own using the same principles as mentioned above. But we recommend that you use the existing WYSIWYG field provided by 2sxc and just change some of the configurations.
 
 > [!TIP]
-> By just reconfiguring the existing 2sxc WYSIWYG you will benefit from ADAM file-upload and continuous updates to the main component. 
+> By just reconfiguring the existing 2sxc WYSIWYG you will benefit from ADAM file-upload and continuous updates to the main component.
 
 
 Here's what you need to know
