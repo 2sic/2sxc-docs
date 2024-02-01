@@ -137,7 +137,7 @@ var isImage = someInfo.FileIsImage;
 <h3 id="the-way-c-would-like-it">The Way C# Would Like it</h3>
 <p>In C# you would create a class - eg. <code>public class Helper</code>, and then use it like this:</p>
 <pre><code class="lang-c#">// Reference the namespace of the helper class
-@using ThisApp.Code;
+@using ThisApp;
 
 // Create an instance of the helper class - this is typed, NOT dynamic
 var helper = new Helper();
@@ -151,7 +151,7 @@ var isImage = someInfo.FileIsImage;
 </code></pre>
 <p>This all appears very obvious.
 The reason this didn't work before, is that our helper code is not compiled into a DLL.
-Because of this, the compiler would already die on <code>@using ThisApp.Code</code> because it doesn't know what that is.</p>
+Because of this, the compiler would already die on <code>@using ThisApp</code> because it doesn't know what that is.</p>
 <h2 id="hot-app-code-and-intellisense">Hot App Code and Intellisense</h2>
 <p>2sxc 17 introduces a new feature called Hot App Code.
 It allows you to write code just like C# would like it.</p>
@@ -160,42 +160,66 @@ but you must <a class="xref" href="../vscode/index.html">configure VS-Code separ
 <h2 id="how-to-use-hot-app-code">How To Use Hot App Code</h2>
 <h3 id="rules">Rules</h3>
 <ol>
-<li>All of the helper code must be placed in the folder <code>/ThisApp/Code</code>.
+<li>All of the helper code must be placed in the folder <code>/ThisApp/</code> or in its sub folders.
 <ul>
 <li><em>Sub folders are not supported yet.</em></li>
 </ul>
 </li>
 <li>All of the helper code must be in a file with the extension <code>.cs</code>.</li>
-<li>All of the helper classes must be in the namespace <code>ThisApp.Code</code>.</li>
+<li>All of the helper classes must be in the namespace <code>ThisApp</code> or anything below it eg. <code>ThisApp.Logic</code>.</li>
 </ol>
 <h2 id="how-it-works">How It Works</h2>
 <p>Internally 2sxc will setup a file-watcher for this folder.
 Whenever a file changes, it will be compiled into a DLL and loaded into some magic place.
 This uses the Roslyn compiler, the same compiler used by Visual Studio.
 Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it will also reference this magic place.
-Note that this magic hot DLL is only referenced if the Razor or C# has a <code>using ThisApp.Code</code>.</p>
+Note that this magic hot DLL is only referenced if the Razor or C# has a <code>using ThisApp</code>.</p>
 <div class="IMPORTANT">
 <h5>Important</h5>
 <p><strong>Special Note for Dnn ☢️</strong></p>
 <p>Since this feature is still very new and we're still working on it,
 by default Razor is still compiled using the built in <code>System.Web.Compilation.BuildManager</code> which will only support C# 7.3.</p>
-<p>The trigger to use the latest Roslyn compiler looks for <code>@using ThisApp.Code</code> in the Razor file,
-or <code>using ThisApp.Code</code> in the C# file.</p>
+<p>The trigger to use the latest Roslyn compiler looks for <code>@using ThisApp</code> in the Razor file,
+or <code>using ThisApp</code> in the C# file.</p>
 <p>This means that adding the <code>using</code> statement also activates the latest C# 8</p>
 </div>
-<h2 id="how-to-debug-hot-app-code">How To Debug Hot App Code</h2>
-<p>These files are compiled in the background, so you can't see the build process.
-This creates a new challenge: how do you debug this?
-Eg. when you have invalid helper code, how do you know?</p>
-<p>TODO: still WIP</p>
 <h2 id="limitations">Limitations</h2>
 <p>As of now, only Typed Razor and Typed C# files (inheriting from <code>RazorTyped</code> or <code>CodeTyped</code>) can use the DLLs created by HotBuild App Code.</p>
-<h1 id="todo">TODO</h1>
+<h2 id="functionality--features">Functionality / Features</h2>
 <ol>
-<li>Plan for sub folders and sub-namespaces</li>
-<li>Plan for editions</li>
+<li><p>Takes everything in the <code>/ThisApp/**/*.cs</code> folder and compiles it into a DLL.
+The DLL is loaded dynamically for C# files elsewhere and Razor so it can be used (see Dnn requirements above).</p>
+</li>
+<li><p>Also takes everything in <code>/[edition]/ThisApp/**/*.cs</code> and compiles it into separate DLLs.
+This allows you to have different editions of your app, each with different code.
+The DLLs are loaded dynamically for C# files / Razor within that <code>/[edition]</code> folder.
+This allows for Open-Heart-Surgery.</p>
+</li>
+<li><p>Monitors the folders and files to recompile the DLLs on the fly.
+This means that you can edit the code, save it, and it will be recompiled and used immediately.</p>
+</li>
+<li><p>Automatically invalidates dependently compiled Razor/C# so they too will be recompiled when used.</p>
+</li>
 </ol>
-<h1 id="todo-tech-wise">TODO: Tech-wise</h1>
+<h2 id="tips-for-now-wip-experimental">Tips for now (WIP experimental)</h2>
+<ol>
+<li><p>Classes created in the <code>/ThisApp/</code> folder must be in the namespace <code>ThisApp</code> or anything below it.
+This is because the compiler will only compile classes in this namespace.</p>
+</li>
+<li><p>If you're using Dnn, you must add <code>@using ThisApp</code> to the top of your Razor files to activate the new compiler.
+This will also activate C# 8.0.</p>
+</li>
+<li><p>Your Razor can then simply use <code>var helper = new YourClassName()</code></p>
+</li>
+<li><p>You can also access other objects etc. with constants</p>
+</li>
+<li><p>If a C# class in your <code>ThisApp</code> inherits from <code>CodeTyped</code> it may want to access the <code>Kit</code> or <code>MyContext</code>.
+In this case, the class needs to get some context, which it gets automatically if you use
+<code>var helper = GetService&lt;YourService&gt;()</code>.
+Note that for this to work, your class needs no constructor or an empty constructor.</p>
+</li>
+</ol>
+<h2 id="todo-tech-wise">TODO: Tech-wise</h2>
 <ol>
 <li>Create insights page where compiling and errors are shown
 <ol>
@@ -208,6 +232,8 @@ Eg. when you have invalid helper code, how do you know?</p>
 <h2 id="history">History</h2>
 <ul>
 <li>Added v17.00 2023-12</li>
+<li>Added support for sub folders in v17.02</li>
+<li>Added support for editions in v17.02</li>
 </ul>
 <p>Shortlink: <a href="https://go.2sxc.org/hot-build">https://go.2sxc.org/hot-build</a></p>
 
