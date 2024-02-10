@@ -2,7 +2,9 @@
 uid: Abyss.Contribute.Translations.Index
 ---
 
-# Contribute to 2sxc / EAV - Translations
+# Contribute to 2sxc - Translations
+
+![JSON Translations](./assets/translate-json-files.png)
 
 This is a guide to help you understand how to contribute to the translations of 2sxc and EAV.
 
