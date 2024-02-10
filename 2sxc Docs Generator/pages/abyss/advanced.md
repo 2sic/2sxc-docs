@@ -4,6 +4,6 @@ uid: Abyss.Advanced.Index
 
 # Advanced Stuff in the Abyss
 
-These are some really advanced things you may want to know about. 
+These are some really advanced things you may want to know about.
 
-[!include["Abyss Info"](~/pages/abyss/_abyss-info.md)]
+INFO: this page doesn't do much, removed from menu 2024-02-10
