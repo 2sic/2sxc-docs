@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>AutoGenerate Types in HotBuild (BETA v17) | 2sxc 17 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="AutoGenerate Types in HotBuild (BETA v17) | 2sxc 17 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/hotbuild/autogenerate-types.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NetCode.HotBuild.AutogenerateTypes">
+<h1 id="autogenerate-types-in-hotbuild-beta-v17">AutoGenerate Types in HotBuild (BETA v17)</h1>
+
+<p>These are the conventions we're striving for in the new HotBuild system.</p>
+<h2 id="goal">Goal</h2>
+<ol>
+<li>To provide a simple, type-safe object for everything in an app, eg <code>BlogPost.Tags</code> which would return an <code>IEnumerable&lt;Tag&gt;</code>.</li>
+<li>Standards based an simple</li>
+<li>very transparent</li>
+<li>Extensible / customizable, without having to create a very complex code generator.</li>
+</ol>
+<h2 id="how-it-should-work">How it (should) work</h2>
+<p>Let's assume we have the content-type <code>BlogPost</code></p>
+<p>The plan is to generate a auto-generated file <code>/ThisApp/Data/BlogPostAutoGenerated.cs</code> which would look like this:</p>
+<pre><code class="lang-csharp">// DO NOT MODIFY THIS FILE - IT IS AUTO-GENERATED
+// See also: https://go.2sxc.org/hotbuild-autogen
+// If you want to extend it, create a &quot;BlogPost.cs&quot; with this contents:
+/*
+namespace ThisApp.Data
+{
+  public partial class BlogPost
+  {
+    // Add your own properties and methods here
+  }
+}
+*/
+
+// Generator: DataModelGenerator v17.01.08
+// User:      2sichost
+// Edition:   /staging
+// When:      2024-01-31 17:59:00
+namespace ThisApp.Data
+{
+  // This is a generated class for BlogPost
+  // If you wish to modify it, create a partial class for &quot;BlogPost&quot; in a separate &quot;BlogPost.cs&quot; file.
+
+  /// &lt;summary&gt;
+  /// BlogPost Data.
+  /// Default properties such as `.Title` or `.Id` are provided in the base class.
+  /// Most properties have a simple access, such as `.TermsAndGdprCombined`.
+  /// For other properties or uses, the common method such as 
+  /// `String(&quot;FieldName&quot;)`, `Children(...)`, `Picture(...)`, `.Html(...)` and more can be used available.
+  /// &lt;/summary&gt;
+  public partial class BlogPost { }
+
+  /// &lt;summary&gt;
+  /// Auto-Generated base class for BlogPost.
+  /// &lt;/summary&gt;
+  public abstract class BlogPostAutoGenerated : Custom.Data.Item16
+  {
+    public bool TermsAndGdprCombined =&gt; Bool(&quot;TermsAndGdprCombined&quot;);
+    public bool TermsEnabled =&gt; Bool(&quot;TermsEnabled&quot;);
+    public bool GdprEnabled =&gt; Bool(&quot;GdprEnabled&quot;);
+
+    public string Description =&gt; String(&quot;Description&quot;, fallback: &quot;&quot;);    
+  }
+}
+</code></pre>
+<p>Thoughts about this structure:</p>
+<ol>
+<li><strong>AutoGenerated Class</strong>
+<ol>
+<li>We need to have a complicated-named class like <code>BlogPostAutoGenerated</code> to avoid name clashes with properties in the content type.
+Otherwise a class called <code>BlogPost</code> couldn't have a property <code>BlogPost</code>, but this way it works.</li>
+<li>The auto generated needs a weird name - we recommend <code>...AutoGenerated</code> to make it very clear and almost impossible to clash with property names.</li>
+<li>The AutoGenerated should also be <code>abstract</code> so that it can't be instantiated directly.</li>
+<li>For now it must inherit from <code>ThisApp.Data.Item16</code> - a class which is provided by 2sxc</li>
+<li>The <code>...16</code> makes it clear that it's based on <code>...Typed</code> in v16 and that future versions may have different base classes.</li>
+</ol>
+</li>
+<li><strong>Real Class</strong>
+<ol>
+<li>We then need the <strong>real</strong> class with the name matching the ContentType (where possible, see below)</li>
+<li>In same cases this is not possible - eg we have a <code>App-Resources</code> type which is a legacy problem, which should be called <code>AppResources</code></li>
+<li>We need to have a <code>partial</code> class so that the user can extend it with their own properties and methods, without touching the auto-generated file.</li>
+</ol>
+</li>
+<li>Comments
+<ol>
+<li>We need special comments on top of the file, the <strong>real</strong> class and the <strong>autogenerated</strong> to guide the user</li>
+<li>The exact text will be worked out later on</li>
+</ol>
+</li>
+</ol>
+<h2 id="specs-for-the-docs">Specs for the Docs</h2>
+<ol>
+<li>File Intro
+<ol>
+<li>This file is auto-generated by &quot;<code>2sichost</code>&quot; for &quot;<code>/staging</code>&quot; at <code>2024-01-31 17:59:00</code><br>
+Replace with the actual user, path and date</li>
+<li>If you need to extend it, create a partial class for &quot;<code>BlogPost</code>&quot; in a separate file.<br>
+Replace with the actual content type name</li>
+<li>See also: <a href="https://go.2sxc.org/hotbuild-autogen">https://go.2sxc.org/hotbuild-autogen</a></li>
+</ol>
+</li>
+<li>Class Intro
+<ol>
+<li>This is a generated class for <code>BlogPost</code><br>
+Replace with the actual content type name</li>
+<li>If you wish to modify it, create a partial class for &quot;<code>BlogPost</code>&quot; in a separate &quot;<code>BlogPost.cs</code>&quot; file.<br>
+Replace with the actual content type name</li>
+</ol>
+</li>
+<li>Class Description
+<ol>
+<li><code>BlogPost</code> Data.<br>
+Replace with the actual content type name</li>
+<li>Default properties such as <code>.Title</code> or <code>.Id</code> are provided in the base class.<br>
+<em>leave as is</em></li>
+<li>Most properties have a simple access, such as <code>.TermsAndGdprCombined</code>.<br>
+Replace with the first found property - if any, otherwise skip this line</li>
+<li>For other properties or uses, the common method such as <code>String(&quot;FieldName&quot;)</code>, <code>Children(...)</code>, <code>Picture(...)</code>, <code>.Html(...)</code> and more can be used available.<br>
+<em>leave as is</em></li>
+</ol>
+</li>
+</ol>
+<h2 id="specs-for-auto-generated-code">Specs for Auto Generated Code</h2>
+<ul>
+<li>Most properties should simply map to the <code>String</code> or <code>Bool</code> etc. methods</li>
+<li>Strings technically have <code>null</code> fallback, so I recommend we change this to <code>&quot;&quot;</code> instead</li>
+</ul>
+<p>Types, Conversion and Open issues</p>
+<ol>
+<li><code>Boolean</code> is clear, the normal fallback is <code>false</code>, so that's typical</li>
+<li><code>Boolean</code> nullable is tricky, but I suggest the default is only bool, anything else is untypical and would have to be handled in the inheriting class</li>
+<li><code>String</code> is clear - for now we should default to <code>&quot;&quot;</code> instead of <code>null</code></li>
+<li><code>DateTime</code> is clear, but we need to think about the default value. probably <code>DateTime.MinValue</code> for now</li>
+<li><code>Empty</code> should be ignored and not added at all</li>
+<li><code>Hyperlink</code> fields should probably default to the <code>Url(...)</code> method.
+<ol>
+<li>But we need to think about this.</li>
+<li>Alternative would be to generate both a string and a hyperlink property, eg <code>Link</code> and <code>LinkUrl</code></li>
+<li>...or <code>Link</code> and <code>LinkString</code></li>
+<li>Also possible is to create a <code>LinkFile</code> and <code>LinkFolder</code> property providing the <code>File(...)</code> and <code>Folder(...)</code> methods</li>
+</ol>
+</li>
+<li>Note: If we do generate any additional names (eg. <code>LinkUrl</code>) we must make sure that we don't clash with another field</li>
+<li><code>Entity</code> properties are unclear how to handle because
+<ol>
+<li>We may need a single access - eg. using <code>Child(...)</code> or a list access eg using <code>Children(...)</code></li>
+<li>Ideally we would return typed children, eg. <code>AsList&lt;Tag&gt;(Children(&quot;Tags&quot;))</code></li>
+<li>...but it's not quite clear where to determine the type of the children</li>
+</ol>
+</li>
+<li><code>Number</code> could be int, float, double, decimal - so it's unclear which to use...
+<ol>
+<li>probably <code>int</code> for now</li>
+<li>we could also look in the field specs and determine that it has 0 or more decimal places, and then use <code>decimal</code> instead</li>
+</ol>
+</li>
+<li><code>Custom</code>
+<ol>
+<li>if <code>custom-gps</code> then ideally it would create a <code>Gps</code> class with <code>Latitude</code> and <code>Longitude</code> properties</li>
+<li>others should probably be ignored for now</li>
+</ol>
+</li>
+</ol>
+<p>Todo</p>
+<ol>
+<li>Create <a href="https://go.2sxc.org/hotbuild-autogen">https://go.2sxc.org/hotbuild-autogen</a></li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/hotbuild/autogenerate-types.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
