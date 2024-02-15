@@ -2,7 +2,13 @@
 uid: Guides.HotBuild.Index
 ---
 
-# HotBuild - ThisApp.Code - Guide (🌟 v17)
+# HotBuild - ~~ThisApp.Code~~ AppCode - Guide (🌟 v17)
+
+> [!INFO]
+> Up to 2sxc 17.01.07 this experimental feature used the folder `/ThisApp`.
+> Starting with 2sxc 17.02.00 it uses the folder `/AppCode` instead.
+>
+> This documentation is already modified to reflect this change.
 
 2sxc 17 introduces a major new feature **HotBuild**: Precompiled App Code.
 This guide will help you understand what this is, how it works, and how to use it.
@@ -43,7 +49,7 @@ In C# you would create a class - eg. `public class Helper`, and then use it like
 
 ```c#
 // Reference the namespace of the helper class
-@using ThisApp;
+@using AppCode;
 
 // Create an instance of the helper class - this is typed, NOT dynamic
 var helper = new Helper();
@@ -58,7 +64,7 @@ var isImage = someInfo.FileIsImage;
 
 This all appears very obvious.
 The reason this didn't work before, is that our helper code is not compiled into a DLL.
-Because of this, the compiler would already die on `@using ThisApp` because it doesn't know what that is.
+Because of this, the compiler would already die on `@using AppCode` because it doesn't know what that is.
 
 ## Hot App Code and Intellisense
 
@@ -72,10 +78,10 @@ but you must [configure VS-Code separately](xref:Guides.VsCode.Index).
 
 ### Rules
 
-1. All of the helper code must be placed in the folder `/ThisApp/` or in its sub folders.
+1. All of the helper code must be placed in the folder `/AppCode/` or in its sub folders.
     * _Sub folders are not supported yet._
 1. All of the helper code must be in a file with the extension `.cs`.
-1. All of the helper classes must be in the namespace `ThisApp` or anything below it eg. `ThisApp.Logic`.
+1. All of the helper classes must be in the namespace `AppCode` or anything below it eg. `AppCode.Logic`.
 
 ## How It Works
 
@@ -83,7 +89,7 @@ Internally 2sxc will setup a file-watcher for this folder.
 Whenever a file changes, it will be compiled into a DLL and loaded into some magic place.
 This uses the Roslyn compiler, the same compiler used by Visual Studio.
 Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it will also reference this magic place.
-Note that this magic hot DLL is only referenced if the Razor or C# has a `using ThisApp`.
+Note that this magic hot DLL is only referenced if the Razor or C# has a `using AppCode`.
 
 > [!IMPORTANT]
 > **Special Note for Dnn ☢️**
@@ -91,8 +97,8 @@ Note that this magic hot DLL is only referenced if the Razor or C# has a `using 
 > Since this feature is still very new and we're still working on it,
 > by default Razor is still compiled using the built in `System.Web.Compilation.BuildManager` which will only support C# 7.3.
 >
-> The trigger to use the latest Roslyn compiler looks for `@using ThisApp` in the Razor file,
-> or `using ThisApp` in the C# file.
+> The trigger to use the latest Roslyn compiler looks for `@using AppCode` in the Razor file,
+> or `using AppCode` in the C# file.
 >
 > This means that adding the `using` statement also activates the latest C# 8
 
@@ -102,10 +108,10 @@ As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or 
 
 ## Functionality / Features
 
-1. Takes everything in the `/ThisApp/**/*.cs` folder and compiles it into a DLL.
+1. Takes everything in the `/AppCode/**/*.cs` folder and compiles it into a DLL.
    The DLL is loaded dynamically for C# files elsewhere and Razor so it can be used (see Dnn requirements above).
 
-1. Also takes everything in `/[edition]/ThisApp/**/*.cs` and compiles it into separate DLLs.
+1. Also takes everything in `/[edition]/AppCode/**/*.cs` and compiles it into separate DLLs.
    This allows you to have different editions of your app, each with different code.
    The DLLs are loaded dynamically for C# files / Razor within that `/[edition]` folder.
    This allows for Open-Heart-Surgery.
@@ -117,17 +123,17 @@ As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or 
 
 ## Tips for now (WIP experimental)
 
-1. Classes created in the `/ThisApp/` folder must be in the namespace `ThisApp` or anything below it.
+1. Classes created in the `/AppCode/` folder must be in the namespace `AppCode` or anything below it.
    This is because the compiler will only compile classes in this namespace.
 
-1. If you're using Dnn, you must add `@using ThisApp` to the top of your Razor files to activate the new compiler.
+1. If you're using Dnn, you must add `@using AppCode` to the top of your Razor files to activate the new compiler.
    This will also activate C# 8.0.
 
 1. Your Razor can then simply use `var helper = new YourClassName()`
 
 1. You can also access other objects etc. with constants
 
-1. If a C# class in your `ThisApp` inherits from `CodeTyped` it may want to access the `Kit` or `MyContext`.
+1. If a C# class in your `AppCode` inherits from `CodeTyped` it may want to access the `Kit` or `MyContext`.
    In this case, the class needs to get some context, which it gets automatically if you use
    `var helper = GetService<YourService>()`.
    Note that for this to work, your class needs no constructor or an empty constructor.

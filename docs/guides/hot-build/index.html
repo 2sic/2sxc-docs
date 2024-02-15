@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>HotBuild - ThisApp.Code - Guide (&#127775; v17) | 2sxc 17 for Dnn and Oqtane </title>
+      <title>HotBuild - ThisApp.Code AppCode - Guide (&#127775; v17) | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="HotBuild - ThisApp.Code - Guide (&#127775; v17) | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="HotBuild - ThisApp.Code AppCode - Guide (&#127775; v17) | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -106,8 +106,14 @@
         </div>
 
         <article data-uid="Guides.HotBuild.Index">
-<h1 id="hotbuild---thisappcode---guide--v17">HotBuild - ThisApp.Code - Guide (🌟 v17)</h1>
+<h1 id="hotbuild---thisappcode-appcode---guide--v17">HotBuild - <del>ThisApp.Code</del> AppCode - Guide (🌟 v17)</h1>
 
+<blockquote>
+<p>[!INFO]
+Up to 2sxc 17.01.07 this experimental feature used the folder <code>/ThisApp</code>.
+Starting with 2sxc 17.02.00 it uses the folder <code>/AppCode</code> instead.</p>
+<p>This documentation is already modified to reflect this change.</p>
+</blockquote>
 <p>2sxc 17 introduces a major new feature <strong>HotBuild</strong>: Precompiled App Code.
 This guide will help you understand what this is, how it works, and how to use it.</p>
 <p>➡️ Check out the <a href="https://2sxc.org/en/blog/post/scale-5-with-2sxc-hotbuild-on-the-5th-day">HotBuild Introduction Blog</a></p>
@@ -137,7 +143,7 @@ var isImage = someInfo.FileIsImage;
 <h3 id="the-way-c-would-like-it">The Way C# Would Like it</h3>
 <p>In C# you would create a class - eg. <code>public class Helper</code>, and then use it like this:</p>
 <pre><code class="lang-c#">// Reference the namespace of the helper class
-@using ThisApp;
+@using AppCode;
 
 // Create an instance of the helper class - this is typed, NOT dynamic
 var helper = new Helper();
@@ -151,7 +157,7 @@ var isImage = someInfo.FileIsImage;
 </code></pre>
 <p>This all appears very obvious.
 The reason this didn't work before, is that our helper code is not compiled into a DLL.
-Because of this, the compiler would already die on <code>@using ThisApp</code> because it doesn't know what that is.</p>
+Because of this, the compiler would already die on <code>@using AppCode</code> because it doesn't know what that is.</p>
 <h2 id="hot-app-code-and-intellisense">Hot App Code and Intellisense</h2>
 <p>2sxc 17 introduces a new feature called Hot App Code.
 It allows you to write code just like C# would like it.</p>
@@ -160,37 +166,37 @@ but you must <a class="xref" href="../vscode/index.html">configure VS-Code separ
 <h2 id="how-to-use-hot-app-code">How To Use Hot App Code</h2>
 <h3 id="rules">Rules</h3>
 <ol>
-<li>All of the helper code must be placed in the folder <code>/ThisApp/</code> or in its sub folders.
+<li>All of the helper code must be placed in the folder <code>/AppCode/</code> or in its sub folders.
 <ul>
 <li><em>Sub folders are not supported yet.</em></li>
 </ul>
 </li>
 <li>All of the helper code must be in a file with the extension <code>.cs</code>.</li>
-<li>All of the helper classes must be in the namespace <code>ThisApp</code> or anything below it eg. <code>ThisApp.Logic</code>.</li>
+<li>All of the helper classes must be in the namespace <code>AppCode</code> or anything below it eg. <code>AppCode.Logic</code>.</li>
 </ol>
 <h2 id="how-it-works">How It Works</h2>
 <p>Internally 2sxc will setup a file-watcher for this folder.
 Whenever a file changes, it will be compiled into a DLL and loaded into some magic place.
 This uses the Roslyn compiler, the same compiler used by Visual Studio.
 Whenever a Razor or .cs file (outside of the App_Code folder) is compiled, it will also reference this magic place.
-Note that this magic hot DLL is only referenced if the Razor or C# has a <code>using ThisApp</code>.</p>
+Note that this magic hot DLL is only referenced if the Razor or C# has a <code>using AppCode</code>.</p>
 <div class="IMPORTANT">
 <h5>Important</h5>
 <p><strong>Special Note for Dnn ☢️</strong></p>
 <p>Since this feature is still very new and we're still working on it,
 by default Razor is still compiled using the built in <code>System.Web.Compilation.BuildManager</code> which will only support C# 7.3.</p>
-<p>The trigger to use the latest Roslyn compiler looks for <code>@using ThisApp</code> in the Razor file,
-or <code>using ThisApp</code> in the C# file.</p>
+<p>The trigger to use the latest Roslyn compiler looks for <code>@using AppCode</code> in the Razor file,
+or <code>using AppCode</code> in the C# file.</p>
 <p>This means that adding the <code>using</code> statement also activates the latest C# 8</p>
 </div>
 <h2 id="limitations">Limitations</h2>
 <p>As of now, only Typed Razor and Typed C# files (inheriting from <code>RazorTyped</code> or <code>CodeTyped</code>) can use the DLLs created by HotBuild App Code.</p>
 <h2 id="functionality--features">Functionality / Features</h2>
 <ol>
-<li><p>Takes everything in the <code>/ThisApp/**/*.cs</code> folder and compiles it into a DLL.
+<li><p>Takes everything in the <code>/AppCode/**/*.cs</code> folder and compiles it into a DLL.
 The DLL is loaded dynamically for C# files elsewhere and Razor so it can be used (see Dnn requirements above).</p>
 </li>
-<li><p>Also takes everything in <code>/[edition]/ThisApp/**/*.cs</code> and compiles it into separate DLLs.
+<li><p>Also takes everything in <code>/[edition]/AppCode/**/*.cs</code> and compiles it into separate DLLs.
 This allows you to have different editions of your app, each with different code.
 The DLLs are loaded dynamically for C# files / Razor within that <code>/[edition]</code> folder.
 This allows for Open-Heart-Surgery.</p>
@@ -203,17 +209,17 @@ This means that you can edit the code, save it, and it will be recompiled and us
 </ol>
 <h2 id="tips-for-now-wip-experimental">Tips for now (WIP experimental)</h2>
 <ol>
-<li><p>Classes created in the <code>/ThisApp/</code> folder must be in the namespace <code>ThisApp</code> or anything below it.
+<li><p>Classes created in the <code>/AppCode/</code> folder must be in the namespace <code>AppCode</code> or anything below it.
 This is because the compiler will only compile classes in this namespace.</p>
 </li>
-<li><p>If you're using Dnn, you must add <code>@using ThisApp</code> to the top of your Razor files to activate the new compiler.
+<li><p>If you're using Dnn, you must add <code>@using AppCode</code> to the top of your Razor files to activate the new compiler.
 This will also activate C# 8.0.</p>
 </li>
 <li><p>Your Razor can then simply use <code>var helper = new YourClassName()</code></p>
 </li>
 <li><p>You can also access other objects etc. with constants</p>
 </li>
-<li><p>If a C# class in your <code>ThisApp</code> inherits from <code>CodeTyped</code> it may want to access the <code>Kit</code> or <code>MyContext</code>.
+<li><p>If a C# class in your <code>AppCode</code> inherits from <code>CodeTyped</code> it may want to access the <code>Kit</code> or <code>MyContext</code>.
 In this case, the class needs to get some context, which it gets automatically if you use
 <code>var helper = GetService&lt;YourService&gt;()</code>.
 Note that for this to work, your class needs no constructor or an empty constructor.</p>

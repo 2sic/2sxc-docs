@@ -70,7 +70,7 @@ EndProject
     <TargetFramework>net472</TargetFramework>
 
     <!-- Specify the default Namespace for code in this specific App -->
-    <RootNamespace>ThisApp</RootNamespace>
+    <RootNamespace>AppCode</RootNamespace>
 
     <!-- Specify what C# version to use
       https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history
