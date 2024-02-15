@@ -4,8 +4,9 @@ uid: Guides.HotBuild.Index
 
 # HotBuild - ~~ThisApp.Code~~ AppCode - Guide (🌟 v17)
 
-> [!INFO]
+> [!NOTE]
 > Up to 2sxc 17.01.07 this experimental feature used the folder `/ThisApp`.
+>
 > Starting with 2sxc 17.02.00 it uses the folder `/AppCode` instead.
 >
 > This documentation is already modified to reflect this change.
