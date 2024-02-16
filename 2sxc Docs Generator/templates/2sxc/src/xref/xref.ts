@@ -38,6 +38,9 @@ export class Xref {
       showTarget.href = target;
       showTarget.textContent = target;
 
+      // if not found exit now - the html has already been updated with the message
+      if (target === XrefNotFound) return;
+
       // Set Timer to redirect
       const timer = setTimeout(() => {
         document.location.href = target;
