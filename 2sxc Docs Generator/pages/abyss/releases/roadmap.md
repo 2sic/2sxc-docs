@@ -11,13 +11,15 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2023-11-23**
+Last Update: **2024-02-19**
 
 ## TODO: add infos from release 17.01
 
 ## To Improve Q1
 
 1. ⌛ Mobius Form Builder
+1. ✅ Improve infos about layout in toolbar
+1. ✅ Improve infos about image resizer in toolbar
 1. Improve Intellisense
     1. ✅ Hide more internal APIs
     1. Include more XML docs
@@ -25,7 +27,7 @@ Last Update: **2023-11-23**
         1. ToSic.Sxc.WebApi
         1. ToSic.Sxc.Dnn
         1. ToSic.Sxc.Oqt / Razor
-    1. Find way to link to the official docs from inside the help
+    1. ✅ Find way to link to the official docs from inside the help
 1. Improve HotBuild
     1. ✅ Improve initial list of included assemblies and namespaces @STV
     1. ✅ Improve caching of information how to build/compile to improve speed
@@ -33,14 +35,25 @@ Last Update: **2023-11-23**
     1. ✅ Support Editions
     1. ✅ Improve error messages on building the ThisCode folder
     1. ✅ Improve error messages when building Razor and C# using Roslyn
-    1. Improve detection so that build is locking (prevent multiple builds on high-load)
+    1. ✅ Improve detection so that build is locking (prevent multiple builds on high-load)
+    1. ✅ Create system to generate models
     1. Provide special UI to build the code and debug
+    1. ✅ Switch to `AppCode` ~~ThisApp~~
+    1. Provide final place for base type
+        1. ✅ `Custom.Data.Item16`
+        1. GPS?
 1. Shared Field Configurations (not yet "published")
 1. ✅ Ability to change input config types/metadata - eg. skip `@String` when never needed
 1. ✅ Ability to share field configurations
     1. ⌛ Custom config inherit from multiple sources or keeping the Label
     1. Preserve config on export/import
+1. ⌛ Improve Create New App Experience
+    1. Create new app template
+    1. Improve the new app wizard - allow selecting template
+    1. Improve create-app code to use the new template
 1. ⌛ Document new ~~Pro~~ Typed mode
+1. ✅ fix/improve date picker
+1. ✅ Update Monaco to latest version
 
 
 1. Improve CSP in Oqtane 4
