@@ -1,8 +1,8 @@
 ---
-uid: NetCode.HotBuild.AutogenerateTypes
+uid: NetCode.Copilot.DataModelGenerator
 ---
 
-# AutoGenerate Types in HotBuild (BETA v17)
+# Copilot Generate Types for HotBuild (BETA v17)
 
 These are the conventions we're striving for in the new HotBuild system.
 
