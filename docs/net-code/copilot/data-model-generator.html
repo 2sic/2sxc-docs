@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Copilot Generate Types for HotBuild (BETA v17) | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Copilot Generate Types for HotBuild (BETA v17.02) | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Copilot Generate Types for HotBuild (BETA v17) | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Copilot Generate Types for HotBuild (BETA v17.02) | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.Copilot.DataModelGenerator">
-<h1 id="copilot-generate-types-for-hotbuild-beta-v17">Copilot Generate Types for HotBuild (BETA v17)</h1>
+<h1 id="copilot-generate-types-for-hotbuild-beta-v1702">Copilot Generate Types for HotBuild (BETA v17.02)</h1>
 
 <p>These are the conventions we're striving for in the new HotBuild system.</p>
 <h2 id="goal">Goal</h2>
@@ -228,38 +228,36 @@ Replace with the first found property - if any, otherwise skip this line</li>
 </ol>
 </li>
 </ol>
-<h2 id="specs-for-auto-generated-code">Specs for Auto Generated Code</h2>
-<ul>
-<li>Most properties should simply map to the <code>String</code> or <code>Bool</code> etc. methods</li>
-<li>Strings technically have <code>null</code> fallback, so I recommend we change this to <code>&quot;&quot;</code> instead</li>
-</ul>
-<p>Types, Conversion and Open issues</p>
+<h2 id="how-properties-are-auto-generated">How Properties are auto-generated</h2>
 <ol>
-<li><code>Boolean</code> is clear, the normal fallback is <code>false</code>, so that's typical</li>
-<li><code>Boolean</code> nullable is tricky, but I suggest the default is only bool, anything else is untypical and would have to be handled in the inheriting class</li>
-<li><code>String</code> is clear - for now we should default to <code>&quot;&quot;</code> instead of <code>null</code></li>
-<li><code>DateTime</code> is clear, but we need to think about the default value. probably <code>DateTime.MinValue</code> for now</li>
-<li><code>Empty</code> should be ignored and not added at all</li>
+<li><code>Boolean</code> is clear, the normal fallback is <code>false</code>, so that's typical
+<ol>
+<li>if the developer needs a <code>bool?</code> he will have to use the <code>Get&lt;bool?&gt;()</code> method</li>
+</ol>
+</li>
+<li><code>String</code> is clear defaults to <code>&quot;&quot;</code> and not <code>null</code></li>
+<li><code>DateTime</code> is treated as <code>System.DateTime</code></li>
+<li><code>Empty</code> is ignored</li>
 <li><code>Hyperlink</code> fields should probably default to the <code>Url(...)</code> method.
 <ol>
-<li>But we need to think about this.</li>
-<li>Alternative would be to generate both a string and a hyperlink property, eg <code>Link</code> and <code>LinkUrl</code></li>
-<li>...or <code>Link</code> and <code>LinkString</code></li>
-<li>Also possible is to create a <code>LinkFile</code> and <code>LinkFolder</code> property providing the <code>File(...)</code> and <code>Folder(...)</code> methods</li>
+<li><code>string</code> using the <code>Url(...)</code> method is the default</li>
+<li><code>IFile</code> is also generated on the <code>[original-name]File</code> property using the <code>File(...)</code> method</li>
+<li><code>IFolder</code> is also generated on the <code>[original-name]Folder</code> property using the <code>Folder(...)</code> method</li>
+<li>Note: Since it generates additional names, it may clash with existing fields. In this case, the main field has precedence.</li>
 </ol>
 </li>
-<li>Note: If we do generate any additional names (eg. <code>LinkUrl</code>) we must make sure that we don't clash with another field</li>
-<li><code>Entity</code> properties are unclear how to handle because
+<li><code>Entity</code> properties return
 <ol>
-<li>We may need a single access - eg. using <code>Child(...)</code> or a list access eg using <code>Children(...)</code></li>
-<li>Ideally we would return typed children, eg. <code>AsList&lt;Tag&gt;(Children(&quot;Tags&quot;))</code></li>
-<li>...but it's not quite clear where to determine the type of the children</li>
+<li><code>ITypedItem</code> If it's configured to have only one item</li>
+<li><code>IEnumerable&lt;ITypedItem&gt;</code> if it's configured to have multiple items</li>
+<li><code>[App-Content-Type]</code> if it's configured to only allow one specific content-type which is also generated</li>
+<li><code>IEnumerable&lt;[App-Content-Type]&gt;</code> if it's configured to have multiple specific content-types which are also generated</li>
 </ol>
 </li>
-<li><code>Number</code> could be int, float, double, decimal - so it's unclear which to use...
+<li><code>Number</code> could be int, float, double, decimal
 <ol>
-<li>probably <code>int</code> for now</li>
-<li>we could also look in the field specs and determine that it has 0 or more decimal places, and then use <code>decimal</code> instead</li>
+<li><code>int</code> is the default, and the type used if 0 decimals are configured</li>
+<li><code>decimal</code> is used, if it's configured to have 1 or more decimal</li>
 </ol>
 </li>
 <li><code>Custom</code>
@@ -269,10 +267,8 @@ Replace with the first found property - if any, otherwise skip this line</li>
 </ol>
 </li>
 </ol>
-<p>Todo</p>
-<ol>
-<li>Create <a href="https://go.2sxc.org/hotbuild-autogen">https://go.2sxc.org/hotbuild-autogen</a></li>
-</ol>
+<hr>
+<p>Shortlink: <a href="https://go.2sxc.org/copilot-data">https://go.2sxc.org/copilot-data</a></p>
 
 </article>
 

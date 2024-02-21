@@ -2,7 +2,7 @@
 uid: NetCode.Copilot.DataModelGenerator
 ---
 
-# Copilot Generate Types for HotBuild (BETA v17)
+# Copilot Generate Types for HotBuild (BETA v17.02)
 
 These are the conventions we're striving for in the new HotBuild system.
 
@@ -113,36 +113,30 @@ Thoughts about this structure:
     1. For other properties or uses, the common method such as `String("FieldName")`, `Children(...)`, `Picture(...)`, `.Html(...)` and more can be used available.  
         _leave as is_
 
-## Specs for Auto Generated Code
-
-* Most properties should simply map to the `String` or `Bool` etc. methods
-* Strings technically have `null` fallback, so I recommend we change this to `""` instead
-
-Types, Conversion and Open issues
+## How Properties are auto-generated
 
 1. `Boolean` is clear, the normal fallback is `false`, so that's typical
-1. `Boolean` nullable is tricky, but I suggest the default is only bool, anything else is untypical and would have to be handled in the inheriting class
-1. `String` is clear - for now we should default to `""` instead of `null`
-1. `DateTime` is clear, but we need to think about the default value. probably `DateTime.MinValue` for now
-1. `Empty` should be ignored and not added at all
+    1. if the developer needs a `bool?` he will have to use the `Get<bool?>()` method
+1. `String` is clear defaults to `""` and not `null`
+1. `DateTime` is treated as `System.DateTime`
+1. `Empty` is ignored
 1. `Hyperlink` fields should probably default to the `Url(...)` method.
-    1. But we need to think about this.
-    1. Alternative would be to generate both a string and a hyperlink property, eg `Link` and `LinkUrl`
-    1. ...or `Link` and `LinkString`
-    1. Also possible is to create a `LinkFile` and `LinkFolder` property providing the `File(...)` and `Folder(...)` methods
-1. Note: If we do generate any additional names (eg. `LinkUrl`) we must make sure that we don't clash with another field
-1. `Entity` properties are unclear how to handle because
-    1. We may need a single access - eg. using `Child(...)` or a list access eg using `Children(...)`
-    1. Ideally we would return typed children, eg. `AsList<Tag>(Children("Tags"))`
-    1. ...but it's not quite clear where to determine the type of the children
-1. `Number` could be int, float, double, decimal - so it's unclear which to use...
-    1. probably `int` for now
-    1. we could also look in the field specs and determine that it has 0 or more decimal places, and then use `decimal` instead
+    1. `string` using the `Url(...)` method is the default
+    1. `IFile` is also generated on the `[original-name]File` property using the `File(...)` method
+    1. `IFolder` is also generated on the `[original-name]Folder` property using the `Folder(...)` method
+    1. Note: Since it generates additional names, it may clash with existing fields. In this case, the main field has precedence.
+1. `Entity` properties return
+    1. `ITypedItem` If it's configured to have only one item
+    1. `IEnumerable<ITypedItem>` if it's configured to have multiple items
+    1. `[App-Content-Type]` if it's configured to only allow one specific content-type which is also generated
+    1. `IEnumerable<[App-Content-Type]>` if it's configured to have multiple specific content-types which are also generated
+1. `Number` could be int, float, double, decimal
+    1. `int` is the default, and the type used if 0 decimals are configured
+    1. `decimal` is used, if it's configured to have 1 or more decimal
 1. `Custom`
     1. if `custom-gps` then ideally it would create a `Gps` class with `Latitude` and `Longitude` properties
     1. others should probably be ignored for now
 
 
-Todo
-
-1. Create <https://go.2sxc.org/hotbuild-autogen>
+---
+Shortlink: <https://go.2sxc.org/copilot-data>
