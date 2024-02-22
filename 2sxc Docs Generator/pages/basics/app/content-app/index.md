@@ -4,10 +4,10 @@ uid: Basics.App.ContentApp.Index
 
 # The _Content_ App
 
-The Content-App is a special App in each Site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page. 
+The Content-App is a special App in each Site which is automatically created whenever you start using 2sxc on a site. The core purpose is content-editing like adding text, images, links and simple decorations (like separation lines) to the page.
 
 > [!TIP]
-> The content App has some special behavior and limitations by design. 
+> The content App has some special behavior and limitations by design.
 
 ## Special Behavior of _The Content_ App
 
@@ -30,13 +30,13 @@ It will _first_ show the [Content Type](xref:Basics.Data.ContentTypes.Index) pic
 
 <img src="~/assets/features/content-templates.svg" width="100%">
 
-_The_ Content App can auto-install prepared templates which are specifically designed for this use case. This is why the installer looks different for _The_ Content App than for normal Apps. 
+_The_ Content App can auto-install prepared templates which are specifically designed for this use case. This is why the installer looks different for _The_ Content App than for normal Apps.
 
 > [!TIP]
-> Instead of installing the default set of Content-Types and Views, you can also skip this and just configure your own or import your preferred default Content-App. 
-> 
+> Instead of installing the default set of Content-Types and Views, you can also skip this and just configure your own or import your preferred default Content-App.
+>
 > Use this [✅ checklist to create a custom template app](https://azing.org/2sxc/r/YHKvArc6)
-> 
+>
 > Use this [✅ checklist to import the custom app](https://azing.org/2sxc/r/t5OIFlI6)
 
 

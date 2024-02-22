@@ -7,6 +7,16 @@ uid: Basics.App.FoldersAndFiles.Icons
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-assets-app { visibility: visible; }</style>
 
+Icons are a great way to make your app more recognizable and user-friendly.
+They are used in many places, like the app-list, the content-type list, the view-list and more.
+The most common icons are:
+
+* The App Icon - shown in the app picker, app-admin and apps-management
+* The View Icon - shown in the view-picker and view-admin (future)
+* Content-Type Icons - shown in the content-type selection in the special [Content App](xref:Basics.App.ContentApp.Index)
+
+## App Icon
+
 App icons are convention based, so there is no configuration for it.
 To give your app an icon, place a file called `app-icon.png` in the root folder of your app.
 It should be square, and at least 500x500 pixels.

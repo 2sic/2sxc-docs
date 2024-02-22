@@ -77,18 +77,17 @@ Here's an example of how to configure editions (note that in VS-Code you would g
 ```
 
 
-
 ## Schemas
 
 * [app.json index on schemas.2sxc.org](https://schemas.2sxc.org/app/)
-* app.json v14 <https://schemas.2sxc.org/app/v14/app.json>
-* app.json v17 <https://schemas.2sxc.org/app/v17/app.json>
+* app.json v17 <https://schemas.2sxc.org/app/v17/app.json> (latest 🌟)
+* app.json v14 <https://schemas.2sxc.org/app/v14/app.json> (old, not recommended anymore)
 
 ---
 
 ## History
 
 * Created in v14.10
-* Updated in 17.02 with `editions`
+* Updated in 17.02 with `editions` and `copilot`
 
-Shortlink: <https://go.2sxc.org/app.json>
+Shortlink: <https://go.2sxc.org/app-json>
