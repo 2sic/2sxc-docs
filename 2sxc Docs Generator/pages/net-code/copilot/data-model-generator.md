@@ -137,6 +137,12 @@ Thoughts about this structure:
     1. if `custom-gps` then ideally it would create a `Gps` class with `Latitude` and `Longitude` properties
     1. others should probably be ignored for now
 
+Note that the property will always call the `base.Something(...)` to auto-generate.
+This is to ensure that new names don't break the code - eg. if there is a property called `Child`, then `base.Child(...)` will still work.
+
+Another note: You could think that we could also make the `Presentation` object typed, but this is not possible.
+Reason is that different views could use the same Content-Type (eg. a **Location** type) with different presentation settings,
+so the type **Location** would need to have a **Presentation** of **MapSettings** in one place, and **AddressSettings** in another.
 
 ---
 Shortlink: <https://go.2sxc.org/copilot-data>

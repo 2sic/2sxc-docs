@@ -267,6 +267,11 @@ Replace with the first found property - if any, otherwise skip this line</li>
 </ol>
 </li>
 </ol>
+<p>Note that the property will always call the <code>base.Something(...)</code> to auto-generate.
+This is to ensure that new names don't break the code - eg. if there is a property called <code>Child</code>, then <code>base.Child(...)</code> will still work.</p>
+<p>Another note: You could think that we could also make the <code>Presentation</code> object typed, but this is not possible.
+Reason is that different views could use the same Content-Type (eg. a <strong>Location</strong> type) with different presentation settings,
+so the type <strong>Location</strong> would need to have a <strong>Presentation</strong> of <strong>MapSettings</strong> in one place, and <strong>AddressSettings</strong> in another.</p>
 <hr>
 <p>Shortlink: <a href="https://go.2sxc.org/copilot-data">https://go.2sxc.org/copilot-data</a></p>
 
