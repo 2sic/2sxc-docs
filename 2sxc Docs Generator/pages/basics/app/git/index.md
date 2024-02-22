@@ -14,9 +14,9 @@ In 2sxc you can store the current App State to an XML file and restore it.
 
 ## What's Included and What Not
 
-If you save an [App Folder](xref:Basics.App.FolderStructure) to git...
+If you save an [App Folder](xref:Basics.App.FoldersAndFiles.Index) to git...
 
-* ...it contains everything in the App folder and [App Assets](xref:Basics.App.Assets) (unless you explicitly added it to the `.gitignore` file)
+* ...it contains everything in the App folder and [App Assets](xref:Basics.App.FoldersAndFiles.Assets) (unless you explicitly added it to the `.gitignore` file)
 * ...it _may_ contain the App State (all the data items including configuration and settings) _if_ you previously exported them (see below)
 * ...it _doesn't_ contain the [Content Assets](xref:Basics.Content.Assets) (images etc.) as that's in the ADAM folder of the App
 

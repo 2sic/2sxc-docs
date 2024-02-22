@@ -15,7 +15,7 @@ An app is a standalone bundle of data and functionality. It contains the green a
 
 Everything belonging to the App is stored in these locations
 
-1. The [App folder](xref:Basics.App.FolderStructure) contains all the green parts in the image above, including templates, C# code, JavaScript files etc.
+1. The [App folder](xref:Basics.App.FoldersAndFiles.Index) contains all the green parts in the image above, including templates, C# code, JavaScript files etc.
 1. The database contains all the data of the app
 1. The [ADAM](xref:Basics.Cms.Adam.Index) folder contains the Assets for the App items
 
@@ -102,6 +102,6 @@ You can create such SPAs using any popular JavaScript Framework such as
 
 You may want to learn more about
 
-1. [The App Folder Structure](xref:Basics.App.FolderStructure)
-1. [App Icons](xref:Basics.App.Icons)
+1. [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index)
+1. [App Icons](xref:Basics.App.FoldersAndFiles.Icons)
 1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)

@@ -9,7 +9,7 @@ uid: Basics.Browser.JavaScript
 
 The **JavaScript** which the browser receives can come from multiple sources:
 
-1. **[App Assets](xref:Basics.App.Assets)** located in your App folder  
+1. **[App Assets](xref:Basics.App.FoldersAndFiles.Assets)** located in your App folder  
 1. **CDN** (Content Delivery Network) - this is often used for common JS libraries
 
 ## Asset Recommendations

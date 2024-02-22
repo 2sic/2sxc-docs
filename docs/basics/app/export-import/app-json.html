@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>App Export - app.json (new v14.10) | 2sxc 17 for Dnn and Oqtane </title>
+      <title>App Export Configuration | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="App Export - app.json (new v14.10) | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="App Export Configuration | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="Basics.App.ExportImport.App.Json">
-<h1 id="app-export---appjson-new-v1410">App Export - <code>app.json</code> (new v14.10)</h1>
+<h1 id="app-export-configuration">App Export Configuration</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -210,10 +210,12 @@
   .context-box-summary .data-all,
   { visibility: visible; }
 </style>
-<p>Starting in v14.10 you can override some export behavior.</p>
-<h2 id="restrict-exported-foldersfiles">Restrict Exported Folders/Files</h2>
-<h3 id="default-behavior-v7">Default Behavior (v7+)</h3>
-<p>By default, the following folders will not be included in the ZIP file:</p>
+<p>Starting in v14.10 you can override some export behavior.
+This is done using the <code>/App_Data/app.json</code> file.</p>
+<p>You can find out more about the <a class="xref" href="../folders-and-files/app-json.html">app.json here</a>.
+The rest of this page is for configuring the export.</p>
+<h2 id="default-export-behavior-v7">Default Export Behavior (v7+)</h2>
+<p>By default (eg. if you don't have an <code>app.json</code>), the following folders will not be included in the ZIP file:</p>
 <p>The following folders and files are special source-code folders and will not be included in export / import of Apps.</p>
 <ol>
 <li><code>.git</code> git versioning data</li>
@@ -221,17 +223,13 @@
 <li><code>node_modules</code> location for NPM javascript packages for development</li>
 <li><code>bower_components</code> location for javascript packages, similar to NPM but older</li>
 </ol>
-<h3 id="new-configurable-behavior">New Configurable Behavior</h3>
+<h2 id="configurable-behavior">Configurable Behavior</h2>
 <p>When Webpack5 came along, it also needed the folder <code>.temp_cache</code>.
-So it became clear, that we shouldn't hardwire a list, but make it configurable.</p>
-<p>So now in your App folder you can create a folder <code>App_Data</code> <a class="xref" href="../folder-structure.html">see App_Data</a>
-and in that create an <code>app.json</code>.</p>
-<p>We've also created a schema for it so you will have some intellisense while editing.
-The latest version is <code>https://schemas.2sxc.org/app/v14/app.json</code>.
-For other versions see <a href="https://schemas.2sxc.org/app/">app.json by version</a>.</p>
+So it became clear, that we shouldn't hard wire a list, but make it configurable.
+This uses the <a class="xref" href="../folders-and-files/app-json.html">/App_Data/app.json</a>.</p>
 <p>Example:</p>
 <pre><code class="lang-jsonc">{
-  &quot;$schema&quot;: &quot;https://schemas.2sxc.org/app/v14/app.json&quot;,
+  &quot;$schema&quot;: &quot;https://schemas.2sxc.org/app/v17/app.json&quot;,
   /*
     This is a JSON file but it is treated like a JSONC (with comments).
 
@@ -261,6 +259,12 @@ For other versions see <a href="https://schemas.2sxc.org/app/">app.json by versi
 
 }
 </code></pre>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Default behavior since v7</li>
+<li>Configurable since v14.10</li>
+</ul>
 
 </article>
 

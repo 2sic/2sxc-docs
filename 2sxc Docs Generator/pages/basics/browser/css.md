@@ -9,7 +9,7 @@ uid: Basics.Browser.Css
 
 The **Css** which the browser receives can come from multiple sources:
 
-1. **[App Assets](xref:Basics.App.Assets)** located in your App folder
+1. **[App Assets](xref:Basics.App.FoldersAndFiles.Assets)** located in your App folder
 1. **CDN** (Content Delivery Network) - this is often used for common JS / Style libraries
 
 ## Recommendations

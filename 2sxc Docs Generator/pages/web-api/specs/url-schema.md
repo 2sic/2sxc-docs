@@ -56,14 +56,14 @@ Every 2sxc REST URL is built with the following parts:
 
 ### The Root in Dnn 9+
 
-In Dnn 9 the root was shortened to: `[portal-root-with-language]/api/2sxc/...`
+In Dnn 9 the root was shortened to: `[site-root-with-language]/api/2sxc/...`
 
 > [!NOTE]
 > The old root from Dnn 7 and 8 still work in Dnn 9 for compatibility. 
 
 ### The Root in Dnn 7 and 8
 
-Dnn 7 & 8: `[portal-root-with-language]/desktopmodules/2sxc/api/...`
+Dnn 7 & 8: `[site-root-with-language]/desktopmodules/2sxc/api/...`
 
 > [!WARNING]
 > An easy thing to overlook is that in Dnn 7 and 8 it was `2sxc/api` but in Dnn 9 it's `api/2sxc`

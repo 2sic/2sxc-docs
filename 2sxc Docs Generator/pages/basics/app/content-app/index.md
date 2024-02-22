@@ -56,8 +56,8 @@ Since the Content-App is always there by default and the purpose is to add/edit 
 
 ## Learn More
 
-1. [The App Folder Structure](xref:Basics.App.FolderStructure)
-1. [App Icons](xref:Basics.App.Icons)
+1. [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index)
+1. [App Icons](xref:Basics.App.FoldersAndFiles.Icons)
 1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
 1. [✅ How to reset the content-app to factory defaults](https://azing.org/2sxc/r/Ll3AalkO)
 

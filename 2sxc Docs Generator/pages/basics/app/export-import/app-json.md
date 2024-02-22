@@ -2,7 +2,7 @@
 uid: Basics.App.ExportImport.App.Json
 ---
 
-# App Export - `app.json` (new v14.10)
+# App Export Configuration
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
@@ -11,12 +11,15 @@ uid: Basics.App.ExportImport.App.Json
 </style>
 
 Starting in v14.10 you can override some export behavior.
+This is done using the `/App_Data/app.json` file.
 
-## Restrict Exported Folders/Files
+You can find out more about the [app.json here](xref:Basics.App.FoldersAndFiles.AppJson).
+The rest of this page is for configuring the export.
 
-### Default Behavior (v7+)
 
-By default, the following folders will not be included in the ZIP file:
+## Default Export Behavior (v7+)
+
+By default (eg. if you don't have an `app.json`), the following folders will not be included in the ZIP file:
 
 The following folders and files are special source-code folders and will not be included in export / import of Apps.
 
@@ -25,23 +28,17 @@ The following folders and files are special source-code folders and will not be 
 1. `node_modules` location for NPM javascript packages for development
 1. `bower_components` location for javascript packages, similar to NPM but older
 
-### New Configurable Behavior
+## Configurable Behavior
 
 When Webpack5 came along, it also needed the folder `.temp_cache`.
-So it became clear, that we shouldn't hardwire a list, but make it configurable.
-
-So now in your App folder you can create a folder `App_Data` [see App_Data](xref:Basics.App.FolderStructure)
-and in that create an `app.json`.
-
-We've also created a schema for it so you will have some intellisense while editing.
-The latest version is `https://schemas.2sxc.org/app/v14/app.json`.
-For other versions see [app.json by version](https://schemas.2sxc.org/app/).
+So it became clear, that we shouldn't hard wire a list, but make it configurable.
+This uses the [/App_Data/app.json](xref:Basics.App.FoldersAndFiles.AppJson).
 
 Example:
 
 ```jsonc
 {
-  "$schema": "https://schemas.2sxc.org/app/v14/app.json",
+  "$schema": "https://schemas.2sxc.org/app/v17/app.json",
   /*
     This is a JSON file but it is treated like a JSONC (with comments).
 
@@ -71,3 +68,10 @@ Example:
 
 }
 ```
+
+---
+
+## History
+
+* Default behavior since v7
+* Configurable since v14.10

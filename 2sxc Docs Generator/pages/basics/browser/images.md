@@ -9,7 +9,7 @@ uid: Basics.Browser.Images
 
 **Images** which the browser receives and shows usually come from these sources:
 
-1. **[App Assets](xref:Basics.App.Assets)** located in your App folder  
+1. **[App Assets](xref:Basics.App.FoldersAndFiles.Assets)** located in your App folder  
 1. [Content / ADAM Assets](xref:Basics.Content.Assets)
 1. Icon-fonts from the App-Assets or CDNs
 

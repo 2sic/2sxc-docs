@@ -30,7 +30,7 @@ All Hyperlink-Field Types have the following settings:
 * **File Filter** - list of extensions allowed in file/image picker. Example: *.jpg,*.bmp,*.png,*.gif
 * **Paths** - this is only needed if you use the old file pickers (not ADAM). Root paths for the picker dialog - ideal if you want all images for this Content-Type to be in the same folder
   
-  1. use the syntax foldername - without "/" in front to specify a subfolder of the portal-root. Examples are "Apps" or "Gallery" or "Employees/Photos"
+  1. use the syntax foldername - without "/" in front to specify a subfolder of the site-root. Examples are "Apps" or "Gallery" or "Employees/Photos"
   2. you can also use subfolders - that would be "Employees/Photos"
   3. always remember that this folder must already exist, and Dnn must know that it is visible (readable) by the editing user. There are cases where the security settings were not set correctly in dnn - then the file picker won't show anything.
 

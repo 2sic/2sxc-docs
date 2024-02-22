@@ -24,7 +24,7 @@ You can also have shared assets which are stored in the Site content folder, but
 1. [Fields for Links / Files / Folders](xref:Basics.Data.Fields.Hyperlink)
 1. Asset Metadata
 1. Asset Permissions / Protected folders in Dnn / Oqtane
-1. [](xref:Basics.App.Assets) like icons / logos used in an App
+1. [](xref:Basics.App.FoldersAndFiles.Assets) like icons / logos used in an App
 
 ---
 

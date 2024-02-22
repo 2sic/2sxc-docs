@@ -13,7 +13,7 @@ Token Templates will generate HTML - often based on the data a editor entered, a
 
 ## How it Works
 
-Razor templates are files in the [App Folder](xref:Basics.App.FolderStructure) or a subfolder, beginning with an `_` and ending with `.cshtml`. 
+Razor templates are files in the [App Folder](xref:Basics.App.FoldersAndFiles.Index) or a subfolder, beginning with an `_` and ending with `.cshtml`. 
 
 Here's a simple example from the Tutorial:
 

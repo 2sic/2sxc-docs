@@ -1,28 +1,25 @@
 ---
-uid: Basics.App.FolderStructure
+uid: Basics.App.FoldersAndFiles.Index
 ---
 
 # App Folder Structure
 
 Every app has an own folder for its files. Within that folder the App can have zero or hundreds of folders.
 
-* all apps are located in `[portal-root]\2sxc\[app-name]`
-* the _primary_ / _Content_ App is located in `[portal-root]\2sxc\Content`
+* all apps are located in `[site-root]\2sxc\[app-name]`
+* the _primary_ / _Content_ App is located in `[site-root]\2sxc\Content`
 
 You can create your own folders to organize your templates as you need as the structure is completely open.
 
-## System Files
+## Special Folders and Files
 
-* `app-icon.png` is always used as the [app-icon](xref:Basics.App.Icons) if provided
-* `App_Data/app.json` is an optional configuration file, see [app.json](xref:Basics.App.ExportImport.App.Json)
-
-## System Folders
-
-1. `api` this folder contains c# files for the web services this app has. It's not available on the simpler **Content App**.  
-    _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the api folder is usually in a sub-folder, like `live\api`_
-1. `App_Data` (previously `.data`) this folder may contain a snapshot of the app-data and is usefull when git-versioning your app
-1. `App_Data\[something]` (previously `.data\.[something]`) is usually used for special data like [custom input field configuration](xref:Basics.Browser.EditForm.CustomFields)
-1. `system` this folder would contain [custom input fields](xref:Basics.Browser.EditForm.CustomFields)
+1. `/app-icon.png` is always used as the [app-icon](xref:Basics.App.FoldersAndFiles.Icons) if provided
+1. `/App_Data` is protected for special configuration and data, see [App_Data](xref:Basics.App.FoldersAndFiles.FolderAppData)
+1. `/App_Data/app.json` is an optional configuration file, see [app.json](xref:Basics.App.ExportImport.App.Json)
+1. `/App_Data/[something]` is usually used for special data like [custom input field configuration](xref:Basics.Browser.EditForm.CustomFields)
+1. `/system` can contain [custom input fields JavaScripts](xref:Basics.Browser.EditForm.CustomFields)
+1. `/api` contains `...Controller.cs` files for the web services this app has. It's not available on the simpler **Content App**.  
+    _Note: if you're using [Polymorphism](xref:Basics.Polymorphism.Index) then the api folder is usually in a sub-folder, like `/live/api`_
 
 ## Non-Exportable Folders
 

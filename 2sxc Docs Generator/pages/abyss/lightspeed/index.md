@@ -31,7 +31,7 @@ This setup covers 99% of all use cases. For further optimizations, please contac
 The cache will automatically flush if any of these things happen:
 
 1. any data is edited on an app
-1. any file in the [app-folder](xref:Basics.App.FolderStructure) is changed
+1. any file in the [app-folder](xref:Basics.App.FoldersAndFiles.Index) is changed
 
 In these two cases all modules of that app are flushed.
 This ensures that no matter what you do, the cache is always up to date.
