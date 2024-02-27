@@ -99,6 +99,10 @@ EndProject
     <Reference Include="$(PathBin)\DotNetNuke.dll" />
     <Reference Include="$(PathBin)\DotNetNuke.*.dll" />
     <Reference Include="$(PathBin)\System.Web.Http.dll" />
+    <Reference Include="$(PathBin)\System.Web.WebPages.dll" />
+
+    <!-- System.Web is not in the DNN folder but in the .net Framework installed on the server -->
+    <Reference Include="System.Web" />
   </ItemGroup>
 
   <!-- Polymorphism
