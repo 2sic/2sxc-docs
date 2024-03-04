@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Sxc_Apps_IAppDataTyped" data-uid="ToSic.Sxc.Apps.IAppDataTyped" class="text-break">
     Interface IAppDataTyped
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -199,7 +199,7 @@ public interface IAppDataTyped : IDataSource, IDataSourceLinkable, IAppIdentity,
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_Create_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_ToSic_Eav_Metadata_ITarget_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.Create(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,ToSic.Eav.Metadata.ITarget)">
   Create(string, Dictionary&lt;string, object&gt;, string, ITarget)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new entity in the storage.</p>
@@ -249,7 +249,7 @@ public interface IAppDataTyped : IDataSource, IDataSourceLinkable, IAppIdentity,
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_Create_System_String_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.Create(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String)">
   Create(string, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a bunch of new entities in one single call (much faster, because cache doesn't need to repopulate in the mean time).</p>
@@ -297,7 +297,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_Delete_System_Int32_System_String_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.Delete(System.Int32,System.String)">
   Delete(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Delete an existing item</p>
@@ -329,11 +329,66 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
 
 
 
+  <a id="ToSic_Sxc_Apps_IAppDataTyped_GetAll_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetAll*"></a>
+
+  <h3 id="ToSic_Sxc_Apps_IAppDataTyped_GetAll__1_ToSic_Lib_Coding_NoParamOrder_System_String_System_Boolean_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetAll``1(ToSic.Lib.Coding.NoParamOrder,System.String,System.Boolean)">
+  GetAll&lt;T&gt;(NoParamOrder, string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all data from the app of the specified type.
+It will detect the expected Content-Type based on the name of the class used.
+So in most cases you will not add any parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; GetAll&lt;T&gt;(NoParamOrder protector = default, string typeName = null, bool nullIfNotFound = false) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>typeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><em>optional</em> type name</p>
+</dd>
+    <dt><code>nullIfNotFound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set, will return null if the type doesn't exist - default is empty list.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type to get and convert to - usually inheriting <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Apps_IAppDataTyped_GetAll__1_ToSic_Lib_Coding_NoParamOrder_System_String_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released in v17.03.</p>
+</div>
+
+
+
+
   <a id="ToSic_Sxc_Apps_IAppDataTyped_GetContentType_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetContentType*"></a>
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_GetContentType_System_String_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetContentType(System.String)">
   GetContentType(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a single content type by name (display name or NameId).</p>
@@ -374,7 +429,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_GetContentTypes" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetContentTypes">
   GetContentTypes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>All content types of the app.</p>
@@ -405,11 +460,117 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
 
 
 
+  <a id="ToSic_Sxc_Apps_IAppDataTyped_GetOne_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetOne*"></a>
+
+  <h3 id="ToSic_Sxc_Apps_IAppDataTyped_GetOne__1_System_Guid_ToSic_Lib_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetOne``1(System.Guid,ToSic.Lib.Coding.NoParamOrder,System.Boolean)">
+  GetOne&lt;T&gt;(Guid, NoParamOrder, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single item from the app of the specified type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetOne&lt;T&gt;(Guid id, NoParamOrder protector = default, bool skipTypeCheck = false) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>the ID as GUID</p>
+</dd>
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>skipTypeCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>allow get even if the Content-Type of the item with the ID doesn't match the type specified in the parameter T</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type to get and convert to - usually inheriting <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Apps_IAppDataTyped_GetOne__1_System_Guid_ToSic_Lib_Coding_NoParamOrder_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released in v17.03.</p>
+</div>
+
+
+
+
+  <a id="ToSic_Sxc_Apps_IAppDataTyped_GetOne_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetOne*"></a>
+
+  <h3 id="ToSic_Sxc_Apps_IAppDataTyped_GetOne__1_System_Int32_ToSic_Lib_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.GetOne``1(System.Int32,ToSic.Lib.Coding.NoParamOrder,System.Boolean)">
+  GetOne&lt;T&gt;(int, NoParamOrder, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single item from the app of the specified type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetOne&lt;T&gt;(int id, NoParamOrder protector = default, bool skipTypeCheck = false) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the ID as an int</p>
+</dd>
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>skipTypeCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>allow get even if the Content-Type of the item with the ID doesn't match the type specified in the parameter T</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type to get and convert to - usually inheriting <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Apps_IAppDataTyped_GetOne__1_System_Int32_ToSic_Lib_Coding_NoParamOrder_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released in v17.03.</p>
+</div>
+
+
+
+
   <a id="ToSic_Sxc_Apps_IAppDataTyped_Update_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.Update*"></a>
 
   <h3 id="ToSic_Sxc_Apps_IAppDataTyped_Update_System_Int32_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_" data-uid="ToSic.Sxc.Apps.IAppDataTyped.Update(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
   Update(int, Dictionary&lt;string, object&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update an existing item.</p>
@@ -448,7 +609,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Apps/IAppDataTyped.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -1,7 +1,9 @@
 
 <img src="assets/logos/vcurrent/500.png" width="250px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v17.02.00
+# 2sxc and EAV Docs
+
+`For version 17.03.00`
 
 This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
 
@@ -36,7 +38,6 @@ If you are just getting started, then this is probably not where you should be l
 Because of this, different documentations help you work with different things.
 Here's the overview:
 
-1. A [list of features](http://2sxc.org/en/docs), concepts and examples can be found in the _Docs_ section of 2sxc.org, including things not specifically code related
 1. [Many solutions and recommendations](http://2sxc.org/en/blog) are found in the _Blog_ on 2sxc.org
 1. [Many demo, template and tutorial Apps](http://2sxc.org/en/Apps) are found in the _App Catalog_ on 2sxc.org
 1. [2sxc / EAV Roadmap](xref:Abyss.Releases.Roadmap)
