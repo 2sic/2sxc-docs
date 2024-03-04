@@ -222,6 +222,7 @@ Add these lines to your `.gitignore` file to prevent temporary files from being 
 ```text
 .vs/
 obj/
+bin/
 ```
 
 ## Check for Edge Cases - DNN with .net 4.7.2 / 4.8

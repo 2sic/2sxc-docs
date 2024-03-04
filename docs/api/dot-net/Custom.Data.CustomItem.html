@@ -1102,10 +1102,11 @@ If conversion fails, will return default <code>0</code> or what is specified in 
 
   <h3 id="Custom_Data_CustomItem_Equals_System_Object_" data-uid="Custom.Data.CustomItem.Equals(System.Object)">
   Equals(object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Custom.Data/CustomItem_Equatable.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Custom.Data/CustomItem_Equatable.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+  <div class="markdown level1 summary"><p>Ensure that the equality check is done correctly.
+If two objects wrap the same item, they will be considered equal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1122,8 +1123,7 @@ If conversion fails, will return default <code>0</code> or what is specified in 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -2232,6 +2232,96 @@ It will do sanitation / url-corrections for special characters etc.</p>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>A url converted if possible. If the field contains anything else such as <code>hello</code> then it will not be modified.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Custom_Data_CustomItem_op_Equality_" data-uid="Custom.Data.CustomItem.op_Equality*"></a>
+
+  <h3 id="Custom_Data_CustomItem_op_Equality_Custom_Data_CustomItem_Custom_Data_CustomItem_" data-uid="Custom.Data.CustomItem.op_Equality(Custom.Data.CustomItem,Custom.Data.CustomItem)">
+  operator ==(CustomItem, CustomItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Custom.Data/CustomItem_Equatable.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ensure that the equality check is done correctly.
+If two objects wrap the same item, they will be considered equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(CustomItem item1, CustomItem item2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item1</code> <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></dt>
+    <dd><p>first item to compare</p>
+</dd>
+    <dt><code>item2</code> <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></dt>
+    <dd><p>second item to compare</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true, if both wrappers are the same type and wrap the same entity</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Custom_Data_CustomItem_op_Inequality_" data-uid="Custom.Data.CustomItem.op_Inequality*"></a>
+
+  <h3 id="Custom_Data_CustomItem_op_Inequality_Custom_Data_CustomItem_Custom_Data_CustomItem_" data-uid="Custom.Data.CustomItem.op_Inequality(Custom.Data.CustomItem,Custom.Data.CustomItem)">
+  operator !=(CustomItem, CustomItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Custom.Data/CustomItem_Equatable.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ensure that the equality check is done correctly.
+If two objects wrap the same item, they will be considered equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(CustomItem item1, CustomItem item2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item1</code> <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></dt>
+    <dd><p>first item to compare</p>
+</dd>
+    <dt><code>item2</code> <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a></dt>
+    <dd><p>second item to compare</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>false, if both wrappers are the same type and wrap the same entity</p>
 </dd>
   </dl>
 
