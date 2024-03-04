@@ -6,12 +6,11 @@ uid: Guides.VsCode.Index
 
 This guide will help you get VS Code Setup as best as possible for 2sxc development.
 
-## Background
-
-You'll often write code in your 2sxc Apps - either as C#/Razor or JavaScript.
-2sxc is a very open system, so you can use any editor you like.
-For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
-But for more sophisticated stuff we recommend VS Code.
+> [!TIP]
+> You'll often write code in your 2sxc Apps - either as C#/Razor or JavaScript.
+> 2sxc is a very open system, so you can use any editor you like.
+> For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
+> But for more sophisticated stuff we **highly recommend** VS Code.
 
 ## Prepare VS Code for 2sxc
 
@@ -33,6 +32,11 @@ Apps are usually opened as a folder in VS-Code.
 The problem for IntelliSense is that it doesn't know which DLLs it should use.
 So you need to tell it.
 This is done by adding a `.sln` solution file and a `.csproj` project file.
+
+> [!TIP]
+> Adding these files helps VSCode provide IntelliSense.
+> But be aware that it can't help with `dynamic` code.
+> To get the full benefit, use [typed code](xref:NetCode.TypedCode.Index).
 
 Add the following two files to the root of your app:
 
@@ -60,41 +64,50 @@ EndProject
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode -->
 
+  <!-- Specify the default Namespace for C# code in this specific App -->
   <PropertyGroup>
-    <!-- Specify the .net Framework you are targeting - this is usually net4.7.2 or net4.8
-      https://learn.microsoft.com/en-us/dotnet/standard/frameworks
-      - eg "net472", "net48", "net8.0" etc.
-      - net472 is the default for DNN 9.8 and earlier but usually net48 works
-      - net8.0 is the default for Oqtane 5
-    -->
-    <TargetFramework>net472</TargetFramework>
-
-    <!-- Specify the default Namespace for code in this specific App -->
     <RootNamespace>AppCode</RootNamespace>
-
-    <!-- Specify what C# version to use
-      https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history
-      - eg. "7.3", "8.0" or "12.0" (Oqtane 5+)
-    -->
-    <LangVersion>8.0</LangVersion>
-
-    <!-- Variable to path where the DLLs are in Dnn
-      - This allows you to easily adjust the path if you have a different location
-      - For clarity / consistency, we recommend to not end with a slash
-      - Below you will use it using $(PathBin)
-    -->
-    <!-- PathBin for Dnn -->
-    <PathBin>..\..\..\..\bin</PathBin>
-    <!-- PathBin Oqtane production, just up 3 folders, no bin-subfolder -->
-    <!-- <PathBin>..\..\..</PathBin> -->
-    <!-- PathBin Oqtane dev/debug, up 3 folders and current build folder -->
-    <!-- <PathBin>..\..\..\bin\Debug\net8.0</PathBin> -->
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Tell Visual Studio & VSCode to respect all ToSic.* DLLs in the root bin folder -->
-    <Reference Include="$(PathBin)\ToSic.*.dll" />
+  <!-- First: Detect if it's running in Dnn, Oqtane-Production or Oqtane-Dev -->
+  <PropertyGroup>
+    <RunningInDnn Condition="Exists('..\..\..\..\bin\DotNetNuke.dll')">true</RunningInDnn>
+    <RunningInOqtane Condition="Exists('..\..\..\Oqtane.Server.dll') Or Exists('..\..\..\bin\Debug\net8.0\Oqtane.Server.dll')">true</RunningInOqtane>
+    <OqtaneIsProd Condition="Exists('..\..\..\Oqtane.Server.dll')">true</OqtaneIsProd>
+    <OqtaneIsDev Condition="Exists('..\..\..\bin\Debug\net8.0\Oqtane.Server.dll')">true</OqtaneIsDev>
+  </PropertyGroup>
 
+  <!-- Settings for Dnn -->
+  <PropertyGroup Condition="'$(RunningInDnn)' == 'true'">
+    <!-- Specify .net 4.7.2, C# 8.0 and Bin folder for DNN - see https://go.2sxc.org/vscode -->
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <PathBin>..\..\..\..\bin</PathBin>
+  </PropertyGroup>
+  
+  <!-- Settings for Oqtane -->
+  <PropertyGroup Condition="'$(RunningInOqtane)' == 'true'">
+    <!-- Oqtane 5+ uses .net 8 and a very new C# language version -->
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+
+    <!-- PathBin Oqtane production, the bin folder is in the root, just up 3 folders, no bin-subfolder -->
+    <PathBin Condition="'$(OqtaneIsProd)' == 'true'">..\..\..</PathBin>
+
+    <!-- PathBin Oqtane dev/debug, the bin folder is deeper down, up 3 folders and current build folder -->
+    <PathBin Condition="'$(OqtaneIsDev)' == 'true'">..\..\..\bin\Debug\net8.0</PathBin>
+  </PropertyGroup>
+
+
+  <!-- IntelliSense: Load all DLLs which exist in Dnn and Oqtane from the bin folder -->
+  <ItemGroup>
+    <Reference Include="$(PathBin)\ToSic.*.dll" />
+    <!-- Also load files in the Dependencies folder of the current App -->
+    <Reference Include="Dependencies\*.dll" />
+  </ItemGroup>
+
+  <!-- IntelliSense: DNN specific -->
+  <ItemGroup Condition="'$(RunningInDnn)' == 'true'">
     <!-- also add System.Web and DotNetNuke DLLs - useful when creating APIs, but be aware that it may make your code less hybrid -->
     <Reference Include="$(PathBin)\DotNetNuke.dll" />
     <Reference Include="$(PathBin)\DotNetNuke.*.dll" />
@@ -105,12 +118,7 @@ EndProject
     <Reference Include="System.Web" />
   </ItemGroup>
 
-  <!-- Polymorphism
-    If you're working with Polymorphism then you have many of the same files, which confuses Intellisense eg.
-    - /live and /staging have the same files
-    - /bs3 /bs4 / bs5 have the same files
-    The following is meant to exclude some of these folders from intellisense
-  -->
+  <!-- Polymorphism - if have files with the same classes confuse IntelliSense - see https://go.2sxc.org/vscode -->
   <!-- Example: exclude /live as we're always working on /staging -->
   <ItemGroup>
     <None Remove="live\**" />
@@ -118,14 +126,94 @@ EndProject
     <Compile Remove="live\**" />
     <EmbeddedResource Remove="live\**" />
   </ItemGroup>
+
 </Project>
 ```
 
-> [!TIP]
-> Adding these files helps VSCode provide IntelliSense.
-> But be aware that it can't help with `dynamic` code.
-> To get the full benefit, use [typed code](xref:NetCode.TypedCode.Index).
+### More About the `.csproj` File
 
+The following are some additional notes about the `.csproj` file, how it works and it's values.
+
+#### Detect Dnn or Oqtane
+
+At the top of the `.csproj` file, we detect if we're running in Dnn or Oqtane like this:
+
+```xml
+  <!-- First: Detect if it's running in Dnn, Oqtane-Production or Oqtane-Dev -->
+  <PropertyGroup>
+    <RunningInDnn Condition="Exists('..\..\..\..\bin\DotNetNuke.dll')">true</RunningInDnn>
+    <RunningInOqtane Condition="Exists('..\..\..\Oqtane.Server.dll') Or Exists('..\..\..\bin\Debug\net8.0\Oqtane.Server.dll')">true</RunningInOqtane>
+    <OqtaneIsProd Condition="Exists('..\..\..\Oqtane.Server.dll')">true</OqtaneIsProd>
+    <OqtaneIsDev Condition="Exists('..\..\..\bin\Debug\net8.0\Oqtane.Server.dll')">true</OqtaneIsDev>
+  </PropertyGroup>
+```
+
+This sets variables such as `RunningInDnn` and `RunningInOqtane` which you can use later in the file.
+You can see it in action in things such as:
+
+```xml
+  <!-- Settings for Dnn -->
+  <PropertyGroup Condition="'$(RunningInDnn)' == 'true'">
+    <!-- this is only applied, if the condition above is true -->
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+```
+
+#### About PropertyGroup and ItemGroup
+
+In case you're not familiar with `.csproj` files, here's a quick overview:
+
+* `PropertyGroup` is used to define variables which are used later in the file
+* `ItemGroup` is used to define lists of items, like files, references, etc.
+
+Both of these can have conditions, so you can define different settings for different situations.
+
+#### Target Framework and C# Version
+
+The `TargetFramework` is the .net Framework you are targeting.
+The value like `net472` or `net48` are called _target framework moniker_ or _TFM_.
+You can find a list of them on the [Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/frameworks).
+Recommended values:
+
+* Dnn: `net472` or `net48` (officially, Dnn requires 4.7.2, but 4.8 is what is normally installed because of security)
+* Oqtane: `net8.0` (Oqtane 5+)
+
+The `LangVersion` is the C# version you are using.
+You can find a list of them on the [Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history).
+Recommended values:
+
+* Dnn: `8.0` (Dnn 9.6.1+ using 2sxc 17 and Roslyn Compiler)
+* Oqtane: `latest` or `12.0` (Oqtane 5+)
+
+#### PathBin
+
+The `PathBin` variable is used to specify the path where the DLLs are.
+This allows us to use the same rules for Dnn and Oqtane, just with a different path to start from.
+Here's what you should know:
+
+* Dnn usually has the App files in `/Portals/[portal]/2sxc/[app]/` so the DLLs relatively in `..\..\..\..\bin`
+* Oqtane has the App files in `/2sxc/[site-id]/app/` but the DLLs are in different locations depending on Dev vs. Production builds
+  * in development built it places the DLLs in `\bin\Debug\net8.0` so the relative path is usually `..\..\..\bin\Debug\net8.0`
+  * in production builds it places the DLLs in the root folder, so the relative path is usually `..\..\..`
+
+#### Ignoring Files for Polymorphism
+
+If you're working with Polymorphism then you have many of the same files, which confuses IntelliSense.
+For example, `/live` and `/staging` have the same files, and `/bs3`, `/bs4` and `/bs5` have the same files.
+So intellisense might find the same class in multiple places, and show warnings.
+
+To handle this, you should decide which is your **primary** folder, and then exclude the others.
+This is just an example to exclude `/live` as we're always working on `/staging`:
+
+```xml
+  <!-- Example: exclude /live as we're always working on /staging -->
+  <ItemGroup>
+    <None Remove="live\**" />
+    <Content Remove="live\**" />
+    <Compile Remove="live\**" />
+    <EmbeddedResource Remove="live\**" />
+  </ItemGroup>
+```
 
 ## GitIgnore Temporary Folders
 
