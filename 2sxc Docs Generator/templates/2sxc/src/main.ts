@@ -1,4 +1,4 @@
-// import * as hljsRazor from 'highlightjs-cshtml-razor';
+import * as hljsRazor from 'highlightjs-cshtml-razor';
 import { Fancybox } from "@fancyapps/ui";
 import { Xref } from './xref/xref';
 // import "@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -20,12 +20,11 @@ function test() {
 
 export default {
   configureHljs: (hljs: any) => {
-    // todo
     // https://github.com/highlightjs/highlightjs-cshtml-razor
     // Customize hightlight.js here
     console.log('configureHljs');
-    // hljs.registerLanguage('cshtml-razor', hljsRazor);
-    // hljs.registerAliases('razor', { languageName: 'cshtml-razor' });
+    hljs.registerLanguage('cshtml-razor', hljsRazor);
+    hljs.registerAliases('razor', { languageName: 'cshtml-razor' });
   },
 
 }
