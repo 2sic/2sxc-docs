@@ -12,11 +12,17 @@ It is much more robust and easier to debug than the classic _dynamic_ code.
 ```razor
 @inherits Custom.Hybrid.RazorTyped
 <h1>@MyItem.String("Title")</h1>
-<div>
-  @MyItem.Picture("Screenshot")
-  @MyItem.Html("Description")
-</div>
+@MyItem.Picture("Screenshot", imgClass: "float-right")
+<ul>
+  <li>Teaser: @MyItem.String("Teaser")</li>
+  <li>Launched: @MyItem.DateTime("Launched").Year</li>
+  <li>Authors: @MyItem.Children("Authors").Count()</li>
+  <li>Maker: @MyItem.Child("Maker").String("Name")</li>
+</ul>
+@MyItem.Html("Description")
 ```
+
+What's great about this is that every value is strongly typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.
 
 > [!IMPORTANT]
 > Older code is _dynamic_.

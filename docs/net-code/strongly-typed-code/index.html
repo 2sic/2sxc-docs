@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Strongly Typed APIs in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Strongly Typed APIs in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,51 +105,76 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.Index">
-<h1 id="typed-apis-in-2sxc-16">Typed APIs in 2sxc 16+</h1>
+        <article data-uid="NetCode.StronglyTypedCode.Index">
+<h1 id="strongly-typed-apis-in-2sxc-17">Strongly Typed APIs in 2sxc 17+</h1>
 
-<p><strong>Typed Mode</strong> is a new way to write C# and Razor code in 2sxc 16+.
-It is much more robust and easier to debug than the classic <em>dynamic</em> code.</p>
-<h2 id="what-does-typed-mode-look-like">What does Typed Mode Look Like?</h2>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-&lt;h1&gt;@MyItem.String(&quot;Title&quot;)&lt;/h1&gt;
-@MyItem.Picture(&quot;Screenshot&quot;, imgClass: &quot;float-right&quot;)
+<p><strong>Strongly Typed Mode</strong> is the newest way to write C# and Razor code in 2sxc 17+.
+It extends the <a class="xref" href="../typed-code/index.html">Typed Mode</a>.
+As such, it's fully compatible, but ever more type-safe and easier to code and debug.</p>
+<h2 id="what-does-strongly-typed-code-look-like">What does Strongly Typed Code Look Like?</h2>
+<pre><code class="lang-razor">@inherits AppCode.Razor.ProductRazor
+&lt;h1&gt;@MyProduct.Title&lt;/h1&gt;
+@MyProduct.Picture(&quot;Screenshot&quot;, imgClass: &quot;float-right&quot;)
 &lt;ul&gt;
-  &lt;li&gt;Teaser: @MyItem.String(&quot;Teaser&quot;)&lt;/li&gt;
-  &lt;li&gt;Launched: @MyItem.DateTime(&quot;Launched&quot;).Year&lt;/li&gt;
-  &lt;li&gt;Authors: @MyItem.Children(&quot;Authors&quot;).Count()&lt;/li&gt;
-  &lt;li&gt;Maker: @MyItem.Child(&quot;Maker&quot;).String(&quot;Name&quot;)&lt;/li&gt;
+  &lt;li&gt;Teaser: @MyProduct.Teaser&lt;/li&gt;
+  &lt;li&gt;Launched: @MyProduct.Launched.Year&lt;/li&gt;
+  &lt;li&gt;Authors: @MyProduct.Authors.Count()&lt;/li&gt;
+  &lt;li&gt;Maker: @MyProduct.Maker.Name&lt;/li&gt;
 &lt;/ul&gt;
 @MyItem.Html(&quot;Description&quot;)
 </code></pre>
-<p>What's great about this is that every value is strongly typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Older code is <em>dynamic</em>.
-The API is quite different, so if you copy old snippets you'll probably need to refactor it.</p>
-</div>
-<h2 id="major-differences">Major Differences</h2>
+<p>This combines the best of all worlds:</p>
 <ol>
-<li>The compiler can detect many more issues in typed mode</li>
-<li>If your code isn't correct, you will get much better errors in typed mode</li>
-<li>Accessing invalid properties will throw an error in typed mode (eg. <code>MyItem.String(&quot;InvalidProperty&quot;)</code> will throw, but <code>Content.InvalidProperty</code> will not)</li>
-<li>Typed code works much better with LINQ, so <code>MyItem.Children(&quot;Authors&quot;).Count()</code> will just work (in dynamic mode you'd need to cast it to <code>IEnumerable&lt;dynamic&gt;</code> first)</li>
+<li>Simple syntax, easy to read - just like the <a class="xref" href="../dynamic-code/index.html">dynamic code</a></li>
+<li>Fully typed, so you get IntelliSense and the compiler will catch many more issues - even better than the <a class="xref" href="../typed-code/index.html">typed code</a></li>
+<li>Great dev experience in VS Code - you will see if a field like <code>Authors</code> exists or not</li>
+<li>Great performance, as it's all compiled at runtime</li>
+<li>Various APIs help you bridge the gap, such as the <code>As&lt;Product&gt;()</code> method</li>
+<li>The auto-generated Content-Types are really smart - eg. <code>Authors</code> is a <code>List&lt;Author&gt;</code> and <code>Maker</code> is a single <code>Company</code></li>
 </ol>
-<h2 id="activate-typed-mode">Activate Typed Mode</h2>
-<p>Dynamic and Typed code can coexist in the same app.
+<h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
+<ol>
+<li>The new Copilot generates classes for each Content-Type in the <code>AppCode.Data</code> namespace (you can easily extend them)</li>
+<li>The <code>As&lt;T&gt;</code> and <code>AsList&lt;T&gt;</code> methods help you convert data into strongly typed objects</li>
+<li>HotBuild automatically compiles the code on-the-fly, so you can just save and refresh the page to see changes</li>
+<li>Everything in the <code>/AppCode</code> folder - or in editions such as <code>/staging/AppCode</code> will be compiled and provided to your razor</li>
+<li>New base classes such as <code>RazorTyped&lt;TModel&gt;</code> make data-handover to sub-components easy</li>
+<li>New <code>Customize</code> APIs help you create new Razor base classes and hide much of the complexity from your Razor templates</li>
+</ol>
+<h2 id="todo-sample-apps">TODO: Sample Apps</h2>
+<p>As of now (2024-03) we have not published any Apps with this convention yet, as we're still fine-tuning the details.
+But we will, ASAP!</p>
+<h2 id="activate-strongly-typed-mode">Activate Strongly Typed Mode</h2>
+<p>Old Dynamic, new Typed and brand-new Strongly-Typed code can coexist in the same app.
 Each Razor / C# file can decide which mode it wants to use.
 To be in typed mode, your Razor/C# must inherit from a typed base class like this:</p>
 <ul>
-<li>Razor files should begin with:<br>
-<code>@inherits Custom.Hybrid.RazorTyped</code></li>
-<li>C# files should have something like:<br>
-<code>public class YourClassName : Custom.Hybrid.CodeTyped</code></li>
-<li>WebApi files should be like:<br>
-<code>public class YourControllerName : Custom.Hybrid.ApiTyped</code></li>
+<li>You must use at least 2sxc 17.03 or later</li>
+<li>Razor files should begin with any one of these:
+<ul>
+<li><code>@inherits Custom.Hybrid.RazorTyped</code></li>
+<li><code>@inherits Custom.Hybrid.RazorTyped&lt;TModel&gt;</code></li>
+<li><code>@inherits AppCode.Razor.AppRazor</code> - assuming you have made a custom base class</li>
+<li><code>@inherits AppCode.Razor.AppRazor&lt;TModel&gt;</code> - assuming you have made a custom base class</li>
+</ul>
+</li>
+<li>C# files should have something like
+<ul>
+<li><code>public class YourClassName : Custom.Hybrid.CodeTyped</code></li>
+<li><code>public class YourClassName : AppCode.Services.ServiceBase</code></li>
+</ul>
+</li>
+<li>WebApi files should be like
+<ul>
+<li><code>public class YourControllerName : Custom.Hybrid.ApiTyped</code></li>
+</ul>
+</li>
+<li>You should generate your data classes using the Copilot in the Admin UI</li>
 </ul>
 <div class="TIP">
 <h5>Tip</h5>
-<p>Changing the base class will completely change the APIs you have available.</p>
+<p>Changing the base class will completely change the APIs you have available if you're coming from <a class="xref" href="../dynamic-code/index.html">dynamic code</a>.
+If you already used <a class="xref" href="../typed-code/index.html">typed code</a>, then this is already done.</p>
 </div>
 <h2 id="configure-visual-studio-code-for-intellisense">Configure Visual Studio Code for IntelliSense</h2>
 <p>Now that everything is typed, we highly recommend you setup VSCode to provide IntelliSense.</p>
@@ -159,7 +184,7 @@ To be in typed mode, your Razor/C# must inherit from a typed base class like thi
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

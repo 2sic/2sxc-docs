@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Use Custom Data in Razor (2sxc 17+ WIP) | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Use Custom Data in Razor (2sxc 17+ WIP) | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/use-in-razor.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,61 +105,72 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.Index">
-<h1 id="typed-apis-in-2sxc-16">Typed APIs in 2sxc 16+</h1>
+        <article data-uid="NetCode.StronglyTypedCode.UseInRazor">
+<h1 id="use-custom-data-in-razor-2sxc-17-wip">Use Custom Data in Razor (2sxc 17+ WIP)</h1>
 
-<p><strong>Typed Mode</strong> is a new way to write C# and Razor code in 2sxc 16+.
-It is much more robust and easier to debug than the classic <em>dynamic</em> code.</p>
-<h2 id="what-does-typed-mode-look-like">What does Typed Mode Look Like?</h2>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-&lt;h1&gt;@MyItem.String(&quot;Title&quot;)&lt;/h1&gt;
-@MyItem.Picture(&quot;Screenshot&quot;, imgClass: &quot;float-right&quot;)
-&lt;ul&gt;
-  &lt;li&gt;Teaser: @MyItem.String(&quot;Teaser&quot;)&lt;/li&gt;
-  &lt;li&gt;Launched: @MyItem.DateTime(&quot;Launched&quot;).Year&lt;/li&gt;
-  &lt;li&gt;Authors: @MyItem.Children(&quot;Authors&quot;).Count()&lt;/li&gt;
-  &lt;li&gt;Maker: @MyItem.Child(&quot;Maker&quot;).String(&quot;Name&quot;)&lt;/li&gt;
-&lt;/ul&gt;
-@MyItem.Html(&quot;Description&quot;)
-</code></pre>
-<p>What's great about this is that every value is strongly typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Older code is <em>dynamic</em>.
-The API is quite different, so if you copy old snippets you'll probably need to refactor it.</p>
-</div>
-<h2 id="major-differences">Major Differences</h2>
-<ol>
-<li>The compiler can detect many more issues in typed mode</li>
-<li>If your code isn't correct, you will get much better errors in typed mode</li>
-<li>Accessing invalid properties will throw an error in typed mode (eg. <code>MyItem.String(&quot;InvalidProperty&quot;)</code> will throw, but <code>Content.InvalidProperty</code> will not)</li>
-<li>Typed code works much better with LINQ, so <code>MyItem.Children(&quot;Authors&quot;).Count()</code> will just work (in dynamic mode you'd need to cast it to <code>IEnumerable&lt;dynamic&gt;</code> first)</li>
-</ol>
-<h2 id="activate-typed-mode">Activate Typed Mode</h2>
-<p>Dynamic and Typed code can coexist in the same app.
-Each Razor / C# file can decide which mode it wants to use.
-To be in typed mode, your Razor/C# must inherit from a typed base class like this:</p>
+<p>Once you have the initial setup going, you will want to use these types.</p>
+<p>The <code>RazorTyped</code> base class was extended with the following methods, to make it easy:</p>
 <ul>
-<li>Razor files should begin with:<br>
-<code>@inherits Custom.Hybrid.RazorTyped</code></li>
-<li>C# files should have something like:<br>
-<code>public class YourClassName : Custom.Hybrid.CodeTyped</code></li>
-<li>WebApi files should be like:<br>
-<code>public class YourControllerName : Custom.Hybrid.ApiTyped</code></li>
+<li><code>As&lt;T&gt;</code> - to convert the current item to a strongly typed object</li>
+<li><code>AsList&lt;T&gt;</code> - to convert a list of items to a list of strongly typed objects</li>
 </ul>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Changing the base class will completely change the APIs you have available.</p>
+<h2 id="important-for-the-setup-in-dnn">Important for the Setup in Dnn</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>There is a bit of magic in the background, please read the following carefully.</p>
 </div>
-<h2 id="configure-visual-studio-code-for-intellisense">Configure Visual Studio Code for IntelliSense</h2>
-<p>Now that everything is typed, we highly recommend you setup VSCode to provide IntelliSense.</p>
-<p>👉 Check out the <a class="xref" href="../../guides/vscode/index.html">VS Code Setup Docs</a></p>
+<p>Internally all the C# files in the /AppCode folder are compiled into a single assembly, and then provided to the Razor files.
+This is very challenging to achieve, and uses the Roslyn compiler to do this.
+Since we are still experimenting with the best possible implementation,
+Roslyn (and the AppCode features) are not always active - old code will still be compiled using the old <code>BuildManager</code> of asp.net.</p>
+<p>So to make sure that your Razor will compile using Roslyn, you should do the following:</p>
+<ul>
+<li>You must have <em>either</em> an <code>@using AppCode</code> or similar statement (eg. <code>@using AppCode.Data</code>) early in your Razor file</li>
+<li>Or you must inherit from a <a class="xref" href="razor-base-classes.html">custom Razor Base Class</a></li>
+</ul>
+<p>In both scenarios, Roslyn will be activated and your Razor will be compiled using the new system.</p>
+<h2 id="easy-as-1-2-3">Easy as 1-2-3</h2>
+<p>From then on forth, it's really easy - eg. like this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Data
+
+&lt;ol&gt;
+  @foreach(var product in AsList&lt;Product&gt;(MyItems)) {
+    &lt;li&gt;@product.Title&lt;/li&gt;
+  }
+&lt;/ol&gt;
+</code></pre>
+<p>Or more advanced:</p>
+<pre><code class="lang-razor">@inherits AppCode.Razor.LinksRazor
+@using AppCode.Data
+
+&lt;div class=&quot;row&quot;&gt;
+  @foreach (var link in MyLinks)
+  {
+    &lt;div class=&quot;col-md-6 col-lg-4 mb-4 mb-md-5 co-linkblock&quot; @Kit.Toolbar.Default(link)&gt;
+      &lt;i class='mb-3 text-primary fas @link.IconAuto' aria-hidden=&quot;true&quot; style=&quot;font-size: 40px;&quot;&gt;&lt;/i&gt;
+      &lt;h4&gt;@link.Title&lt;/h4&gt;
+      @link.DescriptionHtml(true)
+
+      @if (link.IsNotEmpty(&quot;Link&quot;))
+      {
+        &lt;a href='@link.Link' target='@link.WindowAuto' title=&quot;@link.Title&quot; class=&quot;stretched-link&quot;&gt;@link.Get(&quot;LinkText&quot;) &lt;i class=&quot;fas fa-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+      }
+    &lt;/div&gt;
+  }
+&lt;/div&gt;
+@ActivateFancyBox()
+</code></pre>
 <hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Still WIP v17.03+</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/use-in-razor.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

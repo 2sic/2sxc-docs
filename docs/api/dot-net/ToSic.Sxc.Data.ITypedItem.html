@@ -870,6 +870,105 @@ See <a class="xref" href="../../net-code/dynamic-data/dynamic-entity-html.html">
 
 
 
+  <a id="ToSic_Sxc_Data_ITypedItem_Img_" data-uid="ToSic.Sxc.Data.ITypedItem.Img*"></a>
+
+  <h3 id="ToSic_Sxc_Data_ITypedItem_Img_System_String_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Data.ITypedItem.Img(System.String,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.Object,System.Object)">
+  Img(string, NoParamOrder, object, object, object, string, string, string, object, object, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_SharedCms.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a Responsive Picture object which you can then either just show, or use to construct a more customized output as you need it.</p>
+<p>The resulting object can just be added to the html, like <code>@pic</code> or you can work with sub-properties as specified in the <a class="xref" href="ToSic.Sxc.Images.IResponsivePicture.html">IResponsivePicture</a>.</p>
+<p><strong>Important:</strong> This call only allows you to set the most common parameters <code>factor</code> and <code>width</code>.
+For other parameters like <code>height</code>, <code>aspectRatio</code>, <code>quality</code> etc. create typed Settings <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">Settings(object, NoParamOrder, object, object, object, object, string, string, string, object, string, object)</a> and pass them in.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This is the similar as using the <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Picture_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object_">Picture(object, object, NoParamOrder, object, object, string, string, string, object, string, object, object, object)</a> just a bit simpler.</p>
+<p>An important difference is that it returns <code>null</code> if the field does not exist or is empty, allowing you to just show nothing or use <code>...Picture(...) ?? someFallback;</code></p>
+</div>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IResponsiveImage Img(string name, NoParamOrder noParamOrder, object settings, object factor, object width, string imgAlt, string imgAltFallback, string imgClass, object imgAttributes, object toolbar, object recipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of a field</p>
+</dd>
+    <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>settings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><ul>
+<li>The name of a settings configuration, like &quot;Content&quot;, &quot;Screen&quot;, &quot;Square&quot;, etc.</li>
+<li>A standardized Image-Settings object like Settings.Child(&quot;Images.Content&quot;) - see <a href="https://go.2sxc.org/settings">https://go.2sxc.org/settings</a></li>
+<li>A dynamic object containing settings properties (this can also be a merged custom + standard settings)</li>
+<li>A strictly typed <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings created using <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">ResizeSettings</a></li>
+</ul>
+</dd>
+    <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>An optional multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>An optional, fixed width of the image</p>
+</dd>
+    <dt><code>imgAlt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional <code>alt</code> attribute on the created <code>img</code> tag for SEO etc.
+If supplied, it takes precedence to the alt-description in the image metadata which the editor added themselves.
+If you want to provide a fallback value (in case the metadata has no alt), use <code>imgAltFallback</code></p>
+</dd>
+    <dt><code>imgAltFallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional <code>alt</code> attribute which is only used if the <code>imgAlt</code> or the alt-text in the metadata are empty.</p>
+</dd>
+    <dt><code>imgClass</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional <code>class</code> attribute on the created <code>img</code> tag</p>
+</dd>
+    <dt><code>imgAttributes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Optional additional attributes - as anonymous object eg <code>new { style = &quot;padding: 10px&quot; }</code> or Dictionary (new 16.07)</p>
+</dd>
+    <dt><code>toolbar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Provide a custom toolbar or <code>false</code> to not show a toolbar</p>
+</dd>
+    <dt><code>recipe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Optional recipe = instructions how to create the various variants of this link.
+Can be any one of these:</p>
+<ul>
+<li>string containing variants</li>
+<li>Rule object</li>
+</ul>
+<p>TODO: DOCS not quite ready</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Sxc.Images.IResponsiveImage.html">IResponsiveImage</a></dt>
+    <dd><ul>
+<li>A <a class="xref" href="ToSic.Sxc.Images.IResponsivePicture.html">IResponsivePicture</a> object which can be rendered directly. See <a class="xref" href="../../net-code/images/index.html">Responsive Images API in .net</a></li>
+<li>If the field does not exist, it will return <code>null</code></li>
+<li>If the field exists, but is empty, it will return <code>null</code></li>
+</ul>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Img_System_String_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><ul>
+<li>Added to ITypedItem in v17.04 (previously only Picture was available)</li>
+</ul>
+</div>
+
+
+
+
   <a id="ToSic_Sxc_Data_ITypedItem_Parent_" data-uid="ToSic.Sxc.Data.ITypedItem.Parent*"></a>
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Parent_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_String_System_String_" data-uid="ToSic.Sxc.Data.ITypedItem.Parent(ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean},System.String,System.String)">
@@ -973,7 +1072,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Picture_System_String_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Data.ITypedItem.Picture(System.String,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object,System.Object,System.Object)">
   Picture(string, NoParamOrder, object, object, object, string, string, string, object, string, object, object, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_SharedCms.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_SharedCms.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a Responsive Picture object which you can then either just show, or use to construct a more customized output as you need it.</p>
@@ -1068,7 +1167,6 @@ Can be any one of these:</p>
   <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Picture_System_String_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>Added to ITypedItem in v16.03</li>
-<li>We have this <code>Picture</code> method but no <code>Img</code> method, as we don't recommended that in responsive HTML5</li>
 <li><code>imgAttributes</code>, <code>picClass</code> and <code>picAttributes</code> added in 16.07</li>
 </ul>
 </div>
