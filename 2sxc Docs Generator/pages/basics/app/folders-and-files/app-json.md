@@ -40,7 +40,7 @@ As of v17.02, the main parts of the `app.json` are:
 * `editions` - which editions this app has (see below)
 * `copilot` - settings for code generation (WIP)
 
-## Configure Editions
+## Editions
 
 Editions allow you to create multiple variants of the app, which can be used in different scenarios.
 
@@ -62,6 +62,8 @@ Here's an example of how to configure editions (note that in VS-Code you would g
       "description": "The root / edition of the app."
     },
     "staging": {
+      // This is our default edition - will work in 2sxc 17.03.01+
+      "isDefault": true,
       "description": "This is the staging edition of the app",
       // BTW: you can add comments like this
       // This is for a future feature, to auto-copy all files from staging to live

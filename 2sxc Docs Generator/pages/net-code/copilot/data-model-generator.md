@@ -6,15 +6,22 @@ uid: NetCode.Copilot.DataModelGenerator
 
 These are the conventions we're striving for in the new HotBuild system.
 
-## Goal
+## Goals
 
 1. To provide a simple, type-safe object for everything in an app, eg `BlogPost.Tags` which would return an `IEnumerable<Tag>`.
 1. Standards based an simple
 1. very transparent
 1. Extensible / customizable, without having to create a very complex code generator.
 
+## Setup
 
-## How it (should) work
+The Copilot will generate classes into an `/AppCode/Data` folder, so that the classes are in the `AppCode.Data` namespace.
+
+If you don't configure anything, then this folder will be in the root of your app.
+But you can also configure multiple editions, so that you could build into `/staging/AppCode/Data` and `/live/AppCode/Data` etc.
+This is done in the `app.json` file. See [instructions here](xref:Basics.App.FoldersAndFiles.AppJson#editions).
+
+## How it Works
 
 Let's assume we have the content-type `BlogPost`
 

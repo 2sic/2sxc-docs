@@ -4,12 +4,46 @@ uid: NetCode.StronglyTypedCode.UseInRazor
 
 # Use Custom Data in Razor (2sxc 17+ WIP)
 
-Once you have the initial setup going, you will want to use these types.
+Once you have the initial setup going (mainly [code generated with Copilot](xref:NetCode.Copilot.DataModelGenerator)), you will want to use these types.
 
 The `RazorTyped` base class was extended with the following methods, to make it easy:
 
-* `As<T>` - to convert the current item to a strongly typed object
-* `AsList<T>` - to convert a list of items to a list of strongly typed objects
+* `As<T>()` - to convert the current item to a strongly typed object
+* `AsList<T>()` - to convert a list of items to a list of strongly typed objects
+
+In addition, the `ITypedItem` has been extended with a few more methods, to make it easier to get strongly typed data:
+
+* `Child<T>()` - to get a child item and convert it to a strongly typed object
+* `Children<T>()` - to get a list of child items and convert them to a list of strongly typed objects
+
+## Easy as 1-2-3
+
+From then on forth, it's really easy - eg. like this:
+
+```razor
+@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Data
+
+<ol>
+  @foreach(var product in AsList<Product>(MyItems)) {
+    <li>
+      <img src="@product.Packshot">
+      <a href='@Link.To(parameters: "productid=" + product.Id)'>
+        @product.Title @(product.OnSale ? "🌟" : "")
+      </a>
+      Tags: @string.Join(", ", product.Tags.Select(c => c.Name))
+    </li>
+  }
+</ol>
+```
+
+You will notice that it looks a lot like dynamic code, except that
+
+* it's 100% type safe
+* you get IntelliSense
+* the compiler will catch many more issues
+* LINQ works as expected (which is not the case with dynamic objects)
+* it's faster
 
 ## Important for the Setup in Dnn
 
@@ -28,22 +62,14 @@ So to make sure that your Razor will compile using Roslyn, you should do the fol
 
 In both scenarios, Roslyn will be activated and your Razor will be compiled using the new system.
 
-## Easy as 1-2-3
+## More Advanced Example
 
-From then on forth, it's really easy - eg. like this:
+This is more advanced as it uses a custom Razor base class.
+The base class does some work which is not shown here, like prepare the `MyLinks` property
+or provide the `ActivateFancyBox()` method.
 
-```razor
-@inherits Custom.Hybrid.RazorTyped
-@using AppCode.Data
+In addition, the `Link` type has been extended with calculated fields such as `WindowAuto`.
 
-<ol>
-  @foreach(var product in AsList<Product>(MyItems)) {
-    <li>@product.Title</li>
-  }
-</ol>
-```
-
-Or more advanced:
 
 ```razor
 @inherits AppCode.Razor.LinksRazor
@@ -65,6 +91,35 @@ Or more advanced:
   }
 </div>
 @ActivateFancyBox()
+```
+
+## Standard Typed-Item APIs still work
+
+Just fyi, you can still use the standard typed-item APIs, like this:
+
+```razor
+@inherits AppCode.Razor.ProductRazor
+<h1>@MyProduct.Title</h1>
+@MyProduct.Picture("Screenshot", imgClass: "float-right")
+
+@* Show responsive HTML - the function has many more parameters *@
+@MyProduct.Html("MainBody")
+
+@* Get the HTML but scrub the HTML *@
+@MyProduct.String("MainBody", scrubHtml: true)
+
+@* Get the link, but as the raw value "file:72" and not as the url *@
+@MyProduct.String("Link")
+```
+
+### Edge Case: Custom Properties can Hide Methods
+
+Imagine if you had a property called `Html`.
+This would hide the `Html` method, so you would not be able to use it.
+In this special case, you have a few options, but the simplest is to cast the item to `ITypedItem` and then use the method like this:
+
+```razor
+@((ITypedItem)MyProduct).Html("MainBody")
 ```
 
 ---
