@@ -43,7 +43,7 @@ var personFromGuid = App.Data.GetOne<Person>(Guid.Parse("..."));
 
 ## Good to Know
 
-* To make the magic work, `GetAll(...)` and `GetOne(...)` will use the class name to determine the stream it should retrieve.
+* To make the magic work, `GetAll(...)` and `GetOne(...)` will use the **class name** to determine the stream it should retrieve.
 * If the stream does not exist, it means that the Content-Type doesn't exist, and it will throw an error
 * If the stream exists, but the data is empty, it will return an empty list or null, depending on the method used
 
