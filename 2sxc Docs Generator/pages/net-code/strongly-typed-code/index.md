@@ -2,10 +2,10 @@
 uid: NetCode.StronglyTypedCode.Index
 ---
 
-# Strongly Typed APIs in 2sxc 17+
+# Strongly Typed Code in 2sxc 17+
 
-**Strongly Typed Mode** is the newest way to write C# and Razor code in 2sxc 17+.
-It extends the [Typed Mode](xref:NetCode.TypedCode.Index).
+**Strongly Typed Code** is the newest way to write C# and Razor code in 2sxc 17+.
+It extends the [Typed Code](xref:NetCode.TypedCode.Index).
 As such, it's fully compatible, but ever more type-safe and easier to code and debug.
 
 ## What does Strongly Typed Code Look Like?

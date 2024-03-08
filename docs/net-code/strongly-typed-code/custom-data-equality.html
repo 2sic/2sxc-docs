@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title> | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Data Equality on Custom Data Models in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Data Equality on Custom Data Models in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/data/typed/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/custom-data-equality.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -36,7 +36,7 @@
       
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -55,8 +55,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,14 +105,75 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="">
+        <article data-uid="NetCode.StronglyTypedCode.DataEquality">
+<h1 id="data-equality-on-custom-data-models-in-2sxc-17">Data Equality on Custom Data Models in 2sxc 17+</h1>
 
-<p>Moved to <a class="xref" href="../../typed-code/data/index.html">Typed Data aka ITypedItem</a></p>
+<p>Custom data models such as <code>AppCode.Data.Product</code> or <code>AppCode.Data.BlogPost</code> are technically a wrapper around
+other objects usually coming from <code>IEntity</code>s.</p>
+<p>As such, there is always the question how to check equality.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The key take away: <strong>use the <code>==</code> operator</strong> and <strong>use the <code>.Equals()</code> method</strong> and <strong>use <code>.GroupBy()</code></strong> as you would expect.</p>
+<p>We have done special modifications to the wrappers, so the <code>==</code> operator and <code>item.Equals(item2)</code> will work as expected.</p>
+</div>
+<p>Let's explain:</p>
+<pre><code class="lang-c#">var item1 = As&lt;Product&gt;(MyItem);
+var item2 = As&lt;Product&gt;(MyItem);
+
+var isEqual = item1 == item2; // should this be true or false?
+</code></pre>
+<p>Technically the wrappers are different objects, as they were created independently.
+So in terms of what really happens, they are different,
+but for practical purposes they should behave as if they are the same.
+Here's why:</p>
+<pre><code class="lang-c#">// Get a list of all blog posts, then group by category
+var blogPosts = AsList&lt;BlogPost&gt;(MyItems);
+var grouped = blogPosts.GroupBy(p =&gt; p.Category);
+</code></pre>
+<p>Internally every item was wrapped as a <code>BlogPost</code>.
+Each one will also get the <code>Category</code> which was also wrapped independently.
+But for grouping by something, the should be considered equal.</p>
+<h2 id="equality-implementation">Equality Implementation</h2>
+<ol>
+<li>we have overloaded the <code>==</code> and <code>!=</code> operators to compare the underlying <code>IEntity</code> objects.</li>
+<li>we have implemented the <code>.Equals()</code> method to compare the underlying <code>IEntity</code> objects.</li>
+</ol>
+<p>This means that you can use the <code>==</code> operator and the <code>.Equals()</code> method as you would expect.
+It also means that LINQ operations such as <code>GroupBy</code> will work as expected.</p>
+<h2 id="difference-to-itypeditem">Difference to ITypedItem</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This is a different than the implementation on <code>ITypedItem</code>.
+There we could only override <code>.Equals()</code>, so that and <code>GroupBy</code> would work as expected,
+but the <code>==</code> operator would not work as expected in <code>ITypedItem</code>.</p>
+</div>
+<h2 id="edge-cases">Edge Cases</h2>
+<p>If rare cases where you extend the Data Model eg. <code>BlogPost</code> with additional properties, such as this</p>
+<pre><code class="lang-c#">namespace AppCode.Data
+{
+  public partial class BlogPost
+  {
+    public string CustomProperty { get; set; }
+  }
+}
+</code></pre>
+<p>...you may have two different objects, because you set that property on one and not the other.
+In this case, you may still want to check for equality and expect it to be <code>false</code>,
+but the underlying check would compare the inner data and return <code>true</code>.</p>
+<p>We believe this is a very, very rare scenario.
+If you want to do this, and expect two wrappers around the same data to be un-equal,
+you'll need to use <a href="https://learn.microsoft.com/en-us/dotnet/api/system.object.referenceequals">ReferenceEquals</a>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li><code>.Equals</code> implemented in v17.03</li>
+<li><code>==</code> and <code>!=</code> operators implemented in v17.04</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/data/typed/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/strongly-typed-code/custom-data-equality.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

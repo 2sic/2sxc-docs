@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title> | 2sxc 17 for Dnn and Oqtane </title>
+      <title>ITypedItem Equality in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="ITypedItem Equality in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/data/typed/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/data/typed-data-equality.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,14 +105,59 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="">
+        <article data-uid="NetCode.TypedCode.Data.DataEquality">
+<h1 id="itypeditem-equality-in-2sxc-16">ITypedItem Equality in 2sxc 16+</h1>
 
-<p>Moved to <a class="xref" href="../../typed-code/data/index.html">Typed Data aka ITypedItem</a></p>
+<p>Items of type <code>ITypedItem</code> are wrappers around <code>IEntity</code> objects, and as such, there is always the question how to check equality.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The key take away: <strong>use the <code>.Equals()</code> method</strong> and <strong>use <code>.GroupBy()</code></strong> as you would expect.</p>
+<p>Do not use the <code>==</code> operator, it will not work as expected.</p>
+<p>We have done special modifications to the wrappers, so the <code>item.Equals(item2)</code> (and <code>GroupBy</code>) will work as expected.
+But it is technically not possible to make the <code>==</code> operator work as expected.</p>
+</div>
+<p>Let's explain:</p>
+<pre><code class="lang-c#">var someEntity = App.Data.GetStream(&quot;BlogPosts&quot;).First();
+var item1 = AsItem(someEntity);
+var item2 = AsItem(someEntity);
+
+var isEqual = item1 == item2; // should this be true or false?
+</code></pre>
+<p>Technically the wrappers are different objects, as they were created independently.
+So in terms of what really happens, they are different,
+but for practical purposes they should behave as if they are the same.
+Here's why:</p>
+<pre><code class="lang-c#">// Get a list of all blog posts, then group by category
+var blogPosts = AsItems(App.Data.GetStream(&quot;BlogPosts&quot;));
+var grouped = blogPosts.GroupBy(p =&gt; p.Child(&quot;Category&quot;));
+</code></pre>
+<p>Internally every item was wrapped as a <code>ITypedItem</code>.
+Each one will also get the <code>Category</code> which was also wrapped independently.
+But for grouping by something, the should be considered equal.</p>
+<h2 id="equality-implementation">Equality Implementation</h2>
+<ol>
+<li>we have implemented the <code>.Equals()</code> method to compare the underlying <code>IEntity</code> objects.</li>
+<li>we <strong>did not</strong> overloaded the <code>==</code> and <code>!=</code> operators, as this is technically not possible.</li>
+</ol>
+<p>This means that you can use <code>.Equals()</code> method as you would expect.
+It also means that LINQ operations such as <code>GroupBy</code> will work as expected.</p>
+<p>The <code>==</code> and <code>!=</code> operators will not work as expected.</p>
+<h2 id="difference-to-custom-strongly-typed-items-v1703">Difference to Custom Strongly Typed Items (v17.03+)</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This is a different than the implementation on <code>Custom.Data.CustomItem</code>.
+There the <code>==</code> and <code>!=</code> also work. See <a class="xref" href="../../strongly-typed-code/custom-data-equality.html">CustomItem Equality</a></p>
+</div>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li><code>.Equals()</code> implemented in ca. v16.07</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/data/typed/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/typed-code/data/typed-data-equality.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

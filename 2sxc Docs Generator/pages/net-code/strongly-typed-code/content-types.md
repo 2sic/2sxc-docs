@@ -2,7 +2,7 @@
 uid: NetCode.StronglyTypedCode.ContentTypes
 ---
 
-# Content-Types in the Strongly Typed APIs in 2sxc 17+
+# Custom Data Models in the Strongly Typed APIs in 2sxc 17+
 
 The [Copilot Data Model Generator](xref:NetCode.Copilot.DataModelGenerator) will generate classes for each Content-Type in the `AppCode.Data` namespace.
 The details are documented there.
