@@ -7,9 +7,9 @@ uid: NetCode.Conventions.PropertiesRequired
 On newer APIs we implement a policy that properties are **required** by default (but you can override this).
 This applies to newer base classes such as
 
-* [](xref:Custom.Hybrid.RazorPro)
-* [](xref:Custom.Hybrid.ApiPro)
-* [](xref:Custom.Hybrid.CodePro)
+* [](xref:Custom.Hybrid.RazorTyped)
+* [](xref:Custom.Hybrid.ApiTyped)
+* [](xref:Custom.Hybrid.CodeTyped)
 
 This means that by _default_, retrieving any property such as `something.String("FirstName")`
 will only work, if the underlying Entity has the property `FirstName`.
