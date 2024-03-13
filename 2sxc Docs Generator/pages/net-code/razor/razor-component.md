@@ -39,7 +39,7 @@ In addition there are a few additional objects & commands which you will usually
 
 1. `Html.Raw(string)`  
     Standard Razor API to output the HTML in a string instead of showing tags in the visible page
-1. `RenderPage(path, data)`  
+1. `Html.Partial(path, data)`  
     Standard Razor API - google it if you need it or read about [splitting code in Razor](xref:NetCode.Razor.OrganizeCode)
 
 The following keywords are normal in any Razor system, but it's good if you know them. Google them to learn more.

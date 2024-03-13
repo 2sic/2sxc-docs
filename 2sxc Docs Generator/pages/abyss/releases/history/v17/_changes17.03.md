@@ -10,3 +10,4 @@
 1. ✅ New `Custom.Data.CustomItem` base class with GPS data, `As<Type>` and `AsList<Type>` API
 1. ✅ improve `App_Data/app.json` schema to include `editions` for Copilot
 1. ✅ Add template app `Basic` and `Empty`
+1. ✅ Intellisense: Find way to link to the official docs from inside the help

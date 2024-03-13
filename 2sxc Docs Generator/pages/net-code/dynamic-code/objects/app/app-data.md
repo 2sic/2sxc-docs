@@ -13,7 +13,7 @@ The `App.Data` object gives you immediate acccess to all data in the app, throug
 ```razor
 @foreach(var post in AsList(App.Data["BlogPost"]))
 {
-    @RenderPage("_list-item.cshtml", new { Post = post })
+    @Html.Partial("_list-item.cshtml", new { Post = post })
 }
 ```
 

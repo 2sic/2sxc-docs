@@ -11,16 +11,19 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-03-04**
+Last Update: **2024-03-13**
+
+## Priority for 2024-Q1 till end of March
+
+1. Prepare for Oqtane SSR (Server-Side Rendering)
+1. Finalize Intellisense for the most important DLLs (Sxc, Dnn, Oqtane)
+1. Provide Code Generator for Content Types, Razor and Services
+1. Improve discoverability of REST APIs
+1. LTS
 
 
-## To Improve Q1
+## Maybe Q1 if we can make it
 
-1. Improve Pickers all kinds of small issues
-    1. string-picker - use label/value in generated parts eg
-    1. tree
-    1. multi-select
-    1. maybe checkboxes
 1. ⌛ Mobius Form Builder
 1. Improve Intellisense
     1. ✅ Hide more internal APIs
@@ -29,10 +32,12 @@ Last Update: **2024-03-04**
         1. ToSic.Sxc.WebApi
         1. ToSic.Sxc.Dnn
         1. ToSic.Sxc.Oqt / Razor
-    1. ✅ Find way to link to the official docs from inside the help
+
+1. ⌛ Document new ~~Pro~~ Typed mode
+
+## Postponed for Q2
 
 1. Shared Field Configurations (not yet "published")
-1. ⌛ Document new ~~Pro~~ Typed mode
 
 
 
@@ -41,6 +46,11 @@ Last Update: **2024-03-04**
 
 also...
 
+1. Improve Pickers all kinds of small issues
+    1. string-picker - use label/value in generated parts eg
+    1. tree
+    1. multi-select
+    1. maybe checkboxes
 1. ⌛ Rework the UI **Picker** aka DropDown system
     1. to have titles, help, notes, links, and more @SDV
     1. to also have various data sources

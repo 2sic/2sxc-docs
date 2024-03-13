@@ -92,7 +92,7 @@ Basis for everything:
 1. `System.Web.WebPages.WebPageBase`
     1. 🥷🏽 `ToSic.Sxc.Web.RazorComponentBase`
         _internal base for all Razor Pages in DNN_  
-        🔹 adds dynamic code context, `Html`, `RenderPage`, etc.  
+        🔹 adds dynamic code context, `Html` helper, etc.  
         🔹 adds simple `Log` object  
         🔹 Adds logging to insights  
         🔹 Base class for everything

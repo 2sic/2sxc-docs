@@ -27,7 +27,8 @@ or to be using the wrong object (such as having and underlying `BlogPost` object
 
 You can override this at object/wrapper creation, or when retrieving the value.
 
-When creating the object, you can override the default behavior by setting the `TODO:` parameter.
+When creating the object, you can override the default behavior by setting
+the `required` parameter on value getters, or `propsRequired` on item-conversions.
 Example:
 
 ```c#
