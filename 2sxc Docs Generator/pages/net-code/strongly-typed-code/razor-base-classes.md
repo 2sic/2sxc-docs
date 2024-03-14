@@ -43,7 +43,7 @@ namespace AppCode.Razor
 }
 ```
 
-> [!INFO]
+> [!NOTE]
 > The above code may look auto-generated, but there is no generator as of now.
 > We will create one though, and it will do things similar to this.
 

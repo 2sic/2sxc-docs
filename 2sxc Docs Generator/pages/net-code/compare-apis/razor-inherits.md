@@ -4,7 +4,18 @@ uid: NetCode.TypedCode.CompareApis.RazorBase
 
 # Razor Base Classes - `@inherits`
 
-Every Razor template inherits from a base class - and depending on that the APIs and features in the template will change.
+Every Razor template inherits from a base class.
+depending on the base class, the APIs and features in the template will change.
+Example:
+
+```razor
+// Inherit from the newest base class in 2sxc 16/17
+@inherits Custom.Hybrid.RazorTyped
+@{
+  // more code
+}
+<div>more html</div>
+```
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
@@ -59,23 +70,13 @@ This is the recommended way to write code in 2sxc 16+.
 
 ## Custom.Hybrid.RazorTyped
 
-> [!INFORMATION]
+> [!NOTE]
 > `RazorTyped` and `RazorTyped<TModel>` use **Typed API**.
 > See TODO:
 >
 > See [Custom.Hybrid.RazorTyped](xref:Custom.Hybrid.RazorTyped)
 
-
-This is the newest base class and recommended to use.
-It provides you the full typed API such as the `MyItem` object and `AsItem(...)` methods.
-
-Differences to previous versions:
-
-* Typed API
-* The root `Edit` object was removed, as it's primary purpose was to provide toolbars, for which you should use the `Kit.Toolbar` service instead.  
-  If you still need the `Edit` object, you can find it on `Kit.Edit`.
-
-📖 Read about the Typed API here TODO:
+[!include["base-typed"](_base-typed_.md)]
 
 ## Base Classes in the AppCode.Razor Namespace
 
@@ -86,64 +87,47 @@ Some will be auto-generated, others will be made by you.
 
 ## Custom.Hybrid.Razor14
 
-> [!INFORMATION]
-> `Razor14` and all previous versions use **Dynamic API**.
+> [!NOTE]
+> `Razor14` ist the last release for **Dynamic API**.
+> It and all previous versions use **Dynamic API**.
 > See TODO:
 >
 > See [Custom.Hybrid.Razor14](xref:Custom.Hybrid.Razor14)
 
 Razor14 almost identical with the older Razor12 (see below) with these differences:
 
-1. the `Kit` property is new, providing access to the ServiceKit called [ServiceKit14](xref:ToSic.Sxc.ServiceKit.ServiceKit14).
-  It provides access to all the services you need, like `Data`, `Security`, `Koi`, `Convert` and more.
-
-1. the `Convert` property is removed, as it caused confusion with `System.Convert`
-
-Note: hybrid base classes don't have a `Dnn` property. [...more](xref:NetCode.TypedCode.CompareApis.DnnObject)
+[!include["base-12-14"](_base-differences-12-14.md)]
 
 
-## Custom.Hybrid.Razor12
+## Custom.Hybrid.Razor12 & Custom.Dnn.Razor12
 
-> [!INFORMATION]
+> [!NOTE]
 > `Razor12` uses the **Dynamic API**.
 > See TODO:
 >
-> See [Custom.Hybrid.Razor12](xref:Custom.Hybrid.Razor12)
+> See [Custom.Hybrid.Razor12](xref:Custom.Hybrid.Razor12) and [Custom.Dnn.Razor12](xref:Custom.Dnn.Razor12)
 
 
 This was introduced in 2sxc 12.
 It contains the features which will work cross-platform on both Dnn and Oqtane.
 You should use this base class to create solutions / Apps which work on Dnn and Oqtane.
 
+`Custom.Dnn.Razor12` is identical with `Custom.Hybrid.Razor12` but with the addition of the `Dnn` property.
+See also [Dnn Object](xref:NetCode.TypedCode.CompareApis.DnnObject).
+
 ### Limitations of Custom.Hybrid.Razor12
 
-Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support.
+[!include["base-12-limitations"](_base-12-limitations-shared.md)]
 
-1. The property `Dnn` doesn't exist on this base class, as it would lead to code which can't run cross-platform. [...more](xref:NetCode.TypedCode.CompareApis.DnnObject)
+1. Properties / methods `CustomizeData(...)`, `CustomizeSearch(...)` and `Purpose` do not work, because Oqtane doesn't have a search indexer.
+    This is replaced with the new [search-integration mechanism](xref:NetCode.Search.Index)
 
-1. As of now the properties / methods `CustomizeData(...)`, `CustomizeSearch(...)` and `Purpose` do not work, because Oqtane doesn't have a search indexer. We plan on introducing something like this once Oqtane provides search, but as of now it's not yet clear how this would work.
-
-1. The code-behing `Code` object doesn't work, as we probably cannot implement this in .net 5
-
-1. The `CreateInstance(...)` works only on C# files `.cs` but not with CSHTML files `.cshtml` as this probably won't work in .net 5
-
-1. Koi works differently than before. Previously you just used a global object `Connect.Koi.Koi` to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using `GetService<Connect.Koi.ICss>()`. The old mechanism will still work in Dnn but would not work in Oqtane.
-
-
-## Custom.Dnn.Razor12
-
-> [!INFORMATION]
-> `Razor12` uses the **Dynamic API**.
-> See TODO:
->
-> See [Custom.Dnn.Razor12](xref:Custom.Dnn.Razor12)
-
-This is identical with `Custom.Hybrid.Razor12` but with the addition of the `Dnn` property - see also [Dnn Object](xref:NetCode.TypedCode.CompareApis.DnnObject).
+1. The code-behind `Code` object doesn't work, as we probably cannot implement this in .net 5
 
 ## ToSic.Sxc.Dnn.RazorComponent
 
-> [!INFORMATION]
-> `Razor12` uses the **Dynamic API**.
+> [!NOTE]
+> `RazorComponent` uses the **Dynamic API**.
 > See TODO:
 >
 > See [RazorComponent](xref:ToSic.Sxc.Dnn.RazorComponent)
@@ -188,11 +172,9 @@ Some core feature differences
 
 ## Internal Docs: Api Controller Inheritance
 
-> [!INFORMATION]
+> [!NOTE]
 > This is internal documentation for the 2sxc core developers.
 > You don't need this part.
-
-### Internal Docs: Dnn API Controller Inheritance
 
 Basis for everything:
 
@@ -223,8 +205,14 @@ Based on that these public base classes were made:
 1. 🥷🏽 `Custom.Hybrid.Advanced.Razor14<TModel, TServiceKit>` _internal_  
     🔹 adds the `Kit` property with all kinds of ready-to-use Services  
     🔹 also removes the `.Convert` object, which is now on Kit.Convert
-    1. ⭐🌟 `Custom.Hybrid.Razor14` _public, **recommended**_
-
+    1. ⭐ `Custom.Hybrid.Razor14` _public_
+1. ⭐🌟 `Custom.Hybrid.RazorTyped` **recommended**  
+    🔹 changes entire API to typed
+    🔹 adds the `MyItem` object and `AsItem(...)` methods
+    1. ⭐🌟 `Custom.Hybrid.RazorTyped<TModel>` **recommended**  
+       🔹 adds the `Model` object
+1. ⭐🌟 `AppCode.Razor.AppRazor` _public, custom - only exists if the App creates it_  
+    1. ⭐ `AppCode.Razor.AppRazor<TModel>` _public_
 
 ---
 

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Compare Various C# / Razor APIs | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Built-In Helpers and Services Differences in APIs | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Compare Various C# / Razor APIs | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Built-In Helpers and Services Differences in APIs | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/helpers-services.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,46 +105,193 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.CompareApis.Index">
-<h1 id="compare-various-c--razor-apis">Compare Various C# / Razor APIs</h1>
+        <article data-uid="NetCode.TypedCode.CompareApis.HelpersServices">
+<h1 id="built-in-helpers-and-services-differences-in-apis">Built-In Helpers and Services Differences in APIs</h1>
 
 <p>2sxc has changed a lot over time.
 So you'll find old code snippets and new ones, and it helps to see which one is being used.
 Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>This is comparing / picking the right API.
-It's not meant to document all the features, but to help compare and migrate from an old API to a new one.</p>
-</div>
-<p>This page should give show you old/new APIs to make refactoring easier.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>🎓 Best check out the <a href="https://go.2sxc.org/quickref">tutorial QuickRef</a> which shows all this!</p>
+<p>This is about <strong>Helpers</strong> and <strong>Services</strong> which are automatically available on each Razor / C# file.</p>
+<p>So <strong>Kit</strong>, <strong>Edit</strong> (old), <strong>GetService()</strong> etc.</p>
 </div>
-<h2 id="base-classes---determine-api">Base Classes / @inherits Determine API</h2>
-<p>For <strong>Razor</strong>, the <code>@inherits</code> statement is the most important part of a Razor file, as it defines which APIs are available.</p>
-<p>👉🏽 See <a class="xref" href="razor-inherits.html">Razor @inherits</a></p>
-<p>If your <strong>custom C# file</strong> inherits from a base class, it will get more APIs - exactly which ones depends on the base class.</p>
-<p>👉🏽 See <a class="xref" href="csharp-base.html">C# Base Classes</a></p>
-<p>If your <strong>Custom WebApi Controller</strong> inherits from a base class, it will get more APIs - exactly which ones depends on the base class.</p>
-<p>👉🏽 See <a class="xref" href="webapi-base.html">WebApi Base Classes</a></p>
-<h2 id="built-in-objects-and-services">Built-In Objects and Services</h2>
-<p>Depending on the API generation you have selected with the base class, the built-in objects and services will be different.</p>
-<p>👉🏽 <a class="xref" href="data-objects.html">Built-In Data Objects</a></p>
-<p>👉🏽 <a class="xref" href="data-object-api.html">Data Object API Differences</a></p>
-<p>👉🏽 <a class="xref" href="helpers-services.html">Built-In Helpers and Services</a></p>
-<p>👉🏽 <a class="xref" href="app-data.html">App &amp; App Data</a></p>
-<p>👉🏽 <a class="xref" href="settings-resources.html">Settings &amp; Resources</a></p>
-<h2 id="sub-razor-components-and-custom-c-helpers">Sub Razor Components and Custom C# Helpers</h2>
-<p>👉🏽 <a class="xref" href="razor-sub-components.html">Razor Sub Components</a></p>
-<p>👉🏽 <a class="xref" href="csharp-helpers.html">Custom C# Helpers / Services</a></p>
-<h2 id="special-dnn-helpers--dnn-only">Special Dnn Helpers (☢️ Dnn only)</h2>
-<p>👉🏽 <a class="xref" href="dnn-object.html">Dnn helper Object</a></p>
+<h2 id="built-in-helpers-and-services">Built-In Helpers and Services</h2>
+<p>2sxc provides a lot of built-in helpers and services which are automatically available in each Razor / C# file.
+With time, they changed, so inheriting from a different base class provides different objects to do things out-of-the-box.</p>
+<table>
+<thead>
+<tr>
+<th>Helper Object</th>
+<th>Dynamic</th>
+<th>Typed / Strongly Typed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Service Kit</strong></td>
+<td>-</td>
+<td><code>Kit</code></td>
+</tr>
+<tr>
+<td><strong>Link Helper</strong></td>
+<td><code>Link</code></td>
+<td><code>Link</code></td>
+</tr>
+<tr>
+<td><strong>Toolbar Maker</strong></td>
+<td><code>Edit.Toolbar</code></td>
+<td><code>Kit.Toolbar</code></td>
+</tr>
+<tr>
+<td><strong>Edit Helper</strong></td>
+<td><code>Edit</code></td>
+<td><code>Kit.Edit</code> (avoid using)</td>
+</tr>
+<tr>
+<td><strong>Context Info</strong></td>
+<td><code>Context</code></td>
+<td><code>MyContext</code></td>
+</tr>
+<tr>
+<td><strong>Page Info</strong></td>
+<td><code>Context.Page</code></td>
+<td><code>MyPage</code></td>
+</tr>
+<tr>
+<td><strong>Page Url Params</strong></td>
+<td><code>Context.Page.Parameters</code></td>
+<td><code>MyPage.Parameters</code></td>
+</tr>
+<tr>
+<td><strong>User Info</strong></td>
+<td><code>Context.User</code></td>
+<td><code>MyUser</code></td>
+</tr>
+<tr>
+<td><strong>View Info</strong></td>
+<td><code>Context.View</code></td>
+<td><code>MyView</code></td>
+</tr>
+<tr>
+<td><strong>Culture Info</strong></td>
+<td><code>Context.Culture</code></td>
+<td><code>MyContext.Culture</code></td>
+</tr>
+<tr>
+<td><strong>Module Info</strong></td>
+<td><code>Context.Module</code></td>
+<td><code>MyContext.Module</code></td>
+</tr>
+<tr>
+<td><strong>Platform Info</strong></td>
+<td><code>Context.Platform</code></td>
+<td><code>MyContext.Platform</code></td>
+</tr>
+<tr>
+<td><strong>Site Info</strong></td>
+<td><code>Context.Site</code></td>
+<td><code>MyContext.Site</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-in-commands">Build-In Commands</h2>
+<p>The following commands are often on the object itself, but sometimes it's also under a helper object.
+So the list has more than just commands.</p>
+<table>
+<thead>
+<tr>
+<th>Helper Methods</th>
+<th>Dynamic</th>
+<th>Typed / Strongly Typed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Get Service</strong></td>
+<td><code>GetService&lt;TService&gt;(&quot;2sxc&quot;)</code></td>
+<td><code>GetService&lt;TService&gt;()</code></td>
+</tr>
+<tr>
+<td><strong>Convert to Entity</strong></td>
+<td><code>AsEntity(dyn)</code></td>
+<td><code>AsEntity(itm)</code></td>
+</tr>
+<tr>
+<td><strong>Convert Entity</strong></td>
+<td><code>AsDynamic(thing)</code></td>
+<td><code>AsItem(thing)</code></td>
+</tr>
+<tr>
+<td><strong>Convert Entities</strong></td>
+<td><code>AsDynamic(dynList)</code></td>
+<td><code>AsItems(itmList)</code></td>
+</tr>
+<tr>
+<td><strong>Convert as Dynamic</strong></td>
+<td><code>AsDynamic(thing)</code></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Convert as ITypedItem</strong></td>
+<td>n/a</td>
+<td><code>AsItem(thing)</code></td>
+</tr>
+<tr>
+<td><strong>Convert as Enum&lt;ITy...&gt;</strong></td>
+<td>n/a</td>
+<td><code>AsItems(itmList)</code></td>
+</tr>
+<tr>
+<td><strong>Convert as ITyped</strong></td>
+<td>n/a</td>
+<td><code>AsTyped(thing)</code></td>
+</tr>
+<tr>
+<td><strong>Convert as Enum<ityped></ityped></strong></td>
+<td>n/a</td>
+<td><code>AsTypedList(things)</code></td>
+</tr>
+<tr>
+<td><strong>Merge Many</strong></td>
+<td><code>AsDynamic(dyn1, dyn2, ...)</code></td>
+<td><code>AsStack(itm1, itm2, ...)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="toolbars">TOOLBARS</h2>
+<table>
+<thead>
+<tr>
+<th>Dynamic</th>
+<th>Typed</th>
+<th>Comments / Differences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Edit</code></td>
+<td><code>Kit.Edit</code></td>
+<td>global <code>Edit</code> object is gone</td>
+</tr>
+<tr>
+<td><code>Edit.TagToolbar(...)</code></td>
+<td><code>Kit.Toolbar.Default(...)</code> <br> <code>Kit.Toolbar.Empty(...).</code></td>
+<td>global <code>Edit</code> object is gone</td>
+</tr>
+<tr>
+<td><code>Edit.Toolbar(...)</code></td>
+<td><code>Kit.Toolbar.Default(...)...AsTag()</code> <br> <code>Kit.Toolbar.Empty(...)...AsTag()</code></td>
+<td>global <code>Edit</code> object is gone</td>
+</tr>
+</tbody>
+</table>
+<p>More TODO:</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/helpers-services.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

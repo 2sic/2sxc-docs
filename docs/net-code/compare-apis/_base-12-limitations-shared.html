@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Compare Various C# / Razor APIs | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Compare Various C# / Razor APIs | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/_base-12-limitations-shared.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,46 +105,22 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.CompareApis.Index">
-<h1 id="compare-various-c--razor-apis">Compare Various C# / Razor APIs</h1>
+        <article data-uid="">
 
-<p>2sxc has changed a lot over time.
-So you'll find old code snippets and new ones, and it helps to see which one is being used.
-Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>This is comparing / picking the right API.
-It's not meant to document all the features, but to help compare and migrate from an old API to a new one.</p>
-</div>
-<p>This page should give show you old/new APIs to make refactoring easier.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>🎓 Best check out the <a href="https://go.2sxc.org/quickref">tutorial QuickRef</a> which shows all this!</p>
-</div>
-<h2 id="base-classes---determine-api">Base Classes / @inherits Determine API</h2>
-<p>For <strong>Razor</strong>, the <code>@inherits</code> statement is the most important part of a Razor file, as it defines which APIs are available.</p>
-<p>👉🏽 See <a class="xref" href="razor-inherits.html">Razor @inherits</a></p>
-<p>If your <strong>custom C# file</strong> inherits from a base class, it will get more APIs - exactly which ones depends on the base class.</p>
-<p>👉🏽 See <a class="xref" href="csharp-base.html">C# Base Classes</a></p>
-<p>If your <strong>Custom WebApi Controller</strong> inherits from a base class, it will get more APIs - exactly which ones depends on the base class.</p>
-<p>👉🏽 See <a class="xref" href="webapi-base.html">WebApi Base Classes</a></p>
-<h2 id="built-in-objects-and-services">Built-In Objects and Services</h2>
-<p>Depending on the API generation you have selected with the base class, the built-in objects and services will be different.</p>
-<p>👉🏽 <a class="xref" href="data-objects.html">Built-In Data Objects</a></p>
-<p>👉🏽 <a class="xref" href="data-object-api.html">Data Object API Differences</a></p>
-<p>👉🏽 <a class="xref" href="helpers-services.html">Built-In Helpers and Services</a></p>
-<p>👉🏽 <a class="xref" href="app-data.html">App &amp; App Data</a></p>
-<p>👉🏽 <a class="xref" href="settings-resources.html">Settings &amp; Resources</a></p>
-<h2 id="sub-razor-components-and-custom-c-helpers">Sub Razor Components and Custom C# Helpers</h2>
-<p>👉🏽 <a class="xref" href="razor-sub-components.html">Razor Sub Components</a></p>
-<p>👉🏽 <a class="xref" href="csharp-helpers.html">Custom C# Helpers / Services</a></p>
-<h2 id="special-dnn-helpers--dnn-only">Special Dnn Helpers (☢️ Dnn only)</h2>
-<p>👉🏽 <a class="xref" href="dnn-object.html">Dnn helper Object</a></p>
+<p>Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support.</p>
+<ol>
+<li><p>The property <code>Dnn</code> doesn't exist on this base class, as it would lead to code which can't run cross-platform. <a class="xref" href="dnn-object.html">...more</a></p>
+</li>
+<li><p>The <code>CreateInstance(...)</code> works only on C# files <code>.cs</code> but not with CSHTML files <code>.cshtml</code> as this probably won't work in .net 5</p>
+</li>
+<li><p>Koi works differently than before. Previously you just used a global object <code>Connect.Koi.Koi</code> to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using <code>GetService&lt;Connect.Koi.ICss&gt;()</code>. The old mechanism will still work in Dnn but would not work in Oqtane.</p>
+</li>
+</ol>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/_base-12-limitations-shared.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -32,6 +32,24 @@ So when the Razor code loads, these objects are ready and filled with the data o
 > Example: The images in a gallery-block belong to that gallery instance.
 > But the list of all tags don't belong to the gallery instance.
 
+## Overview of Data Objects
+
+| Purpose | Dynamic | Typed | Strongly Typed
+| --- | --- | --- | ---
+| **Get-Current-Data** | `Content` | `MyItem` | `MyItem`
+| **Get-Current-List** | `List` | `MyItems` | `MyItems`
+| **Get-Current-Header** | `Header` | `MyHeader` | `MyHeader`
+| **Get-Current-Data** | `Data` | `MyData` | `MyData`
+| **App Object** | `App` | `App` | `App`
+| **App Query** | `App.Query` | `App.Query` | `App.Query`
+| **App Data** | `App.Data` | `App.Data` | `App.Data`
+| **App Resources** | `App.Resources` | `App.Resources` | `App.Resources`
+| **App Settings** | `App.Settings` | `App.Settings` | `App.Settings`
+| **All Settings** | `Settings` | `AllSettings` | `AllSettings`
+| **All Resources** | `Resources` | `AllResources` | `AllResources`
+| **Parameters** | `DynamicModel` | `MyModel` | `MyModel` / `Model`
+
+
 ## Basic Get-Current-Data
 
 | Dynamic | Typed | Comments / Differences

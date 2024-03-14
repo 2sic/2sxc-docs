@@ -333,55 +333,57 @@ If you want to do it manually, you can always use the properties as described in
 </li>
 </ul>
 <p>Note that the <code>Img</code> and <code>Picture</code> methods have more parameters to specify what you want.</p>
-<h2 id="showoutput-complex-values">Show/Output Complex Values</h2>
-<table>
-<thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>@Kit.Image.Picture(dyn, &quot;Pic&quot;)</code></td>
-<td><code>@itm.Picture(&quot;Pic&quot;)</code> (recommended) <br><br> <code>@Kit.Image.Picture(itm.Field(&quot;Pic))</code> Show an image; auto-resize and toolbar</td>
-<td></td>
-</tr>
-<tr>
-<td><code>AsAdam(dyn as object, &quot;Pic&quot;).Files.First()</code></td>
-<td><code>itm.File(&quot;Pic&quot;)</code></td>
-<td>Get a file in the field <code>Pic</code></td>
-</tr>
-<tr>
-<td><code>AsAdam(dyn as object, &quot;Pic&quot;)</code></td>
-<td><code>itm.Folder(&quot;Pic&quot;)</code></td>
-<td>Get a folder on the item</td>
-</tr>
-</tbody>
-</table>
-<h2 id="working-with-children-and-parents">Working with Children and Parents</h2>
-<table>
-<thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Comments / Differences</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>@dyn.Publisher.Name</code></td>
-<td><code>@itm.String(&quot;Publisher.Name&quot;)</code> <br> <code>@itm.Child(&quot;Publisher&quot;).String(&quot;Name&quot;)</code></td>
-<td>Show a child value</td>
-</tr>
-<tr>
-<td><code>@(dyn.Authors as IEnumerable&lt;dynamic&gt;).Count()</code></td>
-<td><code>@itm.Children(&quot;Authors&quot;).Count()</code></td>
-<td>Show number of children</td>
-</tr>
-</tbody>
-</table>
+<h2 id="files-and-folders-of-an-item-adam">Files and Folders of an Item (ADAM)</h2>
+<p>When using Hyperlink/File fields, you may want to get the file which is referenced (instead of the link.)
+In some situations it can even contain many files, or even sub folders.</p>
+<p>System is called <a class="xref" href="../../basics/cms/adam/index.html">ADAM - Automatic Digital Asset Management</a>.</p>
+<ul>
+<li>Dynamic
+<ul>
+<li><code>AsAdam(dyn as object, &quot;Pic&quot;).Files.First()</code> - get a file in the field <code>Pic</code></li>
+<li><code>AsAdam(dyn as object, &quot;Pic&quot;)</code> - get a folder on the item</li>
+</ul>
+</li>
+<li>Typed
+<ul>
+<li><code>itm.File(&quot;Pic&quot;)</code> - get a file in the field <code>Pic</code></li>
+<li><code>itm.Folder(&quot;Pic&quot;)</code> - get a folder on the item</li>
+</ul>
+</li>
+<li>Strongly Typed
+<ul>
+<li><code>itm.PicFile</code> - get a file in the field <code>Pic</code></li>
+<li><code>itm.PicFolder</code> - get a folder on the item</li>
+</ul>
+</li>
+</ul>
+<h2 id="children-and-parents">Children and Parents</h2>
+<p>Related data is either children (when the current item has a field with reference to other items) or parents (when other items reference the current item).</p>
+<ul>
+<li>Dynamic
+<ul>
+<li><code>@dyn.Publisher.Name</code> - show the name of the child <code>Publisher</code></li>
+<li><code>@(dyn.Authors as IEnumerable&lt;dynamic&gt;).Count()</code> - show the number of children</li>
+</ul>
+</li>
+<li>Typed
+<ul>
+<li><code>@itm.Children(&quot;Authors&quot;).Count()</code> - show the number of children</li>
+<li><code>@itm.Child(&quot;Publisher&quot;).String(&quot;Name&quot;)</code> - show the name of the child <code>Publisher</code></li>
+</ul>
+</li>
+<li>Strongly Typed
+<ul>
+<li><code>@itm.Publisher.Name</code> - show the name of the child <code>Publisher</code></li>
+<li><code>@itm.Authors.Count()</code> - show the number of children</li>
+</ul>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>For the strongly typed version, the property names are defined in the data model.
+The exact type returned and if it's a list or single item depends on the field configuration.</p>
+</div>
 
 </article>
 

@@ -148,19 +148,39 @@ Usually you will prefer to use built in APIs/Services to do this.
 
 Note that the `Img` and `Picture` methods have more parameters to specify what you want.  
 
-## Show/Output Complex Values
 
-| Dynamic | Typed
-| --- | --- | ---
-| `AsAdam(dyn as object, "Pic").Files.First()` | `itm.File("Pic")` | Get a file in the field `Pic`
-| `AsAdam(dyn as object, "Pic")` | `itm.Folder("Pic")` | Get a folder on the item
+## Files and Folders of an Item (ADAM)
+
+When using Hyperlink/File fields, you may want to get the file which is referenced (instead of the link.)
+In some situations it can even contain many files, or even sub folders.
+
+System is called [ADAM - Automatic Digital Asset Management](xref:Basics.Cms.Adam.Index).
+
+* Dynamic
+  * `AsAdam(dyn as object, "Pic").Files.First()` - get a file in the field `Pic`
+  * `AsAdam(dyn as object, "Pic")` - get a folder on the item
+* Typed
+  * `itm.File("Pic")` - get a file in the field `Pic`
+  * `itm.Folder("Pic")` - get a folder on the item
+* Strongly Typed
+  * `itm.PicFile` - get a file in the field `Pic`
+  * `itm.PicFolder` - get a folder on the item
 
 
-## Working with Children and Parents
+## Children and Parents
 
-| Dynamic | Typed | Comments / Differences
-| --- | --- | ---
-| `@dyn.Publisher.Name` | `@itm.String("Publisher.Name")` <br> `@itm.Child("Publisher").String("Name")` | Show a child value
-| `@(dyn.Authors as IEnumerable<dynamic>).Count()` | `@itm.Children("Authors").Count()` | Show number of children
+Related data is either children (when the current item has a field with reference to other items) or parents (when other items reference the current item).
 
+* Dynamic
+  * `@dyn.Publisher.Name` - show the name of the child `Publisher`
+  * `@(dyn.Authors as IEnumerable<dynamic>).Count()` - show the number of children
+* Typed
+  * `@itm.Children("Authors").Count()` - show the number of children
+  * `@itm.Child("Publisher").String("Name")` - show the name of the child `Publisher`
+* Strongly Typed
+  * `@itm.Publisher.Name` - show the name of the child `Publisher`
+  * `@itm.Authors.Count()` - show the number of children
 
+> [!NOTE]
+> For the strongly typed version, the property names are defined in the data model.
+> The exact type returned and if it's a list or single item depends on the field configuration.
