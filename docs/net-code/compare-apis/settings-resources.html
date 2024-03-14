@@ -137,6 +137,12 @@ So getting <code>Images.MyConfig.Width</code> will not throw an error if <code>M
 <li><code>App.Settings</code> - a <code>AppCode.Data.AppSettings</code> based on <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app settings</li>
 <li><code>App.Resources</code> - a <code>AppCode.Data.AppResources</code> based on <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app resources</li>
 </ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The strongly typed code is much more robust - and typed.
+So using App.Resources will provide intellisense (if <a href="xref:xref:Guides.VsCode.Index">VS Code is configured correctly</a>).</p>
+<p>You can also use the <code>?.</code> operator to avoid null-errors, such as <code>App.Resources?.Title</code> since we're using the new Roslyn compiler for strongly typed code.</p>
+</div>
 <h3 id="dynamic-code">Dynamic Code</h3>
 <p>In Dynamic Code, the objects you'll use are usually:</p>
 <ul>
@@ -152,6 +158,7 @@ So getting <code>Images.MyConfig.Width</code> will not throw an error if <code>M
 <h5>Warning</h5>
 <p>The dynamic code is much more error-prone, as it will throw an error if a setting doesn't exist.
 So getting <code>Images.MyConfig.Width</code> will throw a null-error if <code>MyConfig</code> doesn't exist.</p>
+<p>Unfortunately you also can't use the <code>?.</code> operator to avoid this, because the old Dnn compiler doesn't support it.</p>
 </div>
 <h2 id="get-settings-and-resources">Get Settings and Resources</h2>
 <table>
@@ -159,6 +166,7 @@ So getting <code>Images.MyConfig.Width</code> will throw a null-error if <code>M
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
+<th>Strongly Typed</th>
 <th>Comments / Differences</th>
 </tr>
 </thead>
@@ -166,41 +174,49 @@ So getting <code>Images.MyConfig.Width</code> will throw a null-error if <code>M
 <tr>
 <td><code>Settings</code> <br> (<code>dynamic</code>)</td>
 <td><code>AllSettings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td><code>AllSettings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
 <td>All settings</td>
 </tr>
 <tr>
 <td><code>Settings.Color</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllSettings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
 <td><code>AllSettings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
 <td>Get a color setting</td>
 </tr>
 <tr>
 <td><code>Resources</code> <br> (<code>dynamic</code>)</td>
 <td><code>AllResources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td><code>AllResources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
 <td>All resources</td>
 </tr>
 <tr>
 <td><code>Resources.Title</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllResources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
 <td><code>AllResources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
 <td>Get a resource</td>
 </tr>
 <tr>
 <td><code>App.Settings</code> <br> (<code>dynamic</code>)</td>
 <td><code>App.Settings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td><code>App.Settings</code> <br> (<code>AppCode.Data.AppSettings</code>)</td>
 <td>App settings</td>
 </tr>
 <tr>
 <td><code>App.Settings.Color</code> <br> (<code>dynamic</code>)</td>
 <td><code>App.Settings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>App.Settings.String(&quot;Color&quot;)</code> <br> (<code>string</code>) <br> or <br> <code>App.Settings.Color</code> <br> (<code>string</code>)</td>
 <td>App settings</td>
 </tr>
 <tr>
 <td><code>App.Resources</code> <br> (<code>dynamic</code>)</td>
 <td><code>App.Resources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td><code>App.Resources</code> <br> (<code>AppCode.Data.AppResources</code>)</td>
 <td>App resources</td>
 </tr>
 <tr>
 <td><code>App.Resources.Title</code> <br> (<code>dynamic</code>)</td>
 <td><code>App.Resources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>App.Resources.String(&quot;Title&quot;)</code> <br> (<code>string</code>) <br> or <br> <code>App.Resources.Title</code> <br> (<code>string</code>)</td>
 <td>App resources</td>
 </tr>
 </tbody>

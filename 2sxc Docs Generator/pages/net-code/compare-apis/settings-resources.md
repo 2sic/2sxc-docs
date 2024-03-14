@@ -39,6 +39,11 @@ In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects y
 * `App.Settings` - a `AppCode.Data.AppSettings` based on [ITypedItem] with app settings
 * `App.Resources` - a `AppCode.Data.AppResources` based on [ITypedItem] with app resources
 
+> [!TIP]
+> The strongly typed code is much more robust - and typed.
+> So using App.Resources will provide intellisense (if [VS Code is configured correctly](xref:xref:Guides.VsCode.Index)).
+>
+> You can also use the `?.` operator to avoid null-errors, such as `App.Resources?.Title` since we're using the new Roslyn compiler for strongly typed code.
 
 ### Dynamic Code
 
@@ -58,19 +63,21 @@ var width = Settings.Images.Content.Width;
 > [!WARNING]
 > The dynamic code is much more error-prone, as it will throw an error if a setting doesn't exist.
 > So getting `Images.MyConfig.Width` will throw a null-error if `MyConfig` doesn't exist.
+>
+> Unfortunately you also can't use the `?.` operator to avoid this, because the old Dnn compiler doesn't support it.
 
 ## Get Settings and Resources
 
-| Dynamic | Typed | Comments / Differences
+| Dynamic | Typed | Strongly Typed | Comments / Differences
 | --- | --- | ---
-| `Settings` <br> (`dynamic`) | `AllSettings` <br> ([ITypedStack]) | All settings
-| `Settings.Color` <br> (`dynamic`) | `AllSettings.String("Color")` <br> (`string`) | Get a color setting
-| `Resources` <br> (`dynamic`) | `AllResources` <br> ([ITypedStack]) | All resources
-| `Resources.Title` <br> (`dynamic`) | `AllResources.String("Title")` <br> (`string`) | Get a resource
-| `App.Settings` <br> (`dynamic`) | `App.Settings` <br> ([ITypedItem]) | App settings
-| `App.Settings.Color` <br> (`dynamic`) | `App.Settings.String("Color")` <br> (`string`) | App settings
-| `App.Resources` <br> (`dynamic`) | `App.Resources` <br> ([ITypedItem]) | App resources
-| `App.Resources.Title` <br> (`dynamic`) | `App.Resources.String("Title")` <br> (`string`) | App resources
+| `Settings` <br> (`dynamic`) | `AllSettings` <br> ([ITypedStack]) | `AllSettings` <br> ([ITypedStack]) | All settings
+| `Settings.Color` <br> (`dynamic`) | `AllSettings.String("Color")` <br> (`string`) | `AllSettings.String("Color")` <br> (`string`) | Get a color setting
+| `Resources` <br> (`dynamic`) | `AllResources` <br> ([ITypedStack]) | `AllResources` <br> ([ITypedStack]) | All resources
+| `Resources.Title` <br> (`dynamic`) | `AllResources.String("Title")` <br> (`string`) | `AllResources.String("Title")` <br> (`string`)  | Get a resource
+| `App.Settings` <br> (`dynamic`) | `App.Settings` <br> ([ITypedItem]) | `App.Settings` <br> (`AppCode.Data.AppSettings`) | App settings
+| `App.Settings.Color` <br> (`dynamic`) | `App.Settings.String("Color")` <br> (`string`) | `App.Settings.String("Color")` <br> (`string`) <br> or <br> `App.Settings.Color` <br> (`string`) | App settings
+| `App.Resources` <br> (`dynamic`) | `App.Resources` <br> ([ITypedItem]) | `App.Resources` <br> (`AppCode.Data.AppResources`) | App resources
+| `App.Resources.Title` <br> (`dynamic`) | `App.Resources.String("Title")` <br> (`string`) | `App.Resources.String("Title")` <br> (`string`) <br> or <br> `App.Resources.Title` <br> (`string`) | App resources
 
 > [!TIP]
 > The new `AllSettings` and `AllResources` can use paths to deeper values, such as

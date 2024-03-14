@@ -147,28 +147,6 @@ This is done with these APIs:
 
 
 
-
-## Access App Data
-
-| Dynamic | Typed | Comments / Differences
-| --- | --- | ---
-| `App` <br> ([IApp]) | `App` <br> ([IAppTyped])
-| `App.Data` <br> ([IAppData]) | `App.Data` <br> ([IAppData]) | (same)
-| `App.Data["Tags"]` | `App.Data["Tags"]` <br> `App.Data.GetStream("Tags")` | (same) <br> _preferred_
-| `App.Query("QName")` | `App.GetQuery("QName")` | new method allows for more parameters
-| - | `App.GetQuery("QName", parameters: new { Id = 7 } )` | new only
-
-## Access App and View Folders / URLs
-
-| Dynamic | Typed | Comments / Differences
-| --- | --- | ---
-| - | `App.Folder` <br> ([IFolder]) | new only
-| `App.Folder` <br> (`string`) | `App.Folder.Name` <br> (`string`)
-| `App.Path` | `App.Folder.Url`
-| `App.PhysicalPath` | `App.Folder.PhysicalPath`
-
-TODO
-
 ## TOOLBARS
 
 | Dynamic | Typed | Comments / Differences
