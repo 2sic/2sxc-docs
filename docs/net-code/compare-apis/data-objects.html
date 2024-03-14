@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>App and App Data Differences in APIs | 2sxc 17 for Dnn and Oqtane </title>
+      <title>Built-In Data Object Differences in APIs | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="App and App Data Differences in APIs | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="Built-In Data Object Differences in APIs | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/app-data.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/data-objects.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,118 +105,133 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.CompareApis.AppData">
-<h1 id="app-and-app-data-differences-in-apis">App and App Data Differences in APIs</h1>
+        <article data-uid="NetCode.TypedCode.CompareApis.DataObjects">
+<h1 id="built-in-data-object-differences-in-apis">Built-In Data Object Differences in APIs</h1>
 
 <p>2sxc has changed a lot over time.
 So you'll find old code snippets and new ones, and it helps to see which one is being used.
 Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
-<h2 id="app-and-app-data-objects">App and App Data Objects</h2>
-<h3 id="typed-code">Typed Code</h3>
-<p>In Typed Code, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">IAppTyped</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a> with all app data</li>
-</ul>
-<h3 id="strongly-typed-code">Strongly Typed Code</h3>
-<p>In Strongly Typed Code - inheriting from <code>AppCode.Razor.AppRazor</code>, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped-2.html">IAppTyped&lt;TSet, TRes&gt;</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
-</ul>
-<h3 id="dynamic-code">Dynamic Code</h3>
-<p>In Dynamic Code, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
-</ul>
-<h2 id="access-app-data">Access App Data</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is about Data Objects which are automatically available on each Razor / C# file.</p>
+<p>So <strong>Content</strong> (old), <strong>MyItem</strong> (new), <strong>Data</strong> (old), <strong>MyData</strong> (new) etc.</p>
+<p>It's also about converting between <code>IEntity</code> to the <code>ITypedItem</code> and <code>dynamic</code> objects.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>🎓 Best check out the <a href="https://go.2sxc.org/quickref">tutorial QuickRef</a> which shows all this!</p>
+</div>
+<h2 id="what-are-built-in-data-objects">What are Built-In Data Objects?</h2>
+<p>These objects/commands get data <em>belonging</em> to this block/instance.
+So when the Razor code loads, these objects are ready and filled with the data of the current block.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It's important to understand how data-items can <em>belong</em> to the current block.
+Basically any data an editor adds to the current block <em>belongs</em> to it.
+This is different from queried data which doesn't <em>belong</em> to anything.</p>
+<p>Example: The images in a gallery-block belong to that gallery instance.
+But the list of all tags don't belong to the gallery instance.</p>
+</div>
+<h2 id="basic-get-current-data">Basic Get-Current-Data</h2>
 <table>
 <thead>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a>)</td>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">IAppTyped</a>)</td>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped-2.html">IAppTyped&lt;TSet, TRes&gt;</a>)</td>
+<td><code>Content</code> <br> (<code>dynamic</code>)</td>
+<td><code>MyItem</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td>First/main item</td>
 </tr>
 <tr>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a>)</td>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a>)</td>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a>)</td>
+<td><code>List</code> <br> (<code>IEnumerable&lt;dynamic&gt;</code>)</td>
+<td><code>MyItems</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="IEnumerable&lt;ITypedItem&gt;">IEnumerable&lt;ITypedItem&gt;</a>)</td>
+<td>List of all items</td>
 </tr>
 <tr>
-<td><code>App.Data[&quot;Tags&quot;]</code></td>
-<td><code>App.Data[&quot;Tags&quot;]</code> <br> <code>App.Data.GetStream(&quot;Tags&quot;)</code> (recommended)</td>
-<td><code>App.Data[&quot;Tags&quot;]</code> <br> <code>App.Data.GetStream(&quot;Tags&quot;)</code> (recommended)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>App.Data.GetAll&lt;T&gt;()</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>App.Data.GetOne&lt;T&gt;(id)</code></td>
-</tr>
-<tr>
-<td><code>App.Query(&quot;QName&quot;)</code></td>
-<td><code>App.GetQuery(&quot;QName&quot;)</code> new method allows for more parameters</td>
-<td><code>App.GetQuery(&quot;QName&quot;)</code> new method allows for more parameters</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>App.GetQuery(&quot;QName&quot;, parameters: new { Id = 7 } )</code></td>
-<td><code>App.GetQuery(&quot;QName&quot;, parameters: new { Id = 7 } )</code></td>
+<td><code>Header</code> <br> (<code>dynamic</code>)</td>
+<td><code>MyHeader</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td>Header item</td>
 </tr>
 </tbody>
 </table>
-<h2 id="access-app-and-view-folders--urls">Access App and View Folders / URLs</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>The pairs such as <code>Content</code>/<code>MyItem</code> will often contain the same data - but not always.</p>
+<p>In the old dynamic APIs, <code>Content</code> contained the item <em>belonging</em> to the block,
+but <em>only</em> if the View was not using a Query.
+If the view used a query, <code>Content</code> would contain the first item returned by the query.
+<code>MyItem</code> is different - it always contains the first item <em>belonging</em> to the block.</p>
+<p>The same difference applies to <code>List</code> vs <code>MyItems</code>.</p>
+</div>
+<h2 id="advanced-get-current-data">Advanced Get-Current-Data</h2>
+<p>The <code>MyData</code> (previously <code>Data</code>) object contains all data which was prepared for the current block.
+In very basic scenarios you don't need it, as it contain the same data as the <code>MyItem</code> (previously <code>Content</code>) object and others.</p>
+<p>As soon as the View is configured to use a Query, it will instead contain the data returned by the query.</p>
 <table>
 <thead>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-</td>
-<td><code>App.Folder</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a>) new only</td>
-<td><code>App.Folder</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a>)</td>
+<td><code>Data</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData">IContextData</a>)</td>
+<td><code>MyData</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData">IContextData</a>)</td>
+<td>DataSource of query data</td>
 </tr>
 <tr>
-<td><code>App.Folder</code> <br> (<code>string</code>)</td>
-<td><code>App.Folder.Name</code> <br> (<code>string</code>)</td>
-<td></td>
+<td><code>Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
+<td><code>MyData[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
+<td><code>Tags</code> Stream of query data</td>
 </tr>
 <tr>
-<td><code>App.Path</code></td>
-<td><code>App.Folder.Url</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>App.PhysicalPath</code></td>
-<td><code>App.Folder.PhysicalPath</code></td>
-<td></td>
+<td><code>Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
+<td><code>MyData.GetStream(&quot;Tags&quot;)</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
+<td>Recommended way to get stream</td>
 </tr>
 </tbody>
 </table>
-<h2 id="access-app-settings">Access App Settings</h2>
-<p>👉🏽 See <a class="xref" href="settings-resources.html">Settings / Resources Differences in APIs</a></p>
+<p>DataSources and Streams return <code>IEntity</code> objects, and you will usually want to convert them to <code>ITypedItem</code> (or <code>dynamic</code>) objects.
+This is done with these APIs:</p>
+<table>
+<thead>
+<tr>
+<th>Dynamic</th>
+<th>Typed</th>
+<th>Comments / Differences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AsDynamic(Data)</code></td>
+<td><code>AsItems(MyData)</code></td>
+<td>Get list of items in <code>Default</code> stream</td>
+</tr>
+<tr>
+<td><code>AsDynamic(Data[&quot;Tags&quot;])</code></td>
+<td><code>AsItems(MyData.GetStream(&quot;Tags&quot;))</code></td>
+<td>Get list of items in <code>Tags</code> stream</td>
+</tr>
+<tr>
+<td><code>AsDynamic(Data[&quot;Tags&quot;].List.First())</code></td>
+<td><code>AsItem(MyData.GetStream(&quot;Tags&quot;))</code></td>
+<td>Get a single item</td>
+</tr>
+</tbody>
+</table>
 <hr>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/app-data.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/data-objects.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

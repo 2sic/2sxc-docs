@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>App and App Data Differences in APIs | 2sxc 17 for Dnn and Oqtane </title>
+      <title>TODO: | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="App and App Data Differences in APIs | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="TODO: | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/app-data.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/csharp-helpers.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,118 +105,56 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.TypedCode.CompareApis.AppData">
-<h1 id="app-and-app-data-differences-in-apis">App and App Data Differences in APIs</h1>
+        <article data-uid="NetCode.TypedCode.CompareApis.CSharpHelpers">
+<h1 id="todo">TODO:</h1>
 
+<h1 id="razor-sub-components--differences-in-apis">Razor Sub-Components  Differences in APIs</h1>
 <p>2sxc has changed a lot over time.
 So you'll find old code snippets and new ones, and it helps to see which one is being used.
 Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
-<h2 id="app-and-app-data-objects">App and App Data Objects</h2>
-<h3 id="typed-code">Typed Code</h3>
-<p>In Typed Code, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">IAppTyped</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a> with all app data</li>
-</ul>
-<h3 id="strongly-typed-code">Strongly Typed Code</h3>
-<p>In Strongly Typed Code - inheriting from <code>AppCode.Razor.AppRazor</code>, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped-2.html">IAppTyped&lt;TSet, TRes&gt;</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
-</ul>
-<h3 id="dynamic-code">Dynamic Code</h3>
-<p>In Dynamic Code, the objects you'll use are usually:</p>
-<ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
-</ul>
-<h2 id="access-app-data">Access App Data</h2>
+<blockquote>
+<p>This is about how a Razor can call other Razor files, and pass parameters to them.</p>
+</blockquote>
+<h2 id="calling-sub-components">Calling Sub Components</h2>
+<p>...</p>
+<p>| <code>var helper = CreateInstance(&quot;helper.cs&quot;)</code> | <code>var helper = GetCode(&quot;helper.cs&quot;)</code> |</p>
+<h2 id="access-model-data-from-child-razor">Access Model Data from Child Razor</h2>
+<p>When a razor is called using <code>Html.Partial(..., new { ... })</code> it passes parameters to the child razor.</p>
+<p>These can be picked up in the child as follows:</p>
 <table>
 <thead>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a>)</td>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">IAppTyped</a>)</td>
-<td><code>App</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped-2.html">IAppTyped&lt;TSet, TRes&gt;</a>)</td>
+<td><code>DynamicModel</code> <br> (<code>dynamic</code>)</td>
+<td><code>MyModel</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.ITypedModel.html">ITypedModel</a>)</td>
+<td>Model of the child</td>
 </tr>
 <tr>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a>)</td>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a>)</td>
-<td><code>App.Data</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">IAppDataTyped</a>)</td>
-</tr>
-<tr>
-<td><code>App.Data[&quot;Tags&quot;]</code></td>
-<td><code>App.Data[&quot;Tags&quot;]</code> <br> <code>App.Data.GetStream(&quot;Tags&quot;)</code> (recommended)</td>
-<td><code>App.Data[&quot;Tags&quot;]</code> <br> <code>App.Data.GetStream(&quot;Tags&quot;)</code> (recommended)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>App.Data.GetAll&lt;T&gt;()</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>App.Data.GetOne&lt;T&gt;(id)</code></td>
-</tr>
-<tr>
-<td><code>App.Query(&quot;QName&quot;)</code></td>
-<td><code>App.GetQuery(&quot;QName&quot;)</code> new method allows for more parameters</td>
-<td><code>App.GetQuery(&quot;QName&quot;)</code> new method allows for more parameters</td>
-</tr>
-<tr>
-<td>-</td>
-<td><code>App.GetQuery(&quot;QName&quot;, parameters: new { Id = 7 } )</code></td>
-<td><code>App.GetQuery(&quot;QName&quot;, parameters: new { Id = 7 } )</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="access-app-and-view-folders--urls">Access App and View Folders / URLs</h2>
-<table>
-<thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Strongly Typed</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-</td>
-<td><code>App.Folder</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a>) new only</td>
-<td><code>App.Folder</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a>)</td>
-</tr>
-<tr>
-<td><code>App.Folder</code> <br> (<code>string</code>)</td>
-<td><code>App.Folder.Name</code> <br> (<code>string</code>)</td>
+<td><code>var name = DynamicModel.Name</code> <br> (<code>dynamic</code>)</td>
+<td><code>var name = MyModel.String(&quot;Name&quot;)</code> <br> (<code>string</code>)</td>
 <td></td>
 </tr>
 <tr>
-<td><code>App.Path</code></td>
-<td><code>App.Folder.Url</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>App.PhysicalPath</code></td>
-<td><code>App.Folder.PhysicalPath</code></td>
+<td><code>var birthday = DynamicModel.Birthday</code> <br> (<code>dynamic</code>)</td>
+<td><code>var birthday = MyModel.DateTime(&quot;Name&quot;)</code> <br> (<code>DateTime</code>)</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="access-app-settings">Access App Settings</h2>
-<p>👉🏽 See <a class="xref" href="settings-resources.html">Settings / Resources Differences in APIs</a></p>
+<p><code>MyModel</code> has many more methods to ensure you can pass type-safe data to the child.
+See <a class="xref" href="../../api/dot-net/ToSic.Sxc.Code.ITypedModel.html">MyModel</a></p>
 <hr>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/app-data.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/csharp-helpers.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
