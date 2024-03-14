@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>AsAdam(...) Command | 2sxc 17 for Dnn and Oqtane </title>
+      <title>The Dnn Object in Different APIs | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="AsAdam(...) Command | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content="The Dnn Object in Different APIs | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-code/as-adam.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/dnn-object.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,79 +105,58 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.DynamicCode.AsAdam">
-<h1 id="asadam-command">AsAdam(...) Command</h1>
+        <article data-uid="NetCode.TypedCode.CompareApis.DnnObject">
+<h1 id="the-dnn-object-in-different-apis">The Dnn Object in Different APIs</h1>
 
-<div class="NOTE">
-<h5>Note</h5>
-<p>ADAM is the Automatic Digital Asset Manager. It manages files (Assets) for content in 2sxc.</p>
-<p>The files are managed so that they really belong to the item they are used in.<br>
-<a class="xref" href="../../basics/cms/adam/index.html">Read more about ADAM</a></p>
-</div>
-
-<p>When a content-item has a <code>Library</code> field (see <a class="xref" href="../../basics/data/fields/hyperlink-library.html">Field Input-Type hyperlink-library</a>) your code needs to get a list of all the files and folders of that field. For example to show galleries.
-This is where <code>AsAdam(...)</code> comes in. It gives you the ADAM parts of this field.</p>
-<p>⚡ The <a href="xref:ToSic.Sxc.Code.IDynamicCode.AsAdam*">official API docs</a>.</p>
-<p>Basically all you need for <code>AsAdam(...)</code> is</p>
-<ol>
-<li>The Content Item (Entity or DynamicEntity)</li>
-<li>The field name of which you want the Adam objects</li>
-</ol>
-<p>As a result you'll get an <a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.IFolder.html">IFolder</a> object with which you can get all files in the folder or subfolders.</p>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-  <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
-    Discover More in the Razor Tutorials
-  </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
-</div>
-<br>
-<h2 id="example">Example</h2>
-<p>This example is taken from the <a class="xref" href="https://2sxc.org/en/apps/app/gallery-app-fancybox-3">Fancybox Gallery App</a></p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
-@using ToSic.Razor.Blade;
-@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
-
-&lt;div class=&quot;ga-wrapper&quot;&gt;
-  &lt;div class=&quot;ga-albums row&quot;&gt;
-    @foreach (var album in AsList(Data)) {
-      var images = AsAdam(album, &quot;Images&quot;).Files as Dynlist;
-      var albumThumbUrl = Text.Has(album.AlbumThumbnail)
-        ? album.AlbumThumbnail
-        : images.First().Url;
-
-      &lt;div class=&quot;ga-album col-12 col-sm-6 col-md-6 col-lg-4&quot; @Edit.TagToolbar(album)&gt;
-        &lt;a href='@Tags.SafeUrl(Link.To(parameters: &quot;mid/&quot; + Dnn.Module.ModuleID + &quot;&amp;album=&quot; + album.Path))'&gt;
-          &lt;div class=&quot;ga-img&quot;&gt;
-            &lt;div class=&quot;overlay&quot;&gt;
-              &lt;div class=&quot;ga-album-title&quot;&gt;&lt;h5 class=&quot;ga-title&quot;&gt;@album.Title&lt;/h5&gt;&lt;/div&gt;
-              &lt;div class=&quot;ga-files-count&quot;&gt;&lt;span class=&quot;badge badge-pill badge-dark float-end&quot;&gt;@images.Count()&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;img class=&quot;img-fluid&quot; src='@Tags.SafeUrl(albumThumbUrl + &quot;?w=720&amp;h=500&amp;mode=crop&amp;scale=both&amp;quality=80&quot;)' alt=&quot;@album.Title&quot; /&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    }
-  &lt;/div&gt;
-&lt;/div&gt;
+<p>The <code>Dnn</code> object is a special object which is available in Dnn, but not in Oqtane.</p>
+<p>Razor files inheriting from older base classes have a <code>Dnn</code> object, such as this example:</p>
+<pre><code class="lang-razor">@inherits Custom.Dnn.Razor12
+@{
+  // Dnn.Tabs is a TabInfo
+  // https://docs.dnncommunity.org/api/DotNetNuke.Entities.Tabs.TabInfo.html
+  var pageTitle = Dnn.Tab.Title;
+}
 </code></pre>
-<p>We suggest you check out some apps which use ADAM to see how they work.</p>
-<h2 id="also-read">Also Read</h2>
-<ul>
-<li><a class="xref" href="../../basics/cms/adam/index.html">ADAM - Automatic Digital Asset Management</a></li>
-<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Adam.html">ToSic.Sxc.Adam</a></li>
-<li>check out <code>AsAdam(...)</code> in the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.RazorComponent.html">RazorComponent</a> and <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a></li>
-</ul>
+<p>All the new base classes, such as <code>Custom.Hybrid.RazorTyped</code> don't have a <code>Dnn</code> object, as they are hybrid and work on Oqtane and Dnn.</p>
+<h2 id="alternative-using-mycontext--cmscontext">Alternative using MyContext / CmsContext</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If you think you need the Dnn property (eg. for accessing the Page Title),
+best first check if the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.html">MyContext / CmsContext</a> can't be used instead.</p>
+<p>It has most of the typical properties which you would look for in <code>Dnn</code>.</p>
+</div>
+<p>Example in v16+</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+@{
+  var pageTitle = MyPage.Title;
+}
+</code></pre>
+<p>Example in v12+</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
+@{
+  var pageTitle = CmsContext.Page.Title;
+}
+</code></pre>
+<h2 id="get-the-dnn-object-in-modern-base-classes">Get the Dnn Object in Modern Base Classes</h2>
+<p>You can also still get the <code>Dnn</code> object using this:</p>
+<pre><code class="lang-csharp">var dnn = GetService&lt;ToSic.Sxc.Dnn.Run.IDnnContext&gt;();
+</code></pre>
+<p>This is the same object as the <code>Dnn</code> object in the older base classes.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Using the <code>Dnn</code> object / service will make your code Dnn-specific and not work in Oqtane.</p>
+</div>
+<hr>
 <h2 id="history">History</h2>
-<ol>
-<li>General Tokens introduced in 2sxc 8.0</li>
-<li>Added extra security switch in 2sxc 9.32</li>
-</ol>
+<ul>
+<li><code>Dnn</code> introduced ca. v7</li>
+<li>New base classes without <code>Dnn</code> introduced in v12</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/dynamic-code/as-adam.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/compare-apis/dnn-object.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

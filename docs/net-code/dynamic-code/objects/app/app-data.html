@@ -113,7 +113,7 @@
 <p><code>App.Data[&quot;ContentTypeName&quot;]</code> will give you a <a class="xref" href="../../../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">stream</a> of all entities of that type. In most cases you'll use an <code>AsList(...)</code> to use it efficiently in loops etc. because most of the razor templating will prefer a <a class="xref" href="../../../dynamic-data/dynamic-entity.html">DynamicEntity</a> to a pure IEntity-object. Here's an example:</p>
 <pre><code class="lang-razor">@foreach(var post in AsList(App.Data[&quot;BlogPost&quot;]))
 {
-    @RenderPage(&quot;_list-item.cshtml&quot;, new { Post = post })
+    @Html.Partial(&quot;_list-item.cshtml&quot;, new { Post = post })
 }
 </code></pre>
 <p><em>note</em>: this will give you all items, but you'll have to sort it using LINQ or other mechanisms. If you're not familiar with that, you're better of using <code>App.Query[...]</code> (see below).</p>

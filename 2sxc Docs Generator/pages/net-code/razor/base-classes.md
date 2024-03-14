@@ -2,59 +2,85 @@
 uid: NetCode.Razor.BaseClasses
 ---
 
-# `@inherits` Base Classes #todoc / WIP
+# `@inherits` Base Classes
 
-Every Razor template inherits from a base class - and depending on that the features in the template will change. 
+Every Razor template inherits from a base class - and depending on that the features in the template will change.
+
+## Recommendation for v17+
 
 These are the base classes you can inherit from as of v14 (we'll explain each in more detail below)
 
+1. `Custom.Hybrid.RazorTyped` - new in v16
+1. `Custom.Hybrid.RazorTyped<TModel>` - new in v17.03
+1. `AppCode.Razor.AppRazor` - new in v17.03 - requires that you have this class in your AppCode folder
+1. `AppCode.Razor.AppRazor<TModel>` - new in v17.03 - requires that you have this class in your AppCode folder
+1. `AppCode.Razor.Anything` - new in v17.03 - requires that you have this class in your AppCode folder
+
+> [!TIP]
+> Using these base classes ensures that you have the latest, typed APIs.
+
+For older base classes and the differences, see [Compare Razor @inherits](xref:NetCode.TypedCode.CompareApis.RazorBase)
+
+
+
+
+
+
+
+
+
+
+These are the base classes you can inherit from as of v14 (we'll explain each in more detail below)
+
+1. `Custom.Hybrid.RazorTyped` - new in v16
+1. `Custom.Hybrid.RazorTyped<TModel>` - new in v17.03
 1. `Custom.Hybrid.Razor14` - new in v14
 1. `Custom.Hybrid.Razor12` - new in v12
-1. `Custom.Dnn.Razor12` - new in v12; same as Hybrid, but with `Dnn` property
-1. `ToSic.Sxc.Dnn.RazorComponent` - new in v10
+1. `Custom.Dnn.Razor12` - v12; same as Hybrid, but with `Dnn` property
+1. `ToSic.Sxc.Dnn.RazorComponent` - v10
 1. `ToSic.SexyContent.Razor.SexyContentWebPage` - very old since v2 - deprecated, but the default if nothing is set.
 1. Default in Oqtane
-1. 
+
 
 Important: If you don't specify an `@inherits` in your code, the system will automatically apply a default base class to your code. This is different in Dnn and Oqtane:
 
 1. In Dnn the default base class is `ToSic.SexyContent.Razor.SexyContentWebPage` as it's specified in a `web.config` in the 2sxc folder of each site.  
-  This is the oldest base class and should not be used any more. 
+  This is the oldest base class and should not be used any more.
 1. In Oqtane the default base is `#todoc` which is the default for .net 5
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Custom.Hybrid.Razor14
 
-This is the newest base class and recommended to use. 
+This is the newest base class and recommended to use.
 It's almost identical with Razor12 with these differences:
 
 1. the `Kit` property is new, providing access to the ServiceKit called ServiceKit14
 1. the `Convert` property is removed, as it caused confusion with `System.Convert`
 
-Note that the hybrid base classes don't have a `Dnn` property as they are hybrid and work on Oqtane and Dnn. 
+Note that the hybrid base classes don't have a `Dnn` property as they are hybrid and work on Oqtane and Dnn.
 
-If you think you need the Dnn property, best first check if the [CmsContext](xref:ToSic.Sxc.Context) can't be used instead. 
+If you think you need the Dnn property, best first check if the [CmsContext](xref:ToSic.Sxc.Context) can't be used instead.
 
 Otherwise inherit from `Custom.Dnn.Razor12` and just get the Services you need with GetService.
 
 ## Custom.Hybrid.Razor12
 
-This is the newest base class and was introduced in 2sxc 12. It contains the features which will work cross-platform on both Dnn and Oqtane. You should use this base class to create solutions / Apps which work on Dnn and Oqtane. 
+This is the newest base class and was introduced in 2sxc 12. It contains the features which will work cross-platform on both Dnn and Oqtane. You should use this base class to create solutions / Apps which work on Dnn and Oqtane.
 
 ### Limitations of Custom.Hybrid.Razor12
 
-Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support. 
+Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support.
 
 1. The property `Dnn` doesn't exist on this base class, as it would lead to code which can't run cross-platform
-1. As of now the properties / methods `CustomizeData(...)`, `CustomizeSearch(...)` and `Purpose` do not work, because Oqtane doesn't have a search indexer. We plan on introducing something like this once Oqtane provides search, but as of now it's not yet clear how this would work. 
+1. As of now the properties / methods `CustomizeData(...)`, `CustomizeSearch(...)` and `Purpose` do not work, because Oqtane doesn't have a search indexer. We plan on introducing something like this once Oqtane provides search, but as of now it's not yet clear how this would work.
 1. The code-behing `Code` object doesn't work, as we probably cannot implement this in .net 5
 1. The `CreateInstance(...)` works only on C# files `.cs` but not with CSHTML files `.cshtml` as this probably won't work in .net 5
-1. Koi works differently than before. Previously you just used a global object `Connect.Koi.Koi` to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using `GetService<Connect.Koi.ICss>()`. The old mechanism will still work in Dnn but would not work in Oqtane. 
+1. Koi works differently than before. Previously you just used a global object `Connect.Koi.Koi` to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using `GetService<Connect.Koi.ICss>()`. The old mechanism will still work in Dnn but would not work in Oqtane.
 
 #### Platform Differences
 
-Internally `Custom.Hybrid.Razor12` is built on the Razor base classes of the .net frameworks, so in Dnn it builds on `#todoc` while in Oqtane it builds on `#todoc`. Because of this, certain features will work in Dnn which don't work in Oqtane and vice versa. 
+Internally `Custom.Hybrid.Razor12` is built on the Razor base classes of the .net frameworks, so in Dnn it builds on `#todoc` while in Oqtane it builds on `#todoc`. Because of this, certain features will work in Dnn which don't work in Oqtane and vice versa.
 
 * If you only want to create Oqtane stuff only, you can just go ahead and use all the new features of the Razor in .net 5
 * If you plan on creating real hybrid stuff, you will have to do some testing to ensure you didn't use features that don't exist on the other side
@@ -64,10 +90,10 @@ Some core feature differences
 
 | Feature | Dnn | Oqtane | Comments
 | --- | :-: | :-: | ---
-| `@inherits` | ✅ | ✅ | 
+| `@inherits` | ✅ | ✅ |
 | `@helper` | ✅ | ⛔ | Doesn't exist in .net 5
-| `@model` | ⛔ | ✅ | Doesn't exist in old .net
-| #todoc
+| `@model` | ⛔ | ✅ | Doesn't exist in old .net and can't be combined with `@inherits`
+
 
 
 
@@ -75,7 +101,7 @@ Some core feature differences
 
 todo #todoc
 
-### The old one... 
+### The old one
 
 todo: #todoc
 
