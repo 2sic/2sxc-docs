@@ -12,7 +12,7 @@ uid: NetCode.Services.ServiceKits
   <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
 
-**ServiceKits** help you get a [Service](xref:NetCode.Services.ServiceKits) with fewer lines of code.
+**ServiceKits** help you get a [Service](xref:NetCode.Services.ServiceKits) with fewer lines of code. The Kit is provided on the `Kit` property.
 
 For example, you may need to call the IPageService Activate.
 With the v14 API it looks like this:

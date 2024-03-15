@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Page Service to Activate Features &amp; WebResources (JS, CSS, etc.) | 2sxc 17 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Page Service to Activate Features &amp; WebResources (JS, CSS, etc.) | 2sxc 17 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/page/page-service-activate.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NetCode.Razor.Services.IPageServiceActivate">
+<h1 id="page-service-to-activate-features--webresources-js-css-etc">Page Service to Activate Features &amp; WebResources (JS, CSS, etc.)</h1>
+
+<p>The PageService helps Razor templates to activate features and load predefined JS/CSS (WebResources).</p>
+<p>An important aspect of Razor solutions is ensuring that the page has helper materials like jQuery etc.
+This gets especially complex in scenarios like Oqtane, where the page doesn't really reload and therefor may already have some scripts / styles loaded, but it's hard to guess.</p>
+<p>For this we have developed a helper called <a class="xref" href="../../../js-code/turn-on/index.html"><code>turnOn</code></a> and the <code>PageService</code> is able to activate this feature (and more in future).</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Using the <code>IPageService.Activate(...)</code> ensures that all apps use the same resources, and that these are only loaded once per page.</p>
+</div>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+  <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
+    Discover More in the Razor Tutorials
+  </div>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<br>
+<h2 id="difference-between-features-and-webresources">Difference between features and WebResources**</h2>
+<ul>
+<li><strong>Features</strong> are some system-specific JS/CSS (like jQuery or turnOn)</li>
+<li><strong>WebResources</strong> are JS/CSS which are configured in Settings, so you can use the preset WebResources or define your own at the App, Site or Installation. Examples are <code>fancybox4</code>, <code>Bootstrap5</code> etc.</li>
+</ul>
+<h2 id="activate-page-features">Activate Page Features</h2>
+<p>A simple example:</p>
+<pre><code class="lang-c#">Kit.Page.Activate(&quot;jQuery&quot;);                          // Activate jQuery
+Kit.Page.Activate(&quot;turnOn&quot;);                          // Activate turnOn
+Kit.Page.Activate(&quot;jQuery&quot;, &quot;turnOn&quot;, &quot;2sxc.JsCore&quot;); // Activate many
+</code></pre>
+<p>This will ensure that jQuery and <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> are available on the page.
+Note that it will only be activated once, even if the code would accidentally activate it multiple times.</p>
+<p>Features you can activate as of v12.02</p>
+<ul>
+<li><code>jQuery</code>  - activate jQuery if you need it - recommended for Dnn, required for Oqtane 2.2+<br>
+<em>note: we really want to discourage the use of jQuery - so avoid if possible</em></li>
+<li><code>turnOn</code> - <a class="xref" href="../../../js-code/turn-on/index.html">the JavaScript turnOn Activation system</a></li>
+<li><code>2sxc.JsCore</code> - the 2sxc standard JS APIs.<br>
+Replaces <code>@Edit.Enable(js: true)</code> <em>new in v13</em></li>
+<li><code>2sxc.JsCms</code> - 2sxc JS APIs to run commands for edit, etc.<br>
+Replaces <code>@Edit.Enable(api: true)</code> <em>new in v13</em><br>
+Includes <code>2sxc.JsCore</code></li>
+<li><code>2sxc.Toolbars</code> - <em>allow</em> edit-toolbars on the page.<br>
+Replaces <code>@Edit.Enable(js: true, api: true, styles: true)</code> <em>new in v13</em><br>
+Includes <code>2sic.JsCms</code> and <code>2sic.JsCore</code></li>
+<li><code>2sxc.ToolbarsAuto</code> - <em>auto-show</em> edit-toolbars on the page.<br>
+Replaces <code>@Edit.Enable(js: true, api: true, styles: true, autoToolbar: true)</code> <em>new in v14</em><br>
+Includes <code>2sxc.Toolbars</code>, <code>2sic.JsCms</code> and <code>2sic.JsCore</code></li>
+<li><code>Cms.Wysiwyg</code> - activate special CSS for content made in the rich WYSIWYG editor <em>WIP in v15.01</em><br>
+Usually auto-activated by <code>CmsService.Show(some-wysiwyg-field)</code></li>
+</ul>
+<p><em>Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well.</em></p>
+<p>Features that are explicitly not implemented</p>
+<ol>
+<li>jQueryUI is often used in ASP.net but it's really old and hasn't had updates since 2016</li>
+<li>knockoutJS is often used in ASP.net but it's also barely alive, so it's not meant to be activatable in modern systems like the ones usually built with 2sxc</li>
+</ol>
+<h2 id="activate-webresources">Activate WebResources</h2>
+<p>Any WebResources registered in the settings can be activated. Here's an example:</p>
+<pre><code class="lang-c#">Kit.Image.Activate(&quot;Bootstrap5&quot;);                // Activate Bootstrap5 from a CDN
+Kit.Image.Activate(&quot;fancybox4&quot;);                 // Activate fancybox4 from a CDN
+Kit.Image.Activate(&quot;fancybox3&quot;, &quot;FontAwesome5&quot;); // Activate the older fancybox + FontAwesome5
+</code></pre>
+<p>You can define your own WebResources in the Settings, or check out the list of <a class="xref" href="../../../basics/configuration/settings/settings-webresources.html">pre-defined WebResources</a>.</p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 12.02 to replace the previous static implementation using <a class="xref" href="../../razor-blade/index.html">RazorBlade</a></li>
+<li>Activating WebResources added in 2sxc 12.04</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/page/page-service-activate.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

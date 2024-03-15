@@ -112,6 +112,12 @@
 So you'll find old code snippets and new ones, and it helps to see which one is being used.
 Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
 <h2 id="app-and-app-data-objects">App and App Data Objects</h2>
+<h3 id="dynamic-code">Dynamic Code</h3>
+<p>In Dynamic Code, the objects you'll use are usually:</p>
+<ul>
+<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a> with all app data</li>
+<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
+</ul>
 <h3 id="typed-code">Typed Code</h3>
 <p>In Typed Code, the objects you'll use are usually:</p>
 <ul>
@@ -124,11 +130,17 @@ Sometimes you'll also want to convert old code to new code, and this page should
 <li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped-2.html">IAppTyped&lt;TSet, TRes&gt;</a> with all app data</li>
 <li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
 </ul>
-<h3 id="dynamic-code">Dynamic Code</h3>
-<p>In Dynamic Code, the objects you'll use are usually:</p>
+<h3 id="differences-in-the-app-object-iapp-vs-iapptyped">Differences in the App object (<code>IApp</code> vs. <code>IAppTyped</code>)</h3>
 <ul>
-<li><code>App</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IApp.html">IApp</a> with all app data</li>
-<li><code>App.Data</code> - a <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.IAppData.html">IAppData</a> with all app data</li>
+<li><code>App.Query[...]</code> is now <code>App.GetQuery(...)</code> - this will also allow for more advanced options in future</li>
+<li><code>App.Folder</code> is now a <code>IFolder</code> object</li>
+<li><code>App.Path</code> is replaced by <code>App.Folder.Url</code></li>
+<li><code>App.PathShared</code> is replaced by <code>App.FolderAdvanced(location: &quot;shared&quot;).Url</code></li>
+<li><code>App.PhysicalPath</code> is replaced by <code>App.Folder.PhysicalPath</code></li>
+<li><code>App.PhysicalPathShared</code> is replaced by <code>App.FolderAdvanced(location: &quot;shared&quot;).PhysicalPath</code></li>
+<li><code>App.Thumbnail</code> is now an IFile object</li>
+<li><code>App.Thumbnail</code> is replaced by <code>App.Thumbnail.Url</code></li>
+<li><code>MyView.Path</code> still works, but you should use <code>MyView.Folder.Url</code> for clarity</li>
 </ul>
 <h2 id="access-app-data">Access App Data</h2>
 <table>

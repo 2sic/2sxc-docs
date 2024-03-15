@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Features API in .net | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Features API in .net | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/features/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/features/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,67 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.Features.Index">
-<h1 id="features-api-in-net">Features API in .net</h1>
+        <article data-uid="">
 
-<p>2sxc / EAV in 9.30+ has a <a href="https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30">features management</a>. In certain cases it would be good if the razor-view could verify that the feature is enabled - for example to show a warning when it isn't enabled yet. This is what the Features API is for.</p>
-<h2 id="how-to-use">How To Use</h2>
-<p>This example is taken from <a class="xref" href="https://2sxc.org/en/apps/app/mobius-forms-4-with-mailchimp-recaptcha-polymorph-weback-and-more">Mobius Forms</a> and the code can be found in the <a href="https://github.com/2sic/app-mobius-forms/">Mobius Github Repo</a>.</p>
-<pre><code class="lang-cs">@{
-  // show warning if the save-attachments in web api isn't activated
-  if(!Kit.Feature.IsEnabled(&quot;SaveInAdamApi&quot;)) {
-    &lt;div class=&quot;alert alert-warning&quot;&gt;
-      Warning: file upload won't work yet, as it hasn't been enabled.
-    &lt;/div&gt;
-  }
-
-  // Show warning if any of the following features are not enabled
-  if(!Kit.Feature.IsEnabled(&quot;PublicEditForm&quot;, &quot;PublicUploadFiles&quot;)) {
-    &lt;div class=&quot;alert alert-warning&quot;&gt;
-      Warning: Edit Form and file upload have not been enabled.
-    &lt;/div&gt;
-  }
-}
-</code></pre>
-<p>The code above checks if a feature is enabled, and if not, will show a message to the viewer that this must be enabled first.</p>
-<h2 id="what-you-need-to-know">What you Need To Know</h2>
-<ol>
-<li>The (new) API lies in the namespace <code>ToSic.Sxc.Services</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.IFeaturesService.html">IFeaturesService</a></li>
-<li>The <code>IFeaturesService</code> will do the checks for you</li>
-<li>ATM the public API has the following commands
-<ol>
-<li><code>Enabled(string nameId)</code> which checks if a feature is enabled based on the name</li>
-<li><code>Enabled(string nameId, nameId)</code> use with more parameters</li>
-<li><code>Enabled(string nameId, nameId, nameId, ...)</code> use with as many parameters a you want</li>
-<li><code>Enabled(string[] nameIds)</code> use with string-array</li>
-</ol>
-</li>
-</ol>
-<h2 id="finding-feature-nameids-and-guids">Finding Feature NameIds and GUIDs</h2>
-<p>As of v13 we always recommend using the NameIds since they are easier to read. These features are currently managed:</p>
-<ol>
-<li><code>PasteImageFromClipboard</code> - enables paste image from clipboard in the TinyMCE editor</li>
-<li><code>WysiwygPasteFormatted</code> - enables paste formatted text in the TinyMCE editor</li>
-<li><code>PublicEditForm</code> - enables the form to open up for non-editors (to use as input dialogs) - security will still be checked based on config, so it's safe</li>
-<li><code>PublicUploadFiles</code> - allows public (non-editors) to upload files (types will still be checked), so it's safe</li>
-<li><code>SaveInAdamApi</code> - enables the <code>SaveInAdam</code> API in the WebAPIs</li>
-<li><code>PermissionCheckUsers</code> - enables you to set permissions for specific users (by default you can only set by standard roles like Admin, etc.)</li>
-<li><code>PermissionCheckGroups</code> - enables you to set permissions for specific groups (by default you can only set by standard roles like Admin, etc.)</li>
-<li><code>WebFarmCache</code> - enables the <a href="https://2sxc.org/en/web-farm-cache">enterprise WebFarmCache</a> (requires a license)</li>
-</ol>
-<h2 id="read-also">Read also</h2>
-<p>...</p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 09.30</li>
-<li>Moved from the static object <code>Features</code> to a proper Sxc Service in v13.01</li>
-<li>Added nameId checks for more readable code in v13.01</li>
-</ol>
+<p>Moved to <a class="xref" href="../services/feature/index.html">Features Service</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/features/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/features/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

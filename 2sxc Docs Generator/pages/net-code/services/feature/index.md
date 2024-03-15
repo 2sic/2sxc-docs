@@ -1,7 +1,7 @@
 ---
 uid: NetCode.Features.Index
 ---
-# Features API in .net
+# Features Service
 
 2sxc / EAV in 9.30+ has a [features management](https://2sxc.org/en/blog/post/new-features-management-in-2sxc-9-30). In certain cases it would be good if the razor-view could verify that the feature is enabled - for example to show a warning when it isn't enabled yet. This is what the Features API is for.
 
@@ -39,7 +39,7 @@ The code above checks if a feature is enabled, and if not, will show a message t
     1. `Enabled(string nameId, nameId, nameId, ...)` use with as many parameters a you want
     1. `Enabled(string[] nameIds)` use with string-array
 
-## Finding Feature NameIds and GUIDs
+## Finding Feature NameIds
 
 As of v13 we always recommend using the NameIds since they are easier to read. These features are currently managed:
 

@@ -108,7 +108,11 @@
         <article data-uid="NetCode.Services.Index">
 <h1 id="c-services">C# Services</h1>
 
-<p>2sxc and EAV provide <strong>Services</strong> through <strong>Dependency Injection</strong> to get stuff done.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>2sxc has a rich set of <strong>Services</strong> which are <strong>Helpers</strong> to easily get things done.</p>
+<p>You can also create your own services as DLLs (v12+) or in your App (v17.03+).</p>
+</div>
 <div class="context-box-process" width="100%">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -210,13 +214,22 @@
 </div>
 <h2 id="servicekits-new-in-v14">ServiceKits (new in v14)</h2>
 <p>V14 introduces the concept of <a class="xref" href="service-kits.html">ServiceKits</a>.
-They give you access to all common services directly, without using <code>GetService&lt;...&gt;()</code>.</p>
-<h2 id="standard-services">Standard Services</h2>
-<p>As of 2sxc 13+ we publish all common services for your Razor / C# code on <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a>.
-This helps you figure out what's in the box - just go check it out.</p>
+They give you access to all common services directly on the <code>Kit</code> object.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The service kit provides more than 10 commonly used services.</p>
+</div>
+<p>Some popular services include:</p>
+<ul>
+<li><a class="xref" href="toolbar-builder/index.html">Toolbar Service</a> to build toolbars for the editor</li>
+<li><a class="xref" href="page/index.html">Page Service</a> to get/set page properties, run scripts, load resources and more</li>
+</ul>
+<h2 id="more-services">More Services</h2>
+<p>👉🏽 See <a class="xref" href="more-services.html">More Services</a></p>
 <h2 id="how-services-work">How Services Work</h2>
 <p>Technically a service is just a .net object which does stuff for you.
-You can get Services in your C# code like this:</p>
+They are provided through <strong>Dependency Injection</strong>.</p>
+<p>You can get Services in your C# code like this:</p>
 <pre><code class="lang-csharp">using ToSic.Sxc.Services;
 var page = GetService&lt;IPageService&gt;();
 </code></pre>
@@ -228,7 +241,7 @@ If this is new to you, you should <a class="xref" href="../dependency-injection/
 Because of this, there are some limitations if you want to get a Dnn service. For example:</p>
 <ol>
 <li>It requires that you use Dnn 9.4+</li>
-<li>It also requires 2sxc v13 as that now fully integrations with Dnns Service Provider</li>
+<li>It also requires 2sxc v13 as that now fully integrations with the Dnn Service Provider</li>
 <li>Not all Dnn Objects exist as services. You'll need to browse Dnn code to figure this out.</li>
 </ol>
 <h2 id="integration-with-oqtane-services">Integration with Oqtane Services</h2>
@@ -249,6 +262,8 @@ Because of this, there are some limitations if you want to get a Dnn service. Fo
 <li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
 <li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
 <li>Created <a class="xref" href="service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
+<li>Added ServiceKitLight for custom DataSources in 2sxc 15</li>
+<li>Added ServiceKit16 for 2sxc 16</li>
 </ol>
 
 </article>

@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Page Service to set Title, Headers and Activate Features | 2sxc 17 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Page Service to set Title, Headers and Activate Features | 2sxc 17 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/page/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NetCode.Razor.Services.IPageService">
+<h1 id="page-service-to-set-title-headers-and-activate-features">Page Service to set Title, Headers and Activate Features</h1>
+
+<p>In 2sxc 12.02 we introduced the <code>IPageService</code> which helps you to do things like</p>
+<ol>
+<li>Set the page Title, Keywords, Description or Base-Tag</li>
+<li>Add Meta-headers</li>
+<li>Add Icons or Icon-Sets</li>
+<li>Create JsonLD headers</li>
+<li>Activate page features like <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a></li>
+</ol>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+  <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
+    Discover More in the Razor Tutorials
+  </div>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<br>
+<h2 id="concept">Concept</h2>
+<p>A Razor template is standalone - the page requests that it's rendered, but there is no official way to also tell the page that the title should change or that certain headers must be set.</p>
+<p>We approached it in a futuristic way because we wanted to make sure that the code you write works in Dnn and Oqtane. So here's how it works</p>
+<ol>
+<li>Your code will get a <code>IPageService</code> object using <a class="xref" href="../../dynamic-code/get-service.html">`GetService&lt;IPageService&gt;()</a></li>
+<li>Your code can then tell it what you need - like <code>SetTitle(...)</code> or <code>AddJsonLd(...)</code></li>
+<li>Once the Razor is done, the engine will forward these requests to the page and ensure it happens</li>
+</ol>
+<p>👉 Read about <a class="xref" href="../../dependency-injection/index.html">Dependency Injection</a>
+👉 Read about the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService in the API docs</a></p>
+<h2 id="set-page-properties">Set Page Properties</h2>
+<p>You can set these page properties</p>
+<ol>
+<li><code>SetTitle(newToPrefix)</code><br>
+<code>SetTitle(newTitle, placeholder)</code><br>
+see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_SetTitle_">docs</a></li>
+<li><code>SetDescription(newDescription)</code><br>
+<code>SetDescription(newDescription, placeholder)</code><br>
+see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_SetDescription_">docs</a></li>
+<li><code>SetKeywords(additionalKeywords)</code><br>
+<code>SetKeywords(additionalKeywords, placeholder)</code><br>
+see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_SetKeywords_">docs</a></li>
+<li><code>SetBase(url)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_SetBase_">docs</a></li>
+</ol>
+<p>Note that SetTitle, SetDescription and SetKeywords will prepend or append whatever you give them to the existing value, unless you specify a placeholder - in which case that placeholder will be replaced.</p>
+<h2 id="set-http-response-codes">Set Http Response Codes</h2>
+<p>In some cases an App may need to set the page to 404 - so that google doesn't index it. Do this using</p>
+<ul>
+<li><code>SetHttpStatus(statusCode, optionalmessage)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_SetHttpStatus_">docs</a></li>
+</ul>
+<p>Note: ATM this is Dnn ☢️ only, as Oqtane doesn't render each page at a time - so a status code wouldn't work there (yet).</p>
+<h2 id="add-icons-and-icon-sets-like-favicon">Add Icons and Icon-Sets like FavIcon</h2>
+<p>Icons / FavIcons are minor enhancements to a page, but they serve more than just the icon in the browser tab. In many cases they may also have larger images used for tiles and more. Use these two commands to get them working:</p>
+<ul>
+<li><code>AddIcon</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddIcon_">docs</a> to add a single icon</li>
+<li><code>AddIconSet</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddIconSet_">docs</a> to add a bundle of icons for various use cases in one step</li>
+</ul>
+<h2 id="add-custom-headers">Add Custom Headers</h2>
+<p>Custom headers may be important for JavaScripts running on your page or other special purposes. Set them using these methods:</p>
+<ul>
+<li><code>AddToHead(string)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddToHead_System_String_">docs</a></li>
+<li><code>AddToHead(tag)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddToHead_ToSic_Razor_Blade_IHtmlTag_">docs</a></li>
+<li><code>AddMeta(name, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddMeta_">docs</a></li>
+</ul>
+<h2 id="add-jsonld-headers-schemaorg">Add JsonLD Headers (Schema.org)</h2>
+<p>JsonLD is a powerful way to describe your page to other systems, especially web crawlers like Google.
+It uses conventions from <a href="https://schema.org">schema.org</a>.
+Use this to add custom JsonLD headers:</p>
+<ul>
+<li><code>AddJsonLd(jsonString)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_String_">docs</a></li>
+<li><code>AddJsonLd(jsonObject)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+</ul>
+<h2 id="add-opengraph-headers">Add OpenGraph Headers</h2>
+<p>OpenGraph is a standard to describe your page for Facebook, Twitter and other more social-style systems.
+It adds meta headers using <code>og:</code> prefixes. Use these commands to add such headers:</p>
+<ul>
+<li><code>AddOpenGraph(propertyName, content)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddOpenGraph_">docs</a></li>
+</ul>
+<h2 id="activate-page-features">Activate Page Features</h2>
+<p>👉 See <a class="xref" href="page-service-activate.html">Page Service to Activate Features &amp; WebResources (JS, CSS, etc.)</a></p>
+<div style="background: #0088F444; overflow: auto">
+  <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
+  <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
+    Discover More in the Razor Tutorials
+  </div>
+<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+</div>
+<br>
+<h2 id="activate-javascript-with-turnon-new-v15">Activate JavaScript with TurnOn (new v15)</h2>
+<p><a class="xref" href="../../../js-code/turn-on/index.html">TurnOn</a> is a simple JavaScript helper which allows to you <em>turn on</em> / boot
+a script when everything it needs has been loaded.
+You can do this by creating HTML manually, but in v15 we added a simple helper which makes it easier.</p>
+<ul>
+<li><code>TurnOn(runCommand)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+<li><code>TurnOn(runCommand, require: object)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+<li><code>TurnOn(runCommand, data: object)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+<li><code>TurnOn(runCommand, require: object, data: object)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+<li><code>TurnOn(turnOnSpecs)</code> - see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AddJsonLd_System_Object_">docs</a></li>
+</ul>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 12.02 to replace the previous static implementation using <a class="xref" href="../../razor-blade/index.html">RazorBlade</a></li>
+<li>Enhanced in 12.05</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/services/page/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

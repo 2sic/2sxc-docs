@@ -32,19 +32,6 @@ The objects you will then work with are either
 1. Improve the "Where data comes from"
 1. maybe: configuration data?
 
-## Temporary Notes - to be organized at some other time
-
-### Differences in the App object (`IApp` vs. `IAppTyped`)
-
-* `App.Query[...]` is now `App.GetQuery(...)` - this will also allow for more advanced options in future
-* `App.Folder` is now a `IFolder` object
-* `App.Path` is replaced by `App.Folder.Url`
-* `App.PathShared` is replaced by `App.FolderAdvanced(location: "shared").Url`
-* `App.PhysicalPath` is replaced by `App.Folder.PhysicalPath`
-* `App.PhysicalPathShared` is replaced by `App.FolderAdvanced(location: "shared").PhysicalPath`
-* `App.Thumbnail` is now an IFile object
-* `App.Thumbnail` is replaced by `App.Thumbnail.Url`
-* `MyView.Path` still works, but you should use `MyView.Folder.Url` for clarity
 
 ---
 

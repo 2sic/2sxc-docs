@@ -8,3 +8,5 @@
 1. Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)
 1. Integrated with Dnn DI in v13 (Dec. 2021)
 1. Created [ServiceKits](xref:NetCode.Services.ServiceKits) for v14 (June 2022)
+1. Added ServiceKitLight for custom DataSources in 2sxc 15
+1. Added ServiceKit16 for 2sxc 16

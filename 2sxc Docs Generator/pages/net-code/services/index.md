@@ -4,7 +4,10 @@ uid: NetCode.Services.Index
 
 # C# Services
 
-2sxc and EAV provide **Services** through **Dependency Injection** to get stuff done.
+> [!TIP]
+> 2sxc has a rich set of **Services** which are **Helpers** to easily get things done.
+>
+> You can also create your own services as DLLs (v12+) or in your App (v17.03+).
 
 <div class="context-box-process" width="100%">
 
@@ -15,16 +18,25 @@ uid: NetCode.Services.Index
 ## ServiceKits (new in v14)
 
 V14 introduces the concept of [ServiceKits](xref:NetCode.Services.ServiceKits).
-They give you access to all common services directly, without using `GetService<...>()`.
+They give you access to all common services directly on the `Kit` object.
 
-## Standard Services
+> [!TIP]
+> The service kit provides more than 10 commonly used services.
 
-As of 2sxc 13+ we publish all common services for your Razor / C# code on [ToSic.Sxc.Services](xref:ToSic.Sxc.Services).
-This helps you figure out what's in the box - just go check it out.
+Some popular services include:
+
+* [Toolbar Service](xref:ToSic.Sxc.Services.ToolbarBuilder.Index) to build toolbars for the editor
+* [Page Service](xref:NetCode.Razor.Services.IPageService) to get/set page properties, run scripts, load resources and more
+
+## More Services
+
+👉🏽 See [More Services](xref:NetCode.Services.More)
 
 ## How Services Work
 
 Technically a service is just a .net object which does stuff for you.
+They are provided through **Dependency Injection**.
+
 You can get Services in your C# code like this:
 
 ```csharp
@@ -42,7 +54,7 @@ Dnn is still new to Dependency Injection.
 Because of this, there are some limitations if you want to get a Dnn service. For example:
 
 1. It requires that you use Dnn 9.4+
-1. It also requires 2sxc v13 as that now fully integrations with Dnns Service Provider
+1. It also requires 2sxc v13 as that now fully integrations with the Dnn Service Provider
 1. Not all Dnn Objects exist as services. You'll need to browse Dnn code to figure this out.
 
 
