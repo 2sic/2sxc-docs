@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,39 +106,39 @@
         </div>
 
         <article data-uid="NetCode.Errors.LinqLambda">
-<h1 id="error-cannot-use-a-lambda-expression">Error Cannot use a lambda expression</h1>
+<h1 id="error-cannot-use-a-lambda-expression" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="5">Error Cannot use a lambda expression</h1>
 
-<p>If you see an error like this:</p>
-<pre><code class="lang-text">Cannot use a lambda expression as an argument to a dynamically dispatched operation without first casting it to a delegate or expression tree type at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="7">If you see an error like this:</p>
+<pre><code class="lang-text" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="9">Cannot use a lambda expression as an argument to a dynamically dispatched operation without first casting it to a delegate or expression tree type at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in
 </code></pre>
-<p>It usually means that you tried to write LINQ code like a <code>.First(...)</code> or <code>.Select(...)</code> on an object, and the compiler can't be sure that you tried to write LINQ.</p>
-<h2 id="background-dynamic-code-and-extension-methods">Background: Dynamic Code and Extension Methods</h2>
-<p>Razor is dynamically compiled code, and many objects like <code>Content</code> are typed as <code>dynamic</code>. Because of this, the compiler can't be sure what's in a <code>dynamic</code> object, and also not what is in a <code>Content.Tags</code> - since this too is regarded as <code>dynamic</code>.</p>
-<p>This is why you can't just write <code>Content.Tags.First()</code>, because <code>.First()</code> is an extension method which the compiler must find first - but it can't do that, since it doesn't know that <code>Content.Tags</code> are of the type <code>IEnumerable&lt;...&gt;</code>.</p>
-<h2 id="solution-1---use-aslist">Solution #1 - use AsList(...)</h2>
-<p>2sxc 10.20 introduces <code>AsList(...)</code> which the compiler knows is an IEnumerable. Unfortunately if the the compiler isn't sure about <code>Content.Tags</code>, then it's also not sure about <code>AsList(Content.Tags)</code>. This is a minor inconvenience, since <code>AsList(...)</code> would figure things out, but Razor wants to be sure. So to use <code>AsList()</code> for solving this problem, you'll need to write <code>AsList(Content.Tags as object)</code>. That solves it.</p>
-<h2 id="solution-2---cast-as-ienumerabledynamic">Solution #2 - cast as <code>IEnumerable&lt;dynamic&gt;</code></h2>
-<p>If you already know it's a list, you can also cast it as an <code>IEnumerable&lt;dynamic&gt;</code>. Since <code>IEnumerable&lt;T&gt;</code> is in the namespace <code>System.Collections.Generic</code> you have 3 options:</p>
-<h4 id="cast-with-full-namespace">Cast with full Namespace</h4>
-<p>This is what the compiler actually understands - but it's a bit long and hard to read:</p>
-<pre><code class="lang-cs">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="13">It usually means that you tried to write LINQ code like a <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="13">.First(...)</code> or <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="13">.Select(...)</code> on an object, and the compiler can't be sure that you tried to write LINQ.</p>
+<h2 id="background-dynamic-code-and-extension-methods" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="15">Background: Dynamic Code and Extension Methods</h2>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">Razor is dynamically compiled code, and many objects like <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">Content</code> are typed as <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">dynamic</code>. Because of this, the compiler can't be sure what's in a <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">dynamic</code> object, and also not what is in a <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">Content.Tags</code> - since this too is regarded as <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="17">dynamic</code>.</p>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="19">This is why you can't just write <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="19">Content.Tags.First()</code>, because <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="19">.First()</code> is an extension method which the compiler must find first - but it can't do that, since it doesn't know that <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="19">Content.Tags</code> are of the type <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="19">IEnumerable&lt;...&gt;</code>.</p>
+<h2 id="solution-1---use-aslist" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="21">Solution #1 - use AsList(...)</h2>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">2sxc 10.20 introduces <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">AsList(...)</code> which the compiler knows is an IEnumerable. Unfortunately if the the compiler isn't sure about <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">Content.Tags</code>, then it's also not sure about <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">AsList(Content.Tags)</code>. This is a minor inconvenience, since <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">AsList(...)</code> would figure things out, but Razor wants to be sure. So to use <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">AsList()</code> for solving this problem, you'll need to write <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="23">AsList(Content.Tags as object)</code>. That solves it.</p>
+<h2 id="solution-2---cast-as-ienumerabledynamic" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="25">Solution #2 - cast as <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="25">IEnumerable&lt;dynamic&gt;</code></h2>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="27">If you already know it's a list, you can also cast it as an <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="27">IEnumerable&lt;dynamic&gt;</code>. Since <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="27">IEnumerable&lt;T&gt;</code> is in the namespace <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="27">System.Collections.Generic</code> you have 3 options:</p>
+<h4 id="cast-with-full-namespace" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="29">Cast with full Namespace</h4>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="31">This is what the compiler actually understands - but it's a bit long and hard to read:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="33">var authors = (book.Authors as System.Collections.Generic.IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre>
-<h4 id="cast-with-using-and-ienumerabledynamic">Cast with <code>@using</code> and <code>IEnumerable&lt;dynamic&gt;</code></h4>
-<p>This is the same thing, just nicer to read:</p>
-<pre><code class="lang-cs">@using System.Collections.Generic;
+<h4 id="cast-with-using-and-ienumerabledynamic" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="38">Cast with <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="38">@using</code> and <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="38">IEnumerable&lt;dynamic&gt;</code></h4>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="40">This is the same thing, just nicer to read:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="42">@using System.Collections.Generic;
 
 var authors = (book.Authors as IEnumerable&lt;dynamic&gt;)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre>
-<h4 id="cast-with-using-dynlist--">Cast with <code>@using Dynlist = ...</code></h4>
-<p>This is the same thing, but the nicest, easiest to read method:</p>
-<pre><code class="lang-cs">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
+<h4 id="cast-with-using-dynlist--" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="49">Cast with <code sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="49">@using Dynlist = ...</code></h4>
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="51">This is the same thing, but the nicest, easiest to read method:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="53">@using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 var authors = (book.Authors as Dynlist)
     .Select(a =&gt; a.FirstName + &quot; &quot; + a.LastName);
 </code></pre>
-<hr>
-<p>Shortlink: <a href="https://go.2sxc.org/ErrLambda">https://go.2sxc.org/ErrLambda</a></p>
+<hr sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="59">
+<p sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="61">Shortlink: <a href="https://go.2sxc.org/ErrLambda" sourcefile="pages/net-code/errors/linq-cannot-use-lambda.md" sourcestartlinenumber="61">https://go.2sxc.org/ErrLambda</a></p>
 
 </article>
 

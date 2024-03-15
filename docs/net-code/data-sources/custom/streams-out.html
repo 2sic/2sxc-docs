@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.StreamsOut">
-<h1 id="datasource-api-out-streams">DataSource API: Out Streams</h1>
+<h1 id="datasource-api-out-streams" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="5">DataSource API: Out Streams</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,43 +203,43 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
-<p>All DataSources must have <strong>Out</strong> Streams.</p>
-<p>By convention, the primary Out is called <code>Default</code> and the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> Designer assumes that it exists by default.</p>
-<p>But there are two important things you can change</p>
-<ol>
-<li>You can determine one or more predefined Out streams</li>
-<li>You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App DataSource</a></li>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="10">All DataSources must have <strong sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="10">Out</strong> Streams.</p>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="12">By convention, the primary Out is called <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="12">Default</code> and the <a class="xref" href="../../../basics/query/visual-query/index.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="12">VisualQuery</a> Designer assumes that it exists by default.</p>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="14">But there are two important things you can change</p>
+<ol sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="16">
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="16">You can determine one or more predefined Out streams</li>
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="17">You can tell the UI that your Stream can have many, dynamically named Out-Streams just like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="17">App DataSource</a></li>
 </ol>
 <img src="../../../pages/basics/query/streams/assets/out-streams.png" width="100%" class="full-width">
-<div class="IMPORTANT">
+<div class="IMPORTANT" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="22">
 <h5>Important</h5>
-<p>Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/out.html">general concept of Out-Streams</a>.</p>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="23">Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/out.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="23">general concept of Out-Streams</a>.</p>
 </div>
-<h2 id="pre-named-out-streams">Pre-Named Out-Streams</h2>
-<p>For an example, we'll use the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging DataSource</a>.
-It's job is to take a list of items and only forward a chunk on the <code>Default</code>, like &quot;Page 3 containing items 61-90&quot;.
+<h2 id="pre-named-out-streams" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="26">Pre-Named Out-Streams</h2>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="28">For an example, we'll use the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="28">Paging DataSource</a>.
+It's job is to take a list of items and only forward a chunk on the <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="29">Default</code>, like &quot;Page 3 containing items 61-90&quot;.
 In addition it should also provide information as to what page we're on and how many pages exist.</p>
-<p>This is defined in the constructor, where the DataSource determines what it Provides #todoc.</p>
-<pre><code class="lang-c#">public Paging()
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="32">This is defined in the constructor, where the DataSource determines what it Provides #todoc.</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="34">public Paging()
 {
   ProvideOut(GetList);
   ProvideOut(GetPaging, &quot;Paging&quot;);
 }
 </code></pre>
-<p>The two lines of <code>ProvideOut</code> are the important bits:</p>
-<ol>
-<li><code>ProvideOut(GetList)</code> will provide data on the <code>Default</code> Out-Stream</li>
-<li><code>ProvideOut(GetPaging, &quot;Paging&quot;)</code> will provide data on the <code>Paging</code> Out-Stream</li>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="42">The two lines of <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="42">ProvideOut</code> are the important bits:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="44">
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="44">ProvideOut(GetList)</code> will provide data on the <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="44">Default</code> Out-Stream</li>
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="45"><code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="45">ProvideOut(GetPaging, &quot;Paging&quot;)</code> will provide data on the <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="45">Paging</code> Out-Stream</li>
 </ol>
-<h2 id="dynamic-out-streams">Dynamic Out Streams</h2>
-<p>Some DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App DataSource</a> can have many Out-streams which are not known till Runtime.
-To allow the UI to provide these, we must specify this in the <a class="xref" href="visual-query-attribute.html">VisualQuery attribute</a>.
+<h2 id="dynamic-out-streams" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="48">Dynamic Out Streams</h2>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="50">Some DataSources like the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="50">App DataSource</a> can have many Out-streams which are not known till Runtime.
+To allow the UI to provide these, we must specify this in the <a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="51">VisualQuery attribute</a>.
 Here's an example of the App DataSource:</p>
-<pre><code class="lang-c#">[VisualQuery(
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="54">[VisualQuery(
   NameId = &quot;...&quot;,
   Type = DataSourceType.Source, 
   Icon = &quot;app&quot;,
@@ -249,21 +249,21 @@ Here's an example of the App DataSource:</p>
   ConfigurationType = &quot;...&quot;,
   HelpLink = &quot;...&quot;)]
 </code></pre>
-<p>The important part here is the <code>DynamicOut = true</code>.</p>
-<h2 id="strategies-for-providing-dynamic-out">Strategies for Providing Dynamic Out</h2>
-<p>Providing dynamic-out in your code can be tricky, and there are 2 strategies you can use:</p>
-<ol>
-<li>Create all Out-Streams on first Use of <code>Out</code><br>
-This would create the Out-Accessors when <code>Out</code> is first accessed. You can see examples of this on the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html">App</a> DataSource</li>
-<li>Re-Implement the <code>Out</code> of the type <code>IDictionary&lt;string, IDataStream&gt;</code> to do some kind of Lazy-Loading
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="66">The important part here is the <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="66">DynamicOut = true</code>.</p>
+<h2 id="strategies-for-providing-dynamic-out" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="68">Strategies for Providing Dynamic Out</h2>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="70">Providing dynamic-out in your code can be tricky, and there are 2 strategies you can use:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="72">
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="72">Create all Out-Streams on first Use of <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="72">Out</code><br>
+This would create the Out-Accessors when <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="73">Out</code> is first accessed. You can see examples of this on the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.App.html" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="73">App</a> DataSource</li>
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="74">Re-Implement the <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="74">Out</code> of the type <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="74">IDictionary&lt;string, IDataStream&gt;</code> to do some kind of Lazy-Loading
 There is no example to do this, but it could be done.</li>
 </ol>
-<p>Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this.</p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced ca. in 2sxc 6</li>
-<li>Extended with Dynamic Out ca. 2sxc 8</li>
-<li>Provide API completely changed in v15+ and uses the new <code>ProvideOut</code> method</li>
+<p sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="77">Note that this is fairly sophisticated so do spend some time to familiarize yourself with the EAV code before you attempt this.</p>
+<h2 id="history" sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="79">History</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="81">
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="81">Introduced ca. in 2sxc 6</li>
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="82">Extended with Dynamic Out ca. 2sxc 8</li>
+<li sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="83">Provide API completely changed in v15+ and uses the new <code sourcefile="pages/net-code/data-sources/custom/streams-out.md" sourcestartlinenumber="83">ProvideOut</code> method</li>
 </ol>
 
 </article>

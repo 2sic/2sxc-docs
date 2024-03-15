@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,55 +106,55 @@
         </div>
 
         <article data-uid="Abyss.Integration.Scenario01">
-<h1 id="your-custom-platform---scenario-1---read-eav-data">Your Custom Platform - Scenario #1 - Read EAV Data</h1>
+<h1 id="your-custom-platform---scenario-1---read-eav-data" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="5">Your Custom Platform - Scenario #1 - Read EAV Data</h1>
 
-<p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution.</p>
-<div class="TIP">
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="7">This is part of the <a class="xref" href="index.html" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="7">Integration Guide</a> for integrating EAV or 2sxc into your own solution.</p>
+<div class="TIP" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="9">
 <h5>Tip</h5>
-<p>You can find this fully implemented in the <code>Integration\BasicEav01</code> project.</p>
-<p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="10">You can find this fully implemented in the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="10">Integration\BasicEav01</code> project.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="12">Search for <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="12">#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
-<h2 id="scope-of-scenario-1---read-eav-data">Scope of Scenario #1 - Read EAV Data</h2>
-<p>In Scenario #1 we will setup a basic system.
+<h2 id="scope-of-scenario-1---read-eav-data" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="14">Scope of Scenario #1 - Read EAV Data</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="16">In Scenario #1 we will setup a basic system.
 This is the foundation for more enhanced scenarios.</p>
-<p><strong>Functionality</strong></p>
-<ol>
-<li>Can read / get EAV Data from an existing Dnn or Oqtane Database</li>
-<li>Has a dummy <code>IUser</code> implementation which says the user is always a SystemAdmin</li>
-<li>Can see <a class="xref" href="../../net-code/debug/insights.html">Insights</a> to see what's happening internally and to verify everything is ok</li>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="19"><strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="19">Functionality</strong></p>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="21">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="21">Can read / get EAV Data from an existing Dnn or Oqtane Database</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="22">Has a dummy <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="22">IUser</code> implementation which says the user is always a SystemAdmin</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="23">Can see <a class="xref" href="../../net-code/debug/insights.html" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="23">Insights</a> to see what's happening internally and to verify everything is ok</li>
 </ol>
-<h2 id="integration-overview-for-basic-read-from-existing-db-scenarios">Integration Overview for Basic Read-From-Existing-DB Scenarios</h2>
-<p>To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
-<ol>
-<li>Add necessary DLLs</li>
-<li>Copy all relevant files core files like <code>App_Data</code></li>
-<li>Integrate into your Dependency Injection</li>
-<li>Do StartUp configuration as needed</li>
-<li>Test / Verify you can Read Data</li>
+<h2 id="integration-overview-for-basic-read-from-existing-db-scenarios" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="25">Integration Overview for Basic Read-From-Existing-DB Scenarios</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="27">To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="29">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="29">Add necessary DLLs</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="30">Copy all relevant files core files like <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="30">App_Data</code></li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="31">Integrate into your Dependency Injection</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="32">Do StartUp configuration as needed</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="33">Test / Verify you can Read Data</li>
 </ol>
-<hr>
-<h2 id="1-add-minimal-dlls">1. Add Minimal DLLs</h2>
-<p>For the first scenario, we need the main <code>ToSic.Eav.*</code> DLLs (no 2sxc DLLs needed):</p>
-<ol>
-<li>Apps</li>
-<li>Core</li>
-<li>DataSources</li>
-<li>ImportExport</li>
-<li>Persistence.Efc</li>
-<li>Repository.Efc</li>
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="35">
+<h2 id="1-add-minimal-dlls" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="37">1. Add Minimal DLLs</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="39">For the first scenario, we need the main <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="39">ToSic.Eav.*</code> DLLs (no 2sxc DLLs needed):</p>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="41">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="41">Apps</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="42">Core</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="43">DataSources</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="44">ImportExport</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="45">Persistence.Efc</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="46">Repository.Efc</li>
 </ol>
-<p>You can add these manually, reference them or whatever.</p>
-<hr>
-<h2 id="2-copy-important-data-to-your-target">2. Copy Important Data to Your Target</h2>
-<p>The EAV loads important data from the file system when it starts. This data contains Content-Types and basic configuration which is necessary to work.</p>
-<p>In the basic implementation, you need the <code>App_Data</code> folder to be copied to the right location, which must be available at runtime.</p>
-<div class="TIP">
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="48">You can add these manually, reference them or whatever.</p>
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="50">
+<h2 id="2-copy-important-data-to-your-target" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="52">2. Copy Important Data to Your Target</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="54">The EAV loads important data from the file system when it starts. This data contains Content-Types and basic configuration which is necessary to work.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="56">In the basic implementation, you need the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="56">App_Data</code> folder to be copied to the right location, which must be available at runtime.</p>
+<div class="TIP" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="58">
 <h5>Tip</h5>
-<p>The <code>App_Data</code> folder does not need to be accessible from outside.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="59">The <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="59">App_Data</code> folder does not need to be accessible from outside.</p>
 </div>
-<p>You may copy the <code>App_Data</code> manually, or automate it on build.</p>
-<p>The following script is used in the <code>BasicEav01</code> project on build (adjust it to your needs):</p>
-<pre><code>@Echo Configuration='$(Configuration)'
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="61">You may copy the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="61">App_Data</code> manually, or automate it on build.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="63">The following script is used in the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="63">BasicEav01</code> project on build (adjust it to your needs):</p>
+<pre><code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="65">@Echo Configuration='$(Configuration)'
 @Echo StartWith ='$(Configuration.StartsWith('Debug'))'
 @Echo Platform ='$(Platform)'
 @Echo ProjectDir '$(ProjectDir)'
@@ -164,28 +164,28 @@ This is the foundation for more enhanced scenarios.</p>
 @REM Copy the data folders
 robocopy /mir &quot;$(ProjectDir)..\..\Data\.data\ &quot; &quot;%BuildTarget%\.data\ &quot;
 </code></pre>
-<hr>
-<h2 id="3-integrate-into-your-dependency-injection">3. Integrate into your Dependency Injection</h2>
-<p>The EAV and 2sxc need Dependency Injection to work. As of now (2022-02) we use the .net Standard 2.1 DI.</p>
-<div class="NOTE">
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="77">
+<h2 id="3-integrate-into-your-dependency-injection" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="79">3. Integrate into your Dependency Injection</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="81">The EAV and 2sxc need Dependency Injection to work. As of now (2022-02) we use the .net Standard 2.1 DI.</p>
+<div class="NOTE" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="83">
 <h5>Note</h5>
-<p>The example below also registers the <code>IntUser</code> which is the Integration-implementation of the <code>IUser</code>.
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="84">The example below also registers the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="84">IntUser</code> which is the Integration-implementation of the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="84">IUser</code>.
 To see the code of that, just check out the example code in the project.</p>
 </div>
-<h3 id="31-general-principles">3.1 General Principles</h3>
-<p>The general principle is as follows:</p>
-<ol>
-<li>At StartUp you'll either
-<ol>
-<li>use the existing <code>IServiceCollection</code> like in the Oqtane examples</li>
-<li>or create a new <code>ServiceCollection()</code> like in the Dnn examples</li>
+<h3 id="31-general-principles" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="87">3.1 General Principles</h3>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="89">The general principle is as follows:</p>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="91">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="91">At StartUp you'll either
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="92">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="92">use the existing <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="92">IServiceCollection</code> like in the Oqtane examples</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="93">or create a new <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="93">ServiceCollection()</code> like in the Dnn examples</li>
 </ol>
 </li>
-<li>You'll later have custom services for your platform only, these should be added in an own method like <code>AddSxcYourPlatform</code> in your own static class</li>
-<li>Once you need these objects, you'll get a <code>IServiceProvider</code> from the framework or create your own, sometimes creating an own scope</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="94">You'll later have custom services for your platform only, these should be added in an own method like <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="94">AddSxcYourPlatform</code> in your own static class</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="95">Once you need these objects, you'll get a <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="95">IServiceProvider</code> from the framework or create your own, sometimes creating an own scope</li>
 </ol>
-<p>This would be a minimal StartUp taken from <code>BasicEav01</code>:</p>
-<pre><code class="lang-c#">/// &lt;summary&gt;
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="97">This would be a minimal StartUp taken from <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="97">BasicEav01</code>:</p>
+<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="99">/// &lt;summary&gt;
 /// This method gets called by the runtime. Use this method to add services to the container.
 /// &lt;/summary&gt;
 public void ConfigureServices(IServiceCollection services)
@@ -200,31 +200,31 @@ public void ConfigureServices(IServiceCollection services)
   services.AddRazorPages();
 }
 </code></pre>
-<h3 id="32-various-di-scenarios">3.2 Various DI Scenarios</h3>
-<p>Your project may already use DI, or it may not. Here are the common scenarios you will probably have:</p>
-<h4 id="321-di-scenario-1---no-dependency-injection">3.2.1 DI Scenario #1 - No Dependency Injection</h4>
-<p>This scenario is common in classic <em>.net Framework</em> and <em>WebForms</em> projects which are a bit older.
+<h3 id="32-various-di-scenarios" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="117">3.2 Various DI Scenarios</h3>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="119">Your project may already use DI, or it may not. Here are the common scenarios you will probably have:</p>
+<h4 id="321-di-scenario-1---no-dependency-injection" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="121">3.2.1 DI Scenario #1 - No Dependency Injection</h4>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="123">This scenario is common in classic <em sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="123">.net Framework</em> and <em sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="123">WebForms</em> projects which are a bit older.
 We assume nobody will actually be needing this much, so we won't explain this in detail.
 Your work will basically consist of</p>
-<ol>
-<li>At Startup, create a new DI and store it somewhere (see DNN samples to see how this can be done)</li>
-<li>When you use it, make sure you get the <code>IServiceProvider</code> - probably in an own Scope per request and module</li>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="127">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="127">At Startup, create a new DI and store it somewhere (see DNN samples to see how this can be done)</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="128">When you use it, make sure you get the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="128">IServiceProvider</code> - probably in an own Scope per request and module</li>
 </ol>
-<h4 id="322-di-scenario-2---net-core-dependency-injection">3.2.2 DI Scenario #2 - .net Core Dependency Injection</h4>
-<p>This scenario is common in new <code>Asp.net Core</code> projects.
+<h4 id="322-di-scenario-2---net-core-dependency-injection" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="130">3.2.2 DI Scenario #2 - .net Core Dependency Injection</h4>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="132">This scenario is common in new <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="132">Asp.net Core</code> projects.
 It already has Dependency Injection setup, and all you need to do is use the existing one.
 For this scenario, best see how it's done in Oqtane</p>
-<hr>
-<h2 id="4-do-startup-configuration">4. Do StartUp Configuration</h2>
-<p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts.
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="136">
+<h2 id="4-do-startup-configuration" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="138">4. Do StartUp Configuration</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="140">Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts.
 These are the required ones as of 2022-02:</p>
-<ol>
-<li>The database <strong>ConnectionString</strong> required to connect to the EAV DB</li>
-<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>App_Data</code> subfolder - required to load initial configurations and initial data</li>
-<li>Call <code>StartUp</code> on the <code>SystemLoader</code> which you must get from DI</li>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="143">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="143">The database <strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="143">ConnectionString</strong> required to connect to the EAV DB</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="144"><strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="144">GlobalFolder</strong> of the distributed 2sxc files containing things like the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="144">App_Data</code> subfolder - required to load initial configurations and initial data</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="145">Call <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="145">StartUp</code> on the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="145">SystemLoader</code> which you must get from DI</li>
 </ol>
-<p>This is the working code taken from <code>BasicEav01</code>:</p>
-<pre><code class="lang-c#">/// &lt;summary&gt;
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="147">This is the working code taken from <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="147">BasicEav01</code>:</p>
+<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="149">/// &lt;summary&gt;
 /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 /// &lt;/summary&gt;
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -246,10 +246,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   // ...
 }
 </code></pre>
-<hr>
-<h2 id="5-test-and-verify">5. Test and Verify</h2>
-<p>If you did everything right, you can now run your code and access data from the App Cache using code like this (see demo on the <code>ShowEavData.cshtml</code>):</p>
-<pre><code class="lang-c#">@page
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="173">
+<h2 id="5-test-and-verify" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="175">5. Test and Verify</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="177">If you did everything right, you can now run your code and access data from the App Cache using code like this (see demo on the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="177">ShowEavData.cshtml</code>):</p>
+<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="179">@page
 @using ToSic.Eav.Apps
 @inject IAppStates AppStates
 @{
@@ -263,24 +263,24 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   var firstItem = appState.List.FirstOrDefault();
 }
 </code></pre>
-<p><strong>Common Problems</strong></p>
-<ol>
-<li>If the folder to the <code>App_Data</code> isn't quite correct, you will have a long loading time and then a stack overflow</li>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="195"><strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="195">Common Problems</strong></p>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="197">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="197">If the folder to the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="197">App_Data</code> isn't quite correct, you will have a long loading time and then a stack overflow</li>
 </ol>
-<hr>
-<h2 id="5-get-insights-webapi-to-work">5. Get Insights WebApi to Work</h2>
-<p>The <a class="xref" href="../../net-code/debug/insights.html">Insights</a> will help you figure out what parts you need to implement.
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="200">
+<h2 id="5-get-insights-webapi-to-work" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="202">5. Get Insights WebApi to Work</h2>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="204">The <a class="xref" href="../../net-code/debug/insights.html" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="204">Insights</a> will help you figure out what parts you need to implement.
 It will show you what services were requested which are not implemented yet, and will show you what code was used.</p>
-<ol>
-<li>Create your minimal <code>InsightsController</code> as you see in the demo project</li>
-<li>Register the routes using whatever system you have ATM (.net core, ASP.net Framework)</li>
-<li>Test the routes to see things are coming out</li>
+<ol sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="207">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="207">Create your minimal <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="207">InsightsController</code> as you see in the demo project</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="208">Register the routes using whatever system you have ATM (.net core, ASP.net Framework)</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="209">Test the routes to see things are coming out</li>
 </ol>
-<p><strong>Minimal <code>InsightsController</code></strong></p>
-<p>You can review the code of the InsightsController in the <code>Controllers</code> folder in the project.
-It's basically just a simple controller with one <code>Details(...)</code> action.</p>
-<p><strong>Activate it in the <code>StartUp.cs</code></strong></p>
-<pre><code class="lang-c#">public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="211"><strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="211">Minimal <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="211">InsightsController</code></strong></p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="213">You can review the code of the InsightsController in the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="213">Controllers</code> folder in the project.
+It's basically just a simple controller with one <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="214">Details(...)</code> action.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="216"><strong sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="216">Activate it in the <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="216">StartUp.cs</code></strong></p>
+<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="218">public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
   // ...
 
@@ -293,17 +293,17 @@ It's basically just a simple controller with one <code>Details(...)</code> actio
   });
 }
 </code></pre>
-<p>Test by calling <code>https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed.</p>
-<div class="TIP">
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="233">Test by calling <code sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="233">https://localhost:44384/api/sxc/sys/Insights/Help</code> - replace the base path as needed.</p>
+<div class="TIP" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="235">
 <h5>Tip</h5>
-<p>Once the insights work, you can also see what objects were used in a <a class="xref" href="../../net-code/conventions/unknown-implementations/index.html">fallback/unknown implementation</a>.</p>
+<p sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="236">Once the insights work, you can also see what objects were used in a <a class="xref" href="../../net-code/conventions/unknown-implementations/index.html" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="236">fallback/unknown implementation</a>.</p>
 </div>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Proof of Concept implemented with 2sxc 11 in 2021</li>
-<li>Finalized when integrating Oqtane in 2sxc 12</li>
-<li>Updated docs for basic Scenario for v13.03</li>
+<hr sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="238">
+<h2 id="history" sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="240">History</h2>
+<ul sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="242">
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="242">Proof of Concept implemented with 2sxc 11 in 2021</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="243">Finalized when integrating Oqtane in 2sxc 12</li>
+<li sourcefile="pages/abyss/integration/scenario-01.md" sourcestartlinenumber="244">Updated docs for basic Scenario for v13.03</li>
 </ul>
 
 </article>

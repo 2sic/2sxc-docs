@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,60 +106,60 @@
         </div>
 
         <article data-uid="NetCode.StronglyTypedCode.Editions">
-<h1 id="editions-polymorphism-and-open-heart-surgery-in-2sxc-17">Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+</h1>
+<h1 id="editions-polymorphism-and-open-heart-surgery-in-2sxc-17" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="5">Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+</h1>
 
-<p>2sxc supports the concept of Polymorphism in which an App can exist in multiple editions.
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="7">2sxc supports the concept of Polymorphism in which an App can exist in multiple editions.
 This is used for many things, including:</p>
-<ul>
-<li>Different output based on the CSS-Framework used</li>
-<li>staging code which is run for developers, while live code is run for normal users</li>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="10">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="10">Different output based on the CSS-Framework used</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="11">staging code which is run for developers, while live code is run for normal users</li>
 </ul>
-<p>➡️ <a class="xref" href="../../basics/polymorphism/index.html">read more about Polymorphism</a></p>
-<h2 id="editions-and-appcode">Editions and AppCode</h2>
-<p>The <code>AppCode</code> folder can be in multiple places</p>
-<ul>
-<li><code>/AppCode</code> - the default, which is used for the root edition</li>
-<li><code>/[any-folder]/AppCode</code> - used for any edition</li>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="13">➡️ <a class="xref" href="../../basics/polymorphism/index.html" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="13">read more about Polymorphism</a></p>
+<h2 id="editions-and-appcode" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="15">Editions and AppCode</h2>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="17">The <code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="17">AppCode</code> folder can be in multiple places</p>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="19">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="19"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="19">/AppCode</code> - the default, which is used for the root edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="20"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="20">/[any-folder]/AppCode</code> - used for any edition</li>
 </ul>
-<p>Examples</p>
-<ul>
-<li><code>/staging/AppCode</code> - used for the staging edition</li>
-<li><code>/live/AppCode</code> - used for the live edition</li>
-<li><code>/bs3/AppCode</code> - used for the Bootstrap 3 edition</li>
-<li><code>/bs5/AppCode</code> - used for the Bootstrap 4 edition</li>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="22">Examples</p>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="24">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="24"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="24">/staging/AppCode</code> - used for the staging edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="25"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="25">/live/AppCode</code> - used for the live edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="26"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="26">/bs3/AppCode</code> - used for the Bootstrap 3 edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="27"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="27">/bs5/AppCode</code> - used for the Bootstrap 4 edition</li>
 </ul>
-<div class="IMPORTANT">
+<div class="IMPORTANT" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="29">
 <h5>Important</h5>
-<p>Every edition is standalone, so the AppCode will be compiled into an own DLL
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="30">Every edition is standalone, so the AppCode will be compiled into an own DLL
 and provided to the Razor files in that edition only.</p>
-<p>This also means that once an edition has it's own code, it cannot share code with other editions.</p>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="33">This also means that once an edition has it's own code, it cannot share code with other editions.</p>
 </div>
-<p>So you will typically have only a primary <code>/AppCode</code> folder, OR many in various editions.</p>
-<h3 id="typical-setup-for-output-polymorphism">Typical Setup for Output Polymorphism</h3>
-<p>If you are just creating different HTML for different CSS Frameworks, then this will be your typical setup:</p>
-<ul>
-<li><code>/AppCode</code> - the default / shared AppCode</li>
-<li><del><code>/bs3/AppCode</code></del> - do not create AppCode folders inside the editions!</li>
-<li><code>/bs3/*.cshtml</code> - Razor files only, will use the default AppCode</li>
-<li><code>/bs4/*.cshtml</code> - Razor files only, will use the default AppCode</li>
-<li><code>/bs5/*.cshtml</code> - Razor files only, will use the default AppCode</li>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="35">So you will typically have only a primary <code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="35">/AppCode</code> folder, OR many in various editions.</p>
+<h3 id="typical-setup-for-output-polymorphism" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="37">Typical Setup for Output Polymorphism</h3>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="39">If you are just creating different HTML for different CSS Frameworks, then this will be your typical setup:</p>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="41">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="41"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="41">/AppCode</code> - the default / shared AppCode</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="42"><del sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="42"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="42">/bs3/AppCode</code></del> - do not create AppCode folders inside the editions!</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="43"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="43">/bs3/*.cshtml</code> - Razor files only, will use the default AppCode</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="44">/bs4/*.cshtml</code> - Razor files only, will use the default AppCode</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="45"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="45">/bs5/*.cshtml</code> - Razor files only, will use the default AppCode</li>
 </ul>
-<h3 id="typical-setup-for-open-heart-surgery-polymorphism">Typical Setup for Open-Heart Surgery Polymorphism</h3>
-<p>Since you want to develop different code in the staging edition, you will typically have this setup:</p>
-<ul>
-<li><del><code>/AppCode</code></del> - do not create a root AppCode, as it won't be used</li>
-<li><code>/staging/AppCode</code> - the staging edition</li>
-<li><code>/staging/*.cshtml</code> - Razor files will use the staging AppCode</li>
-<li><code>/live/AppCode</code> - the live edition</li>
-<li><code>/live/*.cshtml</code> - Razor files will use the live AppCode</li>
+<h3 id="typical-setup-for-open-heart-surgery-polymorphism" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="47">Typical Setup for Open-Heart Surgery Polymorphism</h3>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="49">Since you want to develop different code in the staging edition, you will typically have this setup:</p>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="51">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="51"><del sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="51"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="51">/AppCode</code></del> - do not create a root AppCode, as it won't be used</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="52"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="52">/staging/AppCode</code> - the staging edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="53"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="53">/staging/*.cshtml</code> - Razor files will use the staging AppCode</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="54"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="54">/live/AppCode</code> - the live edition</li>
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="55"><code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="55">/live/*.cshtml</code> - Razor files will use the live AppCode</li>
 </ul>
-<h2 id="generating-data-models-with-editions">Generating Data Models with Editions</h2>
-<p>The <a class="xref" href="../copilot/data-model-generator.html">Copilot Data Generator</a> will generate C# classes for all the content types.
+<h2 id="generating-data-models-with-editions" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="57">Generating Data Models with Editions</h2>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="59">The <a class="xref" href="../copilot/data-model-generator.html" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="59">Copilot Data Generator</a> will generate C# classes for all the content types.
 It can do this for multiple editions, so that each edition has it's own set of classes.
 This is mainly important for staging/live scenarios.</p>
-<p>To set this up, add the <code>editions</code> section to the <code>app.json</code> file.
-We also highly recommend setting one of them to <code>&quot;isDefault&quot;: true</code> so this will be the recommended target.</p>
-<pre><code class="lang-json">{
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="63">To set this up, add the <code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="63">editions</code> section to the <code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="63">app.json</code> file.
+We also highly recommend setting one of them to <code sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="64">&quot;isDefault&quot;: true</code> so this will be the recommended target.</p>
+<pre><code class="lang-json" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="66">{
   &quot;editions&quot;: {
     &quot;staging&quot;: {
       &quot;isDefault&quot;: true,
@@ -171,11 +171,11 @@ We also highly recommend setting one of them to <code>&quot;isDefault&quot;: tru
   }
 }
 </code></pre>
-<p>➡️ <a class="xref" href="../../basics/app/folders-and-files/app-json.html">read more about the app.json file</a></p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
+<p sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="80">➡️ <a class="xref" href="../../basics/app/folders-and-files/app-json.html" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="80">read more about the app.json file</a></p>
+<hr sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="82">
+<h2 id="history" sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="84">History</h2>
+<ul sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="86">
+<li sourcefile="pages/net-code/api-strongly-typed/editions.md" sourcestartlinenumber="86">Introduced in v17.03</li>
 </ul>
 
 </article>

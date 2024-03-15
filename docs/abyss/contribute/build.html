@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,49 +106,49 @@
         </div>
 
         <article data-uid="Abyss.Contribute.Build">
-<h1 id="build--compile-2sxc--eav--js-parts">Build / Compile 2sxc / EAV / JS Parts</h1>
+<h1 id="build--compile-2sxc--eav--js-parts" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="5">Build / Compile 2sxc / EAV / JS Parts</h1>
 
-<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
-<div class="TIP">
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="7"><em sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="7">Important: If you only want to USE 2sxc / EAV, then <strong sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="7">you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
+<div class="TIP" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="9">
 <h5>Tip</h5>
-<p>This is very new documentation and applies to 2sxc 16.06+</p>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="10">This is very new documentation and applies to 2sxc 16.06+</p>
 </div>
-<h2 id="concept">Concept</h2>
-<p>2sxc has a few git repositories, each with their own build process.
+<h2 id="concept" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="12">Concept</h2>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="14">2sxc has a few git repositories, each with their own build process.
 But in general they all follow the same principles:</p>
-<ol>
-<li>When you compile a project, it will first compile the standard way, into the <code>dist</code> (JS) or <code>bin</code> (C#) folder</li>
-<li>The build process (WebPack or MSBuild) will then check the current folder <em>and all parent folders</em> for a file <code>2sxc-build.config.json</code>
+<ol sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="17">
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="17">When you compile a project, it will first compile the standard way, into the <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="17">dist</code> (JS) or <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="17">bin</code> (C#) folder</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="18">The build process (WebPack or MSBuild) will then check the current folder <em sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="18">and all parent folders</em> for a file <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="18">2sxc-build.config.json</code>
 to determine places which it should copy things to...</li>
-<li>If not found, it will use <code>2sxc-build-fallback.config.json</code> which is located in the root of each repository - this is basically empty but should reference these docs.</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="20">If not found, it will use <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="20">2sxc-build-fallback.config.json</code> which is located in the root of each repository - this is basically empty but should reference these docs.</li>
 </ol>
-<h2 id="use-cases">Use Cases</h2>
-<h3 id="use-case-1-build-a-part-and-copy-manually">Use Case 1: Build a Part and Copy Manually</h3>
-<p>Let's assume you just got started and want to try something in partial project.
+<h2 id="use-cases" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="22">Use Cases</h2>
+<h3 id="use-case-1-build-a-part-and-copy-manually" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="24">Use Case 1: Build a Part and Copy Manually</h3>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="26">Let's assume you just got started and want to try something in partial project.
 You can just pull the repo, npm-ci everything and build.</p>
-<p>As a result you'll have the compiled JS in the <code>dist</code> folder and can manually copy it to folder of any DNN/Oqtane as you wish.</p>
-<h3 id="use-case-2-build-a-js-library-and-copy-to-dnnoqtane-automatically">Use Case 2: Build a JS Library and Copy to DNN/Oqtane Automatically</h3>
-<p>In this scenario you would do the same as above, but in addition to that,
-create a <code>2sxc-build.config.json</code> file in the repo folder with the specs.</p>
-<h3 id="use-case-3-build-everything-automatically">Use Case 3: Build Everything Automatically</h3>
-<p>This is the scenario that the 2sxc team uses to build everything automatically.
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="29">As a result you'll have the compiled JS in the <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="29">dist</code> folder and can manually copy it to folder of any DNN/Oqtane as you wish.</p>
+<h3 id="use-case-2-build-a-js-library-and-copy-to-dnnoqtane-automatically" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="31">Use Case 2: Build a JS Library and Copy to DNN/Oqtane Automatically</h3>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="33">In this scenario you would do the same as above, but in addition to that,
+create a <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="34">2sxc-build.config.json</code> file in the repo folder with the specs.</p>
+<h3 id="use-case-3-build-everything-automatically" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="37">Use Case 3: Build Everything Automatically</h3>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="39">This is the scenario that the 2sxc team uses to build everything automatically.
 This is our folder structure:</p>
-<ul>
-<li><code>C:\Projects\2sxc</code> the root folder
-<ul>
-<li><code>C:\Projects\2sxc\2sxc-build.config.json</code> - The config file in our root</li>
-<li><code>c:\Projects\2sxc\2sxc-dnn961.dnndev.me\Website</code> - our main DNN installation for verifying DNN 9.6.1</li>
-<li><code>C:\Projects\2sxc\Oqtane\oqtane.framework\Oqtane.Server</code> - our main Oqtane installation for verifying Oqtane 4.x</li>
-<li><code>C:\Projects\2sxc\2sxc</code> - the main 2sxc C# repo</li>
-<li><code>C:\Projects\2sxc\2sxc-ui</code> - the 2sxc JS repo</li>
-<li><code>C:\Projects\2sxc\eav-server</code> - the eav C# repo</li>
-<li><code>C:\Projects\2sxc\eav-ui</code> - the EAV JS parts repo</li>
-<li><code>C:\Projects\2sxc\InstallPackages</code> the location where the final ZIP and NuGets are created</li>
+<ul sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="42">
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="42"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="42">C:\Projects\2sxc</code> the root folder
+<ul sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="43">
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="43"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="43">C:\Projects\2sxc\2sxc-build.config.json</code> - The config file in our root</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="44"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="44">c:\Projects\2sxc\2sxc-dnn961.dnndev.me\Website</code> - our main DNN installation for verifying DNN 9.6.1</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="45"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="45">C:\Projects\2sxc\Oqtane\oqtane.framework\Oqtane.Server</code> - our main Oqtane installation for verifying Oqtane 4.x</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="46"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="46">C:\Projects\2sxc\2sxc</code> - the main 2sxc C# repo</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="47"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="47">C:\Projects\2sxc\2sxc-ui</code> - the 2sxc JS repo</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="48"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="48">C:\Projects\2sxc\eav-server</code> - the eav C# repo</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="49"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="49">C:\Projects\2sxc\eav-ui</code> - the EAV JS parts repo</li>
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="50"><code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="50">C:\Projects\2sxc\InstallPackages</code> the location where the final ZIP and NuGets are created</li>
 </ul>
 </li>
 </ul>
-<p>And this is the <code>2sxc-build.config.json</code> mentioned above:</p>
-<pre><code class="lang-json">{
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="52">And this is the <code sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="52">2sxc-build.config.json</code> mentioned above:</p>
+<pre><code class="lang-json" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="54">{
   &quot;JsTargets&quot;: [
     &quot;C:/Projects/2sxc/2sxc-dnn/Website/DesktopModules/ToSIC_SexyContent&quot;,
     &quot;C:/Projects/2sxc/Oqtane/oqtane.framework/Oqtane.Server/wwwroot/Modules/ToSic.Sxc.Oqtane&quot;,
@@ -166,12 +166,12 @@ This is our folder structure:</p>
   &quot;OqtaneInstallPackage&quot;: &quot;C:/Projects/2sxc/InstallPackages/OqtaneModule&quot;
 }
 </code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>New in 2023-09 v16.06</li>
+<hr sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="76">
+<h2 id="history" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="78">History</h2>
+<ul sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="80">
+<li sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="80">New in 2023-09 v16.06</li>
 </ul>
-<p>Shortlink: <a href="https://go.2sxc.org/build">https://go.2sxc.org/build</a></p>
+<p sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="82">Shortlink: <a href="https://go.2sxc.org/build" sourcefile="pages/abyss/contribute/build.md" sourcestartlinenumber="82">https://go.2sxc.org/build</a></p>
 
 </article>
 

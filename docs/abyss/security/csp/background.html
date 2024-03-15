@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,112 +108,112 @@
         <article data-uid="Abyss.Security.Csp.Background">
 
 <img src="../../../assets/features/content-security-policy.svg" class="feature">
-<h1 id="content-security-policy-csp-basics">Content Security Policy (CSP) Basics</h1>
-<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
-<p>This page should help you understand what it is and how it works. Here's just a quick example of CSP in action:</p>
+<h1 id="content-security-policy-csp-basics" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="7">Content Security Policy (CSP) Basics</h1>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="9">Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="9">cross-site scripting attacks</a>.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="11">This page should help you understand what it is and how it works. Here's just a quick example of CSP in action:</p>
 <img src="../../../pages/abyss/security/csp/assets/2shine-with-csp-headers.jpg" width="100%" class="full-width">
-<h2 id="the-need-for-csp">The Need for CSP</h2>
-<p>There is always a risk that the visitor will see content which you didn't intend.
+<h2 id="the-need-for-csp" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="16">The Need for CSP</h2>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="18">There is always a risk that the visitor will see content which you didn't intend.
 It could happen because your server was hacked, but there are many other ways to make this happen which are outside of your control.</p>
-<p>This content-insecurity places your visitor at a very high risk of being compromised or redirected.
-Or it's possible that actions are performed <em>as the current user</em> without their consent.
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="21">This content-insecurity places your visitor at a very high risk of being compromised or redirected.
+Or it's possible that actions are performed <em sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="22">as the current user</em> without their consent.
 Here some basic examples:</p>
-<h3 id="example-url-injection-for-xss">Example: URL Injection for XSS</h3>
-<p>Your website has a thank-you page which shows the name from the url like <code>?name=John Doe</code>.
-When you made it, you expected to show <code>Thank you John Doe</code>.
-But smart people figured out, that giving it <code>?name=&lt;script&gt;alert('Hello')&lt;/script&gt;</code> would also work.</p>
-<p>This injection in many flavors BTW: A few years ago even 2sxc had a small loophole which allowed this.
-This looks harmless - what can an <code>alert</code> do?
+<h3 id="example-url-injection-for-xss" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="25">Example: URL Injection for XSS</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="27">Your website has a thank-you page which shows the name from the url like <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="27">?name=John Doe</code>.
+When you made it, you expected to show <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="28">Thank you John Doe</code>.
+But smart people figured out, that giving it <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="29">?name=&lt;script&gt;alert('Hello')&lt;/script&gt;</code> would also work.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="31">This injection in many flavors BTW: A few years ago even 2sxc had a small loophole which allowed this.
+This looks harmless - what can an <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="32">alert</code> do?
 As every hacker will tell you, the alert is just the PoC. Once it works, the rest will follow.</p>
-<h3 id="example-css-attacks">Example: CSS Attacks</h3>
-<p>You thought CSS was harmless, right? Nyet.
+<h3 id="example-css-attacks" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="35">Example: CSS Attacks</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="37">You thought CSS was harmless, right? Nyet.
 If an attacker can manipulate CSS on a page, they can do things like move important links to other locations and make them invisible.
 This way you can trick people into performing actions they are not aware of.</p>
-<h3 id="example-hack-attacks">Example: Hack Attacks</h3>
-<p>Every DNN Website loads a copy of jQuery located in a very specific folder.
+<h3 id="example-hack-attacks" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="41">Example: Hack Attacks</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="43">Every DNN Website loads a copy of jQuery located in a very specific folder.
 A hacker figured out that it is possible to modify this file using a security loophole.
 Now that file also loads additional files from another server.</p>
-<h3 id="example-javascript-inside-an-svg">Example: JavaScript inside an SVG</h3>
-<p>Your editor just replaced an image on the page, without knowing it contains a JavaScript...</p>
-<h3 id="example-javascript-inject-through-cdn">Example: JavaScript inject through CDN</h3>
-<p>Your website may load a script such as the old AngularJS from a CDN.
+<h3 id="example-javascript-inside-an-svg" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="47">Example: JavaScript inside an SVG</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="49">Your editor just replaced an image on the page, without knowing it contains a JavaScript...</p>
+<h3 id="example-javascript-inject-through-cdn" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="51">Example: JavaScript inject through CDN</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="53">Your website may load a script such as the old AngularJS from a CDN.
 In many such cases, tweaking the url or cookie can cause it to load more JavaScripts from other sources.</p>
-<h2 id="what-is-csp">What is CSP?</h2>
-<p>CSP stands for <strong>Content Security Policy</strong> and it sets rules (policies) which are enforced by the browser.</p>
-<p>Think of CSP as invisible instructions (HTTP headers) for your browser.
+<h2 id="what-is-csp" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="57">What is CSP?</h2>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="59">CSP stands for <strong sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="59">Content Security Policy</strong> and it sets rules (policies) which are enforced by the browser.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="61">Think of CSP as invisible instructions (HTTP headers) for your browser.
 All modern browsers understand these instructions.
 Of course it assumes the browser is friendly - because a user being attacked won't try to actively disable it.</p>
-<p>With CSP you can set rules such as:</p>
-<ol>
-<li>Never execute any JavaScript</li>
-<li>Only load CSS files which are from my server</li>
-<li>Only load images and fonts from my server</li>
-<li>Never run <code>on-click</code> javascripts</li>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="65">With CSP you can set rules such as:</p>
+<ol sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="67">
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="67">Never execute any JavaScript</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="68">Only load CSS files which are from my server</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="69">Only load images and fonts from my server</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="70">Never run <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="70">on-click</code> javascripts</li>
 </ol>
-<h2 id="why-does-content-security-policy-use-http-headers">Why does Content-Security-Policy use HTTP Headers?</h2>
-<p>The headers can only be set by the server delivering the content.
+<h2 id="why-does-content-security-policy-use-http-headers" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="72">Why does Content-Security-Policy use HTTP Headers?</h2>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="74">The headers can only be set by the server delivering the content.
 This means it's fairly tamper proof.
 For example, JavaScript cannot modify it.
 This is really important, because this is mostly used when something unexpected compromises your website.</p>
-<p>There are two main headers used by CSP</p>
-<ol>
-<li><code>Content-Security-Policy</code> this will set the rules for the current page/request</li>
-<li><code>Content-Security-Policy-Report-Only</code> this is for development to see what the browser would do with the rules</li>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="79">There are two main headers used by CSP</p>
+<ol sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="81">
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="81"><code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="81">Content-Security-Policy</code> this will set the rules for the current page/request</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="82"><code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="82">Content-Security-Policy-Report-Only</code> this is for development to see what the browser would do with the rules</li>
 </ol>
-<p>Important: You can only use one of these headers at a time.</p>
-<div class="WARNING">
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="84">Important: You can only use one of these headers at a time.</p>
+<div class="WARNING" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="86">
 <h5>Warning</h5>
-<p>Technically the <code>Content-Security-Policy</code> header could also be set using a <code>&lt;meta&gt;</code> tag.
-But not the <code>Content-Security-Policy-Report-Only</code>.</p>
-<p>Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.</p>
-<p>In addition, you could end up with CSP in HTTP headers and meta-tags, which will confuse everybody.</p>
-<p>You will also need the <code>...-Report-Only</code> during setup, which cannot be done using the meta-tag.
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="87">Technically the <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="87">Content-Security-Policy</code> header could also be set using a <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="87">&lt;meta&gt;</code> tag.
+But not the <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="88">Content-Security-Policy-Report-Only</code>.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="90">Many security experts regard the meta-tag as a security risk, so we highly recommended against doing this.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="92">In addition, you could end up with CSP in HTTP headers and meta-tags, which will confuse everybody.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="94">You will also need the <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="94">...-Report-Only</code> during setup, which cannot be done using the meta-tag.
 So for simplicity all the documentations here assume HTTP-headers.</p>
 </div>
-<h2 id="the-four-types-of-whitelisting">The Four Types of Whitelisting</h2>
-<ol>
-<li>You can just allow everything (not a good idea)</li>
-<li>You can explicitly allow certain protocols like <code>https:</code>/<code>data:</code>, domains, files or features like <code>unsafe-eval</code></li>
-<li>You can allow an inline code/style using a <strong>nonce</strong></li>
-<li>You can allow an inline code/style using a <strong>hash</strong></li>
+<h2 id="the-four-types-of-whitelisting" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="97">The Four Types of Whitelisting</h2>
+<ol sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="99">
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="99">You can just allow everything (not a good idea)</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="100">You can explicitly allow certain protocols like <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="100">https:</code>/<code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="100">data:</code>, domains, files or features like <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="100">unsafe-eval</code></li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="101">You can allow an inline code/style using a <strong sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="101">nonce</strong></li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="102">You can allow an inline code/style using a <strong sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="102">hash</strong></li>
 </ol>
-<p>The first two are probably obvious, but the nonce and hash could use some help...</p>
-<h3 id="what-is-a-nonce">What is a Nonce?</h3>
-<p>A <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a> is a random string which is used to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
-<p>It basically works like this:</p>
-<pre><code class="lang-html">&lt;script nonce=&quot;random123&quot;&gt;
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="104">The first two are probably obvious, but the nonce and hash could use some help...</p>
+<h3 id="what-is-a-nonce" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="106">What is a Nonce?</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="108">A <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="108">nonce</a> is a random string which is used to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="108">cross-site scripting attacks</a>.</p>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="110">It basically works like this:</p>
+<pre><code class="lang-html" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="112">&lt;script nonce=&quot;random123&quot;&gt;
   alert('Hello');
 &lt;/script&gt;
 </code></pre>
-<p>Obviously this nonce must change on every single request!
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="118">Obviously this nonce must change on every single request!
 The final piece of the puzzle would be an http header like this:</p>
-<pre><code>Content-Security-Policy: script-src 'nonce-random123'
+<pre><code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="121">Content-Security-Policy: script-src 'nonce-random123'
 </code></pre>
-<h3 id="what-is-a-hash">What is a Hash?</h3>
-<p>Instead of using a <em>nonce</em> you can also write a script and <a href="https://report-uri.com/home/hash">calculate the hash</a> of it.</p>
-<pre><code class="lang-html">&lt;script&gt;
+<h3 id="what-is-a-hash" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="126">What is a Hash?</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="128">Instead of using a <em sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="128">nonce</em> you can also write a script and <a href="https://report-uri.com/home/hash" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="128">calculate the hash</a> of it.</p>
+<pre><code class="lang-html" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="130">&lt;script&gt;
   alert('hello world!');
 &lt;/script&gt;
 </code></pre>
-<p>Now you would mention this hash in the header:</p>
-<pre><code>Content-Security-Policy: script-src 'sha256-VAqTxgfXYRCLFYN1tICr/TFOgCNcl16bsv4r8weidBc='
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="136">Now you would mention this hash in the header:</p>
+<pre><code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="138">Content-Security-Policy: script-src 'sha256-VAqTxgfXYRCLFYN1tICr/TFOgCNcl16bsv4r8weidBc='
 </code></pre>
-<h3 id="warning-nonce-and-hashes-disable-unsafe-inline">Warning: Nonce and Hashes disable unsafe-inline</h3>
-<p>This may come as a surprise but it's important. As soon as you specify a <code>nonce</code> or a <code>hash</code>, you can't use <code>unsafe-inline</code>.
+<h3 id="warning-nonce-and-hashes-disable-unsafe-inline" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="142">Warning: Nonce and Hashes disable unsafe-inline</h3>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="144">This may come as a surprise but it's important. As soon as you specify a <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="144">nonce</code> or a <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="144">hash</code>, you can't use <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="144">unsafe-inline</code>.
 Meaning you can add it, but it will be ignored.
-This is because it's kind of a replacement; older browsers would then process <code>unsafe-inline</code> and newer ones would ignore it.</p>
-<h2 id="next-steps">Next Steps</h2>
-<p>👉🏼 <a class="xref" href="index.html">Learn how to setup CSP in your website</a></p>
-<hr>
-<h2 id="learn-more-about-csp">Learn more About CSP</h2>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Read about CSP on MDN</a></li>
-<li><a href="https://www.w3.org/TR/CSP/">Read about CSP on W3</a></li>
+This is because it's kind of a replacement; older browsers would then process <code sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="146">unsafe-inline</code> and newer ones would ignore it.</p>
+<h2 id="next-steps" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="149">Next Steps</h2>
+<p sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="151">👉🏼 <a class="xref" href="index.html" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="151">Learn how to setup CSP in your website</a></p>
+<hr sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="153">
+<h2 id="learn-more-about-csp" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="155">Learn more About CSP</h2>
+<ol sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="157">
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="157"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="157">Read about CSP on MDN</a></li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="158"><a href="https://www.w3.org/TR/CSP/" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="158">Read about CSP on W3</a></li>
 </ol>
-<h2 id="history">History</h2>
-<ul>
-<li>CSP added in 2sxc 13.10</li>
-<li>These docs added in 2sxc 14.00</li>
+<h2 id="history" sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="160">History</h2>
+<ul sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="162">
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="162">CSP added in 2sxc 13.10</li>
+<li sourcefile="pages/abyss/security/csp/background.md" sourcestartlinenumber="163">These docs added in 2sxc 14.00</li>
 </ul>
 
 </article>

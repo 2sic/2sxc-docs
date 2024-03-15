@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,38 +106,38 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V14.AppZip">
-<h1 id="change-in-app-zip-package-in-v1408">Change in App Zip Package in v14.08</h1>
+<h1 id="change-in-app-zip-package-in-v1408" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="5">Change in App Zip Package in v14.08</h1>
 
-<p>Apps which are <strong>exported to ZIP</strong> place all their data in a file called <code>app.xml</code>.</p>
-<p>We've changed where this file is located to make it identical with the
-<a class="xref" href="change-in-app-data-folder.html">better protected folder used in sync scenarios</a>.</p>
-<h2 id="what-has-changed">What has changed</h2>
-<ol>
-<li>Location of the <code>app.xml</code> file</li>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="7">Apps which are <strong sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="7">exported to ZIP</strong> place all their data in a file called <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="7">app.xml</code>.</p>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="9">We've changed where this file is located to make it identical with the
+<a class="xref" href="change-in-app-data-folder.html" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="10">better protected folder used in sync scenarios</a>.</p>
+<h2 id="what-has-changed" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="12">What has changed</h2>
+<ol sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="14">
+<li sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="14">Location of the <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="14">app.xml</code> file</li>
 </ol>
-<p>In previous versions, this ZIP file was located inside the zip in the folder <code>Apps/[app-name]/app.xml</code>.</p>
-<p>Starting from v14.08 it is located in <code>Apps/[app-name]/2sexy/App_Data/app.xml</code>.</p>
-<p>This is the <em>same</em> location as the one used for app-sync.</p>
-<ol start="2">
-<li>Behavior on Export</li>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="16">In previous versions, this ZIP file was located inside the zip in the folder <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="16">Apps/[app-name]/app.xml</code>.</p>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="18">Starting from v14.08 it is located in <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="18">Apps/[app-name]/2sexy/App_Data/app.xml</code>.</p>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="20">This is the <em sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="20">same</em> location as the one used for app-sync.</p>
+<ol start="2" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="22">
+<li sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="22">Behavior on Export</li>
 </ol>
-<p>Previously export created this file in a temporary location and deleted it afterwards.</p>
-<p>Now the file is directly created in the <code>App_Data</code> folder.
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="24">Previously export created this file in a temporary location and deleted it afterwards.</p>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="26">Now the file is directly created in the <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="26">App_Data</code> folder.
 This makes it easier to export and also git-sync in the same steps.</p>
-<ol start="3">
-<li>Behavior on Import</li>
+<ol start="3" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="29">
+<li sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="29">Behavior on Import</li>
 </ol>
-<p><strong>App-Import</strong> will import <code>app.xml</code> from the old and new path.</p>
-<p>After import, the app folder will have an <code>App_Data</code> containing the imported state.</p>
-<h2 id="breaking-change">Breaking Change</h2>
-<p>This change makes the system more consistent, but also means that exported ZIPs cannot be imported into older versions of 2sxc.</p>
-<h2 id="workaround-if-you-need-to-import-in-an-older-version">Workaround if you Need to Import in an Older Version</h2>
-<p>Please manually modify the zip file.</p>
-<ol>
-<li>Copy file <code>Apps/[app-name]/2sexy/App_Data/app.xml</code> to <code>Apps/[app-name]/app.xml</code>.</li>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="31"><strong sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="31">App-Import</strong> will import <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="31">app.xml</code> from the old and new path.</p>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="33">After import, the app folder will have an <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="33">App_Data</code> containing the imported state.</p>
+<h2 id="breaking-change" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="35">Breaking Change</h2>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="37">This change makes the system more consistent, but also means that exported ZIPs cannot be imported into older versions of 2sxc.</p>
+<h2 id="workaround-if-you-need-to-import-in-an-older-version" sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="39">Workaround if you Need to Import in an Older Version</h2>
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="41">Please manually modify the zip file.</p>
+<ol sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="43">
+<li sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="43">Copy file <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="43">Apps/[app-name]/2sexy/App_Data/app.xml</code> to <code sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="43">Apps/[app-name]/app.xml</code>.</li>
 </ol>
-<hr>
-<p>Changed in v14.08</p>
+<hr sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="45">
+<p sourcefile="pages/abyss/releases/history/v14/change-in-app-zip-package.md" sourcestartlinenumber="47">Changed in v14.08</p>
 
 </article>
 

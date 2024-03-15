@@ -116,7 +116,7 @@ but the major difference is that this new solution is strongly typed and provide
 </div>
 <div class="TIP">
 <h5>Tip</h5>
-<p>This is different from Custom <a class="xref" href="custom-services.html"><strong>Services</strong></a>, which are more complex and have context information such as the <code>Kit</code> object.</p>
+<p>This is different from Custom <a class="xref" href="custom-services.html"><strong>Services</strong></a>, which are more complex and have context information such as the <code>Kit</code> and <code>MyContext</code> objects.</p>
 </div>
 <h2 id="simple-example-with-static-methods">Simple Example with Static Methods</h2>
 <p>Here is an example of such a file in <code>/AppCode/MyHelpers.cs</code>:</p>
@@ -124,19 +124,14 @@ but the major difference is that this new solution is strongly typed and provide
 {
   public class MyHelpers
   {
-    public static string MyHelperMethod(string input)
-    {
-      return &quot;Hello &quot; + input;
-    }
+    public static string MyHelperMethod(string input) =&gt; &quot;Hello &quot; + input;
   }
 }
 </code></pre>
 <p>You can then use this in your Razor files like this:</p>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
 @using AppCode
-@{
-  var result = MyHelpers.MyHelperMethod(&quot;World&quot;);
-}
+@MyHelpers.MyHelperMethod(&quot;World&quot;)
 </code></pre>
 <h2 id="advanced-example-with-class-instances-methods">Advanced Example with Class Instances Methods</h2>
 <p>Here is an example of such a file in <code>/AppCode/MyHelpers.cs</code>:</p>

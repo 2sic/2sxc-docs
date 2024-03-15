@@ -11,7 +11,7 @@ To be SOLID and DRY, you will often want to create custom C# **helpers** in the 
 > but the major difference is that this new solution is strongly typed and provides IntelliSense.
 
 > [!TIP]
-> This is different from Custom [**Services**](xref:NetCode.StronglyTypedCode.CustomServices), which are more complex and have context information such as the `Kit` object.
+> This is different from Custom [**Services**](xref:NetCode.StronglyTypedCode.CustomServices), which are more complex and have context information such as the `Kit` and `MyContext` objects.
 
 ## Simple Example with Static Methods
 
@@ -22,10 +22,7 @@ namespace AppCode
 {
   public class MyHelpers
   {
-    public static string MyHelperMethod(string input)
-    {
-      return "Hello " + input;
-    }
+    public static string MyHelperMethod(string input) => "Hello " + input;
   }
 }
 ```
@@ -35,9 +32,7 @@ You can then use this in your Razor files like this:
 ```razor
 @inherits Custom.Hybrid.RazorTyped
 @using AppCode
-@{
-  var result = MyHelpers.MyHelperMethod("World");
-}
+@MyHelpers.MyHelperMethod("World")
 ```
 
 ## Advanced Example with Class Instances Methods

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,15 +108,15 @@
         <article data-uid="NetCode.DynamicCode.Objects.Link.Image">
 
 <img src="../../../assets/features/image-resizer.svg" class="feature">
-<h1 id="linkimage---method-in-dynamic-code">Link.Image(...) / @Link.Image Method in Dynamic Code</h1>
-<p>Linking images - especially images which should be automatically resized - can be tricky. This is where <code>Link.Image(...)</code> helps.</p>
-<div class="TIP">
+<h1 id="linkimage---method-in-dynamic-code" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="7">Link.Image(...) / @Link.Image Method in Dynamic Code</h1>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="9">Linking images - especially images which should be automatically resized - can be tricky. This is where <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="9">Link.Image(...)</code> helps.</p>
+<div class="TIP" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="11">
 <h5>Tip</h5>
-<p>2sxc 13.10 adds a new <a class="xref" href="../../../basics/images/guide/index.html">ImageService</a> which helps generate the best possible HTML for images.</p>
-<p>Only use the <code>Link.Image(...)</code> where really necessary, because the <code>IImageService</code> is usually the better choice.</p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="12">2sxc 13.10 adds a new <a class="xref" href="../../../basics/images/guide/index.html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="12">ImageService</a> which helps generate the best possible HTML for images.</p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="14">Only use the <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="14">Link.Image(...)</code> where really necessary, because the <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="14">IImageService</code> is usually the better choice.</p>
 </div>
-<h2 id="simple-examples">Simple Examples</h2>
-<pre><code class="lang-html">&lt;!-- simple example --&gt;
+<h2 id="simple-examples" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="17">Simple Examples</h2>
+<pre><code class="lang-html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="19">&lt;!-- simple example --&gt;
 &lt;img src='@Link.Image(Content.MainPicture)'&gt;
 
 &lt;!-- simple example with resize --&gt;
@@ -125,9 +125,9 @@
 &lt;!-- simple example with resize and custom quality --&gt;
 &lt;img src='@Link.Image(url: &quot;test.jpg&quot;, width: 250, height: 700, quality: 75.2)'&gt;
 </code></pre>
-<h2 id="using-preconfigured-image-sizes">Using Preconfigured Image Sizes</h2>
-<p>The <code>Image</code> method can also use predefined image configuration. This uses the new <a class="xref" href="../../../basics/configuration/index.html">Settings System</a>.</p>
-<pre><code class="lang-html">&lt;!-- Resize an image to the default of content --&gt;
+<h2 id="using-preconfigured-image-sizes" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="30">Using Preconfigured Image Sizes</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="32">The <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="32">Image</code> method can also use predefined image configuration. This uses the new <a class="xref" href="../../../basics/configuration/index.html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="32">Settings System</a>.</p>
+<pre><code class="lang-html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="34">&lt;!-- Resize an image to the default of content --&gt;
 &lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content)'&gt;
 
 &lt;!-- Resize an image to the default of lightboxes --&gt;
@@ -139,45 +139,45 @@
 &lt;!-- Resize an image to HALF the size of a default content --&gt;
 &lt;img src='@Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)'&gt;
 </code></pre>
-<div class="TIP">
+<div class="TIP" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="48">
 <h5>Tip</h5>
-<p>This is very powerful and is the recommended way to resize images,
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="49">This is very powerful and is the recommended way to resize images,
 because this way all images follow the same sizes / proportions in all your apps.</p>
 </div>
-<h2 id="parameters">Parameters</h2>
-<p>To promote long term API stability, we require most parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used.
+<h2 id="parameters" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="52">Parameters</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="54">To promote long term API stability, we require most parameters to be <a class="xref" href="../../conventions/named-parameters.html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="54">named</a> when used.
 This allows us to add further parameters later on, and the calls will still work.</p>
-<p>The first three parameters don't need naming, as they will be the most used. They are these in this order:</p>
-<ol>
-<li><code>url</code> - the only required parameter</li>
-<li><code>settings</code> - optional, would be an <a class="xref" href="../../../basics/configuration/settings-system.html">image-settings configuration</a></li>
-<li><code>factor</code> - optional multiplier - eg. 0.5 to be half the size of the preset configuration</li>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="57">The first three parameters don't need naming, as they will be the most used. They are these in this order:</p>
+<ol sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="59">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="59"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="59">url</code> - the only required parameter</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="60"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="60">settings</code> - optional, would be an <a class="xref" href="../../../basics/configuration/settings-system.html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="60">image-settings configuration</a></li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="61"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="61">factor</code> - optional multiplier - eg. 0.5 to be half the size of the preset configuration</li>
 </ol>
-<p>All other parameters need to be named:</p>
-<ul>
-<li><code>width</code> width in pixels</li>
-<li><code>height</code> height in pixels</li>
-<li><code>quality</code> a quality factor between 1 and 100; eg. jpgs usually have 50 - 80</li>
-<li><code>resizeMode</code> which can be <code>max</code>, <code>crop</code>, <code>pad</code> etc.</li>
-<li><code>scaleMode</code> which can be <code>up</code>, <code>down</code> (default) or <code>both</code></li>
-<li><code>format</code> which can be <code>jpg</code>, <code>png</code>, <code>gif</code></li>
-<li><code>aspectRatio</code></li>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="63">All other parameters need to be named:</p>
+<ul sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="65">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="65"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="65">width</code> width in pixels</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="66"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="66">height</code> height in pixels</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="67"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="67">quality</code> a quality factor between 1 and 100; eg. jpgs usually have 50 - 80</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="68"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="68">resizeMode</code> which can be <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="68">max</code>, <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="68">crop</code>, <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="68">pad</code> etc.</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="69"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="69">scaleMode</code> which can be <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="69">up</code>, <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="69">down</code> (default) or <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="69">both</code></li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="70"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="70">format</code> which can be <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="70">jpg</code>, <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="70">png</code>, <code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="70">gif</code></li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="71"><code sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="71">aspectRatio</code></li>
 </ul>
-<p>So this will work:</p>
-<pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, Settings.Images.Content, 0.5)
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="73">So this will work:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="75">@Link.Image(&quot;test.jpg&quot;, Settings.Images.Content, 0.5)
 @Link.Image(url: &quot;test.jpg&quot;, settings: Settings.Images.Content, factor: 0.5)
 @Link.Image(&quot;test.jpg&quot;, width: 200)
 </code></pre>
-<p>...and this won't:</p>
-<pre><code class="lang-c#">@Link.Image(&quot;test.jpg&quot;, 200)
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="81">...and this won't:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="83">@Link.Image(&quot;test.jpg&quot;, 200)
 </code></pre>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>🎓 <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img200/page">Image Resizer Parameters with Link.Image</a></p>
-<p>📔 <a class="xref" href="../../../basics/images/guide/index.html">Images Guide (Best Practices &amp; Code)</a></p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 12.04</li>
-<li>For many cases you should now use the ImageService in 2sxc 13.10+</li>
+<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="88">Demo App and further links</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="90">🎓 <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/img200/page" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="90">Image Resizer Parameters with Link.Image</a></p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="92">📔 <a class="xref" href="../../../basics/images/guide/index.html" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="92">Images Guide (Best Practices &amp; Code)</a></p>
+<h2 id="history" sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="94">History</h2>
+<ol sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="96">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="96">Introduced in 2sxc 12.04</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.image.md" sourcestartlinenumber="97">For many cases you should now use the ImageService in 2sxc 13.10+</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,78 +108,78 @@
         <article data-uid="Basics.Languages.Index">
 
 <img src="../../assets/features/multi-language.svg" class="feature">
-<h1 id="2sxc-languages-overview">2sxc Languages Overview</h1>
-<p>2sxc is exceptionally good at multi-language content.</p>
-<blockquote>
-<p>All content/data is <strong>Multi-Language</strong> by default.</p>
+<h1 id="2sxc-languages-overview" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="7">2sxc Languages Overview</h1>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="9">2sxc is exceptionally good at multi-language content.</p>
+<blockquote sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="11">
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="11">All content/data is <strong sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="11">Multi-Language</strong> by default.</p>
 </blockquote>
-<p>As such, there are different parts that make it work:</p>
-<ol>
-<li>Multi language principles and data model</li>
-<li>Manual Content localization / translation / internationalization (i18n)</li>
-<li><a class="xref" href="auto-translate.html">Automatic Content translation</a> (new in v15)</li>
-<li>Translation Permissions TODO: DOCS</li>
-<li>UI localization</li>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="13">As such, there are different parts that make it work:</p>
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="15">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="15">Multi language principles and data model</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="16">Manual Content localization / translation / internationalization (i18n)</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="17"><a class="xref" href="auto-translate.html" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="17">Automatic Content translation</a> (new in v15)</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="18">Translation Permissions TODO: DOCS</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="19">UI localization</li>
 </ol>
-<h2 id="multi-language-principles">Multi-Language Principles</h2>
-<p>The internal EAV Data Model stores <em>each value</em> with language assignment.
+<h2 id="multi-language-principles" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="21">Multi-Language Principles</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="23">The internal EAV Data Model stores <em sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="23">each value</em> with language assignment.
 Key facts:</p>
-<ol>
-<li>There is always a <strong>primary language</strong> which is set by the platform (DNN/Oqtane).
-<ol>
-<li>The primary language must always be filled first. Other languages cannot be edited without the primary language having content.</li>
-<li>Other languages will inherit the values from the primary language by default.</li>
-<li>Changing the primary language can have suprising side-effects, because it can result in scenarios where the primary language is missing.<br>
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="26">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="26">There is always a <strong sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="26">primary language</strong> which is set by the platform (DNN/Oqtane).
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="27">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="27">The primary language must always be filled first. Other languages cannot be edited without the primary language having content.</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="28">Other languages will inherit the values from the primary language by default.</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="29">Changing the primary language can have suprising side-effects, because it can result in scenarios where the primary language is missing.<br>
 In such scenarios the system will still try the primary language, but if it's empty, will fall back to the first language having any content for a specific field.</li>
 </ol>
 </li>
-<li>Values can be for a single language only, or <strong>shared</strong> across languages
-<ol>
-<li>In read/write shares, any change made in the value will automatically apply to all languages that use this value</li>
-<li>In read-only shares, the value can only be edited in the main language; all other languages just &quot;inherit&quot; the value</li>
-<li>In secondary languages which are not translated, they are not translated and will automatically fall back to the primary language</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="31">Values can be for a single language only, or <strong sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="31">shared</strong> across languages
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="32">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="32">In read/write shares, any change made in the value will automatically apply to all languages that use this value</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="33">In read-only shares, the value can only be edited in the main language; all other languages just &quot;inherit&quot; the value</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="34">In secondary languages which are not translated, they are not translated and will automatically fall back to the primary language</li>
 </ol>
 </li>
 </ol>
-<p>👉🏽 Read more about the <a class="xref" href="../data/multi-language/index.html">Multilanguage Data Model</a></p>
-<h2 id="edit-ui-translation-features">Edit-UI Translation Features</h2>
-<p>The Edit-UI can make a field editable in certain languages and not in others. These are the factors that control it:</p>
-<ol>
-<li>Data is missing in the primary language (then translating it isn't possible yet)</li>
-<li>Some data is not multi-languages so it's either not editable in other languages, or the changes automatically affect all languages. This specifically affects these two cases:</li>
-<li>Related items (which are the same across languages)</li>
-<li>Asset-files (which are the same across languages)</li>
-<li>Field-Configuration disables translation of field (common in url-id-fields)</li>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="36">👉🏽 Read more about the <a class="xref" href="../data/multi-language/index.html" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="36">Multilanguage Data Model</a></p>
+<h2 id="edit-ui-translation-features" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="38">Edit-UI Translation Features</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="40">The Edit-UI can make a field editable in certain languages and not in others. These are the factors that control it:</p>
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="42">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="42">Data is missing in the primary language (then translating it isn't possible yet)</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="43">Some data is not multi-languages so it's either not editable in other languages, or the changes automatically affect all languages. This specifically affects these two cases:</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="44">Related items (which are the same across languages)</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="45">Asset-files (which are the same across languages)</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="46">Field-Configuration disables translation of field (common in url-id-fields)</li>
 </ol>
-<h2 id="export-import-of-multi-language-content">Export-Import of Multi-Language Content</h2>
-<p>This is documented in <a class="xref" href="../data/export-import/index.html">Data Export / Import</a>.</p>
-<h2 id="manual-content-translation">Manual Content Translation</h2>
-<p>Editors can always unlock any field (or all fields) to manually translate them.
-In that case it will copy the original value from the <em>primary language</em>.</p>
-<p>Users can also link languages together.
-This is ideal in scenarios where multiple <em>secondary</em> languages are closely related, such as <code>de-DE</code> and <code>de-CH</code>.</p>
-<p>TODO: SCREENSHOTS?</p>
-<h2 id="automatic-content-translation">Automatic Content Translation</h2>
-<p>This is a new feature in 2sxc v15 and available to Patrons (people who wish to support the development of 2sxc).</p>
-<p>👉🏽 Read more about <a class="xref" href="auto-translate.html">Automatic Translation</a></p>
-<h2 id="translation-permissions">Translation Permissions</h2>
-<p>TODO:</p>
-<h2 id="ui-localization">UI Localization</h2>
-<p>The Edit-UI is localized at two levels:</p>
-<ol>
-<li>Custom Inputs, Help-Texts etc.</li>
-<li>System labels (like <code>Save</code> buttons)</li>
+<h2 id="export-import-of-multi-language-content" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="49">Export-Import of Multi-Language Content</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="51">This is documented in <a class="xref" href="../data/export-import/index.html" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="51">Data Export / Import</a>.</p>
+<h2 id="manual-content-translation" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="53">Manual Content Translation</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="55">Editors can always unlock any field (or all fields) to manually translate them.
+In that case it will copy the original value from the <em sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="56">primary language</em>.</p>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="58">Users can also link languages together.
+This is ideal in scenarios where multiple <em sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="59">secondary</em> languages are closely related, such as <code sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="59">de-DE</code> and <code sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="59">de-CH</code>.</p>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="61">TODO: SCREENSHOTS?</p>
+<h2 id="automatic-content-translation" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="63">Automatic Content Translation</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="65">This is a new feature in 2sxc v15 and available to Patrons (people who wish to support the development of 2sxc).</p>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="67">👉🏽 Read more about <a class="xref" href="auto-translate.html" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="67">Automatic Translation</a></p>
+<h2 id="translation-permissions" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="70">Translation Permissions</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="72">TODO:</p>
+<h2 id="ui-localization" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="75">UI Localization</h2>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="77">The Edit-UI is localized at two levels:</p>
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="79">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="79">Custom Inputs, Help-Texts etc.</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="80">System labels (like <code sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="80">Save</code> buttons)</li>
 </ol>
-<p>The Admin UI is not localized, it's English only.</p>
-<p>TODO:</p>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 2 ca. 2012</li>
-<li>...</li>
-<li>Auto-Translate Content added in v15</li>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="82">The Admin UI is not localized, it's English only.</p>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="84">TODO:</p>
+<hr sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="88">
+<h2 id="history" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="90">History</h2>
+<ol sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="92">
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="92">Introduced in 2sxc 2 ca. 2012</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="93">...</li>
+<li sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="94">Auto-Translate Content added in v15</li>
 </ol>
-<p>Shortlink: <a href="https://go.2sxc.org/translate">https://go.2sxc.org/translate</a></p>
+<p sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="96">Shortlink: <a href="https://go.2sxc.org/translate" sourcefile="pages/basics/languages/index.md" sourcestartlinenumber="96">https://go.2sxc.org/translate</a></p>
 
 </article>
 

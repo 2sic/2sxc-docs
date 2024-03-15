@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -110,7 +110,7 @@
 <div style="width: 40px; height: 40px; overflow: hidden; float: right">
 [<img src="../../../assets/features/look-up-system.svg" height="40px" class="for-link" style="object-fit: cover; object-position: left;">](xref:Abyss.Parts.LookUp.Index)
 </div>
-<h1 id="lookup-engine">LookUp Engine</h1>
+<h1 id="lookup-engine" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="7">LookUp Engine</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -206,49 +206,49 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .lookup-engine { visibility: visible; } </style>
-<p>The <strong>LookUp Engine</strong> is responsible for getting values. It will use <strong>LookUp</strong> sources to resolve the values.</p>
-<ul>
-<li>The LookUp System is in the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a> namespace</li>
-<li>The LookUp Engine is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a></li>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="12">The <strong sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="12">LookUp Engine</strong> is responsible for getting values. It will use <strong sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="12">LookUp</strong> sources to resolve the values.</p>
+<ul sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="14">
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="14">The LookUp System is in the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="14">ToSic.Eav.LookUp</a> namespace</li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="15">The LookUp Engine is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="15">ILookUpEngine</a></li>
 </ul>
-<div class="WARNING">
+<div class="WARNING" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="17">
 <h5>Warning</h5>
-<p>This is very technical stuff, you usually don't need to know this. We're just including it for completeness sake.</p>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="18">This is very technical stuff, you usually don't need to know this. We're just including it for completeness sake.</p>
 </div>
-<h2 id="lookupengine">LookUpEngine</h2>
-<p>LookUp Engines will collect a set of LookUp objects and use these to resolve strings like <code>Module:ModuleId</code>. For this, they will check which LookUp has the right name (in this case <code>Module</code>) and will ask it if it can provide the value (in this case the <code>ModuleId</code>).</p>
-<h2 id="notes">Notes</h2>
-<p>Usually LookUp Engines will receive a long list (Dictionary) of things to look up, and resolve these in one quick call. This is because often they are attached to a DataSource which requires many configuration values - so they will prepare the list of parameters, pass it to the LookUpEngine and then work with the results as needed.</p>
-<div class="TIP">
+<h2 id="lookupengine" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="20">LookUpEngine</h2>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="22">LookUp Engines will collect a set of LookUp objects and use these to resolve strings like <code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="22">Module:ModuleId</code>. For this, they will check which LookUp has the right name (in this case <code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="22">Module</code>) and will ask it if it can provide the value (in this case the <code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="22">ModuleId</code>).</p>
+<h2 id="notes" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="24">Notes</h2>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="26">Usually LookUp Engines will receive a long list (Dictionary) of things to look up, and resolve these in one quick call. This is because often they are attached to a DataSource which requires many configuration values - so they will prepare the list of parameters, pass it to the LookUpEngine and then work with the results as needed.</p>
+<div class="TIP" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="28">
 <h5>Tip</h5>
-<p>LookUp Engines can also perform default-fallbacks - so if a LookUp source can't provide the answer needed, the engine may use a static value instead:
-<code>[QueryString:PageSize||10]</code></p>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="29">LookUp Engines can also perform default-fallbacks - so if a LookUp source can't provide the answer needed, the engine may use a static value instead:
+<code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="30">[QueryString:PageSize||10]</code></p>
 </div>
-<div class="TIP">
+<div class="TIP" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="32">
 <h5>Tip</h5>
-<p>LookUp Engines can also perform lookup-fallbacks if the source can't provide an answer. In this case it may ask another LookUp if it has the answer. This happens when the Token looks like this:<br>
-<code>[QueryString:PageSize||[App:Settings:PageSize]]</code></p>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="33">LookUp Engines can also perform lookup-fallbacks if the source can't provide an answer. In this case it may ask another LookUp if it has the answer. This happens when the Token looks like this:<br>
+<code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="34">[QueryString:PageSize||[App:Settings:PageSize]]</code></p>
 </div>
-<h2 id="c-and-dependency-injection">C# and Dependency Injection</h2>
-<p>LookUp Engines all implement the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html">ILookUpEngine</a> interface and should inherit the <code>LookUpEngine</code> object.</p>
-<p>LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngineResolver.html">ILookUpEngineResolver</a>.</p>
-<h2 id="also-read-todoc">Also Read #todoc</h2>
-<ul>
-<li><a class="xref" href="index.html">LookUp System</a></li>
-<li><a class="xref" href="tokens.html">LookUp Tokens Explained</a></li>
-<li><a class="xref" href="../../../net-code/data-sources/custom/pre-v15/configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Sxc.LookUp.html">ToSic.Sxc.LookUp</a></li>
-<li><a href="xref:ToSic.Sxc.Dnn.LookUp"></a></li>
+<h2 id="c-and-dependency-injection" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="37">C# and Dependency Injection</h2>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="39">LookUp Engines all implement the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngine.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="39">ILookUpEngine</a> interface and should inherit the <code sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="39">LookUpEngine</code> object.</p>
+<p sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="41">LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUpEngineResolver.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="41">ILookUpEngineResolver</a>.</p>
+<h2 id="also-read-todoc" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="45">Also Read #todoc</h2>
+<ul sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="47">
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="47"><a class="xref" href="index.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="47">LookUp System</a></li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="48"><a class="xref" href="tokens.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="48">LookUp Tokens Explained</a></li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="49"><a class="xref" href="../../../net-code/data-sources/custom/pre-v15/configuration-parse.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="49">DataSource Configuration: Configuration.Parse()</a></li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="50"><a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="50">ToSic.Eav.LookUp</a></li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="51"><a class="xref" href="../../../api/dot-net/ToSic.Sxc.LookUp.html" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="51">ToSic.Sxc.LookUp</a></li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="52"><a href="xref:ToSic.Sxc.Dnn.LookUp" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="52"></a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>General Tokens introduced in 2sxc 1.0</li>
-<li>Most enhancements were in 2sxc 07.00</li>
+<h2 id="history" sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="55">History</h2>
+<ol sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="57">
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="57">General Tokens introduced in 2sxc 1.0</li>
+<li sourcefile="pages/abyss/parts/look-up/engine.md" sourcestartlinenumber="58">Most enhancements were in 2sxc 07.00</li>
 </ol>
 
 </article>

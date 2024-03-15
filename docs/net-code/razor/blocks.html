@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,55 +106,55 @@
         </div>
 
         <article data-uid="NetCode.Razor.Blocks">
-<h1 id="razor-rendering-content-blocks">Razor: Rendering Content-Blocks</h1>
+<h1 id="razor-rendering-content-blocks" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="5">Razor: Rendering Content-Blocks</h1>
 
-<p>When using <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor.</p>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="7">When using <a class="xref" href="../../basics/cms/inner-content/index.html" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="7">Inner Content</a> the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<h2 id="how-to-use">How to use</h2>
-<p>There are two common use cases</p>
-<ol>
-<li>Virtual Panes at item level - in this case, the item has it's own pane for placing apps and content-blocks</li>
-<li>Very Rich Text - where you add content-blocks and apps in the WYSIWYG</li>
+<h2 id="how-to-use" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="12">How to use</h2>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="14">There are two common use cases</p>
+<ol sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="16">
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="16">Virtual Panes at item level - in this case, the item has it's own pane for placing apps and content-blocks</li>
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="17">Very Rich Text - where you add content-blocks and apps in the WYSIWYG</li>
 </ol>
-<h2 id="item-level-virtual-panes">Item-Level Virtual Panes</h2>
-<p>Here's a quick example which renders an area with all content-blocks:</p>
-<pre><code class="lang-razor">@ToSic.Sxc.Block.Render.All(Content, field: &quot;InnerContent&quot;)
+<h2 id="item-level-virtual-panes" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="19">Item-Level Virtual Panes</h2>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="20">Here's a quick example which renders an area with all content-blocks:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="22">@ToSic.Sxc.Block.Render.All(Content, field: &quot;InnerContent&quot;)
 </code></pre>
-<p>This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area.</p>
-<p>Here's a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes:</p>
-<pre><code class="lang-html">&lt;div class=&quot;some-class sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="26">This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area.</p>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="28">Here's a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes:</p>
+<pre><code class="lang-html" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="30">&lt;div class=&quot;some-class sc-content-block-list&quot; @Edit.ContextAttributes(post, field: &quot;DesignedContent&quot;)&gt;
     @foreach(var cb in @post.DesignedContent) {
         @cb.Render();
     }
 &lt;/div&gt;
 </code></pre>
-<p>If you care about doing it manually, read more about the <a class="xref" href="edit.html">Edit object</a>.</p>
-<h2 id="very-rich-text--inner-content">Very Rich Text / Inner-Content</h2>
-<p>Here's an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps.</p>
-<pre><code class="lang-razor">@ToSic.Sxc.Blocks.Render.All(post, field: &quot;WysiwygContent&quot;, merge: post.Body)
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="37">If you care about doing it manually, read more about the <a class="xref" href="edit.html" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="37">Edit object</a>.</p>
+<h2 id="very-rich-text--inner-content" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="39">Very Rich Text / Inner-Content</h2>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="41">Here's an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps.</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="43">@ToSic.Sxc.Blocks.Render.All(post, field: &quot;WysiwygContent&quot;, merge: post.Body)
 </code></pre>
-<p>There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
-<p>Here is a <a href="http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc">blog tutorial on implementing Very Rich Text</a>.</p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li>Read more on <a class="xref" href="edit.contextattributes.html">Razor Edit.ContextAttributes</a></li>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="47">There is a new parameter merge, where you fill in your WYSIWYG-field that contains the content-block(s).</p>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="49">Here is a <a href="http://2sxc.org/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="49">blog tutorial on implementing Very Rich Text</a>.</p>
+<h2 id="read-also" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="52">Read also</h2>
+<ul sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="54">
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="54">Read more on <a class="xref" href="edit.contextattributes.html" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="54">Razor Edit.ContextAttributes</a></li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
+<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="56">Demo App and further links</h2>
+<p sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="58">You should find some code examples in this demo App</p>
+<ul sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="60">
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="60"><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="60">Blog App</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.4</li>
-<li>Clean API and merge capabilitien in 8.9</li>
+<h2 id="history" sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="62">History</h2>
+<ol sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="64">
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="64">Introduced in 2sxc 8.4</li>
+<li sourcefile="pages/net-code/razor/blocks.md" sourcestartlinenumber="65">Clean API and merge capabilitien in 8.9</li>
 </ol>
 
 </article>

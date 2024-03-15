@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,71 +106,71 @@
         </div>
 
         <article data-uid="NetCode.Data.Linq.Guide">
-<h1 id="guide-to-working-with-linq-and-2sxceav-data">Guide to Working with LINQ and 2sxc/EAV Data</h1>
+<h1 id="guide-to-working-with-linq-and-2sxceav-data" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="4">Guide to Working with LINQ and 2sxc/EAV Data</h1>
 
-<p>In many cases you will want to sort, filter or group some data, or quickly check if any data was found. When using Razor or working in WebApi, this is best done with LINQ. This guide will assist you to get everything working.</p>
-<p>For a more API-oriented documentation, see <a class="xref" href="linq-dynamic.html">DotNet Query LINQ</a>.
-We also recommend to play around with the <a href="https://2sxc.org/en/apps/app/razor-tutorial">Razor Tutorial App</a></p>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="6">In many cases you will want to sort, filter or group some data, or quickly check if any data was found. When using Razor or working in WebApi, this is best done with LINQ. This guide will assist you to get everything working.</p>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="8">For a more API-oriented documentation, see <a class="xref" href="linq-dynamic.html" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="8">DotNet Query LINQ</a>.
+We also recommend to play around with the <a href="https://2sxc.org/en/apps/app/razor-tutorial" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="9">Razor Tutorial App</a></p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<h2 id="linq-basics">LINQ Basics</h2>
-<p>The way LINQ works is that the namespace <code>System.Linq</code> contains a bunch of <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods">extension methods</a> like <code>.Count()</code>, <code>.Where(...)</code> and more. So to use LINQ you need to add a <code>@using</code> statement to razor or just <code>using</code> in a WebApi class. Here's a simple razor example:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<h2 id="linq-basics" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="14">LINQ Basics</h2>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">The way LINQ works is that the namespace <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">System.Linq</code> contains a bunch of <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">extension methods</a> like <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">.Count()</code>, <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">.Where(...)</code> and more. So to use LINQ you need to add a <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">@using</code> statement to razor or just <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="16">using</code> in a WebApi class. Here's a simple razor example:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="18">@using System.Linq;
 @{
 var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
     .OrderByDescending(b =&gt; b.PublicationDate)
     .Take(3);
 }
 </code></pre>
-<p>This demonstrates:</p>
-<ol>
-<li>adding the <code>using</code> statement</li>
-<li>getting all the <em>BlogPost</em> items using <code>App.Data[&quot;BlogPost&quot;]</code></li>
-<li>converting it to a list of <code>dynamic</code> objects which will allow the nice syntax using <code>AsList(...)</code></li>
-<li>sorting these with newest on top using <code>.OrderByDescending(...)</code> on the property <em>PublicationDate</em></li>
-<li>keeping only the first 3 using <code>.Take(3)</code></li>
-<li>it also shows how placing the parts on separate lines makes the code easier to read</li>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="27">This demonstrates:</p>
+<ol sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="29">
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="29">adding the <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="29">using</code> statement</li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="30">getting all the <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="30">BlogPost</em> items using <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="30">App.Data[&quot;BlogPost&quot;]</code></li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="31">converting it to a list of <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="31">dynamic</code> objects which will allow the nice syntax using <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="31">AsList(...)</code></li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="32">sorting these with newest on top using <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="32">.OrderByDescending(...)</code> on the property <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="32">PublicationDate</em></li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="33">keeping only the first 3 using <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="33">.Take(3)</code></li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="34">it also shows how placing the parts on separate lines makes the code easier to read</li>
 </ol>
-<h2 id="important-working-with-linq-and-dynamic-objects">Important: Working with LINQ and dynamic objects</h2>
-<h3 id="linq-needs-ienumerable">LINQ needs IEnumerable&lt;...&gt;</h3>
-<p>Before we continue, it's important that you really understand that LINQ commands are stored as <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods">extension methods</a> of <code>IEnumerable&lt;T&gt;</code>. So this works:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<h2 id="important-working-with-linq-and-dynamic-objects" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="36">Important: Working with LINQ and dynamic objects</h2>
+<h3 id="linq-needs-ienumerable" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="38">LINQ needs IEnumerable&lt;...&gt;</h3>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="40">Before we continue, it's important that you really understand that LINQ commands are stored as <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="40">extension methods</a> of <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="40">IEnumerable&lt;T&gt;</code>. So this works:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="42">@using System.Linq;
 @{
   var list = new List&lt;string&gt; { &quot;word&quot;, &quot;word&quot; };
   var x = list.First();
 }
 </code></pre>
-<p>...whereas this does not:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="50">...whereas this does not:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="52">@using System.Linq;
 @{
   var y = 27.First();
 }
 </code></pre>
-<p>This sounds obvious, but there's an important catch: if the compiler doesn't know that something is an <code>IEnumerable</code>, it will not even try to use the LINQ extension methods, because it doesn't know that it can. So let's look at that...</p>
-<h3 id="linqs-problems-with-dynamic-objects-1">LINQs Problems with dynamic objects #1</h3>
-<p>Here's an example that would fail:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="59">This sounds obvious, but there's an important catch: if the compiler doesn't know that something is an <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="59">IEnumerable</code>, it will not even try to use the LINQ extension methods, because it doesn't know that it can. So let's look at that...</p>
+<h3 id="linqs-problems-with-dynamic-objects-1" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="61">LINQs Problems with dynamic objects #1</h3>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="63">Here's an example that would fail:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="65">@using System.Linq;
 @{
   dynamic list = new List&lt;string&gt; { &quot;word&quot;, &quot;word&quot; };
   var x = list.First();
 }
 </code></pre>
-<p>The only difference to before is that <em>list</em> ist now <code>dynamic</code>. It contains the same object, but the compiler doesn't treat it that way. In Razor, we use <code>dynamic</code> objects all the time, where we run into this problem. Here's an example which fails:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="73">The only difference to before is that <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="73">list</em> ist now <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="73">dynamic</code>. It contains the same object, but the compiler doesn't treat it that way. In Razor, we use <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="73">dynamic</code> objects all the time, where we run into this problem. Here's an example which fails:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="75">@using System.Linq;
 @{
   var books = AsList(App.Data[&quot;Books&quot;]);
   var booksWithoutAuthors = books
     .Where(b =&gt; !b.Authors.Any());
 }
 </code></pre>
-<p>Internally the <em>b.Authors</em> returns a list of authors, but the compiler doesn't know this, since it's treated as a <code>dynamic</code> object. You would get an error. To solve this, we must tell the compiler that <em>b.Authors</em> is an IEnumerable, like this:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="84">Internally the <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="84">b.Authors</em> returns a list of authors, but the compiler doesn't know this, since it's treated as a <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="84">dynamic</code> object. You would get an error. To solve this, we must tell the compiler that <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="84">b.Authors</em> is an IEnumerable, like this:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="86">@using System.Linq;
 @using System.Collections.Generic;
 @{
   var books = AsList(App.Data[&quot;Books&quot;]);
@@ -178,8 +178,8 @@ var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
     .Where(b =&gt; !(b.Authors as IEnumerable&lt;dynamic&gt;).Any());
 }
 </code></pre>
-<p>But let's be honest - it's ugly, long and prone to typos. Especially in a complex query where you could have many of these. So we recommend to define a shorthand for it, like this:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="96">But let's be honest - it's ugly, long and prone to typos. Especially in a complex query where you could have many of these. So we recommend to define a shorthand for it, like this:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="98">@using System.Linq;
 @using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 @{
   var books = AsList(App.Data[&quot;Books&quot;]);
@@ -187,9 +187,9 @@ var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
     .Where(b =&gt; !(b.Authors as Dynlist).Any());
 }
 </code></pre>
-<h3 id="linqs-problem-with-dynamic-objects-2">LINQs problem with dynamic objects #2</h3>
-<p>LINQ methods often have multiple signatures. This means the same command can be written in different ways and with different parameters. To detect the right method, the compiler needs to know the data-types used in the parameters. This causes problem with <code>dynamic</code> objects because the compiler doesn't know what it is until runtime. Check this out:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<h3 id="linqs-problem-with-dynamic-objects-2" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="108">LINQs problem with dynamic objects #2</h3>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="110">LINQ methods often have multiple signatures. This means the same command can be written in different ways and with different parameters. To detect the right method, the compiler needs to know the data-types used in the parameters. This causes problem with <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="110">dynamic</code> objects because the compiler doesn't know what it is until runtime. Check this out:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="112">@using System.Linq;
 @{
   var dogString = &quot;dog&quot;
   dynamic dogDyn = &quot;dog&quot;;
@@ -198,16 +198,16 @@ var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
   var x = list.Contains(dogDyn);    // this fails
 }
 </code></pre>
-<p>To fix this, we must tell the compiler it's an object:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="123">To fix this, we must tell the compiler it's an object:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="125">@using System.Linq;
 @{
   dynamic dynDog = &quot;dog&quot;;
   var list = new List&lt;string&gt; { &quot;dog&quot;, &quot;cat&quot;, &quot;hound&quot; };
   var x = list.Contains(dynDog as object);
 }
 </code></pre>
-<p>The above example is a bit trivial but here's a real life example, taken from the <a href="https://2sxc.org/en/apps/app/razor-tutorial">2sxc razor tutorial</a>:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="134">The above example is a bit trivial but here's a real life example, taken from the <a href="https://2sxc.org/en/apps/app/razor-tutorial" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="134">2sxc razor tutorial</a>:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="136">@using System.Linq;
 @using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 @{
   var persons = AsList(App.Data[&quot;Persons&quot;]);
@@ -223,9 +223,9 @@ var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
     );
 }
 </code></pre>
-<h3 id="linqs-problem-with-dynamic-object-3">LINQs problem with dynamic object #3</h3>
-<p>The last bit has to do with how <code>dynamic</code> objects are built, since they are usually wrapper-objects to help write nicer template code. As wrappers, they are different objects every time. This shows the problem:</p>
-<pre><code class="lang-razor">@using System.Linq;
+<h3 id="linqs-problem-with-dynamic-object-3" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="154">LINQs problem with dynamic object #3</h3>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="156">The last bit has to do with how <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="156">dynamic</code> objects are built, since they are usually wrapper-objects to help write nicer template code. As wrappers, they are different objects every time. This shows the problem:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="158">@using System.Linq;
 @using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 @{
   // this is just the data object, &quot;@bookData.Author&quot; wouldn't work
@@ -240,26 +240,26 @@ var newestPosts = AsList(App.Data[&quot;BlogPost&quot;])
   var dynIsSame = bookDyn1 == bookDyn2; // false before 2sxc 9.42
 }
 </code></pre>
-<p>This doesn't sound like a big deal, but it is. Look at this code from the example above:</p>
-<pre><code class="lang-razor">  var otherBooks = books
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="175">This doesn't sound like a big deal, but it is. Look at this code from the example above:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="177">  var otherBooks = books
     .Where(b =&gt; !(booksWithAwardedAuthors as Dynlist)
       .Contains(b as object)
     );
 </code></pre>
-<p>The <code>.Contains(...)</code> clause receives a variable <code>b</code> which is actually the dynamic wrapper, and will <em>not</em> be the same as the dynamic wrapper of dynamic wrappers given in <code>booksWithAwardedAuthors</code>. So contains would always say &quot;nope, didn't find it&quot;.</p>
-<p>Solving the comparison / equality problem requires the underlying wrapper object to tell the .net framework, that <code>==</code>, <code>!=</code> and a few internal methods must work differently. 2sxc 9.42 does this, so the above code would actually work in 2sxc 9.42, but not in previous versions. If another system gives you <code>dynamic</code> objects, you will probably have to write it like this:</p>
-<pre><code class="lang-razor">  // this example is for non-2sxc objects or 2sxc before 9.42
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="184">The <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="184">.Contains(...)</code> clause receives a variable <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="184">b</code> which is actually the dynamic wrapper, and will <em sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="184">not</em> be the same as the dynamic wrapper of dynamic wrappers given in <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="184">booksWithAwardedAuthors</code>. So contains would always say &quot;nope, didn't find it&quot;.</p>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="186">Solving the comparison / equality problem requires the underlying wrapper object to tell the .net framework, that <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="186">==</code>, <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="186">!=</code> and a few internal methods must work differently. 2sxc 9.42 does this, so the above code would actually work in 2sxc 9.42, but not in previous versions. If another system gives you <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="186">dynamic</code> objects, you will probably have to write it like this:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="188">  // this example is for non-2sxc objects or 2sxc before 9.42
   var otherBooks = books
     .Where(b =&gt; !(booksWithAwardedAuthors as Dynlist)
       .Contains(bookWithAward =&gt; bookWithAward != null &amp;&amp; bookWithAward.SomeProperty == b.SomeProperty)
     );
 </code></pre>
-<h3 id="linqs-problem-with-boolean-null-objects">LINQs problem with boolean null-objects</h3>
-<p>In many cases, dynamic objects could have a property like <code>Show</code> which could be a boolean, but it could also be <code>null</code>. So this could cause an error:</p>
-<pre><code class="lang-razor">var show = links.Where(x =&gt; x.Show);
+<h3 id="linqs-problem-with-boolean-null-objects" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="196">LINQs problem with boolean null-objects</h3>
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="198">In many cases, dynamic objects could have a property like <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="198">Show</code> which could be a boolean, but it could also be <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="198">null</code>. So this could cause an error:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="200">var show = links.Where(x =&gt; x.Show);
 </code></pre>
-<p>To fix this, the easiest way is to really compare it with <code>true</code> or <code>false</code> as you want, each way will result in treating the <code>null</code> as the opposite (so you decide if null should be yes or no):</p>
-<pre><code class="lang-razor">@using System.Linq;
+<p sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="204">To fix this, the easiest way is to really compare it with <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="204">true</code> or <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="204">false</code> as you want, each way will result in treating the <code sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="204">null</code> as the opposite (so you decide if null should be yes or no):</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="206">@using System.Linq;
 @using Dynlist = System.Collections.Generic.IEnumerable&lt;dynamic&gt;;
 Dynlist list;
 list = links.Where(x =&gt; x.Show == true);  // take true, skip false &amp; null
@@ -268,14 +268,14 @@ list = links.Where(x =&gt; x.Show == false); // take false, skip true &amp; null
 list = links.Where(x =&gt; x.Show != false); // take true &amp; null, skip false
 list = links.Where(x =&gt; x.Show == null);  // take null, skip true &amp; false
 </code></pre>
-<h2 id="read-also-demo-app-and-further-links">Read also, Demo App and further links</h2>
-<ol>
-<li><a class="xref" href="linq-dynamic.html">LINQ API Docs</a></li>
-<li><a href="https://2sxc.org/en/apps/app/razor-tutorial">Razor Tutorial App showing all kinds of Queries</a></li>
+<h2 id="read-also-demo-app-and-further-links" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="218">Read also, Demo App and further links</h2>
+<ol sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="220">
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="220"><a class="xref" href="linq-dynamic.html" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="220">LINQ API Docs</a></li>
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="221"><a href="https://2sxc.org/en/apps/app/razor-tutorial" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="221">Razor Tutorial App showing all kinds of Queries</a></li>
 </ol>
-<h2 id="history">History</h2>
-<ol>
-<li>Guide created 2019-03</li>
+<h2 id="history" sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="223">History</h2>
+<ol sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="225">
+<li sourcefile="pages/net-code/data/linq/linq-guide.md" sourcestartlinenumber="225">Guide created 2019-03</li>
 </ol>
 
 </article>

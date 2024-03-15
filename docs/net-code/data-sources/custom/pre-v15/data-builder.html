@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -107,27 +107,27 @@
 
         <article data-uid="NetCode.DataSources.Custom.DataBuilder">
 
-<div class="WARNING">
+<div class="WARNING" sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="1">
 <h5>Warning</h5>
-<p>These documentations are for versions before 15.x.
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="2">These documentations are for versions before 15.x.
 They don't apply to v15+ but are kept for reference.
 We highly recommend that you don't use them.</p>
 </div>
 
-<div class="IMPORTANT">
+<div class="IMPORTANT" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="7">
 <h5>Important</h5>
-<p>Before v15, the DataBuilder was used in custom DataSources to create entities.
-In v15+ you should use the <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Services.IDataSourcesService.html">IDataFactory</a> instead.</p>
-<p>The following docs are out of date and will be upgraded soon.</p>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="8">Before v15, the DataBuilder was used in custom DataSources to create entities.
+In v15+ you should use the <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Services.IDataSourcesService.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="9">IDataFactory</a> instead.</p>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="11">The following docs are out of date and will be upgraded soon.</p>
 </div>
-<h1 id="datasource-api-databuilderentity">DataSource API: DataBuilder.Entity(...)</h1>
-<p>Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code>DataBuilder.Entity(...)</code> helps.</p>
-<p>Just fyi: Here are the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entity*">API docs</a>. There is also an <code>Entities</code> for multiple Entities.</p>
-<h2 id="how-the-databuilder-is-added">How the DataBuilder is added</h2>
-<p>The DataBuilder is a <a href="xref:ToSic.Eav.Data.IDataBuilder">IDataBuilder</a> which is automatically given as a property <code>DataBuilder</code>. The DataSource-Factory creates it.</p>
-<h2 id="how-to-use-databuilderentity">How to use DataBuilder.Entity(...)</h2>
-<p>Here's a simple example of the tutorial <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/">DateTime DataSource</a>:</p>
-<pre><code class="lang-cs">const string DateFieldName = &quot;Date&quot;;
+<h1 id="datasource-api-databuilderentity" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="13">DataSource API: DataBuilder.Entity(...)</h1>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="15">Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="15">DataBuilder.Entity(...)</code> helps.</p>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="17">Just fyi: Here are the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entity*" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="17">API docs</a>. There is also an <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="17">Entities</code> for multiple Entities.</p>
+<h2 id="how-the-databuilder-is-added" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="19">How the DataBuilder is added</h2>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="21">The DataBuilder is a <a href="xref:ToSic.Eav.Data.IDataBuilder" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="21">IDataBuilder</a> which is automatically given as a property <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="21">DataBuilder</code>. The DataSource-Factory creates it.</p>
+<h2 id="how-to-use-databuilderentity" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="23">How to use DataBuilder.Entity(...)</h2>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="25">Here's a simple example of the tutorial <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource/" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="25">DateTime DataSource</a>:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="27">const string DateFieldName = &quot;Date&quot;;
 var date = DateTime.Now;
 var values = new Dictionary&lt;string, object&gt;
 {
@@ -141,37 +141,37 @@ var entity = DataBuilder.Entity(values, titleField: DateFieldName);
 return new [] {entity}.ToImmutableArray();
 
 </code></pre>
-<p>This example shows how an entity-object is build using <code>DataBuilder.Entity(values)</code> on the <code>ToSic.Eav.Data</code> namespace.</p>
-<h2 id="concept-behind-databuilderentity">Concept Behind DataBuilder.Entity(...)</h2>
-<p>Internally it will generate a simplified <code>IEntity</code> object.
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="43">This example shows how an entity-object is build using <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="43">DataBuilder.Entity(values)</code> on the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="43">ToSic.Eav.Data</code> namespace.</p>
+<h2 id="concept-behind-databuilderentity" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="45">Concept Behind DataBuilder.Entity(...)</h2>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="47">Internally it will generate a simplified <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="47">IEntity</code> object.
 It's also missing some advanced features like multi-language and repository identity (which would be important in edit-scenarios).</p>
-<p>The simplest way is to just use <code>DataBuilder.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more.</p>
-<h2 id="building-lists-of-entities">Building Lists of Entities</h2>
-<p>You can loop through your data and call <code>DataBuilder.Entity(someDictionary)</code> many times.
-You can also use the overload <code>DataBuilder.Entities(IEnumerable&lt;someDictionary&gt;)</code>. Best read the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entities*">API docs</a>.</p>
-<h2 id="more-parameters-on-databuilderentity">More Parameters on DataBuilder.Entity(...)</h2>
-<p>All paramaters are optional, except the first one containing the values. Here's what each one does:</p>
-<ul>
-<li><code>string titleField</code> is the title field name, so the entity then also knows which one is the title and can support <code>.EntityTitle</code> property</li>
-<li><code>string typeName</code> is a nice name for the type, allowing for type-filtering later in other data sources</li>
-<li><code>int id</code> gives a number identity, so <code>.EntityId</code> is useful and filtering by EntityId (like when having details-pages needing this id) works</li>
-<li><code>Guid guidId</code> is a UUID identity, so <code>.EntityGuid</code> is useful</li>
-<li><code>DateTime modified</code> would allow to filter / sort by the <code>.Modified</code> property</li>
-<li><code>int appId</code> could be used to pretend it's part of another app. This only affects the AppId property, and ATM there is no important reason to do this.</li>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="50">The simplest way is to just use <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="50">DataBuilder.Entity(someDictionary)</code>, more advanced uses also tell the system which field is the title, some numeric or Guid IDs and more.</p>
+<h2 id="building-lists-of-entities" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="53">Building Lists of Entities</h2>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="55">You can loop through your data and call <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="55">DataBuilder.Entity(someDictionary)</code> many times.
+You can also use the overload <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="56">DataBuilder.Entities(IEnumerable&lt;someDictionary&gt;)</code>. Best read the <a href="xref:ToSic.Eav.Data.IDataBuilder.Entities*" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="56">API docs</a>.</p>
+<h2 id="more-parameters-on-databuilderentity" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="59">More Parameters on DataBuilder.Entity(...)</h2>
+<p sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="61">All paramaters are optional, except the first one containing the values. Here's what each one does:</p>
+<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="63">
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="63"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="63">string titleField</code> is the title field name, so the entity then also knows which one is the title and can support <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="63">.EntityTitle</code> property</li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="64"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="64">string typeName</code> is a nice name for the type, allowing for type-filtering later in other data sources</li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="65"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="65">int id</code> gives a number identity, so <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="65">.EntityId</code> is useful and filtering by EntityId (like when having details-pages needing this id) works</li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="66"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="66">Guid guidId</code> is a UUID identity, so <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="66">.EntityGuid</code> is useful</li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="67"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="67">DateTime modified</code> would allow to filter / sort by the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="67">.Modified</code> property</li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="68"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="68">int appId</code> could be used to pretend it's part of another app. This only affects the AppId property, and ATM there is no important reason to do this.</li>
 </ul>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../guide/big-picture.html">DataSources Big Picture</a></li>
-<li><a class="xref" href="provide.html">DataSource API: Provide(...)</a></li>
-<li><a href="xref:ToSic.Eav.Data.IDataBuilder.Entity*"></a></li>
+<h2 id="read-also" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="71">Read also</h2>
+<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="73">
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="73"><a class="xref" href="../guide/big-picture.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="73">DataSources Big Picture</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="74"><a class="xref" href="provide.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="74">DataSource API: Provide(...)</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="75"><a href="xref:ToSic.Eav.Data.IDataBuilder.Entity*" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="75"></a></li>
 </ul>
-<h2 id="demo-code-and-further-links">Demo Code and further links</h2>
-<ul>
-<li><a class="xref" href="../tutorial-basic/index.html">Tutorial DataSource</a></li>
+<h2 id="demo-code-and-further-links" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="77">Demo Code and further links</h2>
+<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="79">
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="79"><a class="xref" href="../tutorial-basic/index.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="79">Tutorial DataSource</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in EAV 4.x, 2sxc 09.13</li>
+<h2 id="history" sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="81">History</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="83">
+<li sourcefile="pages/net-code/data-sources/custom/pre-v15/data-builder.md" sourcestartlinenumber="83">Introduced in EAV 4.x, 2sxc 09.13</li>
 </ol>
 
 </article>

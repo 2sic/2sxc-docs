@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,35 +106,35 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V13.IEntityLinks">
-<h1 id="fix-breaking-change-automatic-links-in-ientity-in-v13">Fix Breaking Change <em>Automatic Links in IEntity</em> in v13</h1>
+<h1 id="fix-breaking-change-automatic-links-in-ientity-in-v13" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="5">Automatic Links in IEntity</em> in v13</h1>
 
-<p><strong>Keywords:</strong> #Deprecated #IEntity #LinkConversion</p>
-<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p>Specifically, features were removed which convert special <code>file:...</code> and <code>page:...</code> links on the <code>IEntity</code>:</p>
-<div class="IMPORTANT">
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="7">Keywords:</strong> #Deprecated #IEntity #LinkConversion</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="9">2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="11">Specifically, features were removed which convert special <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="11">file:...</code> and <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="11">page:...</code> links on the <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="11">IEntity</code>:</p>
+<div class="IMPORTANT" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="13">
 <h5>Important</h5>
-<p>You are probably not affected</p>
-<p>This only affects special code calls which <em>first</em> get an <code>IEntity</code> and then uses the <code>GetBestValue</code> expecting the link to convert.</p>
-<p>Almost all Razor / WebApi code uses <em>Dynamic Entities</em> (with <code>AsDynamic(...)</code>), and these cases will continue to work as expected.</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="14">You are probably not affected</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="16">This only affects special code calls which <em sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="16">first</em> get an <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="16">IEntity</code> and then uses the <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="16">GetBestValue</code> expecting the link to convert.</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="18">Almost all Razor / WebApi code uses <em sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="18">Dynamic Entities</em> (with <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="18">AsDynamic(...)</code>), and these cases will continue to work as expected.</p>
 </div>
-<h2 id="reason-for-removal">Reason for Removal</h2>
-<p>These features were removed because they relied on objects which need Dependency Injection, and calling this object directly cannot give us DI.
+<h2 id="reason-for-removal" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="20">Reason for Removal</h2>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="22">These features were removed because they relied on objects which need Dependency Injection, and calling this object directly cannot give us DI.
 These features were rarely used, and newer mechanisms are much more appropriate than that old stuff.</p>
-<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
-<p>A long time ago we introduced the ability to store links like <code>file:73</code> or <code>page:42</code>.
-At that time, we looked up the link in APIs of the cached object (the <code>IEntity</code>).</p>
-<p>This turned out to be a bad idea, because the cached object doesn't have access to the current Site information, which is needed to lookup these real links.</p>
-<h2 id="what-we-changed">What we Changed</h2>
-<p>A long time ago we already ensured that the <strong>Dynamic Entity</strong> will do this lookup, and not rely on the inner APIs to do this.
-So all code which uses <code>AsDynamic(...).SomeLinkProperty</code> will always work as expected.</p>
-<p>But in rare cases you may have been getting the <code>SomeLinkProperty</code> from the IEntity. This will now not throw an error, but simply not lookup the link any more.</p>
-<p>So if you end up getting links like this, you are probably affected:</p>
-<pre><code class="lang-html">&lt;a href=&quot;file:74&quot;&gt;click here&lt;/a&gt;
+<h2 id="history---how-it-used-to-work" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="25">History - How it Used to Work</h2>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="27">A long time ago we introduced the ability to store links like <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="27">file:73</code> or <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="27">page:42</code>.
+At that time, we looked up the link in APIs of the cached object (the <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="28">IEntity</code>).</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="30">This turned out to be a bad idea, because the cached object doesn't have access to the current Site information, which is needed to lookup these real links.</p>
+<h2 id="what-we-changed" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="32">What we Changed</h2>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="34">A long time ago we already ensured that the <strong sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="34">Dynamic Entity</strong> will do this lookup, and not rely on the inner APIs to do this.
+So all code which uses <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="35">AsDynamic(...).SomeLinkProperty</code> will always work as expected.</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="37">But in rare cases you may have been getting the <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="37">SomeLinkProperty</code> from the IEntity. This will now not throw an error, but simply not lookup the link any more.</p>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="39">So if you end up getting links like this, you are probably affected:</p>
+<pre><code class="lang-html" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="41">&lt;a href=&quot;file:74&quot;&gt;click here&lt;/a&gt;
 </code></pre>
-<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<p>Just make sure you always access the properties using the <strong>Dynamic Entity</strong> - so if you had an <code>IEntity</code> before, wrap it into <code>AsDynamic(...)</code> first.</p>
-<hr>
-<p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-ientitylink">https://go.2sxc.org/brc-13-ientitylink</a></p>
+<h2 id="upgrade-to-newer-functionality" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="45">Upgrade to Newer functionality</h2>
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="47">Just make sure you always access the properties using the <strong sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="47">Dynamic Entity</strong> - so if you had an <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="47">IEntity</code> before, wrap it into <code sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="47">AsDynamic(...)</code> first.</p>
+<hr sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="49">
+<p sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="51">Shortlink to here: <a href="https://go.2sxc.org/brc-13-ientitylink" sourcefile="pages/abyss/releases/history/v13/ientity-links/index.md" sourcestartlinenumber="51">https://go.2sxc.org/brc-13-ientitylink</a></p>
 
 </article>
 

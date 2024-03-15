@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,25 +108,25 @@
         <article data-uid="NetCode.PlatformApi.Dnn.ThemesAndModules">
 
 <img src="../../../assets/features/platform-dnn.svg" width="100%">
-<h1 id="use-2sxc-data-services-or-output-in-dnn-themesskins-and-modules">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</h1>
-<p>Sometimes you want to render a 2sxc Block into a Theme or another Module - or just use 2sxc Data and services.</p>
-<p>In general this is a two step process:</p>
-<ol>
-<li>Get the current Service Provider (with the right Scope) from DNN or HttpContext and ask for the specific service you need</li>
-<li>Use the service</li>
+<h1 id="use-2sxc-data-services-or-output-in-dnn-themesskins-and-modules" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="7">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</h1>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="9">Sometimes you want to render a 2sxc Block into a Theme or another Module - or just use 2sxc Data and services.</p>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="11">In general this is a two step process:</p>
+<ol sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="13">
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="13">Get the current Service Provider (with the right Scope) from DNN or HttpContext and ask for the specific service you need</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="14">Use the service</li>
 </ol>
-<h2 id="step-1-get-the-service-provider">Step 1: Get the Service Provider</h2>
-<p>The service provider is the object which knows how to create all the services.
+<h2 id="step-1-get-the-service-provider" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="16">Step 1: Get the Service Provider</h2>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="18">The service provider is the object which knows how to create all the services.
 It will retrieve any services that have been registered before - including all public 2sxc services.</p>
-<p>It's important to know about the <strong>scope</strong> of the service provider.
-Basically there is a <strong>global scope</strong>, which is doesn't know about the current page or module.
-Then there is a <strong>current scope</strong> which is the scope of the current page or module.
-So if you ask the <em>global scope</em> for a service, that service will not know about the current user permissions or what page the code is running on.</p>
-<p>Dnn creates an own scope for each page request, and places it on the <code>HttpContext</code>.
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="21">It's important to know about the <strong sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="21">scope</strong> of the service provider.
+Basically there is a <strong sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="22">global scope</strong>, which is doesn't know about the current page or module.
+Then there is a <strong sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="23">current scope</strong> which is the scope of the current page or module.
+So if you ask the <em sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="24">global scope</em> for a service, that service will not know about the current user permissions or what page the code is running on.</p>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="26">Dnn creates an own scope for each page request, and places it on the <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="26">HttpContext</code>.
 The &quot;real&quot; way to get it is fairly difficult, so 2sxc provides a shortcut
-using <code>this.GetScopedService&lt;T&gt;</code> (<a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.DnnExtensions.html#ToSic_Sxc_Services_DnnExtensions_GetScopedService_">docs</a>).
+using <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="28">this.GetScopedService&lt;T&gt;</code> (<a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.DnnExtensions.html#ToSic_Sxc_Services_DnnExtensions_GetScopedService_" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="28">docs</a>).
 Here's an example how to get it in a Theme/Skin or Module:</p>
-<pre><code class="lang-html">&lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
+<pre><code class="lang-html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="31">&lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
 &lt;script runat=&quot;server&quot;&gt;
   protected override void OnPreRender(EventArgs e) {
     base.OnPreRender(e);
@@ -134,12 +134,12 @@ Here's an example how to get it in a Theme/Skin or Module:</p>
   }
 &lt;/script&gt;
 </code></pre>
-<p>Note: if you want to know the hard way, it's documented <a class="xref" href="theme-extended.html">here for themes</a>
-and <a class="xref" href="modules-extended.html">here for modules</a>.</p>
-<h2 id="step-2-do-something-with-the-service">Step 2: Do something with the Service</h2>
-<h3 id="example-1-render-a-block">Example 1: Render a Block</h3>
-<p>This is the most common use-case: you want to render a 2sxc Block into a Theme or Module.</p>
-<pre><code class="lang-html">&lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="41">Note: if you want to know the hard way, it's documented <a class="xref" href="theme-extended.html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="41">here for themes</a>
+and <a class="xref" href="modules-extended.html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="42">here for modules</a>.</p>
+<h2 id="step-2-do-something-with-the-service" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="44">Step 2: Do something with the Service</h2>
+<h3 id="example-1-render-a-block" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="46">Example 1: Render a Block</h3>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="48">This is the most common use-case: you want to render a 2sxc Block into a Theme or Module.</p>
+<pre><code class="lang-html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="50">&lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
 
 &lt;script runat=&quot;server&quot;&gt;
   public dynamic blockHtml;
@@ -156,16 +156,16 @@ and <a class="xref" href="modules-extended.html">here for modules</a>.</p>
 
 &lt;%= blockHtml %&gt;
 </code></pre>
-<p>What's important:</p>
-<ol>
-<li>The <code>blockHtml</code> variable is a dynamic object - this just makes it easier to code. You could specify the type <code>ToSic.Sxc.Blocks.IBlock</code> but that adds complexity.</li>
-<li>Internally the <code>blockHtml</code> could do a bit more, but that's not relevant for this scenario.</li>
-<li>Retrieving the <code>blockHtml</code> it inside the <code>OnPreRender</code> event is important, because it ensures that any side-effects such as adding JS/CSS to the page work.</li>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="69">What's important:</p>
+<ol sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="71">
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="71">The <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="71">blockHtml</code> variable is a dynamic object - this just makes it easier to code. You could specify the type <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="71">ToSic.Sxc.Blocks.IBlock</code> but that adds complexity.</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="72">Internally the <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="72">blockHtml</code> could do a bit more, but that's not relevant for this scenario.</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="73">Retrieving the <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="73">blockHtml</code> it inside the <code sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="73">OnPreRender</code> event is important, because it ensures that any side-effects such as adding JS/CSS to the page work.</li>
 </ol>
-<h3 id="example-2-get-data-in-a-dnn-razor-file">Example 2: Get data in a DNN Razor File</h3>
-<p>Imagine you have a theme using DDR Menu with Razor Templates. The theme has a MegaMenu and you want to include one or more featured links that will change often and those links are easily managed in the Content App using the Links Content-Type with any of the default Views.</p>
-<p>Your C# code in your MegaMenu.cshtml file could get access to those Links like this:</p>
-<pre><code class="lang-cs">using ToSic.Sxc.Services;
+<h3 id="example-2-get-data-in-a-dnn-razor-file" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="75">Example 2: Get data in a DNN Razor File</h3>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="77">Imagine you have a theme using DDR Menu with Razor Templates. The theme has a MegaMenu and you want to include one or more featured links that will change often and those links are easily managed in the Content App using the Links Content-Type with any of the default Views.</p>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="79">Your C# code in your MegaMenu.cshtml file could get access to those Links like this:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="81">using ToSic.Sxc.Services;
 
 // the details you need to know
 // var appId = 2;       // Content App is usually 2, but thanks to DynamicCode, we don't need this
@@ -197,10 +197,10 @@ foreach (var link in links)
 }
 &lt;/ul&gt;
 </code></pre>
-<h3 id="example-3-create-2sxc-data">Example 3: Create 2sxc Data</h3>
-<p>The following example is written in c# to make it easier to read.
+<h3 id="example-3-create-2sxc-data" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="115">Example 3: Create 2sxc Data</h3>
+<p sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="117">The following example is written in c# to make it easier to read.
 Your code could differ depending on where you place it (.cs file, .ascx file, etc.)</p>
-<pre><code class="lang-cs">using ToSic.Sxc.Services;
+<pre><code class="lang-cs" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="120">using ToSic.Sxc.Services;
 var dynCodeSvc = this.GetScopedService&lt;IDynamicCodeService&gt;();
 
 // the app id
@@ -222,26 +222,26 @@ vals.Add(&quot;Label&quot;, &quot;Test Tag&quot;);
 
 App.Data.Create(&quot;Tag&quot;, vals);
 </code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>2sxc v1 was for Dnn 4 in 2012</li>
-<li>External use API for DNN Introduced in 2sxc 08.03</li>
-<li>Old API archived for v13 - see <a href="obsolete-dnn.html">old Dnn Factory Docs</a></li>
-<li>Created new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a> in v13</li>
-<li>2sxc v14 requires Dnn 9.6.1 or newer and is fully integrated in the DNN Dependency injection, so DNN can get 2sxc services and vice versa.</li>
+<hr sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="144">
+<h2 id="history" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="146">History</h2>
+<ul sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="148">
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="148">2sxc v1 was for Dnn 4 in 2012</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="149">External use API for DNN Introduced in 2sxc 08.03</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="150">Old API archived for v13 - see <a href="obsolete-dnn.html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="150">old Dnn Factory Docs</a></li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="151">Created new <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html" sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="151">IDynamicCodeService</a> in v13</li>
+<li sourcefile="pages/net-code/platform-api/dnn/themes-modules.md" sourcestartlinenumber="152">2sxc v14 requires Dnn 9.6.1 or newer and is fully integrated in the DNN Dependency injection, so DNN can get 2sxc services and vice versa.</li>
 </ul>
-<h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
-<ol>
-<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
-<li>Integrated with Oqtane DI in v12 (May 2021)</li>
-<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
-<li>Integrated with Oqtane DI in v12 (May. 2021)</li>
-<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
-<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li>Created <a class="xref" href="../../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
-<li>Added ServiceKitLight for custom DataSources in 2sxc 15</li>
-<li>Added ServiceKit16 for 2sxc 16</li>
+<h2 id="history-of-dependency-injection-in-2sxc" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="2">History of Dependency Injection in 2sxc</h2>
+<ol sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="5">Integrated with Oqtane DI in v12 (May 2021)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6"><code sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6">GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="7">Integrated with Oqtane DI in v12 (May. 2021)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="8">Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="9">Integrated with Dnn DI in v13 (Dec. 2021)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">Created <a class="xref" href="../../services/service-kits.html" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">ServiceKits</a> for v14 (June 2022)</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="11">Added ServiceKitLight for custom DataSources in 2sxc 15</li>
+<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="12">Added ServiceKit16 for 2sxc 16</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.ConfigurableDataSource">
-<h1 id="configurable-datasource">Configurable DataSource</h1>
+<h1 id="configurable-datasource" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="5">Configurable DataSource</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,7 +203,7 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>
@@ -212,13 +212,13 @@
   .context-box-summary .data-configuration
   { visibility: visible; }
 </style>
-<p>Most Custom DataSources will want to provide a configuration UI to the editor.</p>
-<p>Here we'll explain how you must code your DataSource that it can be configurable.</p>
-<h2 id="1-create-typed-properties">1. Create Typed Properties</h2>
-<p>For each piece of configuration your DataSource expects you should expose a normal property which will have that value.
-Internally it should get the data from the <code>Configuration</code> object which is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">IDataSourceConfiguration</a>.
-Here's an example from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a>:</p>
-<pre><code class="lang-c#">/// &lt;summary&gt;
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="15">Most Custom DataSources will want to provide a configuration UI to the editor.</p>
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="17">Here we'll explain how you must code your DataSource that it can be configurable.</p>
+<h2 id="1-create-typed-properties" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="19">1. Create Typed Properties</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="21">For each piece of configuration your DataSource expects you should expose a normal property which will have that value.
+Internally it should get the data from the <code sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="22">Configuration</code> object which is an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="22">IDataSourceConfiguration</a>.
+Here's an example from the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="23">ValueFilter</a>:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="25">/// &lt;summary&gt;
 /// The attribute whose value will be scanned / filtered.
 /// &lt;/summary&gt;
 [Configuration]
@@ -231,28 +231,28 @@ public string Attribute =&gt; Configuration.GetThis();
 [Configuration(Fallback = &quot;==&quot;)]
 public string Operator =&gt; Configuration.GetThis();
 </code></pre>
-<p>Remember that if the type is not string, you'll have to add some type-checking and fallbacks, since the Configuration object only works with strings to handle Tokens.
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="40">Remember that if the type is not string, you'll have to add some type-checking and fallbacks, since the Configuration object only works with strings to handle Tokens.
 Fortunately the new v16 API does this automatically for you.
-Here's an example from the <code>AppFiles.cs</code></p>
-<pre><code class="lang-c#">[Configuration(Fallback = false)]
+Here's an example from the <code sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="42">AppFiles.cs</code></p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="44">[Configuration(Fallback = false)]
 public bool OnlyFolders =&gt; Configuration.GetThis(false);
 </code></pre>
-<h2 id="2-use-the-value">2. Use the Value</h2>
-<p>With this setup, everything is automatic. So if your code now does this:</p>
-<pre><code class="lang-c#">var x = Operator;
+<h2 id="2-use-the-value" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="49">2. Use the Value</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="51">With this setup, everything is automatic. So if your code now does this:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="53">var x = Operator;
 </code></pre>
-<p>...it will get the parsed token with either the value provided by the config, or the fallback.</p>
-<div class="IMPORTANT">
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="57">...it will get the parsed token with either the value provided by the config, or the fallback.</p>
+<div class="IMPORTANT" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="59">
 <h5>Important</h5>
-<p>In the constructor the Configuration object is not yet populated, so you can't use the properties there.
-So make sure it's accessed later, typically inside the function or lambda which is called by <code>ProvideOut</code>.</p>
+<p sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="60">In the constructor the Configuration object is not yet populated, so you can't use the properties there.
+So make sure it's accessed later, typically inside the function or lambda which is called by <code sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="61">ProvideOut</code>.</p>
 </div>
-<h2 id="history">History</h2>
-<ol>
-<li>General Tokens introduced in 2sxc 1.0</li>
-<li>Most enhancements were in 2sxc 07.00</li>
-<li>2sxc 10 and 11 changed the Configuration API to better separate the Configuration Manager</li>
-<li>2sxc 15/16 changed this completely using the new <code>[Configuration]</code> attribute and <code>Configuration.GetThis()</code></li>
+<h2 id="history" sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="63">History</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="65">
+<li sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="65">General Tokens introduced in 2sxc 1.0</li>
+<li sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="66">Most enhancements were in 2sxc 07.00</li>
+<li sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="67">2sxc 10 and 11 changed the Configuration API to better separate the Configuration Manager</li>
+<li sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="68">2sxc 15/16 changed this completely using the new <code sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="68">[Configuration]</code> attribute and <code sourcefile="pages/net-code/data-sources/custom/configurable-datasource.md" sourcestartlinenumber="68">Configuration.GetThis()</code></li>
 </ol>
 
 </article>

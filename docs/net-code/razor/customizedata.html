@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,27 +106,27 @@
         </div>
 
         <article data-uid="NetCode.Razor.CustomizeData">
-<h1 id="event-customizedata-on-the-razor-page-dnn--only">Event <em>CustomizeData()</em> on the Razor Page (Dnn ☢️ only)</h1>
+<h1 id="event-customizedata-on-the-razor-page-dnn--only" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="5">Event <em sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="5">CustomizeData()</em> on the Razor Page (Dnn ☢️ only)</h1>
 
-<div class="WARNING">
+<div class="WARNING" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="7">
 <h5>Warning</h5>
-<p>This is an older way to customize the Dnn search index.</p>
-<p>It is deprecated.</p>
-<p>Use the new mechanisms explained in <a class="xref" href="../search/index.html">Search Customizations</a></p>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="8">This is an older way to customize the Dnn search index.</p>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="10">It is deprecated.</p>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="12">Use the new mechanisms explained in <a class="xref" href="../search/index.html" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="12">Search Customizations</a></p>
 </div>
-<p>This event is called by the view-engine before the rest of the script is parsed - and it's usually empty.
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="14">This event is called by the view-engine before the rest of the script is parsed - and it's usually empty.
 It can be overriden to change/configure what data is delivered to the template or search-index.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<h2 id="how-to-use">How to use</h2>
-<p>In your razor page (.cshtml file) you can add a script block implementing this, as follows:</p>
-<pre><code class="lang-cs">@functions{
+<h2 id="how-to-use" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="20">How to use</h2>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="22">In your razor page (.cshtml file) you can add a script block implementing this, as follows:</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="24">@functions{
 
 // Prepare the data - get all categories through the pipeline
 public override void CustomizeData()
@@ -141,30 +141,30 @@ public override void CustomizeData()
 }
 
 </code></pre>
-<p>Since the code above is run before the rest of the template is executed, the <code>Data</code> object now has a
-stream called <code>QandA</code> which the rest of the template can access using <code>Data[&quot;QandA&quot;]</code>.</p>
-<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<p>In general, you can override this event to prepare data. It has a few benefits like</p>
-<ol>
-<li>It's always called, even if the data is not templated - for example when it's streamed as JSON or when it's prepared for search indexing</li>
-<li>In the future, most data-preparations will be possible through a visual designer, but for now, this is the best way to go.</li>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="40">Since the code above is run before the rest of the template is executed, the <code sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="40">Data</code> object now has a
+stream called <code sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="41">QandA</code> which the rest of the template can access using <code sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="41">Data[&quot;QandA&quot;]</code>.</p>
+<h2 id="notes-and-clarifications" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="43">Notes and Clarifications</h2>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="44">In general, you can override this event to prepare data. It has a few benefits like</p>
+<ol sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="46">
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="46">It's always called, even if the data is not templated - for example when it's streamed as JSON or when it's prepared for search indexing</li>
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="47">In the future, most data-preparations will be possible through a visual designer, but for now, this is the best way to go.</li>
 </ol>
-<h2 id="connection-to-search-index">Connection to Search index</h2>
-<p>The CustomizeData event runs both when rendering the template as well as when the search is running.
+<h2 id="connection-to-search-index" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="49">Connection to Search index</h2>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="50">The CustomizeData event runs both when rendering the template as well as when the search is running.
 For further details you may want to read about</p>
-<ul>
-<li><a class="xref" href="purpose.html">InstancePurpose</a> - which tells you why the current code is running so you could change the data added</li>
-<li><a class="xref" href="customizesearch.html">CustomizeSearch</a> - which let's you write code to alter how the data is processed in the search-index</li>
+<ul sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="53">
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="53"><a class="xref" href="purpose.html" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="53">InstancePurpose</a> - which tells you why the current code is running so you could change the data added</li>
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="54"><a class="xref" href="customizesearch.html" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="54">CustomizeSearch</a> - which let's you write code to alter how the data is processed in the search-index</li>
 </ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a href="http://2sxc.org/en/apps/app/faq-with-categories-and-6-views">FAQ with Categories</a></li>
+<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="56">Demo App and further links</h2>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="57">You should find some code examples in this demo App</p>
+<ul sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="58">
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="58"><a href="http://2sxc.org/en/apps/app/faq-with-categories-and-6-views" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="58">FAQ with Categories</a></li>
 </ul>
-<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 6.1</li>
+<p sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="60">More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="60">Description of the feature on 2sxc docs</a></p>
+<h2 id="history" sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="62">History</h2>
+<ol sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="63">
+<li sourcefile="pages/net-code/razor/customizedata.md" sourcestartlinenumber="63">Introduced in 2sxc 6.1</li>
 </ol>
 
 </article>

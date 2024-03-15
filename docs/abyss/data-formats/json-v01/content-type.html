@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,24 +106,24 @@
         </div>
 
         <article data-uid="Basics.DataFormats.JsonV1.ContentType">
-<h1 id="json-content-type-v1">JSON Content-Type V1</h1>
+<h1 id="json-content-type-v1" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="4">JSON Content-Type V1</h1>
 
-<p>JSON based content-types are type-definitions which are stored as JSON. As of now we're using it to provide system-level types to the application (see <a class="xref" href="../../../basics/data/content-types/specs/file-storage.html">Concepts - file provided content-types</a>) and for various automated testing.</p>
-<h2 id="description">Description</h2>
-<ol>
-<li>As of now, it's using a envolope to package everything and includes a minimal header to ensure we know it's <a class="xref" href="index.html">V1</a>.</li>
-<li>It then contains a <code>ContentType</code> node containing
-<ol>
-<li>various identification and description</li>
-<li>optional <a class="xref" href="metadata.html">Content-Type Metadata</a></li>
-<li>attributes (array) - often with <a class="xref" href="metadata.html">attribute Metadata</a></li>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="6">JSON based content-types are type-definitions which are stored as JSON. As of now we're using it to provide system-level types to the application (see <a class="xref" href="../../../basics/data/content-types/specs/file-storage.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="6">Concepts - file provided content-types</a>) and for various automated testing.</p>
+<h2 id="description" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="8">Description</h2>
+<ol sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="10">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="10">As of now, it's using a envolope to package everything and includes a minimal header to ensure we know it's <a class="xref" href="index.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="10">V1</a>.</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="11">It then contains a <code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="11">ContentType</code> node containing
+<ol sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="12">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="12">various identification and description</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="13">optional <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="13">Content-Type Metadata</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="14">attributes (array) - often with <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="14">attribute Metadata</a></li>
 </ol>
 </li>
-<li>note that the attribute order is relevant</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="15">note that the attribute order is relevant</li>
 </ol>
-<h2 id="example">Example</h2>
-<p>This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):</p>
-<pre><code class="lang-json">{
+<h2 id="example" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="17">Example</h2>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="19">This example is an extract of the Config Content-Type to manage the SqlDataSource (will be releasen in 2sxc 9.8 with more help-text etc.):</p>
+<pre><code class="lang-json" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="21">{
   &quot;_&quot;: { &quot;V&quot;: 1 },
   &quot;ContentType&quot;: {
     &quot;Id&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
@@ -240,62 +240,62 @@
   }
 }
 </code></pre>
-<h2 id="details-about-the-format">Details about the Format</h2>
-<p>The format is currently in version 1, and looks like this:</p>
-<ul>
-<li><code>_</code> this is the header - containing the version, in case we introduce breaking changes in the future - see also <a class="xref" href="index.html">format v1</a></li>
-<li><code>ContentType</code> - this is the content-type
-<ul>
-<li><code>Id</code> - internal identifier, also known as the <a class="xref" href="../../../basics/data/content-types/names.html">static name</a> - often a GUID</li>
-<li><code>Name</code> - a nicer <a class="xref" href="../../../basics/data/content-types/names.html">name</a></li>
-<li><code>Scope</code> - a term which groups types together; mainly for hiding types the user should normally not see</li>
-<li><code>Description</code> - a short description for internal use</li>
-<li><code>Attributes</code> [array]
-<ul>
-<li>[item]
-<ul>
-<li><code>Name</code> - the field-name</li>
-<li><code>Type</code> - the primary type, like string, number, etc.</li>
-<li><code>Description</code> - a short description</li>
-<li><code>IsTitle</code> - is this the title field (there must always be one title field)</li>
-<li><code>Metadata</code> [array] with more information about this field/attribute - see <a class="xref" href="metadata.html">Metadata</a></li>
+<h2 id="details-about-the-format" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="140">Details about the Format</h2>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="142">The format is currently in version 1, and looks like this:</p>
+<ul sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="144">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="144"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="144">_</code> this is the header - containing the version, in case we introduce breaking changes in the future - see also <a class="xref" href="index.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="144">format v1</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="145"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="145">ContentType</code> - this is the content-type
+<ul sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="146">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="146"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="146">Id</code> - internal identifier, also known as the <a class="xref" href="../../../basics/data/content-types/names.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="146">static name</a> - often a GUID</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="147"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="147">Name</code> - a nicer <a class="xref" href="../../../basics/data/content-types/names.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="147">name</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="148"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="148">Scope</code> - a term which groups types together; mainly for hiding types the user should normally not see</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="149"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="149">Description</code> - a short description for internal use</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="150"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="150">Attributes</code> [array]
+<ul sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="151">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="151">[item]
+<ul sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="152">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="152"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="152">Name</code> - the field-name</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="153"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="153">Type</code> - the primary type, like string, number, etc.</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="154"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="154">Description</code> - a short description</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="155"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="155">IsTitle</code> - is this the title field (there must always be one title field)</li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="156"><code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="156">Metadata</code> [array] with more information about this field/attribute - see <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="156">Metadata</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Metadata [array] with more information about the content-type - see <a class="xref" href="metadata.html">Metadata</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="157">Metadata [array] with more information about the content-type - see <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="157">Metadata</a></li>
 </ul>
-<h2 id="specials-about-the-json-content-types">Specials about the JSON Content-Types</h2>
-<h4 id="id-is-not-always-a-guid">ID is not always a GUID</h4>
-<p>The ID is usually a GUID, but for special system types it is not.
+<h2 id="specials-about-the-json-content-types" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="159">Specials about the JSON Content-Types</h2>
+<h4 id="id-is-not-always-a-guid" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="161">ID is not always a GUID</h4>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="163">The ID is usually a GUID, but for special system types it is not.
 This is mostly historic, as all new content-types will have GUIDs, but old types still exist in the system which have a nice name, but that's not ideal for various use cases.
-This corresponds to the <code>StaticName</code> in the C# API.</p>
-<h4 id="scope-is-like-a-virtual-group">Scope is Like a Virtual Group</h4>
-<p>The Scope is a name - usually System or something like that.
-It's primarily used to group types together, so that the editor doesn't have to see the ca. 50 types in the background which make the solution work. See <a class="xref" href="../../../basics/data/content-types/scopes.html">Content-Type Scopes</a></p>
-<h4 id="content-types-have-metadata">Content Types Have Metadata</h4>
-<p>Content-types can have a lot of metadata - also mostly for the UI.
+This corresponds to the <code sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="165">StaticName</code> in the C# API.</p>
+<h4 id="scope-is-like-a-virtual-group" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="167">Scope is Like a Virtual Group</h4>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="169">The Scope is a name - usually System or something like that.
+It's primarily used to group types together, so that the editor doesn't have to see the ca. 50 types in the background which make the solution work. See <a class="xref" href="../../../basics/data/content-types/scopes.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="170">Content-Type Scopes</a></p>
+<h4 id="content-types-have-metadata" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="172">Content Types Have Metadata</h4>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="174">Content-types can have a lot of metadata - also mostly for the UI.
 An example is the help-text which is shown.
-This too is stored as normal JSON. See <a class="xref" href="metadata.html">JSON Metadata V1</a>.</p>
-<h4 id="attributes-have-metadata">Attributes Have Metadata</h4>
-<p>Each attribute - let's say a field &quot;Color&quot; has more information which is needed for scenarios like the edit-UI.
-These items are standard <a class="xref" href="metadata.html">Metadata</a>.</p>
-<h4 id="content-type-attributes-must-preserve-sort-order">Content Type Attributes must preserve Sort Order</h4>
-<p>This is important, as it's relevant to the UI.</p>
-<h2 id="limitations">Limitations</h2>
-<p>As of now (2sxc 9.7) the system will pick up the content-types stored there and everything works. BUT there is no built-in mechanism to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
-<p>This should not affect you, as it's not meant to be managed by anybody else than us as of now.</p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="index.html">JSON Format V1</a></li>
-<li><a class="xref" href="../../../basics/data/content-types/specs/file-storage.html">File-Stored Content-Types</a></li>
-<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-content-type-definitions">Blog post about json content-type definitions</a></li>
+This too is stored as normal JSON. See <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="176">JSON Metadata V1</a>.</p>
+<h4 id="attributes-have-metadata" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="178">Attributes Have Metadata</h4>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="180">Each attribute - let's say a field &quot;Color&quot; has more information which is needed for scenarios like the edit-UI.
+These items are standard <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="181">Metadata</a>.</p>
+<h4 id="content-type-attributes-must-preserve-sort-order" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="183">Content Type Attributes must preserve Sort Order</h4>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="185">This is important, as it's relevant to the UI.</p>
+<h2 id="limitations" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="187">Limitations</h2>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="189">As of now (2sxc 9.7) the system will pick up the content-types stored there and everything works. BUT there is no built-in mechanism to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
+<p sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="191">This should not affect you, as it's not meant to be managed by anybody else than us as of now.</p>
+<h2 id="read-also" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="193">Read also</h2>
+<ul sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="195">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="195"><a class="xref" href="index.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="195">JSON Format V1</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="196"><a class="xref" href="../../../basics/data/content-types/specs/file-storage.html" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="196">File-Stored Content-Types</a></li>
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="197"><a href="https://2sxc.org/en/blog/post/deep-dive-json-content-type-definitions" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="197">Blog post about json content-type definitions</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Added in 2sxc 9.7</li>
+<h2 id="history" sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="200">History</h2>
+<ol sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="202">
+<li sourcefile="pages/abyss/data-formats/json-v01/content-type.md" sourcestartlinenumber="202">Added in 2sxc 9.7</li>
 </ol>
 
 </article>

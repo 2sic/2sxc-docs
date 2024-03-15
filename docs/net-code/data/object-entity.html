@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -202,19 +202,19 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .data-all { visibility: visible; } </style>
-<h1 id="entity-objects">Entity Objects</h1>
-<p>All content-items in the <strong>EAV</strong> database of 2sxc are internally handled as <code>Entity</code> objects with the interface <code>IEntity</code>.
-When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.</p>
-<p>But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it's null, or an empty string.
-In this case you'll need to look at the internals, the <code>IEntity</code>.</p>
-<p>To learn more about the differences, check out <a class="xref" href="object-types.html">DynamicEntity vs Entity</a></p>
-<h2 id="using-the-ientity-interface">Using the IEntity Interface</h2>
-<p>Just a short piece of code to show how it would work (but not usually recommended).</p>
-<pre><code class="lang-cs">// This example shows how to get the link as stored in the data 
+<h1 id="entity-objects" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="8">Entity Objects</h1>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="10">All content-items in the <strong sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="10">EAV</strong> database of 2sxc are internally handled as <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="10">Entity</code> objects with the interface <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="10">IEntity</code>.
+When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="11">IDynamicEntity</a>.</p>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="13">But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it's null, or an empty string.
+In this case you'll need to look at the internals, the <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="14">IEntity</code>.</p>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="16">To learn more about the differences, check out <a class="xref" href="object-types.html" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="16">DynamicEntity vs Entity</a></p>
+<h2 id="using-the-ientity-interface" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="19">Using the IEntity Interface</h2>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="21">Just a short piece of code to show how it would work (but not usually recommended).</p>
+<pre><code class="lang-cs" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="23">// This example shows how to get the link as stored in the data 
 // without converting page:74 to the real link
 var languagePreference = [&quot;de&quot;, &quot;en&quot;];
 var autoResolveLinks = false;
@@ -231,36 +231,36 @@ string firstString = firstTitle.ToString();
 IEnumerable&lt;ILanguage&gt; langAssignments = firstTitle.Languages;
 //etc.
 </code></pre>
-<h2 id="when-would-you-need-to-work-with-entity-objects">When would You need to work with Entity objects</h2>
-<p>For Razor and WebAPI these are edge cases, but they are real:</p>
-<ol>
-<li>The DynamicEntity will automatically resolve links like <code>page:72</code> and give you <code>http://...</code>. In rare cases you may need to actually get <code>page:72</code> and for this you need to convert back to Entity.</li>
-<li>If you want to explicitly figure out what languages have been translated on a value</li>
-<li>To find out more about the underlying Content-Type (like to list the fields)</li>
-<li>If the entity is Metadata and you want to know what it's assigned to</li>
-<li>If the entity has Metadata and you want to get that</li>
+<h2 id="when-would-you-need-to-work-with-entity-objects" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="42">When would You need to work with Entity objects</h2>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="44">For Razor and WebAPI these are edge cases, but they are real:</p>
+<ol sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="46">
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="46">The DynamicEntity will automatically resolve links like <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="46">page:72</code> and give you <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="46">http://...</code>. In rare cases you may need to actually get <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="46">page:72</code> and for this you need to convert back to Entity.</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="47">If you want to explicitly figure out what languages have been translated on a value</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="48">To find out more about the underlying Content-Type (like to list the fields)</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="49">If the entity is Metadata and you want to know what it's assigned to</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="50">If the entity has Metadata and you want to get that</li>
 </ol>
-<h2 id="read-also">Read also</h2>
+<h2 id="read-also" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="52">Read also</h2>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
 
-<p>In case you feel like you really need to know more about the real Entity objects, check out these things:</p>
-<ol>
-<li><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> API</li>
-<li><a class="xref" href="../dynamic-code/as-entity.html">AsEntity(...)</a></li>
-<li><a class="xref" href="object-types.html">Data Object Types</a></li>
+<p sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="56">In case you feel like you really need to know more about the real Entity objects, check out these things:</p>
+<ol sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="58">
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="58"><a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="58">IEntity</a> API</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="59"><a class="xref" href="../dynamic-code/as-entity.html" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="59">AsEntity(...)</a></li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="60"><a class="xref" href="object-types.html" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="60">Data Object Types</a></li>
 </ol>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 01.00</li>
-<li>Multi-Language since 2sxc 02.00</li>
-<li>Added <code>Value</code> and <code>Value&lt;T&gt;</code> as well as <code>Parents()</code> and <code>Children(...)</code> in 09.42. Note that Value does not do the same thing as GetBestValue.</li>
+<h2 id="history" sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="64">History</h2>
+<ol sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="66">
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="66">Introduced in 2sxc 01.00</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="67">Multi-Language since 2sxc 02.00</li>
+<li sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="68">Added <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="68">Value</code> and <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="68">Value&lt;T&gt;</code> as well as <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="68">Parents()</code> and <code sourcefile="pages/net-code/data/object-entity.md" sourcestartlinenumber="68">Children(...)</code> in 09.42. Note that Value does not do the same thing as GetBestValue.</li>
 </ol>
 
 </article>

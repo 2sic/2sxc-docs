@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.ConfigurationAttribute">
-<h1 id="datasource-api-configuration-attribute">DataSource API: Configuration Attribute</h1>
+<h1 id="datasource-api-configuration-attribute" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="5">DataSource API: Configuration Attribute</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,15 +203,15 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
-<p>The <code>[Configuration]</code> attribute marks properties on a DataSource as configuration properties.</p>
-<p>This allows you to then provide configuration values when getting a DataSource using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IDataService.html">Kit.Data</a>
+<p sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="10">The <code sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="10">[Configuration]</code> attribute marks properties on a DataSource as configuration properties.</p>
+<p sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="12">This allows you to then provide configuration values when getting a DataSource using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IDataService.html" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="12">Kit.Data</a>
 or to make it configurable in VisualQuery.</p>
-<p>Example:</p>
-<pre><code class="lang-c#">/// &lt;summary&gt;
+<p sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="15">Example:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="17">/// &lt;summary&gt;
 /// Should the Modified date be included in serialization
 /// &lt;/summary&gt;
 [Configuration]
@@ -230,29 +230,29 @@ public string IncludeRelationshipsAsCsv =&gt; Configuration.GetThis();
 [Configuration(Fallback = true)]
 public bool FilterDuplicates =&gt; Configuration.GetThis(true);
 </code></pre>
-<p>By applying it to a property, the following will happen:</p>
-<ol>
-<li>Upon creating the DataSource, all these configurations will be initialized - ideally with the fallback value provided</li>
-<li>The value is now available to be set from outside code or Query</li>
-<li>If the code (or query) using the data source doesn't change the value, the fallback will be used</li>
-<li>If the DataSource is configurable using a ContentType in VisualQuery, the value set there will automatically be used in this property</li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="38">By applying it to a property, the following will happen:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="40">
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="40">Upon creating the DataSource, all these configurations will be initialized - ideally with the fallback value provided</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="41">The value is now available to be set from outside code or Query</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="42">If the code (or query) using the data source doesn't change the value, the fallback will be used</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="43">If the DataSource is configurable using a ContentType in VisualQuery, the value set there will automatically be used in this property</li>
 </ol>
-<h2 id="how-to-use-configuration">How to Use Configuration</h2>
-<ol>
-<li>Apply the <code>[Configuration]</code> attribute to every property that is configurable</li>
-<li>Where possible or reasonable, provide a fallback value</li>
-<li>Use the <code>Configuration.GetThis()</code> method to get the value</li>
+<h2 id="how-to-use-configuration" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="45">How to Use Configuration</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="47">
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="47">Apply the <code sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="47">[Configuration]</code> attribute to every property that is configurable</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="48">Where possible or reasonable, provide a fallback value</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="49">Use the <code sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="49">Configuration.GetThis()</code> method to get the value</li>
 </ol>
-<h2 id="read-more">Read More</h2>
-<ul>
-<li>Look at the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor#data-createsource">Dynamic DataSources Tutorials</a> for some easy examples</li>
-<li>Check out the API <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.ConfigurationAttribute.html">ConfigurationAttribute</a> to see what else you can configure</li>
-<li>Also read about the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">IDataSourceConfiguration</a> - especially the <code>GetThis()</code> and <code>GetThis&lt;T&gt;()</code> methods</li>
+<h2 id="read-more" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="51">Read More</h2>
+<ul sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="53">
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="53">Look at the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor#data-createsource" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="53">Dynamic DataSources Tutorials</a> for some easy examples</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="54">Check out the API <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.ConfigurationAttribute.html" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="54">ConfigurationAttribute</a> to see what else you can configure</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="55">Also read about the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="55">IDataSourceConfiguration</a> - especially the <code sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="55">GetThis()</code> and <code sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="55">GetThis&lt;T&gt;()</code> methods</li>
 </ul>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 16, replacing a more complex configuration system before that</li>
+<hr sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="57">
+<h2 id="history" sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="59">History</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="61">
+<li sourcefile="pages/net-code/data-sources/custom/configuration-attribute.md" sourcestartlinenumber="61">Introduced in 2sxc 16, replacing a more complex configuration system before that</li>
 </ol>
 
 </article>

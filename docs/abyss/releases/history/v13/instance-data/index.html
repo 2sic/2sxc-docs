@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,43 +106,43 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V13.InstanceData">
-<h1 id="fix-breaking-change-instancedata-in-v13">Fix Breaking Change <em>InstanceData</em> in v13</h1>
+<h1 id="fix-breaking-change-instancedata-in-v13" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="5">InstanceData</em> in v13</h1>
 
-<p><strong>Keywords:</strong> #Deprecated #InstanceData</p>
-<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p>Specifically, three features were removed:</p>
-<ol>
-<li>The ability to publish Module Instance Data directly</li>
-<li>The ability to configure this in the View settings</li>
-<li>The JS API which was optimized to process the resulting data in a fairly untypical way</li>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="7">Keywords:</strong> #Deprecated #InstanceData</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="9">2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="11">Specifically, three features were removed:</p>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="13">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="13">The ability to publish Module Instance Data directly</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="14">The ability to configure this in the View settings</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="15">The JS API which was optimized to process the resulting data in a fairly untypical way</li>
 </ol>
-<h2 id="reason-for-removal">Reason for Removal</h2>
-<p>These features were removed because they were almost never used, and newer mechanisms are much more appropriate than that old stuff.</p>
-<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
-<p>2sxc V3 (ca. 2013) introduced a feature where a Module could <em>publish</em> the data it was also showing on a normal screen as a WebApi / JSON call.</p>
-<p>It was required that a view activates this feature to ensure that it doesn't happen by accident. The settings in the view were like this (example from the <a href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimelineJs App</a>):</p>
+<h2 id="reason-for-removal" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="17">Reason for Removal</h2>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="19">These features were removed because they were almost never used, and newer mechanisms are much more appropriate than that old stuff.</p>
+<h2 id="history---how-it-used-to-work" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="21">History - How it Used to Work</h2>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="23">2sxc V3 (ca. 2013) introduced a feature where a Module could <em sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="23">publish</em> the data it was also showing on a normal screen as a WebApi / JSON call.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="25">It was required that a view activates this feature to ensure that it doesn't happen by accident. The settings in the view were like this (example from the <a href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="25">TimelineJs App</a>):</p>
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/view-configuration-instance-data.jpg" width="100%" class="full-width">
-<ol>
-<li>Go to the view configuration</li>
-<li>The old deprecated settings</li>
-<li>Enable data publishing (which opened the data for JS)</li>
-<li>The streams which were to be published</li>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="29">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="29">Go to the view configuration</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="30">The old deprecated settings</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="31">Enable data publishing (which opened the data for JS)</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="32">The streams which were to be published</li>
 </ol>
-<p><em>Note that the stream <code>Default</code> is still called <code>Default</code> today, but <code>ListContent</code> is usually called <code>Header</code> today.</em></p>
-<p>Once this was setup, there was a way to get this data through a WebApi call.</p>
-<ol>
-<li>From v3 to ca. v6 there was a call which actually went through the Dnn Page (so it was slow)</li>
-<li>V6 to ca. v11 it used a call to <code>app-sys/AppContent/GetContentBlockData</code></li>
-<li>Later there was a special WebApi call to <code>app/auto/InstanceData</code> which did the same thing</li>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34"><em sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34">Note that the stream <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34">Default</code> is still called <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34">Default</code> today, but <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34">ListContent</code> is usually called <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="34">Header</code> today.</em></p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="36">Once this was setup, there was a way to get this data through a WebApi call.</p>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="38">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="38">From v3 to ca. v6 there was a call which actually went through the Dnn Page (so it was slow)</li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="39">V6 to ca. v11 it used a call to <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="39">app-sys/AppContent/GetContentBlockData</code></li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="40">Later there was a special WebApi call to <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="40">app/auto/InstanceData</code> which did the same thing</li>
 </ol>
-<p>The format of the response was a bit special, specifically it looked like this (TimelineJs example):</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="42">The format of the response was a bit special, specifically it looked like this (TimelineJs example):</p>
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/web-api-instance-data-output.jpg" width="100%" class="full-width">
-<ol>
-<li>The call to <code>InstanceData</code></li>
-<li>The data which was on a special <code>List</code> sub-object</li>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="46">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="46">The call to <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="46">InstanceData</code></li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="47">The data which was on a special <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="47">List</code> sub-object</li>
 </ol>
-<p>To complement this, there was a JS-API which worked as follows:</p>
-<pre><code class="lang-js">// Process each Timeline DOM-element on the page
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="49">To complement this, there was a JS-API which worked as follows:</p>
+<pre><code class="lang-js" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="51">// Process each Timeline DOM-element on the page
 $(&quot;.timeline-embed&quot;).each(function() {
     // Define our timeline element, get moduleId
     var timeLineElement = $(this);
@@ -154,9 +154,9 @@ $(&quot;.timeline-embed&quot;).each(function() {
     }).load();
 });
 </code></pre>
-<p>Specifically, it used a <code>data.on</code> call to kind of say: <em>on load get the data from the current module</em>.</p>
-<p>The resulting data was then used in the JS - for example like this in TimelineJS:</p>
-<pre><code class="lang-js">// what should happen on loading of the data:
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="65">Specifically, it used a <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="65">data.on</code> call to kind of say: <em sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="65">on load get the data from the current module</em>.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="67">The resulting data was then used in the JS - for example like this in TimelineJS:</p>
+<pre><code class="lang-js" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="69">// what should happen on loading of the data:
 function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
     // Old code using the `in`, the `ListContent` and `.List[...]` stream
     var content = data.in.Default.List;
@@ -164,28 +164,28 @@ function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
     var timelineData = getTimelineData(moduleId, content, listContent);
     ...
 </code></pre>
-<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<div class="TIP">
+<h2 id="upgrade-to-newer-functionality" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="79">Upgrade to Newer functionality</h2>
+<div class="TIP" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="81">
 <h5>Tip</h5>
-<p>Below you'll find instructions how to create the same functionality using Visual Query and newer JS APIs.</p>
-<p>But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="82">Below you'll find instructions how to create the same functionality using Visual Query and newer JS APIs.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="84">But: In many cases you may actually want a different solution, because Visual Query is very powerful and may provide other ways to get you the data you need.</p>
 </div>
-<h3 id="step-1-create-query-which-gets-instance-data">Step 1: Create Query which Gets Instance Data</h3>
-<p>This creates a Query API call which gets the same data as before, but in a newer API and newer standard.</p>
-<p>Create the Query - in our example we'll call it <code>ModuleData</code>
+<h3 id="step-1-create-query-which-gets-instance-data" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="86">Step 1: Create Query which Gets Instance Data</h3>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="88">This creates a Query API call which gets the same data as before, but in a newer API and newer standard.</p>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="90">Create the Query - in our example we'll call it <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="90">ModuleData</code>
 <br>
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/query-create.jpg" width="25%">
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/query-edit.jpg" width="25%">
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/query-run.jpg" width="25%">
 <img src="../../../../../pages/abyss/releases/history/v13/instance-data/query-results.jpg" width="25%"></p>
-<p>After doing this, you have created a query which returns the same data as before, with 2 important differences:</p>
-<ol>
-<li>The stream <code>ListContent</code> is now called <code>Header</code></li>
-<li>There are no permissions configured yet for anonymous users to access the query</li>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="97">After doing this, you have created a query which returns the same data as before, with 2 important differences:</p>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="99">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="99">The stream <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="99">ListContent</code> is now called <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="99">Header</code></li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="100">There are no permissions configured yet for anonymous users to access the query</li>
 </ol>
-<h3 id="step-2-update-the-js-code-to-use-the-query-instead-of-the-data">Step 2: Update the JS code to use the Query instead of the .data</h3>
-<p>We have updated the TimelineJS code to use the new <code>fetchJson</code> <a href="https://github.com/2sic/app-timelinejs/blob/master/assets/scripts.js">api - see docs</a>:</p>
-<pre><code class="lang-js">// Process each Timeline DOM-element on the page
+<h3 id="step-2-update-the-js-code-to-use-the-query-instead-of-the-data" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="102">Step 2: Update the JS code to use the Query instead of the .data</h3>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="104">We have updated the TimelineJS code to use the new <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="104">fetchJson</code> <a href="https://github.com/2sic/app-timelinejs/blob/master/assets/scripts.js" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="104">api - see docs</a>:</p>
+<pre><code class="lang-js" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="106">// Process each Timeline DOM-element on the page
 $(&quot;.timeline-embed&quot;).each(function() {
   // Define our timeline element, get moduleId
   var timeLineElement = $(this);
@@ -196,25 +196,25 @@ $(&quot;.timeline-embed&quot;).each(function() {
     .then((data) =&gt; processDataAndCreateTimeline(data, sxc.id, timeLineElement));
 });
 </code></pre>
-<p>In addition, the data returned is a simpler. Specifically three things are now different:</p>
-<ol>
-<li>it doesn't have a level <code>in</code></li>
-<li>it doesn't need the use <code>.List</code></li>
-<li>in our new Query the Header is in a stream <code>Header</code> and not <code>ListContent</code></li>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="119">In addition, the data returned is a simpler. Specifically three things are now different:</p>
+<ol sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="121">
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="121">it doesn't have a level <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="121">in</code></li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="122">it doesn't need the use <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="122">.List</code></li>
+<li sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="123">in our new Query the Header is in a stream <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="123">Header</code> and not <code sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="123">ListContent</code></li>
 </ol>
-<p>This would be the modified code in TimelineJs:</p>
-<pre><code class="lang-js">function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="125">This would be the modified code in TimelineJs:</p>
+<pre><code class="lang-js" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="127">function processDataAndCreateTimeline (data, moduleId, timeLineElement) {
   // Re-format streams that are contained in data
   var content = data.Default;
   var listContent = data.Header[0];
   var timelineData = getTimelineData(moduleId, content, listContent);
   ...
 </code></pre>
-<h3 id="step-3-set-query-permissions">Step 3: Set Query Permissions</h3>
-<p>After doing Step 1 &amp; 2 you will have a working solution, but only super-users (host-users) can use the query because the read-permissions have not yet been configured. To configure them, use this checklist:</p>
+<h3 id="step-3-set-query-permissions" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="136">Step 3: Set Query Permissions</h3>
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="138">After doing Step 1 &amp; 2 you will have a working solution, but only super-users (host-users) can use the query because the read-permissions have not yet been configured. To configure them, use this checklist:</p>
 <iframe src="https://azing.org/2sxc/r/BE0HbDwA?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<hr>
-<p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-id">https://go.2sxc.org/brc-13-id</a></p>
+<hr sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="143">
+<p sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="145">Shortlink to here: <a href="https://go.2sxc.org/brc-13-id" sourcefile="pages/abyss/releases/history/v13/instance-data/index.md" sourcestartlinenumber="145">https://go.2sxc.org/brc-13-id</a></p>
 
 </article>
 

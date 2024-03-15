@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,84 +108,84 @@
         <article data-uid="JsCode.TurnOn.Specs">
 
 <img src="../../assets/features/turn-on.svg" width="100%">
-<h1 id="turnon-javascript-api-specs-wip">turnOn JavaScript API Specs (WIP!)</h1>
-<p>The configuration is always a JSON. The simplest possible <strong>turnOn</strong> would be this:</p>
-<pre><code class="lang-html">&lt;em turn-on='{ &quot;run&quot;: &quot;window.startSomething()&quot; }'&gt;&lt;/em&gt;
+<h1 id="turnon-javascript-api-specs-wip" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="7">turnOn JavaScript API Specs (WIP!)</h1>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="9">The configuration is always a JSON. The simplest possible <strong sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="9">turnOn</strong> would be this:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="11">&lt;em turn-on='{ &quot;run&quot;: &quot;window.startSomething()&quot; }'&gt;&lt;/em&gt;
 </code></pre>
-<p>Longer name segments are automatically checked one by one, so this will also work reliably:</p>
-<pre><code class="lang-html">&lt;em turn-on='{ &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="15">Longer name segments are automatically checked one by one, so this will also work reliably:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="17">&lt;em turn-on='{ &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
 </code></pre>
-<p>Very often you'll then want to include data - either an identifier, a string or object:</p>
-<pre><code class="lang-html">&lt;em turn-on='{ &quot;run&quot;: &quot;window.startMeaningOfLife()&quot;, &quot;data&quot;: &quot;42&quot; }'&gt;&lt;/em&gt;
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="21">Very often you'll then want to include data - either an identifier, a string or object:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="23">&lt;em turn-on='{ &quot;run&quot;: &quot;window.startMeaningOfLife()&quot;, &quot;data&quot;: &quot;42&quot; }'&gt;&lt;/em&gt;
 
 &lt;em turn-on='{ &quot;run&quot;: &quot;window.startMeaningOfLife()&quot;, &quot;data&quot;: { &quot;answer&quot;: &quot;42&quot;, &quot;question&quot;: null }'&gt;&lt;/em&gt;
 </code></pre>
-<p>In addition you can also specify one or more objects to wait for:</p>
-<pre><code class="lang-html">&lt;em turn-on='{ &quot;await&quot;: [&quot;window.$&quot;, &quot;window.fancybox&quot;], &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="29">In addition you can also specify one or more objects to wait for:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="31">&lt;em turn-on='{ &quot;await&quot;: [&quot;window.$&quot;, &quot;window.fancybox&quot;], &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
 </code></pre>
-<p>You can also wait for a ready-check to exist and for it to return true:</p>
-<pre><code class="lang-html">&lt;em turn-on='{ &quot;await&quot;: [&quot;window.appGallery.isReady()&quot;], &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="35">You can also wait for a ready-check to exist and for it to return true:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="37">&lt;em turn-on='{ &quot;await&quot;: [&quot;window.appGallery.isReady()&quot;], &quot;run&quot;: &quot;window.appGallery.master.start()&quot; }'&gt;&lt;/em&gt;
 </code></pre>
-<h2 id="turnon-json-schema">turnOn JSON Schema</h2>
-<p>These are the properties you can set</p>
-<table>
+<h2 id="turnon-json-schema" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="41">turnOn JSON Schema</h2>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="43">These are the properties you can set</p>
+<table sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="45">
 <thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Comments</th>
+<tr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="45">
+<th sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="45">Property</th>
+<th sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="45">Type</th>
+<th sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="45">Comments</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>await</code></td>
-<td><code>string[]</code></td>
-<td>Strings can be objects on window or functions to call for finding out if it's ready.</td>
+<tr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47">
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47">await</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47">string[]</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="47">Strings can be objects on window or functions to call for finding out if it's ready.</td>
 </tr>
-<tr>
-<td><code>run</code> (req.)</td>
-<td><code>string</code></td>
-<td>The function to call once it exists</td>
+<tr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48">
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48">run</code> (req.)</td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48">string</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="48">The function to call once it exists</td>
 </tr>
-<tr>
-<td><code>data</code></td>
-<td><code>any</code></td>
-<td>data to give the run-command</td>
+<tr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49">
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49">data</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49">any</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="49">data to give the run-command</td>
 </tr>
-<tr>
-<td><code>debug</code></td>
-<td><code>boolean</code></td>
-<td>will console-log what it's doing</td>
+<tr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50">
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50">debug</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50"><code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50">boolean</code></td>
+<td sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="50">will console-log what it's doing</td>
 </tr>
 </tbody>
 </table>
-<h2 id="more-on-the-await-property">More on the <code>await</code> Property</h2>
-<p>This is always a string array. As of v0.1 all values...</p>
-<ul>
-<li>must begin with <code>window</code></li>
-<li>can end with just a name like <code>window.something</code> or with <code>()</code> like <code>window.something()</code></li>
-<li>can have a much longer name like <code>window.myTopic.mySubtopic.ready</code></li>
-<li>if it ends with <code>()</code> then it will be called repeatedly until it returns <code>true</code></li>
-<li>experimental: if the node returns a promise object, will wait for that to complete (not fully tested)</li>
+<h2 id="more-on-the-await-property" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="52">More on the <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="52">await</code> Property</h2>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="54">This is always a string array. As of v0.1 all values...</p>
+<ul sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="56">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="56">must begin with <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="56">window</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="57">can end with just a name like <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="57">window.something</code> or with <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="57">()</code> like <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="57">window.something()</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="58">can have a much longer name like <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="58">window.myTopic.mySubtopic.ready</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="59">if it ends with <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="59">()</code> then it will be called repeatedly until it returns <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="59">true</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="60">experimental: if the node returns a promise object, will wait for that to complete (not fully tested)</li>
 </ul>
-<h2 id="more-on-the-run-property">More on the <code>run</code> Property</h2>
-<ul>
-<li>must begin with <code>window</code></li>
-<li>can have a short name like <code>window.ready()</code> or a long name like <code>window.myTopic.mySubtopic.ready()</code></li>
-<li>must end with <code>()</code></li>
-<li>the run can be an isolated function or part of a larger object. It will preserve the <code>this</code> if it's part of a larger object</li>
+<h2 id="more-on-the-run-property" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="63">More on the <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="63">run</code> Property</h2>
+<ul sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="65">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="65">must begin with <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="65">window</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="66">can have a short name like <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="66">window.ready()</code> or a long name like <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="66">window.myTopic.mySubtopic.ready()</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="67">must end with <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="67">()</code></li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="68">the run can be an isolated function or part of a larger object. It will preserve the <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="68">this</code> if it's part of a larger object</li>
 </ul>
-<h2 id="debug-turnon">Debug turnOn</h2>
-<p>In some cases you may not get what you expect and need to debug what you're doing. There are two options:</p>
-<ul>
-<li>To debug a specific turnOn just add the <code>&quot;debug&quot;: true</code> to the JSON</li>
-<li>To debug everything in turnOn, set <code>window.debugTurnOn = true;</code> anywhere on the page. <em>this will flood your console</em></li>
+<h2 id="debug-turnon" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="70">Debug turnOn</h2>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="72">In some cases you may not get what you expect and need to debug what you're doing. There are two options:</p>
+<ul sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="74">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="74">To debug a specific turnOn just add the <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="74">&quot;debug&quot;: true</code> to the JSON</li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="75">To debug everything in turnOn, set <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="75">window.debugTurnOn = true;</code> anywhere on the page. <em sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="75">this will flood your console</em></li>
 </ul>
-<h2 id="common-problems">Common Problems</h2>
-<p>The most common cause of issues is an invalid JSON. You'll get errors in the console if you do this.
-This is especially common if you add dynamic data from the CMS to the object, as it could contain <code>&quot;</code> characters which break the json.</p>
-<p>Another common problem is converting boolean C# values to inject into the JSON. Here's why:</p>
-<pre><code class="lang-html">&lt;!-- this will fail --&gt;
+<h2 id="common-problems" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="77">Common Problems</h2>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="79">The most common cause of issues is an invalid JSON. You'll get errors in the console if you do this.
+This is especially common if you add dynamic data from the CMS to the object, as it could contain <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="80">&quot;</code> characters which break the json.</p>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="82">Another common problem is converting boolean C# values to inject into the JSON. Here's why:</p>
+<pre><code class="lang-html" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="84">&lt;!-- this will fail --&gt;
 &lt;span turn-on='{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: Settings.Show }}'&gt;&lt;/span&gt;
 
 &lt;!-- will produce this --&gt;
@@ -197,23 +197,23 @@ This is especially common if you add dynamic data from the CMS to the object, as
 &lt;!-- will produce this --&gt;
 &lt;span turn-on='{ &quot;run&quot;: &quot;window.load()&quot;, &quot;data&quot;: { &quot;show&quot;: true }}'&gt;&lt;/span&gt;
 </code></pre>
-<h2 id="allowed-html-tags">Allowed HTML Tags</h2>
-<p>Any valid HTML tag can be used, incl. existing <code>div</code> or <code>span</code> tags which just get a <code>turn-on</code> attribute added. So you can use <code>&lt;em&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> or even <code>&lt;turnOn&gt;</code></p>
-<p>There are a few cases where problems could arise though:</p>
-<ol>
-<li>If you use a <code>&lt;script&gt;</code> tag, this may not work as expected, as additional processing layers may do something with these script tags. This is especially important in Oqtane, as there the script tags are filtered out and treated separately.</li>
-<li>If you use a tag which you will later modify in HTML (like using jQuery or Angular) this may fail, because <strong>turnOn</strong> will make status-updates to the tag and this could interfere with your code doing updates as well.</li>
+<h2 id="allowed-html-tags" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="98">Allowed HTML Tags</h2>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">Any valid HTML tag can be used, incl. existing <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">div</code> or <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">span</code> tags which just get a <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">turn-on</code> attribute added. So you can use <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">&lt;em&gt;</code>, <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">&lt;div&gt;</code>, <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">&lt;span&gt;</code> or even <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="100">&lt;turnOn&gt;</code></p>
+<p sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="102">There are a few cases where problems could arise though:</p>
+<ol sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="104">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="104">If you use a <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="104">&lt;script&gt;</code> tag, this may not work as expected, as additional processing layers may do something with these script tags. This is especially important in Oqtane, as there the script tags are filtered out and treated separately.</li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="105">If you use a tag which you will later modify in HTML (like using jQuery or Angular) this may fail, because <strong sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="105">turnOn</strong> will make status-updates to the tag and this could interfere with your code doing updates as well.</li>
 </ol>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced on 2sxc 12.02</li>
+<hr sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="110">
+<h2 id="history" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="112">History</h2>
+<ol sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="114">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="114">Introduced on 2sxc 12.02</li>
 </ol>
-<h2 id="future-features">Future features</h2>
-<ol>
-<li>Get await-functions to preserve the <code>this</code> scope</li>
-<li>also await certain DOM events; ATM you can do this easily after turnOn has run it's magic, but it would be nice to specify it in the config</li>
-<li>load scripts and js</li>
+<h2 id="future-features" sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="116">Future features</h2>
+<ol sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="118">
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="118">Get await-functions to preserve the <code sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="118">this</code> scope</li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="119">also await certain DOM events; ATM you can do this easily after turnOn has run it's magic, but it would be nice to specify it in the config</li>
+<li sourcefile="pages/js-code/turn-on/specs.md" sourcestartlinenumber="120">load scripts and js</li>
 </ol>
 
 </article>

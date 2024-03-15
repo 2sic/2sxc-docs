@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="Basics.Server.DataFlow">
-<h1 id="how-data-flows-in-the-server">How Data Flows in the Server</h1>
+<h1 id="how-data-flows-in-the-server" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="5">How Data Flows in the Server</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,87 +203,87 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .process-all { visibility: visible; } </style>
-<p>2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside.
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="11">2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside.
 Let's take a look at how data is accessed, cached, queried, maybe cached again, and provided to the output.</p>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="14">
 <h5>Note</h5>
-<p>All the data handling systems come from the <a class="xref" href="../../api/dot-net/ToSic.Eav.html">EAV</a>. This is then enhanced and customized by Sxc and Sxc.Dnn.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="15">All the data handling systems come from the <a class="xref" href="../../api/dot-net/ToSic.Eav.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="15">EAV</a>. This is then enhanced and customized by Sxc and Sxc.Dnn.</p>
 </div>
-<h2 id="core-paradigms">Core Paradigms</h2>
-<h3 id="rule-1-data-is-reactive">Rule #1: Data is Reactive</h3>
-<p>As you'll soon see, the EAV performs a lot of automatic lookup and caching, but as a first rule, this happens <em>Reactively</em>, only when data is actually accessed.
-This is similar to how <a href="http://reactivex.io/">ReactiveX</a> or <a href="https://ngrx.io/">NgRx</a> work, just much simpler.</p>
-<h3 id="rule-2-data-is-read-only">Rule #2: Data is Read-Only</h3>
-<p>Any data the code receives as <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> objects is read-only.
+<h2 id="core-paradigms" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="17">Core Paradigms</h2>
+<h3 id="rule-1-data-is-reactive" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="19">Rule #1: Data is Reactive</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="21">As you'll soon see, the EAV performs a lot of automatic lookup and caching, but as a first rule, this happens <em sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="21">Reactively</em>, only when data is actually accessed.
+This is similar to how <a href="http://reactivex.io/" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="22">ReactiveX</a> or <a href="https://ngrx.io/" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="22">NgRx</a> work, just much simpler.</p>
+<h3 id="rule-2-data-is-read-only" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="24">Rule #2: Data is Read-Only</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="26">Any data the code receives as <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="26">IEntity</a> objects is read-only.
 This allows for a much more robust data model and API which in a CMS environment is usually 99% read, 1% write.</p>
-<h3 id="rule-3-data-always-comes-from-datasources">Rule #3: Data Always Comes from DataSources</h3>
-<p>Inside the system everything is loosely coupled (think Depedency Injection).
-So anything requesting data will always use a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> provided by some magic, and then use what was given.</p>
-<h3 id="rule-4-data-is-managed-and-cached-per-app">Rule #4: Data is Managed and Cached per App</h3>
-<p>Once data from an App was requested, the entire app is loaded and cached.
-Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an <a class="xref" href="caching/app-state/app-state.html">AppState</a>.</p>
-<h2 id="overall-flow-when-creating-html">Overall Flow When Creating Html</h2>
-<p>Imagine that your custom Razor template in a Dnn module is initialized. Here's what happens:</p>
-<h3 id="1-preparation">1. Preparation</h3>
-<p>2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a <a href="xref:ToSic.Sxc.Blocks.IBlock">Block</a> for this InstanceId (which is the ModuleId).</p>
-<ol>
-<li>The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
-<li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the <code>AppId</code> which it is visualizing, and a <code>ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included).</li>
-<li>The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.
-<ol>
-<li>When the configuration is found, the CmsBlock then knows what <a href="xref:ToSic.Sxc.Blocks.IView">View</a> will be used.</li>
-<li>The CmsBlock itself is a <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> and is now configured to deliver the data which the view expects.</li>
+<h3 id="rule-3-data-always-comes-from-datasources" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="29">Rule #3: Data Always Comes from DataSources</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="31">Inside the system everything is loosely coupled (think Depedency Injection).
+So anything requesting data will always use a <a class="xref" href="../../net-code/data-sources/index.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="32">DataSource</a> provided by some magic, and then use what was given.</p>
+<h3 id="rule-4-data-is-managed-and-cached-per-app" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="34">Rule #4: Data is Managed and Cached per App</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="36">Once data from an App was requested, the entire app is loaded and cached.
+Within an app a lot of data can be linked together using Content-Types, Relationships, Sub-Lists, Metadata and more. If we would lazy-load this on-demand from the storage system (SQL), it would result in a ping-pong of requests, which would be very inefficient. This unit of cache is called an <a class="xref" href="caching/app-state/app-state.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="37">AppState</a>.</p>
+<h2 id="overall-flow-when-creating-html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="39">Overall Flow When Creating Html</h2>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="41">Imagine that your custom Razor template in a Dnn module is initialized. Here's what happens:</p>
+<h3 id="1-preparation" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="43">1. Preparation</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="45">2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a <a href="xref:ToSic.Sxc.Blocks.IBlock" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="45">Block</a> for this InstanceId (which is the ModuleId).</p>
+<ol sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="47">
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="47">The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="47">CmsBlock</a> <a class="xref" href="../../net-code/data-sources/index.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="47">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="48">The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="48">CmsBlock</a> knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="48">AppId</code> which it is visualizing, and a <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="48">ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included).</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="49">The CmsBlock DataSource will then ask the underlying EAV for this block configuration (stored as an Entity) which is then loaded from the Cache.
+<ol sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="50">
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="50">When the configuration is found, the CmsBlock then knows what <a href="xref:ToSic.Sxc.Blocks.IView" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="50">View</a> will be used.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="51">The CmsBlock itself is a <a class="xref" href="../../net-code/data-sources/index.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="51">DataSource</a> and is now configured to deliver the data which the view expects.</li>
 </ol>
 </li>
 </ol>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="53">
 <h5>Note</h5>
-<p>The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the <a class="xref" href="caching/app-state/app-state.html">AppState</a> if it hasn't been accessed before.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="54">The CmsBlock doesn't know about the internals of the cache, it just asks for it. The cache will auto-initialize the <a class="xref" href="caching/app-state/app-state.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="54">AppState</a> if it hasn't been accessed before.</p>
 </div>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="56">
 <h5>Note</h5>
-<p>The CmsBlock will also <em>not</em> load any data yet. It just knows what would be loaded, should it ever be accessed.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="57">The CmsBlock will also <em sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="57">not</em> load any data yet. It just knows what would be loaded, should it ever be accessed.</p>
 </div>
-<div class="TIP">
+<div class="TIP" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="59">
 <h5>Tip</h5>
-<p>When you use views which don't have a content-type configured, then properties like <code>Data</code>, <code>Content</code> or <code>Header</code> will be null. But <code>App.Data</code> will still work.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="60">When you use views which don't have a content-type configured, then properties like <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="60">Data</code>, <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="60">Content</code> or <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="60">Header</code> will be null. But <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="60">App.Data</code> will still work.</p>
 </div>
-<h3 id="2-execution">2. Execution</h3>
-<p>The Block is now ready. 2sxc now consults the View to find out which <a class="xref" href="../../api/dot-net/ToSic.Sxc.Engines.IEngine.html">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
-<ol>
-<li>The engine loads the template and lets it do what it should.</li>
-<li>If the template has code accessing <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data">Data</a> then the underlying source will retrieve the necessary data.
-<ul>
-<li>If it's a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock.</li>
-<li>If the view relies on a Query, then this query is built and will be waiting to execute if the data is accessed.</li>
+<h3 id="2-execution" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="62">2. Execution</h3>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="63">The Block is now ready. 2sxc now consults the View to find out which <a class="xref" href="../../api/dot-net/ToSic.Sxc.Engines.IEngine.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="63">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
+<ol sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="65">
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="65">The engine loads the template and lets it do what it should.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="66">If the template has code accessing <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="66">Data</a> then the underlying source will retrieve the necessary data.
+<ul sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="67">
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="67">If it's a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="68">If the view relies on a Query, then this query is built and will be waiting to execute if the data is accessed.</li>
 </ul>
 </li>
-<li>If the code accesses <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data">App</a>.<a href="xref:ToSic.Eav.Apps.App.Data">Data</a> then this data source will build up everything necessary so it just works.</li>
-<li>If the code accesses <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data">App</a>.<a href="xref:ToSic.Eav.Apps.App.Query">Query</a> then the underlying system will prepare the Query as needed.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="69">If the code accesses <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="69">App</a>.<a href="xref:ToSic.Eav.Apps.App.Data" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="69">Data</a> then this data source will build up everything necessary so it just works.</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="70">If the code accesses <a href="xref:ToSic.Sxc.Code.IDynamicCode.Data" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="70">App</a>.<a href="xref:ToSic.Eav.Apps.App.Query" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="70">Query</a> then the underlying system will prepare the Query as needed.</li>
 </ol>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="72">
 <h5>Note</h5>
-<p>All the data retrieving features like <code>Data</code> do not actually retrieve any data unless accessed.<br>
-This also means that <code>Content</code> or <code>Header</code> won't use any CPU cycles unless accessed.<br>
-The same goes for <code>App.Data</code> - nothing is processed unless it's accessed.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="73">All the data retrieving features like <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="73">Data</code> do not actually retrieve any data unless accessed.<br>
+This also means that <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="74">Content</code> or <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="74">Header</code> won't use any CPU cycles unless accessed.<br>
+The same goes for <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="75">App.Data</code> - nothing is processed unless it's accessed.</p>
 </div>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="77">
 <h5>Note</h5>
-<p>The queries are only provided by the App for immediate use. They won't be built or executed unless they are actually read.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="78">The queries are only provided by the App for immediate use. They won't be built or executed unless they are actually read.</p>
 </div>
-<h2 id="overall-flow-when-creating-webapis">Overall Flow when Creating WebAPIs</h2>
-<p>This works just like the Html creation, except that we don't need an engine. The code which inherits from <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html">ApiController</a> now works with the data as needed.</p>
-<p>The same lazy-execution rules apply: neither <code>Data</code>, <code>Content</code>, <code>App.Data</code> or <code>App.Query</code> use any CPU cycles, unless the data is actually pulled by reading it.</p>
-<h2 id="read-also">Read Also</h2>
-<ol>
-<li>Templates</li>
-<li>Rendering Engines like Token/Razor</li>
-<li>Content-Blocks</li>
-<li>Custom WebApi (which is also kind of a dynamic rendering engine)</li>
+<h2 id="overall-flow-when-creating-webapis" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="80">Overall Flow when Creating WebAPIs</h2>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="82">This works just like the Html creation, except that we don't need an engine. The code which inherits from <a class="xref" href="../../api/dot-net/ToSic.Sxc.Dnn.ApiController.html" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="82">ApiController</a> now works with the data as needed.</p>
+<p sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="84">The same lazy-execution rules apply: neither <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="84">Data</code>, <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="84">Content</code>, <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="84">App.Data</code> or <code sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="84">App.Query</code> use any CPU cycles, unless the data is actually pulled by reading it.</p>
+<h2 id="read-also" sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="87">Read Also</h2>
+<ol sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="89">
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="89">Templates</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="90">Rendering Engines like Token/Razor</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="91">Content-Blocks</li>
+<li sourcefile="pages/basics/server/data-flow.md" sourcestartlinenumber="92">Custom WebApi (which is also kind of a dynamic rendering engine)</li>
 </ol>
 
 </article>

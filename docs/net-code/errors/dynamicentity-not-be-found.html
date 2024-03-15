@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,42 +106,42 @@
         </div>
 
         <article data-uid="NetCode.Errors.DynamicEntityNotFound">
-<h1 id="error-the-type-or-namespace-name-dynamicentity-could-not-be-found">Error: The type or namespace name 'DynamicEntity' could not be found</h1>
+<h1 id="error-the-type-or-namespace-name-dynamicentity-could-not-be-found" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="5">Error: The type or namespace name 'DynamicEntity' could not be found</h1>
 
-<p>If you see an error like this:</p>
-<pre><code class="lang-text">Error: System.Web.HttpCompileException (0x80004005): ...: error CS0246: The type or namespace name 'DynamicEntity' could not be found (are you missing a using directive or an assembly reference?) 
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="7">If you see an error like this:</p>
+<pre><code class="lang-text" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="9">Error: System.Web.HttpCompileException (0x80004005): ...: error CS0246: The type or namespace name 'DynamicEntity' could not be found (are you missing a using directive or an assembly reference?) 
 
 </code></pre>
-<p>It usually means that you have code using DynamicEntity which had to be moved to another namespace for consistency. We're sorry about the breaking change.</p>
-<p>From what we see it mainly affects the very old FAQ app which had some very old coding style in it for LINQ. In this case it was not possible to clean 2sxc and still ensure that this works, because of type-casting restrictions in C# related to <a href="https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance">covariance and contravariance</a>.</p>
-<h2 id="background-dynamicentity-was-moved">Background: DynamicEntity was moved</h2>
-<p>To create the public documentation we had to make sure our API was consistent, and IEntity was one of the exceptions. Before 2sxc 10.20 it was in the namespace <code>ToSic.SexyContent</code>. We standardized it now to <code>ToSic.Sxc.Data</code> so the full name is <code>ToSic.Sxc.Data.DynamicEntity</code>.</p>
-<h2 id="quick-fix-change-the-namespace">Quick Fix: Change the namespace</h2>
-<p>Your code probably has a <code>@using ToSic.SexyContent</code>. You should change this to</p>
-<pre><code class="lang-razor">@using ToSic.Sxc.Data;
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="14">It usually means that you have code using DynamicEntity which had to be moved to another namespace for consistency. We're sorry about the breaking change.</p>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="16">From what we see it mainly affects the very old FAQ app which had some very old coding style in it for LINQ. In this case it was not possible to clean 2sxc and still ensure that this works, because of type-casting restrictions in C# related to <a href="https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="16">covariance and contravariance</a>.</p>
+<h2 id="background-dynamicentity-was-moved" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="18">Background: DynamicEntity was moved</h2>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="20">To create the public documentation we had to make sure our API was consistent, and IEntity was one of the exceptions. Before 2sxc 10.20 it was in the namespace <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="20">ToSic.SexyContent</code>. We standardized it now to <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="20">ToSic.Sxc.Data</code> so the full name is <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="20">ToSic.Sxc.Data.DynamicEntity</code>.</p>
+<h2 id="quick-fix-change-the-namespace" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="22">Quick Fix: Change the namespace</h2>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="24">Your code probably has a <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="24">@using ToSic.SexyContent</code>. You should change this to</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="26">@using ToSic.Sxc.Data;
 </code></pre>
-<p>And everything should work. But please also check the good fix below:</p>
-<h2 id="good-fix-change-to-dynamic">Good Fix: Change to <code>&lt;dynamic&gt;</code></h2>
-<p>Razor code shouldn't actually need to know the type of this <code>dynamic</code> entity. So it's better to replace occurances of DynamicEntity with the appropriate <code>dynamic</code>. For example, replace <code>List&lt;DynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code> (note that <code>List&lt;dynamic&gt;</code> won't work because of covariance restrictions).</p>
-<p>In the example of the FAQ app, it's recommended you change line 23</p>
-<pre><code class="lang-razor">&lt;li class=&quot;sc-element faq-set&quot; data-tags=&quot;@String.Join(&quot;,&quot;, ((List&lt;DynamicEntity&gt;)q.Categories).Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="30">And everything should work. But please also check the good fix below:</p>
+<h2 id="good-fix-change-to-dynamic" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="32">Good Fix: Change to <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="32">&lt;dynamic&gt;</code></h2>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">Razor code shouldn't actually need to know the type of this <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">dynamic</code> entity. So it's better to replace occurances of DynamicEntity with the appropriate <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">dynamic</code>. For example, replace <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">List&lt;DynamicEntity&gt;</code> with <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">IEnumerable&lt;dynamic&gt;</code> (note that <code sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="34">List&lt;dynamic&gt;</code> won't work because of covariance restrictions).</p>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="36">In the example of the FAQ app, it's recommended you change line 23</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="38">&lt;li class=&quot;sc-element faq-set&quot; data-tags=&quot;@String.Join(&quot;,&quot;, ((List&lt;DynamicEntity&gt;)q.Categories).Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
 </code></pre>
-<p>to</p>
-<pre><code class="lang-razor">&lt;li class=&quot;sc-element faq-set&quot; 
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="42">to</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="44">&lt;li class=&quot;sc-element faq-set&quot; 
   data-tags=&quot;@String.Join(&quot;,&quot;, 
     (q.Categories as IEnumerable&lt;dynamic&gt;)
       .Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
 </code></pre>
-<p>To better understand this, best consult the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/linq/home">LINQ Tutorials</a></p>
-<h2 id="full-error-example">Full Error Example</h2>
-<p>A full error can look like this:</p>
-<pre><code class="lang-text">Error: System.Web.HttpCompileException (0x80004005): ...\Portals\...\2sxc\FAQ with Categories\_All questions (sorted) of a selected category.cshtml(23): error CS0246: The type or namespace name 'DynamicEntity' could not be found (are you missing a using directive or an assembly reference?) at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 107 at ToSic.Sxc.Engines.RazorEngine.InitWebpage() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 128 at ToSic.Sxc.Engines.RazorEngine.Init() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 43 at ToSic.Sxc.Engines.EngineBase.Init(ICmsBlock cmsBlock, Purpose purpose, ILog parentLog) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Engines\EngineBase.cs:line 76 at ToSic.Sxc.Blocks.CmsBlock.GetRenderingEngine(Purpose renderingPurpose) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 122 at ToSic.Sxc.Blocks.CmsBlock.Render() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 56
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="51">To better understand this, best consult the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/linq/home" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="51">LINQ Tutorials</a></p>
+<h2 id="full-error-example" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="53">Full Error Example</h2>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="55">A full error can look like this:</p>
+<pre><code class="lang-text" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="57">Error: System.Web.HttpCompileException (0x80004005): ...\Portals\...\2sxc\FAQ with Categories\_All questions (sorted) of a selected category.cshtml(23): error CS0246: The type or namespace name 'DynamicEntity' could not be found (are you missing a using directive or an assembly reference?) at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 107 at ToSic.Sxc.Engines.RazorEngine.InitWebpage() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 128 at ToSic.Sxc.Engines.RazorEngine.Init() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\2Sexy Content Razor\Engines\Razor\RazorEngine.cs:line 43 at ToSic.Sxc.Engines.EngineBase.Init(ICmsBlock cmsBlock, Purpose purpose, ILog parentLog) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Engines\EngineBase.cs:line 76 at ToSic.Sxc.Blocks.CmsBlock.GetRenderingEngine(Purpose renderingPurpose) in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 122 at ToSic.Sxc.Blocks.CmsBlock.Render() in C:\Projects\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\Blocks\CmsBlock_Render.cs:line 56
 
 </code></pre>
-<p>Here's a print-screen:</p>
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="62">Here's a print-screen:</p>
 <img src="../../pages/net-code/errors/assets/dynamicentity-not-found.jpg" width="100%">
-<hr>
-<p>Shortlink: <a href="https://go.2sxc.org/ErrDynamicEntity">https://go.2sxc.org/ErrDynamicEntity</a></p>
+<hr sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="66">
+<p sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="68">Shortlink: <a href="https://go.2sxc.org/ErrDynamicEntity" sourcefile="pages/net-code/errors/dynamicentity-not-be-found.md" sourcestartlinenumber="68">https://go.2sxc.org/ErrDynamicEntity</a></p>
 
 </article>
 

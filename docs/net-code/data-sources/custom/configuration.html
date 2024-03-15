@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.Configuration">
-<h1 id="datasource-configuration">DataSource Configuration</h1>
+<h1 id="datasource-configuration" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="5">DataSource Configuration</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,7 +203,7 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>
@@ -212,94 +212,94 @@
   .context-box-summary .data-configuration
   { visibility: visible; }
 </style>
-<p>DataSources are consumed in code and in VisualQuery.
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="15">DataSources are consumed in code and in VisualQuery.
 In both cases they may need some configuration.</p>
-<p>When used in code, the code will look a bit like this:</p>
-<pre><code class="lang-c#">var withConfig = Kit.Data.GetSource(name: &quot;WithConfig&quot;, parameters: new {
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="18">When used in code, the code will look a bit like this:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="20">var withConfig = Kit.Data.GetSource(name: &quot;WithConfig&quot;, parameters: new {
   AmountOfItems = 3,
   FavoriteColor = &quot;dark blue&quot;
 });
 </code></pre>
-<p>When used in VisualQuery, the developer will specify the configuration in the UI, and the Query system will automatically transfer all the values to the DataSource.</p>
-<h2 id="how-it-works">How It Works</h2>
-<p>For all of this to work, there is a robust <strong>Configuration System</strong>.
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="27">When used in VisualQuery, the developer will specify the configuration in the UI, and the Query system will automatically transfer all the values to the DataSource.</p>
+<h2 id="how-it-works" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="29">How It Works</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="31">For all of this to work, there is a robust <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="31">Configuration System</strong>.
 Here's how it works in summary:</p>
-<ol>
-<li>All properties of a DataSource which are part of the configuration are decorated using the <a class="xref" href="configuration-attribute.html">Configuration Attribute</a></li>
-<li>When the object is created, the class is scanned for these attributes and a internal dictionary of all configuration values is created</li>
-<li>These configurations use <code>Tokens</code> - so internally it will be something like <code>AmountOfItems = [MyConfiguration:AmountOfItems||3]</code></li>
-<li>If code set a new value, the token is flushed and the new value is set</li>
-<li>If a query is used, then the token part <code>[MyConfiguration:AmountOfItems]</code> returns what was in the data</li>
-<li>If no value is set, the fallback value is used, since <code>[MyConfiguration:AmountOfItems]</code> doesn't return anything</li>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="34">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="34">All properties of a DataSource which are part of the configuration are decorated using the <a class="xref" href="configuration-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="34">Configuration Attribute</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="35">When the object is created, the class is scanned for these attributes and a internal dictionary of all configuration values is created</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="36">These configurations use <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="36">Tokens</code> - so internally it will be something like <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="36">AmountOfItems = [MyConfiguration:AmountOfItems||3]</code></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="37">If code set a new value, the token is flushed and the new value is set</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="38">If a query is used, then the token part <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="38">[MyConfiguration:AmountOfItems]</code> returns what was in the data</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="39">If no value is set, the fallback value is used, since <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="39">[MyConfiguration:AmountOfItems]</code> doesn't return anything</li>
 </ol>
-<p>The foundation of this is built using:</p>
-<ol>
-<li>The <strong><a class="xref" href="configuration-attribute.html">Configuration Attribute</a></strong> and an internal loader</li>
-<li>The <strong><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">Configuration manager</a></strong> on the DataSource which helps you get the configuration</li>
-<li>The <strong><a class="xref" href="../../../abyss/parts/look-up/engine.html">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="41">The foundation of this is built using:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="43">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="43">The <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="43"><a class="xref" href="configuration-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="43">Configuration Attribute</a></strong> and an internal loader</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="44">The <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="44"><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="44">Configuration manager</a></strong> on the DataSource which helps you get the configuration</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="45">The <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="45"><a class="xref" href="../../../abyss/parts/look-up/engine.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="45">LookUp Engine</a></strong> which resolves any Tokens in the configuration</li>
 </ol>
-<p>For it to work in VisualQuery, it also needs:</p>
-<ol>
-<li>A <strong><a class="xref" href="configuration-data.html">Content-Type</a></strong> with fields matching the property names</li>
-<li>The <strong><a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
-<li>The internal <strong>Query Engine</strong> which provides the data on the lookup called <code>MyConfiguration</code></li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="47">For it to work in VisualQuery, it also needs:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="49">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="49">A <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="49"><a class="xref" href="configuration-data.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="49">Content-Type</a></strong> with fields matching the property names</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="50">The <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="50"><a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="50">VisualQuery Attribute</a></strong> on your DataSource which references that Content-Type</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="51">The internal <strong sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="51">Query Engine</strong> which provides the data on the lookup called <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="51">MyConfiguration</code></li>
 </ol>
-<h2 id="examples-of-configurations-needed">Examples of Configurations Needed</h2>
-<ul>
-<li>a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html">Paging</a> needs to know what page size it should use and what page it's on</li>
-<li>A <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html">CSV Data Source</a> needs to know what file it should load</li>
-<li>a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> needs to know the module ID</li>
-<li>an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.OwnerFilter.html">Owner-Filter DataSource</a> needs to know who the current user is, to find his items</li>
+<h2 id="examples-of-configurations-needed" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="53">Examples of Configurations Needed</h2>
+<ul sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="55">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="55">a <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Paging.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="55">Paging</a> needs to know what page size it should use and what page it's on</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="56">A <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Csv.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="56">CSV Data Source</a> needs to know what file it should load</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="57">a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="57">CmsBlock</a> needs to know the module ID</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="58">an <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.OwnerFilter.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="58">Owner-Filter DataSource</a> needs to know who the current user is, to find his items</li>
 </ul>
-<p>Some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em>&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em>&quot;use from url, but if not specified, try app-settings, and if that isn't defined, use 10&quot;</em>.</p>
-<h2 id="how-to-build-a-configurable-datasource">How to Build a Configurable DataSource</h2>
-<p>👉 Best check the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor#data-createsource">Dynamic DataSources Tutorials</a> for some easy examples</p>
-<h2 id="configuration-basics">Configuration Basics</h2>
-<p>Each configuration value of a <a class="xref" href="../datasource.html">DataSource</a> must be a value (string, int etc.).
-But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token</a> like <code>[MyConfiguration:PageNumber]</code>.
-This token is parsed <em>before any data is queried</em> using <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html">Configuration.GetThis()</a> to convert the Token to the expected value type.
-Best read more about <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Tokens</a> and how fallbacks, defaults and recursion work.</p>
-<p>The Tokens allow quite some fancy features:</p>
-<ol>
-<li>Your DataSource will use <code>[MyConfiguration:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
-<li>Since tokens also allow for default/fallback values, your code will often have <code>[MyConfiguration:Id||0]</code></li>
-<li>As tokens are recursive, the admin can specify things like <code>[QueryString:Id||752]</code> in the UI and your code (asking for <code>[MyConfiguration:Id]</code>) will get the ID from the URL or the default <code>752</code> as the Admin specified it.</li>
-<li>Thanks to <a class="xref" href="../../../abyss/parts/look-up/tokens.html">Token Stacking</a> a lot more is possible 😉</li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="60">Some of this information depends on the current context (ModuleId, UserId), others on configured settings (page size) and some on Url-parameters (Page number). In addition, we sometimes want to say <em sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="60">&quot;use the page-size configured in the App-Settings&quot;</em> or even more complex <em sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="60">&quot;use from url, but if not specified, try app-settings, and if that isn't defined, use 10&quot;</em>.</p>
+<h2 id="how-to-build-a-configurable-datasource" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="63">How to Build a Configurable DataSource</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="65">👉 Best check the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor#data-createsource" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="65">Dynamic DataSources Tutorials</a> for some easy examples</p>
+<h2 id="configuration-basics" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="68">Configuration Basics</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="70">Each configuration value of a <a class="xref" href="../datasource.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="70">DataSource</a> must be a value (string, int etc.).
+But to allow greater flexibility in configuration, it usually starts as a string <a class="xref" href="../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="71">Token</a> like <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="71">[MyConfiguration:PageNumber]</code>.
+This token is parsed <em sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="72">before any data is queried</em> using <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataSourceConfiguration.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="72">Configuration.GetThis()</a> to convert the Token to the expected value type.
+Best read more about <a class="xref" href="../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="73">Tokens</a> and how fallbacks, defaults and recursion work.</p>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="75">The Tokens allow quite some fancy features:</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="77">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="77">Your DataSource will use <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="77">[MyConfiguration:...]</code> tokens and will automatically get the settings as they were added in the UI</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="78">Since tokens also allow for default/fallback values, your code will often have <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="78">[MyConfiguration:Id||0]</code></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="79">As tokens are recursive, the admin can specify things like <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="79">[QueryString:Id||752]</code> in the UI and your code (asking for <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="79">[MyConfiguration:Id]</code>) will get the ID from the URL or the default <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="79">752</code> as the Admin specified it.</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="80">Thanks to <a class="xref" href="../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="80">Token Stacking</a> a lot more is possible 😉</li>
 </ol>
-<p>When a DataSource is configured, it has many parameter LookUp Sources like <code>Module</code>, <code>QueryString</code>, <code>App</code> etc.
-These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../abyss/parts/look-up/sources.html">LookUp Sources</a>.</p>
-<p>In your code you will usually not use these sources, but only use the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html"><code>MyConfiguration</code> source</a>.
-This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html">Configuration-UI</a>.
-So the token <code>[MyConfiguration:PageNumber]</code> will deliver the number or text in the input-field <code>pagenumber</code>.</p>
-<h2 id="how-tokens-are-defined-settings-edited-and-resolved">How Tokens are Defined, Settings Edited and Resolved</h2>
-<p>When you're using the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a> designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
-<ol>
-<li>Each DataSource object has a property called <code>Configuration</code> which is a dictionary containing all configuration properties the data source will care about. For example, the <code>EntityIdFilter</code> has a Configuration with only one property which is called <code>EntityIds</code>.</li>
-<li>The each property is first initialized with a Token-Template. This happens through the <code>[Configuration]</code> <a class="xref" href="configuration-attribute.html">attribute</a>.
-For example, the Csv DataSource has a <code>[Configuration(Fallback = &quot;\t&quot;)]</code>
-This says that the delimiter should come from the Settings-Entity field <code>Delimiter</code> and if not provided, fall back to <code>\t</code> (which is a tab character)</li>
-<li>For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the Csv DataSource has a string-property <code>Delimiter</code> which internally will get/set the in the Configuration dictionary.</li>
-<li>When the DataSource is first <em>sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants.</li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="82">When a DataSource is configured, it has many parameter LookUp Sources like <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="82">Module</code>, <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="82">QueryString</code>, <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="82">App</code> etc.
+These are shared and are identical for all objects. Read more about the <a class="xref" href="../../../abyss/parts/look-up/sources.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="83">LookUp Sources</a>.</p>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="85">In your code you will usually not use these sources, but only use the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="85"><code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="85">MyConfiguration</code> source</a>.
+This source only exists in C# and contains all the values the Admin/Editor entered in the <a class="xref" href="configuration-data.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="86">Configuration-UI</a>.
+So the token <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="87">[MyConfiguration:PageNumber]</code> will deliver the number or text in the input-field <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="87">pagenumber</code>.</p>
+<h2 id="how-tokens-are-defined-settings-edited-and-resolved" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="89">How Tokens are Defined, Settings Edited and Resolved</h2>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="91">When you're using the <a class="xref" href="../../../basics/query/visual-query/index.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="91">VisualQuery</a> designer, the configuration created is saved as an Entity (aka Content-Item) which must be injected into the DataSource configuration automatically. But when you use the object is your code, your code must be able to provide other values. But how does this work?</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="93">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="93">Each DataSource object has a property called <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="93">Configuration</code> which is a dictionary containing all configuration properties the data source will care about. For example, the <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="93">EntityIdFilter</code> has a Configuration with only one property which is called <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="93">EntityIds</code>.</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="94">The each property is first initialized with a Token-Template. This happens through the <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="94">[Configuration]</code> <a class="xref" href="configuration-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="94">attribute</a>.
+For example, the Csv DataSource has a <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="95">[Configuration(Fallback = &quot;\t&quot;)]</code>
+This says that the delimiter should come from the Settings-Entity field <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="96">Delimiter</code> and if not provided, fall back to <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="96">\t</code> (which is a tab character)</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="97">For the programmer who wants to set a number or whatever, this would be fairly unreliable to access from outside, so the DataSource should also have a real property which internally also modifies the dictionary. For example, the Csv DataSource has a string-property <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="97">Delimiter</code> which internally will get/set the in the Configuration dictionary.</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="98">When the DataSource is first <em sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="98">sucked</em> from, which happens when something tries to access the Out-Property, it will automatically run a token-engine to resolve the values, then run whatever action the data-source wants.</li>
 </ol>
-<p>So how does each scenario work out?</p>
-<ol>
-<li>If the programmer overwrote the <code>Delimiter</code> property, then internally the <code>Configuration[&quot;Delimiter&quot;]</code> is now not a token any more, but instead just a character like <code>,</code>. So the token-engine won't change anything.</li>
-<li>If the programmer didn't do anything but the  <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery</a>  engine gave a settings-entity to the system, then the token is resolved and whatever the user entered is used.</li>
-<li>if the neither the programmer nor the user provided settings, then the token-engine will resolve to the fallback and use the <code>\t</code> as was defined.</li>
+<p sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="100">So how does each scenario work out?</p>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="102">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="102">If the programmer overwrote the <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="102">Delimiter</code> property, then internally the <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="102">Configuration[&quot;Delimiter&quot;]</code> is now not a token any more, but instead just a character like <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="102">,</code>. So the token-engine won't change anything.</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="103">If the programmer didn't do anything but the  <a class="xref" href="../../../basics/query/visual-query/index.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="103">VisualQuery</a>  engine gave a settings-entity to the system, then the token is resolved and whatever the user entered is used.</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="104">if the neither the programmer nor the user provided settings, then the token-engine will resolve to the fallback and use the <code sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="104">\t</code> as was defined.</li>
 </ol>
-<h2 id="also-read">Also Read</h2>
-<ul>
-<li><a class="xref" href="guide/big-picture.html">Guide DataSources - Big Picture</a></li>
-<li><a class="xref" href="../../../abyss/parts/look-up/index.html">LookUp System</a></li>
-<li><a class="xref" href="../../../abyss/parts/look-up/tokens.html">LookUp Tokens Explained</a></li>
-<li><a class="xref" href="pre-v15/configuration-parse.html">DataSource Configuration: Configuration.Parse()</a></li>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a></li>
+<h2 id="also-read" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="106">Also Read</h2>
+<ul sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="108">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="108"><a class="xref" href="guide/big-picture.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="108">Guide DataSources - Big Picture</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="109"><a class="xref" href="../../../abyss/parts/look-up/index.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="109">LookUp System</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="110"><a class="xref" href="../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="110">LookUp Tokens Explained</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="111"><a class="xref" href="pre-v15/configuration-parse.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="111">DataSource Configuration: Configuration.Parse()</a></li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="112"><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="112">IDataStream</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>General Tokens introduced in 2sxc 1.0</li>
-<li>Most enhancements were in 2sxc 07.00</li>
-<li>Completely reworked in v15/16</li>
+<h2 id="history" sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="115">History</h2>
+<ol sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="117">
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="117">General Tokens introduced in 2sxc 1.0</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="118">Most enhancements were in 2sxc 07.00</li>
+<li sourcefile="pages/net-code/data-sources/custom/configuration.md" sourcestartlinenumber="119">Completely reworked in v15/16</li>
 </ol>
 
 </article>

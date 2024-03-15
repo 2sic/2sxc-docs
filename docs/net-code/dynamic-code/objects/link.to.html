@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,67 +106,67 @@
         </div>
 
         <article data-uid="NetCode.DynamicCode.Objects.Link.To">
-<h1 id="linkto---method-in-dynamic-code">Link.To(...) / @Link.To(...) Method in Dynamic Code</h1>
+<h1 id="linkto---method-in-dynamic-code" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="5">Link.To(...) / @Link.To(...) Method in Dynamic Code</h1>
 
-<p>Basically you can always link around to other pages, websites or views using normal <code>&lt;a href=&quot;...&quot;&gt;text&lt;/a&gt;</code> html.
-And often you just want to add some parameters to the current Url like <code>?id=27</code> - but the behavior of this can be very different depending on the Dnn settings.
-The <code>Link.To</code> method on the <a class="xref" href="link.html">Link</a> object helps you handle this.</p>
-<p><em>Note:</em> Dnn often has a problem with links, because depending on what page you are on, the bbehavior is a bit different. This is especially important on the home page. Use <code>@Link.To(...)</code> to make sure everything works no matter what.</p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="7">Basically you can always link around to other pages, websites or views using normal <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="7">&lt;a href=&quot;...&quot;&gt;text&lt;/a&gt;</code> html.
+And often you just want to add some parameters to the current Url like <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="8">?id=27</code> - but the behavior of this can be very different depending on the Dnn settings.
+The <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="9">Link.To</code> method on the <a class="xref" href="link.html" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="9">Link</a> object helps you handle this.</p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="11"><em sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="11">Note:</em> Dnn often has a problem with links, because depending on what page you are on, the bbehavior is a bit different. This is especially important on the home page. Use <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="11">@Link.To(...)</code> to make sure everything works no matter what.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<h2 id="purpose-of-linkto">Purpose of Link.To(...)</h2>
-<p>The Link.To can be used for the following scenarios</p>
-<ol>
-<li>Linking to another page in the system, of which you know only the page-id</li>
-<li>Linking to the current page but adding various parameters</li>
-<li>Linking to an API endpoint, for example an XML RSS feed</li>
+<h2 id="purpose-of-linkto" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="16">Purpose of Link.To(...)</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="18">The Link.To can be used for the following scenarios</p>
+<ol sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="20">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="20">Linking to another page in the system, of which you know only the page-id</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="21">Linking to the current page but adding various parameters</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="22">Linking to an API endpoint, for example an XML RSS feed</li>
 </ol>
-<h2 id="how-to-use">How to use</h2>
-<p>Here's a quick example of using the <code>Link</code> object in a Razor template:</p>
-<pre><code class="lang-razor">&lt;a href=&quot;@Link.To(parameters: &quot;id=&quot; + item.EntityId)&quot;&gt;
+<h2 id="how-to-use" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="25">How to use</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="27">Here's a quick example of using the <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="27">Link</code> object in a Razor template:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="29">&lt;a href=&quot;@Link.To(parameters: &quot;id=&quot; + item.EntityId)&quot;&gt;
     @item.Title 
 &lt;/a&gt;
 </code></pre>
-<p>This example creates a link to the current page, adding <em>either</em> <code>?id=27</code> <em>or</em> <code>/id/27</code>, depending on the Dnn configuration.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>The <code>Link</code>-object is always available in all Razor-templates. Internally it uses the Dnn and Oqtane APIs to get the correct url.</p>
-<h2 id="using--for-pages--parameters">Using @Link.To() for Pages / Parameters</h2>
-<p>Example:</p>
-<pre><code class="lang-Razor">@Link.To(parameters: &quot;id=17&quot;)
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="35">This example creates a link to the current page, adding <em sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="35">either</em> <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="35">?id=27</code> <em sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="35">or</em> <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="35">/id/27</code>, depending on the Dnn configuration.</p>
+<h2 id="how-it-works" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="37">How it works</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="39">The <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="39">Link</code>-object is always available in all Razor-templates. Internally it uses the Dnn and Oqtane APIs to get the correct url.</p>
+<h2 id="using--for-pages--parameters" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="41">Using @Link.To() for Pages / Parameters</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="43">Example:</p>
+<pre><code class="lang-Razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="45">@Link.To(parameters: &quot;id=17&quot;)
 @Link.To(parameters: &quot;id=403&amp;category=all&quot;)
 
 </code></pre>
-<h2 id="linking-to-a-target-element-with-an-assigned-id">Linking to a target element with an assigned <code>id</code></h2>
-<p>For reference, see <a href="https://www.w3schools.com/html/html_links_bookmarks.asp">HTML Link Bookmarks</a></p>
-<p>Example:</p>
-<p>Let's assume you've build a target like this</p>
-<pre><code class="lang-Razor">    &lt;div id=&quot;@(&quot;person-&quot; + person.EntityId)&quot;&gt;
+<h2 id="linking-to-a-target-element-with-an-assigned-id" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="51">Linking to a target element with an assigned <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="51">id</code></h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="53">For reference, see <a href="https://www.w3schools.com/html/html_links_bookmarks.asp" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="53">HTML Link Bookmarks</a></p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="55">Example:</p>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="57">Let's assume you've build a target like this</p>
+<pre><code class="lang-Razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="59">    &lt;div id=&quot;@(&quot;person-&quot; + person.EntityId)&quot;&gt;
         ...
     &lt;/div&gt;
 </code></pre>
-<p>Then to link straight there in the same page</p>
-<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="65">Then to link straight there in the same page</p>
+<pre><code class="lang-Razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="67">    &lt;a href=&quot;@Link.To(parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
 </code></pre>
-<p>Or on another page</p>
-<pre><code class="lang-Razor">    &lt;a href=&quot;@Link.To(pageId: 40, parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="71">Or on another page</p>
+<pre><code class="lang-Razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="73">    &lt;a href=&quot;@Link.To(pageId: 40, parameters: &quot;#person-&quot; + person.EntityId)&quot;&gt;
 </code></pre>
-<h2 id="linking-to-apis--new">Linking to APIs ✨ new!</h2>
-<p>This was introduced in 2sxc 12.02, since APIs are becoming more important. Here's an example from the Blog 5:</p>
-<pre><code>&lt;a href='@Link.To(api: &quot;api/Blog/Rss&quot;, parameters: filteredCategory == null ? &quot;&quot; : &quot;category=&quot; + filteredCategory.Key)' target=&quot;_blank&quot;&gt;
+<h2 id="linking-to-apis--new" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="77">Linking to APIs ✨ new!</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="79">This was introduced in 2sxc 12.02, since APIs are becoming more important. Here's an example from the Blog 5:</p>
+<pre><code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="81">&lt;a href='@Link.To(api: &quot;api/Blog/Rss&quot;, parameters: filteredCategory == null ? &quot;&quot; : &quot;category=&quot; + filteredCategory.Key)' target=&quot;_blank&quot;&gt;
   &lt;i class=&quot;fas fa-rss align-self-center text-white&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 </code></pre>
-<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
-<p>The Link-Object is of type <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.ILinkService.html">ILinkService</a>.</p>
-<h3 id="enforced-parameter-naming">Enforced Parameter Naming</h3>
-<p>To promote long term API stability, we require all parameters to be <a class="xref" href="../../conventions/named-parameters.html">named</a> when used. This allows us to add further parameters later on, and the calls will still work.</p>
-<pre><code class="lang-razor">&lt;!-- this will work --&gt;
+<h2 id="notes-and-clarifications" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="87">Notes and Clarifications</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="89">The Link-Object is of type <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.ILinkService.html" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="89">ILinkService</a>.</p>
+<h3 id="enforced-parameter-naming" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="91">Enforced Parameter Naming</h3>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="93">To promote long term API stability, we require all parameters to be <a class="xref" href="../../conventions/named-parameters.html" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="93">named</a> when used. This allows us to add further parameters later on, and the calls will still work.</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="95">&lt;!-- this will work --&gt;
 @Link.To(parameters: &quot;id=17&quot;)
 @Link.To(parameters: &quot;id=403&amp;category=all&quot;)
 
@@ -176,16 +176,16 @@ The <code>Link.To</code> method on the <a class="xref" href="link.html">Link</a>
 &lt;!-- this won't work --&gt;
 @Link.To(&quot;id=17&quot;)
 </code></pre>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a></li>
+<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="107">Demo App and further links</h2>
+<p sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="109">You should find some code examples in this demo App</p>
+<ul sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="110">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="110"><a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="110">Blog App</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.4</li>
-<li>Enhanced in 2sxc 9.5.1 with parameter <code>pageId</code></li>
-<li>Added <code>api</code> parameter in v12.02 to allow linking to APIs</li>
+<h2 id="history" sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="112">History</h2>
+<ol sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="114">
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="114">Introduced in 2sxc 8.4</li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="115">Enhanced in 2sxc 9.5.1 with parameter <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="115">pageId</code></li>
+<li sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="116">Added <code sourcefile="pages/net-code/dynamic-code/objects/link.to.md" sourcestartlinenumber="116">api</code> parameter in v12.02 to allow linking to APIs</li>
 </ol>
 
 </article>

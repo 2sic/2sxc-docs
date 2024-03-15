@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="Basics.DataFormats.Json.SysSettings.Index">
-<h1 id="syssettings-json-data-formats---wip">SysSettings JSON Data Formats - WIP!</h1>
+<h1 id="syssettings-json-data-formats---wip" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="5">SysSettings JSON Data Formats - WIP!</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,87 +203,87 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .format-json-headless { visibility: visible; } </style>
-<p>Internally there are a few cases where an object needs some special configuration which are called <code>SysSettings</code>.
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="10">Internally there are a few cases where an object needs some special configuration which are called <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="10">SysSettings</code>.
 Examples:</p>
-<ul>
-<li>The <code>App</code> object has a <code>SysSettings</code> which is used to control sharing across sites</li>
-<li>Attributes (Fields/Properties) are planned to have <code>SysSettings</code> to control sharing their configuration WIP</li>
+<ul sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="13">
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="13">The <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="13">App</code> object has a <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="13">SysSettings</code> which is used to control sharing across sites</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="14">Attributes (Fields/Properties) are planned to have <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="14">SysSettings</code> to control sharing their configuration WIP</li>
 </ul>
-<h2 id="app-syssettings">App SysSettings</h2>
-<p>This is not documented ATM, you'll need to check the code</p>
-<h2 id="attribute-syssettings-wip">Attribute SysSettings WIP</h2>
-<p><em>This is based on new features we're working on as of 2023-10 - it's really not final!</em></p>
-<h3 id="purpose">Purpose</h3>
-<p>Our goal is to enable central attribute definitions.
+<h2 id="app-syssettings" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="16">App SysSettings</h2>
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="18">This is not documented ATM, you'll need to check the code</p>
+<h2 id="attribute-syssettings-wip" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="21">Attribute SysSettings WIP</h2>
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="23"><em sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="23">This is based on new features we're working on as of 2023-10 - it's really not final!</em></p>
+<h3 id="purpose" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="25">Purpose</h3>
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="27">Our goal is to enable central attribute definitions.
 This will allow a content-type to specify all attributes incl. configuration and help texts.
 Other ContentTypes can then have fields which share the definition of the original.</p>
-<h3 id="challenges">Challenges</h3>
-<h3 id="sharing">Sharing</h3>
-<ul>
-<li>Mark attributes which are meant for sharing (to ensure only these are shared)</li>
-<li>Restrict how far the sharing goes - to better restrict what is possible and to avoid unwanted side-effects (eg. current App only)</li>
-<li>Possibly restrict what parts are shared / can be inherited</li>
+<h3 id="challenges" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="31">Challenges</h3>
+<h3 id="sharing" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="33">Sharing</h3>
+<ul sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="35">
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="35">Mark attributes which are meant for sharing (to ensure only these are shared)</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="36">Restrict how far the sharing goes - to better restrict what is possible and to avoid unwanted side-effects (eg. current App only)</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="37">Possibly restrict what parts are shared / can be inherited</li>
 </ul>
-<p>Probably minimal setup for sharing:</p>
-<pre><code class="lang-jsonc">{
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="39">Probably minimal setup for sharing:</p>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="41">{
   &quot;Share&quot;: true
 }
 </code></pre>
-<p>Future: Probably advanced setup for sharing outside of current App</p>
-<pre><code class="lang-jsonc">{
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="47">Future: Probably advanced setup for sharing outside of current App</p>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="49">{
   &quot;Share&quot;: true, // required for sharing
   // The following are currently not implemented
   &quot;ShareRestriction&quot;: &quot;Site&quot;, // optional, restrict sharing to this level, optional, defaults to &quot;Scope&quot; = &quot;Current App, Current Scope&quot;
   &quot;ShareOnly&quot;: &quot;Metadata&quot;, // optional, by default everything that can be shared is shared, this would restrict it to only share the metadata
 }
 </code></pre>
-<h3 id="inheriting">Inheriting</h3>
-<ul>
-<li>Mark Attributes to indicate that their identity is the the <strong>same as another field</strong></li>
-<li>Mark Attributes to indicate they inherit something (eg. the Metadata)</li>
-<li>Possibly exact control over what is inherited (eg. all specs, only certain specs etc.)</li>
-<li>Possibly inherit from multiple attributes (eg. <code>MyField</code> inherits label from <code>MyFieldBase</code> and Formulas from <code>MyFieldBase2</code>)</li>
+<h3 id="inheriting" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="58">Inheriting</h3>
+<ul sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="60">
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="60">Mark Attributes to indicate that their identity is the the <strong sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="60">same as another field</strong></li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="61">Mark Attributes to indicate they inherit something (eg. the Metadata)</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="62">Possibly exact control over what is inherited (eg. all specs, only certain specs etc.)</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="63">Possibly inherit from multiple attributes (eg. <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="63">MyField</code> inherits label from <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="63">MyFieldBase</code> and Formulas from <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="63">MyFieldBase2</code>)</li>
 </ul>
-<h4 id="inherit-metadata--configuration-of-another-field">Inherit Metadata / Configuration of another Field</h4>
-<p>Most common version of inherit (inherits all metadata of a shared field, nothing else)</p>
-<pre><code class="lang-jsonc">{
+<h4 id="inherit-metadata--configuration-of-another-field" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="65">Inherit Metadata / Configuration of another Field</h4>
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="67">Most common version of inherit (inherits all metadata of a shared field, nothing else)</p>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="69">{
   &quot;InheritMetadataOf&quot;: &quot;0fc6d925-77df-4ccc-80dd-5d9ddaf003c9&quot;, // inherit all metadata from this field
 }
 </code></pre>
-<h4 id="wip---preserve-minimal-features-of-own-metadata">WIP - Preserve minimal features of own Metadata</h4>
-<p>Prototyping...</p>
-<pre><code class="lang-jsonc">{
+<h4 id="wip---preserve-minimal-features-of-own-metadata" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="75">WIP - Preserve minimal features of own Metadata</h4>
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="77">Prototyping...</p>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="79">{
   &quot;InheritMetadataOf&quot;: &quot;00000000-0000-0000-0000-000000000000/@All/Name,0fc6d925-77df-4ccc-80dd-5d9ddaf003c9&quot;,
 }
 </code></pre>
-<h4 id="future-complex-metadata-inheritance">Future: Complex Metadata inheritance</h4>
-<pre><code class="lang-jsonc">{
+<h4 id="future-complex-metadata-inheritance" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="86">Future: Complex Metadata inheritance</h4>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="88">{
   &quot;InheritMetadataOf&quot;: &quot;0fc6d925-77df-4ccc-80dd-5d9ddaf003c9,0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@UiFormulas,0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@All,0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/-@All&quot;,
 }
 </code></pre>
-<p>Note WIP - the long string on <code>inheritMetadataOf</code> is a string version of the following rules.
+<p sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="94">Note WIP - the long string on <code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="94">inheritMetadataOf</code> is a string version of the following rules.
 Reason we're just using a string is to keep things simple in the final format.</p>
-<ul>
-<li><code>0fc6d925-77df-4ccc-80dd-5d9ddaf003c9</code> - inherit all metadata from this field</li>
-<li><code>0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@UiFormulas</code> - inherit the @UiFormulas metadata from this field</li>
-<li><code>0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@All</code> - inherit the @All metadata from this field</li>
-<li><code>0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/-@All</code> - inherit the metadata <em>except</em> @All from this field</li>
+<ul sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="97">
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="97"><code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="97">0fc6d925-77df-4ccc-80dd-5d9ddaf003c9</code> - inherit all metadata from this field</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="98"><code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="98">0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@UiFormulas</code> - inherit the @UiFormulas metadata from this field</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="99"><code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="99">0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/@All</code> - inherit the @All metadata from this field</li>
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="100"><code sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="100">0fc6d925-77df-4ccc-80dd-5d9ddaf003c9/-@All</code> - inherit the metadata <em sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="100">except</em> @All from this field</li>
 </ul>
-<h4 id="future-other-inheritance-in-consideration">Future: Other Inheritance in Consideration</h4>
-<pre><code class="lang-jsonc">{
+<h4 id="future-other-inheritance-in-consideration" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="102">Future: Other Inheritance in Consideration</h4>
+<pre><code class="lang-jsonc" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="104">{
   &quot;Inherit&quot;: &quot;0fc6d925-77df-4ccc-80dd-5d9ddaf003c9&quot;, // inherit identity and from the field with this guid
   &quot;InheritName&quot;: true, // would enforce the name to match the original in code/APIs no matter what name is manually set
   &quot;InheritMetadata&quot;: true, // inherit all metadata from this field
 }
 </code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Initial experiments v16.07.01 2023-10-27</li>
+<hr sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="113">
+<h2 id="history" sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="115">History</h2>
+<ul sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="117">
+<li sourcefile="pages/abyss/data-formats/json/sys-settings/index.md" sourcestartlinenumber="117">Initial experiments v16.07.01 2023-10-27</li>
 </ul>
 
 </article>

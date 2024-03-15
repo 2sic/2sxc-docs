@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,39 +108,39 @@
         <article data-uid="JsCode.EditForm.Formulas.Index">
 
 <img src="../../../assets/features/formulas.svg" class="feature">
-<h1 id="formulas-javascript-specs">Formulas JavaScript Specs</h1>
-<p>Formulas let you create JavaScript functions to calculate <strong>Values</strong> and <strong>Properties</strong> of things in the edit form.</p>
-<blockquote>
-<p>Learn about <a class="xref" href="../../../basics/edit/formulas/index.html">the Formula concepts</a> here.
+<h1 id="formulas-javascript-specs" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="7">Formulas JavaScript Specs</h1>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="9">Formulas let you create JavaScript functions to calculate <strong sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="9">Values</strong> and <strong sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="9">Properties</strong> of things in the edit form.</p>
+<blockquote sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="11">
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="11">Learn about <a class="xref" href="../../../basics/edit/formulas/index.html" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="11">the Formula concepts</a> here.
 It also shows you the UIs, how to configure etc.</p>
-<p>Then you should continue with the <a class="xref" href="guide.html">Formulas Guide 🎓</a></p>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="14">Then you should continue with the <a class="xref" href="guide.html" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="14">Formulas Guide 🎓</a></p>
 </blockquote>
-<h2 id="examples">Examples</h2>
-<h3 id="set-field-value-to-missing-data-if-empty">Set Field <em>Value</em> to <em>missing-data</em> if empty</h3>
-<p>This formula would be applied to the fields <strong>Value</strong>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
+<h2 id="examples" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="16">Examples</h2>
+<h3 id="set-field-value-to-missing-data-if-empty" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="18">Set Field <em sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="18">Value</em> to <em sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="18">missing-data</em> if empty</h3>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="20">This formula would be applied to the fields <strong sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="20">Value</strong>.</p>
+<pre><code class="lang-js" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="22">v2((data) =&gt; {
   return data.value ? data.value : 'missing-data';
 });
 </code></pre>
-<h3 id="set-field-visibility-based-on-another-toggle-switch">Set Field <em>Visibility</em> based on another Toggle Switch</h3>
-<p>This formula would be applied to the <strong>Setting</strong> <code>Visible</code>.</p>
-<pre><code class="lang-js">v2((data) =&gt; {
+<h3 id="set-field-visibility-based-on-another-toggle-switch" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="28">Set Field <em sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="28">Visibility</em> based on another Toggle Switch</h3>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="30">This formula would be applied to the <strong sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="30">Setting</strong> <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="30">Visible</code>.</p>
+<pre><code class="lang-js" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="32">v2((data) =&gt; {
   return data.ShowAdvanced;
 });
 </code></pre>
-<h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
-<p>This formula would be applied to a group headings <strong>Setting</strong> <code>Name</code> which is the visible title:</p>
-<pre><code class="lang-js">v2((data) =&gt; {
+<h3 id="add-an-emoji-to-a-group-heading-if-inside-it-an-important-property-was-set" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="38">Add an Emoji to a Group-Heading if inside it an important property was set</h3>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="40">This formula would be applied to a group headings <strong sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="40">Setting</strong> <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="40">Name</code> which is the visible title:</p>
+<pre><code class="lang-js" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="42">v2((data) =&gt; {
   return data.default + (data.EditInstructions || data.ListInstructions ? ' ✅' : ''); 
 });
 </code></pre>
-<p><em>Note that we're returning <code>data.default</code> and some more text, not <code>data.value</code>. This is because the value would change on each cycle, but <code>data.default</code> contains the original value.</em></p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in 2sxc 12.01</li>
-<li>Added <code>data.parameters</code> in v13.10</li>
-<li>Added <code>context.features</code>, <code>context.app</code>, <code>context.user</code>, <code>context.sxc</code> etc. in v13.10</li>
+<p sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="48"><em sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="48">Note that we're returning <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="48">data.default</code> and some more text, not <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="48">data.value</code>. This is because the value would change on each cycle, but <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="48">data.default</code> contains the original value.</em></p>
+<hr sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="51">
+<h2 id="history" sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="53">History</h2>
+<ul sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="55">
+<li sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="55">Introduced in 2sxc 12.01</li>
+<li sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="56">Added <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="56">data.parameters</code> in v13.10</li>
+<li sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="57">Added <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="57">context.features</code>, <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="57">context.app</code>, <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="57">context.user</code>, <code sourcefile="pages/js-code/edit-form/formulas/index.md" sourcestartlinenumber="57">context.sxc</code> etc. in v13.10</li>
 </ul>
 
 </article>

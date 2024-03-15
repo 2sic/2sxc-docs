@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -202,73 +202,73 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .data-all { visibility: visible; } </style>
-<h1 id="dynamic-entity-lists">Dynamic Entity Lists</h1>
-<p>It's very common to work with a list of items, like a list of blog posts, tags etc.</p>
-<p>2sxc has a lot of magic under the hood to just make it work. Here's an example:</p>
-<pre><code class="lang-razor">&lt;ul&gt;
+<h1 id="dynamic-entity-lists" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="8">Dynamic Entity Lists</h1>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="10">It's very common to work with a list of items, like a list of blog posts, tags etc.</p>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="12">2sxc has a lot of magic under the hood to just make it work. Here's an example:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="14">&lt;ul&gt;
 @foreach(var tag in blogPost.Tags) {
   &lt;li&gt;@tag.Name&lt;/li&gt;
 }
 &lt;/ul&gt;
 </code></pre>
-<p>To get really good at coding lists, there are a few things you want to learn:</p>
-<ol>
-<li>Use list from different sources
-<ol>
-<li>Entities which are a property of something (like <code>blogPost.Tags</code>)</li>
-<li>Entities which belong to the Module</li>
-<li>Entities which come from a Query</li>
-<li>Entities of a specific Content-Type from App.Data</li>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="22">To get really good at coding lists, there are a few things you want to learn:</p>
+<ol sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="24">
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="24">Use list from different sources
+<ol sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="25">
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="25">Entities which are a property of something (like <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="25">blogPost.Tags</code>)</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="26">Entities which belong to the Module</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="27">Entities which come from a Query</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="28">Entities of a specific Content-Type from App.Data</li>
 </ol>
 </li>
-<li>Difference between Entity-lists and DynamicEntity-Lists</li>
-<li>Looping</li>
-<li>Using LINQ to sort, filter and more</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="29">Difference between Entity-lists and DynamicEntity-Lists</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="30">Looping</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="31">Using LINQ to sort, filter and more</li>
 </ol>
-<h2 id="basics-first---what-are-lists-of-dynamic-entities">Basics First - What Are Lists of Dynamic Entities</h2>
-<p>In the lingo of C# they are <code>IEnumerable&lt;IDynamicEntity&gt;</code> objects.</p>
-<blockquote>
-<p>But basically lists are objects that can be stepped through (iterated).</p>
+<h2 id="basics-first---what-are-lists-of-dynamic-entities" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="33">Basics First - What Are Lists of Dynamic Entities</h2>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="35">In the lingo of C# they are <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="35">IEnumerable&lt;IDynamicEntity&gt;</code> objects.</p>
+<blockquote sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="37">
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="37">But basically lists are objects that can be stepped through (iterated).</p>
 </blockquote>
-<p>You will usually use them to show the list of items (like a list of News items).
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="39">You will usually use them to show the list of items (like a list of News items).
 And if the list has too much data or is in a weird sorting order, you'll usually want to filter and sort before doing this.</p>
-<h2 id="how-to-get-a-list-of-dynamic-entities">How to Get a List of Dynamic Entities</h2>
-<p>In many cases the list is aleady there for you to use.
-For example, if your <code>BlogPost</code> object has a property <code>Tags</code> which is an Entity-Picker in the Edit-UI, then this will automatically work:</p>
-<pre><code class="lang-razor">&lt;ul&gt;
+<h2 id="how-to-get-a-list-of-dynamic-entities" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="42">How to Get a List of Dynamic Entities</h2>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="44">In many cases the list is aleady there for you to use.
+For example, if your <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="45">BlogPost</code> object has a property <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="45">Tags</code> which is an Entity-Picker in the Edit-UI, then this will automatically work:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="47">&lt;ul&gt;
 @foreach(var tag in blogPost.Tags) {
   &lt;li&gt;@tag.Name&lt;/li&gt;
 }
 &lt;/ul&gt;
 </code></pre>
-<p>In other scenarios you may get objects which are still IEntity objects. For example, <code>App.Data[&quot;BlogPost&quot;]</code> will get you a list of <code>IEntity</code> objects.
-But these don't allow you to just access a property, so you'll have to use <code>AsList(...)</code>.</p>
-<pre><code class="lang-Razor">@* this won't work *@
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="55">In other scenarios you may get objects which are still IEntity objects. For example, <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="55">App.Data[&quot;BlogPost&quot;]</code> will get you a list of <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="55">IEntity</code> objects.
+But these don't allow you to just access a property, so you'll have to use <code sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="56">AsList(...)</code>.</p>
+<pre><code class="lang-Razor" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="58">@* this won't work *@
 
 
 </code></pre>
-<ol>
-<li>Find some information</li>
+<ol sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="64">
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="64">Find some information</li>
 </ol>
-<p>Whenever you create a content-type - like <em>Person</em> - and want to work with the data in your C# Razor templates, you'll be working with a <em>Dynamic Entity</em>.</p>
-<p>👉 also read about <a class="xref" href="../dynamic-code/as-dynamic.html">AsDynamic(...)</a></p>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="67">Whenever you create a content-type - like <em sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="67">Person</em> - and want to work with the data in your C# Razor templates, you'll be working with a <em sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="67">Dynamic Entity</em>.</p>
+<p sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="69">👉 also read about <a class="xref" href="../dynamic-code/as-dynamic.html" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="69">AsDynamic(...)</a></p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 01.00</li>
-<li>Changed to use interface IDynamicEntity in 6.x</li>
+<hr sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="75">
+<h2 id="history" sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="77">History</h2>
+<ol sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="79">
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="79">Introduced in 2sxc 01.00</li>
+<li sourcefile="pages/net-code/dynamic-data/dynamic-list.md" sourcestartlinenumber="80">Changed to use interface IDynamicEntity in 6.x</li>
 </ol>
 
 </article>

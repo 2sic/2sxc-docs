@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,212 +106,212 @@
         </div>
 
         <article data-uid="NetCode.TypedCode.CompareApis.DataObjects">
-<h1 id="built-in-data-object-differences-in-apis">Built-In Data Object Differences in APIs</h1>
+<h1 id="built-in-data-object-differences-in-apis" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="5">Built-In Data Object Differences in APIs</h1>
 
-<p>2sxc has changed a lot over time.
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="7">2sxc has changed a lot over time.
 So you'll find old code snippets and new ones, and it helps to see which one is being used.
 Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
-<div class="TIP">
+<div class="TIP" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="11">
 <h5>Tip</h5>
-<p>This is about Data Objects which are automatically available on each Razor / C# file.</p>
-<p>So <strong>Content</strong> (old), <strong>MyItem</strong> (new), <strong>Data</strong> (old), <strong>MyData</strong> (new) etc.</p>
-<p>It's also about converting between <code>IEntity</code> to the <code>ITypedItem</code> and <code>dynamic</code> objects.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="12">This is about Data Objects which are automatically available on each Razor / C# file.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="14">So <strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="14">Content</strong> (old), <strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="14">MyItem</strong> (new), <strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="14">Data</strong> (old), <strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="14">MyData</strong> (new) etc.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="16">It's also about converting between <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="16">IEntity</code> to the <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="16">ITypedItem</code> and <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="16">dynamic</code> objects.</p>
 </div>
-<div class="TIP">
+<div class="TIP" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="19">
 <h5>Tip</h5>
-<p>🎓 Best check out the <a href="https://go.2sxc.org/quickref">tutorial QuickRef</a> which shows all this!</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="20">🎓 Best check out the <a href="https://go.2sxc.org/quickref" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="20">tutorial QuickRef</a> which shows all this!</p>
 </div>
-<h2 id="what-are-built-in-data-objects">What are Built-In Data Objects?</h2>
-<p>These objects/commands get data <em>belonging</em> to this block/instance.
+<h2 id="what-are-built-in-data-objects" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="22">What are Built-In Data Objects?</h2>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="24">These objects/commands get data <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="24">belonging</em> to this block/instance.
 So when the Razor code loads, these objects are ready and filled with the data of the current block.</p>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="27">
 <h5>Note</h5>
-<p>It's important to understand how data-items can <em>belong</em> to the current block.
-Basically any data an editor adds to the current block <em>belongs</em> to it.
-This is different from queried data which doesn't <em>belong</em> to anything.</p>
-<p>Example: The images in a gallery-block belong to that gallery instance.
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="28">It's important to understand how data-items can <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="28">belong</em> to the current block.
+Basically any data an editor adds to the current block <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="29">belongs</em> to it.
+This is different from queried data which doesn't <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="30">belong</em> to anything.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="32">Example: The images in a gallery-block belong to that gallery instance.
 But the list of all tags don't belong to the gallery instance.</p>
 </div>
-<h2 id="overview-of-data-objects">Overview of Data Objects</h2>
-<table>
+<h2 id="overview-of-data-objects" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="35">Overview of Data Objects</h2>
+<table sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">
 <thead>
-<tr>
-<th>Purpose</th>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Strongly Typed</th>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">Purpose</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">Dynamic</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">Typed</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="37">Strongly Typed</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong>Get-Current-Data</strong></td>
-<td><code>Content</code></td>
-<td><code>MyItem</code></td>
-<td><code>MyItem</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39">Get-Current-Data</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39">Content</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39">MyItem</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="39">MyItem</code></td>
 </tr>
-<tr>
-<td><strong>Get-Current-List</strong></td>
-<td><code>List</code></td>
-<td><code>MyItems</code></td>
-<td><code>MyItems</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40">Get-Current-List</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40">List</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40">MyItems</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="40">MyItems</code></td>
 </tr>
-<tr>
-<td><strong>Get-Current-Header</strong></td>
-<td><code>Header</code></td>
-<td><code>MyHeader</code></td>
-<td><code>MyHeader</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41">Get-Current-Header</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41">Header</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41">MyHeader</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="41">MyHeader</code></td>
 </tr>
-<tr>
-<td><strong>Get-Current-Data</strong></td>
-<td><code>Data</code></td>
-<td><code>MyData</code></td>
-<td><code>MyData</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42">Get-Current-Data</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42">Data</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42">MyData</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="42">MyData</code></td>
 </tr>
-<tr>
-<td><strong>App Object</strong></td>
-<td><code>App</code></td>
-<td><code>App</code></td>
-<td><code>App</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43">App Object</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43">App</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43">App</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="43">App</code></td>
 </tr>
-<tr>
-<td><strong>App Query</strong></td>
-<td><code>App.Query</code></td>
-<td><code>App.Query</code></td>
-<td><code>App.Query</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44">App Query</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44">App.Query</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44">App.Query</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="44">App.Query</code></td>
 </tr>
-<tr>
-<td><strong>App Data</strong></td>
-<td><code>App.Data</code></td>
-<td><code>App.Data</code></td>
-<td><code>App.Data</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45">App Data</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45">App.Data</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45">App.Data</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="45">App.Data</code></td>
 </tr>
-<tr>
-<td><strong>App Resources</strong></td>
-<td><code>App.Resources</code></td>
-<td><code>App.Resources</code></td>
-<td><code>App.Resources</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46">App Resources</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46">App.Resources</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46">App.Resources</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="46">App.Resources</code></td>
 </tr>
-<tr>
-<td><strong>App Settings</strong></td>
-<td><code>App.Settings</code></td>
-<td><code>App.Settings</code></td>
-<td><code>App.Settings</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47">App Settings</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47">App.Settings</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47">App.Settings</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="47">App.Settings</code></td>
 </tr>
-<tr>
-<td><strong>All Settings</strong></td>
-<td><code>Settings</code></td>
-<td><code>AllSettings</code></td>
-<td><code>AllSettings</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48">All Settings</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48">Settings</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48">AllSettings</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="48">AllSettings</code></td>
 </tr>
-<tr>
-<td><strong>All Resources</strong></td>
-<td><code>Resources</code></td>
-<td><code>AllResources</code></td>
-<td><code>AllResources</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49">All Resources</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49">Resources</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49">AllResources</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="49">AllResources</code></td>
 </tr>
-<tr>
-<td><strong>Parameters</strong></td>
-<td><code>DynamicModel</code></td>
-<td><code>MyModel</code></td>
-<td><code>MyModel</code> / <code>Model</code></td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50"><strong sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">Parameters</strong></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">DynamicModel</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">MyModel</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">MyModel</code> / <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="50">Model</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="basic-get-current-data">Basic Get-Current-Data</h2>
-<table>
+<h2 id="basic-get-current-data" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="53">Basic Get-Current-Data</h2>
+<table sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="55">
 <thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Comments / Differences</th>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="55">
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="55">Dynamic</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="55">Typed</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="55">Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>Content</code> <br> (<code>dynamic</code>)</td>
-<td><code>MyItem</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
-<td>First/main item</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">Content</code> <br> (<code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">dynamic</code>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">MyItem</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">ITypedItem</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="57">First/main item</td>
 </tr>
-<tr>
-<td><code>List</code> <br> (<code>IEnumerable&lt;dynamic&gt;</code>)</td>
-<td><code>MyItems</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="IEnumerable&lt;ITypedItem&gt;">IEnumerable&lt;ITypedItem&gt;</a>)</td>
-<td>List of all items</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">List</code> <br> (<code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">IEnumerable&lt;dynamic&gt;</code>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">MyItems</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="IEnumerable&lt;ITypedItem&gt;" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">IEnumerable&lt;ITypedItem&gt;</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="58">List of all items</td>
 </tr>
-<tr>
-<td><code>Header</code> <br> (<code>dynamic</code>)</td>
-<td><code>MyHeader</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
-<td>Header item</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">Header</code> <br> (<code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">dynamic</code>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">MyHeader</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">ITypedItem</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="59">Header item</td>
 </tr>
 </tbody>
 </table>
-<div class="IMPORTANT">
+<div class="IMPORTANT" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="61">
 <h5>Important</h5>
-<p>The pairs such as <code>Content</code>/<code>MyItem</code> will often contain the same data - but not always.</p>
-<p>In the old dynamic APIs, <code>Content</code> contained the item <em>belonging</em> to the block,
-but <em>only</em> if the View was not using a Query.
-If the view used a query, <code>Content</code> would contain the first item returned by the query.
-<code>MyItem</code> is different - it always contains the first item <em>belonging</em> to the block.</p>
-<p>The same difference applies to <code>List</code> vs <code>MyItems</code>.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="62">The pairs such as <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="62">Content</code>/<code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="62">MyItem</code> will often contain the same data - but not always.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="64">In the old dynamic APIs, <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="64">Content</code> contained the item <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="64">belonging</em> to the block,
+but <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="65">only</em> if the View was not using a Query.
+If the view used a query, <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="66">Content</code> would contain the first item returned by the query.
+<code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="67">MyItem</code> is different - it always contains the first item <em sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="67">belonging</em> to the block.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="69">The same difference applies to <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="69">List</code> vs <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="69">MyItems</code>.</p>
 </div>
-<h2 id="advanced-get-current-data">Advanced Get-Current-Data</h2>
-<p>The <code>MyData</code> (previously <code>Data</code>) object contains all data which was prepared for the current block.
-In very basic scenarios you don't need it, as it contain the same data as the <code>MyItem</code> (previously <code>Content</code>) object and others.</p>
-<p>As soon as the View is configured to use a Query, it will instead contain the data returned by the query.</p>
-<table>
+<h2 id="advanced-get-current-data" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="71">Advanced Get-Current-Data</h2>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="73">The <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="73">MyData</code> (previously <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="73">Data</code>) object contains all data which was prepared for the current block.
+In very basic scenarios you don't need it, as it contain the same data as the <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="74">MyItem</code> (previously <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="74">Content</code>) object and others.</p>
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="76">As soon as the View is configured to use a Query, it will instead contain the data returned by the query.</p>
+<table sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="78">
 <thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Comments / Differences</th>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="78">
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="78">Dynamic</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="78">Typed</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="78">Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>Data</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData">IContextData</a>)</td>
-<td><code>MyData</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData">IContextData</a>)</td>
-<td>DataSource of query data</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">Data</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">IContextData</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">MyData</code> <br> (<a href="xref:ToSic.Sxc.Data.IContextData" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">IContextData</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="80">DataSource of query data</td>
 </tr>
-<tr>
-<td><code>Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
-<td><code>MyData[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
-<td><code>Tags</code> Stream of query data</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">IDataStream</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">MyData[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">IDataStream</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="81">Tags</code> Stream of query data</td>
 </tr>
-<tr>
-<td><code>Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
-<td><code>MyData.GetStream(&quot;Tags&quot;)</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>)</td>
-<td>Recommended way to get stream</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">Data[&quot;Tags&quot;]</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">IDataStream</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">MyData.GetStream(&quot;Tags&quot;)</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Eav.DataSource.IDataStream.html" sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">IDataStream</a>)</td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="82">Recommended way to get stream</td>
 </tr>
 </tbody>
 </table>
-<p>DataSources and Streams return <code>IEntity</code> objects, and you will usually want to convert them to <code>ITypedItem</code> (or <code>dynamic</code>) objects.
+<p sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="84">DataSources and Streams return <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="84">IEntity</code> objects, and you will usually want to convert them to <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="84">ITypedItem</code> (or <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="84">dynamic</code>) objects.
 This is done with these APIs:</p>
-<table>
+<table sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="87">
 <thead>
-<tr>
-<th>Dynamic</th>
-<th>Typed</th>
-<th>Comments / Differences</th>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="87">
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="87">Dynamic</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="87">Typed</th>
+<th sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="87">Comments / Differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>AsDynamic(Data)</code></td>
-<td><code>AsItems(MyData)</code></td>
-<td>Get list of items in <code>Default</code> stream</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89">AsDynamic(Data)</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89">AsItems(MyData)</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89">Get list of items in <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="89">Default</code> stream</td>
 </tr>
-<tr>
-<td><code>AsDynamic(Data[&quot;Tags&quot;])</code></td>
-<td><code>AsItems(MyData.GetStream(&quot;Tags&quot;))</code></td>
-<td>Get list of items in <code>Tags</code> stream</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90">AsDynamic(Data[&quot;Tags&quot;])</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90">AsItems(MyData.GetStream(&quot;Tags&quot;))</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90">Get list of items in <code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="90">Tags</code> stream</td>
 </tr>
-<tr>
-<td><code>AsDynamic(Data[&quot;Tags&quot;].List.First())</code></td>
-<td><code>AsItem(MyData.GetStream(&quot;Tags&quot;))</code></td>
-<td>Get a single item</td>
+<tr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91">
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91">AsDynamic(Data[&quot;Tags&quot;].List.First())</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91"><code sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91">AsItem(MyData.GetStream(&quot;Tags&quot;))</code></td>
+<td sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="91">Get a single item</td>
 </tr>
 </tbody>
 </table>
-<hr>
+<hr sourcefile="pages/net-code/api-compare/data-objects.md" sourcestartlinenumber="95">
 
 </article>
 

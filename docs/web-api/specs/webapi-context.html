@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="WebApi.Specs.Context">
-<h1 id="context-for-2sxc-webapi-and-rest-apis">Context for 2sxc WebAPI and REST APIs</h1>
+<h1 id="context-for-2sxc-webapi-and-rest-apis" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="5">Context for 2sxc WebAPI and REST APIs</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,156 +203,156 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
+<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
   </div>
 </div>
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-apis { visibility: visible; }
 </style>
-<p>Whenever the server receives an HTTP request it must determine what it's for to figure out what to do.</p>
-<div class="TIP">
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="14">Whenever the server receives an HTTP request it must determine what it's for to figure out what to do.</p>
+<div class="TIP" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="16">
 <h5>Tip</h5>
-<p>The <strong>Context</strong> contains default information about the request incl. the site/app it's for, what languages to use etc.</p>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="17">The <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="17">Context</strong> contains default information about the request incl. the site/app it's for, what languages to use etc.</p>
 </div>
-<p>In most cases the client will include the necessary information automatically.
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="19">In most cases the client will include the necessary information automatically.
 The following section is helpful if...</p>
-<ul>
-<li>...you need to manually include the context, like when you're request originates from outside of the ecosystem</li>
-<li>...you need to override some context information, like when your JS is on a German site but want to get the English data</li>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="22">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="22">...you need to manually include the context, like when you're request originates from outside of the ecosystem</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="23">...you need to override some context information, like when your JS is on a German site but want to get the English data</li>
 </ul>
-<p>In these docs we explain what each part of the context does, where it's from, what it's for and how to optionally override it.</p>
-<hr>
-<h2 id="1-the-site--portal-context-required">1. The Site / Portal Context (required)</h2>
-<p>Since our platforms (Dnn/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for.</p>
-<h3 id="how-the-site-is-automatically-detected">How the Site is Automatically Detected</h3>
-<p>In <strong>Dnn</strong> a site is always identified by the root path to the site, as it's configured in Dnn. Examples:</p>
-<ul>
-<li><a href="https://www.2sxc.org">https://www.2sxc.org</a> is site 0</li>
-<li><a href="https://2sic.org">https://2sic.org</a> is site 0</li>
-<li><a href="https://2sxc.org/en">https://2sxc.org/en</a> is site 0</li>
-<li><a href="https://2sxc.org/de">https://2sxc.org/de</a> is site 0</li>
-<li><a href="https://2sxc.org/dnn-tutorials/">https://2sxc.org/dnn-tutorials/</a> is site 24</li>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="25">In these docs we explain what each part of the context does, where it's from, what it's for and how to optionally override it.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="27">
+<h2 id="1-the-site--portal-context-required" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="29">1. The Site / Portal Context (required)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="31">Since our platforms (Dnn/Oqtane) could have multiple sites in the same installation, the first thing that must be determined is what site this request is for.</p>
+<h3 id="how-the-site-is-automatically-detected" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="33">How the Site is Automatically Detected</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="35">In <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="35">Dnn</strong> a site is always identified by the root path to the site, as it's configured in Dnn. Examples:</p>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="37">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="37"><a href="https://www.2sxc.org" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="37">https://www.2sxc.org</a> is site 0</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="38"><a href="https://2sic.org" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="38">https://2sic.org</a> is site 0</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="39"><a href="https://2sxc.org/en" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="39">https://2sxc.org/en</a> is site 0</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="40"><a href="https://2sxc.org/de" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="40">https://2sxc.org/de</a> is site 0</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="41"><a href="https://2sxc.org/dnn-tutorials/" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="41">https://2sxc.org/dnn-tutorials/</a> is site 24</li>
 </ul>
-<p>In <strong>Oqtane</strong> a site is always identified through a number in the route (the domain is ignored). Examples:</p>
-<ul>
-<li>.../1/api/... is site 1</li>
-<li>.../2/api/... is site 2</li>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="43">In <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="43">Oqtane</strong> a site is always identified through a number in the route (the domain is ignored). Examples:</p>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="45">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="45">.../1/api/... is site 1</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="46">.../2/api/... is site 2</li>
 </ul>
-<h3 id="what-is-affected-by-the-site-context">What is Affected by the Site Context</h3>
-<p>The Site context is important for various additional pieces of context:</p>
-<ol>
-<li>The languages available (can be different on each site)</li>
-<li>The primary language (configured per site)</li>
-<li>The current language (can only be one of the available languages or primary)</li>
-<li>The app (see below, apps are installed on sites)</li>
+<h3 id="what-is-affected-by-the-site-context" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="48">What is Affected by the Site Context</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="50">The Site context is important for various additional pieces of context:</p>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="52">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="52">The languages available (can be different on each site)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="53">The primary language (configured per site)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="54">The current language (can only be one of the available languages or primary)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="55">The app (see below, apps are installed on sites)</li>
 </ol>
-<h3 id="providing-an-own-value-or-overriding-the-default">Providing an Own Value or Overriding the Default</h3>
-<p>Just call the other endpoint with the correct URL.</p>
-<hr>
-<h2 id="2-current-language">2. Current Language</h2>
-<p>The current language is necessary for read operations to determine what values to actually use. In case of a no-language or single-language site it's not important.</p>
-<h3 id="how-the-current-language-is-automatically-detected">How the Current Language is Automatically Detected</h3>
-<p>In Dnn the current language is part of the url, as configured in the site, so it's <em>dependent</em> on the <strong>Site</strong> Context. Here some examples:</p>
-<ul>
-<li>2sxc.org/en would be configured to be <code>en-US</code></li>
-<li>2sxc.org/de would be configured to be <code>de-DE</code></li>
-<li>de.2sxc.org would be configured to be <code>de-DE</code></li>
+<h3 id="providing-an-own-value-or-overriding-the-default" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="57">Providing an Own Value or Overriding the Default</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="59">Just call the other endpoint with the correct URL.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="62">
+<h2 id="2-current-language" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="64">2. Current Language</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="66">The current language is necessary for read operations to determine what values to actually use. In case of a no-language or single-language site it's not important.</p>
+<h3 id="how-the-current-language-is-automatically-detected" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="68">How the Current Language is Automatically Detected</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="70">In Dnn the current language is part of the url, as configured in the site, so it's <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="70">dependent</em> on the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="70">Site</strong> Context. Here some examples:</p>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="72">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="72">2sxc.org/en would be configured to be <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="72">en-US</code></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="73">2sxc.org/de would be configured to be <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="73">de-DE</code></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="74">de.2sxc.org would be configured to be <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="74">de-DE</code></li>
 </ul>
-<p>In Oqtane the convention isn't clear yet (WIP)</p>
-<h3 id="what-is-affected-by-the-current-language">What is Affected by the Current Language</h3>
-<p>All read operations in the API and internally will try to access values meant for that language. Return values will also prefer that language (if translations exist).</p>
-<h3 id="providing-an-own-value-or-overriding-the-current-language">Providing an Own Value or Overriding the Current Language</h3>
-<p>The most common way to use another language is to use the appropriate url which matches that language. Another way to do it is to include a parameter in the request like <code>?language=en</code>.</p>
-<div class="WARNING">
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="76">In Oqtane the convention isn't clear yet (WIP)</p>
+<h3 id="what-is-affected-by-the-current-language" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="78">What is Affected by the Current Language</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="80">All read operations in the API and internally will try to access values meant for that language. Return values will also prefer that language (if translations exist).</p>
+<h3 id="providing-an-own-value-or-overriding-the-current-language" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="82">Providing an Own Value or Overriding the Current Language</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="84">The most common way to use another language is to use the appropriate url which matches that language. Another way to do it is to include a parameter in the request like <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="84">?language=en</code>.</p>
+<div class="WARNING" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="86">
 <h5>Warning</h5>
-<p>Setting the <code>?language=xxx</code> parameter in Dnn has a suprising performance penalty of ca. 200-300ms.
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="87">Setting the <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="87">?language=xxx</code> parameter in Dnn has a suprising performance penalty of ca. 200-300ms.
 So if you can, prefer to just use the correct initial path.</p>
 </div>
-<hr>
-<h2 id="3-page-and-module-context-optional">3. Page and Module Context (optional)</h2>
-<p>Whenever the API call is used on a Dnn or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the <strong>App</strong> Context.</p>
-<h3 id="how-the-page-and-module-are-automatically-detected">How the Page and Module are Automatically Detected</h3>
-<p>The standard implementation is that API-Calls include special HTTP headers with these IDs. These headers are used:</p>
-<ul>
-<li><code>PageId</code> (number)</li>
-<li><code>ModuleId</code> (number)</li>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="91">
+<h2 id="3-page-and-module-context-optional" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="93">3. Page and Module Context (optional)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="95">Whenever the API call is used on a Dnn or Oqtane page, the HTTP call will usually include this information in the request to assist in auto-detecting the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="95">App</strong> Context.</p>
+<h3 id="how-the-page-and-module-are-automatically-detected" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="97">How the Page and Module are Automatically Detected</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="99">The standard implementation is that API-Calls include special HTTP headers with these IDs. These headers are used:</p>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="101">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="101"><code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="101">PageId</code> (number)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="102"><code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="102">ModuleId</code> (number)</li>
 </ul>
-<div class="NOTE">
+<div class="NOTE" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="104">
 <h5>Note</h5>
-<p>For historical reasons, Dnn includes a <code>TabId</code> which contains the same value as <code>PageId</code>.
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="105">For historical reasons, Dnn includes a <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="105">TabId</code> which contains the same value as <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="105">PageId</code>.
 The backend will treat these as the same header.
-We changed this to <code>PageId</code> in v11 and for future stability please use <code>PageId</code>.</p>
+We changed this to <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="107">PageId</code> in v11 and for future stability please use <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="107">PageId</code>.</p>
 </div>
-<h3 id="what-is-affected-by-the-page-and-module-context">What is Affected by the Page and Module Context</h3>
-<ol>
-<li>The primary use for the <strong>Page/Module Context</strong> is figuring out what <strong>App</strong> Context to use. So if the Module 2472 on Page 51 on Portal 7 is a <em>Blog App</em> then, then the <strong>App</strong> Context will be this Blog App.</li>
-<li>The second use is providing data for this <strong>Module Instance</strong>. So if a module has content or data assigned to it (like a <em>Category List</em> showing 3 selected Categories), then this data will be available automatically.</li>
-<li>The third important use is for permission detection: if the current user has certain permissions on this page/module, then these permissions also apply to the current API request. If the Page/Module context is missing, then only default permissions  apply.</li>
-<li>The final and obvious use is that certain backend APIs will know these values, so that objects like <code>CmsContext.Page.Id</code> have these values for the scripts to use. See also <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsContext.html">ICmsContext</a></li>
+<h3 id="what-is-affected-by-the-page-and-module-context" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="109">What is Affected by the Page and Module Context</h3>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">The primary use for the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">Page/Module Context</strong> is figuring out what <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">App</strong> Context to use. So if the Module 2472 on Page 51 on Portal 7 is a <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">Blog App</em> then, then the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="111">App</strong> Context will be this Blog App.</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="112">The second use is providing data for this <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="112">Module Instance</strong>. So if a module has content or data assigned to it (like a <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="112">Category List</em> showing 3 selected Categories), then this data will be available automatically.</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="113">The third important use is for permission detection: if the current user has certain permissions on this page/module, then these permissions also apply to the current API request. If the Page/Module context is missing, then only default permissions  apply.</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="114">The final and obvious use is that certain backend APIs will know these values, so that objects like <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="114">CmsContext.Page.Id</code> have these values for the scripts to use. See also <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsContext.html" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="114">ICmsContext</a></li>
 </ol>
-<h3 id="providing-an-own-value-or-overriding-the-default-pagemodule">Providing an Own Value or Overriding the Default Page/Module</h3>
-<p>The default calls on the <strong>2sxc JS API</strong> including <strong>dnn-sxc-angular</strong> will automatically set these headers if it can.</p>
-<p>If you have a reason to include alternate values, just make sure that you change the headers either by modifying the request before it's sent, or by using another http-caller like jQuery.</p>
-<hr>
-<h2 id="4-app-context-required">4. App Context (required)</h2>
-<p>All WebAPI operations happen inside an App. They are either Content/Query REST calls (so they apply to the app) or custom WebApis (which are in the app-folder) - so the <strong>App</strong> must always be known.</p>
-<h3 id="how-the-app-context-is-automatically-detected">How the App Context is Automatically Detected</h3>
-<p>The <strong>App Context</strong> requires that the <strong>Site Context</strong> is already known. Then there are two ways for the App Context to be detected:</p>
-<ol>
-<li>If the <strong>Page Context</strong> and <strong>Module Context</strong> are known, then this automatically leads to the app to be used, as it's the app on that module.<br>
-<em>Note: In rare cases the page and module are set, but the app has not been selected yet. This edge case only affects internal APIs of 2sxc, not the normal use we discuss here</em></li>
-<li>If Page/Module are not known or not provided, then the app is chosen based on the <strong>App-Name</strong> in the url.
+<h3 id="providing-an-own-value-or-overriding-the-default-pagemodule" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="116">Providing an Own Value or Overriding the Default Page/Module</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="118">The default calls on the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="118">2sxc JS API</strong> including <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="118">dnn-sxc-angular</strong> will automatically set these headers if it can.</p>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="120">If you have a reason to include alternate values, just make sure that you change the headers either by modifying the request before it's sent, or by using another http-caller like jQuery.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="123">
+<h2 id="4-app-context-required" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="125">4. App Context (required)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="127">All WebAPI operations happen inside an App. They are either Content/Query REST calls (so they apply to the app) or custom WebApis (which are in the app-folder) - so the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="127">App</strong> must always be known.</p>
+<h3 id="how-the-app-context-is-automatically-detected" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="129">How the App Context is Automatically Detected</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="131">The <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="131">App Context</strong> requires that the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="131">Site Context</strong> is already known. Then there are two ways for the App Context to be detected:</p>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="133">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="133">If the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="133">Page Context</strong> and <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="133">Module Context</strong> are known, then this automatically leads to the app to be used, as it's the app on that module.<br>
+<em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="134">Note: In rare cases the page and module are set, but the app has not been selected yet. This edge case only affects internal APIs of 2sxc, not the normal use we discuss here</em></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="135">If Page/Module are not known or not provided, then the app is chosen based on the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="135">App-Name</strong> in the url.
 This is the default mechanism used when calling endpoints from other pages or mobile apps.</li>
-<li>If <em>both</em> the <strong>Page/Module Context</strong> <em>and</em> the <strong>App-Name</strong> are provided, then the <strong>App-Name</strong> is prioritized. If it is about the same App, then the full context (with Page/Module) is used, allowing more permissions to work.</li>
-<li>If <em>neither</em> <strong>Page/Module</strong> nor <strong>App Context</strong> are known, then the request will fail.</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">If <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">both</em> the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">Page/Module Context</strong> <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">and</em> the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">App-Name</strong> are provided, then the <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="137">App-Name</strong> is prioritized. If it is about the same App, then the full context (with Page/Module) is used, allowing more permissions to work.</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="138">If <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="138">neither</em> <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="138">Page/Module</strong> nor <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="138">App Context</strong> are known, then the request will fail.</li>
 </ol>
-<h3 id="what-is-affected-by-the-app-context">What is Affected by the App Context</h3>
-<p>The <strong>App Context</strong> will be used for almost everything, including these aspects:</p>
-<ol>
-<li>The data and configuration used (<code>App.Data</code> etc.)</li>
-<li>The path to code (like custom WebApi Controllers)</li>
-<li>Permissions on the App or Content-Types</li>
+<h3 id="what-is-affected-by-the-app-context" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="140">What is Affected by the App Context</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="142">The <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="142">App Context</strong> will be used for almost everything, including these aspects:</p>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="144">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="144">The data and configuration used (<code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="144">App.Data</code> etc.)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="145">The path to code (like custom WebApi Controllers)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="146">Permissions on the App or Content-Types</li>
 </ol>
-<h3 id="providing-an-own-value-or-overriding-the-default-app-context">Providing an Own Value or Overriding the Default App Context</h3>
-<p>To access another app you will usually supply another <strong>App-Name</strong> in the url for the API-Call. In rare cases you may also provide other <strong>Page and Module Context</strong> headers, but this is usually not a good idea.</p>
-<hr>
-<h2 id="5-current-user-required">5. Current User (required)</h2>
-<p>All operations happen in the context of a user, either <em>Anonymous</em> or the <em>Current User Identity</em>.</p>
-<h3 id="how-the-current-user-is-automatically-detected">How the Current User is Automatically Detected</h3>
-<p>The current user is always provided by the environment (Dnn or Oqtane). If no user is identified, the platform always tells 2sxc that the user is <em>Anonymous</em>.</p>
-<h3 id="what-is-affected-by-the-current-user">What is Affected by the Current User</h3>
-<ol>
-<li>Read / Write permissions (either directly or indirectly if a user is in a group with permissions)</li>
-<li>Read-Draft permissions (admins may also see data which isn't published yet)</li>
-<li>Identity used when saving data</li>
+<h3 id="providing-an-own-value-or-overriding-the-default-app-context" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="148">Providing an Own Value or Overriding the Default App Context</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="150">To access another app you will usually supply another <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="150">App-Name</strong> in the url for the API-Call. In rare cases you may also provide other <strong sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="150">Page and Module Context</strong> headers, but this is usually not a good idea.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="152">
+<h2 id="5-current-user-required" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="154">5. Current User (required)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="156">All operations happen in the context of a user, either <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="156">Anonymous</em> or the <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="156">Current User Identity</em>.</p>
+<h3 id="how-the-current-user-is-automatically-detected" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="158">How the Current User is Automatically Detected</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="160">The current user is always provided by the environment (Dnn or Oqtane). If no user is identified, the platform always tells 2sxc that the user is <em sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="160">Anonymous</em>.</p>
+<h3 id="what-is-affected-by-the-current-user" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="162">What is Affected by the Current User</h3>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="164">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="164">Read / Write permissions (either directly or indirectly if a user is in a group with permissions)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="165">Read-Draft permissions (admins may also see data which isn't published yet)</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="166">Identity used when saving data</li>
 </ol>
-<h3 id="providing-an-own-value-or-overriding-the-default-app-context-1">Providing an Own Value or Overriding the Default App Context</h3>
-<p>The user is fixed to being the real user logged in (or Anonymous).</p>
-<p>So if you need to execute something in another identity, make sure your system logs into Dnn/Oqtane using the built-in mechanisms (like JWT) and then perform the request using that authentication.</p>
-<hr>
-<h2 id="6-other-edition-optional">6. Other: Edition (optional)</h2>
-<p>This only applies to custom WebAPI controllers.</p>
-<p>Custom WebAPI controllers are usually stored in the folder <code>[App-Root]/api</code>. You can also place them in subfolders like <code>[App-Root]/live/api</code> in which case <code>live</code> would be an edition. This allows you to have multiple editions of the same controller for staging, testing and more. As it's not really context information, it's only mentioned here. To find out more, read about the <a class="xref" href="url-schema.html">URL Schema</a> and about <a class="xref" href="../../basics/polymorphism/index.html">Polymorphisms</a>.</p>
-<hr>
-<h2 id="6-other-requestverificationtoken-maybe-optional">6. Other: RequestVerificationToken (maybe optional)</h2>
-<p>Dnn and Oqtane have a security system to ensure that requests are coming from the page itself and that they are using the right login. This is not really context, so the full mechanism is explained in [Security][xref:WebApi.Specs.Security].</p>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="url-schema.html">URL Schema</a></li>
-<li><a class="xref" href="../../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
+<h3 id="providing-an-own-value-or-overriding-the-default-app-context-1" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="168">Providing an Own Value or Overriding the Default App Context</h3>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="170">The user is fixed to being the real user logged in (or Anonymous).</p>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="172">So if you need to execute something in another identity, make sure your system logs into Dnn/Oqtane using the built-in mechanisms (like JWT) and then perform the request using that authentication.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="174">
+<h2 id="6-other-edition-optional" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="176">6. Other: Edition (optional)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="178">This only applies to custom WebAPI controllers.</p>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">Custom WebAPI controllers are usually stored in the folder <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">[App-Root]/api</code>. You can also place them in subfolders like <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">[App-Root]/live/api</code> in which case <code sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">live</code> would be an edition. This allows you to have multiple editions of the same controller for staging, testing and more. As it's not really context information, it's only mentioned here. To find out more, read about the <a class="xref" href="url-schema.html" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">URL Schema</a> and about <a class="xref" href="../../basics/polymorphism/index.html" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="180">Polymorphisms</a>.</p>
+<hr sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="182">
+<h2 id="6-other-requestverificationtoken-maybe-optional" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="184">6. Other: RequestVerificationToken (maybe optional)</h2>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="186">Dnn and Oqtane have a security system to ensure that requests are coming from the page itself and that they are using the right login. This is not really context, so the full mechanism is explained in [Security][xref:WebApi.Specs.Security].</p>
+<h2 id="read-also" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="189">Read also</h2>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="191">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="191"><a class="xref" href="url-schema.html" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="191">URL Schema</a></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="192"><a class="xref" href="../../basics/polymorphism/index.html" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="192">Concepts: Polymorphisms</a></li>
 </ul>
-<p>You should find some code examples in this demo App</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
-<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
-<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
+<p sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="194">You should find some code examples in this demo App</p>
+<ul sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="196">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="196"><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="196">Razor Web API tutorials</a></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="197"><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="197">REST and WebApi Tutorial</a></li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="198"><a href="https://2sxc.org/en/apps/app/mobius-forms" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="198">Mobius Forms App</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 5.x</li>
-<li>Query added in 2sxc 8.10</li>
-<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
+<h2 id="history" sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="200">History</h2>
+<ol sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="202">
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="202">Introduced in 2sxc 5.x</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="203">Query added in 2sxc 8.10</li>
+<li sourcefile="pages/web-api/specs/webapi-context.md" sourcestartlinenumber="204">Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
 </ol>
 
 </article>

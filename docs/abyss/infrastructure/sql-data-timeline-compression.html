@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,44 +106,44 @@
         </div>
 
         <article data-uid="Abyss.Infrastructure.SqlDataTimelineCompression">
-<h1 id="2sxc-patron-infrastructure---sql-data-timeline-compression">2sxc Patron Infrastructure - Sql Data Timeline Compression</h1>
+<h1 id="2sxc-patron-infrastructure---sql-data-timeline-compression" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="5">2sxc Patron Infrastructure - Sql Data Timeline Compression</h1>
 
-<p>Every change in 2sxc is logged to a table called <code>DataTimeline</code>.
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="7">Every change in 2sxc is logged to a table called <code sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="7">DataTimeline</code>.
 The purpose is to allow editors to roll back changes and restore entities to a previous state.</p>
-<p>Websites with a lot of content editing can grow this table until it becomes the largest 2sxc table.</p>
-<p>With the feature <code>SqlDataTimelineCompression</code> all history-data will be stored as ZIP compressed JSON.
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="10">Websites with a lot of content editing can grow this table until it becomes the largest 2sxc table.</p>
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="12">With the feature <code sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="12">SqlDataTimelineCompression</code> all history-data will be stored as ZIP compressed JSON.
 This can easily save you hundreds, if not thousands of MB in DB storage.</p>
-<h2 id="activate-the-feature">Activate the feature</h2>
-<p>Do this using the standard mechanisms to become a patron.
-If you activate <code>Patron Infrastructure</code>, this feature is automatically enabled.</p>
-<h2 id="compress-previous-data">Compress Previous Data</h2>
-<p>Older data is not modified by the change, but you can run the following SQL to compress it:</p>
-<pre><code class="lang-sql">-- Will Compress everything and remove the data from the json column
+<h2 id="activate-the-feature" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="15">Activate the feature</h2>
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="17">Do this using the standard mechanisms to become a patron.
+If you activate <code sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="18">Patron Infrastructure</code>, this feature is automatically enabled.</p>
+<h2 id="compress-previous-data" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="20">Compress Previous Data</h2>
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="22">Older data is not modified by the change, but you can run the following SQL to compress it:</p>
+<pre><code class="lang-sql" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="24">-- Will Compress everything and remove the data from the json column
 UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))), [Json] = NULL WHERE [Json] IS NOT NULL
 </code></pre>
-<p>Alternative (for analysis) - should result in 60-80% reduction</p>
-<pre><code class="lang-sql">-- Will compress, but leave the old data there
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="29">Alternative (for analysis) - should result in 60-80% reduction</p>
+<pre><code class="lang-sql" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="31">-- Will compress, but leave the old data there
 UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))) WHERE [Json] IS NOT NULL
 
 -- Compare sizes
 Select Sum( DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
 From [dbo].[ToSIC_EAV_DataTimeline]
 </code></pre>
-<h2 id="decompress-previous-data">Decompress Previous Data</h2>
-<p>If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:</p>
-<pre><code class="lang-sql">UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
+<h2 id="decompress-previous-data" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="40">Decompress Previous Data</h2>
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="42">If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:</p>
+<pre><code class="lang-sql" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="44">UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
 </code></pre>
-<h2 id="query-the-json-from-compressed">Query the Json From Compressed</h2>
-<p>If you need to see the json in SQL for debugging purposes, you can start with the following sample.
-This is just a sample, you'll probably want to add a <code>WHERE</code> clause to limit the results:</p>
-<pre><code class="lang-sql">SELECT TOP (1000) *, CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)) as Decompressed
+<h2 id="query-the-json-from-compressed" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="48">Query the Json From Compressed</h2>
+<p sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="50">If you need to see the json in SQL for debugging purposes, you can start with the following sample.
+This is just a sample, you'll probably want to add a <code sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="51">WHERE</code> clause to limit the results:</p>
+<pre><code class="lang-sql" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="53">SELECT TOP (1000) *, CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)) as Decompressed
   FROM [dbo].[ToSIC_EAV_DataTimeline]
   order by id desc
 </code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ol>
-<li>Added in v15</li>
+<hr sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="59">
+<h2 id="history" sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="61">History</h2>
+<ol sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="63">
+<li sourcefile="pages/abyss/infrastructure/sql-data-timeline-compression.md" sourcestartlinenumber="63">Added in v15</li>
 </ol>
 <!-- Shortlink: <https://go.2sxc.org/todo> -->
 

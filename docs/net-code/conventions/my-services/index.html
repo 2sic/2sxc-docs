@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,16 +106,16 @@
         </div>
 
         <article data-uid="NetCode.Conventions.MyServices">
-<h1 id="convention-myservices">Convention: MyServices</h1>
+<h1 id="convention-myservices" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="5">Convention: MyServices</h1>
 
-<p>2sxc and EAV prefer to use <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over Inheritance</a>.
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="7">2sxc and EAV prefer to use <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="7">Composition over Inheritance</a>.
 But in some cases this is not possible, and we need to use inheritance.</p>
-<p>The problem that then arises is that the base class needs services, and the list of services can change with time.
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="10">The problem that then arises is that the base class needs services, and the list of services can change with time.
 This would make it very hard to keep inherited objects working, as upgrades would break the constructor.</p>
-<p>So we invented a special convention. Here's how it works:</p>
-<h2 id="basic-setup">Basic Setup</h2>
-<p>This is what a typical base class would look like</p>
-<pre><code class="lang-c#">public abstract class ExampleBase
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="13">So we invented a special convention. Here's how it works:</p>
+<h2 id="basic-setup" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="15">Basic Setup</h2>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="17">This is what a typical base class would look like</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="19">public abstract class ExampleBase
 {
   // Public ExampleBase.MyServices which actually gets all the dependencies
   public class MyServices
@@ -133,10 +133,10 @@ This would make it very hard to keep inherited objects working, as upgrades woul
   }
 }
 </code></pre>
-<p>This class is then registered with normal DI and just works.</p>
-<h2 id="inheritance">Inheritance</h2>
-<p>When you inherit such a class, this is what you do:</p>
-<pre><code class="lang-c#">public class YourClass : ExampleBase
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="39">This class is then registered with normal DI and just works.</p>
+<h2 id="inheritance" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="41">Inheritance</h2>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="43">When you inherit such a class, this is what you do:</p>
+<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="45">public class YourClass : ExampleBase
 {
   public YourClass(MyServices services, ISomeOtherService xyz) : base(services)
   {
@@ -144,28 +144,28 @@ This would make it very hard to keep inherited objects working, as upgrades woul
   }
 }
 </code></pre>
-<p>When you do this (assuming you registered your <code>YourClass</code>) in DI, it will automatically use the <code>MyServices</code> from the base class.</p>
-<p>This way the base class can change the list of it's dependencies as it needs, while preserving a constructor that never changes.</p>
-<h2 id="good-to-know">Good to Know</h2>
-<p>Internally the system does quite a bit more, but this is all you need to know to get it to work 😉.</p>
-<div class="NOTE">
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="55">When you do this (assuming you registered your <code sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="55">YourClass</code>) in DI, it will automatically use the <code sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="55">MyServices</code> from the base class.</p>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="57">This way the base class can change the list of it's dependencies as it needs, while preserving a constructor that never changes.</p>
+<h2 id="good-to-know" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="59">Good to Know</h2>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="61">Internally the system does quite a bit more, but this is all you need to know to get it to work 😉.</p>
+<div class="NOTE" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="63">
 <h5>Note</h5>
-<p>You may be tempted to use something which is available on MyServices.
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="64">You may be tempted to use something which is available on MyServices.
 But you shouldn't as this is a private API and may change at any time.</p>
 </div>
-<h2 id="use-in-datasources">Use in DataSources</h2>
-<p>The most common place for you to see this is when creating custom DataSources.
-You will usually inherit from <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a>.
-It too has a <code>MyServices</code> class.</p>
-<h2 id="coverage">Coverage</h2>
-<p>As of March 2023, all DataSources use this convention.
+<h2 id="use-in-datasources" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="68">Use in DataSources</h2>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="70">The most common place for you to see this is when creating custom DataSources.
+You will usually inherit from <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.CustomDataSource.html" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="71">CustomDataSource</a>.
+It too has a <code sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="72">MyServices</code> class.</p>
+<h2 id="coverage" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="74">Coverage</h2>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="76">As of March 2023, all DataSources use this convention.
 Many other objects use this as well, but we don't expect that you'll be needing that.</p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in 2sxc 15</li>
+<hr sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="79">
+<h2 id="history" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="81">History</h2>
+<ul sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="83">
+<li sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="83">Introduced in 2sxc 15</li>
 </ul>
-<p>Shortlink: <a href="https://go.2sxc.org/myservices">https://go.2sxc.org/myservices</a></p>
+<p sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="85">Shortlink: <a href="https://go.2sxc.org/myservices" sourcefile="pages/net-code/conventions/my-services/index.md" sourcestartlinenumber="85">https://go.2sxc.org/myservices</a></p>
 
 </article>
 

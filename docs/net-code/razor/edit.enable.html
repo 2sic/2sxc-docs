@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,52 +106,52 @@
         </div>
 
         <article data-uid="NetCode.Razor.Edit.Enable">
-<h1 id="-method-in-c-razor-deprecated">@Edit.Enable Method in C# Razor (Deprecated)</h1>
+<h1 id="-method-in-c-razor-deprecated" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="4">@Edit.Enable Method in C# Razor (Deprecated)</h1>
 
-<div class="WARNING">
+<div class="WARNING" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="6">
 <h5>Warning</h5>
-<p>This is deprecated but will continue to work for a very long time.
-For anything new, see <a class="xref" href="../../js-code/2sxc-api/basics/activate.html">Activate 2sxc JavaScript APIs on a Page</a></p>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="7">This is deprecated but will continue to work for a very long time.
+For anything new, see <a class="xref" href="../../js-code/2sxc-api/basics/activate.html" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="8">Activate 2sxc JavaScript APIs on a Page</a></p>
 </div>
-<p>Editing or adding data to a 2sxc app requires the UI to have some JS, CSS and context information. This is only loaded/included for editors/admin/super-users, and not available for users with limited permissions.</p>
-<p>If you want to enable this for more restricted users - for example when you want to use the 2sxc-form to let users add data - this must be enabled. That's what <code>Edit.Enable(...)</code> is for.</p>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="10">Editing or adding data to a 2sxc app requires the UI to have some JS, CSS and context information. This is only loaded/included for editors/admin/super-users, and not available for users with limited permissions.</p>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="12">If you want to enable this for more restricted users - for example when you want to use the 2sxc-form to let users add data - this must be enabled. That's what <code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="12">Edit.Enable(...)</code> is for.</p>
 <div style="background: #0088F444; overflow: auto">
   <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
   <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
     Discover More in the Razor Tutorials
   </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
+<p sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor" sourcefile="shared/tutorials/razor.md" sourcestartlinenumber="9">Razor tutorials</a>. You should really check them out 👍.</p>
 </div>
 <br>
-<h2 id="how-to-use">How to use</h2>
-<p>This example shows how you enable the UI using Razor, which will allow public users to create data:</p>
-<pre><code class="lang-razor">&lt;div&gt;
+<h2 id="how-to-use" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="18">How to use</h2>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="20">This example shows how you enable the UI using Razor, which will allow public users to create data:</p>
+<pre><code class="lang-razor" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="22">&lt;div&gt;
     @Edit.Enable(api: true, forms: true, context: true, autoToolbar: false)
 &lt;/div&gt;
 </code></pre>
-<p>This example ensures that</p>
-<ol>
-<li><code>api</code>: basic JS for editing are loaded, allowing you to then run javascript commands like <code>$2sxc(...).run(...)</code></li>
-<li><code>forms</code>: additional JS is loaded, enabling the standard form dialogs to open</li>
-<li><code>context</code>: the html contains context-information about the app, so that the dialogs actually work - see also <a class="xref" href="../../basics/edit/edit-ux/context.html">edit context</a></li>
-<li>the auto-toolbars are disabled (this would generate a default toolbar if no toolbar was specified)</li>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="28">This example ensures that</p>
+<ol sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="30">
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="30"><code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="30">api</code>: basic JS for editing are loaded, allowing you to then run javascript commands like <code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="30">$2sxc(...).run(...)</code></li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="31"><code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="31">forms</code>: additional JS is loaded, enabling the standard form dialogs to open</li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="32"><code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="32">context</code>: the html contains context-information about the app, so that the dialogs actually work - see also <a class="xref" href="../../basics/edit/edit-ux/context.html" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="32">edit context</a></li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="33">the auto-toolbars are disabled (this would generate a default toolbar if no toolbar was specified)</li>
 </ol>
-<h2 id="usage-notes">Usage Notes</h2>
-<p>This command simply enables editing - but doesn't provide any permissions or show any buttons yet. Here are a few things you must know to get this to work:</p>
-<ol>
-<li>remember to set <a class="xref" href="../../basics/cms/permissions/index.html">permissions</a> to allow what you want to do (like create new draft items for public users)</li>
-<li>Edit.Enable uses <a class="xref" href="../conventions/named-parameters.html">named parameters</a>, so you always have to use the <code>api: true</code> syntax</li>
-<li>the Edit.Enable won't output anything in the position it's added, because it controls the main wrapper</li>
-<li>you must also create a link or toolbar in your code for the public users, as they won't have a button to press otherwise</li>
+<h2 id="usage-notes" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="35">Usage Notes</h2>
+<p sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="37">This command simply enables editing - but doesn't provide any permissions or show any buttons yet. Here are a few things you must know to get this to work:</p>
+<ol sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="39">
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="39">remember to set <a class="xref" href="../../basics/cms/permissions/index.html" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="39">permissions</a> to allow what you want to do (like create new draft items for public users)</li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="40">Edit.Enable uses <a class="xref" href="../conventions/named-parameters.html" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="40">named parameters</a>, so you always have to use the <code sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="40">api: true</code> syntax</li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="41">the Edit.Enable won't output anything in the position it's added, because it controls the main wrapper</li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="42">you must also create a link or toolbar in your code for the public users, as they won't have a button to press otherwise</li>
 </ol>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a href="https://2sxc.org/en/apps/app/tutorial-public-forms-with-2sxc-9-30">Tutorial app for Public Forms</a></li>
-<li><a href="https://2sxc.org/en/blog/post/recipe-create-public-forms-with-2sxc">Blog Recipe for using Public Forms with 2sxc</a></li>
+<h2 id="read-also" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="45">Read also</h2>
+<ul sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="47">
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="47"><a href="https://2sxc.org/en/apps/app/tutorial-public-forms-with-2sxc-9-30" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="47">Tutorial app for Public Forms</a></li>
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="48"><a href="https://2sxc.org/en/blog/post/recipe-create-public-forms-with-2sxc" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="48">Blog Recipe for using Public Forms with 2sxc</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 9.30</li>
+<h2 id="history" sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="51">History</h2>
+<ol sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="53">
+<li sourcefile="pages/net-code/razor/edit.enable.md" sourcestartlinenumber="53">Introduced in 2sxc 9.30</li>
 </ol>
 
 </article>
