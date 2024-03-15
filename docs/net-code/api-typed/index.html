@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Typed APIs in 2sxc 16+ | 2sxc 17 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-typed/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NetCode.TypedCode.Index">
+<h1 id="typed-apis-in-2sxc-16">Typed APIs in 2sxc 16+</h1>
+
+<p><strong>Typed Mode</strong> is a new way to write C# and Razor code in 2sxc 16+.
+It is much more robust and easier to debug than the classic <em>dynamic</em> code.</p>
+<h2 id="what-does-typed-mode-look-like">What does Typed Mode Look Like?</h2>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+&lt;h1&gt;@MyItem.String(&quot;Title&quot;)&lt;/h1&gt;
+@MyItem.Picture(&quot;Screenshot&quot;, imgClass: &quot;float-right&quot;)
+&lt;ul&gt;
+  &lt;li&gt;Teaser: @MyItem.String(&quot;Teaser&quot;)&lt;/li&gt;
+  &lt;li&gt;Launched: @MyItem.DateTime(&quot;Launched&quot;).Year&lt;/li&gt;
+  &lt;li&gt;Authors: @MyItem.Children(&quot;Authors&quot;).Count()&lt;/li&gt;
+  &lt;li&gt;Maker: @MyItem.Child(&quot;Maker&quot;).String(&quot;Name&quot;)&lt;/li&gt;
+&lt;/ul&gt;
+@MyItem.Html(&quot;Description&quot;)
+</code></pre>
+<p>What's great about this is that every value is strongly typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Older code is <em>dynamic</em>.
+The API is quite different, so if you copy old snippets you'll probably need to refactor it.</p>
+</div>
+<h2 id="major-differences">Major Differences</h2>
+<ol>
+<li>The compiler can detect many more issues in typed mode</li>
+<li>If your code isn't correct, you will get much better errors in typed mode</li>
+<li>Accessing invalid properties will throw an error in typed mode (eg. <code>MyItem.String(&quot;InvalidProperty&quot;)</code> will throw, but <code>Content.InvalidProperty</code> will not)</li>
+<li>Typed code works much better with LINQ, so <code>MyItem.Children(&quot;Authors&quot;).Count()</code> will just work (in dynamic mode you'd need to cast it to <code>IEnumerable&lt;dynamic&gt;</code> first)</li>
+</ol>
+<h2 id="activate-typed-mode">Activate Typed Mode</h2>
+<p>Dynamic and Typed code can coexist in the same app.
+Each Razor / C# file can decide which mode it wants to use.
+To be in typed mode, your Razor/C# must inherit from a typed base class like this:</p>
+<ul>
+<li>Razor files should begin with:<br>
+<code>@inherits Custom.Hybrid.RazorTyped</code></li>
+<li>C# files should have something like:<br>
+<code>public class YourClassName : Custom.Hybrid.CodeTyped</code></li>
+<li>WebApi files should be like:<br>
+<code>public class YourControllerName : Custom.Hybrid.ApiTyped</code></li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Changing the base class will completely change the APIs you have available.</p>
+</div>
+<h2 id="configure-visual-studio-code-for-intellisense">Configure Visual Studio Code for IntelliSense</h2>
+<p>Now that everything is typed, we highly recommend you setup VSCode to provide IntelliSense.</p>
+<p>👉 Check out the <a class="xref" href="../../guides/vscode/index.html">VS Code Setup Docs</a></p>
+<hr>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-typed/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

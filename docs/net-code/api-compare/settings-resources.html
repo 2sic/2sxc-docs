@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Settings / Resources Differences in APIs | 2sxc 17 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Settings / Resources Differences in APIs | 2sxc 17 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-compare/settings-resources.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v17 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NetCode.TypedCode.CompareApis.SettingsResources">
+<h1 id="settings--resources-differences-in-apis">Settings / Resources Differences in APIs</h1>
+
+<p>2sxc has changed a lot over time.
+So you'll find old code snippets and new ones, and it helps to see which one is being used.
+Sometimes you'll also want to convert old code to new code, and this page should help you with that.</p>
+<h2 id="settings-and-resources-objects">Settings and Resources Objects</h2>
+<h3 id="typed-code">Typed Code</h3>
+<p>In Typed Code, the objects you'll use are usually:</p>
+<ul>
+<li><code>AllSettings</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a> with all settings</li>
+<li><code>AllResources</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a> with all resources</li>
+<li><code>App.Settings</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app settings</li>
+<li><code>App.Resources</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app resources</li>
+</ul>
+<p>To get a value in typed code, you will use typed methods such as <code>.String(...)</code>.
+These can also have longer keys inside them, such as:</p>
+<pre><code class="lang-csharp">var width = AllSettings.String(&quot;Images.Content.Width&quot;);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The typed code is much more robust, as it will not throw an error if a setting doesn't exist.
+So getting <code>Images.MyConfig.Width</code> will not throw an error if <code>MyConfig</code> doesn't exist.</p>
+</div>
+<h3 id="strongly-typed-code">Strongly Typed Code</h3>
+<p>In Strongly Typed Code - inheriting from <code>AppCode.Razor.AppRazor</code>, the objects you'll use are usually:</p>
+<ul>
+<li><code>AllSettings</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a> with all settings</li>
+<li><code>AllResources</code> - a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a> with all resources</li>
+<li><code>App.Settings</code> - a <code>AppCode.Data.AppSettings</code> based on <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app settings</li>
+<li><code>App.Resources</code> - a <code>AppCode.Data.AppResources</code> based on <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a> with app resources</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The strongly typed code is much more robust - and typed.
+So using App.Resources will provide intellisense (if <a href="xref:xref:Guides.VsCode.Index">VS Code is configured correctly</a>).</p>
+<p>You can also use the <code>?.</code> operator to avoid null-errors, such as <code>App.Resources?.Title</code> since we're using the new Roslyn compiler for strongly typed code.</p>
+</div>
+<h3 id="dynamic-code">Dynamic Code</h3>
+<p>In Dynamic Code, the objects you'll use are usually:</p>
+<ul>
+<li><code>Settings</code> - a dynamic object with all settings</li>
+<li><code>Resources</code> - a dynamic object with all resources</li>
+<li><code>App.Settings</code> - a dynamic object with app settings</li>
+<li><code>App.Resources</code> - a dynamic object with app resources</li>
+</ul>
+<p>To get a value in dynamic code, you will use the dynamic object directly, such as:</p>
+<pre><code class="lang-csharp">var width = Settings.Images.Content.Width;
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The dynamic code is much more error-prone, as it will throw an error if a setting doesn't exist.
+So getting <code>Images.MyConfig.Width</code> will throw a null-error if <code>MyConfig</code> doesn't exist.</p>
+<p>Unfortunately you also can't use the <code>?.</code> operator to avoid this, because the old Dnn compiler doesn't support it.</p>
+</div>
+<h2 id="get-settings-and-resources">Get Settings and Resources</h2>
+<table>
+<thead>
+<tr>
+<th>Dynamic</th>
+<th>Typed</th>
+<th>Strongly Typed</th>
+<th>Comments / Differences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Settings</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllSettings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td><code>AllSettings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td>All settings</td>
+</tr>
+<tr>
+<td><code>Settings.Color</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllSettings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>AllSettings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
+<td>Get a color setting</td>
+</tr>
+<tr>
+<td><code>Resources</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllResources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td><code>AllResources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a>)</td>
+<td>All resources</td>
+</tr>
+<tr>
+<td><code>Resources.Title</code> <br> (<code>dynamic</code>)</td>
+<td><code>AllResources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>AllResources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
+<td>Get a resource</td>
+</tr>
+<tr>
+<td><code>App.Settings</code> <br> (<code>dynamic</code>)</td>
+<td><code>App.Settings</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td><code>App.Settings</code> <br> (<code>AppCode.Data.AppSettings</code>)</td>
+<td>App settings</td>
+</tr>
+<tr>
+<td><code>App.Settings.Color</code> <br> (<code>dynamic</code>)</td>
+<td><code>App.Settings.String(&quot;Color&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>App.Settings.String(&quot;Color&quot;)</code> <br> (<code>string</code>) <br> or <br> <code>App.Settings.Color</code> <br> (<code>string</code>)</td>
+<td>App settings</td>
+</tr>
+<tr>
+<td><code>App.Resources</code> <br> (<code>dynamic</code>)</td>
+<td><code>App.Resources</code> <br> (<a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" title="ITypedItem">ITypedItem</a>)</td>
+<td><code>App.Resources</code> <br> (<code>AppCode.Data.AppResources</code>)</td>
+<td>App resources</td>
+</tr>
+<tr>
+<td><code>App.Resources.Title</code> <br> (<code>dynamic</code>)</td>
+<td><code>App.Resources.String(&quot;Title&quot;)</code> <br> (<code>string</code>)</td>
+<td><code>App.Resources.String(&quot;Title&quot;)</code> <br> (<code>string</code>) <br> or <br> <code>App.Resources.Title</code> <br> (<code>string</code>)</td>
+<td>App resources</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The new <code>AllSettings</code> and <code>AllResources</code> can use paths to deeper values, such as
+<code>AllSettings.Int(&quot;Images.Content.Width)</code>.
+This is much safer that the old API, which threw an error if an intermediate setting didn't exist.</p>
+</div>
+<hr>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-compare/settings-resources.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
