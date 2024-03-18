@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -107,13 +107,13 @@
 
         <article data-uid="NetCode.DataSources.Custom.ConfigMask">
 
-<div class="WARNING" sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="1">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="2">These documentations are for versions before 15.x.
+<p>These documentations are for versions before 15.x.
 They don't apply to v15+ but are kept for reference.
 We highly recommend that you don't use them.</p>
 </div>
-<h1 id="datasource-configuration-configmask" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="7">DataSource Configuration: ConfigMask(...)</h1>
+<h1 id="datasource-configuration-configmask">DataSource Configuration: ConfigMask(...)</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +209,7 @@ We highly recommend that you don't use them.</p>
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>
@@ -218,17 +218,17 @@ We highly recommend that you don't use them.</p>
   .context-box-summary .data-configuration
   { visibility: visible; }
 </style>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="17">DataSources often need settings which come from the App or from a settings dialog.
-The ConfigMask is part of the <a class="xref" href="../configuration.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="18">Configuration System</a> and initializes a configuration value.</p>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="20">This value will later be used for</p>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="22">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="22">Parsing <a class="xref" href="../../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="22">Tokens</a> to find the correct parameter to use</li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="23">Use as part of the Cache-Key for high-performance caching.
+<p>DataSources often need settings which come from the App or from a settings dialog.
+The ConfigMask is part of the <a class="xref" href="../configuration.html">Configuration System</a> and initializes a configuration value.</p>
+<p>This value will later be used for</p>
+<ol>
+<li>Parsing <a class="xref" href="../../../../abyss/parts/look-up/tokens.html">Tokens</a> to find the correct parameter to use</li>
+<li>Use as part of the Cache-Key for high-performance caching.
 This ensures that DataSources which have different data based on dynamic configuration (like using a URL parameter) will have separate caches for each value used.</li>
 </ol>
-<h2 id="how-to-use-configmask" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="26">How to use ConfigMask</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="28">Here's a example of the constructor of our SharePoint 2019 DataSource, which expects lots of settings:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="30">
+<h2 id="how-to-use-configmask">How to use ConfigMask</h2>
+<p>Here's a example of the constructor of our SharePoint 2019 DataSource, which expects lots of settings:</p>
+<pre><code class="lang-cs">
 public SharePoint2019()
 {
   // Specify what out-streams this data-source provides. Usually just one: &quot;Default&quot;
@@ -245,29 +245,29 @@ public SharePoint2019()
   ConfigMask(MaxItemsConfigKey, $&quot;[Settings:MaxItems]&quot;);
 }
 </code></pre>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="49">This example adds 8 configuration masks - let's find out what exactly happens.</p>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="51">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="51">Most of them just add a simple <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="51">[Settings:SOMEKEY]</code> so they will just take the value which the developer will configure in the UI</li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="52">The password has a special parameter <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="52">false</code> to ensure that it won't be used in the cache key (which would show it in certain debug scenarios)</li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="53">The title field has a fallback - so if it's not supplied, it will use <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="53">Title</code> by default</li>
+<p>This example adds 8 configuration masks - let's find out what exactly happens.</p>
+<ol>
+<li>Most of them just add a simple <code>[Settings:SOMEKEY]</code> so they will just take the value which the developer will configure in the UI</li>
+<li>The password has a special parameter <code>false</code> to ensure that it won't be used in the cache key (which would show it in certain debug scenarios)</li>
+<li>The title field has a fallback - so if it's not supplied, it will use <code>Title</code> by default</li>
 </ol>
-<hr sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="56">
-<h2 id="read-also" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="58">Read also</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="60">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="60"><a class="xref" href="../../../../abyss/parts/look-up/index.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="60">Configuration using Tokens</a></li>
+<hr>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../../../../abyss/parts/look-up/index.html">Configuration using Tokens</a></li>
 </ul>
 <!-- * [ConfigMask in the API](xref:ToSic.Eav.DataSources.DataSource.ConfigMask*) -->
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="62">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="62"><a class="xref" href="../configuration.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="62">DataSource Configuration</a></li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="63"><a class="xref" href="configuration-parse.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="63">Ensuring configuration is parsed</a></li>
+<ul>
+<li><a class="xref" href="../configuration.html">DataSource Configuration</a></li>
+<li><a class="xref" href="configuration-parse.html">Ensuring configuration is parsed</a></li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="65">Demo App and further links</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="67">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="67">#todoc</li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<ul>
+<li>#todoc</li>
 </ul>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="69">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="71">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configmask.md" sourcestartlinenumber="71">Introduced in 2sxc 9.13 to aid custom data sources</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 9.13 to aid custom data sources</li>
 </ol>
 
 </article>

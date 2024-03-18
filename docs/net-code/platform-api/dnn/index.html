@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,77 +108,77 @@
         <article data-uid="NetCode.PlatformApi.Dnn.Index">
 
 <img src="../../../assets/features/platform-dnn.svg" width="100%">
-<h1 id="dnn-platform-api-guide" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="7">Dnn Platform API Guide</h1>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="9">This section is about special topics / APIs when programming with 2sxc in DNN.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="11">👉🏽 For the general platform topics such as installation, see the <a class="xref" href="../../../abyss/platforms/dnn/index.html" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="11">Dnn Platform Guide</a>.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="13">Sometimes you want to leverage 2sxc to create a solution, provide data input etc. but want to output or re-use the data in your own Module, Skin, Script or something else. This is easy to do.</p>
-<div class="IMPORTANT" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="15">
+<h1 id="dnn-platform-api-guide">Dnn Platform API Guide</h1>
+<p>This section is about special topics / APIs when programming with 2sxc in DNN.</p>
+<p>👉🏽 For the general platform topics such as installation, see the <a class="xref" href="../../../abyss/platforms/dnn/index.html">Dnn Platform Guide</a>.</p>
+<p>Sometimes you want to leverage 2sxc to create a solution, provide data input etc. but want to output or re-use the data in your own Module, Skin, Script or something else. This is easy to do.</p>
+<div class="IMPORTANT">
 <h5>Important</h5>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="16">We massively improved this in 2sxc 13 which integrates with Dnn 9 Dependency Injection.
+<p>We massively improved this in 2sxc 13 which integrates with Dnn 9 Dependency Injection.
 These examples require Dnn 9.5+ and 2sxc 14+</p>
 </div>
-<h2 id="dnn-platform-api-basics" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="19">Dnn Platform API Basics</h2>
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="21">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="21">In general, everything in 2sxc is the same for all platforms.</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="22">For Dnn it's important to realize that its based on some older Frameworks
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="23">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="23">.net Framework 4.7.2 as of DNN 9.6.1, or .net Framework 4.8 for the latest DNN</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="24">Razor uses the fairly old MVC 3</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="25">C# is also an older version, we believe ca. 6.0. For example, you cannot use <code sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="25">var x = x?.y?.z</code> because it's not supported in this version.</li>
+<h2 id="dnn-platform-api-basics">Dnn Platform API Basics</h2>
+<ol>
+<li>In general, everything in 2sxc is the same for all platforms.</li>
+<li>For Dnn it's important to realize that its based on some older Frameworks
+<ol>
+<li>.net Framework 4.7.2 as of DNN 9.6.1, or .net Framework 4.8 for the latest DNN</li>
+<li>Razor uses the fairly old MVC 3</li>
+<li>C# is also an older version, we believe ca. 6.0. For example, you cannot use <code>var x = x?.y?.z</code> because it's not supported in this version.</li>
 </ol>
 </li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="26">Dependency Injection is still fairly new in DNN
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="27">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="27">not all DNN services are available in dependency injection</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="28">not all DNN controls can use dependency injection</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="29">certain uses of dependency injection cause some surprises</li>
-</ol>
-</li>
-</ol>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="31">With this in mind, let's see how we can solve some common challenges.</p>
-<h2 id="use-dnn-objects-and-services-in-2sxc" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="33">Use Dnn Objects and Services in 2sxc</h2>
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="35">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="35">General user, site (portal) and similar information
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="36">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="36">Just use the <code sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="36">CmsContext</code> objects - eg. <code sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="36">CmsContext.User</code> or <code sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="36">CmsContext.Site</code></li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="37">This is the same across platforms, so code written like this will also run on Oqtane</li>
-</ol>
-</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="38">Access really specific DNN objects
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="39">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="39">Use the normal <a href="https://docs.dnncommunity.org/api/" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="39">DNN API</a> which is not dependency injection based.</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="40">For most objects you will use the <em sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="40">old</em> static API to get the <em sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="40">Current</em> objects.
-For example, to get the current portal, use <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Portals.PortalSettings.html#DotNetNuke_Entities_Portals_PortalSettings_Current" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="41">PortalSettings.Current</a></li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="42">Some objects can also be retrieved through Dependency Injection, using <code sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="42">GetService&lt;ISomeDnnType&gt;()</code></li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="43">In general we recommend against using DNN specific objects this, because your work can then not be transported to another platform.</li>
-</ol>
-</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="44">Get DNN SQL Data
-<ol sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="45">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="45">Use standard DNN APIs</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="46">You can also use Visual Query to retrieve data from DNN tables</li>
+<li>Dependency Injection is still fairly new in DNN
+<ol>
+<li>not all DNN services are available in dependency injection</li>
+<li>not all DNN controls can use dependency injection</li>
+<li>certain uses of dependency injection cause some surprises</li>
 </ol>
 </li>
 </ol>
-<h2 id="use-2sxc-objects-and-services-in-dnn-skins-and-modules" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="48">Use 2sxc Objects and Services in Dnn Skins and Modules</h2>
-<p sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="50">👉🏽 See <a class="xref" href="themes-modules.html" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="50">Guide to using 2sxc in Dnn Skins and Modules</a></p>
-<hr sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="54">
-<h2 id="history" sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="56">History</h2>
-<ul sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="58">
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="58">2sxc v1 was for Dnn 4 in 2012</li>
-<li sourcefile="pages/net-code/platform-api/dnn/index.md" sourcestartlinenumber="59">2sxc v14 requires Dnn 9.6.1 or newer and is fully integrated in the DNN Dependency injection, so DNN can get 2sxc services and vice versa.</li>
+<p>With this in mind, let's see how we can solve some common challenges.</p>
+<h2 id="use-dnn-objects-and-services-in-2sxc">Use Dnn Objects and Services in 2sxc</h2>
+<ol>
+<li>General user, site (portal) and similar information
+<ol>
+<li>Just use the <code>CmsContext</code> objects - eg. <code>CmsContext.User</code> or <code>CmsContext.Site</code></li>
+<li>This is the same across platforms, so code written like this will also run on Oqtane</li>
+</ol>
+</li>
+<li>Access really specific DNN objects
+<ol>
+<li>Use the normal <a href="https://docs.dnncommunity.org/api/">DNN API</a> which is not dependency injection based.</li>
+<li>For most objects you will use the <em>old</em> static API to get the <em>Current</em> objects.
+For example, to get the current portal, use <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Portals.PortalSettings.html#DotNetNuke_Entities_Portals_PortalSettings_Current">PortalSettings.Current</a></li>
+<li>Some objects can also be retrieved through Dependency Injection, using <code>GetService&lt;ISomeDnnType&gt;()</code></li>
+<li>In general we recommend against using DNN specific objects this, because your work can then not be transported to another platform.</li>
+</ol>
+</li>
+<li>Get DNN SQL Data
+<ol>
+<li>Use standard DNN APIs</li>
+<li>You can also use Visual Query to retrieve data from DNN tables</li>
+</ol>
+</li>
+</ol>
+<h2 id="use-2sxc-objects-and-services-in-dnn-skins-and-modules">Use 2sxc Objects and Services in Dnn Skins and Modules</h2>
+<p>👉🏽 See <a class="xref" href="themes-modules.html">Guide to using 2sxc in Dnn Skins and Modules</a></p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>2sxc v1 was for Dnn 4 in 2012</li>
+<li>2sxc v14 requires Dnn 9.6.1 or newer and is fully integrated in the DNN Dependency injection, so DNN can get 2sxc services and vice versa.</li>
 </ul>
-<h2 id="history-of-dependency-injection-in-2sxc" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="2">History of Dependency Injection in 2sxc</h2>
-<ol sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="5">Integrated with Oqtane DI in v12 (May 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6"><code sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6">GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="7">Integrated with Oqtane DI in v12 (May. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="8">Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="9">Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">Created <a class="xref" href="../../services/service-kits.html" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">ServiceKits</a> for v14 (June 2022)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="11">Added ServiceKitLight for custom DataSources in 2sxc 15</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="12">Added ServiceKit16 for 2sxc 16</li>
+<h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
+<ol>
+<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
+<li>Integrated with Oqtane DI in v12 (May 2021)</li>
+<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
+<li>Integrated with Oqtane DI in v12 (May. 2021)</li>
+<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
+<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
+<li>Created <a class="xref" href="../../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
+<li>Added ServiceKitLight for custom DataSources in 2sxc 15</li>
+<li>Added ServiceKit16 for 2sxc 16</li>
 </ol>
 
 </article>

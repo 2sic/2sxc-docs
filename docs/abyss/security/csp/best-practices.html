@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,52 +108,52 @@
         <article data-uid="Abyss.Security.Csp.BestPractices">
 
 <img src="../../../assets/features/content-security-policy.svg" class="feature">
-<h1 id="content-security-policy-csp-best-practices" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="7">Content Security Policy (CSP) Best Practices</h1>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="9">Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="9">cross-site scripting attacks</a>.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="11">There are many ways you can setup CSP, but it is easier if the entire setup is geared towards this goal.</p>
-<h2 id="javascript-csp-best-practices" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="13">JavaScript CSP Best Practices</h2>
-<h3 id="js-avoid-eval-and-other-stupid-stuff" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="15">JS: Avoid <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="15">eval</code> and other Stupid Stuff</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="17">This is fairly basic: don't use <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="17">eval</code> in your code.</p>
-<h3 id="js-avoid-any-js-in-the-page" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="20">JS: Avoid any JS in the Page</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="22">Any In-Page JS will either force you to use lax security rules or require a lot of whitelisting using nonce or hashes.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="24">We recommend that you avoid this alltogether.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="26">Place all your code in external JS files which are on the same server (rule: <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="26">self</code>).
-Then use <a class="xref" href="../../../js-code/turn-on/index.html" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="27">turnOn</a> to start the code.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="29">turnOn will also help you pass parameters like the current ModuleId to the script, in case you need it.</p>
-<h2 id="csp-configuration-best-practices" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="32">CSP Configuration Best Practices</h2>
-<h3 id="use-comments-to-document-your-csp" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="34">Use Comments to Document your CSP</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="36">In the Settings you can use comments with lines beginning with <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="36">//</code> to document your CSP.
+<h1 id="content-security-policy-csp-best-practices">Content Security Policy (CSP) Best Practices</h1>
+<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
+<p>There are many ways you can setup CSP, but it is easier if the entire setup is geared towards this goal.</p>
+<h2 id="javascript-csp-best-practices">JavaScript CSP Best Practices</h2>
+<h3 id="js-avoid-eval-and-other-stupid-stuff">JS: Avoid <code>eval</code> and other Stupid Stuff</h3>
+<p>This is fairly basic: don't use <code>eval</code> in your code.</p>
+<h3 id="js-avoid-any-js-in-the-page">JS: Avoid any JS in the Page</h3>
+<p>Any In-Page JS will either force you to use lax security rules or require a lot of whitelisting using nonce or hashes.</p>
+<p>We recommend that you avoid this alltogether.</p>
+<p>Place all your code in external JS files which are on the same server (rule: <code>self</code>).
+Then use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to start the code.</p>
+<p>turnOn will also help you pass parameters like the current ModuleId to the script, in case you need it.</p>
+<h2 id="csp-configuration-best-practices">CSP Configuration Best Practices</h2>
+<h3 id="use-comments-to-document-your-csp">Use Comments to Document your CSP</h3>
+<p>In the Settings you can use comments with lines beginning with <code>//</code> to document your CSP.
 It will make your work easier and help others who make changes in the future.</p>
-<pre><code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="39">// This will apply to all ...-src
+<pre><code>// This will apply to all ...-src
 all-src: 'self' https:
 </code></pre>
-<h3 id="use-multiple-lines" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="44">Use Multiple Lines</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="46">All rules will be merged in the end, so in many cases it's better to have rules on multiple lines.</p>
-<pre><code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="48">// This is for the image gallery
+<h3 id="use-multiple-lines">Use Multiple Lines</h3>
+<p>All rules will be merged in the end, so in many cases it's better to have rules on multiple lines.</p>
+<pre><code>// This is for the image gallery
 script-src https://some-cdn.com/
 
 // This is for jQuery
 script-src https://some-other-cdn.com/
 </code></pre>
-<h3 id="use-all-src" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="56">Use <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="56">all-src</code></h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="58">2sxc has a special <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="58">all-src</code> rule which you should use for <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="58">'self'</code> or <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="58">https:</code> rules.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="60">You should use these at global/site level, because it ensures that any further rules from Apps or other sources won't break your site.</p>
-<h3 id="avoid-nonce--and-sha256--policies" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="62">Avoid 'nonce-...' and 'sha256-...' Policies</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="64"><code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="64">'nonce-...'</code> and <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="64">'sha256-...'</code> policies are great for allowing a specific inline bit of script or CSS.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="66">But they have a huge side-effect: they automatically disable the <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="66">'unsafe-inline'</code> rule.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="68">Because of this, you should avoid using these policies, as most Dnn/Oqtane sites will have other scripts which are outside of your control, so you will typically need <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="68">unsafe-inline</code>.</p>
-<div class="WARNING" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="70">
+<h3 id="use-all-src">Use <code>all-src</code></h3>
+<p>2sxc has a special <code>all-src</code> rule which you should use for <code>'self'</code> or <code>https:</code> rules.</p>
+<p>You should use these at global/site level, because it ensures that any further rules from Apps or other sources won't break your site.</p>
+<h3 id="avoid-nonce--and-sha256--policies">Avoid 'nonce-...' and 'sha256-...' Policies</h3>
+<p><code>'nonce-...'</code> and <code>'sha256-...'</code> policies are great for allowing a specific inline bit of script or CSS.</p>
+<p>But they have a huge side-effect: they automatically disable the <code>'unsafe-inline'</code> rule.</p>
+<p>Because of this, you should avoid using these policies, as most Dnn/Oqtane sites will have other scripts which are outside of your control, so you will typically need <code>unsafe-inline</code>.</p>
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="71">If any of these policies are used, it automatically disables the <code sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="71">'unsafe-inline'</code> rule.
+<p>If any of these policies are used, it automatically disables the <code>'unsafe-inline'</code> rule.
 This is how CSP works.</p>
 </div>
-<h3 id="be-as-local-as-possible" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="74">Be as Local as Possible</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="76">Rules which should only be used in a specific App should be on that App, not on the site.</p>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="78">Rules which only apply to a specific razor page should ideally also be on that page only.</p>
-<h2 id="production--operations-reporting" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="81">Production / Operations Reporting</h2>
-<h3 id="use-a-reporting-server" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="83">Use a Reporting Server</h3>
-<p sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="85">Even if you think you're done, make sure to setup a reporting server.
-You can get free system from <a href="https://report-uri.com/" sourcefile="pages/abyss/security/csp/best-practices.md" sourcestartlinenumber="86">Report-URI</a>.
+<h3 id="be-as-local-as-possible">Be as Local as Possible</h3>
+<p>Rules which should only be used in a specific App should be on that App, not on the site.</p>
+<p>Rules which only apply to a specific razor page should ideally also be on that page only.</p>
+<h2 id="production--operations-reporting">Production / Operations Reporting</h2>
+<h3 id="use-a-reporting-server">Use a Reporting Server</h3>
+<p>Even if you think you're done, make sure to setup a reporting server.
+You can get free system from <a href="https://report-uri.com/">Report-URI</a>.
 This will allow you to monitor if your site is being compromised - or if you forgot to set some rules, which result in the site breaking.</p>
 
 </article>

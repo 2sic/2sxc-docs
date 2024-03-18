@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,92 +106,92 @@
         </div>
 
         <article data-uid="Basics.Data.Fields.String-Wysiwyg-Rich">
-<h1 id="field-input-type-string-wysiwyg-rich-mode-new-1601" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="4">Field Input-Type string-wysiwyg Rich-Mode <em sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="4">new 16.01</em></h1>
+<h1 id="field-input-type-string-wysiwyg-rich-mode-new-1601">Field Input-Type string-wysiwyg Rich-Mode <em>new 16.01</em></h1>
 
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="6">A wysiwyg field which can be configured to be in various modes - see <a class="xref" href="index.html" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="6">Field Input-Type string-wysiwyg</a>.
+<p>A wysiwyg field which can be configured to be in various modes - see <a class="xref" href="index.html">Field Input-Type string-wysiwyg</a>.
 When this configuration is set, it will:</p>
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="10">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="10">Provide buttons in the Edit UI to
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="11">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="11">align images in a special way</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="12">add splitters to reset content alignments after the splitter</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="13">add spacers to create gaps of various sizes in content</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="14">specify resizing using css-classes for the server-side image-resizing</li>
+<ol>
+<li>Provide buttons in the Edit UI to
+<ol>
+<li>align images in a special way</li>
+<li>add splitters to reset content alignments after the splitter</li>
+<li>add spacers to create gaps of various sizes in content</li>
+<li>specify resizing using css-classes for the server-side image-resizing</li>
 </ol>
 </li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="15">Allow the razor <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="15">.Html(...)</a> to
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="16">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="16">automatically resize images</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="17">make all images responsive using <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="17">&lt;picture&gt;</code> tags</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="18">automatically add spacers</li>
+<li>Allow the razor <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...)</a> to
+<ol>
+<li>automatically resize images</li>
+<li>make all images responsive using <code>&lt;picture&gt;</code> tags</li>
+<li>automatically add spacers</li>
 </ol>
 </li>
 </ol>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="20">To make all this happen it needs this:</p>
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="22">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="22">The new <a class="xref" href="index.html" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="22">mode setting</a></li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="23">The new behavior in the Edit UI</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="24">The new <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="24">.Html(...)</a> API</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="25">Internal server-side code to find the images and replace them with responsive <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="25">&lt;picture&gt;</code> tags</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="26">Special CSS to make it all work (see below)</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="27">A special <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="27">debug</code> mode to help you in optimizing the CSS for your use case (see below)</li>
+<p>To make all this happen it needs this:</p>
+<ol>
+<li>The new <a class="xref" href="index.html">mode setting</a></li>
+<li>The new behavior in the Edit UI</li>
+<li>The new <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...)</a> API</li>
+<li>Internal server-side code to find the images and replace them with responsive <code>&lt;picture&gt;</code> tags</li>
+<li>Special CSS to make it all work (see below)</li>
+<li>A special <code>debug</code> mode to help you in optimizing the CSS for your use case (see below)</li>
 </ol>
-<h2 id="the-edit-ui" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="29">The Edit UI</h2>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="31">If a string-wysiwyg is configured to behave in the new <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="31">rich</code> mode, the toolbars will look as follows:</p>
+<h2 id="the-edit-ui">The Edit UI</h2>
+<p>If a string-wysiwyg is configured to behave in the new <code>rich</code> mode, the toolbars will look as follows:</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-rich.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="35">The new buttons on the second row allow you to add spacers of various sizes.
+<p>The new buttons on the second row allow you to add spacers of various sizes.
 When you add images or spacers which resulting in extra padding, the padding will be shown in the UI as follows:</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/edit-ui-showing-padding.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="40">When selecting a spacer, the context-toolbar will look as follows:</p>
+<p>When selecting a spacer, the context-toolbar will look as follows:</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/spacer-context-toolbar.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="44">When selecting an image, the context-toolbar will look as follows:</p>
+<p>When selecting an image, the context-toolbar will look as follows:</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/image-context-toolbar.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="48">This allows you to change the alignment (left/right) and to specify the size of the image.</p>
-<div class="IMPORTANT" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="50">
+<p>This allows you to change the alignment (left/right) and to specify the size of the image.</p>
+<div class="IMPORTANT">
 <h5>Important</h5>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="51">In the <em sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="51">classic</em> wysiwyg-mode, the image-alignment was done using the <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="51">float</code> css-property
-and the width uses the <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="52">width</code> css-property.</p>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="54">In this new <strong sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="54">Rich</strong> mode, it will only set CSS classes like <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="54">wysiwyg-left</code> or <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="54">wysiwyg-50</code>.
+<p>In the <em>classic</em> wysiwyg-mode, the image-alignment was done using the <code>float</code> css-property
+and the width uses the <code>width</code> css-property.</p>
+<p>In this new <strong>Rich</strong> mode, it will only set CSS classes like <code>wysiwyg-left</code> or <code>wysiwyg-50</code>.
 So the final output will only change, if the CSS definition exists.
-This happens automatically, when you use the <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="56">.Html(...) method</a>.</p>
+This happens automatically, when you use the <a class="xref" href="../../../../net-code/dynamic-data/dynamic-entity-html.html">.Html(...) method</a>.</p>
 </div>
-<h2 id="css" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="58">CSS</h2>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="60">To make all of this work, we use a list of CSS classes which are applied in the edit-UI.
+<h2 id="css">CSS</h2>
+<p>To make all of this work, we use a list of CSS classes which are applied in the edit-UI.
 The output must of course also have these classes, so that the final result looks the same.
 These are the classes that make it work:</p>
-<ul sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="64">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="64"><code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="64">wysiwyg-container</code> is set on the wrapper <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="64">&lt;div&gt;</code> so the classes inside will only apply to this field</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="65"><code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="65">wysiwyg-100</code>, <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="65">wysiwyg-50</code> etc. are width classes on the image</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="66"><code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="66">wysiwyg-left</code>, <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="66">wysiwyg-right</code> etc. are alignment classes on the image which also apply a padding to the opposite side</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="67"><code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="67">wysiwyg-splitter</code> are classes applied to <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="67">&lt;hr&gt;</code> tags to reset image alignment and ensure the next content start below it</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="68"><code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="68">wysiwyg-spacer-0</code>, <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="68">wysiwyg-spacer-s</code> etc. are classes applied to <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="68">&lt;hr&gt;</code> tags to create gaps of various sizes</li>
+<ul>
+<li><code>wysiwyg-container</code> is set on the wrapper <code>&lt;div&gt;</code> so the classes inside will only apply to this field</li>
+<li><code>wysiwyg-100</code>, <code>wysiwyg-50</code> etc. are width classes on the image</li>
+<li><code>wysiwyg-left</code>, <code>wysiwyg-right</code> etc. are alignment classes on the image which also apply a padding to the opposite side</li>
+<li><code>wysiwyg-splitter</code> are classes applied to <code>&lt;hr&gt;</code> tags to reset image alignment and ensure the next content start below it</li>
+<li><code>wysiwyg-spacer-0</code>, <code>wysiwyg-spacer-s</code> etc. are classes applied to <code>&lt;hr&gt;</code> tags to create gaps of various sizes</li>
 </ul>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="70">The built-in CSS for this is automatically added to the page when you use the <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="70">.Html(...)</code> method.
+<p>The built-in CSS for this is automatically added to the page when you use the <code>.Html(...)</code> method.
 It ensures correct sizing and will also re-order the images to be above the text on mobile.</p>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="73">It also ensures that multiple images on the same line will properly align and not stagger.
+<p>It also ensures that multiple images on the same line will properly align and not stagger.
 For example, 3 images each being 33% should have a padding after the first two, but not after the last one.</p>
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="76">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="76">Image arrangements which work on all screens (eg. 4-in-a-row on desktop, but under-each-other on mobile)</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="77">Image text wrapping so that multiple side-images are under each other and not staggered</li>
+<ol>
+<li>Image arrangements which work on all screens (eg. 4-in-a-row on desktop, but under-each-other on mobile)</li>
+<li>Image text wrapping so that multiple side-images are under each other and not staggered</li>
 </ol>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/output-images-3-in-row-all-left-aligned.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="81">You can also add your own CSS to make it look different.</p>
-<h2 id="debug-css" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="83">Debug CSS</h2>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="85">If you specify <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="85">debug: true</code> in the <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="85">.Html(..., debug: true)</code> method, it will add some CSS to the page to help you see what's going on.</p>
+<p>You can also add your own CSS to make it look different.</p>
+<h2 id="debug-css">Debug CSS</h2>
+<p>If you specify <code>debug: true</code> in the <code>.Html(..., debug: true)</code> method, it will add some CSS to the page to help you see what's going on.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/output-debug-css.jpg" width="100%">
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="89">This will show you:</p>
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="91">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="91">the exact size/location/placement of the <code sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="91">wysiwyg-container</code> - shown in fading magenta</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="92">exact sizes of images - shown in bright fading green</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="93">paddings around images - shown as shaded areas</li>
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="94">spacings / gaps of splitters - shown as shaded areas</li>
+<p>This will show you:</p>
+<ol>
+<li>the exact size/location/placement of the <code>wysiwyg-container</code> - shown in fading magenta</li>
+<li>exact sizes of images - shown in bright fading green</li>
+<li>paddings around images - shown as shaded areas</li>
+<li>spacings / gaps of splitters - shown as shaded areas</li>
 </ol>
-<hr sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="96">
-<h2 id="history" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="98">History</h2>
-<ol sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="100">
-<li sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="100">Introduced in v16.01 on Towel Day 2023</li>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in v16.01 on Towel Day 2023</li>
 </ol>
-<p sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="102">Shortlink: <a href="https://go.2sxc.org/wysiwyg-rich" sourcefile="pages/basics/data/fields/string-wysiwyg/rich.md" sourcestartlinenumber="102">https://go.2sxc.org/wysiwyg-rich</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/wysiwyg-rich">https://go.2sxc.org/wysiwyg-rich</a></p>
 
 </article>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,56 +106,56 @@
         </div>
 
         <article data-uid="NetCode.Conventions.PropertiesRequired">
-<h1 id="convention-property-required-name-checks" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="5">Convention: Property Required Name Checks</h1>
+<h1 id="convention-property-required-name-checks">Convention: Property Required Name Checks</h1>
 
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="7">On newer APIs we implement a policy that properties are <strong sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="7">required</strong> by default (but you can override this).
+<p>On newer APIs we implement a policy that properties are <strong>required</strong> by default (but you can override this).
 This applies to newer base classes such as</p>
-<ul sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="10">
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="10"><a class="xref" href="../../../api/dot-net/Custom.Hybrid.RazorTyped.html" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="10">RazorTyped</a></li>
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="11"><a class="xref" href="../../../api/dot-net/Custom.Hybrid.ApiTyped.html" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="11">ApiTyped</a></li>
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="12"><a class="xref" href="../../../api/dot-net/Custom.Hybrid.CodeTyped.html" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="12">CodeTyped</a></li>
+<ul>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.RazorTyped.html">RazorTyped</a></li>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.ApiTyped.html">ApiTyped</a></li>
+<li><a class="xref" href="../../../api/dot-net/Custom.Hybrid.CodeTyped.html">CodeTyped</a></li>
 </ul>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="14">This means that by <em sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="14">default</em>, retrieving any property such as <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="14">something.String(&quot;FirstName&quot;)</code>
-will only work, if the underlying Entity has the property <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="15">FirstName</code>.
+<p>This means that by <em>default</em>, retrieving any property such as <code>something.String(&quot;FirstName&quot;)</code>
+will only work, if the underlying Entity has the property <code>FirstName</code>.
 Otherwise it will throw an error.</p>
-<h2 id="why" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="19">Why?</h2>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="21">This should help you find errors earlier, and make your code more stable.
-Previously when using <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="22">dynamic</code> objects, it was easy to make a typo and not notice it,
-or to be using the wrong object (such as having and underlying <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="23">BlogPost</code> object instead of a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="23">Category</code> object).</p>
-<h2 id="how-to-override" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="26">How to Override</h2>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="28">You can override this at object/wrapper creation, or when retrieving the value.</p>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="30">When creating the object, you can override the default behavior by setting
-the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="31">required</code> parameter on value getters, or <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="31">propsRequired</code> on item-conversions.
+<h2 id="why">Why?</h2>
+<p>This should help you find errors earlier, and make your code more stable.
+Previously when using <code>dynamic</code> objects, it was easy to make a typo and not notice it,
+or to be using the wrong object (such as having and underlying <code>BlogPost</code> object instead of a <code>Category</code> object).</p>
+<h2 id="how-to-override">How to Override</h2>
+<p>You can override this at object/wrapper creation, or when retrieving the value.</p>
+<p>When creating the object, you can override the default behavior by setting
+the <code>required</code> parameter on value getters, or <code>propsRequired</code> on item-conversions.
 Example:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="34">var lax = AsItem(someEntity, propsRequired: false);
+<pre><code class="lang-c#">var lax = AsItem(someEntity, propsRequired: false);
 var willBeNull = lax.String(&quot;DoesNotExist&quot;);
 </code></pre>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="39">When accessing a property, you can override it by using the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="39">required</code> parameter.
+<p>When accessing a property, you can override it by using the <code>required</code> parameter.
 Example:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="42">var willBeNull = MyItem.String(&quot;DoesNotExist&quot;, required: false);
+<pre><code class="lang-c#">var willBeNull = MyItem.String(&quot;DoesNotExist&quot;, required: false);
 </code></pre>
-<div class="TIP" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="46">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="47">The <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="47">required</code> parameter is a nullable boolean.
+<p>The <code>required</code> parameter is a nullable boolean.
 This is to ensure that it's clear if you set it or not, in which case the default will be used.</p>
 </div>
-<h2 id="behavior-when-providing-a-fallback-value" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="51">Behavior when providing a fallback value</h2>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="53">Most methods which have a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="53">required</code> also have a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="53">fallback</code> parameter.
+<h2 id="behavior-when-providing-a-fallback-value">Behavior when providing a fallback value</h2>
+<p>Most methods which have a <code>required</code> also have a <code>fallback</code> parameter.
 This is a value which will be returned if the property is empty or is not populated.</p>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="56">So there is a slightly different behavior.</p>
-<ul sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="58">
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="58">When using it on data-object such as <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="58">ITypedItem</a> the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="58">fallback</code> does not change the behavior of <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="58">required</code>.<br>
-So if you don't change required, and the field <em sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="59">doesn't exist</em>, it will throw an error.</li>
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="60">When using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Code.ITypedModel.html" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="60">MyModel</a> the fallback will also affect the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="60">required</code>.<br>
-So if you specify a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="61">fallback</code> which can be distinguished from the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="61">default</code> (eg. not a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="61">null</code> on a string, not a <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="61">false</code> on a bool) then
-<code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="62">required</code> will be ignored and the <code sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="62">fallback</code> will be returned.</li>
+<p>So there is a slightly different behavior.</p>
+<ul>
+<li>When using it on data-object such as <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> the <code>fallback</code> does not change the behavior of <code>required</code>.<br>
+So if you don't change required, and the field <em>doesn't exist</em>, it will throw an error.</li>
+<li>When using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Code.ITypedModel.html">MyModel</a> the fallback will also affect the <code>required</code>.<br>
+So if you specify a <code>fallback</code> which can be distinguished from the <code>default</code> (eg. not a <code>null</code> on a string, not a <code>false</code> on a bool) then
+<code>required</code> will be ignored and the <code>fallback</code> will be returned.</li>
 </ul>
-<hr sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="65">
-<h2 id="history" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="67">History</h2>
-<ul sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="69">
-<li sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="69">First introductions in 2sxc 16.03</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>First introductions in 2sxc 16.03</li>
 </ul>
-<p sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="71">Shortlink: <a href="https://go.2sxc.org/immutable" sourcefile="pages/net-code/conventions/property-required/index.md" sourcestartlinenumber="71">https://go.2sxc.org/immutable</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/immutable">https://go.2sxc.org/immutable</a></p>
 
 </article>
 

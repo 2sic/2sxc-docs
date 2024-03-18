@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,25 +106,25 @@
         </div>
 
         <article data-uid="Basics.DataFormats.JsonV1.Index">
-<h1 id="json-format-v1" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="5">JSON Format V1</h1>
+<h1 id="json-format-v1">JSON Format V1</h1>
 
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="7">JSON based data storage is used to persist data into a text (JSON) format. In 2sxc 9.4 we introduced it to store entities in the history (for version rollback). Since then it has found many new applications.</p>
-<h2 id="json-package" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="9">JSON Package</h2>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="10">The Json format has a minimal header like this:</p>
-<pre><code class="lang-json" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="12">{
+<p>JSON based data storage is used to persist data into a text (JSON) format. In 2sxc 9.4 we introduced it to store entities in the history (for version rollback). Since then it has found many new applications.</p>
+<h2 id="json-package">JSON Package</h2>
+<p>The Json format has a minimal header like this:</p>
+<pre><code class="lang-json">{
   &quot;_&quot;: { &quot;V&quot;: 1 }
 }
 </code></pre>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="18">which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information.</p>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="20">In addition to that, the basic package can contain</p>
-<ol sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="22">
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="22"><a class="xref" href="content-type.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="22"><code sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="22">ContentType</code> node</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="23">an <a class="xref" href="entity.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="23"><code sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="23">Entity</code> node</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="24">a Query - which is actually also an <a class="xref" href="entity.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="24">Entity</a> with lots of <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="24">Metadata</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="25">a View - which is an <a class="xref" href="entity.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="25">Entity</a> with <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="25">Metadata</a> and <a class="xref" href="assets.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="25">Assets</a></li>
+<p>which just contains the version. Future non-breaking enhancements will leave the version on 1 and optionally add more header information.</p>
+<p>In addition to that, the basic package can contain</p>
+<ol>
+<li><a class="xref" href="content-type.html"><code>ContentType</code> node</a></li>
+<li>an <a class="xref" href="entity.html"><code>Entity</code> node</a></li>
+<li>a Query - which is actually also an <a class="xref" href="entity.html">Entity</a> with lots of <a class="xref" href="metadata.html">Metadata</a></li>
+<li>a View - which is an <a class="xref" href="entity.html">Entity</a> with <a class="xref" href="metadata.html">Metadata</a> and <a class="xref" href="assets.html">Assets</a></li>
 </ol>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="27">This could then look like this:</p>
-<pre><code class="lang-json" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="29">{
+<p>This could then look like this:</p>
+<pre><code class="lang-json">{
   &quot;_&quot;: { &quot;V&quot;: 1 },
   &quot;ContentType&quot;: {
     &quot;Id&quot;: &quot;|Config ToSic.Eav.DataSources.SqlDataSource&quot;,
@@ -133,23 +133,23 @@
   }
 }
 </code></pre>
-<h2 id="special-stuff-about-the-json-format" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="40">Special Stuff about the JSON Format</h2>
-<h4 id="all-values-have-language-information" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="42">All values have language information</h4>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="44">As we're usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See <a class="xref" href="value.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="44">JSON Value (Multilanguage) V1</a></p>
-<h4 id="metadata-is-a-recursive-list-of-entities" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="46">Metadata is a Recursive List of Entities</h4>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="48">2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See <a class="xref" href="metadata.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="48">JSON Metadata V1</a></p>
-<h2 id="limitations" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="51">Limitations</h2>
-<p sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="53">As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.</p>
-<h2 id="read-also" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="55">Read also</h2>
-<ul sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="57">
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="57"><a class="xref" href="content-type.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="57">Format: Json V1 Content-types</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="58"><a class="xref" href="../../../basics/data/content-types/specs/file-storage.html" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="58">Concepts: file provided content-types</a></li>
+<h2 id="special-stuff-about-the-json-format">Special Stuff about the JSON Format</h2>
+<h4 id="all-values-have-language-information">All values have language information</h4>
+<p>As we're usually working with real-life content-items, multi-language is always a concern. Because of this, every value is multi-language by default. If the language code is *, that means that this value is the default/fallback value for all languages. See <a class="xref" href="value.html">JSON Value (Multilanguage) V1</a></p>
+<h4 id="metadata-is-a-recursive-list-of-entities">Metadata is a Recursive List of Entities</h4>
+<p>2sxc and the EAV is all about real-life content-management. As such, many pieces of information have more information attached, called Metadata. Metadata-items could themselves have their own Metadata, which is then of course attached as well. See <a class="xref" href="metadata.html">JSON Metadata V1</a></p>
+<h2 id="limitations">Limitations</h2>
+<p>As of now (2sxc 9.7) such a package can only contain 1 root item (a content-type or an entity). Future versions may enhance this.</p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="content-type.html">Format: Json V1 Content-types</a></li>
+<li><a class="xref" href="../../../basics/data/content-types/specs/file-storage.html">Concepts: file provided content-types</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="60">History</h2>
-<ol sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="62">
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="62">Added in v9.4</li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="63">Enhanced with Content-Types in v9.7</li>
-<li sourcefile="pages/abyss/data-formats/json-v01/index.md" sourcestartlinenumber="64">Extended to support attachments so Views can include templates and icons in 2sxc ca. v11.10</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Added in v9.4</li>
+<li>Enhanced with Content-Types in v9.7</li>
+<li>Extended to support attachments so Views can include templates and icons in 2sxc ca. v11.10</li>
 </ol>
 
 </article>

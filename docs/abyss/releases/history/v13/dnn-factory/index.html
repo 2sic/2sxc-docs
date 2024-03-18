@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,23 +106,23 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V13.DnnFactory">
-<h1 id="fix-breaking-change-static-dnn-factory-in-v13" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="5">Static Dnn Factory</em> in v13</h1>
+<h1 id="fix-breaking-change-static-dnn-factory-in-v13">Fix Breaking Change <em>Static Dnn Factory</em> in v13</h1>
 
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="7">Keywords:</strong> #Deprecated #Factory #Build #DependencyInjection</p>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="9">2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="11">The <code sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="11">ToSic.Sxc.Dnn.Factory.[various]()</code> are being deprecated, and will be removed in v14.</p>
-<h2 id="reason-for-removal" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="13">Reason for Removal</h2>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="15">2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow.</p>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="17">The solution we used was to have static object <code sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="17">ToSic.Sxc.Dnn.Factory</code> which managed this, but this is actually bad practice and encourages bad code.</p>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="19">This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data,
+<p><strong>Keywords:</strong> #Deprecated #Factory #Build #DependencyInjection</p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p>The <code>ToSic.Sxc.Dnn.Factory.[various]()</code> are being deprecated, and will be removed in v14.</p>
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow.</p>
+<p>The solution we used was to have static object <code>ToSic.Sxc.Dnn.Factory</code> which managed this, but this is actually bad practice and encourages bad code.</p>
+<p>This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data,
 but we've created a much better replacement using:</p>
-<ul sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="22">
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="22"><a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="22">IDynamicCodeService</a></li>
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="23"><a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="23">IRenderService</a></li>
+<ul>
+<li><a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a></li>
+<li><a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html">IRenderService</a></li>
 </ul>
-<h2 id="history---how-it-used-to-work" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="26">History - How it Used to Work</h2>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="28">Previously you could write code like this in your ascx Theme:</p>
-<pre><code class="lang-html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="30">&lt;%@ Import Namespace=&quot;System.Linq&quot; %&gt;
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>Previously you could write code like this in your ascx Theme:</p>
+<pre><code class="lang-html">&lt;%@ Import Namespace=&quot;System.Linq&quot; %&gt;
 &lt;script runat=&quot;server&quot;&gt;
   public string OldFactoryUse()
   {
@@ -154,22 +154,22 @@ but we've created a much better replacement using:</p>
   }
 &lt;/script&gt;
 </code></pre>
-<h2 id="what-we-changed" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="64">What we Changed</h2>
-<ol sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="66">
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="66">In 2sxc 13.00 we integrated our Dependency Injection with the Dnn 9.4+ built-in Dependency Injection.
+<h2 id="what-we-changed">What we Changed</h2>
+<ol>
+<li>In 2sxc 13.00 we integrated our Dependency Injection with the Dnn 9.4+ built-in Dependency Injection.
 This allows you to get 2sxc services from DI.</li>
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="68">In 2sxc 13.02 we created the <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="68">IDynamicCodeService</a> which is a replacement for the old Factory.</li>
+<li>In 2sxc 13.02 we created the <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a> which is a replacement for the old Factory.</li>
 </ol>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="70">You must use this from now on.</p>
-<h2 id="reasons-for-change" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="72">Reasons for Change</h2>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="74">The newer code may seem a bit more complex, but you'll see in the API docs that we've actually improved the API.</p>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="76">The reason the code looks so messy is because Dnn doesn't fully embrace Dependency Injection yet, so to get it, you need that complex looking</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="78">var codeSvc = HttpContext.Current.GetScope().ServiceProvider.GetService&lt;IDynamicCodeService&gt;();
+<p>You must use this from now on.</p>
+<h2 id="reasons-for-change">Reasons for Change</h2>
+<p>The newer code may seem a bit more complex, but you'll see in the API docs that we've actually improved the API.</p>
+<p>The reason the code looks so messy is because Dnn doesn't fully embrace Dependency Injection yet, so to get it, you need that complex looking</p>
+<pre><code class="lang-c#">var codeSvc = HttpContext.Current.GetScope().ServiceProvider.GetService&lt;IDynamicCodeService&gt;();
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="82">We hope and believe that Dnn will improve on this soon.</p>
-<h2 id="upgrade-to-newer-functionality" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="85">Upgrade to Newer functionality</h2>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="87">So the previous example would look like this:</p>
-<pre><code class="lang-html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="89">&lt;%@ Import Namespace=&quot;System.Linq&quot; %&gt;
+<p>We hope and believe that Dnn will improve on this soon.</p>
+<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
+<p>So the previous example would look like this:</p>
+<pre><code class="lang-html">&lt;%@ Import Namespace=&quot;System.Linq&quot; %&gt;
 &lt;%@ Import Namespace=&quot;DotNetNuke.Common.Extensions&quot; %&gt;
 &lt;%@ Import Namespace=&quot;Microsoft.Extensions.DependencyInjection&quot; %&gt;
 &lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
@@ -204,16 +204,16 @@ This allows you to get 2sxc services from DI.</li>
   }
 &lt;/script&gt;
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="126">If you were using this from outside of 2sxc Razor / WebApi, you will need to use the <a class="xref" href="../../../../../net-code/dependency-injection/dnn.html" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="126">Dnn specific DependencyInjection (available in Dnn 9.4+)</a>.</p>
-<hr sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="128">
-<h2 id="history" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="130">History</h2>
-<ul sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="132">
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="132">Introduced in 2sxc 7 with Dependency Injection based on .net Standard 1.6</li>
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="133">Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI</li>
-<li sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="134">Planned for full removal in 2sxc 14 ca. middle of 2022</li>
+<p>If you were using this from outside of 2sxc Razor / WebApi, you will need to use the <a class="xref" href="../../../../../net-code/dependency-injection/dnn.html">Dnn specific DependencyInjection (available in Dnn 9.4+)</a>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced in 2sxc 7 with Dependency Injection based on .net Standard 1.6</li>
+<li>Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI</li>
+<li>Planned for full removal in 2sxc 14 ca. middle of 2022</li>
 </ul>
-<hr sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="136">
-<p sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="138">Shortlink to here: <a href="https://go.2sxc.org/brc-13-dnn-factory" sourcefile="pages/abyss/releases/history/v13/dnn-factory/index.md" sourcestartlinenumber="138">https://go.2sxc.org/brc-13-dnn-factory</a></p>
+<hr>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-dnn-factory">https://go.2sxc.org/brc-13-dnn-factory</a></p>
 
 </article>
 

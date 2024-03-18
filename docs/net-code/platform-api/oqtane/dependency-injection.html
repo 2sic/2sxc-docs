@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,30 +106,30 @@
         </div>
 
         <article data-uid="NetCode.PlatformApi.Oqtane.DependencyInjection">
-<h1 id="dependency-injection-in-oqtane" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="5">Dependency Injection in Oqtane</h1>
+<h1 id="dependency-injection-in-oqtane">Dependency Injection in Oqtane</h1>
 
-<p sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="7">Oqtane has used Dependency Injection since day one, so it's much better integrated than with Dnn.</p>
-<h2 id="how-can-i-get-oqtane-objects-using-dependency-injection" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="9">How Can I Get Oqtane Objects using Dependency Injection?</h2>
-<p sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="11">Oqtane uses the same Dependency Injection like 2sxc, so your Razor-Code can access all Oqtane objects using <code sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="11">GetService&lt;ISomeOqtaneInterface&gt;()</code>.
-Just be aware of the fact that Oqtanes architecture is very different from the classic setup, so many services <a href="https://docs.oqtane.org/" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="12">documented in the Oqtane docs</a> will actually behave as remote services, so they will internally call http-endpoints to perform their work. This makes many Oqtane Services a bit slower than you might expect.</p>
-<h2 id="can-i-use-razor-net-core--in-oqtane" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="14">Can I Use Razor .net Core @inject in Oqtane?</h2>
-<p sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="16">Yes you can, as the 2sxc DI is fully integrated with the Oqtane DI. So your Razor could also do this:</p>
-<pre><code class="lang-razor" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="18">@inject ICmsContext Context
+<p>Oqtane has used Dependency Injection since day one, so it's much better integrated than with Dnn.</p>
+<h2 id="how-can-i-get-oqtane-objects-using-dependency-injection">How Can I Get Oqtane Objects using Dependency Injection?</h2>
+<p>Oqtane uses the same Dependency Injection like 2sxc, so your Razor-Code can access all Oqtane objects using <code>GetService&lt;ISomeOqtaneInterface&gt;()</code>.
+Just be aware of the fact that Oqtanes architecture is very different from the classic setup, so many services <a href="https://docs.oqtane.org/">documented in the Oqtane docs</a> will actually behave as remote services, so they will internally call http-endpoints to perform their work. This makes many Oqtane Services a bit slower than you might expect.</p>
+<h2 id="can-i-use-razor-net-core--in-oqtane">Can I Use Razor .net Core @inject in Oqtane?</h2>
+<p>Yes you can, as the 2sxc DI is fully integrated with the Oqtane DI. So your Razor could also do this:</p>
+<pre><code class="lang-razor">@inject ICmsContext Context
 </code></pre>
-<h2 id="how-can-i-get-2sxc-objects-in-oqtane-blazor-controls" sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="22">How can I get 2sxc Objects in Oqtane Blazor Controls?</h2>
-<p sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="24">This is currently not possible, as most of 2sxc runs on the server, while the Blazor controls run in the client.</p>
-<p sourcefile="pages/net-code/platform-api/oqtane/dependency-injection.md" sourcestartlinenumber="26">We're working on this.</p>
-<h2 id="history-of-dependency-injection-in-2sxc" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="2">History of Dependency Injection in 2sxc</h2>
-<ol sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="4">2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="5">Integrated with Oqtane DI in v12 (May 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6"><code sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="6">GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="7">Integrated with Oqtane DI in v12 (May. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="8">Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="9">Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">Created <a class="xref" href="../../services/service-kits.html" sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="10">ServiceKits</a> for v14 (June 2022)</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="11">Added ServiceKitLight for custom DataSources in 2sxc 15</li>
-<li sourcefile="pages/net-code/services/_history.md" sourcestartlinenumber="12">Added ServiceKit16 for 2sxc 16</li>
+<h2 id="how-can-i-get-2sxc-objects-in-oqtane-blazor-controls">How can I get 2sxc Objects in Oqtane Blazor Controls?</h2>
+<p>This is currently not possible, as most of 2sxc runs on the server, while the Blazor controls run in the client.</p>
+<p>We're working on this.</p>
+<h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
+<ol>
+<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
+<li>Integrated with Oqtane DI in v12 (May 2021)</li>
+<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
+<li>Integrated with Oqtane DI in v12 (May. 2021)</li>
+<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
+<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
+<li>Created <a class="xref" href="../../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
+<li>Added ServiceKitLight for custom DataSources in 2sxc 15</li>
+<li>Added ServiceKit16 for 2sxc 16</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,7 +108,7 @@
         <article data-uid="JsCode.Angular.IntegrateAngularDevelopment">
 
 <img src="../../pages/js-code/angular/assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
-<h1 id="integrate-angular-for-runtime-in-2sxc--dnn" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="7">Integrate Angular for Runtime in 2sxc / Dnn</h1>
+<h1 id="integrate-angular-for-runtime-in-2sxc--dnn">Integrate Angular for Runtime in 2sxc / Dnn</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -204,21 +204,21 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
-<p sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="12">This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use Dnn/2sxc Endpoints at the same time. Note that you can find a working demo of this in the <a class="xref" href="template-app.html" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="12">Template Angular App</a>.</p>
-<h2 id="goals-of-the-runtime-integration" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="14">Goals of the Runtime Integration</h2>
-<ol sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="16">
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="16">The Angular App can be developed using best-practices incl. partial loading and hashed files</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="17">We can see the dev-build in Dnn in real-time</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="18">The dev-build can access Dnn endpoints as if it were running in production</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="19">Hot-reload works, so saving files automatically reloads the Dnn page</li>
+<p>This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use Dnn/2sxc Endpoints at the same time. Note that you can find a working demo of this in the <a class="xref" href="template-app.html">Template Angular App</a>.</p>
+<h2 id="goals-of-the-runtime-integration">Goals of the Runtime Integration</h2>
+<ol>
+<li>The Angular App can be developed using best-practices incl. partial loading and hashed files</li>
+<li>We can see the dev-build in Dnn in real-time</li>
+<li>The dev-build can access Dnn endpoints as if it were running in production</li>
+<li>Hot-reload works, so saving files automatically reloads the Dnn page</li>
 </ol>
-<h2 id="implementation" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="21">Implementation</h2>
-<p sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="23">The Template App is installed in Dnn and we have the full copy of it on our local dev environment. Dev-server will run on <code sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="23">localhost:4200</code>. The way it's integrated in the template app is that the main file <code sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="23">_AngularApp.cshtml</code> has some code like this:</p>
-<pre><code class="lang-razor" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="25">@inherits Custom.Hybrid.Razor12
+<h2 id="implementation">Implementation</h2>
+<p>The Template App is installed in Dnn and we have the full copy of it on our local dev environment. Dev-server will run on <code>localhost:4200</code>. The way it's integrated in the template app is that the main file <code>_AngularApp.cshtml</code> has some code like this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
   // ...
@@ -237,19 +237,19 @@
 }
 
 </code></pre>
-<p sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="46">We've removed some of the code here for simplicity, but the important parts are</p>
-<ol sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="48">
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="48">Add <code sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="48">&lt;base&gt;</code> header to the page for Angular Routing to work properly</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="49"><code sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="49">LoadFromNgServe</code> will load the standard Angular files from <code sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="49">localhost:4200</code></li>
+<p>We've removed some of the code here for simplicity, but the important parts are</p>
+<ol>
+<li>Add <code>&lt;base&gt;</code> header to the page for Angular Routing to work properly</li>
+<li><code>LoadFromNgServe</code> will load the standard Angular files from <code>localhost:4200</code></li>
 </ol>
-<p sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="51">To see the full source code, get the <a class="xref" href="https://2sxc.org/en/apps/app/tutorial-and-template-app-for-angular-11" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="51">Angular 11 Template App</a> or browse it here <a class="xref" href="https://github.com/2sic/app-template-angular" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="51">Angular 11 Template App Github Repo</a></p>
-<hr sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="53">
-<h2 id="history" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="55">History</h2>
-<ol sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="57">
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="57">First <a href="https://github.com/2sic/app-tutorial-angular4-data" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="57">version for Angular 4</a> created in 2017</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="58">Enhanced for <a href="https://github.com/2sic/app-template-angular" sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="58">Angular 6</a> in 2019</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="59">Enhanced for Angular 8 in 2020</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-development.md" sourcestartlinenumber="60">Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021</li>
+<p>To see the full source code, get the <a class="xref" href="https://2sxc.org/en/apps/app/tutorial-and-template-app-for-angular-11">Angular 11 Template App</a> or browse it here <a class="xref" href="https://github.com/2sic/app-template-angular">Angular 11 Template App Github Repo</a></p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>First <a href="https://github.com/2sic/app-tutorial-angular4-data">version for Angular 4</a> created in 2017</li>
+<li>Enhanced for <a href="https://github.com/2sic/app-template-angular">Angular 6</a> in 2019</li>
+<li>Enhanced for Angular 8 in 2020</li>
+<li>Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021</li>
 </ol>
 
 </article>

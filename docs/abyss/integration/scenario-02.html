@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,154 +106,154 @@
         </div>
 
         <article data-uid="Abyss.Integration.Scenario02">
-<h1 id="your-custom-platform---scenario-2---edit-data--adam" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="5">Your Custom Platform - Scenario #2 - Edit Data + ADAM</h1>
+<h1 id="your-custom-platform---scenario-2---edit-data--adam">Your Custom Platform - Scenario #2 - Edit Data + ADAM</h1>
 
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="7">This is part of the <a class="xref" href="index.html" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="7">Integration Guide</a> for integrating EAV or 2sxc into your own solution.</p>
-<div class="TIP" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="9">
+<p>This is part of the <a class="xref" href="index.html">Integration Guide</a> for integrating EAV or 2sxc into your own solution.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="10">You can find this fully implemented in the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="10">Integration\SxcEdit01</code> project</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="12">Search for <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="12">#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
+<p>You can find this fully implemented in the <code>Integration\SxcEdit01</code> project</p>
+<p>Search for <code>#2sxcIntegration</code> in the code to find all the things that were adjusted to get it to work.</p>
 </div>
-<div class="WARNING" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="14">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="15">These docs are still WIP.</p>
+<p>These docs are still WIP.</p>
 </div>
-<h2 id="scope-of-scenario-2---edit-eav-data" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="17">Scope of Scenario #2 - Edit EAV Data</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="19"><strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="19">Functionality</strong></p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="21">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="21">A link on a page can open the edit dialog</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="22">Users can edit texts</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="23">Users can save the result</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="24">Users can see the history of an item and restore it to a previous state</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="25">ADAM
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="26">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="26">Users can upload assets in the edit-dialog - which is stored in this new web (not in the original Dnn/Oqtane)</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="27">Users can see previously uploaded assets</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="28">Users can delete and rename assets in the edit-dialog</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="29">Assets are referenced using their path, not an ID (which would be the default in Dnn/Oqtane)</li>
+<h2 id="scope-of-scenario-2---edit-eav-data">Scope of Scenario #2 - Edit EAV Data</h2>
+<p><strong>Functionality</strong></p>
+<ol>
+<li>A link on a page can open the edit dialog</li>
+<li>Users can edit texts</li>
+<li>Users can save the result</li>
+<li>Users can see the history of an item and restore it to a previous state</li>
+<li>ADAM
+<ol>
+<li>Users can upload assets in the edit-dialog - which is stored in this new web (not in the original Dnn/Oqtane)</li>
+<li>Users can see previously uploaded assets</li>
+<li>Users can delete and rename assets in the edit-dialog</li>
+<li>Assets are referenced using their path, not an ID (which would be the default in Dnn/Oqtane)</li>
 </ol>
 </li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="30">Adam files of an entity can be shown on a page</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="31">All API Controllers log what they do</li>
+<li>Adam files of an entity can be shown on a page</li>
+<li>All API Controllers log what they do</li>
 </ol>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="33">Not implemented</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="35">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="35">Security checks are fake, it always returns that edit etc. is allowed</li>
+<p>Not implemented</p>
+<ol>
+<li>Security checks are fake, it always returns that edit etc. is allowed</li>
 </ol>
-<h2 id="integration-overview-for-basic-edit--adam" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="37">Integration Overview for Basic Edit + ADAM</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="39">To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="41">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="41">Add <em sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="41">more</em> necessary DLLs</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="42">Copy <em sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="42">additional</em> relevant files - specifically the js/css files to be used in the dialogs</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="43">Implement core objects which are different in your system</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="44">Implement APIs for edit, probably also for delivering files etc.</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="45">Test / Verify you can edit data</li>
+<h2 id="integration-overview-for-basic-edit--adam">Integration Overview for Basic Edit + ADAM</h2>
+<p>To Integrate EAV and 2sxc into your system, these are the core things you must do:</p>
+<ol>
+<li>Add <em>more</em> necessary DLLs</li>
+<li>Copy <em>additional</em> relevant files - specifically the js/css files to be used in the dialogs</li>
+<li>Implement core objects which are different in your system</li>
+<li>Implement APIs for edit, probably also for delivering files etc.</li>
+<li>Test / Verify you can edit data</li>
 </ol>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="47">
-<h2 id="1-add-minimal-dlls" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="49">1. Add Minimal DLLs</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="51">For this scenario you need to add just about all of the DLLs except for Razor helpers.</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="53">You can add these manually, reference them or whatever.</p>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="55">
-<h2 id="2-2sxc-web-files-js-css" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="57">2. 2sxc Web Files (JS, CSS)</h2>
-<h3 id="21-copy-important-web-files-to-your-target" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="59">2.1 Copy Important Web Files to Your Target</h3>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="61">All the dialogs are JS based, so you must get these JS files in a place where they can be loaded.</p>
-<div class="TIP" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="63">
+<hr>
+<h2 id="1-add-minimal-dlls">1. Add Minimal DLLs</h2>
+<p>For this scenario you need to add just about all of the DLLs except for Razor helpers.</p>
+<p>You can add these manually, reference them or whatever.</p>
+<hr>
+<h2 id="2-2sxc-web-files-js-css">2. 2sxc Web Files (JS, CSS)</h2>
+<h3 id="21-copy-important-web-files-to-your-target">2.1 Copy Important Web Files to Your Target</h3>
+<p>All the dialogs are JS based, so you must get these JS files in a place where they can be loaded.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="64">The <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="64">dist</code>, <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="64">js</code> folders etc. <strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="64">must</strong> be accessible from outside.</p>
+<p>The <code>dist</code>, <code>js</code> folders etc. <strong>must</strong> be accessible from outside.</p>
 </div>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="66">For reference, check out the build script on the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="66">SxcEdit01</code> project.</p>
-<h3 id="22-make-sure-in-page-2sxc-jss-are-loaded" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="68">2.2 Make sure in page 2sxc JSs are loaded</h3>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="70">For the page to be able to trigger edit dialogs, it needs at least these two files to be loaded on the page when a user should be able to edit:</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="72">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="72"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="72">[2sxc public files root]/js/2sxc.api.min.js</code> -  note that the location could change in a future version</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="73"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="73">[2sxc public files root]/dist/inpage/inpage.min.js</code> -  note that the location could change in a future version</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="74">Optional: Load the CSS <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="74">[2sxc public files root]/dist/inpage/inpage.min.css</code> for Toolbars to work</li>
+<p>For reference, check out the build script on the <code>SxcEdit01</code> project.</p>
+<h3 id="22-make-sure-in-page-2sxc-jss-are-loaded">2.2 Make sure in page 2sxc JSs are loaded</h3>
+<p>For the page to be able to trigger edit dialogs, it needs at least these two files to be loaded on the page when a user should be able to edit:</p>
+<ol>
+<li><code>[2sxc public files root]/js/2sxc.api.min.js</code> -  note that the location could change in a future version</li>
+<li><code>[2sxc public files root]/dist/inpage/inpage.min.js</code> -  note that the location could change in a future version</li>
+<li>Optional: Load the CSS <code>[2sxc public files root]/dist/inpage/inpage.min.css</code> for Toolbars to work</li>
 </ol>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="76">2sxc does this automatically in a full implementation like in Dnn and Oqtane.
+<p>2sxc does this automatically in a full implementation like in Dnn and Oqtane.
 The logic to do that and ensure it's part of the final output is sophisticated.
 So for this minimal implementation, best do it yourself, and choose yourself if you give it to all users or just admins.</p>
-<h3 id="23-give-the-js-environment-variables" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="80">2.3 Give the JS Environment Variables</h3>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="82">The JS needs to know a few global things for it to work.
+<h3 id="23-give-the-js-environment-variables">2.3 Give the JS Environment Variables</h3>
+<p>The JS needs to know a few global things for it to work.
 At the minimum it's the location of the WebAPI root as well as the location of the UI files.
-For this you either need a <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="84">_jsApi</code> meta header or add this to the page after the $2sxc-js has been loaded:</p>
-<pre><code class="lang-js" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="86">$2sxc.env.load({
+For this you either need a <code>_jsApi</code> meta header or add this to the page after the $2sxc-js has been loaded:</p>
+<pre><code class="lang-js">$2sxc.env.load({
   // optional pageId: 0,
   rvt: '@IntegrationConstants.EnvRvt',
   api: '@IntegrationConstants.EnvApiRoot',
   uiRoot: `@IntegrationConstants.EnvUiRoot`, 
 });
 </code></pre>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="95">The previous code was taken from the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="95">_Layout.cshtml</code> in the example.</p>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="97">
-<h2 id="3-implement-core-objects-which-are-necessary" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="99">3. Implement Core Objects which are Necessary</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="101">Specifically</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="103">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="103">Implement
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="104">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="104"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="104">Context\ISite</code> is needed to have information about the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="104">ContentPath</code></li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="105"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="105">Context\IUser</code> is needed to pretend it's a super-user and allow editing</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="106"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="106">Adam\IAdamPaths</code> - our test-case assumes it's in wwwroot, for which there is already a prepared <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="106">AdamPathsWwwroot</code> object</li>
+<p>The previous code was taken from the <code>_Layout.cshtml</code> in the example.</p>
+<hr>
+<h2 id="3-implement-core-objects-which-are-necessary">3. Implement Core Objects which are Necessary</h2>
+<p>Specifically</p>
+<ol>
+<li>Implement
+<ol>
+<li><code>Context\ISite</code> is needed to have information about the <code>ContentPath</code></li>
+<li><code>Context\IUser</code> is needed to pretend it's a super-user and allow editing</li>
+<li><code>Adam\IAdamPaths</code> - our test-case assumes it's in wwwroot, for which there is already a prepared <code>AdamPathsWwwroot</code> object</li>
 </ol>
 </li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="107">Register these replacements in the StartUp - in the demo project it's in the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="107">StartupEavAndSxc.AddImplementations(...)</code></li>
+<li>Register these replacements in the StartUp - in the demo project it's in the <code>StartupEavAndSxc.AddImplementations(...)</code></li>
 </ol>
-<h2 id="4-implement-and-activate-webapis" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="110">4. Implement and Activate WebApis</h2>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="112">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="112">Implement a base class to assist in various aspects
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="113">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="113">Add the request to the insights logs</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="114">Ensure timing of the request to better spot issues</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="115">Make sure your controllers <a class="xref" href="../../net-code/conventions/proxy-controllers/index.html" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="115">are just proxies calling the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="115">Real</code> controller</a></li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="116">Make some minor corrections to HTTP responses, so empty ones really return an HTTP 204</li>
-</ol>
-</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="117">Implement WebApis to answer on the appropriate endpoints (see examples)
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="118">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="118"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="118">DialogController</code> is required to get general information for dialogs to work</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="119"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="119">EditController</code> is reponsible for loading and saving data from the dialog</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="120"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="120">AdamController</code> helps with file uploads etc.</li>
+<h2 id="4-implement-and-activate-webapis">4. Implement and Activate WebApis</h2>
+<ol>
+<li>Implement a base class to assist in various aspects
+<ol>
+<li>Add the request to the insights logs</li>
+<li>Ensure timing of the request to better spot issues</li>
+<li>Make sure your controllers <a class="xref" href="../../net-code/conventions/proxy-controllers/index.html">are just proxies calling the <code>Real</code> controller</a></li>
+<li>Make some minor corrections to HTTP responses, so empty ones really return an HTTP 204</li>
 </ol>
 </li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="121">Register / activate
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="122">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="122">Depending on the framework, <strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="122">registration</strong> is different. For .net core, check out the example <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="122">AddControllersAndConfigureJson(...)</code> or the Oqtane registration examples.</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="123">Remember that it must also be <strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="123">configured</strong> - see the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="123">UseEndpoints(...)</code> or the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="123">Startup.cs</code></li>
+<li>Implement WebApis to answer on the appropriate endpoints (see examples)
+<ol>
+<li><code>DialogController</code> is required to get general information for dialogs to work</li>
+<li><code>EditController</code> is reponsible for loading and saving data from the dialog</li>
+<li><code>AdamController</code> helps with file uploads etc.</li>
+</ol>
+</li>
+<li>Register / activate
+<ol>
+<li>Depending on the framework, <strong>registration</strong> is different. For .net core, check out the example <code>AddControllersAndConfigureJson(...)</code> or the Oqtane registration examples.</li>
+<li>Remember that it must also be <strong>configured</strong> - see the <code>UseEndpoints(...)</code> or the <code>Startup.cs</code></li>
 </ol>
 </li>
 </ol>
-<h2 id="5-provide-index-rawhtml-on-the--new-v14" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="125">5. Provide <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="125">index-raw.html</code> On the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="125">/</code> <em sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="125">new v14</em></h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="127">The 2sxc dialogs (quick-dialog and eav-edit) both create an <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="127">index-raw.html</code>.
+<h2 id="5-provide-index-rawhtml-on-the--new-v14">5. Provide <code>index-raw.html</code> On the <code>/</code> <em>new v14</em></h2>
+<p>The 2sxc dialogs (quick-dialog and eav-edit) both create an <code>index-raw.html</code>.
 These are incomplete - they need some placeholders to be replaced at runtime based on the page they are opened from.</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="130">Linking to these UIs happens through these targets:</p>
-<ul sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="132">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="132"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="132">[2sxc public files root]/dist/quickDialog/?pageId=123&amp;sxcver=14...</code></li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="133"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="133">[2sxc public files root]/dist/ng-edit/?pageId=123&amp;sxcver=14...</code></li>
+<p>Linking to these UIs happens through these targets:</p>
+<ul>
+<li><code>[2sxc public files root]/dist/quickDialog/?pageId=123&amp;sxcver=14...</code></li>
+<li><code>[2sxc public files root]/dist/ng-edit/?pageId=123&amp;sxcver=14...</code></li>
 </ul>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="135">You must ensure that these URLs deliver the corresponding <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="135">index-raw.html</code> with the placeholders fixed.</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="137">For this, either create a real page (like a <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="137">default.aspx</code> in DNN) which responds to the request and renders the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="137">index-raw.html</code> with the placeholders replaced.
+<p>You must ensure that these URLs deliver the corresponding <code>index-raw.html</code> with the placeholders fixed.</p>
+<p>For this, either create a real page (like a <code>default.aspx</code> in DNN) which responds to the request and renders the <code>index-raw.html</code> with the placeholders replaced.
 Or you can create a route/endpoint (like in Oqtane) which does the same thing.
 Best check the code how it's done in Dnn/Oqtane.</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="141">The placeholders which are currently set are:</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="143">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="143"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="143">@base</code> - for the base-tag containing the page-id so that refreshes preserve this</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="144"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="144">@jsapi</code> - the meta-header containing context information</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="145"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="145">@sxcver</code> - for the version of 2sxc extended with the server-start timestamp, mainly for cache-break purposes</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="146"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="146">&lt;!--@customheaders--&gt;</code> - custom headers - ATM not used but you may need it</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="147"><code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="147">&lt;!--@custombody--&gt;</code> - custom body - ATM used by Oqtane to provide the Request Verification Token</li>
+<p>The placeholders which are currently set are:</p>
+<ol>
+<li><code>@base</code> - for the base-tag containing the page-id so that refreshes preserve this</li>
+<li><code>@jsapi</code> - the meta-header containing context information</li>
+<li><code>@sxcver</code> - for the version of 2sxc extended with the server-start timestamp, mainly for cache-break purposes</li>
+<li><code>&lt;!--@customheaders--&gt;</code> - custom headers - ATM not used but you may need it</li>
+<li><code>&lt;!--@custombody--&gt;</code> - custom body - ATM used by Oqtane to provide the Request Verification Token</li>
 </ol>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="149">These are replaced automatically for you when you use the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="149">ToSic.Sxc.Web.HmlDialog</code> helpers.</p>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="151">
-<h2 id="6-expand-startup-configuration" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="153">6. Expand StartUp Configuration</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="155">Do the same as TODO:</p>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="158">Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts.
+<p>These are replaced automatically for you when you use the <code>ToSic.Sxc.Web.HmlDialog</code> helpers.</p>
+<hr>
+<h2 id="6-expand-startup-configuration">6. Expand StartUp Configuration</h2>
+<p>Do the same as TODO:</p>
+<p>Some aspects of EAV &amp; 2sxc are super important that they are configured before anything starts.
 These are the required ones as of 2022-02:</p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="161">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="161">The database <strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="161">ConnectionString</strong> required to connect to the EAV DB</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="162"><strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="162">GlobalFolder</strong> of the distributed 2sxc files containing things like the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="162">App_Data</code> subfolder - required to load initial configurations and initial data</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="163">Call <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="163">StartUp</code> on the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="163">SystemLoader</code> which you must get from DI</li>
+<ol>
+<li>The database <strong>ConnectionString</strong> required to connect to the EAV DB</li>
+<li><strong>GlobalFolder</strong> of the distributed 2sxc files containing things like the <code>App_Data</code> subfolder - required to load initial configurations and initial data</li>
+<li>Call <code>StartUp</code> on the <code>SystemLoader</code> which you must get from DI</li>
 </ol>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="165">This is the working code taken from <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="165">BasicEav01</code>:</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="167">/// &lt;summary&gt;
+<p>This is the working code taken from <code>BasicEav01</code>:</p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
 /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 /// &lt;/summary&gt;
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -275,10 +275,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   // ...
 }
 </code></pre>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="191">
-<h2 id="5-test-and-verify" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="193">5. Test and Verify</h2>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="195">If you did everything right, you can now run your code and access data from the App Cache using code like this (see demo on the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="195">ShowEavData.cshtml</code>):</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="197">@page
+<hr>
+<h2 id="5-test-and-verify">5. Test and Verify</h2>
+<p>If you did everything right, you can now run your code and access data from the App Cache using code like this (see demo on the <code>ShowEavData.cshtml</code>):</p>
+<pre><code class="lang-c#">@page
 @using ToSic.Eav.Apps
 @inject IAppStates AppStates
 @{
@@ -292,17 +292,17 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
   var firstItem = appState.List.FirstOrDefault();
 }
 </code></pre>
-<p sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="213"><strong sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="213">Common Problems</strong></p>
-<ol sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="215">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="215">If the folder to the <code sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="215">App_Data</code> isn't quite correct, you will have a long loading time and then a stack overflow</li>
+<p><strong>Common Problems</strong></p>
+<ol>
+<li>If the folder to the <code>App_Data</code> isn't quite correct, you will have a long loading time and then a stack overflow</li>
 </ol>
-<hr sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="217">
-<h2 id="history" sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="219">History</h2>
-<ul sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="221">
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="221">Proof of Concept implemented with 2sxc 11 in 2021</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="222">Finalized when integrating Oqtane in 2sxc 12</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="223">Updated docs for basic Scenario for v13.03</li>
-<li sourcefile="pages/abyss/integration/scenario-02.md" sourcestartlinenumber="224">Updated for dialog-integration with index-raw in v14.02</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Proof of Concept implemented with 2sxc 11 in 2021</li>
+<li>Finalized when integrating Oqtane in 2sxc 12</li>
+<li>Updated docs for basic Scenario for v13.03</li>
+<li>Updated for dialog-integration with index-raw in v14.02</li>
 </ul>
 
 </article>

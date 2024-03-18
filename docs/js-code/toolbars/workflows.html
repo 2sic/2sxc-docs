@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,7 +108,7 @@
         <article data-uid="JsCode.Toolbars.Workflows">
 
 <img src="../../assets/features/toolbar.svg" class="feature">
-<h1 id="toolbar-workflows" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="7">Toolbar Workflows</h1>
+<h1 id="toolbar-workflows">Toolbar Workflows</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -204,19 +204,19 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .edit-custom { visibility: visible; } </style>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="12">2sxc Toolbars do a lot of things automatically, but in some cases you want to...</p>
-<ul sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="14">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="14">... prevent certain actions/commands under certain conditions (like no edit if something on the page isn't as expected)</li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="15">... do a custom page / data refresh instead of the default</li>
+<p>2sxc Toolbars do a lot of things automatically, but in some cases you want to...</p>
+<ul>
+<li>... prevent certain actions/commands under certain conditions (like no edit if something on the page isn't as expected)</li>
+<li>... do a custom page / data refresh instead of the default</li>
 </ul>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="17">This can be done using <strong sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="17">Toolbar Workflows</strong>. It's especially useful in SPA applications (think React, Angular and custom SPAs) which don't want a page reload.</p>
-<h2 id="demo" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="19">Demo</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="21">👉 Here's a live demo with source of the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui130/page" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="21">2sxc Toolbar Workflow</a></p>
-<pre><code class="lang-razor" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="23">&lt;div id='tagWithToolbar1' @Edit.TagToolbar(
+<p>This can be done using <strong>Toolbar Workflows</strong>. It's especially useful in SPA applications (think React, Angular and custom SPAs) which don't want a page reload.</p>
+<h2 id="demo">Demo</h2>
+<p>👉 Here's a live demo with source of the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui130/page">2sxc Toolbar Workflow</a></p>
+<pre><code class="lang-razor">&lt;div id='tagWithToolbar1' @Edit.TagToolbar(
   toolbar: new [] { &quot;toolbar=empty&quot;, &quot;+new?contentType=UiEmptyHelloWorld&quot; },
   settings: new { hover = &quot;left&quot;, show = &quot;always&quot; } )&gt;
   Float over this box to get a (+) button. 
@@ -224,7 +224,7 @@
   Instead, you'll see console messages that a custom JS took over the process.
 &lt;/div&gt;
 </code></pre>
-<pre><code class="lang-javascript" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="33">  // This workflow definition will run on every action, just to log what's happening
+<pre><code class="lang-javascript">  // This workflow definition will run on every action, just to log what's happening
   const workflowToLog = {
     command: 'all',   // Run on every command/action
     phase: 'all',     // Run before and after
@@ -256,43 +256,43 @@
     initEvent.stopPropagation();
   });
 </code></pre>
-<h2 id="how-workflows-work" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="67">How Workflows Work</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="69">👉 Learn more about <a class="xref" href="../commands/workflow.html" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="69">Workflows</a></p>
-<h2 id="how-toolbars-register-the-workflows" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="71">How Toolbars Register the Workflows</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="73">Each toolbar can have different workflows attached.
+<h2 id="how-workflows-work">How Workflows Work</h2>
+<p>👉 Learn more about <a class="xref" href="../commands/workflow.html">Workflows</a></p>
+<h2 id="how-toolbars-register-the-workflows">How Toolbars Register the Workflows</h2>
+<p>Each toolbar can have different workflows attached.
 The toolbars are generated on-the-fly and sometimes re-generated on partial reloading.
 So you must register your workflow-steps when the toolbar reports that it's ready.
 So this is the flow of logic:</p>
-<ol sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="78">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="78">A toolbar is created - often on mouse-over</li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="79">It will fire a <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="79">toolbar-init</code> event contains a lot of internal information on the <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="79">event.details</code> and also a <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="79">workflow</code> object which is the <strong sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="79">Workflow Manager</strong> for this toolbar.</li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="80">Your code will pick up the <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="80">event.details.workflow</code> and then
-<ol sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="81">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="81"><code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="81">add(...)</code> a workflow step - see <a class="xref" href="../commands/workflow.html" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="81">Workflow Step Object</a></li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="82">probably call <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="82">event.stopPropagation()</code> or similar to prevent other event listeners from also adding stuff.
+<ol>
+<li>A toolbar is created - often on mouse-over</li>
+<li>It will fire a <code>toolbar-init</code> event contains a lot of internal information on the <code>event.details</code> and also a <code>workflow</code> object which is the <strong>Workflow Manager</strong> for this toolbar.</li>
+<li>Your code will pick up the <code>event.details.workflow</code> and then
+<ol>
+<li><code>add(...)</code> a workflow step - see <a class="xref" href="../commands/workflow.html">Workflow Step Object</a></li>
+<li>probably call <code>event.stopPropagation()</code> or similar to prevent other event listeners from also adding stuff.
 This is especially important if you have entities within entities, in which case there may be listeners for each toolbar at various DOM levels.</li>
 </ol>
 </li>
 </ol>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="85">👉 Learn more about <a class="xref" href="../commands/workflow.html" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="85">Workflows</a></p>
-<ul sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="87">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="87">TagToolbar workflows created using <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="87">@Edit.TagToolbar(...)</code> should attach the init-listener to that tag</li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="88">Toolbar workflows created using <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="88">@Edit.Toolbar(...)</code> should attach the init-listener to a parent tag</li>
+<p>👉 Learn more about <a class="xref" href="../commands/workflow.html">Workflows</a></p>
+<ul>
+<li>TagToolbar workflows created using <code>@Edit.TagToolbar(...)</code> should attach the init-listener to that tag</li>
+<li>Toolbar workflows created using <code>@Edit.Toolbar(...)</code> should attach the init-listener to a parent tag</li>
 </ul>
-<h2 id="angular-implementation" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="90">Angular Implementation</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="92">In <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="92">dnn-sxc-angular</code> there is a directive for toolbars, which hides all this and just allows you to do a custom <code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="92">refresh</code> as you need it.
-See <a class="xref" href="../angular/dnn-sxc-angular/toolbars.html" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="93">Toolbars in Angular (dnn-sxc-angular)</a></p>
-<h2 id="react-implementation" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="95">React Implementation</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="97">As of now, there is no pre-built React implementation, but you can easily create your own based on the angular version.</p>
-<h2 id="demo-app-and-further-links" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="100">Demo App and further links</h2>
-<p sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="102">You should find some code examples in this demo App</p>
-<ul sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="104">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="104">Demo of the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui130/page" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="104">2sxc Toolbar Workflow</a></li>
+<h2 id="angular-implementation">Angular Implementation</h2>
+<p>In <code>dnn-sxc-angular</code> there is a directive for toolbars, which hides all this and just allows you to do a custom <code>refresh</code> as you need it.
+See <a class="xref" href="../angular/dnn-sxc-angular/toolbars.html">Toolbars in Angular (dnn-sxc-angular)</a></p>
+<h2 id="react-implementation">React Implementation</h2>
+<p>As of now, there is no pre-built React implementation, but you can easily create your own based on the angular version.</p>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li>Demo of the <a href="https://2sxc.org/dnn-tutorials/en/razor/ui130/page">2sxc Toolbar Workflow</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="106">History</h2>
-<ol sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="108">
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="108">Introduced in 2sxc v11.12</li>
-<li sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="109">Enhanced so it also works on inline toolbars (<code sourcefile="pages/js-code/toolbars/workflows.md" sourcestartlinenumber="109">Edit.Toolbar(...)</code>) in 12.10</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc v11.12</li>
+<li>Enhanced so it also works on inline toolbars (<code>Edit.Toolbar(...)</code>) in 12.10</li>
 </ol>
 
 </article>

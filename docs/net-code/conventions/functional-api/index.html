@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,23 +106,23 @@
         </div>
 
         <article data-uid="NetCode.Conventions.Functional">
-<h1 id="convention-functional-api-immutable" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="5">Convention: Functional API (Immutable)</h1>
+<h1 id="convention-functional-api-immutable">Convention: Functional API (Immutable)</h1>
 
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="7">There are many programming paradigms.
-One that's become very important to us is <strong sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="8">functional</strong> programming.</p>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="10">This means that code (usually functions) will have inputs and outputs, but no side effects.
+<p>There are many programming paradigms.
+One that's become very important to us is <strong>functional</strong> programming.</p>
+<p>This means that code (usually functions) will have inputs and outputs, but no side effects.
 This also means that an object which must be modified will be copied into a new object, with the modifications applied.
 The original object is never modified.
 In most cases it will be discarded.
-This is strongly related to <a class="xref" href="../immutable/index.html" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="14">immutability</a></p>
-<div class="IMPORTANT" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="16">
+This is strongly related to <a class="xref" href="../immutable/index.html">immutability</a></p>
+<div class="IMPORTANT">
 <h5>Important</h5>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="17">This was not always our approach, so some of the code is still not functional.
+<p>This was not always our approach, so some of the code is still not functional.
 But you must assume that anything you find which is not functional, will be so in the future.</p>
 </div>
-<h2 id="example" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="20">Example</h2>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="22">This assumes code inside a Razor page, as it uses <code sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="22">Kit.Toolbar</code></p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="24">// Create a toolbar with a single edit button
+<h2 id="example">Example</h2>
+<p>This assumes code inside a Razor page, as it uses <code>Kit.Toolbar</code></p>
+<pre><code class="lang-c#">// Create a toolbar with a single edit button
 var toolbar = Kit.Toolbar.Empty().Edit();
 
 // Add a button to the toolbar
@@ -131,31 +131,31 @@ var toolbarWithLayout = toolbar.Layout();
 // Note that as of now, the original toolbar still only has the Edit button.
 
 </code></pre>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="35">This goes even further.
+<p>This goes even further.
 In v15.07 the toolbar API was extended with features to make UI settings more robust:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="38">
+<pre><code class="lang-c#">
 // Give an inner tweak function to set more properties
 var toolbar = Kit.Toolbar.Edit(tweak: b =&gt; b.Color(&quot;red&quot;).Tooltip(&quot;Edit here&quot;));
 
 </code></pre>
-<h2 id="why-functional" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="46">Why Functional?</h2>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="48">Functional programming has many advantages, but the most important one is that it's easier to test and debug.
+<h2 id="why-functional">Why Functional?</h2>
+<p>Functional programming has many advantages, but the most important one is that it's easier to test and debug.
 It's also easier to understand, because you can see the inputs and outputs of a function, without having to look at the code.
 In the end, the quality and robustness of our application is much better.</p>
-<h2 id="coverage---parts-of-2sxc-which-are-functional" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="52">Coverage - Parts of 2sxc which are Functional</h2>
-<ol sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="54">
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="54">The Toolbar API on <code sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="54">Kit.Toolbar</code> is 100% functional (new v14)</li>
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="55">The Razor HTML Tags API on <code sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="55">Kit.HtmlTags</code> is 100% functional (new ca. v13)</li>
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="56">Page Parameters <code sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="56">CmsContext.Page.Parameters</code> are 100% functional (new ca. v12)</li>
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="57">Linking data sources using the <code sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="57">Link</code> property is 100% functional (new in v15)</li>
+<h2 id="coverage---parts-of-2sxc-which-are-functional">Coverage - Parts of 2sxc which are Functional</h2>
+<ol>
+<li>The Toolbar API on <code>Kit.Toolbar</code> is 100% functional (new v14)</li>
+<li>The Razor HTML Tags API on <code>Kit.HtmlTags</code> is 100% functional (new ca. v13)</li>
+<li>Page Parameters <code>CmsContext.Page.Parameters</code> are 100% functional (new ca. v12)</li>
+<li>Linking data sources using the <code>Link</code> property is 100% functional (new in v15)</li>
 </ol>
-<hr sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="59">
-<h2 id="history" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="61">History</h2>
-<ul sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="63">
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="63">Introduced gradually starting with 2sxc 12</li>
-<li sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="64">RazorBlade started doing this in v3 also in 2sxc 13</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced gradually starting with 2sxc 12</li>
+<li>RazorBlade started doing this in v3 also in 2sxc 13</li>
 </ul>
-<p sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="66">Shortlink: <a href="https://go.2sxc.org/functional" sourcefile="pages/net-code/conventions/functional-api/index.md" sourcestartlinenumber="66">https://go.2sxc.org/functional</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/functional">https://go.2sxc.org/functional</a></p>
 
 </article>
 

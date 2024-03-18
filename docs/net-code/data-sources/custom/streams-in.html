@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.StreamsIn">
-<h1 id="datasource-api-in-streams" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="5">DataSource API: In Streams</h1>
+<h1 id="datasource-api-in-streams">DataSource API: In Streams</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,20 +203,20 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
-<p sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="10">All DataSources can have <strong sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="10">In</strong> Streams, even Root DataSources. This is because an <strong sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="10">In</strong> is often used to provide the DataSource with configuration information.</p>
-<p sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="12">In addition to that, many DataSources expect Data which will be processed. For example, the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="12">Shuffle</a> needs one In-Stream containing data to shuffle, while the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="12">ValueFilter</a> expects two streams: a <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="12">Default</code> to filter on and an optional <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="12">Fallback</code> stream to return in case the filter didn't return anything.</p>
+<p>All DataSources can have <strong>In</strong> Streams, even Root DataSources. This is because an <strong>In</strong> is often used to provide the DataSource with configuration information.</p>
+<p>In addition to that, many DataSources expect Data which will be processed. For example, the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.Shuffle.html">Shuffle</a> needs one In-Stream containing data to shuffle, while the <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a> expects two streams: a <code>Default</code> to filter on and an optional <code>Fallback</code> stream to return in case the filter didn't return anything.</p>
 <img src="../../../pages/basics/query/streams/assets/in-streams.png" width="100%" class="full-width">
-<div class="IMPORTANT" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="16">
+<div class="IMPORTANT">
 <h5>Important</h5>
-<p sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="17">Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/in.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="17">general concept of In-Streams</a>.</p>
+<p>Here we only explain aspects which are relevant to your code. Make sure you are familiar with the <a class="xref" href="../../../basics/query/streams/in.html">general concept of In-Streams</a>.</p>
 </div>
-<p sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="19">To help the UI explicitly show these predefined In-Streams, we must list them in the <a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="19">VisualQuery decorator attribute</a> in the <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="19">In</code> property.</p>
-<h2 id="example-from-the-valuefilter-datasource" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="21">Example from the ValueFilter DataSource</h2>
-<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="23">[VisualQuery(NameId = &quot;...&quot;,
+<p>To help the UI explicitly show these predefined In-Streams, we must list them in the <a class="xref" href="visual-query-attribute.html">VisualQuery decorator attribute</a> in the <code>In</code> property.</p>
+<h2 id="example-from-the-valuefilter-datasource">Example from the ValueFilter DataSource</h2>
+<pre><code class="lang-c#">[VisualQuery(NameId = &quot;...&quot;,
   Type = DataSourceType.Filter, 
   In = new[] { Constants.DefaultStreamName, Constants.FallbackStreamName },
   DynamicIn = false,
@@ -224,20 +224,20 @@
   ConfigurationType = &quot;...&quot;,
   HelpLink = &quot;...&quot;)]
 </code></pre>
-<h2 id="nice-to-know" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="33">Nice to Know</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="35">
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="35">If the <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="35">In</code> is not specified in the <a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="35">VisualQuery Attribute</a>, then the UI will show no special In-markers<br>
-...except in <a class="xref" href="dynamic.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="36">Dynamic DataSources</a> where the default is to always have In-Streams.</li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="37">By convention, the default In-stream is called <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="37">Default</code></li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="38">To mark an In-Stream as required, add a <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="38">*</code> at the end, like <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="38">Default*</code></li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="39">In-Streams have data which can be used, but they are not accessed until you really need them</li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="40">If your code really needs an In (like you require the <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="40">Default</code> stream) best use <a class="xref" href="errors.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="40">the best-practice for error-handling</a></li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="41">The property <code sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="41">DynamicIn</code> would mark DataSources which can work with a variable amount of In-Streams, like <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.StreamMerge.html" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="41">StreamMerge</a></li>
+<h2 id="nice-to-know">Nice to Know</h2>
+<ol>
+<li>If the <code>In</code> is not specified in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a>, then the UI will show no special In-markers<br>
+...except in <a class="xref" href="dynamic.html">Dynamic DataSources</a> where the default is to always have In-Streams.</li>
+<li>By convention, the default In-stream is called <code>Default</code></li>
+<li>To mark an In-Stream as required, add a <code>*</code> at the end, like <code>Default*</code></li>
+<li>In-Streams have data which can be used, but they are not accessed until you really need them</li>
+<li>If your code really needs an In (like you require the <code>Default</code> stream) best use <a class="xref" href="errors.html">the best-practice for error-handling</a></li>
+<li>The property <code>DynamicIn</code> would mark DataSources which can work with a variable amount of In-Streams, like <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a></li>
 </ol>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="43">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="45">
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="45">Introduced ca. in 2sxc 6</li>
-<li sourcefile="pages/net-code/data-sources/custom/streams-in.md" sourcestartlinenumber="46">Best practices for getting in-streams in Code were changed in v15 (breaking change)</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced ca. in 2sxc 6</li>
+<li>Best practices for getting in-streams in Code were changed in v15 (breaking change)</li>
 </ol>
 
 </article>

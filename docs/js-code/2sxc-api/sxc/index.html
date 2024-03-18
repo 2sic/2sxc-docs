@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="JsCode.2sxcApi.Sxc.Index">
-<h1 id="the-app--module-sxc-instance" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="5">The App / Module Sxc Instance</h1>
+<h1 id="the-app--module-sxc-instance">The App / Module Sxc Instance</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,65 +203,65 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="10">The module-specific <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="10">sxc</code>-instance is the core JavaScript object helping you in these cases:</p>
-<ol sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="12">
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="12">if you want full control over the edit-experience with custom buttons etc.</li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="13">when you want to use view-data as an asyc-JS call</li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="14">if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or Dnn-WebApi</li>
+<p>The module-specific <code>sxc</code>-instance is the core JavaScript object helping you in these cases:</p>
+<ol>
+<li>if you want full control over the edit-experience with custom buttons etc.</li>
+<li>when you want to use view-data as an asyc-JS call</li>
+<li>if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or Dnn-WebApi</li>
 </ol>
-<h2 id="how-to-use" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="16">How to use</h2>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="18">First you must ensure that you have the <a class="xref" href="../index.html" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="18"><code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="18">$2sxc</code> global</a> on your page, which will get you a module-specific <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="18">sxc</code>.</p>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="20">Here's a simple example (assuming you have the $2sxc global):</p>
-<pre><code class="lang-HTML" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="22">&lt;a onclick=&quot;var sxc = $2sxc(this); alert(sxc.isEditMode())&quot;&gt;
+<h2 id="how-to-use">How to use</h2>
+<p>First you must ensure that you have the <a class="xref" href="../index.html"><code>$2sxc</code> global</a> on your page, which will get you a module-specific <code>sxc</code>.</p>
+<p>Here's a simple example (assuming you have the $2sxc global):</p>
+<pre><code class="lang-HTML">&lt;a onclick=&quot;var sxc = $2sxc(this); alert(sxc.isEditMode())&quot;&gt;
     click me 
 &lt;/a&gt;
 </code></pre>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="28">The code above shows</p>
-<ol sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="30">
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="30">how the sxc-object is retrieved using the <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="30">$2sxc(...)</code> global, based on the current context <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="30">this</code></li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="31">how to ask if we're in edit-mode</li>
+<p>The code above shows</p>
+<ol>
+<li>how the sxc-object is retrieved using the <code>$2sxc(...)</code> global, based on the current context <code>this</code></li>
+<li>how to ask if we're in edit-mode</li>
 </ol>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="33">Here's another quick example, calling a C# web-api endpoint:</p>
-<pre><code class="lang-JavaScript" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="35">var sxc = $2sxc(27);
+<p>Here's another quick example, calling a C# web-api endpoint:</p>
+<pre><code class="lang-JavaScript">var sxc = $2sxc(27);
 sxc.webApi.post(&quot;Form/ProcessForm&quot;)
     .success(function(result) {
         // ....
     });
 </code></pre>
-<h2 id="how-to-get-the-current-contexts-sxc-instance" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="43">How to Get the Current Context's <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="43">sxc</code> Instance</h2>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="45">Before you continue, make sure you know how to resolve/get your <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="45">sxc</code>, as it is unique for each Dnn-Module.
+<h2 id="how-to-get-the-current-contexts-sxc-instance">How to Get the Current Context's <code>sxc</code> Instance</h2>
+<p>Before you continue, make sure you know how to resolve/get your <code>sxc</code>, as it is unique for each Dnn-Module.
 This is because each action needs to know which module it belongs to.
-Read about the 3 ways to get this in the <a class="xref" href="../index.html" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="47">$2sxc Global docs</a>.</p>
-<h2 id="the-api-of-an-module-sxc-instance" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="49">The API of an Module <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="49">sxc</code> Instance</h2>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="51">📖 <a class="xref" href="../../../api/js/Sxc.html#Api_Js_SxcJs_Sxc" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="51">Sxc</a></p>
-<h2 id="common-tasks" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="53">Common Tasks</h2>
-<ol sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="55">
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="55">Work with the JSON Data of the Current Module<br>
-📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="56">Data Service</a></li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="57">Work with REST Api to Read/Write Content-Items / Data<br>
-📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="58">Data Service</a><br>
-<em sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="59">In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="59">Sxc WebApi</a></em></li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="60">Use App-Queries with $2sxc<br>
-📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="61">Query Service</a> objects.<br>
-<em sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="62">In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="62">Sxc WebApi</a></em></li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="63">Work with Custom C# App WebAPIs<br>
-📖 Read about it in the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="64">Sxc WebApi</a> page.</li>
+Read about the 3 ways to get this in the <a class="xref" href="../index.html">$2sxc Global docs</a>.</p>
+<h2 id="the-api-of-an-module-sxc-instance">The API of an Module <code>sxc</code> Instance</h2>
+<p>📖 <a class="xref" href="../../../api/js/Sxc.html#Api_Js_SxcJs_Sxc">Sxc</a></p>
+<h2 id="common-tasks">Common Tasks</h2>
+<ol>
+<li>Work with the JSON Data of the Current Module<br>
+📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a></li>
+<li>Work with REST Api to Read/Write Content-Items / Data<br>
+📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcData.html#Api_Js_SxcJs_SxcData">Data Service</a><br>
+<em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></li>
+<li>Use App-Queries with $2sxc<br>
+📖 In v.13+ you should should use the <a class="xref" href="../../../api/js/SxcQuery.html#Api_Js_SxcJs_SxcQuery">Query Service</a> objects.<br>
+<em>In older versions, use the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a></em></li>
+<li>Work with Custom C# App WebAPIs<br>
+📖 Read about it in the <a class="xref" href="../../../api/js/SxcWebApi.html#Api_Js_SxcJs_SxcWebApi">Sxc WebApi</a> page.</li>
 </ol>
-<h2 id="demo-app-and-further-links" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="67">Demo App and further links</h2>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="69">You should find some code examples in this demo App</p>
-<ul sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="70">
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="70"><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="70">TimeLineJS</a></li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="71">all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="71">app-catalog</a></li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/en/apps/app/timelinejs-app-for-dnn-dotnetnuke">TimeLineJS</a></li>
+<li>all the JS-apps including AngularJS in the <a class="xref" href="https://2sxc.org/en/apps">app-catalog</a></li>
 </ul>
-<p sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="73">More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="73">Description of the feature on 2sxc docs</a></p>
-<h2 id="history" sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="75">History</h2>
-<ol sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="77">
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="77">Introduced in 2sxc 04.00</li>
-<li sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="78">Enhanced with <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="78">SxcData</code> and <code sourcefile="pages/js-code/2sxc-api/sxc/index.md" sourcestartlinenumber="78">SxcQuery</code> in 2sxc 13.00</li>
+<p>More links: <a href="http://2sxc.org/en/Docs-Manuals/Feature/feature/2683">Description of the feature on 2sxc docs</a></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 04.00</li>
+<li>Enhanced with <code>SxcData</code> and <code>SxcQuery</code> in 2sxc 13.00</li>
 </ol>
 
 </article>

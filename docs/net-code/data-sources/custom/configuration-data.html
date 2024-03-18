@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.ConfigurationData">
-<h1 id="datasource-configuration-data" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="5">DataSource Configuration Data</h1>
+<h1 id="datasource-configuration-data">DataSource Configuration Data</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,7 +203,7 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>
@@ -212,37 +212,37 @@
   .context-box-summary .data-configuration
   { visibility: visible; }
 </style>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="15">Most Custom DataSources will want to provide a configuration UI to the editor.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="17">To enable this we create a Content-Type for each DataSource which will contain the fields to configure it.</p>
-<h2 id="example" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="19">Example</h2>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="21">Let's say we need a <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="21">Weather</code> DataSource which must be configured. We would create a DataSource with these fields:</p>
-<ol sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="23">
-<li sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="23"><code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="23">CountryCode</code> - text field with a dropdown of country codes</li>
-<li sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="24"><code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="24">ZipCode</code> - text field to enter the ZIP code</li>
-<li sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="25"><code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="25">ApiKey</code> - a key which will let our backend use the WeatherService</li>
+<p>Most Custom DataSources will want to provide a configuration UI to the editor.</p>
+<p>To enable this we create a Content-Type for each DataSource which will contain the fields to configure it.</p>
+<h2 id="example">Example</h2>
+<p>Let's say we need a <code>Weather</code> DataSource which must be configured. We would create a DataSource with these fields:</p>
+<ol>
+<li><code>CountryCode</code> - text field with a dropdown of country codes</li>
+<li><code>ZipCode</code> - text field to enter the ZIP code</li>
+<li><code>ApiKey</code> - a key which will let our backend use the WeatherService</li>
 </ol>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="27">Once this Content-Type is defined, we automatically have an editing-UI (thanks to the CMS features) but it's not yet connected to the DataSource.</p>
-<h2 id="easiest-way-dynamic-datasources--v16" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="29">Easiest Way: Dynamic DataSources 🆕 v16</h2>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="31">When using <a class="xref" href="dynamic.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="31">Dynamic DataSources</a> (new in v16) it is fully automatic.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="33">Just create a ContentType with the same name as the DataSource + <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="33">Configuration</code>.
-So if your DataSource is called <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="34">MySource</code>, call the ContentType <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="34">MySourceConfiguration</code>.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="36">If for any reason you need to give it a different name, you can do this by using the <a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="36">VisualQuery Attribute</a>.</p>
-<h2 id="basic-integration-single-app-use" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="38">Basic Integration: Single-App Use</h2>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="40">If you don't plan on distributing your DataSource and only need it in one or two Apps, then you can just create the Content-Type there and export/import it to other apps.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="42">You'll need to register the <a class="xref" href="../../../basics/data/content-types/names.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="42">internal name</a> in the <a class="xref" href="visual-query-attribute.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="42">VisualQuery Attribute</a> of your DataSource so that the UI will show the configuration where it's needed.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="44">Once you've done this, the <a class="xref" href="../../../basics/query/visual-query/index.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="44">VisualQuery Designer</a> will know about it and offer your content-type when configuring that part of a Query.</p>
-<div class="TIP" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="46">
+<p>Once this Content-Type is defined, we automatically have an editing-UI (thanks to the CMS features) but it's not yet connected to the DataSource.</p>
+<h2 id="easiest-way-dynamic-datasources--v16">Easiest Way: Dynamic DataSources 🆕 v16</h2>
+<p>When using <a class="xref" href="dynamic.html">Dynamic DataSources</a> (new in v16) it is fully automatic.</p>
+<p>Just create a ContentType with the same name as the DataSource + <code>Configuration</code>.
+So if your DataSource is called <code>MySource</code>, call the ContentType <code>MySourceConfiguration</code>.</p>
+<p>If for any reason you need to give it a different name, you can do this by using the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a>.</p>
+<h2 id="basic-integration-single-app-use">Basic Integration: Single-App Use</h2>
+<p>If you don't plan on distributing your DataSource and only need it in one or two Apps, then you can just create the Content-Type there and export/import it to other apps.</p>
+<p>You'll need to register the <a class="xref" href="../../../basics/data/content-types/names.html">internal name</a> in the <a class="xref" href="visual-query-attribute.html">VisualQuery Attribute</a> of your DataSource so that the UI will show the configuration where it's needed.</p>
+<p>Once you've done this, the <a class="xref" href="../../../basics/query/visual-query/index.html">VisualQuery Designer</a> will know about it and offer your content-type when configuring that part of a Query.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="47">The data entered will be made available to your DataSource Configuration as the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="47">MyConfiguration</a>.</p>
+<p>The data entered will be made available to your DataSource Configuration as the <a class="xref" href="../../../abyss/parts/look-up/lookup-settings.html">MyConfiguration</a>.</p>
 </div>
-<h2 id="advanced-integration-multi-app-use" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="49">Advanced Integration: Multi-App Use</h2>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="51">If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="53">In this case you'll want to export the Content-Type as a JSON and place it in the <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="53">App_Data/system-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="53">Global Content-Types</a>. If you now restart your Dnn, then this new Content-Type is picked up and available in <em sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="53">all</em> Apps on this Dnn.</p>
-<h2 id="redistribution-scenario" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="56">Redistribution Scenario</h2>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="58">The above example works well if you're fine with installing the JSON Content-Type manually on servers which will use the DataSource.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="60">For more advanced redistribution, you'll want to include the JSON file in your Dnn Installation package. But in that case it's not in <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="60">App_Data/system-custom</code> so 2sxc/EAV can't pick it up.</p>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="62">To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of Dnn. All you have to do is create a <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="62">public</code> class which inherits <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="62">ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here's an example:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="64">using System.Collections.Generic;
+<h2 id="advanced-integration-multi-app-use">Advanced Integration: Multi-App Use</h2>
+<p>If you plan on using this configuration in many Apps on a server, then export/import of this Content-Type is not practical.</p>
+<p>In this case you'll want to export the Content-Type as a JSON and place it in the <code>App_Data/system-custom/contenttypes</code> folder for <a class="xref" href="../../../basics/data/content-types/range-global.html">Global Content-Types</a>. If you now restart your Dnn, then this new Content-Type is picked up and available in <em>all</em> Apps on this Dnn.</p>
+<h2 id="redistribution-scenario">Redistribution Scenario</h2>
+<p>The above example works well if you're fine with installing the JSON Content-Type manually on servers which will use the DataSource.</p>
+<p>For more advanced redistribution, you'll want to include the JSON file in your Dnn Installation package. But in that case it's not in <code>App_Data/system-custom</code> so 2sxc/EAV can't pick it up.</p>
+<p>To make sure that it's still available to all Apps on a server, you'll need to create a special class to register it on Start of Dnn. All you have to do is create a <code>public</code> class which inherits <code>ToSic.Eav.Repositories.FolderBasedRepository</code>. On boot all these classes will be found and asked for other folders which have such data. Here's an example:</p>
+<pre><code class="lang-c#">using System.Collections.Generic;
 using System.Web;
 using ToSic.Eav.Repositories;
 
@@ -262,14 +262,14 @@ namespace ToSic.Tutorial.DataSource.Basic
     }
 }
 </code></pre>
-<div class="TIP" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="86">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="87">Remember that the folder (in this case <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="87">App_Data</code>) is <em sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="87">not</em> where the shared Content-Types are stored. They must be placed in a <code sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="87">contenttypes</code> subfolder.</p>
+<p>Remember that the folder (in this case <code>App_Data</code>) is <em>not</em> where the shared Content-Types are stored. They must be placed in a <code>contenttypes</code> subfolder.</p>
 </div>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="90">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="92">
-<li sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="92">General Tokens introduced in 2sxc 1.0</li>
-<li sourcefile="pages/net-code/data-sources/custom/configuration-data.md" sourcestartlinenumber="93">Most enhancements were in 2sxc 07.00</li>
+<h2 id="history">History</h2>
+<ol>
+<li>General Tokens introduced in 2sxc 1.0</li>
+<li>Most enhancements were in 2sxc 07.00</li>
 </ol>
 
 </article>

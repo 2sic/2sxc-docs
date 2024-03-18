@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,50 +106,50 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V15.TEMPLATE">
-<h1 id="fix-breaking-change-template-in-v15" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="5">TEMPLATE</em> in v15</h1>
+<h1 id="fix-breaking-change-template-in-v15">Fix Breaking Change <em>TEMPLATE</em> in v15</h1>
 
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="7">Keywords:</strong> #Deprecated #Render #Static #DependencyInjection</p>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="9">2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="11">These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else.</p>
-<ul sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="13">
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="13"><code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="13">ToSic.SexyContent.ContentBlocks.One(...)</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="14"><code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="14">ToSic.SexyContent.ContentBlocks.All(...)</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="15"><code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="15">ToSic.Sxc.Blocks.Render.One(...)</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="16"><code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="16">ToSic.Sxc.Blocks.Render.All(...)</code></li>
+<p><strong>Keywords:</strong> #Deprecated #Render #Static #DependencyInjection</p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p>These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else.</p>
+<ul>
+<li><code>ToSic.SexyContent.ContentBlocks.One(...)</code></li>
+<li><code>ToSic.SexyContent.ContentBlocks.All(...)</code></li>
+<li><code>ToSic.Sxc.Blocks.Render.One(...)</code></li>
+<li><code>ToSic.Sxc.Blocks.Render.All(...)</code></li>
 </ul>
-<h2 id="reason-for-removal" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="18">Reason for Removal</h2>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="20">2sxc used to not have Dependency Injection so there were some static APIs which we provided.
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>2sxc used to not have Dependency Injection so there were some static APIs which we provided.
 But this is bad practice and causes a lot of difficulty to keep everything working.
 The newer APIs use Services and Dependency Injection and do what they should.</p>
-<h2 id="history---how-it-used-to-work" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="24">History - How it Used to Work</h2>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="26">Previously you could write code like this in your Razor:</p>
-<pre><code class="lang-csharp" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="28">@using ToSic.Sxc.Blocks;
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>Previously you could write code like this in your Razor:</p>
+<pre><code class="lang-csharp">@using ToSic.Sxc.Blocks;
 // some code
 @Render.All(someEntity, field: &quot;AnswerInnerContent&quot;, merge: someEntity.Answer)
 </code></pre>
-<h2 id="what-we-changed" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="34">What we Changed</h2>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="36">In 2sxc 11.11 we introduced the <code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="36">GetService&lt;T&gt;()</code> (<a href="xref:ToSic.Sxc.Code.IDynamicCode.GetService*" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="36">docs</a>) which provides proper DI.
-We also introduced a <code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="37">ToSic.Sxc.Services.IRenderService</code> which should replace these commands - see <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="37">docs</a>.
+<h2 id="what-we-changed">What we Changed</h2>
+<p>In 2sxc 11.11 we introduced the <code>GetService&lt;T&gt;()</code> (<a href="xref:ToSic.Sxc.Code.IDynamicCode.GetService*">docs</a>) which provides proper DI.
+We also introduced a <code>ToSic.Sxc.Services.IRenderService</code> which should replace these commands - see <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html">docs</a>.
 Please use this from now on.</p>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="40">The old API will continue to work for a while but show errors in the insight.</p>
-<h2 id="upgrade-to-newer-functionality" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="43">Upgrade to Newer functionality</h2>
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="45">So the previous example would look like this:</p>
-<pre><code class="lang-csharp" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="47">@using ToSic.Sxc.Services;
+<p>The old API will continue to work for a while but show errors in the insight.</p>
+<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
+<p>So the previous example would look like this:</p>
+<pre><code class="lang-csharp">@using ToSic.Sxc.Services;
 // some code
 var renderSvc = GetService&lt;IRenderService&gt;();
 @renderSvc.All(someEntity, field: &quot;AnswerInnerContent&quot;, merge: someEntity.Answer)
 </code></pre>
-<hr sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="54">
-<h2 id="history" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="56">History</h2>
-<ul sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="58">
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="58">Introduced <code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="58">ToSic.SexyContent.ContentBlocks</code> ca. 2sxc 5</li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="59">Introduced better name but still non-DI implementation called <code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="59">ToSic.Sxc.ContentBlocks</code> ca. 2sxc 7</li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="60">New <code sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="60">IRenderService</code> introduced in 2sxc 11 and 12</li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="61">Deprecated in 2sxc 13</li>
-<li sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="62">Planned for full removal in 2sxc 14 ca. middle of 2022</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced <code>ToSic.SexyContent.ContentBlocks</code> ca. 2sxc 5</li>
+<li>Introduced better name but still non-DI implementation called <code>ToSic.Sxc.ContentBlocks</code> ca. 2sxc 7</li>
+<li>New <code>IRenderService</code> introduced in 2sxc 11 and 12</li>
+<li>Deprecated in 2sxc 13</li>
+<li>Planned for full removal in 2sxc 14 ca. middle of 2022</li>
 </ul>
-<hr sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="64">
-<p sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="66">Shortlink to here: <a href="https://go.2sxc.org/brc-13-static-render" sourcefile="pages/abyss/releases/history/v15/template/_index.md" sourcestartlinenumber="66">https://go.2sxc.org/brc-13-static-render</a></p>
+<hr>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-static-render">https://go.2sxc.org/brc-13-static-render</a></p>
 
 </article>
 

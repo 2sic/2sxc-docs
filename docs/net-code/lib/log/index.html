@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,94 +106,94 @@
         </div>
 
         <article data-uid="NetCode.Lib.Log.Index">
-<h1 id="logging-in-2sxc--eav" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="4">Logging in 2sxc / EAV</h1>
+<h1 id="logging-in-2sxc--eav">Logging in 2sxc / EAV</h1>
 
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="6">This should give you some minimal guidance into logging what your code does.</p>
-<h2 id="the-general-concept" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="8">The General Concept</h2>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="10">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="10">Most objects have a <strong sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="10">Log</strong> where the add notes what they are doing</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="11">When objects create child-objects they link their logs so that we have a call hierarchy</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="12">Most calls in the objects will declare that they opened a function, log that, and log the result or a comment</li>
+<p>This should give you some minimal guidance into logging what your code does.</p>
+<h2 id="the-general-concept">The General Concept</h2>
+<ol>
+<li>Most objects have a <strong>Log</strong> where the add notes what they are doing</li>
+<li>When objects create child-objects they link their logs so that we have a call hierarchy</li>
+<li>Most calls in the objects will declare that they opened a function, log that, and log the result or a comment</li>
 </ol>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="14">With this we can easily see what the code did in the <a class="xref" href="../../debug/insights.html" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="14">Insights</a>.</p>
-<h2 id="how-to-use-in-your-code" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="16">How to Use in Your Code</h2>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="18">We strongly suggest that you use the same concepts in your code. You'll have to look at the 2sxc/EAV source in Github to discover more.</p>
-<h2 id="use-on-object" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="20">Use on Object</h2>
-<h3 id="object-creation" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="22">Object Creation</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="24">All objects which have a log, have a <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="24">Log</code> property which you can use to add notes.
+<p>With this we can easily see what the code did in the <a class="xref" href="../../debug/insights.html">Insights</a>.</p>
+<h2 id="how-to-use-in-your-code">How to Use in Your Code</h2>
+<p>We strongly suggest that you use the same concepts in your code. You'll have to look at the 2sxc/EAV source in Github to discover more.</p>
+<h2 id="use-on-object">Use on Object</h2>
+<h3 id="object-creation">Object Creation</h3>
+<p>All objects which have a log, have a <code>Log</code> property which you can use to add notes.
 This is the most common way to log.
 Normally they will inherit from:</p>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="28">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="28"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="28">ToSic.Lib.Services.ServiceBase</code><br>
+<ol>
+<li><code>ToSic.Lib.Services.ServiceBase</code><br>
 This is for services which have a few dependencies.</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="30"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="30">ToSic.Lib.Services.ServiceBase&lt;Dependencies&gt;</code><br>
+<li><code>ToSic.Lib.Services.ServiceBase&lt;Dependencies&gt;</code><br>
 This is for services which have a lot of dependencies.
 In this case you'll have to pass the dependencies to the base class.
-Dependencies usually inherit from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="33">ToSic.Lib.Services.ServiceDependencies</code>.</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="34"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="34">ToSic.Lib.Services.HelperBase</code>
+Dependencies usually inherit from <code>ToSic.Lib.Services.ServiceDependencies</code>.</li>
+<li><code>ToSic.Lib.Services.HelperBase</code>
 This is for helpers which are not services and will usually be created in code (not from DI).</li>
 </ol>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="37">You can also just create normal objects and implement <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="37">ToSic.Lib.Logging.IHasLog</code>.</p>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="39">Note that if you're inheriting from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="39">ServiceBase&lt;Dependencies&gt;</code> then the dependencies class should
-inherit from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="40">ToSic.Lib.Services.DependenciesBase</code>.</p>
-<h3 id="log-linking" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="42">Log Linking</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="44">For optimal log structures, they should be linked together.
+<p>You can also just create normal objects and implement <code>ToSic.Lib.Logging.IHasLog</code>.</p>
+<p>Note that if you're inheriting from <code>ServiceBase&lt;Dependencies&gt;</code> then the dependencies class should
+inherit from <code>ToSic.Lib.Services.DependenciesBase</code>.</p>
+<h3 id="log-linking">Log Linking</h3>
+<p>For optimal log structures, they should be linked together.
 This helps to show the call hierarchy in the Insights.</p>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="47">This is fully automated, if you adhere to the conventions.
+<p>This is fully automated, if you adhere to the conventions.
 It works as follows:</p>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="50">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="50">Any object inheriting from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="50">ServiceBase</code>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="51">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="51">should call <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="51">ConnectServices</code> in the constructor.
+<ol>
+<li>Any object inheriting from <code>ServiceBase</code>
+<ol>
+<li>should call <code>ConnectServices</code> in the constructor.
 TODO: EXAMPLE</li>
 </ol>
 </li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="53">Any object inheriting from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="53">ServiceBase&lt;Dependencies&gt;</code>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="54">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="54">should pass the dependencies into the base constructor.</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="55">The dependencies are then available on a <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="55">Deps</code> property.</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="56">For this to work, the <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="56">Dependencies</code> should inherit from <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="56">ServiceDependencies</code> and in the constructor call <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="56">ConnectServices</code>.</li>
+<li>Any object inheriting from <code>ServiceBase&lt;Dependencies&gt;</code>
+<ol>
+<li>should pass the dependencies into the base constructor.</li>
+<li>The dependencies are then available on a <code>Deps</code> property.</li>
+<li>For this to work, the <code>Dependencies</code> should inherit from <code>ServiceDependencies</code> and in the constructor call <code>ConnectServices</code>.</li>
 </ol>
 </li>
 </ol>
-<h2 id="logging" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="58">Logging</h2>
-<h3 id="basic-messages" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="60">Basic Messages</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="62">You can log messages with the following methods (they are kept very short to keep the code compact):</p>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="64">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="64"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="64">Log.A</code> - add a message</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="65"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="65">Log.W</code> - add a warning</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="66"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="66">Log.E</code> - add an error</li>
+<h2 id="logging">Logging</h2>
+<h3 id="basic-messages">Basic Messages</h3>
+<p>You can log messages with the following methods (they are kept very short to keep the code compact):</p>
+<ol>
+<li><code>Log.A</code> - add a message</li>
+<li><code>Log.W</code> - add a warning</li>
+<li><code>Log.E</code> - add an error</li>
 </ol>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="68">All of these methods have a first <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="68">string</code> parameter containing the message to add.</p>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="70">They also all have an optional parameter called <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="70">timer</code>.
-If this is set to true using <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="71">timer: true</code> then the log will also contain the time it took to execute the method.</p>
-<h3 id="exceptions" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="73">Exceptions</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="75">You can log exceptions with the following methods:</p>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="77">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="77"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="77">Log.Ex</code> - add an exception</li>
+<p>All of these methods have a first <code>string</code> parameter containing the message to add.</p>
+<p>They also all have an optional parameter called <code>timer</code>.
+If this is set to true using <code>timer: true</code> then the log will also contain the time it took to execute the method.</p>
+<h3 id="exceptions">Exceptions</h3>
+<p>You can log exceptions with the following methods:</p>
+<ol>
+<li><code>Log.Ex</code> - add an exception</li>
 </ol>
-<h3 id="log-properties" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="79">Log Properties</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="81">Properties use getters and setters.
+<h3 id="log-properties">Log Properties</h3>
+<p>Properties use getters and setters.
 To log these, you must consider a few aspects:</p>
-<ul sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="84">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="84">do you want to log every single get/set? Or just the first one?</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="85">do you want to log both get/set or just one of them?</li>
+<ul>
+<li>do you want to log every single get/set? Or just the first one?</li>
+<li>do you want to log both get/set or just one of them?</li>
 </ul>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="87">To do this, you have 3 tools at your disposal:</p>
-<ul sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="89">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="89"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="89">Getter(() =&gt; result)</code> - this will log the result of the getter</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="90"><code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="90">Setter(() =&gt; result)</code> - this will log the result of the setter</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="91">Create a <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="91">GetOnce&lt;T&gt;</code> helper and on the get include the <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="91">Log</code> - this will only log the initial creation / get of the result</li>
+<p>To do this, you have 3 tools at your disposal:</p>
+<ul>
+<li><code>Getter(() =&gt; result)</code> - this will log the result of the getter</li>
+<li><code>Setter(() =&gt; result)</code> - this will log the result of the setter</li>
+<li>Create a <code>GetOnce&lt;T&gt;</code> helper and on the get include the <code>Log</code> - this will only log the initial creation / get of the result</li>
 </ul>
-<h3 id="log-methods-functions-properties" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="94">Log Methods, Functions, Properties</h3>
-<p sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="97">TODO:</p>
-<hr sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="99">
-<h2 id="history" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="101">History</h2>
-<ol sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="103">
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="103"><a href="https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="103">Introduced in 2sxc 9.6</a></li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="104">Added <a class="xref" href="../../debug/index.html" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="104">2sxc Insights</a> (server-side) v9.31</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="105"><a href="https://2sxc.org/en/blog/post/awesome-insights-in-10-22" sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="105">Major enhancements</a> in v10.22</li>
-<li sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="106">Moved to <code sourcefile="pages/net-code/lib/log/index.md" sourcestartlinenumber="106">ToSic.Lib.Logging</code> in v15.0</li>
+<h3 id="log-methods-functions-properties">Log Methods, Functions, Properties</h3>
+<p>TODO:</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li><a href="https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging">Introduced in 2sxc 9.6</a></li>
+<li>Added <a class="xref" href="../../debug/index.html">2sxc Insights</a> (server-side) v9.31</li>
+<li><a href="https://2sxc.org/en/blog/post/awesome-insights-in-10-22">Major enhancements</a> in v10.22</li>
+<li>Moved to <code>ToSic.Lib.Logging</code> in v15.0</li>
 </ol>
 
 </article>

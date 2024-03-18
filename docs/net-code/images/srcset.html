@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,76 +106,76 @@
         </div>
 
         <article data-uid="NetCode.Images.SrcSet">
-<h1 id="specify-srtset-on-responsive-images-api" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="4">Specify <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="4">SrtSet</code> on Responsive Images API</h1>
+<h1 id="specify-srtset-on-responsive-images-api">Specify <code>SrtSet</code> on Responsive Images API</h1>
 
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="6">Both <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="6">&lt;img&gt;</code> as well as <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="6">&lt;source&gt;</code> tags can have a <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="6">srcset</code> attribute.</p>
-<div class="TIP" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="8">
+<p>Both <code>&lt;img&gt;</code> as well as <code>&lt;source&gt;</code> tags can have a <code>srcset</code> attribute.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="9">If you are new to responsive images, we suggest you read the
-<a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="10">MDN Guide</a>
+<p>If you are new to responsive images, we suggest you read the
+<a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">MDN Guide</a>
 to get familiar with this</p>
 </div>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="13">The Responsive Images API generates these automatically for you.
-In many cases, the configuration for this comes from the settings - like from <a class="xref" href="../../basics/configuration/settings-system.html" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="14">Settings.Images.Content</a>.</p>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="16">But often you may want to configure it yourself  - either by reconfiguring the Settings in the Admin-UI, or by supplying in in the code.</p>
-<h2 id="concept" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="18">Concept</h2>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="20">The way the generator works is that you give it the rules you want based on 4 options:</p>
-<ol sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="22">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="22">An exact width in pixels (usually with the <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="22">w</code> parameter in <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="22">srcset</code>s)</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="23">A multiple based on the device pixel density (usually with the <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="23">x</code> parameter)</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="24">A smaller size based an a multiple (like half the original if it's half the size)</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="25">The fallback / default picture</li>
+<p>The Responsive Images API generates these automatically for you.
+In many cases, the configuration for this comes from the settings - like from <a class="xref" href="../../basics/configuration/settings-system.html">Settings.Images.Content</a>.</p>
+<p>But often you may want to configure it yourself  - either by reconfiguring the Settings in the Admin-UI, or by supplying in in the code.</p>
+<h2 id="concept">Concept</h2>
+<p>The way the generator works is that you give it the rules you want based on 4 options:</p>
+<ol>
+<li>An exact width in pixels (usually with the <code>w</code> parameter in <code>srcset</code>s)</li>
+<li>A multiple based on the device pixel density (usually with the <code>x</code> parameter)</li>
+<li>A smaller size based an a multiple (like half the original if it's half the size)</li>
+<li>The fallback / default picture</li>
 </ol>
-<h2 id="examples" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="27">Examples</h2>
-<ul sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="29">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="29"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="29">1000w, 800w, 600w, 400w</code><br>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><code>1000w, 800w, 600w, 400w</code><br>
 Generate these four widths as exact pixel sizes</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="31"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="31">1x, 1.5x, 2x</code><br>
+<li><code>1x, 1.5x, 2x</code><br>
 Generate these three sizes for screen pixel densities</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="33"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="33">1*, 0.75*, 0.5*, 0.25*</code><br>
-Generate exact pixel sizes based on the initial size, so if the initial image was 1200px, it is the same as <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="34">1200w, 800w, 600w, 400w</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="35"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="35">d</code>
-Generate a default line (without any <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="36">w</code> or <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="36">x</code> specifier)</li>
+<li><code>1*, 0.75*, 0.5*, 0.25*</code><br>
+Generate exact pixel sizes based on the initial size, so if the initial image was 1200px, it is the same as <code>1200w, 800w, 600w, 400w</code></li>
+<li><code>d</code>
+Generate a default line (without any <code>w</code> or <code>x</code> specifier)</li>
 </ul>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="38">A lot is auto-detected, so if you want to, you can leave away the <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="38">w</code> and <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="38">x</code> and <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="38">*</code> in almost all cases.
+<p>A lot is auto-detected, so if you want to, you can leave away the <code>w</code> and <code>x</code> and <code>*</code> in almost all cases.
 So this is valid too (see below for auto-detection rules):</p>
-<ul sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="41">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="41"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="41">1000, 800, 600, 400</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="42"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="42">1, 1.5, 2</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="43"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="43">1*, 0.75, 0.5, 0.25</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="44"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="44">1/1, 1/2, 1/3, 1/4</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="45"><code> </code> (empty string) - defaults to <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="45">d</code></li>
+<ul>
+<li><code>1000, 800, 600, 400</code></li>
+<li><code>1, 1.5, 2</code></li>
+<li><code>1*, 0.75, 0.5, 0.25</code></li>
+<li><code>1/1, 1/2, 1/3, 1/4</code></li>
+<li><code> </code> (empty string) - defaults to <code>d</code></li>
 </ul>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="47">In addition to the standard factor you can also set what size should be used exactly - otherwise it's auto-calculated:</p>
-<ul sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="49">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="49"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="49">1x=1200, 1.5x=1800, 2x=2400, 2.5x=2400, 3x=2400</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="50"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="50">1000=1000, 1600=1200</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="51"><code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="51">1x=1200:600, 1.5x=1800:600, 2x=2400:600</code> - height can also be set</li>
+<p>In addition to the standard factor you can also set what size should be used exactly - otherwise it's auto-calculated:</p>
+<ul>
+<li><code>1x=1200, 1.5x=1800, 2x=2400, 2.5x=2400, 3x=2400</code></li>
+<li><code>1000=1000, 1600=1200</code></li>
+<li><code>1x=1200:600, 1.5x=1800:600, 2x=2400:600</code> - height can also be set</li>
 </ul>
-<h2 id="srcset-parameter-specs" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="53">SrcSet Parameter Specs</h2>
-<ol sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="55">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="55">It is always one or more values, separated by a comma <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="55">,</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">Each value has a number like <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">1</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">1.5</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">1200</code> or a fraction like <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">1/2</code> or <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">1:2</code> - or empty for <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="56">d</code> (default)</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="57">Each value can have a specifier like <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="57">w</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="57">x</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="57">*</code> or <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="57">d</code> - or it's auto detected</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="58">It can be followed by an <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="58">=</code> to specify exact resizing rules
-<ol sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="59">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="59">After the <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="59">=</code> it can have a width</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="60">After that it can have a <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="60">:</code> followed by the resize height</li>
+<h2 id="srcset-parameter-specs">SrcSet Parameter Specs</h2>
+<ol>
+<li>It is always one or more values, separated by a comma <code>,</code></li>
+<li>Each value has a number like <code>1</code>, <code>1.5</code>, <code>1200</code> or a fraction like <code>1/2</code> or <code>1:2</code> - or empty for <code>d</code> (default)</li>
+<li>Each value can have a specifier like <code>w</code>, <code>x</code>, <code>*</code> or <code>d</code> - or it's auto detected</li>
+<li>It can be followed by an <code>=</code> to specify exact resizing rules
+<ol>
+<li>After the <code>=</code> it can have a width</li>
+<li>After that it can have a <code>:</code> followed by the resize height</li>
 </ol>
 </li>
 </ol>
-<h2 id="auto-detected-types-w-x--and-d" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="62">Auto Detected Types <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="62">w</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="62">x</code>, <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="62">*</code> and <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="62">d</code></h2>
-<p sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="64">These are the rules if the type is not specified:</p>
-<ul sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="66">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="66">If the number is smaller than <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="66">1</code> it must be a multiplier of the original size, so <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="66">*</code> is assumed</li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="67">If the number is written as a fraction like <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="67">2/3</code> or <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="67">4:3</code> it is assumed to be a multiplier <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="67">*</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="68">If the number is greater than <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="68">1</code> and less than <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="68">10</code> a pixel density is assumed <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="68">x</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="69">If the number is <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="69">10</code> or greater than width is assumed <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="69">w</code></li>
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="70">If nothing (not even a number) is specified, default <code sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="70">d</code> is assumed</li>
+<h2 id="auto-detected-types-w-x--and-d">Auto Detected Types <code>w</code>, <code>x</code>, <code>*</code> and <code>d</code></h2>
+<p>These are the rules if the type is not specified:</p>
+<ul>
+<li>If the number is smaller than <code>1</code> it must be a multiplier of the original size, so <code>*</code> is assumed</li>
+<li>If the number is written as a fraction like <code>2/3</code> or <code>4:3</code> it is assumed to be a multiplier <code>*</code></li>
+<li>If the number is greater than <code>1</code> and less than <code>10</code> a pixel density is assumed <code>x</code></li>
+<li>If the number is <code>10</code> or greater than width is assumed <code>w</code></li>
+<li>If nothing (not even a number) is specified, default <code>d</code> is assumed</li>
 </ul>
-<h2 id="history" sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="72">History</h2>
-<ol sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="74">
-<li sourcefile="pages/net-code/images/srcset.md" sourcestartlinenumber="74">Introduced in 2sxc 13.01</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 13.01</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,93 +106,93 @@
         </div>
 
         <article data-uid="Basics.Permissions.Index">
-<h1 id="permissions-in-2sxc" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="7">Permissions in 2sxc</h1>
+<h1 id="permissions-in-2sxc">Permissions in 2sxc</h1>
 <!-- <img src="~/assets/features/image-resizer.svg" class="feature"> -->
 
 <!-- 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>  .context-box-summary .image-resizer    { visibility: visible; } </style> -->
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="12">2sxc permissions are interlinked with the users and roles of the platform (Dnn or Oqtane).
+<p>2sxc permissions are interlinked with the users and roles of the platform (Dnn or Oqtane).
 So if Dnn or Oqtane say a user may do something, 2sxc will follow that.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="15">But there is more to it.
+<p>But there is more to it.
 Many situations require some control which the platform doesn't offer.
 Here are some examples:</p>
-<ol sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="19">
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="19">Admins in DNN are often just content-editors, and shouldn't be able to reconfigure 2sxc</li>
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="20">Headles APIs (REST) needs permissions which you cannot set in the platfrom</li>
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="21">Custom APIs (C# Controllers) need permissions which are not platform-configurable</li>
+<ol>
+<li>Admins in DNN are often just content-editors, and shouldn't be able to reconfigure 2sxc</li>
+<li>Headles APIs (REST) needs permissions which you cannot set in the platfrom</li>
+<li>Custom APIs (C# Controllers) need permissions which are not platform-configurable</li>
 </ol>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="23">This section will help you understand how permissions work and where to configure them.</p>
-<h2 id="platform-permissions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="25">Platform Permissions</h2>
-<h3 id="system-admins-aka-super-users-systemadmin" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="27">System Admins aka Super Users (SystemAdmin)</h3>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="29">A super-user (host-user) has full permissions on everything.
+<p>This section will help you understand how permissions work and where to configure them.</p>
+<h2 id="platform-permissions">Platform Permissions</h2>
+<h3 id="system-admins-aka-super-users-systemadmin">System Admins aka Super Users (SystemAdmin)</h3>
+<p>A super-user (host-user) has full permissions on everything.
 There is no way to change this.
 This means that super users can install, configure, query, edit and delete everything.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="33">In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="33"><code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="33">CmsContext.User.IsSystemAdmin</code></a></p>
-<h3 id="site-admins-siteadmin" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="36">Site Admins (SiteAdmin)</h3>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="38">Admin users have full permissions on a specific site (Dnn: portal).
-So <em sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="39">by default</em> they can do everything which only affects the current site.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="41">If you have special Roles such as <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="41">2sxcAdministrators</code> then this can <a class="xref" href="role-2sxcadministrators.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="41">behave differently</a>.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="43">In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="43"><code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="43">CmsContext.User.IsSiteAdmin</code></a></p>
-<h3 id="content-admins-contentadmin" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="46">Content Admins (ContentAdmin)</h3>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="48">Many admins are just configured as admins to allow them to edit everything.
-So often the status <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="49">Administrator</code> is only given because it's the only real way
+<p>In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html"><code>CmsContext.User.IsSystemAdmin</code></a></p>
+<h3 id="site-admins-siteadmin">Site Admins (SiteAdmin)</h3>
+<p>Admin users have full permissions on a specific site (Dnn: portal).
+So <em>by default</em> they can do everything which only affects the current site.</p>
+<p>If you have special Roles such as <code>2sxcAdministrators</code> then this can <a class="xref" href="role-2sxcadministrators.html">behave differently</a>.</p>
+<p>In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html"><code>CmsContext.User.IsSiteAdmin</code></a></p>
+<h3 id="content-admins-contentadmin">Content Admins (ContentAdmin)</h3>
+<p>Many admins are just configured as admins to allow them to edit everything.
+So often the status <code>Administrator</code> is only given because it's the only real way
 to ensure the user can change every page, without wanting to allow the user to
 edit other users or reconfigure the site.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="53">Because of this, we have the concept of <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="53">ContentAdmins</strong></p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="55">The platforms Dnn and Oqtane currently don't offer a pure content-admin role.
+<p>Because of this, we have the concept of <strong>ContentAdmins</strong></p>
+<p>The platforms Dnn and Oqtane currently don't offer a pure content-admin role.
 Because of this, 2sxc allows us to do this in another way.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="58">If the site/portal has a role called <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="58">2sxcAdministrators</code> (previously <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="58">2sxc Designers</code>)
-then <em sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="59">all</em> administrators will be treated as <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="59">ContentAdmins</strong> with less permissions.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="61">Any administrator which is then in this role <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="61">2sxcAdministrators</code> will have higher rights.
-For further details, see <a class="xref" href="role-2sxcadministrators.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="62">role 2sxcAdministrators</a></p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="64">In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="64"><code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="64">CmsContext.User.IsContentAdmin</code></a></p>
-<h3 id="edit-permissions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="67">Edit Permissions</h3>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="69">The platform Dnn/Oqtane can give users <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="69">Edit</strong> permissions.
+<p>If the site/portal has a role called <code>2sxcAdministrators</code> (previously <code>2sxc Designers</code>)
+then <em>all</em> administrators will be treated as <strong>ContentAdmins</strong> with less permissions.</p>
+<p>Any administrator which is then in this role <code>2sxcAdministrators</code> will have higher rights.
+For further details, see <a class="xref" href="role-2sxcadministrators.html">role 2sxcAdministrators</a></p>
+<p>In C# you can always detect this on the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.ICmsUser.html"><code>CmsContext.User.IsContentAdmin</code></a></p>
+<h3 id="edit-permissions">Edit Permissions</h3>
+<p>The platform Dnn/Oqtane can give users <strong>Edit</strong> permissions.
 On both platforms this can be assigned at the page as well as the module permission.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="72">Users with edit permissions will be able to edit content or change what layout is used,
+<p>Users with edit permissions will be able to edit content or change what layout is used,
 but not be able to access advanced admin features.</p>
-<h2 id="app-permissions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="76">App Permissions</h2>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="78">For special use cases you may want to give users permissions in a specific App.
-For example, a <em sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="79">Classifieds</em> App or a <em sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="79">Comments</em> App could allow registered users to add their own posts and also edit them.</p>
-<div class="WARNING" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="81">
+<h2 id="app-permissions">App Permissions</h2>
+<p>For special use cases you may want to give users permissions in a specific App.
+For example, a <em>Classifieds</em> App or a <em>Comments</em> App could allow registered users to add their own posts and also edit them.</p>
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="82">Be careful with such permissions, as you don't want to open up your entire App.
-Normally you will only want to assign permissions to a specific <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="83">Content Type</strong>.</p>
+<p>Be careful with such permissions, as you don't want to open up your entire App.
+Normally you will only want to assign permissions to a specific <strong>Content Type</strong>.</p>
 </div>
-<h3 id="content-type-edit-permissions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="85">Content-Type Edit Permissions</h3>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="87">These permissions can be configured at the <a class="xref" href="../data/content-types/index.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="87">Content-Type</a> level.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="89">A typical example would be</p>
-<ul sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="91">
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="91"><strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="91">Registered Users</strong> can create a new <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="91">Comment</strong></li>
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="92"><strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="92">Registered Users</strong> can read the schema of <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="92">Comment</strong> so the edit-UI can be accessed</li>
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="93"><strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="93">Registered Users</strong> can edit <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="93">Comment</strong>s which they own/created</li>
+<h3 id="content-type-edit-permissions">Content-Type Edit Permissions</h3>
+<p>These permissions can be configured at the <a class="xref" href="../data/content-types/index.html">Content-Type</a> level.</p>
+<p>A typical example would be</p>
+<ul>
+<li><strong>Registered Users</strong> can create a new <strong>Comment</strong></li>
+<li><strong>Registered Users</strong> can read the schema of <strong>Comment</strong> so the edit-UI can be accessed</li>
+<li><strong>Registered Users</strong> can edit <strong>Comment</strong>s which they own/created</li>
 </ul>
-<div class="TIP" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="95">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="96">Just because the permissions allow editing doesn't mean the UI will automatically show toolbars.
-This is because you may have special buttons or <strong sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="97">My Comments</strong> page or something to do this.
+<p>Just because the permissions allow editing doesn't mean the UI will automatically show toolbars.
+This is because you may have special buttons or <strong>My Comments</strong> page or something to do this.
 So don't forget to ensure the UI is available as you want it.</p>
 </div>
-<h2 id="rest-api-permissions-headless" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="101">REST API Permissions (Headless)</h2>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="103">To use data on the REST API you must also determine what is allowed.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="105">You can configure this at the App Content-Type level.</p>
-<h2 id="webapi-controller-permissions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="108">WebApi Controller Permissions</h2>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="110">When you create <a class="xref" href="../../net-code/web-api/index.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="110">custom WebApi controllers</a>,
+<h2 id="rest-api-permissions-headless">REST API Permissions (Headless)</h2>
+<p>To use data on the REST API you must also determine what is allowed.</p>
+<p>You can configure this at the App Content-Type level.</p>
+<h2 id="webapi-controller-permissions">WebApi Controller Permissions</h2>
+<p>When you create <a class="xref" href="../../net-code/web-api/index.html">custom WebApi controllers</a>,
 you will have to use C# attributes to configure permissions.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="113">Please check the examples, ATM we don't have time to document the details.</p>
-<h2 id="polymorph-editions" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="116">Polymorph Editions</h2>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="118">The System Admin can also review new code on the live system without affecting other users.
-This feature is called <a class="xref" href="../polymorphism/index.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="119">Polymorphism</a>.
-It is only available to <em sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="120">SystemAdmins</em>.</p>
-<h2 id="checking-permissions-in-formulas" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="123">Checking Permissions in Formulas</h2>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="125"><a class="xref" href="../edit/formulas/index.html" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="125">Formulas</a> allow you to check the basic permissions such as <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="125">isSystemAdmin</code> etc. on the <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="125">context.user</code> object.</p>
-<p sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="127">Please check the examples, ATM we don't have time to document the details.</p>
-<hr sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="129">
-<h2 id="history" sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="131">History</h2>
-<ol sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="133">
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="133">Basic permissions introduced in 2012 for 2sxc 1</li>
-<li sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="134">Special role <code sourcefile="pages/basics/permissions/index.md" sourcestartlinenumber="134">2sxc Designers</code> introduced ca.</li>
+<p>Please check the examples, ATM we don't have time to document the details.</p>
+<h2 id="polymorph-editions">Polymorph Editions</h2>
+<p>The System Admin can also review new code on the live system without affecting other users.
+This feature is called <a class="xref" href="../polymorphism/index.html">Polymorphism</a>.
+It is only available to <em>SystemAdmins</em>.</p>
+<h2 id="checking-permissions-in-formulas">Checking Permissions in Formulas</h2>
+<p><a class="xref" href="../edit/formulas/index.html">Formulas</a> allow you to check the basic permissions such as <code>isSystemAdmin</code> etc. on the <code>context.user</code> object.</p>
+<p>Please check the examples, ATM we don't have time to document the details.</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Basic permissions introduced in 2012 for 2sxc 1</li>
+<li>Special role <code>2sxc Designers</code> introduced ca.</li>
 </ol>
 
 </article>

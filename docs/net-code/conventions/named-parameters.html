@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,18 +106,18 @@
         </div>
 
         <article data-uid="NetCode.Conventions.NamedParameters">
-<h1 id="convention-named-parameters" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="4">Convention: Named Parameters</h1>
+<h1 id="convention-named-parameters">Convention: Named Parameters</h1>
 
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="6">When working with the C# / Razor API, <em sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="6">advanced/optional parameters</em> must be <strong sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="6">named</strong>.</p>
-<div class="TIP" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="8">
+<p>When working with the C# / Razor API, <em>advanced/optional parameters</em> must be <strong>named</strong>.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="9">A named parameter is determined by it's name (eg <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="9">settings:</code>),<br>
-like <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="10">SomeMethod(settings: someValue)</code><br>
+<p>A named parameter is determined by it's name (eg <code>settings:</code>),<br>
+like <code>SomeMethod(settings: someValue)</code><br>
 vs. a positional parameter which is specified by the position in the list of arguments,<br>
-like <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="12">SomeMethod(someValue)</code>.</p>
+like <code>SomeMethod(someValue)</code>.</p>
 </div>
-<h2 id="example" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="14">Example</h2>
-<pre><code class="lang-razor" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="16">@inherits Custom.Hybrid.RazorTyped
+<h2 id="example">Example</h2>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
 
 @* this is a command without named parameters - all works *@
 @MyItem.Picture(&quot;Packshot&quot;)
@@ -132,19 +132,19 @@ like <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcesta
 @MyItem.Picture(&quot;Packshot&quot;, settings: &quot;Lightbox&quot;, width: 500)
 @MyItem.Picture(&quot;Packshot&quot;, width: 500, settings: &quot;Lightbox&quot;)
 </code></pre>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="33">The previous example shows</p>
-<ol sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="35">
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="35">A Razor inheriting from <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="35">Custom.Hybrid.RazorTyped</code> to enable the new <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="35">MyItem.Picture(...)</code> API</li>
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="36">A add-picture with only the basic parameter. This doesn't need the name as the position (first parameter) makes it clear that <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="36">Packshot</code> is the field containing the picture</li>
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="37">A more advanced use case where the picture uses <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="37">settings: &quot;Lightbox&quot;</code> (this must be named with <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="37">settings: ...</code>)</li>
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="38">Another use case where the picture uses <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="38">width: 500</code> (named with <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="38">width: ...</code>)</li>
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="39">Two more examples specifying multiple parameters - showing that the order is not important since we have the names</li>
+<p>The previous example shows</p>
+<ol>
+<li>A Razor inheriting from <code>Custom.Hybrid.RazorTyped</code> to enable the new <code>MyItem.Picture(...)</code> API</li>
+<li>A add-picture with only the basic parameter. This doesn't need the name as the position (first parameter) makes it clear that <code>Packshot</code> is the field containing the picture</li>
+<li>A more advanced use case where the picture uses <code>settings: &quot;Lightbox&quot;</code> (this must be named with <code>settings: ...</code>)</li>
+<li>Another use case where the picture uses <code>width: 500</code> (named with <code>width: ...</code>)</li>
+<li>Two more examples specifying multiple parameters - showing that the order is not important since we have the names</li>
 </ol>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="41">As you can see in the <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="41">settings:</code> and <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="41">width:</code> example, both of these parameters are on the second position.
-If they were not named, the API wouldn't know if <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="42">500</code> or <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="42">Lightbox</code> was a width, setting or anything else.</p>
-<h2 id="example-using-toolbars" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="44">Example using Toolbars</h2>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="46">This means that a command like this is valid</p>
-<pre><code class="lang-html" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="48">&lt;!-- valid --&gt;
+<p>As you can see in the <code>settings:</code> and <code>width:</code> example, both of these parameters are on the second position.
+If they were not named, the API wouldn't know if <code>500</code> or <code>Lightbox</code> was a width, setting or anything else.</p>
+<h2 id="example-using-toolbars">Example using Toolbars</h2>
+<p>This means that a command like this is valid</p>
+<pre><code class="lang-html">&lt;!-- valid --&gt;
 &lt;div @Edit.TagToolbar(actions: &quot;new&quot;, contentType: &quot;BlogPost&quot;)&gt;
   ...
 &lt;/div&gt;
@@ -154,19 +154,19 @@ If they were not named, the API wouldn't know if <code sourcefile="pages/net-cod
   ...
 &lt;/div&gt;
 </code></pre>
-<h2 id="reason-behind-named-parameters" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="60">Reason Behind Named Parameters</h2>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="62">We often have APIs which start simple - like <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="62">@Edit.TagToolbar()</code> and continue to receive new features. At first, the parameter order will make sense - for that simple use case. But as the API grows, the parameter-order will become strange, simply because we would have to order them in the sequence they were added (to keep compatibility) and not in the order that makes sense.</p>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="64">By using named parameters, we're making sure that the parameter order never matters and the API stays stable/compatible for the future.</p>
-<h2 id="not-all-parameters-require-names" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="67">Not all Parameters Require Names</h2>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="69">Because of historic reasons and because some APIs simply have a very obvious first or second parameter, it may be that the first 1-2 parameters are not named. An example is <code sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="69">@Edit.TagToolbar(Content)</code> which assumes that the first parameter without name is the item (entity) for which this toolbar is meant.</p>
-<h2 id="how-its-implemented" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="72">How It's Implemented</h2>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="74">Internally the real signature of the command uses a parameter which has a fairly random value. The call then checks if the value of that parameter is this random value, and if not, shows an error. This is to protect you from accidentally using the command without naming the parameters.</p>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="76"><em sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="76">Note: you could of course work around this, by providing that random value and trick the call to accept unnamed parameters. Don't do this - as we will no guarantee that the API signature (parameter order) will stay the same.</em></p>
-<h2 id="history" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="78">History</h2>
-<ol sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="80">
-<li sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="80">Introduced ca. in 2sxc 6</li>
+<h2 id="reason-behind-named-parameters">Reason Behind Named Parameters</h2>
+<p>We often have APIs which start simple - like <code>@Edit.TagToolbar()</code> and continue to receive new features. At first, the parameter order will make sense - for that simple use case. But as the API grows, the parameter-order will become strange, simply because we would have to order them in the sequence they were added (to keep compatibility) and not in the order that makes sense.</p>
+<p>By using named parameters, we're making sure that the parameter order never matters and the API stays stable/compatible for the future.</p>
+<h2 id="not-all-parameters-require-names">Not all Parameters Require Names</h2>
+<p>Because of historic reasons and because some APIs simply have a very obvious first or second parameter, it may be that the first 1-2 parameters are not named. An example is <code>@Edit.TagToolbar(Content)</code> which assumes that the first parameter without name is the item (entity) for which this toolbar is meant.</p>
+<h2 id="how-its-implemented">How It's Implemented</h2>
+<p>Internally the real signature of the command uses a parameter which has a fairly random value. The call then checks if the value of that parameter is this random value, and if not, shows an error. This is to protect you from accidentally using the command without naming the parameters.</p>
+<p><em>Note: you could of course work around this, by providing that random value and trick the call to accept unnamed parameters. Don't do this - as we will no guarantee that the API signature (parameter order) will stay the same.</em></p>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced ca. in 2sxc 6</li>
 </ol>
-<p sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="82">Shortlink: <a href="https://go.2sxc.org/named-params" sourcefile="pages/net-code/conventions/named-parameters.md" sourcestartlinenumber="82">https://go.2sxc.org/named-params</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/named-params">https://go.2sxc.org/named-params</a></p>
 
 </article>
 

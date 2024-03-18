@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,31 +106,31 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V13.DataSource.Cache">
-<h1 id="fix-breaking-change-datasourcecache-in-v13" sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="5">DataSource.Cache</em> in v13</h1>
+<h1 id="fix-breaking-change-datasourcecache-in-v13">Fix Breaking Change <em>DataSource.Cache</em> in v13</h1>
 
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="7">Keywords:</strong> #Deprecated #DataSource</p>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="9">2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="11">Specifically, this feature was removed:</p>
-<ol sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="13">
-<li sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="13"><code sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="13">ToSic.Sxc.DataSources.IBlockDataSource.Cache</code>, usually used as <code sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="13">Data.Cache.GetContentType(contentTypeName)</code> to find a Content-Type</li>
+<p><strong>Keywords:</strong> #Deprecated #DataSource</p>
+<p>2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
+<p>Specifically, this feature was removed:</p>
+<ol>
+<li><code>ToSic.Sxc.DataSources.IBlockDataSource.Cache</code>, usually used as <code>Data.Cache.GetContentType(contentTypeName)</code> to find a Content-Type</li>
 </ol>
-<h2 id="reason-for-removal" sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="15">Reason for Removal</h2>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="17">These features were removed because the API was misplaced.
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>These features were removed because the API was misplaced.
 Unfortunately it was in the original Mobius-Forms so we are giving it a 1 year deprecation, and will be fully removed it v15.</p>
-<h2 id="upgrade-to-newer-functionality" sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="21">Upgrade to Newer functionality</h2>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="23">If you look at the Code in Mobius, you will see that the name is the only thing used. This was the code:</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="25">var type = Data.Cache.GetContentType(config.ContentType);
+<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
+<p>If you look at the Code in Mobius, you will see that the name is the only thing used. This was the code:</p>
+<pre><code class="lang-c#">var type = Data.Cache.GetContentType(config.ContentType);
 ...
 App.Data.Create(type.Name, contactFormRequest);
 ...
 files.Add(SaveInAdam(stream: new MemoryStream(data), fileName: file[&quot;Name&quot;], contentType: type.Name, guid: guid, field: file[&quot;Field&quot;]));
 ...
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="34">Because of this, you can actually just skip gotting the content-type, and just use the name directly.</p>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="36">To fix this, just use the <code sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="36">config.ContentTypeName</code> instead of the <code sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="36">type.Name</code> OR upgrade to a newer Mobius.</p>
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="38">If you need the type for other uses, best create an issue on GitHub.</p>
-<hr sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="40">
-<p sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="42">Shortlink to here: <a href="https://go.2sxc.org/brc-13-datasource-cache" sourcefile="pages/abyss/releases/history/v13/datasource.cache/index.md" sourcestartlinenumber="42">https://go.2sxc.org/brc-13-datasource-cache</a></p>
+<p>Because of this, you can actually just skip gotting the content-type, and just use the name directly.</p>
+<p>To fix this, just use the <code>config.ContentTypeName</code> instead of the <code>type.Name</code> OR upgrade to a newer Mobius.</p>
+<p>If you need the type for other uses, best create an issue on GitHub.</p>
+<hr>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-13-datasource-cache">https://go.2sxc.org/brc-13-datasource-cache</a></p>
 
 </article>
 

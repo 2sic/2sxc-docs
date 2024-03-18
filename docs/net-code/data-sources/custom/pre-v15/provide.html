@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -107,13 +107,13 @@
 
         <article data-uid="NetCode.DataSources.Custom.PreV15.Provide">
 
-<div class="WARNING" sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="1">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="2">These documentations are for versions before 15.x.
+<p>These documentations are for versions before 15.x.
 They don't apply to v15+ but are kept for reference.
 We highly recommend that you don't use them.</p>
 </div>
-<h1 id="datasource-api-provide" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="7">DataSource API: Provide(...)</h1>
+<h1 id="datasource-api-provide">DataSource API: Provide(...)</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -209,19 +209,19 @@ We highly recommend that you don't use them.</p>
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="12">DataSources always provide data on an <a class="xref" href="../streams-out.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="12"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="12">Out</code> Stream</a>. The <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="12">Provide</code> method makes it very easy to do.</p>
-<h2 id="how-to-use-provide" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="14">How to use Provide</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="16">In general, you need</p>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="18">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="18">a method like <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="18">GetList()</code> which returns an <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="18">IEnumerable&lt;IEntity&gt;</code></li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="19">attach that stream to the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="19">Out</code> - usually on a stream called <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="19">Default</code></li>
+<p>DataSources always provide data on an <a class="xref" href="../streams-out.html"><code>Out</code> Stream</a>. The <code>Provide</code> method makes it very easy to do.</p>
+<h2 id="how-to-use-provide">How to use Provide</h2>
+<p>In general, you need</p>
+<ol>
+<li>a method like <code>GetList()</code> which returns an <code>IEnumerable&lt;IEntity&gt;</code></li>
+<li>attach that stream to the <code>Out</code> - usually on a stream called <code>Default</code></li>
 </ol>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="21">Here's a simple example of the constructor of the <a class="xref" href="../tutorial-basic/basic.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="21">Tutorial Basic DataSource</a>, which provides the default stream:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="23">/// &lt;summary&gt;
+<p>Here's a simple example of the constructor of the <a class="xref" href="../tutorial-basic/basic.html">Tutorial Basic DataSource</a>, which provides the default stream:</p>
+<pre><code class="lang-cs">/// &lt;summary&gt;
 /// Constructor to tell the system what out-streams we have
 /// &lt;/summary&gt;
 public DateTimeDataSourceBasic()
@@ -249,15 +249,15 @@ private ImmutableArray&lt;IEntity&gt; GetList()
 }
 
 </code></pre>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="52">This example ensures that the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="52">.Out[&quot;Default&quot;]</code> as well as the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="52">.List</code> (which is a shorthand for <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="52">.Out[Constants.DefaultStreamName].List</code>) are mounted, ready to deliver.</p>
-<h2 id="overloads" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="54">Overloads</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="56">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="56"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="56">Provide(listfunction)</code> - default version, which provides the &quot;Default&quot; stream</li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="57"><code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="57">Provide(name, listfunction)</code> - alternative for named streams when your DataSource has more streams.</li>
+<p>This example ensures that the <code>.Out[&quot;Default&quot;]</code> as well as the <code>.List</code> (which is a shorthand for <code>.Out[Constants.DefaultStreamName].List</code>) are mounted, ready to deliver.</p>
+<h2 id="overloads">Overloads</h2>
+<ul>
+<li><code>Provide(listfunction)</code> - default version, which provides the &quot;Default&quot; stream</li>
+<li><code>Provide(name, listfunction)</code> - alternative for named streams when your DataSource has more streams.</li>
 </ul>
-<h2 id="providing-multiple-streams" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="59">Providing multiple streams</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="60">In case you want to offer multiple streams (like one containing products, the other categories), the common pattern is:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="62">public SomeConstructor()
+<h2 id="providing-multiple-streams">Providing multiple streams</h2>
+<p>In case you want to offer multiple streams (like one containing products, the other categories), the common pattern is:</p>
+<pre><code class="lang-cs">public SomeConstructor()
 {
     Provide(GetProducts);
     Provide(&quot;Categories&quot;, GetCategories);
@@ -265,20 +265,20 @@ private ImmutableArray&lt;IEntity&gt; GetList()
     // ...
 }
 </code></pre>
-<h2 id="performance-notes" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="72">Performance Notes</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="74">It's important to know that <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="74">Provide</code> simply prepares the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="74">Out</code> for use, but will <em sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="74">not</em> call the inner function unless this stream is requested. This makes DataSources very performant, as no code is run which isn't needed.</p>
-<h2 id="read-also" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="76">Read also</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="78">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="78"><a class="xref" href="../guide/big-picture.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="78">DataSources Big Picture</a></li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="79"><a class="xref" href="configuration-parse.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="79">Ensuring configuration is parsed</a></li>
+<h2 id="performance-notes">Performance Notes</h2>
+<p>It's important to know that <code>Provide</code> simply prepares the <code>Out</code> for use, but will <em>not</em> call the inner function unless this stream is requested. This makes DataSources very performant, as no code is run which isn't needed.</p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../guide/big-picture.html">DataSources Big Picture</a></li>
+<li><a class="xref" href="configuration-parse.html">Ensuring configuration is parsed</a></li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="81">Demo App and further links</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="83">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="83">todo</li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<ul>
+<li>todo</li>
 </ul>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="85">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="87">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/provide.md" sourcestartlinenumber="87">Introduced in EAV 4.x, 2sxc 09.13</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in EAV 4.x, 2sxc 09.13</li>
 </ol>
 
 </article>

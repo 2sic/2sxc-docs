@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,67 +106,67 @@
         </div>
 
         <article data-uid="Guides.AppTheme.Styling2024">
-<h1 id="app-theming--styling--design---guide-v2024" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="5">App Theming / Styling / Design - Guide v2024</h1>
+<h1 id="app-theming--styling--design---guide-v2024">App Theming / Styling / Design - Guide v2024</h1>
 
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="7">As of now our preferred CSS framework is Bootstrap 5, which is migrating to CSS Variables.
+<p>As of now our preferred CSS framework is Bootstrap 5, which is migrating to CSS Variables.
 Our current convention is meant to be compatible with this.</p>
-<h2 id="goals-of-the-2024-convention" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="10">Goals of the 2024 Convention</h2>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="12">The convention tackles many use cases, such as:</p>
-<ol sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="14">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="14"><p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="14">By default, all possible design parameters such as colors should be inherited from the site theme.<br>
-<em sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="15">for this to work, the site theme must also use Bootstrap 5 and CSS variables</em></p>
+<h2 id="goals-of-the-2024-convention">Goals of the 2024 Convention</h2>
+<p>The convention tackles many use cases, such as:</p>
+<ol>
+<li><p>By default, all possible design parameters such as colors should be inherited from the site theme.<br>
+<em>for this to work, the site theme must also use Bootstrap 5 and CSS variables</em></p>
 </li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="17"><p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="17">If the site theme doesn't use Bootstrap 5 or doesn't provide a value, the App should provide a fallback value.<br>
-<em sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="18">this is done by defining the CSS variable fallbacks in the App's <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="18">theme.css</code> file</em></p>
+<li><p>If the site theme doesn't use Bootstrap 5 or doesn't provide a value, the App should provide a fallback value.<br>
+<em>this is done by defining the CSS variable fallbacks in the App's <code>theme.css</code> file</em></p>
 </li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="20"><p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="20">Simple customizations should be possible with just editing a text file and not require any compilation.<br>
-<em sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="21">this is done by defining the CSS variable fallbacks in the App's <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="21">theme.css</code> file</em></p>
+<li><p>Simple customizations should be possible with just editing a text file and not require any compilation.<br>
+<em>this is done by defining the CSS variable fallbacks in the App's <code>theme.css</code> file</em></p>
 </li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="23"><p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="23">Advanced customizations should be possible by editing the SCSS files and recompiling.<br>
-<em sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="24">this is done by modifying files in the <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="24">styles</code> folder and running <strong sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="24">webpack</strong></em></p>
+<li><p>Advanced customizations should be possible by editing the SCSS files and recompiling.<br>
+<em>this is done by modifying files in the <code>styles</code> folder and running <strong>webpack</strong></em></p>
 </li>
 </ol>
-<h2 id="folders-and-files-in-the-2024-convention" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="26">Folders and Files in the 2024 Convention</h2>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="28">Our concept has 3 locations:</p>
-<ol sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="30">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="30">a <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="30">theme</code> folder which contains CSS files which don't need to compile - changes to this will take immediate effect</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="31">a <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="31">styles</code> folder which contains the SCSS files - changes to this will require recompiling</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="32">a <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="32">dist</code> folder which contains the compiled CSS and JS files - this is where the compiled files arrive</li>
+<h2 id="folders-and-files-in-the-2024-convention">Folders and Files in the 2024 Convention</h2>
+<p>Our concept has 3 locations:</p>
+<ol>
+<li>a <code>theme</code> folder which contains CSS files which don't need to compile - changes to this will take immediate effect</li>
+<li>a <code>styles</code> folder which contains the SCSS files - changes to this will require recompiling</li>
+<li>a <code>dist</code> folder which contains the compiled CSS and JS files - this is where the compiled files arrive</li>
 </ol>
-<h2 id="different-folder-depth-depending-on-use-of-editions" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="34">Different folder depth depending on use of Editions</h2>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="36">In basic apps, the folders are all in the root folder, so you'll see something like this:</p>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="38">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="38"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="38">dist</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="39"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="39">styles</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="40"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="40">theme</code></li>
+<h2 id="different-folder-depth-depending-on-use-of-editions">Different folder depth depending on use of Editions</h2>
+<p>In basic apps, the folders are all in the root folder, so you'll see something like this:</p>
+<ul>
+<li><code>dist</code></li>
+<li><code>styles</code></li>
+<li><code>theme</code></li>
 </ul>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="42">In advanced Apps using editions, these folders can exist multiple times.
+<p>In advanced Apps using editions, these folders can exist multiple times.
 For example apps using live/staging would have this setup:</p>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="45">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="45"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="45">live</code>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="46">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="46"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="46">dist</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="47"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="47">styles</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="48"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="48">theme</code></li>
+<ul>
+<li><code>live</code>
+<ul>
+<li><code>dist</code></li>
+<li><code>styles</code></li>
+<li><code>theme</code></li>
 </ul>
 </li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="49"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="49">staging</code>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="50">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="50"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="50">dist</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="51"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="51">styles</code></li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="52"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="52">theme</code></li>
+<li><code>staging</code>
+<ul>
+<li><code>dist</code></li>
+<li><code>styles</code></li>
+<li><code>theme</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="customize-look-and-feel" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="54">Customize Look and Feel</h2>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="56">If the <em sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="56">Site Theme</em> adheres to the latest Bootstrap 5 conventions, then our Apps will
+<h2 id="customize-look-and-feel">Customize Look and Feel</h2>
+<p>If the <em>Site Theme</em> adheres to the latest Bootstrap 5 conventions, then our Apps will
 automatically inherit the CSS variables from the theme.</p>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="59">So in most cases, you won't need to adjust anything.</p>
-<h3 id="customize-look-and-feel---simple" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="61">Customize Look and Feel - Simple</h3>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="63">For this use case, locate the <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="63">/theme/theme.css</code> file and edit it.
+<p>So in most cases, you won't need to adjust anything.</p>
+<h3 id="customize-look-and-feel---simple">Customize Look and Feel - Simple</h3>
+<p>For this use case, locate the <code>/theme/theme.css</code> file and edit it.
 Changes you make should be visible immediately.</p>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="66">This is an example of such a theme file, which adheres to Bootstrap 5 conventions:</p>
-<pre><code class="lang-css" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="68">/*
+<p>This is an example of such a theme file, which adheres to Bootstrap 5 conventions:</p>
+<pre><code class="lang-css">/*
 Bootstrap 5 uses CSS variables. You can use app-related variables in this file. The standard Bootstrap values are used as a fallback 
 Check our Docs for more information: https://go.2sxc.org/app-theme
 */
@@ -177,31 +177,31 @@ Check our Docs for more information: https://go.2sxc.org/app-theme
   --bs-link-color: var(--bs-primary);
 }
 </code></pre>
-<div class="TIP" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="81">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="82">This uses CSS-Variables, so if you don't understand this, better read up on it first.
+<p>This uses CSS-Variables, so if you don't understand this, better read up on it first.
 The default rules basically say to use the variable if it exists, and if not, use the fallback value.</p>
 </div>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="85">So for a brief primer</p>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="87">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="87"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="87">--bs-primary</code> is the name of the variable</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="88"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="88">var(--bs-primary, #0060AC)</code> is the value, which means &quot;use the value of <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="88">--bs-primary</code> if it exists, and if not, use <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="88">#0060AC</code>&quot;</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="89"><code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="89">#0060AC</code> is the fallback value, which is used if the variable doesn't exist</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="90">so if the skin specifies this variable, it will simply be inherited, and if not, the fallback value will be used</li>
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="91">if you wish to manually set it, you can simplify to <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="91">--bs-primary: #0060AC;</code> since you don't need the logic</li>
+<p>So for a brief primer</p>
+<ul>
+<li><code>--bs-primary</code> is the name of the variable</li>
+<li><code>var(--bs-primary, #0060AC)</code> is the value, which means &quot;use the value of <code>--bs-primary</code> if it exists, and if not, use <code>#0060AC</code>&quot;</li>
+<li><code>#0060AC</code> is the fallback value, which is used if the variable doesn't exist</li>
+<li>so if the skin specifies this variable, it will simply be inherited, and if not, the fallback value will be used</li>
+<li>if you wish to manually set it, you can simplify to <code>--bs-primary: #0060AC;</code> since you don't need the logic</li>
 </ul>
-<div class="IMPORTANT" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="93">
+<div class="IMPORTANT">
 <h5>Important</h5>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="94">If Dnn is configured to optimize the CSS, you may need to clear the cache to see the changes.</p>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="96">If you don't know how to do this, google it :) - keywords <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="96">client dependency management</code>.</p>
+<p>If Dnn is configured to optimize the CSS, you may need to clear the cache to see the changes.</p>
+<p>If you don't know how to do this, google it :) - keywords <code>client dependency management</code>.</p>
 </div>
-<h3 id="customize-look-and-feel---advanced" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="98">Customize Look and Feel - Advanced</h3>
-<p sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="100">For this use case, you need to edit the SCSS files in the <code sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="100">/styles</code> folder.
+<h3 id="customize-look-and-feel---advanced">Customize Look and Feel - Advanced</h3>
+<p>For this use case, you need to edit the SCSS files in the <code>/styles</code> folder.
 Building it uses standard WebPack mechanisms, which you'll need to understand to use this.</p>
-<hr sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="103">
-<h2 id="history" sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="105">History</h2>
-<ul sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="107">
-<li sourcefile="pages/guides/app-theme/styling-2024.md" sourcestartlinenumber="107">Added v17.00 2023-12</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Added v17.00 2023-12</li>
 </ul>
 
 </article>

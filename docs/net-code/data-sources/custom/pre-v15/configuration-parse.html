@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -107,13 +107,13 @@
 
         <article data-uid="NetCode.DataSources.Custom.ConfigurationParse">
 
-<div class="WARNING" sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="1">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/_obsolete-docs.md" sourcestartlinenumber="2">These documentations are for versions before 15.x.
+<p>These documentations are for versions before 15.x.
 They don't apply to v15+ but are kept for reference.
 We highly recommend that you don't use them.</p>
 </div>
-<h1 id="datasource-configuration-configurationparse" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="7">DataSource Configuration: Configuration.Parse()</h1>
+<h1 id="datasource-configuration-configurationparse">DataSource Configuration: Configuration.Parse()</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +209,7 @@ We highly recommend that you don't use them.</p>
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>
@@ -218,11 +218,11 @@ We highly recommend that you don't use them.</p>
   .context-box-summary .data-configuration
   { visibility: visible; } 
 </style>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="17">If a <a class="xref" href="../../datasource.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="17">DataSource</a> is <a class="xref" href="../configuration.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="17">configurable</a>, then the code must parse any <a class="xref" href="../../../../abyss/parts/look-up/tokens.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="17">configuration tokens</a> before accessing the values.</p>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="19">This is done with <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="19">Configuration.Parse()</code>. It will cycle through all settings previously added by <a class="xref" href="configmask.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="19">ConfigMask</a> and resolve the tokens.</p>
-<h2 id="how-to-use-configurationparse" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="21">How to use Configuration.Parse()</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="23">Here's a simple example of the <a class="xref" href="../../../../api/dot-net/ToSic.Eav.DataSources.PublishingFilter.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="23">PublishingFilter DataSources</a>:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="25">public PublishingFilter()
+<p>If a <a class="xref" href="../../datasource.html">DataSource</a> is <a class="xref" href="../configuration.html">configurable</a>, then the code must parse any <a class="xref" href="../../../../abyss/parts/look-up/tokens.html">configuration tokens</a> before accessing the values.</p>
+<p>This is done with <code>Configuration.Parse()</code>. It will cycle through all settings previously added by <a class="xref" href="configmask.html">ConfigMask</a> and resolve the tokens.</p>
+<h2 id="how-to-use-configurationparse">How to use Configuration.Parse()</h2>
+<p>Here's a simple example of the <a class="xref" href="../../../../api/dot-net/ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter DataSources</a>:</p>
+<pre><code class="lang-cs">public PublishingFilter()
 {
   Provide(PublishingFilterList);
   ConfigMask(QueryConstants.ParamsShowDraftKey, &quot;[MyConfiguration:ShowDrafts||false]&quot;);
@@ -246,21 +246,21 @@ private IImmutableList&lt;IEntity&gt; PublishingFilterList()
   return In[outStreamName].Immutable;
 }
 </code></pre>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="51">If we would read the <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="51">ShowDrafts</code> property before running <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="51">Configuration.Parse()</code> then the tokens would not be resolved yet. After calling <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="51">Configuration.Parse()</code> all tokens/values have been resolved and it works as expected.</p>
-<h2 id="breaking-change" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="53">Breaking Change</h2>
-<p sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="55">This command used to be called <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="55">EnsureConfigurationIsLoaded()</code> but was changed in 2sxc 10 or 11. We didn't notice until the new API was already widespread in use that older systems still used the previous mechanism.</p>
-<h2 id="read-also" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="58">Read also</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="60">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="60"><a class="xref" href="../guide/big-picture.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="60">DataSources Big Picture</a></li>
+<p>If we would read the <code>ShowDrafts</code> property before running <code>Configuration.Parse()</code> then the tokens would not be resolved yet. After calling <code>Configuration.Parse()</code> all tokens/values have been resolved and it works as expected.</p>
+<h2 id="breaking-change">Breaking Change</h2>
+<p>This command used to be called <code>EnsureConfigurationIsLoaded()</code> but was changed in 2sxc 10 or 11. We didn't notice until the new API was already widespread in use that older systems still used the previous mechanism.</p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../guide/big-picture.html">DataSources Big Picture</a></li>
 </ul>
-<h2 id="demo-code-and-further-links" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="62">Demo Code and further links</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="64">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="64"><a class="xref" href="../tutorial-basic/index.html" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="64">Tutorial DataSource</a></li>
+<h2 id="demo-code-and-further-links">Demo Code and further links</h2>
+<ul>
+<li><a class="xref" href="../tutorial-basic/index.html">Tutorial DataSource</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="66">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="68">
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="68">Introduced in EAV 4.x, 2sxc 07.00</li>
-<li sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="69">Modified from <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="69">EnsureConfigurationIsLoaded</code> to <code sourcefile="pages/net-code/data-sources/custom/pre-v15/configuration-parse.md" sourcestartlinenumber="69">Configuration.Parse</code> (breaking change, sorry) ca. 2sxc 11</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in EAV 4.x, 2sxc 07.00</li>
+<li>Modified from <code>EnsureConfigurationIsLoaded</code> to <code>Configuration.Parse</code> (breaking change, sorry) ca. 2sxc 11</li>
 </ol>
 
 </article>

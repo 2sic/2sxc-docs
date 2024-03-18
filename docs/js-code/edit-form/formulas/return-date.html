@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,38 +108,38 @@
         <article data-uid="JsCode.EditForm.Formulas.ReturnDate">
 
 <img src="../../../assets/features/formulas.svg" class="feature">
-<h1 id="return-date-values-in-formulas" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="7">Return Date-Values in Formulas</h1>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="9">Date values can cause problems, because when you are working with them in JavaScript, the time zone is always important.</p>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="11">Internally dates are stored as strings, not as Date objects.
-The UI doesn't care about time zones, so the strings always use Zulu time and <em sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="12">not the local time zone</em>.
+<h1 id="return-date-values-in-formulas">Return Date-Values in Formulas</h1>
+<p>Date values can cause problems, because when you are working with them in JavaScript, the time zone is always important.</p>
+<p>Internally dates are stored as strings, not as Date objects.
+The UI doesn't care about time zones, so the strings always use Zulu time and <em>not the local time zone</em>.
 This may cause some challenges which you want to know about.</p>
-<h2 id="returned-date-objects" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="15">Returned Date Objects</h2>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="17">If your function returns a date-object we will assume that you were creating a new date and didn't worry about time zones.
+<h2 id="returned-date-objects">Returned Date Objects</h2>
+<p>If your function returns a date-object we will assume that you were creating a new date and didn't worry about time zones.
 So we will simply drop the time-zone information and assume that's what you wanted.</p>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="20">So if you do <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="20">return new Date();</code> it will contain something like <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="20">Tue Jun 08 2021 11:22:33 GMT+0200 (Central European Summer Time)</code>.
-We will treat this as <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="21">2021-06-08T11:22:33</code> and ignore the time zone.
-The UI will then also show <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="22">2021-06-08 11:22:33</code></p>
-<h2 id="returned-date-strings" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="24">Returned Date Strings</h2>
-<ul sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="26">
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="26">If you return a date-string without time-zone like <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="26">2021-06-08 10:00</code> we will assume this is what you want, and treat it as such.</li>
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="27">If you return a date-string with time zone like <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="27">2021-06-08 10:00 +0200</code> we will assume you used something like <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="27">new Date().toString()</code> and ignore the time zone, so we'll keep <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="27">2021-06-08 10:00</code> because you almost certainly didn't realize that the toString() would result in a wrong time.</li>
+<p>So if you do <code>return new Date();</code> it will contain something like <code>Tue Jun 08 2021 11:22:33 GMT+0200 (Central European Summer Time)</code>.
+We will treat this as <code>2021-06-08T11:22:33</code> and ignore the time zone.
+The UI will then also show <code>2021-06-08 11:22:33</code></p>
+<h2 id="returned-date-strings">Returned Date Strings</h2>
+<ul>
+<li>If you return a date-string without time-zone like <code>2021-06-08 10:00</code> we will assume this is what you want, and treat it as such.</li>
+<li>If you return a date-string with time zone like <code>2021-06-08 10:00 +0200</code> we will assume you used something like <code>new Date().toString()</code> and ignore the time zone, so we'll keep <code>2021-06-08 10:00</code> because you almost certainly didn't realize that the toString() would result in a wrong time.</li>
 </ul>
-<h2 id="likely-problems-on-date-formulas" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="29">Likely Problems on Date-Formulas</h2>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="31">Basically if you create a <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="31">new Date()</code> object and return that, everything will work as expected.
+<h2 id="likely-problems-on-date-formulas">Likely Problems on Date-Formulas</h2>
+<p>Basically if you create a <code>new Date()</code> object and return that, everything will work as expected.
 And you construct a UTC-only date everything will work too.</p>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="34">Where things will surprise you is when you convert the <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="34">data.value</code> and simply return it without making corrections. These things will cause problems:</p>
-<ul sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="36">
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="36">Problem: <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="36">return new Date(data.value);</code><br>
-No Problem: <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="37">return new Date();</code></li>
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="38">Problem: <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="38">var x = new Date(data.value); x.setMinutes(0); x.setSeconds(0); return x;</code><br>
-No Problem: <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="39">var x = new Date(); x.setMinutes(0); x.setSeconds(0); return x;</code></li>
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="40">Problem: <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="40">var otherFieldDate = new Date(data.Birthday).getDay();</code> <em sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="40">will probably return the wrong day</em></li>
+<p>Where things will surprise you is when you convert the <code>data.value</code> and simply return it without making corrections. These things will cause problems:</p>
+<ul>
+<li>Problem: <code>return new Date(data.value);</code><br>
+No Problem: <code>return new Date();</code></li>
+<li>Problem: <code>var x = new Date(data.value); x.setMinutes(0); x.setSeconds(0); return x;</code><br>
+No Problem: <code>var x = new Date(); x.setMinutes(0); x.setSeconds(0); return x;</code></li>
+<li>Problem: <code>var otherFieldDate = new Date(data.Birthday).getDay();</code> <em>will probably return the wrong day</em></li>
 </ul>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="42">This is because our <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="42">data.value</code> doesn't have a time zone, and converting it to <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="42">Date(...)</code> will construct a date in the users time zone resulting in a shift by a few hours.
+<p>This is because our <code>data.value</code> doesn't have a time zone, and converting it to <code>Date(...)</code> will construct a date in the users time zone resulting in a shift by a few hours.
 So this will only affect formulas which use the existing date, modify it, and are not aware of the time-zones.</p>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="45">To fix this, make sure that if you convert existing data to a Date, you pretend it's in the time-zone changes of the current browser.</p>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="47">This example shows a formula that will remove the time on a new date or the existing one.</p>
-<pre><code class="lang-js" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="49">v1(data, context) {
+<p>To fix this, make sure that if you convert existing data to a Date, you pretend it's in the time-zone changes of the current browser.</p>
+<p>This example shows a formula that will remove the time on a new date or the existing one.</p>
+<pre><code class="lang-js">v1(data, context) {
   // Use existing date (but pretend it's local time by dropping 'Z') or use current Date
   var date = data.value 
     ? new Date(data.value.replace('Z', ''))
@@ -149,11 +149,11 @@ So this will only affect formulas which use the existing date, modify it, and ar
   return date;
 }
 </code></pre>
-<p sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="61">Another option is to work with the Zulu time but make sure you UTC it when returning, or work with <code sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="61">.getTimezoneOffset()</code>.</p>
-<hr sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="63">
-<h2 id="history" sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="65">History</h2>
-<ul sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="67">
-<li sourcefile="pages/js-code/edit-form/formulas/return-date.md" sourcestartlinenumber="67">Introduced in 2sxc 12.01</li>
+<p>Another option is to work with the Zulu time but make sure you UTC it when returning, or work with <code>.getTimezoneOffset()</code>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced in 2sxc 12.01</li>
 </ul>
 
 </article>

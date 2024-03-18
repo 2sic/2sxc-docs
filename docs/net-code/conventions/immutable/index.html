@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,51 +106,51 @@
         </div>
 
         <article data-uid="NetCode.Conventions.Immutable">
-<h1 id="convention-everything-is-immutable" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="5">Convention: Everything is Immutable</h1>
+<h1 id="convention-everything-is-immutable">Convention: Everything is Immutable</h1>
 
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="7">There are many programming paradigms.
-One that's become very important to us is <strong sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="8">immutable</strong> programming.
-This is strongly related to <a class="xref" href="../functional-api/index.html" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="9">functional APIs</a></p>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="11">This means than objects inside 2sxc are never modified.
+<p>There are many programming paradigms.
+One that's become very important to us is <strong>immutable</strong> programming.
+This is strongly related to <a class="xref" href="../functional-api/index.html">functional APIs</a></p>
+<p>This means than objects inside 2sxc are never modified.
 Instead, they are copied and modified, and the original object is discarded.</p>
-<h2 id="example" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="14">Example</h2>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="16">
+<h2 id="example">Example</h2>
+<pre><code class="lang-c#">
 var original = new { Name = &quot;John&quot;, Age = 42 };
 var modified = SomeService.ChangeAge(original, 43);
 
 var areEqual = original.Age == modified.Age; // false
 
 </code></pre>
-<h2 id="use-in-datasources" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="25">Use in DataSources</h2>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="27">A common place where this affects Razor and WebApis is when using DataSources.
+<h2 id="use-in-datasources">Use in DataSources</h2>
+<p>A common place where this affects Razor and WebApis is when using DataSources.
 Old data sources could do this:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="30">var entityFilter = CreateSource&lt;EntityIdFilter&gt;();
+<pre><code class="lang-c#">var entityFilter = CreateSource&lt;EntityIdFilter&gt;();
 entityFilter.EntityIds = &quot;123,456&quot;;
 var data = entityFilter.List;
 </code></pre>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="36">This behavior still works on old data sources to ensure compatibility.
-But newer DataSources such as <code sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="37">AppFiles</code> will not allow this, and will throw an exception if you try to modify the properties.
+<p>This behavior still works on old data sources to ensure compatibility.
+But newer DataSources such as <code>AppFiles</code> will not allow this, and will throw an exception if you try to modify the properties.
 They are immutable. Instead, you must do this:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="40">var appFiles = CreateSource&lt;AppFiles&gt;(options: new { OnlyFolders = true });
+<pre><code class="lang-c#">var appFiles = CreateSource&lt;AppFiles&gt;(options: new { OnlyFolders = true });
 // The following would throw an error:
 // appFiles.OnlyFolders = true;
 var data = appFiles.List;
 </code></pre>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="47">This new way is the only recommended way of doing this from now on.</p>
-<h2 id="coverage" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="49">Coverage</h2>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="51">As of March 2023, ca. 80% of all objects in 2sxc are immutable, we hope to reach 95% by end of 2023.
+<p>This new way is the only recommended way of doing this from now on.</p>
+<h2 id="coverage">Coverage</h2>
+<p>As of March 2023, ca. 80% of all objects in 2sxc are immutable, we hope to reach 95% by end of 2023.
 We cannot reach 100% any time soon, because we must ensure compatibility with existing code.</p>
-<ol sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="54">
-<li sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="54">IEntity is internally 98% immutable - some details left to optimize</li>
-<li sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="55">DataSources <em sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="55">can</em> be immutable. Newer DataSources are immutable, and data sources created using Kit.Data are immutable by default.</li>
+<ol>
+<li>IEntity is internally 98% immutable - some details left to optimize</li>
+<li>DataSources <em>can</em> be immutable. Newer DataSources are immutable, and data sources created using Kit.Data are immutable by default.</li>
 </ol>
-<hr sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="57">
-<h2 id="history" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="59">History</h2>
-<ul sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="61">
-<li sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="61">First introductions in 2sxc 13</li>
-<li sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="62">Spread out more in 2sxc 15, eg. IEntity is now immutable</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>First introductions in 2sxc 13</li>
+<li>Spread out more in 2sxc 15, eg. IEntity is now immutable</li>
 </ul>
-<p sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="65">Shortlink: <a href="https://go.2sxc.org/immutable" sourcefile="pages/net-code/conventions/immutable/index.md" sourcestartlinenumber="65">https://go.2sxc.org/immutable</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/immutable">https://go.2sxc.org/immutable</a></p>
 
 </article>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -202,75 +202,75 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-apis { visibility: visible; }
 </style>
-<h1 id="2sxc-web-api" sourcefile="pages/web-api/index.md" sourcestartlinenumber="12">2sxc Web API</h1>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="14">2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="14">GET</code> to an endpoint like <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="14">app/News/data/NewsItems/</code> and get a list of news items.</p>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="17">You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need.</p>
+<h1 id="2sxc-web-api">2sxc Web API</h1>
+<p>2sxc has a fully featured WebApi for use in JavaScript or as Headless CMS. So you can call HTTP <code>GET</code> to an endpoint like <code>app/News/data/NewsItems/</code> and get a list of news items.</p>
+<p>You can also create / modify data using REST, access Queries and work with your custom Web-APIs - across all 2sxc platforms (Dnn / Oqtane / Custom) and with the security you need.</p>
 <img src="../pages/web-api/assets/web-api-overview.svg" width="100%">
-<h2 id="simple-example" sourcefile="pages/web-api/index.md" sourcestartlinenumber="22">Simple Example</h2>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="24">Here's an example JavaScript which would run in a 2sxc News-App on a Dnn page:</p>
-<pre><code class="lang-javascript" sourcefile="pages/web-api/index.md" sourcestartlinenumber="26">// Get news as a promise
+<h2 id="simple-example">Simple Example</h2>
+<p>Here's an example JavaScript which would run in a 2sxc News-App on a Dnn page:</p>
+<pre><code class="lang-javascript">// Get news as a promise
 var allNewsPromise = sxc.webApi.get('app/auto/data/News/');
 
 // now log to console
 allNewsPromise.then(data =&gt; console.log(data));
 </code></pre>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="34">This example has some magic happening in the background. Specifically 3 important things happen on the <strong sourcefile="pages/web-api/index.md" sourcestartlinenumber="34">client</strong> before sending:</p>
-<ol sourcefile="pages/web-api/index.md" sourcestartlinenumber="36">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="36">The real URL which is requested is a bit longer, but the <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="36">webApi</code> takes care of that.</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="37">The server needs to know what App and Module the script is calling from. This <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="37">Context</em> information is also added by the <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="37">webApi</code>.</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="38">To add security, a crypto-token is added which will prove that the JavaScript requesting this is running on the page. This is also added by <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="38">webApi</code>.</li>
+<p>This example has some magic happening in the background. Specifically 3 important things happen on the <strong>client</strong> before sending:</p>
+<ol>
+<li>The real URL which is requested is a bit longer, but the <code>webApi</code> takes care of that.</li>
+<li>The server needs to know what App and Module the script is calling from. This <em>Context</em> information is also added by the <code>webApi</code>.</li>
+<li>To add security, a crypto-token is added which will prove that the JavaScript requesting this is running on the page. This is also added by <code>webApi</code>.</li>
 </ol>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="40">When the <strong sourcefile="pages/web-api/index.md" sourcestartlinenumber="40">server</strong> receives the request, it too does important stuff.</p>
-<ol sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">First it will use the URL and <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">Context</em> information to figure out what <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">Site</em>, <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">Language</em> and <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="42">App</em> should be accessed.</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="43">The server will do some security checks to see if this request should be answered.</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="44">Then it returns the data in a simple <strong sourcefile="pages/web-api/index.md" sourcestartlinenumber="44">JSON</strong> format</li>
+<p>When the <strong>server</strong> receives the request, it too does important stuff.</p>
+<ol>
+<li>First it will use the URL and <em>Context</em> information to figure out what <em>Site</em>, <em>Language</em> and <em>App</em> should be accessed.</li>
+<li>The server will do some security checks to see if this request should be answered.</li>
+<li>Then it returns the data in a simple <strong>JSON</strong> format</li>
 </ol>
-<h2 id="get-started-step-1-decide-which-endpoint-you-need" sourcefile="pages/web-api/index.md" sourcestartlinenumber="47">Get Started Step 1: Decide which Endpoint you need</h2>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="49">This checklist should help you decide:</p>
+<h2 id="get-started-step-1-decide-which-endpoint-you-need">Get Started Step 1: Decide which Endpoint you need</h2>
+<p>This checklist should help you decide:</p>
 <iframe src="https://azing.org/2sxc/r/zhLnCg3e?embed=1" width="100%" height="400" frameborder="0" allowfullscreen="" style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<h2 id="getting-started" sourcefile="pages/web-api/index.md" sourcestartlinenumber="54">Getting Started</h2>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="56">Your 1-2-3 steps for using data endpoints are:</p>
-<ol sourcefile="pages/web-api/index.md" sourcestartlinenumber="58">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="58">Decide which endpoint you need</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="59">Create / Publish the endpoint
-<ol sourcefile="pages/web-api/index.md" sourcestartlinenumber="60">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="60">For standard endpoints, set the permissions as you need them</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="61">For custom endpoints, write the C# code</li>
+<h2 id="getting-started">Getting Started</h2>
+<p>Your 1-2-3 steps for using data endpoints are:</p>
+<ol>
+<li>Decide which endpoint you need</li>
+<li>Create / Publish the endpoint
+<ol>
+<li>For standard endpoints, set the permissions as you need them</li>
+<li>For custom endpoints, write the C# code</li>
 </ol>
 </li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="62">Write the code to read the data (typically in JavaScript)</li>
+<li>Write the code to read the data (typically in JavaScript)</li>
 </ol>
-<h2 id="conventions-used" sourcefile="pages/web-api/index.md" sourcestartlinenumber="67">Conventions Used</h2>
-<ul sourcefile="pages/web-api/index.md" sourcestartlinenumber="69">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="69"><a href="https://en.wikipedia.org/wiki/Representational_state_transfer" sourcefile="pages/web-api/index.md" sourcestartlinenumber="69">REST</a> means that there is a url convention to access data like <code sourcefile="pages/web-api/index.md" sourcestartlinenumber="69">.../blogposts/25</code></li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="70"><a href="https://en.wikipedia.org/wiki/Representational_state_transfer" sourcefile="pages/web-api/index.md" sourcestartlinenumber="70">REST</a> also specifies that an <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="70">HTTP GET</em> is for reading, <em sourcefile="pages/web-api/index.md" sourcestartlinenumber="70">HTTP POST</em> is for writing, etc.</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="71">All the APIs use <a href="https://en.wikipedia.org/wiki/JSON" sourcefile="pages/web-api/index.md" sourcestartlinenumber="71">JSON</a> for sending/receiving data. <a href="https://azing.org/2sxc/r/2zBGrCAd" sourcefile="pages/web-api/index.md" sourcestartlinenumber="71">This is the default schema</a>.</li>
+<h2 id="conventions-used">Conventions Used</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> means that there is a url convention to access data like <code>.../blogposts/25</code></li>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> also specifies that an <em>HTTP GET</em> is for reading, <em>HTTP POST</em> is for writing, etc.</li>
+<li>All the APIs use <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for sending/receiving data. <a href="https://azing.org/2sxc/r/2zBGrCAd">This is the default schema</a>.</li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/web-api/index.md" sourcestartlinenumber="74">Demo App and further links</h2>
-<p sourcefile="pages/web-api/index.md" sourcestartlinenumber="76">You should find some code examples in this demo App</p>
-<ul sourcefile="pages/web-api/index.md" sourcestartlinenumber="77">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="77"><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs" sourcefile="pages/web-api/index.md" sourcestartlinenumber="77">REST and WebApi Tutorial</a></li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="78"><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home" sourcefile="pages/web-api/index.md" sourcestartlinenumber="78">Razor Web API tutorials</a></li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
 </ul>
-<h2 id="recommended-reading" sourcefile="pages/web-api/index.md" sourcestartlinenumber="80">Recommended Reading</h2>
-<ul sourcefile="pages/web-api/index.md" sourcestartlinenumber="82">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="82"><a class="xref" href="data/index.html" sourcefile="pages/web-api/index.md" sourcestartlinenumber="82">Data CRUD API</a></li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="83"><a class="xref" href="../net-code/web-api/index.html" sourcefile="pages/web-api/index.md" sourcestartlinenumber="83">DotNet WebApi</a></li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="84"><a class="xref" href="../basics/polymorphism/index.html" sourcefile="pages/web-api/index.md" sourcestartlinenumber="84">Concepts: Polymorphisms</a></li>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="data/index.html">Data CRUD API</a></li>
+<li><a class="xref" href="../net-code/web-api/index.html">DotNet WebApi</a></li>
+<li><a class="xref" href="../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/web-api/index.md" sourcestartlinenumber="86">History</h2>
-<ol sourcefile="pages/web-api/index.md" sourcestartlinenumber="88">
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="88">Introduced Content-REST API in 2sxc 5.x</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="89">Query added in 2sxc 8.10</li>
-<li sourcefile="pages/web-api/index.md" sourcestartlinenumber="90">Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced Content-REST API in 2sxc 5.x</li>
+<li>Query added in 2sxc 8.10</li>
+<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing subfolder/api)</li>
 </ol>
 
 </article>

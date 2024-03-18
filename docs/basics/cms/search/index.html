@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="Basics.Cms.Search.Index">
-<h1 id="customize-the-search-index-results-dnn--only" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="5">Customize the Search-Index Results (Dnn ☢️ only)</h1>
+<h1 id="customize-the-search-index-results-dnn--only">Customize the Search-Index Results (Dnn ☢️ only)</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,72 +203,72 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .prepare-all { visibility: visible; } </style>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="10">Dnn has a built-in search engine which crawls all the modules asking them for data.</p>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="12">Every 2sxc module will be queried and will give the search index all the entities which are given to this module.</p>
-<h2 id="default-scenarios" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="14">Default Scenarios</h2>
-<ol sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="16">
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="16">If a view shows data which was added by the editor these items will be in the <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="16">Default</code> stream and there may also be a single item in the <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="16">Header</code> stream. This data is given to the search index. This applies to both single-item templates as well as to lists. Note that <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="16">Presentation</code> items are not given to the search index as they should only contain settings how to show something, and not the real relevant data.</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="17">If a view shows data from a <a class="xref" href="../../query/index.html" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="17">Query</a> then all the streams of that query will be given to the search index.</li>
+<p>Dnn has a built-in search engine which crawls all the modules asking them for data.</p>
+<p>Every 2sxc module will be queried and will give the search index all the entities which are given to this module.</p>
+<h2 id="default-scenarios">Default Scenarios</h2>
+<ol>
+<li>If a view shows data which was added by the editor these items will be in the <code>Default</code> stream and there may also be a single item in the <code>Header</code> stream. This data is given to the search index. This applies to both single-item templates as well as to lists. Note that <code>Presentation</code> items are not given to the search index as they should only contain settings how to show something, and not the real relevant data.</li>
+<li>If a view shows data from a <a class="xref" href="../../query/index.html">Query</a> then all the streams of that query will be given to the search index.</li>
 </ol>
-<h2 id="why-customize-the-search-index" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="19">Why Customize the Search Index?</h2>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="21">You can customize this behavior to your hearts desire. Here are typical reasons to do so:</p>
-<ol sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="23">
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="23">You may show the same items in many places - for example the <em sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="23">Home</em> page may show the top 3 news, but search results shouldn't point to these.</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="24">A list/details setup would have each item in the list-view, but the search result should lead it to the details view</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="25">You may want to exclude some query-streams in the search results - like exclude the categories-stream since it may not be relevant</li>
+<h2 id="why-customize-the-search-index">Why Customize the Search Index?</h2>
+<p>You can customize this behavior to your hearts desire. Here are typical reasons to do so:</p>
+<ol>
+<li>You may show the same items in many places - for example the <em>Home</em> page may show the top 3 news, but search results shouldn't point to these.</li>
+<li>A list/details setup would have each item in the list-view, but the search result should lead it to the details view</li>
+<li>You may want to exclude some query-streams in the search results - like exclude the categories-stream since it may not be relevant</li>
 </ol>
-<h2 id="ways-to-customize-the-search-results" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="27">Ways to Customize the Search Results</h2>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="29">There are two ways to customize the search results:</p>
-<ol sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="31">
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="31"><a href="#customize-the-search-results-using-configuration" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="31">Using configuration</a> <em sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="31">new in v12</em></li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="32"><a href="#custom-search-index-using-code" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="32">Using a separate code file which does this</a> <em sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="32">new in v12</em></li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="33"><a href="#custom-search-index-using-code" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="33">Using code inside a Razor file</a> <em sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="33">not recommended, but works in older versions of 2sxc</em></li>
+<h2 id="ways-to-customize-the-search-results">Ways to Customize the Search Results</h2>
+<p>There are two ways to customize the search results:</p>
+<ol>
+<li><a href="#customize-the-search-results-using-configuration">Using configuration</a> <em>new in v12</em></li>
+<li><a href="#custom-search-index-using-code">Using a separate code file which does this</a> <em>new in v12</em></li>
+<li><a href="#custom-search-index-using-code">Using code inside a Razor file</a> <em>not recommended, but works in older versions of 2sxc</em></li>
 </ol>
-<h2 id="customize-the-search-results-using-configuration" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="35">Customize the Search Results Using Configuration</h2>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="37">The following configuration options let you specify how data is handed to the Search Indexer.
-These options are set in the <a class="xref" href="../../app/views/index.html" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="38">View</a> configuration.</p>
-<div class="TIP" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="40">
+<h2 id="customize-the-search-results-using-configuration">Customize the Search Results Using Configuration</h2>
+<p>The following configuration options let you specify how data is handed to the Search Indexer.
+These options are set in the <a class="xref" href="../../app/views/index.html">View</a> configuration.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="41">If you expect to use the same template in many places but need different search-configurations,
+<p>If you expect to use the same template in many places but need different search-configurations,
 just configure multiple views using different Search configs.</p>
 </div>
-<h3 id="ensure-default-search-behavior" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="44">Ensure Default Search Behavior</h3>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="46">By default the data given to the Module is also provided to the search. This is what it looks like in the <a class="xref" href="../../app/views/index.html" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="46">View-Configuration</a>.</p>
+<h3 id="ensure-default-search-behavior">Ensure Default Search Behavior</h3>
+<p>By default the data given to the Module is also provided to the search. This is what it looks like in the <a class="xref" href="../../app/views/index.html">View-Configuration</a>.</p>
 <img src="../../../pages/basics/cms/search/assets/search-config-default.jpg" class="full-width">
-<h3 id="dont-show-any-data-in-the-search-results" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="50">Don't Show Any Data in the Search Results</h3>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="52">Reasons for doing this:</p>
-<ol sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="54">
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="54">If you have views showing extracts of data (like the top 3 news) which are already added to the search index on the full news list, then you may create a <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="54">Top News</code> view which shouldn't return data</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="55">If you show a tag-cloud this may not make sense to include in a search index</li>
+<h3 id="dont-show-any-data-in-the-search-results">Don't Show Any Data in the Search Results</h3>
+<p>Reasons for doing this:</p>
+<ol>
+<li>If you have views showing extracts of data (like the top 3 news) which are already added to the search index on the full news list, then you may create a <code>Top News</code> view which shouldn't return data</li>
+<li>If you show a tag-cloud this may not make sense to include in a search index</li>
 </ol>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="57">This is where you can find the settings in the view configuration:</p>
+<p>This is where you can find the settings in the view configuration:</p>
 <img src="../../../pages/basics/cms/search/assets/search-config-disable.jpg" class="full-width">
-<h3 id="exclude-query-streams-from-the-search-results" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="62">Exclude Query-Streams from the Search Results</h3>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="64">In some cases your View may use a <a class="xref" href="../../query/index.html" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="64">Query</a> containing a lot of streams like <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="64">Default</code> and <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="64">Categories</code>, where only <code sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="64">Default</code> would make sense to include in the search.
-For this you can simply configure what streams you want. <em sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="65">Note that these UIs automatically appear if you are using a Query</em>:</p>
+<h3 id="exclude-query-streams-from-the-search-results">Exclude Query-Streams from the Search Results</h3>
+<p>In some cases your View may use a <a class="xref" href="../../query/index.html">Query</a> containing a lot of streams like <code>Default</code> and <code>Categories</code>, where only <code>Default</code> would make sense to include in the search.
+For this you can simply configure what streams you want. <em>Note that these UIs automatically appear if you are using a Query</em>:</p>
 <img src="../../../pages/basics/cms/search/assets/search-config-query-streams.jpg" class="full-width">
-<h2 id="custom-search-index-using-code" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="70">Custom Search-Index Using Code</h2>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="72">For very advanced cases you will want full control over what lands in the search index.
+<h2 id="custom-search-index-using-code">Custom Search-Index Using Code</h2>
+<p>For very advanced cases you will want full control over what lands in the search index.
 To implement this, you can create your own Search Mapper in C#.</p>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="75">This is how to configure this:</p>
+<p>This is how to configure this:</p>
 <img src="../../../pages/basics/cms/search/assets/search-config-custom.jpg" class="full-width">
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="79">👉 Read about <a class="xref" href="../../../net-code/search/index.html" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="79">Custom Search in C# here</a></p>
-<div class="NOTE" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="81">
+<p>👉 Read about <a class="xref" href="../../../net-code/search/index.html">Custom Search in C# here</a></p>
+<div class="NOTE">
 <h5>Note</h5>
-<p sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="82">In older versions of 2sxc (between 6 and 12) the Search Customization code was placed in the Razor file.
+<p>In older versions of 2sxc (between 6 and 12) the Search Customization code was placed in the Razor file.
 This is deprecated and should not be used any more.</p>
 </div>
-<hr sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="86">
-<h2 id="history" sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="88">History</h2>
-<ol sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="90">
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="90">Introduced in 2sxc 6.2</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="91">Added support for newer Dnn versions at a later time - not sure when</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="92">Introduced Search Configuration in 2sxc 12.02</li>
-<li sourcefile="pages/basics/cms/search/index.md" sourcestartlinenumber="93">Introduced separate Code-File for this in 2sxc 12.02</li>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 6.2</li>
+<li>Added support for newer Dnn versions at a later time - not sure when</li>
+<li>Introduced Search Configuration in 2sxc 12.02</li>
+<li>Introduced separate Code-File for this in 2sxc 12.02</li>
 </ol>
 
 </article>

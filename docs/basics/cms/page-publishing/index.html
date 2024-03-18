@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,142 +106,142 @@
         </div>
 
         <article data-uid="Basics.Cms.PagePublishing.Index">
-<h1 id="dnnevoq-page-versioning--publishing-and-workflow" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="5">Dnn/Evoq Page Versioning / Publishing and Workflow</h1>
+<h1 id="dnnevoq-page-versioning--publishing-and-workflow">Dnn/Evoq Page Versioning / Publishing and Workflow</h1>
 
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="7">This page explains how a Dnn / Evoq does page versioning and workflow, and how to leverage this with 2sxc.</p>
-<h2 id="background-dnn--evoq-pagemodule-versioning" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="9">Background: Dnn / Evoq Page/Module Versioning</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="10">Dnn / Evoq had a few different ways of doing versioning, but since Dnn 7.4.2 it basically uses a model which works as follows:</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="12">Each page has a live version number (for this demo we'll say version P27 - for page 27). On this page, various modules exist, each having their own version number. Let's say we have a gallery-module which is currently on version 6 (MG6) and a module with a form in version 12 (MF12). So the page information currently has:</p>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="14">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="14">P27 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="14">live</em>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="15">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="15">Module 1: MG6 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="15">live</em></li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="16">Module 2: MF12 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="16">live</em></li>
+<p>This page explains how a Dnn / Evoq does page versioning and workflow, and how to leverage this with 2sxc.</p>
+<h2 id="background-dnn--evoq-pagemodule-versioning">Background: Dnn / Evoq Page/Module Versioning</h2>
+<p>Dnn / Evoq had a few different ways of doing versioning, but since Dnn 7.4.2 it basically uses a model which works as follows:</p>
+<p>Each page has a live version number (for this demo we'll say version P27 - for page 27). On this page, various modules exist, each having their own version number. Let's say we have a gallery-module which is currently on version 6 (MG6) and a module with a form in version 12 (MF12). So the page information currently has:</p>
+<ul>
+<li>P27 <em>live</em>
+<ul>
+<li>Module 1: MG6 <em>live</em></li>
+<li>Module 2: MF12 <em>live</em></li>
 </ul>
 </li>
 </ul>
-<h3 id="basic-example-with-adding-module" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="18">Basic Example with Adding Module</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="20">If a new module with a form is added in between, Dnn will do the following</p>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="22">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="22">P28 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="22">draft</em> (P27 is still <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="22">live</em>)
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="23">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="23">Mod 1: MG6 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="23">live</em> (same version on <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="23">live</em> and <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="23">draft</em>)</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="24">Mod 2: MF1 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="24">new</em>, regarded as <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="24">draft</em></li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="25">Mod 3: MF13 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="25">draft</em> (the position has changed, so the module info has changed)</li>
+<h3 id="basic-example-with-adding-module">Basic Example with Adding Module</h3>
+<p>If a new module with a form is added in between, Dnn will do the following</p>
+<ul>
+<li>P28 <em>draft</em> (P27 is still <em>live</em>)
+<ul>
+<li>Mod 1: MG6 <em>live</em> (same version on <em>live</em> and <em>draft</em>)</li>
+<li>Mod 2: MF1 <em>new</em>, regarded as <em>draft</em></li>
+<li>Mod 3: MF13 <em>draft</em> (the position has changed, so the module info has changed)</li>
 </ul>
 </li>
 </ul>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="27">As further changes to modules additions / removals / reordering happen, this happens on the P28 version only. So even if we delete or rename a module, the live version will not show this.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="29">So Dnn mechanims incl. moving/renaming of modules is a Dnn/Evoq responsiblity, and is versioned by Dnn/Evoq. We'll talk about the internal content of a module further down.</p>
-<h3 id="publishing-a-page" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="31">Publishing a Page</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="32">Basically when an editor publishes a page, Dnn will do the following:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="34">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="34">set P28 to the published page</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="35">tell each module to publish in that version (in case the module support inner versioning - read on...)</li>
+<p>As further changes to modules additions / removals / reordering happen, this happens on the P28 version only. So even if we delete or rename a module, the live version will not show this.</p>
+<p>So Dnn mechanims incl. moving/renaming of modules is a Dnn/Evoq responsiblity, and is versioned by Dnn/Evoq. We'll talk about the internal content of a module further down.</p>
+<h3 id="publishing-a-page">Publishing a Page</h3>
+<p>Basically when an editor publishes a page, Dnn will do the following:</p>
+<ol>
+<li>set P28 to the published page</li>
+<li>tell each module to publish in that version (in case the module support inner versioning - read on...)</li>
 </ol>
-<h3 id="dnn--evoq-workflows" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="37">Dnn / Evoq Workflows</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="38">Because these topics are almost undocumented - and exist in different implementations, they are confusing. You need to know the following about workflows:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="40">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="40">Workflows apply to the page only, so pages need to know if they have a workflow and which one</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="41">Modules don't know about these workflows...</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="42">...because Modules only get notified when the workflow reaches a &quot;publish&quot; state</li>
+<h3 id="dnn--evoq-workflows">Dnn / Evoq Workflows</h3>
+<p>Because these topics are almost undocumented - and exist in different implementations, they are confusing. You need to know the following about workflows:</p>
+<ol>
+<li>Workflows apply to the page only, so pages need to know if they have a workflow and which one</li>
+<li>Modules don't know about these workflows...</li>
+<li>...because Modules only get notified when the workflow reaches a &quot;publish&quot; state</li>
 </ol>
-<h2 id="background-module-insideinner-versioning" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="44">Background: Module Inside/Inner Versioning</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="45">Modules have their own content which may or may not be versioned. <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="45">99% of all modules don't version their content</em> and have no history. And 99.9% <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="45">don't support Dnn/Evoq page versions &amp; publishing</em>.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="47">So IF a module doesn't know about these mechanisms, then changes <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="47">inside</em> that module will not be versioned and they will be live immediately as they are applied. But let's assume our modules do support this, and let's say the gallery with module-info in V6 (it was moved a few times, so it has 6 versions) still has the initial V1 content, which we'll call MGi1 (Module Gallery <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="47">inside</em> V1).</p>
-<h3 id="module-version-tree-with-inner-version" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="49">Module Version Tree with Inner Version</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="50">So let's look at the <strong sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="50">versioning tree</strong> as it really is</p>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="52">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="52">P27 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="52">live</em>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="53">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="53">Mod 1: MG6 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="53">live</em> with MGi1</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="54">Mod 2: MF12 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="54">live</em> with MFi26 (had made configuration changes, each versioned)</li>
+<h2 id="background-module-insideinner-versioning">Background: Module Inside/Inner Versioning</h2>
+<p>Modules have their own content which may or may not be versioned. <em>99% of all modules don't version their content</em> and have no history. And 99.9% <em>don't support Dnn/Evoq page versions &amp; publishing</em>.</p>
+<p>So IF a module doesn't know about these mechanisms, then changes <em>inside</em> that module will not be versioned and they will be live immediately as they are applied. But let's assume our modules do support this, and let's say the gallery with module-info in V6 (it was moved a few times, so it has 6 versions) still has the initial V1 content, which we'll call MGi1 (Module Gallery <em>inside</em> V1).</p>
+<h3 id="module-version-tree-with-inner-version">Module Version Tree with Inner Version</h3>
+<p>So let's look at the <strong>versioning tree</strong> as it really is</p>
+<ul>
+<li>P27 <em>live</em>
+<ul>
+<li>Mod 1: MG6 <em>live</em> with MGi1</li>
+<li>Mod 2: MF12 <em>live</em> with MFi26 (had made configuration changes, each versioned)</li>
 </ul>
 </li>
 </ul>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="56">Now let's simulate a change...</p>
-<h3 id="inner-content-changes" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="58">Inner Content Changes</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="59">Let's say the editor makes a small change to the Form-module. This will notify Dnn of a change. As this happens, it must tell Dnn that it has a new version - like this, so Dnn will also place the page in a new version (for later publishing):</p>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="61">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="61">P28 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="61">draft</em>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="62">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="62">Mod 1: MG6 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="62">live</em> with MGi1 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="62">live</em></li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="63">Mod 2: MF12 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="63">live</em> with MFi27 <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="63">draft</em></li>
+<p>Now let's simulate a change...</p>
+<h3 id="inner-content-changes">Inner Content Changes</h3>
+<p>Let's say the editor makes a small change to the Form-module. This will notify Dnn of a change. As this happens, it must tell Dnn that it has a new version - like this, so Dnn will also place the page in a new version (for later publishing):</p>
+<ul>
+<li>P28 <em>draft</em>
+<ul>
+<li>Mod 1: MG6 <em>live</em> with MGi1 <em>live</em></li>
+<li>Mod 2: MF12 <em>live</em> with MFi27 <em>draft</em></li>
 </ul>
 </li>
 </ul>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="65">Note that if the form module makes more changes, it can choose to report this or not, since basically the newest version is a draft already, on a draft-page.</p>
-<h3 id="inner-content-publishing" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="67">Inner Content Publishing</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="68">Now once the user decides to publish this page, each module (incl. the Forms-Module) will be notified to publish it's version. Dnn will tell the form which version it should publish (in this case v27). The form must take care of whatever processing to ensure that this version is now live / public.</p>
-<h2 id="2sxc-support-for-dnn--evoq-publishing" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="71">2sxc Support for Dnn / Evoq Publishing</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="72">2sxc support the core parts of Dnn/Evoq Publishing and versioning. To be more specific, it will</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="74">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="74">detect if the page requires a publishing workflow</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="75">tell Dnn/Evoq that on-page content was edited</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="76">modify the GUI to only allow draft/publish options as it corresponds with the page information</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="77">listen to Dnn/Evoq messages to publish on-page information</li>
+<p>Note that if the form module makes more changes, it can choose to report this or not, since basically the newest version is a draft already, on a draft-page.</p>
+<h3 id="inner-content-publishing">Inner Content Publishing</h3>
+<p>Now once the user decides to publish this page, each module (incl. the Forms-Module) will be notified to publish it's version. Dnn will tell the form which version it should publish (in this case v27). The form must take care of whatever processing to ensure that this version is now live / public.</p>
+<h2 id="2sxc-support-for-dnn--evoq-publishing">2sxc Support for Dnn / Evoq Publishing</h2>
+<p>2sxc support the core parts of Dnn/Evoq Publishing and versioning. To be more specific, it will</p>
+<ol>
+<li>detect if the page requires a publishing workflow</li>
+<li>tell Dnn/Evoq that on-page content was edited</li>
+<li>modify the GUI to only allow draft/publish options as it corresponds with the page information</li>
+<li>listen to Dnn/Evoq messages to publish on-page information</li>
 </ol>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="79">This sounds simple, but it's very complex because 2sxc can be used in many scenarios, and in some it's not always clear when to draft or publish something. So there are some exceptions, which are documented below.</p>
-<h3 id="activating-page-publishing-feature-on-2sxc" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="81">Activating Page Publishing Feature on 2sxc</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="82">You don't have to do anything - 2sxc asks the environment (Dnn/Evoq) it it expects any publishing steps, and will automatically adjust its behavoir.</p>
+<p>This sounds simple, but it's very complex because 2sxc can be used in many scenarios, and in some it's not always clear when to draft or publish something. So there are some exceptions, which are documented below.</p>
+<h3 id="activating-page-publishing-feature-on-2sxc">Activating Page Publishing Feature on 2sxc</h3>
+<p>You don't have to do anything - 2sxc asks the environment (Dnn/Evoq) it it expects any publishing steps, and will automatically adjust its behavoir.</p>
 <img src="../../../pages/basics/cms/page-publishing/assets/evoq-settings-for-workflow.jpg" width="100%" class="full-width">
-<h3 id="making-changes-start-a-dnn-page-versioning" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="86">Making Changes Start a Dnn-Page Versioning</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="87">This too happens automatically, if the page has a publishing setup in Dnn/Evoq.</p>
-<h2 id="auto-draft-and-auto-publish-explained" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="89">Auto-Draft and Auto-Publish explained</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="90">To be sure you understand what's going on, please note the following:</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="92"><strong sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="92">Only changes which directly relate to a page cause auto-draft / auto-publish</strong></p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="94">Example 1: A user changes a blog post on a blog-page. The page will get a new <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="94">draft</em> version and the live blog will show the old one, while the <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="94">draft</em> will show the new one. When the page is published, the draft will become live.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="96"><strong sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="96">Changes to content-items which are not directly tied to a page, will <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="96">not</em> cause drafting / publishing</strong></p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="98">Example 2: When the user edits the blog post he also creates another category (which is used as <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="98">data</em> and not as on-page content). This category is immediately live, but will probably not show up as it's only used in the edited blog-post.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="100">Example 3: An admin-user goes into the admin UI and creates a blog post from within the admin-UI. It will <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="100">not auto-default to draft</em>, as this is not specific to any page. But if the user <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="100">manually</em> sets it to draft, it will be published when a page showing it is released.</p>
-<h2 id="restoring-previous-versions" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="103">Restoring Previous Versions</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="104">Dnn / Evoq has a mechanism for restoring previous page versions, and when implemented perfectly, all modules inside it could also revert back to the state it was in at that time. Such a perfect world is hard to implement and nearly impossible in a dynamic-content setup. For example, apps may have been deleted or content-types (schemas) may have changed. So the idea sounds good, but is impossible to implement correctly.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="106">So 2sxc goes the pragmatic way: You can restore any item to a previous version - so you can always roll back a blog-post to a previous copy, but putting the page back into an old version will not roll back anything inside a 2sxc-module.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="108">To Restore previous versions of content-items, use the history (clock) icon in the toolbar.</p>
-<h2 id="technical-deep-dive---behind-the-scenes" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="111">Technical Deep Dive - Behind the Scenes</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="112">In case you run into trouble or need to know more about the mechanisms, here's what you need to know</p>
-<h3 id="what-is-an-on-page-change-and-what-is-not" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="114">What is an On-Page Change and What is Not</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="115">By definition, any item created or modified directly from a toolbar button in the front end is regarded as an On-Page change and will start the page-draft process. This is basically all the buttons which normal (non-admin) users see. If you haven't heard of hiding admin-buttons, please read the <a class="xref" href="../../edit/edit-ux/hide-advanced-features.html" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="115">concept on hiding advanced features</a>.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="117">Specifically, this includes the following actions:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="118">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="118">editing content directly from a toolbar button</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="119">adding new content to the page from a toolbar button</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="120">moving items up/down in a content-item list using a toolbar button</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="121">replacing an item on a page using the toolbar button</li>
+<h3 id="making-changes-start-a-dnn-page-versioning">Making Changes Start a Dnn-Page Versioning</h3>
+<p>This too happens automatically, if the page has a publishing setup in Dnn/Evoq.</p>
+<h2 id="auto-draft-and-auto-publish-explained">Auto-Draft and Auto-Publish explained</h2>
+<p>To be sure you understand what's going on, please note the following:</p>
+<p><strong>Only changes which directly relate to a page cause auto-draft / auto-publish</strong></p>
+<p>Example 1: A user changes a blog post on a blog-page. The page will get a new <em>draft</em> version and the live blog will show the old one, while the <em>draft</em> will show the new one. When the page is published, the draft will become live.</p>
+<p><strong>Changes to content-items which are not directly tied to a page, will <em>not</em> cause drafting / publishing</strong></p>
+<p>Example 2: When the user edits the blog post he also creates another category (which is used as <em>data</em> and not as on-page content). This category is immediately live, but will probably not show up as it's only used in the edited blog-post.</p>
+<p>Example 3: An admin-user goes into the admin UI and creates a blog post from within the admin-UI. It will <em>not auto-default to draft</em>, as this is not specific to any page. But if the user <em>manually</em> sets it to draft, it will be published when a page showing it is released.</p>
+<h2 id="restoring-previous-versions">Restoring Previous Versions</h2>
+<p>Dnn / Evoq has a mechanism for restoring previous page versions, and when implemented perfectly, all modules inside it could also revert back to the state it was in at that time. Such a perfect world is hard to implement and nearly impossible in a dynamic-content setup. For example, apps may have been deleted or content-types (schemas) may have changed. So the idea sounds good, but is impossible to implement correctly.</p>
+<p>So 2sxc goes the pragmatic way: You can restore any item to a previous version - so you can always roll back a blog-post to a previous copy, but putting the page back into an old version will not roll back anything inside a 2sxc-module.</p>
+<p>To Restore previous versions of content-items, use the history (clock) icon in the toolbar.</p>
+<h2 id="technical-deep-dive---behind-the-scenes">Technical Deep Dive - Behind the Scenes</h2>
+<p>In case you run into trouble or need to know more about the mechanisms, here's what you need to know</p>
+<h3 id="what-is-an-on-page-change-and-what-is-not">What is an On-Page Change and What is Not</h3>
+<p>By definition, any item created or modified directly from a toolbar button in the front end is regarded as an On-Page change and will start the page-draft process. This is basically all the buttons which normal (non-admin) users see. If you haven't heard of hiding admin-buttons, please read the <a class="xref" href="../../edit/edit-ux/hide-advanced-features.html">concept on hiding advanced features</a>.</p>
+<p>Specifically, this includes the following actions:</p>
+<ol>
+<li>editing content directly from a toolbar button</li>
+<li>adding new content to the page from a toolbar button</li>
+<li>moving items up/down in a content-item list using a toolbar button</li>
+<li>replacing an item on a page using the toolbar button</li>
 </ol>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="123">The following actions are not regarded as on-page changes, and don't auto-force drafting:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="125">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="125">editing any data from the Admin-UI</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="126">editing app-resources or app-settings</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="127">creating / modifying views</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="128">importing data / importing apps</li>
+<p>The following actions are not regarded as on-page changes, and don't auto-force drafting:</p>
+<ol>
+<li>editing any data from the Admin-UI</li>
+<li>editing app-resources or app-settings</li>
+<li>creating / modifying views</li>
+<li>importing data / importing apps</li>
 </ol>
-<h3 id="what-is-published-on-page-publish-and-what-not" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="130">What is Published on Page-Publish and What Not</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="131">When a page is published, Dnn/Evoq will tell each module that it should now publish that specific version assigned to that page version. When this happens, 2sxc does the following:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="133">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="133">Retrieves the (usually invisible/secret) content-group entity which contains the information, what template and what items are shown on this module. This one is probably stored as a draft from previous changes, as this one keeps track of the items to show and the order to show them in. This draft is then published.</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="134">Reviews all items on the four primary in-streams, checks each entity and publishes draft versions. The streams it will process are:</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="135">Default (this is the one provided on Content)</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="136">Presentation</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="137">ListContent (the header-content item)</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="138">ListPresentation (the header presentation item)</li>
+<h3 id="what-is-published-on-page-publish-and-what-not">What is Published on Page-Publish and What Not</h3>
+<p>When a page is published, Dnn/Evoq will tell each module that it should now publish that specific version assigned to that page version. When this happens, 2sxc does the following:</p>
+<ol>
+<li>Retrieves the (usually invisible/secret) content-group entity which contains the information, what template and what items are shown on this module. This one is probably stored as a draft from previous changes, as this one keeps track of the items to show and the order to show them in. This draft is then published.</li>
+<li>Reviews all items on the four primary in-streams, checks each entity and publishes draft versions. The streams it will process are:</li>
+<li>Default (this is the one provided on Content)</li>
+<li>Presentation</li>
+<li>ListContent (the header-content item)</li>
+<li>ListPresentation (the header presentation item)</li>
 </ol>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="140">Note that other streams are not auto-published. This is to prevent side-effects. For example, a Blog-View could have additional streams to visualize authors, categories etc. but these will not be auto-published, as it is assumed that these are helper-data and not specifically on-page data for this page.</p>
-<h3 id="publishing-additional-items" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="142">Publishing Additional Items</h3>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="143">If you want to auto-publish additional items, just add them to a stream <strong sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="143">PartOfPage</strong>.</p>
-<h2 id="inner-content-handling-very-rich-content" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="145">Inner Content Handling (Very Rich Content)</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="146">Inner Content is not currently treated as belonging to the page, as it is inside content which is already drafted/published. So inner-content is always published when created.</p>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="148">Note that this is not fully tested/implemented, you may have unexpected consequences when working with inner content.</p>
-<h2 id="image-and-asset-handling" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="150">Image And Asset Handling</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="151">Images and assets are not versioned / published, as Dnn provides no effective way to enable this. So as of now, the following will happen:</p>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="153">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="153">if a content-type has a file-field using ADAM with a single file (not library), then draging in an additional file will behave like the publishing, because the new file has a new number, and this is not in use till the item is published</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="154">if the user drags in an updated file with the same name, it will internally receive a number at the end, and also stay unpublished, as it's a different file on the server</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="155">if a user manually replaces a file (not drag-drop in ADAM) or <em sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="155">deletes</em> a file and then uploads the file with the same name, then this file is live, as it really changed the file on the server</li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="156">if you are using a library-field in ADAM (often used in galleries), then these files are automatically live as well, and deleted files are also removed immediately</li>
+<p>Note that other streams are not auto-published. This is to prevent side-effects. For example, a Blog-View could have additional streams to visualize authors, categories etc. but these will not be auto-published, as it is assumed that these are helper-data and not specifically on-page data for this page.</p>
+<h3 id="publishing-additional-items">Publishing Additional Items</h3>
+<p>If you want to auto-publish additional items, just add them to a stream <strong>PartOfPage</strong>.</p>
+<h2 id="inner-content-handling-very-rich-content">Inner Content Handling (Very Rich Content)</h2>
+<p>Inner Content is not currently treated as belonging to the page, as it is inside content which is already drafted/published. So inner-content is always published when created.</p>
+<p>Note that this is not fully tested/implemented, you may have unexpected consequences when working with inner content.</p>
+<h2 id="image-and-asset-handling">Image And Asset Handling</h2>
+<p>Images and assets are not versioned / published, as Dnn provides no effective way to enable this. So as of now, the following will happen:</p>
+<ol>
+<li>if a content-type has a file-field using ADAM with a single file (not library), then draging in an additional file will behave like the publishing, because the new file has a new number, and this is not in use till the item is published</li>
+<li>if the user drags in an updated file with the same name, it will internally receive a number at the end, and also stay unpublished, as it's a different file on the server</li>
+<li>if a user manually replaces a file (not drag-drop in ADAM) or <em>deletes</em> a file and then uploads the file with the same name, then this file is live, as it really changed the file on the server</li>
+<li>if you are using a library-field in ADAM (often used in galleries), then these files are automatically live as well, and deleted files are also removed immediately</li>
 </ol>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="158">In case you are using an ADAM library and would like to only show the files which existed before you created an unpublished draft, this can be done in your template. Just remember that certain changes (like file-changes on the server) could change the modified date, and that deleting files also really removes live files as well. Here's how you can change your Razor:</p>
-<pre><code class="lang-razor" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="160">@* before, showing all files *@
+<p>In case you are using an ADAM library and would like to only show the files which existed before you created an unpublished draft, this can be done in your template. Just remember that certain changes (like file-changes on the server) could change the modified date, and that deleting files also really removes live files as well. Here's how you can change your Razor:</p>
+<pre><code class="lang-razor">@* before, showing all files *@
 @foreach(var pic in AsAdam(Content, &quot;Files&quot;).Files) {
     &lt;span&gt;@pic.FileName, @pic.LastModificationTime&lt;/span&gt;&lt;br&gt;
 }
@@ -251,16 +251,16 @@
     &lt;span&gt;@pic.FileName, @pic.LastModificationTime&lt;/span&gt;&lt;br&gt;
 }
 </code></pre>
-<h2 id="notes-and-clarifications" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="172">Notes and Clarifications</h2>
-<p sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="173">As mentioned, this is the default setup. In the case of data-oriented apps, which query data from somewhere, you may have other expectations. At the moment there is no additional mechanism to customize this any further, but we believe that you can easily cover all possible scenarios with this setup.</p>
-<h2 id="read-also" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="175">Read also</h2>
-<ul sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="177">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="177"><a class="xref" href="../content-blocks/content-blocks-in-dnn.html" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="177">Data Model of Dnn-Modules mapping to content</a></li>
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="178"><a href="http://2sxc.org/en/blog/post/understanding-content-binding-to-modules-and-pages-(300)" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="178">In-Depth information about content-binding</a></li>
+<h2 id="notes-and-clarifications">Notes and Clarifications</h2>
+<p>As mentioned, this is the default setup. In the case of data-oriented apps, which query data from somewhere, you may have other expectations. At the moment there is no additional mechanism to customize this any further, but we believe that you can easily cover all possible scenarios with this setup.</p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../content-blocks/content-blocks-in-dnn.html">Data Model of Dnn-Modules mapping to content</a></li>
+<li><a href="http://2sxc.org/en/blog/post/understanding-content-binding-to-modules-and-pages-(300)">In-Depth information about content-binding</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="182">History</h2>
-<ol sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="184">
-<li sourcefile="pages/basics/cms/page-publishing/index.md" sourcestartlinenumber="184">Introduces in 2sxc 9.5</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduces in 2sxc 9.5</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,51 +106,51 @@
         </div>
 
         <article data-uid="NetCode.TypedCode.CompareApis.DnnObject">
-<h1 id="the-dnn-object-in-different-apis" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="5">The Dnn Object in Different APIs</h1>
+<h1 id="the-dnn-object-in-different-apis">The Dnn Object in Different APIs</h1>
 
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="7">The <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="7">Dnn</code> object is a special object which is available in Dnn, but not in Oqtane.</p>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="9">Razor files inheriting from older base classes have a <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="9">Dnn</code> object, such as this example:</p>
-<pre><code class="lang-razor" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="11">@inherits Custom.Dnn.Razor12
+<p>The <code>Dnn</code> object is a special object which is available in Dnn, but not in Oqtane.</p>
+<p>Razor files inheriting from older base classes have a <code>Dnn</code> object, such as this example:</p>
+<pre><code class="lang-razor">@inherits Custom.Dnn.Razor12
 @{
   // Dnn.Tabs is a TabInfo
   // https://docs.dnncommunity.org/api/DotNetNuke.Entities.Tabs.TabInfo.html
   var pageTitle = Dnn.Tab.Title;
 }
 </code></pre>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="20">All the new base classes, such as <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="20">Custom.Hybrid.RazorTyped</code> don't have a <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="20">Dnn</code> object, as they are hybrid and work on Oqtane and Dnn.</p>
-<h2 id="alternative-using-mycontext--cmscontext" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="22">Alternative using MyContext / CmsContext</h2>
-<div class="TIP" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="24">
+<p>All the new base classes, such as <code>Custom.Hybrid.RazorTyped</code> don't have a <code>Dnn</code> object, as they are hybrid and work on Oqtane and Dnn.</p>
+<h2 id="alternative-using-mycontext--cmscontext">Alternative using MyContext / CmsContext</h2>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="25">If you think you need the Dnn property (eg. for accessing the Page Title),
-best first check if the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.html" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="26">MyContext / CmsContext</a> can't be used instead.</p>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="28">It has most of the typical properties which you would look for in <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="28">Dnn</code>.</p>
+<p>If you think you need the Dnn property (eg. for accessing the Page Title),
+best first check if the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Context.html">MyContext / CmsContext</a> can't be used instead.</p>
+<p>It has most of the typical properties which you would look for in <code>Dnn</code>.</p>
 </div>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="30">Example in v16+</p>
-<pre><code class="lang-razor" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="32">@inherits Custom.Hybrid.RazorTyped
+<p>Example in v16+</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
 @{
   var pageTitle = MyPage.Title;
 }
 </code></pre>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="39">Example in v12+</p>
-<pre><code class="lang-razor" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="41">@inherits Custom.Hybrid.Razor12
+<p>Example in v12+</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
 @{
   var pageTitle = CmsContext.Page.Title;
 }
 </code></pre>
-<h2 id="get-the-dnn-object-in-modern-base-classes" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="49">Get the Dnn Object in Modern Base Classes</h2>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="51">You can also still get the <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="51">Dnn</code> object using this:</p>
-<pre><code class="lang-csharp" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="53">var dnn = GetService&lt;ToSic.Sxc.Dnn.Run.IDnnContext&gt;();
+<h2 id="get-the-dnn-object-in-modern-base-classes">Get the Dnn Object in Modern Base Classes</h2>
+<p>You can also still get the <code>Dnn</code> object using this:</p>
+<pre><code class="lang-csharp">var dnn = GetService&lt;ToSic.Sxc.Dnn.Run.IDnnContext&gt;();
 </code></pre>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="57">This is the same object as the <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="57">Dnn</code> object in the older base classes.</p>
-<div class="WARNING" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="59">
+<p>This is the same object as the <code>Dnn</code> object in the older base classes.</p>
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="60">Using the <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="60">Dnn</code> object / service will make your code Dnn-specific and not work in Oqtane.</p>
+<p>Using the <code>Dnn</code> object / service will make your code Dnn-specific and not work in Oqtane.</p>
 </div>
-<hr sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="62">
-<h2 id="history" sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="64">History</h2>
-<ul sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="66">
-<li sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="66"><code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="66">Dnn</code> introduced ca. v7</li>
-<li sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="67">New base classes without <code sourcefile="pages/net-code/api-compare/dnn-object.md" sourcestartlinenumber="67">Dnn</code> introduced in v12</li>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li><code>Dnn</code> introduced ca. v7</li>
+<li>New base classes without <code>Dnn</code> introduced in v12</li>
 </ul>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,33 +108,33 @@
         <article data-uid="NetCode.PlatformApi.Dnn.ModulesExtended">
 
 <img src="../../../assets/features/platform-dnn.svg" width="100%">
-<h1 id="use-2sxc-services-in-dnn-modules---extended" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="7">Use 2sxc Services in Dnn Modules - Extended</h1>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="9">This is some additional information regarding the use of 2sxc Services in Dnn Modules.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="11">👉🏽 Normally you don't need this, you need <a class="xref" href="themes-modules.html" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="11">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</a></p>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="13">Important to Understand:</p>
-<ul sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="15">
-<li sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="15">Dnn Modules inherit from the <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="15">PortalModuleBase</a></li>
-<li sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="16">This has a property called <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html#DotNetNuke_Entities_Modules_PortalModuleBase_DependencyProvider" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="16">DependencyProvider</a></li>
-<li sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="17">This is a <em sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="17">.net Standard 2</em> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.iserviceprovider" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="17">IServiceProvider</a></li>
+<h1 id="use-2sxc-services-in-dnn-modules---extended">Use 2sxc Services in Dnn Modules - Extended</h1>
+<p>This is some additional information regarding the use of 2sxc Services in Dnn Modules.</p>
+<p>👉🏽 Normally you don't need this, you need <a class="xref" href="themes-modules.html">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</a></p>
+<p>Important to Understand:</p>
+<ul>
+<li>Dnn Modules inherit from the <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html">PortalModuleBase</a></li>
+<li>This has a property called <a href="https://docs.dnncommunity.org/api/DotNetNuke.Entities.Modules.PortalModuleBase.html#DotNetNuke_Entities_Modules_PortalModuleBase_DependencyProvider">DependencyProvider</a></li>
+<li>This is a <em>.net Standard 2</em> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.iserviceprovider">IServiceProvider</a></li>
 </ul>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="19">The naming is a bit unfortunate, since normally we talk of <code sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="19">ServiceProvider</code> and this is called <code sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="19">DependencyProvider</code> but otherwise it works the same.</p>
-<h2 id="get-service-provider-on-a-module" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="21">Get Service Provider on a Module</h2>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="23">This just shows the <strong sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="23">standard</strong> way of getting the service provider.
+<p>The naming is a bit unfortunate, since normally we talk of <code>ServiceProvider</code> and this is called <code>DependencyProvider</code> but otherwise it works the same.</p>
+<h2 id="get-service-provider-on-a-module">Get Service Provider on a Module</h2>
+<p>This just shows the <strong>standard</strong> way of getting the service provider.
 It's harder and not recommended.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="26">Modules have a property called <code sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="26">DependencyProvider</code> which is actually the <code sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="26">IServiceProvider</code> of the current scope.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="28">To get a 2sxc Service with this, you could write code like this</p>
-<pre><code class="lang-csharp" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="30">using ToSic.Sxc.Services;
+<p>Modules have a property called <code>DependencyProvider</code> which is actually the <code>IServiceProvider</code> of the current scope.</p>
+<p>To get a 2sxc Service with this, you could write code like this</p>
+<pre><code class="lang-csharp">using ToSic.Sxc.Services;
 var jsonSvc = (IJsonService)DependencyProvider.GetService(typeof(IJsonService));
 var json = jsonSvc.ToJson(someObject);
 </code></pre>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="36">This is a bit clunky, so usually we'll add the namespace <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="36">Microsoft.Extensions.DependencyInjection</a> and write this:</p>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="39">Che general way to get the service provider is:</p>
-<pre><code class="lang-csharp" sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="41">using Microsoft.Extensions.DependencyInjection;
+<p>This is a bit clunky, so usually we'll add the namespace <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions">Microsoft.Extensions.DependencyInjection</a> and write this:</p>
+<p>Che general way to get the service provider is:</p>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sxc.Services;
 var jsonSvc = DependencyProvider.GetService&lt;IJsonService&gt;();
 var json = jsonSvc.ToJson(someObject);
 </code></pre>
-<p sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="48"><em sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="48">Important: if you try to do this in a Dnn Skin/Theme it will fail, because the <code sourcefile="pages/net-code/platform-api/dnn/modules-extended.md" sourcestartlinenumber="48">DependencyProvider</code> object is missing.</em></p>
+<p><em>Important: if you try to do this in a Dnn Skin/Theme it will fail, because the <code>DependencyProvider</code> object is missing.</em></p>
 
 </article>
 

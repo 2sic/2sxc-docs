@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,13 +106,13 @@
         </div>
 
         <article data-uid="Basics.DataFormats.JsonV1.Value">
-<h1 id="json-value-multilanguage-v1" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="5">JSON Value (Multilanguage) V1</h1>
+<h1 id="json-value-multilanguage-v1">JSON Value (Multilanguage) V1</h1>
 
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="7">JSON based entities are items which are stored as JSON. This is used in the history, in dynamic-entities in the DB and more.</p>
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="9">Attributes/Properties have one or move values depending on how they are translated, so the Value is always an Dictionary (object of keys/values).</p>
-<h2 id="example" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="11">Example</h2>
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="13">This example is showing part of a JSON. Most of it has been removed to just focus on the values:</p>
-<pre><code class="lang-json" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="15">{
+<p>JSON based entities are items which are stored as JSON. This is used in the history, in dynamic-entities in the DB and more.</p>
+<p>Attributes/Properties have one or move values depending on how they are translated, so the Value is always an Dictionary (object of keys/values).</p>
+<h2 id="example">Example</h2>
+<p>This example is showing part of a JSON. Most of it has been removed to just focus on the values:</p>
+<pre><code class="lang-json">{
   &quot;_&quot;: {
     &quot;V&quot;: 1
   },
@@ -132,46 +132,46 @@
   }
 }
 </code></pre>
-<h2 id="value-format-explained" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="37">Value Format Explained</h2>
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="39">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="39"><code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="39">_</code> (header) mainly storing the version, in case we have to introduce a breaking change - see also <a class="xref" href="index.html" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="39">format v1</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="40"><code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="40">Entity</code> - this marks an entity - at the moment a json package should only have 1, but later it could contain more
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="41">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="41"><code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="41">Attributes</code> - the values of this entity
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="42">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="42"><code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="42">String</code> - all the string values; <em sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="42">optional, only exists if there are string values</em>
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="43">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="43">[the field name]
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="44">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="44">[the languages this value applies to]
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="45">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="45">[the value]</li>
+<h2 id="value-format-explained">Value Format Explained</h2>
+<ul>
+<li><code>_</code> (header) mainly storing the version, in case we have to introduce a breaking change - see also <a class="xref" href="index.html">format v1</a></li>
+<li><code>Entity</code> - this marks an entity - at the moment a json package should only have 1, but later it could contain more
+<ul>
+<li><code>Attributes</code> - the values of this entity
+<ul>
+<li><code>String</code> - all the string values; <em>optional, only exists if there are string values</em>
+<ul>
+<li>[the field name]
+<ul>
+<li>[the languages this value applies to]
+<ul>
+<li>[the value]</li>
 </ul>
 </li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="46">[more languages / values]</li>
+<li>[more languages / values]</li>
 </ul>
 </li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="47">[more fields / languages / values]</li>
+<li>[more fields / languages / values]</li>
 </ul>
 </li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="48">[next type] - all the boolean values; <em sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="48">optional, only exists if there are boelean values</em></li>
-</ul>
-</li>
+<li>[next type] - all the boolean values; <em>optional, only exists if there are boelean values</em></li>
 </ul>
 </li>
 </ul>
-<h2 id="language-codes" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="50">Language Codes</h2>
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="52">The keys of the dictionary determine what language is used and how.</p>
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="54">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="54">if the key is <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="54">*</code> then this value applies to all languages</li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="55">if the key is a culture code like <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="55">en-us</code> (always lower case) it applies to that language</li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="56">if the value is shared with multiple languages you'll see keys like <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="56">en-us,de-de</code></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="57">if the value is shared but read-only in some languages the read-only-languages are prefixed with a <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="57">~</code> so you'll see <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="57">en-us,~de-de</code></li>
+</li>
 </ul>
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="59">This can of course extend over many languages, so keys like <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="59">en-us,de-de,de-ch,~ar-ae</code> are valid.</p>
-<h2 id="entity-relationship-fields" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="61">Entity Relationship Fields</h2>
-<p sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="63">Note that entity-relationship fields cannot be multi-language, so it's always mapped to <code sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="63">*</code> and contains an array of references:</p>
-<pre><code class="lang-json" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="65">{
+<h2 id="language-codes">Language Codes</h2>
+<p>The keys of the dictionary determine what language is used and how.</p>
+<ul>
+<li>if the key is <code>*</code> then this value applies to all languages</li>
+<li>if the key is a culture code like <code>en-us</code> (always lower case) it applies to that language</li>
+<li>if the value is shared with multiple languages you'll see keys like <code>en-us,de-de</code></li>
+<li>if the value is shared but read-only in some languages the read-only-languages are prefixed with a <code>~</code> so you'll see <code>en-us,~de-de</code></li>
+</ul>
+<p>This can of course extend over many languages, so keys like <code>en-us,de-de,de-ch,~ar-ae</code> are valid.</p>
+<h2 id="entity-relationship-fields">Entity Relationship Fields</h2>
+<p>Note that entity-relationship fields cannot be multi-language, so it's always mapped to <code>*</code> and contains an array of references:</p>
+<pre><code class="lang-json">{
   &quot;_&quot;: { &quot;V&quot;: 1 },
   &quot;Entity&quot;: {
     &quot;//1&quot;: &quot;Stuff skipped in this example&quot;,
@@ -187,14 +187,14 @@
   }
 }
 </code></pre>
-<h2 id="read-also" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="83">Read also</h2>
-<ul sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="85">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="85"><a class="xref" href="index.html" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="85">JSON Format V1</a></li>
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="86"><a href="https://2sxc.org/en/blog/post/deep-dive-json-stored-content-items-entities" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="86">Blog post about the entity json format</a></li>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="index.html">JSON Format V1</a></li>
+<li><a href="https://2sxc.org/en/blog/post/deep-dive-json-stored-content-items-entities">Blog post about the entity json format</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="88">History</h2>
-<ol sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="90">
-<li sourcefile="pages/abyss/data-formats/json-v01/value.md" sourcestartlinenumber="90">Added in 2sxc 9.4</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Added in 2sxc 9.4</li>
 </ol>
 
 </article>

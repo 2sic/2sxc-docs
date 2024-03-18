@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,64 +106,64 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V15.Logging">
-<h1 id="fix-breaking-change-logging-in-v15" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="5">Fix Breaking Change <em sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="5">Logging</em> in v15</h1>
+<h1 id="fix-breaking-change-logging-in-v15">Fix Breaking Change <em>Logging</em> in v15</h1>
 
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="7"><strong sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="7">Keywords:</strong> #Logging #DataSources</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="9">2sxc has a powerful logging system which tracks what happens in a structure that matches code calls.
+<p><strong>Keywords:</strong> #Logging #DataSources</p>
+<p>2sxc has a powerful logging system which tracks what happens in a structure that matches code calls.
 This was changed extensively.</p>
-<div class="TIP" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="12">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="13">This change should not affect any normal Razor / WebApi etc. code in any way.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="15">It will only affect compiled code, or if you were using non-public APIs</p>
+<p>This change should not affect any normal Razor / WebApi etc. code in any way.</p>
+<p>It will only affect compiled code, or if you were using non-public APIs</p>
 </div>
-<h2 id="reason-for-change" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="17">Reason for Change</h2>
-<ol sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="19">
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="19">We wanted to make this part of code more reusable and plan to publish a Nuget package.
+<h2 id="reason-for-change">Reason for Change</h2>
+<ol>
+<li>We wanted to make this part of code more reusable and plan to publish a Nuget package.
 For this it must be a standalone component.</li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="21">There were various cases were the log could be null, which would result in errors just because of logging.
+<li>There were various cases were the log could be null, which would result in errors just because of logging.
 We wanted to make sure that logging can never break the code.</li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="23">To make the logs match the call-stack, the log objects must be attached to each other.
+<li>To make the logs match the call-stack, the log objects must be attached to each other.
 This always dependend on perfect programming, so we wanted it to be more robust.</li>
 </ol>
-<h2 id="history---how-it-used-to-work" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="26">History - How it Used to Work</h2>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="28">Previously all this came from the following base interfaces / classes</p>
-<ol sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="30">
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="30"><code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="30">ToSic.Eav.Logging.ILog</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="31"><code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="31">ToSic.Eav.Logging.Log</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="32"><code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="32">ToSic.Eav.Logging.IHasLog</code></li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="33"><code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="33">ToSic.Eav.Logging.HasLog</code></li>
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>Previously all this came from the following base interfaces / classes</p>
+<ol>
+<li><code>ToSic.Eav.Logging.ILog</code></li>
+<li><code>ToSic.Eav.Logging.Log</code></li>
+<li><code>ToSic.Eav.Logging.IHasLog</code></li>
+<li><code>ToSic.Eav.Logging.HasLog</code></li>
 </ol>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="35">Almost every relevant object in 2sxc inherited from these or implemented them.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="37">In addition, the API to add logs was - just as an example:</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="39">Log.Add(&quot;Some message&quot;);
+<p>Almost every relevant object in 2sxc inherited from these or implemented them.</p>
+<p>In addition, the API to add logs was - just as an example:</p>
+<pre><code class="lang-c#">Log.Add(&quot;Some message&quot;);
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="43">These methods were methods of <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="43">ILog</code>, so they were part of the object.
-If for some reason the <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="44">Log</code> object was null, this would result in an exception.</p>
-<h2 id="what-we-changed" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="46">What we Changed</h2>
-<h3 id="1-move-to-tosiclibcore" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="48">1. Move to ToSic.Lib.Core</h3>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="50">In 2sxc 15 we introduced a new DLL <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="50">ToSic.Lib.Core</code>.
-It contains very fundamental parts such as <strong sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="51">Logging</strong> and <strong sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="51">Dependency Injection Helpers</strong>.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="53">👉🏽 All classes now inherit from this. If you had any compiled code, it would need to be recompiled.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="55">We then changed almost all logging commands to be <em sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="55">Extension Methods</em>.
-By doing this, we could make all calls <em sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="56">null safe</em>, so if the <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="56">Log</code> object is null, the call will not do anything.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="58">This means, that calling anything on the <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="58">Log</code> object requires you to add the namespace <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="58">ToSic.Lib.Logging</code>:</p>
-<pre><code class="lang-c#" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="60">using ToSic.Lib.Logging;
+<p>These methods were methods of <code>ILog</code>, so they were part of the object.
+If for some reason the <code>Log</code> object was null, this would result in an exception.</p>
+<h2 id="what-we-changed">What we Changed</h2>
+<h3 id="1-move-to-tosiclibcore">1. Move to ToSic.Lib.Core</h3>
+<p>In 2sxc 15 we introduced a new DLL <code>ToSic.Lib.Core</code>.
+It contains very fundamental parts such as <strong>Logging</strong> and <strong>Dependency Injection Helpers</strong>.</p>
+<p>👉🏽 All classes now inherit from this. If you had any compiled code, it would need to be recompiled.</p>
+<p>We then changed almost all logging commands to be <em>Extension Methods</em>.
+By doing this, we could make all calls <em>null safe</em>, so if the <code>Log</code> object is null, the call will not do anything.</p>
+<p>This means, that calling anything on the <code>Log</code> object requires you to add the namespace <code>ToSic.Lib.Logging</code>:</p>
+<pre><code class="lang-c#">using ToSic.Lib.Logging;
 
 Log.A(&quot;some message);
 </code></pre>
-<h3 id="2-new-icodelog-for-dynamic-code-logging" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="66">2. New ICodeLog for Dynamic Code Logging</h3>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="68">We believe that any Razor or WebApi should have a simpler logging mechanism which doesn't need much documentation or learning.
-Because of this, we created a new <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Code.ICodeLog.html" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="69"><code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="69">ICodeLog</code></a> which still has very simple <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="69">Add(...)</code> methods.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="71">This will be what the <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="71">Log</code> property of every Razor and WebApi will return.
-So they will not be <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="72">ILog</code> but <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="72">ICodeLog</code>.</p>
-<p sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="74">This should also ensure that any apps which previously used <code sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="74">Add(...)</code> will continue to work.</p>
-<hr sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="76">
-<h2 id="history" sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="78">History</h2>
-<ul sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="80">
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="80">Introduced ca. 2sxc 9</li>
-<li sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="81">Completely reworked in 2sxc/eav 15</li>
+<h3 id="2-new-icodelog-for-dynamic-code-logging">2. New ICodeLog for Dynamic Code Logging</h3>
+<p>We believe that any Razor or WebApi should have a simpler logging mechanism which doesn't need much documentation or learning.
+Because of this, we created a new <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Code.ICodeLog.html"><code>ICodeLog</code></a> which still has very simple <code>Add(...)</code> methods.</p>
+<p>This will be what the <code>Log</code> property of every Razor and WebApi will return.
+So they will not be <code>ILog</code> but <code>ICodeLog</code>.</p>
+<p>This should also ensure that any apps which previously used <code>Add(...)</code> will continue to work.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced ca. 2sxc 9</li>
+<li>Completely reworked in 2sxc/eav 15</li>
 </ul>
-<hr sourcefile="pages/abyss/releases/history/v15/logging/index.md" sourcestartlinenumber="83">
+<hr>
 <!-- Shortlink to here: https://go.2sxc.org/brc-15-logging TODO: -->
 
 </article>

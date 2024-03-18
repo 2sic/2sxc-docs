@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,94 +108,94 @@
         <article data-uid="Abyss.Security.Csp.Whitelist">
 
 <img src="../../../assets/features/content-security-policy.svg" class="feature">
-<h1 id="content-security-policy-csp-whitelist-guide" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="7">Content Security Policy (CSP) Whitelist Guide</h1>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="9">Most of your CSP policies will allow something to work.
-This is called <em sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="10">whitelisting</em>.</p>
-<h2 id="default-fallback" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="12">Default fallback</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="14">First, we set the <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="14">all-src</code> directive with the value <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="14">'self'</code> and <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="14">https:</code>.
+<h1 id="content-security-policy-csp-whitelist-guide">Content Security Policy (CSP) Whitelist Guide</h1>
+<p>Most of your CSP policies will allow something to work.
+This is called <em>whitelisting</em>.</p>
+<h2 id="default-fallback">Default fallback</h2>
+<p>First, we set the <code>all-src</code> directive with the value <code>'self'</code> and <code>https:</code>.
 This will force the browser to only accept sources originating from the host URL.
-<code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="16">all-src</code> is a custom directive from 2sxc, which all source directives inherit from.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="18">all-src 'self' https:
+<code>all-src</code> is a custom directive from 2sxc, which all source directives inherit from.</p>
+<pre><code class="lang-text">all-src 'self' https:
 </code></pre>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="22">To improve documentation / clarity, you can also use multiple lines and comments:</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="24">// Always allow things from the own server
+<p>To improve documentation / clarity, you can also use multiple lines and comments:</p>
+<pre><code class="lang-text">// Always allow things from the own server
 all-src: 'self'
 
 // No matter where it comes from, it must use HTTPS
 all-src: https:
 </code></pre>
-<h2 id="script-sources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="33">Script sources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="35">For JavaScript code, we use the <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="35">scipt-src</code> directive.
-It is important for this directive to have <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="36">'self'</code> specified as origin, but because we have set the <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="36">all-src</code> directive it gets inherited automatically.
-For the trusted scripts to work properly we will also add <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="37">'unsafe-eval'</code>, which will allow script execution methods.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="39">script-src 'unsafe-eval'
+<h2 id="script-sources">Script sources</h2>
+<p>For JavaScript code, we use the <code>scipt-src</code> directive.
+It is important for this directive to have <code>'self'</code> specified as origin, but because we have set the <code>all-src</code> directive it gets inherited automatically.
+For the trusted scripts to work properly we will also add <code>'unsafe-eval'</code>, which will allow script execution methods.</p>
+<pre><code class="lang-text">script-src 'unsafe-eval'
 </code></pre>
-<h2 id="style-sources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="43">Style Sources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="45">Because we sometimes use inline styles, we need to add the directive <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="45">style-src</code> with the value <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="45">'unsafe-inline'</code>.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="47">style-src 'unsafe-inline'
+<h2 id="style-sources">Style Sources</h2>
+<p>Because we sometimes use inline styles, we need to add the directive <code>style-src</code> with the value <code>'unsafe-inline'</code>.</p>
+<pre><code class="lang-text">style-src 'unsafe-inline'
 </code></pre>
-<h2 id="font-sources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="51">Font Sources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="53">Some of our fonts are hosted on the same origin and some are external.</p>
-<h3 id="inline-fonts" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="55">Inline Fonts</h3>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="57">For example, we may allow fonts from inline data.
-You would do this by adding a <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="58">font-src</code> with the value <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="58">data:</code>.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="60">font-src data:
+<h2 id="font-sources">Font Sources</h2>
+<p>Some of our fonts are hosted on the same origin and some are external.</p>
+<h3 id="inline-fonts">Inline Fonts</h3>
+<p>For example, we may allow fonts from inline data.
+You would do this by adding a <code>font-src</code> with the value <code>data:</code>.</p>
+<pre><code class="lang-text">font-src data:
 </code></pre>
-<h3 id="google-fonts" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="64">Google Fonts</h3>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="66">Because fonts are often included in the skin, we can't whitelist them using 2sxc and must specify them in the config.
-For fonts included from google you typically need to add the url <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="67">fonts.googleapis.com</code> as trusted <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="67">style-src</code> origin and <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="67">fonts.gstatic.com</code> as trusted <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="67">font-src</code> origin.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="69">style-src https://fonts.googleapis.com
+<h3 id="google-fonts">Google Fonts</h3>
+<p>Because fonts are often included in the skin, we can't whitelist them using 2sxc and must specify them in the config.
+For fonts included from google you typically need to add the url <code>fonts.googleapis.com</code> as trusted <code>style-src</code> origin and <code>fonts.gstatic.com</code> as trusted <code>font-src</code> origin.</p>
+<pre><code class="lang-text">style-src https://fonts.googleapis.com
 font-src https://fonts.gstatic.com
 </code></pre>
-<h2 id="image-sources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="75">Image sources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="77">We will only allow images from secure sources.
+<h2 id="image-sources">Image sources</h2>
+<p>We will only allow images from secure sources.
 If you have the all-src specified above, we don't need to add this again.
-But we may wish to add <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="79">data:</code> for inline images.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="81">img-src data:
+But we may wish to add <code>data:</code> for inline images.</p>
+<pre><code class="lang-text">img-src data:
 </code></pre>
-<h2 id="media-sources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="85">Media sources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="87">For the usage of video/audio tags we will only allow media from secure sources as well.
-The &quot;media-src&quot; directive with the value &quot;'self' https:&quot; will be automatically assumed, if you have the <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="88">all-src</code> set above.</p>
-<h2 id="form-actions" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="90">Form actions</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="92">Form actions can be a sensitive topic while handling data.
-Simply by adding the <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="93">form-action</code> directive with the value &quot;'self'&quot;, we can prevent data-leaks.
-When dealing with other websites you should add the external domain specifically, like for example &quot;'self' <a href="https://externaldomain.com" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="94">https://externaldomain.com</a>&quot;.</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="96">form-action 'self'
+<h2 id="media-sources">Media sources</h2>
+<p>For the usage of video/audio tags we will only allow media from secure sources as well.
+The &quot;media-src&quot; directive with the value &quot;'self' https:&quot; will be automatically assumed, if you have the <code>all-src</code> set above.</p>
+<h2 id="form-actions">Form actions</h2>
+<p>Form actions can be a sensitive topic while handling data.
+Simply by adding the <code>form-action</code> directive with the value &quot;'self'&quot;, we can prevent data-leaks.
+When dealing with other websites you should add the external domain specifically, like for example &quot;'self' <a href="https://externaldomain.com">https://externaldomain.com</a>&quot;.</p>
+<pre><code class="lang-text">form-action 'self'
 form-action https://externaldomain.com
 </code></pre>
-<h2 id="insecure-http-resources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="101">Insecure (http) Resources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="103">For most resources we have specified to only allow secure https connections as origin.
+<h2 id="insecure-http-resources">Insecure (http) Resources</h2>
+<p>For most resources we have specified to only allow secure https connections as origin.
 Because it would be hard to migrate every HTTP resource to HTTPS, we can use the &quot;upgrade-insecure-requests&quot; directive.
 Using this directive, the browser will request every resource (even if originating from HTTP) using HTTPS.</p>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="107">Note that we don't recommend doing this!</p>
-<h2 id="include-external-resources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="109">Include External Resources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="111">When including external resources in apps, you should use the AssetAttributes method from the IPageService.</p>
-<pre><code class="lang-razor" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="113">@inherits Custom.Hybrid.Razor14
+<p>Note that we don't recommend doing this!</p>
+<h2 id="include-external-resources">Include External Resources</h2>
+<p>When including external resources in apps, you should use the AssetAttributes method from the IPageService.</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 &lt;script src=&quot;@App.Path/dist/scripts.min.js&quot; @Kit.Page.AssetAttributes() &gt;&lt;/script&gt;
 </code></pre>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="118">For cases, which are outside of the scope of 2sxc Apps you can whitelist them by specifying the directive <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="118">script-src</code> with the origin URL.</p>
-<h2 id="trusted-pre-registered-web-resources" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="120">Trusted, Pre-Registered Web Resources</h2>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="122">For pre-registered resources, you can also just activate them.</p>
-<pre><code class="lang-razor" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="124">@inherits Custom.Hybrid.Razor14
+<p>For cases, which are outside of the scope of 2sxc Apps you can whitelist them by specifying the directive <code>script-src</code> with the origin URL.</p>
+<h2 id="trusted-pre-registered-web-resources">Trusted, Pre-Registered Web Resources</h2>
+<p>For pre-registered resources, you can also just activate them.</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   Kit.Page.Activate(&quot;turnOn&quot;, &quot;2sxc.JsCore&quot;, &quot;fancybox4&quot;);
 }
 </code></pre>
-<h3 id="fontawesome-icon-libraries" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="131">Fontawesome Icon Libraries</h3>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="133">As our default icon library, fontawesome gets set as trusted source automatically by 2sxc.
-This will only work if added using <code sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="134">Kit.Page.Activate(&quot;Fontawesome5&quot;)</code>.
+<h3 id="fontawesome-icon-libraries">Fontawesome Icon Libraries</h3>
+<p>As our default icon library, fontawesome gets set as trusted source automatically by 2sxc.
+This will only work if added using <code>Kit.Page.Activate(&quot;Fontawesome5&quot;)</code>.
 Otherwise you will have to specify it in the configuration.</p>
-<pre><code class="lang-razor" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="137">@inherits Custom.Hybrid.Razor14
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   Kit.Page.Activate(&quot;fontawesome5&quot;);
 }
 </code></pre>
-<h3 id="fancybox" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="144">FancyBox</h3>
-<p sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="146">Within 2sxc the FancyBox library is also a pre-registered resource.
+<h3 id="fancybox">FancyBox</h3>
+<p>Within 2sxc the FancyBox library is also a pre-registered resource.
 Because 2sxc hosts the JavaScript file internally, we only need to trust the origin of its stylesheet file.
 We do this by adding a &quot;style-src&quot; directive and setting the &quot;cdn.jsdelivr.net/npm/@fancyapps/&quot; origin as value.
 But this will also happen automatically when we activate the resource.</p>
-<pre><code class="lang-razor" sourcefile="pages/abyss/security/csp/whitelist.md" sourcestartlinenumber="151">@inherits Custom.Hybrid.Razor14
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor14
 @{
   Kit.Page.Activate(&quot;fancybox3&quot;);
 }

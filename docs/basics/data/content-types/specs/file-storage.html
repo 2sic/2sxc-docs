@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,50 +106,50 @@
         </div>
 
         <article data-uid="Basics.Data.ContentTypes.FileStorage">
-<h1 id="file-stored-content-types" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="5">File-Stored Content-Types</h1>
+<h1 id="file-stored-content-types">File-Stored Content-Types</h1>
 
 <div class="overlay-container">
   <div class="overlay-box" style="left: 51.8%; top: 46%; height: 45%; width: 24%"></div>
   <img src="../../../../pages/basics/data/assets/app-data.png" class="full-width">
 </div>
 
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="9">This section explains <strong sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="9">File-Stored Content-Types</strong>. For an overview check out <a class="xref" href="../../index.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="9">Understanding Data...</a>.</p>
-<hr sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="11">
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="13">Usually <a class="xref" href="../index.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="13">Content-Types</a> are stored in the <a class="xref" href="sql-storage.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="13">database</a>.
+<p>This section explains <strong>File-Stored Content-Types</strong>. For an overview check out <a class="xref" href="../../index.html">Understanding Data...</a>.</p>
+<hr>
+<p>Usually <a class="xref" href="../index.html">Content-Types</a> are stored in the <a class="xref" href="sql-storage.html">database</a>.
 For a special use case, content-type definitions can also stored in a json-file.
-This is used for <a class="xref" href="../range-global-system.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="15">System Content-Types</a> and <a class="xref" href="../range-global.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="15">Global Content-Types</a>.
+This is used for <a class="xref" href="../range-global-system.html">System Content-Types</a> and <a class="xref" href="../range-global.html">Global Content-Types</a>.
 Examples of such types are:</p>
-<ol sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="18">
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="18">configurations of data-sources (like the SqlDataSource in 2sxc 9.8)</li>
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="19">any kind of input-configuration types (like string-dropdown, etc. starting in 2sxc 9.10)</li>
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="20">any kind of global types like view metadata etc.</li>
+<ol>
+<li>configurations of data-sources (like the SqlDataSource in 2sxc 9.8)</li>
+<li>any kind of input-configuration types (like string-dropdown, etc. starting in 2sxc 9.10)</li>
+<li>any kind of global types like view metadata etc.</li>
 </ol>
-<h2 id="overview" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="22">Overview</h2>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="24">Basically the app-repository is a folder which contains content-type definitions in a <em sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="24">contenttype</em> sub folder.</p>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="26">The format is the <a class="xref" href="../../../../abyss/data-formats/json-v01/content-type.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="26">json-format V1</a></p>
-<h3 id="storage-of-system-content-types" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="28">Storage of System Content-Types</h3>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="30">This is located in: <code sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="30">/desktopmodules/ToSIC_SexyContent/App_Data/system/contenttypes/</code></p>
-<h3 id="storage-of-custom-global-shared-content-types" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="32">Storage of Custom Global Shared Content-Types</h3>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="34">This is located in: <code sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="34">/desktopmodules/ToSIC_SexyContent/App_Data/system-custom/contenttypes/</code></p>
-<h3 id="storage-of-content-types-which-are-part-of-a-dnn-extension" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="37">Storage of Content-Types which are Part of a Dnn-Extension</h3>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="39">Dnn Extensions can include content-types, for example to configure a DataSource which is part of that Dnn Extension.</p>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="41">These files can be anywhere in the system, but the DLL will have to tell 2sxc to load them.</p>
-<h2 id="limitation-no-gui" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="44">Limitation: No GUI</h2>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="46">As of now the system will pick up the content-types stored there and everything works. BUT there is no built-in UI to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="48">This should not affect you, as it's not meant to be managed by anybody else than us as of now.</p>
-<h2 id="when-to-use" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="50">When To Use</h2>
-<p sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="52">You will almost never need these, except for 2 important scenarios:</p>
-<ol sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="54">
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="54">Shared Content-Types across <em sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="54">all</em> Apps (similar to <a class="xref" href="../range-app-shared.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="54">Shared Content-Types</a>)</li>
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="55">When you create a <a class="xref" href="../../../../net-code/data-sources/custom/index.html" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="55">custom data-source</a>, and want to distribute the Configuration Content-Type along with your DLL</li>
+<h2 id="overview">Overview</h2>
+<p>Basically the app-repository is a folder which contains content-type definitions in a <em>contenttype</em> sub folder.</p>
+<p>The format is the <a class="xref" href="../../../../abyss/data-formats/json-v01/content-type.html">json-format V1</a></p>
+<h3 id="storage-of-system-content-types">Storage of System Content-Types</h3>
+<p>This is located in: <code>/desktopmodules/ToSIC_SexyContent/App_Data/system/contenttypes/</code></p>
+<h3 id="storage-of-custom-global-shared-content-types">Storage of Custom Global Shared Content-Types</h3>
+<p>This is located in: <code>/desktopmodules/ToSIC_SexyContent/App_Data/system-custom/contenttypes/</code></p>
+<h3 id="storage-of-content-types-which-are-part-of-a-dnn-extension">Storage of Content-Types which are Part of a Dnn-Extension</h3>
+<p>Dnn Extensions can include content-types, for example to configure a DataSource which is part of that Dnn Extension.</p>
+<p>These files can be anywhere in the system, but the DLL will have to tell 2sxc to load them.</p>
+<h2 id="limitation-no-gui">Limitation: No GUI</h2>
+<p>As of now the system will pick up the content-types stored there and everything works. BUT there is no built-in UI to edit these. We (2sic) can easily create content-types in a normal 2sxc and export them to json for this purpose, but as of now there is no GUI to do so.</p>
+<p>This should not affect you, as it's not meant to be managed by anybody else than us as of now.</p>
+<h2 id="when-to-use">When To Use</h2>
+<p>You will almost never need these, except for 2 important scenarios:</p>
+<ol>
+<li>Shared Content-Types across <em>all</em> Apps (similar to <a class="xref" href="../range-app-shared.html">Shared Content-Types</a>)</li>
+<li>When you create a <a class="xref" href="../../../../net-code/data-sources/custom/index.html">custom data-source</a>, and want to distribute the Configuration Content-Type along with your DLL</li>
 </ol>
-<h2 id="future-features--wishes" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="57">Future Features &amp; Wishes</h2>
-<ol sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="59">
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="59"><em sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="59">App level</em> content-types. This would dramatically enhance our ability to upgrade existing apps, as it's easier to detect type-changes.</li>
+<h2 id="future-features--wishes">Future Features &amp; Wishes</h2>
+<ol>
+<li><em>App level</em> content-types. This would dramatically enhance our ability to upgrade existing apps, as it's easier to detect type-changes.</li>
 </ol>
-<h2 id="history" sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="61">History</h2>
-<ol sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="63">
-<li sourcefile="pages/basics/data/content-types/specs/file-storage.md" sourcestartlinenumber="63">Added in 2sxc 9.7</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Added in 2sxc 9.7</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,41 +106,41 @@
         </div>
 
         <article data-uid="NetCode.WebApi.JsonFormat">
-<h1 id="custom-c-web-api---json-format" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="5">Custom C# Web API - JSON Format</h1>
+<h1 id="custom-c-web-api---json-format">Custom C# Web API - JSON Format</h1>
 
-<h2 id="background-json-format-in-webapi-requests" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="7">Background: JSON Format in WebApi Requests</h2>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="9">Today most JavaScript clients use JSON to communicate with the server.
+<h2 id="background-json-format-in-webapi-requests">Background: JSON Format in WebApi Requests</h2>
+<p>Today most JavaScript clients use JSON to communicate with the server.
 This is a very simple format, which is easy to read and write.
 It's also very easy to parse in JavaScript, which is why it's so popular.</p>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="13">In the old days, Microsoft used XML for this, but it's much more complex and difficult to read and write.
+<p>In the old days, Microsoft used XML for this, but it's much more complex and difficult to read and write.
 When 2sxc was created, JSON was already the standard, so we never used XML.
-But at that time, the json plugin <strong sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="15">Newtonsoft</strong> was the de-facto standard, so we used that.
-But nowadays <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="16">System.Text.Json</code> is the de-facto standard.
-This means that <em sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="17">by default</em> this is what is being used:</p>
-<ol sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="19">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="19">On DNN on all base classes up until <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="19">Custom.Hybrid.Api14</code> Newtonsoft is used for serialization</li>
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="20">On Oqtane all base classes use the new .net core serializer</li>
+But at that time, the json plugin <strong>Newtonsoft</strong> was the de-facto standard, so we used that.
+But nowadays <code>System.Text.Json</code> is the de-facto standard.
+This means that <em>by default</em> this is what is being used:</p>
+<ol>
+<li>On DNN on all base classes up until <code>Custom.Hybrid.Api14</code> Newtonsoft is used for serialization</li>
+<li>On Oqtane all base classes use the new .net core serializer</li>
 </ol>
-<h2 id="how-to-go-modern" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="22">How to Go Modern</h2>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="24">In 2sxc 16 we introduced a new attribute called <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="24">[JsonFormatter]</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.JsonFormatterAttribute.html" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="24">JsonFormatterAttribute</a>.
+<h2 id="how-to-go-modern">How to Go Modern</h2>
+<p>In 2sxc 16 we introduced a new attribute called <code>[JsonFormatter]</code> - see <a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.JsonFormatterAttribute.html">JsonFormatterAttribute</a>.
 When it's applied to:</p>
-<ol sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="27">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="27">a WebApi Controller class</li>
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="28">a specific method of that class</li>
+<ol>
+<li>a WebApi Controller class</li>
+<li>a specific method of that class</li>
 </ol>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="30">then it will use the new .net core serializer.
+<p>then it will use the new .net core serializer.
 It has the following effects:</p>
-<ol sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="33">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="33">It can auto-convert <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="33">IEntity</code> objects as well as lists/arrays of <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="33">IEntity</code> objects</li>
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="34">By default it will use <strong sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="34">camelCase</strong> for all properties, which is the modern standard.</li>
+<ol>
+<li>It can auto-convert <code>IEntity</code> objects as well as lists/arrays of <code>IEntity</code> objects</li>
+<li>By default it will use <strong>camelCase</strong> for all properties, which is the modern standard.</li>
 </ol>
-<div class="TIP" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="36">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="37">Remember that this applies to both <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="37">POST</code> data from the client,
+<p>Remember that this applies to both <code>POST</code> data from the client,
 as well as response data.</p>
 </div>
-<h2 id="example" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="40">Example</h2>
-<pre><code class="lang-c#" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="42">using ToSic.Sxc.WebApi;   // For the [JsonFormatter] (see below)
+<h2 id="example">Example</h2>
+<pre><code class="lang-c#">using ToSic.Sxc.WebApi;   // For the [JsonFormatter] (see below)
 
 [AllowAnonymous]
 [JsonFormatter]
@@ -159,41 +159,41 @@ public class Api14AttController : Custom.Hybrid.Api14
     }
 }
 </code></pre>
-<h2 id="effects-on-the-post-data" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="63">Effects on the POST Data</h2>
-<div class="TIP" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="65">
+<h2 id="effects-on-the-post-data">Effects on the POST Data</h2>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="66"><code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="66">POST</code> data is parsed case-insensitive, so it doesn't matter if the client sends <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="66">camelCase</code> or <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="66">PascalCase</code> - it will be parsed correctly.</p>
+<p><code>POST</code> data is parsed case-insensitive, so it doesn't matter if the client sends <code>camelCase</code> or <code>PascalCase</code> - it will be parsed correctly.</p>
 </div>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="68">There are 2 important effects to keep in mind:</p>
-<ol sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="70">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="70">Most JSON in the POST will be the same no matter which serializer is used</li>
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="71">Only exotic data such as binary files will be different</li>
+<p>There are 2 important effects to keep in mind:</p>
+<ol>
+<li>Most JSON in the POST will be the same no matter which serializer is used</li>
+<li>Only exotic data such as binary files will be different</li>
 </ol>
-<h2 id="effects-on-response-data" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="73">Effects on Response Data</h2>
-<div class="TIP" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="75">
+<h2 id="effects-on-response-data">Effects on Response Data</h2>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="76">Response data is usually read by JavaScript, which is case sensitive.</p>
+<p>Response data is usually read by JavaScript, which is case sensitive.</p>
 </div>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="78">The main impact on Response Data is the client should expect <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="78">camelCase</code> instead of <code sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="78">PascalCase</code>.
+<p>The main impact on Response Data is the client should expect <code>camelCase</code> instead of <code>PascalCase</code>.
 This can be configured if you want it differently, like this:</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="81">  [HttpGet]
+<pre><code class="lang-c#">  [HttpGet]
   [JsonFormatter(Casing = Casing.Preserve)] // auto-convert but preserve casing
   public dynamic PersonsAutoPreserveCasing()
   {
     return App.Data[&quot;Persons&quot;];
   }
 </code></pre>
-<p sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="90">It will also auto-convert Entities for you, which used to be very difficult.
-See <a class="xref" href="auto-convert-entities.html" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="91">Custom C# Web API - Auto Convert Entities</a></p>
-<h2 id="recommended-reading" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="94">Recommended Reading</h2>
-<ul sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="96">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="96"><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="96">Web API Tutorials</a></li>
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="97"><a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.JsonFormatterAttribute.html" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="97">JsonFormatterAttribute</a></li>
+<p>It will also auto-convert Entities for you, which used to be very difficult.
+See <a class="xref" href="auto-convert-entities.html">Custom C# Web API - Auto Convert Entities</a></p>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Web API Tutorials</a></li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.WebApi.JsonFormatterAttribute.html">JsonFormatterAttribute</a></li>
 </ul>
-<hr sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="99">
-<h2 id="history" sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="101">History</h2>
-<ol sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="103">
-<li sourcefile="pages/net-code/web-api/json-format.md" sourcestartlinenumber="103">New JsonFormatter introduced in 2sxc 16.00</li>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>New JsonFormatter introduced in 2sxc 16.00</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,119 +108,119 @@
         <article data-uid="Abyss.Security.Csp.Guide">
 
 <img src="../../../assets/features/content-security-policy.svg" class="feature">
-<h1 id="content-security-policy-csp-guide-for-2sxc-dnn-and-oqtane" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="7">Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane</h1>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="9">Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="9">cross-site scripting attacks</a>.</p>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="11">In this guide we'll give you step-by-step instructions how to harden a website in no time.
+<h1 id="content-security-policy-csp-guide-for-2sxc-dnn-and-oqtane">Content Security Policy (CSP) Guide for 2sxc, Dnn and Oqtane</h1>
+<p>Content Security Policy (CSP) is a security policy that helps you to protect your web application from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting attacks</a>.</p>
+<p>In this guide we'll give you step-by-step instructions how to harden a website in no time.
 With a bit of practice you can harden a DNN with Content-Security-Policy in one to two hours 🚀.</p>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="14">🎬 Before you start, be sure you've read the <a class="xref" href="index.html" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="14">background, parts and best-practices</a>.</p>
-<h2 id="general-process" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="16">General Process</h2>
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="18">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="18">Plan and prepare</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="19">Setup CSP for anonymous users in reporting-only-mode with a reporting-server</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="20">Setup CSP for other users - reporting-only</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="21">Go productive</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="22">Monitor for a few days</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="23">Switch to full-mode</li>
+<p>🎬 Before you start, be sure you've read the <a class="xref" href="index.html">background, parts and best-practices</a>.</p>
+<h2 id="general-process">General Process</h2>
+<ol>
+<li>Plan and prepare</li>
+<li>Setup CSP for anonymous users in reporting-only-mode with a reporting-server</li>
+<li>Setup CSP for other users - reporting-only</li>
+<li>Go productive</li>
+<li>Monitor for a few days</li>
+<li>Switch to full-mode</li>
 </ol>
-<h2 id="csp-preparations" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="25">CSP Preparations</h2>
-<h3 id="planning-csp" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="27">Planning CSP</h3>
-<blockquote sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="29">
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="29">Think before you act</p>
+<h2 id="csp-preparations">CSP Preparations</h2>
+<h3 id="planning-csp">Planning CSP</h3>
+<blockquote>
+<p>Think before you act</p>
 </blockquote>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="31">Some choices made ahead of time will save you time and effort later.</p>
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="33">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="33">Will you make different CSP rules for admins and anonymous users?</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="34">Will you use a reporting-server?</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="35">Are you doing this just to &quot;tick the box, yes we did it&quot; or do you want it as secure as possible?</li>
+<p>Some choices made ahead of time will save you time and effort later.</p>
+<ol>
+<li>Will you make different CSP rules for admins and anonymous users?</li>
+<li>Will you use a reporting-server?</li>
+<li>Are you doing this just to &quot;tick the box, yes we did it&quot; or do you want it as secure as possible?</li>
 </ol>
-<div class="TIP" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="38">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="39">We highly suggest you segment this by users.
+<p>We highly suggest you segment this by users.
 That will allow you to make much stricter rules for anonymous users and less strict for admins.</p>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="42">This also gives you a better score in most penetration tests, because they will evaluate the rules for anonymous users.</p>
+<p>This also gives you a better score in most penetration tests, because they will evaluate the rules for anonymous users.</p>
 </div>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="44">In addition, we suggest you ask yourself these questions ahead of time, because it will make it easier to hand off work:</p>
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="46">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="46">When you have a situation where a code-change would let you make the rule more strict, will you make the code change, or use a lax rule?</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="47">When you have CDN resources, will you want to whitelist them, or move them to your server?</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="48">If you have resources from CDNs, will you whitelist the entire CDNs or just these resources?</li>
+<p>In addition, we suggest you ask yourself these questions ahead of time, because it will make it easier to hand off work:</p>
+<ol>
+<li>When you have a situation where a code-change would let you make the rule more strict, will you make the code change, or use a lax rule?</li>
+<li>When you have CDN resources, will you want to whitelist them, or move them to your server?</li>
+<li>If you have resources from CDNs, will you whitelist the entire CDNs or just these resources?</li>
 </ol>
-<h3 id="prepare--harden-a-site-for-csp" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="50">Prepare / Harden a Site for CSP</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="52">Before you try to configure CSP it's best to have a good setup which makes it more secure.</p>
-<div class="TIP" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="54">
+<h3 id="prepare--harden-a-site-for-csp">Prepare / Harden a Site for CSP</h3>
+<p>Before you try to configure CSP it's best to have a good setup which makes it more secure.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="55">If you follow these recommendations, you will be able to have much stricter policies.
+<p>If you follow these recommendations, you will be able to have much stricter policies.
 If you don't, you can still activate CSP but will need a much laxer setup.</p>
 </div>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="59">Rework your Skins / Apps to match a secure architecture, following the best practices.
+<p>Rework your Skins / Apps to match a secure architecture, following the best practices.
 Things such as:</p>
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="62">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="62">Get rid of unused js/css code/files</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="63">Reduce or better still, remove all jQuery dependent code (especially for anonymous users)</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="64">Reduce all CDN references to as few as possible</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="65">Place all your inline scripts and styles in files</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="66">Change all inline <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="66">onclick</code> or <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="66">href:javascript:...</code> to be bound by the loaded code</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="67">Use <a class="xref" href="../../../js-code/turn-on/index.html" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="67">turnOn</a> to couple the JS with Razor-data such as the ModuleId</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="68">Use <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_Activate_" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="68">IPageService.Activate(...)</a> and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AssetAttributes_" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="68">IPageService.AssetAttributes(...)</a> wherever possible</li>
+<ol>
+<li>Get rid of unused js/css code/files</li>
+<li>Reduce or better still, remove all jQuery dependent code (especially for anonymous users)</li>
+<li>Reduce all CDN references to as few as possible</li>
+<li>Place all your inline scripts and styles in files</li>
+<li>Change all inline <code>onclick</code> or <code>href:javascript:...</code> to be bound by the loaded code</li>
+<li>Use <a class="xref" href="../../../js-code/turn-on/index.html">turnOn</a> to couple the JS with Razor-data such as the ModuleId</li>
+<li>Use <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_Activate_">IPageService.Activate(...)</a> and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html#ToSic_Sxc_Services_IPageService_AssetAttributes_">IPageService.AssetAttributes(...)</a> wherever possible</li>
 </ol>
-<div class="TIP" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="70">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="71">All the latest standard 2sxc apps implement all these best practices.
+<p>All the latest standard 2sxc apps implement all these best practices.
 If you still have older Apps, we suggest you install the latest on another server and copy the parts you need.</p>
 </div>
-<h3 id="prepare-for-monitoring" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="74">Prepare for Monitoring</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="76">Once you've deployed CSP you should get notified of any violations.
+<h3 id="prepare-for-monitoring">Prepare for Monitoring</h3>
+<p>Once you've deployed CSP you should get notified of any violations.
 The idea is that violations could just be a sign that something wasn't configured correctly and you may have missed this.</p>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="79">There are some cool online services which can do this, like <a href="https://report-uri.com/" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="79">https://report-uri.com/</a>.
+<p>There are some cool online services which can do this, like <a href="https://report-uri.com/">https://report-uri.com/</a>.
 So we highly recommend you get an account to use for monitoring.</p>
-<h2 id="develop-csp-rules" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="84">Develop CSP Rules</h2>
-<h3 id="general-pattern" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="86">General Pattern</h3>
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="88">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="88">Always do dry-run tests first
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="89">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="89">Create a new <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="89">Dev</code> policy and set it to <em sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="89">Report-Only</em></li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="90">Test it using <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="90">?csp=dev</code> in the url</li>
+<h2 id="develop-csp-rules">Develop CSP Rules</h2>
+<h3 id="general-pattern">General Pattern</h3>
+<ol>
+<li>Always do dry-run tests first
+<ol>
+<li>Create a new <code>Dev</code> policy and set it to <em>Report-Only</em></li>
+<li>Test it using <code>?csp=dev</code> in the url</li>
 </ol>
 </li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="91">Choose to start restrictive or lax
-<ol sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="92">
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="92">either start restrictive and open up the rules step-by-step</li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="93">or start with lax rules and tighten step-by-step</li>
+<li>Choose to start restrictive or lax
+<ol>
+<li>either start restrictive and open up the rules step-by-step</li>
+<li>or start with lax rules and tighten step-by-step</li>
 </ol>
 </li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="94">Once it works, apply to production as <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="94">...-Report-Only</code></li>
-<li sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="95">Repeat with other user roles</li>
+<li>Once it works, apply to production as <code>...-Report-Only</code></li>
+<li>Repeat with other user roles</li>
 </ol>
-<h3 id="dry-run-without-enforcing-policies" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="99">Dry-Run Without Enforcing Policies</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="101">First you must enable the dev-feature.</p>
+<h3 id="dry-run-without-enforcing-policies">Dry-Run Without Enforcing Policies</h3>
+<p>First you must enable the dev-feature.</p>
 <img src="../../../pages/abyss/security/csp/assets/manage-features-csp.jpg" width="100%" class="full-width">
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="105">Now you can test the policy by adding <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="105">?csp=dev</code> to any page.
-It will work with any login - as soon as you add the parameter, it will use the <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="106">Dev</code> settings.
+<p>Now you can test the policy by adding <code>?csp=dev</code> to any page.
+It will work with any login - as soon as you add the parameter, it will use the <code>Dev</code> settings.
 This is how the dev settings could look:</p>
 <img src="../../../pages/abyss/security/csp/assets/site-settings-csp-dev.jpg" width="100%" class="full-width">
-<h3 id="browser-setup" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="111">Browser Setup</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="113">You will want to have a logged-in window to make configuration changes, and another window to test the policy.
+<h3 id="browser-setup">Browser Setup</h3>
+<p>You will want to have a logged-in window to make configuration changes, and another window to test the policy.
 You can either use two browsers (chrome+canary, chrome+firefox, firefox+edge, etc.)
 or a single browser with anonymous/guest modes to have different login states.</p>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="117">As we're testing this, you will always need to add <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="117">?csp=dev</code> to the url you're testing.</p>
-<div class="TIP" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="119">
+<p>As we're testing this, you will always need to add <code>?csp=dev</code> to the url you're testing.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="120">In the window where you make the configuration, use Ctl+S to just save and not close the widow.
+<p>In the window where you make the configuration, use Ctl+S to just save and not close the widow.
 This will make it much faster to try various setups.</p>
 </div>
-<div class="TIP" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="123">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="124">During development, please disable <a class="xref" href="../../lightspeed/index.html" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="124">LightSpeed Cache</a>
+<p>During development, please disable <a class="xref" href="../../lightspeed/index.html">LightSpeed Cache</a>
 as it may cache some settings, making it hard to debug.</p>
 </div>
-<h3 id="strict-first-method-recommended" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="127">Strict-First Method (recommended)</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="129">With Strict-First you start with very strict rules in <code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="129">...-Report-Only</code> mode.
+<h3 id="strict-first-method-recommended">Strict-First Method (recommended)</h3>
+<p>With Strict-First you start with very strict rules in <code>...-Report-Only</code> mode.
 You will then review the errors you see in the browsers F12 console.
 Then you will loosen up the rules step-by-step.</p>
-<h3 id="lax-first-method" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="133">Lax-First Method</h3>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="135">The Lax-First method assumes that you start with rules that allow everything, then you tighten them up step-by-step.
-Here's an example of a very lax rule set, taken from <a href="https://stackoverflow.com/questions/35978863/allow-all-content-security-policy" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="136">StackOverflow</a>:</p>
-<pre><code class="lang-text" sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="138">default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic' ;
+<h3 id="lax-first-method">Lax-First Method</h3>
+<p>The Lax-First method assumes that you start with rules that allow everything, then you tighten them up step-by-step.
+Here's an example of a very lax rule set, taken from <a href="https://stackoverflow.com/questions/35978863/allow-all-content-security-policy">StackOverflow</a>:</p>
+<pre><code class="lang-text">default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic' ;
 script-src * data: blob: 'unsafe-inline' 'unsafe-eval' ;
 connect-src * data: blob: 'unsafe-inline' ;
 img-src * data: blob: 'unsafe-inline' ;
@@ -229,13 +229,13 @@ style-src * data: blob: 'unsafe-inline' ;
 font-src * data: blob: 'unsafe-inline' ;
 frame-ancestors * data: blob: 'unsafe-inline' ;
 </code></pre>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="149">for 2sxc it can be shorted to:</p>
-<pre><code sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="151">// all-src would always be applied to all rules
+<p>for 2sxc it can be shorted to:</p>
+<pre><code>// all-src would always be applied to all rules
 all-src * data: blob: 'unsafe-inline'
 default-src filesystem: about: ws: wss: 'unsafe-eval' 'unsafe-dynamic'
 script-src 'unsafe-eval'
 </code></pre>
-<p sourcefile="pages/abyss/security/csp/guide.md" sourcestartlinenumber="158">You can now start to tighten up the rules.</p>
+<p>You can now start to tighten up the rules.</p>
 
 </article>
 

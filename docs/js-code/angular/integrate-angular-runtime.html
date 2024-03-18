@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,7 +108,7 @@
         <article data-uid="JsCode.Angular.IntegrateAngularRuntime">
 
 <img src="../../pages/js-code/angular/assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
-<h1 id="integrate-angular-for-runtime-in-2sxc--dnn" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="7">Integrate Angular for Runtime in 2sxc / Dnn</h1>
+<h1 id="integrate-angular-for-runtime-in-2sxc--dnn">Integrate Angular for Runtime in 2sxc / Dnn</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -204,22 +204,22 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
-<p sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="12">This explains how to best integrate Angular in Dnn. Note that you can find a working demo of this in the <a class="xref" href="template-app.html" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="12">Template Angular App</a>.</p>
-<h2 id="goals-of-the-runtime-integration" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="14">Goals of the Runtime Integration</h2>
-<ol sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="16">
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="16">The Angular App can be compiled using best-practices incl. partial loading and hashed files</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="17">The Angular solution can be easily distributed to another Dnn/2sxc as a 2sxc App package</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="18">We can run multiple editions of the same app, like a <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="18">live</code> and a <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="18">staging</code> edition for internal review</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="19">The final page has the <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="19">app</code> tag and all the script/css resources as the Angular compiler generated them</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="20">Changes to the Angular App are automatically included without manual changes</li>
+<p>This explains how to best integrate Angular in Dnn. Note that you can find a working demo of this in the <a class="xref" href="template-app.html">Template Angular App</a>.</p>
+<h2 id="goals-of-the-runtime-integration">Goals of the Runtime Integration</h2>
+<ol>
+<li>The Angular App can be compiled using best-practices incl. partial loading and hashed files</li>
+<li>The Angular solution can be easily distributed to another Dnn/2sxc as a 2sxc App package</li>
+<li>We can run multiple editions of the same app, like a <code>live</code> and a <code>staging</code> edition for internal review</li>
+<li>The final page has the <code>app</code> tag and all the script/css resources as the Angular compiler generated them</li>
+<li>Changes to the Angular App are automatically included without manual changes</li>
 </ol>
-<h2 id="implementation" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="22">Implementation</h2>
-<p sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="24">In the Template App the compiled Angular SPA is in <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="24">[app-root]/live/dist/ng-app/</code>. The way it's integrated in the template app is that the main file <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="24">_AngularApp.cshtml</code> has some code like this:</p>
-<pre><code class="lang-razor" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="26">@inherits Custom.Hybrid.Razor12
+<h2 id="implementation">Implementation</h2>
+<p>In the Template App the compiled Angular SPA is in <code>[app-root]/live/dist/ng-app/</code>. The way it's integrated in the template app is that the main file <code>_AngularApp.cshtml</code> has some code like this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
   // ...
@@ -235,19 +235,19 @@
   @Html.Raw(ngHelpers.ImportAngularHtml(editions.CurrentEdition));
 }
 </code></pre>
-<p sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="44">We've removed some of the code here for simplicity, but the important parts are</p>
-<ol sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="46">
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="46">Add <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="46">&lt;base&gt;</code> header to the page for Angular Routing to work properly</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="47"><code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="47">ImportAngularHtml</code> which will scan the <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="47">index.html</code> which Angular creates, extract all the important parts and add them to the page</li>
+<p>We've removed some of the code here for simplicity, but the important parts are</p>
+<ol>
+<li>Add <code>&lt;base&gt;</code> header to the page for Angular Routing to work properly</li>
+<li><code>ImportAngularHtml</code> which will scan the <code>index.html</code> which Angular creates, extract all the important parts and add them to the page</li>
 </ol>
-<p sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="49">Note that there is a bit more magic happening to ensure we can run multiple editions (<code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="49">live</code>, <code sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="49">staging</code>, ...). To see the full source code, get the <a class="xref" href="https://2sxc.org/en/apps/app/tutorial-and-template-app-for-angular-11" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="49">Angular 11 Template App</a> or browse it here <a class="xref" href="https://github.com/2sic/app-template-angular" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="49">Angular 11 Template App Github Repo</a></p>
-<hr sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="52">
-<h2 id="history" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="54">History</h2>
-<ol sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="56">
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="56">First <a href="https://github.com/2sic/app-tutorial-angular4-data" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="56">version for Angular 4</a> created in 2017</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="57">Enhanced for <a href="https://github.com/2sic/app-template-angular" sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="57">Angular 6</a> in 2019</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="58">Enhanced for Angular 8 in 2020</li>
-<li sourcefile="pages/js-code/angular/integrate-angular-runtime.md" sourcestartlinenumber="59">Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021</li>
+<p>Note that there is a bit more magic happening to ensure we can run multiple editions (<code>live</code>, <code>staging</code>, ...). To see the full source code, get the <a class="xref" href="https://2sxc.org/en/apps/app/tutorial-and-template-app-for-angular-11">Angular 11 Template App</a> or browse it here <a class="xref" href="https://github.com/2sic/app-template-angular">Angular 11 Template App Github Repo</a></p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>First <a href="https://github.com/2sic/app-tutorial-angular4-data">version for Angular 4</a> created in 2017</li>
+<li>Enhanced for <a href="https://github.com/2sic/app-template-angular">Angular 6</a> in 2019</li>
+<li>Enhanced for Angular 8 in 2020</li>
+<li>Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021</li>
 </ol>
 
 </article>

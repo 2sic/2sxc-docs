@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="WebApi.Specs.Security">
-<h1 id="security-for-2sxc-webapi-and-rest-apis" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="5">Security for 2sxc WebAPI and REST APIs</h1>
+<h1 id="security-for-2sxc-webapi-and-rest-apis">Security for 2sxc WebAPI and REST APIs</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,86 +203,86 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style>
   .context-box-summary .browser-interact,
   .context-box-summary .process-apis { visibility: visible; }
 </style>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="14">All WebAPI calls in Dnn, Oqtane and 2sxc have some security features.
+<p>All WebAPI calls in Dnn, Oqtane and 2sxc have some security features.
 In the basic use cases it's straightforward: the current user may do some things, and that should be allowed.</p>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="17">These docs should help you understand where these things are configured and what to change if you need adjustments.</p>
-<h2 id="request-security" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="19">Request Security</h2>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="21">Each request contains information needed for the backend to determine if this request should be answered or not. In Dnn and Oqtane this is the <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="21">User Identity</strong> and the <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="21">RequestVerificationToken</strong>.</p>
-<h3 id="user-identity" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="23">User Identity</h3>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="25">By default, the user is logged in using normal web conventions and from then on the user will have an encrypted cookie identifying this person.</p>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="27">In advanced scenarios you may also use <a href="https://jwt.io/" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="27">JWT</a> aka <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="27">Json Web Tokens</strong>.
+<p>These docs should help you understand where these things are configured and what to change if you need adjustments.</p>
+<h2 id="request-security">Request Security</h2>
+<p>Each request contains information needed for the backend to determine if this request should be answered or not. In Dnn and Oqtane this is the <strong>User Identity</strong> and the <strong>RequestVerificationToken</strong>.</p>
+<h3 id="user-identity">User Identity</h3>
+<p>By default, the user is logged in using normal web conventions and from then on the user will have an encrypted cookie identifying this person.</p>
+<p>In advanced scenarios you may also use <a href="https://jwt.io/">JWT</a> aka <strong>Json Web Tokens</strong>.
 This is useful in mobile app scenarios and scenarios where the client application is remote (like a web-server or a SPA).
 Consult the docs of Dnn or Oqtane to find out how to use this.</p>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="31">You could also use custom login systems like OAuth, but in these cases you will really need to figure out how to implement it in Dnn or Oqtane.</p>
-<h3 id="anti-forgery-token-requestverificationtoken" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="33">Anti Forgery Token: RequestVerificationToken</h3>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="35">ASP.net has a feature to prevent XSS (Cross Site Scripting / Cross-Site Request Forgery).
-To make this possible, pages viewed by a user have some hidden key included which is encrypted to include identity-information for this user. It is included in all HTTP requests except for <code sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="36">GET</code> requests.</p>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="38">If an endpoint is secured to check for this using <code sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="38">[ValidateAntiForgeryToken]</code>, then only requests containing this header will be processed.</p>
-<div class="TIP" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="40">
+<p>You could also use custom login systems like OAuth, but in these cases you will really need to figure out how to implement it in Dnn or Oqtane.</p>
+<h3 id="anti-forgery-token-requestverificationtoken">Anti Forgery Token: RequestVerificationToken</h3>
+<p>ASP.net has a feature to prevent XSS (Cross Site Scripting / Cross-Site Request Forgery).
+To make this possible, pages viewed by a user have some hidden key included which is encrypted to include identity-information for this user. It is included in all HTTP requests except for <code>GET</code> requests.</p>
+<p>If an endpoint is secured to check for this using <code>[ValidateAntiForgeryToken]</code>, then only requests containing this header will be processed.</p>
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="41">Not all endpoints require this, but many do.
+<p>Not all endpoints require this, but many do.
 It's commonly enforced on admin-endpoints and on any endpoint which are not expected to be used from
 outside of the site. It's best practice to require this where possible.</p>
 </div>
-<div class="WARNING" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="45">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="46"><code sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="46">GET</code> requests don't include this header, so don't enforce checking this in the backend for GET endpoints.</p>
+<p><code>GET</code> requests don't include this header, so don't enforce checking this in the backend for GET endpoints.</p>
 </div>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="48">When you use standard <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="48">2sxc JS</strong> WebAPI calls, the RequestVerificationToken is automatically included in the request. If you use your own JS API stack or plain vanilla browser implementations, make sure you add it.</p>
-<h2 id="rest-content-and-query-endpoint-security" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="51">REST Content and Query Endpoint Security</h2>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="53">The built-in <a class="xref" href="../data/index.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="53">Content</a> and <a class="xref" href="../query/index.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="53">Query</a> endpoints use configuration based security.</p>
-<h3 id="prerequisites-platform-permissions-are-ok" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="55">Prerequisites: Platform Permissions are OK</h3>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="57">Just to be aware of the obvious: if the platform (Dnn/Oqtane) don't allow access to the endpoints for whatever reason, then even the built-in endpoints won't do anything.</p>
-<h3 id="default-security-configuration-nothing-is-allowed" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="59">Default Security Configuration: Nothing is allowed</h3>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="61">Both Content and Query are by default only available to admins and super-users. To make these available to other users (incl. Anonymous) this must be configured.</p>
-<h3 id="opening-security-configuration" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="63">Opening Security Configuration</h3>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="65">These are the places you can configure to open security:</p>
-<ol sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="67">
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="67">On an <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="67">App</strong> you can give general permissions that apply to all content types. This is usually not recommended.</li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="68">On a <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="68">Query</strong> you can configure read permissions for specific users or user groups.</li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="69">On a <strong sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="69">Content-Type</strong> (the schema that says what fields exist) you can configure many permissions incl. read and write. You can even configure more exotic permissions like:
-<ol sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="70">
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="70"><em sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="70">Anonymous users can create data, but they are set to draft and not visible</em></li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="71"><em sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="71">Registered users can create data and only edit data which they created</em></li>
+<p>When you use standard <strong>2sxc JS</strong> WebAPI calls, the RequestVerificationToken is automatically included in the request. If you use your own JS API stack or plain vanilla browser implementations, make sure you add it.</p>
+<h2 id="rest-content-and-query-endpoint-security">REST Content and Query Endpoint Security</h2>
+<p>The built-in <a class="xref" href="../data/index.html">Content</a> and <a class="xref" href="../query/index.html">Query</a> endpoints use configuration based security.</p>
+<h3 id="prerequisites-platform-permissions-are-ok">Prerequisites: Platform Permissions are OK</h3>
+<p>Just to be aware of the obvious: if the platform (Dnn/Oqtane) don't allow access to the endpoints for whatever reason, then even the built-in endpoints won't do anything.</p>
+<h3 id="default-security-configuration-nothing-is-allowed">Default Security Configuration: Nothing is allowed</h3>
+<p>Both Content and Query are by default only available to admins and super-users. To make these available to other users (incl. Anonymous) this must be configured.</p>
+<h3 id="opening-security-configuration">Opening Security Configuration</h3>
+<p>These are the places you can configure to open security:</p>
+<ol>
+<li>On an <strong>App</strong> you can give general permissions that apply to all content types. This is usually not recommended.</li>
+<li>On a <strong>Query</strong> you can configure read permissions for specific users or user groups.</li>
+<li>On a <strong>Content-Type</strong> (the schema that says what fields exist) you can configure many permissions incl. read and write. You can even configure more exotic permissions like:
+<ol>
+<li><em>Anonymous users can create data, but they are set to draft and not visible</em></li>
+<li><em>Registered users can create data and only edit data which they created</em></li>
 </ol>
 </li>
 </ol>
-<div class="NOTE" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="73">
+<div class="NOTE">
 <h5>Note</h5>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="74">Permissions are all locked by default, and adding permissions will only open up permissions.
+<p>Permissions are all locked by default, and adding permissions will only open up permissions.
 There are no deny-permissions.</p>
 </div>
-<div class="WARNING" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="77">
+<div class="WARNING">
 <h5>Warning</h5>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="78">Some permissions like <em sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="78">If the user has View permissions, allow Read</em> require a <a class="xref" href="webapi-context.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="78">Module Context</a> since that's required to detect if the condition <em sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="78">View Permissions</em> is met.</p>
+<p>Some permissions like <em>If the user has View permissions, allow Read</em> require a <a class="xref" href="webapi-context.html">Module Context</a> since that's required to detect if the condition <em>View Permissions</em> is met.</p>
 </div>
-<h2 id="custom-webapi-permissions" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="81">Custom WebAPI Permissions</h2>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="83">This is documented separately in <a class="xref" href="../../net-code/web-api/custom-web-api-security.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="83">Security &amp; Permissions in Custom WebAPIs</a></p>
-<h2 id="read-also" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="85">Read also</h2>
-<ul sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="87">
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="87"><a class="xref" href="../../net-code/web-api/index.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="87">DotNet WebApi</a></li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="88"><a class="xref" href="webapi-context.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="88">Context for 2sxc WebAPI and REST APIs</a> - every request has a context, it's best you read up on that</li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="89"><a class="xref" href="../../basics/polymorphism/index.html" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="89">Concepts: Polymorphisms</a></li>
+<h2 id="custom-webapi-permissions">Custom WebAPI Permissions</h2>
+<p>This is documented separately in <a class="xref" href="../../net-code/web-api/custom-web-api-security.html">Security &amp; Permissions in Custom WebAPIs</a></p>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="../../net-code/web-api/index.html">DotNet WebApi</a></li>
+<li><a class="xref" href="webapi-context.html">Context for 2sxc WebAPI and REST APIs</a> - every request has a context, it's best you read up on that</li>
+<li><a class="xref" href="../../basics/polymorphism/index.html">Concepts: Polymorphisms</a></li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="91">Demo App and further links</h2>
-<p sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="93">You should find some code examples in this demo App</p>
-<ul sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="95">
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="95"><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="95">Razor Web API tutorials</a></li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="96"><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="96">REST and WebApi Tutorial</a></li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="97"><a href="https://2sxc.org/en/apps/app/mobius-forms" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="97">Mobius Forms App</a></li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/webapi/home">Razor Web API tutorials</a></li>
+<li><a href="http://2sxc.org/en/apps/app/tutorial-javascript-rest-api-using-jquery-and-angularjs">REST and WebApi Tutorial</a></li>
+<li><a href="https://2sxc.org/en/apps/app/mobius-forms">Mobius Forms App</a></li>
 </ul>
-<h2 id="history" sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="99">History</h2>
-<ol sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="101">
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="101">Introduced in 2sxc 5.x</li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="102">Query added in 2sxc 8.10</li>
-<li sourcefile="pages/web-api/specs/webapi-security.md" sourcestartlinenumber="103">Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 5.x</li>
+<li>Query added in 2sxc 8.10</li>
+<li>Enhanced with Polymorph Editions in 2sxc 9.35 (allowing edition-folder/api)</li>
 </ol>
 
 </article>

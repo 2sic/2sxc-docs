@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,21 +108,21 @@
         <article data-uid="NetCode.PlatformApi.Dnn.ThemesExtended">
 
 <img src="../../../assets/features/platform-dnn.svg" width="100%">
-<h1 id="use-2sxc-services-in-dnn-themes---extended" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="7">Use 2sxc Services in Dnn Themes - Extended</h1>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="9">This is some additional information regarding the use of 2sxc Services in Dnn Themes.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="11">👉🏽 Normally you don't need this, you need <a class="xref" href="themes-modules.html" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="11">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</a></p>
-<h2 id="get-service-provider-on-a-theme--skin" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="13">Get Service Provider on a Theme / Skin</h2>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="15">This is unfortunately not prepared well - I guess at the time it was developed this wasn't seen as an important use case.</p>
-<ul sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="17">
-<li sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="17">Dnn has Dependency Injection prepared for each request</li>
-<li sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="18">Each Request has a separate <em sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="18">Scope</em> (to not mix services between requests)</li>
-<li sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="19">This scoped Service-Provider is cached on the HttpContext</li>
-<li sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="20">Dnn has a special extension method called <code sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="20">GetScope()</code> to work with this - <a href="https://github.com/dnnsoftware/Dnn.Platform/blob/develop/DNN%20Platform/Library/Common/Extensions/HttpContextDependencyInjectionExtensions.cs" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="20">see docs</a></li>
+<h1 id="use-2sxc-services-in-dnn-themes---extended">Use 2sxc Services in Dnn Themes - Extended</h1>
+<p>This is some additional information regarding the use of 2sxc Services in Dnn Themes.</p>
+<p>👉🏽 Normally you don't need this, you need <a class="xref" href="themes-modules.html">Use 2sxc Data, Services or Output in Dnn Themes/Skins and Modules</a></p>
+<h2 id="get-service-provider-on-a-theme--skin">Get Service Provider on a Theme / Skin</h2>
+<p>This is unfortunately not prepared well - I guess at the time it was developed this wasn't seen as an important use case.</p>
+<ul>
+<li>Dnn has Dependency Injection prepared for each request</li>
+<li>Each Request has a separate <em>Scope</em> (to not mix services between requests)</li>
+<li>This scoped Service-Provider is cached on the HttpContext</li>
+<li>Dnn has a special extension method called <code>GetScope()</code> to work with this - <a href="https://github.com/dnnsoftware/Dnn.Platform/blob/develop/DNN%20Platform/Library/Common/Extensions/HttpContextDependencyInjectionExtensions.cs">see docs</a></li>
 </ul>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="22">To get a 2sxc Service in a Skin, you can write code like this:
+<p>To get a 2sxc Service in a Skin, you can write code like this:
 Note that this is harder and not recommended.</p>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="25">The general way to get the service provider is:</p>
-<pre><code class="lang-html" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="27">&lt;%@ Import Namespace=&quot;DotNetNuke.Common.Extensions&quot; %&gt;
+<p>The general way to get the service provider is:</p>
+<pre><code class="lang-html">&lt;%@ Import Namespace=&quot;DotNetNuke.Common.Extensions&quot; %&gt;
 &lt;%@ Import Namespace=&quot;Microsoft.Extensions.DependencyInjection&quot; %&gt;
 &lt;%@ Import Namespace=&quot;ToSic.Sxc.Services&quot; %&gt;
 
@@ -134,8 +134,8 @@ Note that this is harder and not recommended.</p>
   }
 &lt;/script&gt;
 </code></pre>
-<p sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="41">or another example</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/platform-api/dnn/theme-extended.md" sourcestartlinenumber="43">using DotNetNuke.Common.Extensions;
+<p>or another example</p>
+<pre><code class="lang-c#">using DotNetNuke.Common.Extensions;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sxc.Services;

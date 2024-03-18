@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,61 +106,61 @@
         </div>
 
         <article data-uid="Abyss.Architecture.Index">
-<h1 id="eav--2sxc--dnn-architecture" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="5">EAV / 2sxc / Dnn Architecture</h1>
+<h1 id="eav--2sxc--dnn-architecture">EAV / 2sxc / Dnn Architecture</h1>
 
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="7">2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside. We'll give you an overview here, so you can better understand what you are using.</p>
-<h2 id="overall-architecture" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="9">Overall Architecture</h2>
+<p>2sxc is simple to use, but to enable that, it's pretty sophisticated on the inside. We'll give you an overview here, so you can better understand what you are using.</p>
+<h2 id="overall-architecture">Overall Architecture</h2>
 <img src="../../pages/abyss/architecture/assets/eav-2sxc-dnn.png" width="100%" class="full-width">
-<h4 id="the-storage-systems" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="13">The Storage Systems</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="15">This is fairly straight forward - data can be stored in SQL (spread across tables or using JSON) and the File System (stored as JSON). Note that assets like images are not handled here, but in the EAV-Apps layer (see below).</p>
-<h4 id="the-eav-layer" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="17">The EAV Layer</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="19">The data management system underneath everything is called the <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="19">EAV</strong> - which stands for <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="19">Entity</strong>, <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="19">Attribute</strong>, <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="19">Value</strong>.
+<h4 id="the-storage-systems">The Storage Systems</h4>
+<p>This is fairly straight forward - data can be stored in SQL (spread across tables or using JSON) and the File System (stored as JSON). Note that assets like images are not handled here, but in the EAV-Apps layer (see below).</p>
+<h4 id="the-eav-layer">The EAV Layer</h4>
+<p>The data management system underneath everything is called the <strong>EAV</strong> - which stands for <strong>Entity</strong>, <strong>Attribute</strong>, <strong>Value</strong>.
 Anything in that namespace is about internal data models, reading/saving data etc.
-So anything inside the <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="21">ToSic.Eav.Data</a> is all about the internals, which you only need in special scenarios.
-The same applies to <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="22">ToSic.Eav.Apps</a> which is the sub-system responsible for combining data into virtual bundles called <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="22">Apps</strong>.
+So anything inside the <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> is all about the internals, which you only need in special scenarios.
+The same applies to <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a> which is the sub-system responsible for combining data into virtual bundles called <strong>Apps</strong>.
 You can usually ignore this.</p>
-<h4 id="the-sxc-layer" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="25">The SXC Layer</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="27">On top of the <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="27">EAV</em> layer we have the <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="27">Sxc</strong> layer.
-It's responsible for <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="28">Content Management</em> on top of the <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="28">App</em> model provided by the <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="28">EAV</em>.
-The <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="29">Sxc</em> layer provides things like <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="29">IDynamicEntity</a> to let you code like <code sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="29">@Content.Title</code>.
+<h4 id="the-sxc-layer">The SXC Layer</h4>
+<p>On top of the <em>EAV</em> layer we have the <strong>Sxc</strong> layer.
+It's responsible for <em>Content Management</em> on top of the <em>App</em> model provided by the <em>EAV</em>.
+The <em>Sxc</em> layer provides things like <a class="xref" href="../../api/dot-net/ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> to let you code like <code>@Content.Title</code>.
 This is usually more interesting for you, but still fairly generic, because 2sxc is also meant to work with other
 platforms like NopCommerce, Orchard or Oqtane, but it hasn't been implemented yet.</p>
-<h4 id="the-dnn-layer" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="33">The Dnn Layer</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="35">On top of the <em sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="35">Sxc</em> layer we have the <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="35">Dnn</strong> layer. It connects 2sxc with Dnn.
+<h4 id="the-dnn-layer">The Dnn Layer</h4>
+<p>On top of the <em>Sxc</em> layer we have the <strong>Dnn</strong> layer. It connects 2sxc with Dnn.
 Usually when you're writing code and want to know about the API, you'll typically start here,
 and drill down to the other APIs as needed.</p>
-<h2 id="architecture-of-the-eav-layer" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="39">Architecture of the EAV Layer</h2>
+<h2 id="architecture-of-the-eav-layer">Architecture of the EAV Layer</h2>
 <img src="../../pages/abyss/architecture/assets/eav-internals.png" width="100%" class="full-width">
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="43">Inside the EAV you'll find a whole ecosystem of parts which make the magic happen.</p>
-<h4 id="infrastructure" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="45">Infrastructure</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="47">This is very internal stuff, to make sure everything happens. You will usually not go here. Most if it is also not public API.
-Areas of interest may be the <a class="xref" href="../../api/dot-net/ToSic.Lib.Logging.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="48">ToSic.Lib.Logging</a> or <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="48">ToSic.Eav.LookUp</a>.</p>
-<h4 id="core-data-models" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="50">Core Data Models</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="52">This is more interesting and relevant to you, when you want to dive deep into the data model. Again you should note that this is advanced stuff.
-You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="53">ToSic.Eav.Data</a> - the most common bit you may care about is <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="53">IEntity</a> and <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="53">IContentType</a>.</p>
-<h4 id="data-processing" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="55">Data Processing</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="57">This is where things get relevant for you. Check out the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="57">ToSic.Eav.DataSources</a> to find all the bits and pieces used to process, filter and cache data.</p>
-<h4 id="storage" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="60">Storage</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="62">This is still more an internal bit, and as of now you shouldn't use it.</p>
-<h4 id="app-system-and-assets" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="64">App System and Assets</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="66">Another part that you may want to know more about. Here is where data is clustered together into virtual containers called <strong sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="66">Apps</strong>.
+<p>Inside the EAV you'll find a whole ecosystem of parts which make the magic happen.</p>
+<h4 id="infrastructure">Infrastructure</h4>
+<p>This is very internal stuff, to make sure everything happens. You will usually not go here. Most if it is also not public API.
+Areas of interest may be the <a class="xref" href="../../api/dot-net/ToSic.Lib.Logging.html">ToSic.Lib.Logging</a> or <a class="xref" href="../../api/dot-net/ToSic.Eav.LookUp.html">ToSic.Eav.LookUp</a>.</p>
+<h4 id="core-data-models">Core Data Models</h4>
+<p>This is more interesting and relevant to you, when you want to dive deep into the data model. Again you should note that this is advanced stuff.
+You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.html">ToSic.Eav.Data</a> - the most common bit you may care about is <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="../../api/dot-net/ToSic.Eav.Data.IContentType.html">IContentType</a>.</p>
+<h4 id="data-processing">Data Processing</h4>
+<p>This is where things get relevant for you. Check out the <a class="xref" href="../../api/dot-net/ToSic.Eav.DataSources.html">ToSic.Eav.DataSources</a> to find all the bits and pieces used to process, filter and cache data.</p>
+<h4 id="storage">Storage</h4>
+<p>This is still more an internal bit, and as of now you shouldn't use it.</p>
+<h4 id="app-system-and-assets">App System and Assets</h4>
+<p>Another part that you may want to know more about. Here is where data is clustered together into virtual containers called <strong>Apps</strong>.
 These contain all the content-types and items of an App. It also has view-definitions, Content-Blocks (the logical unit usually called a Module in Dnn) and way more.
-You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="68">ToSic.Eav.Apps</a>.</p>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="70">The assets - usually using ADAM - are found in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="70">ToSic.Eav.Apps</a>.Assets.</p>
-<h4 id="web-api" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="72">Web API</h4>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="74">This is ATM an internal section, mainly for connecting Dnn WebAPIs to the EAV. Not documented as of now.</p>
-<h2 id="the-fine-line-between-eavapps-and-sxc" sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="76">The Fine Line Between Eav.Apps and Sxc.*</h2>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="78">To keep the architecture clean, it's important to draw a clear line between Apps and what Sxc does. Basically it's this:</p>
-<ul sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="80">
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="80">Eav.Apps are virtual containers bundling things together. This means content-types, data, queries, settings, etc.</li>
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="81">Sxc is all about (Web) Content Management. So anything related to views, templates, assets, content-blocks is in Sxc.</li>
+You'll find it in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.</p>
+<p>The assets - usually using ADAM - are found in <a class="xref" href="../../api/dot-net/ToSic.Eav.Apps.html">ToSic.Eav.Apps</a>.Assets.</p>
+<h4 id="web-api">Web API</h4>
+<p>This is ATM an internal section, mainly for connecting Dnn WebAPIs to the EAV. Not documented as of now.</p>
+<h2 id="the-fine-line-between-eavapps-and-sxc">The Fine Line Between Eav.Apps and Sxc.*</h2>
+<p>To keep the architecture clean, it's important to draw a clear line between Apps and what Sxc does. Basically it's this:</p>
+<ul>
+<li>Eav.Apps are virtual containers bundling things together. This means content-types, data, queries, settings, etc.</li>
+<li>Sxc is all about (Web) Content Management. So anything related to views, templates, assets, content-blocks is in Sxc.</li>
 </ul>
-<p sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="83">Specifically, these things may not be in Apps, and must be in Sxc</p>
-<ol sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="85">
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="85">Templates</li>
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="86">Rendering Engines like Token/Razor</li>
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="87">Content-Blocks</li>
-<li sourcefile="pages/abyss/architecture/index.md" sourcestartlinenumber="88">Custom WebApi (which is also kind of a dynamic rendering engine)</li>
+<p>Specifically, these things may not be in Apps, and must be in Sxc</p>
+<ol>
+<li>Templates</li>
+<li>Rendering Engines like Token/Razor</li>
+<li>Content-Blocks</li>
+<li>Custom WebApi (which is also kind of a dynamic rendering engine)</li>
 </ol>
 
 </article>

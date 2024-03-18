@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,19 +106,19 @@
         </div>
 
         <article data-uid="Abyss.Releases.History.V14.IssueAssemblyBinding">
-<h1 id="assembly-binding-issue-on-installs-from-2sxc-1304-to-1402" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="5">Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02</h1>
+<h1 id="assembly-binding-issue-on-installs-from-2sxc-1304-to-1402">Assembly Binding Issue on Installs from 2sxc 13.04 to 14.02</h1>
 
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="7">2sxc 13.04 up until v14.02 had a bug where the assembly bindings in web.config wasn't done correctly.
+<p>2sxc 13.04 up until v14.02 had a bug where the assembly bindings in web.config wasn't done correctly.
 The result is, that many bindings were added repeatedly.
 Issue is fixed in v14.03.</p>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="11">The problems:</p>
-<ol sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="13">
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="13">the <code sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="13">web.config</code> grows to be very large</li>
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="14">future upgrades of 2sxc which need to modify the bindings could end up modifying a binding, but other unmodified bindings could take precedence</li>
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="15">third party modules which also modify assembly bindings could modify the wrong bindings</li>
+<p>The problems:</p>
+<ol>
+<li>the <code>web.config</code> grows to be very large</li>
+<li>future upgrades of 2sxc which need to modify the bindings could end up modifying a binding, but other unmodified bindings could take precedence</li>
+<li>third party modules which also modify assembly bindings could modify the wrong bindings</li>
 </ol>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="17">The following bindings were added repeatedly:</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="19">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<p>The following bindings were added repeatedly:</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
   &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
@@ -163,13 +163,13 @@ Issue is fixed in v14.03.</p>
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="66">This assemblyBinding fragment can be repeated many times, depending on the amount of times you upgraded 2sxc (since v13.04 till v14.02), what DNN version you're using and what 3rd party modules you have.</p>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="68">While testing this issue, we did not noticed anything that is breaking dnn and 2sxc because .NET Framework will follow only first occurrence of assembly binding for specified assembly in web.config. From functional point of view, second and any other assembly binding for the same specified assembly will be ignored by .NET Framework. Still it is not nice to have unnecessary assembly binding copies in web.config.</p>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="70">For v13.04-v14.02. recommendation is that you manually remove unnecessary bindings in web.config to keep it clean.</p>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="72">Upgrade to v14.03 (or latter version) will auto-fix this.</p>
-<h2 id="am-i-affected" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="74">Am I affected?</h2>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="76">You are affected, if you see multiple copies of following XML fragments in your web.config, eg:</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="78">...
+<p>This assemblyBinding fragment can be repeated many times, depending on the amount of times you upgraded 2sxc (since v13.04 till v14.02), what DNN version you're using and what 3rd party modules you have.</p>
+<p>While testing this issue, we did not noticed anything that is breaking dnn and 2sxc because .NET Framework will follow only first occurrence of assembly binding for specified assembly in web.config. From functional point of view, second and any other assembly binding for the same specified assembly will be ignored by .NET Framework. Still it is not nice to have unnecessary assembly binding copies in web.config.</p>
+<p>For v13.04-v14.02. recommendation is that you manually remove unnecessary bindings in web.config to keep it clean.</p>
+<p>Upgrade to v14.03 (or latter version) will auto-fix this.</p>
+<h2 id="am-i-affected">Am I affected?</h2>
+<p>You are affected, if you see multiple copies of following XML fragments in your web.config, eg:</p>
+<pre><code class="lang-xml">...
 &lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
@@ -185,33 +185,33 @@ Issue is fixed in v14.03.</p>
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
-<h2 id="how-to-clean" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="96">How to Clean</h2>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="98">Do the following:</p>
-<ol sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="100">
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="100"><p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="100">Backup web.config.</p>
+<h2 id="how-to-clean">How to Clean</h2>
+<p>Do the following:</p>
+<ol>
+<li><p>Backup web.config.</p>
 </li>
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="101"><p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="101">Search for first occurrence of...</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="103">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<li><p>Search for first occurrence of...</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="110">...that is followed by list of unnecessary duplicate assembly bindings, started with duplicate...</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="112">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<p>...that is followed by list of unnecessary duplicate assembly bindings, started with duplicate...</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
   &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="119">...ending with duplicate...</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="121">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<p>...ending with duplicate...</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
 </li>
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="128"><p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="128">Select and remove all duplicate assembly bindings fragments.
+<li><p>Select and remove all duplicate assembly bindings fragments.
 Second (and any other) copy of this fragment is unnecessary.</p>
-<pre><code class="lang-xml" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="131">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
   &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Configuration.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
   &lt;codeBase version=&quot;2.2.0.0&quot; href=&quot;bin\Imageflow\Microsoft.Extensions.Configuration.Abstractions.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
@@ -256,11 +256,11 @@ Second (and any other) copy of this fragment is unnecessary.</p>
   &lt;codeBase version=&quot;1.2.2.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </code></pre>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="178">YouTube video: How to manually remove duplicate assembly bindings?
-<a href="https://www.youtube.com/watch?v=eTL-VTjxF9k" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="179"><img src="https://img.youtube.com/vi/eTL-VTjxF9k/0.jpg" sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="179" alt="How to manually remove duplicate assembly bindings?"></a></p>
-<p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="181">Ensure that you have only one list of this bindings in web.config.</p>
+<p>YouTube video: How to manually remove duplicate assembly bindings?
+<a href="https://www.youtube.com/watch?v=eTL-VTjxF9k"><img src="https://img.youtube.com/vi/eTL-VTjxF9k/0.jpg" alt="How to manually remove duplicate assembly bindings?"></a></p>
+<p>Ensure that you have only one list of this bindings in web.config.</p>
 </li>
-<li sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="183"><p sourcefile="pages/abyss/releases/history/v14/issue-assembly-binding.md" sourcestartlinenumber="183">Save web.config and test dnn that is working.</p>
+<li><p>Save web.config and test dnn that is working.</p>
 </li>
 </ol>
 

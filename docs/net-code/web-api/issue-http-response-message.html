@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,25 +106,25 @@
         </div>
 
         <article data-uid="NetCode.WebApi.Issues.HttpResponseMessage">
-<h1 id="common-issue-missing-httpresponsemessage" sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="5">Common Issue: Missing HttpResponseMessage</h1>
+<h1 id="common-issue-missing-httpresponsemessage">Common Issue: Missing HttpResponseMessage</h1>
 
-<p sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="7">The WebApi sometimes needs to return an <code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="7">HttpResponseMessage</code>, for example to trigger redirects.</p>
-<p sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="9">In some cases you simply cannot get the code to run, with an error similar to this</p>
-<pre><code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="11">2sxc Api Controller Finder: Error while selecting / compiling a controller for the request. Pls check the event-log and the code. See the inner exception for more details.&quot;, &quot;ExceptionMessage&quot;: &quot;[Some-Path]\Portals\0\2sxc\[Some-App]\api\InstallController.cs(23): error CS0012: The type 'System.Net.Http.HttpRequestMessage' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.&quot;, &quot;ExceptionType&quot;: &quot;System.Web.HttpCompileException&quot;, &quot;StackTrace&quot;: &quot; at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetCompiledAssembly(String virtualPath) at ToSic.SexyContent.WebApi.AppApiControllerSelector.SelectController(HttpRequestMessage request) in C:\Projects\2SexyContent\Web\DesktopModules\ToSIC_SexyContent\Sxc WebApi\AppApiControllerSelector.cs:line 77
+<p>The WebApi sometimes needs to return an <code>HttpResponseMessage</code>, for example to trigger redirects.</p>
+<p>In some cases you simply cannot get the code to run, with an error similar to this</p>
+<pre><code>2sxc Api Controller Finder: Error while selecting / compiling a controller for the request. Pls check the event-log and the code. See the inner exception for more details.&quot;, &quot;ExceptionMessage&quot;: &quot;[Some-Path]\Portals\0\2sxc\[Some-App]\api\InstallController.cs(23): error CS0012: The type 'System.Net.Http.HttpRequestMessage' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.&quot;, &quot;ExceptionType&quot;: &quot;System.Web.HttpCompileException&quot;, &quot;StackTrace&quot;: &quot; at System.Web.Compilation.AssemblyBuilder.Compile() at System.Web.Compilation.BuildProvidersCompiler.PerformBuild() at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetCompiledAssembly(String virtualPath) at ToSic.SexyContent.WebApi.AppApiControllerSelector.SelectController(HttpRequestMessage request) in C:\Projects\2SexyContent\Web\DesktopModules\ToSIC_SexyContent\Sxc WebApi\AppApiControllerSelector.cs:line 77
 </code></pre>
-<p sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="15">The reason is that the compiler has a hard time figuring out where to locate this class. We believe it's because Dnn has gone through various .net versions and that makes these things a bit harder.</p>
-<p sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="17">The solution is to tell the Compiler that you're using <code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="17">System.Net.Http</code> in the desired version. Add the <code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="17">add</code> tag to the <code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="17">web.config</code> in the location below:</p>
-<pre><code sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="19">&lt;configuration&gt;
+<p>The reason is that the compiler has a hard time figuring out where to locate this class. We believe it's because Dnn has gone through various .net versions and that makes these things a bit harder.</p>
+<p>The solution is to tell the Compiler that you're using <code>System.Net.Http</code> in the desired version. Add the <code>add</code> tag to the <code>web.config</code> in the location below:</p>
+<pre><code>&lt;configuration&gt;
   &lt;system.web&gt;
     &lt;compilation&gt;
       &lt;assemblies&gt;
         &lt;add assembly=&quot;System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&gt;
 ...
 </code></pre>
-<p sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="28"><em sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="28">Note: you shouldn't add the whole block - it should just show you where it must go</em></p>
-<h2 id="history" sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="31">History</h2>
-<ol sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="33">
-<li sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="33"><a href="https://stackoverflow.com/questions/47508179/2sxc-httpresponsemessage-reference-missing-in-custom-api-controller" sourcefile="pages/net-code/web-api/issue-http-response-message.md" sourcestartlinenumber="33">Reported in 2017</a></li>
+<p><em>Note: you shouldn't add the whole block - it should just show you where it must go</em></p>
+<h2 id="history">History</h2>
+<ol>
+<li><a href="https://stackoverflow.com/questions/47508179/2sxc-httpresponsemessage-reference-missing-in-custom-api-controller">Reported in 2017</a></li>
 </ol>
 
 </article>

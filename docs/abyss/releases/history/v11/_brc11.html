@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -107,37 +107,37 @@
 
         <article data-uid="">
 
-<h2 id="breaking-changes-in-eav-and-2sxc-v11" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="1">Breaking Changes in EAV and 2sxc v11</h2>
-<p sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="3">We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
+<h2 id="breaking-changes-in-eav-and-2sxc-v11">Breaking Changes in EAV and 2sxc v11</h2>
+<p>We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
 We're documenting it here to ensure you know what happened, in case you still run into this.</p>
-<h3 id="summary" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="6">Summary</h3>
-<p sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="8">There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers.</p>
-<h3 id="breaking-changes-version-1107---drop-the-old-edit-ui" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="10">Breaking Changes Version 11.07 - Drop the old edit UI</h3>
-<ol sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="12">
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="12">In 11.07 the old edit UI was removed, so customizations for that UI would not be in effect any more.</li>
+<h3 id="summary">Summary</h3>
+<p>There were small breaking changes in 11.00 to 11.11 but they were internal so shouldn't affect normal developers.</p>
+<h3 id="breaking-changes-version-1107---drop-the-old-edit-ui">Breaking Changes Version 11.07 - Drop the old edit UI</h3>
+<ol>
+<li>In 11.07 the old edit UI was removed, so customizations for that UI would not be in effect any more.</li>
 </ol>
-<h3 id="breaking-changes-version-1110---mainly-dependency-injection" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="14">Breaking Changes Version 11.10 - Mainly Dependency Injection</h3>
-<ol sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="16">
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="16">In v11.10 we used much more dependency injection than ever before and stopped using static values which were still in the API in many places. Because of this, certain helper objects to create entities or lookup values were changed and their constructors were changed. We invested a lot of time to try to ensure that old APIs still work, but in case you're hit by one of these, make sure you check the DI and switch to resolving the objects using DI.</li>
+<h3 id="breaking-changes-version-1110---mainly-dependency-injection">Breaking Changes Version 11.10 - Mainly Dependency Injection</h3>
+<ol>
+<li>In v11.10 we used much more dependency injection than ever before and stopped using static values which were still in the API in many places. Because of this, certain helper objects to create entities or lookup values were changed and their constructors were changed. We invested a lot of time to try to ensure that old APIs still work, but in case you're hit by one of these, make sure you check the DI and switch to resolving the objects using DI.</li>
 </ol>
-<h3 id="breaking-changes-version-1111---language-detection" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="18">Breaking Changes Version 11.11 - Language Detection</h3>
-<ol sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="20">
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="20">Previously the language detection used the Thread culture. Turns out this wasn't reliable because Dnn does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change.</li>
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="21">Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you.</li>
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="22">We changed all tokens to always resolve boolean values to <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="22">true</code>/<code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="22">false</code> (previously they would have been changed to the current language, like <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="22">wahr</code> for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output.</li>
+<h3 id="breaking-changes-version-1111---language-detection">Breaking Changes Version 11.11 - Language Detection</h3>
+<ol>
+<li>Previously the language detection used the Thread culture. Turns out this wasn't reliable because Dnn does some funny stuff (probably historical) which means that API-calls ended up using the language stored in some cookie instead of the one specified by the URL. We changed this, which should be more reliable. But if you were relying on this strange effect, then it may be a breaking change.</li>
+<li>Internally our tokens were also using the thread culture. When we changed this, we also had to change how tokens pick up the language. In rare cases this may affect you.</li>
+<li>We changed all tokens to always resolve boolean values to <code>true</code>/<code>false</code> (previously they would have been changed to the current language, like <code>wahr</code> for german). We believe this change is only an improvement, and should ensure that internal resolves in Queries etc. result in reliable output.</li>
 </ol>
-<h3 id="breaking-changes-version-1111---datasources-datasourceconfiguration" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="24">Breaking Changes Version 11.11 - DataSources: DataSourceConfiguration</h3>
-<p sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="26">Note that we also improved the <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="26">DataSourceConfiguration</code> to an interface <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="26">IDataSourceConfiguration</code> and documented this.
+<h3 id="breaking-changes-version-1111---datasources-datasourceconfiguration">Breaking Changes Version 11.11 - DataSources: DataSourceConfiguration</h3>
+<p>Note that we also improved the <code>DataSourceConfiguration</code> to an interface <code>IDataSourceConfiguration</code> and documented this.
 As a side effect the API stays the same, but you will have to recompile your data sources for them to work again - sorry.</p>
-<h3 id="breaking-changes-version-111103---ientity-values" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="29">Breaking Changes Version 11.11.03 - IEntity Values</h3>
-<ol sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="31">
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="31"><code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="31">IEntity</code> had a command called <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="31">Value(fieldName)</code> which was probably never used. The idea used to be that it does language lookup internally, but we refactored this out since it could never be fully reliable because the full language list wasn't known to the <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="31">IEntity</code>. So we re-purposed the method (assuming it's not used) to just lookup the first occurance of the value. This way it`s useful for configurations and similar which are not multi-language.</li>
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="32"><code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="32">IEntity</code> also had a <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="32">Value(fieldname, lookup)</code> method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.</li>
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="33"><code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="33">IEntity</code> had a command called <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="33">PrimaryValue(fieldName)</code> which was probably never ever used, so we're deprecating it. Use <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="33">Value(fieldName)</code> instead.</li>
+<h3 id="breaking-changes-version-111103---ientity-values">Breaking Changes Version 11.11.03 - IEntity Values</h3>
+<ol>
+<li><code>IEntity</code> had a command called <code>Value(fieldName)</code> which was probably never used. The idea used to be that it does language lookup internally, but we refactored this out since it could never be fully reliable because the full language list wasn't known to the <code>IEntity</code>. So we re-purposed the method (assuming it's not used) to just lookup the first occurance of the value. This way it`s useful for configurations and similar which are not multi-language.</li>
+<li><code>IEntity</code> also had a <code>Value(fieldname, lookup)</code> method. We are deprecating it, and making the lookup not happen from now on. We believe it was never used.</li>
+<li><code>IEntity</code> had a command called <code>PrimaryValue(fieldName)</code> which was probably never ever used, so we're deprecating it. Use <code>Value(fieldName)</code> instead.</li>
 </ol>
-<h3 id="breaking-changes-version-111103---other" sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="35">Breaking Changes Version 11.11.03 - Other</h3>
-<ol sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="37">
-<li sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="37">UI Toolbar dropped the button and command for <code sourcefile="pages/abyss/releases/history/v11/_brc11.md" sourcestartlinenumber="37">item-history</code>, as the history is now part of the edit dialog</li>
+<h3 id="breaking-changes-version-111103---other">Breaking Changes Version 11.11.03 - Other</h3>
+<ol>
+<li>UI Toolbar dropped the button and command for <code>item-history</code>, as the history is now part of the edit dialog</li>
 </ol>
 
 </article>

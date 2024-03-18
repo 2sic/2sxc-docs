@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,58 +106,58 @@
         </div>
 
         <article data-uid="Abyss.Releases.Management.PolicyDeprecate">
-<h1 id="deprecation-policy--breaking-changes" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="5">Deprecation Policy &amp; Breaking Changes</h1>
+<h1 id="deprecation-policy--breaking-changes">Deprecation Policy &amp; Breaking Changes</h1>
 
-<div class="TIP" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="7">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="8">2sxc is really, really stable.
+<p>2sxc is really, really stable.
 Upgrades usually don't cause any breaking changes at all.</p>
 </div>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="11">Despite this, it's important that 2sxc can become better, without becoming confusing.
+<p>Despite this, it's important that 2sxc can become better, without becoming confusing.
 Because of this, we have some policies how to achieve this.</p>
-<h2 id="rule-1-public-apis-remain-stable" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="14">Rule #1: Public APIs Remain Stable</h2>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="16">Public APIs remain stable across releases, so old code / Razor will continue to work. Public APIs include</p>
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="18">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="18">Public REST APIs</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="19">Public C# APIs used in Razor and WebAPI Controllers</li>
+<h2 id="rule-1-public-apis-remain-stable">Rule #1: Public APIs Remain Stable</h2>
+<p>Public APIs remain stable across releases, so old code / Razor will continue to work. Public APIs include</p>
+<ol>
+<li>Public REST APIs</li>
+<li>Public C# APIs used in Razor and WebAPI Controllers</li>
 </ol>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="21">Note that public APIs in code are marked as such.</p>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="23">Note also that internal APIs can change without warning, as you can use them, but the burden of keeping up with the changes is up to you.
+<p>Note that public APIs in code are marked as such.</p>
+<p>Note also that internal APIs can change without warning, as you can use them, but the burden of keeping up with the changes is up to you.
 If you use these, you will have to spend more time testing an upgrade.</p>
-<h2 id="rule-2-new-features-go-together" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="26">Rule #2: New Features go Together</h2>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="28">Many new features will only be available if you are working in a newer base class. This will aften make older APIs unavailable, so we can phase them out.
+<h2 id="rule-2-new-features-go-together">Rule #2: New Features go Together</h2>
+<p>Many new features will only be available if you are working in a newer base class. This will aften make older APIs unavailable, so we can phase them out.
 Example:</p>
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="31">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="31">The new <code sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="31">AsList(...)</code> command is only available on the newer base classes like <code sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="31">Custom.Razor12</code></li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="32">The old <code sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="32">Elements</code> API will not be available on the newer base classes</li>
+<ol>
+<li>The new <code>AsList(...)</code> command is only available on the newer base classes like <code>Custom.Razor12</code></li>
+<li>The old <code>Elements</code> API will not be available on the newer base classes</li>
 </ol>
-<h2 id="rule-3-deprecations-are-warned-at-runtime-new-in-v13" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="34">Rule #3: Deprecations are Warned at Runtime (new in v13)</h2>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="36">V13 added a new feature: Deprecation warnings. This works as follows:</p>
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="38">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="38">APIs that are going to be deprecated are internally going to raise messages if they are still in use</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="39">You can see these messages in <a class="xref" href="../../../net-code/debug/insights.html" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="39">Insights</a> and soon also in the System dialogs</li>
+<h2 id="rule-3-deprecations-are-warned-at-runtime-new-in-v13">Rule #3: Deprecations are Warned at Runtime (new in v13)</h2>
+<p>V13 added a new feature: Deprecation warnings. This works as follows:</p>
+<ol>
+<li>APIs that are going to be deprecated are internally going to raise messages if they are still in use</li>
+<li>You can see these messages in <a class="xref" href="../../../net-code/debug/insights.html">Insights</a> and soon also in the System dialogs</li>
 </ol>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="41">Deprecated APIs will follow this process:</p>
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="43">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="43">Warn about deprecation for at least 1 full version, if possible 2 versions of 2sxc (so ca. 12 months)</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="44">We'll try to include an information, if and when the API will be removed</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="45">We'll also try to include information for what API should be used instead.</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="46">If removing the API is important for future features, we will remove it after the warned period</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="47">If removal is not necessary
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="48">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="48">We'll remove them from the public docs</li>
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="49">we'll leave them in but stop testing them - so they may stop working without us knowing about it</li>
+<p>Deprecated APIs will follow this process:</p>
+<ol>
+<li>Warn about deprecation for at least 1 full version, if possible 2 versions of 2sxc (so ca. 12 months)</li>
+<li>We'll try to include an information, if and when the API will be removed</li>
+<li>We'll also try to include information for what API should be used instead.</li>
+<li>If removing the API is important for future features, we will remove it after the warned period</li>
+<li>If removal is not necessary
+<ol>
+<li>We'll remove them from the public docs</li>
+<li>we'll leave them in but stop testing them - so they may stop working without us knowing about it</li>
 </ol>
 </li>
 </ol>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="51">Note that depending on how much we believe the old APIs have been used, we will usually also remove them from the docs once they are deprecated.
+<p>Note that depending on how much we believe the old APIs have been used, we will usually also remove them from the docs once they are deprecated.
 Only in rare cases where an API is widely used will we keep it in the docs, but clearly communicate that it's obsolete and that it shouldn't be used any more.</p>
-<hr sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="55">
-<h2 id="history" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="57">History</h2>
-<ol sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="59">
-<li sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="59">Deprecation warning system added in v13</li>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Deprecation warning system added in v13</li>
 </ol>
-<p sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="61">Shortlink: <a href="https://go.2sxc.org/pol-deprecation" sourcefile="pages/abyss/releases/management/policy-deprecate.md" sourcestartlinenumber="61">https://go.2sxc.org/pol-deprecation</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/pol-deprecation">https://go.2sxc.org/pol-deprecation</a></p>
 
 </article>
 

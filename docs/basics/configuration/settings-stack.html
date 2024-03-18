@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -108,7 +108,7 @@
         <article data-uid="Basics.Configuration.SettingsStack">
 
 <img src="../../assets/features/settings-stack.svg" class="feature">
-<h1 id="settings-stack-in-2sxc--new" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="7">Settings Stack in 2sxc ✨ new!</h1>
+<h1 id="settings-stack-in-2sxc--new">Settings Stack in 2sxc ✨ new!</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -204,97 +204,97 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="12">Settings come in 2 distinct flavors:</p>
-<ul sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="14">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="14"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="14">Standardized Settings</strong> use a content-type called <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="14">SettingsSystem</code> with a predefined structure.<br>
+<p>Settings come in 2 distinct flavors:</p>
+<ul>
+<li><strong>Standardized Settings</strong> use a content-type called <code>SettingsSystem</code> with a predefined structure.<br>
 These settings are meant to be used across tools and apps.</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="16"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="16">Dynamic Settings</strong> use a custom <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="16">App-Settings</code> content-types which you define.<br>
+<li><strong>Dynamic Settings</strong> use a custom <code>App-Settings</code> content-types which you define.<br>
 These settings can have any keys and values you want.<br>
 The effect/reach of this depends on the level where you add it (global, site, app).
 The code using these will usually come from you, as these settings are not standardized.</li>
 </ul>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="21">Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view.</p>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="23">In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured.
+<p>Settings can be edited on many levels. The most general or fallback settings are presets in 2sxc. The most specific settings only apply to a specific view.</p>
+<p>In most cases your templates and code will simply want to get the most-relevant setting, no matter where it was configured.
 To make this possible, settings are treated as a stack.
 This is how it stacks up:</p>
 <img src="../../pages/basics/configuration/assets/settings-stack.png" width="100%" class="full-width">
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="29">The most-relevant setting is top-most setting and is the one which will be used.
-So if a <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="30">View</em> setting and a <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="30">Site</em> setting have the same key, the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="30">View</em> setting will be preferred. Take a look at this illustration:</p>
+<p>The most-relevant setting is top-most setting and is the one which will be used.
+So if a <em>View</em> setting and a <em>Site</em> setting have the same key, the <em>View</em> setting will be preferred. Take a look at this illustration:</p>
 <img src="../../pages/basics/configuration/assets/settings-stack-2.png" width="100%" class="full-width">
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="34">Assume the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="34">Blog App</em> has a <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="34">List View</em> which needs <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="34">Settings.Images.Content</code>.
+<p>Assume the <em>Blog App</em> has a <em>List View</em> which needs <code>Settings.Images.Content</code>.
 The first Blog will look for it in the sequence of the blue arrows.
 The second will look in the sequence of the yellow arrows.
 So each Blog could get a different Setting, depending on where it is configured or overwritten.</p>
-<h2 id="settings-sources-and-priorities" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="39">Settings Sources and Priorities</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="41">The Settings are stacked in the following priority:</p>
-<ol sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="43">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="43"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="43">ViewCustom</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="43">View</a></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="44"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="44">AppCustom</strong> - the dynamic <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="44">App-Settings</code> (see <a class="xref" href="../app/settings.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="44">App-Settings</a>) of an <a class="xref" href="../app/index.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="44">App</a></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="45"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="45">AppSystem</strong> - The <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="45">SettingsSystem</code> in the current <a class="xref" href="../app/index.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="45">App</a></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="46"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="46">AncestorCustom</strong> - Optional, only on inherited Apps - <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="46">App-Settings</code> on ancestor app (v13)</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="47"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="47">AncestorSystem</strong> - Optional, only on inherited Apps - <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="47">SettingsSystem</code> on ancestor app (v13)</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="48"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="48">SiteCustom</strong> - an optional, manually created dynamic <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="48">App-Settings</code> on the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="48">Primary App</em> of the current site</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="49"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="49">SiteSystem</strong> - an optional <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="49">SettingsSystem</code> in the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="49">Primary App</em> of the current site</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="50"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="50">GlobalCustom</strong> - an optional, manually created dynamic <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="50">App-Settings</code> on the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="50">Global System App</em></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="51"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="51">GlobalSystem</strong> - an optional <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="51">SettingsSystem</code> on the <em sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="51">Global System App</em></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="52"><strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="52">PresetSystem</strong> - the <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="52">SettingsSystem</code> which are included in the installation of 2sxc</li>
+<h2 id="settings-sources-and-priorities">Settings Sources and Priorities</h2>
+<p>The Settings are stacked in the following priority:</p>
+<ol>
+<li><strong>ViewCustom</strong> - dynamic settings configured in the <a class="xref" href="../app/views/index.html">View</a></li>
+<li><strong>AppCustom</strong> - the dynamic <code>App-Settings</code> (see <a class="xref" href="../app/settings.html">App-Settings</a>) of an <a class="xref" href="../app/index.html">App</a></li>
+<li><strong>AppSystem</strong> - The <code>SettingsSystem</code> in the current <a class="xref" href="../app/index.html">App</a></li>
+<li><strong>AncestorCustom</strong> - Optional, only on inherited Apps - <code>App-Settings</code> on ancestor app (v13)</li>
+<li><strong>AncestorSystem</strong> - Optional, only on inherited Apps - <code>SettingsSystem</code> on ancestor app (v13)</li>
+<li><strong>SiteCustom</strong> - an optional, manually created dynamic <code>App-Settings</code> on the <em>Primary App</em> of the current site</li>
+<li><strong>SiteSystem</strong> - an optional <code>SettingsSystem</code> in the <em>Primary App</em> of the current site</li>
+<li><strong>GlobalCustom</strong> - an optional, manually created dynamic <code>App-Settings</code> on the <em>Global System App</em></li>
+<li><strong>GlobalSystem</strong> - an optional <code>SettingsSystem</code> on the <em>Global System App</em></li>
+<li><strong>PresetSystem</strong> - the <code>SettingsSystem</code> which are included in the installation of 2sxc</li>
 </ol>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="54">There is no setting called <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="54">ViewSystem</strong> or <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="54">PresetCustom</strong>.</p>
-<h2 id="review-the-settings-stack" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="56">Review the Settings-Stack</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="58">In case you need to see what setting applies to what view, you can easily analyze this in the <a class="xref" href="../app/settings.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="58">App Administration</a>.</p>
+<p>There is no setting called <strong>ViewSystem</strong> or <strong>PresetCustom</strong>.</p>
+<h2 id="review-the-settings-stack">Review the Settings-Stack</h2>
+<p>In case you need to see what setting applies to what view, you can easily analyze this in the <a class="xref" href="../app/settings.html">App Administration</a>.</p>
 <img src="../../pages/basics/configuration/assets/admin-goto-review-settings.jpg" width="100%" class="full-width">
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="62">There you can see each setting and what source it came from + you can analyze all the sources which configure this setting:</p>
+<p>There you can see each setting and what source it came from + you can analyze all the sources which configure this setting:</p>
 <img src="../../pages/basics/configuration/assets/admin-review-settings.jpg" width="100%" class="full-width">
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="70">Next we'll explain where you can configure settings for different effects / scopes.</p>
-<h2 id="global-settings-which-affect-all-sites" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="72">Global Settings which Affect All Sites</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="74">Global Settings for all sites are configured in the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="74">Global System App</strong>. It's usually on Zone <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="74">1</code> and App <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="74">1</code>.</p>
-<ol sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="76">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="76">go to the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="76">Global System App</strong> using <a href="https://azing.org/2sxc/r/QES7BFGU" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="76">this checklist</a>.</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="77">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="77">Global System-Settings</strong> just edit them here</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="78">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="78">Global Custom-Settings</strong> just edit the App-Settings of the global app</li>
+<p>Next we'll explain where you can configure settings for different effects / scopes.</p>
+<h2 id="global-settings-which-affect-all-sites">Global Settings which Affect All Sites</h2>
+<p>Global Settings for all sites are configured in the <strong>Global System App</strong>. It's usually on Zone <code>1</code> and App <code>1</code>.</p>
+<ol>
+<li>go to the <strong>Global System App</strong> using <a href="https://azing.org/2sxc/r/QES7BFGU">this checklist</a>.</li>
+<li>for <strong>Global System-Settings</strong> just edit them here</li>
+<li>for <strong>Global Custom-Settings</strong> just edit the App-Settings of the global app</li>
 </ol>
-<div class="TIP" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="80">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="81">This stuff is fairly new, and in rare cases new global settings don't automatically
+<p>This stuff is fairly new, and in rare cases new global settings don't automatically
 propagate to the sites. If you experience this, just restart the system.</p>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="84">As of now, this only affects new fields, so once a field has been available changes will propagate as expected.</p>
+<p>As of now, this only affects new fields, so once a field has been available changes will propagate as expected.</p>
 </div>
-<h2 id="site-settings-which-affect-an-entire-site" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="86">Site Settings which Affect an Entire Site</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="88">These are configured in the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="88">Primary App</strong> of the site you want to configure.</p>
-<ol sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="90">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="90">go to the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="90">Primary App</strong> of the Site <a href="https://azing.org/2sxc/r/653OKPVz" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="90">using this checklist</a></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="91">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="91">Site System-Settings</strong> just edit them here</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="92">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="92">Site Custom-Settings</strong> just edit the App-Settings of this app</li>
+<h2 id="site-settings-which-affect-an-entire-site">Site Settings which Affect an Entire Site</h2>
+<p>These are configured in the <strong>Primary App</strong> of the site you want to configure.</p>
+<ol>
+<li>go to the <strong>Primary App</strong> of the Site <a href="https://azing.org/2sxc/r/653OKPVz">using this checklist</a></li>
+<li>for <strong>Site System-Settings</strong> just edit them here</li>
+<li>for <strong>Site Custom-Settings</strong> just edit the App-Settings of this app</li>
 </ol>
-<div class="TIP" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="94">
+<div class="TIP">
 <h5>Tip</h5>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="95">This stuff is fairly new, and in rare cases new site settings don't automatically
+<p>This stuff is fairly new, and in rare cases new site settings don't automatically
 propagate to the apps. If you experience this, just restart the system.</p>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="98">As of now, this only affects new fields, so once a field has been available changes will propagate as expected.</p>
+<p>As of now, this only affects new fields, so once a field has been available changes will propagate as expected.</p>
 </div>
-<h2 id="app-settings-which-affect-an-entire-app" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="100">App Settings which Affect an Entire App</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="102">These settings override previous settings but only for a specific App.</p>
-<ol sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="104">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="104">Go to the the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="104">App Configuration</strong> <a href="https://azing.org/2sxc/r/_a0Pg3Ku" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="104">using this checklist</a></li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="105">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="105">App System-Settings</strong> just edit them here</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="106">for <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="106">App Custom-Settings</strong> aka App-Settings you can edit them here or configure fields etc. directly from this dialog. Thisis feature has existed long before the stack was invented.
-See <a class="xref" href="../app/settings.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="107">App Settings</a>.</li>
+<h2 id="app-settings-which-affect-an-entire-app">App Settings which Affect an Entire App</h2>
+<p>These settings override previous settings but only for a specific App.</p>
+<ol>
+<li>Go to the the <strong>App Configuration</strong> <a href="https://azing.org/2sxc/r/_a0Pg3Ku">using this checklist</a></li>
+<li>for <strong>App System-Settings</strong> just edit them here</li>
+<li>for <strong>App Custom-Settings</strong> aka App-Settings you can edit them here or configure fields etc. directly from this dialog. Thisis feature has existed long before the stack was invented.
+See <a class="xref" href="../app/settings.html">App Settings</a>.</li>
 </ol>
-<h2 id="view-settings-which-affect-a-specific-view" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="109">View Settings which Affect a specific View</h2>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="111">As of v12.04 Views are only meant to have Custom Settings.
+<h2 id="view-settings-which-affect-a-specific-view">View Settings which Affect a specific View</h2>
+<p>As of v12.04 Views are only meant to have Custom Settings.
 It is still possible to override SystemSettings just by creating a field which has the same name, but we don't recommend it.</p>
-<p sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="114">To create Custom View Settings, create a custom content-type in the <strong sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="114">Configuration</strong> scope and use it in the view.
-See <a class="xref" href="../app/views/settings.html" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="115">View Settings (Advanced ⚠)</a>.</p>
-<hr sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="117">
-<h2 id="history" sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="119">History</h2>
-<ul sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="121">
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="121">Full Settings Stack introduced in 2sxc 12.04</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="122">Dropped <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="122">SettingsCustom</code> as a type in v13, as not needed any more because we changed how the site-level settings work</li>
-<li sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="123">Added <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="123">AncestorCustom</code> and <code sourcefile="pages/basics/configuration/settings-stack.md" sourcestartlinenumber="123">AncestorSettings</code> on v13 if the app inherits from an ancestor</li>
+<p>To create Custom View Settings, create a custom content-type in the <strong>Configuration</strong> scope and use it in the view.
+See <a class="xref" href="../app/views/settings.html">View Settings (Advanced ⚠)</a>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Full Settings Stack introduced in 2sxc 12.04</li>
+<li>Dropped <code>SettingsCustom</code> as a type in v13, as not needed any more because we changed how the site-level settings work</li>
+<li>Added <code>AncestorCustom</code> and <code>AncestorSettings</code> on v13 if the app inherits from an ancestor</li>
 </ul>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,21 +106,21 @@
         </div>
 
         <article data-uid="NetCode.Errors.RuntimeBindingOnNullReference">
-<h1 id="error-cannot-perform-runtime-binding-on-a-null-reference" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="5">Error Cannot perform runtime binding on a null reference</h1>
+<h1 id="error-cannot-perform-runtime-binding-on-a-null-reference">Error Cannot perform runtime binding on a null reference</h1>
 
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="7">If you see an error like this:</p>
-<pre><code class="lang-text" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="9">Error: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference at ToSic.Sxc.Engines.RazorEngine.Render(TextWriter writer, Object data) in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 108 at ToSic.Sxc.Engines.RazorEngine.RenderTemplate(Object data) in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 118 at ToSic.Sxc.Engines.EngineBase.Render(Object data) in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Engines\EngineBase.cs:line 171 at ToSic.Sxc.Blocks.BlockBuilder.RenderInternal(Object data) in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Blocks\BlockBuilder_Render.cs:line 123
+<p>If you see an error like this:</p>
+<pre><code class="lang-text">Error: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference at ToSic.Sxc.Engines.RazorEngine.Render(TextWriter writer, Object data) in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 108 at ToSic.Sxc.Engines.RazorEngine.RenderTemplate(Object data) in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 118 at ToSic.Sxc.Engines.EngineBase.Render(Object data) in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Engines\EngineBase.cs:line 171 at ToSic.Sxc.Blocks.BlockBuilder.RenderInternal(Object data) in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Blocks\BlockBuilder_Render.cs:line 123
 </code></pre>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="13">It usually means that you <strong sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="13">tried to access a method</strong> which</p>
-<ul sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="15">
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="15">doesn't exist</li>
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="16">and it tried it on a <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="16">dynamic</code> object.</li>
+<p>It usually means that you <strong>tried to access a method</strong> which</p>
+<ul>
+<li>doesn't exist</li>
+<li>and it tried it on a <code>dynamic</code> object.</li>
 </ul>
-<h2 id="background-dynamic-objects" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="18">Background: <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="18">dynamic</code> Objects</h2>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="20">In Razor, especially before 2sxc 16 which introduced the strictly typed mode, most object are <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="20">dynamic</code>.
+<h2 id="background-dynamic-objects">Background: <code>dynamic</code> Objects</h2>
+<p>In Razor, especially before 2sxc 16 which introduced the strictly typed mode, most object are <code>dynamic</code>.
 This means that the compiler doesn't know what's in them, and can't check if a method exists.</p>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="23">Example using a Razor14 class or earlier:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="25">// Settings is a dynamic object in Razor14 or similar
+<p>Example using a Razor14 class or earlier:</p>
+<pre><code class="lang-cs">// Settings is a dynamic object in Razor14 or similar
 // This works, because the method &quot;Get(...)&quot; exists
 Settings.Get(&quot;SomeSetting&quot;);
 
@@ -128,47 +128,47 @@ Settings.Get(&quot;SomeSetting&quot;);
 // Because the compiler can't check earlier if the method exists
 var willBreak = Settings.IsOk();
 </code></pre>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="35">Note that this problem can also occur in more complex code, such as:</p>
-<pre><code class="lang-cs" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="37">// a is treated as dynamic
+<p>Note that this problem can also occur in more complex code, such as:</p>
+<pre><code class="lang-cs">// a is treated as dynamic
 // since part of the logic uses a dynamic object
 var a = SomeKindOfHelper.CheckIfNull(Settings) ? &quot;ok&quot; : &quot;not ok&quot;;
 
 // This will fail at runtime with the above message
 a.DoSomethingImpossible();
 </code></pre>
-<h2 id="possible-causes" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="46">Possible Causes</h2>
-<ol sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="48">
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="48">the object is null</li>
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="49">the object is not what you thought it is (eg. you expected a <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="49">List&lt;...&gt;</code> but got an <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="49">IEntity</code>)</li>
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="50">the method doesn't exist</li>
-<li sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="51">the method exists, but the signature is very different from what you tried to call</li>
+<h2 id="possible-causes">Possible Causes</h2>
+<ol>
+<li>the object is null</li>
+<li>the object is not what you thought it is (eg. you expected a <code>List&lt;...&gt;</code> but got an <code>IEntity</code>)</li>
+<li>the method doesn't exist</li>
+<li>the method exists, but the signature is very different from what you tried to call</li>
 </ol>
-<h2 id="solution-fix-your-code" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="53">Solution: Fix your Code</h2>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="55">In many cases the runtime will tell you what line the error was on, in which case you
+<h2 id="solution-fix-your-code">Solution: Fix your Code</h2>
+<p>In many cases the runtime will tell you what line the error was on, in which case you
 can see what method was trying to be called. In other cases you don't know the exact line of code.
 Our recommendation is:</p>
-<h3 id="first-make-sure-you-know-what-line-breaks" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="59">First Make sure you know what line breaks</h3>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="61">If the compiler told you, you're lucky.
+<h3 id="first-make-sure-you-know-what-line-breaks">First Make sure you know what line breaks</h3>
+<p>If the compiler told you, you're lucky.
 If not, you'll have to work it out. The easiest way to do this is to comment out most of the code
 until you don't have an error, and put the code back in piece by piece.</p>
-<h3 id="then-figure-out-the-cause" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="65">Then Figure out the Cause</h3>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="67">The following example assumes that your object is called <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="67">myThing</code> and you're trying to call <code sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="67">myThing.DoSomething()</code>.</p>
-<h4 id="1-check-if-the-object-is-null" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="69">1. Check if the object is null</h4>
-<pre><code class="lang-razor" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="71">&lt;div&gt;
+<h3 id="then-figure-out-the-cause">Then Figure out the Cause</h3>
+<p>The following example assumes that your object is called <code>myThing</code> and you're trying to call <code>myThing.DoSomething()</code>.</p>
+<h4 id="1-check-if-the-object-is-null">1. Check if the object is null</h4>
+<pre><code class="lang-razor">&lt;div&gt;
   @* this will show true or false *@
   Debug: @(myThing == null)
 &lt;/div&gt;
 </code></pre>
-<h4 id="2-check-what-type-the-object-is" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="78">2. Check what type the object is</h4>
-<pre><code class="lang-razor" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="80">&lt;div&gt;
+<h4 id="2-check-what-type-the-object-is">2. Check what type the object is</h4>
+<pre><code class="lang-razor">&lt;div&gt;
   @* this will show the type name *@
   Debug: @myThing.GetType().Name
 &lt;/div&gt;
 </code></pre>
-<h4 id="3-check-if-the-method-and-signature-exists" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="87">3. Check if the method and signature exists</h4>
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="89">You could do some reflection here, but once you know the type, I recommend you just check the docs.</p>
-<hr sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="91">
-<p sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="93">Shortlink: <a href="https://go.2sxc.org/err-binding-on-null-reference" sourcefile="pages/net-code/errors/cannot-perform-runtime-binding-on-a-null-reference.md" sourcestartlinenumber="93">https://go.2sxc.org/err-binding-on-null-reference</a></p>
+<h4 id="3-check-if-the-method-and-signature-exists">3. Check if the method and signature exists</h4>
+<p>You could do some reflection here, but once you know the type, I recommend you just check the docs.</p>
+<hr>
+<p>Shortlink: <a href="https://go.2sxc.org/err-binding-on-null-reference">https://go.2sxc.org/err-binding-on-null-reference</a></p>
 
 </article>
 

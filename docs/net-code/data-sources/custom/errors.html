@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="NetCode.DataSources.Custom.Errors">
-<h1 id="datasource-api-error-handling" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="5">DataSource API: Error Handling</h1>
+<h1 id="datasource-api-error-handling">DataSource API: Error Handling</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,24 +203,24 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
 <style> .context-box-summary .datasource-custom { visibility: visible; } </style>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="10">Custom DataSources sometimes need to throw an error, for example if a SQL isn't found, a remote WebAPI fails or the configuration is faulty.</p>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="12">Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="12">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
-<h2 id="you-dont-have-to-do-anything" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="14">You Don't Have to Do Anything</h2>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="16">If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="16">Insights</a> for the admin/developer to see.</p>
-<h2 id="but-you-can-do-better" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="18">...but You can do Better</h2>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="20">Instead of raising the normal exception, your DataSource can also return an <code sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="20">ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
-<ol sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="22">
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="22">The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="22">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="22">DataSourceErrorHelper</a>) to create error streams</li>
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="23">The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="23">TryGetIn()</a> helper to get an <code sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="23">In</code> stream which must be available - or null so you can return an error</li>
+<p>Custom DataSources sometimes need to throw an error, for example if a SQL isn't found, a remote WebAPI fails or the configuration is faulty.</p>
+<p>Since 2sxc 11.13 we changed the behavior so that <a class="xref" href="../../../basics/query/debug/index.html">DataSource Errors</a> will not break code execution but just make the stream contain just one Error entity. This helps a lot in debugging.</p>
+<h2 id="you-dont-have-to-do-anything">You Don't Have to Do Anything</h2>
+<p>If your code just raises a .net Exception, the execution engine will catch this and wrap it in an error. The Exception will also be logged to <a class="xref" href="../../debug/insights.html">Insights</a> for the admin/developer to see.</p>
+<h2 id="but-you-can-do-better">...but You can do Better</h2>
+<p>Instead of raising the normal exception, your DataSource can also return an <code>ErrorStream</code> which contains more specific information about the problem. This greatly helps the developer (and that could be you 😉) figure out what to fix. There are three tools at your disposal:</p>
+<ol>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">Error</a> property (<a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html">DataSourceErrorHelper</a>) to create error streams</li>
+<li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn()</a> helper to get an <code>In</code> stream which must be available - or null so you can return an error</li>
 </ol>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="25">Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
-<h2 id="example-using-trygetin" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="28">Example using TryGetIn</h2>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="30"><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="30">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
-<pre><code class="lang-c#" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="32">private IEnumerable&lt;IEntity&gt; GetEntities()
+<p>Read the API docs above or check out examples in the 2sxc EAV code base for more guidance.</p>
+<h2 id="example-using-trygetin">Example using TryGetIn</h2>
+<p><a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_">TryGetIn</a> ensures that we get a stream we really need, or null if something went wrong.</p>
+<pre><code class="lang-c#">private IEnumerable&lt;IEntity&gt; GetEntities()
 {
   // This will resolve the tokens before starting
   Configuration.Parse();
@@ -233,22 +233,22 @@
   return results;
 }
 </code></pre>
-<h2 id="create-custom-error-messages" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="47">Create Custom Error Messages</h2>
-<p sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="49">If you need an error which is not a predefined type, you can create your own using <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html#ToSic_Eav_DataSource_DataSourceErrorHelper_Create_" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="49">Error.Create</a>:</p>
-<hr sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="51">
-<h2 id="read-also" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="53">Read also</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="55">
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="55"><a class="xref" href="guide/big-picture.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="55">DataSources Big Picture</a></li>
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="56"><a class="xref" href="pre-v15/configuration-parse.html" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="56">Ensuring configuration is parsed</a></li>
+<h2 id="create-custom-error-messages">Create Custom Error Messages</h2>
+<p>If you need an error which is not a predefined type, you can create your own using <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.DataSourceErrorHelper.html#ToSic_Eav_DataSource_DataSourceErrorHelper_Create_">Error.Create</a>:</p>
+<hr>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a class="xref" href="guide/big-picture.html">DataSources Big Picture</a></li>
+<li><a class="xref" href="pre-v15/configuration-parse.html">Ensuring configuration is parsed</a></li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="58">Demo App and further links</h2>
-<ul sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="60">
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="60">todo</li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<ul>
+<li>todo</li>
 </ul>
-<h2 id="history" sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="62">History</h2>
-<ol sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="64">
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="64">Introduced in EAV / 2sxc 11.13</li>
-<li sourcefile="pages/net-code/data-sources/custom/errors.md" sourcestartlinenumber="65">Error API completely rewritten in 2sxc 15 (breaking change)</li>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in EAV / 2sxc 11.13</li>
+<li>Error API completely rewritten in 2sxc 15 (breaking change)</li>
 </ol>
 
 </article>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <!-- 2sxc docs -->
   <head>
@@ -106,7 +106,7 @@
         </div>
 
         <article data-uid="Basics.Server.AssetOptimization.Index">
-<h1 id="optimizing-template-assets--client-dependencies-js--css" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="4">Optimizing Template Assets / Client Dependencies (JS &amp; CSS)</h1>
+<h1 id="optimizing-template-assets--client-dependencies-js--css">Optimizing Template Assets / Client Dependencies (JS &amp; CSS)</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -203,32 +203,32 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">you are here (click to zoom) - discover the <a class="xref" href="../../index.html" sourcefile="pages/basics/stack/_shared-all.md" sourcestartlinenumber="7">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../index.html">stack</a></p>
   </div>
 </div>
 <style>.context-box-summary .asset-optimizer { visibility: visible; } </style>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="9">Learn about using the Dnn Client-Resource-Management aka Dnn Client-Depedency-Management in 2sxc templates.</p>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="11">Whenever a template needs additional files, specifically</p>
-<ol sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="13">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="13">JavaScripts</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="14">CSS Styles</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="15">Image Resources</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="16">Fonts</li>
+<p>Learn about using the Dnn Client-Resource-Management aka Dnn Client-Depedency-Management in 2sxc templates.</p>
+<p>Whenever a template needs additional files, specifically</p>
+<ol>
+<li>JavaScripts</li>
+<li>CSS Styles</li>
+<li>Image Resources</li>
+<li>Fonts</li>
 </ol>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="18">These should be included in an optimized form to enhance performance dramatically. This is all about reducing the amount of server requests (very important for end-user performance) and delivering them in the order / places in the HTML-file, optimal for their purpose.</p>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="20">So far 2sxc will take care of your JS/CSS files by bundling and minifying them, at the position and order you need.</p>
-<h2 id="how-to-use" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="22">How to use</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="24">Here's a trivial example for optimizing a CSS with default settings:</p>
-<pre><code class="lang-html" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="26">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/style.css&quot; @Kit.Page.AssetAttributes() /&gt;
+<p>These should be included in an optimized form to enhance performance dramatically. This is all about reducing the amount of server requests (very important for end-user performance) and delivering them in the order / places in the HTML-file, optimal for their purpose.</p>
+<p>So far 2sxc will take care of your JS/CSS files by bundling and minifying them, at the position and order you need.</p>
+<h2 id="how-to-use">How to use</h2>
+<p>Here's a trivial example for optimizing a CSS with default settings:</p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/style.css&quot; @Kit.Page.AssetAttributes() /&gt;
 </code></pre>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="30">This will</p>
-<ol sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="32">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="32">Create a link to the file <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="32">styles.css</code> in the current App</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="33">Add some attributes which will enable optimizations</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="34">If you have <a class="xref" href="../../../abyss/security/csp/index.html" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="34">Content Security Policy (CSP)</a> enabled, it will also <a class="xref" href="../../../abyss/security/csp/whitelist.html" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="34">whitelist the resources in CSP</a></li>
+<p>This will</p>
+<ol>
+<li>Create a link to the file <code>styles.css</code> in the current App</li>
+<li>Add some attributes which will enable optimizations</li>
+<li>If you have <a class="xref" href="../../../abyss/security/csp/index.html">Content Security Policy (CSP)</a> enabled, it will also <a class="xref" href="../../../abyss/security/csp/whitelist.html">whitelist the resources in CSP</a></li>
 </ol>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="37">Here's a more typical example, showing an optimization for a style &amp; js which are inside the app-folder. This example uses Razor, so we use <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="37">@App.Path</code> to ensure it's picking up the right folder (use <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="37">[App:Path]</code> in token-templates):</p>
-<pre><code class="lang-razor" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="39">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;
+<p>Here's a more typical example, showing an optimization for a style &amp; js which are inside the app-folder. This example uses Razor, so we use <code>@App.Path</code> to ensure it's picking up the right folder (use <code>[App:Path]</code> in token-templates):</p>
+<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;
     @Kit.Page.AssetAttributes(priority: 150) /&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot;
     @Kit.Page.AssetAttributes(position: &quot;bottom&quot;) /&gt;
@@ -236,47 +236,47 @@
     @Kit.Page.AssetAttributes(priority: 200, position: &quot;bottom&quot;) /&gt;
 &lt;/script&gt;
 </code></pre>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="49">This shows:</p>
-<ol sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="51">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="51">a CSS with lower <a href="#understanding-priorities" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="51">priority</a> (150 instead of the default 100)</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="52">a css with which will be <a href="#understanding-placement" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="52">placed</a> at the page bottom (so it will load later)</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="53">a script-tag and specifies <a href="#understanding-priorities" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="53">priority</a> and <a href="#understanding-placement" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="53">placement</a> inside the HTML document</li>
+<p>This shows:</p>
+<ol>
+<li>a CSS with lower <a href="#understanding-priorities">priority</a> (150 instead of the default 100)</li>
+<li>a css with which will be <a href="#understanding-placement">placed</a> at the page bottom (so it will load later)</li>
+<li>a script-tag and specifies <a href="#understanding-priorities">priority</a> and <a href="#understanding-placement">placement</a> inside the HTML document</li>
 </ol>
-<h2 id="how-it-works" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="55">How it works</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="57">Basically all <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="57">&lt;script&gt;</code> tags and all <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="57">&lt;link rel=&quot;stylesheet&quot;&gt;</code> tags can have a special attribute, which the system will parse according to the environments capabilities. In Dnn 7/8/9 this means it can</p>
-<ul sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="59">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="59">can assign priorities (to ensure load-order)</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="60">can assign placement in the html-document (head, body, bottom)</li>
+<h2 id="how-it-works">How it works</h2>
+<p>Basically all <code>&lt;script&gt;</code> tags and all <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> tags can have a special attribute, which the system will parse according to the environments capabilities. In Dnn 7/8/9 this means it can</p>
+<ul>
+<li>can assign priorities (to ensure load-order)</li>
+<li>can assign placement in the html-document (head, body, bottom)</li>
 </ul>
-<h2 id="understanding-priorities" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="62">Understanding Priorities</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="64">There is a fairly complicated article in the <a href="http://www.dnnsoftware.com/wiki/client-resource-management-api" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="64">dnn wiki about client resource management</a> which explains most of it. In general you can say that all Dnn scripts load with priorities below 100, the default for all standard scripts is 100, and from there you can order things as you need them.</p>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="66">We usually prioritize libraries like <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="66">2sxc</code> or <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="66">angular.min.js</code> with 100 or larger, and then place our own script (like an app-blog.min.js) at numbers like 200.</p>
-<h2 id="understanding-placement" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="68">Understanding Placement</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="70">Placement information can only be supplied in 2sxc 8.9 or higher. The three positions are:</p>
-<ul sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="72">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="72"><code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="72">head</code> meaning that the resulting data is requested in the HTML header. So it will be loaded before the page is rendered, meaning it's available right from the start but also delays page-build. This is often detrimental in terms of page-load times.<br>
-<em sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="73">this is the default location for CSS files</em></li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="74"><code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="74">body</code> meaning it will be loaded in the beginning of the HTML body tag. Again this means it's there very early, but will slow down page buildup.<br>
-<em sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="75">this is the default location for JS files</em></li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="76"><code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="76">bottom</code> meaning it will be loaded at the end of the html document. This is actually great for page-loading performance to improve <em sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="76">above-the-fold</em> loading. But it takes a bit of work to perfect its application.</li>
+<h2 id="understanding-priorities">Understanding Priorities</h2>
+<p>There is a fairly complicated article in the <a href="http://www.dnnsoftware.com/wiki/client-resource-management-api">dnn wiki about client resource management</a> which explains most of it. In general you can say that all Dnn scripts load with priorities below 100, the default for all standard scripts is 100, and from there you can order things as you need them.</p>
+<p>We usually prioritize libraries like <code>2sxc</code> or <code>angular.min.js</code> with 100 or larger, and then place our own script (like an app-blog.min.js) at numbers like 200.</p>
+<h2 id="understanding-placement">Understanding Placement</h2>
+<p>Placement information can only be supplied in 2sxc 8.9 or higher. The three positions are:</p>
+<ul>
+<li><code>head</code> meaning that the resulting data is requested in the HTML header. So it will be loaded before the page is rendered, meaning it's available right from the start but also delays page-build. This is often detrimental in terms of page-load times.<br>
+<em>this is the default location for CSS files</em></li>
+<li><code>body</code> meaning it will be loaded in the beginning of the HTML body tag. Again this means it's there very early, but will slow down page buildup.<br>
+<em>this is the default location for JS files</em></li>
+<li><code>bottom</code> meaning it will be loaded at the end of the html document. This is actually great for page-loading performance to improve <em>above-the-fold</em> loading. But it takes a bit of work to perfect its application.</li>
 </ul>
-<h2 id="read-also" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="78">Read also</h2>
-<ul sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="80">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="80"><a href="http://www.dnnsoftware.com/wiki/client-resource-management-api" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="80">Dnn API Documentation</a></li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="81"><a href="http://2sxc.org/en/blog/post/the-trouble-with-dnn-javascript-css-minification-aka-client-dependency-resource-management" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="81">Blog about problems with the Dnn resource management</a> in case you run into problems</li>
+<h2 id="read-also">Read also</h2>
+<ul>
+<li><a href="http://www.dnnsoftware.com/wiki/client-resource-management-api">Dnn API Documentation</a></li>
+<li><a href="http://2sxc.org/en/blog/post/the-trouble-with-dnn-javascript-css-minification-aka-client-dependency-resource-management">Blog about problems with the Dnn resource management</a> in case you run into problems</li>
 </ul>
-<h2 id="demo-app-and-further-links" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="83">Demo App and further links</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="85">You should find some code examples in this demo App</p>
-<ul sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="87">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="87">basically this is used in every app in the <a href="http://2sxc.org/en/apps" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="87">app-catalog</a></li>
+<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>You should find some code examples in this demo App</p>
+<ul>
+<li>basically this is used in every app in the <a href="http://2sxc.org/en/apps">app-catalog</a></li>
 </ul>
-<hr sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="89">
-<h2 id="old-api-before-v14" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="91">Old API Before v14</h2>
-<p sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="93">The syntax above using the <code sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="93">@Kit.Page</code> <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="93">IPageService</a>.
-It was introduced in v14 and requires your Razor to inherit from <a class="xref" href="../../../api/dot-net/Custom.Hybrid.Razor14.html" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="94">Razor14</a> or later.
+<hr>
+<h2 id="old-api-before-v14">Old API Before v14</h2>
+<p>The syntax above using the <code>@Kit.Page</code> <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a>.
+It was introduced in v14 and requires your Razor to inherit from <a class="xref" href="../../../api/dot-net/Custom.Hybrid.Razor14.html">Razor14</a> or later.
 This is the recommended way of doing this.
 But there is also a more manual way for older razor files, like this:</p>
-<pre><code class="lang-razor" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="98">&lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; data-enableoptimizations=&quot;true&quot; /&gt;
+<pre><code class="lang-razor">&lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; data-enableoptimizations=&quot;true&quot; /&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/style.css&quot;
     data-enableoptimizations=&quot;150&quot; /&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;@App.Path/assets/lazy.css&quot;
@@ -285,12 +285,12 @@ But there is also a more manual way for older razor files, like this:</p>
     data-enableoptimizations=&quot;200:bottom&quot; /&gt;
 &lt;/script&gt;
 </code></pre>
-<hr sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="109">
-<h2 id="history" sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="111">History</h2>
-<ol sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="113">
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="113">Introduced in Version 04.00 with true/false</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="114">Enhanced in Version 06.00 with priority numbers</li>
-<li sourcefile="pages/basics/server/asset-optimization/index.md" sourcestartlinenumber="115">Enhanced in 08.09 with position head/body/bottom</li>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in Version 04.00 with true/false</li>
+<li>Enhanced in Version 06.00 with priority numbers</li>
+<li>Enhanced in 08.09 with position head/body/bottom</li>
 </ol>
 
 </article>
