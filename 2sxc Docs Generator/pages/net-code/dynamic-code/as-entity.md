@@ -7,7 +7,7 @@ In most Razor and WebAPIs you will prefer to use Dynamic Entities allowing you t
 But in rare cases where you have a [](xref:ToSic.Sxc.Data.IDynamicEntity) and want to access the real underlying [](xref:ToSic.Eav.Data.IEntity) in it's full complexity. 
 This is where `AsEntity(...)` is used. 
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsEntity*).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsEntity*).
 
 > [!TIP]
 > `AsEntity(...)` reverses what [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic) does. 

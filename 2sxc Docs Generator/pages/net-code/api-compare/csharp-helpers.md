@@ -2,8 +2,6 @@
 uid: NetCode.TypedCode.CompareApis.CSharpHelpers
 ---
 
-# TODO:
-
 # Razor Sub-Components  Differences in APIs
 
 2sxc has changed a lot over time.
@@ -34,18 +32,4 @@ These can be picked up in the child as follows:
 See [MyModel](xref:ToSic.Sxc.Code.ITypedModel)
 
 
-
-
----
-
-
-[ITypedItem]: xref:ToSic.Sxc.Data.ITypedItem "ITypedItem"
-[IEnumerable&lt;ITypedItem&gt;]: xref:ToSic.Sxc.Data.ITypedItem "IEnumerable<ITypedItem>"
-[IContextData]: xref:ToSic.Sxc.Data.IContextData
-[IDataStream]: xref:ToSic.Eav.DataSource.IDataStream
-[ITypedStack]: xref:ToSic.Sxc.Data.ITypedStack
 [ITypedModel]: xref:ToSic.Sxc.Code.ITypedModel
-[IApp]: xref:ToSic.Sxc.Apps.IApp
-[IAppTyped]: xref:ToSic.Sxc.Apps.IAppTyped
-[IAppData]: xref:ToSic.Eav.Apps.IAppData
-[IFolder]: xref:ToSic.Sxc.Adam.IFolder

@@ -8,7 +8,7 @@ The **Content** is a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) in
 
 It contains the content-item assigned to this template. If the View is a list, then **Content** contains the first item in the list. Note that if the View is configured to be a list, then it may also have a [Header](xref:NetCode.DynamicCode.Header).
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.Content).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.Content).
 
 Since it's a Dynamic Entity it carries all values as properties, like `Content.Link` etc. 
 

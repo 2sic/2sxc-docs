@@ -82,7 +82,7 @@ The configuration uses a sophisticated token system to provide all necessary inf
 
 * about [Data Streams](xref:ToSic.Eav.DataSource.IDataStream)
 * [Dynamic Code CreateSource(...)](xref:NetCode.DynamicCode.CreateSource)
-* [.net API](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*)
+* [.net API](xref:Custom.Hybrid.Razor12.CreateSource*)
 * [Demo-App showing some coding of DataSources][app-ds-code]
 * [Blog about creating your own data-source](xref:Blog.CustomDataSource)
 

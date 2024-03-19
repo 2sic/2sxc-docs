@@ -5,7 +5,7 @@ uid: NetCode.DynamicCode.AsDynamic
 
 To make a complex system like the EAV work, the real objects like the [](xref:ToSic.Eav.Data.IEntity) must very very smart and complicated. This would not be fun to use in razor, where you would prefer a simple `@Something.Property` syntax. This is where `AsDynamic(...)` comes in.
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.Object)).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsDynamic(System.Object)).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -42,7 +42,7 @@ AsDynamic has many signatures accepting a variety of input values. It then retur
 * a [](xref:ToSic.Eav.Data.IEntity) - this will return a single [](xref:ToSic.Sxc.Data.IDynamicEntity)
 * [](xref:ToSic.Sxc.Data.IDynamicEntity) - will return the same [](xref:ToSic.Sxc.Data.IDynamicEntity)  
   _this option exists just so you don't have to pre-check what you pass in, making it easier to code for you_
-* a `string` containing JSON - will return a dynamic object [](xref:ToSic.Sxc.Data.DynamicJacket)  
+* a `string` containing JSON - will return a dynamic object  
   _added in 2sxc 10.20.06_
 
 [!include["Tip Inherits"](../razor/_include-tip-inherits.md)]

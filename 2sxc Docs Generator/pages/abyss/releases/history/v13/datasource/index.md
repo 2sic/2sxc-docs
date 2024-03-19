@@ -34,7 +34,7 @@ In Razor and WebApi there are always built-in methods to get data sources, speci
 1. `CreateSource(...)`
 1. `CreateSource<T>(...)`
 
-See [docs](xref:ToSic.Sxc.Code.DynamicCode.CreateSource*)
+See [e.g. docs](xref:Custom.Hybrid.Razor12.CreateSource*)
 
 If you need this in a DLL then these will be missing. For that, please ensure your classes also use DependencyInjection and are created from code which uses DI.
 

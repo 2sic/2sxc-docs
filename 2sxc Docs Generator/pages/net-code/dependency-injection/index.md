@@ -19,7 +19,7 @@ This is how your code would get a service:
 @Kit.Page.AddOpenGraph("video", "https://2sxc.org/videos/intro.mp4");
 ```
 
-👉 Read more about [GetService](xref:NetCode.DynamicCode.GetService) in the docs or in the [GetService API](xref:ToSic.Sxc.Code.IDynamicCode.GetService*).
+👉 Read more about [GetService](xref:NetCode.DynamicCode.GetService) in the docs or in the [GetService API](xref:Custom.Hybrid.Razor12.GetService*).
 
 ## How Can I Use Dependency Injection in WebAPIs?
 

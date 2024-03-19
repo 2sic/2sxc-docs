@@ -41,7 +41,7 @@ In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects y
 
 > [!TIP]
 > The strongly typed code is much more robust - and typed.
-> So using App.Resources will provide intellisense (if [VS Code is configured correctly](xref:xref:Guides.VsCode.Index)).
+> So using App.Resources will provide intellisense (if [VS Code is configured correctly](xref:Guides.VsCode.Index)).
 >
 > You can also use the `?.` operator to avoid null-errors, such as `App.Resources?.Title` since we're using the new Roslyn compiler for strongly typed code.
 

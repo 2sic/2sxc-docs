@@ -7,7 +7,7 @@ uid: NetCode.DynamicCode.AsDynamicString
 
 The most common use is in GPS fields, where the data is stored as `{"Lat": 0.0, "Long": 0.0}`. But you can use it for so much more. 
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsDynamic(System.String,System.String)).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsDynamic(System.String,System.String)).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -24,7 +24,7 @@ var long = coord.Long;
 
 ```
 
-Read more: Check out the API Docs of [](xref:ToSic.Sxc.Code.IDynamicCode)
+Read more: Check out the API Docs of e.g. [](xref:Custom.Hybrid.Razor12)
 
 
 ## History

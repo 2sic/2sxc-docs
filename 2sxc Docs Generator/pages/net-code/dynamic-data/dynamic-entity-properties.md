@@ -57,7 +57,7 @@ Additional properties that work (they are dynamic, so don't appear in the code)
 > In 2sxc 10.27 any property that returns a `List<DynamicEntity>` now returns a [](xref:ToSic.Sxc.Data.IDynamicEntity) containing a list.
 > This means that if you expect the list to just return one item, you can directly access its properties like this:  
 > `Content.Author.FirstName`.  
-> To otherwise enumerate the items, we recommend [](xref:ToSic.Sxc.Code.DynamicCode.AsList(System.Object)) so `AsList(Content.Tags)`
+> To otherwise enumerate the items, we recommend [](xref:Custom.Hybrid.Razor12.AsList(System.Object)) so `AsList(Content.Tags)`
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 

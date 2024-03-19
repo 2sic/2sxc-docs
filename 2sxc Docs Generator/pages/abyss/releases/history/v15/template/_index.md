@@ -33,7 +33,7 @@ Previously you could write code like this in your Razor:
 
 ## What we Changed
 
-In 2sxc 11.11 we introduced the `GetService<T>()` ([docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*)) which provides proper DI.
+In 2sxc 11.11 we introduced the `GetService<T>()` ([docs](xref:Custom.Hybrid.Razor12.GetService*)) which provides proper DI.
 We also introduced a `ToSic.Sxc.Services.IRenderService` which should replace these commands - see [docs](xref:ToSic.Sxc.Services.IRenderService).
 Please use this from now on.
 

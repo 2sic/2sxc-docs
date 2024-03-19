@@ -38,11 +38,11 @@ Usually LookUp Engines will receive a long list (Dictionary) of things to look u
 
 LookUp Engines all implement the [](xref:ToSic.Eav.LookUp.ILookUpEngine) interface and should inherit the `LookUpEngine` object.
 
-LookUpEngine objects are provided with DepedencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Eav.LookUp.ILookUpEngineResolver).
+LookUpEngine objects are provided with DependencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Eav.LookUp.ILookUpEngineResolver).
 
 
 
-## Also Read #todoc
+## Also Read
 
 * [](xref:Abyss.Parts.LookUp.Index)
 * [](xref:Abyss.Parts.LookUp.Tokens)

@@ -6,7 +6,7 @@ uid: NetCode.DynamicCode.AsList
 
 In razor you prefer a simple `@Something.Property` syntax. If you only have one item, you'll use [](xref:NetCode.DynamicCode.AsDynamic). When you need a list to go through, you use `AsList(...)`. 
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsList*).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsList*).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]

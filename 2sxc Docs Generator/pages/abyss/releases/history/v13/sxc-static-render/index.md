@@ -6,9 +6,9 @@ uid: Abyss.Releases.History.V13.StaticRender
 
 **Keywords:** #Deprecated #Render #Static #DependencyInjection
 
-2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
+2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.
 
-These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else. 
+These two commands for rendering Inner Content are being deprecated and will be removed in v14. In v13 it was moved to the Dnn DLL because it shoudn't be used anywhere else.
 
 * `ToSic.SexyContent.ContentBlocks.One(...)`
 * `ToSic.SexyContent.ContentBlocks.All(...)`
@@ -17,9 +17,9 @@ These two commands for rendering Inner Content are being deprecated and will be 
 
 ## Reason for Removal
 
-2sxc used to not have Dependency Injection so there were some static APIs which we provided. 
-But this is bad practice and causes a lot of difficulty to keep everything working. 
-The newer APIs use Services and Dependency Injection and do what they should. 
+2sxc used to not have Dependency Injection so there were some static APIs which we provided.
+But this is bad practice and causes a lot of difficulty to keep everything working.
+The newer APIs use Services and Dependency Injection and do what they should.
 
 ## History - How it Used to Work
 
@@ -33,11 +33,11 @@ Previously you could write code like this in your Razor:
 
 ## What we Changed
 
-In 2sxc 11.11 we introduced the `GetService<T>()` ([docs](xref:ToSic.Sxc.Code.IDynamicCode.GetService*)) which provides proper DI.
+In 2sxc 11.11 we introduced the `GetService<T>()` ([e.g. docs](xref:Custom.Hybrid.Razor12.GetService*)) which provides proper DI.
 We also introduced a `ToSic.Sxc.Services.IRenderService` which should replace these commands - see [docs](xref:ToSic.Sxc.Services.IRenderService).
 Please use this from now on.
 
-The old API will continue to work for a while but show errors in the insight. 
+The old API will continue to work for a while but show errors in the insight.
 
 
 ## Upgrade to Newer functionality
@@ -63,4 +63,4 @@ var renderSvc = GetService<IRenderService>();
 
 ---
 
-Shortlink to here: https://go.2sxc.org/brc-13-static-render
+Shortlink to here: <https://go.2sxc.org/brc-13-static-render>

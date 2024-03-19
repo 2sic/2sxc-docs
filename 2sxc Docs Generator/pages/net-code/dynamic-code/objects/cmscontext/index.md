@@ -8,7 +8,7 @@ To enable Hybrid Razor which works on Dnn and Oqtane, we need standards so that 
 
 So we're creating this new standardized object to ask for these things. 
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.CmsContext) of the Object on the Dynamic Code
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.CmsContext) of the Object on the Dynamic Code
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Context.ICmsContext) of the `ICmsContext` object
 

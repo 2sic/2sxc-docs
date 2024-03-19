@@ -153,7 +153,7 @@ So when these sort/filter or do something, they will only receive the data alrea
 * [Data Sources](xref:NetCode.DataSources.DataSource)
 * [Data Streams](xref:ToSic.Eav.DataSource.IDataStream)
 * [Dynamic Code CreateSource\<T\>(...)](xref:NetCode.DynamicCode.CreateSource)
-* [.net API](xref:ToSic.Sxc.Code.IDynamicCode.CreateSource*)
+* [.net API](xref:Custom.Hybrid.Razor12.CreateSource*)
 * [Demo-App showing some coding of DataSources][app-ds-code]
 * [Blog about creating your own data-source](xref:Blog.CustomDataSource)
 

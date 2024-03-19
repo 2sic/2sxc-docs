@@ -9,7 +9,7 @@ uid: NetCode.DynamicCode.AsAdam
 When a content-item has a `Library` field (see [](xref:Basics.Data.Fields.Hyperlink-Library)) your code needs to get a list of all the files and folders of that field. For example to show galleries. 
 This is where `AsAdam(...)` comes in. It gives you the ADAM parts of this field.
 
-⚡ The [official API docs](xref:ToSic.Sxc.Code.IDynamicCode.AsAdam*).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsAdam*).
 
 Basically all you need for `AsAdam(...)` is
 

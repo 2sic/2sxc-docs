@@ -97,5 +97,5 @@ This is done with these APIs:
 
 [ITypedItem]: xref:ToSic.Sxc.Data.ITypedItem "ITypedItem"
 [IEnumerable&lt;ITypedItem&gt;]: xref:ToSic.Sxc.Data.ITypedItem "IEnumerable<ITypedItem>"
-[IContextData]: xref:ToSic.Sxc.Data.IContextData
+[IContextData]: xref:ToSic.Sxc.Context.ICmsContext
 [IDataStream]: xref:ToSic.Eav.DataSource.IDataStream
