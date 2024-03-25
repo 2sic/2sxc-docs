@@ -15,10 +15,10 @@ Last Update: **2024-03-13**
 
 ## Priority for 2024-Q1 till end of March
 
-1. Prepare for Oqtane SSR (Server-Side Rendering)
+1. ✅ Prepare for Oqtane SSR (Server-Side Rendering)
 1. Finalize Intellisense for the most important DLLs (Sxc, Dnn, Oqtane)
-1. Provide Code Generator for Content Types, Razor and Services
-1. Improve discoverability of REST APIs
+1. ✅ Provide Code Generator for Content Types, Razor and Services
+1. ✅ Improve discoverability of REST APIs
 1. LTS
 
 
