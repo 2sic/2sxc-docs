@@ -117,7 +117,7 @@ Called Razor - eg. `Part Product.cshtml`:
 </div>
 ```
 
-## With Parameters - Strongly Typed
+## With Parameters - Strong Typed
 
 This applies to v17.03+ with `RazorTyped<TModel>` and `AppRazor<TModel>`.
 It uses the `Model` to pass parameters.
@@ -161,7 +161,7 @@ Called Razor - eg. `Part Product.cshtml`:
 
 This is how you call sub-razor files or get helper C# classes:
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `@Html.Partial("file.cshtml)` | `@Html.Partial("file.cshtml)` | `@Html.Partial("file.cshtml)`
 | `@Html.Partial("file.cshtml, new { Sort = "asc" })` | `@Html.Partial("file.cshtml, new { Sort = "asc" })` | `@Html.Partial("file.cshtml, new { Sort = "asc" })` <br> `@Html.Partial("file.cshtml, new SomeModel { Sort = "asc" })`
@@ -173,7 +173,7 @@ When a razor is called using `Html.Partial(..., new { ... })` it passes paramete
 
 These can be picked up in the child as follows:
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `DynamicModel` <br> (`dynamic`) | `MyModel` <br> ([ITypedModel]) | `MyModel` <br> ([ITypedModel]) <br><br> `Model` <br> (`custom type`)
 | `var name = DynamicModel.Name` <br> (`dynamic`) | `var name = MyModel.String("Name")` <br> (`string`) | `var name = MyModel.String("Name")` <br> (`string`) <br><br> `var name = Model.Name` <br> (`string`)

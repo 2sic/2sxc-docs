@@ -114,7 +114,7 @@ Sometimes you'll also want to convert old code to new code, and this page should
 <div class="TIP">
 <h5>Tip</h5>
 <p>This is about <strong>Data Objects</strong> - the objects which contain the data you're working with.</p>
-<p>So <strong>DynamicEntities</strong>, <strong>TypedItems</strong> and <strong>Strongly-Typed Custom Data Models</strong>.</p>
+<p>So <strong>DynamicEntities</strong>, <strong>TypedItems</strong> and <strong>Strong-Typed Custom Data Models</strong>.</p>
 </div>
 <div class="TIP">
 <h5>Tip</h5>
@@ -126,8 +126,8 @@ The underlying data type is called an <code>IEntity</code>, but it's difficult t
 <p>Because of this, 2sxc provides simpler objects to work with, specifically these:</p>
 <ul>
 <li><strong>Dynamic Entities</strong> - a dynamic object which can contain any data - older Razor up until <code>Razor14</code></li>
-<li><strong>Typed Items</strong> - a strongly-typed object which contains data - <code>RazorTyped</code> and later (v16+)</li>
-<li><strong>Strongly-Typed Custom Data Models</strong> - a strongly-typed object which contains data - <code>RazorTyped</code> and later (v17.03+)</li>
+<li><strong>Typed Items</strong> - a strong-typed object which contains data - <code>RazorTyped</code> and later (v16+)</li>
+<li><strong>Strong-Typed Custom Data Models</strong> - a strong-typed object which contains data - <code>RazorTyped</code> and later (v17.03+)</li>
 </ul>
 <div class="TIP">
 <h5>Tip</h5>
@@ -141,7 +141,7 @@ Each Razor provides simple methods such as <code>AsDynamic(...)</code> or <code>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Strong Typed</th>
 </tr>
 </thead>
 <tbody>
@@ -173,7 +173,7 @@ but they could also come from loops, queries, etc.</p>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Strong Typed</th>
 </tr>
 </thead>
 <tbody>
@@ -209,14 +209,14 @@ but they could also come from loops, queries, etc.</p>
 <ul>
 <li>in Dynamic mode, all numbers are always returned as <code>decimal</code> since it's the most precise</li>
 <li>in Typed mode, you can specify the type you want, and it will be converted if possible</li>
-<li>in Strongly Typed mode, the type is defined in the generated Data-Model, and you can't change it</li>
+<li>in Strong Typed mode, the type is defined in the generated Data-Model, and you can't change it</li>
 </ul>
 <table>
 <thead>
 <tr>
 <th>Dynamic</th>
 <th>Typed</th>
-<th>Strongly Typed</th>
+<th>Strong Typed</th>
 </tr>
 </thead>
 <tbody>
@@ -247,7 +247,7 @@ but they could also come from loops, queries, etc.</p>
 <p>In Dynamic, property names are not case sensitive.
 In Typed <code>.String(name)</code> etc. property names are case sensitive.
 So <code>dyn.weight</code> and <code>itm.Int(&quot;WEIGHT&quot;)</code> will work.</p>
-<p>In Strongly Typed, the property names are defined in the data model, and are case sensitive.</p>
+<p>In Strong Typed, the property names are defined in the data model, and are case sensitive.</p>
 </div>
 <div class="TIP">
 <h5>Tip</h5>
@@ -275,7 +275,7 @@ To show HTML when you need it - eg. from a WYSIWYG editor, these are the APIs:</
 <li><code>@itm.Html(&quot;Description&quot;)</code> - show HTML as HTML, automatically adding a toolbar (more parameters can change the behavior)</li>
 </ul>
 </li>
-<li>Strongly Typed
+<li>Strong Typed
 <ul>
 <li><code>@itm.Description</code> - show HTML as text</li>
 <li><code>@Html.Raw(itm.Description)</code> - show HTML as HTML</li>
@@ -299,7 +299,7 @@ When showing links, you'll usually want to convert these to a real link, and thi
 <li><code>@itm.String(&quot;Link&quot;)</code> - link as string, without auto-conversion</li>
 </ul>
 </li>
-<li>Strongly Typed
+<li>Strong Typed
 <ul>
 <li><code>@itm.Link</code> - link as URL, so <code>file:72</code> will be converted to the real URL</li>
 <li><code>@itm.String(&quot;Link&quot;)</code> - link as string, without auto-conversion</li>
@@ -325,7 +325,7 @@ If you want to do it manually, you can always use the properties as described in
 <li><code>@itm.Picture(&quot;Pic&quot;)</code> - create a <code>picture</code>; auto-resize and toolbar</li>
 </ul>
 </li>
-<li>Strongly Typed
+<li>Strong Typed
 <ul>
 <li><code>@itm.Img(&quot;Pic&quot;)</code> - create an <code>img</code>; auto-resize and toolbar</li>
 <li><code>@itm.Picture(&quot;Pic&quot;)</code> - create a <code>picture</code>; auto-resize and toolbar</li>
@@ -350,7 +350,7 @@ In some situations it can even contain many files, or even sub folders.</p>
 <li><code>itm.Folder(&quot;Pic&quot;)</code> - get a folder on the item</li>
 </ul>
 </li>
-<li>Strongly Typed
+<li>Strong Typed
 <ul>
 <li><code>itm.PicFile</code> - get a file in the field <code>Pic</code></li>
 <li><code>itm.PicFolder</code> - get a folder on the item</li>
@@ -372,7 +372,7 @@ In some situations it can even contain many files, or even sub folders.</p>
 <li><code>@itm.Child(&quot;Publisher&quot;).String(&quot;Name&quot;)</code> - show the name of the child <code>Publisher</code></li>
 </ul>
 </li>
-<li>Strongly Typed
+<li>Strong Typed
 <ul>
 <li><code>@itm.Publisher.Name</code> - show the name of the child <code>Publisher</code></li>
 <li><code>@itm.Authors.Count()</code> - show the number of children</li>
@@ -381,7 +381,7 @@ In some situations it can even contain many files, or even sub folders.</p>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>For the strongly typed version, the property names are defined in the data model.
+<p>For the strong-typed version, the property names are defined in the data model.
 The exact type returned and if it's a list or single item depends on the field configuration.</p>
 </div>
 

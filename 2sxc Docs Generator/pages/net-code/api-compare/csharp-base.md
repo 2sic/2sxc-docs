@@ -21,7 +21,7 @@ namespace AppCode.Services
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
-## Typed / Strongly-Typed for v16+
+## Typed / Strong-Typed for v16+
 
 These are the **recommended** _Typed_ C# base classes to inherit today:
 
@@ -61,7 +61,7 @@ namespace AppCode.Services
 The new _Typed_ base classes are much more robust and easier to debug than the classic _Dynamic_ code.
 They provide great IntelliSense (when configured in [VS Code](xref:Guides.VsCode.Index)).
 
-When used in combination with Data Models and Services in the AppCode folder, they also allow you to go **Strongly Typed**.
+When used in combination with Data Models and Services in the AppCode folder, they also allow you to go **Strong Typed**.
 This is the recommended way to write code in 2sxc 16+.
 
 ## Custom.Hybrid.CodeTyped

@@ -22,7 +22,7 @@ It is much more robust and easier to debug than the classic _dynamic_ code.
 @MyItem.Html("Description")
 ```
 
-What's great about this is that every value is strongly typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.
+What's great about this is that every value is strong-typed, so VS-Code can give you IntelliSense, and the compiler will catch many more issues.
 
 > [!IMPORTANT]
 > Older code is _dynamic_.

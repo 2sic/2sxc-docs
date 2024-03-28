@@ -1,10 +1,10 @@
 ---
-uid: NetCode.StronglyTypedCode.GetStarted.2VsCode
+uid: NetCode.StrongTypedCode.GetStarted.2VsCode
 ---
 
 # #2 Setup VS Code for IntelliSense
 
-> Get Started with Strongly Typed Code
+> Get Started with Strong Typed Code
 >
 > Setup your Dev Environment for Intellisense
 

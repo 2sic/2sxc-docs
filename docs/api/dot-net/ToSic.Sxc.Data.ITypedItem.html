@@ -351,7 +351,7 @@ real data, use <code>.IsDemoItem</code>.</p>
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_IsPublished" data-uid="ToSic.Sxc.Data.ITypedItem.IsPublished">
   IsPublished
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if this item version is published.
@@ -455,7 +455,7 @@ This means that the item can exist as published, or published-with-draft, showin
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Publishing" data-uid="ToSic.Sxc.Data.ITypedItem.Publishing">
   Publishing
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -563,7 +563,8 @@ It can also be null if there is no underlying entity.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A single item from a field.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -573,17 +574,21 @@ It can also be null if there is no underlying entity.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Name of the field</p>
+</dd>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd></dd>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
     <dt><code>required</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd></dd>
+    <dd><p>throw error if <code>name</code> doesn't exist, see <a class="xref" href="../../net-code/conventions/property-required/index.html">Convention: Property Required Name Checks</a></p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a></dt>
-    <dd></dd>
+    <dd><p>The ITypedItem. If the field doesn't exist or is empty, will return null.</p>
+</dd>
   </dl>
 
 
@@ -592,6 +597,58 @@ It can also be null if there is no underlying entity.</p>
 
 
 
+
+
+
+
+  <a id="ToSic_Sxc_Data_ITypedItem_Child_" data-uid="ToSic.Sxc.Data.ITypedItem.Child*"></a>
+
+  <h3 id="ToSic_Sxc_Data_ITypedItem_Child__1_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Data.ITypedItem.Child``1(System.String,ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean})">
+  Child&lt;T&gt;(string, NoParamOrder, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a child and return with specified custom type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T Child&lt;T&gt;(string name = null, NoParamOrder protector = default, bool? required = null) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the field</p>
+</dd>
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>required</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>throw error if <code>name</code> doesn't exist, see <a class="xref" href="../../net-code/conventions/property-required/index.html">Convention: Property Required Name Checks</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Child__1_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>New v17.05</p>
+</div>
 
 
 
@@ -606,7 +663,7 @@ It can also be null if there is no underlying entity.</p>
   <div class="markdown level1 summary"><p>A <strong>typed</strong> list of sub-items. Important for LINQ style querying or just
 working with various lists. Note that for getting child items of this item you
 can just use the properties, like content.Authors. <br>
-But using Children(&quot;Authors&quot;, typeName) gives you the ability to restrict to a type.  <br>
+But using Children(&quot;Authors&quot;, type: typeName) gives you the ability to restrict to a type.  <br>
 Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -646,6 +703,65 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
 
   <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Children_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Note that the parameter-order is reversed to the Parents()</p>
+</div>
+
+
+
+
+  <a id="ToSic_Sxc_Data_ITypedItem_Children_" data-uid="ToSic.Sxc.Data.ITypedItem.Children*"></a>
+
+  <h3 id="ToSic_Sxc_Data_ITypedItem_Children__1_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Data.ITypedItem.Children``1(System.String,ToSic.Lib.Coding.NoParamOrder,System.String,System.Nullable{System.Boolean})">
+  Children&lt;T&gt;(string, NoParamOrder, string, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A <strong>strongly typed</strong> list of sub-items. Important for LINQ style querying or just
+working with various lists. Note that for getting child items of this item you
+can just use the properties, like content.Authors. <br>
+But using Children(&quot;Authors&quot;, type: typeName) gives you the ability to restrict to a type.  <br>
+Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; Children&lt;T&gt;(string field = null, NoParamOrder protector = default, string type = null, bool? required = null) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the field</p>
+</dd>
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional type filter - would only return items of this type.</p>
+</dd>
+    <dt><code>required</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>throw error if <code>name</code> doesn't exist, see <a class="xref" href="../../net-code/conventions/property-required/index.html">Convention: Property Required Name Checks</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Children__1_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>New v17.05</p>
 </div>
 
 
@@ -1017,6 +1133,62 @@ Can be any one of these:</p>
 
 
 
+  <a id="ToSic_Sxc_Data_ITypedItem_Parent_" data-uid="ToSic.Sxc.Data.ITypedItem.Parent*"></a>
+
+  <h3 id="ToSic_Sxc_Data_ITypedItem_Parent__1_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_String_System_String_" data-uid="ToSic.Sxc.Data.ITypedItem.Parent``1(ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean},System.String,System.String)">
+  Parent&lt;T&gt;(NoParamOrder, bool?, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get either the <em>current</em> parent or the first parent which would be found on <code>.Parents(...)</code> as <strong>strongly typed</strong>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T Parent&lt;T&gt;(NoParamOrder protector = default, bool? current = null, string type = null, string field = null) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>current</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>if set to <code>true</code>, will get the Item which created the current item (the parent) which called <code>.Child(...)</code> or <code>.Children(...)</code></p>
+</dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional type filter - would only return items of this type.</p>
+</dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional field filter - would only return items that point to the current item in a specific field name.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p><em>either</em> the current parent <em>or</em> the first parent returned by the same <code>.Parents(...)</code> call.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Parent__1_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_String_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>New v17.05.01</p>
+</div>
+
+
+
+
   <a id="ToSic_Sxc_Data_ITypedItem_Parents_" data-uid="ToSic.Sxc.Data.ITypedItem.Parents*"></a>
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Parents_ToSic_Lib_Coding_NoParamOrder_System_String_System_String_" data-uid="ToSic.Sxc.Data.ITypedItem.Parents(ToSic.Lib.Coding.NoParamOrder,System.String,System.String)">
@@ -1062,6 +1234,62 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
 
 
   <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Parents_ToSic_Lib_Coding_NoParamOrder_System_String_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Note that the parameter-order is reversed to the Children()</p>
+</div>
+
+
+
+
+  <a id="ToSic_Sxc_Data_ITypedItem_Parents_" data-uid="ToSic.Sxc.Data.ITypedItem.Parents*"></a>
+
+  <h3 id="ToSic_Sxc_Data_ITypedItem_Parents__1_ToSic_Lib_Coding_NoParamOrder_System_String_System_String_" data-uid="ToSic.Sxc.Data.ITypedItem.Parents``1(ToSic.Lib.Coding.NoParamOrder,System.String,System.String)">
+  Parents&lt;T&gt;(NoParamOrder, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem_Relationships.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A <strong>typed</strong> list of entities which point to this item. Important for LINQ style querying or just
+working with various lists. Note that for getting child items of this item you
+can just use the properties, like content.Authors. <br>
+Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; Parents&lt;T&gt;(NoParamOrder protector = default, string type = null, string field = null) where T : class, ITypedItemWrapper16, ITypedItem, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional type filter - would only return items of this type. If not specified (null) will use the name of T.</p>
+</dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional field filter - would only return items that point to the current item in a specific field name.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd><p>A list of all items pointing here (filtered), converted to DynamicEntity for convenience.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_ITypedItem_Parents__1_ToSic_Lib_Coding_NoParamOrder_System_String_System_String__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Note that the parameter-order is reversed to the Children()</p>
 </div>
 

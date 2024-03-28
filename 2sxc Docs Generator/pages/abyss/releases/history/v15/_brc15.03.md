@@ -32,5 +32,5 @@ They should never have been in use outside of the internal code.
     * `IAttribute<T>[string]`
     * `IAttribute<T>[string[]]`
     * `IAttribute[string[] languageKeys]` - was always marked as private
-1. Changed the type of `Attribute.Type` from string to `ValueTypes` to make it more strongly typed
+1. Changed the type of `Attribute.Type` from string to `ValueTypes` to make it more strong-typed
 1. Removed the property `Attribute.ControlledType` which previously contained the ValueType

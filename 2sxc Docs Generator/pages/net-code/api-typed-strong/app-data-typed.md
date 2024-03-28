@@ -1,12 +1,12 @@
 ---
-uid: NetCode.StronglyTypedCode.AppDataTyped
+uid: NetCode.StrongTypedCode.AppDataTyped
 ---
 
-# Strongly Typed App Data in 2sxc 17+
+# Strong Typed App Data in 2sxc 17+
 
 The `App.Data` object provides a **DataSource** to all the data inside the App.
 
-In some scenarios, your code will want to work with this data as if it were a database, but in a strongly typed way.
+In some scenarios, your code will want to work with this data as if it were a database, but in a strong-typed way.
 
 There are a few ways to do this.
 

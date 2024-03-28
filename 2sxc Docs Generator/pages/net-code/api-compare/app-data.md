@@ -24,9 +24,9 @@ In Typed Code, the objects you'll use are usually:
 - `App` - a [IAppTyped] with all app data
 - `App.Data` - a [IAppDataTyped] with all app data
 
-### Strongly Typed Code
+### Strong Typed Code
 
-In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you'll use are usually:
+In Strong Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you'll use are usually:
 
 - `App` - a [IAppTyped<TSet, TRes>](xref:ToSic.Sxc.Apps.IAppTyped`2) with all app data
 - `App.Data` - a [IAppData] with all app data
@@ -46,7 +46,7 @@ In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects y
 
 ## Access App Data
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `App` <br> ([IApp]) | `App` <br> ([IAppTyped]) | `App` <br> ([IAppTyped<TSet, TRes>](xref:ToSic.Sxc.Apps.IAppTyped`2))
 | `App.Data` <br> ([IAppData]) | `App.Data` <br> ([IAppDataTyped]) | `App.Data` <br> ([IAppDataTyped])
@@ -58,7 +58,7 @@ In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects y
 
 ## Access App and View Folders / URLs
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | - | `App.Folder` <br> ([IFolder]) new only | `App.Folder` <br> ([IFolder])
 | `App.Folder` <br> (`string`) | `App.Folder.Name` <br> (`string`)

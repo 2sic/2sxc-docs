@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Custom Data Serialization in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Custom Data Serialization in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/data-serialization.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/data-serialization.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,210 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.DataSerialization">
-<h1 id="custom-data-serialization-in-2sxc-17">Custom Data Serialization in 2sxc 17+</h1>
+        <article data-uid="">
 
-<p>Serialization is usually converting data to JSON in WebAPI scenarios.
-This guide should explain how it works, and what you can do to modify the behavior.</p>
-<h2 id="basics">Basics</h2>
-<p>By default, all classes are serialized using the default JSON serializer.
-This means that properties etc. are simply serialized as expected, typically with camelCase.</p>
-<p>Example for a Product Class</p>
-<pre><code class="lang-c#">class Product {
-  public int Id { get; set; }
-  public Guid Guid { get; set; }
-  public string Name { get; set; }
-  public decimal Price { get; set; }
-  public Category Category { get; set; }
-  public IEnumerable&lt;Tag&gt; Tags { get; set; }
-}
-
-class Category {
-  public int Id { get; set; }
-  public Guid Guid { get; set; }
-  public string Name { get; set; }
-  public string Description { get; set; }
-}
-
-class Tag {
-  public int Id { get; set; }
-  public Guid Guid { get; set; }
-  public string Name { get; set; }
-}
-</code></pre>
-<p>would be serialized as</p>
-<pre><code class="lang-json">{
-  &quot;id&quot;: 123,
-  &quot;guid&quot;: &quot;12345678-1234-1234-1234-1234567890ab&quot;,
-  &quot;name&quot;: &quot;My Product&quot;,
-  &quot;price&quot;: 12.34,
-  &quot;category&quot;: {
-    &quot;id&quot;: 456,
-    &quot;guid&quot;: &quot;12345678-1234-1234-1234-1234567890ab&quot;,
-    &quot;name&quot;: &quot;My Category&quot;,
-    &quot;description&quot;: &quot;My Description&quot;
-  },
-  &quot;tags&quot;: [
-    {
-      &quot;id&quot;: 789,
-      &quot;guid&quot;: &quot;12345678-1234-1234-1234-1234567890ab&quot;,
-      &quot;name&quot;: &quot;Tag 1&quot;
-    },
-    {
-      &quot;id&quot;: 101112,
-      &quot;guid&quot;: &quot;12345678-1234-1234-1234-1234567890ab&quot;,
-      &quot;name&quot;: &quot;Tag 2&quot;
-    }
-  ]
-}
-</code></pre>
-<p>This is the standard behavior, and there are various reasons why you may want to change this.</p>
-<h2 id="total-control-strategy-custom-conversion-dto-classes">Total Control Strategy: Custom Conversion DTO Classes</h2>
-<p>This strategy basically creates DTO (Data Transfer Objects) which are then serialized.
-This is the most flexible, but also the most work.</p>
-<p>This example assumes you don't want to include the details of the Tag/Category,
-but mainly just the reference - because you would want to put the details in a separate call.</p>
-<pre><code class="lang-csharp">class ProductDto {
-  public ProductDto(Product product) {
-    Id = product.Id;
-    // Guid = product.Guid;
-    Name = product.Name;
-    Price = product.Price;
-    Category = new CategoryDto(product.Category);
-    Tags = product.Tags.Select(t =&gt; new TagDto(t));
-  }
-  public int Id { get; set; }
-  // public Guid Guid { get; set; }
-  public string Name { get; set; }
-  public decimal Price { get; set; }
-  public CategoryDto Category { get; set; }
-  public IEnumerable&lt;TagDto&gt; Tags { get; set; }
-}
-
-class CategoryDto {
-  public CategoryDto(Category category) {
-    Id = category.Id;
-    // Guid = category.Guid;
-    Name = category.Name;
-    // Description = category.Description;
-  }
-  public int Id { get; set; }
-  // public Guid Guid { get; set; }
-  public string Name { get; set; }
-  // public string Description { get; set; }
-}
-
-class TagDto {
-  public TagDto(Tag tag) {
-    Id = tag.Id;
-    // Guid = tag.Guid;
-    Name = tag.Name;
-  }
-  public int Id { get; set; }
-  // public Guid Guid { get; set; }
-  public string Name { get; set; }
-}
-</code></pre>
-<p>This would then serialize to JSON as</p>
-<pre><code class="lang-json">{
-  &quot;id&quot;: 123,
-  &quot;name&quot;: &quot;My Product&quot;,
-  &quot;price&quot;: 12.34,
-  &quot;category&quot;: {
-    &quot;id&quot;: 456,
-    &quot;name&quot;: &quot;My Category&quot;
-  },
-  &quot;tags&quot;: [
-    {
-      &quot;id&quot;: 789,
-      &quot;name&quot;: &quot;Tag 1&quot;
-    },
-    {
-      &quot;id&quot;: 101112,
-      &quot;name&quot;: &quot;Tag 2&quot;
-    }
-  ]
-}
-</code></pre>
-<h2 id="simpler-jsonignore-strategy">Simpler JsonIgnore Strategy</h2>
-<p>If you just want to ignore some properties, you can use the <code>[JsonIgnore]</code> attribute.
-This takes two steps, because you can't use it on the original class, but you can use it on a derived class.</p>
-<p>Assume the following <code>/AppCode/Data/Product.Generated.cs</code> <a class="xref" href="../copilot/data-model-generator.html">Copilot Auto-Generated file</a>, which you shouldn't touch:</p>
-<pre><code class="lang-csharp">namespace AppCode.Data
-{
-  public partial class Product : ZagProduct { }
-}
-
-namespace AppCode.Data.AutoGenerated
-{
-  public class ZagProduct: Custom.Data.CustomItem
-  {
-    public int Id { get; set; }
-    public Guid Guid { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-    public Category Category { get; set; }
-    public IEnumerable&lt;Tag&gt; Tags { get; set; }
-  }
-}
-</code></pre>
-<p>And this would be the manually created <code>/AppCode/Data/Product.cs</code> file:</p>
-<pre><code class="lang-csharp">using System.Text.Json.Serialization;
-namespace AppCode.Data
-{
-  // This would be the class we can modify
-  public partial class Product : ZagProduct {
-    // ignore the guid for JSON
-    [JsonIgnore]
-    public new Guid Guid =&gt; base.Guid;
-
-    // ignore the category for JSON - but only if null
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public new Category Category =&gt; base.Category;
-
-    // ignore the tags for JSON
-    [JsonIgnore]
-    public new IEnumerable&lt;Tag&gt; Tags =&gt; base.Tags;
-
-    // custom tag info, but just the reference info
-    // this would be serialized as an array of { id: 123, name: &quot;Tag 1&quot; }
-    public object TagReferences =&gt; base.Tags.Select(t =&gt; new { t.Id, t.Name });
-  }
-}
-</code></pre>
-<p>This would serialize to JSON like this:</p>
-<pre><code class="lang-json">{
-  &quot;id&quot;: 123,
-  &quot;name&quot;: &quot;My Product&quot;,
-  &quot;price&quot;: 12.34,
-  &quot;category&quot;: {
-    &quot;id&quot;: 456,
-    &quot;guid&quot;: &quot;12345678-1234-1234-1234-1234567890ab&quot;,
-    &quot;name&quot;: &quot;My Category&quot;,
-    &quot;description&quot;: &quot;My Description&quot;
-  },
-  &quot;tagReferences&quot;: [
-    {
-      &quot;id&quot;: 789,
-      &quot;name&quot;: &quot;Tag 1&quot;
-    },
-    {
-      &quot;id&quot;: 101112,
-      &quot;name&quot;: &quot;Tag 2&quot;
-    }
-  ]
-}
-</code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/data-serialization.html">Custom Data Serialization in 2sxc 17+</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/data-serialization.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/data-serialization.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Custom C# Services in AppCode in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Custom C# Services in AppCode in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/custom-services.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/custom-services.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,73 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.CustomServices">
-<h1 id="custom-c-services-in-appcode-in-2sxc-17">Custom C# Services in AppCode in 2sxc 17+</h1>
+        <article data-uid="">
 
-<p>To be SOLID and DRY, you will often want to create custom C# <strong>services</strong> in the <code>/AppCode</code> folder to share code you with your Razor files.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This is similar to shared C# files before, which were created using <code>CreateInstance(&quot;path-to-c#file&quot;)</code>
-but the major difference is that this new solution is strongly typed and provides IntelliSense.</p>
-</div>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This is different from Custom <a class="xref" href="custom-helpers.html"><strong>Helpers</strong></a>, which are much simpler.</p>
-</div>
-<h2 id="simple-example">Simple Example</h2>
-<p>Here is an example of such a file in <code>/AppCode/MyHelpers.cs</code>:</p>
-<pre><code class="lang-csharp">using System.Collections.Generic;
-using System.Linq;
-namespace AppCode
-{
-  // Must inherit from CodeTyped to have the full context
-  public class LinkService: Custom.Hybrid.CodeTyped
-  {
-    // The Kit.Link is magically made available so the code can use it
-    public string LinkToCurrentPage =&gt; Kit.Link.To();
-
-    // The App is magically made available so the code can use it
-    public List&lt;Person&gt; GetPeople() =&gt; AsList&lt;Person&gt;(App.Data[&quot;People&quot;]).ToList();
-  }
-}
-</code></pre>
-<p>You can then use this in your Razor files like this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-@using AppCode
-@{
-  var linkService = GetService&lt;LinkService&gt;();
-  var pageLink = linkService.LinkToCurrentPage;
-  var people = linkService.GetPeople();
-}
-</code></pre>
-<h2 id="difference-to-helpers">Difference to Helpers</h2>
-<p>The main difference to <a class="xref" href="custom-helpers.html"><strong>Helpers</strong></a> is that a service can have context information such as the <code>Kit</code> object, and can also be used to provide more complex services like a <code>LinkService</code> which provides the <code>LinkToCurrentPage</code> method.
-So such a service has access to objects and properties such as:</p>
-<ul>
-<li><code>Kit</code></li>
-<li><code>MyContext</code></li>
-<li><code>App</code></li>
-<li><code>MyPage</code></li>
-<li><code>UniqueKey</code></li>
-<li>...</li>
-</ul>
-<p>It also has all the typical APIs such as</p>
-<ul>
-<li><code>AsItem(...)</code></li>
-<li><code>AsItems(...)</code></li>
-<li><code>As&lt;T&gt;(...)</code></li>
-<li><code>AsList&lt;T&gt;(...)</code></li>
-</ul>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/custom-services.html">Custom C# Services in AppCode in 2sxc 17+</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/custom-services.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/custom-services.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

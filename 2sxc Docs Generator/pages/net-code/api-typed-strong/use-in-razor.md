@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.UseInRazor
+uid: NetCode.StrongTypedCode.UseInRazor
 ---
 
 # Use Custom Data in Razor (2sxc 17+ WIP)
@@ -8,13 +8,13 @@ Once you have the initial setup going (mainly [code generated with Copilot](xref
 
 The `RazorTyped` base class was extended with the following methods, to make it easy:
 
-* `As<T>()` - to convert the current item to a strongly typed object
-* `AsList<T>()` - to convert a list of items to a list of strongly typed objects
+* `As<T>()` - to convert the current item to a strong-typed object
+* `AsList<T>()` - to convert a list of items to a list of strong-typed objects
 
-In addition, the `ITypedItem` has been extended with a few more methods, to make it easier to get strongly typed data:
+In addition, the `ITypedItem` has been extended with a few more methods, to make it easier to get strong-typed data:
 
-* `Child<T>()` - to get a child item and convert it to a strongly typed object
-* `Children<T>()` - to get a list of child items and convert them to a list of strongly typed objects
+* `Child<T>()` - to get a child item and convert it to a strong-typed object
+* `Children<T>()` - to get a list of child items and convert them to a list of strong-typed objects
 
 ## Easy as 1-2-3
 
@@ -58,7 +58,7 @@ Roslyn (and the AppCode features) are not always active - old code will still be
 So to make sure that your Razor will compile using Roslyn, you should do the following:
 
 * You must have _either_ an `@using AppCode` or similar statement (eg. `@using AppCode.Data`) early in your Razor file
-* Or you must inherit from a [custom Razor Base Class](xref:NetCode.StronglyTypedCode.RazorBaseClasses)
+* Or you must inherit from a [custom Razor Base Class](xref:NetCode.StrongTypedCode.RazorBaseClasses)
 
 In both scenarios, Roslyn will be activated and your Razor will be compiled using the new system.
 

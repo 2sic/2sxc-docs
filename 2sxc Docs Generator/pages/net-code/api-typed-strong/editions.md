@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.Editions
+uid: NetCode.StrongTypedCode.Editions
 ---
 
 # Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+

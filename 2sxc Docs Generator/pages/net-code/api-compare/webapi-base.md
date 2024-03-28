@@ -13,7 +13,7 @@ depending on the base class, the APIs and features in the template will change.
 >
 > Because of this, we're not repeating the entire text here, but just listing the class names.
 
-## Typed / Strongly-Typed for v16+
+## Typed / Strong-Typed for v16+
 
 These are the **recommended** _Typed_ C# base classes to inherit today:
 

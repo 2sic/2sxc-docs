@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Strongly Typed App Data in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Strongly Typed App Data in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/app-data-typed.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/app-data-typed.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,51 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.AppDataTyped">
-<h1 id="strongly-typed-app-data-in-2sxc-17">Strongly Typed App Data in 2sxc 17+</h1>
+        <article data-uid="">
 
-<p>The <code>App.Data</code> object provides a <strong>DataSource</strong> to all the data inside the App.</p>
-<p>In some scenarios, your code will want to work with this data as if it were a database, but in a strongly typed way.</p>
-<p>There are a few ways to do this.</p>
-<h2 id="basic-using-as-and-aslist">Basic using As and AsList</h2>
-<pre><code class="lang-csharp">// Get all and convert to Person
-var people = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
-// Get all and convert the first to person - will be null if there is no data
-var onePerson = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
-// Get all, convert, then find the one with the ID - null if no match
-var person45 = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;)).FirstOrDefault(p =&gt; p.Id == 45);
-// Get one and convert to Person - null if no match; faster
-var person72 = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;).List.FirstOrDefault(e =&gt; e.EntityId = 72));
-</code></pre>
-<p>This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.</p>
-<h2 id="new-using-getall-and-getone">New using GetAll and GetOne</h2>
-<p>The most common operations will be to get all or get a specific item.
-This is now much easier:</p>
-<pre><code class="lang-csharp">// Get all and convert to Person
-var people = App.Data.GetAll&lt;Person&gt;();
-
-// Get one and convert using int-id - will be null if not found
-var person72 = App.Data.GetOne&lt;Person&gt;(72);
-
-// Get one and convert using Guid - will be null if not found
-var personFromGuid = App.Data.GetOne&lt;Person&gt;(Guid.Parse(&quot;...&quot;));
-</code></pre>
-<h2 id="good-to-know">Good to Know</h2>
-<ul>
-<li>To make the magic work, <code>GetAll(...)</code> and <code>GetOne(...)</code> will use the <strong>class name</strong> to determine the stream it should retrieve.</li>
-<li>If the stream does not exist, it means that the Content-Type doesn't exist, and it will throw an error</li>
-<li>If the stream exists, but the data is empty, it will return an empty list or null, depending on the method used</li>
-</ul>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/app-data-typed.html">Strong Typed App Data in 2sxc 17+</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/app-data-typed.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/app-data-typed.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

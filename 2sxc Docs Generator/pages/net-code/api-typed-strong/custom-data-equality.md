@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.DataEquality
+uid: NetCode.StrongTypedCode.DataEquality
 ---
 
 # Data Equality on Custom Data Models in 2sxc 17+

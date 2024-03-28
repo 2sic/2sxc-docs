@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Use Custom Data in Razor (2sxc 17+ WIP) | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Use Custom Data in Razor (2sxc 17+ WIP) | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/use-in-razor.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/use-in-razor.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,116 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.UseInRazor">
-<h1 id="use-custom-data-in-razor-2sxc-17-wip">Use Custom Data in Razor (2sxc 17+ WIP)</h1>
+        <article data-uid="">
 
-<p>Once you have the initial setup going (mainly <a class="xref" href="../copilot/data-model-generator.html">code generated with Copilot</a>), you will want to use these types.</p>
-<p>The <code>RazorTyped</code> base class was extended with the following methods, to make it easy:</p>
-<ul>
-<li><code>As&lt;T&gt;()</code> - to convert the current item to a strongly typed object</li>
-<li><code>AsList&lt;T&gt;()</code> - to convert a list of items to a list of strongly typed objects</li>
-</ul>
-<p>In addition, the <code>ITypedItem</code> has been extended with a few more methods, to make it easier to get strongly typed data:</p>
-<ul>
-<li><code>Child&lt;T&gt;()</code> - to get a child item and convert it to a strongly typed object</li>
-<li><code>Children&lt;T&gt;()</code> - to get a list of child items and convert them to a list of strongly typed objects</li>
-</ul>
-<h2 id="easy-as-1-2-3">Easy as 1-2-3</h2>
-<p>From then on forth, it's really easy - eg. like this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-@using AppCode.Data
-
-&lt;ol&gt;
-  @foreach(var product in AsList&lt;Product&gt;(MyItems)) {
-    &lt;li&gt;
-      &lt;img src=&quot;@product.Packshot&quot;&gt;
-      &lt;a href='@Link.To(parameters: &quot;productid=&quot; + product.Id)'&gt;
-        @product.Title @(product.OnSale ? &quot;🌟&quot; : &quot;&quot;)
-      &lt;/a&gt;
-      Tags: @string.Join(&quot;, &quot;, product.Tags.Select(c =&gt; c.Name))
-    &lt;/li&gt;
-  }
-&lt;/ol&gt;
-</code></pre>
-<p>You will notice that it looks a lot like dynamic code, except that</p>
-<ul>
-<li>it's 100% type safe</li>
-<li>you get IntelliSense</li>
-<li>the compiler will catch many more issues</li>
-<li>LINQ works as expected (which is not the case with dynamic objects)</li>
-<li>it's faster</li>
-</ul>
-<h2 id="important-for-the-setup-in-dnn">Important for the Setup in Dnn</h2>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>There is a bit of magic in the background, please read the following carefully.</p>
-</div>
-<p>Internally all the C# files in the /AppCode folder are compiled into a single assembly, and then provided to the Razor files.
-This is very challenging to achieve, and uses the Roslyn compiler to do this.
-Since we are still experimenting with the best possible implementation,
-Roslyn (and the AppCode features) are not always active - old code will still be compiled using the old <code>BuildManager</code> of asp.net.</p>
-<p>So to make sure that your Razor will compile using Roslyn, you should do the following:</p>
-<ul>
-<li>You must have <em>either</em> an <code>@using AppCode</code> or similar statement (eg. <code>@using AppCode.Data</code>) early in your Razor file</li>
-<li>Or you must inherit from a <a class="xref" href="razor-base-classes.html">custom Razor Base Class</a></li>
-</ul>
-<p>In both scenarios, Roslyn will be activated and your Razor will be compiled using the new system.</p>
-<h2 id="more-advanced-example">More Advanced Example</h2>
-<p>This is more advanced as it uses a custom Razor base class.
-The base class does some work which is not shown here, like prepare the <code>MyLinks</code> property
-or provide the <code>ActivateFancyBox()</code> method.</p>
-<p>In addition, the <code>Link</code> type has been extended with calculated fields such as <code>WindowAuto</code>.</p>
-<pre><code class="lang-razor">@inherits AppCode.Razor.LinksRazor
-@using AppCode.Data
-
-&lt;div class=&quot;row&quot;&gt;
-  @foreach (var link in MyLinks)
-  {
-    &lt;div class=&quot;col-md-6 col-lg-4 mb-4 mb-md-5 co-linkblock&quot; @Kit.Toolbar.Default(link)&gt;
-      &lt;i class='mb-3 text-primary fas @link.IconAuto' aria-hidden=&quot;true&quot; style=&quot;font-size: 40px;&quot;&gt;&lt;/i&gt;
-      &lt;h4&gt;@link.Title&lt;/h4&gt;
-      @link.DescriptionHtml(true)
-
-      @if (link.IsNotEmpty(&quot;Link&quot;))
-      {
-        &lt;a href='@link.Link' target='@link.WindowAuto' title=&quot;@link.Title&quot; class=&quot;stretched-link&quot;&gt;@link.Get(&quot;LinkText&quot;) &lt;i class=&quot;fas fa-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-      }
-    &lt;/div&gt;
-  }
-&lt;/div&gt;
-@ActivateFancyBox()
-</code></pre>
-<h2 id="standard-typed-item-apis-still-work">Standard Typed-Item APIs still work</h2>
-<p>Just fyi, you can still use the standard typed-item APIs, like this:</p>
-<pre><code class="lang-razor">@inherits AppCode.Razor.ProductRazor
-&lt;h1&gt;@MyProduct.Title&lt;/h1&gt;
-@MyProduct.Picture(&quot;Screenshot&quot;, imgClass: &quot;float-right&quot;)
-
-@* Show responsive HTML - the function has many more parameters *@
-@MyProduct.Html(&quot;MainBody&quot;)
-
-@* Get the HTML but scrub the HTML *@
-@MyProduct.String(&quot;MainBody&quot;, scrubHtml: true)
-
-@* Get the link, but as the raw value &quot;file:72&quot; and not as the url *@
-@MyProduct.String(&quot;Link&quot;)
-</code></pre>
-<h3 id="edge-case-custom-properties-can-hide-methods">Edge Case: Custom Properties can Hide Methods</h3>
-<p>Imagine if you had a property called <code>Html</code>.
-This would hide the <code>Html</code> method, so you would not be able to use it.
-In this special case, you have a few options, but the simplest is to cast the item to <code>ITypedItem</code> and then use the method like this:</p>
-<pre><code class="lang-razor">@((ITypedItem)MyProduct).Html(&quot;MainBody&quot;)
-</code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Still WIP v17.03+</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/use-in-razor.html">Use Custom Data in Razor (2sxc 17+ WIP)</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/use-in-razor.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/use-in-razor.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

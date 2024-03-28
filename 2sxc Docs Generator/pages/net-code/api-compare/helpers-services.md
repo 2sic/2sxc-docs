@@ -19,7 +19,7 @@ Sometimes you'll also want to convert old code to new code, and this page should
 With time, they changed, so inheriting from a different base class provides different objects to do things out-of-the-box.
 
 
-| Helper Object | Dynamic | Typed / Strongly Typed
+| Helper Object | Dynamic | Typed / Strong Typed
 | --- | --- | --- | ---
 | **Service Kit** | - | `Kit`
 | **Link Helper** | `Link` | `Link`
@@ -41,7 +41,7 @@ The following commands are often on the object itself, but sometimes it's also u
 So the list has more than just commands.
 
 
-| Helper Methods | Dynamic | Typed / Strongly Typed
+| Helper Methods | Dynamic | Typed / Strong Typed
 | --- | --- | --- | ---
 | **Get Service** | `GetService<TService>("2sxc")` | `GetService<TService>()`
 | **Convert to Entity** | `AsEntity(dyn)` | `AsEntity(itm)`

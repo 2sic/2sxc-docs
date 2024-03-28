@@ -1,14 +1,14 @@
 ---
-uid: NetCode.StronglyTypedCode.GetStarted.1Helper
+uid: NetCode.StrongTypedCode.GetStarted.1Helper
 ---
 
 # #1 Your First Helper
 
-> Get Started with Strongly Typed Code
+> Get Started with Strong Typed Code
 >
-> A Strongly Typed Helper
+> A Strong Typed Helper
 
-This will guide you through making the first strongly typed Apps.
+This will guide you through making the first strong-typed Apps.
 In the end you'll have a simple helper which you can use in your Razor files.
 
 
@@ -57,7 +57,7 @@ Heres's what's happening:
 
 1. All files in the `/AppCode` folder are automatically compiled and available to your Razor files.
 
-2. The `@inherits` statement tells the Razor file which APIs are available. This is important, since the new `AppCode` feature only works with strongly typed Razor files - eg. inheriting from `Custom.Hybrid.RazorTyped`.
+2. The `@inherits` statement tells the Razor file which APIs are available. This is important, since the new `AppCode` feature only works with strong-typed Razor files - eg. inheriting from `Custom.Hybrid.RazorTyped`.
 
 3. The `@using AppCode` has 2 functions. It will activate the Roslyn compiler (instead of the old asp.net compiler) and will also make sure that compiled **AppCode** is used in the compile process.
 

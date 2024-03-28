@@ -34,7 +34,7 @@ So when the Razor code loads, these objects are ready and filled with the data o
 
 ## Overview of Data Objects
 
-| Purpose | Dynamic | Typed | Strongly Typed
+| Purpose | Dynamic | Typed | Strong Typed
 | --- | --- | --- | ---
 | **Get-Current-Data** | `Content` | `MyItem` | `MyItem`
 | **Get-Current-List** | `List` | `MyItems` | `MyItems`

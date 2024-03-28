@@ -7,7 +7,7 @@ uid: NetCode.Data.Typed.Index
 
 # Typed Data aka `ITypedItem`
 
-In 2sxc 16 we introduced a new way to work with data, which is much more strongly typed.
+In 2sxc 16 we introduced a new way to work with data, which is much more strong-typed.
 The objects you will then work with are either
 
 1. `ITypedItem` which is a wrapper around an `IEntity`

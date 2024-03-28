@@ -29,7 +29,7 @@ You can then access the properties with the simple `thing.Property` syntax.
 
 > [!NOTE]
 > Results of AsDynamic are dynamically typed, so you can write `.Anything` behind it.
-> But the data coming out of it is strongly typed, so `Content.Birthday` is a real date object.
+> But the data coming out of it is strong-typed, so `Content.Birthday` is a real date object.
 
 > [!TIP]
 > [](xref:ToSic.Sxc.Data.IDynamicEntity) objects also have some additional properties like

@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.CustomServices
+uid: NetCode.StrongTypedCode.CustomServices
 ---
 
 # Custom C# Services in AppCode in 2sxc 17+
@@ -8,10 +8,10 @@ To be SOLID and DRY, you will often want to create custom C# **services** in the
 
 > [!TIP]
 > This is similar to shared C# files before, which were created using `CreateInstance("path-to-c#file")`
-> but the major difference is that this new solution is strongly typed and provides IntelliSense.
+> but the major difference is that this new solution is strong-typed and provides IntelliSense.
 
 > [!TIP]
-> This is different from Custom [**Helpers**](xref:NetCode.StronglyTypedCode.CustomHelpers), which are much simpler.
+> This is different from Custom [**Helpers**](xref:NetCode.StrongTypedCode.CustomHelpers), which are much simpler.
 
 ## Simple Example
 
@@ -48,7 +48,7 @@ You can then use this in your Razor files like this:
 
 ## Difference to Helpers
 
-The main difference to [**Helpers**](xref:NetCode.StronglyTypedCode.CustomHelpers) is that a service can have context information such as the `Kit` object, and can also be used to provide more complex services like a `LinkService` which provides the `LinkToCurrentPage` method.
+The main difference to [**Helpers**](xref:NetCode.StrongTypedCode.CustomHelpers) is that a service can have context information such as the `Kit` object, and can also be used to provide more complex services like a `LinkService` which provides the `LinkToCurrentPage` method.
 So such a service has access to objects and properties such as:
 
 * `Kit`

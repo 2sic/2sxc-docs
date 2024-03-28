@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.CustomHelpers
+uid: NetCode.StrongTypedCode.CustomHelpers
 ---
 
 # Custom C# Helpers in AppCode in 2sxc 17+
@@ -8,10 +8,10 @@ To be SOLID and DRY, you will often want to create custom C# **helpers** in the 
 
 > [!TIP]
 > This is similar to shared C# files before, which were created using `CreateInstance("path-to-c#file")`
-> but the major difference is that this new solution is strongly typed and provides IntelliSense.
+> but the major difference is that this new solution is strong-typed and provides IntelliSense.
 
 > [!TIP]
-> This is different from Custom [**Services**](xref:NetCode.StronglyTypedCode.CustomServices), which are more complex and have context information such as the `Kit` and `MyContext` objects.
+> This is different from Custom [**Services**](xref:NetCode.StrongTypedCode.CustomServices), which are more complex and have context information such as the `Kit` and `MyContext` objects.
 
 ## Simple Example with Static Methods
 

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/editions.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/editions.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,83 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.Editions">
-<h1 id="editions-polymorphism-and-open-heart-surgery-in-2sxc-17">Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+</h1>
+        <article data-uid="">
 
-<p>2sxc supports the concept of Polymorphism in which an App can exist in multiple editions.
-This is used for many things, including:</p>
-<ul>
-<li>Different output based on the CSS-Framework used</li>
-<li>staging code which is run for developers, while live code is run for normal users</li>
-</ul>
-<p>➡️ <a class="xref" href="../../basics/polymorphism/index.html">read more about Polymorphism</a></p>
-<h2 id="editions-and-appcode">Editions and AppCode</h2>
-<p>The <code>AppCode</code> folder can be in multiple places</p>
-<ul>
-<li><code>/AppCode</code> - the default, which is used for the root edition</li>
-<li><code>/[any-folder]/AppCode</code> - used for any edition</li>
-</ul>
-<p>Examples</p>
-<ul>
-<li><code>/staging/AppCode</code> - used for the staging edition</li>
-<li><code>/live/AppCode</code> - used for the live edition</li>
-<li><code>/bs3/AppCode</code> - used for the Bootstrap 3 edition</li>
-<li><code>/bs5/AppCode</code> - used for the Bootstrap 4 edition</li>
-</ul>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Every edition is standalone, so the AppCode will be compiled into an own DLL
-and provided to the Razor files in that edition only.</p>
-<p>This also means that once an edition has it's own code, it cannot share code with other editions.</p>
-</div>
-<p>So you will typically have only a primary <code>/AppCode</code> folder, OR many in various editions.</p>
-<h3 id="typical-setup-for-output-polymorphism">Typical Setup for Output Polymorphism</h3>
-<p>If you are just creating different HTML for different CSS Frameworks, then this will be your typical setup:</p>
-<ul>
-<li><code>/AppCode</code> - the default / shared AppCode</li>
-<li><del><code>/bs3/AppCode</code></del> - do not create AppCode folders inside the editions!</li>
-<li><code>/bs3/*.cshtml</code> - Razor files only, will use the default AppCode</li>
-<li><code>/bs4/*.cshtml</code> - Razor files only, will use the default AppCode</li>
-<li><code>/bs5/*.cshtml</code> - Razor files only, will use the default AppCode</li>
-</ul>
-<h3 id="typical-setup-for-open-heart-surgery-polymorphism">Typical Setup for Open-Heart Surgery Polymorphism</h3>
-<p>Since you want to develop different code in the staging edition, you will typically have this setup:</p>
-<ul>
-<li><del><code>/AppCode</code></del> - do not create a root AppCode, as it won't be used</li>
-<li><code>/staging/AppCode</code> - the staging edition</li>
-<li><code>/staging/*.cshtml</code> - Razor files will use the staging AppCode</li>
-<li><code>/live/AppCode</code> - the live edition</li>
-<li><code>/live/*.cshtml</code> - Razor files will use the live AppCode</li>
-</ul>
-<h2 id="generating-data-models-with-editions">Generating Data Models with Editions</h2>
-<p>The <a class="xref" href="../copilot/data-model-generator.html">Copilot Data Generator</a> will generate C# classes for all the content types.
-It can do this for multiple editions, so that each edition has it's own set of classes.
-This is mainly important for staging/live scenarios.</p>
-<p>To set this up, add the <code>editions</code> section to the <code>app.json</code> file.
-We also highly recommend setting one of them to <code>&quot;isDefault&quot;: true</code> so this will be the recommended target.</p>
-<pre><code class="lang-json">{
-  &quot;editions&quot;: {
-    &quot;staging&quot;: {
-      &quot;isDefault&quot;: true,
-      &quot;description&quot;: &quot;This is the staging edition of the app&quot;,
-    },
-    &quot;live&quot;: {
-      &quot;description&quot;: &quot;This is the live edition of the app&quot;,
-    }
-  }
-}
-</code></pre>
-<p>➡️ <a class="xref" href="../../basics/app/folders-and-files/app-json.html">read more about the app.json file</a></p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/editions.html">Editions, Polymorphism and Open-Heart Surgery in 2sxc 17+</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/editions.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/editions.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

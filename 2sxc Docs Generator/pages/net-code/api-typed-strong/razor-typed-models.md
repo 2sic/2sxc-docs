@@ -1,10 +1,10 @@
 ---
-uid: NetCode.StronglyTypedCode.RazorTypedModels
+uid: NetCode.StrongTypedCode.RazorTypedModels
 ---
 
 # Razor with Typed Models in 2sxc 17+
 
-In 2sxc 17+ you can use strongly typed models in your Razor files.
+In 2sxc 17+ you can use strong-typed models in your Razor files.
 
 ## Background
 
@@ -95,7 +95,7 @@ flowchart LR
     XD["Child Razor\nList-Item.cshtml"]
 ```
 
-You would now have another class `/AppCode/Razor/ProductViewModel` which would be a strongly typed model.
+You would now have another class `/AppCode/Razor/ProductViewModel` which would be a strong-typed model.
 
 ```c#
 namespace AppCode.Razor
@@ -129,7 +129,7 @@ The child component `List-Item.cshtml` would then pick this up with differing sy
 
 This new feature is great, but it's not for everyone.
 It takes a bit more work, but introduces type safety and IntelliSense to your Razor files.
-It also plays well with the new [Razor Base Classes](xref:NetCode.StronglyTypedCode.RazorBaseClasses).
+It also plays well with the new [Razor Base Classes](xref:NetCode.StrongTypedCode.RazorBaseClasses).
 
 ---
 

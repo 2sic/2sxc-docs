@@ -49,11 +49,11 @@ It also means that LINQ operations such as `GroupBy` will work as expected.
 
 The `==` and `!=` operators will not work as expected.
 
-## Difference to Custom Strongly Typed Items (v17.03+)
+## Difference to Custom Strong Typed Items (v17.03+)
 
 > [!IMPORTANT]
 > This is a different than the implementation on `Custom.Data.CustomItem`.
-> There the `==` and `!=` also work. See [CustomItem Equality](xref:NetCode.StronglyTypedCode.DataEquality)
+> There the `==` and `!=` also work. See [CustomItem Equality](xref:NetCode.StrongTypedCode.DataEquality)
 
 ---
 

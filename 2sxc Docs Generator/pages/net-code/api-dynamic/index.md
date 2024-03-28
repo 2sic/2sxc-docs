@@ -14,7 +14,7 @@ As of 2024, almost all samples are still written in dynamic code, because typed 
 > Also, VS Code can't provide IntelliSense, since it can't know what's inside all the variables.
 >
 > So we strongly recommend to look into [Typed Code](xref:NetCode.TypedCode.Index)
-> and [Strongly Typed Code](xref:NetCode.StronglyTypedCode.Index)
+> and [Strong Typed Code](xref:NetCode.StrongTypedCode.Index)
 
 ## What does Dynamic API Look Like?
 
@@ -51,7 +51,7 @@ to only break in production.
 > That said, the dynamic API is still very popular and works great for many scenarios.
 > It's proven useful for 12 years so don't worry if you find such code.
 > But for new code, we recommend [Typed Code](xref:NetCode.TypedCode.Index)
-> and [Strongly Typed Code](xref:NetCode.StronglyTypedCode.Index)
+> and [Strong Typed Code](xref:NetCode.StrongTypedCode.Index)
 
 
 ---

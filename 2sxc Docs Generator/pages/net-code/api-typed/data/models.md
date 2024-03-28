@@ -23,7 +23,7 @@ This guide should you understand how this works, how to use it, and how to handl
 @using AppCode.Data
 
 @{
-  // Wrap the data into a strongly typed AppCode.Data.Link object
+  // Wrap the data into a strong-typed AppCode.Data.Link object
   var links = AsList<Link>(MyItem);
 }
 
@@ -34,7 +34,7 @@ This guide should you understand how this works, how to use it, and how to handl
 
 ## How This Works
 
-The above example uses a strongly typed model called `Link` which is defined in the `AppCode.Data` namespace.
+The above example uses a strong-typed model called `Link` which is defined in the `AppCode.Data` namespace.
 This model is a simple class which inherits from `Custom.Data.Item16`.
 It implement `ITypedItem`, so it supports all the commands such as `.IsEmpty(...)` or `.String(...)`.
 
@@ -49,12 +49,12 @@ will be guided and see tips / instructions on every property.
 
 ## Basic How To Use and Access Properties
 
-The properties in the strongly typed model are usually simple properties, so you can use them like this:
+The properties in the strong-typed model are usually simple properties, so you can use them like this:
 
 ```csharp
 using AppCode.Data;
 
-// Convert MyItem into a single strongly typed Product object
+// Convert MyItem into a single strong-typed Product object
 var product = As<Product>(MyItem);
 
 var title = product.Title;          // title as string
@@ -101,29 +101,29 @@ It's similar for C# files inheriting from `Custom.Hybrid.CodeTyped`.
 using AppCode;
 using AppCode.Data;
 
-// Convert any item into a single strongly typed object
+// Convert any item into a single strong-typed object
 // Will return null if the item is null
 // Or throw an error if the item is not of the correct type
 var product = As<Product>(MyItem);
 
-// Convert any item into a single strongly typed object
+// Convert any item into a single strong-typed object
 // Will use the alternative if the item is null
 var product = As<Product>(maybeNull) ?? alternative;
 
-// Convert any item into a single strongly typed object
+// Convert any item into a single strong-typed object
 // Will return an empty Product object if the item is null
 var product = As<Product>(maybeNull, mock: true);
 
-// Convert any item into a single strongly typed object
-// Will wrap the item to simulate a strongly typed object
+// Convert any item into a single strong-typed object
+// Will wrap the item to simulate a strong-typed object
 var product = As<Product>(new { Title = "hello", Color = "green" }, mock: true);
 
-// Convert any item into a list of strongly typed objects
+// Convert any item into a list of strong-typed objects
 // Use a mock object as fallback
 var products = AsList<Product>(maybeNull)
   ?? As<Product>(new { Title = "hello", Color = "green" }, mock: true);
 
-// convert a list of items into a list of strongly typed objects
+// convert a list of items into a list of strong-typed objects
 var products = AsList<Product>(MyItems);
 
 // Get all products from App Data - short and long example (internally identical)
@@ -197,7 +197,7 @@ todo
 
 
 
-The properties are strongly typed
+The properties are strong-typed
 
 
 ## History

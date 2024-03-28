@@ -23,11 +23,11 @@ There are also some typical data objects for working with file/assets (not docum
 They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background.
 
 
-[Entities](xref:NetCode.DynamicData.Entity) are strongly typed objects for complex work, but getting values is much more difficult.
+[Entities](xref:NetCode.DynamicData.Entity) are strong-typed objects for complex work, but getting values is much more difficult.
 You usually don't need this, but it's important that you know this exists.
 
 [TypedItem](xref:ToSic.Sxc.Data.ITypedItem) is a new type of object which is still in development.
-It's a strongly typed object which is very similar to the DynamicEntity, but has a few advantages.
+It's a strong-typed object which is very similar to the DynamicEntity, but has a few advantages.
 It's still in development.
 
 This piece of code shows why you usually _don't want to use the IEntity_ and will prefer the _IDynamicEntity_ instead.

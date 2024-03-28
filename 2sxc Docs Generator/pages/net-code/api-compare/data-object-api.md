@@ -11,7 +11,7 @@ Sometimes you'll also want to convert old code to new code, and this page should
 > [!TIP]
 > This is about **Data Objects** - the objects which contain the data you're working with.
 >
-> So **DynamicEntities**, **TypedItems** and **Strongly-Typed Custom Data Models**.
+> So **DynamicEntities**, **TypedItems** and **Strong-Typed Custom Data Models**.
 
 
 > [!TIP]
@@ -25,8 +25,8 @@ The underlying data type is called an `IEntity`, but it's difficult to work with
 Because of this, 2sxc provides simpler objects to work with, specifically these:
 
 * **Dynamic Entities** - a dynamic object which can contain any data - older Razor up until `Razor14`
-* **Typed Items** - a strongly-typed object which contains data - `RazorTyped` and later (v16+)
-* **Strongly-Typed Custom Data Models** - a strongly-typed object which contains data - `RazorTyped` and later (v17.03+)
+* **Typed Items** - a strong-typed object which contains data - `RazorTyped` and later (v16+)
+* **Strong-Typed Custom Data Models** - a strong-typed object which contains data - `RazorTyped` and later (v17.03+)
 
 > [!TIP]
 > To understand this better, imagine that the EAV system delivers `IEntity` objects to the Razor / C#.
@@ -36,7 +36,7 @@ Because of this, 2sxc provides simpler objects to work with, specifically these:
 
 Standard properties are things like `Id`, `Guid`, `Title`, `Created`, `Modified` etc.
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `dyn.EntityId` | `itm.Id` | `itm.Id`
 | `dyn.EntityGuid` | `itm.Guid` | `itm.Guid`
@@ -53,7 +53,7 @@ The following example assumes that you have an `dyn` or `itm` object containing 
 The objects themselves could be from the primary items (eg `var dyn = Content;` or `var itm = MyItem;`)
 but they could also come from loops, queries, etc.
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `dyn.Xyz` <br> type unknown / `dynamic` | `itm.Get("Xyz")` <br> type `object` | `itm.Xyz` <br> type known
 | `dyn.Name` (`dynamic`) | `itm.String("Name")` | `itm.String("Name")` <br> `itm.Name`
@@ -67,9 +67,9 @@ When working with numbers, the following is important:
 
 * in Dynamic mode, all numbers are always returned as `decimal` since it's the most precise
 * in Typed mode, you can specify the type you want, and it will be converted if possible
-* in Strongly Typed mode, the type is defined in the generated Data-Model, and you can't change it
+* in Strong Typed mode, the type is defined in the generated Data-Model, and you can't change it
 
-| Dynamic | Typed | Strongly Typed
+| Dynamic | Typed | Strong Typed
 | --- | --- | ---
 | `dyn.Weight` | `itm.Int("Weight")` | `itm.Weight` (see data model) <br> `itm.Int("Weight")`
 | `dyn.Weight` | `itm.Double("Weight")` | `itm.Weight` (see data model) <br> `itm.Double("Weight")`
@@ -81,7 +81,7 @@ When working with numbers, the following is important:
 > In Typed `.String(name)` etc. property names are case sensitive.
 > So `dyn.weight` and `itm.Int("WEIGHT")` will work.
 >
-> In Strongly Typed, the property names are defined in the data model, and are case sensitive.
+> In Strong Typed, the property names are defined in the data model, and are case sensitive.
 
 > [!TIP]
 > When simply showing data in HTML, the exact type is not super important
@@ -105,7 +105,7 @@ To show HTML when you need it - eg. from a WYSIWYG editor, these are the APIs:
   * `@itm.String("Description")` - show HTML as text
   * `@Html.Raw(itm.String("Description"))` - show HTML as HTML
   * `@itm.Html("Description")` - show HTML as HTML, automatically adding a toolbar (more parameters can change the behavior)
-* Strongly Typed
+* Strong Typed
   * `@itm.Description` - show HTML as text
   * `@Html.Raw(itm.Description)` - show HTML as HTML
   * `@itm.Html("Description")` - show HTML as HTML, automatically adding a toolbar (more parameters can change the behavior)
@@ -121,7 +121,7 @@ When showing links, you'll usually want to convert these to a real link, and thi
 * Typed
   * `@itm.Url("Link")` - link as URL, so `file:72` will be converted to the real URL
   * `@itm.String("Link")` - link as string, without auto-conversion
-* Strongly Typed
+* Strong Typed
   * `@itm.Link` - link as URL, so `file:72` will be converted to the real URL
   * `@itm.String("Link")` - link as string, without auto-conversion
 
@@ -142,7 +142,7 @@ Usually you will prefer to use built in APIs/Services to do this.
 * Typed
   * `@itm.Img("Pic")` - create an `img`; auto-resize and toolbar
   * `@itm.Picture("Pic")` - create a `picture`; auto-resize and toolbar
-* Strongly Typed
+* Strong Typed
   * `@itm.Img("Pic")` - create an `img`; auto-resize and toolbar
   * `@itm.Picture("Pic")` - create a `picture`; auto-resize and toolbar
 
@@ -162,7 +162,7 @@ System is called [ADAM - Automatic Digital Asset Management](xref:Basics.Cms.Ada
 * Typed
   * `itm.File("Pic")` - get a file in the field `Pic`
   * `itm.Folder("Pic")` - get a folder on the item
-* Strongly Typed
+* Strong Typed
   * `itm.PicFile` - get a file in the field `Pic`
   * `itm.PicFolder` - get a folder on the item
 
@@ -177,10 +177,10 @@ Related data is either children (when the current item has a field with referenc
 * Typed
   * `@itm.Children("Authors").Count()` - show the number of children
   * `@itm.Child("Publisher").String("Name")` - show the name of the child `Publisher`
-* Strongly Typed
+* Strong Typed
   * `@itm.Publisher.Name` - show the name of the child `Publisher`
   * `@itm.Authors.Count()` - show the number of children
 
 > [!NOTE]
-> For the strongly typed version, the property names are defined in the data model.
+> For the strong-typed version, the property names are defined in the data model.
 > The exact type returned and if it's a list or single item depends on the field configuration.

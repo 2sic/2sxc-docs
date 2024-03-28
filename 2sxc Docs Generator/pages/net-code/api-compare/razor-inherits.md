@@ -19,7 +19,7 @@ Example:
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
-## Typed / Strongly-Typed for v16+
+## Typed / Strong-Typed for v16+
 
 These are the **recommended** _Typed_ Razor base classes to inherit today:
 
@@ -29,7 +29,7 @@ These are the **recommended** _Typed_ Razor base classes to inherit today:
 > [!TIP]
 > Using these base classes ensures that you have the latest, **Typed APIs**.
 >
-> When used in combination with AppCode (v17+) it also allows you to go **Strongly Typed**.
+> When used in combination with AppCode (v17+) it also allows you to go **Strong Typed**.
 
 In v17.03 we introduced the capability to create your own base classes in the `AppCode/Razor` folder. These are the base classes you can inherit from as of v17 (we'll explain each in more detail below)
 
@@ -65,7 +65,7 @@ This is different in Dnn and Oqtane:
 The new _Typed_ base classes are much more robust and easier to debug than the classic _Dynamic_ code.
 They provide great IntelliSense (when configured in [VS Code](xref:Guides.VsCode.Index)).
 
-When used in combination with Data Models and Services in the AppCode folder, they also allow you to go **Strongly Typed**.
+When used in combination with Data Models and Services in the AppCode folder, they also allow you to go **Strong Typed**.
 This is the recommended way to write code in 2sxc 16+.
 
 ## Custom.Hybrid.RazorTyped

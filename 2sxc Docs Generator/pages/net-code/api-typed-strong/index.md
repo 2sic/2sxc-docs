@@ -1,14 +1,14 @@
 ---
-uid: NetCode.StronglyTypedCode.Index
+uid: NetCode.StrongTypedCode.Index
 ---
 
-# Strongly Typed Code in 2sxc 17+
+# Strong Typed Code in 2sxc 17+
 
-**Strongly Typed Code** is the newest way to write C# and Razor code in 2sxc 17+.
+**Strong Typed Code** is the newest way to write C# and Razor code in 2sxc 17+.
 It extends the [Typed Code](xref:NetCode.TypedCode.Index).
 As such, it's fully compatible, but ever more type-safe and easier to code and debug.
 
-## What does Strongly Typed Code Look Like?
+## What does Strong Typed Code Look Like?
 
 ```razor
 @inherits AppCode.Razor.ProductRazor
@@ -35,7 +35,7 @@ This combines the best of all worlds:
 ## The Parts that Make it Work
 
 1. The new Copilot generates classes for each Content-Type in the `AppCode.Data` namespace (you can easily extend them)
-1. The `As<T>` and `AsList<T>` methods help you convert data into strongly typed objects
+1. The `As<T>` and `AsList<T>` methods help you convert data into strong-typed objects
 1. HotBuild automatically compiles the code on-the-fly, so you can just save and refresh the page to see changes
 1. Everything in the `/AppCode` folder - or in editions such as `/staging/AppCode` will be compiled and provided to your razor
 1. New base classes such as `RazorTyped<TModel>` make data-handover to sub-components easy
@@ -46,9 +46,9 @@ This combines the best of all worlds:
 As of now (2024-03) we have not published any Apps with this convention yet, as we're still fine-tuning the details.
 But we will, ASAP!
 
-## Activate Strongly Typed Mode
+## Activate Strong Typed Mode
 
-Old Dynamic, new Typed and brand-new Strongly-Typed code can coexist in the same app.
+Old Dynamic, new Typed and brand-new Strong-Typed code can coexist in the same app.
 Each Razor / C# file can decide which mode it wants to use.
 To be in typed mode, your Razor/C# must inherit from a typed base class like this:
 
@@ -78,3 +78,5 @@ Now that everything is typed, we highly recommend you setup VSCode to provide In
 
 
 ---
+
+Shortlink: <https://r.2sxc.org/strong-typed>

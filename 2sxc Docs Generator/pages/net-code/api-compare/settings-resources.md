@@ -30,9 +30,9 @@ var width = AllSettings.String("Images.Content.Width");
 > The typed code is much more robust, as it will not throw an error if a setting doesn't exist.
 > So getting `Images.MyConfig.Width` will not throw an error if `MyConfig` doesn't exist.
 
-### Strongly Typed Code
+### Strong Typed Code
 
-In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you'll use are usually:
+In Strong Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you'll use are usually:
 
 * `AllSettings` - a [ITypedStack] with all settings
 * `AllResources` - a [ITypedStack] with all resources
@@ -40,10 +40,10 @@ In Strongly Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects y
 * `App.Resources` - a `AppCode.Data.AppResources` based on [ITypedItem] with app resources
 
 > [!TIP]
-> The strongly typed code is much more robust - and typed.
+> The strong-typed code is much more robust - and typed.
 > So using App.Resources will provide intellisense (if [VS Code is configured correctly](xref:Guides.VsCode.Index)).
 >
-> You can also use the `?.` operator to avoid null-errors, such as `App.Resources?.Title` since we're using the new Roslyn compiler for strongly typed code.
+> You can also use the `?.` operator to avoid null-errors, such as `App.Resources?.Title` since we're using the new Roslyn compiler for strong-typed code.
 
 ### Dynamic Code
 
@@ -68,7 +68,7 @@ var width = Settings.Images.Content.Width;
 
 ## Get Settings and Resources
 
-| Dynamic | Typed | Strongly Typed | Comments / Differences
+| Dynamic | Typed | Strong Typed | Comments / Differences
 | --- | --- | ---
 | `Settings` <br> (`dynamic`) | `AllSettings` <br> ([ITypedStack]) | `AllSettings` <br> ([ITypedStack]) | All settings
 | `Settings.Color` <br> (`dynamic`) | `AllSettings.String("Color")` <br> (`string`) | `AllSettings.String("Color")` <br> (`string`) | Get a color setting

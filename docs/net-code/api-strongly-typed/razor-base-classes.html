@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Custom Razor Base Classes in 2sxc 17+ WIP | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Custom Razor Base Classes in 2sxc 17+ WIP | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/razor-base-classes.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/razor-base-classes.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,144 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.RazorBaseClasses">
-<h1 id="custom-razor-base-classes-in-2sxc-17-wip">Custom Razor Base Classes in 2sxc 17+ WIP</h1>
+        <article data-uid="">
 
-<p>In 2sxc 17+ you can create custom base classes for your Razor files.</p>
-<p>There are some good reasons to do this, for example:</p>
-<ol>
-<li>Make sure that <code>App.Settings</code> and <code>App.Resources</code> are strongly typed (not just an <code>ITypedItem</code>)</li>
-<li>Provide additional helpers which are complex and make the Razor file look complex</li>
-<li>Pre-Convert data to strongly typed objects, so the Razor file is simpler</li>
-</ol>
-<p>Here is an example of such a file in <code>/AppCode/Razor/AppRazor.Generated.cs</code>:</p>
-<pre><code class="lang-csharp">using AppCode.Data;
-using ToSic.Sxc.Apps;
-
-/// &lt;summary&gt;
-/// WIP Autogenerating not yet implemented
-/// &lt;/summary&gt;
-namespace AppCode.Razor
-{
-  public abstract partial class AppRazor: AppRazor&lt;object&gt;
-  {
-
-  }
-
-  /// &lt;summary&gt;
-  /// todo
-  /// &lt;/summary&gt;
-  public abstract partial class AppRazor&lt;TModel&gt;: Custom.Hybrid.RazorTyped&lt;TModel&gt;
-  {
-    /// &lt;summary&gt;
-    /// Typed App with typed Settings &amp; Resources
-    /// &lt;/summary&gt;
-    public new IAppTyped&lt;AppSettings, AppResources&gt; App =&gt; _app ??= Customize.App&lt;AppSettings, AppResources&gt;();
-    private IAppTyped&lt;AppSettings, AppResources&gt; _app;
-    
-  }
-}
-</code></pre>
-<div class="NOTE">
-<h5>Note</h5>
-<p>The above code may look auto-generated, but there is no generator as of now.
-We will create one though, and it will do things similar to this.</p>
-</div>
-<h2 id="the-magic-explained">The Magic Explained</h2>
-<p>The code above (which is not yet final as of 2sxc 17.03) does the following:</p>
-<ol>
-<li>It creates a new base class <code>AppRazor</code> which does not have a typed model</li>
-<li>It creates a new base class <code>AppRazor&lt;TModel&gt;</code> which does have a typed model (for advanced scenarios, explained later)</li>
-<li>Both of them are <code>abstract</code> - this is a requirement for Razor base classes</li>
-<li>Both of them are <code>partial</code> - this allows you to add more helpers and code in a separate file</li>
-<li>The <code>App</code> property which is usually a <code>IAppTyped</code> is now a <code>IAppTyped&lt;AppSettings, AppResources&gt;</code>.
-This helps that when you write <code>App.Settings</code> it will be strongly typed - so you will get IntelliSense suggesting all the possible settings.
-The same applies to <code>App.Resources</code></li>
-</ol>
-<h2 id="how-to-use-the-custom-base-class">How to Use the Custom Base Class</h2>
-<p>Imagine you start with a Razor file which looks like this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-&lt;h1 class=&quot;@App.Settings.String(&quot;MainColor&quot;)&quot;&gt;Some Title&lt;/h1&gt;
-</code></pre>
-<p>You could now change it to use your custom base class like this:</p>
-<pre><code class="lang-razor">@inherits AppCode.Razor.AppRazor
-&lt;h1 class=&quot;@App.Settings.MainColor&quot;&gt;Some Title&lt;/h1&gt;
-</code></pre>
-<p>This is a very simple example, but it shows how you can now use <code>App.Settings.MainColor</code> instead of <code>App.Settings.String(&quot;MainColor&quot;)</code> - which is much more readable and less error-prone.</p>
-<h2 id="extending-the-main-base-class">Extending the Main Base Class</h2>
-<p>In most scenarios you will want to have a main base class - like the <code>AppRazor</code> and put things there that you'll need everywhere.
-Here's an example which would add a simple helper to easily activate Fancybox in your Razor files.
-This extension is placed in another file - let's say <code>/AppCode/Razor/AppRazor.cs</code>:</p>
-<pre><code class="lang-csharp">using AppCode.Data;
-using ToSic.Sxc.Apps;
-
-namespace AppCode.Razor
-{
-  public abstract partial class AppRazor&lt;TModel&gt;
-  {
-
-    protected string ActivateFancyBox()
-    {
-      // see https://r.2sxc.org/turnon
-      Kit.Page.Activate(&quot;fancybox4&quot;);
-      return null;
-    }
-  }
-}
-
-This now extends the `AppRazor` and adds a new method `ActivateFancyBox` which you can use in your Razor files like this:
-
-```razor
-@inherits AppCode.Razor.AppRazor
-@ActivateFancyBox()
-</code></pre>
-<p>Note that the method returns <code>null</code> - this is because the method is just a helper to activate Fancybox, and it doesn't return any content.
-But it needs to return something, so we can just call it using <code>@ActivateFancybox()</code> without creating <code>@{ ActivateFancybox(); }</code> code blocks.</p>
-<h2 id="inheriting-and-extending-razor-base-classes">Inheriting and Extending Razor Base Classes</h2>
-<p>The previous example was just the beginning.
-We recommend creating your own Razor base classes which inherit from <code>AppRazor</code> and then add your own helpers and properties to it.
-For example, you could prepare data for the Razor view, so that the Razor file is simpler and easier to read.</p>
-<p>Here's an example of a Razor base class which prepares data for a blog post:</p>
-<pre><code class="lang-csharp">using System.Collections.Generic;
-using System.Linq;
-using AppCode.Data;
-using Custom.Data;
-using ToSic.Sxc.Context;
-
-namespace AppCode.Razor
-{
-  public abstract class ImagesRazor: AppRazor
-  {
-    /// &lt;summary&gt;
-    /// Replace the MyView with a typed version
-    /// &lt;/summary&gt;
-    protected new ICmsView&lt;ImageViewSettings, CustomItem&gt; MyView =&gt; Customize.MyView&lt;ImageViewSettings, CustomItem&gt;();
-
-    protected List&lt;Image&gt; MyImages =&gt; _myImages ??= AsList&lt;Image&gt;(MyItems).ToList();
-    private List&lt;Image&gt; _myImages;
-
-    /// &lt;summary&gt;
-    /// Replace the MyHeader with a typed version
-    /// &lt;/summary&gt;
-    protected new TextMediaListHeader MyHeader =&gt; _myHeader ??= Customize.MyHeader&lt;TextMediaListHeader&gt;();
-    private TextMediaListHeader _myHeader;
-  }
-}
-</code></pre>
-<h2 id="customize-your-razor-beta">Customize your Razor (BETA)</h2>
-<p>The <code>Customize</code> object is a helper which will create the typed objects for you.</p>
-<p>It has helpers such as <code>Customize.App&lt;AppSettings, AppResources&gt;()</code> which will create a strongly typed <code>IAppTyped&lt;AppSettings, AppResources&gt;</code> for you.
-There are more, but they are not documented yet 😉.</p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Still WIP v17.03+</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/razor-base-classes.html">Custom Razor Base Classes in 2sxc 17+ WIP</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/razor-base-classes.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/razor-base-classes.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

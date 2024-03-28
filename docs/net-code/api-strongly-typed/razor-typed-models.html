@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Razor with Typed Models in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane </title>
+      <title> | 2sxc 17 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Razor with Typed Models in 2sxc 17+ | 2sxc 17 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 17 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/razor-typed-models.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/razor-typed-models.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,98 +105,14 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="NetCode.StronglyTypedCode.RazorTypedModels">
-<h1 id="razor-with-typed-models-in-2sxc-17">Razor with Typed Models in 2sxc 17+</h1>
+        <article data-uid="">
 
-<p>In 2sxc 17+ you can use strongly typed models in your Razor files.</p>
-<h2 id="background">Background</h2>
-<p>You will often split your code into multiple Razor files and pass parameters to child components:</p>
-<pre><code class="lang-mermaid">flowchart LR
-    CS[Entry Razor\nList.cshtml] --&gt;|📤Flexible Parameters| XD
-    XD[&quot;Child Razor\nList-Item.cshtml&quot;]
-</code></pre>
-<p>The caller <code>List.cshtml</code> usually does this:</p>
-<pre><code class="lang-razor">@Html.Partial(&quot;List-Item.cshtml&quot;, new { Title = &quot;Something&quot;, Product = product })
-</code></pre>
-<p>The child component <code>List-Item.cshtml</code> would then pick this up with differing syntaxes - here's a <code>RazorTyped</code> example:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-@{
-  var title = MyModel.String(&quot;Title&quot;);
-  var product = MyModel.Item(&quot;Product&quot;);
-}
-</code></pre>
-<p>This is great, and ideal for flexible scenarios.</p>
-<h2 id="new-typed-models">New: Typed Models</h2>
-<p>But we wanted to introduce more type safety, so we created the <code>RazorTyped&lt;TModel&gt;</code> base class.</p>
-<h3 id="simple-string-example">Simple String Example</h3>
-<pre><code class="lang-mermaid">flowchart LR
-    CS[Entry Razor\nList.cshtml] --&gt;|📤String Parameter| XD
-    XD[&quot;Child Razor\nList-Item.cshtml&quot;]
-</code></pre>
-<p>The caller <code>List.cshtml</code> would now do this:</p>
-<pre><code class="lang-razor">@Html.Partial(&quot;List-Item.cshtml&quot;, &quot;Something&quot;)
-</code></pre>
-<p>The child component <code>List-Item.cshtml</code> would then pick this up with differing syntaxes - here's a <code>RazorTyped</code> example:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped&lt;string&gt;
-@{
-  var title = Model;
-}
-</code></pre>
-<p>Note that <code>MyModel</code> still exists, but isn't made to handle single values.
-But the <code>Model</code> variable is what is typed with the <code>RazorTyped&lt;string&gt;</code>.</p>
-<h3 id="simple-item-example">Simple Item Example</h3>
-<pre><code class="lang-mermaid">flowchart LR
-    CS[Entry Razor\nList.cshtml] --&gt;|📤Product| XD
-    XD[&quot;Child Razor\nList-Item.cshtml&quot;]
-</code></pre>
-<p>The caller <code>List.cshtml</code> would now do this:</p>
-<pre><code class="lang-razor">@Html.Partial(&quot;List-Item.cshtml&quot;, product)
-</code></pre>
-<p>The child component <code>List-Item.cshtml</code> would then pick this up with differing syntaxes - here's a <code>RazorTyped</code> example:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped&lt;Product&gt;
-@{
-  var product = Model;
-}
-</code></pre>
-<h3 id="complex-example">Complex Example</h3>
-<pre><code class="lang-mermaid">flowchart LR
-    CS[Entry Razor\nList.cshtml] --&gt;|📤Product View Model| XD
-    XD[&quot;Child Razor\nList-Item.cshtml&quot;]
-</code></pre>
-<p>You would now have another class <code>/AppCode/Razor/ProductViewModel</code> which would be a strongly typed model.</p>
-<pre><code class="lang-c#">namespace AppCode.Razor
-{
-  public class ProductViewModel {
-    public string Title { get; set; }
-    public Product Product { get; set; }
-  }
-}
-</code></pre>
-<p>The caller <code>List.cshtml</code> would now do this:</p>
-<pre><code class="lang-razor">@Html.Partial(&quot;List-Item.cshtml&quot;, new ProductViewModel { Title = &quot;Something&quot;, Product = product })
-</code></pre>
-<p>The child component <code>List-Item.cshtml</code> would then pick this up with differing syntaxes - here's a <code>RazorTyped</code> example:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped&lt;ProductViewModel&gt;
-@using AppCode.Razor
-@{
-  var title = Model.Title;
-  var product = Model.Product;
-}
-</code></pre>
-<h2 id="pick-your-poison">Pick your Poison</h2>
-<p>This new feature is great, but it's not for everyone.
-It takes a bit more work, but introduces type safety and IntelliSense to your Razor files.
-It also plays well with the new <a class="xref" href="razor-base-classes.html">Razor Base Classes</a>.</p>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>Introduced in v17.03</li>
-</ul>
+<p>Moved to <a class="xref" href="../api-typed-strong/razor-typed-models.html">Razor with Typed Models in 2sxc 17+</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/net-code/api-strongly-typed/razor-typed-models.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages-moved/net-code/api-strongly-typed/razor-typed-models.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

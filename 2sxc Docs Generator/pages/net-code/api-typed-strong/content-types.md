@@ -1,8 +1,8 @@
 ---
-uid: NetCode.StronglyTypedCode.ContentTypes
+uid: NetCode.StrongTypedCode.ContentTypes
 ---
 
-# Custom Data Models in the Strongly Typed APIs in 2sxc 17+
+# Custom Data Models in the Strong Typed APIs in 2sxc 17+
 
 The [Copilot Data Model Generator](xref:NetCode.Copilot.DataModelGenerator) will generate classes for each Content-Type in the `AppCode.Data` namespace.
 The details are documented there.
@@ -80,11 +80,11 @@ private IEnumerable<Category> _categories;
 
 ```
 
-## Using the Strongly Typed Classes in Razor or C# Files
+## Using the Strong Typed Classes in Razor or C# Files
 
 TODO:
 
-## Modify the Strongly Typed Classes
+## Modify the Strong Typed Classes
 
 As mentioned before, you don't want to touch the generated files. Instead, you should create a new file with the same name, but without the `.Generated` part.
 Here's an example of a `/AppCode/Data/Product.cs` file which extends the auto-generated class `Product` with some custom properties and methods:
@@ -187,7 +187,7 @@ namespace AppCode.Data
 
 Note the `new` - as were replacing the `Presentation` property, and `base.Presentation` - without the `base` prefix, you would create an infinite loop.
 
-## Super-Extending the Strongly Typed Classes
+## Super-Extending the Strong Typed Classes
 
 The previous examples all worked because every new property we created used existing data to determine the new value.
 In some cases, you would like to add a property which is not based on existing data, but on other data.
@@ -212,7 +212,7 @@ namespace AppCode.Data
 }
 ```
 
-When converting the data to a strongly typed object, you would then pass in the user like this:
+When converting the data to a strong-typed object, you would then pass in the user like this:
 
 ```razor
 @{
@@ -231,12 +231,12 @@ All your custom data objects will be based on [CustomItem](xref:Custom.Data.Cust
 These are some you will need to know about:
 
 * `_item` is the underlying object which is being wrapped. You can always access it's methods such as `_item.String("Teaser")` or `_item.Children("Categories")`
-* `As<T>(object)` will convert an item to a strongly typed object
-* `AsList<T>(object)` will convert a list of items to a list of strongly typed objects
-* `Child<T>(name)` will get a child item and convert it to a strongly typed object
-* `Children<T>(name)` will get a list of child items and convert them to a list of strongly typed objects
-* `Parent<T>(type: name, field: name)` will get the parent item (or the first parent in all the matching parents) and convert it to a strongly typed object
-* `Parents<T>(type: name, field: name)` will get the list of parent items and convert them to a list of strongly typed objects
+* `As<T>(object)` will convert an item to a strong-typed object
+* `AsList<T>(object)` will convert a list of items to a list of strong-typed objects
+* `Child<T>(name)` will get a child item and convert it to a strong-typed object
+* `Children<T>(name)` will get a list of child items and convert them to a list of strong-typed objects
+* `Parent<T>(type: name, field: name)` will get the parent item (or the first parent in all the matching parents) and convert it to a strong-typed object
+* `Parents<T>(type: name, field: name)` will get the list of parent items and convert them to a list of strong-typed objects
 
 ---
 

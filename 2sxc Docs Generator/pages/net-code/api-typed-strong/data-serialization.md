@@ -1,5 +1,5 @@
 ---
-uid: NetCode.StronglyTypedCode.DataSerialization
+uid: NetCode.StrongTypedCode.DataSerialization
 ---
 
 # Custom Data Serialization in 2sxc 17+
