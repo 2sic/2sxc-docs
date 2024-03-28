@@ -102,6 +102,7 @@ EndProject
   <!-- IntelliSense: Load all DLLs which exist in Dnn and Oqtane from the bin folder -->
   <ItemGroup>
     <Reference Include="$(PathBin)\ToSic.*.dll" />
+    <Reference Include="$(PathBin)\Connect.Koi.dll" />
     <!-- Also load files in the Dependencies folder of the current App -->
     <Reference Include="Dependencies\*.dll" />
   </ItemGroup>
