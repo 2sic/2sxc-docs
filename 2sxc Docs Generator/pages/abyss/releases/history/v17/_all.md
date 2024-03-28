@@ -8,3 +8,9 @@
 [!include["Changes"](./_changes17.02.md)]
 
 [!include["Changes"](./_changes17.03.md)]
+
+[!include["Changes"](./_changes17.04.md)]
+
+[!include["Changes"](./_changes17.05.md)]
+
+[!include["Changes"](./_changes17.06.md)]

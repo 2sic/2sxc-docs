@@ -11,18 +11,14 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-03-13**
+Last Update: **2024-03-28**
 
-## Priority for 2024-Q1 till end of March
+## Easter LTS Release
 
-1. ✅ Prepare for Oqtane SSR (Server-Side Rendering)
-1. Finalize Intellisense for the most important DLLs (Sxc, Dnn, Oqtane)
-1. ✅ Provide Code Generator for Content Types, Razor and Services
-1. ✅ Improve discoverability of REST APIs
-1. LTS
+🎁 We just released [2sxc 17.06 LTS](https://github.com/2sic/2sxc/releases)
 
 
-## Maybe Q1 if we can make it
+## Early Q2
 
 1. ⌛ Mobius Form Builder
 1. Improve Intellisense
@@ -32,16 +28,18 @@ Last Update: **2024-03-13**
         1. ToSic.Sxc.WebApi
         1. ToSic.Sxc.Dnn
         1. ToSic.Sxc.Oqt / Razor
+1. ⌛ Migrate Apps to strong-typed mode
+1. ⌛ Cache Service
+1. ⌛ Oqtane SSR Release
 
-1. ⌛ Document new ~~Pro~~ Typed mode
 
-## Postponed for Q2
+## Q2
 
 1. Shared Field Configurations (not yet "published")
-
-
-
-1. Improve CSP in Oqtane 4
+1. Export bundles
+1. WebApi in AppCode
+1. DataSources in AppCode
+1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data
 
 also...
@@ -52,7 +50,7 @@ also...
     1. multi-select
     1. maybe checkboxes
 1. ⌛ Rework the UI **Picker** aka DropDown system
-    1. to have titles, help, notes, links, and more @SDV
+    1. ⌛ to have titles, help, notes, links, and more @SDV
     1. to also have various data sources
     1. dropdown for numbers etc.
 1. Improve Oqtane Pages DS to also respect all known settings - @STV
@@ -64,7 +62,6 @@ also...
 ## Done but not communicated, or still tweaking / WIP
 
 1. ✅ Auto-Installer - Features to configure at system level which apps are allowed / must be installed
-1. ⏳ Auto-Install more apps from catalog - even after some have already been installed - ca. 1d
 1. Data Sources
     1. ✅ Internal data source to get data from app parents
     1. ✅ Internal Query to get data from app-parents
@@ -125,10 +122,6 @@ Minor: Tutorial App Enhancements
 1. ⚠️ Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
 1. ~~JS Docs for formula~~
-1. Probably update ImageFlow again, if PNG resize bug is fixed
-1. Enable standard apps to be installed from catalog easily after first apps have been installed
-    1. ✅ Feature to tell new auto-installer what apps are already installed
-    1. App-Auto-Installer UI to add-install apps later on
 
 Blazor CMS / cre8magic
 
@@ -142,7 +135,7 @@ Blazor CMS / cre8magic
 
 
 
-## Backlog 2023 v15
+## Backlog
 
 New Stuff and Major Enhancements
 
@@ -164,9 +157,6 @@ New Stuff and Major Enhancements
 1. after new Selectors - improve permissions UIs
 1. New Icon-Dropdowns from other data sources for better icons-support without fonts
 1. ⏳ Edit and Admin UI Dependencies Upgrades @SDV
-    1. ⏳ Angular 15 upgrade
-    1. ⏳ Angular Material upgrade
-    1. ⏳ AG DataGrid upgrade
     1. ⏳ Improve / Refactor some public types code
 
 
