@@ -3,7 +3,7 @@
 
 # 2sxc and EAV Docs
 
-`For version 17.06.00 LTS`
+`For version 17.06.02 LTS`
 
 This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
 
@@ -74,3 +74,10 @@ These topics are insufficiently documented...
         1. icons in .net API
         1. HR splitters
 
+---
+
+## Other Cool Tools & Resources
+
+1. [2sxc Toolbar Builder by 10Pound Gorilla](https://www.gorillafied.ai/Build/2sxc-Toolbar-Builder)
+1. [Gorillafied Blog](https://www.gorillafied.ai/)
+1. [Accu4.com - blog, experiments, tutorials](https://www.accu4.com/)

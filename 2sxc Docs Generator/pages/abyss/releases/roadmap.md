@@ -32,6 +32,11 @@ Last Update: **2024-03-28**
 1. ⌛ Cache Service
 1. ⌛ Oqtane SSR Release
 
+also...
+
+1. Oqtane Menu Control
+1. Oqtane Multi-language
+1. Oqtane professional theme
 
 ## Q2
 

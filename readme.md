@@ -6,7 +6,7 @@ We keep it in a separate repo so docs-changes don't clutter the git-history of t
 
 To generate the docs you have two options
 
-1. With VS Code, just open the folder `2sxc Docs Generator` and `docfx` in the terminal
+1. With VS Code, just open the workspace in the subfolder `2sxc Docs Generator\2sxc Docs.code-workspace` and run `docfx` in the terminal
 1. With Visual Studio, open the solution in the folder `2sxc Docs Generator` and rebuild solution
 
 Further instructions: <https://docs.2sxc.org/abyss/contribute/docs.html>
