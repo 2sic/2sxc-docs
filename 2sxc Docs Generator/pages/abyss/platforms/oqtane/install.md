@@ -18,11 +18,13 @@ we created on installing Oqtane and 2sxc.
 > Because of this, extensions like 2sxc can quickly become incompatible with the latest enhancements,
 > so here we'll maintain a list of Oqtane / 2sxc versions.
 
-| Oqtane V. | Best    | Compatible          | Incompatible            | Comments |
-| ---       | -----   | ------------------- | -------------           | --- |
-| 5.0+      | 16.09+  | ✅ 16.09+           | ⛔ pre 16.09            | .net 8 differences in System.Text.Json
-| 4.0+      | 16.09   | ✅ 16.02 - 16.09    | ⛔ pre 16.02            | .net Framework and EF 7
-| 3.4+      | unknown | ✅ 15.06+           | ⛔ pre 15.06            | Undo breaking changes in Permissions
+| Oqtane V.     | Best    | Compatible          | Incompatible            | Comments
+| ---           | -----   | ------------------- | -------------           | ---
+| 5.1+          | n/a     | ⛔ none yet         | ⛔ all                  | Blazor SSR changes still WIP
+| **5.0+**      | 17.06+  | ✅ 16.09+           | ⛔ pre 16.09            | .net 8 differences in System.Text.Json
+| 4.0+          | 16.09   | ✅ 16.02 - 16.09    | ⛔ pre 16.02            | .net Framework and EF 7
+| 3.4+          | unknown | ✅ 15.06+           | ⛔ pre 15.06            | Undo breaking changes in Permissions
+
 
 For older versions, see the [older Oqtane and 2sxc Versions](#older-oqtane-and-2sxc-versions) section below.
 

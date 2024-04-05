@@ -18,7 +18,7 @@ Last Update: **2024-03-28**
 🎁 We just released [2sxc 17.06 LTS](https://github.com/2sic/2sxc/releases)
 
 
-## Early Q2
+## 2024 Q2 Priority 1
 
 1. ⌛ Mobius Form Builder
 1. Improve Intellisense
