@@ -11,6 +11,11 @@ uid: Abyss.Platforms.Oqtane.Install
 Read the [blog + video + checklist](https://2sxc.org/en/blog/post/install-oqtane-2-from-scratch-with-language-packs-and-2sxc-video)
 we created on installing Oqtane and 2sxc.
 
+> [!WARNING]
+> The latest Oqtane 5.1.1 is still causing various problems so we are not releasing a 2sxc for 5.1+ yet.
+>
+> As soon as we feel that Oqtane 5.1+ is stable, we will release a 2sxc for it.
+
 ## Oqtane and 2sxc Version Compatibilities
 
 > [!TIP]
