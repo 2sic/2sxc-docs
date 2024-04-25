@@ -127,7 +127,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;Still WIP v17.02&quot;)]
+    <pre><code class="lang-csharp hljs">[PublicApi]
 public class CustomItem : ITypedItem, ITyped, IEquatable&lt;ITypedItem&gt;</code></pre>
   </div>
 
@@ -157,7 +157,10 @@ public class CustomItem : ITypedItem, ITyped, IEquatable&lt;ITypedItem&gt;</code
 
 
   <h2 id="Custom_Data_CustomItem_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>It's not abstract, even if the most common case is to inherit, as there are cases where you want to use it directly.</p>
+  <div class="markdown level0 remarks"><ul>
+<li>Released in v17.06</li>
+<li>It's not abstract, even if the most common case is to inherit, as there are cases where you want to use it directly.</li>
+</ul>
 </div>
 
 
@@ -1472,7 +1475,7 @@ Note that you don't need to specify it, if you specify the <code>fallback</code>
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Custom.Data/CustomItem.cs/#L275"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Get the GPS coordinates of a GPS field.</p>
+  <div class="markdown level1 summary"><p>Get the GPS coordinates of a GPS field as a typed object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1483,11 +1486,14 @@ Note that you don't need to specify it, if you specify the <code>fallback</code>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Name of a field</p>
+</dd>
     <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd></dd>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
     <dt><code>required</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd></dd>
+    <dd><p>throw error if <code>name</code> doesn't exist, see <a class="xref" href="../../net-code/conventions/property-required/index.html">Convention: Property Required Name Checks</a></p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -1600,7 +1606,7 @@ For other parameters like <code>height</code>, <code>aspectRatio</code>, <code>q
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IResponsiveImage Img(string name, NoParamOrder noParamOrder, object settings, object factor, object width, string imgAlt, string imgAltFallback, string imgClass, object imgAttributes, object toolbar, object recipe)</code></pre>
+    <pre><code class="lang-csharp hljs">public IResponsiveImage Img(string name, NoParamOrder noParamOrder = default, object settings = null, object factor = null, object width = null, string imgAlt = null, string imgAltFallback = null, string imgClass = null, object imgAttributes = null, object toolbar = null, object recipe = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

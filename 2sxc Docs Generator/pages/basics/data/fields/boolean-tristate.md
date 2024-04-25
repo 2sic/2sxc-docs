@@ -3,9 +3,11 @@ uid: Basics.Data.Fields.Boolean-Tristate
 ---
 # Field Input-Type **boolean-tristate**
 
-Use this field type for configuring simple true/false UI elements, storing [boolean/boolean data](xref:Basics.Data.Fields.Boolean). It's an extension of the basic [boolean field type](xref:Basics.Data.Fields.Boolean).
+Use this field type for configuring simple true/false UI elements,
+storing [boolean/boolean data](xref:Basics.Data.Fields.Boolean).
+It's an extension of the basic [boolean field type](xref:Basics.Data.Fields.Boolean).
 
-## Features 
+## Features
 
 1. provide a basic on/off input field (toggle switch)
 1. can also be switched to `null` (not set)
