@@ -11,26 +11,42 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-03-28**
+Last Update: **2024-05-06**
 
-## Easter LTS Release
+## May 4th and the following days - Release Spree
 
-🎁 We just released [2sxc 17.06 LTS](https://github.com/2sic/2sxc/releases)
+published/blogged:
+
+1. ✅/✅ 2sxc 17.07
+1. ✅/✅ 2shine 5.3 (May 4th)
+1. ✅/✅ Content App 17.07 (May 6th)
+1. ✅/✅ Mobius Form Builder 06.00 for 2sxc 17.07 (May 7th)
+1. ⌛/🔳 Release all apps as typed (May 8th)
 
 
-## 2024 Q2 Priority 1
+## 2024 Q2 Finish DoD / Almost-Done Work
 
-1. ⌛ Mobius Form Builder
+1. ✅ WebApi in AppCode
+1. ✅ DataSources in AppCode
+1. ⌛ `ITemplateService`
+1. ⌛ Dnn Force use of Roslyn
+1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
-    1. ✅ Hide more internal APIs
-    1. Include more XML docs
-        1. ✅ ToSic.Sxc
-        1. ToSic.Sxc.WebApi
-        1. ToSic.Sxc.Dnn
+    1. Harden more Dlls and include more XML docs
+        1. ✅/✅ ToSic.Sxc
+        1. ✅/🔳 ToSic.Sxc.Code.Generate
+        1. ✅/🔳 ToSic.Sxc.WebApi
+        1. 🔳/🔳 ToSic.Sxc.Dnn
+        1. 🔳/🔳 ToSic.Sxc.Dnn.Core
+        1. 🔳/🔳 ToSic.Sxc.Dnn.Razor
+        1. ✅/🔳 ToSic.Sxc.Dnn.WebApi
+        1. ✅/🔳 ToSic.Eav.Apps
+        1. ✅/🔳 ToSic.Eav.DataSources
+        1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-1. ⌛ Migrate Apps to strong-typed mode
-1. ⌛ Cache Service
-1. ⌛ Oqtane SSR Release
+1. ⌛ Cache Service internal
+1. ⌛ Cache Service external
+1. ⌛ Oqtane 5.1 or 5.2 SSR Release
 
 also...
 
@@ -42,8 +58,6 @@ also...
 
 1. Shared Field Configurations (not yet "published")
 1. Export bundles
-1. WebApi in AppCode
-1. DataSources in AppCode
 1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data
 
@@ -79,6 +93,8 @@ also...
 1. ⏳ Data Bundles
 1. ⏳ Language editing permissions - improve, test, finalize, document - ca. 3-5d
     1. also allow non-admins to possibly translate resources
+1. Ability to set default compiler in Dnn to always be Roslyn
+1. Ability to include Dlls in the compile process for Dnn/Oqtane
 
 
 ## Post LTS
