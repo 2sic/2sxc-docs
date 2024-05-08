@@ -10,21 +10,6 @@ In some scenarios, your code will want to work with this data as if it were a da
 
 There are a few ways to do this.
 
-## Basic using As and AsList
-
-```csharp
-// Get all and convert to Person
-var people = AsList<Person>(App.Data.GetStream("Person"));
-// Get all and convert the first to person - will be null if there is no data
-var onePerson = As<Person>(App.Data.GetStream("Person"));
-// Get all, convert, then find the one with the ID - null if no match
-var person45 = AsList<Person>(App.Data.GetStream("Person")).FirstOrDefault(p => p.Id == 45);
-// Get one and convert to Person - null if no match; faster
-var person72 = As<Person>(App.Data.GetStream("Person").List.FirstOrDefault(e => e.EntityId = 72));
-```
-
-This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.
-
 ## New using GetAll and GetOne
 
 The most common operations will be to get all or get a specific item.
@@ -40,6 +25,21 @@ var person72 = App.Data.GetOne<Person>(72);
 // Get one and convert using Guid - will be null if not found
 var personFromGuid = App.Data.GetOne<Person>(Guid.Parse("..."));
 ```
+
+## Basic using As and AsList
+
+```csharp
+// Get all and convert to Person
+var people = AsList<Person>(App.Data.GetStream("Person"));
+// Get all and convert the first to person - will be null if there is no data
+var onePerson = As<Person>(App.Data.GetStream("Person"));
+// Get all, convert, then find the one with the ID - null if no match
+var person45 = AsList<Person>(App.Data.GetStream("Person")).FirstOrDefault(p => p.Id == 45);
+// Get one and convert to Person - null if no match; faster
+var person72 = As<Person>(App.Data.GetStream("Person").List.FirstOrDefault(e => e.EntityId = 72));
+```
+
+This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.
 
 ## Good to Know
 

@@ -111,17 +111,6 @@
 <p>The <code>App.Data</code> object provides a <strong>DataSource</strong> to all the data inside the App.</p>
 <p>In some scenarios, your code will want to work with this data as if it were a database, but in a strong-typed way.</p>
 <p>There are a few ways to do this.</p>
-<h2 id="basic-using-as-and-aslist">Basic using As and AsList</h2>
-<pre><code class="lang-csharp">// Get all and convert to Person
-var people = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
-// Get all and convert the first to person - will be null if there is no data
-var onePerson = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
-// Get all, convert, then find the one with the ID - null if no match
-var person45 = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;)).FirstOrDefault(p =&gt; p.Id == 45);
-// Get one and convert to Person - null if no match; faster
-var person72 = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;).List.FirstOrDefault(e =&gt; e.EntityId = 72));
-</code></pre>
-<p>This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.</p>
 <h2 id="new-using-getall-and-getone">New using GetAll and GetOne</h2>
 <p>The most common operations will be to get all or get a specific item.
 This is now much easier:</p>
@@ -134,6 +123,17 @@ var person72 = App.Data.GetOne&lt;Person&gt;(72);
 // Get one and convert using Guid - will be null if not found
 var personFromGuid = App.Data.GetOne&lt;Person&gt;(Guid.Parse(&quot;...&quot;));
 </code></pre>
+<h2 id="basic-using-as-and-aslist">Basic using As and AsList</h2>
+<pre><code class="lang-csharp">// Get all and convert to Person
+var people = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
+// Get all and convert the first to person - will be null if there is no data
+var onePerson = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;));
+// Get all, convert, then find the one with the ID - null if no match
+var person45 = AsList&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;)).FirstOrDefault(p =&gt; p.Id == 45);
+// Get one and convert to Person - null if no match; faster
+var person72 = As&lt;Person&gt;(App.Data.GetStream(&quot;Person&quot;).List.FirstOrDefault(e =&gt; e.EntityId = 72));
+</code></pre>
+<p>This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.</p>
 <h2 id="good-to-know">Good to Know</h2>
 <ul>
 <li>To make the magic work, <code>GetAll(...)</code> and <code>GetOne(...)</code> will use the <strong>class name</strong> to determine the stream it should retrieve.</li>
