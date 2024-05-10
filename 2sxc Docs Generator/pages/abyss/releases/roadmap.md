@@ -21,14 +21,15 @@ published/blogged:
 1. ✅/✅ 2shine 5.3 (May 4th)
 1. ✅/✅ Content App 17.07 (May 6th)
 1. ✅/✅ Mobius Form Builder 06.00 for 2sxc 17.07 (May 7th)
-1. ⌛/🔳 Release all apps as typed (May 8th)
+1. ✅/✅ Release all apps as typed (May 8th)
 
 
 ## 2024 Q2 Finish DoD / Almost-Done Work
 
 1. ✅ WebApi in AppCode
 1. ✅ DataSources in AppCode
-1. ⌛ `ITemplateService`
+1. ✅ `ITemplateService`
+1. ✅ Add `CmsContext.Block` and `CmsContext.Module.Block` as well as `Block.Guid`
 1. ⌛ Dnn Force use of Roslyn
 1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
