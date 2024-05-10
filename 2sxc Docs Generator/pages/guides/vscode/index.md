@@ -103,6 +103,10 @@ EndProject
   <ItemGroup>
     <Reference Include="$(PathBin)\ToSic.*.dll" />
     <Reference Include="$(PathBin)\Connect.Koi.dll" />
+
+    <!-- Common Microsoft DLLs -->
+    <Reference Include="$(PathBin)\System.Text.Json.dll" />
+
     <!-- Also load files in the Dependencies folder of the current App -->
     <Reference Include="Dependencies\*.dll" />
   </ItemGroup>
@@ -114,6 +118,8 @@ EndProject
     <Reference Include="$(PathBin)\DotNetNuke.*.dll" />
     <Reference Include="$(PathBin)\System.Web.Http.dll" />
     <Reference Include="$(PathBin)\System.Web.WebPages.dll" />
+
+    <Reference Include="$(PathBin)\System.Net.Http.dll" />
 
     <!-- System.Web is not in the DNN folder but in the .net Framework installed on the server -->
     <Reference Include="System.Web" />

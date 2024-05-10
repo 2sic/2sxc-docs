@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Lib_Services_MyServicesBase" data-uid="ToSic.Lib.Services.MyServicesBase" class="text-break">
     Class MyServicesBase
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -167,7 +167,7 @@ public abstract class MyServicesBase</code></pre>
 
   <h3 id="ToSic_Lib_Services_MyServicesBase__ctor_ToSic_Lib_Coding_NoParamOrder_System_Object___" data-uid="ToSic.Lib.Services.MyServicesBase.#ctor(ToSic.Lib.Coding.NoParamOrder,System.Object[])">
   MyServicesBase(NoParamOrder, object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -200,11 +200,44 @@ public abstract class MyServicesBase</code></pre>
 </h2>
 
 
+  <a id="ToSic_Lib_Services_MyServicesBase_ConnectLogs_" data-uid="ToSic.Lib.Services.MyServicesBase.ConnectLogs*"></a>
+
+  <h3 id="ToSic_Lib_Services_MyServicesBase_ConnectLogs_System_Object___" data-uid="ToSic.Lib.Services.MyServicesBase.ConnectLogs(System.Object[])">
+  ConnectLogs(object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add objects to various queues to be auto-initialized when <a class="xref" href="ToSic.Lib.Services.ServiceDependenciesExtensions.html#ToSic_Lib_Services_ServiceDependenciesExtensions_ConnectServices__1___0_ToSic_Lib_Logging_ILog_">ConnectServices&lt;TDependencies&gt;(TDependencies, ILog)</a> is called later on</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ConnectLogs(object[] services)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>One or more services which could implement <a class="xref" href="ToSic.Lib.DI.ILazyInitLog.html">ILazyInitLog</a> or <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="ToSic_Lib_Services_MyServicesBase_ConnectService_" data-uid="ToSic.Lib.Services.MyServicesBase.ConnectService*"></a>
 
   <h3 id="ToSic_Lib_Services_MyServicesBase_ConnectService__1___0_" data-uid="ToSic.Lib.Services.MyServicesBase.ConnectService``1(``0)">
   ConnectService&lt;TService&gt;(TService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Experimental Connect-one, may be removed again.</p>
@@ -247,22 +280,21 @@ public abstract class MyServicesBase</code></pre>
 
   <h3 id="ToSic_Lib_Services_MyServicesBase_ConnectServices_System_Object___" data-uid="ToSic.Lib.Services.MyServicesBase.ConnectServices(System.Object[])">
   ConnectServices(params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Add objects to various queues to be auto-initialized when <a class="xref" href="ToSic.Lib.Services.ServiceDependenciesExtensions.html#ToSic_Lib_Services_ServiceDependenciesExtensions_ConnectServices__1___0_ToSic_Lib_Logging_ILog_">ConnectServices&lt;TDependencies&gt;(TDependencies, ILog)</a> is called later on</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void ConnectServices(params object[] services)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Avoid using, will be removed soon. Use ConnectLogs([...])&quot;)]
+protected void ConnectServices(params object[] services)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
-    <dd><p>One or more services which could implement <a class="xref" href="ToSic.Lib.DI.ILazyInitLog.html">ILazyInitLog</a> or <a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -280,7 +312,7 @@ public abstract class MyServicesBase</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/Services/MyServicesBase.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 
