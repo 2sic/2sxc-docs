@@ -24,12 +24,21 @@ published/blogged:
 1. ✅/✅ Release all apps as typed (May 8th)
 
 
-## 2024 Q2 Finish DoD / Almost-Done Work
+## 2024-05-16 Released 17.08
 
 1. ✅ WebApi in AppCode
 1. ✅ DataSources in AppCode
 1. ✅ `ITemplateService`
 1. ✅ Add `CmsContext.Block` and `CmsContext.Module.Block` as well as `Block.Guid`
+1. ✅ Cache Service internal
+1. ✅ Switch Edition UI
+1. ✅ Switch Edition Permissions for non-super users
+1. ✅ Update Image Resizer
+
+...and more.
+
+## 2024 Q2 Finish DoD / Almost-Done Work
+
 1. ⌛ Dnn Force use of Roslyn
 1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
@@ -45,9 +54,9 @@ published/blogged:
         1. ✅/🔳 ToSic.Eav.DataSources
         1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-1. ⌛ Cache Service internal
 1. ⌛ Cache Service external
 1. ⌛ Oqtane 5.1 or 5.2 SSR Release
+1. Re-Release another LTS ca. 17.10
 
 also...
 
@@ -119,7 +128,7 @@ Minor: Tutorial App Enhancements
 
 
 
-## Probably 2023 Q3
+## Probably 2024 Q3
 
 2sxc
 
