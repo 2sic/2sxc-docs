@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Eav_LookUp_LookUpInLookUps" data-uid="ToSic.Eav.LookUp.LookUpInLookUps" class="text-break">
     Class LookUpInLookUps
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -186,17 +186,19 @@ public class LookUpInLookUps : LookUpBase, ILookUp</code></pre>
 
   <a id="ToSic_Eav_LookUp_LookUpInLookUps__ctor_" data-uid="ToSic.Eav.LookUp.LookUpInLookUps.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_LookUp_LookUpInLookUps__ctor_System_String_ToSic_Eav_LookUp_ILookUp_ToSic_Eav_LookUp_ILookUp_ToSic_Eav_LookUp_ILookUp_ToSic_Eav_LookUp_ILookUp_" data-uid="ToSic.Eav.LookUp.LookUpInLookUps.#ctor(System.String,ToSic.Eav.LookUp.ILookUp,ToSic.Eav.LookUp.ILookUp,ToSic.Eav.LookUp.ILookUp,ToSic.Eav.LookUp.ILookUp)">
-  LookUpInLookUps(string, ILookUp, ILookUp, ILookUp, ILookUp)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_LookUp_LookUpInLookUps__ctor_System_String_System_Collections_Generic_IEnumerable_ToSic_Eav_LookUp_ILookUp__" data-uid="ToSic.Eav.LookUp.LookUpInLookUps.#ctor(System.String,System.Collections.Generic.IEnumerable{ToSic.Eav.LookUp.ILookUp})">
+  LookUpInLookUps(string, IEnumerable&lt;ILookUp&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Generate a lookup-of-lookups.</p>
+  <div class="markdown level1 summary"><p>This Value Provider chains two or more LookUps and tries one after another to deliver a result
+It's mainly used to override values which are given, by a special situation. <br>
+Read more about this in <a class="xref" href="../../abyss/parts/look-up/index.html">LookUp System</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LookUpInLookUps(string name, ILookUp first, ILookUp second = null, ILookUp third = null, ILookUp fourth = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public LookUpInLookUps(string name, IEnumerable&lt;ILookUp&gt; providers)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -204,17 +206,8 @@ public class LookUpInLookUps : LookUpBase, ILookUp</code></pre>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Name to use - if stored in a list</p>
 </dd>
-    <dt><code>first</code> <a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a></dt>
-    <dd><p>First LookUp source</p>
-</dd>
-    <dt><code>second</code> <a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a></dt>
-    <dd><p>Second LookUp source</p>
-</dd>
-    <dt><code>third</code> <a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a></dt>
-    <dd><p>Optional third</p>
-</dd>
-    <dt><code>fourth</code> <a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a></dt>
-    <dd><p>Optional fourth</p>
+    <dt><code>providers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a>&gt;</dt>
+    <dd><p>list of providers</p>
 </dd>
   </dl>
 
@@ -237,7 +230,7 @@ public class LookUpInLookUps : LookUpBase, ILookUp</code></pre>
 
   <h3 id="ToSic_Eav_LookUp_LookUpInLookUps_Description" data-uid="ToSic.Eav.LookUp.LookUpInLookUps.Description">
   Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Additional description to better understand what each LookUp is for.</p>
@@ -273,7 +266,7 @@ public class LookUpInLookUps : LookUpBase, ILookUp</code></pre>
 
   <h3 id="ToSic_Eav_LookUp_LookUpInLookUps_Get_System_String_System_String_" data-uid="ToSic.Eav.LookUp.LookUpInLookUps.Get(System.String,System.String)">
   Get(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a value by Name/key and tries to format it in a special way (like for dates)</p>
@@ -314,7 +307,7 @@ public class LookUpInLookUps : LookUpBase, ILookUp</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/LookUp/LookUpInLookUps.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

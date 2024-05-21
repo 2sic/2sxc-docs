@@ -39,6 +39,8 @@ published/blogged:
 
 ## 2024 Q2 Finish DoD / Almost-Done Work
 
+1. ✅ `ITemplateService` with `MergeSources(...)`
+1. ✅ `ICacheService` on `Kit.Cache`
 1. ⌛ Dnn Force use of Roslyn
 1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
@@ -54,7 +56,6 @@ published/blogged:
         1. ✅/🔳 ToSic.Eav.DataSources
         1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-1. ⌛ Cache Service external
 1. ⌛ Oqtane 5.1 or 5.2 SSR Release
 1. Re-Release another LTS ca. 17.10
 
