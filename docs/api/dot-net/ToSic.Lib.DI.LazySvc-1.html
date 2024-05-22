@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Lib_DI_LazySvc_1" data-uid="ToSic.Lib.DI.LazySvc`1" class="text-break">
     Class LazySvc&lt;TService&gt;
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -166,6 +166,9 @@ public class LazySvc&lt;TService&gt; : IHasLog where TService : class</code></pr
 
 
 
+  <h2 id="ToSic_Lib_DI_LazySvc_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Constructor, should never be called as it's only meant to be used with Dependency Injection.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -176,10 +179,17 @@ public class LazySvc&lt;TService&gt; : IHasLog where TService : class</code></pr
 
   <h3 id="ToSic_Lib_DI_LazySvc_1__ctor_System_IServiceProvider_" data-uid="ToSic.Lib.DI.LazySvc`1.#ctor(System.IServiceProvider)">
   LazySvc(IServiceProvider)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Constructor, should never be called as it's only meant to be used with Dependency Injection.</p>
+  <div class="markdown level1 summary"><p>Helps us create lazy <strong>Service</strong> objects. It has some special features:</p>
+<ul>
+<li>It will automatically lazy-attach a logger when used correctly</li>
+<li>It can also be configured with a lazy init function to keep code clean.</li>
+</ul>
+<p>This reduces the amount of plumbing in many code files.</p>
+<p>It will detect if the provided object/service supports these features.
+So if it's used for anything that doesn't support logging it will just behave like <code>Lazy</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -190,7 +200,8 @@ public class LazySvc&lt;TService&gt; : IHasLog where TService : class</code></pr
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>sp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iserviceprovider">IServiceProvider</a></dt>
-    <dd></dd>
+    <dd><p>Service provider, in case we need to debug something</p>
+</dd>
   </dl>
 
 
@@ -200,6 +211,9 @@ public class LazySvc&lt;TService&gt; : IHasLog where TService : class</code></pr
 
 
 
+  <h4 class="section" id="ToSic_Lib_DI_LazySvc_1__ctor_System_IServiceProvider__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Constructor, should never be called as it's only meant to be used with Dependency Injection.</p>
+</div>
 
 
 
@@ -380,7 +394,7 @@ public class LazySvc&lt;TService&gt; : IHasLog where TService : class</code></pr
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Lib.Core/DI/LazySvc.cs/#L26" class="edit-link">Edit this page</a>
         </div>
 
 
