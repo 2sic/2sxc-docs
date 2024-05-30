@@ -116,6 +116,11 @@
 For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
 But for more sophisticated stuff we <strong>highly recommend</strong> VS Code.</p>
 </div>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>In 2024-05 the C# DevKit suddenly stopped working.
+We found a fix - pls update your <code>app.sln</code> to the newest sample below.</p>
+</div>
 <h2 id="prepare-vs-code-for-2sxc">Prepare VS Code for 2sxc</h2>
 <p>VSCode is amazing right out of the box, but to really be productive, you need to do a few things:</p>
 <ol>
@@ -155,8 +160,21 @@ EndProject
 # This is necessary so that VS Code can perform intellisense in Razor
 # It also requires a csproj file to exist as well
 # 
-# Read more on https://go.2sxc.org/vscode
+# Read more and get help for issues on https://go.2sxc.org/vscode
 #
+
+# Addition 2024-05
+# The following section is suddenly required by the C# DevKit
+# See https://github.com/microsoft/vscode-dotnettools/issues/1151
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
 </code></pre>
 <p><strong>Template for the <code>/app.csproj</code> file</strong></p>
 <pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk.Web&quot;&gt;

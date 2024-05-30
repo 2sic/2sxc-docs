@@ -67,8 +67,8 @@ also...
 
 ## Q2
 
-1. Shared Field Configurations (not yet "published")
-1. Export bundles
+1. ⌛ Shared Field Configurations (not yet "published")
+1. ⌛ Export bundles
 1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data
 

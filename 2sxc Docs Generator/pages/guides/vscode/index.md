@@ -12,6 +12,10 @@ This guide will help you get VS Code Setup as best as possible for 2sxc developm
 > For quick fixes and simple things, use the built-in editor, which is based on Monaco (VS Code Online).
 > But for more sophisticated stuff we **highly recommend** VS Code.
 
+> [!IMPORTANT]
+> In 2024-05 the C# DevKit suddenly stopped working.
+> We found a fix - pls update your `app.sln` to the newest sample below.
+
 ## Prepare VS Code for 2sxc
 
 VSCode is amazing right out of the box, but to really be productive, you need to do a few things:
@@ -54,8 +58,21 @@ EndProject
 # This is necessary so that VS Code can perform intellisense in Razor
 # It also requires a csproj file to exist as well
 # 
-# Read more on https://go.2sxc.org/vscode
+# Read more and get help for issues on https://go.2sxc.org/vscode
 #
+
+# Addition 2024-05
+# The following section is suddenly required by the C# DevKit
+# See https://github.com/microsoft/vscode-dotnettools/issues/1151
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
 ```
 
 **Template for the `/app.csproj` file**
