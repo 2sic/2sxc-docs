@@ -28,7 +28,7 @@ public class BasicController : ToSic.Sxc.Dnn.ApiController
 }
 ```
 
-This example from the [dnn web api tutorials](https://2sxc.org/dnn-tutorials/en/razor/webapi110/page) will:
+This example from the [dnn web api tutorials](xref:Tut.WebApi) will:
 
 ```cs
 using System.Web.Http;

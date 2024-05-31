@@ -66,7 +66,7 @@ export interface ConnectorData<T> {
 
 ## `connector.dialog` Object
 
-This is the API to open a new dialog or close it again. 
+This is the API to open a new dialog or close it again.
 
 ```ts
 /**
@@ -180,7 +180,7 @@ export interface FieldConfig {
 ## Read Also
 
 * [How To Create Custom Input Fields](xref:JsCode.CustomFields.Index)
-* [Tutorials for Custom Input Fields](https://2sxc.org/dnn-tutorials/en/razor/ui/home)
+* [Tutorials for Custom Input Fields](xref:Tut.CustomFields)
 
 
 ## History

@@ -14,11 +14,11 @@ uid: JsCode.Toolbars.Workflows
 * ... prevent certain actions/commands under certain conditions (like no edit if something on the page isn't as expected)
 * ... do a custom page / data refresh instead of the default
 
-This can be done using **Toolbar Workflows**. It's especially useful in SPA applications (think React, Angular and custom SPAs) which don't want a page reload. 
+This can be done using **Toolbar Workflows**. It's especially useful in SPA applications (think React, Angular and custom SPAs) which don't want a page reload.
 
 ## Demo
 
-👉 Here's a live demo with source of the [2sxc Toolbar Workflow](https://2sxc.org/dnn-tutorials/en/razor/ui130/page)
+👉 Here's a live demo with source of the [2sxc Toolbar Workflow](xref:Tut.Toolbar)
 
 ```razor
 <div id='tagWithToolbar1' @Edit.TagToolbar(
@@ -70,17 +70,17 @@ This can be done using **Toolbar Workflows**. It's especially useful in SPA appl
 
 ## How Toolbars Register the Workflows
 
-Each toolbar can have different workflows attached. 
+Each toolbar can have different workflows attached.
 The toolbars are generated on-the-fly and sometimes re-generated on partial reloading.
-So you must register your workflow-steps when the toolbar reports that it's ready. 
+So you must register your workflow-steps when the toolbar reports that it's ready.
 So this is the flow of logic:
 
 1. A toolbar is created - often on mouse-over
-1. It will fire a `toolbar-init` event contains a lot of internal information on the `event.details` and also a `workflow` object which is the **Workflow Manager** for this toolbar. 
+1. It will fire a `toolbar-init` event contains a lot of internal information on the `event.details` and also a `workflow` object which is the **Workflow Manager** for this toolbar.
 1. Your code will pick up the `event.details.workflow` and then
     1. `add(...)` a workflow step - see [Workflow Step Object](xref:JsCode.2sxcApi.Cms.CommandWorkflows)
-    1. probably call `event.stopPropagation()` or similar to prevent other event listeners from also adding stuff. 
-This is especially important if you have entities within entities, in which case there may be listeners for each toolbar at various DOM levels. 
+    1. probably call `event.stopPropagation()` or similar to prevent other event listeners from also adding stuff.
+This is especially important if you have entities within entities, in which case there may be listeners for each toolbar at various DOM levels.
 
 👉 Learn more about [Workflows](xref:JsCode.2sxcApi.Cms.CommandWorkflows)
 
@@ -89,7 +89,7 @@ This is especially important if you have entities within entities, in which case
 
 ## Angular Implementation
 
-In `dnn-sxc-angular` there is a directive for toolbars, which hides all this and just allows you to do a custom `refresh` as you need it. 
+In `dnn-sxc-angular` there is a directive for toolbars, which hides all this and just allows you to do a custom `refresh` as you need it.
 See [](xref:JsCode.Angular.DnnSxcAngular.Toolbars)
 
 ## React Implementation
@@ -101,7 +101,7 @@ As of now, there is no pre-built React implementation, but you can easily create
 
 You should find some code examples in this demo App
 
-* Demo of the [2sxc Toolbar Workflow](https://2sxc.org/dnn-tutorials/en/razor/ui130/page)
+* Demo of the [2sxc Toolbar Workflow](xref:Tut.Toolbar)
 
 ## History
 

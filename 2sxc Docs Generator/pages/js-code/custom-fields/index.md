@@ -24,7 +24,7 @@ If you're new here, best watch this video:
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/RQgarsil1Bo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Then check out the [tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home).
+Then check out the [tutorials](xref:Tut.CustomFields).
 
 ## What kind of Custom Input Field can you Create
 
@@ -36,7 +36,7 @@ You can create any kind of custom input field, as a JavaScript WebComponent.
 1. Talking to any endpoint (weather APIs)
 
 > [!TIP]
-> This overview will get you started, but we've already created demos on the [2sxc Tutorials](https://2sxc.org/dnn-tutorials/en/razor/ui/home). If you want to know more, you should also read the [specs](xref:Basics.Browser.EditForm.CustomFields)
+> This overview will get you started, but we've already created demos on the [2sxc Tutorials](xref:Tut.CustomFields). If you want to know more, you should also read the [specs](xref:Basics.Browser.EditForm.CustomFields)
 
 ## Getting Started with Custom Input Fields
 
@@ -104,7 +104,7 @@ The 2sxc form will initialize your custom element and attach a `connector` objec
 > Avoid calling `update(...)` if nothing changed - as it will make the form dirty, so the user will be asked if he wants to save when cancelling the dialog, even though nothing changed.
 
 > [!TIP]
-> Check out this [tutorial example of Pickr](https://2sxc.org/dnn-tutorials/en/razor/ui211/page) to see all this in action
+> Check out this [tutorial example of Pickr](xref:Tut.CustomFields) to see all this in action
 
 ## Load Custom CSS and JS Libraries
 
@@ -122,7 +122,7 @@ For JavaScript you can do the same, either using a `<script>` tag or telling the
 1. Then trigger your callback function
 
 > [!TIP]
-> Check out the [tutorial example of Pickr](https://2sxc.org/dnn-tutorials/en/razor/ui211/page) to see all this in action
+> Check out the [tutorial example of Pickr](xref:Tut.CustomFields) to see all this in action
 
 ## Make your Fields Configurable
 
@@ -157,7 +157,7 @@ Here's what you need to know
 
 To learn more, best look at the tutorials and the API
 
-* [Basic tutorial, just providing 4 standard buttons](https://2sxc.org/dnn-tutorials/en/razor/ui241/page)
-* [Advanced tutorial adding a custom button](https://2sxc.org/dnn-tutorials/en/razor/ui242/page)
+* [Basic tutorial, just providing 4 standard buttons](xref:Tut.CustomFields)
+* [Advanced tutorial adding a custom button](xref:Tut.CustomFields)
 * [WYSIWYG Reconfigure API](xref:JsCode.CustomFields.Wysiwyg)
 

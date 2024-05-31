@@ -105,7 +105,7 @@ These fields will never return a null. If there is no content, you'll just get a
 
 ## Read also
 
-* [Razor LINQ Tutorials](https://2sxc.org/dnn-tutorials/en/razor/linq/home)
+* [Razor LINQ Tutorials](xref:Tut.Linq.Home)
 
 ## History
 

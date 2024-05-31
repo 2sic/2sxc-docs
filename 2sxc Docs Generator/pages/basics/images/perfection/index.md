@@ -86,7 +86,7 @@ It will do all of this and more, and is super configurable. So to get the entire
 @Kit.Image.Picture(App.Path + "/img/assets/jellyfish-img-srcset-2000.jpg")
 ```
 
-🎓 See a live example in the [tutorials](https://2sxc.org/dnn-tutorials/en/razor/img106/page)
+🎓 See a live example in the [tutorials](xref:Tut.Img.Picture)
 
 All of it is fully automated.
 By default, you will get the core functionality such as automatic resize etc.

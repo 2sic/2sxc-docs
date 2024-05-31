@@ -7,17 +7,17 @@ uid: NetCode.Razor.CodeBehind
 > [!WARNING]
 > The code-behind feature has been deprecated but will continue to work for older code.
 > So it will only work if you inherit from `ToSic.Sxc.Dnn.RazorComponent`.
-> 
-> If you use any of the newer v12 or v14 base classes, 
-> you should either use [shared C#](https://2sxc.org/dnn-tutorials/en/razor/reuse310/page)
+>
+> If you use any of the newer v12 or v14 base classes,
+> you should either use [shared C#](xref:Tut.Razor.Reuse)
 > or partial views using `@Html.Partial("_something.cshtml")`.
 
 
-2sxc 11 introduces a new way to split out most of the C# code from the main template Razor file. We call this code-behind. Best watch the video to get the idea. 
+2sxc 11 introduces a new way to split out most of the C# code from the main template Razor file. We call this code-behind. Best watch the video to get the idea.
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/wIa23gy26js" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-You can also see a [live demo in the Dnn Tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse410/page). 
+You can also see a [live demo in the Dnn Tutorials](xref:Tut.Razor.Reuse).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -31,9 +31,9 @@ Just create another file with the identical name as your main Razor file, but wi
     Inherits `ToSic.Sxc.Dnn.RazorComponent`
 * `_My Message.code.cshtml` (the new code )  
     The _code_ file looks just like a normal razor file.  
-    Must inherit from `ToSic.Sxc.Dnn.RazorComponentCode`. 
+    Must inherit from `ToSic.Sxc.Dnn.RazorComponentCode`.
 
-Here's an example of such a `_My Message.code.cshtml`: 
+Here's an example of such a `_My Message.code.cshtml`:
 
 
 ```razor
@@ -54,7 +54,7 @@ Here's an example of such a `_My Message.code.cshtml`:
 }
 ```
 
-This is automatically compiled for you and provided to the `_My Message.cshtml` on the object `Code` so you can write this code: 
+This is automatically compiled for you and provided to the `_My Message.cshtml` on the object `Code` so you can write this code:
 
 
 ```razor
@@ -73,8 +73,8 @@ That's all there is to it 😉
 
 > [!TIP]
 > _Why would you do this?_  
-> The main reason is to keep template-html separate from most of the code. 
-> This is common when designers like to modify the html but don't like all that programming stuff. 
+> The main reason is to keep template-html separate from most of the code.
+> This is common when designers like to modify the html but don't like all that programming stuff.
 
 ## Events on Code Behind Files
 
@@ -90,8 +90,8 @@ The code-behind also has same methods/events which are automatically called. The
 > [!TIP]
 > _Why would you use this?_  
 > These methods could always be created in the main Razor file, but it looks daunting to have so much code there.
-> 
-> A typical `CustomizeSearch` is very technical and feels scary to people who just want to change the look and feel. 
+>
+> A typical `CustomizeSearch` is very technical and feels scary to people who just want to change the look and feel.
 
 
 

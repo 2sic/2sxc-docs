@@ -16,7 +16,7 @@ Razor templates can _include_ other razor files with more Razor code inside them
 This is a standard asp.net function to render another Razor file where you need it.
 You usually use it to make small component Razor files which might just show a button or something, and then call that file.
 
-You can find examples in the [tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse110/page)
+You can find examples in the [tutorials](xref:Tut.Razor.Reuse)
 
 ### Share a .cs File as Library v10+
 
@@ -41,7 +41,7 @@ To use it, you need something like:
 > The helper file should ideally inherit from `Custom.Hybrid.Code14` (or similar [base classes](xref:Custom.Hybrid)).
 > in which case it will have have the same full APIs incl. the `App` and `Content` object just like the main file.
 
-👉🏼 See [examples in the tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse320/page)
+👉🏼 See [examples in the tutorials](xref:Tut.Razor.Reuse)
 
 ### Reuse a Template Delegate Function generating HTML v5+
 
@@ -50,7 +50,7 @@ are a very old Razor feature, but they are quite hard to use.
 
 They are similar to `@helpers` but work in both Oqtane and DNN.
 
-👉🏼 See [tutorial example](https://2sxc.org/dnn-tutorials/en/razor/reuse101/page).
+👉🏼 See [tutorial example](xref:Tut.Razor.Reuse).
 
 
 
@@ -60,7 +60,7 @@ They are similar to `@helpers` but work in both Oqtane and DNN.
 
 Razor has a `@helper` syntax which allows you to create fragments and re-use them.
 
-👉🏼 Discover this in the [tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse/home).
+👉🏼 Discover this in the [tutorials](xref:Tut.Razor.Reuse).
 
 This will not work in Oqtane, as the newer Razor engines don't support this.
 
@@ -78,11 +78,19 @@ To use it, you need something like:
 
 ```razor
 @{
+  var helper = GetCode("_Helper.cshtml");
+}
+```
+
+...older Razor API:
+
+```razor
+@{
   var helper = CreateInstance("_Helper.cshtml");
 }
 ```
 
-👉🏼 See [examples in the tutorials](https://2sxc.org/dnn-tutorials/en/razor/reuse210/page)
+👉🏼 See [examples in the tutorials](xref:Tut.Razor.Reuse)
 
 ### Razor Code-Behind
 

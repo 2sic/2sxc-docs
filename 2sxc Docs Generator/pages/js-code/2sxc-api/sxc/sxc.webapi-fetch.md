@@ -54,7 +54,7 @@ var jsonPromise2 = webApi.fetchJson(webApi.url('blog/rss', { category: 17 }));
 ---
 ## Tutorial
 
-👉 We've updated the simple [web api tutorials](https://2sxc.org/dnn-tutorials/en/razor/webapi110/page) to demo this
+👉 We've updated the simple [web api tutorials](xref:Tut.WebApi) to demo this
 
 ---
 
