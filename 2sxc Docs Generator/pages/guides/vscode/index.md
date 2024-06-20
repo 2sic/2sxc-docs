@@ -80,6 +80,7 @@ EndGlobal
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode -->
+  <!-- Template v2024-06-19. If you have issues, try getting a newer copy from the url above -->
 
   <!-- Specify the default Namespace for C# code in this specific App -->
   <PropertyGroup>
@@ -136,10 +137,9 @@ EndGlobal
     <Reference Include="$(PathBin)\System.Web.Http.dll" />
     <Reference Include="$(PathBin)\System.Web.WebPages.dll" />
 
-    <Reference Include="$(PathBin)\System.Net.Http.dll" />
-
     <!-- System.Web is not in the DNN folder but in the .net Framework installed on the server -->
     <Reference Include="System.Web" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <!-- Polymorphism - if have files with the same classes confuse IntelliSense - see https://go.2sxc.org/vscode -->
@@ -308,5 +308,6 @@ TODO: this is not yet documented
 ## History
 
 * Added v16.07 2023-10
+* 2024-06-19 - Added more details about the `.csproj` file incl. date-version and correct DNN System.Net.Http reference
 
 Shortlink: <https://go.2sxc.org/vscode>
