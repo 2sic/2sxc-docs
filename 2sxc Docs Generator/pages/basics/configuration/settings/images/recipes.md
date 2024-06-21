@@ -137,6 +137,84 @@ This is how it's done:
 
 ---
 
+## Recipe in _Content_ for 2sxc v14-v18
+
+This is just for your info, in case you want to create your own based on this.
+
+```json
+{
+  "recipe": {
+    "name": "default",
+    "variants": "2*, 1*, 3/4*, 1/2*",
+    "setWidth": false,
+    "attributes": {
+      "loading": "lazy"
+    },
+    "recipes": [
+      {
+        "name": "Bootstrap3",
+        "forCss": "bs3",
+        "attributes": { "class": "img-responsive" },
+        "setWidth": false
+      },
+      {
+        "name": "Bootstrap4",
+        "forCss": "bs4",
+        "attributes": { "class": "img-fluid" },
+        "setWidth": true
+      },
+      {
+        "name": "Bootstrap5",
+        "forCss": "bs5",
+        "attributes": { "class": "img-fluid" },
+        "setWidth": true,
+        "setHeight" : true,
+        "recipes": [
+          { 
+            "forFactor": "12/12", 
+            "width": 1230,
+            "attributes":{
+              "sizes": "(max-width: 1400px) 100vw, 1230px"
+            }
+          },
+          { "forFactor": "11/12", "width": 1100 },
+          { "forFactor": "10/12", "width": 1000 },
+          { "forFactor": "9/12", "width": 900 },
+          { "forFactor": "8/12", "width": 800 },
+          { "forFactor": "7/12", "width": 700 },
+          { 
+            "forFactor": "6/12", 
+            "width": 600, 
+            "attributes": {
+              "sizes": "(max-width: 1400px) 50vw, (max-width: 576px) 100vw, 600px" 
+              }
+          },
+          { "forFactor": "5/12", "width": 500 },
+          { 
+            "forFactor": "4/12", 
+            "width": 390,
+            "attributes":{
+              "sizes": "(max-width: 1400px) 34vw, (max-width: 991px) 50vw, (max-width: 575px) 100vw, 390px"
+            }
+           },
+          { 
+            "forFactor": "3/12", 
+            "width": 285,
+            "attributes": {
+              "sizes": "(max-width: 1400px) 25vw, (max-width: 991px) 50vw, (max-width: 575px) 100vw, 285px"
+              }
+          },
+          { "forFactor": "2/12", "width": 170 },
+          { "forFactor": "1/12", "width":  75 }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
+
 ## History
 
 * Advanced Json configuration with Recipe added in v13.05, to be released v13.10
