@@ -8,9 +8,9 @@ uid: Abyss.Platforms.Oqtane.Index
 
 # Oqtane Platform
 
-[Oqtane](https://oqtane.org/) is a modern [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) based platform similar to Dnn. It's inspired by the Dnn model but uses the latest .net core and more. 
+[Oqtane](https://oqtane.org/) is a modern [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) based platform similar to Dnn. It's inspired by the Dnn model but uses the latest .net core and more.
 
-👉 As of May 2021 2sxc works great on Oqtane as well. 
+👉 As of May 2021 2sxc works great on Oqtane as well.
 
 ## Install Oqtane and 2sxc
 
@@ -29,7 +29,7 @@ uid: Abyss.Platforms.Oqtane.Index
 
 #### Global Content Files
 
-ADAM works and images uploaded will automatically work. But as of now, you cannot have shared files in a global folder structure for re-use in many places yet. You can of course re-use an entity with files, but not place a file in a global (like Portals) folder for use. 
+ADAM works and images uploaded will automatically work. But as of now, you cannot have shared files in a global folder structure for re-use in many places yet. You can of course re-use an entity with files, but not place a file in a global (like Portals) folder for use.
 
 
 #### Image Resizer won't work on Global Content Files

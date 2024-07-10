@@ -6,17 +6,17 @@ uid: Abyss.Platforms.Oqtane.Install.IssueHotReload
 
 # Problems Installing Apps with Hot Reload Enabled
 
-When using Oqtane in **developer mode** there is a feature called **Hot Reload** which restarts Oqtane when files change. 
+When using Oqtane in **developer mode** there is a feature called **Hot Reload** which restarts Oqtane when files change.
 
 > [!WARNING]
 > Installing Content-Templates and Apps with **Hot Reload** enabled causes problems.
 >
-> This is because the server will restart a few times during installation of the ZIP. 
+> This is because the server will restart a few times during installation of the ZIP.
 
-Because of this you can only install Apps and Content-Templates if **Hot Reload is disabled**. 
+Because of this you can only install Apps and Content-Templates if **Hot Reload is disabled**.
 
 > [!TIP]
-> After installation you can re-enable Hot-Reload as you see fit. 
+> After installation you can re-enable Hot-Reload as you see fit.
 
 ## Checklist to Disable Hot Reload Temporarily
 
@@ -28,8 +28,8 @@ Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled b
 
 * `Microsoft.AspNetCore.Watch.BrowserRefresh.dll`
 
-If you believe that we are checking this incorrectly, please open an issue on Github. 
+If you believe that we are checking this incorrectly, please open an issue on Github.
 
 ---
 
-Shortlink to here: https://go.2sxc.org/oqt-hr
+Shortlink to here: <https://go.2sxc.org/oqt-hr>

@@ -176,19 +176,19 @@ public interface ITypedItem : ITyped, IEquatable&lt;ITypedItem&gt;</code></pre>
       <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_ContainsKey_System_String_">ITyped.ContainsKey(string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_IsEmpty_System_String_ToSic_Lib_Coding_NoParamOrder_">ITyped.IsEmpty(string, NoParamOrder)</a>
+      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_IsEmpty_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_">ITyped.IsEmpty(string, NoParamOrder, string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_IsNotEmpty_System_String_ToSic_Lib_Coding_NoParamOrder_">ITyped.IsNotEmpty(string, NoParamOrder)</a>
+      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_IsNotEmpty_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_">ITyped.IsNotEmpty(string, NoParamOrder, string)</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_Keys_ToSic_Lib_Coding_NoParamOrder_System_Collections_Generic_IEnumerable_System_String__">ITyped.Keys(NoParamOrder, IEnumerable&lt;string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_Get_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__">ITyped.Get(string, NoParamOrder, bool?)</a>
+      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_Get_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_String_">ITyped.Get(string, NoParamOrder, bool?, string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_Get__1_System_String_ToSic_Lib_Coding_NoParamOrder___0_System_Nullable_System_Boolean__">ITyped.Get&lt;TValue&gt;(string, NoParamOrder, TValue, bool?)</a>
+      <a class="xref" href="ToSic.Sxc.Data.ITyped.html#ToSic_Sxc_Data_ITyped_Get__1_System_String_ToSic_Lib_Coding_NoParamOrder___0_System_Nullable_System_Boolean__System_String_">ITyped.Get&lt;TValue&gt;(string, NoParamOrder, TValue, bool?, string)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals">IEquatable&lt;ITypedItem&gt;.Equals(ITypedItem)</a>
@@ -221,7 +221,9 @@ This is <em>often</em> (but not always) a <a class="xref" href="ToSic.Sxc.Data.I
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic Dyn { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;This should be avoided&quot;)]
+[JsonIgnore]
+dynamic Dyn { get; }</code></pre>
   </div>
 
 
@@ -388,7 +390,7 @@ This means that the item can exist as published, or published-with-draft, showin
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Metadata" data-uid="ToSic.Sxc.Data.ITypedItem.Metadata">
   Metadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Metadata of the current item, with special features.</p>
@@ -396,7 +398,8 @@ This means that the item can exist as published, or published-with-draft, showin
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IMetadata Metadata { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+IMetadata Metadata { get; }</code></pre>
   </div>
 
 
@@ -423,7 +426,7 @@ This means that the item can exist as published, or published-with-draft, showin
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Presentation" data-uid="ToSic.Sxc.Data.ITypedItem.Presentation">
   Presentation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The presentation item or <code>null</code> if it doesn't exist.</p>
@@ -431,7 +434,8 @@ This means that the item can exist as published, or published-with-draft, showin
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ITypedItem Presentation { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+ITypedItem Presentation { get; }</code></pre>
   </div>
 
 
@@ -771,7 +775,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
 
   <h3 id="ToSic_Sxc_Data_ITypedItem_Field_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Data.ITypedItem.Field(System.String,ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean})">
   Field(string, NoParamOrder, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/TypedInterfaces/ITypedItem.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a special info-object describing a specific field in this item.

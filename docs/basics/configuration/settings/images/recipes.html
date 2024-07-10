@@ -345,6 +345,79 @@ Child node attributes will replace parent node attributes.
 To reset an attribute which the parent had set already, use <code>null</code> on the child node.</p>
 </div>
 <hr>
+<h2 id="recipe-in-content-for-2sxc-v14-v18">Recipe in <em>Content</em> for 2sxc v14-v18</h2>
+<p>This is just for your info, in case you want to create your own based on this.</p>
+<pre><code class="lang-json">{
+  &quot;recipe&quot;: {
+    &quot;name&quot;: &quot;default&quot;,
+    &quot;variants&quot;: &quot;2*, 1*, 3/4*, 1/2*&quot;,
+    &quot;setWidth&quot;: false,
+    &quot;attributes&quot;: {
+      &quot;loading&quot;: &quot;lazy&quot;
+    },
+    &quot;recipes&quot;: [
+      {
+        &quot;name&quot;: &quot;Bootstrap3&quot;,
+        &quot;forCss&quot;: &quot;bs3&quot;,
+        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-responsive&quot; },
+        &quot;setWidth&quot;: false
+      },
+      {
+        &quot;name&quot;: &quot;Bootstrap4&quot;,
+        &quot;forCss&quot;: &quot;bs4&quot;,
+        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },
+        &quot;setWidth&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;Bootstrap5&quot;,
+        &quot;forCss&quot;: &quot;bs5&quot;,
+        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },
+        &quot;setWidth&quot;: true,
+        &quot;setHeight&quot; : true,
+        &quot;recipes&quot;: [
+          { 
+            &quot;forFactor&quot;: &quot;12/12&quot;, 
+            &quot;width&quot;: 1230,
+            &quot;attributes&quot;:{
+              &quot;sizes&quot;: &quot;(max-width: 1400px) 100vw, 1230px&quot;
+            }
+          },
+          { &quot;forFactor&quot;: &quot;11/12&quot;, &quot;width&quot;: 1100 },
+          { &quot;forFactor&quot;: &quot;10/12&quot;, &quot;width&quot;: 1000 },
+          { &quot;forFactor&quot;: &quot;9/12&quot;, &quot;width&quot;: 900 },
+          { &quot;forFactor&quot;: &quot;8/12&quot;, &quot;width&quot;: 800 },
+          { &quot;forFactor&quot;: &quot;7/12&quot;, &quot;width&quot;: 700 },
+          { 
+            &quot;forFactor&quot;: &quot;6/12&quot;, 
+            &quot;width&quot;: 600, 
+            &quot;attributes&quot;: {
+              &quot;sizes&quot;: &quot;(max-width: 1400px) 50vw, (max-width: 576px) 100vw, 600px&quot; 
+              }
+          },
+          { &quot;forFactor&quot;: &quot;5/12&quot;, &quot;width&quot;: 500 },
+          { 
+            &quot;forFactor&quot;: &quot;4/12&quot;, 
+            &quot;width&quot;: 390,
+            &quot;attributes&quot;:{
+              &quot;sizes&quot;: &quot;(max-width: 1400px) 34vw, (max-width: 991px) 50vw, (max-width: 575px) 100vw, 390px&quot;
+            }
+           },
+          { 
+            &quot;forFactor&quot;: &quot;3/12&quot;, 
+            &quot;width&quot;: 285,
+            &quot;attributes&quot;: {
+              &quot;sizes&quot;: &quot;(max-width: 1400px) 25vw, (max-width: 991px) 50vw, (max-width: 575px) 100vw, 285px&quot;
+              }
+          },
+          { &quot;forFactor&quot;: &quot;2/12&quot;, &quot;width&quot;: 170 },
+          { &quot;forFactor&quot;: &quot;1/12&quot;, &quot;width&quot;:  75 }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Advanced Json configuration with Recipe added in v13.05, to be released v13.10</li>

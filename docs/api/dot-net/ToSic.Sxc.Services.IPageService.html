@@ -896,9 +896,9 @@ or <em>prefix</em> it to the existing keywords  (unless <code>[original]</code> 
 
   <a id="ToSic_Sxc_Services_IPageService_TurnOn_" data-uid="ToSic.Sxc.Services.IPageService.TurnOn*"></a>
 
-  <h3 id="ToSic_Sxc_Services_IPageService_TurnOn_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Boolean_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Services.IPageService.TurnOn(System.Object,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.Boolean,System.Nullable{System.Boolean})">
-  TurnOn(object, NoParamOrder, object, object, bool, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/PageService/IPageService_TurnOn.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_IPageService_TurnOn_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Collections_Generic_IEnumerable_System_Object__System_Boolean_System_Nullable_System_Boolean__System_String_" data-uid="ToSic.Sxc.Services.IPageService.TurnOn(System.Object,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.Collections.Generic.IEnumerable{System.Object},System.Boolean,System.Nullable{System.Boolean},System.String)">
+  TurnOn(object, NoParamOrder, object, object, IEnumerable&lt;object&gt;, bool, bool?, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/PageService/IPageService_TurnOn.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Turn on some javascript code when all requirements have been met.
@@ -908,7 +908,7 @@ Uses <a class="xref" href="../../js-code/turn-on/index.html">turnOn</a>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string TurnOn(object runOrSpecs, NoParamOrder noParamOrder = default, object require = null, object data = null, bool condition = true, bool? noDuplicates = null)</code></pre>
+    <pre><code class="lang-csharp hljs">string TurnOn(object runOrSpecs, NoParamOrder noParamOrder = default, object require = null, object data = null, IEnumerable&lt;object&gt; args = null, bool condition = true, bool? noDuplicates = null, string addContext = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -916,7 +916,7 @@ Uses <a class="xref" href="../../js-code/turn-on/index.html">turnOn</a>.</p>
     <dt><code>runOrSpecs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd><ul>
 <li>either a run <code>string</code> like <code>window.myObject.myJs()</code> (must always start with window)</li>
-<li>or a object containing all the parameters which turnOn requires</li>
+<li>or an object containing all the parameters which turnOn requires</li>
 </ul>
 </dd>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
@@ -927,17 +927,25 @@ Uses <a class="xref" href="../../js-code/turn-on/index.html">turnOn</a>.</p>
 Can be one or many values and/or functions.</p>
 <ul>
 <li>a <code>string</code> such as <code>window.myObject</code> or <code>window.myObject.readyToStart()</code></li>
-<li>a array of such strings</li>
+<li>an array of such strings</li>
 </ul>
 </dd>
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd><p><em>optional</em> any value such as a string, or an object - to pass into the run-command</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">dynamic</a>&gt;</dt>
+    <dd><p><em>optional</em> array of values to pass to the run function (new v18.00)</p>
 </dd>
     <dt><code>condition</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p><em>optional</em> condition when this should happen - if false, it won't add anything (new v16.02)</p>
 </dd>
     <dt><code>noDuplicates</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>Will not add this turnOn if an identical one is already added to the page (new 16.05)</p>
+</dd>
+    <dt><code>addContext</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><em>optional</em> when <code>args</code> is used, the context is usually not needed or given.
+If you do need it, it can be merged with data (if that's also provided and is an object - so use <code>data</code>) or added to the end of the args list <code>end</code>.
+(new v18.00)</p>
 </dd>
   </dl>
 
@@ -954,11 +962,12 @@ Can be one or many values and/or functions.</p>
 
 
 
-  <h4 class="section" id="ToSic_Sxc_Services_IPageService_TurnOn_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Boolean_System_Nullable_System_Boolean___remarks">Remarks</h4>
+  <h4 class="section" id="ToSic_Sxc_Services_IPageService_TurnOn_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Collections_Generic_IEnumerable_System_Object__System_Boolean_System_Nullable_System_Boolean__System_String__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>Added in v15.x</li>
 <li><code>condition</code> added in 16.02</li>
 <li><code>noDuplicates</code> added in 16.05</li>
+<li><code>args</code> and <code>addContext</code> added in v18.0</li>
 </ul>
 </div>
 
