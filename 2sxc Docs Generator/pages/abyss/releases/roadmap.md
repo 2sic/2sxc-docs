@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-05-06**
+Last Update: **2024-07-12**
 
 ## May 4th and the following days - Release Spree
 
@@ -35,11 +35,20 @@ published/blogged:
 1. ✅ Switch Edition Permissions for non-super users
 1. ✅ Update Image Resizer
 
+## 2024-07-12 Released v18.00
+
+1. ✅ `ITemplateService` with `MergeSources(...)`
+1. ✅ Oqtane 5.1 or 5.2 SSR Release
+
+There's a lot more! I don't have time to describe it yet, but here's the short list
+
+<https://github.com/2sic/2sxc/releases/tag/v18.00.00>
+
+
 ...and more.
 
 ## 2024 Q2 Finish DoD / Almost-Done Work
 
-1. ✅ `ITemplateService` with `MergeSources(...)`
 1. ✅ `ICacheService` on `Kit.Cache`
 1. ⌛ Dnn Force use of Roslyn
 1. ⌛ Include Dlls on Compile for Dnn/Oqtane
@@ -56,7 +65,6 @@ published/blogged:
         1. ✅/🔳 ToSic.Eav.DataSources
         1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-1. ⌛ Oqtane 5.1 or 5.2 SSR Release
 1. Re-Release another LTS ca. 17.10
 
 also...
