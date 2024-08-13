@@ -11,7 +11,7 @@ uid: JsCode.EditForm.Formulas.TargetsReturn
   .context-box-summary .browser-edit-ui { visibility: visible; }
 </style>
 
-These are additional infos so you understand the behavior better.
+These are additional infos about **Formula Targets** and cases where they need a special result, so you understand the behavior better.
 
 ## The Target
 
@@ -51,7 +51,7 @@ So if you are updating a boolean field, you should return a boolean value.
 ## Formulas for Common Settings
 
 
-#### `Field.Settings.Name` - Label of a Field
+### `Field.Settings.Name` - Label of a Field
 
 This can be changed as needed.
 We recommend that you never add `*` to the name, as this is the indicator for _required_ and would confuse users.
@@ -61,7 +61,7 @@ On field groups we often use this to add emojis such as ✅ or ❌ to indicate i
 Expected type: `string`
 
 
-#### `Field.Settings.Visible` - Show/Hide a Field
+### `Field.Settings.Visible` - Show/Hide a Field
 
 Shows/hides a field or a group of fields.
 When you set this on a group, it applies to all properties in the group.
@@ -70,7 +70,7 @@ So hiding a group hides all fields inside it, showing it shows all fields inside
 Expected type: `boolean`
 
 
-#### `Field.Settings.Disabled` - Enable/Disable a Field
+### `Field.Settings.Disabled` - Enable/Disable a Field
 
 If you return `true` to set `Disabled=true` it will disable the UI. Of course if the field is already not visible, the user won't see this.
 
@@ -82,7 +82,7 @@ If you return `true` to set `Disabled=true` it will disable the UI. Of course if
 
 Expected type: `boolean`
 
-#### `Field.Settings.Required` - Mark Field as Required
+### `Field.Settings.Required` - Mark Field as Required
 
 This determines if the Field is required.
 
@@ -95,7 +95,7 @@ Expected type: `boolean`
 
 ## Formulas for Special Settings
 
-#### `Field.Settings.Collapsed` - for Groups
+### `Field.Settings.Collapsed` - for Groups
 
 This is a setting which only would affect group fields.
 Setting `Collapsed` to `true` collapses the group, to `false` opens it.
@@ -106,10 +106,10 @@ Setting `Collapsed` to `true` collapses the group, to `false` opens it.
 Expected type: `boolean`
 
 
-#### `Field.Settings.DropdownValues` - for DropDowns
+### `Field.Settings.DropdownValues` - for DropDowns
 
 
-#### `Field.Settings.`_[Anything]_
+### `Field.Settings.`_[Anything]_
 
 Since many controls can have other settings these can be controlled by formulas as well.
 
@@ -119,7 +119,7 @@ We'll work on fixing issues as we hear about them.
 
 ## Formulas for Validation
 
-#### `Field.Validation` - Show Errors/Warnings
+### `Field.Validation` - Show Errors/Warnings
 
 This is a special kind of formula as it only affects the hints below the input field.
 Best check out the tutorials to see it in action.
