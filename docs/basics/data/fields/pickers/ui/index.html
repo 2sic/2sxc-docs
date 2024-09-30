@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Ephemeral / Temporary Fields for Variables | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Picker UI Controls (new v18) | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Ephemeral / Temporary Fields for Variables | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Picker UI Controls (new v18) | 2sxc 18 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/ephemeral.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/pickers/ui/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -36,7 +36,7 @@
       
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -55,8 +55,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,52 +105,43 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Basics.Data.Fields.Ephemeral">
-<h1 id="ephemeral--temporary-fields-for-variables">Ephemeral / Temporary Fields for Variables</h1>
+        <article data-uid="Basics.Data.Fields.Pickers.Ui.Index">
+<h1 id="picker-ui-controls-new-v18">Picker UI Controls (new v18)</h1>
 
-<div class="overlay-container">
-  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 47.5%"></div>
-  <img src="../../../pages/basics/data/assets/app-data.png" class="full-width">
-</div>
-
-<p>This explains <strong>Ephemeral aka Temporary Variable Fields</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
-<div class="NOTE">
-<h5>Note</h5>
-<p>In v14 we added <code>data.parameters.*</code> to the <a class="xref" href="../../edit/formulas/index.html">Formulas</a>.
-It contains all parameters given in the prefill.</p>
-<p>Since ephemeral fields are mainly used in <a class="xref" href="../../edit/formulas/index.html">Formulas</a>,
-you may not need to ephemeral fields for your scenario.</p>
-<p>The main reason to still use ephemeral fields over <code>parameters</code> is when you do additional initialization logic
-which would be used in many Formulas in the form.</p>
-</div>
-<hr>
-<p>Sometimes you need fields which control the Form UI without being real data. Some examples:</p>
+<p>The UI is what the user sees and interacts with.
+This can be a dropdown, radio buttons, checkboxes, etc.</p>
+<p>Some UIs also allow reordering what was selected, while others do not.</p>
+<p>As of now we have the following UIs:</p>
 <ol>
-<li>Toggles which show/hide other fields or field groups</li>
-<li>Hidden calculations which will consolidate other field values to determine if something else is required</li>
+<li><code>list</code> - a list of options, where one or more can be selected, optionally with dialog to re-order the selected items</li>
+<li><code>radio</code> - a list of radio buttons, where one can be selected</li>
+<li><code>checkbox</code> - a list of checkboxes, where one or more can be selected</li>
+<li><code>auto-inline</code> - automatic selection of the best UI, based on the number of options which can be selected (radio, checkbox)</li>
+<li><code>table</code> - a table of options, where one or more can be selected, optionally with dialog to re-order the selected items</li>
+<li><code>dropdown</code> (WIP/BETA) - a dropdown with a list of options, where one can be selected</li>
+<li><code>tree</code> (WIP/BETA) - a tree of options, where one or more can be selected</li>
 </ol>
-<p>We don't want to save these fields as the data is not relevant, and often the value should be calculated upon opening the form - so it's important that they are reset.</p>
-<blockquote>
-<p>These kinds of fields are <em>ephemeral</em> = temporary</p>
-</blockquote>
-<p>To configure a field to <em>not save</em> and be temporary / ephemeral, use this setting:</p>
-<img src="../../../pages/basics/data/fields/assets/ephemeral.jpg">
-<div class="TIP">
-<h5>Tip</h5>
-<p>Since these fields are usually used as variables, we recommend that you name the <code>Var...</code>.
-Example: <code>VarShowAdvanced</code>.</p>
-</div>
+<h2 id="picker-ui-preview">Picker UI Preview</h2>
+<p>Most of the UIs will show a label as a preview, but there are more advanced cases such as:</p>
+<ol>
+<li><strong>Icons</strong></li>
+<li><strong>Colors</strong></li>
+<li><strong>Images</strong></li>
+<li><strong>Fonts</strong></li>
+</ol>
+<p>This is still WIP</p>
+<hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in 2sxc 12.01</li>
-<li>Added <code>data.parameters</code> in v14</li>
+<li>Initial Dropdowns (for string) added ca. 2sxc 2.0</li>
+<li>Architecture change to generic pickers started in 2sxc 16</li>
+<li>Regarded as Beta in 2sxc 18.01, but already used in production</li>
 </ol>
-<p>Shortlink to here: <a href="https://go.2sxc.org/ephemeral">https://go.2sxc.org/ephemeral</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/ephemeral.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/fields/pickers/ui/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
