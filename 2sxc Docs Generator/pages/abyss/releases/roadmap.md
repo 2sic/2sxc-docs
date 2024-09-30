@@ -11,43 +11,25 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-07-12**
+Last Update: **2024-09-30**
 
-## May 4th and the following days - Release Spree
+## v18.02
 
-published/blogged:
-
-1. ✅/✅ 2sxc 17.07
-1. ✅/✅ 2shine 5.3 (May 4th)
-1. ✅/✅ Content App 17.07 (May 6th)
-1. ✅/✅ Mobius Form Builder 06.00 for 2sxc 17.07 (May 7th)
-1. ✅/✅ Release all apps as typed (May 8th)
-
-
-## 2024-05-16 Released 17.08
-
-1. ✅ WebApi in AppCode
-1. ✅ DataSources in AppCode
-1. ✅ `ITemplateService`
-1. ✅ Add `CmsContext.Block` and `CmsContext.Module.Block` as well as `Block.Guid`
-1. ✅ Cache Service internal
-1. ✅ Switch Edition UI
-1. ✅ Switch Edition Permissions for non-super users
-1. ✅ Update Image Resizer
-
-## 2024-07-12 Released v18.00
-
-1. ✅ `ITemplateService` with `MergeSources(...)`
-1. ✅ Oqtane 5.1 or 5.2 SSR Release
-
-There's a lot more! I don't have time to describe it yet, but here's the short list
-
-<https://github.com/2sic/2sxc/releases/tag/v18.00.00>
+1. ✅ Shared Field Configurations (not yet "published")
+1. ✅ Pickers stable
+    1. ✅ Picker Source CSV
+    1. ✅ Picker Source Custom List
+    1. ✅ Picker Source Entity
+    1. ✅ Picker Source Query
+    1. ⌛ Picker Source CSS (WIP)
+1. ⌛ Rework the UI **Picker** aka DropDown system
+    1. Picker for numbers
+    1. Picker for CSS-Font Icons
+    1. Picker for SVG Icons
+    1. Picker for Images
 
 
-...and more.
-
-## 2024 Q2 Finish DoD / Almost-Done Work
+## 2024 Q3 Finish DoD / Almost-Done Work
 
 1. ✅ `ICacheService` on `Kit.Cache`
 1. ⌛ Dnn Force use of Roslyn
@@ -65,7 +47,6 @@ There's a lot more! I don't have time to describe it yet, but here's the short l
         1. ✅/🔳 ToSic.Eav.DataSources
         1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-1. Re-Release another LTS ca. 17.10
 
 also...
 
@@ -75,7 +56,6 @@ also...
 
 ## Q2
 
-1. ⌛ Shared Field Configurations (not yet "published")
 1. ⌛ Export bundles
 1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data
@@ -87,10 +67,7 @@ also...
     1. tree
     1. multi-select
     1. maybe checkboxes
-1. ⌛ Rework the UI **Picker** aka DropDown system
-    1. ⌛ to have titles, help, notes, links, and more @SDV
-    1. to also have various data sources
-    1. dropdown for numbers etc.
+    1. Radio buttons (string, entity-picker)
 1. Improve Oqtane Pages DS to also respect all known settings - @STV
 1. Finalize Deprecation system @2dm
 1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV

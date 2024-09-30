@@ -14,3 +14,7 @@
 [!include["Changes"](./_changes17.05.md)]
 
 [!include["Changes"](./_changes17.06.md)]
+
+[!include["Changes"](./_changes17.07.md)]
+
+[!include["Changes"](./_changes17.08.md)]

@@ -7,11 +7,9 @@ We're documenting it here to ensure you know what happened, in case you still ru
 
 ### Summary
 
-TODO:
+Minor breaking changes which probably won't affect you, unless you're using some very advanced features.
 
 #### v17.00
-
-TODO:
 
 1. `ToSic.Eav.App.AppData` is renamed to `ToSic.Eav.Apps.DataSources.AppDataWithCrud`
 1. In Typed mode, the `App.Data` now has a different interface `ToSic.Sxc.Apps.IAppDataTyped`
