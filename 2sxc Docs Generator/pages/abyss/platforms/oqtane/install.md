@@ -26,7 +26,7 @@ we created on installing Oqtane and 2sxc.
 
 | Oqtane V.     | Best    | Compatible          | Incompatible            | Comments
 | ---           | -----   | ------------------- | -------------           | ---
-| 5.1.2         | 18.00   | ✅ 18.00 *          | ⛔ pre 18.00            | Some Render modes supported - see [limitation](xref:Abyss.Platforms.Oqtane.Install.IssueRender050102)
+| 5.1.2+        | 18.01   | ✅ 18.00 *          | ⛔ pre 18.00            | Some Render modes supported - see [limitation](xref:Abyss.Platforms.Oqtane.Install.IssueRender050102)
 | **5.0+**      | 17.06+  | ✅ 16.09+           | ⛔ pre 16.09            | .net 8 differences in System.Text.Json
 | 4.0+          | 16.09   | ✅ 16.02 - 16.09    | ⛔ pre 16.02            | .net Framework and EF 7
 | 3.4+          | unknown | ✅ 15.06+           | ⛔ pre 15.06            | Undo breaking changes in Permissions
