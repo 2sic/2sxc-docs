@@ -48,7 +48,7 @@ We've removed some of the code here for simplicity, but the important parts are
 1. Add `<base>` header to the page for Angular Routing to work properly
 1. `LoadFromNgServe` will load the standard Angular files from `localhost:4200`
 
-To see the full source code, get the [](xref:App.Angular11) or browse it here [](xref:App.Angular11.Git)
+To see the full source code, get the [](xref:App.AngularTemplate) or browse it here [](xref:App.AngularTemplate.Git)
 
 ---
 

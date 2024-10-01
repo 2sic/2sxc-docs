@@ -9,9 +9,9 @@ uid: JsCode.Angular.TemplateApp
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
-To quickly get started we've created the [](xref:App.Angular11). It demonstrates how to...
+To quickly get started we've created the [](xref:App.AngularTemplate). It demonstrates how to...
 
-1. Integrate Angular in Dnn 
+1. Integrate Angular in Dnn
     1. to [run perfectly](xref:JsCode.Angular.IntegrateAngularRuntime) while using Dnn and 2sxc WebAPI endpoints
     1. during [development with hot-reloading](xref:JsCode.Angular.IntegrateAngularDevelopment) so you can see the real solution in Dnn while working
 1. Integrate Dnn into Angular
@@ -27,8 +27,8 @@ To quickly get started we've created the [](xref:App.Angular11). It demonstrates
 
 ## Next Steps
 
-1. Install and try the [](xref:App.Angular11)
-1. Maybe browse the code here [](xref:App.Angular11.Git)
+1. Install and try the [](xref:App.AngularTemplate)
+1. Maybe browse the code here [](xref:App.AngularTemplate.Git)
 1. Learn about the [runtime integration](xref:JsCode.Angular.IntegrateAngularRuntime) or the [development integration](xref:JsCode.Angular.IntegrateAngularDevelopment)
 
 ---
@@ -39,3 +39,5 @@ To quickly get started we've created the [](xref:App.Angular11). It demonstrates
 1. Enhanced for [Angular 6](https://github.com/2sic/app-template-angular) in 2019
 1. Enhanced for Angular 8 in 2020
 1. Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021
+1. Enhanced for Angular 14 and toolbars in 2022
+1. Updated to Angular 18 in 2024-10-01

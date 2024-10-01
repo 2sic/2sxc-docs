@@ -46,7 +46,7 @@ We've removed some of the code here for simplicity, but the important parts are
 1. Add `<base>` header to the page for Angular Routing to work properly
 1. `ImportAngularHtml` which will scan the `index.html` which Angular creates, extract all the important parts and add them to the page
 
-Note that there is a bit more magic happening to ensure we can run multiple editions (`live`, `staging`, ...). To see the full source code, get the [](xref:App.Angular11) or browse it here [](xref:App.Angular11.Git)
+Note that there is a bit more magic happening to ensure we can run multiple editions (`live`, `staging`, ...). To see the full source code, get the [](xref:App.AngularTemplate) or browse it here [](xref:App.AngularTemplate.Git)
 
 
 ---
