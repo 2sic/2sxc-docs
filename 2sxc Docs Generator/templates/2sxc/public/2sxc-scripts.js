@@ -33,7 +33,8 @@ function attachFancybox() {
     if(pcls) {
       var clsList = pcls.split(' ');
       var contextCls = clsList.find(c => c.startsWith('context'));
-      if(contextCls) $(e).addClass(contextCls);
+      if (contextCls)
+        $(e).addClass(contextCls);
     }
   });
   // attach click

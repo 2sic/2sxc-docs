@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Content-Type Composition and Inheritance (new v18.02) | 2sxc 18 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Content-Type Composition and Inheritance (new v18.02) | 2sxc 18 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/content-type-composition/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Basics.Data.ContentTypeComposition.Index">
+<h1 id="content-type-composition-and-inheritance-new-v1802">Content-Type Composition and Inheritance (new v18.02)</h1>
+
+<div class="overlay-container">
+  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 47.5%"></div>
+  <img src="../../../pages/basics/data/assets/app-data.png" class="full-width">
+</div>
+
+<p>This explains <strong>Content-Type Composition and Inheritance</strong>.
+For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<h2 id="what-is-content-type-composition">What is Content-Type Composition?</h2>
+<p>Content-Type Composition is the ability to create a new Content-Type by combining fields from existing Content-Types.
+This is a powerful feature which allows you to create new Content-Types by reusing existing fields.</p>
+<p>Here's a simple example:</p>
+<ol>
+<li>You have a <code>Person</code> Content-Type with fields like <code>Name</code>, <code>Email</code>, <code>Phone</code>, <code>Salutation</code></li>
+<li>You have a <code>Company</code> Content-Type with fields like <code>Name</code>, <code>Address</code>, <code>Phone</code></li>
+<li>You want to create a <code>Contact</code> Content-Type with fields like <code>Name</code>, <code>Email</code>, <code>Phone</code>, <code>Address</code>, <code>Salutation</code>, <code>Relationship</code></li>
+</ol>
+<p>With Content-Type Composition, you can create a new <code>Contact</code> Content-Type by combining fields from <code>Person</code> and <code>Company</code>.
+This is what you <em>could</em> do:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Person</th>
+<th>Company</th>
+<th>Contact</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>🔊 Master</td>
+<td>🚫 Own Field</td>
+<td>🔗 Inherit</td>
+<td>Company name has different description etc. so it does not inherit</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>🔊 Master</td>
+<td></td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Address</td>
+<td></td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Salutation</td>
+<td>🔊 Master</td>
+<td></td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Relationship</td>
+<td></td>
+<td></td>
+<td>🚫 Own Field</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Or you could do this:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>PersonShared</th>
+<th>Person</th>
+<th>Company</th>
+<th>Contact</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td>🚫 Own Field</td>
+<td>🔗 Inherit</td>
+<td>Company name is different so it does not inherit</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td></td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td>🔗 Inherit</td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Address</td>
+<td>🔊 Master</td>
+<td></td>
+<td>🔗 Inherit</td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Salutation</td>
+<td>🔊 Master</td>
+<td>🔗 Inherit</td>
+<td></td>
+<td>🔗 Inherit</td>
+<td></td>
+</tr>
+<tr>
+<td>Relationship</td>
+<td></td>
+<td></td>
+<td></td>
+<td>🚫 Own Field</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-does-composition-relate-to-inheritance">How Does Composition Relate to Inheritance</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Inheritance is a basic concept where a master definition is used to create a new object which is a variation of the master.
+Basically an inheriting definition can only add properties, but not remove or change them.</p>
+</div>
+<p>Composition on the other hand is much more flexible.</p>
+<ol>
+<li>You can inherit only a sub-set of fields from any master.</li>
+<li>You can inherit fields from multiple masters.</li>
+<li>You can inherit fields from masters and then add more fields.</li>
+<li>You can inherit some fields, but specifically implement certain fields yourself, for example when the <code>Name</code> on Company above should have a different description.</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The &quot;downside&quot; of composition is that inheriting definitions
+must specify which fields they inherit.
+So adding fields to the master does not automatically add it to any children.
+This is a good thing, but you must be aware of it.</p>
+</div>
+<h2 id="important-things-to-know">Important Things to Know</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Content-Type Composition is a great way to standardize and improve your Content-Type definitions.
+Any changes to the master fields will automatically be applied to all inheriting fields.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Inheriting a field will only inherit it's definition, which includes label, description, dropdown values etc.
+The name of the field is <em>not</em> inherited, so you can specify a different name in the inheriting Content-Type.
+This provides some flexibility, but if you rename the master, it will not automatically rename the inheriting fields.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Content-Type Composition is an advanced feature which is reserved to our patrons.
+If you don't have the feature enabled/licensed, it will still work, but show a license warning.</p>
+<p>But it can be a great solution to save time and streamline your work, so please look into sponsoring us.
+➡️ See <a class="xref" href="https://patrons.2sxc.org/">2sxc Patrons Website</a></p>
+</div>
+<h2 id="how-to-use-content-type-composition">How to Use Content-Type Composition</h2>
+<p>Not every field is suitable for composition.
+Because of this, you must explicitly specify which fields are shared.
+This makes it easier for you to understand which fields are shared and which are not.</p>
+<h3 id="1-share-fields">1. Share Fields</h3>
+<p>To share a field, you must specify that it is shared. Follow these instructions:</p>
+<div class="gallery">
+  <img src="../../../pages/basics/data/content-type-composition/assets/share-01.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/share-02.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/share-03.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/share-04.jpg">
+<div>
+<h3 id="2a-create-new-field-which-inherits">2a. Create <em>New</em> Field Which Inherits</h3>
+<p>When adding new fields which should inherit the settings, it's best to do this directly upon creation.</p>
+<div class="gallery">
+  <img src="../../../pages/basics/data/content-type-composition/assets/new-inherit-01.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/new-inherit-02.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/new-inherit-03.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/new-inherit-04.jpg">
+<div>
+<h3 id="2b-change-existing-field-to-inherit">2b. Change <em>Existing</em> Field to Inherit</h3>
+<p>Sometimes you already have a field, or you need a different name but it should inherit the settings.</p>
+<div class="gallery">
+  <img src="../../../pages/basics/data/content-type-composition/assets/existing-inherit-01.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/existing-inherit-02.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/existing-inherit-03.jpg">
+</div>
+<h3 id="3-review-inheritance">3. Review Inheritance</h3>
+<p>On the shared master, you can always review where it is used.
+And on the inheriting field, you can always review where the definition is from.</p>
+<div class="gallery">
+  <img src="../../../pages/basics/data/content-type-composition/assets/review-source.jpg">
+  <img src="../../../pages/basics/data/content-type-composition/assets/review-targets.jpg">
+</div>
+<h3 id="4-change--stop-inheritance">4. Change / Stop Inheritance</h3>
+<p>As of now, there is no UI for this.
+For now, you'll need to manually change the <code>SysSettings</code> column in the SQL table of this field.</p>
+<p>If it turns out to be a common use case, we'll look at it in more detail.</p>
+<h3 id="5-partial-inheritance">5. Partial Inheritance</h3>
+<p>There is a beta feature, where inheritance can be partial.
+This would allow you to inherit only the dropdown-definition, but allow you to configure your own title etc.</p>
+<p>At the moment this is not stable enough to use.</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 16.0 for internal use</li>
+<li>Released in 2sxc 18.02 for public use (patrons only)</li>
+</ol>
+</div></div></div></div>
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/data/content-type-composition/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
