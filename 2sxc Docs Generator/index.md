@@ -3,7 +3,7 @@
 
 # 2sxc and EAV Docs
 
-`For version 18.01`
+`For version 18.02`
 
 This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
 
