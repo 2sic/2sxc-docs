@@ -36,7 +36,7 @@ var onePerson = As<Person>(App.Data.GetStream("Person"));
 // Get all, convert, then find the one with the ID - null if no match
 var person45 = AsList<Person>(App.Data.GetStream("Person")).FirstOrDefault(p => p.Id == 45);
 // Get one and convert to Person - null if no match; faster
-var person72 = As<Person>(App.Data.GetStream("Person").List.FirstOrDefault(e => e.EntityId = 72));
+var person72 = As<Person>(App.Data.GetStream("Person").List.FirstOrDefault(e => e.EntityId == 72));
 ```
 
 This all works, but it's a bit verbose and you will sometimes do too much work, which is not ideal for performance.
