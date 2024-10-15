@@ -2,7 +2,7 @@
 uid: Basics.App.ExportImport.Index
 ---
 
-# App Export / Import
+# App Export / Import - Overview
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
@@ -16,7 +16,7 @@ uid: Basics.App.ExportImport.Index
 
 Every App and parts of it can be _Exported_ and _Imported_:
 
-1. Entire App as ZIP
+1. [Entire App as ZIP](xref:Basics.App.ExportImport.AppExport)
 1. [App Data for git-versioning](xref:Basics.App.Git.Index) as XML
 1. Parts of the App Data as XML
 1. [Content-Types](xref:Basics.Data.ContentTypes.Index) as [JSON](xref:Basics.DataFormats.JsonV1.Index)
