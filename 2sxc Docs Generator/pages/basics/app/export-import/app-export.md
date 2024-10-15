@@ -85,3 +85,12 @@ In such a scenario you would want to uncheck this,
 and then manually copy the assets to the new site - ideally before importing the App, so the references are re-assigned correctly.
 
 ➡️ This feature is reserved to [patrons](xref:Patrons.Site).
+
+---
+
+## History
+
+1. Introduced ca. 2sxc 2
+1. New Asset features added in 2sxc 18.01
+
+Shortlink: <https://go.2sxc.org/app-export>
