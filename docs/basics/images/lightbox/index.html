@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Images Guide (Best Practices &amp; Code) | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Image Lightbox (new v17) | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Images Guide (Best Practices &amp; Code) | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Image Lightbox (new v17) | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/images/guide/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/images/lightbox/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,10 +105,10 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Basics.Images.Guide.Index">
+        <article data-uid="Basics.Images.Lightbox.Index">
 
 <img src="../../../assets/features/image-resizer.svg" class="feature">
-<h1 id="images-guide-best-practices--code">Images Guide (Best Practices &amp; Code)</h1>
+<h1 id="image-lightbox-new-v17">Image Lightbox (new v17)</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -208,134 +208,59 @@
   </div>
 </div>
 <style>  .context-box-summary .image-resizer    { visibility: visible; } </style>
-<p>Images are a crucial part of every website and CMS. We want to be sure that:</p>
-<ol>
-<li><strong>Perfect Editing</strong>
-<ol>
-<li>Editors can easily add images</li>
-<li>Editors can give titles to images</li>
-<li>Editors can have some control over how the image is shown - but not too much, it must be within the restrictions of the design</li>
-</ol>
-</li>
-<li><strong>Perfect Output</strong>
-<ol>
-<li>Images look great no matter what the editor does</li>
-<li>Images are accessible (for people with disabilities, etc.)</li>
-<li>Images use the latest possible file formats</li>
-<li>Images load quickly - which also requires images to be the best-possible size</li>
-</ol>
-</li>
-<li><strong>Perfect SEO &amp; Page Speed</strong>
-<ol>
-<li>Images are optimized for search engines</li>
-<li>Images are optimized for page speed, especially mobile page speed</li>
-</ol>
-</li>
-<li><strong>Pefect Control by the Designer</strong>
-<ol>
-<li>The designer determines how images should look in various scenarios</li>
-</ol>
-</li>
-</ol>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This guide should help you understand the big &lt;picture&gt; 😏.</p>
-<p>Best read this while looking at the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/img-tips">Tutorial</a></p>
-<p>For every detail there is much more technical documentation, which will be linked here.</p>
+<p>Images should often show a lightbox when clicked.
+This is especially important for galleries, but also for single images.</p>
+<p>2sxc 17 introduces the ability that images can be &quot;lightboxed&quot; according to editor input.</p>
+<p>Previously only image where the Razor code explicitly set a lightbox would be shown this way.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This feature requires the new Typed APIs (v17+) to be used,
+as the Razor code must generate the HTML to make this happen.</p>
+<p>This include the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#ToSic_Sxc_Data_ITypedItem_Img_">Img(...)</a>,
+<a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#ToSic_Sxc_Data_ITypedItem_Picture_">Picture(...)</a>
+and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#ToSic_Sxc_Data_ITypedItem_Html_">Html(...)</a> APIs.</p>
 </div>
-<h2 id="part-1-edit-ui--ux">Part 1: Edit UI / UX</h2>
-<p>The Edit UI presents various options to the user for uploading and configuring images.</p>
-<p>It's important to note that v13.10+ has a new feature to let the user customize what part of the image is really important (what corner/edge).
-This is important in scenarios where a resize would otherwise always show the middle, which may not be appropriate.</p>
-<p>Since this feature will only affect the output if the Razor template uses the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a>,
-the designer must activate it on the field. Otherwise the feature is not available.</p>
-<img src="../../../pages/basics/images/guide/assets/image-configuration.jpg" class="full-width" width="100%">
-<p><strong>Important</strong>: The config-button is only available...</p>
-<!-- 1. ...IF it has been enabled -->
+<h2 id="lightboxes-for-images-pictures-and-imagespictures-in-html-contents">Lightboxes for Images, Pictures and Images/Pictures in HTML Contents</h2>
+<p>The automatic lightbox feature is available for images, pictures and images/pictures in HTML contents.</p>
+<div class="gallery">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-showing-images.jpg">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-lightbox.jpg">
+<div>
+<h2 id="three-places-to-enableddisableconfigure-lightboxes">Three Places to Enabled/Disable/Configure Lightboxes</h2>
+<p>Not every image should be lightboxed, so there are three places to control this:</p>
 <ol>
-<li>If the Razor template uses the automatic APIs to render the image
-<ol>
-<li>When using the new Typed code, using the <code>something.Img(&quot;Image&quot;)</code> API (see <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#ToSic_Sxc_Data_ITypedItem_Img_">Img(...)</a> and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#ToSic_Sxc_Data_ITypedItem_Picture_">Picture(...)</a>)</li>
-<li>or using the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> (older way)</li>
+<li>In the code, the API which creates the image can be told to use (or not use) a lightbox <!-- note: 2dm, not really sure if there is a clear way to do this! --></li>
+<li>At the Field Configuration level (usually done by the admin) to set the default for this field.</li>
+<li>On each specific image</li>
 </ol>
-</li>
-<li>...and IF the file is an image</li>
-<li>...and IF the file &quot;belongs&quot; to the item being edited<br>
-<em>If the file is a general file from another item or from the root folder, the metadata is not available.</em>
-<em>This is important because files from elsewhere could be shared, and editing the metadata could have unexpected side-effects.</em></li>
-</ol>
-<h2 id="part-2-image-metadata">Part 2: Image Metadata</h2>
-<p>When a user edits the image settings in the UI, the data is stored as <a class="xref" href="../../metadata/index.html">metadata</a> for this image.
-This is important, because generating a perfect <code>&lt;img&gt;</code> or <code>&lt;picture&gt;</code> tag requires this information.</p>
-<h2 id="part-3-razor-code-to-generate-html-for-images">Part 3: Razor Code to Generate HTML for Images</h2>
-<h3 id="part-3a-modern-typed-code">Part 3a: Modern Typed Code</h3>
-<p>When using modern typed code, the object containing the data is an <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>
-or something which inherits from it.
-In this case, the API will take care of almost everything.
-Just use one of these methods to create the HTML:</p>
-<ul>
-<li><code>thing.Img(&quot;Image&quot;)</code> - for a simple <code>&lt;img&gt;</code> tag</li>
-<li><code>thing.Picture(&quot;Image&quot;)</code> - for a <code>&lt;picture&gt;</code> tag</li>
-</ul>
-<h3 id="part-3b-legacy-code-older-apis">Part 3b: Legacy Code (older APIs)</h3>
-<p>The older API used the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> to generate the HTML.
-This in turn needed a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IField.html">IField</a> object to figure out what to do.</p>
-<h4 id="part-3b-legacy-code---dynamic-field">Part 3b Legacy Code - Dynamic Field</h4>
-<p>If a content item stores the image on a property <code>.Image</code> then something like <code>Content.Image</code> would return <code>/Portal/0/Adam/some-image.jpg</code>.
-In this case, the <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> cannot find the metadata.</p>
-<p>This is why we need to give it the entire field, not just the value. This is done using <code>Content.Field(&quot;Image&quot;)</code>
-and will get your code a <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.IField.html">IDynamicField</a>.</p>
-<h4 id="part-3b-legacy-code---imageservice">Part 3b Legacy Code - ImageService</h4>
-<p>The <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IImageService.html">IImageService</a> will take all the known information and generate an <code>&lt;img&gt;</code> or a <code>&lt;picture&gt;</code> tag.</p>
-<p>This can be used in its default implementation just using <code>.Img(Content.Field)</code> or <code>.Picture(...)</code>.
-In this case is uses the default <code>Content</code> settings (see below).</p>
-<p>If you need more control, there are 3 options:</p>
-<ol>
-<li>The <code>Img(...)</code> command has many more parameters for common scenarios such as using other settings, factor, imgAlt or imgClass</li>
-<li>You can also generate very custom settings using the <code>.Settings(...)</code> command on the ImageService</li>
-<li>You can also take the resulting object like <code>var img = imgSvc.Img(Content.Image)</code> and use it to generate the final tag yourself.</li>
-</ol>
-<p>Some Tutorials to learn this</p>
-<ul>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/img-responsive">ImageService Img Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/img-picture">ImageService Picture Tutorial</a></li>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/img-tips">ImageService Guide</a></li>
-</ul>
-<h2 id="part-4-settings-and-recipes">Part 4: Settings and Recipes</h2>
-<p><strong>Settings</strong> are pre configured parameters how the image is to be resized.
-They are stored at App, Site, Global or Preset level.</p>
-<p>By default the configuration called <code>Content</code> is used for images in the Content of the page.
-Other settings also exist, such as <code>Lightbox</code> or <code>Screen</code>.
-You can also create your own configurations, such as <code>PersonProfile</code>.</p>
-<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/index.html">Image Settings</a></p>
-<p>In your Razor code you can create new settings or modify existing ones using the <code>.Setting(...)</code> command on the ImageService.</p>
-<ul>
-<li>To create settings based on the <code>Content</code> use <code>.Setting(&quot;Content&quot;, ...)</code></li>
-<li>To create brand new settings, use <code>.Setting(false, ...)</code></li>
-</ul>
-<p><strong>Recipes</strong> define what variants of the image should be generated for other sizes, as well as other parameters to use when generating <code>img</code> or <code>picture</code> tags.
-The initial configuration is also stored in the settings and will be used, unless you specify something different.</p>
-<p>👉🏼 Read more about <a class="xref" href="../../configuration/settings/images/recipes.html">Image Recipes</a></p>
-<p>You can also generate your own recipes:</p>
-<ul>
-<li>create a new recipe like this: <code>.Recipe(&quot;2x, 3x&quot;)</code> - this is only meant to create a quick recipe with a few variants.</li>
-<li>inherit/expand an existing recipe like this: <code>.Recipe(originalRecipe, ...)</code></li>
-</ul>
-<h2 id="good-to-know-linkimage-api">Good to Know: Link.Image(...) API</h2>
-<p>In the rare cases where you just need a URL and not the full HTML, check out the <a class="xref" href="../../../net-code/dynamic-code/objects/link.image.html">Link.Image(...) API</a>.</p>
-<p>It is not as powerful as the ImageService but if you only need a URL it may be what you need.</p>
-<p>🎓 <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/img-custom">Image Resizer Parameters with Link.Image</a></p>
+<h2 id="field-configuration">Field Configuration</h2>
+<p>When configuring the field, the admin can set the default for the field, which can be overridden by the editor when editing the content.
+For example, the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a> has Lightboxes enabled on all posts in the latest version like this:</p>
+<div class="gallery">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-go-to-fields.jpg">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-content-defaults.jpg">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-auto-gallery.jpg">
+<div>
+<p>This will configure the field so all images are lightboxed by default, and treated as a gallery together.</p>
+<h2 id="configuration-per-image">Configuration per Image</h2>
+<p>In most cases the field-configuration is all you need.
+But the editor can choose to override this on a per-image basis.
+For example, he/she could configure a lightbox where the field didn't auto-configure it,
+could change the gallery-behavior and/or could disable the lightbox for a specific image.</p>
+<div class="gallery">
+  <img src="../../../pages/basics/images/lightbox/assets/blog-app-configure-single-image.jpg">
+<div>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Guide created for v13.10</li>
-<li>Updated for v16 which introduced the new Typed API</li>
+<li>Introduced ca. 2sxc 17</li>
+<li>Better documented in 2sxc 18.03</li>
 </ol>
-
+</div></div></div></div></div></div>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/images/guide/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/basics/images/lightbox/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

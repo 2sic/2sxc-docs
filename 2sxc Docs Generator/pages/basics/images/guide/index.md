@@ -48,7 +48,10 @@ the designer must activate it on the field. Otherwise the feature is not availab
 
 **Important**: The config-button is only available...
 
-1. ...IF it has been enabled
+<!-- 1. ...IF it has been enabled -->
+1. If the Razor template uses the automatic APIs to render the image
+    1. When using the new Typed code, using the `something.Img("Image")` API (see [Img(...)](xref:ToSic.Sxc.Data.ITypedItem.Img*) and [Picture(...)](xref:ToSic.Sxc.Data.ITypedItem.Picture*))
+    1. or using the [IImageService](xref:ToSic.Sxc.Services.IImageService) (older way)
 1. ...and IF the file is an image
 1. ...and IF the file "belongs" to the item being edited  
     _If the file is a general file from another item or from the root folder, the metadata is not available._
@@ -59,7 +62,24 @@ the designer must activate it on the field. Otherwise the feature is not availab
 When a user edits the image settings in the UI, the data is stored as [metadata](xref:Basics.Metadata.Index) for this image.
 This is important, because generating a perfect `<img>` or `<picture>` tag requires this information.
 
-## Part 3: Dynamic Field
+## Part 3: Razor Code to Generate HTML for Images
+
+### Part 3a: Modern Typed Code
+
+When using modern typed code, the object containing the data is an [ITypedItem](xref:ToSic.Sxc.Data.ITypedItem)
+or something which inherits from it.
+In this case, the API will take care of almost everything.
+Just use one of these methods to create the HTML:
+
+* `thing.Img("Image")` - for a simple `<img>` tag
+* `thing.Picture("Image")` - for a `<picture>` tag
+
+### Part 3b: Legacy Code (older APIs)
+
+The older API used the [IImageService](xref:ToSic.Sxc.Services.IImageService) to generate the HTML.
+This in turn needed a [IField](xref:ToSic.Sxc.Data.IField) object to figure out what to do.
+
+#### Part 3b Legacy Code - Dynamic Field
 
 If a content item stores the image on a property `.Image` then something like `Content.Image` would return `/Portal/0/Adam/some-image.jpg`.
 In this case, the [IImageService](xref:ToSic.Sxc.Services.IImageService) cannot find the metadata.
@@ -67,7 +87,7 @@ In this case, the [IImageService](xref:ToSic.Sxc.Services.IImageService) cannot 
 This is why we need to give it the entire field, not just the value. This is done using `Content.Field("Image")`
 and will get your code a [IDynamicField](xref:ToSic.Sxc.Data.IField).
 
-## Part 4: ImageService
+#### Part 3b Legacy Code - ImageService
 
 The [IImageService](xref:ToSic.Sxc.Services.IImageService) will take all the known information and generate an `<img>` or a `<picture>` tag.
 
@@ -86,9 +106,9 @@ Some Tutorials to learn this
 * [](xref:Tut.Img.Picture)
 * [](xref:Tut.Img.Guide)
 
-## Part 5: Settings and Recipes
+## Part 4: Settings and Recipes
 
-**Settings** are preconfigured parameters how the image is to be resized.
+**Settings** are pre configured parameters how the image is to be resized.
 They are stored at App, Site, Global or Preset level.
 
 By default the configuration called `Content` is used for images in the Content of the page.
@@ -113,7 +133,7 @@ You can also generate your own recipes:
 * inherit/expand an existing recipe like this: `.Recipe(originalRecipe, ...)`
 
 
-## Part 6: Link.Image(...) API
+## Good to Know: Link.Image(...) API
 
 In the rare cases where you just need a URL and not the full HTML, check out the [Link.Image(...) API](xref:NetCode.DynamicCode.Objects.Link.Image).
 
@@ -121,20 +141,10 @@ It is not as powerful as the ImageService but if you only need a URL it may be w
 
 🎓 [](xref:Tut.Img.LinkImage)
 
-<!--
-## Part 3: Special In-Page Toolbar (WIP ca. v13.13)
-
-TODO:
-
----
-
-
-TODO: we're still working on these docs
-
--->
 
 ---
 
 ## History
 
 1. Guide created for v13.10
+1. Updated for v16 which introduced the new Typed API
