@@ -72,3 +72,5 @@ could change the gallery-behavior and/or could disable the lightbox for a specif
 
 1. Introduced ca. 2sxc 17
 1. Better documented in 2sxc 18.03
+
+Shortlink: <https://go.2sxc.org/image-lightbox>
