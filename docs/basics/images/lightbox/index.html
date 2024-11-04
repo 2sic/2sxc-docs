@@ -233,7 +233,16 @@ and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedItem.html#To
 <li>At the Field Configuration level (usually done by the admin) to set the default for this field.</li>
 <li>On each specific image</li>
 </ol>
-<h2 id="field-configuration">Field Configuration</h2>
+<h3 id="1-code-configuration-new-v1803">1. Code Configuration (new v18.03)</h3>
+<p>When creating an image, the code can specify if the image should be lightboxed or not.</p>
+<p>This feature is new in v18.03 as it requires the new tweak API.</p>
+<pre><code class="lang-csharp">@something.Picture(&quot;GroupPic&quot;, tweak: t =&gt; t
+  .LightboxEnable()
+  .LightboxDescription(&quot;All participants&quot;)
+  .Resize(t =&gt; t.Factor(0.5))
+)
+</code></pre>
+<h3 id="2-field-configuration">2. Field Configuration</h3>
 <p>When configuring the field, the admin can set the default for the field, which can be overridden by the editor when editing the content.
 For example, the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4">Blog App</a> has Lightboxes enabled on all posts in the latest version like this:</p>
 <div class="gallery">
@@ -242,7 +251,7 @@ For example, the <a class="xref" href="https://2sxc.org/en/apps/app/blog-app-v4"
   <img src="../../../pages/basics/images/lightbox/assets/blog-app-auto-gallery.jpg">
 <div>
 <p>This will configure the field so all images are lightboxed by default, and treated as a gallery together.</p>
-<h2 id="configuration-per-image">Configuration per Image</h2>
+<h3 id="3-configuration-per-image">3. Configuration per Image</h3>
 <p>In most cases the field-configuration is all you need.
 But the editor can choose to override this on a per-image basis.
 For example, he/she could configure a lightbox where the field didn't auto-configure it,

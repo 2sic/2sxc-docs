@@ -41,7 +41,21 @@ Not every image should be lightboxed, so there are three places to control this:
 1. At the Field Configuration level (usually done by the admin) to set the default for this field.
 1. On each specific image
 
-## Field Configuration
+### 1. Code Configuration (new v18.03)
+
+When creating an image, the code can specify if the image should be lightboxed or not.
+
+This feature is new in v18.03 as it requires the new tweak API.
+
+```csharp
+@something.Picture("GroupPic", tweak: t => t
+  .LightboxEnable()
+  .LightboxDescription("All participants")
+  .Resize(t => t.Factor(0.5))
+)
+```
+
+### 2. Field Configuration
 
 When configuring the field, the admin can set the default for the field, which can be overridden by the editor when editing the content.
 For example, the [Blog App](xref:App.Blog) has Lightboxes enabled on all posts in the latest version like this:
@@ -54,7 +68,7 @@ For example, the [Blog App](xref:App.Blog) has Lightboxes enabled on all posts i
 
 This will configure the field so all images are lightboxed by default, and treated as a gallery together.
 
-## Configuration per Image
+### 3. Configuration per Image
 
 In most cases the field-configuration is all you need.
 But the editor can choose to override this on a per-image basis.

@@ -41,6 +41,23 @@ Last Update: **2024-10-10**
 1. ✅ Edit UI: Massively improve pickers - ca. 90%, also with Number and CSS / SVG / Image icons
 1. ✅ HotBuild: Enhance to use SHA fingerprint for cache-busting
 
+## v18.03 (planned 2024-11-15)
+
+1. ✅ Clean up data model, remove unused table `ToSIC_EAV_AttributeGroups` (may be breaking)
+1. ✅ Pickers - Stabilize most features so final
+1. ✅ Tweak API for Image Service Settings, Img, Picture
+1. ✅ Tweak API for Typed Items `.Img(..., tweak: t => t.Alt(...)...)` and `.Picture(...)`
+1. ⌛ JSON Bundle Export, Import, Persist
+1. ✅ Ongoing Angular refactoring (switching to signals, deduplicate code, ...)
+1. ⌛ Support Ctrl+Click in Admin-UI to open dialogs in new windows/tabs
+1. ⌛ Ability to switch UI languages (not just content-languages)
+
+## Note: Picker Features still not final
+
+1. Picker Formulas (beta)
+1. Picker Source WebService (not started)
+1. Picker Source CSS (beta)
+1. Picker Preview Icon, Image, etc. (beta)
 
 
 ## 2024 Q3 Finish DoD / Almost-Done Work
@@ -70,18 +87,13 @@ also...
 
 ## Q2
 
-1. ⌛ Export bundles
 1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data
 
 also...
 
 1. Improve Pickers all kinds of small issues
-    1. string-picker - use label/value in generated parts eg
     1. tree
-    1. multi-select
-    1. maybe checkboxes
-    1. Radio buttons (string, entity-picker)
 1. Improve Oqtane Pages DS to also respect all known settings - @STV
 1. Finalize Deprecation system @2dm
 1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV
@@ -100,7 +112,6 @@ also...
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
 1. ✅ Compress Timeline: Feature to compress the existing history
 1. ✅ Entity Serialization Improvements
-1. ⏳ Data Bundles
 1. ⏳ Language editing permissions - improve, test, finalize, document - ca. 3-5d
     1. also allow non-admins to possibly translate resources
 1. Ability to set default compiler in Dnn to always be Roslyn

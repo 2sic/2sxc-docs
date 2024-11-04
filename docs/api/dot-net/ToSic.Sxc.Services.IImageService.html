@@ -113,7 +113,7 @@
 
   <h1 id="ToSic_Sxc_Services_IImageService" data-uid="ToSic.Sxc.Services.IImageService" class="text-break">
     Interface IImageService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -165,9 +165,9 @@ public interface IImageService : ICanDebug</code></pre>
 
   <a id="ToSic_Sxc_Services_IImageService_Img_" data-uid="ToSic.Sxc.Services.IImageService.Img*"></a>
 
-  <h3 id="ToSic_Sxc_Services_IImageService_Img_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Img(System.Object,System.Object,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.Object,System.Object)">
-  Img(object, object, NoParamOrder, object, object, string, string, string, object, object, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_IImageService_Img_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakMedia_ToSic_Sxc_Images_ITweakMedia__System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Img(System.Object,System.Object,ToSic.Lib.Coding.NoParamOrder,System.Func{ToSic.Sxc.Images.ITweakMedia,ToSic.Sxc.Images.ITweakMedia},System.Object,System.Object,System.String,System.String,System.String,System.Object,System.Object,System.Object)">
+  Img(object, object, NoParamOrder, Func&lt;ITweakMedia, ITweakMedia&gt;, object, object, string, string, string, object, object, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L256"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a Responsive Image object which you can then either just show, or use to construct a more customized output as you need it.</p>
@@ -176,7 +176,7 @@ public interface IImageService : ICanDebug</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IResponsiveImage Img(object link = null, object settings = null, NoParamOrder noParamOrder = default, object factor = null, object width = null, string imgAlt = null, string imgAltFallback = null, string imgClass = null, object imgAttributes = null, object toolbar = null, object recipe = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IResponsiveImage Img(object link = null, object settings = null, NoParamOrder noParamOrder = default, Func&lt;ITweakMedia, ITweakMedia&gt; tweak = null, object factor = null, object width = null, string imgAlt = null, string imgAltFallback = null, string imgClass = null, object imgAttributes = null, object toolbar = null, object recipe = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -193,14 +193,19 @@ public interface IImageService : ICanDebug</code></pre>
 <li>The name of a settings configuration, like &quot;Content&quot;, &quot;Screen&quot;, &quot;Square&quot;, etc.</li>
 <li>A standardized Image-Settings object like Settings.Images.Content - see <a href="https://go.2sxc.org/settings">https://go.2sxc.org/settings</a></li>
 <li>Or a dynamic object containing settings properties (this can also be a merged custom + standard settings)</li>
-<li>A <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings created using <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">ResizeSettings</a></li>
+<li>A <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings created using <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakResize_ToSic_Sxc_Images_ITweakResize__System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">ResizeSettings</a></li>
 </ul>
 </dd>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
 </dd>
+    <dt><code>tweak</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="ToSic.Sxc.Images.ITweakMedia.html">ITweakMedia</a>, <a class="xref" href="ToSic.Sxc.Images.ITweakMedia.html">ITweakMedia</a>&gt;</dt>
+    <dd><p>Tweak API to configure everything (new v18.03).
+This is recommended above using parameter names and all newer parameters will only be available on this.
+Note that tweak will be executed after applying other parameters.</p>
+</dd>
     <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>An optional multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5.</p>
+    <dd><p>An optional multiplier, usually used to create urls which resize to a part of the default content-size. Like 0.5.</p>
 </dd>
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd><p>An optional, fixed width of the image</p>
@@ -247,10 +252,11 @@ Can be any one of these:</p>
 
 
 
-  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Img_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
+  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Img_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakMedia_ToSic_Sxc_Images_ITweakMedia__System_Object_System_Object_System_String_System_String_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>Added in 2sxc 13.03</li>
 <li><code>toolbar</code> added in v16.04</li>
+<li><code>tweak</code> added in 18.03</li>
 </ul>
 </div>
 
@@ -259,20 +265,20 @@ Can be any one of these:</p>
 
   <a id="ToSic_Sxc_Services_IImageService_Picture_" data-uid="ToSic.Sxc.Services.IImageService.Picture*"></a>
 
-  <h3 id="ToSic_Sxc_Services_IImageService_Picture_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Picture(System.Object,System.Object,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object,System.Object,System.Object)">
-  Picture(object, object, NoParamOrder, object, object, string, string, string, object, string, object, object, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_IImageService_Picture_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakMedia_ToSic_Sxc_Images_ITweakMedia__System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Picture(System.Object,System.Object,ToSic.Lib.Coding.NoParamOrder,System.Func{ToSic.Sxc.Images.ITweakMedia,ToSic.Sxc.Images.ITweakMedia},System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object,System.Object,System.Object)">
+  Picture(object, object, NoParamOrder, Func&lt;ITweakMedia, ITweakMedia&gt;, object, object, string, string, string, object, string, object, object, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L187"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a Responsive Picture object which you can then either just show, or use to construct a more customized output as you need it.</p>
 <p>The resulting object can just be added to the html, like <code>@pic</code> or you can work with sub-properties as specified in the <a class="xref" href="ToSic.Sxc.Images.IResponsivePicture.html">IResponsivePicture</a>.</p>
 <p><strong>Important:</strong> This call only allows you to set the most common parameters <code>factor</code> and <code>width</code>.
-For other parameters like <code>height</code>, <code>aspectRatio</code>, <code>quality</code> etc. create Settings <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">Settings(object, NoParamOrder, object, object, object, object, string, string, string, object, string, object)</a> and pass them in.</p>
+For other parameters like <code>height</code>, <code>aspectRatio</code>, <code>quality</code> etc. create Settings <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakResize_ToSic_Sxc_Images_ITweakResize__System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">Settings(object, NoParamOrder, Func&lt;ITweakResize, ITweakResize&gt;, object, object, object, object, string, string, string, object, string, object)</a> and pass them in.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IResponsivePicture Picture(object link = null, object settings = null, NoParamOrder noParamOrder = default, object factor = null, object width = null, string imgAlt = null, string imgAltFallback = null, string imgClass = null, object imgAttributes = null, string pictureClass = null, object pictureAttributes = null, object toolbar = null, object recipe = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IResponsivePicture Picture(object link = null, object settings = null, NoParamOrder noParamOrder = default, Func&lt;ITweakMedia, ITweakMedia&gt; tweak = null, object factor = null, object width = null, string imgAlt = null, string imgAltFallback = null, string imgClass = null, object imgAttributes = null, string pictureClass = null, object pictureAttributes = null, object toolbar = null, object recipe = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -290,14 +296,19 @@ For other parameters like <code>height</code>, <code>aspectRatio</code>, <code>q
 <li>The name of a settings configuration, like &quot;Content&quot;, &quot;Screen&quot;, &quot;Square&quot;, etc.</li>
 <li>A standardized Image-Settings object like Settings.Images.Content - see <a href="https://go.2sxc.org/settings">https://go.2sxc.org/settings</a></li>
 <li>Or a dynamic object containing settings properties (this can also be a merged custom + standard settings)</li>
-<li>A <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings created using <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">ResizeSettings</a></li>
+<li>A <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings created using <a class="xref" href="ToSic.Sxc.Services.IImageService.html#ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakResize_ToSic_Sxc_Images_ITweakResize__System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_">ResizeSettings</a></li>
 </ul>
 </dd>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
 </dd>
+    <dt><code>tweak</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="ToSic.Sxc.Images.ITweakMedia.html">ITweakMedia</a>, <a class="xref" href="ToSic.Sxc.Images.ITweakMedia.html">ITweakMedia</a>&gt;</dt>
+    <dd><p>Tweak API to configure everything (new v18.03).
+This is recommended above using parameter names and all newer parameters will only be available on this.
+Note that tweak will be executed after applying other parameters.</p>
+</dd>
     <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>An optional multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5.</p>
+    <dd><p>An optional multiplier, usually used to create urls which resize to a part of the default content-size. Like 0.5.</p>
 </dd>
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd><p>An optional, fixed width of the image</p>
@@ -350,12 +361,13 @@ Can be any one of these:</p>
 
 
 
-  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Picture_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
+  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Picture_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakMedia_ToSic_Sxc_Images_ITweakMedia__System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_System_Object_System_Object__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>Added in v13.03</li>
 <li>Extended in v16.03 to also support IFile</li>
 <li><code>toolbar</code> added in v16.04</li>
 <li><code>imgAttributes</code>, <code>picClass</code> and <code>picAttributes</code> added in 16.07</li>
+<li><code>tweak</code> added in 18.03</li>
 </ul>
 </div>
 
@@ -366,7 +378,7 @@ Can be any one of these:</p>
 
   <h3 id="ToSic_Sxc_Services_IImageService_Recipe_System_String_" data-uid="ToSic.Sxc.Services.IImageService.Recipe(System.String)">
   Recipe(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -402,7 +414,7 @@ Can be any one of these:</p>
 
   <h3 id="ToSic_Sxc_Services_IImageService_Recipe_ToSic_Sxc_Images_Recipe_ToSic_Lib_Coding_NoParamOrder_System_String_System_Int32_System_String_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IEnumerable_ToSic_Sxc_Images_Recipe__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_String_System_String_System_String_" data-uid="ToSic.Sxc.Services.IImageService.Recipe(ToSic.Sxc.Images.Recipe,ToSic.Lib.Coding.NoParamOrder,System.String,System.Int32,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{ToSic.Sxc.Images.Recipe},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String,System.String,System.String)">
   Recipe(Recipe, NoParamOrder, string, int, string, IDictionary&lt;string, object&gt;, IEnumerable&lt;Recipe&gt;, bool?, bool?, string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -458,9 +470,9 @@ Can be any one of these:</p>
 
   <a id="ToSic_Sxc_Services_IImageService_Settings_" data-uid="ToSic.Sxc.Services.IImageService.Settings*"></a>
 
-  <h3 id="ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Settings(System.Object,ToSic.Lib.Coding.NoParamOrder,System.Object,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object)">
-  Settings(object, NoParamOrder, object, object, object, object, string, string, string, object, string, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakResize_ToSic_Sxc_Images_ITweakResize__System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_" data-uid="ToSic.Sxc.Services.IImageService.Settings(System.Object,ToSic.Lib.Coding.NoParamOrder,System.Func{ToSic.Sxc.Images.ITweakResize,ToSic.Sxc.Images.ITweakResize},System.Object,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object)">
+  Settings(object, NoParamOrder, Func&lt;ITweakResize, ITweakResize&gt;, object, object, object, object, string, string, string, object, string, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Construct custom Resize-Settings as needed, either based on existing settings or starting from scratch</p>
@@ -468,7 +480,7 @@ Can be any one of these:</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IResizeSettings Settings(object settings = null, NoParamOrder noParamOrder = default, object factor = null, object width = null, object height = null, object quality = null, string resizeMode = null, string scaleMode = null, string format = null, object aspectRatio = null, string parameters = null, object recipe = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IResizeSettings Settings(object settings = null, NoParamOrder noParamOrder = default, Func&lt;ITweakResize, ITweakResize&gt; tweak = null, object factor = null, object width = null, object height = null, object quality = null, string resizeMode = null, string scaleMode = null, string format = null, object aspectRatio = null, string parameters = null, object recipe = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -485,8 +497,13 @@ Can be any one of these:</p>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
 </dd>
+    <dt><code>tweak</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="ToSic.Sxc.Images.ITweakResize.html">ITweakResize</a>, <a class="xref" href="ToSic.Sxc.Images.ITweakResize.html">ITweakResize</a>&gt;</dt>
+    <dd><p>Tweak API to configure everything (new v18.03).
+This is recommended above using parameter names and all newer parameters will only be available on this.
+Note that tweak will be executed after applying other parameters.</p>
+</dd>
     <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>A multiplier, usually used to create urls which resize to a part of the default content-size. Eg. 0.5.</p>
+    <dd><p>A multiplier, usually used to create urls which resize to a part of the default content-size. Like 0.5.</p>
 </dd>
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd><p>Optional width parameter. Cannot be used if <code>factor</code> is set. Usually takes the default from the <code>settings</code>.</p>
@@ -533,8 +550,11 @@ Can be any one of these:</p>
 
 
 
-  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>History: Added in 2sxc 13.03</p>
+  <h4 class="section" id="ToSic_Sxc_Services_IImageService_Settings_System_Object_ToSic_Lib_Coding_NoParamOrder_System_Func_ToSic_Sxc_Images_ITweakResize_ToSic_Sxc_Images_ITweakResize__System_Object_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><ul>
+<li>Added in v13.03</li>
+<li>Tweak added in v18.03</li>
+</ul>
 </div>
 
 
@@ -544,7 +564,7 @@ Can be any one of these:</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/IImageService.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 
