@@ -4563,6 +4563,59 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
 
 /***/ }),
 
+/***/ "./templates/2sxc/src/context-illustrations.ts":
+/*!*****************************************************!*\
+  !*** ./templates/2sxc/src/context-illustrations.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   lightboxForContextIllustration: () => (/* binding */ lightboxForContextIllustration)
+/* harmony export */ });
+/* harmony import */ var _globals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globals */ "./templates/2sxc/src/globals.ts");
+
+function lightboxForContextIllustration() {
+    var _a;
+    // Get all the context containers, and copy (otherwise the collection is live)
+    const containersLive = document.getElementsByClassName("fancybox-auto");
+    const containers = Array.from(containersLive);
+    for (var i = 0; i < containers.length; i++) {
+        const e = containers[i];
+        // add ID if missing
+        if (!e.id)
+            e.id = 'rndId-' + Math.floor(Math.random() * Math.floor(9999999));
+        // check if we need to attach some classes from parent
+        // note: not sure if this is needed, maybe a leftover from a previous version?
+        var pcls = (_a = e.parentElement) === null || _a === void 0 ? void 0 : _a.className;
+        if (pcls) {
+            var clsList = pcls.split(' ');
+            var contextCls = clsList.find(c => c.startsWith('context'));
+            if (contextCls)
+                e.classList.add(contextCls);
+        }
+        if (_globals__WEBPACK_IMPORTED_MODULE_0__.enableDebug)
+            console.log('context containers', e.id, pcls);
+        // Create the popup div and attach it to the element
+        createPopupDiv(e, `${e.id}-clone`);
+        e.setAttribute('data-src', `#${e.id}-clone`);
+        // add fancybox attribute
+        e.attributes.setNamedItem(document.createAttribute('data-fancybox'));
+    }
+    ;
+    // attach fancybox to all
+    Fancybox.bind("[data-fancybox]");
+}
+function createPopupDiv(original, newName) {
+    const clone = original.cloneNode(true);
+    clone.id = newName;
+    clone.style.width = "95%";
+    document.body.appendChild(clone);
+}
+
+
+/***/ }),
+
 /***/ "./templates/2sxc/src/globals.ts":
 /*!***************************************!*\
   !*** ./templates/2sxc/src/globals.ts ***!
@@ -4571,9 +4624,11 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   docsVersion: () => (/* binding */ docsVersion),
 /* harmony export */   enableDebug: () => (/* binding */ enableDebug)
 /* harmony export */ });
 const enableDebug = true;
+const docsVersion = '18.03.00';
 
 
 /***/ }),
@@ -4870,14 +4925,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_docready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/docready */ "./templates/2sxc/src/utils/docready.ts");
 /* harmony import */ var _images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images */ "./templates/2sxc/src/images.ts");
 /* harmony import */ var _versions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./versions */ "./templates/2sxc/src/versions.ts");
+/* harmony import */ var _globals__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./globals */ "./templates/2sxc/src/globals.ts");
+/* harmony import */ var _context_illustrations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./context-illustrations */ "./templates/2sxc/src/context-illustrations.ts");
 
 
 
 
 
-// import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+
 // Log some version of this file so we see changes are being applied
-console.log('2sxc main.ts 2.2');
+console.log('2sxc main.ts ' + _globals__WEBPACK_IMPORTED_MODULE_5__.docsVersion);
 // Expose some functions to the global scope
 // for the way this file is imported in docfx
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4899,6 +4957,9 @@ console.log('2sxc main.ts 2.2');
     // This is a bit special, but I don't know how to trigger code inside the JS-Module
     // from the page itself, so I'm just doing it here with url-checks
     _xref_xref__WEBPACK_IMPORTED_MODULE_1__.Xref.runXrefPage();
+    // Activate popups on the small context illustrations
+    // typically to the right of the introduction content
+    (0,_context_illustrations__WEBPACK_IMPORTED_MODULE_6__.lightboxForContextIllustration)();
 });
 
 })();

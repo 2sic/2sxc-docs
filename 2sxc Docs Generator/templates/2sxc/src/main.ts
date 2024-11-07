@@ -3,10 +3,12 @@ import { Xref } from './xref/xref';
 import { docReady } from './utils/docready';
 import { configureLightboxes } from './images';
 import { setVersionButtonLink } from './versions';
-// import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { docsVersion } from './globals';
+import { Html } from '@fancyapps/ui';
+import { lightboxForContextIllustration } from './context-illustrations';
 
 // Log some version of this file so we see changes are being applied
-console.log('2sxc main.ts 2.2');
+console.log('2sxc main.ts ' + docsVersion);
 
 // Expose some functions to the global scope
 // for the way this file is imported in docfx
@@ -35,4 +37,9 @@ docReady(function() {
   // This is a bit special, but I don't know how to trigger code inside the JS-Module
   // from the page itself, so I'm just doing it here with url-checks
   Xref.runXrefPage();
+
+  // Activate popups on the small context illustrations
+  // typically to the right of the introduction content
+  lightboxForContextIllustration();
 });
+
