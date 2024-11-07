@@ -28,7 +28,7 @@ Previously only image where the Razor code explicitly set a lightbox would be sh
 
 The automatic lightbox feature is available for images, pictures and images/pictures in HTML contents.
 
-<div class="gallery">
+<div gallery="intro">
   <img src="./assets/blog-app-showing-images.jpg">
   <img src="./assets/blog-app-lightbox.jpg">
 <div>
@@ -60,7 +60,7 @@ This feature is new in v18.03 as it requires the new tweak API.
 When configuring the field, the admin can set the default for the field, which can be overridden by the editor when editing the content.
 For example, the [Blog App](xref:App.Blog) has Lightboxes enabled on all posts in the latest version like this:
 
-<div class="gallery">
+<div gallery="field-config">
   <img src="./assets/blog-app-go-to-fields.jpg">
   <img src="./assets/blog-app-content-defaults.jpg">
   <img src="./assets/blog-app-auto-gallery.jpg">
@@ -75,7 +75,7 @@ But the editor can choose to override this on a per-image basis.
 For example, he/she could configure a lightbox where the field didn't auto-configure it,
 could change the gallery-behavior and/or could disable the lightbox for a specific image.
 
-<div class="gallery">
+<div gallery="config-per-img">
   <img src="./assets/blog-app-configure-single-image.jpg">
 <div>
 

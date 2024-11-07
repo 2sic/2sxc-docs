@@ -1,3 +1,6 @@
+
+console.log('2sxc-scripts.js loaded v18.03.00');
+
 // Activate featherlite for quick lightboxes
 $(document).ready(function() {
   //find all images, but not the logo, and add the lightbox

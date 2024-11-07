@@ -93,7 +93,7 @@ This makes it easier for you to understand which fields are shared and which are
 
 To share a field, you must specify that it is shared. Follow these instructions:
 
-<div class="gallery">
+<div gallery="share">
   <img src="./assets/share-01.jpg">
   <img src="./assets/share-02.jpg">
   <img src="./assets/share-03.jpg">
@@ -104,7 +104,7 @@ To share a field, you must specify that it is shared. Follow these instructions:
 
 When adding new fields which should inherit the settings, it's best to do this directly upon creation.
 
-<div class="gallery">
+<div gallery="new-inherit">
   <img src="./assets/new-inherit-01.jpg">
   <img src="./assets/new-inherit-02.jpg">
   <img src="./assets/new-inherit-03.jpg">
@@ -115,7 +115,7 @@ When adding new fields which should inherit the settings, it's best to do this d
 
 Sometimes you already have a field, or you need a different name but it should inherit the settings.
 
-<div class="gallery">
+<div gallery="existing-inherit">
   <img src="./assets/existing-inherit-01.jpg">
   <img src="./assets/existing-inherit-02.jpg">
   <img src="./assets/existing-inherit-03.jpg">
@@ -126,7 +126,7 @@ Sometimes you already have a field, or you need a different name but it should i
 On the shared master, you can always review where it is used.
 And on the inheriting field, you can always review where the definition is from.
 
-<div class="gallery">
+<div gallery="review-inherit">
   <img src="./assets/review-source.jpg">
   <img src="./assets/review-targets.jpg">
 </div>

@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Technical Implementation of the Docs | 2sxc 18 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Technical Implementation of the Docs | 2sxc 18 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Abyss.Contribute.Docs.Implementation">
+<h1 id="technical-implementation-of-the-docs">Technical Implementation of the Docs</h1>
+
+<h2 id="output--hosting">Output &amp; Hosting</h2>
+<p>This documentation is static HTML which can be hosted on any web server.</p>
+<p>As of now it's hosted an GitHub Pages, which automatically hosts the <code>/docs</code> folder of this repository.</p>
+<h2 id="how-it-works">How it Works</h2>
+<p>The way it works is that it takes data from 2 sources</p>
+<ol>
+<li>All the comments in the C# source code referenced in <code>docfx.json</code></li>
+<li>All the markdown files in the <a href="https://github.com/2sic/2sxc-docs">2sxc docs</a> repo</li>
+</ol>
+<p>...and merges them together to create HTML.</p>
+<p>When pushed back to the repo, GitHub which automatically hosts the final solution on <a href="https://docs.2sxc.org">https://docs.2sxc.org</a></p>
+<h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
+<p>Since this is a large documentation it needs a bit more than just the standard DocFX setup.
+Here is an overview as to what is really implemented:</p>
+<ol>
+<li>DocFX will build everything based on the configuration in <code>docfx.json</code>
+<ol>
+<li>It will also use the <code>/xrefmap.yml</code> which contains manually managed short links</li>
+<li>It also uses the <code>/filterConfig.yml</code> to decide what C# code to include/exclude</li>
+</ol>
+</li>
+<li>The <code>/templates/2sxc</code> folder contains all the customizations
+<ol>
+<li>The <code>/partials</code> folder contains the HTML templates</li>
+<li>The <code>/styles</code> folder contains the CSS styles</li>
+<li>The <code>/src</code> folder contains the TypeScript which is compiled with WebPack</li>
+</ol>
+</li>
+<li>NPM / WebPack are used to make things better
+<ol>
+<li>We use the Fancybox plugin to make images look better. It's installed using NPM and started using custom scripts.</li>
+<li>We also reconfigure highlightjs...</li>
+</ol>
+</li>
+<li>TODO: Mermaid diagrams</li>
+<li>TODO: Version Switcher</li>
+<li>TODO: Permalink-System</li>
+<li>Todo: TOC customizations</li>
+<li>TODO: blinking architecture illustrations</li>
+<li>TODO:</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>The <code>docfx.json</code> file is the configuration file for DocFX. It specifies how to generate documentation from your code and Markdown files.</p>
+<p>Our <code>docfx.json</code> file is configured to generate documentation from C# project files and pre-parsed JavaScript files, build documentation pages from Markdown and YAML files, copy resource files to the output directory, use overwrite files to provide additional metadata, and use multiple templates to define the layout of the documentation pages. The built documentation is saved to the <code>../docs</code> directory.</p>
+<p>Here's a breakdown of our <code>docfx.json</code> file:</p>
+<ul>
+<li><p><code>&quot;metadata&quot;</code>: This section is used to configure the metadata extraction process. It specifies the source files to extract metadata from, the destination to save the extracted metadata, and other options that are necessary to compile cs projects using <a href="https://gist.github.com/DustinCampbell/32cd69d04ea1c08a16ae5c4cd21dd3a3">MSBuildWorkspace</a>.</p>
+</li>
+<li><p><code>&quot;build&quot;</code>: This section is used to configure the documentation build process. It specifies the source files to build documentation from, the destination to save the built documentation, and other options.</p>
+<ul>
+<li><p><code>&quot;content&quot;</code>: This subsection specifies the source files to build documentation from. Each item in the array specifies a set of files and options for those files.</p>
+</li>
+<li><p><code>&quot;resource&quot;</code>: This subsection specifies the resource files to copy to the output directory. Resource files are typically non-documentation files that are used by the documentation, such as images.</p>
+</li>
+<li><p><code>&quot;xref&quot;</code>: This subsection specifies the cross reference map files to use. Cross reference map files provide information about how to link to items in other projects.</p>
+</li>
+<li><p><code>&quot;overwrite&quot;</code>: This subsection specifies the overwrite files to use. Overwrite files provide additional metadata for items in the documentation.</p>
+</li>
+<li><p><code>&quot;dest&quot;</code>: This key specifies the destination directory to save the built documentation.</p>
+</li>
+<li><p><code>&quot;template&quot;</code>: This key specifies the templates to use for building the documentation. Templates define the layout of the documentation pages.</p>
+</li>
+<li><p><code>&quot;cleanupCacheHistory&quot;</code>: This key specifies whether to clean up the cache history.</p>
+</li>
+<li><p><code>&quot;disableGitFeatures&quot;</code>: This key specifies whether to disable Git features.</p>
+</li>
+<li><p><code>&quot;globalMetadata&quot;</code>: This subsection specifies global metadata that is available to all documentation pages.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="templates">Templates</h2>
+<p>DocFX uses <a href="https://dotnet.github.io/docfx/docs/template.html">templates</a> to transform the structured data model into the final static website. It is configured in <code>2sxc Docs Generator\docfx.json</code> in the <code>template</code> section:</p>
+<pre><code class="lang-json">    &quot;template&quot;: [
+      &quot;default&quot;,
+      &quot;statictoc&quot;,
+      &quot;material/material&quot;,
+      &quot;templates/2sxc&quot;
+    ],
+</code></pre>
+<p>It has a few pre-defined templates, including:</p>
+<ol>
+<li><p><code>default</code>: This template contains the basic layout of a website, including the home page, table of contents, and other necessary parts of a website.</p>
+</li>
+<li><p><code>statictoc</code>: This template generates a website with a static table of contents.</p>
+</li>
+<li><p><code>material/material</code>: It is a modern <strong>material</strong> template with a responsive design.</p>
+</li>
+</ol>
+<p>We also created 2sxc custom templates for DocFX in <code>/2sxc Docs Generator/templates/2sxc</code> composed of several parts:</p>
+<ul>
+<li><strong>Transformers</strong> in <code>templates\2sxc</code> are responsible for transforming the data model into another data model. They are written in JavaScript and are used to transform the data model into another format.</li>
+<li><strong>Templates</strong> in <code>partials</code> folder define how to render the data model into the final document. They are responsible for generating the HTML from the data model. The placeholders (like {{title}}) are written in <a href="http://mustache.github.io/">Mustache</a>, a logic-less templating language. They are replaced with actual values from the data model when DocFX generates the documentation.</li>
+<li><strong>Styles</strong> in <code>styles</code> folder are written in CSS and are used to style the final document.</li>
+<li><strong>Renderers</strong> in <code>styles</code> folder are responsible for rendering the data model into the final document. They are written in JavaScript and are used to render the data model into other formats, such as HTML.</li>
+</ul>
+<p>More info:</p>
+<ul>
+<li><a href="https://dotnet.github.io/docfx/tutorial/intro_template.html">Introduction to the DocFX Template System</a>.</li>
+<li><a href="https://dotnet.github.io/docfx/tutorial/howto_create_custom_template.html">How-to: Create A Custom Template</a></li>
+</ul>
+<h2 id="template-customizations">Template Customizations</h2>
+<h3 id="special-javascripts-and-webpack">Special JavaScripts and WebPack</h3>
+<p>We have some special TypeScript code which enhances the documentation, like the lightbox feature for images.
+This is in the <code>/2sxc Docs Generator/templates/2sxc/main.ts</code> file.</p>
+<p>It is built with WebPack and must be started manually to compile.
+Note that you can run WebPack and make ongoing changes without rebuilding the whole documentation.</p>
+<h3 id="razor-source-code-support">Razor Source Code Support</h3>
+<p>DocFX uses highlightjs to highlight code blocks.
+By default, it doesn't support Razor syntax highlighting.
+To enable it, we added the following code to the <code>/2sxc Docs Generator/templates/2sxc/images.ts</code> file:</p>
+<pre><code class="lang-html"></code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
