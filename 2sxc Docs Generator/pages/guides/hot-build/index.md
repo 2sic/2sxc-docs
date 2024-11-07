@@ -2,7 +2,7 @@
 uid: Guides.HotBuild.Index
 ---
 
-# HotBuild - ~~ThisApp.Code~~ AppCode - Guide (🌟 v17)
+# HotBuild - AppCode - Guide (🌟 v17)
 
 > [!NOTE]
 > Up to 2sxc 17.01.07 this experimental feature used the folder `/ThisApp`.
@@ -15,11 +15,6 @@ uid: Guides.HotBuild.Index
 This guide will help you understand what this is, how it works, and how to use it.
 
 ➡️ Check out the [HotBuild Introduction Blog](https://2sxc.org/en/blog/post/scale-5-with-2sxc-hotbuild-on-the-5th-day)
-
-> [!WARNING]
-> This is quite a difficult feature to implement.
-> Internally there is a LOT of magic happening,
-> so as of the first release of 2sxc 17 this feature is still to be considered experimental.
 
 ## Background
 
