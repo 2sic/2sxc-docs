@@ -129,25 +129,41 @@ Here is an overview as to what is really implemented:</p>
 <li>It also uses the <code>/filterConfig.yml</code> to decide what C# code to include/exclude</li>
 </ol>
 </li>
+<li><code>/templates/default</code> is the base template to generate everything. It's not in the code, docfx keeps its own copy.</li>
+<li><code>/templates/modern</code> is a standard Bootstrap 5 template which builds on the default</li>
 <li>The <code>/templates/2sxc</code> folder contains all the customizations
 <ol>
-<li>The <code>/partials</code> folder contains the HTML templates</li>
-<li>The <code>/styles</code> folder contains the CSS styles</li>
-<li>The <code>/src</code> folder contains the TypeScript which is compiled with WebPack</li>
+<li>The <code>/layout/_master.tmpl</code> contains the HTML layout</li>
+<li>The <code>/partials</code> folder would fragment HTML templates with placeholders (but not in use)</li>
+<li>The <code>/public</code> folder contains the CSS styles and <em>compiled</em> JavaScript</li>
 </ol>
 </li>
-<li>NPM / WebPack are used to make things better
+<li>The <code>/templates/2sxc/toc.json.js</code> is run by docfx to enhance the C# API TOC</li>
+<li>The <code>/templates/2sxc/src</code> folder contains the TypeScript which is compiled with WebPack to the <code>/public</code> folder
 <ol>
-<li>We use the Fancybox plugin to make images look better. It's installed using NPM and started using custom scripts.</li>
-<li>We also reconfigure highlightjs...</li>
+<li>the <code>/main.ts</code> file is the main entry point</li>
+<li>... with a special export for docfx
+<ol>
+<li>Which will reconfigure <code>highlightjs</code> to support Razor syntax</li>
 </ol>
 </li>
+<li>... and an on-Load watcher
+<ol>
+<li>Which will add a lightbox to all images using Fancybox (installed through NPM)</li>
+<li>...and gallery functionality</li>
+<li>it will add a version switcher</li>
+<li>it will add a permalink XREF system</li>
+<li>it will add blinking architecture illustrations</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>NPM / WebPack are used to make things better</li>
 <li>TODO: Mermaid diagrams</li>
 <li>TODO: Version Switcher</li>
 <li>TODO: Permalink-System</li>
-<li>Todo: TOC customizations</li>
 <li>TODO: blinking architecture illustrations</li>
-<li>TODO:</li>
+<li>TODO: JavaScript Types and Sources...</li>
 </ol>
 <h2 id="configuration">Configuration</h2>
 <p>The <code>docfx.json</code> file is the configuration file for DocFX. It specifies how to generate documentation from your code and Markdown files.</p>

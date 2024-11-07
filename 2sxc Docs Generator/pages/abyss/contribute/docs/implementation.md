@@ -29,19 +29,29 @@ Here is an overview as to what is really implemented:
 1. DocFX will build everything based on the configuration in `docfx.json`
     1. It will also use the `/xrefmap.yml` which contains manually managed short links
     1. It also uses the `/filterConfig.yml` to decide what C# code to include/exclude
+1. `/templates/default` is the base template to generate everything. It's not in the code, docfx keeps its own copy.
+1. `/templates/modern` is a standard Bootstrap 5 template which builds on the default
 1. The `/templates/2sxc` folder contains all the customizations
-    1. The `/partials` folder contains the HTML templates
-    1. The `/styles` folder contains the CSS styles
-    1. The `/src` folder contains the TypeScript which is compiled with WebPack
+    1. The `/layout/_master.tmpl` contains the HTML layout
+    1. The `/partials` folder would fragment HTML templates with placeholders (but not in use)
+    1. The `/public` folder contains the CSS styles and _compiled_ JavaScript
+1. The `/templates/2sxc/toc.json.js` is run by docfx to enhance the C# API TOC
+1. The `/templates/2sxc/src` folder contains the TypeScript which is compiled with WebPack to the `/public` folder
+    1. the `/main.ts` file is the main entry point
+    1. ... with a special export for docfx
+        1. Which will reconfigure `highlightjs` to support Razor syntax
+    1. ... and an on-Load watcher
+        1. Which will add a lightbox to all images using Fancybox (installed through NPM)
+        1. ...and gallery functionality
+        1. it will add a version switcher
+        1. it will add a permalink XREF system
+        1. it will add blinking architecture illustrations
 1. NPM / WebPack are used to make things better
-    1. We use the Fancybox plugin to make images look better. It's installed using NPM and started using custom scripts.
-    1. We also reconfigure highlightjs...
 1. TODO: Mermaid diagrams
 1. TODO: Version Switcher
 1. TODO: Permalink-System
-1. Todo: TOC customizations
 1. TODO: blinking architecture illustrations
-1. TODO:
+1. TODO: JavaScript Types and Sources...
 
 ## Configuration
 
