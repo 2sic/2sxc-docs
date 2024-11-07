@@ -108,12 +108,6 @@
         <article data-uid="Guides.HotBuild.Index">
 <h1 id="hotbuild---appcode---guide--v17">HotBuild - AppCode - Guide (🌟 v17)</h1>
 
-<div class="NOTE">
-<h5>Note</h5>
-<p>Up to 2sxc 17.01.07 this experimental feature used the folder <code>/ThisApp</code>.</p>
-<p>Starting with 2sxc 17.02.00 it uses the folder <code>/AppCode</code> instead.</p>
-<p>This documentation is already modified to reflect this change.</p>
-</div>
 <p>2sxc 17 introduces a major new feature <strong>HotBuild</strong>: Precompiled App Code.
 This guide will help you understand what this is, how it works, and how to use it.</p>
 <p>➡️ Check out the <a href="https://2sxc.org/en/blog/post/scale-5-with-2sxc-hotbuild-on-the-5th-day">HotBuild Introduction Blog</a></p>
@@ -201,10 +195,9 @@ This means that you can edit the code, save it, and it will be recompiled and us
 <li><p>Automatically invalidates dependently compiled Razor/C# so they too will be recompiled when used.</p>
 </li>
 </ol>
-<h2 id="tips-for-now-wip-experimental">Tips for now (WIP experimental)</h2>
+<h2 id="tips">Tips</h2>
 <ol>
-<li><p>Classes created in the <code>/AppCode/</code> folder must be in the namespace <code>AppCode</code> or anything below it.
-This is because the compiler will only compile classes in this namespace.</p>
+<li><p>Classes created in the <code>/AppCode/</code> folder should be in the namespace <code>AppCode</code> or anything below it.</p>
 </li>
 <li><p>If you're using Dnn, you must add <code>@using AppCode</code> to the top of your Razor files to activate the new compiler.
 This will also activate C# 8.0.</p>
@@ -219,21 +212,19 @@ In this case, the class needs to get some context, which it gets automatically i
 Note that for this to work, your class needs no constructor or an empty constructor.</p>
 </li>
 </ol>
-<h2 id="todo-tech-wise">TODO: Tech-wise</h2>
-<ol>
-<li>Create insights page where compiling and errors are shown
-<ol>
-<li>also show what was in the compiled DLL - eg. classes?</li>
-</ol>
-</li>
-<li>Detect compile issues and offer special button to debug</li>
-</ol>
+<h2 id="debugging">Debugging</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Any compiling / HotBuilding is logged to the insights.
+If problems appear, check that out.</p>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ul>
 <li>Added v17.00 2023-12</li>
 <li>Added support for sub folders in v17.02</li>
 <li>Added support for editions in v17.02</li>
+<li>Changed namespace from <code>/ThisApp</code> to <code>/AppCode</code> in v17.02</li>
 </ul>
 <p>Shortlink: <a href="https://go.2sxc.org/hot-build">https://go.2sxc.org/hot-build</a></p>
 

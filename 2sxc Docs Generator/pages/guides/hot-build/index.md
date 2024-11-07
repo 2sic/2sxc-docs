@@ -4,13 +4,6 @@ uid: Guides.HotBuild.Index
 
 # HotBuild - AppCode - Guide (🌟 v17)
 
-> [!NOTE]
-> Up to 2sxc 17.01.07 this experimental feature used the folder `/ThisApp`.
->
-> Starting with 2sxc 17.02.00 it uses the folder `/AppCode` instead.
->
-> This documentation is already modified to reflect this change.
-
 2sxc 17 introduces a major new feature **HotBuild**: Precompiled App Code.
 This guide will help you understand what this is, how it works, and how to use it.
 
@@ -117,10 +110,9 @@ As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or 
 
 1. Automatically invalidates dependently compiled Razor/C# so they too will be recompiled when used.
 
-## Tips for now (WIP experimental)
+## Tips
 
-1. Classes created in the `/AppCode/` folder must be in the namespace `AppCode` or anything below it.
-   This is because the compiler will only compile classes in this namespace.
+1. Classes created in the `/AppCode/` folder should be in the namespace `AppCode` or anything below it.
 
 1. If you're using Dnn, you must add `@using AppCode` to the top of your Razor files to activate the new compiler.
    This will also activate C# 8.0.
@@ -134,11 +126,11 @@ As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or 
    `var helper = GetService<YourService>()`.
    Note that for this to work, your class needs no constructor or an empty constructor.
 
-## TODO: Tech-wise
+## Debugging
 
-1. Create insights page where compiling and errors are shown
-    1. also show what was in the compiled DLL - eg. classes?
-1. Detect compile issues and offer special button to debug
+> [!TIP]
+> Any compiling / HotBuilding is logged to the insights.
+> If problems appear, check that out.
 
 
 ---
@@ -148,5 +140,6 @@ As of now, only Typed Razor and Typed C# files (inheriting from `RazorTyped` or 
 * Added v17.00 2023-12
 * Added support for sub folders in v17.02
 * Added support for editions in v17.02
+* Changed namespace from `/ThisApp` to `/AppCode` in v17.02
 
 Shortlink: <https://go.2sxc.org/hot-build>
