@@ -4,7 +4,7 @@
  * We cannot use lambdas, because they are not supported by DocFx
  */
 const ns = require('./api-meta.js');
-const dbg = require('./toc-debug.js');
+const dbg = require('../toc/toc-debug.js');
 const toc = require('./toc-tools.js');
 toc.namespacePrefixes = ns.prefixes;
 toc.truncEllipsis = "…";

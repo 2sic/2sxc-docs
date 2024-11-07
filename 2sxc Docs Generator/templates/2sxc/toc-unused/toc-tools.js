@@ -1,8 +1,8 @@
 
-const dbg = require('./toc-debug.js');
+const dbg = require('../toc/toc-debug.js');
 
 // Polyfill for Object.assign
-const polyfills = require('./polyfill-object.assign.js');
+const polyfills = require('../toc/polyfill-object.assign.js');
 
 let count = 0;
 

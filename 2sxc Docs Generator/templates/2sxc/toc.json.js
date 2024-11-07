@@ -6,9 +6,10 @@
 // Believe it generates the JSON for the .net API TOC
 // Experimenting with enhancing
 
-const tocTools = require('./toc-tools-new.js');
+const tocTools = require('./toc/toc-tools-new.js');
 
 const highlights = {
+  "AppCode": "⭐",
   "Custom.Data.CustomItem": "💪🏽",
   "Custom.Hybrid": "🪴",
   "Custom.Hybrid.ApiTyped": "🪴",
