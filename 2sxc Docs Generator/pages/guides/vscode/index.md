@@ -293,6 +293,14 @@ Avoid the following:
 1. Anything marked with `[EditorBrowsable(EditorBrowsableState.Never)]` - IntelliSense will not show these APIs
 1. Properties beginning with an underscore, eg `_Something`
 
+## Known Issues when C# IntelliSense is not Working
+
+> [!TIP]
+> Here we try to collect known issues and solutions.
+
+1. A razor file has the same name as a C# class in the AppCode Folder  
+    _This will confuse the IntelliSense, since the Razor file will magically be seen as a class with the same name._
+    Solution: Rename the Razor file to something else.
 
 
 ## Configure an App for JavaScript IntelliSense
