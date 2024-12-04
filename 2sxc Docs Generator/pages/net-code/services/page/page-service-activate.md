@@ -52,6 +52,7 @@ Features you can activate as of v12.02
     Includes `2sxc.Toolbars`, `2sic.JsCms` and `2sic.JsCore`
 * `Cms.Wysiwyg` - activate special CSS for content made in the rich WYSIWYG editor _WIP in v15.01_  
     Usually auto-activated by `CmsService.Show(some-wysiwyg-field)`
+* `Network.EncryptBody` _new v18.04_ - provide a PKI public key for forms to [encrypt the POST body](xref:Abyss.Security.EncryptBody.Index).
 
 _Note: The system will auto-cascade features - so if you activate a feature which needs other features, these are automatically activated as well._
 
