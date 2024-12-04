@@ -6,7 +6,7 @@ uid: Abyss.Contribute.Docs.Index
 
 We suggest you start by reading the [Technical Implementation of the Docs](xref:Abyss.Contribute.Docs.Implementation) to understand how everything works.
 
-Then you can read about [Building the Documentation](xref:Abyss.Contribute.Docs.Build) to understand how to build and test your changes.
+Then you can read about [Building the Documentation](xref:Abyss.Contribute.Docs.Build.Index) to understand how to build and test your changes.
 
 ## Writing Content
 

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Building the Documentation | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Build DocFX Theme and Assets | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Building the Documentation | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Build DocFX Theme and Assets | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/build.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/build-docfx-theme.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,81 +105,50 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Build">
-<h1 id="building-the-documentation">Building the Documentation</h1>
+        <article data-uid="Abyss.Contribute.Docs.BuildDocfxTheme">
+<h1 id="build-docfx-theme-and-assets">Build DocFX Theme and Assets</h1>
 
-<div class="TIP">
-<h5>Tip</h5>
-<p>These instructions should get you started right away.
-But there are many things which make your work better and easier,
-so do take the time to read about hove everything works
-before making larger changes.</p>
-<p>Even simple things like images have great tricks you want to know about.</p>
-</div>
-<h2 id="pre-requisites">Pre-Requisites</h2>
-<p>Before beginning with the documentation process,
-ensure that you have set up the complete 2sxc/EAV development environment.
-This environment should be configured and functional for the development of C# and JavaScript code.
-For more information on this setup, please refer to the <a class="xref" href="../code.html">Code</a> documentation.</p>
-<h3 id="start-with-visual-studio-code">Start with Visual Studio Code</h3>
-<p>We always use VS Code to work in the docs, which is what we're explaining here.
-Note that we won't explain how to install VS-Code or how to do a git pull.</p>
-<p>Please open the <code>2sxc Docs.code-workspace</code> <strong>Workspace</strong> in VS Code, which will automatically load all the necessary settings and extensions.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Opening the workspace in VS-Code will ask you to install the recommended extensions.
-You should really do this, as it makes life much easier
-and includes a simple web-server to test the docs.</p>
-</div>
-<p>Once you've installed all the plugins, you can see the <code>Go Live</code> button in the bottom right corner of VS-Code.
-When you click it, a web server will be started hosting the <code>/docs</code> folder:</p>
-<div gallery="vs-code">
-    <img src="../../../pages/abyss/contribute/docs/assets/vs-code-go-live.jpg">
-    <img src="../../../pages/abyss/contribute/docs/assets/preview-docs-in-browser.jpg">
-</div>
-<h3 id="install-docfx">Install DocFX</h3>
-<p>The documentation tool we use is <strong>docfx</strong>, which needs to be installed on your development machine. You can install it using the following command:</p>
-<pre><code class="lang-cmd">dotnet tool install -g docfx
-</code></pre>
-<h2 id="your-first-build">Your First Build</h2>
-<p>We've configured the most important build commands in VS-Code so you can just get started.
-They are located in <code>.vscode/tasks.json</code>.
-Hit <code>ctrl+b</code> to see the build-commands.
-These two are of interest:</p>
+<p>DocFX includes a default theme which is used to generate the documentation.
+In addition to that, we have custom JavaScripts and CSS files which are used to enhance the documentation.
+Normally you don't need to build them, as they are already included in the repo.
+But in some cases you may want to make changes, so you should understand how to build them.</p>
+<h2 id="parts-that-make-it-work">Parts that Make it Work</h2>
+<p>The parts that make it work are</p>
 <ul>
-<li><strong>docfx build</strong> will compile the real source code, generate the docs from the XML-comments and merge them with this project's markdown files.</li>
-<li><strong>docfx: build docs (skip building API, faster for documentation)</strong> will only build the markdown files, which is much faster if you're only working on the docs.</li>
+<li><strong>NPM</strong> manages the packages and scripts</li>
+<li><strong>WebPack</strong> compiles the TypeScript and SCSS</li>
+<li><strong>TypeScript</strong> is used to write the JavaScript</li>
+<li><strong>SCSS</strong> is used to write the CSS</li>
+<li><strong>Fancybox</strong> is used for the lightbox</li>
+<li><strong>HighlightJS</strong> is used for syntax highlighting</li>
+<li><code>/templates/2sxc/src</code> contains the TypeScript and SCSS files</li>
 </ul>
+<h2 id="setup">Setup</h2>
+<p>Make sure you have node/npm installed.
+Then let NPM install all dependencies using continuous-integration.
+Run this in the docs folder (ideally just from the VS-Code terminal):</p>
+<pre><code class="lang-cmd">npm ci
+</code></pre>
+<h2 id="build">Build</h2>
+<p>To build the assets, run this in the docs folder (ideally just from the VS-Code terminal):</p>
+<pre><code class="lang-cmd">npm run build
+</code></pre>
+<p>...or use <code>ctrl+shift+b</code> and select <code>build</code>
+...or right-click on the <code>build</code> task in the VS-Code task-runner.</p>
 <div gallery="vs-code">
-  <img src="../../../pages/abyss/contribute/docs/assets/build-in-vs-code.jpg" class="full-width">
+  <img src="../../../pages/abyss/contribute/docs/assets/build-in-vs-code.jpg">
 </div>
-<h2 id="get-started">Get Started</h2>
-<p>The documentation development takes place in this <a href="https://github.com/2sic/2sxc-docs">2sxc-docs</a> GitHub repository.
-The documentation is generated from *.yml and <code>*.md</code> files and 2sxc/EAV's C# and JavaScript source code.</p>
-<p>The npm task <strong>import</strong> is an optional step,
-used only when there is a need to prepare JavaScript-related files for inclusion in the documentation.</p>
-<p>To execute this task, navigate to the <code>2sxc Docs Generator</code> directory and run the <strong>import</strong> task with npm. Here are the necessary commands:</p>
-<pre><code class="lang-cmd">cd &quot;C:\Projects\2sxc\2sxc-docs\2sxc Docs Generator&quot;
-npm run import
-</code></pre>
-<p>This command will execute the <strong>import</strong> task defined in your <strong>package.json</strong> file, preparing your 2sxc JavaScript related files for documentation generation.</p>
-<p>Once the documentation server is running, you can access it via your web browser at http://localhost:8080.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>To verify whether docfx can successfully build the documentation, use the following command:</p>
-<pre><code class="lang-cmd">cd &quot;C:\Projects\2sxc\2sxc-docs\2sxc Docs Generator&quot;
-docfx
-</code></pre>
-<p>The successful execution of this command should display the message: <code>Build succeeded</code>.</p>
-<p>If docfx encounters an error when building a .NET project, you can manually attempt to build the project. This allows you to get more information about the error and address it. You can do this with the following commands:</p>
-<pre><code class="lang-cmd">cd c:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn
-dotnet build
-</code></pre>
-<p>Upon successful execution, you should see the message: <code>Build succeeded</code>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>New in 2023-09 v16.06</li>
+</ul>
+<p>Shortlink: <a href="https://go.2sxc.org/build">https://go.2sxc.org/build</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/build.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/build-docfx-theme.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
