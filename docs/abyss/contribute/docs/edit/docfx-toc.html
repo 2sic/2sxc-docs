@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Table of Contents in DocFx | 2sxc 18 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Table of Contents in DocFx | 2sxc 18 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/edit/docfx-toc.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+      
+      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Abyss.Contribute.Docs.Edit.Toc">
+<h1 id="table-of-contents-in-docfx">Table of Contents in DocFx</h1>
+
+<p>DocFx uses YAML files called <code>toc.yml</code> for the table of contents.
+Typically these will be small files located in various folders, which define the structure of the documentation.
+Here's an example:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  href: index.md
+  items:
+  - name: What is 2sxc
+    href: what-is-2sxc.md
+  - name: Why 2sxc
+    href: why-2sxc.md
+</code></pre>
+<p>There are a few important things to know:</p>
+<h2 id="sections-in-the-table-of-contents">Sections in the Table of Contents</h2>
+<p>Each entry looks a bit like this:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  thing1: someValue
+  thing2: anotherValue
+  thing3: yetAnotherValue
+  items:
+  - name: This is a Sub Section
+    href: sub-section.md
+  - name: This is another Sub Section
+    href: another-sub-section.md
+</code></pre>
+<p>As you can see, it expects a <code>- name</code> prefixed by a dash + space.
+The following lines which belong to this name must be indented by 2 spaces.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>YAML uses indentation to define the structure.</p>
+</div>
+<p>The <code>items</code> key is a special key which contains a list of sub-sections.
+Anything below that is again indented.
+Note that we rarely use <code>items</code>, since we usually just reference other TOC files (explained below).</p>
+<h2 id="linking-to-files--websites">Linking to Files &amp; Websites</h2>
+<p>Typically we'll reference another file like this:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  href: index.md
+- name: What is 2sxc
+  href: what-is-2sxc.md
+- name: Something in a subfolder
+  href: subfolder/some-file.md
+- name: Something in a parent folder
+  href: ../some-file.md
+</code></pre>
+<p>You can also create links to external websites like this:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  href: https://www.2sxc.org
+</code></pre>
+<h2 id="linking-with-permalinks-uids">Linking with Permalinks (UIDs)</h2>
+<p>For more robust linking we usually use UIDs.
+In this scenario, pages have a small header like this:</p>
+<pre><code class="lang-yaml">---
+uid: Abyss.Contribute.Docs.Edit.Toc
+---
+</code></pre>
+<p>The <code>toc.yml</code> can then reference it like this:</p>
+<pre><code class="lang-yaml">- name: Edit Table of Contents
+  uid: Abyss.Contribute.Docs.Edit.Toc
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is very powerful because it allows us to move pages around without breaking links.</p>
+<p>So for extensive documentations, we always use UIDs.</p>
+</div>
+<h2 id="linking-to-namespaces-and-objects">Linking to Namespaces and Objects</h2>
+<p>The same UID concept applies to namespaces and objects.
+Their UIDs are automatically generated by DocFx, and match the full namespaces of the C# objects.</p>
+<pre><code class="lang-yaml">- name: Namespace
+  uid: ToSic.Eav.Data
+- name: Class
+  uid: ToSic.Eav.Data.IEntity
+- name: Property
+  uid: ToSic.Eav.Data.IEntity.Title
+</code></pre>
+<h2 id="adding-a-few-sub-nodes-in-the-toc">Adding a few Sub-Nodes in the TOC</h2>
+<p>If you want to add a few sub-nodes to a TOC, you can</p>
+<ol>
+<li>add them directly below <code>items</code></li>
+<li>reference another TOC file</li>
+</ol>
+<p>Here's how you would add a few sub-nodes directly, which open when the <code>Introduction</code> page is visited:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  href: index.md
+  items:
+  - name: What is 2sxc
+    href: what-is-2sxc.md
+  - name: Why 2sxc
+    href: why-2sxc.md
+</code></pre>
+<p>You can also do the same without a real <code>Introduction</code> page,
+so that the <code>Introduction</code> title is shown, but clicking it will <em>only unfold the menu</em>:</p>
+<pre><code class="lang-yaml">- name: Introduction
+  items:
+  - name: What is 2sxc
+    href: what-is-2sxc.md
+  - name: Why 2sxc
+    href: why-2sxc.md
+</code></pre>
+<p>If you want to reference another TOC file, continue below...</p>
+<h2 id="structuring---loose-vs-tight">Structuring - Loose vs. Tight</h2>
+<p>The TOC can be structured in a loose or tight way.</p>
+<h3 id="loose-structure">Loose Structure</h3>
+<p>The loose way assumes that there is no real hierarchy, and that the TOC is just a list of links.
+When docfx shows a page, it will find all <code>toc.yml</code> files which reference it and pick &quot;the best&quot; TOC to show.
+In this scenario, there is no overall structure.
+To explain this, let's assume we have 3 files:</p>
+<p>The root <code>toc.yml</code> which links to various pages including the <code>/abyss/index.md</code></p>
+<pre><code class="lang-yaml">- name: Home
+  href: index.md
+- name: Abyss
+  href: abyss/index.md
+- name: Guides
+  items:
+  - name: Guide 1
+    href: guide1.md
+  - name: Guide 2
+    href: guide2.md
+</code></pre>
+<p>The <code>abyss/toc.yml</code> which also links the <code>/abyss/index.md</code></p>
+<pre><code class="lang-yaml">- name: Abyss
+  href: index.md
+- name: Something in the Abyss
+  href: something.md
+</code></pre>
+<p>The <code>/abyss/index.md</code> file not shown here.</p>
+<p>The resulting output will do this:</p>
+<ol>
+<li><p>When the user is on the root, he will see the <code>Home</code> and <code>Abyss</code> links.
+<strong>These will not have sub-links!</strong></p>
+<pre><code class="lang-text">- Home
+- Abyss     # note: no (+) to unfold
++ Guides    # note: (+) to unfold as it's a true hierarchy
+</code></pre>
+</li>
+<li><p>When the user is on the <code>/abyss/index.md</code> page,
+the initial TOC will not be shown any more, as it's not relevant.
+The TOC will now show the <code>Abyss</code> TOC, which will show the <code>Abyss</code> link</p>
+<pre><code class="lang-text">- Abyss
+- Something in the Abyss
+</code></pre>
+</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>We call this loosely structured, because the TOCs don't really have a hierarchy.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is not the recommended way for most scenarios, but there are cases
+where this is a good choice.
+An example is the main menu, where we don't want to have dropdowns for every sub-item.</p>
+</div>
+<h3 id="tight-structure">Tight Structure</h3>
+<p>The tight way assumes that there is a clear hierarchy, and that the TOC is a tree.
+In this scenario, the root <code>toc.yml</code> will reference all sub-TOCs, and each sub-TOC will reference its sub-TOCs.
+To explain this, let's assume we have 3 files:</p>
+<p>The root <code>toc.yml</code> which links to the <code>/abyss/toc.yml</code></p>
+<pre><code class="lang-yaml">- name: Home
+  href: index.md
+- name: Abyss
+  href: abyss/toc.yml
+</code></pre>
+<p>The <code>abyss/toc.yml</code> which links the <code>/abyss/index.md</code></p>
+<pre><code class="lang-yaml">- name: Abyss
+  href: index.md
+- name: Something in the Abyss
+  href: something.md
+</code></pre>
+<p>The <code>/abyss/index.md</code> file not shown here.</p>
+<p>The resulting output will do this:</p>
+<ol>
+<li><p>When the user is on the root, he will see the <code>Home</code> and <code>Abyss</code> links.
+<strong>These will have sub-links!</strong></p>
+<pre><code class="lang-text">- Home
++ Abyss   # note: (+) to unfold
+</code></pre>
+</li>
+<li><p>When the user is on the <code>/abyss/index.md</code> page, the initial TOC will still be shown.
+The TOC will now <strong>also</strong> show the <code>Abyss</code> TOC, which will show the <code>Abyss</code> link.</p>
+<pre><code class="lang-text">- Home
++ Abyss   # note: (+) to unfold
+  - Abyss
+  - Something in the Abyss
+</code></pre>
+</li>
+</ol>
+<h2 id="combine-href-and-uid">Combine href and uid</h2>
+<p>You can combine <code>href</code> and <code>uid</code> like this:</p>
+<pre><code class="lang-yaml">- name: Abyss
+  uid: Abyss.Contribute.Docs.Edit.Toc
+  href: abyss/toc.yml
+</code></pre>
+<p>This makes the word <code>Abyss</code> be a link to <code>Abyss.Contribute.Docs.Edit.Toc</code>,
+and also connects the hierarchy.
+So the output &amp; behavior will be:</p>
+<pre><code class="lang-text">+ Abyss   # note: (+) to unfold
+</code></pre>
+<p>You can now click on the <code>Abyss</code> link to go to the <code>Abyss.Contribute.Docs.Edit.Toc</code> page.
+You can also click on the <code>+</code> to unfold the <code>Abyss</code> TOC.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is usually our recommended way to structure the TOC.</p>
+<p>It allows you to make the parent-node the &quot;overview&quot; page, and the child-nodes the details.</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/edit/docfx-toc.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

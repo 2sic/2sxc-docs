@@ -13,7 +13,7 @@ Then you can read about [Building the Documentation](xref:Abyss.Contribute.Docs.
 If you're new to wikis or github comments / documentation, you may be a bit lost when it comes to markdown.
 I think the most important things you need to know are:
 
-1. [Working with Markdown](xref:Abyss.Contribute.Docs.Markdown)
+1. [Working with Markdown](xref:Abyss.Contribute.Docs.Edit.MarkdownText)
 1. [Working with Images, Lightboxes and Galleries](xref:Abyss.Contribute.Docs.Images)
 
 TODO: WORKING WITH TOC etc.
