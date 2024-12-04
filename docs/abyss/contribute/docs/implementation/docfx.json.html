@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Contribute to this Documentation | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Implementation: docfx.json configuration | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Contribute to this Documentation | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Implementation: docfx.json configuration | 2sxc 18 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation/docfx.json.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -36,7 +36,7 @@
       
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -55,8 +55,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,28 +105,43 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Index">
-<h1 id="contribute-to-this-documentation">Contribute to this Documentation</h1>
+        <article data-uid="Abyss.Contribute.Docs.Implementation.DocfxJson">
+<h1 id="implementation-docfxjson-configuration">Implementation: docfx.json configuration</h1>
 
-<p>We suggest you start by reading the <a class="xref" href="implementation/index.html">Technical Implementation of the Docs</a> to understand how everything works.</p>
-<p>Then you can read about <a class="xref" href="build/index.html">Building the Documentation</a> to understand how to build and test your changes.</p>
-<h2 id="writing-content">Writing Content</h2>
-<p>If you're new to wikis or github comments / documentation, you may be a bit lost when it comes to markdown.
-I think the most important things you need to know are:</p>
-<ol>
-<li><a class="xref" href="edit/markdown.html">Working with Markdown</a></li>
-<li><a class="xref" href="edit/images.html">Working with Images, Lightboxes and Galleries</a></li>
-</ol>
-<p>TODO: WORKING WITH TOC etc.</p>
-<h2 id="copyright">Copyright</h2>
-<p><img src="https://licensebuttons.net/l/by/4.0/88x31.png" alt="CC-BY">
-All docs are licensed as <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
-By contributing you agree that your work can be used in this way.</p>
+<p>The <code>docfx.json</code> file is the configuration file for DocFX. It specifies how to generate documentation from your code and Markdown files.</p>
+<p>Our <code>docfx.json</code> file is configured to generate documentation from C# project files and pre-parsed JavaScript files, build documentation pages from Markdown and YAML files, copy resource files to the output directory, use overwrite files to provide additional metadata, and use multiple templates to define the layout of the documentation pages. The built documentation is saved to the <code>../docs</code> directory.</p>
+<p>Here's a breakdown of our <code>docfx.json</code> file:</p>
+<ul>
+<li><p><code>&quot;metadata&quot;</code>: This section is used to configure the metadata extraction process. It specifies the source files to extract metadata from, the destination to save the extracted metadata, and other options that are necessary to compile cs projects using <a href="https://gist.github.com/DustinCampbell/32cd69d04ea1c08a16ae5c4cd21dd3a3">MSBuildWorkspace</a>.</p>
+</li>
+<li><p><code>&quot;build&quot;</code>: This section is used to configure the documentation build process. It specifies the source files to build documentation from, the destination to save the built documentation, and other options.</p>
+<ul>
+<li><p><code>&quot;content&quot;</code>: This subsection specifies the source files to build documentation from. Each item in the array specifies a set of files and options for those files.</p>
+</li>
+<li><p><code>&quot;resource&quot;</code>: This subsection specifies the resource files to copy to the output directory. Resource files are typically non-documentation files that are used by the documentation, such as images.</p>
+</li>
+<li><p><code>&quot;xref&quot;</code>: This subsection specifies the cross reference map files to use. Cross reference map files provide information about how to link to items in other projects.</p>
+</li>
+<li><p><code>&quot;overwrite&quot;</code>: This subsection specifies the overwrite files to use. Overwrite files provide additional metadata for items in the documentation.</p>
+</li>
+<li><p><code>&quot;dest&quot;</code>: This key specifies the destination directory to save the built documentation.</p>
+</li>
+<li><p><code>&quot;template&quot;</code>: This key specifies the templates to use for building the documentation. Templates define the layout of the documentation pages.</p>
+</li>
+<li><p><code>&quot;cleanupCacheHistory&quot;</code>: This key specifies whether to clean up the cache history.</p>
+</li>
+<li><p><code>&quot;disableGitFeatures&quot;</code>: This key specifies whether to disable Git features.</p>
+</li>
+<li><p><code>&quot;globalMetadata&quot;</code>: This subsection specifies global metadata that is available to all documentation pages.</p>
+</li>
+</ul>
+</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation/docfx.json.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

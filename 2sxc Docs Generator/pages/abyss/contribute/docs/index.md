@@ -4,7 +4,7 @@ uid: Abyss.Contribute.Docs.Index
 
 # Contribute to this Documentation
 
-We suggest you start by reading the [Technical Implementation of the Docs](xref:Abyss.Contribute.Docs.Implementation) to understand how everything works.
+We suggest you start by reading the [Technical Implementation of the Docs](xref:Abyss.Contribute.Docs.Implementation.Index) to understand how everything works.
 
 Then you can read about [Building the Documentation](xref:Abyss.Contribute.Docs.Build.Index) to understand how to build and test your changes.
 
@@ -14,7 +14,7 @@ If you're new to wikis or github comments / documentation, you may be a bit lost
 I think the most important things you need to know are:
 
 1. [Working with Markdown](xref:Abyss.Contribute.Docs.Edit.MarkdownText)
-1. [Working with Images, Lightboxes and Galleries](xref:Abyss.Contribute.Docs.Images)
+1. [Working with Images, Lightboxes and Galleries](xref:Abyss.Contribute.Docs.Edit.Images)
 
 TODO: WORKING WITH TOC etc.
 

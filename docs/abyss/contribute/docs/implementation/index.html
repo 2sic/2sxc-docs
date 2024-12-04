@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Contribute to this Documentation | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Technical Implementation of the Docs | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Contribute to this Documentation | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Technical Implementation of the Docs | 2sxc 18 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -36,7 +36,7 @@
       
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -55,8 +55,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,28 +105,59 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Index">
-<h1 id="contribute-to-this-documentation">Contribute to this Documentation</h1>
+        <article data-uid="Abyss.Contribute.Docs.Implementation.Index">
+<h1 id="technical-implementation-of-the-docs">Technical Implementation of the Docs</h1>
 
-<p>We suggest you start by reading the <a class="xref" href="implementation/index.html">Technical Implementation of the Docs</a> to understand how everything works.</p>
-<p>Then you can read about <a class="xref" href="build/index.html">Building the Documentation</a> to understand how to build and test your changes.</p>
-<h2 id="writing-content">Writing Content</h2>
-<p>If you're new to wikis or github comments / documentation, you may be a bit lost when it comes to markdown.
-I think the most important things you need to know are:</p>
+<h2 id="output--hosting">Output &amp; Hosting</h2>
+<p>This documentation is static HTML which can be hosted on any web server.</p>
+<p>As of now it's hosted an GitHub Pages, which automatically hosts the <code>/docs</code> folder of this repository.</p>
+<h2 id="how-it-works">How it Works</h2>
+<p>The way it works is that it takes data from 2 sources</p>
 <ol>
-<li><a class="xref" href="edit/markdown.html">Working with Markdown</a></li>
-<li><a class="xref" href="edit/images.html">Working with Images, Lightboxes and Galleries</a></li>
+<li>All the comments in the C# source code referenced in <code>docfx.json</code></li>
+<li>All the markdown files in the <a href="https://github.com/2sic/2sxc-docs">2sxc docs</a> repo</li>
 </ol>
-<p>TODO: WORKING WITH TOC etc.</p>
-<h2 id="copyright">Copyright</h2>
-<p><img src="https://licensebuttons.net/l/by/4.0/88x31.png" alt="CC-BY">
-All docs are licensed as <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a>.
-By contributing you agree that your work can be used in this way.</p>
+<p>...and merges them together to create HTML.</p>
+<p>When pushed back to the repo, GitHub which automatically hosts the final solution on <a href="https://docs.2sxc.org">https://docs.2sxc.org</a></p>
+<h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
+<p>Since this is a large documentation it needs a bit more than just the standard DocFX setup.
+Here is an overview as to what is really implemented:</p>
+<ol>
+<li>DocFX will build everything based on the configuration in <code>docfx.json</code>
+<ol>
+<li>It will also use the <code>/xrefmap.yml</code> which contains manually managed short links</li>
+<li>It also uses the <code>/filterConfig.yml</code> to decide what C# code to include/exclude</li>
+</ol>
+</li>
+<li>The <a class="xref" href="docfx-templates.html">Templates</a> generate everything, add JS and much more</li>
+<li>The <code>/templates/2sxc/toc.json.js</code> is run by docfx to enhance the C# API TOC</li>
+<li>The <code>/templates/2sxc/src</code> folder contains the TypeScript which is compiled with WebPack to the <code>/public</code> folder</li>
+</ol>
+<p>More...</p>
+<ol>
+<li>TODO: Mermaid diagrams</li>
+<li>TODO: Version Switcher</li>
+<li>TODO: Permalink-System</li>
+<li>TODO: blinking architecture illustrations</li>
+<li>TODO: JavaScript Types and Sources...</li>
+</ol>
+<h2 id="template-customizations">Template Customizations</h2>
+<h3 id="special-javascripts-and-webpack">Special JavaScripts and WebPack</h3>
+<p>We have some special TypeScript code which enhances the documentation, like the lightbox feature for images.
+This is in the <code>/2sxc Docs Generator/templates/2sxc/main.ts</code> file.</p>
+<p>It is built with WebPack and must be started manually to compile.
+Note that you can run WebPack and make ongoing changes without rebuilding the whole documentation.</p>
+<h3 id="razor-source-code-support">Razor Source Code Support</h3>
+<p>DocFX uses highlightjs to highlight code blocks.
+By default, it doesn't support Razor syntax highlighting.</p>
+<p>To enable it, we added the following code to the <code>/2sxc Docs Generator/templates/2sxc/images.ts</code> file:</p>
+<pre><code class="lang-html">TODO:
+</code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/2sxc Docs Generator/pages/abyss/contribute/docs/implementation/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

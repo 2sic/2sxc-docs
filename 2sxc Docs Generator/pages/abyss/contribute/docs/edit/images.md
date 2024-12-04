@@ -1,12 +1,10 @@
 ---
-uid: Abyss.Contribute.Docs.Images
+uid: Abyss.Contribute.Docs.Edit.Images
 ---
 
-# Working with Images, Lightboxes and Galleries
+# Working with Images & Lightboxes
 
-## File Handling
-
-### Location for Normal Content
+## Location for Normal Files
 
 This applies to screenshots and other illustrations such as diagrams, etc.
 
@@ -17,7 +15,7 @@ This makes it easier to understand the context and also makes it easier to maint
 > Images should usually be placed in a subfolder called `./assets/` near
 > the markdown file which references them.
 
-### Location for Re-Used Logos
+## Location for Re-Used Logos
 
 Use the `/assets` root folder and stick to the structure there:
 
@@ -27,11 +25,11 @@ Use the `/assets` root folder and stick to the structure there:
 
 If you have any other image/file needs which need different structure, please discuss with Daniel @iJungleboy.
 
-### File Naming
+## File Naming
 
 Use lower case, kebab-case file names for images, like `my-image.png`.
 
-### Original Images
+## Original Images
 
 Always keep the original images in the repository, in the same folder as the final image.
 For example, we have a lot of `.snagx` files (SnagIt) which would allow us to make adjustments like correct arrows etc.
@@ -47,37 +45,17 @@ Images can be inserted in two ways:
 We usually prefer the `<img>` syntax, because we often need to add classes or other attributes.
 
 
-## Lightboxes & Galleries
-
 ## Lightboxes
 
 These docs were crafted to include Fancybox lightboxes for images.
 Images will automatically get a lightbox attached when running in the browser.
 
-This happens automatically because the [technical implementation](xref:Abyss.Contribute.Docs.Implemtation)
+This happens automatically because the [technical implementation](xref:Abyss.Contribute.Docs.Implementation.Index)
 has a special JS file which will automatically attach the lightbox to all images.
 
 This happens in the `/templates/2sxc/src/images.ts` file.
 
 Note that it only applies this to images which are _not_ logos or other special images.
-
-## Galleries
-
-Galleries are made by placing a `<div gallery="name">` around a set of images.
-This has 2 effects:
-
-1. All images will automatically be sized much smaller, so they appear as thumbnails.
-2. The javascript which attaches the lightbox will know that these images belong together.
-
-Here's an example:
-
-```html
-<div gallery="existing-inherit">
-  <img src="./assets/existing-inherit-01.jpg">
-  <img src="./assets/existing-inherit-02.jpg">
-  <img src="./assets/existing-inherit-03.jpg">
-</div>
-```
 
 ---
 
