@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Class _Help | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Class SecureEndpointAttribute | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class _Help | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Class SecureEndpointAttribute | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=AppCode__Help.md&amp;value=---%0Auid%3A%20AppCode._Help%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_WebApi_SecureEndpointAttribute.md&amp;value=---%0Auid%3A%20ToSic.Sxc.WebApi.SecureEndpointAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,30 +105,29 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AppCode._Help">
+        <article data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute">
 
 
 
-  <h1 id="AppCode__Help" data-uid="AppCode._Help" class="text-break">
-Class _Help  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/AppCode/_Help.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Sxc_WebApi_SecureEndpointAttribute" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute" class="text-break">
+Class SecureEndpointAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AppCode.html">AppCode</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.WebApi.html">WebApi</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Sxc.WebApi.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>EXPERIMENTAL v17</p>
-<p>This class is a placeholder to provide help in the docs.</p>
-<p>The namespace <a class="xref" href="AppCode.html">AppCode</a> is reserved for custom code in your app.
-As such, it doesn't have any code in the public docs, but will contain classes and code from your app.</p>
-<p>To use, see TODO: Add link to docs</p>
+  <div class="markdown summary"><p>An ActionFilter attribute that automatically decrypts encrypted POST payloads for Web API endpoints.
+Apply this attribute to a controller or action method to seamlessly handle encrypted incoming POST requests,
+ensuring the decrypted data is available for processing within the action method.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public class _Help</code></pre>
+[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
+public class SecureEndpointAttribute : ActionFilterAttribute, _Attribute</code></pre>
   </div>
 
 
@@ -138,9 +137,63 @@ public class _Help</code></pre>
     <dt>Inheritance</dt>
     <dd>
       <div><span class="xref">object</span></div>
-      <div><span class="xref">_Help</span></div>
+      <div><span class="xref">Attribute</span></div>
+      <div><span class="xref">FilterAttribute</span></div>
+      <div><span class="xref">ActionFilterAttribute</span></div>
+      <div><span class="xref">SecureEndpointAttribute</span></div>
     </dd>
   </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.interopservices._attribute">_Attribute</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="ToSic_Sxc_WebApi_SecureEndpointAttribute_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This attribute intercepts POST requests with JSON content, checks for encrypted data,
+and if present, decrypts the payload using the <span class="xref">ToSic.Eav.Security.Encryption.AesHybridCryptographyService</span>.
+It then deserializes the decrypted data into the expected parameter type and replaces the action arguments.
+If the payload is not encrypted, the request content remains unchanged.</p>
+<ul>
+<li>Introduced in version 18.05.</li>
+</ul>
+</div>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ToSic_Sxc_WebApi_SecureEndpointAttribute_OnActionExecuting_" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute.OnActionExecuting*"></a>
+
+  <h3 id="ToSic_Sxc_WebApi_SecureEndpointAttribute_OnActionExecuting_System_Web_Http_Controllers_HttpActionContext_" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+  OnActionExecuting(HttpActionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Occurs before the action method is invoked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnActionExecuting(HttpActionContext filterContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>filterContext</code> <span class="xref">HttpActionContext</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 
@@ -154,7 +207,7 @@ public class _Help</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/AppCode/_Help.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L29" class="edit-link">Edit this page</a>
         </div>
 
 
