@@ -275,3 +275,20 @@ You can also click on the `+` to unfold the `Abyss` TOC.
 > This is usually our recommended way to structure the TOC.
 >
 > It allows you to make the parent-node the "overview" page, and the child-nodes the details.
+
+## Edge Cases
+
+### Combine href for link and href for sub-TOC
+
+In a rare case you may have a TOC which is both a non-UID link and a sub-TOC.
+
+```yaml
+- name: Abyss
+  href: abyss/toc.yml
+  topicHref: something.md
+```
+
+## See also
+
+* [DocFx TOC documentation](https://dotnet.github.io/docfx/docs/table-of-contents.html)
+* [Interesting TOC-Schema discussion](https://github.com/dotnet/docfx/issues/7736)
