@@ -9,4 +9,4 @@ This is mainly important for scenarios where you need to build complex rules for
 
 ## Test
 
-[!include[](~/api/dot-net/ToSic.Sxc/Images/_image-guide.md)]
+[!include[](~/api-docs/api/dot-net/ToSic.Sxc/Images/_image-guide.md)]
