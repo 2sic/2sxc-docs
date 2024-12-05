@@ -29,7 +29,7 @@ To make sure your markdown is well-formatted, you can use a linter. A linter is 
 
 For our setup, we recommend the the [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) extension.
 
-💡 The linter should already be installed if you followed the basic [setup instructions](Abyss.Contribute.Docs.Setup.Index).
+💡 The linter should already be installed if you followed the basic [setup instructions](xref:Abyss.Contribute.Docs.Setup.Index).
 
 ## Markdown for Text
 

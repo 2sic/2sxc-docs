@@ -1,4 +1,4 @@
-<img src="assets/logos/vcurrent/500.png" width="100px" align="right" class="float-end">
+<img src="../assets/logos/vcurrent/500.png" width="100px" align="right" class="float-end">
 
 <script>
   // get url parameters version and path
