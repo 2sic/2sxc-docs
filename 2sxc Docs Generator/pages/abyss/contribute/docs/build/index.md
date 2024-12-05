@@ -20,7 +20,7 @@ For more information on this setup, please refer to the [Code](xref:Abyss.Contri
 
 ## Start with Visual Studio Code
 
-➡️ Make sure you already did the steps in [Run Locally using VS-Code](xref:Abyss.Contribute.Docs.Preview.Index).
+➡️ Make sure you already did the steps in [Run Locally using VS-Code](xref:Abyss.Contribute.Docs.Setup.Index).
 
 ## Install DocFX
 
