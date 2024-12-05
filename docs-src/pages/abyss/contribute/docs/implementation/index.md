@@ -49,11 +49,3 @@ Here is an overview as to what is really implemented:
 
 1. Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy
 
-
-
-
-More...
-
-1. TODO: Mermaid diagrams
-1. Attribution
-
