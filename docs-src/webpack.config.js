@@ -2,12 +2,13 @@ const path = require('path');
 const fs = require('fs-extra'); // fs-extra is a module that extends the standard fs module.
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './templates/2sxc/src/main.ts',
+    entry: './templates/2sxc/src/scripts/shared/main.ts',
     experiments: {
       outputModule: true
     },
@@ -25,7 +26,18 @@ module.exports = (env, argv) => {
             },
           ],
           exclude: /node_modules/
-        }
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            // Extracts CSS into separate files
+            MiniCssExtractPlugin.loader,
+            // Translates CSS into CommonJS
+            "css-loader",
+            // Compiles Sass to CSS
+            "sass-loader",
+          ],
+        },
       ]
     },
     resolve: {
@@ -47,6 +59,9 @@ module.exports = (env, argv) => {
         patterns: [
           { from: path.resolve(__dirname, 'templates/2sxc/public'), to: path.resolve(__dirname, '../docs/public') }
         ]
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'main.css',
       })
     ]
   }

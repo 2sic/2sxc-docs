@@ -39,12 +39,13 @@ The parts that make it work are
   * `/src/styles/` contains the SCSS files which are project specific
   * `/src/styles/shared/` contains files which are shared across all docs-projects
   * `/src/scripts/*` are project specific TypeScript files
-  * `/src/scripts/utils/*` are shared TypeScript files
-  * `/src/scripts/versions/*` are shared TypeScript files for the version switcher
-  * `/src/scripts/xref/*` are shared TypeScript files for the Permalink system
-  * `/src/scripts/@types/*` are shared TypeScript files for the HighlightJS configuration
 
-TODO: @tvatavuk probably best put everything shared in `/src/scripts/shared/...` so it's easier to copy 1:1 into other projects
+  * `/src/scripts/versions/*` are shared TypeScript files for the version switcher
+  * `/src/scripts/shared/utils/*` are shared TypeScript files
+  * `/src/scripts/shared/xref/*` are shared TypeScript files for the Permalink system
+  * `/src/scripts/shared/@types/*` are shared TypeScript files for the HighlightJS configuration
+
+Everything shared is in `/src/scripts/shared/...` so it's easier to copy 1:1 into other projects.
 
 ## How it Works
 
