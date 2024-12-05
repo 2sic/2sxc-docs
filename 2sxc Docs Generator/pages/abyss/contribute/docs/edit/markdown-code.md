@@ -44,23 +44,17 @@ var x = 17; // a comment
 
 DocFX supports many languages for syntax highlighting, including:
 
-* `c#`
-* `cs`
-* `csharp`
-* `javascript`
-* `js`
-* `typescript`
-* `ts`
+* `c#` / `cs` / `csharp`
+* `js` / `javascript` / `ts` / `typescript`
 * `html`
 * `xml`
 * `json`
-* `yaml`
-* `yml`
-* `css`
-* `scss`
-* `less`
+* `yml` / `yaml`
+* `css` / `scss` / `less`
 * `sql`
 * `text`
+* `bash` / `shell` / `powershell`
+* `markdown`
 
 Because of changes we applied to highlightjs, we can now also support:
 

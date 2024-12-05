@@ -37,10 +37,22 @@ For example, we have a lot of `.snagx` files (SnagIt) which would allow us to ma
 
 ## Insert Images (Markdown vs. HTML)
 
-Images can be inserted in two ways:
+Images can be added it two ways - using markdown, or the HTML counterpart.
+We recommend to always place images in an `assets` folder below
+the markdown file you're using the image on.
 
-1. **Markdown**: Use the markdown syntax `![alt-text](/assets/path/file.ext)`
-2. **HTML**: Use the HTML `<img src="/assets/path/file.ext" alt="alt-text">`
+
+Use the **Markdown** syntax
+
+```markdown
+![alt-text](/assets/path/file.ext)
+```
+
+Use the **HTML** syntax which allows to to set `class` and more.
+
+```html
+<img src="/assets/path/file.ext" alt="alt-text">
+```
 
 We usually prefer the `<img>` syntax, because we often need to add classes or other attributes.
 
@@ -58,6 +70,7 @@ This happens in the `/templates/2sxc/src/images.ts` file.
 Note that it only applies this to images which are _not_ logos or other special images.
 
 ---
+
 
 ## History
 

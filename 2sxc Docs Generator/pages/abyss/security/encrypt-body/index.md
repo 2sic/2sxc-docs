@@ -2,7 +2,7 @@
 uid: Abyss.Security.EncryptBody.Index
 ---
 
-# Network POST Body Encryption (v18.04)
+# Network POST Body Encryption (v18.05)
 
 2sxc 18.04 introduces a new feature to encrypt the HTTP POST Body.
 Reason is for sensitive data which may pass through CDNs or other proxies.

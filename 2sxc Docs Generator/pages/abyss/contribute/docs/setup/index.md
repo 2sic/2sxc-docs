@@ -2,12 +2,29 @@
 uid: Abyss.Contribute.Docs.Setup.Index
 ---
 
-# Run / Preview the Docs Locally using VS-Code
+[!include["many-projects"](../_docs-for-many-projects.md)]
 
-We always use VS Code to work in the docs, which is what we're explaining here.
-Note that we won't explain how to install VS-Code or how to do a git pull.
+# Setup & Preview Docs Locally using VS-Code
 
-Please open the `2sxc Docs.code-workspace` **Workspace** in VS Code, which will automatically load all the necessary settings and extensions.
+We always use VS Code to work in the docs.
+VS Code is much lighter and faster than visual studio.
+It also has some neat features which will help, like:
+
+* Markdown preview
+* Markdown linting
+* Live Server to see the built docs without having to setup IIS
+
+## Install VS-Code and Pull the Docs Repo
+
+1. Install VS-Code from <https://code.visualstudio.com>
+1. Pull the docs repo into a folder beside the main code repo(s)
+
+## Open the Workspace and Install Extensions
+
+Please open the `[project-name].code-workspace` **Workspace** in VS Code. The VS Code docs project has recommended extensions which will help you be more productive.
+If you open the project the first time, it will ask you to install them.
+
+![Install Recommended Extensions](./assets/vs-code-install-recommended-prompt.jpg)
 
 > [!TIP]
 > Opening the workspace in VS-Code will ask you to install the recommended extensions.
@@ -20,22 +37,15 @@ It will ask you to install these extensions:
 1. [shd101wyy.markdown-preview-enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) a great markdown preview tool, also supports Mermaid diagrams
 1. [ritwickdey.LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) a simple web-server to test the docs
 
+## Install Recommended Extensions Manually
 
-Once you've installed all the plugins, you can see the `Go Live` button in the bottom right corner of VS-Code.
-When you click it, a web server will be started hosting the `/docs` folder:
+If you accidentally skipped the installation of the recommended extensions, you can install them manually.
+To install them later, go to the extensions tab
+and find the "Show Recommended Extensions".
 
-<div gallery="vs-code">
-    <img src="./assets/vs-code-go-live.jpg">
-    <img src="./assets/preview-docs-in-browser.jpg">
-</div>
+![Show Recommended Extensions](./assets/vs-code-install-recommended-review.jpg)
 
 
-## Troubleshooting the Preview
+---
 
-If you have trouble with the preview, here some background how it works.
-
-1. The preview is a simple web-server which hosts the `/docs` folder.
-
-1. It runs using the [ritwickdey.LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-
-1. The configuration for this is in the `2sxc Docs.code-workspace` file, in the section `liveServer.settings.mount`.
+Last Update: 2024-12-05 by @iJungleboy
