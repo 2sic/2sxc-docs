@@ -2,62 +2,58 @@
 uid: Abyss.Contribute.Docs.Implementation.Index
 ---
 
-# Technical Implementation of the Docs
+[!include["many-projects"](../_docs-for-many-projects.md)]
 
-## Output & Hosting
+# Docs: Technical Implementation
 
-This documentation is static HTML which can be hosted on any web server.
+> [!WARNING]
+> This is a technical documentation about how the documentation system works.
+> It helps the core team understand how to maintain and enhance the documentation system.
+>
+> It's not meant for most contributors, as it's too technical.
 
-As of now it's hosted an GitHub Pages, which automatically hosts the `/docs` folder of this repository.
+## Basics
 
-## How it Works
+1. The documentation is built with [DocFX](https://dotnet.github.io/docfx/).
 
-The way it works is that it takes data from 2 sources
+1. When compiling, it will take the C# code and the markdown files and merge them together...
 
-1. All the comments in the C# source code referenced in `docfx.json`
-1. All the markdown files in the [2sxc docs](https://github.com/2sic/2sxc-docs) repo
+1. ...and create a static HTML documentation which can be hosted anywhere - often on GitHub pages.
 
-...and merges them together to create HTML.
 
-When pushed back to the repo, GitHub which automatically hosts the final solution on <https://docs.2sxc.org>
 
 ## The Parts that Make it Work
 
 Since this is a large documentation it needs a bit more than just the standard DocFX setup.
 Here is an overview as to what is really implemented:
 
-1. DocFX will build everything based on the configuration in `docfx.json`
-    1. It will also use the `/xrefmap.yml` which contains manually managed short links
-    1. It also uses the `/filterConfig.yml` to decide what C# code to include/exclude
-1. The [Templates](xref:Abyss.Contribute.Docs.Implementation.DocfxTemplates) generate everything, add JS and much more
-1. The `/templates/2sxc/toc.json.js` is run by docfx to enhance the C# API TOC
-1. The `/templates/2sxc/src` folder contains the TypeScript which is compiled with WebPack to the `/public` folder
+1. DocFX will build everything based on the configuration in `docfx.json`, `filterConfig.yml` and `xrefmap.yml`  
+    ➡️ [Configuration](xref:Abyss.Contribute.Docs.Implementation.Configuration)
+
+1. C# Code Docs generation and Merging with additional docs is very sophisticated.  
+    ➡️ [C# Code Docs](xref:Abyss.Contribute.Docs.Implementation.CSharpCode)
+
+1. JavaScript Code Docs generation and Merging with additional docs is a beast!
+    ➡️ [JavaScript Code Docs](xref:Abyss.Contribute.Docs.Implementation.JsCode)
+
+1. The Templates generate everything, add JS and much more  
+    ➡️ [Templates](xref:Abyss.Contribute.Docs.Implementation.DocfxTemplates)
+
+1. We have some custom magic to improve the C# API TOC  
+    ➡️ [TOC Customizations](xref:Abyss.Contribute.Docs.Implementation.TocCustomizations)
+
+1. The `/templates/[project]/src` has TypeScript  and SASS which is compiled with WebPack to the `/public` folder  
+    ➡️ see [TypeScript, CSS, WebPack Customizations](xref:Abyss.Contribute.Docs.Implementation.TsCssWebpack)
+
+1. We implemented a special Permalink-System TODO: @iJungleboy
+
+1. Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy
+
+
+
 
 More...
 
 1. TODO: Mermaid diagrams
-1. TODO: Version Switcher
-1. TODO: Permalink-System
-1. TODO: blinking architecture illustrations
-1. TODO: JavaScript Types and Sources...
+1. Attribution
 
-## Template Customizations
-
-### Special JavaScripts and WebPack
-
-We have some special TypeScript code which enhances the documentation, like the lightbox feature for images.
-This is in the `/2sxc Docs Generator/templates/2sxc/main.ts` file.
-
-It is built with WebPack and must be started manually to compile.
-Note that you can run WebPack and make ongoing changes without rebuilding the whole documentation.
-
-### Razor Source Code Support
-
-DocFX uses highlightjs to highlight code blocks.
-By default, it doesn't support Razor syntax highlighting.
-
-To enable it, we added the following code to the `/2sxc Docs Generator/templates/2sxc/images.ts` file:
-
-```html
-TODO:
-```

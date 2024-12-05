@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Docs: Technical Implementation | 2sxc 18 for Dnn and Oqtane </title>
+      <title>JavaScript Code Docs Generation | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Docs: Technical Implementation | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="JavaScript Code Docs Generation | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/javascript-code.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,7 +105,7 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Implementation.Index">
+        <article data-uid="Abyss.Contribute.Docs.Implementation.JsCode">
 
 <div class="TIP">
 <h5>Tip</h5>
@@ -117,59 +117,55 @@ When applying this to other projects, remember that some things such as the name
 <li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
 </ul>
 </div>
-<h1 id="docs-technical-implementation">Docs: Technical Implementation</h1>
+<h1 id="javascript-code-docs-generation">JavaScript Code Docs Generation</h1>
 <div class="WARNING">
 <h5>Warning</h5>
 <p>This is a technical documentation about how the documentation system works.
 It helps the core team understand how to maintain and enhance the documentation system.</p>
 <p>It's not meant for most contributors, as it's too technical.</p>
 </div>
-<h2 id="basics">Basics</h2>
+<p>2sxc has some JavaScript APIs such as:</p>
 <ol>
-<li><p>The documentation is built with <a href="https://dotnet.github.io/docfx/">DocFX</a>.</p>
+<li><p><code>$2sxc</code> on the page for doing things such as data access or opening dialogs</p>
 </li>
-<li><p>When compiling, it will take the C# code and the markdown files and merge them together...</p>
-</li>
-<li><p>...and create a static HTML documentation which can be hosted anywhere - often on GitHub pages.</p>
+<li><p><code>formula</code> APIs for working with formulas in the edit UI</p>
 </li>
 </ol>
-<h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
-<p>Since this is a large documentation it needs a bit more than just the standard DocFX setup.
-Here is an overview as to what is really implemented:</p>
+<p>These are published in the docs under <a class="xref" href="../../../../js-code/index.html">JS &amp; TS API</a>.</p>
+<p>This is one of the most challenging parts of the system.
+Reason is that DocFx doesn't really have a good way to merge JavaScript code with the documentation.</p>
+<h2 id="overall-process">Overall Process</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>We haven't done this in a while, so the following steps / docs are
+possibly outdated. Please check with the core team before proceeding.</p>
+</div>
 <ol>
-<li><p>DocFX will build everything based on the configuration in <code>docfx.json</code>, <code>filterConfig.yml</code> and <code>xrefmap.yml</code><br>
-➡️ <a class="xref" href="configuration.html">Configuration</a></p>
+<li><p>In each JS project, there are some special commands to run from the <code>package.json</code> which will generate the necessary files. This usually happens in 2-3 steps such as:</p>
+<ol>
+<li>Generate standalone type files (like <code>2sxc.d.ts</code>) which contain only the documentation</li>
+<li>Generate YAML files into the docs-folder which contain the actual documentation.
+This usually goes to <code>/import/api.js.sxcjs/docfx</code> or similar.</li>
+</ol>
 </li>
-<li><p>C# Code Docs generation and Merging with additional docs is very sophisticated.<br>
-➡️ <a class="xref" href="csharp-code.html">C# Code Docs</a></p>
+<li><p>When DocFx builds, these folders are also included...</p>
 </li>
-<li><p>JavaScript Code Docs generation and Merging with additional docs is a beast!
-➡️ <a class="xref" href="javascript-code.html">JavaScript Code Docs</a></p>
-</li>
-<li><p>The Templates generate everything, add JS and much more
-➡️ <a class="xref" href="docfx-templates.html">Templates</a></p>
-</li>
-<li><p>We have some custom magic to improve the C# API TOC<br>
-➡️ <a class="xref" href="toc-customizations.html">TOC Customizations</a></p>
-</li>
-<li><p>The <code>/templates/[project]/src</code> has TypeScript  and SASS which is compiled with WebPack to the <code>/public</code> folder
-➡️ see <a class="xref" href="ts-css-webpack.html">TypeScript, CSS, WebPack Customizations</a></p>
-</li>
-<li><p>We implemented a special Permalink-System TODO: @iJungleboy</p>
-</li>
-<li><p>Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy</p>
+<li><p>...and merged with ??? (not sure, check with core team) when building the documentation.</p>
 </li>
 </ol>
-<p>More...</p>
-<ol>
-<li>TODO: Mermaid diagrams</li>
-<li>Attribution</li>
-</ol>
+<h1 id="import-2sxc-javascript-types-and-docs">Import $2sxc JavaScript Types and Docs</h1>
+<p>The npm task <strong>import</strong> is an optional step,
+used only when there is a need to prepare JavaScript-related files for inclusion in the documentation.</p>
+<p>To execute this task, navigate to the <code>2sxc Docs Generator</code> directory and run the <strong>import</strong> task with npm. Here are the necessary commands:</p>
+<pre><code class="lang-cmd">cd &quot;C:\Projects\2sxc\2sxc-docs\2sxc Docs Generator&quot;
+npm run import
+</code></pre>
+<p>This command will execute the <strong>import</strong> task defined in your <strong>package.json</strong> file, preparing your 2sxc JavaScript related files for documentation generation.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/javascript-code.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

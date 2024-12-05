@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Docs: Technical Implementation | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Docs: TypeScript, CSS, WebPack Customizations | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Docs: Technical Implementation | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Docs: TypeScript, CSS, WebPack Customizations | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/ts-css-webpack.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -105,7 +105,7 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Implementation.Index">
+        <article data-uid="Abyss.Contribute.Docs.Implementation.TsCssWebpack">
 
 <div class="TIP">
 <h5>Tip</h5>
@@ -117,59 +117,79 @@ When applying this to other projects, remember that some things such as the name
 <li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
 </ul>
 </div>
-<h1 id="docs-technical-implementation">Docs: Technical Implementation</h1>
+<h1 id="docs-typescript-css-webpack-customizations">Docs: TypeScript, CSS, WebPack Customizations</h1>
 <div class="WARNING">
 <h5>Warning</h5>
 <p>This is a technical documentation about how the documentation system works.
 It helps the core team understand how to maintain and enhance the documentation system.</p>
 <p>It's not meant for most contributors, as it's too technical.</p>
 </div>
-<h2 id="basics">Basics</h2>
+<p>To make the docs more interactive and user-friendly, we use TypeScript and SASS which is compiled with WebPack.
+We provide additional features such as:</p>
 <ol>
-<li><p>The documentation is built with <a href="https://dotnet.github.io/docfx/">DocFX</a>.</p>
-</li>
-<li><p>When compiling, it will take the C# code and the markdown files and merge them together...</p>
-</li>
-<li><p>...and create a static HTML documentation which can be hosted anywhere - often on GitHub pages.</p>
-</li>
+<li><strong>Lightbox</strong> feature for images - with Fancybox</li>
+<li><strong>Image Galleries</strong> - with Fancybox</li>
+<li><strong>Razor / Blazor Code Highlighting</strong> - with highlightjs</li>
+<li><strong>Version switcher</strong> - to access older archives of the docs</li>
+<li><strong>Permalink system</strong> - to easily share links to specific sections</li>
+<li><strong>Blinking architecture illustrations</strong> - to explain context of specific sections</li>
 </ol>
-<h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
-<p>Since this is a large documentation it needs a bit more than just the standard DocFX setup.
-Here is an overview as to what is really implemented:</p>
-<ol>
-<li><p>DocFX will build everything based on the configuration in <code>docfx.json</code>, <code>filterConfig.yml</code> and <code>xrefmap.yml</code><br>
-➡️ <a class="xref" href="configuration.html">Configuration</a></p>
+<p>Normally you don't need to build them, as they are already included in the repo.
+But in some cases you may want to make changes, so you should understand how to build them.</p>
+<h2 id="parts-that-make-it-work">Parts that Make it Work</h2>
+<p>The parts that make it work are</p>
+<ul>
+<li><strong>NPM</strong> manages the packages and scripts</li>
+<li><strong>WebPack</strong> compiles the TypeScript and SCSS</li>
+<li><strong>TypeScript</strong> is used to write the JavaScript</li>
+<li><strong>SCSS</strong> is used to write the CSS</li>
+<li><strong>Fancybox</strong> is used for the lightbox</li>
+<li><strong>HighlightJS</strong> is used for syntax highlighting</li>
+<li><code>/templates/[project]/src/</code> contains the TypeScript and SCSS files
+<ul>
+<li><code>/src/styles/</code> contains the SCSS files which are project specific</li>
+<li><code>/src/styles/shared/</code> contains files which are shared across all docs-projects</li>
+<li><code>/src/scripts/*</code> are project specific TypeScript files</li>
+<li><code>/src/scripts/utils/*</code> are shared TypeScript files</li>
+<li><code>/src/scripts/versions/*</code> are shared TypeScript files for the version switcher</li>
+<li><code>/src/scripts/xref/*</code> are shared TypeScript files for the Permalink system</li>
+<li><code>/src/scripts/@types/*</code> are shared TypeScript files for the HighlightJS configuration</li>
+</ul>
 </li>
-<li><p>C# Code Docs generation and Merging with additional docs is very sophisticated.<br>
-➡️ <a class="xref" href="csharp-code.html">C# Code Docs</a></p>
-</li>
-<li><p>JavaScript Code Docs generation and Merging with additional docs is a beast!
-➡️ <a class="xref" href="javascript-code.html">JavaScript Code Docs</a></p>
-</li>
-<li><p>The Templates generate everything, add JS and much more
-➡️ <a class="xref" href="docfx-templates.html">Templates</a></p>
-</li>
-<li><p>We have some custom magic to improve the C# API TOC<br>
-➡️ <a class="xref" href="toc-customizations.html">TOC Customizations</a></p>
-</li>
-<li><p>The <code>/templates/[project]/src</code> has TypeScript  and SASS which is compiled with WebPack to the <code>/public</code> folder
-➡️ see <a class="xref" href="ts-css-webpack.html">TypeScript, CSS, WebPack Customizations</a></p>
-</li>
-<li><p>We implemented a special Permalink-System TODO: @iJungleboy</p>
-</li>
-<li><p>Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy</p>
-</li>
-</ol>
-<p>More...</p>
-<ol>
-<li>TODO: Mermaid diagrams</li>
-<li>Attribution</li>
-</ol>
+</ul>
+<p>TODO: @tvatavuk probably best put everything shared in <code>/src/scripts/shared/...</code> so it's easier to copy 1:1 into other projects</p>
+<h2 id="how-it-works">How it Works</h2>
+<p>TODO: @tvatavuk PLS EXPLAIN how it works etc.</p>
+<ul>
+<li>package.json</li>
+<li>init / build</li>
+<li>what actually happens, where it's compiled to etc.</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Make sure you have node/npm installed.
+Then let NPM install all dependencies using continuous-integration.
+Run this in the docs folder (ideally just from the VS-Code terminal):</p>
+<pre><code class="lang-cmd">npm ci
+</code></pre>
+<h2 id="build-todo-">Build TODO: @tvatavuk</h2>
+<p>To build the assets, run this in the docs folder (ideally just from the VS-Code terminal):</p>
+<pre><code class="lang-cmd">npm run build
+</code></pre>
+<p>...or use <code>ctrl+shift+b</code> and select <code>build</code>
+...or right-click on the <code>build</code> task in the VS-Code task-runner.</p>
+<div gallery="vs-code">
+  <img src="./assets/webpack-build.jpg">
+</div>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Updated 2024-12-04 v18.04</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/ts-css-webpack.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
