@@ -13,43 +13,20 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 
 Last Update: **2024-10-10**
 
-## v18.02 (released 2024-10-09)
+## 18.05 (planned 2024-12-06)
 
-[Release notes](https://github.com/2sic/2sxc/releases/tag/v18.02.00)
+1. 🅰️ Update UI to Angular 19
+1. 🩸 Oqtane / AppCode problems with empty AppCode.dll [#3505](https://github.com/2sic/2sxc/issues/3505)
+1. 📖 Add contributing.md to all repos #3484
+1. 📖 Major docs update regarding contributing to docs
+1. ✅ Support Ctrl+Click in Admin-UI to open dialogs in new windows/tabs [#3496](https://github.com/2sic/2sxc/issues/3496)
+1. 🐞 Bug with Visual Query Editor #3513
 
-1. ✅ Shared Field Configurations / Content-Type Composition
-1. ✅ Pickers stable
-    1. ✅ Picker Source CSV
-    1. ✅ Picker Source Custom List
-    1. ✅ Picker Source Entity
-    1. ✅ Picker Source Query
-    1. ⌛ Picker Source CSS (BETA)
-1. ✅ Picker Data Type: Number now supported as well
-1. ✅ Picker Outputs
-    1. ✅ Radio buttons
-    1. ✅ Checkboxes
-    1. ✅ Auto-Inline (which will take radio/checkboxes depending on your settings)
-1. ✅ Picker Previews
-    1. ✅ Font-Icon preview
-    1. ✅ SVG-Icon preview
-    1. ⌛ Image preview (BETA)
-1. ✅ Finalize Content-Type Composition
-1. ✅ Ctrl + S (upper case) now works too
-1. ✅ Ctrl + Alt + s now saves and closes
-1. ✅ Host user now always sees the developer tool bar, but can unpin it for a while
-1. ✅ Edit UI: Update Angular 18, Material 3, and other JS dependencies, refactor to use signals.
-1. ✅ Edit UI: Massively improve pickers - ca. 90%, also with Number and CSS / SVG / Image icons
-1. ✅ HotBuild: Enhance to use SHA fingerprint for cache-busting
+## 19.00 (planned 2024-12-12)
 
-## v18.03 (planned 2024-11-15)
-
-1. ✅ Clean up data model, remove unused table `ToSIC_EAV_AttributeGroups` (may be breaking)
-1. ✅ Pickers - Stabilize most features so final
-1. ✅ Tweak API for Image Service Settings, Img, Picture
-1. ✅ Tweak API for Typed Items `.Img(..., tweak: t => t.Alt(...)...)` and `.Picture(...)`
+1. ✅ `ICacheService` on `Kit.Cache`
+1. ⌛ Finalize Pickers main features
 1. ⌛ JSON Bundle Export, Import, Persist
-1. ✅ Ongoing Angular refactoring (switching to signals, deduplicate code, ...)
-1. ⌛ Support Ctrl+Click in Admin-UI to open dialogs in new windows/tabs
 1. ⌛ Ability to switch UI languages (not just content-languages)
 
 ## Note: Picker Features still not final
@@ -62,7 +39,6 @@ Last Update: **2024-10-10**
 
 ## 2024 Q3 Finish DoD / Almost-Done Work
 
-1. ✅ `ICacheService` on `Kit.Cache`
 1. ⌛ Dnn Force use of Roslyn
 1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
