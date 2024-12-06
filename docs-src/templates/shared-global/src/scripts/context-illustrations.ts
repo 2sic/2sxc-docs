@@ -1,5 +1,5 @@
-import { enableDebug } from './globals';
-
+import packageJson from '../../../../package.json';
+const { enableDebug } = packageJson; 
 
 export function lightboxForContextIllustration() {
 

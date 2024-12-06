@@ -1,4 +1,5 @@
-import { enableDebug } from './globals';
+import packageJson from '../../../../package.json';
+const { enableDebug } = packageJson; 
 
 export function configureLightboxes() {
   // find all image tags but not #logo, and add the lightbox

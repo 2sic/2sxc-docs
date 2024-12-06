@@ -55,10 +55,16 @@ This documentation system leverages modern web development tools to enhance user
 The package.json file is the core of the helper Node.js project setup that we need for:
 
 * build and development of documentation theme by building TypeScript and SCSS assets in `/templates/[project]/src/`
-* import generating documention for TypeScript libraryies with TypeDoc (YAML for DocFX)
 
 It specifies the project’s dependencies and scripts.
-In `scripts` are defined commands like `build`, `dev` and `import` to automate tasks.
+In `scripts` are defined commands like `build` and `dev` to automate tasks.
+It has additional configuration properties:
+
+```json
+  "projectName": "2sxc",
+  "docsVersion": "18.05.01",
+  "enableDebug": false,
+```
 
 ## Get Started
 
@@ -137,64 +143,32 @@ npm run dev
 
 * Location:
   * Compiled assets are output to a `/docs-src/templates/[project]/public/`.
-  * This directory is configured in `webpack.config.js`.
+  * This directory is configured in `/docs-src/templates/shared-global/webpack.config.js`.
 
 ### Serving Assets in Development
 
 The documentation site serves these static assets to users from `docs` folder.
 
-* in `docs-src` folder, run `docfx` to build whole documentation to `docs` folder (or use `doxfx build` to skip source code compilation)
+* in `docs-src` folder, run `docfx` to build whole documentation to `docs` folder
 * use `npm run dev` to build documentation theme assets
 * use live-server to monitor and test documentation in local browser
 
 Ensures that all interactive features and styles are properly loaded.
-Mantain documentaiton in md files, etc.
 
 By understanding this build process, contributors can effectively maintain and enhance the documentation system.
 
 ## How to Repeat this Setup on another Project
 
-1. **Set Up Documentation Folders**:
-   * **Create `docs` Folder**: In your repository, create a `docs` folder. This is where DocFX will build the final documentation. The documentation site will be hosted from this folder.
-   * **Create `docs-src` Folder**: Create a `docs-src` folder to contain the DocFX project responsible for building the documentation.
+1. **Step 1: Set Up Project Folder**
+   * When referencing `/docs-src/templates/[project]/src`, replace `[project]` with your actual project folder name.
+   * Ensure the `/docs-src/templates/shared-global` folder exists.
 
-2. **Copy Configuration and Build Files**:
-   * Copy the following files from the existing project into your `docs-src` folder:
-     * `docfx.json`
-     * `filterConfig.yml`
-     * `xrefmap.yml`
-     * `package.json`
-     * `tsconfig.json`
-     * `webpack.config.js`
-
-3. **Provide Documentation Content**:
-   * **Assets Folder**:
-     * Create `assets` folder, and add to it contains logos and other general assets needed for the documentation.
-   * **Pages**:
-     * Create a `pages` folder for static MD pages in your documentation.
-   * **Source Code Access**:
-     * Ensure DocFX has access to the C# source code used for auto-generating documentation. This source code can be part of the same repository or located in other repositories at the same level.
-   * **Generate YAML Files**:
-     * Generate YAML files from TypeScript sources using tools like TypeDoc or similar utilities.
-     * Prepare scripts in `package.json` to automate the generation of these YAML files (referred to as 'import' scripts).
-
-4. **Adjust Configuration Files**:
-   * **`docfx.json`**:
-     * **Metadata Source Files**: Update `metadata.src.files` to point to your C# projects.
-     * **Target Framework**: Set `metadata.properties.TargetFramework` to the correct framework version.
-     * **Build Content**: Modify `build.content` to include all YAML files generated from TypeScript sources and all Markdown (`.md`) files with manually written documentation in `pages`.
-     * **Overwrite Files**: Adjust `build.overwrite.files` to merge auto-generated and manually maintained documentation.
-     * **Global Metadata**: Update `build.globalMetadata` with properties like `_appTitle` relevant to your project.
-   * **`filterConfig.yml`**:
-     * Adjust this file to specify which C# code to exclude in the documentation.
-   * **`xrefmap.yml`**:
-     * Update this file to manage short-links and cross-references within the documentation.
-   * **`package.json`**:
-     * Review and adjust scripts and dependencies as needed for your project's documentation build process.
-   * **`tsconfig.json`**:
-     * Ensure TypeScript compiler settings match the requirements of your TypeScript codebase.
-   * **`webpack.config.js`**:
-     * Adjust the Webpack configuration to bundle JavaScript and CSS assets appropriately for your project.
+1. **Step 2: Adjust Configuration Files in `docs-src`**
+   * In `package.json`:
+     * Update `projectName` with your project folder name.
+     * Update `docsVersion` to match the version of the source code you are documenting.
+     * Add `"enableDebug": false` if it's not already present.
+     * Under `scripts`, keep `build` and `dev`. You may delete unnecessary `import*` scripts.
 
 By following these steps, you can set up a documentation system for your project that mirrors the structure and functionality of the original setup. This allows for integrated documentation that includes both manually authored content and auto-generated documentation from your source code.
 
