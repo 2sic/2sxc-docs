@@ -11,23 +11,17 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-10-10**
-
-## 18.05 (planned 2024-12-06)
-
-1. 🅰️ Update UI to Angular 19
-1. 🩸 Oqtane / AppCode problems with empty AppCode.dll [#3505](https://github.com/2sic/2sxc/issues/3505)
-1. 📖 Add contributing.md to all repos #3484
-1. 📖 Major docs update regarding contributing to docs
-1. ✅ Support Ctrl+Click in Admin-UI to open dialogs in new windows/tabs [#3496](https://github.com/2sic/2sxc/issues/3496)
-1. 🐞 Bug with Visual Query Editor #3513
+Last Update: **2024-12-06**
 
 ## 19.00 (planned 2024-12-12)
 
+1. 🅰️ Update UI to Angular 19
 1. ✅ `ICacheService` on `Kit.Cache`
 1. ⌛ Finalize Pickers main features
 1. ⌛ JSON Bundle Export, Import, Persist
 1. ⌛ Ability to switch UI languages (not just content-languages)
+
+## 19.01 LTS (planned 2024-12-20)
 
 ## Note: Picker Features still not final
 

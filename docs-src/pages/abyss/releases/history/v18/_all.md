@@ -10,3 +10,5 @@
 [!include["Changes"](./_changes18.03.md)]
 
 [!include["Changes"](./_changes18.04.md)]
+
+[!include["Changes"](./_changes18.05.md)]
