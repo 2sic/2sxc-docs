@@ -1,3 +1,4 @@
+import { Fancybox } from '@fancyapps/ui';
 import packageJson from '../../../../package.json';
 const { enableDebug } = packageJson; 
 
@@ -44,5 +45,5 @@ export function configureLightboxes() {
   });
 
   // Attach Fancybox to all these images
-  (window.Fancybox as any).bind(imgSelector);
+  Fancybox.bind(imgSelector);
 }

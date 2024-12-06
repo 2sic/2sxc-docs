@@ -1,3 +1,4 @@
+import { Fancybox } from '@fancyapps/ui';
 import packageJson from '../../../../package.json';
 const { enableDebug } = packageJson; 
 
@@ -35,7 +36,7 @@ export function lightboxForContextIllustration() {
   };
 
   // attach fancybox to all
-  (Fancybox as any).bind("[data-fancybox]");
+  Fancybox.bind("[data-fancybox]");
 }
 
 function createPopupDiv(original: HTMLElement, newName: string) {
