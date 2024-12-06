@@ -30,6 +30,10 @@ Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled b
 
 If you believe that we are checking this incorrectly, please open an issue on Github.
 
+## Related
+
+* [](xref:Abyss.Platforms.Oqtane.Install.IssueBuild)
+
 ---
 
 Shortlink to here: <https://go.2sxc.org/oqt-hr>
