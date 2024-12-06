@@ -55,7 +55,7 @@ TODO: @tvatavuk PLS EXPLAIN how it works etc.
 * what actually happens, where it's compiled to etc.
 
 
-## Setup
+## Get Started
 
 Make sure you have node/npm installed.
 Then let NPM install all dependencies using continuous-integration.
@@ -79,6 +79,12 @@ npm run build
 <div gallery="vs-code">
   <img src="./assets/webpack-build.jpg">
 </div>
+
+
+## How to Repeat this Setup on another Project
+
+@tvatavuk PLS EXPLAIN how to repeat this setup on another project
+
 
 ---
 
