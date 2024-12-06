@@ -1,12 +1,12 @@
 import * as hljsRazor from 'highlightjs-cshtml-razor';
-import { Xref } from './xref/xref';
-import { docReady } from './utils/docready';
-import { configureLightboxes } from './images';
-import { setVersionButtonLink } from '../versions/versions';
-import { docsVersion } from './globals';
+import { Xref } from './shared/xref/xref';
+import { docReady } from './shared/utils/docready';
+import { configureLightboxes } from './shared/images';
+import { setVersionButtonLink } from './shared/versions';
+import docsVersion from '../../../../package.json';
 import { Html } from '@fancyapps/ui';
-import { lightboxForContextIllustration } from './context-illustrations';
-import "../../styles/shared/main.scss";
+import { lightboxForContextIllustration } from './shared/context-illustrations';
+import "../styles/main.scss";
 
 // Log some version of this file so we see changes are being applied
 console.log('2sxc main.ts ' + docsVersion);

@@ -3,8 +3,9 @@ const fs = require('fs-extra'); // fs-extra is a module that extends the standar
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const packageJson = require('./package.json');
 
-let project = '2sxc'; // project folder name
+let project = packageJson.projectName; // project folder name
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
