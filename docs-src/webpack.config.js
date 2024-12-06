@@ -4,11 +4,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+let project = '2sxc'; // project folder name
+
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './templates/2sxc/src/scripts/shared/main.ts',
+    entry: `./templates/${project}/src/scripts/main.ts`,
     experiments: {
       outputModule: true
     },
@@ -45,7 +47,7 @@ module.exports = (env, argv) => {
     },
     output: {
       filename: 'main.js',
-      path: path.resolve(__dirname, 'templates/2sxc/public'),
+      path: path.resolve(__dirname, `templates/${project}/public`),
       libraryTarget: 'module',
       // clean: true,
     },
@@ -57,7 +59,11 @@ module.exports = (env, argv) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: path.resolve(__dirname, 'templates/2sxc/public'), to: path.resolve(__dirname, '../docs/public') }
+          { 
+            from: path.resolve(__dirname, `templates/${project}/public`), 
+            to: path.resolve(__dirname, '../docs/public'),
+            noErrorOnMissing: true // Add this option to prevent the build from failing if the source directory doesn't exist
+          }
         ]
       }),
       new MiniCssExtractPlugin({
