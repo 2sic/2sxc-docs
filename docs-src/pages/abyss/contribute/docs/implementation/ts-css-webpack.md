@@ -61,8 +61,8 @@ In `scripts` are defined commands like `build` and `dev` to automate tasks.
 It has additional configuration properties:
 
 ```json
-  "projectName": "2sxc",
-  "docsVersion": "18.05.01",
+  "templateName": "2sxc",
+  "version": "18.05.01",
   "enableDebug": false,
 ```
 
@@ -165,8 +165,8 @@ By understanding this build process, contributors can effectively maintain and e
 
 1. **Step 2: Adjust Configuration Files in `docs-src`**
    * In `package.json`:
-     * Update `projectName` with your project folder name.
-     * Update `docsVersion` to match the version of the source code you are documenting.
+     * Update `templateName` with your project folder name.
+     * Update `version` to match the version of the source code you are documenting.
      * Add `"enableDebug": false` if it's not already present.
      * Under `scripts`, keep `build` and `dev`. You may delete unnecessary `import*` scripts.
 
