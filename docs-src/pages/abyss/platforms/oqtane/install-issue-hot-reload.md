@@ -30,9 +30,9 @@ Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled b
 
 If you believe that we are checking this incorrectly, please open an issue on Github.
 
-## Related
+## Next Step
 
-* [](xref:Abyss.Platforms.Oqtane.Install.IssueBuild)
+* To avoid potential build errors, exclude the `2sxc` folder from the `Oqtane.Server.csproj`. For more details on preventing and resolving these issues, refer to the [Build Oqtane Server Issue](xref:Abyss.Platforms.Oqtane.Install.IssueBuild) documentation.
 
 ---
 
