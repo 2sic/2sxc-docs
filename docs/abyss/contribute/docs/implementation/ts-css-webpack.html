@@ -28,12 +28,7 @@
       <meta name="loc:themeAuto" content="Auto">
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
-      
-      
+      <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
   <script type="module" src="./../../../../public/docfx.min.js"></script>
@@ -150,36 +145,145 @@ But in some cases you may want to make changes, so you should understand how to 
 <li><code>/src/styles/</code> contains the SCSS files which are project specific</li>
 <li><code>/src/styles/shared/</code> contains files which are shared across all docs-projects</li>
 <li><code>/src/scripts/*</code> are project specific TypeScript files</li>
-<li><code>/src/scripts/utils/*</code> are shared TypeScript files</li>
 <li><code>/src/scripts/versions/*</code> are shared TypeScript files for the version switcher</li>
-<li><code>/src/scripts/xref/*</code> are shared TypeScript files for the Permalink system</li>
-<li><code>/src/scripts/@types/*</code> are shared TypeScript files for the HighlightJS configuration</li>
+<li><code>/src/scripts/shared/utils/*</code> are shared TypeScript files</li>
+<li><code>/src/scripts/shared/xref/*</code> are shared TypeScript files for the Permalink system</li>
+<li><code>/src/scripts/shared/@types/*</code> are shared TypeScript files for the HighlightJS configuration</li>
 </ul>
 </li>
 </ul>
-<p>TODO: @tvatavuk probably best put everything shared in <code>/src/scripts/shared/...</code> so it's easier to copy 1:1 into other projects</p>
+<p>Everything shared is in <code>/src/scripts/shared/...</code> so it's easier to copy 1:1 into other projects.</p>
 <h2 id="how-it-works">How it Works</h2>
-<p>TODO: @tvatavuk PLS EXPLAIN how it works etc.</p>
+<p>This documentation system leverages modern web development tools to enhance user experience and maintainability. Here's how the different components work together:</p>
+<h3 id="packagejson">package.json</h3>
+<p>The package.json file is the core of the helper Node.js project setup that we need for:</p>
 <ul>
-<li>package.json</li>
-<li>init / build</li>
-<li>what actually happens, where it's compiled to etc.</li>
+<li>build and development of documentation theme by building TypeScript and SCSS assets in <code>/templates/[project]/src/</code></li>
 </ul>
-<h2 id="setup">Setup</h2>
+<p>It specifies the project’s dependencies and scripts.
+In <code>scripts</code> are defined commands like <code>build</code> and <code>dev</code> to automate tasks.
+It has additional configuration properties:</p>
+<pre><code class="lang-json">  &quot;projectName&quot;: &quot;2sxc&quot;,
+  &quot;docsVersion&quot;: &quot;18.05.01&quot;,
+  &quot;enableDebug&quot;: false,
+</code></pre>
+<h2 id="get-started">Get Started</h2>
 <p>Make sure you have node/npm installed.
 Then let NPM install all dependencies using continuous-integration.
-Run this in the docs folder (ideally just from the VS-Code terminal):</p>
+Run this in the <code>docs-src</code> folder (ideally just from the VS-Code terminal):</p>
 <pre><code class="lang-cmd">npm ci
 </code></pre>
-<h2 id="build-todo-">Build TODO: @tvatavuk</h2>
-<p>To build the assets, run this in the docs folder (ideally just from the VS-Code terminal):</p>
+<p>This command:</p>
+<ul>
+<li>Installs all dependencies specified in <code>package-lock.json</code>.</li>
+<li>Ensures a clean installation by removing existing <code>node_modules</code>.</li>
+<li>Provides a reproducible environment for builds.</li>
+</ul>
+<h2 id="build">Build</h2>
+<p>To compile TypeScript and build SCSS assets in <code>/templates/[project]/src/</code> that are used by documentation HTML templates, run this in the <code>docs-src</code> folder (ideally just from the VS-Code terminal):</p>
+<h3 id="production">Production</h3>
+<p>For production webpack is building optimized and minimized assets.</p>
 <pre><code class="lang-cmd">npm run build
 </code></pre>
+<p>This triggers the build script defined in <code>package.json</code>, which runs <strong>Webpack</strong> to process the assets.</p>
 <p>...or use <code>ctrl+shift+b</code> and select <code>build</code>
 ...or right-click on the <code>build</code> task in the VS-Code task-runner.</p>
 <div gallery="vs-code">
-  <img src="./assets/webpack-build.jpg">
+  <img src="../../../../pages/abyss/contribute/docs/implementation/assets/webpack-build.jpg">
 </div>
+<h3 id="development">Development</h3>
+<p>To stremline development webpack will watch source files in <code>/templates/[project]/src/</code> and autobuild assets. Also it will generate <strong>maps</strong> files for debuging.</p>
+<pre><code class="lang-cmd">npm run dev
+</code></pre>
+<h3 id="what-happens-during-compilation">What Happens During Compilation</h3>
+<ol>
+<li>Webpack Processes Assets:
+<ul>
+<li>TypeScript (.ts files): Transpiled into JavaScript, enabling the use of modern JavaScript features and type checking.</li>
+<li>SCSS (.scss files): Compiled into CSS, allowing for modular and maintainable stylesheets.</li>
+</ul>
+</li>
+<li>Asset Bundling:
+<ul>
+<li>Combines scripts and styles into bundles for efficient loading.</li>
+<li>Generates Source Maps for easier debugging.</li>
+</ul>
+</li>
+<li>Optimization:
+<ul>
+<li>Minifies JavaScript and CSS to reduce file sizes.</li>
+<li>Removes unused code through tree shaking.</li>
+</ul>
+</li>
+<li>Output Generation:
+<ul>
+<li>Compiled files are placed in the output folder.</li>
+<li>Outputs include:
+<ul>
+<li><code>main.js</code>: The bundled JavaScript file for documentation HTML templates.</li>
+<li><code>main.css</code>: The compiled CSS file for documentation HTML templates.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="integration-with-the-documentation">Integration with the Documentation</h2>
+<ul>
+<li>Scripts and Styles Inclusion:
+<ul>
+<li>The generated <code>main.js</code> and <code>main.css</code> are linked in the documentation HTML templates.</li>
+<li>Enhances interactivity with features like lightboxes and syntax highlighting.</li>
+</ul>
+</li>
+<li>Feature Enhancements:
+<ul>
+<li><strong>Fancybox</strong>: Enables image lightbox functionality for a better viewing experience.</li>
+<li><strong>Highlight</strong>: Provides syntax highlighting for code snippets.</li>
+<li><strong>Version Switcher</strong>: Allows users to switch between different documentation versions seamlessly.</li>
+<li><strong>Permalinks</strong>: Facilitates easy sharing of specific sections within the documentation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="compilation-output">Compilation Output</h2>
+<ul>
+<li>Location:
+<ul>
+<li>Compiled assets are output to a <code>/docs-src/templates/[project]/public/</code>.</li>
+<li>This directory is configured in <code>/docs-src/templates/shared-global/webpack.config.js</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="serving-assets-in-development">Serving Assets in Development</h3>
+<p>The documentation site serves these static assets to users from <code>docs</code> folder.</p>
+<ul>
+<li>in <code>docs-src</code> folder, run <code>docfx</code> to build whole documentation to <code>docs</code> folder</li>
+<li>use <code>npm run dev</code> to build documentation theme assets</li>
+<li>use live-server to monitor and test documentation in local browser</li>
+</ul>
+<p>Ensures that all interactive features and styles are properly loaded.</p>
+<p>By understanding this build process, contributors can effectively maintain and enhance the documentation system.</p>
+<h2 id="how-to-repeat-this-setup-on-another-project">How to Repeat this Setup on another Project</h2>
+<ol>
+<li><p><strong>Step 1: Set Up Project Folder</strong></p>
+<ul>
+<li>When referencing <code>/docs-src/templates/[project]/src</code>, replace <code>[project]</code> with your actual project folder name.</li>
+<li>Ensure the <code>/docs-src/templates/shared-global</code> folder exists.</li>
+</ul>
+</li>
+<li><p><strong>Step 2: Adjust Configuration Files in <code>docs-src</code></strong></p>
+<ul>
+<li>In <code>package.json</code>:
+<ul>
+<li>Update <code>projectName</code> with your project folder name.</li>
+<li>Update <code>docsVersion</code> to match the version of the source code you are documenting.</li>
+<li>Add <code>&quot;enableDebug&quot;: false</code> if it's not already present.</li>
+<li>Under <code>scripts</code>, keep <code>build</code> and <code>dev</code>. You may delete unnecessary <code>import*</code> scripts.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>By following these steps, you can set up a documentation system for your project that mirrors the structure and functionality of the original setup. This allows for integrated documentation that includes both manually authored content and auto-generated documentation from your source code.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
