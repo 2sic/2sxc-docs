@@ -1,4 +1,4 @@
-// we are using separate node script to ensure executin after webpack build
+// we are using separate node script to ensure executing after webpack build
 // had issues with webpack plugins, because they are executed before webpack ts transpile
 const fs = require('fs-extra');
 const path = require('path');
