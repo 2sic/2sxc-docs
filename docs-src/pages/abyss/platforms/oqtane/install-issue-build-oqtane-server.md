@@ -10,15 +10,15 @@ When developing with Oqtane in **developer mode**, you typically run `Oqtane.Ser
 
 ## Problem Overview
 
-After adding 2sxc templates to your Oqtane project, the build process may fail with numerous errors—sometimes over 1,000—rendering Oqtane unusable in the development environment. This happens because Visual Studio includes all new files and folders added by the templates into the project build by default.
+After adding 2sxc templates to your Oqtane project, the Visual Studio build process may fail with numerous errors—sometimes over 1,000—rendering Oqtane unusable in the development environment.
 
-![exclude 2sxc folder](./assets/oqtane-server-vs-build-errors.png)
+![build errors in Oqtane.Server project](./assets/oqtane-server-vs-build-errors.png)
 
 ### Affected Folders
 
 The problematic folder that cause the build issues is `2sxc`.
 
-These directory contain assets for the 2sxc apps and templates. While these files are necessary for runtime, they are **not** meant to be compiled as part of the `Oqtane.Server` project.
+These directory contain assets for the 2sxc apps and templates.
 
 ## Solution: Exclude `2sxc` Folder from the Build
 
@@ -57,7 +57,7 @@ To resolve the build errors, you need to exclude `2sxc` folder from the compilat
 
 ## Why This Happens
 
-Visual Studio automatically includes new files and directories added to the project folder. The 2sxc templates introduce additional files that are necessary for the application to run but are **not** meant to be part of the compiled code. Including them causes conflicts and compilation errors because the compiler tries to process files that aren't valid C# code or are duplicates.
+The 2sxc templates introduce additional files that are necessary for the application to run but are **not** meant to be part of the compiled code. Visual Studio automatically includes new files and directories added to the project folder. Including them causes conflicts and compilation errors because the compiler tries to process files that aren't valid C# code or are duplicates.
 
 ## Summary
 
