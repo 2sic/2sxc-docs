@@ -106,11 +106,11 @@
 <h1 id="issues-building-oqtaneservercsproj-after-installing-2sxc-templates">Issues Building <code>Oqtane.Server.csproj</code> After Installing 2sxc Templates</h1>
 <p>When developing with Oqtane in <strong>developer mode</strong>, you typically run <code>Oqtane.Server.csproj</code> by pressing <code>F5</code> in Visual Studio. This action builds the project and its dependencies before launching it on IIS Express (<code>localhost</code>). However, after installing 2sxc Content and App templates, you might encounter build failures when compiling <code>Oqtane.Server.csproj</code>.</p>
 <h2 id="problem-overview">Problem Overview</h2>
-<p>After adding 2sxc templates to your Oqtane project, the build process may fail with numerous errors—sometimes over 1,000—rendering Oqtane unusable in the development environment. This happens because Visual Studio includes all new files and folders added by the templates into the project build by default.</p>
-<p><img src="../../../pages/abyss/platforms/oqtane/assets/oqtane-server-vs-build-errors.png" alt="exclude 2sxc folder"></p>
+<p>After adding 2sxc templates to your Oqtane project, the Visual Studio build process may fail with numerous errors—sometimes over 1,000—rendering Oqtane unusable in the development environment.</p>
+<p><img src="../../../pages/abyss/platforms/oqtane/assets/oqtane-server-vs-build-errors.png" alt="build errors in Oqtane.Server project"></p>
 <h3 id="affected-folders">Affected Folders</h3>
 <p>The problematic folder that cause the build issues is <code>2sxc</code>.</p>
-<p>These directory contain assets for the 2sxc apps and templates. While these files are necessary for runtime, they are <strong>not</strong> meant to be compiled as part of the <code>Oqtane.Server</code> project.</p>
+<p>These directory contain assets for the 2sxc apps and templates.</p>
 <h2 id="solution-exclude-2sxc-folder-from-the-build">Solution: Exclude <code>2sxc</code> Folder from the Build</h2>
 <p>To resolve the build errors, you need to exclude <code>2sxc</code> folder from the compilation process. This can be done by modifying the <code>Oqtane.Server.csproj</code> file to tell the compiler to ignore these directory.</p>
 <h3 id="steps-to-exclude-folders">Steps to Exclude Folders</h3>
@@ -140,7 +140,7 @@
 </li>
 </ol>
 <h2 id="why-this-happens">Why This Happens</h2>
-<p>Visual Studio automatically includes new files and directories added to the project folder. The 2sxc templates introduce additional files that are necessary for the application to run but are <strong>not</strong> meant to be part of the compiled code. Including them causes conflicts and compilation errors because the compiler tries to process files that aren't valid C# code or are duplicates.</p>
+<p>The 2sxc templates introduce additional files that are necessary for the application to run but are <strong>not</strong> meant to be part of the compiled code. Visual Studio automatically includes new files and directories added to the project folder. Including them causes conflicts and compilation errors because the compiler tries to process files that aren't valid C# code or are duplicates.</p>
 <h2 id="summary">Summary</h2>
 <p>By excluding the <code>2sxc</code> folder from the build process, you prevent the compiler from processing unnecessary files. This resolves the build errors and allows you to continue developing your Oqtane application with the 2sxc templates installed.</p>
 <h2 id="related">Related</h2>
