@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Problems Installing Apps with Hot Reload Enabled | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Edit - Dialog Settings (beta v19) | 2sxc 18 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Problems Installing Apps with Hot Reload Enabled | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Edit - Dialog Settings (beta v19) | 2sxc 18 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/install-issue-hot-reload.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/dialog-settings/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,40 +100,87 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Platforms.Oqtane.Install.IssueHotReload">
+        <article data-uid="JsCode.EditForm.DialogSettings.Index">
+<h1 id="edit---dialog-settings-beta-v19">Edit - Dialog Settings (beta v19)</h1>
 
-<img src="../../../assets/features/platform-oqtane.svg" width="100%">
-<h1 id="problems-installing-apps-with-hot-reload-enabled">Problems Installing Apps with Hot Reload Enabled</h1>
-<p>When using Oqtane in <strong>developer mode</strong> there is a feature called <strong>Hot Reload</strong> which restarts Oqtane when files change.</p>
+<p>In v19 we're trying to allow more control over what the dialog provides.</p>
+<p>A feature which is still in beta, is to control which languages
+are used to show labels, help-texts, buttons etc. in the dialog.</p>
+<h2 id="standard-setup">Standard Setup</h2>
+<p>By default, the user can customize his preferred languages in the dialog settings.</p>
+<div gallery="main">
+  <img src="../../../pages/js-code/edit-form/dialog-settings/assets/go-to-language-settings.jpg">
+  <img src="../../../pages/js-code/edit-form/dialog-settings/assets/language-settings.jpg">
+</div>
+<p>Now there are probably special cases, where these settings should be provided by the
+opening button, or possibly prevent the user from changing them.</p>
 <div class="WARNING">
 <h5>Warning</h5>
-<p>Installing Content-Templates and Apps with <strong>Hot Reload</strong> enabled causes problems.</p>
-<p>This is because the server will restart a few times during installation of the ZIP.</p>
+<p>This is still experimental, and the details could change in future versions.</p>
 </div>
-<p>Because of this you can only install Apps and Content-Templates if <strong>Hot Reload is disabled</strong>.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>After installation you can re-enable Hot-Reload as you see fit.</p>
-</div>
-<h2 id="checklist-to-disable-hot-reload-temporarily">Checklist to Disable Hot Reload Temporarily</h2>
-<iframe src="https://azing.org/2sxc/r/YUm957D-?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<h2 id="background-hot-reload-detection">Background: Hot-Reload Detection</h2>
-<p>Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled by checking that this DLL is loaded in memory:</p>
-<ul>
-<li><code>Microsoft.AspNetCore.Watch.BrowserRefresh.dll</code></li>
-</ul>
-<p>If you believe that we are checking this incorrectly, please open an issue on Github.</p>
-<h2 id="next-step">Next Step</h2>
-<ul>
-<li>To avoid potential build errors, exclude the <code>2sxc</code> folder from the <code>Oqtane.Server.csproj</code>. For more details on preventing and resolving these issues, refer to the <a class="xref" href="install-issue-build-oqtane-server.html">Build Oqtane Server Issue</a> documentation.</li>
-</ul>
+<h2 id="customizing-the-dialog">Customizing the Dialog</h2>
+<p>This would create a toolbar which would open the dialog with the specified language settings:</p>
+<pre><code class="lang-razor">&lt;!-- set only the UI language --&gt;
+@Kit.Toolbar.Empty().Edit(itemToCopyTyped,
+  tweak: t =&gt; t.Parameters(new {
+    dialogSettings = new {
+      languageUi = &quot;de-de&quot;,
+    }
+  })
+)
+
+&lt;!-- set the UI language and the form-language --&gt;
+@Kit.Toolbar.Empty().Edit(itemToCopyTyped,
+  tweak: t =&gt; t.Parameters(new {
+    dialogSettings = new {
+      languageUi = &quot;de-de&quot;,
+      languageForm = &quot;en-us&quot;
+    }
+  })
+)
+</code></pre>
+<p>This would open the dialog with the specified language settings, and prevent the user from changing the UI language:</p>
+<pre><code class="lang-c#">@Kit.Toolbar.Empty().Edit(itemToCopyTyped,
+  tweak: t =&gt; t.Parameters(new {
+    dialogSettings = new {
+      languageUi = &quot;de-de!&quot;,
+      languageForm = &quot;en-us&quot;
+    }
+  })
+)
+</code></pre>
+<p>This would simply disable the user settings:</p>
+<pre><code class="lang-razor">@Kit.Toolbar.Empty().Edit(itemToCopyTyped,
+  tweak: t =&gt; t.Parameters(new {
+    dialogSettings = new {
+      languageUserSettings = false
+    }
+  })
+)
+</code></pre>
+<p>This would combine the preset with deny-change.
+Note that we're still using the <code>!</code> to indicate that the user can't change the UI language.
+This is because the user could have configured these settings in a previous dialog, so then those settings would still apply.</p>
+<pre><code class="lang-c#">Kit.Toolbar.Empty().Edit(itemToCopyTyped,
+  tweak: t =&gt; t.Parameters(new {
+    dialogSettings = new {
+      languageUserSettings = false,
+      languageUi = &quot;de-de!&quot;,
+      languageForm = &quot;en-us&quot;
+    }
+  })
+)
+</code></pre>
 <hr>
-<p>Shortlink to here: <a href="https://go.2sxc.org/oqt-hr">https://go.2sxc.org/oqt-hr</a></p>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced in 2sxc 18.06 as <em>beta</em></li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/install-issue-hot-reload.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/dialog-settings/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
