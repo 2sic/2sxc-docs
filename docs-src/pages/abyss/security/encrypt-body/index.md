@@ -50,7 +50,7 @@ All of this is then sent to the server, which uses it to decrypt the data.
 1. The feature will automatically add a public key to the page
 1. The public key will be used to encrypt the POST body by the `$2sxc` JavaScript API
 1. The encrypted POST body will be sent to the server
-1. The server API must then use the `[SecureEndpoint]` attribute to decrypt the body
+1. The server API must then use the `[SecureEndpoint]` attribute to decrypt the body (remember to add `@using ToSic.Sxc.WebApi`)
 
 ## Default Behavior
 
