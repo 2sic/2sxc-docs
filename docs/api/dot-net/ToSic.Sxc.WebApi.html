@@ -119,9 +119,13 @@ Also provides additional configuration to make certain work easier.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.WebApi.SecureEndpointAttribute.html">SecureEndpointAttribute</a></dt>
-      <dd><p>An ActionFilter attribute that automatically decrypts encrypted POST payloads for Web API endpoints.
-Apply this attribute to a controller or action method to seamlessly handle encrypted incoming POST requests,
-ensuring the decrypted data is available for processing within the action method.</p>
+      <dd><p>Attribute for WebApi controllers, which automatically decrypts encrypted POST payloads for Web API endpoints.
+Use this attribute on controller or methods to automatically decrypt incoming POST requests.</p>
+<p>It will intercepts POST requests with JSON content, checks for encrypted data,
+and if present, decrypts the payload using the <span class="xref">ToSic.Eav.Security.Encryption.AesHybridCryptographyService</span>.
+It then deserializes the decrypted data into the expected parameter type and replaces the action arguments.
+If the payload is not encrypted, the request content remains unchanged.</p>
+<p>See <a class="xref" href="../../abyss/security/encrypt-body/index.html">Network POST Body Encryption (new v19)</a> for more information.</p>
 </dd>
     </dl>
     <h3 id="enums">

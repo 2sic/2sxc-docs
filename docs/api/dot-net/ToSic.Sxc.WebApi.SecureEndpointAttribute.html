@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_WebApi_SecureEndpointAttribute" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute" class="text-break">
-Class SecureEndpointAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L29"><i class="bi bi-code-slash"></i></a>
+Class SecureEndpointAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -113,9 +113,13 @@ Class SecureEndpointAttribute  <a class="header-action link-secondary" title="Vi
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.WebApi.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>An ActionFilter attribute that automatically decrypts encrypted POST payloads for Web API endpoints.
-Apply this attribute to a controller or action method to seamlessly handle encrypted incoming POST requests,
-ensuring the decrypted data is available for processing within the action method.</p>
+  <div class="markdown summary"><p>Attribute for WebApi controllers, which automatically decrypts encrypted POST payloads for Web API endpoints.
+Use this attribute on controller or methods to automatically decrypt incoming POST requests.</p>
+<p>It will intercepts POST requests with JSON content, checks for encrypted data,
+and if present, decrypts the payload using the <span class="xref">ToSic.Eav.Security.Encryption.AesHybridCryptographyService</span>.
+It then deserializes the decrypted data into the expected parameter type and replaces the action arguments.
+If the payload is not encrypted, the request content remains unchanged.</p>
+<p>See <a class="xref" href="../../abyss/security/encrypt-body/index.html">Network POST Body Encryption (new v19)</a> for more information.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -152,57 +156,17 @@ public class SecureEndpointAttribute : ActionFilterAttribute, _Attribute</code><
 
 
   <h2 id="ToSic_Sxc_WebApi_SecureEndpointAttribute_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This attribute intercepts POST requests with JSON content, checks for encrypted data,
-and if present, decrypts the payload using the <span class="xref">ToSic.Eav.Security.Encryption.AesHybridCryptographyService</span>.
-It then deserializes the decrypted data into the expected parameter type and replaces the action arguments.
-If the payload is not encrypted, the request content remains unchanged.</p>
-<ul>
-<li>Introduced in version 18.05.</li>
+  <div class="markdown level0 remarks"><ul>
+<li>Introduced in version 19.00.</li>
 </ul>
 </div>
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="ToSic_Sxc_WebApi_SecureEndpointAttribute_OnActionExecuting_" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute.OnActionExecuting*"></a>
-
-  <h3 id="ToSic_Sxc_WebApi_SecureEndpointAttribute_OnActionExecuting_System_Web_Http_Controllers_HttpActionContext_" data-uid="ToSic.Sxc.WebApi.SecureEndpointAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
-  OnActionExecuting(HttpActionContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L35"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Occurs before the action method is invoked.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnActionExecuting(HttpActionContext filterContext)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>filterContext</code> <span class="xref">HttpActionContext</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L29" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.WebApi/WebApi/SecureEndpoint/SecureEndpointAttributeNetFull.cs/#L31" class="edit-link">Edit this page</a>
         </div>
 
 
