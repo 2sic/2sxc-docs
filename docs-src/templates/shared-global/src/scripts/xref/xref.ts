@@ -44,7 +44,7 @@ export class Xref {
       // Set Timer to redirect
       const timer = setTimeout(() => {
         document.location.href = target;
-      }, 3000);
+      }, 1000);
 
       // Listen for Escape key to cancel
       window.addEventListener('keydown', (event) => {

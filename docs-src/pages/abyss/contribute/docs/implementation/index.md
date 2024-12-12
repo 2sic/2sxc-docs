@@ -49,3 +49,49 @@ Here is an overview as to what is really implemented:
 
 1. Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy
 
+## History of this Docs Setup
+
+### 2024
+
+_Note: we only started documenting this in 2024-12, so it's incomplete._
+
+#### Reduced Time-To-Redirect on XREF to 1 Second
+
+Previously the time to redirect was 3 seconds. We reduced it to 1 second.
+
+* `/templates/shared-global/src/scripts/xref/xref.ts`
+
+Changed: 2024-12-12, `@iJungleboy`
+
+#### Made API-Docs TOC Sidebar not Wrap
+
+Added the `api-toc-sidebar-menus.scss` to prevent the API-Docs TOC from wrapping.
+
+* `/templates/shared-global/src/styles/api-toc-sidebar-menu.scss`
+* `/templates/shared-global/src/styles/_index.scss`
+
+Changed: 2024-12-12, `@iJungleboy`
+
+#### Added SVG helpers for colored logos
+
+Added some JavaScripts to inline SVGs on `img` tags with the class `svg`.
+
+This helps for both the logo and images added like this,
+so that they will be inlined and behave according to the CSS.
+It's especially useful when the SVG uses `currentColor` in it's own CSS.
+
+* `/templates/shared-global/src/scripts/svgs/svg-importer.ts`
+
+Changed: 2024-12-10, `@iJungleboy`
+
+#### Standardized Entire Setup
+
+We put all customizations and docs-instructions in the `2sxc` docs only,
+to consolidate everything from 2sxc, Oqtane, RazorBlade and cre8magic.
+
+Implementation:
+
+1. Everything shared is now in `/templates/shared-global`
+1. The `/templates/[project]/src` is now the only place for project-specific customizations
+
+Changed: 2024-12-09, `@iJungleboy`, `@tvatavuk`
