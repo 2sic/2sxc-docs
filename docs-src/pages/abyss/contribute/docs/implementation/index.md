@@ -84,6 +84,12 @@ It's especially useful when the SVG uses `currentColor` in it's own CSS.
 
 Changed: 2024-12-10, `@iJungleboy`
 
+#### Created Attribution System
+
+We created an attribution system to show who wrote which part of the documentation.
+
+Changed: ca. 2024-12-05, `@iJungleboy`
+
 #### Standardized Entire Setup
 
 We put all customizations and docs-instructions in the `2sxc` docs only,
@@ -94,4 +100,25 @@ Implementation:
 1. Everything shared is now in `/templates/shared-global`
 1. The `/templates/[project]/src` is now the only place for project-specific customizations
 
-Changed: 2024-12-09, `@iJungleboy`, `@tvatavuk`
+Changed: 2024-12-05, `@iJungleboy`, `@tvatavuk`
+
+
+#### Added Gallery Feature
+
+We created the `<div gallery="name"><!-- img list --></div>` feature to create galleries
+with previews etc.
+
+Changed: ca. 2024-12-01, `@iJungleboy`
+
+#### Added Lightbox with Fancybox
+
+We added the Fancybox lightbox to the system, so that images can be opened in a lightbox.
+
+Changed: ca. 2024-11, `@iJungleboy`
+
+
+#### Added Razor/Blazor Syntax Coloring
+
+We added the Razor/Blazor syntax coloring to the system, so that code can be colored.
+
+Changed: ca. 2024-06, `@tvatavuk`
