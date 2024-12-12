@@ -1,0 +1,23 @@
+// Special enhancement
+// So that APIs like method names don't wrap in the right panel
+// Otherwise long APIs take up 3-7 lines and make it really hard to read
+
+// Only on the body which is marked as a "ManagedReference"
+body[data-yaml-mime="ManagedReference"] nav#affix {
+
+  // Links to methods / properties
+  a.link-secondary {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    // test color while working
+    // color: green !important;
+
+    // Docfx generates a bunch of word-break tags, which if visible prevent the ellipsis from happening
+    wbr {
+      display: none;
+    }
+  }
+}
