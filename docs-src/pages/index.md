@@ -1,30 +1,44 @@
 
-<img src="../assets/logos/vcurrent/500.png" width="250px" align="right" class="float-end">
+<img src="../assets/logos/vcurrent/500.png" width="150px" align="right" class="float-end">
 
-# 2sxc and EAV Docs
+# 2sxc and EAV Docs v19.00
 
-`For version 18.05`
+This is the technical documentation for 2sxc and it's parts such as the EAV system.
 
-This is the technical documentation for EAV and 2sxc. If you're new to 2sxc, start with [2sxc.org](https://2sxc.org/).
+💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
-## Convert Dnn ☢️ and Oqtane 🩸 into a CMS
+## 2sxc turns Dnn & Oqtane into a CMS
 
-2sxc is a CMS- and Meta-Plugin for [Dnn/DotNetNuke](xref:Abyss.Platforms.Dnn.Index) and [Oqtane](xref:Abyss.Platforms.Oqtane.Index).
-It makes content editing easier than other CMSs like Wordpress, while giving the designer full control.
-It's also a [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal.
-And a very cool EAV data-management system.
-And a headless REST API.
-And a lot more.
+> [!TIP]
+> 2sxc is a CMS- and Meta-Plugin for [Dnn ☢️](xref:Abyss.Platforms.Dnn.Index) and [Oqtane 🩸](xref:Abyss.Platforms.Oqtane.Index).  
+> In many ways it's a lot like Elementor for Wordpress.
+
+It makes content editing fun and easy, while giving the designer full control.
+
+* So it's an open-source Enterprise Content Management System
+* the designer and developer can define fields, layout, relationships and more
+* the editor can then create pages, add content, manage images and more without breaking the design
 
 2sxc is used to provide web-site-builder functionality.
 It has a simple **Content** mode where users just add images, designed text/image blocks, links etc.
 Then there's the sophisticated **App** mode, where user add standalone functional apps like blogs, galleries and more.
 Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
 
+## 2sxc is a Low-Code Application Framework & CMF
+
+2sxc is also a Low-Code Application Framework and [CMF](https://en.wikipedia.org/wiki/List_of_content_management_frameworks) like Drupal.
+So you can extend on existing building blocks to create new functionality, or you can build your own from scratch.
+
+* It's a dynamic data system, where you can define your own data-structures
+* it's a very cool EAV (Entity-Attribute-Value) data-management system
+* it's extensible DataSource system let's you add custom logic and integrate anything
+* it's programmable forms allow you to customize the editing experience
+* and it's a headless REST API.
+* and it's 1000x more than you think.
+
 
 ## Where to Start
 
-2sxc is an easy to use dynamic content system for .net Platforms like Dnn.
 If you are just getting started, then this is probably not where you should be looking. Focus first on:
 
 1. The [Basics](xref:Basics.Index) which tells you about Architecture, Data Models and more
@@ -67,12 +81,9 @@ These topics are insufficiently documented...
 
 1. All kinds of customizations
     1. How Illustrations work (SVGs, CSS, JS etc.)
-    1. Lightbox
-    1. Possibly activation of additional languages
     1. How version switcher works
     1. How TOC customizations work
         1. icons in .net API
-        1. HR splitters
 
 ---
 

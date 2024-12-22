@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Interface IAsset | 2sxc 18 for Dnn and Oqtane </title>
+      <title>Interface IAsset | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IAsset | 2sxc 18 for Dnn and Oqtane ">
+      <meta name="title" content="Interface IAsset | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_Adam_IAsset" data-uid="ToSic.Sxc.Adam.IAsset" class="text-break">
-Interface IAsset  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Interface IAsset  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -114,7 +114,8 @@ Interface IAsset  <a class="header-action link-secondary" title="View source" hr
   </div>
 
   <div class="markdown summary"><p>Describes an ADAM (Automatic Digital Asset Management) asset. <br>
-This contains properties which both <a class="xref" href="ToSic.Sxc.Adam.IFolder.html">IFolder</a> and <a class="xref" href="ToSic.Sxc.Adam.IFile.html">IFile</a> have in common.</p>
+This contains properties which both <a class="xref" href="ToSic.Sxc.Adam.IFolder.html">IFolder</a> and <a class="xref" href="ToSic.Sxc.Adam.IFile.html">IFile</a> have in common
+in addition to what they inherit from the EAV</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -143,10 +144,10 @@ public interface IAsset : IHasMetadata</code></pre>
 
   <h3 id="ToSic_Sxc_Adam_IAsset_HasMetadata" data-uid="ToSic.Sxc.Adam.IAsset.HasMetadata">
   HasMetadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Informs the code if this asset has real metadata attached or not.</p>
+  <div class="markdown level1 summary"><p>Tells you if this asset has real metadata attached or not.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -161,7 +162,7 @@ public interface IAsset : IHasMetadata</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if this asset has metadata, false if it doesn't (in which case the Metadata property still works, but won't deliver any real values)</p>
+    <dd><p><code>true</code> if this asset has metadata, <code>false</code> if it doesn't (in which case the Metadata property still works, but won't deliver any real values)</p>
 </dd>
   </dl>
 
@@ -176,7 +177,7 @@ public interface IAsset : IHasMetadata</code></pre>
 
   <h3 id="ToSic_Sxc_Adam_IAsset_Metadata" data-uid="ToSic.Sxc.Adam.IAsset.Metadata">
   Metadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of metadata items -
@@ -196,7 +197,7 @@ to help in razor template etc.</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="ToSic.Sxc.Data.IMetadata.html">IMetadata</a></dt>
-    <dd><p>An IDynamicEntity which contains the metadata, or an empty IDynamicEntity which still works if no metadata exists.</p>
+    <dd><p>An <code>IMetadata</code> which contains the metadata, or an empty IMetadata which still works if no metadata exists.</p>
 </dd>
   </dl>
 
@@ -211,10 +212,10 @@ to help in razor template etc.</p>
 
   <h3 id="ToSic_Sxc_Adam_IAsset_Type" data-uid="ToSic.Sxc.Adam.IAsset.Type">
   Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The type of this asset (folder, file, etc.)</p>
+  <div class="markdown level1 summary"><p>The type of this asset (folder, file, etc.) - typically for adding icons or similar when listing assets.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -229,7 +230,8 @@ to help in razor template etc.</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>&quot;folder&quot;, &quot;image&quot;, &quot;document&quot;, &quot;file&quot; depending on what it is</p>
+    <dd><p><code>folder</code>, <code>image</code>, <code>document</code>, <code>file</code> depending on what it is.
+<code>document</code> for <code>C:\Inetpub\wwwroot\www.2sic.com\Portals\0\2sxc\content\assets\docs\terms\file.pdf</code></p>
 </dd>
   </dl>
 
@@ -244,7 +246,7 @@ to help in razor template etc.</p>
 
   <h3 id="ToSic_Sxc_Adam_IAsset_Url" data-uid="ToSic.Sxc.Adam.IAsset.Url">
   Url
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The path to this asset as used from external access.
@@ -263,7 +265,8 @@ Must be a full url beginning with a &quot;/&quot; like &quot;/Portals/0/adam/...
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The url to this asset</p>
+    <dd><p>The url to this asset.
+<code>/Portals/0/2sxc/content/assets/docs/terms/file.pdf</code> for <code>C:\Inetpub\wwwroot\www.2sic.com\Portals\0\2sxc\content\assets\docs\terms\file.pdf</code></p>
 </dd>
   </dl>
 
@@ -278,7 +281,7 @@ Must be a full url beginning with a &quot;/&quot; like &quot;/Portals/0/adam/...
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Adam/IAsset.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

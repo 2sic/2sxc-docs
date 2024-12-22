@@ -13,15 +13,42 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 
 Last Update: **2024-12-06**
 
-## 19.00 (planned 2024-12-12)
+## 19.00 (planned 2024-12-21)
 
-1. 🅰️ Update UI to Angular 19
+1. 🅰️ Update UI to Angular 19 and Angular Material 19
 1. ✅ `ICacheService` on `Kit.Cache`
-1. ⌛ Finalize Pickers main features
-1. ⌛ JSON Bundle Export, Import, Persist
-1. ⌛ Ability to switch UI languages (not just content-languages)
+1. ✅ Finalize Pickers main features
+    1. Radio
+    1. Checkboxes
+    1. Preview Material Icon
+    1. Preview SVG
+    1. Preview Image (jpg/png)
+    1. Configurations: `AppAssets`, `CSS`, `Entity`, `Query`, `CustomList`, `CSV`
+    1. Preview features
+    1. `Info` `Link` `Tooltip`
+1. ✅ New AppAssets DataSource and `System.AppAssets` query to get assets for pickers such as all SVGs in a folder.
+1. ✅ Ability to switch UI languages (not just content-languages)
+1. ✅ GPS Picker enhancements with **my current location** and searching for addresses which were not in the data
+1. ✅ Ability to delete a field (column) which had entity-relationships in it (previously SQL stopped you)
+1. ✅ New `Toolbar.Audience(...)` API to show it when needed
+1. ✅ Improve UI for creating fields for content-types, better dropdowns, longer etc.
+
+
+Bugfixes
+
+1. 🐞 Fix: various issues around the Pickers
+1. 🐞 Fix: Public forms called a backend endpoint which was protected, and got errors (though it wasn't necessary)
+
+Internal
+
+1. Refactor toolbar and image/picture objects to use `record`s instead of `class`es in C#
+
+
+
 
 ## 19.01 LTS (planned 2024-12-20)
+
+1. ⌛ JSON Bundle Export, Import, Persist
 
 ## Note: Picker Features still not final
 
