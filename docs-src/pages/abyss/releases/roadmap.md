@@ -11,12 +11,11 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-12-06**
+Last Update: **2024-12-22**
 
-## 19.00 (planned 2024-12-21)
+## 19.00 (Released 2024-12-21)
 
 1. 🅰️ Update UI to Angular 19 and Angular Material 19
-1. ✅ `ICacheService` on `Kit.Cache`
 1. ✅ Finalize Pickers main features
     1. Radio
     1. Checkboxes
@@ -27,12 +26,16 @@ Last Update: **2024-12-06**
     1. Preview features
     1. `Info` `Link` `Tooltip`
 1. ✅ New AppAssets DataSource and `System.AppAssets` query to get assets for pickers such as all SVGs in a folder.
+1. ✅ Double-Encrypt sensitive data on HTTP-Transport
 1. ✅ Ability to switch UI languages (not just content-languages)
 1. ✅ GPS Picker enhancements with **my current location** and searching for addresses which were not in the data
 1. ✅ Ability to delete a field (column) which had entity-relationships in it (previously SQL stopped you)
 1. ✅ New `Toolbar.Audience(...)` API to show it when needed
 1. ✅ Improve UI for creating fields for content-types, better dropdowns, longer etc.
 
+Breaking Changes
+
+1. An interface called `ToSic.Sxc.DataSources.IBlockInstance` was removed since it was identical to `ToSic.Eav.DataSource.IDataSource` and should not be used anywhere.
 
 Bugfixes
 
@@ -49,13 +52,13 @@ Internal
 ## 19.01 LTS (planned 2024-12-20)
 
 1. ⌛ JSON Bundle Export, Import, Persist
+1. ✅ `ICacheService` on `Kit.Cache` - docs & samples missing!
 
-## Note: Picker Features still not final
+## Note: Some Picker Features still not final
 
 1. Picker Formulas (beta)
 1. Picker Source WebService (not started)
 1. Picker Source CSS (beta)
-1. Picker Preview Icon, Image, etc. (beta)
 
 
 ## 2024 Q3 Finish DoD / Almost-Done Work
