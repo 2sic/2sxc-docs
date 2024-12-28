@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_Services_Cache_ICacheSpecs" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs" class="text-break">
-Interface ICacheSpecs  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Interface ICacheSpecs  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -113,13 +113,14 @@ Interface ICacheSpecs  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Experimental!
-Cache Specs which determine how the key is generated, additional dependencies and expiration policies.</p>
+  <div class="markdown summary"><p>Cache Specs contain the definition of what the cached data should depend on, how long it should be cached and how the cache key should be generated.
+It uses a fluent API to continue adding rules / expirations / dependencies.
+Internally this is then used to create a cache policy.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;WIP v17.09&quot;)]
+    <pre><code class="lang-csharp hljs">[PublicApi]
 public interface ICacheSpecs</code></pre>
   </div>
 
@@ -133,6 +134,12 @@ public interface ICacheSpecs</code></pre>
 
 
 
+  <h2 id="ToSic_Sxc_Services_Cache_ICacheSpecs_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><ul>
+<li>Introduced as experimental in v17.09</li>
+<li>Released in 19.01</li>
+</ul>
+</div>
 
 
   <h2 class="section" id="methods">Methods
@@ -143,7 +150,7 @@ public interface ICacheSpecs</code></pre>
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_SetAbsoluteExpiration_System_DateTimeOffset_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.SetAbsoluteExpiration(System.DateTimeOffset)">
   SetAbsoluteExpiration(DateTimeOffset)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set absolute expiration, alternative is sliding expiration.
@@ -185,7 +192,7 @@ Setting both is invalid and will throw an exception.</p>
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_SetSlidingExpiration_System_TimeSpan_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.SetSlidingExpiration(System.TimeSpan)">
   SetSlidingExpiration(TimeSpan)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set sliding expiration, alternative is absolute expiration.</p>
@@ -224,9 +231,50 @@ Setting both is invalid and will throw an exception.</p>
 
   <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryBy_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryBy*"></a>
 
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryBy_System_String_System_Int32_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryBy(System.String,System.Int32)">
+  VaryBy(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Vary the cache by a specific name and value.
+All cache items where this value is the same, will be considered the same.
+For example, this could be a category name or something where the data for this category is always the same.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryBy(string name, int value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryBy_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryBy*"></a>
+
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryBy_System_String_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryBy(System.String,System.String,ToSic.Lib.Coding.NoParamOrder,System.Boolean)">
   VaryBy(string, string, NoParamOrder, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vary the cache by a specific name and value.
@@ -270,30 +318,55 @@ For example, this could be a category name or something where the data for this 
 
   <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByModule_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByModule*"></a>
 
-  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByModule_ToSic_Lib_Coding_NoParamOrder_ToSic_Sxc_Context_ICmsModule_System_Nullable_System_Int32__" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByModule(ToSic.Lib.Coding.NoParamOrder,ToSic.Sxc.Context.ICmsModule,System.Nullable{System.Int32})">
-  VaryByModule(NoParamOrder, ICmsModule, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByModule" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByModule">
+  VaryByModule()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by module, so that each module has its own cache.
-By default, it will take the current module, but you can optionally specify a custom module or ID.</p>
+  <div class="markdown level1 summary"><p>Vary the cache by the <em>current</em> module, so that each module has its own cache.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByModule(NoParamOrder protector = default, ICmsModule module = null, int? id = null)</code></pre>
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByModule()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByModule_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByModule*"></a>
+
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByModule_System_Int32_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByModule(System.Int32)">
+  VaryByModule(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Vary the cache by module, so that each module has its own cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByModule(int id)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>module</code> <a class="xref" href="ToSic.Sxc.Context.ICmsModule.html">ICmsModule</a></dt>
-    <dd><p>optional module object to use instead of the default</p>
-</dd>
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd><p>optional page id to use instead of the default</p>
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Module id to use</p>
 </dd>
   </dl>
 
@@ -315,32 +388,19 @@ By default, it will take the current module, but you can optionally specify a cu
 
   <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPage_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPage*"></a>
 
-  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPage_ToSic_Lib_Coding_NoParamOrder_ToSic_Sxc_Context_ICmsPage_System_Nullable_System_Int32__" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPage(ToSic.Lib.Coding.NoParamOrder,ToSic.Sxc.Context.ICmsPage,System.Nullable{System.Int32})">
-  VaryByPage(NoParamOrder, ICmsPage, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPage" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPage">
+  VaryByPage()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by page, so that each page has its own cache.
-By default, it will take the current page, but you can optionally specify a custom page or ID.</p>
+  <div class="markdown level1 summary"><p>Vary the cache by the <em>current</em> page, so that each page has its own cache.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByPage(NoParamOrder protector = default, ICmsPage page = null, int? id = null)</code></pre>
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByPage()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>page</code> <a class="xref" href="ToSic.Sxc.Context.ICmsPage.html">ICmsPage</a></dt>
-    <dd><p>optional page object to use instead of the default</p>
-</dd>
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd><p>optional page id to use instead of the default</p>
-</dd>
-  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
@@ -358,32 +418,26 @@ By default, it will take the current page, but you can optionally specify a cust
 
 
 
-  <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameter_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPageParameter*"></a>
+  <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPage_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPage*"></a>
 
-  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameter_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPageParameter(System.String,ToSic.Lib.Coding.NoParamOrder,System.Boolean)">
-  VaryByPageParameter(string, NoParamOrder, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPage_System_Int32_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPage(System.Int32)">
+  VaryByPage(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by a specific page parameter, like <code>?category=1</code>.
-Using this method will only vary the cache by this specific parameter and ignore the rest.</p>
+  <div class="markdown level1 summary"><p>Vary the cache by page, so that each page has its own cache.
+By default, it will take the current page, but you can optionally specify a custom page or ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByPageParameter(string name, NoParamOrder protector = default, bool caseSensitive = false)</code></pre>
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByPage(int id)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Name of a single parameter</p>
-</dd>
-    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>caseSensitive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Determines if the value should be treated case-sensitive, default is <code>false</code></p>
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>page id to use</p>
 </dd>
   </dl>
 
@@ -407,10 +461,10 @@ Using this method will only vary the cache by this specific parameter and ignore
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByPageParameters(System.String,ToSic.Lib.Coding.NoParamOrder,System.Boolean)">
   VaryByPageParameters(string, NoParamOrder, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by one or more specific page parameter, like <code>?category=1&amp;sort=asc</code>.
+  <div class="markdown level1 summary"><p>Vary the cache by one or more specific page parameter, like <code>?category=1</code> or <code>?category=1&amp;sort=asc</code>.
 Using this method will only vary the cache by the mentioned parameters and ignore the rest.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -422,7 +476,7 @@ Using this method will only vary the cache by the mentioned parameters and ignor
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>names</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Names of one or more parameters, comma-separated</p>
+    <dd><p>Names of one or more parameters, comma-separated. If null, all parameters are used, if <code>&quot;&quot;</code>, no parameters are used.</p>
 </dd>
     <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
@@ -452,10 +506,10 @@ Using this method will only vary the cache by the mentioned parameters and ignor
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByParameters_ToSic_Sxc_Context_IParameters_ToSic_Lib_Coding_NoParamOrder_System_String_System_Boolean_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByParameters(ToSic.Sxc.Context.IParameters,ToSic.Lib.Coding.NoParamOrder,System.String,System.Boolean)">
   VaryByParameters(IParameters, NoParamOrder, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L180"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by parameters which may not come from the page.</p>
+  <div class="markdown level1 summary"><p>Vary the cache by a custom parameters list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -497,30 +551,55 @@ Using this method will only vary the cache by the mentioned parameters and ignor
 
   <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByUser*"></a>
 
-  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser_ToSic_Lib_Coding_NoParamOrder_ToSic_Sxc_Context_ICmsUser_System_Nullable_System_Int32__" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByUser(ToSic.Lib.Coding.NoParamOrder,ToSic.Sxc.Context.ICmsUser,System.Nullable{System.Int32})">
-  VaryByUser(NoParamOrder, ICmsUser, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByUser">
+  VaryByUser()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Vary the cache by user, so that each user has its own cache.
-By default, it will take the current user, but you can specify a custom user or ID.</p>
+  <div class="markdown level1 summary"><p>Vary the cache by <em>current</em> user, so that each user has its own cache.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByUser(NoParamOrder protector = default, ICmsUser user = null, int? id = null)</code></pre>
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByUser()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByUser*"></a>
+
+  <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser_System_Int32_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.VaryByUser(System.Int32)">
+  VaryByUser(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Vary the cache by user, so that each user has its own cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICacheSpecs VaryByUser(int id)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>protector</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>user</code> <a class="xref" href="ToSic.Sxc.Context.ICmsUser.html">ICmsUser</a></dt>
-    <dd><p>optional module object to use instead of the default</p>
-</dd>
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd><p>optional page id to use instead of the default</p>
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>User id to use</p>
 </dd>
   </dl>
 
@@ -544,7 +623,7 @@ By default, it will take the current user, but you can specify a custom user or 
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.WatchAppData(ToSic.Lib.Coding.NoParamOrder)">
   WatchAppData(NoParamOrder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Depend on the app data, so if any data changes, the cache will be invalidated.</p>
@@ -581,7 +660,7 @@ By default, it will take the current user, but you can specify a custom user or 
 
   <h3 id="ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppFolder_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Services.Cache.ICacheSpecs.WatchAppFolder(ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean})">
   WatchAppFolder(NoParamOrder, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Depend on the app folder, so if any file in the app folder changes, the cache will be invalidated. WIP!</p>
@@ -622,7 +701,7 @@ By default, it will take the current user, but you can specify a custom user or 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheSpecs.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 
