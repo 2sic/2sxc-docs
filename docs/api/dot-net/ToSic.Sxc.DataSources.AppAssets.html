@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Class CustomDataSourceAdvanced | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Class AppAssets | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class CustomDataSourceAdvanced | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Class AppAssets | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSource_CustomDataSourceAdvanced.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSource.CustomDataSourceAdvanced%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_DataSources_AppAssets.md&amp;value=---%0Auid%3A%20ToSic.Sxc.DataSources.AppAssets%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,29 +100,35 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced">
+        <article data-uid="ToSic.Sxc.DataSources.AppAssets">
 
 
 
-  <h1 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced" class="text-break">
-Class CustomDataSourceAdvanced  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Sxc_DataSources_AppAssets" data-uid="ToSic.Sxc.DataSources.AppAssets" class="text-break">
+Class AppAssets  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/AppAssets.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.DataSource.html">DataSource</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Eav.DataSources.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.DataSources.html">DataSources</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The base class for all DataSources, especially custom DataSources.
-It must always be inherited.
-It provides a lot of core functionality to get configurations, ensure caching and more.</p>
-<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> DataSource for custom data sources.</p>
+  <div class="markdown summary"><p>Deliver a list of App files and folders from the current platform (Dnn or Oqtane).</p>
+<p>This provides 4 streams:</p>
+<ul>
+<li>All: Stream containing both files and folders</li>
+<li>Default: All files <a class="xref" href="ToSic.Sxc.Apps.AppFileTyped.html">AppFileTyped</a></li>
+<li>Files: All Files <a class="xref" href="ToSic.Sxc.Apps.AppFileTyped.html">AppFileTyped</a></li>
+<li>Folders: All folders <a class="xref" href="ToSic.Sxc.Apps.AppFolderTyped.html">AppFolderTyped</a></li>
+</ul>
+<p>To figure out the properties returned and what they match up to, see <a class="xref" href="ToSic.Sxc.Apps.AppFileTyped.html">AppFileTyped</a> and <a class="xref" href="ToSic.Sxc.Apps.AppFolderTyped.html">AppFolderTyped</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-public abstract class CustomDataSourceAdvanced : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
+    <pre><code class="lang-csharp hljs">[VisualQuery(NiceName = &quot;App Assets&quot;, Type = DataSourceType.Source, ConfigurationType = &quot;477d5de4-5ffa-43ef-8553-37354cb27660&quot;, NameId = &quot;3fe6c215-4c37-45c1-8883-b4b2a47162a7&quot;, HelpLink = &quot;https://go.2sxc.org/ds-appfiles&quot;, Icon = &quot;account_tree&quot;, Audience = Audience.Advanced, UiHint = &quot;Files and folders in the App folder&quot;)]
+[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still beta in v19 as the final name may change.&quot;)]
+public class AppAssets : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
 
 
@@ -135,7 +141,8 @@ public abstract class CustomDataSourceAdvanced : DataSourceBase, IDataSource, IA
       <div><span class="xref">ServiceBase</span></div>
       <div><span class="xref">ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
-      <div><span class="xref">CustomDataSourceAdvanced</span></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
+      <div><span class="xref">AppAssets</span></div>
     </dd>
   </dl>
 
@@ -154,24 +161,16 @@ public abstract class CustomDataSourceAdvanced : DataSourceBase, IDataSource, IA
     </dd>
   </dl>
 
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a></div>
-      <div><a class="xref" href="ToSic.Eav.DataSources.Csv.html">Csv</a></div>
-      <div><a class="xref" href="ToSic.Eav.DataSources.DataTable.html">DataTable</a></div>
-      <div><a class="xref" href="ToSic.Eav.DataSources.Sql.html">Sql</a></div>
-      <div><a class="xref" href="ToSic.Sxc.DataSources.AppAssets.html">AppAssets</a></div>
-      <div><a class="xref" href="ToSic.Sxc.DataSources.Pages.html">Pages</a></div>
-      <div><a class="xref" href="ToSic.Sxc.DataSources.Roles.html">Roles</a></div>
-      <div><a class="xref" href="ToSic.Sxc.DataSources.Users.html">Users</a></div>
-      <div><a class="xref" href="ToSic.Sxc.Dnn.DataSources.DnnUserProfile.html">DnnUserProfile</a></div>
-    </dd>
-  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
+    </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
     </div>
@@ -237,111 +236,33 @@ public abstract class CustomDataSourceAdvanced : DataSourceBase, IDataSource, IA
 
 
 
-  <h2 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Had a major, breaking update in v15.
-Consult the guide to upgrade your custom data sources.</p>
+  <h2 id="ToSic_Sxc_DataSources_AppAssets_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><ul>
+<li>Started v18.02 for the first time - in the Picker Source App Assets.</li>
+<li>officially documented for v19.00, but API not fully final/stable, names may change.</li>
+</ul>
 </div>
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="ToSic_Eav_DataSource_CustomDataSourceAdvanced__ctor_" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.#ctor*"></a>
-
-  <h3 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced__ctor_ToSic_Eav_DataSource_CustomDataSourceAdvanced_MyServices_System_String_System_Object___" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.#ctor(ToSic.Eav.DataSource.CustomDataSourceAdvanced.MyServices,System.String,System.Object[])">
-  CustomDataSourceAdvanced(MyServices, string, object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes an DataSource which will usually provide/generate external data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CustomDataSourceAdvanced(CustomDataSourceAdvanced.MyServices services, string logName = null, object[] connect = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">MyServices</a></dt>
-    <dd><p>Dependencies needed by this data source and/or the parent</p>
-</dd>
-    <dt><code>logName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The log name/identifier for insights logging.
-Optional, but makes debugging a bit easier when provided.</p>
-</dd>
-    <dt><code>connect</code> <span class="xref">object</span>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section" id="ToSic_Eav_DataSource_CustomDataSourceAdvanced__ctor_ToSic_Eav_DataSource_CustomDataSourceAdvanced_MyServices_System_String_System_Object____remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>set the cache creation date to the moment the object is constructed
-this is important, because the date should stay fixed throughout the lifetime of this object
-but renew when it is updates</p>
-</div>
-
-
-
-
-  <a id="ToSic_Eav_DataSource_CustomDataSourceAdvanced__ctor_" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.#ctor*"></a>
-
-  <h3 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced__ctor_ToSic_Lib_Services_MyServicesBase_ToSic_Eav_DataSource_CustomDataSourceAdvanced_MyServices__System_String_" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.#ctor(ToSic.Lib.Services.MyServicesBase{ToSic.Eav.DataSource.CustomDataSourceAdvanced.MyServices},System.String)">
-  CustomDataSourceAdvanced(MyServicesBase&lt;MyServices&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L58"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CustomDataSourceAdvanced(MyServicesBase&lt;CustomDataSourceAdvanced.MyServices&gt; services, string logName = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>services</code> <a class="xref" href="ToSic.Lib.Services.MyServicesBase-1.html">MyServicesBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">MyServices</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>logName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
   <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp_" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.CacheTimestamp*"></a>
+  <a id="ToSic_Sxc_DataSources_AppAssets_FileFilter_" data-uid="ToSic.Sxc.DataSources.AppAssets.FileFilter*"></a>
 
-  <h3 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.CacheTimestamp">
-  CacheTimestamp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_DataSources_AppAssets_FileFilter" data-uid="ToSic.Sxc.DataSources.AppAssets.FileFilter">
+  FileFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/AppAssets.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>System time-stamp of when the data in this cached thing was initialized or updated.
-Depending on the implementation, this may go up-stream and return an up-stream value.</p>
+  <div class="markdown level1 summary"><p>The file name filter, such as &quot;*.jpg&quot;.
+Uses the <a class="xref" href="../../net-code/conventions/immutable/index.html">immutable convention</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override long CacheTimestamp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;*.*&quot;)]
+public string FileFilter { get; }</code></pre>
   </div>
 
 
@@ -350,9 +271,8 @@ Depending on the implementation, this may go up-stream and return an up-stream v
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd><p>A timestamp as a long number</p>
-</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -362,19 +282,21 @@ Depending on the implementation, this may go up-stream and return an up-stream v
 
 
 
-  <a id="ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory_" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.DataFactory*"></a>
+  <a id="ToSic_Sxc_DataSources_AppAssets_RootFolder_" data-uid="ToSic.Sxc.DataSources.AppAssets.RootFolder*"></a>
 
-  <h3 id="ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory" data-uid="ToSic.Eav.DataSource.CustomDataSourceAdvanced.DataFactory">
-  DataFactory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_DataSources_AppAssets_RootFolder" data-uid="ToSic.Sxc.DataSources.AppAssets.RootFolder">
+  RootFolder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/AppAssets.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The root folder to start from, beginning in the app root.
+Uses the <a class="xref" href="../../net-code/conventions/immutable/index.html">immutable convention</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-protected IDataFactory DataFactory { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;/&quot;)]
+public string RootFolder { get; }</code></pre>
   </div>
 
 
@@ -383,7 +305,7 @@ protected IDataFactory DataFactory { get; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="ToSic.Eav.Data.Build.IDataFactory.html">IDataFactory</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -398,7 +320,7 @@ protected IDataFactory DataFactory { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/Custom/CustomDataSourceAdvanced.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/DataSources/CmsBases/AppAssets.cs/#L36" class="edit-link">Edit this page</a>
         </div>
 
 
