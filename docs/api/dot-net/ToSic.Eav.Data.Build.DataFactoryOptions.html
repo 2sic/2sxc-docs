@@ -119,7 +119,7 @@ Class DataFactoryOptions  <a class="header-action link-secondary" title="View so
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public class DataFactoryOptions</code></pre>
+public record DataFactoryOptions : IEquatable&lt;DataFactoryOptions&gt;</code></pre>
   </div>
 
 
@@ -133,6 +133,12 @@ public class DataFactoryOptions</code></pre>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.DataFactoryOptions.html">DataFactoryOptions</a>&gt;</div>
+    </dd>
+  </dl>
 
 
 
@@ -140,7 +146,10 @@ public class DataFactoryOptions</code></pre>
 
 
   <h2 id="ToSic_Eav_Data_Build_DataFactoryOptions_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Added in v15.x but made public in v16.00</p>
+  <div class="markdown level0 remarks"><ul>
+<li>Added in v15.x but made public in v16.00</li>
+<li>Changed to be a record in v19.01 to make things simpler; this could be a breaking change, because the old constructor was removed.</li>
+</ul>
 </div>
 
 
@@ -150,47 +159,19 @@ public class DataFactoryOptions</code></pre>
 
   <a id="ToSic_Eav_Data_Build_DataFactoryOptions__ctor_" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions__ctor_ToSic_Eav_Data_Build_DataFactoryOptions_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Type_" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.#ctor(ToSic.Eav.Data.Build.DataFactoryOptions,ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Type)">
-  DataFactoryOptions(DataFactoryOptions, NoParamOrder, int?, string, string, bool?, int?, bool?, Type)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions__ctor" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.#ctor">
+  DataFactoryOptions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Main Constructor to create such options.</p>
+  <div class="markdown level1 summary"><p>Options how Entities should be generated from the initial data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DataFactoryOptions(DataFactoryOptions original = null, NoParamOrder noParamOrder = default, int? appId = null, string typeName = null, string titleField = null, bool? autoId = null, int? idSeed = null, bool? withMetadata = null, Type type = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public DataFactoryOptions()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>original</code> <a class="xref" href="ToSic.Eav.Data.Build.DataFactoryOptions.html">DataFactoryOptions</a></dt>
-    <dd><p>Optional initial object which would be used as a template when creating the new one.</p>
-</dd>
-    <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>appId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd><p>Optional AppId to set on each generated Entity</p>
-</dd>
-    <dt><code>typeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Optional ContentTypeName to use instead of the default</p>
-</dd>
-    <dt><code>titleField</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Optional Title field to use instead of the default <code>Title</code></p>
-</dd>
-    <dt><code>autoId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd><p>Determines if items with ID 0 should get an automatic ID</p>
-</dd>
-    <dt><code>idSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd><p>A root ID seed for numbering the items</p>
-</dd>
-    <dt><code>withMetadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd></dd>
-    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -199,6 +180,12 @@ public class DataFactoryOptions</code></pre>
 
 
 
+  <h4 class="section" id="ToSic_Eav_Data_Build_DataFactoryOptions__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><ul>
+<li>Added in v15.x but made public in v16.00</li>
+<li>Changed to be a record in v19.01 to make things simpler; this could be a breaking change, because the old constructor was removed.</li>
+</ul>
+</div>
 
 
 
@@ -211,7 +198,7 @@ public class DataFactoryOptions</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_AllowUnknownValueTypes" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.AllowUnknownValueTypes">
   AllowUnknownValueTypes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -251,7 +238,7 @@ By default, it will be <code>0</code></p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int AppId { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int AppId { get; init; }</code></pre>
   </div>
 
 
@@ -275,15 +262,15 @@ By default, it will be <code>0</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_AutoId" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.AutoId">
   AutoId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines if Zero IDs are auto-incremented - default is <code>true</code>.</p>
+  <div class="markdown level1 summary"><p>Determines if Zero IDs are auto-incremented. Default is <code>true</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AutoId { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool AutoId { get; init; }</code></pre>
   </div>
 
 
@@ -307,14 +294,17 @@ By default, it will be <code>0</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_IdSeed" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.IdSeed">
   IdSeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>ID seed for all items which must be auto-numbered. Default is <code>1</code>.
+If the seed is <code>-1</code> or less, then it will automatically decrement the count.
+This is to clearly indicate virtual IDs which will not be the same in the next run.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int IdSeed { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int IdSeed { get; init; }</code></pre>
   </div>
 
 
@@ -338,7 +328,7 @@ By default, it will be <code>0</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_TitleField" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.TitleField">
   TitleField
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The field in the data which is the default title.
@@ -347,7 +337,7 @@ Defaults to <code>Title</code> if not set.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TitleField { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string TitleField { get; init; }</code></pre>
   </div>
 
 
@@ -371,7 +361,7 @@ Defaults to <code>Title</code> if not set.</p>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_Type" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.Type">
   Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -410,7 +400,7 @@ Defaults to <code>Title</code> if not set.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TypeName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string TypeName { get; init; }</code></pre>
   </div>
 
 
@@ -434,7 +424,7 @@ Defaults to <code>Title</code> if not set.</p>
 
   <h3 id="ToSic_Eav_Data_Build_DataFactoryOptions_WithMetadata" data-uid="ToSic.Eav.Data.Build.DataFactoryOptions.WithMetadata">
   WithMetadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Core/Data/Build/Factory/DataFactoryOptions.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
