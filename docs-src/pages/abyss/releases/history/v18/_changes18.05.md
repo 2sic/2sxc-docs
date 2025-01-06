@@ -1,5 +1,5 @@
 
-### 18.05 (2024-12-06)
+### 2sxc v18.05 (2024-12-06)
 
 1. 🩸 Oqtane / AppCode problems with empty AppCode.dll [#3505](https://github.com/2sic/2sxc/issues/3505)
 1. 📖 Add contributing.md to all repos #3484

@@ -1,7 +1,7 @@
 
-### Changes in 2sxc 17.04 (2024-03-11)
+### 2sxc v17.04 (2024-03-11)
 
-## Improvements
+#### Improvements
 
 1. `MyView.Resources` added to complement existing `MyView.Settings` #3315 
 2. `ITypedItem.Img(...)` added to complement exitsing `ITypedItem.Picture(...)` #3324 
@@ -14,7 +14,7 @@
 9. Improve razor compile help - show errors before warnings
 10. **Picker** - auto extract additional fields to retrieve based on placeholders in Label / Help texts etc.
 
-## Generate Data Models Improvements
+#### Generate Data Models Improvements
 
 1. Include Scope name
 2. Include content-types in `Configuration` scope
@@ -23,7 +23,7 @@
 5. `app.json` editions configuration, add `isDefault`
 
 
-## Bugfixes
+#### Bugfixes
 
 1. UI Date Picker - fix but with UTC offset #3321 
 2. UI Page Picker - fix, was broken in 17.03.00 #3320 

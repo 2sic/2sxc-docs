@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.03 (2023-08-21)
+### 2sxc v16.03 (2023-08-21)
 
 Enhancements around Typed Code
 

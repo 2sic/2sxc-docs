@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.09 (2023-11-22)
+### 2sxc v16.09 (2023-11-22)
 
 1. ✅ `TypedItem.Picture("Child.Property")` path notation
 1. ✅ fix js minification of `inpage.min.js`

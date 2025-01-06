@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 15.01 (2023-01-31)
+### 2sxc v15.01 (2023-01-31)
 
 1. ✅ Export / Import
     1. ✅ Create export bundle configuration to mark content-types and entities for export together

@@ -1,9 +1,9 @@
 
-### Changes in 2sxc 17.06 LTS (2024-03-28)
+### 2sxc v17.06 LTS (2024-03-28)
 
 The first LTS (Long-Term-Stable) Release of 2sxc 17.
 
-## Easter LTS Release
+#### Easter LTS Release
 
 1. ✅ Prepare for Oqtane SSR (Server-Side Rendering)
 1. ✅ Provide Code Generator for Content Types, Razor and Services
@@ -15,7 +15,7 @@ The first LTS (Long-Term-Stable) Release of 2sxc 17.
     1. ✅ App-Auto-Installer UI to add-install apps later on
 1. ✅ LTS
 
-## Bugfixes
+#### Bugfixes
 
 * When accessing an App through another app (eg first going to Apps-Management) it show the data of the original app
 * Opening features in Apps-Management didn't work reliably

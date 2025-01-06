@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 17.00 (2023-12-23)
+### 2sxc v17.00 (2023-12-23)
 
 
 1. ✅ DNN: Require CodeDome C# 7.3 to be installed

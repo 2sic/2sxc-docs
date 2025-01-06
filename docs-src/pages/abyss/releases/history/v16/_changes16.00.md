@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.00 LTS (2023-05-04)
+### 2sxc v16.00 LTS (2023-05-04)
 
 No relevant changes, just minor bugfixes + our convention to upgrade the main version every 6 months.
 We mainly finished the docs for various features, so this is what is now done.

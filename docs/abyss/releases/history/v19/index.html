@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title> | 2sxc 19 for Dnn and Oqtane </title>
+      <title>All Changes in 2sxc and EAV v19 | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="All Changes in 2sxc and EAV v19 | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v15/_changes15.00.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v19/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,104 +100,51 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="">
+        <article data-uid="Abyss.Releases.History.V19">
+<h1 id="all-changes-in-2sxc-and-eav-v19">All Changes in 2sxc and EAV v19</h1>
 
-<h3 id="2sxc-v1500-2022-12-23">2sxc v15.00 (2022-12-23)</h3>
+<h2 id="version-19">Version 19</h2>
+<h3 id="2sxc-v1900-2024-12-21">2sxc v19.00 (2024-12-21)</h3>
 <ol>
-<li>✅ Improve logging
+<li>🅰️ Update UI to Angular 19 and Angular Material 19</li>
+<li>✅ Finalize Pickers main features
 <ol>
-<li>✅ Place it in an own library DLL for better reuse</li>
-<li>✅ Create ICodeLog for improve logging in Razor and WebApi which ensures compatibility with existing code</li>
-<li>✅ Improve automatic connecting logs with helpers so most <code>Init(Log)</code> become obsolete</li>
+<li>Radio</li>
+<li>Checkboxes</li>
+<li>Preview Material Icon</li>
+<li>Preview SVG</li>
+<li>Preview Image (jpg/png)</li>
+<li>Configurations: <code>AppAssets</code>, <code>CSS</code>, <code>Entity</code>, <code>Query</code>, <code>CustomList</code>, <code>CSV</code></li>
+<li>Preview features</li>
+<li><code>Info</code> <code>Link</code> <code>Tooltip</code></li>
 </ol>
 </li>
-<li>✅ Update CsvHelper DLL to latest version</li>
-<li>✅ Improve install-file names</li>
-<li>✅ Update to Razor Blade 4</li>
-<li>✅ <del>Support Oqtane v4 with .net 7</del> - ATM Oqtane doesn't plan on going to .net 7</li>
-<li>✅ Tutorial App
-<ol>
-<li>✅ Improve internal structure</li>
-<li>✅ Change how to show code vs results - mostly use tabs</li>
+<li>✅ New AppAssets DataSource and <code>System.AppAssets</code> query to get assets for pickers such as all SVGs in a folder.</li>
+<li>✅ Double-Encrypt sensitive data on HTTP-Transport</li>
+<li>✅ Ability to switch UI languages (not just content-languages)</li>
+<li>✅ GPS Picker enhancements with <strong>my current location</strong> and searching for addresses which were not in the data</li>
+<li>✅ Ability to delete a field (column) which had entity-relationships in it (previously SQL stopped you)</li>
+<li>✅ New <code>Toolbar.Audience(...)</code> API to show it when needed</li>
+<li>✅ Improve UI for creating fields for content-types, better dropdowns, longer etc.</li>
 </ol>
-</li>
-<li>✅ Razor APIs and Services
+<p>Breaking Changes</p>
 <ol>
-<li>✅ Improve <code>ImageService</code> to have an <code>imgAltFallback</code> on <code>.Img()</code>, <code>.Picture()</code> and <code>.ImgOrPic()</code></li>
-<li>✅ Improve <code>ImageService</code> to better respect multi-language crop-settings and labels</li>
-<li>✅ Improve <code>Page</code> service <code>Parameters.Set(...)</code> to also allow bool, int etc. (not just strings)</li>
-<li>✅ Create Kit.HtmlTag</li>
-<li>✅ Create <code>ITurnOnService</code> and <code>Kit.Page.TurnOn(...)</code></li>
+<li>An interface called <code>ToSic.Sxc.DataSources.IBlockInstance</code> was removed since it was identical to <code>ToSic.Eav.DataSource.IDataSource</code> and should not be used anywhere.</li>
 </ol>
-</li>
-<li>✅ Data Sources
+<p>Bugfixes</p>
 <ol>
-<li>✅ Improve <code>ValuFilter</code> Data Source to also allow <code>Contains</code> on numbers</li>
+<li>🐞 Fix: various issues around the Pickers</li>
+<li>🐞 Fix: Public forms called a backend endpoint which was protected, and got errors (though it wasn't necessary)</li>
 </ol>
-</li>
-<li>✅ DB Clean-Up
+<p>Internal</p>
 <ol>
-<li>✅ Remove SQL triggers which log XML data to <code>DataTimeline</code> which isn't used any more</li>
-<li>✅ Remove XML column <code>NewData</code> in <code>DataTimeline</code> which isn't used any more</li>
-</ol>
-</li>
-<li>✅ Internal APIs
-<ol>
-<li>✅ Improve Settings/Resources Stack with various unit tests</li>
-<li>✅ Improve Settings/Resources Stack to have internal quick access to deep objects using a path like <code>&quot;Images.Content.Width&quot;</code></li>
-<li>✅ Create API <code>DependenciesBase</code> to better handle log attachments to dependencies</li>
-</ol>
-</li>
-<li>✅ TinyMCE upgrade to v6</li>
-<li>✅ Drop <code>_</code> prefix requirement on cshtml files by protecting them in an another manner
-<ol>
-<li>✅ It's not needed on Oqtane, as the files are not accessible</li>
-<li>✅ Only needed ATM on DNN because each file could be called from the browser directly</li>
-<li>✅ Probably make sure all base classes refuse to render standalone</li>
-</ol>
-</li>
-<li>✅ Ability to use compressed GZIP data for DataTimeline (patrons)
-<ol>
-<li>✅ Technical features</li>
-<li>✅ Toggle to turn on/off</li>
-</ol>
-</li>
-<li>✅ Rename internal <code>.data</code> folder to <code>App_Data/system</code> and similar as this folder will contain private data in future</li>
-<li>✅ Feature to deploy a corporate license in an installation to auto-enable certain features on all sites</li>
-<li>✅ Settings: Ability to augment the preset configuration / settings with custom overrides</li>
-<li>✅ Provide Google Services API Keys (Maps, Translate) from backend to edit UI</li>
-<li>✅ Ability to set own default GPS coordinates for when not set
-<ol>
-<li>✅ Ability to configure them in settings</li>
-<li>✅ Provide Default maps coordinates from backend to Edit UI</li>
-</ol>
-</li>
-<li>✅ Ability to import apps from folder directly (patrons)
-<ol>
-<li>✅ Functionality</li>
-<li>✅ Hints / Infos to user</li>
-<li>⏳ Documentation</li>
-</ol>
-</li>
-<li>✅ Integration of Google Translate in the Edit UI
-<ol>
-<li>✅ Functionality for one field</li>
-<li>✅ For many fields</li>
-<li>✅ Configure so it only affects string fields</li>
-<li>✅ Ability to disable auto-translate on certain fields - eg. name fields</li>
-<li>✅ Ability to add custom API key</li>
-<li>✅ Clear warning when using the demo key</li>
-<li>✅ Make sure the license is respected and easy to spot</li>
-<li>⏳ Documentation for this (how the fields are selected, how to activate, etc.)</li>
-</ol>
-</li>
-<li>✅ Release v15 before XMas</li>
+<li>✅ Refactor toolbar and image/picture objects to use <code>record</code>s instead of <code>class</code>es in C#</li>
 </ol>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v15/_changes15.00.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v19/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

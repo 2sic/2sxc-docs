@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 15.03 (2023-02-21)
+### 2sxc v15.03 (2023-02-21)
 
 1. ✅ APIs
     1. ✅ EntityId now has a OwnerId property

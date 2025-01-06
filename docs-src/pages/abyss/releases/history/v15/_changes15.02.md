@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 15.02 (2023-02)
+### 2sxc v15.02 (2023-02)
 
 This was a quick release, no changes to report ATM, they will be reported in v15.03
 

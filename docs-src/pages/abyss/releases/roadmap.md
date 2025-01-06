@@ -11,48 +11,21 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2024-12-22**
+Last Update: **2025-01-06**
 
-## 19.00 (Released 2024-12-21)
+## 19.01 LTS (planned 2025-01-20)
 
-1. 🅰️ Update UI to Angular 19 and Angular Material 19
-1. ✅ Finalize Pickers main features
-    1. Radio
-    1. Checkboxes
-    1. Preview Material Icon
-    1. Preview SVG
-    1. Preview Image (jpg/png)
-    1. Configurations: `AppAssets`, `CSS`, `Entity`, `Query`, `CustomList`, `CSV`
-    1. Preview features
-    1. `Info` `Link` `Tooltip`
-1. ✅ New AppAssets DataSource and `System.AppAssets` query to get assets for pickers such as all SVGs in a folder.
-1. ✅ Double-Encrypt sensitive data on HTTP-Transport
-1. ✅ Ability to switch UI languages (not just content-languages)
-1. ✅ GPS Picker enhancements with **my current location** and searching for addresses which were not in the data
-1. ✅ Ability to delete a field (column) which had entity-relationships in it (previously SQL stopped you)
-1. ✅ New `Toolbar.Audience(...)` API to show it when needed
-1. ✅ Improve UI for creating fields for content-types, better dropdowns, longer etc.
-
-Breaking Changes
-
-1. An interface called `ToSic.Sxc.DataSources.IBlockInstance` was removed since it was identical to `ToSic.Eav.DataSource.IDataSource` and should not be used anywhere.
-
-Bugfixes
-
-1. 🐞 Fix: various issues around the Pickers
-1. 🐞 Fix: Public forms called a backend endpoint which was protected, and got errors (though it wasn't necessary)
-
-Internal
-
-1. Refactor toolbar and image/picture objects to use `record`s instead of `class`es in C#
-
-
-
-
-## 19.01 LTS (planned 2024-12-20)
-
-1. ⌛ JSON Bundle Export, Import, Persist
-1. ✅ `ICacheService` on `Kit.Cache` - docs & samples missing!
+1. 🅰️⌛ JSON Bundle Export, Import, Persist
+1. ✅⌛ `ICacheService` on `Kit.Cache` - docs & samples missing!
+1. ✅ Refactor internal `Entity`, `Attribute` `Values`, `ContentType` to use `record`
+1. ✅ Refactor internal SaveOptions to use `record`
+1. ✅ Refactor internal `Entity` to be init-only (where were a few set properties left for legacy reasons)
+1. ✅ Finalize `AppAssets` DataSource and the corresponding `FileTyped` and `FolderTyped` objects
+1. 🅰️⌛ Update Date/Time picker to use Angular Material Time Picker
+1. ⌛ Bug: Fix access to global and site settings
+1. ⌛ Oqtane: Fix some issues with scripts
+1. ⌛ Oqtane: Fix issues with running in Azure
+1. ⌛ Oqtane: Set minimum version to 06.00.01 and minimum .net to 9 because of security warnings
 
 ## Note: Some Picker Features still not final
 
@@ -61,10 +34,8 @@ Internal
 1. Picker Source CSS (beta)
 
 
-## 2024 Q3 Finish DoD / Almost-Done Work
+## 2025 Q1 Finish DoD / Almost-Done Work
 
-1. ⌛ Dnn Force use of Roslyn
-1. ⌛ Include Dlls on Compile for Dnn/Oqtane
 1. Improve Intellisense
     1. Harden more Dlls and include more XML docs
         1. ✅/✅ ToSic.Sxc
@@ -106,7 +77,7 @@ also...
 1. Data Sources
     1. ✅ Internal data source to get data from app parents
     1. ✅ Internal Query to get data from app-parents
-    1. ✅ New DataSource `AppFiles`
+    1. ✅ New DataSource `AppAssets` (released 19.00)
     1. ✅ New DataSource `AdamFiles`
     1. ⏳ Publish `SharePoint` DataSource (Premium/Patrons only)
     1. ⏳ New data sources like: ADAM (Files, Folders), Navigation, etc. - ca. 2d
@@ -114,8 +85,8 @@ also...
 1. ✅ Entity Serialization Improvements
 1. ⏳ Language editing permissions - improve, test, finalize, document - ca. 3-5d
     1. also allow non-admins to possibly translate resources
-1. Ability to set default compiler in Dnn to always be Roslyn
-1. Ability to include Dlls in the compile process for Dnn/Oqtane
+1. ✅⌛ Ability to set/force compiler in Dnn to always be Roslyn (implemented, but not officially released/supported)
+1. ✅⌛ Ability to include Dlls in the compile process for Dnn/Oqtane (implemented, but not officially released/supported)
 
 
 ## Post LTS

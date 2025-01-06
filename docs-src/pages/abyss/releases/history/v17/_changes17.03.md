@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 17.03 (2024-03-04)
+### 2sxc v17.03 (2024-03-04)
 
 1. ✅ New Pickers released with a lot of features, incl. Sources, custom labels, help, tooltips, multi-select and much more!
 1. ✅ Ability to install recommended apps in a later step!

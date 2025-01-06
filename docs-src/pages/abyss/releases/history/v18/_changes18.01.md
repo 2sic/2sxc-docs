@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 18.01 (2024-09-23)
+### 2sxc v18.01 (2024-09-23)
 
 1. 🔢 Pickers
     1. ✅ Improve Picker-UIs

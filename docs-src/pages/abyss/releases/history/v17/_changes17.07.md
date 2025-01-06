@@ -1,4 +1,4 @@
-### Changes in 2sxc 17.07 (2024-05-04)
+### 2sxc v17.07 (2024-05-04)
 
 published/blogged:
 

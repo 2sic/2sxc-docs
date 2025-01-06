@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 15.00 (2022-12-23)
+### 2sxc v15.00 (2022-12-23)
 
 1. ✅ Improve logging
     1. ✅ Place it in an own library DLL for better reuse

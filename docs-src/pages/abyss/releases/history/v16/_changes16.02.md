@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.02 (2023-07-07)
+### 2sxc v16.02 (2023-07-07)
 
 Major Enhancements
 

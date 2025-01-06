@@ -1,5 +1,5 @@
 
-### v18.03 (2024-11-05)
+### 2sxc v18.03 (2024-11-05)
 
 1. ✅ Clean up data model, remove unused table `ToSIC_EAV_AttributeGroups` (may be breaking)
 1. ✅ Pickers - Stabilize most features so final

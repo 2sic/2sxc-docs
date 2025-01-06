@@ -1,4 +1,4 @@
-### Changes in 2sxc 17.08 (2024-05-16)
+### 2sxc v17.08 (2024-05-16)
 
 1. ✅ WebApi in AppCode
 1. ✅ DataSources in AppCode

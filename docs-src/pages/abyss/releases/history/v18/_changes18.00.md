@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 18.00 (2024-07-12)
+### 2sxc v18.00 (2024-07-12)
 
 1. ✅ `ITemplateService` with `MergeSources(...)`
 1. ✅ Oqtane 5.1 or 5.2 SSR Release

@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.04 (2023-09-05)
+### 2sxc v16.04 (2023-09-05)
 
 Highlight: **UniqueKey**
 

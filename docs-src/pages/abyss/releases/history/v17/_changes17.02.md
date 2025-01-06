@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 17.02 (2024-02-22)
+### 2sxc v17.02 (2024-02-22)
 
 1. ✅ Improve infos about layout in toolbar
 1. ✅ Improve infos about image resizer in toolbar

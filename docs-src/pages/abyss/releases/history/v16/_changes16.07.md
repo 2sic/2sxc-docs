@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.07 LTS (2023-09-22)
+### 2sxc v16.07 LTS (2023-09-22)
 
 1. ✅ new `TypeItem.Parent(...)` - especially. `.Parent(current: true)` api #3173
 1. ✅ new parameters to the `.Picture(...)` incl. `picClass`, `imgAttributes` and `picAttributes`

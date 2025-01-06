@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 15.04 (2023-03-22)
+### 2sxc v15.04 (2023-03-22)
 
 
 1. ✅ Oqtane: Compatibility with Oqtane 15.04

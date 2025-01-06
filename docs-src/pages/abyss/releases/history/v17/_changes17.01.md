@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 17.01 (2024-01-18)
+### 2sxc v17.01 (2024-01-18)
 
 1. Moved almost all internal APIs in the ToSic.Sxc namespace to hidden locations #3189
 1. Marked a lot of internal APIs so that they won't appear in IntelliSense
@@ -28,7 +28,7 @@ Bugfixes
 1. Fix bug with `UniqueKey` which affected HotSpots App
 1. Various minor UI bugfixes related to the entity-picker and dropdowns
 
-### v17.01.04
+### 2sxc v17.01.04
 
 Minor enhancements and bugfixes
 
@@ -38,7 +38,7 @@ Minor enhancements and bugfixes
 1. Old Razor base class - `PageData` didn't always work #3260
 1. HotBuild now respects additional assemblies from web.config #3272
 
-### v17.01.05
+### 2sxc v17.01.05
 
 minor bugfixes l enhancements including
 
@@ -52,7 +52,7 @@ minor bugfixes l enhancements including
 1. Internal Lookup System Performance Improvements
 1. internal work for the new Picker-UI system
 
-### v17.01.06
+### 2sxc v17.01.06
 
 1. Upgrade System.Data.SqlClient #3209
 1. TweakButton on dynamic code #3279
@@ -62,7 +62,7 @@ minor bugfixes l enhancements including
 1. Export/Import App now includes Attribute SysSettings #3283
 
 
-### v17.01.07
+### 2sxc v17.01.07
 
 1. ajax reload on details-pages eg. blog-post #3287
 1. SQL DataSource can't connect #sql #3285

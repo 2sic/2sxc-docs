@@ -1,5 +1,5 @@
 
-### v18.02 (released 2024-10-09)
+### 2sxc v18.02 (2024-10-09)
 
 [Release notes](https://github.com/2sic/2sxc/releases/tag/v18.02.00)
 

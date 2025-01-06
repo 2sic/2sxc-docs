@@ -1,5 +1,5 @@
 
-### Changes in 2sxc 16.01 LTS (2023-05-23)
+### 2sxc v16.01 LTS (2023-05-23)
 
 Various bugfixes + some enhancements.
 
