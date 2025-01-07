@@ -121,7 +121,7 @@ because you may still need the original later on for further processing.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public class EntityPair&lt;TPartner&gt; : IEntityPair&lt;TPartner&gt;</code></pre>
+public record EntityPair&lt;TPartner&gt; : IEntityPair&lt;TPartner&gt;, IEquatable&lt;EntityPair&lt;TPartner&gt;&gt;</code></pre>
   </div>
 
 
@@ -144,6 +144,7 @@ public class EntityPair&lt;TPartner&gt; : IEntityPair&lt;TPartner&gt;</code></pr
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="ToSic.Eav.Data.Build.IEntityPair-1.html">IEntityPair</a>&lt;TPartner&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.EntityPair-1.html">EntityPair</a>&lt;TPartner&gt;&gt;</div>
     </dd>
   </dl>
 
@@ -175,14 +176,14 @@ because you may still need the original later on for further processing.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityPair(IEntity entity, TPartner partner)</code></pre>
+    <pre><code class="lang-csharp hljs">public EntityPair(IEntity Entity, TPartner Partner)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>entity</code> <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
+    <dt><code>Entity</code> <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
     <dd></dd>
-    <dt><code>partner</code> <span class="xref">TPartner</span></dt>
+    <dt><code>Partner</code> <span class="xref">TPartner</span></dt>
     <dd></dd>
   </dl>
 
@@ -216,7 +217,7 @@ because you may still need the original later on for further processing.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEntity Entity { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEntity Entity { get; init; }</code></pre>
   </div>
 
 
@@ -249,7 +250,7 @@ For example an <span class="xref">ToSic.Eav.Data.Raw.IRawEntity</span> which was
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TPartner Partner { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TPartner Partner { get; init; }</code></pre>
   </div>
 
 

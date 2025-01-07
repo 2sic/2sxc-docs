@@ -46,7 +46,7 @@ This should give you the big picture as to how [DataSources](xref:NetCode.DataSo
     1. In very advanced cases you can also convert it to `IEntity` yourself, but this is not documented
 
 1. Generated IEntities can also have **Relationships** - like folders to files and visa versa  
-    This is not yet documented, but if you need this, check out the [AppFiles DataSource](xref:ToSic.Sxc.DataSources.AppFiles)
+    This is not yet documented, but if you need this, check out the [AppFiles DataSource](xref:ToSic.Sxc.DataSources.AppAssets)
 
 
 ## Receiving Data from In for further processing
