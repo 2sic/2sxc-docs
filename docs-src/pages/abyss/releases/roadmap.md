@@ -22,10 +22,14 @@ Last Update: **2025-01-06**
 1. ✅ Refactor internal `Entity` to be init-only (where were a few set properties left for legacy reasons)
 1. ✅ Finalize `AppAssets` DataSource and the corresponding `FileTyped` and `FolderTyped` objects
 1. 🅰️⌛ Update Date/Time picker to use Angular Material Time Picker
-1. ⌛ Bug: Fix access to global and site settings
-1. ⌛ Oqtane: Fix some issues with scripts
-1. ⌛ Oqtane: Fix issues with running in Azure
+1. ✅ Bug: Fix access to global and site settings
+1. ✅ Oqtane: Fix some issues with scripts
+1. ? Oqtane: Fix issues with running in Azure
 1. ⌛ Oqtane: Set minimum version to 06.00.01 and minimum .net to 9 because of security warnings
+1. ✅ New `ToSic.Sxc.Models` with `DataModel` and `DataModelOfItem` base classes
+1. ✅ New models: `Page`, `Site`, `User`, `UserRole`, `File`, `Folder`
+1. Enhancement in the `Pages` DataSource - minor property renames!
+1. Enhancement to the `Roles` DataSource - renamed to `UserRoles` - breaking change!
 
 ## Note: Some Picker Features still not final
 
