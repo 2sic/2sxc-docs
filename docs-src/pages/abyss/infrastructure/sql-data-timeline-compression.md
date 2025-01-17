@@ -23,17 +23,22 @@ Older data is not modified by the change, but you can run the following SQL to c
 
 ```sql
 -- Will Compress everything and remove the data from the json column
-UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))), [Json] = NULL WHERE [Json] IS NOT NULL
+UPDATE [dbo].[ToSIC_EAV_DataTimeline]
+  SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))),
+  [Json] = NULL
+WHERE [Json] IS NOT NULL
 ```
 
 Alternative (for analysis) - should result in 60-80% reduction
 
 ```sql
 -- Will compress, but leave the old data there
-UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))) WHERE [Json] IS NOT NULL
+UPDATE [dbo].[ToSIC_EAV_DataTimeline]
+  SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX)))
+WHERE [Json] IS NOT NULL
 
 -- Compare sizes
-Select Sum( DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
+Select Sum(DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
 From [dbo].[ToSIC_EAV_DataTimeline]
 ```
 
@@ -42,7 +47,10 @@ From [dbo].[ToSIC_EAV_DataTimeline]
 If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:
 
 ```sql
-UPDATE [dbo].[ToSIC_EAV_DataTimeline] SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)), [CJson] = NULL WHERE [CJson] IS NOT NULL
+UPDATE [dbo].[ToSIC_EAV_DataTimeline]
+  SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)),
+  [CJson] = NULL
+WHERE [CJson] IS NOT NULL
 ```
 
 ## Query the Json From Compressed
