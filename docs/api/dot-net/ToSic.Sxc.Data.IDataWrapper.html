@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Class DataModelConversion | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Interface IDataWrapper | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class DataModelConversion | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Interface IDataWrapper | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_Model_DataModelConversion.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.Model.DataModelConversion%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_IDataWrapper.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.IDataWrapper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,40 +100,31 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="ToSic.Sxc.Data.Model.DataModelConversion">
+        <article data-uid="ToSic.Sxc.Data.IDataWrapper">
 
 
 
-  <h1 id="ToSic_Sxc_Data_Model_DataModelConversion" data-uid="ToSic.Sxc.Data.Model.DataModelConversion" class="text-break">
-Class DataModelConversion  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Model/DataModelConversion.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Sxc_Data_IDataWrapper" data-uid="ToSic.Sxc.Data.IDataWrapper" class="text-break">
+Interface IDataWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DataWrapper/IDataWrapper.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.Data.html">Data</a>.<a class="xref" href="ToSic.Sxc.Data.Model.html">Model</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.Data.html">Data</a></dd></dl>
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>BETA / WIP: Attribute to decorate interfaces which should be used to retrieve a data model.</p>
+  <div class="markdown summary"><p>Marks objects such as custom items or data models, which can wrap data (usually Entities or TypedItems).</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class|AttributeTargets.Interface, AllowMultiple = false)]
-[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public class DataModelConversion : Attribute</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;may change or rename at any time&quot;)]
+public interface IDataWrapper</code></pre>
   </div>
 
 
 
 
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><span class="xref">object</span></div>
-      <div><span class="xref">Attribute</span></div>
-      <div><span class="xref">DataModelConversion</span></div>
-    </dd>
-  </dl>
 
 
 
@@ -141,51 +132,25 @@ public class DataModelConversion : Attribute</code></pre>
 
 
 
-  <h2 id="ToSic_Sxc_Data_Model_DataModelConversion_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>It's primary property is the Map, which is an array of types that should be used to map the data model to.</p>
+  <h2 id="ToSic_Sxc_Data_IDataWrapper_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Most 2sxc base classes such as Razor files or WebApi files have some methods which will return a typed data model.
+This is usually <code>As&lt;TModel&gt;()</code> or <code>AsList&lt;TModel&gt;()</code>.
+To help the developer understand what is allowed for <code>TModel</code> we must mark all objects which are supported, and this is done with this interface.</p>
+<p>So any class which is meant to wrap data from an <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> or <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> should implement this interface.
+Typical use is for custom data such as classes inheriting from <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a>
+which takes an entity and then provides a strongly typed wrapper around it.</p>
+<p>History</p>
+<ul>
+<li>Made visible in the docs for better understanding in v19.01</li>
+</ul>
 </div>
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="ToSic_Sxc_Data_Model_DataModelConversion_Map_" data-uid="ToSic.Sxc.Data.Model.DataModelConversion.Map*"></a>
-
-  <h3 id="ToSic_Sxc_Data_Model_DataModelConversion_Map" data-uid="ToSic.Sxc.Data.Model.DataModelConversion.Map">
-  Map
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Model/DataModelConversion.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Type[] Map { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Model/DataModelConversion.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DataWrapper/IDataWrapper.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 

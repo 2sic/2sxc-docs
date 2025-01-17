@@ -120,7 +120,7 @@ It is used by 2sxc Copilot when generating base classes for custom data objects.
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public class CustomItem : ITypedItem, ITyped, IEquatable&lt;ITypedItem&gt;, IDataModelOf&lt;ITypedItem&gt;, IDataModel</code></pre>
+public class CustomItem : ITypedItem, ITyped, IEquatable&lt;ITypedItem&gt;, ICanWrap&lt;ITypedItem&gt;, ICanWrapData</code></pre>
   </div>
 
 
@@ -140,8 +140,8 @@ public class CustomItem : ITypedItem, ITyped, IEquatable&lt;ITypedItem&gt;, IDat
       <div><a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a></div>
       <div><a class="xref" href="ToSic.Sxc.Data.ITyped.html">ITyped</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>&gt;</div>
-      <div><a class="xref" href="ToSic.Sxc.Data.Model.IDataModelOf-1.html">IDataModelOf</a>&lt;<a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>&gt;</div>
-      <div><a class="xref" href="ToSic.Sxc.Data.Model.IDataModel.html">IDataModel</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Data.ICanWrap-1.html">ICanWrap</a>&lt;<a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>&gt;</div>
+      <div><a class="xref" href="ToSic.Sxc.Data.ICanWrapData.html">ICanWrapData</a></div>
     </dd>
   </dl>
 
@@ -566,7 +566,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(IEnumerable&lt;ITypedItem&gt; source, NoParamOrder protector = default, bool nullIfNull = false) where T : class, IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(IEnumerable&lt;ITypedItem&gt; source, NoParamOrder protector = default, bool nullIfNull = false) where T : class, ICanWrapData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -616,7 +616,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(ITypedItem item) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(ITypedItem item) where T : class, ICanWrapData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -809,7 +809,7 @@ If conversion fails, will return default <code>false</code> or what is specified
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Child&lt;T&gt;(string name, NoParamOrder protector = default, bool? required = null) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public T Child&lt;T&gt;(string name, NoParamOrder protector = default, bool? required = null) where T : class, ICanWrapData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -920,7 +920,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Children&lt;T&gt;(string field, NoParamOrder protector = default, string type = null, bool? required = null) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Children&lt;T&gt;(string field, NoParamOrder protector = default, string type = null, bool? required = null) where T : class, ICanWrapData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2066,7 +2066,7 @@ If conversion fails, will return default <code>0</code> or what is specified in 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Parent&lt;T&gt;(NoParamOrder protector = default, bool? current = null, string type = null, string field = null) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public T Parent&lt;T&gt;(NoParamOrder protector = default, bool? current = null, string type = null, string field = null) where T : class, ICanWrapData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2176,7 +2176,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Parents&lt;T&gt;(NoParamOrder protector = default, string type = null, string field = null) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Parents&lt;T&gt;(NoParamOrder protector = default, string type = null, string field = null) where T : class, ICanWrapData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

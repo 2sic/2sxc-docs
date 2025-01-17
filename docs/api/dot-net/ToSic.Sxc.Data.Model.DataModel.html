@@ -113,14 +113,14 @@ Class DataModel  <a class="header-action link-secondary" title="View source" hre
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base class for <strong>plain</strong> custom data models and can be used in Razor Components.
+  <div class="markdown summary"><p>BETA / WIP: Base class for <strong>plain</strong> custom data models and can be used in Razor Components.
 It wraps a <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and provides a simple way to access the data.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still beta, name may change to DataModelWithEntity or something&quot;)]
-public abstract class DataModel : IDataModelOf&lt;IEntity&gt;, IDataModel, IEquatable&lt;IEntity&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still beta, name may change to CustomModelOfItem or something&quot;)]
+public abstract class DataModel : ICanWrap&lt;IEntity&gt;, ICanWrapData, IEquatable&lt;IEntity&gt;</code></pre>
   </div>
 
 
@@ -137,8 +137,8 @@ public abstract class DataModel : IDataModelOf&lt;IEntity&gt;, IDataModel, IEqua
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="ToSic.Sxc.Data.Model.IDataModelOf-1.html">IDataModelOf</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
-      <div><a class="xref" href="ToSic.Sxc.Data.Model.IDataModel.html">IDataModel</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Data.ICanWrap-1.html">ICanWrap</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
+      <div><a class="xref" href="ToSic.Sxc.Data.ICanWrapData.html">ICanWrapData</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
     </dd>
   </dl>
@@ -241,7 +241,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(object source, NoParamOrder protector = default, bool nullIfNull = false) where T : class, IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(object source, NoParamOrder protector = default, bool nullIfNull = false) where T : class, ICanWrapData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -288,7 +288,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(object item) where T : class, IDataModel, new()</code></pre>
+    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(object item) where T : class, ICanWrapData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
