@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>2sxc Patron Infrastructure - Sql Data Timeline Compression | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Changes to the Dev Environment in v19.00.01 | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="2sxc Patron Infrastructure - Sql Data Timeline Compression | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Changes to the Dev Environment in v19.00.01 | 2sxc 19 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/infrastructure/sql-data-timeline-compression.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/dev-env-changes/19.01.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,60 +100,43 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Infrastructure.SqlDataTimelineCompression">
-<h1 id="2sxc-patron-infrastructure---sql-data-timeline-compression">2sxc Patron Infrastructure - Sql Data Timeline Compression</h1>
+        <article data-uid="Abyss.Contribute.DevEnvChanges">
+<h1 id="changes-to-the-dev-environment-in-v190001">Changes to the Dev Environment in v19.00.01</h1>
 
-<p>Every change in 2sxc is logged to a table called <code>DataTimeline</code>.
-The purpose is to allow editors to roll back changes and restore entities to a previous state.</p>
-<p>Websites with a lot of content editing can grow this table until it becomes the largest 2sxc table.</p>
-<p>With the feature <code>SqlDataTimelineCompression</code> all history-data will be stored as ZIP compressed JSON.
-This can easily save you hundreds, if not thousands of MB in DB storage.</p>
-<h2 id="activate-the-feature">Activate the feature</h2>
-<p>Do this using the standard mechanisms to become a patron.
-If you activate <code>Patron Infrastructure</code>, this feature is automatically enabled.</p>
-<h2 id="compress-previous-data">Compress Previous Data</h2>
-<p>Older data is not modified by the change, but you can run the following SQL to compress it:</p>
-<pre><code class="lang-sql">-- Will Compress everything and remove the data from the json column
-UPDATE [dbo].[ToSIC_EAV_DataTimeline]
-  SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX))),
-  [Json] = NULL
-WHERE [Json] IS NOT NULL
-</code></pre>
-<p>Alternative (for analysis) - should result in 60-80% reduction</p>
-<pre><code class="lang-sql">-- Will compress, but leave the old data there
-UPDATE [dbo].[ToSIC_EAV_DataTimeline]
-  SET [CJson] = COMPRESS(CAST([Json] AS VARCHAR(MAX)))
-WHERE [Json] IS NOT NULL
+<p>In v19.01 we changed System.Text.Json to use .net 9.</p>
+<p>Because of this, the <code>web.config</code> must in DNN change.
+When people install 2sxc, this happens automatically, but not in a dev-environment.</p>
+<p>These are the new values you need - make sure you comment out the old versions:</p>
+<pre><code class="lang-xml">&lt;dependentAssembly&gt;
+  &lt;assemblyIdentity name=&quot;System.Collections.Immutable&quot; publicKeyToken=&quot;B03F5F7F11D50A3A&quot; culture=&quot;neutral&quot;/&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-9.0.0.0&quot; newVersion=&quot;9.0.0.0&quot;/&gt;
+&lt;/dependentAssembly&gt;
 
--- Compare sizes
-Select Sum(DATALENGTH([CJSON])) as CompressedSize, Sum(DATALENGTH([Json])) as JsonSize
-From [dbo].[ToSIC_EAV_DataTimeline]
-</code></pre>
-<h2 id="decompress-previous-data">Decompress Previous Data</h2>
-<p>If you were using this feature before and must opt-out, you can decompress the history data with the following SQL:</p>
-<pre><code class="lang-sql">UPDATE [dbo].[ToSIC_EAV_DataTimeline]
-  SET [Json] = CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)),
-  [CJson] = NULL
-WHERE [CJson] IS NOT NULL
-</code></pre>
-<h2 id="query-the-json-from-compressed">Query the Json From Compressed</h2>
-<p>If you need to see the json in SQL for debugging purposes, you can start with the following sample.
-This is just a sample, you'll probably want to add a <code>WHERE</code> clause to limit the results:</p>
-<pre><code class="lang-sql">SELECT TOP (1000) *, CAST(CAST(DECOMPRESS([CJson]) AS VARCHAR(MAX)) AS NVARCHAR(MAX)) as Decompressed
-  FROM [dbo].[ToSIC_EAV_DataTimeline]
-  order by id desc
+&lt;dependentAssembly&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Bcl.AsyncInterfaces&quot; publicKeyToken=&quot;CC7B13FFCD2DDD51&quot; culture=&quot;neutral&quot;/&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-9.0.0.0&quot; newVersion=&quot;9.0.0.0&quot;/&gt;
+&lt;/dependentAssembly&gt;
+
+&lt;dependentAssembly&gt;
+  &lt;assemblyIdentity name=&quot;System.Text.Encodings.Web&quot; culture=&quot;neutral&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-9.0.0.0&quot; newVersion=&quot;9.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+
+&lt;dependentAssembly&gt;
+  &lt;assemblyIdentity name=&quot;System.Text.Json&quot; culture=&quot;neutral&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-9.0.0.0&quot; newVersion=&quot;9.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
 </code></pre>
 <hr>
 <h2 id="history">History</h2>
-<ol>
-<li>Added in v15</li>
-</ol>
-<!-- Shortlink: <https://go.2sxc.org/todo> -->
+<ul>
+<li>Changed in 2025-01-17 v19.00.01</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/infrastructure/sql-data-timeline-compression.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/dev-env-changes/19.01.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
