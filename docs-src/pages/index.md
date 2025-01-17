@@ -1,7 +1,7 @@
 
 <img src="../assets/logos/vcurrent/500.png" width="150px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v19.00
+# 2sxc and EAV Docs v19.00.01
 
 This is the technical documentation for 2sxc and it's parts such as the EAV system.
 

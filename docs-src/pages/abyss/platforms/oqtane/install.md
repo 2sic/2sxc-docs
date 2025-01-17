@@ -26,7 +26,7 @@ we created on installing Oqtane and 2sxc.
 
 | Oqtane V.     | Best    | Compatible          | Incompatible            | Comments
 | ---           | -----   | ------------------- | -------------           | ---
-| 6.0.1         | 19.01   | ✅ 19.01            | ⛔ < 19.01              | Blazor interactive mode has some bugs
+| 6.0.1         | 19.00.01| ✅ 19.00.01         | ⛔ < 19.00.01           | Blazor interactive mode has some bugs
 | 6.0.0         | 19.01   | ✅ 18.04 - 19.01    | ⛔ < 18.04; > 19.01     | Blazor interactive mode has some bugs
 | 5.1.2+        | 18.03   | ✅ 18.00+           | ⛔ pre 18.00            | Some Render modes supported - see [limitation](xref:Abyss.Platforms.Oqtane.Install.IssueRender050102)
 | **5.0+**      | 17.06+  | ✅ 16.09+           | ⛔ pre 16.09            | .net 8 differences in System.Text.Json
