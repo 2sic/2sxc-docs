@@ -148,20 +148,20 @@ It only exists on the Dnn platform, not on Oqtane.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ServiceKit14.html">ServiceKit14</a></dt>
-      <dd><p>Default ServiceKit for 2sxc v14.</p>
+      <dd><p>Default ServiceKit for 2sxc v14.
+Provided in Razor and WebApi as <code>Kit</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html">ServiceKit16</a></dt>
-      <dd><p>Default ServiceKit for 2sxc v14.</p>
+      <dd><p>Default ServiceKit for 2sxc v16.
+Provided in Razor and WebApi as <code>Kit</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ServiceKitLight16.html">ServiceKitLight16</a></dt>
-      <dd><p>Lightweight ServiceKit for 2sxc v15.
-It's primarily used in dynamic code which runs standalone, without a module context.</p>
-<p>Example: Custom DataSources can run anywhere without actually being inside a module or content-block.
-In such scenarios, certain services like the <a class="xref" href="ToSic.Sxc.Services.IPageService.html">IPageService</a> would not be able to perform any real work.</p>
+      <dd><p>Lightweight ServiceKit for 2sxc v16.
+Provided in custom data sources as <code>Kit</code>.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
@@ -169,144 +169,102 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IAdamService.html">IAdamService</a></dt>
-      <dd><p>WIP - Adam Service for additional ADAM operations such as retrieving a single file</p>
+      <dd><p>Internal: Adam Service for ADAM operations such as retrieving a single file.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ICacheService.html">ICacheService</a></dt>
-      <dd><p>Cache service to help your code cache data.</p>
-<p>It does quite a bit of magic, for example:</p>
-<ul>
-<li>scope the cache to the current App, so a key like <code>main-list</code> will not bleed to other apps</li>
-<li>help invalidate the cache if the app data changes</li>
-<li>vary the cache by specific parameters such as the <code>category</code> in the URL.</li>
-<li>vary the cache by the current user only</li>
-<li>...and more.</li>
-</ul>
-<p>In most cases, you'll</p>
-<ol>
-<li>start by creating <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a> using a call to <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__">CreateSpecs(string, NoParamOrder, string, bool?)</a></li>
-<li>use a fluid API on the specs to determine what you want, like <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_">VaryByPageParameters(string, NoParamOrder, bool)</a>, <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser">VaryByUser()</a><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_">WatchAppData(NoParamOrder)</a> or just set different expiry options.</li>
-<li>Then use these specs to either check if it <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_">Contains(ICacheSpecs)</a> or use <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__">TryGet&lt;T&gt;(ICacheSpecs, out T)</a> or <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__">GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)</a></li>
-</ol>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Cache"><code>Kit.Cache</code></a> to help your code cache data.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IConvertService.html">IConvertService</a></dt>
-      <dd><p>Conversion helper for things which are very common in web-code like Razor and WebAPIs.
-It's mainly a safe conversion from anything to a target-type.</p>
-<p>Some special things it does:</p>
-<ul>
-<li>Strings like &quot;4.2&quot; reliably get converted to int 4 which would otherwise return 0</li>
-<li>Numbers like 42 reliably converts to bool true which would otherwise return false</li>
-<li>Numbers like 42.5 reliably convert to strings &quot;42.5&quot; instead of &quot;42,5&quot; in certain cultures</li>
-</ul>
+      <dd><p>Conversion helper for things which are very common in web-code like Razor and WebAPIs.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IConvertService16.html">IConvertService16</a></dt>
-      <dd><p>Conversion helper for things which are very common in web-code like Razor and WebAPIs.
-It's mainly a safe conversion from anything to a target-type.</p>
-<p>Some special things it does:</p>
-<ul>
-<li>Strings like &quot;4.2&quot; reliably get converted to int 4 which would otherwise return 0</li>
-<li>Numbers like 42 reliably converts to bool true which would otherwise return false</li>
-<li>Numbers like 42.5 reliably convert to strings &quot;42.5&quot; instead of &quot;42,5&quot; in certain cultures</li>
-</ul>
+      <dd><p>Helper on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Convert"><code>Kit.Convert</code></a> for common conversions in web-code like Razor and WebAPIs.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IDataService.html">IDataService</a></dt>
-      <dd><p>Services to create DataSources in Razor as well as external (skin) use.</p>
+      <dd><p>Services on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Data"><code>Kit.Data</code></a> to create DataSources in Razor.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService</a></dt>
-      <dd><p>This is a service to give you DynamicCode outside of 2sxc.</p>
-<p>Use this to access 2sxc data from a Theme, a <code>.ascx</code> WebControl or anywhere else.</p>
+      <dd><p>This is a service to give you DynamicCode outside 2sxc.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IEditService.html">IEditService</a></dt>
-      <dd><p>Contains status and commands to configure the in-page editing system.</p>
-<p>You will never create this yourself, as get this automatically in Razor or WebAPIs on an object called <code>Edit</code>.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Edit"><code>Kit.Edit</code></a> with status and commands to configure the in-page editing system.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IFeaturesService.html">IFeaturesService</a></dt>
-      <dd><p>Features lets your code find out what system features are currently enabled/disabled in the environment.
-It's important to detect if the admin must activate certain features to let your code do it's work.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Feature"><code>Kit.Feature</code></a> to let your code find out what system features are currently enabled/disabled in the environment.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IImageService.html">IImageService</a></dt>
-      <dd><p>Service to help create responsive <code>img</code> and <code>picture</code> tags the best possible way.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Image"><code>Kit.Image</code></a> to help create responsive <code>img</code> and <code>picture</code> tags the best possible way.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IJsonService.html">IJsonService</a></dt>
-      <dd><p>Service to serialize/restore JSON. Get it using GetService &lt; T &gt;</p>
-<p>It works for 2sxc/EAV data but can be used for any data which can be serialized/deserialized.
-Since it's a data-operation, we keep it in this namespace, even if most other things in this namespace are 2sxc-data objects.</p>
-<p><em>Important</em> This is simple object-string conversion.
-It doesn't change entity objects to be serializable.
-For that you should use the <a class="xref" href="ToSic.Eav.DataFormats.EavLight.IConvertToEavLight.html">IConvertToEavLight</a> which returns an object that can then be serialized.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Json"><code>Kit.Json</code></a> to serialize/restore JSON.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IKeyService.html">IKeyService</a></dt>
-      <dd><p>WIP 16.04</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Key"><code>Kit.Key</code></a> to generate module/block level unique keys.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ILinkService.html">ILinkService</a></dt>
-      <dd><p>Helpers to create links to</p>
-<ul>
-<li>Pages</li>
-<li>APIs</li>
-<li>Images</li>
-</ul>
-<p>As well as create base-tag links (important for SPAs)</p>
-<p>You will never create this yourself, as get this automatically in Razor or WebAPIs on an object called <code>Link</code>.</p>
+      <dd><p>Helper on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Link"><code>Kit.Link</code></a> to create links to pages, APIs and images.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IMailService.html">IMailService</a></dt>
-      <dd><p>Service to send mail messages cross-platform.</p>
-<p>Get this service in Razor or WebApi using e.g. <a class="xref" href="Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_">GetService</a></p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Mail"><code>Kit.Mail</code></a> to send mail messages cross-platform.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IPageService.html">IPageService</a></dt>
-      <dd><p>Make changes to the page - usually from Razor.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Page"><code>Kit.Page</code></a> to make changes to the page - usually from Razor.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IRenderService.html">IRenderService</a></dt>
-      <dd><p>Block-Rendering system. It's responsible for taking a Block and delivering HTML for the output. <br>
-It's used for InnerContent, so that Razor-Code can easily render additional content blocks. <br>
-See also <a class="xref" href="../../basics/cms/inner-content/index.html">Inner Content (Content Within Other Content)</a></p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Render"><code>Kit.Render</code></a> to rendering blocks and delivering HTML for the output.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ISecureDataService.html">ISecureDataService</a></dt>
-      <dd><p>Helper to work with secure / encrypted data.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_SecureData"><code>Kit.SecureData</code></a> to work with secure / encrypted data.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ISystemLogService.html">ISystemLogService</a></dt>
-      <dd><p>System-Log Service to add messages to the global log in any platform Dnn/Oqtane</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_SystemLog"><code>Kit.SystemLog</code></a> to add messages to the global (system) log in any platform Dnn/Oqtane.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.ITemplateService.html">ITemplateService</a></dt>
-      <dd><p>Service to help parse token-based templates.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Template"><code>Kit.Template</code></a> to help parse token-based templates.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Sxc.Services.IToolbarService.html">IToolbarService</a></dt>
-      <dd><p>Special helper to generate edit toolbars in the front-end.
-It's especially useful custom and/or complex rules like Metadata-buttons.</p>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Toolbar"><code>Kit.Toolbar</code></a> to generate edit toolbars in the front-end.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sxc.Services.IUserService.html">IUserService</a></dt>
+      <dd><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_User"><code>Kit.User</code></a> to get users and roles of the platform.</p>
 </dd>
     </dl>
 

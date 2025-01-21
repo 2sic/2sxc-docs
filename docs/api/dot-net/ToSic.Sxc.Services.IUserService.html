@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Interface IKeyService | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Interface IUserService | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IKeyService | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Interface IUserService | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IKeyService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IKeyService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Services_IUserService.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Services.IUserService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,12 +100,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="ToSic.Sxc.Services.IKeyService">
+        <article data-uid="ToSic.Sxc.Services.IUserService">
 
 
 
-  <h1 id="ToSic_Sxc_Services_IKeyService" data-uid="ToSic.Sxc.Services.IKeyService" class="text-break">
-Interface IKeyService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Keys/IKeyService.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Sxc_Services_IUserService" data-uid="ToSic.Sxc.Services.IUserService" class="text-break">
+Interface IUserService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -113,13 +113,13 @@ Interface IKeyService  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Key"><code>Kit.Key</code></a> to generate module/block level unique keys.</p>
+  <div class="markdown summary"><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_User"><code>Kit.User</code></a> to get users and roles of the platform.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface IKeyService</code></pre>
+public interface IUserService</code></pre>
   </div>
 
 
@@ -132,102 +132,146 @@ public interface IKeyService</code></pre>
 
 
 
-  <h2 id="ToSic_Sxc_Services_IKeyService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Rarely used, as the RazorTyped has a UniqueKey property which comes from this service.
-You only need this service, if you need to create combined keys (like with an entity).</p>
-<p>History: Introduced v16.04</p>
+  <h2 id="ToSic_Sxc_Services_IUserService_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>History: Released in 19.02 after being internal since 15.03.</p>
 </div>
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="ToSic_Sxc_Services_IKeyService_UniqueKey_" data-uid="ToSic.Sxc.Services.IKeyService.UniqueKey*"></a>
-
-  <h3 id="ToSic_Sxc_Services_IKeyService_UniqueKey" data-uid="ToSic.Sxc.Services.IKeyService.UniqueKey">
-  UniqueKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Keys/IKeyService.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>A unique, random key for the current module.
-It's recommended for giving DOM elements a unique id for scripts to then access them.</p>
-<p>It's generated for every content-block, and more reliable than <code>Module.Id</code>
-since that sometimes results in duplicate keys, if the many blocks are used inside each other.</p>
-<p>It's generated using a GUID and converted/shortened.
-In the current version it's 8 characters long, so it has 10^14 combinations, making collisions extremely unlikely.
-(currently 8 characters)</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>To get a unique key which is based on additional objects such as Entities,
-use the <a class="xref" href="ToSic.Sxc.Services.IKeyService.html#ToSic_Sxc_Services_IKeyService_UniqueKeyWith_System_Object___">UniqueKeyWith(params object[])</a> method.</p>
-</div>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string UniqueKey { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-  <h4 class="section" id="ToSic_Sxc_Services_IKeyService_UniqueKey_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>If you get a fresh <a class="xref" href="ToSic.Sxc.Services.IKeyService.html">IKeyService</a> it will also create a new UniqueKey.
-So your code should usually use the built-in property <code>UniqueKey</code> which comes from the shared ServiceKit <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Key">Key</a>.</p>
-</div>
-
-
 
 
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="ToSic_Sxc_Services_IKeyService_UniqueKeyWith_" data-uid="ToSic.Sxc.Services.IKeyService.UniqueKeyWith*"></a>
+  <a id="ToSic_Sxc_Services_IUserService_GetRoles_" data-uid="ToSic.Sxc.Services.IUserService.GetRoles*"></a>
 
-  <h3 id="ToSic_Sxc_Services_IKeyService_UniqueKeyWith_System_Object___" data-uid="ToSic.Sxc.Services.IKeyService.UniqueKeyWith(System.Object[])">
-  UniqueKeyWith(params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Keys/IKeyService.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_IUserService_GetRoles" data-uid="ToSic.Sxc.Services.IUserService.GetRoles">
+  GetRoles()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Generate a unique key based on the <a class="xref" href="ToSic.Sxc.Services.IKeyService.html#ToSic_Sxc_Services_IKeyService_UniqueKey">UniqueKey</a> and additional objects.</p>
-<p>It has a special mechanisms for creating unique keys for specific data types such as entities,
-so calling this multiple times with the same objects will still result in the same key being generated.</p>
-<p>Special behaviors:</p>
-<ul>
-<li>Strings will use the HashCode</li>
-<li>Entities and similar will use a shortened unique string based on the GUID</li>
-<li>Assets (files, folders) will use the HashCode of their <a class="xref" href="ToSic.Sxc.Adam.IAsset.html#ToSic_Sxc_Adam_IAsset_Url">Url</a></li>
-<li>Dates are converted to a safe string and trimmed for all trailing zeros</li>
-<li>Most key parts will receive a simple prefix making debugging easier</li>
-</ul>
+  <div class="markdown level1 summary"><p>Get all user roles.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string UniqueKeyWith(params object[] partners)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IUserRoleModel&gt; GetRoles()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Sxc.Cms.Users.IUserRoleModel.html">IUserRoleModel</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_IUserService_GetUser_" data-uid="ToSic.Sxc.Services.IUserService.GetUser*"></a>
+
+  <h3 id="ToSic_Sxc_Services_IUserService_GetUser_System_Int32_" data-uid="ToSic.Sxc.Services.IUserService.GetUser(System.Int32)">
+  GetUser(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a user by id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IUserModel GetUser(int id)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>partners</code> <span class="xref">object</span>[]</dt>
-    <dd></dd>
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the user id</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html">IUserModel</a></dt>
+    <dd><p>If found, a user model containing the user specs.
+If not found, a user model containing the unknown user specs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_IUserService_GetUser_" data-uid="ToSic.Sxc.Services.IUserService.GetUser*"></a>
+
+  <h3 id="ToSic_Sxc_Services_IUserService_GetUser_System_String_" data-uid="ToSic.Sxc.Services.IUserService.GetUser(System.String)">
+  GetUser(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a user by nameId.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IUserModel GetUser(string nameId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nameId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The nameID which is the identity token like <code>dnn:42</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html">IUserModel</a></dt>
+    <dd><p>If found, a user model containing the user specs.
+If not found, a user model containing the unknown user specs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sxc_Services_IUserService_GetUsers_" data-uid="ToSic.Sxc.Services.IUserService.GetUsers*"></a>
+
+  <h3 id="ToSic_Sxc_Services_IUserService_GetUsers" data-uid="ToSic.Sxc.Services.IUserService.GetUsers">
+  GetUsers()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all users.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IUserModel&gt; GetUsers()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html">IUserModel</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -245,7 +289,7 @@ so calling this multiple times with the same objects will still result in the sa
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Keys/IKeyService.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/UsersServices/IUserService.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

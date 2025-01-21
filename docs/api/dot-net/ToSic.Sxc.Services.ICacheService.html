@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_Services_ICacheService" data-uid="ToSic.Sxc.Services.ICacheService" class="text-break">
-Interface ICacheService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L28"><i class="bi bi-code-slash"></i></a>
+Interface ICacheService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -113,21 +113,7 @@ Interface ICacheService  <a class="header-action link-secondary" title="View sou
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Cache service to help your code cache data.</p>
-<p>It does quite a bit of magic, for example:</p>
-<ul>
-<li>scope the cache to the current App, so a key like <code>main-list</code> will not bleed to other apps</li>
-<li>help invalidate the cache if the app data changes</li>
-<li>vary the cache by specific parameters such as the <code>category</code> in the URL.</li>
-<li>vary the cache by the current user only</li>
-<li>...and more.</li>
-</ul>
-<p>In most cases, you'll</p>
-<ol>
-<li>start by creating <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a> using a call to <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__">CreateSpecs(string, NoParamOrder, string, bool?)</a></li>
-<li>use a fluid API on the specs to determine what you want, like <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_">VaryByPageParameters(string, NoParamOrder, bool)</a>, <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser">VaryByUser()</a><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_">WatchAppData(NoParamOrder)</a> or just set different expiry options.</li>
-<li>Then use these specs to either check if it <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_">Contains(ICacheSpecs)</a> or use <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__">TryGet&lt;T&gt;(ICacheSpecs, out T)</a> or <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__">GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)</a></li>
-</ol>
+  <div class="markdown summary"><p>Service on <a class="xref" href="ToSic.Sxc.Services.ServiceKit16.html#ToSic_Sxc_Services_ServiceKit16_Cache"><code>Kit.Cache</code></a> to help your code cache data.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -147,7 +133,22 @@ public interface ICacheService</code></pre>
 
 
   <h2 id="ToSic_Sxc_Services_ICacheService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><ul>
+  <div class="markdown level0 remarks"><p>It does quite a bit of magic, for example:</p>
+<ul>
+<li>scope the cache to the current App, so a key like <code>main-list</code> will not bleed to other apps</li>
+<li>help invalidate the cache if the app data changes</li>
+<li>vary the cache by specific parameters such as the <code>category</code> in the URL.</li>
+<li>vary the cache by the current user only</li>
+<li>...and more.</li>
+</ul>
+<p>In most cases, you'll</p>
+<ol>
+<li>start by creating <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a> using a call to <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__">CreateSpecs(string, NoParamOrder, string, bool?)</a></li>
+<li>use a fluid API on the specs to determine what you want, like <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_">VaryByPageParameters(string, NoParamOrder, bool)</a>, <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser">VaryByUser()</a><a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_">WatchAppData(NoParamOrder)</a> or just set different expiry options.</li>
+<li>Then use these specs to either check if it <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_">Contains(ICacheSpecs)</a> or use <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__">TryGet&lt;T&gt;(ICacheSpecs, out T)</a> or <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__">GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)</a></li>
+</ol>
+<p>History</p>
+<ul>
 <li>Was in internal beta since v17.09</li>
 <li>Released v19.01</li>
 <li>Requires the <a href="https://patrons.2sxc.org/features/feat/DataCache">SmartDataCache</a> feature (Patron Perfectionist); if not enabled, will work without caching anything.</li>
@@ -163,7 +164,7 @@ public interface ICacheService</code></pre>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_" data-uid="ToSic.Sxc.Services.ICacheService.Contains(ToSic.Sxc.Services.Cache.ICacheSpecs)">
   Contains(ICacheSpecs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the cache contains data for the given specs.</p>
@@ -200,7 +201,7 @@ public interface ICacheService</code></pre>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Contains__1_ToSic_Sxc_Services_Cache_ICacheSpecs_" data-uid="ToSic.Sxc.Services.ICacheService.Contains``1(ToSic.Sxc.Services.Cache.ICacheSpecs)">
   Contains&lt;T&gt;(ICacheSpecs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the cache contains data of specified type for the given specs.</p>
@@ -242,7 +243,7 @@ public interface ICacheService</code></pre>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Services.ICacheService.CreateSpecs(System.String,ToSic.Lib.Coding.NoParamOrder,System.String,System.Nullable{System.Boolean})">
   CreateSpecs(string, NoParamOrder, string, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create cache specs for a specific key and optional segment.</p>
@@ -291,7 +292,7 @@ By default, each app has its own region, preventing key collisions between apps.
 
   <h3 id="ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__" data-uid="ToSic.Sxc.Services.ICacheService.GetOrSet``1(ToSic.Sxc.Services.Cache.ICacheSpecs,ToSic.Lib.Coding.NoParamOrder,System.Func{``0})">
   GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get or set data in the cache for the given specs, with optional generation.</p>
@@ -338,7 +339,7 @@ By default, each app has its own region, preventing key collisions between apps.
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Get__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder___0_" data-uid="ToSic.Sxc.Services.ICacheService.Get``1(ToSic.Sxc.Services.Cache.ICacheSpecs,ToSic.Lib.Coding.NoParamOrder,``0)">
   Get&lt;T&gt;(ICacheSpecs, NoParamOrder, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get data from the cache of the given type for the given specs, with optional fallback.</p>
@@ -385,7 +386,7 @@ By default, each app has its own region, preventing key collisions between apps.
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Remove_ToSic_Sxc_Services_Cache_ICacheSpecs_" data-uid="ToSic.Sxc.Services.ICacheService.Remove(ToSic.Sxc.Services.Cache.ICacheSpecs)">
   Remove(ICacheSpecs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remove a cache entry.</p>
@@ -423,7 +424,7 @@ By default, each app has its own region, preventing key collisions between apps.
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Set__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0_ToSic_Lib_Coding_NoParamOrder_" data-uid="ToSic.Sxc.Services.ICacheService.Set``1(ToSic.Sxc.Services.Cache.ICacheSpecs,``0,ToSic.Lib.Coding.NoParamOrder)">
   Set&lt;T&gt;(ICacheSpecs, T, NoParamOrder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L155"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set a value in the cache.</p>
@@ -465,7 +466,7 @@ By default, each app has its own region, preventing key collisions between apps.
 
   <h3 id="ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__" data-uid="ToSic.Sxc.Services.ICacheService.TryGet``1(ToSic.Sxc.Services.Cache.ICacheSpecs,``0@)">
   TryGet&lt;T&gt;(ICacheSpecs, out T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Try to get data of the specified type from the cache for the given specs.</p>
@@ -510,7 +511,7 @@ By default, each app has its own region, preventing key collisions between apps.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/Cache/ICacheService.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
 
