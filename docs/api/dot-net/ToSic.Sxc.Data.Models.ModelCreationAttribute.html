@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Interface ICanWrap&lt;TSource&gt; | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Class ModelCreationAttribute | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ICanWrap&lt;TSource&gt; | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Class ModelCreationAttribute | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_ICanWrap_1.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.ICanWrap%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc/new/develop/apiSpec/new?filename=ToSic_Sxc_Data_Models_ModelCreationAttribute.md&amp;value=---%0Auid%3A%20ToSic.Sxc.Data.Models.ModelCreationAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,36 +100,39 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="ToSic.Sxc.Data.ICanWrap`1">
+        <article data-uid="ToSic.Sxc.Data.Models.ModelCreationAttribute">
 
 
 
-  <h1 id="ToSic_Sxc_Data_ICanWrap_1" data-uid="ToSic.Sxc.Data.ICanWrap`1" class="text-break">
-Interface ICanWrap&lt;TSource&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DataWrapper/ICanWrap.TSource.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Sxc_Data_Models_ModelCreationAttribute" data-uid="ToSic.Sxc.Data.Models.ModelCreationAttribute" class="text-break">
+Class ModelCreationAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelCreationAttribute.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.Data.html">Data</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sxc.html">Sxc</a>.<a class="xref" href="ToSic.Sxc.Data.html">Data</a>.<a class="xref" href="ToSic.Sxc.Data.Models.html">Models</a></dd></dl>
   <dl><dt>Assembly</dt><dd>ToSic.Sxc.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Marks objects such as custom items or data models, which can receive a <em>specific</em> data-type (entity <em>or</em> typed item) and wrap it.</p>
+  <div class="markdown summary"><p>BETA / WIP: Attribute to decorate interfaces which should be used to retrieve a data model.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;may change or rename at any time&quot;)]
-public interface ICanWrap&lt;in TSource&gt; : ICanWrapData</code></pre>
+    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class|AttributeTargets.Interface, AllowMultiple = false)]
+[InternalApi_DoNotUse_MayChangeWithoutNotice]
+public class ModelCreationAttribute : Attribute</code></pre>
   </div>
 
 
 
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TSource</code></dt>
-    <dd><p>The data type which can be accepted.
-Must be <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> or <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> (other types not supported for now).</p>
-</dd>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">Attribute</span></div>
+      <div><span class="xref">ModelCreationAttribute</span></div>
+    </dd>
   </dl>
 
 
@@ -137,27 +140,62 @@ Must be <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> or <a cla
 
 
 
+  <h2 id="ToSic_Sxc_Data_Models_ModelCreationAttribute_examples">Examples</h2>
+  <pre><code class="lang-c#">[ModelCreation(Use = typeof(PersonModel))]
+interface IPersonModel : ICanWrapData
+{
+  public string Name { get; }
+}
+</code></pre>
 
 
-  <h2 id="ToSic_Sxc_Data_ICanWrap_1_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This is more specific than the <a class="xref" href="ToSic.Sxc.Data.ICanWrapData.html">ICanWrapData</a>, since that is just a marker interface.
-This one specifies that the object has the necessary <code>Setup()</code> method to receive the data of the expected type.</p>
-<p>Typical use is for custom data such as classes inheriting from <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a>
-which takes an entity and then provides a strongly typed wrapper around it.</p>
-<p>History</p>
-<ul>
-<li>Introduced in v17.02 under a slightly different name</li>
-<li>Made visible in the docs for better understanding in v19.01</li>
-<li>The <code>Setup()</code> method is still internal, as the signature may still change</li>
-</ul>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ToSic_Sxc_Data_Models_ModelCreationAttribute_Use_" data-uid="ToSic.Sxc.Data.Models.ModelCreationAttribute.Use*"></a>
+
+  <h3 id="ToSic_Sxc_Data_Models_ModelCreationAttribute_Use" data-uid="ToSic.Sxc.Data.Models.ModelCreationAttribute.Use">
+  Use
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelCreationAttribute.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type to use when creating a model of this interface.</p>
 </div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type Use { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ToSic_Sxc_Data_Models_ModelCreationAttribute_Use_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>It <strong>must</strong> match (implement or inherit) the type which is being decorated.
+Otherwise, it will throw an exception.</p>
+</div>
+
+
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/DataWrapper/ICanWrap.TSource.cs/#L25" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelCreationAttribute.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 
