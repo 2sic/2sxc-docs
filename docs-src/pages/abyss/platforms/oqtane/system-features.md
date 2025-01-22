@@ -20,7 +20,7 @@ The following are are capabilities which may or may not be pre-installed.
 
 ## Preinstalled System Capabilities
 
-The following are always available in every Dnn:
+The following are always available in every Oqtane:
 
 * `System-NetCore`
 * `System-Razor`
@@ -29,14 +29,14 @@ The following are always available in every Dnn:
 * `System-CSharp08`
 * `System-CSharp09`
 * `System-CSharp10`
-* `System-CSharp11` .net 7 (core) - Oqtane 4
+* `System-CSharp11` .net 7 (core) - Oqtane 4+
+* `System-CSharp12` .net 8 (core) - Oqtane 5+
 
 ## Unavailable System Capabilities
 
 The following are listed just to clarify that they currently don't exist in DNN and
 probably cannot be added in any feasible way.
 
-* `System-CSharp12` .net 8 (core) - wait for Oqtane 5
 * `System-NetFramework` Oqtane is .net Core only
 
 ---

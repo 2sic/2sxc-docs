@@ -46,12 +46,12 @@ So you best process is to simply start over. Sorry 🤷🏾.
 
 | Evoq V.   | Best       | Compatible            | Comments |
 | ---       | -----      | -------------------   | --- |
-| 7.0 - 7.1 | unknown    | ✅ 3.4 - 6.04         |
-| 7.2+      | 09.43 LTS  | ✅ 6.x - 09.43        |
-| 7.4.2+    | 13.x LTS   | ✅ 7.x - 13.x         |
-| 8.x       | 13.x LTS   | ✅ 9.x - 13.x         |
-| 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         |
-| 9.6.1+    | latest     | ✅ ca. v9 - latest    | changes to DI and .net 4.8
+| 9.6.1+    | latest     | ✅ ca. v9 - latest    | changes to DI and .net 4.8 |
+| 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         | |
+| 8.x       | 13.x LTS   | ✅ 9.x - 13.x         | |
+| 7.4.2+    | 13.x LTS   | ✅ 7.x - 13.x         | |
+| 7.2+      | 09.43 LTS  | ✅ 6.x - 09.43        | |
+| 7.0 - 7.1 | unknown    | ✅ 3.4 - 6.04         | |
 
 
 ## Features currently not implemented
