@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_Data_Models_ModelSourceAttribute" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute" class="text-break">
-Class ModelSourceAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L18"><i class="bi bi-code-slash"></i></a>
+Class ModelSourceAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,7 +119,7 @@ Class ModelSourceAttribute  <a class="header-action link-secondary" title="View 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;may change or rename at any time&quot;)]
-public class ModelSourceAttribute : Attribute</code></pre>
+public sealed class ModelSourceAttribute : Attribute</code></pre>
   </div>
 
 
@@ -141,50 +141,17 @@ public class ModelSourceAttribute : Attribute</code></pre>
 
 
   <h2 id="ToSic_Sxc_Data_Models_ModelSourceAttribute_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This marks custom models to enable more automation, such as:</p>
+  <div class="markdown level0 remarks"><p>This marks custom models to enable checks and more automation, such as:</p>
 <ul>
+<li>Specify an alternate content type name than the default, which would have to match the class/interface name</li>
 <li>Ensure that the model is only used for specific content-type(s) which don't match the model name</li>
-<li>Allow the model to be used with all content types</li>
+<li>Allow the model to be used with all content types <code>*</code></li>
 <li>Automatically find the best stream of data to use with the model, if it doesn't match the model name</li>
 </ul>
 <p>Typical use is for custom data such as classes inheriting from <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a>
 which takes an entity and then provides a strongly typed wrapper around it.</p>
 <p>History: New / WIP in v19.01</p>
 </div>
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="ToSic_Sxc_Data_Models_ModelSourceAttribute_ForAnyContentType" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.ForAnyContentType">
-  ForAnyContentType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ForAnyContentType = &quot;*&quot;</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
 
 
   <h2 class="section" id="properties">Properties
@@ -195,7 +162,7 @@ which takes an entity and then provides a strongly typed wrapper around it.</p>
 
   <h3 id="ToSic_Sxc_Data_Models_ModelSourceAttribute_ContentTypes" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.ContentTypes">
   ContentTypes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines which content-type names are expected when converting to this data model.</p>
@@ -230,18 +197,19 @@ But it will also support &quot;*&quot; for anything, or (future!) a comma-separa
 
 
 
-  <a id="ToSic_Sxc_Data_Models_ModelSourceAttribute_StreamNames_" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.StreamNames*"></a>
+  <a id="ToSic_Sxc_Data_Models_ModelSourceAttribute_Streams_" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.Streams*"></a>
 
-  <h3 id="ToSic_Sxc_Data_Models_ModelSourceAttribute_StreamNames" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.StreamNames">
-  StreamNames
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Data_Models_ModelSourceAttribute_Streams" data-uid="ToSic.Sxc.Data.Models.ModelSourceAttribute.Streams">
+  Streams
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>WIP, not officially supported yet.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StreamNames { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Streams { get; init; }</code></pre>
   </div>
 
 
@@ -265,7 +233,7 @@ But it will also support &quot;*&quot; for anything, or (future!) a comma-separa
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L18" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Data/Models/Attributes/ModelSourceAttribute.cs/#L20" class="edit-link">Edit this page</a>
         </div>
 
 
