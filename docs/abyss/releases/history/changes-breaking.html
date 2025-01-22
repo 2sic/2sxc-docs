@@ -111,7 +111,14 @@ We're documenting it here to ensure you know what happened, in case you still ru
 <p>We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
 We're documenting it here to ensure you know what happened, in case you still run into this.</p>
 <h3 id="summary">Summary</h3>
-<p>Only minor changes in v19</p>
+<ol>
+<li>⬇️ An interface called <code>ToSic.Sxc.DataSources.IBlockInstance</code> was removed since it was identical to <code>ToSic.Eav.DataSource.IDataSource</code> and should not be used anywhere.</li>
+<li>⬇️ Core objects like Entity, Attribute etc. were changed to <code>record</code> - this would only affect you if you inherited from them</li>
+<li>⬇️ Cleanup internal APIs on an internal interface <code>IEntityLight</code> which is not public. Properties: <code>Title</code>, <code>Attributes</code> and <code>this[...]</code></li>
+<li>⚠️ Enhancement in the <code>Pages</code> DataSource - property renames <code>Visible</code> to <code>IsNavigation</code> and <code>Clickable</code> to <code>IsClickable</code></li>
+<li>⚠️ Enhancement to the <code>Roles</code> DataSource - renamed to <code>UserRoles</code> - breaking change!</li>
+<li>⚠️ Renamed the system query <code>System.Roles</code> to <code>System.UserRoles</code> - breaking change!</li>
+</ol>
 <hr>
 <h2 id="breaking-changes-in-eav-and-2sxc-v18">Breaking Changes in EAV and 2sxc v18</h2>
 <p>We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.

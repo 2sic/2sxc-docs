@@ -143,6 +143,65 @@
 <ol>
 <li>✅ Refactor toolbar and image/picture objects to use <code>record</code>s instead of <code>class</code>es in C#</li>
 </ol>
+<h3 id="2sxc-v1901-2025-01-16">2sxc v19.01 (2025-01-16)</h3>
+<p>Note: the version was incorrectly released as 19.00.01.</p>
+<ol>
+<li>✅ Implemented system to use the <code>As&lt;...&gt;</code> API with interfaces, which will automatically find the right class to instantiate</li>
+<li>✅ Created new <code>DataModel</code> system in the <code>Models</code> and <code>Data.Model</code> namespace #3543</li>
+<li>✅ Created data model for <code>IFileModel</code> and <code>IFolderModel</code> which matches the entities returned by the <code>AppAssets</code> DataSource</li>
+<li>✅ Created data model for <code>IUserModel</code> and <code>IUserRoleModel</code> which matches entities returned by the <code>Users</code> and <code>UserRoles</code> DataSource</li>
+<li>✅ Renamed <code>Roles</code> DataSource to <code>UserRoles</code> (could be breaking change for very few users)</li>
+<li>✅ Created data model <code>ISiteModel</code> which matches data returned by the <code>Sites</code> DataSource</li>
+<li>✅ created data model <code>IPageModel</code> which matches data returned by <code>Pages</code> DataSource</li>
+<li>✅ Finished the <code>ICacheService</code> on <code>Kit.Cache</code> #3536</li>
+<li>✅ Finished the <code>AppAssets</code> Datasource and documented it #3541</li>
+<li>✅ New <code>ToSic.Sxc.Data.Models</code> with <code>ModelWithEntity</code> and <code>ModelWithItem</code> base classes</li>
+<li>✅ Changed <code>System.Text.Json</code> to use .net 9 #3547</li>
+<li>✅ Upgraded to Oqtane 6+ so it's only compatible with Oqtane 6.0.1+ now #3548</li>
+<li>🅰️ Update Date/Time picker to use Angular Material Time Picker</li>
+<li>🩸 Oqtane: Set minimum version to 06.00.01 and minimum .net to 9 because of security warnings</li>
+</ol>
+<h3 id="minor">Minor</h3>
+<ol>
+<li>🅰️ Fix some inconsistencies in the GPS UI</li>
+<li>🅰️ Minor update Google Maps API to latest (was using old API before)</li>
+<li>✅ Improved Custom DataSource so you can access the <code>List</code> and <code>GetStream(...)</code> #3540</li>
+</ol>
+<h3 id="bugfixes">Bugfixes</h3>
+<ol>
+<li>🐞 Bug: Fix access to global and site settings</li>
+<li>🐞🩸 Oqtane bugs with JavaScripts due to changes in Oqtane 6.0 and 6.0.1 - affected <code>Interactive</code> mode #3533</li>
+<li>🪲 Minor bugfixes in new <code>AppAssets</code> DataSource</li>
+</ol>
+<h3 id="internal-stuff">Internal Stuff</h3>
+<ol>
+<li>✅ Refactor internal <code>Entity</code>, <code>Attribute</code> <code>Values</code>, <code>ContentType</code> to use <code>record</code></li>
+<li>✅ Refactor internal SaveOptions to use <code>record</code></li>
+<li>✅ Refactor internal <code>Entity</code> to be init-only (where were a few set properties left for legacy reasons)</li>
+<li>🏃🏼‍➡️ Start architecture for a Task-system to run things #3545</li>
+<li>⚠️ Enhancement in the <code>Pages</code> DataSource - property renames <code>Visible</code> to <code>IsNavigation</code> and <code>Clickable</code> to <code>IsClickable</code></li>
+<li>⚠️ Enhancement to the <code>Roles</code> DataSource - renamed to <code>UserRoles</code> - breaking change!</li>
+</ol>
+<h3 id="2sxc-v1902-2025-01-21">2sxc v19.02 (2025-01-21)</h3>
+<ol>
+<li>✅ <code>IUserService</code> on <code>Kit.User</code> #3552 which can get one/all users and all roles of Dnn/Oqtane in the same signature as the <code>Users</code> DataSource</li>
+<li>✅ better structure for models in <code>Cms.Users</code>, <code>Cms.Pages</code> etc.</li>
+<li>⚠️ Renamed the system query <code>System.Roles</code> to <code>System.UserRoles</code> - breaking change!</li>
+</ol>
+<p>Minor</p>
+<ol>
+<li>✅ Ensure that <code>As&lt;...&gt;</code> API allows the new model interfaces just like <code>AsList&lt;...&gt;</code> #3551</li>
+<li>🐞 Bug: previous release a few days ago had an issue exporting Apps - files in the root folder were missing</li>
+<li>🐞 Bug: previous release a few days ago had issues saving hidden items - they were visible</li>
+<li>🐞 Bug: App name and version did not show in App Admin UI</li>
+<li>💪🏼 Cleanup internal APIs on an internal interface <code>IEntityLight</code> which is not public. Properties: <code>Title</code>, <code>Attributes</code> and <code>this[...]</code></li>
+</ol>
+<h3 id="2sxc-v1903-2025-01-22">2sxc v19.03 (2025-01-22)</h3>
+<ol>
+<li>✅ introduced <code>Custom.Data.CustomModel</code></li>
+<li>✅ Finalizing model base classes in <code>ToSic.Sxc.Data.Models</code> and attributes</li>
+<li>🐞 Bugfix editing global and site custom settings</li>
+</ol>
 <hr>
 <h2 id="version-18">Version 18</h2>
 <h3 id="2sxc-v1800-2024-07-12">2sxc v18.00 (2024-07-12)</h3>

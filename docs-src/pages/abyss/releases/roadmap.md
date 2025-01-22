@@ -11,28 +11,17 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2025-01-06**
+Last Update: **2025-01-22**
 
-## 19.01 LTS (planned 2025-01-20)
+## Current Priority: cre8magic for Oqtane
 
-1. 🅰️⌛ JSON Bundle Export, Import, Persist
-1. ✅⌛ `ICacheService` on `Kit.Cache` - docs & samples missing!
-1. ✅ Refactor internal `Entity`, `Attribute` `Values`, `ContentType` to use `record`
-1. ✅ Refactor internal SaveOptions to use `record`
-1. ✅ Refactor internal `Entity` to be init-only (where were a few set properties left for legacy reasons)
-1. ✅ Finalize `AppAssets` DataSource and the corresponding `FileTyped` and `FolderTyped` objects
-1. 🅰️⌛ Update Date/Time picker to use Angular Material Time Picker
-1. ✅ Bug: Fix access to global and site settings
-1. ✅ Oqtane: Fix some issues with scripts
-1. ? Oqtane: Fix issues with running in Azure
-1. ⌛ Oqtane: Set minimum version to 06.00.01 and minimum .net to 9 because of security warnings
-1. ✅ New `ToSic.Sxc.Models` with `DataModel` and `DataModelOfItem` base classes
-1. ✅ New models: `Page`, `Site`, `User`, `UserRole`, `File`, `Folder`
-1. Enhancement in the `Pages` DataSource - minor property renames!
-1. Enhancement to the `Roles` DataSource - renamed to `UserRoles` - breaking change!
+2025 Q1 is going to focus mainly on cre8magic, not 2sxc.
 
-## Note: Some Picker Features still not final
 
+## Note: Some Features still not final
+
+1. ⌛✅ `ICacheService` on `Kit.Cache` - docs & samples missing!
+1. ⌛🅰️ JSON Bundle Export, Import, Persist (beta, various scenarios don't work as expected)
 1. Picker Formulas (beta)
 1. Picker Source WebService (not started)
 1. Picker Source CSS (beta)
