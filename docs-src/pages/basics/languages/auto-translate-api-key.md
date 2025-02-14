@@ -39,6 +39,12 @@ You can place the key in 4 different locations:
 1. Global settings on all Sites of an installation (recommended)
 1. In the presets (for scenarios where you pre-install the same API key in many installations, not documented ATM)
 
+> [!NOTE]
+> There is a small caching issue when creating the first ever global setting.
+> ATM you'll need to restart DNN/Oqtane for it to be picked up.
+>
+> Once you have a global setting, you can change it without restarting DNN/Oqtane.
+
 ---
 
 ## History

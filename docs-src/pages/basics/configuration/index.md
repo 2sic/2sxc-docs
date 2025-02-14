@@ -57,6 +57,12 @@ and the [Resources Stack](xref:Basics.Configuration.ResourcesStack) using the [`
 
 Note: _there are some global ADAM Settings that can be configured in a different way, but it's not standardized/finalized yet, so not public, and we'll try to move that into the new standard._
 
+> [!NOTE]
+> There is a small caching issue when creating the first ever global setting.
+> ATM you'll need to restart DNN/Oqtane for it to be picked up.
+>
+> Once you have a global setting, you can change it without restarting DNN/Oqtane.
+
 ---
 
 ## Site Level (Portal)
