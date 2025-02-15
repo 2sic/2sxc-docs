@@ -13,8 +13,8 @@ export class Xref {
   public static async runXrefPage() {
     const xrefNotFound = 'xref not found in url';
     const docLoc = document.location.pathname;
-    if (docLoc.includes('xref.html')) {
-      console.log('xref page');
+    if (docLoc.includes('xref.html') || docLoc.includes('find.html')) {
+      console.log(`Detected we're on the find/xref page.`);
 
       // get url parameters xref
       var urlParams = new URLSearchParams(window.location.search);

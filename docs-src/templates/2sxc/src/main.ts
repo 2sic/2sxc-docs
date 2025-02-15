@@ -33,7 +33,7 @@ docReady(function() {
   // set version button link
   setVersionButtonLink();
 
-  // add xref links if we're on xref.html
+  // add xref links if we're on find.html
   // This is a bit special, but I don't know how to trigger code inside the JS-Module
   // from the page itself, so I'm just doing it here with url-checks
   Xref.runXrefPage();
