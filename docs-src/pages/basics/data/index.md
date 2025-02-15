@@ -46,8 +46,8 @@ Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Ent
 <img src="./assets/app-content-type-entity.png" width="100%" class="full-width">
 <br>
 
-* [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has.
-* [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content.
+* [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has - peek the [object structure](xref:Basics.Data.ContentTypes.ObjectStructure).
+* [Entities](xref:Basics.Data.Entities.Index) are the data-items, they contain the content - peek the [object structure](xref:Basics.Data.Entities.ObjectStructure).
 
 Let's look at each piece in detail.
 

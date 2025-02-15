@@ -2,12 +2,7 @@
 uid: Basics.Permissions.Index
 ---
 
-<!-- <img src="~/assets/features/image-resizer.svg" class="feature"> -->
-
 # Permissions in 2sxc
-<!-- 
-[!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>  .context-box-summary .image-resizer    { visibility: visible; } </style> -->
 
 2sxc permissions are interlinked with the users and roles of the platform (Dnn or Oqtane).
 So if Dnn or Oqtane say a user may do something, 2sxc will follow that.

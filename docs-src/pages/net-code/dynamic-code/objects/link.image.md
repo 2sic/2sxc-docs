@@ -2,7 +2,7 @@
 uid: NetCode.DynamicCode.Objects.Link.Image
 ---
 
-<img src="~/assets/features/image-resizer.svg" class="feature">
+[!include[](~/assets/features/image-resizer.md)]
 
 # Link.Image(...) / @Link.Image Method in Dynamic Code
 

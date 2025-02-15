@@ -2,7 +2,7 @@
 uid: Basics.Images.Lightbox.Index
 ---
 
-<img src="~/assets/features/image-resizer.svg" class="feature">
+[!include[](~/assets/features/image-resizer.md)]
 
 # Image Lightbox (new v17)
 

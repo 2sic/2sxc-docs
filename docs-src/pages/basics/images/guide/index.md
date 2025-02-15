@@ -2,7 +2,7 @@
 uid: Basics.Images.Guide.Index
 ---
 
-<img src="~/assets/features/image-resizer.svg" class="feature">
+[!include[](~/assets/features/image-resizer.md)]
 
 # Images Guide (Best Practices & Code)
 
