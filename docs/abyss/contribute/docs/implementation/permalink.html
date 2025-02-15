@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Docs: Technical Implementation | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Docs: Find Permalink Implementation | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Docs: Technical Implementation | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Docs: Find Permalink Implementation | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/permalink.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,7 +100,7 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Implementation.Index">
+        <article data-uid="Abyss.Contribute.Docs.Implementation.Permalink">
 
 <div class="TIP">
 <h5>Tip</h5>
@@ -112,102 +112,65 @@ When applying this to other projects, remember that some things such as the name
 <li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
 </ul>
 </div>
-<h1 id="docs-technical-implementation">Docs: Technical Implementation</h1>
+<h1 id="docs-find-permalink-implementation">Docs: Find Permalink Implementation</h1>
 <div class="WARNING">
 <h5>Warning</h5>
 <p>This is a technical documentation about how the documentation system works.
 It helps the core team understand how to maintain and enhance the documentation system.</p>
 <p>It's not meant for most contributors, as it's too technical.</p>
 </div>
-<h2 id="basics">Basics</h2>
+<h2 id="goals">Goals</h2>
 <ol>
-<li><p>The documentation is built with <a href="https://dotnet.github.io/docfx/">DocFX</a>.</p>
-</li>
-<li><p>When compiling, it will take the C# code and the markdown files and merge them together...</p>
-</li>
-<li><p>...and create a static HTML documentation which can be hosted anywhere - often on GitHub pages.</p>
-</li>
+<li>We want to be able to link to docs easily from external places</li>
+<li>These links should not break when the docs change</li>
+<li>...so we need the ability to update the target if the docs ever do change</li>
+<li>The link should be obvious where it goes, if ever something more dramatic is changed</li>
+<li>Most links will link to code, such as namespaces etc.</li>
+<li>The links should be obvious where they <em>should</em> go, in case things still change - so no cryptic /xy920f</li>
 </ol>
 <h2 id="the-parts-that-make-it-work">The Parts that Make it Work</h2>
-<p>Since this is a large documentation it needs a bit more than just the standard DocFX setup.
-Here is an overview as to what is really implemented:</p>
 <ol>
-<li><p>DocFX will build everything based on the configuration in <code>docfx.json</code>, <code>filterConfig.yml</code> and <code>xrefmap.yml</code><br>
-➡️ <a class="xref" href="configuration.html">Configuration</a></p>
-</li>
-<li><p>C# Code Docs generation and Merging with additional docs is very sophisticated.<br>
-➡️ <a class="xref" href="csharp-code.html">C# Code Docs</a></p>
-</li>
-<li><p>JavaScript Code Docs generation and Merging with additional docs is a beast!
-➡️ <a class="xref" href="javascript-code.html">JavaScript Code Docs</a></p>
-</li>
-<li><p>The Templates generate everything, add JS and much more<br>
-➡️ <a class="xref" href="docfx-templates.html">Templates</a></p>
-</li>
-<li><p>We have some custom magic to improve the C# API TOC<br>
-➡️ <a class="xref" href="toc-customizations.html">TOC Customizations</a></p>
-</li>
-<li><p>The <code>/templates/[project]/src</code> has TypeScript  and SASS which is compiled with WebPack to the <code>/public</code> folder<br>
-➡️ see <a class="xref" href="ts-css-webpack.html">TypeScript, CSS, WebPack Customizations</a></p>
-</li>
-<li><p>We implemented a special find Permalink-System for linking to deep docs<br>
-➡️ <a class="xref" href="permalink.html">Find Permalink System</a></p>
-</li>
-<li><p>Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy</p>
-</li>
+<li>DocFx uses the concept of <code>XREF</code> links, which are either API references, or documentation pages having a <code>uid</code>.</li>
+<li>Inside DocFx this is used extensively, and to make sure the docs don't change, are also maintained.</li>
+<li>On each compile of the docs, a <code>xrefmap.yml</code> is created in the <em>dist</em>, which maps all <code>uid</code> to the actual URL.</li>
+<li>We can also introduce custom redirects for older XREFS which changed, in the <code>xrefmap.yml</code> in the <em>source</em>.</li>
 </ol>
-<h2 id="history-of-this-docs-setup">History of this Docs Setup</h2>
-<h3 id="2024">2024</h3>
-<p><em>Note: we only started documenting this in 2024-12, so it's incomplete.</em></p>
-<h4 id="reduced-time-to-redirect-on-xref-to-1-second">Reduced Time-To-Redirect on XREF to 1 Second</h4>
-<p>Previously the time to redirect was 3 seconds. We reduced it to 1 second.</p>
-<ul>
-<li><code>/templates/shared-global/src/scripts/xref/xref.ts</code></li>
-</ul>
-<p>Changed: 2024-12-12, <code>@iJungleboy</code></p>
-<h4 id="made-api-docs-toc-sidebar-not-wrap">Made API-Docs TOC Sidebar not Wrap</h4>
-<p>Added the <code>api-toc-sidebar-menus.scss</code> to prevent the API-Docs TOC from wrapping.</p>
-<ul>
-<li><code>/templates/shared-global/src/styles/api-toc-sidebar-menu.scss</code></li>
-<li><code>/templates/shared-global/src/styles/_index.scss</code></li>
-</ul>
-<p>Changed: 2024-12-12, <code>@iJungleboy</code></p>
-<h4 id="added-svg-helpers-for-colored-logos">Added SVG helpers for colored logos</h4>
-<p>Added some JavaScripts to inline SVGs on <code>img</code> tags with the class <code>svg</code>.</p>
-<p>This helps for both the logo and images added like this,
-so that they will be inlined and behave according to the CSS.
-It's especially useful when the SVG uses <code>currentColor</code> in it's own CSS.</p>
-<ul>
-<li><code>/templates/shared-global/src/scripts/svgs/svg-importer.ts</code></li>
-</ul>
-<p>Changed: 2024-12-10, <code>@iJungleboy</code></p>
-<h4 id="created-attribution-system">Created Attribution System</h4>
-<p>We created an attribution system to show who wrote which part of the documentation.</p>
-<p>Changed: ca. 2024-12-05, <code>@iJungleboy</code></p>
-<h4 id="standardized-entire-setup">Standardized Entire Setup</h4>
-<p>We put all customizations and docs-instructions in the <code>2sxc</code> docs only,
-to consolidate everything from 2sxc, Oqtane, RazorBlade and cre8magic.</p>
-<p>Implementation:</p>
+<p>Now all we need is</p>
 <ol>
-<li>Everything shared is now in <code>/templates/shared-global</code></li>
-<li>The <code>/templates/[project]/src</code> is now the only place for project-specific customizations</li>
+<li>A JavaScript which loads the final/latest <code>xrefmap.yml</code> and can resolve the <code>uid</code> to the URL</li>
+<li>A page which runs this JS, takes the <code>xref=</code> parameter from the URL and redirects to the target URL</li>
+<li>Some minor options to cancel the redirect etc. for better debugging.</li>
 </ol>
-<p>Changed: 2024-12-05, <code>@iJungleboy</code>, <code>@tvatavuk</code></p>
-<h4 id="added-gallery-feature">Added Gallery Feature</h4>
-<p>We created the <code>&lt;div gallery=&quot;name&quot;&gt;&lt;!-- img list --&gt;&lt;/div&gt;</code> feature to create galleries
-with previews etc.</p>
-<p>Changed: ca. 2024-12-01, <code>@iJungleboy</code></p>
-<h4 id="added-lightbox-with-fancybox">Added Lightbox with Fancybox</h4>
-<p>We added the Fancybox lightbox to the system, so that images can be opened in a lightbox.</p>
-<p>Changed: ca. 2024-11, <code>@iJungleboy</code></p>
-<h4 id="added-razorblazor-syntax-coloring">Added Razor/Blazor Syntax Coloring</h4>
-<p>We added the Razor/Blazor syntax coloring to the system, so that code can be colored.</p>
-<p>Changed: ca. 2024-06, <code>@tvatavuk</code></p>
+<h2 id="implementation">Implementation</h2>
+<ol>
+<li>The <code>xrefmap.yml</code> is loaded by the <code>xref.ts</code> script in the <code>shared-global</code> template</li>
+<li>The <code>xref.ts</code> script is loaded on all pages, so it's always available</li>
+<li>...but it checks if it's on the special <code>find.html</code> page, and only runs there</li>
+<li>The <code>xref.ts</code> script will parse the URL, look for <code>xref=</code> and then redirect to the target URL</li>
+<li>If the target URL is not found, it will show a message and not redirect</li>
+<li>If the target URL is found, it will redirect after 1 second</li>
+</ol>
+<p>In addition, there is a bit more magic on the <code>fid.html</code> page (which comes from the <code>find.md</code> markdown file):</p>
+<ul>
+<li>The <code>find.html</code> page has some named HTML elements where the JS will place the values for better understanding and debugging.</li>
+<li>It also has instructions so the user could - for 1 second - see what's happening and could cancel the redirect.</li>
+<li>It also has a hidden element which will be shown if the user cancels the redirect.</li>
+</ul>
+<hr>
+<h2 id="history-of-the-find-permalink-system">History of the Find Permalink System</h2>
+<ul>
+<li>ca. 2022 introduced it as <code>/xref.html</code> and the shortlink go.2sxc.org/xref17 (as we initially thought we want the 2sxc version in there)</li>
+<li>2024-12-12 reduced the time to redirect to 1 second</li>
+<li>2025-02-15 changed to use <code>find.html</code>, enhanced instructions and updated the redirects</li>
+<li>2025-02-15 changed the main redirect to be <code>https://go.2sxc.org/find</code> instead of <code>xref</code> and without the version number</li>
+<li>2025-02-15 updated the documentation for clarity and accuracy</li>
+<li>2025-02-15 added more detail on the handling of <code>uid</code> in <code>xref.ts</code></li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/permalink.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

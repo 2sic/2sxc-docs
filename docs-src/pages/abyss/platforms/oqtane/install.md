@@ -20,6 +20,7 @@ we created on installing Oqtane and 2sxc.
 
 | Oqtane V.     | Best    | Compatible          | Incompatible            | Comments
 | ---           | -----   | ------------------- | -------------           | ---
+| 6.1.0         | 19.03   | ✅ 19.00.01+        | ⛔ pre 19.00.01         | latest Oqtane as of 2025-02
 | 6.0.1         | 19.03   | ✅ 19.00.01+        | ⛔ pre 19.00.01         | Blazor interactive mode has some bugs
 | 6.0.0         | 19.01   | ✅ 18.04 - 19.01    | ⛔ pre 18.04; 19.01+    | Blazor interactive mode has some bugs
 | 5.1.2+        | 18.03   | ✅ 18.00+           | ⛔ pre 18.00            | Some Render modes supported - see [limitation](xref:Abyss.Platforms.Oqtane.Install.IssueRender050102)

@@ -45,7 +45,8 @@ Here is an overview as to what is really implemented:
 1. The `/templates/[project]/src` has TypeScript  and SASS which is compiled with WebPack to the `/public` folder  
     ➡️ see [TypeScript, CSS, WebPack Customizations](xref:Abyss.Contribute.Docs.Implementation.TsCssWebpack)
 
-1. We implemented a special Permalink-System TODO: @iJungleboy
+1. We implemented a special find Permalink-System for linking to deep docs  
+    ➡️ [Find Permalink System](xref:Abyss.Contribute.Docs.Implementation.Permalink)
 
 1. Most projects also support version-switching, so you can switch between versions of the documentation TODO: @iJungleboy
 
