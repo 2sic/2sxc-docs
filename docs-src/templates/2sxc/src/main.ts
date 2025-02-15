@@ -7,6 +7,8 @@ import packageJson from '../../../package.json';
 import { lightboxForContextIllustration } from '../../shared-global/src/scripts/context-illustrations';
 import "./main.scss";
 
+import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
+
 // Log some version of this file so we see changes are being applied
 // console.log('2sxc main.ts ' + packageJson.version);
 
@@ -32,6 +34,9 @@ docReady(function() {
 
   // set version button link
   setVersionButtonLink();
+
+  // inline SVGs with the class "svg"
+  inlineSvgs();
 
   // add xref links if we're on find.html
   // This is a bit special, but I don't know how to trigger code inside the JS-Module

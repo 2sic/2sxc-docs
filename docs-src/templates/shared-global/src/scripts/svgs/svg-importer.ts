@@ -1,10 +1,13 @@
 // WIP
 // From https://github.com/dotnet/docfx/blob/main/templates/default/styles/docfx.js
 
-const debug = false;
+import packageJson from '../../../../../package.json';
+
+// Get the enableDebug value from package.json
+const { enableDebug } = packageJson; 
 
 function setupEverything() {
-  if (debug)
+  if (enableDebug)
     console.log('setupEverything');
 
   inlineSvgs();
@@ -17,20 +20,29 @@ export default {
   }
 }
 
-if (debug)
-  console.log('main.js loaded');
+if (enableDebug)
+  console.log('svg-importer loaded');
 
 export function inlineSvgs() {
   // For LOGO SVG
   // Replace SVG with inline SVG
   // http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement
 
+  // Find all img tags with the class .svg
   const svgs = document.querySelectorAll('img.svg') as NodeListOf<HTMLImageElement>;
+  if (enableDebug)
+    console.log(`inlineSvgs ${svgs.length}`, svgs);
+  
   svgs.forEach((svg) => {
+    // if the imgUrl doesn't seem to be an SVG, return
+    if (!svg.src.endsWith('.svg'))
+      return;
+
+    // Get all the relevant properties
     const img = svg;
+    const imgURL = img.src;
     const imgID = img.id;
     const imgClass = img.className;
-    const imgURL = img.src;
     const imgWidth = img.getAttribute('width');
     const imgHeight = img.getAttribute('height');
 
@@ -43,6 +55,10 @@ export function inlineSvgs() {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data, 'text/xml');
         const $svg = xmlDoc.getElementsByTagName('svg')[0];
+
+        // If not an svg, return
+        if (!$svg)
+          return;
 
         // Add replaced image's ID to the new SVG
         if (imgID != null)

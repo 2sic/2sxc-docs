@@ -1,5 +1,7 @@
 import { Fancybox } from '@fancyapps/ui';
 import packageJson from '../../../../package.json';
+
+// Get the enableDebug value from package.json
 const { enableDebug } = packageJson; 
 
 export function configureLightboxes() {

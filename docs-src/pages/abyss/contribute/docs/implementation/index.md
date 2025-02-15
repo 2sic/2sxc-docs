@@ -45,6 +45,8 @@ Here is an overview as to what is really implemented:
 1. The `/templates/[project]/src` has TypeScript  and SASS which is compiled with WebPack to the `/public` folder  
     ➡️ see [TypeScript, CSS, WebPack Customizations](xref:Abyss.Contribute.Docs.Implementation.TsCssWebpack)
 
+1. We also have a neat trick to inline SVGs in the HTML TODO: @iJungleboy (explain, needs 'svg' class, etc.)
+
 1. We implemented a special find Permalink-System for linking to deep docs  
     ➡️ [Find Permalink System](xref:Abyss.Contribute.Docs.Implementation.Permalink)
 
