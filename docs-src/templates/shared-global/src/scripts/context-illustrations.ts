@@ -1,5 +1,7 @@
-import { Fancybox } from '@fancyapps/ui';
+import { Fancybox, Html } from '@fancyapps/ui';
 import packageJson from '../../../../package.json';
+
+// Get the enableDebug value from package.json
 const { enableDebug } = packageJson; 
 
 export function lightboxForContextIllustration() {
@@ -8,11 +10,15 @@ export function lightboxForContextIllustration() {
   const containersLive = document.getElementsByClassName("fancybox-auto");
   const containers = Array.from(containersLive);
 
+  if (enableDebug)
+    console.log(`context containers ${containers.length}`, containers);
+
   for (var i = 0; i < containers.length; i++) {
     const e = containers[i] as HTMLElement;
 
     // add ID if missing
-    if (!e.id) e.id = 'rndId-' + Math.floor(Math.random() * Math.floor(9999999));
+    if (!e.id)
+      e.id = 'rndId-' + Math.floor(Math.random() * Math.floor(9999999));
 
     // check if we need to attach some classes from parent
     // note: not sure if this is needed, maybe a leftover from a previous version?
@@ -28,8 +34,9 @@ export function lightboxForContextIllustration() {
       console.log('context containers', e.id, pcls);
 
     // Create the popup div and attach it to the element
-    createPopupDiv(e, `${e.id}-clone`);
+    const popup = createPopupDiv(e, `${e.id}-clone`);
     e.setAttribute('data-src', `#${e.id}-clone`);
+    popup.style.display = 'none';
 
     // add fancybox attribute
     e.attributes.setNamedItem(document.createAttribute('data-fancybox'));
@@ -39,9 +46,10 @@ export function lightboxForContextIllustration() {
   Fancybox.bind("[data-fancybox]");
 }
 
-function createPopupDiv(original: HTMLElement, newName: string) {
+function createPopupDiv(original: HTMLElement, newName: string): HTMLElement {
   const clone = original.cloneNode(true) as HTMLElement;
   clone.id = newName;
   clone.style.width = "95%";
-  document.body.appendChild(clone);  
+  document.body.appendChild(clone);
+  return clone;
 }
