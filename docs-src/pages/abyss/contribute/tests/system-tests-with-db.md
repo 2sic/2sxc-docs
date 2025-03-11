@@ -1,16 +1,20 @@
 ---
-uid: Abyss.Contribute.UnitTests
+uid: Abyss.Contribute.Tests.SystemDb
 ---
 
 # Run Unit Tests in .net
 
 _Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
 
-2sxc and EAV have more than 600 Unit tests verifying all kinds of functionality. Many of them require a DB containing test-data to fully work. 
+2sxc and EAV have more than 1'000 Unit tests which require a DB to run.
+
+This is explained here.
 
 ## Pre-Requisites
 
-2sxc server projects have been downloaded and placed as recommended in the checklists. 
+1. 2sxc server projects have been downloaded and placed as recommended in the checklists.
+1. Compatibility Level 130 (SQL Server 2016) is required for the `eav-testing` database.
+   This is to ensure that EF features of .net 9 work properly.
 
 ## Setup Tests
 

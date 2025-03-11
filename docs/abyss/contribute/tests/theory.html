@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Introduction to Documentation | 2sxc 19 for Dnn and Oqtane </title>
+      <title>xUnit Theory Tests - Data-Driven | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Introduction to Documentation | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="xUnit Theory Tests - Data-Driven | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/introduction.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/theory.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,79 +100,90 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Introduction">
+        <article data-uid="Abyss.Contribute.Tests.Theory">
+<h1 id="xunit-theory-tests---data-driven">xUnit Theory Tests - Data-Driven</h1>
 
-<div class="TIP">
-<h5>Tip</h5>
-<p>The docs as explained here are used in multiple projects, but documented only once for better maintenance.
-When applying this to other projects, remember that some things such as the name, repository, or paths are a bit different.</p>
-<ul>
-<li>🌴 2sxc: <a href="https://github.com/2sic/2sxc-docs">Docs Repo</a>, <a href="https://docs.2sxc.org">Docs Live</a></li>
-<li>🩸 Oqtane: <a href="https://github.com/oqtane/oqtane.docs/">Docs Repo</a>, <a href="https://docs.oqtane.org">Docs Live</a></li>
-<li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
-</ul>
-</div>
-<h1 id="introduction-to-documentation">Introduction to Documentation</h1>
-<p>Here we'll explain how the documentation works, with all the magic in it.</p>
-<h2 id="the-basics">The Basics</h2>
-<div class="TIP">
-<h5>Tip</h5>
-<p>These docs project generates the documentation using <a href="https://dotnet.github.io/docfx/">docfx</a>.
-So for the most part, you'll want to read the docfx documentation
-to understand how it works.</p>
-</div>
-<h3 id="the-source-code">The Source Code</h3>
-<p>This project has a <code>src</code> folder containing...</p>
-<ol>
-<li>markdown files in <code>/pages</code> for standalone docs pages</li>
-<li>markdown files in <code>/apidoc</code> for merging with XML-docs in the source of Oqtane</li>
-<li>various YAML files (<code>.yml</code>) which describe the navigation structure</li>
-<li>Solution (<code>.sln</code>) and project (<code>.csproj</code>) files to build the documentation</li>
-<li>docfx configurations (<code>docfx.json</code> and <code>filterConfig.yml</code>)</li>
-<li>various json configs so it also works in VS-Code</li>
-</ol>
-<p>It also requires the <code>Oqtane.Framework</code> project to be in a sibling folder (see <a href="setup/index.html">setup</a>)</p>
-<h3 id="the-build-process">The Build Process</h3>
-<pre><code class="lang-mermaid">flowchart TD
-    CS[&quot;C# Source &lt;br&gt;&lt;code&gt;../some-project&lt;/code&gt;&quot;] --&gt;|⚙️Compiler| XD
-    XD[&quot;Xml Docs&lt;br&gt;(temp)&quot;] --&gt; MD[&quot;Merged API Docs&lt;br&gt;(temp)&quot;]
-    DM[Docs Mixins&lt;br&gt;~/apidocs] --&gt; MD
-    CONTENT[Content/Articles&lt;br&gt;~/pages] --&gt; Docs[Docs HTML&lt;br&gt;../docs/]
-    ASS[Assets/Images&lt;br&gt;**/assets] --&gt; Docs
-    MD --&gt; Docs
-    TOC[&quot;TOC Files&lt;br&gt;**/toc.yml&quot;] --&gt; TOCG
-    Docs --&gt;|generate| TOCG[&quot;Various TOCs&lt;br&gt;(Tables of Contents)&quot;]
+<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
+<h2 id="theory-for-data-driven-tests"><code>Theory</code> for Data-Driven Tests</h2>
+<p>Note that data-driven simply means that objects / lists of tests are run.</p>
+<p>We are basically using the recommendations from
+<a href="https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/">https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/</a></p>
+<h2 id="example-with-inlinedata">Example with InlineData</h2>
+<pre><code class="lang-csharp">[Theory]
+[InlineData(1, 2, 3)]
+[InlineData(2, 3, 5)]
+[InlineData(3, 4, 7)]
+public void ShouldCalculateCorrectly(int a, int b, int expected)
+{
+  var result = a + b;
+  Equal(expected, result);
+}
 </code></pre>
-<p>When you build this project, it will</p>
-<ol>
-<li>Compile the Source Code</li>
-<li>Extract the XML documentation from the XmlDocs and generate YAML and markdown files</li>
-<li>Merge the generated files with the ones in this project</li>
-<li>Generate a <code>../docs</code> folder with static HTML files that can be hosted anywhere</li>
-</ol>
-<div class="NOTE">
-<h5>Note</h5>
-<p>To test the generated docs locally,
-you'll need to host the <code>../docs</code> folder on a web server.
-This is because there are some absolute paths used in some JavaScripts
-for the TOC (table of contents) and search functionality.</p>
-</div>
-<hr>
-<br>
-<div style="font-style: italic; font-size: small;">Main Author</div>
-<img src="../../../shared/authors/ijungleboy/assets/ijungleboy.jpg" style="width: 100px; float: right">
-<h4 id="daniel-mettler-ijungleboy-ms-mvp-oqtane-core-team">Daniel Mettler, <code>@iJungleboy</code> [MS MVP, Oqtane Core Team]</h4>
-<p>Content Management Expert, Chief Architect of <a href="https://2sxc.org">2sxc</a> and cre8magic.<br>
-Forged in the jungles of Indonesia, lives in Switzerland , loves Oqtane 🩸 &amp; 2sxc 💜.</p>
-<p><a href="https://www.linkedin.com/in/danielmettler/">LinkedIn</a>
-| Discord: @iJungleboy
-| Twitter: @iJungleboy
-| Github: <a href="https://github.com/ijungleboy">@iJungleboy</a></p>
+<h2 id="example-with-memberdata">Example with MemberData</h2>
+<p>This example uses <code>[MemberData]</code> to provide the data for the test.</p>
+<pre><code class="lang-csharp">using ToSic.Eav.Apps;
+using ToSic.Eav.Testing;
 
+namespace ToSic.Eav.Configuration;
+
+// TODO: These tests seem to not have worked for a long time
+// Probably the setup isn't happening first.
+// It appears that there should be some override settings which should be used as well, which are not applied here
+// Needs some time to restore functionality
+
+[Startup(typeof(StartupTestFullWithDb))]
+public class GlobalConfigurationOverride(IAppReaderFactory appReaderFactory)
+    // the fixture will also load the resources
+    : IClassFixture&lt;FullDbFixtureScenarioBasic&gt;
+{
+    public record TestData(string Name, Guid Guid, bool Expected);
+
+    public static TheoryData&lt;TestData&gt; GenerateTests =&gt;
+    [
+        new(&quot;Fancybox4&quot;, new(&quot;3356ad17-91ce-4814-83c1-9f527697391a&quot;), false),
+        new(&quot;Fancybox3&quot;, new(&quot;4b9ef331-480a-4a38-86f1-a580f8345677&quot;), true)
+    ];
+
+    private const string HtmlField = &quot;Html&quot;;
+    private const string TestStringInOverrideFancybox3 = &quot;test-is-override&quot;;
+
+    [Theory]
+    [MemberData(nameof(GenerateTests))]
+    public void ResourceExistsOnce(TestData specs) =&gt;
+        Single(GetEntitiesOfGuid(specs.Guid));
+
+    // TODO: @STV - this seems to fail, it appears that the normal data isn't loaded, only system-custom ?
+    /// &lt;summary&gt;
+    /// This is quite a complex test
+    /// - There is an entity in App_Data/system-custom with the same guid as the fancybox3 WebResource
+    /// - It has an additional string containing &quot;test-is-override&quot;
+    /// - On load, it should _replace_ the original item
+    /// - and make sure it's used instead
+    /// &lt;/summary&gt;
+    [Theory]
+    [MemberData(nameof(GenerateTests))]
+    public void ResourceHtmlContainsText(TestData specs)
+    {
+        var html = GetEntitiesOfGuid(specs.Guid).First().GetTac&lt;string&gt;(HtmlField);
+        Equal(specs.Expected, html.Contains(TestStringInOverrideFancybox3));
+    }
+
+    private List&lt;IEntity&gt; GetEntitiesOfGuid(Guid resourceGuid)
+    {
+        var primaryApp = appReaderFactory.GetSystemPreset();
+
+        // Verify there is only one with this guid
+        var entities = primaryApp.List
+            .Where(e =&gt; e.EntityGuid == resourceGuid)
+            .ToList();
+        return entities;
+    }
+}
+</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/introduction.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/theory.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

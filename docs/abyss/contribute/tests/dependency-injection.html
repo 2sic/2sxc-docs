@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Introduction to Documentation | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Dependency Injection in xUnit Tests | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Introduction to Documentation | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Dependency Injection in xUnit Tests | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/introduction.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/dependency-injection.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,79 +100,101 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Docs.Introduction">
+        <article data-uid="Abyss.Contribute.Tests.DependencyInjection">
+<h1 id="dependency-injection-in-xunit-tests">Dependency Injection in xUnit Tests</h1>
 
-<div class="TIP">
-<h5>Tip</h5>
-<p>The docs as explained here are used in multiple projects, but documented only once for better maintenance.
-When applying this to other projects, remember that some things such as the name, repository, or paths are a bit different.</p>
-<ul>
-<li>🌴 2sxc: <a href="https://github.com/2sic/2sxc-docs">Docs Repo</a>, <a href="https://docs.2sxc.org">Docs Live</a></li>
-<li>🩸 Oqtane: <a href="https://github.com/oqtane/oqtane.docs/">Docs Repo</a>, <a href="https://docs.oqtane.org">Docs Live</a></li>
-<li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
-</ul>
-</div>
-<h1 id="introduction-to-documentation">Introduction to Documentation</h1>
-<p>Here we'll explain how the documentation works, with all the magic in it.</p>
-<h2 id="the-basics">The Basics</h2>
-<div class="TIP">
-<h5>Tip</h5>
-<p>These docs project generates the documentation using <a href="https://dotnet.github.io/docfx/">docfx</a>.
-So for the most part, you'll want to read the docfx documentation
-to understand how it works.</p>
-</div>
-<h3 id="the-source-code">The Source Code</h3>
-<p>This project has a <code>src</code> folder containing...</p>
-<ol>
-<li>markdown files in <code>/pages</code> for standalone docs pages</li>
-<li>markdown files in <code>/apidoc</code> for merging with XML-docs in the source of Oqtane</li>
-<li>various YAML files (<code>.yml</code>) which describe the navigation structure</li>
-<li>Solution (<code>.sln</code>) and project (<code>.csproj</code>) files to build the documentation</li>
-<li>docfx configurations (<code>docfx.json</code> and <code>filterConfig.yml</code>)</li>
-<li>various json configs so it also works in VS-Code</li>
-</ol>
-<p>It also requires the <code>Oqtane.Framework</code> project to be in a sibling folder (see <a href="setup/index.html">setup</a>)</p>
-<h3 id="the-build-process">The Build Process</h3>
-<pre><code class="lang-mermaid">flowchart TD
-    CS[&quot;C# Source &lt;br&gt;&lt;code&gt;../some-project&lt;/code&gt;&quot;] --&gt;|⚙️Compiler| XD
-    XD[&quot;Xml Docs&lt;br&gt;(temp)&quot;] --&gt; MD[&quot;Merged API Docs&lt;br&gt;(temp)&quot;]
-    DM[Docs Mixins&lt;br&gt;~/apidocs] --&gt; MD
-    CONTENT[Content/Articles&lt;br&gt;~/pages] --&gt; Docs[Docs HTML&lt;br&gt;../docs/]
-    ASS[Assets/Images&lt;br&gt;**/assets] --&gt; Docs
-    MD --&gt; Docs
-    TOC[&quot;TOC Files&lt;br&gt;**/toc.yml&quot;] --&gt; TOCG
-    Docs --&gt;|generate| TOCG[&quot;Various TOCs&lt;br&gt;(Tables of Contents)&quot;]
+<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
+<h2 id="unit-tests-which-dont-use-dependency-injection">Unit Tests which Don't use Dependency Injection</h2>
+<p>These unit tests are the simplest, and don't need any special setup.
+Example:</p>
+<pre><code class="lang-csharp">public void ManualListOfFunctions()
+{
+    var result = new FunFactString(null,
+        [
+            (&quot;&quot;, _ =&gt; &quot;Hello&quot;),
+            (&quot;&quot;, s =&gt; s + &quot; World&quot;),
+            (&quot;&quot;, s =&gt; s + &quot;!&quot;)
+        ])
+        .CreateResult();
+    Equal(&quot;Hello World!&quot;, result);
+}
+
+</code></pre><h2 id="unit-tests-which-need-basic-dependency-injection-by-namespace">Unit Tests which need Basic Dependency Injection <em>by Namespace</em></h2>
+<p>These tests need DI to be setup, but don't need any configuration (such as Database connections).</p>
+<p>First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:</p>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
+using ToSic.Lib.DI.SwitchableServices.Services;
+
+namespace ToSic.Lib.DI.SwitchableServices;
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services) =&gt;
+        services
+            .AddTransient&lt;ITestSwitchableService, TestSwitchableFallback&gt;()
+            .AddTransient&lt;ITestSwitchableService, TestSwitchableKeep&gt;()
+            .AddTransient&lt;ITestSwitchableService, TestSwitchableSkip&gt;()
+            .AddLibCore();
+}
 </code></pre>
-<p>When you build this project, it will</p>
-<ol>
-<li>Compile the Source Code</li>
-<li>Extract the XML documentation from the XmlDocs and generate YAML and markdown files</li>
-<li>Merge the generated files with the ones in this project</li>
-<li>Generate a <code>../docs</code> folder with static HTML files that can be hosted anywhere</li>
-</ol>
-<div class="NOTE">
-<h5>Note</h5>
-<p>To test the generated docs locally,
-you'll need to host the <code>../docs</code> folder on a web server.
-This is because there are some absolute paths used in some JavaScripts
-for the TOC (table of contents) and search functionality.</p>
+<p>The tests in this folder and sub folders will automatically pick up the DI configuration from this startup class.
+This happens through the <strong>namespace</strong>, not through the physical folders.</p>
+<p>This setup allows you to quickly reuse a setup, and specify it to be very specific to all the tests in the same namespace.
+In will then be available as a service in the test.</p>
+<pre><code class="lang-csharp">using ToSic.Lib.DI.SwitchableServices.Services;
+
+namespace ToSic.Lib.DI.SwitchableServices;
+
+public class VerifySwitchableService(ServiceSwitcher&lt;ITestSwitchableService&gt; switcher)
+{
+
+    [Fact]
+    public void FindKeepService() =&gt;
+        Equal(TestSwitchableKeep.Name, switcher.Value.NameId);
+
+    [Fact]
+    public void Has3Services() =&gt;
+        Equal(3, switcher.AllServices.Count);
+
+    [Fact]
+    public void NotCreateBeforeButCreatedAfter()
+    {
+        False(switcher.IsValueCreated, &quot;shouldn't be created at first&quot;);
+        var x = switcher.Value;
+        True(switcher.IsValueCreated, &quot;should be created afterwards&quot;);
+    }
+
+    [Fact]
+    public void FindFallbackByName() =&gt;
+        Equal(TestSwitchableFallback.Name, switcher.ByNameId(TestSwitchableFallback.Name).NameId);
+}
+</code></pre><h2 id="unit-tests-with-basic-dependency-injection-by-attribute">Unit Tests with Basic Dependency Injection <em>by Attribute</em></h2>
+<p>Every test class can also specify a specific DI setup by using an attribute.
+This is the preferred method, the syntax is like this:</p>
+<pre><code class="lang-csharp">[Startup(typeof(StartupTestsEavCore))]
+public class LookUpEngineTests(DataBuilder dataBuilder) {
+  // ...
+}
+</code></pre>
+<h2 id="unit-tests-with-dependency-injection-and-startup">Unit Tests with Dependency Injection and Startup</h2>
+<p>In various cases you may need to setup a specific DI configuration for a test.
+For example, to specify a path or a DB connection.
+In xUnit this is done with <strong>Fixtures</strong>.</p>
+<pre><code class="lang-csharp">[Startup(typeof(StartupTestFullWithDb))]
+public class AccessItemsInAppState(IAppReaderFactory appReaderFactory, ITestOutputHelper output): IClassFixture&lt;FullDbFixtureScenarioBasic&gt;
+{
+  // ...
+}
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Where possible, the startup and fixture class should be a in a <code>...TestHelper</code>.</p>
 </div>
-<hr>
-<br>
-<div style="font-style: italic; font-size: small;">Main Author</div>
-<img src="../../../shared/authors/ijungleboy/assets/ijungleboy.jpg" style="width: 100px; float: right">
-<h4 id="daniel-mettler-ijungleboy-ms-mvp-oqtane-core-team">Daniel Mettler, <code>@iJungleboy</code> [MS MVP, Oqtane Core Team]</h4>
-<p>Content Management Expert, Chief Architect of <a href="https://2sxc.org">2sxc</a> and cre8magic.<br>
-Forged in the jungles of Indonesia, lives in Switzerland , loves Oqtane 🩸 &amp; 2sxc 💜.</p>
-<p><a href="https://www.linkedin.com/in/danielmettler/">LinkedIn</a>
-| Discord: @iJungleboy
-| Twitter: @iJungleboy
-| Github: <a href="https://github.com/ijungleboy">@iJungleboy</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/introduction.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/dependency-injection.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -26,7 +26,7 @@ This project has a `src` folder containing...
 1. docfx configurations (`docfx.json` and `filterConfig.yml`)
 1. various json configs so it also works in VS-Code
 
-It also requires the `Oqtane.Framework` project to be in a sibling folder (see [setup](./build.md))
+It also requires the `Oqtane.Framework` project to be in a sibling folder (see [setup](./setup/index.md))
 
 ### The Build Process
 
