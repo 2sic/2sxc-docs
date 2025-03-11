@@ -42,17 +42,20 @@ public class LookUpEngineTests(DataBuilder dataBuilder) {
 }
 ```
 
-## Unit Tests with Dependency Injection and Startup
+## Unit Tests with Dependency Injection and Startup with Scenario
 
 In various cases you may need to setup a specific DI configuration for a test.
 For example, to specify a path or a DB connection.
 In xUnit this is done with **Fixtures**.
 
+We also have a concept of **TestScenarios** which describe what DB and folders to use.
+This is run as a fixture with the `DoFixtureStartup` class.
+
 ```csharp
 [Startup(typeof(StartupTestFullWithDb))]
-public class AccessItemsInAppState(IAppReaderFactory appReaderFactory, ITestOutputHelper output): IClassFixture<FullDbFixtureScenarioBasic>
+public class AccessItemsInAppState(IAppReaderFactory appReaderFactory, ITestOutputHelper output): IClassFixture<DoFixtureStartup<ScenarioBasic>>
 {
-  // ...
+  // Add any specific setup or tests related to TestScenarios here.
 }
 ```
 

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>xUnit Theory Tests - Data-Driven | 2sxc 19 for Dnn and Oqtane </title>
+      <title>xUnit Theory Tests - Using Files | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="xUnit Theory Tests - Data-Driven | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="xUnit Theory Tests - Using Files | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/theory.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/tests-with-files.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,90 +100,64 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Contribute.Tests.Theory">
-<h1 id="xunit-theory-tests---data-driven">xUnit Theory Tests - Data-Driven</h1>
+        <article data-uid="Abyss.Contribute.Tests.TestsWithFiles">
+<h1 id="xunit-theory-tests---using-files">xUnit Theory Tests - Using Files</h1>
 
 <p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
-<h2 id="theory-for-data-driven-tests"><code>Theory</code> for Data-Driven Tests</h2>
-<p>Note that data-driven simply means that objects / lists of tests are run.</p>
-<p>We are basically using the recommendations from
-<a href="https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/">https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/</a></p>
-<h2 id="example-with-inlinedata">Example with InlineData</h2>
-<pre><code class="lang-csharp">[Theory]
-[InlineData(1, 2, 3)]
-[InlineData(2, 3, 5)]
-[InlineData(3, 4, 7)]
-public void ShouldCalculateCorrectly(int a, int b, int expected)
+<h2 id="using-files-in-tests">Using Files in Tests</h2>
+<p>In some situations we need to read files to setup a test.
+This is how you can do it, in most scenarios.</p>
+<ol>
+<li>Place the files in a folder that is accessible by the test runner.</li>
+<li>Use the appropriate methods to read these files during the test setup.</li>
+<li>Ensure that your tests clean up any resources after execution.</li>
+</ol>
+<p>Example</p>
+<p>The project <code>ToSic.Eav.StartupTests</code> has a folder <code>ScenarioData</code> that contains various test files for different scenarios.</p>
+<p>The csproj file has a configuration to copy these files into the bin folder when compiling, like this:</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;!-- Copy ScenarioData to bin folder for reviewing during tests --&gt;
+  &lt;None
+    Include=&quot;ScenarioData\**&quot;
+    CopyToOutputDirectory=&quot;PreserveNewest&quot;
+    LinkBase=&quot;ScenarioData\&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>We have a helper class called <code>TestFiles</code> which helps us find the bin folder and attach the full folder path to the file name.</p>
+<pre><code class="lang-csharp">using System.Reflection;
+
+namespace ToSic.Eav.Testing;
+
+public static class TestFiles
 {
-  var result = a + b;
-  Equal(expected, result);
+    public static string GetTestPath(string relativePath)
+    {
+        var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().Location);
+        var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
+        var dirPath = Path.GetDirectoryName(codeBasePath);
+        return Path.Combine(dirPath, relativePath);
+    }
 }
 </code></pre>
-<h2 id="example-with-memberdata">Example with MemberData</h2>
-<p>This example uses <code>[MemberData]</code> to provide the data for the test.</p>
-<pre><code class="lang-csharp">using ToSic.Eav.Apps;
-using ToSic.Eav.Testing;
+<p>We can then use this to load the files as needed and do our work with them.
+The following example uses this folder to create a <code>TestScenario</code> with this folder:</p>
+<pre><code class="lang-csharp">using ToSic.Eav.Testing;
+using ToSic.Eav.Testing.Scenarios;
 
 namespace ToSic.Eav.ConfigurationOverride;
 
-// TODO: These tests seem to not have worked for a long time
-// Probably the setup isn't happening first.
-// It appears that there should be some override settings which should be used as well, which are not applied here
-// Needs some time to restore functionality
-
-[Startup(typeof(StartupTestFullWithDb))]
-public class GlobalConfigurationOverride(IAppReaderFactory appReaderFactory)
-    // the fixture will also load the resources
-    : IClassFixture&lt;DoFixtureStartup&lt;ScenarioOverrideFancybox3&gt;&gt;
+/// &lt;summary&gt;
+/// Special scenario which has a configuration to override the Fancybox3 Web Resources
+/// &lt;/summary&gt;
+public record ScenarioOverrideFancybox3 : ScenarioBasic
 {
-    public record TestData(string Name, Guid Guid, bool Expected);
-
-    public static TheoryData&lt;TestData&gt; GenerateTests =&gt;
-    [
-        new(&quot;Fancybox4&quot;, new(&quot;3356ad17-91ce-4814-83c1-9f527697391a&quot;), false),
-        new(&quot;Fancybox3&quot;, new(&quot;4b9ef331-480a-4a38-86f1-a580f8345677&quot;), true)
-    ];
-
-    private const string HtmlField = &quot;Html&quot;;
-    private const string TestStringInOverrideFancybox3 = &quot;test-is-override&quot;;
-
-    [Theory]
-    [MemberData(nameof(GenerateTests))]
-    public void ResourceExistsOnce(TestData specs) =&gt;
-        Single(GetEntitiesOfGuid(specs.Guid));
-
-    // TODO: @STV - this seems to fail, it appears that the normal data isn't loaded, only system-custom ?
-    /// &lt;summary&gt;
-    /// This is quite a complex test
-    /// - There is an entity in App_Data/system-custom with the same guid as the fancybox3 WebResource
-    /// - It has an additional string containing &quot;test-is-override&quot;
-    /// - On load, it should _replace_ the original item
-    /// - and make sure it's used instead
-    /// &lt;/summary&gt;
-    [Theory]
-    [MemberData(nameof(GenerateTests))]
-    public void ResourceHtmlContainsText(TestData specs)
-    {
-        var html = GetEntitiesOfGuid(specs.Guid).First().GetTac&lt;string&gt;(HtmlField);
-        Equal(specs.Expected, html.Contains(TestStringInOverrideFancybox3));
-    }
-
-    private List&lt;IEntity&gt; GetEntitiesOfGuid(Guid resourceGuid)
-    {
-        var primaryApp = appReaderFactory.GetSystemPreset();
-
-        // Verify there is only one with this guid
-        var entities = primaryApp.List
-            .Where(e =&gt; e.EntityGuid == resourceGuid)
-            .ToList();
-        return entities;
-    }
+    public override string GlobalDataCustomFolder =&gt; TestFiles.GetTestPath(&quot;ScenarioData\\OverrideFancybox3&quot;) + $&quot;\\{ScenarioConstants.DevMaterialsEnd}&quot;;
 }
 </code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/theory.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/tests-with-files.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

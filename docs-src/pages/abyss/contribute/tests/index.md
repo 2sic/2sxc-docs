@@ -118,11 +118,8 @@ public class CompressorTests(ITestOutputHelper output)
     1. ✅ `ToSic.Eav.TokenEngine.Tests`
     1. ✅ `ToSic.Eav.Core.TestsBasic` (basic tests)
     1. ✅ `ToSic.Eav.Data.Tests` (data tests)
-    1. ✅ `ToSic.Eav.StartupTests` (full tests) - 90% ⚠️
-
-WIP
-
-* `ToSic.Eav.DataSources` - being reworked into
-  * ✅ `ToSic.Eav.DataSource.TestHelpers`
-  * ✅ `ToSic.Eav.DataSource.Tests` (unit tests)
-  * ✅ `ToSic.Eav.DataSource.DbTests` (system tests)
+    1. ✅ `ToSic.Eav.StartupTests` (full tests)
+1. ✅ `ToSic.Eav.DataSources` - 100%
+    1. ✅ `ToSic.Eav.DataSource.TestHelpers`
+    1. ✅ `ToSic.Eav.DataSource.Tests` (unit tests)
+    1. ✅ `ToSic.Eav.DataSource.DbTests` (system tests)

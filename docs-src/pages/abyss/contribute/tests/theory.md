@@ -33,4 +33,4 @@ public void ShouldCalculateCorrectly(int a, int b, int expected)
 
 This example uses `[MemberData]` to provide the data for the test.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.StartupTests/Configuration/GlobalConfigurationOverride.cs)]
+[!code-csharp[](../../../../../../eav-server/ToSic.Eav.StartupTests/ConfigurationOverride/GlobalConfigurationOverride.cs)]
