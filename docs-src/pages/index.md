@@ -1,7 +1,7 @@
 
 <img src="../assets/logos/vcurrent/500.png" width="150px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v19.03.00 LTS
+# 2sxc and EAV Docs v19.03.02 LTS
 
 This is the technical documentation for 2sxc and it's parts such as the EAV system.
 
@@ -11,18 +11,18 @@ This is the technical documentation for 2sxc and it's parts such as the EAV syst
 
 > [!TIP]
 > 2sxc is a CMS- and Meta-Plugin for [Dnn ☢️](xref:Abyss.Platforms.Dnn.Index) and [Oqtane 🩸](xref:Abyss.Platforms.Oqtane.Index).  
-> In many ways it's a lot like Elementor for Wordpress.
+> In many ways it's a lot like Elementor for WordPress.
 
 It makes content editing fun and easy, while giving the designer full control.
 
 * So it's an open-source Enterprise Content Management System
-* the designer and developer can define fields, layout, relationships and more
-* the editor can then create pages, add content, manage images and more without breaking the design
+* The designer and developer can define fields, layout, relationships and more
+* The editor can then create pages, add content, manage images and more without breaking the design
 
 2sxc is used to provide web-site-builder functionality.
 It has a simple **Content** mode where users just add images, designed text/image blocks, links etc.
-Then there's the sophisticated **App** mode, where user add standalone functional apps like blogs, galleries and more.
-Most apps are on github and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
+Then there's the sophisticated **App** mode, where users add standalone functional apps like blogs, galleries and more.
+Most apps are on GitHub and can be downloaded from the [app-catalog](https://2sxc.org/en/apps).
 
 ## 2sxc is a Low-Code Application Framework & CMF
 
@@ -30,11 +30,11 @@ Most apps are on github and can be downloaded from the [app-catalog](https://2sx
 So you can extend on existing building blocks to create new functionality, or you can build your own from scratch.
 
 * It's a dynamic data system, where you can define your own data-structures
-* it's a very cool EAV (Entity-Attribute-Value) data-management system
-* it's extensible DataSource system let's you add custom logic and integrate anything
-* it's programmable forms allow you to customize the editing experience
-* and it's a headless REST API.
-* and it's 1000x more than you think.
+* It's a very cool EAV (Entity-Attribute-Value) data-management system
+* It's extensible DataSource system lets you add custom logic and integrate anything
+* It's programmable forms allow you to customize the editing experience
+* It's a headless REST API.
+* It's 1000x more than you think.
 
 
 ## Where to Start

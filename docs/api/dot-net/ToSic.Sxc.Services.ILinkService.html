@@ -197,7 +197,7 @@ public interface ILinkService : ICanDebug</code></pre>
 
   <h3 id="ToSic_Sxc_Services_ILinkService_Image_System_String_System_Object_System_Object_ToSic_Lib_Coding_NoParamOrder_ToSic_Sxc_Data_IField_System_Object_System_Object_System_Object_System_String_System_String_System_String_System_Object_System_String_System_Object_" data-uid="ToSic.Sxc.Services.ILinkService.Image(System.String,System.Object,System.Object,ToSic.Lib.Coding.NoParamOrder,ToSic.Sxc.Data.IField,System.Object,System.Object,System.Object,System.String,System.String,System.String,System.Object,System.String,System.Object)">
   Image(string, object, object, NoParamOrder, IField, object, object, object, string, string, string, object, string, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/LinkService/ILinkService.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Services/LinkService/ILinkService.cs/#L150"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generate an Image-Resizing link base on presets or custom parameters.<br>
@@ -224,6 +224,7 @@ It will also ensure that the final url is safe, so it will encode umlauts, space
     <dd><ul>
 <li>A settings name such as &quot;Content&quot;, &quot;Lightbox&quot; etc. (new 17.06)</li>
 <li>A standardized Image-Settings object like Settings.Images.Content - see <a href="https://go.2sxc.org/settings">https://go.2sxc.org/settings</a></li>
+<li>An anonymous objects with properties such as <code>width</code>, <code>height</code>, <code>quality</code>, <code>resizeMode</code>, <code>scaleMode</code>, <code>format</code>, <code>aspectRatio</code> etc. like <code>new { width = 100, height = 100 }</code> (new v19.03.03)</li>
 <li>Or a dynamic object containing settings properties (this can also be a merged custom + standard settings)</li>
 <li>Or a specially prepared <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> object containing all settings.
 If this is provided, only <code>factor</code> will still be respected, all other settings like <code>width</code> on this command will be ignored.</li>
@@ -297,6 +298,7 @@ In these cases the height is not applied but the aspectRatio is used, which usua
 <li>Option to use <a class="xref" href="ToSic.Sxc.Images.IResizeSettings.html">IResizeSettings</a> added in v13.03</li>
 <li><code>factor</code> originally didn't influence width/height if provided here, updated it v13.03 to influence that as well</li>
 <li><code>field</code> being added in 13.04, not ready yet</li>
+<li><code>settings</code> enhanced to also support simple anonymous objects in v19.03.03</li>
 </ul>
 </div>
 

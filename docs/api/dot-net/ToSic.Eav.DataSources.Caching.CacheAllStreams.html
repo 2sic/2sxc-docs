@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Eav_DataSources_Caching_CacheAllStreams" data-uid="ToSic.Eav.DataSources.Caching.CacheAllStreams" class="text-break">
-Class CacheAllStreams  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L19"><i class="bi bi-code-slash"></i></a>
+Class CacheAllStreams  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -240,7 +240,7 @@ public class CacheAllStreams : DataSourceBase, IDataSource, IAppIdentity, IZoneI
 
   <h3 id="ToSic_Eav_DataSources_Caching_CacheAllStreams_CacheDurationInSeconds" data-uid="ToSic.Eav.DataSources.Caching.CacheAllStreams.CacheDurationInSeconds">
   CacheDurationInSeconds
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>How long to keep these streams in the cache.
@@ -249,7 +249,7 @@ Default is <code>0</code> - meaning fall back to 1 day</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = 0)]
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = 0, CacheRelevant = false)]
 public int CacheDurationInSeconds { get; }</code></pre>
   </div>
 
@@ -274,7 +274,7 @@ public int CacheDurationInSeconds { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Caching_CacheAllStreams_Out" data-uid="ToSic.Eav.DataSources.Caching.CacheAllStreams.Out">
   Out
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Dictionary of Out-Streams. This is the internal accessor, as usually you'll use this[&quot;name&quot;] instead. <br>
@@ -308,7 +308,7 @@ In rare cases you need the Out, for example to list the stream names in the data
 
   <h3 id="ToSic_Eav_DataSources_Caching_CacheAllStreams_RefreshOnSourceRefresh" data-uid="ToSic.Eav.DataSources.Caching.CacheAllStreams.RefreshOnSourceRefresh">
   RefreshOnSourceRefresh
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If a source-refresh should trigger a cache rebuild</p>
@@ -316,7 +316,7 @@ In rare cases you need the Out, for example to list the stream names in the data
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = true)]
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = true, CacheRelevant = false)]
 public bool RefreshOnSourceRefresh { get; }</code></pre>
   </div>
 
@@ -341,7 +341,7 @@ public bool RefreshOnSourceRefresh { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Caching_CacheAllStreams_ReturnCacheWhileRefreshing" data-uid="ToSic.Eav.DataSources.Caching.CacheAllStreams.ReturnCacheWhileRefreshing">
   ReturnCacheWhileRefreshing
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a cache rebuild async.</p>
@@ -349,7 +349,7 @@ public bool RefreshOnSourceRefresh { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = false)]
+    <pre><code class="lang-csharp hljs">[Configuration(Fallback = false, CacheRelevant = false)]
 public bool ReturnCacheWhileRefreshing { get; }</code></pre>
   </div>
 
@@ -374,7 +374,7 @@ public bool ReturnCacheWhileRefreshing { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Caching/CacheAllStreams.cs/#L18" class="edit-link">Edit this page</a>
         </div>
 
 
