@@ -105,7 +105,29 @@ public class CompressorTests(ITestOutputHelper output)
 }
 ```
 
+## Asserting Types
 
+Types should use `IsType` instead of `IsInstanceOfType`.
+But often it should use `IsAssignableFrom`. There are also `IsNot...` variations.
+
+```csharp
+// Example usage
+Assert.IsType<ExpectedType>(actualValue); // Correct usage
+Assert.IsAssignableFrom<ExpectedBaseType>(actualValue); // Alternative usage
+```
+
+See also <https://xunit.net/xunit.analyzers/rules/xUnit2018>.
+
+## Asserting Errors
+
+When you want to assert that a method throws an exception, you should use `Assert.Throws`.
+
+```csharp
+// Example usage
+Assert.Throws<Exception>(() => { throw new Exception(); });
+```
+
+see also [assert exceptions](https://stackoverflow.com/questions/45017295/assert-an-exception-using-xunit)
 
 
 ## Conversion to xUnit - Progress

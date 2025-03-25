@@ -32,6 +32,8 @@ The csproj file has a configuration to copy these files into the bin folder when
 </ItemGroup>
 ```
 
+Note: it's not sure what the `LinkBase` does - it can probably be removed.
+
 We have a helper class called `TestFiles` which helps us find the bin folder and attach the full folder path to the file name.
 
 [!code-csharp[](../../../../../../eav-server/ToSic.Eav.Core.TestHelpers/Testing/TestFiles.cs)]
