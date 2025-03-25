@@ -188,6 +188,20 @@ Use <code>#if</code> statements for this.</p>
 #endif
 }
 </code></pre>
+<h2 id="asserting-types">Asserting Types</h2>
+<p>Types should use <code>IsType</code> instead of <code>IsInstanceOfType</code>.
+But often it should use <code>IsAssignableFrom</code>. There are also <code>IsNot...</code> variations.</p>
+<pre><code class="lang-csharp">// Example usage
+Assert.IsType&lt;ExpectedType&gt;(actualValue); // Correct usage
+Assert.IsAssignableFrom&lt;ExpectedBaseType&gt;(actualValue); // Alternative usage
+</code></pre>
+<p>See also <a href="https://xunit.net/xunit.analyzers/rules/xUnit2018">https://xunit.net/xunit.analyzers/rules/xUnit2018</a>.</p>
+<h2 id="asserting-errors">Asserting Errors</h2>
+<p>When you want to assert that a method throws an exception, you should use <code>Assert.Throws</code>.</p>
+<pre><code class="lang-csharp">// Example usage
+Assert.Throws&lt;Exception&gt;(() =&gt; { throw new Exception(); });
+</code></pre>
+<p>see also <a href="https://stackoverflow.com/questions/45017295/assert-an-exception-using-xunit">assert exceptions</a></p>
 <h2 id="conversion-to-xunit---progress">Conversion to xUnit - Progress</h2>
 <ol>
 <li>✅ <code>ToSic.Lib</code> - 100%

@@ -123,6 +123,7 @@ This is how you can do it, in most scenarios.</p>
     LinkBase=&quot;ScenarioData\&quot; /&gt;
 &lt;/ItemGroup&gt;
 </code></pre>
+<p>Note: it's not sure what the <code>LinkBase</code> does - it can probably be removed.</p>
 <p>We have a helper class called <code>TestFiles</code> which helps us find the bin folder and attach the full folder path to the file name.</p>
 <pre><code class="lang-csharp">using System.Reflection;
 
@@ -132,7 +133,11 @@ public static class TestFiles
 {
     public static string GetTestPath(string relativePath)
     {
-        var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().Location);
+#if NETFRAMEWORK
+        var codeBaseUrl = new Uri(uriString: Assembly.GetExecutingAssembly().CodeBase);
+#else
+        var codeBaseUrl = new Uri(uriString: Assembly.GetExecutingAssembly().Location);
+#endif
         var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
         var dirPath = Path.GetDirectoryName(codeBasePath);
         return Path.Combine(dirPath, relativePath);
