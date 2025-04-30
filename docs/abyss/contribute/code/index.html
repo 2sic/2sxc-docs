@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>2sxc &amp; EAV Database | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Contribute to 2sxc / EAV - Setup | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="2sxc &amp; EAV Database | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Contribute to 2sxc / EAV - Setup | 2sxc 19 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/db/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,124 +100,38 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Db.Index">
-<h1 id="2sxc--eav-database">2sxc &amp; EAV Database</h1>
+        <article data-uid="Abyss.Contribute.Code.Index">
+<h1 id="contribute-to-2sxc--eav---setup">Contribute to 2sxc / EAV - Setup</h1>
 
-<p>2sxc build on top of the EAV (Entity-Attribute-Value) data model.
-This is a very flexible data model, but it can be complex to understand.</p>
-<p>This section should help you understand how data is stored in the SQL database.</p>
-<div class="NOTE">
-<h5>Note</h5>
-<p>We plan to rename various tables to make more sense, which is the priority of this document.</p>
-</div>
-<p>Things we want to change:</p>
+<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
+<h2 id="pre-requisites">Pre-Requisites</h2>
 <ol>
-<li>Shorter prefix</li>
-<li>no more <code>_</code> underscore in table names</li>
-<li>always singular table names (e.g. <code>TsDynDataEntity</code> instead of <code>TsDynDataEntities</code>)</li>
-<li>Naming more consistent with the API, like <code>ContentType</code> instead of <code>AttributeSet</code></li>
+<li>Visual Studio 2019</li>
+<li>MSBuild Community Tasks 1.4 or newer (required for automatic module packaging if you want to create dnn-module packages of 2sxc to distribute to another dnn) <a href="https://github.com/loresoft/msbuildtasks">https://github.com/loresoft/msbuildtasks</a> or chec <a href="https://www.microsoft.com/en-in/download/details.aspx?id=19372">https://www.microsoft.com/en-in/download/details.aspx?id=19372</a></li>
+<li>SQL Server 2017 or newer</li>
+<li>You have a working DNN 7.4.2 or higher with 2sxc already installed as a module, ideally in c:\projects\2sxc-dnn742\ or something similar</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th>Name till 2sxc 19</th>
-<th>New Name 2sxc v20+</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ToSIC_EAV_...</td>
-<td>TsDynData...</td>
-<td>The prefix convention</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Apps</td>
-<td>TsDynDataApp                ⏹️</td>
-<td>List of Apps in a Zone</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AssignmentObjectTypes</td>
-<td>TsDynDataTargetType         ⏹️</td>
-<td>Metadata Target Types</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Attributes</td>
-<td>TsDynDataAttribute          🔳</td>
-<td>Attribute definitions of ContentType</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributeSets</td>
-<td>TsDynDataContentType        🔳</td>
-<td>ContentType definitions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributesInSets</td>
-<td><em>probably drop this</em>        ⏹️</td>
-<td><em>should be merged with Attributes</em></td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributeTypes</td>
-<td>TsDynDataAttributeType      🔳</td>
-<td>Data types of attributes / values</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ChangeLog</td>
-<td>TsDynDataTransaction        ⏹️</td>
-<td>Timestamps of data changes</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ContextInfo</td>
-<td><em>probably drop this</em>        ⏹️</td>
-<td>Old workaround for older SQL versions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_DataTimeline</td>
-<td>TsDynDataHistory            ⏹️</td>
-<td>Data history of entities</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Dimensions</td>
-<td>TsDynDataDimension          🟫</td>
-<td>Dimension (language) definitions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Entities</td>
-<td>TsDynDataEntity             🟫</td>
-<td>Entities (content items)</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_EntityRelationships</td>
-<td>TsDynDataRelationship       🟫</td>
-<td>Relationships between entities</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Values</td>
-<td>TsDynDataValue              🟫</td>
-<td>Values of entities attributes</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ValuesDimensions</td>
-<td>TsDynDataValueDimension     🟫</td>
-<td>Dimensions assigned to each value</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Zones</td>
-<td>TsDynDataZone               ⏹️</td>
-<td>Zones (like web sites)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="history">History</h2>
-<p>The following tables have existed at some time, but have been removed:</p>
-<ul>
-<li>ToSIC_EAV_Attachments</li>
-</ul>
+<h2 id="basics">Basics</h2>
+<p>The full solution pulls together 4 Github projects, some responsible for server-code, some for UI, some for in-page JS. We separated these to make it easier to contribute to a specific part without worrying about the rest.</p>
+<p>If you only want to contribute to something small - like the languages / translations - then you only need to download that repository.</p>
+<p>In the complex scenarios each project can build into the other target, so if you want to work full-stack and use all of the automation, you will want to put everything in <code>C:\Projects\2sxc\</code>.</p>
+<h2 id="contribute-with-pull-requests">Contribute with Pull-Requests</h2>
+<p>After you have made changes, you cannot just push the code back to our repo, since you probably won't have write permissions on the main repo.
+The correct procedure then is to fork the main repo into yours, and push into your own online repo. Then start a pull request, which we can then process.</p>
+<h2 id="setup-git-repos-to-use">Setup Git Repos to use</h2>
+<p>Use this checklist:</p>
+<iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+<h2 id="git-branches">GIT Branches</h2>
+<p>We use the <a href="https://jeffkreeftmeijer.com/git-flow/">git-flow convention</a>, and you should familiarize yourself with this, to properly work with the branches. As of now, the development-branch is called <code>dev</code> but we'll rename it to <code>develop</code> within the next few days.</p>
+<h2 id="the-eav--2sxc-server-solution">The EAV / 2sxc Server Solution</h2>
+<p>Basically if you open the solution in the <code>eav-server</code> folder, it will open all the EAV server (C#) code and 2sxc code in Visual Studio. This is very important, because if you build anything extensive and rename anything, it guarantees that everything is correctly updated.</p>
+<h2 id="the-2sxc-ui">The 2sxc UI</h2>
+<p>This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp <code>develop</code> it too will auto-build and copy to the live Dnn / 2sxc site.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/db/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

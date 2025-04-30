@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>2sxc &amp; EAV Database | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Manual Changes to the Dev Environment | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="2sxc &amp; EAV Database | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Manual Changes to the Dev Environment | 2sxc 19 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/db/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/changes.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,124 +100,61 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Abyss.Db.Index">
-<h1 id="2sxc--eav-database">2sxc &amp; EAV Database</h1>
+        <article data-uid="Abyss.Contribute.Code.Changes">
+<h1 id="manual-changes-to-the-dev-environment">Manual Changes to the Dev Environment</h1>
 
-<p>2sxc build on top of the EAV (Entity-Attribute-Value) data model.
-This is a very flexible data model, but it can be complex to understand.</p>
-<p>This section should help you understand how data is stored in the SQL database.</p>
-<div class="NOTE">
-<h5>Note</h5>
-<p>We plan to rename various tables to make more sense, which is the priority of this document.</p>
+<p>As we improve 2sxc we also adjust DB and Web.Config settings.
+In a normal installation this will be automatically done, but if you are working with the dev environment, you may need to do this manually.</p>
+<h2 id="version-19-to-20">Version 19 to 20</h2>
+<h3 id="webconfig-changes-2025-04-29">Web.Config Changes 2025-04-29</h3>
+<p>Find the following sections in the web config, comment out the old ones and add the new ones:</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;System.Buffers&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;4.0.4.0&quot; /&gt;
+&lt;/dependentAssembly&gt;     
+
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Bcl.AsyncInterfaces&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;9.0.0.0&quot; /&gt;
+  &lt;codeBase version=&quot;9.0.0.0&quot; href=&quot;bin\2sxc\Microsoft.Bcl.AsyncInterfaces.dll&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; /&gt;
+&lt;/dependentAssembly&gt;
+
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.IO.RecyclableMemoryStream&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
+  &lt;codeBase version=&quot;3.0.1.0&quot; href=&quot;bin\Imageflow\Microsoft.IO.RecyclableMemoryStream.dll&quot; /&gt;
+&lt;/dependentAssembly&gt;
+
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;System.Runtime.CompilerServices.Unsafe&quot; publicKeyToken=&quot;b03f5f7f11d50a3a&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;6.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+</code></pre>
+<h3 id="db-changes-2025-04-30---get-rid-of-table-tosic_eav_contextinfo">DB Changes 2025-04-30 - Get rid of Table ToSIC_EAV_ContextInfo</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Before you do this, create a backup of your DB which you can restore later on.
+Because after doing this, the DB will not be usable in 2sxc 19 any more.</p>
 </div>
-<p>Things we want to change:</p>
-<ol>
-<li>Shorter prefix</li>
-<li>no more <code>_</code> underscore in table names</li>
-<li>always singular table names (e.g. <code>TsDynDataEntity</code> instead of <code>TsDynDataEntities</code>)</li>
-<li>Naming more consistent with the API, like <code>ContentType</code> instead of <code>AttributeSet</code></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Name till 2sxc 19</th>
-<th>New Name 2sxc v20+</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ToSIC_EAV_...</td>
-<td>TsDynData...</td>
-<td>The prefix convention</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Apps</td>
-<td>TsDynDataApp                ⏹️</td>
-<td>List of Apps in a Zone</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AssignmentObjectTypes</td>
-<td>TsDynDataTargetType         ⏹️</td>
-<td>Metadata Target Types</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Attributes</td>
-<td>TsDynDataAttribute          🔳</td>
-<td>Attribute definitions of ContentType</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributeSets</td>
-<td>TsDynDataContentType        🔳</td>
-<td>ContentType definitions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributesInSets</td>
-<td><em>probably drop this</em>        ⏹️</td>
-<td><em>should be merged with Attributes</em></td>
-</tr>
-<tr>
-<td>ToSIC_EAV_AttributeTypes</td>
-<td>TsDynDataAttributeType      🔳</td>
-<td>Data types of attributes / values</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ChangeLog</td>
-<td>TsDynDataTransaction        ⏹️</td>
-<td>Timestamps of data changes</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ContextInfo</td>
-<td><em>probably drop this</em>        ⏹️</td>
-<td>Old workaround for older SQL versions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_DataTimeline</td>
-<td>TsDynDataHistory            ⏹️</td>
-<td>Data history of entities</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Dimensions</td>
-<td>TsDynDataDimension          🟫</td>
-<td>Dimension (language) definitions</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Entities</td>
-<td>TsDynDataEntity             🟫</td>
-<td>Entities (content items)</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_EntityRelationships</td>
-<td>TsDynDataRelationship       🟫</td>
-<td>Relationships between entities</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Values</td>
-<td>TsDynDataValue              🟫</td>
-<td>Values of entities attributes</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_ValuesDimensions</td>
-<td>TsDynDataValueDimension     🟫</td>
-<td>Dimensions assigned to each value</td>
-</tr>
-<tr>
-<td>ToSIC_EAV_Zones</td>
-<td>TsDynDataZone               ⏹️</td>
-<td>Zones (like web sites)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="history">History</h2>
-<p>The following tables have existed at some time, but have been removed:</p>
-<ul>
-<li>ToSIC_EAV_Attachments</li>
-</ul>
+<p>Run this in SQL Server Management Studio to remove the table <code>ToSIC_EAV_ContextInfo</code>:</p>
+<pre><code class="lang-sql">-- Remove Stored Procedures
+DROP PROCEDURE IF EXISTS [dbo].[ToSIC_EAV_ChangeLogSet]
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[ToSIC_EAV_ChangeLogGet]
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[ToSIC_EAV_ChangeLogAdd]
+GO
+
+-- Remove Tables
+DROP TABLE IF EXISTS [dbo].[ToSIC_EAV_ContextInfo]
+GO
+</code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/db/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/changes.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

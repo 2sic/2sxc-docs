@@ -25,7 +25,7 @@ As this documentation-guide is for multiple projects, each one is explained sepa
 Ensure that you have set up the complete 2sxc/EAV development environment.
 This environment should be configured and functional for the development of C# and JavaScript code.
 
-➡️ For more information refer to the [Code](xref:Abyss.Contribute.Code) documentation.
+➡️ For more information refer to the [Code](xref:Abyss.Contribute.Code.Index) documentation.
 
 # [🩸 Oqtane](#tab/oqtane)
 
