@@ -1,13 +1,10 @@
 ---
-uid: Abyss.Contribute.Build
+uid: Abyss.Contribute.Code.Build
 ---
 
 # Build / Compile 2sxc / EAV / JS Parts
 
 _Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
-
-> [!TIP]
-> This is very new documentation and applies to 2sxc 16.06+
 
 ## Concept
 
