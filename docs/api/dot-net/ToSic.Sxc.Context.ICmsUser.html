@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Sxc_Context_ICmsUser" data-uid="ToSic.Sxc.Context.ICmsUser" class="text-break">
-Interface ICmsUser  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L19"><i class="bi bi-code-slash"></i></a>
+Interface ICmsUser  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,7 +119,7 @@ Interface ICmsUser  <a class="header-action link-secondary" title="View source" 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface ICmsUser : IHasMetadata</code></pre>
+public interface ICmsUser : IUserModel, ICanWrapData, IHasMetadata</code></pre>
   </div>
 
 
@@ -128,6 +128,28 @@ public interface ICmsUser : IHasMetadata</code></pre>
 
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_Guid">IUserModel.Guid</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_Created">IUserModel.Created</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_Modified">IUserModel.Modified</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_IsContentEditor">IUserModel.IsContentEditor</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_NameId">IUserModel.NameId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html#ToSic_Sxc_Cms_Users_IUserModel_Roles">IUserModel.Roles</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -139,7 +161,11 @@ public interface ICmsUser : IHasMetadata</code></pre>
   <h2 id="ToSic_Sxc_Context_ICmsUser_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>History</p>
 <ul>
+<li>v12 first release</li>
+<li>v14.08/v14.09 added ca. 5 properties</li>
 <li>v18 enhanced to serialize - so it can be returned by a WebApi Controller</li>
+<li>v20 inheriting from <a class="xref" href="ToSic.Sxc.Cms.Users.IUserModel.html">IUserModel</a> now, so most properties are from there and many properties were added</li>
+<li>v20 especially the ICmsUser.Roles is new and useful</li>
 </ul>
 </div>
 
@@ -152,7 +178,7 @@ public interface ICmsUser : IHasMetadata</code></pre>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_Email" data-uid="ToSic.Sxc.Context.ICmsUser.Email">
   Email
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The user e-mail.
@@ -192,7 +218,7 @@ If anonymous/not logged in, would be an empty string.</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_Id" data-uid="ToSic.Sxc.Context.ICmsUser.Id">
   Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>User Id as int. Works in DNN and Oqtane.</p>
@@ -229,7 +255,7 @@ If anonymous/not logged in, would be an empty string.</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_IsAnonymous" data-uid="ToSic.Sxc.Context.ICmsUser.IsAnonymous">
   IsAnonymous
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the user is anonymous (not logged in)</p>
@@ -258,7 +284,7 @@ If anonymous/not logged in, would be an empty string.</p>
 
 
   <h4 class="section" id="ToSic_Sxc_Context_ICmsUser_IsAnonymous_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>History: This was added fairly late in v14.08</p>
+  <div class="markdown level1 remarks"><p>History: Added in v14.08</p>
 </div>
 
 
@@ -268,7 +294,7 @@ If anonymous/not logged in, would be an empty string.</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_IsContentAdmin" data-uid="ToSic.Sxc.Context.ICmsUser.IsContentAdmin">
   IsContentAdmin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the current user is Site Content Administrator.</p>
@@ -303,7 +329,7 @@ These are not the highest possible privileges</p>
 <li>For the site it would be IsSiteDeveloper</li>
 <li>For the entire system that would be IsSystemAdmin.</li>
 </ul>
-<p>History: New in 2sxc 14.09</p>
+<p>History: Added in 2sxc 14.09</p>
 </div>
 
 
@@ -313,7 +339,7 @@ These are not the highest possible privileges</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_IsSiteAdmin" data-uid="ToSic.Sxc.Context.ICmsUser.IsSiteAdmin">
   IsSiteAdmin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the current user is Site Administrator.</p>
@@ -349,7 +375,7 @@ But these are not the highest possible privileges</p>
 <li>For the site it would be IsSiteDeveloper</li>
 <li>For the entire system that would be IsSystemAdmin.</li>
 </ul>
-<p>History: New in 2sxc 12</p>
+<p>History: Added in 2sxc 12</p>
 </div>
 
 
@@ -359,7 +385,7 @@ But these are not the highest possible privileges</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_IsSiteDeveloper" data-uid="ToSic.Sxc.Context.ICmsUser.IsSiteDeveloper">
   IsSiteDeveloper
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L136"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the current user is Developer on the current site.</p>
@@ -394,7 +420,7 @@ These are almost the highest possible privileges</p>
 <ul>
 <li>For the entire system that would be IsSystemAdmin.</li>
 </ul>
-<p>History: New in 2sxc 12</p>
+<p>History: Added in 2sxc 12</p>
 </div>
 
 
@@ -404,7 +430,7 @@ These are almost the highest possible privileges</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_IsSystemAdmin" data-uid="ToSic.Sxc.Context.ICmsUser.IsSystemAdmin">
   IsSystemAdmin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the current user is System Administrator.</p>
@@ -435,7 +461,7 @@ These are almost the highest possible privileges</p>
   <h4 class="section" id="ToSic_Sxc_Context_ICmsUser_IsSystemAdmin_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Basically this means a user has maximum permissions - incl. the ability
 to install additional components or do dangerous things like edit razor.</p>
-<p>History: New in 2sxc 12</p>
+<p>History: Added in 2sxc 12</p>
 </div>
 
 
@@ -445,7 +471,7 @@ to install additional components or do dangerous things like edit razor.</p>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_Metadata" data-uid="ToSic.Sxc.Context.ICmsUser.Metadata">
   Metadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Metadata of the current user</p>
@@ -481,7 +507,7 @@ IMetadata Metadata { get; }</code></pre>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_Name" data-uid="ToSic.Sxc.Context.ICmsUser.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The username as should be displayed.</p>
@@ -521,7 +547,7 @@ IMetadata Metadata { get; }</code></pre>
 
   <h3 id="ToSic_Sxc_Context_ICmsUser_Username" data-uid="ToSic.Sxc.Context.ICmsUser.Username">
   Username
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The username used on the login.</p>
@@ -561,7 +587,7 @@ IMetadata Metadata { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Context/CmsContext/ICmsUser.cs/#L23" class="edit-link">Edit this page</a>
         </div>
 
 

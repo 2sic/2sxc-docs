@@ -645,20 +645,17 @@ See also <a href="https://github.com/2sic/2sxc/issues/2838">issue</a></p>
 
   <a id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Audience*"></a>
 
-  <h3 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Audience(ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean})">
-  Audience(NoParamOrder, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Context.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Audience(ToSic.Lib.Coding.NoParamOrder,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+  Audience(NoParamOrder, bool?, IEnumerable&lt;string&gt;, IEnumerable&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Context.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Specify an audience for the toolbar - to activate even if the user wouldn't normally see it.
-Normally only people with admin permissions would see a toolbar.
-Specifying the audience will make it appear even if you are not an admin.</p>
-<p>Reasons for this would be to have some special buttons for a certain group of users.</p>
+  <div class="markdown level1 summary"><p>Specify an audience for the toolbar - to activate even if the user wouldn't normally see it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IToolbarBuilder Audience(NoParamOrder protector = default, bool? everyone = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IToolbarBuilder Audience(NoParamOrder protector = default, bool? everyone = null, IEnumerable&lt;string&gt; roleNames = null, IEnumerable&lt;string&gt; denyRoleNames = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -668,6 +665,12 @@ Specifying the audience will make it appear even if you are not an admin.</p>
 </dd>
     <dt><code>everyone</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>default is <code>null</code>, set to true to make everybody see this.</p>
+</dd>
+    <dt><code>roleNames</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>list/array of role names which should <em>also</em> see the toolbar (new v20)</p>
+</dd>
+    <dt><code>denyRoleNames</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>list/array of role names which should <em>never</em> see the toolbar - has precedence over allow (new v20)</p>
 </dd>
   </dl>
 
@@ -683,8 +686,15 @@ Specifying the audience will make it appear even if you are not an admin.</p>
 
 
 
-  <h4 class="section" id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>New in v17.08, for now should be regarded as experimental. Naming might still change.</p>
+  <h4 class="section" id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Normally only people with admin permissions would see a toolbar.
+Specifying the audience will make it appear even if you are not an admin.</p>
+<p>Reasons for this would be to have some special buttons for a certain group of users.</p>
+<ul>
+<li>New in v17.08, experimental</li>
+<li>released v19</li>
+<li>updated with roleNames/denyRoleNames v20</li>
+</ul>
 </div>
 
 
@@ -1346,7 +1356,7 @@ Can also be used to remove the same button on a toolbar which would have it by d
 
   <h3 id="ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Group_System_String_" data-uid="ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.Group(System.String)">
   Group(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Context.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc/Edit/Toolbar/Builder/IToolbarBuilder_Context.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds a button group to the toolbar.

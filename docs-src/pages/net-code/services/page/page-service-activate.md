@@ -16,7 +16,7 @@ For this we have developed a helper called [`turnOn`](xref:JsCode.TurnOn.Index) 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
-## Difference between features and WebResources**
+## Difference between _Features_ and _WebResources_
 
 * **Features** are some system-specific JS/CSS (like jQuery or turnOn)
 * **WebResources** are JS/CSS which are configured in Settings, so you can use the preset WebResources or define your own at the App, Site or Installation. Examples are `fancybox4`, `Bootstrap5` etc.
@@ -42,7 +42,7 @@ Features you can activate as of v12.02
 * `2sxc.JsCore` - the 2sxc standard JS APIs.  
     Replaces `@Edit.Enable(js: true)` _new in v13_
 * `2sxc.JsCms` - 2sxc JS APIs to run commands for edit, etc.  
-    Replaces `@Edit.Enable(api: true)` _new in v13_  
+    Replaces `@Edit.Enable(api: true, forms: true)` _new in v13_  
     Includes `2sxc.JsCore`
 * `2sxc.Toolbars` - _allow_ edit-toolbars on the page.  
     Replaces `@Edit.Enable(js: true, api: true, styles: true)` _new in v13_  
