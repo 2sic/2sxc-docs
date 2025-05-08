@@ -107,68 +107,24 @@
 <h2 id="unit-tests-which-dont-use-dependency-injection">Unit Tests which Don't use Dependency Injection</h2>
 <p>These unit tests are the simplest, and don't need any special setup.
 Example:</p>
-<pre><code class="lang-csharp">public void ManualListOfFunctions()
-{
-    var result = new FunFactString(null,
-        [
-            (&quot;&quot;, _ =&gt; &quot;Hello&quot;),
-            (&quot;&quot;, s =&gt; s + &quot; World&quot;),
-            (&quot;&quot;, s =&gt; s + &quot;!&quot;)
-        ])
-        .CreateResult();
-    Equal(&quot;Hello World!&quot;, result);
-}
-
-</code></pre><h2 id="unit-tests-which-need-basic-dependency-injection-by-namespace">Unit Tests which need Basic Dependency Injection <em>by Namespace</em></h2>
+<div class="WARNING">
+Warning
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="unit-tests-which-need-basic-dependency-injection-by-namespace">Unit Tests which need Basic Dependency Injection <em>by Namespace</em></h2>
 <p>These tests need DI to be setup, but don't need any configuration (such as Database connections).</p>
 <p>First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:</p>
-<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
-using ToSic.Lib.DI.SwitchableServices.Services;
-
-namespace ToSic.Lib.DI.SwitchableServices;
-
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services) =&gt;
-        services
-            .AddTransient&lt;ITestSwitchableService, TestSwitchableFallback&gt;()
-            .AddTransient&lt;ITestSwitchableService, TestSwitchableKeep&gt;()
-            .AddTransient&lt;ITestSwitchableService, TestSwitchableSkip&gt;()
-            .AddLibCore();
-}
-</code></pre>
+<div class="WARNING">
+Warning
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
 <p>The tests in this folder and sub folders will automatically pick up the DI configuration from this startup class.
 This happens through the <strong>namespace</strong>, not through the physical folders.</p>
 <p>This setup allows you to quickly reuse a setup, and specify it to be very specific to all the tests in the same namespace.
 In will then be available as a service in the test.</p>
-<pre><code class="lang-csharp">using ToSic.Lib.DI.SwitchableServices.Services;
-
-namespace ToSic.Lib.DI.SwitchableServices;
-
-public class VerifySwitchableService(ServiceSwitcher&lt;ITestSwitchableService&gt; switcher)
-{
-
-    [Fact]
-    public void FindKeepService() =&gt;
-        Equal(TestSwitchableKeep.Name, switcher.Value.NameId);
-
-    [Fact]
-    public void Has3Services() =&gt;
-        Equal(3, switcher.AllServices.Count);
-
-    [Fact]
-    public void NotCreateBeforeButCreatedAfter()
-    {
-        False(switcher.IsValueCreated, &quot;shouldn't be created at first&quot;);
-        var x = switcher.Value;
-        True(switcher.IsValueCreated, &quot;should be created afterwards&quot;);
-    }
-
-    [Fact]
-    public void FindFallbackByName() =&gt;
-        Equal(TestSwitchableFallback.Name, switcher.ByNameId(TestSwitchableFallback.Name).NameId);
-}
-</code></pre><h2 id="unit-tests-with-basic-dependency-injection-by-attribute">Unit Tests with Basic Dependency Injection <em>by Attribute</em></h2>
+<div class="WARNING">
+Warning
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="unit-tests-with-basic-dependency-injection-by-attribute">Unit Tests with Basic Dependency Injection <em>by Attribute</em></h2>
 <p>Every test class can also specify a specific DI setup by using an attribute.
 This is the preferred method, the syntax is like this:</p>
 <pre><code class="lang-csharp">[Startup(typeof(StartupTestsEavCore))]
