@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Eav_DataSources_Sys_Attributes" data-uid="ToSic.Eav.DataSources.Sys.Attributes" class="text-break">
-Class Attributes  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L20"><i class="bi bi-code-slash"></i></a>
+Class Attributes  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -123,7 +123,7 @@ It provides a lot of core functionality to get configurations, ensure caching an
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
 [VisualQuery(NiceName = &quot;Attributes of Type&quot;, UiHint = &quot;Attributes/fields of a Content-Type&quot;, Icon = &quot;dns&quot;, Type = DataSourceType.System, NameId = &quot;ToSic.Eav.DataSources.System.Attributes, ToSic.Eav.DataSources&quot;, Audience = Audience.Advanced, DynamicOut = false, ConfigurationType = &quot;5461d34d-7dc6-4d38-9250-a0729cc8ead3&quot;, HelpLink = &quot;https://github.com/2sic/2sxc/wiki/DotNet-DataSource-Attributes&quot;)]
-public sealed class Attributes : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
+public sealed class Attributes : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
 
 
@@ -136,6 +136,7 @@ public sealed class Attributes : DataSourceBase, IDataSource, IAppIdentity, IZon
       <div><span class="xref">ServiceBase</span></div>
       <div><span class="xref">ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
       <div><span class="xref">Attributes</span></div>
     </dd>
   </dl>
@@ -160,6 +161,9 @@ public sealed class Attributes : DataSourceBase, IDataSource, IAppIdentity, IZon
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+    </div>
+    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
     </div>
     <div>
@@ -173,9 +177,6 @@ public sealed class Attributes : DataSourceBase, IDataSource, IAppIdentity, IZon
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -227,9 +228,9 @@ Consult the guide to upgrade your custom data sources.</p>
 
   <a id="ToSic_Eav_DataSources_Sys_Attributes__ctor_" data-uid="ToSic.Eav.DataSources.Sys.Attributes.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Sys_Attributes__ctor_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_DataSource_DataSourceBase_MyServices_ToSic_Eav_Data_Build_IDataFactory_" data-uid="ToSic.Eav.DataSources.Sys.Attributes.#ctor(ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.DataSource.DataSourceBase.MyServices,ToSic.Eav.Data.Build.IDataFactory)">
-  Attributes(IAppReaderFactory, MyServices, IDataFactory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_DataSources_Sys_Attributes__ctor_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_DataSource_CustomDataSourceAdvanced_MyServices_" data-uid="ToSic.Eav.DataSources.Sys.Attributes.#ctor(ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.DataSource.CustomDataSourceAdvanced.MyServices)">
+  Attributes(IAppReaderFactory, MyServices)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructs a new Attributes DS</p>
@@ -237,16 +238,14 @@ Consult the guide to upgrade your custom data sources.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Attributes(IAppReaderFactory appReaders, DataSourceBase.MyServices services, IDataFactory dataFactory)</code></pre>
+    <pre><code class="lang-csharp hljs">public Attributes(IAppReaderFactory appReaders, CustomDataSourceAdvanced.MyServices services)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>appReaders</code> <a class="xref" href="ToSic.Eav.Apps.IAppReaderFactory.html">IAppReaderFactory</a></dt>
     <dd></dd>
-    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a></dt>
-    <dd></dd>
-    <dt><code>dataFactory</code> <a class="xref" href="ToSic.Eav.Data.Build.IDataFactory.html">IDataFactory</a></dt>
+    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">MyServices</a></dt>
     <dd></dd>
   </dl>
 
@@ -269,7 +268,7 @@ Consult the guide to upgrade your custom data sources.</p>
 
   <h3 id="ToSic_Eav_DataSources_Sys_Attributes_ContentTypeName" data-uid="ToSic.Eav.DataSources.Sys.Attributes.ContentTypeName">
   ContentTypeName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The content-type name</p>
@@ -302,7 +301,7 @@ public string ContentTypeName { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/Attributes.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 

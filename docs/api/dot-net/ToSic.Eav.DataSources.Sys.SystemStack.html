@@ -105,7 +105,7 @@
 
 
   <h1 id="ToSic_Eav_DataSources_Sys_SystemStack" data-uid="ToSic.Eav.DataSources.Sys.SystemStack" class="text-break">
-Class SystemStack  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class SystemStack  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,7 +119,7 @@ Class SystemStack  <a class="header-action link-secondary" title="View source" h
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
 [VisualQuery(NiceName = &quot;System Stacks&quot;, UiHint = &quot;Settings and/or Resources as a Stack&quot;, Icon = &quot;dns&quot;, Type = DataSourceType.System, NameId = &quot;60806cb1-0c76-4c1e-8dfe-dcec94726f8d&quot;, Audience = Audience.Advanced, ConfigurationType = &quot;f9aca0f0-1b1b-4414-b42e-b337de124124&quot;)]
-public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
+public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
 
 
@@ -132,6 +132,7 @@ public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdent
       <div><span class="xref">ServiceBase</span></div>
       <div><span class="xref">ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
       <div><span class="xref">SystemStack</span></div>
     </dd>
   </dl>
@@ -156,6 +157,12 @@ public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdent
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
+    </div>
+    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
     </div>
     <div>
@@ -169,9 +176,6 @@ public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdent
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -231,29 +235,27 @@ public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdent
 
   <a id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_ToSic_Eav_DataSource_DataSourceBase_MyServices_ToSic_Eav_Apps_Services_AppDataStackService_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_Context_IZoneCultureResolver_ToSic_Eav_Data_Build_IDataFactory_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor(ToSic.Eav.DataSource.DataSourceBase.MyServices,ToSic.Eav.Apps.Services.AppDataStackService,ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.Context.IZoneCultureResolver,ToSic.Eav.Data.Build.IDataFactory)">
-  SystemStack(MyServices, AppDataStackService, IAppReaderFactory, IZoneCultureResolver, IDataFactory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_ToSic_Eav_DataSource_CustomDataSourceAdvanced_MyServices_ToSic_Eav_Apps_Services_AppDataStackService_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_Context_IZoneCultureResolver_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor(ToSic.Eav.DataSource.CustomDataSourceAdvanced.MyServices,ToSic.Eav.Apps.Services.AppDataStackService,ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.Context.IZoneCultureResolver)">
+  SystemStack(MyServices, AppDataStackService, IAppReaderFactory, IZoneCultureResolver)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SystemStack(DataSourceBase.MyServices services, AppDataStackService dataStackService, IAppReaderFactory appReadFac, IZoneCultureResolver zoneCulture, IDataFactory dataFactory)</code></pre>
+    <pre><code class="lang-csharp hljs">public SystemStack(CustomDataSourceAdvanced.MyServices services, AppDataStackService dataStackService, IAppReaderFactory appReadFac, IZoneCultureResolver zoneCulture)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a></dt>
+    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">MyServices</a></dt>
     <dd></dd>
     <dt><code>dataStackService</code> <span class="xref">AppDataStackService</span></dt>
     <dd></dd>
     <dt><code>appReadFac</code> <a class="xref" href="ToSic.Eav.Apps.IAppReaderFactory.html">IAppReaderFactory</a></dt>
     <dd></dd>
     <dt><code>zoneCulture</code> <span class="xref">IZoneCultureResolver</span></dt>
-    <dd></dd>
-    <dt><code>dataFactory</code> <a class="xref" href="ToSic.Eav.Data.Build.IDataFactory.html">IDataFactory</a></dt>
     <dd></dd>
   </dl>
 
@@ -276,7 +278,7 @@ public class SystemStack : DataSourceBase, IDataSource, IAppIdentity, IZoneIdent
 
   <h3 id="ToSic_Eav_DataSources_Sys_SystemStack_AddValues" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.AddValues">
   AddValues
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -308,7 +310,7 @@ public bool AddValues { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sys_SystemStack_Keys" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.Keys">
   Keys
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -340,7 +342,7 @@ public string Keys { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sys_SystemStack_StackNames" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.StackNames">
   StackNames
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -372,7 +374,7 @@ public string StackNames { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Sys/SystemStack.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 
