@@ -45,10 +45,7 @@ The old API will continue to work for a while but show errors in the insight.
 So the previous example would look like this:
 
 ```csharp
-@using ToSic.Sxc.Services;
-// some code
-var renderSvc = GetService<IRenderService>();
-@renderSvc.All(someEntity, field: "AnswerInnerContent", merge: someEntity.Answer)
+@Kit.Render.All(someEntity, field: "AnswerInnerContent", merge: someEntity.Answer)
 ```
 
 ---
@@ -60,6 +57,7 @@ var renderSvc = GetService<IRenderService>();
 * New `IRenderService` introduced in 2sxc 11 and 12
 * Deprecated in 2sxc 13
 * Planned for full removal in 2sxc 14 ca. middle of 2022
+* Finally removed in 2sxc v20 2025-05
 
 ---
 

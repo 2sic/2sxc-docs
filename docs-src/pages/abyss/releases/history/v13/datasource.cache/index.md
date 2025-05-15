@@ -6,7 +6,7 @@ uid: Abyss.Releases.History.V13.DataSource.Cache
 
 **Keywords:** #Deprecated #DataSource
 
-2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
+2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.
 
 Specifically, this feature was removed:
 
@@ -14,8 +14,8 @@ Specifically, this feature was removed:
 
 ## Reason for Removal
 
-These features were removed because the API was misplaced. 
-Unfortunately it was in the original Mobius-Forms so we are giving it a 1 year deprecation, and will be fully removed it v15. 
+These features were removed because the API was misplaced.
+Unfortunately it was in the original Mobius-Forms so we are giving it a 1 year deprecation, and will be fully removed it v15.
 
 
 ## Upgrade to Newer functionality
@@ -31,12 +31,12 @@ files.Add(SaveInAdam(stream: new MemoryStream(data), fileName: file["Name"], con
 ...
 ```
 
-Because of this, you can actually just skip gotting the content-type, and just use the name directly. 
+Because of this, you can actually just skip gotting the content-type, and just use the name directly.
 
-To fix this, just use the `config.ContentTypeName` instead of the `type.Name` OR upgrade to a newer Mobius. 
+To fix this, just use the `config.ContentTypeName` instead of the `type.Name` OR upgrade to a newer Mobius.
 
 If you need the type for other uses, best create an issue on GitHub.
 
 ---
 
-Shortlink to here: https://go.2sxc.org/brc-13-datasource-cache
+Shortlink to here: <https://go.2sxc.org/brc-13-datasource-cache>

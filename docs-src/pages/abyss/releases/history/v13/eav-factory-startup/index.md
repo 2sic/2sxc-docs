@@ -30,6 +30,7 @@ There is no alternative for Dnn 7, so you must either remain on an older 2sxc (v
 * It only ever worked in Dnn, Oqtane never had this feature
 * Removed in 2sxc 13 with the integration of Dnn 9.4 DI - API still exits, but doesn't do anything except for log an error
 * Planned for full removal in 2sxc 14 ca. middle of 2022
+* Finally removed in 2sxc v20 2025-05
 
 ---
 

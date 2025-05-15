@@ -6,7 +6,7 @@ uid: Abyss.Releases.History.V13.Conversion
 
 **Keywords:** #Deprecated #Conversion #DataToDictionary #EntitiesToDictionary
 
-2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
+2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.
 
 Specifically, these features were removed which convert data to a simple JSON:
 
@@ -16,7 +16,7 @@ Specifically, these features were removed which convert data to a simple JSON:
 ## Reason for Removal
 
 These features were removed because they relied on objects which need Dependency Injection, and calling this object directly cannot give us DI.
-These features were rarely used, and newer mechanisms are much more appropriate than that old stuff. 
+These features were rarely used, and newer mechanisms are much more appropriate than that old stuff.
 
 ## History - How it Used to Work
 
@@ -56,4 +56,4 @@ var result = convert.Convert(...);
 
 ---
 
-Shortlink to here: https://go.2sxc.org/brc-13-conversion
+Shortlink to here: <https://go.2sxc.org/brc-13-conversion>

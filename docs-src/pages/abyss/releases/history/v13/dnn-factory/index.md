@@ -6,20 +6,20 @@ uid: Abyss.Releases.History.V13.DnnFactory
 
 **Keywords:** #Deprecated #Factory #Build #DependencyInjection
 
-2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production. 
+2sxc v13 cleans up some historic, deprecated functionality. They were not used much, but if you have code which used this, here's how to fix any code in production.
 
-The `ToSic.Sxc.Dnn.Factory.[various]()` are being deprecated, and will be removed in v14. 
+The `ToSic.Sxc.Dnn.Factory.[various]()` are being deprecated, and will be removed in v14.
 
 ## Reason for Removal
 
-2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow. 
+2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow.
 
-The solution we used was to have static object `ToSic.Sxc.Dnn.Factory` which managed this, but this is actually bad practice and encourages bad code. 
+The solution we used was to have static object `ToSic.Sxc.Dnn.Factory` which managed this, but this is actually bad practice and encourages bad code.
 
-This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data, 
+This was mainly used in WebForms, specifically Skins/Themes to access 2sxc data,
 but we've created a much better replacement using:
 
-* [](xref:ToSic.Sxc.Services.IDynamicCodeService) 
+* [](xref:ToSic.Sxc.Services.IDynamicCodeService)
 * [](xref:ToSic.Sxc.Services.IRenderService)
 
 
@@ -63,11 +63,11 @@ Previously you could write code like this in your ascx Theme:
 
 ## What we Changed
 
-1. In 2sxc 13.00 we integrated our Dependency Injection with the Dnn 9.4+ built-in Dependency Injection. 
-This allows you to get 2sxc services from DI. 
+1. In 2sxc 13.00 we integrated our Dependency Injection with the Dnn 9.4+ built-in Dependency Injection.
+This allows you to get 2sxc services from DI.
 1. In 2sxc 13.02 we created the [](xref:ToSic.Sxc.Services.IDynamicCodeService) which is a replacement for the old Factory.
 
-You must use this from now on. 
+You must use this from now on.
 
 ## Reasons for Change
 
@@ -132,7 +132,8 @@ If you were using this from outside of 2sxc Razor / WebApi, you will need to use
 * Introduced in 2sxc 7 with Dependency Injection based on .net Standard 1.6
 * Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI
 * Planned for full removal in 2sxc 14 ca. middle of 2022
+* Finally removed in 2sxc v20 2025-05
 
 ---
 
-Shortlink to here: https://go.2sxc.org/brc-13-dnn-factory
+Shortlink to here: <https://go.2sxc.org/brc-13-dnn-factory>
