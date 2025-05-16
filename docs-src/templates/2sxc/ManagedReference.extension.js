@@ -13,7 +13,7 @@ exports.preTransform = function (model) {
  */
 exports.postTransform = function (model) {
   /**
-   * Helper function to show the page alert message.
+   * Helper function to show a conditional alert message at the top of the page.
    * Alert types include (Bootstrap classes): success, danger, warning, info, etc.
    */
   function showAlert(message, type) {
@@ -22,29 +22,38 @@ exports.postTransform = function (model) {
     model._page_alert_type = type;
   }
 
-  /* Internal API warning for ToSic.Lib namespace */
-  // Check if the model has a uid property
-  // And if it starts with "ToSic.Lib"
+  /**
+   * Helper function to render an inline alert message within the page content.
+   * Used to prepend alerts directly into markdown.
+   * Alert types include (Bootstrap classes): success, danger, warning, info, etc.
+   */
+  function renderInPageAlert(message, type) {
+    return `<div class="alert alert-${type} d-block" role="alert">
+        ${message}
+      </div>`;
+  }
+
+  /* Internal API warning for the ToSic.Lib namespace */
+  // If the model UID starts with "ToSic.Lib", treat it as internal
   if (model.uid && model.uid.startsWith("ToSic.Lib")) {
     showAlert(`⚠️ This is an internal API - Don't use it!`, "warning");
   }
 
-  /* Internal API warning for internal classes or interfaces based on attribute */
-  // Check if the model has an attributes property
+  /* Internal API warning for internal classes or interfaces based on attributes */
+  // Check if the model has attributes indicating it is internal
   if (
     Array.isArray(model.attributes) &&
-    // Check if any attribute has a type that includes "InternalApi"
     model.attributes.some((attr) => attr.type.includes("InternalApi"))
   ) {
-    // Show a warning alert with dynamic model type (e.g., class, interface)
+    // Display a warning with the specific model type (e.g., class, interface)
     showAlert(
       `⚠️ There's a ${model.type.toLowerCase()} which is part of an internal API - Don't use it!`,
       "warning"
     );
   }
 
-  /* Internal API warning for internal methods based on attribute */
-  // Check if the model has children
+  /* Internal API warning for internal methods based on attributes */
+  // Determine if any method in any type is marked as internal
   const hasInternalApiMethod = model.children?.some(
     (child) =>
       // Check if the child has nested children
@@ -56,12 +65,30 @@ exports.postTransform = function (model) {
       )
   );
 
-  // If an internal API method is found, show a warning alert
+  // If internal methods exist, inject warning alerts into each one
   if (hasInternalApiMethod) {
-    showAlert(
-      "⚠️ There's a method which is part of an internal API - Don't use it!",
-      "warning"
-    );
+    // Inject inline alert into each affected method
+    model.children?.forEach((child) => {
+      // Check if the child has nested children
+      if (Array.isArray(child.children)) {
+        child.children.forEach((method) => {
+          // Check if the method has any InternalApi attribute
+          const isInternal = method.attributes?.some((attr) =>
+            attr.type.includes("InternalApi")
+          );
+
+          // If internal, prepend the alert to the summary content
+          if (isInternal) {
+            // Overwrite the summary with an alert message and add the original summary at the end
+            method.summary =
+              renderInPageAlert(
+                "⚠️ This method is part of an internal API - Don't use it!",
+                "warning"
+              ) + (method.summary || "");
+          }
+        });
+      }
+    });
   }
 
   return model;
