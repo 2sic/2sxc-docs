@@ -12,6 +12,7 @@ exports.preTransform = function (model) {
 
 const internalNamespaces = [
   "ToSic.Lib.",
+  "ToSic.Sys.",
   // "ToSic.Sxc.",
   // "ToSic.Sxc.LookUp.",
   // "ToSic.Sxc.InternalApi.",
@@ -23,21 +24,21 @@ const internalNamespaces = [
  */
 exports.postTransform = function (model) {
 
+  const DefMessageSuffix = "is an internal API. It's documented so you can understand how it works. It can change at any time. Do not use it in your code.";
+
   /* Internal API warning for the ToSic.Lib namespace */
   // If the model UID starts with "ToSic.Lib", treat it as internal
-  if (tools.modelNamespaceStartsWithAny(model, internalNamespaces)) {
-    tools.addAlert(model, `⚠️ This is an internal API. Do not use it in your code.`, "warning");
+  const hasInternalNamespace = tools.modelNamespaceStartsWithAny(model, internalNamespaces)
+    || tools.modelNamespaceContainsAny(model, [".Internal."]);
+  if (hasInternalNamespace) {
+    tools.addAlert(model, `⚠️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
   }
 
   /* Internal API warning for internal classes or interfaces based on attributes */
   // Check if the model has attributes indicating it is internal
   if (tools.modelIsDecoratedWith(model, "InternalApi")) {
-    // Display a warning with the specific model type (e.g., class, interface)
-    tools.addAlert(
-      model,
-      `⚠️ There's a ${model.type.toLowerCase()} which is part of an internal API - Don't use it!`,
-      "warning"
-    );
+    // Display a warning with the specific model type (e.g., "This class is...", "This interface is...")
+    tools.addAlert(model, `⚠️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
   }
 
   // If internal methods exist, inject warning alerts into each one
@@ -48,18 +49,14 @@ exports.postTransform = function (model) {
       if (Array.isArray(child.children)) {
         child.children.forEach((method) => {
           // Check if the method has any InternalApi attribute
-          const isInternal = method.attributes?.some((attr) =>
-            attr.type.includes("InternalApi")
+          const isInternal = method.attributes?.some(
+            (attr) => attr.type.includes("InternalApi")
           );
 
           // If internal, prepend the alert to the summary content
           if (isInternal) {
             // Overwrite the summary with an alert message and add the original summary at the end
-            method.summary =
-              tools.createHtmlAlert(
-                "⚠️ This is an internal API. It's documented to better understand the functionality. Do not use it in your code.",
-                "warning"
-              ) + (method.summary || "");
+            method.summary = tools.createHtmlAlert(`⚠️ This ${DefMessageSuffix}`, "warning") + (method.summary || "");
           }
         });
       }

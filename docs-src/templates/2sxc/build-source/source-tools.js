@@ -6,12 +6,26 @@ function modelNamespaceStartsWith(model, namespace) {
   return model.uid.startsWith(namespace);
 }
 
+/**
+ * If the model UID (full namespace) starts with "ToSic.Lib" or other things, treat it as internal
+ */
 function modelNamespaceStartsWithAny(model, namespaces) {
   if (!model || !model.uid)
     return false;
 
   // Check if the model's UID starts with any of the specified namespaces
   return namespaces.some((namespace) => model.uid.startsWith(namespace));
+}
+
+/**
+ * If the model UID (full namespace) contains with "Internal" or other things, treat it as internal
+ */
+function modelNamespaceContainsAny(model, namespaces) {
+  if (!model || !model.uid)
+    return false;
+
+  // Check if the model's UID contains any of the specified namespaces
+  return namespaces.some((namespace) => model.uid.includes(namespace));
 }
 
 function modelIsDecoratedWith(model, decoratorName) {
@@ -36,9 +50,8 @@ function hasMemberWithAttribute(model, memberType) {
         attr.type.includes(memberType)
       )
   );
-  if (hasInternalApiMethod) {
-    console.warn("⚠️ Internal API method found in model:", model.uid);
-  }
+  // if (hasInternalApiMethod)
+  //   console.warn("⚠️ Internal API method found in model:", model.uid);
   return hasInternalApiMethod;    
 }
 /** Internal API warning for internal methods based on attributes */
@@ -69,6 +82,7 @@ function createHtmlAlert(message, type) {
 exports = {
   modelNamespaceStartsWith,
   modelNamespaceStartsWithAny,
+  modelNamespaceContainsAny,
   modelIsDecoratedWith,
   hasMemberWithAttribute,
   hasInternalMember,
