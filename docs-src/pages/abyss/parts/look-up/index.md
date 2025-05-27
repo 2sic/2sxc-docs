@@ -18,7 +18,7 @@ Many things in the EAV and 2sxc require it to look up parameters. Examples could
 1. An **Id** from the URL Parameters
   to show details about this id
 
-This is done using [Tokens](xref:Abyss.Parts.LookUp.Tokens) which look like `[QueryString:Id]`. 
+This is done using [Tokens](xref:Abyss.Parts.LookUp.Tokens) which look like `[QueryString:Id]`.
 To achieve this 2sxc has three parts:
 
 1. [Tokens](xref:Abyss.Parts.LookUp.Tokens) which parses the placeholders
@@ -26,8 +26,8 @@ To achieve this 2sxc has three parts:
 1. ...using [LookUp Sources](xref:Abyss.Parts.LookUp.Sources) to really resolve the values.
 
 > [!TIP]
-> The LookUp System is used in [Queries](xref:Basics.Query.Index) and [Token Templates](xref:Basics.Server.Render.Tokens.Index). 
-> But since Token-Templates are fairly trivial, we recommand that you only use Tokens for Queries 
+> The LookUp System is used in [Queries](xref:Basics.Query.Index) and [Token Templates](xref:Basics.Server.Render.Tokens.Index).
+> But since Token-Templates are fairly trivial, we recommand that you only use Tokens for Queries
 > and instead create your Templates using [Razor](xref:Basics.Server.Render.Razor.Index).
 
 ## Example Without LookUp
@@ -69,9 +69,9 @@ What happens now is as follows:
 
 
 
-For example, when a Query is created, it may need to know the current PortalId or the current time, to properly filter/sort something. 
+For example, when a Query is created, it may need to know the current PortalId or the current time, to properly filter/sort something.
 
-This is achieved through 2 special object types, the [](xref:ToSic.Eav.LookUp).ILookUp and [](xref:ToSic.Eav.LookUp).ILookUpEngine, both in the [](xref:ToSic.Eav.LookUp) namespace. 
+This is achieved through 2 special object types, the [](xref:ToSic.Lib.LookUp.ILookUp) and [](xref:ToSic.Lib.LookUp.Engines.ILookUpEngine), both in the [](xref:ToSic.Lib.LookUp) namespace.
 
 
 
@@ -79,7 +79,7 @@ This is achieved through 2 special object types, the [](xref:ToSic.Eav.LookUp).I
 
 * [](xref:Abyss.Parts.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
-* [](xref:ToSic.Eav.LookUp)
+* [](xref:ToSic.Lib.LookUp)
 * [](xref:ToSic.Sxc.LookUp)
 * [](xref:ToSic.Sxc.Dnn.LookUp)
 

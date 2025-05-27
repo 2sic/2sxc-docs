@@ -94,6 +94,7 @@ exports.data = {
   // "ToSic.Eav.ImportExport.Json.Basic": prioInternal,
   // "ToSic.Eav.ImportExport": prioData,
   "ToSic.Eav.LookUp": prioInternal,
+  "ToSic.Lib.LookUp": prioInternal,
   "ToSic.Eav.Metadata": prioMeta,
   "ToSic.Eav.Repositories": prioInternal,
   "ToSic.Eav.Run": prioInternal,

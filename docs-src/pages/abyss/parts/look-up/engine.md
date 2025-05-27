@@ -11,8 +11,8 @@ uid: Abyss.Parts.LookUp.Engine
 
 The **LookUp Engine** is responsible for getting values. It will use **LookUp** sources to resolve the values.
 
-* The LookUp System is in the [](xref:ToSic.Eav.LookUp) namespace
-* The LookUp Engine is an [](xref:ToSic.Eav.LookUp.ILookUpEngine)
+* The LookUp System is in the [](xref:ToSic.Lib.LookUp) namespace
+* The LookUp Engine is an [](xref:ToSic.Lib.LookUp.Engines.ILookUpEngine)
 
 > [!WARNING]
 > This is very technical stuff, you usually don't need to know this. We're just including it for completeness sake.
@@ -36,9 +36,9 @@ Usually LookUp Engines will receive a long list (Dictionary) of things to look u
 
 ## C# and Dependency Injection
 
-LookUp Engines all implement the [](xref:ToSic.Eav.LookUp.ILookUpEngine) interface and should inherit the `LookUpEngine` object.
+LookUp Engines all implement the [](xref:ToSic.Lib.LookUp.Engines.ILookUpEngine) interface and should inherit the `LookUpEngine` object.
 
-LookUpEngine objects are provided with DependencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Eav.LookUp.ILookUpEngineResolver).
+LookUpEngine objects are provided with DependencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Lib.LookUp.Engines.ILookUpEngineResolver).
 
 
 
@@ -47,7 +47,7 @@ LookUpEngine objects are provided with DependencyInjection. The system that gets
 * [](xref:Abyss.Parts.LookUp.Index)
 * [](xref:Abyss.Parts.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
-* [](xref:ToSic.Eav.LookUp)
+* [](xref:ToSic.Lib.LookUp)
 * [](xref:ToSic.Sxc.LookUp)
 * [](xref:ToSic.Sxc.Dnn.LookUp)
 

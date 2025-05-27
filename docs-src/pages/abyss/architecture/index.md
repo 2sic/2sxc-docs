@@ -45,7 +45,7 @@ Inside the EAV you'll find a whole ecosystem of parts which make the magic happe
 #### Infrastructure
 
 This is very internal stuff, to make sure everything happens. You will usually not go here. Most if it is also not public API.
-Areas of interest may be the [](xref:ToSic.Lib.Logging) or [](xref:ToSic.Eav.LookUp).
+Areas of interest may be the [](xref:ToSic.Lib.Logging) or [](xref:ToSic.Lib.LookUp).
 
 #### Core Data Models
 
