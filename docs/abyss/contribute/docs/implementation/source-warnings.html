@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Adding Warnings to the Source Body | 2sxc 19 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Adding Warnings to the Source Body | 2sxc 19 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/source-warnings.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Docs.Implementation.SourceWarnings">
+
+<div class="TIP">
+<h5>Tip</h5>
+<p>The docs as explained here are used in multiple projects, but documented only once for better maintenance.
+When applying this to other projects, remember that some things such as the name, repository, or paths are a bit different.</p>
+<ul>
+<li>🌴 2sxc: <a href="https://github.com/2sic/2sxc-docs">Docs Repo</a>, <a href="https://docs.2sxc.org">Docs Live</a></li>
+<li>🩸 Oqtane: <a href="https://github.com/oqtane/oqtane.docs/">Docs Repo</a>, <a href="https://docs.oqtane.org">Docs Live</a></li>
+<li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
+</ul>
+</div>
+<h1 id="adding-warnings-to-the-source-body">Adding Warnings to the Source Body</h1>
+<p>To be certain that users can see which APIs are internal, we have a system that adds warnings under various conditions:</p>
+<ul>
+<li>If the class/interface is from an internal namespace, such as <code>ToSic.Sys</code></li>
+<li>If the class/interfaces has an attribute <code>[InternalApi_DoNotUse_MayChangeWithoutNotice]</code></li>
+<li>If the class/interface has members with the attribute <code>[InternalApi_DoNotUse_MayChangeWithoutNotice]</code></li>
+</ul>
+<p>In these cases, a warning is added to the top of the source body, which is visible in the API documentation. This helps users understand that these APIs are not intended for public use and may change without notice.</p>
+<p>This is how it's implemented:</p>
+<ol>
+<li><p>The script <code>/templates/[project]/ManagedReference.extension.js</code> is run by docfx when building the API documentation. We customized it to do the following...</p>
+</li>
+<li><p>There it will do various checks to see if the class/interface is internal, and if so, it will add a warning to the top of the source body.</p>
+</li>
+<li><p>The warnings are added as plain html to the <code>model._page_alert</code> (this is done in the <code>source-tools.js</code> file).</p>
+</li>
+<li><p>The main template <code>/templates/[project]/layout/_master.tmpl</code> will then render this alert in the source body using <code>{{{_page_alert}}}</code>.</p>
+</li>
+</ol>
+<hr>
+<br>
+<div style="font-style: italic; font-size: small;">Main Author</div>
+<img src="../../../../shared/authors/ijungleboy/assets/ijungleboy.jpg" style="width: 100px; float: right">
+<h4 id="daniel-mettler-ijungleboy-ms-mvp-oqtane-core-team">Daniel Mettler, <code>@iJungleboy</code> [MS MVP, Oqtane Core Team]</h4>
+<p>Content Management Expert, Chief Architect of <a href="https://2sxc.org">2sxc</a> and cre8magic.<br>
+Forged in the jungles of Indonesia, lives in Switzerland , loves Oqtane 🩸 &amp; 2sxc 💜.</p>
+<p><a href="https://www.linkedin.com/in/danielmettler/">LinkedIn</a>
+| Discord: @iJungleboy
+| Twitter: @iJungleboy
+| Github: <a href="https://github.com/ijungleboy">@iJungleboy</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/implementation/source-warnings.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -100,6 +100,8 @@
           <nav id="breadcrumb"></nav>
         </div>
 
+        
+
         <article data-uid="Abyss.Parts.LookUp.Sources">
 
 <div style="width: 40px; height: 40px; overflow: hidden; float: right">
@@ -279,7 +281,7 @@ These work both on Dnn and Oqtane (2sxc 12+)
 <li><a class="xref" href="lookup-settings.html">Settings</a></li>
 </ol>
 <h2 id="what-is-a-lookup-source-technical-">What is a LookUp Source (technical ⚠)</h2>
-<p><strong>LookUp Sources</strong> are <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> objects and have a <code>Name</code> like like <code>QueryString</code>, <code>Module</code>, <code>Portal</code> etc.</p>
+<p><strong>LookUp Sources</strong> are <a class="xref" href="../../../api/dot-net/ToSic.Lib.LookUp.ILookUp.html">ILookUp</a> objects and have a <code>Name</code> like like <code>QueryString</code>, <code>Module</code>, <code>Portal</code> etc.</p>
 <p>Each one is capable of retrieving values like <code>Id</code> or <code>DefaultPage</code>.</p>
 <p>So the <strong>Engine</strong> will ask the specific source for the expected value and the source will try to find it.
 If it has an answer, it will return that.
@@ -289,7 +291,7 @@ If it doesn't find anything it will return null and let the Engine take care of 
 <p>Everything is lazy, so these objects are only accessed and populated if the parameter is actually needed.
 This results in great performance.</p>
 </div>
-<p>All LookUp objects implement the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.ILookUp.html">ILookUp</a> interface and inherit the <a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.LookUpBase.html">LookUpBase</a> object.</p>
+<p>All LookUp objects implement the <a class="xref" href="../../../api/dot-net/ToSic.Lib.LookUp.ILookUp.html">ILookUp</a> interface and inherit the <a href="xref:ToSic.Lib.LookUp.LookUpBase"></a> object.</p>
 <h2 id="internal-lookup-objects-technical-">Internal LookUp Objects (technical ⚠)</h2>
 <p>Just to give you an idea of the power of LookUp objects, here are some in use:</p>
 <ol>
@@ -298,7 +300,7 @@ This results in great performance.</p>
 </ol>
 <!-- 1. [](xref:ToSic.Eav.LookUp.LookUpInMetadata) - will get values from Metadata of something -->
 <ol>
-<li><a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.LookUpInLookUps.html">LookUpInLookUps</a> - will look up values in various attached LookUp objects</li>
+<li><a href="xref:ToSic.Lib.LookUp.LookUpInLookUps"></a> - will look up values in various attached LookUp objects</li>
 <li><a href="xref:ToSic.Eav.LookUp.LookUpInDataTarget"></a> - will look up a value from an <code>In</code> stream of a DataSource</li>
 <li><code>ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess</code> - will look up stuff in Dnn specific PropertyAccess objects, which are similar to LookUp objects</li>
 <li><a class="xref" href="../../../api/dot-net/ToSic.Eav.LookUp.LookUpInEntity.html">LookUpInEntity</a> - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine</li>

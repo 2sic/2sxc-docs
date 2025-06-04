@@ -100,12 +100,18 @@
           <nav id="breadcrumb"></nav>
         </div>
 
+        <div class="alert alert-warning d-block" role="alert">
+      ℹ️ This interface is an internal API and can change at any time. 
+  It's documented so you can understand how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
+    </div>
+
         <article data-uid="ToSic.Lib.Logging.ILogCall">
 
 
 
   <h1 id="ToSic_Lib_Logging_ILogCall" data-uid="ToSic.Lib.Logging.ILogCall" class="text-break">
-Interface ILogCall  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Logging/LogCall/ILogCall.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Interface ILogCall  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -121,7 +127,7 @@ It is usually created in the beginning of the call and closed on various return 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface ILogCall : ILog</code></pre>
+public interface ILogCall : ILog, IHasLog</code></pre>
   </div>
 
 
@@ -135,6 +141,9 @@ public interface ILogCall : ILog</code></pre>
     <dd>
     <div>
       <a class="xref" href="ToSic.Lib.Logging.ILog.html#ToSic_Lib_Logging_ILog_NameId">ILog.NameId</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Lib.Logging.IHasLog.html#ToSic_Lib_Logging_IHasLog_Log">IHasLog.Log</a>
     </div>
   </dd></dl>
 
@@ -169,7 +178,7 @@ public interface ILogCall : ILog</code></pre>
       <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_">ILogCallExtensions.Done(ILogCall?)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall?, string)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall?, string?)</a>
   </div>
   <div>
       <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done__1_ToSic_Lib_Logging_ILogCall___0_">ILogCallExtensions.Done&lt;T&gt;(ILogCall?, T)</a>
@@ -191,7 +200,7 @@ public interface ILogCall : ILog</code></pre>
 
   <h3 id="ToSic_Lib_Logging_ILogCall_Entry" data-uid="ToSic.Lib.Logging.ILogCall.Entry">
   Entry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Logging/LogCall/ILogCall.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The main log-entry for this call, which will also receive the final value at the end of the call.</p>
@@ -219,43 +228,11 @@ public interface ILogCall : ILog</code></pre>
 
 
 
-  <a id="ToSic_Lib_Logging_ILogCall_Log_" data-uid="ToSic.Lib.Logging.ILogCall.Log*"></a>
-
-  <h3 id="ToSic_Lib_Logging_ILogCall_Log" data-uid="ToSic.Lib.Logging.ILogCall.Log">
-  Log
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Logging/LogCall/ILogCall.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reference to the parent log.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ILog? Log { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="ToSic.Lib.Logging.ILog.html">ILog</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="ToSic_Lib_Logging_ILogCall_Timer_" data-uid="ToSic.Lib.Logging.ILogCall.Timer*"></a>
 
   <h3 id="ToSic_Lib_Logging_ILogCall_Timer" data-uid="ToSic.Lib.Logging.ILogCall.Timer">
   Timer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Logging/LogCall/ILogCall.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A stopwatch object which is used for timing purposes on this call.</p>
@@ -287,7 +264,7 @@ public interface ILogCall : ILog</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Logging/LogCall/ILogCall.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

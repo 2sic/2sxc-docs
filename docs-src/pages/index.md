@@ -3,7 +3,7 @@
 
 # 2sxc and EAV Docs v20 (pre-release)
 
-This is the technical documentation for 2sxc and it's parts such as the EAV system.
+This is the technical documentation for 2sxc and its EAV system.
 
 _This is the pre-release documentation for 2sxc v20._  
 _v20 will have some breaking changes like a new DB schema, so the release will take some time._

@@ -24,21 +24,23 @@ const internalNamespaces = [
  */
 exports.postTransform = function (model) {
 
-  const DefMessageSuffix = "is an internal API. It's documented so you can understand how it works. It can change at any time. Do not use it in your code.";
+  const DefMessageSuffix = `is an internal API and can change at any time. 
+  It's documented so you can understand how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.`;
 
   /* Internal API warning for the ToSic.Lib namespace */
   // If the model UID starts with "ToSic.Lib", treat it as internal
   const hasInternalNamespace = tools.modelNamespaceStartsWithAny(model, internalNamespaces)
     || tools.modelNamespaceContainsAny(model, [".Internal."]);
   if (hasInternalNamespace) {
-    tools.addAlert(model, `⚠️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
+    tools.addAlert(model, `ℹ️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
   }
 
   /* Internal API warning for internal classes or interfaces based on attributes */
   // Check if the model has attributes indicating it is internal
   if (tools.modelIsDecoratedWith(model, "InternalApi")) {
     // Display a warning with the specific model type (e.g., "This class is...", "This interface is...")
-    tools.addAlert(model, `⚠️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
+    tools.addAlert(model, `ℹ️ This ${model.type.toLowerCase()} ${DefMessageSuffix}`, "warning");
   }
 
   // If internal methods exist, inject warning alerts into each one
