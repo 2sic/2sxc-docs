@@ -11,12 +11,16 @@ exports.preTransform = function (model) {
 };
 
 const internalNamespaces = [
+  // Exact Match
+  /^ToSic\.Lib$/,
+  // Anything below ToSic.Lib.* (done with a starts-string match)
   "ToSic.Lib.",
-  "ToSic.Sys.",
-  // "ToSic.Sxc.",
-  // "ToSic.Sxc.LookUp.",
-  // "ToSic.Sxc.InternalApi.",
-  // "ToSic.Sxc.InternalApi2."
+  // Exact match
+  /^ToSic\.Sys$/,
+  // Anything below ToSic.Sys.*
+  /^ToSic\.Sys\..*$/,
+  // Anything below ToSic.Xyz.Sys
+  /^ToSic\..*.(Sys|Internal)(\..*|$)/,
 ];
 
 /**

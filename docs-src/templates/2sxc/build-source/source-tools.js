@@ -14,7 +14,19 @@ function modelNamespaceStartsWithAny(model, namespaces) {
     return false;
 
   // Check if the model's UID starts with any of the specified namespaces
-  return namespaces.some((namespace) => model.uid.startsWith(namespace));
+  return namespaces.some((namespace) => {
+    // console.error(`got here, checking namespace: ${namespace}; for model ${model.uid}; is regex? ${namespace instanceof RegExp}`);
+    if (typeof(namespace) === 'string') {
+      return model.uid.startsWith(namespace);
+    }
+    // The instanceof doesn't work, probably because of the old JS engine in DocFx
+    else /* if (namespace instanceof RegExp) */ {
+      // console.warn('found a regex');
+      var isOk = namespace.test(model.uid);
+      return isOk;
+    }
+    return false;
+  });
 }
 
 /**
