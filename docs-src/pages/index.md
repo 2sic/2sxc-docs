@@ -1,11 +1,18 @@
 
 <img src="../assets/logos/vcurrent/500.png" width="150px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v19.03.05 LTS
+# 2sxc and EAV Docs v20 (pre-release)
 
 This is the technical documentation for 2sxc and it's parts such as the EAV system.
 
-💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
+_This is the pre-release documentation for 2sxc v20._  
+_v20 will have some breaking changes like a new DB schema, so the release will take some time._
+
+_To see the older docs, visit the [v19 archive](http://v19.docs.2sxc.org/)._
+
+> [!TIP]
+> 💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
+
 
 ## 2sxc turns Dnn & Oqtane into a CMS
 
@@ -63,27 +70,12 @@ Here's the overview:
 
 ## Pending Documentation Work
 
-Next to document
-
-1. Finish metadata documentation
-1. Create in the APIs (simplify APIs first)
-1. Create good sample of Page-Metadata App
-
 These topics are insufficiently documented...
 
 1. URL and REST API for changing data
 1. Future topics, lower priority
-    2. React and 2sxc (todo)
+    2. React and 2sxc
 1. etc.
-
-
-## To Doc about Docs
-
-1. All kinds of customizations
-    1. How Illustrations work (SVGs, CSS, JS etc.)
-    1. How version switcher works
-    1. How TOC customizations work
-        1. icons in .net API
 
 ---
 
