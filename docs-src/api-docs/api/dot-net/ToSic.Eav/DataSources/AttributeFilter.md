@@ -2,10 +2,15 @@
 uid: ToSic.Eav.DataSources.AttributeFilter
 ---
 
-The **AttributeFilter** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index). It removes values from items so that the result is smaller, and doesn't publish confidential data. It's primarily used when providing data as JSON, so that not all values are published. 
+The **AttributeFilter** [DataSource](xref:NetCode.DataSources.DataSource) is part of the [Standard EAV Data Sources](xref:Basics.Query.DataSources.Index).
+It removes values from items so that the result is smaller, and doesn't publish confidential data.
+It's primarily used when providing data as JSON, so that not all values are published.
 
 ## How to use with the VisualQuery
-When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index)  you can just drag it into your query. Now you can configure what properties you want and not. The following shows a demo which delivers both the data as-is, and also filtered to only deliver `Name` and `Country`:
+
+When using the  [VisualQuery](xref:Basics.Query.VisualQuery.Index) you can just drag it into your query.
+Now you can configure what properties you want and not.
+The following shows a demo which delivers both the data as-is, and also filtered to only deliver `Name` and `Country`:
 
 <img src="./assets/attribute-filter-basic.png" width="100%" class="full-width">
 
@@ -48,8 +53,8 @@ This is what you get on the filtered stream:
 ]
 ```
 
-As you can see, the secret `Notes` and the `Categories` are not in the _Cleaned_ stream any more. 
-There are three common use cases: 
+As you can see, the secret `Notes` and the `Categories` are not in the _Cleaned_ stream any more.
+There are three common use cases:
 
 ## Programming With The Attribute Filter
 
@@ -61,6 +66,7 @@ There are three common use cases:
 
 
 [!include["Heading-History"](shared-history.md)]
+
 1. Introduced in EAV 3.x, 2sxc ca. v6
 
 
