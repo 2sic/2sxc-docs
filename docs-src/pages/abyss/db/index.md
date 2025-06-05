@@ -13,6 +13,13 @@ This section should help you understand how data is stored in the SQL database.
 > This is the new v20 schema.
 > You can see the changes in the [changes v20](./changes-v20.md) section.
 
+> [!IMPORTANT]
+> This is documented so you can better understand the database.
+> However, you should not use this to write SQL queries or manipulate data directly.
+>
+> The database almost never changes (since it's a lot of effort to change it),
+> but it can change at any time.
+
 ---
 
 ## Overall Structure
@@ -24,8 +31,8 @@ It has various aspects such as:
 
 1. **Containers** grouping data into Apps and Zones
 1. **Schema** like ContentTypes and Attributes
-1. **Languages** called Dimensions in the SQL
 1. **Data** like Entities, Values and Relationships
+1. **Languages** called Dimensions in the SQL
 1. **Metadata** which connects data to something else it describes
 1. **History** to track changes over time
 
@@ -71,6 +78,16 @@ It consists of the following parts:
 * **Entities** - these are the individual items of data, like a specific person or product.
 * **Values** - these are the actual data points for the attributes, like "John Doe" for the Name attribute.
 * **Relationships** - these define how entities are related to each other, like a person having multiple addresses.
+
+### Language (Dimensions)
+
+<img src="./assets/db-schema-eav-v20-dimensions.webp" width="25%" align="right" class="float-end">
+
+The dimensions are the languages and other dimensions of the data.
+In 2sxc, we typically only use the language dimension, but you can also use other dimensions if needed.
+
+* **Dimensions** - these are the different dimensions of the data, usually languages.
+* **ValueDimensions** - this maps a specific value to that language
 
 ### Metadata - Connecting Data to Targets
 

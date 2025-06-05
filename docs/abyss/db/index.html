@@ -113,6 +113,13 @@ This is a very flexible data model, but it can be complex to understand.</p>
 <p>This is the new v20 schema.
 You can see the changes in the <a href="changes-v20.html">changes v20</a> section.</p>
 </div>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This is documented so you can better understand the database.
+However, you should not use this to write SQL queries or manipulate data directly.</p>
+<p>The database almost never changes (since it's a lot of effort to change it),
+but it can change at any time.</p>
+</div>
 <hr>
 <h2 id="overall-structure">Overall Structure</h2>
 <img src="../../pages/abyss/db/assets/db-schema-eav-v20.webp" width="25%" align="right" class="float-end">
@@ -121,8 +128,8 @@ It has various aspects such as:</p>
 <ol>
 <li><strong>Containers</strong> grouping data into Apps and Zones</li>
 <li><strong>Schema</strong> like ContentTypes and Attributes</li>
-<li><strong>Languages</strong> called Dimensions in the SQL</li>
 <li><strong>Data</strong> like Entities, Values and Relationships</li>
+<li><strong>Languages</strong> called Dimensions in the SQL</li>
 <li><strong>Metadata</strong> which connects data to something else it describes</li>
 <li><strong>History</strong> to track changes over time</li>
 </ol>
@@ -158,6 +165,14 @@ It consists of the following parts:</p>
 <li><strong>Entities</strong> - these are the individual items of data, like a specific person or product.</li>
 <li><strong>Values</strong> - these are the actual data points for the attributes, like &quot;John Doe&quot; for the Name attribute.</li>
 <li><strong>Relationships</strong> - these define how entities are related to each other, like a person having multiple addresses.</li>
+</ul>
+<h3 id="language-dimensions">Language (Dimensions)</h3>
+<img src="../../pages/abyss/db/assets/db-schema-eav-v20-dimensions.webp" width="25%" align="right" class="float-end">
+<p>The dimensions are the languages and other dimensions of the data.
+In 2sxc, we typically only use the language dimension, but you can also use other dimensions if needed.</p>
+<ul>
+<li><strong>Dimensions</strong> - these are the different dimensions of the data, usually languages.</li>
+<li><strong>ValueDimensions</strong> - this maps a specific value to that language</li>
 </ul>
 <h3 id="metadata---connecting-data-to-targets">Metadata - Connecting Data to Targets</h3>
 <img src="../../pages/abyss/db/assets/db-schema-eav-v20-metadata.webp" width="25%" align="right" class="float-end">
