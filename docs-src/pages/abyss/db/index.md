@@ -1,4 +1,4 @@
----
+d---
 uid: Abyss.Db.Index
 ---
 
@@ -24,6 +24,8 @@ This section should help you understand how data is stored in the SQL database.
 
 ## Overall Structure
 
+<div class="clearfix">
+
 <img src="./assets/db-schema-eav-v20.webp" width="25%" align="right" class="float-end">
 
 This diagram shows the current structure of the database, with all tables and their relationships.
@@ -38,9 +40,14 @@ It has various aspects such as:
 
 _Click on the image to see it larger._
 
+</div>
+
+
 ## Aspects of the Database
 
 ### Containers - The App and Zone
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-containers.webp" width="25%" align="right" class="float-end">
 
@@ -56,7 +63,12 @@ These are what the App is responsible for:
 The Zone is a larger container, which can contain multiple Apps.
 It typically matches a single web site/portal on a system, but in special cases multiple sites can share a Zone.
 
+</div>
+
+
 ### Schema - ContentTypes and Attributes
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-schema.webp" width="25%" align="right" class="float-end">
 
@@ -68,7 +80,11 @@ It consists of the following parts:
 * **Attributes** - these are the properties of the ContentTypes, like "Name", "Country", etc.
 * **AttributeTypes** - these are the data types of the attributes, like "Text", "Number", etc.
 
+</div>
+
 ### Data - Entities, Values and Relationships
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-data.webp" width="25%" align="right" class="float-end">
 
@@ -79,7 +95,12 @@ It consists of the following parts:
 * **Values** - these are the actual data points for the attributes, like "John Doe" for the Name attribute.
 * **Relationships** - these define how entities are related to each other, like a person having multiple addresses.
 
+</div>
+
+
 ### Language (Dimensions)
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-dimensions.webp" width="25%" align="right" class="float-end">
 
@@ -89,7 +110,11 @@ In 2sxc, we typically only use the language dimension, but you can also use othe
 * **Dimensions** - these are the different dimensions of the data, usually languages.
 * **ValueDimensions** - this maps a specific value to that language
 
+</div>
+
 ### Metadata - Connecting Data to Targets
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-metadata.webp" width="25%" align="right" class="float-end">
 
@@ -101,8 +126,12 @@ The metadata is an _optional_ layer which allows data to reference something els
 
 _Note: this structure will probably change in the near future._
 
+</div>
+
 
 ### History - Tracking Changes Over Time
+
+<div class="clearfix">
 
 <img src="./assets/db-schema-eav-v20-history.webp" width="25%" align="right" class="float-end">
 
@@ -112,6 +141,8 @@ It consists of the following parts:
 
 * **DataTransaction** - this is a timestamped log entry to track changes to the data. All tables reference these timestamps to know when the data was changed and by whom.
 * **DataHistory** - this table stores all changes to the data, including the old and new values.
+
+</div>
 
 ---
 
