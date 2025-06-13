@@ -109,6 +109,112 @@
 We're documenting it here to ensure you know what happened, in case you still run into this.</p>
 <p>👉 please also read about the <a class="xref" href="../management/policy-deprecate.html">Deprecation Policy</a></p>
 <hr>
+<h2 id="breaking-changes-in-eav-and-2sxc-20---moment-of-truth">Breaking Changes in EAV and 2sxc 20 - Moment-of-Truth</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>2sxc 20 is a milestone clean-up release, so it contains a lot of breaking changes.</p>
+<p>This is the <strong>Moment of Truth</strong> where you see if you accidentally used internal or very old APIs.</p>
+<p>These changes should only affect you, if you are accessing exotic/internal APIs,
+or if you have some extremely old/deprecated code.</p>
+</div>
+<p>Note that we marked the breaking changes like this</p>
+<ul>
+<li>⚠️ things which may affect you</li>
+<li>⬇️ things which are extremely unlikely to affect you</li>
+</ul>
+<h3 id="highlights">Highlights</h3>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Despite this being a breaking change, we want to emphasize that much of this is great news.
+It removes a lot of old cruft, and cleans up some history such as &quot;SexyContent&quot;.</p>
+<p>These changes only affect you, if you were doing some really nasty things, such as accessing the DB directly.</p>
+</div>
+<ol>
+<li><p>⚠️ All the SQL tables were renamed - see <a class="xref" href="../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a></p>
+</li>
+<li><p>⚠️ In Dnn, the module is now installed in <code>/DesktopModules/ToSic.Sxc/</code> instead of <code>/DesktopModules/ToSic_SexyContent/</code><br>
+This could affect you, if you had direct links to the <code>$2sxc.min.js</code> file anywhere.</p>
+</li>
+<li><p>⬇️ In Dnn, the modules name is now <code>2sxc</code> instead of <code>SexyContent</code></p>
+</li>
+</ol>
+<h3 id="breaking-ientity-api-changes-razor">Breaking <code>IEntity</code> API Changes (Razor)</h3>
+<ol>
+<li><p>⚠️ A very old interface <code>ToSic.Eav.Interfaces.IEntity</code> has been removed, please use <code>ToSic.Eav.Data.IEntity</code> instead.<br>
+Some very old code may have used this to work around LINQ limitations.
+Just use the new one, it's the same thing (but with fewer APIs, according to clean-up below).<br>
+We've added some error handling to find out if this is the problem you have, and should lead you to this page.</p>
+</li>
+<li><p>⚠️ <code>IEntity</code> has <code>object Get(name, ...)</code> and 2 special <code>Get&lt;TVal&gt;(...)</code> methods to get a value and convert it to <code>string</code>, <code>int</code> etc.
+The special typed <code>&lt;TVal&gt;</code> variants were moved into extension methods.<br>
+Normally this should not affect you, if you are <code>@using ToSic.Eav.Data</code> in your code, since it will just work.
+If you did this is a more exotic way, add the <code>@using ToSic.Eav.Data</code> to your code, and it will work again.</p>
+</li>
+<li><p>⬇️ APIs on <code>IEntity</code> were modified</p>
+<ol>
+<li><code>.Children(...)</code> and <code>.Parents(...)</code> now return <code>IEnumerable&lt;IEntity&gt;</code> instead of <code>List&lt;IEntity&gt;</code>.<br>
+This will only affect you if you are using <code>.Count</code> on the result, in which case you should use <code>.Count()</code> instead.</li>
+</ol>
+</li>
+<li><p>⬇️ Old, deprecated APIs <code>IEntity</code> were removed.<br>
+These have not worked properly for many years.<br>
+We've added some error handling to find out if this is the problem you have, and should lead you to this page.</p>
+<ol>
+<li><p><code>object GetBestValue(string attributeName, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>TVal GetBestValue&lt;TVal&gt;(string name, string[] languages, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>object GetBestValue(string attributeName, string[] languages, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>object Value(string field, bool resolve = true)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>T Value&lt;T&gt;(string field, bool resolve = true)</code> - didn't work for a long time, is being removed</p>
+</li>
+</ol>
+</li>
+<li><p>⬇️ Some unofficial APIs on <code>IEntity</code> were removed</p>
+<ol>
+<li><p><code>object PrimaryValue(string attributeName)</code><br>
+The term <code>PrimaryValue</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>TVal PrimaryValue&lt;TVal&gt;(string attributeName)</code><br>
+The term <code>PrimaryValue</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>object Value(string attributeName)</code><br>
+The term <code>Value</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>TVal Value&lt;TVal&gt;(string attributeName)</code><br>
+The term <code>Value</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+</ol>
+</li>
+<li><p>⬇️ An API giving access to the ContentType Description <code>IContentType.Metadata.Description</code> were removed
+We don't believe anyone used this.</p>
+</li>
+</ol>
+<h3 id="other-breaking-razor-api-changes">Other Breaking Razor API Changes</h3>
+<ol>
+<li><p>⬇️ An internal interface called <code>ToSic.Sxc.Data.IEntityLight</code> was removed<br>
+We don't believe anyone used this, but if you did, please use <code>ToSic.Eav.Data.IEntity</code> instead.</p>
+</li>
+<li><p>⬇️ Some internal objects were consolidated, such as <code>IAttributeBase</code> which nobody should have used anyway<br>
+We don't believe anyone used this.</p>
+</li>
+</ol>
+<h3 id="breaking-formulas-javascript-api-changes">Breaking Formulas JavaScript API Changes</h3>
+<h4 id="v1-formrunformulas-was-removed">V1 <code>form.runFormulas()</code> Was Removed</h4>
+<p>The V1 formulas were not async, so they had a patchy solution for using formulas which requested data from the server.
+The old solution was to use fetch and in the promise, call <code>form.runFormulas()</code> to retrigger the formulas after the data was loaded.</p>
+<p>2sxc 16 in early 2023 introduced V2 formulas which can return a promise.
+This will automatically trigger recalculations when the promise resolves,
+and allows for better control over what happens (like if the same formula should run again, or not).</p>
+<p>Since v16 was released, any use of the old <code>form.runFormulas()</code> resulted in a warning in the console.</p>
+<p>In v20, this method was disabled showing a JS error.
+If you were using it, please remove it and use the new V2 formulas instead.</p>
+<h4 id="internal-formula-changes">Internal Formula Changes</h4>
+<p>An internal API which placed some experimental commands in the formula calls were moved to the context.
+Since it was only used internally, it should not affect anyone.</p>
+<hr>
 <h2 id="breaking-changes-in-eav-and-2sxc-v19">Breaking Changes in EAV and 2sxc v19</h2>
 <p>We try to minimize breaking changes, and most breaking changes won't affect your work, because it's internal API.
 We're documenting it here to ensure you know what happened, in case you still run into this.</p>

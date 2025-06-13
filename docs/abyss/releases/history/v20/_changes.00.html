@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Test Accessors and Test Constructors | 2sxc 19 for Dnn and Oqtane </title>
+      <title> | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Test Accessors and Test Constructors | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 19 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/test-accessors.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/_changes.00.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,67 +102,31 @@
 
         
 
-        <article data-uid="Abyss.Contribute.Tests.TestAccessors">
-<h1 id="test-accessors-and-test-constructors">Test Accessors and Test Constructors</h1>
+        <article data-uid="">
 
-<p>While working with the normal code we often see that a method is used x-times.
-Unfortunately the counter counts all calls including test-calls, so the number can be very misleading.
-It's even possible that a method is never used in production, but is called 1000 times in tests.</p>
-<p>To avoid this problem, tests should prefer to use <strong>Test Accessors</strong>  and <strong>Test Constructors</strong> where applicable to ensure clarity and reduce the access count.
-As a rule of thumb, if a method is used more than 3 times in tests, it should be considered for a Test Accessor,
-because then the counter cannot easily be used to determine if the method is still in use.</p>
-<p>The way this <em>should</em> be implemented is as follows:</p>
+<h3 id="2sxc-v200000-rc1-2025-06-xx">2sxc v20.00.00 RC1 (2025-06-xx)</h3>
 <ol>
-<li>In some cases, a simple method on the test class like <code>GetThing(...)</code> or <code>ThingTac(...)</code> is enough, especially if this method is only used in this test class.</li>
-<li>In most cases, create static extension methods ending with <code>Tac</code> - so <code>IThing.Get(...)</code> becomes a static <code>GetTac(this IThing parent, ...)</code> method.
+<li>🅰️ Update UI to Angular 20 and Angular Material 20</li>
+<li>✅ todo</li>
+</ol>
+<p>Breaking Changes</p>
 <ol>
-<li>These can be in the test project where it is used</li>
-<li>... or in a TestHelper project if it's used in multiple test projects</li>
+<li>todo</li>
 </ol>
-</li>
+<p>Bugfixes</p>
+<ol>
+<li>🐞 Fix: todo</li>
+<li>🐞 Fix: todo</li>
 </ol>
-<p>Examples follow.</p>
-<h2 id="simple-test-constructor-in-the-class">Simple Test Constructor in the Class</h2>
-<p>This shows a method on the class (for use there only) to create a specific class.
-It will help to keep the access-count on the constructor low.</p>
-<pre><code class="lang-csharp">/// &lt;summary&gt;
-/// Empty Test Constructor
-/// &lt;/summary&gt;
-private static CacheItemPolicyMaker EmptyTco() =&gt; new() { Log = new Log(&quot;Tst.CacSpx&quot;) };
-</code></pre><h2 id="static-class-with-test-accessor">Static Class with Test Accessor</h2>
-<p>This is a static class with a test accessor method, inside the test-project where it is used.</p>
-<pre><code class="lang-csharp">using System.Runtime.Caching;
-using ToSic.Sys.Caching.Policies;
+<p>Internal</p>
+<ol>
+<li>✅ todo</li>
+</ol>
 
-namespace ToSic.Eav.Caching;
-
-internal static class TestAccessors
-{
-    internal static CacheItemPolicy CreateResultTac(this IPolicyMaker policyMaker)
-        =&gt; policyMaker.CreateResult();
-}
-</code></pre><h2 id="static-class-with-test-accessor-in-a-testhelper-project">Static Class with Test Accessor in a TestHelper Project</h2>
-<pre><code class="lang-csharp">using System.Collections.Immutable;
-
-namespace ToSic.Eav.Data.Build;
-
-public static class ValueBuilderTestAccessors
-{
-    /// &lt;summary&gt;
-    /// Test accessor to reduce use-count of the real code
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static IValue BuildTac(this ValueBuilder vBuilder, ValueTypes type, object value, IList&lt;ILanguage&gt; languages)
-        =&gt; vBuilder.Build(type, value, languages?.ToImmutableOpt());
-
-    public static IValue BuildTac(this ValueBuilder vBuilder, ValueTypes type, object value, IImmutableList&lt;ILanguage&gt; languages)
-        =&gt; vBuilder.Build(type, value, languages);
-}
-</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tests/test-accessors.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/_changes.00.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
