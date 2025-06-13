@@ -28,6 +28,9 @@ Note that we marked the breaking changes like this
 1. ⚠️ In Dnn, the module is now installed in `/DesktopModules/ToSic.Sxc/` instead of `/DesktopModules/ToSic_SexyContent/`  
     This could affect you, if you had direct links to the `$2sxc.min.js` file anywhere.
 
+1. ⚠️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
+    This is because older DNNs have important security issues, and we want to "force" people to update.
+
 1. ⬇️ In Dnn, the modules name is now `2sxc` instead of `SexyContent`
 
 
