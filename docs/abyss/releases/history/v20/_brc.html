@@ -125,18 +125,25 @@ It removes a lot of old cruft, and cleans up some history such as &quot;SexyCont
 <p>These changes only affect you, if you were doing some really nasty things, such as accessing the DB directly.</p>
 </div>
 <ol>
-<li><p>⚠️ All the SQL tables were renamed - see <a class="xref" href="../../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a></p>
+<li><p>⚠️ All SQL tables and restructured - see <a class="xref" href="../../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a></p>
 </li>
 <li><p>⚠️ In Dnn, the module is now installed in <code>/DesktopModules/ToSic.Sxc/</code> instead of <code>/DesktopModules/ToSic_SexyContent/</code><br>
 This could affect you, if you had direct links to the <code>$2sxc.min.js</code> file anywhere.</p>
 </li>
 <li><p>⚠️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)<br>
-This is because older DNNs have important security issues, and we want to &quot;force&quot; people to update.</p>
+This is because older DNNs have important security issues, and we want to force people to update.<br>
+As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.</p>
 </li>
 <li><p>⬇️ In Dnn, the modules name is now <code>2sxc</code> instead of <code>SexyContent</code></p>
 </li>
 </ol>
 <h3 id="breaking-ientity-api-changes-razor">Breaking <code>IEntity</code> API Changes (Razor)</h3>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If your code just used the normal DynamicEntity or TypedEntity / Items APIs, you are not affected by these changes.</p>
+<p>But in rare cases, especially in older Apps, some workarounds were used to access the <code>IEntity</code> interface directly.</p>
+<p>This is usually done by first running <code>AsEntity(someObject)</code> to get the <code>IEntity</code> underlying data.</p>
+</div>
 <ol>
 <li><p>⚠️ A very old interface <code>ToSic.Eav.Interfaces.IEntity</code> has been removed, please use <code>ToSic.Eav.Data.IEntity</code> instead.<br>
 Some very old code may have used this to work around LINQ limitations.
@@ -197,6 +204,8 @@ We don't believe anyone used this, but if you did, please use <code>ToSic.Eav.Da
 </li>
 <li><p>⬇️ Some internal objects were consolidated, such as <code>IAttributeBase</code> which nobody should have used anyway<br>
 We don't believe anyone used this.</p>
+</li>
+<li><p>⬇️ lots of internal namespaces and classes/interfaces were renamed.</p>
 </li>
 </ol>
 <h3 id="breaking-formulas-javascript-api-changes">Breaking Formulas JavaScript API Changes</h3>

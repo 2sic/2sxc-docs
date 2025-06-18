@@ -23,18 +23,26 @@ Note that we marked the breaking changes like this
 >
 > These changes only affect you, if you were doing some really nasty things, such as accessing the DB directly.
 
-1. ⚠️ All the SQL tables were renamed - see [](xref:Abyss.Db.ChangesV20)
+1. ⚠️ All SQL tables and restructured - see [](xref:Abyss.Db.ChangesV20)
 
 1. ⚠️ In Dnn, the module is now installed in `/DesktopModules/ToSic.Sxc/` instead of `/DesktopModules/ToSic_SexyContent/`  
     This could affect you, if you had direct links to the `$2sxc.min.js` file anywhere.
 
 1. ⚠️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
-    This is because older DNNs have important security issues, and we want to "force" people to update.
+    This is because older DNNs have important security issues, and we want to force people to update.  
+    As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.
 
 1. ⬇️ In Dnn, the modules name is now `2sxc` instead of `SexyContent`
 
 
 ### Breaking `IEntity` API Changes (Razor)
+
+> [!TIP]
+> If your code just used the normal DynamicEntity or TypedEntity / Items APIs, you are not affected by these changes.
+>
+> But in rare cases, especially in older Apps, some workarounds were used to access the `IEntity` interface directly.
+>
+> This is usually done by first running `AsEntity(someObject)` to get the `IEntity` underlying data.
 
 1. ⚠️ A very old interface `ToSic.Eav.Interfaces.IEntity` has been removed, please use `ToSic.Eav.Data.IEntity` instead.  
     Some very old code may have used this to work around LINQ limitations.
@@ -90,6 +98,8 @@ Note that we marked the breaking changes like this
 
 1. ⬇️ Some internal objects were consolidated, such as `IAttributeBase` which nobody should have used anyway  
     We don't believe anyone used this.
+
+1. ⬇️ lots of internal namespaces and classes/interfaces were renamed.
 
 
 ### Breaking Formulas JavaScript API Changes

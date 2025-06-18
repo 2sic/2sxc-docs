@@ -6,7 +6,10 @@
 
 Breaking Changes
 
-1. todo
+> [!WARNING]
+> 2sxc v20 is a MoT Release, containing many breaking changes.
+>
+> See [Breaking Changes in v20](xref:Abyss.Releases.History.V20.Breaking) for details.
 
 Bugfixes
 
