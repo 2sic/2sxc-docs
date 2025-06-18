@@ -28,11 +28,19 @@ Note that we marked the breaking changes like this
 1. ⚠️ In Dnn, the module is now installed in `/DesktopModules/ToSic.Sxc/` instead of `/DesktopModules/ToSic_SexyContent/`  
     This could affect you, if you had direct links to the `$2sxc.min.js` file anywhere.
 
-1. ⚠️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
+1. ⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
     This is because older DNNs have important security issues, and we want to force people to update.  
     As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.
 
+1. ⬇️ All code was restructured to create smaller, more focused assemblies.  
+    This should not affect you, but if you were using some very old code, it may have been moved to a different assembly.
+    This can affect you if you were using compiled code which referenced the old assemblies (not common).
+
+1. ⬇️ Most internal APIs were moved into `Sys` namespaces, so it's easier to see if you're using internal APIs.  
+    This should not affect you, unless you were already using internal APIs.
+
 1. ⬇️ In Dnn, the modules name is now `2sxc` instead of `SexyContent`
+
 
 
 ### Breaking `IEntity` API Changes (Razor)
