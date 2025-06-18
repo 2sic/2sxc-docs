@@ -9,6 +9,8 @@
 >
 > These changes should only affect you, if you are accessing exotic/internal APIs,
 > or if you have some extremely old/deprecated code.
+>
+> See also: [](xref:Abyss.Releases.Management.PolicyMot)
 
 Note that we marked the breaking changes like this
 
