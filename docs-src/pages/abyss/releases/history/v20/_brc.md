@@ -28,11 +28,16 @@ Note that we marked the breaking changes like this
 1. ⚠️ All SQL tables and restructured - see [](xref:Abyss.Db.ChangesV20)
 
 1. ⚠️ In Dnn, the module is now installed in `/DesktopModules/ToSic.Sxc/` instead of `/DesktopModules/ToSic_SexyContent/`  
-    This could affect you, if you had direct links to the `$2sxc.min.js` file anywhere.
+    This could affect you, if you had direct links to
+    * the `$2sxc.min.js` file in your templates
+    * were using the extremely old image resizer on the path `/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx` TODO: guidance how to fix this
 
 1. ⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
     This is because older DNNs have important security issues, and we want to force people to update.  
     As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.
+
+1. ⬇️ The image resizer only includes the 64 bit binaries, the 32 bit binaries were removed.
+    This makes the distribution smaller, and I don't think anyone is using 32 bit servers anymore.
 
 1. ⬇️ All code was restructured to create smaller, more focused assemblies.  
     This should not affect you, but if you were using some very old code, it may have been moved to a different assembly.
@@ -106,10 +111,14 @@ Note that we marked the breaking changes like this
 1. ⬇️ An internal interface called `ToSic.Sxc.Data.IEntityLight` was removed  
     We don't believe anyone used this, but if you did, please use `ToSic.Eav.Data.IEntity` instead.
 
+1. ⬇️ A very old interface called `SexyContent.Interfaces.IDynamicEntity` was removed.  
+    If you really had this in your code, please use `ToSic.Sxc.Data.IDynamicEntity` instead.
+
 1. ⬇️ Some internal objects were consolidated, such as `IAttributeBase` which nobody should have used anyway  
     We don't believe anyone used this.
 
-1. ⬇️ lots of internal namespaces and classes/interfaces were renamed.
+1. ⬇️ lots of internal namespaces and classes/interfaces were renamed, including but not limited to:
+    1. `DynamicEntity.GetEntityValue(string name)` (removed)
 
 
 ### Breaking Formulas JavaScript API Changes
