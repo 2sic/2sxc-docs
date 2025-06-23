@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Fix Breaking Change Thumbnailer.aspx in v20 | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Fix Breaking Change Static Dnn Factory in v20 | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Fix Breaking Change Thumbnailer.aspx in v20 | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Fix Breaking Change Static Dnn Factory in v20 | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-thumbnailer.aspx/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-dnn-factory/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,64 +102,59 @@
 
         
 
-        <article data-uid="Abyss.Releases.History.V20.BrcThumbnailer">
-<h1 id="fix-breaking-change-thumbnaileraspx-in-v20">Fix Breaking Change Thumbnailer.aspx in v20</h1>
+        <article data-uid="Abyss.Releases.History.V20.DnnFactory">
+<h1 id="fix-breaking-change-static-dnn-factory-in-v20">Fix Breaking Change <em>Static Dnn Factory</em> in v20</h1>
 
-<p><strong>Keywords:</strong> #Deprecated #Thumbnailer</p>
+<p><strong>Keywords:</strong> #Deprecated #Factory #Build #DependencyInjection</p>
 <p>2sxc v20 cleans up some historic, deprecated functionality.
 They were not used much, but if you have code which used this, here's how to fix any code in production.</p>
-<p>When we renamed the main folder from <code>/DesktopModules/ToSic_SexyContent/</code> to <code>DesktopModules/ToSic.Sxc/</code>,
-we also removed the old <code>Thumbnailer.aspx</code> file which was used to resize images.</p>
-<p>This is a very old thumbnailer which was not very good, but some old samples referenced it.</p>
-<h2 id="effect">Effect</h2>
-<p>If you are actually using it, you will get broken images in your apps like this:</p>
-<img src="../../../../../pages/abyss/releases/history/v20/brc-thumbnailer.aspx/assets/thumbnailer-not-working.webp">
-<p>If you then right-click the image and select &quot;Open Image in New Tab&quot;, you will see an error like this:</p>
-<img src="../../../../../pages/abyss/releases/history/v20/brc-thumbnailer.aspx/assets/open-img-in-tab.webp">
-<p>The url would look like this:</p>
-<pre><code class="lang-text">https://2sxc-dnn961.dnndev.me/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx?Image=/some-path.jpg&amp;Width=454&amp;Height=5000
-</code></pre>
-<p>The screen you would see would look like this:</p>
-<img src="../../../../../pages/abyss/releases/history/v20/brc-thumbnailer.aspx/assets/thumbnailer-404.webp" class="full-width">
-<pre><code class="lang-text">The resource cannot be found.
-
-Description: HTTP 404. The resource you are looking for (or one of its dependencies) could have been removed, had its name changed, or is temporarily unavailable.  Please review the following URL and make sure that it is spelled correctly.
-
-Requested URL: /DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx
-
-</code></pre>
+<p>The <code>ToSic.Sxc.Dnn.Factory</code> API (with various methods) is finally removed in v20.
+It has been deprecated for more than 5 years now, since v13.
+You can still review the <a href="https://v19.docs.2sxc.org/api/dot-net/ToSic.Sxc.Dnn.Factory.html">old Dnn.Factory API here</a>.</p>
+<p>The static commands which were removed are:</p>
+<ul>
+<li><code>ToSic.Sxc.Dnn.Factory.App(int appId, PortalSettings ownerPortalSettings, bool unusedButKeepForApiStability = false, bool showDrafts = false, ILog parentLog = null)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.App(int appId, bool unusedButKeepForApiStability = false, bool showDrafts = false, ILog parentLog = null)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.App(int zoneId, int appId, bool unusedButKeepForApiStability = false, bool showDrafts = false, ILog parentLog = null)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.CmsBlock(ModuleInfo moduleInfo)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.CmsBlock(int pageId, int modId)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.CmsBlock(int pageId, int modId, ILog parentLog)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.CmsBlock(IModule module, ILog parentLog = null)</code></li>
+<li><code>ToSic.Sxc.Dnn.Factory.DynamicCode(IBlockBuilder blockBuilder)</code></li>
+</ul>
 <h2 id="reason-for-removal">Reason for Removal</h2>
-<p>This was a very old thumbnailer which was replaced more than 10 years ago.
-Since the path-change also breaks all previous URLs, it's time to move on.</p>
+<p>2sxc used to be the first and only Module in Dnn which supported Dependency Injection, so there was a need to patch this in somehow.</p>
+<p>The solution we used was to have static object <code>ToSic.Sxc.Dnn.Factory</code> which managed this, but this is actually bad practice and encourages bad code.</p>
+<p>We believe this is rarely used, so we removed it. But it was in the official docs, so there may have been a few users who picked this up.</p>
+<h2 id="history---how-it-used-to-work">History - How it Used to Work</h2>
+<p>Previously you could write code like this in your Razor:</p>
+<pre><code class="lang-csharp">var internalAppApi = ToSic.Sxc.Dnn.Factory.App(42, false, false, null);
+</code></pre>
+<h2 id="what-we-changed">What we Changed</h2>
+<p>In 2sxc 11.11 we introduced the <code>GetService&lt;T&gt;()</code> (<a class="xref" href="../../../../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_">e.g. docs</a>) which takes care of this.
+Please use this from now on.</p>
 <h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<p>In general all you need to do is change the link to the new thumbnailer, which is now part of the 2sxc module.</p>
-<p>Just adjust your code - for example this:</p>
-<pre><code class="lang-html">&lt;img src=&quot;/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx?Image=@Content.Image&amp;Width=454&amp;Height=5000&quot; /&gt;   
+<p>So the previous example would look like this:</p>
+<pre><code class="lang-csharp">var dynamicCodeService = GetService&lt;ToSic.Sxc.Services.IDynamicCodeService&gt;();
+var internalAppApi = dynamicCodeService.App(appId: 42);
 </code></pre>
-<p>to this:</p>
-<pre><code class="lang-html">&lt;img src=&quot;@Content.Image?w=454&amp;h=5000&quot; /&gt;
-</code></pre>
-<p>As you can see, the important things are:</p>
-<ol>
-<li>The base path is now not necessary</li>
-<li>The query parameters are now <code>?w=454&amp;h=5000</code> instead of <code>?Width=454&amp;Height=5000</code></li>
-</ol>
+<p>If you were using this from outside of 2sxc Razor / WebApi, you will need to use the <a class="xref" href="../../../../../net-code/dependency-injection/dnn.html">Dnn specific DependencyInjection (available in Dnn 9.4+)</a>.</p>
+<p>For a list of other APIs, see the <a class="xref" href="../../../../../api/dot-net/ToSic.Sxc.Services.IDynamicCodeService.html">IDynamicCodeService docs</a>.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>original <code>thumbnailer.aspx</code> introduced with 2sxc 2 ca. 2012</li>
-<li>replaced with ImageResizer.net ca. 2sxc 5 in ca. 2014</li>
-<li>replaced with ImageFlow in ca. v12 with same URL schema ca. 2018</li>
-<li>replaced the <code>thumbnailer.aspx</code> in 2019-05 to redirect to new schema, but links still worked</li>
-<li>Removed thumbnailer.aspx in 2sxc 20 with the path change to <code>/DesktopModules/ToSic.Sxc/</code></li>
+<li>Introduced for DNN ca. 2sxc 7 with Dependency Injection based on .net Standard 1.6</li>
+<li>Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI</li>
+<li>Planned for full removal in 2sxc 15 ca. middle of 2022</li>
+<li>Finally removed in 2sxc 20</li>
 </ul>
 <hr>
-<!-- Shortlink to here: <https://go.2sxc.org/brc-20-thumbnailer> -->
+<!-- Shortlink to here: <https://go.2sxc.org/brc-13-eav-factory> -->
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-thumbnailer.aspx/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-dnn-factory/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
