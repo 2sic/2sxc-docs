@@ -218,8 +218,28 @@ The term <code>Value</code> was an idea which we never pursued further. please j
 We don't believe anyone used this.</p>
 </li>
 </ol>
-<h3 id="other-breaking-razor-api-changes">Other Breaking Razor API Changes</h3>
+<h3 id="other-breaking-razor-api-changes-dnn-only">Other Breaking Razor API Changes (Dnn only)</h3>
 <ol>
+<li><p>⚠️ The behavior to auto-load jQuery for very old Razor base classes was removed.<br>
+A long time ago 2sxc accidentally loaded jQuery automatically in DNN.<br>
+In those days, jQuery was used a lot. We stopped doing this for newer Razor base classes, but preserved the behavior for very old Razor base classes.<br>
+This was removed in v20, so if you were using the old Razor base classes, you will need to add jQuery manually.<br>
+<em>Note: code for this was commented out with <code>#RemovedV20 #OldDnnAutoJQuery</code>.</em></p>
+</li>
+<li><p>⚠️ Three old APIs on old Razor Base classes such as <code>SexyContentWebPage</code> were removed. All have been deprecated since v12.<br>
+They were originally meant to use the same Razor file to also create a WebApi and fill the DNN search index, but was deprecated a long time ago.</p>
+<ol>
+<li><code>Purpose</code> - this was meant to tell Razor if it should prepare data for search or for view.</li>
+<li><code>CustomizeSearch(...)</code> this was meant to customize the data for the search index. The functionality was moved to separate code many years ago.</li>
+<li><code>CustomizeData(...)</code> this was a patchy way to specify the data for the razor template.</li>
+</ol>
+</li>
+<li><p>⚠️ The <code>SexyContentWebPage</code> had a <code>List</code> property which provided <code>Element</code> objects to loop through.<br>
+They were deprecated since v12, and replaced with the new Razor base classes which are much better.
+If you were using these, please switch to the new Razor base classes and use the more modern approaches such as <code>MyItem</code>, <code>MyItem.Presentation</code>, <code>Content</code>, etc.
+To fix, see <a class="xref" href="v20/brc-list-element/index.html">Fix Breaking Change List of Elements in v20</a>.
+<em>Note: code for this was commented out with <code>#RemovedV20 #Element</code>.</em></p>
+</li>
 <li><p>⬇️ An internal interface called <code>ToSic.Sxc.Data.IEntityLight</code> was removed<br>
 We don't believe anyone used this, but if you did, please use <code>ToSic.Eav.Data.IEntity</code> instead.</p>
 </li>
@@ -233,6 +253,14 @@ We don't believe anyone used this.</p>
 <ol>
 <li><code>DynamicEntity.GetEntityValue(string name)</code> (removed)</li>
 </ol>
+</li>
+<li><p>⬇️ An old API used by some of the first Mobius Apps used <code>App.Data.Cache.GetContentType</code>.<br>
+This has been obsolete since v10 and is now removed in v20.<br>
+We suggest you use a newer Mobius App or if you're really desperate, recreate the functionality on <code>App.Data.GetContentType(...)</code> instead.</p>
+</li>
+<li><p>⬇️ An old internal interface called <code>ToSic.SexyContent.IAppAndDataHelpers</code> was removed.<br>
+It was implemented by <code>ToSic.SexyContent.Razor.SexyContentWebPage</code> and <code>ToSic.SexyContent.WebApi.SxcApiController</code>.
+The APIs on it still work, but the interface was removed; you should not notice the clean-up.</p>
 </li>
 </ol>
 <h3 id="breaking-formulas-javascript-api-changes">Breaking Formulas JavaScript API Changes</h3>

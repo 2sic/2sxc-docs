@@ -107,7 +107,25 @@ Note that we marked the breaking changes like this
     We don't believe anyone used this.
 
 
-### Other Breaking Razor API Changes
+### Other Breaking Razor API Changes (Dnn only)
+
+1. ⚠️ The behavior to auto-load jQuery for very old Razor base classes was removed.  
+    A long time ago 2sxc accidentally loaded jQuery automatically in DNN.  
+    In those days, jQuery was used a lot. We stopped doing this for newer Razor base classes, but preserved the behavior for very old Razor base classes.  
+    This was removed in v20, so if you were using the old Razor base classes, you will need to add jQuery manually.  
+    _Note: code for this was commented out with `#RemovedV20 #OldDnnAutoJQuery`._
+
+1. ⚠️ Three old APIs on old Razor Base classes such as `SexyContentWebPage` were removed. All have been deprecated since v12.  
+    They were originally meant to use the same Razor file to also create a WebApi and fill the DNN search index, but was deprecated a long time ago.
+    1. `Purpose` - this was meant to tell Razor if it should prepare data for search or for view.
+    1. `CustomizeSearch(...)` this was meant to customize the data for the search index. The functionality was moved to separate code many years ago.
+    1. `CustomizeData(...)` this was a patchy way to specify the data for the razor template.
+
+1. ⚠️ The `SexyContentWebPage` had a `List` property which provided `Element` objects to loop through.  
+    They were deprecated since v12, and replaced with the new Razor base classes which are much better.
+    If you were using these, please switch to the new Razor base classes and use the more modern approaches such as `MyItem`, `MyItem.Presentation`, `Content`, etc.
+    To fix, see [](xref:Abyss.Releases.History.V20.ListElement).
+    _Note: code for this was commented out with `#RemovedV20 #Element`._
 
 1. ⬇️ An internal interface called `ToSic.Sxc.Data.IEntityLight` was removed  
     We don't believe anyone used this, but if you did, please use `ToSic.Eav.Data.IEntity` instead.
@@ -120,6 +138,14 @@ Note that we marked the breaking changes like this
 
 1. ⬇️ lots of internal namespaces and classes/interfaces were renamed, including but not limited to:
     1. `DynamicEntity.GetEntityValue(string name)` (removed)
+
+1. ⬇️ An old API used by some of the first Mobius Apps used `App.Data.Cache.GetContentType`.  
+    This has been obsolete since v10 and is now removed in v20.  
+    We suggest you use a newer Mobius App or if you're really desperate, recreate the functionality on `App.Data.GetContentType(...)` instead.
+
+1. ⬇️ An old internal interface called `ToSic.SexyContent.IAppAndDataHelpers` was removed.  
+    It was implemented by `ToSic.SexyContent.Razor.SexyContentWebPage` and `ToSic.SexyContent.WebApi.SxcApiController`.
+    The APIs on it still work, but the interface was removed; you should not notice the clean-up.
 
 
 ### Breaking Formulas JavaScript API Changes
