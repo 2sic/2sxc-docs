@@ -71,4 +71,4 @@ For a list of other APIs, see the [IDynamicCodeService docs](xref:ToSic.Sxc.Serv
 
 ---
 
-<!-- Shortlink to here: <https://go.2sxc.org/brc-13-eav-factory> -->
+Shortlink to here: <https://go.2sxc.org/brc-20-dnn-factory>
