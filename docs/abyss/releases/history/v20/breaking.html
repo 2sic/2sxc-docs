@@ -134,8 +134,12 @@ This could affect you, if you had direct links to</p>
 <ul>
 <li>the <code>$2sxc.min.js</code> file in your templates</li>
 <li>were using the extremely old image resizer on the path <code>/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx</code><br>
-💡 see <a class="xref" href="brc-thumbnailer.aspx/index.html">Fix Breaking Change Thumbnailer.aspx in v20</a></li>
+🔨 see <a class="xref" href="brc-thumbnailer.aspx/index.html">Fix Breaking Change Thumbnailer.aspx in v20</a></li>
 </ul>
+</li>
+<li><p>⚠️ In Dnn we stop auto-creating a <code>web.config</code> file in the <code>/2sxc/</code> folder, so Razor files will no longer automatically use the old base class <code>SexyContentWebPage</code>.
+This should not affect you, you're installing old Apps in newer DNNs.<br>
+🔨 see <a class="xref" href="brc-automatic-base-class/index.html">Fix Breaking Change Stop Razor from Default to SexyContentWebPage in v20</a></p>
 </li>
 <li><p>⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)<br>
 This is because older DNNs have important security issues, and we want to force people to update.<br>
@@ -233,7 +237,7 @@ They were originally meant to use the same Razor file to also create a WebApi an
 <li><p>⚠️ The <code>SexyContentWebPage</code> had a <code>List</code> property which provided <code>Element</code> objects to loop through.<br>
 They were deprecated since v12, and replaced with the new Razor base classes which are much better.
 If you were using these, please switch to the new Razor base classes and use the more modern approaches such as <code>MyItem</code>, <code>MyItem.Presentation</code>, <code>Content</code>, etc.
-To fix, see <a class="xref" href="brc-list-element/index.html">Fix Breaking Change List of Elements in v20</a>.
+🔨 To fix, see <a class="xref" href="brc-list-element/index.html">Fix Breaking Change List of Elements in v20</a>.
 <em>Note: code for this was commented out with <code>#RemovedV20 #Element</code>.</em></p>
 </li>
 <li><p>⬇️ An internal interface called <code>ToSic.Sxc.Data.IEntityLight</code> was removed<br>
@@ -252,7 +256,7 @@ We don't believe anyone used this.</p>
 </li>
 <li><p>⬇️ An old API used by some of the first Mobius Apps used <code>App.Data.Cache.GetContentType</code>.<br>
 This has been obsolete since v10 and is now removed in v20.<br>
-We suggest you use a newer Mobius App or if you're really desperate, recreate the functionality on <code>App.Data.GetContentType(...)</code> instead.</p>
+We suggest you use a newer Mobius App or if you're really desperate, see 🔨 <a class="xref" href="brc-list-iappdata-cache/index.html">Fix Breaking Change Removal of Cache on IAppData in v20</a>.</p>
 </li>
 <li><p>⬇️ An old internal interface called <code>ToSic.SexyContent.IAppAndDataHelpers</code> was removed.<br>
 It was implemented by <code>ToSic.SexyContent.Razor.SexyContentWebPage</code> and <code>ToSic.SexyContent.WebApi.SxcApiController</code>.

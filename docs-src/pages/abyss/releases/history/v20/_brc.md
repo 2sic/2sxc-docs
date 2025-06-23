@@ -31,7 +31,11 @@ Note that we marked the breaking changes like this
     This could affect you, if you had direct links to
     * the `$2sxc.min.js` file in your templates
     * were using the extremely old image resizer on the path `/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx`  
-      💡 see [](xref:Abyss.Releases.History.V20.BrcThumbnailer)
+      🔨 see [](xref:Abyss.Releases.History.V20.BrcThumbnailer)
+
+1. ⚠️ In Dnn we stop auto-creating a `web.config` file in the `/2sxc/` folder, so Razor files will no longer automatically use the old base class `SexyContentWebPage`.
+    This should not affect you, you're installing old Apps in newer DNNs.  
+    🔨 see [](xref:Abyss.Releases.History.V20.RazorStopsDefaultingToOld)
 
 1. ⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
     This is because older DNNs have important security issues, and we want to force people to update.  
@@ -124,7 +128,7 @@ Note that we marked the breaking changes like this
 1. ⚠️ The `SexyContentWebPage` had a `List` property which provided `Element` objects to loop through.  
     They were deprecated since v12, and replaced with the new Razor base classes which are much better.
     If you were using these, please switch to the new Razor base classes and use the more modern approaches such as `MyItem`, `MyItem.Presentation`, `Content`, etc.
-    To fix, see [](xref:Abyss.Releases.History.V20.ListElement).
+    🔨 To fix, see [](xref:Abyss.Releases.History.V20.ListElement).
     _Note: code for this was commented out with `#RemovedV20 #Element`._
 
 1. ⬇️ An internal interface called `ToSic.Sxc.Data.IEntityLight` was removed  
@@ -141,7 +145,7 @@ Note that we marked the breaking changes like this
 
 1. ⬇️ An old API used by some of the first Mobius Apps used `App.Data.Cache.GetContentType`.  
     This has been obsolete since v10 and is now removed in v20.  
-    We suggest you use a newer Mobius App or if you're really desperate, recreate the functionality on `App.Data.GetContentType(...)` instead.
+    We suggest you use a newer Mobius App or if you're really desperate, see 🔨 [](xref:Abyss.Releases.History.V20.IAppDataCache).
 
 1. ⬇️ An old internal interface called `ToSic.SexyContent.IAppAndDataHelpers` was removed.  
     It was implemented by `ToSic.SexyContent.Razor.SexyContentWebPage` and `ToSic.SexyContent.WebApi.SxcApiController`.

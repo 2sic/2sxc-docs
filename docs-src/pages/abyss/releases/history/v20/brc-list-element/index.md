@@ -4,7 +4,7 @@ uid: Abyss.Releases.History.V20.ListElement
 
 # Fix Breaking Change _List of Elements_ in v20
 
-**Keywords:** #Deprecated #ListOfElement #DependencyInjection
+**Keywords:** #Deprecated #ListOfElement
 
 2sxc v20 cleans up some historic, deprecated functionality.
 They were not used much, but if you have old code which used this, here's how to fix any code in production.
@@ -61,7 +61,72 @@ You have two options:
 1. **Use the new Razor base classes**: If you are using Razor, switch to the new Razor base classes which are much better. recommended!
 1. Quickly fudge the code so it works again.
 
-If you just want to fudge the code, you can use this code to get the same functionality:
+If you just want to fudge the code, you can use this code to get the same functionality.
+
+### Example 1 - using Content only
+
+Original:
+
+```razor
+@foreach(var Element in List)
+{
+  var Content = Element.Content;
+  // your code here
+}
+```
+
+Quick fudge:
+
+```razor
+@foreach (var Content in AsDynamic(Data.List)) {
+  // your code here
+}
+```
+
+### Example 2 - using Content and IndexOf
+
+Some of our old code used the `IndexOf` method to get the index of the current item in the list.
+
+Original:
+
+```razor
+@foreach(var Element in List)
+{
+  var Content = Element.Content;
+  <div class="co-slide sc-element co-slide-@List.IndexOf(Element)">
+    // your code here
+  </div>
+}
+```
+
+Quick fudge:
+
+```razor
+@{
+  // create a proper list, so we can use IndexOf
+  var list = AsDynamic(Data.List).ToList();
+}
+@foreach (var Content in list)
+{
+  <div class="co-slide sc-element co-slide-@list.IndexOf(Content)">
+    // your code here
+  </div>
+}
+```
+
+### Example 3 - using Content and Presentation
+
+Original:
+
+```razor
+@foreach(var e in List) {
+  var Content = e.Content;
+  var Presentation = e.Presentation;
+  // your code here
+}
+```
+
+Quick fudge:
 
 ```razor
 @foreach (var Content in AsDynamic(Data.List)) {
