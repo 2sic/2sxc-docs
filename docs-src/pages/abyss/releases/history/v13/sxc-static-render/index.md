@@ -44,7 +44,20 @@ The old API will continue to work for a while but show errors in the insight.
 
 So the previous example would look like this:
 
-```csharp
+```razor
+<div>
+  @ToSic.Sxc.Blocks.Render.One(...)
+</div>
+
+or
+<div>
+  @ToSic.Sxc.Blocks.Render.All(...)
+</div>
+```
+
+And now it would look like this:
+
+```razor
 @using ToSic.Sxc.Services;
 // some code
 var renderSvc = GetService<IRenderService>();
