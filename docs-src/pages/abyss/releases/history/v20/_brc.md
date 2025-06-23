@@ -30,7 +30,8 @@ Note that we marked the breaking changes like this
 1. ⚠️ In Dnn, the module is now installed in `/DesktopModules/ToSic.Sxc/` instead of `/DesktopModules/ToSic_SexyContent/`  
     This could affect you, if you had direct links to
     * the `$2sxc.min.js` file in your templates
-    * were using the extremely old image resizer on the path `/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx` TODO: guidance how to fix this
+    * were using the extremely old image resizer on the path `/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx`  
+      💡 see [](xref:Abyss.Releases.History.V20.BrcThumbnailer)
 
 1. ⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)  
     This is because older DNNs have important security issues, and we want to force people to update.  

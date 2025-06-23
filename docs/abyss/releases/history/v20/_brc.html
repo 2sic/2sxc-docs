@@ -129,11 +129,18 @@ It removes a lot of old cruft, and cleans up some history such as &quot;SexyCont
 <li><p>⚠️ All SQL tables and restructured - see <a class="xref" href="../../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a></p>
 </li>
 <li><p>⚠️ In Dnn, the module is now installed in <code>/DesktopModules/ToSic.Sxc/</code> instead of <code>/DesktopModules/ToSic_SexyContent/</code><br>
-This could affect you, if you had direct links to the <code>$2sxc.min.js</code> file anywhere.</p>
+This could affect you, if you had direct links to</p>
+<ul>
+<li>the <code>$2sxc.min.js</code> file in your templates</li>
+<li>were using the extremely old image resizer on the path <code>/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx</code> - see <a class="xref" href="brc-thumbnailer.aspx/index.html">Fix Breaking Change Thumbnailer.aspx in v20</a></li>
+</ul>
 </li>
 <li><p>⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)<br>
 This is because older DNNs have important security issues, and we want to force people to update.<br>
 As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.</p>
+</li>
+<li><p>⬇️ The image resizer only includes the 64 bit binaries, the 32 bit binaries were removed.
+This makes the distribution smaller, and I don't think anyone is using 32 bit servers anymore.</p>
 </li>
 <li><p>⬇️ All code was restructured to create smaller, more focused assemblies.<br>
 This should not affect you, but if you were using some very old code, it may have been moved to a different assembly.
@@ -210,10 +217,16 @@ We don't believe anyone used this.</p>
 <li><p>⬇️ An internal interface called <code>ToSic.Sxc.Data.IEntityLight</code> was removed<br>
 We don't believe anyone used this, but if you did, please use <code>ToSic.Eav.Data.IEntity</code> instead.</p>
 </li>
+<li><p>⬇️ A very old interface called <code>SexyContent.Interfaces.IDynamicEntity</code> was removed.<br>
+If you really had this in your code, please use <code>ToSic.Sxc.Data.IDynamicEntity</code> instead.</p>
+</li>
 <li><p>⬇️ Some internal objects were consolidated, such as <code>IAttributeBase</code> which nobody should have used anyway<br>
 We don't believe anyone used this.</p>
 </li>
-<li><p>⬇️ lots of internal namespaces and classes/interfaces were renamed.</p>
+<li><p>⬇️ lots of internal namespaces and classes/interfaces were renamed, including but not limited to:</p>
+<ol>
+<li><code>DynamicEntity.GetEntityValue(string name)</code> (removed)</li>
+</ol>
 </li>
 </ol>
 <h3 id="breaking-formulas-javascript-api-changes">Breaking Formulas JavaScript API Changes</h3>
