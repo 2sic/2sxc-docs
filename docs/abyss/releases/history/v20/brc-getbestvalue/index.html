@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Fix Breaking Change Stop Razor from Default to SexyContentWebPage in v20 | 2sxc 19 for Dnn and Oqtane </title>
+      <title>Fix Breaking Change drop old GetBestValue API in v20 | 2sxc 19 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Fix Breaking Change Stop Razor from Default to SexyContentWebPage in v20 | 2sxc 19 for Dnn and Oqtane ">
+      <meta name="title" content="Fix Breaking Change drop old GetBestValue API in v20 | 2sxc 19 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-automatic-base-class/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-getbestvalue/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,73 +102,61 @@
 
         
 
-        <article data-uid="Abyss.Releases.History.V20.RazorStopsDefaultingToOld">
-<h1 id="fix-breaking-change-stop-razor-from-default-to-sexycontentwebpage-in-v20">Fix Breaking Change Stop Razor from Default to <code>SexyContentWebPage</code> in v20</h1>
+        <article data-uid="Abyss.Releases.History.V20.GetBestValue">
+<h1 id="fix-breaking-change-drop-old-getbestvalue-api-in-v20">Fix Breaking Change drop old GetBestValue API in v20</h1>
 
 <p><strong>Keywords:</strong> #Deprecated</p>
 <p>2sxc v20 cleans up some historic, deprecated functionality.
 They were not used much, but if you have old code which used this, here's how to fix any code in production.</p>
-<p>A long time ago, we automatically added a <code>web.config</code> file to the <code>2sxc</code> folder of every portal,
-so that razor files <code>*.cshtml</code> would automatically use 2sxc features in their base class.</p>
-<p>At that time, we didn't expect Razor and 2sxc to evolve so much, so we just used the <code>SexyContentWebPage</code> as the base class.
-This was deprecated in v12, and replaced with the new Razor base classes which are much better.
-The old classes kept working, to avoid breaking existing apps, but they were not recommended for new apps.</p>
-<p>Unfortunately, we could not change the default, since all the code out there
-did not specify an <code>@inherits</code> directive, so it would always use the old base class.</p>
-<p>It's time to move on, so in v20 we stop automatically adding the <code>web.config</code> file, and instead require that you specify the base class in each Razor file.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>This change will only affect you, if you import an older App into a newer installation,
-which is missing the <code>web.config</code> file.</p>
-</div>
+<p>The <code>GetBestValue</code> API was removed, so you may see a message like this:</p>
+<pre><code class="lang-text">Error: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: '...' does not contain a definition for 'GetBestValue' at CallSite.Target(Closure , CallSite , Object , String ) at ...
+</code></pre>
+<h2 id="background">Background</h2>
+<p>When 2sxc was first created, the original idea was to have <strong>dynamic</strong> objects with properties such as <code>Content.Title</code>.
+These properties would be used to get and show values.</p>
+<p>Two key features were built into this:</p>
+<ol>
+<li>the ability to automatically select the value of the best matching user language</li>
+<li>the ability to track links such as <code>page:27</code> and <code>file:24</code> and automatically resolve them to the correct URL</li>
+</ol>
+<p>In the original implementation, the magic was done within the underlying <code>IEntity</code> object which was <em>not</em> dynamic.</p>
+<p>As rare cases evolved where the programmers needed access to the raw values, the <code>GetBestValue(...)</code> API was created to allow access to these values.
+There were about 4 different overloads, such as <code>GetBestValue(&quot;Title&quot;)</code> or <code>GetBestValue(&quot;Title&quot;, &quot;en&quot;)</code>.
+At the time, it still had the same underlying principle, just with options to skip the magic.
+So using <code>GetBestValue(&quot;Title&quot;)</code> would return the best matching value for the current user language - which meant that it had to know the current user language - which was an architectures nightmare.</p>
+<p>In future iteration of the system (ca. v12) we improved the separation of concerns, so that the <code>IEntity</code> object was no longer performing any of the automatic magic.
+But while most APIs were supporting clear <code>Get(...)</code> APIs, the name <code>GetBestValue(...)</code> was kept for backwards compatibility.</p>
 <h2 id="reason-for-removal">Reason for Removal</h2>
+<p>For the Moment-of-Truth (MoT) release v20, we decided to finally remove this API, since it was not used much, and it was a source of confusion for many developers.</p>
 <p>There are two key risk of leaving very old APIs alive:</p>
 <ol>
 <li>maintenance and testing for the developers of 2sxc - who work for free - goes up and up and up.</li>
 <li>people tend to discover old code and reuse it, spreading bad code practices.</li>
 </ol>
 <p>So it was time to clean up in this MoT release.</p>
-<h2 id="recommended-fix-upgrade-to-newer-functionality-with-">Recommended fix: Upgrade to Newer functionality with @inherits</h2>
-<p>We highly recommend that you</p>
-<ol>
-<li>specify the desired base class in each razor file</li>
-<li>ideally move to newer base classes <strong>recommended!</strong></li>
-</ol>
-<p>If you want to just keep on using the old base classes you can add this line to the top of your Razor files:</p>
-<pre><code class="lang-razor">@inherits ToSic.Sxc.Razor.SexyContentWebPage
-</code></pre>
-<h2 id="quick-fix-add-old-webconfig-manually">Quick Fix: Add old web.config manually</h2>
-<p>Create a file called <code>web.config</code> in an App folder under the <code>2sxc</code> folder of your portal, and add this content:</p>
-<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+<h2 id="recommended-fix-use-get-instead">Recommended fix: Use <code>Get(...)</code> instead</h2>
+<p>In most cases you can simply replace the <code>GetBestValue(...)</code> with <code>Get(...)</code>, which will return the same value.</p>
+<pre><code class="lang-c#">// old:
+var x = someObject.GetBestValue(&quot;DetailsPage&quot;); // stops working in v20
 
-&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;sectionGroup name=&quot;system.web.webPages.razor&quot; type=&quot;System.Web.WebPages.Razor.Configuration.RazorWebSectionGroup, System.Web.WebPages.Razor&quot;&gt;
-      &lt;section name=&quot;pages&quot; type=&quot;System.Web.WebPages.Razor.Configuration.RazorPagesSection, System.Web.WebPages.Razor&quot; requirePermission=&quot;false&quot; /&gt;
-    &lt;/sectionGroup&gt;
-  &lt;/configSections&gt;
-
-  &lt;system.web.webPages.razor&gt;
-    &lt;pages pageBaseType=&quot;ToSic.SexyContent.Razor.SexyContentWebPage&quot;&gt;
-    &lt;/pages&gt;
-  &lt;/system.web.webPages.razor&gt;
-&lt;/configuration&gt;
+// new:
+var x = someObject.Get(&quot;DetailsPage&quot;); // works in v12 - v20 and beyond
 </code></pre>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Introduced for DNN ca. 2sxc 7</li>
+<li>Introduced for DNN ca. 2sxc 2</li>
 <li>Deprecated in 2sxc 12 ca. 2018</li>
 <li>Planned for full removal in 2sxc 15 ca. middle of 2022</li>
 <li>Finally removed in 2sxc 20 ca. 2025-06</li>
 </ul>
 <hr>
-<p>Shortlink to here: <a href="https://go.2sxc.org/brc-20-stop-auto-inherits">https://go.2sxc.org/brc-20-stop-auto-inherits</a></p>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-20-getbestvalue">https://go.2sxc.org/brc-20-getbestvalue</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-automatic-base-class/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-getbestvalue/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

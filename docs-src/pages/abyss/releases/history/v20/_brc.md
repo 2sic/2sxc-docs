@@ -74,6 +74,10 @@ Note that we marked the breaking changes like this
     Normally this should not affect you, if you are `@using ToSic.Eav.Data` in your code, since it will just work.
     If you did this is a more exotic way, add the `@using ToSic.Eav.Data` to your code, and it will work again.
 
+1. ⚠️ `IEntity` had various `GetBestValue(...)` APIs which were removed.
+    We believe that about 2-3% of all code used this, so it may affect you.
+    🔨 see [](xref:Abyss.Releases.History.V20.GetBestValue)
+
 1. ⬇️ APIs on `IEntity` were modified
 
     1. `.Children(...)` and `.Parents(...)` now return `IEnumerable<IEntity>` instead of `List<IEntity>`.  

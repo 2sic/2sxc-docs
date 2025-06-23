@@ -51,7 +51,7 @@ If you want to just keep on using the old base classes you can add this line to 
 
 ## Quick Fix: Add old web.config manually
 
-Create a file called `web.config` in the `2sxc` folder of your portal, and add this content:
+Create a file called `web.config` in an App folder under the `2sxc` folder of your portal, and add this content:
 
 ```xml
 <?xml version="1.0"?>
