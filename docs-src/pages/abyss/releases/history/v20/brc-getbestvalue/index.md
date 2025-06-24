@@ -65,7 +65,7 @@ var x = someObject.Get("DetailsPage"); // works in v12 - v20 and beyond
 * Introduced for DNN ca. 2sxc 2
 * Deprecated in 2sxc 12 ca. 2018
 * Planned for full removal in 2sxc 15 ca. middle of 2022
-* Finally removed in 2sxc 20 ca. 2025-06
+* Finally removed in 2sxc v20 ca. 2025-06
 
 ---
 

@@ -17,27 +17,28 @@ The App has three Sources which can be used in LookUps
 
 ## `App` Tokens
 
-The following tokens are related to App-Information and Resources. Dnn/DotNetNuke does have these, you can only access them when in a 2sxc-App. 
+The following tokens are related to App-Information and Resources. Dnn/DotNetNuke does have these, you can only access them when in a 2sxc-App.
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
-    <thead>
-        <tr>
-            <td>Token</td>
-            <td>Description</td>
-            <td>Result</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>&#91;App:Path]</td>
-            <td></td>
-            <td>/App-Demos/2sxc/Tutorial Tokens</td>
-		</tr>
-        <tr>
-            <td>&#91;App:PhysicalPath]</td>
-            <td></td>
-            <td>\\nasw2\P\2sxc 2019b\Web\App-Demos\2sxc\Tutorial Tokens</td>
-		</tr>
+  <thead>
+      <tr>
+          <td>Token</td>
+          <td>Description</td>
+          <td>Result</td>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&#91;App:Path]</td>
+          <td></td>
+          <td>/App-Demos/2sxc/Tutorial Tokens</td>
+      </tr>
+      <tr>
+          <td>&#91;App:PhysicalPath]</td>
+          <td></td>
+          <td>\\SomeServer\SomeShare\2sxc Web\Web\App-Demos\2sxc\Tutorial Tokens</td>
+      </tr>
+  <tbody>
 <!-- Internal note: these properties are not surfaced in the tokens ATM
     {"DisplayName", String.IsNullOrEmpty(appName) ? eavAppName : appName },
     {"Folder", String.IsNullOrEmpty(appName) ? eavAppName : RemoveIllegalCharsFromPath(appName) },
@@ -53,23 +54,23 @@ The following tokens are related to App-Information and Resources. Dnn/DotNetNuk
 
 
 <table summary="" border="0" cellpadding="2" cellspacing="3" width="100%">
-    <thead>
-        <tr>
-            <td>Token</td>
-            <td>Description</td>
-            <td>Result</td>
-        </tr>
-    </thead>
-        <tr>
-            <td>&#91;App:Settings:&lt;Property&gt;]</td>
-            <td>App Settings which the App-designer defined.</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>&#91;App:Settings:UseLightbox]</td>
-            <td>All the information (multi-lingual)</td>
-            <td>true</td>
-        </tr>        
+  <thead>
+    <tr>
+      <td>Token</td>
+      <td>Description</td>
+      <td>Result</td>
+    </tr>
+  </thead>
+  <tr>
+    <td>&#91;App:Settings:&lt;Property&gt;]</td>
+    <td>App Settings which the App-designer defined.</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&#91;App:Settings:UseLightbox]</td>
+    <td>All the information (multi-lingual)</td>
+    <td>true</td>
+  </tr>
 </table>
 
 ## `App:Resources` Tokens
@@ -92,7 +93,7 @@ The following tokens are related to App-Information and Resources. Dnn/DotNetNuk
             <td>All the information (multi-lingual)</td>
             <td>Hello there Token-Learner</td>
         </tr>
-	</tbody>
+ </tbody>
 </table>
 
 

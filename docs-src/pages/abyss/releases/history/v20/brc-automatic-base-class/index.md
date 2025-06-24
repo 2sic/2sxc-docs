@@ -78,7 +78,7 @@ Create a file called `web.config` in an App folder under the `2sxc` folder of yo
 * Introduced for DNN ca. 2sxc 7
 * Deprecated in 2sxc 12 ca. 2018
 * Planned for full removal in 2sxc 15 ca. middle of 2022
-* Finally removed in 2sxc 20 ca. 2025-06
+* Finally removed in 2sxc v20 ca. 2025-06
 
 ---
 

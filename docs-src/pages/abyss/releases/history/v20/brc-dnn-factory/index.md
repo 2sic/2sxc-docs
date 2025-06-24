@@ -67,7 +67,7 @@ For a list of other APIs, see the [IDynamicCodeService docs](xref:ToSic.Sxc.Serv
 * Introduced for DNN ca. 2sxc 7 with Dependency Injection based on .net Standard 1.6
 * Deprecated in 2sxc 13 with the integration of Dnn 9.4 DI
 * Planned for full removal in 2sxc 15 ca. middle of 2022
-* Finally removed in 2sxc 20
+* Finally removed in 2sxc v20
 
 ---
 

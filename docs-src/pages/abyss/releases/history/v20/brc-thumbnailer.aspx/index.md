@@ -78,7 +78,7 @@ As you can see, the important things are:
 * replaced with ImageResizer.net ca. 2sxc 5 in ca. 2014
 * replaced with ImageFlow in ca. v12 with same URL schema ca. 2018
 * replaced the `thumbnailer.aspx` in 2019-05 to redirect to new schema, but links still worked
-* Removed thumbnailer.aspx in 2sxc 20 with the path change to `/DesktopModules/ToSic.Sxc/`
+* Removed thumbnailer.aspx in 2sxc v20 with the path change to `/DesktopModules/ToSic.Sxc/`
 
 ---
 

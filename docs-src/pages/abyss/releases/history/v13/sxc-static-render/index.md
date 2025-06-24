@@ -73,7 +73,7 @@ var renderSvc = GetService<IRenderService>();
 * New `IRenderService` introduced in 2sxc 11 and 12
 * Deprecated in 2sxc 13
 * Planned for full removal in 2sxc 14 ca. middle of 2022
-* Finally removed in 2sxc 20 ca. 2025-06 [](xref:Abyss.Releases.History.V20.BlocksRender)
+* Finally removed in 2sxc v20 ca. 2025-06 [](xref:Abyss.Releases.History.V20.BlocksRender)
 
 ---
 

@@ -1,9 +1,9 @@
 
 
-## Breaking Changes in EAV and 2sxc 20 - Moment-of-Truth
+## Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth
 
 > [!IMPORTANT]
-> 2sxc 20 is a milestone clean-up release, so it contains a lot of breaking changes.
+> 2sxc v20 is a milestone clean-up release, so it contains a lot of breaking changes.
 >
 > This is the **Moment of Truth** where you see if you accidentally used internal or very old APIs.
 >
@@ -16,6 +16,10 @@ Note that we marked the breaking changes like this
 
 * ⚠️ things which may affect you
 * ⬇️ things which are extremely unlikely to affect you
+
+> [!TIP]
+> Note that the focus of breaking changes is on the **Razor** code.
+> But there are also [2 small breaking changes in **Formulas**](#breaking-formulas-api-changes).
 
 ### Highlights
 
@@ -156,7 +160,7 @@ Note that we marked the breaking changes like this
     The APIs on it still work, but the interface was removed; you should not notice the clean-up.
 
 
-### Breaking Formulas JavaScript API Changes
+### Breaking Formulas API Changes
 
 #### V1 `form.runFormulas()` Was Removed
 
