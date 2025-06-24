@@ -121,7 +121,7 @@ Interface IAppData  <a class="header-action link-secondary" title="View source" 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IMetadataGet</code></pre>
+public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IMetadataSource</code></pre>
   </div>
 
 
@@ -176,10 +176,10 @@ public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZon
       <a class="xref" href="ToSic.Lib.Logging.IHasLog.html#ToSic_Lib_Logging_IHasLog_Log">IHasLog.Log</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.Metadata.IMetadataGet.html#ToSic_Eav_Metadata_IMetadataGet_GetMetadata__1_System_Int32___0_System_String_">IMetadataGet.GetMetadata&lt;TKey&gt;(int, TKey, string)</a>
+      <a class="xref" href="ToSic.Eav.Metadata.IMetadataSource.html#ToSic_Eav_Metadata_IMetadataSource_GetMetadata__1_System_Int32___0_System_String_">IMetadataSource.GetMetadata&lt;TKey&gt;(int, TKey, string)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.Metadata.IMetadataGet.html#ToSic_Eav_Metadata_IMetadataGet_GetMetadata__1_ToSic_Eav_Metadata_TargetTypes___0_System_String_">IMetadataGet.GetMetadata&lt;TKey&gt;(TargetTypes, TKey, string)</a>
+      <a class="xref" href="ToSic.Eav.Metadata.IMetadataSource.html#ToSic_Eav_Metadata_IMetadataSource_GetMetadata__1_ToSic_Eav_Metadata_TargetTypes___0_System_String_">IMetadataSource.GetMetadata&lt;TKey&gt;(TargetTypes, TKey, string)</a>
     </div>
   </dd></dl>
 
@@ -195,7 +195,7 @@ public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZon
   <a id="ToSic_Eav_Apps_IAppData_Create_" data-uid="ToSic.Eav.Apps.IAppData.Create*"></a>
 
   <h3 id="ToSic_Eav_Apps_IAppData_Create_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_ToSic_Eav_Metadata_ITarget_" data-uid="ToSic.Eav.Apps.IAppData.Create(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,ToSic.Eav.Metadata.ITarget)">
-  Create(string, Dictionary&lt;string, object&gt;, string, ITarget)
+  Create(string, Dictionary&lt;string, object&gt;, string?, ITarget?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Apps/Apps/Sys/Interfaces/IAppData.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -204,7 +204,7 @@ public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZon
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEntity Create(string contentTypeName, Dictionary&lt;string, object&gt; values, string userName = null, ITarget target = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IEntity Create(string contentTypeName, Dictionary&lt;string, object&gt; values, string? userName = null, ITarget? target = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -245,7 +245,7 @@ public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZon
   <a id="ToSic_Eav_Apps_IAppData_Create_" data-uid="ToSic.Eav.Apps.IAppData.Create*"></a>
 
   <h3 id="ToSic_Eav_Apps_IAppData_Create_System_String_System_Collections_Generic_IEnumerable_System_Collections_Generic_Dictionary_System_String_System_Object___System_String_" data-uid="ToSic.Eav.Apps.IAppData.Create(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String)">
-  Create(string, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt;, string)
+  Create(string, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt;, string?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Apps/Apps/Sys/Interfaces/IAppData.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -254,7 +254,7 @@ public interface IAppData : IDataSource, IDataSourceLinkable, IAppIdentity, IZon
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; Create(string contentTypeName, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt; multiValues, string userName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; Create(string contentTypeName, IEnumerable&lt;Dictionary&lt;string, object&gt;&gt; multiValues, string? userName = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -293,7 +293,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <a id="ToSic_Eav_Apps_IAppData_Delete_" data-uid="ToSic.Eav.Apps.IAppData.Delete*"></a>
 
   <h3 id="ToSic_Eav_Apps_IAppData_Delete_System_Int32_System_String_" data-uid="ToSic.Eav.Apps.IAppData.Delete(System.Int32,System.String)">
-  Delete(int, string)
+  Delete(int, string?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Apps/Apps/Sys/Interfaces/IAppData.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -302,7 +302,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Delete(int entityId, string userName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void Delete(int entityId, string? userName = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -329,7 +329,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <a id="ToSic_Eav_Apps_IAppData_GetCustomMetadata_" data-uid="ToSic.Eav.Apps.IAppData.GetCustomMetadata*"></a>
 
   <h3 id="ToSic_Eav_Apps_IAppData_GetCustomMetadata__1___0_System_String_" data-uid="ToSic.Eav.Apps.IAppData.GetCustomMetadata``1(``0,System.String)">
-  GetCustomMetadata&lt;TKey&gt;(TKey, string)
+  GetCustomMetadata&lt;TKey&gt;(TKey, string?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Apps/Apps/Sys/Interfaces/IAppData.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -338,7 +338,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; GetCustomMetadata&lt;TKey&gt;(TKey key, string contentTypeName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IEntity&gt; GetCustomMetadata&lt;TKey&gt;(TKey key, string? contentTypeName = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -376,7 +376,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <a id="ToSic_Eav_Apps_IAppData_Update_" data-uid="ToSic.Eav.Apps.IAppData.Update*"></a>
 
   <h3 id="ToSic_Eav_Apps_IAppData_Update_System_Int32_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_" data-uid="ToSic.Eav.Apps.IAppData.Update(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
-  Update(int, Dictionary&lt;string, object&gt;, string)
+  Update(int, Dictionary&lt;string, object&gt;, string?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Apps/Apps/Sys/Interfaces/IAppData.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -385,7 +385,7 @@ Changed in 2sxc 10.30 - now returns the id of the created items</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Update(int entityId, Dictionary&lt;string, object&gt; values, string userName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void Update(int entityId, Dictionary&lt;string, object&gt; values, string? userName = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

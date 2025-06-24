@@ -145,9 +145,9 @@ public interface ICacheService</code></pre>
 </ul>
 <p>In most cases, you'll</p>
 <ol>
-<li>start by creating <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a> using a call to <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__">CreateSpecs(string, NoParamOrder, string, bool?)</a></li>
-<li>use a fluid API on the specs to determine what you want, like <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_">VaryByPageParameters(string, NoParamOrder, bool)</a>, <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser">VaryByUser()</a> <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_">WatchAppData(NoParamOrder)</a> or just set different expiry options.</li>
-<li>Then use these specs to either check if it <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_">Contains(ICacheSpecs)</a> or use <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__">TryGet&lt;T&gt;(ICacheSpecs, out T)</a> or <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__">GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)</a></li>
+<li>start by creating <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html">ICacheSpecs</a> using a call to <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__">CreateSpecs(string, NoParamOrder, string?, bool?)</a></li>
+<li>use a fluid API on the specs to determine what you want, like <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByPageParameters_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_">VaryByPageParameters(string?, NoParamOrder, bool)</a>, <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_VaryByUser">VaryByUser()</a> <a class="xref" href="ToSic.Sxc.Services.Cache.ICacheSpecs.html#ToSic_Sxc_Services_Cache_ICacheSpecs_WatchAppData_ToSic_Lib_Coding_NoParamOrder_">WatchAppData(NoParamOrder)</a> or just set different expiry options.</li>
+<li>Then use these specs to either check if it <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_Contains_ToSic_Sxc_Services_Cache_ICacheSpecs_">Contains(ICacheSpecs)</a> or use <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__">TryGet&lt;T&gt;(ICacheSpecs, out T?)</a> or <a class="xref" href="ToSic.Sxc.Services.ICacheService.html#ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__">GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;?)</a></li>
 </ol>
 <p>History</p>
 <ul>
@@ -244,7 +244,7 @@ public interface ICacheService</code></pre>
   <a id="ToSic_Sxc_Services_ICacheService_CreateSpecs_" data-uid="ToSic.Sxc.Services.ICacheService.CreateSpecs*"></a>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_CreateSpecs_System_String_ToSic_Lib_Coding_NoParamOrder_System_String_System_Nullable_System_Boolean__" data-uid="ToSic.Sxc.Services.ICacheService.CreateSpecs(System.String,ToSic.Lib.Coding.NoParamOrder,System.String,System.Nullable{System.Boolean})">
-  CreateSpecs(string, NoParamOrder, string, bool?)
+  CreateSpecs(string, NoParamOrder, string?, bool?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Cache/ICacheService.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -254,7 +254,7 @@ public interface ICacheService</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ICacheSpecs CreateSpecs(string key, NoParamOrder protector = default, string regionName = null, bool? shared = null)</code></pre>
+    <pre><code class="lang-csharp hljs">ICacheSpecs CreateSpecs(string key, NoParamOrder protector = default, string? regionName = null, bool? shared = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -293,7 +293,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <a id="ToSic_Sxc_Services_ICacheService_GetOrSet_" data-uid="ToSic.Sxc.Services.ICacheService.GetOrSet*"></a>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_GetOrSet__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder_System_Func___0__" data-uid="ToSic.Sxc.Services.ICacheService.GetOrSet``1(ToSic.Sxc.Services.Cache.ICacheSpecs,ToSic.Lib.Coding.NoParamOrder,System.Func{``0})">
-  GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;)
+  GetOrSet&lt;T&gt;(ICacheSpecs, NoParamOrder, Func&lt;T&gt;?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Cache/ICacheService.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -302,7 +302,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">T GetOrSet&lt;T&gt;(ICacheSpecs specs, NoParamOrder protector = default, Func&lt;T&gt; generate = null)</code></pre>
+    <pre><code class="lang-csharp hljs">T? GetOrSet&lt;T&gt;(ICacheSpecs specs, NoParamOrder protector = default, Func&lt;T&gt;? generate = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -340,7 +340,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <a id="ToSic_Sxc_Services_ICacheService_Get_" data-uid="ToSic.Sxc.Services.ICacheService.Get*"></a>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_Get__1_ToSic_Sxc_Services_Cache_ICacheSpecs_ToSic_Lib_Coding_NoParamOrder___0_" data-uid="ToSic.Sxc.Services.ICacheService.Get``1(ToSic.Sxc.Services.Cache.ICacheSpecs,ToSic.Lib.Coding.NoParamOrder,``0)">
-  Get&lt;T&gt;(ICacheSpecs, NoParamOrder, T)
+  Get&lt;T&gt;(ICacheSpecs, NoParamOrder, T?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Cache/ICacheService.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -349,7 +349,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">T Get&lt;T&gt;(ICacheSpecs specs, NoParamOrder protector = default, T fallback = default)</code></pre>
+    <pre><code class="lang-csharp hljs">T? Get&lt;T&gt;(ICacheSpecs specs, NoParamOrder protector = default, T? fallback = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -396,7 +396,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">object Remove(ICacheSpecs key)</code></pre>
+    <pre><code class="lang-csharp hljs">object? Remove(ICacheSpecs key)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -467,7 +467,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <a id="ToSic_Sxc_Services_ICacheService_TryGet_" data-uid="ToSic.Sxc.Services.ICacheService.TryGet*"></a>
 
   <h3 id="ToSic_Sxc_Services_ICacheService_TryGet__1_ToSic_Sxc_Services_Cache_ICacheSpecs___0__" data-uid="ToSic.Sxc.Services.ICacheService.TryGet``1(ToSic.Sxc.Services.Cache.ICacheSpecs,``0@)">
-  TryGet&lt;T&gt;(ICacheSpecs, out T)
+  TryGet&lt;T&gt;(ICacheSpecs, out T?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Cache/ICacheService.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -476,7 +476,7 @@ By default, each app has its own region, preventing key collisions between apps.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGet&lt;T&gt;(ICacheSpecs specs, out T value)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGet&lt;T&gt;(ICacheSpecs specs, out T? value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
