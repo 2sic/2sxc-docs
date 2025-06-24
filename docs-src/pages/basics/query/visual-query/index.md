@@ -7,7 +7,7 @@ uid: Basics.Query.VisualQuery.Index
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .query-app { visibility: visible; } </style>
 
-2sxc includes a visual designer for creating queries called **VisualQuery**. It's drag-and drop, and each component can be configured to your needs. 
+2sxc includes a visual designer for creating queries called **VisualQuery**. It's drag-and drop, and each component can be configured to your needs.
 
 ## The Designer
 
@@ -22,7 +22,7 @@ This is what you see when you run a query:
 
 ## Add Parts / DataSources
 
-Just add parts to your query as you need them: 
+Just add parts to your query as you need them:
 
 <img src="./assets/designer-add-datasource.jpg" width="100%" class="full-width">
 
@@ -95,7 +95,10 @@ All parts which can be configured show a gear-icon when you mouse over them:
 * [Blog Posts about VisualQuery Designer](https://2sxc.org/en/blog/tag/visual-query-designer)
 * [](xref:NetCode.DataSources.DataSource)
 
+---
+
 ## History
 
 1. Introduced in 2sxc 07.00
 
+Shortlink to here: <https://go.2sxc.org/visual-query>

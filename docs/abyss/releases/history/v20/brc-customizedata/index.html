@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Fix Breaking Change drop old CustomizeData and CustomizeSearch API in v20 | 2sxc 19 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Fix Breaking Change drop old CustomizeData and CustomizeSearch API in v20 | 2sxc 19 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-customizedata/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Releases.History.V20.CustomizeData">
+<h1 id="fix-breaking-change-drop-old-customizedata-and-customizesearch-api-in-v20">Fix Breaking Change drop old CustomizeData and CustomizeSearch API in v20</h1>
+
+<p><strong>Keywords:</strong> #Deprecated</p>
+<p>2sxc v20 cleans up some historic, deprecated functionality.
+They were not used much, but if you have old code which used this, here's how to fix any code in production.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The <code>CustomizeData(...)</code> API was removed, together with <code>CustomizeSearch(...)</code> and <code>Purpose</code>, so you may see a message like this:</p>
+<pre><code class="lang-text">Error: ToSic.Sys.Exceptions.ExceptionWithHelp: Error in your code. Check for custom AppCode.Razor.SomeRazor that forgets to inherit 'Custom.Hybrid.RazorTyped' or similar. ***** You can see more help in the toolbar. ***** What follows is the internal error: ------------------------- ---&gt; System.Web.HttpCompileException: XXX.cshtml🎯(5): error CS0115: 'XXX_cshtml.CustomizeData()': no suitable method found to override ...
+</code></pre>
+<img src="../../../../../pages/abyss/releases/history/v20/brc-customizedata/assets/error-customize-data.webp" class="full-width">
+<p>or</p>
+<pre><code class="lang-text">error CS0246: The type or namespace name 'ISearchItem' could not be found (are you missing a using directive or an assembly reference?)
+</code></pre>
+<img src="../../../../../pages/abyss/releases/history/v20/brc-customizedata/assets/error-isearchitem.webp" class="full-width">
+<p>or</p>
+<pre><code class="lang-text">error CS0115: 'XXX_cshtml.CustomizeSearch(Dictionary&lt;string, List&lt;ISearchItem&gt;&gt;, IContainer, DateTime)': no suitable method found to override 
+</code></pre>
+<img src="../../../../../pages/abyss/releases/history/v20/brc-customizedata/assets/error-customize-search.webp" class="full-width">
+<h2 id="background">Background</h2>
+<p>When 2sxc was first created, the original idea was that Razor templates could receive data from various sources, such as:</p>
+<ol>
+<li>the modules &quot;own&quot; data, which was added/edited by the editor (this was and is automatic)</li>
+<li>data which the developer prepared in some initialization code, on a method called <code>CustomizeData(...)</code> (this was manual)</li>
+<li>in addition, the developer could also prepare data for search, on a method called <code>CustomizeSearch(...)</code> (this was manual)</li>
+</ol>
+<p>The underlying idea was that this way, the Razor template could be used flexibly in different ways, such as:</p>
+<ol>
+<li>Html output: showing data directly</li>
+<li>WebApi: publish the same data through WebApi</li>
+<li>JS serialization: convert the data to JSON and use it in JavaScript</li>
+<li>Search: use the data to search for content</li>
+<li>...and this with various combinations of where data comes from</li>
+</ol>
+<p>Most of these features were superseded by other functionality many years ago, such as:</p>
+<ol>
+<li>Visual Query</li>
+<li>WebApi</li>
+<li>Search API</li>
+</ol>
+<p>The internal flow of data was:</p>
+<ol>
+<li>prepare data using all the default mechanisms, providing the data on <code>Data</code></li>
+<li>Optionally call <code>CustomizeData(...)</code> to add or change data.
+Note that <code>CustomizeData(...)</code> could also query the <code>Purpose</code> to determine if it was being called for search or WebApi publishing, etc.</li>
+<li>Finally: Either
+<ol>
+<li>run the Razor template, which could then use the data on the <code>Data</code> object or the <code>Content</code> object, etc.</li>
+<li>or call <code>CustomizeSearch(...)</code> to retrieve the data for search and pass it on to the Dnn search indexer.</li>
+</ol>
+</li>
+</ol>
+<p>This old code continued to work, but was not used much in production, yet still added a lot of maintenance overhead for the 2sxc developers.</p>
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>For the Moment-of-Truth (MoT) release v20, we decided to finally remove this API, since it was not used much, and it was a source of confusion for many developers.</p>
+<p>There are two key risk of leaving very old APIs alive:</p>
+<ol>
+<li>maintenance and testing for the developers of 2sxc - who work for free - goes up and up and up.</li>
+<li>people tend to discover old code and reuse it, spreading bad code practices.</li>
+</ol>
+<p>Another problem was that these methods used an old programming style (non-functional)
+which relied on side-effects (bad) to achieve their goals, which is not how modern 2sxc works.</p>
+<p>So it was time to clean up in this MoT release.</p>
+<h2 id="example-of-old-code">Example of old Code</h2>
+<p>This is from an ancient FAQ Module v1.00.03 which was available for 2sxc v8, ca. 2017:</p>
+<pre><code class="lang-c#">@using ToSic.Eav.DataSources
+@using ToSic.SexyContent
+@functions{
+  // Prepare the data - get all categories through the pipeline
+  public override void CustomizeData()
+  {
+    // new features in 6.1 - the App DataSource CreateSource&lt;App&gt; and also the RelationshipFilter
+    var qsOfCat = CreateSource&lt;RelationshipFilter&gt;(App.Data[&quot;QandA&quot;]);
+    qsOfCat.Relationship = &quot;Categories&quot;;
+    qsOfCat.Filter = Content.Category.Count &gt; 0 ? Content.Category[0].Name : &quot;&quot;;
+    var sorted = CreateSource&lt;ValueSort&gt;(qsOfCat);
+    sorted.Attributes = &quot;EntityTitle&quot;;
+    Data.In.Add(&quot;QandA&quot;, sorted[&quot;Default&quot;]);
+  }
+}
+</code></pre>
+<h2 id="recommended-fix-depends-on-the-scenario">Recommended fix: Depends on the Scenario</h2>
+<h3 id="recommended-fix-for-data-source-scenarios">Recommended Fix for Data-Source Scenarios</h3>
+<p>In most cases, <code>CustomizeData(...)</code> was used to process data through DataSources, such as <code>CreateSource&lt;...&gt;</code>.
+This was because in the early days, it was really difficult to write code which would select data from the App or other sources,
+so almost every manipulation incl. sorting, filtering, etc. was done through DataSources.</p>
+<p>The above example from the FAQ Module would be such a case.</p>
+<p>You have at least two options to fix this:</p>
+<ol>
+<li>Use <a class="xref" href="../../../../../basics/query/visual-query/index.html">Visual Query</a> (recommended)</li>
+<li>Continue to use DataSources, but without modifying the <code>Data</code> object (which is officially immutable)</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For such simple it's best to just use Visual Query.</p>
+<p>If you do not have experience with this, we recommend the <a class="xref" href="../../../../../basics/query/visual-query/index.html">docs</a>
+and trying newer version of the same App, to see how it's implemented there.
+For example, try the latest <a href="https://2sxc.org/en/apps/details/app/faq4-hybrid-for-dnn-and-oqtane">FAQ App v4</a> which uses Visual Query.</p>
+</div>
+<p>If you just want a quick-fix and, you can change the code as follows (based on the previous example):</p>
+<p>TODO:</p>
+<pre><code class="lang-razor">@using ToSic.Eav.DataSources
+@* old - this namespace is not supported any more *@
+@* @using ToSic.SexyContent *@
+@using ToSic.Sxc.Data
+
+@functions{
+    // Prepare the data - get all categories through the pipeline
+    // old: public override void CustomizeData()
+    // new - returns an IDataSource and renamed to GetData()
+    public ToSic.Eav.DataSource.IDataSource GetData()
+    {
+        // new features in 6.1 - the App DataSource CreateSource&lt;App&gt; and also the RelationshipFilter
+        var qsOfCat = CreateSource&lt;RelationshipFilter&gt;(App.Data[&quot;QandA&quot;]);
+        qsOfCat.Relationship = &quot;Categories&quot;;
+        qsOfCat.Filter = Content.Category.Count &gt; 0 ? Content.Category[0].Name : &quot;&quot;;
+        var sorted = CreateSource&lt;ValueSort&gt;(qsOfCat);
+        sorted.Attributes = &quot;EntityTitle&quot;;
+        // old: Data.In.Add(&quot;QandA&quot;, sorted[&quot;Default&quot;]);
+        // new
+        return sorted;
+    }
+}
+</code></pre>
+<p>In most cases you can simply replace the <code>GetBestValue(...)</code> with <code>Get(...)</code>, which will return the same value.</p>
+<pre><code class="lang-c#">// old:
+var x = someObject.GetBestValue(&quot;DetailsPage&quot;); // stops working in v20
+
+// new:
+var x = someObject.Get(&quot;DetailsPage&quot;); // works in v12 - v20 and beyond
+</code></pre>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced for DNN ca. 2sxc 2</li>
+<li>Deprecated in 2sxc 12 ca. 2018</li>
+<li>Planned for full removal in 2sxc 15 ca. middle of 2022</li>
+<li>Finally removed in 2sxc 20 ca. 2025-06</li>
+</ul>
+<hr>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-20-customizedata">https://go.2sxc.org/brc-20-customizedata</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-customizedata/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
