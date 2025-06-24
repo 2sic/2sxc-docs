@@ -4,23 +4,23 @@ uid: NetCode.Search.Index
 
 # Customize the Search-Index Results (Dnn ☢️ only)
 
-Dnn has a built-in search engine which crawls all the modules asking them for data. 
+Dnn has a built-in search engine which crawls all the modules asking them for data.
 
-You can easily modify how data in your modules appear in the Dnn search results. 
+You can easily modify how data in your modules appear in the Dnn search results.
 
 > [!TIP]
 > Before you start, make sure you understand how the [Search Index and Customizations work](xref:Basics.Cms.Search.Index).
 
 
 > [!NOTE]
-> This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file. 
+> This document applies to 2sxc 12.02+. As of 2sxc 12 we only recommend this new approach using the separate code file.
 >
 > Previous versions used another mechanism which is deprecated. If you need to know more, read the [Obsolete Razor](xref:NetCode.Razor.Obsolete.Index#data-and-search-customization) docs.
 
 
-## Programming a Search Mapper 
+## Programming a Search Mapper
 
-Here's an example of a `SearchMapper.cs`: 
+Here's an example of a `SearchMapper.cs`:
 
 ```c#
 using System;
@@ -73,9 +73,9 @@ public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
 
 ## Basics to get Right
 
-1. The File name can be anything you want, but the class name must match it. 
+1. The File name can be anything you want, but the class name must match it.
 1. Your code can be a simple C# class, but we recommend it inherits from `Custom.Hybrid.Code12`
-    1. ...because you then also get more objects like [`App`](xref:NetCode.DynamicCode.Objects.App.Index) or [`CmsContext`](xref:NetCode.DynamicCode.CmsContext) 
+    1. ...because you then also get more objects like [`App`](xref:NetCode.DynamicCode.Objects.App.Index) or [`CmsContext`](xref:NetCode.DynamicCode.CmsContext)
     1. You can also inherit from `Custom.Dnn.Code12` which would give you the [`Dnn` object](xref:NetCode.DynamicCode.Dnn) but we don't suggest it, because you should use the [`CmsContext`](xref:NetCode.DynamicCode.CmsContext) where possible.
 1. Your class must implement `ToSic.Sxc.Search.ICustomizeSearch` to inform the compiler that it can help with search mapping
 1. You must then implement `public void CustomizeSearch(...)` as shown in the example
@@ -92,7 +92,7 @@ Your code will receive the data which would otherwise just be passed to the Dnn 
 
 ## Develop Search Customizations
 
-To create your search indexing code you'll probably need to tweak and test a few times. Note that the [2sxc Blog App](xref:App.Blog) shows you a real-life example of Search-Customizations. 
+To create your search indexing code you'll probably need to tweak and test a few times. Note that the [2sxc Blog App](xref:App.Blog) shows you a real-life example of Search-Customizations.
 
 So once you've [configured a View to use a custom Search-Mapper](xref:Basics.Cms.Search.Index#custom-search-index-using-code) your work will usually consist of doing the following
 
@@ -108,38 +108,38 @@ Two tools will help you to debug issues
 
 #### 1. Dnn Events Log
 
-Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn't even running, check that. 
+Really bad issues (like if your code cannot compile) will be logged in the Dnn Events. So if your code isn't even running, check that.
 
 #### 2. 2sxc Insights
 
-[2sxc Insights](xref:NetCode.Debug.Insights.Index) will help you see what's happening exactly in your code when you need it. 
+[2sxc Insights](xref:NetCode.Debug.Insights.Index) will help you see what's happening exactly in your code when you need it.
 
 > [!WARNING]
-> By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn't find the occurances which you need. 
+> By default the search index will not log its work in the Insights, because it would flood the logs and you wouldn't find the occurances which you need.
 >
 > Because of this, logging is disabled by default, and your code can activate it using `Log.Preserve = true;`
 
-Remember to add a bunch of logging like `Log.Add("Got to here");` etc. to verify everything works step-by-step. 
+Remember to add a bunch of logging like `Log.Add("Got to here");` etc. to verify everything works step-by-step.
 
 
 ## Common Issues
 
 #### Already Indexed Data is not Reindexed
 
-Often when you're playing with indexing customizations you'll re-run the indexer and expect to see the changed results - but it's still what was there before. 
-This is because each Entity has a modified timestamp and only changed entities will be re-indexed. 
-This is great for performance, but challenging when making changes. 
+Often when you're playing with indexing customizations you'll re-run the indexer and expect to see the changed results - but it's still what was there before.
+This is because each Entity has a modified timestamp and only changed entities will be re-indexed.
+This is great for performance, but challenging when making changes.
 
-👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked. 
+👉 Remember to flush the Dnn Search Index before re-indexing to really see if your code worked.
 
 
 #### Search Index and Multilanguage (i18n)
 
-It's important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that. 
+It's important to know that on multi-language sites, the module is indexed multiple times for each language. So just be aware of that.
 
-This event is called by the view-engine _after_ calling [CustomizeData](xref:NetCode.Razor.CustomizeData) and before passing the `Data` object to the Dnn Search Indexer. 
+This event is called by the view-engine _after_ calling [CustomizeData](xref:NetCode.Razor.CustomizeData) and before passing the `Data` object to the Dnn Search Indexer.
 
-You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page. 
+You can override this event to change how data is presented to the search, for example by bundling items together, or by giving items different URLs so that search knows that they are to appear on a sub-page.
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
@@ -178,9 +178,11 @@ In your razor page (.cshtml file) you can add a script block implementing this, 
 }
 
 ```
-The code above will skip customizing any data (but often you would want that too), then CustomizeSearch modifies the list of search-items before they are indexed. 
+
+The code above will skip customizing any data (but often you would want that too), then CustomizeSearch modifies the list of search-items before they are indexed.
 
 ## How it works
+
 In general everything will work automatically. This is what happens:
 
 1. 2sxc will retrieve the data added to this module
@@ -200,17 +202,21 @@ In general everything will work automatically. This is what happens:
 
 
 ## Read also
+
 * [Purpose](xref:NetCode.Razor.Purpose) - which tells you why the current code is running so you could change the data added
 * [CustomizeData](xref:NetCode.Razor.CustomizeData)
 
 ## Demo App and further links
+
 You should find some code examples in this demo App
+
 * [FAQ with Categories](http://2sxc.org/en/apps/app/faq-with-categories-and-6-views)
 
 More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Manuals/Feature/feature/2683)
 
 
 ## History
+
 1. Introduced in 2sxc 6.2
 2. Added support for newer Dnn versions at a later time - not sure when
 1. Easier standalone `.cs` implementation introduced in 2sxc 12

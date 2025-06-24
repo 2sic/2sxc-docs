@@ -202,7 +202,6 @@ and trying newer version of the same App, to see how it's implemented there.
 For example, try the latest <a href="https://2sxc.org/en/apps/details/app/faq4-hybrid-for-dnn-and-oqtane">FAQ App v4</a> which uses Visual Query.</p>
 </div>
 <p>If you just want a quick-fix and, you can change the code as follows (based on the previous example):</p>
-<p>TODO:</p>
 <pre><code class="lang-razor">@using ToSic.Eav.DataSources
 @* old - this namespace is not supported any more *@
 @* @using ToSic.SexyContent *@
@@ -226,13 +225,13 @@ For example, try the latest <a href="https://2sxc.org/en/apps/details/app/faq4-h
     }
 }
 </code></pre>
-<p>In most cases you can simply replace the <code>GetBestValue(...)</code> with <code>Get(...)</code>, which will return the same value.</p>
-<pre><code class="lang-c#">// old:
-var x = someObject.GetBestValue(&quot;DetailsPage&quot;); // stops working in v20
-
-// new:
-var x = someObject.Get(&quot;DetailsPage&quot;); // works in v12 - v20 and beyond
-</code></pre>
+<h3 id="recommended-fix-for-search-scenarios">Recommended Fix for Search Scenarios</h3>
+<p>If you used <code>CustomizeSearch(...)</code> to prepare data for search, you can now use the newer APIs to prepare the data.
+These APIs place the search preparation into separate code. Best read:</p>
+<ul>
+<li><a class="xref" href="../../../../../basics/cms/search/index.html">Customize the Search-Index Results (Dnn ☢️ only)</a></li>
+<li><a class="xref" href="../../../../../net-code/search/index.html">Customize the Search-Index Results (Dnn ☢️ only)</a></li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ul>

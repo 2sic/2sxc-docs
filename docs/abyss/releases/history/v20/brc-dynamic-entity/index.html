@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Fix Breaking Change hide internal DynamicEntity object in v20 | 2sxc 19 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Fix Breaking Change hide internal DynamicEntity object in v20 | 2sxc 19 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-dynamic-entity/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v18 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Releases.History.V20.DynamicEntity">
+<h1 id="fix-breaking-change-hide-internal-dynamicentity-object-in-v20">Fix Breaking Change hide internal DynamicEntity object in v20</h1>
+
+<p><strong>Keywords:</strong> #Deprecated</p>
+<p>2sxc v20 cleans up some historic, deprecated functionality.
+They were not used much, but if you have old code which used this, here's how to fix any code in production.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The <code>DynamicEntity</code> object was hidden, since you should use <code>dynamic</code> or <code>IDynamicEntity</code>.</p>
+<p>Note that this only affects old code, which was written in a style from before 2sxc v8.
+Newer code we provided used <code>dynamic</code> or <code>IEnumerable&lt;dynamic&gt;</code> which still works today.</p>
+<pre><code class="lang-text">error CS0246: The type or namespace name 'DynamicEntity' could not be found (are you missing a using directive or an assembly reference?)
+</code></pre>
+<h2 id="background">Background</h2>
+<p>Old code extensively used <code>dynamic</code> objects, which caused a LOT of problems.
+One of the key problems was using LINQ, since LINQ does not work with <code>dynamic</code> objects.</p>
+<p>For example, to use LINQ, it was necessary to cast the <code>dynamic</code> object to some kind of list or <code>IEnumerable&lt;T&gt;</code>.
+The way this was done varied a bit as we mastered the workarounds, but it was always a bit of a hack.
+Here's a real life example from an old FAQ Module v1.00.03 which was available for 2sxc v8, ca. 2017:</p>
+<pre><code class="lang-razor">&lt;li class=&quot;sc-element faq-set&quot; data-tags=&quot;@String.Join(&quot;,&quot;, ((List&lt;DynamicEntity&gt;)q.Categories).Select(a =&gt; AsDynamic(a).EntityId))&quot;&gt;
+</code></pre>
+<p>The important part here was:</p>
+<pre><code class="lang-csharp">((List&lt;DynamicEntity&gt;)q.Categories).Select(a =&gt; AsDynamic(a).EntityId)
+</code></pre>
+<p>Which would have better been written as:</p>
+<pre><code class="lang-csharp">((IEnumerable&lt;dynamic&gt;)q.Categories).Select(a =&gt; a.EntityId)
+</code></pre>
+<p>...but hindsight is always 20/20, and we didn't know better back then.</p>
+<p>Here some more examples:</p>
+<pre><code class="lang-csharp">// Casting to List&lt;DynamicEntity&gt; to use LINQ
+var list = (List&lt;DynamicEntity&gt;)someDynamicObject;
+var filtered = list.Where(x =&gt; x.SomeProperty == &quot;SomeValue&quot;);
+
+// Casting to IEnumerable&lt;DynamicEntity&gt; to use LINQ
+var enumerable = (IEnumerable&lt;DynamicEntity&gt;)someDynamicObject;
+var filtered = enumerable.Where(x =&gt; x.SomeProperty == &quot;SomeValue&quot;);
+
+// Casting to IEnumerable&lt;dynamic&gt; to use LINQ
+var enumerable = (IEnumerable&lt;dynamic&gt;)someDynamicObject;
+var filtered = enumerable.Where(x =&gt; x.SomeProperty == &quot;SomeValue&quot;);
+</code></pre>
+<h2 id="reason-for-removal">Reason for Removal</h2>
+<p>For the Moment-of-Truth (MoT) release v20, we decided to finally remove this API, since it was not used much, and it was a source of confusion for many developers.</p>
+<p>There are two key risk of leaving very old APIs alive:</p>
+<ol>
+<li>maintenance and testing for the developers of 2sxc - who work for free - goes up and up and up.</li>
+<li>people tend to discover old code and reuse it, spreading bad code practices.</li>
+</ol>
+<p>Another problem was that these methods used an old programming style (non-functional)
+which relied on side-effects (bad) to achieve their goals, which is not how modern 2sxc works.</p>
+<p>So it was time to clean up in this MoT release.</p>
+<h2 id="recommended-fix-migrate-to-newer-code-style-or-use-dynamic-or-ienumerabledynamic">Recommended fix: Migrate to Newer Code Style, or use <code>dynamic</code> or <code>IEnumerable&lt;dynamic&gt;</code></h2>
+<p>We highly recommend that you migrate your code to use the newer code style, which is more readable and easier to maintain.
+This means using Typed Code and Strongly Typed Code.
+This migration is a lot of work, so we understand that it's not your priority when you &quot;just want to upgrade&quot;.</p>
+<p>In that case, you should basically just replace all occurrences these patterns, depending on what the code should do:</p>
+<ul>
+<li><code>DynamicEntity</code> with <code>dynamic</code></li>
+<li><code>List&lt;DynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code></li>
+<li><code>IEnumerable&lt;DynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code></li>
+<li><code>List&lt;IDynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code></li>
+<li><code>IEnumerable&lt;IDynamicEntity&gt;</code> with <code>IEnumerable&lt;dynamic&gt;</code></li>
+</ul>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced for DNN ca. 2sxc 4</li>
+<li>Deprecated in 2sxc 12 ca. 2018</li>
+<li>Planned for full removal in 2sxc 15 ca. middle of 2022</li>
+<li>Finally removed in 2sxc 20 ca. 2025-06</li>
+</ul>
+<hr>
+<p>Shortlink to here: <a href="https://go.2sxc.org/brc-20-dynamicentity">https://go.2sxc.org/brc-20-dynamicentity</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/brc-dynamic-entity/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

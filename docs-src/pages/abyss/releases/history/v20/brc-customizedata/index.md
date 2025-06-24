@@ -128,8 +128,6 @@ You have at least two options to fix this:
 
 If you just want a quick-fix and, you can change the code as follows (based on the previous example):
 
-TODO: 
-
 ```razor
 @using ToSic.Eav.DataSources
 @* old - this namespace is not supported any more *@
@@ -155,15 +153,13 @@ TODO:
 }
 ```
 
-In most cases you can simply replace the `GetBestValue(...)` with `Get(...)`, which will return the same value.
+### Recommended Fix for Search Scenarios
 
-```c#
-// old:
-var x = someObject.GetBestValue("DetailsPage"); // stops working in v20
+If you used `CustomizeSearch(...)` to prepare data for search, you can now use the newer APIs to prepare the data.
+These APIs place the search preparation into separate code. Best read:
 
-// new:
-var x = someObject.Get("DetailsPage"); // works in v12 - v20 and beyond
-```
+* [](xref:Basics.Cms.Search.Index)
+* [](xref:NetCode.Search.Index)
 
 ---
 
