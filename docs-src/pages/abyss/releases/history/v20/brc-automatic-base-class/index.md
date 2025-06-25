@@ -44,7 +44,7 @@ We highly recommend that you
 If you want to just keep on using the old base classes you can add this line to the top of your Razor files:
 
 ```razor
-@inherits ToSic.Sxc.Razor.SexyContentWebPage
+@inherits ToSic.SexyContent.Razor.SexyContentWebPage
 ```
 
 
