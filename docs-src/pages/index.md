@@ -1,14 +1,9 @@
 
 <img src="../assets/logos/vcurrent/500.png" width="150px" align="right" class="float-end">
 
-# 2sxc and EAV Docs v20 (pre-release)
+# 2sxc and EAV Docs v20 RC1
 
 This is the technical documentation for 2sxc and its EAV system.
-
-_This is the pre-release documentation for 2sxc v20._  
-_v20 will have some breaking changes like a new DB schema, so the release will take some time._
-
-_To see the older docs, visit the [v19 archive](http://v19.docs.2sxc.org/)._
 
 > [!TIP]
 > 💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).

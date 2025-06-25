@@ -4,7 +4,7 @@ uid: NetCode.Razor.Blocks
 
 # Razor: Rendering Content-Blocks
 
-When using [Inner Content](xref:Basics.Cms.InnerContent.Index) the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor. 
+When using [Inner Content](xref:Basics.Cms.InnerContent.Index) the linked content-blocks (apps or pieces of content) must be rendered into the template. Here's how to do it in Razor.
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
@@ -17,15 +17,16 @@ There are two common use cases
 2. Very Rich Text - where you add content-blocks and apps in the WYSIWYG
 
 ## Item-Level Virtual Panes
-Here's a quick example which renders an area with all content-blocks: 
+
+Here's a quick example which renders an area with all content-blocks:
 
 ```razor
 @ToSic.Sxc.Block.Render.All(Content, field: "InnerContent")
 ```
 
-This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area. 
+This example creates the area for the content-blocks (important so that the UI appears for editors to add more blocks) and renders all existing content-blocks in the predefined order into that area.
 
-Here's a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes: 
+Here's a more manual example of doing the same thing, but done manually to demonstrate what happens and to allow myself to add more css-classes:
 
 ```html
 <div class="some-class sc-content-block-list" @Edit.ContextAttributes(post, field: "DesignedContent")>
@@ -34,11 +35,12 @@ Here's a more manual example of doing the same thing, but done manually to demon
     }
 </div>
 ```
+
 If you care about doing it manually, read more about the [Edit object](xref:NetCode.Razor.Edit).
 
 ## Very Rich Text / Inner-Content
 
-Here's an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps. 
+Here's an example how to merge content-blocks with a html-text which has placeholders for each content-block, allowing a mix of text/apps.
 
 ```razor
 @ToSic.Sxc.Blocks.Render.All(post, field: "WysiwygContent", merge: post.Body)

@@ -105,27 +105,249 @@
         <article data-uid="">
 
 <h2 id="version-20">Version 20</h2>
-<h3 id="2sxc-v200000-rc1-2025-06-xx">2sxc v20.00.00 RC1 (2025-06-xx)</h3>
-<ol>
-<li>🅰️ Update UI to Angular 20 and Angular Material 20</li>
-<li>✅ todo</li>
-</ol>
-<p>Breaking Changes</p>
+<h3 id="2sxc-v200000-rc1-2025-06-25">2sxc v20.00.00 RC1 (2025-06-25)</h3>
 <div class="WARNING">
 <h5>Warning</h5>
-<p>2sxc v20 is a MoT Release, containing many breaking changes.</p>
+<p>2sxc v20 is a <a class="xref" href="../../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
 <p>See <a class="xref" href="breaking.html">Breaking Changes in v20</a> for details.</p>
 </div>
-<p>Bugfixes</p>
+<h4 id="highlights">Highlights</h4>
 <ol>
-<li>🐞 Fix: todo</li>
-<li>🐞 Fix: todo</li>
+<li>☢️ The module was moved to <code>/DesktopModules/ToSic.Sxc</code> and was renamed to <code>2sxc</code></li>
+<li>💾 The entire SQL was reorganized - see <a class="xref" href="../../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a> for details.</li>
+<li>⚙️ New CoPilot Code Generator for Models (like TypedItems, but lighter / POCO)</li>
+<li>❤️‍🩹 Introduced many detections of old code to give guidance to users who must fix old code</li>
+<li>🥇 Create App experience improved to provide apps from the catalog</li>
+<li>🥇 App Catalog enhanced to manage template apps (which expect to be renamed upon installation) - allowing for more template apps in future</li>
+<li>🦸🏼 New Patrons Performance support tier to use all our performance enhancements</li>
+<li>📖 Docs improved to better indicate internal APIs</li>
 </ol>
-<p>Internal</p>
+<h4 id="enhancements">Enhancements</h4>
 <ol>
-<li>✅ todo</li>
+<li>💾 Database performance enhancements with new indexes and improved code</li>
+<li>✏️ Improved Edit-UI to use in the admin section without saving the entity (for config dialogs which are generated from the schema)</li>
+<li>✏️ Improved Toolbar API <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Edit.Toolbar.IToolbarBuilder.html#ToSic_Sxc_Edit_Toolbar_IToolbarBuilder_Audience_">.Audience(...)</a> with <code>everyone: true</code> and <code>roleNames</code> and <code>denyRoleNames</code></li>
+<li>👱🏼 User Service with new <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.IUserService.html#ToSic_Sxc_Services_IUserService_GetCurrentUser_">.GetCurrentUser()</a></li>
+<li>⚡ Lots of internal performance improvements, especially in loading, saving and handling data.</li>
+<li>👨🏼‍💻 All 2sxc / EAV code is now C# latest <code>#nullable</code> which makes it more robust.</li>
+<li>🖼️ When an imported app has <a class="xref" href="../../../../guides/wysiwyg/index.html">Rich WYSIWYG</a> content with images, <a href="https://github.com/2sic/2sxc/issues/3645">the links will be auto-corrected upon edit</a>.</li>
+<li>🌪️ Visual Query improved with ability to mirror out-streams based on in-streams (for things such as serialization-DataSource etc.)</li>
+<li>🪵 New features to reduce logging of loading the system or data of Apps, which creates large logs but are rarely used</li>
+<li>✅ Features can now support detailed configuration (used in the new Logging configuration)</li>
+<li>🥷🏼 Most internal APIs now clearly moved into <code>.Sys</code> namespaces   TODO: - DOCUMENT IN BREAKING</li>
 </ol>
-[!include["Changes"](./_changes.01.md)][!include["Changes"](./_changes.02.md)][!include["Changes"](./_changes.03.md)]
+<h4 id="version-bumps-and-other-changes">Version Bumps and Other Changes</h4>
+<ol>
+<li>☢️ Minimum DNN version is now v9.11.02 (previously v9.6.2)</li>
+<li>🖼️ Updated ImageFlow (the image resizer) to v2.1.0-RC11 from 2.0.0-Preview8</li>
+<li>🅰️ Update UI to Angular 20 and Angular Material 20</li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🩸 Oqtane fix issue which <a href="https://github.com/2sic/2sxc/issues/3643">broke 2sxc because of changes in Oqtane 6.1.2</a></li>
+<li>🐞 Fix: DataSource RelationshipFilter accidentally filtered out results when the filter was <code>&quot;&quot;</code> (blank) instead of not filtering at all</li>
+<li>🐞 Fix: Images could not be deleted right after uploading, because image resizer kept the file open on the server</li>
+<li>🐞 Fix: When serializing entities with custom configuration, the configuration for the GUID was sometimes ignored</li>
+<li>🐞 Fix: Visual Query preview JSON didn't match serialization configuration.</li>
+</ol>
+<h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
+<ol>
+<li>✅ Most of the code was reorganized into more DLLs, to better separate concerns and make it easier to maintain / contribute.</li>
+<li>✅ All the code for Eav and 2sxc is now C# latest <code>#nullable</code> which makes it more robust.</li>
+<li>✅ Dropped old .net WebClient and replaced with HttpClient</li>
+<li>✅ Cleanup / improvements around logging.</li>
+<li>✅ Replaced old .net APIs for encryption with latest (reduce warnings)</li>
+<li>🐞 Fix bug which affected developers, where APIs were missing in intellisense because of the <code>EditorBrowsable</code> attribute</li>
+<li>✅ Improved naming of <code>IMetadata</code> from <code>IMetadataOf</code></li>
+<li>✅ Completely refactored the <code>IBlock</code> implementation and factory for better architecture</li>
+<li>✅ Internal API to debug-dump objects was refactored</li>
+<li>✅ Introduced new <code>ServiceBase&lt;TOptions&gt;</code> for services which need options at startup</li>
+<li>✅ Introduced new <code>SpawnNew()</code> api and <code>Generator&lt;TService, TOptions&gt;</code> for objects expecting a setup.</li>
+</ol>
+<h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>2sxc v20 is a milestone clean-up release, so it contains a lot of breaking changes.</p>
+<p>This is the <strong>Moment of Truth</strong> where you see if you accidentally used internal or very old APIs.</p>
+<p>These changes should only affect you, if you are accessing exotic/internal APIs,
+or if you have some extremely old/deprecated code.</p>
+<p>See also: <a class="xref" href="../../management/policy-mot.html">MoT Policy (Moment of Truth)</a></p>
+</div>
+<p>Note that we marked the breaking changes like this</p>
+<ul>
+<li>⚠️ things which may affect you</li>
+<li>⬇️ things which are extremely unlikely to affect you</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Note that the focus of breaking changes is on the <strong>Razor</strong> code.
+But there are also <a href="#breaking-formulas-api-changes">2 small breaking changes in <strong>Formulas</strong></a>.</p>
+</div>
+<h3 id="highlights">Highlights</h3>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Despite this being a breaking change, we want to emphasize that much of this is great news.
+It removes a lot of old cruft, and cleans up some history such as &quot;SexyContent&quot;.</p>
+<p>These changes only affect you, if you were doing some really nasty things, such as accessing the DB directly.</p>
+</div>
+<ol>
+<li><p>⚠️ All SQL tables and restructured - see <a class="xref" href="../../../db/changes-v20.html">2sxc &amp; EAV Database Changes in v20</a></p>
+</li>
+<li><p>⚠️ In Dnn, the module is now installed in <code>/DesktopModules/ToSic.Sxc/</code> instead of <code>/DesktopModules/ToSic_SexyContent/</code><br>
+This could affect you, if you had direct links to</p>
+<ul>
+<li>the <code>$2sxc.min.js</code> file in your templates</li>
+<li>were using the extremely old image resizer on the path <code>/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx</code><br>
+🔨 see <a class="xref" href="brc-thumbnailer.aspx/index.html">Fix Breaking Change Thumbnailer.aspx in v20</a></li>
+</ul>
+</li>
+<li><p>⚠️ In Dnn we stop auto-creating a <code>web.config</code> file in the <code>/2sxc/</code> folder, so Razor files will no longer automatically use the old base class <code>SexyContentWebPage</code>.
+This should not affect you, you're installing old Apps in newer DNNs.<br>
+🔨 see <a class="xref" href="brc-automatic-base-class/index.html">Fix Breaking Change Stop Razor from Default to SexyContentWebPage in v20</a></p>
+</li>
+<li><p>⬇️ The minimum Dnn version for v20 is now Dnn 9.11.02 (previously it was 9.6.1)<br>
+This is because older DNNs have important security issues, and we want to force people to update.<br>
+As of now, 2sxc v20 will still run on older DNNs, but we will not support it or test it.</p>
+</li>
+<li><p>⬇️ The image resizer only includes the 64 bit binaries, the 32 bit binaries were removed.
+This makes the distribution smaller, and I don't think anyone is using 32 bit servers anymore.</p>
+</li>
+<li><p>⬇️ All code was restructured to create smaller, more focused assemblies.<br>
+This should not affect you, but if you were using some very old code, it may have been moved to a different assembly.
+This can affect you if you were using compiled code which referenced the old assemblies (not common).</p>
+</li>
+<li><p>⬇️ Most internal APIs were moved into <code>Sys</code> namespaces, so it's easier to see if you're using internal APIs.<br>
+This should not affect you, unless you were already using internal APIs.</p>
+</li>
+<li><p>⬇️ In Dnn, the modules name is now <code>2sxc</code> instead of <code>SexyContent</code></p>
+</li>
+</ol>
+<h3 id="breaking-ientity-api-changes-razor">Breaking <code>IEntity</code> API Changes (Razor)</h3>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If your code just used the normal DynamicEntity or TypedEntity / Items APIs, you are not affected by these changes.</p>
+<p>But in rare cases, especially in older Apps, some workarounds were used to access the <code>IEntity</code> interface directly.</p>
+<p>This is usually done by first running <code>AsEntity(someObject)</code> to get the <code>IEntity</code> underlying data.</p>
+</div>
+<ol>
+<li><p>⚠️ A very old interface <code>ToSic.Eav.Interfaces.IEntity</code> has been removed, please use <code>ToSic.Eav.Data.IEntity</code> instead.<br>
+Some very old code may have used this to work around LINQ limitations.
+Just use the new one, it's the same thing (but with fewer APIs, according to clean-up below).<br>
+We've added some error handling to find out if this is the problem you have, and should lead you to this page.</p>
+</li>
+<li><p>⚠️ <code>IEntity</code> has <code>object Get(name, ...)</code> and 2 special <code>Get&lt;TVal&gt;(...)</code> methods to get a value and convert it to <code>string</code>, <code>int</code> etc.
+The special typed <code>&lt;TVal&gt;</code> variants were moved into extension methods.<br>
+Normally this should not affect you, if you are <code>@using ToSic.Eav.Data</code> in your code, since it will just work.
+If you did this is a more exotic way, add the <code>@using ToSic.Eav.Data</code> to your code, and it will work again.</p>
+</li>
+<li><p>⚠️ <code>IEntity</code> had various <code>GetBestValue(...)</code> APIs which were removed.
+We believe that about 2-3% of all code used this, so it may affect you.
+🔨 see <a class="xref" href="brc-getbestvalue/index.html">Fix Breaking Change drop old GetBestValue API in v20</a></p>
+</li>
+<li><p>⬇️ APIs on <code>IEntity</code> were modified</p>
+<ol>
+<li><code>.Children(...)</code> and <code>.Parents(...)</code> now return <code>IEnumerable&lt;IEntity&gt;</code> instead of <code>List&lt;IEntity&gt;</code>.<br>
+This will only affect you if you are using <code>.Count</code> on the result, in which case you should use <code>.Count()</code> instead.</li>
+</ol>
+</li>
+<li><p>⬇️ Old, deprecated APIs <code>IEntity</code> were removed.<br>
+These have not worked properly for many years.<br>
+We've added some error handling to find out if this is the problem you have, and should lead you to this page.</p>
+<ol>
+<li><p><code>object GetBestValue(string attributeName, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>TVal GetBestValue&lt;TVal&gt;(string name, string[] languages, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>object GetBestValue(string attributeName, string[] languages, bool resolveHyperlinks)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>object Value(string field, bool resolve = true)</code> - didn't work for a long time, is being removed</p>
+</li>
+<li><p><code>T Value&lt;T&gt;(string field, bool resolve = true)</code> - didn't work for a long time, is being removed</p>
+</li>
+</ol>
+</li>
+<li><p>⬇️ Some unofficial APIs on <code>IEntity</code> were removed</p>
+<ol>
+<li><p><code>object PrimaryValue(string attributeName)</code><br>
+The term <code>PrimaryValue</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>TVal PrimaryValue&lt;TVal&gt;(string attributeName)</code><br>
+The term <code>PrimaryValue</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>object Value(string attributeName)</code><br>
+The term <code>Value</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+<li><p><code>TVal Value&lt;TVal&gt;(string attributeName)</code><br>
+The term <code>Value</code> was an idea which we never pursued further. please just use <code>Get(...)</code> instead</p>
+</li>
+</ol>
+</li>
+<li><p>⬇️ An API giving access to the ContentType Description <code>IContentType.Metadata.Description</code> were removed
+We don't believe anyone used this.</p>
+</li>
+</ol>
+<h3 id="other-breaking-razor-api-changes-dnn-only">Other Breaking Razor API Changes (Dnn only)</h3>
+<ol>
+<li><p>⚠️ The behavior to auto-load jQuery for very old Razor base classes was removed.<br>
+A long time ago 2sxc accidentally loaded jQuery automatically in DNN.<br>
+In those days, jQuery was used a lot. We stopped doing this for newer Razor base classes, but preserved the behavior for very old Razor base classes.<br>
+This was removed in v20, so if you were using the old Razor base classes, you will need to add jQuery manually.<br>
+<em>Note: code for this was commented out with <code>#RemovedV20 #OldDnnAutoJQuery</code>.</em></p>
+</li>
+<li><p>⚠️ Three old APIs on old Razor Base classes such as <code>SexyContentWebPage</code> were removed. All have been deprecated since v12.<br>
+They were originally meant to use the same Razor file to also create a WebApi and fill the DNN search index, but was deprecated a long time ago.</p>
+<ol>
+<li><code>Purpose</code> - this was meant to tell Razor if it should prepare data for search or for view.</li>
+<li><code>CustomizeSearch(...)</code> this was meant to customize the data for the search index. The functionality was moved to separate code many years ago.</li>
+<li><code>CustomizeData(...)</code> this was a patchy way to specify the data for the razor template.</li>
+</ol>
+</li>
+<li><p>⚠️ The <code>SexyContentWebPage</code> had a <code>List</code> property which provided <code>Element</code> objects to loop through.<br>
+They were deprecated since v12, and replaced with the new Razor base classes which are much better.
+If you were using these, please switch to the new Razor base classes and use the more modern approaches such as <code>MyItem</code>, <code>MyItem.Presentation</code>, <code>Content</code>, etc.
+🔨 To fix, see <a class="xref" href="brc-list-element/index.html">Fix Breaking Change List of Elements in v20</a>.
+<em>Note: code for this was commented out with <code>#RemovedV20 #Element</code>.</em></p>
+</li>
+<li><p>⬇️ An old interface <code>ToSic.Sxc.Blocks.IRenderService</code> was removed, since it's been superseded by <code>ToSic.Sxc.Services.IRenderService</code>.
+We believe it was used in 2-3 v12 Apps, so if you encounter this, just switch to <code>ToSic.Sxc.Services.IRenderService</code> instead.</p>
+</li>
+<li><p>⬇️ An internal interface called <code>ToSic.Sxc.Data.IEntityLight</code> was removed<br>
+We don't believe anyone used this, but if you did, please use <code>ToSic.Eav.Data.IEntity</code> instead.</p>
+</li>
+<li><p>⬇️ A very old interface called <code>SexyContent.Interfaces.IDynamicEntity</code> was removed.<br>
+If you really had this in your code, please use <code>ToSic.Sxc.Data.IDynamicEntity</code> instead.</p>
+</li>
+<li><p>⬇️ Some internal objects were consolidated, such as <code>IAttributeBase</code> which nobody should have used anyway<br>
+We don't believe anyone used this.</p>
+</li>
+<li><p>⬇️ lots of internal namespaces and classes/interfaces were renamed, including but not limited to:</p>
+<ol>
+<li><code>DynamicEntity.GetEntityValue(string name)</code> (removed)</li>
+</ol>
+</li>
+<li><p>⬇️ An old API used by some of the first Mobius Apps used <code>App.Data.Cache.GetContentType</code>.<br>
+This has been obsolete since v10 and is now removed in v20.<br>
+We suggest you use a newer Mobius App or if you're really desperate, see 🔨 <a class="xref" href="brc-list-iappdata-cache/index.html">Fix Breaking Change Removal of Cache on IAppData in v20</a>.</p>
+</li>
+<li><p>⬇️ An old internal interface called <code>ToSic.SexyContent.IAppAndDataHelpers</code> was removed.<br>
+It was implemented by <code>ToSic.SexyContent.Razor.SexyContentWebPage</code> and <code>ToSic.SexyContent.WebApi.SxcApiController</code>.
+The APIs on it still work, but the interface was removed; you should not notice the clean-up.</p>
+</li>
+</ol>
+<h3 id="breaking-formulas-api-changes">Breaking Formulas API Changes</h3>
+<h4 id="v1-formrunformulas-was-removed">V1 <code>form.runFormulas()</code> Was Removed</h4>
+<p>The V1 formulas were not async, so they had a patchy solution for using formulas which requested data from the server.
+The old solution was to use fetch and in the promise, call <code>form.runFormulas()</code> to retrigger the formulas after the data was loaded.</p>
+<p>2sxc 16 in early 2023 introduced V2 formulas which can return a promise.
+This will automatically trigger recalculations when the promise resolves,
+and allows for better control over what happens (like if the same formula should run again, or not).</p>
+<p>Since v16 was released, any use of the old <code>form.runFormulas()</code> resulted in a warning in the console.</p>
+<p>In v20, this method was disabled showing a JS error.
+If you were using it, please remove it and use the new V2 formulas instead.</p>
+<h4 id="internal-formula-changes">Internal Formula Changes</h4>
+<p>An internal API which placed some experimental commands in the formula calls were moved to the context.
+Since it was only used internally, it should not affect anyone.</p>
+
 </article>
 
         <div class="contribution d-print-none">
