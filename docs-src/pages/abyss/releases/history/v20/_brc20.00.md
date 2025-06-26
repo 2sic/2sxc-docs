@@ -161,6 +161,7 @@ Note that we marked the breaking changes like this
 1. ⬇️ An old internal interface called `ToSic.SexyContent.IAppAndDataHelpers` was removed.  
     It was implemented by `ToSic.SexyContent.Razor.SexyContentWebPage` and `ToSic.SexyContent.WebApi.SxcApiController`.
     The APIs on it still work, but the interface was removed; you should not notice the clean-up.
+    See [](xref:Abyss.Releases.History.V20.DnnFiles)
 
 
 ### Breaking Formulas API Changes
