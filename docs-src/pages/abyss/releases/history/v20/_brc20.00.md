@@ -118,7 +118,6 @@ Note that we marked the breaking changes like this
 1. ⬇️ An API giving access to the ContentType Description `IContentType.Metadata.Description` were removed
     We don't believe anyone used this.
 
-
 ### Other Breaking Razor API Changes (Dnn only)
 
 1. ⚠️ The behavior to auto-load jQuery for very old Razor base classes was removed.  
@@ -138,6 +137,12 @@ Note that we marked the breaking changes like this
     If you were using these, please switch to the new Razor base classes and use the more modern approaches such as `MyItem`, `MyItem.Presentation`, `Content`, etc.
     🔨 To fix, see [](xref:Abyss.Releases.History.V20.ListElement).
     _Note: code for this was commented out with `#RemovedV20 #Element`._
+
+1. ⬇️ There is a `/system` folder in the DesktopModules which had extensions. Each could have a `.data` folder - this must now be `App_Data`.  
+    This is probably not an issue, as we will auto-rename this during the upgrade of v20.00.01
+
+1. ⚠️ Every App _can_ have a similar `/system` folder. Each could have a `.data` folder - this must now be `App_Data`.  
+    This is rarely used, but you would have to manually rename this folder to `App_Data` if you had it.
 
 1. ⬇️ An old interface `ToSic.Sxc.Blocks.IRenderService` was removed, since it's been superseded by `ToSic.Sxc.Services.IRenderService`.
     We believe it was used in 2-3 v12 Apps, so if you encounter this, just switch to `ToSic.Sxc.Services.IRenderService` instead.
