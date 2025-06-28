@@ -36,6 +36,8 @@ Note that we marked the breaking changes like this
     * the `$2sxc.min.js` file in your templates
     * were using the extremely old image resizer on the path `/DesktopModules/ToSic_SexyContent/Extensions/Thumbnailer.aspx`  
       🔨 see [](xref:Abyss.Releases.History.V20.BrcThumbnailer)
+    * used one of the recommended base themes such as **2shine** and now quick-edit doesn't automatically appear on empty pages.  
+      🔨 see [](xref:Abyss.Releases.History.V20.BrcDnnQuickEditOnEmptyPage)
 
 1. ⚠️ In Dnn we stop auto-creating a `web.config` file in the `/2sxc/` folder, so Razor files will no longer automatically use the old base class `SexyContentWebPage`.
     This should not affect you, you're installing old Apps in newer DNNs.  
