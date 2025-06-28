@@ -64,8 +64,9 @@ Assume you really want to do this, here's how:
 1. Create the Content-Type in the normal way
 1. Export the Content-Type Definition as JSON
 1. Store it in your global custom folder (you may need to create these folders)
-    1. In Dnn: `[system-root]/DesktopModules/ToSIC_SexyContent/App_Data/system-custom/contenttypes`
-    1. In Oqtane: TODO
+    1. In Dnn: `[web-root]/DesktopModules/ToSic.Sxc/App_Data/system-custom/contenttypes` (v20)
+    1. ~~In Dnn: `[web-root]/DesktopModules/ToSIC_SexyContent/App_Data/system-custom/contenttypes`~~
+    1. In Oqtane: `[web-root]/Content/2sxc/system/App_Data/`
 1. Restart the system
 
 You should now have this Content-Type show up in every App.

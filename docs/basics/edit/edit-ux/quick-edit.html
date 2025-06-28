@@ -218,11 +218,16 @@
 <h2 id="how-to-use">How to use</h2>
 <p>By default any page that has <em>any</em> 2sxc module added will automatically load quickE because it needs it to provide buttons/toolbars for inner content blocks.</p>
 <p>We also recommend to include the JS in the skin by default, so that quickE is already enabled on empty pages as well. You can find the necessary asp.net web-control in our <a href="https://github.com/2sic/dnn-theme-bootstrap4-instant/blob/master/controls/2sxc-quickedit.ascx">Bootstrap Instant Theme</a> Here's how:</p>
-<pre><code class="lang-ascx">&lt;%@ Register tagprefix=&quot;Edit&quot; tagname=&quot;QuickEdit&quot; src=&quot;~/DesktopModules/ToSIC_SexyContent/DnnWebForms/Skins/QuickEdit.ascx&quot; %&gt;
+<pre><code class="lang-ascx">&lt;%@ Register tagprefix=&quot;Edit&quot; tagname=&quot;QuickEdit&quot; src=&quot;~/DesktopModules/ToSic.Sxc/DnnWebForms/Skins/QuickEdit.ascx&quot; %&gt;
 &lt;Edit:QuickEdit runat=&quot;server&quot; /&gt;
 </code></pre>
 <p>The above lines first tell .net that this control QuickEdit exists, and then adds it to the page using the <code>&lt;Edit:...&gt;</code> tag. Note that this tag won't create any HTML, it will just tell Dnn that it must load the relevant JavaScripts when a user is logged on.
 Once it's included, it will just work automatically.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The folder was changed in v20, previously it was:
+<code>src=&quot;~/DesktopModules/ToSIC_SexyContent/DnnWebForms/Skins/QuickEdit.ascx&quot;</code></p>
+</div>
 <h2 id="auto-disabled-module-quick-edit-on-details-pages">Auto-Disabled Module-Quick-Edit on Details Pages</h2>
 <p>By default quickE will change it's behavior if it finds inner-content blocks. The reason is that often inner-blocks are found on <strong>child</strong> pages of something, for example in blog-post details. If the user could insert both modules and inner-content on a details page, then the user would often <em>by accident</em> insert modules (instead of content-blocks). The user would believe that he did the right thing, when in reality the newly added module would now show up on all other details-pages as well.</p>
 <p>Now there are cases where this auto-disable shouldn't happen - for example in accordeon-style modules which are used on normal pages. This can be configured as explained below:</p>

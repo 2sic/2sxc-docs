@@ -26,7 +26,7 @@ Read about managing features in the [blog about features-management](https://2sx
 
 ## How the Feature-Configurations are Stored
 
-Features use a json-file called `features.json` located in the `[website-root]/desktopmodules/tosic_sexycontent/App_Data/system-custom/configurations` folder.
+Features use a json-file called `features.json` located in the `[2sxc-code-root]/App_Data/system-custom/configurations` folder.
 
 ## Read also
 
@@ -38,3 +38,4 @@ Features use a json-file called `features.json` located in the `[website-root]/d
 1. Feature system introduced in v9.30
 1. Improved to work with licenses in v13.01
 1. New [IFeaturesService](xref:ToSic.Sxc.Services.IFeaturesService) in v13.01
+

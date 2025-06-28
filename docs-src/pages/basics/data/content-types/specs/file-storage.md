@@ -27,11 +27,11 @@ The format is the [json-format V1](xref:Basics.DataFormats.JsonV1.ContentType)
 
 ### Storage of System Content-Types
 
-This is located in: `/desktopmodules/ToSIC_SexyContent/App_Data/system/contenttypes/`
+This is located in: `/desktopmodules/ToSic.Sxc/App_Data/system/contenttypes/`
 
 ### Storage of Custom Global Shared Content-Types
 
-This is located in: `/desktopmodules/ToSIC_SexyContent/App_Data/system-custom/contenttypes/`
+This is located in: `/desktopmodules/ToSic.Sxc/App_Data/system-custom/contenttypes/`
 
 
 ### Storage of Content-Types which are Part of a Dnn-Extension

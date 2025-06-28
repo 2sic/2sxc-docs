@@ -65,7 +65,7 @@ The license file is a JSON file containing the activated licenses, the fingerpri
 This file must be transferred to your system to work.
 The transfer can happen automatically or manually, depending on your needs.
 
-Note that all licenses will be stored as `*.license.json` in this folder: `[website-root]/DesktopModules/ToSIC_SexyContent/App_Data/system-custom/configurations/`
+Note that all licenses will be stored as `*.license.json` in this folder: `[website-root]/DesktopModules/ToSic.Sxc/App_Data/system-custom/configurations/`
 
 ### Automatic Activation
 

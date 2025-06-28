@@ -19,7 +19,8 @@ Note that for Dnn, `[PortalRoot]` is usually `[WebsiteRoot]/Portals/`.
 
 ## System Data Files
 
-* ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/App_Data/`
+* ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSic.Sxc/App_Data/` (since v20)
+* ~~☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/App_Data/`~~
 * 🩸 Oqtane places system files in `[WebRoot]/Content/2sxc/system/App_Data/`
 
 Within this folder, you'll typically see the following folders:
@@ -41,7 +42,8 @@ Note that the `system...` folders will all have some of the following folders in
 
 ## Temporary Files
 
-* ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/_/`
+* ☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSic.Sxc/_/` (since v20)
+* ~~☢️ Dnn places system files in the `[WebRoot]/DesktopModules/ToSIC_SexyContent/_/`~~
 * 🩸 Oqtane places system files in `[WebRoot]/Content/2sxc/system/_/`
 
 ---

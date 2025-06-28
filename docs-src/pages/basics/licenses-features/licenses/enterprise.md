@@ -27,7 +27,7 @@ Enterprise licenses consist of two files:
 Both files are stored at the system level in a folder which is preserved through upgrades.
 The location is:
 
-* On Dnn this is: `[WebRoot]/DesktopModules/ToSIC_SexyContent/App_Data/system-custom/`
+* On Dnn this is: `[WebRoot]/DesktopModules/ToSic.Sxc/App_Data/system-custom/` (v20+)
 * On Oqtane this is `[WebRoot]/Content/2sxc/system/App_Data/system-custom/`
 
 👉🏻 See also [](xref:Abyss.Platforms.Folders)

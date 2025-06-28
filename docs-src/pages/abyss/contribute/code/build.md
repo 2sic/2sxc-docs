@@ -51,7 +51,7 @@ And this is the `2sxc-build.config.json` mentioned above:
 ```json
 {
   "JsTargets": [
-    "C:/Projects/2sxc/2sxc-dnn/Website/DesktopModules/ToSIC_SexyContent",
+    "C:/Projects/2sxc/2sxc-dnn/Website/DesktopModules/ToSic.Sxc",
     "C:/Projects/2sxc/Oqtane/oqtane.framework/Oqtane.Server/wwwroot/Modules/ToSic.Sxc.Oqtane",
   ],
   "DnnTargets": [

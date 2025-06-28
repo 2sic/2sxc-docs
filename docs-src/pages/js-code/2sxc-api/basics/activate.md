@@ -35,16 +35,6 @@ You can also enable more features, like these:
 </div>
 ```
 
-## Activate the JS APIs in Older Versions
-
-Before 2sxc 9.30 there was no real API to do this.
-You had to use a `<script>` tag like this:
-
-<script src="/desktopmodules/tosic_sexycontent/js/2sxc.api.min.js" data-enableoptimizations="100"></script>
-
-> [!WARNING]
-> Avoid this if possible, as we plan to phase it out in the next few years.
-
 ---
 
 ## How Things Work Internally

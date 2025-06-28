@@ -9,7 +9,7 @@ uid: Basics.Query.SystemQueries
 
 This is a very internal spec - you probably don't need this 😉.
 
-System Queries are stored as json in `DesktopModules\ToSIC_SexyContent\App_Data\system\queries`.
+System Queries are stored as json in `DesktopModules\ToSic.Sxc\App_Data\system\queries`.
 
 ## Queries and Parameters
 
