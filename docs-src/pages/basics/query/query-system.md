@@ -35,10 +35,10 @@ System Queries are stored as json in `DesktopModules\ToSic.Sxc\App_Data\system\.
     **Parameters**
     1. `QueryName`
     1. `StreamName`
-1. `System.Roles` (BETA v15)
-1. `System.Settings` (BETA v15)
-1. `System.Resources` (BETA v15)
-1. `System.Users` (BETA v15)
+1. `System.Roles`
+1. `System.Settings`
+1. `System.Resources`
+1. `System.Users`
 1. `System.Zones` - retrieve all zones  
     **Parameters** _no parameters_
 
