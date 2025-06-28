@@ -9,7 +9,7 @@ uid: Basics.Query.SystemQueries
 
 This is a very internal spec - you probably don't need this 😉.
 
-System Queries are stored as json in `DesktopModules\ToSic.Sxc\App_Data\system\queries`.
+System Queries are stored as json in `DesktopModules\ToSic.Sxc\App_Data\system\...`.
 
 ## Queries and Parameters
 
@@ -42,18 +42,6 @@ System Queries are stored as json in `DesktopModules\ToSic.Sxc\App_Data\system\q
 1. `System.Zones` - retrieve all zones  
     **Parameters** _no parameters_
 
-## Old Queries before v15
-
-These queries have been renamed.
-The old name still works, but you should stop using it.
-We are only listing queries, which we believe may have been used publicly.
-
-1. `Eav.Queries.Global.Apps` - retrieve all apps  
-1. `Eav.Queries.Global.ContentTypes` - retrieve all content-types  
-1. `Eav.Queries.Global.Queries` - retrieve all queries  
-    **Parameters** _no parameters_
-
-
 ---
 
 ## History
@@ -61,4 +49,5 @@ We are only listing queries, which we believe may have been used publicly.
 1. Introduced in 2sxc 07.00
 1. In added in 2sxc 07.00
 1. Params added in 2sxc 10.22
+1. Old query names starting with `Eav.Queries.Global` were removed in 2sxc v20
 

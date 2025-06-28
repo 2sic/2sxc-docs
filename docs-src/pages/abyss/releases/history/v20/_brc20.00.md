@@ -170,7 +170,6 @@ Note that we marked the breaking changes like this
     The APIs on it still work, but the interface was removed; you should not notice the clean-up.
     See [](xref:Abyss.Releases.History.V20.DnnFiles)
 
-
 ### Breaking Formulas API Changes
 
 #### V1 `form.runFormulas()` Was Removed
@@ -191,3 +190,11 @@ If you were using it, please remove it and use the new V2 formulas instead.
 
 An internal API which placed some experimental commands in the formula calls were moved to the context.
 Since it was only used internally, it should not affect anyone.
+
+### Other Changes
+
+1. ⬇️ Custom extensions (such as custom input fields) in the `/system` folder should place their data in the `/system/[ext-name]/App_Data/system-custom/` path.  
+    Previously the path `/system/[ext-name]/.data/` was also supported, but this is now removed.
+
+1. ⬇️ All [system queries](xref:Basics.Query.SystemQueries) which are called `System.Whatever` previously also supported being called by `Eav.Queries.Global.Whatever`.  
+    This is now removed, so you should only use `System.Whatever` to call global queries.

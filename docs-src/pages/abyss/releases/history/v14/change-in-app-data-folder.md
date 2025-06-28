@@ -17,7 +17,7 @@ This means that in the following processes, this folder will now be used instead
 * App Import
 * App State Versioning
 
-It will always save / restore in this folder. 
+It will always save / restore in this folder.
 
 If it finds the older folder, will migrate `app.xml` from the old `.data` folder to the new `App_Data` folder.
 

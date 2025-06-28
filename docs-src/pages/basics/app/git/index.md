@@ -26,7 +26,7 @@ This is where you can find the App State Save/Restore
 
 <img src="./assets/app-git-integration.jpg" width="100%" >
 
-On **2** you can save the state (it will be stored in `[app-root]/.data/app.xml`)
+On **2** you can save the state (it will be stored in `[app-root]/App_Data/app.xml`)
 
 <img src="./assets/app-git-save.jpg" width="100%" >
 
