@@ -11,11 +11,11 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2025-01-22**
+Last Update: **2025-07-01**
 
 ## Current Priority: cre8magic for Oqtane
 
-2025 Q1 is going to focus mainly on cre8magic, not 2sxc.
+2025 Q3 is going to focus mainly on cre8magic, not 2sxc.
 
 
 ## Note: Some Features still not final
@@ -125,7 +125,7 @@ Minor: Tutorial App Enhancements
     1. Notes everywhere - especially on the page - ca. 2d
 1. Massively improve JSON import with language checks, overwrite/vs new etc.
 1. Code editor intellisense for most APIs - ca. 3-4d
-1. ⚠️ Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d
+1. ~~⚠️ Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d~~
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
 1. ~~JS Docs for formula~~
 
