@@ -34,7 +34,7 @@ Normally they will inherit from:
 1. `ToSic.Lib.Services.HelperBase`
     This is for helpers which are not services and will usually be created in code (not from DI).
 
-You can also just create normal objects and implement `ToSic.Lib.Logging.IHasLog`.
+You can also just create normal objects and implement `ToSic.Sys.Logging.IHasLog`.
 
 Note that if you're inheriting from `ServiceBase<Dependencies>` then the dependencies class should
 inherit from `ToSic.Lib.Services.DependenciesBase`.
@@ -103,4 +103,4 @@ TODO:
 1. [Introduced in 2sxc 9.6](https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging)
 1. Added [2sxc Insights](xref:NetCode.Debug.Index) (server-side) v9.31
 1. [Major enhancements](https://2sxc.org/en/blog/post/awesome-insights-in-10-22) in v10.22
-1. Moved to `ToSic.Lib.Logging` in v15.0
+1. Moved to `ToSic.Sys.Logging` in v15.0

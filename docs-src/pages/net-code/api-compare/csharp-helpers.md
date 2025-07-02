@@ -24,12 +24,12 @@ These can be picked up in the child as follows:
 
 | Dynamic | Typed | Comments / Differences
 | --- | --- | ---
-| `DynamicModel` <br> (`dynamic`) | `MyModel` <br> ([ITypedModel]) | Model of the child
+| `DynamicModel` <br> (`dynamic`) | `MyModel` <br> ([ITypedRazorModel]) | Model of the child
 | `var name = DynamicModel.Name` <br> (`dynamic`) | `var name = MyModel.String("Name")` <br> (`string`)
 | `var birthday = DynamicModel.Birthday` <br> (`dynamic`) | `var birthday = MyModel.DateTime("Name")` <br> (`DateTime`)
 
 `MyModel` has many more methods to ensure you can pass type-safe data to the child.
-See [MyModel](xref:ToSic.Sxc.Code.ITypedModel)
+See [MyModel](xref:ToSic.Sxc.Code.ITypedRazorModel)
 
 
-[ITypedModel]: xref:ToSic.Sxc.Code.ITypedModel
+[ITypedRazorModel]: xref:ToSic.Sxc.Code.ITypedRazorModel

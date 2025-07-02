@@ -1,5 +1,5 @@
 ﻿---
-uid: ToSic.Lib.Logging
+uid: ToSic.Sys.Logging
 ---
 
 The EAV system has a powerful internal logging system. It's the backbone to Insights.
@@ -8,7 +8,7 @@ This is where it resides - usually you don't want to know about it ;).
 
 If you do, here a short conceptual background:
 
-* Any object can have a property - usually called `Log` which is an [](xref:ToSic.Lib.Logging.ILog) .  
+* Any object can have a property - usually called `Log` which is an [](xref:ToSic.Sys.Logging.ILog) .  
  Using this the object can call the `Log.Add(...)` to add messages. Many other commands help in various scenarios.
 
 * The real power comes from chaining these - because each logger can know what parent-logger it reports to.  
@@ -18,6 +18,6 @@ If you do, here a short conceptual background:
 * The really amazing bit is that the logger will also pick up the
  class names, code-file names and line of code where it was logged 😎.
 
-* Most objects which use the Log, implement the [](xref:ToSic.Lib.Logging.IHasLog), often by inheriting  
- [](xref:ToSic.Lib.Logging).HasLog which automates things when initializing - like the chaining of the Loggers.
+* Most objects which use the Log, implement the [](xref:ToSic.Sys.Logging.IHasLog), often by inheriting  
+ [](xref:ToSic.Sys.Logging).HasLog which automates things when initializing - like the chaining of the Loggers.
 

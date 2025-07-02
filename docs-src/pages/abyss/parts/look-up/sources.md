@@ -56,7 +56,7 @@ In [DataSources](xref:NetCode.DataSources.Index) code you will usually only work
 
 ## What is a LookUp Source (technical ⚠)
 
-**LookUp Sources** are [](xref:ToSic.Lib.LookUp.ILookUp) objects and have a `Name` like like `QueryString`, `Module`, `Portal` etc.
+**LookUp Sources** are [](xref:ToSic.Eav.LookUp.ILookUp) objects and have a `Name` like like `QueryString`, `Module`, `Portal` etc.
 
 Each one is capable of retrieving values like `Id` or `DefaultPage`.
 
@@ -68,19 +68,19 @@ If it doesn't find anything it will return null and let the Engine take care of 
 > Everything is lazy, so these objects are only accessed and populated if the parameter is actually needed.
 > This results in great performance.
 
-All LookUp objects implement the [](xref:ToSic.Lib.LookUp.ILookUp) interface and inherit the [](xref:ToSic.Lib.LookUp.LookUpBase) object.
+All LookUp objects implement the [](xref:ToSic.Eav.LookUp.ILookUp) interface and inherit the [](xref:ToSic.Eav.LookUp.Sources.LookUpBase) object.
 
 ## Internal LookUp Objects (technical ⚠)
 
 Just to give you an idea of the power of LookUp objects, here are some in use:
 
-1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - this resolves entity values.
-1. [](xref:ToSic.Eav.LookUp.LookUpInNameValueCollection) - this resolves from name/value lists like `Dictionary` or `Request.QueryString` objects
+1. [](xref:ToSic.Eav.LookUp.Sources.LookUpInEntity) - this resolves entity values.
+1. [](xref:ToSic.Eav.LookUp.Sources.LookUpInNameValueCollection) - this resolves from name/value lists like `Dictionary` or `Request.QueryString` objects
 <!-- 1. [](xref:ToSic.Eav.LookUp.LookUpInMetadata) - will get values from Metadata of something -->
-1. [](xref:ToSic.Lib.LookUp.LookUpInLookUps) - will look up values in various attached LookUp objects
-1. [](xref:ToSic.Eav.LookUp.LookUpInDataTarget) - will look up a value from an `In` stream of a DataSource
+1. [](xref:ToSic.Eav.LookUp.Sources.LookUpInLookUps) - will look up values in various attached LookUp objects
+1. [](xref:ToSic.Eav.LookUp.Sources.Sys.LookUpInDataSource) - will look up a value from an `In` stream of a DataSource
 1. `ToSic.Sxc.Dnn.LookUp.LookUpInDnnPropertyAccess` - will look up stuff in Dnn specific PropertyAccess objects, which are similar to LookUp objects
-1. [](xref:ToSic.Eav.LookUp.LookUpInEntity) - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
+1. [](xref:ToSic.Eav.LookUp.Sources.LookUpInEntity) - will look up things in an IEntity and also provide more information like Count, IsFirst, etc. for the Token Engine
 
 ---
 

@@ -12,9 +12,9 @@ exports.preTransform = function (model) {
 
 const internalNamespaces = [
   // Exact Match
-  /^ToSic\.Lib$/,
-  // Anything below ToSic.Lib.* (done with a starts-string match)
-  "ToSic.Lib.",
+  // /^ToSic\.Sys$/,
+  // Anything below ToSic.Sys.* (done with a starts-string match)
+  "ToSic.Sys.",
   // Exact match
   /^ToSic\.Sys$/,
   // Anything below ToSic.Sys.*

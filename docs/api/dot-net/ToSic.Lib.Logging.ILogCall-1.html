@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall_1.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/lts/19.03/apiSpec/new?filename=ToSic_Lib_Logging_ILogCall_1.md&amp;value=---%0Auid%3A%20ToSic.Lib.Logging.ILogCall%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -111,12 +111,12 @@
 
 
   <h1 id="ToSic_Lib_Logging_ILogCall_1" data-uid="ToSic.Lib.Logging.ILogCall`1" class="text-break">
-Interface ILogCall&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall_T.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Interface ILogCall&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/lts/19.03/ToSic.Lib.Core/Logging/LogCall/ILogCall_T.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
     <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Lib.html">Lib</a>.<a class="xref" href="ToSic.Lib.Logging.html">Logging</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Sys.Core.dll</dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Lib.Core.dll</dd></dl>
   </div>
 
   <div class="markdown summary"><p>A mini logger for a function call, which should be closed using a form of <code>Return(...)</code> when the function completes.</p>
@@ -125,7 +125,7 @@ Interface ILogCall&lt;T&gt;  <a class="header-action link-secondary" title="View
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface ILogCall&lt;T&gt; : ILogCall, ILog, IHasLog</code></pre>
+public interface ILogCall&lt;T&gt; : ILogCall, ILog</code></pre>
   </div>
 
 
@@ -151,10 +151,10 @@ Note that you cannot use <code>dynamic</code> for T, so if your result is dynami
       <a class="xref" href="ToSic.Lib.Logging.ILogCall.html#ToSic_Lib_Logging_ILogCall_Timer">ILogCall.Timer</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog.html#ToSic_Lib_Logging_ILog_NameId">ILog.NameId</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCall.html#ToSic_Lib_Logging_ILogCall_Log">ILogCall.Log</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Lib.Logging.IHasLog.html#ToSic_Lib_Logging_IHasLog_Log">IHasLog.Log</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog.html#ToSic_Lib_Logging_ILog_NameId">ILog.NameId</a>
     </div>
   </dd></dl>
 
@@ -162,64 +162,85 @@ Note that you cannot use <code>dynamic</code> for T, so if your result is dynami
     <dt>Extension Methods</dt>
     <dd>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Try_ToSic_Lib_Logging_ILog_System_Func_System_String__System_String_">ILogExtensions.Try(ILog?, Func&lt;string?&gt;, string?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogExtensions.html#ToSic_Lib_Logging_ILogExtensions_Try_ToSic_Lib_Logging_ILog_System_Func_System_String__System_String_">ILogExtensions.Try(ILog, Func&lt;string&gt;, string)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Action_System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog?, Action, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Action_System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, Action, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Action_ToSic_Lib_Logging_ILogCall__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog?, Action&lt;ILogCall&gt;, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Action_ToSic_Lib_Logging_ILogCall__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, Action&lt;ILogCall&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Func_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog?, Func&lt;string&gt;, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Func_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, Func&lt;string&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Action_System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog?, string?, Action, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_Func_ToSic_Lib_Logging_ILogCall_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, Func&lt;ILogCall, string&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Action_ToSic_Lib_Logging_ILogCall__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, string, Action&lt;ILogCall&gt;, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Action_System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, string, Action, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Func_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog?, string?, Func&lt;string&gt;, bool, bool, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Action_ToSic_Lib_Logging_ILogCall__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, string, Action&lt;ILogCall&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_Getter__1_ToSic_Lib_Logging_ILog_System_Func___0__System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_Int32_">ILog_Properties.Getter&lt;TProperty&gt;(ILog, Func&lt;TProperty&gt;, bool, bool, string?, string?, string?, string?, int)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Func_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, string, Func&lt;string&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_">ILogCallExtensions.Done(ILogCall?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Actions.html#ToSic_Lib_Logging_ILog_Actions_Do_ToSic_Lib_Logging_ILog_System_String_System_Func_ToSic_Lib_Logging_ILogCall_System_String__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Actions.Do(ILog, string, Func&lt;ILogCall, string&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall?, string?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_GetterL__1_ToSic_Lib_Logging_ILog_System_Func_ToSic_Lib_Logging_ILogCall___0__System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_Int32_">ILog_Properties.GetterL&lt;TProperty&gt;(ILog, Func&lt;ILogCall, TProperty&gt;, bool, bool, string, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done__1_ToSic_Lib_Logging_ILogCall___0_">ILogCallExtensions.Done&lt;T&gt;(ILogCall?, T)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_GetterM__1_ToSic_Lib_Logging_ILog_System_Func_System_ValueTuple___0_System_String___System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Properties.GetterM&lt;TProperty&gt;(ILog, Func&lt;(TProperty Result, string FinalMessage)&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLogIfNull__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAndLogIfNull&lt;T&gt;(ILogCall&lt;T&gt;?, T)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_GetterM__1_ToSic_Lib_Logging_ILog_System_Func_ToSic_Lib_Logging_ILogCall_System_ValueTuple___0_System_String___System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_Int32_">ILog_Properties.GetterM&lt;TProperty&gt;(ILog, Func&lt;ILogCall, (TProperty Result, string Message)&gt;, bool, bool, string, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;?, T)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_Getter__1_ToSic_Lib_Logging_ILog_System_Func___0__System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_Int32_">ILog_Properties.Getter&lt;TProperty&gt;(ILog, Func&lt;TProperty&gt;, bool, bool, string, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;?, T, string)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_Setter_ToSic_Lib_Logging_ILog_System_Action_System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Properties.Setter(ILog, Action, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAsError__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.ReturnAsError&lt;T&gt;(ILogCall&lt;T&gt;?, T, string?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILog_Properties.html#ToSic_Lib_Logging_ILog_Properties_Setter__1_ToSic_Lib_Logging_ILog_System_Func___0__System_Boolean_System_Boolean_System_String_System_String_System_String_System_Int32_">ILog_Properties.Setter&lt;TProperty&gt;(ILog, Func&lt;TProperty&gt;, bool, bool, string, string, string, int)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAsOk__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAsOk&lt;T&gt;(ILogCall&lt;T&gt;?, T)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_">ILogCallExtensions.Done(ILogCall)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done_ToSic_Lib_Logging_ILogCall_System_String_">ILogCallExtensions.Done(ILogCall, string)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__System_String_">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;?, string)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Done__1_ToSic_Lib_Logging_ILogCall___0_">ILogCallExtensions.Done&lt;T&gt;(ILogCall, T)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;?, T)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLogIfNull__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAndLogIfNull&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
   </div>
   <div>
-      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;?, T, string?)</a>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAndLog__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.ReturnAndLog&lt;T&gt;(ILogCall&lt;T&gt;, T, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAsError__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.ReturnAsError&lt;T&gt;(ILogCall&lt;T&gt;, T, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnAsOk__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.ReturnAsOk&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_ReturnNull__1_ToSic_Lib_Logging_ILogCall___0__System_String_">ILogCallExtensions.ReturnNull&lt;T&gt;(ILogCall&lt;T&gt;, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="ToSic.Lib.Logging.ILogCallExtensions.html#ToSic_Lib_Logging_ILogCallExtensions_Return__1_ToSic_Lib_Logging_ILogCall___0____0_System_String_">ILogCallExtensions.Return&lt;T&gt;(ILogCall&lt;T&gt;, T, string)</a>
   </div>
   </dd></dl>
 
@@ -237,7 +258,7 @@ Note that you cannot use <code>dynamic</code> for T, so if your result is dynami
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Lib.Logging/LogCall/ILogCall_T.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/lts/19.03/ToSic.Lib.Core/Logging/LogCall/ILogCall_T.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
 

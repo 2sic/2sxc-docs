@@ -8,7 +8,8 @@ uid: Abyss.Contribute.Docs.Edit.Markdown.Index
 
 If you're new to wikis or github comments / documentation, you may be a bit lost when it comes to markdown.
 
-Markdown is a simple way to format text, and it's used in many places on the internet. It's easy to learn and use, and it's a great way to format text for the web.
+Markdown is a simple way to format text, and it's used in many places on the internet.
+It's easy to learn and use, and it's a great way to format text for the web.
 
 Here's an example:
 
@@ -21,11 +22,13 @@ This is some text. You can make text **bold** or _italic_.
 * With some items
 ```
 
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files. Here the most important tips for people working with this:
+Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+Here the most important tips for people working with this:
 
 ## Use Markdown Linting
 
-To make sure your markdown is well-formatted, you can use a linter. A linter is a tool that checks your code for errors and formatting issues.
+To make sure your markdown is well-formatted, you can use a linter.
+A linter is a tool that checks your code for errors and formatting issues.
 
 For our setup, we recommend the the [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) extension.
 
@@ -42,14 +45,15 @@ I think the most important things you need to know are these.
 * Linking has many options, better read the manuals
 * Lists have many options, better read the manuals
 * Images use a `![alt-text](/assets/path/file.ext)` syntax
-* Note that line-breaks usually don't cause a line-break in the result (except in code-samples). You can enforce a simple line break by adding two spaces at the end of a line like "check out:  " (two spaces after the ":")
+* Note that line-breaks usually don't cause a line-break in the result (except in code-samples).
+You can enforce a simple line break by adding two spaces at the end of a line like "check out:  " (two spaces after the ":")
 
 ## Markdown Links
 
 1. Link to a [website](https://www.oqtane.org/) `[website](https://www.oqtane.org/)`
 1. Link to another [page](./galleries.md) `[page](./galleries.md)`
-1. Link to some namespace [](xref:ToSxc.Eav.Data) `[](xref:ToSxc.Eav.Data)` - will automatically pick the name of the target
-1. Link to a class [](xref:ToSxc.Eav.Data.IEntity) `[](xref:ToSxc.Eav.Data.IEntity)`
+1. Link to some namespace [](xref:ToSic.Eav.Data) `[](xref:ToSic.Eav.Data)` - will automatically pick the name of the target
+1. Link to a class [](xref:ToSic.Eav.Data.IEntity) `[](xref:ToSic.Eav.Data.IEntity)`
 
 ## Markdown Checklists (IFrame)
 

@@ -55,10 +55,10 @@ It contains very fundamental parts such as **Logging** and **Dependency Injectio
 We then changed almost all logging commands to be _Extension Methods_.
 By doing this, we could make all calls _null safe_, so if the `Log` object is null, the call will not do anything.
 
-This means, that calling anything on the `Log` object requires you to add the namespace `ToSic.Lib.Logging`:
+This means, that calling anything on the `Log` object requires you to add the namespace `ToSic.Sys.Logging`:
 
 ```c#
-using ToSic.Lib.Logging;
+using ToSic.Sys.Logging;
 
 Log.A("some message);
 ```

@@ -86,7 +86,7 @@ Called Razor - eg. `Part Product.cshtml`:
 
 This applies to `RazorTyped` (v16+) and `AppRazor` (v17.03+).
 It uses the `MyModel` to pass parameters.
-All parameters are typed as `ITypedModel` when received, so you can pass anything.
+All parameters are typed as `ITypedRazorModel` when received, so you can pass anything.
 
 Calling Razor - eg. `Default.cshtml`:
 
@@ -175,12 +175,12 @@ These can be picked up in the child as follows:
 
 | Dynamic | Typed | Strong Typed
 | --- | --- | ---
-| `DynamicModel` <br> (`dynamic`) | `MyModel` <br> ([ITypedModel]) | `MyModel` <br> ([ITypedModel]) <br><br> `Model` <br> (`custom type`)
+| `DynamicModel` <br> (`dynamic`) | `MyModel` <br> ([ITypedRazorModel]) | `MyModel` <br> ([ITypedRazorModel]) <br><br> `Model` <br> (`custom type`)
 | `var name = DynamicModel.Name` <br> (`dynamic`) | `var name = MyModel.String("Name")` <br> (`string`) | `var name = MyModel.String("Name")` <br> (`string`) <br><br> `var name = Model.Name` <br> (`string`)
 | `var birthday = DynamicModel.Birthday` <br> (`dynamic`) | `var birthday = MyModel.DateTime("Birthday")` <br> (`DateTime`) | `var birthday = MyModel.DateTime("Birthday")` <br> (`DateTime`) <br><br> `var birthday = Model.Birthday` <br> (`DateTime`)
 
 `MyModel` has many more methods to ensure you can pass type-safe data to the child.
-See [MyModel](xref:ToSic.Sxc.Code.ITypedModel)
+See [MyModel](xref:ToSic.Sxc.Code.ITypedRazorModel)
 
 `Model` is always typed the way it's specified in the inherits, eg.
 
@@ -193,4 +193,4 @@ See [MyModel](xref:ToSic.Sxc.Code.ITypedModel)
 
 ---
 
-[ITypedModel]: xref:ToSic.Sxc.Code.ITypedModel
+[ITypedRazorModel]: xref:ToSic.Sxc.Code.ITypedRazorModel

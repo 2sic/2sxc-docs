@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace ToSic.Sys.Logging | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace ToSic.Sys.Logging | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/api-docs/api/dot-net/ToSic.Sys/Logging.md/#L2">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <div class="alert alert-warning d-block" role="alert">
+      ℹ️ This namespace is an internal API and can change at any time. 
+  It's documented so you can understand how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
+    </div>
+
+        <article data-uid="ToSic.Sys.Logging">
+
+  <h1 id="ToSic_Sys_Logging" data-uid="ToSic.Sys.Logging" class="text-break">Namespace ToSic.Sys.Logging</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual">
+<p>The EAV system has a powerful internal logging system. It's the backbone to Insights.</p>
+<p>This is where it resides - usually you don't want to know about it ;).</p>
+<p>If you do, here a short conceptual background:</p>
+<ul>
+<li><p>Any object can have a property - usually called <code>Log</code> which is an <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a> .<br>
+Using this the object can call the <code>Log.Add(...)</code> to add messages. Many other commands help in various scenarios.</p>
+</li>
+<li><p>The real power comes from chaining these - because each logger can know what parent-logger it reports to.<br>
+This allows us to reproduce the chain of events in the original code, because you can track where<br>
+loggers were made, and how they relate.</p>
+</li>
+<li><p>The really amazing bit is that the logger will also pick up the
+class names, code-file names and line of code where it was logged 😎.</p>
+</li>
+<li><p>Most objects which use the Log, implement the <a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a>, often by inheriting<br>
+<a class="xref" href="ToSic.Sys.Logging.html">ToSic.Sys.Logging</a>.HasLog which automates things when initializing - like the chaining of the Loggers.</p>
+</li>
+</ul>
+</div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.CodeRef.html">CodeRef</a></dt>
+      <dd><p>Reference to source code.
+It contains the path to the file, the method name and the line in the code.</p>
+<p>This is used to track the exact location in the code where a log was added/created.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.IHasLogExtensions.html">IHasLogExtensions</a></dt>
+      <dd><p>Extension to objects having a Log, to connect them to parent logs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILogCallExtensions.html">ILogCallExtensions</a></dt>
+      <dd><p>Extensions for <a class="xref" href="ToSic.Sys.Logging.ILogCall.html">ILogCall</a> objects which don't need to return a value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILogExtensions.html">ILogExtensions</a></dt>
+      <dd><p>Various extensions for <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a> objects to add logs.
+They are all implemented as extension methods, so that they will not fail even if the log object is null.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILog_Actions.html">ILog_Actions</a></dt>
+      <dd><p>Extension methods for <strong>Actions</strong> (functions which don't return a value).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILog_Add.html">ILog_Add</a></dt>
+      <dd><p>Various extensions for <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a> objects to add logs.
+They are all implemented as extension methods, so that they will not fail even if the log object is null.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILog_Properties.html">ILog_Properties</a></dt>
+      <dd><p>Extension methods for property getters and setters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.LogConstants.html">LogConstants</a></dt>
+      <dd></dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ICanDebug.html">ICanDebug</a></dt>
+      <dd><p>Trivial interface just to ensure that we have debug on/off consistent</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ICanDump.html">ICanDump</a></dt>
+      <dd><p>Interface to mark classes which can dump their state into the log as a string.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></dt>
+      <dd><p>Objects which can log their activity, and share their log with other objects in the chain to produce extensive internal logging.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a></dt>
+      <dd><p>A logger with special capabilities.
+It can take log messages, and chain itself to other loggers. <br>
+If chained, it can broadcast the messages to the other loggers from that time forward.
+Basically this is the backbone of Insights.</p>
+<p>To add messages/logs of all kinds you must use null-safe extension methods.
+It will require you to add the namespace <a class="xref" href="ToSic.Sys.Logging.html">ToSic.Sys.Logging</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILogCall.html">ILogCall</a></dt>
+      <dd><p>A log object used to log the activity of a specific function call.
+It is usually created in the beginning of the call and closed on various return calls or at the end of the function.</p>
+<p>Note that most of the methods used to complete a call are <strong>extension methods</strong>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILogCall-1.html">ILogCall&lt;T&gt;</a></dt>
+      <dd><p>A mini logger for a function call, which should be closed using a form of <code>Return(...)</code> when the function completes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sys.Logging.ILogStore.html">ILogStore</a></dt>
+      <dd><p>Interface to add <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a>s to the log storage.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/api-docs/api/dot-net/ToSic.Sys/Logging.md/#L2" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

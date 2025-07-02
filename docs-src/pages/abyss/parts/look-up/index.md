@@ -71,7 +71,7 @@ What happens now is as follows:
 
 For example, when a Query is created, it may need to know the current PortalId or the current time, to properly filter/sort something.
 
-This is achieved through 2 special object types, the [](xref:ToSic.Lib.LookUp.ILookUp) and [](xref:ToSic.Lib.LookUp.Engines.ILookUpEngine), both in the [](xref:ToSic.Lib.LookUp) namespace.
+This is achieved through 2 special object types, the [](xref:ToSic.Eav.LookUp.ILookUp) and [](xref:ToSic.Eav.LookUp.Sys.Engines.ILookUpEngine), both in the [](xref:ToSic.Eav.LookUp) namespace.
 
 
 
@@ -79,7 +79,7 @@ This is achieved through 2 special object types, the [](xref:ToSic.Lib.LookUp.IL
 
 * [](xref:Abyss.Parts.LookUp.Tokens)
 * [](xref:NetCode.DataSources.Custom.ConfigurationParse)
-* [](xref:ToSic.Lib.LookUp)
+* [](xref:ToSic.Eav.LookUp)
 * [](xref:ToSic.Sxc.LookUp)
 * [](xref:ToSic.Sxc.Dnn.LookUp)
 

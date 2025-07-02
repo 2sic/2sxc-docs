@@ -57,7 +57,7 @@ So there is a slightly different behavior.
 
 * When using it on data-object such as [](xref:ToSic.Sxc.Data.ITypedItem) the `fallback` does not change the behavior of `required`.  
   So if you don't change required, and the field _doesn't exist_, it will throw an error.
-* When using the [MyModel](xref:ToSic.Sxc.Code.ITypedModel) the fallback will also affect the `required`.  
+* When using the [MyModel](xref:ToSic.Sxc.Code.ITypedRazorModel) the fallback will also affect the `required`.  
   So if you specify a `fallback` which can be distinguished from the `default` (eg. not a `null` on a string, not a `false` on a bool) then 
   `required` will be ignored and the `fallback` will be returned.
 
