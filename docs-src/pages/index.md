@@ -5,15 +5,13 @@
 
 This is the technical documentation for 2sxc and its EAV system.
 
-> [!TIP]
-> 💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
-
-
 ## 2sxc turns Dnn & Oqtane into a CMS
 
 > [!TIP]
 > 2sxc is a CMS- and Meta-Plugin for [Dnn ☢️](xref:Abyss.Platforms.Dnn.Index) and [Oqtane 🩸](xref:Abyss.Platforms.Oqtane.Index).  
 > In many ways it's a lot like Elementor for WordPress.
+>
+> 💡 If you're new to 2sxc, best start with [2sxc.org](https://2sxc.org/).
 
 It makes content editing fun and easy, while giving the designer full control.
 
