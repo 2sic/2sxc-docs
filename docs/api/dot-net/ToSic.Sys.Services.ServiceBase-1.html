@@ -111,12 +111,12 @@
 
 
   <h1 id="ToSic_Sys_Services_ServiceBase_1" data-uid="ToSic.Sys.Services.ServiceBase`1" class="text-break">
-Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
     <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sys.html">Sys</a>.<a class="xref" href="ToSic.Sys.Services.html">Services</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Eav.Core.dll</dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Sys.Core.dll</dd></dl>
   </div>
 
   <div class="markdown summary"><p>Base class for any service which expects a Dependencies class</p>
@@ -124,7 +124,8 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ServiceBase&lt;TMyServices&gt; : ServiceBase where TMyServices : MyServicesBase</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
+public abstract class ServiceBase&lt;TMyServices&gt; : ServiceBase, IHasLog where TMyServices : MyServicesBase</code></pre>
   </div>
 
 
@@ -144,7 +145,21 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></div>
+    </dd>
+  </dl>
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Custom.DataSource.DataSource16.html">DataSource16</a></div>
+      <div><a class="xref" href="ToSic.Eav.Apps.Sys.AppBase-1.html">AppBase&lt;TServices&gt;</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
@@ -167,7 +182,7 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="ToSic_Sys_Services_ServiceBase_1__ctor_ToSic_Sys_Services_MyServicesBase__0__System_String_ToSic_Sys_Coding_NoParamOrder_System_Object___" data-uid="ToSic.Sys.Services.ServiceBase`1.#ctor(ToSic.Sys.Services.MyServicesBase{`0},System.String,ToSic.Sys.Coding.NoParamOrder,System.Object[])">
   ServiceBase(MyServicesBase&lt;TMyServices&gt;, string, NoParamOrder, object[]?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructor for passing on service dependencies which extend the original MyServices.</p>
@@ -205,7 +220,7 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="ToSic_Sys_Services_ServiceBase_1__ctor__0_System_String_ToSic_Sys_Coding_NoParamOrder_System_Object___" data-uid="ToSic.Sys.Services.ServiceBase`1.#ctor(`0,System.String,ToSic.Sys.Coding.NoParamOrder,System.Object[])">
   ServiceBase(TMyServices, string, NoParamOrder, object[]?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructor for normal case, with services</p>
@@ -248,7 +263,7 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="ToSic_Sys_Services_ServiceBase_1_Services" data-uid="ToSic.Sys.Services.ServiceBase`1.Services">
   Services
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -279,7 +294,7 @@ Class ServiceBase&lt;TMyServices&gt;  <a class="header-action link-secondary" ti
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.T.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 
