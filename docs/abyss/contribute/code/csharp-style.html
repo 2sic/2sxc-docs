@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>C# Style Guide for 2sxc / EAV | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="C# Style Guide for 2sxc / EAV | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/csharp-style.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Code.CSharpStyle">
+<h1 id="c-style-guide-for-2sxc--eav">C# Style Guide for 2sxc / EAV</h1>
+
+<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
+<h2 id="concept">Concept</h2>
+<p>We want a consistent C# style across all 2sxc and EAV code, so that it is easy to read and maintain.
+This is why we have a C# Style Guide, which is based on the <a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">Microsoft C# Style Guide</a>.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>We highly recommend using ReSharper or Rider.
+They will recommend all of the style rules in this document, and it will also help you to automatically apply them.</p>
+<p>In many cases you can use it for free on open source projects, or you can use the free <a href="https://www.jetbrains.com/rider/">Rider Community Edition</a>.</p>
+</div>
+<h2 id="style-guide">Style Guide</h2>
+<ul>
+<li>Use PascalCase for class names, method names, and property names.</li>
+<li>Use camelCase for local variables and method parameters.</li>
+<li>Use meaningful names for classes, methods, and properties.</li>
+<li>Use <code>var</code> when the type is obvious from the right-hand side of the assignment - even for <code>out</code> parameters.
+<ul>
+<li>Do use explicit types when the type is not obvious or when it improves readability.</li>
+</ul>
+</li>
+<li>Clean up after yourself: remove unused namespaces, variables, methods, and classes.</li>
+<li>Use <code>global using</code> for common global namespaces from core libraries such as <code>ToSic.Sys.DI</code>.</li>
+<li>Use <code>async</code> and <code>await</code> for asynchronous programming.</li>
+</ul>
+<h2 id="2-use-latest-preview-c-features">2. Use Latest (Preview) C# Features</h2>
+<p>We want to use the latest C# features, so we can use the latest language features and improvements.
+This means we will use the latest C# version available in the .NET SDK we are using.
+By default, this is already enabled in all <code>.csproj</code> files using <code>&lt;LangVersion&gt;preview&lt;/LangVersion&gt;</code>.</p>
+<p>Important features to use are:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record">Record Types</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/init">Init-only Properties</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns">Pattern Matching</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types">Nullable Reference Types</a></li>
+</ul>
+<h3 id="21-use-file-scoped-namespaces">2.1 Use File Scoped Namespaces</h3>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/file-scoped-namespaces">File Scoped Namespaces</a></p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_file-scoped-namespaces" role="tab" aria-controls="tabpanel_1_file-scoped-namespaces" data-tab="file-scoped-namespaces" tabindex="0" aria-selected="true">File Scoped Namespaces</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_avoid-nested-namespaces" role="tab" aria-controls="tabpanel_1_avoid-nested-namespaces" data-tab="avoid-nested-namespaces" tabindex="-1">Avoid Nested Namespaces</a>
+</li>
+</ul>
+<section id="tabpanel_1_file-scoped-namespaces" role="tabpanel" data-tab="file-scoped-namespaces">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+
+public class ExampleClass
+{
+  public void ExampleMethod()
+  {
+    // Method implementation
+  }
+}
+</code></pre>
+</section>
+<section id="tabpanel_1_avoid-nested-namespaces" role="tabpanel" data-tab="avoid-nested-namespaces" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example
+{
+    public class ExampleClass
+    {
+        public void ExampleMethod()
+        {
+            // Method implementation
+        }
+    }
+}
+</code></pre>
+</section>
+</div>
+<h3 id="22-use-field-keyword-and-init-setters">2.2 Use <code>field</code> Keyword and Init Setters</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/field">Use <code>field</code> Keyword</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/init">Init-only Properties</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_use-field-keyword" role="tab" aria-controls="tabpanel_2_use-field-keyword" data-tab="use-field-keyword" tabindex="0" aria-selected="true">Use <code>field</code> Keyword for Property Declarations</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_avoid-field-keyword" role="tab" aria-controls="tabpanel_2_avoid-field-keyword" data-tab="avoid-field-keyword" tabindex="-1">Avoid Using Unnecessary Private Variables</a>
+</li>
+</ul>
+<section id="tabpanel_2_use-field-keyword" role="tabpanel" data-tab="use-field-keyword">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string InitOnly { get; init; }
+
+  public string ExampleOne { get =&gt; field ??= &quot;default value&quot;; set; }
+
+  public string ExampleProperty 
+  {
+      get =&gt; field ?? &quot;fallback value&quot;;
+      set;
+  } = &quot;default value&quot;;
+}
+</code></pre>
+</section>
+<section id="tabpanel_2_avoid-field-keyword" role="tabpanel" data-tab="avoid-field-keyword" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+
+public class ExampleClass
+{
+  private string _exampleOne = &quot;default value&quot;;
+  private string _exampleField = &quot;default value&quot;;
+
+  public string InitOnly { get; set; }
+
+  public string ExampleOne
+  {
+    get =&gt; _exampleOne ?? &quot;default value&quot;;
+    set =&gt; _exampleOne = value;
+  }
+
+  public string ExampleProperty
+  {
+    get =&gt; _exampleField ?? &quot;fallback value&quot;;
+    set =&gt; _exampleField = value;
+  }
+}
+</code></pre>
+</section>
+</div>
+<h3 id="24-use--for-collection-initializers">2.4 Use <code>[]</code> for Collection Initializers</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/object-and-collection-initializers">Use <code>[]</code> for Empty Initializers</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-12#collection-expressions">Use C# 12 Collection Expressions</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_3_use-square-brackets" role="tab" aria-controls="tabpanel_3_use-square-brackets" data-tab="use-square-brackets" tabindex="0" aria-selected="true">Use <code>[]</code> for Empty Initializers</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_avoid-new-list" role="tab" aria-controls="tabpanel_3_avoid-new-list" data-tab="avoid-new-list" tabindex="-1">Avoid Using <code>new List&lt;Something&gt;()</code></a>
+</li>
+</ul>
+<section id="tabpanel_3_use-square-brackets" role="tabpanel" data-tab="use-square-brackets">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public List&lt;string&gt; ExampleList { get; set; } = [];
+
+  public Dictionary&lt;string, string&gt; ExampleDictionary { get; set; } = [];
+
+  public List&lt;string&gt; ExampleListWithItems { get; set; } = [&quot;item1&quot;, &quot;item2&quot;];
+
+  // Using C# 12 Collection Expressions to Copy Lists
+  public List&lt;string&gt; ExampleListWithExpression { get;  } = [..ExampleListWithItems, &quot;item3&quot;, &quot;item4&quot;];
+}
+</code></pre>
+</section>
+<section id="tabpanel_3_avoid-new-list" role="tabpanel" data-tab="avoid-new-list" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+    public List&lt;string&gt; ExampleList { get; set; } = new List&lt;string&gt;();
+
+    public Dictionary&lt;string, string&gt; ExampleDictionary { get; set; } = new Dictionary&lt;string, string&gt;();
+
+    public List&lt;string&gt; ExampleListWithItems { get; set; } = new List&lt;string&gt; { &quot;item1&quot;, &quot;item2&quot; };
+
+    // Don't use old APIs or Modify Existing Lists
+    public List&lt;string&gt; ExampleListWithExpression { get; } = new List&lt;string&gt;(ExampleListWithItems)
+    {
+        &quot;item3&quot;,
+        &quot;item4&quot;
+    };
+}
+</code></pre>
+</section>
+</div>
+<h3 id="25-use--for-simple-methods-and-properties">2.5 Use <code>=&gt;</code> for Simple Methods and Properties</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions">Use <code>=&gt;</code> for Simple Methods</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_4">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_4_use-lambda-expressions" role="tab" aria-controls="tabpanel_4_use-lambda-expressions" data-tab="use-lambda-expressions" tabindex="0" aria-selected="true">Use <code>=&gt;</code> for Simple Methods</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_avoid-full-method-bodies" role="tab" aria-controls="tabpanel_4_avoid-full-method-bodies" data-tab="avoid-full-method-bodies" tabindex="-1">Avoid Using Full Method Bodies for Simple Methods</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_use-target-typed-new" role="tab" aria-controls="tabpanel_4_use-target-typed-new" data-tab="use-target-typed-new" tabindex="-1">Use Target Typed <code>new()</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_avoid-full-type-names" role="tab" aria-controls="tabpanel_4_avoid-full-type-names" data-tab="avoid-full-type-names" tabindex="-1">Avoid Using Full Type Names with <code>new</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_use-early-returns" role="tab" aria-controls="tabpanel_4_use-early-returns" data-tab="use-early-returns" tabindex="-1">Use Early Returns</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_avoid-nested-if" role="tab" aria-controls="tabpanel_4_avoid-nested-if" data-tab="avoid-nested-if" tabindex="-1">Avoid Nested <code>if</code> Statements</a>
+</li>
+</ul>
+<section id="tabpanel_4_use-lambda-expressions" role="tabpanel" data-tab="use-lambda-expressions">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input) =&gt; $&quot;Hello, {input}!&quot;;
+
+  public string ExampleProperty =&gt; $&quot;Hello, {input}!&quot;;
+}
+</code></pre>
+</section>
+<section id="tabpanel_4_avoid-full-method-bodies" role="tabpanel" data-tab="avoid-full-method-bodies" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    return $&quot;Hello, {input}!&quot;;
+  }
+
+  public string ExampleProperty
+  {
+    get
+    {
+      return $&quot;Hello, {input}!&quot;;
+    }
+  }
+}
+</code></pre>
+<h3 id="26-use-target-typed-new-for-object-creation">2.6 Use Target Typed <code>new()</code> for Object Creation</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/target-typed-new">Use Target Typed <code>new()</code></a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/new-operator#target-typed-new">new operator</a></li>
+</ul>
+</section>
+<section id="tabpanel_4_use-target-typed-new" role="tabpanel" data-tab="use-target-typed-new" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public ExampleObject ExampleObject { get; set; } = new();
+
+  public ExampleClass()
+  {
+    var specs = GetSpecs(new() { PropertyOne = &quot;Value&quot; });
+  }
+
+  public ExampleObject GetSpecs(ExampleObject exampleObject) =&gt; exampleObject;
+
+}
+</code></pre>
+</section>
+<section id="tabpanel_4_avoid-full-type-names" role="tabpanel" data-tab="avoid-full-type-names" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public ExampleObject ExampleObject { get; set; } = new ExampleObject();
+
+  public ExampleClass()
+  {
+    var specs = GetSpecs(new ExampleObject { PropertyOne = &quot;Value&quot; });
+  }
+
+  public ExampleObject GetSpecs(ExampleObject exampleObject) =&gt; exampleObject;
+}
+</code></pre>
+<h2 id="3-keep-code-flat">3. Keep Code Flat</h2>
+<p>We want to keep the code flat, so that it is easy to read and maintain.
+This means we will avoid unnecessary nesting and indentation, and keep the code as flat as possible.</p>
+<p>It also means using conventions such as returning early, and avoiding unnecessary <code>else</code> statements.</p>
+<h3 id="31-use-early-returns">3.1 Use Early Returns</h3>
+<ul>
+<li><a href="https://www.c-sharpcorner.com/article/early-return-pattern-in-c-sharp/">Use Early Returns</a></li>
+</ul>
+</section>
+<section id="tabpanel_4_use-early-returns" role="tabpanel" data-tab="use-early-returns" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    if (string.IsNullOrEmpty(input))
+      return &quot;Input is empty&quot;;
+
+    return $&quot;Hello, {input}!&quot;;
+  }
+}
+</code></pre>
+</section>
+<section id="tabpanel_4_avoid-nested-if" role="tabpanel" data-tab="avoid-nested-if" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    if (string.IsNullOrEmpty(input))
+    {
+      return &quot;Input is empty&quot;;
+    }
+    else
+    {
+      return $&quot;Hello, {input}!&quot;;
+    }
+  }
+}
+</code></pre>
+</section>
+</div>
+<h3 id="32-prefer-ternary-operators">3.2 Prefer Ternary Operators</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator">Use Ternary Operators</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_5">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_5_use-ternary-operators" role="tab" aria-controls="tabpanel_5_use-ternary-operators" data-tab="use-ternary-operators" tabindex="0" aria-selected="true">Use Ternary Operators</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_5_avoid-full-if" role="tab" aria-controls="tabpanel_5_avoid-full-if" data-tab="avoid-full-if" tabindex="-1">Avoid Using Full <code>if</code> Statements</a>
+</li>
+</ul>
+<section id="tabpanel_5_use-ternary-operators" role="tabpanel" data-tab="use-ternary-operators">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    return string.IsNullOrEmpty(input)
+      ? &quot;Input is empty&quot;
+      : $&quot;Hello, {input}!&quot;;
+  }
+}
+</code></pre>
+</section>
+<section id="tabpanel_5_avoid-full-if" role="tabpanel" data-tab="avoid-full-if" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    string value;
+    if (string.IsNullOrEmpty(input))
+    {
+      value = &quot;Input is empty&quot;;
+    }
+    else
+    {
+      value = $&quot;Hello, {input}!&quot;;
+    }
+    return value;
+  }
+}
+</code></pre>
+</section>
+</div>
+<h3 id="33-use-switch-expressions">3.3 Use <code>switch</code> Expressions</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression">Use <code>switch</code> Expressions</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_6">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_6_use-switch-expressions" role="tab" aria-controls="tabpanel_6_use-switch-expressions" data-tab="use-switch-expressions" tabindex="0" aria-selected="true">Use <code>switch</code> Expressions</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_6_avoid-full-switch" role="tab" aria-controls="tabpanel_6_avoid-full-switch" data-tab="avoid-full-switch" tabindex="-1">Avoid Using Full <code>switch</code> Statements</a>
+</li>
+</ul>
+<section id="tabpanel_6_use-switch-expressions" role="tabpanel" data-tab="use-switch-expressions">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    return input switch
+    {
+      null =&gt; &quot;Input is null&quot;,
+      &quot;&quot; =&gt; &quot;Input is empty&quot;,
+      _ =&gt; $&quot;Hello, {input}!&quot;
+    };
+  }
+}
+</code></pre>
+</section>
+<section id="tabpanel_6_avoid-full-switch" role="tabpanel" data-tab="avoid-full-switch" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    switch (input)
+    {
+      case null:
+        return &quot;Input is null&quot;;
+      case &quot;&quot;:
+        return &quot;Input is empty&quot;;
+      default:
+        return $&quot;Hello, {input}!&quot;;
+    }
+  }
+}
+</code></pre>
+</section>
+</div>
+<h3 id="34-use-ternary-throws">3.4 Use Ternary Throws</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator#using-the-conditional-operator-to-throw-exceptions">Use Ternary Throws</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_7">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_7_use-ternary-throws" role="tab" aria-controls="tabpanel_7_use-ternary-throws" data-tab="use-ternary-throws" tabindex="0" aria-selected="true">Use Ternary Throws</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_7_avoid-full-if-throws" role="tab" aria-controls="tabpanel_7_avoid-full-if-throws" data-tab="avoid-full-if-throws" tabindex="-1">Avoid Using Full <code>if</code> Statements for Throws</a>
+</li>
+</ul>
+<section id="tabpanel_7_use-ternary-throws" role="tabpanel" data-tab="use-ternary-throws">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    return input ?? throw new ArgumentException(&quot;Input cannot be null or empty&quot;, nameof(input))
+  }
+
+  public string ExampleMethodWithEmptyCheck(string input)
+  {
+    return string.IsNullOrEmpty(input) ? throw new ArgumentException(&quot;Input cannot be null or empty&quot;, nameof(input)) : input;
+  }
+}
+</code></pre>
+</section>
+<section id="tabpanel_7_avoid-full-if-throws" role="tabpanel" data-tab="avoid-full-if-throws" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">namespace ToSic.Sxc.Example;
+public class ExampleClass
+{
+  public string ExampleMethod(string input)
+  {
+    if (input == null)
+    {
+      throw new ArgumentException(&quot;Input cannot be null or empty&quot;, nameof(input));
+    }
+    return input;
+  }
+
+  public string ExampleMethodWithEmptyCheck(string input)
+  {
+    if (string.IsNullOrEmpty(input))
+    {
+      throw new ArgumentException(&quot;Input cannot be null or empty&quot;, nameof(input));
+    }
+    return input;
+  }
+}
+</code></pre>
+</section>
+</div>
+<h2 id="4-use-linq-properly">4. Use LINQ properly</h2>
+<p>LINQ is easy to learn and hard to master.
+Here are some tips to use LINQ properly:</p>
+<ul>
+<li>Use <code>Select</code> and <code>Where</code> to filter and transform collections.</li>
+<li>Use <code>FirstOrDefault</code> and <code>SingleOrDefault</code> to get single items from collections.</li>
+<li>Use <code>Any</code> and <code>All</code> to check conditions on collections.</li>
+<li>Use <code>Aggregate</code> to combine collections into a single value.</li>
+<li>Use <code>ToList</code> and <code>ToArray</code> to convert collections to lists or arrays.</li>
+<li>Use <code>AsEnumerable</code> to convert collections to <code>IEnumerable&lt;T&gt;</code> before using LINQ methods.</li>
+<li>Use <code>IEnumerable&lt;T&gt;</code> instead of <code>List&lt;T&gt;</code> or <code>Array</code> when possible, to allow for more flexibility.</li>
+<li>Use <code>IReadOnlyList&lt;T&gt;</code>, <code>IReadOnlyCollection&lt;T&gt;</code> or <code>IImmutableList&lt;T&gt;</code> for read-only collections.</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>It's usually better to use a <code>ToList()</code> or <code>ToArray()</code> at the end of a LINQ query, so that it is clear that the query is executed at that point.
+This also helps to avoid performance issues with deferred execution, where the query is executed multiple times.</p>
+<p>It also helps debug issues where they occur, and not later when the query is executed.</p>
+</div>
+<h2 id="5-use-iserviceprovider-for-dependency-injection">5. Use <code>IServiceProvider</code> for Dependency Injection</h2>
+<p>We use <code>IServiceProvider</code> for dependency injection, and register services in the <code>Startup.cs</code> file.
+This allows us to easily inject dependencies into classes and methods, and makes the code more testable and maintainable.</p>
+<h2 id="6-use-proper-nullability-annotations">6. Use Proper Nullability Annotations</h2>
+<p>We use proper nullability annotations to indicate whether a parameter or return value can be null or not.
+This helps to avoid null reference exceptions and makes the code more readable.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>As of v20, all the core libraries are now using nullable reference types.
+This include <code>ToSic.Sys</code>, <code>ToSic.Sxc</code>, and <code>ToSic.Eav</code>.</p>
+<p>The Dnn / Oqtane libraries are not fully nullable yet, but will be in the future.</p>
+</div>
+<h2 id="history">History</h2>
+<ul>
+<li>New in 2023-09 v16.06</li>
+</ul>
+<p>Shortlink: <a href="https://go.2sxc.org/build">https://go.2sxc.org/build</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/csharp-style.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
