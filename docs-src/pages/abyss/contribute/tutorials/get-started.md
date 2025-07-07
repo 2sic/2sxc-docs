@@ -20,7 +20,7 @@ When you want to create a completely new tutorial you first need to create one u
 
 ![Screenshot of create tutorial-section toolbar](assets/create-tutorial-section.png)
 
-### Filling out the infos
+### Filling out basic infos
 
 Greeted with this the create-dialog...
 
@@ -55,3 +55,16 @@ Back on the [home](https://app-dev.2sxc.org/tutorial-razor/) page the new set sh
 
 The new tutoral page should look like this:
 ![Emtpy tutorial page](assets/empty-tutorial-page.png)
+
+### Metadata
+
+Diffentet kinds of metadata can be set in the **Linking to this Page** group.
+
+## Create Snippets (Page Content)
+
+With the new page in place you can start adding page content by creating new Snippets
+
+![Screenshot of create snippets group in dialog](assets/create-snippets-group.png)
+
+
+
