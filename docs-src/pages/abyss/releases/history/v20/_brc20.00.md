@@ -198,3 +198,6 @@ Since it was only used internally, it should not affect anyone.
 
 1. ⬇️ All [system queries](xref:Basics.Query.SystemQueries) which are called `System.Whatever` previously also supported being called by `Eav.Queries.Global.Whatever`.  
     This is now removed, so you should only use `System.Whatever` to call global queries.
+
+1. ⬇️ The [DependenciesClass](xref:NetCode.Conventions.Dependencies) was previously called `MyServices` but it was very unclear, so it was renamed.  `ToSic.Eav.Data.IEntity`.  
+    This is a breaking change, but we don't believe anyone used this interface directly, except in custom DataSources - where we kept the old name for compatibility.

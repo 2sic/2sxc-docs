@@ -46,7 +46,7 @@ namespace ToSic.Tutorial.DataSources
         /// This allows for a stable API even if future base classes require more dependencies.
         /// </summary>
         /// <param name="services">The dependencies required by the base class</param>
-        public TodayInfos(MyServices services): base(services, "My.Basic")
+        public TodayInfos(Dependencies services): base(services, "My.Basic")
         {
             // "Default" out; when accessed, will deliver GetListWithToday
             ProvideOut(GetListWithToday, options: () => new DataFactoryOptions(titleField: "Date"));
@@ -112,3 +112,5 @@ Comparable
 1. API strongly enhanced and simplifield in 2sxc 09.13
 1. Another API rework ca. 2sxc 10.25
 1. Major (breaking) changes in 2sxc 15/16
+1. Changed the term `MyServices` to `Dependencies` in v20.  
+    for compatibility reasons, the old `MyServices` is still available on `DataSource16`, but deprecated and will be removed some day.

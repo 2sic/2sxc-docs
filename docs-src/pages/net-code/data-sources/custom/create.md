@@ -39,7 +39,7 @@ using System.Linq;
 
 public class ListBasic : Custom.DataSource.DataSource16
 {
-  public ListBasic(MyServices services) : base(services)
+  public ListBasic(Dependencies services) : base(services)
   {
     ProvideOut(() => Enumerable.Range(1, 5).Select(i => new {
       Id = i,
@@ -72,3 +72,5 @@ It also allows you to write unit tests to create more robust code.
 1. Another API rework ca. 2sxc 10.25 (but we're not exactly sure)
 1. Major breaking API changes and improvements in 2sxc 15
 1. Dynamic DataSources introduced in 2sxc 16
+1. Changed the term `MyServices` to `Dependencies` in v20.  
+    for compatibility reasons, the old `MyServices` is still available on `DataSource16`, but deprecated and will be removed some day.

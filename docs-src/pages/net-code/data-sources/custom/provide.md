@@ -107,7 +107,7 @@ using System.Collections.Generic;
 
 public class TreeBasic : Custom.DataSource.DataSource16
 {
-  public TreeBasic(MyServices services) : base(services, "My.Magic")
+  public TreeBasic(Dependencies services) : base(services, "My.Magic")
   {
     ProvideOut(() => {     
       return new List<object> {
@@ -156,3 +156,6 @@ It's important to know that `ProvideOut` simply prepares the `Out` for use, but 
 
 1. Introduced in EAV 4.x, 2sxc 09.13
 1. Changed from `Provide` to `ProvideOut` in v15 (breaking change)
+1. Changed the term `MyServices` to `Dependencies` in v20.  
+    for compatibility reasons, the old `MyServices` is still available on `DataSource16`, but deprecated and will be removed some day.
+

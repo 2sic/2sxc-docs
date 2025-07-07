@@ -28,7 +28,7 @@ using System.Linq;
 
 public class ListBasic : Custom.DataSource.DataSource16
 {
-  public ListBasic(MyServices services) : base(services)
+  public ListBasic(Dependencies services) : base(services)
   {
     ProvideOut(() => Enumerable.Range(1, 5).Select(i => new {
       Id = i,
@@ -90,3 +90,5 @@ To see the compile errors, you must go to the [2sxc Insights](xref:NetCode.Debug
 ## History
 
 1. Introduced in 2sxc 16
+1. Changed the term `MyServices` to `Dependencies` in v20.  
+    for compatibility reasons, the old `MyServices` is still available on `DataSource16`, but deprecated and will be removed some day.
