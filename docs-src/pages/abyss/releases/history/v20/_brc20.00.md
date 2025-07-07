@@ -146,6 +146,9 @@ Note that we marked the breaking changes like this
 1. ⚠️ Every App _can_ have a similar `/system` folder. Each could have a `.data` folder - this must now be `App_Data`.  
     This is rarely used, but you would have to manually rename this folder to `App_Data` if you had it.
 
+1. ⚠️ DNN had some very old (pre v8) WebApi routes like `app-content`, `app-query` and `app-api` which were removed.  
+    If you had these in your code, please use the same route, just without the `app-` prefix.
+
 1. ⬇️ An old interface `ToSic.Sxc.Blocks.IRenderService` was removed, since it's been superseded by `ToSic.Sxc.Services.IRenderService`.
     We believe it was used in 2-3 v12 Apps, so if you encounter this, just switch to `ToSic.Sxc.Services.IRenderService` instead.
 
