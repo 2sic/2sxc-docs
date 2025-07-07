@@ -186,6 +186,33 @@
 <li>🐞 Fix: Auto-retrieve license from patrons.</li>
 <li>🐞 Fix: In rare cases, changing the field type didn't seem to work.</li>
 </ol>
+<h3 id="2sxc-v200002-2025-07-07">2sxc v20.00.02 (2025-07-07)</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>2sxc v20 is a <a class="xref" href="../../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
+<p>See <a class="xref" href="breaking.html">Breaking Changes in v20</a> for details.</p>
+</div>
+<p>This 20.00.02 has only minor changes.</p>
+<h4 id="enhancements">Enhancements</h4>
+<ol>
+<li>Admin Features Management - introduce search</li>
+<li>Improve help when <code>web.config</code> is missing for Razor files which are used within <code>Html.Partial(...)</code>.</li>
+<li>Color enhancements in Admin UI, now more consistent.</li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🐞 Edit data (like App Settings) without WYSIWYG caused JS issues</li>
+<li>🐞 Edit view caused some issues</li>
+<li>🐞 Typed API - using Children containing null entry will filter that</li>
+</ol>
+<h4 id="internal-changes">Internal Changes</h4>
+<ol>
+<li>Improved internal namespaces, now everything should be in <code>.Sys</code></li>
+<li>🩸 Oqtane: client lib does not use the 2sxc sys lib any more (not necessary, speeds up client rendering)</li>
+<li>Update Google Maps key to latest version.</li>
+<li>Drop complexity with MyServiceBase</li>
+<li>Renamed <code>MyServices</code> to <code>Dependencies</code></li>
+</ol>
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
 <h5>Important</h5>
@@ -385,6 +412,9 @@ Previously the path <code>/system/[ext-name]/.data/</code> was also supported, b
 </li>
 <li><p>⬇️ All <a class="xref" href="../../../../basics/query/query-system.html">system queries</a> which are called <code>System.Whatever</code> previously also supported being called by <code>Eav.Queries.Global.Whatever</code>.<br>
 This is now removed, so you should only use <code>System.Whatever</code> to call global queries.</p>
+</li>
+<li><p>⬇️ The <a class="xref" href="../../../../net-code/conventions/dependencies/index.html">DependenciesClass</a> was previously called <code>MyServices</code> but it was very unclear, so it was renamed.  <code>ToSic.Eav.Data.IEntity</code>.<br>
+This is a breaking change, but we don't believe anyone used this interface directly, except in custom DataSources - where we kept the old name for compatibility.</p>
 </li>
 </ol>
 

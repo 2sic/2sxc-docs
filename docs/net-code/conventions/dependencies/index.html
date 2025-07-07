@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Convention: Dependencies Class | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Convention: Dependencies Class | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/conventions/dependencies/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="NetCode.Conventions.Dependencies">
+<h1 id="convention-dependencies-class">Convention: Dependencies Class</h1>
+
+<p>2sxc and EAV prefer to use <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over Inheritance</a>.
+But in some cases this is not possible, and we need to use inheritance.</p>
+<p>The problem that then arises is that the base class needs services, and the list of services can change with time.
+This would make it very hard to keep inherited objects working, as upgrades would break the constructor.</p>
+<p>So we invented a special convention. Here's how it works:</p>
+<h2 id="basic-setup">Basic Setup</h2>
+<p>This is what a typical base class would look like</p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
+/// Class inheriting from ServiceBase, which expects dependencies to be of type ExampleBase.Dependencies.
+/// This is a convention which allows the base class to change its dependencies without breaking the constructor.
+/// &lt;/summary&gt;
+public abstract class ExampleBase: ServiceBase&lt;ExampleBase.Dependencies&gt;
+{
+  /// &lt;summary&gt;
+  /// Public ExampleBase.Dependencies which actually gets all the dependencies.
+  /// Must be registered in DI.
+  /// &lt;/summary&gt;
+  public class Dependencies
+  {
+    public Dependencies(ISomething something, IElse somethingElse)
+      : DependenciesBase(connect: [something, somethingElse]) // This will make sure the logs are connected
+    {
+      internal ISomething Something { get; } = something;
+      internal IElse SomethingElse { get; } = somethingElse;
+    }
+  }
+
+  /// &lt;summary&gt;
+  /// The normal constructor of ExampleBase, asking for these services
+  /// &lt;/summary&gt;
+  protected ExampleBase(Dependencies services): base(services, &quot;My.Example&quot;)
+  {
+    // You can now use Services.Something and Services.SomethingElse to access the dependencies
+  }
+}
+</code></pre>
+<p>Or in the shorter form using the new C# 12 constructors (will not work in Dnn Razor, as that has an older C# version):</p>
+<pre><code class="lang-c#">public abstract class ExampleBase(Dependencies: services): ServiceBase&lt;ExampleBase.Dependencies&gt;(services, &quot;My.Example&quot;)
+{
+  // Public ExampleBase.Dependencies which actually gets all the dependencies
+  public class Dependencies
+  {
+    public Dependencies(ISomething something, IElse somethingElse): DependenciesBase(connect: [something, somethingElse])
+    {
+      internal ISomething Something { get; } = something;
+      internal IElse SomethingElse { get; } = somethingElse;
+    }
+  }
+}
+</code></pre>
+<p>This class is then registered with normal DI and just works.</p>
+<h2 id="inheritance">Inheritance</h2>
+<p>When you inherit such a class, this is what you do:</p>
+<pre><code class="lang-c#">public class YourClass : ExampleBase
+{
+  public YourClass(Dependencies services, ISomeOtherService xyz) : base(services)
+  {
+    // ...
+  }
+}
+</code></pre>
+<p>When you do this (assuming you registered your <code>YourClass</code>) in DI, it will automatically use the <code>Dependencies</code> from the base class.</p>
+<p>This way the base class can change the list of it's dependencies as it needs, while preserving a constructor that never changes.</p>
+<h2 id="good-to-know">Good to Know</h2>
+<p>Internally the system does quite a bit more, but this is all you need to know to get it to work 😉.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You may be tempted to use something which is available on Dependencies.
+But you shouldn't as this is regarded as a private API and may change at any time.</p>
+</div>
+<h2 id="use-in-datasources">Use in DataSources</h2>
+<p>The most common place for you to see this is when creating custom DataSources.
+You will usually inherit from <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a>.
+It too has a <code>Dependencies</code> class.</p>
+<h2 id="coverage">Coverage</h2>
+<p>As of March 2023, all DataSources use this convention.
+Many other objects use this as well, but we don't expect that you'll be needing that.</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced in 2sxc 15</li>
+<li>First published code which uses it in 2sxc 16</li>
+<li>Changed the term <code>MyServices</code> to <code>Dependencies</code> in v20.<br>
+for compatibility reasons, the old <code>MyServices</code> is still available on <code>DataSource16</code>, but deprecated and will be removed some day.</li>
+</ol>
+<p>Shortlink: <a href="https://go.2sxc.org/myservices">https://go.2sxc.org/myservices</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/conventions/dependencies/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
