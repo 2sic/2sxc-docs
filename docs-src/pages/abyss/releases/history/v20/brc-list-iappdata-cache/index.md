@@ -42,15 +42,22 @@ Previously you may have had code like this on Mobius Apps:
 var type = Data.Cache.GetContentType(config.ContentType);
 ```
 
-## What we Changed
+## Example 1: Upgrade to Newer functionality
 
 The way to get the type was changed long ago, so you should change to the more modern API.
+You can then use it with `type.Name`.
 
-## Upgrade to Newer functionality
+```csharp
+var type = App.Data.GetContentType(config.ContentType);
+```
 
+## Example 2: Direct Use of the ContentTypes Name
 
-```c#
-var type = App.GetContentType(config.ContentType);
+A simpler way is to pass the name of the content type directly as a string.
+So in contrast to **Example 1**, you wouldn't use `type.Name`, but instead just `type`.
+
+```csharp
+var type = config.ContentType;
 ```
 
 ---

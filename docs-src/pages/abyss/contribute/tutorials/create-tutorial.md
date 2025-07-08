@@ -1,5 +1,5 @@
 ---
-uid: Abyss.Contribute.Tutorials.GetStarted
+uid: Abyss.Contribute.Tutorials.CreateTutorial
 ---
 
 # Get Started
@@ -60,11 +60,7 @@ The new tutoral page should look like this:
 
 Diffentet kinds of metadata can be set in the **Linking to this Page** group.
 
-## Create Snippets (Page Content)
+### Creating Snippets
 
-With the new page in place you can start adding page content by creating new Snippets
-
-![Screenshot of create snippets group in dialog](assets/create-snippets-group.png)
-
-
-
+Continue with creating Snippets for the new tutorial
+[See](xref:Abyss.Contribute.Tutorials.CreateSnippet)

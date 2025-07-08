@@ -15,7 +15,7 @@ Because of this, the structure needs some learning to understand how it works.
 
 Leaving out all the verbose infos and get straight to contributing.
 
-[See](xref:Abyss.Contribute.Tutorials.GetStarted)
+[See](xref:Abyss.Contribute.Tutorials.CreateTutorial)
 
 ## Tutorials Architecture
 
