@@ -204,3 +204,9 @@ Since it was only used internally, it should not affect anyone.
 
 1. ⬇️ The [DependenciesClass](xref:NetCode.Conventions.Dependencies) was previously called `MyServices` but it was very unclear, so it was renamed.  `ToSic.Eav.Data.IEntity`.  
     This is a breaking change, but we don't believe anyone used this interface directly, except in custom DataSources - where we kept the old name for compatibility.
+
+1. ⬇️ The `IContentType` had a `.ContentTypeId` which should only be `.Id`. The old `.ContentTypeId` was removed (deprecated since v13).  
+    This is a breaking change, but we don't believe anyone used this property directly.
+
+1. ⬇️ The `IContentType` had a `.StaticName` which should only be `.NameId`. The old `.StaticName` was removed (deprecated since v13).  
+    This is a breaking change, but we don't believe anyone used this property directly.
