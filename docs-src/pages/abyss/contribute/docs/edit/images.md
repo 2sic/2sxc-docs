@@ -37,8 +37,8 @@ For example, we have a lot of `.snagx` files (SnagIt) which would allow us to ma
 
 ## Insert Images (Markdown vs. HTML)
 
-Images can be added it two ways - using markdown, or the HTML counterpart.
-We recommend to always place images in an `assets` folder below
+Images can be added in two ways - using markdown, or the HTML counterpart.
+We recommend to always place images in an `./assets/` folder below
 the markdown file you're using the image on.
 
 
@@ -56,6 +56,18 @@ Use the **HTML** syntax which allows to to set `class` and more.
 
 We usually prefer the `<img>` syntax, because we often need to add classes or other attributes.
 
+### Available Images Classes
+
+The following classes are supported and ready to use:
+
+- [`full-width`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#full-width) - makes the image span the full width with shadow and rounded corners
+- [`feature`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#feature) - limits height for feature images (max 100px)
+- [`float-right`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-right) - floats the image to the right with left margin
+- [`right-thumbnail`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#right-thumbnail) - floats a smaller thumbnail to the right
+- [`float-left`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-left) - floats the image to the left with right margin
+- [`glow`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#glow) - adds a subtle shadow and rounded corners
+
+If you want to see these in action visit this [demo](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo).
 
 ## Lightboxes
 
