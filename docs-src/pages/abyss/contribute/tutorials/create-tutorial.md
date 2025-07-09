@@ -12,19 +12,19 @@ On [app-dev.2sxc.org/tutorial-razor/](https://app-dev.2sxc.org/tutorial-razor/) 
 
 _you should end up on this page (see screenshot):_
 
-![Screenshot of tutorial-razor homepage](assets/tutorial-razor-home.png)
+<img src="./assets/tutorial-razor-home.png" width="100%" class="full-width">
 
 ## Create a new Section
 
 When you want to create a completely new tutorial you first need to create one using the toolbar on any existing sextino. Just press **new**.
 
-![Screenshot of create tutorial-section toolbar](assets/create-tutorial-section.png)
+<img src="./assets/create-tutorial-section.png" width="100%" class="full-width">
 
 ### Filling out basic infos
 
 Greeted with this the create-dialog...
 
-![Screenshot of create tutorial-section dialog](assets/create-tutorial-section-dialog.png)
+<img src="./assets/create-tutorial-section-dialog.png" width="100%" class="full-width">
 
 ... you will need to fill out the following basic infos:
 
@@ -37,7 +37,7 @@ Greeted with this the create-dialog...
 
 Then you will need to add one or multiple new pages for the tutorials. Start with only one default page.
 
-![Screenshot of create tutorial-section-page toolbar](assets/create-tutorial-section-page.png)
+<img src="./assets/create-tutorial-section-page.png" width="100%" class="full-width">
 
 Here you will also need fill in some basic infos so the app knows how to handle the page.
 
@@ -51,10 +51,11 @@ Leave the rest as is for now.
 
 Back on the [home](https://app-dev.2sxc.org/tutorial-razor/) page the new set should have been created with the selected Icon, Title etc. and contain the Link to the new Tutorial page.
 
-![Created tutorial set in accordion](assets/tutorial-set-accordion.png)
+<img src="./assets/tutorial-set-accordion.png" width="100%" class="full-width">
 
 The new tutoral page should look like this:
-![Emtpy tutorial page](assets/empty-tutorial-page.png)
+
+<img src="./assets/empty-tutorial-pag.png" width="100%" class="full-width">
 
 ### Metadata
 
