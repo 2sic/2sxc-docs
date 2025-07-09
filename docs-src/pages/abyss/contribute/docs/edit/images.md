@@ -66,7 +66,6 @@ The following classes are supported and ready to use:
 - [`right-thumbnail`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#right-thumbnail) - floats a smaller thumbnail to the right
 - [`float-left`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-left) - floats the image to the left with right margin
 - [`glow`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#glow) - adds a subtle shadow and rounded corners
-- [`svg`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#svg) - for SVG images with special highlighting effects on hover
 
 If you want to see these in action visit this [demo](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo).
 

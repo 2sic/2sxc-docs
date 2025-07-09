@@ -1,8 +1,7 @@
 ---
 uid: Abyss.Contribute.Docs.Edit.ImageClassesDemo
 ---
-
-## Image Classes Demos
+# Image Classes Demos
 
 Here you will find demos for the available image classes to easily style your images when contributing to the docs.
 
@@ -14,11 +13,12 @@ The following classes are supported and ready to use:
 - [`right-thumbnail`](#right-thumbnail) - floats a smaller thumbnail to the right
 - [`float-left`](#float-left) - floats the image to the left with right margin
 - [`glow`](#glow) - adds a subtle shadow and rounded corners
-- [`svg`](#svg) - for SVG images with special highlighting effects on hover
 
 _Note, that you can combine multiple classes._
 
-### Full Width
+---
+
+## Full Width
 
 The `full-width` class will responsively scale the image to the available container width and adds a subtle shadow with rounded corners.
 
@@ -35,11 +35,13 @@ img.full-width {
 }
 ```
 
-#### Result `full-width`
+**Result `full-width`**
 
 <img src="./assets/image.png" class="full-width">
 
-### Feature
+---
+
+## Feature
 
 The `feature` class limits the height of images to a maximum of 100px while maintaining the aspect ratio. This is useful for logo or feature highlights.
 
@@ -54,11 +56,13 @@ img.feature {
 }
 ```
 
-#### Result `feature`
+**Result `feature`**
 
 <img src="./assets/image.png" class="feature">
 
-### Float Right
+---
+
+## Float Right
 
 The `float-right` class floats the image to the right side with proper margins on the left and bottom.
 
@@ -74,7 +78,7 @@ img.float-right {
 }
 ```
 
-#### Result `float-right`
+**Result `float-right`**
 
 <div style="overflow: auto;">
 <img src="./assets/image.png" class="float-right">
@@ -84,7 +88,9 @@ This is example text showing how the float-right class works. The image will app
 
 <div style="clear: both;"></div>
 
-### Right Thumbnail
+---
+
+## Right Thumbnail
 
 The `right-thumbnail` class floats a smaller thumbnail (25% width) to the right side with proper margins.
 
@@ -101,7 +107,7 @@ img.right-thumbnail {
 }
 ```
 
-#### Result `right-thumbnail`
+**Result `right-thumbnail`**
 
 <div style="overflow: auto;">
 <img src="./assets/image.png" class="right-thumbnail">
@@ -111,7 +117,9 @@ This demonstrates the right-thumbnail class. The image appears as a small thumbn
 
 <div style="clear: both;"></div>
 
-### Float Left
+---
+
+## Float Left
 
 The `float-left` class floats the image to the left side with proper margins on the right and bottom.
 
@@ -127,7 +135,7 @@ img.float-left {
 }
 ```
 
-#### Result `float-left`
+**Result `float-left`**
 
 <div style="overflow: auto;">
 <img src="./assets/image.png" class="float-left">
@@ -137,7 +145,9 @@ This example shows the float-left class in action. The image appears on the left
 
 <div style="clear: both;"></div>
 
-### Glow
+---
+
+## Glow
 
 The `glow` class adds a subtle shadow and rounded corners to an image without changing its size or position.
 
@@ -153,31 +163,6 @@ img.glow {
 }
 ```
 
-#### Result `glow`
+**Result `glow`**
 
 <img src="./assets/image.png" class="glow">
-
-### SVG
-
-The `svg` class is designed for SVG images and adds interactive highlight effects when hovering. It works with SVGs that include properly prepared highlight elements.
-
-```markdown
-<img src="./assets/image.png" class="svg">
-```
-
-```css
-.svg-highlight {
-  stroke: yellow;
-  stroke-width: 25;
-  fill: none;
-  animation: highlight-bounce 3s linear infinite;
-}
-
-svg:hover .svg-highlight {
-  animation: highlight-bounce 5s linear infinite;
-}
-```
-
-#### Result `svg`
-
-<img src="./assets/image.png" class="svg">
