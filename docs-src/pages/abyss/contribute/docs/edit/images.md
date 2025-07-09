@@ -60,12 +60,12 @@ We usually prefer the `<img>` syntax, because we often need to add classes or ot
 
 The following classes are supported and ready to use:
 
-- [`full-width`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#full-width) - makes the image span the full width with shadow and rounded corners
-- [`feature`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#feature) - limits height for feature images (max 100px)
-- [`float-right`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-right) - floats the image to the right with left margin
-- [`right-thumbnail`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#right-thumbnail) - floats a smaller thumbnail to the right
-- [`float-left`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-left) - floats the image to the left with right margin
-- [`glow`](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#glow) - adds a subtle shadow and rounded corners
+- [full-width](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#full-width) - makes the image span the full width with shadow and rounded corners
+- [feature](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#feature) - limits height for feature images (max 100px)
+- [float-right](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-right) - floats the image to the right with left margin
+- [right-thumbnail](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#right-thumbnail) - floats a smaller thumbnail to the right
+- [float-left](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#float-left) - floats the image to the left with right margin
+- [glow](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo#glow) - adds a subtle shadow and rounded corners
 
 If you want to see these in action visit this [demo](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo).
 

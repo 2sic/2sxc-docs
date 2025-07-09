@@ -6,7 +6,7 @@ uid: Abyss.Contribute.Tutorials.CreateSnippet
 
 With the new page in place you can start adding page content by creating new Snippets
 
-<img src="./assets/create-snippets-group.png" width="100%" class="full-width">
+<img src="./assets/create-snippets-group.png" class="glow">
 
 Either add Sections or Accordions inside the Page, based on your conent. If your content is nested better structured then go for accordions - if your content is straight forword and lean go with single sections.
 
@@ -14,7 +14,7 @@ _note: if you have accorionds the sections will be added automatically inside th
 
 ### Creating an Accordion
 
-<img src="./assets/create-snippet-accordion.png" width="100%" class="full-width">
+<img src="./assets/create-snippet-accordion.png" class="glow">
 
 Fill in the following information:
 
@@ -28,11 +28,11 @@ _Scrolling to the bottom, you will again find the `Sub-Data: Snippets and someti
 
 Here you can add a newsted Accordion or start with adding actual sections (snippets).
 
-<img src="./assets/create-snippet-section.png" width="100%" class="full-width">
+<img src="./assets/create-snippet-section.png" class="glow">
 
 Create as many `Snippet Sections` as you need:
 
-<img src="./assets/created-snippet-sections.png" width="100%" class="full-width">
+<img src="./assets/created-snippet-sections.png" class="glow">
 
 A `Snippet Section` should contain the following information:
 
@@ -54,4 +54,6 @@ So for `service-user-get-current-user`:
 - the **folder** would be: `service-user`
 - the **file** would be: `Snip-Get-Current-User.cshtml`
 
-<img src="./assets/result-finished-snippet.png" width="100%" class="full-width">
+<img src="./assets/result-finished-snippet.png" class="full-width glow">
+
+Repeat this for all remaining **files**.
