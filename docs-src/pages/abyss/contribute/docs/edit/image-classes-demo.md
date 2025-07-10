@@ -7,12 +7,12 @@ Here you will find demos for the available image classes to easily style your im
 
 The following classes are supported and ready to use:
 
-- [`full-width`](#full-width) - makes the image span the full width with shadow and rounded corners
-- [`feature`](#feature) - limits height for feature images (max 100px)
-- [`float-right`](#float-right) - floats the image to the right with left margin
-- [`right-thumbnail`](#right-thumbnail) - floats a smaller thumbnail to the right
-- [`float-left`](#float-left) - floats the image to the left with right margin
-- [`glow`](#glow) - adds a subtle shadow and rounded corners
+- [full-width](#full-width) - makes the image span the full width with shadow and rounded corners
+- [feature](#feature) - limits height for feature images (max 100px)
+- [float-right](#float-right) - floats the image to the right with left margin
+- [right-thumbnail](#right-thumbnail) - floats a smaller thumbnail to the right
+- [float-left](#float-left) - floats the image to the left with right margin
+- [glow](#glow) - adds a subtle shadow and rounded corners
 
 _Note, that you can combine multiple classes._
 
