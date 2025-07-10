@@ -24,15 +24,15 @@ If you save an [App Folder](xref:Basics.App.FoldersAndFiles.Index) to git...
 
 This is where you can find the App State Save/Restore
 
-<img src="./assets/app-git-integration.jpg" width="100%" >
-
 On **2** you can save the state (it will be stored in `[app-root]/App_Data/app.xml`)
-
-<img src="./assets/app-git-save.jpg" width="100%" >
 
 On **3** you can restore the data from this file:
 
-<img src="./assets/app-git-restore.jpg" width="100%" >
+<div gallery="git-integration-proccess">
+  <img src="./assets/app-git-integration.jpg">
+  <img src="./assets/app-git-save.jpg">
+  <img src="./assets/app-git-restore.jpg">
+</div>
 
 ## History
 
