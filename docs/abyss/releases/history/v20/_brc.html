@@ -256,6 +256,9 @@ This is probably not an issue, as we will auto-rename this during the upgrade of
 <li><p>⚠️ Every App <em>can</em> have a similar <code>/system</code> folder. Each could have a <code>.data</code> folder - this must now be <code>App_Data</code>.<br>
 This is rarely used, but you would have to manually rename this folder to <code>App_Data</code> if you had it.</p>
 </li>
+<li><p>⚠️ DNN had some very old (pre v8) WebApi routes like <code>app-content</code>, <code>app-query</code> and <code>app-api</code> which were removed.<br>
+If you had these in your code, please use the same route, just without the <code>app-</code> prefix.</p>
+</li>
 <li><p>⬇️ An old interface <code>ToSic.Sxc.Blocks.IRenderService</code> was removed, since it's been superseded by <code>ToSic.Sxc.Services.IRenderService</code>.
 We believe it was used in 2-3 v12 Apps, so if you encounter this, just switch to <code>ToSic.Sxc.Services.IRenderService</code> instead.</p>
 </li>
@@ -306,6 +309,12 @@ This is now removed, so you should only use <code>System.Whatever</code> to call
 </li>
 <li><p>⬇️ The <a class="xref" href="../../../../net-code/conventions/dependencies/index.html">DependenciesClass</a> was previously called <code>MyServices</code> but it was very unclear, so it was renamed.  <code>ToSic.Eav.Data.IEntity</code>.<br>
 This is a breaking change, but we don't believe anyone used this interface directly, except in custom DataSources - where we kept the old name for compatibility.</p>
+</li>
+<li><p>⬇️ The <code>IContentType</code> had a <code>.ContentTypeId</code> which should only be <code>.Id</code>. The old <code>.ContentTypeId</code> was removed (deprecated since v13).<br>
+This is a breaking change, but we don't believe anyone used this property directly.</p>
+</li>
+<li><p>⬇️ The <code>IContentType</code> had a <code>.StaticName</code> which should only be <code>.NameId</code>. The old <code>.StaticName</code> was removed (deprecated since v13).<br>
+This is a breaking change, but we don't believe anyone used this property directly.</p>
 </li>
 </ol>
 

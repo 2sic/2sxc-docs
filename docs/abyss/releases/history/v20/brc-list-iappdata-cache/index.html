@@ -127,10 +127,15 @@ They were not used much, but if you have old code which used this, here's how to
 <p>Previously you may have had code like this on Mobius Apps:</p>
 <pre><code class="lang-csharp">var type = Data.Cache.GetContentType(config.ContentType);
 </code></pre>
-<h2 id="what-we-changed">What we Changed</h2>
-<p>The way to get the type was changed long ago, so you should change to the more modern API.</p>
-<h2 id="upgrade-to-newer-functionality">Upgrade to Newer functionality</h2>
-<pre><code class="lang-c#">var type = App.GetContentType(config.ContentType);
+<h2 id="example-1-upgrade-to-newer-functionality">Example 1: Upgrade to Newer functionality</h2>
+<p>The way to get the type was changed long ago, so you should change to the more modern API.
+You can then use it with <code>type.Name</code>.</p>
+<pre><code class="lang-csharp">var type = App.Data.GetContentType(config.ContentType);
+</code></pre>
+<h2 id="example-2-direct-use-of-the-contenttypes-name">Example 2: Direct Use of the ContentTypes Name</h2>
+<p>A simpler way is to pass the name of the content type directly as a string.
+So in contrast to <strong>Example 1</strong>, you wouldn't use <code>type.Name</code>, but instead just <code>type</code>.</p>
+<pre><code class="lang-csharp">var type = config.ContentType;
 </code></pre>
 <hr>
 <h2 id="history">History</h2>

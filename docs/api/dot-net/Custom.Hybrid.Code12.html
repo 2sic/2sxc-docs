@@ -126,7 +126,7 @@ By inheriting from this base class, you will automatically have the context like
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public abstract class Code12 : CustomCodeBase, ICanDebug, IHasLog</code></pre>
+public abstract class Code12 : CustomCodeBase, ICanDebug, IDynamicCode12, IHasLog</code></pre>
   </div>
 
 
@@ -147,6 +147,7 @@ public abstract class Code12 : CustomCodeBase, ICanDebug, IHasLog</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="ToSic.Sys.Logging.ICanDebug.html">ICanDebug</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Code.IDynamicCode12.html">IDynamicCode12</a></div>
       <div><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></div>
     </dd>
   </dl>
@@ -866,7 +867,8 @@ Can also be a <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IData
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Custom/Custom.Hybrid/Code12.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Create an instance of code lying in a file near this</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -876,21 +878,27 @@ Can also be a <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IData
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>virtualPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>path to the other code file to compile</p>
+</dd>
     <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd></dd>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Override the class name to compile - usually not required as it should match the file name</p>
+</dd>
     <dt><code>relativePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>optional relative path, will usually use the <span class="xref">ToSic.Sxc.Code.Sys.IGetCodePath.CreateInstancePath</span></p>
+</dd>
     <dt><code>throwOnError</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>throw errors if compiling fails, recommended</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">dynamic</span></dt>
-    <dd></dd>
+    <dd><p>An object of the class in the file</p>
+</dd>
   </dl>
 
 
@@ -899,6 +907,10 @@ Can also be a <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IData
 
 
 
+  <h4 class="section" id="Custom_Hybrid_Code12_CreateInstance_System_String_ToSic_Sys_Coding_NoParamOrder_System_String_System_String_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Note that the C# code which we are creating inherits from a standard base class such as <code>Code12</code> or <code>DynamicCode</code>
+then it will automatically be initialized to support App, AsDynamic etc.</p>
+</div>
 
 
 
