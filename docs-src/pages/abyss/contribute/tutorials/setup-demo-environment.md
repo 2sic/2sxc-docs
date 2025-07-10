@@ -2,8 +2,16 @@
 uid: Abyss.Contribute.Tutorials.SetupDemoEnvironment
 ---
 
-## TODO
+# Setup New Environment
 
-1. _In here we want to list things we must do _(like when we publish the app again to 2sxc.org)_ so all tutorials  work_
+When you copy the tutorial app to a new environment there are some steps you need to follow, in order to have all tutorials running.
 
-2. _List the users / roles you created incl. details, as this must be repeated manually_
+For instance the _IUserService_ tutorial registerd a new **user** and **user role** for instance. These need to be duplicated as they are not part of the app export.
+
+## 2025-07-10 - IUserService
+
+For the _IUserService_ tutorial you need to:
+
+1. Create a new User: `UserServiceDemoUser` 
+1. Create a new User Role: `UserServiceDemoRole` 
+1. Add the `UserServiceDemoRole` Role to the `UserServiceDemoUser`
