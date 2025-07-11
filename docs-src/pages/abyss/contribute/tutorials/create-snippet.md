@@ -40,11 +40,15 @@ A `Snippet Section` should contain the following information:
 |-----|-----------|-------|
 |TutorialID|Identifier. such as `type` + `name` + `functionality`.|_service-user-get-current-user_|
 |Title|Visible title on page|_How to Use the User Service_|
-|Tutorial Type|||
+|Tutorial Type|.cshtml|-|
+
+Then you need to generate the code with the copilot to solve this issue.
+
+<img src="assets/typed-error-message.png" class="glow">
 
 The actual `Snippet` will be a **Razor** _(.cshtml)_ or a **Formula**, depending on your **Tutorial Type choice**.
 
-Your new `Tutorial Snippets files` should be placed at: _D:\2sxc Apps Dev\Web\Portals\tutorial-razor\2sxc\Tutorial-Razor\tutorials_
+Your new `Tutorial Snippets files` should be placed at: `D:\2sxc Apps Dev\Web\Portals\tutorial-razor\2sxc\Tutorial-Razor\tutorials`
 
 Or seee them here: [Tutorial-Razor tutorials folder](https://github.com/2sic/app-tutorial-razor/tree/master/tutorials)
 
