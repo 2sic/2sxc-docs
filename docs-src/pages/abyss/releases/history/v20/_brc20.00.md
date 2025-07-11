@@ -210,3 +210,7 @@ Since it was only used internally, it should not affect anyone.
 
 1. ⬇️ The `IContentType` had a `.StaticName` which should only be `.NameId`. The old `.StaticName` was removed (deprecated since v13).  
     This is a breaking change, but we don't believe anyone used this property directly.
+
+1. ⬇️ Previously the APIs `.Child(...)`, `.Parent(...)`, `.Children(...)`, and `.Parents(...)` on `ITypedItem` would return the related data without checking for publishing.
+    Now it will check for publishing and only show draft children/parents to editors (v20.00.03).  
+    This is a breaking change, but we don't believe anyone used this property directly.
