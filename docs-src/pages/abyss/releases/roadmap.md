@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2025-07-01**
+Last Update: **2025-07-11**
 
 ## Current Priority: cre8magic for Oqtane
 
