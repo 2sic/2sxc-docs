@@ -15,7 +15,7 @@ uid: Basics.Query.Index
 1. The Edit-UI can also [use queries in dropdown fields](xref:Basics.Query.EditForm)
 1. You can also access queries using [App.Query["QueryName"]](xref:NetCode.DynamicCode.Objects.App.Query)
 
-In addition, there are also some built-in [System Queries](xref:Basics.Query.SystemQueries) built-in which will get system data for you like a list of Content-Types or Apps in the System.
+In addition, there are also some built-in [System Queries](xref:Basics.Query.SystemQueries) which will get system data for you like a list of Content-Types or Apps in the System.
 
 > [!TIP]
 > Note that Queries can created in code and using VisualQuery.

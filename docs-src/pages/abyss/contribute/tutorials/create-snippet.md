@@ -42,10 +42,6 @@ A `Snippet Section` should contain the following information:
 |Title|Visible title on page|_How to Use the User Service_|
 |Tutorial Type|.cshtml|-|
 
-Then you need to generate the code with the copilot to solve this issue.
-
-<img src="assets/typed-error-message.png" class="glow">
-
 The actual `Snippet` will be a **Razor** _(.cshtml)_ or a **Formula**, depending on your **Tutorial Type choice**.
 
 Your new `Tutorial Snippets files` should be placed at: `D:\2sxc Apps Dev\Web\Portals\tutorial-razor\2sxc\Tutorial-Razor\tutorials`
@@ -61,3 +57,9 @@ So for `service-user-get-current-user`:
 <img src="./assets/result-finished-snippet.png" class="full-width glow">
 
 Repeat this for all remaining **files**.
+
+---
+
+<img src="assets/typed-error-message.png" class="glow">
+
+_If you encounter such an **error** - you probably misspelled the `file-name`/`path`._
