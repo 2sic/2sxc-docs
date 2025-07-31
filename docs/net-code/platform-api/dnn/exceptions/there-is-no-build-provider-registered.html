@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Fix rare Dnn Error: &quot;There is no build provider registered for the extension &#39;cshtml&#39;&quot; | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Fix rare Dnn Error: &quot;There is no build provider registered for the extension &#39;cshtml&#39;&quot; | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/platform-api/dnn/exceptions/there-is-no-build-provider-registered.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="NetCode.PlatformApi.Dnn.Exceptions.ThereIsNoBuildProviderRegistered">
+
+<img src="../../../../assets/features/platform-dnn.svg" width="100%">
+<h1 id="fix-rare-dnn-error-there-is-no-build-provider-registered-for-the-extension-cshtml">Fix rare Dnn Error: &quot;There is no build provider registered for the extension 'cshtml'&quot;</h1>
+<p>In rare cases you may suddenly see this error in Dnn:</p>
+<img src="../../../../pages/net-code/platform-api/dnn/exceptions/assets/there-is-no-build-provider-registered-for-cshtml.webp" class="full-width">
+<pre><code class="lang-text">Error: System.Web.HttpException (0x80004005): There is no build provider registered for the extension '.cshtml'. You can register one in the &lt;compilation&gt;&lt;buildProviders&gt; section in machine.config or web.config. Make sure is has a BuildProviderAppliesToAttribute attribute which includes the value 'Web' or 'All'. at System.Web.Compilation.CompilationUtil.GetBuildProviderTypeFromExtension(CompilationSection config, String extension, BuildProviderAppliesTo neededFor, Boolean failIfUnknown) at System.Web.Compilation.BuildManager.CreateBuildProvider(VirtualPath virtualPath, BuildProviderAppliesTo neededFor, CompilationSection compConfig, ICollection referencedAssemblies, Boolean failIfUnknown) at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath) at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate) at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound) at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath) at ToSic.Sxc.Engines.RazorEngine.CreateWebPageInstance() in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 156 at ToSic.Sxc.Engines.RazorEngine.InitWebpage() in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 165 at ToSic.Sxc.Engines.RazorEngine.Init() in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Razor\Engines\Razor\RazorEngine.cs:line 80 at ToSic.Lib.Logging.ILog_Actions.Do(ILog log, String parameters, Action action, Boolean timer, Boolean enabled, String message, String cPath, String cName, Int32 cLine) in C:\Projects\2sxc\eav-server\ToSic.Lib.Core\Logging\Log\ILog_Actions.cs:line 64 at ToSic.Sxc.Engines.EngineBase.Init(IBlock block) in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Engines\EngineBase.cs:line 74 at ToSic.Sxc.Blocks.BlockBuilder.GetEngine() in C:\Projects\2sxc\2sxc\Src\Sxc\ToSic.Sxc\Blocks\BlockBuilder_Render.cs:line 242 at ToSic.Sxc.Dnn.Web.DnnClientResources.NeedsPre1025Behavior() in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn.Core\Dnn\Web\DnnClientResources.cs:line 89 at ToSic.Sxc.Dnn.View.&lt;&gt;c__DisplayClass13_0.&lt;Page_Load&gt;b__3() in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn\View.ascx.cs:line 92 at ToSic.Sxc.Dnn.View.TryCatchAndLogToDnn[TResult](Func`1 action) in C:\Projects\2sxc\2sxc\Src\Dnn\ToSic.Sxc.Dnn\View.ascx.Errors.cs:line 21 - CONTEXT: Page: 45; Module: 420
+</code></pre>
+<h2 id="why-this-happens">Why This Happens</h2>
+<p>It seems that in rare circumstances there are internal mismatches between cached DLLs in the global assembly cache (GAC) and the Dnn build provider.
+We're not sure why this happens, but we assume it has something to do with server updates making the cached DLLs invalid.</p>
+<h2 id="how-to-fix-this">How to Fix This</h2>
+<p>The solution is to clear the IIS DLL cache for this site.
+It is located in the <code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files</code> folder.</p>
+<p>But instead of manually deleting the files, we recommend you change the web.config file of your Dnn site to force a rebuild of the DLLs.</p>
+<p>To do this, modify the following line in your web.config file:</p>
+<pre><code class="lang-xml">&lt;compilation debug=&quot;false&quot; strict=&quot;false&quot; targetFramework=&quot;4.7.2&quot;&gt;
+</code></pre>
+<p>to</p>
+<pre><code class="lang-xml">&lt;compilation debug=&quot;true&quot; strict=&quot;false&quot; targetFramework=&quot;4.7.2&quot;&gt;
+</code></pre>
+<p>This will force Dnn to rebuild the cached DLLs, which should resolve the issue.</p>
+<p>After making this change, you should revert the <code>debug</code> attribute back to <code>false</code> for production environments.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/platform-api/dnn/exceptions/there-is-no-build-provider-registered.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
