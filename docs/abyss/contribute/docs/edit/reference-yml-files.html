@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Setup New Environment | 2sxc 20 for Dnn and Oqtane </title>
+      <title>How to Reference Another yml File | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Setup New Environment | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="How to Reference Another yml File | 2sxc 20 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tutorials/setup-demo-environment.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/edit/reference-yml-files.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,45 +102,31 @@
 
         
 
-        <article data-uid="Abyss.Contribute.Tutorials.SetupDemoEnvironment">
-<h1 id="setup-new-environment">Setup New Environment</h1>
+        <article data-uid="Abyss.Contribute.Docs.Edit.ReferenceYMLFiles">
+<h1 id="how-to-reference-another-yml-file">How to Reference Another <code>yml</code> File</h1>
 
-<p>When you copy the tutorial app to a new environment there are some steps you need to follow, in order to have all tutorials running.</p>
-<p>For instance the <em>IUserService</em> tutorial registerd a new <strong>user</strong> and <strong>user role</strong> for instance. These need to be duplicated as they are not part of the app export.</p>
-<hr>
-<h2 id="2025-07-14---app-assets">2025-07-14 - App Assets</h2>
-<p>For the <em>Data App Assets</em> tutorial you need to:</p>
+<p>There are cases where you might want to reference another DocFX project.<br>
+You could do this by using a direct URL — however, this is not recommended, as URLs can change easily.<br>
+A better approach is to reference the <code>yml</code> file of the DocFX project directly.</p>
+<p>In this example, we reference the <code>xrefmap.yml</code> file of the Oqtane documentation:<br>
+<a href="https://docs.oqtane.org/xrefmap.yml">File: xrefmap.yml</a></p>
+<h2 id="how-to-include-it-in-your-project">How to Include It in Your Project</h2>
 <ol>
-<li>Create a new query: <code>AppAssets</code></li>
-<li>Add the <code>App Assets</code> DataSource.</li>
-<li>Add a stream: <code>All</code> or only <code>Files</code></li>
-<li>Update the <strong>RootFolder</strong> in the settings to <code>/assets/demo-icons/</code></li>
+<li>Open your <code>docfx.json</code> file.</li>
+<li>Locate the <code>&quot;build&quot;</code> section.</li>
+<li>Add the link to the <code>xrefmap.yml</code> file under the <code>&quot;xref&quot;</code> property.</li>
 </ol>
-<img src="../../../pages/abyss/contribute/tutorials/assets/appassets-query.png" class="glow">
-<img src="./assets/allusers-query-settings.png" class="glow">
-<p>Then you will need to create a folder in the root of the tutorial app at the path speciefied in <strong>RootFolder</strong>: <code>/assets/demo-icons/</code></p>
-<p>Download and place <a href="https://github.com/2sic/app-tutorial-razor/tree/master/assets/demo-icons">these icons</a> in your directory.</p>
-<h2 id="2025-07-14---use-data-sources">2025-07-14 - Use Data Sources</h2>
-<p>For the <em>Get Users with App Query</em> tutorial you need to:</p>
-<ol>
-<li>Create a new query: <code>AllUsers</code></li>
-<li>Add the <code>Users</code> DataSource.</li>
-<li>Add two streams: <code>Roles</code> as <code>Roles</code> and <code>Default</code> as <code>Users</code>.</li>
-</ol>
-<img src="../../../pages/abyss/contribute/tutorials/assets/allusers-query.png" class="glow">
-<hr>
-<h2 id="2025-07-10---iuserservice">2025-07-10 - IUserService</h2>
-<p>For the <em>IUserService</em> tutorial you need to:</p>
-<ol>
-<li>Create a new User: <code>UserServiceDemoUser</code></li>
-<li>Create a new User Role: <code>UserServiceDemoRole</code></li>
-<li>Add the <code>UserServiceDemoRole</code> Role to the <code>UserServiceDemoUser</code></li>
-</ol>
+<pre><code class="lang-json">&quot;build&quot;: {
+  &quot;xref&quot;: [
+    &quot;https://docs.oqtane.org/xrefmap.yml&quot; // Oqtane xref map
+  ]
+}
+</code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/tutorials/setup-demo-environment.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/edit/reference-yml-files.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
