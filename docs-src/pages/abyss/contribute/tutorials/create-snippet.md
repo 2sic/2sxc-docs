@@ -40,11 +40,11 @@ A `Snippet Section` should contain the following information:
 |-----|-----------|-------|
 |TutorialID|Identifier. such as `type` + `name` + `functionality`.|_service-user-get-current-user_|
 |Title|Visible title on page|_How to Use the User Service_|
-|Tutorial Type|||
+|Tutorial Type|.cshtml|-|
 
 The actual `Snippet` will be a **Razor** _(.cshtml)_ or a **Formula**, depending on your **Tutorial Type choice**.
 
-Your new `Tutorial Snippets files` should be placed at: _D:\2sxc Apps Dev\Web\Portals\tutorial-razor\2sxc\Tutorial-Razor\tutorials_
+Your new `Tutorial Snippets files` should be placed at: `D:\2sxc Apps Dev\Web\Portals\tutorial-razor\2sxc\Tutorial-Razor\tutorials`
 
 Or seee them here: [Tutorial-Razor tutorials folder](https://github.com/2sic/app-tutorial-razor/tree/master/tutorials)
 
@@ -57,3 +57,9 @@ So for `service-user-get-current-user`:
 <img src="./assets/result-finished-snippet.png" class="full-width glow">
 
 Repeat this for all remaining **files**.
+
+---
+
+<img src="assets/typed-error-message.png" class="glow">
+
+_If you encounter such an **error** - you probably misspelled the `file-name`/`path`._
