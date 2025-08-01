@@ -214,3 +214,7 @@ Since it was only used internally, it should not affect anyone.
 1. ⬇️ Previously the APIs `.Child(...)`, `.Parent(...)`, `.Children(...)`, and `.Parents(...)` on `ITypedItem` would return the related data without checking for publishing.
     Now it will check for publishing and only show draft children/parents to editors (v20.00.03).  
     This is a breaking change, but we don't believe anyone used this property directly.
+
+1. ⬇️ The `ITypedItem` had a `.Dyn` property which was removed (v20.00.04).  
+    It was a temporary addition (and always marked as such) thought to help in migrating code.
+    But we're afraid people may use it and leave it in, so we decided it's best to completely remove it.
