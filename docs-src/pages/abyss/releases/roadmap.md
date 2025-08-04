@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2025-07-11**
+Last Update: **2025-08-04**
 
 ## Current Priority: cre8magic for Oqtane
 
@@ -27,7 +27,7 @@ Last Update: **2025-07-11**
 1. Picker Source CSS (beta)
 
 
-## 2025 Q1 Finish DoD / Almost-Done Work
+## 2025 Q3 Finish DoD / Almost-Done Work
 
 1. Improve Intellisense
     1. Harden more Dlls and include more XML docs
@@ -49,7 +49,7 @@ also...
 1. Oqtane Multi-language
 1. Oqtane professional theme
 
-## Q2
+## Q3
 
 1. Improve CSP in Oqtane 5 (once SSR is ready)
 1. Create a User service to get more user data

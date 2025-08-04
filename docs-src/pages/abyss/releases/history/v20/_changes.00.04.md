@@ -15,6 +15,8 @@ not incrementing the next number yet.
 1. 🥫⚡ Almost all DB access now uses non-tracking Entity-Framework queries, which should improve performance.
 1. 🥫⚡ Introduce Parallel data processing on save - imports now 3-10x faster (Patron Performance)
 1. 🥫🦸🏼 Various performance features with DB can now be fine-tuned in features UI.
+1. 🅰️ App Installer from Template improved
+1. 🅰️ App Install new but change name/guid to use existing app as if it's a template
 1. 🧑🏼‍💻 Rework SoC `dynamic` code and `Typed` Code - separate Metadata, Files, Folders, Fields to be completely independent
 1. 📖 Many UIs now have guidance text when opening the dialog
 
