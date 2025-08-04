@@ -256,6 +256,44 @@ not incrementing the next number yet.</p>
 <li>Experimental <code>dialogSettings</code> toolbar UI to change the UI from saving data to just <code>done</code> (naming and API not final)</li>
 <li></li>
 </ol>
+<h3 id="2sxc-v200004-2025-08-04">2sxc v20.00.04 (2025-08-04)</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>2sxc v20 is a <a class="xref" href="../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
+<p>See <a class="xref" href="v20/breaking.html">Breaking Changes in v20</a> for details.</p>
+</div>
+<p>This 20.00.05 has really nice enhancements, but since we're still stabilizing v20, we are
+not incrementing the next number yet.</p>
+<h4 id="enhancements">Enhancements</h4>
+<ol>
+<li>🥫⚡ Entire DB Access (read/write) reworked and optimized - this is a major change, but it should not affect any apps.</li>
+<li>🥫⚡ Almost all DB access now uses non-tracking Entity-Framework queries, which should improve performance.</li>
+<li>🥫⚡ Introduce Parallel data processing on save - imports now 3-10x faster (Patron Performance)</li>
+<li>🥫🦸🏼 Various performance features with DB can now be fine-tuned in features UI.</li>
+<li>🧑🏼‍💻 Rework SoC <code>dynamic</code> code and <code>Typed</code> Code - separate Metadata, Files, Folders, Fields to be completely independent</li>
+<li>📖 Many UIs now have guidance text when opening the dialog</li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🐞 Razor / WebApi: <code>GetService()</code> was missing parameter <code>typeName</code> because in 20.00.04 we thought it's not used.</li>
+<li>🐞 Issue creating new Apps in some cases - especially with new name</li>
+<li>🐞 Bug initializing App still sometimes created multiple Settings/Resources</li>
+<li>🩸 Oqtane: AdamSecurityCheckBasic.CanEditFolder sometimes had a null-ref exception in Oqtane</li>
+<li>🐞 Visual Query: Relationship filter - a modified behavior in v20.00.02 was reverted back to original (empty filter value should still filter for empty)</li>
+<li>🐞 Exotic feature <code>Ghost</code> ContentType hasn't been working for a long time now because name of API parameters changed</li>
+<li>🐞 Fix loading data on large apps - relationships were sometimes duplicated in cache</li>
+<li>🐞 Admin UI - minor issue showing details of shared fields were wrong in some cases</li>
+<li>🪲 Minor: when toggling features the section always collapsed</li>
+<li>🪲 Minor: Toggling language always sent 2 API requests</li>
+</ol>
+<h4 id="internal-changes">Internal Changes</h4>
+<ol>
+<li>Temporary property <code>.Dyn</code> was removed from <code>ITypedItem</code></li>
+<li>Entity Framework projects are now using C# nullable</li>
+<li>Features can now be in multiple licenses (such an LightSpeed in Patron Perfectionist and Patron Performance)</li>
+<li>Internal change to <code>Entity</code> object to make it fully immutable</li>
+<li>☢️ DNN: Improved internal dependency injection on ng-edit UIs</li>
+</ol>
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
 <h5>Important</h5>
