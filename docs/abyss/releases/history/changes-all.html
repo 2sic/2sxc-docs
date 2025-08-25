@@ -227,8 +227,8 @@
 not incrementing the next number yet.</p>
 <h4 id="enhancements">Enhancements</h4>
 <ol>
-<li>📤 Introduced <a href="xref:ToSic.Sxc.Code.ITypedApi">ITypedApi</a> and <a href="xref:ToSic.Sxc.Services.ITypedApiService">ITypedApiService</a> to improve code quality when using 2sxc in skins or outside of DNN.</li>
-<li>🔍 <code>App.GetQuery(...)</code> now returns an <a href="xref:ToSic.Sxc.Data.ITypedQuery">ITypedQuery</a> object which also has <code>GetAll&lt;T&gt;</code> and <code>GetOne&lt;T&gt;</code> just like <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">App.Data</a></li>
+<li>📤 Introduced <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Code.ITypedApi.html">ITypedApi</a> and <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.ITypedApiService.html">ITypedApiService</a> to improve code quality when using 2sxc in skins or outside of DNN.</li>
+<li>🔍 <code>App.GetQuery(...)</code> now returns an <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Data.ITypedQuery.html">ITypedQuery</a> object which also has <code>GetAll&lt;T&gt;</code> and <code>GetOne&lt;T&gt;</code> just like <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">App.Data</a></li>
 <li>⚡ Major performance improvements all over, especially for 🦸🏼 <strong>Patrons Performance</strong></li>
 <li>⚡ Introduced features to reduce logging during normal operations, which should improve performance and lower memory footprint.</li>
 <li>⚡ Introduced reduced logging during import/save to better debug large imports / apps.</li>
@@ -262,7 +262,7 @@ not incrementing the next number yet.</p>
 <p>2sxc v20 is a <a class="xref" href="../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
 <p>See <a class="xref" href="v20/breaking.html">Breaking Changes in v20</a> for details.</p>
 </div>
-<p>This 20.00.05 has really nice enhancements, but since we're still stabilizing v20, we are
+<p>This 20.00.04 has really nice enhancements, but since we're still stabilizing v20, we are
 not incrementing the next number yet.</p>
 <h4 id="enhancements">Enhancements</h4>
 <ol>
@@ -295,6 +295,44 @@ not incrementing the next number yet.</p>
 <li>Features can now be in multiple licenses (such an LightSpeed in Patron Perfectionist and Patron Performance)</li>
 <li>Internal change to <code>Entity</code> object to make it fully immutable</li>
 <li>☢️ DNN: Improved internal dependency injection on ng-edit UIs</li>
+</ol>
+<h3 id="2sxc-v200005-2025-08-26">2sxc v20.00.05 (2025-08-26)</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>2sxc v20 is a <a class="xref" href="../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
+<p>See <a class="xref" href="v20/breaking.html">Breaking Changes in v20</a> for details.</p>
+</div>
+<p>This 20.00.05 has really nice enhancements, but since we're still stabilizing v20, we are
+not incrementing the next number yet.</p>
+<h4 id="enhancements">Enhancements</h4>
+<ol>
+<li>🥫⚡ Razor Partial Caching introduced (🦸🏼 Patron Performance)</li>
+<li>🥫⚡ Razor API <code>@Configuration.PartialCache(...)</code> to configure RazorPartialCaching</li>
+<li>🪪 New <code>UserElevation</code> to determine that caching is enabled/disabled for certain levels</li>
+<li>🅰️ Admin UI now better indicates clickable areas.</li>
+<li>🅰️ Admin UI now has more consistent save/close buttons.</li>
+<li>🅰️ Admin UI now supports ctrl+enter in most dialogs to close and save.</li>
+<li>🧑🏼‍💻 Install App: Ability to take any app and use it as a template (so give it a new name/GUID)</li>
+<li>🩸 Oqtane: Improve install using more SQL to work around problems with incremental updates.</li>
+<li>🔬 Formula: Introduce <code>context.user.roles</code> to let formulas check user roles.</li>
+<li>🔬 Formula: Introduce <code>context.user.isContentEditor</code> to match latest DNN 10 features.</li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🐞 <code>IsAnonymous</code> always returned false since ca. v20.00.00.</li>
+<li>🐞 Data load chunking in Patron-Performance mode had a default of 25k which didn't work well in older SQL servers.</li>
+<li>🐞 When an App is loaded from another site, the path was wrong and file-based content types were not loaded, causing issues.</li>
+<li>🐞 Mobius: System expected encrypted HTTP Net Posts even if not enabled.</li>
+<li>🐞⚡ LightSpeed: Bug that View couldn't enable LightSpeed even if app was &quot;unset&quot; (null) instead of false</li>
+<li>🩸 Oqtane: Bug JS exceptions during dev situation &quot;No interop methods are registered for renderer 1&quot;</li>
+<li>🩸 Oqtane: Bug where old DB tables were recreated after schema update, resulting in old and new tables to be in the DB.</li>
+<li>🪲 Minor: Data History: fix date to use UTC (previously used server time.)</li>
+</ol>
+<h4 id="internal-changes">Internal Changes</h4>
+<ol>
+<li>☢️ DNN: Improved time shown in Insights when a module is being rendered in DNN</li>
+<li>🩸 Oqtane: Update dependencies to Oqtane 6.1.3 and update Asp.Net Core packages to 9.0.5.</li>
+<li>🩸 Oqtane: Sync internal settings-names with the new convention already in use in DNN.</li>
 </ol>
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
@@ -1843,7 +1881,7 @@ We're documenting it here to ensure you know what happened, in case you still ru
 <li>New <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.MetadataTargets.html">MetadataTargets</a> DataSource</li>
 <li>The <a class="xref" href="../../../api/dot-net/ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a> DataSource got three new out-streams <code>Distinct</code>, <code>And</code> and <code>Xor</code></li>
 <li>Moved <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IPageService.html">IPageService</a> from previously <a class="xref" href="ToSic.html">ToSic.Sxc.Web</a> to <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a> but preserving compatibility with old code</li>
-<li>Moved <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html">IPageService</a> from previously <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Blocks.html">ToSic.Sxc.Web</a> to <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a> but preserving compatibility with old code</li>
+<li>Moved <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.IRenderService.html">IPageService</a> from previously <a href="xref:ToSic.Sxc.Blocks">ToSic.Sxc.Web</a> to <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a> but preserving compatibility with old code</li>
 </ol>
 <h3 id="breaking-change-version-1210">Breaking Change Version 12.10</h3>
 <ol>

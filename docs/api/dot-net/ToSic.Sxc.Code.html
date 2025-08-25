@@ -113,7 +113,7 @@
 Namespaces
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Code.Generate.html">ToSic.Sxc.Code.Generate</a></dt>
+      <dt><a class="xref" href="ToSic.Sxc.Code.Generate.Sys.html">ToSic.Sxc.Code.Generate.Sys</a></dt>
       <dd></dd>
     </dl>
     <h3 id="interfaces">
@@ -141,7 +141,21 @@ but never remain in the code.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Code.ITypedModel.html">ITypedModel</a></dt>
+      <dt><a class="xref" href="ToSic.Sxc.Code.IDynamicCode12.html">IDynamicCode12</a></dt>
+      <dd><p>Interface for Dynamic Code with enhancements after v12. It extends <span class="xref">ToSic.Sxc.Code.Sys.IDynamicCode</span></p>
+<p>Dynamic Code is the API for files like Razor or WebApis.
+Supports many properties like App, etc. to ensure that the dynamic code has everything you need. <br>
+Also provides many Conversions between <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a>.
+Important for dynamic code files like Razor or WebApi. Note that there are many overloads to ensure that AsDynamic and AsEntity &quot;just work&quot; even if you give them the original data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sxc.Code.ITypedApi.html">ITypedApi</a></dt>
+      <dd><p>This API describes objects with a TypedApi.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Sxc.Code.ITypedRazorModel.html">ITypedRazorModel</a></dt>
       <dd><p>Object in partial Razor files to access parameters handed in.
 Example caller:</p>
 <pre><code class="lang-c#">@Html.Partial(someFile, new { blogPost, file = mainFile, title = &quot;hello&quot; }
@@ -155,7 +169,7 @@ var title = MyModel.String(&quot;Title&quot;);
 <h5>Tip</h5>
 <p>The common data types such as <code>string</code> or <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a> have methods to quickly get them in the desired type.
 This allows things such as <code>var message = MyModel.String(&quot;Message&quot;);</code>
-For less common types you'll need to use <a class="xref" href="ToSic.Sxc.Code.ITypedModel.html#ToSic_Sxc_Code_ITypedModel_Get_System_String_ToSic_Lib_Coding_NoParamOrder_System_Nullable_System_Boolean__">Get(string, NoParamOrder, bool?)</a> and cast it as needed, like this:
+For less common types you'll need to use <a class="xref" href="ToSic.Sxc.Code.ITypedRazorModel.html#ToSic_Sxc_Code_ITypedRazorModel_Get_System_String_ToSic_Sys_Coding_NoParamOrder_System_Nullable_System_Boolean__">Get(string, NoParamOrder, bool?)</a> and cast it as needed, like this:
 <code>string message = MyModel.Get(&quot;Message&quot;);</code>.</p>
 </div>
 </dd>

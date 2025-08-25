@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Sxc_Code_ICodeLog" data-uid="ToSic.Sxc.Code.ICodeLog" class="text-break">
-Interface ICodeLog  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Interface ICodeLog  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -122,7 +122,7 @@ It is always available to add messages to insights.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface ICodeLog</code></pre>
+public interface ICodeLog : IWrapper&lt;ILog&gt;</code></pre>
   </div>
 
 
@@ -131,6 +131,13 @@ public interface ICodeLog</code></pre>
 
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sys.Wrappers.IWrapper-1.html#ToSic_Sys_Wrappers_IWrapper_1_GetContents">IWrapper&lt;ILog&gt;.GetContents()</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -148,7 +155,7 @@ public interface ICodeLog</code></pre>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Preserve" data-uid="ToSic.Sxc.Code.ICodeLog.Preserve">
   Preserve
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines if this log should be preserved in the short term.
@@ -187,8 +194,8 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <a id="ToSic_Sxc_Code_ICodeLog_Add_" data-uid="ToSic.Sxc.Code.ICodeLog.Add*"></a>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Add_System_String_System_String_System_String_System_Int32_" data-uid="ToSic.Sxc.Code.ICodeLog.Add(System.String,System.String,System.String,System.Int32)">
-  Add(string, string, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  Add(string, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a message log entry</p>
@@ -196,7 +203,7 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Add(string message, string cPath = null, string cName = null, int cLine = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">string Add(string message, string? cPath = null, string? cName = null, int cLine = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -234,8 +241,8 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <a id="ToSic_Sxc_Code_ICodeLog_Call_" data-uid="ToSic.Sxc.Code.ICodeLog.Call*"></a>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Call_System_String_System_String_System_Boolean_System_String_System_String_System_Int32_" data-uid="ToSic.Sxc.Code.ICodeLog.Call(System.String,System.String,System.Boolean,System.String,System.String,System.Int32)">
-  Call(string, string, bool, string, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  Call(string?, string?, bool, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a log entry for method call, returning a method to call when done</p>
@@ -243,7 +250,7 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Action&lt;string&gt; Call(string parameters = null, string message = null, bool useTimer = false, string cPath = null, string cName = null, int cLine = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">Action&lt;string&gt; Call(string? parameters = null, string? message = null, bool useTimer = false, string? cPath = null, string? cName = null, int cLine = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -287,8 +294,8 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <a id="ToSic_Sxc_Code_ICodeLog_Call_" data-uid="ToSic.Sxc.Code.ICodeLog.Call*"></a>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Call__1_System_String_System_String_System_Boolean_System_String_System_String_System_Int32_" data-uid="ToSic.Sxc.Code.ICodeLog.Call``1(System.String,System.String,System.Boolean,System.String,System.String,System.Int32)">
-  Call&lt;T&gt;(string, string, bool, string, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  Call&lt;T&gt;(string?, string?, bool, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a log entry for method call, returning a method to call when done</p>
@@ -296,7 +303,7 @@ You can then do <code>Log.Preserve = true;</code> to temporarily activate it whi
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Func&lt;T, string, T&gt; Call&lt;T&gt;(string parameters = null, string message = null, bool useTimer = false, string cPath = null, string cName = null, int cLine = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">Func&lt;T, string, T&gt; Call&lt;T&gt;(string? parameters = null, string? message = null, bool useTimer = false, string? cPath = null, string? cName = null, int cLine = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -349,8 +356,8 @@ Before in the <code>ILog</code> it was (message, data), new is (data, message)</
   <a id="ToSic_Sxc_Code_ICodeLog_Exception_" data-uid="ToSic.Sxc.Code.ICodeLog.Exception*"></a>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Exception_System_Exception_System_String_System_String_System_Int32_" data-uid="ToSic.Sxc.Code.ICodeLog.Exception(System.Exception,System.String,System.String,System.Int32)">
-  Exception(Exception, string, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  Exception(Exception, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add an exception as special log entry</p>
@@ -358,7 +365,7 @@ Before in the <code>ILog</code> it was (message, data), new is (data, message)</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Exception(Exception ex, string cPath = null, string cName = null, int cLine = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">void Exception(Exception ex, string? cPath = null, string? cName = null, int cLine = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -391,8 +398,8 @@ Before in the <code>ILog</code> it was (message, data), new is (data, message)</
   <a id="ToSic_Sxc_Code_ICodeLog_Warn_" data-uid="ToSic.Sxc.Code.ICodeLog.Warn*"></a>
 
   <h3 id="ToSic_Sxc_Code_ICodeLog_Warn_System_String_System_String_System_String_System_Int32_" data-uid="ToSic.Sxc.Code.ICodeLog.Warn(System.String,System.String,System.String,System.Int32)">
-  Warn(string, string, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  Warn(string, string?, string?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a warning log entry</p>
@@ -400,7 +407,7 @@ Before in the <code>ILog</code> it was (message, data), new is (data, message)</
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Warn(string message, string cPath = null, string cName = null, int cLine = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">void Warn(string message, string? cPath = null, string? cName = null, int cLine = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -433,7 +440,7 @@ Before in the <code>ILog</code> it was (message, data), new is (data, message)</
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Code/Code/Logging/ICodeLog.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

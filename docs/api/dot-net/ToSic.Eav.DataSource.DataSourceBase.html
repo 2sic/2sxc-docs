@@ -111,12 +111,12 @@
 
 
   <h1 id="ToSic_Eav_DataSource_DataSourceBase" data-uid="ToSic.Eav.DataSource.DataSourceBase" class="text-break">
-Class DataSourceBase  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L5"><i class="bi bi-code-slash"></i></a>
+Class DataSourceBase  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L5"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
     <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.DataSource.html">DataSource</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Eav.DataSources.dll</dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Eav.DataSource.dll</dd></dl>
   </div>
 
   <div class="markdown summary"><p>The base class for all DataSources, especially custom DataSources.
@@ -128,7 +128,7 @@ It provides a lot of core functionality to get configurations, ensure caching an
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Just FYI for people who need to know more about the internal APIs&quot;)]
-public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.MyServices&gt;, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
+public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.Dependencies&gt;, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
 
 
@@ -138,8 +138,8 @@ public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.MyServices&
     <dt>Inheritance</dt>
     <dd>
       <div><span class="xref">object</span></div>
-      <div><span class="xref">ServiceBase</span></div>
-      <div><span class="xref">ServiceBase</span>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">MyServices</a>&gt;</div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceBase.html">ServiceBase</a></div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><span class="xref">DataSourceBase</span></div>
     </dd>
   </dl>
@@ -151,10 +151,10 @@ public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.MyServices&
       <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentity.html">IAppIdentity</a></div>
       <div><a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html">IZoneIdentity</a></div>
       <div><a class="xref" href="ToSic.Eav.Apps.IAppIdentityLight.html">IAppIdentityLight</a></div>
-      <div><a class="xref" href="ToSic.Eav.Caching.ICacheKey.html">ICacheKey</a></div>
-      <div><a class="xref" href="ToSic.Eav.Caching.ICacheExpiring.html">ICacheExpiring</a></div>
-      <div><a class="xref" href="ToSic.Eav.Caching.ITimestamped.html">ITimestamped</a></div>
-      <div><a class="xref" href="ToSic.Lib.Logging.IHasLog.html">IHasLog</a></div>
+      <div><a class="xref" href="ToSic.Sys.Caching.Keys.ICacheKey.html">ICacheKey</a></div>
+      <div><a class="xref" href="ToSic.Sys.Caching.ICacheExpiring.html">ICacheExpiring</a></div>
+      <div><a class="xref" href="ToSic.Sys.Caching.ITimestamped.html">ITimestamped</a></div>
+      <div><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSource.IDataSourceLinkable.html">IDataSourceLinkable</a></div>
     </dd>
   </dl>
@@ -190,6 +190,16 @@ public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.MyServices&
     </dd>
   </dl>
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html#ToSic_Sys_Services_ServiceBase_1_Services">ServiceBase&lt;DataSourceBase.Dependencies&gt;.Services</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase.html#ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___">ServiceBase.ConnectLogs(object[])</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -208,7 +218,7 @@ Consult the guide to upgrade your custom data sources.</p>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_AppId" data-uid="ToSic.Eav.DataSource.DataSourceBase.AppId">
   AppId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The app id as used internally</p>
@@ -241,7 +251,7 @@ Consult the guide to upgrade your custom data sources.</p>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp" data-uid="ToSic.Eav.DataSource.DataSourceBase.CacheTimestamp">
   CacheTimestamp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Caching.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Caching.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>System time-stamp of when the data in this cached thing was initialized or updated.
@@ -275,7 +285,7 @@ Depending on the implementation, this may go up-stream and return an up-stream v
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Configuration" data-uid="ToSic.Eav.DataSource.DataSourceBase.Configuration">
   Configuration
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Configuration.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Configuration.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The configuration system of this data source.
@@ -309,7 +319,7 @@ which provides these values.</p>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Error" data-uid="ToSic.Eav.DataSource.DataSourceBase.Error">
   Error
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Special helper to generate error-streams.</p>
@@ -343,10 +353,10 @@ public DataSourceErrorHelper Error { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Guid" data-uid="ToSic.Eav.DataSource.DataSourceBase.Guid">
   Guid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Internal ID usually from persisted configurations IF the configuration was build from an pre-stored query.</p>
+  <div class="markdown level1 summary"><p>Internal ID usually from persisted configurations IF the configuration was build from a pre-stored query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -376,7 +386,7 @@ public DataSourceErrorHelper Error { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Immutable" data-uid="ToSic.Eav.DataSource.DataSourceBase.Immutable">
   Immutable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the DataSource is Immutable.
@@ -417,7 +427,7 @@ public virtual bool Immutable { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_In" data-uid="ToSic.Eav.DataSource.DataSourceBase.In">
   In
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of all In connections.</p>
@@ -451,7 +461,7 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; In { get; }</code>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Item_System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Item(System.String)">
   this[string]
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Out-Stream with specified Name.</p>
@@ -459,7 +469,7 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; In { get; }</code>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDataStream this[string outName] { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IDataStream? this[string outName] { get; }</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -495,7 +505,7 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; In { get; }</code>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Link" data-uid="ToSic.Eav.DataSource.DataSourceBase.Link">
   Link
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connectable.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connectable.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A link - or possibly many.
@@ -528,7 +538,7 @@ In most cases, this references the parent object which provides this/these links
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_List" data-uid="ToSic.Eav.DataSource.DataSourceBase.List">
   List
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The items in the data-source - to be exact, the ones in the Default stream.</p>
@@ -562,7 +572,7 @@ public IEnumerable&lt;IEntity&gt; List { get; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Out" data-uid="ToSic.Eav.DataSource.DataSourceBase.Out">
   Out
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Dictionary of Out-Streams. This is the internal accessor, as usually you'll use this[&quot;name&quot;] instead. <br>
@@ -597,7 +607,7 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; Out { get; }</code
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_ZoneId" data-uid="ToSic.Eav.DataSource.DataSourceBase.ZoneId">
   ZoneId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>ID of the zone (EAV Tenant)</p>
@@ -634,7 +644,7 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; Out { get; }</code
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataSource_System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(System.String,ToSic.Eav.DataSource.IDataSource,System.String)">
   Attach(string, IDataSource, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L152"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a single named stream to the In</p>
@@ -674,7 +684,7 @@ public void Attach(string streamName, IDataSource dataSource, string sourceName 
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataStream_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(System.String,ToSic.Eav.DataSource.IDataStream)">
   Attach(string, IDataStream)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L157"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a single named stream to the In</p>
@@ -711,7 +721,7 @@ public void Attach(string streamName, IDataStream dataStream)</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_ToSic_Eav_DataSource_IDataSource_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(ToSic.Eav.DataSource.IDataSource)">
   Attach(IDataSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Attach a DataSource to In - replaces all existing in-streams.</p>
@@ -745,7 +755,7 @@ public void Attach(IDataSource dataSource)</code></pre>
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_" data-uid="ToSic.Eav.DataSource.DataSourceBase.CacheChanged(System.Int64)">
   CacheChanged(long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Caching.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Caching.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Detect if the cache has newer data.
@@ -786,9 +796,9 @@ It's called using the TimeStamp of the dependent object which may still have old
 
   <a id="ToSic_Eav_DataSource_DataSourceBase_GetStream_" data-uid="ToSic.Eav.DataSource.DataSourceBase.GetStream*"></a>
 
-  <h3 id="ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_System_Boolean_" data-uid="ToSic.Eav.DataSource.DataSourceBase.GetStream(System.String,ToSic.Lib.Coding.NoParamOrder,System.Boolean,System.Boolean)">
-  GetStream(string, NoParamOrder, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Boolean_" data-uid="ToSic.Eav.DataSource.DataSourceBase.GetStream(System.String,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Boolean)">
+  GetStream(string?, NoParamOrder, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Out-Stream with specified Name and allowing some error handling if not found.</p>
@@ -797,7 +807,7 @@ It's called using the TimeStamp of the dependent object which may still have old
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public IDataStream GetStream(string name = null, NoParamOrder noParamOrder = default, bool nullIfNotFound = false, bool emptyIfNotFound = false)</code></pre>
+public IDataStream? GetStream(string? name = null, NoParamOrder noParamOrder = default, bool nullIfNotFound = false, bool emptyIfNotFound = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -805,7 +815,7 @@ public IDataStream GetStream(string name = null, NoParamOrder noParamOrder = def
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>The desired stream name. If empty, will default to the default stream.</p>
 </dd>
-    <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Lib.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dt><code>noParamOrder</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
 </dd>
     <dt><code>nullIfNotFound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
@@ -829,7 +839,7 @@ public IDataStream GetStream(string name = null, NoParamOrder noParamOrder = def
 
 
 
-  <h4 class="section" id="ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_ToSic_Lib_Coding_NoParamOrder_System_Boolean_System_Boolean__remarks">Remarks</h4>
+  <h4 class="section" id="ToSic_Eav_DataSource_DataSourceBase_GetStream_System_String_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ol>
 <li>Added in 2sxc 12.05</li>
 <li>for more in-depth checking if a stream exists, you can access the <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html#ToSic_Eav_DataSource_IDataSource_Out">Out</a> which is an IDictionary</li>
@@ -849,7 +859,7 @@ public IDataStream GetStream(string name = null, NoParamOrder noParamOrder = def
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.ProvideOut(System.Func{System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity}},System.String)">
   ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provide a function to get the data which this DataSource offers.</p>
@@ -888,7 +898,7 @@ protected void ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt; getList, string
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.ProvideOut(System.Func{System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity}},System.String)">
   ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Provide a function to get the data which this DataSource offers.</p>
@@ -926,7 +936,7 @@ protected void ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt; getList, str
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_TryGetIn_System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.TryGetIn(System.String)">
   TryGetIn(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a specific Stream from In.
@@ -952,7 +962,7 @@ If it doesn't exist return false and place the error message in the list for ret
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-protected IImmutableList&lt;IEntity&gt; TryGetIn(string name = &quot;Default&quot;)</code></pre>
+protected IImmutableList&lt;IEntity&gt;? TryGetIn(string name = &quot;Default&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -986,15 +996,15 @@ protected IImmutableList&lt;IEntity&gt; TryGetIn(string name = &quot;Default&quo
 
   <h3 id="ToSic_Eav_DataSource_DataSourceBase_TryGetOut_System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.TryGetOut(System.String)">
   TryGetOut(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Try get an out-stream.</p>
+  <div class="markdown level1 summary"><p>Try to get an out-stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IImmutableList&lt;IEntity&gt; TryGetOut(string name = &quot;Default&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">protected IImmutableList&lt;IEntity&gt;? TryGetOut(string name = &quot;Default&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1026,7 +1036,7 @@ protected IImmutableList&lt;IEntity&gt; TryGetIn(string name = &quot;Default&quo
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_ProvideOut.cs/#L5" class="edit-link">Edit this page</a>
         </div>
 
 
