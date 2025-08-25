@@ -132,25 +132,27 @@ Namespaces
       <dt><a class="xref" href="ToSic.Eav.Data.Raw.html">ToSic.Eav.Data.Raw</a></dt>
       <dd></dd>
     </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Eav.Data.Sys.html">ToSic.Eav.Data.Sys</a></dt>
-      <dd></dd>
-    </dl>
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Eav.Data.IEntityExtensions.html">IEntityExtensions</a></dt>
-      <dd><p>Extensions for IEntity to provide additional functionality or utilities.</p>
-</dd>
-    </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Eav.Data.IAttribute.html">IAttribute</a></dt>
       <dd><p>Represents an Attribute with Values - without knowing what data type is in the value.
-Usually we'll extend this and use <a class="xref" href="ToSic.Eav.Data.Sys.Attributes.IAttribute-1.html">IAttribute&lt;T&gt;</a> instead.</p>
+Usually we'll extend this and use <a class="xref" href="ToSic.Eav.Data.IAttribute-1.html">IAttribute&lt;T&gt;</a> instead.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Eav.Data.IAttributeBase.html">IAttributeBase</a></dt>
+      <dd><p>Represents properties we should know about Attributes. This is the base for both</p>
+<ul>
+<li><a class="xref" href="ToSic.Eav.Data.IContentTypeAttribute.html">IContentTypeAttribute</a> (in the IContentType)</li>
+<li>attribute with values-list (in the IEntity)</li>
+</ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Eav.Data.IAttribute-1.html">IAttribute&lt;T&gt;</a></dt>
+      <dd><p>Represents an Attribute (Property), but strongly typed</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -181,7 +183,7 @@ This allows taking something (like an <a class="xref" href="ToSic.Eav.Data.IEnti
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Eav.Data.IDecorator-1.html">IDecorator&lt;TDecorationTarget&gt;</a></dt>
+      <dt><a class="xref" href="ToSic.Eav.Data.IDecorator-1.html">IDecorator&lt;T&gt;</a></dt>
       <dd><p>This marks add-on information for things which can be decorated.
 This allows taking something (like an <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> and adding additional information for later processing</p>
 </dd>
@@ -194,10 +196,19 @@ but in future they could also be multi-dimensional, like values which are mapped
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
-      <dd><p>The primary data-item in the system, IEntity is a generic data-item for any kind of information.</p>
+      <dd><p>The primary data-item in the system, IEntity is a generic data-item for any kind of information.
+Note that it inherits <a class="xref" href="ToSic.Eav.Data.IEntityLight.html">IEntityLight</a> which is the basic definition without languages,
+versioning, publishing etc.</p>
 <blockquote>
 <p>We recommend you read about the <a class="xref" href="../../basics/data/index.html">Understanding Data...</a></p>
 </blockquote>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Eav.Data.IEntityLight.html">IEntityLight</a></dt>
+      <dd><p>Represents a light Entity, which is a very basic entity
+without multi-language capabilities, versions or publishing.
+For the more powerful Entity, use <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -218,6 +229,11 @@ but in future they could also be multi-dimensional, like values which are mapped
     <dl class="jumplist">
       <dt><a class="xref" href="ToSic.Eav.Data.IValue.html">IValue</a></dt>
       <dd><p>Represents a Value in the EAV system. Values belong to an attribute and can belong to multiple languages.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ToSic.Eav.Data.IValueConverter.html">IValueConverter</a></dt>
+      <dd><p>Marks objects that can convert values - like &quot;file:22&quot; to &quot;/images/logo.jpg&quot; and back.</p>
 </dd>
     </dl>
     <dl class="jumplist">
