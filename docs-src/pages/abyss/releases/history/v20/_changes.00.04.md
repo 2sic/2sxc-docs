@@ -6,7 +6,7 @@
 >
 > See [Breaking Changes in v20](xref:Abyss.Releases.History.V20.Breaking) for details.
 
-This 20.00.05 has really nice enhancements, but since we're still stabilizing v20, we are
+This 20.00.04 has really nice enhancements, but since we're still stabilizing v20, we are
 not incrementing the next number yet.
 
 #### Enhancements

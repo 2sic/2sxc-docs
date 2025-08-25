@@ -11,4 +11,6 @@
 
 [!include["Changes"](./_changes.00.04.md)]
 
+[!include["Changes"](./_changes.00.05.md)]
+
 [!include["Breaking"](./_brc20.00.md)]
