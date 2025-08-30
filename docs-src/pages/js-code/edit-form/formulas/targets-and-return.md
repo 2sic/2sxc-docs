@@ -13,10 +13,32 @@ uid: JsCode.EditForm.Formulas.TargetsReturn
 
 These are additional infos about **Formula Targets** and cases where they need a special result, so you understand the behavior better.
 
+The formula target info is on the `context.target` which looks like this:
+
+```js
+v2((data, context) => {
+  // the target information
+  const target = context.target;
+  // the target type
+  const type = context.target.type;
+
+  // the target name
+  const name = context.target.name;
+});
+```
+
 ## The Target
 
 The target key of a formula determines what your Formula will affect.
 Since `data.value` contains what would be used if your formula didn't run, then this of course will also contain the previous value of the target.
+
+```js
+v2((data, context) => {
+  // this is what we're looking at here
+  const type = context.target.type;
+});
+```
+
 These are the possible targets:
 
 * `Field.Value` - will get / set a value on a field

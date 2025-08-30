@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Formulas Targets and Return Values | 2sxc 20 for Dnn and Oqtane </title>
+      <title>Formulas Examples (v2) | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Formulas Targets and Return Values | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="Formulas Examples (v2) | 2sxc 20 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/formulas/targets-and-return.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/formulas/v2-examples.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,10 +102,10 @@
 
         
 
-        <article data-uid="JsCode.EditForm.Formulas.TargetsReturn">
+        <article data-uid="JsCode.EditForm.Formulas.V2Examples">
 
 <img src="../../../assets/features/formulas.svg" class="feature">
-<h1 id="formulas-targets-and-return-values">Formulas Targets and Return Values</h1>
+<h1 id="formulas-examples-v2">Formulas Examples (v2)</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -207,123 +207,103 @@
 <style>
   .context-box-summary .browser-edit-ui { visibility: visible; }
 </style>
-<p>These are additional infos about <strong>Formula Targets</strong> and cases where they need a special result, so you understand the behavior better.</p>
-<p>The formula target info is on the <code>context.target</code> which looks like this:</p>
+<p>Here we publish various examples of formulas, for you to use/optimize to your needs.
+The samples should show you</p>
+<ol>
+<li>Debug Formulas</li>
+<li>Start Formulas</li>
+<li>Simple String Formulas TODO</li>
+<li>Group Information Formulas TODO</li>
+<li>Date Formulas TODO</li>
+</ol>
+<h2 id="debug-formulas">Debug Formulas</h2>
+<h3 id="just-dump-everything">Just Dump Everything</h3>
+<p>This formula will dump all the information you have to the console, to better inspect the objects.</p>
 <pre><code class="lang-js">v2((data, context) =&gt; {
-  // the target information
-  const target = context.target;
+  // Don't do anything, just put a bunch of information in the debug on each cycle
+  console.log('debug data', data);
+  console.log('debug context', context);
+  // don't return anything, so no changes actually happen (commented out)
+  // return data.value;
+});
+</code></pre>
+<h3 id="formula-target-information">Formula Target Information</h3>
+<p><a class="xref" href="targets-and-return.html">Formula targets</a> let the formula know what it is running for.</p>
+<pre><code class="lang-js">v2((data, context) =&gt; {
+  console.log('formula target', context.target);
   // the target type
-  const type = context.target.type;
-
+  console.log('formula target type', context.target.type);
   // the target name
-  const name = context.target.name;
+  console.log('formula target name', context.target.name);
 });
 </code></pre>
-<h2 id="the-target">The Target</h2>
-<p>The target key of a formula determines what your Formula will affect.
-Since <code>data.value</code> contains what would be used if your formula didn't run, then this of course will also contain the previous value of the target.</p>
+<h2 id="set-value-on-start">Set Value On Start</h2>
+<h3 id="fill-an-empty-field-on-start-only">Fill an Empty Field on Start Only</h3>
+<p>This formula will set a specific value when the form is opened.
+For example, it might pre-fill a new field on existing data which didn't exist before (so the default value from the configuration won't apply, since it's not new)</p>
+<p>Assume that this is on a field <code>Status</code> which should always get the word <code>NEW</code>.</p>
 <pre><code class="lang-js">v2((data, context) =&gt; {
-  // this is what we're looking at here
-  const type = context.target.type;
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return { stop: true };
+
+  // If not yet, set it to `NEW` and also stop the formula.
+  // Otherwise editing won't work, since it will continue to copy the value.
+  return { value: 'NEW', stop: true };
 });
 </code></pre>
-<p>These are the possible targets:</p>
-<ul>
-<li><code>Field.Value</code> - will get / set a value on a field</li>
-<li><code>Field.Settings</code> - will get will get/set a setting of the field. This is just the Type identifier. A full key often includes the exact setting to be addressed, like
-<ul>
-<li><code>Field.Settings.Name</code> - change the label / name / title of a field</li>
-<li><code>Field.Settings.Visible</code> - Controls the visibility of the field / group. <code>true</code> means visible</li>
-<li><code>Field.Settings.Disabled</code> - controls that the field can be interacted with or is disabled. <code>true</code> means it's blocked</li>
-<li><code>Field.Settings.Required</code> - shows if a field is required<br>
-<em>warning</em> required isn't fully implemented ATM - the form will not always reliably enforce this if it's changed dynamically
-*. <code>Field.Settings.Notes</code> to change the description / help-text (v14)</li>
-<li><code>Field.Settings._[Anything]_</code> - other Settings that can be changed, eg.
-<ul>
-<li><code>Field.Settings.Collapsed</code> on a field-group to change if it's open/closed</li>
-<li><code>Field.Settings.DropdownValues</code> on dropdown fields (new v15)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>Field.Validation</code> - show errors/warnings on a field based on the input 🆕 v16</li>
-</ul>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Remember that <code>data.value</code> contains the value which is used if the formula doesn't run or doesn't return anything.</p>
-<p>If you need the value in the field/setting at form-load, use <code>data.default</code>.
-And if you are doing some prefill-magic, you can get that on <code>data.prefill</code>.</p>
-<p>👉 Read more about this is the <a class="xref" href="data.html">JS Docs</a>.</p>
-</div>
-<h2 id="field-value-formulas">Field Value Formulas</h2>
-<p>These are the most common formulas, as they are used to get/set the value of a field.
-Each field type or property may expect a different data type. Make sure you provide that.
-So if you are updating a boolean field, you should return a boolean value.</p>
-<h2 id="formulas-for-common-settings">Formulas for Common Settings</h2>
-<h3 id="fieldsettingsname---label-of-a-field"><code>Field.Settings.Name</code> - Label of a Field</h3>
-<p>This can be changed as needed.
-We recommend that you never add <code>*</code> to the name, as this is the indicator for <em>required</em> and would confuse users.</p>
-<p>On field groups we often use this to add emojis such as ✅ or ❌ to indicate if the fields inside are what is needed.</p>
-<p>Expected type: <code>string</code></p>
-<h3 id="fieldsettingsvisible---showhide-a-field"><code>Field.Settings.Visible</code> - Show/Hide a Field</h3>
-<p>Shows/hides a field or a group of fields.
-When you set this on a group, it applies to all properties in the group.
-So hiding a group hides all fields inside it, showing it shows all fields inside it.</p>
-<p>Expected type: <code>boolean</code></p>
-<h3 id="fieldsettingsdisabled---enabledisable-a-field"><code>Field.Settings.Disabled</code> - Enable/Disable a Field</h3>
-<p>If you return <code>true</code> to set <code>Disabled=true</code> it will disable the UI. Of course if the field is already not visible, the user won't see this.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Even if you set <code>Disabled=false</code> other rules may override this. For example, if the field may not be translated and you're on a secondary language, it will still remain disabled.</p>
-</div>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Disabling a group will not disable all the fields in it. We may consider implementing this some day, but as of now it won't happen, so you'll need to disable each field if this is what you need.</p>
-</div>
-<p>Expected type: <code>boolean</code></p>
-<h3 id="fieldsettingsrequired---mark-field-as-required"><code>Field.Settings.Required</code> - Mark Field as Required</h3>
-<p>This determines if the Field is required.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>Changing the required changes the <code>*</code> indicator on the UI, but as of v12.01 it doesn't yet affect the validity checks in the form.
-This is an important limitation to be aware of.</p>
-</div>
-<p>Expected type: <code>boolean</code></p>
-<h2 id="formulas-for-special-settings">Formulas for Special Settings</h2>
-<h3 id="fieldsettingscollapsed---for-groups"><code>Field.Settings.Collapsed</code> - for Groups</h3>
-<p>This is a setting which only would affect group fields.
-Setting <code>Collapsed</code> to <code>true</code> collapses the group, to <code>false</code> opens it.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Remember that <code>data.default</code> will always give you the initial state of this setting.</p>
-</div>
-<p>Expected type: <code>boolean</code></p>
-<h3 id="fieldsettingsdropdownvalues---for-dropdowns"><code>Field.Settings.DropdownValues</code> - for DropDowns</h3>
-<h3 id="fieldsettingsanything"><code>Field.Settings.</code><em>[Anything]</em></h3>
-<p>Since many controls can have other settings these can be controlled by formulas as well.</p>
-<p><em>Important</em> We haven't tried every setting and some may not have the expected result, since the form has never been this dynamic before.
-We'll work on fixing issues as we hear about them.</p>
-<h2 id="formulas-for-validation">Formulas for Validation</h2>
-<h3 id="fieldvalidation---show-errorswarnings"><code>Field.Validation</code> - Show Errors/Warnings</h3>
-<p>This is a special kind of formula as it only affects the hints below the input field.
-Best check out the tutorials to see it in action.</p>
-<p>Expected type: json object</p>
-<pre><code class="lang-js">{
-  severity: 'warning',
-  message: 'please use lower case only',
-}
+<h3 id="fill-an-empty-field-on-start-from-another-field">Fill an Empty Field on Start from Another Field</h3>
+<p>This formula will set a specific value when the form is opened.
+For example, it might pre-fill a new field on existing data which didn't exist before (so the default value from the configuration won't apply, since it's not new)</p>
+<p>Assume that this is on a field <code>NewName</code> which should be copied once from the <code>Name</code> field, but later allow editing freely.</p>
+<pre><code class="lang-js">v2((data, context) =&gt; {
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return { stop: true };
+
+  // If not yet, copy the value from Name and also stop the formula.
+  // Otherwise editing won't work, since it will continue to copy the value.
+  return { value: data.Name, stop: true };
+});
+</code></pre>
+<h3 id="reset-a-string-url-field-so-it-will-update-as-the-title-changes">Reset a <code>string-url</code> field so it will update as the title changes</h3>
+<p>Imagine a <code>UrlKey</code> field of type <code>string-url</code> fields often have a field mask like <code>[Title]</code>.
+This results in the url-key being generated from the <code>Title</code> field.
+But the mechanics only apply the first time the entity is created.
+This is because future changes of the <code>Title</code> should usually not modify the link any more.</p>
+<p>But now imagine if you copy an entity which has such a key.
+In that case, the title should usually be modified and the key should change again.
+So we want to flush the field, but only if a) the item is a copy (detected by <code>EntityId</code> being <code>0</code>).</p>
+<pre><code class="lang-js">v2((data, context) =&gt; {
+  // On first run, if it's edit (already has an id) then stop / ignore this formula
+  if (context.target.entity.id != 0)
+    return { stop: true };
+
+  // Info to developer, as he might be confused
+  if (data.value != '')
+    console.log('Formula on ' + 
+      context.target.name + 
+      'will reset the value because it assumes copy. ' +
+      'The field may still have a value, since it should be auto-generated by other values' +
+      &quot; so don't be surprised. &quot; + 
+      &quot;But if it is auto-generated, it should continue to update as the master-value changes.&quot;
+    );
+
+  // It's new because ID == 0. On new, the url is already '' but on 'copy' we must reset it
+  return {
+    value: '',  // force it to '' (only has effect on copy)
+    stop: true, // stop processing this formula
+  };
+});
 </code></pre>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Introduced in 2sxc 12.01</li>
-<li>Dramatically enhanced with v2 in 2sxc 16.00</li>
+<li>Examples started 2sxc 20.00</li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/formulas/targets-and-return.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/js-code/edit-form/formulas/v2-examples.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

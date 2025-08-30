@@ -16,7 +16,7 @@ not incrementing the next number yet.
 1. 🪪 New `UserElevation` to determine that caching is enabled/disabled for certain levels
 1. 🅰️ Admin UI now better indicates clickable areas.
 1. 🅰️ Admin UI now has more consistent save/close buttons.
-1. 🅰️ Admin UI now supports ctrl+enter in most dialogs to close and save.
+1. 🅰️ Admin UI now supports ctrl+enter in most dialogs to close and save. #TODOC / #TOBLOG
 1. 🧑🏼‍💻 Install App: Ability to take any app and use it as a template (so give it a new name/GUID) #TODOC
 1. 🩸 Oqtane: Improve install using more SQL to work around problems with incremental updates.
 1. 🔬 Formula: Introduce `context.user.roles` to let formulas check user roles.
