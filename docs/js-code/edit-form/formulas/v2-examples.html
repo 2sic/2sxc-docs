@@ -215,6 +215,7 @@ The samples should show you</p>
 <li>Simple String Formulas TODO</li>
 <li>Group Information Formulas TODO</li>
 <li>Date Formulas TODO</li>
+<li>Promise TODO</li>
 </ol>
 <h2 id="debug-formulas">Debug Formulas</h2>
 <h3 id="just-dump-everything">Just Dump Everything</h3>
@@ -238,6 +239,25 @@ The samples should show you</p>
 });
 </code></pre>
 <h2 id="set-value-on-start">Set Value On Start</h2>
+<h3 id="basics-or-run-on-start-only">Basics or Run-On-Start Only</h3>
+<p>If a formula should only run once, it can do it's work and return <code>stop : true</code>.
+Here's an example:</p>
+<pre><code class="lang-js">v2((data, context) =&gt; {
+  console.log('this will run on start only');
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return { stop: true };
+});
+</code></pre>
+<p>This example also sets a value, and then stops the formula:</p>
+<pre><code class="lang-js">v2((data, context) =&gt; {
+  console.log('this will run on start only');
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return {
+    value: 42,
+    stop: true,
+  };
+});
+</code></pre>
 <h3 id="fill-an-empty-field-on-start-only">Fill an Empty Field on Start Only</h3>
 <p>This formula will set a specific value when the form is opened.
 For example, it might pre-fill a new field on existing data which didn't exist before (so the default value from the configuration won't apply, since it's not new)</p>

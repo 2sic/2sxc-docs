@@ -19,6 +19,7 @@ The samples should show you
 1. Simple String Formulas TODO
 1. Group Information Formulas TODO
 1. Date Formulas TODO
+1. Promise TODO
 
 ## Debug Formulas
 
@@ -51,6 +52,32 @@ v2((data, context) => {
 ```
 
 ## Set Value On Start
+
+### Basics or Run-On-Start Only
+
+If a formula should only run once, it can do it's work and return `stop : true`.
+Here's an example:
+
+```js
+v2((data, context) => {
+  console.log('this will run on start only');
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return { stop: true };
+});
+```
+
+This example also sets a value, and then stops the formula:
+
+```js
+v2((data, context) => {
+  console.log('this will run on start only');
+  // If it already contains a value, don't change it and stop the formula.
+  if (data.value) return {
+    value: 42,
+    stop: true,
+  };
+});
+```
 
 ### Fill an Empty Field on Start Only
 
