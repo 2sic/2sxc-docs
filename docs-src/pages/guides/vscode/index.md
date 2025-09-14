@@ -30,6 +30,13 @@ VSCode is amazing right out of the box, but to really be productive, you need to
 With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.
 
+> [!WARNING]
+> The C# DevKit extension is still quite new and evolving.
+> At the moment, various newer versions have issues which cause problems.
+> Because of this, ATM recommend manually downgrading the C# extension to version `2.63.32`.
+>
+> <img src="./assets/downgrade-csharp-extension.png" class="full-width" alt="Downgrade C# Extension" />
+
 ## Configure an App for Razor IntelliSense
 
 Apps are usually opened as a folder in VS-Code.
