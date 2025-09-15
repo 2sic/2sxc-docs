@@ -218,3 +218,5 @@ Since it was only used internally, it should not affect anyone.
 1. ⬇️ The `ITypedItem` had a `.Dyn` property which was removed (v20.00.04).  
     It was a temporary addition (and always marked as such) thought to help in migrating code.
     But we're afraid people may use it and leave it in, so we decided it's best to completely remove it.
+
+1. ⬇️ The `IApp.ConfigurationProvider` has been deprecated since v14 and has been removed (v20.00.07).
