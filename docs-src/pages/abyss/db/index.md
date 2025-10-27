@@ -1,4 +1,4 @@
-d---
+---
 uid: Abyss.Db.Index
 ---
 
