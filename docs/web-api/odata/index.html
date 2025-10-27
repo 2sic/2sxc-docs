@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>OData Query Options for REST APIs | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="OData Query Options for REST APIs | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/web-api/odata/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="WebApi.OData">
+<h1 id="odata-query-options-for-rest-apis">OData Query Options for REST APIs</h1>
+
+<p>2sxc supports <strong>OData system query options</strong> to filter, sort, paginate, and select data from both <a class="xref" href="../data/index.html">Data</a> and <a class="xref" href="../query/index.html">Query</a> REST endpoints. This allows you to append standard OData parameters to your URLs for powerful data querying.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>OData query options work on both:</p>
+<ul>
+<li><strong>Data endpoints</strong>: <code>.../app/auto/data/[ContentType]</code></li>
+<li><strong>Query endpoints</strong>: <code>.../app/auto/query/[QueryName]</code></li>
+</ul>
+</div>
+<h2 id="quick-examples">Quick Examples</h2>
+<p>Filter and sort blog posts:</p>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=UrlKey
+</code></pre>
+<p>Get the second blog post (pagination):</p>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$orderby=UrlKey&amp;$skip=1&amp;$top=1
+</code></pre>
+<p>Query with filter and sort:</p>
+<pre><code class="lang-url">/app/auto/query/nameOfQuery?$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true&amp;$orderby=UrlKey
+</code></pre>
+<h2 id="how-odata-works-with-2sxc-endpoints">How OData Works with 2sxc Endpoints</h2>
+<h3 id="data-endpoint-with-odata">Data Endpoint with OData</h3>
+<p>The <a class="xref" href="../data/index.html">Data REST API</a> endpoint lets you query content-types directly:</p>
+<pre><code class="lang-url">[root-path]/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$top=10
+</code></pre>
+<p>This returns the 10 most recent blog posts where <code>ShowOnStartPage</code> is true.</p>
+<h3 id="query-endpoint-with-odata">Query Endpoint with OData</h3>
+<p>The <a class="xref" href="../query/index.html">Query REST API</a> endpoint lets you query <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> pipelines:</p>
+<pre><code class="lang-url">[root-path]/app/auto/query/BlogPostsFiltered?$orderby=Title&amp;$skip=20&amp;$top=10
+</code></pre>
+<p>This executes your predefined query and then applies additional OData filtering/sorting on top of the results.</p>
+<h2 id="supported-odata-system-query-options">Supported OData System Query Options</h2>
+<p>2sxc uses the <strong>ToSic.Sys.OData</strong> parser which supports a practical subset of OData v4 system query options.</p>
+<h3 id="filter---filter-data">$filter - Filter Data</h3>
+<p>Filter results based on conditions.</p>
+<p><strong>Supported Operators:</strong></p>
+<ul>
+<li>Comparison: <code>eq</code> (equals), <code>ne</code> (not equals), <code>gt</code> (greater than), <code>ge</code> (greater or equal), <code>lt</code> (less than), <code>le</code> (less or equal)</li>
+<li>Logical: <code>and</code> (combine conditions)</li>
+<li>Negation: <code>not</code> (negate an expression)</li>
+</ul>
+<p><strong>Supported Functions:</strong></p>
+<ul>
+<li><code>contains(field, 'text')</code> - check if field contains text</li>
+<li><code>startswith(field, 'text')</code> - check if field starts with text</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<p>Simple equality:</p>
+<pre><code class="lang-odata">$filter=Title eq 'Hello World'
+</code></pre>
+<p>Multiple conditions:</p>
+<pre><code class="lang-odata">$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true
+</code></pre>
+<p>Contains function:</p>
+<pre><code class="lang-odata">$filter=contains(Description, 'world')
+</code></pre>
+<p>Starts with function:</p>
+<pre><code class="lang-odata">$filter=startswith(Name, 'Acme')
+</code></pre>
+<p>Negated contains:</p>
+<pre><code class="lang-odata">$filter=not contains(Description, 'deprecated')
+</code></pre>
+<p>Numeric comparison:</p>
+<pre><code class="lang-odata">$filter=Rating gt 4 and Rating le 5
+</code></pre>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p><strong>Not Currently Supported:</strong></p>
+<ul>
+<li>Logical <code>or</code> operator (only <code>and</code> is supported)</li>
+<li>Arithmetic operators (<code>add</code>, <code>sub</code>, <code>mul</code>, <code>div</code>, <code>mod</code>)</li>
+<li>Complex nested expressions with mixed <code>and</code>/<code>or</code></li>
+<li>Many OData functions like <code>endswith</code>, <code>indexof</code>, <code>tolower</code>, etc.</li>
+</ul>
+</div>
+<h3 id="orderby---sort-results">$orderby - Sort Results</h3>
+<p>Sort results by one or more fields.</p>
+<p><strong>Syntax:</strong> <code>$orderby=Field1 [asc|desc], Field2 [asc|desc]</code></p>
+<p><strong>Examples:</strong></p>
+<p>Sort by single field ascending (default):</p>
+<pre><code class="lang-odata">$orderby=Title
+</code></pre>
+<p>Sort descending:</p>
+<pre><code class="lang-odata">$orderby=Created desc
+</code></pre>
+<p>Sort by multiple fields:</p>
+<pre><code class="lang-odata">$orderby=Category asc, Created desc
+</code></pre>
+<h3 id="top---limit-results">$top - Limit Results</h3>
+<p>Limit the number of results returned.</p>
+<p><strong>Syntax:</strong> <code>$top=number</code></p>
+<p><strong>Examples:</strong></p>
+<p>Get first 10 items:</p>
+<pre><code class="lang-odata">$top=10
+</code></pre>
+<p>Combine with ordering:</p>
+<pre><code class="lang-odata">$orderby=Created desc&amp;$top=5
+</code></pre>
+<h3 id="skip---skip-results-pagination">$skip - Skip Results (Pagination)</h3>
+<p>Skip a specified number of results (useful for pagination).</p>
+<p><strong>Syntax:</strong> <code>$skip=number</code></p>
+<p><strong>Examples:</strong></p>
+<p>Skip first 20 items:</p>
+<pre><code class="lang-odata">$skip=20
+</code></pre>
+<p>Pagination (page 2 with 10 items per page):</p>
+<pre><code class="lang-odata">$skip=10&amp;$top=10
+</code></pre>
+<h3 id="select---select-specific-fields">$select - Select Specific Fields</h3>
+<p>Return only specific fields instead of all entity data.</p>
+<p><strong>Syntax:</strong> <code>$select=Field1,Field2,Field3</code></p>
+<p><strong>Examples:</strong></p>
+<p>Select specific fields:</p>
+<pre><code class="lang-odata">$select=Title,Created,Id
+</code></pre>
+<p>Select with filter:</p>
+<pre><code class="lang-odata">$select=Title,Description&amp;$filter=ShowOnStartPage eq true
+</code></pre>
+<p><strong>Special Field Aliases:</strong></p>
+<p>2sxc provides convenient aliases for common system fields:</p>
+<ul>
+<li><code>Id</code> or <code>EntityId</code> - Entity ID</li>
+<li><code>Guid</code> or <code>EntityGuid</code> - Entity GUID</li>
+<li><code>Created</code> - Creation date</li>
+<li><code>Modified</code> - Last modified date</li>
+<li><code>Title</code> - Title field</li>
+</ul>
+<h3 id="combining-multiple-options">Combining Multiple Options</h3>
+<p>You can combine multiple OData options in a single request:</p>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$skip=10&amp;$top=5&amp;$select=Title,Created,UrlKey
+</code></pre>
+<p>This example:</p>
+<ol>
+<li>Filters for posts where <code>ShowOnStartPage</code> is true</li>
+<li>Sorts by <code>Created</code> date descending</li>
+<li>Skips the first 10 results</li>
+<li>Returns the next 5 results</li>
+<li>Returns only <code>Title</code>, <code>Created</code>, and <code>UrlKey</code> fields</li>
+</ol>
+<h2 id="real-world-examples">Real-World Examples</h2>
+<h3 id="example-1-latest-published-blog-posts">Example 1: Latest Published Blog Posts</h3>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&amp;$orderby=Created desc&amp;$top=5&amp;$select=Title,Created,UrlKey
+</code></pre>
+<p>This returns the 5 most recent blog posts that:</p>
+<ul>
+<li>Have <code>ShowOnStartPage</code> set to true</li>
+<li>Contain &quot;2sxc&quot; in the title</li>
+<li>Returns only Title, Created date, and UrlKey</li>
+</ul>
+<h3 id="example-2-paginated-product-list">Example 2: Paginated Product List</h3>
+<pre><code class="lang-url">/app/auto/data/Product?$filter=InStock eq true&amp;$orderby=Name&amp;$skip=20&amp;$top=10
+</code></pre>
+<p>This returns products 21-30 (page 3 with 10 per page) that are in stock, sorted by name.</p>
+<h3 id="example-3-search-results">Example 3: Search Results</h3>
+<pre><code class="lang-url">/app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&amp;$orderby=Title&amp;$select=Title,Description,Url
+</code></pre>
+<p>This executes a predefined query and then filters for items starting with &quot;Getting Started&quot;.</p>
+<h2 id="url-encoding">URL Encoding</h2>
+<p>When using OData query options in URLs, special characters must be URL-encoded:</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Encoded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Space</td>
+<td><code>%20</code></td>
+</tr>
+<tr>
+<td><code>'</code> (single quote)</td>
+<td><code>%27</code></td>
+</tr>
+<tr>
+<td><code>eq</code></td>
+<td>(no encoding needed)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example with encoding:</strong></p>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+</code></pre>
+<p>Becomes:</p>
+<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=Title%20eq%20%27Hello%20World%27
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Most HTTP libraries and browsers handle URL encoding automatically.</p>
+</div>
+<h2 id="limitations-and-not-supported">Limitations and Not Supported</h2>
+<p>The 2sxc OData implementation focuses on practical, commonly-used features. The following are <strong>not currently supported</strong>:</p>
+<h3 id="not-parsednot-executed">Not Parsed/Not Executed</h3>
+<ul>
+<li><code>$expand</code> - Expanding related entities</li>
+<li><code>$compute</code> - Computed properties</li>
+<li><code>$search</code> - Free-text search</li>
+<li><code>$count</code> - Inline count</li>
+<li>Logical <code>or</code> operator in <code>$filter</code></li>
+<li>Arithmetic operators in <code>$filter</code> (<code>add</code>, <code>sub</code>, <code>mul</code>, <code>div</code>, <code>mod</code>)</li>
+<li>Lambda operators (<code>any</code>, <code>all</code>)</li>
+<li>OData functions: <code>endswith</code>, <code>indexof</code>, <code>substring</code>, <code>toupper</code>, <code>tolower</code>, <code>length</code>, <code>trim</code>, <code>concat</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code>, <code>date</code>, <code>time</code>, etc.</li>
+<li>Spatial/geographic functions</li>
+<li>Type casting and <code>$it</code> references</li>
+<li>Deep <code>$select</code> with nested options</li>
+</ul>
+<h3 id="technical-notes">Technical Notes</h3>
+<ul>
+<li>The parser is permissive and syntax-oriented; it doesn't perform semantic validation</li>
+<li>The execution engine supports a pragmatic subset for stable, predictable behavior</li>
+<li>Filter expressions expect: attribute identifier on the left, literal/value on the right</li>
+</ul>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<ul>
+<li><strong>Use $select</strong> to return only needed fields (reduces payload size)</li>
+<li><strong>Filter early</strong> using <code>$filter</code> rather than retrieving all data and filtering client-side</li>
+<li><strong>Limit results</strong> with <code>$top</code> to avoid large responses</li>
+</ul>
+<h2 id="technical-implementation">Technical Implementation</h2>
+<p>The OData system is built on:</p>
+<ul>
+<li><strong>ToSic.Sys.OData</strong> - Minimal, permissive parser based on OASIS OData ABNF</li>
+<li><strong>ODataQueryEngine</strong> - Execution engine for the EAV/2sxc data stack</li>
+<li><strong>DataSource Pipeline</strong> - Integrates with 2sxc's <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a> architecture</li>
+</ul>
+<p>The parser generates an AST (Abstract Syntax Tree) which is then executed against the data source pipeline.</p>
+<h2 id="history">History</h2>
+<ol>
+<li>OData support introduced in 2sxc 17 (basic <code>$select</code>)</li>
+<li>Enhanced OData parser in 2sxc 20.x</li>
+</ol>
+<hr>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://www.odata.org/">Official OData Documentation</a></li>
+<li><a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html">OData v4 URL Conventions</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/web-api/odata/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

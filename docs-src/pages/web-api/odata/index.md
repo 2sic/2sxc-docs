@@ -328,7 +328,7 @@ The parser generates an AST (Abstract Syntax Tree) which is then executed agains
 
 ## History
 
-1. OData support introduced in 2sxc 17 (basic select)
+1. OData support introduced in 2sxc 17 (basic `$select`)
 1. Enhanced OData parser in 2sxc 20.x
 
 ---
