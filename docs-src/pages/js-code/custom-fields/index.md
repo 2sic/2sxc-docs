@@ -1,7 +1,7 @@
 ---
 uid: JsCode.CustomFields.Index
 ---
-# How To Create Custom Input Fields (v11.2)
+# How To Create Custom Input Fields (v11.2+)
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .edit-ui-custom { visibility: visible; } </style>
@@ -15,8 +15,8 @@ Sometimes you want a custom input field - as color-picker, dropdown-from-api or 
 > 1. You can also make them configurable by placing a content-type json in another folder  
 
 > [!NOTE]
-> There are more ways to provide and register custom input fields - like when you need them globally across many apps and portals.
-> That is not discussed here.
+> There are more ways to provide and register custom input fields - like when you
+> need them [globally across many apps and portals](#register-global-custom-fields).
 
 ## Quick-Start Video and Tutorial
 
@@ -161,3 +161,69 @@ To learn more, best look at the tutorials and the API
 * [Advanced tutorial adding a custom button](xref:Tut.CustomFields)
 * [WYSIWYG Reconfigure API](xref:JsCode.CustomFields.Wysiwyg)
 
+
+## Register Global Custom Fields
+
+Global custom fields consist of a few more steps, because they need to be registered in a way that all apps and portals can see them.
+This is done by placing them in a special folder and registering them in a special way.
+
+Note that these docs were added in v20 because iJungleboy noticed that it needs some docs, but this is still very drafty.
+
+### Create the Global Configuration
+
+If your custom field does not have any configuration
+
+1. create a `ContentType-InputType` entity with all the specs (in the `Fields` scope).
+
+If your custom field has configuration
+
+1. First create the configuration content-type as normal in your app - recommended in the `Fields` scope.
+1. Assuming that you'll also need to load a JS, you must now decorate this configuration type with Metadata of the type `ContentType-InputType` in the `Fields` scope
+and give it all the configuration you need.
+
+### Distribute the Global Configuration
+
+If you only want the configuration to work on the system you created it in, you're done.
+Otherwise export the configuration (either the entity, content-type, or bundle)...
+...and place it in the global `App_Data\system-custom\` folder(`bundles` or `entities`, depending on your export).
+
+## Internal Notes
+
+This is just internal, so we don't forget how this works.
+For the fields to do what they should, it needs these things to work:
+
+### 1. Field Registration
+
+The backend must know about the field - for example, to provide it in the list of possible input-types when creating/configuring a field.
+This happens differently depending on whether it's a global field or an app-specific field.
+
+In a global field, it must be registered in as a `ContentType-InputType` entity in the `Fields` scope.
+This is either done directly in the system, or by loading it from a preset JSON file in the `App_Data\system-custom` folder.
+
+In an app-specific field, just having the folder with the JS file `/system/field-[type]-name/index.js` is enough for auto-detection.
+But you can also have a content-type describing it more, either by creating an isolated `ContentType-InputType` entity in the `Fields` scope,
+or by creating a configuration content type like `@[type]-name` like `@string-my-picker`.
+This can then again be decorated with Metadata of the type `ContentType-InputType` in the `Fields` scope - for example if you want to give it 
+a nice name in the UI, and/or to provide more configuration such as other assets to load.
+
+### 2. Field JS Detection
+
+The Edit-Form must be able to detect the field JS files and load them into the browser.
+The backend provides the JS to the front-end.
+This again is different in global and local fields.
+
+* in global fields, the information must be in the entity of type `ContentType-InputType` in the `Fields` scope.
+* in app-specific fields, the detection happens automatically, but can be overruled by providing metadata of the type `ContentType-InputType` in the `Fields` scope.
+
+### 3. Field JS Loading
+
+The front-end will load the JS files provided by the backend.
+This happens automatically, assuming the information was found in step 2.
+
+### 4. Field Rendering
+
+The front-end should have a `custom element` registered matching the field type.
+This happens automatically when the JS file is loaded, assuming the code is correct.
+The name of the custom element must be `field-[type]-name` where `[type]-name` is the name of the field type.
+
+If anything doesn't work, you will not see your custom field.
