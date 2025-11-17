@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>How To Create Custom Input Fields (v11.2) | 2sxc 20 for Dnn and Oqtane </title>
+      <title>How To Create Custom Input Fields (v11.2+) | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="How To Create Custom Input Fields (v11.2) | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="How To Create Custom Input Fields (v11.2+) | 2sxc 20 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -103,7 +103,7 @@
         
 
         <article data-uid="JsCode.CustomFields.Index">
-<h1 id="how-to-create-custom-input-fields-v112">How To Create Custom Input Fields (v11.2)</h1>
+<h1 id="how-to-create-custom-input-fields-v112">How To Create Custom Input Fields (v11.2+)</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -215,8 +215,8 @@
 </div>
 <div class="NOTE">
 <h5>Note</h5>
-<p>There are more ways to provide and register custom input fields - like when you need them globally across many apps and portals.
-That is not discussed here.</p>
+<p>There are more ways to provide and register custom input fields - like when you
+need them <a href="#register-global-custom-fields">globally across many apps and portals</a>.</p>
 </div>
 <h2 id="quick-start-video-and-tutorial">Quick-Start Video and Tutorial</h2>
 <p>If you're new here, best watch this video:</p>
@@ -339,6 +339,54 @@ and <code>@exact-name-of-the-input-type</code> eg. <code>@string-my-picker</code
 <li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/ui-fields">Advanced tutorial adding a custom button</a></li>
 <li><a class="xref" href="field-wysiwyg.html">WYSIWYG Reconfigure API</a></li>
 </ul>
+<h2 id="register-global-custom-fields">Register Global Custom Fields</h2>
+<p>Global custom fields consist of a few more steps, because they need to be registered in a way that all apps and portals can see them.
+This is done by placing them in a special folder and registering them in a special way.</p>
+<p>Note that these docs were added in v20 because iJungleboy noticed that it needs some docs, but this is still very drafty.</p>
+<h3 id="create-the-global-configuration">Create the Global Configuration</h3>
+<p>If your custom field does not have any configuration</p>
+<ol>
+<li>create a <code>ContentType-InputType</code> entity with all the specs (in the <code>Fields</code> scope).</li>
+</ol>
+<p>If your custom field has configuration</p>
+<ol>
+<li>First create the configuration content-type as normal in your app - recommended in the <code>Fields</code> scope.</li>
+<li>Assuming that you'll also need to load a JS, you must now decorate this configuration type with Metadata of the type <code>ContentType-InputType</code> in the <code>Fields</code> scope
+and give it all the configuration you need.</li>
+</ol>
+<h3 id="distribute-the-global-configuration">Distribute the Global Configuration</h3>
+<p>If you only want the configuration to work on the system you created it in, you're done.
+Otherwise export the configuration (either the entity, content-type, or bundle)...
+...and place it in the global <code>App_Data\system-custom\</code> folder(<code>bundles</code> or <code>entities</code>, depending on your export).</p>
+<h2 id="internal-notes">Internal Notes</h2>
+<p>This is just internal, so we don't forget how this works.
+For the fields to do what they should, it needs these things to work:</p>
+<h3 id="1-field-registration">1. Field Registration</h3>
+<p>The backend must know about the field - for example, to provide it in the list of possible input-types when creating/configuring a field.
+This happens differently depending on whether it's a global field or an app-specific field.</p>
+<p>In a global field, it must be registered in as a <code>ContentType-InputType</code> entity in the <code>Fields</code> scope.
+This is either done directly in the system, or by loading it from a preset JSON file in the <code>App_Data\system-custom</code> folder.</p>
+<p>In an app-specific field, just having the folder with the JS file <code>/system/field-[type]-name/index.js</code> is enough for auto-detection.
+But you can also have a content-type describing it more, either by creating an isolated <code>ContentType-InputType</code> entity in the <code>Fields</code> scope,
+or by creating a configuration content type like <code>@[type]-name</code> like <code>@string-my-picker</code>.
+This can then again be decorated with Metadata of the type <code>ContentType-InputType</code> in the <code>Fields</code> scope - for example if you want to give it
+a nice name in the UI, and/or to provide more configuration such as other assets to load.</p>
+<h3 id="2-field-js-detection">2. Field JS Detection</h3>
+<p>The Edit-Form must be able to detect the field JS files and load them into the browser.
+The backend provides the JS to the front-end.
+This again is different in global and local fields.</p>
+<ul>
+<li>in global fields, the information must be in the entity of type <code>ContentType-InputType</code> in the <code>Fields</code> scope.</li>
+<li>in app-specific fields, the detection happens automatically, but can be overruled by providing metadata of the type <code>ContentType-InputType</code> in the <code>Fields</code> scope.</li>
+</ul>
+<h3 id="3-field-js-loading">3. Field JS Loading</h3>
+<p>The front-end will load the JS files provided by the backend.
+This happens automatically, assuming the information was found in step 2.</p>
+<h3 id="4-field-rendering">4. Field Rendering</h3>
+<p>The front-end should have a <code>custom element</code> registered matching the field type.
+This happens automatically when the JS file is loaded, assuming the code is correct.
+The name of the custom element must be <code>field-[type]-name</code> where <code>[type]-name</code> is the name of the field type.</p>
+<p>If anything doesn't work, you will not see your custom field.</p>
 
 </article>
 

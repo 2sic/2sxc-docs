@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Field Definition Inheritance | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Field Definition Inheritance | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/basics/data/fields/inheritance/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Basics.Data.Fields.Inheritance.Index">
+<h1 id="field-definition-inheritance">Field Definition Inheritance</h1>
+
+<div class="overlay-container">
+  <div class="overlay-box" style="left: 28.5%; top: 46%; height: 45%; width: 47.5%"></div>
+  <img src="../../../../pages/basics/data/assets/app-data.png" class="full-width">
+</div>
+
+<p>This explains <strong>Field Definition Inheritance</strong>. For an overview check out <a class="xref" href="../../index.html">Understanding Data...</a>.</p>
+<hr>
+<p>Most fields are defined once and used once.
+For example, a <code>FirstName</code> field is defined once and used in one content type <code>Person</code>.
+But sometimes you want to reuse the same field definition in multiple content types.
+For example, you may have an <code>EventType</code> string-dropdown field that you want to use in both <code>Event</code> and <code>Calendar</code> content types.
+Having a shared definition allows you to update it in one place, and have the changes reflected everywhere it's used.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Field Definition Inheritance allows you to create a field definition once and reuse it across multiple content types, ensuring consistency and easier maintenance.</p>
+<p>It is the foundation for <strong>Content Type Composition</strong>.</p>
+</div>
+<p>🦸🏾‍♂️ Requires Patron feature <a href="https://patrons.2sxc.org/rf?ContentTypeFieldsReuseDefinitions">ContentTypeFieldsReuseDefinitions</a></p>
+<h2 id="how-it-works">How It Works</h2>
+<p>For field definition inheritance to work, you must first define a shared &quot;master&quot; field.
+This master field contains all the settings and configurations you want to share.
+Once the master field is defined, you can mark it as &quot;inheritable&quot;.
+By doing this, it will also receive a unique identifier (GUID) that can be referenced by other fields.</p>
+<p>To inherit the definition, you must then create a &quot;inheriting&quot; field or convert an existing field to inherit from the master field.
+When you do this, the inheriting field will automatically adopt all the settings from the master field.
+The link between the master field and the inheriting field is done through the unique identifier (GUID) of the master field.</p>
+<p>Internally, both the master field and the inheriting field have a hidden JSON configuration in the database called <code>SysSettings</code>.</p>
+<h2 id="how-to-set-up-inheritance">How to Set Up Inheritance</h2>
+<ol>
+<li><strong>Define the Master Field</strong>: Create a new field definition and configure all the settings you want to share.</li>
+<li><strong>Mark as Inheritable</strong>: Once the master field is defined, mark it as &quot;inheritable&quot;.</li>
+<li><strong>Create Inheriting Fields</strong>: Create new fields or convert existing fields to inherit from the master field.</li>
+</ol>
+<p>For more, check out <a class="xref" href="../../content-type-composition/index.html">Content-Type Composition and Inheritance (new v18.02)</a> which explains how inheritance is used in content-type composition
+with step-by-step instructions.</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Development started ca. 2sxc v16 and used internally</li>
+<li>Published in 2sxc/EAV v18</li>
+<li>Docs created for 2sxc v20 - 2025-11</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/basics/data/fields/inheritance/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
