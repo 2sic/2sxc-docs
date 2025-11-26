@@ -32,6 +32,8 @@ Use this checklist:
 
 <iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
+If you just need to update your locally cloned `Oqtane.Framework` source code to latest release for 2sxc Oqtane development check the instructions here: [How update Oqtane.Framework source code for 2sxc Oqtane development](xref:Abyss.Contribute.Code.OqtaneFramework)
+
 ## GIT Branches
 
 We use the [git-flow convention](https://jeffkreeftmeijer.com/git-flow/), and you should familiarize yourself with this, to properly work with the branches. As of now, the development-branch is called `dev` but we'll rename it to `develop` within the next few days.  
