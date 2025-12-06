@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Contribute to 2sxc / EAV - Setup | 2sxc 20 for Dnn and Oqtane </title>
+      <title>How update Oqtane.Framework source code for 2sxc Oqtane development | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Contribute to 2sxc / EAV - Setup | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="How update Oqtane.Framework source code for 2sxc Oqtane development | 2sxc 20 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/oqtane-framework.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,39 +102,65 @@
 
         
 
-        <article data-uid="Abyss.Contribute.Code.Index">
-<h1 id="contribute-to-2sxc--eav---setup">Contribute to 2sxc / EAV - Setup</h1>
+        <article data-uid="Abyss.Contribute.Code.OqtaneFramework">
+<h1 id="how-update-oqtaneframework-source-code-for-2sxc-oqtane-development">How update <code>Oqtane.Framework</code> source code for 2sxc Oqtane development</h1>
 
-<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
-<h2 id="pre-requisites">Pre-Requisites</h2>
-<ol>
-<li>Visual Studio 2019</li>
-<li>MSBuild Community Tasks 1.4 or newer (required for automatic module packaging if you want to create dnn-module packages of 2sxc to distribute to another dnn) <a href="https://github.com/loresoft/msbuildtasks">https://github.com/loresoft/msbuildtasks</a> or chec <a href="https://www.microsoft.com/en-in/download/details.aspx?id=19372">https://www.microsoft.com/en-in/download/details.aspx?id=19372</a></li>
-<li>SQL Server 2017 or newer</li>
-<li>You have a working DNN 7.4.2 or higher with 2sxc already installed as a module, ideally in c:\projects\2sxc-dnn742\ or something similar</li>
-</ol>
-<h2 id="basics">Basics</h2>
-<p>The full solution pulls together 4 Github projects, some responsible for server-code, some for UI, some for in-page JS. We separated these to make it easier to contribute to a specific part without worrying about the rest.</p>
-<p>If you only want to contribute to something small - like the languages / translations - then you only need to download that repository.</p>
-<p>In the complex scenarios each project can build into the other target, so if you want to work full-stack and use all of the automation, you will want to put everything in <code>C:\Projects\2sxc\</code>.</p>
-<h2 id="contribute-with-pull-requests">Contribute with Pull-Requests</h2>
-<p>After you have made changes, you cannot just push the code back to our repo, since you probably won't have write permissions on the main repo.
-The correct procedure then is to fork the main repo into yours, and push into your own online repo. Then start a pull request, which we can then process.</p>
-<h2 id="setup-git-repos-to-use">Setup Git Repos to use</h2>
-<p>Use this checklist:</p>
-<iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<p>If you just need to update your locally cloned <code>Oqtane.Framework</code> source code to latest release for 2sxc Oqtane development check the instructions here: <a class="xref" href="oqtane-framework.html">How update Oqtane.Framework source code for 2sxc Oqtane development</a></p>
-<h2 id="git-branches">GIT Branches</h2>
-<p>We use the <a href="https://jeffkreeftmeijer.com/git-flow/">git-flow convention</a>, and you should familiarize yourself with this, to properly work with the branches. As of now, the development-branch is called <code>dev</code> but we'll rename it to <code>develop</code> within the next few days.</p>
-<h2 id="the-eav--2sxc-server-solution">The EAV / 2sxc Server Solution</h2>
-<p>Basically if you open the solution in the <code>eav-server</code> folder, it will open all the EAV server (C#) code and 2sxc code in Visual Studio. This is very important, because if you build anything extensive and rename anything, it guarantees that everything is correctly updated.</p>
-<h2 id="the-2sxc-ui">The 2sxc UI</h2>
-<p>This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp <code>develop</code> it too will auto-build and copy to the live Dnn / 2sxc site.</p>
+<p>For <strong>2sxc Oqtane development</strong>, we work against the official <a href="https://github.com/oqtane/oqtane.framework/tree/master"><strong>Oqtane Framework master branch</strong></a>, which contains the source code for the latest release (<code>Oqtane.Client</code>, <code>Oqtane.Server</code>, <code>Oqtane.Shared</code>).</p>
+<p>In our locally cloned <code>oqtane.framework</code> git repository, on top of the official Oqtane commits, we typically maintain <strong>one local commit</strong> (never pushed to remote) with custom modifications such as changes in <code>appsettings.json</code>, <code>Oqtane.Server.csproj</code>, etc.</p>
+<p>When a new Oqtane version is released, we need to pull the latest commits from <code>master</code> so we can test and develop 2sxc source code against the newest Oqtane release.<br>
+The goal is to keep our local commit as the <strong>latest commit on top of all official Oqtane commits</strong>. Using <code>git pull --rebase</code> ensures this by keeping the history linear.</p>
+<hr>
+<h2 id="recommended-practice-rebase-on-pull">Recommended Practice: Rebase on Pull</h2>
+<h3 id="global-git-configuration">Global Git Configuration</h3>
+<pre><code class="lang-bash"># Rebase by default on pull for all repositories
+git config --global pull.rebase true
+</code></pre>
+<p><strong>Effect:</strong></p>
+<ul>
+<li><code>git pull</code> behaves like <code>git pull --rebase</code> by default.</li>
+<li>You can still override per repository or per command when needed.</li>
+</ul>
+<hr>
+<h3 id="per-repository-configuration">Per-Repository Configuration</h3>
+<p>Inside a specific repo (e.g., <code>oqtane.framework</code>):</p>
+<pre><code class="lang-bash"># Enable rebase only for this repository
+git config pull.rebase true
+</code></pre>
+<p>Or for fine-grained control:</p>
+<pre><code class="lang-bash"># Always rebase when pulling from master
+git config branch.master.rebase true
+</code></pre>
+<hr>
+<h3 id="one-off-usage">One-Off Usage</h3>
+<pre><code class="lang-bash">git pull --rebase
+</code></pre>
+<p>Useful if you normally merge, but want a one-time rebase.</p>
+<hr>
+<h2 id="when-to-use-rebase-vs-merge">When to Use Rebase vs Merge</h2>
+<h3 id="-use-rebase-when">✅ Use Rebase When</h3>
+<ul>
+<li>You want a <strong>clean, linear history</strong>.</li>
+<li>You have <strong>local commits</strong> that are not pushed to remote.</li>
+<li>Before pushing, you need to <strong>integrate the latest remote changes</strong> without merge commits.</li>
+<li>After rebasing, always <strong>build and test</strong> to ensure nothing breaks.</li>
+</ul>
+<h3 id="-use-merge-when">⚠️ Use Merge When</h3>
+<ul>
+<li>You want to <strong>preserve the exact integration history</strong>.</li>
+<li>Merge commits are valuable for showing when and how changes were combined (though this can complicate the Oqtane repo history).</li>
+</ul>
+<hr>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Default to <strong><code>git pull --rebase</code></strong> for 2sxc Oqtane development to keep your local commit on top of official upstream changes.</li>
+<li>Configure globally for convenience, but override per repo or per branch if needed.</li>
+<li>Rebase for clarity and linearity; merge only when historical integration context is important.</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/oqtane-framework.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

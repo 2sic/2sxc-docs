@@ -19,4 +19,6 @@
 
 [!include["Changes"](./_changes.00.08.md)]
 
+[!include["Changes"](./_changes.00.09.md)]
+
 [!include["Breaking"](./_brc20.00.md)]
