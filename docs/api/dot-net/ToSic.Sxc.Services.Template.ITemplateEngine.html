@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Sxc_Services_Template_ITemplateEngine" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine" class="text-break">
-Interface ITemplateEngine  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Interface ITemplateEngine  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -120,7 +120,7 @@ Interface ITemplateEngine  <a class="header-action link-secondary" title="View s
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;namespace not final&quot;)]
 public interface ITemplateEngine</code></pre>
   </div>
 
@@ -147,7 +147,7 @@ public interface ITemplateEngine</code></pre>
 
   <h3 id="ToSic_Sxc_Services_Template_ITemplateEngine_GetSources_ToSic_Sys_Coding_NoParamOrder_System_Int32_" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine.GetSources(ToSic.Sys.Coding.NoParamOrder,System.Int32)">
   GetSources(NoParamOrder, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of underlying sources, mainly for debugging.</p>
@@ -155,12 +155,12 @@ public interface ITemplateEngine</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;ILookUp&gt; GetSources(NoParamOrder protector = default, int depth = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;ILookUp&gt; GetSources(NoParamOrder npo = default, int depth = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>protector</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dt><code>npo</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd></dd>
     <dt><code>depth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
@@ -186,7 +186,7 @@ public interface ITemplateEngine</code></pre>
 
   <h3 id="ToSic_Sxc_Services_Template_ITemplateEngine_Parse_System_String_" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine.Parse(System.String)">
   Parse(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Basic Parse functionality.
@@ -202,7 +202,8 @@ for passing into function calls, like into CMS HTML Tweaks.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>template</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The string containing the token placeholders like <code>Hello [User:FirstName]</code></p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -223,28 +224,38 @@ for passing into function calls, like into CMS HTML Tweaks.</p>
 
   <a id="ToSic_Sxc_Services_Template_ITemplateEngine_Parse_" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine.Parse*"></a>
 
-  <h3 id="ToSic_Sxc_Services_Template_ITemplateEngine_Parse_System_String_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Collections_Generic_IEnumerable_ToSic_Eav_LookUp_ILookUp__" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine.Parse(System.String,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Collections.Generic.IEnumerable{ToSic.Eav.LookUp.ILookUp})">
-  Parse(string, NoParamOrder, bool, IEnumerable&lt;ILookUp&gt;?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sxc_Services_Template_ITemplateEngine_Parse_System_String_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Collections_Generic_IEnumerable_ToSic_Eav_LookUp_ILookUp__System_Int32_" data-uid="ToSic.Sxc.Services.Template.ITemplateEngine.Parse(System.String,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Collections.Generic.IEnumerable{ToSic.Eav.LookUp.ILookUp},System.Int32)">
+  Parse(string, NoParamOrder, bool, IEnumerable&lt;ILookUp&gt;?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Basic Parse functionality with more options.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Parse(string template, NoParamOrder protector = default, bool allowHtml = false, IEnumerable&lt;ILookUp&gt;? sources = null)</code></pre>
+    <pre><code class="lang-csharp hljs">string Parse(string template, NoParamOrder npo = default, bool allowHtml = false, IEnumerable&lt;ILookUp&gt;? sources = null, int recursions = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>template</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>protector</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
-    <dd></dd>
+    <dd><p>The string containing the token placeholders like <code>Hello [User:FirstName]</code></p>
+</dd>
+    <dt><code>npo</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
+    <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
+</dd>
     <dt><code>allowHtml</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>allow adding html to the string - if false (default) will html encode anything found for safety before replacing something</p>
+</dd>
     <dt><code>sources</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.LookUp.ILookUp.html">ILookUp</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>A list of sources to use for this parse - otherwise use the sources provided on creation of the template engine</p>
+</dd>
+    <dt><code>recursions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Recursion depth for tokens-in-tokens.
+Could leak unexpected information, if a token contains user provided data or url-parameters so <em>use with caution</em>.
+Defaults to <code>0</code> for safety, added v20.09</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -267,7 +278,7 @@ for passing into function calls, like into CMS HTML Tweaks.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Services/Services/Templates/ITemplateEngine.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

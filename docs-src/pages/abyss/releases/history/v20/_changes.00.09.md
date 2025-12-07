@@ -9,22 +9,42 @@
 This 20.00.09 has a LOT of enhancements, but since we're still stabilizing v20, we are
 not incrementing the next number yet.
 
-#### Enhancements
+#### Possibly Breaking Changes
 
-1. 
-1. 🧩 App Extensions: Feature to edit extension definition and store in a JSON in the extensions `App_Data`
-1. 🧩 App Extensions: System can differentiate between installed extensions and extensions being developed in an App, and provide different actions
-1. 🧩 App Extensions: Feature to export an extension incl. extensive infos, file fingerprints, versions, releases
-1. 🧩 App Extensions: Feature to install an extension incl. drag & drop
-1. 🧩 App Extensions: Feature to check if an installed extension was modified (for safer upgrading)
-1. 🧩 App Extensions: Feature to delete an installed extension
-1. 🧩 App Extensions: Extension Settings and language Resources
-1. 🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)
-1. 🔬 
-1. ✏️ Edit UI: Improve paste-as-text in WYSIWYG
-1. ✏️🔳 Toolbar & Edit UI: Introduce `TODO` TOOLBAR
+1. Global extension fields (for the edit UI) are now in `/extensions` and not `system` any more.  
+    This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.
+
+#### Major Enhancements
+
+1. 🧩 App Extensions: Lots of enhancements
+    1. 🧩 Feature to edit extension definition and store in a JSON in the extensions `App_Data`
+    1. 🧩 System can differentiate between installed extensions and extensions being developed in an App, and provide different actions
+    1. 🧩 Feature to export an extension incl. extensive infos, file fingerprints, versions, releases
+    1. 🧩 Feature to install an extension incl. drag & drop
+    1. 🧩 Feature to check if an installed extension was modified (for safer upgrading)
+    1. 🧩 Feature to delete an installed extension
+    1. 🧩 Extension Settings and language Resources
+    1. 🧩 Extensions can now be installed in multiple editions
+    1. 🧩 Extensions with input-types and multiple editions will load `staging` if user is developer/host
+    1. 🧩 Extensions have a lot of properties and links shown in the quick overview
 1. ☢️ Stabilizing DNN CSHTML compiler caching and PDB preservation for better debugging
-1. DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts
+1. 🌪️ Queries: Published many more System queries which were previously secret, such as `System.ContentTypes`, etc. see [](xref:Basics.Query.SystemQueries)
+1. 🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts
+1. ❤️‍🔥 OData Support WIP
+    1. $select support
+    1. $filter support for basic filters (eq, ne, gt, lt, ge, le, startsWith, not startsWith, contains, not contains)
+    1. $orderby support
+1. 💃🏼 Major: Template Service can now create templated entities.
+
+#### Minor Enhancements
+
+1. 🔳 Toolbar: Ability to combine toolbar on a entity-field with `Copy` to add copies of data to a list
+1. ✏️🔳 Toolbar & Edit UI: Introduce `UiFields()` on toolbar button Tweak
+1. ⚙️ Admin UI: Show more info about fields (such as read-only, required etc. in addition to has-formula)
+1. 🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)
+1. ✏️ Edit UI: Improve paste-as-text in WYSIWYG
+1. 🖼️ Improve Image Service so it knows about Bootstrap if added through `Kit.Page.Activate(...)` (otherwise image resize/class is off when used in a skin without bootstrap)
+1. 🌪️ DataSource: ContentType DataSource can now accept `Scope` of `*` to search through all scopes
 1. Minor: Add Recaptcha Score field to settings
 1. Minor: Add loading indicators in various UIs to improve UX
 

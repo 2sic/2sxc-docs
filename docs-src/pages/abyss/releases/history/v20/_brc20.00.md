@@ -59,6 +59,9 @@ Note that we marked the breaking changes like this
 
 1. ⬇️ In Dnn, the modules name is now `2sxc` instead of `SexyContent`
 
+1. ⬇️ Global extension fields (for the edit UI) are now in `/extensions` and not `system` any more.
+    This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.
+
 
 
 ### Breaking `IEntity` API Changes (Razor)

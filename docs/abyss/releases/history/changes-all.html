@@ -421,22 +421,48 @@ not incrementing the next number yet.</p>
 </div>
 <p>This 20.00.09 has a LOT of enhancements, but since we're still stabilizing v20, we are
 not incrementing the next number yet.</p>
-<h4 id="enhancements">Enhancements</h4>
+<h4 id="possibly-breaking-changes">Possibly Breaking Changes</h4>
 <ol>
-<li></li>
-<li>🧩 App Extensions: Feature to edit extension definition and store in a JSON in the extensions <code>App_Data</code></li>
-<li>🧩 App Extensions: System can differentiate between installed extensions and extensions being developed in an App, and provide different actions</li>
-<li>🧩 App Extensions: Feature to export an extension incl. extensive infos, file fingerprints, versions, releases</li>
-<li>🧩 App Extensions: Feature to install an extension incl. drag &amp; drop</li>
-<li>🧩 App Extensions: Feature to check if an installed extension was modified (for safer upgrading)</li>
-<li>🧩 App Extensions: Feature to delete an installed extension</li>
-<li>🧩 App Extensions: Extension Settings and language Resources</li>
-<li>🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)</li>
-<li>🔬</li>
-<li>✏️ Edit UI: Improve paste-as-text in WYSIWYG</li>
-<li>✏️🔳 Toolbar &amp; Edit UI: Introduce <code>TODO</code> TOOLBAR</li>
+<li>Global extension fields (for the edit UI) are now in <code>/extensions</code> and not <code>system</code> any more.<br>
+This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.</li>
+</ol>
+<h4 id="major-enhancements">Major Enhancements</h4>
+<ol>
+<li>🧩 App Extensions: Lots of enhancements
+<ol>
+<li>🧩 Feature to edit extension definition and store in a JSON in the extensions <code>App_Data</code></li>
+<li>🧩 System can differentiate between installed extensions and extensions being developed in an App, and provide different actions</li>
+<li>🧩 Feature to export an extension incl. extensive infos, file fingerprints, versions, releases</li>
+<li>🧩 Feature to install an extension incl. drag &amp; drop</li>
+<li>🧩 Feature to check if an installed extension was modified (for safer upgrading)</li>
+<li>🧩 Feature to delete an installed extension</li>
+<li>🧩 Extension Settings and language Resources</li>
+<li>🧩 Extensions can now be installed in multiple editions</li>
+<li>🧩 Extensions with input-types and multiple editions will load <code>staging</code> if user is developer/host</li>
+<li>🧩 Extensions have a lot of properties and links shown in the quick overview</li>
+</ol>
+</li>
 <li>☢️ Stabilizing DNN CSHTML compiler caching and PDB preservation for better debugging</li>
-<li>DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts</li>
+<li>🌪️ Queries: Published many more System queries which were previously secret, such as <code>System.ContentTypes</code>, etc. see <a class="xref" href="../../../basics/query/query-system.html">System Queries</a></li>
+<li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts</li>
+<li>❤️‍🔥 OData Support WIP
+<ol>
+<li>$select support</li>
+<li>$filter support for basic filters (eq, ne, gt, lt, ge, le, startsWith, not startsWith, contains, not contains)</li>
+<li>$orderby support</li>
+</ol>
+</li>
+<li>💃🏼 Major: Template Service can now create templated entities.</li>
+</ol>
+<h4 id="minor-enhancements">Minor Enhancements</h4>
+<ol>
+<li>🔳 Toolbar: Ability to combine toolbar on a entity-field with <code>Copy</code> to add copies of data to a list</li>
+<li>✏️🔳 Toolbar &amp; Edit UI: Introduce <code>UiFields()</code> on toolbar button Tweak</li>
+<li>⚙️ Admin UI: Show more info about fields (such as read-only, required etc. in addition to has-formula)</li>
+<li>🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)</li>
+<li>✏️ Edit UI: Improve paste-as-text in WYSIWYG</li>
+<li>🖼️ Improve Image Service so it knows about Bootstrap if added through <code>Kit.Page.Activate(...)</code> (otherwise image resize/class is off when used in a skin without bootstrap)</li>
+<li>🌪️ DataSource: ContentType DataSource can now accept <code>Scope</code> of <code>*</code> to search through all scopes</li>
 <li>Minor: Add Recaptcha Score field to settings</li>
 <li>Minor: Add loading indicators in various UIs to improve UX</li>
 </ol>
@@ -520,6 +546,9 @@ This can affect you if you were using compiled code which referenced the old ass
 This should not affect you, unless you were already using internal APIs.</p>
 </li>
 <li><p>⬇️ In Dnn, the modules name is now <code>2sxc</code> instead of <code>SexyContent</code></p>
+</li>
+<li><p>⬇️ Global extension fields (for the edit UI) are now in <code>/extensions</code> and not <code>system</code> any more.
+This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.</p>
 </li>
 </ol>
 <h3 id="breaking-ientity-api-changes-razor">Breaking <code>IEntity</code> API Changes (Razor)</h3>
