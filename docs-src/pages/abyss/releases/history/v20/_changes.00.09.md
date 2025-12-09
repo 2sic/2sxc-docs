@@ -32,7 +32,7 @@ not incrementing the next number yet.
 1. 🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts
 1. ❤️‍🔥 OData Support WIP
     1. $select support
-    1. $filter support for basic filters (eq, ne, gt, lt, ge, le, startsWith, not startsWith, contains, not contains)
+    1. $filter support for basic filters (`eq`, `ne`, `gt`, `lt`, `ge`, `le`, `startsWith`, `not startsWith`, `contains`, `not contains`)
     1. $orderby support
 1. 💃🏼 Major: Template Service can now create templated entities.
 
