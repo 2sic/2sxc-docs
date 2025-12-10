@@ -31,8 +31,30 @@ Each toolbar placed inside the page can have custom settings to control **visibi
 | **classes** | string | Additional CSS classes to style your toolbar | <img src="./assets/blue-toolbar.png" width="180" /> |
 
 ---
+## How to Use in Razor
 
-# Example
+This example uses the simple [`TagToolbar`](xref:NetCode.Razor.Edit.Toolbar) API.
+
+
+```razor
+<div @Edit.TagToolbar(Content, toolbar: new[]
+{
+  "settings&hover=left&autoAddMore=start"
+})>
+  Content inside this div
+</div>
+```
+### How to use settings parameters
+
+```razor
+<div id='tagWithToolbar1' @Edit.TagToolbar(
+  toolbar: new [] { "toolbar=empty", "+new?contentType=UiEmptyHelloWorld" },
+  settings: new { hover = "left", show = "always" } )>
+  Float over this box to get a (+) button. 
+</div>
+```
+
+## Example in JavaScript  
 ```html
 <div id="my-table"></div>
 <script>
@@ -53,8 +75,7 @@ Each toolbar placed inside the page can have custom settings to control **visibi
     hover: "left",
     follow: "scroll",
     autoAddMore: "end",
-    show: "always",
-    classes: "toolbar-blue"
+    show: "always"
   };
 
   // Build and render toolbar
