@@ -24,7 +24,7 @@ Each toolbar placed inside the page can have custom settings to control **visibi
 
 | Setting | Values | Description | Screenshot |
 |--------|--------|-------------|------------|
-| **autoAddMore** | `start` \| `end` | Adds a “…” button if too many groups exist. Default: `end`. | <img src="./assets/autoAddMore.png" width="180" /> |
+| **autoAddMore** | `start` \| `end` | Adds a “…” button if too many groups exist. Default: `end`. | <img src="./assets/auto-add-more.png" width="180" /> |
 | **hover** | `right` (default) \| `left` \| `none` | Where the toolbar appears when hovering over the element. | <img src="./assets/hover-right.png" width="180" /> |
 | **follow** | `none` (default) \| `initial` \| `scroll` \| `always` | Keeps the toolbar visible even when its element is scrolled out of view. It does *not* follow the mouse. | <img src="./assets/follow-scroll.png" width="180" /> |
 | **show** | `hover` (default) \| `always` | Whether the toolbar is always visible or only when hovering over the element. | <img src="./assets/show-always.png" width="180" /> |
