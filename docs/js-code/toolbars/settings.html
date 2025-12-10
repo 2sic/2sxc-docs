@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Toolbar Settings | 2sxc 20 for Dnn and Oqtane </title>
+      <title>Toolbar Settings Enhanced Guide with Examples &amp; Screenshots | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Toolbar Settings | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="Toolbar Settings Enhanced Guide with Examples &amp; Screenshots | 2sxc 20 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -105,7 +105,7 @@
         <article data-uid="JsCode.Toolbars.Settings">
 
 <img src="../../assets/features/toolbar.svg" class="feature">
-<h1 id="toolbar-settings">Toolbar Settings</h1>
+<h1 id="toolbar-settings-enhanced-guide-with-examples--screenshots">Toolbar Settings Enhanced Guide with Examples &amp; Screenshots</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
@@ -204,68 +204,123 @@
 <p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
   </div>
 </div>
-<style>.context-box-summary .edit-custom { visibility: visible; } </style>
-<p>Each in page toolbar can have some settings which control how it works and how it's shown.</p>
-<p>👉 Best start with the <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/ui-toolbars">Toolbar Tutorials</a></p>
-<p>These Settings control how the Toolbar works</p>
-<ol>
-<li><code>autoAddMore</code> determines <em>where</em> the ellipsis &quot;more&quot; button is added when the toolbar has many button-groups</li>
-<li><code>hover</code> determines where the toolbar appears when the mouse hovers over the area</li>
-<li><code>follow</code> tells the toolbar to follow the mouse - ideal for large content blocks</li>
-<li><code>show</code> determines if th toolbar is always visible, or only on hover</li>
-<li><code>classes</code> let you add classes for custom styling</li>
-</ol>
+<style>.context-box-summary .edit-custom { visibility: visible; }</style>
+<p>Toolbars in 2sxc are incredibly powerful, and <strong>Toolbar Settings</strong> let you fully control how they behave, where they appear, and how users interact with them.</p>
+<hr>
+<h1 id="what-toolbar-settings-do">What Toolbar Settings Do</h1>
+<p>Each toolbar placed inside the page can have custom settings to control <strong>visibility</strong>, <strong>hover behavior</strong>, <strong>floating behavior</strong>, and <strong>styling</strong>.</p>
+<p>👉 If you are new to toolbars, start with the tutorial:<br>
+<strong><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/ui-toolbars">Toolbar Basics</a></strong></p>
+<h1 id="-available-settings-with-explanations">⚙️ Available Settings (with explanations)</h1>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Values</th>
+<th>Description</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>autoAddMore</strong></td>
+<td><code>start</code> | <code>end</code></td>
+<td>Adds a “…” button if too many groups exist. Default: <code>end</code>.</td>
+<td><img src="../../pages/js-code/toolbars/assets/auto-add-more.png" width="180"></td>
+</tr>
+<tr>
+<td><strong>hover</strong></td>
+<td><code>right</code> (default) | <code>left</code> | <code>none</code></td>
+<td>Where the toolbar appears when hovering over the element.</td>
+<td><img src="../../pages/js-code/toolbars/assets/hover-right.png" width="180"></td>
+</tr>
+<tr>
+<td><strong>follow</strong></td>
+<td><code>none</code> (default) | <code>initial</code> | <code>scroll</code> | <code>always</code></td>
+<td>Keeps the toolbar visible even when its element is scrolled out of view. It does <em>not</em> follow the mouse.</td>
+<td><img src="../../pages/js-code/toolbars/assets/follow-scroll.png" width="180"></td>
+</tr>
+<tr>
+<td><strong>show</strong></td>
+<td><code>hover</code> (default) | <code>always</code></td>
+<td>Whether the toolbar is always visible or only when hovering over the element.</td>
+<td><img src="../../pages/js-code/toolbars/assets/show-always.png" width="180"></td>
+</tr>
+<tr>
+<td><strong>classes</strong></td>
+<td>string</td>
+<td>Additional CSS classes to style your toolbar</td>
+<td><img src="../../pages/js-code/toolbars/assets/blue-toolbar.png" width="180"></td>
+</tr>
+</tbody>
+</table>
+<hr>
 <h2 id="how-to-use-in-razor">How to Use in Razor</h2>
-<p>This example uses the <a class="xref" href="../../net-code/razor/edit.toolbar.html">simple TagToolbar</a> API:</p>
-<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new[] { 
+<p>This example uses the simple <a class="xref" href="../../net-code/razor/edit.toolbar.html"><code>TagToolbar</code></a> API.</p>
+<pre><code class="lang-razor">&lt;div @Edit.TagToolbar(Content, toolbar: new[]
+{
   &quot;settings&amp;hover=left&amp;autoAddMore=start&quot;
 })&gt;
-  Stuff inside the div - hover over this would show the toolbar
+  Content inside this div
 &lt;/div&gt;
 </code></pre>
-<p>Here's another example where it uses the explicit <code>settings</code> parameter:</p>
+<h3 id="how-to-use-settings-parameters">How to use settings parameters</h3>
 <pre><code class="lang-razor">&lt;div id='tagWithToolbar1' @Edit.TagToolbar(
   toolbar: new [] { &quot;toolbar=empty&quot;, &quot;+new?contentType=UiEmptyHelloWorld&quot; },
   settings: new { hover = &quot;left&quot;, show = &quot;always&quot; } )&gt;
   Float over this box to get a (+) button. 
 &lt;/div&gt;
 </code></pre>
-<h2 id="how-to-use-in-javascript">How to Use in JavaScript</h2>
-<p>If you are writing code that doesn't have Razor (for example in a JS-SPA scenario) you would write the following (which is actually what the above sample creates):</p>
-<pre><code class="lang-html">&lt;div sxc-toolbar='[&quot;settings&amp;hover=left&amp;autoAddMore=start&quot;]'&gt;
-  Stuff inside the div - hover over this would show the toolbar
+<h2 id="example-in-javascript">Example in JavaScript</h2>
+<pre><code class="lang-html">&lt;div id=&quot;my-table&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const tableEl = document.querySelector(&quot;#my-table&quot;);
+  const sxc = $2sxc(tableEl);
+
+  // Only render toolbars in edit mode
+  if (!sxc.isEditMode()) return;
+
+  // Define toolbar buttons
+  const actions = [
+    { action: &quot;edit&quot;, entityId: 27, classes: &quot;blue&quot; },  
+    { action: &quot;delete&quot;, entityId: 27 }
+  ];
+
+  // Toolbar settings (hover, follow, etc.)
+  const settings = {
+    hover: &quot;left&quot;,
+    follow: &quot;scroll&quot;,
+    autoAddMore: &quot;end&quot;,
+    show: &quot;always&quot;
+  };
+
+  // Build and render toolbar
+  const toolbarHtml = sxc.manage.getToolbar({ items: actions, settings });
+
+  const wrapper = document.createElement(&quot;div&quot;);
+  wrapper.innerHTML = toolbarHtml;
+  document.body.appendChild(wrapper);
+&lt;/script&gt;
+</code></pre>
+<h1 id="old-syntax-deprecated">Old Syntax (Deprecated)</h1>
+<pre><code class="lang-html">&lt;div class=&quot;sc-element&quot;&gt;
+  &lt;ul class=&quot;sc-menu&quot; data-toolbar=''
+      settings='{ &quot;hover&quot;: &quot;left&quot;, &quot;align&quot;: &quot;left&quot; }'&gt;&lt;/ul&gt;
 &lt;/div&gt;
 </code></pre>
-<h2 id="settings-and-values">Settings and Values</h2>
-<ol>
-<li>string <code>autoAddMore</code>: <strong>(null)</strong> | <code>start</code> | <code>end</code><br>
-will automatically add a &quot;...&quot; (more) button if multiple button groups are detected. Default is <code>end</code></li>
-<li>string <code>hover</code>: <strong>&quot;right&quot;</strong> | &quot;left&quot; | &quot;none&quot;  (&quot;center&quot; ist still beta)
-determines where the toolbar appears when the mouse hovers over the area (usually a DIV) with the class <code>sc-element</code></li>
-<li>string <code>follow</code> <em>new in 11.06</em> <strong>&quot;none&quot;</strong> | &quot;initial&quot; | &quot;scroll&quot; | &quot;always&quot;<br>
-tells the toolbar to follow the mouse - ideal for large content blocks where you need the toolbar even if otherwise it would be off-screen. <em>Note: this used to default to <code>scroll</code> on the <code>TagToolbar</code> but was changed to <code>none</code> in 2sxc 11.06 because it caused too many UX issues.</em></li>
-<li>string <code>show</code>: <strong>&quot;hover&quot;</strong> | &quot;always&quot;<br>
-by default any toolbar inside an element with a <code>sc-element</code> class will appear on hover</li>
-<li>string <code>classes</code>: <strong>(null)</strong> | <em>any kind of string</em></li>
-</ol>
-<h2 id="old-use-cases-not-recommended">Old use Cases <em>not Recommended</em></h2>
-<p>Here's a quick example of how it used to be done - not recommended any more:</p>
-<pre><code class="lang-Html">&lt;div style=&quot;height: 100px&quot; class=&quot;sc-element&quot;&gt;
-    100px tall area to show alignments floating left with more to the left
-    &lt;ul class=&quot;sc-menu&quot; data-toolbar='' settings='{ &quot;hover&quot;: &quot;left&quot;, &quot;align&quot;: &quot;left&quot; }'&gt;&lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-<p>The above example will hover the toolbar when the mouse moves over this DIV but place it to the left <code>hover: &quot;left&quot;</code> and place the <em>more</em> button on the left side as well <code>align: &quot;left&quot;</code>.</p>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
+<p>Do not use this anymore</p>
+<hr>
+<h1 id="more-resources">More Resources</h1>
 <ul>
-<li><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/ui-toolbars">Toolbar Tutorials</a></li>
-<li><a href="http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel">old! blog post on using toolbar settings</a></li>
+<li><strong><a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor/tut/ui-toolbars">Toolbar Tutorials</a></strong></li>
+<li>Legacy blog (for historical context): <a href="http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel">http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel</a></li>
 </ul>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 8.06</li>
-<li><code>follow</code> introduced in 11.06</li>
-</ol>
+<hr>
+<h1 id="history">History</h1>
+<ul>
+<li>Introduced in <strong>2sxc 8.06</strong></li>
+<li><code>follow</code> added in <strong>11.06</strong></li>
+</ul>
 
 </article>
 
