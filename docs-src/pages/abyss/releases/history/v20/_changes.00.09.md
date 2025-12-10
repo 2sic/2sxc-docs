@@ -35,6 +35,7 @@ not incrementing the next number yet.
     1. $filter support for basic filters (`eq`, `ne`, `gt`, `lt`, `ge`, `le`, `startsWith`, `not startsWith`, `contains`, `not contains`)
     1. $orderby support
 1. 💃🏼 Major: Template Service can now create templated entities.
+1. 🧑🏼‍✈️ Data Copilot: Ability to configure in detail what should be generated and how (specify alternate folders, namespaces, etc.)
 
 #### Minor Enhancements
 

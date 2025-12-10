@@ -44,9 +44,10 @@ TODO: instructions for testing the color picker
 
 ## Types of App Extensions
 
-App extensions can come in various types, including:
+App extensions can come in various types - and they can combine all the types, including:
 
-- **Input Types**: Custom input fields for data entry.
+- [Input Types](xref:Basics.App.Extensions.InputField): Custom input fields for data entry.
+- [App Code and Web APIs](xref:Basics.App.Extensions.AppCode): Custom C# code and Web APIs to add server-side functionality.
 - **Visual Queries**: Predefined queries that can be reused across different parts of your App
 - **Templates**: Custom templates for rendering content.
 - **Scripts**: JavaScript or server-side scripts that add functionality.
