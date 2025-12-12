@@ -1,59 +1,184 @@
 ---
 uid: Basics.App.Extensions.InputField
 ---
+# Input field extension
 
-# App Extensions - Create Input Field TODO
+Custom input fields are **App Extensions** which live inside your App and extend the edit UI. They are plain JavaScript WebComponents which the 2sxc edit dialog can load and talk to.
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
+This page shows how to create a custom input field in JavaScript using a **basic number slider** as example.
 
-App Extensions are a powerful way to extend the functionality of your 2sxc Apps.
-They allow you to add custom features, tools, and integrations that can enhance the capabilities of your applications.
+---
 
-> [!TIP]
-> Think of App Extensions like nuget or npm packages, but specifically designed for 2sxc Apps.
-> They can include code, templates, styles, and other resources that can be easily integrated into your App.
+# What are input field extensions?
 
-## Key Features of App Extensions
+Input Field Extensions let you **add your own custom input controls**
+They are small Components that run inside your App and replace or enhance normal fields like textboxes or dropdowns.
 
-1. Isolated: App extensions are in special places within the App structure, so they don't interfere with the main App code.
-2. Manageable: You can easily install, update, and remove App extensions through the 2sxc interface.
-3. Shareable: App extensions can be exported and shared with other 2sxc users, making it easy to distribute custom functionality.
-4. Versioned: Each App extension can have its own versioning, allowing for better management of updates and compatibility.
-5. Configurable: Many App extensions come with settings that allow you to customize their behavior to fit your specific needs.
-6. Polymorphic: App extensions can be installed in multiple editions, allowing you to test a new edition while keeping the stable one active.
+Use them when you want a field, for example sliders, color pickers, tag selectors, or anything the built-in fields cannot do.
 
-## Getting Started with App Extensions
+# Folder structure for app extensions
 
-To start using App extensions, follow these steps:
+Custom input fields are App Extensions and must be placed in a specific folder:
 
-1. **Access the App Extensions Interface**: Navigate to the App management section in your 2sxc installation and select the App you want to extend.
-2. **Browse Available Extensions**: Look for the App Extensions tab or section to see available extensions.
-3. **Install an Extension**: Select an extension you want to install and follow the prompts to add it to your App.
+1. In your App, create a folder called `Extensions` (if it does not exist yet)
+2. Inside `Extensions`, create a folder for your field extension.
+    
+    The folder name must follow this **pattern**:
 
-For best experience, we recommend you try the **Color Picker Spectrum** extension, which adds a powerful color selection tool to your Apps.
+     ```text
+     field-[data-type]-[name]
+     ```
+    **Examples:**
+    - `field-string-app-color-picker`
+    - `field-number-slider-basic`
 
-TODO: instructions for testing the color picker
+    **Rules:**
 
-## Types of App Extensions
+    - It must start with `field-`
+    - The second part is the data type (`string`, `number`...). 
+    - The last part is a free name that describes your field.
 
-App extensions can come in various types, including:
+# Configure your app extension
+Before creating a custom input field, you must know where App Extensions live and how to **configure** them inside your App.
 
-- **Input Types**: Custom input fields for data entry.
-- **Visual Queries**: Predefined queries that can be reused across different parts of your App
-- **Templates**: Custom templates for rendering content.
-- **Scripts**: JavaScript or server-side scripts that add functionality.
-- **Styles**: CSS styles that can be applied to your App's appearance.
-- **Tools**: Utilities that enhance the App development experience.
-- **DataSources**: Custom data sources for retrieving and manipulating data.
+This can be found in the App settings on the left sidebar.
 
-## Developing Your First App Extension
+![App Extensions Overview](../assets/input-app-extension-configuration.png)
 
-For first steps, let's create a simple Input Type extension.
+To change the settings of your input field extension, click the pen icon next to the extension entry.
+
+![App extension edit](../assets/input-app-edit.png)
+
+After opening the editor, you’ll see various fields that **describe** and **configure** your extension.
+
+The most important setting is the `Input Fields Configuration`.
+This is where you specify which files should be loaded to activate your custom input field extension.
+
+![App extension input fields](../assets/input-fields-files.png)
+
+
+Now that the App Extension is set up, we can start writing the actual code for the input field.
+
+# Example base input field
+
+```javascript
+(() => {
+
+  const tagName = "field-example-basic";
+
+  // Minimal HTML for the component
+  const html = `<input type="text" />`;
+
+  class BasicField extends HTMLElement {
+    connectedCallback() {
+      
+      // Connecter given by 2sxc
+      const connector = this.connector;
+
+      // Getting Settings
+      const settings = connector.field?.settings || {};
+      
+      // Implement the HTML code
+      this.innerHTML = html;
+      // Listen for user input
+      this.onInput = () => {
+        this.field?.setValue(this.input.value || null);
+      };
+      this.input.addEventListener("input", this.onInput);
+    }
+
+    disconnectedCallback() {
+      // Clean up when component is removed
+      this.input.removeEventListener("input", this.onInput);
+    }
+  }
+
+  customElements.define(tagName, BasicField);
+})();
+```
+
+The [connector](https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector) used in this example is the one provided by 2sxc.
+
+You can find further examples of input field extensions in these repositories:
+
+- [Number Slider](https://github.com/2sxc-apps/app-extension-number-slider-basic)
+- [Color Picker](https://github.com/2sxc-apps/app-extension-string-color-picker-spectrum)
+
+# Creating a content type as entity reference
+
+Sometimes you need additional settings for a field which don't belong in the main Content Type itself.  
+For this, you create a **separate Content Type** and reference it from the main one.
+
+# How to create and connect a Content Type
+
+To make your custom input field configurable (for example to define `Min`, `Max`, or `Step` for a number slider), you must create a **separate  Content Type** and **reference it** in your main Content Type.  
+
+
+![App Extensions Overview](../assets/input-create-new-content-type.png)
+
+### Important: The Content Type name must match your extension name exactly
+
+When creating the settings Content Type, the **Name is extremely important**.
+
+It must be **exactly the same name as your App Extension**,  
+**with an `@` in front of it**, **not** the Component tag name.
+
+For example, if your App Extension is named:
+
+`number-slider-basic`
+
+Then your Content Type must be named:
+
+`@number-slider-basic`
+
+
+If your App Extension and Content Type were set up correctly,  
+you can now add a field to your new settings Content Type.
+
+In this example, we add a simple **Number** field called `Step`.
+
+Once this field exists, 2sxc will automatically show it inside the **field configuration UI** when you use your custom input field in any Content Type.
+
+It should look something like this:
+
+
+![Content Type field](../assets/input-content-type-field.png)
+
+If everything works correctly, you can now rename the Content Type and move it into a new scope.
+
+### Scope
+
+When moving your settings Content Type into a new scope,  
+the scope name must follow the **Extensions.[Name of Extension]** pattern.
+
+![scope naming](../assets/input-scope-name.png)
+
+# Data Bundles
+
+A Data Bundle lets you package your App Extension together with its settings Content Type.
+
+![Data bundle](../assets/input-data-bundle.png)
+
+Here you can create a new Data Bundle by clicking the **+** button.  
+Give it a name that matches your extension.
+
+## Linking your content type to the data bundle
+
+![Metadata](../assets/input-content-type-metadata.png)
+
+To add your settings Content Type to the Data Bundle, simply open the **Data** section of your App Extension and click the **Metadata** icon of the Content Type.  
+
+![Metadata Content Type](../assets/input-decorator.png)
+
+Then select your Content Type from the list and click **Save**.  
+This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.
+
+
+## Adding the data bundle to your extension
+
+![Data bundle binding](../assets/input-data-bundle-extension.png)
+
+Here you can open your App Extension (using the edit icon) and enable **Includes Data Bundles**.  
+Then simply select the Data Bundle you created.  
+This links the bundle to your extension, making sure the settings Content Type is included when the extension is exported or imported.
+
