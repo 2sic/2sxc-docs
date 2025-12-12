@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Input field extension | 2sxc 20 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Input field extension | 2sxc 20 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/input-field.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Basics.App.Extensions.InputField">
+<h1 id="input-field-extension">Input field extension</h1>
+
+<p>Custom input fields are <strong>App Extensions</strong> which live inside your App and extend the edit UI. They are plain JavaScript WebComponents which the 2sxc edit dialog can load and talk to.</p>
+<p>This page shows how to create a custom input field in JavaScript using a <strong>basic number slider</strong> as example.</p>
+<hr>
+<h1 id="what-are-input-field-extensions">What are input field extensions?</h1>
+<p>Input Field Extensions let you <strong>add your own custom input controls</strong>
+They are small Components that run inside your App and replace or enhance normal fields like textboxes or dropdowns.</p>
+<p>Use them when you want a field, for example sliders, color pickers, tag selectors, or anything the built-in fields cannot do.</p>
+<h1 id="folder-structure-for-app-extensions">Folder structure for app extensions</h1>
+<p>Custom input fields are App Extensions and must be placed in a specific folder:</p>
+<ol>
+<li><p>In your App, create a folder called <code>Extensions</code> (if it does not exist yet)</p>
+</li>
+<li><p>Inside <code>Extensions</code>, create a folder for your field extension.</p>
+<p>The folder name must follow this <strong>pattern</strong>:</p>
+<pre><code class="lang-text">field-[data-type]-[name]
+</code></pre>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>field-string-app-color-picker</code></li>
+<li><code>field-number-slider-basic</code></li>
+</ul>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>It must start with <code>field-</code></li>
+<li>The second part is the data type (<code>string</code>, <code>number</code>...).</li>
+<li>The last part is a free name that describes your field.</li>
+</ul>
+</li>
+</ol>
+<h1 id="configure-your-app-extension">Configure your app extension</h1>
+<p>Before creating a custom input field, you must know where App Extensions live and how to <strong>configure</strong> them inside your App.</p>
+<p>This can be found in the App settings on the left sidebar.</p>
+<p><img src="../assets/input-app-extension-configuration.png" alt="App Extensions Overview"></p>
+<p>To change the settings of your input field extension, click the pen icon next to the extension entry.</p>
+<p><img src="../assets/input-app-edit.png" alt="App extension edit"></p>
+<p>After opening the editor, you’ll see various fields that <strong>describe</strong> and <strong>configure</strong> your extension.</p>
+<p>The most important setting is the <code>Input Fields Configuration</code>.
+This is where you specify which files should be loaded to activate your custom input field extension.</p>
+<p><img src="../assets/input-fields-files.png" alt="App extension input fields"></p>
+<p>Now that the App Extension is set up, we can start writing the actual code for the input field.</p>
+<h1 id="example-base-input-field">Example base input field</h1>
+<pre><code class="lang-javascript">(() =&gt; {
+
+  const tagName = &quot;field-example-basic&quot;;
+
+  // Minimal HTML for the component
+  const html = `&lt;input type=&quot;text&quot; /&gt;`;
+
+  class BasicField extends HTMLElement {
+    connectedCallback() {
+      
+      // Connecter given by 2sxc
+      const connector = this.connector;
+
+      // Getting Settings
+      const settings = connector.field?.settings || {};
+      
+      // Implement the HTML code
+      this.innerHTML = html;
+      // Listen for user input
+      this.onInput = () =&gt; {
+        this.field?.setValue(this.input.value || null);
+      };
+      this.input.addEventListener(&quot;input&quot;, this.onInput);
+    }
+
+    disconnectedCallback() {
+      // Clean up when component is removed
+      this.input.removeEventListener(&quot;input&quot;, this.onInput);
+    }
+  }
+
+  customElements.define(tagName, BasicField);
+})();
+</code></pre>
+<p>The <a href="https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector">connector</a> used in this example is the one provided by 2sxc.</p>
+<p>You can find further examples of input field extensions in these repositories:</p>
+<ul>
+<li><a href="https://github.com/2sxc-apps/app-extension-number-slider-basic">Number Slider</a></li>
+<li><a href="https://github.com/2sxc-apps/app-extension-string-color-picker-spectrum">Color Picker</a></li>
+</ul>
+<h1 id="creating-a-content-type-as-entity-reference">Creating a content type as entity reference</h1>
+<p>Sometimes you need additional settings for a field which don't belong in the main Content Type itself.<br>
+For this, you create a <strong>separate Content Type</strong> and reference it from the main one.</p>
+<h1 id="how-to-create-and-connect-a-content-type">How to create and connect a Content Type</h1>
+<p>To make your custom input field configurable (for example to define <code>Min</code>, <code>Max</code>, or <code>Step</code> for a number slider), you must create a <strong>separate  Content Type</strong> and <strong>reference it</strong> in your main Content Type.</p>
+<p><img src="../assets/input-create-new-content-type.png" alt="App Extensions Overview"></p>
+<h3 id="important-the-content-type-name-must-match-your-extension-name-exactly">Important: The Content Type name must match your extension name exactly</h3>
+<p>When creating the settings Content Type, the <strong>Name is extremely important</strong>.</p>
+<p>It must be <strong>exactly the same name as your App Extension</strong>,<br>
+<strong>with an <code>@</code> in front of it</strong>, <strong>not</strong> the Component tag name.</p>
+<p>For example, if your App Extension is named:</p>
+<p><code>number-slider-basic</code></p>
+<p>Then your Content Type must be named:</p>
+<p><code>@number-slider-basic</code></p>
+<p>If your App Extension and Content Type were set up correctly,<br>
+you can now add a field to your new settings Content Type.</p>
+<p>In this example, we add a simple <strong>Number</strong> field called <code>Step</code>.</p>
+<p>Once this field exists, 2sxc will automatically show it inside the <strong>field configuration UI</strong> when you use your custom input field in any Content Type.</p>
+<p>It should look something like this:</p>
+<p><img src="../assets/input-content-type-field.png" alt="Content Type field"></p>
+<p>If everything works correctly, you can now rename the Content Type and move it into a new scope.</p>
+<h3 id="scope">Scope</h3>
+<p>When moving your settings Content Type into a new scope,<br>
+the scope name must follow the <strong>Extensions.[Name of Extension]</strong> pattern.</p>
+<p><img src="../assets/input-scope-name.png" alt="scope naming"></p>
+<h1 id="data-bundles">Data Bundles</h1>
+<p>A Data Bundle lets you package your App Extension together with its settings Content Type.</p>
+<p><img src="../assets/input-data-bundle.png" alt="Data bundle"></p>
+<p>Here you can create a new Data Bundle by clicking the <strong>+</strong> button.<br>
+Give it a name that matches your extension.</p>
+<h2 id="linking-your-content-type-to-the-data-bundle">Linking your content type to the data bundle</h2>
+<p><img src="../assets/input-content-type-metadata.png" alt="Metadata"></p>
+<p>To add your settings Content Type to the Data Bundle, simply open the <strong>Data</strong> section of your App Extension and click the <strong>Metadata</strong> icon of the Content Type.</p>
+<p><img src="../assets/input-decorator.png" alt="Metadata Content Type"></p>
+<p>Then select your Content Type from the list and click <strong>Save</strong>.<br>
+This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.</p>
+<h2 id="adding-the-data-bundle-to-your-extension">Adding the data bundle to your extension</h2>
+<p><img src="../assets/input-data-bundle-extension.png" alt="Data bundle binding"></p>
+<p>Here you can open your App Extension (using the edit icon) and enable <strong>Includes Data Bundles</strong>.<br>
+Then simply select the Data Bundle you created.<br>
+This links the bundle to your extension, making sure the settings Content Type is included when the extension is exported or imported.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/input-field.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
