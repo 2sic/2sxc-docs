@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/_changes.00.09.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v21/_changes00.00.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -104,22 +104,44 @@
 
         <article data-uid="">
 
-<h3 id="2sxc-v200009-ca-2025-12-08">2sxc v20.00.09 (ca. 2025-12-08)</h3>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>2sxc v20 is a <a class="xref" href="../../management/policy-mot.html">MoT Release</a>, containing many breaking changes.</p>
-<p>See <a class="xref" href="breaking.html">Breaking Changes in v20</a> for details.</p>
-</div>
-<p>This 20.00.09 has a LOT of enhancements, but since we're still stabilizing v20, we are
-not incrementing the next number yet.</p>
-<h4 id="possibly-breaking-changes">Possibly Breaking Changes</h4>
+<h3 id="2sxc-v210000-2025-12-17---planned">2sxc v21.00.00 (2025-12-17 - planned)</h3>
+<h4 id="highlights-razor--c-coding-enhancements">Highlights Razor / C# Coding Enhancements</h4>
 <ol>
-<li>Global extension fields (for the edit UI) are now in <code>/extensions</code> and not <code>system</code> any more #3708.<br>
-This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.</li>
+<li>⚙️ New CoPilot Code Generator for <strong>Models</strong> (like TypedItems, but lighter / POCO) v20.00.00</li>
+<li>📤 Introduced <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Code.ITypedApi.html">ITypedApi</a> and <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.ITypedApiService.html">ITypedApiService</a> to improve code quality when using 2sxc in skins or outside of DNN. v20.00.03</li>
+<li>🔍 <code>App.GetQuery(...)</code> now returns an <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Data.ITypedQuery.html">ITypedQuery</a> object which also has <code>GetAll&lt;T&gt;</code> and <code>GetOne&lt;T&gt;</code> just like <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">App.Data</a> v20.00.03</li>
+<li>🪪 New <code>UserElevation</code> to determine that caching is enabled/disabled for certain levels v20.00.05</li>
+<li>💃🏼 Major: Template Service can now create templated entities. v20.00.09</li>
+<li>🧑🏼‍✈️ Data Copilot: Ability to configure in detail what should be generated and how (specify alternate folders, namespaces, etc.) v20.00.09</li>
 </ol>
-<h4 id="major-enhancements">Major Enhancements</h4>
+<h4 id="highlights-edit-ui-enhancements">Highlights Edit UI Enhancements</h4>
 <ol>
-<li>🧩 App Extensions: Lots of enhancements
+<li>🅰️ Admin UI now supports ctrl+enter in most dialogs to close and save. #TODOC / #TOBLOG</li>
+<li>🌍 Language: Experimental feature to also allow translating <em>to</em> the primary language</li>
+</ol>
+<h4 id="highlights-app-create--install-enhancements">Highlights App Create / Install Enhancements</h4>
+<ol>
+<li>🥇 Create App experience improved to provide apps from the catalog</li>
+<li>🧑🏼‍💻 Install App: Ability to take any app and use it as a template (so give it a new name/GUID) #TODOC</li>
+</ol>
+<h4 id="highlights-patron-performance-enhancements">Highlights Patron Performance Enhancements</h4>
+<ol>
+<li>🦸🏼 New Patrons Performance support tier to use all our performance enhancements</li>
+<li>🥫🦸🏼 Various performance features with DB can now be fine-tuned in features UI.</li>
+<li>⚡ Major performance improvements all over, especially for 🦸🏼 <strong>Patrons Performance</strong></li>
+<li>⚡ Razor Partial Caching introduced (🦸🏼 Patron Performance)</li>
+<li>⚡ Razor API <code>@Configuration.PartialCache(...)</code> to configure RazorPartialCaching</li>
+<li>☢️ Introduce DNN CSHTML compiler caching - major performance boost, especially on startup (🦸🏼 Patron Performance)</li>
+</ol>
+<h4 id="highlights-formula-enhancements">Highlights Formula Enhancements</h4>
+<ol>
+<li>🔬 Formula: Introduce <code>context.user.roles</code> to let formulas check user roles. v20.00.05</li>
+<li>🔬 Formula: Introduce <code>context.user.isContentEditor</code> to match latest DNN 10 features. v20.00.05</li>
+<li>🔬 Formula: Introduce <code>context.target.entity.isNew</code> to let formulas check if an entity is new. v20.00.06</li>
+<li>🔬 Formula: Introduce <code>context.target.entity.isCopy</code> to let formulas check if an entity is a copy. v20.00.06</li>
+<li>🔬 Formula: Edit UI new button to close formula footer v20.00.8</li>
+</ol>
+<h4 id="highlights--app-extensions-new-v200009">Highlights 🧩 App Extensions (NEW v20.00.09)</h4>
 <ol>
 <li>🧩 Feature to edit extension definition and store in a JSON in the extensions <code>App_Data</code></li>
 <li>🧩 System can differentiate between installed extensions and extensions being developed in an App, and provide different actions</li>
@@ -132,10 +154,10 @@ This may affect you if you were loading the GPS/WYSIWYG manually, or had custom 
 <li>🧩 Extensions with input-types and multiple editions will load <code>staging</code> if user is developer/host</li>
 <li>🧩 Extensions have a lot of properties and links shown in the quick overview</li>
 </ol>
-</li>
-<li>☢️ Stabilizing DNN CSHTML compiler caching and PDB preservation for better debugging</li>
+<h4 id="highlights-query--rest-enhancements">Highlights Query / REST Enhancements</h4>
+<ol>
+<li>🌪️ Queries and REST: Languages of data now properly matches user language</li>
 <li>🌪️ Queries: Published many more System queries which were previously secret, such as <code>System.ContentTypes</code>, etc. see <a class="xref" href="../../../../basics/query/query-system.html">System Queries</a></li>
-<li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts #3698</li>
 <li>❤️‍🔥 OData Support WIP
 <ol>
 <li>$select support</li>
@@ -143,53 +165,28 @@ This may affect you if you were loading the GPS/WYSIWYG manually, or had custom 
 <li>$orderby support</li>
 </ol>
 </li>
-<li>💃🏼 Major: Template Service can now create templated entities.</li>
-<li>🧑🏼‍✈️ Data Copilot: Ability to configure in detail what should be generated and how (specify alternate folders, namespaces, etc.)</li>
 </ol>
-<h4 id="minor-enhancements">Minor Enhancements</h4>
+<h4 id="other-enhancements">Other Enhancements</h4>
 <ol>
-<li>🔳 Toolbar: Ability to combine toolbar on a entity-field with <code>Copy</code> to add copies of data to a list #3710</li>
-<li>✏️🔳 Toolbar &amp; Edit UI: Introduce <code>UiFields()</code> on toolbar button Tweak</li>
-<li>⚙️ Admin UI: Show more info about fields (such as read-only, required etc. in addition to has-formula) #3694</li>
-<li>🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)</li>
-<li>✏️ Edit UI: Improve paste-as-text in WYSIWYG</li>
-<li>🖼️ Improve Image Service so it knows about Bootstrap if added through <code>Kit.Page.Activate(...)</code> (otherwise image resize/class is off when used in a skin without bootstrap) #3700</li>
-<li>🌪️ DataSource: ContentType DataSource can now accept <code>Scope</code> of <code>*</code> to search through all scopes</li>
-<li>Add Recaptcha Score field to settings</li>
-<li>Add loading indicators in various UIs to improve UX</li>
-<li>Template Service: add parameter to control amount of recursions (default is 0) #3703</li>
+<li>🧑🏼‍💻 Finally stabilized and released feature to change <code>Edition</code> to switch between <code>live</code> and <code>staging</code> v20.00.00</li>
+<li>🥫⚡ Entire DB Access (read/write) reworked and optimized - this is a major change, but it should not affect any apps. v20.00.04</li>
+<li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts #3698</li>
+</ol>
+<h4 id="version-bumps-and-other-changes">Version Bumps and Other Changes</h4>
+<p>TODO</p>
+<ol>
+<li>🖼️ Updated ImageFlow (the image resizer) to ??? from v2.1.0-RC11</li>
+<li>🅰️ Update UI to Angular 20 and Angular Material 20 TODO</li>
 </ol>
 <h4 id="bugfixes">Bugfixes</h4>
-<ol>
-<li>🐞 Improve locking / unlocking AppCode.dll which is compiled on the fly #3711</li>
-<li>🐞 Fix AppCode reporting compilation errors (were disabled in a previous release)</li>
-<li>🐞 Fix languages returned by serialized entities in WebAPIs (some scenarios resulted in wrong language being returned)</li>
-<li>🐞 Fix remove a data-source in a VisualQuery #3699</li>
-<li>🐞 Fix Edit UI: custom input-fields in the <code>/system</code> folder stopped working in 20.00.08 #3693</li>
-<li>🐞 Fix history dialog threw error in some cases #367 (eav-ui)</li>
-<li>🐞 Fix 2shine theme so that it correctly gets Quick-Edit from the new path #23 (dnn-theme-2shine-bs5)</li>
-<li>🪲 🌍 Edit UI: Translate buttons showed up in the primary language when there was only 1 language #3697</li>
-<li>🪲 🌍 Edit UI: Translate buttons blocked access to some other buttons on entity-pickers #3701</li>
-<li>🪲 🌍 Edit UI: Date Picker - pasting neutral dates like 2025-10-09 had to be fixed #3704</li>
-<li>🪲 ☢️ DNN: When code in DNN triggered an HTTP Redirect, it previously logged an exception in DNN #3707</li>
-<li>🪲 Minor: fix time zone info in edit-entity-history</li>
-<li>🪲 Minor: fix colors of inner-content toolbar</li>
-<li>🪲 Minor: fix / enhance Tokens, so multiple fallback-tokens work (previously only 1 was possible) #3702</li>
-</ol>
-<h4 id="internal-changes">Internal Changes</h4>
-<ol>
-<li>Experimenting with delayed loading of AppCode dll because it may cause issues with anti-virus locking the file at first compile</li>
-<li>Edit UI Improved SASS to latest standards</li>
-<li>API renaming: shorten <code>noParameterOrder</code> to <code>npo</code> as the type already indicates what it is</li>
-<li>Maintenance: get rid of obsolete warning IHostingEnvironment</li>
-<li>Maintenance: Update xng-breadcrumb to latest version</li>
-<li>Maintenance: Update various npm packages to latest versions, incl. AG-Grid #334 (eav-ui)</li>
-</ol>
+<p>TODO</p>
+<h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
+<p>TODO</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v20/_changes.00.09.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/releases/history/v21/_changes00.00.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

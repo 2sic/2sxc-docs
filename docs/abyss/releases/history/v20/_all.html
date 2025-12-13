@@ -250,7 +250,6 @@ not incrementing the next number yet.</p>
 <li>Experimental UI options to modify the behavior and not save data (for dialogs which just show data or only do JS activities)</li>
 <li>Experimental UI <code>settings</code> parameter to control this behavior, which is not yet documented.</li>
 <li>Experimental <code>dialogSettings</code> toolbar UI to change the UI from saving data to just <code>done</code> (naming and API not final)</li>
-<li></li>
 </ol>
 <h3 id="2sxc-v200004-2025-08-04">2sxc v20.00.04 (2025-08-04)</h3>
 <div class="WARNING">
@@ -419,7 +418,7 @@ not incrementing the next number yet.</p>
 not incrementing the next number yet.</p>
 <h4 id="possibly-breaking-changes">Possibly Breaking Changes</h4>
 <ol>
-<li>Global extension fields (for the edit UI) are now in <code>/extensions</code> and not <code>system</code> any more.<br>
+<li>Global extension fields (for the edit UI) are now in <code>/extensions</code> and not <code>system</code> any more #3708.<br>
 This may affect you if you were loading the GPS/WYSIWYG manually, or had custom extensions in the old path.</li>
 </ol>
 <h4 id="major-enhancements">Major Enhancements</h4>
@@ -440,7 +439,7 @@ This may affect you if you were loading the GPS/WYSIWYG manually, or had custom 
 </li>
 <li>☢️ Stabilizing DNN CSHTML compiler caching and PDB preservation for better debugging</li>
 <li>🌪️ Queries: Published many more System queries which were previously secret, such as <code>System.ContentTypes</code>, etc. see <a class="xref" href="../../../../basics/query/query-system.html">System Queries</a></li>
-<li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts</li>
+<li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts #3698</li>
 <li>❤️‍🔥 OData Support WIP
 <ol>
 <li>$select support</li>
@@ -453,28 +452,33 @@ This may affect you if you were loading the GPS/WYSIWYG manually, or had custom 
 </ol>
 <h4 id="minor-enhancements">Minor Enhancements</h4>
 <ol>
-<li>🔳 Toolbar: Ability to combine toolbar on a entity-field with <code>Copy</code> to add copies of data to a list</li>
+<li>🔳 Toolbar: Ability to combine toolbar on a entity-field with <code>Copy</code> to add copies of data to a list #3710</li>
 <li>✏️🔳 Toolbar &amp; Edit UI: Introduce <code>UiFields()</code> on toolbar button Tweak</li>
-<li>⚙️ Admin UI: Show more info about fields (such as read-only, required etc. in addition to has-formula)</li>
+<li>⚙️ Admin UI: Show more info about fields (such as read-only, required etc. in addition to has-formula) #3694</li>
 <li>🌍 Language: Restore Translate All/Link All feature (had been gone for more than 1 year and nobody noticed)</li>
 <li>✏️ Edit UI: Improve paste-as-text in WYSIWYG</li>
-<li>🖼️ Improve Image Service so it knows about Bootstrap if added through <code>Kit.Page.Activate(...)</code> (otherwise image resize/class is off when used in a skin without bootstrap)</li>
+<li>🖼️ Improve Image Service so it knows about Bootstrap if added through <code>Kit.Page.Activate(...)</code> (otherwise image resize/class is off when used in a skin without bootstrap) #3700</li>
 <li>🌪️ DataSource: ContentType DataSource can now accept <code>Scope</code> of <code>*</code> to search through all scopes</li>
-<li>Minor: Add Recaptcha Score field to settings</li>
-<li>Minor: Add loading indicators in various UIs to improve UX</li>
+<li>Add Recaptcha Score field to settings</li>
+<li>Add loading indicators in various UIs to improve UX</li>
+<li>Template Service: add parameter to control amount of recursions (default is 0) #3703</li>
 </ol>
 <h4 id="bugfixes">Bugfixes</h4>
 <ol>
-<li>🐞 Improve locking / unlocking AppCode.dll which is compiled on the fly</li>
+<li>🐞 Improve locking / unlocking AppCode.dll which is compiled on the fly #3711</li>
 <li>🐞 Fix AppCode reporting compilation errors (were disabled in a previous release)</li>
 <li>🐞 Fix languages returned by serialized entities in WebAPIs (some scenarios resulted in wrong language being returned)</li>
-<li>🐞 Fix remove a data-source in a VisualQuery</li>
-<li>🪲 🌍 Edit UI: Translate buttons showed up in the primary language when there was only 1 language</li>
-<li>🪲 🌍 Edit UI: Translate buttons blocked access to some other buttons on entity-pickers</li>
-<li>🪲 ☢️ DNN: When code in DNN triggered an HTTP Redirect, it previously logged an exception in DNN</li>
+<li>🐞 Fix remove a data-source in a VisualQuery #3699</li>
+<li>🐞 Fix Edit UI: custom input-fields in the <code>/system</code> folder stopped working in 20.00.08 #3693</li>
+<li>🐞 Fix history dialog threw error in some cases #367 (eav-ui)</li>
+<li>🐞 Fix 2shine theme so that it correctly gets Quick-Edit from the new path #23 (dnn-theme-2shine-bs5)</li>
+<li>🪲 🌍 Edit UI: Translate buttons showed up in the primary language when there was only 1 language #3697</li>
+<li>🪲 🌍 Edit UI: Translate buttons blocked access to some other buttons on entity-pickers #3701</li>
+<li>🪲 🌍 Edit UI: Date Picker - pasting neutral dates like 2025-10-09 had to be fixed #3704</li>
+<li>🪲 ☢️ DNN: When code in DNN triggered an HTTP Redirect, it previously logged an exception in DNN #3707</li>
 <li>🪲 Minor: fix time zone info in edit-entity-history</li>
 <li>🪲 Minor: fix colors of inner-content toolbar</li>
-<li>🪲 Minor: fix / enhance Tokens, so multiple fallback-tokens work (previously only 1 was possible)</li>
+<li>🪲 Minor: fix / enhance Tokens, so multiple fallback-tokens work (previously only 1 was possible) #3702</li>
 </ol>
 <h4 id="internal-changes">Internal Changes</h4>
 <ol>
@@ -483,7 +487,7 @@ This may affect you if you were loading the GPS/WYSIWYG manually, or had custom 
 <li>API renaming: shorten <code>noParameterOrder</code> to <code>npo</code> as the type already indicates what it is</li>
 <li>Maintenance: get rid of obsolete warning IHostingEnvironment</li>
 <li>Maintenance: Update xng-breadcrumb to latest version</li>
-<li>Maintenance: Update various npm packages to latest versions</li>
+<li>Maintenance: Update various npm packages to latest versions, incl. AG-Grid #334 (eav-ui)</li>
 </ol>
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
