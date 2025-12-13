@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.InputField
+uid: Guides.AppExtensions.InputField
 ---
 # Input field extension
 

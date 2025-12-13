@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.RazorAndViews.Index
+uid: Guides.AppExtensions.RazorAndViews.Index
 ---
 
 # App Extensions - Razor and Views

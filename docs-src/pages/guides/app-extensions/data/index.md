@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.Data.Index
+uid: Guides.AppExtensions.Data.Index
 ---
 
 # App Extensions - Data and Schema (ContentType)

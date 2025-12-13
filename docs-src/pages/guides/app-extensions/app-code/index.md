@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.AppCode.Index
+uid: Guides.AppExtensions.AppCode.Index
 ---
 
 # App Extensions - App Code
@@ -42,7 +42,7 @@ For namespaces you should really use `App.Extensions.{ExtensionName}` to avoid c
 ## Special Compiling Options
 
 If you need to ensure special DLLs are referenced during compilation,
-see [](xref:Basics.App.Extensions.AppCode.CompilerOptions).
+see [](xref:Guides.AppExtensions.AppCode.CompilerOptions).
 
 
 ## Include in the Package Definition

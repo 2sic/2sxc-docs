@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.VisualQuery.Index
+uid: Guides.AppExtensions.VisualQuery.Index
 ---
 
 # App Extensions - Visual Queries
