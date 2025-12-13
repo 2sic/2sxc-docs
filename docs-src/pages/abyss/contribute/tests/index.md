@@ -4,7 +4,10 @@ uid: Abyss.Contribute.Tests.Index
 
 # Contribute to 2sxc / EAV Tests
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
+> [!IMPORTANT]
+> If you only want to USE 2sxc / EAV, then **you do NOT need this**.
+>
+> This is meant for people who want to contribute to the source code of 2sxc and EAV.
 
 2sxc has about 3'500 unit tests and growing.
 This is a guide to help you understand how to run them, and how to contribute to them.
@@ -22,13 +25,9 @@ So if you do review some tests, note that they may not use the latest best pract
 
 ## Desired Setup and Conventions
 
-As of 2025-03 we want to use xUnit for all our unit tests.
-But only a small fraction of the tests have been migrated.
-Other tests still use the old MSTest framework.
+As of 2025-03 we to use xUnit for all our unit tests.
 
-This is especially apparent in the setup of the tests, which require **dependency injection** to be properly setup for complex tests.
-
-This is how we _want_ it to be:
+This is how we set it up:
 
 1. Every project has one or more separate Tests project. Advanced scenarios need own projects, simple scenarios can share a project.  
    Example: `ToSic.Lib.Core` has
