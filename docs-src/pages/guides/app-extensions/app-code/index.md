@@ -1,5 +1,5 @@
 ---
-uid: Basics.App.Extensions.AppCode
+uid: Basics.App.Extensions.AppCode.Index
 ---
 
 # App Extensions - App Code
@@ -27,7 +27,7 @@ The `{ExtensionName}` should match the folder of the extension itself,
 as it's used in `/extensions/{ExtensionName}/`.
 
 > [!TIP]
-> In the original extension, the convention is to use lower-case only,
+> In the main extension in `/extensions/`, the convention is to use lower-case only,
 > but here we recommend using PascalCase to match C# conventions.
 
 You can also create sub folders and sub-namespaces as needed.
@@ -36,32 +36,14 @@ For data we recommend `Data` or `Models`.
 
 For namespaces you should really use `App.Extensions.{ExtensionName}` to avoid conflicts with other extensions.
 
+## TODO: more instructions @2rb
+
+
 ## Special Compiling Options
 
-In rare cases the compiler needs to be instructed to do something special.
-The configuration must be in the same folder, to ensure its included in the distribution package.
+If you need to ensure special DLLs are referenced during compilation,
+see [](xref:Basics.App.Extensions.AppCode.CompilerOptions).
 
-As of now, you must create an `compile.json` file
-in the `/AppCode/Extensions/{ExtensionName}/` folder
-with content like this:
-
-```json
-{
-  // References for .net 10+ (Oqtane)
-  "References": [],
-  // References for .net4 (DNN)
-  "References.net4": [
-    "System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-  ]
-}
-```
-
-> [!TIP]
-> The above example shows how to add a reference to `System.Net.Http` for DNN,
-> which is often needed for making HTTP requests.
->
-> It's also needed if you have custom WebApi controllers returning `HttpResponseMessage`.
-> Without this reference, you may encounter compilation errors.
 
 ## Include in the Package Definition
 

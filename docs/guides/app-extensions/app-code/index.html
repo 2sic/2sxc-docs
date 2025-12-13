@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>App Extensions - Overview (new v21 ⭐) | 2sxc 20 for Dnn and Oqtane </title>
+      <title>App Extensions - App Code | 2sxc 20 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="App Extensions - Overview (new v21 ⭐) | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="App Extensions - App Code | 2sxc 20 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/app-code/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,8 +102,8 @@
 
         
 
-        <article data-uid="Basics.App.Extensions.Index">
-<h1 id="app-extensions---overview-new-v21-">App Extensions - Overview (new v21 ⭐)</h1>
+        <article data-uid="Basics.App.Extensions.AppCode.Index">
+<h1 id="app-extensions---app-code">App Extensions - App Code</h1>
 
 <!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
@@ -114,50 +114,42 @@
   .context-box-summary .edit-ui-custom
   { visibility: visible; }
 </style> -->
-<p>App Extensions are a powerful way to extend the functionality of your 2sxc Apps.
-They allow you to add custom features, tools, and integrations that can enhance the capabilities of your applications.</p>
+<p>Extensions can include custom c# code which is either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>Think of App Extensions like nuget or npm packages, but specifically designed for 2sxc Apps.
-They can include code, templates, styles, and other resources that can be easily integrated into your App.</p>
+<p>This allows you to create small libraries of code which solve a specific problem,
+and then share them across multiple Apps by installing the extension in each App.</p>
 </div>
-<h2 id="key-features-of-app-extensions">Key Features of App Extensions</h2>
+<h2 id="location-and-namespace">Location and Namespace</h2>
+<p>You should place the code for the extension in <code>/AppCode/Extensions/{ExtensionName}/</code>.
+The <code>{ExtensionName}</code> should match the folder of the extension itself,
+as it's used in <code>/extensions/{ExtensionName}/</code>.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>In the main extension in <code>/extensions/</code>, the convention is to use lower-case only,
+but here we recommend using PascalCase to match C# conventions.</p>
+</div>
+<p>You can also create sub folders and sub-namespaces as needed.
+Some common sub-folders could be <code>Services</code>, <code>WebApi</code>, <code>Controllers</code>, or <code>Helpers</code> depending on the purpose of the code.
+For data we recommend <code>Data</code> or <code>Models</code>.</p>
+<p>For namespaces you should really use <code>App.Extensions.{ExtensionName}</code> to avoid conflicts with other extensions.</p>
+<h2 id="todo-more-instructions-2rb">TODO: more instructions @2rb</h2>
+<h2 id="special-compiling-options">Special Compiling Options</h2>
+<p>If you need to ensure special DLLs are referenced during compilation,
+see <a class="xref" href="compiler-options.html">App Extensions - Special Compiler Options</a>.</p>
+<h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
+<p>The package export system only exports parts which have been declared to be in use.
+So make sure to tick the &quot;App Code&quot; checkbox in the extension's package definition UI.</p>
+<hr>
+<h2 id="history">History</h2>
 <ol>
-<li>Isolated: App extensions are in special places within the App structure, so they don't interfere with the main App code.</li>
-<li>Manageable: You can easily install, update, and remove App extensions through the 2sxc interface.</li>
-<li>Shareable: App extensions can be exported and shared with other 2sxc users, making it easy to distribute custom functionality.</li>
-<li>Versioned: Each App extension can have its own versioning, allowing for better management of updates and compatibility.</li>
-<li>Configurable: Many App extensions come with settings that allow you to customize their behavior to fit your specific needs.</li>
-<li>Polymorphic: App extensions can be installed in multiple editions, allowing you to test a new edition while keeping the stable one active.</li>
+<li>Beta in v20.09, to be released in v21.00</li>
 </ol>
-<h2 id="getting-started-with-app-extensions">Getting Started with App Extensions</h2>
-<p>To start using App extensions, follow these steps:</p>
-<ol>
-<li><strong>Access the App Extensions Interface</strong>: Navigate to the App management section in your 2sxc installation and select the App you want to extend.</li>
-<li><strong>Browse Available Extensions</strong>: Look for the App Extensions tab or section to see available extensions.</li>
-<li><strong>Install an Extension</strong>: Select an extension you want to install and follow the prompts to add it to your App.</li>
-</ol>
-<p>For best experience, we recommend you try the <strong>Color Picker Spectrum</strong> extension, which adds a powerful color selection tool to your Apps.</p>
-<p>TODO: instructions for testing the color picker</p>
-<h2 id="types-of-app-extensions">Types of App Extensions</h2>
-<p>App extensions can come in various types - and they can combine all the types, including:</p>
-<ul>
-<li><a class="xref" href="input-field.html">Input Types</a>: Custom input fields for data entry.</li>
-<li><a class="xref" href="app-code/index.html">App Code and Web APIs</a>: Custom C# code and Web APIs to add server-side functionality.</li>
-<li><strong>Visual Queries</strong>: Predefined queries that can be reused across different parts of your App</li>
-<li><strong>Templates</strong>: Custom templates for rendering content.</li>
-<li><strong>Scripts</strong>: JavaScript or server-side scripts that add functionality.</li>
-<li><strong>Styles</strong>: CSS styles that can be applied to your App's appearance.</li>
-<li><strong>Tools</strong>: Utilities that enhance the App development experience.</li>
-<li><strong>DataSources</strong>: Custom data sources for retrieving and manipulating data.</li>
-</ul>
-<h2 id="developing-your-first-app-extension">Developing Your First App Extension</h2>
-<p>For first steps, let's create a simple Input Type extension.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/guides/app-extensions/app-code/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
