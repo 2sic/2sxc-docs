@@ -41,4 +41,3 @@ not incrementing the next number yet.
 1. Experimental UI options to modify the behavior and not save data (for dialogs which just show data or only do JS activities)
 1. Experimental UI `settings` parameter to control this behavior, which is not yet documented.
 1. Experimental `dialogSettings` toolbar UI to change the UI from saving data to just `done` (naming and API not final)
-1. 
