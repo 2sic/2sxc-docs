@@ -821,8 +821,8 @@ So your code should usually use the built-in property <code>UniqueKey</code> whi
 
   <a id="Custom_Hybrid_CodeTyped_AsItem_" data-uid="Custom.Hybrid.CodeTyped.AsItem*"></a>
 
-  <h3 id="Custom_Hybrid_CodeTyped_AsItem_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.CodeTyped.AsItem(System.Object,ToSic.Sys.Coding.NoParamOrder,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
-  AsItem(object, NoParamOrder, bool?, bool?)
+  <h3 id="Custom_Hybrid_CodeTyped_AsItem_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Nullable_System_Boolean__" data-uid="Custom.Hybrid.CodeTyped.AsItem(System.Object,ToSic.Sys.Coding.NoParamOrder,System.Nullable{System.Boolean})">
+  AsItem(object, NoParamOrder, bool?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Custom/Custom.Hybrid/CodeTyped.cs/#L148"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -836,7 +836,7 @@ If null was provided, it will return null.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ITypedItem AsItem(object data, NoParamOrder npo = default, bool? propsRequired = null, bool? mock = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public ITypedItem AsItem(object data, NoParamOrder npo = default, bool? propsRequired = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -849,9 +849,6 @@ If null was provided, it will return null.</p>
 </dd>
     <dt><code>propsRequired</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>make the resulting object <a class="xref" href="../../net-code/conventions/property-required/index.html">strict</a>, default <code>true</code></p>
-</dd>
-    <dt><code>mock</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd><p>Specify that the data is fake/mock data, which should pretend to be an Item. Default is <code>false</code></p>
 </dd>
   </dl>
 
@@ -867,8 +864,9 @@ If null was provided, it will return null.</p>
 
 
 
-  <h4 class="section" id="Custom_Hybrid_CodeTyped_AsItem_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Nullable_System_Boolean__System_Nullable_System_Boolean___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>New in v16.02</p>
+  <h4 class="section" id="Custom_Hybrid_CodeTyped_AsItem_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Nullable_System_Boolean___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>New in v16.02
+Parameter <code>mock</code> removed in v21 (breaking, but probably never used in the wild); use <code>Convert.ToMock()</code> instead</p>
 </div>
 
 
@@ -1153,8 +1151,8 @@ This is usually used to process objects which the compiler can't know, such as a
 
   <a id="Custom_Hybrid_CodeTyped_As_" data-uid="Custom.Hybrid.CodeTyped.As*"></a>
 
-  <h3 id="Custom_Hybrid_CodeTyped_As__1_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Boolean_" data-uid="Custom.Hybrid.CodeTyped.As``1(System.Object,ToSic.Sys.Coding.NoParamOrder,System.Boolean)">
-  As&lt;T&gt;(object, NoParamOrder, bool)
+  <h3 id="Custom_Hybrid_CodeTyped_As__1_System_Object_ToSic_Sys_Coding_NoParamOrder_" data-uid="Custom.Hybrid.CodeTyped.As``1(System.Object,ToSic.Sys.Coding.NoParamOrder)">
+  As&lt;T&gt;(object, NoParamOrder)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Custom/Custom.Hybrid/CodeTyped.cs/#L206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -1164,7 +1162,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T As&lt;T&gt;(object source, NoParamOrder npo = default, bool mock = false) where T : class, ICanWrapData</code></pre>
+    <pre><code class="lang-csharp hljs">public T As&lt;T&gt;(object source, NoParamOrder npo = default) where T : class, ICanWrapData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1174,9 +1172,6 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
 </dd>
     <dt><code>npo</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
-</dd>
-    <dt><code>mock</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>if <code>true</code> will return a fake when <code>source</code> is <code>null</code> - otherwise a wrapper item with empty-contents</p>
 </dd>
   </dl>
 
@@ -1198,8 +1193,9 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
 
 
 
-  <h4 class="section" id="Custom_Hybrid_CodeTyped_As__1_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Boolean__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Released v17.05</p>
+  <h4 class="section" id="Custom_Hybrid_CodeTyped_As__1_System_Object_ToSic_Sys_Coding_NoParamOrder__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released v17.05
+Parameter <code>mock</code> removed in v21 (breaking, but probably never used in the wild); use <code>Convert.ToMock()</code> instead</p>
 </div>
 
 
