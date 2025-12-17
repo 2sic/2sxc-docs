@@ -105,12 +105,100 @@
         <article data-uid="">
 <h1 id="changes-to-the-dev-environment-in-v2100">Changes to the Dev Environment in v21.00</h1>
 
-<p>In v21.00 we're <em>planning</em> to make the following changes:</p>
+<p>In v21.00 we introduce DB changes which are required for:</p>
 <ol>
-<li>SQL changes to the DB to support undelete.</li>
-<li>SQL changes to the DB to support relationships to external data and deleted data.</li>
+<li><strong>Undelete support</strong> (track deletes so items can be restored later)</li>
+<li><strong>Relationships to external data and deleted data</strong></li>
 </ol>
-<p>The details are still missing, and will be added here.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Always create a DB backup before running migration scripts.</p>
+</div>
+<h2 id="run-the-sql-upgrade-script">Run the SQL upgrade script</h2>
+<p>This will</p>
+<ol>
+<li>Add a <code>ParentRef</code> column to the <code>TsDynDataHistory</code> table to link history records to their parent App or content item.</li>
+<li>Add <code>ChildExternalId</code> and <code>TransDeletedId</code> columns to the <code>TsDynDataRelationship</code> table to support relationships to external data and track deleted items for undelete functionality.</li>
+<li>Update various indexes and foreign key constraints to ensure data integrity and optimize query performance.</li>
+</ol>
+<p>You can copy/paste it into SQL Server Management Studio (SSMS) and execute it against your dev database.</p>
+<pre><code class="lang-sql">SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- make sure sql rolls back automatically in case of error.
+SET XACT_ABORT ON
+GO
+
+-- =====================================================================
+-- Ensure TsDynDataHistory exists and has ParentRef (eg. &quot;app-42&quot;)
+-- =====================================================================
+
+-- Add ParentRef column on existing installations
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE Name = N'ParentRef' AND Object_ID = OBJECT_ID(N'[dbo].[TsDynDataHistory]'))
+	AND OBJECT_ID('[dbo].[TsDynDataHistory]', 'U') IS NOT NULL
+BEGIN
+	PRINT '... Adding column [ParentRef] to [dbo].[TsDynDataHistory]';
+	ALTER TABLE [dbo].[TsDynDataHistory] ADD [ParentRef] [nvarchar](250) NULL;
+END
+
+-- Add indexes for ParentRef
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_TsDynDataHistory_ParentRef' AND object_id = OBJECT_ID('[dbo].[TsDynDataHistory]'))
+	AND OBJECT_ID('[dbo].[TsDynDataHistory]', 'U') IS NOT NULL
+BEGIN
+	PRINT '... Adding index IX_TsDynDataHistory_ParentRef';
+	CREATE NONCLUSTERED INDEX [IX_TsDynDataHistory_ParentRef] ON [dbo].[TsDynDataHistory] ([ParentRef] ASC)
+	WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+END
+
+-- =====================================================================
+-- TsDynDataRelationship: add ChildExternalId + TransDeletedId to support undelete
+-- =====================================================================
+
+-- Add ChildExternalId column on existing installations
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE Name = N'ChildExternalId' AND Object_ID = OBJECT_ID(N'[dbo].[TsDynDataRelationship]'))
+	AND OBJECT_ID('[dbo].[TsDynDataRelationship]', 'U') IS NOT NULL
+BEGIN
+	PRINT '... Adding column [ChildExternalId] to [dbo].[TsDynDataRelationship]';
+	ALTER TABLE [dbo].[TsDynDataRelationship] ADD [ChildExternalId] [uniqueidentifier] NULL;
+END
+
+-- Add TransDeletedId column on existing installations
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE Name = N'TransDeletedId' AND Object_ID = OBJECT_ID(N'[dbo].[TsDynDataRelationship]'))
+	AND OBJECT_ID('[dbo].[TsDynDataRelationship]', 'U') IS NOT NULL
+BEGIN
+	PRINT '... Adding column [TransDeletedId] to [dbo].[TsDynDataRelationship]';
+	ALTER TABLE [dbo].[TsDynDataRelationship] ADD [TransDeletedId] [int] NULL;
+END
+
+-- Add FK to TsDynDataTransaction for TransDeletedId
+IF OBJECT_ID('[dbo].[TsDynDataRelationship]', 'U') IS NOT NULL
+	AND EXISTS (SELECT * FROM sys.columns WHERE Name = N'TransDeletedId' AND Object_ID = OBJECT_ID(N'[dbo].[TsDynDataRelationship]'))
+	AND NOT EXISTS (
+		SELECT *
+		FROM sys.foreign_keys
+		WHERE name = 'FK_TsDynDataRelationship_TsDynDataTransactionDeleted'
+		  AND parent_object_id = OBJECT_ID('[dbo].[TsDynDataRelationship]')
+	)
+BEGIN
+	PRINT '... Adding FK FK_TsDynDataRelationship_TsDynDataTransactionDeleted';
+	ALTER TABLE [dbo].[TsDynDataRelationship] WITH CHECK ADD CONSTRAINT [FK_TsDynDataRelationship_TsDynDataTransactionDeleted]
+		FOREIGN KEY([TransDeletedId]) REFERENCES [dbo].[TsDynDataTransaction] ([TransactionId]);
+	ALTER TABLE [dbo].[TsDynDataRelationship] CHECK CONSTRAINT [FK_TsDynDataRelationship_TsDynDataTransactionDeleted];
+END
+
+-- Add index for TransDeletedId
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_TsDynDataRelationship_TransDeletedId' AND object_id = OBJECT_ID('[dbo].[TsDynDataRelationship]'))
+	AND OBJECT_ID('[dbo].[TsDynDataRelationship]', 'U') IS NOT NULL
+BEGIN
+	PRINT '... Adding index IX_TsDynDataRelationship_TransDeletedId';
+	CREATE NONCLUSTERED INDEX [IX_TsDynDataRelationship_TransDeletedId] ON [dbo].[TsDynDataRelationship] ([TransDeletedId] ASC)
+	WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+END
+GO
+</code></pre>
 <hr>
 <h2 id="history">History</h2>
 <ul>

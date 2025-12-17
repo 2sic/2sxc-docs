@@ -186,12 +186,17 @@
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
 <h5>Important</h5>
-<p>2sxc v21 does not have any known breaking changes.</p>
+<p>2sxc v21 has only minor breaking changes.</p>
 <p>But 2sxc v20 was a <strong>Moment of Truth</strong> release where we cleaned up a lot of old internal APIs.</p>
 <p>These changes should only affect you, if you are accessing exotic/internal APIs,
 or if you have some extremely old/deprecated code.</p>
 <p>See also: <a class="xref" href="../../management/policy-mot.html">MoT Policy (Moment of Truth)</a></p>
 </div>
+<ol>
+<li>In Razor/WebApi, the <code>As&lt;T&gt;(...)</code> method removed a (probaly never used) parameter <code>mock:</code>. To create mocks, use the <code>Kit.Convert.ToMock&lt;...&gt;</code> or <code>Kit.Convert.ToMockItem&lt;...&gt;</code> instead.</li>
+<li>🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders. The migration should happen automatically, but if something doesn't work, this is why.</li>
+<li>🥫 SQL: The tables <code>TsDynDataHistory</code> and <code>TsDynDataRelationships</code> has a few minor changes.</li>
+</ol>
 
 </article>
 

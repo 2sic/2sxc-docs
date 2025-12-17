@@ -153,6 +153,29 @@ They can include code, templates, styles, and other resources that can be easily
 </ul>
 <h2 id="developing-your-first-app-extension">Developing Your First App Extension</h2>
 <p>For first steps, let's create a simple Input Type extension.</p>
+<p>TODO:</p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="testing-in-the-same-app---keep-test-code-separate">Testing in the Same App - Keep Test Code Separate</h3>
+<p>In the App where you develop your extension, you'll also need code and data to test it.
+To keep things clean, we recommend that you</p>
+<ol>
+<li>clearly name test things as such</li>
+<li>and keep them out of the exports</li>
+</ol>
+<p>For example when creating a code extension, you would have this structure:</p>
+<pre><code class="lang-text">/AppCode
+  /Extensions
+    /MyCodeExtension
+      SomeCode.cs (things to have in the export)
+  /Tests
+    SomeTestService.cs
+    ... (other test code, not to be exported)
+/extensions
+  /my-code-extension
+    extension.json
+Test Functionality.cshtml
+... (other testing files)
+</code></pre>
 
 </article>
 
