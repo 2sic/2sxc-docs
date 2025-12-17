@@ -82,7 +82,7 @@ For example when creating a code extension, you would have this structure:
     SomeTestService.cs
     ... (other test code, not to be exported)
 /extensions
-  /my-code-extension/
+  /my-code-extension
     extension.json
 Test Functionality.cshtml
 ... (other testing files)
