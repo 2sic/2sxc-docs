@@ -105,6 +105,23 @@
         <article data-uid="">
 <h1 id="changes-to-the-dev-environment-in-v2100">Changes to the Dev Environment in v21.00</h1>
 
+<h2 id="webconfig-changes">Web.Config Changes</h2>
+<p>In v21.00 we changed <code>System.Diagnostics.DiagnosticSource</code> to use .net 9.</p>
+<p>Because of this, the <code>web.config</code> must in DNN change.
+When people install 2sxc, this happens automatically, but not in a dev-environment.</p>
+<p>These are the new values you need - make sure you comment out the old versions:</p>
+<pre><code class="lang-xml">&lt;!-- Old version:
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;System.Diagnostics.DiagnosticSource&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;4.0.3.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+--&gt;
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;System.Diagnostics.DiagnosticSource&quot; publicKeyToken=&quot;cc7b13ffcd2ddd51&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;9.0.0.11&quot; /&gt;
+&lt;/dependentAssembly&gt;
+</code></pre>
+<h2 id="database-changes">Database Changes</h2>
 <p>In v21.00 we introduce DB changes which are required for:</p>
 <ol>
 <li><strong>Undelete support</strong> (track deletes so items can be restored later)</li>
@@ -114,7 +131,7 @@
 <h5>Warning</h5>
 <p>Always create a DB backup before running migration scripts.</p>
 </div>
-<h2 id="run-the-sql-upgrade-script">Run the SQL upgrade script</h2>
+<h3 id="run-the-sql-upgrade-script">Run the SQL upgrade script</h3>
 <p>This will</p>
 <ol>
 <li>Add a <code>ParentRef</code> column to the <code>TsDynDataHistory</code> table to link history records to their parent App or content item.</li>
@@ -197,6 +214,7 @@ GO
 <hr>
 <h2 id="history">History</h2>
 <ul>
+<li>2025-12-15 <code>web.config</code> originally for v20.00.10, but now for v21.00.</li>
 <li>2025-12-16 v21.00: Add <code>ParentRef</code> to <code>TsDynDataHistory</code> and <code>ChildExternalId</code> to <code>TsDynDataRelationship</code>.</li>
 <li>2025-12-18 v21.00: Remove <code>TransDeletedId</code> (and related FK/index) from <code>TsDynDataRelationship</code>.</li>
 </ul>
