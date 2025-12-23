@@ -2,7 +2,7 @@
 uid: Basics.App.FoldersAndFiles.AppJson
 ---
 
-# App Configuration `/App_Data/app.json` (improved v17.02)
+# App Configuration `/App_Data/app.json`
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>
