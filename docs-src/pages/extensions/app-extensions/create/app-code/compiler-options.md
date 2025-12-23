@@ -1,5 +1,5 @@
 ---
-uid: Guides.AppExtensions.AppCode.CompilerOptions
+uid: Extensions.AppExtensions.Create.AppCode.CompilerOptions
 ---
 
 # App Extensions - Special Compiler Options

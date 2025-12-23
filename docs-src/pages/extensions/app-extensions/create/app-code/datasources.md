@@ -1,5 +1,5 @@
 ---
-uid: Guides.AppExtensions.AppCode.DataSources
+uid: Extensions.AppExtensions.Create.AppCode.DataSources
 ---
 
 # App Extensions - DataSources
@@ -43,7 +43,7 @@ If you mix DataSources with other code, consider using a `App.Extensions.{Extens
 ## Special Compiling Options
 
 If you need to ensure special DLLs are referenced during compilation,
-see [](xref:Guides.AppExtensions.AppCode.CompilerOptions).
+see [](xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions).
 
 ## Include in the Package Definition
 

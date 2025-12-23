@@ -1,5 +1,5 @@
 ---
-uid: AppExtensionDocs.GoogleReCaptchaV3.Index
+uid: Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index
 ---
 
 # TODO: @rb
