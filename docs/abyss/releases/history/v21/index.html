@@ -106,7 +106,8 @@
 <h1 id="all-changes-in-2sxc-and-eav-v21">All Changes in 2sxc and EAV v21</h1>
 
 <h2 id="version-21-wip-to-be-released-eoy-2025">Version 21 (WIP, to be released EOY 2025)</h2>
-<h3 id="2sxc-v210000-2025-12-17---planned">2sxc v21.00.00 (2025-12-17 - planned)</h3>
+<h3 id="2sxc-v210000-2025-12-27">2sxc v21.00.00 (2025-12-27)</h3>
+<p>Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01-05.</p>
 <h4 id="highlights-razor--c-coding-enhancements">Highlights Razor / C# Coding Enhancements</h4>
 <ol>
 <li>⚙️ New CoPilot Code Generator for <strong>Models</strong> (like TypedItems, but lighter / POCO) v20.00.00</li>
@@ -154,7 +155,9 @@
 <li>🧩 Extension Settings and language Resources</li>
 <li>🧩 Extensions can now be installed in multiple editions</li>
 <li>🧩 Extensions with input-types and multiple editions will load <code>staging</code> if user is developer/host</li>
-<li>🧩 Extensions have a lot of properties and links shown in the quick overview</li>
+<li>🧩 Extensions have a lot of properties and links shown in the quick overview, as well as <code>icon.png</code></li>
+<li>🧩 Extensions can be installed from app-catalog <a href="https://2sxc.org/en/apps/">https://2sxc.org/en/apps/</a></li>
+<li>🧩 Extensions can also reference other extensions to bundle together</li>
 </ol>
 <h4 id="highlights-query--rest-enhancements">Highlights Query / REST Enhancements</h4>
 <ol>
@@ -173,17 +176,30 @@
 <li>🧑🏼‍💻 Finally stabilized and released feature to change <code>Edition</code> to switch between <code>live</code> and <code>staging</code> v20.00.00</li>
 <li>🥫⚡ Entire DB Access (read/write) reworked and optimized - this is a major change, but it should not affect any apps. v20.00.04</li>
 <li>🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts #3698</li>
+<li>🥫 DB: Prepare structure for future undelete</li>
+<li>Code: Prepare code for future undelete</li>
 </ol>
 <h4 id="version-bumps-and-other-changes">Version Bumps and Other Changes</h4>
-<p>TODO</p>
 <ol>
-<li>🖼️ Updated ImageFlow (the image resizer) to ??? from v2.1.0-RC11</li>
-<li>🅰️ Update UI to Angular 20 and Angular Material 20 TODO</li>
+<li>🅰️ Update UI to Angular 21 and Angular Material 21</li>
+<li>🅰️ Update Quick-Dialog to Angular 21 and Angular Material 21</li>
+</ol>
+<h4 id="razor--c-enhancements">Razor / C# Enhancements</h4>
+<ol>
+<li>Minor: Sort attributes on a Content-Type according to sort-priority for easier looping in any code</li>
+<li>Minor: <code>IContentTypeAttribute</code> now has a <code>InputType</code> property to easily get the input type without loading the full attribute</li>
+<li>Minor: <code>IContentTypeAttribute</code> now has a <code>IsEmpty()</code> extension method to easily detect if an attribute is empty</li>
+<li>Minor: <code>IContentTypeAttribute</code> also has a lot of other extensions such as <code>IsBoolean()</code>, <code>IsDateTime()</code>, <code>IsNumber()</code>, <code>IsString()</code>, etc.</li>
 </ol>
 <h4 id="bugfixes">Bugfixes</h4>
-<p>TODO</p>
+<ol>
+<li>Internal bug where app-folder was not known if error occurred during data load.</li>
+</ol>
 <h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
-<p>TODO</p>
+<ol>
+<li>Switch JS unit testing to VTest - for Eav-UI, 2sxc-ui, inpage, ...</li>
+<li>Update <code>System.Diagnostics.DiagnosticSource</code> to v9.0.11</li>
+</ol>
 <h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
 <div class="IMPORTANT">
 <h5>Important</h5>
