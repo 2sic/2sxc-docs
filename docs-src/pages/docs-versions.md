@@ -11,10 +11,7 @@
 
 This page is a hub to all the documentation versions.
 It should help users find older/newer versions of the documentation.
-
-This page was created 2023-11 and is still WIP.
-As of now, there is only 1 documentation which is the latest,
-but future releases will start creating separated documentations.
+It's a bit low-tech, but should do the job for now.
 
 > [!TIP]
 > <strong>You came from</strong><br>
@@ -25,6 +22,8 @@ but future releases will start creating separated documentations.
 
 ## Latest Docs
 
+<img src="../assets/logos/vcurrent/150.png" width="75px" align="right" class="float-end">
+
 * [Docs Home](https://docs.2sxc.org)
 * <script>document.write('<a target="_blank" href="https://docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
 
@@ -32,25 +31,25 @@ but future releases will start creating separated documentations.
 
 ### Archive v19.03
 
+<img src="../assets/logos/v19/150.png" width="75px" align="right" class="float-end">
+
 * [Docs v19 Home](https://v19.docs.2sxc.org)
 * <script>document.write('<a target="_blank" href="https://v19.docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
 
 
 ### Archive v16.09
 
+<img src="../assets/logos/v16/150.png" width="75px" align="right" class="float-end">
+
 * [Docs v16 Home](https://v16.docs.2sxc.org)
 * <script>document.write('<a target="_blank" href="https://v16.docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
 
-
-### Older Versions
-
-_as of now there are no older documentation versions_
+_There are now older documentation versions than v16._
 
 ---
 
 ## Internal Notes / Information
 
-This is an experimental page WIP 2023-11
 Goal is to have old versions of the documentation available and linked from here.
 Old versions must always link here using the short-link below.
 
