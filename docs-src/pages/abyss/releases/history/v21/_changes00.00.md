@@ -1,5 +1,7 @@
 
-### 2sxc v21.00.00 (2025-12-17 - planned)
+### 2sxc v21.00.00 (2025-12-27)
+
+Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01-05.
 
 #### Highlights Razor / C# Coding Enhancements
 
@@ -48,7 +50,9 @@
 1. 🧩 Extension Settings and language Resources
 1. 🧩 Extensions can now be installed in multiple editions
 1. 🧩 Extensions with input-types and multiple editions will load `staging` if user is developer/host
-1. 🧩 Extensions have a lot of properties and links shown in the quick overview
+1. 🧩 Extensions have a lot of properties and links shown in the quick overview, as well as `icon.png`
+1. 🧩 Extensions can be installed from app-catalog <https://2sxc.org/en/apps/>
+1. 🧩 Extensions can also reference other extensions to bundle together
 
 #### Highlights Query / REST Enhancements
 
@@ -64,21 +68,26 @@
 1. 🧑🏼‍💻 Finally stabilized and released feature to change `Edition` to switch between `live` and `staging` v20.00.00
 1. 🥫⚡ Entire DB Access (read/write) reworked and optimized - this is a major change, but it should not affect any apps. v20.00.04
 1. 🥫 DB: Increase SQL timeout because sometimes SQL was sleeping and causing timeouts #3698
-
-
+1. 🥫 DB: Prepare structure for future undelete
+1. Code: Prepare code for future undelete
 
 #### Version Bumps and Other Changes
 
-TODO
+1. 🅰️ Update UI to Angular 21 and Angular Material 21
+1. 🅰️ Update Quick-Dialog to Angular 21 and Angular Material 21
 
-1. 🖼️ Updated ImageFlow (the image resizer) to ??? from v2.1.0-RC11
-1. 🅰️ Update UI to Angular 20 and Angular Material 20 TODO
+#### Razor / C# Enhancements
 
+1. Minor: Sort attributes on a Content-Type according to sort-priority for easier looping in any code
+1. Minor: `IContentTypeAttribute` now has a `InputType` property to easily get the input type without loading the full attribute
+1. Minor: `IContentTypeAttribute` now has a `IsEmpty()` extension method to easily detect if an attribute is empty
+1. Minor: `IContentTypeAttribute` also has a lot of other extensions such as `IsBoolean()`, `IsDateTime()`, `IsNumber()`, `IsString()`, etc.
 
 #### Bugfixes
 
-TODO
+1. Internal bug where app-folder was not known if error occurred during data load.
 
 #### Internal and Code Hygiene
 
-TODO
+1. Switch JS unit testing to VTest - for Eav-UI, 2sxc-ui, inpage, ...
+1. Update `System.Diagnostics.DiagnosticSource` to v9.0.11
