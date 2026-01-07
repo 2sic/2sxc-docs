@@ -33,3 +33,5 @@ You can also configure the picker to
 ## History
 
 1. v01.00 - Initial release for 2sxc v21 2025-12
+
+Shortlink: <https://go.2sxc.org/ext-color>

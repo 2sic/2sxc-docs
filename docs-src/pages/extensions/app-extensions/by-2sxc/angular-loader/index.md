@@ -1,10 +1,10 @@
 ---
-uid: Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index
+uid: Extensions.AppExtensions.By2sxc.AngularLoader.Index
 ---
 
-# TODO: @rb
+# TODO: @2ro
 
-Todo: description, what it is
+TODO: description, what it is
 
 ## Installation
 
@@ -20,4 +20,4 @@ Todo: explain how to use this extension, with code samples and screenshots
 
 1. todo
 
-Shortlink: <https://go.2sxc.org/ext-grecapt3>
+Shortlink: <https://go.2sxc.org/ext-dsometeo>

@@ -11,11 +11,76 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2025-08-04**
+Last Update: **2026-01-07**
 
-## Current Priority: cre8magic for Oqtane
+## Priority 2026 Q1
 
-2025 Q3 is going to focus mainly on cre8magic, not 2sxc.
+> [!TIP]
+> The main priority is to finalize a lot of things which are already done,
+> but often not fully documented or waiting for final tweaks.
+>
+> Also to release an LTS fairly soon.
+
+### Resources
+
+* @2dm: (iJungleboy) ca. 20%; ca. 8h/wk + PM work
+* @2rb: (Roaul) ca. 50%; ca. 20h/wk (actually 100%, but only junior)
+* @STV: (Tonci) ca. 75%; ca. 32h/wk
+* @2ro: (Roman) ca. 10%; ca. 8h/wk
+
+### Things to Finalize and Document / Blog / Tutorial
+
+1. @2dm / @2rb: Extension System - ca. 2d
+1. @2dm: Radmin - ca. 1d for v1
+1. @2dm: Radmin - ca. 1d for communication, promoting
+1. @2rb: Code Generator custom settings minor bug
+1. @2dm / @2rb: Model generator - finalize, docs, samples - ca. 2d
+1. @2dm: 2sxc docs for VS Code / intellisense (most are missing ATM because of DLL reorgs) - ca. 1d
+1. @STV: Improve App SLN files for VS code so it can use the latest C# devkit (major) - ca. 0.5-2d
+1. @2dm and others - lots of small bugfixes which have been accumulating over time - ca. 3-5d
+
+### Priorities 2rb
+
+#### Week 1
+
+1. Finish the reCaptcha extension - w/docs etc. - ca. 1d
+1. Create meteo data source extension - w/docs etc. - ca. 1d
+1. Extensions documentation - ca. 1d
+1. Improve app-catalog to better link directly to all extensions
+1. Admin UI: Show extensions details of installed extensions - ca. 1d
+1. Assist in publishing / documenting JS-App-Editions, Angular & React extensions - ca. 1d
+1. Blog about each extension - ca. 1d
+1. Short video & blog about installing and using extensions - ca. 0.5d
+1. Short video & blog about creating extensions - ca. 1d
+
+#### Week 2
+
+1. Review more Extensions to create / demo / tutorialize
+1. Admin UI: Undelete ca. 1d
+1. Template Service - Tutorials and Docs - ca. 1d
+
+
+### Things to Implement
+
+1. @2dm: Really promote the extension system - ca. 5d
+1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d
+1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
+1. @2rb: Create more extensions (Data sources, etc.)
+1. @2rb: Undelete UI for entities - ca. 1d
+1. @2ro: Finish extensions for integrating Angular & React
+1. @2ro: Create sample app with Angular
+1. @2ro: Create sample app with React
+
+### Things for Juniors to Work On
+
+1. App Catalog - allow url-filters to jump to extensions etc.
+1. App Catalog - change to new Angular setup w/extensions
+1. EAV-UI: Deduplicate code in various places
+1. EAV-UI: create many unit tests
+1. $2sxc - many unit tests
+1. inpage - many unit tests
+
+---
 
 
 ## Note: Some Features still not final
@@ -27,7 +92,7 @@ Last Update: **2025-08-04**
 1. Picker Source CSS (beta)
 
 
-## 2025 Q3 Finish DoD / Almost-Done Work
+## 2026 Q1 Finish DoD / Almost-Done Work
 
 1. Improve Intellisense
     1. Harden more Dlls and include more XML docs
@@ -42,27 +107,6 @@ Last Update: **2025-08-04**
         1. ✅/🔳 ToSic.Eav.DataSources
         1. 🔳/🔳 ToSic.Eav...other
         1. ToSic.Sxc.Oqt / Razor
-
-also...
-
-1. Oqtane Menu Control
-1. Oqtane Multi-language
-1. Oqtane professional theme
-
-## Q3
-
-1. Improve CSP in Oqtane 5 (once SSR is ready)
-1. Create a User service to get more user data
-
-also...
-
-1. Improve Pickers all kinds of small issues
-    1. tree
-1. Improve Oqtane Pages DS to also respect all known settings - @STV
-1. Finalize Deprecation system @2dm
-1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV
-
-
 
 ## Done but not communicated, or still tweaking / WIP
 
@@ -80,6 +124,49 @@ also...
     1. also allow non-admins to possibly translate resources
 1. ✅⌛ Ability to set/force compiler in Dnn to always be Roslyn (implemented, but not officially released/supported)
 1. ✅⌛ Ability to include Dlls in the compile process for Dnn/Oqtane (implemented, but not officially released/supported)
+
+---
+
+## Bigger Stories - not yet planned
+
+1. public API to create entities
+1. DNN WebApi base class which is MVC based
+1. API security ticket system, to allow special access to APIs based on a ticket which Razor or similar can provide temporarily  
+    ...possibly also so that security access is controlled centrally and the same for DNN/Oqtane
+1. Blazor Server Templating for Oqtane - would probably only make sense, if run-time compilation is available
+1. Reorganize and improve C# unit testing, especially for complex scenarios where the setup is difficult and hard to maintain
+1. SQL based lists, for very large lists which don't fit into memory
+1. ...possibly with edit-ui support to actually edit the data
+1. EAV-UI: Refactor how the schema is processed (with multi-language) to allow alternate schemas to be used which are less complex
+1. File based App State - which also allows edit / save - which would make many variants of unit-testing much easier
+1. APIs / Systems to easily code changes - such as app-creation, content-type creation and more.
+1. Extension points - for example on data-save - to allow custom validation, security-checks, modifications or search-integrations.
+1. Generic WYSIWYG integration, to allow other editors than TinyMCE
+
+---
+
+## Next Priority: cre8magic for Oqtane
+
+2026 Q2 is going to focus mainly on cre8magic, not 2sxc.
+
+also...
+
+1. Oqtane Menu Control
+1. Oqtane Multi-language
+1. Oqtane professional theme
+
+## Q2
+
+1. Improve CSP in Oqtane 5 (once SSR is ready)
+1. Create a User service to get more user data
+
+also...
+
+1. Improve Pickers all kinds of small issues
+    1. tree
+1. Improve Oqtane Pages DS to also respect all known settings - @STV
+1. Finalize Deprecation system @2dm
+1. Improve CSP so it can work in a pure DNN skin without 2sxc @STV
 
 
 ## Post LTS
@@ -103,7 +190,7 @@ Minor: Tutorial App Enhancements
 
 
 
-## Probably 2024 Q3
+## Random Backlog
 
 2sxc
 
@@ -154,8 +241,6 @@ New Stuff and Major Enhancements
     1. Js Docs for sxc-angular
     1. React sample application
 
-1. ⏳ Edit UI Picker (Entity, Number, String, etc.) - completely rework concept / system - SDV ca. 10d
-1. ⏳ Edit UI Picker - hierarchy / tree of data
 1. ⏳ string-Dropdowns from many data sources like
     1. CSVs
     1. WebService
