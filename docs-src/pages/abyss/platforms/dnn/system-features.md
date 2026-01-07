@@ -12,7 +12,7 @@ Others can be installed later on, as needed.
 >
 > This will be pre-installed in Dnn 10, but for Dnn 9.6.1+ you need to install it manually.
 > 
-> For this specific issue, please check <https://r.2sxc.org/dnn-roslyn>
+> For this specific issue, please check <https://go.2sxc.org/dnn-roslyn>
 
 Sometimes you may install an App which requires an additional capability.
 This page should guide you through installing them if you're stuck.
@@ -35,7 +35,7 @@ Depending on your Dnn version, it has a different CodeDom / CSharp Compiler prep
 
 > [!IMPORTANT]
 > If you're on Dnn 9.6.1, you can install C# 8 manually.
-> See <https://r.2sxc.org/dnn-roslyn>
+> See <https://go.2sxc.org/dnn-roslyn>
 
 <iframe src="https://azing.org/dnn-community/r/ogPu9EDH?embed=1" width="100%" height="600" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 <!-- <script src="https://cdn.azing.org/e/1/embed.js"></script> -->

@@ -95,7 +95,7 @@ namespace AppCode.Razor
 
     protected string ActivateFancyBox()
     {
-      // see https://r.2sxc.org/turnon
+      // see https://go.2sxc.org/turnon
       Kit.Page.Activate("fancybox4");
       return null;
     }

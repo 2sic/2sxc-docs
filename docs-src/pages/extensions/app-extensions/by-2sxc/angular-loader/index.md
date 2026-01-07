@@ -20,4 +20,4 @@ Todo: explain how to use this extension, with code samples and screenshots
 
 1. todo
 
-Shortlink: <https://go.2sxc.org/ext-dsometeo>
+Shortlink: <https://go.2sxc.org/ext-ngloader>

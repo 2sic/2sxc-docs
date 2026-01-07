@@ -53,7 +53,7 @@ The text in v16 is:
 
 ```text
 Warning: Registration not valid so some features may be disabled. Please re-register in System-Management.
-This is common after a major upgrade. See r.2sxc.org/license-warning.
+This is common after a major upgrade. See go.2sxc.org/license-warning.
 ```
 
 
