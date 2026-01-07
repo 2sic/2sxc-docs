@@ -24,7 +24,7 @@ Last Update: **2026-01-07**
 ### Resources
 
 * @2dm: (iJungleboy) ca. 20%; ca. 8h/wk + PM work
-* @2rb: (Roaul) ca. 50%; ca. 20h/wk (actually 100%, but only junior)
+* @2rb: (Raoul) ca. 50%; ca. 20h/wk (actually 100%, but only junior)
 * @STV: (Tonci) ca. 75%; ca. 32h/wk
 * @2ro: (Roman) ca. 10%; ca. 8h/wk
 
@@ -308,3 +308,7 @@ Apps / App Maintenance
 1. App Update System (features to help migrate an App to a newer template)
     1. Unclear how to do this, but probably needs some kind of compare/merge features
 1. ...or whatever is needed next :)
+
+---
+
+Shortlink: <https://go.2sxc.org/roadmap>
