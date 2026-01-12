@@ -1,5 +1,11 @@
 
-## Version 21 (WIP, to be released EOY 2025)
+## Version 21
+
+---
+
+[!include["Changes"](./_changes00.02.md)]
+
+---
 
 [!include["Changes"](./_changes00.00.md)]
 

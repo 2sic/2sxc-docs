@@ -29,7 +29,7 @@
 1. 🌪️ Visual Query improved with ability to mirror out-streams based on in-streams (for things such as serialization-DataSource etc.)
 1. 🪵 New features to reduce logging of loading the system or data of Apps, which creates large logs but are rarely used
 1. ✅ Features can now support detailed configuration (used in the new Logging configuration)
-1. 🥷🏼 Most internal APIs now clearly moved into `.Sys` namespaces   TODO: - DOCUMENT IN BREAKING
+1. 🥷🏼 Most internal APIs now clearly moved into `.Sys` namespaces
 
 #### Version Bumps and Other Changes
 

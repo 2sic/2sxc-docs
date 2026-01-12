@@ -142,6 +142,9 @@ Last Update: **2026-01-07**
 1. APIs / Systems to easily code changes - such as app-creation, content-type creation and more.
 1. Extension points - for example on data-save - to allow custom validation, security-checks, modifications or search-integrations.
 1. Generic WYSIWYG integration, to allow other editors than TinyMCE
+1. Try to drop the Angular Zone on eav-ui
+1. Try to drop the Angular Zone on quick-dialog
+
 
 ---
 
