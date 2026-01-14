@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>App Extensions - Technical Docs (new v21 ⭐) | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="App Extensions - Technical Docs (new v21 ⭐) | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/technical/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Extensions.AppExtensions.Technical.Index">
+<h1 id="app-extensions---technical-docs-new-v21-">App Extensions - Technical Docs (new v21 ⭐)</h1>
+
+<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
+<style>
+  .context-box-summary .data-all,
+  .context-box-summary .query-app,
+  .context-box-summary .process-razor,
+  .context-box-summary .process-web-api-app,
+  .context-box-summary .edit-ui-custom
+  { visibility: visible; }
+</style> -->
+<p>This should provide you with some background information how App Extensions work technically.</p>
+<h2 id="app-extensions-are-per-app">App Extensions are per App</h2>
+<p>An app extension is installed to each app individually.
+So each app can have it's own set of extensions.</p>
+<h2 id="app-extension-folders-and-files">App Extension Folders and Files</h2>
+<h3 id="app-extension-folders-and-files---minimal">App Extension Folders and Files - Minimal</h3>
+<p>The most basic app extension contains just an <code>extension.json</code> file in a folder under <code>/extensions/your-extension-name/App_Data/</code>.
+Note that the <code>extension.json</code> is in the <code>App_Data</code> folder, which protects it from external access.</p>
+<ul>
+<li><code>/extensions/</code>
+<ul>
+<li><code>your-extension-name/</code>
+<ul>
+<li><code>App_Data/</code>
+<ul>
+<li><code>extension.json</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>To create this, you basically have to create the <code>/extensions/your-extension-name/</code> folder.
+Once this folder exists, it will show up in the Admin UI and allow you to create the <code>extension.json</code> file.</p>
+<p>The <code>extension.json</code> file contains metadata about the extension, such as its name, version, author, and description.
+It's the basic requirement to export and distribute an extension.</p>
+<h3 id="app-extension-folders-and-files---comprehensive">App Extension Folders and Files - Comprehensive</h3>
+<p>In addition to the folder in the <code>/extensions</code> location, an app extension can also contain App Code in the <code>/AppCode/Extensions/your-extension-name/</code> folder.
+Alternatively, if the folder doesn't exist, it will also try to find code in <code>/AppCode/Extensions/YourExtensionName/</code> (note the different casing). TODO! NOT YET IMPLEMENTED.</p>
+<p>So in summary, the two base folders for any app extension are:</p>
+<ol>
+<li><code>/extensions/your-extension-name/</code> - for extension configuration and related files</li>
+<li><code>/AppCode/Extensions/your-extension-name/</code> - for any C# code which will be precompiled
+or <code>/AppCode/Extensions/YourExtensionName/</code> - alternative location for C# code</li>
+</ol>
+<p>This is the comprehensive list of all files and folders of an App Extension.</p>
+<ul>
+<li><code>/extensions/</code> location to store app extensions and their configurations - in the <strong>App Root</strong>
+<ul>
+<li><code>/your-extension-name/</code> folder for a specific app extension
+<ul>
+<li><code>/App_Data/</code> folder to store extension configuration files and other data included in the app
+<ul>
+<li><code>/system/bundles/</code> where persisted data / content-types / views are stored (if data was included)</li>
+<li><code>extension.json</code> main configuration file for the app extension</li>
+<li><code>package-index.json</code> this file only exists if an extension was installed, as it tracks the installed files</li>
+</ul>
+</li>
+<li><code>/SomeSubfolder/</code> <em>optional</em> sub folders for organizing additional files related to the app extension</li>
+<li><code>icon.png</code> <em>optional</em> icon representing the app extension</li>
+<li><code>index.js</code> <em>optional</em>, typical JavaScript file for input field extensions</li>
+<li><code>readme.md</code> <em>optional</em> readme file providing information about the app extension</li>
+<li><code>Some Razor.cshtml</code> <em>optional</em> Razor files for custom views or templates</li>
+<li><code>some-script.js</code> <em>optional</em> JavaScript files for client-side functionality</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>/AppCode/</code> folder for custom C# code and Web APIs
+<ul>
+<li><code>/Extensions/</code> location to store code extensions
+<ul>
+<li><code>/Your-Extension-Name/</code> <em>optional</em> folder for any shared C# code
+<ul>
+<li><code>/Data/</code> <em>optional</em> folder for a specific data models
+<ul>
+<li><code>Something.cs</code> C# <em>partial</em> model file with custom adjustments</li>
+<li><code>Something.Generated.cs</code> C# <em>partial</em> model files which are auto-generated</li>
+</ul>
+</li>
+<li><code>compile.json</code> <em>optional</em> file to configure <a class="xref" href="../create/app-code/compiler-options.html">compilation settings</a></li>
+<li><code>MyExtensionService.cs</code> C# code file for the code extension</li>
+<li><code>/SomeSubfolder/</code> <em>optional</em> sub folders for organizing additional code files</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="packaged-app-extensions">Packaged App Extensions</h2>
+<p>When an app extension is packaged for distribution, it is bundled into a ZIP file.
+The structure of the ZIP file is almost the same as the installed version, with a few differences:</p>
+<ol>
+<li>There is an additional top-level file called <code>package-index.json</code>, which lists all files included in the package.</li>
+</ol>
+<h2 id="how-app-extensions-work">How App Extensions Work</h2>
+<p>In general the code and files included in an extension are treated the same way as if they were part of the app itself.
+This means that Razor views, JavaScript files, and C# code can all be used just like regular app files.
+The main difference is that the files are organized in a specific folder structure under the <code>/extensions</code> and <code>/AppCode/Extensions</code> locations.</p>
+<p>When an app extension is installed, the system reads the <code>extension.json</code> file to get metadata about the extension.</p>
+<p>This allows these <strong>parts</strong> of the app to be managed and updated independently from the app itself.</p>
+<hr>
+<h2 id="history">History</h2>
+<p>App Extensions were introduced in 2sxc v21 as a new way to extend apps with custom functionality.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/technical/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
