@@ -32,9 +32,9 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 - **Score Threshold** (minimum score required to accept requests)
 
 <div gallery="new-inherit">
-  <img src="../assets/recaptcha-appsettings.png">
-  <img src="../assets/recaptcha-settings.png">
-  <img src="../assets/recaptcha-keys.png">
+  <img src="assets/recaptcha-keys.png">
+  <img src="assets/recaptcha-appsettings.png">
+  <img src="assets/recaptcha-settings.png">
 </div>
 
 
