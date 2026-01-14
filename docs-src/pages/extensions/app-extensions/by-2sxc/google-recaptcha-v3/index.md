@@ -24,7 +24,6 @@ Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:
 - **Secret key** (private, used on the server)
 
 
----
 ### 2) Configure the extension in 2sxc App Settings
 You can configure everything directly in **2sxc App Settings** for this extension:
 
@@ -32,24 +31,21 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 - **Secret Key**
 - **Score Threshold** (minimum score required to accept requests)
 
-![App Settings for reCAPTCHA v3](../assets/recaptcha-appsettings.png)
-
-![Settings for reCAPTCHA v3](../assets/recaptcha-settings.png)
-
-![Settings for reCAPTCHA v3](../assets/recaptcha-keys.png)
+<div gallery="new-inherit">
+  <img src="../assets/recaptcha-appsettings.png">
+  <img src="../assets/recaptcha-settings.png">
+  <img src="../assets/recaptcha-keys.png">
+</div>
 
 
 ### Code Example
-
-### Razor (get token and submit)
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
 
 @{
-  // Read the site key from App Settings (supports protected values)
-  var siteKeyRaw = AllSettings.String("GoogleRecaptcha.SiteKey");
-  var siteKey = Kit.SecureData.Parse(siteKeyRaw).Value ?? siteKeyRaw;
+  // Read the site key from App Settings
+  var siteKey = AllSettings.String("GoogleRecaptcha.SiteKey");
 
   // API endpoint for the form submit
   var submitUrl = Link.To(api: $"{MyView.Edition}/api/TestForm/SubmitAsync");
@@ -93,7 +89,7 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 }
 ```
 
-** What happens here**
+### What happens here
 
 - The site key is read from App Settings
 
@@ -106,6 +102,16 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 ### WebApi (validate token)
 
 ```c#
+#if NETCOREAPP
+using Microsoft.AspNetCore.Mvc;
+#else
+using System.Web.Http;
+using IActionResult = System.Web.Http.IHttpActionResult;
+#endif
+
+using AppCode.Extensions.GoogleRecaptchaV3;
+using System.Threading.Tasks;
+
 [AllowAnonymous]
 public class TestFormController : Custom.Hybrid.ApiTyped
 {
@@ -129,17 +135,19 @@ public record Request(string Token, string Message);
 
 ```
 
-**What happens here**
+### What happens here
 
-- The token is validated server-side using RecaptchaValidator
+- The token is validated server-side using the `RecaptchaValidator` service provided by the app extension.
 
-**The validator automatically:**
+- The validator automatically:
+  - Calls Google's reCAPTCHA verification API using the secret key configured in the app settings.
+  - Checks if the token is valid and not expired.
+  - Compares the returned score against the configured score threshold.
+  - Requests with scores below the threshold are rejected with an error message.
 
-- calls Google’s verification API
+- If validation succeeds, the form data can be processed further (e.g., saving the message).
+- If validation fails, a `BadRequest` response is returned with the error details.
 
-- checks the configured score threshold
-
-- Requests below the threshold are rejected
 ---
 
 ## History
