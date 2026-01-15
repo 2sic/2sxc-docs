@@ -118,6 +118,12 @@
 <h2 id="app-extensions-are-per-app">App Extensions are per App</h2>
 <p>An app extension is installed to each app individually.
 So each app can have it's own set of extensions.</p>
+<h2 id="how-app-extensions-work">How App Extensions Work</h2>
+<p>In general the code and files included in an extension are treated the same way as if they were part of the app itself.
+This means that Razor views, JavaScript files, and C# code can all be used just like regular app files.
+The main difference is that the files are organized in a specific folder structure under the <code>/extensions</code> and <code>/AppCode/Extensions</code> locations.</p>
+<p>When an app extension is installed, the system reads the <code>extension.json</code> file to get metadata about the extension.</p>
+<p>This allows these <strong>parts</strong> of the app to be managed and updated independently from the app itself.</p>
 <h2 id="app-extension-folders-and-files">App Extension Folders and Files</h2>
 <h3 id="app-extension-folders-and-files---minimal">App Extension Folders and Files - Minimal</h3>
 <p>The most basic app extension contains just an <code>extension.json</code> file in a folder under <code>/extensions/your-extension-name/App_Data/</code>.
@@ -137,79 +143,68 @@ Note that the <code>extension.json</code> is in the <code>App_Data</code> folder
 </ul>
 </li>
 </ul>
-<p>To create this, you basically have to create the <code>/extensions/your-extension-name/</code> folder.
+<p>To create this, you have to <em>manually</em> create the <code>/extensions/your-extension-name/</code> folder.
 Once this folder exists, it will show up in the Admin UI and allow you to create the <code>extension.json</code> file.</p>
 <p>The <code>extension.json</code> file contains metadata about the extension, such as its name, version, author, and description.
 It's the basic requirement to export and distribute an extension.</p>
 <h3 id="app-extension-folders-and-files---comprehensive">App Extension Folders and Files - Comprehensive</h3>
-<p>In addition to the folder in the <code>/extensions</code> location, an app extension can also contain App Code in the <code>/AppCode/Extensions/your-extension-name/</code> folder.
-Alternatively, if the folder doesn't exist, it will also try to find code in <code>/AppCode/Extensions/YourExtensionName/</code> (note the different casing). TODO! NOT YET IMPLEMENTED.</p>
+<p>In addition to the folder in the <code>/extensions</code> location,
+an app extension can also contain App Code in the <code>/AppCode/Extensions/YourExtensionName/</code> folder
+(note that here we prefer the c# naming conventions).
+Alternatively, if the folder doesn't exist,
+it will also try to find code in <code>/AppCode/Extensions/your-extension-name/</code> (identical to <code>/extensions</code>).</p>
 <p>So in summary, the two base folders for any app extension are:</p>
 <ol>
 <li><code>/extensions/your-extension-name/</code> - for extension configuration and related files</li>
-<li><code>/AppCode/Extensions/your-extension-name/</code> - for any C# code which will be precompiled
-or <code>/AppCode/Extensions/YourExtensionName/</code> - alternative location for C# code</li>
+<li><code>/AppCode/Extensions/YourExtensionName/</code> - for any C# code which will be precompiled
+or <code>/AppCode/Extensions/your-extension-name/</code></li>
 </ol>
-<p>This is the comprehensive list of all files and folders of an App Extension.</p>
+<p>This is the comprehensive list of all predefined files and folders of an App Extension.</p>
 <ul>
-<li><code>/extensions/</code> location to store app extensions and their configurations - in the <strong>App Root</strong>
-<ul>
-<li><code>/your-extension-name/</code> folder for a specific app extension
+<li><code>/extensions/your-extension-name/</code> folder for a specific app extension
 <ul>
 <li><code>/App_Data/</code> folder to store extension configuration files and other data included in the app
 <ul>
-<li><code>/system/bundles/</code> where persisted data / content-types / views are stored (if data was included)</li>
 <li><code>extension.json</code> main configuration file for the app extension</li>
 <li><code>package-index.json</code> this file only exists if an extension was installed, as it tracks the installed files</li>
 </ul>
 </li>
-<li><code>/SomeSubfolder/</code> <em>optional</em> sub folders for organizing additional files related to the app extension</li>
+<li><code>App_Data/system/bundles/[bundle-name(s)].json</code> where persisted data / content-types / views are stored (if data was included)</li>
 <li><code>icon.png</code> <em>optional</em> icon representing the app extension</li>
 <li><code>index.js</code> <em>optional</em>, typical JavaScript file for input field extensions</li>
-<li><code>readme.md</code> <em>optional</em> readme file providing information about the app extension</li>
-<li><code>Some Razor.cshtml</code> <em>optional</em> Razor files for custom views or templates</li>
-<li><code>some-script.js</code> <em>optional</em> JavaScript files for client-side functionality</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><code>/AppCode/</code> folder for custom C# code and Web APIs
-<ul>
-<li><code>/Extensions/</code> location to store code extensions
-<ul>
-<li><code>/Your-Extension-Name/</code> <em>optional</em> folder for any shared C# code
+<li><code>/AppCode/Extensions/YourExtensionName/</code> folder for custom C# code and Web APIs
 <ul>
 <li><code>/Data/</code> <em>optional</em> folder for a specific data models
 <ul>
-<li><code>Something.cs</code> C# <em>partial</em> model file with custom adjustments</li>
-<li><code>Something.Generated.cs</code> C# <em>partial</em> model files which are auto-generated</li>
+<li><code>[Something].cs</code> C# <em>partial</em> model file with custom adjustments</li>
+<li><code>[Something.Generated].cs</code> C# <em>partial</em> model files which are auto-generated</li>
 </ul>
 </li>
 <li><code>compile.json</code> <em>optional</em> file to configure <a class="xref" href="../create/app-code/compiler-options.html">compilation settings</a></li>
-<li><code>MyExtensionService.cs</code> C# code file for the code extension</li>
-<li><code>/SomeSubfolder/</code> <em>optional</em> sub folders for organizing additional code files</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>Add any other files and folders as needed to implement the desired functionality of your app extension.</p>
 <h2 id="packaged-app-extensions">Packaged App Extensions</h2>
 <p>When an app extension is packaged for distribution, it is bundled into a ZIP file.
 The structure of the ZIP file is almost the same as the installed version, with a few differences:</p>
 <ol>
-<li>There is an additional top-level file called <code>package-index.json</code>, which lists all files included in the package.</li>
+<li>There is an additional top-level file called <code>package-install.json</code>,
+which lists all things (in this case extensions) included in the package.
+This file is not copied to the target App, as it's only needed for installation.</li>
+<li>The <code>package-index.json</code> file inside each extension folder is generated on export and included in the ZIP.
+It is also copied to the App, to track installed files and detect any manual changes later on.</li>
+<li>The <code>extension.json</code> get a minor adjustment,
+so that the system can differentiate between extensions installed from packages and those created directly in the App.
+This changes certain features, such as allow export, etc.</li>
 </ol>
-<h2 id="how-app-extensions-work">How App Extensions Work</h2>
-<p>In general the code and files included in an extension are treated the same way as if they were part of the app itself.
-This means that Razor views, JavaScript files, and C# code can all be used just like regular app files.
-The main difference is that the files are organized in a specific folder structure under the <code>/extensions</code> and <code>/AppCode/Extensions</code> locations.</p>
-<p>When an app extension is installed, the system reads the <code>extension.json</code> file to get metadata about the extension.</p>
-<p>This allows these <strong>parts</strong> of the app to be managed and updated independently from the app itself.</p>
 <hr>
 <h2 id="history">History</h2>
-<p>App Extensions were introduced in 2sxc v21 as a new way to extend apps with custom functionality.</p>
+<ul>
+<li>App Extensions were introduced in 2sxc v21 as a new way to extend apps with custom functionality.</li>
+</ul>
 
 </article>
 
