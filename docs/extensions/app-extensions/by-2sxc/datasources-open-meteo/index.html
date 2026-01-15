@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>TODO: @2rb | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Open-Meteo DataSource | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="TODO: @2rb | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Open-Meteo DataSource | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -103,17 +103,108 @@
         
 
         <article data-uid="Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index">
-<h1 id="todo-2rb">TODO: @2rb</h1>
+<h1 id="open-meteo-datasource">Open-Meteo DataSource</h1>
 
-<p>Todo: description, what it is</p>
+<p>This App Extension adds ready-to-use <strong>2sxc DataSources</strong> for the public <strong>Open-Meteo</strong> weather API.
+It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</strong> into 2sxc streams, so you can use it like any other DataSource in Visual Query / code.</p>
+<hr>
 <h2 id="installation">Installation</h2>
 <p>See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
+<p>After installation, you should have the extension files in your app</p>
 <h2 id="usage">Usage</h2>
-<p>Todo: explain how to use this extension, with code samples and screenshots</p>
+<p>The extension contains <strong>two DataSources</strong>:</p>
+<ul>
+<li><code>OpenMeteoCurrent</code> → current weather</li>
+<li><code>OpenMeteoForecast</code> → hourly/daily forecast</li>
+</ul>
+<p>Both DataSources read configuration (lat/lon, units, etc.) and return one stream (usually <code>Default</code>) with a model matching the Open-Meteo response.</p>
+<h3 id="configure">Configure</h3>
+<p>In Visual Query (or in code), set at least:</p>
+<ul>
+<li><code>Latitude</code></li>
+<li><code>Longitude</code></li>
+</ul>
+<p>Optional (recommended):</p>
+<ul>
+<li><code>Timezone</code> (e.g. <code>Europe/Amsterdam</code>)</li>
+<li><code>TemperatureUnit</code> (<code>celsius</code>/<code>fahrenheit</code>)</li>
+<li><code>WindSpeedUnit</code> (<code>kmh</code>/<code>ms</code>/<code>mph</code>/<code>kn</code>)</li>
+<li><code>PrecipitationUnit</code> (<code>mm</code>/<code>inch</code>)</li>
+</ul>
+<p>You can configure parameters either through the DataSource configuration UI (Visual Query) or via code when creating the DataSource.</p>
 <hr>
+<h3 id="use-in-visual-query">Use in Visual Query</h3>
+<ol>
+<li>Add the DataSource <strong>Open-Meteo Current</strong> or <strong>Open-Meteo Forecast</strong></li>
+<li>Set the configuration values (Latitude/Longitude/…)</li>
+<li>Connect it to your output</li>
+<li>Inspect the <code>Default</code> stream to see the returned fields</li>
+</ol>
+<div gallery="new-inherit">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-visual-query.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-parameters.png">
+</div>
+<hr>
+<h3 id="use-in-razortyped-minimal-examples">Use in RazorTyped (minimal examples)</h3>
+<p>Below are intentionally short examples. Your actual namespace/class names may differ depending on where you placed the files.</p>
+<h4 id="current-weather">Current weather</h4>
+<p>TODO: NO GERMAN CODE, VARIABLES, ETC.
+TODO: explain here what the code will do</p>
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.OpenMeteo
+
+@{
+  // Create the DataSource instance
+  var data = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(config: new {
+    Latitude = 52.52,
+    Longitude = 13.41,
+    Timezone = &quot;Europe/Amsterdam&quot;
+  });
+
+  // The DataSource returns a stream called &quot;Default&quot;
+  var aktuellesWetter = datenquelle[&quot;Default&quot;].FirstOrDefault();
+}
+
+@if (aktuellesWetter != null) {
+  &lt;div&gt;
+    &lt;strong&gt;Temperature:&lt;/strong&gt; @aktuellesWetter.temperature &lt;br /&gt;
+    &lt;strong&gt;Wind:&lt;/strong&gt; @aktuellesWetter.windspeed &lt;br /&gt;
+    &lt;strong&gt;Weather code:&lt;/strong&gt; @aktuellesWetter.weathercode
+  &lt;/div&gt;
+}
+
+</code></pre>
+<h3 id="forecast-hourlydaily">Forecast (hourly/daily)</h3>
+<p>TODO: NO GERMAN CODE, VARIABLES, ETC.
+TODO: explain here what the code will do</p>
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.OpenMeteo
+
+@{
+  var datenquelle = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(config: new {
+    Latitude = 52.52,
+    Longitude = 13.41,
+    Timezone = &quot;Europe/Amsterdam&quot;,
+    // Example: request hourly temperature + precipitation
+    Hourly = &quot;temperature_2m,precipitation&quot;
+  });
+
+  var forecast = datenquelle[&quot;Default&quot;].FirstOrDefault();
+  var zeiten = forecast?.hourly?.time;
+  var temps = forecast?.hourly?.temperature_2m;
+}
+
+@if (zeiten != null &amp;&amp; temps != null) {
+  &lt;ul&gt;
+    @for (var i = 0; i &lt; Math.Min(zeiten.Count, temps.Count); i++) {
+      &lt;li&gt;@zeiten[i]: @temps[i]°&lt;/li&gt;
+    }
+  &lt;/ul&gt;
+}
+</code></pre>
 <h2 id="history">History</h2>
 <ol>
-<li>todo</li>
+<li>Initial release</li>
 </ol>
 <p>Shortlink: <a href="https://go.2sxc.org/ext-openmeteo">https://go.2sxc.org/ext-openmeteo</a></p>
 

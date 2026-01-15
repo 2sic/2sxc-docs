@@ -8,6 +8,7 @@ This App Extension adds ready-to-use **2sxc DataSources** for the public **Open-
 It lets you pull **Current weather** and/or **Forecast data** into 2sxc streams, so you can use it like any other DataSource in Visual Query / code.
 
 ---
+
 ## Installation
 
 See [](xref:Extensions.AppExtensions.Install.Index)
@@ -38,7 +39,7 @@ Optional (recommended):
 - `WindSpeedUnit` (`kmh`/`ms`/`mph`/`kn`)
 - `PrecipitationUnit` (`mm`/`inch`)
 
-> You can configure parameters either through the DataSource configuration UI (Visual Query) or via code when creating the DataSource.
+You can configure parameters either through the DataSource configuration UI (Visual Query) or via code when creating the DataSource.
 
 ---
 
@@ -62,7 +63,10 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 #### Current weather
 
-```csharp
+TODO: NO GERMAN CODE, VARIABLES, ETC.
+TODO: explain here what the code will do
+
+```cshtml
 @inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 
@@ -86,13 +90,14 @@ Below are intentionally short examples. Your actual namespace/class names may di
   </div>
 }
 
-``` 
+```
 
 ### Forecast (hourly/daily)
 
+TODO: NO GERMAN CODE, VARIABLES, ETC.
+TODO: explain here what the code will do
 
-``` csharp
-
+```cshtml
 @inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 
@@ -117,7 +122,7 @@ Below are intentionally short examples. Your actual namespace/class names may di
     }
   </ul>
 }
-``` 
+```
 
 
 ## History

@@ -105,21 +105,64 @@
         <article data-uid="Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index">
 <h1 id="google-recaptcha-v3-app-extension">Google reCAPTCHA v3 (App Extension)</h1>
 
-<p>This <strong>App Extension</strong> helps you add <strong>Google reCAPTCHA v3</strong> to custom forms in your 2sxc app, so you can reduce spam and automated submissions.</p>
-<p>Unlike reCAPTCHA v2, <strong>v3 runs in the background</strong> and returns a <strong>score</strong> (0.0–1.0).</p>
-<blockquote>
-<p>Tip: reCAPTCHA v3 is <strong>not &quot;a secure checkbox&quot;</strong>. You must always verify the token <strong>server-side</strong>, and you should tune your score threshold over time.</p>
-</blockquote>
+<p>This <strong>App Extension</strong> helps you add <strong>Google reCAPTCHA v3</strong> to custom forms in your 2sxc app,
+so you can reduce spam and automated submissions.</p>
+<p>Unlike reCAPTCHA v2, <strong>v3 runs in the background</strong> and returns a <strong>score</strong> (0.0-1.0).</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>reCAPTCHA v3 is <strong>not &quot;a secure checkbox&quot;</strong>. You must always verify the token <strong>server-side</strong>,
+and you should tune your score threshold over time.</p>
+</div>
+<h2 id="how-recaptcha-works">How reCaptcha Works</h2>
+<ol>
+<li>A App WebAPIs on server which process user forms/inputs must know if the user is likely a bot and decide if we want to accept the request or not.</li>
+<li>For this the WebAPI asks Recaptcha Web API to score the user.</li>
+<li>To provide an answer, Recaptcha must first have watched the user behavior in the browser, which requires the browser to load a JS.
+Recaptcha v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot.</li>
+</ol>
+<p>This is what happens in detail:</p>
+<pre><code class="lang-mermaid">sequenceDiagram
+    participant U as User (Browser)
+    participant S as Your App Server
+    participant G as Google reCAPTCHA API
+
+    Note over U, G: reCAPTCHA v2/v3 Verification Flow
+
+    U-&gt;&gt;G: 1. Request reCAPTCHA script &amp; token
+    G--&gt;&gt;U: 2. Returns script / loads widget
+    
+    U-&gt;&gt;U: 3. User interacts (or passive v3 check)
+    U-&gt;&gt;G: 4. Send interaction data
+    G--&gt;&gt;U: 5. Provide Response Token (g-recaptcha-response)
+
+    U-&gt;&gt;S: 6. Submit Form + Response Token
+    
+    S-&gt;&gt;G: 7. POST verify (Token + Site Secret Key)
+    G--&gt;&gt;S: 8. JSON Response (Success: true/false + Score)
+
+    alt is valid human
+        S--&gt;&gt;U: 9a. Process request (Success)
+    else is bot / low score
+        S--&gt;&gt;U: 9b. Reject request (Error)
+    end
+</code></pre>
+<p>Breakdown of the Process</p>
+<ol>
+<li><strong>Front-end Integration</strong>: Your website loads the reCAPTCHA JavaScript. This script monitors user behavior (like mouse movements or typing patterns) to generate a unique <strong>Response Token</strong>.</li>
+<li><strong>The Handshake</strong>: When the user submits a form, that token is sent to <em>your server</em>.</li>
+<li><strong>Backend Verification</strong>: For security, your server must talk to Google's servers directly. You send the user's token along with your private <em>Secret Key</em>.</li>
+<li><strong>The Verdict</strong>: Google returns a JSON object. In v3, this includes a score (typically <span class="math">\(0.0\)</span> to <span class="math">\(1.0\)</span>), where <span class="math">\(1.0\)</span> is very likely a human and <span class="math">\(0.0\)</span> is definitely a bot.</li>
+</ol>
 <h2 id="installation">Installation</h2>
 <p>See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
-<h2 id="usage">Usage</h2>
-<h3 id="1-get-your-google-keys-site-key--secret">1) Get your Google keys (Site Key + Secret)</h3>
-<p>Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:</p>
+<h2 id="preparation">Preparation</h2>
+<h3 id="prep-1-get-your-google-keys-site-key--secret">Prep 1: Get your Google keys (Site Key + Secret)</h3>
+<p>Create a reCAPTCHA v3 site in the <a href="https://azing.org/2sxc/r/dll--jV8">Google reCAPTCHA admin console</a> and copy:</p>
 <ul>
 <li><strong>Site key</strong> (public, used in the browser)</li>
 <li><strong>Secret key</strong> (private, used on the server)</li>
 </ul>
-<h3 id="2-configure-the-extension-in-2sxc-app-settings">2) Configure the extension in 2sxc App Settings</h3>
+<h3 id="prep-2-configure-the-extension-in-2sxc-app-settings">Prep 2: Configure the extension in 2sxc App Settings</h3>
 <p>You can configure everything directly in <strong>2sxc App Settings</strong> for this extension:</p>
 <ul>
 <li><strong>Site Key</strong></li>
@@ -131,7 +174,9 @@
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/google-recaptcha-v3/assets/recaptcha-appsettings.png">
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/google-recaptcha-v3/assets/recaptcha-settings.png">
 </div>
-<h3 id="code-example">Code Example</h3>
+<h2 id="code-example">Code Example</h2>
+<h3 id="razor-code-containing-the-html-form--recaptcha-v3-js">Razor Code containing the HTML Form + reCAPTCHA v3 JS</h3>
+<p>TODO: REDUCE TO THE MINIMUM NEEDED</p>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 
 @{
@@ -150,36 +195,33 @@
   &lt;button type=&quot;button&quot; data-send&gt;Send&lt;/button&gt;
 &lt;/div&gt;
 
-@if (!string.IsNullOrWhiteSpace(siteKey))
-{
-  &lt;!-- Load Google reCAPTCHA v3 --&gt;
-  &lt;script src=&quot;https://www.google.com/recaptcha/api.js?render=@siteKey&quot;&gt;&lt;/script&gt;
+&lt;!-- Load Google reCAPTCHA v3 --&gt;
+&lt;script src=&quot;https://www.google.com/recaptcha/api.js?render=@siteKey&quot;&gt;&lt;/script&gt;
 
-  &lt;script&gt;
-    (() =&gt; {
-      const root = document.getElementById(&quot;@id&quot;);
-      const input = root.querySelector(&quot;[data-msg]&quot;);
-      const button = root.querySelector(&quot;[data-send]&quot;);
+&lt;script&gt;
+  (() =&gt; {
+    const root = document.getElementById(&quot;@id&quot;);
+    const input = root.querySelector(&quot;[data-msg]&quot;);
+    const button = root.querySelector(&quot;[data-send]&quot;);
 
-      button.onclick = async () =&gt; {
-        // Request a reCAPTCHA token for this action
-        const token = await grecaptcha.execute(&quot;@siteKey&quot;, { action: &quot;submit&quot; });
+    button.onclick = async () =&gt; {
+      // Request a reCAPTCHA token for this action
+      const token = await grecaptcha.execute(&quot;@siteKey&quot;, { action: &quot;submit&quot; });
 
-        // Send message and token to the server
-        await fetch(&quot;@submitUrl&quot;, {
-          method: &quot;POST&quot;,
-          headers: { &quot;Content-Type&quot;: &quot;application/json&quot; },
-          body: JSON.stringify({
-            message: input.value,
-            token
-          })
-        });
-      };
-    })();
-  &lt;/script&gt;
-}
+      // Send message and token to the server
+      await fetch(&quot;@submitUrl&quot;, {
+        method: &quot;POST&quot;,
+        headers: { &quot;Content-Type&quot;: &quot;application/json&quot; },
+        body: JSON.stringify({
+          message: input.value,
+          token
+        })
+      });
+    };
+  })();
+&lt;/script&gt;
 </code></pre>
-<h3 id="what-happens-here">What happens here</h3>
+<p>What happens here:</p>
 <ul>
 <li><p>The site key is read from App Settings</p>
 </li>
@@ -190,7 +232,11 @@
 <li><p>The token is sent to the server together with the form data</p>
 </li>
 </ul>
-<h3 id="webapi-validate-token">WebApi (validate token)</h3>
+<h3 id="webapi-sample-validating-the-token">WebApi Sample Validating the Token</h3>
+<p>This code will receive the request,
+validate the token using the app extension <code>RecaptchaValidator</code> service,
+and decide if the request should be accepted or rejected.</p>
+<p>TODO: REDUCE TO THE MINIMUM NEEDED</p>
 <pre><code class="lang-c#">#if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
@@ -223,7 +269,7 @@ public class TestFormController : Custom.Hybrid.ApiTyped
 public record Request(string Token, string Message);
 
 </code></pre>
-<h3 id="what-happens-here-1">What happens here</h3>
+<h3 id="what-happens-here">What happens here</h3>
 <ul>
 <li><p>The token is validated server-side using the <code>RecaptchaValidator</code> service provided by the app extension.</p>
 </li>

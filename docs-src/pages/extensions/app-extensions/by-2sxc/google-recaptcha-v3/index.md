@@ -4,28 +4,73 @@ uid: Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index
 
 # Google reCAPTCHA v3 (App Extension)
 
-This **App Extension** helps you add **Google reCAPTCHA v3** to custom forms in your 2sxc app, so you can reduce spam and automated submissions.
+This **App Extension** helps you add **Google reCAPTCHA v3** to custom forms in your 2sxc app,
+so you can reduce spam and automated submissions.
 
-Unlike reCAPTCHA v2, **v3 runs in the background** and returns a **score** (0.0–1.0).
+Unlike reCAPTCHA v2, **v3 runs in the background** and returns a **score** (0.0-1.0).
 
-> Tip: reCAPTCHA v3 is **not "a secure checkbox"**. You must always verify the token **server-side**, and you should tune your score threshold over time.
+> [!Tip]
+> reCAPTCHA v3 is **not "a secure checkbox"**. You must always verify the token **server-side**,
+and you should tune your score threshold over time.
 
+## How reCaptcha Works
+
+1. A App WebAPIs on server which process user forms/inputs must know if the user is likely a bot and decide if we want to accept the request or not.
+1. For this the WebAPI asks Recaptcha Web API to score the user.
+1. To provide an answer, Recaptcha must first have watched the user behavior in the browser, which requires the browser to load a JS.
+  Recaptcha v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot.
+
+This is what happens in detail:
+
+```mermaid
+sequenceDiagram
+    participant U as User (Browser)
+    participant S as Your App Server
+    participant G as Google reCAPTCHA API
+
+    Note over U, G: reCAPTCHA v2/v3 Verification Flow
+
+    U->>G: 1. Request reCAPTCHA script & token
+    G-->>U: 2. Returns script / loads widget
+    
+    U->>U: 3. User interacts (or passive v3 check)
+    U->>G: 4. Send interaction data
+    G-->>U: 5. Provide Response Token (g-recaptcha-response)
+
+    U->>S: 6. Submit Form + Response Token
+    
+    S->>G: 7. POST verify (Token + Site Secret Key)
+    G-->>S: 8. JSON Response (Success: true/false + Score)
+
+    alt is valid human
+        S-->>U: 9a. Process request (Success)
+    else is bot / low score
+        S-->>U: 9b. Reject request (Error)
+    end
+```
+
+Breakdown of the Process
+
+1. **Front-end Integration**: Your website loads the reCAPTCHA JavaScript. This script monitors user behavior (like mouse movements or typing patterns) to generate a unique **Response Token**.
+1. **The Handshake**: When the user submits a form, that token is sent to _your server_.
+1. **Backend Verification**: For security, your server must talk to Google's servers directly. You send the user's token along with your private _Secret Key_.
+1. **The Verdict**: Google returns a JSON object. In v3, this includes a score (typically $0.0$ to $1.0$), where $1.0$ is very likely a human and $0.0$ is definitely a bot.
 
 ## Installation
 
 See [](xref:Extensions.AppExtensions.Install.Index)
 
-## Usage
+## Preparation
 
-### 1) Get your Google keys (Site Key + Secret)
+### Prep 1: Get your Google keys (Site Key + Secret)
 
-Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:
+Create a reCAPTCHA v3 site in the [Google reCAPTCHA admin console](https://azing.org/2sxc/r/dll--jV8) and copy:
 
 * **Site key** (public, used in the browser)
 * **Secret key** (private, used on the server)
 
 
-### 2) Configure the extension in 2sxc App Settings
+### Prep 2: Configure the extension in 2sxc App Settings
 
 You can configure everything directly in **2sxc App Settings** for this extension:
 
@@ -40,7 +85,11 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 </div>
 
 
-### Code Example
+## Code Example
+
+### Razor Code containing the HTML Form + reCAPTCHA v3 JS
+
+TODO: REDUCE TO THE MINIMUM NEEDED
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -61,37 +110,34 @@ You can configure everything directly in **2sxc App Settings** for this extensio
   <button type="button" data-send>Send</button>
 </div>
 
-@if (!string.IsNullOrWhiteSpace(siteKey))
-{
-  <!-- Load Google reCAPTCHA v3 -->
-  <script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
+<!-- Load Google reCAPTCHA v3 -->
+<script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
 
-  <script>
-    (() => {
-      const root = document.getElementById("@id");
-      const input = root.querySelector("[data-msg]");
-      const button = root.querySelector("[data-send]");
+<script>
+  (() => {
+    const root = document.getElementById("@id");
+    const input = root.querySelector("[data-msg]");
+    const button = root.querySelector("[data-send]");
 
-      button.onclick = async () => {
-        // Request a reCAPTCHA token for this action
-        const token = await grecaptcha.execute("@siteKey", { action: "submit" });
+    button.onclick = async () => {
+      // Request a reCAPTCHA token for this action
+      const token = await grecaptcha.execute("@siteKey", { action: "submit" });
 
-        // Send message and token to the server
-        await fetch("@submitUrl", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: input.value,
-            token
-          })
-        });
-      };
-    })();
-  </script>
-}
+      // Send message and token to the server
+      await fetch("@submitUrl", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: input.value,
+          token
+        })
+      });
+    };
+  })();
+</script>
 ```
 
-### What happens here
+What happens here:
 
 * The site key is read from App Settings
 
@@ -101,7 +147,13 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 
 * The token is sent to the server together with the form data
 
-### WebApi (validate token)
+### WebApi Sample Validating the Token
+
+This code will receive the request,
+validate the token using the app extension `RecaptchaValidator` service,
+and decide if the request should be accepted or rejected.
+
+TODO: REDUCE TO THE MINIMUM NEEDED
 
 ```c#
 #if NETCOREAPP
