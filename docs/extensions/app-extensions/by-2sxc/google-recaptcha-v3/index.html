@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>TODO:  | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Google reCAPTCHA v3 (App Extension) | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="TODO:  | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Google reCAPTCHA v3 (App Extension) | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -103,17 +103,147 @@
         
 
         <article data-uid="Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index">
-<h1 id="todo-">TODO: @rb</h1>
+<h1 id="google-recaptcha-v3-app-extension">Google reCAPTCHA v3 (App Extension)</h1>
 
-<p>Todo: description, what it is</p>
+<p>This <strong>App Extension</strong> helps you add <strong>Google reCAPTCHA v3</strong> to custom forms in your 2sxc app, so you can reduce spam and automated submissions.</p>
+<p>Unlike reCAPTCHA v2, <strong>v3 runs in the background</strong> and returns a <strong>score</strong> (0.0–1.0).</p>
+<blockquote>
+<p>Tip: reCAPTCHA v3 is <strong>not &quot;a secure checkbox&quot;</strong>. You must always verify the token <strong>server-side</strong>, and you should tune your score threshold over time.</p>
+</blockquote>
 <h2 id="installation">Installation</h2>
 <p>See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
 <h2 id="usage">Usage</h2>
-<p>Todo: explain how to use this extension, with code samples and screenshots</p>
+<h3 id="1-get-your-google-keys-site-key--secret">1) Get your Google keys (Site Key + Secret)</h3>
+<p>Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:</p>
+<ul>
+<li><strong>Site key</strong> (public, used in the browser)</li>
+<li><strong>Secret key</strong> (private, used on the server)</li>
+</ul>
+<h3 id="2-configure-the-extension-in-2sxc-app-settings">2) Configure the extension in 2sxc App Settings</h3>
+<p>You can configure everything directly in <strong>2sxc App Settings</strong> for this extension:</p>
+<ul>
+<li><strong>Site Key</strong></li>
+<li><strong>Secret Key</strong></li>
+<li><strong>Score Threshold</strong> (minimum score required to accept requests)</li>
+</ul>
+<div gallery="new-inherit">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/google-recaptcha-v3/assets/recaptcha-keys.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/google-recaptcha-v3/assets/recaptcha-appsettings.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/google-recaptcha-v3/assets/recaptcha-settings.png">
+</div>
+<h3 id="code-example">Code Example</h3>
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+
+@{
+  // Read the site key from App Settings
+  var siteKey = AllSettings.String(&quot;GoogleRecaptcha.SiteKey&quot;);
+
+  // API endpoint for the form submit
+  var submitUrl = Link.To(api: $&quot;{MyView.Edition}/api/TestForm/SubmitAsync&quot;);
+
+  // Unique wrapper id (important if the view is used multiple times)
+  var id = &quot;recaptcha-&quot; + UniqueKey;
+}
+
+&lt;div id=&quot;@id&quot;&gt;
+  &lt;input type=&quot;text&quot; data-msg placeholder=&quot;Message&quot; /&gt;
+  &lt;button type=&quot;button&quot; data-send&gt;Send&lt;/button&gt;
+&lt;/div&gt;
+
+@if (!string.IsNullOrWhiteSpace(siteKey))
+{
+  &lt;!-- Load Google reCAPTCHA v3 --&gt;
+  &lt;script src=&quot;https://www.google.com/recaptcha/api.js?render=@siteKey&quot;&gt;&lt;/script&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&quot;@id&quot;);
+      const input = root.querySelector(&quot;[data-msg]&quot;);
+      const button = root.querySelector(&quot;[data-send]&quot;);
+
+      button.onclick = async () =&gt; {
+        // Request a reCAPTCHA token for this action
+        const token = await grecaptcha.execute(&quot;@siteKey&quot;, { action: &quot;submit&quot; });
+
+        // Send message and token to the server
+        await fetch(&quot;@submitUrl&quot;, {
+          method: &quot;POST&quot;,
+          headers: { &quot;Content-Type&quot;: &quot;application/json&quot; },
+          body: JSON.stringify({
+            message: input.value,
+            token
+          })
+        });
+      };
+    })();
+  &lt;/script&gt;
+}
+</code></pre>
+<h3 id="what-happens-here">What happens here</h3>
+<ul>
+<li><p>The site key is read from App Settings</p>
+</li>
+<li><p>reCAPTCHA v3 runs silently in the background</p>
+</li>
+<li><p>A token is generated for the action &quot;submit&quot;</p>
+</li>
+<li><p>The token is sent to the server together with the form data</p>
+</li>
+</ul>
+<h3 id="webapi-validate-token">WebApi (validate token)</h3>
+<pre><code class="lang-c#">#if NETCOREAPP
+using Microsoft.AspNetCore.Mvc;
+#else
+using System.Web.Http;
+using IActionResult = System.Web.Http.IHttpActionResult;
+#endif
+
+using AppCode.Extensions.GoogleRecaptchaV3;
+using System.Threading.Tasks;
+
+[AllowAnonymous]
+public class TestFormController : Custom.Hybrid.ApiTyped
+{
+  [HttpPost]
+  public async Task&lt;IActionResult&gt; SubmitAsync([FromBody] Request data)
+  {
+    // Use the extension service to validate the token
+    var validator = GetService&lt;RecaptchaValidator&gt;();
+    var result = await validator.ValidateAsync(data.Token);
+
+    // Validation failed (invalid token or score below threshold)
+    if (!result.IsValid)
+      return BadRequest(result.Error);
+
+    // Token is valid and score is above the configured threshold
+    return Ok();
+  }
+}
+
+public record Request(string Token, string Message);
+
+</code></pre>
+<h3 id="what-happens-here-1">What happens here</h3>
+<ul>
+<li><p>The token is validated server-side using the <code>RecaptchaValidator</code> service provided by the app extension.</p>
+</li>
+<li><p>The validator automatically:</p>
+<ul>
+<li>Calls Google's reCAPTCHA verification API using the secret key configured in the app settings.</li>
+<li>Checks if the token is valid and not expired.</li>
+<li>Compares the returned score against the configured score threshold.</li>
+<li>Requests with scores below the threshold are rejected with an error message.</li>
+</ul>
+</li>
+<li><p>If validation succeeds, the form data can be processed further (e.g., saving the message).</p>
+</li>
+<li><p>If validation fails, a <code>BadRequest</code> response is returned with the error details.</p>
+</li>
+</ul>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>todo</li>
+<li>Creating v1 ca. 2026-01</li>
 </ol>
 <p>Shortlink: <a href="https://go.2sxc.org/ext-grecapt3">https://go.2sxc.org/ext-grecapt3</a></p>
 

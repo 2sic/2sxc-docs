@@ -124,4 +124,4 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 1. Initial release
 
-Shortlink: <https://go.2sxc.org/ext-dsometeo>
+Shortlink: <https://go.2sxc.org/ext-openmeteo>
