@@ -6,9 +6,9 @@ uid: Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index
 
 This **App Extension** helps you add **Google reCAPTCHA v3** to custom forms in your 2sxc app, so you can reduce spam and automated submissions.
 
-Unlike reCAPTCHA v2, **v3 runs in the background** and returns a **score** (0.0–1.0). 
+Unlike reCAPTCHA v2, **v3 runs in the background** and returns a **score** (0.0–1.0).
 
-> Tip: reCAPTCHA v3 is **not “a secure checkbox”**. You must always verify the token **server-side**, and you should tune your score threshold over time. 
+> Tip: reCAPTCHA v3 is **not "a secure checkbox"**. You must always verify the token **server-side**, and you should tune your score threshold over time.
 
 
 ## Installation
@@ -18,6 +18,7 @@ See [](xref:Extensions.AppExtensions.Install.Index)
 ## Usage
 
 ### 1) Get your Google keys (Site Key + Secret)
+
 Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:
 
 - **Site key** (public, used in the browser)
@@ -25,6 +26,7 @@ Create a reCAPTCHA v3 site in the Google reCAPTCHA admin console and copy:
 
 
 ### 2) Configure the extension in 2sxc App Settings
+
 You can configure everything directly in **2sxc App Settings** for this extension:
 
 - **Site Key**
@@ -152,6 +154,6 @@ public record Request(string Token, string Message);
 
 ## History
 
-1. todo
+1. Creating v1 ca. 2026-01
 
 Shortlink: <https://go.2sxc.org/ext-grecapt3>
