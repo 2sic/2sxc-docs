@@ -89,19 +89,25 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 
 ### Razor Code containing the HTML Form + reCAPTCHA v3 JS
 
-TODO: REDUCE TO THE MINIMUM NEEDED
+Before a form can be verified, the browser must:
+
+- Load the reCAPTCHA v3 JavaScript
+- Execute an action to generate a token
+- Send that token together with the form data to the server
+- The following Razor view demonstrates the minimal required setup.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
 
 @{
-  // Read the site key from App Settings
+  // Read the public site key from 2sxc App Settings
   var siteKey = AllSettings.String("GoogleRecaptcha.SiteKey");
 
-  // API endpoint for the form submit
+  // Build the URL to the WebAPI endpoint which will receive the form data
   var submitUrl = Link.To(api: $"{MyView.Edition}/api/TestForm/SubmitAsync");
 
-  // Unique wrapper id (important if the view is used multiple times)
+  // Generate a unique DOM id
+  // Important if the same view is rendered multiple times on one page
   var id = "recaptcha-" + UniqueKey;
 }
 
@@ -110,23 +116,28 @@ TODO: REDUCE TO THE MINIMUM NEEDED
   <button type="button" data-send>Send</button>
 </div>
 
-<!-- Load Google reCAPTCHA v3 -->
+<!-- Load Google reCAPTCHA v3 JavaScript using the site key -->
 <script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
 
 <script>
   (() => {
+    // Get references to DOM elements inside this component
     const root = document.getElementById("@id");
     const input = root.querySelector("[data-msg]");
     const button = root.querySelector("[data-send]");
 
+    // Handle button click manually (no normal form submit)
+    // Request a reCAPTCHA token for the action "submit"
+    // Send the message and reCAPTCHA token to the server
     button.onclick = async () => {
-      // Request a reCAPTCHA token for this action
+
       const token = await grecaptcha.execute("@siteKey", { action: "submit" });
 
-      // Send message and token to the server
       await fetch("@submitUrl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+
+        // Payload contains both the user input and the token
         body: JSON.stringify({
           message: input.value,
           token
@@ -135,6 +146,7 @@ TODO: REDUCE TO THE MINIMUM NEEDED
     };
   })();
 </script>
+
 ```
 
 What happens here:
@@ -153,9 +165,8 @@ This code will receive the request,
 validate the token using the app extension `RecaptchaValidator` service,
 and decide if the request should be accepted or rejected.
 
-TODO: REDUCE TO THE MINIMUM NEEDED
 
-```c#
+```csharp
 #if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
