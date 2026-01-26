@@ -8,8 +8,8 @@ Every Custom C# WebApi Controller inherits from a base class.
 depending on the base class, the APIs and features in the template will change.
 
 > [!TIP]
-> This is basically identical with the [C# base classes](xref:)
-> , just with slightly different names.
+> This is basically identical with the [C# base classes](xref:),
+> just with slightly different names.
 >
 > Because of this, we're not repeating the entire text here, but just listing the class names.
 
