@@ -197,7 +197,7 @@ public abstract class ModelFromEntity : ICanWrap&lt;IEntity&gt;, ICanWrapData, I
 
   <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity__entity" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity._entity">
   _entity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The underlying entity - for inheriting classes to access.</p>
@@ -240,7 +240,7 @@ public abstract class ModelFromEntity : ICanWrap&lt;IEntity&gt;, ICanWrapData, I
 
   <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity_AsList__1_System_Object_ToSic_Sys_Coding_NoParamOrder_System_Boolean_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.AsList``1(System.Object,ToSic.Sys.Coding.NoParamOrder,System.Boolean)">
   AsList&lt;T&gt;(object, NoParamOrder, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convert a list of Entities or TypedItems into a strongly typed list.
@@ -287,7 +287,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
 
   <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity_As__1_System_Object_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.As``1(System.Object)">
   As&lt;T&gt;(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convert an Entity or TypedItem into a strongly typed object.
@@ -368,7 +368,7 @@ If two objects wrap the same item, they will be considered equal.</p>
 
   <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity_GetThis__1___0_System_String_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.GetThis``1(``0,System.String)">
   GetThis&lt;T&gt;(T?, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L127"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a value from the underlying entity, whose name matches the property requesting this.
@@ -413,11 +413,53 @@ So if your C# property is called <code>Birthday</code> it will also get the fiel
 
 
 
+  <a id="ToSic_Sxc_Data_Models_ModelFromEntity_SetupContents_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.SetupContents*"></a>
+
+  <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity_SetupContents_ToSic_Eav_Data_IEntity_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.SetupContents(ToSic.Eav.Data.IEntity)">
+  SetupContents(IEntity?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add the contents to use for the wrapper.
+We are not doing this in the constructor,
+because the object needs to have an empty or DI-compatible constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetupContents(IEntity? source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if all is ok, <code>false</code> if not.
+A typical example would be a wrapper which is setup with <code>null</code> and it cannot work that way.
+On the other hand, if a wrapper is ok with a null source, it would return <code>true</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="ToSic_Sxc_Data_Models_ModelFromEntity_ToString_" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.ToString*"></a>
 
   <h3 id="ToSic_Sxc_Data_Models_ModelFromEntity_ToString" data-uid="ToSic.Sxc.Data.Models.ModelFromEntity.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/2sxc/blob/develop/Src/Sxc/ToSic.Sxc.Data/Data/Models/ModelFromEntity.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Override ToString to give more information about the current object</p>
