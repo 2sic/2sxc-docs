@@ -28,7 +28,7 @@ This allows for a much more robust data model and API which in a CMS environment
 
 ### Rule #3: Data Always Comes from DataSources
 
-Inside the system everything is loosely coupled (think Depedency Injection).
+Inside the system everything is loosely coupled (think Dependency Injection).
 So anything requesting data will always use a [DataSource](xref:NetCode.DataSources.Index) provided by some magic, and then use what was given.
 
 ### Rule #4: Data is Managed and Cached per App

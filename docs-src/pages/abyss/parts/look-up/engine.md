@@ -12,7 +12,7 @@ uid: Abyss.Parts.LookUp.Engine
 The **LookUp Engine** is responsible for getting values. It will use **LookUp** sources to resolve the values.
 
 * The LookUp System is in the [](xref:ToSic.Eav.LookUp) namespace
-* The LookUp Engine is an [](xref:ToSic.Eav.LookUp.Engines.ILookUpEngine)
+* The LookUp Engine is an [](xref:ToSic.Eav.LookUp.Sys.Engines.ILookUpEngine)
 
 > [!WARNING]
 > This is very technical stuff, you usually don't need to know this. We're just including it for completeness sake.
@@ -36,9 +36,9 @@ Usually LookUp Engines will receive a long list (Dictionary) of things to look u
 
 ## C# and Dependency Injection
 
-LookUp Engines all implement the [](xref:ToSic.Eav.LookUp.Engines.ILookUpEngine) interface and should inherit the `LookUpEngine` object.
+LookUp Engines all implement the [](xref:ToSic.Eav.LookUp.Sys.Engines.ILookUpEngine) interface and should inherit the `LookUpEngine` object.
 
-LookUpEngine objects are provided with DependencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Eav.LookUp.Engines.ILookUpEngineResolver).
+LookUpEngine objects are provided with DependencyInjection. The system that gets the currently valid LookUpEngine inherits the [](xref:ToSic.Eav.LookUp.Sys.Engines.ILookUpEngineResolver).
 
 
 
