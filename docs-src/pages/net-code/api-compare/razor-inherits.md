@@ -76,7 +76,7 @@ This is the recommended way to write code in 2sxc 16+.
 >
 > See [Custom.Hybrid.RazorTyped](xref:Custom.Hybrid.RazorTyped)
 
-[!include["base-typed"](_base-typed_.md)]
+[!include["base-typed"](_base-typed.md)]
 
 ## Base Classes in the AppCode.Razor Namespace
 

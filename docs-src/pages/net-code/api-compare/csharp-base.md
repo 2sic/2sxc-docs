@@ -72,7 +72,7 @@ This is the recommended way to write code in 2sxc 16+.
 >
 > See [Custom.Hybrid.CodeTyped](xref:Custom.Hybrid.CodeTyped)
 
-[!include["base-typed"](_base-typed_.md)]
+[!include["base-typed"](_base-typed.md)]
 
 
 ## Base Classes in the AppCode Namespace
