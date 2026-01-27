@@ -32,7 +32,18 @@ such as `{ExtensionName}.{QueryName}` to avoid conflicts with other queries in t
 We also recommend that you don't use spaces or special characters in the query names,
 to ensure easy use in REST API calls.
 
-## TODO: more instructions @2rb
+## Instructions
+
+Visual Queries in App Extensions are created and maintained exactly like normal Visual Queries.
+
+There is no special folder, file, or code required.
+
+Key points to be aware of:
+
+- Visual Queries are stored as **Entities**, not files
+- They must exist in the App **before** exporting the extension
+- Only queries explicitly marked as used will be included in the package
+- Naming should be unique to avoid collisions across Apps
 
 
 ## Include in the Package Definition
