@@ -19,7 +19,8 @@ As example could be `[DateTime:Now]` which would be resolved to the current date
 You would use this in a [Query](xref:Basics.Query.Index) to filter out news which should be published in future, so `PublicationDate < [DateTime:Now]`.
 
 > [!NOTE]
-> There is also a [TokenEngine](xref:ToSic.Sxc.Engines.TokenEngine) which uses the same Token mechanism to generate HTML. What you see here also applies to that, but it's actually a separate topic.
+> There is also a `TokenEngine` which uses the same Token mechanism to generate HTML.
+> What you see here also applies to that, but it's actually a separate topic.
 
 
 ## Some Token Examples

@@ -111,7 +111,7 @@
 
 
   <h1 id="ToSic_Sys_Services_ServiceBase" data-uid="ToSic.Sys.Services.ServiceBase" class="text-break">
-Class ServiceBase  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class ServiceBase  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,8 +119,7 @@ Class ServiceBase  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>ToSic.Sys.Core.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Main base class for most services and helpers which have Logs.
-Also has an API to auto-connect the logs of child-services.</p>
+  <div class="markdown summary"><p>Main base class for most services which have Logs.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -163,6 +162,14 @@ public abstract class ServiceBase : IHasLog</code></pre>
 
 
 
+  <h2 id="ToSic_Sys_Services_ServiceBase_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This is quite internal but used heavily.
+If you are creating DLLs using 2sxc, this may be a good choice, just remember to check if this changes in future versions.</p>
+<p>Notes</p>
+<ul>
+<li>Also has an API to auto-connect the logs of child-services.</li>
+</ul>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -173,10 +180,10 @@ public abstract class ServiceBase : IHasLog</code></pre>
 
   <h3 id="ToSic_Sys_Services_ServiceBase__ctor_System_String_ToSic_Sys_Coding_NoParamOrder_System_Object___" data-uid="ToSic.Sys.Services.ServiceBase.#ctor(System.String,ToSic.Sys.Coding.NoParamOrder,System.Object[])">
   ServiceBase(string, NoParamOrder, object[]?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Experimental signature v17.02...</p>
+  <div class="markdown level1 summary"><p>Main constructor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -187,12 +194,14 @@ public abstract class ServiceBase : IHasLog</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>logName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name to use in the log, like &quot;My.Purpose&quot;</p>
+</dd>
     <dt><code>npo</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd><p>see <a class="xref" href="../../net-code/conventions/named-parameters.html">Convention: Named Parameters</a></p>
 </dd>
     <dt><code>connect</code> <span class="xref">object</span>[]</dt>
-    <dd></dd>
+    <dd><p>List of services to auto-connect to the logging.</p>
+</dd>
   </dl>
 
 
@@ -214,7 +223,7 @@ public abstract class ServiceBase : IHasLog</code></pre>
 
   <h3 id="ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___" data-uid="ToSic.Sys.Services.ServiceBase.ConnectLogs(System.Object[])">
   ConnectLogs(object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connect Log of all dependencies listed in the <code>services</code> array.</p>
@@ -247,7 +256,7 @@ public abstract class ServiceBase : IHasLog</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceBase.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 

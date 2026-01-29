@@ -20,9 +20,9 @@ For the _Data App Assets_ tutorial you need to:
 1. Update the **RootFolder** in the settings to `/assets/demo-icons/`
 
 <img src="./assets/appassets-query.png" class="glow">
-<img src="./assets/allusers-query-settings.png" class="glow">
+<img src="./assets/appassets-query-settings.png" class="glow">
 
-Then you will need to create a folder in the root of the tutorial app at the path speciefied in **RootFolder**: `/assets/demo-icons/`
+Then you will need to create a folder in the root of the tutorial app at the path specified in **RootFolder**: `/assets/demo-icons/`
 
 Download and place [these icons](https://github.com/2sic/app-tutorial-razor/tree/master/assets/demo-icons) in your directory.
 

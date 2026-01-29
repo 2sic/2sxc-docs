@@ -26,15 +26,15 @@ Examples follow.
 This shows a method on the class (for use there only) to create a specific class.
 It will help to keep the access-count on the constructor low.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Core.TestsBasic/Caching/CachePolicyMakerTests.cs#L8-L11)]
+[!code-csharp[](../../../../../../eav-server/ToSic.Sys.Caching.Tests/CachePolicyMakerTests.cs#L8-L11)]
 
 ## Static Class with Test Accessor
 
 This is a static class with a test accessor method, inside the test-project where it is used.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Core.TestsBasic/Caching/TestAccessors.cs)]
+[!code-csharp[](../../../../../../eav-server/ToSic.Sys.Caching.Tests/TestAccessors.cs)]
 
 ## Static Class with Test Accessor in a TestHelper Project
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Core.TestHelpers/Data/Build/ValueBuilderTestAccessors.cs)]
+[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Data.Build.TestHelpers/Data.Build/ValueBuilderTestAccessors.cs)]
 
