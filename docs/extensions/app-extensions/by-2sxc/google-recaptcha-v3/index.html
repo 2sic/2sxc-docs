@@ -176,17 +176,24 @@ Recaptcha v3 works by analyzing user interactions on your website to determine w
 </div>
 <h2 id="code-example">Code Example</h2>
 <h3 id="razor-code-containing-the-html-form--recaptcha-v3-js">Razor Code containing the HTML Form + reCAPTCHA v3 JS</h3>
-<p>TODO: REDUCE TO THE MINIMUM NEEDED</p>
+<p>Before a form can be verified, the browser must:</p>
+<ul>
+<li>Load the reCAPTCHA v3 JavaScript</li>
+<li>Execute an action to generate a token</li>
+<li>Send that token together with the form data to the server</li>
+<li>The following Razor view demonstrates the minimal required setup.</li>
+</ul>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 
 @{
-  // Read the site key from App Settings
+  // Read the public site key from 2sxc App Settings
   var siteKey = AllSettings.String(&quot;GoogleRecaptcha.SiteKey&quot;);
 
-  // API endpoint for the form submit
+  // Build the URL to the WebAPI endpoint which will receive the form data
   var submitUrl = Link.To(api: $&quot;{MyView.Edition}/api/TestForm/SubmitAsync&quot;);
 
-  // Unique wrapper id (important if the view is used multiple times)
+  // Generate a unique DOM id
+  // Important if the same view is rendered multiple times on one page
   var id = &quot;recaptcha-&quot; + UniqueKey;
 }
 
@@ -195,23 +202,28 @@ Recaptcha v3 works by analyzing user interactions on your website to determine w
   &lt;button type=&quot;button&quot; data-send&gt;Send&lt;/button&gt;
 &lt;/div&gt;
 
-&lt;!-- Load Google reCAPTCHA v3 --&gt;
+&lt;!-- Load Google reCAPTCHA v3 JavaScript using the site key --&gt;
 &lt;script src=&quot;https://www.google.com/recaptcha/api.js?render=@siteKey&quot;&gt;&lt;/script&gt;
 
 &lt;script&gt;
   (() =&gt; {
+    // Get references to DOM elements inside this component
     const root = document.getElementById(&quot;@id&quot;);
     const input = root.querySelector(&quot;[data-msg]&quot;);
     const button = root.querySelector(&quot;[data-send]&quot;);
 
+    // Handle button click manually (no normal form submit)
+    // Request a reCAPTCHA token for the action &quot;submit&quot;
+    // Send the message and reCAPTCHA token to the server
     button.onclick = async () =&gt; {
-      // Request a reCAPTCHA token for this action
+
       const token = await grecaptcha.execute(&quot;@siteKey&quot;, { action: &quot;submit&quot; });
 
-      // Send message and token to the server
       await fetch(&quot;@submitUrl&quot;, {
         method: &quot;POST&quot;,
         headers: { &quot;Content-Type&quot;: &quot;application/json&quot; },
+
+        // Payload contains both the user input and the token
         body: JSON.stringify({
           message: input.value,
           token
@@ -220,6 +232,7 @@ Recaptcha v3 works by analyzing user interactions on your website to determine w
     };
   })();
 &lt;/script&gt;
+
 </code></pre>
 <p>What happens here:</p>
 <ul>
@@ -236,8 +249,7 @@ Recaptcha v3 works by analyzing user interactions on your website to determine w
 <p>This code will receive the request,
 validate the token using the app extension <code>RecaptchaValidator</code> service,
 and decide if the request should be accepted or rejected.</p>
-<p>TODO: REDUCE TO THE MINIMUM NEEDED</p>
-<pre><code class="lang-c#">#if NETCOREAPP
+<pre><code class="lang-csharp">#if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
 using System.Web.Http;

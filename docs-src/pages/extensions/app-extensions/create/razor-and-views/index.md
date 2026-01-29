@@ -37,8 +37,8 @@ You may also choose to place them in a sub-folder like `Views` or `Razor` to kee
 We suggest that you go for a clear naming, such as:
 
 1. Standard views: `/extensions/{ExtensionName}/{ViewName}.cshtml`
-1. Partial views: `/extensions/{ExtensionName}/.Part {PartName}.cshtml`
-1. Base classes: `AppCode/Extensions/{ExtensionName}/{ExtensionName}Base.cshtml`
+1. Partial views: `/extensions/{ExtensionName}/Part {Something}.cshtml`
+1. Base classes: `AppCode/Extensions/{ExtensionName}/{Something}Base.cs`
 
 ## Packaging & export
 
@@ -49,12 +49,10 @@ To include Razor files in an extension:
 
 1. Open the **extension configuration** of the extension
 
-<div gallery="gallery1">
-  <img src="./assets/views-configuration.png">
-</div>
-2. Enable:
-   - **Has View** (only if you include view definitions)
+2. Enable **Has View** (but only if you include view definitions)
+
 <div gallery="gallery2">
+  <img src="./assets/views-configuration.png">
   <img src="./assets/views-configuration-razorfiles.png">
 </div>
 
@@ -68,7 +66,9 @@ So make sure to tick the "Has Query" checkbox in the extension's package definit
 
 If you plan to include view definitions, make sure you also tick the "Has View" checkbox,
 and that the view definition is in the data (which must also be exported...)....
-...TODO: @2rb
+
+...
+TODO: @2rb
 
 ---
 

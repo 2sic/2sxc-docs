@@ -148,56 +148,75 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <h3 id="use-in-razortyped-minimal-examples">Use in RazorTyped (minimal examples)</h3>
 <p>Below are intentionally short examples. Your actual namespace/class names may differ depending on where you placed the files.</p>
 <h4 id="current-weather">Current weather</h4>
-<p>TODO: NO GERMAN CODE, VARIABLES, ETC.
-TODO: explain here what the code will do</p>
+<ol>
+<li>Creates an instance of the <code>OpenMeteoCurrent</code> DataSource</li>
+<li>Passes location and configuration values</li>
+<li>Reads the first item from the <code>Default</code> stream</li>
+<li>Displays a few selected weather values</li>
+</ol>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 
 @{
-  // Create the DataSource instance
-  var data = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(config: new {
-    Latitude = 52.52,
-    Longitude = 13.41,
-    Timezone = &quot;Europe/Amsterdam&quot;
+  // Create the DataSource and pass configuration values
+  // These values are forwarded to the Open-Meteo API
+  var source = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(config: new {
+    Latitude = 52.52,          // Geographic latitude
+    Longitude = 13.41,         // Geographic longitude
+    Timezone = &quot;Europe/Amsterdam&quot; // Timezone for returned timestamps
   });
 
-  // The DataSource returns a stream called &quot;Default&quot;
-  var aktuellesWetter = datenquelle[&quot;Default&quot;].FirstOrDefault();
+  // Read the first (and usually only) item from the Default stream
+  var current = source[&quot;Default&quot;].FirstOrDefault();
 }
 
-@if (aktuellesWetter != null) {
+@if (current != null) {
   &lt;div&gt;
-    &lt;strong&gt;Temperature:&lt;/strong&gt; @aktuellesWetter.temperature &lt;br /&gt;
-    &lt;strong&gt;Wind:&lt;/strong&gt; @aktuellesWetter.windspeed &lt;br /&gt;
-    &lt;strong&gt;Weather code:&lt;/strong&gt; @aktuellesWetter.weathercode
+    &lt;!-- Temperature in the configured temperature unit --&gt;
+    &lt;strong&gt;Temperature:&lt;/strong&gt; @current.temperature &lt;br /&gt;
+
+    &lt;!-- Wind speed in the configured wind speed unit --&gt;
+    &lt;strong&gt;Wind speed:&lt;/strong&gt; @current.windspeed &lt;br /&gt;
+
+    &lt;!-- Open-Meteo weather condition code --&gt;
+    &lt;strong&gt;Weather code:&lt;/strong&gt; @current.weathercode
   &lt;/div&gt;
 }
-
 </code></pre>
 <h3 id="forecast-hourlydaily">Forecast (hourly/daily)</h3>
-<p>TODO: NO GERMAN CODE, VARIABLES, ETC.
-TODO: explain here what the code will do</p>
+<ol>
+<li>Creates an instance of the OpenMeteoForecast DataSource</li>
+<li>Requests specific hourly forecast fields</li>
+<li>Reads the forecast data from the Default stream</li>
+<li>Iterates over time/temperature pairs and renders them</li>
+</ol>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 
 @{
-  var datenquelle = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(config: new {
-    Latitude = 52.52,
-    Longitude = 13.41,
-    Timezone = &quot;Europe/Amsterdam&quot;,
-    // Example: request hourly temperature + precipitation
+  // Create the forecast DataSource with configuration
+  var source = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(config: new {
+    Latitude = 52.52,              // Geographic latitude
+    Longitude = 13.41,             // Geographic longitude
+    Timezone = &quot;Europe/Amsterdam&quot;, // Timezone for forecast timestamps
+
+    // Request hourly temperature and precipitation values
     Hourly = &quot;temperature_2m,precipitation&quot;
   });
 
-  var forecast = datenquelle[&quot;Default&quot;].FirstOrDefault();
-  var zeiten = forecast?.hourly?.time;
-  var temps = forecast?.hourly?.temperature_2m;
+  // Read the forecast result from the Default stream
+  var forecast = source[&quot;Default&quot;].FirstOrDefault();
+
+  // Hourly forecast values are returned as parallel arrays
+  var times = forecast?.hourly?.time;
+  var temperatures = forecast?.hourly?.temperature_2m;
 }
 
-@if (zeiten != null &amp;&amp; temps != null) {
+@if (times != null &amp;&amp; temperatures != null) {
   &lt;ul&gt;
-    @for (var i = 0; i &lt; Math.Min(zeiten.Count, temps.Count); i++) {
-      &lt;li&gt;@zeiten[i]: @temps[i]°&lt;/li&gt;
+    @for (var i = 0; i &lt; Math.Min(times.Count, temperatures.Count); i++) {
+      &lt;!-- Combine timestamp and temperature by index --&gt;
+      &lt;li&gt;@times[i]: @temperatures[i]°&lt;/li&gt;
     }
   &lt;/ul&gt;
 }
