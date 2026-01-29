@@ -114,6 +114,7 @@ public MyDataSource(Dependencies services) : base(services)
 ```csharp
 ProvideOut(GetData);
 ```
+
 ---
 
 ## Using the DataSource
