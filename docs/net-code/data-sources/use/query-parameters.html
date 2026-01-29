@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Set Parameters for Queries in C# | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Set Parameters for Queries in C | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Set Parameters for Queries in C# | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Set Parameters for Queries in C | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -103,7 +103,7 @@
         
 
         <article data-uid="NetCode.DataSources.Use.QueryParameters">
-<h1 id="set-parameters-for-queries-in-c">Set Parameters for Queries in C#</h1>
+<h1 id="set-parameters-for-queries-in-c">Set Parameters for Queries in C</h1>
 
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
@@ -207,9 +207,9 @@
 <p>If a <a class="xref" href="../../../basics/query/index.html">Query</a> has been configured to use <strong>Parameters</strong>
 then your C# code can set these parameters before running the query.</p>
 <p>This uses the <a class="xref" href="../../../abyss/parts/look-up/lookup-params.html">Params</a> <a class="xref" href="../../../abyss/parts/look-up/index.html">LookUp</a></p>
-<p>#todoc - explain how it's configured to use parameters</p>
+<h1 id="todoc---explain-how-its-configured-to-use-parameters">todoc - explain how it's configured to use parameters</h1>
 <p>In a Razor or WebApi file, you would write something like this:</p>
-<pre><code class="lang-cs">var allPosts = App.Query[&quot;AllBlogPosts&quot;];
+<pre><code class="lang-cs">var allPosts = App.GetQuery(&quot;AllBlogPosts&quot;);
 allPosts.Params(&quot;Category&quot;, &quot;Web&quot;);
 var posts = allPosts[&quot;Default&quot;];
 
@@ -219,18 +219,18 @@ var dynPosts = AsList(posts);
 <h5>Warning</h5>
 <p>Query objects are single use - which is an internal optimization for reliable, rapid access.
 So if you retrieve various streams, the query still only executes once.<br>
-But if you set a parameter after running the query, you will get an error, unless you call <code>Reset()</code> first.
+But if you set a parameter after running the query, you will get an error, unless you <del>call <code>Reset()</code></del> get a new query first.
 See the next example:</p>
 </div>
-<pre><code class="lang-cs">var query = App.Query[&quot;AllBlogPosts&quot;];
+<pre><code class="lang-cs">var query = App.GetQuery(&quot;AllBlogPosts&quot;);
 query.Params(&quot;Category&quot;, &quot;Web&quot;);
 var webPosts = AsList(query);
 
 // this would result in an error
 // allPosts.Params(&quot;Category&quot;, &quot;IT&quot;);
 
-// this works
-query.Reset();
+// this works - get a new query
+query = App.GetQuery(&quot;AllBlogPosts&quot;);
 query.Params(&quot;Category&quot;, &quot;IT&quot;);
 var itPosts = AsList(query);
 </code></pre>
@@ -238,6 +238,7 @@ var itPosts = AsList(query);
 <h2 id="history">History</h2>
 <ol>
 <li>Params was introduced in 2sxc 10.22</li>
+<li><code>Reset()</code> was removed in v21</li>
 </ol>
 
 </article>
