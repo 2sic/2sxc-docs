@@ -40,8 +40,23 @@ We suggest that you go for a clear naming, such as:
 1. Partial views: `/extensions/{ExtensionName}/.Part {PartName}.cshtml`
 1. Base classes: `AppCode/Extensions/{ExtensionName}/{ExtensionName}Base.cshtml`
 
-## TODO: more instructions @2rb
+## Packaging & export
 
+> [!IMPORTANT]
+> Razor files are only exported if they are marked as *used* in the extension configuration.
+
+To include Razor files in an extension:
+
+1. Open the **extension configuration** of the extension
+
+<div gallery="gallery1">
+  <img src="./assets/views-configuration.png">
+</div>
+2. Enable:
+   - **Has View** (only if you include view definitions)
+<div gallery="gallery2">
+  <img src="./assets/views-configuration-razorfiles.png">
+</div>
 
 ## Include in the Package Definition
 
