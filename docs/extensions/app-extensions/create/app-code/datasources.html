@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>App Extensions - DataSources | 2sxc 21 for Dnn and Oqtane </title>
+      <title>App Extensions – DataSources | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="App Extensions - DataSources | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="App Extensions – DataSources | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -103,46 +103,117 @@
         
 
         <article data-uid="Extensions.AppExtensions.Create.AppCode.DataSources">
-<h1 id="app-extensions---datasources">App Extensions - DataSources</h1>
+<h1 id="app-extensions--datasources">App Extensions – DataSources</h1>
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-<p>Extensions can include custom c# DataSources for use in your code or in Visual Queries.</p>
+<p>Extensions can include custom <strong>C# DataSources</strong> for use in your code or in <strong>Visual Queries</strong>.</p>
 <div class="TIP">
 <h5>Tip</h5>
 <p>This allows you to create small libraries of DataSources which solve a specific problem,
 and then share them across multiple Apps by installing the extension in each App.</p>
 </div>
 <h2 id="location-and-namespace">Location and Namespace</h2>
-<p>You should place the code for the extension in <code>/AppCode/Extensions/{ExtensionName}/</code>.
-The <code>{ExtensionName}</code> should match the folder of the extension itself,
-as it's used in <code>/extensions/{ExtensionName}/</code>.</p>
-<p>If you mix DataSources with other code, consider placing them in a <code>/AppCode/Extensions/{ExtensionName}/DataSources/</code> subfolder.</p>
+<p>You should place the code for the extension in:</p>
+<p>TODO: @2rb - always specify the code-block language for clarity - you should see markdown warnings</p>
+<pre><code>/AppCode/Extensions/{ExtensionName}/
+</code></pre>
+<p>The <code>{ExtensionName}</code> should match the folder of the extension itself,
+as it is used in:</p>
+<pre><code>/extensions/{ExtensionName}/
+</code></pre>
+<p>If you mix DataSources with other code, consider placing them in:</p>
+<pre><code>/AppCode/Extensions/{ExtensionName}/DataSources/
+</code></pre>
 <div class="TIP">
 <h5>Tip</h5>
-<p>In the main extension in <code>/extensions/</code>, the convention is to use lower-case only,
-but here we recommend using PascalCase to match C# conventions.</p>
+<p>In the main extension folder (<code>/extensions/</code>), the convention is to use <strong>lowercase only</strong>.
+For AppCode, we recommend <strong>PascalCase</strong> to match C# conventions.</p>
 </div>
-<p>For namespaces you should really use <code>App.Extensions.{ExtensionName}</code> to avoid conflicts with other extensions.</p>
-<p>If you mix DataSources with other code, consider using a <code>App.Extensions.{ExtensionName}.DataSources</code> sub-namespace.</p>
-<h2 id="todo-more-instructions-2rb">TODO: more instructions @2rb</h2>
+<h3 id="namespace-convention">Namespace Convention</h3>
+<p>To avoid conflicts with other extensions, use:</p>
+<pre><code>App.Extensions.{ExtensionName}
+</code></pre>
+<p>If you place DataSources in a subfolder, use:</p>
+<pre><code>App.Extensions.{ExtensionName}.DataSources
+</code></pre>
+<hr>
+<h2 id="how-to-create-a-custom-datasource">How to Create a Custom DataSource</h2>
+<p>A custom DataSource is a small C# class which inherits from <code>DataSource16</code>.
+It defines one or more output streams using <code>ProvideOut(...)</code>.</p>
+<h3 id="basic-example">Basic Example</h3>
+<pre><code class="lang-csharp">using Custom.DataSource;
+
+namespace App.Extensions.MyExtension.DataSources
+{
+  public class HelloWorldDataSource : DataSource16
+  {
+    public HelloWorldDataSource(Dependencies services) : base(services)
+    {
+      ProvideOut(GetData);
+    }
+
+    private object GetData()
+    {
+      return new[]
+      {
+        new { Message = &quot;Hello from my DataSource&quot; }
+      };
+    }
+  }
+}
+</code></pre>
+<hr>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="class-name">Class Name</h3>
+<ul>
+<li>Must be <strong>unique</strong> across all loaded AppCode</li>
+<li>Avoid generic names like <code>MyDataSource</code> or <code>TestSource</code></li>
+</ul>
+<h3 id="constructor">Constructor</h3>
+<ul>
+<li>Always accept <code>Dependencies services</code></li>
+<li>Always pass it to the base constructor</li>
+</ul>
+<pre><code class="lang-csharp">public MyDataSource(Dependencies services) : base(services)
+</code></pre>
+<h3 id="provideout">ProvideOut</h3>
+<ul>
+<li><p>Registers an <strong>output stream</strong></p>
+</li>
+<li><p>The method you pass must return an <code>object</code></p>
+</li>
+<li><p>Can return:</p>
+<ul>
+<li>Anonymous objects</li>
+<li>Lists / arrays</li>
+<li>Strongly typed models</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-csharp">ProvideOut(GetData);
+</code></pre>
+<hr>
+<h2 id="using-the-datasource">Using the DataSource</h2>
+<h3 id="in-visual-query">In Visual Query</h3>
+<ol>
+<li>Open <strong>Visual Query</strong></li>
+<li>Add a <strong>Custom DataSource</strong></li>
+<li>Select your DataSource class</li>
+<li>Use the output streams like any other source</li>
+</ol>
+<h3 id="in-code-razor--api">In Code (Razor / API)</h3>
+<pre><code class="lang-csharp">var data = Kit.Data.GetSource&lt;HelloWorldDataSource&gt;();
+var items = data[]].List;
+</code></pre>
+<hr>
 <h2 id="special-compiling-options">Special Compiling Options</h2>
 <p>If you need to ensure special DLLs are referenced during compilation,
-see <a class="xref" href="compiler-options.html">App Extensions - Special Compiler Options</a>.</p>
-<h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
-<p>The package export system only exports parts which have been declared to be in use.
-So make sure to tick the &quot;App Code&quot; checkbox in the extension's package definition UI.</p>
+see:</p>
+<p><a class="xref" href="compiler-options.html">App Extensions - Special Compiler Options</a></p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Beta in v20.09, to be released in v21.00</li>
+<li>Beta in v20.09</li>
+<li>Planned release in v21.00</li>
 </ol>
 
 </article>

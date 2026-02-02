@@ -1,6 +1,6 @@
 ---
-
-## uid: Extensions.AppExtensions.Create.AppCode.DataSources
+uid: Extensions.AppExtensions.Create.AppCode.DataSources
+---
 
 # App Extensions – DataSources
 
@@ -10,11 +10,12 @@ Extensions can include custom **C# DataSources** for use in your code or in **Vi
 > This allows you to create small libraries of DataSources which solve a specific problem,
 > and then share them across multiple Apps by installing the extension in each App.
 
----
 
 ## Location and Namespace
 
 You should place the code for the extension in:
+
+TODO: @2rb - always specify the code-block language for clarity - you should see markdown warnings
 
 ```
 /AppCode/Extensions/{ExtensionName}/

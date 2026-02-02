@@ -20,23 +20,26 @@ Use them when you want a field, for example sliders, color pickers, tag selector
 
 Custom input fields are App Extensions and must be placed in a specific folder:
 
-1. In your App, create a folder called `Extensions` (if it does not exist yet)
-2. Inside `Extensions`, create a folder for your field extension.
-    The folder name must follow this **pattern**:
+1. In your App, create a folder called `extensions` (if it does not exist yet)
+2. Inside `extensions`, create a folder for your field extension.
+    The folder name must follow this pattern:
 
      ```text
      field-[data-type]-[name]
      ```
 
-    **Examples:**
-    - `field-string-app-color-picker`
-    - `field-number-slider-basic`
+    **Examples**
+    - `extensions/field-number-dial`
+    - `extensions/field-number-slider-basic`
+    - `extensions/field-boolean-icons`
+    - `extensions/field-string-app-color-picker`
 
-    **Rules:**
+    **Rules**
 
     - It must start with `field-`
     - The second part is the data type (`string`, `number`...).
     - The last part is a free name that describes your field.
+    - no spaces, only dashes `-` as separators.
 
 ## Configure your app extension
 
@@ -44,13 +47,22 @@ Before creating a custom input field, you must know where App Extensions live an
 
 This can be found in the App settings on the left sidebar.
 
+TODO: @rb make sure that screenshots show more, otherwise it's hard to figure out where this is from
+
+TODO: @2rb prefer image tags as they can be set to full-width, shadow, etc. - especially important because white-on-white is hard to see
+see the last image on this page for an example.
+
+TODO: @2rb probably best to have the instructions first, and then the images as gallery / thumbnails below
+
 ![App Extensions Overview](./assets/input-app-extension-configuration.png)
 
 To change the settings of your input field extension, click the pen icon next to the extension entry.
 
+TODO: @rb make sure that screenshots show more, otherwise it's hard to figure out where this is from
+
 ![App extension edit](./assets/input-app-edit.png)
 
-After opening the editor, you’ll see various fields that **describe** and **configure** your extension.
+After opening the editor, you'll see various fields that **describe** and **configure** your extension.
 
 The most important setting is the `Input Fields Configuration`.
 This is where you specify which files should be loaded to activate your custom input field extension.
@@ -181,7 +193,13 @@ This adds the Content Type to the Data Bundle so it will be included when your e
 
 ## Adding the data bundle to your extension
 
+TODO: @2rb - this is less ideal
+
 ![Data bundle binding](./assets/input-data-bundle-extension.png)
+
+TODO: @2rb this is better
+
+<img src="./assets/input-data-bundle-extension.png" class="full-width"/>
 
 Here you can open your App Extension (using the edit icon) and enable **Includes Data Bundles**.  
 Then simply select the Data Bundle you created.  
