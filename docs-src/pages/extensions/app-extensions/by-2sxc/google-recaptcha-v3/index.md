@@ -15,10 +15,11 @@ and you should tune your score threshold over time.
 
 ## How reCaptcha Works
 
-1. A App WebAPIs on server which process user forms/inputs must know if the user is likely a bot and decide if we want to accept the request or not.
-1. For this the WebAPI asks Recaptcha Web API to score the user.
-1. To provide an answer, Recaptcha must first have watched the user behavior in the browser, which requires the browser to load a JS.
-  Recaptcha v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot.
+reCAPTCHA v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot. Here's how the process works:
+
+1. Your app's server needs to know if a user is likely a bot and decide whether to accept the request.
+1. To provide an answer, the server requests a score from Google's reCAPTCHA API.
+1. For this to work, reCAPTCHA must have watched the user behavior in the browser. This requires the browser to load the reCAPTCHA JavaScript library.
 
 This is what happens in detail:
 
@@ -58,7 +59,7 @@ Breakdown of the Process
 
 ## Installation
 
-See [](xref:Extensions.AppExtensions.Install.Index)
+See [Installing App Extensions](xref:Extensions.AppExtensions.Install.Index)
 
 ## Preparation
 
@@ -91,61 +92,52 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 
 Before a form can be verified, the browser must:
 
-- Load the reCAPTCHA v3 JavaScript
-- Execute an action to generate a token
-- Send that token together with the form data to the server
-- The following Razor view demonstrates the minimal required setup.
+* Load the reCAPTCHA v3 JavaScript
+* Execute an action to generate a token
+* Send that token together with the form data to the server
+* The following Razor view demonstrates the minimal required setup.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
 
 @{
-  // Read the public site key from 2sxc App Settings
-  var siteKey = AllSettings.String("GoogleRecaptcha.SiteKey");
+  // Read site key
+  var siteKey = Kit.SecureData.Parse(AllSettings.String("GoogleRecaptcha.SiteKey")).Value;
 
-  // Build the URL to the WebAPI endpoint which will receive the form data
-  var submitUrl = Link.To(api: $"{MyView.Edition}/api/TestForm/SubmitAsync");
-
-  // Generate a unique DOM id
-  // Important if the same view is rendered multiple times on one page
-  var id = "recaptcha-" + UniqueKey;
+  // WebApi Endpoint for DocsFormController, supporting Polymorph editions
+  var submitUrl = Link.To(api: $"{MyView.Edition}/api/DocsForm/SubmitAsync");
 }
 
-<div id="@id">
-  <input type="text" data-msg placeholder="Message" />
-  <button type="button" data-send>Send</button>
-</div>
-
-<!-- Load Google reCAPTCHA v3 JavaScript using the site key -->
+@* Load reCAPTCHA script *@
 <script src="https://www.google.com/recaptcha/api.js?render=@siteKey"></script>
 
+@* Minimal visible demo with button to submit *@
+<button id="send-demo" class="btn btn-primary" type="button">
+  Test ReCaptcha v3
+</button>
+
+@* Script to handle button click, get token, and send to API *@
 <script>
   (() => {
-    // Get references to DOM elements inside this component
-    const root = document.getElementById("@id");
-    const input = root.querySelector("[data-msg]");
-    const button = root.querySelector("[data-send]");
-
-    // Handle button click manually (no normal form submit)
-    // Request a reCAPTCHA token for the action "submit"
-    // Send the message and reCAPTCHA token to the server
-    button.onclick = async () => {
-
-      const token = await grecaptcha.execute("@siteKey", { action: "submit" });
-
-      await fetch("@submitUrl", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-
-        // Payload contains both the user input and the token
-        body: JSON.stringify({
-          message: input.value,
-          token
+    // On click, execute reCAPTCHA and send token to API
+    document.getElementById("send-demo")?.addEventListener("click", () => {
+      grecaptcha.execute("@siteKey", { action: "submit" })
+        .then(token =>
+          fetch("@submitUrl", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: "hello", token })
+          })
+        )
+        .then(async r => {
+          if (!r.ok) throw new Error( await r.text() || "captcha-failed");
         })
-      });
-    };
+        .then(() => alert("reCAPTCHA accepted"))
+        .catch(err => alert("reCAPTCHA failed: " + (err?.message || err)));
+    });
   })();
 </script>
+
 
 ```
 
@@ -167,6 +159,10 @@ and decide if the request should be accepted or rejected.
 
 
 ```csharp
+using AppCode.Extensions.GoogleRecaptchaV3;
+using System.Threading.Tasks;
+using ToSic.Sxc.WebApi;
+
 #if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
@@ -174,29 +170,36 @@ using System.Web.Http;
 using IActionResult = System.Web.Http.IHttpActionResult;
 #endif
 
-using AppCode.Extensions.GoogleRecaptchaV3;
-using System.Threading.Tasks;
-
+/// <summary>
+/// Demo API controller to test reCAPTCHA v3 form submissions
+/// Used by the frontend test form to verify token + message
+/// </summary>
 [AllowAnonymous]
-public class TestFormController : Custom.Hybrid.ApiTyped
+public class DocsFormController : Custom.Hybrid.ApiTyped
 {
   [HttpPost]
-  public async Task<IActionResult> SubmitAsync([FromBody] Request data)
+  [SecureEndpoint]
+  public async Task<IActionResult> SubmitAsync([FromBody] DemoFormRequest request)
   {
-    // Use the extension service to validate the token
-    var validator = GetService<RecaptchaValidator>();
-    var result = await validator.ValidateAsync(data.Token);
+    // Basic input validation
+    if (string.IsNullOrWhiteSpace(request?.Message))
+      return BadRequest("Message-missing");
 
-    // Validation failed (invalid token or score below threshold)
-    if (!result.IsValid)
+    // Validate reCAPTCHA token - include Client IP as it improves validation accuracy
+    var result = await GetService<RecaptchaValidator>()
+      .ValidateAsync(request.Token, remoteIp: Request.GetClientIp());
+
+    if (!result.Success)
       return BadRequest(result.Error);
 
-    // Token is valid and score is above the configured threshold
+    // Continue if reCAPTCHA validation succeeded
+    // YOUR CUSTOM LOGIC goes here (e.g., save the form, send email, etc.)
+
+    // Demo success response
     return Ok();
   }
 }
 
-public record Request(string Token, string Message);
 
 ```
 
