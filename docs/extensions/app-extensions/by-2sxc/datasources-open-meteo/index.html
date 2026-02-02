@@ -109,15 +109,15 @@
 It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</strong> into 2sxc streams, so you can use it like any other DataSource in Visual Query / code.</p>
 <hr>
 <h2 id="installation">Installation</h2>
-<p>See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
+<p>See <a class="xref" href="../../install/index.html">Extension installation</a></p>
 <p>After installation, you should have the extension files in your app</p>
 <h2 id="usage">Usage</h2>
 <p>The extension contains <strong>two DataSources</strong>:</p>
 <ul>
 <li><code>OpenMeteoCurrent</code> → current weather</li>
-<li><code>OpenMeteoForecast</code> → hourly/daily forecast</li>
+<li><code>OpenMeteoForecast</code> → forecast data</li>
 </ul>
-<p>Both DataSources read configuration (lat/lon, units, etc.) and return one stream (usually <code>Default</code>) with a model matching the Open-Meteo response.</p>
+<p>Both DataSources read configuration (lat/lon and other supported parameters) and return one stream (usually <code>Default</code>) with a model matching the Open-Meteo response.</p>
 <h3 id="configure">Configure</h3>
 <p>In Visual Query (or in code), set at least:</p>
 <ul>
@@ -128,10 +128,8 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <ul>
 <li><code>Timezone</code> (e.g. <code>Europe/Amsterdam</code>)</li>
 <li><code>TemperatureUnit</code> (<code>celsius</code>/<code>fahrenheit</code>)</li>
-<li><code>WindSpeedUnit</code> (<code>kmh</code>/<code>ms</code>/<code>mph</code>/<code>kn</code>)</li>
-<li><code>PrecipitationUnit</code> (<code>mm</code>/<code>inch</code>)</li>
 </ul>
-<p>You can configure parameters either through the DataSource configuration UI (Visual Query) or via code when creating the DataSource.</p>
+<p>Only parameters shown in the DataSource configuration UI are supported. Configure them either through Visual Query or via code when creating the DataSource.</p>
 <hr>
 <h3 id="use-in-visual-query">Use in Visual Query</h3>
 <ol>
@@ -152,73 +150,94 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <li>Creates an instance of the <code>OpenMeteoCurrent</code> DataSource</li>
 <li>Passes location and configuration values</li>
 <li>Reads the first item from the <code>Default</code> stream</li>
-<li>Displays a few selected weather values</li>
+<li>Access fields by name (as shown in the Visual Query inspector)</li>
 </ol>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+@using System.Linq
 @using AppCode.Extensions.OpenMeteo
 
+
+&lt;h3&gt;Current Weather&lt;/h3&gt;
 @{
-  // Create the DataSource and pass configuration values
-  // These values are forwarded to the Open-Meteo API
-  var source = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(config: new {
-    Latitude = 52.52,          // Geographic latitude
-    Longitude = 13.41,         // Geographic longitude
-    Timezone = &quot;Europe/Amsterdam&quot; // Timezone for returned timestamps
+  // Create a data source for current weather data from OpenMeteo API
+  // Parameters specify the location and timezone settings
+  var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new {
+    Latitude = 47.1674,   // Latitude coordinate for the location
+    Longitude = 9.4779,   // Longitude coordinate for the location
+    Timezone = &quot;auto&quot;     // Automatically detect timezone based on coordinates
   });
 
-  // Read the first (and usually only) item from the Default stream
-  var current = source[&quot;Default&quot;].FirstOrDefault();
+  // Convert the first result from the data source into a dynamic item
+  // propsRequired: false allows the item to be null if no data is returned
+  var current = AsItem(currentDs.List.FirstOrDefault(), propsRequired: false);
 }
 
-@if (current != null) {
-  &lt;div&gt;
-    &lt;!-- Temperature in the configured temperature unit --&gt;
-    &lt;strong&gt;Temperature:&lt;/strong&gt; @current.temperature &lt;br /&gt;
-
-    &lt;!-- Wind speed in the configured wind speed unit --&gt;
-    &lt;strong&gt;Wind speed:&lt;/strong&gt; @current.windspeed &lt;br /&gt;
-
-    &lt;!-- Open-Meteo weather condition code --&gt;
-    &lt;strong&gt;Weather code:&lt;/strong&gt; @current.weathercode
-  &lt;/div&gt;
+@if (current == null) {
+  // Display message if the API didn't return any weather data
+  &lt;p&gt;No data&lt;/p&gt;
+}
+else {
+  // Display the current weather information retrieved from the API
+  &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; @current.String(&quot;When&quot;)&lt;/p&gt;                         @* Timestamp of the weather reading *@
+  &lt;p&gt;&lt;strong&gt;Temperature:&lt;/strong&gt; @current.Double(&quot;Temperature&quot;) °C&lt;/p&gt;        @* Current temperature in Celsius *@
+  &lt;p&gt;&lt;strong&gt;Weather:&lt;/strong&gt; @current.String(&quot;Weather&quot;)&lt;/p&gt;                   @* Weather condition description *@
 }
 </code></pre>
-<h3 id="forecast-hourlydaily">Forecast (hourly/daily)</h3>
+<h3 id="forecast">Forecast</h3>
 <ol>
 <li>Creates an instance of the OpenMeteoForecast DataSource</li>
-<li>Requests specific hourly forecast fields</li>
 <li>Reads the forecast data from the Default stream</li>
-<li>Iterates over time/temperature pairs and renders them</li>
+<li>Iterates over the items and accesses fields by name</li>
 </ol>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+@using System.Linq
 @using AppCode.Extensions.OpenMeteo
+@using AppCode.Extensions.OpenMeteo.Data
 
+
+&lt;h3&gt;Weather Forecast&lt;/h3&gt;
 @{
-  // Create the forecast DataSource with configuration
-  var source = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(config: new {
-    Latitude = 52.52,              // Geographic latitude
-    Longitude = 13.41,             // Geographic longitude
-    Timezone = &quot;Europe/Amsterdam&quot;, // Timezone for forecast timestamps
-
-    // Request hourly temperature and precipitation values
-    Hourly = &quot;temperature_2m,precipitation&quot;
+  // Create a data source for hourly weather forecast from OpenMeteo API
+  // Returns one record per hour for the specified number of forecast days
+  var forecastDs = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(parameters: new {
+    Latitude = 47.1674,      // Latitude coordinate for the location (Vaduz, Liechtenstein)
+    Longitude = 9.4779,      // Longitude coordinate for the location
+    Timezone = &quot;auto&quot;,       // Automatically detect timezone based on coordinates
+    ForecastDays = 2         // Number of days to forecast (default is 2)
   });
 
-  // Read the forecast result from the Default stream
-  var forecast = source[&quot;Default&quot;].FirstOrDefault();
-
-  // Hourly forecast values are returned as parallel arrays
-  var times = forecast?.hourly?.time;
-  var temperatures = forecast?.hourly?.temperature_2m;
+  // Convert the data source results to a strongly-typed list
+  // Take only the first 24 hours (1 day) for display
+  var items = AsList&lt;OpenMeteoResult&gt;(forecastDs).Take(24).ToList();
 }
 
-@if (times != null &amp;&amp; temperatures != null) {
-  &lt;ul&gt;
-    @for (var i = 0; i &lt; Math.Min(times.Count, temperatures.Count); i++) {
-      &lt;!-- Combine timestamp and temperature by index --&gt;
-      &lt;li&gt;@times[i]: @temperatures[i]°&lt;/li&gt;
+@if (!items.Any()) {
+  // Display message if the API didn't return any forecast data
+  &lt;p&gt;No forecast data available&lt;/p&gt;
+}
+else {
+  &lt;p&gt;Showing hourly forecast for the next @items.Count hours&lt;/p&gt;
+  
+  &lt;table class=&quot;table table-striped&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Time&lt;/th&gt;
+        &lt;th&gt;Temperature (°C)&lt;/th&gt;
+        &lt;th&gt;Weather&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    @foreach (var item in items)
+    {
+      @* Each row displays one hour of forecast data *@
+      &lt;tr&gt;
+        &lt;td&gt;@item.When&lt;/td&gt;            @* Timestamp for this forecast entry *@
+        &lt;td&gt;@item.Temperature&lt;/td&gt;     @* Forecasted temperature in Celsius *@
+        &lt;td&gt;@item.Weather&lt;/td&gt;         @* Human-readable weather condition *@
+      &lt;/tr&gt;
     }
-  &lt;/ul&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
 }
 </code></pre>
 <h2 id="history">History</h2>

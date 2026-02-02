@@ -15,11 +15,17 @@ and you should tune your score threshold over time.
 
 ## How reCaptcha Works
 
-reCAPTCHA v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot. Here's how the process works:
+### [Description](#tab/how-it-works-description)
+
+reCAPTCHA v3 works by analyzing user interactions on your website to determine whether the user is a human or a bot.
+Here's how the process works:
 
 1. Your app's server needs to know if a user is likely a bot and decide whether to accept the request.
 1. To provide an answer, the server requests a score from Google's reCAPTCHA API.
-1. For this to work, reCAPTCHA must have watched the user behavior in the browser. This requires the browser to load the reCAPTCHA JavaScript library.
+1. For this to work, reCAPTCHA must have watched the user behavior in the browser.
+    This requires the browser to load the reCAPTCHA JavaScript library.
+
+### [Diagram](#tab/how-it-works-diagram)
 
 This is what happens in detail:
 
@@ -57,6 +63,8 @@ Breakdown of the Process
 1. **Backend Verification**: For security, your server must talk to Google's servers directly. You send the user's token along with your private _Secret Key_.
 1. **The Verdict**: Google returns a JSON object. In v3, this includes a score (typically $0.0$ to $1.0$), where $1.0$ is very likely a human and $0.0$ is definitely a bot.
 
+---
+
 ## Installation
 
 See [Installing App Extensions](xref:Extensions.AppExtensions.Install.Index)
@@ -92,10 +100,11 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 
 Before a form can be verified, the browser must:
 
-* Load the reCAPTCHA v3 JavaScript
-* Execute an action to generate a token
-* Send that token together with the form data to the server
-* The following Razor view demonstrates the minimal required setup.
+1. Load the reCAPTCHA v3 JavaScript
+2. Execute an action to generate a token
+3. Send that token together with the form data to the server
+
+The following Razor view demonstrates the minimal required setup.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -137,19 +146,14 @@ Before a form can be verified, the browser must:
     });
   })();
 </script>
-
-
 ```
 
 What happens here:
 
-* The site key is read from App Settings
-
-* reCAPTCHA v3 runs silently in the background
-
-* A token is generated for the action "submit"
-
-* The token is sent to the server together with the form data
+1. The site key is read from App Settings
+2. reCAPTCHA v3 runs silently in the background
+3. A token is generated for the action "submit"
+4. The token is sent to the server together with the form data
 
 ### WebApi Sample Validating the Token
 
@@ -199,22 +203,18 @@ public class DocsFormController : Custom.Hybrid.ApiTyped
     return Ok();
   }
 }
-
-
 ```
 
-### What happens here
+What happens here:
 
-* The token is validated server-side using the `RecaptchaValidator` service provided by the app extension.
-
-* The validator automatically:
-  * Calls Google's reCAPTCHA verification API using the secret key configured in the app settings.
-  * Checks if the token is valid and not expired.
-  * Compares the returned score against the configured score threshold.
-  * Requests with scores below the threshold are rejected with an error message.
-
-* If validation succeeds, the form data can be processed further (e.g., saving the message).
-* If validation fails, a `BadRequest` response is returned with the error details.
+1. The token is validated server-side using the `RecaptchaValidator` service provided by the app extension.
+1. The validator automatically:
+    1. Calls Google's reCAPTCHA verification API using the secret key configured in the app settings.
+    2. Checks if the token is valid and not expired.
+    3. Compares the returned score against the configured score threshold.
+    4. Requests with scores below the threshold are rejected with an error message.
+1. If validation succeeds, the form data can be processed further (e.g., saving the message).
+1. If validation fails, a `BadRequest` response is returned with the error details.
 
 ---
 
