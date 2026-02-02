@@ -133,7 +133,7 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <hr>
 <h3 id="use-in-visual-query">Use in Visual Query</h3>
 <ol>
-<li>Add the DataSource <strong>Open-Meteo Current</strong> or <strong>Open-Meteo Forecast</strong></li>
+<li>Add the DataSource <code>Open-Meteo Current</code> or <code>Open-Meteo Forecast</code></li>
 <li>Set the configuration values (Latitude/Longitude/…)</li>
 <li>Connect it to your output</li>
 <li>Inspect the <code>Default</code> stream to see the returned fields</li>
@@ -142,6 +142,9 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-visual-query.png">
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-parameters.png">
 </div>
+<blockquote>
+<p>Tip: In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.</p>
+</blockquote>
 <hr>
 <h3 id="use-in-razortyped-minimal-examples">Use in RazorTyped (minimal examples)</h3>
 <p>Below are intentionally short examples. Your actual namespace/class names may differ depending on where you placed the files.</p>
@@ -153,42 +156,54 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <li>Access fields by name (as shown in the Visual Query inspector)</li>
 </ol>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
-@using System.Linq
 @using AppCode.Extensions.OpenMeteo
-
+@using AppCode.Extensions.OpenMeteo.Data
 
 &lt;h3&gt;Current Weather&lt;/h3&gt;
 @{
   // Create a data source for current weather data from OpenMeteo API
   // Parameters specify the location and timezone settings
-  var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new {
-    Latitude = 47.1674,   // Latitude coordinate for the location
-    Longitude = 9.4779,   // Longitude coordinate for the location
-    Timezone = &quot;auto&quot;     // Automatically detect timezone based on coordinates
+  var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674,   // Latitude of the location
+    Longitude = 9.4779,   // Longitude of the location
+    Timezone = &quot;auto&quot;     // Use timezone of coordinates
   });
 
-  // Convert the first result from the data source into a dynamic item
-  // propsRequired: false allows the item to be null if no data is returned
-  var current = AsItem(currentDs.List.FirstOrDefault(), propsRequired: false);
+  // Use the strongly-typed model
+  var current = As&lt;OpenMeteoResult&gt;(currentDs);
 }
 
-@if (current == null) {
-  // Display message if the API didn't return any weather data
-  &lt;p&gt;No data&lt;/p&gt;
+@* Display message if the API didn't return any weather data, then exit *@
+@if (current == null)
+{
+  &lt;div class=&quot;alert alert-warning&quot;&gt;
+    No data available
+  &lt;/div&gt;
+  return;
 }
-else {
-  // Display the current weather information retrieved from the API
-  &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; @current.String(&quot;When&quot;)&lt;/p&gt;                         @* Timestamp of the weather reading *@
-  &lt;p&gt;&lt;strong&gt;Temperature:&lt;/strong&gt; @current.Double(&quot;Temperature&quot;) °C&lt;/p&gt;        @* Current temperature in Celsius *@
-  &lt;p&gt;&lt;strong&gt;Weather:&lt;/strong&gt; @current.String(&quot;Weather&quot;)&lt;/p&gt;                   @* Weather condition description *@
-}
+
+@* Display the current weather information retrieved from the API *@
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;strong&gt;When:&lt;/strong&gt; @current.When
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;Temperature:&lt;/strong&gt; @current.Temperature °C
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;Weather:&lt;/strong&gt; @current.Weather
+  &lt;/li&gt;
+&lt;/ol&gt;
 </code></pre>
 <h3 id="forecast">Forecast</h3>
 <ol>
-<li>Creates an instance of the OpenMeteoForecast DataSource</li>
+<li>Creates an instance of the <code>OpenMeteoForecast</code> DataSource</li>
 <li>Reads the forecast data from the Default stream</li>
 <li>Iterates over the items and accesses fields by name</li>
 </ol>
+<blockquote>
+<p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
+</blockquote>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using System.Linq
 @using AppCode.Extensions.OpenMeteo
@@ -240,6 +255,9 @@ else {
   &lt;/table&gt;
 }
 </code></pre>
+<blockquote>
+<p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
+</blockquote>
 <h2 id="history">History</h2>
 <ol>
 <li>Initial release</li>
