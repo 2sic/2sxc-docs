@@ -24,13 +24,13 @@ The extension contains **two DataSources**:
 
 Both DataSources read configuration (lat/lon and other supported parameters) and return one stream (usually `Default`) with a model matching the Open-Meteo response.
 
-
 ### Configure
 
 In Visual Query (or in code), set at least:
 
 - `Latitude`
 - `Longitude`
+
 
 Optional (recommended):
 
@@ -43,7 +43,7 @@ Only parameters shown in the DataSource configuration UI are supported. Configur
 
 ### Use in Visual Query
 
-1. Add the DataSource **Open-Meteo Current** or **Open-Meteo Forecast**
+1. Add the DataSource `Open-Meteo Current` or `Open-Meteo Forecast`
 2. Set the configuration values (Latitude/Longitude/…)
 3. Connect it to your output
 4. Inspect the `Default` stream to see the returned fields
@@ -52,6 +52,8 @@ Only parameters shown in the DataSource configuration UI are supported. Configur
   <img src="assets/open-meteo-visual-query.png">
   <img src="assets/open-meteo-parameters.png">
 </div>
+
+> Tip: In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.
 
 ---
 
@@ -69,42 +71,53 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
-@using System.Linq
 @using AppCode.Extensions.OpenMeteo
-
+@using AppCode.Extensions.OpenMeteo.Data
 
 <h3>Current Weather</h3>
 @{
   // Create a data source for current weather data from OpenMeteo API
   // Parameters specify the location and timezone settings
-  var currentDs = Kit.Data.GetSource<OpenMeteoCurrent>(parameters: new {
-    Latitude = 47.1674,   // Latitude coordinate for the location
-    Longitude = 9.4779,   // Longitude coordinate for the location
-    Timezone = "auto"     // Automatically detect timezone based on coordinates
+  var currentDs = Kit.Data.GetSource<OpenMeteoCurrent>(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674,   // Latitude of the location
+    Longitude = 9.4779,   // Longitude of the location
+    Timezone = "auto"     // Use timezone of coordinates
   });
 
-  // Convert the first result from the data source into a dynamic item
-  // propsRequired: false allows the item to be null if no data is returned
-  var current = AsItem(currentDs.List.FirstOrDefault(), propsRequired: false);
+  // Use the strongly-typed model
+  var current = As<OpenMeteoResult>(currentDs);
 }
 
-@if (current == null) {
-  // Display message if the API didn't return any weather data
-  <p>No data</p>
+@* Display message if the API didn't return any weather data, then exit *@
+@if (current == null)
+{
+  <div class="alert alert-warning">
+    No data available
+  </div>
+  return;
 }
-else {
-  // Display the current weather information retrieved from the API
-  <p><strong>Time:</strong> @current.String("When")</p>                         @* Timestamp of the weather reading *@
-  <p><strong>Temperature:</strong> @current.Double("Temperature") °C</p>        @* Current temperature in Celsius *@
-  <p><strong>Weather:</strong> @current.String("Weather")</p>                   @* Weather condition description *@
-}
+
+@* Display the current weather information retrieved from the API *@
+<ol>
+  <li>
+    <strong>When:</strong> @current.When
+  </li>
+  <li>
+    <strong>Temperature:</strong> @current.Temperature °C
+  </li>
+  <li>
+    <strong>Weather:</strong> @current.Weather
+  </li>
+</ol>
 ```
 
 ### Forecast
 
-1. Creates an instance of the OpenMeteoForecast DataSource
+1. Creates an instance of the `OpenMeteoForecast` DataSource
 2. Reads the forecast data from the Default stream
 3. Iterates over the items and accesses fields by name
+
+> Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -159,6 +172,7 @@ else {
 }
 ```
 
+> Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
 ## History
 
