@@ -133,17 +133,35 @@ but here we recommend using PascalCase to match C# conventions.</p>
 Some common sub-folders could be <code>Services</code>, <code>WebApi</code>, <code>Controllers</code>, or <code>Helpers</code> depending on the purpose of the code.
 For data we recommend <code>Data</code> or <code>Models</code>.</p>
 <p>For namespaces you should really use <code>App.Extensions.{ExtensionName}</code> to avoid conflicts with other extensions.</p>
-<h2 id="todo-more-instructions-2rb">TODO: more instructions @2rb</h2>
+<h2 id="what-you-can-build-in-appcode">What You Can Build in AppCode</h2>
+<p>Typical things implemented in extension AppCode:</p>
+<ul>
+<li><strong>Custom DataSources</strong> (for Visual Query and code)</li>
+<li><strong>WebAPI controllers</strong> (endpoints used by the app or UI)</li>
+<li><strong>Reusable services</strong> (API clients, business logic, calculations)</li>
+<li><strong>Models / DTOs</strong> shared across controllers and DataSources</li>
+<li><strong>Helper utilities</strong> used by Razor, APIs, or DataSources</li>
+</ul>
+<p>If you only need small helper methods for a single view, keep them in the Razor file.
+If the logic is reused across multiple views/apps, put it into AppCode.</p>
+<hr>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Custom DataSources: <a class="xref" href="datasources.html">App Extensions – DataSources</a></li>
+<li>Custom input types, toolbars, etc.: see the other pages in this App Extensions section</li>
+</ul>
+<hr>
 <h2 id="special-compiling-options">Special Compiling Options</h2>
 <p>If you need to ensure special DLLs are referenced during compilation,
 see <a class="xref" href="compiler-options.html">App Extensions - Special Compiler Options</a>.</p>
+<hr>
 <h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
 <p>The package export system only exports parts which have been declared to be in use.
-So make sure to tick the &quot;App Code&quot; checkbox in the extension's package definition UI.</p>
+So make sure to tick the <strong>&quot;App Code&quot;</strong> checkbox in the extension's package definition UI.</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Beta in v20.09, to be released in v21.00</li>
+<li>Beta in v20.09, planned stable release in v21.00</li>
 </ol>
 
 </article>
