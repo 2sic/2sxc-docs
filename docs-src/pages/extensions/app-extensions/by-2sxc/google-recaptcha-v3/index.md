@@ -218,6 +218,28 @@ What happens here:
 
 ---
 
+## Hiding the reCAPTCHA Badge
+
+By default, reCAPTCHA v3 displays a badge in the bottom-right corner of your page.
+You can hide it with simple CSS:
+
+```css
+.grecaptcha-badge {
+  visibility: hidden;
+}
+```
+
+> [!WARNING]
+> **Google's Terms of Service Requirement**
+>
+> If you hide the reCAPTCHA badge, you **must** include the following text visibly in your user flow (e.g., near your form):
+>
+> _This site is protected by reCAPTCHA and the Google [Privacy Policy](https://policies.google.com/privacy) and [Terms of Service](https://policies.google.com/terms) apply._
+>
+> See the [official Google reCAPTCHA FAQ](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed) for more details.
+
+---
+
 ## History
 
 1. Creating v1 ca. 2026-01
