@@ -76,6 +76,25 @@ When developing an extension in the same App where you're testing it:
 
 When contributing an extension, always provide:
 
+### What to Look at When Writing Docs
+
+Before writing documentation for your extension, review these existing examples for consistency:
+
+- **For App Extensions**: Look at existing extension docs in `/docs-src/pages/extensions/app-extensions/by-2sxc/`
+  - [Google reCAPTCHA v3](xref:Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index) - WebAPI integration example
+  - [Open-Meteo DataSource](xref:Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index) - DataSource example
+- **For Custom Fields**: Look at existing field documentation patterns
+- **General Structure**: Follow the pattern of introduction → installation → configuration → code examples → history
+
+**Key Points:**
+
+1. **Use consistent headings** and structure like existing docs
+2. **Include diagrams** when they help explain complex flows (use Mermaid)
+3. **Add parameter documentation** as bullet lists before code examples
+4. **Show real examples** - use actual coordinates, real data, working code
+5. **Include warnings/tips** using blockquotes (`> [!TIP]`, `> [!WARNING]`)
+6. **Reference related docs** using xref links
+
 ### 1. README.md
 
 Include:
