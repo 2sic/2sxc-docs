@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Eav_Data_EntityExtensions" data-uid="ToSic.Eav.Data.EntityExtensions" class="text-break">
-Class EntityExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class EntityExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_AsList.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -151,7 +151,7 @@ public static class EntityExtensions</code></pre>
 
   <h3 id="ToSic_Eav_Data_EntityExtensions_AsList__1_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__ToSic_Sys_Coding_NoParamOrder_" data-uid="ToSic.Eav.Data.EntityExtensions.AsList``1(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity},ToSic.Sys.Coding.NoParamOrder)">
   AsList&lt;TModel&gt;(IEnumerable&lt;IEntity?&gt;, NoParamOrder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_AsList.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -192,19 +192,19 @@ public static class EntityExtensions</code></pre>
 
   <a id="ToSic_Eav_Data_EntityExtensions_As_" data-uid="ToSic.Eav.Data.EntityExtensions.As*"></a>
 
-  <h3 id="ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_ICanBeEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Boolean_" data-uid="ToSic.Eav.Data.EntityExtensions.As``1(ToSic.Eav.Data.ICanBeEntity,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Boolean)">
-  As&lt;TModel&gt;(ICanBeEntity?, NoParamOrder, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_ICanBeEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_ToSic_Eav_Data_ModelNullHandling_" data-uid="ToSic.Eav.Data.EntityExtensions.As``1(ToSic.Eav.Data.ICanBeEntity,ToSic.Sys.Coding.NoParamOrder,System.Boolean,ToSic.Eav.Data.ModelNullHandling)">
+  As&lt;TModel&gt;(ICanBeEntity?, NoParamOrder, bool, ModelNullHandling)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_As.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>WIP
-Convert an IEntity to a model of type TModel.
+Convert something which can be an entity to a model of type TModel.
 This is only meant for simple models that do not require a factory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TModel? As&lt;TModel&gt;(this ICanBeEntity? canBeEntity, NoParamOrder npo = default, bool skipTypeCheck = false, bool nullIfNull = true) where TModel : class, IModelSetup&lt;IEntity&gt;, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public static TModel? As&lt;TModel&gt;(this ICanBeEntity? canBeEntity, NoParamOrder npo = default, bool skipTypeCheck = false, ModelNullHandling nullHandling = ModelNullHandling.Undefined) where TModel : class, IModelSetup&lt;IEntity&gt;, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -217,8 +217,8 @@ This is only meant for simple models that do not require a factory.</p>
     <dt><code>skipTypeCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>allow conversion even if the Content-Type of the entity doesn't match the type specified in the parameter T</p>
 </dd>
-    <dt><code>nullIfNull</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If the underlying data is null, prefer null over an empty model.</p>
+    <dt><code>nullHandling</code> <span class="xref">ModelNullHandling</span></dt>
+    <dd><p>How to handle nulls during the conversion - default is <span class="xref">ToSic.Eav.Data.ModelNullHandling.Default</span></p>
 </dd>
   </dl>
 
@@ -251,9 +251,9 @@ This is only meant for simple models that do not require a factory.</p>
 
   <a id="ToSic_Eav_Data_EntityExtensions_As_" data-uid="ToSic.Eav.Data.EntityExtensions.As*"></a>
 
-  <h3 id="ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_IEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Boolean_" data-uid="ToSic.Eav.Data.EntityExtensions.As``1(ToSic.Eav.Data.IEntity,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Boolean)">
-  As&lt;TModel&gt;(IEntity?, NoParamOrder, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_IEntity_" data-uid="ToSic.Eav.Data.EntityExtensions.As``1(ToSic.Eav.Data.IEntity)">
+  As&lt;TModel&gt;(IEntity?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_As.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>WIP
@@ -263,7 +263,57 @@ This is only meant for simple models that do not require a factory.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TModel? As&lt;TModel&gt;(this IEntity? entity, NoParamOrder npo = default, bool skipTypeCheck = false, bool nullIfNull = true) where TModel : class, IModelSetup&lt;IEntity&gt;, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public static TModel? As&lt;TModel&gt;(this IEntity? entity) where TModel : class, IModelSetup&lt;IEntity&gt;, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TModel</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TModel</code></dt>
+    <dd><p>TModel must implement IWrapperSetup&lt;IEntity&gt; and have a parameterless constructor.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidcastexception">InvalidCastException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <a id="ToSic_Eav_Data_EntityExtensions_As_" data-uid="ToSic.Eav.Data.EntityExtensions.As*"></a>
+
+  <h3 id="ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_IEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_ToSic_Eav_Data_ModelNullHandling_" data-uid="ToSic.Eav.Data.EntityExtensions.As``1(ToSic.Eav.Data.IEntity,ToSic.Sys.Coding.NoParamOrder,System.Boolean,ToSic.Eav.Data.ModelNullHandling)">
+  As&lt;TModel&gt;(IEntity?, NoParamOrder, bool, ModelNullHandling)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_As.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>WIP
+Convert an IEntity to a model of type TModel.
+This is only meant for simple models that do not require a factory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TModel? As&lt;TModel&gt;(this IEntity? entity, NoParamOrder npo = default, bool skipTypeCheck = false, ModelNullHandling nullHandling = ModelNullHandling.Undefined) where TModel : class, IModelSetup&lt;IEntity&gt;, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -276,8 +326,8 @@ This is only meant for simple models that do not require a factory.</p>
     <dt><code>skipTypeCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>allow conversion even if the Content-Type of the entity doesn't match the type specified in the parameter T</p>
 </dd>
-    <dt><code>nullIfNull</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If the underlying data is null, prefer null over an empty model.</p>
+    <dt><code>nullHandling</code> <span class="xref">ModelNullHandling</span></dt>
+    <dd><p>How to handle nulls during the conversion - default is <span class="xref">ToSic.Eav.Data.ModelNullHandling.Default</span></p>
 </dd>
   </dl>
 
@@ -312,7 +362,7 @@ This is only meant for simple models that do not require a factory.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Data/Extensions/EntityExtensions_AsList.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 

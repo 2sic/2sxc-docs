@@ -121,7 +121,7 @@ Class CustomItem  <a class="header-action link-secondary" title="View source" hr
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public class CustomItem : ITypedItem, ITyped, ICanBeEntity, IEquatable&lt;ITypedItem&gt;, IDataWrapper, IModelFactoryRequired, IMultiWrapper&lt;IEntity&gt;</code></pre>
+public class CustomItem : ITypedItem, ITyped, ICanBeEntity, IEquatable&lt;ITypedItem&gt;, IModelOfData, IModelFactoryRequired, IMultiWrapper&lt;IEntity&gt;</code></pre>
   </div>
 
 
@@ -142,7 +142,7 @@ public class CustomItem : ITypedItem, ITyped, ICanBeEntity, IEquatable&lt;ITyped
       <div><a class="xref" href="ToSic.Sxc.Data.ITyped.html">ITyped</a></div>
       <div><a class="xref" href="ToSic.Eav.Data.ICanBeEntity.html">ICanBeEntity</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>&gt;</div>
-      <div><a class="xref" href="ToSic.Eav.Data.IDataWrapper.html">IDataWrapper</a></div>
+      <div><a class="xref" href="ToSic.Eav.Models.IModelOfData.html">IModelOfData</a></div>
       <div><a class="xref" href="ToSic.Eav.Models.Factory.IModelFactoryRequired.html">IModelFactoryRequired</a></div>
       <div><a class="xref" href="ToSic.Sys.Wrappers.IMultiWrapper-1.html">IMultiWrapper</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
     </dd>
@@ -571,7 +571,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(IEnumerable&lt;ITypedItem&gt;? source, NoParamOrder npo = default, bool nullIfNull = false) where T : class, IDataWrapper</code></pre>
+    <pre><code class="lang-csharp hljs">protected IEnumerable&lt;T&gt; AsList&lt;T&gt;(IEnumerable&lt;ITypedItem&gt;? source, NoParamOrder npo = default, bool nullIfNull = false) where T : class, IModelOfData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -622,7 +622,7 @@ Typically, the type will be from your <code>AppCode.Data</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(ITypedItem item) where T : class, IDataWrapper</code></pre>
+    <pre><code class="lang-csharp hljs">protected T As&lt;T&gt;(ITypedItem item) where T : class, IModelOfData</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -817,7 +817,7 @@ If conversion fails, will return default <code>false</code> or what is specified
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T? Child&lt;T&gt;(string name, NoParamOrder npo = default, bool? required = null, GetRelatedOptions? options = null) where T : class, IDataWrapper, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public T? Child&lt;T&gt;(string name, NoParamOrder npo = default, bool? required = null, GetRelatedOptions? options = null) where T : class, IModelOfData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -932,7 +932,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Children&lt;T&gt;(string? field, NoParamOrder npo = default, string? type = null, bool? required = null, GetRelatedOptions? options = null) where T : class, IDataWrapper, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Children&lt;T&gt;(string? field, NoParamOrder npo = default, string? type = null, bool? required = null, GetRelatedOptions? options = null) where T : class, IModelOfData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2083,7 +2083,7 @@ If conversion fails, will return default <code>0</code> or what is specified in 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T? Parent&lt;T&gt;(NoParamOrder npo = default, bool? current = null, string? type = null, string? field = null, GetRelatedOptions? options = null) where T : class, IDataWrapper, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public T? Parent&lt;T&gt;(NoParamOrder npo = default, bool? current = null, string? type = null, string? field = null, GetRelatedOptions? options = null) where T : class, IModelOfData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2197,7 +2197,7 @@ Please check the tutorials on 2sxc.org/dnn-tutorials/ for more info.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Parents&lt;T&gt;(NoParamOrder npo = default, string? type = null, string? field = null, GetRelatedOptions? options = null) where T : class, IDataWrapper, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; Parents&lt;T&gt;(NoParamOrder npo = default, string? type = null, string? field = null, GetRelatedOptions? options = null) where T : class, IModelOfData, new()</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
