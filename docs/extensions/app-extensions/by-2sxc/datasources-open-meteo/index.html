@@ -136,7 +136,6 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <li>Add the DataSource <code>Open-Meteo Current</code> or <code>Open-Meteo Forecast</code></li>
 <li>Set the configuration values (Latitude/Longitude/…)</li>
 <li>Connect it to your output</li>
-<li>Inspect the <code>Default</code> stream to see the returned fields</li>
 </ol>
 <div gallery="new-inherit">
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-visual-query.png">
@@ -152,9 +151,15 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <ol>
 <li>Creates an instance of the <code>OpenMeteoCurrent</code> DataSource</li>
 <li>Passes location and configuration values</li>
-<li>Reads the first item from the <code>Default</code> stream</li>
 <li>Access fields by name (as shown in the Visual Query inspector)</li>
 </ol>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
+<li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
+<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code></li>
+<li><code>TemperatureUnit</code> (optional): <code>&quot;celsius&quot;</code> or <code>&quot;fahrenheit&quot;</code>, default is <code>&quot;celsius&quot;</code></li>
+</ul>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 @using AppCode.Extensions.OpenMeteo.Data
@@ -162,11 +167,11 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 &lt;h3&gt;Current Weather&lt;/h3&gt;
 @{
   // Create a data source for current weather data from OpenMeteo API
-  // Parameters specify the location and timezone settings
   var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new OpenMeteoParameters() {
-    Latitude = 47.1674,   // Latitude of the location
-    Longitude = 9.4779,   // Longitude of the location
-    Timezone = &quot;auto&quot;     // Use timezone of coordinates
+    Latitude = 47.1674,         // Vaduz, Liechtenstein
+    Longitude = 9.4779,         // Vaduz, Liechtenstein
+    Timezone = &quot;Europe/Zurich&quot;,
+    TemperatureUnit = &quot;celsius&quot;
   });
 
   // Use the strongly-typed model
@@ -198,9 +203,16 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <h3 id="forecast">Forecast</h3>
 <ol>
 <li>Creates an instance of the <code>OpenMeteoForecast</code> DataSource</li>
-<li>Reads the forecast data from the Default stream</li>
 <li>Iterates over the items and accesses fields by name</li>
 </ol>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
+<li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
+<li><code>ForecastDays</code> (optional): Number of days (<code>1-16</code>), default is <code>7</code></li>
+<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code></li>
+<li><code>TemperatureUnit</code> (optional): <code>&quot;celsius&quot;</code> or <code>&quot;fahrenheit&quot;</code>, default is <code>&quot;celsius&quot;</code></li>
+</ul>
 <blockquote>
 <p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
 </blockquote>
@@ -209,51 +221,56 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 @using AppCode.Extensions.OpenMeteo
 @using AppCode.Extensions.OpenMeteo.Data
 
-
-&lt;h3&gt;Weather Forecast&lt;/h3&gt;
 @{
   // Create a data source for hourly weather forecast from OpenMeteo API
   // Returns one record per hour for the specified number of forecast days
-  var forecastDs = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(parameters: new {
-    Latitude = 47.1674,      // Latitude coordinate for the location (Vaduz, Liechtenstein)
-    Longitude = 9.4779,      // Longitude coordinate for the location
-    Timezone = &quot;auto&quot;,       // Automatically detect timezone based on coordinates
-    ForecastDays = 2         // Number of days to forecast (default is 2)
+  var forecastDs = Kit.Data.GetSource&lt;OpenMeteoForecast&gt;(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674,         // Vaduz, Liechtenstein
+    Longitude = 9.4779,         // Vaduz, Liechtenstein
+    ForecastDays = 1,           // Number of days to forecast
+    Timezone = &quot;Europe/Zurich&quot;,
+    TemperatureUnit = &quot;celsius&quot;
   });
 
-  // Convert the data source results to a strongly-typed list
-  // Take only the first 24 hours (1 day) for display
-  var items = AsList&lt;OpenMeteoResult&gt;(forecastDs).Take(24).ToList();
+  // Use the strongly-typed model
+  var items = AsList&lt;OpenMeteoResult&gt;(forecastDs).ToList();
 }
 
-@if (!items.Any()) {
-  // Display message if the API didn't return any forecast data
-  &lt;p&gt;No forecast data available&lt;/p&gt;
+@* Display message if the API didn't return any forecast data, then exit *@
+@if (!items.Any())
+{
+  &lt;div class=&quot;alert alert-warning&quot;&gt;
+    No forecast data available
+  &lt;/div&gt;
+  return;
 }
-else {
-  &lt;p&gt;Showing hourly forecast for the next @items.Count hours&lt;/p&gt;
-  
-  &lt;table class=&quot;table table-striped&quot;&gt;
-    &lt;thead&gt;
-      &lt;tr&gt;
-        &lt;th&gt;Time&lt;/th&gt;
-        &lt;th&gt;Temperature (°C)&lt;/th&gt;
-        &lt;th&gt;Weather&lt;/th&gt;
-      &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
+
+@* Show the forecast data *@
+&lt;h3&gt;
+  Weather Forecast for the next @items.Count hours
+&lt;/h3&gt;
+
+&lt;table class=&quot;table table-striped&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;When&lt;/th&gt;
+      &lt;th&gt;Temperature (°C)&lt;/th&gt;
+      &lt;th&gt;Weather&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    @* Each row displays one hour of forecast data *@
     @foreach (var item in items)
     {
-      @* Each row displays one hour of forecast data *@
       &lt;tr&gt;
-        &lt;td&gt;@item.When&lt;/td&gt;            @* Timestamp for this forecast entry *@
-        &lt;td&gt;@item.Temperature&lt;/td&gt;     @* Forecasted temperature in Celsius *@
-        &lt;td&gt;@item.Weather&lt;/td&gt;         @* Human-readable weather condition *@
+        &lt;td&gt;@item.When&lt;/td&gt;
+        &lt;td&gt;@item.Temperature °C&lt;/td&gt;
+        &lt;td&gt;@item.Weather&lt;/td&gt;
       &lt;/tr&gt;
     }
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-}
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 </code></pre>
 <blockquote>
 <p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>

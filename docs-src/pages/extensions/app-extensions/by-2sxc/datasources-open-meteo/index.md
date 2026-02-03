@@ -17,12 +17,12 @@ After installation, you should have the extension files in your app
 
 ## Usage
 
-The extension contains **two DataSources**:
+The extension contains two **DataSources**:
 
 - `OpenMeteoCurrent` → current weather
 - `OpenMeteoForecast` → forecast data
 
-Both DataSources read configuration (lat/lon and other supported parameters) and return one stream (usually `Default`) with a model matching the Open-Meteo response.
+Both DataSources accept configuration (see `OpenMeteoParameters`) and return data with a model matching the `OpenMeteoResult`.
 
 ### Configure
 
@@ -34,10 +34,10 @@ In Visual Query (or in code), set at least:
 
 Optional (recommended):
 
-- `Timezone` (e.g. `Europe/Amsterdam`)
-- `TemperatureUnit` (`celsius`/`fahrenheit`)
+- `Timezone` (e.g. `Europe/Amsterdam`, default is `auto` matching the coordinates)
 
-Only parameters shown in the DataSource configuration UI are supported. Configure them either through Visual Query or via code when creating the DataSource.
+Only parameters shown in the DataSource configuration UI are supported.
+Configure them either through Visual Query or via code when creating the DataSource.
 
 ---
 
@@ -71,7 +71,6 @@ Below are intentionally short examples. Your actual namespace/class names may di
 - `Latitude` (required): Decimal degrees, e.g. `47.1674`
 - `Longitude` (required): Decimal degrees, e.g. `9.4779`
 - `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`
-- `TemperatureUnit` (optional): `"celsius"` or `"fahrenheit"`, default is `"celsius"`
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -124,9 +123,10 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 - `Latitude` (required): Decimal degrees, e.g. `47.1674`
 - `Longitude` (required): Decimal degrees, e.g. `9.4779`
-- `ForecastDays` (optional): Number of days (`1-16`), default is `7`
-- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`
-- `TemperatureUnit` (optional): `"celsius"` or `"fahrenheit"`, default is `"celsius"`
+- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"` TODO: @2rb default is NOT MENTIONED
+- `ForecastDays` (optional): Number of days (`1-16`), default is `7` TODO: @2rb default is incorrect
+
+TODO: @2rb - wrong way to show a TIP - pls fix everywhere
 
 > Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
@@ -187,6 +187,8 @@ Below are intentionally short examples. Your actual namespace/class names may di
 </table>
 
 ```
+
+TODO: @2rb - you are repeating the same tip?
 
 > Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
