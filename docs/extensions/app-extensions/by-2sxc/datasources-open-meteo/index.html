@@ -112,12 +112,12 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <p>See <a class="xref" href="../../install/index.html">Extension installation</a></p>
 <p>After installation, you should have the extension files in your app</p>
 <h2 id="usage">Usage</h2>
-<p>The extension contains <strong>two DataSources</strong>:</p>
+<p>The extension contains two <strong>DataSources</strong>:</p>
 <ul>
 <li><code>OpenMeteoCurrent</code> → current weather</li>
 <li><code>OpenMeteoForecast</code> → forecast data</li>
 </ul>
-<p>Both DataSources read configuration (lat/lon and other supported parameters) and return one stream (usually <code>Default</code>) with a model matching the Open-Meteo response.</p>
+<p>Both DataSources accept configuration (see <code>OpenMeteoParameters</code>) and return data with a model matching the <code>OpenMeteoResult</code>.</p>
 <h3 id="configure">Configure</h3>
 <p>In Visual Query (or in code), set at least:</p>
 <ul>
@@ -126,10 +126,10 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 </ul>
 <p>Optional (recommended):</p>
 <ul>
-<li><code>Timezone</code> (e.g. <code>Europe/Amsterdam</code>)</li>
-<li><code>TemperatureUnit</code> (<code>celsius</code>/<code>fahrenheit</code>)</li>
+<li><code>Timezone</code> (e.g. <code>Europe/Amsterdam</code>, default is <code>auto</code> matching the coordinates)</li>
 </ul>
-<p>Only parameters shown in the DataSource configuration UI are supported. Configure them either through Visual Query or via code when creating the DataSource.</p>
+<p>Only parameters shown in the DataSource configuration UI are supported.
+Configure them either through Visual Query or via code when creating the DataSource.</p>
 <hr>
 <h3 id="use-in-visual-query">Use in Visual Query</h3>
 <ol>
@@ -158,7 +158,6 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
 <li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
 <li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code></li>
-<li><code>TemperatureUnit</code> (optional): <code>&quot;celsius&quot;</code> or <code>&quot;fahrenheit&quot;</code>, default is <code>&quot;celsius&quot;</code></li>
 </ul>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
@@ -209,10 +208,10 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 <ul>
 <li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
 <li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
-<li><code>ForecastDays</code> (optional): Number of days (<code>1-16</code>), default is <code>7</code></li>
-<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code></li>
-<li><code>TemperatureUnit</code> (optional): <code>&quot;celsius&quot;</code> or <code>&quot;fahrenheit&quot;</code>, default is <code>&quot;celsius&quot;</code></li>
+<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code> TODO: @2rb default is NOT MENTIONED</li>
+<li><code>ForecastDays</code> (optional): Number of days (<code>1-16</code>), default is <code>7</code> TODO: @2rb default is incorrect</li>
 </ul>
+<p>TODO: @2rb - wrong way to show a TIP - pls fix everywhere</p>
 <blockquote>
 <p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
 </blockquote>
@@ -272,6 +271,7 @@ It lets you pull <strong>Current weather</strong> and/or <strong>Forecast data</
 &lt;/table&gt;
 
 </code></pre>
+<p>TODO: @2rb - you are repeating the same tip?</p>
 <blockquote>
 <p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
 </blockquote>
