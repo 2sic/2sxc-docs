@@ -46,7 +46,6 @@ Only parameters shown in the DataSource configuration UI are supported. Configur
 1. Add the DataSource `Open-Meteo Current` or `Open-Meteo Forecast`
 2. Set the configuration values (Latitude/Longitude/…)
 3. Connect it to your output
-4. Inspect the `Default` stream to see the returned fields
 
 <div gallery="new-inherit">
   <img src="assets/open-meteo-visual-query.png">
@@ -65,8 +64,7 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 1. Creates an instance of the `OpenMeteoCurrent` DataSource
 2. Passes location and configuration values
-3. Reads the first item from the `Default` stream
-4. Access fields by name (as shown in the Visual Query inspector)
+3. Access fields by name (as shown in the Visual Query inspector)
 
 **Parameters:**
 
@@ -120,8 +118,7 @@ Below are intentionally short examples. Your actual namespace/class names may di
 ### Forecast
 
 1. Creates an instance of the `OpenMeteoForecast` DataSource
-2. Reads the forecast data from the Default stream
-3. Iterates over the items and accesses fields by name
+2. Iterates over the items and accesses fields by name
 
 **Parameters:**
 
