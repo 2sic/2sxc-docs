@@ -68,6 +68,12 @@ Below are intentionally short examples. Your actual namespace/class names may di
 3. Reads the first item from the `Default` stream
 4. Access fields by name (as shown in the Visual Query inspector)
 
+**Parameters:**
+
+- `Latitude` (required): Decimal degrees, e.g. `47.1674`
+- `Longitude` (required): Decimal degrees, e.g. `9.4779`
+- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`
+- `TemperatureUnit` (optional): `"celsius"` or `"fahrenheit"`, default is `"celsius"`
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -77,11 +83,11 @@ Below are intentionally short examples. Your actual namespace/class names may di
 <h3>Current Weather</h3>
 @{
   // Create a data source for current weather data from OpenMeteo API
-  // Parameters specify the location and timezone settings
   var currentDs = Kit.Data.GetSource<OpenMeteoCurrent>(parameters: new OpenMeteoParameters() {
-    Latitude = 47.1674,   // Latitude of the location
-    Longitude = 9.4779,   // Longitude of the location
-    Timezone = "auto"     // Use timezone of coordinates
+    Latitude = 47.1674,         // Vaduz, Liechtenstein
+    Longitude = 9.4779,         // Vaduz, Liechtenstein
+    Timezone = "Europe/Zurich",
+    TemperatureUnit = "celsius"
   });
 
   // Use the strongly-typed model
@@ -117,6 +123,14 @@ Below are intentionally short examples. Your actual namespace/class names may di
 2. Reads the forecast data from the Default stream
 3. Iterates over the items and accesses fields by name
 
+**Parameters:**
+
+- `Latitude` (required): Decimal degrees, e.g. `47.1674`
+- `Longitude` (required): Decimal degrees, e.g. `9.4779`
+- `ForecastDays` (optional): Number of days (`1-16`), default is `7`
+- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`
+- `TemperatureUnit` (optional): `"celsius"` or `"fahrenheit"`, default is `"celsius"`
+
 > Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
 ```cshtml
@@ -125,51 +139,56 @@ Below are intentionally short examples. Your actual namespace/class names may di
 @using AppCode.Extensions.OpenMeteo
 @using AppCode.Extensions.OpenMeteo.Data
 
-
-<h3>Weather Forecast</h3>
 @{
   // Create a data source for hourly weather forecast from OpenMeteo API
   // Returns one record per hour for the specified number of forecast days
-  var forecastDs = Kit.Data.GetSource<OpenMeteoForecast>(parameters: new {
-    Latitude = 47.1674,      // Latitude coordinate for the location (Vaduz, Liechtenstein)
-    Longitude = 9.4779,      // Longitude coordinate for the location
-    Timezone = "auto",       // Automatically detect timezone based on coordinates
-    ForecastDays = 2         // Number of days to forecast (default is 2)
+  var forecastDs = Kit.Data.GetSource<OpenMeteoForecast>(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674,         // Vaduz, Liechtenstein
+    Longitude = 9.4779,         // Vaduz, Liechtenstein
+    ForecastDays = 1,           // Number of days to forecast
+    Timezone = "Europe/Zurich",
+    TemperatureUnit = "celsius"
   });
 
-  // Convert the data source results to a strongly-typed list
-  // Take only the first 24 hours (1 day) for display
-  var items = AsList<OpenMeteoResult>(forecastDs).Take(24).ToList();
+  // Use the strongly-typed model
+  var items = AsList<OpenMeteoResult>(forecastDs).ToList();
 }
 
-@if (!items.Any()) {
-  // Display message if the API didn't return any forecast data
-  <p>No forecast data available</p>
+@* Display message if the API didn't return any forecast data, then exit *@
+@if (!items.Any())
+{
+  <div class="alert alert-warning">
+    No forecast data available
+  </div>
+  return;
 }
-else {
-  <p>Showing hourly forecast for the next @items.Count hours</p>
-  
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>Temperature (°C)</th>
-        <th>Weather</th>
-      </tr>
-    </thead>
-    <tbody>
+
+@* Show the forecast data *@
+<h3>
+  Weather Forecast for the next @items.Count hours
+</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>When</th>
+      <th>Temperature (°C)</th>
+      <th>Weather</th>
+    </tr>
+  </thead>
+  <tbody>
+    @* Each row displays one hour of forecast data *@
     @foreach (var item in items)
     {
-      @* Each row displays one hour of forecast data *@
       <tr>
-        <td>@item.When</td>            @* Timestamp for this forecast entry *@
-        <td>@item.Temperature</td>     @* Forecasted temperature in Celsius *@
-        <td>@item.Weather</td>         @* Human-readable weather condition *@
+        <td>@item.When</td>
+        <td>@item.Temperature °C</td>
+        <td>@item.Weather</td>
       </tr>
     }
-    </tbody>
-  </table>
-}
+  </tbody>
+</table>
+
 ```
 
 > Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
