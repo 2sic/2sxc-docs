@@ -52,7 +52,8 @@ Configure them either through Visual Query or via code when creating the DataSou
   <img src="assets/open-meteo-parameters.png">
 </div>
 
-> Tip: In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.
+> [!TIP]
+> In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.
 
 ---
 
@@ -70,7 +71,11 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 - `Latitude` (required): Decimal degrees, e.g. `47.1674`
 - `Longitude` (required): Decimal degrees, e.g. `9.4779`
-- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`
+- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
+
+**Temperature Units:**
+
+Temperature is always returned in **Celsius**. To get Fahrenheit, use the `TemperatureFahrenheit` helper property on the result.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -83,8 +88,7 @@ Below are intentionally short examples. Your actual namespace/class names may di
   var currentDs = Kit.Data.GetSource<OpenMeteoCurrent>(parameters: new OpenMeteoParameters() {
     Latitude = 47.1674,         // Vaduz, Liechtenstein
     Longitude = 9.4779,         // Vaduz, Liechtenstein
-    Timezone = "Europe/Zurich",
-    TemperatureUnit = "celsius"
+    Timezone = "Europe/Zurich"
   });
 
   // Use the strongly-typed model
@@ -123,12 +127,15 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 - `Latitude` (required): Decimal degrees, e.g. `47.1674`
 - `Longitude` (required): Decimal degrees, e.g. `9.4779`
-- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"` TODO: @2rb default is NOT MENTIONED
-- `ForecastDays` (optional): Number of days (`1-16`), default is `7` TODO: @2rb default is incorrect
+- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
+- `ForecastDays` (optional): Number of days (`1-16`), default is `1`
 
-TODO: @2rb - wrong way to show a TIP - pls fix everywhere
+**Temperature Units:**
 
-> Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
+Temperature is always returned in **Celsius**. To get Fahrenheit, use the `TemperatureFahrenheit` helper property on the result.
+
+> [!TIP]
+> You can cast the stream to the `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
@@ -143,8 +150,7 @@ TODO: @2rb - wrong way to show a TIP - pls fix everywhere
     Latitude = 47.1674,         // Vaduz, Liechtenstein
     Longitude = 9.4779,         // Vaduz, Liechtenstein
     ForecastDays = 1,           // Number of days to forecast
-    Timezone = "Europe/Zurich",
-    TemperatureUnit = "celsius"
+    Timezone = "Europe/Zurich"
   });
 
   // Use the strongly-typed model
@@ -187,10 +193,6 @@ TODO: @2rb - wrong way to show a TIP - pls fix everywhere
 </table>
 
 ```
-
-TODO: @2rb - you are repeating the same tip?
-
-> Tip: You can cast the stream to the  `OpenMeteoResult` model using `AsList<OpenMeteoResult>(forecastDs)`.
 
 ## History
 
