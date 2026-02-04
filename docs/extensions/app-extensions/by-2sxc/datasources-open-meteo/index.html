@@ -141,9 +141,10 @@ Configure them either through Visual Query or via code when creating the DataSou
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-visual-query.png">
   <img src="../../../../pages/extensions/app-extensions/by-2sxc/datasources-open-meteo/assets/open-meteo-parameters.png">
 </div>
-<blockquote>
-<p>Tip: In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.</p>
-</blockquote>
+<div class="TIP">
+<h5>Tip</h5>
+<p>In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.</p>
+</div>
 <hr>
 <h3 id="use-in-razortyped-minimal-examples">Use in RazorTyped (minimal examples)</h3>
 <p>Below are intentionally short examples. Your actual namespace/class names may differ depending on where you placed the files.</p>
@@ -157,8 +158,10 @@ Configure them either through Visual Query or via code when creating the DataSou
 <ul>
 <li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
 <li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
-<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code></li>
+<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code>, default is <code>auto</code> (matches coordinates)</li>
 </ul>
+<p><strong>Temperature Units:</strong></p>
+<p>Temperature is always returned in <strong>Celsius</strong>. To get Fahrenheit, use the <code>TemperatureFahrenheit</code> helper property on the result.</p>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.OpenMeteo
 @using AppCode.Extensions.OpenMeteo.Data
@@ -169,8 +172,7 @@ Configure them either through Visual Query or via code when creating the DataSou
   var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new OpenMeteoParameters() {
     Latitude = 47.1674,         // Vaduz, Liechtenstein
     Longitude = 9.4779,         // Vaduz, Liechtenstein
-    Timezone = &quot;Europe/Zurich&quot;,
-    TemperatureUnit = &quot;celsius&quot;
+    Timezone = &quot;Europe/Zurich&quot;
   });
 
   // Use the strongly-typed model
@@ -208,13 +210,15 @@ Configure them either through Visual Query or via code when creating the DataSou
 <ul>
 <li><code>Latitude</code> (required): Decimal degrees, e.g. <code>47.1674</code></li>
 <li><code>Longitude</code> (required): Decimal degrees, e.g. <code>9.4779</code></li>
-<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code> TODO: @2rb default is NOT MENTIONED</li>
-<li><code>ForecastDays</code> (optional): Number of days (<code>1-16</code>), default is <code>7</code> TODO: @2rb default is incorrect</li>
+<li><code>Timezone</code> (optional): IANA timezone, e.g. <code>&quot;Europe/Amsterdam&quot;</code>, default is <code>auto</code> (matches coordinates)</li>
+<li><code>ForecastDays</code> (optional): Number of days (<code>1-16</code>), default is <code>1</code></li>
 </ul>
-<p>TODO: @2rb - wrong way to show a TIP - pls fix everywhere</p>
-<blockquote>
-<p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
-</blockquote>
+<p><strong>Temperature Units:</strong></p>
+<p>Temperature is always returned in <strong>Celsius</strong>. To get Fahrenheit, use the <code>TemperatureFahrenheit</code> helper property on the result.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can cast the stream to the <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
+</div>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using System.Linq
 @using AppCode.Extensions.OpenMeteo
@@ -227,8 +231,7 @@ Configure them either through Visual Query or via code when creating the DataSou
     Latitude = 47.1674,         // Vaduz, Liechtenstein
     Longitude = 9.4779,         // Vaduz, Liechtenstein
     ForecastDays = 1,           // Number of days to forecast
-    Timezone = &quot;Europe/Zurich&quot;,
-    TemperatureUnit = &quot;celsius&quot;
+    Timezone = &quot;Europe/Zurich&quot;
   });
 
   // Use the strongly-typed model
@@ -271,10 +274,6 @@ Configure them either through Visual Query or via code when creating the DataSou
 &lt;/table&gt;
 
 </code></pre>
-<p>TODO: @2rb - you are repeating the same tip?</p>
-<blockquote>
-<p>Tip: You can cast the stream to the  <code>OpenMeteoResult</code> model using <code>AsList&lt;OpenMeteoResult&gt;(forecastDs)</code>.</p>
-</blockquote>
 <h2 id="history">History</h2>
 <ol>
 <li>Initial release</li>
