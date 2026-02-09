@@ -21,12 +21,22 @@ Last Update: **2026-01-07**
 >
 > Also to release an LTS fairly soon.
 
-### Resources
+### Resources 2026 Q1
 
-* @2dm: (iJungleboy) ca. 20%; ca. 8h/wk + PM work
-* @2rb: (Raoul) ca. 50%; ca. 20h/wk (actually 100%, but only junior)
+* @2dm: (iJungleboy) ca. 20%; ca. 8h/wk incl. PM work
+* @2rb: (Raoul) ca. 40%; ca. 20h/wk (actually 100%, but only junior)
 * @STV: (Tonci) ca. 75%; ca. 32h/wk
 * @2ro: (Roman) ca. 10%; ca. 8h/wk
+
+#### Awaiting Release / almost DoD
+
+1. ✅ @2dm: Generic Query API for system data
+    1. ✅ @STV: incl. `$casing` for queries to get data in camelCase
+1. @2dm: Generic Model Factory System for converting entities to typed models
+1. @2rb: Admin UI: Show extensions details of installed extensions - ca. 1d ⏳
+1. @2rb: Admin UI: Undelete ca. 1d ⏳
+1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d ⏳
+
 
 ### Things to Finalize and Document / Blog / Tutorial
 
@@ -41,40 +51,32 @@ Last Update: **2026-01-07**
 
 ### Priorities 2rb
 
-#### Week 1
+#### Week 5
 
-1. Finish the reCaptcha extension - w/docs etc. - ca. 1d
-1. Create meteo data source extension - w/docs etc. - ca. 1d
-1. Extensions documentation - ca. 1d
-1. Improve app-catalog to better link directly to all extensions
-1. Admin UI: Show extensions details of installed extensions - ca. 1d
 1. Assist in publishing / documenting JS-App-Editions, Angular & React extensions - ca. 1d
 1. Blog about each extension - ca. 1d
 1. Short video & blog about installing and using extensions - ca. 0.5d
 1. Short video & blog about creating extensions - ca. 1d
-
-#### Week 2
-
 1. Review more Extensions to create / demo / tutorialize
-1. Admin UI: Undelete ca. 1d
+
+#### Next Weeks
+
 1. Template Service - Tutorials and Docs - ca. 1d
+
 
 
 ### Things to Implement
 
 1. @2dm: Really promote the extension system - ca. 5d
-1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d
 1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
 1. @2rb: Create more extensions (Data sources, etc.)
-1. @2rb: Undelete UI for entities - ca. 1d
 1. @2ro: Finish extensions for integrating Angular & React
 1. @2ro: Create sample app with Angular
 1. @2ro: Create sample app with React
 
 ### Things for Juniors to Work On
 
-1. App Catalog - allow url-filters to jump to extensions etc.
-1. App Catalog - change to new Angular setup w/extensions
+1. App Catalog - update code to use latest Angular extension
 1. EAV-UI: Deduplicate code in various places
 1. EAV-UI: create many unit tests
 1. $2sxc - many unit tests
