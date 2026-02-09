@@ -23,23 +23,21 @@ They allow you to add custom features, tools, and integrations that can enhance 
 
 ## Examples
 
-### Example: Input Field Extension
+1. **Example: Input Field Extension**  
+    An example App Extension is the **Color Picker Spectrum** extension.
+    This extension adds a custom input field that allows users to select colors.
+    Once installed, it can be used in any App to provide a rich color selection experience on a string-input field like this:
 
-An example App Extension is the **Color Picker Spectrum** extension.
-This extension adds a custom input field that allows users to select colors.
-Once installed, it can be used in any App to provide a rich color selection experience on a string-input field like this:
+2. **Example: Admin Tools Extension**  
+    Another example is an Admin Tools extension **Radmin** which lets you quickly create admin tables of data to manage:
 
-<img src="./assets/example-color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>
+3. Example: DataSource Extension  
+    A DataSource extension like **Open Meteo** allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
 
-### Example: Admin Tools Extension
-
-Another example is an Admin Tools extension **Radmin** which lets you quickly create admin tables of data to manage:
-
-<img src="./assets/example-radmin.jpg" alt="Radmin Example" class="full-width"/>
-
-### Example: DataSource Extension
-
-A DataSource extension like **Open Meteo** allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
+<div gallery="gallery1">
+  <img src="./assets/example-color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>
+  <img src="./assets/example-radmin.jpg" alt="Radmin Example" class="full-width"/>
+</div>
 
 ---
 
@@ -70,13 +68,23 @@ App extensions can come in various types - and they can combine all the types, i
 
 - [Input Types](xref:Extensions.AppExtensions.Create.InputField): Custom input fields for data entry.
 - [App Code and Web APIs](xref:Extensions.AppExtensions.Create.AppCode.Index): Custom C# code and Web APIs to add server-side functionality.
-- **Visual Queries**: Predefined queries that can be reused across different parts of your App
-- **Templates**: Custom templates for rendering content.
+- [Visual Queries](xref:Extensions.AppExtensions.Create.VisualQuery.Index): Predefined queries that can be reused across different parts of your App
+- [Templates / Views](xref:Extensions.AppExtensions.Create.RazorAndViews.Index): Custom templates for rendering content.
 - **Scripts**: JavaScript or server-side scripts that add functionality.
 - **Styles**: CSS styles that can be applied to your App's appearance.
 - **Tools**: Utilities that enhance the App development experience.
-- **DataSources**: Custom data sources for retrieving and manipulating data.
+- [DataSources](xref:Extensions.AppExtensions.Create.AppCode.DataSources): Custom data sources for retrieving and manipulating data.
 
 ## Developing Your First App Extension
 
 For first steps, let's create a simple Input Type extension.
+
+TODO:
+
+---
+
+## History
+
+1. Introduced in 2sxc v21
+
+Shortlink: <https://go.2sxc.org/app-ext>

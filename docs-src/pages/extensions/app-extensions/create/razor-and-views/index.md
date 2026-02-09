@@ -14,7 +14,7 @@ uid: Extensions.AppExtensions.Create.RazorAndViews.Index
   { visibility: visible; }
 </style> -->
 
-Extensions can include custom Razor which are either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.
+Extensions can include custom Razor Views for re-use.
 
 > [!TIP]
 > This allows you to create small libraries of Razor which solve a specific problem,
@@ -22,7 +22,7 @@ Extensions can include custom Razor which are either used by the extension itsel
 
 For Razor extensions, you may choose to create one or more of the following:
 
-1. Razor views (`.cshtml` files) for rendering content.  
+1. Razor views (`/extensions/{ExtensionName}/{ViewName}.cshtml` files) for rendering content.  
     ...possibly including the view definition, so it's selectable in the template picker.
 2. Razor partial views for reusable components.
 3. Razor base classes for shared logic, to be used in other Razor files.
@@ -34,7 +34,7 @@ just place them in the `/extensions/{ExtensionName}/` folder of your extension.
 
 You may also choose to place them in a sub-folder like `Views` or `Razor` to keep things organized.
 
-We suggest that you go for a clear naming, such as:
+We _suggest_ that you go for a clear naming, such as:
 
 1. Standard views: `/extensions/{ExtensionName}/{ViewName}.cshtml`
 1. Partial views: `/extensions/{ExtensionName}/Part {Something}.cshtml`
@@ -43,7 +43,7 @@ We suggest that you go for a clear naming, such as:
 ## Packaging & export
 
 > [!IMPORTANT]
-> Razor files are only exported if they are marked as *used* in the extension configuration.
+> Razor files are only exported if they are specified in the extension configuration.
 
 To include Razor files in an extension:
 
@@ -68,6 +68,7 @@ If you plan to include view definitions, make sure you also tick the "Has View" 
 and that the view definition is in the data (which must also be exported...)....
 
 ...
+
 TODO: @2rb
 
 ---

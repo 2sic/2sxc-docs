@@ -114,7 +114,7 @@
   .context-box-summary .edit-ui-custom
   { visibility: visible; }
 </style> -->
-<p>Extensions can include custom Razor which are either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.</p>
+<p>Extensions can include custom Razor Views for re-use.</p>
 <div class="TIP">
 <h5>Tip</h5>
 <p>This allows you to create small libraries of Razor which solve a specific problem,
@@ -122,7 +122,7 @@ and then share them across multiple Apps by installing the extension in each App
 </div>
 <p>For Razor extensions, you may choose to create one or more of the following:</p>
 <ol>
-<li>Razor views (<code>.cshtml</code> files) for rendering content.<br>
+<li>Razor views (<code>/extensions/{ExtensionName}/{ViewName}.cshtml</code> files) for rendering content.<br>
 ...possibly including the view definition, so it's selectable in the template picker.</li>
 <li>Razor partial views for reusable components.</li>
 <li>Razor base classes for shared logic, to be used in other Razor files.</li>
@@ -131,7 +131,7 @@ and then share them across multiple Apps by installing the extension in each App
 <p>While developing Razor extensions,
 just place them in the <code>/extensions/{ExtensionName}/</code> folder of your extension.</p>
 <p>You may also choose to place them in a sub-folder like <code>Views</code> or <code>Razor</code> to keep things organized.</p>
-<p>We suggest that you go for a clear naming, such as:</p>
+<p>We <em>suggest</em> that you go for a clear naming, such as:</p>
 <ol>
 <li>Standard views: <code>/extensions/{ExtensionName}/{ViewName}.cshtml</code></li>
 <li>Partial views: <code>/extensions/{ExtensionName}/Part {Something}.cshtml</code></li>
@@ -140,7 +140,7 @@ just place them in the <code>/extensions/{ExtensionName}/</code> folder of your 
 <h2 id="packaging--export">Packaging &amp; export</h2>
 <div class="IMPORTANT">
 <h5>Important</h5>
-<p>Razor files are only exported if they are marked as <em>used</em> in the extension configuration.</p>
+<p>Razor files are only exported if they are specified in the extension configuration.</p>
 </div>
 <p>To include Razor files in an extension:</p>
 <ol>
@@ -162,8 +162,8 @@ just place them in the <code>/extensions/{ExtensionName}/</code> folder of your 
 So make sure to tick the &quot;Has Query&quot; checkbox in the extension's package definition UI.</p>
 <p>If you plan to include view definitions, make sure you also tick the &quot;Has View&quot; checkbox,
 and that the view definition is in the data (which must also be exported...)....</p>
-<p>...
-TODO: @2rb</p>
+<p>...</p>
+<p>TODO: @2rb</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
