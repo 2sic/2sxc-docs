@@ -9,8 +9,14 @@ Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01
 1. 🧑🏼‍💻 Code generator (Copilot) - now supports saved configurations and many options such as namespace, prefix/suffix etc.
 1. 🧑🏼‍💻 Internal rework of models which provide a typed API for configuration Entities
 1. 🧑🏼‍💻 Special new (BETA) API to easily convert entities to these lightweight models in the `ToSic.Eav.Models` namespace TODOC
+
+#### 🧩 Extensions
+
 1. 🧩 Extensions: Published 3 extensions already <https://2sxc.org/en/apps/type/app-extension>
 1. 🧩 Extensions: extensive docs for extensions <https://docs.2sxc.org/extensions/app-extensions/index.html>
+1. 🧩 Extensions: [Recaptcha Extension](xref:Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index)
+1. 🧩 Extensions: [Open Meteo Extension](xref:Extensions.AppExtensions.By2sxc.OpenMeteo.Index)
+1. 🧩 Extensions: [Improve app-catalog to better link directly to all extensions](https://2sxc.org/en/apps/type/app-extension)
 
 #### Minor
 
