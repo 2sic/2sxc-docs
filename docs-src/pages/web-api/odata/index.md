@@ -54,6 +54,19 @@ The [Query REST API](xref:WebApi.Query) endpoint lets you query [VisualQuery](xr
 
 This executes your predefined query and then applies additional OData filtering/sorting on top of the results.
 
+## Special OData-like Query Options
+
+### $casing - Control Field Name Casing
+
+2sxc's OData implementation includes a special `$casing` option to control the casing of field names in the response.
+This is useful for JavaScript clients that prefer camelCase.
+
+```text
+&$casing=camel
+```
+
+Note: this was added in v21.02.
+
 ## Supported OData System Query Options
 
 2sxc uses the **ToSic.Sys.OData** parser which supports a practical subset of OData v4 system query options.
@@ -330,6 +343,8 @@ The parser generates an AST (Abstract Syntax Tree) which is then executed agains
 
 1. OData support introduced in 2sxc 17 (basic `$select`)
 1. Enhanced OData parser in 2sxc 20.x
+1. Added `$filter`, `$orderby`, `$top`, `$skip` support in 2sxc 21.00
+1. Added `$casing` support in 2sxc 21.02
 
 ---
 
