@@ -134,7 +134,7 @@ public interface IDataSource : IDataSourceLinkable, IAppIdentity, IZoneIdentity,
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.IDataSourceLinkable.html#ToSic_Eav_DataSource_IDataSourceLinkable_Link">IDataSourceLinkable.Link</a>
+      <a class="xref" href="ToSic.Eav.DataSource.IDataSourceLinkable.html#ToSic_Eav_DataSource_IDataSourceLinkable_GetLink">IDataSourceLinkable.GetLink()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.Apps.IZoneIdentity.html#ToSic_Eav_Apps_IZoneIdentity_ZoneId">IZoneIdentity.ZoneId</a>
@@ -166,7 +166,7 @@ public interface IDataSource : IDataSourceLinkable, IAppIdentity, IZoneIdentity,
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_Configuration" data-uid="ToSic.Eav.DataSource.IDataSource.Configuration">
   Configuration
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The configuration system of this data source.
@@ -200,7 +200,7 @@ which provides these values.</p>
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_Error" data-uid="ToSic.Eav.DataSource.IDataSource.Error">
   Error
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Special helper to generate error-streams.</p>
@@ -233,7 +233,7 @@ which provides these values.</p>
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_Immutable" data-uid="ToSic.Eav.DataSource.IDataSource.Immutable">
   Immutable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information if the DataSource is Immutable.
@@ -273,10 +273,10 @@ See <a class="xref" href="../../net-code/conventions/immutable/index.html">Conve
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_In" data-uid="ToSic.Eav.DataSource.IDataSource.In">
   In
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>List of all In connections.</p>
+  <div class="markdown level1 summary"><p>All In connections, read-only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -291,7 +291,7 @@ See <a class="xref" href="../../net-code/conventions/immutable/index.html">Conve
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>&gt;</dt>
-    <dd><p>A dictionary of named <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a> objects, case insensitive</p>
+    <dd><p>A dictionary of named <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a> objects, case-insensitive</p>
 </dd>
   </dl>
 
@@ -309,12 +309,13 @@ See <a class="xref" href="../../net-code/conventions/immutable/index.html">Conve
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the Out-Stream with specified Name.</p>
+  <div class="markdown level1 summary"><p>Gets the Out-Stream with specified Name. <em>DEPRECATED</em> - use GetStream(...) instead as it provides more options to handle errors.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IDataStream? this[string outName] { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This is an old API, better use GetStream(...) as it provides more options to handle errors.&quot;)]
+IDataStream? this[string outName] { get; }</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -350,7 +351,7 @@ See <a class="xref" href="../../net-code/conventions/immutable/index.html">Conve
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_List" data-uid="ToSic.Eav.DataSource.IDataSource.List">
   List
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The items in the data-source - to be exact, the ones in the Default stream.</p>
@@ -402,7 +403,7 @@ In rare cases you need the Out, for example to list the stream names in the data
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a>&gt;</dt>
-    <dd><p>A dictionary of named <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a> objects, case insensitive</p>
+    <dd><p>A dictionary of named <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a> objects, case-insensitive</p>
 </dd>
   </dl>
 
@@ -421,7 +422,7 @@ In rare cases you need the Out, for example to list the stream names in the data
 
   <h3 id="ToSic_Eav_DataSource_IDataSource_GetStream_System_String_ToSic_Sys_Coding_NoParamOrder_System_Boolean_System_Boolean_" data-uid="ToSic.Eav.DataSource.IDataSource.GetStream(System.String,ToSic.Sys.Coding.NoParamOrder,System.Boolean,System.Boolean)">
   GetStream(string?, NoParamOrder, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/Interfaces/IDataSource.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Out-Stream with specified Name and allowing some error handling if not found.</p>
