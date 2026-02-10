@@ -1,6 +1,8 @@
 
 
-## Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth
+## Breaking Changes in v20
+
+### Important: v20 is a Moment-of-Truth Release
 
 > [!IMPORTANT]
 > 2sxc v20 is a milestone clean-up release, so it contains a lot of breaking changes.

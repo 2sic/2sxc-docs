@@ -17,10 +17,10 @@ Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01
 1. 🧩 Extensions: [Recaptcha Extension](xref:Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index)
 1. 🧩 Extensions: [Open Meteo Extension](xref:Extensions.AppExtensions.By2sxc.OpenMeteo.Index)
 1. 🧩 Extensions: [Improve app-catalog to better link directly to all extensions](https://2sxc.org/en/apps/type/app-extension)
-
-#### Minor
-
 1. 🧩 Extensions now nicely support C# naming for the AppCode folder, while using kebap-case (JS-Style) in the `/extensions` folder
+
+<!-- #### Minor -->
+
 
 #### Bugfixes
 
@@ -37,3 +37,5 @@ Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01
 1. Improve DI-startup XDocs, place all in similar namespaces and add docs
 1. Simplify differences around .net vs. .net Framework regarding download files `HttpResponseMessage`
 1. User `record` classes for service dependencies to simplify code and make it more readable
+
+[!include["Changes"](./_brc01.00.md)]
