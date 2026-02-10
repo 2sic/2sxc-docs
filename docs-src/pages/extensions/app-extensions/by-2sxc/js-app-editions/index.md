@@ -2,7 +2,7 @@
 uid: Extensions.AppExtensions.By2sxc.JsAppEditions.Index
 ---
 
-# TODO: @2ro
+# App Extension: JS App Editions
 
 While developing JS apps, it's often useful to have different editions of the app.
 This is a form of Polymorphism - but it goes a lot further.
@@ -19,12 +19,43 @@ See [](xref:Extensions.AppExtensions.Install.Index)
 
 ## Usage
 
-Todo: explain how to use this extension, with code samples and screenshots
+Insert this code into your Razor view where you want to show the editions bar:
+```
+@Html.Partial("../js-app-editions/Editions Bar.cshtml", new { Editions = "live,staging,local" })
+```
+
+Show the toolbar to select an edition - usually only for the superuser / developer
+<img src="./assets/editions-bar.jpg" alt="JS App Editions Bar" class="full-width"/>
+
+With this toolbar, you can select the edition you want to use for the current app. This will set an cookie so that the app knows which edition to load. In code you can then check which edition is active and adjust behavior accordingly.
+
+```
+@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.JsEditions
+@using ToSic.Sxc.Services;
+@using ToSic.Razor.Blade;
+
+@{
+  // Create helper to manage the editions (live, staging etc.)
+  var editionsHelper = GetService<Editions>();
+
+  if (editionsHelper.CurrentEdition == "local")
+  {
+    // Local edition logic here
+    // Some code for local edition
+  }
+  else
+  {
+    // Non-local edition logic here
+    // Some other code
+  }
+}
+```
 
 ---
 
 ## History
 
-1. todo
+1. v01.00 - Initial release for 2sxc 
 
 Shortlink: <https://go.2sxc.org/ext-jsappeds>
