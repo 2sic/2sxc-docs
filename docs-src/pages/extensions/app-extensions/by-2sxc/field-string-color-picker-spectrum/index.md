@@ -9,11 +9,9 @@ This adds a powerful color picker input type for selecting colors with a spectru
 <img src="./assets/color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>
 
 
-## Installation
+## Installation and Use
 
-See [](xref:Extensions.AppExtensions.Install.Index)
-
-## Usage
+➡️ See [](xref:Extensions.AppExtensions.Install.Index)
 
 Once installed, you can simply pick the "Color Picker Spectrum" input type
 when configuring a string field in your content type.

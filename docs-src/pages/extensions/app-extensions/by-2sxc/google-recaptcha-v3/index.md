@@ -71,16 +71,14 @@ See [Installing App Extensions](xref:Extensions.AppExtensions.Install.Index)
 
 ## Preparation
 
-### Prep 1: Get your Google keys (Site Key + Secret)
-
+First: Get your Google keys (Site Key + Secret).
 Create a reCAPTCHA v3 site in the [Google reCAPTCHA admin console](https://azing.org/2sxc/r/dll--jV8) and copy:
 
 * **Site key** (public, used in the browser)
 * **Secret key** (private, used on the server)
 
 
-### Prep 2: Configure the extension in 2sxc App Settings
-
+Then Configure the extension in 2sxc App Settings.
 You can configure everything directly in **2sxc App Settings** for this extension:
 
 * **Site Key**
@@ -88,9 +86,9 @@ You can configure everything directly in **2sxc App Settings** for this extensio
 * **Score Threshold** (minimum score required to accept requests)
 
 <div gallery="new-inherit">
-  <img src="assets/recaptcha-keys.png">
   <img src="assets/recaptcha-appsettings.png">
   <img src="assets/recaptcha-settings.png">
+  <img src="assets/recaptcha-keys.png">
 </div>
 
 

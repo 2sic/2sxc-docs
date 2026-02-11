@@ -24,15 +24,15 @@ They allow you to add custom features, tools, and integrations that can enhance 
 ## Examples
 
 1. **Example: Input Field Extension**  
-    An example App Extension is the **Color Picker Spectrum** extension.
+    An example App Extension is the [Color Picker Spectrum](xref:Extensions.AppExtensions.By2sxc.FieldStringColorPickerSpectrum.Index) extension.
     This extension adds a custom input field that allows users to select colors.
     Once installed, it can be used in any App to provide a rich color selection experience on a string-input field like this:
 
 2. **Example: Admin Tools Extension**  
-    Another example is an Admin Tools extension **Radmin** which lets you quickly create admin tables of data to manage:
+    Another example is an Admin Tools extension [Radmin](xref:Extensions.AppExtensions.By2sxc.Radmin.Index) which lets you quickly create admin tables of data to manage:
 
-3. Example: DataSource Extension  
-    A DataSource extension like **Open Meteo** allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
+3. **Example: DataSource Extension**  
+    A DataSource extension like [Open Meteo](xref:Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index) allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
 
 <div gallery="gallery1">
   <img src="./assets/example-color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>
@@ -43,24 +43,25 @@ They allow you to add custom features, tools, and integrations that can enhance 
 
 ## Key Features of App Extensions
 
-1. Isolated: App extensions are in special places within the App structure, so they don't interfere with the main App code.
-2. Manageable: You can easily install, update, and remove App extensions through the 2sxc interface.
-3. Shareable: App extensions can be exported and shared with other 2sxc users, making it easy to distribute custom functionality.
-4. Versioned: Each App extension can have its own versioning, allowing for better management of updates and compatibility.
-5. Configurable: Many App extensions come with settings that allow you to customize their behavior to fit your specific needs.
-6. Polymorphic: App extensions can be installed in multiple editions, allowing you to test a new edition while keeping the stable one active.
+1. **Isolated**: App extensions are in a special folder, so they don't interfere with the main App code.
+2. **Manageable**: Easily install, update, and remove App extensions.
+3. **Shareable**: App extensions can be exported and shared with others, making it easy to reuse.
+4. **Versioned**: Many apps can have the same extension in its own version.
+5. **Configurable**: Many App extensions come with settings that allow you to customize their behavior.
+6. **Polymorphic**: App extensions can be installed in multiple editions, allowing you to test a new edition while keeping the stable one active.
 
 ## Getting Started with App Extensions
 
 To start using App extensions, follow these steps:
 
 1. **Access the App Extensions Interface**: Navigate to the App management section in your 2sxc installation and select the App you want to extend.
-2. **Browse Available Extensions**: Look for the App Extensions tab or section to see available extensions.
-3. **Install an Extension**: Select an extension you want to install and follow the prompts to add it to your App.
+2. [Browse Available Extensions](https://2sxc.org/en/apps/type/app-extension) in the App Catalog.
+3. [Install an Extension](xref:Extensions.AppExtensions.Install.Index): Select an extension you want to install and follow the prompts to add it to your App.
 
-For best experience, we recommend you try the **Color Picker Spectrum** extension, which adds a powerful color selection tool to your Apps.
-
-TODO: instructions for testing the color picker
+> [!TIP]
+> For a first experience, we recommend you try the
+> [Color Picker Spectrum](xref:Extensions.AppExtensions.By2sxc.FieldStringColorPickerSpectrum.Index) extension,
+> which adds a color selection tool to your Apps.
 
 ## Types of App Extensions
 

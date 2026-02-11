@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>TODO: @2ro | 2sxc 21 for Dnn and Oqtane </title>
+      <title>App Extension: Angular Loader | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="TODO: @2ro | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="App Extension: Angular Loader | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -103,17 +103,80 @@
         
 
         <article data-uid="Extensions.AppExtensions.By2sxc.AngularLoader.Index">
-<h1 id="todo-2ro">TODO: @2ro</h1>
+<h1 id="app-extension-angular-loader">App Extension: Angular Loader</h1>
 
-<p>TODO: description, what it is</p>
-<h2 id="installation">Installation</h2>
-<p>See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
-<h2 id="usage">Usage</h2>
-<p>Todo: explain how to use this extension, with code samples and screenshots</p>
-<hr>
+<p>Whit this Extension, you can easily load Angular apps into your DNN environment. It handles loading the Angular framework and your app code.</p>
+<p>Optionally, it can also handle loading different editions of your app (e.g. dev vs. prod) using the JS App Editions extension.</p>
+<h2 id="installation-and-use">Installation and Use</h2>
+<p>➡️ See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_use-in-razor-minimal" role="tab" aria-controls="tabpanel_1_use-in-razor-minimal" data-tab="use-in-razor-minimal" tabindex="0" aria-selected="true">Basic example</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_with-editions" role="tab" aria-controls="tabpanel_1_with-editions" data-tab="with-editions" tabindex="-1">With Editions</a>
+</li>
+</ul>
+<section id="tabpanel_1_use-in-razor-minimal" role="tabpanel" data-tab="use-in-razor-minimal">
+
+<ol>
+<li>First, build your Angular app and place the output files into the appropriate folder in your app.</li>
+<li>Insert this code into your Razor view where you want to load the Angular app:</li>
+</ol>
+<pre><code class="lang-cshtml">@{
+  var angularConfig = new
+  {
+    AngularAppPath = &quot;/angular-demo/angular/browser&quot;,
+    AngularAppTag = &quot;app-root&quot;,
+    Editions = &quot;&quot;,
+    LocalDevServerPath = &quot;&quot;,
+    LocalDevFiles = &quot;&quot;
+  };
+  
+}
+
+@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: angularConfig)
+</code></pre>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/image-2.png" alt="Angular Hello World" class="full-width">
+<p>This will load the Angular app from the specified path (e.g. <code>/angular-demo/angular/browser</code>)
+regardless of the current edition. For example the hello world app of the Angular Quickstart Guide.</p>
+</section>
+<section id="tabpanel_1_with-editions" role="tabpanel" data-tab="with-editions" aria-hidden="true" hidden="hidden">
+<img src="../../../../assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
+<p>The Angular Loader includes the <a class="xref" href="../js-app-editions/index.html">JS App Editions</a>
+extension to develop the app locally with a hot-build, while loading the production build from DNN for normal users.</p>
+<p>To use the Angular Loader with Editions,
+build your Angular app and place the output files into the appropriate folders in your app
+(e.g. <code>/live/dist/ng-app</code>, <code>/staging/dist/ng-app</code>, <code>/local/dist/ng-app</code>).</p>
+<p>Insert this code into your Razor view where you want to load the Angular app:</p>
+<pre><code class="lang-cshtml">@{
+  var angularConfig = new
+  {
+    AngularAppPath = &quot;/dist/ng-app&quot;,
+    AngularAppTag = &quot;app-root&quot;,
+    Editions = &quot;live,staging,local&quot;,
+    LocalDevServerPath = &quot;//localhost:4200&quot;,
+    LocalDevFiles = &quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;
+  }
+}
+
+@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: angularConfig)
+</code></pre>
+<p>This will load the Angular app based on the current edition.
+For example, if the current edition is &quot;live&quot;, it will load the Angular app from &quot;/live/dist/ng-app&quot;.</p>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/image.png" alt="Angular App with Editions" class="full-width">
+<p>The local edition is useful for development,
+as it allows you to load the Angular app directly
+from your local development environment without having to build and deploy it to the server.
+When the local edition is active, the Angular Loader will load the app from the specified
+LocalDevServerPath (e.g. <code>&quot;//localhost:4200&quot;</code>) and include the specified LocalDevFiles (e.g. <code>&quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;</code>).
+This allows you to see your changes in real-time as you develop your Angular app.</p>
+</section>
+</div>
 <h2 id="history">History</h2>
 <ol>
-<li>todo</li>
+<li>v01.00 - Initial release for 2sxc</li>
 </ol>
 <p>Shortlink: <a href="https://go.2sxc.org/ext-ngloader">https://go.2sxc.org/ext-ngloader</a></p>
 

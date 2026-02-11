@@ -18,17 +18,19 @@ App Extensions can be installed quickly and easily - and also removed again if n
 
 There are two ways to install App Extensions:
 
-1. **From the 2sxc App Store**: Many App Extensions are available in the 2sxc App Store. You can browse the store, find the extension you want, and install it directly into your App with just a few clicks.
+1. **From the 2sxc App Store**:
+    Many App Extensions are available in the 2sxc [App Store](https://2sxc.org/en/apps/type/app-extension).
+    You can browse the store, find the extension you want, and install it directly into your App with just a few clicks.
 2. **Manual Installation**: If you have an App Extension package (usually a .zip file), you can manually upload and install it into your App through the 2sxc interface.
 
-## Installing from the 2sxc App Store
+## [Install from the 2sxc App Store](#tab/install-store)
 
-To install an App Extension from the 2sxc App Store, follow these steps:
+To install an App Extension from the 2sxc [App Store](https://2sxc.org/en/apps/type/app-extension), follow these steps:
 
-1. Go to the App Settings of the App where you want to install the extension.
-2. Navigate to the "App Extensions" and click Add Extension
-3. Choose "Extensions Catalog" and select your extension from the list.
-4. Click Install to add the extension to your App.
+1. Go to the **App Settings** of the App where you want to install the extension.
+2. Navigate to the **App Extensions** and click **Add Extension**.
+3. Choose **Extensions Catalog** and select your extension from the list.
+4. Click **Install** to add the extension to your App.
 
 When you're about to install the app, the system will do a _preflight_ to check for any potential issues.
 If everything looks good, the installation will proceed.
@@ -46,10 +48,12 @@ If everything looks good, the installation will proceed.
 > allowing you to test a new edition while keeping the stable one active.
 > This is explained more below.
 
-## Manual Installation
+## [Manual Installation](#tab/install-manual)
 
 To manually install an App Extension, do the same as before, but instead of choosing from the catalog,
 select the option to upload a package, then choose your .zip file and follow the prompts to complete the installation.
+
+---
 
 ## Post-Installation Steps
 
@@ -57,6 +61,8 @@ Every extension is different and offers different features.
 Some extensions will work immediately after installation, while others may require additional configuration.
 
 ## Installing Multiple Editions of an Extension (Polymorphic Extensions)
+
+<img src="~/assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
 
 Some App Extensions are polymorphic, meaning they can be installed in multiple editions.
 This allows you to test a new edition of an extension while keeping the stable one active.

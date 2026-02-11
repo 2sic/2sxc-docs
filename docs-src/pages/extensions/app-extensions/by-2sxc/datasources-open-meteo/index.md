@@ -9,13 +9,9 @@ It lets you pull **Current weather** and/or **Forecast data** into 2sxc streams,
 
 ---
 
-## Installation
+## Installation and Use
 
-See [Extension installation](xref:Extensions.AppExtensions.Install.Index)
-
-After installation, you should have the extension files in your app
-
-## Usage
+➡️ See [Extension installation](xref:Extensions.AppExtensions.Install.Index)
 
 The extension contains two **DataSources**:
 
@@ -24,15 +20,12 @@ The extension contains two **DataSources**:
 
 Both DataSources accept configuration (see `OpenMeteoParameters`) and return data with a model matching the `OpenMeteoResult`.
 
-### Configure
-
-In Visual Query (or in code), set at least:
+For parameters you can set the following in code or Visual Query:
 
 - `Latitude`
 - `Longitude`
 
-
-Optional (recommended):
+Optional parameters (recommended):
 
 - `Timezone` (e.g. `Europe/Amsterdam`, default is `auto` matching the coordinates)
 
@@ -41,7 +34,7 @@ Configure them either through Visual Query or via code when creating the DataSou
 
 ---
 
-### Use in Visual Query
+### [Use in Visual Query](#tab/use-in-visual-query)
 
 1. Add the DataSource `Open-Meteo Current` or `Open-Meteo Forecast`
 2. Set the configuration values (Latitude/Longitude/…)
@@ -55,9 +48,8 @@ Configure them either through Visual Query or via code when creating the DataSou
 > [!TIP]
 > In the configuration UI, click the small map icon next to the coordinate fields to pick latitude/longitude from a map.
 
----
 
-### Use in RazorTyped (minimal examples)
+### [Use in Razor - Current Weather](#tab/use-in-razor-current-weather)
 
 Below are intentionally short examples. Your actual namespace/class names may differ depending on where you placed the files.
 
@@ -118,7 +110,7 @@ Temperature is always returned in **Celsius**. To get Fahrenheit, use the `Tempe
 </ol>
 ```
 
-### Forecast
+### [Use in Razor - Forecast](#tab/use-in-razor-forecast)
 
 1. Creates an instance of the `OpenMeteoForecast` DataSource
 2. Iterates over the items and accesses fields by name

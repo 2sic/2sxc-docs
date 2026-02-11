@@ -8,11 +8,9 @@ This adds a nice number slider as an input type for number fields.
 
 <img src="./assets/single-slider.jpg" alt="Number Slider Basic Example" class="full-width"/>
 
-## Installation
+## Installation and Use
 
-See [](xref:Extensions.AppExtensions.Install.Index)
-
-## Usage
+➡️ See [](xref:Extensions.AppExtensions.Install.Index)
 
 Once installed, you can simply pick the "Number Slider Basic" input type
 when configuring a number field in your content type.

@@ -29,4 +29,4 @@ JavaScript Specific Extensions:
 
 - [JS App Editions](xref:Extensions.AppExtensions.By2sxc.JsAppEditions.Index): An extension that allows you to create different editions of your JS apps for development and production.
 - [Angular Loader](xref:Extensions.AppExtensions.By2sxc.AngularLoader.Index): An extension to facilitate loading Angular applications within 2sxc.
-- [React Loader](xref:Extensions.AppExtensions.By2sxc.ReactLoader.Index): An extension to facilitate loading React applications within 2sxc.
+- [React Loader WIP](xref:Extensions.AppExtensions.By2sxc.ReactLoader.Index): An extension to facilitate loading React applications within 2sxc.
