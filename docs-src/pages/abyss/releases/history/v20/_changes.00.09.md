@@ -1,5 +1,5 @@
 
-### 2sxc v20.00.09 (ca. 2025-12-08)
+### 2sxc v20.00.09 (2025-12-08)
 
 > [!WARNING]
 > 2sxc v20 is a [MoT Release](xref:Abyss.Releases.Management.PolicyMot), containing many breaking changes.

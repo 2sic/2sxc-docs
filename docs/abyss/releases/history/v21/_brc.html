@@ -104,7 +104,8 @@
 
         <article data-uid="">
 
-<h2 id="breaking-changes-in-eav-and-2sxc-v20---moment-of-truth">Breaking Changes in EAV and 2sxc v20 - Moment-of-Truth</h2>
+<h2 id="breaking-changes-in-v21">Breaking Changes in v21</h2>
+<h3 id="important-previous-v20-was-a-moment-of-truth-release">Important: Previous v20 was a Moment-of-Truth Release</h3>
 <div class="IMPORTANT">
 <h5>Important</h5>
 <p>2sxc v21 has only minor breaking changes.</p>
@@ -113,14 +114,36 @@
 or if you have some extremely old/deprecated code.</p>
 <p>See also: <a class="xref" href="../../management/policy-mot.html">MoT Policy (Moment of Truth)</a></p>
 </div>
+<p>Note that we marked the breaking changes like this</p>
+<ul>
+<li>⚠️ things which may affect you</li>
+<li>⬇️ things which are extremely unlikely to affect you</li>
+</ul>
+<h3 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h3>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h4>
 <ol>
-<li>In Razor/WebApi, the <code>As&lt;T&gt;(...)</code> method removed a (probably never used) parameter <code>mock:</code>. To create mocks, use the <code>Kit.Convert.ToMock&lt;...&gt;</code> or <code>Kit.Convert.ToMockItem&lt;...&gt;</code> instead.</li>
-<li>🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders. The migration should happen automatically, but if something doesn't work, this is why.</li>
-<li>🥫 SQL: The tables <code>TsDynDataHistory</code> and <code>TsDynDataRelationships</code> has a few minor changes.</li>
-<li>An internal API to <code>Reset()</code> queries has been removed, as today everything should be functional meaning you should recreate the query. (v21.01)</li>
-<li>An internal <code>EntityBasedType</code> API has been removed and superseded by <code>ModelOfEntity</code> (v21.01)</li>
-<li>The <strong>Model</strong> system was completely reworked for more features, and most of it was moved from <code>ToSic.Sxc.Data.Models</code> to <code>ToSic.Eav.Models</code>.<br>
+<li>⬇️ In Razor/WebApi, the <code>As&lt;T&gt;(...)</code> method removed a (probably never used) parameter <code>mock:</code>.
+To create mocks, use the <code>Kit.Convert.ToMock&lt;...&gt;</code> or <code>Kit.Convert.ToMockItem&lt;...&gt;</code> instead.</li>
+<li>⚠️🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders.
+The migration should happen automatically, but if something doesn't work, this is why.</li>
+<li>⬇️🥫 SQL: The tables <code>TsDynDataHistory</code> and <code>TsDynDataRelationships</code> has a few minor changes.</li>
+</ol>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2101">Breaking Changes in EAV and 2sxc v21.01</h4>
+<ol>
+<li>⬇️ An internal API to <code>Reset()</code> queries has been removed,
+as today everything should be functional meaning you should recreate the query. (v21.01)</li>
+<li>⬇️ An internal <code>EntityBasedType</code> API has been removed and superseded
+by <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Models.ModelOfEntity.html"><code>ModelOfEntity</code></a> (v21.01)</li>
+<li>⬇️ The <strong>Model</strong> system was completely reworked for more features,
+and most of it was moved from <code>ToSic.Sxc.Data.Models</code> to <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Models.html"><code>ToSic.Eav.Models</code></a>.<br>
 This was never publicly documented, but if you used any of these APIs, please check the new locations and new features. (v21.01)</li>
+</ol>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2102">Breaking Changes in EAV and 2sxc v21.02</h4>
+<ol>
+<li>⚠️🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders.
+The migration should happen automatically, but if something doesn't work, this is why.</li>
+<li>⬇️🥫 DataSource - an internal API property <code>Link</code> is changed to <code>GetLink()</code> and changed to be an explicit implementation.
+This is probably never used.</li>
 </ol>
 
 </article>

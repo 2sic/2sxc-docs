@@ -91,3 +91,5 @@ Note: The Oqtane release had a small bug which was fixed in v21.00.01 on 2026-01
 
 1. Switch JS unit testing to VTest - for Eav-UI, 2sxc-ui, inpage, ...
 1. Update `System.Diagnostics.DiagnosticSource` to v9.0.11
+
+[!include["Changes"](./_brc00.00.md)]
