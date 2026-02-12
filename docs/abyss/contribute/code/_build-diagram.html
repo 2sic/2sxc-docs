@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Build Automation | 2sxc 21 for Dnn and Oqtane </title>
+      <title> | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Build Automation | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/build.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/_build-diagram.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,23 +102,8 @@
 
         
 
-        <article data-uid="Abyss.Contribute.Code.Build">
-<h1 id="build-automation">Build Automation</h1>
+        <article data-uid="">
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
-<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
-</div>
-<h2 id="concept">Concept</h2>
-<p>2sxc has a few git repositories, each with their own build process.
-But in general they all follow the same principles:</p>
-<ol>
-<li>When you compile a project, it will first compile the standard way, into the <code>dist</code> (JS) or <code>bin</code> (C#) folder</li>
-<li>The build process (WebPack, Vite or MSBuild) will then check <strong>the current folder and all parent folders</strong> for a file <code>2sxc-build.config.json</code>
-to determine places which it should copy things to...</li>
-<li>If not found, it will use <code>2sxc-build-fallback.config.json</code> which is located in the root of each repository - this is basically empty but should reference these docs.</li>
-</ol>
 <pre><code class="lang-mermaid">flowchart TB
  subgraph s1[&quot;VS, MSBuild, Webpack, ...&quot;]
     direction LR
@@ -137,74 +122,10 @@ to determine places which it should copy things to...</li>
     n4@{ shape: rect}
 </code></pre>
 
-<div class="TIP">
-<h5>Tip</h5>
-<p>The <code>2sxc-build.config.json</code> file is the key to automating the build and deployment process.
-It allows you to specify where the built files should be copied to, which can save you a lot of time and effort when testing your changes in a local DNN or Oqtane installation.</p>
-<p>Without this file, you would need to manually copy the built files to the appropriate locations in your local DNN or Oqtane installation every time you make a change and build the code, which can be very time-consuming and error-prone.</p>
-</div>
-<h2 id="location-of-the-2sxc-buildconfigjson-file">Location of the <code>2sxc-build.config.json</code> File</h2>
-<p>The <code>2sxc-build.config.json</code> file can be located in any folder of your project.
-It is typically placed in the root folder of your project or in a parent folder that is common to all the parts you want to build and deploy.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Recommended: <code>C:\Projects\2sxc\2sxc-build.config.json</code> - this is the location used by the 2sxc team for their development environment.</p>
-</div>
-<p>This is the scenario that the 2sxc team uses to build everything automatically.
-This is our folder structure:</p>
-<ul>
-<li><code>C:\Projects\2sxc\</code> the root folder
-<ul>
-<li><code>2sxc-build.config.json</code> - The config file in our root</li>
-<li><code>2sxc.dnndev.me\Website\</code> - our main DNN installation for verifying DNN 9.6.1</li>
-<li><code>Oqtane\oqtane.framework\Oqtane.Server\</code> - our main Oqtane installation for verifying Oqtane 4.x</li>
-<li><code>2sxc\</code> - the main 2sxc C# repo</li>
-<li><code>2sxc-ui\</code> - the 2sxc JS repo</li>
-<li><code>eav-server\</code> - the eav C# repo</li>
-<li><code>eav-ui\</code> - the EAV JS parts repo</li>
-<li><code>InstallPackages\</code> the location where the final ZIP and NuGets are created</li>
-</ul>
-</li>
-</ul>
-<p>You can also place it in sub folders, for example if you want to use a different configuration for a specific part of the project, but in general it's easier to maintain a single config file in the root folder.</p>
-<p>If you're maintaining multiple versions of 2sxc (such as the latest LTS and the latest dev)
-you could also do something like:</p>
-<ul>
-<li><code>C:\Projects\2sxc\2sxc-build.config.json</code> - for the latest dev version</li>
-<li><code>C:\Projects\2sxc\lts\21\2sxc-build.config.json</code> - for the latest LTS version</li>
-</ul>
-<h2 id="structure-of-the-2sxc-buildconfigjson-file">Structure of the <code>2sxc-build.config.json</code> File</h2>
-<p>This is the <code>2sxc-build.config.json</code> mentioned above:</p>
-<pre><code class="lang-json">{
-  &quot;JsTargets&quot;: [
-    &quot;C:/Projects/2sxc/2sxc.dnndev.me/Website/DesktopModules/ToSic.Sxc&quot;,
-    &quot;C:/Projects/2sxc/Oqtane/oqtane.framework/Oqtane.Server/wwwroot/Modules/ToSic.Sxc.Oqtane&quot;,
-  ],
-  &quot;DnnTargets&quot;: [
-    &quot;C:/Projects/2sxc/2sxc.dnndev.me/Website&quot;,
-  ],
-  &quot;OqtaneTargets&quot;: [
-    &quot;C:/Projects/2sxc/oqtane/oqtane.framework/Oqtane.Server&quot;,
-  ],
-  &quot;Sources&quot;: [
-    &quot;C:/Projects/2sxc/2sxc-sources/_latest&quot;,
-  ],
-  &quot;DnnInstallPackage&quot;: &quot;C:/Projects/2sxc/InstallPackages/Dnn-Installer&quot;,
-  &quot;OqtaneInstallPackage&quot;: &quot;C:/Projects/2sxc/InstallPackages/OqtaneModule&quot;
-}
-</code></pre>
-<hr>
-<h2 id="history">History</h2>
-<ul>
-<li>New in 2023-09 v16.06</li>
-<li>Updated docs 2026-02-12</li>
-</ul>
-<p>Shortlink: <a href="https://go.2sxc.org/build">https://go.2sxc.org/build</a></p>
-
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/build.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/_build-diagram.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
