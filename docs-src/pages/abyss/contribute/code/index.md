@@ -178,3 +178,5 @@ and you should familiarize yourself with this, to properly work with the branche
 
 * Documented in 2023-09 v16.06
 * Updated docs 2026-02-12
+
+Shortlink: <https://go.2sxc.org/contribute-code>
