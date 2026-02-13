@@ -26,7 +26,7 @@ Optionally, it can also handle loading different editions of your app (e.g. dev 
 })
 ```
 
-<img src="./assets/image-2.png" alt="Angular Hello World" class="full-width"/>
+<img src="./assets/angular-loader.png" alt="Angular Hello World" class="full-width"/>
 
 This will load the Angular app from the specified path (e.g. `/angular-demo/angular/browser`)
 regardless of the current edition. For example the hello world app of the Angular Quickstart Guide.
@@ -50,7 +50,7 @@ regardless of the current edition. For example the hello world app of the Angula
 This will load the Angular app based on the current edition.
 For example, if the current edition is "live", it will load the Angular app from "/live/dist/ng-app".
 
-<img src="./assets/image-1.png" alt="Angular App with Editions" class="full-width"/>
+<img src="./assets/angular-loader-with-editions.png" alt="Angular App with Editions" class="full-width"/>
 
 
 <img src="~/assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
@@ -76,7 +76,7 @@ This allows you to see your changes in real-time as you develop your Angular app
 })
 ```
 
-<img src="./assets/image.png" alt="Angular App with Local Edition" class="full-width"/>
+<img src="./assets/angular-loader-with-local-edition.png" alt="Angular App with Local Edition" class="full-width"/>
 ---
 
 ## History

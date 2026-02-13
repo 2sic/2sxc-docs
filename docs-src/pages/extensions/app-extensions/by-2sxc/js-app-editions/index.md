@@ -39,33 +39,29 @@ Insert this code into your Razor view where you want to show the editions bar:
 
 Show the toolbar to select an edition - usually only for the superuser / developer
 
-<img src="./assets/editions-bar.jpg" alt="JS App Editions Bar" class="full-width"/>
+<img src="./assets/editions-bar.png" alt="JS App Editions Bar" class="full-width"/>
 
 With this toolbar, you can select the edition you want to use for the current app. This will set an cookie so that the app knows which edition to load. In code you can then check which edition is active and adjust behavior accordingly.
 
 ```cshtml
 @inherits Custom.Hybrid.RazorTyped
-@using AppCode.Extensions.JsEditions
-@using ToSic.Sxc.Services;
-@using ToSic.Razor.Blade;
+@using AppCode.Extensions.JsAppEditions
 
 @{
-  // Create helper to manage the editions (live, staging etc.)
-  var editionsHelper = GetService<Editions>();
+  var editionsHelper = GetService<JsAppEditionService>();
 
-  if (editionsHelper.CurrentEdition == "local")
+  <div class="alert alert-info">Show <strong>@editionsHelper.CurrentEdition</strong> Environment</div>
+
+  if (MyUser.IsContentAdmin)
   {
-    // Local edition logic here
-    // Some code for local edition
-  }
-  else
-  {
-    // Non-local edition logic here
-    // Some other code
+    @Html.Partial("extensions/js-app-editions/Editions Bar.cshtml", new {
+      Editions = "live,staging"
+    })
   }
 }
 ```
 
+<img src="./assets/editions-bar-example.png" alt="JS App Editions Bar" class="full-width"/>
 ---
 
 ## History
