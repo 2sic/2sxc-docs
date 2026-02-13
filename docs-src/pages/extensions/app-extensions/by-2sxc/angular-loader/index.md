@@ -77,7 +77,8 @@ This allows you to see your changes in real-time as you develop your Angular app
 ```
 
 <img src="./assets/angular-loader-with-local-edition.png" alt="Angular App with Local Edition" class="full-width"/>
----
+
+***
 
 ## History
 
