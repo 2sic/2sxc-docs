@@ -110,19 +110,76 @@
 <hr>
 <h2 id="version-21">Version 21</h2>
 <hr>
-<h3 id="2sxc-v210200-2026-02--wip">2sxc v21.02.00 (2026-02-?? WIP)</h3>
-<h4 id="enhancements">Enhancements</h4>
+<h3 id="2sxc-v210200-2026-02-18">2sxc v21.02.00 (2026-02-18)</h3>
+<h4 id="general-enhancements">General Enhancements</h4>
 <ol>
-<li>🩸 Oqtane: Multi-Tenant support still being enhanced (prev. release had some upgrade bugs.)</li>
-<li>🧑🏼‍💻 Code generator (Copilot) - WIP</li>
+<li>🩸 Oqtane: Multi-Tenant support still being enhanced (previous release had some upgrade bugs.)</li>
+<li>📖 Improve docs - especially the <a class="xref" href="../../contribute/code/index.html">Contribute to Code</a> section</li>
 </ol>
-<h4 id="-extensions">🧩 Extensions</h4>
+<!-- #### 🧩 Extensions
+
+1. 🧩 Extensions: WIP -->
+<h4 id="-odata-major-updates">💲 OData (Major Updates)</h4>
 <ol>
-<li>🧩 Extensions: WIP</li>
+<li>💲 OData: Introduce <code>$casing</code> query option to control casing of returned JSON properties (<code>$casing=camel</code>)</li>
+<li>💲 OData: Make sure that OData parameters on a query only apply to the primary <code>Default</code> stream.</li>
+<li>💲 OData: Introduce ability to specify other parameters by stream, so that <code>$select</code> applies to the <code>Default</code> stream, but <code>Books$select</code> applies to the <code>Books</code> stream. (BETA, may still change)</li>
+<li>💲 OData: Reorg code structure (internal)</li>
+</ol>
+<h4 id="-data-sources-and-visual-query-major-updates">🌪️ Data Sources and Visual Query (Major Updates)</h4>
+<ol>
+<li>🌪️ Create generic <code>SysData</code> DataSource to provide quick access to all kinds of data to the UI.</li>
+<li>🌪️ Introduce <strong>Confidentiality</strong> model for data sources, so that <code>SysData</code> doesn't leak data to the UI which the user shouldn't see.</li>
+<li>🌪️ Create query <code>System.SysData</code> to provide access to <code>SysData</code> in queries and REST APIs.</li>
+<li>🌪️ Introduce <code>*</code> (internal) wildcard Visual Query connections to pass all streams from one DataSource to another without having to specify them all. This is especially useful for <code>SysData</code> which can have many streams.</li>
+<li>🌪️ ✏️ Improve VisualQuery UI to properly support <code>*</code> wildcard connections, and to show them in the UI with a different style to indicate that they are dynamic.</li>
+<li>🌪️ ✏️ Improve VisualQuery UI to show tabs by stream name, making it easier to see the results</li>
+</ol>
+<h4 id="-code-generator--copilot-major-updates">🧑🏼‍💻 Code generator / Copilot (Major Updates)</h4>
+<ol>
+<li>🧑🏼‍💻 Improve log to indicate which <strong>CodeGenerator</strong> created the changes</li>
+<li>🧑🏼‍💻 🌪️ Create DataSources for use with <code>SysData</code> to provide <code>CodeGenerators</code> and <code>Editions</code></li>
+<li>🧑🏼‍💻 ✏️ Enhance code-generation configurations to specify <code>Edition</code></li>
+<li>🧑🏼‍💻 ✏️ Enhance code-generation configuration to specify &quot;generate all&quot; vs. &quot;generate specific content-types&quot;</li>
+<li>🧑🏼‍💻 ✏️ Enhance UI to manage code-generation configurations</li>
+</ol>
+<h4 id="-models">💃🏼 Models</h4>
+<ol>
+<li>Introduce <code>TryGetMetadata&lt;T&gt;</code> to get metadata of a content-type, which is especially useful for code-generation scenarios where you want to check if a content-type exists and get its metadata without throwing an exception.</li>
+<li>Improve Model lookup to support interfaces which can define which class/record to use</li>
+<li>Introduce the <code>INoteModel</code> to access Notes Metadata on items/pages/modules etc.</li>
 </ol>
 <h4 id="minor">Minor</h4>
+<p>(none)</p>
 <h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🐞 Fix UI to configure Pickers - problem was with the Attributes DataSource.</li>
+<li>🐞 Fix Polymorphism in Admin UI (Views), broken in v21.01</li>
+</ol>
 <h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
+<ol>
+<li>🧑🏼‍💻 EAV-UI: Introduce a generic <code>SysData</code> service to easily work with SysData endpoints</li>
+<li>🌪️ Move various classes related to DataSource Queries to a better namespace</li>
+<li>🌪️ Visual Query: Refactor models, simplify</li>
+<li>🌪️ Improve internal DataSource construction, to use our new standardized <code>Setup(options)</code> mechanism</li>
+<li>🌪️ Shrink down surface of the DataSourceService</li>
+<li>🌪️ Refactor DS - DataSourceLink, unit tests etc.</li>
+<li>🔌 API: Move Polymorphism info to use Datasources instead of APIs</li>
+<li>🔌 API: Move RecycleBin to use DataSources instead of APIs</li>
+</ol>
+<h4 id="experimental--wip">Experimental / WIP</h4>
+<ol>
+<li>Introduce <code>IDataProcessor</code> to customize how data gets stored / loaded</li>
+<li>Introduce <code>DataStorageDecorator</code> to specify how ContentTypes get processed
+<ol>
+<li>Introduce a max-items limit to prevent accidental creation of too many items (for some content types, only 1 is allowed)</li>
+<li>🌪️ Create DataSource to show all possible DataProcessors</li>
+<li>Allow configuring a preferred DataProcessor for a content-type, so that it gets used automatically when working with that content-type in the UI</li>
+</ol>
+</li>
+<li>Implement DataProcessing for <code>pre-load</code> and <code>pre-save</code></li>
+<li>Create a DataProcessor which restricts any editing on certain content-types to host-users only and test in on permissions.</li>
+</ol>
 <h4 id="breaking-changes-in-eav-and-2sxc-v2102">Breaking Changes in EAV and 2sxc v21.02</h4>
 <ol>
 <li>⚠️🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders.
