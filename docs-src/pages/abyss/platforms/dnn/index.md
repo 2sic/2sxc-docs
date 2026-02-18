@@ -15,6 +15,8 @@ It's been around since ca. 2001.
 
 | Dnn V.    | Best       | Compatible            | Incompatible       | Comments |
 | ---       | -----      | -------------------   | -------------      | --- |
+| 10.02+    | latest     | ✅ ca. v21.01 - latest| ⛔ before v21.01   | Changes in DNN |
+| 9.11.02+  | latest     | ✅ ca. v9 - latest    | ⛔ old versions    | |
 | 9.6.1+    | latest     | ✅ ca. v9 - latest    | ⛔ old versions    | changes to DI and .net 4.8 |
 | 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          | |
 | 8.x       | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          | |
