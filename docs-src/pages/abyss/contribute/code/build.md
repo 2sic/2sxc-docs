@@ -2,9 +2,9 @@
 uid: Abyss.Contribute.Code.Build
 ---
 
-# Build / Compile 2sxc / EAV / JS Parts
+# Build Automation
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
+[!include[""](_contributors-only.md)]
 
 ## Concept
 
@@ -12,50 +12,59 @@ _Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. T
 But in general they all follow the same principles:
 
 1. When you compile a project, it will first compile the standard way, into the `dist` (JS) or `bin` (C#) folder
-1. The build process (WebPack or MSBuild) will then check the current folder _and all parent folders_ for a file `2sxc-build.config.json`
+1. The build process (WebPack, Vite or MSBuild) will then check **the current folder and all parent folders** for a file `2sxc-build.config.json`
 to determine places which it should copy things to...
 1. If not found, it will use `2sxc-build-fallback.config.json` which is located in the root of each repository - this is basically empty but should reference these docs.
 
-## Use Cases
+[!include[""](_build-diagram.md)]
 
-### Use Case 1: Build a Part and Copy Manually
+> [!TIP]
+> The `2sxc-build.config.json` file is the key to automating the build and deployment process.
+> It allows you to specify where the built files should be copied to, which can save you a lot of time and effort when testing your changes in a local DNN or Oqtane installation.
+>
+> Without this file, you would need to manually copy the built files to the appropriate locations in your local DNN or Oqtane installation every time you make a change and build the code, which can be very time-consuming and error-prone.
 
-Let's assume you just got started and want to try something in partial project.
-You can just pull the repo, npm-ci everything and build.
+## Location of the `2sxc-build.config.json` File
 
-As a result you'll have the compiled JS in the `dist` folder and can manually copy it to folder of any DNN/Oqtane as you wish.
+The `2sxc-build.config.json` file can be located in any folder of your project.
+It is typically placed in the root folder of your project or in a parent folder that is common to all the parts you want to build and deploy.
 
-### Use Case 2: Build a JS Library and Copy to DNN/Oqtane Automatically
-
-In this scenario you would do the same as above, but in addition to that,
-create a `2sxc-build.config.json` file in the repo folder with the specs.
-
-
-### Use Case 3: Build Everything Automatically
+> [!TIP]
+> Recommended: `C:\Projects\2sxc\2sxc-build.config.json` - this is the location used by the 2sxc team for their development environment.
 
 This is the scenario that the 2sxc team uses to build everything automatically.
 This is our folder structure:
 
-* `C:\Projects\2sxc` the root folder
-  * `C:\Projects\2sxc\2sxc-build.config.json` - The config file in our root
-  * `c:\Projects\2sxc\2sxc-dnn961.dnndev.me\Website` - our main DNN installation for verifying DNN 9.6.1
-  * `C:\Projects\2sxc\Oqtane\oqtane.framework\Oqtane.Server` - our main Oqtane installation for verifying Oqtane 4.x
-  * `C:\Projects\2sxc\2sxc` - the main 2sxc C# repo
-  * `C:\Projects\2sxc\2sxc-ui` - the 2sxc JS repo
-  * `C:\Projects\2sxc\eav-server` - the eav C# repo
-  * `C:\Projects\2sxc\eav-ui` - the EAV JS parts repo
-  * `C:\Projects\2sxc\InstallPackages` the location where the final ZIP and NuGets are created
+* `C:\Projects\2sxc\` the root folder
+  * `2sxc-build.config.json` - The config file in our root
+  * `2sxc.dnndev.me\Website\` - our main DNN installation for verifying DNN 9.6.1
+  * `Oqtane\oqtane.framework\Oqtane.Server\` - our main Oqtane installation for verifying Oqtane 4.x
+  * `2sxc\` - the main 2sxc C# repo
+  * `2sxc-ui\` - the 2sxc JS repo
+  * `eav-server\` - the eav C# repo
+  * `eav-ui\` - the EAV JS parts repo
+  * `InstallPackages\` the location where the final ZIP and NuGets are created
 
-And this is the `2sxc-build.config.json` mentioned above:
+You can also place it in sub folders, for example if you want to use a different configuration for a specific part of the project, but in general it's easier to maintain a single config file in the root folder.
+
+If you're maintaining multiple versions of 2sxc (such as the latest LTS and the latest dev)
+you could also do something like:
+
+* `C:\Projects\2sxc\2sxc-build.config.json` - for the latest dev version
+* `C:\Projects\2sxc\lts\21\2sxc-build.config.json` - for the latest LTS version
+
+## Structure of the `2sxc-build.config.json` File
+
+This is the `2sxc-build.config.json` mentioned above:
 
 ```json
 {
   "JsTargets": [
-    "C:/Projects/2sxc/2sxc-dnn/Website/DesktopModules/ToSic.Sxc",
+    "C:/Projects/2sxc/2sxc.dnndev.me/Website/DesktopModules/ToSic.Sxc",
     "C:/Projects/2sxc/Oqtane/oqtane.framework/Oqtane.Server/wwwroot/Modules/ToSic.Sxc.Oqtane",
   ],
   "DnnTargets": [
-    "C:/Projects/2sxc/2sxc-dnn961.dnndev.me/Website",
+    "C:/Projects/2sxc/2sxc.dnndev.me/Website",
   ],
   "OqtaneTargets": [
     "C:/Projects/2sxc/oqtane/oqtane.framework/Oqtane.Server",
@@ -68,12 +77,11 @@ And this is the `2sxc-build.config.json` mentioned above:
 }
 ```
 
-
-
 ---
 
 ## History
 
 * New in 2023-09 v16.06
+* Updated docs 2026-02-12
 
 Shortlink: <https://go.2sxc.org/build>

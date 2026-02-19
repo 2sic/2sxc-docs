@@ -100,14 +100,18 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        
+        <div class="alert alert-warning d-block" role="alert">
+      ℹ️ This interface is an internal API and can change at any time. 
+  It's documented so you can understand how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
+    </div>
 
         <article data-uid="ToSic.Eav.Services.IDataSourcesService">
 
 
 
   <h1 id="ToSic_Eav_Services_IDataSourcesService" data-uid="ToSic.Eav.Services.IDataSourcesService" class="text-break">
-Interface IDataSourcesService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Interface IDataSourcesService  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -121,7 +125,7 @@ Interface IDataSourcesService  <a class="header-action link-secondary" title="Vi
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
 public interface IDataSourcesService</code></pre>
   </div>
 
@@ -136,7 +140,10 @@ public interface IDataSourcesService</code></pre>
 
 
   <h2 id="ToSic_Eav_Services_IDataSourcesService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Released in v15.06</p>
+  <div class="markdown level0 remarks"><ul>
+<li>Released in v15.06</li>
+<li>Slimmed down in v21.02, but keeping older APIs available and hidden, in case they are used (but this is unlikely).</li>
+</ul>
 </div>
 
 
@@ -148,7 +155,7 @@ public interface IDataSourcesService</code></pre>
 
   <h3 id="ToSic_Eav_Services_IDataSourcesService_Create_System_Type_ToSic_Eav_DataSource_IDataSourceLinkable_ToSic_Eav_DataSource_IDataSourceOptions_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create(System.Type,ToSic.Eav.DataSource.IDataSourceLinkable,ToSic.Eav.DataSource.IDataSourceOptions)">
   Create(Type, IDataSourceLinkable?, IDataSourceOptions?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get DataSource for specified sourceName/Type.</p>
@@ -157,7 +164,8 @@ public interface IDataSourcesService</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IDataSource Create(Type type, IDataSourceLinkable? attach = null, IDataSourceOptions? options = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;making this obsolete in v21; believe it&#39;s almost never used outside of 2sxc/eav&quot;)]
+IDataSource Create(Type type, IDataSourceLinkable? attach = null, IDataSourceOptions? options = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -187,7 +195,54 @@ public interface IDataSourcesService</code></pre>
 
 
   <h4 class="section" id="ToSic_Eav_Services_IDataSourcesService_Create_System_Type_ToSic_Eav_DataSource_IDataSourceLinkable_ToSic_Eav_DataSource_IDataSourceOptions__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Released in v15.04</p>
+  <div class="markdown level1 remarks"><p>Released in v15.04
+Made obsolete in v21, as it is almost never used outside of 2sxc/eav - and we want to be able to remove it from the public API at some point.</p>
+</div>
+
+
+
+
+  <a id="ToSic_Eav_Services_IDataSourcesService_Create_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create*"></a>
+
+  <h3 id="ToSic_Eav_Services_IDataSourcesService_Create_System_Type_ToSic_Eav_DataSource_IDataSourceOptions_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create(System.Type,ToSic.Eav.DataSource.IDataSourceOptions)">
+  Create(Type, IDataSourceOptions?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get DataSource for specified sourceName/Type.</p>
+<p><em>Note that this is not the preferred way to do things - if possible, use the generic Create below.</em></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDataSource Create(Type type, IDataSourceOptions? options = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>the .net type of this data-source</p>
+</dd>
+    <dt><code>options</code> <span class="xref">IDataSourceOptions</span></dt>
+    <dd><p>optional configuration lookup if needed</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IDataSource</a></dt>
+    <dd><p>A single DataSource</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Eav_Services_IDataSourcesService_Create_System_Type_ToSic_Eav_DataSource_IDataSourceOptions__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released in v21.02</p>
 </div>
 
 
@@ -197,7 +252,7 @@ public interface IDataSourcesService</code></pre>
 
   <h3 id="ToSic_Eav_Services_IDataSourcesService_CreateDefault_ToSic_Eav_DataSource_IDataSourceOptions_" data-uid="ToSic.Eav.Services.IDataSourcesService.CreateDefault(ToSic.Eav.DataSource.IDataSourceOptions)">
   CreateDefault(IDataSourceOptions)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a <code>Default</code> DataSource for a specific app. This is a <a class="xref" href="ToSic.Eav.DataSources.PublishingFilter.html">PublishingFilter</a> data source which returns the data the current user is allowed to see.</p>
@@ -236,7 +291,7 @@ public interface IDataSourcesService</code></pre>
 
   <h3 id="ToSic_Eav_Services_IDataSourcesService_Create__1_ToSic_Eav_DataSource_IDataSourceLinkable_ToSic_Eav_DataSource_IDataSourceOptions_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create``1(ToSic.Eav.DataSource.IDataSourceLinkable,ToSic.Eav.DataSource.IDataSourceOptions)">
   Create&lt;TDataSource&gt;(IDataSourceLinkable?, IDataSourceOptions?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Preferred way to create DataSources.</p>
@@ -244,7 +299,8 @@ public interface IDataSourcesService</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataSource Create&lt;TDataSource&gt;(IDataSourceLinkable? attach = null, IDataSourceOptions? options = null) where TDataSource : IDataSource</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;making this obsolete in v21; believe it&#39;s almost never used outside of 2sxc/eav&quot;)]
+TDataSource Create&lt;TDataSource&gt;(IDataSourceLinkable? attach = null, IDataSourceOptions? options = null) where TDataSource : IDataSource</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -279,11 +335,58 @@ public interface IDataSourcesService</code></pre>
 
 
 
+  <a id="ToSic_Eav_Services_IDataSourcesService_Create_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create*"></a>
+
+  <h3 id="ToSic_Eav_Services_IDataSourcesService_Create__1_ToSic_Eav_DataSource_IDataSourceOptions_" data-uid="ToSic.Eav.Services.IDataSourcesService.Create``1(ToSic.Eav.DataSource.IDataSourceOptions)">
+  Create&lt;TDataSource&gt;(IDataSourceOptions?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Preferred way to create DataSources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TDataSource Create&lt;TDataSource&gt;(IDataSourceOptions? options = null) where TDataSource : IDataSource</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>options</code> <span class="xref">IDataSourceOptions</span></dt>
+    <dd><p>optional configuration lookup if needed</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TDataSource</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TDataSource</code></dt>
+    <dd><p>The type of the data source to be created.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Eav_Services_IDataSourcesService_Create__1_ToSic_Eav_DataSource_IDataSourceOptions__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Released in v21.02</p>
+</div>
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/Services/Factory/IDataSourcesService.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -105,31 +105,231 @@
         <article data-uid="Abyss.Contribute.Code.Index">
 <h1 id="contribute-to-2sxc--eav---setup">Contribute to 2sxc / EAV - Setup</h1>
 
-<p><em>Important: If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>. This is meant for people who want to contribute to the source code of 2sxc and EAV.</em></p>
-<h2 id="pre-requisites">Pre-Requisites</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>First of all, thank you for your interest in contributing to 2sxc and EAV!
+We are always looking for talented developers to help us improve our products and make them even better.</p>
+<p>Getting everything set up for contributing may seem a bit daunting.
+But if you are interested, we would be glad to help - just reach out to us on <code>info@...</code>.</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>To develop locally you'll need:</p>
 <ol>
-<li>Visual Studio 2019</li>
-<li>MSBuild Community Tasks 1.4 or newer (required for automatic module packaging if you want to create dnn-module packages of 2sxc to distribute to another dnn) <a href="https://github.com/loresoft/msbuildtasks">https://github.com/loresoft/msbuildtasks</a> or chec <a href="https://www.microsoft.com/en-in/download/details.aspx?id=19372">https://www.microsoft.com/en-in/download/details.aspx?id=19372</a></li>
-<li>SQL Server 2017 or newer</li>
-<li>You have a working DNN 7.4.2 or higher with 2sxc already installed as a module, ideally in c:\projects\2sxc-dnn742\ or something similar</li>
+<li>A <strong>local DNN and/or Oqtane installation with 2sxc</strong> installed, where you can test your changes.</li>
+<li>The <strong>source code of 2sxc and EAV on your local machine</strong>, so you can make changes and test them.</li>
+<li>An understanding of the <strong>build process</strong>, so you can build the code and test it in your local environment.</li>
 </ol>
-<h2 id="basics">Basics</h2>
-<p>The full solution pulls together 4 Github projects, some responsible for server-code, some for UI, some for in-page JS. We separated these to make it easier to contribute to a specific part without worrying about the rest.</p>
+<p>Once you are ready to submit your changes, you will also need knowledge of <strong>Git and GitHub</strong>,
+so you can manage your changes and submit them to us for review.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_prerequisites-dnn" role="tab" aria-controls="tabpanel_1_prerequisites-dnn" data-tab="prerequisites-dnn" tabindex="0" aria-selected="true">Local DNN</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_prerequisites-oqtane" role="tab" aria-controls="tabpanel_1_prerequisites-oqtane" data-tab="prerequisites-oqtane" tabindex="-1">Local Oqtane</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_prerequisites-backend" role="tab" aria-controls="tabpanel_1_prerequisites-backend" data-tab="prerequisites-backend" tabindex="-1">Backend</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_prerequisites-frontend" role="tab" aria-controls="tabpanel_1_prerequisites-frontend" data-tab="prerequisites-frontend" tabindex="-1">Frontend</a>
+</li>
+</ul>
+<section id="tabpanel_1_prerequisites-dnn" role="tabpanel" data-tab="prerequisites-dnn">
+
+<p>This is the most common starting point for most contributors,
+since DNN is the most widely used platform for 2sxc.
+It is essential, that any contributions are tested on DNN.</p>
+<p>You need to have the following software installed on your machine:</p>
+<ol>
+<li>Windows 11 or similar</li>
+<li>SQL Server 2016 or latest (any edition will do)</li>
+<li>You have a working DNN 9.11.02 or higher with 2sxc already installed as a module, ideally in <code>c:\projects\2sxc\2sxc.dnndev.me\website\</code><br>
+You can also use any other location, just make sure to update the <code>2sxc-build.config.json</code> file accordingly</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>We recommend <a href="https://www.nvquicksite.com/">nvQuickSite</a> to get local DNNs up and running.</p>
+</div>
+</section>
+<section id="tabpanel_1_prerequisites-oqtane" role="tabpanel" data-tab="prerequisites-oqtane" aria-hidden="true" hidden="hidden">
+
+<p>This is <strong>optional</strong>, but may be the place you want to start if you are interested in contributing to the Oqtane version of 2sxc.</p>
+<p>You need to have the following software installed on your machine:</p>
+<ol>
+<li>Windows 11 or similar</li>
+<li>SQL Server 2022 or latest (any edition will do)</li>
+<li>You have a <a class="xref" href="https://docs.oqtane.org/guides/installation/development.html">working Oqtane 10</a> or higher with 2sxc already installed as a module, ideally in <code>C:\Projects\2sxc\oqtane\oqtane.framework\</code><br>
+You can also use any other location, just make sure to update the <code>2sxc-build.config.json</code> file accordingly</li>
+</ol>
+</section>
+<section id="tabpanel_1_prerequisites-backend" role="tabpanel" data-tab="prerequisites-backend" aria-hidden="true" hidden="hidden">
+
+<p>The backend is developed using Visual Studio.</p>
+<p>IF you want to contribute to the backend code, you will need:</p>
+<ol>
+<li><a href="https://visualstudio.microsoft.com/downloads/">Visual Studio 2026</a> (any edition, incl. <em>Community</em>)</li>
+</ol>
+<p>Optional: MSBuild Community Tasks 1.7 or newer (required for automatic module packaging if you want to create dnn-module packages of 2sxc to distribute to another dnn) <a href="https://github.com/loresoft/msbuildtasks">https://github.com/loresoft/msbuildtasks</a>.</p>
+</section>
+<section id="tabpanel_1_prerequisites-frontend" role="tabpanel" data-tab="prerequisites-frontend" aria-hidden="true" hidden="hidden">
+
+<p>The front-end is developed in Visual Studio Code.
+It uses the Node.js / Webpack ecosystem for building and packaging the code.</p>
+<p>IF you want to contribute to the frontend code, you will need:</p>
+<ol>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> (any edition, incl. <em>Community</em>)</li>
+<li><a href="https://nodejs.org/en/download/">Node.js</a> (the latest LTS version)</li>
+</ol>
+</section>
+</div>
+<h2 id="file-and-folder-structure">File and Folder Structure</h2>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_folders-basics" role="tab" aria-controls="tabpanel_2_folders-basics" data-tab="folders-basics" tabindex="0" aria-selected="true">Basics</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_git-repos" role="tab" aria-controls="tabpanel_2_git-repos" data-tab="git-repos" tabindex="-1">Setup Git Repos to use</a>
+</li>
+</ul>
+<section id="tabpanel_2_folders-basics" role="tabpanel" data-tab="folders-basics">
+
+<p>The full solution pulls together 4 Github repositories. Two for server-code, one for UI, and one for in-page JS.
+We separated these to make it easier to contribute to a specific part without worrying about the rest.</p>
 <p>If you only want to contribute to something small - like the languages / translations - then you only need to download that repository.</p>
-<p>In the complex scenarios each project can build into the other target, so if you want to work full-stack and use all of the automation, you will want to put everything in <code>C:\Projects\2sxc\</code>.</p>
-<h2 id="contribute-with-pull-requests">Contribute with Pull-Requests</h2>
-<p>After you have made changes, you cannot just push the code back to our repo, since you probably won't have write permissions on the main repo.
-The correct procedure then is to fork the main repo into yours, and push into your own online repo. Then start a pull request, which we can then process.</p>
-<h2 id="setup-git-repos-to-use">Setup Git Repos to use</h2>
+<p>In the complex scenarios each project can build into the other targe.
+So if you want to work full-stack and use all of the automation, you will want to put everything in <code>C:\Projects\2sxc\</code>.</p>
+<p>This is the <em>recommended minimal</em> file structure - which you should also use as a first reference:</p>
+<ul>
+<li><code>C:\Projects\2sxc\</code> - main folder to put all the code.
+<ul>
+<li><code>\2sxc.dnndev.me\</code> - local DNN with 2sxc installed, to test your changes in DNN</li>
+<li><code>\2sxc-build.config.json</code> - build configuration file - see <a class="xref" href="build.html">Build Automation</a></li>
+<li><code>\...\</code> one or more sub folders containing the code repositories you wish to build</li>
+</ul>
+</li>
+</ul>
+<p>The optional sub folders are:</p>
+<ol>
+<li>For the backend (you need both of these)
+<ul>
+<li><code>\2sxc\</code> - the source code of 2sxc <strong>backend</strong> from the <a class="xref" href="https://github.com/2sic/2sxc">2sxc Github Repository</a></li>
+<li><code>\eav-server\</code> - the source code of the EAV <strong>backend</strong>, required by the <code>2sxc\</code> backend from the <a class="xref" href="https://github.com/2sic/eav-server">EAV Github Repository</a></li>
+</ul>
+</li>
+<li>For the in-page editing experience
+<ul>
+<li><code>\2sxc-ui\</code> - the source code of in-page 2sxc UI, from the <a class="xref" href="https://github.com/2sic/2sxc-ui">2sxc UI Github Repository</a></li>
+</ul>
+</li>
+<li>For the main edit/admin UIs
+<ul>
+<li><code>\eav-ui\</code> - the source code of the main edit/admin UIs, from the <a class="xref" href="https://github.com/2sic/eav-ui">EAV UI Github Repository</a></li>
+</ul>
+</li>
+<li>For the Oqtane version of 2sxc
+<ul>
+<li><code>\oqtane\oqtane.framework\</code> - the source code of the Oqtane version of 2sxc, from the <a href="xref:Repo.Oqtane"></a></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="tabpanel_2_git-repos" role="tabpanel" data-tab="git-repos" aria-hidden="true" hidden="hidden">
+
 <p>Use this checklist:</p>
-<iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
+<iframe src="https://azing.org/2sxc/r/D8cY_BwG?embed=1" width="100%" height="800" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 <p>If you just need to update your locally cloned <code>Oqtane.Framework</code> source code to latest release for 2sxc Oqtane development check the instructions here: <a class="xref" href="oqtane-framework.html">How update Oqtane.Framework source code for 2sxc Oqtane development</a></p>
-<h2 id="git-branches">GIT Branches</h2>
-<p>We use the <a href="https://jeffkreeftmeijer.com/git-flow/">git-flow convention</a>, and you should familiarize yourself with this, to properly work with the branches. As of now, the development-branch is called <code>dev</code> but we'll rename it to <code>develop</code> within the next few days.</p>
-<h2 id="the-eav--2sxc-server-solution">The EAV / 2sxc Server Solution</h2>
-<p>Basically if you open the solution in the <code>eav-server</code> folder, it will open all the EAV server (C#) code and 2sxc code in Visual Studio. This is very important, because if you build anything extensive and rename anything, it guarantees that everything is correctly updated.</p>
-<h2 id="the-2sxc-ui">The 2sxc UI</h2>
-<p>This extends the EAV-UI with more field types, adds configuration and also adds a lot of other JS. if you run the gulp <code>develop</code> it too will auto-build and copy to the live Dnn / 2sxc site.</p>
+</section>
+</div>
+<h2 id="how-you-will-usually-work">How You Will Usually Work</h2>
+<ol>
+<li>You will make changes to the source on your local machine.</li>
+<li>You will build the code.</li>
+<li>The build <em>should</em> automatically copy the result to your local DNN and Oqtane installation</li>
+<li>You can then open your local Dnn/Oqtane in a browser and test your changes to ensure everything works as expected.</li>
+</ol>
+<pre><code class="lang-mermaid">flowchart TB
+ subgraph s1[&quot;VS, MSBuild, Webpack, ...&quot;]
+    direction LR
+        B[&quot;create DLLs, JS, CSS&lt;br&gt;to &lt;b&gt;/dist&lt;/b&gt; or &lt;b&gt;/debug&lt;/b&gt; folder&quot;]
+        n2[&quot;look for&lt;br&gt;&lt;b&gt;2sxc-build.config.json&lt;/b&gt;&lt;br&gt;in &lt;b&gt;all parent&lt;/b&gt; folders&quot;]
+        n1([&quot;DLLs/JS/CSS&lt;br&gt;in the local DNN&quot;])
+  end
+    B --&gt; n2
+    A[&quot;make code changes&quot;] -- run build --&gt; s1
+    n2 -- found?&lt;br&gt;deploy to dev&lt;br&gt; --&gt; n1
+    s1 --&gt; n3[&quot;review changes in browser&quot;] &amp; n4[&quot;run unit tests&quot;]
+
+    B@{ shape: lean-r}
+    n2@{ shape: lean-r}
+    n3@{ shape: rect}
+    n4@{ shape: rect}
+</code></pre>
+
+<div class="TIP">
+<h5>Tip</h5>
+<p>The hardest part here is usually the build processes,
+especially auto-copy of the built files to the local DNN and Oqtane installations,
+which needs a <code>c:\projects\2sxc\2sxc-build.config.json</code> configuration file.</p>
+<p>It's explained in more details on <a class="xref" href="build.html">Build Automation</a>.</p>
+</div>
+<p>Once you are satisfied with your changes, you can submit a pull request to our GitHub repository for review.</p>
+<hr>
+<h2 id="building-various-parts">Building Various Parts</h2>
+<p>You can decide to only work on the backend, or only on the frontend, or on both.
+The build processes are different for the backend and frontend.
+They all follow the same principles of building the code and copying the built files to the local DNN and Oqtane installations for testing.</p>
+<div class="tabGroup" id="tabgroup_3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_3_backend" role="tab" aria-controls="tabpanel_3_backend" data-tab="backend" tabindex="0" aria-selected="true">Backend</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_frontend" role="tab" aria-controls="tabpanel_3_frontend" data-tab="frontend" tabindex="-1">Frontend</a>
+</li>
+</ul>
+<section id="tabpanel_3_backend" role="tabpanel" data-tab="backend">
+
+<p>The Backend requires two projects to be set up, according to instructions above. They are:</p>
+<ol>
+<li><code>c:\projects\2sxc\2sxc\</code> - the main <a class="xref" href="https://github.com/2sic/2sxc">2sxc C# repo</a>,</li>
+<li><code>c:\projects\2sxc\eav-server\</code> - the <a class="xref" href="https://github.com/2sic/eav-server">EAV C# repo</a>, which is required by the 2sxc backend</li>
+</ol>
+<p>To work with the backend, best continue to <a class="xref" href="backend.html">Contribute to 2sxc / EAV - Backend</a>.</p>
+</section>
+<section id="tabpanel_3_frontend" role="tabpanel" data-tab="frontend" aria-hidden="true" hidden="hidden">
+
+<p>The front-end is in these 2 repositories containing various JS projects:</p>
+<ol>
+<li><code>c:\projects\2sxc\2sxc-ui\</code> - the in-page UI for 2sxc, which extends the EAV UI with more field types, configuration and other JS.</li>
+<li><code>c:\projects\2sxc\eav-ui\</code> - the main edit/admin UIs, which are used by both 2sxc and EAV.</li>
+</ol>
+<p>To work with the front-end, best continue to <a class="xref" href="frontend.html">Contribute to 2sxc / EAV Frontend Experience</a>.</p>
+</section>
+</div>
+<h2 id="contribute-with-pull-requests">Contribute with Pull-Requests</h2>
+<p>After you have made changes, you cannot just push the code back to our repo,
+since you probably won't have write permissions on the main repo.
+The correct procedure then is to fork the main repo into yours, and push into your own online repo.
+Then start a pull request, which we can then process.</p>
+<p>We use the <a href="https://jeffkreeftmeijer.com/git-flow/">git-flow convention</a>,
+and you should familiarize yourself with this, to properly work with the branches.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Documented in 2023-09 v16.06</li>
+<li>Updated docs 2026-02-12</li>
+</ul>
+<p>Shortlink: <a href="https://go.2sxc.org/contribute-code">https://go.2sxc.org/contribute-code</a></p>
 
 </article>
 

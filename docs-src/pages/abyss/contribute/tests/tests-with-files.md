@@ -36,7 +36,7 @@ Note: it's not sure what the `LinkBase` does - it can probably be removed.
 
 We have a helper class called `TestFiles` which helps us find the bin folder and attach the full folder path to the file name.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Core.TestHelpers/Testing/TestFiles.cs)]
+[!code-csharp[](../../../../../../eav-server/ToSic.Sys.TestHelpers/Testing/TestFiles.cs)]
 
 We can then use this to load the files as needed and do our work with them.
 The following example uses this folder to create a `TestScenario` with this folder:
