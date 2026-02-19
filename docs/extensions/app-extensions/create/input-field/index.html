@@ -7,16 +7,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Input field extension | 2sxc 21 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,7 @@
 
         
 
-        <article data-uid="Extensions.AppExtensions.Create.InputField">
+        <article data-uid="Extensions.AppExtensions.Create.InputField.Index">
 <h1 id="input-field-extension">Input field extension</h1>
 
 <p>Custom input fields are <strong>App Extensions</strong> which live inside your App and extend the edit UI.
@@ -139,14 +139,13 @@ The folder name must follow this pattern:</p>
 </ol>
 <h2 id="configure-your-app-extension">Configure your app extension</h2>
 <p>Before creating a custom input field, you must know where App Extensions live and how to <strong>configure</strong> them inside your App.</p>
-<p>To change the settings of your input field extension, click the pen icon next to the extension entry.
-¨
-<img src="./assets/input-content-type-metadata.png)" class="full-width"></p>
+<p>To change the settings of your input field extension, click the pen icon next to the extension entry.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-metadata.png" class="full-width">
 <p>After opening the editor, you'll see various fields that <strong>describe</strong> and <strong>configure</strong> your extension.</p>
 <p>The most important setting is the <code>Input Fields Configuration</code>.
 This is where you specify which files should be loaded to activate your custom input field extension.</p>
 <div gallery="gallery-input-field-1">
-  <img src="../../../pages/extensions/app-extensions/create/assets/input-fields-files.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-fields-files.png">
 </div>
 <p>Now that the App Extension is set up, we can start writing the actual code for the input field.</p>
 <h2 id="example-base-input-field">Example base input field</h2>
@@ -197,8 +196,11 @@ For this, you create a <strong>separate Content Type</strong> and reference it f
 <h2 id="how-to-create-and-connect-a-content-type">How to create and connect a Content Type</h2>
 <p>To make your custom input field configurable (for example to define <code>Min</code>, <code>Max</code>, or <code>Step</code> for a number slider),
 you must create a <strong>separate  Content Type</strong> and <strong>reference it</strong> in your main Content Type.</p>
-<p>[!IMPORTANT] The Content Type name must match your extension name exactly</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
 <p>When creating the settings Content Type, the <strong>Name is extremely important</strong>.</p>
+<p>The Content Type name must match your extension name exactly</p>
+</div>
 <p>It must be <strong>exactly the same name as your App Extension</strong>,<br>
 <strong>with an <code>@</code> in front of it</strong>, <strong>not</strong> the Component tag name.</p>
 <p>For example, if your App Extension is named:</p>
@@ -214,37 +216,70 @@ when you use your custom input field in any Content Type.</p>
 <p><strong>Screenshot requirement:</strong> Please ensure the screenshot shows the full context of the content type field.
 <strong>Screenshot requirement:</strong> Please ensure the screenshot shows the full context of the content type field.</p>
 <div gallery="gallery-content-type-field">
-  <img src="../../../pages/extensions/app-extensions/create/assets/input-create-new-content-type.png">
-  <img src="../../../pages/extensions/app-extensions/create/assets/input-content-type-field.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-field.png">
 </div>
 <p>If everything works correctly, you can now rename the Content Type and move it into a new scope.</p>
-<h2 id="scope">Scope</h2>
+<h2 id="include-in-extension-export">Include in Extension Export</h2>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_scope" role="tab" aria-controls="tabpanel_1_scope" data-tab="scope" tabindex="0" aria-selected="true">1. Scope</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_data-bundles" role="tab" aria-controls="tabpanel_1_data-bundles" data-tab="data-bundles" tabindex="-1">2. Data Bundles</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-content-type" role="tab" aria-controls="tabpanel_1_add-content-type" data-tab="add-content-type" tabindex="-1">3. Add Content Type to Bundle</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_include-bundle" role="tab" aria-controls="tabpanel_1_include-bundle" data-tab="include-bundle" tabindex="-1">4. Include Bundle in Extension</a>
+</li>
+</ul>
+<section id="tabpanel_1_scope" role="tabpanel" data-tab="scope">
+
+<p>We highly recommend you move the content-type to it's proper scope, so
+it's invisible when people install your extension.</p>
 <p>When moving your settings Content Type into a new scope,<br>
 the scope name must follow the <strong>Extensions.{Name of Extension}</strong> pattern.</p>
-<img src="../../../pages/extensions/app-extensions/create/assets/input-scope-name.png" class="full-width">
-<h2 id="data-bundles">Data Bundles</h2>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-scope-name.png" class="full-width">
+</section>
+<section id="tabpanel_1_data-bundles" role="tabpanel" data-tab="data-bundles" aria-hidden="true" hidden="hidden">
+
 <p>A Data Bundle lets you package your App Extension together with its settings Content Type.</p>
-<img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle.png" class="full-width">
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle.png" class="full-width">
 <p>Here you can create a new Data Bundle by clicking the <strong>+</strong> button.<br>
 Give it a name that matches your extension.</p>
-<h2 id="linking-your-content-type-to-the-data-bundle">Linking your content type to the data bundle</h2>
-<img src="./assets/input-content-type-metadata.png)" class="full-width">
+</section>
+<section id="tabpanel_1_add-content-type" role="tabpanel" data-tab="add-content-type" aria-hidden="true" hidden="hidden">
+
+<p>Now that you created the bundle, you must tell each piece of data you want to include
+that it should be in the bundle.</p>
 <p>To add your settings Content Type to the Data Bundle,
 simply open the <strong>Data</strong> section of your App Extension and click the <strong>Metadata</strong> icon of the Content Type.</p>
-<img src="./assets/input-decorator.png)" class="full-width">
 <p>Then select your Content Type from the list and click <strong>Save</strong>.<br>
 This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.</p>
-<h2 id="adding-the-data-bundle-to-your-extension">Adding the data bundle to your extension</h2>
-<img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle-extension.png" class="full-width">
+<div gallery="gallery-data-bundle">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-metadata.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-decorator.png">
+</div>
+</section>
+<section id="tabpanel_1_include-bundle" role="tabpanel" data-tab="include-bundle" aria-hidden="true" hidden="hidden">
+
 <p>Here you can open your App Extension (using the edit icon) and enable <strong>Includes Data Bundles</strong>.<br>
 Then simply select the Data Bundle you created.<br>
 This links the bundle to your extension,
 making sure the settings Content Type is included when the extension is exported or imported.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle-extension.png" class="full-width">
+</section>
+</div>
+<h2 id="history">History</h2>
+<p>Created in v21.02</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -42,14 +42,14 @@ We _suggest_ that you go for a clear naming, such as:
 
 ## Packaging & export
 
-> [!IMPORTANT]
+> [!TIP]
 > Razor files are only exported if they are specified in the extension configuration.
 
 To include Razor files in an extension:
 
 1. Open the **extension configuration** of the extension
 
-2. Enable **Has Razer Files** (but only if you include view definitions)
+2. Enable **Has Razor Files** (but only if you include view definitions)
 
 <div gallery="gallery2">
   <img src="./assets/views-configuration.png">

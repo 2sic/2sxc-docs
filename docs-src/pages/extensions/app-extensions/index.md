@@ -67,7 +67,7 @@ To start using App extensions, follow these steps:
 
 App extensions can come in various types - and they can combine all the types, including:
 
-- [Input Types](xref:Extensions.AppExtensions.Create.InputField): Custom input fields for data entry.
+- [Input Types](xref:Extensions.AppExtensions.Create.InputField.Index): Custom input fields for data entry.
 - [App Code and Web APIs](xref:Extensions.AppExtensions.Create.AppCode.Index): Custom C# code and Web APIs to add server-side functionality.
 - [Visual Queries](xref:Extensions.AppExtensions.Create.VisualQuery.Index): Predefined queries that can be reused across different parts of your App
 - [Templates / Views](xref:Extensions.AppExtensions.Create.RazorAndViews.Index): Custom templates for rendering content.
