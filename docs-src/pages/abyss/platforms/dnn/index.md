@@ -16,8 +16,8 @@ It's been around since ca. 2001.
 | Dnn V.    | Best       | Compatible            | Incompatible       | Comments |
 | ---       | -----      | -------------------   | -------------      | --- |
 | 10.02+    | latest     | ✅ ca. v21.01 - latest| ⛔ before v21.01   | Changes in DNN |
-| 9.11.02+  | latest     | ✅ ca. v9 - latest    | ⛔ old versions    | |
-| 9.6.1+    | latest     | ✅ ca. v9 - latest    | ⛔ old versions    | changes to DI and .net 4.8 |
+| 9.11.02+  | latest     | ✅ ca. v9 - latest    | ⛔ pre v9          | |
+| 9.6.1+    | latest     | ✅ ca. v9 - v19       | ⛔ pre v9 and v20+ | changes to DI and .net 4.8, minimum requirements in 2sxc 20+ |
 | 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          | |
 | 8.x       | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          | |
 | 7.4.2+    | 13.x LTS   | ✅ 7.x - 13.x         | ⛔ 14.00+          | |
