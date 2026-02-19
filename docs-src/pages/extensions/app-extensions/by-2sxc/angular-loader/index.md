@@ -52,13 +52,11 @@ For example, if the current edition is "live", it will load the Angular app from
 
 <img src="./assets/angular-loader-with-editions.png" alt="Angular App with Editions" class="full-width"/>
 
+### [With Local Editions](#tab/local-editions)
 
 <img src="~/assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
 
 The Angular Loader includes the [JS App Editions](xref:Extensions.AppExtensions.By2sxc.JsAppEditions.Index) extension to develop the app locally with a hot-build, while loading the production build from DNN for normal users.
-
-
-### [With Local Editions](#tab/local-editions)
 
 The local edition is useful for development, as it allows you to load the Angular app directly from your local development environment without having to build and deploy it to the server.
 When the local edition is active, the Angular Loader will load the app from the specified LocalDevServerPath (e.g. `"//localhost:4200"`) and include the specified LocalDevFiles (e.g. `"runtime.js,polyfills.js,styles.js,vendor.js,main.js"`).
