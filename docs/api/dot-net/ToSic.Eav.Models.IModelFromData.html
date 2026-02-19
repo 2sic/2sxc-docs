@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Interface IModelFactory | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Interface IModelFromData | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IModelFactory | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Interface IModelFromData | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Models_Factory_IModelFactory.md&amp;value=---%0Auid%3A%20ToSic.Eav.Models.Factory.IModelFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Models_IModelFromData.md&amp;value=---%0Auid%3A%20ToSic.Eav.Models.IModelFromData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -106,28 +106,26 @@
   ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
     </div>
 
-        <article data-uid="ToSic.Eav.Models.Factory.IModelFactory">
+        <article data-uid="ToSic.Eav.Models.IModelFromData">
 
 
 
-  <h1 id="ToSic_Eav_Models_Factory_IModelFactory" data-uid="ToSic.Eav.Models.Factory.IModelFactory" class="text-break">
-Interface IModelFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/Factory/IModelFactory.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Eav_Models_IModelFromData" data-uid="ToSic.Eav.Models.IModelFromData" class="text-break">
+Interface IModelFromData  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelFromData.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.Models.html">Models</a>.<a class="xref" href="ToSic.Eav.Models.Factory.html">Factory</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.Models.html">Models</a></dd></dl>
   <dl><dt>Assembly</dt><dd>ToSic.Eav.Data.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>WIP - nothing done yet, just as a reminder.
-Goal is that some wrappers require a factory, and these should be marked as such,
-so that a simple wrapper helper can detect and warn about this.</p>
+  <div class="markdown summary"><p>Marks objects such as custom items or data models, which can wrap data (usually Entities or TypedItems).</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public interface IModelFactory</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;may change or rename at any time&quot;)]
+public interface IModelFromData</code></pre>
   </div>
 
 
@@ -140,114 +138,26 @@ public interface IModelFactory</code></pre>
 
 
 
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="ToSic_Eav_Models_Factory_IModelFactory_AsCustomFrom_" data-uid="ToSic.Eav.Models.Factory.IModelFactory.AsCustomFrom*"></a>
-
-  <h3 id="ToSic_Eav_Models_Factory_IModelFactory_AsCustomFrom__2___1_ToSic_Eav_Models_Sys_ModelSettings_" data-uid="ToSic.Eav.Models.Factory.IModelFactory.AsCustomFrom``2(``1,ToSic.Eav.Models.Sys.ModelSettings)">
-  AsCustomFrom&lt;TCustom, TSource&gt;(TSource?, ModelSettings?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/Factory/IModelFactory.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TCustom? AsCustomFrom&lt;TCustom, TSource&gt;(TSource? item, ModelSettings? settings = null) where TCustom : class, IModelFromData</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>item</code> <span class="xref">TSource</span></dt>
-    <dd></dd>
-    <dt><code>settings</code> <span class="xref">ModelSettings</span></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">TCustom</span></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TCustom</code></dt>
-    <dd></dd>
-    <dt><code>TSource</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Models_Factory_IModelFactory_Create_" data-uid="ToSic.Eav.Models.Factory.IModelFactory.Create*"></a>
-
-  <h3 id="ToSic_Eav_Models_Factory_IModelFactory_Create__2___0_" data-uid="ToSic.Eav.Models.Factory.IModelFactory.Create``2(``0)">
-  Create&lt;TSource, TModel&gt;(TSource?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/Factory/IModelFactory.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates a new instance of the specified wrapper model type and initializes it using the provided source object.</p>
+  <h2 id="ToSic_Eav_Models_IModelFromData_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Most 2sxc base classes such as Razor files or WebApi files have some methods which will return a typed data model.
+This is usually <code>As&lt;TModel&gt;()</code> or <code>AsList&lt;TModel&gt;()</code>.
+To help the developer understand what is allowed for <code>TModel</code> we must mark all objects which are supported, and this is done with this interface.</p>
+<p>So any class which is meant to wrap data from an <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> or ITypedItem should implement this interface.
+Typical use is for custom data such as classes inheriting from <a class="xref" href="Custom.Data.CustomItem.html">CustomItem</a>
+which takes an entity and then provides a strongly typed wrapper around it.</p>
+<p>History</p>
+<ul>
+<li>Made visible in the docs for better understanding in v19.01</li>
+<li>Moved from <code>ToSic.Sxc.Data.ICanWrapData</code> to <code>ToSic.Eav.Models.IModelOfData</code> in v21.01</li>
+</ul>
 </div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TModel? Create&lt;TSource, TModel&gt;(TSource? source) where TModel : IModelSetup&lt;TSource&gt;</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>source</code> <span class="xref">TSource</span></dt>
-    <dd><p>The source object containing data used to set up the wrapper model. Cannot be null.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">TModel</span></dt>
-    <dd><p>An instance of <code class="typeparamref">TModel</code> initialized with the specified source object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TSource</code></dt>
-    <dd><p>The type of the source object used to initialize the wrapper model.</p>
-</dd>
-    <dt><code>TModel</code></dt>
-    <dd><p>The type of the wrapper model to create. Must implement <a class="xref" href="ToSic.Eav.Models.IModelSetup-1.html">IModelSetup&lt;TSource&gt;</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-  <h4 class="section" id="ToSic_Eav_Models_Factory_IModelFactory_Create__2___0__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>The created model is set up using the <a class="xref" href="ToSic.Eav.Models.IModelSetup-1.html">IModelSetup&lt;TSource&gt;</a> interface, which
-allows custom initialization logic based on the source object.</p>
-</div>
-
-
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/Factory/IModelFactory.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelFromData.cs/#L20" class="edit-link">Edit this page</a>
         </div>
 
 
