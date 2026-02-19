@@ -117,6 +117,9 @@
 <li role="presentation">
 <a href="#tabpanel_1_with-editions" role="tab" aria-controls="tabpanel_1_with-editions" data-tab="with-editions" tabindex="-1">With Editions</a>
 </li>
+<li role="presentation">
+<a href="#tabpanel_1_local-editions" role="tab" aria-controls="tabpanel_1_local-editions" data-tab="local-editions" tabindex="-1">With Local Editions</a>
+</li>
 </ul>
 <section id="tabpanel_1_use-in-razor-minimal" role="tabpanel" data-tab="use-in-razor-minimal">
 
@@ -124,54 +127,54 @@
 <li>First, build your Angular app and place the output files into the appropriate folder in your app.</li>
 <li>Insert this code into your Razor view where you want to load the Angular app:</li>
 </ol>
-<pre><code class="lang-cshtml">@{
-  var angularConfig = new
-  {
-    AngularAppPath = &quot;/angular-demo/angular/browser&quot;,
-    AngularAppTag = &quot;app-root&quot;,
-    Editions = &quot;&quot;,
-    LocalDevServerPath = &quot;&quot;,
-    LocalDevFiles = &quot;&quot;
-  };
-  
-}
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 
-@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: angularConfig)
+@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: new {
+  AngularAppPath = &quot;/angular-demo/angular/browser&quot;,
+  AngularAppTag = &quot;app-root&quot;
+})
 </code></pre>
-<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/image-2.png" alt="Angular Hello World" class="full-width">
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/angular-loader.png" alt="Angular Hello World" class="full-width">
 <p>This will load the Angular app from the specified path (e.g. <code>/angular-demo/angular/browser</code>)
 regardless of the current edition. For example the hello world app of the Angular Quickstart Guide.</p>
 </section>
 <section id="tabpanel_1_with-editions" role="tabpanel" data-tab="with-editions" aria-hidden="true" hidden="hidden">
-<img src="../../../../assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
-<p>The Angular Loader includes the <a class="xref" href="../js-app-editions/index.html">JS App Editions</a>
-extension to develop the app locally with a hot-build, while loading the production build from DNN for normal users.</p>
-<p>To use the Angular Loader with Editions,
-build your Angular app and place the output files into the appropriate folders in your app
-(e.g. <code>/live/dist/ng-app</code>, <code>/staging/dist/ng-app</code>, <code>/local/dist/ng-app</code>).</p>
-<p>Insert this code into your Razor view where you want to load the Angular app:</p>
-<pre><code class="lang-cshtml">@{
-  var angularConfig = new
-  {
-    AngularAppPath = &quot;/dist/ng-app&quot;,
-    AngularAppTag = &quot;app-root&quot;,
-    Editions = &quot;live,staging,local&quot;,
-    LocalDevServerPath = &quot;//localhost:4200&quot;,
-    LocalDevFiles = &quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;
-  }
-}
 
-@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: angularConfig)
+<ol>
+<li><p>To use the Angular Loader with Editions, build your Angular app and place the output files into the appropriate folders in your app (e.g. <code>/live/dist/ng-app</code>, <code>/staging/dist/ng-app</code>).</p>
+</li>
+<li><p>Insert this code into your Razor view where you want to load the Angular app:</p>
+</li>
+</ol>
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+
+@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: new {
+  AngularAppPath = &quot;/dist/ng-app&quot;,
+  AngularAppTag = &quot;app-root&quot;,
+  Editions = &quot;live,staging&quot;
+})
 </code></pre>
 <p>This will load the Angular app based on the current edition.
 For example, if the current edition is &quot;live&quot;, it will load the Angular app from &quot;/live/dist/ng-app&quot;.</p>
-<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/image.png" alt="Angular App with Editions" class="full-width">
-<p>The local edition is useful for development,
-as it allows you to load the Angular app directly
-from your local development environment without having to build and deploy it to the server.
-When the local edition is active, the Angular Loader will load the app from the specified
-LocalDevServerPath (e.g. <code>&quot;//localhost:4200&quot;</code>) and include the specified LocalDevFiles (e.g. <code>&quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;</code>).
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/angular-loader-with-editions.png" alt="Angular App with Editions" class="full-width">
+</section>
+<section id="tabpanel_1_local-editions" role="tabpanel" data-tab="local-editions" aria-hidden="true" hidden="hidden">
+<img src="../../../../assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
+<p>The Angular Loader includes the <a class="xref" href="../js-app-editions/index.html">JS App Editions</a> extension to develop the app locally with a hot-build, while loading the production build from DNN for normal users.</p>
+<p>The local edition is useful for development, as it allows you to load the Angular app directly from your local development environment without having to build and deploy it to the server.
+When the local edition is active, the Angular Loader will load the app from the specified LocalDevServerPath (e.g. <code>&quot;//localhost:4200&quot;</code>) and include the specified LocalDevFiles (e.g. <code>&quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;</code>).
 This allows you to see your changes in real-time as you develop your Angular app.</p>
+<pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
+
+@Html.Partial(&quot;./extensions/angular-loader/Angular Main.cshtml&quot;, data: new {
+  AngularAppPath = &quot;/dist/ng-app&quot;,
+  AngularAppTag = &quot;app-root&quot;,
+  Editions = &quot;live,staging,local&quot;,
+  LocalDevServerPath = &quot;//localhost:4200&quot;,
+  LocalDevFiles = &quot;runtime.js,polyfills.js,styles.js,vendor.js,main.js&quot;
+})
+</code></pre>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/angular-loader/assets/angular-loader-with-local-edition.png" alt="Angular App with Local Edition" class="full-width">
 </section>
 </div>
 <h2 id="history">History</h2>
