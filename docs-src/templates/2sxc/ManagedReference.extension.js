@@ -24,12 +24,12 @@ const internalNamespaces = [
 ];
 
 const DefInternalWarningSuffix = `is an internal API and can change at any time. 
-  It's documented so you can understand how it works. <br>
-  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.`;
+  It's documented so you see how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could break your code.`;
 
 const DefWipWarningSuffix = `is a work-in-progress API and can change at any time. 
-  It's documented so you can understand how it works. <br>
-  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.`;
+  It's documented so you see how it works. <br>
+  🛑 Do not use it, as future changes could break your code.`;
 /**
  * This method will be called at the end of exports.transform in ManagedReference.html.primary.js
  */
