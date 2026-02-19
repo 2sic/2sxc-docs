@@ -15,22 +15,20 @@ Extensions can include custom **C# DataSources** for use in your code or in **Vi
 
 You should place the code for the extension in:
 
-TODO: @2rb - always specify the code-block language for clarity - you should see markdown warnings
-
-```
+```text
 /AppCode/Extensions/{ExtensionName}/
 ```
 
 The `{ExtensionName}` should match the folder of the extension itself,
 as it is used in:
 
-```
+```text
 /extensions/{ExtensionName}/
 ```
 
 If you mix DataSources with other code, consider placing them in:
 
-```
+```text
 /AppCode/Extensions/{ExtensionName}/DataSources/
 ```
 
@@ -42,13 +40,13 @@ If you mix DataSources with other code, consider placing them in:
 
 To avoid conflicts with other extensions, use:
 
-```
+```text
 App.Extensions.{ExtensionName}
 ```
 
 If you place DataSources in a subfolder, use:
 
-```
+```text
 App.Extensions.{ExtensionName}.DataSources
 ```
 
