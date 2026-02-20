@@ -1,5 +1,5 @@
 ---
-uid: Extensions.AppExtensions.Create.InputField
+uid: Extensions.AppExtensions.Create.InputField.Index
 ---
 
 # Input field extension
@@ -46,8 +46,8 @@ Custom input fields are App Extensions and must be placed in a specific folder:
 Before creating a custom input field, you must know where App Extensions live and how to **configure** them inside your App.
 
 To change the settings of your input field extension, click the pen icon next to the extension entry.
-¨
-<img src="./assets/input-content-type-metadata.png)" class="full-width"/>
+
+<img src="./assets/input-content-type-metadata.png" class="full-width"/>
 
 
 After opening the editor, you'll see various fields that **describe** and **configure** your extension.
@@ -117,9 +117,10 @@ For this, you create a **separate Content Type** and reference it from the main 
 To make your custom input field configurable (for example to define `Min`, `Max`, or `Step` for a number slider),
 you must create a **separate  Content Type** and **reference it** in your main Content Type.  
 
-[!IMPORTANT] The Content Type name must match your extension name exactly
-
-When creating the settings Content Type, the **Name is extremely important**.
+> [!IMPORTANT]
+> When creating the settings Content Type, the **Name is extremely important**.
+>
+> The Content Type name must match your extension name exactly
 
 It must be **exactly the same name as your App Extension**,  
 **with an `@` in front of it**, **not** the Component tag name.
@@ -145,6 +146,7 @@ It should look something like this:
 
 **Screenshot requirement:** Please ensure the screenshot shows the full context of the content type field.
 **Screenshot requirement:** Please ensure the screenshot shows the full context of the content type field.
+
 <div gallery="gallery-content-type-field">
   <img src="./assets/input-create-new-content-type.png">
   <img src="./assets/input-content-type-field.png">
@@ -152,14 +154,19 @@ It should look something like this:
 
 If everything works correctly, you can now rename the Content Type and move it into a new scope.
 
-## Scope
+## Include in Extension Export
+
+### [1. Scope](#tab/scope)
+
+We highly recommend you move the content-type to it's proper scope, so
+it's invisible when people install your extension.
 
 When moving your settings Content Type into a new scope,  
 the scope name must follow the **Extensions.{Name of Extension}** pattern.
 
 <img src="./assets/input-scope-name.png" class="full-width"/>
 
-## Data Bundles
+### [2. Data Bundles](#tab/data-bundles)
 
 A Data Bundle lets you package your App Extension together with its settings Content Type.
 
@@ -168,25 +175,33 @@ A Data Bundle lets you package your App Extension together with its settings Con
 Here you can create a new Data Bundle by clicking the **+** button.  
 Give it a name that matches your extension.
 
-## Linking your content type to the data bundle
+### [3. Add Content Type to Bundle](#tab/add-content-type)
 
-<img src="./assets/input-content-type-metadata.png)" class="full-width"/>
+Now that you created the bundle, you must tell each piece of data you want to include
+that it should be in the bundle.
 
 To add your settings Content Type to the Data Bundle,
 simply open the **Data** section of your App Extension and click the **Metadata** icon of the Content Type.  
 
-<img src="./assets/input-decorator.png)" class="full-width"/>
-
 Then select your Content Type from the list and click **Save**.  
 This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.
 
+<div gallery="gallery-data-bundle">
+  <img src="./assets/input-content-type-metadata.png">
+  <img src="./assets/input-decorator.png">
+</div>
 
-## Adding the data bundle to your extension
-
-<img src="./assets/input-data-bundle-extension.png" class="full-width"/>
+### [4. Include Bundle in Extension](#tab/include-bundle)
 
 Here you can open your App Extension (using the edit icon) and enable **Includes Data Bundles**.  
 Then simply select the Data Bundle you created.  
 This links the bundle to your extension,
 making sure the settings Content Type is included when the extension is exported or imported.
 
+<img src="./assets/input-data-bundle-extension.png" class="full-width"/>
+
+---
+
+## History
+
+Created in v21.02

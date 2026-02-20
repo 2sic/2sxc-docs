@@ -139,19 +139,15 @@ The folder name must follow this pattern:</p>
 </ol>
 <h2 id="configure-your-app-extension">Configure your app extension</h2>
 <p>Before creating a custom input field, you must know where App Extensions live and how to <strong>configure</strong> them inside your App.</p>
-<p>This can be found in the App settings on the left sidebar.</p>
-<p>TODO: @rb make sure that screenshots show more, otherwise it's hard to figure out where this is from</p>
-<p>TODO: @2rb prefer image tags as they can be set to full-width, shadow, etc. - especially important because white-on-white is hard to see
-see the last image on this page for an example.</p>
-<p>TODO: @2rb probably best to have the instructions first, and then the images as gallery / thumbnails below</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-app-extension-configuration.png" alt="App Extensions Overview"></p>
-<p>To change the settings of your input field extension, click the pen icon next to the extension entry.</p>
-<p>TODO: @rb make sure that screenshots show more, otherwise it's hard to figure out where this is from</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-app-edit.png" alt="App extension edit"></p>
+<p>To change the settings of your input field extension, click the pen icon next to the extension entry.
+¨
+<img src="./assets/input-content-type-metadata.png)" class="full-width"></p>
 <p>After opening the editor, you'll see various fields that <strong>describe</strong> and <strong>configure</strong> your extension.</p>
 <p>The most important setting is the <code>Input Fields Configuration</code>.
 This is where you specify which files should be loaded to activate your custom input field extension.</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-fields-files.png" alt="App extension input fields"></p>
+<div gallery="gallery-input-field-1">
+  <img src="../../../pages/extensions/app-extensions/create/assets/input-fields-files.png">
+</div>
 <p>Now that the App Extension is set up, we can start writing the actual code for the input field.</p>
 <h2 id="example-base-input-field">Example base input field</h2>
 <pre><code class="lang-javascript">(() =&gt; {
@@ -201,7 +197,6 @@ For this, you create a <strong>separate Content Type</strong> and reference it f
 <h2 id="how-to-create-and-connect-a-content-type">How to create and connect a Content Type</h2>
 <p>To make your custom input field configurable (for example to define <code>Min</code>, <code>Max</code>, or <code>Step</code> for a number slider),
 you must create a <strong>separate  Content Type</strong> and <strong>reference it</strong> in your main Content Type.</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-create-new-content-type.png" alt="App Extensions Overview"></p>
 <p>[!IMPORTANT] The Content Type name must match your extension name exactly</p>
 <p>When creating the settings Content Type, the <strong>Name is extremely important</strong>.</p>
 <p>It must be <strong>exactly the same name as your App Extension</strong>,<br>
@@ -216,28 +211,30 @@ you can now add a field to your new settings Content Type.</p>
 <p>Once this field exists, 2sxc will automatically show it inside the <strong>field configuration UI</strong>
 when you use your custom input field in any Content Type.</p>
 <p>It should look something like this:</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-content-type-field.png" alt="Content Type field"></p>
+<p><strong>Screenshot requirement:</strong> Please ensure the screenshot shows the full context of the content type field.
+<strong>Screenshot requirement:</strong> Please ensure the screenshot shows the full context of the content type field.</p>
+<div gallery="gallery-content-type-field">
+  <img src="../../../pages/extensions/app-extensions/create/assets/input-create-new-content-type.png">
+  <img src="../../../pages/extensions/app-extensions/create/assets/input-content-type-field.png">
+</div>
 <p>If everything works correctly, you can now rename the Content Type and move it into a new scope.</p>
 <h2 id="scope">Scope</h2>
 <p>When moving your settings Content Type into a new scope,<br>
 the scope name must follow the <strong>Extensions.{Name of Extension}</strong> pattern.</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-scope-name.png" alt="scope naming"></p>
+<img src="../../../pages/extensions/app-extensions/create/assets/input-scope-name.png" class="full-width">
 <h2 id="data-bundles">Data Bundles</h2>
 <p>A Data Bundle lets you package your App Extension together with its settings Content Type.</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle.png" alt="Data bundle"></p>
+<img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle.png" class="full-width">
 <p>Here you can create a new Data Bundle by clicking the <strong>+</strong> button.<br>
 Give it a name that matches your extension.</p>
 <h2 id="linking-your-content-type-to-the-data-bundle">Linking your content type to the data bundle</h2>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-content-type-metadata.png" alt="Metadata"></p>
+<img src="./assets/input-content-type-metadata.png)" class="full-width">
 <p>To add your settings Content Type to the Data Bundle,
 simply open the <strong>Data</strong> section of your App Extension and click the <strong>Metadata</strong> icon of the Content Type.</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-decorator.png" alt="Metadata Content Type"></p>
+<img src="./assets/input-decorator.png)" class="full-width">
 <p>Then select your Content Type from the list and click <strong>Save</strong>.<br>
 This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.</p>
 <h2 id="adding-the-data-bundle-to-your-extension">Adding the data bundle to your extension</h2>
-<p>TODO: @2rb - this is less ideal</p>
-<p><img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle-extension.png" alt="Data bundle binding"></p>
-<p>TODO: @2rb this is better</p>
 <img src="../../../pages/extensions/app-extensions/create/assets/input-data-bundle-extension.png" class="full-width">
 <p>Here you can open your App Extension (using the edit icon) and enable <strong>Includes Data Bundles</strong>.<br>
 Then simply select the Data Bundle you created.<br>

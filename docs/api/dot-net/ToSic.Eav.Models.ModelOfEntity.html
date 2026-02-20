@@ -111,7 +111,7 @@
 
 
   <h1 id="ToSic_Eav_Models_ModelOfEntity" data-uid="ToSic.Eav.Models.ModelOfEntity" class="text-break">
-Class ModelOfEntity  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L5"><i class="bi bi-code-slash"></i></a>
+Class ModelOfEntity  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,12 +119,13 @@ Class ModelOfEntity  <a class="header-action link-secondary" title="View source"
   <dl><dt>Assembly</dt><dd>ToSic.Eav.Data.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Foundation for a <em>record</em> which gets its data from an Entity. Completely empty, no public properties.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity&gt;, IWrapper&lt;IEntity&gt;, IEquatable&lt;ModelOfEntityCore&gt;, IModelOfEntity, ICanBeEntity, IEquatable&lt;ModelOfEntity&gt;</code></pre>
+public abstract record ModelOfEntity : IModelSetup&lt;IEntity&gt;, IModelOfEntity, IModelOfData, ICanBeEntity, IEquatable&lt;ModelOfEntity&gt;</code></pre>
   </div>
 
 
@@ -134,7 +135,6 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
     <dt>Inheritance</dt>
     <dd>
       <div><span class="xref">object</span></div>
-      <div><a class="xref" href="ToSic.Eav.Models.ModelOfEntityCore.html">ModelOfEntityCore</a></div>
       <div><span class="xref">ModelOfEntity</span></div>
     </dd>
   </dl>
@@ -143,9 +143,8 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="ToSic.Eav.Models.IModelSetup-1.html">IModelSetup</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
-      <div><a class="xref" href="ToSic.Sys.Wrappers.IWrapper-1.html">IWrapper</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Eav.Models.ModelOfEntityCore.html">ModelOfEntityCore</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.Models.IModelOfEntity.html">IModelOfEntity</a></div>
+      <div><a class="xref" href="ToSic.Eav.Models.IModelOfData.html">IModelOfData</a></div>
       <div><a class="xref" href="ToSic.Eav.Data.ICanBeEntity.html">ICanBeEntity</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="ToSic.Eav.Models.ModelOfEntity.html">ModelOfEntity</a>&gt;</div>
     </dd>
@@ -154,36 +153,29 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
-      <div><a class="xref" href="ToSic.Eav.DataSource.Query.Sys.QueryDefinition.html">QueryDefinition</a></div>
-      <div><a class="xref" href="ToSic.Eav.DataSource.Query.Sys.QueryPartDefinition.html">QueryPartDefinition</a></div>
-      <div><a class="xref" href="ToSic.Eav.Metadata.Sys.Permission.html">Permission</a></div>
+      <div><a class="xref" href="ToSic.Eav.Models.ModelOfEntityBasic.html">ModelOfEntityBasic</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Edit.Toolbar.Sys.ToolbarButtonDecorator.html">ToolbarButtonDecorator</a></div>
+      <div><a class="xref" href="ToSic.Sxc.Images.Sys.CopyrightSettings.html">CopyrightSettings</a></div>
     </dd>
   </dl>
 
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
-    <div>
-      <a class="xref" href="ToSic.Eav.Models.ModelOfEntityCore.html#ToSic_Eav_Models_ModelOfEntityCore_Entity">ModelOfEntityCore.Entity</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Models.ModelOfEntityCore.html#ToSic_Eav_Models_ModelOfEntityCore_Get__1_System_String___0_">ModelOfEntityCore.Get&lt;T&gt;(string, T)</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.Models.ModelOfEntityCore.html#ToSic_Eav_Models_ModelOfEntityCore_GetThis__1___0_System_String_">ModelOfEntityCore.GetThis&lt;T&gt;(T, string)</a>
-    </div>
-  </dd></dl>
 
   <dl class="typelist extensionMethods">
     <dt>Extension Methods</dt>
     <dd>
   <div>
-      <a class="xref" href="ToSic.Eav.Data.EntityExtensions.html#ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_ICanBeEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_ToSic_Eav_Data_ModelNullHandling_">EntityExtensions.As&lt;TModel&gt;(ICanBeEntity?, NoParamOrder, bool, ModelNullHandling)</a>
+      <a class="xref" href="ToSic.Eav.Models.ToModelExtensions.html#ToSic_Eav_Models_ToModelExtensions_ToModel__1_ToSic_Eav_Data_ICanBeEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_ToSic_Eav_Models_ModelNullHandling_">ToModelExtensions.ToModel&lt;TModel&gt;(ICanBeEntity?, NoParamOrder, bool, ModelNullHandling)</a>
   </div>
   </dd></dl>
 
 
 
+  <h2 id="ToSic_Eav_Models_ModelOfEntity_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This <strong>Core</strong> implementation has zero public properties, so no public <code>Id</code>, <code>Guid</code> or <code>Title</code> properties.
+If serialized or use otherwise it will not include anything which was not added explicitly.</p>
+<p>This is the <strong>record</strong> implementation, which is the preferred future way of creating models.
+To use the <strong>class</strong> based implementation (for example in DNN code not supporting c# 10), use the <a class="xref" href="ToSic.Eav.Models.ModelOfEntityClassic.html">ModelOfEntityClassic</a></p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -194,10 +186,11 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
   <h3 id="ToSic_Eav_Models_ModelOfEntity__ctor" data-uid="ToSic.Eav.Models.ModelOfEntity.#ctor">
   ModelOfEntity()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Empty constructor, mainly for factories which must call the setup (otherwise risky to use)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -212,6 +205,9 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
 
 
+  <h4 class="section" id="ToSic_Eav_Models_ModelOfEntity__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This is the primary constructor used by most inheriting classes.</p>
+</div>
 
 
 
@@ -220,10 +216,11 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
   <h3 id="ToSic_Eav_Models_ModelOfEntity__ctor_ToSic_Eav_Data_IEntity_" data-uid="ToSic.Eav.Models.ModelOfEntity.#ctor(ToSic.Eav.Data.IEntity)">
   ModelOfEntity(IEntity)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Standard constructor providing the entity during construction.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -233,7 +230,8 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>entity</code> <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
-    <dd></dd>
+    <dd><p>Entity to wrap</p>
+</dd>
   </dl>
 
 
@@ -251,19 +249,21 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 </h2>
 
 
-  <a id="ToSic_Eav_Models_ModelOfEntity_Guid_" data-uid="ToSic.Eav.Models.ModelOfEntity.Guid*"></a>
+  <a id="ToSic_Eav_Models_ModelOfEntity_Entity_" data-uid="ToSic.Eav.Models.ModelOfEntity.Entity*"></a>
 
-  <h3 id="ToSic_Eav_Models_ModelOfEntity_Guid" data-uid="ToSic.Eav.Models.ModelOfEntity.Guid">
-  Guid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_Models_ModelOfEntity_Entity" data-uid="ToSic.Eav.Models.ModelOfEntity.Entity">
+  Entity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The entity guid, as quick, nice accessor.</p>
+  <div class="markdown level1 summary"><p>The underlying entity.
+It's explicitly <em>not</em> public, so it won't end up in serializations etc.
+So it's only accessible from within the object (protected).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid Guid { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected IEntity Entity { get; }</code></pre>
   </div>
 
 
@@ -272,8 +272,58 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
-    <dd><p>The guid, or an empty-guid of no entity available</p>
+    <dt><a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ToSic_Eav_Models_ModelOfEntity_GetThis_" data-uid="ToSic.Eav.Models.ModelOfEntity.GetThis*"></a>
+
+  <h3 id="ToSic_Eav_Models_ModelOfEntity_GetThis__1___0_System_String_" data-uid="ToSic.Eav.Models.ModelOfEntity.GetThis``1(``0,System.String)">
+  GetThis&lt;T&gt;(T?, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a value from the underlying entity, whose name matches the property requesting this.
+So if your C# property is called <code>Birthday</code> it will also get the field <code>Birthday</code> in the entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected T? GetThis&lt;T&gt;(T? fallback, string propertyName = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fallback</code> <span class="xref">T</span></dt>
+    <dd><p>Value to provide if nothing was found - required</p>
+</dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The property name - will be auto-filled by the compiler</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The typed value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Optional type, usually auto-detected because of the <code>fallback</code> value</p>
 </dd>
   </dl>
 
@@ -284,29 +334,44 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
 
 
-  <a id="ToSic_Eav_Models_ModelOfEntity_Id_" data-uid="ToSic.Eav.Models.ModelOfEntity.Id*"></a>
 
-  <h3 id="ToSic_Eav_Models_ModelOfEntity_Id" data-uid="ToSic.Eav.Models.ModelOfEntity.Id">
-  Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L17"><i class="bi bi-code-slash"></i></a>
+
+  <a id="ToSic_Eav_Models_ModelOfEntity_Get_" data-uid="ToSic.Eav.Models.ModelOfEntity.Get*"></a>
+
+  <h3 id="ToSic_Eav_Models_ModelOfEntity_Get__1_System_String___0_" data-uid="ToSic.Eav.Models.ModelOfEntity.Get``1(System.String,``0)">
+  Get&lt;T&gt;(string, T?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The entity id, as quick, nice accessor.</p>
+  <div class="markdown level1 summary"><p>Get a value from the underlying entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Id { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected T? Get&lt;T&gt;(string fieldName, T? fallback)</code></pre>
   </div>
 
-
-
-
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The id, or 0 if no entity available</p>
+    <dt><code>fieldName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>field name</p>
+</dd>
+    <dt><code>fallback</code> <span class="xref">T</span></dt>
+    <dd><p>fallback value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The value. If the Entity is missing, will return the fallback result.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>type, should only be string, decimal, bool</p>
 </dd>
   </dl>
 
@@ -315,40 +380,6 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 
 
 
-
-
-  <a id="ToSic_Eav_Models_ModelOfEntity_Title_" data-uid="ToSic.Eav.Models.ModelOfEntity.Title*"></a>
-
-  <h3 id="ToSic_Eav_Models_ModelOfEntity_Title" data-uid="ToSic.Eav.Models.ModelOfEntity.Title">
-  Title
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L12"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The title as string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string Title { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The title, or an empty string if not available or not string-able</p>
-</dd>
-  </dl>
-
-
-
-
-  <h4 class="section" id="ToSic_Eav_Models_ModelOfEntity_Title_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Can be overriden by other parts, if necessary.</p>
-</div>
 
 
 
@@ -357,7 +388,7 @@ public abstract record ModelOfEntity : ModelOfEntityCore, IModelSetup&lt;IEntity
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/ModelOfEntity.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

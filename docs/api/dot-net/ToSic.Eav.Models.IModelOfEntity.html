@@ -111,7 +111,7 @@
 
 
   <h1 id="ToSic_Eav_Models_IModelOfEntity" data-uid="ToSic.Eav.Models.IModelOfEntity" class="text-break">
-Interface IModelOfEntity  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Interface IModelOfEntity  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,13 +119,13 @@ Interface IModelOfEntity  <a class="header-action link-secondary" title="View so
   <dl><dt>Assembly</dt><dd>ToSic.Eav.Data.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Foundation for interfaces which will enhance <a class="xref" href="ToSic.Eav.Models.ModelOfEntity.html">ModelOfEntity</a> which gets its data from an Entity. <br></p>
+  <div class="markdown summary"><p>Marks classes and interfaces as being able to handel Entities as the underlying data.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public interface IModelOfEntity : ICanBeEntity</code></pre>
+    <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;may change or rename at any time&quot;)]
+public interface IModelOfEntity : IModelOfData</code></pre>
   </div>
 
 
@@ -134,144 +134,26 @@ public interface IModelOfEntity : ICanBeEntity</code></pre>
 
 
 
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
-    <div>
-      <a class="xref" href="ToSic.Eav.Data.ICanBeEntity.html#ToSic_Eav_Data_ICanBeEntity_Entity">ICanBeEntity.Entity</a>
-    </div>
-  </dd></dl>
 
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
-  <div>
-      <a class="xref" href="ToSic.Eav.Data.EntityExtensions.html#ToSic_Eav_Data_EntityExtensions_As__1_ToSic_Eav_Data_ICanBeEntity_ToSic_Sys_Coding_NoParamOrder_System_Boolean_ToSic_Eav_Data_ModelNullHandling_">EntityExtensions.As&lt;TModel&gt;(ICanBeEntity?, NoParamOrder, bool, ModelNullHandling)</a>
-  </div>
-  </dd></dl>
 
 
 
   <h2 id="ToSic_Eav_Models_IModelOfEntity_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This is used for more type safety - so you base your interfaces - like IPerson on this,
-otherwise you're IPerson would be missing the Title, Id, Guid</p>
+  <div class="markdown level0 remarks"><p>The sole purpose of this is to ensure that classes/records/interfaces can declare that they can be used as models of entities.
+This should help the compiler detect early on, if interfaces / objects passed to As{TModel} are valid or not.
+It does not have any properties, since that would put a burden on anything that</p>
+<p>History</p>
 <ul>
-<li>Introduced in v21.01</li>
+<li>WIP v21</li>
 </ul>
 </div>
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="ToSic_Eav_Models_IModelOfEntity_Guid_" data-uid="ToSic.Eav.Models.IModelOfEntity.Guid*"></a>
-
-  <h3 id="ToSic_Eav_Models_IModelOfEntity_Guid" data-uid="ToSic.Eav.Models.IModelOfEntity.Guid">
-  Guid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L33"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The entity guid, as quick, nice accessor.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Guid Guid { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
-    <dd><p>The guid, or an empty-guid of no entity available</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Models_IModelOfEntity_Id_" data-uid="ToSic.Eav.Models.IModelOfEntity.Id*"></a>
-
-  <h3 id="ToSic_Eav_Models_IModelOfEntity_Id" data-uid="ToSic.Eav.Models.IModelOfEntity.Id">
-  Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The entity id, as quick, nice accessor.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int Id { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The id, or 0 if no entity available</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Models_IModelOfEntity_Title_" data-uid="ToSic.Eav.Models.IModelOfEntity.Title*"></a>
-
-  <h3 id="ToSic_Eav_Models_IModelOfEntity_Title" data-uid="ToSic.Eav.Models.IModelOfEntity.Title">
-  Title
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The title as string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Title { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The title, or an empty string if not available or not string-able</p>
-</dd>
-  </dl>
-
-
-
-
-  <h4 class="section" id="ToSic_Eav_Models_IModelOfEntity_Title_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Can be overriden by other parts, if necessary.</p>
-</div>
-
-
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/IModelOfEntity.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

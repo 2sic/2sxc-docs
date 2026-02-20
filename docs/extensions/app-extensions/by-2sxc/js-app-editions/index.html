@@ -133,30 +133,26 @@ to load the Angular app from a local hot-build during development, while loading
 })
 </code></pre>
 <p>Show the toolbar to select an edition - usually only for the superuser / developer</p>
-<img src="../../../../pages/extensions/app-extensions/by-2sxc/js-app-editions/assets/editions-bar.jpg" alt="JS App Editions Bar" class="full-width">
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/js-app-editions/assets/editions-bar.png" alt="JS App Editions Bar" class="full-width">
 <p>With this toolbar, you can select the edition you want to use for the current app. This will set an cookie so that the app knows which edition to load. In code you can then check which edition is active and adjust behavior accordingly.</p>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
-@using AppCode.Extensions.JsEditions
-@using ToSic.Sxc.Services;
-@using ToSic.Razor.Blade;
+@using AppCode.Extensions.JsAppEditions
 
 @{
-  // Create helper to manage the editions (live, staging etc.)
-  var editionsHelper = GetService&lt;Editions&gt;();
+  var editionsHelper = GetService&lt;JsAppEditionService&gt;();
 
-  if (editionsHelper.CurrentEdition == &quot;local&quot;)
+  &lt;div class=&quot;alert alert-info&quot;&gt;Show &lt;strong&gt;@editionsHelper.CurrentEdition&lt;/strong&gt; Environment&lt;/div&gt;
+
+  if (MyUser.IsContentAdmin)
   {
-    // Local edition logic here
-    // Some code for local edition
-  }
-  else
-  {
-    // Non-local edition logic here
-    // Some other code
+    @Html.Partial(&quot;extensions/js-app-editions/Editions Bar.cshtml&quot;, new {
+      Editions = &quot;live,staging&quot;
+    })
   }
 }
 </code></pre>
-<hr>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/js-app-editions/assets/editions-bar-example.png" alt="JS App Editions Bar" class="full-width">
+---
 <h2 id="history">History</h2>
 <ol>
 <li>v01.00 - Initial release for 2sxc</li>
