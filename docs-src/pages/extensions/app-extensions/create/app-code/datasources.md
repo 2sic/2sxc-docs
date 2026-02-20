@@ -60,26 +60,43 @@ It defines one or more output streams using `ProvideOut(...)`.
 ### Basic Example
 
 ```csharp
+using AppCode.Extensions.OpenMeteo.Data;
 using Custom.DataSource;
+using ToSic.Eav.DataSource;
 
-namespace App.Extensions.MyExtension.DataSources
+namespace AppCode.Extensions.OpenMeteo
 {
-  public class HelloWorldDataSource : DataSource16
+  /// <summary>
+  /// DataSource which loads the current weather conditions from the Open-Meteo API.
+  /// <br/>
+  /// Returns a single record containing the current temperature, wind speed,
+  /// weather code and timestamp for the configured location.
+  /// <br/>
+  /// Intended for use in Visual Queries or directly in Razor code.
+  /// </summary>
+  public class OpenMeteoCurrent : DataSource16
   {
-    public HelloWorldDataSource(Dependencies services) : base(services)
+    public OpenMeteoCurrent(Dependencies services) : base(services)
     {
-      ProvideOut(GetData);
+      ProvideOut(GetCurrent);
     }
 
-    private object GetData()
+    /// <summary>
+    /// Fetches the current weather data from Open-Meteo
+    /// and returns it as a single record.
+    /// </summary>
+    private object GetCurrent()
     {
-      return new[]
-      {
-        new { Message = "Hello from my DataSource" }
-      };
+      // Getting the Data
+      var result = OpenMeteoHelpers.Download(Kit, Latitude, Longitude, Timezone,
+        $"&current={OpenMeteoConstants.ExpectedFields}"
+      );
+      // Returning a filled model
+      return result.ToCurrentModel();
     }
   }
 }
+
 ```
 
 ---
@@ -127,9 +144,45 @@ ProvideOut(GetData);
 
 ### In Code (Razor / API)
 
-```csharp
-var data = Kit.Data.GetSource<HelloWorldDataSource>();
-var items = data[]].List;
+```razor
+@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.OpenMeteo
+@using AppCode.Extensions.OpenMeteo.Data
+
+<h3>Current Weather</h3>
+@{
+  // Create a data source for current weather data from OpenMeteo API
+  // Parameters specify the location and timezone settings
+  var currentDs = Kit.Data.GetSource<OpenMeteoCurrent>(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674, // Vaduz, Liechtenstein
+    Longitude = 9.4779, // Vaduz, Liechtenstein
+  });
+
+  // Use the strongly-typed model
+  var current = As<OpenMeteoResult>(currentDs);
+}
+
+@* Display message if the API didn't return any weather data, then exit *@
+@if (current == null)
+{
+  <div class="alert alert-warning">
+    No data available
+  </div>
+  return;
+}
+
+@* Display the current weather information retrieved from the API *@
+<ol>
+  <li>
+    <strong>When:</strong> @current.When
+  </li>
+  <li>
+    <strong>Temperature:</strong> @current.Temperature °C
+  </li>
+  <li>
+    <strong>Weather:</strong> @current.Weather
+  </li>
+</ol>
 ```
 
 ---
