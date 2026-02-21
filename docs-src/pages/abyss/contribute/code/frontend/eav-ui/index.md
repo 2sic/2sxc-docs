@@ -26,6 +26,25 @@ This is a common cause of problems, as services accidentally share state.
     to see if anything will cause problems.
 1. Use the special `transient<T>()` function to create services which are meant to be used transiently, and not shared across the app.
 
+## Prefer Signals, avoid Observables
+
+Historically Angular has used Observables for state management and data flow.
+However, this can lead to complex and hard-to-maintain code, especially when dealing with multiple subscriptions and ensuring proper cleanup.
+People also have a really hard time understanding how Observables work, and how to use them correctly.
+
+Signals are a newer feature in Angular that provide a simpler and more intuitive way to manage state and data flow.
+They allow you to define reactive state that automatically updates the UI when it changes, without the need for manual subscriptions and cleanup.
+By using Signals instead of Observables, we can create cleaner and more maintainable code, and reduce the likelihood of bugs related to state management and memory leaks.
+
+1. Try to use signals wherever possible.
+1. If old code uses observables, try to refactor it to use signals instead, if possible.
+1. Try to use `httpResource` over `HttpClient` - use our helper services for this.
+1. Use our signal helpers which give the signals a name,
+    such as `computedObj(name, () => ...)` instead of `computed(() => ...)`,
+    to make it easier to debug and understand the code.
+    This is mainly important for long-living signals on services, but less important for short-living signals in components.
+
+
 ## Routing-Dialogs - Use Convention
 
 TODO: @2rb document how we do this. things like
