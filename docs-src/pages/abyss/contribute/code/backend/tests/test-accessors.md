@@ -1,8 +1,10 @@
 ---
-uid: Abyss.Contribute.Tests.TestAccessors
+uid: Abyss.Contribute.Backend.Tests.TestAccessors
 ---
 
 # Test Accessors and Test Constructors
+
+[!include[""](../../_contributors-only.md)]
 
 While working with the normal code we often see that a method is used x-times.
 Unfortunately the counter counts all calls including test-calls, so the number can be very misleading.
@@ -26,15 +28,16 @@ Examples follow.
 This shows a method on the class (for use there only) to create a specific class.
 It will help to keep the access-count on the constructor low.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.Caching.Tests/CachePolicyMakerTests.cs#L8-L11)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Caching.Tests/CachePolicyMakerTests.cs#L8-L11)]
 
 ## Static Class with Test Accessor
 
 This is a static class with a test accessor method, inside the test-project where it is used.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.Caching.Tests/TestAccessors.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Caching.Tests/TestAccessors.cs)]
 
 ## Static Class with Test Accessor in a TestHelper Project
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.Data.Build.TestHelpers/Data.Build/ValueBuilderTestAccessors.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Eav.Data.Build.TestHelpers/Data.Build/ValueBuilderTestAccessors.cs)]
+
 

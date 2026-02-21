@@ -1,18 +1,17 @@
 ---
-uid: Abyss.Contribute.Tests.DependencyInjection
+uid: Abyss.Contribute.Backend.Tests.DependencyInjection
 ---
 
 # Dependency Injection in xUnit Tests
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
-
+[!include[""](../../_contributors-only.md)]
 
 ## Unit Tests which Don't use Dependency Injection
 
 These unit tests are the simplest, and don't need any special setup.
 Example:
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.Core.Tests/FunFactTests/FunctionalFactoryStringTests.cs#L10-L21)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Core.Tests/FunFactTests/FunctionalFactoryStringTests.cs#L10-L21)]
 
 ## Unit Tests which need Basic Dependency Injection _by Namespace_
 
@@ -20,7 +19,7 @@ These tests need DI to be setup, but don't need any configuration (such as Datab
 
 First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.DI.Tests/SwitchableServices/Startup.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.DI.Tests/SwitchableServices/Startup.cs)]
 
 The tests in this folder and sub folders will automatically pick up the DI configuration from this startup class.
 This happens through the **namespace**, not through the physical folders.
@@ -28,7 +27,7 @@ This happens through the **namespace**, not through the physical folders.
 This setup allows you to quickly reuse a setup, and specify it to be very specific to all the tests in the same namespace.
 In will then be available as a service in the test.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.DI.Tests/SwitchableServices/VerifySwitchableService.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.DI.Tests/SwitchableServices/VerifySwitchableService.cs)]
 
 ## Unit Tests with Basic Dependency Injection _by Attribute_
 

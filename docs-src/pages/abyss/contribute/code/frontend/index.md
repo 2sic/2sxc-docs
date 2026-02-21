@@ -1,10 +1,10 @@
 ---
-uid: Abyss.Contribute.Code.Frontend
+uid: Abyss.Contribute.Code.Frontend.Index
 ---
 
 # Contribute to 2sxc / EAV Frontend Experience
 
-[!include["_contributors-only.md"](_contributors-only.md)]
+[!include["_contributors-only.md"](../_contributors-only.md)]
 
 ## Prerequisites
 

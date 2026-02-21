@@ -4,7 +4,7 @@ uid: Abyss.Releases.History.AllChanges
 
 # Changes Overview for 2sxc/EAV
 
-This page collects all the changes of all versions into one place, making it easier to search for certain keywords. 
+This page collects all the changes of all versions into one place, making it easier to search for certain keywords.
 
 👉 if you only care about breaking, please check [](xref:Abyss.Releases.History.BreakingChanges)
 

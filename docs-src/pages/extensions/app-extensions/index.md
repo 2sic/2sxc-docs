@@ -32,7 +32,7 @@ They allow you to add custom features, tools, and integrations that can enhance 
     Another example is an Admin Tools extension [Radmin](xref:Extensions.AppExtensions.By2sxc.Radmin.Index) which lets you quickly create admin tables of data to manage:
 
 3. **Example: DataSource Extension**  
-    A DataSource extension like [Open Meteo](xref:Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index) allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
+    A DataSource extension like [Open Meteo](xref:Extensions.AppExtensions.By2sxc.OpenMeteo.Index) allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
 
 <div gallery="gallery1">
   <img src="./assets/example-color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>

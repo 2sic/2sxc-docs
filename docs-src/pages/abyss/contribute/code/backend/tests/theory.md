@@ -1,11 +1,10 @@
 ---
-uid: Abyss.Contribute.Tests.Theory
+uid: Abyss.Contribute.Backend.Tests.Theory
 ---
 
 # xUnit Theory Tests - Data-Driven
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
-
+[!include[""](../../_contributors-only.md)]
 
 ## `Theory` for Data-Driven Tests
 
@@ -33,4 +32,4 @@ public void ShouldCalculateCorrectly(int a, int b, int expected)
 
 This example uses `[MemberData]` to provide the data for the test.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.StartupTests/ConfigurationOverride/GlobalConfigurationOverride.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Eav.StartupTests/ConfigurationOverride/GlobalConfigurationOverride.cs)]

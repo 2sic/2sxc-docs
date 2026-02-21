@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>xUnit Theory Tests - Data-Driven | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="xUnit Theory Tests - Data-Driven | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/backend/tests/theory.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Backend.Tests.Theory">
+<h1 id="xunit-theory-tests---data-driven">xUnit Theory Tests - Data-Driven</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+<h2 id="theory-for-data-driven-tests"><code>Theory</code> for Data-Driven Tests</h2>
+<p>Note that data-driven simply means that objects / lists of tests are run.</p>
+<p>We are basically using the recommendations from
+<a href="https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/">https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/</a></p>
+<h2 id="example-with-inlinedata">Example with InlineData</h2>
+<pre><code class="lang-csharp">[Theory]
+[InlineData(1, 2, 3)]
+[InlineData(2, 3, 5)]
+[InlineData(3, 4, 7)]
+public void ShouldCalculateCorrectly(int a, int b, int expected)
+{
+  var result = a + b;
+  Equal(expected, result);
+}
+</code></pre>
+<h2 id="example-with-memberdata">Example with MemberData</h2>
+<p>This example uses <code>[MemberData]</code> to provide the data for the test.</p>
+<pre><code class="lang-csharp">using ToSic.Eav.Apps;
+using ToSic.Eav.Testing;
+
+namespace ToSic.Eav.ConfigurationOverride;
+
+// TODO: These tests seem to not have worked for a long time
+// Probably the setup isn't happening first.
+// It appears that there should be some override settings which should be used as well, which are not applied here
+// Needs some time to restore functionality
+
+[Startup(typeof(StartupTestsApps))]
+public class GlobalConfigurationOverride(IAppReaderFactory appReaderFactory)
+    // the fixture will also load the resources
+    : IClassFixture&lt;DoFixtureStartup&lt;ScenarioOverrideFancybox3&gt;&gt;
+{
+    public record TestData(string Name, Guid Guid, bool Expected);
+
+    public static TheoryData&lt;TestData&gt; GenerateTests =&gt;
+    [
+        new(&quot;Fancybox4&quot;, new(&quot;3356ad17-91ce-4814-83c1-9f527697391a&quot;), false),
+        new(&quot;Fancybox3&quot;, new(&quot;4b9ef331-480a-4a38-86f1-a580f8345677&quot;), true)
+    ];
+
+    private const string HtmlField = &quot;Html&quot;;
+    private const string TestStringInOverrideFancybox3 = &quot;test-is-override&quot;;
+
+    [Theory]
+    [MemberData(nameof(GenerateTests))]
+    public void ResourceExistsOnce(TestData specs) =&gt;
+        Single(GetEntitiesOfGuid(specs.Guid));
+
+    // TODO: @STV - this seems to fail, it appears that the normal data isn't loaded, only system-custom ?
+    /// &lt;summary&gt;
+    /// This is quite a complex test
+    /// - There is an entity in App_Data/system-custom with the same guid as the fancybox3 WebResource
+    /// - It has an additional string containing &quot;test-is-override&quot;
+    /// - On load, it should _replace_ the original item
+    /// - and make sure it's used instead
+    /// &lt;/summary&gt;
+    [Theory]
+    [MemberData(nameof(GenerateTests))]
+    public void ResourceHtmlContainsText(TestData specs)
+    {
+        var html = GetEntitiesOfGuid(specs.Guid).First().GetTac&lt;string&gt;(HtmlField);
+        Equal(specs.Expected, html.Contains(TestStringInOverrideFancybox3));
+    }
+
+    private List&lt;IEntity&gt; GetEntitiesOfGuid(Guid resourceGuid)
+    {
+        var primaryApp = appReaderFactory.GetSystemPresetTac();
+
+        // Verify there is only one with this guid
+        var entities = primaryApp.List
+            .Where(e =&gt; e.EntityGuid == resourceGuid)
+            .ToList();
+        return entities;
+    }
+}
+</code></pre>
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/backend/tests/theory.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

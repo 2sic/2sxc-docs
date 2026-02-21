@@ -1,11 +1,10 @@
 ---
-uid: Abyss.Contribute.Tests.TestsWithFiles
+uid: Abyss.Contribute.Backend.Tests.TestsWithFiles
 ---
 
 # xUnit Theory Tests - Using Files
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
-
+[!include[""](../../_contributors-only.md)]
 
 ## Using Files in Tests
 
@@ -36,9 +35,9 @@ Note: it's not sure what the `LinkBase` does - it can probably be removed.
 
 We have a helper class called `TestFiles` which helps us find the bin folder and attach the full folder path to the file name.
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Sys.TestHelpers/Testing/TestFiles.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.TestHelpers/Testing/TestFiles.cs)]
 
 We can then use this to load the files as needed and do our work with them.
 The following example uses this folder to create a `TestScenario` with this folder:
 
-[!code-csharp[](../../../../../../eav-server/ToSic.Eav.StartupTests/ConfigurationOverride/ScenarioOverrideFancybox3.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Eav.StartupTests/ConfigurationOverride/ScenarioOverrideFancybox3.cs)]

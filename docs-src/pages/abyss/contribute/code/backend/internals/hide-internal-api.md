@@ -1,8 +1,10 @@
 ---
-uid: Abyss.Contribute.Internals.HideInternalApi
+uid: Abyss.Contribute.Backend.Internals.HideInternalApi
 ---
 
 # How we Hide Internal APIs
+
+[!include[""](../../_contributors-only.md)]
 
 A lot of 2sxc / EAV code is internal, meaning it should not be used outside of the project.
 

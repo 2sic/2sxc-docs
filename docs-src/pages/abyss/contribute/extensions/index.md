@@ -82,7 +82,7 @@ Before writing documentation for your extension, review these existing examples 
 
 - **For App Extensions**: Look at existing extension docs in `/docs-src/pages/extensions/app-extensions/by-2sxc/`
   - [Google reCAPTCHA v3](xref:Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index) - WebAPI integration example
-  - [Open-Meteo DataSource](xref:Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index) - DataSource example
+  - [Open-Meteo DataSource](xref:Extensions.AppExtensions.By2sxc.OpenMeteo.Index) - DataSource example
 - **For Custom Fields**: Look at existing field documentation patterns
 - **General Structure**: Follow the pattern of introduction → installation → configuration → code examples → history
 

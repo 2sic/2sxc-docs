@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Contribute to 2sxc / EAV JavaScript/TypeScript Tests | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Contribute to 2sxc / EAV JavaScript/TypeScript Tests | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/frontend/tests/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Frontend.Tests.Index">
+<h1 id="contribute-to-2sxc--eav-javascripttypescript-tests">Contribute to 2sxc / EAV JavaScript/TypeScript Tests</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+<h2 id="pre-requisites">Pre-Requisites</h2>
+<ul>
+<li>all the pre-requisites for building 2sxc</li>
+</ul>
+<h2 id="background">Background</h2>
+<p>On 2sxc and the EAV project we strive to have many unit tests, but as always it's hard to keep up.</p>
+<p>One of the challenges is also that some of the tests were written when we were less experienced, so we would do it better today.
+So if you do review some tests, note that they may not use the latest best practices.</p>
+<h2 id="desired-setup-and-conventions">Desired Setup and Conventions</h2>
+<p>As of 2025-12 we want to use <a href="https://vitest.dev">Vitest</a> for all our unit tests.</p>
+<h2 id="setup--installation">Setup &amp; Installation</h2>
+<p>Vitest is typically configured in the project's <code>package.json</code> and <code>vitest.config.ts</code>. Dependencies are installed via:</p>
+<pre><code class="lang-bash">npm install
+</code></pre>
+<p>For more details, see the <a href="https://vitest.dev/guide/">Vitest Installation Guide</a>.</p>
+<h2 id="running-tests">Running Tests</h2>
+<pre><code class="lang-bash"># Run all tests once
+npm test
+
+# Run in watch mode (re-runs on file changes)
+npm run test:watch
+
+# Run with coverage report
+npm run test:coverage
+</code></pre>
+<h2 id="test-file-naming--location">Test File Naming &amp; Location</h2>
+<ul>
+<li>Test files should be located next to their source files.</li>
+<li>Naming conventions: <code>*.spec.ts</code></li>
+<li>Example: <code>src/utils/add.ts</code> → <code>src/utils/add.spec.ts</code></li>
+</ul>
+<h2 id="basic-structure">Basic Structure</h2>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+
+describe(&quot;Name of the unit (function/class)&quot;, () =&gt; {
+  it(&quot;describes the expected behavior&quot;, () =&gt; {
+    // Arrange
+    const input = 1;
+
+    // Act
+    const result = input + 1;
+
+    // Assert
+    expect(result).toBe(2);
+  });
+});
+</code></pre>
+<p>For more on test structure and assertions, see the <a href="https://vitest.dev">Vitest Documentation</a>.</p>
+<h2 id="example-1-testing-a-small-function">Example 1: Testing a Small Function</h2>
+<p><strong>Unit (example):</strong></p>
+<pre><code class="lang-ts">export function add(a: number, b: number) {
+  return a + b;
+}
+</code></pre>
+<p><strong>Test:</strong></p>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+import { add } from &quot;./add&quot;;
+
+describe(&quot;add&quot;, () =&gt; {
+  it(&quot;adds two numbers&quot;, () =&gt; {
+    expect(add(2, 3)).toBe(5);
+  });
+});
+</code></pre>
+<h2 id="example-2-multiple-test-cases-at-once-cases-array">Example 2: Multiple Test Cases at Once (cases array)</h2>
+<p>If a function has many edge cases, we prefer a <code>cases</code> array instead of many separate <code>it(...)</code> blocks.</p>
+<h3 id="variant-a-simple-cases-input--expected">Variant A: Simple cases (input → expected)</h3>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+
+function toUpperSafe(val: unknown) {
+  return typeof val === &quot;string&quot; ? val.toUpperCase() : undefined;
+}
+
+describe(&quot;toUpperSafe&quot;, () =&gt; {
+  const cases: Array&lt;[unknown, string | undefined]&gt; = [
+    [&quot;hi&quot;, &quot;HI&quot;],
+    [&quot;&quot;, &quot;&quot;],
+    [undefined, undefined],
+    [null, undefined],
+    [123, undefined],
+  ];
+
+  cases.forEach(([input, expected]) =&gt; {
+    it(`input=${String(input)}`, () =&gt; {
+      expect(toUpperSafe(input)).toBe(expected);
+    });
+  });
+});
+</code></pre>
+<h3 id="variant-b-cases-with-custom-test-names">Variant B: Cases with custom test names</h3>
+<p>For more complex scenarios, include descriptive test names:</p>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+
+function parseUser(input: string) {
+  try {
+    return JSON.parse(input);
+  } catch {
+    return null;
+  }
+}
+
+describe(&quot;parseUser&quot;, () =&gt; {
+  const cases = [
+    { name: &quot;parses valid JSON&quot;, input: '{&quot;name&quot;:&quot;John&quot;}', expected: { name: &quot;John&quot; } },
+    { name: &quot;returns null on invalid JSON&quot;, input: &quot;invalid&quot;, expected: null },
+    { name: &quot;handles empty string&quot;, input: &quot;&quot;, expected: null },
+  ];
+
+  cases.forEach(({ name, input, expected }) =&gt; {
+    it(name, () =&gt; {
+      expect(parseUser(input)).toEqual(expected);
+    });
+  });
+});
+</code></pre>
+<h2 id="example-3-testing-async-functions">Example 3: Testing Async Functions</h2>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+
+async function fetchUser(id: number) {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+}
+
+describe(&quot;fetchUser&quot;, () =&gt; {
+  it(&quot;fetches user data&quot;, async () =&gt; {
+    // Note: In real tests, you'd mock the fetch function
+    const result = await fetchUser(1);
+    expect(result).toHaveProperty(&quot;id&quot;);
+  });
+});
+</code></pre>
+<p>For async testing patterns, see <a href="https://vitest.dev/guide/features.html#async-tests">Vitest Async Documentation</a>.</p>
+<h2 id="example-4-testing-error-cases">Example 4: Testing Error Cases</h2>
+<pre><code class="lang-ts">import { describe, it, expect } from &quot;vitest&quot;;
+
+function divide(a: number, b: number) {
+  if (b === 0) throw new Error(&quot;Division by zero&quot;);
+  return a / b;
+}
+
+describe(&quot;divide&quot;, () =&gt; {
+  it(&quot;divides two numbers&quot;, () =&gt; {
+    expect(divide(10, 2)).toBe(5);
+  });
+
+  it(&quot;throws on division by zero&quot;, () =&gt; {
+    expect(() =&gt; divide(10, 0)).toThrow(&quot;Division by zero&quot;);
+  });
+});
+</code></pre>
+<h2 id="example-5-basic-mocking">Example 5: Basic Mocking</h2>
+<pre><code class="lang-ts">import { describe, it, expect, vi } from &quot;vitest&quot;;
+
+const mockFetch = vi.fn();
+
+describe(&quot;getUserName&quot;, () =&gt; {
+  it(&quot;calls fetch with correct URL&quot;, async () =&gt; {
+    mockFetch.mockResolvedValue({ name: &quot;John&quot; });
+    
+    expect(mockFetch).toHaveBeenCalledWith(&quot;/api/user/1&quot;);
+  });
+});
+</code></pre>
+<p>For comprehensive mocking details, see <a href="https://vitest.dev/guide/mocking.html">Vitest Mocking Guide</a>.</p>
+<h2 id="example-6-testing-private--internal-functions">Example 6: Testing Private / Internal Functions</h2>
+<p>Sometimes a class or module exposes behavior via private/internal helper functions that you still want to test.</p>
+<pre><code class="lang-ts">import { expect, test, describe } from 'vitest';
+import { BuildRule } from './rule';
+import { Log } from '../../../../core/logging/Log';
+import { RuleLoadTools } from './rule-load-tools';
+
+describe('BuildRule.loadHeaderAndUi', () =&gt; {
+
+  // Example which uses data driven testing to cover multiple cases
+  test.each([
+    { rule: '', expected: undefined },
+    { rule: 'abc', expected: undefined },
+    { rule: 'id=abc', expected: 'abc' },
+    { rule: 'name=MyButton', expected: undefined },
+    { rule: 'id=button1&amp;name=MyButton', expected: 'button1' },
+    { rule: 'name=MyButton&amp;id=button2', expected: 'button2' },
+  ] satisfies { rule: string; expected: string | undefined; }[])
+  (`check id $rule`, (c) =&gt; {
+    const rule = new BuildRule('', new Log('test'));
+    var rest = RuleLoadTools.splitParamsArray(c.rule);
+    // This is how to access a private method from a test
+    // Use bracket notation: rule['loadHeaderAndUi'](...)
+    // Keep tests focused on observable behavior (e.g. resulting `id`),
+    rule['loadHeaderAndUi']('', rest);
+    expect(rule.id).toBe(c.expected);
+  });
+
+  // Additional tests can be added for name, group, pos, show, ui, etc.
+
+});
+</code></pre>
+<h2 id="conventions-short">Conventions (Short)</h2>
+<ul>
+<li><p><strong>describe</strong>: name of the unit (e.g. <code>RuleLoadTools.splitUrlSections</code>)</p>
+</li>
+<li><p><strong>it</strong>: describes the expected behavior</p>
+</li>
+<li><p><strong>cases array</strong>: preferred for many variations / edge cases</p>
+</li>
+<li><p>Use:</p>
+<ul>
+<li><code>toBe(...)</code> for primitive values</li>
+<li><code>toEqual(...)</code> for objects and arrays</li>
+<li><code>toThrow(...)</code> for error cases</li>
+<li><code>toHaveBeenCalled...()</code> for mocking assertions</li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-resources">Useful Resources</h2>
+<ul>
+<li><a href="https://vitest.dev">Official Vitest Documentation</a></li>
+<li><a href="https://vitest.dev/api/">Vitest API Reference</a></li>
+<li><a href="https://vitest.dev/api/expect.html">Common Matchers</a></li>
+<li><a href="https://vitest.dev/guide/mocking.html">Mocking &amp; Stubbing</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/frontend/tests/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,8 +1,10 @@
 ---
-uid: Abyss.Contribute.Internals.BackendProjects
+uid: Abyss.Contribute.Backend.Internals.BackendProjects
 ---
 
 # Backend Projects and Relationships WIP v20
+
+[!include[""](../../_contributors-only.md)]
 
 ...trying to model how the projects should interlink and what their responsibility is...
 

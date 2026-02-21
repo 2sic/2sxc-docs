@@ -1,8 +1,10 @@
 ---
-uid: Abyss.Contribute.Internals.CSharpLanguage
+uid: Abyss.Contribute.Backend.Internals.CSharpLanguage
 ---
 
 # How we Use the Latest C# Language Features
+
+[!include[""](../../_contributors-only.md)]
 
 Using the latest C# language features is important for us, because it allows us to write better code.
 

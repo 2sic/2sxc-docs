@@ -139,26 +139,43 @@ For AppCode, we recommend <strong>PascalCase</strong> to match C# conventions.</
 <p>A custom DataSource is a small C# class which inherits from <code>DataSource16</code>.
 It defines one or more output streams using <code>ProvideOut(...)</code>.</p>
 <h3 id="basic-example">Basic Example</h3>
-<pre><code class="lang-csharp">using Custom.DataSource;
+<pre><code class="lang-csharp">using AppCode.Extensions.OpenMeteo.Data;
+using Custom.DataSource;
+using ToSic.Eav.DataSource;
 
-namespace App.Extensions.MyExtension.DataSources
+namespace AppCode.Extensions.OpenMeteo
 {
-  public class HelloWorldDataSource : DataSource16
+  /// &lt;summary&gt;
+  /// DataSource which loads the current weather conditions from the Open-Meteo API.
+  /// &lt;br/&gt;
+  /// Returns a single record containing the current temperature, wind speed,
+  /// weather code and timestamp for the configured location.
+  /// &lt;br/&gt;
+  /// Intended for use in Visual Queries or directly in Razor code.
+  /// &lt;/summary&gt;
+  public class OpenMeteoCurrent : DataSource16
   {
-    public HelloWorldDataSource(Dependencies services) : base(services)
+    public OpenMeteoCurrent(Dependencies services) : base(services)
     {
-      ProvideOut(GetData);
+      ProvideOut(GetCurrent);
     }
 
-    private object GetData()
+    /// &lt;summary&gt;
+    /// Fetches the current weather data from Open-Meteo
+    /// and returns it as a single record.
+    /// &lt;/summary&gt;
+    private object GetCurrent()
     {
-      return new[]
-      {
-        new { Message = &quot;Hello from my DataSource&quot; }
-      };
+      // Getting the Data
+      var result = OpenMeteoHelpers.Download(Kit, Latitude, Longitude, Timezone,
+        $&quot;&amp;current={OpenMeteoConstants.ExpectedFields}&quot;
+      );
+      // Returning a filled model
+      return result.ToCurrentModel();
     }
   }
 }
+
 </code></pre>
 <hr>
 <h2 id="key-concepts">Key Concepts</h2>
@@ -200,8 +217,44 @@ namespace App.Extensions.MyExtension.DataSources
 <li>Use the output streams like any other source</li>
 </ol>
 <h3 id="in-code-razor--api">In Code (Razor / API)</h3>
-<pre><code class="lang-csharp">var data = Kit.Data.GetSource&lt;HelloWorldDataSource&gt;();
-var items = data[]].List;
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.OpenMeteo
+@using AppCode.Extensions.OpenMeteo.Data
+
+&lt;h3&gt;Current Weather&lt;/h3&gt;
+@{
+  // Create a data source for current weather data from OpenMeteo API
+  // Parameters specify the location and timezone settings
+  var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new OpenMeteoParameters() {
+    Latitude = 47.1674, // Vaduz, Liechtenstein
+    Longitude = 9.4779, // Vaduz, Liechtenstein
+  });
+
+  // Use the strongly-typed model
+  var current = As&lt;OpenMeteoResult&gt;(currentDs);
+}
+
+@* Display message if the API didn't return any weather data, then exit *@
+@if (current == null)
+{
+  &lt;div class=&quot;alert alert-warning&quot;&gt;
+    No data available
+  &lt;/div&gt;
+  return;
+}
+
+@* Display the current weather information retrieved from the API *@
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;strong&gt;When:&lt;/strong&gt; @current.When
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;Temperature:&lt;/strong&gt; @current.Temperature °C
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;Weather:&lt;/strong&gt; @current.Weather
+  &lt;/li&gt;
+&lt;/ol&gt;
 </code></pre>
 <hr>
 <h2 id="special-compiling-options">Special Compiling Options</h2>

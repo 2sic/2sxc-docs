@@ -1,5 +1,5 @@
 ---
-uid: Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index
+uid: Extensions.AppExtensions.By2sxc.OpenMeteo.Index
 ---
 
 # Open-Meteo DataSource

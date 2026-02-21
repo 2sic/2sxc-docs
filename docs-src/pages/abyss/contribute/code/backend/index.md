@@ -1,10 +1,10 @@
 ---
-uid: Abyss.Contribute.Code.Backend
+uid: Abyss.Contribute.Code.Backend.Index
 ---
 
 # Contribute to 2sxc / EAV - Backend
 
-[!include["_contributors-only.md"](_contributors-only.md)]
+[!include["_contributors-only.md"](../_contributors-only.md)]
 
 
 ## Prerequisites

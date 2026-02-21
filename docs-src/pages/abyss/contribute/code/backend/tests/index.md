@@ -1,13 +1,10 @@
 ---
-uid: Abyss.Contribute.Tests.Index
+uid: Abyss.Contribute.Backend.Tests.Index
 ---
 
 # Contribute to 2sxc / EAV Tests
 
-> [!IMPORTANT]
-> If you only want to USE 2sxc / EAV, then **you do NOT need this**.
->
-> This is meant for people who want to contribute to the source code of 2sxc and EAV.
+[!include[""](../../_contributors-only.md)]
 
 2sxc has about 3'500 unit tests and growing.
 This is a guide to help you understand how to run them, and how to contribute to them.

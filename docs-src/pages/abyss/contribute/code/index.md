@@ -149,7 +149,7 @@ The Backend requires two projects to be set up, according to instructions above.
 1. `c:\projects\2sxc\2sxc\` - the main [2sxc C# repo](xref:Repo.2sxc),
 2. `c:\projects\2sxc\eav-server\` - the [EAV C# repo](xref:Repo.Eav), which is required by the 2sxc backend
 
-To work with the backend, best continue to [](xref:Abyss.Contribute.Code.Backend).
+To work with the backend, best continue to [](xref:Abyss.Contribute.Code.Backend.Index).
 
 ### [Frontend](#tab/frontend)
 
@@ -158,7 +158,7 @@ The front-end is in these 2 repositories containing various JS projects:
 1. `c:\projects\2sxc\2sxc-ui\` - the in-page UI for 2sxc, which extends the EAV UI with more field types, configuration and other JS.
 2. `c:\projects\2sxc\eav-ui\` - the main edit/admin UIs, which are used by both 2sxc and EAV.
 
-To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend).
+To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend.Index).
 
 ---
 

@@ -1,13 +1,10 @@
 ---
-uid: Abyss.Contribute.JsTesting.Index
+uid: Abyss.Contribute.Frontend.Tests.Index
 ---
 
 # Contribute to 2sxc / EAV JavaScript/TypeScript Tests
 
-> [!IMPORTANT]
-> If you only want to USE 2sxc / EAV, then **you do NOT need this**.
->
-> This is meant for people who want to contribute to the source code of 2sxc and EAV.
+[!include[""](../../_contributors-only.md)]
 
 ## Pre-Requisites
 
