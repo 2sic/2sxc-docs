@@ -4,10 +4,15 @@ uid: Abyss.Contribute.Extensions.Index
 
 # Contribute to 2sxc / EAV Extensions
 
-_Important: If you only want to USE 2sxc / EAV, then **you do NOT need this**. This is meant for people who want to contribute to the source code of 2sxc and EAV._
+[!include[""](../code/_contributors-only.md)]
 
 When we create extensions, we often need to document them, test them, and also create the code for them.
 These internal guidelines should help us make sure we do it well.
+
+> [!TIP]
+> If you want to create your own extensions, then this may not be important to you.
+> But we from 2sxc want to be sure that our extensions are built in a consistent way, and that they are well documented and tested.
+> So if you want to contribute an extension in our name, please follow these guidelines.
 
 ---
 
