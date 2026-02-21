@@ -158,7 +158,7 @@ The front-end is in these 2 repositories containing various JS projects:
 1. `c:\projects\2sxc\2sxc-ui\` - the in-page UI for 2sxc, which extends the EAV UI with more field types, configuration and other JS.
 2. `c:\projects\2sxc\eav-ui\` - the main edit/admin UIs, which are used by both 2sxc and EAV.
 
-To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend.Index).
+To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend).
 
 ---
 
