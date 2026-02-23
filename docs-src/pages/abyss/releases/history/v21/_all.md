@@ -3,6 +3,10 @@
 
 ---
 
+[!include["Changes"](./_changes03.00.md)]
+
+---
+
 [!include["Changes"](./_changes02.00.md)]
 
 ---

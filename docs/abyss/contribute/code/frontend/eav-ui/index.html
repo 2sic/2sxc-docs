@@ -129,6 +129,22 @@ By avoiding <code>providers: []</code> as much as possible, we can look for the 
 to see if anything will cause problems.</li>
 <li>Use the special <code>transient&lt;T&gt;()</code> function to create services which are meant to be used transiently, and not shared across the app.</li>
 </ol>
+<h2 id="prefer-signals-avoid-observables">Prefer Signals, avoid Observables</h2>
+<p>Historically Angular has used Observables for state management and data flow.
+However, this can lead to complex and hard-to-maintain code, especially when dealing with multiple subscriptions and ensuring proper cleanup.
+People also have a really hard time understanding how Observables work, and how to use them correctly.</p>
+<p>Signals are a newer feature in Angular that provide a simpler and more intuitive way to manage state and data flow.
+They allow you to define reactive state that automatically updates the UI when it changes, without the need for manual subscriptions and cleanup.
+By using Signals instead of Observables, we can create cleaner and more maintainable code, and reduce the likelihood of bugs related to state management and memory leaks.</p>
+<ol>
+<li>Try to use signals wherever possible.</li>
+<li>If old code uses observables, try to refactor it to use signals instead, if possible.</li>
+<li>Try to use <code>httpResource</code> over <code>HttpClient</code> - use our helper services for this.</li>
+<li>Use our signal helpers which give the signals a name,
+such as <code>computedObj(name, () =&gt; ...)</code> instead of <code>computed(() =&gt; ...)</code>,
+to make it easier to debug and understand the code.
+This is mainly important for long-living signals on services, but less important for short-living signals in components.</li>
+</ol>
 <h2 id="routing-dialogs---use-convention">Routing-Dialogs - Use Convention</h2>
 <p>TODO: @2rb document how we do this. things like</p>
 <p>remembering to use <code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> in the main app component, and then using the <code>DialogService</code> to open dialogs with routing, and how to structure the routes for dialogs.</p>
@@ -137,6 +153,26 @@ to see if anything will cause problems.</li>
 <p>TODO: @2rb document this, especially how to use the new header component etc.</p>
 <h2 id="tables-use-aggrid-conventions">Tables: Use AgGrid conventions</h2>
 <p>TODO: @2rb document this</p>
+<h2 id="patron-indicators">Patron Indicators</h2>
+<p>We have various UI elements to indicate that a feature is only available to patrons.
+This list should help you find/pick the best choice for your use case.</p>
+<ol>
+<li><code>FeatureComponentBase</code> - the base class for all components which show some kind of patron status.<br>
+You can always search for all derived components to find out which options exist.
+<ol>
+<li><code>featureNameId</code> - the name of the feature, which is used to look up the feature in the database and check if it's enabled for the current user.</li>
+<li><code>showIf</code> - <em>optional</em> determine if showing happens when the feature is disabled (default) or enabled (if set to <code>true</code>).</li>
+</ol>
+</li>
+<li><code>FeatureIconIndicator</code> / <code>app-feature-icon-indicator</code> - just show a diamond if locked, won't open dialogs when clicked.<br>
+This is for use inside things such as buttons or FABs, where the click action is handled by the button, and we just want to show that it's a patron feature.</li>
+<li><code>FeatureIconWithDialog</code> - show a diamond icon <code>app-feature-icon-with-dialog</code> which opens a dialog when clicked, showing more information about the feature and how to become a patron.<br>
+This is for use in places where we want to give the user more information about the feature and how to become a patron, such as in a settings page or a feature list.
+<ol>
+<li><code>forText</code> - <em>optional</em> change styling to use as inline-text.</li>
+</ol>
+</li>
+</ol>
 <hr>
 <h2 id="history">History</h2>
 <ul>
