@@ -61,6 +61,22 @@ TODO: @2rb document this, especially how to use the new header component etc.
 
 TODO: @2rb document this
 
+## Patron Indicators
+
+We have various UI elements to indicate that a feature is only available to patrons.
+This list should help you find/pick the best choice for your use case.
+
+1. `FeatureComponentBase` - the base class for all components which show some kind of patron status.  
+    You can always search for all derived components to find out which options exist.
+    1. `featureNameId` - the name of the feature, which is used to look up the feature in the database and check if it's enabled for the current user.
+    1. `showIf` - _optional_ determine if showing happens when the feature is disabled (default) or enabled (if set to `true`).
+1. `FeatureIconIndicator` / `app-feature-icon-indicator` - just show a diamond if locked, won't open dialogs when clicked.  
+    This is for use inside things such as buttons or FABs, where the click action is handled by the button, and we just want to show that it's a patron feature.
+1. `FeatureIconWithDialog` - show a diamond icon `app-feature-icon-with-dialog` which opens a dialog when clicked, showing more information about the feature and how to become a patron.  
+    This is for use in places where we want to give the user more information about the feature and how to become a patron, such as in a settings page or a feature list.
+    1. `forText` - _optional_ change styling to use as inline-text.
+
+
 ---
 
 ## History
