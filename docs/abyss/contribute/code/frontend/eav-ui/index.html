@@ -146,13 +146,115 @@ to make it easier to debug and understand the code.
 This is mainly important for long-living signals on services, but less important for short-living signals in components.</li>
 </ol>
 <h2 id="routing-dialogs---use-convention">Routing-Dialogs - Use Convention</h2>
-<p>TODO: @2rb document how we do this. things like</p>
-<p>remembering to use <code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> in the main app component, and then using the <code>DialogService</code> to open dialogs with routing, and how to structure the routes for dialogs.</p>
-<p>when documenting, always explain why - if you're not sure, ask @iJungleboy</p>
+<p>The EAV-UI uses router-driven dialogs instead of opening dialogs
+imperatively.</p>
+<h3 id="why">Why?</h3>
+<ul>
+<li>Deep-linking works</li>
+<li>Browser back/forward works</li>
+<li>Reloading restores dialog state</li>
+<li>UI state is URL-driven</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Remembering to use <code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> in the main app component, and then using the <code>DialogService</code> to open dialogs with routing, and how to structure the routes for dialogs.</p>
+</div>
+<h3 id="opening-a-dialog">Opening a Dialog</h3>
+<pre><code class="lang-ts">this.dialogService.open({
+  route: ['edit', id]
+});
+</code></pre>
+<h3 id="closing-a-dialog">Closing a Dialog</h3>
+<pre><code class="lang-ts">this.dialogService.close();
+</code></pre>
+<p>If you see direct usage of <code>MatDialog</code>, it is probably legacy code and
+should be refactored.</p>
 <h2 id="dialogs-reuse-shared-parts">Dialogs: Reuse Shared Parts</h2>
-<p>TODO: @2rb document this, especially how to use the new header component etc.</p>
+<p>All dialogs must follow shared structural conventions.</p>
+<h3 id="dialog-structure">Dialog Structure</h3>
+<p>The <code>DialogHeaderComponent</code> is a shared layout component responsible for rendering:</p>
+<ul>
+<li>the dialog header container</li>
+<li>the title area</li>
+<li>the optional close button</li>
+</ul>
+<p>It does <strong>not</strong> control title styling or domain logic.
+Title content must be projected using the <code>dialog-title</code> attribute.</p>
+<p><strong>Inputs:</strong></p>
+<ul>
+<li>showClose (<code>boolean</code>, <strong>default</strong>: <em>true</em>)
+<ul>
+<li>Controls whether the close button is displayed.</li>
+</ul>
+</li>
+<li>closeTooltip (<code>string</code>, <strong>default</strong>: <em>&quot;Close dialog&quot;</em>)
+<ul>
+<li>Tooltip text for the close button.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul>
+<li>close
+<ul>
+<li>Emits when the close button is clicked.</li>
+<li>Typically used to call <code>dialog.close()</code>.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-html">&lt;div class=&quot;eav-dialog&quot;&gt;
+
+  &lt;!-- Dialog Header --&gt;
+  &lt;app-dialog-header [showClose]=&quot;true&quot; (close)=&quot;dialog.close()&quot;&gt;
+    &lt;!-- 
+      Projected title content.
+      This will be rendered inside the header's title container.
+      Do NOT add header classes here, they are defined inside the component.
+    --&gt;
+    &lt;span dialog-title&gt;
+      My Dialog Title
+    &lt;/span&gt;
+
+  &lt;/app-dialog-header&gt;
+
+  &lt;!-- Dialog Content --&gt;
+  &lt;div class=&quot;eav-dialog-content&quot;&gt;
+    &lt;p&gt;This is the dialog body.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+<ol>
+<li>Always use <code>app-dialog-header</code></li>
+<li>Never re-implement dialog close buttons</li>
+<li>Use shared CSS classes:
+<ul>
+<li><code>eav-dialog</code></li>
+<li><code>eav-dialog-content</code></li>
+<li><code>eav-dialog-actions</code></li>
+</ul>
+</li>
+<li>Avoid inline styles</li>
+</ol>
 <h2 id="tables-use-aggrid-conventions">Tables: Use AgGrid conventions</h2>
-<p>TODO: @2rb document this</p>
+<p>All data tables in EAV-UI use AgGrid.</p>
+<h3 id="core-rules">Core Rules</h3>
+<ol>
+<li>Always define column definitions separately.</li>
+<li>Avoid inline column definitions in templates.</li>
+<li>Use shared helpers for formatting and indicators.</li>
+<li>Avoid manual DOM manipulation.</li>
+</ol>
+<h3 id="prefer-signals-for-data">Prefer Signals for Data</h3>
+<p>Bad:</p>
+<pre><code class="lang-ts">this.http.get(...).subscribe(...)
+</code></pre>
+<p>Good:</p>
+<pre><code class="lang-ts">data = httpResource(...);
+</code></pre>
+<p>or</p>
+<pre><code class="lang-ts">items = computedObj('items', () =&gt; ...);
+</code></pre>
 <h2 id="patron-indicators">Patron Indicators</h2>
 <p>We have various UI elements to indicate that a feature is only available to patrons.
 This list should help you find/pick the best choice for your use case.</p>

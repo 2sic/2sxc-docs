@@ -139,43 +139,44 @@ For AppCode, we recommend <strong>PascalCase</strong> to match C# conventions.</
 <p>A custom DataSource is a small C# class which inherits from <code>DataSource16</code>.
 It defines one or more output streams using <code>ProvideOut(...)</code>.</p>
 <h3 id="basic-example">Basic Example</h3>
-<pre><code class="lang-csharp">using AppCode.Extensions.OpenMeteo.Data;
-using Custom.DataSource;
-using ToSic.Eav.DataSource;
+<ul>
+<li>Inherits DataSource16 -&gt; integrates with 2sxc.</li>
+<li><code>ProvideOut(GetData)</code> -&gt; defines how to fetch data.</li>
+<li><code>GetData()</code> -&gt; returns an object with a Message property.</li>
+</ul>
+<pre><code class="lang-csharp">using Custom.DataSource;
 
-namespace AppCode.Extensions.OpenMeteo
+namespace AppCode.Extensions.HelloWorld
 {
-  /// &lt;summary&gt;
-  /// DataSource which loads the current weather conditions from the Open-Meteo API.
-  /// &lt;br/&gt;
-  /// Returns a single record containing the current temperature, wind speed,
-  /// weather code and timestamp for the configured location.
-  /// &lt;br/&gt;
-  /// Intended for use in Visual Queries or directly in Razor code.
-  /// &lt;/summary&gt;
-  public class OpenMeteoCurrent : DataSource16
-  {
-    public OpenMeteoCurrent(Dependencies services) : base(services)
-    {
-      ProvideOut(GetCurrent);
-    }
-
     /// &lt;summary&gt;
-    /// Fetches the current weather data from Open-Meteo
-    /// and returns it as a single record.
+    /// Simple DataSource example that returns a single &quot;Hello World&quot; message.
     /// &lt;/summary&gt;
-    private object GetCurrent()
+    public class HelloWorldDataSource : DataSource16
     {
-      // Getting the Data
-      var result = OpenMeteoHelpers.Download(Kit, Latitude, Longitude, Timezone,
-        $&quot;&amp;current={OpenMeteoConstants.ExpectedFields}&quot;
-      );
-      // Returning a filled model
-      return result.ToCurrentModel();
-    }
-  }
-}
+        /// &lt;summary&gt;
+        /// Constructor receives dependencies from the 2sxc/Custom framework.
+        /// Always call base(services) to properly initialize the DataSource.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;services&quot;&gt;Injected services from 2sxc / Custom.DataSource&lt;/param&gt;
+        public HelloWorldDataSource(Dependencies services) : base(services)
+        {
+            // Register the output function of this DataSource.
+            ProvideOut(GetData);
+        }
 
+        /// &lt;summary&gt;
+        /// Function that returns the data from this DataSource.
+        /// &lt;/summary&gt;
+        private object GetData()
+        {
+            return new
+            {
+                // This is the actual content that will be available in Razor
+                Message = &quot;Hello from my DataSource&quot;
+            };
+        }
+    }
+}
 </code></pre>
 <hr>
 <h2 id="key-concepts">Key Concepts</h2>
@@ -217,44 +218,36 @@ namespace AppCode.Extensions.OpenMeteo
 <li>Use the output streams like any other source</li>
 </ol>
 <h3 id="in-code-razor--api">In Code (Razor / API)</h3>
+<ul>
+<li><code>Kit.Data.GetSource&lt;HelloWorldDataSource&gt;()</code> -&gt; creates the DataSource.</li>
+<li><code>AsItem(helloDs)</code> -&gt; gets the first (and only) record.</li>
+<li><code>helloWorld.String(&quot;Message&quot;)</code> -&gt; reads the Message property safely.</li>
+</ul>
 <pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-@using AppCode.Extensions.OpenMeteo
-@using AppCode.Extensions.OpenMeteo.Data
+@using AppCode.Extensions.HelloWorld
 
-&lt;h3&gt;Current Weather&lt;/h3&gt;
+&lt;h3&gt;Hello World Example&lt;/h3&gt;
+
 @{
-  // Create a data source for current weather data from OpenMeteo API
-  // Parameters specify the location and timezone settings
-  var currentDs = Kit.Data.GetSource&lt;OpenMeteoCurrent&gt;(parameters: new OpenMeteoParameters() {
-    Latitude = 47.1674, // Vaduz, Liechtenstein
-    Longitude = 9.4779, // Vaduz, Liechtenstein
-  });
+    // Create the DataSource
+    var helloDs = Kit.Data.GetSource&lt;HelloWorldDataSource&gt;();
 
-  // Use the strongly-typed model
-  var current = As&lt;OpenMeteoResult&gt;(currentDs);
+    // Get the first item from the DataSource
+    var helloWorld = AsItem(helloDs);
 }
 
-@* Display message if the API didn't return any weather data, then exit *@
-@if (current == null)
+@if (helloWorld == null)
 {
-  &lt;div class=&quot;alert alert-warning&quot;&gt;
-    No data available
-  &lt;/div&gt;
-  return;
+    &lt;p&gt;No data available&lt;/p&gt;
+    return;
 }
 
-@* Display the current weather information retrieved from the API *@
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;strong&gt;When:&lt;/strong&gt; @current.When
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Temperature:&lt;/strong&gt; @current.Temperature °C
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Weather:&lt;/strong&gt; @current.Weather
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;!-- Access the Message property --&gt;
+        &lt;strong&gt;Message:&lt;/strong&gt; @helloWorld.String(&quot;Message&quot;)
+    &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
 <hr>
 <h2 id="special-compiling-options">Special Compiling Options</h2>

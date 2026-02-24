@@ -158,11 +158,11 @@ public static class ValueBuilderTestAccessors
     /// Test accessor to reduce use-count of the real code
     /// &lt;/summary&gt;
     /// &lt;returns&gt;&lt;/returns&gt;
-    public static IValue BuildTac(this ValueBuilder vBuilder, ValueTypes type, object value, IList&lt;ILanguage&gt; languages)
-        =&gt; vBuilder.Build(type, value, languages?.ToImmutableOpt());
+    public static IValue BuildTac(this ValueAssembler vAssembler, ValueTypes type, object value, IList&lt;ILanguage&gt; languages)
+        =&gt; vAssembler.Create(type, value, languages?.ToImmutableOpt());
 
-    public static IValue BuildTac(this ValueBuilder vBuilder, ValueTypes type, object value, IImmutableList&lt;ILanguage&gt; languages)
-        =&gt; vBuilder.Build(type, value, languages);
+    public static IValue BuildTac(this ValueAssembler vAssembler, ValueTypes type, object value, IImmutableList&lt;ILanguage&gt; languages)
+        =&gt; vAssembler.Create(type, value, languages);
 }
 </code></pre>
 </article>
