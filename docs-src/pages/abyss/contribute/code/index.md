@@ -24,6 +24,12 @@ To develop locally you'll need:
 Once you are ready to submit your changes, you will also need knowledge of **Git and GitHub**,
 so you can manage your changes and submit them to us for review.
 
+## Live Demo
+
+[Daniel Valadas](https://danielvaladas.com/en/) created a live demo together with [David Poindexter](https://www.nvisionative.com/) of the process of setting up a local development environment for 2sxc and EAV, which you can watch here:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YxrPCHNnXzs?si=-t_pQFuaNXJ2Qqop&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Prerequisites
 
 ### [Local DNN](#tab/prerequisites-dnn)
