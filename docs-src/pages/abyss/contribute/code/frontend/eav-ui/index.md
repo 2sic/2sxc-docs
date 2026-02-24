@@ -47,19 +47,126 @@ By using Signals instead of Observables, we can create cleaner and more maintain
 
 ## Routing-Dialogs - Use Convention
 
-TODO: @2rb document how we do this. things like
+The EAV-UI uses router-driven dialogs instead of opening dialogs
+imperatively.
 
-remembering to use `<router-outlet></router-outlet>` in the main app component, and then using the `DialogService` to open dialogs with routing, and how to structure the routes for dialogs.
+### Why?
 
-when documenting, always explain why - if you're not sure, ask @iJungleboy
+- Deep-linking works
+- Browser back/forward works
+- Reloading restores dialog state
+- UI state is URL-driven
+
+> [!TIP]
+> Remembering to use `<router-outlet></router-outlet>` in the main app component, and then using the `DialogService` to open dialogs with routing, and how to structure the routes for dialogs.
+
+### Opening a Dialog
+
+``` ts
+this.dialogService.open({
+  route: ['edit', id]
+});
+```
+
+### Closing a Dialog
+
+``` ts
+this.dialogService.close();
+```
+
+If you see direct usage of `MatDialog`, it is probably legacy code and
+should be refactored.
 
 ## Dialogs: Reuse Shared Parts
 
-TODO: @2rb document this, especially how to use the new header component etc.
+All dialogs must follow shared structural conventions.
+
+### Dialog Structure
+
+The `DialogHeaderComponent` is a shared layout component responsible for rendering:
+
+- the dialog header container
+- the title area
+- the optional close button
+
+It does **not** control title styling or domain logic.
+Title content must be projected using the `dialog-title` attribute.
+
+**Inputs:**
+
+- showClose (`boolean`, **default**: *true*)
+  - Controls whether the close button is displayed.
+- closeTooltip (`string`, **default**: *"Close dialog"*)
+  - Tooltip text for the close button.
+
+**Output:**
+
+- close
+  - Emits when the close button is clicked.
+  - Typically used to call `dialog.close()`.
+
+``` html
+<div class="eav-dialog">
+
+  <!-- Dialog Header -->
+  <app-dialog-header [showClose]="true" (close)="dialog.close()">
+    <!-- 
+      Projected title content.
+      This will be rendered inside the header's title container.
+      Do NOT add header classes here, they are defined inside the component.
+    -->
+    <span dialog-title>
+      My Dialog Title
+    </span>
+
+  </app-dialog-header>
+
+  <!-- Dialog Content -->
+  <div class="eav-dialog-content">
+    <p>This is the dialog body.</p>
+  </div>
+
+</div>
+```
+
+1. Always use `app-dialog-header`
+2. Never re-implement dialog close buttons
+3. Use shared CSS classes:
+    - `eav-dialog`
+    - `eav-dialog-content`
+    - `eav-dialog-actions`
+4. Avoid inline styles
 
 ## Tables: Use AgGrid conventions
 
-TODO: @2rb document this
+All data tables in EAV-UI use AgGrid.
+
+### Core Rules
+
+1. Always define column definitions separately.
+2. Avoid inline column definitions in templates.
+3. Use shared helpers for formatting and indicators.
+4. Avoid manual DOM manipulation.
+
+### Prefer Signals for Data
+
+Bad:
+
+``` ts
+this.http.get(...).subscribe(...)
+```
+
+Good:
+
+``` ts
+data = httpResource(...);
+```
+
+or
+
+``` ts
+items = computedObj('items', () => ...);
+```
 
 ## Patron Indicators
 
@@ -69,16 +176,16 @@ This list should help you find/pick the best choice for your use case.
 1. `FeatureComponentBase` - the base class for all components which show some kind of patron status.  
     You can always search for all derived components to find out which options exist.
     1. `featureNameId` - the name of the feature, which is used to look up the feature in the database and check if it's enabled for the current user.
-    1. `showIf` - _optional_ determine if showing happens when the feature is disabled (default) or enabled (if set to `true`).
+    1. `showIf` - *optional* determine if showing happens when the feature is disabled (default) or enabled (if set to `true`).
 1. `FeatureIconIndicator` / `app-feature-icon-indicator` - just show a diamond if locked, won't open dialogs when clicked.  
     This is for use inside things such as buttons or FABs, where the click action is handled by the button, and we just want to show that it's a patron feature.
 1. `FeatureIconWithDialog` - show a diamond icon `app-feature-icon-with-dialog` which opens a dialog when clicked, showing more information about the feature and how to become a patron.  
     This is for use in places where we want to give the user more information about the feature and how to become a patron, such as in a settings page or a feature list.
-    1. `forText` - _optional_ change styling to use as inline-text.
+    1. `forText` - *optional* change styling to use as inline-text.
 
 
 ---
 
 ## History
 
-* Created 2026-02-21
+- Created 2026-02-21
