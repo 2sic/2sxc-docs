@@ -23,6 +23,10 @@ There are two ways to install App Extensions:
     You can browse the store, find the extension you want, and install it directly into your App with just a few clicks.
 2. **Manual Installation**: If you have an App Extension package (usually a .zip file), you can manually upload and install it into your App through the 2sxc interface.
 
+Here's a short video demonstrating installation and upgrades of App Extensions:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pllbgBGsUWA?si=imlg5wQnMwFDfV03" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## [Install from the 2sxc App Store](#tab/install-store)
 
 To install an App Extension from the 2sxc [App Store](https://2sxc.org/en/apps/type/app-extension), follow these steps:

@@ -21,6 +21,8 @@ They allow you to add custom features, tools, and integrations that can enhance 
 > Think of App Extensions like nuget or npm packages, but specifically designed for 2sxc Apps.
 > They can include code, templates, styles, and other resources that can be easily integrated into your App.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pllbgBGsUWA?si=imlg5wQnMwFDfV03" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Examples
 
 1. **Example: Input Field Extension**  
