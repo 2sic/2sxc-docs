@@ -80,9 +80,7 @@ App extensions can come in various types - and they can combine all the types, i
 
 ## Developing Your First App Extension
 
-For first steps, let's create a simple Input Type extension.
-
-TODO:
+➡️ For first steps, let's create a [simple Hello-World extension](xref:Extensions.AppExtensions.Create.HelloWorld.Index).
 
 ---
 
