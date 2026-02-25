@@ -116,32 +116,163 @@
 </style> -->
 <p>In this section, we'll create a simple &quot;Hello World&quot; App Extension to demonstrate the basics of extension development.</p>
 <h2 id="step-1-create-the-extension-folder">Step 1: Create the Extension Folder</h2>
-<ol>
-<li>In your App, create a new folder under <code>/extensions</code> named <code>hello-world</code></li>
-<li>Inside the <code>hello-world</code> folder, create a <code>Greeting.cshtml</code> file with this contents:</li>
-</ol>
-<pre><code class="lang-html">&lt;div class=&quot;alert alert-info&quot;&gt;
+<p>In your App, create a new folder <code>/extensions/hello-world</code> and inside that,
+create a <code>Greeting.cshtml</code> file with this contents:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+
+&lt;div class=&quot;alert alert-info&quot;&gt;
   Hello, World
 &lt;/div&gt;
 </code></pre>
-<p>TODO: @2rb DO THIS, and create screenshots of the folder structure and file contents to add here.
-TODO: for all screenshots, make sure you use the gallery mode, so that the images are not too big.</p>
+<p>Note: The <code>@inherits Custom.Hybrid.RazorTyped</code> is optional, it would allow the Razor file to use the 2sxc API.</p>
+<p>Here's how your extension folder and <code>Greeting.cshtml</code> should look:</p>
+<div gallery="gallery2">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-file-structure-code.png">
+</div>
+<p>TODO: @2rb - you should show more context, so please make sure that the user can see it's VS code etc.</p>
 <h2 id="step-2-test-your-extension">Step 2: Test Your Extension</h2>
-<p>TODO: @2RB create a test-view, use @Html.Partial to render the Greeting.cshtml, and add instructions and screenshots here.
-incl. creating the view in the App, and selecting the view so it's visible on the page.</p>
-<h2 id="step-3-create-the-extension-manifest">Step 3: Create the Extension Manifest</h2>
-<p>TODO: @2rb create instructions, add 2-3 screenshots</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_create-test-view-file" role="tab" aria-controls="tabpanel_1_create-test-view-file" data-tab="create-test-view-file" tabindex="0" aria-selected="true">1. Create Test View File</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_create-test-view-definition" role="tab" aria-controls="tabpanel_1_create-test-view-definition" data-tab="create-test-view-definition" tabindex="-1">2. Create Test View Definition</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-test-view-to-page" role="tab" aria-controls="tabpanel_1_add-test-view-to-page" data-tab="add-test-view-to-page" tabindex="-1">3. Add the Test View to a Page</a>
+</li>
+</ul>
+<section id="tabpanel_1_create-test-view-file" role="tabpanel" data-tab="create-test-view-file">
+
+<p>Create a new file inside your <strong>App directory</strong>
+Inside this file, use <code>@Html.Partial(Path)</code> to render your extension component.</p>
+<div gallery="TestExtension">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-partial.png">
+</div>
+<p>TODO: @2rb - you should show more context, so please make sure that the user can see it's VS code etc.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Do <strong>not</strong> place it inside the <code>extensions</code> directory.
+This file is just for testing the extension, and you don't want to include it in the export.</p>
+</div>
+</section>
+<section id="tabpanel_1_create-test-view-definition" role="tabpanel" data-tab="create-test-view-definition" aria-hidden="true" hidden="hidden">
+
+<p>After creating the file:</p>
+<ol>
+<li>Go to <strong>App Settings</strong></li>
+<li>Create a <strong>new view</strong></li>
+<li>Give it a name</li>
+<li>Link the file you just created</li>
+<li>Set <strong>View doesn't need Data</strong> as the view does not require data/user-input</li>
+</ol>
+<div gallery="View">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/app-settings-create-view.png">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/app-settings-view-settings.png">
+</div>
+</section>
+<section id="tabpanel_1_add-test-view-to-page" role="tabpanel" data-tab="add-test-view-to-page" aria-hidden="true" hidden="hidden">
+
+<p>Once the view is created, you can add the App to your page and select the newly created <strong>Hello World</strong> view.
+Now you can verify that the output shows the expected &quot;Hello, World&quot; message from your extension.</p>
+<div gallery="AddView">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-add-view.png">
+</div>
+<p>TODO: @2RB - i DON'T SEE THE output - this is absolutely necessary
+TODO: @2RB - add a screenshot of the view with the Hello World message</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Congratulations, your extension works!
+Now let's make it reusable and distributable by creating the extension manifest and exporting it.</p>
+</div>
+</section>
+</div>
+<h2 id="step-3-create-the-extension-manifestdefinition">Step 3: Create the Extension Manifest/Definition</h2>
+<p>Go to <strong>App Settings</strong> and open <strong>App Extensions</strong>.</p>
+<p>You will see the extension you recently created.<br>
+Click the <strong>edit (pen) icon</strong> to open its configuration.</p>
+<p>Inside the configuration, you can define various settings and metadata for your extension, including its available <strong>Features</strong>.</p>
+<p>Since this extension contains a Razor component, make sure to enable/select:</p>
+<ul>
+<li><strong>Has Razor Files</strong></li>
+</ul>
+<p>This ensures your Razor component is properly registered and available.</p>
+<p>After making your changes, click <strong>Save</strong> to apply and store the configuration.</p>
+<div gallery="manifest">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-manifest.png">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-manifest-settings.png">
+</div>
 <h2 id="step-4-export-your-extension">Step 4: Export Your Extension</h2>
-<p>TODO: @2RB</p>
+<p>To export the extension, go to <strong>App Settings</strong> → <strong>App Extensions</strong>.</p>
+<p>Locate your extension and click the <strong>Download icon</strong> (cloud with arrow) to export and download the configuration.</p>
+<p>This will generate and download the extension package to your local machine.</p>
+<div gallery="export">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-export.png">
+</div>
 <h2 id="step-5-import-your-extension-into-another-app">Step 5: Import Your Extension into Another App</h2>
-<p>TODO: @2RB, create instructions, add 2-3 screenshots, incl. adding the message to an existing view in the new App to show that it works.
-I suggest you create a standalone portal, add the Content app, import it there etc.</p>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_import-the-extension" role="tab" aria-controls="tabpanel_2_import-the-extension" data-tab="import-the-extension" tabindex="0" aria-selected="true">1. Import the Extension</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_add-the-extension-to-a-view" role="tab" aria-controls="tabpanel_2_add-the-extension-to-a-view" data-tab="add-the-extension-to-a-view" tabindex="-1">2. Add the Extension to a View</a>
+</li>
+</ul>
+<section id="tabpanel_2_import-the-extension" role="tabpanel" data-tab="import-the-extension">
+
+<p>To import your extension into a different App:</p>
+<ol>
+<li>Go to <strong>App Settings</strong> → <strong>App Extensions</strong></li>
+<li>Click the <strong>+ icon</strong> (bottom right)</li>
+<li>Select <strong>&quot;Select Files&quot;</strong></li>
+<li>Choose the extension package you previously exported</li>
+<li>Click <strong>Install</strong></li>
+</ol>
+<p>Once the installation is complete, the extension will be available in the new App.</p>
+<div gallery="import">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-import.png">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-install-confirm.png">
+</div>
+</section>
+<section id="tabpanel_2_add-the-extension-to-a-view" role="tabpanel" data-tab="add-the-extension-to-a-view" aria-hidden="true" hidden="hidden">
+
+<p>To verify that everything works:</p>
+<ol>
+<li>Go to <strong>Views</strong></li>
+<li>Open the view where you want to display the extension</li>
+<li>Click the <strong>code icon</strong> &lt;&gt; to open the online editor</li>
+<li>Use <code>@Html.Partial(Path)</code> with the correct path to your extension component to render it inside the view</li>
+</ol>
+<p>After saving the view, the extension component (e.g., your <strong>Hello World</strong> Razor file) should be visible on the page.</p>
+<div gallery="import">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-append-view.png">
+  <img src="../../../../pages/extensions/app-extensions/create/hello-world/assets/extension-append-code.png">
+</div>
+<p>TODO: @2RB - i DON'T SEE THE output - this is absolutely necessary</p>
+</section>
+</div>
 <h2 id="step-6-distribute-the-app">Step 6: Distribute the App</h2>
-<p>This is optional - and in the case of the <strong>Hello World</strong> not useful - but you can distribute your extension to other users via the Marketplace.
-To do that, you need to create a package and submit it to the Marketplace.
-Just reach out to us and we'll help you get started.</p>
+<p>This is optional - and in the case of the <strong>Hello World</strong> not useful -
+but you can distribute your extension to other users via the <a href="https://2sxc.org/en/apps/type/app-extension">Marketplace</a>.
+To do that, you need to create a package and submit it to the Marketplace.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Just reach out to us and we'll help you get started.</p>
+</div>
 <h2 id="recap">Recap</h2>
-<p>TODO: @2rb summarize points of things they learned</p>
+<p>In this tutorial, you learned how to create and distribute a simple <strong>Hello World App Extension</strong>.</p>
+<p>Here's what you accomplished:</p>
+<ul>
+<li>Created a custom extension folder inside <code>/extensions/hello-world</code></li>
+<li>Built a simple Razor component (<code>Greeting.cshtml</code>)</li>
+<li>Created a test view to verify the extension works using <code>@Html.Partial(...)</code> and added it to a page</li>
+<li>Configured the Extension</li>
+<li>Exported the extension as a reusable package</li>
+<li>Imported and installed the extension in another App</li>
+<li>Embedded the extension into an existing View to verify it works</li>
+</ul>
 
 </article>
 
