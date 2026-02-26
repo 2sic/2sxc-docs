@@ -37,8 +37,6 @@ Here's how your extension folder and `Greeting.cshtml` should look:
   <img src="./assets/extension-file-structure-code.png">
 </div>
 
-TODO: @2rb - you should show more context, so please make sure that the user can see it's VS code etc.
-
 ## Step 2: Test Your Extension
 
 ### [1. Create Test View File](#tab/create-test-view-file)
@@ -49,8 +47,6 @@ Inside this file, use `@Html.Partial(Path)` to render your extension component.
 <div gallery="TestExtension">
   <img src="./assets/extension-partial.png">
 </div>
-
-TODO: @2rb - you should show more context, so please make sure that the user can see it's VS code etc.
 
 > [!TIP]
 > Do **not** place it inside the `extensions` directory.
@@ -78,10 +74,8 @@ Now you can verify that the output shows the expected "Hello, World" message fro
 
 <div gallery="AddView">
   <img src="./assets/extension-add-view.png">
+  <img src="./assets/app-hello-world-view.png">
 </div>
-
-TODO: @2RB - i DON'T SEE THE output - this is absolutely necessary
-TODO: @2RB - add a screenshot of the view with the Hello World message
 
 > [!NOTE]
 > Congratulations, your extension works!
@@ -157,9 +151,8 @@ After saving the view, the extension component (e.g., your **Hello World** Razor
 <div gallery="import">
   <img src="./assets/extension-append-view.png">
   <img src="./assets/extension-append-code.png">
+  <img src="./assets/extension-import-output.png">
 </div>
-
-TODO: @2RB - i DON'T SEE THE output - this is absolutely necessary
 
 ---
 
