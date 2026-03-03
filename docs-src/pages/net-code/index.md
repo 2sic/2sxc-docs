@@ -2,15 +2,12 @@
 uid: NetCode.Index
 ---
 
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
+<style>.context-box-process .process-cs { visibility: visible; } </style>
+
 # C#, Razor & Dynamic Code
 
 When you implement solutions using 2sxc, most of your server-side code will be written in C#.
-
-<div class="context-box-process" width="100%">
-
-[!include[](~/pages/basics/stack/_shared-all.md)]
-  <style>.context-box-process .process-cs { visibility: visible; } </style>
-</div>
 
 ## C# Files in 2sxc Apps
 
@@ -18,6 +15,7 @@ You will create many dynamic `.cs` or `.cshtml` files in the App folder:
 
 1. [Razor components](xref:NetCode.Razor.Index) and shared Razor views
 1. [WebApi Controllers](xref:NetCode.WebApi.Index) (`*Controller.cs` files in the `api` folder)
+1. Shared, pre-compiled App Code (`*.cs` files in each apps `AppCode` folder)
 1. Shared code (`*.cs` files in any folder)
 
 > [!TIP]
@@ -30,7 +28,9 @@ You will create many dynamic `.cs` or `.cshtml` files in the App folder:
 
 ## Quick Example
 
-The variable `person` in the following Razor template is a **Dynamic Entity** - meaning that it can have different properties depending on the configuration. In this case it seems to have `FirstName`, `LastName` and `Gender`.
+The variable `person` in the following Razor template is a special **data object**.
+It can have different properties depending on what it represents.
+In this case it has `FirstName`, `LastName` and `Gender`.
 
 ```razor
 <div @Edit.Toolbar(person)>
@@ -38,11 +38,22 @@ The variable `person` in the following Razor template is a **Dynamic Entity** - 
 </div>
 ```
 
-The code first creates a `div` tag which would show a hover-toolbar (to admins only) for editing the `person`. It then shows the names and the gender - which if not determined will show as `unknown`.
+The code first creates a `div` tag which would show a hover-toolbar (to admins only) for editing the `person`.
+It then shows the names and the gender - which if not determined will show as `unknown`.
 
 > [!NOTE]
 > This kind of code is easy understand for people who know HTML.
 > It's also very easy to customize if you need a different output - since it's basically HTML and placeholders.
+
+## Important APIs
+
+In general the API is split into 5 topics:
+
+1. Data API to get and show data
+2. Context API to get information about the current user, page, etc.
+3. Settings APIs to get configuration information
+4. Edit APIs to show edit toolbars and other edit features
+5. Extensive other APIs usually on the `Kit` object to do all kinds of things like JSON parsing, file handling, etc.
 
 ## What's Where
 

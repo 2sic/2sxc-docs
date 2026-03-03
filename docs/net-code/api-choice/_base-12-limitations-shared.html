@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/api-compare/csharp-base.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/api-choice/_base-12-limitations-shared.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -104,12 +104,20 @@
 
         <article data-uid="">
 
-<p><a class="xref" href="../api-choice/csharp-base.html">moved to</a></p>
+<p>Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support.</p>
+<ol>
+<li><p>The property <code>Dnn</code> doesn't exist on this base class, as it would lead to code which can't run cross-platform. <a class="xref" href="../api-compare/dnn-object.html">...more</a></p>
+</li>
+<li><p>The <code>CreateInstance(...)</code> works only on C# files <code>.cs</code> but not with CSHTML files <code>.cshtml</code> as this probably won't work in .net 5</p>
+</li>
+<li><p>Koi works differently than before. Previously you just used a global object <code>Connect.Koi.Koi</code> to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using <code>GetService&lt;Connect.Koi.ICss&gt;()</code>. The old mechanism will still work in Dnn but would not work in Oqtane.</p>
+</li>
+</ol>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/api-compare/csharp-base.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/api-choice/_base-12-limitations-shared.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

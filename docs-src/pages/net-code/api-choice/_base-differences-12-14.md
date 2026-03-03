@@ -4,4 +4,4 @@
 
 1. the `Convert` property is removed, as it caused confusion with `System.Convert`
 
-Note: hybrid base classes don't have a `Dnn` property. [...more](xref:NetCode.TypedCode.CompareApis.DnnObject)
+Note: hybrid base classes don't have a `Dnn` property. [...more](xref:NetCode.CompareApis.DnnObject)

@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.AppData
+uid: NetCode.CompareApis.AppData
 ---
 
 # App and App Data Differences in APIs
@@ -67,7 +67,7 @@ In Strong Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you
 
 ## Access App Settings
 
-👉🏽 See [](xref:NetCode.TypedCode.CompareApis.SettingsResources)
+👉🏽 See [](xref:NetCode.CompareApis.SettingsResources)
 
 ---
 

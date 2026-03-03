@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.HelpersServices
+uid: NetCode.CompareApis.HelpersServices
 ---
 
 # Built-In Helpers and Services Differences in APIs
