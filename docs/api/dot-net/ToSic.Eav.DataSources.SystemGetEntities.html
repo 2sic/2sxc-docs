@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Class Csv | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Class SystemGetEntities | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Csv | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Class SystemGetEntities | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/api-docs/api/dot-net/ToSic.Eav/DataSources/Csv.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_SystemGetEntities.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.SystemGetEntities%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -102,12 +102,12 @@
 
         
 
-        <article data-uid="ToSic.Eav.DataSources.Csv">
+        <article data-uid="ToSic.Eav.DataSources.SystemGetEntities">
 
 
 
-  <h1 id="ToSic_Eav_DataSources_Csv" data-uid="ToSic.Eav.DataSources.Csv" class="text-break">
-Class Csv  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Eav_DataSources_SystemGetEntities" data-uid="ToSic.Eav.DataSources.SystemGetEntities" class="text-break">
+Class SystemGetEntities  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Filters/SystemGetEntities.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -115,24 +115,17 @@ Class Csv  <a class="header-action link-secondary" title="View source" href="htt
   <dl><dt>Assembly</dt><dd>ToSic.Eav.DataSources.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>DataSource for importing/reading CSV files.</p>
+  <div class="markdown summary"><p>The base class for all DataSources, especially custom DataSources.
+It must always be inherited.
+It provides a lot of core functionality to get configurations, ensure caching and more.</p>
+<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> DataSource for custom data sources.</p>
 </div>
-  <div class="markdown conceptual">
-<p>The <strong>CSV</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>.</p>
-<p>It will load data from a CSV file which is usually located in the App folder (but can also be in ADAM).</p>
-<p>These docs are not complete, check out the <a href="https://2sxc.org/en/docs/Feature/feature/6528">feature description</a> for now.</p>
-<h2 id="history">History</h2>
-<ol>
-<li>Introduced in 2sxc 7.2</li>
-</ol>
-<!-- note: this must be an H1 because of the automatic TOC in the code pages -->
-<h1 id="api-documentation">API Documentation</h1>
-</div>
+  <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-[VisualQuery(NiceName = &quot;CSV Data&quot;, UiHint = &quot;Load data from a CSV file&quot;, Icon = &quot;description&quot;, Type = DataSourceType.Source, NameId = &quot;69f7b35e-057d-422a-8383-acbbbacfefb4&quot;, NameIds = new string[] { &quot;ToSic.Eav.DataSources.CsvDataSource, ToSic.Eav.DataSources&quot; }, ConfigurationType = &quot;|Config ToSic.Eav.DataSources.CsvDataSource&quot;, HelpLink = &quot;https://go.2sxc.org/DsCsv&quot;)]
-public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
+[VisualQuery(NiceName = &quot;System Get Entities&quot;, UiHint = &quot;Find items based on one or more IDs&quot;, Icon = &quot;fingerprint&quot;, Type = DataSourceType.Filter, NameId = &quot;1012a387-c7db-4fa2-83c0-c1862bf0aadf&quot;, NameIds = new string[] { &quot;System.GetEntities&quot; }, In = new string[] { &quot;Default*&quot; }, Audience = Audience.System, DataConfidentiality = DataConfidentiality.Internal)]
+public class SystemGetEntities : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable</code></pre>
   </div>
 
 
@@ -145,8 +138,7 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase.html">ServiceBase</a></div>
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
-      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
-      <div><span class="xref">Csv</span></div>
+      <div><span class="xref">SystemGetEntities</span></div>
     </dd>
   </dl>
 
@@ -170,12 +162,6 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
     </div>
     <div>
@@ -189,6 +175,9 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -234,10 +223,9 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
 
 
 
-  <h2 id="ToSic_Eav_DataSources_Csv_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><ul>
-<li>Renamed from <code>CsvDataSource</code> to <code>Csv</code> in v15.06 for consistency. Believe this should not affect anybody.</li>
-</ul>
+  <h2 id="ToSic_Eav_DataSources_SystemGetEntities_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Had a major, breaking update in v15.
+Consult the guide to upgrade your custom data sources.</p>
 </div>
 
 
@@ -245,158 +233,20 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
 </h2>
 
 
-  <a id="ToSic_Eav_DataSources_Csv_ContentType_" data-uid="ToSic.Eav.DataSources.Csv.ContentType*"></a>
+  <a id="ToSic_Eav_DataSources_SystemGetEntities_EntityIds_" data-uid="ToSic.Eav.DataSources.SystemGetEntities.EntityIds*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Csv_ContentType" data-uid="ToSic.Eav.DataSources.Csv.ContentType">
-  ContentType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_DataSources_SystemGetEntities_EntityIds" data-uid="ToSic.Eav.DataSources.SystemGetEntities.EntityIds">
+  EntityIds
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Filters/SystemGetEntities.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Name of the content type which the imported entities have. This is fake, but may be necessary for later filtering of the types.
-Defaults to &quot;CSV&quot;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;CSV&quot;)]
-public string ContentType { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-  <h4 class="section" id="ToSic_Eav_DataSources_Csv_ContentType_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><ul>
-<li>Before v15.03 it defaulted to &quot;Anonymous&quot;</li>
-</ul>
-</div>
-
-
-
-
-  <a id="ToSic_Eav_DataSources_Csv_Delimiter_" data-uid="ToSic.Eav.DataSources.Csv.Delimiter*"></a>
-
-  <h3 id="ToSic_Eav_DataSources_Csv_Delimiter" data-uid="ToSic.Eav.DataSources.Csv.Delimiter">
-  Delimiter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L75"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Delimiter character in the CSV, usually a ',' or ';' but could also be a tab or something. Default is tab.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = &quot;\t&quot;)]
-public string Delimiter { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_DataSources_Csv_FilePath_" data-uid="ToSic.Eav.DataSources.Csv.FilePath*"></a>
-
-  <h3 id="ToSic_Eav_DataSources_Csv_FilePath" data-uid="ToSic.Eav.DataSources.Csv.FilePath">
-  FilePath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L41"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Path to the CSV file, relative to the website root</p>
+  <div class="markdown level1 summary"><p>A string containing one or more entity-ids. like &quot;27&quot; or &quot;27,40,3063,30306&quot;</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Configuration]
-public string FilePath { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_DataSources_Csv_IdColumnName_" data-uid="ToSic.Eav.DataSources.Csv.IdColumnName*"></a>
-
-  <h3 id="ToSic_Eav_DataSources_Csv_IdColumnName" data-uid="ToSic.Eav.DataSources.Csv.IdColumnName">
-  IdColumnName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L100"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Column in the CSV which contains the ID.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration]
-public string? IdColumnName { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_DataSources_Csv_TitleColumnName_" data-uid="ToSic.Eav.DataSources.Csv.TitleColumnName*"></a>
-
-  <h3 id="ToSic_Eav_DataSources_Csv_TitleColumnName" data-uid="ToSic.Eav.DataSources.Csv.TitleColumnName">
-  TitleColumnName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L111"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The CSV column containing the title of the item - for dropdowns etc. and the EntityTitle property.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration]
-public string? TitleColumnName { get; set; }</code></pre>
+public string EntityIds { get; }</code></pre>
   </div>
 
 
@@ -420,7 +270,7 @@ public string? TitleColumnName { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Filters/SystemGetEntities.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 
