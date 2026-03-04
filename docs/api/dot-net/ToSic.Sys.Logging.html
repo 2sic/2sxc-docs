@@ -113,22 +113,101 @@
   <div class="markdown level0 conceptual">
 <p>The EAV system has a powerful internal logging system. It's the backbone to Insights.</p>
 <p>This is where it resides - usually you don't want to know about it ;).</p>
-<p>If you do, here a short conceptual background:</p>
-<ul>
-<li><p>Any object can have a property - usually called <code>Log</code> which is an <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a> .<br>
-Using this the object can call the <code>Log.Add(...)</code> to add messages. Many other commands help in various scenarios.</p>
-</li>
-<li><p>The real power comes from chaining these - because each logger can know what parent-logger it reports to.<br>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is very internal, and can change at any time.
+In future, we will make it more aligned with the .NET logging system, but for now it's a custom implementation which is very powerful and flexible.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is the internal logging system, which is <strong>not the same</strong> as the <code>Log</code> object on custom Razor / WebApi code.
+The custom code logging is a wrapper around this, but it has a different API and is not as powerful as this internal logging system.</p>
+</div>
+<p>This should give you some minimal guidance into logging what your code does.</p>
+<h2 id="the-general-concept">The General Concept</h2>
+<ol>
+<li>Most objects have a <strong>Log</strong> where they add notes about what they are doing - it's a <a class="xref" href="ToSic.Sys.Logging.ILog.html">ILog</a></li>
+<li>When objects create child-objects they link their logs so that we have a call hierarchy</li>
+<li>Most calls in the objects will declare that they opened a function, log that, and log the result or a comment</li>
+</ol>
+<p>With this we can easily see what the code did in the <a class="xref" href="../../net-code/debug/insights.html">Insights</a>.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The real power comes from chaining these - because each logger can know what parent-logger it reports to.<br>
 This allows us to reproduce the chain of events in the original code, because you can track where<br>
 loggers were made, and how they relate.</p>
-</li>
-<li><p>The really amazing bit is that the logger will also pick up the
+<p>The really amazing bit is that the logger will also pick up the
 class names, code-file names and line of code where it was logged 😎.</p>
-</li>
-<li><p>Most objects which use the Log, implement the <a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a>, often by inheriting<br>
-<a class="xref" href="ToSic.Sys.Logging.html">ToSic.Sys.Logging</a>.HasLog which automates things when initializing - like the chaining of the Loggers.</p>
-</li>
+</div>
+<ul>
+<li>Most objects which use the Log, implement the <a class="xref" href="ToSic.Sys.Logging.IHasLog.html"><code>ToSic.Sys.Logging.IHasLog</code></a>
+which automates things when initializing - like the chaining of the Loggers.</li>
 </ul>
+<h2 id="how-to-use-in-your-code">How to Use in Your Code</h2>
+<p>If you create code to extend 2sxc, you may want to use the logger as well.
+We strongly suggest that you use the same concepts in your code.
+You'll have to look at the 2sxc/EAV source in Github to discover more.</p>
+<h2 id="log-linking">Log Linking</h2>
+<p>For optimal log structures, they should be linked together.
+This helps to show the call hierarchy in the Insights.</p>
+<p>This is fully automated, if you adhere to the conventions.
+Best use the <code>ServiceBase</code> in the <a class="xref" href="ToSic.Sys.Services.html"><code>ToSic.Sys.Services</code></a> namespace, which will take care of this for you.
+It works as follows:</p>
+<ol>
+<li>Any object inheriting from <code>ServiceBase</code>
+<ol>
+<li>should call <code>base(logName, connect: [service1, service2, service3])</code> from the constructor.</li>
+</ol>
+</li>
+<li>Any object inheriting from <code>ServiceBase&lt;Dependencies&gt;</code>
+<ol>
+<li>should pass the dependencies into the base constructor.</li>
+<li>The dependencies are then available on a <code>Services</code> property.</li>
+<li>For this to work, the <code>Dependencies</code> should inherit from
+<a class="xref" href="ToSic.Sys.Services.DependenciesBase.html"><code>ToSic.Sys.Services.DependenciesBase</code></a>
+or <a class="xref" href="ToSic.Sys.Services.DependenciesRecord.html"><code>ToSic.Sys.Services.DependenciesRecord</code></a>.</li>
+</ol>
+</li>
+</ol>
+<h2 id="logging">Logging</h2>
+<h3 id="basic-messages">Basic Messages</h3>
+<p>You can log messages with the following methods (they are kept very short to keep the code compact):</p>
+<ol>
+<li><code>Log.A</code> - add a message</li>
+<li><code>Log.W</code> - add a warning</li>
+<li><code>Log.E</code> - add an error</li>
+</ol>
+<p>All of these methods have a first <code>string</code> parameter containing the message to add.</p>
+<p>They also all have an optional parameter called <code>timer</code>.
+If this is set to true using <code>timer: true</code> then the log will also contain the time it took to execute the method.</p>
+<h3 id="exceptions">Exceptions</h3>
+<p>You can log exceptions with the following methods:</p>
+<ol>
+<li><code>Log.Ex</code> - add an exception</li>
+</ol>
+<h3 id="log-properties">Log Properties</h3>
+<p>Properties use getters and setters.
+To log these, you must consider a few aspects:</p>
+<ul>
+<li>do you want to log every single get/set? Or just the first one?</li>
+<li>do you want to log both get/set or just one of them?</li>
+</ul>
+<p>To do this, you have 3 tools at your disposal:</p>
+<ul>
+<li><code>Getter(() =&gt; result)</code> - this will log the result of the getter</li>
+<li><code>Setter(() =&gt; result)</code> - this will log the result of the setter</li>
+<li>Create a <code>GetOnce&lt;T&gt;</code> helper and on the get include the <code>Log</code> - this will only log the initial creation / get of the result</li>
+</ul>
+<h3 id="log-methods-functions-properties">Log Methods, Functions, Properties</h3>
+<p>TODO:</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li><a href="https://2sxc.org/en/blog/post/releasing-2sxc-9-6-with-extensive-logging">Introduced in 2sxc 9.6</a></li>
+<li>Added <a class="xref" href="../../net-code/debug/index.html">2sxc Insights</a> (server-side) v9.31</li>
+<li><a href="https://2sxc.org/en/blog/post/awesome-insights-in-10-22">Major enhancements</a> in v10.22</li>
+<li>Moved to <code>ToSic.Sys.Logging</code> in v15.0</li>
+</ol>
 </div>
   <div class="markdown level0 remarks"></div>
 

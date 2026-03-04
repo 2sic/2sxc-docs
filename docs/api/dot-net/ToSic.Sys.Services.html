@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/api-docs/api/dot-net/ToSic.Sys/Services.md/#L2">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -110,7 +110,31 @@
 
   <h1 id="ToSic_Sys_Services" data-uid="ToSic.Sys.Services" class="text-break">Namespace ToSic.Sys.Services</h1>
   <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 conceptual">
+<p>The EAV system has a powerful structure for services and helpers.</p>
+<h2 id="object-creation">Object Creation</h2>
+<p>All services should inherit from <code>ServiceBase</code> or <code>ServiceBase&lt;Dependencies&gt;</code>.
+This is the most common way to create services.</p>
+<ol>
+<li><a class="xref" href="ToSic.Sys.Services.ServiceBase.html"><code>ToSic.Sys.Services.ServiceBase</code></a><br>
+This is for services which have a few dependencies.</li>
+<li><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html"><code>ToSic.Sys.Services.ServiceBase&lt;Dependencies&gt;</code></a><br>
+This is for services which have a lot of dependencies.
+In this case you'll have to pass the dependencies to the base class.
+Dependencies usually inherit from <a class="xref" href="ToSic.Sys.Services.DependenciesBase.html"><code>ToSic.Sys.Services.DependenciesBase</code></a>.</li>
+<li><a class="xref" href="ToSic.Sys.Services.HelperBase.html"><code>ToSic.Sys.Services.HelperBase</code></a>
+This is for helpers which are not services and will usually be created in code (not from DI).</li>
+</ol>
+<p>You can also just create normal objects and implement <a class="xref" href="ToSic.Sys.Logging.IHasLog.html"><code>ToSic.Sys.Logging.IHasLog</code></a>.</p>
+<p>Note that if you're inheriting from <code>ServiceBase&lt;Dependencies&gt;</code> then the dependencies class should
+inherit from <a class="xref" href="ToSic.Sys.Services.DependenciesBase.html"><code>ToSic.Sys.Services.DependenciesBase</code></a>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ol>
+<li>Introduced a long time ago.</li>
+<li>Ongoing improvements - the API is considered internal and can change at any time</li>
+</ol>
+</div>
   <div class="markdown level0 remarks"></div>
 
     <h3 id="classes">
@@ -169,6 +193,7 @@ Interfaces
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/api-docs/api/dot-net/ToSic.Sys/Services.md/#L2" class="edit-link">Edit this page</a>
         </div>
 
 
