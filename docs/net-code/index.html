@@ -103,10 +103,8 @@
         
 
         <article data-uid="NetCode.Index">
-<h1 id="c-razor--dynamic-code">C#, Razor &amp; Dynamic Code</h1>
 
-<p>When you implement solutions using 2sxc, most of your server-side code will be written in C#.</p>
-<div class="context-box-process" width="100%">
+<div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
   <image href="../pages/basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
@@ -203,13 +201,16 @@
   <div class="overlay-description">
 <p>you are here (click to zoom) - discover the <a class="xref" href="../basics/index.html">stack</a></p>
   </div>
-  <style>.context-box-process .process-cs { visibility: visible; } </style>
 </div>
+<style>.context-box-process .process-cs { visibility: visible; } </style>
+<h1 id="c-razor--dynamic-code">C#, Razor &amp; Dynamic Code</h1>
+<p>When you implement solutions using 2sxc, most of your server-side code will be written in C#.</p>
 <h2 id="c-files-in-2sxc-apps">C# Files in 2sxc Apps</h2>
 <p>You will create many dynamic <code>.cs</code> or <code>.cshtml</code> files in the App folder:</p>
 <ol>
 <li><a class="xref" href="razor/index.html">Razor components</a> and shared Razor views</li>
 <li><a class="xref" href="web-api/index.html">WebApi Controllers</a> (<code>*Controller.cs</code> files in the <code>api</code> folder)</li>
+<li>Shared, pre-compiled App Code (<code>*.cs</code> files in each apps <code>AppCode</code> folder)</li>
 <li>Shared code (<code>*.cs</code> files in any folder)</li>
 </ol>
 <div class="TIP">
@@ -222,17 +223,29 @@
 </ol>
 </div>
 <h2 id="quick-example">Quick Example</h2>
-<p>The variable <code>person</code> in the following Razor template is a <strong>Dynamic Entity</strong> - meaning that it can have different properties depending on the configuration. In this case it seems to have <code>FirstName</code>, <code>LastName</code> and <code>Gender</code>.</p>
+<p>The variable <code>person</code> in the following Razor template is a special <strong>data object</strong>.
+It can have different properties depending on what it represents.
+In this case it has <code>FirstName</code>, <code>LastName</code> and <code>Gender</code>.</p>
 <pre><code class="lang-razor">&lt;div @Edit.Toolbar(person)&gt;
   @person.FirstName @person.LastName - @Text.First(person.Gender, &quot;unknown&quot;)
 &lt;/div&gt;
 </code></pre>
-<p>The code first creates a <code>div</code> tag which would show a hover-toolbar (to admins only) for editing the <code>person</code>. It then shows the names and the gender - which if not determined will show as <code>unknown</code>.</p>
+<p>The code first creates a <code>div</code> tag which would show a hover-toolbar (to admins only) for editing the <code>person</code>.
+It then shows the names and the gender - which if not determined will show as <code>unknown</code>.</p>
 <div class="NOTE">
 <h5>Note</h5>
 <p>This kind of code is easy understand for people who know HTML.
 It's also very easy to customize if you need a different output - since it's basically HTML and placeholders.</p>
 </div>
+<h2 id="important-apis">Important APIs</h2>
+<p>In general the API is split into 5 topics:</p>
+<ol>
+<li>Data API to get and show data</li>
+<li>Context API to get information about the current user, page, etc.</li>
+<li>Settings APIs to get configuration information</li>
+<li>Edit APIs to show edit toolbars and other edit features</li>
+<li>Extensive other APIs usually on the <code>Kit</code> object to do all kinds of things like JSON parsing, file handling, etc.</li>
+</ol>
 <h2 id="whats-where">What's Where</h2>
 <p>This documentation contains the following sections</p>
 <ol>

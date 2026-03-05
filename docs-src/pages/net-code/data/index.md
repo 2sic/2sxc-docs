@@ -2,17 +2,14 @@
 uid: NetCode.Data.Index
 ---
 
+[!include[](~/pages/basics/stack/_shared-float-summary.md)]
+<style>.context-box-process .process-cs { visibility: visible; } </style>
+<style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
+
 # Data in 2sxc
 
 2sxc has a lot of powerful features to help you do amazing stuff, but it all starts with data.
 This section/guide should help you get familiar with the basics of data in 2sxc.
-
-<div class="context-box-process" width="100%">
-
-[!include[](~/pages/basics/stack/_shared-all.md)]
-  <style>.context-box-process .process-cs { visibility: visible; } </style>
-  <style>.context-box-summary .data-all, .context-box-summary .prepare-all { visibility: visible; } </style>
-</div>
 
 There is a lot of magic happening in the background to:
 

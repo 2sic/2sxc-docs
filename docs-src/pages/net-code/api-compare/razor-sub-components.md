@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.RazorSubComponents
+uid: NetCode.CompareApis.RazorSubComponents
 ---
 
 # Razor Sub-Components  Differences in APIs

@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.SettingsResources
+uid: NetCode.CompareApis.SettingsResources
 ---
 
 # Settings / Resources Differences in APIs

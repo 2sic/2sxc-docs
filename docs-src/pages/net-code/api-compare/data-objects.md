@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.DataObjects
+uid: NetCode.CompareApis.DataObjects
 ---
 
 # Built-In Data Object Differences in APIs
