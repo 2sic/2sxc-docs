@@ -27,5 +27,5 @@
 1. 🌪️ DataSources: New internal DataSource `System.GetEntities`
 1. Internal object structure for permission-check, now uses new `IServiceWithSetup`
 1. Chore: update FAB components to latest version
-1. 🌪️ DataSources: Rework public Linking API, improve the [IDataService](xref:ToSic.Sxc.Service.IDataService) with `CreateLink()` and `CombineLinks()`
+1. 🌪️ DataSources: Rework public Linking API, improve the [IDataService](xref:ToSic.Sxc.Services.IDataService) with `CreateLink()` and `CombineLinks()`
 1. 📖 Improve docs - internal docs + start improving section [C# Razor](xref:NetCode.Index)

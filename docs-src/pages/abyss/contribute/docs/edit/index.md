@@ -47,7 +47,7 @@ uid: Abyss.Contribute.Docs.Edit.Index
     <a href="xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo"></a>
   </div>
   <div icon="images" title="Image Galleries">
-    <a href="xref:Abyss.Contribute.Docs.Edit.ImageGalleries"></a>
+    <a href="xref:Abyss.Contribute.Docs.Edit.Galleries"></a>
   </div>
   <div icon="diagram-2" title="Mermaid Diagrams">
     <a href="xref:Abyss.Contribute.Docs.Edit.Mermaid"></a>
