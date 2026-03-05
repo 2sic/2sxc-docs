@@ -105,20 +105,95 @@
         <article data-uid="Abyss.Contribute.Tutorials.CreateTab">
 
 <h2 id="add-an-extra-source-tab-using-hidden-comments">Add an extra “Source” tab using hidden comments</h2>
-<p>Each snippet automatically renders with an <strong>Output and Source</strong> tab.</p>
-<p>In addition, you can add <strong>extra Source tabs</strong> by placing a special <strong>hidden Razor comment</strong> anywhere in your snippet file. This comment is not rendered in the HTML output, but it is parsed by the tutorial system to show an additional tab containing the referenced <code>.cs</code> file.</p>
-<img src="../../../pages/abyss/contribute/tutorials/assets/snippet-output-and-source-tabs.png" class="glow">
-<h3 id="syntax">Syntax</h3>
-<p>Use this exact pattern:</p>
-<pre><code class="lang-razor">@*!
-Tut.Tabs=&lt;tabId&gt;:&lt;fileNameWithoutExtension&gt;
-!*@
-</code></pre>
+<p>Each tutorial snippet automatically renders with two default tabs:</p>
 <ul>
-<li><code>Tut.Tabs=</code> is the instruction for the renderer</li>
-<li><code>&lt;tabId&gt;</code> is the tab (category) that is displayed before the file name</li>
-<li><code>&lt;fileNameWithoutExtension&gt;</code> the filename without, in this case, <code>.cs</code></li>
+<li><strong>Output:</strong> shows the rendered result</li>
+<li><strong>Source:</strong> shows the code from the snippet file</li>
 </ul>
+<p>Sometimes you want to show <strong>additional files</strong> such as:</p>
+<ul>
+<li>JavaScript files</li>
+<li>CSS files</li>
+<li>C# helper classes</li>
+<li>configuration files</li>
+<li>additional Razor views</li>
+</ul>
+<p>These files can be added as <strong>extra tabs</strong> in the snippet output.</p>
+<hr>
+<h2 id="edit-the-snippet-section">Edit the Snippet Section</h2>
+<p>To add a new tab, edit the snippet section in the tutorial page.</p>
+<div gallery="tab-edit">
+    <img src="../../../pages/abyss/contribute/tutorials/assets/tab-edit.png">
+</div>
+<p>Click the <strong>edit button</strong> in the snippet area.<br>
+This opens the snippet configuration dialog.</p>
+<hr>
+<h2 id="open-the-add-ons-section">Open the Add-Ons Section</h2>
+<p>Inside the editor dialog you will find the <strong>Add-Ons</strong> section.</p>
+<p>This section allows you to attach additional files which will appear as tabs in the snippet output.</p>
+<div gallery="tab-edit-form">
+    <img src="../../../pages/abyss/contribute/tutorials/assets/tab-edit-form.png">
+</div>
+<hr>
+<h2 id="add-a-new-file-tab">Add a new File Tab</h2>
+<p>Inside <strong>Add-Ons</strong> you have two options:</p>
+<h3 id="select-an-existing-file">Select an existing file</h3>
+<p>If a file was already added before, you can simply select it from the list.</p>
+<h3 id="create-a-new-add-on">Create a new Add-On</h3>
+<p>If the file does not exist yet:</p>
+<ol>
+<li>Click the <strong>+ button</strong></li>
+<li>A new Add-On configuration dialog will open</li>
+</ol>
+<div gallery="tab-edit-form">
+    <img src="../../../pages/abyss/contribute/tutorials/assets/tab-edit-form-new.png">
+</div>
+<p>Fill in the following fields.</p>
+<h2 id="add-on-configuration">Add-On Configuration</h2>
+<h3 id="titleinternal">TitleInternal</h3>
+<p>Usually the <strong>file path</strong> to the file you want to show.</p>
+<p><strong>Example:</strong></p>
+<p><code>extensions/field-number-slider-basic/index.js</code></p>
+<h3 id="addontype">AddOnType</h3>
+<p>Choose the type of add-on.</p>
+<p>The most common option is:</p>
+<p><code>file source (any file)</code></p>
+<p>This tells the tutorial system to load and display the file source code.</p>
+<h3 id="groupfile---filepath">GroupFile -&gt; FilePath</h3>
+<p>This is the <strong>path to the file</strong> inside the tutorial project.</p>
+<p>Example:</p>
+<p><code>extensions/field-number-slider-basic/index.js</code></p>
+<p>use the <strong>search button</strong> to select it</p>
+<h3 id="show-full-file-path">Show Full File Path</h3>
+<p>Optional but recommended.</p>
+<p>When enabled, the full file path will be displayed above the code block so users know exactly where the file lives.</p>
+<hr>
+<h2 id="save-the-add-on">Save the Add-On</h2>
+<p>After saving the configuration:</p>
+<ol>
+<li>Save the Add-On dialog</li>
+<li>Save the snippet editor</li>
+</ol>
+<p>The new tab will now appear in the snippet output.</p>
+<div class="gallery">
+    <img src="../../../pages/abyss/contribute/tutorials/assets/tab-done.png">
+</div>
+<hr>
+<h2 id="result">Result</h2>
+<p>Your snippet will now contain an additional tab showing the file source code.</p>
+<p>Opening the tab will show the file contents directly in the documentation.</p>
+<hr>
+<h2 id="summary">Summary</h2>
+<p>To add a new <strong>Source tab</strong>:</p>
+<ol>
+<li>Edit the snippet</li>
+<li>Open <strong>Add-Ons</strong></li>
+<li>Add a new entry</li>
+<li>Select <strong>AddOnType → file source</strong></li>
+<li>Provide the <strong>file path</strong></li>
+<li>Save</li>
+</ol>
+<p>The tutorial system will automatically generate a new tab displaying the file.</p>
 
 </article>
 
