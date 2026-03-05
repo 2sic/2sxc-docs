@@ -8,6 +8,7 @@ import { lightboxForContextIllustration } from '../../shared-global/src/scripts/
 import "./main.scss";
 
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
+import { convertDocsTiles } from './docs-tiles';
 
 // Log some version of this file so we see changes are being applied
 // console.log('2sxc main.ts ' + packageJson.version);
@@ -46,5 +47,6 @@ docReady(function() {
   // Activate popups on the small context illustrations
   // typically to the right of the introduction content
   lightboxForContextIllustration();
-});
 
+  convertDocsTiles();
+});
