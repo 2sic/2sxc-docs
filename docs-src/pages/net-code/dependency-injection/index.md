@@ -36,7 +36,6 @@ This is how your code would get a service:
 ## Discover More
 
 <div docs-tiles>
-
   <div icon="file-code" title="Read more about GetService in your Code">
     <a href="xref:NetCode.DynamicCode.GetService"></a>
   </div>
@@ -49,11 +48,11 @@ This is how your code would get a service:
     <a href="xref:ToSic.Sxc.Services"></a>
   </div>
 
-  <div icon="box-arrow-up-right" emoji="☢️" title="Dependency Injection in Dnn Modules and Skins">
+  <div icon="☢️" title="Dependency Injection in Dnn Modules and Skins">
     <a href="xref:NetCode.PlatformApi.Dnn.DependencyInjection"></a>
   </div>
 
-  <div icon="box-arrow-up-right" emoji="🩸" title="Dependency Injection in Oqtane">
+  <div icon="🩸" title="Dependency Injection in Oqtane">
     <a href="xref:NetCode.PlatformApi.Oqtane.DependencyInjection"></a>
   </div>
 </div>

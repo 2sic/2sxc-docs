@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Dependency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Link Tiles | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Dependency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Link Tiles | 2sxc 21 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/dependency-injection/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/edit/link-tiles.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,70 +102,80 @@
 
         
 
-        <article data-uid="NetCode.DependencyInjection.Index">
-<h1 id="dependency-injection-in-2sxc-and-eav">Dependency Injection in 2sxc and EAV</h1>
+        <article data-uid="Abyss.Contribute.Docs.Edit.LinkTiles">
+<h1 id="link-tiles">Link Tiles</h1>
 
-<p><strong>Dependency Injection</strong> is a way to <strong>structure applications</strong> and to <strong>get Services</strong> or <strong>Helpers</strong> in your code.</p>
-<p>👉 We suggest you read the <a class="xref" href="introduction.html">introduction to Dependency Injection</a></p>
-<h2 id="prefer-kit-do-getservice">Prefer <code>Kit</code> do <code>GetService()</code></h2>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>It's recommended to use <code>Kit</code> instead of <code>GetService()</code> directly for better maintainability and readability.</p>
-<p>The <code>Kit</code> object has almost all the services you'll ever need.</p>
-</div>
-<p>So the example which will be shown below, would usually be written like this:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
-@Kit.Page.AddOpenGraph(&quot;video&quot;, &quot;https://2sxc.org/videos/intro.mp4&quot;);
+<p>Starting in 2026-03 (new ⭐) we introduced the feature to add link tiles,
+showing an icon/emoji and a title, which link to another page.</p>
+<p>Here's an example:</p>
+<pre><code class="lang-html">&lt;div docs-tiles&gt;
+  &lt;div icon=&quot;file-code&quot; title=&quot;Read more about GetService in your Code&quot;&gt;
+    &lt;a href=&quot;xref:NetCode.DynamicCode.GetService&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  
+  &lt;div icon=&quot;journal-code&quot; title=&quot;Check out the GetService API&quot;&gt;
+    &lt;a href=&quot;xref:Custom.Hybrid.Razor12.GetService*&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div icon=&quot;journal-code&quot; title=&quot;Typical 2sxc Services you May Need&quot;&gt;
+    &lt;a href=&quot;xref:ToSic.Sxc.Services&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div icon=&quot;☢️&quot; title=&quot;Dependency Injection in Dnn Modules and Skins&quot;&gt;
+    &lt;a href=&quot;xref:NetCode.PlatformApi.Dnn.DependencyInjection&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div icon=&quot;🩸&quot; title=&quot;Dependency Injection in Oqtane&quot;&gt;
+    &lt;a href=&quot;xref:NetCode.PlatformApi.Oqtane.DependencyInjection&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
-<h2 id="how-can-i-use-dependency-injection-in-razor">How Can I Use Dependency Injection in Razor?</h2>
-<p>Previously this was reserved for internal use.
-Starting in 2sxc v11.11 all Razor classes have a command called <a class="xref" href="../dynamic-code/get-service.html">GetService</a>.
-This is how your code would get a service:</p>
-<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
-@GetService&lt;ToSic.Sxc.Services.IPageService&gt;().AddOpenGraph(&quot;video&quot;, &quot;https://2sxc.org/videos/intro.mp4&quot;);
-</code></pre>
-<h2 id="discover-more">Discover More</h2>
+<p>This will then look like this:</p>
 <div docs-tiles>
   <div icon="file-code" title="Read more about GetService in your Code">
-    <a class="xref" href="../dynamic-code/get-service.html">GetService&lt;T&gt;() Command new in v11.11</a>
+    <a class="xref" href="../../../../net-code/dynamic-code/get-service.html">GetService&lt;T&gt;() Command new in v11.11</a>
   </div>
   
   <div icon="journal-code" title="Check out the GetService API">
-    <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_">GetService</a>
+    <a class="xref" href="../../../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_">GetService</a>
   </div>
   <div icon="journal-code" title="Typical 2sxc Services you May Need">
-    <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a>
+    <a class="xref" href="../../../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services</a>
   </div>
   <div icon="☢️" title="Dependency Injection in Dnn Modules and Skins">
-    <a class="xref" href="../platform-api/dnn/dependency-injection.html">Dependency Injection in Dnn Skins and Modules</a>
+    <a class="xref" href="../../../../net-code/platform-api/dnn/dependency-injection.html">Dependency Injection in Dnn Skins and Modules</a>
   </div>
   <div icon="🩸" title="Dependency Injection in Oqtane">
-    <a class="xref" href="../platform-api/oqtane/dependency-injection.html">Dependency Injection in Oqtane</a>
+    <a class="xref" href="../../../../net-code/platform-api/oqtane/dependency-injection.html">Dependency Injection in Oqtane</a>
   </div>
 </div>
-<h2 id="faq">FAQ</h2>
+<h2 id="usage">Usage</h2>
 <ol>
-<li>How Can I Use Dependency Injection in WebAPIs?<br>
-Just like with with Razor, 2sxc 11.11 added the same GetService to all WebAPIs.</li>
+<li>Always start with the wrapper <code>&lt;div docs-tiles&gt;</code>.</li>
+<li>Then add a <code>&lt;div&gt;</code> for each tile, with the following attributes:
+<ul>
+<li><code>icon</code> - the name of the <a href="https://icons.getbootstrap.com/">bootstrap icon</a> to use, or an emoji</li>
+<li><code>title</code> - the title to show on the tile</li>
+</ul>
+</li>
+<li>Inside the tile div, add an <code>&lt;a&gt;</code> tag with the <code>href</code> pointing to the page you want to link to.</li>
+</ol>
+<h2 id="implementation-details">Implementation Details</h2>
+<p>The mechanics behind this are a combination of CSS and JS.</p>
+<ol>
+<li>The styles have a few classes that make it work, specifically <code>docs-tiles .card</code></li>
+<li>A JS called <code>convertDocsTiles</code> is run at startup to convert the HTML into the final output.</li>
 </ol>
 <hr>
-<h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
+<h2 id="history">History</h2>
 <ol>
-<li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>
-<li>Integrated with Oqtane DI in v12 (May 2021)</li>
-<li><code>GetService&lt;T&gt;</code> pattern introduced for Razor/C# in v12 (May 2021)</li>
-<li>Integrated with Oqtane DI in v12 (May. 2021)</li>
-<li>Upgraded to Dependency Injection 2.1 in v13 (Dec. 2021)</li>
-<li>Integrated with Dnn DI in v13 (Dec. 2021)</li>
-<li>Created <a class="xref" href="../services/service-kits.html">ServiceKits</a> for v14 (June 2022)</li>
-<li>Added ServiceKitLight for custom DataSources in 2sxc 15</li>
-<li>Added ServiceKit16 for 2sxc 16</li>
+<li>Gallery feature implemented 2026-03</li>
 </ol>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/dependency-injection/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/docs/edit/link-tiles.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

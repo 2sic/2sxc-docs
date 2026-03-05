@@ -11,12 +11,21 @@ export function convertDocsTiles() {
 
   const tiles = document.querySelectorAll('div[docs-tiles] div');
   tiles.forEach(tile => {
-    const icon = tile.getAttribute('icon') || '';
-    const emoji = tile.getAttribute('emoji') || '';
-    const iconCss = !emoji ? `bi bi-${icon}` : '';
     const title = tile.getAttribute('title') || '';
     const link = tile.querySelector('a')?.getAttribute('href') || '#';
-    tile.classList.add('col'); //, 'card', 'h-100', 'text-center', 'position-relative');
+
+    // Figure out the icon, and if it's an emoji or a bootstrap icon
+    const icon = tile.getAttribute('icon') || '';
+    const iconIsEmoji = /\p{Extended_Pictographic}/u.test(icon);
+    const emoji = iconIsEmoji ? icon : '';
+    const iconCss = !iconIsEmoji ? `bi bi-${icon || 'link'}` : '';
+
+    // Make sure this div is now a proper bootstrap col
+    tile.classList.add('col');
+
+    // Construct the HTML which will make the tiles and everything clickable
+    // Note that this relies on some CSS, which is in the main.scss file,
+    // to make the entire card clickable, even though the <a> tag is only at the bottom
     tile.innerHTML = `
       <div class="card h-100 text-center position-relative">
         <div class="card-body d-flex flex-column justify-content-center align-items-center py-4">
