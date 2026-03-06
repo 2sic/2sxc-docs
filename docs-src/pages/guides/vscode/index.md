@@ -30,12 +30,20 @@ VSCode is amazing right out of the box, but to really be productive, you need to
 With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.
 
+### [Old Instructions WIP](#tab/old)
+
 > [!WARNING]
 > The C# DevKit extension is still quite new and evolving.
 > At the moment, various newer versions have issues which cause problems.
 > Because of this, ATM recommend manually downgrading the C# extension to version `2.63.32`.
 >
 > <img src="./assets/downgrade-csharp-extension.png" class="full-width" alt="Downgrade C# Extension" />
+
+### [New Instructions WIP](#tab/new)
+
+We just found out a better way in 2026 how to do this. Stay tuned 😉.
+
+---
 
 ## Configure an App for Razor IntelliSense
 
@@ -51,7 +59,7 @@ This is done by adding a `.sln` solution file and a `.csproj` project file.
 
 Add the following two files to the root of your app:
 
-**Template for the `/app.sln` file**
+### [Template for the `/app.sln` file](#tab/template-sln)
 
 ```text
 Microsoft Visual Studio Solution File, Format Version 12.00
@@ -76,13 +84,19 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+  GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
 ```
 
-**Template for the `/app.csproj` file**
+### [Template for the `/app.csproj` file](#tab/template-csproj/old)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -161,11 +175,62 @@ EndGlobal
 </Project>
 ```
 
-### More About the `.csproj` File
+### [Template for the `/app.csproj` file (new/WIP)](#tab/template-csproj/new)
+
+We're almost done with our new implementation.
+The new implementation will work with the latest C# DevKit without any issues, and it will be much easier to maintain.
+
+All you need is to import the new App-Extension here TODO:
+
+Now `app.csproj` will look approximately like this:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode -->
+
+  <!-- Best keep this file small and use imports from extensions/dotnet-project. -->
+
+  <!-- Import everything so it just magically works. -->
+  <Import Project="extensions\dotnet-project\all-in-one.import.csproj" />
+  <!-- Note: For fine-grained control, import the individual files instead of the all-in-one. -->
+
+</Project>
+```
+
+> [!TIP]
+> That's all you need with the new implementation - the `all-in-one.import.csproj` will do all the work for you.
+
+If you want to extend the `app.csproj` with your own settings, you can do that as well.
+Here's an example where we needed another DLL.
+
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode -->
+
+  <!-- Best keep this file small and use imports from extensions/dotnet-project. -->
+
+  <!-- Import everything so it just magically works. -->
+  <Import Project="extensions\dotnet-project\all-in-one.import.csproj" />
+  <!-- Note: For fine-grained control, import the individual files instead of the all-in-one. -->
+
+  <!-- Load other important DLLs which are not in the main bundle -->
+  <ItemGroup>
+    <Reference Include="$(PathBin)\System.Collections.Immutable.dll" />
+  </ItemGroup>
+</Project>
+```
+
+You can also import individual files instead of the all-in-one, if you want more control.
+Just have a look at that file and pick what you need.
+
+---
+
+## More About the `.csproj` File
 
 The following are some additional notes about the `.csproj` file, how it works and it's values.
 
-#### Detect Dnn or Oqtane
+### [Detect Dnn or Oqtane](#tab/detect-dnn-or-oqtane)
 
 At the top of the `.csproj` file, we detect if we're running in Dnn or Oqtane like this:
 
@@ -190,7 +255,7 @@ You can see it in action in things such as:
   </PropertyGroup>
 ```
 
-#### About PropertyGroup and ItemGroup
+### [About PropertyGroup and ItemGroup](#tab/about-propertygroup-and-itemgroup)
 
 In case you're not familiar with `.csproj` files, here's a quick overview:
 
@@ -199,7 +264,7 @@ In case you're not familiar with `.csproj` files, here's a quick overview:
 
 Both of these can have conditions, so you can define different settings for different situations.
 
-#### Target Framework and C# Version
+### [Target Framework and C# Version](#tab/target-framework-and-csharp-version)
 
 The `TargetFramework` is the .net Framework you are targeting.
 The value like `net472` or `net48` are called _target framework moniker_ or _TFM_.
@@ -216,7 +281,7 @@ Recommended values:
 * Dnn: `8.0` (Dnn 9.6.1+ using 2sxc 17 and Roslyn Compiler)
 * Oqtane: `latest` or `12.0` (Oqtane 5+)
 
-#### PathBin
+### [PathBin Variable](#tab/pathbin-variable)
 
 The `PathBin` variable is used to specify the path where the DLLs are.
 This allows us to use the same rules for Dnn and Oqtane, just with a different path to start from.
@@ -227,7 +292,7 @@ Here's what you should know:
   * in development built it places the DLLs in `\bin\Debug\net8.0` so the relative path is usually `..\..\..\bin\Debug\net8.0`
   * in production builds it places the DLLs in the root folder, so the relative path is usually `..\..\..`
 
-#### Ignoring Files for Polymorphism
+### [Ignoring Files for Polymorphism](#tab/ignoring-files-for-polymorphism)
 
 If you're working with Polymorphism then you have many of the same files, which confuses IntelliSense.
 For example, `/live` and `/staging` have the same files, and `/bs3`, `/bs4` and `/bs5` have the same files.
@@ -245,6 +310,8 @@ This is just an example to exclude `/live` as we're always working on `/staging`
     <EmbeddedResource Remove="live\**" />
   </ItemGroup>
 ```
+
+---
 
 ## GitIgnore Temporary Folders
 
