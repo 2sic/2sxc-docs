@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Create.HelloWorld.Index
 
 # Create Your First Hello World App Extension WIP
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 In this section, we'll create a simple "Hello World" App Extension to demonstrate the basics of extension development.
 
 ## Step 1: Create the Extension Folder

@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Index
 
 # App Extensions - Overview (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 App Extensions are a powerful way to extend the functionality of your 2sxc Apps.
 They allow you to add custom features, tools, and integrations that can enhance the capabilities of your applications.
 

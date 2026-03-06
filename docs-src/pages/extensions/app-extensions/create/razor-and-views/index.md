@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Create.RazorAndViews.Index
 
 # App Extensions - Razor and Views
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 Extensions can include custom Razor Views for re-use.
 
 > [!TIP]

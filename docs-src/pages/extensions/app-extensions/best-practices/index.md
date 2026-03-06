@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.BestPractices.Index
 
 # App Extensions - Best Practices (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 ## Testing in the Same App - Keep Test Code Separate
 
 In the App where you develop your extension, you'll also need code and data to test it.
