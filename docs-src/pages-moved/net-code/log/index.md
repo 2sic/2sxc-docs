@@ -2,4 +2,4 @@
 uid: NetCode.Logging.Index
 ---
 
-Moved to [](xref:NetCode.Sys.Logging)
+Moved to [](xref:ToSic.Sys.Logging)
