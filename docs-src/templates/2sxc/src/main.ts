@@ -8,7 +8,7 @@ import { lightboxForContextIllustration } from '../../shared-global/src/scripts/
 import "./main.scss";
 
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
-import { convertDocsTiles } from './docs-tiles';
+import { convertDocsTiles } from '../../shared-global/src/scripts/docs-tiles';
 
 // Log some version of this file so we see changes are being applied
 // console.log('2sxc main.ts ' + packageJson.version);
