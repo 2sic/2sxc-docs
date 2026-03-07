@@ -4,7 +4,7 @@ uid: Extensions.AppExtensions.Create.Index
 
 # App Extensions - Create Your Own (new v21 ⭐)
 
-### Get Started
+## Get Started
 
 <div docs-tiles>
   <div icon="globe" title="Create your first Hello-World Extension">
@@ -20,7 +20,7 @@ uid: Extensions.AppExtensions.Create.Index
   </div>
 </div>
 
-### Data Extensions
+## Data Extensions
 
 <div docs-tiles>
   <div icon="braces" title="Simple Data and Schema Extension">
@@ -32,7 +32,7 @@ uid: Extensions.AppExtensions.Create.Index
   </div>
 </div>
 
-### C# Code Extensions
+## C# Code Extensions
 
 <div docs-tiles>
   <div icon="braces" title="AppCode Extensions">
@@ -49,7 +49,7 @@ uid: Extensions.AppExtensions.Create.Index
 </div>
 
 
-### More
+## More
 
 <div docs-tiles>
   <div icon="lightbulb-fill" title="Best Practices and Tips">

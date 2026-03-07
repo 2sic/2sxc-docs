@@ -159,6 +159,8 @@ By understanding this build process, contributors can effectively maintain and e
 
 ## How to Repeat this Setup on another Project
 
+### [Step-by-Step Guide](#tab/step-by-step-guide)
+
 1. **Step 1: Set Up Project Folder**
    * When referencing `/docs-src/templates/[project]/src`, replace `[project]` with your actual project folder name.
    * Ensure the `/docs-src/templates/shared-global` folder exists.
@@ -170,7 +172,21 @@ By understanding this build process, contributors can effectively maintain and e
      * Add `"enableDebug": false` if it's not already present.
      * Under `scripts`, keep `build` and `dev`. You may delete unnecessary `import*` scripts.
 
-By following these steps, you can set up a documentation system for your project that mirrors the structure and functionality of the original setup. This allows for integrated documentation that includes both manually authored content and auto-generated documentation from your source code.
+By following these steps, you can set up a documentation system for your project
+that mirrors the structure and functionality of the original setup.
+This allows for integrated documentation that includes both manually authored
+content and auto-generated documentation from your source code.
+
+### [Master Copy of the Shared Setup](#tab/master-copy-of-the-shared-setup)
+
+> [!TIP]
+> To simplify things, this relies on a shared setup in `/docs-src/templates/shared-global` which is used by all projects.
+>
+> The master copy is in the 2sxc-docs project, but you can copy it 1:1 into your own project and adjust the configuration as needed.
+
+### [Readme for the Shared Setup](#tab/readme-for-the-shared-setup)
+
+[!include["readme"](~/templates/shared-global/readme.md)]
 
 ---
 
