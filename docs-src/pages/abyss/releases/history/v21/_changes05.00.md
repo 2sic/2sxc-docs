@@ -1,5 +1,5 @@
 
-### 2sxc v21.05.00 WIP (2026-03-11)
+### 2sxc v21.05.00 (2026-03-11)
 
 #### General Enhancements
 
