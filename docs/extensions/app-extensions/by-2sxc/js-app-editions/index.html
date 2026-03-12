@@ -125,8 +125,9 @@ It consists of 2 parts:</p>
 <p><strong>JS App Editions</strong> is also used by the <a class="xref" href="../angular-loader/index.html">Angular Loader</a>
 to load the Angular app from a local hot-build during development, while loading the production build from DNN for normal users.</p>
 </div>
-<h2 id="installation-and-use">Installation and Use</h2>
+<h2 id="installation">Installation</h2>
 <p>➡️ See <a class="xref" href="../../install/index.html">How to Install App Extensions</a></p>
+<h2 id="usage">Usage</h2>
 <p>Insert this code into your Razor view where you want to show the editions bar:</p>
 <pre><code class="lang-cshtml">@Html.Partial(&quot;./extensions/js-app-editions/Editions Bar.cshtml&quot;, new {
   Editions = &quot;live,staging,local&quot;
@@ -134,14 +135,18 @@ to load the Angular app from a local hot-build during development, while loading
 </code></pre>
 <p>Show the toolbar to select an edition - usually only for the superuser / developer</p>
 <img src="../../../../pages/extensions/app-extensions/by-2sxc/js-app-editions/assets/editions-bar.png" alt="JS App Editions Bar" class="full-width">
-<p>With this toolbar, you can select the edition you want to use for the current app. This will set an cookie so that the app knows which edition to load. In code you can then check which edition is active and adjust behavior accordingly.</p>
+<p>With this toolbar, you can select the edition you want to use for the current app.
+This will set an cookie so that the app knows which edition to load.
+In code you can then check which edition is active and adjust behavior accordingly.</p>
 <pre><code class="lang-cshtml">@inherits Custom.Hybrid.RazorTyped
 @using AppCode.Extensions.JsAppEditions
 
 @{
   var editionsHelper = GetService&lt;JsAppEditionService&gt;();
 
-  &lt;div class=&quot;alert alert-info&quot;&gt;Show &lt;strong&gt;@editionsHelper.CurrentEdition&lt;/strong&gt; Environment&lt;/div&gt;
+  &lt;div class=&quot;alert alert-info&quot;&gt;
+    Show &lt;strong&gt;@editionsHelper.CurrentEdition&lt;/strong&gt; Environment
+  &lt;/div&gt;
 
   if (MyUser.IsContentAdmin)
   {
@@ -152,10 +157,29 @@ to load the Angular app from a local hot-build during development, while loading
 }
 </code></pre>
 <img src="../../../../pages/extensions/app-extensions/by-2sxc/js-app-editions/assets/editions-bar-example.png" alt="JS App Editions Bar" class="full-width">
----
+<div class="TIP">
+<h5>Tip</h5>
+<p>Your Razor Code would usually now do something
+(just like the <a class="xref" href="../angular-loader/index.html">Angular Loader</a> does)
+to load a different JS file based on the edition.
+For example loading a local hot-build version of the app during development,
+and the production build from DNN for normal users.</p>
+</div>
+<hr>
+<h2 id="use-in-javascript">Use in JavaScript</h2>
+<p>In some scenarios the JavaScript should also know the edition.
+Either because you maybe want to use a different endpoint in staging vs production, or you want to show extra logging in the dev edition.</p>
+<p>You have two options</p>
+<ol>
+<li>Pass in the edition to the JavaScript code from Razor - for example using turnOn</li>
+<li>Retrieve the edition from the cookie in JavaScript</li>
+</ol>
+<p>As of now there is no sample code to do this,
+but you can check out the <a class="xref" href="../angular-loader/index.html">Angular Loader</a>
+for inspiration.</p>
 <h2 id="history">History</h2>
 <ol>
-<li>v01.00 - Initial release for 2sxc</li>
+<li>v01.00 - Initial release for 2sxc ca. 2026-03</li>
 </ol>
 <p>Shortlink: <a href="https://go.2sxc.org/ext-jsappeds">https://go.2sxc.org/ext-jsappeds</a></p>
 
