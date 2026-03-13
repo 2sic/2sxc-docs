@@ -6,53 +6,21 @@ uid: Extensions.AppExtensions.Create.Index
 
 ## Get Started
 
-<div docs-tiles>
-  <div icon="globe" title="Create your first Hello-World Extension">
-    <a href="xref:Extensions.AppExtensions.Create.HelloWorld.Index"></a>
-  </div>
-  
-  <div icon="input-cursor" title="Create an Input Field Extension">
-    <a href="xref:Extensions.AppExtensions.Create.InputField.Index"></a>
-  </div>
-
-  <div icon="code-square" title="Razor and Views Extensions">
-    <a href="xref:Extensions.AppExtensions.Create.RazorAndViews.Index"></a>
-  </div>
-</div>
+* [Create your first Hello-World Extension](xref:Extensions.AppExtensions.Create.HelloWorld.Index){title="icon:globe"}
+* [Create an Input Field Extension](xref:Extensions.AppExtensions.Create.InputField.Index){title="icon:input-cursor"}
+* [Razor and Views Extensions](xref:Extensions.AppExtensions.Create.RazorAndViews.Index){title="icon:code-square"}
 
 ## Data Extensions
 
-<div docs-tiles>
-  <div icon="braces" title="Simple Data and Schema Extension">
-    <a href="xref:Extensions.AppExtensions.Create.Data.Index"></a>
-  </div>
-
-  <div icon="funnel" title="Create a Visual-Query Extension">
-    <a href="xref:Extensions.AppExtensions.Create.VisualQuery.Index"></a>
-  </div>
-</div>
+* [Simple Data and Schema Extension](xref:Extensions.AppExtensions.Create.Data.Index){title="icon:braces"}
+* [Create a Visual-Query Extension](xref:Extensions.AppExtensions.Create.VisualQuery.Index){title="icon:funnel"}
 
 ## C# Code Extensions
 
-<div docs-tiles>
-  <div icon="braces" title="AppCode Extensions">
-    <a href="xref:Extensions.AppExtensions.Create.AppCode.Index"></a>
-  </div>
-
-  <div icon="box-arrow-up" title="DataSource Extension">
-    <a href="xref:Extensions.AppExtensions.Create.AppCode.DataSources"></a>
-  </div>
-
-  <div icon="cpu" title="C# Compiler Options">
-    <a href="xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions"></a>
-  </div>
-</div>
-
+* [AppCode Extensions](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:braces"}
+* [DataSource Extension](xref:Extensions.AppExtensions.Create.AppCode.DataSources){title="icon:box-arrow-up"}
+* [C# Compiler Options](xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions){title="icon:cpu"}
 
 ## More
 
-<div docs-tiles>
-  <div icon="lightbulb-fill" title="Best Practices and Tips">
-    <a href="xref:Extensions.AppExtensions.Create.AppCode.Index"></a>
-  </div>
-</div>
+* [Best Practices and Tips](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:lightbulb-fill"}

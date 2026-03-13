@@ -35,27 +35,11 @@ This is how your code would get a service:
 
 ## Discover More
 
-<div docs-tiles>
-  <div icon="file-code" title="Read more about GetService in your Code">
-    <a href="xref:NetCode.DynamicCode.GetService"></a>
-  </div>
-  
-  <div icon="journal-code" title="Check out the GetService API">
-    <a href="xref:Custom.Hybrid.Razor12.GetService*"></a>
-  </div>
-
-  <div icon="journal-code" title="Typical 2sxc Services you May Need">
-    <a href="xref:ToSic.Sxc.Services"></a>
-  </div>
-
-  <div icon="☢️" title="Dependency Injection in Dnn Modules and Skins">
-    <a href="xref:NetCode.PlatformApi.Dnn.DependencyInjection"></a>
-  </div>
-
-  <div icon="🩸" title="Dependency Injection in Oqtane">
-    <a href="xref:NetCode.PlatformApi.Oqtane.DependencyInjection"></a>
-  </div>
-</div>
+* [Read more about GetService in your Code](xref:NetCode.DynamicCode.GetService){title="icon:file-code"}
+* [Check out the GetService API](xref:Custom.Hybrid.Razor12.GetService*){title="icon:journal-code"}
+* [Typical 2sxc Services you May Need](xref:ToSic.Sxc.Services){title="icon:journal-code"}
+* [Dependency Injection in Dnn Modules and Skins](xref:NetCode.PlatformApi.Dnn.DependencyInjection){title="icon:☢️"}
+* [Dependency Injection in Oqtane](xref:NetCode.PlatformApi.Oqtane.DependencyInjection){title="icon:🩸"}
 
 ## FAQ
 
