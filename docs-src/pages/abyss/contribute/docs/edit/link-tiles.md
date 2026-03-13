@@ -81,8 +81,8 @@ This will then look like this:
 
 1. Always start with the wrapper `<div docs-tiles>`.
 1. Then add a `<div>` for each tile, with the following attributes:
-    - `icon` - the name of the [bootstrap icon](https://icons.getbootstrap.com/) to use, or an emoji
-    - `title` - the title to show on the tile
+    * `icon` - the name of the [bootstrap icon](https://icons.getbootstrap.com/) to use, or an emoji
+    * `title` - the title to show on the tile
 1. Inside the tile div, add an `<a>` tag with the `href` pointing to the page you want to link to.
 
 ## Implementation Details
