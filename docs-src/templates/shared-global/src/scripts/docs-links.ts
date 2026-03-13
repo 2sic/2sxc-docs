@@ -1,42 +1,39 @@
 
 // Converts link syntax inside <div docs-links> into a tile layout
 export function convertDocsLinks() {
-    //Find all wrappers using the syntax
-    const linkWrappers = document.querySelectorAll('div[docs-links]');
-    if(!linkWrappers) 
+    const links = document.querySelectorAll('ul li a[title^="icon:"]');
+    if (!links.length)
         return;
 
-    linkWrappers.forEach(linkWrapper => {
-        // Add bootstrap classes
-        linkWrapper.classList.add('row', 'row-cols-1', 'row-cols-sm-2', 'row-cols-md-3', 'g-3', 'docs-tiles');
-
-    });
-
-    // Find all elements inside the wrappers
-    const links = document.querySelectorAll('div[docs-links] a');
-
     links.forEach(link => {
-        const wrapper = link.parentElement as HTMLElement;
+        const listItem = link.closest('li');
+        const list = link.closest('ul');
 
+        if (!listItem || !list)
+            return;
+
+        // Make sure the list gets the needed classes
+        list.classList.add('row', 'row-cols-1', 'row-cols-sm-2', 'row-cols-md-3', 'g-3', 'docs-tiles', 'list-unstyled');
 
         // Get the title
-        const title = link.textContent || '';
-        
-        // Get the link
+        const title = link.textContent?.trim() || '';
+
+        // Get the target link
         const href = link.getAttribute('href') || '#';
 
-        // Get the icon, and determine if it's an emoji or a bootstrap icon
-        const icon = wrapper?.getAttribute('icon') || link.getAttribute('icon') || '';
+        // Read the icon from the title "icon:file-code"
+        const iconTitle = link.getAttribute('title') || '';
+        const icon = iconTitle.startsWith('icon:') ? iconTitle.substring(5) : '';
+
+        // Is icon emoji or bootstrap icon?
         const iconIsEmoji = /\p{Extended_Pictographic}/u.test(icon);
         const emoji = iconIsEmoji ? icon : '';
         const iconCss = !iconIsEmoji ? `bi bi-${icon || 'link'}` : '';
 
-        // Create the column wrapper
-        const col = document.createElement('div');
-        col.classList.add('col');
+        listItem.classList.add('col');
 
-        // Build the title card
-        col.innerHTML = `
+        // Build Html for the tile
+        listItem.innerHTML = `
             <div class="card h-100 text-center position-relative">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center py-4">
                     <icon class="${iconCss} fs-1 text-primary mb-2">${emoji}</icon>
@@ -45,7 +42,5 @@ export function convertDocsLinks() {
                 <a href="${href}"></a>
             </div>
         `;
-        // Replace the original link with the new column
-        wrapper?.replaceWith(col);
     });
 }
