@@ -4,6 +4,26 @@ uid: Abyss.Contribute.Docs.Edit.LinkTiles
 
 # Link Tiles
 
+Testing a new model:
+
+@2rb please
+
+1. try to create another docs-titles converter which uses the same mechanics as the `<div docs-tiles>` but works with this syntax:
+2. it should find all and convert
+3. make sure that they have the correct wrapper around it.
+
+* [Read more about GetService in your Code](xref:NetCode.DynamicCode.GetService){title="icon:file-code"}
+* [Check out the GetService API](xref:Custom.Hybrid.Razor12.GetService*){title="icon:journal-code"}
+* [Typical 2sxc Services you May Need](xref:ToSic.Sxc.Services){title="icon:journal-code"}
+* [Dependency Injection in Dnn Modules and Skins](xref:NetCode.PlatformApi.Dnn.DependencyInjection){title="icon:☢️"}
+* [Dependency Injection in Oqtane](xref:NetCode.PlatformApi.Oqtane.DependencyInjection){title="icon:🩸"}
+
+<!-- 
+[complex - not working ignore for now](xref:NetCode.DynamicCode.GetService){.abc .icon-xyz #someId title="icon-❤️‍🩹" xyz="abc" data-icon="abcdefg"}
+-->
+
+---
+
 Starting in 2026-03 (new ⭐) we introduced the feature to add link tiles,
 showing an icon/emoji and a title, which link to another page.
 
