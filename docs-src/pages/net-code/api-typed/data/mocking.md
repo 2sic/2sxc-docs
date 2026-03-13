@@ -74,7 +74,7 @@ But there are issues with this:
 1. It requires a clear way to find the dummy-item in the list of all items, and this marker should never change
 1. The list of all data always contains some dummy data, which must be filtered out in other scenarios
 
-### Option 3: Use Mock Data
+### Option 3: Use Mock Data (new v21.03)
 
 A very popular way to handle this is using mock data.
 Here's an example:
@@ -82,33 +82,27 @@ Here's an example:
 ```razor
 @{
   var building = expectedBuilding
-    ?? AsItem(new {
+    ?? Kit.Convert.ToMockItem(new {
       Title = "Default Building",
       Description = "This is a default building",
       Image = "file:72",
-    }, mock: true);
+    });
 }
 <h1>@expectedBuilding.Title</h1>
 ```
-
-Note the `mock: true` in the `AsItem(new {...}, mock: true)`.
-Without this parameter, 2sxc would throw an error.
-The reason is that 2sxc wants to make sure that you are aware that you are using mock data.
-So _without_ the `mock: true`, 2sxc will only accept Entity-like objects in `AsItem()`.
-With the `mock: true` it will also accept any other object, and will then create a mock-entity from it.
 
 ## Basic Mock Data
 
 The mock data API is quite powerful, so let's see some advanced examples:
 
 ```c#
-var m = AsItem(new {
+var m = Kit.Convert.ToMockItem(new {
     Id = 99999,               // The Id will be available on m.Id
     Guid = Guid.NewGuid(),    // The Guid will be available on m.Guid
     Title = "Dummy Item",     // The Title will be available on m.Title
     SomeNumber = 42,          // eg. for m.Int("SomeNumber") or m.Float("SomeNumber")
     SomeString = "Hello",     // eg. for m.String("SomeString")
-  }, mock: true);
+  });
 ```
 
 ## Mock Data with Sub-Objects
@@ -117,7 +111,7 @@ Items can have sub-objects such as Children or the special `Presentation` object
 Here are some examples:
 
 ```c#
-var m = AsItem(new {
+var m = Kit.Convert.ToMockItem(new {
     Presentation = new {                  // m.Presentation
       Highlight = true,                   // m.Presentation.Bool("Highlight")
       GalleryMode = "tiles",              // m.Presentation.String("GalleryMode")
@@ -134,7 +128,7 @@ var m = AsItem(new {
         Title = "Tag 2",
       },
     }
-  }, mock: true);
+  });
 ```
 
 ## Mock Parents
@@ -145,7 +139,7 @@ This is the opposite of `.Children(...)` which finds children.
 If your code expects parents, you can mock it like this:
 
 ```c#
-var m = AsItem(new {
+var m = Kit.Convert.ToMockItem(new {
     Parents = new object[] {                // foreach(var p in m.Parents("tags")
       new {
         Title = "How to get your dream-home",
@@ -172,7 +166,7 @@ var m = AsItem(new {
       },
 
     }
-  }, mock: true);
+  });
 ```
 
 At first, this seems similar to the `Children` example, but there is more too it.
@@ -193,7 +187,7 @@ Links can be values such as `https://...` or internal references such as `page:1
 Note that the IDs in the examples below must of course exist on your system.
 
 ```c#
-var m = AsItem(new {
+var m = Kit.Convert.ToMockItem(new {
     // m.Url("Website") and m.String("Website") both return the same
     Website = "https://www.2sxc.org",
     // m.String("ListPage") will contain `page:123`
@@ -202,7 +196,7 @@ var m = AsItem(new {
     // m.String("Logo") will contain `file:50203`
     // m.Url("Logo") will contain the full url to the file
     Logo = "file:50203",
-  }, mock: true);
+  });
 ```
 
 ## Mock Files
@@ -213,12 +207,12 @@ Typed Items can reference one or many files, using these APIs:
 * `thing.Folder("fieldName")` to get an `IFolder` containing zero or more files and folders
 
 ```c#
-var m = AsItem(new {
+var m = Kit.Convert.ToMockItem(new {
     // m.String("Logo") will contain `file:50203`
     // m.Url("Logo") will contain the full url to the file
     // m.File("Logo") will contain the IFile object to this file
     Logo = "file:50203",
-  }, mock: true);
+  });
 ```
 
 > [!TIP]

@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Technical.Index
 
 # App Extensions - Technical Docs (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 This should provide you with some background information how App Extensions work technically.
 
 ## App Extensions are per App

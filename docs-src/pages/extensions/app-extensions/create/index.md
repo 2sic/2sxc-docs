@@ -4,43 +4,55 @@ uid: Extensions.AppExtensions.Create.Index
 
 # App Extensions - Create Your Own (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
+## Get Started
 
-For first steps, let's create a simple Input Type extension.
+<div docs-tiles>
+  <div icon="globe" title="Create your first Hello-World Extension">
+    <a href="xref:Extensions.AppExtensions.Create.HelloWorld.Index"></a>
+  </div>
+  
+  <div icon="input-cursor" title="Create an Input Field Extension">
+    <a href="xref:Extensions.AppExtensions.Create.InputField.Index"></a>
+  </div>
 
-TODO:
+  <div icon="code-square" title="Razor and Views Extensions">
+    <a href="xref:Extensions.AppExtensions.Create.RazorAndViews.Index"></a>
+  </div>
+</div>
 
-## Best Practices
+## Data Extensions
 
-### Testing in the Same App - Keep Test Code Separate
+<div docs-tiles>
+  <div icon="braces" title="Simple Data and Schema Extension">
+    <a href="xref:Extensions.AppExtensions.Create.Data.Index"></a>
+  </div>
 
-In the App where you develop your extension, you'll also need code and data to test it.
-To keep things clean, we recommend that you
+  <div icon="funnel" title="Create a Visual-Query Extension">
+    <a href="xref:Extensions.AppExtensions.Create.VisualQuery.Index"></a>
+  </div>
+</div>
 
-1. clearly name test things as such
-1. and keep them out of the exports
+## C# Code Extensions
 
-For example when creating a code extension, you would have this structure:
+<div docs-tiles>
+  <div icon="braces" title="AppCode Extensions">
+    <a href="xref:Extensions.AppExtensions.Create.AppCode.Index"></a>
+  </div>
 
-```text
-/AppCode
-  /Extensions
-    /MyCodeExtension
-      SomeCode.cs (things to have in the export)
-  /Tests
-    SomeTestService.cs
-    ... (other test code, not to be exported)
-/extensions
-  /my-code-extension
-    extension.json
-Test Functionality.cshtml
-... (other testing files)
-```
+  <div icon="box-arrow-up" title="DataSource Extension">
+    <a href="xref:Extensions.AppExtensions.Create.AppCode.DataSources"></a>
+  </div>
+
+  <div icon="cpu" title="C# Compiler Options">
+    <a href="xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions"></a>
+  </div>
+</div>
+
+
+## More
+
+<div docs-tiles>
+  <div icon="lightbulb-fill" title="Best Practices and Tips">
+    <a href="xref:Extensions.AppExtensions.Create.AppCode.Index"></a>
+  </div>
+</div>

@@ -133,12 +133,29 @@ We found a fix - pls update your <code>app.sln</code> to the newest sample below
 </ol>
 <p>With these preparations, VS-Code is able to assist in basic C# code.
 It can't provide IntelliSense for 2sxc specific APIs yet, so for that, read on.</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_old" role="tab" aria-controls="tabpanel_1_old" data-tab="old" tabindex="0" aria-selected="true">Old Instructions WIP</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_new" role="tab" aria-controls="tabpanel_1_new" data-tab="new" tabindex="-1">New Instructions WIP</a>
+</li>
+</ul>
+<section id="tabpanel_1_old" role="tabpanel" data-tab="old">
+
 <div class="WARNING">
 <h5>Warning</h5>
 <p>The C# DevKit extension is still quite new and evolving.
 At the moment, various newer versions have issues which cause problems.
 Because of this, ATM recommend manually downgrading the C# extension to version <code>2.63.32</code>.</p>
 <img src="../../pages/guides/vscode/assets/downgrade-csharp-extension.png" class="full-width" alt="Downgrade C# Extension">
+</div>
+</section>
+<section id="tabpanel_1_new" role="tabpanel" data-tab="new" aria-hidden="true" hidden="hidden">
+
+<p>We just found out a better way in 2026 how to do this. Stay tuned 😉.</p>
+</section>
 </div>
 <h2 id="configure-an-app-for-razor-intellisense">Configure an App for Razor IntelliSense</h2>
 <p>Apps are usually opened as a folder in VS-Code.
@@ -152,7 +169,20 @@ But be aware that it can't help with <code>dynamic</code> code.
 To get the full benefit, use <a class="xref" href="../../net-code/api-typed/index.html">typed code</a>.</p>
 </div>
 <p>Add the following two files to the root of your app:</p>
-<p><strong>Template for the <code>/app.sln</code> file</strong></p>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_template-sln" role="tab" aria-controls="tabpanel_2_template-sln" data-tab="template-sln" tabindex="0" aria-selected="true">Template for the <code>/app.sln</code> file</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_template-csproj_old" role="tab" aria-controls="tabpanel_2_template-csproj_old" data-tab="template-csproj" data-condition="old" tabindex="-1">Template for the <code>/app.csproj</code> file</a>
+</li>
+<li role="presentation" aria-hidden="true" hidden="hidden">
+<a href="#tabpanel_2_template-csproj_new" role="tab" aria-controls="tabpanel_2_template-csproj_new" data-tab="template-csproj" data-condition="new" tabindex="-1">Template for the <code>/app.csproj</code> file (new/WIP)</a>
+</li>
+</ul>
+<section id="tabpanel_2_template-sln" role="tabpanel" data-tab="template-sln">
+
 <pre><code class="lang-text">Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
@@ -175,12 +205,20 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7A078F-99D5-4EF4-8EC0-C6B920FE679C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+  GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
 </code></pre>
-<p><strong>Template for the <code>/app.csproj</code> file</strong></p>
+</section>
+<section id="tabpanel_2_template-csproj_old" role="tabpanel" data-tab="template-csproj" data-condition="old" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk.Web&quot;&gt;
   &lt;!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode --&gt;
   &lt;!-- Template v2024-06-19. If you have issues, try getting a newer copy from the url above --&gt;
@@ -256,9 +294,71 @@ EndGlobal
 
 &lt;/Project&gt;
 </code></pre>
-<h3 id="more-about-the-csproj-file">More About the <code>.csproj</code> File</h3>
+</section>
+<section id="tabpanel_2_template-csproj_new" role="tabpanel" data-tab="template-csproj" data-condition="new" aria-hidden="true" hidden="hidden">
+
+<p>We're almost done with our new implementation.
+The new implementation will work with the latest C# DevKit without any issues, and it will be much easier to maintain.</p>
+<p>All you need is to import the new App-Extension here TODO:</p>
+<p>Now <code>app.csproj</code> will look approximately like this:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk.Web&quot;&gt;
+  &lt;!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode --&gt;
+
+  &lt;!-- Best keep this file small and use imports from extensions/dotnet-project. --&gt;
+
+  &lt;!-- Import everything so it just magically works. --&gt;
+  &lt;Import Project=&quot;extensions\dotnet-project\all-in-one.import.csproj&quot; /&gt;
+  &lt;!-- Note: For fine-grained control, import the individual files instead of the all-in-one. --&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>That's all you need with the new implementation - the <code>all-in-one.import.csproj</code> will do all the work for you.</p>
+</div>
+<p>If you want to extend the <code>app.csproj</code> with your own settings, you can do that as well.
+Here's an example where we needed another DLL.</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk.Web&quot;&gt;
+  &lt;!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode --&gt;
+
+  &lt;!-- Best keep this file small and use imports from extensions/dotnet-project. --&gt;
+
+  &lt;!-- Import everything so it just magically works. --&gt;
+  &lt;Import Project=&quot;extensions\dotnet-project\all-in-one.import.csproj&quot; /&gt;
+  &lt;!-- Note: For fine-grained control, import the individual files instead of the all-in-one. --&gt;
+
+  &lt;!-- Load other important DLLs which are not in the main bundle --&gt;
+  &lt;ItemGroup&gt;
+    &lt;Reference Include=&quot;$(PathBin)\System.Collections.Immutable.dll&quot; /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;
+</code></pre>
+<p>You can also import individual files instead of the all-in-one, if you want more control.
+Just have a look at that file and pick what you need.</p>
+</section>
+</div>
+<h2 id="more-about-the-csproj-file">More About the <code>.csproj</code> File</h2>
 <p>The following are some additional notes about the <code>.csproj</code> file, how it works and it's values.</p>
-<h4 id="detect-dnn-or-oqtane">Detect Dnn or Oqtane</h4>
+<div class="tabGroup" id="tabgroup_3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_3_detect-dnn-or-oqtane" role="tab" aria-controls="tabpanel_3_detect-dnn-or-oqtane" data-tab="detect-dnn-or-oqtane" tabindex="0" aria-selected="true">Detect Dnn or Oqtane</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_about-propertygroup-and-itemgroup" role="tab" aria-controls="tabpanel_3_about-propertygroup-and-itemgroup" data-tab="about-propertygroup-and-itemgroup" tabindex="-1">About PropertyGroup and ItemGroup</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_target-framework-and-csharp-version" role="tab" aria-controls="tabpanel_3_target-framework-and-csharp-version" data-tab="target-framework-and-csharp-version" tabindex="-1">Target Framework and C# Version</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_pathbin-variable" role="tab" aria-controls="tabpanel_3_pathbin-variable" data-tab="pathbin-variable" tabindex="-1">PathBin Variable</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_ignoring-files-for-polymorphism" role="tab" aria-controls="tabpanel_3_ignoring-files-for-polymorphism" data-tab="ignoring-files-for-polymorphism" tabindex="-1">Ignoring Files for Polymorphism</a>
+</li>
+</ul>
+<section id="tabpanel_3_detect-dnn-or-oqtane" role="tabpanel" data-tab="detect-dnn-or-oqtane">
+
 <p>At the top of the <code>.csproj</code> file, we detect if we're running in Dnn or Oqtane like this:</p>
 <pre><code class="lang-xml">  &lt;!-- First: Detect if it's running in Dnn, Oqtane-Production or Oqtane-Dev --&gt;
   &lt;PropertyGroup&gt;
@@ -276,14 +376,18 @@ You can see it in action in things such as:</p>
     &lt;TargetFramework&gt;net472&lt;/TargetFramework&gt;
   &lt;/PropertyGroup&gt;
 </code></pre>
-<h4 id="about-propertygroup-and-itemgroup">About PropertyGroup and ItemGroup</h4>
+</section>
+<section id="tabpanel_3_about-propertygroup-and-itemgroup" role="tabpanel" data-tab="about-propertygroup-and-itemgroup" aria-hidden="true" hidden="hidden">
+
 <p>In case you're not familiar with <code>.csproj</code> files, here's a quick overview:</p>
 <ul>
 <li><code>PropertyGroup</code> is used to define variables which are used later in the file</li>
 <li><code>ItemGroup</code> is used to define lists of items, like files, references, etc.</li>
 </ul>
 <p>Both of these can have conditions, so you can define different settings for different situations.</p>
-<h4 id="target-framework-and-c-version">Target Framework and C# Version</h4>
+</section>
+<section id="tabpanel_3_target-framework-and-csharp-version" role="tabpanel" data-tab="target-framework-and-csharp-version" aria-hidden="true" hidden="hidden">
+
 <p>The <code>TargetFramework</code> is the .net Framework you are targeting.
 The value like <code>net472</code> or <code>net48</code> are called <em>target framework moniker</em> or <em>TFM</em>.
 You can find a list of them on the <a href="https://learn.microsoft.com/en-us/dotnet/standard/frameworks">Microsoft Docs</a>.
@@ -299,7 +403,9 @@ Recommended values:</p>
 <li>Dnn: <code>8.0</code> (Dnn 9.6.1+ using 2sxc 17 and Roslyn Compiler)</li>
 <li>Oqtane: <code>latest</code> or <code>12.0</code> (Oqtane 5+)</li>
 </ul>
-<h4 id="pathbin">PathBin</h4>
+</section>
+<section id="tabpanel_3_pathbin-variable" role="tabpanel" data-tab="pathbin-variable" aria-hidden="true" hidden="hidden">
+
 <p>The <code>PathBin</code> variable is used to specify the path where the DLLs are.
 This allows us to use the same rules for Dnn and Oqtane, just with a different path to start from.
 Here's what you should know:</p>
@@ -312,7 +418,9 @@ Here's what you should know:</p>
 </ul>
 </li>
 </ul>
-<h4 id="ignoring-files-for-polymorphism">Ignoring Files for Polymorphism</h4>
+</section>
+<section id="tabpanel_3_ignoring-files-for-polymorphism" role="tabpanel" data-tab="ignoring-files-for-polymorphism" aria-hidden="true" hidden="hidden">
+
 <p>If you're working with Polymorphism then you have many of the same files, which confuses IntelliSense.
 For example, <code>/live</code> and <code>/staging</code> have the same files, and <code>/bs3</code>, <code>/bs4</code> and <code>/bs5</code> have the same files.
 So intellisense might find the same class in multiple places, and show warnings.</p>
@@ -326,6 +434,8 @@ This is just an example to exclude <code>/live</code> as we're always working on
     &lt;EmbeddedResource Remove=&quot;live\**&quot; /&gt;
   &lt;/ItemGroup&gt;
 </code></pre>
+</section>
+</div>
 <h2 id="gitignore-temporary-folders">GitIgnore Temporary Folders</h2>
 <p>Add these lines to your <code>.gitignore</code> file to prevent temporary files from being added to your repository:</p>
 <pre><code class="lang-text">.vs/

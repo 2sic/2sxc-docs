@@ -14,7 +14,7 @@ uid: NetCode.DataSources.Custom.DataBuilder
 
 Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where `DataBuilder.Entity(...)` helps.
 
-Just fyi: Here are the [API docs](xref:ToSic.Eav.Data.IDataBuilder.Entity*). There is also an `Entities` for multiple Entities.
+Just fyi: Here are the [API docs](xref:ToSic.Eav.Data.IDataAssembler.Entity*). There is also an `Entities` for multiple Entities.
 
 ## How the DataBuilder is added
 

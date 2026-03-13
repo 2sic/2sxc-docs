@@ -19,4 +19,5 @@ Todo: explain how to use this extension, with code samples and screenshots
 
 1. todo
 
-Shortlink: <https://go.2sxc.org/ext-radmin>
+<!-- fyi: shortlink here does not start with ext-, because I think we'll use radmin a lot, so it's a first-class citizen -->
+Shortlink: <https://go.2sxc.org/radmin>

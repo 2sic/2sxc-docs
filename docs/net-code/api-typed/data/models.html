@@ -288,16 +288,16 @@ var product = As&lt;Product&gt;(maybeNull) ?? alternative;
 
 // Convert any item into a single strong-typed object
 // Will return an empty Product object if the item is null
-var product = As&lt;Product&gt;(maybeNull, mock: true);
+var product = As&lt;Product&gt;(maybeNull) ?? Kit.Convert.ToMock&lt;Product&gt;(null);
 
 // Convert any item into a single strong-typed object
 // Will wrap the item to simulate a strong-typed object
-var product = As&lt;Product&gt;(new { Title = &quot;hello&quot;, Color = &quot;green&quot; }, mock: true);
+var product = Kit.Convert.ToMock&lt;Product&gt;(new { Title = &quot;hello&quot;, Color = &quot;green&quot; });
 
 // Convert any item into a list of strong-typed objects
 // Use a mock object as fallback
 var products = AsList&lt;Product&gt;(maybeNull)
-  ?? As&lt;Product&gt;(new { Title = &quot;hello&quot;, Color = &quot;green&quot; }, mock: true);
+  ?? new Product[] { Kit.Convert.ToMock&lt;Product&gt;(new { Title = &quot;hello&quot;, Color = &quot;green&quot; }) };
 
 // convert a list of items into a list of strong-typed objects
 var products = AsList&lt;Product&gt;(MyItems);

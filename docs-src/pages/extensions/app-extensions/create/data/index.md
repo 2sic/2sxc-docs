@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Create.Data.Index
 
 # App Extensions - Data and Schema (ContentType)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 Extensions can include custom data and schema (ContentType) definitions which are either used by the extension itself or can be used by the App as a whole.
 
 > [!TIP]

@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Install.Upgrade
 
 # How to Upgrade App Extensions
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 App Extensions can be upgraded quickly and easily.
 It's actually so easy, that we don't have to say much about it.
 
