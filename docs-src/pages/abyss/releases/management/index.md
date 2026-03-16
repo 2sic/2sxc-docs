@@ -10,9 +10,12 @@ For people who professionaly work with 2sxc it's useful to know how we release i
 
 All our Releases are published here:
 
-1. [Github](https://github.com/2sic/2sxc/releases) for Dnn and Oqtane
-1. [NuGet](https://www.nuget.org/packages?q=2sxc) for Oqtane releases
-1. [Oqtane.net](https://www.oqtane.net/) for Oqtane Auto-Installer
+* [Github](https://github.com/2sic/2sxc/releases){title="icon:github"}
+  for Dnn and Oqtane
+* [NuGet](https://www.nuget.org/packages?q=2sxc){title="icon:box"}
+  for Oqtane releases
+* [Oqtane.net](https://www.oqtane.net/){title="icon:cloud-download"}
+  for Oqtane Auto-Installer
 
 ## Release Frequency
 

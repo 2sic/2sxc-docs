@@ -16,11 +16,7 @@ Watch the video:
 
 ## Let's See Code
 
-<div docs-tiles>
-  <div icon="code" title="Get the Demo Module Container">
-    <a href="https://github.com/2sxc-dev/dnn-container-metadata"></a>
-  </div>
-</div>
+* [Get the Demo Module Container](https://github.com/2sxc-dev/dnn-container-metadata){title="icon:code"}
 
 ---
 

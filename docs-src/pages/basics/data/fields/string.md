@@ -17,12 +17,15 @@ The basic **string** field doesn't have any features, since all the features are
 
 ## Sub-Types of String Fields
 
-1. [string-default](xref:Basics.Data.Fields.String-Default) - simple one or multi-line inputs
-1. [drop-down](xref:Basics.Data.Fields.String-Dropdown) for simple dropdowns
-1. [drop-down-query](xref:Basics.Data.Fields.String-Dropdown-Query) for dropdowns which retrieve the data from a server
-1. [wysiwyg](xref:Basics.Data.Fields.String-Wysiwyg)
-1. [font-icon-picker](xref:Basics.Data.Fields.String-Font-Icon-Picker)
-1. [url-path](xref:Basics.Data.Fields.String-Url-Path)
+* [string-default](xref:Basics.Data.Fields.String-Default){title="icon:font"}
+  simple one or multi-line inputs
+* [drop-down](xref:Basics.Data.Fields.String-Dropdown){title="icon:chevron-down"}
+  for simple dropdowns
+* [drop-down-query](xref:Basics.Data.Fields.String-Dropdown-Query){title="icon:database"}
+  for dropdowns which retrieve the data from a server
+* [wysiwyg](xref:Basics.Data.Fields.String-Wysiwyg){title="icon:journal-text"}
+* [font-icon-picker](xref:Basics.Data.Fields.String-Font-Icon-Picker){title="icon:emoji-smile"}
+* [url-path](xref:Basics.Data.Fields.String-Url-Path){title="icon:link"}
 
 ## Shared Settings
 

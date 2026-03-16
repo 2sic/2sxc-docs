@@ -3,12 +3,10 @@ import { Xref } from '../../shared-global/src/scripts/xref/xref';
 import { docReady } from '../../shared-global/src/scripts/utils/docready';
 import { configureLightboxes } from '../../shared-global/src/scripts/images';
 import { setVersionButtonLink } from '../../shared-global/src/scripts/versions';
-import packageJson from '../../../package.json';
 import { lightboxForContextIllustration } from '../../shared-global/src/scripts/context-illustrations';
 import "./main.scss";
 
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
-import { convertDocsTiles } from '../../shared-global/src/scripts/docs-tiles';
 import { convertDocsLinks } from '../../shared-global/src/scripts/docs-links';
 
 // Log some version of this file so we see changes are being applied
@@ -49,6 +47,5 @@ docReady(function() {
   // typically to the right of the introduction content
   lightboxForContextIllustration();
 
-  convertDocsTiles();
   convertDocsLinks();
 });

@@ -11,9 +11,9 @@ uid: Basics.Images.Index
 
 Images are a crucial part of every website and CMS. You should learn about:
 
-1. [](xref:Tut.Img.Formats)
-1. [Guide how to use the Image Service](xref:Basics.Images.Guide.Index)
-1. [Image Resizing](xref:Basics.ImageResizer.Index)
+* [Image Formats](xref:Tut.Img.Formats){title="icon:image"}
+* [Guide how to use the Image Service](xref:Basics.Images.Guide.Index){title="icon:journal-text"}
+* [Image Resizing](xref:Basics.ImageResizer.Index){title="icon:aspect-ratio"}
 
 
 ---

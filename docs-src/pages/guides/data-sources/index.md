@@ -11,21 +11,23 @@ This guide will help you understand and better use DataSources.
 DataSources are either a source providing fresh data, or helpers which transform data.
 To learn the basics, you should:
 
-1. Watch the video [DataSources in 2sxc](https://www.youtube.com/watch?v=8Q4Z2X6ZQZo)
-
-1. Check out the [List of all DataSource Objects](xref:Basics.Query.DataSources.Index)
-
-1. Start playing with [Visual Query](xref:Basics.Query.Index)
+* [DataSources in 2sxc](https://www.youtube.com/watch?v=8Q4Z2X6ZQZo){title="icon:play-circle"}
+  watch the video
+* [List of all DataSource Objects](xref:Basics.Query.DataSources.Index){title="icon:list-ul"}
+  overview of all available DataSource objects
+* [Visual Query](xref:Basics.Query.Index){title="icon:diagram-3"}
+  start playing with Visual Query
 
 ## Create Your Own
 
 2sxc 16 makes creating your own DataSources much easier. To learn more, you should:
 
-1. Watch the video [DataSources in 2sxc](https://www.youtube.com/watch?v=8Q4Z2X6ZQZo)
-
-1. Look at live code in the [DataSource Tutorials](xref:Tut.DynamicDataSources)
-
-1. Continue with the [Custom DataSource Guide](xref:NetCode.DataSources.Custom.Guide.Index)
+* [DataSources in 2sxc](https://www.youtube.com/watch?v=8Q4Z2X6ZQZo){title="icon:play-circle"}
+  watch the video
+* [DataSource Tutorials](xref:Tut.DynamicDataSources){title="icon:code-slash"}
+  look at live code examples
+* [Custom DataSource Guide](xref:NetCode.DataSources.Custom.Guide.Index){title="icon:gear"}
+  continue with the custom DataSource guide
 
 ---
 

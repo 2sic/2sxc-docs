@@ -20,10 +20,13 @@ The Content-Type will define what fields exist, what is required and what order 
 
 ## Where are Content-Types
 
-* [App Content-Types](xref:Basics.Data.ContentTypes.App) - this is the default, these Types are part of an App
-* [App Shared Content-Types](xref:Basics.Data.ContentTypes.Shared) - for advanced use cases
-* [System Content-Types](xref:Basics.Data.ContentTypes.System) - included in the default installation
-* [Global Shared Content-Types](xref:Basics.Data.ContentTypes.Global) - for very advanced use cases
+* [App Content-Types](xref:Basics.Data.ContentTypes.App){title="icon:file-code"}
+  this is the default, these Types are part of an App
+* [App Shared Content-Types](xref:Basics.Data.ContentTypes.Shared){title="icon:file-code"}
+  for advanced use cases
+* [System Content-Types](xref:Basics.Data.ContentTypes.System){title="icon:file-code"}
+  included in the default installation
+* [Global Shared Content-Types](xref:Basics.Data.ContentTypes.Global){title="icon:file-code"}
 
 ## What's Defined in a Content-Type?
 
@@ -102,13 +105,17 @@ Content-Types have a _Scope_. Read about it [](xref:Basics.Data.Scopes)
 
 ## APIs
 
-* [](xref:ToSic.Eav.Data) Namespace has almost everything you see here
-* [](xref:ToSic.Eav.Data.IContentType) defines what fields exist, it's the ContentType / Schema
-* [](xref:ToSic.Eav.Data.IContentTypeAttribute)
-	contains the definition of an attribute
-* [](xref:ToSic.Eav.Data.ContentTypeMetadata), [](xref:ToSic.Eav.Metadata.IMetadataOf)  
-	contains information about the content-type (like nicer descriptions).
-	This is also used for the Attribute-Metadata
+* [ToSic.Eav.Data](xref:ToSic.Eav.Data){title="icon:journal-code"}
+  Namespace has almost everything you see here
+* [IContentType](xref:ToSic.Eav.Data.IContentType){title="icon:journal-code"}
+  defines what fields exist, it's the ContentType / Schema
+* [IContentTypeAttribute](xref:ToSic.Eav.Data.IContentTypeAttribute){title="icon:journal-code"}
+  contains the definition of an attribute
+* [ContentTypeMetadata](xref:ToSic.Eav.Data.ContentTypeMetadata){title="icon:journal-code"}
+  contains information about the content-type (like nicer descriptions).
+  This is also used for the Attribute-Metadata
+* [IMetadataOf](xref:ToSic.Eav.Metadata.IMetadataOf){title="icon:journal-code"}
+  contains information about metadata containers
 
 ## History
 

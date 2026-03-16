@@ -6,61 +6,27 @@ uid: Abyss.Contribute.Docs.Edit.Index
 
 ## Tips for Editing
 
-<div docs-tiles>
-  <div icon="person-workspace" title="Preview while Typing">
-    <a href="xref:Abyss.Contribute.Docs.Edit.PreviewMarkdown"></a>
-  </div>
-</div>
+* [Preview while Typing](xref:Abyss.Contribute.Docs.Edit.PreviewMarkdown){title="icon:person-workspace"}
 
 ## Working with Table of Contents ToC
 
-<div docs-tiles>
-  <div icon="menu-button" title="Table of Contents">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Toc"></a>
-  </div>
-</div>
+* [Table of Contents](xref:Abyss.Contribute.Docs.Edit.Toc){title="icon:menu-button"}
 
 ## Markdown Basics
 
-<div docs-tiles>
-  <div icon="hash" title="Markdown Basics">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Markdown.Index"></a>
-  </div>
-  <div icon="hash" title="Markdown Code Snippets">
-    <a href="xref:Abyss.Contribute.Docs.Edit.MarkdownCode"></a>
-  </div>
-  <div icon="file-earmark-code" title="Extract Code from Source">
-    <a href="xref:Abyss.Contribute.Docs.Edit.ShowCode"></a>
-  </div>
-  <div icon="table" title="Link Tiles">
-    <a href="xref:Abyss.Contribute.Docs.Edit.LinkTiles"></a>
-  </div>
-</div>
+* [Markdown Basics](xref:Abyss.Contribute.Docs.Edit.Markdown.Index){title="icon:hash"}
+* [Markdown Code Snippets](xref:Abyss.Contribute.Docs.Edit.MarkdownCode){title="icon:hash"}
+* [Extract Code from Source](xref:Abyss.Contribute.Docs.Edit.ShowCode){title="icon:file-earmark-code"}
+* [Link Tiles](xref:Abyss.Contribute.Docs.Edit.LinkTiles){title="icon:table"}
 
 ## Images and Media
 
-<div docs-tiles>
-  <div icon="image" title="Images and Media">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Images"></a>
-  </div>
-  <div icon="image" title="Image Classes Demo">
-    <a href="xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo"></a>
-  </div>
-  <div icon="images" title="Image Galleries">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Galleries"></a>
-  </div>
-  <div icon="diagram-2" title="Mermaid Diagrams">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Mermaid"></a>
-  </div>
-</div>
+* [Images and Media](xref:Abyss.Contribute.Docs.Edit.Images){title="icon:image"}
+* [Image Classes Demo](xref:Abyss.Contribute.Docs.Edit.ImageClassesDemo){title="icon:image"}
+* [Image Galleries](xref:Abyss.Contribute.Docs.Edit.Galleries){title="icon:images"}
+* [Mermaid Diagrams](xref:Abyss.Contribute.Docs.Edit.Mermaid){title="icon:diagram-2"}
 
 ## Advanced
 
-<div docs-tiles>
-  <div icon="person-check" title="Authors Attribution">
-    <a href="xref:Abyss.Contribute.Docs.Edit.Attribution"></a>
-  </div>
-  <div icon="filetype-yml" title="Reference YML Files">
-    <a href="xref:Abyss.Contribute.Docs.Edit.ReferenceYMLFiles"></a>
-  </div>
-</div>
+* [Authors Attribution](xref:Abyss.Contribute.Docs.Edit.Attribution){title="icon:person-check"}
+* [Reference YML Files](xref:Abyss.Contribute.Docs.Edit.ReferenceYMLFiles){title="icon:filetype-yml"}

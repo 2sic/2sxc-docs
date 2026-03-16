@@ -20,11 +20,10 @@ uid: Basics.LnF.Index
 
 ## Start Using it
 
-👉🏾 [See the full list of licenses and features](https://patrons.2sxc.org/features)
-
-👉🏾 [Licenses - How they Work and How to Activate](xref:Basics.LnF.Licenses.Index)
-
-👉🏾 [Manage Features](xref:Basics.LnF.Features.Index)
+* [See the full list of licenses and features](https://patrons.2sxc.org/features){title="icon:stars"}
+* [Licenses](xref:Basics.LnF.Licenses.Index){title="icon:key"}
+    How they Work and How to Activaterotect your web application from
+* [Manage Features](xref:Basics.LnF.Features.Index){title="icon:sliders"}
 
 ---
 
