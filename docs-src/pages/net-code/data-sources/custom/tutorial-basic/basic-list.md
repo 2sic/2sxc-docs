@@ -102,8 +102,9 @@ What this does is...
 
 ## Read More
 
-* Discover the [Basic DataSourceTutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index) with more examples
-
+* [Basic DataSource Tutorial](xref:NetCode.DataSources.Custom.TutorialBasic.Index){title="icon:code-slash"}
+  discover more examples in the basic DataSource tutorial
+  
 ## History
 
 1. Created 2017 for 2sxc 7

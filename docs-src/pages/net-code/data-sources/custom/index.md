@@ -32,8 +32,8 @@ This is what the DataSource would appear like in VisualQuery
 
 ## Read More
 
-* [Blog about this feature](https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1)
-* [Blog post about custom DataSources](xref:Blog.CustomDataSource)
+* [Blog about this feature](https://2sxc.org/en/blog/post/tutorial-custom-datasources-for-eav-2sxc-9-13-part-1){title="icon:journal-text"}
+* [Blog post about custom DataSources](xref:Blog.CustomDataSource){title="icon:journal-text"}
 
 ## History
 

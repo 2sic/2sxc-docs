@@ -58,11 +58,11 @@ In more complex scenarios we suggest you use [View Settings](xref:Basics.App.Vie
 
 ## Advanced Topics
 
-* [Switching between views based on the url](https://2sxc.org/en/docs/Feature/feature/4680)
-* [Differences between features when using Content or App](https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use)
-* [Protecting Views for certain users using permissions](https://2sxc.org/en/Docs/Feature/feature/4737)
-* [Hide advanced features from normal editors](https://2sxc.org/en/docs/Feature/feature/3592)
-* [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
+* [Switching between views based on the url](https://2sxc.org/en/docs/Feature/feature/4680){title="icon:shuffle"}
+* [Differences between features when using Content or App](https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use){title="icon:journal-text"}
+* [Protecting Views for certain users using permissions](https://2sxc.org/en/Docs/Feature/feature/4737){title="icon:shield-lock"}
+* [Hide advanced features from normal editors](https://2sxc.org/en/docs/Feature/feature/3592){title="icon:eye-slash"}
+* [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor){title="icon:code-slash"}
 
 ## History
 

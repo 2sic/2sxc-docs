@@ -51,7 +51,7 @@ or with older Razor base classes
 
 ## Read More
 
-* [](xref:Basics.App.FoldersAndFiles.Index)
-* [](xref:Basics.Server.AssetOptimization.Index)
-* [](xref:Basics.ImageResizer.Index)
-* [](xref:Basics.Content.Assets)
+* [App Folder Structure](xref:Basics.App.FoldersAndFiles.Index){title="icon:folder"}
+* [Asset Optimization](xref:Basics.Server.AssetOptimization.Index){title="icon:box"}
+* [Image Resizing](xref:Basics.ImageResizer.Index){title="icon:aspect-ratio"}
+* [Assets](xref:Basics.Content.Assets){title="icon:image"}

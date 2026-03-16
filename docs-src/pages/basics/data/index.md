@@ -135,10 +135,10 @@ Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and 
 
 ## More Advanced Topics
 
-1. [Entities and Dynamic Entities](xref:NetCode.Data.Index)
-1. [Using Entities as Content or as Data](xref:Basics.Content.Index)
-1. [Content Lists of Entities](xref:Basics.Content.Lists)
-1. [VisualQuery](xref:Basics.Query.VisualQuery.Index)
-1. [Data Sources](xref:NetCode.DataSources.Index)
-1. [Headless APIs](xref:WebApi.Headless.Index)
-1. [Metadata](xref:Basics.Metadata.Index)
+* [Entities and Dynamic Entities](xref:NetCode.Data.Index){title="icon:database"}
+* [Using Entities as Content or as Data](xref:Basics.Content.Index){title="icon:collection"}
+* [Content Lists of Entities](xref:Basics.Content.Lists){title="icon:list-ul"}
+* [VisualQuery](xref:Basics.Query.VisualQuery.Index){title="icon:diagram-3"}
+* [Data Sources](xref:NetCode.DataSources.Index){title="icon:database"}
+* [Headless APIs](xref:WebApi.Headless.Index){title="icon:cloud"}
+* [Metadata](xref:Basics.Metadata.Index){title="icon:tags"}

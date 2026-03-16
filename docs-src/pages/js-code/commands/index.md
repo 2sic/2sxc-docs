@@ -138,17 +138,24 @@ There is a command called **custom** which is meant to be used for this. Check o
 
 Details about some specific commands: 
 
-1. [ContentItems with Filters](xref:Api.Js.SxcJs.CommandDataParams)
-1. [Delete](xref:Api.Js.SxcJs.CommandDeleteParams)
-1. [Custom Code](xref:Api.Js.SxcJs.CommandCodeParams)
+* [ContentItems with Filters](xref:Api.Js.SxcJs.CommandDataParams){title="icon:funnel"}
+  Work with content items using filters
+
+* [Delete](xref:Api.Js.SxcJs.CommandDeleteParams){title="icon:trash"}
+  Delete items using a command
+
+* [Custom Code](xref:Api.Js.SxcJs.CommandCodeParams){title="icon:code-slash"}
+  Execute custom command code
 
 ## Demo App and further links
 
 You should find some code examples in this demo App
 
-* [JS Manage / Toolbar API Tutorial App](http://2sxc.org/en/apps/app/tutorial-for-the-javascript-apis-and-custom-toolbars)
-* Blog post about [Calling commands from links](http://2sxc.org/en/blog/post/create-links-which-run-cms-commands-new-2sxc-8-6)
+* [JS Manage / Toolbar API Tutorial App](http://2sxc.org/en/apps/app/tutorial-for-the-javascript-apis-and-custom-toolbars){title="icon:app"}
+  Tutorial app showing how to use the JS Manage and Toolbar APIs
 
+* [Calling commands from links](http://2sxc.org/en/blog/post/create-links-which-run-cms-commands-new-2sxc-8-6){title="icon:journal-text"}
+  Blog post explaining how to run CMS commands from links
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 

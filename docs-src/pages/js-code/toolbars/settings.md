@@ -102,9 +102,11 @@ Do not use this anymore
 
 # More Resources
 
-- **[Toolbar Tutorials](xref:Tut.Toolbar)**
-- Legacy blog (for historical context): <http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel>
+* [Toolbar Tutorials](xref:Tut.Toolbar){title="icon:mortarboard"}
+  Tutorials for working with edit toolbars
 
+* [Customize Edit Toolbar – Hover Alignment & More](http://2sxc.org/en/blog/post/customize-edit-toolbar-hover-alignment-more-button-look-and-feel){title="icon:journal-text"}
+  Legacy blog post for historical context
 ---
 
 # History
