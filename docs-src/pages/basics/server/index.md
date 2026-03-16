@@ -29,11 +29,11 @@ This is what web-systems do from a bird's-eyes perspective. This is what happens
 
 You may want to learn more about:
 
-1. [Bundling / Optimizing Assets](xref:Basics.Server.AssetOptimization.Index)
-1. [Image Resizing](xref:Basics.ImageResizer.Index)
-1. [Create App Templates using Razor](xref:NetCode.Index)
-1. [Create custom WebApi Controllers](xref:NetCode.WebApi.Index)
-1. [The Headless REST API](xref:WebApi.Headless.Index)
+* [Bundling / Optimizing Assets](xref:Basics.Server.AssetOptimization.Index){title="icon:box"}
+* [Image Resizing](xref:Basics.ImageResizer.Index){title="icon:aspect-ratio"}
+* [Create App Templates using Razor](xref:NetCode.Index){title="icon:code-slash"}
+* [Create custom WebApi Controllers](xref:NetCode.WebApi.Index){title="icon:cloud"}
+* [The Headless REST API](xref:WebApi.Headless.Index){title="icon:diagram-3"}
 
 
 ## Preparing Data

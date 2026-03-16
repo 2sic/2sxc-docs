@@ -41,7 +41,7 @@ To learn the basics it's probably best tof first discover [Tutorials](xref:Tut.R
 
 Learn more about...
 
-* [](xref:Basics.Browser.Index)
-* [](xref:Basics.Server.Index)
-* [](xref:Basics.Prepare.Index)
-* [](xref:Basics.Data.Index)
+* [Browser APIs](xref:Basics.Browser.Index){title="icon:journal-text"}
+* [Server APIs](xref:Basics.Server.Index){title="icon:journal-text"}
+* [Prepare Data](xref:Basics.Prepare.Index){title="icon:journal-text"}
+* [Data](xref:Basics.Data.Index){title="icon:journal-text"}

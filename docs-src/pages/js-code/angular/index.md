@@ -14,10 +14,15 @@ uid: JsCode.Angular.Index
 We've created a full solution for integrating Angular with Dnn and 2sxc and it's documented here. 
 The core parts are: 
 
-1. Integrate Angular in Dnn for [runtime](xref:JsCode.Angular.IntegrateAngularRuntime) or [development](xref:JsCode.Angular.IntegrateAngularDevelopment)
-1. [Integrate Dnn into Angular](xref:JsCode.Angular.DnnSxcAngular.Install)
-1. [Integrate 2sxc and CMS features into Angular](xref:JsCode.Angular.DnnSxcAngular.Index)
+* [Integrate Angular in Dnn](xref:JsCode.Angular.IntegrateAngularRuntime){title="icon:box"}
+  Setup Angular integration for runtime or development
 
+* [Integrate Dnn into Angular](xref:JsCode.Angular.DnnSxcAngular.Install){title="icon:plug"}
+  Connect Dnn APIs and services inside Angular
+
+* [Integrate 2sxc and CMS features into Angular](xref:JsCode.Angular.DnnSxcAngular.Index){title="icon:gear"}
+  Use 2sxc and CMS functionality inside Angular apps
+  
 ## Introduction Video
 
 <iframe width="100%" height="400px" src="https://www.youtube.com/embed/I4trJvuSSIM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

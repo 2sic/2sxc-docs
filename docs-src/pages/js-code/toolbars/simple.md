@@ -262,5 +262,7 @@ If you really want to do deep debugging, you should use the `$2sxc.insights()` c
 
 Basically you have what it takes. To go further:
 
-* review the [specs](xref:Basics.Browser.EditUx.Toolbars.Customize).
-* check out the list of [commands/buttons](xref:JsCode.Commands.Index)
+* [Toolbar Customization Specs](xref:Basics.Browser.EditUx.Toolbars.Customize){title="icon:tools"}
+  review the specifications for customizing toolbars
+* [Commands / Buttons](xref:JsCode.Commands.Index){title="icon:ui-checks"}
+  check out the list of available commands and buttons

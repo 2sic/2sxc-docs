@@ -50,9 +50,9 @@ Read more about this in [](xref:NetCode.DataSources.DataSource)
 > [!NOTE]
 > The type `T` mentioned above must be an [IDataSource](xref:ToSic.Eav.DataSource.IDataSource). The built in ones are usually in these namespaces:
 
-* [](xref:ToSic.Eav.DataSources)
-* [](xref:ToSic.Sxc.DataSources)
-* [](xref:ToSic.Sxc.Dnn.DataSources)
+* [ToSic.Eav.DataSources Namespace](xref:ToSic.Eav.DataSources){title="icon:database"}
+* [ToSic.Sxc.DataSources Namespace](xref:ToSic.Sxc.DataSources){title="icon:database"}
+* [ToSic.Sxc.Dnn.DataSources Namespace](xref:ToSic.Sxc.Dnn.DataSources){title="icon:database"}
 
 You can also create and compile your own DataSources, and then deploy the DLL to use in your code. 
 

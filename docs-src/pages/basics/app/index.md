@@ -102,6 +102,6 @@ You can create such SPAs using any popular JavaScript Framework such as
 
 You may want to learn more about
 
-1. [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index)
-1. [App Icons](xref:Basics.App.FoldersAndFiles.Icons)
-1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
+* [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index){title="icon:folder"}
+* [App Icons](xref:Basics.App.FoldersAndFiles.Icons){title="icon:image"}
+* [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index){title="icon:box"}

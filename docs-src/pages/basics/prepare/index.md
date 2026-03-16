@@ -73,12 +73,11 @@ Your template / WebAPI can also always access all the data in the App using [App
 
 ## You may Also want to Learn about
 
-1. [Create queries using VisualQuery](xref:Basics.Query.Index)
-1. [Prepare data in code](xref:NetCode.Razor.CustomizeData)
-1. [Prepare data for the full-text search index of the platform](xref:NetCode.Razor.CustomizeSearch)
-1. [Headless WebAPI](xref:WebApi.Headless.Index)
-1. [DataSources](xref:NetCode.DataSources.Index)
-
+* [Create queries using VisualQuery](xref:Basics.Query.Index){title="icon:diagram-3"}
+* [Prepare data in code](xref:NetCode.Razor.CustomizeData){title="icon:code-slash"}
+* [Prepare data for the full-text search index of the platform](xref:NetCode.Razor.CustomizeSearch){title="icon:search"}
+* [Headless WebAPI](xref:WebApi.Headless.Index){title="icon:cloud"}
+* [DataSources](xref:NetCode.DataSources.Index){title="icon:database"}
 
 ---
 

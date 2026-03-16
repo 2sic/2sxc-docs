@@ -52,5 +52,5 @@ The old toolbar system which was much harder to set up also as a model for this,
 
 Basically you have what it takes. To go further: 
 
-* [](xref:Basics.Metadata.Index)
-* [](xref:JsCode.Toolbars.Simple)
+* [Metadata](xref:Basics.Metadata.Index){title="icon:tags"}
+* [Simple JS Toolbars](xref:JsCode.Toolbars.Simple){title="icon:tools"}

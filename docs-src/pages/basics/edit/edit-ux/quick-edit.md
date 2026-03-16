@@ -58,9 +58,11 @@ Read more about this in the [Html Js documentation](xref:JsCode.QuickE.Index) pa
 
 ## Read also
 
-* [Inpage Toolbars](xref:Basics.Browser.EditUx.Toolbars.Index) - the item-scoped toolbars used for editing
-* [Inner Content Blocks](http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules) - blog about inner content-blocks
-
+* [Inpage Toolbars](xref:Basics.Browser.EditUx.Toolbars.Index){title="icon:pencil-square"}
+  the item-scoped toolbars used for editing
+* [Inner Content Blocks](http://2sxc.org/en/blog/post/designing-articles-with-inner-content-blocks-new-in-8-4-like-modules-inside-modules){title="icon:layout-text-window"}
+  blog about inner content-blocks
+  
 ## Demo App and further links
 
 You should find some code examples in this demo App
