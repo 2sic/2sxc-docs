@@ -11,7 +11,7 @@ It lets you pull **Current weather** and/or **Forecast data** into 2sxc streams,
 
 ## Installation and Use
 
-➡️ See [Extension installation](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:cloud-arrow-down"}
 
 The extension contains two **DataSources**:
 

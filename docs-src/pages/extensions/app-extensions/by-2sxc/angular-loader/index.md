@@ -11,7 +11,7 @@ Optionally, it can also handle loading different editions of your app (e.g. dev 
 
 ## Installation
 
-➡️ See [](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:cloud-arrow-down"}
 
 ## Usage
 
