@@ -4,6 +4,8 @@ uid: Extensions.AppExtensions.By2sxc.OpenMeteo.Index
 
 # Open-Meteo DataSource
 
+_This is an extension for 2sxc Apps and can be installed into each App individually._
+
 This App Extension adds ready-to-use **2sxc DataSources** for the public **Open-Meteo** weather API.
 It lets you pull **Current weather** and/or **Forecast data** into 2sxc streams, so you can use it like any other DataSource in Visual Query / code.
 
@@ -11,23 +13,23 @@ It lets you pull **Current weather** and/or **Forecast data** into 2sxc streams,
 
 ## Installation and Use
 
-* [](xref:Extensions.AppExtensions.Install.Index){title="icon:cloud-arrow-down"}
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 The extension contains two **DataSources**:
 
-- `OpenMeteoCurrent` → current weather
-- `OpenMeteoForecast` → forecast data
+* `OpenMeteoCurrent` → current weather
+* `OpenMeteoForecast` → forecast data
 
 Both DataSources accept configuration (see `OpenMeteoParameters`) and return data with a model matching the `OpenMeteoResult`.
 
 For parameters you can set the following in code or Visual Query:
 
-- `Latitude`
-- `Longitude`
+* `Latitude`
+* `Longitude`
 
 Optional parameters (recommended):
 
-- `Timezone` (e.g. `Europe/Amsterdam`, default is `auto` matching the coordinates)
+* `Timezone` (e.g. `Europe/Amsterdam`, default is `auto` matching the coordinates)
 
 Only parameters shown in the DataSource configuration UI are supported.
 Configure them either through Visual Query or via code when creating the DataSource.
@@ -61,9 +63,9 @@ Below are intentionally short examples. Your actual namespace/class names may di
 
 **Parameters:**
 
-- `Latitude` (required): Decimal degrees, e.g. `47.1674`
-- `Longitude` (required): Decimal degrees, e.g. `9.4779`
-- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
+* `Latitude` (required): Decimal degrees, e.g. `47.1674`
+* `Longitude` (required): Decimal degrees, e.g. `9.4779`
+* `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
 
 **Temperature Units:**
 
@@ -117,10 +119,10 @@ Temperature is always returned in **Celsius**. To get Fahrenheit, use the `Tempe
 
 **Parameters:**
 
-- `Latitude` (required): Decimal degrees, e.g. `47.1674`
-- `Longitude` (required): Decimal degrees, e.g. `9.4779`
-- `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
-- `ForecastDays` (optional): Number of days (`1-16`), default is `1`
+* `Latitude` (required): Decimal degrees, e.g. `47.1674`
+* `Longitude` (required): Decimal degrees, e.g. `9.4779`
+* `Timezone` (optional): IANA timezone, e.g. `"Europe/Amsterdam"`, default is `auto` (matches coordinates)
+* `ForecastDays` (optional): Number of days (`1-16`), default is `1`
 
 **Temperature Units:**
 

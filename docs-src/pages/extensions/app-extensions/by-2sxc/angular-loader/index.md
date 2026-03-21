@@ -2,7 +2,9 @@
 uid: Extensions.AppExtensions.By2sxc.AngularLoader.Index
 ---
 
-# App Extension: Angular Loader
+# Angular Loader (JS-Helper)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 Whit this Extension, you can easily load Angular apps into your DNN environment.
 It handles loading the Angular framework and your app code.
@@ -11,7 +13,7 @@ Optionally, it can also handle loading different editions of your app (e.g. dev 
 
 ## Installation
 
-* [](xref:Extensions.AppExtensions.Install.Index){title="icon:cloud-arrow-down"}
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 ## Usage
 

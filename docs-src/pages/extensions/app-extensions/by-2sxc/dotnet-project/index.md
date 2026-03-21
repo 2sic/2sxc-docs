@@ -2,7 +2,11 @@
 uid: Extensions.AppExtensions.By2sxc.DotNetProject.Index
 ---
 
-# App Extension: DotNet Project (VS Code Helper)
+<img src="./assets/app-icon.png" width="150px" align="right" class="float-end"/>
+
+# DotNet Project (VS Code Helper)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 This extension provides tools and helpers for .NET projects in VS Code.
 

@@ -1,5 +1,9 @@
+* [Install DotNet-Project](xref:Catalog.AppExtensions.Project-DotNet){title="icon:puzzle"}
+  first install the App Extension
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
-1. First install the [DotNet-Project App Extension](xref:Catalog.AppExtensions.Project-DotNet) - [](xref:Extensions.AppExtensions.Install.Index)
+Then
+
 1. copy the files `app.sln` and `app.csproj` from the `templates` folder to your main app folder (or a specific edition-subfolder)
 1. restart VS Code
 

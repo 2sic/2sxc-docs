@@ -2,7 +2,9 @@
 uid: Extensions.AppExtensions.By2sxc.JsAppEditions.Index
 ---
 
-# App Extension: JS App Editions
+# JS App Editions (JS-Helper)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 <img src="~/assets/logos/polymorph/polymorph-logo-wide.svg" width="50%" class="float-right">
 
@@ -27,7 +29,7 @@ You can then use this information to adjust the behavior of your app - for examp
 
 ## Installation
 
-➡️ See [](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 ## Usage
 

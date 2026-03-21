@@ -2,7 +2,9 @@
 uid: Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index
 ---
 
-# Google reCAPTCHA v3 (App Extension)
+# Google reCAPTCHA v3 (Library + API)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 This **App Extension** helps you add **Google reCAPTCHA v3** to custom forms in your 2sxc app,
 so you can reduce spam and automated submissions.
@@ -67,7 +69,7 @@ Breakdown of the Process
 
 ## Installation
 
-See [Installing App Extensions](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 ## Preparation
 
