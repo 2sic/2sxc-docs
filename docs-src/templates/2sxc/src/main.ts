@@ -9,6 +9,15 @@ import "./main.scss";
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
 import { convertDocsLinks } from '../../shared-global/src/scripts/docs-links';
 
+// Experimental - should provide pan/zoom on mermaid, but can't get it to work yet
+// also confusing, because the plugin seems very new.
+// import { enhanceMermaidDiagrams } from '@mostlylucid/mermaid-enhancements';
+// import '@mostlylucid/mermaid-enhancements/dist/style.css';
+
+// // After your Mermaid diagrams are rendered
+// enhanceMermaidDiagrams();
+
+
 // Log some version of this file so we see changes are being applied
 // console.log('2sxc main.ts ' + packageJson.version);
 

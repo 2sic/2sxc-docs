@@ -12,11 +12,7 @@ This extension provides tools and helpers for .NET projects in VS Code.
 
 ### [Installation](#tab/installation)
 
-1. First install the extension - [](xref:Extensions.AppExtensions.Install.Index)
-1. copy the files `app.sln` and `app.csproj` from the `templates` folder to your main app folder (or a specific edition-subfolder)
-1. restart VS Code
-
-That's it - you should now have IntelliSense on all your C# and Razor files.
+[!include[install](_installation.md)]
 
 ### [Upgrades](#tab/upgrades)
 
@@ -34,7 +30,8 @@ To upgrade the extension:
 
 ## How it works
 
-The extension uses the OmniSharp extension to provide IntelliSense and other C# features in VS Code. By including a .sln and .csproj file in the app folder, OmniSharp can recognize the project structure and provide the necessary tooling support.
+The extension uses the OmniSharp extension to provide IntelliSense and other C# features in VS Code.
+By including a .sln and .csproj file in the app folder, OmniSharp can recognize the project structure and provide the necessary tooling support.
 
 Basically this is what happens:
 
@@ -42,7 +39,7 @@ Basically this is what happens:
 1. The `app.csproj` imports the `/extensions/dotnet-project/all-in-one.import.csproj` which contains everything needed for the project
 1. The `all-in-one.import.csproj` file imports the necessary SDKs and packages to enable C# development in the app folder.
 
-Here's what happens internally:
+These would be your files:
 
 ### [The `app.sln` file](#tab/app-sln)
 
@@ -108,14 +105,15 @@ There is not much to add here either, just make sure to keep the import path cor
 
 ## Internal Complexity
 
-### [The Challenge](#tab/challenge)
+### [The Challenges](#tab/challenges)
 
 Internally it's a bit more complex, because it has to work with all kinds of different scenarios such as:
 
 1. It could be running in DNN or Oqtane.
-1. It needs to work with both .NET Framework and .NET Core projects.
+1. It needs to work with both .NET Framework (`net48`) and .NET Core (`net10`) projects.
 1. It's always in an App, but some Apps have it in their root folder, while others have it in an edition-subfolder.
 1. In Oqtane, the path will vary if you're running a production or development version of Oqtane.
+1. When using editions and opening VS Code on the root folder, it may have identical files in each edition, confusing the analyzers, so we have to remove editions such as `live` or `bs4` from the project when running in design-time in DNN.
 1. In DNN we had to do some trickery to make older Razor code work with the newer .net Core Razor Code Analyzers.
 
 This is the inner logic which is implemented in the `all-in-one.import.csproj` file, which imports the necessary SDKs and packages based on the environment and project type.
@@ -247,12 +245,98 @@ For more details, best consult the `readme.md` in the [](xref:Repo.Ext.Project-D
 
 ## Customizing the Configuration
 
+### [Introduction to Customization](#tab/customization)
+
 When you need to do some customizations, you can always
 
 1. Pre-set some of the variables such as `CmsType` in your `app.csproj` before the import.
 1. Customize your own `app.csproj` file to import specific files instead of the `all-in-one.import.csproj`.
 
+### [Example Customization](#tab/example-customization)
+
+Here's an example where we needed another DLL.
+
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- This file helps VS Code provide IntelliSense - see https://go.2sxc.org/vscode -->
+
+  <!-- Best keep this file small and use imports from extensions/dotnet-project. -->
+
+  <!-- Import everything so it just magically works. -->
+  <Import Project="extensions\dotnet-project\all-in-one.import.csproj" />
+  <!-- Note: For fine-grained control, import the individual files instead of the all-in-one. -->
+
+  <!-- Load other important DLLs which are not in the main bundle -->
+  <ItemGroup>
+    <Reference Include="$(PathBin)\System.Collections.Immutable.dll" />
+  </ItemGroup>
+</Project>
+```
+
+### [PathBin Variable](#tab/pathbin-variable)
+
+The `PathBin` variable is used to specify the path where the DLLs are.
+This allows us to use the same rules for Dnn and Oqtane, just with a different path to start from.
+Here's what you should know:
+
+* Dnn usually has the App files in `/Portals/[portal]/2sxc/[app]/` so the DLLs relatively in `..\..\..\..\bin`
+* Oqtane has the App files in `/2sxc/[site-id]/app/` but the DLLs are in different locations depending on Dev vs. Production builds
+  * in development built it places the DLLs in `\bin\Debug\net8.0` so the relative path is usually `..\..\..\bin\Debug\net8.0`
+  * in production builds it places the DLLs in the root folder, so the relative path is usually `..\..\..`
+
+### [Ignoring Files for Polymorphism](#tab/ignoring-files-for-polymorphism)
+
+If you're working with Polymorphism then you have many of the same files, which confuses IntelliSense.
+For example, `/live` and `/staging` have the same files, and `/bs3`, `/bs4` and `/bs5` have the same files.
+So intellisense might find the same class in multiple places, and show warnings.
+
+To handle this, you should decide which is your **primary** folder, and then exclude the others.
+This is just an example to exclude `/live` as we're always working on `/staging`:
+
+```xml
+  <!-- Example: exclude /live as we're always working on /staging -->
+  <ItemGroup>
+    <None Remove="live\**" />
+    <Content Remove="live\**" />
+    <Compile Remove="live\**" />
+    <EmbeddedResource Remove="live\**" />
+  </ItemGroup>
+```
+
 ---
+
+## Understanding csproj files
+
+In case you're not familiar with `.csproj` files, here's a quick overview:
+
+### [About PropertyGroup and ItemGroup](#tab/about-propertygroup-and-itemgroup)
+
+* `PropertyGroup` is used to define variables which are used later in the file
+* `ItemGroup` is used to define lists of items, like files, references, etc.
+
+Both of these can have conditions, so you can define different settings for different situations.
+
+### [Target Framework and C# Version](#tab/target-framework-and-csharp-version)
+
+The `TargetFramework` is the .net Framework you are targeting.
+The value like `net472` or `net48` are called _target framework moniker_ or _TFM_.
+You can find a list of them on the [Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/frameworks).
+Recommended values:
+
+* Dnn: `net472` or `net48` (officially, Dnn requires 4.7.2, but 4.8 is what is normally installed because of security)
+* Oqtane: `net10` (Oqtane 10+)
+
+The `LangVersion` is the C# version you are using.
+You can find a list of them on the [Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history).
+Recommended values:
+
+* Dnn: `8.0` (Dnn 9.11.02+ using 2sxc 17 and Roslyn Compiler)
+* Oqtane: `latest` or `12.0` (Oqtane 10+)
+
+---
+
+
 
 ## History
 
