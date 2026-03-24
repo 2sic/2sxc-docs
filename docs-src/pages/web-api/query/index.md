@@ -18,15 +18,33 @@ Every [VisualQuery](xref:Basics.Query.VisualQuery.Index) you create has a REST U
 The Query endpoint can be accessed on
 
 * `.../app/auto/query/[your-query-name]` when you're accessing a query of the current App (from a dnn-page with this module), as then 2sxc uses auto-detect
-* `.../app/[app-folder]/query/[your-query-name]` using this endpoint from external (other module, other page, other website) as then auto-detect can't work. 
+* `.../app/[app-folder]/query/[your-query-name]` using this endpoint from external (other module, other page, other website) as then auto-detect can't work.
 
 👉 read more about [different URLs depending on how you access it](xref:WebApi.Specs.UrlSchema)
 
 ## Read Only Certain Streams
 
-A query may have many streams that your client may not necessarily need. To limit the results to only specific streams, add the stream name to the url, like this:
+A query may have many streams that your client may not necessarily need. To limit the results to only specific streams, add one or more stream names to the URL. If you need multiple streams, separate them with commas:
 
 `.../app/auto/query/[your-query-name]/Default`
+
+`.../app/auto/query/[your-query-name]/StreamName1`
+
+`.../app/auto/query/[your-query-name]/StreamName1,StreamName2`
+
+You can also select one or more streams using the `stream` query parameter:
+
+`.../app/auto/query/[your-query-name]?stream=Default`
+
+`.../app/auto/query/[your-query-name]?stream=StreamName1`
+
+`.../app/auto/query/[your-query-name]?stream=StreamName1,StreamName2`
+
+When exactly one stream is selected, an unprefixed `$select` applies to that selected stream:
+
+`.../app/auto/query/[your-query-name]/StreamName1?$select=Field1,Field2`
+
+If you need different `$select` values for multiple streams, use stream-specific parameters such as `StreamName1$select=Field1,Field2`.
 
 ## HTTP GET only
 
@@ -34,15 +52,15 @@ Note that Query endpoints only support the http-verb GET.
 
 ## Naming Recommendations
 
-As the query-name is used in the path it's best-practice to use query-names without spaces and special characters. You can get it to work even with such specials, but we recommend you don't do that for simplicity. 
+As the query-name is used in the path it's best-practice to use query-names without spaces and special characters. You can get it to work even with such specials, but we recommend you don't do that for simplicity.
 
 ## POST with GUID filter (WIP)
 
-In 2sxc 11.20 we're experimenting with a post-access to the query which will allow you to also specify GUIDs to filter. This is not final yet. 
+In 2sxc 11.20 we're experimenting with a post-access to the query which will allow you to also specify GUIDs to filter. This is not final yet.
 
 ## Setting Security
 
-Querying a query requires read-permissions on that query. 
+Querying a query requires read-permissions on that query.
 
 <iframe src="https://azing.org/2sxc/r/34pAzAF2?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 
