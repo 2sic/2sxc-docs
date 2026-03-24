@@ -216,8 +216,17 @@
 </ul>
 <p>👉 read more about <a class="xref" href="../specs/url-schema.html">different URLs depending on how you access it</a></p>
 <h2 id="read-only-certain-streams">Read Only Certain Streams</h2>
-<p>A query may have many streams that your client may not necessarily need. To limit the results to only specific streams, add the stream name to the url, like this:</p>
+<p>A query may have many streams that your client may not necessarily need. To limit the results to only specific streams, add one or more stream names to the URL. If you need multiple streams, separate them with commas:</p>
 <p><code>.../app/auto/query/[your-query-name]/Default</code></p>
+<p><code>.../app/auto/query/[your-query-name]/StreamName1</code></p>
+<p><code>.../app/auto/query/[your-query-name]/StreamName1,StreamName2</code></p>
+<p>You can also select one or more streams using the <code>stream</code> query parameter:</p>
+<p><code>.../app/auto/query/[your-query-name]?stream=Default</code></p>
+<p><code>.../app/auto/query/[your-query-name]?stream=StreamName1</code></p>
+<p><code>.../app/auto/query/[your-query-name]?stream=StreamName1,StreamName2</code></p>
+<p>When exactly one stream is selected, an unprefixed <code>$select</code> applies to that selected stream:</p>
+<p><code>.../app/auto/query/[your-query-name]/StreamName1?$select=Field1,Field2</code></p>
+<p>If you need different <code>$select</code> values for multiple streams, use stream-specific parameters such as <code>StreamName1$select=Field1,Field2</code>.</p>
 <h2 id="http-get-only">HTTP GET only</h2>
 <p>Note that Query endpoints only support the http-verb GET.</p>
 <h2 id="naming-recommendations">Naming Recommendations</h2>
