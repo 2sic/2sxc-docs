@@ -8,6 +8,6 @@ Every App has built-in WebAPIs for Headless use and you can create your own cust
 
 ## Learn more about
 
-1. [WebApi in general](xref:WebApi.Index)
-1. [](xref:WebApi.Headless.Index)
-1. [](xref:NetCode.WebApi.Index)
+* [WebApi in general](xref:WebApi.Index){title="icon:journal-text"}
+* [Headless WebApi](xref:WebApi.Headless.Index){title="icon:journal-text"}
+* [WebApi in your Code](xref:NetCode.WebApi.Index){title="icon:journal-text"}

@@ -1,5 +1,5 @@
 ---
-uid: NetCode.TypedCode.CompareApis.DnnObject
+uid: NetCode.CompareApis.DnnObject
 ---
 
 # The Dnn Object in Different APIs

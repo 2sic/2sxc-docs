@@ -24,6 +24,12 @@ To develop locally you'll need:
 Once you are ready to submit your changes, you will also need knowledge of **Git and GitHub**,
 so you can manage your changes and submit them to us for review.
 
+## Live Demo
+
+[Daniel Valadas](https://danielvaladas.com/en/) created a live demo together with [David Poindexter](https://www.nvisionative.com/) of the process of setting up a local development environment for 2sxc and EAV, which you can watch here:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YxrPCHNnXzs?si=-t_pQFuaNXJ2Qqop&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Prerequisites
 
 ### [Local DNN](#tab/prerequisites-dnn)
@@ -149,7 +155,7 @@ The Backend requires two projects to be set up, according to instructions above.
 1. `c:\projects\2sxc\2sxc\` - the main [2sxc C# repo](xref:Repo.2sxc),
 2. `c:\projects\2sxc\eav-server\` - the [EAV C# repo](xref:Repo.Eav), which is required by the 2sxc backend
 
-To work with the backend, best continue to [](xref:Abyss.Contribute.Code.Backend).
+To work with the backend, best continue to [](xref:Abyss.Contribute.Code.Backend.Index).
 
 ### [Frontend](#tab/frontend)
 
@@ -158,7 +164,7 @@ The front-end is in these 2 repositories containing various JS projects:
 1. `c:\projects\2sxc\2sxc-ui\` - the in-page UI for 2sxc, which extends the EAV UI with more field types, configuration and other JS.
 2. `c:\projects\2sxc\eav-ui\` - the main edit/admin UIs, which are used by both 2sxc and EAV.
 
-To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend).
+To work with the front-end, best continue to [](xref:Abyss.Contribute.Code.Frontend.Index).
 
 ---
 

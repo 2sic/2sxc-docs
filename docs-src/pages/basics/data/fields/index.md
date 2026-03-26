@@ -20,17 +20,22 @@ The EAV (Entity-Attribute-Value) system and 2sxc is all about data. The data in 
 
 These are the core **Field-Types**. Each may have one or more **Input-Types**.
 
-1. [Boolean](xref:Basics.Data.Fields.Boolean) - basic true/false or yes/no values
-1. [Custom](xref:Basics.Data.Fields.Custom) - a JSON data type for GPS and other JSON data
-1. [DateTime](xref:Basics.Data.Fields.DateTime) - for dates and times
-1. [Empty](xref:Basics.Data.Fields.Empty) - a UI-only field for things like grouping fields together under a title
-1. [Entity](xref:Basics.Data.Fields.Entity) - an item-picker field to choose existing items, for relationships between items - like a book to the author or a blog-post to tags
-1. [Hyperlink](xref:Basics.Data.Fields.Hyperlink) - a special string with helper objects which resolve "file:72" to the real link
-1. [Number](xref:Basics.Data.Fields.Number) - for any kind of number like 1, 2, 3 or with decimals
-1. [String](xref:Basics.Data.Fields.String) - for string types or when you other options don't fit
-
-
-
+* [Boolean](xref:Basics.Data.Fields.Boolean){title="icon:toggle-on"}
+  basic true/false or yes/no values
+* [Custom](xref:Basics.Data.Fields.Custom){title="icon:braces"}
+  a JSON data type for GPS and other JSON data
+* [DateTime](xref:Basics.Data.Fields.DateTime){title="icon:calendar"}
+  for dates and times
+* [Empty](xref:Basics.Data.Fields.Empty){title="icon:minus"}
+  a UI-only field for things like grouping fields together under a title
+* [Entity](xref:Basics.Data.Fields.Entity){title="icon:link"}
+  an item-picker field to choose existing items, for relationships between items - like a book to the author or a blog-post to tags
+* [Hyperlink](xref:Basics.Data.Fields.Hyperlink){title="icon:link-45deg"}
+  a special string with helper objects which resolve "file:72" to the real link
+* [Number](xref:Basics.Data.Fields.Number){title="icon:123"}
+  for any kind of number like 1, 2, 3 or with decimals
+* [String](xref:Basics.Data.Fields.String){title="icon:font"}
+  for string types or when your other options don't fit
 
 ## History
 

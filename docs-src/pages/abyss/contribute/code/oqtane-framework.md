@@ -4,6 +4,8 @@ uid: Abyss.Contribute.Code.OqtaneFramework
 
 # How update `Oqtane.Framework` source code for 2sxc Oqtane development
 
+[!include[""](../../_contributors-only.md)]
+
 For **2sxc Oqtane development**, we work against the official [**Oqtane Framework master branch**](https://github.com/oqtane/oqtane.framework/tree/master), which contains the source code for the latest release (`Oqtane.Client`, `Oqtane.Server`, `Oqtane.Shared`).
 
 In our locally cloned `oqtane.framework` git repository, on top of the official Oqtane commits, we typically maintain **one local commit** (never pushed to remote) with custom modifications such as changes in `appsettings.json`, `Oqtane.Server.csproj`, etc.

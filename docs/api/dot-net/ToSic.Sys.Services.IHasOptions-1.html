@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Interface IHasOptions&lt;TOptions&gt; | 2sxc 20 for Dnn and Oqtane </title>
+      <title>Interface IHasOptions&lt;TOptions&gt; | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IHasOptions&lt;TOptions&gt; | 2sxc 20 for Dnn and Oqtane ">
+      <meta name="title" content="Interface IHasOptions&lt;TOptions&gt; | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -67,7 +67,7 @@
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
 
                 <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
-                  &nbsp; v20 <i class="bi bi-caret-down-fill fs-6"></i>
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
                 </a>
               </form>
 
@@ -100,10 +100,10 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <div class="alert alert-warning d-block" role="alert">
-      ℹ️ This interface is an internal API and can change at any time. 
-  It's documented so you can understand how it works. <br>
-  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
+        <div class="alert alert-danger d-block" role="alert">
+      ℹ️ This interface is a work-in-progress API and can change at any time. 
+  It's documented so you see how it works. <br>
+  🛑 Do not use it, as future changes could break your code.
     </div>
 
         <article data-uid="ToSic.Sys.Services.IHasOptions`1">
@@ -116,7 +116,7 @@ Interface IHasOptions&lt;TOptions&gt;  <a class="header-action link-secondary" t
 
   <div class="facts text-secondary">
     <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Sys.html">Sys</a>.<a class="xref" href="ToSic.Sys.Services.html">Services</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Eav.Core.dll</dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Sys.Core.dll</dd></dl>
   </div>
 
   <div class="markdown summary"><p>Experimental; describes a service which has options, which must usually be set at setup.</p>
@@ -124,7 +124,8 @@ Interface IHasOptions&lt;TOptions&gt;  <a class="header-action link-secondary" t
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IHasOptions&lt;out TOptions&gt; where TOptions : class</code></pre>
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;Still bound to change a bit&quot;)]
+public interface IHasOptions&lt;out TOptions&gt; where TOptions : class</code></pre>
   </div>
 
 
@@ -149,19 +150,19 @@ Interface IHasOptions&lt;TOptions&gt;  <a class="header-action link-secondary" t
 </h2>
 
 
-  <a id="ToSic_Sys_Services_IHasOptions_1_Options_" data-uid="ToSic.Sys.Services.IHasOptions`1.Options*"></a>
+  <a id="ToSic_Sys_Services_IHasOptions_1_MyOptions_" data-uid="ToSic.Sys.Services.IHasOptions`1.MyOptions*"></a>
 
-  <h3 id="ToSic_Sys_Services_IHasOptions_1_Options" data-uid="ToSic.Sys.Services.IHasOptions`1.Options">
-  Options
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/IHasOptions.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sys_Services_IHasOptions_1_MyOptions" data-uid="ToSic.Sys.Services.IHasOptions`1.MyOptions">
+  MyOptions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/IHasOptions.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The options for this service, read-only.</p>
+  <div class="markdown level1 summary"><p>The options instance for this service, read-only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TOptions Options { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">TOptions MyOptions { get; }</code></pre>
   </div>
 
 
@@ -177,8 +178,11 @@ Interface IHasOptions&lt;TOptions&gt;  <a class="header-action link-secondary" t
 
 
 
-  <h4 class="section" id="ToSic_Sys_Services_IHasOptions_1_Options_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Will usually default to new/standard options of type TOptions,</p>
+  <h4 class="section" id="ToSic_Sys_Services_IHasOptions_1_MyOptions_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><ol>
+<li>Explicitly with a short name &quot;MyOptions&quot; so that the classes can have a subclass called &quot;Options&quot; without name conflicts.</li>
+<li>Will usually default to new/standard options of type <code class="typeparamref">TOptions</code>.</li>
+</ol>
 </div>
 
 

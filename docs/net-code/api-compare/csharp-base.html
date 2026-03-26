@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>C# Base Classes | 2sxc 21 for Dnn and Oqtane </title>
+      <title> | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="C# Base Classes | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content=" | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -102,121 +102,9 @@
 
         
 
-        <article data-uid="NetCode.TypedCode.CompareApis.CSharpBase">
-<h1 id="c-base-classes">C# Base Classes</h1>
+        <article data-uid="">
 
-<p>Every C# helper file / custom service inherits from a base class.
-depending on the base class, the APIs and features in the template will change.</p>
-<p>Example for <code>/AppCode/Services/FunnyService.cs</code> - v17.03+:</p>
-<pre><code class="lang-csharp">namespace AppCode.Services
-{
-  public class FunnyService : Custom.Hybrid.CodeTyped
-  {
-    public string PageTitle =&gt; MyPage.Title;
-  }
-}
-</code></pre>
-<div style="background: #0088F444; overflow: auto">
-  <img src="../../shared/tutorials/assets/razor.png" width="200px" style="padding-right: 20px; float: left">
-  <div style="font-size: x-large;font-weight: bold; margin-bottom: 20px;">
-    Discover More in the Razor Tutorials
-  </div>
-<p>We have an rich series of <a class="xref" href="https://2sxc.org/dnn-tutorials/en/razor">Razor tutorials</a>. You should really check them out 👍.</p>
-</div>
-<br>
-<h2 id="typed--strong-typed-for-v16">Typed / Strong-Typed for v16+</h2>
-<p>These are the <strong>recommended</strong> <em>Typed</em> C# base classes to inherit today:</p>
-<ol>
-<li><code>Custom.Hybrid.CodeTyped</code> - new in v16</li>
-</ol>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Using these base classes ensures that you have the latest, <strong>Typed APIs</strong>.</p>
-</div>
-<p>For older base classes and the differences, see below.</p>
-<h2 id="older-base-classes-dynamic">Older Base Classes (Dynamic)</h2>
-<p>These are the older - <strong>Dynamic</strong> base classes - not recommended for new development, but still supported for backwards compatibility.</p>
-<ol>
-<li><code>Custom.Hybrid.Code14</code> - new in v14</li>
-<li><code>Custom.Hybrid.Code12</code> - new in v12</li>
-<li><code>Custom.Dnn.Code12</code> - v12; same as Hybrid, but with <code>Dnn</code> property</li>
-</ol>
-<h2 id="c-classes-which-dont-inherit">C# Classes Which Don't Inherit</h2>
-<p>If you don't specify a base class, the class will behave as a standard, new class.
-Example:</p>
-<pre><code class="lang-csharp">namespace AppCode.Services
-{
-  public class FunnyService
-  {
-    // This can't work, because there is no MyPage object
-    public string PageTitle =&gt; MyPage.Title;
-  }
-}
-</code></pre>
-<h2 id="compare-dynamic-vs-typed-c-code">Compare Dynamic vs. Typed C# Code</h2>
-<p>The new <em>Typed</em> base classes are much more robust and easier to debug than the classic <em>Dynamic</em> code.
-They provide great IntelliSense (when configured in <a class="xref" href="../../guides/vscode/index.html">VS Code</a>).</p>
-<p>When used in combination with Data Models and Services in the AppCode folder, they also allow you to go <strong>Strong Typed</strong>.
-This is the recommended way to write code in 2sxc 16+.</p>
-<h2 id="customhybridcodetyped">Custom.Hybrid.CodeTyped</h2>
-<div class="NOTE">
-<h5>Note</h5>
-<p><code>CodeTyped</code> uses <strong>Typed API</strong>.
-See TODO:</p>
-<p>See <a class="xref" href="../../api/dot-net/Custom.Hybrid.CodeTyped.html">Custom.Hybrid.CodeTyped</a></p>
-</div>
-<p>This is the newest base class and recommended to use.
-It provides you the full typed API such as the <code>MyItem</code> object and <code>AsItem(...)</code> methods.</p>
-<p>Differences to previous versions:</p>
-<ul>
-<li>Typed API</li>
-<li>The root <code>Edit</code> object was removed, as it's primary purpose was to provide toolbars, for which you should use the <code>Kit.Toolbar</code> service instead.<br>
-If you still need the <code>Edit</code> object, you can find it on <code>Kit.Edit</code>.</li>
-</ul>
-<p>📖 Read about the Typed API here TODO:</p>
-<h2 id="base-classes-in-the-appcode-namespace">Base Classes in the AppCode Namespace</h2>
-<p>These are base classes for which the code lies in the <code>AppCode/*</code> folder of your App.
-Some will be auto-generated, others will be made by you.</p>
-<p>📖 Read about the Typed API here TODO:</p>
-<h2 id="customhybridcode14">Custom.Hybrid.Code14</h2>
-<div class="NOTE">
-<h5>Note</h5>
-<p><code>Code14</code> ist the last release for <strong>Dynamic API</strong>.
-It and all previous versions use <strong>Dynamic API</strong>.
-See TODO:</p>
-<p>See <a class="xref" href="../../api/dot-net/Custom.Hybrid.Code14.html">Custom.Hybrid.Code</a></p>
-</div>
-<p>Code14 almost identical with the older Code12 (see below) with these differences:</p>
-<ol>
-<li><p>the <code>Kit</code> property is new, providing access to the ServiceKit called <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.ServiceKit14.html">ServiceKit14</a>.
-It provides access to all the services you need, like <code>Data</code>, <code>Security</code>, <code>Koi</code>, <code>Convert</code> and more.</p>
-</li>
-<li><p>the <code>Convert</code> property is removed, as it caused confusion with <code>System.Convert</code></p>
-</li>
-</ol>
-<p>Note: hybrid base classes don't have a <code>Dnn</code> property. <a class="xref" href="dnn-object.html">...more</a></p>
-<h2 id="customhybridcode12--customdnncode12">Custom.Hybrid.Code12 &amp; Custom.Dnn.Code12</h2>
-<div class="NOTE">
-<h5>Note</h5>
-<p><code>Code12</code> uses the <strong>Dynamic API</strong>.
-See TODO:</p>
-<p>See <a class="xref" href="../../api/dot-net/Custom.Hybrid.Code12.html">Custom.Hybrid.Code12</a> and <a class="xref" href="../../api/dot-net/Custom.Dnn.Code12.html">Custom.Dnn.Code12</a></p>
-</div>
-<p>This was introduced in 2sxc 12.
-It contains the features which will work cross-platform on both Dnn and Oqtane.
-You should use this base class to create solutions / Apps which work on Dnn and Oqtane.</p>
-<p><code>Custom.Dnn.Code12</code> is identical to <code>Custom.Hybrid.Code12</code> but with the addition of the <code>Dnn</code> property.
-See also <a class="xref" href="dnn-object.html">Dnn Object</a>.</p>
-<h3 id="limitations-of-code12">Limitations of Code12</h3>
-<p>Since this base class is meant to work on both Dnn and Oqtane, it only supports features which both of these platforms support.</p>
-<ol>
-<li><p>The property <code>Dnn</code> doesn't exist on this base class, as it would lead to code which can't run cross-platform. <a class="xref" href="dnn-object.html">...more</a></p>
-</li>
-<li><p>The <code>CreateInstance(...)</code> works only on C# files <code>.cs</code> but not with CSHTML files <code>.cshtml</code> as this probably won't work in .net 5</p>
-</li>
-<li><p>Koi works differently than before. Previously you just used a global object <code>Connect.Koi.Koi</code> to use Koi, but because .net 5 should really use dependency injection, you should now get Koi using <code>GetService&lt;Connect.Koi.ICss&gt;()</code>. The old mechanism will still work in Dnn but would not work in Oqtane.</p>
-</li>
-</ol>
+<p><a class="xref" href="../api-choice/csharp-base.html">moved to</a></p>
 
 </article>
 

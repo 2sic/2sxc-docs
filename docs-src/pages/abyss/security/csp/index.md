@@ -10,10 +10,10 @@ Content Security Policy (CSP) is a security policy that helps you to protect you
 
 You should...
 
-1. [Learn about Content Security Policy (CSP)](xref:Abyss.Security.Csp.Background)
-2. [Learn about the Parts that make it work in 2sxc](xref:Abyss.Security.Csp.Parts)
-3. [Smarten up on the Best-Practices](xref:Abyss.Security.Csp.BestPractices)
-4. [Follow the CSP Guide](xref:Abyss.Security.Csp.Guide)
+* [Learn about Content Security Policy (CSP)](xref:Abyss.Security.Csp.Background){title="icon:shield-lock"}
+* [Learn about the Parts that make it work in 2sxc](xref:Abyss.Security.Csp.Parts){title="icon:gear"}
+* [Smarten up on the Best-Practices](xref:Abyss.Security.Csp.BestPractices){title="icon:check2-circle"}
+* [Follow the CSP Guide](xref:Abyss.Security.Csp.Guide){title="icon:map"}
 
 ---
 

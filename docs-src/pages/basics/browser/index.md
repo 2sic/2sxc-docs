@@ -33,8 +33,9 @@ A key goal of 2sxc is to stay out of the way and let you do things using your fa
 
 Basically you can simply add these frameworks to your Razor-template files as `<script>` or `<link>` tags, and everything will just work. You may want to learn more about
 
-1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
-1. Use [Koi](xref:NetCode.Koi.Index) to detect if the Skin/Theme already has some frameworks (like Bootstrap) to not load them
+* [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index){title="icon:box"}
+* [Koi](xref:NetCode.Koi.Index){title="icon:fish"}
+  use Koi to detect if the Skin/Theme already has some frameworks (like Bootstrap) to avoid loading them twice
 
 ## Custom App HTML is created by the Server-Templates
 

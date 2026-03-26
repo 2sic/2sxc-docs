@@ -31,13 +31,17 @@ IF the platform (Dnn) already offers features to manage such additional info, it
 
 Most internal configuration of 2sxc works as Metadata.
 
-1. **[Fields](xref:Basics.Data.Fields.Index)** on a Content-Type is stored as just the technical Name (which is used in code).  
-    Any additional information for the Edit-UI like description, default-value, etc. is stored as Metadata.
-1. **[Content-Types](xref:Basics.Data.ContentTypes.Index)** just have some internal IDs and names.  
-    Any additional information like description, icon, help-text etc. is stored as Metadata.
-1. **[App Configuration](xref:Basics.App.Configuration)** is treated as Metadata
-    and most of the stored values are available on the [App object](xref:NetCode.DynamicCode.Objects.App.Index)
-1. Various **Apps** like the [](xref:App.FancyBoxGallery) allow the editor to add more information to uploaded images
+* [Fields](xref:Basics.Data.Fields.Index){title="icon:list-ul"}
+  on a Content-Type is stored as just the technical Name (which is used in code).
+  Any additional information for the Edit-UI like description, default-value, etc. is stored as Metadata.
+* [Content-Types](xref:Basics.Data.ContentTypes.Index){title="icon:collection"}
+  just have some internal IDs and names.
+  Any additional information like description, icon, help-text etc. is stored as Metadata.
+* [App Configuration](xref:Basics.App.Configuration){title="icon:gear"}
+  is treated as Metadata and most of the stored values are available on the
+  [App object](xref:NetCode.DynamicCode.Objects.App.Index)
+* [FancyBox Gallery App](xref:App.FancyBoxGallery){title="icon:images"}
+  allows the editor to add more information to uploaded images
 
 ## How 2sxc Metadata Works
 
@@ -55,10 +59,14 @@ Noteworthy to know
 
 ## Discover More
 
-1. [](xref:Basics.Metadata.Create)
-1. [](xref:Basics.Metadata.Read)
-1. [](xref:Basics.Metadata.TargetTypes)
-1. [](xref:ToSic.Eav.Metadata)
+* [Create Metadata](xref:Basics.Metadata.Create){title="icon:plus-circle"}
+  how to add metadata to entities, fields or other targets
+* [Read Metadata](xref:Basics.Metadata.Read){title="icon:search"}
+  how to access and use metadata in code
+* [Metadata Target Types](xref:Basics.Metadata.TargetTypes){title="icon:bullseye"}
+  overview of all objects which can have metadata
+* [ToSic.Eav.Metadata Namespace](xref:ToSic.Eav.Metadata){title="icon:journal-code"}
+  API reference for metadata related classes
 
 ## Demo App and further links
 

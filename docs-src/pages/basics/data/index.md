@@ -9,13 +9,18 @@ uid: Basics.Data.Index
 
 
 Data in 2sxc covers various aspects:
+**Data** as a developers sees it - as tables of items / Entities
 
-1. **Data** as a developers sees it - as tables of items / Entities
-1. [Content](xref:Basics.Content.Index) as an editor sees it - basically bundles of text/image shown on a specific page
-1. [Content Presentation Settings](xref:Basics.Content.Presentation) which configure how the content should be shown for each item
-1. [Settings](xref:Basics.App.Settings) at App-Level
-1. [Language Resources](xref:Basics.App.Resources) at App-level for multilanguage output
-1. [Assets](xref:Basics.Content.Assets) (images, documents) belonging to this each data-item / Entity
+* [Content](xref:Basics.Content.Index){title="icon:file-text"}
+    as an editor sees it basically bundles of text/image shown on a specific page
+* [Content Presentation Settings](xref:Basics.Content.Presentation){title="icon:sliders"}
+    which configure how the content should be shown for each item
+* [Settings](xref:Basics.App.Settings){title="icon:gear"}
+    at App-Level
+* [Language Resources](xref:Basics.App.Resources){title="icon:translate"}
+    at App-level
+* [Assets](xref:Basics.Content.Assets){title="icon:image"} (images, documents)
+    belonging to this each data-item / Entity
 
 This kind of data is usually used to:
 
@@ -29,7 +34,7 @@ This kind of data is usually used to:
 This kind of data can be used in many ways. Let's start by looking where this fits in the stack:
 
 
-<div class="context-box2" width="100%">
+<div class="context-box-summary" style="max-width:420px;">
 
 [!include[](~/pages/basics/stack/_shared-all.md)]
   <style>.context-box2 .data-data { visibility: visible; } </style>
@@ -43,7 +48,8 @@ This kind of data can be used in many ways. Let's start by looking where this fi
 
 Every App contains [Content-Types](xref:Basics.Data.ContentTypes.Index) and [Entities](xref:Basics.Data.Entities.Index) - like this:
 
-<img src="./assets/app-content-type-entity.png" width="100%" class="full-width">
+<img src="./assets/app-content-type-entity.png" style="max-width:420px;">
+
 <br>
 
 * [Content Types](xref:Basics.Data.ContentTypes.Index) are the schema, they define what fields an entity has - peek the [object structure](xref:Basics.Data.ContentTypes.ObjectStructure).
@@ -129,10 +135,10 @@ Once the data is retrieved it can be used in Templates, WebAPIs, JavaScript and 
 
 ## More Advanced Topics
 
-1. [Entities and Dynamic Entities](xref:NetCode.Data.Index)
-1. [Using Entities as Content or as Data](xref:Basics.Content.Index)
-1. [Content Lists of Entities](xref:Basics.Content.Lists)
-1. [VisualQuery](xref:Basics.Query.VisualQuery.Index)
-1. [Data Sources](xref:NetCode.DataSources.Index)
-1. [Headless APIs](xref:WebApi.Headless.Index)
-1. [Metadata](xref:Basics.Metadata.Index)
+* [Entities and Dynamic Entities](xref:NetCode.Data.Index){title="icon:database"}
+* [Using Entities as Content or as Data](xref:Basics.Content.Index){title="icon:collection"}
+* [Content Lists of Entities](xref:Basics.Content.Lists){title="icon:list-ul"}
+* [VisualQuery](xref:Basics.Query.VisualQuery.Index){title="icon:diagram-3"}
+* [Data Sources](xref:NetCode.DataSources.Index){title="icon:database"}
+* [Headless APIs](xref:WebApi.Headless.Index){title="icon:cloud"}
+* [Metadata](xref:Basics.Metadata.Index){title="icon:tags"}

@@ -20,5 +20,5 @@ These are the base classes you can inherit from as of v14 (we'll explain each in
 > [!TIP]
 > Using these base classes ensures that you have the latest, typed APIs.
 
-For older base classes and the differences, see [Compare Razor @inherits](xref:NetCode.TypedCode.CompareApis.RazorBase)
+For older base classes and the differences, see [Compare Razor @inherits](xref:NetCode.ApiChoice.RazorBase)
 

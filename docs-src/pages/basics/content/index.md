@@ -53,5 +53,5 @@ You may also want to know how [Content Blocks fit into Dnn Modules](xref:Basics.
 
 You may want to learn more about:
 
-1. [Assets](xref:Basics.Content.Assets)
-1. [ADAM - Automatic Digital Asset Management](xref:Basics.Cms.Adam.Index)
+* [Assets](xref:Basics.Content.Assets){title="icon:image"}
+* [ADAM - Automatic Digital Asset Management](xref:Basics.Cms.Adam.Index){title="icon:archive"}

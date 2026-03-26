@@ -2,7 +2,9 @@
 uid: Extensions.AppExtensions.By2sxc.FieldNumberSliderBasic.Index
 ---
 
-# App Extension: Number Slider Basic (Input Field)
+# Number Slider Basic (Input Field)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 This adds a nice number slider as an input type for number fields.
 
@@ -10,7 +12,7 @@ This adds a nice number slider as an input type for number fields.
 
 ## Installation and Use
 
-➡️ See [](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 Once installed, you can simply pick the "Number Slider Basic" input type
 when configuring a number field in your content type.

@@ -44,8 +44,8 @@ This is a very different concept, where an Entity enriches something else. Read 
 
 ## Advanced Topics
 
-* [Razor LINQ tutorial showing how to navigate between relationships](xref:Tut.Linq.Home)
-* [RelationshipFilter Data Source to find items related to another item](xref:ToSic.Eav.DataSources.RelationshipFilter)
+* [Razor LINQ tutorial showing how to navigate between relationships](xref:Tut.Linq.Home){title="icon:code-slash"}
+* [RelationshipFilter Data Source to find items related to another item](xref:ToSic.Eav.DataSources.RelationshipFilter){title="icon:diagram-3"}
 
 ## History
 

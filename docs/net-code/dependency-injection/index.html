@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Depedency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Dependency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Depedency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Dependency Injection in 2sxc and EAV | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -103,27 +103,41 @@
         
 
         <article data-uid="NetCode.DependencyInjection.Index">
-<h1 id="depedency-injection-in-2sxc-and-eav">Depedency Injection in 2sxc and EAV</h1>
+<h1 id="dependency-injection-in-2sxc-and-eav">Dependency Injection in 2sxc and EAV</h1>
 
 <p><strong>Dependency Injection</strong> is a way to <strong>structure applications</strong> and to <strong>get Services</strong> or <strong>Helpers</strong> in your code.</p>
 <p>👉 We suggest you read the <a class="xref" href="introduction.html">introduction to Dependency Injection</a></p>
+<h2 id="prefer-kit-do-getservice">Prefer <code>Kit</code> do <code>GetService()</code></h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>It's recommended to use <code>Kit</code> instead of <code>GetService()</code> directly for better maintainability and readability.</p>
+<p>The <code>Kit</code> object has almost all the services you'll ever need.</p>
+</div>
+<p>So the example which will be shown below, would usually be written like this:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+@Kit.Page.AddOpenGraph(&quot;video&quot;, &quot;https://2sxc.org/videos/intro.mp4&quot;);
+</code></pre>
 <h2 id="how-can-i-use-dependency-injection-in-razor">How Can I Use Dependency Injection in Razor?</h2>
 <p>Previously this was reserved for internal use.
 Starting in 2sxc v11.11 all Razor classes have a command called <a class="xref" href="../dynamic-code/get-service.html">GetService</a>.
 This is how your code would get a service:</p>
-<pre><code class="lang-c#">@inherits Custom.Hybrid.Razor14
-@Kit.Page.AddOpenGraph(&quot;video&quot;, &quot;https://2sxc.org/videos/intro.mp4&quot;);
+<pre><code class="lang-razor">@inherits Custom.Hybrid.Razor12
+@GetService&lt;ToSic.Sxc.Services.IPageService&gt;().AddOpenGraph(&quot;video&quot;, &quot;https://2sxc.org/videos/intro.mp4&quot;);
 </code></pre>
-<p>👉 Read more about <a class="xref" href="../dynamic-code/get-service.html">GetService</a> in the docs or in the <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_">GetService API</a>.</p>
-<h2 id="how-can-i-use-dependency-injection-in-webapis">How Can I Use Dependency Injection in WebAPIs?</h2>
-<p>Just like with with Razor, 2sxc 11.11 added the same GetService to all WebAPIs.</p>
-<h2 id="how-can-i-use-dependency-injection-in-dnn-modules-and-skins">How Can I Use Dependency Injection in Dnn Modules and Skins</h2>
-<p>👉 <a class="xref" href="../platform-api/dnn/dependency-injection.html">Dependency Injection in Dnn Skins and Modules</a></p>
-<h2 id="how-can-i-use-dependency-injection-in-oqtane">How Can I Use Dependency Injection in Oqtane</h2>
-<p>👉 <a class="xref" href="../platform-api/oqtane/dependency-injection.html">Dependency Injection in Oqtane</a></p>
-<h2 id="services-my-code-may-need">Services My Code May Need</h2>
-<p>You can get just about anything from 2sxc.
-The most common services you'll request as of 2sxc 12 are in the <a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.html">ToSic.Sxc.Services namespace</a>.</p>
+<h2 id="discover-more">Discover More</h2>
+<ul>
+<li><a class="xref" href="../dynamic-code/get-service.html" title="icon:file-code">Read more about GetService in your Code</a></li>
+<li><a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_GetService_" title="icon:journal-code">Check out the GetService API</a></li>
+<li><a class="xref" href="../../api/dot-net/ToSic.Sxc.Services.html" title="icon:journal-code">Typical 2sxc Services you May Need</a></li>
+<li><a class="xref" href="../platform-api/dnn/dependency-injection.html" title="icon:☢️">Dependency Injection in Dnn Modules and Skins</a></li>
+<li><a class="xref" href="../platform-api/oqtane/dependency-injection.html" title="icon:🩸">Dependency Injection in Oqtane</a></li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<ol>
+<li>How Can I Use Dependency Injection in WebAPIs?<br>
+Just like with with Razor, 2sxc 11.11 added the same GetService to all WebAPIs.</li>
+</ol>
+<hr>
 <h2 id="history-of-dependency-injection-in-2sxc">History of Dependency Injection in 2sxc</h2>
 <ol>
 <li>2sxc introduced Dependency Injection 1.1 in v9 (May 2017)</li>

@@ -113,34 +113,56 @@
 <li>ADAM support to drop images and documents</li>
 </ol>
 <h2 id="modes-new-v1504">Modes (new v15.04)</h2>
-<p>The string-wysiwyg field type has these modes</p>
-<ol>
-<li><a href="#mode-default">Default</a></li>
-<li><a href="#mode-text">Text</a></li>
-<li><a href="#mode-text-basic">Text Basic</a></li>
-<li><a href="#mode-text-minimal">Text Minimal</a></li>
-<li><a href="#mode-text-plain">Text Plain</a></li>
-<li><a href="#mode-rich">Rich WYSIWYG</a></li>
-</ol>
-<h2 id="mode-default">Mode <code>default</code></h2>
+<p>The string-wysiwyg field type has these modes.</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_default" role="tab" aria-controls="tabpanel_1_default" data-tab="default" tabindex="0" aria-selected="true"><code>default</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_text" role="tab" aria-controls="tabpanel_1_text" data-tab="text" tabindex="-1"><code>text</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_text-basic" role="tab" aria-controls="tabpanel_1_text-basic" data-tab="text-basic" tabindex="-1"><code>text-basic</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_text-minimal" role="tab" aria-controls="tabpanel_1_text-minimal" data-tab="text-minimal" tabindex="-1"><code>text-minimal</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_text-plain" role="tab" aria-controls="tabpanel_1_text-plain" data-tab="text-plain" tabindex="-1"><code>text-plain</code></a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_rich" role="tab" aria-controls="tabpanel_1_rich" data-tab="rich" tabindex="-1"><code>rich</code></a>
+</li>
+</ul>
+<section id="tabpanel_1_default" role="tabpanel" data-tab="default">
+
 <p>This is the standard mode, which is used if you don't specify a mode.
 It has various buttons to edit text and more.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-default.jpg" width="100%">
-<h2 id="mode-text">Mode <code>text</code></h2>
+</section>
+<section id="tabpanel_1_text" role="tabpanel" data-tab="text" aria-hidden="true" hidden="hidden">
+
 <p>This is the basic text mode.
 It doesn't show as many buttons and disables features such as adding images to the content.
 The text-mode is meant for WYSIWYG where the user shouldn't add images.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-text.jpg" width="100%">
-<h2 id="mode-text-basic">Mode <code>text-basic</code></h2>
+</section>
+<section id="tabpanel_1_text-basic" role="tabpanel" data-tab="text-basic" aria-hidden="true" hidden="hidden">
+
 <p>This is a reduced text mode and doesn't provide the editor with headings.
 It's meant for simpler text where the editor should really not add headings to the content,
 but can still do basic formatting and add lists etc.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-text-basic.jpg" width="100%">
-<h2 id="mode-text-minimal">Mode <code>text-minimal</code></h2>
+</section>
+<section id="tabpanel_1_text-minimal" role="tabpanel" data-tab="text-minimal" aria-hidden="true" hidden="hidden">
+
 <p>This is a very reduced text mode which only provides basic formatting such as bold/italic.
 It's meant for inputs where the user should not be able to add headings or lists.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-text-minimal.jpg" width="100%">
-<h2 id="mode-text-plain">Mode <code>text-plain</code></h2>
+</section>
+<section id="tabpanel_1_text-plain" role="tabpanel" data-tab="text-plain" aria-hidden="true" hidden="hidden">
+
 <p>This is the most reduced wysiwyg mode, almost not a WYSIWYG at all.
 It's meant for teasers and other short texts, where the user can basically not paste formatted text
 or make anything bold/italic.</p>
@@ -149,7 +171,9 @@ or make anything bold/italic.</p>
 <ol>
 <li>Disable dialog mode. Since the plain text mode is meant for short texts, it's not really useful to have a dialog mode.</li>
 </ol>
-<h2 id="mode-rich">Mode <code>rich</code></h2>
+</section>
+<section id="tabpanel_1_rich" role="tabpanel" data-tab="rich" aria-hidden="true" hidden="hidden">
+
 <p>This is a new mode which is still in development.
 It provides special features to make content which is rich and responsive at the same time.</p>
 <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/toolbar-rich.jpg" width="100%">
@@ -162,8 +186,34 @@ It provides special features to make content which is rich and responsive at the
 <li>Image text wrapping so that multiple side-images are under each other and not staggered</li>
 </ol>
 <p>👉🏽 See <a class="xref" href="rich.html">Field Input-Type string-wysiwyg Rich-Mode new 16.01</a></p>
+</section>
+</div>
 <h2 id="configure-a-string-wysiwyg">Configure a String-Wysiwyg</h2>
 <p>The mode is configured in the normal field settings.</p>
+<h3 id="special-configuration-of-the-html-button">Special Configuration of the HTML Button</h3>
+<p>In the normal field settings, you can also configure whether the HTML button should be shown or not.
+This is useful if you want to allow users to add images and other media, but not allow them to edit the HTML directly.</p>
+<p>The system defaults are as follows:</p>
+<ol>
+<li>The HTML button is shown for all users by default - but only in the full-screen dialog mode, not in the inline mode.</li>
+<li>The HTML button is hidden for all users by default in the inline mode.</li>
+</ol>
+<p>You change the default behavior for all fields in the system by going to the System Settings (new in v21.04):</p>
+<ul>
+<li>&quot;Button HTML Source&quot; modifies the default - leaving it on <code>default</code> will keep the existing behavior.</li>
+<li>&quot;Button HTML Source (when in Debug mode)&quot; setting - leaving it on <code>default</code> will allow super-users to see the HTML button in Debug mode, even if it's hidden for normal users.</li>
+</ul>
+<div gallery="sys-settings">
+  <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/sys-settings-01.jpg" width="100%">
+  <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/sys-settings-02.jpg" width="100%">
+  <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/sys-settings-03.jpg" width="100%">
+  <img src="../../../../pages/basics/data/fields/string-wysiwyg/assets/sys-settings-04.jpg" width="100%">
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can specify this at the app-level, site-level or system-level, and the more specific setting will override the more general one.</p>
+</div>
+<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in EAV 1.0 2sxc 1.0, originally as part of the <a class="xref" href="../string.html">string field type</a></li>
@@ -172,6 +222,7 @@ It provides special features to make content which is rich and responsive at the
 <li>Added option to switch between full-screen or directly in the form in 10.09</li>
 <li>Added options to enable / disable HTML and Advanced buttons in 10.09</li>
 <li>Added modes in 15.04, released in 16.00</li>
+<li>Added ability to hide HTML button for normal users, but show it for super-users in Debug mode in 21.04</li>
 </ol>
 
 </article>

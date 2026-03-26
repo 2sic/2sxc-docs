@@ -18,17 +18,26 @@ It's ideal both for simple scripts like galleries as well as for bundling and di
 
 ## The 2sxc JavaScript APIs
 
-1. [Read up on getting started](xref:JsCode.2sxcApi.Index)
-1. [$2sxc Global](xref:Api.Js.SxcJs.SxcGlobal) is the global object for everything
-1. [Sxc Instance](xref:JsCode.2sxcApi.Sxc.Index) with is the module-level object
+* [Read up on getting started](xref:JsCode.2sxcApi.Index){title="icon:rocket"}
+* [$2sxc Global](xref:Api.Js.SxcJs.SxcGlobal){title="icon:globe"}
+* [Sxc Instance](xref:JsCode.2sxcApi.Sxc.Index){title="icon:box"}
 
 ## The Edit Experience
 
-1. [Overview to Editing Content](xref:Basics.Browser.EditUx.Index) 
-1. Customize the edit experience (buttons, toolbars...) with the [manage controller](xref:JsCode.2sxcApi.Sxc.Manage)
-1. Customize the [quickE (quick edit) experience](xref:JsCode.QuickE.Index)
-1. In-page edit toolbars for [html](xref:JsCode.Toolbars.Index) or [javascript](xref:JsCode.Toolbars.Advanced) with [settings](xref:JsCode.Toolbars.Settings)
-1. internals of a [command (with full list)](xref:JsCode.Commands.Index), of [buttons](xref:JsCode.Toolbars.Buttons) and creating [custom buttons](xref:Api.Js.SxcJs.CommandCodeParams)
+* [Overview to Editing Content](xref:Basics.Browser.EditUx.Index){title="icon:pencil"}
+  Basics of the in-page editing experience
+
+* [Manage Controller](xref:JsCode.2sxcApi.Sxc.Manage){title="icon:sliders"}
+    Customize the edit experience (buttons, toolbars...)
+
+* [QuickE (Quick Edit)](xref:JsCode.QuickE.Index){title="icon:lightning"}
+  Customize the quick edit experience
+
+* [Edit Toolbars](xref:JsCode.Toolbars.Index){title="icon:layout"}
+  In-page edit toolbars for HTML or JavaScript with configurable settings
+
+* [Commands and Buttons](xref:JsCode.Commands.Index){title="icon:gear"}
+  Internals of commands, toolbar buttons and creating custom buttons
 
 
 ## Using 2sxc with Popular JS Libraries

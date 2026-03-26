@@ -3,11 +3,20 @@ import { Xref } from '../../shared-global/src/scripts/xref/xref';
 import { docReady } from '../../shared-global/src/scripts/utils/docready';
 import { configureLightboxes } from '../../shared-global/src/scripts/images';
 import { setVersionButtonLink } from '../../shared-global/src/scripts/versions';
-import packageJson from '../../../package.json';
 import { lightboxForContextIllustration } from '../../shared-global/src/scripts/context-illustrations';
 import "./main.scss";
 
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
+import { convertDocsLinks } from '../../shared-global/src/scripts/docs-links';
+
+// Experimental - should provide pan/zoom on mermaid, but can't get it to work yet
+// also confusing, because the plugin seems very new.
+// import { enhanceMermaidDiagrams } from '@mostlylucid/mermaid-enhancements';
+// import '@mostlylucid/mermaid-enhancements/dist/style.css';
+
+// // After your Mermaid diagrams are rendered
+// enhanceMermaidDiagrams();
+
 
 // Log some version of this file so we see changes are being applied
 // console.log('2sxc main.ts ' + packageJson.version);
@@ -46,5 +55,6 @@ docReady(function() {
   // Activate popups on the small context illustrations
   // typically to the right of the introduction content
   lightboxForContextIllustration();
-});
 
+  convertDocsLinks();
+});

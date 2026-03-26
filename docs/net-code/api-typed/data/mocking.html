@@ -254,38 +254,33 @@ But there are issues with this:</p>
 <li>It requires a clear way to find the dummy-item in the list of all items, and this marker should never change</li>
 <li>The list of all data always contains some dummy data, which must be filtered out in other scenarios</li>
 </ol>
-<h3 id="option-3-use-mock-data">Option 3: Use Mock Data</h3>
+<h3 id="option-3-use-mock-data-new-v2103">Option 3: Use Mock Data (new v21.03)</h3>
 <p>A very popular way to handle this is using mock data.
 Here's an example:</p>
 <pre><code class="lang-razor">@{
   var building = expectedBuilding
-    ?? AsItem(new {
+    ?? Kit.Convert.ToMockItem(new {
       Title = &quot;Default Building&quot;,
       Description = &quot;This is a default building&quot;,
       Image = &quot;file:72&quot;,
-    }, mock: true);
+    });
 }
 &lt;h1&gt;@expectedBuilding.Title&lt;/h1&gt;
 </code></pre>
-<p>Note the <code>mock: true</code> in the <code>AsItem(new {...}, mock: true)</code>.
-Without this parameter, 2sxc would throw an error.
-The reason is that 2sxc wants to make sure that you are aware that you are using mock data.
-So <em>without</em> the <code>mock: true</code>, 2sxc will only accept Entity-like objects in <code>AsItem()</code>.
-With the <code>mock: true</code> it will also accept any other object, and will then create a mock-entity from it.</p>
 <h2 id="basic-mock-data">Basic Mock Data</h2>
 <p>The mock data API is quite powerful, so let's see some advanced examples:</p>
-<pre><code class="lang-c#">var m = AsItem(new {
+<pre><code class="lang-c#">var m = Kit.Convert.ToMockItem(new {
     Id = 99999,               // The Id will be available on m.Id
     Guid = Guid.NewGuid(),    // The Guid will be available on m.Guid
     Title = &quot;Dummy Item&quot;,     // The Title will be available on m.Title
     SomeNumber = 42,          // eg. for m.Int(&quot;SomeNumber&quot;) or m.Float(&quot;SomeNumber&quot;)
     SomeString = &quot;Hello&quot;,     // eg. for m.String(&quot;SomeString&quot;)
-  }, mock: true);
+  });
 </code></pre>
 <h2 id="mock-data-with-sub-objects">Mock Data with Sub-Objects</h2>
 <p>Items can have sub-objects such as Children or the special <code>Presentation</code> object.
 Here are some examples:</p>
-<pre><code class="lang-c#">var m = AsItem(new {
+<pre><code class="lang-c#">var m = Kit.Convert.ToMockItem(new {
     Presentation = new {                  // m.Presentation
       Highlight = true,                   // m.Presentation.Bool(&quot;Highlight&quot;)
       GalleryMode = &quot;tiles&quot;,              // m.Presentation.String(&quot;GalleryMode&quot;)
@@ -302,13 +297,13 @@ Here are some examples:</p>
         Title = &quot;Tag 2&quot;,
       },
     }
-  }, mock: true);
+  });
 </code></pre>
 <h2 id="mock-parents">Mock Parents</h2>
 <p>Any normal TypedItem has a Method <code>.Parents(...)</code> to find other entities which are related.
 This is the opposite of <code>.Children(...)</code> which finds children.</p>
 <p>If your code expects parents, you can mock it like this:</p>
-<pre><code class="lang-c#">var m = AsItem(new {
+<pre><code class="lang-c#">var m = Kit.Convert.ToMockItem(new {
     Parents = new object[] {                // foreach(var p in m.Parents(&quot;tags&quot;)
       new {
         Title = &quot;How to get your dream-home&quot;,
@@ -335,7 +330,7 @@ This is the opposite of <code>.Children(...)</code> which finds children.</p>
       },
 
     }
-  }, mock: true);
+  });
 </code></pre>
 <p>At first, this seems similar to the <code>Children</code> example, but there is more too it.
 The reason is that the <code>.Parents(...)</code> has optional parameters:</p>
@@ -350,7 +345,7 @@ var caseStudyPrimaryParents = m.Parents(type: &quot;CaseStudy&quot;, field: &quo
 <h2 id="mock-links--references">Mock Links / References</h2>
 <p>Links can be values such as <code>https://...</code> or internal references such as <code>page:123</code> or <code>file:50203</code>.
 Note that the IDs in the examples below must of course exist on your system.</p>
-<pre><code class="lang-c#">var m = AsItem(new {
+<pre><code class="lang-c#">var m = Kit.Convert.ToMockItem(new {
     // m.Url(&quot;Website&quot;) and m.String(&quot;Website&quot;) both return the same
     Website = &quot;https://www.2sxc.org&quot;,
     // m.String(&quot;ListPage&quot;) will contain `page:123`
@@ -359,7 +354,7 @@ Note that the IDs in the examples below must of course exist on your system.</p>
     // m.String(&quot;Logo&quot;) will contain `file:50203`
     // m.Url(&quot;Logo&quot;) will contain the full url to the file
     Logo = &quot;file:50203&quot;,
-  }, mock: true);
+  });
 </code></pre>
 <h2 id="mock-files">Mock Files</h2>
 <p>Typed Items can reference one or many files, using these APIs:</p>
@@ -367,12 +362,12 @@ Note that the IDs in the examples below must of course exist on your system.</p>
 <li><code>thing.File(&quot;fieldName&quot;)</code> to get a single <code>IFile</code></li>
 <li><code>thing.Folder(&quot;fieldName&quot;)</code> to get an <code>IFolder</code> containing zero or more files and folders</li>
 </ul>
-<pre><code class="lang-c#">var m = AsItem(new {
+<pre><code class="lang-c#">var m = Kit.Convert.ToMockItem(new {
     // m.String(&quot;Logo&quot;) will contain `file:50203`
     // m.Url(&quot;Logo&quot;) will contain the full url to the file
     // m.File(&quot;Logo&quot;) will contain the IFile object to this file
     Logo = &quot;file:50203&quot;,
-  }, mock: true);
+  });
 </code></pre>
 <div class="TIP">
 <h5>Tip</h5>

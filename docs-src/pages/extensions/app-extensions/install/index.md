@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Install.Index
 
 # How to Install App Extensions
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 App Extensions can be installed quickly and easily - and also removed again if needed.
 
 There are two ways to install App Extensions:
@@ -22,6 +12,10 @@ There are two ways to install App Extensions:
     Many App Extensions are available in the 2sxc [App Store](https://2sxc.org/en/apps/type/app-extension).
     You can browse the store, find the extension you want, and install it directly into your App with just a few clicks.
 2. **Manual Installation**: If you have an App Extension package (usually a .zip file), you can manually upload and install it into your App through the 2sxc interface.
+
+Here's a short video demonstrating installation and upgrades of App Extensions:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pllbgBGsUWA?si=imlg5wQnMwFDfV03" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## [Install from the 2sxc App Store](#tab/install-store)
 
@@ -92,3 +86,5 @@ You can install to multiple editions in the same go.
 ## History
 
 * App Extensions introduced in v21
+
+Shortlink: <https://go.2sxc.org/app-ext-install>

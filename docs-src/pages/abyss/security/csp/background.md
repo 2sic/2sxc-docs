@@ -154,8 +154,8 @@ This is because it's kind of a replacement; older browsers would then process `u
 
 ## Learn more About CSP
 
-1. [Read about CSP on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
-1. [Read about CSP on W3](https://www.w3.org/TR/CSP/)
+* [Read about CSP on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP){title="icon:journal-text"}
+* [Read about CSP on W3](https://www.w3.org/TR/CSP/){title="icon:journal-text"}
 
 ## History
 

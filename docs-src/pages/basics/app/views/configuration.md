@@ -9,8 +9,8 @@ uid: Basics.App.Views.Configuration
 
 A view has a lot of configuration options, but they are all explained in the edit view dialog, so we're not documenting this here. Two things of interest which you may want to read about:
 
-1. [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680)
-1. [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737)
+* [View-switching based on url-params](http://2sxc.org/en/Docs/Feature/feature/4680){title="icon:shuffle"}
+* [Security protecting views like admin-views](http://2sxc.org/en/Docs/Feature/feature/4737){title="icon:shield-lock"}
 
 ## View Configuration in Razor
 
@@ -24,10 +24,10 @@ A view has a lot of configuration options, but they are all explained in the edi
 
 ## Advanced Topics
 
-* [Switching between views based on the url](https://2sxc.org/en/docs/Feature/feature/4680)
-* [Differences between features when using Content or App](https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use)
-* [Protecting Views for certain users using permissions](https://2sxc.org/en/Docs/Feature/feature/4737)
-* [Hide advanced features from normal editors](https://2sxc.org/en/docs/Feature/feature/3592)
+* [Switching between views based on the url](https://2sxc.org/en/docs/Feature/feature/4680){title="icon:shuffle"}
+* [Differences between features when using Content or App](https://2sxc.org/en/blog/post/2sxc-app-vs-2sxc-content-which-one-should-i-use){title="icon:journal-text"}
+* [Protecting Views for certain users using permissions](https://2sxc.org/en/Docs/Feature/feature/4737){title="icon:shield-lock"}
+* [Hide advanced features from normal editors](https://2sxc.org/en/docs/Feature/feature/3592){title="icon:eye-slash"}
 
 ## History
 

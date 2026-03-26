@@ -4,22 +4,14 @@ uid: Extensions.AppExtensions.Index
 
 # App Extensions - Overview (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 App Extensions are a powerful way to extend the functionality of your 2sxc Apps.
 They allow you to add custom features, tools, and integrations that can enhance the capabilities of your applications.
 
 > [!TIP]
 > Think of App Extensions like nuget or npm packages, but specifically designed for 2sxc Apps.
 > They can include code, templates, styles, and other resources that can be easily integrated into your App.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pllbgBGsUWA?si=imlg5wQnMwFDfV03" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Examples
 
@@ -32,7 +24,7 @@ They allow you to add custom features, tools, and integrations that can enhance 
     Another example is an Admin Tools extension [Radmin](xref:Extensions.AppExtensions.By2sxc.Radmin.Index) which lets you quickly create admin tables of data to manage:
 
 3. **Example: DataSource Extension**  
-    A DataSource extension like [Open Meteo](xref:Extensions.AppExtensions.By2sxc.DataSourcesOpenMeteo.Index) allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
+    A DataSource extension like [Open Meteo](xref:Extensions.AppExtensions.By2sxc.OpenMeteo.Index) allows you to fetch weather data from the Open Meteo API and use it within your App's queries.
 
 <div gallery="gallery1">
   <img src="./assets/example-color-picker-spectrum.jpg" alt="Color Picker Spectrum Example" class="full-width"/>
@@ -54,9 +46,12 @@ They allow you to add custom features, tools, and integrations that can enhance 
 
 To start using App extensions, follow these steps:
 
-1. **Access the App Extensions Interface**: Navigate to the App management section in your 2sxc installation and select the App you want to extend.
-2. [Browse Available Extensions](https://2sxc.org/en/apps/type/app-extension) in the App Catalog.
-3. [Install an Extension](xref:Extensions.AppExtensions.Install.Index): Select an extension you want to install and follow the prompts to add it to your App.
+**Access the App Extensions Interface**: Navigate to the App management section in your 2sxc installation and select the App you want to extend.
+
+* [Browse Available Extensions](https://2sxc.org/en/apps/type/app-extension){title="icon:grid"}
+  browse extensions in the App Catalog
+* [Install an Extension](xref:Extensions.AppExtensions.Install.Index){title="icon:download"}
+  select an extension and follow the prompts to add it to your App
 
 > [!TIP]
 > For a first experience, we recommend you try the
@@ -67,20 +62,24 @@ To start using App extensions, follow these steps:
 
 App extensions can come in various types - and they can combine all the types, including:
 
-- [Input Types](xref:Extensions.AppExtensions.Create.InputField): Custom input fields for data entry.
-- [App Code and Web APIs](xref:Extensions.AppExtensions.Create.AppCode.Index): Custom C# code and Web APIs to add server-side functionality.
-- [Visual Queries](xref:Extensions.AppExtensions.Create.VisualQuery.Index): Predefined queries that can be reused across different parts of your App
-- [Templates / Views](xref:Extensions.AppExtensions.Create.RazorAndViews.Index): Custom templates for rendering content.
-- **Scripts**: JavaScript or server-side scripts that add functionality.
-- **Styles**: CSS styles that can be applied to your App's appearance.
-- **Tools**: Utilities that enhance the App development experience.
-- [DataSources](xref:Extensions.AppExtensions.Create.AppCode.DataSources): Custom data sources for retrieving and manipulating data.
+* [Input Types](xref:Extensions.AppExtensions.Create.InputField.Index){title="icon:keyboard"}
+  custom input fields for data entry
+* [App Code and Web APIs](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:code-slash"}
+  custom C# code and Web APIs to add server-side functionality
+* [Visual Queries](xref:Extensions.AppExtensions.Create.VisualQuery.Index){title="icon:diagram-3"}
+  predefined queries that can be reused across different parts of your App
+* [Templates / Views](xref:Extensions.AppExtensions.Create.RazorAndViews.Index){title="icon:layout-text-window"}
+  custom templates for rendering content
+* [DataSources](xref:Extensions.AppExtensions.Create.AppCode.DataSources){title="icon:database"}
+  custom data sources for retrieving and manipulating data
+
+1. **Scripts**: JavaScript or server-side scripts that add functionality.
+2. **Styles**: CSS styles that can be applied to your App's appearance.
+3. **Tools**: Utilities that enhance the App development experience.
 
 ## Developing Your First App Extension
 
-For first steps, let's create a simple Input Type extension.
-
-TODO:
+➡️ For first steps, let's create a [simple Hello-World extension](xref:Extensions.AppExtensions.Create.HelloWorld.Index).
 
 ---
 

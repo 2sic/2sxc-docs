@@ -9,11 +9,16 @@ uid: Basics.Query.Index
 
 2sxc Templates and Headless APIs can use **Queries** to access data. This is pretty amazing:
 
-1. You create such queries using a **[VisualQuery](xref:Basics.Query.VisualQuery.Index)** designer
-1. Queries can then be [assigned to a View](xref:Basics.Query.QueryInView) so the template recieves this as the data to work with
-1. Queries can also be used directly in the [Headless API](xref:WebApi.Headless.Index) if you configure the permissions for this
-1. The Edit-UI can also [use queries in dropdown fields](xref:Basics.Query.EditForm)
-1. You can also access queries using [App.Query["QueryName"]](xref:NetCode.DynamicCode.Objects.App.Query)
+* [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index){title="icon:diagram-3"}
+  create queries using the VisualQuery designer
+* [Assign Queries to a View](xref:Basics.Query.QueryInView){title="icon:layout-text-window"}
+  use queries as the data source for a view template
+* [Use Queries in the Headless API](xref:WebApi.Headless.Index){title="icon:cloud"}
+  configure permissions to use queries through the Headless API
+* [Use Queries in Dropdown Fields](xref:Basics.Query.EditForm){title="icon:chevron-down"}
+  use queries in edit forms such as dropdown fields
+* [Access Queries in Code](xref:NetCode.DynamicCode.Objects.App.Query){title="icon:code-slash"}
+  access queries using App.Query["QueryName"]
 
 In addition, there are also some built-in [System Queries](xref:Basics.Query.SystemQueries) which will get system data for you like a list of Content-Types or Apps in the System.
 

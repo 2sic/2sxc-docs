@@ -56,14 +56,15 @@ function hasMemberWithAttribute(model, memberType) {
     (child) =>
       // Check if the child has nested children
       Array.isArray(child.children) &&
-      // Check if the first nested child has attributes
-      child.children[0]?.attributes?.some((attr) =>
-        // Check if any attribute type includes "InternalApi"
-        attr.type.includes(memberType)
+      // Check if any nested child has attributes
+      child.children.some((nestedChild) =>
+        Array.isArray(nestedChild.attributes) &&
+        nestedChild.attributes.some((attr) =>
+          // Check if any attribute type includes "InternalApi"
+          attr.type.includes(memberType)
+        )
       )
   );
-  // if (hasInternalApiMethod)
-  //   console.warn("⚠️ Internal API method found in model:", model.uid);
   return hasInternalApiMethod;    
 }
 /** Internal API warning for internal methods based on attributes */

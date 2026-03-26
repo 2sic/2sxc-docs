@@ -47,23 +47,23 @@ Your App can be anything you want it to be. The following types are more to give
 
 This is the kind of App a _developer_ usually thinks of - with lots of data and various list/details templates. The core idea of these apps is that the data is one or many shared tables and the output will show parts of this data based on rules, filters etc. Examples of such Apps would be:
 
-1. [News](xref:App.News)
-1. [Blog](xref:App.Blog)
-1. References
-1. [FAQ](xref:App.Faq)
-1. [Custom Forms Apps](xref:App.Mobius)
+* [News](xref:App.News){title="icon:newspaper"}
+* [Blog](xref:App.Blog){title="icon:journal-text"}
+* References
+* [FAQ](xref:App.Faq){title="icon:question-circle"}
+* [Custom Forms Apps](xref:App.Mobius){title="icon:ui-checks-grid"}
 
 
 ### Content Focused Apps / Site Builder Apps
 
 This is the kind of App an _editor_ usually thinks of. The core ideas is that the editor adds an App to a page, and adds data to that instance. The data _belongs_ to that instance, so even if it's technically in a shared table, the user experience makes it feel like each use is autonomous. Examples of such Apps would be:
 
-1. [_The_ Content App](xref:Basics.App.ContentApp.Index)
-1. [Image Sliders / Swipers](xref:App.Swiper)
-1. [Galleries](xref:App.FancyBoxGallery)
-1. [Image Hotspots](xref:App.ImageHotspots)
-1. [Accordions](xref:App.Accordion)
-1. [QR Code](xref:App.Qr)
+* [_The_ Content App](xref:Basics.App.ContentApp.Index){title="icon:collection"}
+* [Image Sliders / Swipers](xref:App.Swiper){title="icon:images"}
+* [Galleries](xref:App.FancyBoxGallery){title="icon:image"}
+* [Image Hotspots](xref:App.ImageHotspots){title="icon:geo-alt"}
+* [Accordions](xref:App.Accordion){title="icon:list"}
+* [QR Code](xref:App.Qr){title="icon:qr-code"}
 
 
 ### Page Enhancing Apps
@@ -102,6 +102,6 @@ You can create such SPAs using any popular JavaScript Framework such as
 
 You may want to learn more about
 
-1. [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index)
-1. [App Icons](xref:Basics.App.FoldersAndFiles.Icons)
-1. [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index)
+* [The App Folder Structure](xref:Basics.App.FoldersAndFiles.Index){title="icon:folder"}
+* [App Icons](xref:Basics.App.FoldersAndFiles.Icons){title="icon:image"}
+* [Bundling / Optimizing assets](xref:Basics.Server.AssetOptimization.Index){title="icon:box"}

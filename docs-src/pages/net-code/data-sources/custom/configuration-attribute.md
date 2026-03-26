@@ -50,11 +50,14 @@ By applying it to a property, the following will happen:
 
 ## Read More
 
-* Look at the [](xref:Tut.DynamicDataSources) for some easy examples
-* Check out the API [](xref:ToSic.Eav.DataSource.ConfigurationAttribute) to see what else you can configure
-* Also read about the [](xref:ToSic.Eav.DataSource.IDataSourceConfiguration) - especially the `GetThis()` and `GetThis<T>()` methods
-
----
+* [Dynamic DataSource Tutorials](xref:Tut.DynamicDataSources){title="icon:code-slash"}
+  look at easy examples of dynamic data sources
+* [ConfigurationAttribute API](xref:ToSic.Eav.DataSource.ConfigurationAttribute){title="icon:gear"}
+  see what configuration options are available
+* [IDataSourceConfiguration API](xref:ToSic.Eav.DataSource.IDataSourceConfiguration){title="icon:journal-code"}
+  learn about the GetThis() and GetThis<T>() methods
+  
+  ---
 
 ## History
 

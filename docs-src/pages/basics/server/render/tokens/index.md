@@ -80,10 +80,10 @@ In a repeater the Toolbar can be added using `[repeater-name:Toolbar]`.
 
 ## Read also
 
-* [Views](xref:Basics.App.Views.Index)
-* [Templates](xref:Basics.App.Templates)
-* [Razor Templates](xref:NetCode.Razor.Index)
-* [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor)
+* [Views](xref:Basics.App.Views.Index){title="icon:layout-text-window"}
+* [Templates](xref:Basics.App.Templates){title="icon:file-earmark-code"}
+* [Razor Templates](xref:NetCode.Razor.Index){title="icon:code-slash"}
+* [Razor Tutorial](https://2sxc.org/dnn-tutorials/en/razor){title="icon:journal-text"}
 
 ## History
 

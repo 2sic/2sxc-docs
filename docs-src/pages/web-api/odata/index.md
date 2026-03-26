@@ -218,6 +218,13 @@ Select with filter:
 $select=Title,Description&$filter=ShowOnStartPage eq true
 ```
 
+**Query Stream Behavior:**
+
+- If a query response is limited to exactly one stream, an unprefixed `$select` applies to that selected stream.
+- This works both with a stream in the URL such as `.../query/[your-query-name]/[your-stream-name]?$select=Field1,Field2`
+- And with the `stream` query parameter such as `.../query/[your-query-name]?stream=[your-stream-name]&$select=Field1,Field2`
+- If you request multiple streams, use prefixed stream-specific parameters such as `[your-stream-name]$select=Field1,Field2`
+
 **Special Field Aliases:**
 
 2sxc provides convenient aliases for common system fields:

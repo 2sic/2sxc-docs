@@ -229,6 +229,13 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <p>Select with filter:</p>
 <pre><code class="lang-odata">$select=Title,Description&amp;$filter=ShowOnStartPage eq true
 </code></pre>
+<p><strong>Query Stream Behavior:</strong></p>
+<ul>
+<li>If a query response is limited to exactly one stream, an unprefixed <code>$select</code> applies to that selected stream.</li>
+<li>This works both with a stream in the URL such as <code>.../query/[your-query-name]/[your-stream-name]?$select=Field1,Field2</code></li>
+<li>And with the <code>stream</code> query parameter such as <code>.../query/[your-query-name]?stream=[your-stream-name]&amp;$select=Field1,Field2</code></li>
+<li>If you request multiple streams, use prefixed stream-specific parameters such as <code>[your-stream-name]$select=Field1,Field2</code></li>
+</ul>
 <p><strong>Special Field Aliases:</strong></p>
 <p>2sxc provides convenient aliases for common system fields:</p>
 <ul>

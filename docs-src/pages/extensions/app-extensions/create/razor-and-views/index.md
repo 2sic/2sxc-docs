@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Create.RazorAndViews.Index
 
 # App Extensions - Razor and Views
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 Extensions can include custom Razor Views for re-use.
 
 > [!TIP]
@@ -42,14 +32,14 @@ We _suggest_ that you go for a clear naming, such as:
 
 ## Packaging & export
 
-> [!IMPORTANT]
+> [!TIP]
 > Razor files are only exported if they are specified in the extension configuration.
 
 To include Razor files in an extension:
 
 1. Open the **extension configuration** of the extension
 
-2. Enable **Has View** (but only if you include view definitions)
+2. Enable **Has Razor Files** (but only if you include view definitions)
 
 <div gallery="gallery2">
   <img src="./assets/views-configuration.png">
@@ -65,14 +55,11 @@ The package export system only exports parts which have been declared to be in u
 So make sure to tick the "Has Query" checkbox in the extension's package definition UI.
 
 If you plan to include view definitions, make sure you also tick the "Has View" checkbox,
-and that the view definition is in the data (which must also be exported...)....
-
-...
-
-TODO: @2rb
+and that the view definition is in the data (which must also be exported...)
 
 ---
 
 ## History
 
 1. Beta in v20.09, to be released in v21.00
+2. Updated Pictures

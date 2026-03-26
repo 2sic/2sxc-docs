@@ -102,8 +102,8 @@
 
         <div class="alert alert-warning d-block" role="alert">
       ℹ️ This class is an internal API and can change at any time. 
-  It's documented so you can understand how it works. <br>
-  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could then break your code.
+  It's documented so you see how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could break your code.
     </div>
 
         <article data-uid="ToSic.Eav.DataSource.DataSourceBase">
@@ -184,6 +184,7 @@ public abstract class DataSourceBase : ServiceBase&lt;DataSourceBase.Dependencie
       <div><a class="xref" href="ToSic.Eav.DataSources.StreamFallback.html">StreamFallback</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSources.StreamMerge.html">StreamMerge</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSources.StreamPick.html">StreamPick</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSources.SystemGetEntities.html">SystemGetEntities</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSources.TreeModeler.html">TreeModeler</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSources.ValueFilter.html">ValueFilter</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSources.ValueSort.html">ValueSort</a></div>
@@ -390,7 +391,11 @@ public DataSourceErrorHelper Error { get; }</code></pre>
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Information if the DataSource is Immutable.
+  <div class="markdown level1 summary"><div class="alert alert-warning d-block" role="alert">
+      ⚠️ This is an internal API and can change at any time. 
+  It's documented so you see how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could break your code.
+    </div><p>Information if the DataSource is Immutable.
 Reason is that starting in v15, everything should become immutable.
 So setting parameters or attaching other sources will not be possible any more after initial creation.
 But because a lot of code is still out there which assumes mutable objects, this is set depending on how the DataSource was created.
@@ -607,117 +612,6 @@ public virtual IReadOnlyDictionary&lt;string, IDataStream&gt; Out { get; }</code
 
   <h2 class="section" id="methods">Methods
 </h2>
-
-
-  <a id="ToSic_Eav_DataSource_DataSourceBase_Attach_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach*"></a>
-
-  <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataSource_System_String_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(System.String,ToSic.Eav.DataSource.IDataSource,System.String)">
-  Attach(string, IDataSource, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L171"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Add a single named stream to the In</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-public void Attach(string streamName, IDataSource dataSource, string sourceName = &quot;Default&quot;)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>streamName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>In-name of the stream</p>
-</dd>
-    <dt><code>dataSource</code> <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IDataSource</a></dt>
-    <dd><p>The data source - will use it's default out</p>
-</dd>
-    <dt><code>sourceName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The stream name on the source, will default to &quot;Default&quot;</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_DataSource_DataSourceBase_Attach_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach*"></a>
-
-  <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_System_String_ToSic_Eav_DataSource_IDataStream_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(System.String,ToSic.Eav.DataSource.IDataStream)">
-  Attach(string, IDataStream)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L176"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Add a single named stream to the In</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-public void Attach(string streamName, IDataStream dataStream)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>streamName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>In-name of the stream</p>
-</dd>
-    <dt><code>dataStream</code> <a class="xref" href="ToSic.Eav.DataSource.IDataStream.html">IDataStream</a></dt>
-    <dd><p>The data stream to attach</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_DataSource_DataSourceBase_Attach_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach*"></a>
-
-  <h3 id="ToSic_Eav_DataSource_DataSourceBase_Attach_ToSic_Eav_DataSource_IDataSource_" data-uid="ToSic.Eav.DataSource.DataSourceBase.Attach(ToSic.Eav.DataSource.IDataSource)">
-  Attach(IDataSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSource/DataSource/DataSourceBase/DataSourceBase_Connections.cs/#L132"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Attach a DataSource to In - replaces all existing in-streams.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-public void Attach(IDataSource dataSource)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>dataSource</code> <a class="xref" href="ToSic.Eav.DataSource.IDataSource.html">IDataSource</a></dt>
-    <dd><p>DataSource to attach</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
   <a id="ToSic_Eav_DataSource_DataSourceBase_CacheChanged_" data-uid="ToSic.Eav.DataSource.DataSourceBase.CacheChanged*"></a>

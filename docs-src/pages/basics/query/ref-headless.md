@@ -13,6 +13,5 @@ All Queries can be used in the Headless WebAPI.
 
 Read more about it here: 
 
-* [](xref:WebApi.Headless.Index)
-* [](xref:WebApi.Query)
-
+* [Headless Web API](xref:WebApi.Headless.Index){title="icon:cloud"}
+* [Query Web API](xref:WebApi.Query){title="icon:diagram-3"}

@@ -13,6 +13,6 @@ They can also be cascaded - so that a selection on one dropdown changes the list
 
 Read more about it here: 
 
-* [](xref:Basics.Data.Fields.Entity-Query)
-* [](xref:Basics.Data.Fields.String-Dropdown-Query)
+* [Entity Query Field](xref:Basics.Data.Fields.Entity-Query){title="icon:diagram-3"}
+* [Dropdown Query Field](xref:Basics.Data.Fields.String-Dropdown-Query){title="icon:chevron-down"}
 

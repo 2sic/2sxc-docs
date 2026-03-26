@@ -51,7 +51,14 @@ There are more ways to do this - see [How to get Sxc](xref:JsCode.2sxcApi.GetSxc
 
 Once you have the `Sxc` object of the current App, you can do all kinds of things.
 
-* Use the [.data(...)](xref:Api.Js.SxcJs.SxcData) to get or create data on the current App
-* Use the [.query(...)](xref:Api.Js.SxcJs.SxcQuery) to get data from a Query
-* Use the [.webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) to get data from a WebAPI
-* Use the [.cms.run(...)](xref:JsCode.Commands.Index) to run CMS commands
+* [.data(...)](xref:Api.Js.SxcJs.SxcData){title="icon:database"}
+  Get or create data on the current App
+
+* [.query(...)](xref:Api.Js.SxcJs.SxcQuery){title="icon:diagram-3"}
+  Get data from a Query
+
+* [.webApi.fetchJson(...)](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch){title="icon:cloud-download"}
+  Get data from a WebAPI
+
+* [.cms.run(...)](xref:JsCode.Commands.Index){title="icon:play-circle"}
+  Run CMS commands

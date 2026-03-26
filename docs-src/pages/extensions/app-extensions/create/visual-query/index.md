@@ -4,16 +4,6 @@ uid: Extensions.AppExtensions.Create.VisualQuery.Index
 
 # App Extensions - Visual Queries
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
 Extensions can include custom Visual Queries which are either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.
 
 > [!TIP]

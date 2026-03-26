@@ -29,9 +29,10 @@ Every boolean field can be configured to have special labels shown in each state
 
 ## Input-Types of Boolean Fields
 
-1. [boolean-default](xref:Basics.Data.Fields.Boolean-Default) - simple on/off input field
-1. [boolean-tristate](xref:Basics.Data.Fields.Boolean-Tristate) on/off with optional null (not-defined)
-
+* [boolean-default](xref:Basics.Data.Fields.Boolean-Default){title="icon:toggle-on"}
+  simple on/off input field
+* [boolean-tristate](xref:Basics.Data.Fields.Boolean-Tristate){title="icon:toggle-on"}
+  on/off with optional null (not-defined)
 
 --- 
 

@@ -109,10 +109,10 @@ Some Tutorials to learn this
 
 You can also do some really advanced custom configuration to change how the resizer behaves.
 
-👉🏼 Read more about [Image Settings](xref:Basics.Configuration.Settings.Images.Index)
-
-👉🏼 Read more about [Image Recipes](xref:Basics.Configuration.Settings.Images.Recipes)
-
+* [Image Settings](xref:Basics.Configuration.Settings.Images.Index){title="icon:gear"}
+  read more about image settings
+* [Image Recipes](xref:Basics.Configuration.Settings.Images.Recipes){title="icon:journal-text"}
+  read more about image recipes
 
 ---
 

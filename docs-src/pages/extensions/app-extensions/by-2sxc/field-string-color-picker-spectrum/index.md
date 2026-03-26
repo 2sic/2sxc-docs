@@ -2,7 +2,9 @@
 uid: Extensions.AppExtensions.By2sxc.FieldStringColorPickerSpectrum.Index
 ---
 
-# App Extension: Color Picker Spectrum (Input Field)
+# Color Picker Spectrum (Input Field)
+
+_This is an extension for 2sxc Apps and can be installed into each App individually._
 
 This adds a powerful color picker input type for selecting colors with a spectrum-vanilla interface.
 
@@ -11,7 +13,7 @@ This adds a powerful color picker input type for selecting colors with a spectru
 
 ## Installation and Use
 
-➡️ See [](xref:Extensions.AppExtensions.Install.Index)
+* [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
 
 Once installed, you can simply pick the "Color Picker Spectrum" input type
 when configuring a string field in your content type.

@@ -4,43 +4,23 @@ uid: Extensions.AppExtensions.Create.Index
 
 # App Extensions - Create Your Own (new v21 ⭐)
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
+## Get Started
 
-For first steps, let's create a simple Input Type extension.
+* [Create your first Hello-World Extension](xref:Extensions.AppExtensions.Create.HelloWorld.Index){title="icon:globe"}
+* [Create an Input Field Extension](xref:Extensions.AppExtensions.Create.InputField.Index){title="icon:input-cursor"}
+* [Razor and Views Extensions](xref:Extensions.AppExtensions.Create.RazorAndViews.Index){title="icon:code-square"}
 
-TODO:
+## Data Extensions
 
-## Best Practices
+* [Simple Data and Schema Extension](xref:Extensions.AppExtensions.Create.Data.Index){title="icon:braces"}
+* [Create a Visual-Query Extension](xref:Extensions.AppExtensions.Create.VisualQuery.Index){title="icon:funnel"}
 
-### Testing in the Same App - Keep Test Code Separate
+## C# Code Extensions
 
-In the App where you develop your extension, you'll also need code and data to test it.
-To keep things clean, we recommend that you
+* [AppCode Extensions](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:braces"}
+* [DataSource Extension](xref:Extensions.AppExtensions.Create.AppCode.DataSources){title="icon:box-arrow-up"}
+* [C# Compiler Options](xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions){title="icon:cpu"}
 
-1. clearly name test things as such
-1. and keep them out of the exports
+## More
 
-For example when creating a code extension, you would have this structure:
-
-```text
-/AppCode
-  /Extensions
-    /MyCodeExtension
-      SomeCode.cs (things to have in the export)
-  /Tests
-    SomeTestService.cs
-    ... (other test code, not to be exported)
-/extensions
-  /my-code-extension
-    extension.json
-Test Functionality.cshtml
-... (other testing files)
-```
+* [Best Practices and Tips](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:lightbulb-fill"}

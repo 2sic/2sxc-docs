@@ -4,17 +4,7 @@ uid: Extensions.AppExtensions.Create.AppCode.Index
 
 # App Extensions - App Code
 
-<!-- [!include[](~/pages/basics/stack/_shared-float-summary.md)]
-<style>
-  .context-box-summary .data-all,
-  .context-box-summary .query-app,
-  .context-box-summary .process-razor,
-  .context-box-summary .process-web-api-app,
-  .context-box-summary .edit-ui-custom
-  { visibility: visible; }
-</style> -->
-
-Extensions can include custom c# code which is either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.
+Extensions can include custom C# code which is either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.
 
 > [!TIP]
 > This allows you to create small libraries of code which solve a specific problem,
