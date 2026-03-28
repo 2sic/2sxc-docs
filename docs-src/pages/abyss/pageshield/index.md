@@ -35,7 +35,38 @@ This is what you should see once you are ready. -->
 This will activate PageShield but nothing will be protected yet, unless you have Apps which already have a PageShield configuration.
 You can use the toggle to turn PageShield off in case something causes trouble. -->
 
-### Configure 2sxc PageShield for your App
+## Configure 2sxc PageShield
+
+### Configure using Code
+
+Your code should know:
+
+### Configure what URL parameters are allowed
+
+Example:
+
+```razor
+@Kit.PageShield.Allow("id")
+@Kit.PageShield.Allow("category,sort")
+```
+
+Note that the specifications are cumulative, so you can call `Allow` multiple times to allow more parameters.
+The first example allows the `id` parameter, while the second example allows both `category` and `sort` parameters.
+
+So in the previous example, `?id=5` would be allowed, as well as `?category=books&sort=asc`, but `?name=John` would not be allowed.
+
+### Configure what URL values are allowed
+
+Example:
+
+```razor
+@Kit.PageShield.AllowValue("id", "5")
+@Kit.PageShield.AllowValue("category", "books,movies")
+```
+
+1. at the end (best case), what exact url would be the valid/correct one for this specific page.
+
+
 
 
 

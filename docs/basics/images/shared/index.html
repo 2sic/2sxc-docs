@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>2sxc PageShield Protection (BETA v21) | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Warning about Shared Images in 2sxc | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="2sxc PageShield Protection (BETA v21) | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Warning about Shared Images in 2sxc | 2sxc 21 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/pageshield/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/basics/images/shared/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,61 +102,37 @@
 
         
 
-        <article data-uid="Abyss.PageShield.Index">
-<h1 id="2sxc-pageshield-protection-beta-v21">2sxc PageShield Protection (BETA v21)</h1>
-<!-- <img src="~/assets/features/lightspeed.svg" class="feature"> -->
+        <article data-uid="Basics.Images.Shared.Index">
+<h1 id="warning-about-shared-images-in-2sxc">Warning about Shared Images in 2sxc</h1>
 
-<p>TODO</p>
-<h2 id="how-it-works">How it Works</h2>
-<h3 id="basic-principles-of-2sxc-pageshield">Basic Principles of 2sxc PageShield</h3>
-<p>TODO</p>
-<h2 id="how-to-enable-2sxc-pageshield">How to Enable 2sxc PageShield</h2>
-<h3 id="enable-the-2sxc-pageshield-feature">Enable the 2sxc PageShield Feature</h3>
-<p><em>Important: You must be a <a class="xref" href="https://2sxc.org/en/blog/post/2sxc-patrons-our-heros">2sxc Patron</a> with the <strong>Patron Sentinel</strong> package to use this feature.</em></p>
-<!-- This is what you would probably see if your system is not yet registered:
-
-<img src="./assets/license-not-ready.jpg" width="100%" class="full-width">
-
-1. Make sure you have 2sxc 21.06+ installed
-1. Register your site and activate the **Patron Sentinel** package
-1. Activate the license on your site so the package is available
-
-This is what you should see once you are ready. -->
-<!-- 
-<img src="./assets/license-ready.jpg" width="100%" class="full-width">
-
-This will activate PageShield but nothing will be protected yet, unless you have Apps which already have a PageShield configuration.
-You can use the toggle to turn PageShield off in case something causes trouble. -->
-<h2 id="configure-2sxc-pageshield">Configure 2sxc PageShield</h2>
-<h3 id="configure-using-code">Configure using Code</h3>
-<p>Your code should know:</p>
-<h3 id="configure-what-url-parameters-are-allowed">Configure what URL parameters are allowed</h3>
-<p>Example:</p>
-<pre><code class="lang-razor">@Kit.PageShield.Allow(&quot;id&quot;)
-@Kit.PageShield.Allow(&quot;category,sort&quot;)
-</code></pre>
-<p>Note that the specifications are cumulative, so you can call <code>Allow</code> multiple times to allow more parameters.
-The first example allows the <code>id</code> parameter, while the second example allows both <code>category</code> and <code>sort</code> parameters.</p>
-<p>So in the previous example, <code>?id=5</code> would be allowed, as well as <code>?category=books&amp;sort=asc</code>, but <code>?name=John</code> would not be allowed.</p>
-<h3 id="configure-what-url-values-are-allowed">Configure what URL values are allowed</h3>
-<p>Example:</p>
-<pre><code class="lang-razor">@Kit.PageShield.AllowValue(&quot;id&quot;, &quot;5&quot;)
-@Kit.PageShield.AllowValue(&quot;category&quot;, &quot;books,movies&quot;)
-</code></pre>
-<ol>
-<li>at the end (best case), what exact url would be the valid/correct one for this specific page.</li>
-</ol>
+<p>Sometimes you'll see a warning that an image is shared:</p>
+<img src="../../../pages/basics/images/shared/assets/shared-image-warning.png" width="100%" class="full-width">
+<h2 id="background">Background</h2>
+<p>In 2sxc, when you add an image to any item, it is stored in a folder which &quot;belongs&quot; to this item and this explicit field.
+So it's usually in a folder like <code>/Portals/0/adam/[App-name]/[short-guid]/[field-name]/image.jpg</code>.</p>
+<p>The main idea is that this file really belongs to this item,
+and as long as you use it this way, anything you do will not impact any other item, app, or page on your site.
+So if you rename it, delete it, change how it should be cropped - all this will only impact this one item and this one field.</p>
+<h2 id="access-from-another-context-could-lead-to-surprising-results">Access from Another Context could lead to Surprising Results</h2>
+<p>Now the image itself could also be used in another item - nothing prevents you from copying <code>file:72</code> to another item.
+But if you are now accessing the image from this other item and modify it's title,
+you may not be aware that this will have a broader impact - since you'll usually only look at the image
+right where you changed it.</p>
+<p>So the above warning tries to make you aware of this - if you are accessing the image from a different context,
+it will warn you that you are changing something that is shared and may impact other items, apps, or pages on your site.
+You are free to still make your changes, but you should be aware of the potential impact.</p>
 <hr>
 <h2 id="history">History</h2>
 <ol>
-<li>Created in 2sxc 21.06</li>
+<li>Added ca. v15 (but could have been anytime else)</li>
+<li>Added docs in v21</li>
 </ol>
-<p>Shortlink: <a href="https://go.2sxc.org/pageshield">https://go.2sxc.org/pageshield</a></p>
+<p>Shortlink: <a href="https://go.2sxc.org/image-share-warning">https://go.2sxc.org/image-share-warning</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/pageshield/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/basics/images/shared/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
