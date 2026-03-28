@@ -20,8 +20,10 @@ Note that we marked the breaking changes like this
 
 ### Breaking Changes in EAV and 2sxc v21.00
 
-[!include["Changes"](./_brc00.00.md)]
+[!include["Changes"](./_brc06.00.md)]
+
+[!include["Changes"](./_brc02.00.md)]
 
 [!include["Changes"](./_brc01.00.md)]
 
-[!include["Changes"](./_brc02.00.md)]
+[!include["Changes"](./_brc00.00.md)]

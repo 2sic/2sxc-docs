@@ -445,13 +445,17 @@ or if you have some extremely old/deprecated code.</p>
 <li>⬇️ things which are extremely unlikely to affect you</li>
 </ul>
 <h3 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h3>
-<h4 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h4>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2106">Breaking Changes in EAV and 2sxc v21.06</h4>
 <ol>
-<li>⬇️ In Razor/WebApi, the <code>As&lt;T&gt;(...)</code> method removed a (probably never used) parameter <code>mock:</code>.
-To create mocks, use the <code>Kit.Convert.ToMock&lt;...&gt;</code> or <code>Kit.Convert.ToMockItem&lt;...&gt;</code> instead.</li>
+<li>⬇️ The <code>ISizeInfo</code> used for assets to report their size has a <code>Bytes</code> property which is now a <code>long</code> instead of an <code>int</code>.
+This should not affect you, unless you have some custom code which uses this interface and expects an <code>int</code> value.</li>
+</ol>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2102">Breaking Changes in EAV and 2sxc v21.02</h4>
+<ol>
 <li>⚠️🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders.
 The migration should happen automatically, but if something doesn't work, this is why.</li>
-<li>⬇️🥫 SQL: The tables <code>TsDynDataHistory</code> and <code>TsDynDataRelationships</code> has a few minor changes.</li>
+<li>⬇️🥫 DataSource - an internal API property <code>Link</code> is changed to <code>GetLink()</code> and changed to be an explicit implementation.
+This is probably never used.</li>
 </ol>
 <h4 id="breaking-changes-in-eav-and-2sxc-v2101">Breaking Changes in EAV and 2sxc v21.01</h4>
 <ol>
@@ -463,12 +467,13 @@ by <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Models.ModelOfEntity.
 and most of it was moved from <code>ToSic.Sxc.Data.Models</code> to <a class="xref" href="../../../../api/dot-net/ToSic.Eav.Models.html"><code>ToSic.Eav.Models</code></a>.<br>
 This was never publicly documented, but if you used any of these APIs, please check the new locations and new features. (v21.01)</li>
 </ol>
-<h4 id="breaking-changes-in-eav-and-2sxc-v2102">Breaking Changes in EAV and 2sxc v21.02</h4>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h4>
 <ol>
+<li>⬇️ In Razor/WebApi, the <code>As&lt;T&gt;(...)</code> method removed a (probably never used) parameter <code>mock:</code>.
+To create mocks, use the <code>Kit.Convert.ToMock&lt;...&gt;</code> or <code>Kit.Convert.ToMockItem&lt;...&gt;</code> instead.</li>
 <li>⚠️🩸 Oqtane: The folder structure of app-files has changed, to prepare for supporting multi-tenant folders.
 The migration should happen automatically, but if something doesn't work, this is why.</li>
-<li>⬇️🥫 DataSource - an internal API property <code>Link</code> is changed to <code>GetLink()</code> and changed to be an explicit implementation.
-This is probably never used.</li>
+<li>⬇️🥫 SQL: The tables <code>TsDynDataHistory</code> and <code>TsDynDataRelationships</code> has a few minor changes.</li>
 </ol>
 
 </article>
