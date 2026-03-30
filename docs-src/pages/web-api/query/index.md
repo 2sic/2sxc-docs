@@ -28,23 +28,34 @@ A query may have many streams that your client may not necessarily need. To limi
 
 `.../app/auto/query/[your-query-name]/Default`
 
-`.../app/auto/query/[your-query-name]/StreamName1`
+`.../app/auto/query/[your-query-name]/[your-stream-name]`
 
-`.../app/auto/query/[your-query-name]/StreamName1,StreamName2`
+`.../app/auto/query/[your-query-name]/[your-stream-name-1],[your-stream-name-2]`
 
 You can also select one or more streams using the `stream` query parameter:
 
 `.../app/auto/query/[your-query-name]?stream=Default`
 
-`.../app/auto/query/[your-query-name]?stream=StreamName1`
+`.../app/auto/query/[your-query-name]?stream=[your-stream-name]`
 
-`.../app/auto/query/[your-query-name]?stream=StreamName1,StreamName2`
+`.../app/auto/query/[your-query-name]?stream=[your-stream-name-1],[your-stream-name-2]`
 
-When exactly one stream is selected, an unprefixed `$select` applies to that selected stream:
+When exactly one stream is explicitly selected, unprefixed OData parameters such as `$select`, `$filter`, `$orderby`, `$top`, and `$skip` apply to that selected stream:
 
-`.../app/auto/query/[your-query-name]/StreamName1?$select=Field1,Field2`
+`.../app/auto/query/[your-query-name]/[your-stream-name]?$filter=Status eq 'Published'&$orderby=Title`
 
-If you need different `$select` values for multiple streams, use stream-specific parameters such as `StreamName1$select=Field1,Field2`.
+`.../app/auto/query/[your-query-name]?stream=[your-stream-name]&$top=10&$select=Field1,Field2`
+
+These options are merged per option into the selected stream's OData settings.
+This means `[your-stream-name]$filter=Status eq 'Published'` still overrides a bare `$filter`, while a bare `$orderby=Title` or `$top=10` can still apply if no prefixed value for that option exists.
+
+This also applies when multiple OData options are combined.
+For example, `$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=10` will still return only `Field1` and `Field2` for the selected stream.
+
+If you need different values per stream, use stream-specific parameters such as `[your-stream-name]$filter=Status eq 'Published'`, `[your-stream-name]$orderby=Title`, or `[your-stream-name]$select=Field1,Field2`.
+
+If you request multiple streams, do not rely on bare OData options.
+In that case, use prefixed parameters such as `[your-stream-name-1]$filter=...` and `[your-stream-name-2]$select=...`.
 
 ## HTTP GET only
 

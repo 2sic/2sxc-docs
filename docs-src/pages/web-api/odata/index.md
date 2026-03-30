@@ -220,10 +220,23 @@ $select=Title,Description&$filter=ShowOnStartPage eq true
 
 **Query Stream Behavior:**
 
-- If a query response is limited to exactly one stream, an unprefixed `$select` applies to that selected stream.
-- This works both with a stream in the URL such as `.../query/[your-query-name]/[your-stream-name]?$select=Field1,Field2`
-- And with the `stream` query parameter such as `.../query/[your-query-name]?stream=[your-stream-name]&$select=Field1,Field2`
-- If you request multiple streams, use prefixed stream-specific parameters such as `[your-stream-name]$select=Field1,Field2`
+- If a query request explicitly selects exactly one stream, unprefixed OData parameters are merged into that selected stream.
+- This includes `$select`, `$filter`, `$orderby`, `$top`, `$skip`, and the other supported system query options.
+- This works both with a stream in the URL such as `.../query/[your-query-name]/[your-stream-name]?$filter=Status eq 'Published'&$orderby=Title`
+- And with the `stream` query parameter such as `.../query/[your-query-name]?stream=[your-stream-name]&$top=10&$select=Field1,Field2`
+- The merge happens per option, not all-or-nothing. So `[your-stream-name]$filter=...` overrides a bare `$filter`, while a bare `$orderby` can still apply if no prefixed `[your-stream-name]$orderby` is provided.
+- If you request multiple streams, use prefixed stream-specific parameters such as `[your-stream-name]$filter=Status eq 'Published'` or `[your-stream-name]$select=Field1,Field2`.
+- `$select` still limits the returned fields even when `$filter`, `$orderby`, or `$top` are also present and the request goes through the full query OData execution path.
+
+Examples:
+
+```url
+/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=10
+```
+
+```url
+/app/auto/query/[your-query-name]?stream=[your-stream-name]&[your-stream-name]$filter=Status eq 'Published'&$orderby=Title&$select=Field1,Field2
+```
 
 **Special Field Aliases:**
 
@@ -280,6 +293,19 @@ This returns products 21-30 (page 3 with 10 per page) that are in stock, sorted 
 ```
 
 This executes a predefined query and then filters for items starting with "Getting Started".
+
+### Example 4: Single Selected Query Stream with Merged OData
+
+```url
+/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=5
+```
+
+This:
+
+- Applies all unprefixed options to the explicitly selected stream
+- Filters and sorts that stream
+- Limits the results to 5 items
+- Still returns only `Field1` and `Field2`
 
 ## URL Encoding
 
