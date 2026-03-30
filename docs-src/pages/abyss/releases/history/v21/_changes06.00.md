@@ -1,30 +1,30 @@
 
-### 2sxc v21.06.00 (2026-03-xx) WIP - text below still from v21.05, needs update
+### 2sxc v21.06.00 (2026-03-xx)
 
 #### General Enhancements
 
-1. 🧑🏼‍💻 VS Code Intellisense - found way to get it to work with latest C# DevKit and improve hints/warnings dramatically
-1. 🧑🏼‍💻 VS Coding experience, work on making it compatible with latest C# in VS Code (improved from 21.04) (new experimental app extension)
+
+1. 🧑🏼‍💻 Special feature to disable App-Restore, to protect source systems from accidentally resetting the app (can happen if source / target look very similar)
+1. 🛡️ PageShield FloodGates: Beta implementation to protect against combinations from multiplying
 
 
-#### Minor
+#### OData
 
-1. Some UI improvements
+1. Improve OData on Query - if only one stream is requested, OData will apply
+1. Fix `Title` always included, even if `$select` was used to exclude it
+1. fix JS `$2sxc` API to better support parameters on `query.getAll()`, `query.getStream()` as well a `data.getAll()`
 
 #### Bugfixes
 
-1. 🐞 Edit UI: In some cases closing a dialog kept the overlay, so the page needed F5 (regression, v21.03)
+1. 🐞🌪️🥫 Visual Query - bug connecting streams, incorrect handling of `*` character.
+1. 🐞 Importing app incorrectly checked for version - causing it to not import.
+1. 🪲 Edit UI: Minor colors and number indicators
+1. 🪲 Edit UI: Fix color of buttons for app-state import (button appeared disabled even though it was ok)
 
 #### Docs / Tutorials
 
-1. 📖 DNN Module Metadata - new tutorial and demo container
-1. 📖 Start improving C# Razor section in docs
-1. 📖 Improve internal docs for developers
-1. 📖 Docs introduced tiles and also improved title typography
-1. 🎓 Tutorial: Many extension samples
-1. 🎓 Tutorial: Rework structure to manage tabs (internal)
-1. 🎓🐞 Tutorial: Fixed some broken tutorials - some which severely affected the Quick-Reference page
+1. 📖 Docs improve tiles
 
 #### Internal and Code Hygiene
 
-1. EAV UI: Reduce code which works with AG-Grid
+1. EAV UI: Update Angular and other NPM dependencies to latest versions, which also fixed some security issues 

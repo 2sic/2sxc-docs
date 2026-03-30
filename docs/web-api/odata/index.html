@@ -231,11 +231,19 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 </code></pre>
 <p><strong>Query Stream Behavior:</strong></p>
 <ul>
-<li>If a query response is limited to exactly one stream, an unprefixed <code>$select</code> applies to that selected stream.</li>
-<li>This works both with a stream in the URL such as <code>.../query/[your-query-name]/[your-stream-name]?$select=Field1,Field2</code></li>
-<li>And with the <code>stream</code> query parameter such as <code>.../query/[your-query-name]?stream=[your-stream-name]&amp;$select=Field1,Field2</code></li>
-<li>If you request multiple streams, use prefixed stream-specific parameters such as <code>[your-stream-name]$select=Field1,Field2</code></li>
+<li>If a query request explicitly selects exactly one stream, unprefixed OData parameters are merged into that selected stream.</li>
+<li>This includes <code>$select</code>, <code>$filter</code>, <code>$orderby</code>, <code>$top</code>, <code>$skip</code>, and the other supported system query options.</li>
+<li>This works both with a stream in the URL such as <code>.../query/[your-query-name]/[your-stream-name]?$filter=Status eq 'Published'&amp;$orderby=Title</code></li>
+<li>And with the <code>stream</code> query parameter such as <code>.../query/[your-query-name]?stream=[your-stream-name]&amp;$top=10&amp;$select=Field1,Field2</code></li>
+<li>The merge happens per option, not all-or-nothing. So <code>[your-stream-name]$filter=...</code> overrides a bare <code>$filter</code>, while a bare <code>$orderby</code> can still apply if no prefixed <code>[your-stream-name]$orderby</code> is provided.</li>
+<li>If you request multiple streams, use prefixed stream-specific parameters such as <code>[your-stream-name]$filter=Status eq 'Published'</code> or <code>[your-stream-name]$select=Field1,Field2</code>.</li>
+<li><code>$select</code> still limits the returned fields even when <code>$filter</code>, <code>$orderby</code>, or <code>$top</code> are also present and the request goes through the full query OData execution path.</li>
 </ul>
+<p>Examples:</p>
+<pre><code class="lang-url">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=10
+</code></pre>
+<pre><code class="lang-url">/app/auto/query/[your-query-name]?stream=[your-stream-name]&amp;[your-stream-name]$filter=Status eq 'Published'&amp;$orderby=Title&amp;$select=Field1,Field2
+</code></pre>
 <p><strong>Special Field Aliases:</strong></p>
 <p>2sxc provides convenient aliases for common system fields:</p>
 <ul>
@@ -275,6 +283,16 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <pre><code class="lang-url">/app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&amp;$orderby=Title&amp;$select=Title,Description,Url
 </code></pre>
 <p>This executes a predefined query and then filters for items starting with &quot;Getting Started&quot;.</p>
+<h3 id="example-4-single-selected-query-stream-with-merged-odata">Example 4: Single Selected Query Stream with Merged OData</h3>
+<pre><code class="lang-url">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=5
+</code></pre>
+<p>This:</p>
+<ul>
+<li>Applies all unprefixed options to the explicitly selected stream</li>
+<li>Filters and sorts that stream</li>
+<li>Limits the results to 5 items</li>
+<li>Still returns only <code>Field1</code> and <code>Field2</code></li>
+</ul>
 <h2 id="url-encoding">URL Encoding</h2>
 <p>When using OData query options in URLs, special characters must be URL-encoded:</p>
 <table>
