@@ -1,5 +1,5 @@
 
-### 2sxc v21.06.00 (2026-03-xx)
+### 2sxc v21.06.00 (2026-03-31)
 
 #### General Enhancements
 
