@@ -2,6 +2,8 @@
 uid: Extensions.AppExtensions.By2sxc.FieldStringColorPickerSpectrum.Index
 ---
 
+<img src="./assets/app-icon.png" width="150px" align="right" class="float-end"/>
+
 # Color Picker Spectrum (Input Field)
 
 _This is an extension for 2sxc Apps and can be installed into each App individually._
