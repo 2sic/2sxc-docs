@@ -8,13 +8,13 @@
 1. 🛡️ PageShield FloodGates: Beta implementation to protect against combinations from multiplying
 1. ⚡ LightSpeed: Feature to enable ZIP compression in memory to reduce memory usage (Patron Performance feature)
 1. ⚡ LightSpeed: API and EndPoint to flush cache by app (still experimental)
-
+1. All Apps released with the latest `dotnet-project` extension to support intellisense
 
 #### OData
 
-1. Improve OData on Query - if only one stream is requested, OData will apply
-1. Fix `Title` always included, even if `$select` was used to exclude it
-1. fix JS `$2sxc` API to better support parameters on `query.getAll()`, `query.getStream()` as well a `data.getAll()`
+1. 💲 Improve OData on Query - if only one stream is requested, OData will apply
+1. 🪲 Fix `Title` always included, even if `$select` was used to exclude it
+1. 🪲 Fix JS `$2sxc` API to better support parameters on `query.getAll()`, `query.getStream()` as well a `data.getAll()`
 
 #### Bugfixes
 
