@@ -6,6 +6,8 @@
 
 1. 🧑🏼‍💻 Special feature to disable App-Restore, to protect source systems from accidentally resetting the app (can happen if source / target look very similar)
 1. 🛡️ PageShield FloodGates: Beta implementation to protect against combinations from multiplying
+1. ⚡ LightSpeed: Feature to enable ZIP compression in memory to reduce memory usage (Patron Performance feature)
+1. ⚡ LightSpeed: API and EndPoint to flush cache by app (still experimental)
 
 
 #### OData
@@ -27,4 +29,5 @@
 
 #### Internal and Code Hygiene
 
-1. EAV UI: Update Angular and other NPM dependencies to latest versions, which also fixed some security issues 
+1. EAV UI: Update Angular and other NPM dependencies to latest versions, which also fixed some security issues
+1. Memory info: Include compressed size and total size uncompressed.
