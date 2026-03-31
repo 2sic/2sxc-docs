@@ -29,5 +29,5 @@
 
 #### Internal and Code Hygiene
 
-1. EAV UI: Update Angular and other NPM dependencies to latest versions, which also fixed some security issues
+1. EAV UI: Update Angular and other NPM dependencies to latest versions
 1. Memory info: Include compressed size and total size uncompressed.
