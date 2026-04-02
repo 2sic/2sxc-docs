@@ -5,6 +5,8 @@
 
 This is the technical documentation for 2sxc and its EAV system.
 
+_The latest LTS ([Long-Term-Stable](xref:Abyss.Releases.Management.PolicyLts)) version is v21.07.00, released on 2026-04-02._
+
 ## 2sxc turns Dnn & Oqtane into a CMS
 
 > [!TIP]
