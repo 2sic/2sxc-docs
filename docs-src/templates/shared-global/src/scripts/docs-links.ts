@@ -9,7 +9,7 @@ export function convertDocsLinks() {
     const list = link.closest("ul");
 
     if (!listItem || !list)
-        return;
+      return;
 
     // Make sure the list gets the needed classes
     list.classList.add(
@@ -30,6 +30,8 @@ export function convertDocsLinks() {
 
     // Get the target link
     const href = link.getAttribute("href") || "#";
+    const target = link.getAttribute("target") || "";
+    const rel = link.getAttribute("rel") || (target === "_blank" ? "noopener noreferrer" : "");
 
     // Read the icon from the title "icon:file-code"
     const iconTitle = link.getAttribute("title") || "";
@@ -40,18 +42,21 @@ export function convertDocsLinks() {
     const emoji = iconIsEmoji ? icon : "";
     const iconCss = !iconIsEmoji ? `bi bi-${icon || "link"}` : "";
 
+    const targetAttr = target ? ` target="${target}"` : "";
+    const relAttr = rel ? ` rel="${rel}"` : "";
+
     listItem.classList.add("col");
 
-    // Build Html for the tile
+    // Build HTML for the tile
     listItem.innerHTML = `
-            <div class="card h-100 text-center position-relative">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center py-4">
-                    <icon class="${iconCss} fs-1 text-primary mb-2">${emoji}</icon>
-                    <div class="fw-semibold">${title}</div>
-                    ${description ? `<div class="small text-muted mt-1">${description}</div>` : ''}
-                </div>
-                <a href="${href}"></a>
-            </div>
-        `;
+      <div class="card h-100 text-center position-relative">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center py-4">
+          <icon class="${iconCss} fs-1 text-primary mb-2">${emoji}</icon>
+          <div class="fw-semibold">${title}</div>
+          ${description ? `<div class="small text-muted mt-1">${description}</div>` : ""}
+        </div>
+        <a href="${href}"${targetAttr}${relAttr} class="stretched-link"></a>
+      </div>
+    `;
   });
 }
