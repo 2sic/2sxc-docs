@@ -30,7 +30,8 @@ export function convertDocsLinks() {
 
     // Get the target link
     const href = link.getAttribute("href") || "#";
-    const target = link.getAttribute("target") || "";
+    const targetInSource = link.getAttribute("target") || "";
+    const target = targetInSource || (href.startsWith("http") ? "_blank" : "");
     const rel = link.getAttribute("rel") || (target === "_blank" ? "noopener noreferrer" : "");
 
     // Read the icon from the title "icon:file-code"
