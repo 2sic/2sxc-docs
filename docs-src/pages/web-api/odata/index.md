@@ -1,38 +1,15 @@
----
-uid: WebApi.OData
----
 
 # OData Query Options for REST APIs
 
-2sxc supports **OData system query options** to filter, sort, paginate, and select data from both [Data](xref:WebApi.Data.Index) and [Query](xref:WebApi.Query) REST endpoints.
-
-These options are added as **query parameters to your URL**.
+2sxc supports **OData system query options** to filter, sort, paginate, and select data from both [Data](xref:WebApi.Data.Index) and [Query](xref:WebApi.Query) REST endpoints. This allows you to append standard OData parameters to your URLs for powerful data querying.
 
 > [!TIP]
-> OData works on:
+> OData query options work on both:
 >
-> - **Data endpoints** → `/app/auto/data/[ContentType]`
-> - **Query endpoints** → `/app/auto/query/[QueryName]`
+> - **Data endpoints**: `.../app/auto/data/[ContentType]`
+> - **Query endpoints**: `.../app/auto/query/[QueryName]`
 
----
-
-## Mental Model
-
-Always think of OData like this:
-
-```text
-[BASE URL] + ? + [OData parameters]
-```
-
-Example:
-
-```http
-/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true
-```
-
----
-
-## Quick Working Examples
+## Quick Examples
 
 ### Filter + Sort
 
@@ -112,217 +89,351 @@ Filter results based on conditions.
 /app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
 ```
 
-### Not Supported
+## How OData Works with 2sxc Endpoints
 
-- `or`
-- `endswith`, `tolower`, and many other OData functions
-- arithmetic operators such as `add`, `sub`, `mul`, `div`, `mod`
+### Data Endpoint with OData
 
----
+The [Data REST API](xref:WebApi.Data.Index) endpoint lets you query content-types directly:
 
-### `$orderby` — Sorting
-
-```http
-/app/auto/data/BlogPost?$orderby=Title
+```url
+[root-path]/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=Created desc&$top=10
 ```
 
-```http
-/app/auto/data/BlogPost?$orderby=Created desc
+This returns the 10 most recent blog posts where `ShowOnStartPage` is true.
+
+### Query Endpoint with OData
+
+The [Query REST API](xref:WebApi.Query) endpoint lets you query [VisualQuery](xref:Basics.Query.VisualQuery.Index) pipelines:
+
+```url
+[root-path]/app/auto/query/BlogPostsFiltered?$orderby=Title&$skip=20&$top=10
 ```
 
-```http
-/app/auto/data/BlogPost?$orderby=Category asc, Created desc
-```
+This executes your predefined query and then applies additional OData filtering/sorting on top of the results.
 
----
+## Special OData-like Query Options
 
-### `$top` — Limit
+### $casing - Control Field Name Casing
 
-```http
-/app/auto/data/BlogPost?$top=10
-```
+2sxc's OData implementation includes a special `$casing` option to control the casing of field names in the response.
+This is useful for JavaScript clients that prefer camelCase.
 
----
-
-### `$skip` — Pagination
-
-```http
-/app/auto/data/BlogPost?$skip=20&$top=10
-```
-
----
-
-### `$select` — Select Fields
-
-```http
-/app/auto/data/BlogPost?$select=Title,Created,Id
-```
-
-```http
-/app/auto/data/BlogPost?$select=Title&$filter=ShowOnStartPage eq true
-```
-
-### Important Behavior
-
-- `$select` reduces payload size
-- Works together with other supported OData options
-- Still limits the returned fields when filtering, sorting, skipping, or limiting results
-
----
-
-## Combining Options
-
-```http
-/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=Created desc&$skip=10&$top=5&$select=Title,Created
-```
-
-This is typical real-world usage.
-
----
-
-## Query Endpoint Special Behavior
-
-When using queries:
-
-```http
-/app/auto/query/MyQuery/MyStream?$filter=Status eq 'Published'
-```
-
-Or:
-
-```http
-/app/auto/query/MyQuery?stream=MyStream&$top=10
-```
-
-### Key Rules
-
-- If exactly one stream is selected, unprefixed OData parameters are merged into that stream
-- If multiple streams are requested, use stream-prefixed parameters
-
-Example:
-
-```http
-/app/auto/query/MyQuery?stream=MyStream&MyStream$filter=Status eq 'Published'&$orderby=Title&$select=Field1,Field2
-```
-
----
-
-## `$casing` (2sxc specific)
-
-2sxc supports a special `$casing` option to control output field casing.
-
-```http
-/app/auto/data/BlogPost?$casing=camel
-```
-
-Example result:
-
-```json
-{
-  "title": "...",
-  "created": "..."
-}
+```text
+&$casing=camel
 ```
 
 Note: this was added in v21.02.
 
----
+## Supported OData System Query Options
 
-## URL Encoding
+2sxc uses the **ToSic.Sys.OData** parser which supports a practical subset of OData v4 system query options.
+
+### $filter - Filter Data
+
+Filter results based on conditions.
+
+**Supported Operators:**
+
+- Comparison: `eq` (equals), `ne` (not equals), `gt` (greater than), `ge` (greater or equal), `lt` (less than), `le` (less or equal)
+- Logical: `and` (combine conditions)
+- Negation: `not` (negate an expression)
+
+**Supported Functions:**
+
+- `contains(field, 'text')` - check if field contains text
+- `startswith(field, 'text')` - check if field starts with text
+
+**Examples:**
+
+Simple equality:
+
+```odata
+$filter=Title eq 'Hello World'
+```
+
+Multiple conditions:
+
+```odata
+$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true
+```
+
+Contains function:
+
+```odata
+$filter=contains(Description, 'world')
+```
+
+Starts with function:
+
+```odata
+$filter=startswith(Name, 'Acme')
+```
+
+Negated contains:
+
+```odata
+$filter=not contains(Description, 'deprecated')
+```
+
+Numeric comparison:
+
+```odata
+$filter=Rating gt 4 and Rating le 5
+```
+
+> [!IMPORTANT]
+> **Not Currently Supported:**
+>
+> - Logical `or` operator (only `and` is supported)
+> - Arithmetic operators (`add`, `sub`, `mul`, `div`, `mod`)
+> - Complex nested expressions with mixed `and`/`or`
+> - Many OData functions like `endswith`, `indexof`, `tolower`, etc.
+
+### $orderby - Sort Results
+
+Sort results by one or more fields.
+
+**Syntax:** `$orderby=Field1 [asc|desc], Field2 [asc|desc]`
+
+**Examples:**
+
+Sort by single field ascending (default):
+
+```odata
+$orderby=Title
+```
+
+Sort descending:
+
+```odata
+$orderby=Created desc
+```
+
+Sort by multiple fields:
+
+```odata
+$orderby=Category asc, Created desc
+```
+
+### $top - Limit Results
+
+Limit the number of results returned.
+
+**Syntax:** `$top=number`
+
+**Examples:**
+
+Get first 10 items:
+
+```odata
+$top=10
+```
+
+Combine with ordering:
+
+```odata
+$orderby=Created desc&$top=5
+```
+
+### $skip - Skip Results (Pagination)
+
+Skip a specified number of results (useful for pagination).
+
+**Syntax:** `$skip=number`
+
+**Examples:**
+
+Skip first 20 items:
+
+```odata
+$skip=20
+```
+
+Pagination (page 2 with 10 items per page):
+
+```odata
+$skip=10&$top=10
+```
+
+### $select - Select Specific Fields
+
+Return only specific fields instead of all entity data.
+
+**Syntax:** `$select=Field1,Field2,Field3`
+
+**Examples:**
+
+Select specific fields:
+
+```odata
+$select=Title,Created,Id
+```
+
+Select with filter:
+
+```odata
+$select=Title,Description&$filter=ShowOnStartPage eq true
+```
+
+**Query Stream Behavior:**
+
+- If a query request explicitly selects exactly one stream, unprefixed OData parameters are merged into that selected stream.
+- This includes `$select`, `$filter`, `$orderby`, `$top`, `$skip`, and the other supported system query options.
+- This works both with a stream in the URL such as `.../query/[your-query-name]/[your-stream-name]?$filter=Status eq 'Published'&$orderby=Title`
+- And with the `stream` query parameter such as `.../query/[your-query-name]?stream=[your-stream-name]&$top=10&$select=Field1,Field2`
+- The merge happens per option, not all-or-nothing. So `[your-stream-name]$filter=...` overrides a bare `$filter`, while a bare `$orderby` can still apply if no prefixed `[your-stream-name]$orderby` is provided.
+- If you request multiple streams, use prefixed stream-specific parameters such as `[your-stream-name]$filter=Status eq 'Published'` or `[your-stream-name]$select=Field1,Field2`.
+- `$select` still limits the returned fields even when `$filter`, `$orderby`, or `$top` are also present and the request goes through the full query OData execution path.
+
+Examples:
+
+```url
+/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=10
+```
+
+```url
+/app/auto/query/[your-query-name]?stream=[your-stream-name]&[your-stream-name]$filter=Status eq 'Published'&$orderby=Title&$select=Field1,Field2
+```
+
+**Special Field Aliases:**
+
+2sxc provides convenient aliases for common system fields:
+
+- `Id` or `EntityId` - Entity ID
+- `Guid` or `EntityGuid` - Entity GUID
+- `Created` - Creation date
+- `Modified` - Last modified date
+- `Title` - Title field
+
+### Combining Multiple Options
+
+You can combine multiple OData options in a single request:
+
+```url
+/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=Created desc&$skip=10&$top=5&$select=Title,Created,UrlKey
+```
+
+This example:
+
+1. Filters for posts where `ShowOnStartPage` is true
+2. Sorts by `Created` date descending
+3. Skips the first 10 results
+4. Returns the next 5 results
+5. Returns only `Title`, `Created`, and `UrlKey` fields
+
+## Real-World Examples
+
+### Example 1: Latest Published Blog Posts
+
+```url
+/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&$orderby=Created desc&$top=5&$select=Title,Created,UrlKey
+```
+
+This returns the 5 most recent blog posts that:
+
+- Have `ShowOnStartPage` set to true
+- Contain "2sxc" in the title
+- Returns only Title, Created date, and UrlKey
+
+### Example 2: Paginated Product List
+
+```url
+/app/auto/data/Product?$filter=InStock eq true&$orderby=Name&$skip=20&$top=10
+```
+
+This returns products 21-30 (page 3 with 10 per page) that are in stock, sorted by name.
+
+### Example 3: Search Results
+
+```url
+/app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&$orderby=Title&$select=Title,Description,Url
+```
+
+This executes a predefined query and then filters for items starting with "Getting Started".
+
+### Example 4: Single Selected Query Stream with Merged OData
+
+```url
+/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=5
+```
 
 This:
 
-```http
-$filter=Title eq 'Hello World'
+- Applies all unprefixed options to the explicitly selected stream
+- Filters and sorts that stream
+- Limits the results to 5 items
+- Still returns only `Field1` and `Field2`
+
+## URL Encoding
+
+When using OData query options in URLs, special characters must be URL-encoded:
+
+| Character | Encoded |
+|-----------|---------|
+| Space     | `%20`   |
+| `'` (single quote) | `%27` |
+| `eq`      | (no encoding needed) |
+
+**Example with encoding:**
+
+```url
+/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
 ```
 
 Becomes:
 
-```http
-$filter=Title%20eq%20%27Hello%20World%27
+```url
+/app/auto/data/BlogPost?$filter=Title%20eq%20%27Hello%20World%27
 ```
 
 > [!TIP]
-> Most browsers and HTTP libraries handle URL encoding automatically.
+> Most HTTP libraries and browsers handle URL encoding automatically.
 
----
+## Limitations and Not Supported
 
-## Real-World Examples
+The 2sxc OData implementation focuses on practical, commonly-used features. The following are **not currently supported**:
 
-### Latest Blog Posts
+### Not Parsed/Not Executed
 
-```http
-/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&$orderby=Created desc&$top=5&$select=Title,Created,UrlKey
-```
+- `$expand` - Expanding related entities
+- `$compute` - Computed properties
+- `$search` - Free-text search
+- `$count` - Inline count
+- Logical `or` operator in `$filter`
+- Arithmetic operators in `$filter` (`add`, `sub`, `mul`, `div`, `mod`)
+- Lambda operators (`any`, `all`)
+- OData functions: `endswith`, `indexof`, `substring`, `toupper`, `tolower`, `length`, `trim`, `concat`, `year`, `month`, `day`, `hour`, `minute`, `second`, `date`, `time`, etc.
+- Spatial/geographic functions
+- Type casting and `$it` references
+- Deep `$select` with nested options
 
-### Paginated Product List
+### Technical Notes
 
-```http
-/app/auto/data/Product?$filter=InStock eq true&$orderby=Name&$skip=20&$top=10
-```
+- The parser is permissive and syntax-oriented; it doesn't perform semantic validation
+- The execution engine supports a pragmatic subset for stable, predictable behavior
+- Filter expressions expect: attribute identifier on the left, literal/value on the right
 
-### Search Results
+## Performance Considerations
 
-```http
-/app/auto/query/Search?$filter=startswith(Title,'Getting Started')&$select=Title,Description
-```
-
-### Single Selected Query Stream with Merged OData
-
-```http
-/app/auto/query/MyQuery/MyStream?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=5
-```
-
----
-
-## Limitations
-
-The following are not currently supported:
-
-- `$expand`
-- `$compute`
-- `$search`
-- `$count`
-- logical `or`
-- lambda operators such as `any` and `all`
-- many advanced string/date/math functions
-- deep nested `$select`
-- spatial functions
-- type casting and `$it` references
-
----
-
-## Performance Tips
-
-- Use `$select` to return only the fields you need
-- Use `$filter` server-side instead of filtering in JavaScript
-- Use `$top` to limit result size
-- Combine filtering and sorting before pagination for predictable results
-
----
+- **Use $select** to return only needed fields (reduces payload size)
+- **Filter early** using `$filter` rather than retrieving all data and filtering client-side
+- **Limit results** with `$top` to avoid large responses
 
 ## Technical Implementation
 
 The OData system is built on:
 
-- **ToSic.Sys.OData** — minimal, permissive parser
-- **ODataQueryEngine** — execution engine for the EAV / 2sxc stack
-- **DataSource Pipeline** — integration with the [DataSource](xref:NetCode.DataSources.Index) architecture
+- **ToSic.Sys.OData** - Minimal, permissive parser based on OASIS OData ABNF
+- **ODataQueryEngine** - Execution engine for the EAV/2sxc data stack
+- **DataSource Pipeline** - Integrates with 2sxc's [DataSource](xref:NetCode.DataSources.Index) architecture
 
 The parser generates an AST (Abstract Syntax Tree) which is then executed against the data source pipeline.
 
----
-
 ## History
 
-1. OData support introduced in 2sxc 17 with basic `$select`
-2. Enhanced OData parser in 2sxc 20.x
-3. Added `$filter`, `$orderby`, `$top`, and `$skip` support in 2sxc 21.00
-4. Added `$casing` support in 2sxc 21.02
+1. OData support introduced in 2sxc 17 (basic `$select`)
+1. Enhanced OData parser in 2sxc 20.x
+1. Added `$filter`, `$orderby`, `$top`, `$skip` support in 2sxc 21.00
+1. Added `$casing` support in 2sxc 21.02
 
 ---
-
-## See Also
-
-- [Official OData Documentation](http://www.odata.org/)
-- [OData v4 URL Conventions](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)
