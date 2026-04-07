@@ -1,6 +1,3 @@
----
-uid: WebApi.OData
----
 
 # OData Query Options for REST APIs
 
@@ -14,22 +11,82 @@ uid: WebApi.OData
 
 ## Quick Examples
 
-Filter and sort blog posts:
+### Filter + Sort
 
-```url
+```http
 /app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=UrlKey
 ```
 
-Get the second blog post (pagination):
+### Pagination (second item)
 
-```url
+```http
 /app/auto/data/BlogPost?$orderby=UrlKey&$skip=1&$top=1
 ```
 
-Query with filter and sort:
+### Query Endpoint
 
-```url
-/app/auto/query/nameOfQuery?$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true&$orderby=UrlKey
+```http
+/app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&$orderby=Title
+```
+
+---
+
+## JavaScript Examples
+
+### Using `fetch`
+
+```js
+const url = `/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5`;
+
+const res = await fetch(url);
+const data = await res.json();
+```
+
+### Using `$2sxc`
+
+```js
+const sxc = $2sxc(0);
+
+const data = await sxc.webApi.get(
+  "app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5"
+);
+```
+
+---
+
+## Supported OData Options
+
+### `$filter` — Filter Data
+
+Filter results based on conditions.
+
+#### Supported Operators
+
+- `eq`, `ne`, `gt`, `ge`, `lt`, `le`
+- `and`
+- `not`
+
+#### Supported Functions
+
+- `contains(field, 'text')`
+- `startswith(field, 'text')`
+
+### Examples
+
+```http
+/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+```
+
+```http
+/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
+```
+
+```http
+/app/auto/data/BlogPost?$filter=contains(Description,'world')
+```
+
+```http
+/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
 ```
 
 ## How OData Works with 2sxc Endpoints
