@@ -437,3 +437,8 @@ The parser generates an AST (Abstract Syntax Tree) which is then executed agains
 1. Added `$casing` support in 2sxc 21.02
 
 ---
+
+## See Also
+
+- [Official OData Documentation](http://www.odata.org/)
+- [OData v4 URL Conventions](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)
