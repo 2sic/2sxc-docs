@@ -1,7 +1,12 @@
+---
+uid: WebApi.OData
+---
 
-# OData Query Options for REST APIs
+# OData Query Options for REST APIs (new v21)
 
-2sxc supports **OData system query options** to filter, sort, paginate, and select data from both [Data](xref:WebApi.Data.Index) and [Query](xref:WebApi.Query) REST endpoints. This allows you to append standard OData parameters to your URLs for powerful data querying.
+2sxc supports **OData system query options** to filter, sort, paginate, and select data
+from both [Data](xref:WebApi.Data.Index) and [Query](xref:WebApi.Query) REST endpoints.
+This allows you to append standard OData parameters to your URLs for powerful data querying.
 
 > [!TIP]
 > OData query options work on both:
@@ -11,21 +16,21 @@
 
 ## Quick Examples
 
-### Filter + Sort
+Filter + Sort
 
-```http
+```text
 /app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=UrlKey
 ```
 
-### Pagination (second item)
+Pagination (second item)
 
-```http
+```text
 /app/auto/data/BlogPost?$orderby=UrlKey&$skip=1&$top=1
 ```
 
-### Query Endpoint
+Query Endpoint
 
-```http
+```text
 /app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&$orderby=Title
 ```
 
@@ -36,7 +41,7 @@
 ### Using `fetch`
 
 ```js
-const url = `/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5`;
+const url = `/api/2sxc/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5`;
 
 const res = await fetch(url);
 const data = await res.json();
@@ -54,48 +59,13 @@ const data = await sxc.webApi.get(
 
 ---
 
-## Supported OData Options
-
-### `$filter` — Filter Data
-
-Filter results based on conditions.
-
-#### Supported Operators
-
-- `eq`, `ne`, `gt`, `ge`, `lt`, `le`
-- `and`
-- `not`
-
-#### Supported Functions
-
-- `contains(field, 'text')`
-- `startswith(field, 'text')`
-
-### Examples
-
-```http
-/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
-```
-
-```http
-/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
-```
-
-```http
-/app/auto/data/BlogPost?$filter=contains(Description,'world')
-```
-
-```http
-/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
-```
-
 ## How OData Works with 2sxc Endpoints
 
 ### Data Endpoint with OData
 
 The [Data REST API](xref:WebApi.Data.Index) endpoint lets you query content-types directly:
 
-```url
+```text
 [root-path]/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=Created desc&$top=10
 ```
 
@@ -105,7 +75,7 @@ This returns the 10 most recent blog posts where `ShowOnStartPage` is true.
 
 The [Query REST API](xref:WebApi.Query) endpoint lets you query [VisualQuery](xref:Basics.Query.VisualQuery.Index) pipelines:
 
-```url
+```text
 [root-path]/app/auto/query/BlogPostsFiltered?$orderby=Title&$skip=20&$top=10
 ```
 
@@ -132,53 +102,72 @@ Note: this was added in v21.02.
 
 Filter results based on conditions.
 
-**Supported Operators:**
+#### Supported Operators
 
 - Comparison: `eq` (equals), `ne` (not equals), `gt` (greater than), `ge` (greater or equal), `lt` (less than), `le` (less or equal)
 - Logical: `and` (combine conditions)
 - Negation: `not` (negate an expression)
 
-**Supported Functions:**
+#### Supported Functions
 
 - `contains(field, 'text')` - check if field contains text
 - `startswith(field, 'text')` - check if field starts with text
 
-**Examples:**
+#### Examples
 
 Simple equality:
 
-```odata
+```text
 $filter=Title eq 'Hello World'
 ```
 
 Multiple conditions:
 
-```odata
+```text
 $filter=EntityType eq 'blogpost' and ShowOnStartPage eq true
 ```
 
 Contains function:
 
-```odata
+```text
 $filter=contains(Description, 'world')
 ```
 
 Starts with function:
 
-```odata
+```text
 $filter=startswith(Name, 'Acme')
 ```
 
 Negated contains:
 
-```odata
+```text
 $filter=not contains(Description, 'deprecated')
 ```
 
 Numeric comparison:
 
-```odata
+```text
 $filter=Rating gt 4 and Rating le 5
+```
+
+
+#### URL Examples
+
+```text
+/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+```
+
+```text
+/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
+```
+
+```text
+/app/auto/data/BlogPost?$filter=contains(Description,'world')
+```
+
+```text
+/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
 ```
 
 > [!IMPORTANT]
@@ -199,19 +188,19 @@ Sort results by one or more fields.
 
 Sort by single field ascending (default):
 
-```odata
+```text
 $orderby=Title
 ```
 
 Sort descending:
 
-```odata
+```text
 $orderby=Created desc
 ```
 
 Sort by multiple fields:
 
-```odata
+```text
 $orderby=Category asc, Created desc
 ```
 
@@ -225,13 +214,13 @@ Limit the number of results returned.
 
 Get first 10 items:
 
-```odata
+```text
 $top=10
 ```
 
 Combine with ordering:
 
-```odata
+```text
 $orderby=Created desc&$top=5
 ```
 
@@ -245,13 +234,13 @@ Skip a specified number of results (useful for pagination).
 
 Skip first 20 items:
 
-```odata
+```text
 $skip=20
 ```
 
 Pagination (page 2 with 10 items per page):
 
-```odata
+```text
 $skip=10&$top=10
 ```
 
@@ -265,13 +254,13 @@ Return only specific fields instead of all entity data.
 
 Select specific fields:
 
-```odata
+```text
 $select=Title,Created,Id
 ```
 
 Select with filter:
 
-```odata
+```text
 $select=Title,Description&$filter=ShowOnStartPage eq true
 ```
 
@@ -287,11 +276,11 @@ $select=Title,Description&$filter=ShowOnStartPage eq true
 
 Examples:
 
-```url
+```text
 /app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=10
 ```
 
-```url
+```text
 /app/auto/query/[your-query-name]?stream=[your-stream-name]&[your-stream-name]$filter=Status eq 'Published'&$orderby=Title&$select=Field1,Field2
 ```
 
@@ -309,7 +298,7 @@ Examples:
 
 You can combine multiple OData options in a single request:
 
-```url
+```text
 /app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=Created desc&$skip=10&$top=5&$select=Title,Created,UrlKey
 ```
 
@@ -325,7 +314,7 @@ This example:
 
 ### Example 1: Latest Published Blog Posts
 
-```url
+```text
 /app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&$orderby=Created desc&$top=5&$select=Title,Created,UrlKey
 ```
 
@@ -337,7 +326,7 @@ This returns the 5 most recent blog posts that:
 
 ### Example 2: Paginated Product List
 
-```url
+```text
 /app/auto/data/Product?$filter=InStock eq true&$orderby=Name&$skip=20&$top=10
 ```
 
@@ -345,7 +334,7 @@ This returns products 21-30 (page 3 with 10 per page) that are in stock, sorted 
 
 ### Example 3: Search Results
 
-```url
+```text
 /app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&$orderby=Title&$select=Title,Description,Url
 ```
 
@@ -353,7 +342,7 @@ This executes a predefined query and then filters for items starting with "Getti
 
 ### Example 4: Single Selected Query Stream with Merged OData
 
-```url
+```text
 /app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&$filter=Status eq 'Published'&$orderby=Title&$top=5
 ```
 
@@ -376,13 +365,13 @@ When using OData query options in URLs, special characters must be URL-encoded:
 
 **Example with encoding:**
 
-```url
+```text
 /app/auto/data/BlogPost?$filter=Title eq 'Hello World'
 ```
 
 Becomes:
 
-```url
+```text
 /app/auto/data/BlogPost?$filter=Title%20eq%20%27Hello%20World%27
 ```
 
