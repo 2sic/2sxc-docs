@@ -4,46 +4,36 @@ uid: Extensions.AppExtensions.Create.VisualQuery.Index
 
 # App Extensions - Visual Queries
 
-Extensions can include custom Visual Queries which are either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.
+Visual Query extensions package reusable queries as part of an App Extension.
 
 > [!TIP]
-> This allows you to create small libraries of Visual Queries which solve a specific problem,
-> and then share them across multiple Apps by installing the extension in each App.
+> Use this for query logic you want to reuse across apps.
 
-## Location and Naming
+## How Visual Query Extensions Work
 
-While developing Visual Query extensions,
-just create normal queries in your App and when exporting the extension,
-ensure that the queries are included in the package.
+Visual queries are stored as entities, not files.
+You create them like normal app queries and include them during extension export.
+
+## Naming Recommendation
 
 We highly recommend that you give the queries a clear and unique name,
 such as `{ExtensionName}.{QueryName}` to avoid conflicts with other queries in the App.
 
-We also recommend that you don't use spaces or special characters in the query names,
-to ensure easy use in REST API calls.
+Avoid spaces and special characters to simplify API usage.
 
-## Instructions
-
-Visual Queries in App Extensions are created and maintained exactly like normal Visual Queries.
-
-There is no special folder, file, or code required.
-
-Key points to be aware of:
+## Checklist
 
 - Visual Queries are stored as **Entities**, not files
 - They must exist in the App **before** exporting the extension
 - Only queries explicitly marked as used will be included in the package
 - Naming should be unique to avoid collisions across Apps
 
-
 ## Include in the Package Definition
 
 > [!TIP]
-> Visual Queries are configuration which is stored as Entities.
-> To include them in the extension, you must ensure that it's part of the package export.
+> The package only contains parts marked as included.
 
-The package export system only exports parts which have been declared to be in use.
-So make sure to tick the "Has Query" checkbox in the extension's package definition UI.
+Enable query export in the extension package definition UI (for example, **Has Query**).
 
 ---
 

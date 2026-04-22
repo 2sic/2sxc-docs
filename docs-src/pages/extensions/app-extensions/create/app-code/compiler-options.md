@@ -4,12 +4,16 @@ uid: Extensions.AppExtensions.Create.AppCode.CompilerOptions
 
 # App Extensions - Special Compiler Options
 
-In rare cases the compiler needs to be instructed to do something special.
-The configuration must be in the same folder, to ensure its included in the distribution package.
+In rare cases you must add compiler references for extension AppCode.
+Keep this configuration inside the extension AppCode folder so it can be packaged with the extension.
 
-As of now, you must create an `compile.json` file
-in the `/AppCode/Extensions/{ExtensionName}/` folder
-with content like this:
+Create a `compile.json` file in:
+
+```text
+/AppCode/Extensions/{ExtensionName}/
+```
+
+Example:
 
 ```json
 {
@@ -23,8 +27,7 @@ with content like this:
 ```
 
 > [!TIP]
-> The above example shows how to add a reference to `System.Net.Http` for DNN,
-> which is often needed for making HTTP requests.
+> The example adds `System.Net.Http` for DNN (`References.net4`).
 >
 > It's also needed if you have custom WebApi controllers returning `HttpResponseMessage`.
 > Without this reference, you may encounter compilation errors.

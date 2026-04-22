@@ -16,52 +16,30 @@ They are small Components that run inside your App and replace or enhance normal
 
 Use them when you want a field, for example sliders, color pickers, tag selectors, or anything the built-in fields cannot do.
 
-## Folder structure for app extensions
+## 1. Folder and Naming
 
-Custom input fields are App Extensions and must be placed in a specific folder:
+Create the extension in `/extensions/` using this pattern:
 
-1. In your App, create a folder called `extensions` (if it does not exist yet)
-2. Inside `extensions`, create a folder for your field extension.
-    The folder name must follow this pattern:
+```text
+field-[data-type]-[name]
+```
 
-     ```text
-     field-[data-type]-[name]
-     ```
+Examples:
 
-    **Examples**
-    - `extensions/field-number-dial`
-    - `extensions/field-number-slider-basic`
-    - `extensions/field-boolean-icons`
-    - `extensions/field-string-app-color-picker`
+- `extensions/field-number-slider-basic`
+- `extensions/field-string-app-color-picker`
+- `extensions/field-boolean-icons`
 
-    **Rules**
+Rules:
 
-    - It must start with `field-`
-    - The second part is the data type (`string`, `number`...).
-    - The last part is a free name that describes your field.
-    - no spaces, only dashes `-` as separators.
+- Must start with `field-`
+- Second part must be the data type (`string`, `number`, `boolean`, ...)
+- Use only lowercase and dashes
 
-## Configure your app extension
+## 2. Configure the Extension Entry
 
-Before creating a custom input field, you must know where App Extensions live and how to **configure** them inside your App.
-
-To change the settings of your input field extension, click the pen icon next to the extension entry.
-
-<img src="./assets/input-content-type-metadata.png" class="full-width"/>
-
-
-After opening the editor, you'll see various fields that **describe** and **configure** your extension.
-
-The most important setting is the `Input Fields Configuration`.
-This is where you specify which files should be loaded to activate your custom input field extension.
-
-<div gallery="gallery-input-field-1">
-  <img src="./assets/input-fields-files.png">
-</div>
-
-Now that the App Extension is set up, we can start writing the actual code for the input field.
-
-## Example base input field
+Open **App Settings -> App Extensions** and edit your extension.
+In **Input Fields Configuration**, define which JavaScript files to load.
 
 ```javascript
 (() => {
@@ -74,15 +52,19 @@ Now that the App Extension is set up, we can start writing the actual code for t
   class BasicField extends HTMLElement {
     connectedCallback() {
       
-      // Connecter given by 2sxc
+      // Connector given by 2sxc
       const connector = this.connector;
+      this.field = connector.field;
 
-      // Getting Settings
+      // Get field settings
       const settings = connector.field?.settings || {};
       
-      // Implement the HTML code
+      // Render input
       this.innerHTML = html;
-      // Listen for user input
+
+      this.input = this.querySelector("input");
+
+      // Forward user input back to the 2sxc field API
       this.onInput = () => {
         this.field?.setValue(this.input.value || null);
       };
@@ -99,92 +81,64 @@ Now that the App Extension is set up, we can start writing the actual code for t
 })();
 ```
 
-The [connector](https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector)
-used in this example is the one provided by 2sxc.
+<div gallery="gallery-input-field-1">
+  <img src="./assets/input-fields-files.png">
+</div>
+
+The [connector](https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector) is provided by 2sxc.
 
 You can find further examples of input field extensions in these repositories:
 
 - [Number Slider](https://github.com/2sxc-apps/app-extension-number-slider-basic)
 - [Color Picker](https://github.com/2sxc-apps/app-extension-string-color-picker-spectrum)
 
-## Creating a content type as entity reference
+## 3. Add Extension Settings (Optional)
 
-Sometimes you need additional settings for a field which don't belong in the main Content Type itself.  
-For this, you create a **separate Content Type** and reference it from the main one.
-
-## How to create and connect a Content Type
-
-To make your custom input field configurable (for example to define `Min`, `Max`, or `Step` for a number slider),
-you must create a **separate  Content Type** and **reference it** in your main Content Type.  
+If your field needs settings (for example `Min`, `Max`, `Step`), create a separate settings ContentType.
 
 > [!IMPORTANT]
-> When creating the settings Content Type, the **Name is extremely important**.
+> The settings ContentType name must be `@{extension-name}`.
 >
-> The Content Type name must match your extension name exactly
+> Example:
+>
+> - Extension folder: `field-number-slider-basic`
+> - Extension name: `number-slider-basic`
+> - Settings ContentType: `@number-slider-basic`
 
-It must be **exactly the same name as your App Extension**,  
-**with an `@` in front of it**, **not** the Component tag name.
-
-For example, if your App Extension is named:
-
-`number-slider-basic`
-
-Then your Content Type must be named:
-
-`@number-slider-basic`
-
-
-If your App Extension and Content Type were set up correctly,  
-you can now add a field to your new settings Content Type.
-
-In this example, we add a simple **Number** field called `Step`.
-
-Once this field exists, 2sxc will automatically show it inside the **field configuration UI**
-when you use your custom input field in any Content Type.
-
-It should look something like this:
-
-**Screenshot requirement:** Please ensure the screenshot shows the full context of the content type field.
-**Screenshot requirement:** Please ensure the screenshot shows the full context of the content type field.
+Add fields such as `Step` to this settings type.
+2sxc will then show these settings in the field configuration UI.
 
 <div gallery="gallery-content-type-field">
   <img src="./assets/input-create-new-content-type.png">
   <img src="./assets/input-content-type-field.png">
 </div>
 
-If everything works correctly, you can now rename the Content Type and move it into a new scope.
-
-## Include in Extension Export
+## 4. Include Settings in Extension Export
 
 ### [1. Scope](#tab/scope)
 
-We highly recommend you move the content-type to it's proper scope, so
-it's invisible when people install your extension.
+Move the settings ContentType into a dedicated scope so it stays out of normal app content lists.
 
-When moving your settings Content Type into a new scope,  
-the scope name must follow the **Extensions.{Name of Extension}** pattern.
+Recommended scope pattern:
+
+```text
+Extensions.{ExtensionName}
+```
 
 <img src="./assets/input-scope-name.png" class="full-width"/>
 
 ### [2. Data Bundles](#tab/data-bundles)
 
-A Data Bundle lets you package your App Extension together with its settings Content Type.
+A Data Bundle packages the settings ContentType together with your extension.
 
 <img src="./assets/input-data-bundle.png" class="full-width"/>
 
-Here you can create a new Data Bundle by clicking the **+** button.  
-Give it a name that matches your extension.
+Create a bundle and give it a name matching the extension.
 
 ### [3. Add Content Type to Bundle](#tab/add-content-type)
 
-Now that you created the bundle, you must tell each piece of data you want to include
-that it should be in the bundle.
-
-To add your settings Content Type to the Data Bundle,
-simply open the **Data** section of your App Extension and click the **Metadata** icon of the Content Type.  
-
-Then select your Content Type from the list and click **Save**.  
-This adds the Content Type to the Data Bundle so it will be included when your extension is exported or imported.
+Open your extension data section, edit metadata on the settings ContentType,
+assign it to the Data Bundle, then save.
 
 <div gallery="gallery-data-bundle">
   <img src="./assets/input-content-type-metadata.png">
@@ -193,10 +147,8 @@ This adds the Content Type to the Data Bundle so it will be included when your e
 
 ### [4. Include Bundle in Extension](#tab/include-bundle)
 
-Here you can open your App Extension (using the edit icon) and enable **Includes Data Bundles**.  
-Then simply select the Data Bundle you created.  
-This links the bundle to your extension,
-making sure the settings Content Type is included when the extension is exported or imported.
+In the extension configuration, enable **Includes Data Bundles** and select your bundle.
+Now the settings ContentType is part of export/import.
 
 <img src="./assets/input-data-bundle-extension.png" class="full-width"/>
 

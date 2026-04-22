@@ -4,88 +4,68 @@ uid: Extensions.AppExtensions.Create.Data.Index
 
 # App Extensions - Data and Schema (ContentType)
 
-Extensions can include custom data and schema (ContentType) definitions which are either used by the extension itself or can be used by the App as a whole.
+Data extensions package reusable schema and optional starter content.
+Install them in any app to get the same ContentTypes and baseline data.
 
 > [!TIP]
-> This allows you to create small libraries of data and schema definitions which solve a specific problem,
-> and then share them across multiple Apps by installing the extension in each App.
+> This is ideal for shared configuration types, lookup lists, and starter datasets.
 
-For Data and Schema (ContentType) extensions, you may choose to create one or more of the following:
+## What Can Be Included
 
-1. Content-Types: Custom Content-Types to define the structure of your data.
-2. Default Data: Predefined data entries that come with the Content-Type.
-3. Queries: Visual Queries, which are included in the data bundle.
-4. Views: View definitions, which are included in the data bundle.
+1. **ContentTypes**: schema definitions
+2. **Default data**: initial entities for those ContentTypes
+3. **Visual Queries**: optional query entities
+4. **View definitions**: optional view entities
 
+## How It Works
 
-## How Data & Schema App Extensions Work
+### 1. ContentTypes (Schema)
 
-Data & Schema App Extensions bundle **schemas and data** into a reusable package that can be installed into any App.  
-They are ideal for providing **ready-to-use data models** together with sensible defaults.
-
-At a high level, such an extension consists of the following building blocks.
-
----
-
-## 1. ContentTypes (Schema)
-
-ContentTypes define the **structure** of the data provided by the extension.
-
-- Imported automatically when the extension is installed
-- Can be used:
-  - internally by the extension
-  - or by the consuming App like any other ContentType
+- Imported when the extension is installed
+- Behave like normal app ContentTypes after import
+- Can be used by the extension or by the app itself
 
 Typical use cases:
 
 - Configuration entities
-- Structured datasets
-- Shared schemas reused across multiple Apps
+- Shared reusable schemas
+- Structured content models used by multiple apps
 
-Once installed, these ContentTypes behave exactly like native App ContentTypes.
+### 2. Default Data
 
----
+- Imported together with the schema
+- Can be modified or removed after installation
+- Useful for sample data, default settings, and lookup values
 
-## 2. Default Data
+### 3. Queries
 
-Default Data provides **pre‑filled entities** for the ContentTypes included in the extension.
+- Stored as entities
+- Can target extension ContentTypes and app data
+- Must be included in the extension export configuration
 
-- Imported together with the ContentTypes
-- Can be changed, extended, or removed after installation
-- Commonly used for:
-  - example data
-  - default configuration values
-  - lookup tables or presets
+See also: [Visual query extensions](xref:Extensions.AppExtensions.Create.VisualQuery.Index)
 
-This allows an App to work immediately without requiring manual data entry.
+### 4. View Definitions
 
----
+- Optional
+- Lets the app immediately select extension views
+- Must be included in the extension data bundle/export settings
 
-## 3. Queries
+## Packaging Checklist
 
-Queries are **Visual Queries** that are bundled with the extension.
+Before exporting, verify all required parts are marked as included:
 
-- Imported as part of the data bundle
-- Can reference:
-  - extension ContentTypes
-  - default data
-  - App data
+1. ContentTypes are part of the extension data
+2. Default entities are in the bundle
+3. Queries are flagged for export if needed
+4. View definitions are flagged for export if needed
 
-For more information check out [visual queries](xref:Extensions.AppExtensions.Create.VisualQuery.Index).
+## Installation Flow
 
----
-
-## Installation & Usage Flow
-
-1. Install the App Extension into an App
-2. ContentTypes and Default Data are imported automatically
-3. Queries and Views become available immediately
-4. The App can:
-   - use everything as provided
-   - extend or override parts
-   - combine extension data with App‑specific logic
-
----
+1. Install the extension in a target app
+2. ContentTypes and data are imported
+3. Optional queries and views are available
+4. The target app can extend or override everything as needed
 
 ## History
 
