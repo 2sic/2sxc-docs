@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>OData Query Options for REST APIs | 2sxc 21 for Dnn and Oqtane </title>
+      <title>OData Query Options for REST APIs (new v21) | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="OData Query Options for REST APIs | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="OData Query Options for REST APIs (new v21) | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -103,9 +103,11 @@
         
 
         <article data-uid="WebApi.OData">
-<h1 id="odata-query-options-for-rest-apis">OData Query Options for REST APIs</h1>
+<h1 id="odata-query-options-for-rest-apis-new-v21">OData Query Options for REST APIs (new v21)</h1>
 
-<p>2sxc supports <strong>OData system query options</strong> to filter, sort, paginate, and select data from both <a class="xref" href="../data/index.html">Data</a> and <a class="xref" href="../query/index.html">Query</a> REST endpoints. This allows you to append standard OData parameters to your URLs for powerful data querying.</p>
+<p>2sxc supports <strong>OData system query options</strong> to filter, sort, paginate, and select data
+from both <a class="xref" href="../data/index.html">Data</a> and <a class="xref" href="../query/index.html">Query</a> REST endpoints.
+This allows you to append standard OData parameters to your URLs for powerful data querying.</p>
 <div class="TIP">
 <h5>Tip</h5>
 <p>OData query options work on both:</p>
@@ -115,24 +117,40 @@
 </ul>
 </div>
 <h2 id="quick-examples">Quick Examples</h2>
-<p>Filter and sort blog posts:</p>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=UrlKey
+<p>Filter + Sort</p>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=UrlKey
 </code></pre>
-<p>Get the second blog post (pagination):</p>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$orderby=UrlKey&amp;$skip=1&amp;$top=1
+<p>Pagination (second item)</p>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$orderby=UrlKey&amp;$skip=1&amp;$top=1
 </code></pre>
-<p>Query with filter and sort:</p>
-<pre><code class="lang-url">/app/auto/query/nameOfQuery?$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true&amp;$orderby=UrlKey
+<p>Query Endpoint</p>
+<pre><code class="lang-text">/app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&amp;$orderby=Title
 </code></pre>
+<hr>
+<h2 id="javascript-examples">JavaScript Examples</h2>
+<h3 id="using-fetch">Using <code>fetch</code></h3>
+<pre><code class="lang-js">const url = `/api/2sxc/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$top=5`;
+
+const res = await fetch(url);
+const data = await res.json();
+</code></pre>
+<h3 id="using-2sxc">Using <code>$2sxc</code></h3>
+<pre><code class="lang-js">const sxc = $2sxc(0);
+
+const data = await sxc.webApi.get(
+  &quot;app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$top=5&quot;
+);
+</code></pre>
+<hr>
 <h2 id="how-odata-works-with-2sxc-endpoints">How OData Works with 2sxc Endpoints</h2>
 <h3 id="data-endpoint-with-odata">Data Endpoint with OData</h3>
 <p>The <a class="xref" href="../data/index.html">Data REST API</a> endpoint lets you query content-types directly:</p>
-<pre><code class="lang-url">[root-path]/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$top=10
+<pre><code class="lang-text">[root-path]/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$top=10
 </code></pre>
 <p>This returns the 10 most recent blog posts where <code>ShowOnStartPage</code> is true.</p>
 <h3 id="query-endpoint-with-odata">Query Endpoint with OData</h3>
 <p>The <a class="xref" href="../query/index.html">Query REST API</a> endpoint lets you query <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> pipelines:</p>
-<pre><code class="lang-url">[root-path]/app/auto/query/BlogPostsFiltered?$orderby=Title&amp;$skip=20&amp;$top=10
+<pre><code class="lang-text">[root-path]/app/auto/query/BlogPostsFiltered?$orderby=Title&amp;$skip=20&amp;$top=10
 </code></pre>
 <p>This executes your predefined query and then applies additional OData filtering/sorting on top of the results.</p>
 <h2 id="special-odata-like-query-options">Special OData-like Query Options</h2>
@@ -146,35 +164,44 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <p>2sxc uses the <strong>ToSic.Sys.OData</strong> parser which supports a practical subset of OData v4 system query options.</p>
 <h3 id="filter---filter-data">$filter - Filter Data</h3>
 <p>Filter results based on conditions.</p>
-<p><strong>Supported Operators:</strong></p>
+<h4 id="supported-operators">Supported Operators</h4>
 <ul>
 <li>Comparison: <code>eq</code> (equals), <code>ne</code> (not equals), <code>gt</code> (greater than), <code>ge</code> (greater or equal), <code>lt</code> (less than), <code>le</code> (less or equal)</li>
 <li>Logical: <code>and</code> (combine conditions)</li>
 <li>Negation: <code>not</code> (negate an expression)</li>
 </ul>
-<p><strong>Supported Functions:</strong></p>
+<h4 id="supported-functions">Supported Functions</h4>
 <ul>
 <li><code>contains(field, 'text')</code> - check if field contains text</li>
 <li><code>startswith(field, 'text')</code> - check if field starts with text</li>
 </ul>
-<p><strong>Examples:</strong></p>
+<h4 id="examples">Examples</h4>
 <p>Simple equality:</p>
-<pre><code class="lang-odata">$filter=Title eq 'Hello World'
+<pre><code class="lang-text">$filter=Title eq 'Hello World'
 </code></pre>
 <p>Multiple conditions:</p>
-<pre><code class="lang-odata">$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true
+<pre><code class="lang-text">$filter=EntityType eq 'blogpost' and ShowOnStartPage eq true
 </code></pre>
 <p>Contains function:</p>
-<pre><code class="lang-odata">$filter=contains(Description, 'world')
+<pre><code class="lang-text">$filter=contains(Description, 'world')
 </code></pre>
 <p>Starts with function:</p>
-<pre><code class="lang-odata">$filter=startswith(Name, 'Acme')
+<pre><code class="lang-text">$filter=startswith(Name, 'Acme')
 </code></pre>
 <p>Negated contains:</p>
-<pre><code class="lang-odata">$filter=not contains(Description, 'deprecated')
+<pre><code class="lang-text">$filter=not contains(Description, 'deprecated')
 </code></pre>
 <p>Numeric comparison:</p>
-<pre><code class="lang-odata">$filter=Rating gt 4 and Rating le 5
+<pre><code class="lang-text">$filter=Rating gt 4 and Rating le 5
+</code></pre>
+<h4 id="url-examples">URL Examples</h4>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+</code></pre>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
+</code></pre>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=contains(Description,'world')
+</code></pre>
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
 </code></pre>
 <div class="IMPORTANT">
 <h5>Important</h5>
@@ -191,43 +218,43 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <p><strong>Syntax:</strong> <code>$orderby=Field1 [asc|desc], Field2 [asc|desc]</code></p>
 <p><strong>Examples:</strong></p>
 <p>Sort by single field ascending (default):</p>
-<pre><code class="lang-odata">$orderby=Title
+<pre><code class="lang-text">$orderby=Title
 </code></pre>
 <p>Sort descending:</p>
-<pre><code class="lang-odata">$orderby=Created desc
+<pre><code class="lang-text">$orderby=Created desc
 </code></pre>
 <p>Sort by multiple fields:</p>
-<pre><code class="lang-odata">$orderby=Category asc, Created desc
+<pre><code class="lang-text">$orderby=Category asc, Created desc
 </code></pre>
 <h3 id="top---limit-results">$top - Limit Results</h3>
 <p>Limit the number of results returned.</p>
 <p><strong>Syntax:</strong> <code>$top=number</code></p>
 <p><strong>Examples:</strong></p>
 <p>Get first 10 items:</p>
-<pre><code class="lang-odata">$top=10
+<pre><code class="lang-text">$top=10
 </code></pre>
 <p>Combine with ordering:</p>
-<pre><code class="lang-odata">$orderby=Created desc&amp;$top=5
+<pre><code class="lang-text">$orderby=Created desc&amp;$top=5
 </code></pre>
 <h3 id="skip---skip-results-pagination">$skip - Skip Results (Pagination)</h3>
 <p>Skip a specified number of results (useful for pagination).</p>
 <p><strong>Syntax:</strong> <code>$skip=number</code></p>
 <p><strong>Examples:</strong></p>
 <p>Skip first 20 items:</p>
-<pre><code class="lang-odata">$skip=20
+<pre><code class="lang-text">$skip=20
 </code></pre>
 <p>Pagination (page 2 with 10 items per page):</p>
-<pre><code class="lang-odata">$skip=10&amp;$top=10
+<pre><code class="lang-text">$skip=10&amp;$top=10
 </code></pre>
 <h3 id="select---select-specific-fields">$select - Select Specific Fields</h3>
 <p>Return only specific fields instead of all entity data.</p>
 <p><strong>Syntax:</strong> <code>$select=Field1,Field2,Field3</code></p>
 <p><strong>Examples:</strong></p>
 <p>Select specific fields:</p>
-<pre><code class="lang-odata">$select=Title,Created,Id
+<pre><code class="lang-text">$select=Title,Created,Id
 </code></pre>
 <p>Select with filter:</p>
-<pre><code class="lang-odata">$select=Title,Description&amp;$filter=ShowOnStartPage eq true
+<pre><code class="lang-text">$select=Title,Description&amp;$filter=ShowOnStartPage eq true
 </code></pre>
 <p><strong>Query Stream Behavior:</strong></p>
 <ul>
@@ -240,9 +267,9 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <li><code>$select</code> still limits the returned fields even when <code>$filter</code>, <code>$orderby</code>, or <code>$top</code> are also present and the request goes through the full query OData execution path.</li>
 </ul>
 <p>Examples:</p>
-<pre><code class="lang-url">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=10
+<pre><code class="lang-text">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=10
 </code></pre>
-<pre><code class="lang-url">/app/auto/query/[your-query-name]?stream=[your-stream-name]&amp;[your-stream-name]$filter=Status eq 'Published'&amp;$orderby=Title&amp;$select=Field1,Field2
+<pre><code class="lang-text">/app/auto/query/[your-query-name]?stream=[your-stream-name]&amp;[your-stream-name]$filter=Status eq 'Published'&amp;$orderby=Title&amp;$select=Field1,Field2
 </code></pre>
 <p><strong>Special Field Aliases:</strong></p>
 <p>2sxc provides convenient aliases for common system fields:</p>
@@ -255,7 +282,7 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 </ul>
 <h3 id="combining-multiple-options">Combining Multiple Options</h3>
 <p>You can combine multiple OData options in a single request:</p>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$skip=10&amp;$top=5&amp;$select=Title,Created,UrlKey
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=Created desc&amp;$skip=10&amp;$top=5&amp;$select=Title,Created,UrlKey
 </code></pre>
 <p>This example:</p>
 <ol>
@@ -267,7 +294,7 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 </ol>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="example-1-latest-published-blog-posts">Example 1: Latest Published Blog Posts</h3>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&amp;$orderby=Created desc&amp;$top=5&amp;$select=Title,Created,UrlKey
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and contains(Title,'2sxc')&amp;$orderby=Created desc&amp;$top=5&amp;$select=Title,Created,UrlKey
 </code></pre>
 <p>This returns the 5 most recent blog posts that:</p>
 <ul>
@@ -276,15 +303,15 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <li>Returns only Title, Created date, and UrlKey</li>
 </ul>
 <h3 id="example-2-paginated-product-list">Example 2: Paginated Product List</h3>
-<pre><code class="lang-url">/app/auto/data/Product?$filter=InStock eq true&amp;$orderby=Name&amp;$skip=20&amp;$top=10
+<pre><code class="lang-text">/app/auto/data/Product?$filter=InStock eq true&amp;$orderby=Name&amp;$skip=20&amp;$top=10
 </code></pre>
 <p>This returns products 21-30 (page 3 with 10 per page) that are in stock, sorted by name.</p>
 <h3 id="example-3-search-results">Example 3: Search Results</h3>
-<pre><code class="lang-url">/app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&amp;$orderby=Title&amp;$select=Title,Description,Url
+<pre><code class="lang-text">/app/auto/query/SearchResults?$filter=startswith(Title,'Getting Started')&amp;$orderby=Title&amp;$select=Title,Description,Url
 </code></pre>
 <p>This executes a predefined query and then filters for items starting with &quot;Getting Started&quot;.</p>
 <h3 id="example-4-single-selected-query-stream-with-merged-odata">Example 4: Single Selected Query Stream with Merged OData</h3>
-<pre><code class="lang-url">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=5
+<pre><code class="lang-text">/app/auto/query/[your-query-name]/[your-stream-name]?$select=Field1,Field2&amp;$filter=Status eq 'Published'&amp;$orderby=Title&amp;$top=5
 </code></pre>
 <p>This:</p>
 <ul>
@@ -318,10 +345,10 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 </tbody>
 </table>
 <p><strong>Example with encoding:</strong></p>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
 </code></pre>
 <p>Becomes:</p>
-<pre><code class="lang-url">/app/auto/data/BlogPost?$filter=Title%20eq%20%27Hello%20World%27
+<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=Title%20eq%20%27Hello%20World%27
 </code></pre>
 <div class="TIP">
 <h5>Tip</h5>

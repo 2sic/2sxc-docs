@@ -94,8 +94,9 @@ This allows you to see your changes in real-time as you develop your Angular app
 
 ---
 
-## Parameters
-```cshtml
+## Angular Loader Parameters
+
+```js
 var angularConfig = new
 {
   // the path to your angular app - this should be the path where the index.html of your angular app is located, relative to the root of your 2sxc app
