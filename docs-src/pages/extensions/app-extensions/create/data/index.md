@@ -60,6 +60,13 @@ Before exporting, verify all required parts are marked as included:
 3. Queries are flagged for export if needed
 4. View definitions are flagged for export if needed
 
+## Include Settings in Extension Export (Optional)
+
+If your extension also ships a settings ContentType (for example `@{extension-name}`),
+use this workflow to include it in export/import:
+
+[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+
 ## Installation Flow
 
 1. Install the extension in a target app

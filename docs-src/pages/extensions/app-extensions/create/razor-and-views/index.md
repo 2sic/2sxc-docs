@@ -62,6 +62,13 @@ If your extension should ship ready-to-select views:
 2. Include them in the extension data/export definition
 3. Verify all required dependencies (queries, content types) are included as well
 
+## Include Settings in Extension Export (Optional)
+
+If your Razor extension also has a settings ContentType (for example `@{extension-name}`),
+include it in export/import using this workflow:
+
+[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+
 ---
 
 ## History

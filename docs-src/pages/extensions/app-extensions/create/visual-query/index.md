@@ -35,6 +35,13 @@ Avoid spaces and special characters to simplify API usage.
 
 Enable query export in the extension package definition UI (for example, **Has Query**).
 
+## Include Settings in Extension Export (Optional)
+
+If your query extension also ships a settings ContentType,
+include it in export/import using this workflow:
+
+[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+
 ---
 
 ## History
