@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/giiovi/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -128,9 +128,8 @@ They are small Components that run inside your App and replace or enhance normal
 <li>Second part must be the data type (<code>string</code>, <code>number</code>, <code>boolean</code>, ...)</li>
 <li>Use only lowercase and dashes</li>
 </ul>
-<h2 id="2-code-the-extension-entry">2. Code the Extension Entry</h2>
-<p>Open <strong>App Settings -&gt; App Extensions</strong> and edit your extension.
-In <strong>Input Fields Configuration</strong>, define which JavaScript files to load - as of now always <code>index.js</code>.</p>
+<h2 id="2-create-the-extension">2. Create the Extension</h2>
+<h3 id="21-create-the-code">2.1 Create the Code</h3>
 <p>Write code like this in <code>index.js</code>:</p>
 <pre><code class="lang-javascript">(() =&gt; {
 
@@ -171,34 +170,109 @@ In <strong>Input Fields Configuration</strong>, define which JavaScript files to
   customElements.define(tagName, BasicField);
 })();
 </code></pre>
+<p>Some Notes:</p>
+<ul>
+<li><p>Tag name: <code>field-number-slider-basic</code> (must match the extension name)</p>
+</li>
+<li><p>The <a href="https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector">connector</a> is provided by 2sxc.</p>
+</li>
+</ul>
+<h3 id="22-configure-the-extension-definition">2.2 Configure the Extension Definition</h3>
+<p>Open <strong>App Settings -&gt; App Extensions</strong> and edit your extension.
+In <strong>Input Fields Configuration</strong>, define which JavaScript files to load - as of now always <code>index.js</code>.</p>
 <div gallery="gallery-input-field-1">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-fields-files.png">
 </div>
-<p>Tag name: <code>field-number-slider-basic</code> (must match the extension name)</p>
-<p>The <a href="https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector">connector</a> is provided by 2sxc.</p>
+<h3 id="23-examples">2.3 Examples</h3>
 <p>You can find further examples of input field extensions in these repositories:</p>
 <ul>
 <li><a href="https://github.com/2sxc-apps/app-extension-number-slider-basic">Number Slider</a></li>
 <li><a href="https://github.com/2sxc-apps/app-extension-string-color-picker-spectrum">Color Picker</a></li>
 </ul>
 <h2 id="3-test-the-input-field">3. Test the Input Field</h2>
-<p>TODO: @2rb</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_create-content-type" role="tab" aria-controls="tabpanel_1_create-content-type" data-tab="create-content-type" tabindex="0" aria-selected="true">1. Create a Content Type</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_open-fields-editor" role="tab" aria-controls="tabpanel_1_open-fields-editor" data-tab="open-fields-editor" tabindex="-1">2. Open the Fields Editor</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-new-field" role="tab" aria-controls="tabpanel_1_add-new-field" data-tab="add-new-field" tabindex="-1">3. Add a New Field</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_configure-field" role="tab" aria-controls="tabpanel_1_configure-field" data-tab="configure-field" tabindex="-1">4. Configure the Field</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_test-input-ui" role="tab" aria-controls="tabpanel_1_test-input-ui" data-tab="test-input-ui" tabindex="-1">5. Test the Input in the UI</a>
+</li>
+</ul>
+<section id="tabpanel_1_create-content-type" role="tabpanel" data-tab="create-content-type">
+
+<p>Go to <strong>Data</strong> and click the <strong>+</strong> button to create a new Content Type</p>
+<p>Give it a name (e.g. <code>InputTest</code>) and save.</p>
+<div gallery="gallery-input-field-1">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type-name.png">
+</div>
+</section>
+<section id="tabpanel_1_open-fields-editor" role="tabpanel" data-tab="open-fields-editor" aria-hidden="true" hidden="hidden">
+
+<p>After createn the Content Type:</p>
+<ol>
+<li>Locate your new Content Type:</li>
+<li>Click on the <strong>Fields (database icon)</strong></li>
+</ol>
+<div gallery="gallery-input-field-2">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-edit-fields.png">
+</div>
+</section>
+<section id="tabpanel_1_add-new-field" role="tabpanel" data-tab="add-new-field" aria-hidden="true" hidden="hidden">
+
+<p>Click the <strong>+ button</strong> in the bottom right to add a new field.</p>
+<div gallery="gallery-input-field-3">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-field.png">
+</div>
+</section>
+<section id="tabpanel_1_configure-field" role="tabpanel" data-tab="configure-field" aria-hidden="true" hidden="hidden">
+
+<p>Now configure your field:</p>
+<ul>
+<li><strong>Name</strong> → e.g. <code>Test</code></li>
+<li><strong>Data Type</strong> → <code>Number</code></li>
+<li><strong>Input Type</strong> → <code>Slider Basic</code> (your custom input)</li>
+</ul>
+<div gallery="gallery-input-field-4">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-field-options.png">
+</div>
+</section>
+<section id="tabpanel_1_test-input-ui" role="tabpanel" data-tab="test-input-ui" aria-hidden="true" hidden="hidden">
+
+<p>Create or open an item of your Content Type.</p>
+<p>You should now see your custom input (e.g. slider) rendered and usable.</p>
+<div gallery="gallery-input-field-5">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-items.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-slider-basic.png">
+</div>
+</section>
+</div>
 <h2 id="4-ready-to-export-and-import">4. Ready to Export and Import</h2>
 <p>The extension is now ready to be exported and imported into other Apps,
 as described in the <a class="xref" href="../lifecycle/index.html">Lifecycle</a>.</p>
 <p>After importing the Extension, you should be able to use this new input field in your app.</p>
 <h2 id="5a-add-extension-settings-optional">5a. Add Extension Settings (Optional)</h2>
 <p>If your field needs settings (for example <code>Min</code>, <code>Max</code>, <code>Step</code>), create a separate settings ContentType.</p>
-<div class="tabGroup" id="tabgroup_1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_1_create-settings-content-type" role="tab" aria-controls="tabpanel_1_create-settings-content-type" data-tab="create-settings-content-type" tabindex="0" aria-selected="true">1. Create a Settings ContentType</a>
+<a href="#tabpanel_2_create-settings-content-type" role="tab" aria-controls="tabpanel_2_create-settings-content-type" data-tab="create-settings-content-type" tabindex="0" aria-selected="true">1. Create a Settings ContentType</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_1_access-settings-in-code" role="tab" aria-controls="tabpanel_1_access-settings-in-code" data-tab="access-settings-in-code" tabindex="-1">2. Access Settings in Code</a>
+<a href="#tabpanel_2_access-settings-in-code" role="tab" aria-controls="tabpanel_2_access-settings-in-code" data-tab="access-settings-in-code" tabindex="-1">2. Access Settings in Code</a>
 </li>
 </ul>
-<section id="tabpanel_1_create-settings-content-type" role="tabpanel" data-tab="create-settings-content-type">
+<section id="tabpanel_2_create-settings-content-type" role="tabpanel" data-tab="create-settings-content-type">
 
 <div class="IMPORTANT">
 <h5>Important</h5>
@@ -211,15 +285,38 @@ as described in the <a class="xref" href="../lifecycle/index.html">Lifecycle</a>
 </div>
 <p>Add fields such as <code>Step</code> to this settings type.
 2sxc will then show these settings in the field configuration UI.</p>
-<p>TODO: SHOW HOW TO CREATE THE CONTENT-TYPE, AFTER THE (+) BUTTON</p>
 <div gallery="gallery-content-type-field">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type-name.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-edit-fields.png">  
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-field.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-field-options.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-add-items.png">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-field.png">
 </div>
 </section>
-<section id="tabpanel_1_access-settings-in-code" role="tabpanel" data-tab="access-settings-in-code" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_access-settings-in-code" role="tabpanel" data-tab="access-settings-in-code" aria-hidden="true" hidden="hidden">
 
-<p>TODO: @2rb - this is missing - how to access settings in the code?</p>
+<p>If your input field defines custom settings, 2sxc providesthem on the field connector.</p>
+<p>Inside your Component, you can acces them like this.</p>
+<pre><code class="lang-js">connectedCallback() {
+  const connector = this.connector; // Provided by 2sxc
+  this.field = connector.field;     // Metadata about the current field
+
+  // All custom settings from your settings ContentType
+  const settings = connector.field?.settings || {};
+
+  // Example: access your custom settings
+  const someValue = settings.SomeField;       // e.g. &quot;Label&quot;, &quot;Color&quot;, etc.
+  const anotherValue = settings.AnotherField; // depends on your configuration
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The available properties depend entirely on you settings ContentType.
+You define the fields, 2sxc just passed them through.</p>
+</div>
+<p>For this to work, your settings ContentType must follow the naming pattern <code>@{extension-name}</code></p>
 </section>
 </div>
 <h2 id="5b-include-settings-in-extension-export">5b. Include Settings in Extension Export</h2>
@@ -272,7 +369,7 @@ Now the settings ContentType is part of export/import.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/giiovi/2sxc-docs/blob/master/docs-src/pages/extensions/app-extensions/create/input-field/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
