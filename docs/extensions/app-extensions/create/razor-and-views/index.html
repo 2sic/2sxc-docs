@@ -105,54 +105,103 @@
         <article data-uid="Extensions.AppExtensions.Create.RazorAndViews.Index">
 <h1 id="app-extensions---razor-and-views">App Extensions - Razor and Views</h1>
 
-<p>Extensions can include custom Razor Views for re-use.</p>
+<p>Razor extensions let you ship reusable Razor files and optional view definitions.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>This allows you to create small libraries of Razor which solve a specific problem,
-and then share them across multiple Apps by installing the extension in each App.</p>
+<p>Use this when you want to reuse presentation components across multiple apps.</p>
 </div>
-<p>For Razor extensions, you may choose to create one or more of the following:</p>
+<h2 id="what-can-be-included">What Can Be Included</h2>
 <ol>
-<li>Razor views (<code>/extensions/{ExtensionName}/{ViewName}.cshtml</code> files) for rendering content.<br>
-...possibly including the view definition, so it's selectable in the template picker.</li>
-<li>Razor partial views for reusable components.</li>
-<li>Razor base classes for shared logic, to be used in other Razor files.</li>
+<li>Razor files in <code>/extensions/{ExtensionName}/</code></li>
+<li>Partial Razor files for reusable UI blocks</li>
+<li>Optional view definitions so editors can select these views in the picker</li>
+<li>Optional base/helper code in AppCode</li>
 </ol>
 <h2 id="location-and-naming">Location and Naming</h2>
-<p>While developing Razor extensions,
-just place them in the <code>/extensions/{ExtensionName}/</code> folder of your extension.</p>
-<p>You may also choose to place them in a sub-folder like <code>Views</code> or <code>Razor</code> to keep things organized.</p>
-<p>We <em>suggest</em> that you go for a clear naming, such as:</p>
+<p>Place Razor files in:</p>
+<pre><code class="lang-text">/extensions/{ExtensionName}/
+</code></pre>
+<p>Optional organization:</p>
+<ul>
+<li><code>/extensions/{ExtensionName}/Views/</code></li>
+<li><code>/extensions/{ExtensionName}/Partials/</code></li>
+</ul>
+<p>Suggested naming:</p>
 <ol>
-<li>Standard views: <code>/extensions/{ExtensionName}/{ViewName}.cshtml</code></li>
-<li>Partial views: <code>/extensions/{ExtensionName}/Part {Something}.cshtml</code></li>
-<li>Base classes: <code>AppCode/Extensions/{ExtensionName}/{Something}Base.cs</code></li>
+<li>Views: <code>/extensions/{ExtensionName}/{ViewName}.cshtml</code></li>
+<li>Partials: <code>/extensions/{ExtensionName}/Part{Something}.cshtml</code></li>
+<li>Base classes: <code>/AppCode/Extensions/{ExtensionName}/{Something}Base.cs</code></li>
 </ol>
 <h2 id="packaging--export">Packaging &amp; export</h2>
 <div class="TIP">
 <h5>Tip</h5>
-<p>Razor files are only exported if they are specified in the extension configuration.</p>
+<p>Razor files are exported only if they are declared in the extension configuration.</p>
 </div>
 <p>To include Razor files in an extension:</p>
 <ol>
-<li><p>Open the <strong>extension configuration</strong> of the extension</p>
-</li>
-<li><p>Enable <strong>Has Razor Files</strong> (but only if you include view definitions)</p>
-</li>
+<li>Open extension configuration</li>
+<li>Enable <strong>Has Razor Files</strong></li>
+<li>Save</li>
 </ol>
 <div gallery="gallery2">
   <img src="../../../../pages/extensions/app-extensions/create/razor-and-views/assets/views-configuration.png">
   <img src="../../../../pages/extensions/app-extensions/create/razor-and-views/assets/views-configuration-razorfiles.png">
 </div>
-<h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
+<h2 id="if-you-include-view-definitions">If You Include View Definitions</h2>
 <div class="TIP">
 <h5>Tip</h5>
-<p>To include them in the extension, you must ensure that it's part of the package export.</p>
+<p>View definitions are entity data. They must be included in extension data export settings.</p>
 </div>
-<p>The package export system only exports parts which have been declared to be in use.
-So make sure to tick the &quot;Has Query&quot; checkbox in the extension's package definition UI.</p>
-<p>If you plan to include view definitions, make sure you also tick the &quot;Has View&quot; checkbox,
-and that the view definition is in the data (which must also be exported...)</p>
+<p>If your extension should ship ready-to-select views:</p>
+<ol>
+<li>Ensure view entities exist in the app</li>
+<li>Include them in the extension data/export definition</li>
+<li>Verify all required dependencies (queries, content types) are included as well</li>
+</ol>
+<h2 id="include-settings-in-extension-export-optional">Include Settings in Extension Export (Optional)</h2>
+<p>If your Razor extension also has a settings ContentType (for example <code>@{extension-name}</code>),
+include it in export/import using this workflow:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_scope" role="tab" aria-controls="tabpanel_1_scope" data-tab="scope" tabindex="0" aria-selected="true">1. Scope</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_data-bundles" role="tab" aria-controls="tabpanel_1_data-bundles" data-tab="data-bundles" tabindex="-1">2. Data Bundles</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-content-type" role="tab" aria-controls="tabpanel_1_add-content-type" data-tab="add-content-type" tabindex="-1">3. Add Content Type to Bundle</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_include-bundle" role="tab" aria-controls="tabpanel_1_include-bundle" data-tab="include-bundle" tabindex="-1">4. Include Bundle in Extension</a>
+</li>
+</ul>
+<section id="tabpanel_1_scope" role="tabpanel" data-tab="scope">
+<p>Move the settings ContentType into a dedicated scope so it stays out of normal app content lists.</p>
+<p>Recommended scope pattern:</p>
+<pre><code class="lang-text">Extensions.{ExtensionName}
+</code></pre>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-scope-name.png" class="full-width">
+</section>
+<section id="tabpanel_1_data-bundles" role="tabpanel" data-tab="data-bundles" aria-hidden="true" hidden="hidden">
+<p>A Data Bundle packages the settings ContentType together with your extension.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle.png" class="full-width">
+<p>Create a bundle and give it a name matching the extension.</p>
+</section>
+<section id="tabpanel_1_add-content-type" role="tabpanel" data-tab="add-content-type" aria-hidden="true" hidden="hidden">
+<p>Open your extension data section, edit metadata on the settings ContentType,
+assign it to the Data Bundle, then save.</p>
+<div gallery="gallery-data-bundle">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-metadata.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-decorator.png">
+</div>
+</section>
+<section id="tabpanel_1_include-bundle" role="tabpanel" data-tab="include-bundle" aria-hidden="true" hidden="hidden">
+<p>In the extension configuration, enable <strong>Includes Data Bundles</strong> and select your bundle.
+Now the settings ContentType is part of export/import.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle-extension.png" class="full-width">
+</section>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ol>

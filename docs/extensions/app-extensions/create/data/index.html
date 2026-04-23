@@ -105,86 +105,110 @@
         <article data-uid="Extensions.AppExtensions.Create.Data.Index">
 <h1 id="app-extensions---data-and-schema-contenttype">App Extensions - Data and Schema (ContentType)</h1>
 
-<p>Extensions can include custom data and schema (ContentType) definitions which are either used by the extension itself or can be used by the App as a whole.</p>
+<p>Data extensions package reusable schema and optional starter content.
+Install them in any app to get the same ContentTypes and baseline data.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>This allows you to create small libraries of data and schema definitions which solve a specific problem,
-and then share them across multiple Apps by installing the extension in each App.</p>
+<p>This is ideal for shared configuration types, lookup lists, and starter datasets.</p>
 </div>
-<p>For Data and Schema (ContentType) extensions, you may choose to create one or more of the following:</p>
+<h2 id="what-can-be-included">What Can Be Included</h2>
 <ol>
-<li>Content-Types: Custom Content-Types to define the structure of your data.</li>
-<li>Default Data: Predefined data entries that come with the Content-Type.</li>
-<li>Queries: Visual Queries, which are included in the data bundle.</li>
-<li>Views: View definitions, which are included in the data bundle.</li>
+<li><strong>ContentTypes</strong>: schema definitions</li>
+<li><strong>Default data</strong>: initial entities for those ContentTypes</li>
+<li><strong>Visual Queries</strong>: optional query entities</li>
+<li><strong>View definitions</strong>: optional view entities</li>
 </ol>
-<h2 id="how-data--schema-app-extensions-work">How Data &amp; Schema App Extensions Work</h2>
-<p>Data &amp; Schema App Extensions bundle <strong>schemas and data</strong> into a reusable package that can be installed into any App.<br>
-They are ideal for providing <strong>ready-to-use data models</strong> together with sensible defaults.</p>
-<p>At a high level, such an extension consists of the following building blocks.</p>
-<hr>
-<h2 id="1-contenttypes-schema">1. ContentTypes (Schema)</h2>
-<p>ContentTypes define the <strong>structure</strong> of the data provided by the extension.</p>
+<h2 id="how-it-works">How It Works</h2>
+<h3 id="1-contenttypes-schema">1. ContentTypes (Schema)</h3>
 <ul>
-<li>Imported automatically when the extension is installed</li>
-<li>Can be used:
-<ul>
-<li>internally by the extension</li>
-<li>or by the consuming App like any other ContentType</li>
-</ul>
-</li>
+<li>Imported when the extension is installed</li>
+<li>Behave like normal app ContentTypes after import</li>
+<li>Can be used by the extension or by the app itself</li>
 </ul>
 <p>Typical use cases:</p>
 <ul>
 <li>Configuration entities</li>
-<li>Structured datasets</li>
-<li>Shared schemas reused across multiple Apps</li>
+<li>Shared reusable schemas</li>
+<li>Structured content models used by multiple apps</li>
 </ul>
-<p>Once installed, these ContentTypes behave exactly like native App ContentTypes.</p>
-<hr>
-<h2 id="2-default-data">2. Default Data</h2>
-<p>Default Data provides <strong>pre‑filled entities</strong> for the ContentTypes included in the extension.</p>
+<h3 id="2-default-data">2. Default Data</h3>
 <ul>
-<li>Imported together with the ContentTypes</li>
-<li>Can be changed, extended, or removed after installation</li>
-<li>Commonly used for:
+<li>Imported together with the schema</li>
+<li>Can be modified or removed after installation</li>
+<li>Useful for sample data, default settings, and lookup values</li>
+</ul>
+<h3 id="3-queries">3. Queries</h3>
 <ul>
-<li>example data</li>
-<li>default configuration values</li>
-<li>lookup tables or presets</li>
+<li>Stored as entities</li>
+<li>Can target extension ContentTypes and app data</li>
+<li>Must be included in the extension export configuration</li>
 </ul>
-</li>
-</ul>
-<p>This allows an App to work immediately without requiring manual data entry.</p>
-<hr>
-<h2 id="3-queries">3. Queries</h2>
-<p>Queries are <strong>Visual Queries</strong> that are bundled with the extension.</p>
+<p>See also: <a class="xref" href="../visual-query/index.html">Visual query extensions</a></p>
+<h3 id="4-view-definitions">4. View Definitions</h3>
 <ul>
-<li>Imported as part of the data bundle</li>
-<li>Can reference:
-<ul>
-<li>extension ContentTypes</li>
-<li>default data</li>
-<li>App data</li>
+<li>Optional</li>
+<li>Lets the app immediately select extension views</li>
+<li>Must be included in the extension data bundle/export settings</li>
 </ul>
-</li>
-</ul>
-<p>For more information check out <a class="xref" href="../visual-query/index.html">visual queries</a>.</p>
-<hr>
-<h2 id="installation--usage-flow">Installation &amp; Usage Flow</h2>
+<h2 id="packaging-checklist">Packaging Checklist</h2>
+<p>Before exporting, verify all required parts are marked as included:</p>
 <ol>
-<li>Install the App Extension into an App</li>
-<li>ContentTypes and Default Data are imported automatically</li>
-<li>Queries and Views become available immediately</li>
-<li>The App can:
-<ul>
-<li>use everything as provided</li>
-<li>extend or override parts</li>
-<li>combine extension data with App‑specific logic</li>
-</ul>
-</li>
+<li>ContentTypes are part of the extension data</li>
+<li>Default entities are in the bundle</li>
+<li>Queries are flagged for export if needed</li>
+<li>View definitions are flagged for export if needed</li>
 </ol>
-<hr>
+<h2 id="include-settings-in-extension-export-optional">Include Settings in Extension Export (Optional)</h2>
+<p>If your extension also ships a settings ContentType (for example <code>@{extension-name}</code>),
+use this workflow to include it in export/import:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_scope" role="tab" aria-controls="tabpanel_1_scope" data-tab="scope" tabindex="0" aria-selected="true">1. Scope</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_data-bundles" role="tab" aria-controls="tabpanel_1_data-bundles" data-tab="data-bundles" tabindex="-1">2. Data Bundles</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-content-type" role="tab" aria-controls="tabpanel_1_add-content-type" data-tab="add-content-type" tabindex="-1">3. Add Content Type to Bundle</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_include-bundle" role="tab" aria-controls="tabpanel_1_include-bundle" data-tab="include-bundle" tabindex="-1">4. Include Bundle in Extension</a>
+</li>
+</ul>
+<section id="tabpanel_1_scope" role="tabpanel" data-tab="scope">
+<p>Move the settings ContentType into a dedicated scope so it stays out of normal app content lists.</p>
+<p>Recommended scope pattern:</p>
+<pre><code class="lang-text">Extensions.{ExtensionName}
+</code></pre>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-scope-name.png" class="full-width">
+</section>
+<section id="tabpanel_1_data-bundles" role="tabpanel" data-tab="data-bundles" aria-hidden="true" hidden="hidden">
+<p>A Data Bundle packages the settings ContentType together with your extension.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle.png" class="full-width">
+<p>Create a bundle and give it a name matching the extension.</p>
+</section>
+<section id="tabpanel_1_add-content-type" role="tabpanel" data-tab="add-content-type" aria-hidden="true" hidden="hidden">
+<p>Open your extension data section, edit metadata on the settings ContentType,
+assign it to the Data Bundle, then save.</p>
+<div gallery="gallery-data-bundle">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-metadata.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-decorator.png">
+</div>
+</section>
+<section id="tabpanel_1_include-bundle" role="tabpanel" data-tab="include-bundle" aria-hidden="true" hidden="hidden">
+<p>In the extension configuration, enable <strong>Includes Data Bundles</strong> and select your bundle.
+Now the settings ContentType is part of export/import.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle-extension.png" class="full-width">
+</section>
+</div>
+<h2 id="installation-flow">Installation Flow</h2>
+<ol>
+<li>Install the extension in a target app</li>
+<li>ContentTypes and data are imported</li>
+<li>Optional queries and views are available</li>
+<li>The target app can extend or override everything as needed</li>
+</ol>
 <h2 id="history">History</h2>
 <ol>
 <li>Beta in v20.09, to be released in v21.00</li>

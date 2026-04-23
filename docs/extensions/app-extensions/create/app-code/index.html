@@ -105,16 +105,16 @@
         <article data-uid="Extensions.AppExtensions.Create.AppCode.Index">
 <h1 id="app-extensions---app-code">App Extensions - App Code</h1>
 
-<p>Extensions can include custom C# code which is either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.</p>
+<p>AppCode extensions let you ship reusable C# code with your App Extension.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>This allows you to create small libraries of code which solve a specific problem,
-and then share them across multiple Apps by installing the extension in each App.</p>
+<p>Use this for business logic, integrations, APIs, and custom data providers you need in multiple apps.</p>
 </div>
 <h2 id="location-and-namespace">Location and Namespace</h2>
-<p>You should place the code for the extension in <code>/AppCode/Extensions/{ExtensionName}/</code>.
-The <code>{ExtensionName}</code> should match the folder of the extension itself,
-as it's used in <code>/extensions/{ExtensionName}/</code>.</p>
+<p>Place extension code in:</p>
+<pre><code class="lang-text">/AppCode/Extensions/{ExtensionName}/
+</code></pre>
+<p><code>{ExtensionName}</code> should match the related extension in <code>/extensions/{ExtensionName}/</code>.</p>
 <div class="TIP">
 <h5>Tip</h5>
 <p>In the main extension in <code>/extensions/</code>, the convention is to use lower-case only,
@@ -123,7 +123,9 @@ but here we recommend using PascalCase to match C# conventions.</p>
 <p>You can also create sub folders and sub-namespaces as needed.
 Some common sub-folders could be <code>Services</code>, <code>WebApi</code>, <code>Controllers</code>, or <code>Helpers</code> depending on the purpose of the code.
 For data we recommend <code>Data</code> or <code>Models</code>.</p>
-<p>For namespaces you should really use <code>App.Extensions.{ExtensionName}</code> to avoid conflicts with other extensions.</p>
+<p>Use namespaces like:</p>
+<pre><code class="lang-text">AppCode.Extensions.{ExtensionName}
+</code></pre>
 <h2 id="what-you-can-build-in-appcode">What You Can Build in AppCode</h2>
 <p>Typical things implemented in extension AppCode:</p>
 <ul>
@@ -135,21 +137,17 @@ For data we recommend <code>Data</code> or <code>Models</code>.</p>
 </ul>
 <p>If you only need small helper methods for a single view, keep them in the Razor file.
 If the logic is reused across multiple views/apps, put it into AppCode.</p>
-<hr>
 <h2 id="related-topics">Related Topics</h2>
 <ul>
-<li>Custom DataSources: <a class="xref" href="datasources.html">App Extensions – DataSources</a></li>
+<li>Custom DataSources: <a class="xref" href="datasources.html">DataSource extensions</a></li>
 <li>Custom input types, toolbars, etc.: see the other pages in this App Extensions section</li>
 </ul>
-<hr>
 <h2 id="special-compiling-options">Special Compiling Options</h2>
 <p>If you need to ensure special DLLs are referenced during compilation,
-see <a class="xref" href="compiler-options.html">App Extensions - Special Compiler Options</a>.</p>
-<hr>
+see <a class="xref" href="compiler-options.html">Compiler options</a>.</p>
 <h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
 <p>The package export system only exports parts which have been declared to be in use.
 So make sure to tick the <strong>&quot;App Code&quot;</strong> checkbox in the extension's package definition UI.</p>
-<hr>
 <h2 id="history">History</h2>
 <ol>
 <li>Beta in v20.09, planned stable release in v21.00</li>
