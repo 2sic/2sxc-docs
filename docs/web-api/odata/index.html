@@ -102,7 +102,7 @@
 
         
 
-        <article data-uid="WebApi.OData">
+        <article data-uid="">
 <h1 id="odata-query-options-for-rest-apis-new-v21">OData Query Options for REST APIs (new v21)</h1>
 
 <p>2sxc supports <strong>OData system query options</strong> to filter, sort, paginate, and select data
@@ -117,19 +117,19 @@ This allows you to append standard OData parameters to your URLs for powerful da
 </ul>
 </div>
 <h2 id="quick-examples">Quick Examples</h2>
-<p>Filter + Sort</p>
-<pre><code class="lang-text">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=UrlKey
+<h3 id="filter--sort">Filter + Sort</h3>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$orderby=UrlKey
 </code></pre>
-<p>Pagination (second item)</p>
-<pre><code class="lang-text">/app/auto/data/BlogPost?$orderby=UrlKey&amp;$skip=1&amp;$top=1
+<h3 id="pagination-second-item">Pagination (second item)</h3>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$orderby=UrlKey&amp;$skip=1&amp;$top=1
 </code></pre>
-<p>Query Endpoint</p>
-<pre><code class="lang-text">/app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&amp;$orderby=Title
+<h3 id="query-endpoint">Query Endpoint</h3>
+<pre><code class="lang-http">/app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&amp;$orderby=Title
 </code></pre>
 <hr>
 <h2 id="javascript-examples">JavaScript Examples</h2>
 <h3 id="using-fetch">Using <code>fetch</code></h3>
-<pre><code class="lang-js">const url = `/api/2sxc/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$top=5`;
+<pre><code class="lang-js">const url = `/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&amp;$top=5`;
 
 const res = await fetch(url);
 const data = await res.json();
@@ -142,6 +142,29 @@ const data = await sxc.webApi.get(
 );
 </code></pre>
 <hr>
+<h2 id="supported-odata-options">Supported OData Options</h2>
+<h3 id="filter--filter-data"><code>$filter</code> — Filter Data</h3>
+<p>Filter results based on conditions.</p>
+<h4 id="supported-operators">Supported Operators</h4>
+<ul>
+<li><code>eq</code>, <code>ne</code>, <code>gt</code>, <code>ge</code>, <code>lt</code>, <code>le</code></li>
+<li><code>and</code></li>
+<li><code>not</code></li>
+</ul>
+<h4 id="supported-functions">Supported Functions</h4>
+<ul>
+<li><code>contains(field, 'text')</code></li>
+<li><code>startswith(field, 'text')</code></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+</code></pre>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
+</code></pre>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$filter=contains(Description,'world')
+</code></pre>
+<pre><code class="lang-http">/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
+</code></pre>
 <h2 id="how-odata-works-with-2sxc-endpoints">How OData Works with 2sxc Endpoints</h2>
 <h3 id="data-endpoint-with-odata">Data Endpoint with OData</h3>
 <p>The <a class="xref" href="../data/index.html">Data REST API</a> endpoint lets you query content-types directly:</p>
@@ -164,18 +187,18 @@ This is useful for JavaScript clients that prefer camelCase.</p>
 <p>2sxc uses the <strong>ToSic.Sys.OData</strong> parser which supports a practical subset of OData v4 system query options.</p>
 <h3 id="filter---filter-data">$filter - Filter Data</h3>
 <p>Filter results based on conditions.</p>
-<h4 id="supported-operators">Supported Operators</h4>
+<h4 id="supported-operators-1">Supported Operators</h4>
 <ul>
 <li>Comparison: <code>eq</code> (equals), <code>ne</code> (not equals), <code>gt</code> (greater than), <code>ge</code> (greater or equal), <code>lt</code> (less than), <code>le</code> (less or equal)</li>
 <li>Logical: <code>and</code> (combine conditions)</li>
 <li>Negation: <code>not</code> (negate an expression)</li>
 </ul>
-<h4 id="supported-functions">Supported Functions</h4>
+<h4 id="supported-functions-1">Supported Functions</h4>
 <ul>
 <li><code>contains(field, 'text')</code> - check if field contains text</li>
 <li><code>startswith(field, 'text')</code> - check if field starts with text</li>
 </ul>
-<h4 id="examples">Examples</h4>
+<h4 id="examples-1">Examples</h4>
 <p>Simple equality:</p>
 <pre><code class="lang-text">$filter=Title eq 'Hello World'
 </code></pre>

@@ -105,24 +105,19 @@
         <article data-uid="Extensions.AppExtensions.Create.VisualQuery.Index">
 <h1 id="app-extensions---visual-queries">App Extensions - Visual Queries</h1>
 
-<p>Extensions can include custom Visual Queries which are either used by the extension itself (e.g. an input-type) or can be used by the App as a whole.</p>
+<p>Visual Query extensions package reusable queries as part of an App Extension.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>This allows you to create small libraries of Visual Queries which solve a specific problem,
-and then share them across multiple Apps by installing the extension in each App.</p>
+<p>Use this for query logic you want to reuse across apps.</p>
 </div>
-<h2 id="location-and-naming">Location and Naming</h2>
-<p>While developing Visual Query extensions,
-just create normal queries in your App and when exporting the extension,
-ensure that the queries are included in the package.</p>
+<h2 id="how-visual-query-extensions-work">How Visual Query Extensions Work</h2>
+<p>Visual queries are stored as entities, not files.
+You create them like normal app queries and include them during extension export.</p>
+<h2 id="naming-recommendation">Naming Recommendation</h2>
 <p>We highly recommend that you give the queries a clear and unique name,
 such as <code>{ExtensionName}.{QueryName}</code> to avoid conflicts with other queries in the App.</p>
-<p>We also recommend that you don't use spaces or special characters in the query names,
-to ensure easy use in REST API calls.</p>
-<h2 id="instructions">Instructions</h2>
-<p>Visual Queries in App Extensions are created and maintained exactly like normal Visual Queries.</p>
-<p>There is no special folder, file, or code required.</p>
-<p>Key points to be aware of:</p>
+<p>Avoid spaces and special characters to simplify API usage.</p>
+<h2 id="checklist">Checklist</h2>
 <ul>
 <li>Visual Queries are stored as <strong>Entities</strong>, not files</li>
 <li>They must exist in the App <strong>before</strong> exporting the extension</li>
@@ -132,11 +127,53 @@ to ensure easy use in REST API calls.</p>
 <h2 id="include-in-the-package-definition">Include in the Package Definition</h2>
 <div class="TIP">
 <h5>Tip</h5>
-<p>Visual Queries are configuration which is stored as Entities.
-To include them in the extension, you must ensure that it's part of the package export.</p>
+<p>The package only contains parts marked as included.</p>
 </div>
-<p>The package export system only exports parts which have been declared to be in use.
-So make sure to tick the &quot;Has Query&quot; checkbox in the extension's package definition UI.</p>
+<p>Enable query export in the extension package definition UI (for example, <strong>Has Query</strong>).</p>
+<h2 id="include-settings-in-extension-export-optional">Include Settings in Extension Export (Optional)</h2>
+<p>If your query extension also ships a settings ContentType,
+include it in export/import using this workflow:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_scope" role="tab" aria-controls="tabpanel_1_scope" data-tab="scope" tabindex="0" aria-selected="true">1. Scope</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_data-bundles" role="tab" aria-controls="tabpanel_1_data-bundles" data-tab="data-bundles" tabindex="-1">2. Data Bundles</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_add-content-type" role="tab" aria-controls="tabpanel_1_add-content-type" data-tab="add-content-type" tabindex="-1">3. Add Content Type to Bundle</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_include-bundle" role="tab" aria-controls="tabpanel_1_include-bundle" data-tab="include-bundle" tabindex="-1">4. Include Bundle in Extension</a>
+</li>
+</ul>
+<section id="tabpanel_1_scope" role="tabpanel" data-tab="scope">
+<p>Move the settings ContentType into a dedicated scope so it stays out of normal app content lists.</p>
+<p>Recommended scope pattern:</p>
+<pre><code class="lang-text">Extensions.{ExtensionName}
+</code></pre>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-scope-name.png" class="full-width">
+</section>
+<section id="tabpanel_1_data-bundles" role="tabpanel" data-tab="data-bundles" aria-hidden="true" hidden="hidden">
+<p>A Data Bundle packages the settings ContentType together with your extension.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle.png" class="full-width">
+<p>Create a bundle and give it a name matching the extension.</p>
+</section>
+<section id="tabpanel_1_add-content-type" role="tabpanel" data-tab="add-content-type" aria-hidden="true" hidden="hidden">
+<p>Open your extension data section, edit metadata on the settings ContentType,
+assign it to the Data Bundle, then save.</p>
+<div gallery="gallery-data-bundle">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-metadata.png">
+  <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-decorator.png">
+</div>
+</section>
+<section id="tabpanel_1_include-bundle" role="tabpanel" data-tab="include-bundle" aria-hidden="true" hidden="hidden">
+<p>In the extension configuration, enable <strong>Includes Data Bundles</strong> and select your bundle.
+Now the settings ContentType is part of export/import.</p>
+<img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-data-bundle-extension.png" class="full-width">
+</section>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ol>
