@@ -72,7 +72,11 @@ You should now see the "Hello, World" output.
   <img src="./assets/app-hello-world-view.png">
 </div>
 
-## Step 3: Configure the Extension
+---
+
+## Step 3: Configure and Build the Extension
+
+### [1. Configure the Extension Definition](#tab/configure-extension-definition)
 
 Open **App Settings -> App Extensions**, then edit your extension.
 
@@ -87,7 +91,7 @@ Save the configuration.
   <img src="./assets/extension-manifest-settings.png">
 </div>
 
-## Step 4: Export the Extension
+### [2. Export the Extension Package](#tab/build-extension-package)
 
 In **App Settings -> App Extensions**, click the download icon on your extension.
 This creates the extension package.
@@ -96,7 +100,9 @@ This creates the extension package.
   <img src="./assets/extension-export.png">
 </div>
 
-## Step 5: Import into Another App
+---
+
+## Step 4: Import into Another App
 
 ### [1. Install the Package](#tab/import-the-extension)
 
@@ -120,6 +126,8 @@ Open any view and render your extension Razor file using `@Html.Partial(...)`.
   <img src="./assets/extension-append-code.png">
   <img src="./assets/extension-import-output.png">
 </div>
+
+---
 
 ## Optional: Publish to Marketplace
 

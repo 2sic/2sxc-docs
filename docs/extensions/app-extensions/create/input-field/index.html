@@ -128,12 +128,14 @@ They are small Components that run inside your App and replace or enhance normal
 <li>Second part must be the data type (<code>string</code>, <code>number</code>, <code>boolean</code>, ...)</li>
 <li>Use only lowercase and dashes</li>
 </ul>
-<h2 id="2-configure-the-extension-entry">2. Configure the Extension Entry</h2>
+<h2 id="2-code-the-extension-entry">2. Code the Extension Entry</h2>
 <p>Open <strong>App Settings -&gt; App Extensions</strong> and edit your extension.
-In <strong>Input Fields Configuration</strong>, define which JavaScript files to load.</p>
+In <strong>Input Fields Configuration</strong>, define which JavaScript files to load - as of now always <code>index.js</code>.</p>
+<p>Write code like this in <code>index.js</code>:</p>
 <pre><code class="lang-javascript">(() =&gt; {
 
-  const tagName = &quot;field-example-basic&quot;;
+  // This must match the tag name used in the extension definition, and start with &quot;field-&quot;
+  const tagName = &quot;field-string-example-basic&quot;;
 
   // Minimal HTML for the component
   const html = `&lt;input type=&quot;text&quot; /&gt;`;
@@ -172,31 +174,56 @@ In <strong>Input Fields Configuration</strong>, define which JavaScript files to
 <div gallery="gallery-input-field-1">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-fields-files.png">
 </div>
+<p>Tag name: <code>field-number-slider-basic</code> (must match the extension name)</p>
 <p>The <a href="https://docs.2sxc.org/js-code/custom-fields/connector.html?q=connector">connector</a> is provided by 2sxc.</p>
 <p>You can find further examples of input field extensions in these repositories:</p>
 <ul>
 <li><a href="https://github.com/2sxc-apps/app-extension-number-slider-basic">Number Slider</a></li>
 <li><a href="https://github.com/2sxc-apps/app-extension-string-color-picker-spectrum">Color Picker</a></li>
 </ul>
-<h2 id="3-add-extension-settings-optional">3. Add Extension Settings (Optional)</h2>
+<h2 id="3-test-the-input-field">3. Test the Input Field</h2>
+<p>TODO: @2rb</p>
+<h2 id="4-ready-to-export-and-import">4. Ready to Export and Import</h2>
+<p>The extension is now ready to be exported and imported into other Apps,
+as described in the <a class="xref" href="../lifecycle/index.html">Lifecycle</a>.</p>
+<p>After importing the Extension, you should be able to use this new input field in your app.</p>
+<h2 id="5a-add-extension-settings-optional">5a. Add Extension Settings (Optional)</h2>
 <p>If your field needs settings (for example <code>Min</code>, <code>Max</code>, <code>Step</code>), create a separate settings ContentType.</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_create-settings-content-type" role="tab" aria-controls="tabpanel_1_create-settings-content-type" data-tab="create-settings-content-type" tabindex="0" aria-selected="true">1. Create a Settings ContentType</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_access-settings-in-code" role="tab" aria-controls="tabpanel_1_access-settings-in-code" data-tab="access-settings-in-code" tabindex="-1">2. Access Settings in Code</a>
+</li>
+</ul>
+<section id="tabpanel_1_create-settings-content-type" role="tabpanel" data-tab="create-settings-content-type">
+
 <div class="IMPORTANT">
 <h5>Important</h5>
 <p>The settings ContentType name must be <code>@{extension-name}</code>.</p>
 <p>Example:</p>
 <ul>
-<li>Extension folder: <code>field-number-slider-basic</code></li>
 <li>Extension name: <code>number-slider-basic</code></li>
 <li>Settings ContentType: <code>@number-slider-basic</code></li>
 </ul>
 </div>
 <p>Add fields such as <code>Step</code> to this settings type.
 2sxc will then show these settings in the field configuration UI.</p>
+<p>TODO: SHOW HOW TO CREATE THE CONTENT-TYPE, AFTER THE (+) BUTTON</p>
 <div gallery="gallery-content-type-field">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-create-new-content-type.png">
   <img src="../../../../pages/extensions/app-extensions/create/input-field/assets/input-content-type-field.png">
 </div>
-<h2 id="4-include-settings-in-extension-export">4. Include Settings in Extension Export</h2>
+</section>
+<section id="tabpanel_1_access-settings-in-code" role="tabpanel" data-tab="access-settings-in-code" aria-hidden="true" hidden="hidden">
+
+<p>TODO: @2rb - this is missing - how to access settings in the code?</p>
+</section>
+</div>
+<h2 id="5b-include-settings-in-extension-export">5b. Include Settings in Extension Export</h2>
+<p>If you added content-types to configure the input field, then you must include this in the export.</p>
 <div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
