@@ -1,6 +1,3 @@
----
-uid: WebApi.OData
----
 
 # OData Query Options for REST APIs (new v21)
 
@@ -16,21 +13,21 @@ This allows you to append standard OData parameters to your URLs for powerful da
 
 ## Quick Examples
 
-Filter + Sort
+### Filter + Sort
 
-```text
+```http
 /app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$orderby=UrlKey
 ```
 
-Pagination (second item)
+### Pagination (second item)
 
-```text
+```http
 /app/auto/data/BlogPost?$orderby=UrlKey&$skip=1&$top=1
 ```
 
-Query Endpoint
+### Query Endpoint
 
-```text
+```http
 /app/auto/query/BlogPosts?$filter=EntityType eq 'blogpost'&$orderby=Title
 ```
 
@@ -41,7 +38,7 @@ Query Endpoint
 ### Using `fetch`
 
 ```js
-const url = `/api/2sxc/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5`;
+const url = `/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true&$top=5`;
 
 const res = await fetch(url);
 const data = await res.json();
@@ -58,6 +55,41 @@ const data = await sxc.webApi.get(
 ```
 
 ---
+
+## Supported OData Options
+
+### `$filter` — Filter Data
+
+Filter results based on conditions.
+
+#### Supported Operators
+
+- `eq`, `ne`, `gt`, `ge`, `lt`, `le`
+- `and`
+- `not`
+
+#### Supported Functions
+
+- `contains(field, 'text')`
+- `startswith(field, 'text')`
+
+### Examples
+
+```http
+/app/auto/data/BlogPost?$filter=Title eq 'Hello World'
+```
+
+```http
+/app/auto/data/BlogPost?$filter=ShowOnStartPage eq true and Rating gt 4
+```
+
+```http
+/app/auto/data/BlogPost?$filter=contains(Description,'world')
+```
+
+```http
+/app/auto/data/BlogPost?$filter=not contains(Title,'deprecated')
+```
 
 ## How OData Works with 2sxc Endpoints
 

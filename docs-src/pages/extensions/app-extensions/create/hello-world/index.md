@@ -2,14 +2,24 @@
 uid: Extensions.AppExtensions.Create.HelloWorld.Index
 ---
 
-# Create Your First Hello World App Extension WIP
+# Create Your First Hello World App Extension
 
-In this section, we'll create a simple "Hello World" App Extension to demonstrate the basics of extension development.
+This tutorial walks you through the complete lifecycle:
 
-## Step 1: Create the Extension Folder
+1. Build a tiny extension
+2. Test it in your App
+3. Configure and export it
+4. Import it into another App
 
-In your App, create a new folder `/extensions/hello-world` and inside that,
-create a `Greeting.cshtml` file with this contents:
+## Step 1: Create the Extension File
+
+In your App, create this folder:
+
+```text
+/extensions/hello-world/
+```
+
+Inside it, create `Greeting.cshtml`:
 
 ```razor
 @inherits Custom.Hybrid.RazorTyped
@@ -19,124 +29,91 @@ create a `Greeting.cshtml` file with this contents:
 </div>
 ```
 
-Note: The `@inherits Custom.Hybrid.RazorTyped` is optional, it would allow the Razor file to use the 2sxc API.
-
-Here's how your extension folder and `Greeting.cshtml` should look:
+> [!TIP]
+> `@inherits Custom.Hybrid.RazorTyped` is optional, but recommended so you can use the 2sxc API later.
 
 <div gallery="gallery2">
   <img src="./assets/extension-file-structure-code.png">
 </div>
 
-## Step 2: Test Your Extension
+## Step 2: Test the Extension Locally
 
-### [1. Create Test View File](#tab/create-test-view-file)
+### [1. Create a Test Razor View](#tab/create-test-view-file)
 
-Create a new file inside your **App directory**
-Inside this file, use `@Html.Partial(Path)` to render your extension component.
+Create a test Razor file in your App (not in `/extensions/`).
+Render your extension in that file using `@Html.Partial(...)`.
 
 <div gallery="TestExtension">
   <img src="./assets/extension-partial.png">
 </div>
 
 > [!TIP]
-> Do **not** place it inside the `extensions` directory.
-> This file is just for testing the extension, and you don't want to include it in the export.
+> Keep this test file outside `/extensions/` so it does not become part of your extension package.
 
-### [2. Create Test View Definition](#tab/create-test-view-definition)
-
-After creating the file:
+### [2. Create a View Definition](#tab/create-test-view-definition)
 
 1. Go to **App Settings**
 2. Create a **new view**
-3. Give it a name
-4. Link the file you just created
-5. Set **View doesn't need Data** as the view does not require data/user-input
+3. Assign the test Razor file
+4. Set **View doesn't need Data**
 
 <div gallery="View">
   <img src="./assets/app-settings-create-view.png">
   <img src="./assets/app-settings-view-settings.png">
 </div>
 
-### [3. Add the Test View to a Page](#tab/add-test-view-to-page)
+### [3. Add the View to a Page](#tab/add-test-view-to-page)
 
-Once the view is created, you can add the App to your page and select the newly created **Hello World** view.
-Now you can verify that the output shows the expected "Hello, World" message from your extension.
+Add the app to a page and pick your test view.
+You should now see the "Hello, World" output.
 
 <div gallery="AddView">
   <img src="./assets/extension-add-view.png">
   <img src="./assets/app-hello-world-view.png">
 </div>
 
-> [!NOTE]
-> Congratulations, your extension works!
-> Now let's make it reusable and distributable by creating the extension manifest and exporting it.
+## Step 3: Configure the Extension
 
----
+Open **App Settings -> App Extensions**, then edit your extension.
 
-## Step 3: Create the Extension Manifest/Definition
-
-Go to **App Settings** and open **App Extensions**.
-
-You will see the extension you recently created.  
-Click the **edit (pen) icon** to open its configuration.
-
-Inside the configuration, you can define various settings and metadata for your extension, including its available **Features**.
-
-Since this extension contains a Razor component, make sure to enable/select:
+Enable:
 
 - **Has Razor Files**
 
-This ensures your Razor component is properly registered and available.
-
-After making your changes, click **Save** to apply and store the configuration.
-
+Save the configuration.
 
 <div gallery="manifest">
   <img src="./assets/extension-manifest.png">
   <img src="./assets/extension-manifest-settings.png">
 </div>
 
-## Step 4: Export Your Extension
+## Step 4: Export the Extension
 
-To export the extension, go to **App Settings** → **App Extensions**.
-
-Locate your extension and click the **Download icon** (cloud with arrow) to export and download the configuration.
-
-This will generate and download the extension package to your local machine.
+In **App Settings -> App Extensions**, click the download icon on your extension.
+This creates the extension package.
 
 <div gallery="export">
   <img src="./assets/extension-export.png">
 </div>
 
-## Step 5: Import Your Extension into Another App
+## Step 5: Import into Another App
 
-### [1. Import the Extension](#tab/import-the-extension)
+### [1. Install the Package](#tab/import-the-extension)
 
-To import your extension into a different App:
-
-1. Go to **App Settings** → **App Extensions**
-2. Click the **+ icon** (bottom right)
-3. Select **"Select Files"**
-4. Choose the extension package you previously exported
+1. Go to **App Settings -> App Extensions** in the target App
+2. Click **+**
+3. Choose **Select Files**
+4. Pick the exported package
 5. Click **Install**
-
-Once the installation is complete, the extension will be available in the new App.
 
 <div gallery="import">
   <img src="./assets/extension-import.png">
   <img src="./assets/extension-install-confirm.png">
 </div>
 
-### [2. Add the Extension to a View](#tab/add-the-extension-to-a-view)
+### [2. Use It in a View](#tab/add-the-extension-to-a-view)
 
-To verify that everything works:
-
-1. Go to **Views**
-2. Open the view where you want to display the extension
-3. Click the **code icon** <> to open the online editor
-4. Use `@Html.Partial(Path)` with the correct path to your extension component to render it inside the view
-
-After saving the view, the extension component (e.g., your **Hello World** Razor file) should be visible on the page.
+Open any view and render your extension Razor file using `@Html.Partial(...)`.
 
 <div gallery="import">
   <img src="./assets/extension-append-view.png">
@@ -144,27 +121,14 @@ After saving the view, the extension component (e.g., your **Hello World** Razor
   <img src="./assets/extension-import-output.png">
 </div>
 
----
+## Optional: Publish to Marketplace
 
-## Step 6: Distribute the App
-
-This is optional - and in the case of the **Hello World** not useful -
-but you can distribute your extension to other users via the [Marketplace](https://2sxc.org/en/apps/type/app-extension).
-To do that, you need to create a package and submit it to the Marketplace.
+For production-ready extensions, you can publish packages in the [2sxc Marketplace](https://2sxc.org/en/apps/type/app-extension).
 
 > [!TIP]
-> Just reach out to us and we'll help you get started.
+> If you want to publish, reach out and we can help with the packaging checklist.
 
 ## Recap
 
-In this tutorial, you learned how to create and distribute a simple **Hello World App Extension**.
-
-Here's what you accomplished:
-
-- Created a custom extension folder inside `/extensions/hello-world`
-- Built a simple Razor component (`Greeting.cshtml`)
-- Created a test view to verify the extension works using `@Html.Partial(...)` and added it to a page
-- Configured the Extension
-- Exported the extension as a reusable package
-- Imported and installed the extension in another App
-- Embedded the extension into an existing View to verify it works
+You created, tested, configured, exported, and re-imported a working extension.
+That is the core workflow for all App Extensions.

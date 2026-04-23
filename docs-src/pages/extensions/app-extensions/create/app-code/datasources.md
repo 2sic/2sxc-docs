@@ -4,7 +4,7 @@ uid: Extensions.AppExtensions.Create.AppCode.DataSources
 
 # App Extensions – DataSources
 
-Extensions can include custom **C# DataSources** for use in your code or in **Visual Queries**.
+Extensions can include custom **C# DataSources** for use in code and **Visual Queries**.
 
 > [!TIP]
 > This allows you to create small libraries of DataSources which solve a specific problem,
@@ -41,20 +41,20 @@ If you mix DataSources with other code, consider placing them in:
 To avoid conflicts with other extensions, use:
 
 ```text
-App.Extensions.{ExtensionName}
+AppCode.Extensions.{ExtensionName}
 ```
 
 If you place DataSources in a subfolder, use:
 
 ```text
-App.Extensions.{ExtensionName}.DataSources
+AppCode.Extensions.{ExtensionName}.DataSources
 ```
 
 ---
 
 ## How to Create a Custom DataSource
 
-A custom DataSource is a small C# class which inherits from `DataSource16`.
+A custom DataSource is a C# class which inherits from `DataSource16`.
 It defines one or more output streams using `ProvideOut(...)`.
 
 ### Basic Example
@@ -183,7 +183,7 @@ ProvideOut(GetData);
 If you need to ensure special DLLs are referenced during compilation,
 see:
 
-[](xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions)
+[Compiler options](xref:Extensions.AppExtensions.Create.AppCode.CompilerOptions)
 
 ---
 
