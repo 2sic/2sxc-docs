@@ -40,7 +40,7 @@ Enable query export in the extension package definition UI (for example, **Has Q
 If your query extension also ships a settings ContentType,
 include it in export/import using this workflow:
 
-[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+[!include[](~/shared/extensions/app-extensions/_include-settings-in-export.md)]
 
 ---
 

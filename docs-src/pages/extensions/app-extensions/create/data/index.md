@@ -65,7 +65,7 @@ Before exporting, verify all required parts are marked as included:
 If your extension also ships a settings ContentType (for example `@{extension-name}`),
 use this workflow to include it in export/import:
 
-[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+[!include[](~/shared/extensions/app-extensions/_include-settings-in-export.md)]
 
 ## Installation Flow
 

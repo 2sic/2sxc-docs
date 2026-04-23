@@ -115,7 +115,7 @@ Add fields such as `Step` to this settings type.
 
 ## 4. Include Settings in Extension Export
 
-[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+[!include[](~/shared/extensions/app-extensions/_include-settings-in-export.md)]
 
 ---
 

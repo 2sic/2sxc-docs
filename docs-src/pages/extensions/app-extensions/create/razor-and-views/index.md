@@ -67,7 +67,7 @@ If your extension should ship ready-to-select views:
 If your Razor extension also has a settings ContentType (for example `@{extension-name}`),
 include it in export/import using this workflow:
 
-[!include[](~/shared/extensions/app-extensions/include-settings-in-export.md)]
+[!include[](~/shared/extensions/app-extensions/_include-settings-in-export.md)]
 
 ---
 
