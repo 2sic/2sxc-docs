@@ -108,7 +108,63 @@ You can find further examples of input field extensions in these repositories:
 
 ## 3. Test the Input Field
 
-TODO: @2rb
+
+### [1. Create a Content Type](#tab/create-content-type)
+
+Go to **Data** and click the **+** button to create a new Content Type
+
+Give it a name (e.g. `InputTest`) and save.
+
+<div gallery="gallery-input-field-1">
+  <img src="./assets/input-create-new-content-type.png">
+  <img src="./assets/input-create-new-content-type-name.png">
+</div>
+
+### [2. Open the Fields Editor](#tab/open-fields-editor)
+
+After createn the Content Type:
+
+1. Locate your new Content Type:
+2. Click on the **Fields (database icon)**
+
+<div gallery="gallery-input-field-2">
+  <img src="./assets/input-edit-fields.png">
+</div>
+
+### [3. Add a New Field](#tab/add-new-field)
+
+Click the **+ button** in the bottom right to add a new field.
+
+<div gallery="gallery-input-field-3">
+  <img src="./assets/input-add-field.png">
+</div>
+
+### [4. Configure the Field](#tab/configure-field)
+
+Now configure your field:
+
+- **Name** → e.g. `Test`
+- **Data Type** → `Number`
+- **Input Type** → `Slider Basic` (your custom input)
+
+<div gallery="gallery-input-field-4">
+  <img src="./assets/input-add-field-options.png">
+</div>
+
+
+### [5. Test the Input in the UI](#tab/test-input-ui)
+
+Create or open an item of your Content Type.
+
+You should now see your custom input (e.g. slider) rendered and usable.
+
+<div gallery="gallery-input-field-5">
+  <img src="./assets/input-add-items.png">
+  <img src="./assets/input-slider-basic.png">
+</div>
+
+---
+
 
 ## 4. Ready to Export and Import
 
@@ -134,16 +190,41 @@ If your field needs settings (for example `Min`, `Max`, `Step`), create a separa
 Add fields such as `Step` to this settings type.
 2sxc will then show these settings in the field configuration UI.
 
-TODO: SHOW HOW TO CREATE THE CONTENT-TYPE, AFTER THE (+) BUTTON
-
 <div gallery="gallery-content-type-field">
   <img src="./assets/input-create-new-content-type.png">
+  <img src="./assets/input-create-new-content-type-name.png">
+  <img src="./assets/input-edit-fields.png">  
+  <img src="./assets/input-add-field.png">
+  <img src="./assets/input-add-field-options.png">
+  <img src="./assets/input-add-items.png">
   <img src="./assets/input-content-type-field.png">
 </div>
 
 ### [2. Access Settings in Code](#tab/access-settings-in-code)
 
-TODO: @2rb - this is missing - how to access settings in the code?
+If your input field defines custom settings, 2sxc providesthem on the field connector.
+
+Inside your Component, you can acces them like this.
+
+```js
+connectedCallback() {
+  const connector = this.connector; // Provided by 2sxc
+  this.field = connector.field;     // Metadata about the current field
+
+  // All custom settings from your settings ContentType
+  const settings = connector.field?.settings || {};
+
+  // Example: access your custom settings
+  const someValue = settings.SomeField;       // e.g. "Label", "Color", etc.
+  const anotherValue = settings.AnotherField; // depends on your configuration
+}
+```
+
+> [!NOTE]
+> The available properties depend entirely on you settings ContentType.
+> You define the fields, 2sxc just passed them through.
+
+For this to work, your settings ContentType must follow the naming pattern `@{extension-name}`
 
 ---
 
