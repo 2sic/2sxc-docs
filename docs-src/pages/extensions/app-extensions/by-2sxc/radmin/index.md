@@ -247,7 +247,7 @@ The linked view can then use this parameter to filter its data.
 
 ## History
 
-1. todo
+1. 2026-05-04: Initial release for May the 4th 2026.
 
 <!-- fyi: shortlink here does not start with ext-, because I think we'll use radmin a lot, so it's a first-class citizen -->
 Shortlink: <https://go.2sxc.org/radmin>
