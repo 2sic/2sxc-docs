@@ -4,11 +4,14 @@ uid: Extensions.AppExtensions.By2sxc.Radmin.Index
 
 <img src="./assets/app-icon.png" width="150px" align="right" class="float-end"/>
 
-# Radmin Admin Tools Extension TODO / WIP
+# Radmin Admin Tools Extension
 
 _This is an extension for 2sxc Apps and can be installed into each App individually._
 
-TODO: description, what it is
+2sxc Radmin is a powerful extension that allows you to create admin interfaces for your data.
+Use it to create tables, link between them, show details, and much more - all within just a few minutes and without writing any code.
+
+<img src="./assets/first-impression.jpg" class="full-width"/>
 
 ## Installation and Basic Usage
 
@@ -213,7 +216,7 @@ Only set it if you want the link to open in a specific target, for example a new
 
 <div gallery="gallery-radmin-query-configuration">
   <img src="./assets/radmin-configuration-mode.png">
-  <img src="./assets/radmin-configure-column-paramter-link.png">
+  <img src="./assets/radmin-configure-column-parameter-link.png">
 </div>
 
 You can also pass parameters to the linked view.

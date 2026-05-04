@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Radmin Admin Tools Extension TODO / WIP | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Radmin Admin Tools Extension | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Radmin Admin Tools Extension TODO / WIP | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Radmin Admin Tools Extension | 2sxc 21 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../../public/docfx.min.css">
@@ -105,14 +105,172 @@
         <article data-uid="Extensions.AppExtensions.By2sxc.Radmin.Index">
 
 <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/app-icon.png" width="150px" align="right" class="float-end">
-<h1 id="radmin-admin-tools-extension-todo--wip">Radmin Admin Tools Extension TODO / WIP</h1>
+<h1 id="radmin-admin-tools-extension">Radmin Admin Tools Extension</h1>
 <p><em>This is an extension for 2sxc Apps and can be installed into each App individually.</em></p>
-<p>TODO: description, what it is</p>
-<h2 id="installation-and-use">Installation and Use</h2>
+<p>2sxc Radmin is a powerful extension that allows you to create admin interfaces for your data.
+Use it to create tables, link between them, show details, and much more - all within just a few minutes and without writing any code.</p>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/first-impression.jpg" class="full-width">
+<h2 id="installation-and-basic-usage">Installation and Basic Usage</h2>
 <ul>
 <li><a class="xref" href="../../install/index.html" title="icon:journal-arrow-down">How to Install App Extensions</a> instructions for your first time</li>
 </ul>
-<p>Todo: explain how to use this extension, with code samples and screenshots</p>
+<p>Once installed, you will want to</p>
+<ol>
+<li>Add Radmin to a page.</li>
+<li>Configure a title and a view-ID to show the data you want to manage.</li>
+<li>Specify the data to show in the table.</li>
+<li>Configure which features you want to use, such as edit, delete, add, etc.</li>
+<li>Maybe do some custom configuration for the columns.</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Since radmin is meant to admin data,
+it's best to add it to a page which is not visible to the public, and only accessible to admins.</p>
+<p>If you add it to a page which is visible to the public,
+the table will not show any data to external users,
+because the backend will refuse to deliver data unless specifically allowed to do so.</p>
+</div>
+<h2 id="add-a-radmin-view-to-a-page">Add a Radmin View to a Page</h2>
+<h3 id="adding-radmin-and-configure-the-view">Adding Radmin and Configure the View</h3>
+<p>To use Radmin on a page, install the Radmin Extension</p>
+<div gallery="gallery-radmin-add-view">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/app-view.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/app-radmin-view.png">
+</div>
+<p>After the view has been added, open the view configuration. This is where you define what the table should show and manage.</p>
+<div gallery="gallery-radmin-configure-view">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-edit-view.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configure-view.png">
+</div>
+<p>First, configure the general settings:</p>
+<p><strong>Title</strong><br>
+The title shown above the table.</p>
+<p><strong>View ID</strong><br>
+A unique identifier for this Radmin configuration.<br>
+This ID is used to reference the view from other places.</p>
+<p>Next, configure the <strong>Data to Manage</strong> section.</p>
+<p>Radmin can be configured in three ways:</p>
+<ol>
+<li><p><strong>Content Type only</strong><br>
+Select a content type if Radmin should manage all items of that type.<br>
+New items created in the table will also use this content type.</p>
+</li>
+<li><p><strong>Query only</strong><br>
+Select a query if Radmin should display data returned by that query.</p>
+</li>
+<li><p><strong>Content Type and Query</strong><br>
+Select both if Radmin should load its data from a query, but still create new items using the selected content type.</p>
+</li>
+</ol>
+<p>Save the configuration when you are done.</p>
+<p>The Radmin table will now render on the page and show the configured data.</p>
+<h3 id="first-result">First Result</h3>
+<p>You now have a a table</p>
+<ol>
+<li>showing the data you want to manage</li>
+<li>it can sort and search the data</li>
+</ol>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-result.png">
+<h2 id="configure-the-table">Configure the Table</h2>
+<h3 id="configuring-the-radmin-table">Configuring the Radmin Table</h3>
+<p>To configure the table, open the Radmin settings dialog and go to the table configuration section.</p>
+<div gallery="gallery-radmin-table-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-edit-view.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-table-configure.png">
+</div>
+<p>Here you configure the table.</p>
+<p>This section is for things like initial sorting, search UI, paging mode, and row actions.</p>
+<p>In <strong>Table Features</strong>, you can enable features such as the search box above the table and configure paging.</p>
+<p>In <strong>Row Functionality</strong>, you can control whether users are allowed to edit items, add new items, or delete existing items.</p>
+<p>If needed, you can also enable <strong>Advanced Features</strong> for additional table options.</p>
+<p>After configuring the table settings, save the dialog to apply the changes.</p>
+<h2 id="configure-the-columns">Configure the Columns</h2>
+<p>Use this section for column-level setup such as title, visible order, and field-specific behavior.</p>
+<p>To configure columns in a Radmin table, first enable <strong>Configuration Mode</strong> using the configuration button in the top-right toolbar.</p>
+<div gallery="gallery-radmin-table-column-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-table-toolbar-configuration-mode.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-table-configuration-mode-column-add.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-table-column-settings-dialog.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-table-toolbar-move-up-down.png">
+</div>
+<p>When Configuration Mode is active, a blue info box appears above the table.<br>
+You can now hover over the table headers to configure each column.</p>
+<p>Use the <strong>plus button</strong> beside a column header to initialize that table column.</p>
+<p>In the column settings dialog, configure settings such as:</p>
+<ol>
+<li>Column title shown in the table</li>
+<li>Field name (data source)</li>
+<li>Column order and other column-specific options</li>
+</ol>
+<p>After configuring the column, save the dialog to apply the changes.</p>
+<h2 id="implement-a-query">Implement a Query</h2>
+<div gallery="gallery-radmin-query-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-toolbar-configure-table.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configure-query-config.png">
+</div>
+<p>To manage data from a Query, open the table configuration and go to <strong>Data to Manage</strong>.</p>
+<p>In the <strong>Data Query Name</strong> field, select the name of the Query you want to use.</p>
+<p>Radmin will then use the data returned by this Query to show the table entries.</p>
+<p>If the Query returns its data on the default stream, no additional configuration is needed.</p>
+<p>If the Query uses another stream, or if you want to pass parameters to the Query, enable <strong>Show Advanced Query Options</strong>.</p>
+<p>In the advanced options you can configure:</p>
+<ol>
+<li><p><strong>Data Query - Stream Name</strong><br>
+Use this if the data should be loaded from a specific stream instead of the default stream.</p>
+</li>
+<li><p><strong>Data Query - Parameters</strong><br>
+Use this if the Query needs parameters, for example to filter the results or load only specific items.</p>
+</li>
+</ol>
+<p>This is optional. Only use the advanced options when the Query does not return the expected data by default or when the Query needs additional parameters.</p>
+<h2 id="link-a-column-to-a-view">Link a Column to a View</h2>
+<div gallery="gallery-radmin-query-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configuration-mode.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-toolbar-edit-column.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configure-column-link.png">
+</div>
+<p>To link a column to another view, first enable the configuration mode in the toolbar.</p>
+<p>When configuration mode is active, hover over the column header you want to configure.<br>
+Click the edit icon on the column to open the column settings.</p>
+<p>In the column configuration, enable <strong>Link to View / Details</strong>.</p>
+<p>After enabling it, open <strong>Linking Configuration</strong> and configure where the link should go.</p>
+<p>Set <strong>Link Type</strong> to <strong>View (select from list)</strong>.</p>
+<p>Then choose the target view in <strong>Reference a Specific View</strong>.</p>
+<p>For example, you can link a category column to a filtered posts view, so clicking a category opens another view that shows the related posts.</p>
+<p>After saving, the selected column will link to the configured view.</p>
+<h3 id="implement-detail-view">Implement Detail View</h3>
+<div gallery="gallery-radmin-query-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configuration-mode-link.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-edit-column.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configuration-dialog-linking.png">
+</div>
+<p>First enable the configuration mode in the toolbar.</p>
+<p>When configuration mode is active, hover over the column header you want to configure and click the edit icon.</p>
+<p>In the column configuration, enable <strong>Link to View / Details</strong>.</p>
+<p>If you do not select a specific link type or target view, Radmin will automatically link the column to the detail view of the current item.</p>
+<p>This means the value in this column becomes clickable.<br>
+When the user clicks it, Radmin opens the details of the selected item.</p>
+<p>The <strong>Link Target</strong> field can usually stay empty.<br>
+Only set it if you want the link to open in a specific target, for example a new window.</p>
+<h3 id="add-link-parameters-to-filter-the-target-view">Add Link Parameters to filter the target view</h3>
+<div gallery="gallery-radmin-query-configuration">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configuration-mode.png">
+  <img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-configure-column-parameter-link.png">
+</div>
+<p>You can also pass parameters to the linked view.</p>
+<p>This is useful if the target view should open already filtered, based on the value of the clicked column.</p>
+<p>After enabling <strong>Link to View / Details</strong> and selecting the target view, use the <strong>Link Parameters</strong> field to define the parameters that should be added to the URL.</p>
+<p>For example:</p>
+<p><code>category=[key]</code></p>
+<p>This means:</p>
+<ul>
+<li><strong>category</strong> is the URL parameter name</li>
+<li><strong>[key]</strong> is the value taken from the current row</li>
+</ul>
+<p>When a user clicks the link, Radmin replaces <code>[key]</code> with the actual value of that item and appends it to the URL.</p>
+<p>The linked view can then use this parameter to filter its data.</p>
+<p><strong>Result</strong></p>
+<img src="../../../../pages/extensions/app-extensions/by-2sxc/radmin/assets/radmin-filtered-posts-result.png">
 <hr>
 <h2 id="history">History</h2>
 <ol>
