@@ -6,12 +6,14 @@ uid: Extensions.AppExtensions.By2sxc.Radmin.ConfigureView
 
 The view configuration defines what the Radmin table is and what data it should load.
 
+## General Settings
+
+Open the view settings dialog.
+
 <div gallery="gallery-radmin-configure-view">
   <img src="./assets/edit-view.png">
   <img src="./assets/configure-view.png">
 </div>
-
-Start with the general settings:
 
 **Title**  
 The heading shown above your table.
@@ -19,16 +21,21 @@ The heading shown above your table.
 **View ID**  
 A unique identifier for this Radmin setup. You will use this when linking to this view later.
 
-Then configure **Data to Manage**.
+### Data to Manage
 
-Radmin supports three common patterns:
+Configure your data source by selecting one of these patterns:
 
-1. **Content Type only**: manage all items of one content type.
-2. **Query only**: show data from a query result.
-3. **Content Type and Query**: read data from query, create new items with a selected content type.
+**Content Type only**  
+Manage all items of one content type.
 
-Save the dialog and check the table result on the page.
+**Query only**  
+Show data from a query result.
 
-## Next Step
+**Content Type and Query**  
+Read data from query, create new items with a selected content type.
+
+After configuring, save the dialog and check the table result on the page.
+
+Next step:
 
 Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureTable){title="Configure Table"}.

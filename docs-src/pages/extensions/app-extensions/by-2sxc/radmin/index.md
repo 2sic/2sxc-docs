@@ -21,10 +21,8 @@ Use it to create tables, link between them, show details, and much more, all wit
 * [Configure View](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureView){title="icon:gear"}
 * [Configure Table](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureTable){title="icon:table"}
 * [Configure Columns](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureColumns){title="icon:layout-three-columns"}
-* [Query Configuration](xref:Extensions.AppExtensions.By2sxc.Radmin.QueryConfiguration){title="icon:funnel"}
-* [Link Column to View](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkColumnToView){title="icon:link-45deg"}
+* [Link and Query Configuration](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery){title="icon:link-45deg"}
 * [Detail View](xref:Extensions.AppExtensions.By2sxc.Radmin.DetailView){title="icon:file-earmark-text"}
-* [Link Parameters](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkParameters){title="icon:sliders"}
 
 ---
 

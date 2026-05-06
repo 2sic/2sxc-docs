@@ -6,22 +6,31 @@ uid: Extensions.AppExtensions.By2sxc.Radmin.DetailView
 
 Radmin can automatically open an item's detail view when you click a configured column.
 
-<div gallery="gallery-radmin-detail-view">
-  <img src="./assets/config-mode-link.png">
-  <img src="./assets/edit-column.png">
-  <img src="./assets/link-dialog.png">
-</div>
+## Enable Configuration Mode
 
 Enable configuration mode and edit the column you want to make clickable.
 
-Enable **Link to View / Details**.
+<div gallery="gallery-radmin-detail-view-config">
+  <img src="./assets/config-mode-link.png">
+  <img src="./assets/edit-column.png">
+</div>
 
-If you do not select a specific target view, Radmin uses the detail view of the current item.
+You can now edit this column's linking behavior.
 
-This is a good default for beginner setups, because users can open a record quickly without additional view wiring.
+### Select the Details View
 
-The **Link Target** is usually left empty. Only set it when you need special behavior like opening in a new tab.
+In the column settings, set **Link Type** to **View (select from list)**, then choose **Radmin Details (Default)** in the **Reference a Specific View** dropdown.
 
-## Next Step
+<div gallery="gallery-radmin-detail-view-link">
+  <img src="./assets/link-dialog.png">
+</div>
 
-Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkParameters){title="Link Parameters"} to pass filters to target views.
+**Reference a Specific View**  
+Select **Radmin Details (Default)** to open the built-in detail view when the column is clicked.
+
+**Link Parameters (Optional)**  
+Leave empty to automatically use the parameters expected by the linked view.
+
+Next step:
+
+Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery){title="Link and Query Configuration"} to set up advanced linking options.
