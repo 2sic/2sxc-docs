@@ -13,6 +13,10 @@ Use it to create tables, link between them, show details, and much more, all wit
 
 <img src="./assets/first-impression.jpg" class="full-width"/>
 
+Here's a quick release video for an overview:
+
+<iframe width="100%" height="400px" src="https://www.youtube.com/embed/HQphIKDSKW0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Start Here
 
 * [](xref:Extensions.AppExtensions.Install.Index){title="icon:journal-arrow-down"} instructions for your first time
