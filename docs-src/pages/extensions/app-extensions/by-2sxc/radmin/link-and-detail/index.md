@@ -1,65 +1,20 @@
 ---
-uid: Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery
+uid: Extensions.AppExtensions.By2sxc.Radmin.LinkAndDetail
 ---
 
-# Link and Query Configuration
+# Link and Detail Sites
 
-Configure how your table handles data from queries and how users navigate between views using column links.
+Configure how users navigate between views using column links and show details.
 
-## Query Configuration
+## Enable Linking
 
-Use query mode when table data should come from a query instead of directly from a content type.
-
-### Open Data Configuration
-
-Open table configuration and go to **Data to Manage**.
-
-<div gallery="gallery-radmin-query-configuration-open">
-  <img src="./assets/table-toolbar.png">
-</div>
-
-You're now in the data configuration section.
-
-### Set Query Source
-
-Set **Data Query Name** to the query you want to use.
-
-<div gallery="gallery-radmin-query-configuration-settings">
-  <img src="./assets/query-config.png">
-</div>
-
-**Data Query Name**  
-The query that provides your table data.
-
-**Show Advanced Query Options**  
-Enable only if your query uses a custom stream or needs URL parameters.
-
-### Advanced Options (if needed)
-
-If you enabled advanced options, set:
-
-**Data Query - Stream Name**  
-Use when your query returns data on a stream other than the default.
-
-**Data Query - Parameters**  
-Use when your query expects values from URL or context.
-
-**Keep It Simple**  
-Keep advanced options empty unless needed, so the setup stays easy to maintain.
-
-### Link Column to View
-
-You can turn a column value into a link that opens another Radmin view.
-
-### Enable Linking
-
-Enable configuration mode in the toolbar.
+Enable configuration mode in the toolbar and hover over the target column header and click the edit icon.
 
 <div gallery="gallery-radmin-link-column-to-view-mode">
   <img src="./assets/config-mode.png">
+  <img src="./assets/edit-column.png">
 </div>
 
-Hover over the target column header and click the edit icon.
 
 <div gallery="gallery-radmin-link-column-to-view-edit">
   <img src="./assets/edit-column-toolbar.png">
@@ -67,7 +22,7 @@ Hover over the target column header and click the edit icon.
 
 You're now in the column editor.
 
-### Configure the Link
+## Configure the Link
 
 In the column settings, scroll to the link area (highlighted below):
 
@@ -83,7 +38,7 @@ In the column settings, scroll to the link area (highlighted below):
 **Result**  
 After saving, clicking values in that column opens the linked target view.
 
-### Link Parameters
+## Link Parameters
 
 Link parameters let you open another view already filtered to the clicked row.
 
@@ -97,7 +52,8 @@ If you leave it empty, Radmin uses parameters expected by the linked view.
 </div>
 
 **Parameter Format**  
-Use this pattern to pass values:
+Use this pattern to pass values.
+The key can be the name of the field, an ID, or a GUID:
 
 `category=[key]`
 
@@ -105,6 +61,8 @@ Use this pattern to pass values:
 
 - `category` is the parameter name that the target view expects
 - `[key]` is replaced with the actual value from the clicked row
+
+The key can be the name of the field, an ID, or a GUID.
 
 ### See It in Action
 

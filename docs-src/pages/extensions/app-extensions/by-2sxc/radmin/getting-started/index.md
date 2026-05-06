@@ -4,16 +4,7 @@ uid: Extensions.AppExtensions.By2sxc.Radmin.GettingStarted
 
 # Radmin Getting Started
 
-This guide shows the fastest way to get your first Radmin table running.
-
-## Add Radmin to a Page
-
-Add a Radmin view to your page.
-
-<div gallery="gallery-radmin-add-view">
-  <img src="./assets/app-view.png">
-  <img src="./assets/app-radmin.png">
-</div>
+These docs use examples made in a Blog App. This guide shows the fastest way to get your first Radmin table running.
 
 > [!TIP]
 > Since Radmin is meant to admin data,
@@ -22,6 +13,16 @@ Add a Radmin view to your page.
 > If you add it to a page which is visible to the public,
 > the table will not show any data to external users,
 > because the backend will refuse to deliver data unless specifically allowed to do so.
+
+## Add Radmin to a Page
+
+Add a Radmin view to your page. For this example, we'll create it in a Blog App.
+
+<div gallery="gallery-radmin-add-view">
+  <img src="./assets/app-view.png">
+  <img src="./assets/app-radmin.png">
+  <img src="./assets/radmin-view.png">
+</div>
 
 ### Configure Basic Values
 
