@@ -21,6 +21,10 @@ It's inspired by the Dnn model but uses the latest .net core and more.
 
 👉 See [](xref:Abyss.Platforms.Oqtane.MultiTenancy)
 
+## Oqtane Upgrade Issues
+
+👉 See [](xref:Abyss.Platforms.Oqtane.Install.IssueUpgradeOqtane10DuplicateDlls)
+
 
 ## Features Not Yet Implemented in Oqtane
 
