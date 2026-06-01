@@ -17,6 +17,10 @@ It's inspired by the Dnn model but uses the latest .net core and more.
 
 👉 See [](xref:Abyss.Platforms.Oqtane.Install)
 
+## Multi-Tenancy
+
+👉 See [](xref:Abyss.Platforms.Oqtane.MultiTenancy)
+
 
 ## Features Not Yet Implemented in Oqtane
 
