@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Oqtane 6 to 10 Upgrade: Duplicate DLLs Break Razor and AppCode | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Oqtane 6 to 10 Upgrade: Duplicate DLLs Break Razor and AppCode | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/install-issue-upgrade-oqtane-10-duplicate-dlls.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Platforms.Oqtane.Install.IssueUpgradeOqtane10DuplicateDlls">
+
+<img src="../../../assets/features/platform-oqtane.svg" width="100%">
+<h1 id="oqtane-6-to-10-upgrade-duplicate-dlls-break-razor-and-appcode">Oqtane 6 to 10 Upgrade: Duplicate DLLs Break Razor and AppCode</h1>
+<p>When upgrading an existing Oqtane 6 installation to Oqtane 10,
+the upgraded <code>Oqtane.Server</code> folder can contain old framework DLLs in the application root.</p>
+<p>This can break 2sxc Razor views and AppCode compilation in older 2sxc versions.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This issue is fixed in 2sxc 21.08.00 and newer.
+If possible, upgrade 2sxc first instead of manually deleting files.</p>
+</div>
+<h2 id="symptoms">Symptoms</h2>
+<p>After upgrading Oqtane, 2sxc can fail when rendering Razor views or compiling AppCode.</p>
+<p>Typical errors include:</p>
+<pre><code class="lang-text">CS0433: The type 'AllowAnonymousAttribute' exists in both
+'Microsoft.AspNetCore.Authorization, Version=10.0.0.0'
+and
+'Microsoft.AspNetCore.Authorization, Version=9.0.0.0'
+</code></pre>
+<p>Other possible errors:</p>
+<pre><code class="lang-text">CS0518: Predefined type 'System.Void' is not defined or imported
+CS0433: The type 'List&lt;T&gt;' exists in both 'System.Collections' and 'System.Private.CoreLib'
+CS0433: The type 'XmlElement' exists in both 'System.Private.Xml' and 'System.Xml.ReaderWriter'
+Could not find file '[Oqtane.Server]\Microsoft.AspNetCore.Authorization.dll'
+</code></pre>
+<h2 id="affected-upgrade-path">Affected Upgrade Path</h2>
+<p>This has been observed with this kind of upgrade path:</p>
+<ol>
+<li>Install Oqtane 6.1.3.</li>
+<li>Install 2sxc 20.00.03.</li>
+<li>Upgrade 2sxc to 21.07.00.</li>
+<li>Upgrade Oqtane to 10.1.x.</li>
+<li>Open a page using 2sxc Razor or AppCode.</li>
+</ol>
+<p>The problem is not browser-specific and is not caused by the Razor view itself.</p>
+<h2 id="cause">Cause</h2>
+<p>Oqtane 10 uses newer .NET / ASP.NET Core framework assemblies.
+After some Oqtane 6 to 10 upgrades, old or unnecessary framework DLLs can remain in the <code>Oqtane.Server</code> root folder.</p>
+<p>2sxc dynamically compiles Razor views and AppCode using Roslyn.
+Older 2sxc versions could receive compile references from both:</p>
+<ol>
+<li>the <code>Oqtane.Server</code> root folder</li>
+<li>the correct <code>refs</code> folder</li>
+</ol>
+<p>If both locations expose different versions of the same framework assembly,
+Roslyn can see duplicate types and fail with <code>CS0433</code>, <code>CS0518</code>, or missing-file errors.</p>
+<p>2sxc 21.08.00 fixes this by cleaning the reference set before compiling.
+It drops missing paths, groups duplicate assembly identities, prefers reference assemblies,
+and avoids runtime implementation assemblies such as <code>System.Private.*</code> when proper reference assemblies exist.</p>
+<h2 id="preferred-fix">Preferred Fix</h2>
+<p>Upgrade 2sxc to 21.08.00 or newer.</p>
+<p>This is the recommended fix because it makes 2sxc more defensive against duplicate or stale Oqtane compile references.</p>
+<h2 id="workaround-for-older-2sxc-versions">Workaround for Older 2sxc Versions</h2>
+<p>If you must stay on 2sxc 21.07.00 or older,
+remove the unnecessary extra files from the <code>Oqtane.Server</code> root folder.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Delete these files only from the <code>Oqtane.Server</code> root folder.
+Do not delete files from the <code>refs</code> folder, NuGet package cache, .NET shared runtime, or any backup folder.</p>
+</div>
+<p>Recommended process:</p>
+<ol>
+<li>Stop Oqtane.</li>
+<li>Backup the complete <code>Oqtane.Server</code> folder.</li>
+<li>Compare the upgraded installation with a clean Oqtane 10.1.x + 2sxc installation if possible.</li>
+<li>Delete only the known extra root files.</li>
+<li>Start Oqtane again.</li>
+<li>Open a page with a 2sxc Razor view or AppCode to force recompilation.</li>
+</ol>
+<p>This list is based on comparing an upgraded Oqtane 10.1.x server with a clean Oqtane 10.1.x + 2sxc installation.
+If one of these files does not exist in your installation, the delete command can report that it was not found.</p>
+<p>Open <code>cmd.exe</code> in the <code>Oqtane.Server</code> root folder and run:</p>
+<pre><code class="lang-cmd">del /f /q &quot;Microsoft.AspNetCore.Authorization.dll&quot; &quot;Microsoft.AspNetCore.Components.Authorization.dll&quot; &quot;Microsoft.AspNetCore.Components.dll&quot; &quot;Microsoft.AspNetCore.Components.Forms.dll&quot; &quot;Microsoft.AspNetCore.Components.Web.dll&quot; &quot;Microsoft.AspNetCore.Cryptography.Internal.dll&quot; &quot;Microsoft.AspNetCore.Cryptography.KeyDerivation.dll&quot; &quot;Microsoft.AspNetCore.Metadata.dll&quot; &quot;Microsoft.Extensions.Caching.Abstractions.dll&quot; &quot;Microsoft.Extensions.Caching.Memory.dll&quot; &quot;Microsoft.Extensions.Configuration.Abstractions.dll&quot; &quot;Microsoft.Extensions.Configuration.Binder.dll&quot; &quot;Microsoft.Extensions.Configuration.dll&quot; &quot;Microsoft.Extensions.Configuration.FileExtensions.dll&quot; &quot;Microsoft.Extensions.Configuration.Json.dll&quot; &quot;Microsoft.Extensions.DependencyInjection.Abstractions.dll&quot; &quot;Microsoft.Extensions.DependencyInjection.dll&quot; &quot;Microsoft.Extensions.Diagnostics.Abstractions.dll&quot; &quot;Microsoft.Extensions.Diagnostics.dll&quot; &quot;Microsoft.Extensions.FileProviders.Abstractions.dll&quot; &quot;Microsoft.Extensions.FileProviders.Physical.dll&quot; &quot;Microsoft.Extensions.FileSystemGlobbing.dll&quot; &quot;Microsoft.Extensions.Http.dll&quot; &quot;Microsoft.Extensions.Identity.Core.dll&quot; &quot;Microsoft.Extensions.Identity.Stores.dll&quot; &quot;Microsoft.Extensions.Localization.Abstractions.dll&quot; &quot;Microsoft.Extensions.Localization.dll&quot; &quot;Microsoft.Extensions.Logging.Abstractions.dll&quot; &quot;Microsoft.Extensions.Logging.dll&quot; &quot;Microsoft.Extensions.Options.ConfigurationExtensions.dll&quot; &quot;Microsoft.Extensions.Options.dll&quot; &quot;Microsoft.Extensions.Primitives.dll&quot; &quot;Microsoft.JSInterop.dll&quot; &quot;Oqtane.Updater.deps.json&quot; &quot;Oqtane.Updater.dll&quot; &quot;Oqtane.Updater.exe&quot; &quot;Oqtane.Updater.pdb&quot; &quot;Oqtane.Updater.runtimeconfig.json&quot; &quot;System.Diagnostics.EventLog.dll&quot; &quot;System.Security.Cryptography.Pkcs.dll&quot; &quot;System.Text.Json.dll&quot; &quot;temp.dll&quot;
+</code></pre>
+<p>If you prefer to check before deleting, first run:</p>
+<pre><code class="lang-cmd">dir /b &quot;Microsoft.AspNetCore.Authorization.dll&quot; &quot;Microsoft.AspNetCore.Components.Authorization.dll&quot; &quot;Microsoft.AspNetCore.Components.dll&quot; &quot;Microsoft.AspNetCore.Components.Forms.dll&quot; &quot;Microsoft.AspNetCore.Components.Web.dll&quot; &quot;Microsoft.AspNetCore.Cryptography.Internal.dll&quot; &quot;Microsoft.AspNetCore.Cryptography.KeyDerivation.dll&quot; &quot;Microsoft.AspNetCore.Metadata.dll&quot; &quot;Microsoft.Extensions.Caching.Abstractions.dll&quot; &quot;Microsoft.Extensions.Caching.Memory.dll&quot; &quot;Microsoft.Extensions.Configuration.Abstractions.dll&quot; &quot;Microsoft.Extensions.Configuration.Binder.dll&quot; &quot;Microsoft.Extensions.Configuration.dll&quot; &quot;Microsoft.Extensions.Configuration.FileExtensions.dll&quot; &quot;Microsoft.Extensions.Configuration.Json.dll&quot; &quot;Microsoft.Extensions.DependencyInjection.Abstractions.dll&quot; &quot;Microsoft.Extensions.DependencyInjection.dll&quot; &quot;Microsoft.Extensions.Diagnostics.Abstractions.dll&quot; &quot;Microsoft.Extensions.Diagnostics.dll&quot; &quot;Microsoft.Extensions.FileProviders.Abstractions.dll&quot; &quot;Microsoft.Extensions.FileProviders.Physical.dll&quot; &quot;Microsoft.Extensions.FileSystemGlobbing.dll&quot; &quot;Microsoft.Extensions.Http.dll&quot; &quot;Microsoft.Extensions.Identity.Core.dll&quot; &quot;Microsoft.Extensions.Identity.Stores.dll&quot; &quot;Microsoft.Extensions.Localization.Abstractions.dll&quot; &quot;Microsoft.Extensions.Localization.dll&quot; &quot;Microsoft.Extensions.Logging.Abstractions.dll&quot; &quot;Microsoft.Extensions.Logging.dll&quot; &quot;Microsoft.Extensions.Options.ConfigurationExtensions.dll&quot; &quot;Microsoft.Extensions.Options.dll&quot; &quot;Microsoft.Extensions.Primitives.dll&quot; &quot;Microsoft.JSInterop.dll&quot; &quot;Oqtane.Updater.deps.json&quot; &quot;Oqtane.Updater.dll&quot; &quot;Oqtane.Updater.exe&quot; &quot;Oqtane.Updater.pdb&quot; &quot;Oqtane.Updater.runtimeconfig.json&quot; &quot;System.Diagnostics.EventLog.dll&quot; &quot;System.Security.Cryptography.Pkcs.dll&quot; &quot;System.Text.Json.dll&quot; &quot;temp.dll&quot;
+</code></pre>
+<h2 id="what-not-to-delete">What Not to Delete</h2>
+<p>Do not delete:</p>
+<ol>
+<li>files in <code>[Oqtane.Server]\refs</code></li>
+<li><code>Oqtane.Server.dll</code></li>
+<li><code>Oqtane.Client.dll</code></li>
+<li><code>Oqtane.Shared.dll</code></li>
+<li><code>ToSic.*.dll</code></li>
+<li>app or module DLLs which are not in the list above</li>
+</ol>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="https://github.com/2sic/2sxc/issues/3768">GitHub issue 3768</a></li>
+<li><a class="xref" href="install.html">Install Oqtane and 2sxc</a></li>
+</ul>
+<hr>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/install-issue-upgrade-oqtane-10-duplicate-dlls.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

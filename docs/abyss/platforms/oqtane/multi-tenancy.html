@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Oqtane Multi-Tenancy and 2sxc | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Oqtane Multi-Tenancy and 2sxc | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/multi-tenancy.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Platforms.Oqtane.MultiTenancy">
+
+<img src="../../../assets/features/platform-oqtane.svg" width="100%">
+<h1 id="oqtane-multi-tenancy-and-2sxc">Oqtane Multi-Tenancy and 2sxc</h1>
+<p>Oqtane supports multiple tenants and sites.
+2sxc supports this by mapping each Oqtane site to a 2sxc/EAV <strong>zone</strong>.</p>
+<p>This page explains how that mapping works, how to diagnose broken mappings,
+and how to repair common problems in separate-database tenant setups.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The SQL on this page is intended for diagnosis and carefully controlled repair.
+Always create a database backup before changing data manually.
+Do not delete a <code>TsDynDataZoneId</code> setting on a production site until you know where the site's 2sxc content is stored.</p>
+</div>
+<h2 id="version-notes">Version Notes</h2>
+<p>2sxc multi-tenant support for Oqtane was stabilized in later Oqtane 6 / 2sxc 21 releases.</p>
+<p>Known guidance:</p>
+<ol>
+<li>Oqtane 6.1.3+ with 2sxc 21.02+ introduced the expected multi-tenant support.</li>
+<li>For separate-database tenants, use a current 2sxc 21.x build, such as 21.07 or newer, before repairing mappings.</li>
+</ol>
+<h2 id="how-oqtane-multi-tenancy-works">How Oqtane Multi-Tenancy Works</h2>
+<p>Oqtane can host multiple tenants.
+Tenants can either share the main database or use separate databases.</p>
+<p>In a separate-database setup:</p>
+<ol>
+<li>The main database contains global tenant and alias information.</li>
+<li>Each tenant database contains its own Oqtane site data.</li>
+<li>Site IDs start again at <code>1</code> in each separate tenant database.</li>
+<li>An alias in the main database maps the domain to the correct tenant and site.</li>
+</ol>
+<p>This means <code>SiteId = 1</code> is not globally unique when tenants use separate databases.
+Any 2sxc mapping must therefore be resolved in the correct Oqtane tenant context.</p>
+<h2 id="how-2sxc-maps-oqtane-sites">How 2sxc Maps Oqtane Sites</h2>
+<p>2sxc stores app and content metadata in EAV tables.
+In Oqtane, each Oqtane site usually maps to one EAV zone.</p>
+<p>The important records are:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oqtane site setting</td>
+<td><code>Setting</code></td>
+<td>Stores the site's 2sxc zone in <code>TsDynDataZoneId</code></td>
+</tr>
+<tr>
+<td>2sxc/EAV zone</td>
+<td><code>TsDynDataZone</code></td>
+<td>One 2sxc zone per mapped site</td>
+</tr>
+<tr>
+<td>2sxc/EAV apps</td>
+<td><code>TsDynDataApp</code></td>
+<td>Contains the Content app and site/primary app for the zone</td>
+</tr>
+<tr>
+<td>App files</td>
+<td>file system</td>
+<td>Stored below <code>2sxc\Tenants\{TenantId}\Sites\{SiteId}</code></td>
+</tr>
+<tr>
+<td>Content files</td>
+<td>file system</td>
+<td>Stored below <code>Content\Tenants\{TenantId}\Sites\{SiteId}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The file paths use the Oqtane <code>TenantId</code> and <code>SiteId</code>.
+They do not use the 2sxc/EAV <code>ZoneId</code>.</p>
+<p>Older 2sxc Oqtane versions stored app files directly below:</p>
+<pre><code class="lang-text">2sxc\{SiteId}
+</code></pre>
+<p>Newer 2sxc Oqtane versions store app files below:</p>
+<pre><code class="lang-text">2sxc\Tenants\{TenantId}\Sites\{SiteId}
+</code></pre>
+<p>Some older 2sxc 21 builds did not always migrate these folders correctly.
+In that case, the database mapping can be correct, but the app files are still in the old folder.</p>
+<p>The <code>Setting</code> row should look like this:</p>
+<pre><code class="lang-text">EntityName = Site
+EntityId   = &lt;Oqtane SiteId in the current tenant DB&gt;
+SettingName = TsDynDataZoneId
+SettingValue = &lt;matching ZoneId in TsDynDataZone in the same DB&gt;
+</code></pre>
+<p>For a healthy site, the <code>SettingValue</code> must point to a <code>TsDynDataZone.ZoneId</code>
+which exists in the main or tenant database that 2sxc is currently using.</p>
+<p>If the setting is missing on a new site with no 2sxc content yet, that can be normal.
+2sxc can create the missing zone mapping when the site is first used.</p>
+<h2 id="common-broken-state">Common Broken State</h2>
+<p>A known broken state can happen when a separate-database tenant site is used with an older 2sxc version before multi-tenancy was supported, resulting in the wrong tenant context.</p>
+<p>Example:</p>
+<pre><code class="lang-text">Main DB:
+ZoneId 5 = sc01.example.com (Site 1)
+
+Tenant DB:
+Setting.TsDynDataZoneId = 5
+TsDynDataZone has no ZoneId 5
+</code></pre>
+<p>The tenant database points to zone <code>5</code>, but zone <code>5</code> only exists in the main database.</p>
+<p>The runtime error usually looks like this:</p>
+<pre><code class="lang-text">The given key '5' was not present in the dictionary.
+at ToSic.Eav.Apps.Sys.Catalog.AppsCatalog.DefaultAppIdentity(Int32 zoneId)
+</code></pre>
+<p>This happens because 2sxc resolves the current site to zone <code>5</code>,
+then asks EAV for the Content app in zone <code>5</code>,
+but the active tenant database does not contain that zone.</p>
+<h2 id="diagnostic-sql">Diagnostic SQL</h2>
+<p>Run these queries against both the main database and the affected tenant database.</p>
+<h3 id="main-database">Main Database</h3>
+<pre><code class="lang-sql">SELECT SiteId, Name, TenantId
+FROM Site
+ORDER BY SiteId;
+</code></pre>
+<pre><code class="lang-sql">SELECT AliasId, TenantId, SiteId, Name, IsDefault
+FROM Alias
+ORDER BY TenantId, SiteId, AliasId;
+</code></pre>
+<pre><code class="lang-sql">SELECT SettingId, EntityName, EntityId AS SiteId, SettingName, SettingValue
+FROM Setting
+WHERE SettingName IN ('TsDynDataZoneId', 'TsDynDataApp')
+ORDER BY EntityName, EntityId, SettingName;
+</code></pre>
+<pre><code class="lang-sql">SELECT ZoneId, Name
+FROM TsDynDataZone
+ORDER BY ZoneId;
+</code></pre>
+<pre><code class="lang-sql">SELECT AppId, ZoneId, Name
+FROM TsDynDataApp
+ORDER BY ZoneId, AppId;
+</code></pre>
+<h3 id="separate-tenant-database">Separate Tenant Database</h3>
+<pre><code class="lang-sql">SELECT SiteId, Name, TenantId
+FROM Site
+ORDER BY SiteId;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In separate-database Oqtane setups, the <code>Alias</code> table is in the main database only.
+It does not exist in the tenant database.</p>
+</div>
+<pre><code class="lang-sql">SELECT SettingId, EntityName, EntityId AS SiteId, SettingName, SettingValue
+FROM Setting
+WHERE SettingName IN ('TsDynDataZoneId', 'TsDynDataApp', 'EavZone', 'EavApp')
+ORDER BY EntityName, EntityId, SettingName;
+</code></pre>
+<pre><code class="lang-sql">SELECT ZoneId, Name
+FROM TsDynDataZone
+ORDER BY ZoneId;
+</code></pre>
+<pre><code class="lang-sql">SELECT AppId, ZoneId, Name
+FROM TsDynDataApp
+ORDER BY ZoneId, AppId;
+</code></pre>
+<h2 id="how-to-interpret-the-results">How to Interpret the Results</h2>
+<p>For the affected tenant site, check the row:</p>
+<pre><code class="lang-text">SettingName = TsDynDataZoneId
+EntityName = Site
+EntityId = &lt;affected Oqtane SiteId&gt;
+</code></pre>
+<p>Then verify:</p>
+<ol>
+<li>The <code>SettingValue</code> exists as <code>TsDynDataZone.ZoneId</code> in the same tenant database.</li>
+<li><code>TsDynDataApp</code> has a <code>Default</code> app in that zone.</li>
+<li><code>TsDynDataApp</code> has a site/primary app in that zone.</li>
+<li>The expected app folders exist below <code>2sxc\Tenants\{TenantId}\Sites\{SiteId}</code>.</li>
+</ol>
+<p>If the setting points to a zone which only exists in the main database,
+then the tenant site has a stale or wrong zone mapping.</p>
+<h2 id="manual-repair-options">Manual Repair Options</h2>
+<p>Choose the repair based on where the real 2sxc data is.
+Do not manually create EAV zones or apps unless you have a migration plan and understand the related EAV tables.</p>
+<h3 id="case-1-no-2sxc-content-to-preserve">Case 1: No 2sxc Content to Preserve</h3>
+<p>This is typical for a clean repro or a new site where adding Content fails immediately.</p>
+<ol>
+<li>Upgrade to a 2sxc version with the latest Oqtane multi-tenant fixes, such as 21.07 or newer.</li>
+<li>Backup the affected tenant database.</li>
+<li>Delete only the stale site-zone mapping in the affected tenant database.</li>
+<li>Restart Oqtane.</li>
+<li>Open the affected site and add 2sxc Content again.</li>
+</ol>
+<p>Example:</p>
+<pre><code class="lang-sql">DELETE FROM Setting
+WHERE EntityName = 'Site'
+  AND EntityId = 1
+  AND SettingName = 'TsDynDataZoneId'
+  AND SettingValue = '5';
+</code></pre>
+<p>After restart, 2sxc should create a new zone and Content app in the correct tenant database.</p>
+<h3 id="case-2-tenant-db-has-a-valid-zone-but-setting-points-elsewhere">Case 2: Tenant DB Has a Valid Zone, but Setting Points Elsewhere</h3>
+<p>If the tenant database already contains the correct zone and apps,
+update the site setting to point to that local zone.</p>
+<p>Example:</p>
+<pre><code class="lang-sql">UPDATE Setting
+SET SettingValue = '&lt;correct-zone-id&gt;'
+WHERE EntityName = 'Site'
+  AND EntityId = &lt;site-id&gt;
+  AND SettingName = 'TsDynDataZoneId';
+</code></pre>
+<p>Restart Oqtane after the change so 2sxc reloads its app catalog.</p>
+<h3 id="case-3-existing-2sxc-content-exists-in-the-wrong-database">Case 3: Existing 2sxc Content Exists in the Wrong Database</h3>
+<p>Do not delete the setting.</p>
+<p>If the real content exists in the main database zone, but the site now runs in a separate tenant database,
+this is a migration scenario.
+Export/import or migrate the relevant 2sxc/EAV data and files into the tenant database and tenant/site folders.</p>
+<p>Only after the content is safely moved should the site mapping be corrected.</p>
+<h3 id="case-4-app-files-were-not-migrated-to-the-tenantsite-folder">Case 4: App Files Were Not Migrated to the Tenant/Site Folder</h3>
+<p>In older 2sxc 21 versions, the app files folder migration from the old Oqtane layout to the new tenant-aware layout was not always executed.</p>
+<p>Old layout:</p>
+<pre><code class="lang-text">[Oqtane.Server]\2sxc\{SiteId}
+</code></pre>
+<p>New layout:</p>
+<pre><code class="lang-text">[Oqtane.Server]\2sxc\Tenants\{TenantId}\Sites\{SiteId}
+</code></pre>
+<p>Typical symptoms:</p>
+<ol>
+<li>The <code>TsDynDataZoneId</code>, <code>TsDynDataZone</code>, and <code>TsDynDataApp</code> records look correct.</li>
+<li>The new app folder below <code>2sxc\Tenants\{TenantId}\Sites\{SiteId}</code> is missing or empty.</li>
+<li>The old folder below <code>2sxc\{SiteId}</code> still contains the app folders, views, AppCode, or assets.</li>
+<li>2sxc shows missing view, missing app file, or AppCode compile errors even though the app exists in the database.</li>
+</ol>
+<p>To repair this manually, copy all legacy site folders from the root <code>2sxc</code> folder into the new tenant/site structure.
+Skip the <code>Tenants</code> folder, because that is already the new structure.</p>
+<p>For the default tenant, this means:</p>
+<pre><code class="lang-text">[Oqtane.Server]\2sxc\*
+</code></pre>
+<p>to:</p>
+<pre><code class="lang-text">[Oqtane.Server]\2sxc\Tenants\1\Sites\*
+</code></pre>
+<p>Repair steps:</p>
+<ol>
+<li>Upgrade to a current 2sxc version first, such as 21.07 or newer.</li>
+<li>Stop the Oqtane application.</li>
+<li>Backup the complete <code>[Oqtane.Server]\2sxc</code> folder.</li>
+<li>Copy all folders except <code>Tenants</code> from <code>2sxc\</code> to <code>2sxc\Tenants\1\Sites\</code>.</li>
+<li>Start Oqtane again.</li>
+<li>Open the affected app and verify that views, AppCode, and assets load correctly.</li>
+</ol>
+<p>Example:</p>
+<pre><code class="lang-cmd">robocopy &quot;D:\Path\To\Oqtane.Server\2sxc&quot; &quot;D:\Path\To\Oqtane.Server\2sxc\Tenants\1\Sites&quot; /E /XD &quot;D:\Path\To\Oqtane.Server\2sxc\Tenants&quot;
+</code></pre>
+<p>To preview the copy first, add <code>/L</code> to the <code>robocopy</code> command.</p>
+<p>If the new folder already contains files, compare both folders before copying.
+Do not overwrite newer files unless you know the old folder is the correct source.</p>
+<p>After the site works, keep the old <code>2sxc\{SiteId}</code> folder as a temporary backup.
+Remove it only after the tenant/site folder has been verified.</p>
+<h2 id="after-repair">After Repair</h2>
+<p>After any manual repair:</p>
+<ol>
+<li>Restart Oqtane.</li>
+<li>Open the affected site.</li>
+<li>Add a 2sxc Content module.</li>
+<li>Verify that the tenant database now contains a matching <code>TsDynDataZone</code> and <code>TsDynDataApp</code> records.</li>
+<li>Verify that new files are created below the expected tenant/site folders.</li>
+</ol>
+<h2 id="related">Related</h2>
+<ul>
+<li><a class="xref" href="install.html">Install Oqtane and 2sxc</a></li>
+<li><a href="https://github.com/2sic/2sxc/issues/3666">GitHub issue 3666</a></li>
+</ul>
+<hr>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/platforms/oqtane/multi-tenancy.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
