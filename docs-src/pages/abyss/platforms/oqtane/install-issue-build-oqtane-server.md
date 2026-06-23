@@ -8,6 +8,23 @@ uid: Abyss.Platforms.Oqtane.Install.IssueBuild
 
 When developing with Oqtane in **developer mode**, you typically run `Oqtane.Server.csproj` by pressing `F5` in Visual Studio. This action builds the project and its dependencies before launching it on IIS Express (`localhost`). However, after installing 2sxc Content and App templates, you might encounter build failures when compiling `Oqtane.Server.csproj`.
 
+The same issue can also happen when creating an Oqtane dev app from the `oqtane-app` template:
+
+```cmd
+dotnet new install Oqtane.Application.Template
+
+mkdir C:\oqtanedemo
+cd C:\oqtanedemo
+
+dotnet new oqtane-app -o OqtaneDemoApp
+cd OqtaneDemoApp
+
+dotnet build
+
+cd Server
+dotnet run
+```
+
 ## Problem Overview
 
 After adding 2sxc templates to your Oqtane project, the Visual Studio build process may fail with numerous errors—sometimes over 1,000—rendering Oqtane unusable in the development environment.
@@ -28,7 +45,8 @@ To resolve the build errors, you need to exclude `2sxc` folder from the compilat
 
 1. **Open `Oqtane.Server.csproj`:**
 
-   Locate the `Oqtane.Server.csproj` file in your project directory and open it with a text editor or within Visual Studio.
+   Locate the server project file (eg `Oqtane.Server.csproj`) in your project directory and open it with a text editor or within Visual Studio.
+   For template-created apps this is usually `Server\YourAppName.Server.csproj`.
 
 1. **Add Exclusion Rules:**
 

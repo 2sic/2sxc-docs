@@ -18,6 +18,12 @@ Because of this you can only install Apps and Content-Templates if **Hot Reload 
 > [!TIP]
 > After installation you can re-enable Hot-Reload as you see fit.
 
+If you start Oqtane from the command line, you can disable Hot Reload for that run:
+
+```cmd
+dotnet run -p:hotreloadenable=false
+```
+
 ## Checklist to Disable Hot Reload Temporarily
 
 <iframe src="https://azing.org/2sxc/r/YUm957D-?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
