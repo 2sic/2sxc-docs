@@ -29,6 +29,14 @@ It's a bit low-tech, but should do the job for now.
 
 ## Previous Versions
 
+### Archive v21.07
+
+<img src="../assets/logos/v21/150.png" width="75px" align="right" class="float-end">
+
+* [Docs v21 Home](https://v21.docs.2sxc.org)
+* <script>document.write('<a target="_blank" href="https://v21.docs.2sxc.org' + path + '">...with original path <code>' + path + '</code></a>');</script>
+
+
 ### Archive v19.03
 
 <img src="../assets/logos/v19/150.png" width="75px" align="right" class="float-end">
