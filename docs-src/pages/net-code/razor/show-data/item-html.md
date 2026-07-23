@@ -1,5 +1,5 @@
 ---
-uid: NetCode.DynamicData.DynamicEntityHtml
+uid: NetCode.Razor.ItemHtml
 ---
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]

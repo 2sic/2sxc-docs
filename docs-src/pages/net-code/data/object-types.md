@@ -19,7 +19,7 @@ There are also some typical data objects for working with file/assets (not docum
 1. **IFile** - see [](xref:ToSic.Sxc.Adam.IFile)
 1. **IFolder** - see [](xref:ToSic.Sxc.Adam.IFolder)
 
-[Dynamic Entities](xref:NetCode.DynamicData.DynamicEntity) are simple, _dynamic_ objects that allow you to write template with any property you believe the data should have, like `@person.FirstName` etc.
+[Dynamic Entities](xref:TODO) are simple, _dynamic_ objects that allow you to write template with any property you believe the data should have, like `@person.FirstName` etc.
 They will automatically pick the right language and do a lot of magic 🧙‍♂️ in the background.
 
 
@@ -51,7 +51,7 @@ As you can see, the internals provide a lot of information about the underlying 
 Each type can be converted to the other type using helpers like [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic), [AsList(...)](xref:NetCode.DynamicCode.AsList) and [AsEntity(...)](xref:NetCode.DynamicCode.AsEntity). The APIs are explained here [](xref:NetCode.DynamicCode.Index).
 
 > [!TIP]
-> In most cases you'll always use [Dynamic Entities](xref:NetCode.DynamicData.DynamicEntity) and if you're not sure whan an object is, just run it through [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic).
+> In most cases you'll always use [Dynamic Entities](xref:TODO) and if you're not sure what an object is, just run it through [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic).
 
 
 ## Conversion Examples
@@ -87,7 +87,7 @@ var entity = AsEntity(Content);
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 
-* [](xref:NetCode.DynamicData.DynamicEntity)
+* [](xref:TODO)
 * [](xref:NetCode.DynamicData.Entity)
 
 ## History

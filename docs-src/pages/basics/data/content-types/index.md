@@ -9,14 +9,12 @@ This explains **Content-Types**. For an overview check out [](xref:Basics.Data.I
 
 ## What is a Content-Type?
 
-Every [Entity](xref:Basics.Data.Entities.Index) (_thing_, _record_ or _object_) in 2sxc has a definition of fields it can have. So a `Book` may have fields like Name, Author, Title etc. 
-The Content-Type will define what fields exist, what is required and what order the fields will appear in when editing the item. 
+Every [Entity](xref:Basics.Data.Entities.Index) (_thing_, _record_ or _object_) in 2sxc has a definition of fields it can have. So a `Book` may have fields like Name, Author, Title etc.
+The Content-Type will define what fields exist, what is required and what order the fields will appear in when editing the item.
 
 > This definition of the _Type_ is called a **Content-Type** and it contains specs as to the exact fields are used and what their field-types are.
-> 
+>
 > Other systems may call this _Schema_, _Object-Type_, _Object-Structure_ or _Table Definition_
-
-[!include["Before you Start"](~/shared/before-you-start-idynamicentity.md)]
 
 ## Where are Content-Types
 
@@ -73,9 +71,9 @@ The Content-Type will define what fields exist, what is required and what order 
 1. You can import the Content-Type into another App using upload or drag-n-drop
 
 > [!IMPORTANT]
-> Exporting the _Content Type Definition_ exports the schema / fields of that type. 
-> 
-> Exporting all the _Items of a Content-Type_ is a table-export of all the data. 
+> Exporting the _Content Type Definition_ exports the schema / fields of that type.
+>
+> Exporting all the _Items of a Content-Type_ is a table-export of all the data.
 
 
 ---
@@ -87,17 +85,21 @@ The Content-Type will define what fields exist, what is required and what order 
 Each content-type has a _Name_, which is nice for a human to read, use and program with. There is a second identifier called _StaticName_ which is usually a GUID, but in rare cases it's a string like `App-Settings`. This identifier is used internally - for example when a View references a Content-Type.
 
 #### Storage
+
 Most Content-Types in your App are stored in the [SQL database](xref:Basics.Data.ContentTypes.SqlStorage).
 System and global Content-Types are stored in the file system. These are called [](xref:Basics.Data.ContentTypes.FileStorage)
 
 #### Field Types
+
 Each field will be of a simple type like _text/string_, _number_, _boolean (yes/no)_ or other. You can find the list of [types here](xref:Basics.Data.Fields.Index).
 
 #### Relationships
+
 Fields can also be of type [Entity](xref:Basics.Data.Fields.Entity) in which case they point to other items. This would then establish a [Relationship](xref:Basics.Data.Relationships.Index)
 
 #### Input Forms and Fields (like WYSIWYG)
-The input mask is automatically generated from the **Content-Type**. Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader. 
+
+The input mask is automatically generated from the **Content-Type**. Based on the specifications, it will generate the correct [Input-Field](xref:Basics.Data.Fields.Index) like a simple text field, a multiline text field, a WYSIWYG or even a file-uploader.
 
 #### Scopes
 

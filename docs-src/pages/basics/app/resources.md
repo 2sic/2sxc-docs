@@ -7,7 +7,7 @@ uid: Basics.App.Resources
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-Every App has a **Resources** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields. 
+Every App has a **Resources** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields.
 
 ## Edit/Configure App Resources
 
@@ -25,15 +25,13 @@ On **3** you can set the values you need
 
 ## Why would you use this?
 
-Many templates may have special labels, intro-texts or buttons which would benefit from simple editing and from multi-language capabilities. This is what the **App Resources** are for. 
+Many templates may have special labels, intro-texts or buttons which would benefit from simple editing and from multi-language capabilities. This is what the **App Resources** are for.
 
 ## Use in C# Code (Razor / WebAPI)
 
-In 2sxc 12.04+ you should use the new `Resources` [Stack object](xref:Basics.Configuration.ResourcesStack) which merges resources from different sources incl. the App Resources. 
+In 2sxc 12.04+ you should use the new `Resources` [Stack object](xref:Basics.Configuration.ResourcesStack) which merges resources from different sources incl. the App Resources.
 See [Resources C# Docs](xref:NetCode.DynamicCode.Objects.Resources).
 
-
-In previous version you can access it on the `App.Resources` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Resources.Introduction`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
 ## Use in Token Templates
 

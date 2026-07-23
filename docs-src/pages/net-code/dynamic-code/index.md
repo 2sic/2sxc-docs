@@ -23,7 +23,7 @@ The following APIs are available on all 2sxc **Dynamic Code**. You can use this 
 
 ## Instance Data in Dynamic Code
 
-[!include[""](../dynamic-data/_include-data-origins.md)]
+[!include[""](../data/_include-data-origins.md)]
 
 [!include["List of Data Context Objects"](../dynamic-code/_include-instance-data.md)]
 

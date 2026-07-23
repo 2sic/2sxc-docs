@@ -35,7 +35,7 @@ The complete **App Data** is _always_ available in these objects:
 
 ## Instance Data
 
-[!include[""](../dynamic-data/_include-data-origins.md)]
+[!include[""](./_include-data-origins.md)]
 
 
 If the [View](xref:Basics.App.Views.Index) is configured for manual content-editing or uses a [Query](xref:Basics.Query.Index) then

@@ -22,19 +22,19 @@ Common examples in [Razor-templates](xref:NetCode.Razor.Component) are:
 
 ## How to use
 
-The most commen uses will loop through all items in such a stream and show them. Here's an example:
+The most common uses will loop through all items in such a stream and show them. Here's an example:
 
 ```cs
 <ol>
-  @foreach(var person in Data["Default"]){
+  @foreach(var person in MyData["Default"]){
     <li>@AsDynamic(person).FullName</li>
   }
 </ol>
 ```
 
-The `@foreach` will go through all the items. Each item is of the type [IEntity](xref:NetCode.DynamicData.Entity). To make it easier to template, we convert it to a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) using [`AsDynamic`](xref:NetCode.DynamicCode.AsDynamic) and then we can just show the name with `.FullName`.
+The `@foreach` will go through all the items. Each item is of the type [IEntity](xref:NetCode.DynamicData.Entity). To make it easier to template, we convert it to a [Dynamic Entity](xref:TODO) using [`AsDynamic`](xref:TODO) and then we can just show the name with `.FullName`.
 
-In most cases we will need the loop-item a lot, and would preferr to not write `AsDynamic` every time. Because of this, we usually write the [`AsList`](xref:NetCode.DynamicCode.AsList) in the Loop, like this:
+In most cases we will need the loop-item a lot, and would prefer to not write `AsDynamic` every time. Because of this, we usually write the [`AsList`](xref:NetCode.DynamicCode.AsList) in the Loop, like this:
 
 ```cs
 <ol>

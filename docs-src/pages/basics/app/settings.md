@@ -7,7 +7,7 @@ uid: Basics.App.Settings
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .data-configuration { visibility: visible; }</style>
 
-Every App has a **Settings** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields. 
+Every App has a **Settings** Entity. The fields available can be anything your App needs, so there is no pre-defined set of fields.
 
 ## Edit/Configure App Settings
 
@@ -26,7 +26,7 @@ On **3** you can set the values you need
 
 ## Why would you use this?
 
-Imagine a Gallery App where each instance (Module) has settings like animation speed. You would place the default values in the **App Settings** so that by default all instances would behave the same, and you can still change this in one central location. 
+Imagine a Gallery App where each instance (Module) has settings like animation speed. You would place the default values in the **App Settings** so that by default all instances would behave the same, and you can still change this in one central location.
 
 ## Example from the Content App
 
@@ -37,16 +37,14 @@ In newer versions, the Content-App has some App-Settings to store
 
 ## Difference App Configuration / App Settings
 
-The [](xref:Basics.App.Configuration) is a system Entity and 2sxc needs it for the App to work properly. 
+The [](xref:Basics.App.Configuration) is a system Entity and 2sxc needs it for the App to work properly.
 
-The [](xref:Basics.App.Settings) can contain any information you configure it to have, and the values are only used in the App itself. 
+The [](xref:Basics.App.Settings) can contain any information you configure it to have, and the values are only used in the App itself.
 
 ## Use in C# Code (Razor / WebAPI)
 
-In 2sxc 12.04+ you should use the new `Settings` [Stack](xref:Basics.Configuration.SettingsStack) object which stacks settings from different sources incl. the App Settings. 
+In 2sxc 12.04+ you should use the new `Settings` [Stack](xref:Basics.Configuration.SettingsStack) object which stacks settings from different sources incl. the App Settings.
 See [Settings C# Docs](xref:NetCode.DynamicCode.Objects.Settings).
-
-In previous version you can access it on the `App.Settings` [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity), like `App.Settings.AnimationSpeed`. Check out the [App API docs](xref:NetCode.DynamicCode.Objects.App.Index)
 
 ## Use in Token Templates
 
@@ -62,11 +60,11 @@ _The new v12 Settings-Stack is not available in Visual Query. If you think you n
 
 ## Using Settings in Multi-Language Scenarios
 
-Settings are normal Entities, and as such can be multi-language. We strongly recommend to limit the use of multi-language settings, as it can often lead to unexpected results. 
+Settings are normal Entities, and as such can be multi-language. We strongly recommend to limit the use of multi-language settings, as it can often lead to unexpected results.
 
 ## Don't Use Settings for Labels
 
-Remember to use [](xref:Basics.App.Resources) for button-labels, titles etc. and not Settings, as this would confuse the users. 
+Remember to use [](xref:Basics.App.Resources) for button-labels, titles etc. and not Settings, as this would confuse the users.
 
 ---
 

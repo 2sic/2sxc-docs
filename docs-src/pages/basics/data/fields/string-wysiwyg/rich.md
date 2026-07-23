@@ -12,7 +12,7 @@ When this configuration is set, it will:
     1. add splitters to reset content alignments after the splitter
     1. add spacers to create gaps of various sizes in content
     1. specify resizing using css-classes for the server-side image-resizing
-1. Allow the razor [.Html(...)](xref:NetCode.DynamicData.DynamicEntityHtml) to
+1. Allow the razor [.Html(...)](xref:NetCode.Razor.ItemHtml) to
     1. automatically resize images
     1. make all images responsive using `<picture>` tags
     1. automatically add spacers
@@ -21,7 +21,7 @@ To make all this happen it needs this:
 
 1. The new [mode setting](xref:Basics.Data.Fields.String-Wysiwyg)
 1. The new behavior in the Edit UI
-1. The new [.Html(...)](xref:NetCode.DynamicData.DynamicEntityHtml) API
+1. The new [.Html(...)](xref:NetCode.Razor.ItemHtml) API
 1. Internal server-side code to find the images and replace them with responsive `<picture>` tags
 1. Special CSS to make it all work (see below)
 1. A special `debug` mode to help you in optimizing the CSS for your use case (see below)
@@ -53,7 +53,7 @@ This allows you to change the alignment (left/right) and to specify the size of 
 >
 > In this new **Rich** mode, it will only set CSS classes like `wysiwyg-left` or `wysiwyg-50`.
 > So the final output will only change, if the CSS definition exists.
-> This happens automatically, when you use the [.Html(...) method](xref:NetCode.DynamicData.DynamicEntityHtml).
+> This happens automatically, when you use the [.Html(...) method](xref:NetCode.Razor.ItemHtml).
 
 ## CSS
 

@@ -38,7 +38,7 @@ The app-object uses the `IApp` interface ([see code](xref:ToSic.Sxc.Apps.IApp)) 
 
 1. `AppId` number, current App id
 2. `AppGuid` guid, internal use global id
-3. `Configuration` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), contains the [configuration content-item](xref:Feat.AppConfig)
+3. `Configuration` [DynamicEntity](xref:TODO), contains the [configuration content-item](xref:Feat.AppConfig)
 4. [Data](xref:NetCode.DynamicCode.Objects.App.Data) IAppData, to access all App-data (see below)
 5. `Folder` string, storage folder name in portal/#/2sxc/...
 6. `Hidden` bool, info if the app cannot be selected in the UIs
@@ -46,8 +46,8 @@ The app-object uses the `IApp` interface ([see code](xref:ToSic.Sxc.Apps.IApp)) 
 8. `Path` string, the path as used in URLs in  html
 9. `PhysicalPath` string, the path as used on the server C:\...
 10. [Query["QueryName"]](xref:NetCode.DynamicCode.Objects.App.Query) dictionary of queries (see below)
-11. `Resources` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), all the multi-language labels etc. (see below)
-12. `Settings` [DynamicEntity](xref:NetCode.DynamicData.DynamicEntity), all the app-settings (see below)
+11. `Resources` [DynamicEntity](xref:TODO), all the multi-language labels etc. (see below)
+12. `Settings` [DynamicEntity](xref:TODO), all the app-settings (see below)
 13. `ZoneId` number, current Zone ID (similar to PortalId)
 
 

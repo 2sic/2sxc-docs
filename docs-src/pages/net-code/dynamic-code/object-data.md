@@ -2,6 +2,7 @@
 uid: NetCode.DynamicCode.Data
 ---
 # Data / @Data in Dynamic Code
+
 ## What is _Data_
 
 A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (Razor, Token or a web service) together with some content-items which should be used in this case. These content-items are provided to the code in an object called `Data`.
@@ -20,23 +21,24 @@ A 2sxc instance is a running _2sxc-engine_ which is about to execute some code (
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
 
 ## Most common way to use the Data object
-In all Razor-templates and also the web-api files, the `Data` object is already created and ready to access. Here's a code example:
+
+In all Razor-templates and also the web-api files, the `MyItems` object is already created and ready to access. Here's a code example:
 
 ```razor
 <div class="app-blog">
-    @foreach(var post in AsList(Data))
+    @foreach(var post in MyItems)
     {
         // do something with the @post here
     }
 </div>
 ```
 
-* the foreach will loop through all items of the data in the _Stream_ **Default** - read more about streams below
-* the var post is the inner variable containing the current item
-* the AsDynamic will ensure that the items we're working with are easy to code with, because they are [Dynamic Entities](xref:NetCode.DynamicData.DynamicEntity)
+* the `foreach` will loop through all items of the data in the _Stream_ **Default** - read more about streams below
+* the var `post` is the inner variable containing the current item
 
 
 ## The Streams in a Data Object
+
 The data object can have multiple _Streams_, each containing a list of items. In most cases you'll just have the _Default_ stream, which you can access using `Data["Default"]`. Read more about streams in the [Stream docs](xref:ToSic.Eav.DataSource.IDataStream)
 
 But you may also have additional streams, depending on what has been configured in the data-preparation stuff (usually a VisualQuery). For example, if you are working on a view showing one product and a menu with all possible categories, then your query may have these streams:
@@ -60,6 +62,7 @@ var cats = AsList(Data["Categories"]);                  // returns an IEnumerabl
 
 
 ## Changing what is provided by Data
+
 The main configuration of the template will determine, what data is initially provided to the template.
 Afterwards, other mechanisms can override / change this.
 
@@ -72,6 +75,7 @@ Afterwards, other mechanisms can override / change this.
 
 
 ## Data Object API
+
 The `Data` object itself is actually a normal [EAV IDataSource](xref:ToSic.Eav.DataSource.IDataSource). So if you need to know more about the internals, read it up there.
 
 All other properties of the Data object are very special use only, so you probably shouldn't bother about them - which is why they are not documented here.

@@ -4,13 +4,13 @@ uid: NetCode.DynamicCode.Content
 
 # Content / @Content Object
 
-The **Content** is a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity) in all Dynamic Code (Razor and WebAPI). 
+The **Content** is a [Dynamic Entity](xref:TODO) in all Dynamic Code (Razor and WebAPI).
 
 It contains the content-item assigned to this template. If the View is a list, then **Content** contains the first item in the list. Note that if the View is configured to be a list, then it may also have a [Header](xref:NetCode.DynamicCode.Header).
 
 ⚡ The [official API docs](xref:Custom.Hybrid.Razor12.Content).
 
-Since it's a Dynamic Entity it carries all values as properties, like `Content.Link` etc. 
+Since it's a Dynamic Entity it carries all values as properties, like `Content.Link` etc.
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
@@ -26,7 +26,7 @@ Since it's a Dynamic Entity it carries all values as properties, like `Content.L
 
 ## Content.Presentation
 
-Depending on the view configuration the **Content** can carry additional presentation information, for example how to format the title etc. This is available on `Content.Presentation`. The **Presentation** object is also a [Dynamic Entity](xref:NetCode.DynamicData.DynamicEntity). 
+Depending on the view configuration the **Content** can carry additional presentation information, for example how to format the title etc. This is available on `Content.Presentation`. The **Presentation** object is also a [Dynamic Entity](xref:TODO).
 
 ```razor
 <div class="@Content.Presentation.Highlight">
@@ -36,7 +36,7 @@ Depending on the view configuration the **Content** can carry additional present
 
 ## Demo Data
 
-Note that the View can be configured to contain demo data for both the **Content** as well as the **Content.Presentation**. In this case your template will receive data to show even if the editor has not added anything. 
+Note that the View can be configured to contain demo data for both the **Content** as well as the **Content.Presentation**. In this case your template will receive data to show even if the editor has not added anything.
 
 ## History
 
