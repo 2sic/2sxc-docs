@@ -4,7 +4,7 @@ uid: NetCode.DynamicCode.AsEntity
 # AsEntity(...) - Get the Underlying Data
 
 In most Razor and WebAPIs you will prefer to use Dynamic Entities allowing you to easily write code like `@Content.FirstName`.
-But in rare cases where you have a [](xref:ToSic.Sxc.Data.IDynamicEntity) and want to access the real underlying [](xref:ToSic.Eav.Data.IEntity) in it's full complexity.
+But in rare cases where you have a [](xref:ToSic.Sxc.Data.ITypedItem) and want to access the real underlying [](xref:ToSic.Eav.Data.IEntity) in it's full complexity.
 This is where `AsEntity(...)` is used.
 
 ⚡ The [official API docs](xref:Custom.Hybrid.Razor12.AsEntity*).
@@ -12,7 +12,7 @@ This is where `AsEntity(...)` is used.
 > [!TIP]
 > `AsEntity(...)` reverses what `AsItem(...)` does.
 
-If you have an object or you're not sure if it's either an [](xref:ToSic.Eav.Data.IEntity)  or a [](xref:ToSic.Sxc.Data.IDynamicEntity), just pass it to `AsEntity(...)` and it will detect either one.
+If you have an object or you're not sure if it's either an [](xref:ToSic.Eav.Data.IEntity)  or a [](xref:ToSic.Sxc.Data.ITypedItem), just pass it to `AsEntity(...)` and it will detect either one.
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]

@@ -8,7 +8,7 @@ uid: NetCode.DynamicData.Entity
 # Entity Objects
 
 All content-items in the **EAV** database of 2sxc are internally handled as `Entity` objects with the interface `IEntity`.
-When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a [](xref:ToSic.Sxc.Data.IDynamicEntity).
+When using content-items in Razor-Templates and WebAPIs you usually don't care about this, as you will use it as a [](xref:ToSic.Sxc.Data.ITypedEntity) or a strongly typed object from `AppCode`.
 
 But there are some advanced cases where you need to look deeper into the object - maybe to check if a translation exists in another language, or if the value is blank because it's null, or an empty string.
 In this case you'll need to look at the internals, the `IEntity`.

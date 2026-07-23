@@ -26,7 +26,7 @@ You can usually ignore this.
 
 On top of the _EAV_ layer we have the **Sxc** layer.
 It's responsible for _Content Management_ on top of the _App_ model provided by the _EAV_.
-The _Sxc_ layer provides things like [](xref:ToSic.Sxc.Data.IDynamicEntity) to let you code like `@Content.Title`.
+The _Sxc_ layer provides things like [](xref:ToSic.Sxc.Data.ITypedEntity) to let you code like `@Content.Title`.
 This is usually more interesting for you, but still fairly generic, because 2sxc is also meant to work with other
 platforms like NopCommerce, Orchard or Oqtane, but it hasn't been implemented yet.
 
