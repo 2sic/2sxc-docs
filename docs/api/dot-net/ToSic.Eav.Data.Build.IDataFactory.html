@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Data_Build_IDataFactory.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.Build.IDataFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/feature/raw-entity-v22/apiSpec/new?filename=ToSic_Eav_Data_Build_IDataFactory.md&amp;value=---%0Auid%3A%20ToSic.Eav.Data.Build.IDataFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Eav_Data_Build_IDataFactory" data-uid="ToSic.Eav.Data.Build.IDataFactory" class="text-break">
-Interface IDataFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Interface IDataFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -122,7 +122,7 @@ In many cases it will also take care of auto increasing the id and more.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
-public interface IDataFactory</code></pre>
+public interface IDataFactory : IServiceWithSetup&lt;DataFactoryOptions&gt;</code></pre>
   </div>
 
 
@@ -131,6 +131,13 @@ public interface IDataFactory</code></pre>
 
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.IServiceWithSetup-1.html#ToSic_Sys_Services_IServiceWithSetup_1_Setup__0_">IServiceWithSetup&lt;DataFactoryOptions&gt;.Setup(DataFactoryOptions)</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -138,6 +145,7 @@ public interface IDataFactory</code></pre>
   <h2 id="ToSic_Eav_Data_Build_IDataFactory_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><ul>
 <li>Added in v15 to replace the previous IDataBuilder</li>
+<li>v22 changed some internals to be more flexible, assume not intensively used so no issues expected</li>
 </ul>
 </div>
 
@@ -150,7 +158,7 @@ public interface IDataFactory</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_IDataFactory_IdCounter" data-uid="ToSic.Eav.Data.Build.IDataFactory.IdCounter">
   IdCounter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A counter for the ID in case the data provided doesn't have an ID to use.
@@ -183,7 +191,7 @@ Default is <code>1</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_IDataFactory_Relationships" data-uid="ToSic.Eav.Data.Build.IDataFactory.Relationships">
   Relationships
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>TODO:</p>
@@ -219,7 +227,7 @@ Default is <code>1</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_IDataFactory_Create_System_Collections_Generic_IDictionary_System_String_System_Object__System_Int32_System_Guid_System_DateTime_System_DateTime_ToSic_Eav_Data_Sys_Entities_EntityPartsLazy_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Create(System.Collections.Generic.IDictionary{System.String,System.Object},System.Int32,System.Guid,System.DateTime,System.DateTime,ToSic.Eav.Data.Sys.Entities.EntityPartsLazy)">
   Create(IDictionary&lt;string, object?&gt;, int, Guid, DateTime, DateTime, EntityPartsLazy?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a single entity based on values passed in.</p>
@@ -264,9 +272,9 @@ Default is <code>1</code></p>
 
   <a id="ToSic_Eav_Data_Build_IDataFactory_Create_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Create*"></a>
 
-  <h3 id="ToSic_Eav_Data_Build_IDataFactory_Create_ToSic_Eav_Data_Raw_Sys_IRawEntity_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Create(ToSic.Eav.Data.Raw.Sys.IRawEntity)">
-  Create(IRawEntity)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_Data_Build_IDataFactory_Create_ToSic_Eav_Data_Raw_Sys_IConvertibleToRawEntity_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Create(ToSic.Eav.Data.Raw.Sys.IConvertibleToRawEntity)">
+  Create(IConvertibleToRawEntity)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an entity from a single <span class="xref">ToSic.Eav.Data.Raw.Sys.IRawEntity</span></p>
@@ -274,12 +282,12 @@ Default is <code>1</code></p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEntity Create(IRawEntity rawEntity)</code></pre>
+    <pre><code class="lang-csharp hljs">IEntity Create(IConvertibleToRawEntity item)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>rawEntity</code> <span class="xref">IRawEntity</span></dt>
+    <dt><code>item</code> <span class="xref">IConvertibleToRawEntity</span></dt>
     <dd></dd>
   </dl>
 
@@ -303,7 +311,7 @@ Default is <code>1</code></p>
 
   <h3 id="ToSic_Eav_Data_Build_IDataFactory_Create__1_System_Collections_Generic_IEnumerable___0__" data-uid="ToSic.Eav.Data.Build.IDataFactory.Create``1(System.Collections.Generic.IEnumerable{``0})">
   Create&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a complete list of <span class="xref">ToSic.Eav.Data.Raw.Sys.IRawEntity</span>s.
@@ -313,7 +321,7 @@ This is the method to use when you don't plan on doing any post-processing.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IImmutableList&lt;IEntity&gt; Create&lt;T&gt;(IEnumerable&lt;T&gt; list) where T : IRawEntity</code></pre>
+    <pre><code class="lang-csharp hljs">IImmutableList&lt;IEntity&gt; Create&lt;T&gt;(IEnumerable&lt;T&gt; list) where T : class, IConvertibleToRawEntity</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -333,130 +341,6 @@ This is the method to use when you don't plan on doing any post-processing.</p>
     <dt><code>T</code></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Data_Build_IDataFactory_Prepare_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Prepare*"></a>
-
-  <h3 id="ToSic_Eav_Data_Build_IDataFactory_Prepare__1_System_Collections_Generic_IEnumerable___0__" data-uid="ToSic.Eav.Data.Build.IDataFactory.Prepare``1(System.Collections.Generic.IEnumerable{``0})">
-  Prepare&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L105"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>This will create IEntity but return it in a dictionary mapped to the original.
-This is useful when you intend to do further processing and need to know which original matches the generated entity.</p>
-<p>IMPORTANT: WIP
-THIS ALREADY RUNS FullClone, so the resulting IEntities are properly modifiable and shouldn't be cloned again</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IList&lt;EntityPair&lt;T&gt;&gt; Prepare&lt;T&gt;(IEnumerable&lt;T&gt; list) where T : IRawEntity</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="ToSic.Eav.Data.Sys.EntityPair.EntityPair-1.html">EntityPair</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Data_Build_IDataFactory_Prepare_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Prepare*"></a>
-
-  <h3 id="ToSic_Eav_Data_Build_IDataFactory_Prepare__1___0_" data-uid="ToSic.Eav.Data.Build.IDataFactory.Prepare``1(``0)">
-  Prepare&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>For objects which themselves are <span class="xref">ToSic.Eav.Data.Raw.Sys.IRawEntity</span></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EntityPair&lt;T&gt; Prepare&lt;T&gt;(T rawEntity) where T : IRawEntity</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>rawEntity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="ToSic.Eav.Data.Sys.EntityPair.EntityPair-1.html">EntityPair</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="ToSic_Eav_Data_Build_IDataFactory_WrapUp_" data-uid="ToSic.Eav.Data.Build.IDataFactory.WrapUp*"></a>
-
-  <h3 id="ToSic_Eav_Data_Build_IDataFactory_WrapUp_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_ICanBeEntity__" data-uid="ToSic.Eav.Data.Build.IDataFactory.WrapUp(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.ICanBeEntity})">
-  WrapUp(IEnumerable&lt;ICanBeEntity&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L116"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Finalize the work of building something, using prepared materials.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IImmutableList&lt;IEntity&gt; WrapUp(IEnumerable&lt;ICanBeEntity&gt; rawList)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>rawList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.ICanBeEntity.html">ICanBeEntity</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.iimmutablelist-1">IImmutableList</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
 
 
 
@@ -471,7 +355,7 @@ THIS ALREADY RUNS FullClone, so the resulting IEntities are properly modifiable 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/feature/raw-entity-v22/ToSic.Eav.Data.Build/Data.Build/Factory/IDataFactory.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
 
