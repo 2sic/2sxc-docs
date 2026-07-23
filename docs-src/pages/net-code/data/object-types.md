@@ -48,10 +48,10 @@ As you can see, the internals provide a lot of information about the underlying 
 
 ## Conversion
 
-Each type can be converted to the other type using helpers like [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic), [AsList(...)](xref:NetCode.DynamicCode.AsList) and [AsEntity(...)](xref:NetCode.DynamicCode.AsEntity). The APIs are explained here [](xref:NetCode.DynamicCode.Index).
+Each type can be converted to the other type using helpers like [AsDynamic(...)](xref:TODO), [AsList(...)](xref:TODO) and [AsEntity(...)](xref:NetCode.DynamicCode.AsEntity). The APIs are explained here [](xref:NetCode.DynamicCode.Index).
 
 > [!TIP]
-> In most cases you'll always use [Dynamic Entities](xref:TODO) and if you're not sure what an object is, just run it through [AsDynamic(...)](xref:NetCode.DynamicCode.AsDynamic).
+> In most cases you'll always use [Dynamic Entities](xref:TODO) and if you're not sure what an object is, just run it through [AsDynamic(...)](xref:TODO).
 
 
 ## Conversion Examples

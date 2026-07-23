@@ -62,7 +62,7 @@ In your code you'll usually work with these three sources which have been prepar
 1. [App.Data](xref:NetCode.DynamicCode.Objects.App.Data)
 1. [App.Query[...]](xref:NetCode.DynamicCode.Objects.App.Query)
 
-If all you want is to loop through various lists already available, you'll usually work with [AsList](xref:NetCode.DynamicCode.AsList) like this:
+If all you want is to loop through various lists already available, you'll usually work with [AsList](xref:TODO) like this:
 
 ```razor
 @foreach(var item in AsList(Data)) {
