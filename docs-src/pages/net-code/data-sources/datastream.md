@@ -54,9 +54,8 @@ Just a few more details you might care about:
 
 1. The stream has a property `Source` which points to the owning [DataSource](xref:NetCode.DataSources.DataSource).
 1. a stream might be attached to many targets for further processing or for templating, but the stream doesn't know about this
-1. you can always looup through items on the stream itself using LINQ, like  
-    `var blues = Data["Default"].Where(x => AsDynamic(x).Category == "Blue"))`  
-    see also [](xref:NetCode.Data.Linq.Index)
+1. you can always loop through items on the stream itself using LINQ, like  
+    `var blues = App.Data.GetStream("Default").Where(x => x.String("Category") == "Blue")`
 
 of course there's always quite a bit more to it, like auto-caching, but you usually don't need to understand all that.  
 

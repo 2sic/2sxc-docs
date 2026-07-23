@@ -15,7 +15,7 @@ You can get any value using one of the following:
 * the `Get()` method with a fallback value like `Content.Get("FirstName", fallback: "John")`
 * the typed `Get<T>()` method like `Content.Get<string>("FirstName")`
 
-👉 also read about [](xref:NetCode.DynamicCode.AsDynamic)
+<!-- 👉 also read about [](xref:NetCode.DynamicCode.AsDynamic) -->
 
 [!include[""](./_include-dyn-ent-sample.md)]
 

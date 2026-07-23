@@ -9,11 +9,11 @@ uid: NetCode.DynamicData.DynamicEntity
 
 Whenever you create a content-type - like _Person_ - and want to work with the data in your C# Razor templates, you'll be working with a _Dynamic Entity_.
 
-👉 also read about [](xref:NetCode.DynamicCode.AsDynamic)
+<!-- 👉 also read about [](xref:NetCode.DynamicCode.AsDynamic) -->
 
 [!include[""](./_include-dyn-ent-sample.md)]
 
-👉 more about this on [](xref:NetCode.DynamicData.DynamicEntityProperties)
+<!-- 👉 more about this on [](xref:NetCode.DynamicData.DynamicEntityProperties) -->
 
 ## Working with unpublished/draft items
 

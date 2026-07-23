@@ -66,7 +66,7 @@ But these don't allow you to just access a property, so you'll have to use `AsLi
 
 Whenever you create a content-type - like _Person_ - and want to work with the data in your C# Razor templates, you'll be working with a _Dynamic Entity_.
 
-👉 also read about [](xref:NetCode.DynamicCode.AsDynamic)
+<!-- 👉 also read about [](xref:NetCode.DynamicCode.AsDynamic) -->
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]
