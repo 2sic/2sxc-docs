@@ -56,9 +56,10 @@ For this to work we want:
 
 Allow for specifying specs of the content-type definition using these attributes:
 
-1. `ContentTypeSpecs` - for the content-type itself, for example to set the name, global identifier etc.
-1. `ContentTypeAttributeSpecs` - for the attributes of the content-type, for example to set the description, is-title etc.
-1. `ContentTypeAttributeIgnore` - to exclude internal object properties from being included in the content-type definition
+1. `[ContentType]` - for the content-type itself, for example to set the name, global identifier etc.
+1. `[ContentTypeField]` - for the attributes of the content-type, for example to set the description, is-title etc.
+1. `[ContentTypeIgnore]` - to exclude object properties in the content-type definition
+1. `[ContentTypeAssign]` - to specify that a raw object should be assigned another content-type from an interface or another class/record.
 
 These specs are mainly needed for certain serialization activities (such as `IsTitle` information) and for detecting the type (like when converting back to models later on).
 
@@ -68,15 +69,22 @@ These will also be treated as if they were classes/records, without any decorati
 The content-type will be generated based on the properties of the anonymous type.
 It will also cache the type, for future re-use, since these will usually be created again (anonymous types in C# are actually real types).
 
-## Maturity of the System as of 2026-07
+## Maturity of the System as of 2026-07-24 (2dm)
 
+1. Descriptions work with
+    1. No attributes at all (automatic defaults)
+    1. With `[ContentType]` and `[ContentTypeField]` attributes
+    1. Also on special properties such as `Id`, `Guid`, `Created`, `Modified` (added as special decorator `ContentTypeBuiltInAttributesDecorator` to the content-type)
+1. Ignore attribute works using `[ContentTypeIgnore]` attribute
 1. Builder can build from
     1. Anything with or without specs attributes
     1. classes (verified and has unit tests)
     1. records (verified and has unit tests)
     1. interfaces (verified and has unit tests)
+    1. all of the above having a `[ContentTypeAssign]` attribute to assign a different content-type (verified and has unit tests)
     1. anonymous - only without specs attributes (verified and has unit tests)
 1. Caching is working
+1. internal properties such as `Id` etc. are excluded in the content-type definition
 1. Test coverage for all these features and combinations
 
 > [!TIP]

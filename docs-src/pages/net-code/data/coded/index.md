@@ -33,32 +33,19 @@ See [](xref:NetCode.Data.Coded.ContentTypes)
 
 ## Step 2: Conversion of Data to Entities
 
-This is used both for providing internal data through the DataSource system
-and for custom DataSources which will provide new data to an application.
+See [](xref:NetCode.Data.Coded.Entities)
 
-There are a few ways this can happen:
 
-1. Either the data object (class/record) implements `IRawEntity` and provides the necessary information itself
-2. Or it provides a converter using TODO
-3. Or it's just a plain object and is converted using reflection (which is more time consuming)
 
-TODO: document the RawEntity, the conversion, standardize naming etc.
+## Notes (Chaotic)
 
-Internally this is done by 2 important components:
+### Scenarios
 
-1. The `IDataFactory` which can handle IRawEntity and Conversion objects and convert them to entities
-1. The `CustomDataSource` which can also convert anonymous objects
+1. Data to Entities only --> `Raw` or `anonymous` or object w/`IRawEntityConvertible`; optionally with `[ContentType]` attribute
+1. Entities to Model only --> `X...FromEntityModel` w/matching ID/Name???
+1. Data to Entities to Model
 
-TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.
 
-## Step 2 Bonus: Content-Type Assignment to Converted Data
+### Necessary C# Attributes
 
-To make future back-conversions to models easier and better,
-it's often important that generated data
-knows what content-type it came from - so that `User` data is not confused with `Site` data.
-
-Objects which implement `IRawEntity` or the `Conversion` can also specify which coded-content-type they are associated with, so that the system can use the correct content-type for the entity.
-If it is not specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.
-Even anonymous object definitions will be cached, as anonymous objects are still strongly typed.
-
-TODO: explain how etc. finalize naming etc.
+1. `[ModelSpecs]` - for the model itself, for example to set the name, global identifier etc.
