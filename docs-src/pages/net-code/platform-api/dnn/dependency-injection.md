@@ -8,7 +8,7 @@ Since Dnn 9.4, Dependency Injection is built in.
 It's still fairly basic, so there are some hoops to jump through, but for now it's the recommended way to work with this.
 
 > [!TIP]
-> Andrew Hoefling wrote a [comprehensive guide how to use Dependency Injection in Dnn](https://www.andrewhoefling.com/Blog/Post/dnn-dependency-injection).
+> DNN Docs contains a [comprehensive guide how to use Dependency Injection in Dnn]([https://www.andrewhoefling.com/Blog/Post/dnn-dependency-injection](https://docs.dnncommunity.org/content/getting-started/development/fundamentals/dependency-injection/index.html)).
 
 > [!IMPORTANT]
 > You need Dnn 9.4+ for these examples to work.
