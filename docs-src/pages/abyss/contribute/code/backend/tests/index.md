@@ -20,45 +20,6 @@ On 2sxc and the EAV project we strive to have many unit tests, but as always it'
 One of the challenges is also that some of the tests were written when we were less experienced, so we would do it better today.
 So if you do review some tests, note that they may not use the latest best practices.
 
-## Desired Setup and Conventions
-
-As of 2025-03 we to use xUnit for all our unit tests.
-
-This is how we set it up:
-
-1. Every project has one or more separate Tests project. Advanced scenarios need own projects, simple scenarios can share a project.  
-   Example: `ToSic.Lib.Core` has
-    1. `ToSic.Lib.Core.Tests` - general tests
-    1. `ToSic.Lib.DI.Tests` - specific tests which require a DI setup
-1. If necessary, some projects also have a `...TestHelper` project containing shared test code for this project and other projects which build on it.  
-   Example: `ToSic.Eav.DataSources` has a `ToSic.Eav.DataSource.TestHelpers` project which is _not_ a unit-test project.
-    1. Test helpers can contain **TestAccessors** which are static methods matching the original method but ending in `...Tac` (for Test Accessor).
-    These methods are used to access internal methods for testing. We need them to reduce the method-access count, as otherwise methods which are not in use any more have a large access count.
-
-## Standard xUnit CSProj
-
-Here's a standard xUnit project file:
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFrameworks>net9.0;net472</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>preview</LangVersion>
-    <Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
-    <!-- <RootNamespace>ToSic.Eav.Data</RootNamespace> -->
-  </PropertyGroup>
-
-  <!-- specific stuff -->
-</Project>
-```
-
-1. Test projects should set nullable to `<Nullable>enable</Nullable>`
-1. Test projects should use c# latest `<LangVersion>preview</LangVersion>`
-1. Test projects should set `<ImplicitUsings>enable</ImplicitUsings>` [See implicit usings](https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/#implicit-usings)
-
 
 ## Tracing / Logging Test Data
 
