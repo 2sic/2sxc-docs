@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Coded Data Creation of Entities WIP v22 | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Coded Data Creation of Entities WIP v22 | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/entities.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="NetCode.Data.Coded.Entities">
+<h1 id="coded-data-creation-of-entities-wip-v22">Coded Data Creation of Entities WIP v22</h1>
+
+<div class="TIP">
+<h5>Tip</h5>
+<p>This section is a work in progress for Coded Data in 2sxc v22.</p>
+</div>
+<h2 id="background">Background</h2>
+<p>Often data is provided as a POCO object (class or record) and needs to be converted to an entity for further processing.</p>
+<p>This is used both for providing internal data through the DataSource system
+and for custom DataSources which will provide new data to an application.</p>
+<h2 id="three-common-ways-this-happens">Three Common Ways This Happens</h2>
+<ol>
+<li><p>Either the data object (class/record) implements <code>IRawEntity</code> and provides the necessary information itself</p>
+</li>
+<li><p>Or it provides a converter using <code>IRawEntityConvertible</code> which provides a <code>IRawEntityConverter</code> on the <code>GetConverter()</code> method,
+which will then be used to convert the object to an entity</p>
+</li>
+<li><p>Or it's just a plain object and is converted using reflection (which is more time consuming)</p>
+</li>
+</ol>
+<p>Bonus: Advanced way</p>
+<p>Conversion of data to Entities can also be done by calling a <code>Create()</code> method on the <code>IDataFactory</code> providing it
+with a dictionary of values. This is not common in external code, but often is a quick way to create Entities.</p>
+<p>TODO: document the RawEntity, the conversion, standardize naming etc.</p>
+<p>Internally this is done by 2 important components:</p>
+<ol>
+<li>The <code>IDataFactory</code> which can handle <code>IRawEntity</code> and conversion objects and convert them to entities</li>
+<li>The <code>CustomDataSource</code> which can also convert anonymous objects</li>
+</ol>
+<p>TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.</p>
+<h2 id="core-conversion">Core Conversion</h2>
+<p>Basically any <code>IRawEntity</code> (which automatically is a <code>IRawEntitySource</code>) will implement</p>
+<ol>
+<li>Identifiers: <code>Id</code> and <code>Guid</code></li>
+<li>Dates: <code>Created</code>, <code>Modified</code></li>
+<li>Values (dictionary)</li>
+</ol>
+<p>On the other hand, any <code>IRawEntityConvertible</code> will provide a converter through the <code>GetConverter()</code> method.
+This returns an <code>IRawEntityConverter</code> responsible for the conversion.
+It will return an <code>IRawEntity</code> which will then be processed as above.</p>
+<h2 id="relationships-connecting-data">Relationships Connecting Data</h2>
+<p>Relationships are quite complex, as the final object should have direct access to children and parents.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Since the entities are still being constructed,
+and the relationship should point to the final entity,
+we need to use keys to reference each other during the creation process.</p>
+</div>
+<p>For this to work, we need</p>
+<ol>
+<li>The ability to provide <strong>own keys</strong> which can be referenced by other objects</li>
+<li>The ability to <strong>reference</strong> other objects using <strong>keys</strong></li>
+<li>During creation, things that reference each other must be processed together (see details later)
+so when the creation is complete, they are mapped to each other.</li>
+</ol>
+<h3 id="rel-1-providing-relationship-keys">Rel #1: Providing Relationship Keys</h3>
+<p>A raw entity can <em>optionally</em> implement <code>IRelationshipKeys</code> to provide keys it will be referenced by.
+For this it must implement a property <code>RelationshipKeys</code> which is an <code>IEnumerable&lt;object&gt;?</code>.</p>
+<p>The keys are of type <code>object</code>, so they can be numbers, strings or even made-up paths such as <code>file/4234</code>.
+The paths concept helps to reference entities which may be a mixture of different types such as files and folders,
+which may have the same numeric ID but should be differentiated by the relationship.</p>
+<p>During entity construction, the final keys will be used to create a map of all these keys to the final entity.</p>
+<h3 id="rel-2-referencing-other-entities">Rel #2: Referencing Other Entities</h3>
+<p>Since relationships are treated as normal values - just with a lot of magic attached,
+the relationships pointers themselves are also stored in the value dictionary.</p>
+<p>For this, values in that dictionary must be defined as <code>RawRelationship</code> objects,
+listing the <code>Keys</code> as a <code>List&lt;object&gt;</code> which can contain strings, numbers or paths (like <code>file/4234</code>).</p>
+<p>For example, a <code>Categories</code> which should point to the Categories <code>web</code> and <code>it</code> would be defined as:</p>
+<pre><code class="lang-csharp">var categories = new RawRelationship
+{
+    Keys = new List&lt;object&gt; { &quot;web&quot;, &quot;it&quot; }
+};
+
+var values = new Dictionary&lt;string, object&gt;
+{
+    { &quot;Categories&quot;, categories }
+};
+</code></pre>
+<h3 id="rel-3-processing-relationships-together">Rel #3: Processing Relationships Together</h3>
+<p>This happens internally in the <code>IDataFactory</code> which will first create all entities and then map them to each other based on the keys.</p>
+<h2 id="metadata---not-yet-finalized-or-documented-todo">Metadata - not yet finalized or documented TODO:</h2>
+<h2 id="content-type-assignment-to-converted-data">Content-Type Assignment to Converted Data</h2>
+<p>To make future back-conversions to models easier and better,
+it's often important that generated data
+knows what content-type it came from - so that <code>User</code> data is not confused with <code>Site</code> data.</p>
+<p>All converted objects will be assigned a <code>Type</code> which is an <code>IContentType</code> which is either generated from the object itself or provided by the <code>IRawEntity</code> or <code>IRawEntityConverter</code>.</p>
+<p>If nothing is specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>As of now, the raw entity is always the source of the content-type.
+This may change, but as of v22.0 there is no mechanism to provide
+a different content-type on the raw object.</p>
+<p>So to specify a different content type requires it to be mentioned in the <code>Options</code> on the <code>IDataFactory</code>.</p>
+</div>
+<h2 id="how-to-use-in-2sxceav-internal">How to Use (in 2sxc/EAV internal)</h2>
+<p>Data Sources should return objects which are either <code>IRawEntity</code> or <code>IRawEntityConvertible</code> objects.</p>
+<p>Basically you should create a <code>...Model</code> such as a <code>ScopeModel</code> or <code>UserModel</code> and return that from the DataSource.</p>
+<p>Some tips:</p>
+<ol>
+<li>If you inherit from <code>RawEntity</code>, you can just return that object and it will be converted automatically.</li>
+<li>Specific properties such as <code>Id</code>, <code>Guid</code>, <code>Created</code>, <code>Modified</code> and <code>Values</code> will be used automatically.<br>
+And they will not be included in the list of Attributes (of the generated content-type)</li>
+<li>Special properties such as <code>Values</code>, <code>RelationshipKeys</code> and <code>Metadata</code> will be used automatically.<br>
+And they will not be included in the list of Attributes (of the generated content-type)<br>
+And if you do have special <code>Values</code> which should be included in the Entity, you must derive a class and override it.
+<code>Values</code> will only be filtered out if it has the exact name <code>Values</code> and is of type <code>IDictionary&lt;string, object&gt;</code>.</li>
+</ol>
+<h2 id="maturity-of-the-system-as-of-2026-07-24-2dm">Maturity of the System as of 2026-07-24 (2dm)</h2>
+<ol>
+<li><code>IRawSource</code> and <code>IRawConverter</code> are working and have unit tests to verify it's handled correctly</li>
+<li>Base classes such as <code>RawEntity</code> are working and have unit tests</li>
+<li>Other combinations incl. Class vs. Record work</li>
+<li>Relationships work and have unit tests (but only very limited coverage)</li>
+<li>Conversion from anonymous works and has unit tests</li>
+</ol>
+<p>Not quite finished</p>
+<ol>
+<li>Relationships should have more unit tests for each part of the chain</li>
+<li>Conversion from &quot;anything&quot; as is in the data source should be separated out and unit-tests should confirm all cases</li>
+<li>Metadata inclusion should be improved/formalized and finalized</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>As of 2026-07-24 it appears that all cases are implemented and have unit tests covering them.</p>
+</div>
+<h2 id="todo">TODO:</h2>
+<ol>
+<li>Fix title - scope says <code>null</code> ⚠️</li>
+<li>Change the record to be the default RawEntity, I think nobody/nothing uses the RawEntity class, as it's in the Sys namespace</li>
+<li>Then rename <code>RawEntityClassic</code> for the class</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/entities.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/backend/tests/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/tests/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -121,91 +121,6 @@ This is a guide to help you understand how to run them, and how to contribute to
 <p>On 2sxc and the EAV project we strive to have many unit tests, but as always it's hard to keep up.</p>
 <p>One of the challenges is also that some of the tests were written when we were less experienced, so we would do it better today.
 So if you do review some tests, note that they may not use the latest best practices.</p>
-<h2 id="desired-setup-and-conventions">Desired Setup and Conventions</h2>
-<p>As of 2025-03 we to use xUnit for all our unit tests.</p>
-<p>This is how we set it up:</p>
-<ol>
-<li>Every project has one or more separate Tests project. Advanced scenarios need own projects, simple scenarios can share a project.<br>
-Example: <code>ToSic.Lib.Core</code> has
-<ol>
-<li><code>ToSic.Lib.Core.Tests</code> - general tests</li>
-<li><code>ToSic.Lib.DI.Tests</code> - specific tests which require a DI setup</li>
-</ol>
-</li>
-<li>If necessary, some projects also have a <code>...TestHelper</code> project containing shared test code for this project and other projects which build on it.<br>
-Example: <code>ToSic.Eav.DataSources</code> has a <code>ToSic.Eav.DataSource.TestHelpers</code> project which is <em>not</em> a unit-test project.
-<ol>
-<li>Test helpers can contain <strong>TestAccessors</strong> which are static methods matching the original method but ending in <code>...Tac</code> (for Test Accessor).
-These methods are used to access internal methods for testing. We need them to reduce the method-access count, as otherwise methods which are not in use any more have a large access count.</li>
-</ol>
-</li>
-</ol>
-<h2 id="standard-xunit-csproj">Standard xUnit CSProj</h2>
-<p>Here's a standard xUnit project file:</p>
-<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
-
-  &lt;PropertyGroup&gt;
-    &lt;TargetFrameworks&gt;net9.0;net472&lt;/TargetFrameworks&gt;
-    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
-    &lt;LangVersion&gt;preview&lt;/LangVersion&gt;
-    &lt;Nullable&gt;enable&lt;/Nullable&gt;
-    &lt;IsPackable&gt;false&lt;/IsPackable&gt;
-    &lt;!-- &lt;RootNamespace&gt;ToSic.Eav.Data&lt;/RootNamespace&gt; --&gt;
-  &lt;/PropertyGroup&gt;
-
-  &lt;!-- specific stuff --&gt;
-&lt;/Project&gt;
-</code></pre>
-<ol>
-<li>Test projects should set nullable to <code>&lt;Nullable&gt;enable&lt;/Nullable&gt;</code></li>
-<li>Test projects should use c# latest <code>&lt;LangVersion&gt;preview&lt;/LangVersion&gt;</code></li>
-<li>Test projects should set <code>&lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;</code> <a href="https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/#implicit-usings">See implicit usings</a></li>
-</ol>
-<h2 id="tracing--logging-test-data">Tracing / Logging Test Data</h2>
-<p>In some cases you want to log more information to the output.
-In the old days this was done using <code>Trace.WriteLine(...)</code>,
-but this doesn't work in xUnit which runs processes in parallel.</p>
-<p>So for this, inject the <code>ITestOutputHelper</code> output and use it to log messages.</p>
-<pre><code class="lang-csharp">public class CompressorTests(ITestOutputHelper output)
-{
-  [Fact]
-  public void Compress()
-  {
-    output.WriteLine(&quot;Starting compression test&quot;);
-    // do something
-  }
-}
-</code></pre>
-<p>Note: older code which was converted to xUnit may still have <code>Trace.WriteLine</code> statements, but they will not appear in the output and should be updated as you find them.</p>
-<h2 id="differences-in-net-472-and-net-core">Differences in .net 472 and .net Core</h2>
-<p>Some tests need different values depending on the .net framework.
-Use <code>#if</code> statements for this.</p>
-<pre><code class="lang-csharp">public class CompressorTests(ITestOutputHelper output)
-{
-    // Compression sizes differ between .NET Framework and .NET Core
-#if NETCOREAPP
-    private const int SizeDeflate = 14980;
-    private const int SizeGZip = 14998;
-#else
-    private const int SizeDeflate = 14898;
-    private const int SizeGZip = 14916;
-#endif
-}
-</code></pre>
-<h2 id="asserting-types">Asserting Types</h2>
-<p>Types should use <code>IsType</code> instead of <code>IsInstanceOfType</code>.
-But often it should use <code>IsAssignableFrom</code>. There are also <code>IsNot...</code> variations.</p>
-<pre><code class="lang-csharp">// Example usage
-Assert.IsType&lt;ExpectedType&gt;(actualValue); // Correct usage
-Assert.IsAssignableFrom&lt;ExpectedBaseType&gt;(actualValue); // Alternative usage
-</code></pre>
-<p>See also <a href="https://xunit.net/xunit.analyzers/rules/xUnit2018">https://xunit.net/xunit.analyzers/rules/xUnit2018</a>.</p>
-<h2 id="asserting-errors">Asserting Errors</h2>
-<p>When you want to assert that a method throws an exception, you should use <code>Assert.Throws</code>.</p>
-<pre><code class="lang-csharp">// Example usage
-Assert.Throws&lt;Exception&gt;(() =&gt; { throw new Exception(); });
-</code></pre>
-<p>see also <a href="https://stackoverflow.com/questions/45017295/assert-an-exception-using-xunit">assert exceptions</a></p>
 <h2 id="conversion-to-xunit---progress">Conversion to xUnit - Progress</h2>
 <ol>
 <li>✅ <code>ToSic.Lib</code> - 100%
@@ -235,7 +150,7 @@ Assert.Throws&lt;Exception&gt;(() =&gt; { throw new Exception(); });
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/abyss/contribute/code/backend/tests/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/tests/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

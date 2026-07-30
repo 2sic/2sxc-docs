@@ -13,7 +13,9 @@ todo
 
 ## Goals
 
-TODO
+1. Enable strictly typed access to data which is stored in entities.
+1. Be able to do this without context, so it works in static code and other internal scenarios.
+1. Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)
 
 ## Step 3: Conversion of Entities to Models
 
@@ -44,6 +46,10 @@ Some Tricky bits
     1. The result object should of course implement this interface, otherwise things won't work as the result is typed according to the specified interface.
 1. It's not fully clear yet which APIs will test for name of the Content-Type and which not - must be clarified ⚠️
 1. It's not fully clear how the name lookup works automatically, for example when using interfaces or `...Model` suffixes - must be clarified ⚠️
+1. In scenarios where data must be filtered to find the ones to convert, use `[ModelSpecs(ContentType="...")]` to ensure the correct content-type is used for the conversion.
+    1. Without this information, it will assume the name is the same as the model class/record name, which may not be true in all cases.
+       It will also automatically try derived names such as removing leading `I` or trailing `...Model` or `...Raw` to find the correct content-type, but this is not guaranteed to work in all cases.
+    1. if you do specify it, you can specify one or more names (CSV) or use `*` to not filter/restrict what is converted.
 
 ### Special note about Context-Free Operations
 
@@ -61,12 +67,33 @@ There are various cases where data must be converted to entities, and back to mo
 In these cases we are forced to use different objects (one for creating the Raw data, one for reading the entity).
 This is not elegant, but at the moment the most robust setup possible.
 
+> [!TIP]
+> We really need an interface, because sometimes we will have services returning the same data directly,
+> in which case converting it to an entity doesn't make sense.
+>
+> But because we want API consistency between directly created data
+> and data which is created from entities, we need to have a common interface for both.
+>
+> In general, the interface should be optimized for the use case of reading from entities,
+> other raw-convert scenarios are not as important.
+> So you may sometimes have attributes which the raw data doesn't need or care about.
+
 As this will usually only be relevant for 2sxc provided objects, the implementation is as follows:
 
 1. There will be an interface, such as the `IPagingModel`.
 1. Both the raw data object and the `...ModelFromEntity` will implement this interface.
 1. Creating data will use the raw-data-object, and reading data will use the `...ModelFromEntity`.
 1. Both Raw and `...ModelFromEntity` will usually be internal, to not bleed out code for accidental use.
+
+### Conventions for own code base
+
+1. The interface should always hold the Content-Type Definition!
+1. The ModelFromEntity
+    1. must be public (unfortunately) for the `IModelFromEntity<...Model>` to work
+    1. Should have a `[PrivateApi]` and a `[ShowApiWhenReleased(ShowApiMode.Never)]` attribute to prevent it from being shown in the docs
+    1. should always be named `...Model` as it's shown in the docs, and we want the docs to show how to use it
+1. The Raw model should always be called `...Raw` and if possible should be internal
+1. Constants - if needed - should be on the interface as a sub-class
 
 ### Incomplete Conventions ⚠️⚠️⚠️
 

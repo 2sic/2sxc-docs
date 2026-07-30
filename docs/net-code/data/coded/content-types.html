@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/data/coded/content-types.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/content-types.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -147,27 +147,38 @@ usually at the time they are needed (during conversion of raw data to entities) 
 <h2 id="controlled-content-type-definition-specs">Controlled Content-Type Definition Specs</h2>
 <p>Allow for specifying specs of the content-type definition using these attributes:</p>
 <ol>
-<li><code>ContentTypeSpecs</code> - for the content-type itself, for example to set the name, global identifier etc.</li>
-<li><code>ContentTypeAttributeSpecs</code> - for the attributes of the content-type, for example to set the description, is-title etc.</li>
-<li><code>ContentTypeAttributeIgnore</code> - to exclude internal object properties from being included in the content-type definition</li>
+<li><code>[ContentType]</code> - for the content-type itself, for example to set the name, global identifier etc.</li>
+<li><code>[ContentTypeField]</code> - for the attributes of the content-type, for example to set the description, is-title etc.</li>
+<li><code>[ContentTypeIgnore]</code> - to exclude object properties in the content-type definition</li>
+<li><code>[ContentTypeAssign]</code> - to specify that a raw object should be assigned another content-type from an interface or another class/record.</li>
 </ol>
 <p>These specs are mainly needed for certain serialization activities (such as <code>IsTitle</code> information) and for detecting the type (like when converting back to models later on).</p>
 <h2 id="remarks-about-anonymous-types">Remarks about Anonymous Types</h2>
 <p>These will also be treated as if they were classes/records, without any decoration.
 The content-type will be generated based on the properties of the anonymous type.
 It will also cache the type, for future re-use, since these will usually be created again (anonymous types in C# are actually real types).</p>
-<h2 id="maturity-of-the-system-as-of-2026-07">Maturity of the System as of 2026-07</h2>
+<h2 id="maturity-of-the-system-as-of-2026-07-24-2dm">Maturity of the System as of 2026-07-24 (2dm)</h2>
 <ol>
+<li>Descriptions work with
+<ol>
+<li>No attributes at all (automatic defaults)</li>
+<li>With <code>[ContentType]</code> and <code>[ContentTypeField]</code> attributes</li>
+<li>Also on special properties such as <code>Id</code>, <code>Guid</code>, <code>Created</code>, <code>Modified</code> (added as special decorator <code>ContentTypeBuiltInAttributesDecorator</code> to the content-type)</li>
+</ol>
+</li>
+<li>Ignore attribute works using <code>[ContentTypeIgnore]</code> attribute</li>
 <li>Builder can build from
 <ol>
 <li>Anything with or without specs attributes</li>
 <li>classes (verified and has unit tests)</li>
 <li>records (verified and has unit tests)</li>
 <li>interfaces (verified and has unit tests)</li>
+<li>all of the above having a <code>[ContentTypeAssign]</code> attribute to assign a different content-type (verified and has unit tests)</li>
 <li>anonymous - only without specs attributes (verified and has unit tests)</li>
 </ol>
 </li>
 <li>Caching is working</li>
+<li>internal properties such as <code>Id</code> etc. are excluded in the content-type definition</li>
 <li>Test coverage for all these features and combinations</li>
 </ol>
 <div class="TIP">
@@ -178,7 +189,7 @@ It will also cache the type, for future re-use, since these will usually be crea
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/data/coded/content-types.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/content-types.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

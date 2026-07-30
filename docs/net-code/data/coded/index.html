@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/data/coded/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -128,34 +128,25 @@ This is being standardized more in v22 and explained here.</p>
 <h2 id="step-1-content-type-definitions">Step 1 Content Type Definitions</h2>
 <p>See <a class="xref" href="content-types.html">Coded Content-Type Definitions new v22</a></p>
 <h2 id="step-2-conversion-of-data-to-entities">Step 2: Conversion of Data to Entities</h2>
-<p>This is used both for providing internal data through the DataSource system
-and for custom DataSources which will provide new data to an application.</p>
-<p>There are a few ways this can happen:</p>
+<p>See <a class="xref" href="entities.html">Coded Data Creation of Entities WIP v22</a></p>
+<h2 id="step-3-conversion-of-entities-to-models">Step 3: Conversion of Entities to Models</h2>
+<p>See <a class="xref" href="models.html">Entity To Models WIP v22</a></p>
+<h2 id="notes-chaotic">Notes (Chaotic)</h2>
+<h3 id="scenarios">Scenarios</h3>
 <ol>
-<li>Either the data object (class/record) implements <code>IRawEntity</code> and provides the necessary information itself</li>
-<li>Or it provides a converter using TODO</li>
-<li>Or it's just a plain object and is converted using reflection (which is more time consuming)</li>
+<li>Data to Entities only --&gt; <code>Raw</code> or <code>anonymous</code> or object w/<code>IRawEntityConvertible</code>; optionally with <code>[ContentType]</code> attribute</li>
+<li>Entities to Model only --&gt; <code>X...FromEntityModel</code> w/matching ID/Name???</li>
+<li>Data to Entities to Model</li>
 </ol>
-<p>TODO: document the RawEntity, the conversion, standardize naming etc.</p>
-<p>Internally this is done by 2 important components:</p>
+<h3 id="necessary-c-attributes">Necessary C# Attributes</h3>
 <ol>
-<li>The <code>IDataFactory</code> which can handle IRawEntity and Conversion objects and convert them to entities</li>
-<li>The <code>CustomDataSource</code> which can also convert anonymous objects</li>
+<li><code>[ModelSpecs]</code> - for the model itself, for example to set the name, global identifier etc.</li>
 </ol>
-<p>TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.</p>
-<h2 id="step-2-bonus-content-type-assignment-to-converted-data">Step 2 Bonus: Content-Type Assignment to Converted Data</h2>
-<p>To make future back-conversions to models easier and better,
-it's often important that generated data
-knows what content-type it came from - so that <code>User</code> data is not confused with <code>Site</code> data.</p>
-<p>Objects which implement <code>IRawEntity</code> or the <code>Conversion</code> can also specify which coded-content-type they are associated with, so that the system can use the correct content-type for the entity.
-If it is not specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.
-Even anonymous object definitions will be cached, as anonymous objects are still strongly typed.</p>
-<p>TODO: explain how etc. finalize naming etc.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/master/docs-src/pages/net-code/data/coded/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

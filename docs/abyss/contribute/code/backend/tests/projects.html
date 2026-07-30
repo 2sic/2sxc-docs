@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>2sxc / EAV Backend Test Projects | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="2sxc / EAV Backend Test Projects | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/tests/projects.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Backend.Tests.Projects">
+<h1 id="2sxc--eav-backend-test-projects">2sxc / EAV Backend Test Projects</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+
+<p>This should explain how the projects are set up and how to create more of them.</p>
+<p>As of 2025-03 we use xUnit for all our unit tests.</p>
+<h2 id="main-structure">Main Structure</h2>
+<p>We try to have the tests close to the code they are testing, so a typical setup would be:</p>
+<ul>
+<li><code>ToSic.Sys.Core</code> - main project</li>
+<li><code>ToSic.Sys.Core.Tests</code> - unit tests for the main project</li>
+</ul>
+<p>In some cases a project may cover a lot of topics, in which case we would want to create isolated test projects for each topic, for example:</p>
+<ul>
+<li><code>ToSic.Sys.Core</code> - main project
+<ul>
+<li><code>ToSic.Sys.Core.Tests</code> - unit tests for the main project</li>
+<li><code>ToSic.Sys.DI.Tests</code> - unit tests for dependency injection</li>
+</ul>
+</li>
+<li><code>ToSic.Eav.Data</code> - main project, contains <code>ToSic.Eav.Data</code> and <code>ToSic.Eav.Models</code>
+<ul>
+<li><code>ToSic.Eav.Data.Tests</code> - general unit tests for the main project</li>
+<li><code>ToSic.Eav.Models.Tests</code> - system tests which require a database</li>
+</ul>
+</li>
+</ul>
+<p>If necessary, some projects also have a <code>...TestHelper</code> project containing shared test code for this project and other projects which build on it.
+Example: <code>ToSic.Eav.DataSources</code> has a <code>ToSic.Eav.DataSource.TestHelpers</code> project which is <em>not</em> a unit-test project.</p>
+<ol>
+<li>Test helpers can contain <strong>TestAccessors</strong> which are static methods matching the original method but ending in <code>...Tac</code> (for Test Accessor).
+These methods are used to access internal methods for testing. We need them to reduce the method-access count, as otherwise methods which are not in use any more have a large access count.</li>
+</ol>
+<h2 id="how-to-set-up">How to Set Up</h2>
+<p>Use this checklist:</p>
+<iframe src="https://azing.org/2sxc/r/WGKrDc0_?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe><script src="https://cdn.azing.org/e/1/embed.js"></script>
+<h2 id="standard-xunit-csproj">Standard xUnit CSProj</h2>
+<p>Here's a standard xUnit project file:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;Import Project=&quot;../SharedImports/CsProj.Props/AllImportsForTestCode-Eav.props&quot; /&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;ProjectReference Include=&quot;..\ToSic.Eav.Data\ToSic.Eav.Data.csproj&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<p>The imports take care of everything, including:</p>
+<ol>
+<li>Test projects should set nullable to <code>&lt;Nullable&gt;enable&lt;/Nullable&gt;</code></li>
+<li>Test projects should use c# latest <code>&lt;LangVersion&gt;preview&lt;/LangVersion&gt;</code></li>
+<li>Test projects should set <code>&lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;</code> <a href="https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/#implicit-usings">See implicit usings</a></li>
+</ol>
+<h2 id="testing-project-root-namespace">Testing Project Root Namespace</h2>
+<p>With the default project above, the namespace will be <code>ToSic.Eav</code>.
+We recommend against changing this, but instead just create the correct folders to go deeper and match the namespace of the code being tested.</p>
+<p>We do this on purpose, because it often happens that some tests should fit into sibling folders, which would not be possible if the root namespace is too deep.</p>
+<p>If you do need to change the namespace, add something like this to the xml file:</p>
+<pre><code class="lang-xml">  &lt;PropertyGroup&gt;
+    &lt;RootNamespace&gt;ToSic.Eav.Data.Stack&lt;/RootNamespace&gt;
+  &lt;/PropertyGroup&gt;
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/tests/projects.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Entity To Models WIP v22 | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Entity To Models WIP v22 | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/models.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="NetCode.Data.Coded.Models">
+<h1 id="entity-to-models-wip-v22">Entity To Models WIP v22</h1>
+
+<div class="TIP">
+<h5>Tip</h5>
+<p>This section is a work in progress for Coded Data in 2sxc v22.</p>
+</div>
+<h2 id="background">Background</h2>
+<p>todo</p>
+<h2 id="goals">Goals</h2>
+<ol>
+<li>Enable strictly typed access to data which is stored in entities.</li>
+<li>Be able to do this without context, so it works in static code and other internal scenarios.</li>
+<li>Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)</li>
+</ol>
+<h2 id="step-3-conversion-of-entities-to-models">Step 3: Conversion of Entities to Models</h2>
+<p>This will be very common in own code, basically to use typed data access to entities.</p>
+<p>This is the general setup</p>
+<ol>
+<li>We have model classes/records, which implement a setup-method so they can be used to receive an entity and provide a strongly typed model.</li>
+<li>We have a <code>ModelFactory</code> which can take an entity and convert it to a model, using the setup-method of the model class/record.</li>
+<li>There are various extension methods which can run on various sources to get &amp; convert them to models. They should exist on
+<ol>
+<li><code>IEntity</code> - to convert a single entity to a model</li>
+<li><code>IEnumerable&lt;IEntity&gt;</code> - to convert a list of entities to a list of models</li>
+<li><code>IHasMetadata</code> - to get a specific metadata item according do conventions</li>
+</ol>
+</li>
+<li>Internally there will usually be some type-checks to prevent accidental misuse</li>
+<li>Additional APIs such as on <code>DataSources</code> will also pick specific streams or filter by content-type, depending on the exact setup.</li>
+</ol>
+<p>For reliability...</p>
+<ol>
+<li>All things which can be used as models must implement <code>IModelFromEntity</code>.
+The interface itself does not have any properties, but it's a marker to ensure that the compiler won't let you try model conversions with objects that don't support any conversion.</li>
+</ol>
+<p>Some Tricky bits</p>
+<ol>
+<li>You can pass in a model directly - and this should just work</li>
+<li>But often you may also just want to pass in an interface - especially with 2sxc-system provided models, where we don't want to bleed the internals.
+<ol>
+<li>These interfaces have a decorator <code>[ModelSpecs]</code> which lets the converter know which class to use for the conversion.</li>
+<li>The result object should of course implement this interface, otherwise things won't work as the result is typed according to the specified interface.</li>
+</ol>
+</li>
+<li>It's not fully clear yet which APIs will test for name of the Content-Type and which not - must be clarified ⚠️</li>
+<li>It's not fully clear how the name lookup works automatically, for example when using interfaces or <code>...Model</code> suffixes - must be clarified ⚠️</li>
+<li>In scenarios where data must be filtered to find the ones to convert, use <code>[ModelSpecs(ContentType=&quot;...&quot;)]</code> to ensure the correct content-type is used for the conversion.
+<ol>
+<li>Without this information, it will assume the name is the same as the model class/record name, which may not be true in all cases.
+It will also automatically try derived names such as removing leading <code>I</code> or trailing <code>...Model</code> or <code>...Raw</code> to find the correct content-type, but this is not guaranteed to work in all cases.</li>
+<li>if you do specify it, you can specify one or more names (CSV) or use <code>*</code> to not filter/restrict what is converted.</li>
+</ol>
+</li>
+</ol>
+<h3 id="special-note-about-context-free-operations">Special note about Context-Free Operations</h3>
+<p>All of this casting should work without any context, so it can be triggered by static extension methods.
+So this is really just meant to improve using data reliably.</p>
+<p>In very rare cases, some context or something is needed, in which case
+a factory must be supplied of the type <code>IModelFactory</code> which can be used to provide the context or other information needed for the conversion.</p>
+<p>Objects which must use a factory should declare this by attaching the interface <code>IModelFactoryRequired</code> to the model class/record.</p>
+<h3 id="special-case-about-interfaces">Special case about Interfaces</h3>
+<p>There are various cases where data must be converted to entities, and back to models.
+In these cases we are forced to use different objects (one for creating the Raw data, one for reading the entity).
+This is not elegant, but at the moment the most robust setup possible.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>We really need an interface, because sometimes we will have services returning the same data directly,
+in which case converting it to an entity doesn't make sense.</p>
+<p>But because we want API consistency between directly created data
+and data which is created from entities, we need to have a common interface for both.</p>
+<p>In general, the interface should be optimized for the use case of reading from entities,
+other raw-convert scenarios are not as important.
+So you may sometimes have attributes which the raw data doesn't need or care about.</p>
+</div>
+<p>As this will usually only be relevant for 2sxc provided objects, the implementation is as follows:</p>
+<ol>
+<li>There will be an interface, such as the <code>IPagingModel</code>.</li>
+<li>Both the raw data object and the <code>...ModelFromEntity</code> will implement this interface.</li>
+<li>Creating data will use the raw-data-object, and reading data will use the <code>...ModelFromEntity</code>.</li>
+<li>Both Raw and <code>...ModelFromEntity</code> will usually be internal, to not bleed out code for accidental use.</li>
+</ol>
+<h3 id="conventions-for-own-code-base">Conventions for own code base</h3>
+<ol>
+<li>The interface should always hold the Content-Type Definition!</li>
+<li>The ModelFromEntity
+<ol>
+<li>must be public (unfortunately) for the <code>IModelFromEntity&lt;...Model&gt;</code> to work</li>
+<li>Should have a <code>[PrivateApi]</code> and a <code>[ShowApiWhenReleased(ShowApiMode.Never)]</code> attribute to prevent it from being shown in the docs</li>
+<li>should always be named <code>...Model</code> as it's shown in the docs, and we want the docs to show how to use it</li>
+</ol>
+</li>
+<li>The Raw model should always be called <code>...Raw</code> and if possible should be internal</li>
+<li>Constants - if needed - should be on the interface as a sub-class</li>
+</ol>
+<h3 id="incomplete-conventions-">Incomplete Conventions ⚠️⚠️⚠️</h3>
+<ol>
+<li><p>if we have interface + raw + model, which one should hold the content-type definition? ⚠️</p>
+</li>
+<li><p>If we need the type-name, it should probably be in a <code>Constants</code> sub-class of the interface, to be &quot;together&quot;.</p>
+</li>
+<li><p>In some cases (such as sub-entity relationships) the interface may need to prefer the model-variant,
+while the raw implementation will choose to do things differently</p>
+</li>
+<li><p>It's still not 100% clear when to use <code>IModelFromEntity</code> and <code>IModelFromData</code></p>
+</li>
+</ol>
+<h2 id="todos">todos</h2>
+<ol>
+<li>probably rename <code>[ModelSpecs]</code> to <code>[Model]</code> ??</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/net-code/data/coded/models.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
