@@ -6,14 +6,16 @@ uid: Abyss.Contribute.Backend.Tests.DependencyInjection
 
 [!include[""](../../_contributors-only.md)]
 
-## Unit Tests which Don't use Dependency Injection
+
+## Unit Tests Without Dependency Injection
 
 These unit tests are the simplest, and don't need any special setup.
 Example:
 
 [!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Core.Tests/FunFactTests/FunctionalFactoryStringTests.cs#L10-L21)]
 
-## Unit Tests which need Basic Dependency Injection _by Namespace_
+
+## Unit Tests With Dependency Injection _by Namespace_
 
 These tests need DI to be setup, but don't need any configuration (such as Database connections).
 
@@ -29,7 +31,47 @@ In will then be available as a service in the test.
 
 [!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.DI.Tests/SwitchableServices/VerifySwitchableService.cs)]
 
-## Unit Tests with Basic Dependency Injection _by Attribute_
+
+## Unit Tests With Dependency Injection _by Sub Class_
+
+Every test class can specify its own DI setup by using an `Startup` sub class.
+This is the preferred method for many isolated tests, the syntax is like this:
+
+```csharp
+/// <summary>
+/// Same Tests - but for the public ToModel()
+/// </summary>
+public class ToModelInheritance
+{
+    public class Startup : StartupInternal
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+          // do your work here
+          services.AddTransient<IToModelTac, ToModelTacPublic>();
+        }
+    }
+}
+```
+
+Or when reusing a base startup class, you can also override the `ConfigureServices` method:
+
+```csharp
+/// <summary>
+/// Same Tests - but for the public ToModel()
+/// </summary>
+public class ToModelInheritance
+{
+    public class Startup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+            => base.ConfigureServices(services.AddTransient<IToModelTac, ToModelTacPublic>());
+    }
+}
+```
+
+
+## Unit Tests With Dependency Injection _by Attribute_
 
 Every test class can also specify a specific DI setup by using an attribute.
 This is the preferred method, the syntax is like this:
