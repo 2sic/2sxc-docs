@@ -110,7 +110,7 @@
 <p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
 <p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
 </div>
-<h2 id="unit-tests-which-dont-use-dependency-injection">Unit Tests which Don't use Dependency Injection</h2>
+<h2 id="unit-tests-without-dependency-injection">Unit Tests Without Dependency Injection</h2>
 <p>These unit tests are the simplest, and don't need any special setup.
 Example:</p>
 <pre><code class="lang-csharp">public void ManualListOfFunctions()
@@ -125,7 +125,7 @@ Example:</p>
     Equal(&quot;Hello World!&quot;, result);
 }
 
-</code></pre><h2 id="unit-tests-which-need-basic-dependency-injection-by-namespace">Unit Tests which need Basic Dependency Injection <em>by Namespace</em></h2>
+</code></pre><h2 id="unit-tests-with-dependency-injection-by-namespace">Unit Tests With Dependency Injection <em>by Namespace</em></h2>
 <p>These tests need DI to be setup, but don't need any configuration (such as Database connections).</p>
 <p>First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:</p>
 <pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
@@ -176,7 +176,38 @@ public class VerifySwitchableService(ServiceSwitcher&lt;ITestSwitchableService&g
     public void FindFallbackByName() =&gt;
         Equal(TestSwitchableFallback.Name, switcher.ByNameId(TestSwitchableFallback.Name)?.NameId);
 }
-</code></pre><h2 id="unit-tests-with-basic-dependency-injection-by-attribute">Unit Tests with Basic Dependency Injection <em>by Attribute</em></h2>
+</code></pre><h2 id="unit-tests-with-dependency-injection-by-sub-class">Unit Tests With Dependency Injection <em>by Sub Class</em></h2>
+<p>Every test class can specify its own DI setup by using an <code>Startup</code> sub class.
+This is the preferred method for many isolated tests, the syntax is like this:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Same Tests - but for the public ToModel()
+/// &lt;/summary&gt;
+public class ToModelInheritance
+{
+    public class Startup : StartupInternal
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+          // do your work here
+          services.AddTransient&lt;IToModelTac, ToModelTacPublic&gt;();
+        }
+    }
+}
+</code></pre>
+<p>Or when reusing a base startup class, you can also override the <code>ConfigureServices</code> method:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Same Tests - but for the public ToModel()
+/// &lt;/summary&gt;
+public class ToModelInheritance
+{
+    public class Startup : StartupBase
+    {
+        public override void ConfigureServices(IServiceCollection services)
+            =&gt; base.ConfigureServices(services.AddTransient&lt;IToModelTac, ToModelTacPublic&gt;());
+    }
+}
+</code></pre>
+<h2 id="unit-tests-with-dependency-injection-by-attribute">Unit Tests With Dependency Injection <em>by Attribute</em></h2>
 <p>Every test class can also specify a specific DI setup by using an attribute.
 This is the preferred method, the syntax is like this:</p>
 <pre><code class="lang-csharp">[Startup(typeof(StartupTestsEavCore))]

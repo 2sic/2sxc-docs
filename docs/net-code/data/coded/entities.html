@@ -111,39 +111,100 @@
 </div>
 <h2 id="background">Background</h2>
 <p>Often data is provided as a POCO object (class or record) and needs to be converted to an entity for further processing.</p>
-<p>This is used both for providing internal data through the DataSource system
+<p>This is used both for providing internal data through the <strong>DataSource</strong> system
 and for custom DataSources which will provide new data to an application.</p>
-<h2 id="three-common-ways-this-happens">Three Common Ways This Happens</h2>
+<p>So the classic setup is this:</p>
 <ol>
-<li><p>Either the data object (class/record) implements <code>IRawEntity</code> and provides the necessary information itself</p>
+<li>Some service prepares data according to specs</li>
+<li>A DataSource is created to provide this data in the standardized way</li>
+<li>This DataSource uses the service to retrieve the data - with or without parameters.</li>
+<li>It then converts the data to entities and returns them to the system.</li>
+</ol>
+<p>The conversion of data to entities is done by the <code>IDataFactory</code> which can handle various types of data and convert them to entities.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>In general, you must provide objects implementing <code>IRawEntitySource</code> in some way to the <code>ProvideOut()</code> method of the DataSource.</p>
+<p>Ideally the original service already create objects which implement this interface,
+to avoid unnecessary conversions and a lot of code.</p>
+</div>
+<h2 id="four-common-ways-to-provide-raw-entities">Four Common Ways to Provide Raw Entities</h2>
+<ol>
+<li><p>Either the data object (class/record) implements <code>IRawEntity</code> and provides the necessary information itself.<br>
+This is the most direct way, but forces your objects to have <code>Id</code>, <code>Guid</code>, <code>Created</code>, <code>Modified</code> and <code>Values</code> properties, which may not be desired in all cases.</p>
 </li>
 <li><p>Or it provides a converter using <code>IRawEntityConvertible</code> which provides a <code>IRawEntityConverter</code> on the <code>GetConverter()</code> method,
-which will then be used to convert the object to an entity</p>
+which will then be used to convert the object to an entity.<br>
+This is recommended when you have to create complex conversions and sometimes need some logic to handle the data.</p>
 </li>
-<li><p>Or it's just a plain object and is converted using reflection (which is more time consuming)</p>
+<li><p>Or it implements <code>IRawEntityAutoConvert</code> which will automatically convert the object to an entity using reflection and the property names.<br>
+This is the least efficient but is usually good enough; it requires your data-objects to be quite clean and only have the properties you expect.</p>
+</li>
+<li><p>Or it's just a plain object and is converted using reflection (which is more time consuming).<br>
+This is mainly recommended for code inside Apps, but not inside EAV/2sxc which should be more robust.</p>
 </li>
 </ol>
 <p>Bonus: Advanced way</p>
 <p>Conversion of data to Entities can also be done by calling a <code>Create()</code> method on the <code>IDataFactory</code> providing it
 with a dictionary of values. This is not common in external code, but often is a quick way to create Entities.</p>
-<p>TODO: document the RawEntity, the conversion, standardize naming etc.</p>
-<p>Internally this is done by 2 important components:</p>
-<ol>
-<li>The <code>IDataFactory</code> which can handle <code>IRawEntity</code> and conversion objects and convert them to entities</li>
-<li>The <code>CustomDataSource</code> which can also convert anonymous objects</li>
-</ol>
-<p>TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>When data is converted, it will assign a <strong>Content-Type</strong> to the generated data.
+Ideally this is done in a controlled way, using <code>[ContentType]</code> attributes on the data objects.</p>
+<p>👉🏼 See <a class="xref" href="content-types.html">Coded Content-Type Definitions new v22</a></p>
+</div>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="avoid-creating-many-objects">Avoid Creating many Objects</h3>
+<p>If possible, make sure that DTOs or similar objects already implement the conversion capability,
+so that they are ready-to-convert when provided by the service.
+This avoids unnecessary conversions and extra code.</p>
+<h3 id="prefer-records">Prefer Records</h3>
+<p>As .net matured, it introduced records, which seem to be the best way forward to define data objects.
+They can be immutable, have a clear constructor and are easy to use.
+They are especially ideal for functional style programming, where new objects copy all the properties of previous objects, but with some changes.</p>
+<h3 id="differentiate-between-internal-data-and-external-data">Differentiate Between Internal Data and External Data</h3>
+<p>If the raw data is only used for internal purposes, it can be a simple object with the necessary properties.</p>
+<p>if the data will probably also be used inside Apps, then it should go a more complex path,
+basically placing the Schema on an Interface (not on the Raw object).
+Ask @iJungleboy for details until we have more examples.</p>
 <h2 id="core-conversion">Core Conversion</h2>
+<h3 id="rawentity">RawEntity</h3>
 <p>Basically any <code>IRawEntity</code> (which automatically is a <code>IRawEntitySource</code>) will implement</p>
 <ol>
 <li>Identifiers: <code>Id</code> and <code>Guid</code></li>
 <li>Dates: <code>Created</code>, <code>Modified</code></li>
 <li>Values (dictionary)</li>
 </ol>
+<h3 id="rawentityconvertible">RawEntityConvertible</h3>
 <p>On the other hand, any <code>IRawEntityConvertible</code> will provide a converter through the <code>GetConverter()</code> method.
 This returns an <code>IRawEntityConverter</code> responsible for the conversion.
 It will return an <code>IRawEntity</code> which will then be processed as above.</p>
-<h2 id="relationships-connecting-data">Relationships Connecting Data</h2>
+<p>This can be super detailed or sometimes also use some reflection
+to save code (for non-performance critical code).</p>
+<p>👉🏼 See example in the <code>UserModelRaw</code> for half-reflection based conversions.</p>
+<h3 id="rawentityautoconvert">RawEntityAutoConvert</h3>
+<p>If the object implements <code>IRawEntityAutoConvert</code>, it will automatically be converted to an entity using reflection and the property names.
+This is less efficient than a custom converter, but is often good enough for simple objects
+and it's great for many conversions which are not performance critical.</p>
+<p>👉🏼 See example in the <code>EntityRelationship</code> which uses the <code>IRawEntityAutoConvert</code></p>
+<h3 id="converting-objects-directly-not-recommended">Converting Objects directly (not recommended)</h3>
+<p>This method is for small-scale/quick-and-dirty implementations, typically for simple DataSources inside Apps.
+You can find tutorials how to do this, so it's not explained further.</p>
+<p>Note that you must inherit from the <code>CustomDataSource</code> to get full anonymous conversion.</p>
+<h2 id="content-type-assignment-to-converted-data">Content-Type Assignment to Converted Data</h2>
+<p>To make future back-conversions to models easier and better,
+it's often important that generated data
+knows what content-type it came from - so that <code>User</code> data is not confused with <code>Site</code> data.</p>
+<p>All converted objects will be assigned a <code>Type</code> which is an <code>IContentType</code> which is either generated from the object itself or provided by the <code>IRawEntity</code> or <code>IRawEntityConverter</code>.</p>
+<p>If nothing is specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>As of now, the raw entity is always the source of the content-type.
+If ever you need to reference another object to provide the schema,
+use the <code>[ContentTypeAssign]</code> attribute on the raw entity to specify the other object which should be used to generate the content-type.
+This allows specifying a different content-type on the raw object.</p>
+<p>Alternatively you can specify it in the <code>Options</code> on the <code>IDataFactory</code>.</p>
+</div>
+<h2 id="relationships-connecting-data-very-advanced">Relationships Connecting Data (very Advanced)</h2>
 <p>Relationships are quite complex, as the final object should have direct access to children and parents.</p>
 <div class="TIP">
 <h5>Tip</h5>
@@ -184,19 +245,6 @@ var values = new Dictionary&lt;string, object&gt;
 <h3 id="rel-3-processing-relationships-together">Rel #3: Processing Relationships Together</h3>
 <p>This happens internally in the <code>IDataFactory</code> which will first create all entities and then map them to each other based on the keys.</p>
 <h2 id="metadata---not-yet-finalized-or-documented-todo">Metadata - not yet finalized or documented TODO:</h2>
-<h2 id="content-type-assignment-to-converted-data">Content-Type Assignment to Converted Data</h2>
-<p>To make future back-conversions to models easier and better,
-it's often important that generated data
-knows what content-type it came from - so that <code>User</code> data is not confused with <code>Site</code> data.</p>
-<p>All converted objects will be assigned a <code>Type</code> which is an <code>IContentType</code> which is either generated from the object itself or provided by the <code>IRawEntity</code> or <code>IRawEntityConverter</code>.</p>
-<p>If nothing is specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>As of now, the raw entity is always the source of the content-type.
-This may change, but as of v22.0 there is no mechanism to provide
-a different content-type on the raw object.</p>
-<p>So to specify a different content type requires it to be mentioned in the <code>Options</code> on the <code>IDataFactory</code>.</p>
-</div>
 <h2 id="how-to-use-in-2sxceav-internal">How to Use (in 2sxc/EAV internal)</h2>
 <p>Data Sources should return objects which are either <code>IRawEntity</code> or <code>IRawEntityConvertible</code> objects.</p>
 <p>Basically you should create a <code>...Model</code> such as a <code>ScopeModel</code> or <code>UserModel</code> and return that from the DataSource.</p>
@@ -210,6 +258,22 @@ And they will not be included in the list of Attributes (of the generated conten
 And if you do have special <code>Values</code> which should be included in the Entity, you must derive a class and override it.
 <code>Values</code> will only be filtered out if it has the exact name <code>Values</code> and is of type <code>IDictionary&lt;string, object&gt;</code>.</li>
 </ol>
+<h2 id="internal-data-flow">Internal Data Flow</h2>
+<ol>
+<li>Every DataSource will call <code>ProvideOut()</code> to provide the data to the system.</li>
+<li>The <code>ProvideOut()</code> method will call the <code>IDataFactory</code> to convert the data automatically.</li>
+<li>It will receive a method to provide the data and options...</li>
+<li>...but options are usually not needed any more, since the <code>[ContentType]</code> attributes on the data objects are usually enough to determine most of the settings.</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Try to avoid using options, and prefer to specify everything important incl. title on the class itself.</p>
+</div>
+<p>Internally this is done by 2 important components:</p>
+<ol>
+<li>The <code>IDataFactory</code> which can handle <code>IRawEntity</code> and conversion objects and convert them to entities</li>
+</ol>
+<p>TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.</p>
 <h2 id="maturity-of-the-system-as-of-2026-07-24-2dm">Maturity of the System as of 2026-07-24 (2dm)</h2>
 <ol>
 <li><code>IRawSource</code> and <code>IRawConverter</code> are working and have unit tests to verify it's handled correctly</li>

@@ -117,7 +117,51 @@
 <li>Be able to do this without context, so it works in static code and other internal scenarios.</li>
 <li>Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)</li>
 </ol>
-<h2 id="step-3-conversion-of-entities-to-models">Step 3: Conversion of Entities to Models</h2>
+<h2 id="common-usage">Common Usage</h2>
+<p>In most cases, you can convert a single entity to a model, or a list of entities to a list of models, using the <code>ToModel</code> extension method.</p>
+<pre><code class="lang-csharp">// Convert a single entity to a model
+var model = entity.ToModel&lt;IPagingModel&gt;();
+// Convert a list of entities to a list of models
+var models = entities.ToModels&lt;IPagingModel&gt;();
+</code></pre>
+<p>There are also many helper methods such as <code>FirstModel&lt;TModel&gt;</code> and more.</p>
+<p>All these methods can also be used with a factory, which can provide context or other information needed for the conversion.
+TODO: explain where the factory would come from.</p>
+<pre><code class="lang-csharp">// Convert a single entity to a model with a factory
+var model = entity.ToModel&lt;IPagingModel&gt;(factory);
+// Convert a list of entities to a list of models with a factory
+var models = entities.ToModels&lt;IPagingModel&gt;(factory);
+</code></pre>
+<h2 id="using-tomodeloptions-for-conversion">Using <code>ToModelOptions</code> for Conversion</h2>
+<p>You can also provide options which regulate how conversions work, using the <code>ToModelOptions</code> class.</p>
+<pre><code class="lang-csharp">// Convert a single entity to a model with options
+var model = entity.ToModel&lt;IPagingModel&gt;(options: new ToModelOptions { /* set options here */ });
+// Convert a list of entities to a list of models with options
+var models = entities.ToModels&lt;IPagingModel&gt;(options: new ToModelOptions { /* set options here */ });
+</code></pre>
+<p>The most common options would be</p>
+<ul>
+<li><code>NullHandling</code> (an enum) - to determine how null values are handled during conversion</li>
+<li><code>TypeName</code> (string) - to specify the content-type name for the conversion, if needed; set to <code>*</code> to not filter/restrict what is converted</li>
+</ul>
+<h2 id="automatic-content-type-name-detection">Automatic Content-Type Name Detection</h2>
+<p>Various Model conversions perform content-type name detection
+to prevent accidental conversion to an incorrect model
+or to filter out data which is not relevant for the conversion.
+So for situations where this name matters, here's how it's detected.</p>
+<p>Note that if the conversion methods is called using an interface, the
+lookup behavior will respect both the interface and the referenced model class/record.</p>
+<p>Also note that of the criteria below, the first match will be used.
+So if you specifically determine the type name, that's the only one which will be respected, and the others will be ignored.</p>
+<ol>
+<li>If conversion options are used (<code>ToModelOptions</code>) the given type name of the options are used, if present; CSV or <code>*</code> are possible.</li>
+<li>Then the <code>[ModelSpecs]</code> on the specified type (class or interface) are used, if present; CSV or <code>*</code> are possible.</li>
+<li>Then the <code>[ContentType]</code> on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.</li>
+<li>If an interface was specified, then the target type is retrieved, and the <code>[ModelSpecs]</code> and <code>[ContentType]</code> on the target type are evaluated.</li>
+<li>If none of these conditions are met, then the name of the specified type (and if it was an interface, the target type) is used (including derivations of it)<br>
+Derived names are created by removing leading <code>I</code> or trailing <code>...Model</code> or <code>...Raw</code></li>
+</ol>
+<h2 id="conversion-of-entities-to-models">Conversion of Entities to Models</h2>
 <p>This will be very common in own code, basically to use typed data access to entities.</p>
 <p>This is the general setup</p>
 <ol>

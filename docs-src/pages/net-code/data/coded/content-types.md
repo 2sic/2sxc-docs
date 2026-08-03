@@ -32,25 +32,46 @@ In such scenarios, the data will be prepared in normal objects and converted to 
 
 Giving it a clear type helps ensure consistency and also allows for converting the generic entities back to strongly typed objects for further processing.
 
-## Auto-Generated Content-Type Definitions
+## Example
 
-Code defined types are automatically generated on-the-fly from C# classes, records and/or interfaces,
-usually at the time they are needed (during conversion of raw data to entities) and the resulting content-type is cached for future use.
+Here's an example of an object with attributes to specify the content-type definition:
 
-Internally this is handled by two important components:
+```csharp
+/// <summary>
+/// Content-Type for the general settings of a field (attribute) on a content-type.
+/// </summary>
+/// <remarks>
+/// Note that as of 2026-07-26 there is no model yet to use, but it should be added soon.
+/// </remarks>
+[ModelSpecs(ContentType = Constants.ContentTypeName)]
+[ContentType(
+    Name = Constants.ContentTypeName,
+    Guid = "0bab4be8-e795-4d9f-b50e-f7ec161ed8cb",  // If possible, should match the guid of the real database content-type, if it exists
+    Description = "General settings for every Attribute (field) on a Content-Type."
+)]
+public interface IFieldSettingsGeneral : IModelFromEntity<FieldSettingsGeneralModel>
+{
+    [PrivateApi]
+    public static class Constants { public const string ContentTypeName = "@All"; }
 
-1. The `ContentTypesFromCodeBuilder` - the system which builds a content-type definition from a C# class, record or interface
-1. The `ContentTypesFromCodeManager` - the system which manages and caches the content-type definitions
+    [ContentTypeField(IsTitle = true)]
+    string Name { get; }
 
-## General Requirements and how it's Implemented
+    string DefaultValue { get; }
 
-For this to work we want:
+    /// <summary>
+    /// Description of this field.
+    /// </summary>
+    string Notes { get; }
 
-1. To use the same C# POCOs to generate the content-type definition (to avoid separate definitions which can accidentally vary) - done by the `ContentTypesFromCodeBuilder`
-1. Automatically convert any POCO class/record to a content-type definition when needed - `ContentTypesFromCodeBuilder`
-1. Cache the generated content-type definitions to avoid repeated generation - `ContentTypesFromCodeManager`
-1. Reliably detect which type should be used based on the code itself, to use the _same_ definition for each conversion, even on future requests - `IDataFactory` with `ContentTypesFromCodeManager`
-    ...with option to manually set a different type, if needed (but should be rarely used)
+    /// <summary>
+    /// The official input-type - usually something like `@string-default`
+    /// </summary>
+    string InputType { get; }
+
+    //...
+}
+```
 
 ## Controlled Content-Type Definition Specs
 
@@ -63,7 +84,34 @@ Allow for specifying specs of the content-type definition using these attributes
 
 These specs are mainly needed for certain serialization activities (such as `IsTitle` information) and for detecting the type (like when converting back to models later on).
 
-## Remarks about Anonymous Types
+
+
+## Internals
+
+### Auto-Generated Content-Type Definitions
+
+Code defined types are automatically generated on-the-fly from C# classes, records and/or interfaces,
+usually at the time they are needed (during conversion of raw data to entities) and the resulting content-type is cached for future use.
+
+Internally this is handled by two important components:
+
+1. The `ContentTypesFromCodeBuilder` - the system which builds a content-type definition from a C# class, record or interface
+1. The `ContentTypesFromCodeManager` - the system which manages and caches the content-type definitions
+
+
+
+### General Requirements and how it's Implemented
+
+For this to work we want:
+
+1. To use the same C# POCOs to generate the content-type definition (to avoid separate definitions which can accidentally vary) - done by the `ContentTypesFromCodeBuilder`
+1. Automatically convert any POCO class/record to a content-type definition when needed - `ContentTypesFromCodeBuilder`
+1. Cache the generated content-type definitions to avoid repeated generation - `ContentTypesFromCodeManager`
+1. Reliably detect which type should be used based on the code itself, to use the _same_ definition for each conversion, even on future requests - `IDataFactory` with `ContentTypesFromCodeManager`
+    ...with option to manually set a different type, if needed (but should be rarely used)
+
+
+### Remarks about Anonymous Types
 
 These will also be treated as if they were classes/records, without any decoration.
 The content-type will be generated based on the properties of the anonymous type.

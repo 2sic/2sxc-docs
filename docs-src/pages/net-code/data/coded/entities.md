@@ -11,33 +11,76 @@ uid: NetCode.Data.Coded.Entities
 
 Often data is provided as a POCO object (class or record) and needs to be converted to an entity for further processing.
 
-This is used both for providing internal data through the DataSource system
+This is used both for providing internal data through the **DataSource** system
 and for custom DataSources which will provide new data to an application.
 
-## Four Common Ways This Happens
+So the classic setup is this:
 
-1. Either the data object (class/record) implements `IRawEntity` and provides the necessary information itself
+1. Some service prepares data according to specs
+1. A DataSource is created to provide this data in the standardized way
+1. This DataSource uses the service to retrieve the data - with or without parameters.
+1. It then converts the data to entities and returns them to the system.
+
+The conversion of data to entities is done by the `IDataFactory` which can handle various types of data and convert them to entities.
+
+> [!TIP]
+> In general, you must provide objects implementing `IRawEntitySource` in some way to the `ProvideOut()` method of the DataSource.
+>
+> Ideally the original service already create objects which implement this interface,
+> to avoid unnecessary conversions and a lot of code.
+
+## Four Common Ways to Provide Raw Entities
+
+1. Either the data object (class/record) implements `IRawEntity` and provides the necessary information itself.  
+      This is the most direct way, but forces your objects to have `Id`, `Guid`, `Created`, `Modified` and `Values` properties, which may not be desired in all cases.
 
 2. Or it provides a converter using `IRawEntityConvertible` which provides a `IRawEntityConverter` on the `GetConverter()` method,
-    which will then be used to convert the object to an entity
+   which will then be used to convert the object to an entity.  
+      This is recommended when you have to create complex conversions and sometimes need some logic to handle the data.
 
-3. Or it implements `IRawEntityAutoConvert` which will automatically convert the object to an entity using reflection and the property names
+3. Or it implements `IRawEntityAutoConvert` which will automatically convert the object to an entity using reflection and the property names.  
+      This is the least efficient but is usually good enough; it requires your data-objects to be quite clean and only have the properties you expect.
 
-4. Or it's just a plain object and is converted using reflection (which is more time consuming)
+4. Or it's just a plain object and is converted using reflection (which is more time consuming).  
+      This is mainly recommended for code inside Apps, but not inside EAV/2sxc which should be more robust.
 
 Bonus: Advanced way
 
 Conversion of data to Entities can also be done by calling a `Create()` method on the `IDataFactory` providing it
 with a dictionary of values. This is not common in external code, but often is a quick way to create Entities.
 
-TODO: document the RawEntity, the conversion, standardize naming etc.
+> [!TIP]
+> When data is converted, it will assign a **Content-Type** to the generated data.
+> Ideally this is done in a controlled way, using `[ContentType]` attributes on the data objects.
+>
+> 👉🏼 See [](xref:NetCode.Data.Coded.ContentTypes)
 
-Internally this is done by 2 important components:
 
-1. The `IDataFactory` which can handle `IRawEntity` and conversion objects and convert them to entities
-1. The `CustomDataSource` which can also convert anonymous objects
+## Best Practices
 
-TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.
+### Avoid Creating many Objects
+
+If possible, make sure that DTOs or similar objects already implement the conversion capability,
+so that they are ready-to-convert when provided by the service.
+This avoids unnecessary conversions and extra code.
+
+
+### Prefer Records
+
+As .net matured, it introduced records, which seem to be the best way forward to define data objects.
+They can be immutable, have a clear constructor and are easy to use.
+They are especially ideal for functional style programming, where new objects copy all the properties of previous objects, but with some changes.
+
+
+### Differentiate Between Internal Data and External Data
+
+If the raw data is only used for internal purposes, it can be a simple object with the necessary properties.
+
+if the data will probably also be used inside Apps, then it should go a more complex path,
+basically placing the Schema on an Interface (not on the Raw object).
+Ask @iJungleboy for details until we have more examples.
+
+
 
 ## Core Conversion
 
@@ -48,6 +91,7 @@ Basically any `IRawEntity` (which automatically is a `IRawEntitySource`) will im
 1. Identifiers: `Id` and `Guid`
 1. Dates: `Created`, `Modified`
 1. Values (dictionary)
+
 
 ### RawEntityConvertible
 
@@ -60,15 +104,47 @@ to save code (for non-performance critical code).
 
 👉🏼 See example in the `UserModelRaw` for half-reflection based conversions.
 
+
 ### RawEntityAutoConvert
 
 If the object implements `IRawEntityAutoConvert`, it will automatically be converted to an entity using reflection and the property names.
 This is less efficient than a custom converter, but is often good enough for simple objects
 and it's great for many conversions which are not performance critical.
 
-👉🏼 See example in the `EntityRelationship` which uses the `IRawAutoConvert`
+👉🏼 See example in the `EntityRelationship` which uses the `IRawEntityAutoConvert`
 
-## Relationships Connecting Data
+
+### Converting Objects directly (not recommended)
+
+This method is for small-scale/quick-and-dirty implementations, typically for simple DataSources inside Apps.
+You can find tutorials how to do this, so it's not explained further.
+
+Note that you must inherit from the `CustomDataSource` to get full anonymous conversion.
+
+
+
+## Content-Type Assignment to Converted Data
+
+To make future back-conversions to models easier and better,
+it's often important that generated data
+knows what content-type it came from - so that `User` data is not confused with `Site` data.
+
+All converted objects will be assigned a `Type` which is an `IContentType` which is either generated from the object itself or provided by the `IRawEntity` or `IRawEntityConverter`.
+
+If nothing is specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.
+
+> [!TIP]
+> As of now, the raw entity is always the source of the content-type.
+> If ever you need to reference another object to provide the schema,
+> use the `[ContentTypeAssign]` attribute on the raw entity to specify the other object which should be used to generate the content-type.
+> This allows specifying a different content-type on the raw object.
+>
+> Alternatively you can specify it in the `Options` on the `IDataFactory`.
+
+
+
+
+## Relationships Connecting Data (very Advanced)
 
 Relationships are quite complex, as the final object should have direct access to children and parents.
 
@@ -121,27 +197,13 @@ var values = new Dictionary<string, object>
 
 This happens internally in the `IDataFactory` which will first create all entities and then map them to each other based on the keys.
 
+
+
 ## Metadata - not yet finalized or documented TODO:
 
 
 
 
-## Content-Type Assignment to Converted Data
-
-To make future back-conversions to models easier and better,
-it's often important that generated data
-knows what content-type it came from - so that `User` data is not confused with `Site` data.
-
-All converted objects will be assigned a `Type` which is an `IContentType` which is either generated from the object itself or provided by the `IRawEntity` or `IRawEntityConverter`.
-
-If nothing is specified, the object itself will be used to create a definition; if it's anonymous, a neutral name will be used.
-
-> [!TIP]
-> As of now, the raw entity is always the source of the content-type.
-> This may change, but as of v22.0 there is no mechanism to provide
-> a different content-type on the raw object.
->
-> So to specify a different content type requires it to be mentioned in the `Options` on the `IDataFactory`.
 
 
 ## How to Use (in 2sxc/EAV internal)
@@ -160,6 +222,27 @@ Some tips:
     And if you do have special `Values` which should be included in the Entity, you must derive a class and override it.
     `Values` will only be filtered out if it has the exact name `Values` and is of type `IDictionary<string, object>`.
 
+
+
+## Internal Data Flow
+
+1. Every DataSource will call `ProvideOut()` to provide the data to the system.
+1. The `ProvideOut()` method will call the `IDataFactory` to convert the data automatically.
+1. It will receive a method to provide the data and options...
+1. ...but options are usually not needed any more, since the `[ContentType]` attributes on the data objects are usually enough to determine most of the settings.
+
+> [!TIP]
+> Try to avoid using options, and prefer to specify everything important incl. title on the class itself.
+
+
+
+
+Internally this is done by 2 important components:
+
+1. The `IDataFactory` which can handle `IRawEntity` and conversion objects and convert them to entities
+
+
+TODO: move code from CustomDataSource to specialized Factory and make it more generic, so that it can be used in other places too.
 
 
 ## Maturity of the System as of 2026-07-24 (2dm)

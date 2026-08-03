@@ -125,7 +125,60 @@ public void ShouldCalculateCorrectly(int a, int b, int expected)
   Equal(expected, result);
 }
 </code></pre>
-<h2 id="example-with-memberdata">Example with MemberData</h2>
+<h2 id="simple-example-with-static-memberdata-of-a-simple-type">Simple Example with <code>static</code> <code>MemberData</code> of a simple type</h2>
+<pre><code class="lang-csharp">public static TheoryData&lt;string?&gt; OkNamesIfSetupOk =&gt;
+[
+    null,                   // null, do checks, but should work because underlying names are ok
+    &quot;*&quot;,                    // asterisk - disable checks
+    nameof(MockForInherit), // exact correct name
+];
+
+public static TheoryData&lt;string?&gt; ThrowingNamesIfSetupOk =&gt;
+[
+    &quot;&quot;,                         // empty - will check and return bad
+    &quot;WRONG NAME&quot;,               // incorrect name - will check and return bad
+    nameof(IMockForInherit),    // incorrect name
+];
+
+[Theory, MemberData(nameof(OkNamesIfSetupOk))] 
+public void FromModel_Class_NotNull(string? typeNameCheck)
+    =&gt; NotNull(GetModel&lt;MockForInherit&gt;(typeNameCheck));
+
+[Theory, MemberData(nameof(ThrowingNamesIfSetupOk))]
+public void FromModel_Class_BadNames_Throws(string? typeNameCheck)
+    =&gt; Throws&lt;InvalidCastException&gt;(() =&gt; GetModel&lt;MockForInherit&gt;(typeNameCheck));
+</code></pre>
+<h2 id="improved-example-with-names-recommended-for-readability">Improved Example with names (recommended for readability)</h2>
+<pre><code class="lang-csharp">public record TestCase(string? Name, string Notes);
+
+public static TheoryData&lt;TestCase&gt; OkNamesIfSetupOk =&gt;
+[
+    new(null, &quot;null, do checks, but should work because underlying names are ok&quot;),
+    new(&quot;*&quot;, &quot;* - disable checks&quot;),
+    new(nameof(MockForInherit), &quot;exact correct name&quot;)
+];
+
+public static TheoryData&lt;TestCase&gt; ThrowingNamesIfSetupOk =&gt;
+[
+    new(&quot;&quot;, &quot;empty - will check and return bad&quot;),
+    new(&quot;WRONG NAME&quot;, &quot;incorrect name - will check and return bad&quot;),
+    new(nameof(IMockForInherit), &quot;incorrect name - will check and return bad&quot;)
+];
+
+
+[Theory, MemberData(nameof(OkNamesIfSetupOk))] 
+public void FromModel_Class_NotNull(TestCase testCase)
+    =&gt; NotNull(GetModel&lt;MockForInherit&gt;(testCase.Name));
+
+[Theory, MemberData(nameof(ThrowingNamesIfSetupOk))]
+public void FromModel_Class_BadNames_Throws(TestCase testCase)
+    =&gt; Throws&lt;InvalidCastException&gt;(() =&gt; GetModel&lt;MockForInherit&gt;(testCase.Name));
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For readability, we suggest placing the notes/description at the end of the data-record.</p>
+</div>
+<h2 id="example-with-memberdata-with-more-complex-types">Example with MemberData with More Complex Types</h2>
 <p>This example uses <code>[MemberData]</code> to provide the data for the test.</p>
 <pre><code class="lang-csharp">using ToSic.Eav.Apps;
 using ToSic.Eav.Testing;
@@ -185,7 +238,111 @@ public class GlobalConfigurationOverride(IAppReaderFactory appReaderFactory)
         return entities;
     }
 }
+</code></pre><h2 id="code-generated-test-cases-using-methoddata">Code Generated Test Cases using <code>[MethodData]</code></h2>
+<p>In some scenarios you will want to generate the test cases but not in a static way.</p>
+<p>For this you must use the <code>Xunit.DependencyInjection</code> package, which allows you to use <code>[MethodData]</code> to generate the test cases.</p>
+<ol>
+<li>Make sure you have the <code>Xunit.DependencyInjection</code> package installed.</li>
+<li>Create the object which will generate the test cases.</li>
+<li>Register it in DI</li>
+<li>Add attributes like this: <code>[Theory, MethodData(nameof(TestCaseGenerator.ValidTypesWithGoodNames), typeof(TestCaseGenerator))]</code></li>
+</ol>
+<p>Short example of a generator class:</p>
+<pre><code class="lang-csharp">public class TestCaseGenerator(MockDataGenerator&lt;MockForInherit&gt; generator) : ToModelTestsBase(generator, false)
+{
+    private static TestCaseName[] OkNamesIfSetupOk =&gt;
+    [
+        new(null, &quot;null, do checks, but should work because underlying names are ok&quot;),
+        new(&quot;*&quot;, &quot;* - disable checks&quot;),
+        new(nameof(MockForInherit), &quot;exact correct name&quot;)
+    ];
+
+    public IEnumerable&lt;object[]&gt; OkTypesAndNamesIfSetupOk()
+    {
+        return OkNamesIfSetupOk
+            .SelectMany(testCase =&gt; new object[][] {
+                [CreateTestCaseTypeAndName&lt;MockForInherit&gt;(testCase)],
+                [CreateTestCaseTypeAndName&lt;MockForInheritDerivedSpecsGood&gt;(testCase)],
+                [CreateTestCaseTypeAndName&lt;MockForInheritDerivedSpecsAsterisks&gt;(testCase)],
+                [CreateTestCaseTypeAndName&lt;IMockForInherit&gt;(testCase, typeof(MockForInherit))],
+                [CreateTestCaseTypeAndName&lt;IMockForInherit_ReApplyingInterfaceWithSpecsAsterisks&gt;(testCase, typeof(MockForInherit))],
+            });
+    }
+
+    private TestCaseTypeAndName CreateTestCaseTypeAndName&lt;TModel&gt;(TestCaseName testCase, Type? expected = null) where TModel : class, IModelFromEntity
+        =&gt; new(testCase.Name, this.GetModel&lt;TModel&gt;(testCase.Name), expected ?? typeof(TModel), testCase.Notes);
+}
 </code></pre>
+<p>Used in a test like this:</p>
+<pre><code class="lang-csharp">public abstract class ToModelInheritanceTests(MockDataGenerator&lt;MockForInherit&gt; generator, bool useInternal)
+    : ToModelTestsBase(generator, useInternal)
+{
+
+    [Theory, MethodData(nameof(TestCaseGenerator.OkTypesAndNamesIfSetupOk), typeof(TestCaseGenerator))]
+    public void FromVarious_NotNull(TestCaseTypeAndName testCase)
+        =&gt; NotNull(testCase.GeneratedObject);
+}
+</code></pre>
+<p>Important to know:</p>
+<ol>
+<li>External test cases must return a <code>IEnumerable&lt;object[]&gt;</code> where each object[] is a set of parameters for the test method.</li>
+<li>In most cases we use, we'll prefer to just return a strongly typed <code>TestCase</code> object and therefore just 1 parameter per row.</li>
+</ol>
+<h2 id="advanced-tips-for-the-methoddata-approach">Advanced Tips for the <code>[MethodData]</code> approach</h2>
+<p>So far we're not using it much, but for testing the models we used a special concept where we really just need the generator for one test class.</p>
+<p>In this case, we decided to make the generator a sub-object of the test class, and use <code>partial</code> to spread out the code,
+making it clearer what test-setups are used.
+This looks like this:</p>
+<pre><code class="lang-csharp">public abstract class ToModelInheritanceTests(MockDataGenerator&lt;MockForInherit&gt; generator, bool useInternal)
+{
+    #region Test Case Generator - Prepare for later Partials
+
+    public partial class TestCaseGenerator(MockDataGenerator&lt;MockForInherit&gt; generator): TestCaseGeneratorBase(generator);
+
+    #endregion
+
+    #region Test cases which should all just work as expected - Tests from external Generator combining object creation and name combinations
+
+    public partial class TestCaseGenerator
+    {
+        private static TestCaseName[] SkipNameCheck =&gt;
+        [
+            new(&quot;*&quot;, &quot;Skip type Check&quot;),
+        ];
+
+
+        private static TestCaseName[] OkNamesIfSetupOk =&gt;
+        [
+            new(null, &quot;null, do checks, but should work because underlying names are ok&quot;),
+            new(&quot;*&quot;, &quot;* - disable checks&quot;),
+            new(nameof(MockForInherit), &quot;exact correct name&quot;)
+        ];
+
+        public IEnumerable&lt;object[]&gt; ValidTypesWithGoodNames()
+            =&gt; CreateTestCases&lt;TestCase_IsValidAttribute&gt;(OkNamesIfSetupOk);
+    }
+
+    [Theory, MethodData(nameof(TestCaseGenerator.ValidTypesWithGoodNames), typeof(TestCaseGenerator))]
+    public void Valid_NotNull(TestCaseTypeAndName testCase)
+        =&gt; NotNull(testCase.Generator());
+
+    [Theory, MethodData(nameof(TestCaseGenerator.ValidTypesWithGoodNames), typeof(TestCaseGenerator))]
+    public void Valid_PropertyMatchesData(TestCaseTypeAndName testCase)
+        =&gt; Equal((int)TargetTypes.Entity, ((MockForInherit)testCase.Generator()!).TargetType);
+}
+</code></pre>
+<p>To explain a bit:</p>
+<ol>
+<li>We have a base class <code>TestCaseGeneratorBase</code> which has some helper methods to create the test cases.
+This is to declutter the main test class.</li>
+<li>We then create the true generator as a sub-class of the main test and have the initializer at first</li>
+<li>Then we use partials throughout the file to always keep the specs near the tests.</li>
+</ol>
+<p>In this case we also did something more: since we have a lot of tests related to
+C# classes and interfaces, we decided to decorate them with <code>[TestCase_...]</code> attributes
+which we then index to create the tests.</p>
+<p>Without this special approach, it became very hard to be sure which tests we have and what they were for.</p>
+
 </article>
 
         <div class="contribution d-print-none">

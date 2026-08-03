@@ -127,23 +127,43 @@ data, in which case it's better to use code-based content-type definitions.
 This is especially common for data which will be represented as Entities, but does not stem from the database but from environment information - such as a user, a site, statistical information etc.</p>
 <p>In such scenarios, the data will be prepared in normal objects and converted to entities for further processing and forwarding to the UI (through REST/JSON) or to Razor (through services or DataSources).</p>
 <p>Giving it a clear type helps ensure consistency and also allows for converting the generic entities back to strongly typed objects for further processing.</p>
-<h2 id="auto-generated-content-type-definitions">Auto-Generated Content-Type Definitions</h2>
-<p>Code defined types are automatically generated on-the-fly from C# classes, records and/or interfaces,
-usually at the time they are needed (during conversion of raw data to entities) and the resulting content-type is cached for future use.</p>
-<p>Internally this is handled by two important components:</p>
-<ol>
-<li>The <code>ContentTypesFromCodeBuilder</code> - the system which builds a content-type definition from a C# class, record or interface</li>
-<li>The <code>ContentTypesFromCodeManager</code> - the system which manages and caches the content-type definitions</li>
-</ol>
-<h2 id="general-requirements-and-how-its-implemented">General Requirements and how it's Implemented</h2>
-<p>For this to work we want:</p>
-<ol>
-<li>To use the same C# POCOs to generate the content-type definition (to avoid separate definitions which can accidentally vary) - done by the <code>ContentTypesFromCodeBuilder</code></li>
-<li>Automatically convert any POCO class/record to a content-type definition when needed - <code>ContentTypesFromCodeBuilder</code></li>
-<li>Cache the generated content-type definitions to avoid repeated generation - <code>ContentTypesFromCodeManager</code></li>
-<li>Reliably detect which type should be used based on the code itself, to use the <em>same</em> definition for each conversion, even on future requests - <code>IDataFactory</code> with <code>ContentTypesFromCodeManager</code>
-...with option to manually set a different type, if needed (but should be rarely used)</li>
-</ol>
+<h2 id="example">Example</h2>
+<p>Here's an example of an object with attributes to specify the content-type definition:</p>
+<pre><code class="lang-csharp">/// &lt;summary&gt;
+/// Content-Type for the general settings of a field (attribute) on a content-type.
+/// &lt;/summary&gt;
+/// &lt;remarks&gt;
+/// Note that as of 2026-07-26 there is no model yet to use, but it should be added soon.
+/// &lt;/remarks&gt;
+[ModelSpecs(ContentType = Constants.ContentTypeName)]
+[ContentType(
+    Name = Constants.ContentTypeName,
+    Guid = &quot;0bab4be8-e795-4d9f-b50e-f7ec161ed8cb&quot;,  // If possible, should match the guid of the real database content-type, if it exists
+    Description = &quot;General settings for every Attribute (field) on a Content-Type.&quot;
+)]
+public interface IFieldSettingsGeneral : IModelFromEntity&lt;FieldSettingsGeneralModel&gt;
+{
+    [PrivateApi]
+    public static class Constants { public const string ContentTypeName = &quot;@All&quot;; }
+
+    [ContentTypeField(IsTitle = true)]
+    string Name { get; }
+
+    string DefaultValue { get; }
+
+    /// &lt;summary&gt;
+    /// Description of this field.
+    /// &lt;/summary&gt;
+    string Notes { get; }
+
+    /// &lt;summary&gt;
+    /// The official input-type - usually something like `@string-default`
+    /// &lt;/summary&gt;
+    string InputType { get; }
+
+    //...
+}
+</code></pre>
 <h2 id="controlled-content-type-definition-specs">Controlled Content-Type Definition Specs</h2>
 <p>Allow for specifying specs of the content-type definition using these attributes:</p>
 <ol>
@@ -153,7 +173,25 @@ usually at the time they are needed (during conversion of raw data to entities) 
 <li><code>[ContentTypeAssign]</code> - to specify that a raw object should be assigned another content-type from an interface or another class/record.</li>
 </ol>
 <p>These specs are mainly needed for certain serialization activities (such as <code>IsTitle</code> information) and for detecting the type (like when converting back to models later on).</p>
-<h2 id="remarks-about-anonymous-types">Remarks about Anonymous Types</h2>
+<h2 id="internals">Internals</h2>
+<h3 id="auto-generated-content-type-definitions">Auto-Generated Content-Type Definitions</h3>
+<p>Code defined types are automatically generated on-the-fly from C# classes, records and/or interfaces,
+usually at the time they are needed (during conversion of raw data to entities) and the resulting content-type is cached for future use.</p>
+<p>Internally this is handled by two important components:</p>
+<ol>
+<li>The <code>ContentTypesFromCodeBuilder</code> - the system which builds a content-type definition from a C# class, record or interface</li>
+<li>The <code>ContentTypesFromCodeManager</code> - the system which manages and caches the content-type definitions</li>
+</ol>
+<h3 id="general-requirements-and-how-its-implemented">General Requirements and how it's Implemented</h3>
+<p>For this to work we want:</p>
+<ol>
+<li>To use the same C# POCOs to generate the content-type definition (to avoid separate definitions which can accidentally vary) - done by the <code>ContentTypesFromCodeBuilder</code></li>
+<li>Automatically convert any POCO class/record to a content-type definition when needed - <code>ContentTypesFromCodeBuilder</code></li>
+<li>Cache the generated content-type definitions to avoid repeated generation - <code>ContentTypesFromCodeManager</code></li>
+<li>Reliably detect which type should be used based on the code itself, to use the <em>same</em> definition for each conversion, even on future requests - <code>IDataFactory</code> with <code>ContentTypesFromCodeManager</code>
+...with option to manually set a different type, if needed (but should be rarely used)</li>
+</ol>
+<h3 id="remarks-about-anonymous-types">Remarks about Anonymous Types</h3>
 <p>These will also be treated as if they were classes/records, without any decoration.
 The content-type will be generated based on the properties of the anonymous type.
 It will also cache the type, for future re-use, since these will usually be created again (anonymous types in C# are actually real types).</p>
