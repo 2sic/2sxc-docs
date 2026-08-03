@@ -17,7 +17,67 @@ todo
 1. Be able to do this without context, so it works in static code and other internal scenarios.
 1. Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)
 
-## Step 3: Conversion of Entities to Models
+## Common Usage
+
+In most cases, you can convert a single entity to a model, or a list of entities to a list of models, using the `ToModel` extension method.
+
+```csharp
+// Convert a single entity to a model
+var model = entity.ToModel<IPagingModel>();
+// Convert a list of entities to a list of models
+var models = entities.ToModels<IPagingModel>();
+```
+
+There are also many helper methods such as `FirstModel<TModel>` and more.
+
+All these methods can also be used with a factory, which can provide context or other information needed for the conversion.
+TODO: explain where the factory would come from.
+
+```csharp
+// Convert a single entity to a model with a factory
+var model = entity.ToModel<IPagingModel>(factory);
+// Convert a list of entities to a list of models with a factory
+var models = entities.ToModels<IPagingModel>(factory);
+```
+
+## Using `ToModelOptions` for Conversion
+
+You can also provide options which regulate how conversions work, using the `ToModelOptions` class.
+
+```csharp
+// Convert a single entity to a model with options
+var model = entity.ToModel<IPagingModel>(options: new ToModelOptions { /* set options here */ });
+// Convert a list of entities to a list of models with options
+var models = entities.ToModels<IPagingModel>(options: new ToModelOptions { /* set options here */ });
+```
+
+The most common options would be
+
+* `NullHandling` (an enum) - to determine how null values are handled during conversion
+* `TypeName` (string) - to specify the content-type name for the conversion, if needed; set to `*` to not filter/restrict what is converted
+
+## Automatic Content-Type Name Detection
+
+Various Model conversions perform content-type name detection
+to prevent accidental conversion to an incorrect model
+or to filter out data which is not relevant for the conversion.
+So for situations where this name matters, here's how it's detected.
+
+Note that if the conversion methods is called using an interface, the
+lookup behavior will respect both the interface and the referenced model class/record.
+
+Also note that of the criteria below, the first match will be used.
+So if you specifically determine the type name, that's the only one which will be respected, and the others will be ignored.
+
+1. If conversion options are used (`ToModelOptions`) the given type name of the options are used, if present; CSV or `*` are possible.
+1. Then the `[ModelSpecs]` on the specified type (class or interface) are used, if present; CSV or `*` are possible.
+1. Then the `[ContentType]` on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.
+1. If an interface was specified, then the target type is retrieved, and the `[ModelSpecs]` and `[ContentType]` on the target type are evaluated.
+1. If none of these conditions are met, then the name of the specified type (and if it was an interface, the target type) is used (including derivations of it)  
+    Derived names are created by removing leading `I` or trailing `...Model` or `...Raw`
+
+
+## Conversion of Entities to Models
 
 This will be very common in own code, basically to use typed data access to entities.
 
@@ -61,6 +121,8 @@ a factory must be supplied of the type `IModelFactory` which can be used to prov
 
 Objects which must use a factory should declare this by attaching the interface `IModelFactoryRequired` to the model class/record.
 
+
+
 ### Special case about Interfaces
 
 There are various cases where data must be converted to entities, and back to models.
@@ -85,6 +147,8 @@ As this will usually only be relevant for 2sxc provided objects, the implementat
 1. Creating data will use the raw-data-object, and reading data will use the `...ModelFromEntity`.
 1. Both Raw and `...ModelFromEntity` will usually be internal, to not bleed out code for accidental use.
 
+
+
 ### Conventions for own code base
 
 1. The interface should always hold the Content-Type Definition!
@@ -94,6 +158,8 @@ As this will usually only be relevant for 2sxc provided objects, the implementat
     1. should always be named `...Model` as it's shown in the docs, and we want the docs to show how to use it
 1. The Raw model should always be called `...Raw` and if possible should be internal
 1. Constants - if needed - should be on the interface as a sub-class
+
+
 
 ### Incomplete Conventions ⚠️⚠️⚠️
 

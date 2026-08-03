@@ -14,14 +14,16 @@ Often data is provided as a POCO object (class or record) and needs to be conver
 This is used both for providing internal data through the DataSource system
 and for custom DataSources which will provide new data to an application.
 
-## Three Common Ways This Happens
+## Four Common Ways This Happens
 
 1. Either the data object (class/record) implements `IRawEntity` and provides the necessary information itself
 
 2. Or it provides a converter using `IRawEntityConvertible` which provides a `IRawEntityConverter` on the `GetConverter()` method,
     which will then be used to convert the object to an entity
 
-3. Or it's just a plain object and is converted using reflection (which is more time consuming)
+3. Or it implements `IRawEntityAutoConvert` which will automatically convert the object to an entity using reflection and the property names
+
+4. Or it's just a plain object and is converted using reflection (which is more time consuming)
 
 Bonus: Advanced way
 
@@ -39,15 +41,32 @@ TODO: move code from CustomDataSource to specialized Factory and make it more ge
 
 ## Core Conversion
 
+### RawEntity
+
 Basically any `IRawEntity` (which automatically is a `IRawEntitySource`) will implement
 
 1. Identifiers: `Id` and `Guid`
 1. Dates: `Created`, `Modified`
 1. Values (dictionary)
 
+### RawEntityConvertible
+
 On the other hand, any `IRawEntityConvertible` will provide a converter through the `GetConverter()` method.
 This returns an `IRawEntityConverter` responsible for the conversion.
 It will return an `IRawEntity` which will then be processed as above.
+
+This can be super detailed or sometimes also use some reflection
+to save code (for non-performance critical code).
+
+👉🏼 See example in the `UserModelRaw` for half-reflection based conversions.
+
+### RawEntityAutoConvert
+
+If the object implements `IRawEntityAutoConvert`, it will automatically be converted to an entity using reflection and the property names.
+This is less efficient than a custom converter, but is often good enough for simple objects
+and it's great for many conversions which are not performance critical.
+
+👉🏼 See example in the `EntityRelationship` which uses the `IRawAutoConvert`
 
 ## Relationships Connecting Data
 
