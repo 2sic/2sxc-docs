@@ -8,7 +8,6 @@ so we believe it's not used yet.
 During our first attempts to use it we determined that it needs some more love, so we reworked it.
 This is kind of a breaking change, but we believe it's not used yet, so it should be safe to do.
 
-
 1. 💃🏼 Introduce `ToModelOptions` for type-name and null-conversion options
 1. 💃🏼 Standardize exceptions thrown for better diagnostics, incl. missing empty constructor etc.
 1. 💃🏼 Ensure that interface specs are prioritized to concrete implementations if the interface was used in the `ToModel<I>` method
@@ -18,6 +17,7 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 1. 💃🏼 Introduced `IFieldSettingsGeneral`, `IContentTypeDetails`, `IPaging`, `IViewConfiguration` models
 1. 💃🏼🧪 Created ca. 500 unit tests
 1. 💃🏼📖 Major documentation for models use - still WIP
+
 
 #### Raw Entity Conversion APIs 🦴
 
@@ -30,16 +30,21 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 1. 🦴🧪 Created ca. 400 unit tests
 1. 🦴📖 Documentation for this [](xref:NetCode.Data.Coded.ContentTypes) / [](xref:NetCode.Data.Coded.Entities)
 
+
 #### Other
 
 1. ⚠️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.
-1. 
+
 
 #### Copilot Enhancements ✈️
 
 1. ✈️ Data Copilot should not generate Ephemeral fields
 1. ✈️ Data Copilot better detects entity-fields and the expected data type within
 1. ✈️ Data Copilot auto-generate models on changes (WIP / BETA) - ATM for changes in ContentType (like name) and for changes in field names
+
+#### App Enhancements
+
+1. Changed all apps to build with Vite (TODO: verify)
 
 #### Bugfixes
 

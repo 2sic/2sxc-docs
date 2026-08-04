@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title> | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/history/v22/_all.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="">
+
+<h2 id="version-22">Version 22</h2>
+<hr>
+<h3 id="2sxc-v220000-2026-08--preparing--wip">2sxc v22.00.00 (2026-08-??) PREPARING / WIP</h3>
+<h4 id="models-apis-">Models APIs 💃🏼</h4>
+<p>The Models API was officially released before, but not really communicated,
+so we believe it's not used yet.
+During our first attempts to use it we determined that it needs some more love, so we reworked it.
+This is kind of a breaking change, but we believe it's not used yet, so it should be safe to do.</p>
+<ol>
+<li>💃🏼 Introduce <code>ToModelOptions</code> for type-name and null-conversion options</li>
+<li>💃🏼 Standardize exceptions thrown for better diagnostics, incl. missing empty constructor etc.</li>
+<li>💃🏼 Ensure that interface specs are prioritized to concrete implementations if the interface was used in the <code>ToModel&lt;I&gt;</code> method</li>
+<li>💃🏼 On interfaces which are used for both models and Raw Data, also respect the <code>Name</code> of the <code>[ContentType]</code> attribute</li>
+<li>💃🏼 Change derived class to be on the <code>IModelFromEntity&lt;Concrete&gt;</code> instead of the <code>[Model...]</code> attribute</li>
+<li>💃🏼 Create / test many combinations of <code>ToModel</code> / <code>FirstModel</code> etc. - also with/without factory</li>
+<li>💃🏼 Introduced <code>IFieldSettingsGeneral</code>, <code>IContentTypeDetails</code>, <code>IPaging</code>, <code>IViewConfiguration</code> models</li>
+<li>💃🏼🧪 Created ca. 500 unit tests</li>
+<li>💃🏼📖 Major documentation for models use - still WIP</li>
+</ol>
+<h4 id="raw-entity-conversion-apis-">Raw Entity Conversion APIs 🦴</h4>
+<ol>
+<li>🦴 Created / improved <code>ContentTypeFromCode</code> generation system as it's the foundation of type-names for models</li>
+<li>🦴 also renamed <code>[ContentTypeSpecs]</code> to <code>[ContentType]</code> and introduced <code>[ContentTypeUse]</code> for referencing other content-types</li>
+<li>🦴 Changed base object <code>RawEntity</code> to be a record</li>
+<li><del>🦴 Created fallback <code>RawEntityClassic</code> for class based data - not sure if we'll keep this though</del></li>
+<li>🦴 Reworked Object-To Dictionary APIs to reduce the code needed</li>
+<li>🦴 Major rework in general...</li>
+<li>🦴🧪 Created ca. 400 unit tests</li>
+<li>🦴📖 Documentation for this <a class="xref" href="../../../../net-code/data/coded/content-types.html">Coded Content-Type Definitions new v22</a> / <a class="xref" href="../../../../net-code/data/coded/entities.html">Coded Data Creation of Entities WIP v22</a></li>
+</ol>
+<h4 id="other">Other</h4>
+<ol>
+<li>⚠️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.</li>
+</ol>
+<h4 id="copilot-enhancements-">Copilot Enhancements ✈️</h4>
+<ol>
+<li>✈️ Data Copilot should not generate Ephemeral fields</li>
+<li>✈️ Data Copilot better detects entity-fields and the expected data type within</li>
+<li>✈️ Data Copilot auto-generate models on changes (WIP / BETA) - ATM for changes in ContentType (like name) and for changes in field names</li>
+</ol>
+<h4 id="app-enhancements">App Enhancements</h4>
+<ol>
+<li>Changed all apps to build with Vite (TODO: verify)</li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🪲 <code>MailService</code> threw exception when not providing attachments</li>
+<li>🪲 Compiling code fails to pick up config.json on the fly, so installing Radmin doesn't work until restart</li>
+<li>🪲 Bug exporting apps with very long names</li>
+<li>🪲 Quick-Dialog had timing issues, so it sometimes didn't appear as expected</li>
+</ol>
+<h4 id="toolbars">Toolbars</h4>
+<ol>
+<li>✏️ Toolbars opening the edit dialog for only an entity-field works now</li>
+<li>✏️ Toolbars targeting a entity-field for add-new can now specify the content-type to use for the new entity (<code>New(contentType: '...')</code>)</li>
+<li>✏️ Improve icon assignment - especially for entity-fields with multiple target types to pick up the right one from the configurations</li>
+</ol>
+<h4 id="oqtane-">Oqtane 🩸</h4>
+<ol>
+<li>🩸 Support the new Multi-Language system of Oqtane (note that it's still very buggy, because the Oqtane implementation is buggy)</li>
+<li>🩸 Improve ImageFlow in edge cases</li>
+<li>🩸 Introduce Linux support (and test on Linux), preparing for container use as well and multi-DB</li>
+</ol>
+<h4 id="sysdata">SysData</h4>
+<p>This is about changing how most of our internal APIs work.
+To make them more flexible, we're changing most of them to use DataSources.
+This is the list of systems which we changed, but there are way more as we can't list every one.</p>
+<ol>
+<li>Apps</li>
+<li>ZoneApps</li>
+<li>AppLanguages</li>
+<li>SiteLanguages</li>
+<li>ZoneLanguages</li>
+<li>SystemInfo</li>
+<li>Fields
+<ol>
+<li>InputTypes</li>
+<li>ReservedNames</li>
+<li>SharedFields</li>
+<li>Ancestors</li>
+<li>Descendants</li>
+</ol>
+</li>
+<li>InheritableApps</li>
+<li>AppStatistics</li>
+<li>Scopes</li>
+<li>AppEnhancements
+<ol>
+<li>AppSettings</li>
+<li>AppResources</li>
+<li>AppSettingFields</li>
+<li>AppResourceFields</li>
+<li>AppMetadata</li>
+</ol>
+</li>
+<li>GetEntitiesForAdmin</li>
+<li>AppWebApiControllers
+<ol>
+<li>AppWebApiControllerDetails</li>
+<li>AppWebApiControllerEndpoints</li>
+</ol>
+</li>
+<li>ContentTypeDetails</li>
+</ol>
+<h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
+<ol>
+<li>Entity Framework: Disabled MARS (Multiple Action Result Sets)</li>
+<li>EAV UI: Upgrade to Angular 22</li>
+<li>Quick-Dialog: Upgrade to Angular 22</li>
+<li>Improve handling of git dependabot requests</li>
+<li>Various unit tests in the <code>$2sxc</code> ui using Vitest</li>
+<li>Refactor import/export code</li>
+</ol>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h4>
+<ol>
+<li>⬇️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.</li>
+</ol>
+<hr>
+<h2 id="breaking-changes-in-v22">Breaking Changes in v22</h2>
+<p>We marked the breaking changes like this</p>
+<ul>
+<li>⚠️ things which may affect you</li>
+<li>⬇️ things which are extremely unlikely to affect you</li>
+</ul>
+<h3 id="breaking-changes-in-eav-and-2sxc-v2200">Breaking Changes in EAV and 2sxc v22.00</h3>
+<h4 id="breaking-changes-in-eav-and-2sxc-v2100">Breaking Changes in EAV and 2sxc v21.00</h4>
+<ol>
+<li>⬇️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/history/v22/_all.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
