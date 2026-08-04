@@ -11,15 +11,13 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2026-01-07**
+Last Update: **2026-08-04**
 
-## Priority 2026 Q1
+## Priority 2026 All Year
 
 > [!TIP]
 > The main priority is to finalize a lot of things which are already done,
 > but often not fully documented or waiting for final tweaks.
->
-> Also to release an LTS fairly soon.
 
 ### Resources 2026 Q1
 
@@ -30,52 +28,36 @@ Last Update: **2026-01-07**
 
 #### Awaiting Release / almost DoD
 
-1. ✅ @2dm: Generic Query API for system data
-    1. ✅ @STV: incl. `$casing` for queries to get data in camelCase
-1. @2dm: Generic Model Factory System for converting entities to typed models
-1. @2rb: Admin UI: Show extensions details of installed extensions - ca. 1d ⏳
-1. @2rb: Admin UI: Undelete ca. 1d ⏳
-1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d ⏳
 
+### To Be Released in v22
+
+1. @2dm: Generic Model Factory System for converting entities to typed models
+    1. with a few public models to use
+    1. with some kind of list to see them all
+1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d ⏳
+1. @STV: Code Copilot: Auto-Generate models as they change - ca. 50% ⏳
+1. @2rb: Angular Update on Quick-Dialog
+1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
+
+
+1. @2ro: Change all build pipelines to use vite
+1. @2ro: change all builds to use Typescript 7
+1. @2ro: change all builds to use eslint (many still have TSLint)
 
 ### Things to Finalize and Document / Blog / Tutorial
 
-1. @2dm / @2rb: Extension System - ca. 2d
-1. @2dm: Radmin - ca. 1d for v1
-1. @2dm: Radmin - ca. 1d for communication, promoting
-1. @2rb: Code Generator custom settings minor bug
-1. @2dm / @2rb: Model generator - finalize, docs, samples - ca. 2d
-1. @2dm: 2sxc docs for VS Code / intellisense (most are missing ATM because of DLL reorgs) - ca. 1d
-1. @STV: Improve App SLN files for VS code so it can use the latest C# devkit (major) - ca. 0.5-2d
-1. @2dm and others - lots of small bugfixes which have been accumulating over time - ca. 3-5d
-
-### Priorities 2rb
-
-#### Week 5
-
-1. Assist in publishing / documenting JS-App-Editions, Angular & React extensions - ca. 1d
-1. Blog about each extension - ca. 1d
-1. Short video & blog about installing and using extensions - ca. 0.5d
-1. Short video & blog about creating extensions - ca. 1d
-1. Review more Extensions to create / demo / tutorialize
-
-#### Next Weeks
-
-1. Template Service - Tutorials and Docs - ca. 1d
-
-
+1. @2dm: 2sxc docs for VS Code / intellisense (most are missing ATM because of DLL reorgs) - ca. 1d / v22
+1. @2dm: and others - lots of small bugfixes which have been accumulating over time - ca. 3-5d
+1. @2rb: vCard extension - ca. 1d 50%
 
 ### Things to Implement
 
 1. @2dm: Really promote the extension system - ca. 5d
-1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
-1. @2rb: Create more extensions (Data sources, etc.)
-1. @2ro: Finish extensions for integrating Angular & React
-1. @2ro: Create sample app with Angular
-1. @2ro: Create sample app with React
+1. @2ro: Finish extensions for React & create sample app with React
 
 ### Things for Juniors to Work On
 
+1. Template Service - Tutorials and Docs - ca. 1d
 1. App Catalog - update code to use latest Angular extension
 1. EAV-UI: Deduplicate code in various places
 1. EAV-UI: create many unit tests
