@@ -7,10 +7,15 @@ uid: NetCode.Data.Coded.ContentTypes
 > [!TIP]
 > This section is a work in progress for Coded Data in 2sxc v22.
 
+
 ## Background
 
 Content Type Definitions contain the schema of an entity.
-They are objects which contain basic information such as a global ID, a name, identifier and all the attribute definitions.
+They are objects which contain basic information such as
+
+1. a unique ID (Guid)
+1. a name
+1. all the field definitions
 
 Internally every Content-Type-Definition are _assembled_ using various Builders and Assemblers.
 The specs which lead to this assembly are loaded from various sources, including:
@@ -19,18 +24,50 @@ The specs which lead to this assembly are loaded from various sources, including
 1. JSON files (for content-types which are usually loaded from the file system because they are global)
 1. Code-based definitions (for content-types which are used in code and should be strongly typed)
 
-The cases "SQL" and "JSON" are documented elsewhere.
-Here we want to focus on the code-based definitions.
+> [!TIP]
+> The cases "SQL" and "JSON" are documented elsewhere.
+> Here we only focus on the code-based definitions.
+
 
 ## Need for Code-Based Content-Type Definitions
 
-There are many cases where we also need strictly typed C# data objects representing the same
-data, in which case it's better to use code-based content-type definitions.
-This is especially common for data which will be represented as Entities, but does not stem from the database but from environment information - such as a user, a site, statistical information etc.
+There are many cases where we have _both_ strictly typed C# data objects and entities,
+representing the same data. There are 2 typical scenarios:
 
-In such scenarios, the data will be prepared in normal objects and converted to entities for further processing and forwarding to the UI (through REST/JSON) or to Razor (through services or DataSources).
+1. **DB Data**: Common data which comes from the DB (such as view definitions) which is used in code and services.  
+    _This data already has a content-type definition generated, this is not the topic here._
 
-Giving it a clear type helps ensure consistency and also allows for converting the generic entities back to strongly typed objects for further processing.
+1. **Service Data**: Data which comes from a service, and is converted to entities
+    (such as user information, site information, statistical information etc.)  
+    _This is what we're looking at._
+
+**Service Data** is prepared in POCO objects
+and converted to entities for further processing and forwarding
+to the UI (through REST/JSON) or to Razor (through services or DataSources).
+
+> [!TIP]
+> Giving **Service Data** a clear type allows for later conversion of the entities to models.
+
+> [!IMPORTANT]
+> Not every raw data object needs a content-type definition.
+>
+> We only need it on raw objects which are converted to entities
+> **and** which are expected to be converted back to strongly typed objects later on.
+>
+> This is because automatic `ToModel` conversion needs to know the exact name.
+> Without a custom [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) attribute,
+> the name of the content-type will be derived from the class name, which may not be what you want.
+
+
+## Content-Type Definition - With or Without Attributes
+
+It's important to know that every **Raw** to **Entity** conversion needs a content-type definition.
+So it will always be generated automatically.
+
+The only question is whether you need full control of the definition,
+or whether you are happy with the automatic defaults.
+
+
 
 ## Example
 
@@ -75,15 +112,20 @@ public interface IFieldSettingsGeneral : IModelFromEntity<FieldSettingsGeneralMo
 
 ## Controlled Content-Type Definition Specs
 
-Allow for specifying specs of the content-type definition using these attributes:
+These specs are mainly needed for
 
-1. `[ContentType]` - for the content-type itself, for example to set the name, global identifier etc.
-1. `[ContentTypeField]` - for the attributes of the content-type, for example to set the description, is-title etc.
-1. `[ContentTypeIgnore]` - to exclude object properties in the content-type definition
-1. `[ContentTypeAssign]` - to specify that a raw object should be assigned another content-type from an interface or another class/record.
+* serialization activities (such as `IsTitle` information)
+* detecting the type name/guid (like when converting back to models later on)
 
-These specs are mainly needed for certain serialization activities (such as `IsTitle` information) and for detecting the type (like when converting back to models later on).
+You can define custom specs on auto-generated Content Type Definitions using these attributes:
 
+1. [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) - to set name / guid etc. on the class which defines the content-type
+
+1. [`[ContentTypeUse]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeUseAttribute) - to reference another class which defines the content-type.
+
+1. [`[ContentTypeField]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute) - to configure a field of the content-type, mainly for description, is-title etc.
+
+1. [`[ContentTypeIgnore]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeIgnoreAttribute) - to exclude object properties in the content-type definition
 
 
 ## Internals
@@ -121,15 +163,15 @@ It will also cache the type, for future re-use, since these will usually be crea
 
 1. Descriptions work with
     1. No attributes at all (automatic defaults)
-    1. With `[ContentType]` and `[ContentTypeField]` attributes
+    1. With [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) and [`[ContentTypeField]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute) attributes
     1. Also on special properties such as `Id`, `Guid`, `Created`, `Modified` (added as special decorator `ContentTypeBuiltInAttributesDecorator` to the content-type)
-1. Ignore attribute works using `[ContentTypeIgnore]` attribute
+1. Ignore attribute works using [`[ContentTypeIgnore]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeIgnoreAttribute) attribute
 1. Builder can build from
     1. Anything with or without specs attributes
     1. classes (verified and has unit tests)
     1. records (verified and has unit tests)
     1. interfaces (verified and has unit tests)
-    1. all of the above having a `[ContentTypeAssign]` attribute to assign a different content-type (verified and has unit tests)
+    1. all of the above having a [`[ContentTypeUse]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeUseAttribute) attribute to assign a different content-type (verified and has unit tests)
     1. anonymous - only without specs attributes (verified and has unit tests)
 1. Caching is working
 1. internal properties such as `Id` etc. are excluded in the content-type definition

@@ -110,31 +110,122 @@
 <p>This section is a work in progress for Coded Data in 2sxc v22.</p>
 </div>
 <h2 id="background">Background</h2>
-<p>For data to be processed it sometimes needs to be treated as an entity - with a corresponding type, and sometimes it needs to be treated as a pure objects.
-This is being standardized more in v22 and explained here.</p>
-<h2 id="goals">Goals</h2>
+<p>2sic has a sophisticated data handling system for generic data, centered around
+<strong>DataSources</strong> which pass around <strong>Entities</strong>.
+These in turn have a <strong>Content-Type Definition</strong> which describes the structure of the data.</p>
+<p>For various reasons including communication with the front-end and custom code,
+most of the system data should be available in three forms:</p>
+<ol>
+<li>As <strong>POCOs</strong> - which are &quot;plain old CLR objects&quot; objects or similar structures used in services</li>
+<li>As <strong>Entities</strong> - which are generic objects with a content-type definition matching the structure of the data</li>
+<li>As <strong>Models</strong> - which are strongly typed objects with a clear structure, usually defined in code</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>To reduce the amount of code and documentation,
+we strive to keep the structure of the <strong>Raw Data</strong>, <strong>Entities</strong> and <strong>Models</strong> the same,
+so that they can be converted back and forth without loss of information.</p>
+</div>
+<h2 id="work-in-progress-v22--goals">Work in Progress v22 / Goals</h2>
+<p>Standardizing this in v22 and explained here.
+It's still a work in progress, but the goal is to have a clear and easy to use system for converting between these three forms of data.</p>
 <p>The final implementation must make it easy to:</p>
 <ol>
-<li>Provide raw data (POCO) to generate entities which have a clear content-type assigned</li>
-<li>Have re-used, strongly typed content-type objects attached to all data explaining the structure</li>
+<li>Work with (POCOs) in code and services</li>
+<li>Quickly convert these POCOs to generate entities, which are assigned a content-type definition</li>
+<li>... which matches the structure of the data (field names/types)</li>
+<li>... these Content-Type Definitions must be auto-generated based on the POCOs, and must be cached for future use</li>
 <li>Make it easy to quickly back-convert entities to POCO Models.</li>
+<li>Make it easy to reliably share the structure of POCOs and the Models using interfaces (optional, only when needed)</li>
+<li>... and if interfaces are used, make sure that the content-type definition is generated based on the interface as the master</li>
 </ol>
-<h2 id="terminology-todo">Terminology TODO</h2>
+<h2 id="terminology">Terminology</h2>
 <ol>
-<li>Raw data</li>
-<li>Model</li>
-<li>Code based Content-Type</li>
+<li><p><strong>Source Data</strong> - data as it's usually being created internally, usually in code or services, and usually in POCOs or anonymous objects</p>
+<ol>
+<li><p><strong>POCOs</strong> (Plain Old CLR Objects) - the C# data objects, usually used in services and code</p>
+</li>
+<li><p><strong>DTO</strong> (Data Transfer Objects) - the (old) C# data objects, usually used as return-objects from services and APIs <em>we are working to replace this with POCOs</em></p>
+</li>
+<li><p><strong>Raw Entity</strong> - POCO objects which can be converted to Entities, usually with a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attribute or implementing <code>IRawEntityConvertible</code></p>
+</li>
 </ol>
+</li>
+<li><p><strong>Public, Strongly Typed Data</strong> - data in a form which can be used in public APIs</p>
+<ol>
+<li><p><strong>Model</strong> - the strongly typed <em>lightweight</em> objects with a clear structure, usually defined in code</p>
+</li>
+<li><p><strong>Data Interface</strong> - a C# interface which can be used to define the structure of a model, usually used to share the structure between POCOs and Models</p>
+</li>
+<li><p><strong>Typed Item</strong> - a special type of model which implements a lot of APIs mainly for use in Razor templating, such as <code>ITypedItem</code> and <code>ITypedEntity</code></p>
+</li>
+</ol>
+</li>
+<li><p><strong>Generic Data</strong> - data in a generic form, usually used internally in 2sxc and passed around in DataSources</p>
+<ol>
+<li><p><strong>Entity</strong> - the generic objects with a content-type definition matching the structure of the data</p>
+</li>
+<li><p><strong>Content-Type Definition</strong> - the definition of the structure of an entity, usually generated from code or loaded from the database</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Conversion</strong> - the process of converting between these forms of data, usually using static extension methods or factories</p>
+<ol>
+<li><p><strong>Code to Content-Type</strong> - the content-type definition generated from code, usually from POCOs or interfaces, often based on a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attribute</p>
+</li>
+<li><p><strong>Raw to Entity</strong> - the process of converting a POCO or anonymous object to an Entity,  or implementing <code>IRawEntityConvertible</code></p>
+</li>
+<li><p><strong>Entity to Model</strong> - the process of converting an Entity to a strongly typed Model, usually using a factory or static extension methods</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Conversion System</strong> - the systems which handle conversions</p>
+<ol>
+<li><p><strong>Factories</strong> - the classes which handle the conversions like
+<code>IDataFactory</code> (raw to entity), <code>IModelFactory</code> (to create models),
+<code>IContentTypeFromCodeFactory</code> (to create content-type definitions from code).</p>
+</li>
+<li><p><strong>Static Extension Methods</strong> - the methods to convert between <em>Entities</em> and <em>Models</em>
+when they don't need any context (otherwise a factory must be used, eg. for <em>Typed Items</em>).</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="usage-guide">Usage Guide</h2>
+<p>If you are a Dnn / Oqtane developer and simply want to use the data provided by 2sic,
+or you want to create DataSources which provide data to the front-end, you should...</p>
+<h3 id="using-entities-to-models">Using Entities to Models</h3>
+<p>TODO: WRITE GUIDE</p>
+<h3 id="create-custom-data-sources-providing-entities">Create Custom Data Sources Providing Entities</h3>
+<p>TODO: WRITE GUIDE</p>
+<h2 id="implementation-guide-for-2sxceav-developers">Implementation Guide (for 2sxc/EAV developers)</h2>
+<p>It's important that our code is easy to maintain and extend,
+so we want to have a clear system for converting between these forms of data.</p>
+<p>Because perfection and consistency matters,
+you must really understand what we're doing here,
+especially while a lot of the code is not yet in the  final form.</p>
 <h2 id="step-1-content-type-definitions">Step 1 Content Type Definitions</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The Content-Type Definition is important for any raw data which
+is expected to be later converted to an Entity.</p>
+<p>So for truly internal data which we don't plan to expose to the public API, this is not needed.
+Otherwise you should really do this properly.</p>
+</div>
 <p>See <a class="xref" href="content-types.html">Coded Content-Type Definitions new v22</a></p>
-<h2 id="step-2-conversion-of-data-to-entities">Step 2: Conversion of Data to Entities</h2>
+<h2 id="step-2-conversion-of-raw-data-to-entities">Step 2: Conversion of Raw Data to Entities</h2>
+<div class="TIP">
+<h5>Tip</h5>
+<p>This is mainly important for our current <strong>SysData</strong> system.
+That's the current focus of documentation.</p>
+</div>
 <p>See <a class="xref" href="entities.html">Coded Data Creation of Entities WIP v22</a></p>
 <h2 id="step-3-conversion-of-entities-to-models">Step 3: Conversion of Entities to Models</h2>
 <p>See <a class="xref" href="models.html">Entity To Models WIP v22</a></p>
 <h2 id="notes-chaotic">Notes (Chaotic)</h2>
 <h3 id="scenarios">Scenarios</h3>
 <ol>
-<li>Data to Entities only --&gt; <code>Raw</code> or <code>anonymous</code> or object w/<code>IRawEntityConvertible</code>; optionally with <code>[ContentType]</code> attribute</li>
+<li>Data to Entities only --&gt; <code>Raw</code> or <code>anonymous</code> or object w/<code>IRawEntityConvertible</code>; optionally with <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attribute</li>
 <li>Entities to Model only --&gt; <code>X...FromEntityModel</code> w/matching ID/Name???</li>
 <li>Data to Entities to Model</li>
 </ol>

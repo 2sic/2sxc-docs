@@ -110,19 +110,50 @@
 <p>This section is a work in progress for Coded Data in 2sxc v22.</p>
 </div>
 <h2 id="background">Background</h2>
-<p>todo</p>
+<p>To use strongly typed C# objects to work with data, we need to be able to convert <strong>Entities</strong> to <strong>Models</strong>.
+There are various reasons for doing this:</p>
+<ol>
+<li>You have an object which has entity-metadata, and you want a strongly typed object to read the data.</li>
+<li>You have a data-source which provides information, and you want to use strongly typed objects to read the data.</li>
+<li>You have a list of entities, and you want to extract/convert the ones you need, based on Id/Guid/Content-Type etc.</li>
+</ol>
 <h2 id="goals">Goals</h2>
 <ol>
 <li>Enable strictly typed access to data which is stored in entities.</li>
-<li>Be able to do this without context, so it works in static code and other internal scenarios.</li>
+<li>Be able to do this <strong>without context</strong>, so it works in <strong>static code</strong> and other internal scenarios.</li>
 <li>Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)</li>
 </ol>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>The main difference between <strong>Models</strong> and <strong>Typed Items</strong> is that
+<em>Typed Items</em> have context. For example, they can lookup <code>file:72</code> to get the link to the file,
+while <em>Models</em> are context free and cannot do this.</p>
+<p>This makes it much simpler to use models.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Technically the conversion systems can convent both <em>Models</em> and <em>Typed Items</em>,
+but the <em>Typed Items</em> need the help of a <em>Factory</em>.
+The Razor API such as <code>As&lt;TModel&gt;()</code> will work for both Models and Typed Items,
+while the extension methods like <code>ToModel&lt;TModel&gt;()</code> will only work for Models,
+<em>unless</em> you also provide a factory, like <code>ToModel&lt;TModel&gt;(factory)</code>.</p>
+</div>
 <h2 id="common-usage">Common Usage</h2>
-<p>In most cases, you can convert a single entity to a model, or a list of entities to a list of models, using the <code>ToModel</code> extension method.</p>
+<h3 id="razor-with-context">Razor (with Context)</h3>
+<p>In Razor you can use the <code>As&lt;TModel&gt;()</code> extension method to convert an entity to a model.
+This works for both <em>Models</em> and <em>Typed Items</em>.</p>
+<pre><code class="lang-csharp">// Convert a single entity to a model
+var model = entity.As&lt;IPagingModel&gt;();
+// Convert a list of entities to a list of models
+var models = entityList.AsList&lt;IPagingModel&gt;();
+</code></pre>
+<h3 id="c-elsewhere">C# Elsewhere</h3>
+<p>In most cases, you can convert a single entity to a model,
+or a list of entities to a list of models, using the <code>ToModel</code> extension method.</p>
 <pre><code class="lang-csharp">// Convert a single entity to a model
 var model = entity.ToModel&lt;IPagingModel&gt;();
 // Convert a list of entities to a list of models
-var models = entities.ToModels&lt;IPagingModel&gt;();
+var models = entityList.ToModels&lt;IPagingModel&gt;();
 </code></pre>
 <p>There are also many helper methods such as <code>FirstModel&lt;TModel&gt;</code> and more.</p>
 <p>All these methods can also be used with a factory, which can provide context or other information needed for the conversion.
@@ -130,14 +161,14 @@ TODO: explain where the factory would come from.</p>
 <pre><code class="lang-csharp">// Convert a single entity to a model with a factory
 var model = entity.ToModel&lt;IPagingModel&gt;(factory);
 // Convert a list of entities to a list of models with a factory
-var models = entities.ToModels&lt;IPagingModel&gt;(factory);
+var models = entityList.ToModels&lt;IPagingModel&gt;(factory);
 </code></pre>
 <h2 id="using-tomodeloptions-for-conversion">Using <code>ToModelOptions</code> for Conversion</h2>
 <p>You can also provide options which regulate how conversions work, using the <code>ToModelOptions</code> class.</p>
 <pre><code class="lang-csharp">// Convert a single entity to a model with options
 var model = entity.ToModel&lt;IPagingModel&gt;(options: new ToModelOptions { /* set options here */ });
 // Convert a list of entities to a list of models with options
-var models = entities.ToModels&lt;IPagingModel&gt;(options: new ToModelOptions { /* set options here */ });
+var models = entityList.ToModels&lt;IPagingModel&gt;(options: new ToModelOptions { /* set options here */ });
 </code></pre>
 <p>The most common options would be</p>
 <ul>
@@ -156,8 +187,8 @@ So if you specifically determine the type name, that's the only one which will b
 <ol>
 <li>If conversion options are used (<code>ToModelOptions</code>) the given type name of the options are used, if present; CSV or <code>*</code> are possible.</li>
 <li>Then the <code>[ModelSpecs]</code> on the specified type (class or interface) are used, if present; CSV or <code>*</code> are possible.</li>
-<li>Then the <code>[ContentType]</code> on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.</li>
-<li>If an interface was specified, then the target type is retrieved, and the <code>[ModelSpecs]</code> and <code>[ContentType]</code> on the target type are evaluated.</li>
+<li>Then the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.</li>
+<li>If an interface was specified, then the target type is retrieved, and the <code>[ModelSpecs]</code> and <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> on the target type are evaluated.</li>
 <li>If none of these conditions are met, then the name of the specified type (and if it was an interface, the target type) is used (including derivations of it)<br>
 Derived names are created by removing leading <code>I</code> or trailing <code>...Model</code> or <code>...Raw</code></li>
 </ol>

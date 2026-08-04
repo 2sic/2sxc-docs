@@ -149,7 +149,7 @@ with a dictionary of values. This is not common in external code, but often is a
 <div class="TIP">
 <h5>Tip</h5>
 <p>When data is converted, it will assign a <strong>Content-Type</strong> to the generated data.
-Ideally this is done in a controlled way, using <code>[ContentType]</code> attributes on the data objects.</p>
+Ideally this is done in a controlled way, using <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attributes on the data objects.</p>
 <p>👉🏼 See <a class="xref" href="content-types.html">Coded Content-Type Definitions new v22</a></p>
 </div>
 <h2 id="best-practices">Best Practices</h2>
@@ -200,7 +200,7 @@ knows what content-type it came from - so that <code>User</code> data is not con
 <h5>Tip</h5>
 <p>As of now, the raw entity is always the source of the content-type.
 If ever you need to reference another object to provide the schema,
-use the <code>[ContentTypeAssign]</code> attribute on the raw entity to specify the other object which should be used to generate the content-type.
+use the <code>[ContentTypeUse]</code> attribute on the raw entity to specify the other object which should be used to generate the content-type.
 This allows specifying a different content-type on the raw object.</p>
 <p>Alternatively you can specify it in the <code>Options</code> on the <code>IDataFactory</code>.</p>
 </div>
@@ -263,7 +263,7 @@ And if you do have special <code>Values</code> which should be included in the E
 <li>Every DataSource will call <code>ProvideOut()</code> to provide the data to the system.</li>
 <li>The <code>ProvideOut()</code> method will call the <code>IDataFactory</code> to convert the data automatically.</li>
 <li>It will receive a method to provide the data and options...</li>
-<li>...but options are usually not needed any more, since the <code>[ContentType]</code> attributes on the data objects are usually enough to determine most of the settings.</li>
+<li>...but options are usually not needed any more, since the <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attributes on the data objects are usually enough to determine most of the settings.</li>
 </ol>
 <div class="TIP">
 <h5>Tip</h5>

@@ -9,23 +9,57 @@ uid: NetCode.Data.Coded.Models
 
 ## Background
 
-todo
+To use strongly typed C# objects to work with data, we need to be able to convert **Entities** to **Models**.
+There are various reasons for doing this:
+
+1. You have an object which has entity-metadata, and you want a strongly typed object to read the data.
+1. You have a data-source which provides information, and you want to use strongly typed objects to read the data.
+1. You have a list of entities, and you want to extract/convert the ones you need, based on Id/Guid/Content-Type etc.
 
 ## Goals
 
 1. Enable strictly typed access to data which is stored in entities.
-1. Be able to do this without context, so it works in static code and other internal scenarios.
+1. Be able to do this **without context**, so it works in **static code** and other internal scenarios.
 1. Ensure we have foundational models which have zero default properties (because of various JSON serialization aspects)
+
+> [!IMPORTANT]
+> The main difference between **Models** and **Typed Items** is that
+> _Typed Items_ have context. For example, they can lookup `file:72` to get the link to the file,
+> while _Models_ are context free and cannot do this.
+>
+> This makes it much simpler to use models.
+
+> [!TIP]
+> Technically the conversion systems can convent both _Models_ and _Typed Items_,
+> but the _Typed Items_ need the help of a _Factory_.
+> The Razor API such as `As<TModel>()` will work for both Models and Typed Items,
+> while the extension methods like `ToModel<TModel>()` will only work for Models,
+> _unless_ you also provide a factory, like `ToModel<TModel>(factory)`.
 
 ## Common Usage
 
-In most cases, you can convert a single entity to a model, or a list of entities to a list of models, using the `ToModel` extension method.
+### Razor (with Context)
+
+In Razor you can use the `As<TModel>()` extension method to convert an entity to a model.
+This works for both _Models_ and _Typed Items_.
+
+```csharp
+// Convert a single entity to a model
+var model = entity.As<IPagingModel>();
+// Convert a list of entities to a list of models
+var models = entityList.AsList<IPagingModel>();
+```
+
+### C# Elsewhere
+
+In most cases, you can convert a single entity to a model,
+or a list of entities to a list of models, using the `ToModel` extension method.
 
 ```csharp
 // Convert a single entity to a model
 var model = entity.ToModel<IPagingModel>();
 // Convert a list of entities to a list of models
-var models = entities.ToModels<IPagingModel>();
+var models = entityList.ToModels<IPagingModel>();
 ```
 
 There are also many helper methods such as `FirstModel<TModel>` and more.
@@ -37,7 +71,7 @@ TODO: explain where the factory would come from.
 // Convert a single entity to a model with a factory
 var model = entity.ToModel<IPagingModel>(factory);
 // Convert a list of entities to a list of models with a factory
-var models = entities.ToModels<IPagingModel>(factory);
+var models = entityList.ToModels<IPagingModel>(factory);
 ```
 
 ## Using `ToModelOptions` for Conversion
@@ -48,7 +82,7 @@ You can also provide options which regulate how conversions work, using the `ToM
 // Convert a single entity to a model with options
 var model = entity.ToModel<IPagingModel>(options: new ToModelOptions { /* set options here */ });
 // Convert a list of entities to a list of models with options
-var models = entities.ToModels<IPagingModel>(options: new ToModelOptions { /* set options here */ });
+var models = entityList.ToModels<IPagingModel>(options: new ToModelOptions { /* set options here */ });
 ```
 
 The most common options would be
@@ -71,8 +105,8 @@ So if you specifically determine the type name, that's the only one which will b
 
 1. If conversion options are used (`ToModelOptions`) the given type name of the options are used, if present; CSV or `*` are possible.
 1. Then the `[ModelSpecs]` on the specified type (class or interface) are used, if present; CSV or `*` are possible.
-1. Then the `[ContentType]` on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.
-1. If an interface was specified, then the target type is retrieved, and the `[ModelSpecs]` and `[ContentType]` on the target type are evaluated.
+1. Then the [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) on the specified type (class or interface) are used, if present; this is a single value as it uses the specified name of the content-type, not a CSV list.
+1. If an interface was specified, then the target type is retrieved, and the `[ModelSpecs]` and [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) on the target type are evaluated.
 1. If none of these conditions are met, then the name of the specified type (and if it was an interface, the target type) is used (including derivations of it)  
     Derived names are created by removing leading `I` or trailing `...Model` or `...Raw`
 

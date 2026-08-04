@@ -51,7 +51,7 @@ with a dictionary of values. This is not common in external code, but often is a
 
 > [!TIP]
 > When data is converted, it will assign a **Content-Type** to the generated data.
-> Ideally this is done in a controlled way, using `[ContentType]` attributes on the data objects.
+> Ideally this is done in a controlled way, using [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) attributes on the data objects.
 >
 > 👉🏼 See [](xref:NetCode.Data.Coded.ContentTypes)
 
@@ -136,7 +136,7 @@ If nothing is specified, the object itself will be used to create a definition; 
 > [!TIP]
 > As of now, the raw entity is always the source of the content-type.
 > If ever you need to reference another object to provide the schema,
-> use the `[ContentTypeAssign]` attribute on the raw entity to specify the other object which should be used to generate the content-type.
+> use the `[ContentTypeUse]` attribute on the raw entity to specify the other object which should be used to generate the content-type.
 > This allows specifying a different content-type on the raw object.
 >
 > Alternatively you can specify it in the `Options` on the `IDataFactory`.
@@ -229,7 +229,7 @@ Some tips:
 1. Every DataSource will call `ProvideOut()` to provide the data to the system.
 1. The `ProvideOut()` method will call the `IDataFactory` to convert the data automatically.
 1. It will receive a method to provide the data and options...
-1. ...but options are usually not needed any more, since the `[ContentType]` attributes on the data objects are usually enough to determine most of the settings.
+1. ...but options are usually not needed any more, since the [`[ContentType]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeAttribute) attributes on the data objects are usually enough to determine most of the settings.
 
 > [!TIP]
 > Try to avoid using options, and prefer to specify everything important incl. title on the class itself.

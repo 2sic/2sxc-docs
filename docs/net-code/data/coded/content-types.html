@@ -111,7 +111,12 @@
 </div>
 <h2 id="background">Background</h2>
 <p>Content Type Definitions contain the schema of an entity.
-They are objects which contain basic information such as a global ID, a name, identifier and all the attribute definitions.</p>
+They are objects which contain basic information such as</p>
+<ol>
+<li>a unique ID (Guid)</li>
+<li>a name</li>
+<li>all the field definitions</li>
+</ol>
 <p>Internally every Content-Type-Definition are <em>assembled</em> using various Builders and Assemblers.
 The specs which lead to this assembly are loaded from various sources, including:</p>
 <ol>
@@ -119,14 +124,44 @@ The specs which lead to this assembly are loaded from various sources, including
 <li>JSON files (for content-types which are usually loaded from the file system because they are global)</li>
 <li>Code-based definitions (for content-types which are used in code and should be strongly typed)</li>
 </ol>
+<div class="TIP">
+<h5>Tip</h5>
 <p>The cases &quot;SQL&quot; and &quot;JSON&quot; are documented elsewhere.
-Here we want to focus on the code-based definitions.</p>
+Here we only focus on the code-based definitions.</p>
+</div>
 <h2 id="need-for-code-based-content-type-definitions">Need for Code-Based Content-Type Definitions</h2>
-<p>There are many cases where we also need strictly typed C# data objects representing the same
-data, in which case it's better to use code-based content-type definitions.
-This is especially common for data which will be represented as Entities, but does not stem from the database but from environment information - such as a user, a site, statistical information etc.</p>
-<p>In such scenarios, the data will be prepared in normal objects and converted to entities for further processing and forwarding to the UI (through REST/JSON) or to Razor (through services or DataSources).</p>
-<p>Giving it a clear type helps ensure consistency and also allows for converting the generic entities back to strongly typed objects for further processing.</p>
+<p>There are many cases where we have <em>both</em> strictly typed C# data objects and entities,
+representing the same data. There are 2 typical scenarios:</p>
+<ol>
+<li><p><strong>DB Data</strong>: Common data which comes from the DB (such as view definitions) which is used in code and services.<br>
+<em>This data already has a content-type definition generated, this is not the topic here.</em></p>
+</li>
+<li><p><strong>Service Data</strong>: Data which comes from a service, and is converted to entities
+(such as user information, site information, statistical information etc.)<br>
+<em>This is what we're looking at.</em></p>
+</li>
+</ol>
+<p><strong>Service Data</strong> is prepared in POCO objects
+and converted to entities for further processing and forwarding
+to the UI (through REST/JSON) or to Razor (through services or DataSources).</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Giving <strong>Service Data</strong> a clear type allows for later conversion of the entities to models.</p>
+</div>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Not every raw data object needs a content-type definition.</p>
+<p>We only need it on raw objects which are converted to entities
+<strong>and</strong> which are expected to be converted back to strongly typed objects later on.</p>
+<p>This is because automatic <code>ToModel</code> conversion needs to know the exact name.
+Without a custom <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> attribute,
+the name of the content-type will be derived from the class name, which may not be what you want.</p>
+</div>
+<h2 id="content-type-definition---with-or-without-attributes">Content-Type Definition - With or Without Attributes</h2>
+<p>It's important to know that every <strong>Raw</strong> to <strong>Entity</strong> conversion needs a content-type definition.
+So it will always be generated automatically.</p>
+<p>The only question is whether you need full control of the definition,
+or whether you are happy with the automatic defaults.</p>
 <h2 id="example">Example</h2>
 <p>Here's an example of an object with attributes to specify the content-type definition:</p>
 <pre><code class="lang-csharp">/// &lt;summary&gt;
@@ -165,14 +200,22 @@ public interface IFieldSettingsGeneral : IModelFromEntity&lt;FieldSettingsGenera
 }
 </code></pre>
 <h2 id="controlled-content-type-definition-specs">Controlled Content-Type Definition Specs</h2>
-<p>Allow for specifying specs of the content-type definition using these attributes:</p>
+<p>These specs are mainly needed for</p>
+<ul>
+<li>serialization activities (such as <code>IsTitle</code> information)</li>
+<li>detecting the type name/guid (like when converting back to models later on)</li>
+</ul>
+<p>You can define custom specs on auto-generated Content Type Definitions using these attributes:</p>
 <ol>
-<li><code>[ContentType]</code> - for the content-type itself, for example to set the name, global identifier etc.</li>
-<li><code>[ContentTypeField]</code> - for the attributes of the content-type, for example to set the description, is-title etc.</li>
-<li><code>[ContentTypeIgnore]</code> - to exclude object properties in the content-type definition</li>
-<li><code>[ContentTypeAssign]</code> - to specify that a raw object should be assigned another content-type from an interface or another class/record.</li>
+<li><p><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> - to set name / guid etc. on the class which defines the content-type</p>
+</li>
+<li><p><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeUseAttribute.html"><code>[ContentTypeUse]</code></a> - to reference another class which defines the content-type.</p>
+</li>
+<li><p><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute.html"><code>[ContentTypeField]</code></a> - to configure a field of the content-type, mainly for description, is-title etc.</p>
+</li>
+<li><p><a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeIgnoreAttribute.html"><code>[ContentTypeIgnore]</code></a> - to exclude object properties in the content-type definition</p>
+</li>
 </ol>
-<p>These specs are mainly needed for certain serialization activities (such as <code>IsTitle</code> information) and for detecting the type (like when converting back to models later on).</p>
 <h2 id="internals">Internals</h2>
 <h3 id="auto-generated-content-type-definitions">Auto-Generated Content-Type Definitions</h3>
 <p>Code defined types are automatically generated on-the-fly from C# classes, records and/or interfaces,
@@ -200,18 +243,18 @@ It will also cache the type, for future re-use, since these will usually be crea
 <li>Descriptions work with
 <ol>
 <li>No attributes at all (automatic defaults)</li>
-<li>With <code>[ContentType]</code> and <code>[ContentTypeField]</code> attributes</li>
+<li>With <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeAttribute.html"><code>[ContentType]</code></a> and <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute.html"><code>[ContentTypeField]</code></a> attributes</li>
 <li>Also on special properties such as <code>Id</code>, <code>Guid</code>, <code>Created</code>, <code>Modified</code> (added as special decorator <code>ContentTypeBuiltInAttributesDecorator</code> to the content-type)</li>
 </ol>
 </li>
-<li>Ignore attribute works using <code>[ContentTypeIgnore]</code> attribute</li>
+<li>Ignore attribute works using <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeIgnoreAttribute.html"><code>[ContentTypeIgnore]</code></a> attribute</li>
 <li>Builder can build from
 <ol>
 <li>Anything with or without specs attributes</li>
 <li>classes (verified and has unit tests)</li>
 <li>records (verified and has unit tests)</li>
 <li>interfaces (verified and has unit tests)</li>
-<li>all of the above having a <code>[ContentTypeAssign]</code> attribute to assign a different content-type (verified and has unit tests)</li>
+<li>all of the above having a <a class="xref" href="../../../api/dot-net/ToSic.Eav.Data.ContentTypes.ContentTypeUseAttribute.html"><code>[ContentTypeUse]</code></a> attribute to assign a different content-type (verified and has unit tests)</li>
 <li>anonymous - only without specs attributes (verified and has unit tests)</li>
 </ol>
 </li>
