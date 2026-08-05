@@ -697,7 +697,7 @@ source is null or no matching entities are found.</p>
     <dt><code>TModel</code></dt>
     <dd><p>The model type to wrap each entity.
 Must implement <a class="xref" href="ToSic.Eav.Models.IModelFromEntity.html">IModelFromEntity</a> and should implement <a class="xref" href="ToSic.Eav.Models.IModelSetup-1.html">IModelSetup&lt;TSource&gt;</a>.
-The type-name being filtered is used from typeName, derived from the model name, or from the <a class="xref" href="ToSic.Eav.Models.ModelSpecsAttribute.html">ModelSpecsAttribute</a> on the model.</p>
+The type-name being filtered is used from <a class="xref" href="ToSic.Eav.Models.ToModelOptions.html">ToModelOptions</a>, derived from the model name, or from the <a class="xref" href="ToSic.Eav.Models.ModelSpecsAttribute.html">ModelSpecsAttribute</a> on the model.</p>
 </dd>
   </dl>
 
@@ -931,7 +931,7 @@ This is only meant for simple models that do not require a factory.</p>
   <a id="ToSic_Eav_Models_ToModelExtensions_ToModels_" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels*"></a>
 
   <h3 id="ToSic_Eav_Models_ToModelExtensions_ToModels__1_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels``1(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity})">
-  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity&gt;?)
+  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity?&gt;?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/EntityToModel/ToModelExtensions_ToModels.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -939,12 +939,12 @@ This is only meant for simple models that do not require a factory.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity&gt;? entities) where TModel : class, IModelFromEntity</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity?&gt;? list) where TModel : class, IModelFromEntity</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
+    <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -972,7 +972,7 @@ This is only meant for simple models that do not require a factory.</p>
   <a id="ToSic_Eav_Models_ToModelExtensions_ToModels_" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels*"></a>
 
   <h3 id="ToSic_Eav_Models_ToModelExtensions_ToModels__1_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__ToSic_Eav_Models_Factory_IModelFactory_ToSic_Sys_Coding_NoParamOrder_ToSic_Eav_Models_ToModelOptions_" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels``1(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity},ToSic.Eav.Models.Factory.IModelFactory,ToSic.Sys.Coding.NoParamOrder,ToSic.Eav.Models.ToModelOptions)">
-  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity&gt;?, IModelFactory, NoParamOrder, ToModelOptions?)
+  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity?&gt;?, IModelFactory, NoParamOrder, ToModelOptions?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/EntityToModel/ToModelExtensions_ToModels.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -980,12 +980,12 @@ This is only meant for simple models that do not require a factory.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity&gt;? entities, IModelFactory factory, NoParamOrder npo = default, ToModelOptions? options = null) where TModel : class, IModelFromEntity</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity?&gt;? list, IModelFactory factory, NoParamOrder npo = default, ToModelOptions? options = null) where TModel : class, IModelFromEntity</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
+    <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
     <dd></dd>
     <dt><code>factory</code> <a class="xref" href="ToSic.Eav.Models.Factory.IModelFactory.html">IModelFactory</a></dt>
     <dd></dd>
@@ -1019,7 +1019,7 @@ This is only meant for simple models that do not require a factory.</p>
   <a id="ToSic_Eav_Models_ToModelExtensions_ToModels_" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels*"></a>
 
   <h3 id="ToSic_Eav_Models_ToModelExtensions_ToModels__1_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__ToSic_Sys_Coding_NoParamOrder_ToSic_Eav_Models_ToModelOptions_" data-uid="ToSic.Eav.Models.ToModelExtensions.ToModels``1(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity},ToSic.Sys.Coding.NoParamOrder,ToSic.Eav.Models.ToModelOptions)">
-  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity&gt;?, NoParamOrder, ToModelOptions?)
+  ToModels&lt;TModel&gt;(IEnumerable&lt;IEntity?&gt;?, NoParamOrder, ToModelOptions?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/EntityToModel/ToModelExtensions_ToModels.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -1027,12 +1027,12 @@ This is only meant for simple models that do not require a factory.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity&gt;? entities, NoParamOrder npo = default, ToModelOptions? options = null) where TModel : class, IModelFromEntity</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TModel&gt; ToModels&lt;TModel&gt;(this IEnumerable&lt;IEntity?&gt;? list, NoParamOrder npo = default, ToModelOptions? options = null) where TModel : class, IModelFromEntity</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
+    <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
     <dd></dd>
     <dt><code>npo</code> <a class="xref" href="ToSic.Sys.Coding.NoParamOrder.html">NoParamOrder</a></dt>
     <dd></dd>

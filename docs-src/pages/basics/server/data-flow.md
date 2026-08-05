@@ -42,7 +42,7 @@ Imagine that your custom Razor template in a Dnn module is initialized. Here's w
 
 ### 1. Preparation
 
-2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a [Block](xref:ToSic.Sxc.Blocks.IBlock) for this InstanceId (which is the ModuleId).
+2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a [Block](xref:ToSic.Sxc.Blocks.Sys.IBlock) for this InstanceId (which is the ModuleId).
 
 1. The Block internally will create a [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) [DataSource](xref:NetCode.DataSources.Index), pass in the InstanceId and then wait for data to pour in.
 1. The [CmsBlock](xref:ToSic.Sxc.DataSources.CmsBlock) knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the `AppId` which it is visualizing, and a `ContentBlockId` which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included).
@@ -61,7 +61,7 @@ Imagine that your custom Razor template in a Dnn module is initialized. Here's w
 
 ### 2. Execution
 
-The Block is now ready. 2sxc now consults the View to find out which [Engine](xref:ToSic.Sxc.Engines.IEngine) to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.
+The Block is now ready. 2sxc now consults the View to find out which [Engine](xref:ToSic.Sxc.Engines.Sys.IEngine) to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.
 
 1. The engine loads the template and lets it do what it should.
 1. If the template has code accessing [Data](xref:Custom.Hybrid.Razor12.Data) then the underlying source will retrieve the necessary data.

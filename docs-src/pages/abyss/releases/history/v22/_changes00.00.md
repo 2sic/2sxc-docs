@@ -107,6 +107,8 @@ This is the list of systems which we changed, but there are way more as we can't
 1. Improve handling of git dependabot requests
 1. Various unit tests in the `$2sxc` ui using Vitest
 1. Refactor import/export code
+1. Change build of `$2sxc` to use Vite
+1. Change build of `inpage` to use Vite TODO: WIP
 
 
 [!include["Breaking Changes"](./_brc00.00.md)]

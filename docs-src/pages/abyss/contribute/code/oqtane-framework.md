@@ -4,7 +4,7 @@ uid: Abyss.Contribute.Code.OqtaneFramework
 
 # How update `Oqtane.Framework` source code for 2sxc Oqtane development
 
-[!include[""](../../_contributors-only.md)]
+[!include[""](./_contributors-only.md)]
 
 For **2sxc Oqtane development**, we work against the official [**Oqtane Framework master branch**](https://github.com/oqtane/oqtane.framework/tree/master), which contains the source code for the latest release (`Oqtane.Client`, `Oqtane.Server`, `Oqtane.Shared`).
 
