@@ -32,14 +32,29 @@
       "disableGitFeatures": false, // Disable fetching Git related information for articles. By default it is enabled and may have side effect on performance when the repo is large.
       "filter": "filterConfig.yml",
       "force": true, // Re-build all the documentation
+
+      // Don't restore nuget packages, because we don't need them for docfx generation
+      // This would cause problems in a CI-pipeline, but ATM we always generate from a dev PC
+      // Without this option, we would have a lot of warnings about DNN supported having security issues, which is not relevant for docfx generation
+      // And it would take much longer
+      "noRestore": true,
+
+      // Command Line Parameters for MSBuild
       "properties": {
         "TargetFramework": "net472", // must be net472 because of DNN and 2sxc/eav *.csproj configurations
-        "LangVersion": "preview", // 2025-05-14, stv removed x, since this is working as expected (2025-03-11 2dm added x as it doesn't seem to have any effect)
+        "LangVersion": "preview",
         // "GenerateDocumentationFile": true,
         "ProduceReferenceAssembly": "true",
-        "noWarn": "CS0436,MSB4011",
+
+        // Disable some warnings which are not relevant for docfx generation
+        // This is only for during build
+        // The same must also be turned off in the ToSic.Sxc.Dnn.csproj file, because otherwise the build will fail with errors
+        "NoWarn": "CS0436;MSB4011;NU1901;NU1902;NU1903;NU1904;CS8632",
         // CS0436: The type 'X' in 'Y' conflicts with the imported type 'X' in 'Z'. Using the type defined in 'Z'.
         // MSB4011: "C:\Program Files\dotnet\sdk\9.0.301\Microsoft.CSharp.targets" cannot be imported again
+        // NU190x: NuGet package warnings, which are not relevant for docfx generation
+        // CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+        "IsDocFX": "true", // Tell the .csproj files that this is a docfx build, so they can skip some things which are not relevant for docfx
       },
       "namespaceLayout": "nested",
     }
