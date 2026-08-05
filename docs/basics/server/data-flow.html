@@ -226,7 +226,7 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 <h2 id="overall-flow-when-creating-html">Overall Flow When Creating Html</h2>
 <p>Imagine that your custom Razor template in a Dnn module is initialized. Here's what happens:</p>
 <h3 id="1-preparation">1. Preparation</h3>
-<p>2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a <a href="xref:ToSic.Sxc.Blocks.IBlock">Block</a> for this InstanceId (which is the ModuleId).</p>
+<p>2sxc starts with the ModuleId as it's inside a Dnn Module. It will then create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.Blocks.Sys.IBlock.html">Block</a> for this InstanceId (which is the ModuleId).</p>
 <ol>
 <li>The Block internally will create a <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> <a class="xref" href="../../net-code/data-sources/index.html">DataSource</a>, pass in the InstanceId and then wait for data to pour in.</li>
 <li>The <a class="xref" href="../../api/dot-net/ToSic.Sxc.DataSources.CmsBlock.html">CmsBlock</a> knows about Dnn, and will use the InstanceId to get the ModuleSettings in Dnn. This contains only 2 pieces of information: the <code>AppId</code> which it is visualizing, and a <code>ContentBlockId</code> which is the full configuration of the Content-Block which will be shown. The CmsBlock also knows if the user is an editor (which would result in draft-items being included).</li>
@@ -250,7 +250,7 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 <p>When you use views which don't have a content-type configured, then properties like <code>Data</code>, <code>Content</code> or <code>Header</code> will be null. But <code>App.Data</code> will still work.</p>
 </div>
 <h3 id="2-execution">2. Execution</h3>
-<p>The Block is now ready. 2sxc now consults the View to find out which <a href="xref:ToSic.Sxc.Engines.IEngine">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
+<p>The Block is now ready. 2sxc now consults the View to find out which <a href="xref:ToSic.Sxc.Engines.Sys.IEngine">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
 <ol>
 <li>The engine loads the template and lets it do what it should.</li>
 <li>If the template has code accessing <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_Data">Data</a> then the underlying source will retrieve the necessary data.

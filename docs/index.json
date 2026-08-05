@@ -1762,7 +1762,7 @@
   "api/dot-net/ToSic.Eav.Apps.Sys.Caching.AppsCacheBase.html": {
     "href": "api/dot-net/ToSic.Eav.Apps.Sys.Caching.AppsCacheBase.html",
     "title": "Class AppsCacheBase | 2sxc 21 for Dnn and Oqtane",
-    "summary": "Class AppsCacheBase Namespace ToSic.Eav.Apps.Sys.Caching Assembly ToSic.Eav.Apps.dll The Apps Cache is the main cache for App States. This is just the abstract base implementation. The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment. [InternalApi_DoNotUse_MayChangeWithoutNotice(\"this is just fyi\")] public abstract class AppsCacheBase : IAppsCache, ISwitchableService, IHasIdentityNameId Inheritance object AppsCacheBase Implements IAppsCache ISwitchableService IHasIdentityNameId Constructors AppsCacheBase(IRuntimeKeyService) The Apps Cache is the main cache for App States. This is just the abstract base implementation. The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment. protected AppsCacheBase(IRuntimeKeyService runtimeKeyService) Parameters runtimeKeyService IRuntimeKeyService Properties NameId Primary identifier of an object which has this property. It will be unique and used as an ID where needed. public virtual string NameId { get; } Property Value string Priority public virtual int Priority { get; } Property Value int Methods Get(IAppIdentity, IAppLoaderTools) Retrieve an app from the cache or build it if not yet available. public IAppStateCache Get(IAppIdentity app, IAppLoaderTools tools) Parameters app IAppIdentity App identifier. tools IAppLoaderTools Current service provider, in case the app must be retrieved / generated Returns IAppStateCache The ToSic.Eav.Apps.Sys.IAppStateCache of the app. Has(IAppIdentity) Check if something is already in the cache public bool Has(IAppIdentity app) Parameters app IAppIdentity App identifier. Returns bool IsViable() public virtual bool IsViable() Returns bool Load(IAppIdentity, string, IAppLoaderTools) Load an app into cache, specifying the primary language. This is used in scenarios, where the primary language cannot be auto-detected, so it's set explicitly. public void Load(IAppIdentity app, string primaryLanguage, IAppLoaderTools tools) Parameters app IAppIdentity App identifier. primaryLanguage string Primary language, lower case. tools IAppLoaderTools Purge(IAppIdentity) Clean cache for specific Zone and App public void Purge(IAppIdentity app) Parameters app IAppIdentity PurgeZones() Clean entire global cache, which includes the List of Zones and Apps as well as all the apps. public abstract void PurgeZones() Update(IAppIdentity, IEnumerable<int>, ILog, IAppLoaderTools) Tell the cache that an app has done a partial update. Only relevant for farm scenarios, where other nodes must be informed. public virtual void Update(IAppIdentity appIdentity, IEnumerable<int> entities, ILog log, IAppLoaderTools tools) Parameters appIdentity IAppIdentity entities IEnumerable<int> List of entities which need to be updates. log ILog Log object to log what's happening. tools IAppLoaderTools Zones(IAppLoaderTools) public abstract IReadOnlyDictionary<int, Zone> Zones(IAppLoaderTools tools) Parameters tools IAppLoaderTools Returns IReadOnlyDictionary<int, Zone>"
+    "summary": "Class AppsCacheBase Namespace ToSic.Eav.Apps.Sys.Caching Assembly ToSic.Eav.Apps.dll The Apps Cache is the main cache for App States. This is just the abstract base implementation. The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment. [InternalApi_DoNotUse_MayChangeWithoutNotice(\"this is just fyi\")] public abstract class AppsCacheBase : IAppsCache, ISwitchableService, IHasIdentityNameId Inheritance object AppsCacheBase Implements IAppsCache ISwitchableService IHasIdentityNameId Constructors AppsCacheBase(IAppCacheKeyService) The Apps Cache is the main cache for App States. This is just the abstract base implementation. The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment. protected AppsCacheBase(IAppCacheKeyService appCacheKeyService) Parameters appCacheKeyService IAppCacheKeyService Properties NameId Primary identifier of an object which has this property. It will be unique and used as an ID where needed. public virtual string NameId { get; } Property Value string Priority public virtual int Priority { get; } Property Value int Methods Get(IAppIdentity, IAppLoaderTools) Retrieve an app from the cache or build it if not yet available. public IAppStateCache Get(IAppIdentity app, IAppLoaderTools tools) Parameters app IAppIdentity App identifier. tools IAppLoaderTools Current service provider, in case the app must be retrieved / generated Returns IAppStateCache The ToSic.Eav.Apps.Sys.IAppStateCache of the app. Has(IAppIdentity) Check if something is already in the cache public bool Has(IAppIdentity app) Parameters app IAppIdentity App identifier. Returns bool IsViable() public virtual bool IsViable() Returns bool Load(IAppIdentity, string, IAppLoaderTools) Load an app into cache, specifying the primary language. This is used in scenarios, where the primary language cannot be auto-detected, so it's set explicitly. public void Load(IAppIdentity app, string primaryLanguage, IAppLoaderTools tools) Parameters app IAppIdentity App identifier. primaryLanguage string Primary language, lower case. tools IAppLoaderTools Purge(IAppIdentity) Clean cache for specific Zone and App public void Purge(IAppIdentity app) Parameters app IAppIdentity PurgeZones() Clean entire global cache, which includes the List of Zones and Apps as well as all the apps. public abstract void PurgeZones() Update(IAppIdentity, IEnumerable<int>, ILog, IAppLoaderTools) Tell the cache that an app has done a partial update. Only relevant for farm scenarios, where other nodes must be informed. public virtual void Update(IAppIdentity appIdentity, IEnumerable<int> entities, ILog log, IAppLoaderTools tools) Parameters appIdentity IAppIdentity entities IEnumerable<int> List of entities which need to be updates. log ILog Log object to log what's happening. tools IAppLoaderTools Zones(IAppLoaderTools) public abstract IReadOnlyDictionary<int, Zone> Zones(IAppLoaderTools tools) Parameters tools IAppLoaderTools Returns IReadOnlyDictionary<int, Zone>"
   },
   "api/dot-net/ToSic.Eav.Apps.Sys.Caching.IAppsCache.html": {
     "href": "api/dot-net/ToSic.Eav.Apps.Sys.Caching.IAppsCache.html",
@@ -1774,6 +1774,11 @@
     "title": "Namespace ToSic.Eav.Apps.Sys.Caching | 2sxc 21 for Dnn and Oqtane",
     "summary": "Namespace ToSic.Eav.Apps.Sys.Caching Classes AppsCacheBase The Apps Cache is the main cache for App States. This is just the abstract base implementation. The real cache must implement this and also provide platform specific adjustments so that the caching is in sync with the Environment. Interfaces IAppsCache Marks the objects which are responsible for caching ToSic.Eav.Apps.Sys.IAppStateCache in memory. This is a very powerful system ensuring performance and more."
   },
+  "api/dot-net/ToSic.Eav.Apps.Sys.IAppCacheKeyService.html": {
+    "href": "api/dot-net/ToSic.Eav.Apps.Sys.IAppCacheKeyService.html",
+    "title": "Interface IAppCacheKeyService | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface IAppCacheKeyService Namespace ToSic.Eav.Apps.Sys Assembly ToSic.Eav.Apps.dll Service to build cache keys for apps. [InternalApi_DoNotUse_MayChangeWithoutNotice(\"Runtime key is platform-specific.\")] public interface IAppCacheKeyService Remarks Since platforms like Oqtane have different mechanisms for splitting apps/tenants, the cache key could collide since it could result in the same AppId being used in different tenants. This service allows to build a runtime-specific key for an app identity. Methods AppCacheKey(IAppIdentity) Build a runtime-specific key for an app identity. string AppCacheKey(IAppIdentity appIdentity) Parameters appIdentity IAppIdentity Returns string"
+  },
   "api/dot-net/ToSic.Eav.Apps.Sys.IRuntimeKeyService.html": {
     "href": "api/dot-net/ToSic.Eav.Apps.Sys.IRuntimeKeyService.html",
     "title": "Interface IRuntimeKeyService | 2sxc 21 for Dnn and Oqtane",
@@ -1782,7 +1787,7 @@
   "api/dot-net/ToSic.Eav.Apps.Sys.html": {
     "href": "api/dot-net/ToSic.Eav.Apps.Sys.html",
     "title": "Namespace ToSic.Eav.Apps.Sys | 2sxc 21 for Dnn and Oqtane",
-    "summary": "Namespace ToSic.Eav.Apps.Sys Namespaces ToSic.Eav.Apps.Sys.Caching Classes AppBase<TServices> Base object for things that have a full app-identity (app-id and zone-id) and can also log their state. Interfaces IRuntimeKeyService Service to build runtime-specific cache keys for apps."
+    "summary": "Namespace ToSic.Eav.Apps.Sys Namespaces ToSic.Eav.Apps.Sys.Caching Classes AppBase<TServices> Base object for things that have a full app-identity (app-id and zone-id) and can also log their state. Interfaces IAppCacheKeyService Service to build cache keys for apps."
   },
   "api/dot-net/ToSic.Eav.Apps.html": {
     "href": "api/dot-net/ToSic.Eav.Apps.html",
@@ -2627,7 +2632,7 @@
   "api/dot-net/ToSic.Eav.Models.ModelFromEntityFull.html": {
     "href": "api/dot-net/ToSic.Eav.Models.ModelFromEntityFull.html",
     "title": "Class ModelFromEntityFull | 2sxc 21 for Dnn and Oqtane",
-    "summary": "Class ModelFromEntityFull Namespace ToSic.Eav.Models Assembly ToSic.Eav.Data.dll A basic model (record) of entities. It extends the blank implementation by providing the basic Entity properties Id, Guid and Title by default. [InternalApi_DoNotUse_MayChangeWithoutNotice] public abstract record ModelFromEntityFull : ModelFromEntity, IModelFromEntity, IModelFromData, IModelSetup<IEntity>, IEquatable<ModelFromEntity>, IModelFromEntityBasic, ICanBeEntity, IEquatable<ModelFromEntityFull> Inheritance object ModelFromEntity ModelFromEntityFull Implements IModelFromEntity IModelFromData IModelSetup<IEntity> IEquatable<ModelFromEntity> IModelFromEntityBasic ICanBeEntity IEquatable<ModelFromEntityFull> Derived QueryDefinition QueryPartDefinition Permission Inherited Members ModelFromEntity.Entity ModelFromEntity.Get<T>(string, T) ModelFromEntity.GetThis<T>(T, string) Extension Methods ToModelExtensions.ToModel<TModel>(ICanBeEntity?, NoParamOrder, ToModelOptions?) Constructors ModelFromEntityFull() Empty constructor, so it can be inherited without having to specify a constructor. protected ModelFromEntityFull() ModelFromEntityFull(IEntity) Constructor which already includes the data to wrap; rarely used. protected ModelFromEntityFull(IEntity entity) Parameters entity IEntity Properties Guid The entity guid, as quick, nice accessor. public Guid Guid { get; } Property Value Guid The guid, or an empty-guid of no entity available Id The entity id, as quick, nice accessor. public int Id { get; } Property Value int The id, or 0 if no entity available Title The title as string. public virtual string Title { get; } Property Value string The title, or an empty string if not available or not string-able Remarks Can be overriden by other parts, if necessary."
+    "summary": "Class ModelFromEntityFull Namespace ToSic.Eav.Models Assembly ToSic.Eav.Data.dll A basic model (record) of entities. It extends the blank implementation by providing the basic Entity properties Id, Guid and Title by default. [InternalApi_DoNotUse_MayChangeWithoutNotice] public abstract record ModelFromEntityFull : ModelFromEntity, IModelFromEntity, IModelFromData, IModelSetup<IEntity>, IEquatable<ModelFromEntity>, IModelFromEntityBasic, ICanBeEntity, IEquatable<ModelFromEntityFull> Inheritance object ModelFromEntity ModelFromEntityFull Implements IModelFromEntity IModelFromData IModelSetup<IEntity> IEquatable<ModelFromEntity> IModelFromEntityBasic ICanBeEntity IEquatable<ModelFromEntityFull> Derived QueryDefinition QueryPartDefinition Permission PolymorphismConfigurationModel Inherited Members ModelFromEntity.Entity ModelFromEntity.Get<T>(string, T) ModelFromEntity.GetThis<T>(T, string) Extension Methods ToModelExtensions.ToModel<TModel>(ICanBeEntity?, NoParamOrder, ToModelOptions?) Constructors ModelFromEntityFull() Empty constructor, so it can be inherited without having to specify a constructor. protected ModelFromEntityFull() ModelFromEntityFull(IEntity) Constructor which already includes the data to wrap; rarely used. protected ModelFromEntityFull(IEntity entity) Parameters entity IEntity Properties Guid The entity guid, as quick, nice accessor. public Guid Guid { get; } Property Value Guid The guid, or an empty-guid of no entity available Id The entity id, as quick, nice accessor. public int Id { get; } Property Value int The id, or 0 if no entity available Title The title as string. public virtual string Title { get; } Property Value string The title, or an empty string if not available or not string-able Remarks Can be overriden by other parts, if necessary."
   },
   "api/dot-net/ToSic.Eav.Models.ModelSpecsAttribute.html": {
     "href": "api/dot-net/ToSic.Eav.Models.ModelSpecsAttribute.html",
@@ -3354,6 +3359,101 @@
     "title": "Namespace ToSic.Sxc.LookUp | 2sxc 21 for Dnn and Oqtane",
     "summary": "Namespace ToSic.Sxc.LookUp This extends the abilities of ToSic.Eav.LookUp with more look-up objects for things that are either web-specific (like request objects) or DynamicData specific. Classes DocsPlaceholder This is a placeholder class, to make sure the namespace is included in the documentation. It is used in namespaces where there are no public classes. LookUpInAppProperty Look up things in app-settings, app-resources etc."
   },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Razor.IRazorEngine.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Razor.IRazorEngine.html",
+    "title": "Interface IRazorEngine | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface IRazorEngine Namespace ToSic.Sxc.Render.Engines.Razor Assembly ToSic.Sxc.Engines.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public interface IRazorEngine : IEngine, IHasLog Inherited Members IEngine.Render(IBlock, RenderSpecs) IHasLog.Log"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Razor.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Razor.html",
+    "title": "Namespace ToSic.Sxc.Render.Engines.Razor | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Engines.Razor Interfaces IRazorEngine"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Sys.IEngine.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Sys.IEngine.html",
+    "title": "Interface IEngine | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface IEngine Namespace ToSic.Sxc.Render.Engines.Sys Assembly ToSic.Sxc.Engines.dll The sub-system in charge of taking a configuration for an instance (aka Module) a template and using all that to produce an html-string for the browser. [InternalApi_DoNotUse_MayChangeWithoutNotice] public interface IEngine : IHasLog Inherited Members IHasLog.Log Methods Render(IBlock, RenderSpecs) Renders a template, returning a string with the rendered template. OutputFragmentWithAssets Render(IBlock block, RenderSpecs specs) Parameters block IBlock specs RenderSpecs Returns OutputFragmentWithAssets The string - usually HTML - which the engine created."
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Sys.IEngineFactory.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Sys.IEngineFactory.html",
+    "title": "Interface IEngineFactory | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface IEngineFactory Namespace ToSic.Sxc.Render.Engines.Sys Assembly ToSic.Sxc.Engines.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public interface IEngineFactory Methods CreateEngine(IView) IEngine CreateEngine(IView view) Parameters view IView Returns IEngine"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Sys.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Sys.html",
+    "title": "Namespace ToSic.Sxc.Render.Engines.Sys | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Engines.Sys Interfaces IEngine The sub-system in charge of taking a configuration for an instance (aka Module) a template and using all that to produce an html-string for the browser. IEngineFactory"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Token.ITokenEngine.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Token.ITokenEngine.html",
+    "title": "Interface ITokenEngine | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface ITokenEngine Namespace ToSic.Sxc.Render.Engines.Token Assembly ToSic.Sxc.Engines.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public interface ITokenEngine : IEngine, IHasLog Inherited Members IEngine.Render(IBlock, RenderSpecs) IHasLog.Log"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.Token.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.Token.html",
+    "title": "Namespace ToSic.Sxc.Render.Engines.Token | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Engines.Token Interfaces ITokenEngine"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Engines.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Engines.html",
+    "title": "Namespace ToSic.Sxc.Render.Engines | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Engines Namespaces ToSic.Sxc.Render.Engines.Razor ToSic.Sxc.Render.Engines.Sys ToSic.Sxc.Render.Engines.Token"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Output.Sys.OutputFragment.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Output.Sys.OutputFragment.html",
+    "title": "Class OutputFragment | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class OutputFragment Namespace ToSic.Sxc.Render.Output.Sys Assembly ToSic.Sxc.Engines.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public record OutputFragment : IEquatable<OutputFragment> Inheritance object OutputFragment Implements IEquatable<OutputFragment> Derived OutputFragmentWithAssets Properties ExceptionsOrNull public List<Exception>? ExceptionsOrNull { get; init; } Property Value List<Exception> Html public required string Html { get; init; } Property Value string"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Output.Sys.OutputFragmentWithAssets.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Output.Sys.OutputFragmentWithAssets.html",
+    "title": "Class OutputFragmentWithAssets | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class OutputFragmentWithAssets Namespace ToSic.Sxc.Render.Output.Sys Assembly ToSic.Sxc.Engines.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public record OutputFragmentWithAssets : OutputFragment, IEquatable<OutputFragment>, IEquatable<OutputFragmentWithAssets> Inheritance object OutputFragment OutputFragmentWithAssets Implements IEquatable<OutputFragment> IEquatable<OutputFragmentWithAssets> Inherited Members OutputFragment.Html OutputFragment.ExceptionsOrNull Properties ActivateJsApi public required bool ActivateJsApi { get; init; } Property Value bool Assets public List<ClientAsset> Assets { get; init; } Property Value List<ClientAsset> ErrorCode public string? ErrorCode { get; init; } Property Value string"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Output.Sys.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Output.Sys.html",
+    "title": "Namespace ToSic.Sxc.Render.Output.Sys | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Output.Sys Classes OutputFragment OutputFragmentWithAssets"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.IPolymorphismResolver.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.IPolymorphismResolver.html",
+    "title": "Interface IPolymorphismResolver | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Interface IPolymorphismResolver Namespace ToSic.Sxc.Render.Polymorphism.Sys Assembly ToSic.Sxc.Engines.dll A polymorphism resolver - which can determine alternate editions for a view / template [InternalApi_DoNotUse_MayChangeWithoutNotice] public interface IPolymorphismResolver : ISwitchableService, IHasIdentityNameId Inherited Members ISwitchableService.IsViable() ISwitchableService.Priority IHasIdentityNameId.NameId Methods Edition(PolymorphismConfigurationModel, string?, ILog) string? Edition(PolymorphismConfigurationModel config, string? overrule, ILog log) Parameters config PolymorphismConfigurationModel overrule string log ILog Returns string"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismConfigurationModel.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismConfigurationModel.html",
+    "title": "Class PolymorphismConfigurationModel | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class PolymorphismConfigurationModel Namespace ToSic.Sxc.Render.Polymorphism.Sys Assembly ToSic.Sxc.Engines.dll Model to read an Apps Polymorphism configuration. [InternalApi_DoNotUse_MayChangeWithoutNotice] public record PolymorphismConfigurationModel : ModelFromEntityFull, IModelFromEntity, IModelFromData, IModelSetup<IEntity>, IEquatable<ModelFromEntity>, IModelFromEntityBasic, ICanBeEntity, IEquatable<ModelFromEntityFull>, IEquatable<PolymorphismConfigurationModel> Inheritance object ModelFromEntity ModelFromEntityFull PolymorphismConfigurationModel Implements IModelFromEntity IModelFromData IModelSetup<IEntity> IEquatable<ModelFromEntity> IModelFromEntityBasic ICanBeEntity IEquatable<ModelFromEntityFull> IEquatable<PolymorphismConfigurationModel> Inherited Members ModelFromEntityFull.Title ModelFromEntityFull.Id ModelFromEntityFull.Guid ModelFromEntity.Entity ModelFromEntity.Get<T>(string, T) ModelFromEntity.GetThis<T>(T, string) Properties Mode Polymorphism mode, atm public string Mode { get; } Property Value string Parameters public string? Parameters { get; } Property Value string Resolver public string? Resolver { get; } Property Value string UsersWhoMaySwitch public List<int> UsersWhoMaySwitch { get; } Property Value List<int> UsersWhoMaySwitchEditions public string UsersWhoMaySwitchEditions { get; } Property Value string"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismKoi.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismKoi.html",
+    "title": "Class PolymorphismKoi | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class PolymorphismKoi Namespace ToSic.Sxc.Render.Polymorphism.Sys Assembly ToSic.Sxc.Web.dll Polymorphism resolver for CSS frameworks with Koi. [InternalApi_DoNotUse_MayChangeWithoutNotice] public class PolymorphismKoi : IPolymorphismResolver, ISwitchableService, IHasIdentityNameId Inheritance object PolymorphismKoi Implements IPolymorphismResolver ISwitchableService IHasIdentityNameId Constructors PolymorphismKoi(ICss) Polymorphism resolver for CSS frameworks with Koi. public PolymorphismKoi(ICss pageCss) Parameters pageCss ICss Fields ModeCssFramework public const string ModeCssFramework = \"cssFramework\" Field Value string Properties NameId Primary identifier of an object which has this property. It will be unique and used as an ID where needed. public string NameId { get; } Property Value string Priority public int Priority { get; } Property Value int Methods Edition(PolymorphismConfigurationModel, string?, ILog) public string? Edition(PolymorphismConfigurationModel config, string? overrule, ILog log) Parameters config PolymorphismConfigurationModel overrule string log ILog Returns string IsViable() public bool IsViable() Returns bool"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismPermissions.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.PolymorphismPermissions.html",
+    "title": "Class PolymorphismPermissions | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class PolymorphismPermissions Namespace ToSic.Sxc.Render.Polymorphism.Sys Assembly ToSic.Sxc.Web.dll Polymorphism resolver for different editions based on user permissions. [InternalApi_DoNotUse_MayChangeWithoutNotice] public class PolymorphismPermissions : IPolymorphismResolver, ISwitchableService, IHasIdentityNameId Inheritance object PolymorphismPermissions Implements IPolymorphismResolver ISwitchableService IHasIdentityNameId Constructors PolymorphismPermissions(IUser) Polymorphism resolver for different editions based on user permissions. public PolymorphismPermissions(IUser user) Parameters user IUser Fields ModeIsSuperUser BTW: when this is configured, the entire config string is \"Permissions?IsSuperUser\" so the parameters are \"IsSuperUser\" public const string ModeIsSuperUser = \"IsSuperUser\" Field Value string Properties NameId Primary identifier of an object which has this property. It will be unique and used as an ID where needed. public string NameId { get; } Property Value string Priority public int Priority { get; } Property Value int Methods Edition(PolymorphismConfigurationModel, string?, ILog) public string? Edition(PolymorphismConfigurationModel config, string? overrule, ILog log) Parameters config PolymorphismConfigurationModel overrule string log ILog Returns string IsViable() public bool IsViable() Returns bool"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Polymorphism.Sys.html",
+    "title": "Namespace ToSic.Sxc.Render.Polymorphism.Sys | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Polymorphism.Sys Classes PolymorphismConfigurationModel Model to read an Apps Polymorphism configuration. PolymorphismKoi Polymorphism resolver for CSS frameworks with Koi. PolymorphismPermissions Polymorphism resolver for different editions based on user permissions. Interfaces IPolymorphismResolver A polymorphism resolver - which can determine alternate editions for a view / template"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Sys.RenderStatistics.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Sys.RenderStatistics.html",
+    "title": "Class RenderStatistics | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Class RenderStatistics Namespace ToSic.Sxc.Render.Sys Assembly ToSic.Sxc.Render.dll [InternalApi_DoNotUse_MayChangeWithoutNotice] public class RenderStatistics Inheritance object RenderStatistics Properties RenderMs public int RenderMs { get; set; } Property Value int UseLightSpeed public bool UseLightSpeed { get; set; } Property Value bool"
+  },
+  "api/dot-net/ToSic.Sxc.Render.Sys.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.Sys.html",
+    "title": "Namespace ToSic.Sxc.Render.Sys | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render.Sys Classes RenderStatistics"
+  },
+  "api/dot-net/ToSic.Sxc.Render.html": {
+    "href": "api/dot-net/ToSic.Sxc.Render.html",
+    "title": "Namespace ToSic.Sxc.Render | 2sxc 21 for Dnn and Oqtane",
+    "summary": "Namespace ToSic.Sxc.Render Namespaces ToSic.Sxc.Render.Engines ToSic.Sxc.Render.Output.Sys ToSic.Sxc.Render.Polymorphism.Sys ToSic.Sxc.Render.Sys"
+  },
   "api/dot-net/ToSic.Sxc.Run.Startup.StartupSxcAdam.html": {
     "href": "api/dot-net/ToSic.Sxc.Run.Startup.StartupSxcAdam.html",
     "title": "Class StartupSxcAdam | 2sxc 21 for Dnn and Oqtane",
@@ -3682,7 +3782,7 @@
   "api/dot-net/ToSic.Sxc.html": {
     "href": "api/dot-net/ToSic.Sxc.html",
     "title": "Namespace ToSic.Sxc | 2sxc 21 for Dnn and Oqtane",
-    "summary": "Namespace ToSic.Sxc ToSic.Sxc is the namespace for 2sxc code. Namespaces ToSic.Sxc.Adam ToSic.Sxc.Apps This extends the ToSic.Eav.Apps with things relevant in a CMS. Most of this isn't documented yet. ToSic.Sxc.Backend ToSic.Sxc.Blocks.Sys ToSic.Sxc.Cms ToSic.Sxc.Code ToSic.Sxc.Context Context information for the current request / scenario. ToSic.Sxc.Data ToSic.Sxc.DataSources ToSic.Sxc.Dnn This contains interfaces that are specific to 2sxc in Dnn. The purpose is that both the EAV and 2sxc are meant to be platform agnostic, but Razor and WebApi developers in Dnn still need access to some helpers. ToSic.Sxc.Edit.Toolbar ToSic.Sxc.Images ToSic.Sxc.LookUp This extends the abilities of ToSic.Eav.LookUp with more look-up objects for things that are either web-specific (like request objects) or DynamicData specific. ToSic.Sxc.Run.Startup ToSic.Sxc.Search The things here enable searching. They basically ensure that the CMS can ask for data to then index however the CMS wants to. ToSic.Sxc.Services ToSic.Sxc.WebApi"
+    "summary": "Namespace ToSic.Sxc ToSic.Sxc is the namespace for 2sxc code. Namespaces ToSic.Sxc.Adam ToSic.Sxc.Apps This extends the ToSic.Eav.Apps with things relevant in a CMS. Most of this isn't documented yet. ToSic.Sxc.Backend ToSic.Sxc.Blocks.Sys ToSic.Sxc.Cms ToSic.Sxc.Code ToSic.Sxc.Context Context information for the current request / scenario. ToSic.Sxc.Data ToSic.Sxc.DataSources ToSic.Sxc.Dnn This contains interfaces that are specific to 2sxc in Dnn. The purpose is that both the EAV and 2sxc are meant to be platform agnostic, but Razor and WebApi developers in Dnn still need access to some helpers. ToSic.Sxc.Edit.Toolbar ToSic.Sxc.Images ToSic.Sxc.LookUp This extends the abilities of ToSic.Eav.LookUp with more look-up objects for things that are either web-specific (like request objects) or DynamicData specific. ToSic.Sxc.Render ToSic.Sxc.Run.Startup ToSic.Sxc.Search The things here enable searching. They basically ensure that the CMS can ask for data to then index however the CMS wants to. ToSic.Sxc.Services ToSic.Sxc.WebApi"
   },
   "api/dot-net/ToSic.Sys.Boot.BootCoordinator.html": {
     "href": "api/dot-net/ToSic.Sys.Boot.BootCoordinator.html",
