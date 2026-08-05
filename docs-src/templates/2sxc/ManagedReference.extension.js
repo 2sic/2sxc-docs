@@ -3,6 +3,8 @@
 
 const tools = require('./build-source/source-tools.js');
 
+const debug = false;
+
 /**
  * This method will be called at the start of exports.transform in ManagedReference.html.primary.js
  */
@@ -33,15 +35,22 @@ const DefWipWarningSuffix = `is a work-in-progress API and can change at any tim
 /**
  * This method will be called at the end of exports.transform in ManagedReference.html.primary.js
  */
-exports.postTransform = function (model) {
+exports.postTransform = function (model, b, c) {
+
+  if (debug)
+    console.info("JS postTransform: model.uid = '" + model.uid + "'");
+
+  // console.warn("test: " + model.uid, JSON.stringify(model)); //, "has internal member?", tools.hasInternalMember(model), "has WIP member?", tools.hasMemberWithAttribute(model, "WorkInProgressApi"));
 
   /* Internal API warning for the ToSic.Lib namespace */
   // If the model UID starts with "ToSic.Lib", treat it as internal
   const hasInternalNamespace = tools.modelNamespaceStartsWithAny(model, internalNamespaces)
     || tools.modelNamespaceContainsAny(model, [".Internal."]);
   if (hasInternalNamespace) {
-    tools.addAlert(model, `ℹ️ This ${model.type.toLowerCase()} ${DefInternalWarningSuffix}`, "warning");
+    tools.addAlert(model, `ℹ️ This ${model.type.toLowerCase()} ${DefInternalWarningSuffix}`, "warning", debug);
   }
+
+  console.info("JS postTransform: model.uid = '" + model.uid + "' + match: " + (hasInternalNamespace ? "[x]" : "[ ]"));
 
   /* Internal API warning for internal classes or interfaces based on attributes */
   // Check if the model has attributes indicating it is internal
@@ -111,5 +120,6 @@ exports.postTransform = function (model) {
       });
     });
   }
+
   return model;
 };

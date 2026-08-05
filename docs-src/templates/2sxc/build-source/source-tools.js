@@ -76,9 +76,12 @@ function hasInternalMember(model) {
  * Helper function to show a conditional alert message at the top of the page.
  * Alert types include (Bootstrap classes): success, danger, warning, info, etc.
  */
-function addAlert(model, message, type) {
+function addAlert(model, message, type, debug) {
   // Initialize the _page_alert_message and _page_alert_type properties
   model._page_alert = createHtmlAlert(message, type);
+
+  if (debug)
+    console.warn(`⚠️ Alert added to model ${model.uid}: ${message} (type: ${type})`);
 }
 
 /**
