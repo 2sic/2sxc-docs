@@ -2,6 +2,8 @@
 uid: Abyss.Contribute.Docs.SourceCode.Namespaces
 ---
 
+[!include["many-projects"](../_docs-for-many-projects.md)]
+
 # Document Code Namespaces
 
 It's usually very helpful to document what a namespace does.
