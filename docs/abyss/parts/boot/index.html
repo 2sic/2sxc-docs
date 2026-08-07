@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Namespace ToSic.Sys.Boot | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Boot System | 2sxc 21 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace ToSic.Sys.Boot | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Boot System | 2sxc 21 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/api-docs/api/dot-net/ToSic.Sys/_ToSic.Sys.Boot.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/parts/boot/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -46,12 +46,12 @@
     gtag('config', 'GTM-PH2TVNW');
   </script>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,64 +100,39 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <div class="alert alert-warning d-block" role="alert">
-      ℹ️ This namespace is an internal API and can change at any time. 
-  It's documented so you see how it works. <br>
-  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could break your code.
-    </div>
+        
 
-        <article data-uid="ToSic.Sys.Boot">
+        <article data-uid="Abyss.Parts.Boot.Index">
+<h1 id="boot-system">Boot System</h1>
 
-  <h1 id="ToSic_Sys_Boot" data-uid="ToSic.Sys.Boot" class="text-break">Namespace ToSic.Sys.Boot</h1>
-  <div class="markdown level0 summary"><p>ToSic.Sys.Boot is for managing the boot process and calling boot helpers in the right order.</p>
-</div>
-  <div class="markdown level0 conceptual">
-<p>See <a class="xref" href="../../abyss/parts/boot/index.html">Boot System</a> for guidance.</p>
-<hr>
+<p>The 2sxc / EAV system has various boot helpers to get things going.
+The important ones to understand:</p>
+<ol>
+<li><p>Various helpers register different parts of the Dependency Injection tree.<br>
+These are in various <code>Run.Startup</code> namespace, such as <a class="xref" href="../../../api/dot-net/ToSic.Sxc.Run.Startup.html">ToSic.Sxc.Run.Startup</a> or <a class="xref" href="../../../api/dot-net/ToSic.Eav.Run.Startup.html">ToSic.Eav.Run.Startup</a>.</p>
+</li>
+<li><p>There are special boot helpers which collect booting processes and run them in order as specified by each part.<br>
+These helpers implement <a class="xref" href="../../../api/dot-net/ToSic.Sys.Boot.IBootProcess.html">IBootProcess</a>. See <a class="xref" href="../../../api/dot-net/ToSic.Sys.Boot.html">ToSic.Sys.Boot</a> for more details.</p>
+</li>
+<li><p>Part of this booting is also the registration of various parts such as feature packages and definitions.</p>
+</li>
+</ol>
+<h2 id="also-read">Also Read</h2>
+<ul>
+<li>(none ATM)</li>
+</ul>
 <h2 id="history">History</h2>
 <ol>
-<li>Introduced in ca. v20.</li>
+<li>Documented for v22</li>
 </ol>
-</div>
-  <div class="markdown level0 remarks"></div>
-
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sys.Boot.BootCoordinator.html">BootCoordinator</a></dt>
-      <dd><p>During boot, this will get all <a class="xref" href="ToSic.Sys.Boot.IBootProcess.html">IBootProcess</a> services and ensure that they are triggered in the correct order.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sys.Boot.BootProcessBase.html">BootProcessBase</a></dt>
-      <dd><p>Boot process base class, mainly to save a bit of code to create more bootloaders.</p>
-</dd>
-    </dl>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sys.Boot.IBootProcess.html">IBootProcess</a></dt>
-      <dd><p>Defines a service, which must be added using <code>AddTransient</code> (not <code>TryAddTransient</code>).</p>
-<p>Such a boot process can then do more work at startup, like register features.</p>
-</dd>
-    </dl>
-    <h3 id="enums">
-Enums
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sys.Boot.BootPhase.html">BootPhase</a></dt>
-      <dd></dd>
-    </dl>
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/api-docs/api/dot-net/ToSic.Sys/_ToSic.Sys.Boot.md/#L2" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/parts/boot/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 
