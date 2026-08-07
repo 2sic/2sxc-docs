@@ -103,20 +103,44 @@
         
 
         <article data-uid="Abyss.Contribute.Docs.SourceCode.Namespaces">
-<h1 id="document-code-namespaces">Document Code Namespaces</h1>
 
+<div class="TIP">
+<h5>Tip</h5>
+<p>The docs as explained here are used in multiple projects, but documented only once for better maintenance.
+When applying this to other projects, remember that some things such as the name, repository, or paths are a bit different.</p>
+<ul>
+<li>🌴 2sxc: <a href="https://github.com/2sic/2sxc-docs">Docs Repo</a>, <a href="https://docs.2sxc.org">Docs Live</a></li>
+<li>🩸 Oqtane: <a href="https://github.com/oqtane/oqtane.docs/">Docs Repo</a>, <a href="https://docs.oqtane.org">Docs Live</a></li>
+<li>♾️ cre8magic: <a href="https://github.com/2sic/cre8magic">Docs Repo</a>, <a href="https://cre8magic.blazor-cms.org/">Docs Live</a></li>
+</ul>
+</div>
+<h1 id="document-code-namespaces">Document Code Namespaces</h1>
 <p>It's usually very helpful to document what a namespace does.
 Using the same mechanism with the <code>uid:</code> you can
 create markdown files which will show extensive instructions.</p>
-<p>Check out the <code>apidoc\Documentation\index.md</code> file for an example.</p>
+<p>The way it's set up is as follows:</p>
+<ol>
+<li>We have a folder <code>/api-docs/api/dot-net/</code> with sub folders</li>
+<li>These are included for augmentation in the api docs (see <code>docfx.json</code> in the <code>override</code> section)</li>
+<li>Files in this folder will not be included but will replace some of the generated content.</li>
+</ol>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>There is a bug in this system. If your markdown contains more than one <code>---</code> (triple dash)
+it will break the docfx build.</p>
+<p>So make sure you use 6 dashes instead for this, to not confuse the yaml-header parser.
+Use <code>------</code> instead of <code>---</code> in these <strong>override</strong> markdown files.</p>
+<p>See <a href="https://github.com/dotnet/docfx/issues/11088">this issue</a> for more information.</p>
+</div>
 <hr>
 <br>
 <div style="font-style: italic; font-size: small;">Main Author</div>
 <img src="../../../../shared/authors/ijungleboy/assets/ijungleboy.jpg" style="width: 100px; float: right">
-<h4 id="daniel-mettler-ijungleboy-ms-mvp-oqtane-core-team">Daniel Mettler, <code>@iJungleboy</code> [MS MVP, Oqtane Core Team]</h4>
+<h4 id="daniel-mettler-ijungleboy-ms-mvp-dnn--oqtane-core-team">Daniel Mettler, <code>@iJungleboy</code> [MS MVP, DNN &amp; Oqtane Core Team]</h4>
 <p>Content Management Expert, Chief Architect of <a href="https://2sxc.org">2sxc</a> and cre8magic.<br>
-Forged in the jungles of Indonesia, lives in Switzerland , loves Oqtane 🩸 &amp; 2sxc 💜.</p>
-<p><a href="https://www.linkedin.com/in/danielmettler/">LinkedIn</a>
+Forged in the jungles of Indonesia, lives in Switzerland , loves DNN ☢️, Oqtane 🩸 &amp; 2sxc 💜.</p>
+<p><a href="https://mvp.microsoft.com/en-US/MVP/profile/c07ef87f-d8e4-4da6-8efa-880572d385ba">Microsoft MVP</a>
+| <a href="https://www.linkedin.com/in/danielmettler/">LinkedIn</a>
 | Discord: @iJungleboy
 | Twitter: @iJungleboy
 | Github: <a href="https://github.com/ijungleboy">@iJungleboy</a></p>
