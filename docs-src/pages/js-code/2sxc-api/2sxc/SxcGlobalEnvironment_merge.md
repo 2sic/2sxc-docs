@@ -17,4 +17,4 @@ The `$2sxc.env` object manages environment information for the JavaScript.
 
 1. Introduced in 2sxc 10.25
 
----
+------

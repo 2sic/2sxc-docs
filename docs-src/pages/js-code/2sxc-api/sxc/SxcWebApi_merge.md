@@ -14,7 +14,7 @@ The WebApi object on the App/Module-specific `sxc`-controller is for AJAX calls.
 
 ### How to use
 
-First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.Index) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc global](xref:Api.Js.SxcJs.SxcGlobal) here. 
+First you must ensure that you have the [`$2sxc` manager](xref:JsCode.2sxcApi.Index) on your page, which will get you a module-specific `sxc` controller. Read about the [$2sxc global](xref:Api.Js.SxcJs.SxcGlobal) here.
 
 Here's a simple example (assuming you have the $2sxc manager):
 

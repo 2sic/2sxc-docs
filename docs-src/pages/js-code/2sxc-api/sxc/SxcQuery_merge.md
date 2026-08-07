@@ -7,9 +7,9 @@ uid: Api.Js.SxcJs.SxcQuery
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-A common need in JS is to read/write data from/to the backend. 
+A common need in JS is to read/write data from/to the backend.
 
-2sxc 13 introduce new JS APIs for this. 
+2sxc 13 introduce new JS APIs for this.
 
 * `data(...)` gets a data service to read/write data 👉 [docs](xref:Api.Js.SxcJs.SxcData)
 * `query(...)` gets a query service to call server-side queries (this document)
@@ -34,13 +34,13 @@ authorsSvc.getAll().then(data => console.log(data));
 
 ### Query Service Factory Parameters
 
-The `query(...)` factory just has one parameter: the `queryName`. 
+The `query(...)` factory just has one parameter: the `queryName`.
 
-The returned service will always perform actions for this query. 
+The returned service will always perform actions for this query.
 
 ### Query Service APIs
 
-Query Services always return a [modern Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) containing data. 
+Query Services always return a [modern Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) containing data.
 
 A Query Service has the following commands:
 
@@ -56,7 +56,7 @@ A Query Service has the following commands:
 
 ### Returned Data
 
-`getAll` and `getStreams` return multiple streams. 
+`getAll` and `getStreams` return multiple streams.
 The resulting object is based on this structure:
 
 ```json
@@ -72,8 +72,8 @@ The resulting object is based on this structure:
 }
 ```
 
-`getStream` only retrieves one stream, so the it's clear that we don't need to pick by stream. 
-The resulting object is based on this structure. 
+`getStream` only retrieves one stream, so the it's clear that we don't need to pick by stream.
+The resulting object is based on this structure.
 
 ```json
 [
@@ -82,17 +82,18 @@ The resulting object is based on this structure.
 ]
 ```
 
----
+------
 
 ### Tutorial
 
 👉 Check out the [](xref:Tut.JsData)
 
----
+------
 
 ### Demo App and further links
 
 You should find some code examples in this demo App
+
 * [TimeLineJS](xref:App.TimelineJs)
 
 [!include["history"](_data-history.md)]

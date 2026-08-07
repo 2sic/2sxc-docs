@@ -17,12 +17,12 @@ You need this in advanced use cases. _otherwise you don't need this_. Such advan
 
 ### How to use v12.10 and newer
 
-2sxc 12.10 enhanced the `cms.run(params: RunParamsWithContext)` to accept an object with parameters. 
+2sxc 12.10 enhanced the `cms.run(params: RunParamsWithContext)` to accept an object with parameters.
 This makes it easier to reliably pass in optional parameters, and also supports the use of [Workflow Steps](xref:JsCode.Toolbars.Workflows).
 
 👉 Learn more in the [Cms-Run Docs](xref:JsCode.Commands.Index).
 
----
+------
 
 ### History
 
@@ -30,4 +30,4 @@ This makes it easier to reliably pass in optional parameters, and also supports 
 1. Enhanced with `RunParams` in 2sxc 12.10 to support registering `workflows`
 1. Enhanced the Global `run(...)` to also support `context` in addition to `tag` in v13.03
 
----
+------

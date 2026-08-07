@@ -17,11 +17,11 @@ uid: Api.Js.SxcJs.ZzzSxcWebApiDeprecated
 
 > [!WARNING]
 > As of 2sxc 12.10 we don't recommend using this any more.
-> It will only work if the page also has jQuery enabled either using 
+> It will only work if the page also has jQuery enabled either using
 > `pageService.Activate("jQuery");` (see [IPageService](xref:ToSic.Sxc.Services.IPageService))
 > or because something else like the theme/skin already loads it.
-> 
-> From now on we strongly suggest you use `fetch` which is supported by all modern browsers. 
+>
+> From now on we strongly suggest you use `fetch` which is supported by all modern browsers.
 > See [webApi.fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch)
 
 > [!TIP]
@@ -43,7 +43,7 @@ The code above shows
 2. how all items of type "Category" are requested
 3. how the result (promise) is passed on to `handleResults` for updating the view etc.
 
-Here's another quick example, calling a C# web-api endpoint: 
+Here's another quick example, calling a C# web-api endpoint:
 
 ```JavaScript
 var sxc = $2sxc(27);
@@ -59,7 +59,7 @@ Short note: these WebAPIs work using jQuery promises (_not_ JavaScript promises)
 
 The $2sxc(...).webApi has 4 **jQuery** commands
 
-* `.webApi.get(url, ...)` 
+* `.webApi.get(url, ...)`
 * `.webApi.post(url, ...)`
 * `.webApi.delete(url, ...)`
 * `.webApi.put(url, ...)`
@@ -84,28 +84,29 @@ sxc.webApi.post("Form/ProcessForm", {}, data, true)
     });
 ```
 
-This will call the C# WebApi controller `FormController` in the `api` folder and go for its `ProcessForm` command. It will use no url-params, but put a `data` object in the body (as json), and will do error-handling itself. 
+This will call the C# WebApi controller `FormController` in the `api` folder and go for its `ProcessForm` command. It will use no url-params, but put a `data` object in the body (as json), and will do error-handling itself.
 
-In short: 
+In short:
 
 1. use `$2sxc(...).webApi.get(...)` or `$2sxc(...).webApi.post(...)` etc.
-2. for the path-parameter, use a path starting with `app/auto/query/[queryname]` - 2sxc will take care of all the path resolutions if the path starts with `app/auto/query/` 
+2. for the path-parameter, use a path starting with `app/auto/query/[queryname]` - 2sxc will take care of all the path resolutions if the path starts with `app/auto/query/`
 
 ### Working with Custom C# App WebAPIs
 
-In short: 
+In short:
 
 1. use `$2sxc(...).webApi.get(...)` or `$2sxc(...).webApi.post(...)` etc.
-2. for the path-parameter, use a path starting with `app/auto/api/[controller]/[action]` - 2sxc will take care of all the path resolutions if the path starts with `app/auto/api/` 
+2. for the path-parameter, use a path starting with `app/auto/api/[controller]/[action]` - 2sxc will take care of all the path resolutions if the path starts with `app/auto/api/`
 
 You can read more about the [C# WebApi Server Side](xref:NetCode.WebApi.Index)
 
-Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise. 
+Short note: the WebAPIs work like classic javascript promises. So not like the data.on(event) implementation which is a bit special, this is very standard jQuery promise.
 
 
 ### Demo App and further links
 
 You should find some code examples in this demo App
+
 * [TimeLineJS](xref:App.TimelineJs)
 * all the JS-apps including AngularJS in the [app-catalog](xref:AppsCatalog)
 
@@ -113,4 +114,3 @@ More links: [Description of the feature on 2sxc docs](http://2sxc.org/en/Docs-Ma
 
 [!include["history"](_webapi-history.md)]
 
----

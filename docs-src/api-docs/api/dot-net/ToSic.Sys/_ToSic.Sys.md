@@ -17,9 +17,11 @@ The **Sys** has the following concerns
 * Security
 * etc.
 
----
+------
 
 ## History
 
 1. Introduced in 2sxc 15.0 as `ToSic.Lib` (previously was part of `ToSic.Eav`)
 1. Changed to `ToSic.Sys` in 2sxc 19.0 to better reflect that it's the core system functionality.
+
+------

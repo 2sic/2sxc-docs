@@ -7,14 +7,14 @@ uid: JsCode.2sxcApi.Sxc.WebApi.BareMetal
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-In most cases you will want to use the new [fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) APIs in 2sxc 12.10+. 
+In most cases you will want to use the new [fetch](xref:JsCode.2sxcApi.Sxc.WebApi.Fetch) APIs in 2sxc 12.10+.
 
-But there are cases where you want to create your own calls using 
-[Axios](https://axios-http.com/docs/intro), 
+But there are cases where you want to create your own calls using
+[Axios](https://axios-http.com/docs/intro),
 [jQuery](https://jquery.com/),  
 [SuperAgent](https://visionmedia.github.io/superagent/),
 [Angular HttpClient](https://angular.io/guide/http)
-or whatever API system you want. 
+or whatever API system you want.
 
 In these cases, you just need some help to...
 
@@ -47,6 +47,6 @@ This will get you an object containing all the headers you need for a common Web
 1. Security headers/tokens
 1. Encoding headers - this will vary based on the optional verb you pass in
 
-If you don't specify a verb, `GET` is assumed, so it will only have encoding-headers for the response. 
+If you don't specify a verb, `GET` is assumed, so it will only have encoding-headers for the response.
 
 [!include["history"](_webapi-history.md)]

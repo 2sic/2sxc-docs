@@ -7,9 +7,9 @@ uid: Api.Js.SxcJs.SxcData
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .interact-2sxc { visibility: visible; } </style>
 
-A common need in JS is to read/write data from/to the backend. 
+A common need in JS is to read/write data from/to the backend.
 
-2sxc 13 introduce new JS APIs for this. 
+2sxc 13 introduce new JS APIs for this.
 
 * `data(...)` gets a data service to get one or many items of the same type, and also create/update data (this document)
 * `query(...)` gets a query service to call server-side queries 👉 [docs](xref:Api.Js.SxcJs.SxcQuery)
@@ -40,13 +40,13 @@ authorsSvc.getAll().then(authors => console.log(authors));
 
 ### Data Service Factory Parameters
 
-The `data(...)` factory just has one parameter: the `contentTypeName`. 
+The `data(...)` factory just has one parameter: the `contentTypeName`.
 
-The returned service will always perform actions for this content-type. 
+The returned service will always perform actions for this content-type.
 
 ### Data Service APIs
 
-Data Services always return a [modern Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) containing data. 
+Data Services always return a [modern Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) containing data.
 
 A Data Service has the following commands:
 
@@ -61,15 +61,17 @@ A Data Service has the following commands:
 
 ### Create Metadata
 
-When using `create(..., ...)` with two parameters you are creating metadata. The signature of the address-object is 
+When using `create(..., ...)` with two parameters you are creating metadata. The signature of the address-object is
 
 1. Either a string containing a GUID to an entity (the most common case) - like `31f509f1-e553-4371-bf60-3d5e98937b79`
 1. Or a full target identifier with TargetType and the ID as String, Number or Guid - see [](xref:Basics.DataFormats.Json.WebApi.Index)
 
----
+------
+
 ### Tutorial
 
 👉 [](xref:Tut.JsData)
 
 
 [!include["history"](_data-history.md)]
+

@@ -1,5 +1,5 @@
 
----
+------
 
 ### History
 
@@ -10,4 +10,4 @@
 1. `fetchRaw(...)` created to fix difficult naming in 12.10; `fetch(...)` is now deprecated and will stop working some day
 1. `fetchRaw`, `fetchJson`, `sxc.data(...)` and `sxc.query(...)` official for use 13.04
 
----
+------

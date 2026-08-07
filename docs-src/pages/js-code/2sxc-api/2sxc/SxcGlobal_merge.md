@@ -23,3 +23,5 @@ The resulting object is a [Sxc](xref:Api.Js.SxcJs.Sxc)
 1. Introduced in 2sxc 04.00
 1. Enhanced with `cms` (see [cms](xref:Api.Js.SxcJs.SxcGlobalCms)) in 9.30
 1. Enhanced the `$2sxc(...)` constructor with the ContextIdentifier in v11.11
+
+------

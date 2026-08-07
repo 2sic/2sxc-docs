@@ -25,10 +25,10 @@ This mode is mainly used
 * when integrating 2sxc into other systems which don't provide the full CMS functionality
 * when creating edit-functionality which is outside the default context, like in the context of a Module where you must edit data of a different App
 
----
+------
 
 ### History
 
 1. Introduced in 2sxc 11.11 to use with `$2sxc(...)`
 
----
+------
