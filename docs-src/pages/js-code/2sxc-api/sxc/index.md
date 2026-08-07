@@ -9,7 +9,7 @@ uid: JsCode.2sxcApi.Sxc.Index
 
 The module-specific `sxc`-instance is the core JavaScript object helping you in these cases:  
 
-1. if you want full control over the edit-experience with custom buttons etc. 
+1. if you want full control over the edit-experience with custom buttons etc.
 1. when you want to use view-data as an asyc-JS call
 1. if you wish to work with WebAPI REST calls - of your own App-WebApi, 2sxc-WebApi or Dnn-WebApi
 
@@ -30,7 +30,7 @@ The code above shows
 1. how the sxc-object is retrieved using the `$2sxc(...)` global, based on the current context `this`
 2. how to ask if we're in edit-mode
 
-Here's another quick example, calling a C# web-api endpoint: 
+Here's another quick example, calling a C# web-api endpoint:
 
 ```JavaScript
 var sxc = $2sxc(27);
@@ -42,8 +42,8 @@ sxc.webApi.post("Form/ProcessForm")
 
 ## How to Get the Current Context's `sxc` Instance
 
-Before you continue, make sure you know how to resolve/get your `sxc`, as it is unique for each Dnn-Module. 
-This is because each action needs to know which module it belongs to. 
+Before you continue, make sure you know how to resolve/get your `sxc`, as it is unique for each Dnn-Module.
+This is because each action needs to know which module it belongs to.
 Read about the 3 ways to get this in the [$2sxc Global docs](xref:JsCode.2sxcApi.Index).
 
 ## The API of an Module `sxc` Instance
@@ -67,6 +67,7 @@ Read about the 3 ways to get this in the [$2sxc Global docs](xref:JsCode.2sxcApi
 ## Demo App and further links
 
 You should find some code examples in this demo App
+
 * [TimeLineJS](xref:App.TimelineJs)
 * all the JS-apps including AngularJS in the [app-catalog](xref:AppsCatalog)
 
