@@ -107,16 +107,16 @@ Content-Types have a _Scope_. Read about it [](xref:Basics.Data.Scopes)
 
 ## APIs
 
-* [ToSic.Eav.Data](xref:ToSic.Eav.Data){title="icon:journal-code"}
+* [](xref:ToSic.Eav.Data){title="icon:journal-code"}
   Namespace has almost everything you see here
-* [IContentType](xref:ToSic.Eav.Data.IContentType){title="icon:journal-code"}
+* [](xref:ToSic.Eav.Data.IContentType){title="icon:journal-code"}
   defines what fields exist, it's the ContentType / Schema
-* [IContentTypeAttribute](xref:ToSic.Eav.Data.IContentTypeAttribute){title="icon:journal-code"}
+* [](xref:ToSic.Eav.Data.IContentTypeField){title="icon:journal-code"}
   contains the definition of an attribute
-* [ContentTypeMetadata](xref:ToSic.Eav.Data.ContentTypeMetadata){title="icon:journal-code"}
+* [](xref:ToSic.Eav.Data.ContentTypes.Sys.ContentTypeMetadata){title="icon:journal-code"}
   contains information about the content-type (like nicer descriptions).
   This is also used for the Attribute-Metadata
-* [IMetadataOf](xref:ToSic.Eav.Metadata.IMetadataOf){title="icon:journal-code"}
+* [](xref:ToSic.Eav.Metadata.IMetadata){title="icon:journal-code"}
   contains information about metadata containers
 
 ## History

@@ -34,7 +34,6 @@ The data which defines a query is stored as IEntity data.
 
 * So there is a header IEntity which is read through an [](xref:ToSic.Eav.DataSource.Query.Sys.QueryDefinition).
 * It contains the name, and a bunch of metadata IEntity items which are read as `QueryPartDefinition`s
-* It also contains a list of [Connections](xref:ToSic.Eav.DataSources.Queries.Connection) which define how the DataSources pass data from one source to another.
 * There are also test-parameters on such a query, which are only used for testing in the [VisualQuery Designer](xref:Basics.Query.VisualQuery.Index)
 
 ## Read also

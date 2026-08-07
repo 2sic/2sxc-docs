@@ -61,14 +61,14 @@ Imagine that your custom Razor template in a Dnn module is initialized. Here's w
 
 ### 2. Execution
 
-The Block is now ready. 2sxc now consults the View to find out which [Engine](xref:ToSic.Sxc.Engines.Sys.IEngine) to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.
+The Block is now ready. 2sxc now consults the View to find out which [Engine](xref:ToSic.Sxc.Render.Engines.Sys.IEngine) to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.
 
 1. The engine loads the template and lets it do what it should.
-1. If the template has code accessing [Data](xref:Custom.Hybrid.Razor12.Data) then the underlying source will retrieve the necessary data.
+1. If the template has code accessing [Data](xref:ToSic.Sxc.Apps.IAppDataTyped) then the underlying source will retrieve the necessary data.
     * If it's a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock.
     * If the view relies on a Query, then this query is built and will be waiting to execute if the data is accessed.
-1. If the code accesses [App](xref:Custom.Hybrid.Razor12.Data).[Data](xref:ToSic.Eav.Apps.App.Data) then this data source will build up everything necessary so it just works.
-1. If the code accesses [App](xref:Custom.Hybrid.Razor12.Data).[Query](xref:ToSic.Eav.Apps.App.Query) then the underlying system will prepare the Query as needed.
+1. If the code accesses [App](xref:ToSic.Sxc.Apps.IAppTyped).[Data](xref:ToSic.Sxc.Apps.IAppDataTyped) then this data source will build up everything necessary so it just works.
+1. If the code accesses [App](xref:ToSic.Sxc.Apps.IAppTyped).`GetQuery(...)` then the underlying system will prepare the Query as needed.
 
 > [!NOTE]
 > All the data retrieving features like `Data` do not actually retrieve any data unless accessed.  

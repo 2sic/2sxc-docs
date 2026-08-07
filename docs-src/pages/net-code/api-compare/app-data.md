@@ -72,7 +72,6 @@ In Strong Typed Code - inheriting from `AppCode.Razor.AppRazor`, the objects you
 ---
 
 [IApp]: xref:ToSic.Sxc.Apps.IApp
-[IAppData]: xref:ToSic.Eav.Apps.IAppData
 [IAppTyped]: xref:ToSic.Sxc.Apps.IAppTyped
 [IAppDataTyped]: xref:ToSic.Sxc.Apps.IAppDataTyped
 [IFolder]: xref:ToSic.Sxc.Adam.IFolder

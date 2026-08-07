@@ -1,3 +1,6 @@
+---
+uid: WebApi.OData
+---
 
 # OData Query Options for REST APIs (new v21)
 

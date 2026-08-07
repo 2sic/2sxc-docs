@@ -14,11 +14,12 @@ uid: NetCode.DataSources.Custom.DataBuilder
 
 Many data sources generate new content items - either because they deliver some kind of information, or because they convert data from another source into standardized entities. This is where `DataBuilder.Entity(...)` helps.
 
-Just fyi: Here are the [API docs](xref:ToSic.Eav.Data.IDataAssembler.Entity*). There is also an `Entities` for multiple Entities.
+Just fyi: Here are the [API docs](xref:ToSic.Eav.Data.Build).
 
 ## How the DataBuilder is added
 
-The DataBuilder is a [IDataBuilder](xref:ToSic.Eav.Data.IDataBuilder) which is automatically given as a property `DataBuilder`. The DataSource-Factory creates it.
+The DataBuilder is a [IDataBuilder](xref:ToSic.Eav.Data.Build.Sys.DataAssembler) which is automatically given as a property `DataBuilder`.
+The DataSource-Factory creates it.
 
 ## How to use DataBuilder.Entity(...)
 
@@ -53,12 +54,12 @@ The simplest way is to just use `DataBuilder.Entity(someDictionary)`, more advan
 ## Building Lists of Entities
 
 You can loop through your data and call `DataBuilder.Entity(someDictionary)` many times.
-You can also use the overload `DataBuilder.Entities(IEnumerable<someDictionary>)`. Best read the [API docs](xref:ToSic.Eav.Data.IDataBuilder.Entities*).
+You can also use the overload `DataBuilder.Entities(IEnumerable<someDictionary>)`.
 
 
 ## More Parameters on DataBuilder.Entity(...)
 
-All paramaters are optional, except the first one containing the values. Here's what each one does:
+All parameters are optional, except the first one containing the values. Here's what each one does:
 
 * `string titleField` is the title field name, so the entity then also knows which one is the title and can support `.EntityTitle` property
 * `string typeName` is a nice name for the type, allowing for type-filtering later in other data sources
@@ -72,7 +73,6 @@ All paramaters are optional, except the first one containing the values. Here's 
 
 * [DataSources Big Picture](xref:NetCode.DataSources.Custom.Guide.BigPicture)
 * [](xref:NetCode.DataSources.Custom.PreV15.Provide)
-* [](xref:ToSic.Eav.Data.IDataBuilder.Entity*)
 
 ## Demo Code and further links
 

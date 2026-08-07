@@ -40,7 +40,7 @@ Since `.Metadata` is often used in dynamic code it's optimized to just work. Thi
 
 ## Get Metadata for Data outside of 2sxc #todoc
 
-To read Metadata for non-2sxc objects you must request it from the **App.Data.Metadata** or from the [AppState](xref:ToSic.Eav.Apps.AppState).MetadataSource object. Both are a a [](xref:ToSic.Eav.Metadata.IMetadataSource). Use commands like `GetMetadata<T>(...)` to access the metadata you need.
+To read Metadata for non-2sxc objects you must request it from the **App.Data.Metadata** or from the `AppState.MetadataSource`. Both are a a [](xref:ToSic.Eav.Metadata.IMetadataSource). Use commands like `GetMetadata<T>(...)` to access the metadata you need.
 
 
 

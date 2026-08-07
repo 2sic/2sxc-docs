@@ -250,17 +250,17 @@ Within an app a lot of data can be linked together using Content-Types, Relation
 <p>When you use views which don't have a content-type configured, then properties like <code>Data</code>, <code>Content</code> or <code>Header</code> will be null. But <code>App.Data</code> will still work.</p>
 </div>
 <h3 id="2-execution">2. Execution</h3>
-<p>The Block is now ready. 2sxc now consults the View to find out which <a href="xref:ToSic.Sxc.Engines.Sys.IEngine">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
+<p>The Block is now ready. 2sxc now consults the View to find out which <a class="xref" href="../../api/dot-net/ToSic.Sxc.Render.Engines.Sys.IEngine.html">Engine</a> to use (Razor or Token). It will now load this engine, give it the Block and wait for the resulting Html to be created.</p>
 <ol>
 <li>The engine loads the template and lets it do what it should.</li>
-<li>If the template has code accessing <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_Data">Data</a> then the underlying source will retrieve the necessary data.
+<li>If the template has code accessing <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">Data</a> then the underlying source will retrieve the necessary data.
 <ul>
 <li>If it's a normal content-view, then the items provided will be the ones which an editor has manually added, since they were referenced in the ContentBlock.</li>
 <li>If the view relies on a Query, then this query is built and will be waiting to execute if the data is accessed.</li>
 </ul>
 </li>
-<li>If the code accesses <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_Data">App</a>.<a href="xref:ToSic.Eav.Apps.App.Data">Data</a> then this data source will build up everything necessary so it just works.</li>
-<li>If the code accesses <a class="xref" href="../../api/dot-net/Custom.Hybrid.Razor12.html#Custom_Hybrid_Razor12_Data">App</a>.<a href="xref:ToSic.Eav.Apps.App.Query">Query</a> then the underlying system will prepare the Query as needed.</li>
+<li>If the code accesses <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">App</a>.<a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppDataTyped.html">Data</a> then this data source will build up everything necessary so it just works.</li>
+<li>If the code accesses <a class="xref" href="../../api/dot-net/ToSic.Sxc.Apps.IAppTyped.html">App</a>.<code>GetQuery(...)</code> then the underlying system will prepare the Query as needed.</li>
 </ol>
 <div class="NOTE">
 <h5>Note</h5>
