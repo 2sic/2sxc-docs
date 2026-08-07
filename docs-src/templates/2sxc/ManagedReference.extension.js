@@ -50,7 +50,8 @@ exports.postTransform = function (model, b, c) {
     tools.addAlert(model, `ℹ️ This ${model.type.toLowerCase()} ${DefInternalWarningSuffix}`, "warning", debug);
   }
 
-  console.info("JS postTransform: model.uid = '" + model.uid + "' + match: " + (hasInternalNamespace ? "[x]" : "[ ]"));
+  if (debug)
+    console.info("JS postTransform: model.uid = '" + model.uid + "' + match: " + (hasInternalNamespace ? "[x]" : "[ ]"));
 
   /* Internal API warning for internal classes or interfaces based on attributes */
   // Check if the model has attributes indicating it is internal
