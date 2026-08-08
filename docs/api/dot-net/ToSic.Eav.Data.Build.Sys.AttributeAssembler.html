@@ -161,9 +161,6 @@ public class AttributeAssembler : ServiceWithSetup&lt;DataAssemblerOptions&gt;, 
       <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_Setup__0_">ServiceWithSetup&lt;DataAssemblerOptions&gt;.Setup(DataAssemblerOptions)</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_GetDefaultOptions">ServiceWithSetup&lt;DataAssemblerOptions&gt;.GetDefaultOptions()</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Sys.Services.ServiceBase.html#ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___">ServiceBase.ConnectLogs(object[])</a>
     </div>
   </dd></dl>
@@ -181,7 +178,7 @@ public class AttributeAssembler : ServiceWithSetup&lt;DataAssemblerOptions&gt;, 
 
   <h3 id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_CreateFrom_ToSic_Eav_Data_IAttribute_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IValue__" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.CreateFrom(ToSic.Eav.Data.IAttribute,System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IValue})">
   CreateFrom(IAttribute, IImmutableList&lt;IValue&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -219,7 +216,7 @@ public class AttributeAssembler : ServiceWithSetup&lt;DataAssemblerOptions&gt;, 
 
   <h3 id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_CreateOrUpdate_ToSic_Eav_Data_IAttribute_System_String_System_Object_ToSic_Eav_Data_ValueTypes_ToSic_Eav_Data_IValue_System_String_System_Boolean_" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.CreateOrUpdate(ToSic.Eav.Data.IAttribute,System.String,System.Object,ToSic.Eav.Data.ValueTypes,ToSic.Eav.Data.IValue,System.String,System.Boolean)">
   CreateOrUpdate(IAttribute?, string, object?, ValueTypes, IValue?, string?, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a value to the attribute specified. To do so, set the name, type and string of the value, as
@@ -265,11 +262,53 @@ well as some language properties.</p>
 
 
 
+  <a id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_GetDefaultOptions_" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.GetDefaultOptions*"></a>
+
+  <h3 id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_GetDefaultOptions" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.GetDefaultOptions">
+  GetDefaultOptions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Method to generate new / default options.
+This should usually not be called, but it might;
+so if your service can work without valid options (or accesses options before setup), this would trigger.</p>
+<p>This could also be triggered, if the service was created without the correct Generator.
+Note that it's always an option to just throw an exception.</p>
+<p>You must override this to provide your own default options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override DataAssemblerOptions GetDefaultOptions()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ServiceOptionsRequiredException</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_Relationship_" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.Relationship*"></a>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_AttributeAssembler_Relationship_System_String_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__" data-uid="ToSic.Eav.Data.Build.Sys.AttributeAssembler.Relationship(System.String,System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity})">
   Relationship(string, IEnumerable&lt;IEntity?&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/AttributeAssembler.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

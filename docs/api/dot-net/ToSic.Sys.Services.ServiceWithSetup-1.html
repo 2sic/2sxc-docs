@@ -111,7 +111,7 @@
 
 
   <h1 id="ToSic_Sys_Services_ServiceWithSetup_1" data-uid="ToSic.Sys.Services.ServiceWithSetup`1" class="text-break">
-Class ServiceWithSetup&lt;TOptions&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L5"><i class="bi bi-code-slash"></i></a>
+Class ServiceWithSetup&lt;TOptions&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -124,7 +124,7 @@ Class ServiceWithSetup&lt;TOptions&gt;  <a class="header-action link-secondary" 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still WIP as of v22&quot;)]
-public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, IHasOptions&lt;TOptions&gt;, IServiceWithSetup&lt;TOptions&gt; where TOptions : class, new()</code></pre>
+public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, IHasOptions&lt;TOptions&gt;, IServiceWithSetup&lt;TOptions&gt; where TOptions : class</code></pre>
   </div>
 
 
@@ -157,9 +157,15 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
     <dt>Derived</dt>
     <dd>
       <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.AttributeAssembler.html">AttributeAssembler</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.ContentTypeAssembler.html">ContentTypeAssembler</a></div>
       <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.ContentTypeAssemblyKit.html">ContentTypeAssemblyKit</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.ContentTypeFieldAssembler.html">ContentTypeFieldAssembler</a></div>
       <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssembler.html">DataAssembler</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.EntityAssembler.html">EntityAssembler</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.LanguageAssembler.html">LanguageAssembler</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.html">RelationshipAssembler</a></div>
       <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.ValueAssembler.html">ValueAssembler</a></div>
+      <div><a class="xref" href="ToSic.Eav.Data.Build.Sys.ValueListAssembler.html">ValueListAssembler</a></div>
     </dd>
   </dl>
 
@@ -184,7 +190,7 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 
   <h3 id="ToSic_Sys_Services_ServiceWithSetup_1__ctor_System_String_ToSic_Sys_Coding_NoParamOrder_System_Object___" data-uid="ToSic.Sys.Services.ServiceWithSetup`1.#ctor(System.String,ToSic.Sys.Coding.NoParamOrder,System.Object[])">
   ServiceWithSetup(string, NoParamOrder, object[]?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -223,7 +229,7 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 
   <h3 id="ToSic_Sys_Services_ServiceWithSetup_1_MyOptions" data-uid="ToSic.Sys.Services.ServiceWithSetup`1.MyOptions">
   MyOptions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The options instance for this service, read-only.</p>
@@ -265,10 +271,15 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 
   <h3 id="ToSic_Sys_Services_ServiceWithSetup_1_GetDefaultOptions" data-uid="ToSic.Sys.Services.ServiceWithSetup`1.GetDefaultOptions">
   GetDefaultOptions()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Method to generate new / default options. You can override this to provide your own default options.</p>
+  <div class="markdown level1 summary"><p>Method to generate new / default options.
+This should usually not be called, but it might;
+so if your service can work without valid options (or accesses options before setup), this would trigger.</p>
+<p>This could also be triggered, if the service was created without the correct Generator.
+Note that it's always an option to just throw an exception.</p>
+<p>You must override this to provide your own default options.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -290,6 +301,11 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ServiceOptionsRequiredException</span></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -297,7 +313,7 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 
   <h3 id="ToSic_Sys_Services_ServiceWithSetup_1_Setup__0_" data-uid="ToSic.Sys.Services.ServiceWithSetup`1.Setup(`0)">
   Setup(TOptions)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -328,7 +344,7 @@ public abstract class ServiceWithSetup&lt;TOptions&gt; : ServiceBase, IHasLog, I
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 

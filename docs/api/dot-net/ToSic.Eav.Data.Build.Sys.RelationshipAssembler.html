@@ -125,7 +125,7 @@ Class RelationshipAssembler  <a class="header-action link-secondary" title="View
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public class RelationshipAssembler</code></pre>
+public class RelationshipAssembler : ServiceWithSetup&lt;DataAssemblerOptions&gt;, IHasLog, IHasOptions&lt;DataAssemblerOptions&gt;, IServiceWithSetup&lt;DataAssemblerOptions&gt;</code></pre>
   </div>
 
 
@@ -135,9 +135,63 @@ public class RelationshipAssembler</code></pre>
     <dt>Inheritance</dt>
     <dd>
       <div><span class="xref">object</span></div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceBase.html">ServiceBase</a></div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html">ServiceWithSetup</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
       <div><span class="xref">RelationshipAssembler</span></div>
     </dd>
   </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></div>
+      <div><a class="xref" href="ToSic.Sys.Services.IHasOptions-1.html">IHasOptions</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
+      <div><a class="xref" href="ToSic.Sys.Services.IServiceWithSetup-1.html">IServiceWithSetup</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_MyOptions">ServiceWithSetup&lt;DataAssemblerOptions&gt;.MyOptions</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_Setup__0_">ServiceWithSetup&lt;DataAssemblerOptions&gt;.Setup(DataAssemblerOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase.html#ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___">ServiceBase.ConnectLogs(object[])</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler__ctor_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.#ctor*"></a>
+
+  <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler__ctor" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.#ctor">
+  RelationshipAssembler()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Internal assembler to create relationship values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelationshipAssembler()</code></pre>
+  </div>
+
+
+
+
 
 
 
@@ -151,11 +205,53 @@ public class RelationshipAssembler</code></pre>
 </h2>
 
 
+  <a id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_GetDefaultOptions_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.GetDefaultOptions*"></a>
+
+  <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_GetDefaultOptions" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.GetDefaultOptions">
+  GetDefaultOptions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Method to generate new / default options.
+This should usually not be called, but it might;
+so if your service can work without valid options (or accesses options before setup), this would trigger.</p>
+<p>This could also be triggered, if the service was created without the correct Generator.
+Note that it's always an option to just throw an exception.</p>
+<p>You must override this to provide your own default options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override DataAssemblerOptions GetDefaultOptions()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ServiceOptionsRequiredException</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_Relationship_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.Relationship*"></a>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_Relationship_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity__" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.Relationship(System.Collections.Generic.IEnumerable{ToSic.Eav.Data.IEntity})">
   Relationship(IEnumerable&lt;IEntity?&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -191,7 +287,7 @@ public class RelationshipAssembler</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_ToSource_System_Collections_Generic_ICollection_System_Nullable_System_Guid___ToSic_Eav_Data_Sys_Entities_Sources_IEntitiesSource_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.ToSource(System.Collections.Generic.ICollection{System.Nullable{System.Guid}},ToSic.Eav.Data.Sys.Entities.Sources.IEntitiesSource)">
   ToSource(ICollection&lt;Guid?&gt;, IEntitiesSource?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -229,7 +325,7 @@ public class RelationshipAssembler</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_ToSource_System_Collections_Generic_ICollection_System_Nullable_System_Int32___ToSic_Eav_Data_Sys_Entities_Sources_IEntitiesSource_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.ToSource(System.Collections.Generic.ICollection{System.Nullable{System.Int32}},ToSic.Eav.Data.Sys.Entities.Sources.IEntitiesSource)">
   ToSource(ICollection&lt;int?&gt;, IEntitiesSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -267,7 +363,7 @@ public class RelationshipAssembler</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_ToSource_System_Collections_Generic_IEnumerable_System_Object__System_Linq_ILookup_System_Object_ToSic_Eav_Data_IEntity__" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.ToSource(System.Collections.Generic.IEnumerable{System.Object},System.Linq.ILookup{System.Object,ToSic.Eav.Data.IEntity})">
   ToSource(IEnumerable&lt;object&gt;, ILookup&lt;object, IEntity&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -305,7 +401,7 @@ public class RelationshipAssembler</code></pre>
 
   <h3 id="ToSic_Eav_Data_Build_Sys_RelationshipAssembler_ToSource_ToSic_Eav_Data_Sys_Relationships_IRelatedEntitiesValue_ToSic_Eav_Data_Sys_Entities_Sources_IEntitiesSource_" data-uid="ToSic.Eav.Data.Build.Sys.RelationshipAssembler.ToSource(ToSic.Eav.Data.Sys.Relationships.IRelatedEntitiesValue,ToSic.Eav.Data.Sys.Entities.Sources.IEntitiesSource)">
   ToSource(IRelatedEntitiesValue, IEntitiesSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/RelationshipAssembler.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

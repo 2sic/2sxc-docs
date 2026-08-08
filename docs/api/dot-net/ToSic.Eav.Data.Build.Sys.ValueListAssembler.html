@@ -125,7 +125,7 @@ Class ValueListAssembler  <a class="header-action link-secondary" title="View so
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
-public class ValueListAssembler</code></pre>
+public class ValueListAssembler : ServiceWithSetup&lt;DataAssemblerOptions&gt;, IHasLog, IHasOptions&lt;DataAssemblerOptions&gt;, IServiceWithSetup&lt;DataAssemblerOptions&gt;</code></pre>
   </div>
 
 
@@ -135,12 +135,38 @@ public class ValueListAssembler</code></pre>
     <dt>Inheritance</dt>
     <dd>
       <div><span class="xref">object</span></div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceBase.html">ServiceBase</a></div>
+      <div><a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html">ServiceWithSetup</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
       <div><span class="xref">ValueListAssembler</span></div>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="ToSic.Sys.Logging.IHasLog.html">IHasLog</a></div>
+      <div><a class="xref" href="ToSic.Sys.Services.IHasOptions-1.html">IHasOptions</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
+      <div><a class="xref" href="ToSic.Sys.Services.IServiceWithSetup-1.html">IServiceWithSetup</a>&lt;<a class="xref" href="ToSic.Eav.Data.Build.Sys.DataAssemblerOptions.html">DataAssemblerOptions</a>&gt;</div>
+    </dd>
+  </dl>
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_MyOptions">ServiceWithSetup&lt;DataAssemblerOptions&gt;.MyOptions</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_Setup__0_">ServiceWithSetup&lt;DataAssemblerOptions&gt;.Setup(DataAssemblerOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceWithSetup-1.html#ToSic_Sys_Services_ServiceWithSetup_1_GetDefaultOptions">ServiceWithSetup&lt;DataAssemblerOptions&gt;.GetDefaultOptions()</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase.html#ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___">ServiceBase.ConnectLogs(object[])</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -151,6 +177,43 @@ It can also be used by external code to create values, but it's not really meant
 It's more of an internal helper class, which is why it's not in the Sys namespace.</p>
 <p>Important: everything is <strong>functional</strong> meaning that object given in will never be modified.</p>
 </div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ToSic_Eav_Data_Build_Sys_ValueListAssembler__ctor_" data-uid="ToSic.Eav.Data.Build.Sys.ValueListAssembler.#ctor*"></a>
+
+  <h3 id="ToSic_Eav_Data_Build_Sys_ValueListAssembler__ctor" data-uid="ToSic.Eav.Data.Build.Sys.ValueListAssembler.#ctor">
+  ValueListAssembler()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data.Build/Data.Build.Sys/ValueListAssembler.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The internal system to manipulate value lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueListAssembler()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ToSic_Eav_Data_Build_Sys_ValueListAssembler__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This is used in the builders to create the values for the attributes.
+It can also be used by external code to create values, but it's not really meant for that, so it's not public API.
+It's more of an internal helper class, which is why it's not in the Sys namespace.</p>
+<p>Important: everything is <strong>functional</strong> meaning that object given in will never be modified.</p>
+</div>
+
+
 
 
   <h2 class="section" id="methods">Methods

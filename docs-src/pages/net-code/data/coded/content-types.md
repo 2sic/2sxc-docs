@@ -123,7 +123,9 @@ You can define custom specs on auto-generated Content Type Definitions using the
 
 1. [`[ContentTypeUse]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeUseAttribute) - to reference another class which defines the content-type.
 
-1. [`[ContentTypeField]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute) - to configure a field of the content-type, mainly for description, is-title etc.
+1. [`[ContentTypeField]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeFieldAttribute) - to configure a field of the content-type, mainly for description etc.
+
+1. [`[ContentTypeTitle]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeTitleAttribute) - to configure a title-field of the content-type
 
 1. [`[ContentTypeIgnore]`](xref:ToSic.Eav.Data.ContentTypes.ContentTypeIgnoreAttribute) - to exclude object properties in the content-type definition
 
