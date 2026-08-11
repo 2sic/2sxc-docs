@@ -1,6 +1,13 @@
 
 ### 2sxc v22.00.00 (2026-08-??) PREPARING / WIP
 
+#### Highlights
+
+1. 💃🏼 Models API
+1. New App Extension **vCard**
+1. Linux support for Oqtane
+1. Container support for Oqtane
+
 #### Models APIs 💃🏼
 
 The Models API was officially released before, but not really communicated,
@@ -34,7 +41,8 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 #### Other
 
 1. ⚠️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.
-
+1. In addition, a new/separate App Extension **vCard** was created, which is a much better implementation of the same idea.
+1. An internal `GetOnce<T>` API was changed to be `LazyGet<T>`
 
 #### Copilot Enhancements ✈️
 
