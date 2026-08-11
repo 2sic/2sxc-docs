@@ -28,6 +28,8 @@ Here is a list of some of the most popular App Extensions available for 2sxc:
   a DataSource extension for fetching weather data from the Open Meteo API
 * [Google ReCaptcha V3](xref:Extensions.AppExtensions.By2sxc.GoogleReCaptchaV3.Index){title="icon:shield-check"}
   a code extension for integrating Google reCAPTCHA V3 into forms for spam protection
+* [vCard](xref:Extensions.AppExtensions.By2sxc.VCard.Index){title="icon:person-vcard"}
+  a code extension for creating downloadable vCard contact files from any App data
 
 JavaScript Specific Extensions:
 
