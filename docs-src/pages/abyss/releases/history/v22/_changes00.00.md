@@ -7,6 +7,8 @@
 1. New App Extension **vCard**
 1. Linux support for Oqtane
 1. Container support for Oqtane
+1. Minimum DNN ☢️ now v10.00.00
+1. Minimum Oqtane ☢️ now v10.02.00 to support multi-language, but we recommend the latest version of Oqtane
 
 #### Models APIs 💃🏼
 
@@ -71,7 +73,9 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 
 1. 🩸 Support the new Multi-Language system of Oqtane (note that it's still very buggy, because the Oqtane implementation is buggy)
 1. 🩸 Improve ImageFlow in edge cases
-1. 🩸 Introduce Linux support (and test on Linux), preparing for container use as well and multi-DB
+1. 🩸 Introduce Linux support (and test on Linux), preparing for container use as well and multi-DB  
+    Side effect: Oqtane distribution is now ca. 30MB larger, because it contains all variants of the native DLLs.
+    As soon as the Marketplace supports it, we'll create a separate package for Linux and MacOS.
 
 
 #### SysData
