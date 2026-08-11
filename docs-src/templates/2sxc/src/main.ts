@@ -9,6 +9,8 @@ import "./main.scss";
 import { inlineSvgs } from '../../shared-global/src/scripts/svgs/svg-importer';
 import { convertDocsLinks } from '../../shared-global/src/scripts/docs-links';
 
+const razorLanguageDefinition = ((hljsRazor as any).default ?? hljsRazor) as (hljs: any) => any;
+
 // Experimental - should provide pan/zoom on mermaid, but can't get it to work yet
 // also confusing, because the plugin seems very new.
 // import { enhanceMermaidDiagrams } from '@mostlylucid/mermaid-enhancements';
@@ -31,8 +33,10 @@ export default {
     // console.log('configuring configureHljs to support Razor');
 
     // Add support for Razor
-    hljs.registerLanguage('cshtml-razor', hljsRazor);
-    hljs.registerAliases('razor', { languageName: 'cshtml-razor' });
+    if (typeof razorLanguageDefinition === 'function') {
+      hljs.registerLanguage('cshtml-razor', razorLanguageDefinition);
+      hljs.registerAliases('razor', { languageName: 'cshtml-razor' });
+    }
   },
 
 }
