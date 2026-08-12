@@ -121,20 +121,20 @@ var result = await GetService<VCardService>().CreateAsync(card);
 
 ## vCard Properties
 
-| Property | Purpose |
-| --- | --- |
-| `FirstName`, `LastName` | Contact name |
-| `Organization`, `JobTitle` | Company and position |
-| `StreetAddress`, `Zip`, `City`, `Region`, `CountryName` | Work address |
-| `Phone` | Work phone number |
-| `PhoneCompany` | Company phone number |
-| `Mobile` | Mobile phone number |
-| `Email` | Preferred email address |
-| `Url` | Work website |
-| `PhotoUrl` | Absolute, server-accessible URL of a photo downloaded by `CreateAsync()` |
-| `PhotoBase64` | Prepared Base64 photo; takes precedence over `PhotoUrl` |
-| `PhotoType` | Explicit image type, normalized to uppercase; defaults to `JPEG` |
-| `FileName` | Download filename; `.vcf` is added automatically |
+| Property                                                | Purpose                                                                   |
+| ---                                                     | ---                                                                       |
+| `FirstName`, `LastName`                                 | Contact name                                                              |
+| `Organization`, `JobTitle`                              | Company and position                                                      |
+| `StreetAddress`, `Zip`, `City`, `Region`, `CountryName` | Work address                                                              |
+| `Phone`                                                 | Work phone number                                                         |
+| `PhoneCompany`                                          | Company phone number                                                      |
+| `Mobile`                                                | Mobile phone number                                                       |
+| `Email`                                                 | Preferred email address                                                   |
+| `Url`                                                   | Work website                                                              |
+| `PhotoUrl`                                              | Absolute, server-accessible URL of a photo downloaded by `CreateAsync()`  |
+| `PhotoBase64`                                           | Prepared Base64 photo; takes precedence over `PhotoUrl`                   |
+| `PhotoType`                                             | Explicit image type, normalized to uppercase; defaults to `JPEG`          |
+| `FileName`                                              | Download filename; `.vcf` is added automatically                          |
 
 Empty optional properties are omitted from the generated vCard.
 If `FileName` is empty, the service uses the contact's display name and falls back to `contact.vcf`.
@@ -144,3 +144,5 @@ If `FileName` is empty, the service uses the contact's display name and falls ba
 1. v00.00.01 - Initial release for 2sxc v21 2026-08
 
 Source: <https://github.com/2sxc-apps/app-extension-vcard>
+
+Shortlink: <https://go.2sxc.org/ext-vcard>
