@@ -33,4 +33,4 @@ Leave empty to automatically use the parameters expected by the linked view.
 
 Next step:
 
-Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery){title="Link and Query Configuration"} to set up advanced linking options.
+Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndDetail){title="Link and Detail"} to set up advanced linking options.

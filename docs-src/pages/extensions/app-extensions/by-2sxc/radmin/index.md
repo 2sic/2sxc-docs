@@ -25,7 +25,7 @@ Here's a quick release video for an overview:
 * [Configure View](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureView){title="icon:gear"}
 * [Configure Table](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureTable){title="icon:table"}
 * [Configure Columns](xref:Extensions.AppExtensions.By2sxc.Radmin.ConfigureColumns){title="icon:layout-three-columns"}
-* [Link and Query Configuration](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery){title="icon:link-45deg"}
+* [Link and Detail](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndDetail){title="icon:link-45deg"}
 * [Detail View](xref:Extensions.AppExtensions.By2sxc.Radmin.DetailView){title="icon:file-earmark-text"}
 
 ---

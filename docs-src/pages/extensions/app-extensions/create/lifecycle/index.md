@@ -38,7 +38,7 @@ In **App Settings -> App Extensions**, click the download icon on your extension
 This creates the extension package.
 
 <div gallery="export">
-  <img src="./assets/extension-export.png">
+  <img src="../hello-world/assets/extension-export.png">
 </div>
 
 ---
@@ -54,8 +54,8 @@ This creates the extension package.
 5. Click **Install**
 
 <div gallery="import">
-  <img src="./assets/extension-import.png">
-  <img src="./assets/extension-install-confirm.png">
+  <img src="../hello-world/assets/extension-import.png">
+  <img src="../hello-world/assets/extension-install-confirm.png">
 </div>
 
 ### [2. Test the Extension](#tab/test-the-extension)

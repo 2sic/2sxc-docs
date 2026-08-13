@@ -48,4 +48,4 @@ Save and verify the table now shows your preferred columns in the correct order.
 
 Next step:
 
-Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndQuery){title="Link and Query Configuration"} to set up linking between views.
+Continue with [](xref:Extensions.AppExtensions.By2sxc.Radmin.LinkAndDetail){title="Link and Detail"} to set up linking between views.
