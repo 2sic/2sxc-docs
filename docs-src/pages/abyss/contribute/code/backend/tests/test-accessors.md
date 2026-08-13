@@ -28,7 +28,7 @@ Examples follow.
 This shows a method on the class (for use there only) to create a specific class.
 It will help to keep the access-count on the constructor low.
 
-[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Caching.Tests/CachePolicyMakerTests.cs#L8-L11)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.Caching.Tests/Sys.Caching/CachePolicyMakerTests.cs#L8-L11)]
 
 ## Static Class with Test Accessor
 
