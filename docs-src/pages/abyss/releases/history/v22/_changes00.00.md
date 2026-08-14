@@ -7,7 +7,7 @@
 1. New App Extension **vCard**
 1. Linux support for Oqtane
 1. Container support for Oqtane
-1. Minimum DNN ☢️ now v10.00.00
+1. Minimum DNN ☢️ now v10.01.00
 1. Minimum Oqtane ☢️ now v10.02.00 to support multi-language, but we recommend the latest version of Oqtane
 
 #### Models APIs 💃🏼
@@ -54,7 +54,7 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 
 #### App Enhancements
 
-1. Changed all apps to build with Vite (TODO: verify)
+1. Changed all apps to build with Vite
 
 #### Bugfixes
 
@@ -76,7 +76,7 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 1. 🩸 Introduce Linux support (and test on Linux), preparing for container use as well and multi-DB  
     Side effect: Oqtane distribution is now ca. 30MB larger, because it contains all variants of the native DLLs.
     As soon as the Marketplace supports it, we'll create a separate package for Linux and MacOS.
-
+1. 🩸 Introduce multi-DB support for Postgres, MySQL and SqlLite
 
 #### SysData
 
@@ -119,8 +119,8 @@ This is the list of systems which we changed, but there are way more as we can't
 1. Improve handling of git dependabot requests
 1. Various unit tests in the `$2sxc` ui using Vitest
 1. Refactor import/export code
-1. Change build of `$2sxc` to use Vite
-1. Change build of `inpage` to use Vite TODO: WIP
+1. Change build of all JS projects to Vite and ESBuild; `$2sxc`, `inpage`, `quick-dialog`, `eav-ui` and more
+1. Updated ImageFlow from v2.1.0-RC11 to v2.3.1-RC01
 
 
 [!include["Breaking Changes"](./_brc00.00.md)]

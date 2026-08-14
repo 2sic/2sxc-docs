@@ -113,7 +113,7 @@
 <li>New App Extension <strong>vCard</strong></li>
 <li>Linux support for Oqtane</li>
 <li>Container support for Oqtane</li>
-<li>Minimum DNN ☢️ now v10.00.00</li>
+<li>Minimum DNN ☢️ now v10.01.00</li>
 <li>Minimum Oqtane ☢️ now v10.02.00 to support multi-language, but we recommend the latest version of Oqtane</li>
 </ol>
 <h4 id="models-apis-">Models APIs 💃🏼</h4>
@@ -179,6 +179,7 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 <li>🩸 Introduce Linux support (and test on Linux), preparing for container use as well and multi-DB<br>
 Side effect: Oqtane distribution is now ca. 30MB larger, because it contains all variants of the native DLLs.
 As soon as the Marketplace supports it, we'll create a separate package for Linux and MacOS.</li>
+<li>🩸 Introduce multi-DB support for Postgres, MySQL and SqlLite</li>
 </ol>
 <h4 id="sysdata">SysData</h4>
 <p>This is about changing how most of our internal APIs work.
@@ -229,8 +230,8 @@ This is the list of systems which we changed, but there are way more as we can't
 <li>Improve handling of git dependabot requests</li>
 <li>Various unit tests in the <code>$2sxc</code> ui using Vitest</li>
 <li>Refactor import/export code</li>
-<li>Change build of <code>$2sxc</code> to use Vite</li>
-<li>Change build of <code>inpage</code> to use Vite TODO: WIP</li>
+<li>Change build of all JS projects to Vite and ESBuild; <code>$2sxc</code>, <code>inpage</code>, <code>quick-dialog</code>, <code>eav-ui</code> and more</li>
+<li>Updated ImageFlow from v2.1.0-RC11 to v2.3.1-RC01</li>
 </ol>
 <h4 id="breaking-changes-in-eav-and-2sxc-v2200">Breaking Changes in EAV and 2sxc v22.00</h4>
 <ol>
@@ -242,6 +243,10 @@ If you did, you can use the new <code>IEntityField</code> interface instead, whi
 This is an internal API but was used once in <code>Radmin</code>, so for compatibility we're keeping the old interface for a while but will update the extension.</li>
 <li>⬇️ An internal <code>GetOnce&lt;T&gt;</code> API was changed to be <code>LazyGet&lt;T&gt;</code></li>
 <li>⬇️ Some internal <code>Field</code> setters for <code>Url</code>, <code>Raw</code> and <code>Value</code> were removed as they should not be used.</li>
+<li>⬇️ The internal base class for dependencies <code>ToSic.Sys.Services.DependenciesBase</code> was changed to be a <code>record</code> (previously it was a <code>class</code>)</li>
+<li>⬇️ The internal <code>PiggyBack</code> system was simplified.</li>
+<li>⬇️🩸 Oqtane: Removed old Razor APIs <code>GetCode()</code> and <code>CreateInstance()</code> which were probably never used on Oqtane<br>
+You should only be affected, if you were a very early adopter and used some of the earliest template Apps. If so, please reach out.</li>
 </ol>
 <hr>
 <h2 id="breaking-changes-in-v22">Breaking Changes in v22</h2>
@@ -261,6 +266,10 @@ If you did, you can use the new <code>IEntityField</code> interface instead, whi
 This is an internal API but was used once in <code>Radmin</code>, so for compatibility we're keeping the old interface for a while but will update the extension.</li>
 <li>⬇️ An internal <code>GetOnce&lt;T&gt;</code> API was changed to be <code>LazyGet&lt;T&gt;</code></li>
 <li>⬇️ Some internal <code>Field</code> setters for <code>Url</code>, <code>Raw</code> and <code>Value</code> were removed as they should not be used.</li>
+<li>⬇️ The internal base class for dependencies <code>ToSic.Sys.Services.DependenciesBase</code> was changed to be a <code>record</code> (previously it was a <code>class</code>)</li>
+<li>⬇️ The internal <code>PiggyBack</code> system was simplified.</li>
+<li>⬇️🩸 Oqtane: Removed old Razor APIs <code>GetCode()</code> and <code>CreateInstance()</code> which were probably never used on Oqtane<br>
+You should only be affected, if you were a very early adopter and used some of the earliest template Apps. If so, please reach out.</li>
 </ol>
 
 </article>

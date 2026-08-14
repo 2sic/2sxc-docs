@@ -10,3 +10,7 @@
     This is an internal API but was used once in `Radmin`, so for compatibility we're keeping the old interface for a while but will update the extension.
 1. ⬇️ An internal `GetOnce<T>` API was changed to be `LazyGet<T>`
 1. ⬇️ Some internal `Field` setters for `Url`, `Raw` and `Value` were removed as they should not be used.
+1. ⬇️ The internal base class for dependencies `ToSic.Sys.Services.DependenciesBase` was changed to be a `record` (previously it was a `class`)
+1. ⬇️ The internal `PiggyBack` system was simplified.
+1. ⬇️🩸 Oqtane: Removed old Razor APIs `GetCode()` and `CreateInstance()` which were probably never used on Oqtane  
+    You should only be affected, if you were a very early adopter and used some of the earliest template Apps. If so, please reach out.
