@@ -35,7 +35,7 @@ Last Update: **2026-08-04**
     1. with a few public models to use
     1. with some kind of list to see them all
 1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d ⏳
-1. @STV: Code Copilot: Auto-Generate models as they change - ca. 50% ⏳
+1. @STV: Code Copilot: Auto-Generate models as they change - ca. 70% ⏳
 1. @2rb: Angular Update on Quick-Dialog
 1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
 
@@ -63,6 +63,17 @@ Last Update: **2026-08-04**
 1. EAV-UI: create many unit tests
 1. $2sxc - many unit tests
 1. inpage - many unit tests
+1. docs - improve API output
+    1. put properties in tables
+    1. put extension methods below
+    1. put inherited properties below, but also in tables
+1. Make the DNN project nullable
+1. Make the Oqtane project nullable
+
+## Major things we're working on
+
+1. Model system
+1. HookUp work system
 
 ---
 

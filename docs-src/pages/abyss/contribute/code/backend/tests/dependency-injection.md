@@ -21,7 +21,11 @@ These tests need DI to be setup, but don't need any configuration (such as Datab
 
 First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:
 
-[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.DI.Tests/Sys.Services.Switchable/Startup.cs)]
+[!code-csharp[](../../../../../../../../eav-server/ToSic.Sys.DI.Tests/Sys.Services.Generator/WithOptions/Startup.cs)]
+
+> [!WARNING]
+> We found that using setup in folders makes many tests hard to follow.
+> So in most tests we're starting to apply a `Startup` class inside each test class, which makes it cleaner.
 
 The tests in this folder and sub folders will automatically pick up the DI configuration from this startup class.
 This happens through the **namespace**, not through the physical folders.

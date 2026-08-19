@@ -130,20 +130,24 @@ public void SetReplaceOriginal()
 <p>First we need a startup class which does all the DI setup - in a Folder, so everything under it will use this:</p>
 <pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
 using ToSic.Sys.Run.Startup;
-using ToSic.Sys.Services.Switchable.Mocks;
 
-namespace ToSic.Sys.Services.Switchable;
+namespace ToSic.Sys.Services.Generator.WithOptions;
 
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services) =&gt;
         services
-            .AddTransient&lt;IMockSwitchableService, MockSwitchableFallback&gt;()
-            .AddTransient&lt;IMockSwitchableService, MockSwitchableKeep&gt;()
-            .AddTransient&lt;IMockSwitchableService, MockSwitchableSkip&gt;()
+            .AddTransient&lt;MockServiceWithSetup&gt;()
+            .AddTransient&lt;MockServiceSpawnNewCustomOptions&gt;()
+            .AddTransient&lt;MockServiceSpawnNewDefaultOptions&gt;()
             .AddSysCore();
 }
 </code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>We found that using setup in folders makes many tests hard to follow.
+So in most tests we're starting to apply a <code>Startup</code> class inside each test class, which makes it cleaner.</p>
+</div>
 <p>The tests in this folder and sub folders will automatically pick up the DI configuration from this startup class.
 This happens through the <strong>namespace</strong>, not through the physical folders.</p>
 <p>This setup allows you to quickly reuse a setup, and specify it to be very specific to all the tests in the same namespace.
@@ -155,6 +159,7 @@ namespace ToSic.Sys.Services.Switchable;
 
 public class VerifySwitchableService(ServiceSwitcher&lt;IMockSwitchableService&gt; switcher)
 {
+    public class Startup() : QuickStartup(s =&gt; s.AddMockSwitchableAndCoreServices());
 
     [Fact]
     public void FindKeepService() =&gt;

@@ -261,7 +261,7 @@ So if it's used for anything that doesn't support logging it will just behave li
 
   <h3 id="ToSic_Sys_DI_LazySvc_1_Log" data-uid="ToSic.Sys.DI.LazySvc`1.Log">
   Log
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The parent log, which is attached to newly generated objects
@@ -329,7 +329,7 @@ So if it's used for anything that doesn't support logging it will just behave li
 
   <h3 id="ToSic_Sys_DI_LazySvc_1_Inject__0_" data-uid="ToSic.Sys.DI.LazySvc`1.Inject(`0)">
   Inject(TService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>EXPERIMENTAL - replace a service with an already prepared one, to bypass the default factory in edge cases</p>
@@ -359,9 +359,9 @@ So if it's used for anything that doesn't support logging it will just behave li
 
   <a id="ToSic_Sys_DI_LazySvc_1_SetInit_" data-uid="ToSic.Sys.DI.LazySvc`1.SetInit*"></a>
 
-  <h3 id="ToSic_Sys_DI_LazySvc_1_SetInit_System_Action__0__" data-uid="ToSic.Sys.DI.LazySvc`1.SetInit(System.Action{`0})">
-  SetInit(Action&lt;TService&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sys_DI_LazySvc_1_SetInit_System_Action__0__System_Boolean_" data-uid="ToSic.Sys.DI.LazySvc`1.SetInit(System.Action{`0},System.Boolean)">
+  SetInit(Action&lt;TService&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.DI/LazySvc.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the init-command as needed</p>
@@ -369,13 +369,16 @@ So if it's used for anything that doesn't support logging it will just behave li
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazySvc&lt;TService&gt; SetInit(Action&lt;TService&gt; newInitCall)</code></pre>
+    <pre><code class="lang-csharp hljs">public LazySvc&lt;TService&gt; SetInit(Action&lt;TService&gt; newInitCall, bool allowReplace = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>newInitCall</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TService&gt;</dt>
     <dd></dd>
+    <dt><code>allowReplace</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Allow replacing the set-init</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>

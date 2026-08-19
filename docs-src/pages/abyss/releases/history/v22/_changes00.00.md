@@ -7,7 +7,7 @@
 1. New App Extension **vCard**
 1. Linux support for Oqtane
 1. Container support for Oqtane
-1. Minimum DNN ☢️ now v10.01.00
+1. Minimum DNN ☢️ now v10.01.00; .net 4.8 (from 4.7.2)
 1. Minimum Oqtane ☢️ now v10.02.00 to support multi-language, but we recommend the latest version of Oqtane
 
 #### Models APIs 💃🏼
