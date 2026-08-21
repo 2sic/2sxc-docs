@@ -33,13 +33,16 @@ After adding 2sxc templates to your Oqtane project, the Visual Studio build proc
 
 ### Affected Folders
 
-The problematic folder that cause the build issues is `2sxc`.
+The build can pick up runtime files from two folders:
 
-These directory contain assets for the 2sxc apps and templates.
+* `2sxc` - site apps and templates
+* `Content` - persisted content, including 2sxc system and app files
 
-## Solution: Exclude `2sxc` Folder from the Build
+These folders must remain on disk, but they should not be included in the `Oqtane.Server` project.
 
-To resolve the build errors, you need to exclude `2sxc` folder from the compilation process. This can be done by modifying the `Oqtane.Server.csproj` file to tell the compiler to ignore these directory.
+## Solution: Exclude the Runtime Folders from the Build
+
+Add one exclusion block to the server project so build ignores both folders.
 
 ### Steps to Exclude Folders
 
@@ -50,24 +53,24 @@ To resolve the build errors, you need to exclude `2sxc` folder from the compilat
 
 1. **Add Exclusion Rules:**
 
-   Insert the following `<ItemGroup>` section into the project file:
+   Insert the following `<ItemGroup>` inside the `<Project>` element. If you already have an exclusion block for `2sxc`, replace it with this block:
 
    ```xml
    <ItemGroup>
      <!-- Exclude these directories from compilation -->
-     <Compile Remove="2sxc\**" />
+     <Compile Remove="2sxc\**;Content\**" />
      <!-- Exclude content files from the build output -->
-     <Content Remove="2sxc\**" />
+     <Content Remove="2sxc\**;Content\**" />
      <!-- Exclude files from being embedded as resources -->
-     <EmbeddedResource Remove="2sxc\**" />
+     <EmbeddedResource Remove="2sxc\**;Content\**" />
      <!-- Exclude miscellaneous files not included elsewhere -->
-     <None Remove="2sxc\**" />
+     <None Remove="2sxc\**;Content\**" />
      <!-- Exclude files from the dotnet watch tool -->
-     <Watch Remove="2sxc\**" />
+     <Watch Remove="2sxc\**;Content\**" />
    </ItemGroup>
    ```
 
-   This configuration explicitly tells the build system to ignore all files within the `2sxc` directory when compiling, embedding resources, including content files, and monitoring for changes.
+   This only changes how the project handles the files. It does not delete them or prevent 2sxc from using them at runtime.
 
 1. **Save and Rebuild:**
 
@@ -75,11 +78,11 @@ To resolve the build errors, you need to exclude `2sxc` folder from the compilat
 
 ## Why This Happens
 
-The 2sxc templates introduce additional files that are necessary for the application to run but are **not** meant to be part of the compiled code. Visual Studio automatically includes new files and directories added to the project folder. Including them causes conflicts and compilation errors because the compiler tries to process files that aren't valid C# code or are duplicates.
+The .NET SDK automatically includes matching files below the project folder. The `2sxc` and `Content` folders can contain `.cs`, `.cshtml`, and other runtime files that belong to 2sxc apps, not to `Oqtane.Server`. Without the exclusions, build may compile or process these files as part of the server project.
 
 ## Summary
 
-By excluding the `2sxc` folder from the build process, you prevent the compiler from processing unnecessary files. This resolves the build errors and allows you to continue developing your Oqtane application with the 2sxc templates installed.
+By excluding both runtime folders, you keep their files available to 2sxc without treating them as part of the server project.
 
 ## Related
 
