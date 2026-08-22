@@ -6,19 +6,42 @@ uid: Abyss.Platforms.Oqtane.Install.IssueHotReload
 
 # Problems Installing Apps with Hot Reload Enabled
 
-When using Oqtane in **developer mode** there is a feature called **Hot Reload** which restarts Oqtane when files change.
+When using Oqtane in **developer mode**, Hot Reload can update or restart the running application when files change.
 
 > [!WARNING]
 > Installing Content-Templates and Apps with **Hot Reload** enabled causes problems.
 >
-> This is because the server will restart a few times during installation of the ZIP.
+> This is because installing the ZIP changes many files and Hot Reload can interrupt the installation.
 
-Because of this you can only install Apps and Content-Templates if **Hot Reload is disabled**.
+Install Apps and Content-Templates only while **Hot Reload is disabled**.
 
 > [!TIP]
-> After installation you can re-enable Hot-Reload as you see fit.
+> After installation, you can re-enable Hot Reload.
 
-If you start Oqtane from the command line, you can disable Hot Reload for that run:
+## Disable Hot Reload
+
+1. Stop Oqtane.
+1. Open `Properties\launchSettings.json` in the Oqtane server project.
+1. Set `"hotReloadEnabled": false` in every launch profile you use:
+
+   ```json
+   "Oqtane.Server": {
+     "commandName": "Project",
+     "hotReloadEnabled": false
+   }
+   ```
+
+1. Restart Oqtane and retry the installation.
+
+When 2sxc detects Hot Reload during an installation, it normally adds `"hotReloadEnabled": false` to launch profiles where the property is missing. It does not overwrite an existing value, so change an existing `true` to `false` yourself. The change only takes effect after restarting Oqtane.
+
+If you use `dotnet watch`, disable Hot Reload for that run with:
+
+```cmd
+dotnet watch --no-hot-reload
+```
+
+Alternatively, use `dotnet run`, which does not enable Hot Reload.
 
 ```cmd
 dotnet run -p:hotreloadenable=false
@@ -30,15 +53,15 @@ dotnet run -p:hotreloadenable=false
 
 ## Background: Hot-Reload Detection
 
-Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled by checking that this DLL is loaded in memory:
+2sxc detects active Hot Reload when the environment variable `DOTNET_MODIFIABLE_ASSEMBLIES` is set to `debug`. Visual Studio and `dotnet watch` set this when the runtime accepts Hot Reload changes.
 
-* `Microsoft.AspNetCore.Watch.BrowserRefresh.dll`
+The check no longer uses `Microsoft.AspNetCore.Watch.BrowserRefresh.dll`, because that assembly can also be loaded when only browser refresh is active and Hot Reload is disabled.
 
-If you believe that we are checking this incorrectly, please open an issue on Github.
+If you believe the detection is incorrect, please open an issue on GitHub.
 
 ## Next Step
 
-* To avoid potential build errors, exclude the `2sxc` folder from the `Oqtane.Server.csproj`. For more details on preventing and resolving these issues, refer to the [Build Oqtane Server Issue](xref:Abyss.Platforms.Oqtane.Install.IssueBuild) documentation.
+* To avoid potential build errors, exclude the `2sxc` and `Content` folders from `Oqtane.Server.csproj`. See [Build Oqtane Server Issue](xref:Abyss.Platforms.Oqtane.Install.IssueBuild).
 
 ---
 
