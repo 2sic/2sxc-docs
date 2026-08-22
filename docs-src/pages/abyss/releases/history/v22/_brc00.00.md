@@ -14,3 +14,4 @@
 1. ⬇️ The internal `PiggyBack` system was simplified.
 1. ⬇️🩸 Oqtane: Removed old Razor APIs `GetCode()` and `CreateInstance()` which were probably never used on Oqtane  
     You should only be affected, if you were a very early adopter and used some of the earliest template Apps. If so, please reach out.
+1. ⬇️ Extensions in the very old folder `/system` were deprecated in v20, but it seems we missed some cases, so it may still have worked. It's now fully removed.

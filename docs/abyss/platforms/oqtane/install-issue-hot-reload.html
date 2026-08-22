@@ -106,31 +106,49 @@
 
 <img src="../../../assets/features/platform-oqtane.svg" width="100%">
 <h1 id="problems-installing-apps-with-hot-reload-enabled">Problems Installing Apps with Hot Reload Enabled</h1>
-<p>When using Oqtane in <strong>developer mode</strong> there is a feature called <strong>Hot Reload</strong> which restarts Oqtane when files change.</p>
+<p>When using Oqtane in <strong>developer mode</strong>, Hot Reload can update or restart the running application when files change.</p>
 <div class="WARNING">
 <h5>Warning</h5>
 <p>Installing Content-Templates and Apps with <strong>Hot Reload</strong> enabled causes problems.</p>
-<p>This is because the server will restart a few times during installation of the ZIP.</p>
+<p>This is because installing the ZIP changes many files and Hot Reload can interrupt the installation.</p>
 </div>
-<p>Because of this you can only install Apps and Content-Templates if <strong>Hot Reload is disabled</strong>.</p>
+<p>Install Apps and Content-Templates only while <strong>Hot Reload is disabled</strong>.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>After installation you can re-enable Hot-Reload as you see fit.</p>
+<p>After installation, you can re-enable Hot Reload.</p>
 </div>
-<p>If you start Oqtane from the command line, you can disable Hot Reload for that run:</p>
+<h2 id="disable-hot-reload">Disable Hot Reload</h2>
+<ol>
+<li><p>Stop Oqtane.</p>
+</li>
+<li><p>Open <code>Properties\launchSettings.json</code> in the Oqtane server project.</p>
+</li>
+<li><p>Set <code>&quot;hotReloadEnabled&quot;: false</code> in every launch profile you use:</p>
+<pre><code class="lang-json">&quot;Oqtane.Server&quot;: {
+  &quot;commandName&quot;: &quot;Project&quot;,
+  &quot;hotReloadEnabled&quot;: false
+}
+</code></pre>
+</li>
+<li><p>Restart Oqtane and retry the installation.</p>
+</li>
+</ol>
+<p>When 2sxc detects Hot Reload during an installation, it normally adds <code>&quot;hotReloadEnabled&quot;: false</code> to launch profiles where the property is missing. It does not overwrite an existing value, so change an existing <code>true</code> to <code>false</code> yourself. The change only takes effect after restarting Oqtane.</p>
+<p>If you use <code>dotnet watch</code>, disable Hot Reload for that run with:</p>
+<pre><code class="lang-cmd">dotnet watch --no-hot-reload
+</code></pre>
+<p>Alternatively, use <code>dotnet run</code>, which does not enable Hot Reload.</p>
 <pre><code class="lang-cmd">dotnet run -p:hotreloadenable=false
 </code></pre>
 <h2 id="checklist-to-disable-hot-reload-temporarily">Checklist to Disable Hot Reload Temporarily</h2>
 <iframe src="https://azing.org/2sxc/r/YUm957D-?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
 <h2 id="background-hot-reload-detection">Background: Hot-Reload Detection</h2>
-<p>Just FYI in case the error is wrong / surprising. We detect Hot-Reload-Enabled by checking that this DLL is loaded in memory:</p>
-<ul>
-<li><code>Microsoft.AspNetCore.Watch.BrowserRefresh.dll</code></li>
-</ul>
-<p>If you believe that we are checking this incorrectly, please open an issue on Github.</p>
+<p>2sxc detects active Hot Reload when the environment variable <code>DOTNET_MODIFIABLE_ASSEMBLIES</code> is set to <code>debug</code>. Visual Studio and <code>dotnet watch</code> set this when the runtime accepts Hot Reload changes.</p>
+<p>The check no longer uses <code>Microsoft.AspNetCore.Watch.BrowserRefresh.dll</code>, because that assembly can also be loaded when only browser refresh is active and Hot Reload is disabled.</p>
+<p>If you believe the detection is incorrect, please open an issue on GitHub.</p>
 <h2 id="next-step">Next Step</h2>
 <ul>
-<li>To avoid potential build errors, exclude the <code>2sxc</code> folder from the <code>Oqtane.Server.csproj</code>. For more details on preventing and resolving these issues, refer to the <a class="xref" href="install-issue-build-oqtane-server.html">Build Oqtane Server Issue</a> documentation.</li>
+<li>To avoid potential build errors, exclude the <code>2sxc</code> and <code>Content</code> folders from <code>Oqtane.Server.csproj</code>. See <a class="xref" href="install-issue-build-oqtane-server.html">Build Oqtane Server Issue</a>.</li>
 </ul>
 <hr>
 <p>Shortlink to here: <a href="https://go.2sxc.org/oqt-hr">https://go.2sxc.org/oqt-hr</a></p>

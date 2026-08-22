@@ -170,6 +170,10 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 <li>✏️ Toolbars targeting a entity-field for add-new can now specify the content-type to use for the new entity (<code>New(contentType: '...')</code>)</li>
 <li>✏️ Improve icon assignment - especially for entity-fields with multiple target types to pick up the right one from the configurations</li>
 </ol>
+<h4 id="dnn-">DNN ☢️</h4>
+<ol>
+<li>Performance improvements loading Razor; we discovered a piece of code reviewing all registered assemblies during page load which we could reduce to once per system start.</li>
+</ol>
 <h4 id="oqtane-">Oqtane 🩸</h4>
 <ol>
 <li>🩸 Support the new Multi-Language system of Oqtane (note that it's still very buggy, because the Oqtane implementation is buggy)</li>
@@ -245,6 +249,7 @@ This is an internal API but was used once in <code>Radmin</code>, so for compati
 <li>⬇️ The internal <code>PiggyBack</code> system was simplified.</li>
 <li>⬇️🩸 Oqtane: Removed old Razor APIs <code>GetCode()</code> and <code>CreateInstance()</code> which were probably never used on Oqtane<br>
 You should only be affected, if you were a very early adopter and used some of the earliest template Apps. If so, please reach out.</li>
+<li>⬇️ Extensions in the very old folder <code>/system</code> were deprecated in v20, but it seems we missed some cases, so it may still have worked. It's now fully removed.</li>
 </ol>
 
 </article>

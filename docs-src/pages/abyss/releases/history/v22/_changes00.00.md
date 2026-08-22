@@ -69,6 +69,10 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 1. ✏️ Toolbars targeting a entity-field for add-new can now specify the content-type to use for the new entity (`New(contentType: '...')`)
 1. ✏️ Improve icon assignment - especially for entity-fields with multiple target types to pick up the right one from the configurations
 
+#### DNN ☢️
+
+1. Performance improvements loading Razor; we discovered a piece of code reviewing all registered assemblies during page load which we could reduce to once per system start.
+
 #### Oqtane 🩸
 
 1. 🩸 Support the new Multi-Language system of Oqtane (note that it's still very buggy, because the Oqtane implementation is buggy)
