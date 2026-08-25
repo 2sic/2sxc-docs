@@ -2,16 +2,20 @@
 uid: Abyss.Contribute.Apps.Quality
 ---
 
-# Quality Checks for Standard Apps
+# Quality Management for 2sxc / EAV Standard Apps
 
-[!include["contributors-only"](../../code/_contributors-only.md)]
+[!include[""](../../code/_contributors-only.md)]
 
-Apps published by 2sxc are also used as reference implementations.
-The quality checks help keep their code consistent, current, secure, and understandable.
+When we create Apps for distribution,
+they must adhere to very high quality standards,
+because others will look at the code and use it as reference.
 
-> [!NOTE]
-> These checks are intended for Apps maintained and distributed by 2sxc.
-> They are optional for private Apps.
+> [!TIP]
+> If you want to create your own Apps, then this may not be important to you.
+> But we from 2sxc want to be sure that our Apps are built in a consistent way, and that they are well documented and tested.
+> So if you want to contribute an App in our name, please follow these guidelines.
+
+---
 
 ## How It Works
 
