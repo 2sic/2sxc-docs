@@ -121,18 +121,79 @@ But we from 2sxc want to be sure that our Apps are built in a consistent way, an
 So if you want to contribute an App in our name, please follow these guidelines.</p>
 </div>
 <hr>
-<h2 id="how-it-works">How it Works</h2>
-<p>TODO: @giiovi add a brief explanation here how it work, how the things work together...
-...make sure you also add some print screens in /assets etc.</p>
-<h2 id="how-to-run-quality-checks">How to Run Quality Checks</h2>
-<p>TODO: @giiovi add brief explanations w/screenshots, run 1 app, run set of apps, run everything etc.</p>
-<p>TODO: @giiovi add a brief explanation how the results work.</p>
-<h2 id="manage-quality-checks">Manage Quality Checks</h2>
-<p>TODO: @giiovi...</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>The quality system consists of:</p>
+<ol>
+<li><strong>Registered Apps</strong> which can be selected for a check.</li>
+<li><strong>Check definitions</strong> which describe unwanted or outdated patterns.</li>
+<li><strong>Results</strong> grouped by App and check.</li>
+</ol>
+<p>Checks can inspect source files for patterns such as:</p>
+<ul>
+<li>inline scripts;</li>
+<li>platform-specific namespaces in hybrid code;</li>
+<li>obsolete APIs or namespaces;</li>
+<li>discouraged data, toolbar, or image patterns.</li>
+</ul>
+<p>Quality checks support code review, but do not replace builds, manual tests, security review, or installation tests.</p>
+<h2 id="run-checks">Run Checks</h2>
+<p>Open <strong>Manage Quality Checks</strong> and use the highlighted action for the App you want to check:</p>
+<p><img src="../../../../pages/abyss/contribute/apps/quality/assets/run-check.png" alt="Open the quality check for an App"></p>
+<p>Checks can be run for:</p>
+<ul>
+<li><strong>one App</strong> while developing or fixing it;</li>
+<li><strong>selected Apps</strong> after changing a shared convention or API;</li>
+<li><strong>all registered Apps</strong> before a coordinated release or after changing a check definition.</li>
+</ul>
+<p>After changing an App, run its checks again. Existing results describe the files at the time of the previous run.</p>
+<h2 id="handle-results">Handle Results</h2>
+<p>The App detail page shows the quality-control status and the result of each applicable check:</p>
+<p><img src="../../../../pages/abyss/contribute/apps/quality/assets/quality-control.png" alt="Quality-control results for an App"></p>
+<p>Review the summary, open the affected App, and inspect each finding.
+Use one of these solutions:</p>
+<ol>
+<li><strong>Fix the code</strong> using the recommended pattern.</li>
+<li><strong>Correct the check definition</strong> if it produces general false positives.</li>
+<li><strong>Document an exception</strong> if the pattern is intentional in this file.</li>
+</ol>
+<p>A runner error is not a quality finding. It means the App could not be checked reliably—for example because its registration or path is invalid.</p>
+<h2 id="intentional-exceptions">Intentional Exceptions</h2>
+<p>A specific check can be disabled for a file with:</p>
+<pre><code class="lang-text">2sxclint:disable:&lt;check-id&gt;
+</code></pre>
+<p>Example:</p>
+<pre><code class="lang-cshtml">@{
+  // This App intentionally renders JavaScript entered by an editor.
+  // 2sxclint:disable:no-inline-script
+}
+</code></pre>
+<p>For multiple checks, use one line per check:</p>
+<pre><code class="lang-csharp">// Required for the DNN branch of this hybrid controller.
+// 2sxclint:disable:no-dnn-namespaces
+// 2sxclint:disable:no-web-namespace
+</code></pre>
+<p>The check ID must match the ID in the result exactly.
+Always explain why the exception is required and disable only the affected check.</p>
+<h2 id="manage-check-definitions">Manage Check Definitions</h2>
+<p>A check definition should have:</p>
+<ul>
+<li>a stable and unique check ID;</li>
+<li>a clear description of the problem and its solution;</li>
+<li>the correct severity, file types, and App scope;</li>
+<li>a narrow match which avoids unrelated code.</li>
+</ul>
+<p>Before applying a new or changed definition to all Apps:</p>
+<ol>
+<li>Test code which should produce a finding.</li>
+<li>Test code which should pass.</li>
+<li>Test the matching <code>2sxclint:disable</code> directive.</li>
+<li>Run the check against a small, representative App selection.</li>
+</ol>
+<p>Changing a check ID also requires updating all matching disable directives in the App repositories.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
-<li>Initial</li>
+<li>2026-08-25: Documented quality checks for standard Apps.</li>
 </ul>
 
 </article>

@@ -5,6 +5,9 @@
 1. ⚠️ Minimum DNN ☢️ now v10.00.00; .net 4.8 (from 4.7.2)
 1. ⚠️ Minimum Oqtane ☢️ now v10.02.00 but we recommend the latest version of Oqtane
     If you did, you can use the new `IEntityField` interface instead, which is very similar to the old `IField` interface.
+1. 🛑 We dropped a very old object `_2sxcEditInformation` which was on some JSON when serializing entities in edit mode  
+    This was deprecated in v9, but there may still be some JS around relying on this.  
+    If you run into issues, please contact us so we can help.
 1. ⬇️ a vCard API extension was removed. We believe it has never been used since v20 where the folders changed, so we don't think this will affect anyone.
 1. ⬇️ The interface `IContentTypeAttribute` was renamed to `IContentTypeField`.  
     This is an internal API but was used once in `Radmin`, so for compatibility we're keeping the old interface for a while but will update the extension.
