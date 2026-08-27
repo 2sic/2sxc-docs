@@ -32,7 +32,40 @@ Checks can inspect source files for patterns such as:
 - obsolete APIs or namespaces;
 - discouraged data, toolbar, or image patterns.
 
-Quality checks support code review, but do not replace builds, manual tests, security review, or installation tests.
+## How Checks Are Organized
+
+Rules are organized by **group**, **file type**, and **behavior**:
+
+![Rule sets and file targets used to organize checks](./assets/manage-rulesets.png)
+
+- **Rule Sets** are groups describing when or why checks apply, such as
+  **Always Test**, **Razor / Code 16**, or **Temporary Checks**.
+- **Rule Targets** define the files to inspect, such as **Razor** (`*.cshtml`),
+  **CSharp Only** (`*.cs`), or **typescript** (`*.ts;*.js`).
+
+## How a Rule Is Defined
+
+Rules have a stable **NameId**, belong to a Rule Set and Rule Target,
+and are implemented in one of two ways:
+
+- A **Configured Rule** searches file content using values entered in the editor.
+- A **Coded Rule** runs custom code. Use this when the check requires logic which
+  cannot be expressed reliably as a content search.
+
+To create a rule, filter the list to the intended Rule Set and Rule Target,
+then select the **+** action above the rule list:
+
+![Add a rule to the filtered rule list](./assets/add-rule.png)
+
+The editor starts with the selected target and set:
+
+![Configured-rule fields in the rule editor](./assets/add-rule-dialog.png)
+
+The important fields are:
+
+- **NameId** is the stable ID shown in result
+- **Find** accepts one pattern per line. Enable **IsRegEx** to treat them as regular expressions.
+- **Forbidden** controls the result, when enabled, a match fails the rule
 
 ## Run Checks
 
@@ -95,7 +128,7 @@ Always explain why the exception is required and disable only the affected check
 
 A check definition should have:
 
-- a stable and unique check ID;
+- a unique check ID;
 - a clear description of the problem and its solution;
 - the correct severity, file types, and App scope;
 - a narrow match which avoids unrelated code.
@@ -104,13 +137,10 @@ Before applying a new or changed definition to all Apps:
 
 1. Test code which should produce a finding.
 1. Test code which should pass.
-1. Test the matching `2sxclint:disable` directive.
-1. Run the check against a small, representative App selection.
-
-Changing a check ID also requires updating all matching disable directives in the App repositories.
 
 ---
 
 ## History
 
+- 2026-08-27: Explained Rule Sets, Rule Targets, configured and coded rules, and all rule fields.
 - 2026-08-25: Documented quality checks for standard Apps.
