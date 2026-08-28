@@ -135,7 +135,34 @@ So if you want to contribute an App in our name, please follow these guidelines.
 <li>obsolete APIs or namespaces;</li>
 <li>discouraged data, toolbar, or image patterns.</li>
 </ul>
-<p>Quality checks support code review, but do not replace builds, manual tests, security review, or installation tests.</p>
+<h2 id="how-checks-are-organized">How Checks Are Organized</h2>
+<p>Rules are organized by <strong>group</strong>, <strong>file type</strong>, and <strong>behavior</strong>:</p>
+<p><img src="../../../../pages/abyss/contribute/apps/quality/assets/manage-rulesets.png" alt="Rule sets and file targets used to organize checks"></p>
+<ul>
+<li><strong>Rule Sets</strong> are groups describing when or why checks apply, such as
+<strong>Always Test</strong>, <strong>Razor / Code 16</strong>, or <strong>Temporary Checks</strong>.</li>
+<li><strong>Rule Targets</strong> define the files to inspect, such as <strong>Razor</strong> (<code>*.cshtml</code>),
+<strong>CSharp Only</strong> (<code>*.cs</code>), or <strong>typescript</strong> (<code>*.ts;*.js</code>).</li>
+</ul>
+<h2 id="how-a-rule-is-defined">How a Rule Is Defined</h2>
+<p>Rules have a stable <strong>NameId</strong>, belong to a Rule Set and Rule Target,
+and are implemented in one of two ways:</p>
+<ul>
+<li>A <strong>Configured Rule</strong> searches file content using values entered in the editor.</li>
+<li>A <strong>Coded Rule</strong> runs custom code. Use this when the check requires logic which
+cannot be expressed reliably as a content search.</li>
+</ul>
+<p>To create a rule, filter the list to the intended Rule Set and Rule Target,
+then select the <strong>+</strong> action above the rule list:</p>
+<p><img src="../../../../pages/abyss/contribute/apps/quality/assets/add-rule.png" alt="Add a rule to the filtered rule list"></p>
+<p>The editor starts with the selected target and set:</p>
+<p><img src="../../../../pages/abyss/contribute/apps/quality/assets/add-rule-dialog.png" alt="Configured-rule fields in the rule editor"></p>
+<p>The important fields are:</p>
+<ul>
+<li><strong>NameId</strong> is the stable ID shown in result</li>
+<li><strong>Find</strong> accepts one pattern per line. Enable <strong>IsRegEx</strong> to treat them as regular expressions.</li>
+<li><strong>Forbidden</strong> controls the result, when enabled, a match fails the rule</li>
+</ul>
 <h2 id="run-checks">Run Checks</h2>
 <p>Open <strong>Manage Quality Checks</strong> and use the highlighted action for the App you want to check:</p>
 <p><img src="../../../../pages/abyss/contribute/apps/quality/assets/run-check.png" alt="Open the quality check for an App"></p>
@@ -177,7 +204,7 @@ Always explain why the exception is required and disable only the affected check
 <h2 id="manage-check-definitions">Manage Check Definitions</h2>
 <p>A check definition should have:</p>
 <ul>
-<li>a stable and unique check ID;</li>
+<li>a unique check ID;</li>
 <li>a clear description of the problem and its solution;</li>
 <li>the correct severity, file types, and App scope;</li>
 <li>a narrow match which avoids unrelated code.</li>
@@ -186,13 +213,11 @@ Always explain why the exception is required and disable only the affected check
 <ol>
 <li>Test code which should produce a finding.</li>
 <li>Test code which should pass.</li>
-<li>Test the matching <code>2sxclint:disable</code> directive.</li>
-<li>Run the check against a small, representative App selection.</li>
 </ol>
-<p>Changing a check ID also requires updating all matching disable directives in the App repositories.</p>
 <hr>
 <h2 id="history">History</h2>
 <ul>
+<li>2026-08-27: Explained Rule Sets, Rule Targets, configured and coded rules, and all rule fields.</li>
 <li>2026-08-25: Documented quality checks for standard Apps.</li>
 </ul>
 
