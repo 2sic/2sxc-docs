@@ -6,6 +6,11 @@ uid: Abyss.Db.SqlSnippets.Index
 
 This is just a fairly random collection of useful SQL snippets for 2sxc database admins.
 
+## Hard-Delete Entity, Content-Type, or App
+
+Use the reusable [hard-delete SQL procedures](xref:Abyss.Db.SqlSnippets.HardDelete) to permanently
+delete an Entity, Content-Type, or App from the `TsDynData*` schema used by 2sxc 20 and newer.
+
 ## Batch Delete Old Data
 
 This snippet will delete old entities, keeping only the newest entities of a ContentType.
@@ -194,4 +199,5 @@ Else
 
 ## History
 
+* 2026-08-31 added reusable hard-delete procedures for Entity, Content-Type, and App
 * 2025-10-27 created and added Batch-delete sample
