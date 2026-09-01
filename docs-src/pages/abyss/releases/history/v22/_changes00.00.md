@@ -7,6 +7,7 @@
 1. New App Extension **vCard**
 1. Linux support for Oqtane
 1. Container support for Oqtane
+1. ImageFlow v2.3.1-RC01 now with new `c=x1,y1,x2,y2` and `c.gravity=x,y` crop option for ImageFlow - see [docs](https://github.com/imazen/imageflow/issues/602)
 1. Minimum DNN ☢️ now v10.01.00; .net 4.8 (from 4.7.2)
 1. Minimum Oqtane ☢️ now v10.02.00 to support multi-language, but we recommend the latest version of Oqtane
 
@@ -125,6 +126,7 @@ This is the list of systems which we changed, but there are way more as we can't
 1. Refactor import/export code
 1. Change build of all JS projects to Vite and ESBuild; `$2sxc`, `inpage`, `quick-dialog`, `eav-ui` and more
 1. Updated ImageFlow from v2.1.0-RC11 to v2.3.1-RC01
+1. Added docs for targeted SQL delete operations
 
 
 [!include["Breaking Changes"](./_brc00.00.md)]
