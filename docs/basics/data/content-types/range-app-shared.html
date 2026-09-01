@@ -110,42 +110,64 @@
   <img src="../../../pages/basics/data/assets/app-data.png" class="full-width">
 </div>
 
-<p>This explains <strong>App Shared Content-Types</strong> which used to be called <strong>Ghost Content-Type</strong>. For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<p>This explains <strong>App Shared Content-Types</strong> which used to be called <strong>Ghost Content-Type</strong>.
+For an overview check out <a class="xref" href="../index.html">Understanding Data...</a>.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If you are looking into this, you probably want
+to use <a class="xref" href="../../app/inherit/index.html">Inherited Apps</a> instead,
+which is a more modern approach to the same problem.</p>
+</div>
 <hr>
 <div class="WARNING">
 <h5>Warning</h5>
-<p>This is a very advanced topic which less than 1% of all developers use.</p>
+<p>This is a very advanced topic which less than 0.1% of all developers use.</p>
 <p>You almost certainly will <em>not</em> need this. So if you start playing around with this,
 make sure that you really need this.</p>
 </div>
 <h2 id="what-is-an-app-shared-content-type">What is an App Shared Content-Type?</h2>
-<p><strong>App Shared Content Types</strong> are a <a class="xref" href="index.html">Content Types</a> which are defined in one App and re-used in specific other Apps.</p>
+<p><strong>App Shared Content Types</strong> are a <a class="xref" href="index.html">Content Types</a> which are...</p>
+<ol>
+<li>...<strong>defined</strong> in one App</li>
+<li>...and <strong>inherited</strong> (re-used) in one or more other Apps.</li>
+</ol>
+<p>Good to know:</p>
 <ul>
-<li>They can only be used inside the App which are configured to <em>share</em> the definition</li>
-<li>The App data is in the export/import, but <em>not</em> the <strong>Content-Type Definition</strong></li>
-<li>If you import an App with such data, the App containing the definition must be imported first.</li>
-<li>These Content-Types are stored in the <a class="xref" href="specs/sql-storage.html">SQL database</a></li>
+<li>They can only be used inside the App which are configured to <em>inherit</em> the definition</li>
+<li>The data will be in the export/import, but the <strong>Content-Type Definition</strong> will be missing.</li>
+<li>If you import an App with such data, the App holding the definition must be imported first.</li>
+<li>The defining Content-Types are stored in the <a class="xref" href="specs/sql-storage.html">SQL database</a> on the main App.</li>
 </ul>
 <p>You rarely want to use this.</p>
 <h2 id="how-it-works">How it works</h2>
 <ul>
-<li>Shared Content-Types are defined in a <strong>Primary</strong> App which manages this type.</li>
-<li>Other <strong>Slave</strong> Apps are configured to also use this Content-Type. They automatically inherit every configuration of the primary App even when the schema changes.</li>
+<li>Shared Content-Types are defined in a <strong>Master</strong> App which manages this type.</li>
+<li>Other <strong>Slave</strong> Apps are configured to also use this Content-Type. They automatically inherit every configuration of the <strong>Master</strong> App even when the schema changes.</li>
 </ul>
 <h2 id="why-does-this-feature-exist">Why does this Feature exist?</h2>
 <p>The feature was originally introduced in 2sxc 1.0 because at that time we didn't have <a class="xref" href="range-global.html">Global Shared Content-Types</a></p>
 <p>It has since been used in various complex sites. An example is a installation which has many Sites, each having the same <strong>News App</strong>. In such scenarios it's hard to keep changes synchronized, so it's usually implemented as follows:</p>
 <ol>
-<li>A primary App is on a hidden Site which just manages the Content-Types</li>
-<li>A template App is configured to use thes Content-Types. It usually also uses shared Templates etc.</li>
-<li>The template App is then exported and imported in each site where needed.</li>
+<li>A <strong>Master</strong> App is on a hidden Site which just manages the Content-Types</li>
+<li>A <strong>Slave</strong> App is configured to use the Content-Types. It often also uses shared Templates etc.</li>
+<li>The <strong>Slave</strong> App is then exported and imported in each site where needed.</li>
 </ol>
 <h2 id="why-would-you-want-to-use-this">Why would you want to use this?</h2>
 <ol>
-<li>If you are creating a complex system with many portals and apps which should share the schema</li>
+<li>If you are creating a complex system with many portals and apps which should share the schema.</li>
+<li>If you want to share the schema of the AppSettings and AppResources from somewhere.<br>
+Reason is that inheriting the entire app would also inherit the data (the settings) which results in unexpected behavior.</li>
 </ol>
 <h2 id="why-would-you-not-want-to-do-this">Why would you <em>not</em> want to do this?</h2>
 <p>Using Shared Content-Types is fairly technical, so the developer must understand what this is.</p>
+<h2 id="how-to-set-it-up">How to Set it Up</h2>
+<p>There are two ways to do this: in the UI, or directly in the DB (advanced).</p>
+<p>In the UI, there is a hidden button to do this, which only appears in developer mode (since it's such a rare/advanced feature).</p>
+<img src="../../../pages/basics/data/content-types/assets/ghost-create-ui.jpg" alt="Create a Ghost (inherited) type in the UI" width="100%" class="full-width">
+<h2 id="how-it-works-1">How it Works</h2>
+<p>This is just internal information, so that the few people who actually need this understand it.</p>
+<p>The configuration is stored in the database, in a special field in the <code>TsDynDataContentType</code> table.</p>
+<img src="../../../pages/basics/data/content-types/assets/ghost-inheriting-demo.jpg" alt="Ghost Inheriting Demo" width="100%" class="full-width">
 <h2 id="history">History</h2>
 <ol>
 <li>Introduced in 2sxc 1.0</li>
