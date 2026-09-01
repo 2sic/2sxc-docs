@@ -24,10 +24,10 @@ application caches. The procedures intentionally keep `TsDynDataHistory` and
 
 Run this script once in the 2sxc database. It creates three public procedures and one shared core:
 
-1. `dbo._TsDynData_HardDeleteEntity`
-1. `dbo._TsDynData_HardDeleteContentType`
-1. `dbo._TsDynData_HardDeleteApp`
-1. `dbo._TsDynData_HardDelete_Core` - used internally by the three public procedures
+1. `dbo.TsDynDataHardDeleteEntity`
+1. `dbo.TsDynDataHardDeleteContentType`
+1. `dbo.TsDynDataHardDeleteApp`
+1. `dbo.TsDynDataHardDeleteCore` - used internally by the three public procedures
 
 The public procedures delete one target per call. `@Execute = 0` is the default and only returns a
 read-only preview. Use `@Execute = 1` to permanently delete the selected target.
@@ -45,7 +45,7 @@ GO
 -- @Execute = 0 only builds and returns the target summary; @Execute = 1 performs the deletion.
 -- Delete execution is atomic. The procedure owns its transaction unless the caller supplied one.
 -- TsDynDataHistory and TsDynDataTransaction are intentionally not selected or deleted.
-CREATE OR ALTER PROCEDURE dbo._TsDynData_HardDelete_Core
+CREATE OR ALTER PROCEDURE dbo.TsDynDataHardDeleteCore
     @Scope varchar(20),
     @AppId int,
     @TargetId int = NULL,
@@ -326,7 +326,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo._TsDynData_HardDeleteEntity
+CREATE OR ALTER PROCEDURE dbo.TsDynDataHardDeleteEntity
     @AppId int,
     @EntityId int,
     @Execute bit = 0
@@ -334,7 +334,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    EXEC dbo._TsDynData_HardDelete_Core
+    EXEC dbo.TsDynDataHardDeleteCore
         @Scope = 'Entity',
         @AppId = @AppId,
         @TargetId = @EntityId,
@@ -342,7 +342,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo._TsDynData_HardDeleteContentType
+CREATE OR ALTER PROCEDURE dbo.TsDynDataHardDeleteContentType
     @AppId int,
     @ContentTypeId int,
     @Execute bit = 0
@@ -350,7 +350,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    EXEC dbo._TsDynData_HardDelete_Core
+    EXEC dbo.TsDynDataHardDeleteCore
         @Scope = 'ContentType',
         @AppId = @AppId,
         @TargetId = @ContentTypeId,
@@ -358,14 +358,14 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE dbo._TsDynData_HardDeleteApp
+CREATE OR ALTER PROCEDURE dbo.TsDynDataHardDeleteApp
     @AppId int,
     @Execute bit = 0
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    EXEC dbo._TsDynData_HardDelete_Core
+    EXEC dbo.TsDynDataHardDeleteCore
         @Scope = 'App',
         @AppId = @AppId,
         @Execute = @Execute;
@@ -380,12 +380,12 @@ Values, Value-Dimensions, and inbound/outbound Relationships.
 
 ```sql
 -- Read-only preview.
-EXEC dbo._TsDynData_HardDeleteEntity
+EXEC dbo.TsDynDataHardDeleteEntity
     @AppId = 0,
     @EntityId = 0;
 
 -- Permanent deletion.
-EXEC dbo._TsDynData_HardDeleteEntity
+EXEC dbo.TsDynDataHardDeleteEntity
     @AppId = 0,
     @EntityId = 0,
     @Execute = 1;
@@ -398,12 +398,12 @@ to the Content-Type, Attributes, Entities, or their metadata.
 
 ```sql
 -- Read-only preview.
-EXEC dbo._TsDynData_HardDeleteContentType
+EXEC dbo.TsDynDataHardDeleteContentType
     @AppId = 0,
     @ContentTypeId = 0;
 
 -- Permanent deletion.
-EXEC dbo._TsDynData_HardDeleteContentType
+EXEC dbo.TsDynDataHardDeleteContentType
     @AppId = 0,
     @ContentTypeId = 0,
     @Execute = 1;
@@ -416,11 +416,11 @@ Entities including JSON Entities, Attributes, Content-Types, and finally the App
 
 ```sql
 -- Read-only preview.
-EXEC dbo._TsDynData_HardDeleteApp
+EXEC dbo.TsDynDataHardDeleteApp
     @AppId = 0;
 
 -- Permanent deletion.
-EXEC dbo._TsDynData_HardDeleteApp
+EXEC dbo.TsDynDataHardDeleteApp
     @AppId = 0,
     @Execute = 1;
 ```
@@ -452,7 +452,7 @@ FETCH NEXT FROM apps INTO @AppId;
 WHILE @@FETCH_STATUS = 0
 BEGIN
     -- Keep 0 for previews. Change to 1 for permanent deletion.
-    EXEC dbo._TsDynData_HardDeleteApp
+    EXEC dbo.TsDynDataHardDeleteApp
         @AppId = @AppId,
         @Execute = 0;
 
@@ -470,10 +470,10 @@ upgrades. Run this only when you want to remove them from the database.
 
 ```sql
 DROP PROCEDURE IF EXISTS
-    dbo._TsDynData_HardDeleteEntity,
-    dbo._TsDynData_HardDeleteContentType,
-    dbo._TsDynData_HardDeleteApp,
-    dbo._TsDynData_HardDelete_Core;
+    dbo.TsDynDataHardDeleteEntity,
+    dbo.TsDynDataHardDeleteContentType,
+    dbo.TsDynDataHardDeleteApp,
+    dbo.TsDynDataHardDeleteCore;
 GO
 ```
 
@@ -481,4 +481,4 @@ GO
 
 ## History
 
-* 2026-08-31 added hard-delete scripts for Entity, Content-Type, and App (reusable `_TsDynData_*` procedures)
+* 2026-08-31 added hard-delete scripts for Entity, Content-Type, and App (reusable `TsDynDataHardDelete*` procedures)
