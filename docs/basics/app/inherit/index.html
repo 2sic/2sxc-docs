@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Inherit Apps (v13+) WIP | 2sxc 21 for Dnn and Oqtane </title>
+      <title>Inherit Apps (v13+) | 2sxc 22 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Inherit Apps (v13+) WIP | 2sxc 21 for Dnn and Oqtane ">
+      <meta name="title" content="Inherit Apps (v13+) | 2sxc 22 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../../assets/favicon.ico">
       <link rel="stylesheet" href="../../../public/docfx.min.css">
@@ -103,64 +103,142 @@
         
 
         <article data-uid="Basics.App.InheritApps.Index">
-<h1 id="inherit-apps-v13-wip">Inherit Apps (v13+) WIP</h1>
+<h1 id="inherit-apps-v13">Inherit Apps (v13+)</h1>
 
-<p>There are a few ways to re-use data, content-types and templates across sites.</p>
-<p>In very advanced cases you may want to define an App in one central place, and re-use that in many sites.</p>
-<p>This describes how to do this - it's a new feature in 2sxc 13.02.</p>
+<p>Inherited Apps let you maintain data, content types, queries, views, and shared
+files in one App and reuse them on multiple sites.</p>
+<p>This is useful when several sites need the same App and should receive updates
+from one central source.</p>
 <div class="IMPORTANT">
 <h5>Important</h5>
-<p>This only works if the feature has been enabled and requires the EnterpriseCMS license - docs WIP!</p>
+<p>App inheritance uses features from <strong>Patron Advanced CMS</strong> and <strong>Enterprise CMS</strong>.
+The corresponding features must be included in your license and enabled for the zone.</p>
 </div>
-<h2 id="how-it-works">How it Works</h2>
-<p>Inherited Apps work like a multi-layer app.</p>
+<h2 id="how-app-inheritance-works">How App Inheritance Works</h2>
+<p>An inherited App has two layers:</p>
 <ol>
-<li>The bottom layer is the <strong>Ancestor App</strong>. Changes to this affect all Apps which inherit it.</li>
-<li>On top of this is the <strong>Descendant App</strong> on a specific site, it can only add more material to the parent app, but not change any inherited data</li>
+<li>The <strong>Ancestor App</strong> is the shared base. Changes to it affect every App that inherits from it.</li>
+<li>A <strong>Descendant App</strong> is created on a specific site. It can add local items, but it cannot
+modify items inherited from the Ancestor App.</li>
 </ol>
-<p>Descendant Apps inherit all this:</p>
+<h3 id="what-a-descendant-app-inherits">What a Descendant App Inherits</h3>
 <ol>
-<li>App Name and Folder Name (they must be the same)</li>
-<li>All Content-Types of the Ancestor</li>
-<li>All Data / Entities of the Ancestor</li>
-<li>All Queries of the Ancestor</li>
-<li>All View definitions of the Ancestor</li>
-<li>All Template files and JS/CSS resources in the global storage of the App</li>
+<li>The App folder name</li>
+<li>Content types</li>
+<li>Data and entities</li>
+<li>Queries</li>
+<li>View definitions</li>
+<li>Template files and JS/CSS resources stored in the shared (global) App folder</li>
+<li>App settings from the Ancestor App</li>
 </ol>
-<p>Descendant Apps don't inherit this:</p>
+<p>Ancestor settings act as fallbacks. Settings configured directly on the Descendant App
+have higher priority. For details, see <a class="xref" href="../../configuration/settings-stack.html">Settings Stack</a>.</p>
+<h3 id="what-a-descendant-app-does-not-inherit">What a Descendant App Does Not Inherit</h3>
 <ol>
-<li>Settings - not sure yet if they do - still WIP</li>
-<li>Templates and Resources in the local storage of the Ancestor App</li>
-<li>ADAM files of the Ancestor App</li>
-</ol>
-<h2 id="how-to-create">How to Create</h2>
-<ol>
-<li>Enable Feature</li>
-<li>Define the Ancestor / Master App</li>
-<li>Define an Descendant App</li>
-<li>Test :)</li>
+<li>Templates and resources stored in the Ancestor App's site-local folder</li>
+<li>ADAM files belonging to the Ancestor App's site</li>
 </ol>
 <h2 id="best-practices">Best Practices</h2>
-<p>Everything in the ancestor App will be available in all inherited apps, and anything you change can affect the inherited Apps.
-Because of this, you should <em>not</em> use an App from a productive site (like the main/home site) as an ancestor,
-but always create a special site which isn't public, just to manage the ancestors.</p>
-<p>This will save you a lot of pains which would result from quickly making some edits which accidentally affect all the child sites.</p>
-<h2 id="enable-the-feature-todo">Enable the Feature TODO</h2>
-<h2 id="migrate-an-existing-app-to-becoming-a-master-ancestor">Migrate an Existing App to becoming a Master Ancestor</h2>
-<iframe src="https://azing.org/2sxc/r/qRgoIOv0?embed=1" width="100%" height="400" frameborder="0" allowfullscreen style="box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)"></iframe>
-<h2 id="create-the-ancestor-app-todo">Create the Ancestor App TODO</h2>
-<p>todo</p>
-<h3 id="limitations-of-the-ancestor-app">Limitations of the Ancestor App</h3>
-<p>You must be aware of a few limitations in the Ancestor App.</p>
+<p>Everything in the Ancestor App is available to all its Descendant Apps, so even a small
+change can affect many sites. Keep Ancestor Apps on a dedicated, non-public management
+site instead of using an App from a production site.</p>
+<p>Test changes on the management site before relying on them in Descendant Apps.</p>
+<h2 id="enable-the-required-features">Enable the Required Features</h2>
+<p>Before creating an Ancestor App, enable the two features used by App inheritance:</p>
 <ol>
-<li>Only views with templates stored in the global location can be used in Descendant Apps</li>
-<li>If you have data (entities) with images/files in the data, they cannot use the <code>file:72</code> reference,
-but must use the full path to the file for it to work on other sites, as the file-id lookup would not work in other sites.</li>
+<li>In <strong>Manage Zone</strong>, open <strong>Extensions / Features</strong>.</li>
+<li>Search for <code>shared</code>.</li>
+<li>Enable <strong>SharedAppCode</strong> to share AppCode from a shared App across multiple sites.</li>
+<li>Enable <strong>SharedApps</strong> to reuse shared Apps on multiple sites.</li>
 </ol>
-<h2 id="create-the-descendant-app-todo">Create The Descendant App TODO</h2>
+<p><img src="../../../pages/basics/app/inherit/assets/needed-features.png" alt="Enable the SharedAppCode and SharedApps features"></p>
+<p>Both entries must show as enabled before you continue.</p>
+<h2 id="create-the-ancestor-app">Create the Ancestor App</h2>
+<p>An existing App can be converted into an Ancestor App in four steps.</p>
+<h3 id="1-mark-the-app-as-shared">1. Mark the App as Shared</h3>
+<p>Open <strong>App Settings</strong>, select <strong>App</strong>, and click <strong>Metadata</strong> in the <strong>Configuration</strong> section.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/app-settings-metadata.png" alt="Open the App metadata"></p>
+<p>Add the <strong>Is-Shared (Decorator) - for Apps</strong> metadata decorator.
+This marks the App as available for inheritance by Apps on other sites.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/is-shared-decorator.png" alt="Add the Is-Shared decorator"></p>
+<h3 id="2-copy-the-app-files-to-the-shared-folder">2. Copy the App Files to the Shared Folder</h3>
+<p>Copy the complete App folder from the current site's Apps folder:</p>
+<pre><code class="lang-text">/Portals/&lt;site-id&gt;/2sxc/&lt;app-folder&gt;/
+</code></pre>
+<p>to the shared Apps folder:</p>
+<pre><code class="lang-text">/Portals/_default/2sxc/&lt;app-folder&gt;/
+</code></pre>
+<p>Keep the folder name unchanged. Do not delete the original folder yet.</p>
+<h3 id="3-change-every-view-to-shared-storage">3. Change Every View to Shared Storage</h3>
+<p>Open <strong>Views</strong> and edit each view. In <strong>Template</strong>, change <strong>Location</strong> from
+<strong>App Files in the Current Site</strong> to <strong>App Files in Shared (Global) section</strong>.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/view-location-edit.png" alt="Change the view location to shared global storage"></p>
+<p>Repeat this for every view in the App. The shared icon in the Views list confirms
+that a view now uses the global App folder.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/view-shared-icon-success.png" alt="Shared icon confirming the view uses global storage"></p>
+<h3 id="4-remove-the-local-app-folder-and-test">4. Remove the Local App Folder and Test</h3>
+<p>After all views use shared storage, make a backup and remove the old App folder from
+<code>/Portals/&lt;site-id&gt;/2sxc/</code>. Test the App again. It should work exactly as before,
+but its files should now come from the shared folder.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For developers, a filesystem link from the old portal App path to the shared App
+folder can make the new location easier to discover. This link is optional and
+is not required by 2sxc.</p>
+</div>
+<p>The App is now ready to be used as an Ancestor App.</p>
+<h3 id="limitations-of-the-ancestor-app">Limitations of the Ancestor App</h3>
+<ol>
+<li>Descendant Apps can only use views whose templates are stored in the shared (global) location.</li>
+<li>If you have data (entities) with images or files, they cannot use a <code>file:72</code> reference.
+Use the full path because file-ID lookup does not work across sites.</li>
+</ol>
+<h2 id="create-the-descendant-app">Create the Descendant App</h2>
+<p>On the site which should use the inherited App, open <strong>Apps</strong>.
+Expand the <strong>+</strong> menu and select <strong>Create inherited app</strong>.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/create-inherited-app.png" alt="Create an inherited App"></p>
+<p>In <strong>Inherit App</strong>, select the Ancestor App and click <strong>Create</strong>.
+Only Apps marked with the <strong>Is-Shared</strong> decorator appear in this list.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/select-inherited-app.png" alt="Select the Ancestor App"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The Ancestor App must already be loaded into the cache. If it is missing from the
+list, open the Ancestor App on its management site, then reopen this dialog. Also
+verify that the <strong>Is-Shared</strong> decorator is present.</p>
+</div>
+<p>2sxc creates the Descendant App automatically. It now appears in the Apps list
+and inherits the data, content types, queries, views, and shared files of the Ancestor App.</p>
+<p><img src="../../../pages/basics/app/inherit/assets/inherited-app-selected.png" alt="The created Descendant App"></p>
+<p>Open the new App and verify that its inherited views and data are available. Changes made
+later in the Ancestor App will become available to this Descendant App and all other
+Descendant Apps that use the same ancestor.</p>
+<h2 id="advanced-inherit-the-content-or-primary-app">Advanced: Inherit the Content or Primary App</h2>
+<p>The <strong>Content App</strong> and <strong>Primary App</strong> already exist for every site, so they cannot be
+created as Descendant Apps through <strong>Create inherited app</strong>.</p>
+<p>In the <code>TsDynDataApp</code> table, locate the target row by its <code>ZoneId</code> and <code>Name</code>:</p>
+<ol>
+<li>The Content App has the name <code>Default</code>.</li>
+<li>The Primary App uses the name <code>251c0000-eafe-2792-0001-000000000001</code>.</li>
+</ol>
+<p><img src="../../../pages/basics/app/inherit/assets/database-syssettings.png" alt="Content and Primary App inheritance in the TsDynDataApp table"></p>
+<p>The highlighted rows show a Content App and Primary App configured with different
+Ancestor App IDs in the same zone.</p>
+<p>The row's <code>SysSettings</code> JSON must enable inheritance and contain the numeric <code>AppId</code> of
+the Ancestor App, for example:</p>
+<pre><code class="lang-json">{ &quot;Inherit&quot;: true, &quot;AncestorAppId&quot;: 123 }
+</code></pre>
+<p>Replace <code>123</code> with the actual Ancestor App ID.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Restart the application or clear the 2sxc App/zone cache so the new settings are loaded.</p>
+</div>
 <hr>
 <h2 id="history">History</h2>
 <ol>
+<li>2026-09-01: Documented manual inheritance for Content and Primary Apps.</li>
+<li>2026-09-01: Documented the required features and clarified inheritance behavior.</li>
+<li>2026-08-28: Documented how to create a Descendant App from an Ancestor App.</li>
+<li>2026-08-27: Documented how to convert an existing App into an Ancestor App.</li>
 <li>Introduced in v13.01</li>
 </ol>
 
