@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Contribute to 2sxc / EAV - Xml Docs Bundling and Distribution | 2sxc 21 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Contribute to 2sxc / EAV - Xml Docs Bundling and Distribution | 2sxc 21 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/xml-docs/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Code.Backend.XmlDocs">
+<h1 id="contribute-to-2sxc--eav---xml-docs-bundling-and-distribution">Contribute to 2sxc / EAV - Xml Docs Bundling and Distribution</h1>
+
+<p>To enable intellisense when creating Apps in DNN and Oqtane using 2sxc,
+the VSCode CSharp extension needs XML files in the <code>bin</code> folder of the DNN/Oqtane website.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+<h2 id="how-it-works">How it works</h2>
+<p>Internally we select which DLLs to include in the XML generation, and then generate the XML files for those DLLs.
+The XML files are then included in the distribution.</p>
+<h2 id="generating-the-xml-files">Generating the XML Files</h2>
+<p><code>.csproj</code> file which have this line in them will automatically generate the XML files when building the project:</p>
+<pre><code class="lang-xml">  &lt;Import Project=&quot;../SharedImports/CsProj.Props/CreateXDocsOnRelease.props&quot; /&gt;
+</code></pre>
+<h2 id="distribution-in-dnn">Distribution in DNN</h2>
+<p>The DNN building system automatically takes all these xml files and includes them.
+This is done in the <code>AfterBuild.targets</code> file, which is included in the DNN build process with this code:</p>
+<pre><code class="lang-xml">&lt;!-- XML documentation is generated in Release only --&gt;
+&lt;ItemGroup Condition=&quot;'$(Configuration)' == 'Release'&quot;&gt;
+  &lt;DnnBinInclude Include=&quot;$(MSBuildProjectDirectory)\bin\ToSic.*.xml&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>In DNN they will then be in a sub-zip called <code>tosic.bin.debug-helpers.zip</code> which is included in the DNN distribution.</p>
+<h2 id="distribution-in-oqtane">Distribution in Oqtane</h2>
+<p>TODO: @Tonci</p>
+<h2 id="managing-publicly-documented-apis">Managing Publicly Documented APIs</h2>
+<p>For us it is critical to determine which APIs are used outside of 2sxc,
+because these have a higher need for stability and backward compatibility.</p>
+<p>The APIs themselves are marked with the <code>[PublicApi]</code> attribute and similar,
+which is primarily for showing in the docs.</p>
+<p>To prevent them from showing in IntelliSense, we use the <code>[ShowApiWhenReleased(ShowApiMode.Never)]</code> attribute.</p>
+<p>To keep an overview and explicitly manage it, we use a special App just for this purpose.
+See <a href="https://github.com/2sxc-dev/app-csharpapi">https://github.com/2sxc-dev/app-csharpapi</a>.
+The details are not documented, ask the @iJungleboy.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>First included ca. 2sxc 18 or 19</li>
+<li>Kind of interrupted in v20 because of DLL name changes</li>
+<li>Resumed in v22</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/xml-docs/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
