@@ -1,5 +1,5 @@
 
-### 2sxc v22.00.00 (2026-08-??) PREPARING / WIP
+### 2sxc v22.00.00 (2026-09-01)
 
 #### Highlights
 
