@@ -38,7 +38,19 @@ In DNN they will then be in a sub-zip called `tosic.bin.debug-helpers.zip` which
 
 ## Distribution in Oqtane
 
-TODO: @Tonci
+During a Release build, the Oqtane package project collects every existing `ToSic.*.xml` documentation file from its target-framework output directory:
+
+```xml
+<!-- XML documentation -->
+<ItemGroup Condition="'$(Configuration)'=='Release'">
+  <AssemblyDocumentation Include="$(OutDir)\ToSic.*.xml"
+                         Exclude="**\ToSic.Sxc.Oqtane.Package.xml" />
+</ItemGroup>
+```
+
+`ToSic.Sxc.Oqtane.Install.nuspec` uses the same wildcard and places the files under `lib\<targetframework>\` in the `.nupkg`.
+
+The wildcard only packages XML files that already exist; it does not generate them or decide which projects should export documentation. A project generates XML documentation for Release builds only when it imports `CreateXDocsOnRelease.props`. Some projects intentionally leave this import commented out because their APIs should not currently be exported or analyzed.
 
 ## Managing Publicly Documented APIs
 
