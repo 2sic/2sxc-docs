@@ -57,7 +57,7 @@ Before creating an Ancestor App, enable the two features used by App inheritance
 1. Enable **SharedAppCode** to share AppCode from a shared App across multiple sites.
 1. Enable **SharedApps** to reuse shared Apps on multiple sites.
 
-![Enable the SharedAppCode and SharedApps features](./assets/needed-features.png)
+<img src="./assets/needed-features.png" alt="Enable the SharedAppCode and SharedApps features" class="glow">
 
 Both entries must show as enabled before you continue.
 
@@ -69,12 +69,12 @@ An existing App can be converted into an Ancestor App in four steps.
 
 Open **App Settings**, select **App**, and click **Metadata** in the **Configuration** section.
 
-![Open the App metadata](./assets/app-settings-metadata.png)
+<img src="./assets/app-settings-metadata.png" alt="Open the App metadata" class="glow">
 
 Add the **Is-Shared (Decorator) - for Apps** metadata decorator.
 This marks the App as available for inheritance by Apps on other sites.
 
-![Add the Is-Shared decorator](./assets/is-shared-decorator.png)
+<img src="./assets/is-shared-decorator.png" alt="Add the Is-Shared decorator" class="glow">
 
 ### 2. Copy the App Files to the Shared Folder
 
@@ -97,12 +97,12 @@ Keep the folder name unchanged. Do not delete the original folder yet.
 Open **Views** and edit each view. In **Template**, change **Location** from
 **App Files in the Current Site** to **App Files in Shared (Global) section**.
 
-![Change the view location to shared global storage](./assets/view-location-edit.png)
+<img src="./assets/view-location-edit.png" alt="Change the view location to shared global storage" class="glow">
 
 Repeat this for every view in the App. The shared icon in the Views list confirms
 that a view now uses the global App folder.
 
-![Shared icon confirming the view uses global storage](./assets/view-shared-icon-success.png)
+<img src="./assets/view-shared-icon-success.png" alt="Shared icon confirming the view uses global storage" class="glow">
 
 ### 4. Remove the Local App Folder and Test
 
@@ -128,12 +128,12 @@ The App is now ready to be used as an Ancestor App.
 On the site which should use the inherited App, open **Apps**.
 Expand the **+** menu and select **Create inherited app**.
 
-![Create an inherited App](./assets/create-inherited-app.png)
+<img src="./assets/create-inherited-app.png" alt="Create an inherited App" class="glow">
 
 In **Inherit App**, select the Ancestor App and click **Create**.
 Only Apps marked with the **Is-Shared** decorator appear in this list.
 
-![Select the Ancestor App](./assets/select-inherited-app.png)
+<img src="./assets/select-inherited-app.png" alt="Select the Ancestor App" class="glow">
 
 > [!TIP]
 > The Ancestor App must already be loaded into the cache. If it is missing from the
@@ -143,7 +143,7 @@ Only Apps marked with the **Is-Shared** decorator appear in this list.
 2sxc creates the Descendant App automatically. It now appears in the Apps list
 and inherits the data, content types, queries, views, and shared files of the Ancestor App.
 
-![The created Descendant App](./assets/inherited-app-selected.png)
+<img src="./assets/inherited-app-selected.png" alt="The created Descendant App" class="glow">
 
 Open the new App and verify that its inherited views and data are available. Changes made
 later in the Ancestor App will become available to this Descendant App and all other
@@ -159,7 +159,7 @@ In the `TsDynDataApp` table, locate the target row by its `ZoneId` and `Name`:
 1. The Content App has the name `Default`.
 1. The Primary App uses the name `251c0000-eafe-2792-0001-000000000001`.
 
-![Content and Primary App inheritance in the TsDynDataApp table](./assets/database-syssettings.png)
+<img src="./assets/database-syssettings.png" alt="Content and Primary App inheritance in the TsDynDataApp table" class="glow">
 
 The highlighted rows show a Content App and Primary App configured with different
 Ancestor App IDs in the same zone.
