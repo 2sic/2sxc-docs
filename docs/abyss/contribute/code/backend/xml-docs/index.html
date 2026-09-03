@@ -129,7 +129,15 @@ This is done in the <code>AfterBuild.targets</code> file, which is included in t
 </code></pre>
 <p>In DNN they will then be in a sub-zip called <code>tosic.bin.debug-helpers.zip</code> which is included in the DNN distribution.</p>
 <h2 id="distribution-in-oqtane">Distribution in Oqtane</h2>
-<p>TODO: @Tonci</p>
+<p>During a Release build, the Oqtane package project collects every existing <code>ToSic.*.xml</code> documentation file from its target-framework output directory:</p>
+<pre><code class="lang-xml">&lt;!-- XML documentation --&gt;
+&lt;ItemGroup Condition=&quot;'$(Configuration)'=='Release'&quot;&gt;
+  &lt;AssemblyDocumentation Include=&quot;$(OutDir)\ToSic.*.xml&quot;
+                         Exclude=&quot;**\ToSic.Sxc.Oqtane.Package.xml&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p><code>ToSic.Sxc.Oqtane.Install.nuspec</code> uses the same wildcard and places the files under <code>lib\&lt;targetframework&gt;\</code> in the <code>.nupkg</code>.</p>
+<p>The wildcard only packages XML files that already exist; it does not generate them or decide which projects should export documentation. A project generates XML documentation for Release builds only when it imports <code>CreateXDocsOnRelease.props</code>. Some projects intentionally leave this import commented out because their APIs should not currently be exported or analyzed.</p>
 <h2 id="managing-publicly-documented-apis">Managing Publicly Documented APIs</h2>
 <p>For us it is critical to determine which APIs are used outside of 2sxc,
 because these have a higher need for stability and backward compatibility.</p>
